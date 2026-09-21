@@ -175,6 +175,7 @@ The web search tool accepts optional `parameters` to customize search behavior:
 | `user_location`       | object    | N/A            | Approximate user location for location-biased results. Currently only supported by native provider search; ignored with Exa, Firecrawl, Parallel, and Perplexity (see below)                                                                                                                                                                                                                                                                                                                           |
 | `allowed_domains`     | string\[] | N/A            | Limit results to these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and most native providers (see [domain filtering](#domain-filtering))                                                                                                                                                                                                                                                                                                                                               |
 | `excluded_domains`    | string\[] | N/A            | Exclude results from these domains. Supported by Exa, Firecrawl, Parallel, Perplexity, and some native providers (see [domain filtering](#domain-filtering))                                                                                                                                                                                                                                                                                                                                           |
+| `x_search`            | object    | N/A            | Opt in to X/Twitter search on SpaceXAI models, with optional filters. Only used with native provider search on SpaceXAI; ignored elsewhere (see [X search](#x-search-spacexai))                                                                                                                                                                                                                                                                                                                        |
 
 ### User Location
 
@@ -197,6 +198,38 @@ Pass an approximate user location to bias search results geographically:
 
 All fields within `user_location` are optional.
 
+### X Search (SpaceXAI)
+
+On SpaceXAI models, native web search sends only xAI's `web_search` tool. To also search X/Twitter, add an `x_search` object. An empty object enables X search with no filters:
+
+```json lines theme={null}
+{
+  "type": "openrouter:web_search",
+  "parameters": {
+    "engine": "native",
+    "x_search": {
+      "allowed_x_handles": ["OpenRouterAI"],
+      "from_date": "2025-01-01"
+    }
+  }
+}
+```
+
+| Field                        | Type      | Description                                                                                  |
+| ---------------------------- | --------- | -------------------------------------------------------------------------------------------- |
+| `allowed_x_handles`          | string\[] | Only include posts from these handles (max 20). Mutually exclusive with `excluded_x_handles` |
+| `excluded_x_handles`         | string\[] | Exclude posts from these handles (max 20). Mutually exclusive with `allowed_x_handles`       |
+| `from_date`                  | string    | Start date (ISO 8601, e.g. `"2025-01-01"`)                                                   |
+| `to_date`                    | string    | End date (ISO 8601, e.g. `"2025-12-31"`)                                                     |
+| `enable_image_understanding` | boolean   | Analyze images in posts                                                                      |
+| `enable_video_understanding` | boolean   | Analyze videos in posts                                                                      |
+
+If a `web` plugin (from `plugins`, an `:online` model suffix, or a preset) is also present, `x_search` follows the same [precedence rules](#migrating-from-the-web-search-plugin) as the other server tool parameters.
+
+<Note>
+  **Why opt-in.** SpaceXAI announced that starting September 21, 2026 at 12:00 PM PT, X Search is billed per item returned instead of per tool call: $5 per 1,000 posts fetched and $10 per 1,000 user profiles fetched, replacing the previous \$5 per 1,000 tool calls. Web search pricing is unchanged. Because a single X search can now return many billable items, OpenRouter no longer adds `x_search` automatically. The legacy top-level `x_search_filter` request field still enables X search for backward compatibility.
+</Note>
+
 ## Native Search Providers
 
 When `engine` is `"auto"` (the default) or `"native"`, OpenRouter uses the provider's built-in search for supported models. The following providers have native web search:
@@ -204,7 +237,7 @@ When `engine` is `"auto"` (the default) or `"native"`, OpenRouter uses the provi
 * **[OpenAI](https://platform.openai.com/docs/guides/tools/web-search)**: GPT-4.1, GPT-4.1 Mini, GPT-4.1 Nano, GPT-5 and later, o3, o3 Pro, o4-mini
 * **[Anthropic](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool)**: Claude 3.5 Haiku, Claude 3.7 Sonnet, Claude 4 and later (all Opus/Sonnet variants)
 * **[Google](https://ai.google.dev/gemini-api/docs/grounding)**: Gemini 3 Flash, Gemini 3 Pro, Gemini 3.1 Flash/Lite, Gemini 3.5 Flash
-* **[SpaceXAI](https://docs.x.ai/docs/guides/web-search)**: Grok 4 and later (includes both web search and X search)
+* **[SpaceXAI](https://docs.x.ai/docs/guides/web-search)**: Grok 4 and later (web search; X search requires the [`x_search` opt-in](#x-search-spacexai))
 * **[Perplexity](https://docs.perplexity.ai/api-reference/chat-completions-post)**: all Perplexity models (search is core to their API)
 
 <Note>
@@ -467,13 +500,13 @@ The `web_search_requests` field counts the total number of search queries the mo
 
 ## Pricing
 
-| Engine         | Pricing                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Exa**        | Instant/Fast/Auto: \$0.007 per request; Deep Lite/Deep: \$0.012; Deep Reasoning: \$0.015. Includes up to 10 results, then \$0.001 per additional result                                                                                                                                                                                                                                    |
-| **Parallel**   | Turbo or Fast: \$0.001/request; Basic or Advanced: \$0.005/request. Includes up to 10 results, then \$0.001 per additional result                                                                                                                                                                                                                                                          |
-| **Perplexity** | \$0.005 per request using OpenRouter credits                                                                                                                                                                                                                                                                                                                                               |
-| **Firecrawl**  | Uses your Firecrawl credits directly, with no OpenRouter charge. 2 credits per 10 results (search) + 5 credits per result (1 scrape + 4 highlights). See [Firecrawl pricing](https://www.firecrawl.dev/pricing)                                                                                                                                                                            |
-| **Native**     | Passed through from the provider ([OpenAI](https://platform.openai.com/docs/pricing#built-in-tools), [Anthropic](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing), [Google](https://ai.google.dev/pricing), [Perplexity](https://docs.perplexity.ai/getting-started/pricing), [SpaceXAI](https://docs.x.ai/docs/models#tool-invocation-costs)) |
+| Engine         | Pricing                                                                                                                                                                                                                                                                                                                                                                                           |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Exa**        | Instant/Fast/Auto: \$0.007 per request; Deep Lite/Deep: \$0.012; Deep Reasoning: \$0.015. Includes up to 10 results, then \$0.001 per additional result                                                                                                                                                                                                                                           |
+| **Parallel**   | Turbo or Fast: \$0.001/request; Basic or Advanced: \$0.005/request. Includes up to 10 results, then \$0.001 per additional result                                                                                                                                                                                                                                                                 |
+| **Perplexity** | \$0.005 per request using OpenRouter credits                                                                                                                                                                                                                                                                                                                                                      |
+| **Firecrawl**  | Uses your Firecrawl credits directly, with no OpenRouter charge. 2 credits per 10 results (search) + 5 credits per result (1 scrape + 4 highlights). See [Firecrawl pricing](https://www.firecrawl.dev/pricing)                                                                                                                                                                                   |
+| **Native**     | Passed through from the provider ([OpenAI](https://platform.openai.com/docs/pricing#built-in-tools), [Anthropic](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing), [Google](https://ai.google.dev/pricing), [Perplexity](https://docs.perplexity.ai/getting-started/pricing), [SpaceXAI](https://docs.x.ai/developers/pricing#tool-invocation-costs)) |
 
 All pricing is in addition to standard LLM token costs for processing the search result content.
 
@@ -496,7 +529,7 @@ The key differences:
 | **Total results cap**     | No                                           | Yes (`max_total_results`)                          |
 | **Pricing**               | Varies by engine                             | Varies by engine (same rates)                      |
 
-Use one surface per request. If a request still carries a `web` plugin (from `plugins`, an `:online` model suffix, or a preset) alongside `openrouter:web_search` and the tool runs as native provider search, the server tool's parameters override the matching plugin settings (`allowed_domains`, `excluded_domains`, `max_results`, `user_location`, `max_uses`), and plugin settings the tool does not set, such as `search_prompt`, are kept. The two domain lists count as one setting: a tool `allowed_domains` or `excluded_domains` replaces both plugin lists, so providers that accept only one list (Anthropic) never receive both. Two cases keep the plugin settings as they are: a `web` plugin pinned to a non-native `engine` (its search has already run, so the tool does not add a second provider-side search), and a `web` setting saved in your account with **Prevent overrides** enabled.
+Use one surface per request. If a request still carries a `web` plugin (from `plugins`, an `:online` model suffix, or a preset) alongside `openrouter:web_search` and the tool runs as native provider search, the server tool's parameters override the matching plugin settings (`allowed_domains`, `excluded_domains`, `max_results`, `user_location`, `max_uses`, `x_search`), and plugin settings the tool does not set, such as `search_prompt`, are kept. The two domain lists count as one setting: a tool `allowed_domains` or `excluded_domains` replaces both plugin lists, so providers that accept only one list (Anthropic) never receive both. Two cases keep the plugin settings as they are: a `web` plugin pinned to a non-native `engine` (its search has already run, so the tool does not add a second provider-side search), and a `web` setting saved in your account with **Prevent overrides** enabled.
 
 ### Migration example
 

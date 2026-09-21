@@ -1,5 +1,7 @@
 # GitLab Pages SSL/TLS certificates
 
+HTTPS and SSL/TLS certificate concepts for custom domains on GitLab Pages.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
 
@@ -23,7 +25,7 @@ When HTTPS came out in 1990, [SSL](https://en.wikipedia.org/wiki/Transport_Layer
 security measure, necessary just for big companies like banks and shopping sites
 with financial transactions.
 
-Now we have a different picture. [According to Josh Aas](https://letsencrypt.org/2015/10/29/phishing-and-malware.html), Executive Director at [Internet Security Research Group (ISRG)](https://en.wikipedia.org/wiki/Internet_Security_Research_Group):
+The picture is different now. [According to Josh Aas](https://letsencrypt.org/2015/10/29/phishing-and-malware.html), Executive Director at [Internet Security Research Group (ISRG)](https://en.wikipedia.org/wiki/Internet_Security_Research_Group):
 
 > We've come to realize that HTTPS is important for almost all websites. It's important for any website that
 > allows people to sign in with a password, any website that [tracks its users](https://www.washingtonpost.com/news/the-switch/wp/2013/12/10/nsa-uses-google-cookies-to-pinpoint-targets-for-hacking/)
@@ -59,7 +61,7 @@ for instance.
 Some certificate authorities offer free certificates, aiming to make the internet more secure
 to everyone. The most popular is [Let's Encrypt](https://letsencrypt.org/),
 which issues certificates trusted by most browsers, is open
-source, and free to use. See [GitLab Pages integration with Let's Encrypt](lets_encrypt_integration.md) to enable HTTPS on your custom domain.
+source, and free to use. See [GitLab Pages integration with Let's Encrypt](lets_encrypt_integration.md) to turn on HTTPS for your custom domain.
 
 Similarly popular are [certificates issued by Cloudflare](https://www.cloudflare.com/products/ssl/),
 which also offers a [free CDN service](https://blog.cloudflare.com/cloudflares-free-cdn-and-you/).

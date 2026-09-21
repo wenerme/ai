@@ -1,5 +1,7 @@
 # Create a GitLab Pages deployment for a static site
 
+Deploy a static site or framework-based application to GitLab Pages with a guided UI form.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
@@ -11,7 +13,7 @@ Through a step-by-step form, GitLab:
 - Submits the changes through a merge request for your review.
 - Deploys your website automatically when the merge request is merged.
 
-This guide explains how to use the Pages UI to deploy a static site or framework-based application.
+With the Pages UI, you can deploy a static site or framework-based application.
 
 ## Prerequisites
 
@@ -26,7 +28,7 @@ This guide explains how to use the Pages UI to deploy a static site or framework
     like [Eleventy](https://www.11ty.dev), [Astro](https://astro.build), or [Jekyll](https://jekyllrb.com).
   - Contains a framework configured for static output, such as [Next.js](https://nextjs.org),
     [Nuxt](https://nuxt.com), or [SvelteKit](https://kit.svelte.dev).
-- GitLab Pages must be enabled for the project. (To enable, go to **Settings** > **General**,
+- GitLab Pages must be turned on for the project. (To turn it on, go to **Settings** > **General**,
   expand **Visibility, project features, permissions**, and turn on the **Pages** toggle.)
 
 ## Create the Pages deployment

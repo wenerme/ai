@@ -1,5 +1,7 @@
 # GitLab Pages parallel deployments
 
+Publish multiple versions of a GitLab Pages site at the same time, each with its own URL.
+
 - Tier: Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

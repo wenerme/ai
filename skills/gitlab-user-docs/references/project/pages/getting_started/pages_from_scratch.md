@@ -1,5 +1,7 @@
 # Tutorial: Create a GitLab Pages website from scratch
 
+Create a GitLab Pages website from a blank project with Jekyll and a custom CI/CD configuration.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
@@ -26,7 +28,7 @@ To create a GitLab Pages website:
 - [Step 5: Specify the `public` directory for artifacts](#specify-the-public-directory-for-artifacts)
 - [Step 6: Deploy and view your website](#deploy-and-view-your-website)
 
-## Prerequisites
+## Before you begin
 
 You must have a [blank project](../../_index.md#create-a-blank-project) in GitLab.
 

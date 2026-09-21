@@ -144,13 +144,13 @@ When using native search, domain filter support depends on the provider:
 
 <span id="x-search-filters-xai-only" />
 
-## X Search Filters (SpaceXAI only)
+## X Search (SpaceXAI only)
 
-When using SpaceXAI models with web search enabled,
-OpenRouter automatically adds the `x_search` tool
-alongside `web_search`. You can pass filter
-parameters to control X/Twitter search results
-using the top-level `x_search_filter` parameter:
+X search is opt-in. With native web search enabled
+on a SpaceXAI model, OpenRouter sends only the
+`web_search` tool. To also search X/Twitter, add an
+`x_search` object to the plugin. An empty object
+enables X search with no filters:
 
 ```json lines theme={null}
 {
@@ -161,14 +161,51 @@ using the top-level `x_search_filter` parameter:
       "content": "What are people saying about OpenRouter?"
     }
   ],
-  "plugins": [{ "id": "web" }],
-  "x_search_filter": {
-    "allowed_x_handles": ["OpenRouterAI"],
-    "from_date": "2025-01-01",
-    "to_date": "2025-12-31"
-  }
+  "plugins": [
+    {
+      "id": "web",
+      "x_search": {
+        "allowed_x_handles": ["OpenRouterAI"],
+        "from_date": "2025-01-01",
+        "to_date": "2025-12-31"
+      }
+    }
+  ]
 }
 ```
+
+The same object is accepted as `parameters.x_search`
+on the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search),
+which is the preferred surface.
+
+<Note>
+  **Why opt-in.** SpaceXAI announced that starting
+  September 21, 2026 at 12:00 PM PT, X Search is
+  billed per item returned instead of per tool call:
+  $5 per 1,000 posts fetched and $10 per 1,000 user
+  profiles fetched, replacing the previous \$5 per
+  1,000 tool calls. Web search pricing is unchanged.
+  Because a single X search can now return many
+  billable items, OpenRouter no longer adds
+  `x_search` automatically.
+</Note>
+
+<Accordion title="Legacy top-level x_search_filter">
+  Requests that pass `x_search_filter` as a top-level
+  parameter keep working and are treated as an X
+  search opt-in with the same filters. Prefer the
+  `x_search` object shown above. When both are set,
+  `x_search` wins.
+
+  ```json lines theme={null}
+  {
+    "model": "x-ai/grok-4.1-fast",
+    "messages": [{ "role": "user", "content": "..." }],
+    "plugins": [{ "id": "web" }],
+    "x_search_filter": { "allowed_x_handles": ["OpenRouterAI"] }
+  }
+  ```
+</Accordion>
 
 ### Filter Parameters
 
@@ -184,9 +221,10 @@ using the top-level `x_search_filter` parameter:
 <Warning>
   `allowed_x_handles` and `excluded_x_handles` are
   mutually exclusive — you cannot use both in the
-  same request. If validation fails, the filter is
-  silently dropped and a basic `x_search` tool is
-  used instead.
+  same request. An invalid `x_search` object, or an
+  invalid legacy top-level `x_search_filter`, is
+  rejected with a 400 rather than sent as an
+  unfiltered X search.
 </Warning>
 
 ## Engine Selection
@@ -378,7 +416,7 @@ You can specify the search context size in your API request using the `web_searc
   * [Anthropic Pricing](https://docs.claude.com/en/docs/agents-and-tools/tool-use/web-search-tool#usage-and-pricing)
   * [Google Pricing](https://ai.google.dev/pricing)
   * [Perplexity Pricing](https://docs.perplexity.ai/getting-started/pricing)
-  * [SpaceXAI Pricing](https://docs.x.ai/docs/models#tool-invocation-costs)
+  * [SpaceXAI Pricing](https://docs.x.ai/developers/pricing#tool-invocation-costs)
 
   Native web search pricing only applies when using `"engine": "native"` or when native search is used by default for supported models. When using `"engine": "exa"`, the Exa search pricing applies instead.
 </Note>

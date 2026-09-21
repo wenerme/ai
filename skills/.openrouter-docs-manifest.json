@@ -785,9 +785,8 @@
   },
   "api_reference/responses/web-search.md": {
     "url": "https://openrouter.ai/docs/api_reference/responses/web-search.md",
-    "lastModified": "Wed, 05 Aug 2026 03:40:26 GMT",
-    "size": 20412,
-    "updatedAt": "2026-08-05T03:40:26.483Z"
+    "size": 20961,
+    "updatedAt": "2026-09-21T16:36:45.850Z"
   },
   "api_reference/streaming.md": {
     "url": "https://openrouter.ai/docs/api_reference/streaming.md",
@@ -2037,9 +2036,8 @@
   },
   "guides/features/plugins/web-search.md": {
     "url": "https://openrouter.ai/docs/guides/features/plugins/web-search.md",
-    "lastModified": "Fri, 14 Aug 2026 03:05:50 GMT",
-    "size": 15811,
-    "updatedAt": "2026-08-14T03:05:50.414Z"
+    "size": 17033,
+    "updatedAt": "2026-09-21T16:39:05.896Z"
   },
   "guides/features/presets.md": {
     "url": "https://openrouter.ai/docs/guides/features/presets.md",
@@ -2132,8 +2130,8 @@
   },
   "guides/features/server-tools/web-search.md": {
     "url": "https://openrouter.ai/docs/guides/features/server-tools/web-search.md",
-    "size": 34437,
-    "updatedAt": "2026-09-18T04:35:36.127Z"
+    "size": 37368,
+    "updatedAt": "2026-09-21T16:39:16.069Z"
   },
   "guides/features/service-tiers.md": {
     "url": "https://openrouter.ai/docs/guides/features/service-tiers.md",

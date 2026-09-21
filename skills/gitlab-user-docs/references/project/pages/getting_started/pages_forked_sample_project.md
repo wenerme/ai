@@ -1,5 +1,7 @@
 # Create a GitLab Pages website from a forked sample project
 
+Create a GitLab Pages website by forking a sample static site generator project.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

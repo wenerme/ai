@@ -978,10 +978,10 @@
   "openai-docs/guides/prompt-caching.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-caching.md",
     "skill": "openai-docs",
-    "etag": "W/\"07d3dd9feb640b7fa28612a564c716ba\"",
-    "lastModified": "Sat, 12 Sep 2026 01:33:38 GMT",
-    "size": 45583,
-    "updatedAt": "2026-09-12T04:21:44.427Z"
+    "etag": "W/\"c84b05b0a42556a07b4a74701d792d93\"",
+    "lastModified": "Mon, 21 Sep 2026 15:18:07 GMT",
+    "size": 47075,
+    "updatedAt": "2026-09-21T16:32:40.294Z"
   },
   "openai-docs/guides/prompt-caching/diagnostics.md": {
     "url": "https://developers.openai.com/api/docs/guides/prompt-caching/diagnostics.md",

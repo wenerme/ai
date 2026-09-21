@@ -16,6 +16,25 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/logs.xml)
 
+## 2026-09-18
+
+
+**Filter DDoS attack traffic from Logpush jobs**
+
+Logpush jobs can now exclude identified distributed denial-of-service (DDoS) attack traffic. This option reduces attack traffic in delivered logs.
+
+It supports the `http_requests`, `firewall_events`, and `network_analytics_logs` datasets.
+
+In the dashboard, select **Exclude DDoS attack traffic** under **Advanced Options**. With the API, add this field to a job request:
+
+```json
+{
+	"filter_attack_traffic": true
+}
+```
+
+For more information, refer to [API configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#ddos-attack-traffic).
+
 ## 2026-08-26
 
 
