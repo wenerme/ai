@@ -52773,7 +52773,9 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="organization-artifactregistryrepositories-format"></a>`format`  | [`ArtifactRegistryRepositoryFormat`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.3. Status: Experiment. Return only repositories holding the given package format. |
+| <a id="organization-artifactregistryrepositories-formats"></a>`formats`  | [`[ArtifactRegistryRepositoryFormat!]`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.5. Status: Experiment. Return only repositories holding one of the given package formats. |
 | <a id="organization-artifactregistryrepositories-kind"></a>`kind`  | [`ArtifactRegistryRepositoryKind`](#artifactregistryrepositorykind) | Introduced in GitLab 19.3. Status: Experiment. Return only repositories sourcing their artifacts the given way. |
+| <a id="organization-artifactregistryrepositories-kinds"></a>`kinds`  | [`[ArtifactRegistryRepositoryKind!]`](#artifactregistryrepositorykind) | Introduced in GitLab 19.5. Status: Experiment. Return only repositories sourcing their artifacts one of the given ways. |
 | <a id="organization-artifactregistryrepositories-sort"></a>`sort`  | [`ArtifactRegistryRepositorySort`](#artifactregistryrepositorysort) | Introduced in GitLab 19.3. Status: Experiment. Sort repositories by the criteria. |
 
 ##### `Organization.artifactRegistryRepository`
@@ -60684,6 +60686,7 @@ Fields:
 | <a id="terraformstate-lockedat"></a>`lockedAt` | [`Time`](#time) | Timestamp the Terraform state was locked. |
 | <a id="terraformstate-lockedbyuser"></a>`lockedByUser` | [`UserCore`](#usercore) | User currently holding a lock on the Terraform state. |
 | <a id="terraformstate-name"></a>`name` | [`String!`](#string) | Name of the Terraform state. |
+| <a id="terraformstate-permanentdeletionat"></a>`permanentDeletionAt`  | [`Time`](#time) | Introduced in GitLab 19.5. Status: Experiment. Timestamp of when the state will be permanently deleted, if it is scheduled for deletion. |
 | <a id="terraformstate-protectionruleexists"></a>`protectionRuleExists`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Whether a protection rule exists for the Terraform state. |
 | <a id="terraformstate-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp the Terraform state was updated. |
 

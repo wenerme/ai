@@ -332,6 +332,7 @@ components:
         resolution:
           description: Resolution of the generated video
           enum:
+            - 360p
             - 480p
             - 720p
             - 768p

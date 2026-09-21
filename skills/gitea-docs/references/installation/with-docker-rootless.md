@@ -64,7 +64,7 @@ server-1  | 2026-03-11T12:57:50.796198843Z /var/lib/gitea/git is not writable
 server-1  | 2026-03-11T12:57:50.796235667Z docker setup failed
 ```
 
-For a stable release you could use `:latest-rootless`, `:1-rootless` or specify a certain release like `:@dockerVersion@-rootless`, but if you'd like to use the latest development version then `:nightly-rootless` would be an appropriate tag. If you'd like to run the latest commit from a release branch you can use the `:1.x-nightly-rootless` tag, where x is the minor version of Gitea. (e.g. `:1.16-nightly-rootless`)
+For a stable release you could use `:latest-rootless`, `:1-rootless` or specify a certain release like `:@dockerVersion@-rootless`, but if you'd like to use the latest development version then `:main-nightly-rootless` would be an appropriate tag. If you'd like to run the latest commit from a release branch you can use the `:1.x-nightly-rootless` tag, where x is the minor version of Gitea. (e.g. `:1.27-nightly-rootless`)
 
 ## Named volumes
 
