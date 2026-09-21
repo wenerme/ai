@@ -86,25 +86,39 @@ Configure web search behavior:
 
 See the [Web Search plugin docs](/docs/guides/features/plugins/web-search) for full details on engine selection, domain filter compatibility, and pricing.
 
-## X Search Filters (SpaceXAI only)
+## X Search (SpaceXAI only)
 
-When using SpaceXAI models (e.g. `x-ai/grok-4.1-fast`),
-you can pass `x_search_filter` as a top-level
-request parameter to filter X/Twitter search
-results:
+On SpaceXAI models (e.g. `x-ai/grok-4.1-fast`),
+web search sends only SpaceXAI's `web_search` tool.
+Add an `x_search` object to the plugin to also
+search X/Twitter. An empty object enables it with
+no filters:
 
 ```json lines theme={null}
 {
   "model": "x-ai/grok-4.1-fast",
   "input": "What are people saying about AI?",
-  "plugins": [{ "id": "web" }],
-  "x_search_filter": {
-    "allowed_x_handles": ["OpenRouterAI"],
-    "from_date": "2025-01-01",
-    "enable_image_understanding": true
-  }
+  "plugins": [
+    {
+      "id": "web",
+      "x_search": {
+        "allowed_x_handles": ["OpenRouterAI"],
+        "from_date": "2025-01-01",
+        "enable_image_understanding": true
+      }
+    }
+  ]
 }
 ```
+
+The same object is accepted as `parameters.x_search`
+on the [`openrouter:web_search` server tool](/docs/guides/features/server-tools/web-search#x-search-spacexai).
+The legacy top-level `x_search_filter` request field
+still enables X search for backward compatibility.
+X search is opt-in because SpaceXAI bills it per item
+returned starting September 21, 2026 at 12:00 PM PT
+($5 per 1,000 posts fetched and $10 per 1,000 user
+profiles fetched, replacing \$5 per 1,000 tool calls).
 
 | Parameter                    | Type      | Description                                    |
 | ---------------------------- | --------- | ---------------------------------------------- |
@@ -118,7 +132,7 @@ results:
 <Warning>
   `allowed_x_handles` and `excluded_x_handles` are
   mutually exclusive. See the
-  [Web Search plugin docs](/docs/guides/features/plugins/web-search#x-search-filters-spacexai-only)
+  [Web Search plugin docs](/docs/guides/features/plugins/web-search#x-search-spacexai-only)
   for full details.
 </Warning>
 

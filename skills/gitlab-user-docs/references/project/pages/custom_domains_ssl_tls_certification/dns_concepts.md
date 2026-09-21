@@ -1,5 +1,7 @@
 # GitLab Pages DNS records
 
+DNS records used to point a custom domain to a GitLab Pages site.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

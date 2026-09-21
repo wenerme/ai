@@ -14,7 +14,7 @@ LOAD tpch;
 
 ## Benchmarking with the TPC-H Workload
 
-To run the full TPC-H workload with DuckDB, use the [standalone DuckDB TPC-H implementation project](https://github.com/duckdb/duckdb-tpch-power-test).
+To run the full TPC-H workload with DuckDB, use the [standalone DuckDB TPC-H implementation project](https://github.com/duckdb/duckdb-tpch).
 
 ## Usage
 

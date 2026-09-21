@@ -1,5 +1,7 @@
 # Create a GitLab Pages website from a project template
 
+Create a GitLab Pages website from a project template for a static site generator.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

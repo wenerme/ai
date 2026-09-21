@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # API configuration
 
-Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Endpoints
 
@@ -338,6 +338,18 @@ These timeframes are estimates. If you need to verify that changes have taken ef
 
 Use filters to select the events to include and/or remove from your logs. For more information, refer to [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/).
 
+## DDoS attack traffic
+
+In the dashboard, select **Exclude DDoS attack traffic** under **Advanced Options**. For the API, set `filter_attack_traffic` to `true`. The default value is `false`.
+
+This setting supports these datasets:
+
+- HTTP requests ( `http_requests`)
+- Firewall events ( `firewall_events`)
+- Network Analytics Logs ( `network_analytics_logs`)
+
+Logpush then excludes identified DDoS attack traffic from your logs.
+
 ## Sampling rate
 
 Value can range from `0.0` (exclusive) to `1.0` (inclusive). `sample=0.1` means return 10% (1 in 10) of all records. The default value is `1`, meaning logs will be unsampled.
@@ -400,5 +412,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#page","headline":"API configuration · Cloudflare Logs docs","description":"Configure Logpush jobs via the API.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#page","headline":"API configuration · Cloudflare Logs docs","description":"Configure Logpush jobs via the API.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

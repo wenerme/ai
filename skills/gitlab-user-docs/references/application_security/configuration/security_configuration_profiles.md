@@ -12,7 +12,6 @@
 - Feature flag `security_scan_profiles_feature` removed in GitLab 19.4.
 - Feature flag `security_remediation_profiles` removed in GitLab 19.4.
 - SAST scan profile configuration [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/617070) in GitLab 19.4 as an [experiment](../../../policy/development_stages_support.md), available through the GraphQL API only.
-- Triage and remediation profile [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/622469) in GitLab 19.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `triage_and_remediation_profile`. Enabled by default.
 
 Security configuration profiles are centralized settings that define how and when security scanners run across your projects.
 Use security configuration profiles to manage security scanners across your organization efficiently. A profile-based approach applies best practices with minimal manual setup.
@@ -107,6 +106,8 @@ glab security config enable dependency_scanning_post_processing -R my-group/my-p
 > was applied first. The configuration for the other profile is ignored.
 
 ### Automated triage and remediation profile
+
+- Triage and remediation profile [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/622469) in GitLab 19.4 [with a feature flag](../../../administration/feature_flags/_index.md) named `triage_and_remediation_profile`. Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag. For more information, see the

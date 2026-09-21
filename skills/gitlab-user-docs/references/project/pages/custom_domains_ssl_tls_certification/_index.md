@@ -1,5 +1,7 @@
 # GitLab Pages custom domains
 
+Set up custom domains and SSL/TLS certificates for a GitLab Pages site.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
 
@@ -52,7 +54,7 @@ and paste them in your domain's control panel as a `TXT` record in the next step
 
 [GitLab Pages showing the generated verification code for a new domain.]
 
-The structure of the **Verification status** field is:
+The verification code has this structure:
 
 - Name/Host:
   - For root domains: `_gitlab-pages-verification-code.example.com`
@@ -167,20 +169,20 @@ After you have added all the DNS records:
 When your domain becomes active, your website is available through your domain name.
 
 > [!warning]
-> On GitLab instances with domain verification enabled,
+> On GitLab instances with domain verification turned on,
 > GitLab removes unverified domains from the project after 7 days.
 
 Additionally:
 
 - Domain verification is required for GitLab.com users.
   For GitLab Self-Managed, your GitLab administrator has the option
-  to [disable custom domain verification](../../../../administration/pages/_index.md#custom-domain-verification).
+  to [turn off custom domain verification](../../../../administration/pages/_index.md#custom-domain-verification).
 - [DNS propagation might take some time (up to 24 hours)](https://www.inmotionhosting.com/support/domain-names/dns-nameserver-changes/complete-guide-to-dns-records/),
   although it's usually a matter of minutes to complete. Until it does, verification
   fails, and attempts to visit your domain result in a 404.
 - After your domain is verified, leave the verification record
   in place. Your domain is periodically reverified, and might be
-  disabled if the record is removed.
+  turned off if the record is removed.
 
 ## Add more domain aliases
 
@@ -288,7 +290,7 @@ You can edit a custom domain to:
 
 - View the custom domain.
 - View the DNS record to add.
-- View the TXT verification entry.
+- View the `TXT` verification entry.
 - Retry verification.
 - Edit the certificate settings.
 

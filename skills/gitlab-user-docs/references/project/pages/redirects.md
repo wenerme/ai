@@ -1,5 +1,7 @@
 # GitLab Pages redirects
 
+Configure URL redirects and rewrites for GitLab Pages sites with Netlify-style rules.
+
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 

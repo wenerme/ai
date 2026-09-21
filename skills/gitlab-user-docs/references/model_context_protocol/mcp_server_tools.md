@@ -242,6 +242,7 @@ Run the Developer flow in project 42 to add tests for the parser
 ## `list_duo_sessions`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/248587) in GitLab 19.3.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256101) to accept the `statuses` parameter in GitLab 19.5.
 
 Lists your GitLab Duo Agent Platform sessions, excluding Duo Chat sessions.
 Each session includes its individual status, goal preview, flow definition, and creation timestamp.
@@ -253,10 +254,12 @@ The goal preview might be truncated.
 | `url`          | string  | No       | GitLab URL of the project to filter sessions by. Do not use with `project_id`. |
 | `project_id`   | string  | No       | Numeric ID or full path of the project to filter sessions by. Do not use with `url`. |
 | `status_group` | string  | No       | Session status group. One of `active`, `paused`, `awaiting_input`, `completed`, `failed`, or `canceled`. |
+| `statuses`     | array   | No       | Session statuses. One or more of `created`, `running`, `paused`, `finished`, `failed`, `stopped`, `input_required`, `plan_approval_required`, or `tool_call_approval_required`. Do not use with `status_group`. |
 | `after`        | string  | No       | Cursor for forward pagination. |
 | `first`        | integer | No       | Number of sessions to return for forward pagination. Default is 20, maximum is 100. |
 
 The `status_group` filter can return sessions with multiple individual statuses.
+Use `statuses` to filter by one or more exact statuses instead.
 Each call returns a single page of results.
 If more pages exist, the response includes `pageInfo.endCursor` that you can pass as `after`.
 
@@ -878,7 +881,7 @@ artifacts its jobs produced.
 | `pipeline_id` | integer | Yes      | ID of the pipeline. |
 | `include`     | array   | No       | Facet to include alongside the pipeline, one per call: `jobs`, `downstream_pipelines`, `bridge_jobs`, or `artifacts`. |
 | `job_status`  | string  | No       | Filters the `jobs` facet by status (for example, `failed`). Only applies when `include` is `jobs`. |
-| `first`       | integer | No       | Number of items to return for the selected `include` facet. Default is `20`, maximum is `100`. |
+| `first`       | integer | No       | Number of items to return for the selected `include` facet. For the `artifacts` facet, this is the number of jobs whose artifacts are returned. Default is `20`, maximum is `100`. |
 | `after`       | string  | No       | Cursor for forward pagination of the selected `include` facet. Use `page_info.end_cursor` from a previous response. |
 
 A bridge job's `downstream_pipeline` is omitted (`null`) both when the trigger job hasn't
@@ -1227,7 +1230,58 @@ Example:
 Show me the work items in this saved view: <URL>
 ```
 
+## `list_vulnerabilities`
+
+- Tier: Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251243) in GitLab 19.4.
+
+Lists security vulnerabilities in a GitLab project, with optional filters and cursor pagination.
+Returns paginated vulnerability metadata. To get full details for a single vulnerability,
+use [`get_vulnerability`](#get_vulnerability).
+
+Requires the security dashboard feature to be enabled.
+
+| Parameter            | Type             | Required | Description |
+|----------------------|------------------|----------|-------------|
+| `project_full_path`  | string           | Yes      | Full path of the project (for example, `namespace/project` or `group/subgroup/project`). |
+| `severity`           | array of strings | No       | Filter by severity level. Omit to include vulnerabilities of any severity. One or more of `CRITICAL`, `HIGH`, `MEDIUM`, `LOW`, `INFO`, or `UNKNOWN`. |
+| `report_type`        | array of strings | No       | Filter by security report type. Omit to include all report types. For example, `SAST`, `DAST`, or `DEPENDENCY_SCANNING`. |
+| `state`              | array of strings | No       | Filter by vulnerability state. Omit to include vulnerabilities in any state. One or more of `CONFIRMED`, `DETECTED`, `DISMISSED`, or `RESOLVED`. |
+| `first`              | integer          | No       | Number of vulnerabilities to return for forward pagination. Default is `20`, maximum is `100`. |
+| `after`              | string           | No       | Cursor for forward pagination. Use `pageInfo.endCursor` from a previous response. |
+
+Example:
+
+```plaintext
+List critical and high severity vulnerabilities in project gitlab-org/gitlab
+```
+
+## `get_vulnerability`
+
+- Tier: Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/251243) in GitLab 19.4.
+
+Returns comprehensive details for a single vulnerability, including title, state, description,
+severity, and identifiers.
+
+| Parameter          | Type   | Required | Description |
+|--------------------|--------|----------|-------------|
+| `vulnerability_id` | string | Yes      | Numeric ID of the vulnerability (for example, `567`). |
+
+Example:
+
+```plaintext
+Get full details for vulnerability 567
+```
+
 ## `save_vulnerability`
+
+- Tier: Ultimate
+- Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/613026) in GitLab 19.4.
 
