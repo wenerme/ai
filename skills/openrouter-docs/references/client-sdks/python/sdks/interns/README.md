@@ -54,7 +54,7 @@ with OpenRouter(
 | `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                                                                        |
 | `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                                                                        |
 | `limit`                    | *Optional\[int]*                                                    | :heavy\_minus\_sign: | Maximum number of interns to return, from 1 through 500.                                                                                                    | 50                                                                                     |
-| `status`                   | List\[[operations.Status](../../operations/status.mdx)]             | :heavy\_minus\_sign: | Comma-separated lifecycle statuses to include.                                                                                                              | \[<br />"queued",<br />"running"<br />]                                                |
+| `status`                   | List\[[operations.Status](../../operations/status.mdx)]             | :heavy\_minus\_sign: | Comma-separated lifecycle statuses to include, at most 8. Repeats are collapsed.                                                                            | \[<br />"queued",<br />"running"<br />]                                                |
 | `starting_after`           | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The opaque `next_cursor` of the previous page. Returns the interns that come after it in the newest-first order. A malformed cursor is a 400.               | MjAyNi0wOS0xNlQwODozMDowMC4wMDAwMDBafDdjOWU2Njc5LTc0MjUtNDBkZS05NDRiLWUwN2ZjMWY5MGFlNw |
 | `workspace_id`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Only return interns in this workspace. It must match the API key workspace.                                                                                 | 89f9f5b2-3f89-4eaf-83ca-5ceae149e8bb                                                   |
 | `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                                                                        |
@@ -98,19 +98,19 @@ with OpenRouter(
 
 ### Parameters
 
-| Parameter                  | Type                                                                | Required             | Description                                                                                                                                                 | Example                              |
-| -------------------------- | ------------------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| `name`                     | *str*                                                               | :heavy\_check\_mark: | Intern name, unique per creator within the workspace.                                                                                                       |                                      |
-| `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br /> |                                      |
-| `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                          |                                      |
-| `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                 |                                      |
-| `idempotency_key`          | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Key that makes retries resume the same create operation. Without one, the server derives a stable key from the request body.                                | create-research-assistant-2026-09-16 |
-| `description`              | *OptionalNullable\[str]*                                            | :heavy\_minus\_sign: | Free-form description, or null.                                                                                                                             |                                      |
-| `instructions`             | *OptionalNullable\[str]*                                            | :heavy\_minus\_sign: | Standing instructions the intern boots with, or null.                                                                                                       |                                      |
-| `provision`                | *Optional\[bool]*                                                   | :heavy\_minus\_sign: | Start provisioning during this create operation. Defaults to false.                                                                                         |                                      |
-| `vault_id`                 | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Vault owned by another intern in this workspace to attach as a borrowed vault.                                                                              |                                      |
-| `workspace_id`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Workspace that will own the intern. Defaults to the workspace the API key resolves to. When given, it must match the API key workspace.                     |                                      |
-| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                         |                                      |
+| Parameter                  | Type                                                                | Required             | Description                                                                                                                                                                                                    | Example                              |
+| -------------------------- | ------------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `name`                     | *str*                                                               | :heavy\_check\_mark: | Intern name, unique per creator within the workspace.                                                                                                                                                          |                                      |
+| `http_referer`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app identifier should be your app's URL and is used as the primary identifier for rankings.<br />This is used to track API usage per application.<br />                                                    |                                      |
+| `x_open_router_title`      | *Optional\[str]*                                                    | :heavy\_minus\_sign: | The app display name allows you to customize how your app appears in OpenRouter's dashboard.<br />                                                                                                             |                                      |
+| `x_open_router_categories` | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Comma-separated list of app categories (e.g. "cli-agent,cloud-agent"). Used for marketplace rankings.<br />                                                                                                    |                                      |
+| `idempotency_key`          | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Key that makes retries resume the same create operation, from 1 through 255 characters. An empty or longer key is refused with 400. Without the header, the server derives a stable key from the request body. | create-research-assistant-2026-09-16 |
+| `description`              | *OptionalNullable\[str]*                                            | :heavy\_minus\_sign: | Free-form description, or null.                                                                                                                                                                                |                                      |
+| `instructions`             | *OptionalNullable\[str]*                                            | :heavy\_minus\_sign: | Standing instructions the intern boots with, or null.                                                                                                                                                          |                                      |
+| `provision`                | *Optional\[bool]*                                                   | :heavy\_minus\_sign: | Start provisioning during this create operation. Defaults to false.                                                                                                                                            |                                      |
+| `vault_id`                 | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Vault owned by another intern in this workspace to attach as a borrowed vault.                                                                                                                                 |                                      |
+| `workspace_id`             | *Optional\[str]*                                                    | :heavy\_minus\_sign: | Workspace that will own the intern. Defaults to the workspace the API key resolves to. When given, it must match the API key workspace.                                                                        |                                      |
+| `retries`                  | [Optional\[utils.RetryConfig\]](../../models/utils/retryconfig.mdx) | :heavy\_minus\_sign: | Configuration to override the default retry behavior of the client.                                                                                                                                            |                                      |
 
 ### Response
 
@@ -264,15 +264,15 @@ with OpenRouter(
 
 ### Errors
 
-| Error Type                    | Status Code                  | Content Type     |
-| ----------------------------- | ---------------------------- | ---------------- |
-| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 413 | application/json |
-| errors.InternLifecycleError   | 500                          | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX                     | \*/\*            |
+| Error Type                    | Status Code                       | Content Type     |
+| ----------------------------- | --------------------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413 | application/json |
+| errors.InternLifecycleError   | 500                               | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                          | \*/\*            |
 
 ## provision\_intern
 
-Starts the first boot, or resumes an intern after suspension. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/python/docs/api-reference/authentication) required.
+Starts the first boot, or resumes an intern after suspension. This operation takes no request body. A body carrying any field is refused with 400 rather than ignored. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/python/docs/api-reference/authentication) required.
 
 ### Example Usage
 
@@ -311,15 +311,15 @@ with OpenRouter(
 
 ### Errors
 
-| Error Type                    | Status Code             | Content Type     |
-| ----------------------------- | ----------------------- | ---------------- |
-| errors.InternLifecycleError   | 401, 403, 404, 408, 409 | application/json |
-| errors.InternLifecycleError   | 500, 502                | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX                | \*/\*            |
+| Error Type                    | Status Code                       | Content Type     |
+| ----------------------------- | --------------------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413 | application/json |
+| errors.InternLifecycleError   | 500, 502                          | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                          | \*/\*            |
 
 ## suspend\_intern
 
-Stops the intern runtime while keeping its disk and configuration for a later provision call. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/python/docs/api-reference/authentication) required.
+Stops the intern runtime while keeping its disk and configuration for a later provision call. This operation takes no request body. A body carrying any field is refused with 400 rather than ignored. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/python/docs/api-reference/authentication) required.
 
 ### Example Usage
 
@@ -358,11 +358,11 @@ with OpenRouter(
 
 ### Errors
 
-| Error Type                    | Status Code             | Content Type     |
-| ----------------------------- | ----------------------- | ---------------- |
-| errors.InternLifecycleError   | 401, 403, 404, 408, 409 | application/json |
-| errors.InternLifecycleError   | 500, 502                | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX                | \*/\*            |
+| Error Type                    | Status Code                       | Content Type     |
+| ----------------------------- | --------------------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413 | application/json |
+| errors.InternLifecycleError   | 500, 502                          | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                          | \*/\*            |
 
 ## chat
 
@@ -428,8 +428,10 @@ with OpenRouter(
 
 ### Errors
 
-| Error Type                     | Status Code                            | Content Type     |
-| ------------------------------ | -------------------------------------- | ---------------- |
-| errors.InternChatErrorResponse | 400, 401, 403, 404, 409, 410, 413, 429 | application/json |
-| errors.InternChatErrorResponse | 502, 503, 504                          | application/json |
-| errors.OpenRouterDefaultError  | 4XX, 5XX                               | \*/\*            |
+| Error Type                     | Status Code                       | Content Type     |
+| ------------------------------ | --------------------------------- | ---------------- |
+| errors.InternChatErrorResponse | 400, 401, 403, 404, 408, 410, 413 | application/json |
+| errors.InternChatErrorResponse | 409, 429                          | application/json |
+| errors.InternChatErrorResponse | 503                               | application/json |
+| errors.InternChatErrorResponse | 502, 504                          | application/json |
+| errors.OpenRouterDefaultError  | 4XX, 5XX                          | \*/\*            |

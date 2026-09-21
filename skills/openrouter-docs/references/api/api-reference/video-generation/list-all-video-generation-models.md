@@ -377,6 +377,7 @@ components:
           description: Supported output resolutions
           items:
             enum:
+              - 360p
               - 480p
               - 720p
               - 768p
@@ -392,12 +393,20 @@ components:
           description: Supported output sizes (width x height)
           items:
             enum:
+              - 360x360
+              - 360x480
+              - 360x540
+              - 360x640
+              - 360x840
+              - 480x360
               - 480x480
               - 480x640
               - 480x720
               - 480x854
               - 480x1120
+              - 540x360
               - 560x752
+              - 640x360
               - 640x480
               - 640x640
               - 720x480
@@ -413,6 +422,7 @@ components:
               - 768x1366
               - 768x1792
               - 834x1112
+              - 840x360
               - 854x480
               - 960x720
               - 960x960
