@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Sleeping and retrying
 
-Last updated Jul 9, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide details how to sleep a Workflow and/or configure retries for a Workflow step.
 
@@ -75,10 +75,10 @@ const defaultConfig: WorkflowStepConfig = {
 
 When providing your own `StepConfig`, you can configure:
 
-* The total number of attempts to make for a step (limited to 10,000 retries per step)
-* The delay between attempts. Use a fixed duration as a `number` in milliseconds or a human-readable string, or use a function that returns the next delay.
-* What backoff algorithm to apply between each attempt: any of `constant`, `linear`, or `exponential`
-* When to timeout (in duration) before considering the step as failed (including during a retry attempt, as the timeout is set per attempt)
+- The total number of attempts to make for a step (limited to 10,000 retries per step)
+- The delay between attempts. Use a fixed duration as a `number` in milliseconds or a human-readable string, or use a function that returns the next delay.
+- What backoff algorithm to apply between each attempt: any of `constant`, `linear`, or `exponential`
+- When to timeout (in duration) before considering the step as failed (including during a retry attempt, as the timeout is set per attempt)
 
 For example, to limit a step to 10 retries and have it apply an exponential delay (starting at 10 seconds) between each attempt, you would pass the following configuration as an optional object to `step.do`:
 
@@ -105,8 +105,8 @@ Use a delay function when the next retry delay should depend on the failed attem
 
 The delay function receives an object with:
 
-* `ctx` \- the current [WorkflowStepContext](https://developers.cloudflare.com/workflows/build/step-context/), including `ctx.attempt`.
-* `error` \- the error that caused the retry.
+- `ctx` - the current [`WorkflowStepContext`](https://developers.cloudflare.com/workflows/build/step-context/), including `ctx.attempt`.
+- `error` - the error that caused the retry.
 
 Return a duration string, a number in milliseconds, or a promise that resolves to either value.
 
@@ -154,7 +154,7 @@ await step.do(
 
 ## Force a Workflow instance to fail
 
-You can also force a Workflow instance to fail and _not_ retry by throwing a `NonRetryableError` from within the step.
+You can also force a Workflow instance to fail and *not* retry by throwing a `NonRetryableError` from within the step.
 
 This can be useful when you detect a terminal (permanent) error from an upstream system (such as an authentication failure) or other errors where retrying would not help.
 
@@ -259,8 +259,8 @@ export class OrderWorkflow extends WorkflowEntrypoint<Env> {
 
 Rollback handlers receive:
 
-* `error` \- the error that caused the Workflow to fail.
-* `output` \- the value returned by the forward step, or `undefined` if the step failed before returning
+- `error` - the error that caused the Workflow to fail.
+- `output` - the value returned by the forward step, or `undefined` if the step failed before returning
 
 You can use `rollbackConfig` to control retry behavior for the rollback handler. Throw a `NonRetryableError` from the rollback handler to stop retrying it immediately.
 
@@ -307,5 +307,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/#page","headline":"Sleeping and retrying · Cloudflare Workflows docs","description":"Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.","url":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/#page","headline":"Sleeping and retrying","description":"Configure sleep durations and retry logic for Workflows steps, including relative and absolute sleep timers.","url":"https://developers.cloudflare.com/workflows/build/sleeping-and-retrying/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

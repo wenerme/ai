@@ -914,7 +914,7 @@ List user actions and configuration changes within this organization.
 
         The OpenAI geography derived from the storage region.
 
-      - `provider: optional AwsExternalStorageProvider or AzureExternalStorageProvider`
+      - `provider: optional AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
 
         The external storage provider configuration.
 
@@ -951,6 +951,24 @@ List user actions and configuration changes within this organization.
           - `type: "azure"`
 
             - `"azure"`
+
+        - `Gcp object { audience, bucket, region, 4 more }`
+
+          - `audience: string`
+
+          - `bucket: string`
+
+          - `region: string`
+
+          - `type: "gcp"`
+
+            - `"gcp"`
+
+          - `workload_identity_pool_id: string`
+
+          - `workload_identity_project_number: string`
+
+          - `workload_identity_provider_id: string`
 
   - `"external_storage.removed": optional object { id }`
 

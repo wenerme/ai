@@ -39,6 +39,9 @@ Already-shutdown models are indicated with gray backgrounds.
 
 ## Gemini 2.5 Pro models
 
+> [!NOTE]
+> **Note:** To ensure reliable performance for everyone, we are limiting access to the 2.5 models to users who have actively used them in the past. These models are not deprecated and will continue to be served until further notice through the API. For any new projects, use our latest models: 3.5 Flash-Lite or 3.8 Flash. This helps us maintain sufficient capacity for both ongoing legacy workflows and new applications.
+
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
 | `gemini-2.5-pro` | June 17, 2025 | No shutdown date announced |   |
@@ -48,6 +51,9 @@ Already-shutdown models are indicated with gray backgrounds.
 | `gemini-2.5-pro-preview-06-05` | June 5, 2025 | December 2, 2025 | `gemini-3.1-pro-preview` |
 
 ## Gemini 2.5 Flash models
+
+> [!NOTE]
+> **Note:** To ensure reliable performance for everyone, we are limiting access to the 2.5 models to users who have actively used them in the past. These models are not deprecated and will continue to be served until further notice through the API. For any new projects, use our latest models: 3.5 Flash-Lite or 3.8 Flash. This helps us maintain sufficient capacity for both ongoing legacy workflows and new applications.
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|

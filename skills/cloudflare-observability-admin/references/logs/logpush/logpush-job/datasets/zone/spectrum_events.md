@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Spectrum events
 
-Last updated Jul 25, 2025|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/spectrum%5Fevents/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/spectrum_events/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The descriptions below detail the fields available for `spectrum_events`.
 
@@ -50,7 +50,7 @@ Client IP address.
 
 Type: `string`
 
-Whether the connection matched any IP Firewall rules. UNKNOWN = No match or Firewall not enabled for Spectrum; _UNKNOWN_ | _ALLOW_ | _BLOCK\_ERROR_ | _BLOCK\_IP_ | _BLOCK\_COUNTRY_ | _BLOCK\_ASN_ | _WHITELIST\_IP_ | _WHITELIST\_COUNTRY_ | _WHITELIST\_ASN_.
+Whether the connection matched any IP Firewall rules. UNKNOWN = No match or Firewall not enabled for Spectrum; *UNKNOWN* | *ALLOW* | *BLOCK\_ERROR* | *BLOCK\_IP* | *BLOCK\_COUNTRY* | *BLOCK\_ASN* | *WHITELIST\_IP* | *WHITELIST\_COUNTRY* | *WHITELIST\_ASN*.
 
 ## ClientPort
 
@@ -62,7 +62,7 @@ Client port.
 
 Type: `string`
 
-Transport protocol used by client; _tcp_ | _udp_ | _unix_.
+Transport protocol used by client; *tcp* | *udp* | *unix*.
 
 ## ClientTcpRtt
 
@@ -86,13 +86,13 @@ The server name in the Client Hello message from client to Spectrum.
 
 Type: `string`
 
-The TLS version negotiated between the client and Spectrum; _unknown_ | _none_ | _SSLv3_ | _TLSv1_ | _TLSv1.1_ | _TLSv1.2_ | _TLSv1.3_.
+The TLS version negotiated between the client and Spectrum; *unknown* | *none* | *SSLv3* | *TLSv1* | *TLSv1.1* | *TLSv1.2* | *TLSv1.3*.
 
 ## ClientTlsStatus
 
 Type: `string`
 
-Indicates state of TLS session from the client to Spectrum; _UNKNOWN_ | _OK_ | _INTERNAL\_ERROR_ | _INVALID\_CONFIG_ | _INVALID\_SNI_ | _HANDSHAKE\_FAILED_ | _KEYLESS\_RPC_.
+Indicates state of TLS session from the client to Spectrum; *UNKNOWN* | *OK* | *INTERNAL\_ERROR* | *INVALID\_CONFIG* | *INVALID\_SNI* | *HANDSHAKE\_FAILED* | *KEYLESS\_RPC*.
 
 ## ColoCode
 
@@ -116,7 +116,7 @@ Timestamp at which the connection was closed.
 
 Type: `string`
 
-_connect_ | _disconnect_ | _clientFiltered_ | _tlsError_ | _resolveOrigin_ | _originError_.
+*connect* | *disconnect* | *clientFiltered* | *tlsError* | *resolveOrigin* | *originError*.
 
 ## IpFirewall
 
@@ -146,7 +146,7 @@ Origin port.
 
 Type: `string`
 
-Transport protocol used by origin; _tcp_ | _udp_ | _unix_.
+Transport protocol used by origin; *tcp* | *udp* | *unix*.
 
 ## OriginTcpRtt
 
@@ -170,25 +170,25 @@ SHA256 hash of origin certificate. An unknown SHA256 hash is returned as an empt
 
 Type: `string`
 
-If and how the upstream connection is encrypted; _unknown_ | _off_ | _flexible_ | _full_ | _strict_.
+If and how the upstream connection is encrypted; *unknown* | *off* | *flexible* | *full* | *strict*.
 
 ## OriginTlsProtocol
 
 Type: `string`
 
-The TLS version negotiated between Spectrum and the origin; _unknown_ | _none_ | _SSLv3_ | _TLSv1_ | _TLSv1.1_ | _TLSv1.2_ | _TLSv1.3_.
+The TLS version negotiated between Spectrum and the origin; *unknown* | *none* | *SSLv3* | *TLSv1* | *TLSv1.1* | *TLSv1.2* | *TLSv1.3*.
 
 ## OriginTlsStatus
 
 Type: `string`
 
-The state of the TLS session from Spectrum to the origin; _UNKNOWN_ | _OK_ | _INTERNAL\_ERROR_ | _INVALID\_CONFIG_ | _INVALID\_SNI_ | _HANDSHAKE\_FAILED_ | _KEYLESS\_RPC_.
+The state of the TLS session from Spectrum to the origin; *UNKNOWN* | *OK* | *INTERNAL\_ERROR* | *INVALID\_CONFIG* | *INVALID\_SNI* | *HANDSHAKE\_FAILED* | *KEYLESS\_RPC*.
 
 ## ProxyProtocol
 
 Type: `string`
 
-Which form of proxy protocol is applied to the given connection; _off_ | _v1_ | _v2_ | _simple_.
+Which form of proxy protocol is applied to the given connection; *off* | *v1* | *v2* | *simple*.
 
 ## Status
 
@@ -211,5 +211,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/spectrum_events/#page","headline":"Spectrum events · Cloudflare Logs docs","description":"The descriptions below detail the fields available for spectrum_events.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/spectrum_events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2025-07-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/spectrum_events/#page","headline":"Spectrum events","description":"The descriptions below detail the fields available for spectrum_events.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/spectrum_events/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

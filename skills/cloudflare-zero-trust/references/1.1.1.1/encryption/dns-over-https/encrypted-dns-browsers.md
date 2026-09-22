@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure DoH on your browser
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Several browsers support DNS over HTTPS (DoH), which encrypts your DNS queries to protect them from monitoring and tampering.
 
@@ -32,9 +32,9 @@ Note
 ## Google Chrome
 
 1. Select the three-dot menu in your browser > **Settings**.
-2. Select **Privacy and security** \> **Security**.
+2. Select **Privacy and security** > **Security**.
 3. Scroll down and enable **Use secure DNS**.
-4. Select the **With** option, and from the drop-down menu choose _Cloudflare (1.1.1.1)_.
+4. Select the **With** option, and from the drop-down menu choose *Cloudflare (1.1.1.1)*.
 
 ## Microsoft Edge
 
@@ -42,14 +42,14 @@ Note
 2. Select **Privacy, Search, and Services**, and scroll down to **Security**.
 3. Enable **Use secure DNS**.
 4. Select **Choose a service provider**.
-5. Select the **Enter custom provider** drop-down menu and choose _Cloudflare (1.1.1.1)_.
+5. Select the **Enter custom provider** drop-down menu and choose *Cloudflare (1.1.1.1)*.
 
 ## Brave
 
 1. Select the menu button in your browser > **Settings**.
-2. Select **Privacy and security** \> **Security**.
+2. Select **Privacy and security** > **Security**.
 3. Under **Advanced**, enable **Use secure DNS**.
-4. From the **Select DNS provider** drop-down menu, choose _Cloudflare (1.1.1.1)_.
+4. From the **Select DNS provider** drop-down menu, choose *Cloudflare (1.1.1.1)*.
 
 ## Check if the browser is configured correctly
 
@@ -64,5 +64,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/#page","headline":"Configure DoH on your browser · Cloudflare 1.1.1.1 docs","description":"Configure DNS over HTTPS in your browser.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/#page","headline":"Configure DoH on your browser","description":"Configure DNS over HTTPS in your browser.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/encrypted-dns-browsers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

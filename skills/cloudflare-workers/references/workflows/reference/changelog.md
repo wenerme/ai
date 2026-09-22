@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Release notes
 
-Last updated Apr 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workflows/reference/changelog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/reference/changelog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Subscribe to RSS](https://developers.cloudflare.com/workflows/reference/changelog/index.xml)
 
@@ -78,10 +78,10 @@ Workflows is now Generally Available (or "GA").
 
 This release includes the following new features:
 
-* A new `waitForEvent` API that allows a Workflow to wait for an event to occur before continuing execution.
-* Increased concurrency: you can run up to 4,500 Workflow instances concurrently — and this will continue to grow.
-* Improved observability, including new CPU time metrics that allow you to better understand which Workflow instances are consuming the most resources and/or contributing to your bill.
-* Support for vitest for testing Workflows locally and in CI/CD pipelines.
+- A new `waitForEvent` API that allows a Workflow to wait for an event to occur before continuing execution.
+- Increased concurrency: you can run up to 4,500 Workflow instances concurrently — and this will continue to grow.
+- Improved observability, including new CPU time metrics that allow you to better understand which Workflow instances are consuming the most resources and/or contributing to your bill.
+- Support for vitest for testing Workflows locally and in CI/CD pipelines.
 
 More information available in the [changelog](https://developers.cloudflare.com/changelog/2025-04-07-workflows-ga/).
 
@@ -107,8 +107,8 @@ Also, improved the reliability of Workflows step retry counts, and improved Inst
 
 With this release, some bug were fixed:
 
-* `event.timestamp` is now `Date`, fixing a regression.
-* Fixed issue where instances without metadata were not terminated as expected.
+- `event.timestamp` is now `Date`, fixing a regression.
+- Fixed issue where instances without metadata were not terminated as expected.
 
 Also, this release makes Workflows execution more reliable for accounts with high loads.
 
@@ -128,7 +128,7 @@ Workflows can now be terminated and pause instances from a queued state and the 
 
 Also, the mechanism to queue instances was improved to force miss-behaved queued instances to be automatically errored.
 
-Workflows now allow you to define up to 1024 steps in a single Workflow definition, up from the previous limit of 512\. This limit will continue to increase during the course of the open beta.
+Workflows now allow you to define up to 1024 steps in a single Workflow definition, up from the previous limit of 512. This limit will continue to increase during the course of the open beta.
 
 ## 2024-12-09
 
@@ -140,7 +140,7 @@ Introduction of a new mechanism to queue instances, which will prevent instances
 
 **Step limit increased**
 
-Workflows now allow you to define up to 512 steps in a single Workflow definition, up from the previous limit of 256\. This limit will continue to increase during the course of the open beta.
+Workflows now allow you to define up to 512 steps in a single Workflow definition, up from the previous limit of 256. This limit will continue to increase during the course of the open beta.
 
 If you have Workflows that need more steps, we recommend delegating additional work to other Workflows by [triggering a new Workflow](https://developers.cloudflare.com/workflows/build/trigger-workflows/) from within a step and passing any state as [parameters to that Workflow instance](https://developers.cloudflare.com/workflows/build/events-and-parameters/).
 
@@ -179,5 +179,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/workflows/reference/changelog/#page","headline":"Release notes · Cloudflare Workflows docs","description":"Latest release notes and changes for Cloudflare Workflows.","url":"https://developers.cloudflare.com/workflows/reference/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"BlogPosting","@id":"https://developers.cloudflare.com/workflows/reference/changelog/#page","headline":"Release notes","description":"Latest release notes and changes for Cloudflare Workflows.","url":"https://developers.cloudflare.com/workflows/reference/changelog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -10,7 +10,7 @@ Register one customer-managed external storage configuration.
 
 - `project_id: string`
 
-- `provider: object { bucket, role_arn, type }  or object { account_name, container, resource_group, 3 more }`
+- `provider: object { bucket, role_arn, type }  or object { account_name, container, resource_group, 3 more }  or object { bucket, type, workload_identity_pool_id, 2 more }`
 
   - `Aws object { bucket, role_arn, type }`
 
@@ -38,6 +38,20 @@ Register one customer-managed external storage configuration.
 
       - `"azure"`
 
+  - `Gcp object { bucket, type, workload_identity_pool_id, 2 more }`
+
+    - `bucket: string`
+
+    - `type: "gcp"`
+
+      - `"gcp"`
+
+    - `workload_identity_pool_id: string`
+
+    - `workload_identity_project_number: string`
+
+    - `workload_identity_provider_id: string`
+
 ### Returns
 
 - `ExternalStorageConfiguration object { id, created_at, geography, 4 more }`
@@ -54,7 +68,7 @@ Register one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -89,6 +103,24 @@ Register one customer-managed external storage configuration.
       - `type: "azure"`
 
         - `"azure"`
+
+    - `Gcp object { audience, bucket, region, 4 more }`
+
+      - `audience: string`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `type: "gcp"`
+
+        - `"gcp"`
+
+      - `workload_identity_pool_id: string`
+
+      - `workload_identity_project_number: string`
+
+      - `workload_identity_provider_id: string`
 
   - `status: "pending" or "validated" or "unhealthy"`
 
@@ -309,7 +341,7 @@ List the organization's customer-managed external storage configurations.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -344,6 +376,24 @@ List the organization's customer-managed external storage configurations.
       - `type: "azure"`
 
         - `"azure"`
+
+    - `Gcp object { audience, bucket, region, 4 more }`
+
+      - `audience: string`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `type: "gcp"`
+
+        - `"gcp"`
+
+      - `workload_identity_pool_id: string`
+
+      - `workload_identity_project_number: string`
+
+      - `workload_identity_provider_id: string`
 
   - `status: "pending" or "validated" or "unhealthy"`
 
@@ -479,7 +529,7 @@ Get one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -514,6 +564,24 @@ Get one customer-managed external storage configuration.
       - `type: "azure"`
 
         - `"azure"`
+
+    - `Gcp object { audience, bucket, region, 4 more }`
+
+      - `audience: string`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `type: "gcp"`
+
+        - `"gcp"`
+
+      - `workload_identity_pool_id: string`
+
+      - `workload_identity_project_number: string`
+
+      - `workload_identity_provider_id: string`
 
   - `status: "pending" or "validated" or "unhealthy"`
 
@@ -607,7 +675,7 @@ Validate one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -642,6 +710,24 @@ Validate one customer-managed external storage configuration.
       - `type: "azure"`
 
         - `"azure"`
+
+    - `Gcp object { audience, bucket, region, 4 more }`
+
+      - `audience: string`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `type: "gcp"`
+
+        - `"gcp"`
+
+      - `workload_identity_pool_id: string`
+
+      - `workload_identity_project_number: string`
+
+      - `workload_identity_provider_id: string`
 
   - `status: "pending" or "validated" or "unhealthy"`
 
@@ -766,7 +852,7 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -801,6 +887,24 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
       - `type: "azure"`
 
         - `"azure"`
+
+    - `Gcp object { audience, bucket, region, 4 more }`
+
+      - `audience: string`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `type: "gcp"`
+
+        - `"gcp"`
+
+      - `workload_identity_pool_id: string`
+
+      - `workload_identity_project_number: string`
+
+      - `workload_identity_provider_id: string`
 
   - `status: "pending" or "validated" or "unhealthy"`
 

@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 3 – Configure HTTPS settings
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After setting up basic DNS records, you can configure zone settings using Terraform. This tutorial shows how to enable [TLS 1.3](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/), [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/), and [Strict SSL mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) using the updated v5 provider.
 
 ## Prerequisites
 
-* Completed tutorials [1](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/) and [2](https://developers.cloudflare.com/terraform/tutorial/track-history/)
-* Valid SSL certificate on your origin server (use the [Cloudflare Origin CA](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/) to generate one for strict SSL mode)
+- Completed tutorials [1](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/) and [2](https://developers.cloudflare.com/terraform/tutorial/track-history/)
+- Valid SSL certificate on your origin server (use the [Cloudflare Origin CA](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/) to generate one for strict SSL mode)
 
 Note
 
 Terraform code snippets below refer to the v5 SDK only.
 
-## 1\. Create zone setting configuration
+## 1. Create zone setting configuration
 
 Create a new branch and add zone settings:
 
@@ -58,7 +58,7 @@ resource "cloudflare_zone_setting" "ssl" {
 }
 ```
 
-## 2\. Preview and apply the changes
+## 2. Preview and apply the changes
 
 Review the proposed changes:
 
@@ -105,7 +105,7 @@ git merge step3-zone-settings
 git push
 ```
 
-Before applying the changes, try to connect with TLS 1.3\. Technically, you should not be able to with default settings. To follow along with this test, you will need to [compile curl against BoringSSL ↗](https://everything.curl.dev/source/build/tls/boringssl#build-boringssl).
+Before applying the changes, try to connect with TLS 1.3. Technically, you should not be able to with default settings. To follow along with this test, you will need to [compile `curl` against BoringSSL ↗](https://everything.curl.dev/source/build/tls/boringssl#build-boringssl).
 
 ```sh
 curl -v --tlsv1.3 https://www.example.com 2>&1 | grep "SSL connection\|error"
@@ -121,7 +121,7 @@ terraform apply
 
 Type `yes` when prompted.
 
-## 3\. Verify the settings
+## 3. Verify the settings
 
 Try the same command as before. The command will now succeed.
 
@@ -138,5 +138,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/#page","headline":"Configure HTTPS settings · Cloudflare Terraform docs","description":"This tutorial shows how to enable TLS 1.3, Automatic HTTPS Rewrites, and Strict SSL mode using the updated v5 provider.","url":"https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/#page","headline":"3 – Configure HTTPS settings","description":"This tutorial shows how to enable TLS 1.3, Automatic HTTPS Rewrites, and Strict SSL mode using the updated v5 provider.","url":"https://developers.cloudflare.com/terraform/tutorial/configure-https-settings/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

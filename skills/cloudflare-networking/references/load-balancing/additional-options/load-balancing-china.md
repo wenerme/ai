@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Load Balancing with the China Network
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ To enable load balancers to be deployed to the [China Network](https://developer
 
 Once these two criteria are met, any newly created load balancer will be automatically deployed to the China Network. When choosing a region for a pool's health checks, `China` is now available to be selected in both the dashboard and API.
 
-You can also create a load balancer by sending a `POST` request to the following endpoint. To deploy to the China Network with the API, the `networks` array in the API call must contain `jdcloud` as a value in addition to `cloudflare`. Refer to the [Cloudflare API documentation](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/) for details on the required fields and their formats.
+You can also create a load balancer by sending a `POST` request to the following endpoint. To deploy to the China Network with the API, the `networks` array in the API call must contain `jdcloud` as a value in addition to `cloudflare`. Refer to the [Cloudflare API documentation](https://developers.cloudflare.com/api/resources/load_balancers/methods/create/) for details on the required fields and their formats.
 
 ```bash
 https://api.cloudflare.com/client/v4/zones/{zone_id}/load_balancers
@@ -33,9 +33,9 @@ https://api.cloudflare.com/client/v4/zones/{zone_id}/load_balancers
 
 Load balancers deployed to the China Network currently have the following limitations:
 
-* Only cookie-based session affinity is supported.
-* Private network off-ramps (Tunnel, GRE, IPsec) are not supported.
-* Private Network Load Balancing is not available on the China Network.
+- Only cookie-based session affinity is supported.
+- Private network off-ramps (Tunnel, GRE, IPsec) are not supported.
+- Private Network Load Balancing is not available on the China Network.
 
 Was this helpful?
 
@@ -46,5 +46,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/#page","headline":"Load Balancing with the China Network · Cloudflare Load Balancing docs","description":"Use Load Balancing with the China Network.","url":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/#page","headline":"Load Balancing with the China Network","description":"Use Load Balancing with the China Network.","url":"https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-china/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

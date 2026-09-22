@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Display thumbnails
 
-Last updated Apr 21, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -39,14 +39,14 @@ Using the `poster` query parameter in the embed URL, you can set a thumbnail to 
 
 Supported URL attributes are:
 
-* **`time`** (default `0s`, configurable) time from the video for example `8m`, `5m2s`
-* **`height`** (default `640`)
-* **`width`** (default `640`)
-* **`fit`** (default `crop`) to clarify what to do when requested height and width does not match the original upload, which should be one of:
-  * **`crop`** cut parts of the video that doesn't fit in the given size
-  * **`clip`** preserve the entire frame and decrease the size of the image within given size
-  * **`scale`** distort the image to fit the given size
-  * **`fill`** preserve the entire frame and fill the rest of the requested size with black background
+- **`time`** (default `0s`, configurable) time from the video for example `8m`, `5m2s`
+- **`height`** (default `640`)
+- **`width`** (default `640`)
+- **`fit`** (default `crop`) to clarify what to do when requested height and width does not match the original upload, which should be one of:
+  - **`crop`** cut parts of the video that doesn't fit in the given size
+  - **`clip`** preserve the entire frame and decrease the size of the image within given size
+  - **`scale`** distort the image to fit the given size
+  - **`fill`** preserve the entire frame and fill the rest of the requested size with black background
 
 ## Use Case 2: Set the default thumbnail timestamp using the API
 
@@ -59,7 +59,7 @@ curl -X POST \
 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/stream/<VIDEO_UID>
 ```
 
-`thumbnailTimestampPct` is a value between 0.0 (the first frame of the video) and 1.0 (the last frame of the video). For example, you wanted the thumbnail to be the frame at the half way point of your videos, you can set the `thumbnailTimestampPct` value to 0.5\. Using relative values in this way allows you to set the default thumbnail even if you or your users' videos vary in duration.
+`thumbnailTimestampPct` is a value between 0.0 (the first frame of the video) and 1.0 (the last frame of the video). For example, you wanted the thumbnail to be the frame at the half way point of your videos, you can set the `thumbnailTimestampPct` value to 0.5. Using relative values in this way allows you to set the default thumbnail even if you or your users' videos vary in duration.
 
 ## Use Case 3: Generating animated thumbnails
 
@@ -67,22 +67,22 @@ Stream supports animated GIFs as thumbnails. Viewing animated thumbnails does no
 
 ### Animated GIF thumbnails
 
-` https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.gif?time=1s&height=200&duration=4s`
+`https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.gif?time=1s&height=200&duration=4s`
 
 ![Animated gif example, generated on-demand from Cloudflare Stream](https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c51d6a957/thumbnails/thumbnail.gif?time=1s&height=200&duration=4s)
 
 Supported URL attributes for animated thumbnails are:
 
-* **`time`** (default `0s`) time from the video for example `8m`, `5m2s`
-* **`height`** (default `640`)
-* **`width`** (default `640`)
-* **`fit`** (default `crop`) to clarify what to do when requested height and width does not match the original upload, which should be one of:
-  * **`crop`** cut parts of the video that doesn't fit in the given size
-  * **`clip`** preserve the entire frame and decrease the size of the image within given size
-  * **`scale`** distort the image to fit the given size
-  * **`fill`** preserve the entire frame and fill the rest of the requested size with black background
-* **`duration`** (default `5s`)
-* **`fps`** (default `8`)
+- **`time`** (default `0s`) time from the video for example `8m`, `5m2s`
+- **`height`** (default `640`)
+- **`width`** (default `640`)
+- **`fit`** (default `crop`) to clarify what to do when requested height and width does not match the original upload, which should be one of:
+  - **`crop`** cut parts of the video that doesn't fit in the given size
+  - **`clip`** preserve the entire frame and decrease the size of the image within given size
+  - **`scale`** distort the image to fit the given size
+  - **`fill`** preserve the entire frame and fill the rest of the requested size with black background
+- **`duration`** (default `5s`)
+- **`fps`** (default `8`)
 
 Was this helpful?
 
@@ -93,5 +93,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/#page","headline":"Display thumbnails · Cloudflare Stream docs","description":"Generate and customize thumbnail images from Cloudflare Stream videos.","url":"https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/#page","headline":"Display thumbnails","description":"Generate and customize thumbnail images from Cloudflare Stream videos.","url":"https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

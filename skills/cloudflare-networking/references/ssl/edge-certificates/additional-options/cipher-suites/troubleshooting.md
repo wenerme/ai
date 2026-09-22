@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/troubleshooting/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you encounter issues with edge certificate cipher suites, refer to the following scenarios.
 
@@ -38,7 +38,7 @@ If the TLS version you are testing is blocked by Cloudflare, the TLS handshake i
 
 Note
 
-Local VPN or a device security client may prevent insecure connections using legacy protocols like TLS 1.0\. Make sure to disable such network or security client before running the test on your device.
+Local VPN or a device security client may prevent insecure connections using legacy protocols like TLS 1.0. Make sure to disable such network or security client before running the test on your device.
 
 ## Compatibility with certificate encryption
 
@@ -52,7 +52,7 @@ It is not possible to configure minimum TLS version nor cipher suites for [Cloud
 
 ## API requirements for custom hostname certificate
 
-When using the [Edit Custom Hostname endpoint](https://developers.cloudflare.com/api/resources/custom%5Fhostnames/methods/edit/), make sure to include `type` and `method` within the `ssl` object, as well as the `settings` specifications.
+When using the [Edit Custom Hostname endpoint](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/edit/), make sure to include `type` and `method` within the `ssl` object, as well as the `settings` specifications.
 
 Including the `settings` only will result in the error message `The SSL attribute is invalid. Please refer to the API documentation, check your input and try again`.
 
@@ -62,7 +62,7 @@ You cannot set specific TLS 1.3 ciphers. Instead, you can enable [TLS 1.3](https
 
 ## SSL Labs weak ciphers report
 
-If you try to [disable](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) all of the `WEAK` cipher suites according to what is listed on a [Qualys SSL Labs ↗](https://www.ssllabs.com/ssltest/) report, you might notice that the naming conventions are not the same.
+If you try to [disable](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) all of the `WEAK` cipher suites according to what is listed on a  [Qualys SSL Labs ↗](https://www.ssllabs.com/ssltest/) report, you might notice that the naming conventions are not the same.
 
 This is because SSL Labs follows RFC cipher naming convention while Cloudflare follows OpenSSL cipher naming convention. The cipher suite names list in the [OpenSSL documentation ↗](https://www.openssl.org/docs/man1.0.2/man1/ciphers.html) may help you map the names.
 
@@ -72,9 +72,9 @@ Even though applications on Cloudflare are not vulnerable to [CVE-2019-1559](htt
 
 To remove these warnings, refer to [Customize cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) and exclude the following ciphers:
 
-* `ECDHE-ECDSA-AES256-SHA384`
-* `ECDHE-ECDSA-AES128-SHA256`
-* `ECDHE-RSA-AES256-SHA384`
+- `ECDHE-ECDSA-AES256-SHA384`
+- `ECDHE-ECDSA-AES128-SHA256`
+- `ECDHE-RSA-AES256-SHA384`
 
 Was this helpful?
 
@@ -85,5 +85,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/troubleshooting/#page","headline":"Troubleshooting - Cipher suites — Edge certificates · Cloudflare SSL/TLS docs","description":"Resolve common cipher suite configuration issues.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve common cipher suite configuration issues.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TLS"]}
 ```

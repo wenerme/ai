@@ -16194,7 +16194,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
   - `OpenAIHosted object { type, capability_directories, env, 7 more }`
 
-    An OpenAI-hosted environment, optionally based on a reusable template.
+    An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
     - `type: "openai_hosted"`
 
@@ -20101,7 +20101,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   - `OpenAIHosted object { type, capability_directories, env, 7 more }`
 
-    An OpenAI-hosted environment, optionally based on a reusable template.
+    An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
     - `type: "openai_hosted"`
 

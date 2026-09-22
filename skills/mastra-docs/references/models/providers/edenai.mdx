@@ -5,7 +5,7 @@ description: "Browse Eden AI model IDs, capabilities, context windows, and prici
 
 # [Eden AI logo]Eden AI
 
-Access 279 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
+Access 280 Eden AI models through Mastra's model router. Authentication is handled automatically using the `EDENAI_API_KEY` environment variable.
 
 Learn more in the [Eden AI documentation](https://docs.edenai.co).
 
@@ -116,7 +116,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 131072,
@@ -128,7 +128,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 131072,
@@ -140,7 +140,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 131072,
@@ -152,7 +152,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 131072,
@@ -164,7 +164,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 131072,
@@ -176,7 +176,7 @@ for await (const chunk of stream) {
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": false,
     "contextWindow": 128000,
     "maxOutput": 131072,
@@ -260,9 +260,9 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 128000,
+    "contextWindow": 256000,
     "maxOutput": 262144,
     "inputCost": 0.6,
     "outputCost": 2.5
@@ -284,7 +284,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 131072,
@@ -296,7 +296,7 @@ for await (const chunk of stream) {
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
-    "toolUsage": false,
+    "toolUsage": true,
     "reasoning": true,
     "contextWindow": 128000,
     "maxOutput": 131072,
@@ -310,7 +310,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 200000,
+    "contextWindow": 203000,
     "maxOutput": 131072,
     "inputCost": 0.07,
     "outputCost": 0.4
@@ -322,7 +322,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 200000,
+    "contextWindow": 203000,
     "maxOutput": 131072,
     "inputCost": 0.07,
     "outputCost": 0.4
@@ -1056,8 +1056,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 128000,
-    "inputCost": 0.14,
-    "outputCost": 0.58
+    "inputCost": 0.13,
+    "outputCost": 0.53
   },
   {
     "model": "edenai/deepinfra/thinkingmachines/Inkling",
@@ -3233,6 +3233,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "edenai/xai/grok-4.6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 500000,
+    "maxOutput": 500000,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
+    "model": "edenai/xai/grok-4.7",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

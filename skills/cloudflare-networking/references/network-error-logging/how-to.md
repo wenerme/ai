@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # How to
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/network-error-logging/how-to/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-error-logging/how-to/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use NEL reports to view information such as:
 
-* Why a request failed
-* The country a request failed from
-* The last mile network a request failed from
-* The Cloudflare data center the request was most likely meant for
-1. Log in to your Cloudflare dashboard.
-[Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
-2. Select **Analytics & Logs** \> **Edge Reachability**.
+- Why a request failed
+- The country a request failed from
+- The last mile network a request failed from
+- The Cloudflare data center the request was most likely meant for
+
+1. Log in to your Cloudflare dashboard. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+2. Select **Analytics & Logs** > **Edge Reachability**.
 
 Click a tab under **Reachability summary** to view specific information related to your Origin ASN, Origin, IP, or data center. Hover over a location on the map to view the number of reachable requests.
 
 Under **Reachability by data center**, click a location under Data Centers to filter reachability by a specific location.
 
-To view the log fields available for NEL, refer to [NEL reports](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/nel%5Freports/).
+To view the log fields available for NEL, refer to [NEL reports](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/nel_reports/).
 
 Was this helpful?
 
@@ -39,5 +39,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-error-logging/how-to/#page","headline":"View Reports · Cloudflare Network Error Logging docs","description":"NEL reports show you why a request failed, the country a request failed from, and last mile network a request failed from, and the likely intended Cloudflare data center.","url":"https://developers.cloudflare.com/network-error-logging/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/network-error-logging/how-to/#page","headline":"How to","description":"NEL reports show you why a request failed, the country a request failed from, and last mile network a request failed from, and the likely intended Cloudflare data center.","url":"https://developers.cloudflare.com/network-error-logging/how-to/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

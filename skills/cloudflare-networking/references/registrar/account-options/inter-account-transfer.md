@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Move a Cloudflare Registrar domain registration between accounts
 
-Last updated Apr 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare supports the move (transfer) of domain registrations between Cloudflare accounts when the source and target account both confirm the move. The move will result in the loss of all configurations and settings for the domain in the source account.
 
@@ -22,31 +22,31 @@ This process only applies to domains which are registered with Cloudflare Regist
 
 Before proceeding, please be aware of the following:
 
-* WHOIS contact information will be moved as is.
-* No other configuration will be moved.
-* After successful move, the registration will be transfer-locked for 30 days.
-* The target account will become responsible for domain renewals going forward.
+- WHOIS contact information will be moved as is.
+- No other configuration will be moved.
+- After successful move, the registration will be transfer-locked for 30 days.
+- The target account will become responsible for domain renewals going forward.
 
-## 1\. Prepare for the move
+## 1. Prepare for the move
 
 Before you request the move, you will need to do the following:
 
-* Obtain the [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) of the new account.
-* Add the domain as a website to the new account and select a plan.
-* [Disable DNSSEC](https://developers.cloudflare.com/dns/dnssec/#disable-dnssec) for the domain and ensure it is set up and ready in the new dashboard account you intend to move it to.
+- Obtain the [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) of the new account.
+- Add the domain as a website to the new account and select a plan.
+- [Disable DNSSEC](https://developers.cloudflare.com/dns/dnssec/#disable-dnssec) for the domain and ensure it is set up and ready in the new dashboard account you intend to move it to.
 
 The following pre-conditions must be met before the domain can be moved:
 
-* The domain must have been registered more than 10 days ago.
-* The domain must be added to the new account as a website and a plan must be selected.
-* The domain must not be administratively locked, such as being locked due to a dispute or court order.
-* The domain must not have any of the following registry statuses: `pendingDelete`, `redemptionPeriod`, or `pendingTransfer`.
-* The registrant email address must be verified.
-* A pending Change of Registrant request cannot be present. If there is a pending request, it should be completed before initiating the move request.
-* DNSSEC must be turned off. It can be re-enabled on the new zone once the move completes.
-* If the current zone is locked, the lock must be released.
+- The domain must have been registered more than 10 days ago.
+- The domain must be added to the new account as a website and a plan must be selected.
+- The domain must not be administratively locked, such as being locked due to a dispute or court order.
+- The domain must not have any of the following registry statuses: `pendingDelete`, `redemptionPeriod`, or `pendingTransfer`.
+- The registrant email address must be verified.
+- A pending Change of Registrant request cannot be present. If there is a pending request, it should be completed before initiating the move request.
+- DNSSEC must be turned off. It can be re-enabled on the new zone once the move completes.
+- If the current zone is locked, the lock must be released.
 
-## 2\. Submit the move request
+## 2. Submit the move request
 
 You can now submit the move request under the **Configuration** tab of the **Manage Domain** page. Begin the submission process by selecting the **Start** button and follow the instructions.
 
@@ -69,5 +69,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/#page","headline":"Move a Cloudflare Registrar domain registration between accounts · Cloudflare Registrar docs","description":"Transfer domain registration between Cloudflare accounts.","url":"https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/#page","headline":"Move a Cloudflare Registrar domain registration between accounts","description":"Transfer domain registration between Cloudflare accounts.","url":"https://developers.cloudflare.com/registrar/account-options/inter-account-transfer/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

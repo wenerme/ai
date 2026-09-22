@@ -1616,13 +1616,13 @@
   },
   "grafana-pyroscope-app/investigate.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate.md",
-    "size": 4023,
-    "updatedAt": "2026-06-25T05:43:02.855Z"
+    "size": 6401,
+    "updatedAt": "2026-09-22T14:56:03.215Z"
   },
   "grafana-pyroscope-app/investigate/flame-graph-ai.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/investigate/flame-graph-ai.md",
-    "size": 5209,
-    "updatedAt": "2026-06-25T05:43:03.213Z"
+    "size": 5212,
+    "updatedAt": "2026-09-22T14:56:03.408Z"
   },
   "grafana-redshift-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-redshift-datasource/latest/alerting.md",

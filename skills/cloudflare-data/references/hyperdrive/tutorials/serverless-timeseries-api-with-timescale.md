@@ -153,7 +153,7 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 	"name": "timescale-api",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -171,7 +171,7 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 name = "timescale-api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -339,5 +339,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/#page","headline":"Create a serverless, globally distributed time-series API with Timescale · Cloudflare Hyperdrive docs","description":"In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in Timescale.","url":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PostgreSQL","TypeScript","SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/#page","headline":"Create a serverless, globally distributed time-series API with Timescale","description":"In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in Timescale.","url":"https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["PostgreSQL","TypeScript","SQL"]}
 ```

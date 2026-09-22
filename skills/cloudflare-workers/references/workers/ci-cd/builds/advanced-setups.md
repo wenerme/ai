@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Advanced setups
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Monorepos
 
@@ -75,7 +75,7 @@ You can use [Wrangler Environments](https://developers.cloudflare.com/workers/wr
 1. [Deploy via Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) to create the Workers for your environments on the Dashboard, if you do not already have them.
 2. Find the Workers for your environments. They are typically named `[name of Worker] - [environment name]`.
 3. Connect your repository to each of the Workers for your environment.
-4. In each of the Workers, edit your Wrangler commands to include the flag `--env: <environment name>` in the build configurations for both the deploy command, and the non-production branch deploy command ([if applicable](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds)).
+4. In each of the Workers, edit your Wrangler commands to include the flag `--env <environment-name>` in the build configurations for both the deploy command and the [Preview command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#preview-command) ([if applicable](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds)).
 
 When a new commit is detected in the repository, a new build/deploy will trigger for each associated Worker.
 
@@ -83,7 +83,7 @@ When a new commit is detected in the repository, a new build/deploy will trigger
 
 Imagine you have a Worker named `my-worker`, and you want to set up two environments `staging` and `production` set in the `wrangler.jsonc`. If you have not already, you can deploy `my-worker` for each environment using the commands `wrangler deploy --env staging` and `wrangler deploy --env production`.
 
-In your Cloudflare Dashboard, you should find the two Workers `my-worker-staging` and `my-worker-production`. Then, connect the Git repository for the Worker, `my-worker`, to both of the environment Workers. In the build configurations of each environment Worker, edit the deploy commands to be `npx wrangler deploy --env staging` and `npx wrangler deploy --env production` and the non-production branch deploy commands to be `npx wrangler versions upload --env staging` and `npx wrangler versions upload --env production` respectively.
+In your Cloudflare Dashboard, you should find the two Workers `my-worker-staging` and `my-worker-production`. Then, connect the Git repository for the Worker, `my-worker`, to both of the environment Workers. In the build configurations of each environment Worker, edit the deploy commands to be `npx wrangler deploy --env staging` and `npx wrangler deploy --env production` and the Preview commands to be `npx wrangler preview --env staging` and `npx wrangler preview --env production` respectively.
 
 Was this helpful?
 
@@ -94,5 +94,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#page","headline":"Advanced setups · Cloudflare Workers docs","description":"Learn how to use Workers Builds with more advanced setups","url":"https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#page","headline":"Advanced setups","description":"Learn how to use Workers Builds with more advanced setups","url":"https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

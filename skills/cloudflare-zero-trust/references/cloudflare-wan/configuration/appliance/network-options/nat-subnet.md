@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Enable NAT for a subnet
 
-Last updated Aug 24, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/nat-subnet/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/nat-subnet/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Overview
 
@@ -20,8 +20,8 @@ Every subnet in the Cloudflare WAN (formerly Magic WAN) overlay must have a uniq
 
 With subnet NAT, the Appliance performs a static, 1:1 translation between:
 
-* The **local prefix** used inside the site.
-* A **NAT prefix** that is advertised into the Cloudflare WAN overlay.
+- The **local prefix** used inside the site.
+- A **NAT prefix** that is advertised into the Cloudflare WAN overlay.
 
 Because the mapping is static, the Appliance supports both outbound connections from the site and inbound connections from Cloudflare WAN to the site. Connections do not have to be initiated by hosts behind the Cloudflare One Appliance.
 
@@ -29,25 +29,23 @@ Because the mapping is static, the Appliance supports both outbound connections 
 
 NAT is static and 1:1 between equal-sized prefixes. When you enable NAT for a subnet on an Appliance:
 
-* The **local prefix** is the subnet on the LAN side of the Appliance.
-* The **NAT prefix** is a WAN-facing prefix of the same size.
-* The Appliance translates addresses 1:1 between the two prefixes:
-  * For traffic leaving the site towards Cloudflare WAN, it replaces local addresses with the corresponding NAT addresses.
-  * For traffic arriving at the site from Cloudflare WAN, it replaces NAT addresses with the corresponding local addresses.
+- The **local prefix** is the subnet on the LAN side of the Appliance.
+- The **NAT prefix** is a WAN-facing prefix of the same size.
+- The Appliance translates addresses 1:1 between the two prefixes:
+  - For traffic leaving the site towards Cloudflare WAN, it replaces local addresses with the corresponding NAT addresses.
+  - For traffic arriving at the site from Cloudflare WAN, it replaces NAT addresses with the corresponding local addresses.
 
 ## Addressing rules
 
 To avoid overlapping addresses in the overlay, Cloudflare WAN enforces the following rules:
 
-* **Uniqueness within a LAN**
-
-  * The local prefix for each subnet must be unique within that LAN on the Appliance.
-  * You can reuse the same local prefix on a different LAN or on a different site.
-* **Uniqueness in the Cloudflare WAN overlay**
-
-  * Every **overlay-facing prefix** must be unique across all sites in your Cloudflare WAN deployment.
-  * For a subnet **with NAT enabled**, the overlay-facing prefix is the **NAT prefix**.
-  * For a subnet **without NAT**, the overlay-facing prefix is the **local prefix**.
+- **Uniqueness within a LAN**
+  - The local prefix for each subnet must be unique within that LAN on the Appliance.
+  - You can reuse the same local prefix on a different LAN or on a different site.
+- **Uniqueness in the Cloudflare WAN overlay**
+  - Every **overlay-facing prefix** must be unique across all sites in your Cloudflare WAN deployment.
+  - For a subnet **with NAT enabled**, the overlay-facing prefix is the **NAT prefix**.
+  - For a subnet **without NAT**, the overlay-facing prefix is the **local prefix**.
 
 These rules allow you to reuse local space at multiple sites, as long as each subnet in the Cloudflare WAN overlay has a unique overlay-facing prefix.
 
@@ -55,25 +53,25 @@ These rules allow you to reuse local space at multiple sites, as long as each su
 
 Consider a subnet that uses the following prefixes:
 
-* **Local prefix**: `192.168.100.0/24`
-* **NAT prefix**: `10.10.100.0/24`
+- **Local prefix**: `192.168.100.0/24`
+- **NAT prefix**: `10.10.100.0/24`
 
 In this case:
 
-* When a host inside the site with address `192.168.100.13` sends traffic into the Cloudflare WAN overlay, the Appliance translates the address to `10.10.100.13`.
-* When traffic from another site, or from the Internet via Cloudflare WAN, targets `10.10.100.13`, the Appliance translates the address back to `192.168.100.13`.
+- When a host inside the site with address `192.168.100.13` sends traffic into the Cloudflare WAN overlay, the Appliance translates the address to `10.10.100.13`.
+- When traffic from another site, or from the Internet via Cloudflare WAN, targets `10.10.100.13`, the Appliance translates the address back to `192.168.100.13`.
 
 ## Configure NAT for subnets
 
 You configure subnet NAT when you create or edit a LAN on a Cloudflare One Appliance. In the Appliance configuration:
 
-* You define the **local prefix** for the subnet on the LAN side.
-* You optionally define a **static NAT prefix** of the same size. When present, this prefix becomes the overlay-facing prefix for that subnet.
+- You define the **local prefix** for the subnet on the LAN side.
+- You optionally define a **static NAT prefix** of the same size. When present, this prefix becomes the overlay-facing prefix for that subnet.
 
 For step-by-step instructions to configure a LAN and supply a static NAT prefix, refer to:
 
-* [Configure hardware Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/#create-a-lan)
-* [Configure Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#create-a-lan)
+- [Configure hardware Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-hardware-appliance/#create-a-lan)
+- [Configure Virtual Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/configure-virtual-appliance/#create-a-lan)
 
 Was this helpful?
 
@@ -84,5 +82,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/nat-subnet/#page","headline":"Enable NAT for a subnet · Cloudflare WAN docs","description":"Enable static NAT for subnets in Cloudflare One Appliance to re-use address spaces locally.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/nat-subnet/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/nat-subnet/#page","headline":"Enable NAT for a subnet","description":"Enable static NAT for subnets in Cloudflare One Appliance to re-use address spaces locally.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/nat-subnet/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

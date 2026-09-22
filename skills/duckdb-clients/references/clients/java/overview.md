@@ -4,7 +4,7 @@
 >
 > The latest stable version of the DuckDB Java (JDBC) client is current release.
 
-The DuckDB Java (JDBC) client lets Java applications query DuckDB through the standard JDBC API, extended with DuckDB-specific features for bulk loading, [Apache Arrow](https://arrow.apache.org/) interchange, user-defined functions, and profiling. The driver also supports ahead-of-time compilation with [GraalVM Native Image](https://duckdb.org/docs/current/clients/java/deploy_native_image.html).
+The DuckDB Java (JDBC) client lets Java applications query DuckDB through the standard JDBC API, extended with DuckDB-specific features for bulk loading, [Apache Arrow](https://arrow.apache.org/) interchange, user-defined functions, and profiling, and can open a [DuckLake](https://duckdb.org/docs/current/core_extensions/ducklake.html) catalog directly from the JDBC URL. The driver also supports ahead-of-time compilation with [GraalVM Native Image](https://duckdb.org/docs/current/clients/java/deploy_native_image.html).
 
 This page covers installation; the other pages in this section cover connecting and each feature in detail.
 
@@ -50,6 +50,7 @@ try (Statement stmt = conn.createStatement();
 ## Further Reading
 
 * [Define Connections](https://duckdb.org/docs/current/clients/java/connecting.html) — the JDBC URL forms, configuration options, instance caching, threading, and connection shutdown.
+* [Connect to a DuckLake](https://duckdb.org/docs/current/clients/java/connecting.html#connect-to-a-ducklake) — attach or open a DuckLake catalog from JDBC.
 * [Run Queries](https://duckdb.org/docs/current/clients/java/querying.html) — sending queries with `Statement` and `PreparedStatement`, and reading DuckDB's nested types.
 * [Import Data](https://duckdb.org/docs/current/clients/java/data_import.html) — bulk-loading data with the Appender and the JDBC batch writer.
 * [Handle Results](https://duckdb.org/docs/current/clients/java/result_handling.html) — Apache Arrow interchange, result streaming, and chunked results.

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Gradual deployments
 
-Last updated Jul 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Gradual deployments let you incrementally deploy new [versions](https://developers.cloudflare.com/workers/versions-and-deployments/#versions) of your Worker by splitting traffic across versions. Instead of shifting all traffic to a new version at once, you can route a percentage of requests to the new version while the rest continue to be handled by the previous version.
 
@@ -20,9 +20,9 @@ Gradual deployments let you incrementally deploy new [versions](https://develope
 
 Using gradual deployments, you can:
 
-* Gradually shift traffic to a newer version of your Worker
-* Monitor error rates and exceptions across versions using [observability](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#observability) tooling
-* [Roll back](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/) to a previously stable version if you notice issues
+- Gradually shift traffic to a newer version of your Worker
+- Monitor error rates and exceptions across versions using [observability](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#observability) tooling
+- [Roll back](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/) to a previously stable version if you notice issues
 
 ## Use gradual deployments
 
@@ -32,11 +32,11 @@ The following section guides you through an example usage of gradual deployments
 
 Note
 
-Minimum required Wrangler version: 3.40.0\. Versions before 3.73.0 require you to specify a `--x-versions` flag.
+Minimum required Wrangler version: 3.40.0. Versions before 3.73.0 require you to specify a `--x-versions` flag.
 
-#### 1\. Create and deploy a new Worker
+#### 1. Create and deploy a new Worker
 
-Create a new `"Hello World"` Worker using the [create-cloudflare CLI (C3)](https://developers.cloudflare.com/pages/get-started/c3/) and deploy it.
+Create a new `"Hello World"` Worker using the [`create-cloudflare` CLI (C3)](https://developers.cloudflare.com/pages/get-started/c3/) and deploy it.
 
 npmyarnpnpm
 
@@ -54,9 +54,9 @@ pnpm create cloudflare@latest <NAME> -- --type=hello-world
 
 Answer `yes` or `no` to using TypeScript. Answer `yes` to deploying your application. This is the first version of your Worker.
 
-#### 2\. Create a new version of the Worker
+#### 2. Create a new version of the Worker
 
-Edit the Worker code by changing the `Response` content and upload the Worker using the [wrangler versions upload](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload) command.
+Edit the Worker code by changing the `Response` content and upload the Worker using the [`wrangler versions upload`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-upload) command.
 
 npmyarnpnpm
 
@@ -74,9 +74,9 @@ pnpm wrangler versions upload
 
 This will create a new version of the Worker that is not automatically deployed.
 
-#### 3\. Create a new deployment
+#### 3. Create a new deployment
 
-Use the [wrangler versions deploy](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy) command to create a new deployment that splits traffic between two versions. Follow the interactive prompts to select your desired percentages for each version.
+Use the [`wrangler versions deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#versions-deploy) command to create a new deployment that splits traffic between two versions. Follow the interactive prompts to select your desired percentages for each version.
 
 npmyarnpnpm
 
@@ -92,7 +92,7 @@ yarn wrangler versions deploy
 pnpm wrangler versions deploy
 ```
 
-#### 4\. Test the split deployment
+#### 4. Test the split deployment
 
 Run a cURL command on your Worker to test the split deployment.
 
@@ -107,7 +107,7 @@ You should see 10 responses. Responses will vary depending on the percentages co
 
 You can also target a specific version using [version overrides](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/).
 
-#### 5\. Set your new version to 100% deployment
+#### 5. Set your new version to 100% deployment
 
 Run `wrangler versions deploy` again and follow the interactive prompts. Select the new version and set it to 100%.
 
@@ -127,11 +127,10 @@ pnpm wrangler versions deploy
 
 ### Via the Cloudflare dashboard
 
-1. In the Cloudflare dashboard, go to the **Workers & Pages** page.
-[Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
-2. Select **Create application** \> **Hello World** template > deploy your Worker.
+1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+2. Select **Create application** > **Hello World** template > deploy your Worker.
 3. Once the Worker is deployed, go to the online code editor through **Edit code**. Edit the Worker code (change the `Response` content).
-4. To save changes without deploying, select the **down arrow** next to **Deploy** \> **Save**. This will create a new version of your Worker.
+4. To save changes without deploying, select the **down arrow** next to **Deploy** > **Save**. This will create a new version of your Worker.
 5. Go to **Deployments** and select **Promote deployment** to create a split between the two versions.
 
 ## Version skew
@@ -208,5 +207,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#page","headline":"Gradual deployments · Cloudflare Workers docs","description":"Incrementally deploy code changes to your Workers with gradual deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#page","headline":"Gradual deployments","description":"Incrementally deploy code changes to your Workers with gradual deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

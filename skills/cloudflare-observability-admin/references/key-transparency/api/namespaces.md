@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Namespaces
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/key-transparency/api/namespaces/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/key-transparency/api/namespaces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Key Transparency API is organized in namespaces, each one representing a Log monitored by Cloudflare Auditor. If you want to register a namespace, contact us.
 
@@ -20,12 +20,12 @@ The Cloudflare Key Transparency API is organized in namespaces, each one represe
 
 The following fields are required when making a `POST` request:
 
-* `name`
-* `public`
-* `root`
-* `signature_version`:
-  * 0x0001 for [Protobuf serialisation ↗](https://github.com/cloudflare/plexi/blob/main/plexi%5Fcore/src/proto/specs/types.proto) Ed25519 signature from the Auditor
-  * 0x0002 for [bincode serialisation ↗](https://github.com/bincode-org/bincode/blob/trunk/docs/spec.md) E25519 serialisation by the Auditor
+- `name`
+- `public`
+- `root`
+- `signature_version`:
+  - 0x0001 for [Protobuf serialisation ↗](https://github.com/cloudflare/plexi/blob/main/plexi_core/src/proto/specs/types.proto) Ed25519 signature from the Auditor
+  - 0x0002 for [bincode serialisation ↗](https://github.com/bincode-org/bincode/blob/trunk/docs/spec.md) E25519 serialisation by the Auditor
 
 The `log_directory` field is optional. If set, Cloudflare will use it to fetch audit proofs and validate them.
 
@@ -53,9 +53,9 @@ curl 'https://plexi.key-transparency.cloudflare.com/namespaces' \
 
 After publishing the first epoch, `status` will show `Online`. Possible statuses include:
 
-* `Online`
-* `Initialization`
-* `Disabled`
+- `Online`
+- `Initialization`
+- `Disabled`
 
 ## List all namespaces
 
@@ -103,5 +103,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/key-transparency/api/namespaces/#page","headline":"Namespaces · Cloudflare Key Transparency Auditor docs","description":"Create and manage namespaces representing logs monitored by the Cloudflare Auditor.","url":"https://developers.cloudflare.com/key-transparency/api/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","mTLS"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/key-transparency/api/namespaces/#page","headline":"Namespaces","description":"Create and manage namespaces representing logs monitored by the Cloudflare Auditor.","url":"https://developers.cloudflare.com/key-transparency/api/namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","mTLS"]}
 ```

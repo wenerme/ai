@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # FAQ
 
-Last updated Aug 3, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/registrar/faq/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗](https://community.cloudflare.com/) to explore more resources.
 
-* [Domain management](#domain-management)
-* [Domain transfers](#domain-transfers)
-* [Domain registrations](#domain-registrations)
-* [Billing](#billing)
-* [Domain restoration](#domain-restoration)
-* [Domain deletions](#domain-deletions)
+- [Domain management](#domain-management)
+- [Domain transfers](#domain-transfers)
+- [Domain registrations](#domain-registrations)
+- [Billing](#billing)
+- [Domain restoration](#domain-restoration)
+- [Domain deletions](#domain-deletions)
 
 ---
 
@@ -43,7 +43,7 @@ To fix it, verify your registrant email:
 
 1. Resend the verification email from your [email verification settings](https://developers.cloudflare.com/fundamentals/user-profiles/verify-email-address/).
 2. Check your spam and promotions folders.
-3. Confirm the registrant email on the domain is an address you can actually receive mail at (**Manage Domains** \> your domain > **Contacts**). Refer to [Registrant contact updates](https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/).
+3. Confirm the registrant email on the domain is an address you can actually receive mail at (**Manage Domains** > your domain > **Contacts**). Refer to [Registrant contact updates](https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/).
 
 Keep your contact details accurate. ICANN rules allow a domain to be suspended or cancelled if the registrant information is invalid.
 
@@ -69,7 +69,7 @@ Once you initiate a domain transfer, your previous registrar has five days to re
 
 To see the progress of your transfer, go to the **Transfer domains** page in the Cloudflare dashboard to see a list of domain transfers that are in progress.
 
-[Go to **Transfer domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/transfer)
+[Go to **Transfer domains** ↗](https://dash.cloudflare.com/?to=/:account/registrar/transfer)
 
 To accelerate the process, be sure to check with your old registrar how you can approve the transfer out.
 
@@ -113,8 +113,8 @@ Cloudflare Registrar only supports transfers of domains that are active on a Clo
 
 For most generic TLDs (`.com`, `.net`, `.org`, and similar), a transfer adds one year to your current expiration date. However, some TLDs do not add a year on transfer:
 
-* **`.uk` and `.nz` domains**: These country-code TLDs do not add an additional year during the transfer process.
-* **Domains at or near the maximum term**: ICANN-governed TLDs cap the registration term at 10 years. If your domain already has 10 years on the term, no additional year can be added. Some country-code TLDs have shorter caps (for example, `.co` has a 5-year cap), so transfers of those domains may also not add a year.
+- **`.uk` and `.nz` domains**: These country-code TLDs do not add an additional year during the transfer process.
+- **Domains at or near the maximum term**: ICANN-governed TLDs cap the registration term at 10 years. If your domain already has 10 years on the term, no additional year can be added. Some country-code TLDs have shorter caps (for example, `.co` has a 5-year cap), so transfers of those domains may also not add a year.
 
 If none of the above apply and your expiration date still did not change, refer to [My domain's registration was not extended by one year after transferring to Cloudflare](#my-domains-registration-was-not-extended-by-one-year-after-transferring-to-cloudflare) for the 45-day renewal restriction.
 
@@ -128,11 +128,11 @@ You can move a Cloudflare Registrar domain between accounts yourself when both t
 
 Before you start, the domain must meet these conditions:
 
-* It was registered more than 10 days ago.
-* The registrant email is verified and there is no pending Change of Registrant request.
-* [DNSSEC](https://developers.cloudflare.com/registrar/get-started/enable-dnssec/) is turned off (you can re-enable it after the move).
-* The domain is not administratively locked and is not in `redemptionPeriod`, `pendingDelete`, or `pendingTransfer`.
-* You have added the domain as a website to the target account, selected a plan, and have the target account ID ready.
+- It was registered more than 10 days ago.
+- The registrant email is verified and there is no pending Change of Registrant request.
+- [DNSSEC](https://developers.cloudflare.com/registrar/get-started/enable-dnssec/) is turned off (you can re-enable it after the move).
+- The domain is not administratively locked and is not in `redemptionPeriod`, `pendingDelete`, or `pendingTransfer`.
+- You have added the domain as a website to the target account, selected a plan, and have the target account ID ready.
 
 Submit the move from the **Configuration** tab of the **Manage Domain** page. The gaining account receives an email and must approve within five days or the request auto-cancels. All configuration and settings in the source account are lost, and the domain is transfer-locked for 30 days after the move.
 
@@ -150,9 +150,9 @@ Domain registrations do not appear in the **Active Subscriptions** section, beca
 
 If you were charged but still do not see the domain:
 
-* Check which account and email you used at checkout. The domain lands in the Cloudflare account you were logged into, and many people have more than one account. This is the most common cause.
-* Find the registration confirmation email.
-* A failed-then-retried checkout can leave a temporary authorization hold (not a completed charge). These typically drop off on their own.
+- Check which account and email you used at checkout. The domain lands in the Cloudflare account you were logged into, and many people have more than one account. This is the most common cause.
+- Find the registration confirmation email.
+- A failed-then-retried checkout can leave a temporary authorization hold (not a completed charge). These typically drop off on their own.
 
 If money left your account and the domain still is not in the correct account after a short wait, open a support ticket with the charge details and exact domain name so it can be reconciled.
 
@@ -166,11 +166,11 @@ If the domain already expired, refer to [What happens when a domain expires?](#w
 
 In summary, here is what will happen after a domain expires:
 
-* **Day 0**: Expiration Date.
-* **Day 1 - 30**: Grace Period (domain resolves normally).
-* **Day 31 - 40**: Suspension Period (domains resolves to suspension page).
-* **Day 41 - 70**: Redemption Period.
-* **Day 71 - 75**: Pending Delete Period.
+- **Day 0**: Expiration Date.
+- **Day 1 - 30**: Grace Period (domain resolves normally).
+- **Day 31 - 40**: Suspension Period (domains resolves to suspension page).
+- **Day 41 - 70**: Redemption Period.
+- **Day 71 - 75**: Pending Delete Period.
 
 Cloudflare currently offers a 40-day grace period for most top-level domains (TLDs).
 
@@ -204,7 +204,7 @@ Refer to [What is Cloudflare Registrar ↗](https://www.cloudflare.com/learning/
 
 No. Cloudflare Registrar sells domains at cost: you pay the registry and ICANN list price with no markup. Because that money is passed straight to the registry the moment a registration, renewal, or transfer completes, those fees are non-refundable. All renewals are final and Cloudflare will not issue refunds.
 
-If you registered the wrong name, such as a typo or the wrong TLD (`.com` versus `.co`), the registration fee has already gone to the registry and cannot be reclaimed. To prevent an unwanted future charge, turn off auto-renew (**Manage Domains** \> your domain > **Auto-renew** toggle) at least 30 days before the expiration date and let the domain lapse. Refer to [Renew domains](https://developers.cloudflare.com/registrar/account-options/renew-domains/).
+If you registered the wrong name, such as a typo or the wrong TLD (`.com` versus `.co`), the registration fee has already gone to the registry and cannot be reclaimed. To prevent an unwanted future charge, turn off auto-renew (**Manage Domains** > your domain > **Auto-renew** toggle) at least 30 days before the expiration date and let the domain lapse. Refer to [Renew domains](https://developers.cloudflare.com/registrar/account-options/renew-domains/).
 
 ### When will I be billed
 
@@ -216,8 +216,8 @@ A transfer into Cloudflare is not free because most registries require every tra
 
 Two things people read as double charging that usually are not:
 
-* A failed-then-retried checkout can leave a temporary authorization hold that drops off. This is not a second charge.
-* If you renewed at your old registrar and then transferred to Cloudflare within 45 days of that renewal, the registry does not add the extra year even though you paid for the transfer, so you have effectively paid twice for the same year. You are entitled to request a refund from your previous registrar. To avoid this, wait at least 45 days after a renewal before transferring. Refer to [My domain's registration was not extended by one year after transferring to Cloudflare](#my-domains-registration-was-not-extended-by-one-year-after-transferring-to-cloudflare).
+- A failed-then-retried checkout can leave a temporary authorization hold that drops off. This is not a second charge.
+- If you renewed at your old registrar and then transferred to Cloudflare within 45 days of that renewal, the registry does not add the extra year even though you paid for the transfer, so you have effectively paid twice for the same year. You are entitled to request a refund from your previous registrar. To avoid this, wait at least 45 days after a renewal before transferring. Refer to [My domain's registration was not extended by one year after transferring to Cloudflare](#my-domains-registration-was-not-extended-by-one-year-after-transferring-to-cloudflare).
 
 ### Is there a fee to transfer a .UK or .NZ domain
 
@@ -273,11 +273,11 @@ Domain names should be released after a period of 75 days, although the exact de
 
 A domain can only be deleted if all the following conditions are met:
 
-* The user initiating the action is a Super Admin or Read/Write Administrator.
-* The domain is not delete locked at the registry with either `clientDeleteProhibited` or `serverDeleteProhibited`.
-* The domain is not already in `pendingDelete`, `redemptionPeriod`, or in `pendingTransfer`.
-* The domain has not been administratively locked by Cloudflare. This typically occurs for legal reasons such as a UDRP filing or court order, but may also be the result of an abuse or payment investigation.
-* The domain is NOT a .UK domain. .UK domains currently cannot be deleted at the registry.
+- The user initiating the action is a Super Admin or Read/Write Administrator.
+- The domain is not delete locked at the registry with either `clientDeleteProhibited` or `serverDeleteProhibited`.
+- The domain is not already in `pendingDelete`, `redemptionPeriod`, or in `pendingTransfer`.
+- The domain has not been administratively locked by Cloudflare. This typically occurs for legal reasons such as a UDRP filing or court order, but may also be the result of an abuse or payment investigation.
+- The domain is NOT a .UK domain. .UK domains currently cannot be deleted at the registry.
 
 If any of the above conditions are not met, the domain cannot be deleted.
 
@@ -312,5 +312,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/faq/#page","headline":"FAQ · Cloudflare Registrar docs","description":"Answers to common questions.","url":"https://developers.cloudflare.com/registrar/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/registrar/faq/#page","headline":"FAQ","description":"Answers to common questions.","url":"https://developers.cloudflare.com/registrar/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

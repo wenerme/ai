@@ -12,24 +12,24 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Contact Cloudflare Support
 
-Last updated May 1, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/contact-support/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/troubleshooting/contact-support/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you cannot resolve an issue using our troubleshooting guides, you can [open a support case](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
 To help us investigate your issue quickly, please collect and provide the following information when you contact Cloudflare Support.
 
-## 1\. Gather general information
+## 1. Gather general information
 
 For all issues, please include:
 
-* **Timestamp (UTC)**: The exact time the issue occurred.
-* **Detailed description**: A clear description of the problem and the steps to reproduce it.
-* **Actual vs. Expected**: What happened versus what you expected to happen.
-* **Problem frequency**: How often does the issue occur?
-* **Screenshots**: Any relevant screenshots or videos of the error.
-* **Example URLs**: Specific URLs where the issue is occurring.
+- **Timestamp (UTC)**: The exact time the issue occurred.
+- **Detailed description**: A clear description of the problem and the steps to reproduce it.
+- **Actual vs. Expected**: What happened versus what you expected to happen.
+- **Problem frequency**: How often does the issue occur?
+- **Screenshots**: Any relevant screenshots or videos of the error.
+- **Example URLs**: Specific URLs where the issue is occurring.
 
-## 2\. Collect product diagnostics
+## 2. Collect product diagnostics
 
 Depending on the product, providing diagnostic files is critical for a technical investigation.
 
@@ -45,10 +45,10 @@ If the issue involves Cloudflare Tunnel, run the `cloudflared tunnel diag` comma
 
 For issues related to authentication loops, blocked websites, or policy enforcement:
 
-* **HAR file**: Provide a [HAR file](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#generate-a-har-file) captured while reproducing the issue.
-* **Ray ID**: If you see a Cloudflare error page, provide the **Ray ID** displayed at the bottom of the page.
-* **Identity Provider logs**: Relevant logs from your identity provider (IdP) if the issue involves login failures.
-* **Request ID**: For Gateway issues, you can find the `request_id` (HTTP logs) or `query_id` (DNS logs) in your [Gateway logs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/).
+- **HAR file**: Provide a [HAR file](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#generate-a-har-file) captured while reproducing the issue.
+- **Ray ID**: If you see a Cloudflare error page, provide the **Ray ID** displayed at the bottom of the page.
+- **Identity Provider logs**: Relevant logs from your identity provider (IdP) if the issue involves login failures.
+- **Request ID**: For Gateway issues, you can find the `request_id` (HTTP logs) or `query_id` (DNS logs) in your [Gateway logs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshooting/).
 
 ### Digital Experience Monitoring (DEX)
 
@@ -67,5 +67,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/contact-support/#page","headline":"Contact Cloudflare Support · Cloudflare One docs","description":"Contact Cloudflare Support in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/contact-support/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/contact-support/#page","headline":"Contact Cloudflare Support","description":"Contact Cloudflare Support in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/troubleshooting/contact-support/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

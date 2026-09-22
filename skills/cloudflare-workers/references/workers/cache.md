@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Cache
 
-Last updated Jul 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Cache lets Cloudflare return cached HTTP responses from your Worker without executing your Worker code. When an incoming request matches a cached response, Cloudflare serves the response directly from its edge cache — reducing latency and Workers CPU usage.
 
@@ -135,7 +135,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
  "name": "my-worker",
  "main": "src/index.ts",
  // Set this to today's date
- "compatibility_date": "2026-09-14",
+ "compatibility_date": "2026-09-22",
  "cache": {
   "enabled": true,
  },
@@ -146,7 +146,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 
 [cache]
 enabled = true
@@ -243,7 +243,7 @@ The second request receives the cached response. The `timestamp` and `random` va
 - Other invocation types — [`scheduled`](https://developers.cloudflare.com/workers/configuration/cron-triggers/) (Cron Triggers), [`queue`](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) consumers, [Workflows](https://developers.cloudflare.com/workflows/), [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/), [Durable Object](https://developers.cloudflare.com/durable-objects/) invocations, [Email Workers](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) — always run without cache involvement.
 - Cacheability is determined by the response headers your Worker returns. Workers Caching follows the semantics defined in [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111), including [heuristic freshness ↗](https://www.rfc-editor.org/rfc/rfc9111#name-calculating-heuristic-fresh) for responses that do not carry `Cache-Control`. Refer to [Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/) for the full list of directives Cloudflare respects.
 - Cloudflare's standard [cache bypass conditions](https://developers.cloudflare.com/cache/concepts/cache-responses/#bypass) apply. In particular, responses with a `Set-Cookie` header and requests with an `Authorization` header trigger automatic bypass.
-- [Preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) are supported. Each preview caches independently of your production deployment, so testing a cache-affecting change in a preview never touches production's cached responses.
+- [Previews](https://developers.cloudflare.com/workers/previews/) are supported. Each Preview caches independently of your production deployment, so testing a cache-affecting change in a Preview never touches production's cached responses.
 - [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) is supported. Each user Worker has its own cache, isolated from the dispatcher and from other user Workers in the namespace.
 
 The `Cf-Cache-Status` response header tells you what happened for each request. The values you will see most often are `HIT`, `MISS`, `EXPIRED`, `REVALIDATED`, `UPDATING`, `STALE`, and `BYPASS`. Refer to [Cloudflare cache responses](https://developers.cloudflare.com/cache/concepts/cache-responses/) for the full set of values.
@@ -339,7 +339,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -352,7 +352,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 
 [cache]
 enabled = true
@@ -555,5 +555,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/#page","headline":"Workers Cache · Cloudflare Workers docs","description":"Workers Cache lets you cache Worker responses to reduce latency and Workers usage.","url":"https://developers.cloudflare.com/workers/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/#page","headline":"Workers Cache","description":"Workers Cache lets you cache Worker responses to reduce latency and Workers usage.","url":"https://developers.cloudflare.com/workers/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

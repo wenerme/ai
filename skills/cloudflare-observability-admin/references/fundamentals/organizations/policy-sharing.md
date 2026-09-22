@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Policy sharing
 
-Last updated Sep 10, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -28,8 +28,8 @@ In addition to WAF and Gateway policies, Organizations supports [IdP federation]
 
 Policy sharing requires the appropriate product entitlements on the accounts involved. Organizations does not grant access to WAF or Gateway features — your accounts must already have the required SKUs.
 
-* **WAF policy sharing** requires Enterprise WAF entitlements on both the source and destination accounts.
-* **Gateway policy sharing** requires Zero Trust Gateway entitlements on both the source and destination accounts.
+- **WAF policy sharing** requires Enterprise WAF entitlements on both the source and destination accounts.
+- **Gateway policy sharing** requires Zero Trust Gateway entitlements on both the source and destination accounts.
 
 ## WAF policy sharing
 
@@ -44,14 +44,14 @@ Create WAF custom rulesets in one account and share them to other accounts withi
 
 ### Key behaviors
 
-* **Read-only in destination accounts**: Shared WAF policies cannot be edited in the receiving accounts. To modify the rules, update them in the source account.
-* **Source account owns the policy**: If the source account is removed from the Organization, the shared policy is removed from all destination accounts.
-* **No cross-Organization sharing**: Policies can only be shared within a single Organization. You cannot share policies between different Organizations.
-* **Multiple rulesets**: You can share multiple WAF custom rulesets from the same or different source accounts.
+- **Read-only in destination accounts**: Shared WAF policies cannot be edited in the receiving accounts. To modify the rules, update them in the source account.
+- **Source account owns the policy**: If the source account is removed from the Organization, the shared policy is removed from all destination accounts.
+- **No cross-Organization sharing**: Policies can only be shared within a single Organization. You cannot share policies between different Organizations.
+- **Multiple rulesets**: You can share multiple WAF custom rulesets from the same or different source accounts.
 
 ### Share a WAF custom ruleset
 
-1. In the source account, go to **Security** \> **WAF** \> **Custom rules**.
+1. In the source account, go to **Security** > **WAF** > **Custom rules**.
 2. Create or select a custom ruleset.
 3. From the ruleset action menu, select **Share**.
 4. In the sharing dialog, select one or more destination accounts.
@@ -63,10 +63,10 @@ The shared ruleset now appears in the destination accounts under their WAF custo
 
 Share Zero Trust Gateway policies across accounts in your Organization. Gateway policy sharing supports the following policy types:
 
-* **DNS policies** — Filter and block DNS queries.
-* **Network policies** — Control network-level traffic.
-* **HTTP policies** — Inspect and filter HTTP traffic.
-* **Resolver policies** — Customize DNS resolution behavior.
+- **DNS policies** — Filter and block DNS queries.
+- **Network policies** — Control network-level traffic.
+- **HTTP policies** — Inspect and filter HTTP traffic.
+- **Resolver policies** — Customize DNS resolution behavior.
 
 ### How it works
 
@@ -77,10 +77,10 @@ Share Zero Trust Gateway policies across accounts in your Organization. Gateway 
 
 ### Key behaviors
 
-* **Read-only in destination accounts**: Shared Gateway policies cannot be edited in the receiving accounts. To modify the policy, update it in the source account.
-* **Source account owns the policy**: If the source account is removed from the Organization, the shared policy is removed from all destination accounts.
-* **All Gateway policy types supported**: DNS, Network, HTTP, and Resolver policies can all be shared.
-* **Zero Trust seat requirements**: Destination accounts must have their own Zero Trust seats and Gateway entitlements.
+- **Read-only in destination accounts**: Shared Gateway policies cannot be edited in the receiving accounts. To modify the policy, update it in the source account.
+- **Source account owns the policy**: If the source account is removed from the Organization, the shared policy is removed from all destination accounts.
+- **All Gateway policy types supported**: DNS, Network, HTTP, and Resolver policies can all be shared.
+- **Zero Trust seat requirements**: Destination accounts must have their own Zero Trust seats and Gateway entitlements.
 
 ## Manage shared policies
 
@@ -100,10 +100,10 @@ The policy is immediately removed from the destination account.
 
 ### Best practices
 
-* **Centralize policy authoring**: Designate one or two accounts as your policy source accounts. This simplifies management and ensures consistency.
-* **Use descriptive names**: Name shared policies clearly (for example, "Org-Wide OWASP Rules" or "Global DNS Block List") so destination account admins understand what the policy does.
-* **Test before sharing**: Validate policies in the source account before sharing to all destination accounts to avoid unintended blocks or rule conflicts.
-* **Monitor shared policy coverage**: Regularly review which accounts have shared policies applied to ensure no accounts are missing critical security rules.
+- **Centralize policy authoring**: Designate one or two accounts as your policy source accounts. This simplifies management and ensures consistency.
+- **Use descriptive names**: Name shared policies clearly (for example, "Org-Wide OWASP Rules" or "Global DNS Block List") so destination account admins understand what the policy does.
+- **Test before sharing**: Validate policies in the source account before sharing to all destination accounts to avoid unintended blocks or rule conflicts.
+- **Monitor shared policy coverage**: Regularly review which accounts have shared policies applied to ensure no accounts are missing critical security rules.
 
 Was this helpful?
 
@@ -114,5 +114,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/#page","headline":"Policy sharing · Cloudflare Fundamentals docs","description":"Share WAF and Gateway policies across accounts in your Cloudflare Organization.","url":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/#page","headline":"Policy sharing","description":"Share WAF and Gateway policies across accounts in your Cloudflare Organization.","url":"https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -76,6 +76,14 @@ Guardrails can be assigned at the workspace level (applying to all traffic in th
 
 See [Guardrails](/docs/guides/features/guardrails) for configuration details and the [Guardrails API reference](/docs/api/api-reference/guardrails/list-guardrails) for programmatic management.
 
+### Single Sign-On and SCIM
+
+Enterprise organizations can let members sign in through their own identity provider (Okta, Microsoft Entra ID, Google Workspace, or any custom SAML provider) instead of managing separate OpenRouter credentials. Setup is self-serve from [Settings > Members](https://openrouter.ai/settings/organization-members?tab=sso): verify your email domain, connect your IdP, then test and activate the connection.
+
+With a connection in place, SCIM group mappings tie groups from your identity provider to OpenRouter workspaces and roles, so workspace access is provisioned and revoked automatically as people move in and out of groups.
+
+See [Single Sign-On](/docs/guides/features/sso) and [SCIM Group Mappings](/docs/guides/features/scim-mappings) for the full setup walkthroughs.
+
 ### Coding agent rollout
 
 Employees who use coding agent CLIs can run them through [Ori Harness](/docs/guides/ori/harness). Install it once:

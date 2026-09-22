@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Standard
 
-Last updated Apr 16, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 **Standard steering** policies include **Off - Failover** and **Random**.
 
@@ -32,9 +32,9 @@ If no monitors are attached to the load balancer, it will direct traffic to the 
 
 In an active/standby setup, with two origin pools:
 
-* Traffic always routes to Pool 1 (the primary pool) unless it becomes unhealthy.
-* If Pool 1 is marked unhealthy, traffic shifts to Pool 2 (the standby pool).
-* Once Pool 1 becomes healthy again, traffic automatically shifts back to Pool 1, assuming no [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) or other settings require subsequent requests to stay at Pool 2.
+- Traffic always routes to Pool 1 (the primary pool) unless it becomes unhealthy.
+- If Pool 1 is marked unhealthy, traffic shifts to Pool 2 (the standby pool).
+- Once Pool 1 becomes healthy again, traffic automatically shifts back to Pool 1, assuming no [session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/) or other settings require subsequent requests to stay at Pool 2.
 
 This behavior is known as failback and ensures traffic resumes normal routing when the primary pool recovers.
 
@@ -42,7 +42,7 @@ This behavior is known as failback and ensures traffic resumes normal routing wh
 
 Choose **Random** to route traffic to a healthy pool at random. Customers can use this option to set up [active - active failover](https://developers.cloudflare.com/load-balancing/load-balancers/common-configurations/#active---active-failover) (also known as round robin), where traffic is split equally between multiple pools.
 
-Similar to setting Weights to direct the amount of traffic going to each endpoint, customers can also set Weights on pools via the [API's](https://developers.cloudflare.com/api/resources/load%5Fbalancers/methods/create/) `random_steering` object to determine the percentage of traffic sent to each pool.
+Similar to setting Weights to direct the amount of traffic going to each endpoint, customers can also set Weights on pools via the [API's](https://developers.cloudflare.com/api/resources/load_balancers/methods/create/) `random_steering` object to determine the percentage of traffic sent to each pool.
 
 Was this helpful?
 
@@ -53,5 +53,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#page","headline":"Standard traffic steering policies · Cloudflare Load Balancing docs","description":"Standard traffic steering options including failover and random.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/#page","headline":"Standard","description":"Standard traffic steering options including failover and random.","url":"https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/steering-policies/standard-options/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

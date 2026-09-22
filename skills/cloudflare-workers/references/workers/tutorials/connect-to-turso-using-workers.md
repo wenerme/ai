@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect to and query your Turso database using Workers
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and [Turso ↗](https://chiselstrike.com/), an edge-hosted distributed database based on libSQL. By using Workers and Turso, you can create applications that are close to your end users without having to maintain or operate infrastructure in tens or hundreds of regions.
 
@@ -24,10 +24,10 @@ For a more seamless experience, refer to the [Turso Database Integration guide](
 
 Before continuing with this tutorial, you should have:
 
-* Successfully [created up your first Cloudflare Worker](https://developers.cloudflare.com/workers/get-started/guide/) and/or have deployed a Cloudflare Worker before.
-* Installed [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), a command-line tool for building Cloudflare Workers.
-* A [GitHub account ↗](https://github.com/), required for authenticating to Turso.
-* A basic familiarity with installing and using command-line interface (CLI) applications.
+- Successfully [created up your first Cloudflare Worker](https://developers.cloudflare.com/workers/get-started/guide/) and/or have deployed a Cloudflare Worker before.
+- Installed [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), a command-line tool for building Cloudflare Workers.
+- A [GitHub account ↗](https://github.com/), required for authenticating to Turso.
+- A basic familiarity with installing and using command-line interface (CLI) applications.
 
 ## Install the Turso CLI
 
@@ -61,7 +61,6 @@ turso auth login
 ```
 
 ```sh
-
 Waiting for authentication...
 ✔  Success! Logged in as <your GitHub username>
 ```
@@ -123,11 +122,11 @@ pnpm create cloudflare@latest worker-turso-ts
 
 For setup, select the following options:
 
-* For _What would you like to start with?_, choose `Hello World example`.
-* For _Which template would you like to use?_, choose `Worker only`.
-* For _Which language do you want to use?_, choose `TypeScript`.
-* For _Do you want to use git for version control?_, choose `Yes`.
-* For _Do you want to deploy your application?_, choose `No` (we will be making some changes before deploying).
+- For *What would you like to start with?*, choose `Hello World example`.
+- For *Which template would you like to use?*, choose `Worker only`.
+- For *Which language do you want to use?*, choose `TypeScript`.
+- For *Do you want to use git for version control?*, choose `Yes`.
+- For *Do you want to deploy your application?*, choose `No` (we will be making some changes before deploying).
 
 To start developing your Worker, `cd` into your new project directory:
 
@@ -137,10 +136,10 @@ cd worker-turso-ts
 
 In your project directory, you now have the following files:
 
-* `wrangler.json` / `wrangler.toml`: [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)
-* `src/index.ts`: A minimal Hello World Worker written in TypeScript
-* `package.json`: A minimal Node dependencies configuration file.
-* `tsconfig.json`: TypeScript configuration that includes Workers types. Only generated if indicated.
+- `wrangler.json` / `wrangler.toml`: [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)
+- `src/index.ts`: A minimal Hello World Worker written in TypeScript
+- `package.json`: A minimal Node dependencies configuration file.
+- `tsconfig.json`: TypeScript configuration that includes Workers types. Only generated if indicated.
 
 For this tutorial, only the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) and `src/index.ts` file are relevant. You will not need to edit the other files, and they should be left as is.
 
@@ -148,8 +147,8 @@ For this tutorial, only the [Wrangler configuration file](https://developers.clo
 
 The Turso client library requires two pieces of information to make a connection:
 
-1. `LIBSQL_DB_URL` \- The connection string for your Turso database.
-2. `LIBSQL_DB_AUTH_TOKEN` \- The authentication token for your Turso database. This should be kept a secret, and not committed to source code.
+1. `LIBSQL_DB_URL` - The connection string for your Turso database.
+2. `LIBSQL_DB_AUTH_TOKEN` - The authentication token for your Turso database. This should be kept a secret, and not committed to source code.
 
 To get the URL for your database, run the following Turso CLI command, and copy the result:
 
@@ -187,8 +186,9 @@ turso db tokens create my-db -e none
 
 To keep this token secret:
 
-1. You will create a `.dev.vars` file for local development. Do not commit this file to source control. You should add `.dev.vars to your `.gitignore\` file if you are using Git.
-* You will also create a [secret](https://developers.cloudflare.com/workers/configuration/secrets/) to keep your authentication token confidential.
+1. You will create a `.dev.vars` file for local development. Do not commit this file to source control. You should add `.dev.vars to your` .gitignore\` file if you are using Git.
+
+- You will also create a [secret](https://developers.cloudflare.com/workers/configuration/secrets/) to keep your authentication token confidential.
 
 First, create a new file called `.dev.vars` with the following structure. Paste your authentication token in the quotation marks:
 
@@ -327,11 +327,11 @@ Save your `src/index.ts` file with your changes.
 
 Note:
 
-* The libSQL client library import '@libsql/client/web' must be imported exactly as shown when working with Cloudflare workers. The non-web import will not work in the Workers environment.
-* The `Env` interface contains the environment variable and secret you defined earlier.
-* The `Env` interface also caches the libSQL client object and router, which are created on the first request to the Worker.
-* The `/users` route fetches all rows from the `example_users` table you created in the Turso shell. It simply serializes the `ResultSet` object as JSON directly to the caller.
-* The `/add-user` route inserts a new row using a value provided in the query string.
+- The libSQL client library import '@libsql/client/web' must be imported exactly as shown when working with Cloudflare workers. The non-web import will not work in the Workers environment.
+- The `Env` interface contains the environment variable and secret you defined earlier.
+- The `Env` interface also caches the libSQL client object and router, which are created on the first request to the Worker.
+- The `/users` route fetches all rows from the `example_users` table you created in the Turso shell. It simply serializes the `ResultSet` object as JSON directly to the caller.
+- The `/add-user` route inserts a new row using a value provided in the query string.
 
 With your environment configured and your code ready, you will now test your Worker locally before you deploy.
 
@@ -381,8 +381,8 @@ Caution
 
 If you see an error instead of a list of users, double check that:
 
-* You have entered the correct value for your `LIBSQL_DB_URL` in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
-* You have set a secret called `LIBSQL_DB_AUTH_TOKEN` with your database authentication token.
+- You have entered the correct value for your `LIBSQL_DB_URL` in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
+- You have set a secret called `LIBSQL_DB_AUTH_TOKEN` with your database authentication token.
 
 Both of these need to be present and match the variable names in your Worker's code.
 
@@ -420,15 +420,15 @@ You have now deployed a Worker that can connect to your Turso database, query it
 
 To clean up the resources you created as part of this tutorial:
 
-* If you do not want to keep this Worker, run `npx wrangler delete worker-turso-ts` to delete the deployed Worker.
-* You can also delete your Turso database via `turso db destroy my-db`.
+- If you do not want to keep this Worker, run `npx wrangler delete worker-turso-ts` to delete the deployed Worker.
+- You can also delete your Turso database via `turso db destroy my-db`.
 
 ## Related resources
 
-* Find the [complete project source code on GitHub ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-turso-ts/).
-* Understand how to [debug your Cloudflare Worker](https://developers.cloudflare.com/workers/observability/).
-* Join the [Cloudflare Developer Discord ↗](https://discord.cloudflare.com).
-* Join the [ChiselStrike (Turso) Discord ↗](https://discord.com/invite/4B5D7hYwub).
+- Find the [complete project source code on GitHub ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-turso-ts/).
+- Understand how to [debug your Cloudflare Worker](https://developers.cloudflare.com/workers/observability/).
+- Join the [Cloudflare Developer Discord ↗](https://discord.cloudflare.com).
+- Join the [ChiselStrike (Turso) Discord ↗](https://discord.com/invite/4B5D7hYwub).
 
 Was this helpful?
 
@@ -439,5 +439,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/#page","headline":"Connect to and query your Turso database using Workers · Cloudflare Workers docs","description":"This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and Turso, an edge-hosted distributed database based on libSQL.","url":"https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/#page","headline":"Connect to and query your Turso database using Workers","description":"This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and Turso, an edge-hosted distributed database based on libSQL.","url":"https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["TypeScript","SQL"]}
 ```

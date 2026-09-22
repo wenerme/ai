@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Reference
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/multi-cloud-networking/reference/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/multi-cloud-networking/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Refer to this page for details about how Cloudflare orchestrates VPN connectivity to your cloud networks.
 
@@ -22,41 +22,41 @@ Refer to this page for details about how Cloudflare orchestrates VPN connectivit
 
 ![Diagram showing how Cloudflare creates on-ramps to AWS](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=687,format=webp/_astro/aws.CgJf-X-H.png)
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 When using Cloudflare One Multi-Cloud Networking (formerly Magic Cloud Networking) (beta) to automatically create on-ramps to your AWS account, you should be aware of the following configuration changes Cloudflare will make on your behalf:
 
-* Cloudflare will create a new customer-managed prefix list named **Cloudflare WAN and Cloudflare Edge** populated with your [Cloudflare WAN Address Space](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#cloudflare-wan-address-space) prefixes and the IPv4 address ranges for Cloudflare's global network servers (the latter prefixes are necessary if you use any Cloudflare L7 processing features). You must create rules in your Network Security Groups (NSGs) allowing traffic to/from this prefix list in order to have connectivity with Cloudflare WAN (formerly Magic WAN). (The prefix list will contain around 15 to 25 entries, which each count against the rules-per-security-group quota for NSGs in your AWS account.)
-* Cloudflare will create a Virtual Private Gateway and attach it to your Virtual Private Cloud (VPC). If an existing Virtual Private Gateway is already attached to the VPC, on-ramp creation will fail.
-* Cloudflare will enable route propagation from the Virtual Private Gateway into all route tables in your VPC. This will result in a route for each prefix in your [Cloudflare WAN Address Space](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#cloudflare-wan-address-space) targeting the gateway.
-* Cloudflare will add a route in Cloudflare WAN for each IPv4 CIDR (Classless Inter-Domain Routing) block in your VPC.
+- Cloudflare will create a new customer-managed prefix list named **Cloudflare WAN and Cloudflare Edge** populated with your [Cloudflare WAN Address Space](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#cloudflare-wan-address-space) prefixes and the IPv4 address ranges for Cloudflare's global network servers (the latter prefixes are necessary if you use any Cloudflare L7 processing features). You must create rules in your Network Security Groups (NSGs) allowing traffic to/from this prefix list in order to have connectivity with Cloudflare WAN (formerly Magic WAN). (The prefix list will contain around 15 to 25 entries, which each count against the rules-per-security-group quota for NSGs in your AWS account.)
+- Cloudflare will create a Virtual Private Gateway and attach it to your Virtual Private Cloud (VPC). If an existing Virtual Private Gateway is already attached to the VPC, on-ramp creation will fail.
+- Cloudflare will enable route propagation from the Virtual Private Gateway into all route tables in your VPC. This will result in a route for each prefix in your [Cloudflare WAN Address Space](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#cloudflare-wan-address-space) targeting the gateway.
+- Cloudflare will add a route in Cloudflare WAN for each IPv4 CIDR (Classless Inter-Domain Routing) block in your VPC.
 
 ### Azure
 
 ![Diagram showing how Cloudflare creates on-ramps to Azure](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1999,height=680,format=webp/_astro/azure.DonEYaVC.png)
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 When using Multi-Cloud Networking (beta) to automatically create on-ramps to your Azure account, you should be aware of the following configuration changes Cloudflare will make on your behalf:
 
-* Cloudflare will create a Virtual Network Gateway in your Virtual Network (VNet). Virtual Network Gateways in Azure require a subnet named `GatewaySubnet`. Cloudflare will create a `GatewaySubnet` if one does not already exist in your VNet. If there is not enough unused address space left in your VNet to create a `/27` subnet for the `GatewaySubnet`, or if a `GatewaySubnet` exists but does not have enough address space left for a Virtual Network Gateway, on-ramp creation will fail.
-* Cloudflare will enable gateway route propagation on all route tables in your VNet. This will result in a route for each prefix in your [Cloudflare WAN Address Space](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#cloudflare-wan-address-space) pointing to the gateway. If your VNet has other Virtual Network Gateways, their routes will also propagate to your route tables. If you delete the on-ramp, route propagation will not be disabled.
-* By default, Network Security Groups in Azure contain Allow rules for outbound/inbound traffic to/from the `VirtualNetwork` service tag, which includes Virtual Network Gateway address space (and therefore your Cloudflare WAN Address Space). If you do not want all resources in your VNet to be accessible from Cloudflare WAN, add the appropriate Deny rules to your Network Security Groups (NSGs).
-* Cloudflare will add a route in Cloudflare WAN for each IPv4 address range in your VNet.
+- Cloudflare will create a Virtual Network Gateway in your Virtual Network (VNet). Virtual Network Gateways in Azure require a subnet named `GatewaySubnet`. Cloudflare will create a `GatewaySubnet` if one does not already exist in your VNet. If there is not enough unused address space left in your VNet to create a `/27` subnet for the `GatewaySubnet`, or if a `GatewaySubnet` exists but does not have enough address space left for a Virtual Network Gateway, on-ramp creation will fail.
+- Cloudflare will enable gateway route propagation on all route tables in your VNet. This will result in a route for each prefix in your [Cloudflare WAN Address Space](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#cloudflare-wan-address-space) pointing to the gateway. If your VNet has other Virtual Network Gateways, their routes will also propagate to your route tables. If you delete the on-ramp, route propagation will not be disabled.
+- By default, Network Security Groups in Azure contain Allow rules for outbound/inbound traffic to/from the `VirtualNetwork` service tag, which includes Virtual Network Gateway address space (and therefore your Cloudflare WAN Address Space). If you do not want all resources in your VNet to be accessible from Cloudflare WAN, add the appropriate Deny rules to your Network Security Groups (NSGs).
+- Cloudflare will add a route in Cloudflare WAN for each IPv4 address range in your VNet.
 
 ### GCP
 
 ![Diagram showing how Cloudflare creates on-ramps to GCP](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2160,height=1016,format=webp/_astro/gcp.CxVSVz5f.png)
 
-_Note: Labels in this image may reflect a previous product name._
+*Note: Labels in this image may reflect a previous product name.*
 
 When using Multi-Cloud Networking (beta) to automatically create on-ramps to your Google Cloud Platform (GCP) account, you should be aware of the following configuration changes Cloudflare will make on your behalf:
 
-* Cloudflare will reserve a public Internet routable IP address from GCP.
-* Cloudflare will create a VPN Gateway and two VPN Tunnels in the region you specify.
-* Cloudflare will create routes for each prefix in your [Cloudflare WAN Address Space](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#cloudflare-wan-address-space) within your VPC pointing to the VPN Tunnels.
-* Cloudflare will add routes in Cloudflare WAN for all subnet CIDR prefixes in your VPC. This includes all regions within the VPC. Traffic bound for a region other than the VPN Gateway's region will be subject to GCP's [Inter-region Pricing ↗](https://cloud.google.com/vpc/network-pricing#inter-region-data-transfer).
-* Traffic sent to and from your VM instances through the VPN Tunnels is still subject to VPC firewall rules, and may [require further configuration ↗](https://cloud.google.com/network-connectivity/docs/vpn/how-to/configuring-firewall-rules#firewall%5Frules).
+- Cloudflare will reserve a public Internet routable IP address from GCP.
+- Cloudflare will create a VPN Gateway and two VPN Tunnels in the region you specify.
+- Cloudflare will create routes for each prefix in your [Cloudflare WAN Address Space](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#cloudflare-wan-address-space) within your VPC pointing to the VPN Tunnels.
+- Cloudflare will add routes in Cloudflare WAN for all subnet CIDR prefixes in your VPC. This includes all regions within the VPC. Traffic bound for a region other than the VPN Gateway's region will be subject to GCP's [Inter-region Pricing ↗](https://cloud.google.com/vpc/network-pricing#inter-region-data-transfer).
+- Traffic sent to and from your VM instances through the VPN Tunnels is still subject to VPC firewall rules, and may [require further configuration ↗](https://cloud.google.com/network-connectivity/docs/vpn/how-to/configuring-firewall-rules#firewall_rules).
 
 ## Supported resources
 
@@ -64,67 +64,67 @@ Multi-Cloud Networking (beta) discovers the following resource types in your clo
 
 ### AWS
 
-* AWS Customer Gateway
-* AWS EC2 Managed Prefix List
-* AWS EC2 Transit Gateway
-* AWS EC2 Transit Gateway Prefix List
-* AWS EC2 Transit Gateway VPC Attachment
-* AWS Egress Only Internet Gateway
-* AWS Internet Gateway
-* AWS Instance
-* AWS Network Interface
-* AWS Route Table
-* AWS Route Table Association
-* AWS Security Group
-* AWS Subnet
-* AWS VPC
-* AWS VPC IPv4 CIDR Block Association
-* AWS VPC Security Group Egress Rule
-* AWS VPC Security Group Ingress Rule
-* AWS VPN Connection
-* AWS VPN Connection Route
-* AWS VPN Gateway
+- AWS Customer Gateway
+- AWS EC2 Managed Prefix List
+- AWS EC2 Transit Gateway
+- AWS EC2 Transit Gateway Prefix List
+- AWS EC2 Transit Gateway VPC Attachment
+- AWS Egress Only Internet Gateway
+- AWS Internet Gateway
+- AWS Instance
+- AWS Network Interface
+- AWS Route Table
+- AWS Route Table Association
+- AWS Security Group
+- AWS Subnet
+- AWS VPC
+- AWS VPC IPv4 CIDR Block Association
+- AWS VPC Security Group Egress Rule
+- AWS VPC Security Group Ingress Rule
+- AWS VPN Connection
+- AWS VPN Connection Route
+- AWS VPN Gateway
 
 ### Azure
 
-* Azure Application Security Group
-* Azure Load Balancer
-* Azure Load Balancer Backend Address Pool
-* Azure Load Balancer NAT Pool
-* Azure Load Balancer NAT Rule
-* Azure Load Balancer Rule
-* Azure Local Network Gateway
-* Azure Network Interface
-* Azure Network Interface Application Security Group Association
-* Azure Network Interface Backend Address Pool Association
-* Azure Network Interface Security Group Association
-* Azure Network Security Group
-* Azure Public IP
-* Azure Route
-* Azure Route Table
-* Azure Subnet
-* Azure Subnet Route Table Association
-* Azure Virtual Machine
-* Azure Virtual Machine Gateway Connection
-* Azure Virtual Network
-* Azure Virtual Network Gateway
-* Azure Virtual Network Gateway Connection
+- Azure Application Security Group
+- Azure Load Balancer
+- Azure Load Balancer Backend Address Pool
+- Azure Load Balancer NAT Pool
+- Azure Load Balancer NAT Rule
+- Azure Load Balancer Rule
+- Azure Local Network Gateway
+- Azure Network Interface
+- Azure Network Interface Application Security Group Association
+- Azure Network Interface Backend Address Pool Association
+- Azure Network Interface Security Group Association
+- Azure Network Security Group
+- Azure Public IP
+- Azure Route
+- Azure Route Table
+- Azure Subnet
+- Azure Subnet Route Table Association
+- Azure Virtual Machine
+- Azure Virtual Machine Gateway Connection
+- Azure Virtual Network
+- Azure Virtual Network Gateway
+- Azure Virtual Network Gateway Connection
 
 ### GCP
 
-* Google Compute Address
-* Google Compute Forwarding Rule
-* Google Compute Global Address
-* Google Compute HA VPN Gateway
-* Google Compute Interconnect Attachment
-* Google Compute Network
-* Google Compute Network Firewall Policy
-* Google Compute Network Firewall Policy Rule
-* Google Compute Route
-* Google Compute Router
-* Google Compute Subnetwork
-* Google Compute VPN Gateway
-* Google Compute VPN Tunnel
+- Google Compute Address
+- Google Compute Forwarding Rule
+- Google Compute Global Address
+- Google Compute HA VPN Gateway
+- Google Compute Interconnect Attachment
+- Google Compute Network
+- Google Compute Network Firewall Policy
+- Google Compute Network Firewall Policy Rule
+- Google Compute Route
+- Google Compute Router
+- Google Compute Subnetwork
+- Google Compute VPN Gateway
+- Google Compute VPN Tunnel
 
 Was this helpful?
 
@@ -135,5 +135,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/reference/#page","headline":"Reference · Cloudflare Multi-Cloud Networking docs","description":"Reference information for Multi-Cloud Networking.","url":"https://developers.cloudflare.com/multi-cloud-networking/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/multi-cloud-networking/reference/#page","headline":"Reference","description":"Reference information for Multi-Cloud Networking.","url":"https://developers.cloudflare.com/multi-cloud-networking/reference/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

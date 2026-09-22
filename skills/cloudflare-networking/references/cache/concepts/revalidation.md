@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Revalidation
 
-Last updated Jun 26, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cache/concepts/revalidation/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/revalidation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Stale-while-revalidate
 
-When a cached asset expires, Cloudflare uses the [stale-while-revalidate](https://developers.cloudflare.com/cache/concepts/cache-control/#revalidation) directive in `Cache-Control` to determine whether it can continue serving the stale asset while fetching a fresh copy from the origin. If the directive is present and the asset is within the allowed staleness window, Cloudflare serves the expired content to visitors and revalidates in the background. By using headers like `If-Modified-Since` and `ETag`, Cloudflare validates content without fully re-fetching it, reducing origin traffic.
+When a cached asset expires, Cloudflare uses the [`stale-while-revalidate`](https://developers.cloudflare.com/cache/concepts/cache-control/#revalidation) directive in `Cache-Control` to determine whether it can continue serving the stale asset while fetching a fresh copy from the origin. If the directive is present and the asset is within the allowed staleness window, Cloudflare serves the expired content to visitors and revalidates in the background. By using headers like `If-Modified-Since` and `ETag`, Cloudflare validates content without fully re-fetching it, reducing origin traffic.
 
 ## Asynchronous revalidation
 
@@ -34,10 +34,10 @@ If your origin sets `stale-while-revalidate` but you want to override it, you ca
 
 When [Origin Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/#enable-origin-cache-control) is enabled, the following `Cache-Control` directives prevent Cloudflare from serving stale content, per [RFC 9111 §4.2.4 ↗](https://www.rfc-editor.org/rfc/rfc9111.html#section-4.2.4):
 
-* **`must-revalidate`** — Prohibits serving stale content; the cache must revalidate with the origin first.
-* **`proxy-revalidate`** — Same as `must-revalidate`, but only applies to shared caches (like Cloudflare).
-* **`s-maxage`** — Implies `proxy-revalidate` semantics, so shared caches cannot serve stale content.
-* **`no-cache`** — Requires revalidation before serving any cached response.
+- **`must-revalidate`** — Prohibits serving stale content; the cache must revalidate with the origin first.
+- **`proxy-revalidate`** — Same as `must-revalidate`, but only applies to shared caches (like Cloudflare).
+- **`s-maxage`** — Implies `proxy-revalidate` semantics, so shared caches cannot serve stale content.
+- **`no-cache`** — Requires revalidation before serving any cached response.
 
 If any of these directives are present alongside `stale-while-revalidate`, Cloudflare will not serve stale content — requests will return `EXPIRED` instead of `UPDATING`.
 
@@ -49,7 +49,7 @@ For all available directives or behavior when Origin Cache Control is disabled, 
 
 ## Smart revalidation towards users
 
-When both [Last-Modified ↗](https://datatracker.ietf.org/doc/html/rfc7232?cf%5Fhistory%5Fstate=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A15%2C%22targetId%22%3A%226C8153BAEF7BC0C5A331E28F8BCF1ABA%22%7D#section-2.2) and [Etag ↗](https://datatracker.ietf.org/doc/html/rfc7232?cf%5Fhistory%5Fstate=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A13%2C%22targetId%22%3A%226C8153BAEF7BC0C5A331E28F8BCF1ABA%22%7D#section-2.3) headers are absent from the origin server response, Smart Edge Revalidation will use the time the object was cached on Cloudflare's global network as the `Last-Modified` header value. When a browser sends a revalidation request to Cloudflare using `If-Modified-Since` or `If-None-Match`, our global network can answer those revalidation questions using the `Last-Modified` header generated from Smart Edge Revalidation. In this way, our global network can ensure efficient revalidation even if the headers are not sent from the origin.
+When both [`Last-Modified` ↗](https://datatracker.ietf.org/doc/html/rfc7232?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A15%2C%22targetId%22%3A%226C8153BAEF7BC0C5A331E28F8BCF1ABA%22%7D#section-2.2) and [`Etag` ↗](https://datatracker.ietf.org/doc/html/rfc7232?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A13%2C%22targetId%22%3A%226C8153BAEF7BC0C5A331E28F8BCF1ABA%22%7D#section-2.3) headers are absent from the origin server response, Smart Edge Revalidation will use the time the object was cached on Cloudflare's global network as the `Last-Modified` header value. When a browser sends a revalidation request to Cloudflare using `If-Modified-Since` or `If-None-Match`, our global network can answer those revalidation questions using the `Last-Modified` header generated from Smart Edge Revalidation. In this way, our global network can ensure efficient revalidation even if the headers are not sent from the origin.
 
 Was this helpful?
 
@@ -60,5 +60,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/revalidation/#page","headline":"Revalidation · Cloudflare Cache (CDN) docs","description":"How Cloudflare revalidates stale cached content with your origin.","url":"https://developers.cloudflare.com/cache/concepts/revalidation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/concepts/revalidation/#page","headline":"Revalidation","description":"How Cloudflare revalidates stale cached content with your origin.","url":"https://developers.cloudflare.com/cache/concepts/revalidation/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

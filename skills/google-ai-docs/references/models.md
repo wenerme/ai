@@ -73,6 +73,9 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 ## Gemini 2.5 Flash
 
+> [!NOTE]
+> **Note:** To ensure reliable performance for everyone, we are limiting access to the 2.5 models to users who have actively used them in the past. These models are not deprecated and will continue to be served until further notice through the API. For any new projects, use our latest models: 3.5 Flash-Lite or 3.8 Flash. This helps us maintain sufficient capacity for both ongoing legacy workflows and new applications.
+
 | Model | Description | Endpoint |
 |---|---|---|
 | [Gemini 2.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash) | Our best price-performance model for low-latency, high-volume tasks that require reasoning. | ``` gemini-2.5-flash ``` |
@@ -82,11 +85,17 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 ## Gemini 2.5 Flash-Lite
 
+> [!NOTE]
+> **Note:** To ensure reliable performance for everyone, we are limiting access to the 2.5 models to users who have actively used them in the past. These models are not deprecated and will continue to be served until further notice through the API. For any new projects, use our latest models: 3.5 Flash-Lite or 3.8 Flash. This helps us maintain sufficient capacity for both ongoing legacy workflows and new applications.
+
 | Model | Description | Endpoint |
 |---|---|---|
 | [Gemini 2.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-lite) | The fastest and most budget-friendly multimodal model in the 2.5 family. | ``` gemini-2.5-flash-lite ``` |
 
 ## Gemini 2.5 Pro
+
+> [!NOTE]
+> **Note:** To ensure reliable performance for everyone, we are limiting access to the 2.5 models to users who have actively used them in the past. These models are not deprecated and will continue to be served until further notice through the API. For any new projects, use our latest models: 3.5 Flash-Lite or 3.8 Flash. This helps us maintain sufficient capacity for both ongoing legacy workflows and new applications.
 
 | Model | Description | Endpoint |
 |---|---|---|
