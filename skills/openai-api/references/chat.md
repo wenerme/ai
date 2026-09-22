@@ -446,7 +446,7 @@ chunk objects if the request is streamed.
 
       - `"function"`
 
-- `model: string or "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 82 more`
+- `model: string or "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 83 more`
 
   Model ID used to generate the response, like `gpt-6-astra` or `o3`. OpenAI
   offers a wide range of models with different capabilities, performance
@@ -455,7 +455,7 @@ chunk objects if the request is streamed.
 
   - `string`
 
-  - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 82 more`
+  - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 83 more`
 
     Model ID used to generate the response, like `gpt-6-astra` or `o3`. OpenAI
     offers a wide range of models with different capabilities, performance
@@ -501,6 +501,8 @@ chunk objects if the request is streamed.
     - `"gpt-5.1-2025-11-13"`
 
     - `"gpt-5.1-codex"`
+
+    - `"gpt-5.1-mini"`
 
     - `"gpt-5.1-chat-latest"`
 

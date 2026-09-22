@@ -21,13 +21,13 @@
   },
   "alexanderzobnin-zabbix-app/index.md": {
     "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest.md",
-    "size": 5437,
-    "updatedAt": "2026-09-18T04:37:20.402Z"
+    "size": 6545,
+    "updatedAt": "2026-09-22T04:46:29.794Z"
   },
   "alexanderzobnin-zabbix-app/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/query-editor.md",
-    "size": 22815,
-    "updatedAt": "2026-09-18T04:37:20.600Z"
+    "size": 24511,
+    "updatedAt": "2026-09-22T04:46:29.969Z"
   },
   "alexanderzobnin-zabbix-app/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/alexanderzobnin-zabbix-app/latest/template-variables.md",
@@ -1376,8 +1376,13 @@
   },
   "grafana-netlify-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-netlify-datasource/latest.md",
-    "size": 6154,
-    "updatedAt": "2026-06-25T05:42:44.446Z"
+    "size": 15949,
+    "updatedAt": "2026-09-22T04:47:12.438Z"
+  },
+  "grafana-netlify-datasource/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-netlify-datasource/latest/troubleshooting.md",
+    "size": 8512,
+    "updatedAt": "2026-09-22T04:47:12.601Z"
   },
   "grafana-newrelic-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-newrelic-datasource/latest/alerting.md",
@@ -2281,8 +2286,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 9443,
-    "updatedAt": "2026-09-15T04:49:00.256Z"
+    "size": 9419,
+    "updatedAt": "2026-09-22T04:47:43.048Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

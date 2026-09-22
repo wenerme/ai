@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+   Add mTLS authentication and schema validation to protect my API endpoints.
    ```
 
 
@@ -175,11 +175,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
@@ -187,11 +187,11 @@ Build an AI chat agent using the Cloudflare Agents SDK with persistent conversat
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

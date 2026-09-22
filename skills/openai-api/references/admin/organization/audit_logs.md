@@ -916,11 +916,11 @@ List user actions and configuration changes within this organization.
 
         The OpenAI geography derived from the storage region.
 
-      - `provider: optional object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+      - `provider: optional AwsExternalStorageProvider or AzureExternalStorageProvider`
 
         The external storage provider configuration.
 
-        - `Aws object { account_id, bucket, external_id, 3 more }`
+        - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
           - `account_id: string`
 
@@ -936,7 +936,7 @@ List user actions and configuration changes within this organization.
 
             - `"aws"`
 
-        - `Azure object { account_name, container, region, 4 more }`
+        - `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
           - `account_name: string`
 
@@ -2731,11 +2731,11 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
         The OpenAI geography derived from the storage region.
 
-      - `provider: optional object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+      - `provider: optional AwsExternalStorageProvider or AzureExternalStorageProvider`
 
         The external storage provider configuration.
 
-        - `Aws object { account_id, bucket, external_id, 3 more }`
+        - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
           - `account_id: string`
 
@@ -2751,7 +2751,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
             - `"aws"`
 
-        - `Azure object { account_name, container, region, 4 more }`
+        - `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
           - `account_name: string`
 

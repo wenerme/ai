@@ -5,13 +5,15 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Create, view and manage snippets.
+Create snippets.
 
 ## Synopsis
 
 Snippets store and share small pieces of code or text. A snippet can
 belong to a project, or to your personal account when you pass
 `--personal`.
+
+To view and edit existing snippets, use the GitLab UI or `glab api` with the [Project snippets API](https://docs.gitlab.com/api/project_snippets/) or personal [Snippets API](https://docs.gitlab.com/api/snippets/).
 
 ## Examples
 

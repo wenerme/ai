@@ -506,7 +506,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
     An HTTP credential for OpenAI-hosted environments only. The sandbox receives an environment variable containing a placeholder, not the secret. Use the placeholder unchanged in outgoing requests. The egress proxy replaces the placeholder with the secret for allowed HTTPS destinations on ports 443 and 8443. Sandbox code cannot read the real secret or use it for local computation, such as signing a request.
 
-    - `networking: object { type }  or object { allowed_hosts, type }`
+    - `networking: CredentialNetworkingParam`
 
       The destinations where the proxy can substitute this secret. The environment network policy must also allow them.
 
@@ -656,7 +656,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -965,7 +965,7 @@ Lists a vault's credentials using ID-based pagination without returning secret v
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -1202,7 +1202,7 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -1509,7 +1509,7 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -1716,7 +1716,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -1872,7 +1872,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
     Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-    - `networking: object { type }  or object { allowed_hosts, type }`
+    - `networking: CredentialNetworking`
 
       The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -2026,7 +2026,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
     An HTTP credential for OpenAI-hosted environments only. The sandbox receives an environment variable containing a placeholder, not the secret. Use the placeholder unchanged in outgoing requests. The egress proxy replaces the placeholder with the secret for allowed HTTPS destinations on ports 443 and 8443. Sandbox code cannot read the real secret or use it for local computation, such as signing a request.
 
-    - `networking: object { type }  or object { allowed_hosts, type }`
+    - `networking: CredentialNetworkingParam`
 
       The destinations where the proxy can substitute this secret. The environment network policy must also allow them.
 
@@ -2183,6 +2183,66 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
     The object type. Always `vault.credential.deleted`.
 
     - `"vault.credential.deleted"`
+
+### Credential Networking
+
+- `CredentialNetworking = object { type }  or object { allowed_hosts, type }`
+
+  Destination permissions for an environment-variable credential. These do not grant network access to the environment.
+
+  - `Unrestricted object { type }`
+
+    Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+    - `type: "unrestricted"`
+
+      The type of the object. Always `unrestricted`.
+
+      - `"unrestricted"`
+
+  - `Limited object { allowed_hosts, type }`
+
+    Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+    - `allowed_hosts: array of string`
+
+      The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+    - `type: "limited"`
+
+      The type of the object. Always `limited`.
+
+      - `"limited"`
+
+### Credential Networking Param
+
+- `CredentialNetworkingParam = object { type }  or object { allowed_hosts, type }`
+
+  Destination permissions for an environment-variable credential. These do not grant network access to the environment.
+
+  - `Unrestricted object { type }`
+
+    Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+    - `type: "unrestricted"`
+
+      The type of the object. Always `unrestricted`.
+
+      - `"unrestricted"`
+
+  - `Limited object { allowed_hosts, type }`
+
+    Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+    - `allowed_hosts: array of string`
+
+      The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+    - `type: "limited"`
+
+      The type of the object. Always `limited`.
+
+      - `"limited"`
 
 ### Mcp OAuth Token Endpoint Auth
 

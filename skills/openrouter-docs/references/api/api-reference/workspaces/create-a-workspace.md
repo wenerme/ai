@@ -101,6 +101,11 @@ tags:
   - description: Speech-to-text endpoints
     name: STT
     x-displayName: Transcriptions
+  - description: >-
+      System One endpoints for models such as Jev, compatible with the TypeSafe
+      SDKs. See https://openrouter.ai/docs/guides/community/typesafe-sdk.
+    name: SystemOne
+    x-displayName: System One
   - description: Text-to-speech endpoints
     name: TTS
     x-displayName: Speech
@@ -154,6 +159,7 @@ paths:
                   default_provider_sort: price
                   default_text_model: openai/gpt-4o
                   description: Production environment workspace
+                  disabled_server_tools: null
                   id: 550e8400-e29b-41d4-a716-446655440000
                   include_byok_in_budgets: false
                   io_logging_api_key_ids: null
@@ -245,6 +251,32 @@ components:
           type:
             - string
             - 'null'
+        disabled_server_tools:
+          description: >-
+            OpenRouter server tools that requests in this workspace may not
+            invoke. Requests naming a disabled tool are rejected with 403. An
+            empty array or null clears the list.
+          example:
+            - openrouter:web_search
+            - openrouter:bash
+          items:
+            enum:
+              - openrouter:advisor
+              - openrouter:apply_patch
+              - openrouter:bash
+              - openrouter:datetime
+              - openrouter:fusion
+              - openrouter:image_generation
+              - openrouter:experimental__search_models
+              - openrouter:shell
+              - openrouter:subagent
+              - openrouter:tool_search
+              - openrouter:web_fetch
+              - openrouter:web_search
+            type: string
+          type:
+            - array
+            - 'null'
         io_logging_api_key_ids:
           description: Optional array of API key IDs to filter I/O logging
           example: null
@@ -299,6 +331,7 @@ components:
           default_provider_sort: price
           default_text_model: openai/gpt-4o
           description: Production environment workspace
+          disabled_server_tools: null
           id: 550e8400-e29b-41d4-a716-446655440000
           include_byok_in_budgets: false
           io_logging_api_key_ids: null
@@ -410,6 +443,7 @@ components:
         default_provider_sort: price
         default_text_model: openai/gpt-4o
         description: Production environment workspace
+        disabled_server_tools: null
         id: 550e8400-e29b-41d4-a716-446655440000
         include_byok_in_budgets: false
         io_logging_api_key_ids: null
@@ -463,6 +497,16 @@ components:
           example: Production environment workspace
           type:
             - string
+            - 'null'
+        disabled_server_tools:
+          description: >-
+            OpenRouter server tools (e.g. openrouter:web_search) that requests
+            in this workspace may not invoke. Null means no tools are disabled.
+          example: null
+          items:
+            type: string
+          type:
+            - array
             - 'null'
         id:
           description: Unique identifier for the workspace

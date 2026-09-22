@@ -22,75 +22,73 @@ List the organization's customer-managed external storage configurations.
 
 ### Returns
 
-- `ListExternalStorageResponse object { data, first_id, has_more, 2 more }`
+- `data: array of ExternalStorageConfiguration`
 
-  - `data: array of OrganizationExternalStorage`
+  - `id: string`
 
-    - `id: string`
+  - `created_at: number`
 
-    - `created_at: number`
+  - `geography: string`
 
-    - `geography: string`
+  - `object: "organization.external_storage"`
 
-    - `object: "organization.external_storage"`
+    - `"organization.external_storage"`
 
-      - `"organization.external_storage"`
+  - `project_id: string`
 
-    - `project_id: string`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
 
-    - `provider: object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+    - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
-      - `Aws object { account_id, bucket, external_id, 3 more }`
+      - `account_id: string`
 
-        - `account_id: string`
+      - `bucket: string`
 
-        - `bucket: string`
+      - `external_id: string`
 
-        - `external_id: string`
+      - `region: string`
 
-        - `region: string`
+      - `role_arn: string`
 
-        - `role_arn: string`
+      - `type: "aws"`
 
-        - `type: "aws"`
+        - `"aws"`
 
-          - `"aws"`
+    - `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
-      - `Azure object { account_name, container, region, 4 more }`
+      - `account_name: string`
 
-        - `account_name: string`
+      - `container: string`
 
-        - `container: string`
+      - `region: string`
 
-        - `region: string`
+      - `resource_group: string`
 
-        - `resource_group: string`
+      - `subscription_id: string`
 
-        - `subscription_id: string`
+      - `tenant_id: string`
 
-        - `tenant_id: string`
+      - `type: "azure"`
 
-        - `type: "azure"`
+        - `"azure"`
 
-          - `"azure"`
+  - `status: "pending" or "validated" or "unhealthy"`
 
-    - `status: "pending" or "validated" or "unhealthy"`
+    - `"pending"`
 
-      - `"pending"`
+    - `"validated"`
 
-      - `"validated"`
+    - `"unhealthy"`
 
-      - `"unhealthy"`
+- `first_id: string or null`
 
-  - `first_id: string or null`
+- `has_more: boolean`
 
-  - `has_more: boolean`
+- `last_id: string or null`
 
-  - `last_id: string or null`
+- `object: "list"`
 
-  - `object: "list"`
-
-    - `"list"`
+  - `"list"`
 
 ### Example
 

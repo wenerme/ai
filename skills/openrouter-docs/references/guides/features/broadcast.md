@@ -4,9 +4,9 @@
 
 # Broadcast
 
-> Send traces to external observability platforms
+> Send traces from your OpenRouter requests to external observability platforms
 
-Broadcast allows you to automatically send traces from your OpenRouter requests to external observability and analytics platforms. This feature enables you to monitor, debug, and analyze your LLM usage across your preferred tools without any additional instrumentation in your application code.
+Broadcast is the part of OpenRouter's observability suite that ships your data out. It is configured under **Settings > Observability** in your dashboard, and it automatically sends traces from your OpenRouter requests to external observability and analytics platforms. This feature enables you to monitor, debug, and analyze your LLM usage across your preferred tools without any additional instrumentation in your application code.
 
 ## Enabling Broadcast
 
@@ -295,9 +295,17 @@ Each observability platform may recognize different metadata keys. See the desti
 
 ### Fields Exported by Destination
 
-Every destination receives the same trace, but each maps a different subset of fields into its payload. Open a group to see which fields reach each destination.
+OpenRouter builds one trace per request, but not every destination stores every field in it. Use the tables below to check whether a specific field (for example `sessionId`, `totalCost`, or the prompt content) will show up in a given destination. Fields are grouped by topic; open a group to see its table.
 
-<Icon icon="check" color="#16a34a" /> exported · <Icon icon="eye-slash" color="#ca8a04" /> exported, redacted in [privacy mode](#privacy-mode) · — not exported. Fields are trace-level or span-level (`observations[]`) fields of the [trace payload](#trace-data).
+**How to read the tables**
+
+Each row is a destination. Each column is a field from the [trace payload](#trace-data). The cell tells you whether that destination receives that field:
+
+* <Icon icon="check" color="#16a34a" /> **Sent.** The destination receives this field.
+* <Icon icon="eye-slash" color="#ca8a04" /> **Sent unless Privacy Mode is on.** The destination receives this field normally, but it is stripped when [Privacy Mode](#privacy-mode) is enabled for that destination.
+* — **Not sent.** The destination never receives this field, even though it is present in the trace.
+
+Some field names appear at both the top level of the trace and inside each `observations[]` entry (the per-request span). Where that matters, the column header says `(trace)` or `(span)`.
 
 <div className="support-matrix">
   <AccordionGroup>

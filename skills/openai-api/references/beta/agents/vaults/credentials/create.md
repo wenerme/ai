@@ -124,7 +124,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
     An HTTP credential for OpenAI-hosted environments only. The sandbox receives an environment variable containing a placeholder, not the secret. Use the placeholder unchanged in outgoing requests. The egress proxy replaces the placeholder with the secret for allowed HTTPS destinations on ports 443 and 8443. Sandbox code cannot read the real secret or use it for local computation, such as signing a request.
 
-    - `networking: object { type }  or object { allowed_hosts, type }`
+    - `networking: CredentialNetworkingParam`
 
       The destinations where the proxy can substitute this secret. The environment network policy must also allow them.
 
@@ -274,7 +274,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 

@@ -219,7 +219,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 prompt
 
-`string`maxLength: 2000Text prompt describing the video to generate. Optional when at least one reference image, video, or audio clip is provided (Seedance 2.5 supports audio-only input).
+`string`maxLength: 25000Text prompt describing the video to generate. Optional when at least one reference image, video, or audio clip is provided (Seedance 2.5 supports audio-only input).
 
 image
 

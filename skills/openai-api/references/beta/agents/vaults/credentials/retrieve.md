@@ -114,7 +114,7 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 

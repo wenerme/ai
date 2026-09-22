@@ -12,11 +12,13 @@ Any existing account wide settings will continue to apply. Guardrails help enfor
 
 ## Enabling Guardrails
 
-To create and manage guardrails for your account or organization:
+Guardrails are managed per [workspace](/docs/guides/features/workspaces). To create and manage guardrails:
 
-1. Navigate to [Settings > Privacy](https://openrouter.ai/settings/privacy) in your OpenRouter dashboard
-2. Scroll to the Guardrails section
-3. Click "New Guardrail" to create your first guardrail
+1. Open the workspace in your OpenRouter dashboard and navigate to its **Guardrails** page (for the default workspace, [Workspaces > Default > Guardrails](https://openrouter.ai/workspaces/default/guardrails))
+2. Click "New Guardrail" to create your first guardrail
+3. Save it, then assign it under the guardrail's **Members** or **API Keys** sections
+
+Account-wide data policies and provider restrictions live separately under [Settings > Privacy](https://openrouter.ai/settings/privacy). Workspaces inherit those policies, and guardrails add more restrictive rules on top of them.
 
 <Tip>
   If you're using an organization account, you must be an organization admin to create and manage guardrails.

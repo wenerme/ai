@@ -5,7 +5,7 @@ description: "Browse DevPass (LLM Gateway) model IDs, capabilities, context wind
 
 # [DevPass (LLM Gateway) logo]DevPass (LLM Gateway)
 
-Access 193 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 194 DevPass (LLM Gateway) models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [DevPass (LLM Gateway) documentation](https://llmgateway.io/docs).
 
@@ -744,8 +744,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.088,
-    "outputCost": 0.25
+    "inputCost": 0.07,
+    "outputCost": 0.19
   },
   {
     "model": "llmgateway/glm-5v-turbo",
@@ -1265,6 +1265,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "llmgateway/grok-4-6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 500000,
+    "maxOutput": 500000,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
+    "model": "llmgateway/grok-4-7",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
