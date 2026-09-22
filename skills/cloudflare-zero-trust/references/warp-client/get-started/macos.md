@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # macOS
 
-Last updated May 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/warp-client/get-started/macos/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/warp-client/get-started/macos/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Looking for Zero Trust?
 
@@ -42,16 +42,16 @@ WARP mode is the default and the recommended mode of operation. However, if you 
 Beyond the two modes of operation, the WARP app lets you configure additional options to better suit your needs. You can change the protocol used to connect to Cloudflare or enable [1.1.1.1 for Families](https://developers.cloudflare.com/1.1.1.1/setup/#1111-for-families), for example. To access these options:
 
 1. Select the WARP app icon.
-2. Select the **cog icon** \> **Preferences**.
+2. Select the **cog icon** > **Preferences**.
 
 The following is a list of options you can configure in the **Connection** tab:
 
-* **Disable for all Wi-Fi / wired networks**: Check the box corresponding to the network where you want to prevent WARP from working on.
-* **DNS Protocol**: The available options depend on the WARP mode you have enabled:
-  * **WARP**: Only available when you have the WARP mode enabled. All DNS traffic encrypted and [sent to Cloudflare's global network](https://developers.cloudflare.com/warp-client/warp-modes/#1111-with-warp).
-  * **HTTPS**: All DNS traffic is sent outside the tunnel via [DNS over HTTPS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/).
-  * **TLS**: All DNS traffic is sent outside the tunnel via [encrypted TLS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/).
-* **1.1.1.1 for Families**: Allows you to [enable 1.1.1.1 for Families](https://developers.cloudflare.com/1.1.1.1/setup/#1111-for-families) and choose between blocking malware, or blocking malware and adult content.
+- **Disable for all Wi-Fi / wired networks**: Check the box corresponding to the network where you want to prevent WARP from working on.
+- **DNS Protocol**: The available options depend on the WARP mode you have enabled:
+  - **WARP**: Only available when you have the WARP mode enabled. All DNS traffic encrypted and [sent to Cloudflare's global network](https://developers.cloudflare.com/warp-client/warp-modes/#1111-with-warp).
+  - **HTTPS**: All DNS traffic is sent outside the tunnel via [DNS over HTTPS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/).
+  - **TLS**: All DNS traffic is sent outside the tunnel via [encrypted TLS](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/).
+- **1.1.1.1 for Families**: Allows you to [enable 1.1.1.1 for Families](https://developers.cloudflare.com/1.1.1.1/setup/#1111-for-families) and choose between blocking malware, or blocking malware and adult content.
 
 For the **Advanced** options, refer to [Exclude or include network traffic with WARP](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/) for more information.
 
@@ -65,15 +65,15 @@ This is the main GUI application that you interact with. You can find it in`/App
 
 This is the daemon service responsible for establishing the wireguard tunnel and all interaction between our service endpoint and the Cloudflare WARP application. Here is where you can find:
 
-* **Service**: `/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP`
-* **Definition**: `/Library/LaunchDaemons/com.cloudflare.1dot1dot1dot1.macos.warp.daemon.plist`
+- **Service**: `/Applications/Cloudflare WARP.app/Contents/Resources/CloudflareWARP`
+- **Definition**: `/Library/LaunchDaemons/com.cloudflare.1dot1dot1dot1.macos.warp.daemon.plist`
 
 ### Log files
 
-The macOS application places log files in two locations based on what part of the app is logging information. These logs are included with a feedback submission, when you select the checkbox in **Feedback** \> **Share debug information**.
+The macOS application places log files in two locations based on what part of the app is logging information. These logs are included with a feedback submission, when you select the checkbox in **Feedback** > **Share debug information**.
 
-* **Daemon and install logs**: `/Library/Application Support/Cloudflare`.
-* **Application GUI logs**: `/Users/<your local username>/Library/Logs/Cloudflare`.
+- **Daemon and install logs**: `/Library/Application Support/Cloudflare`.
+- **Application GUI logs**: `/Users/<your local username>/Library/Logs/Cloudflare`.
 
 ## How to remove the application
 
@@ -97,5 +97,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/get-started/macos/#page","headline":"macOS desktop client · Cloudflare WARP client docs","description":"Install and configure WARP on macOS.","url":"https://developers.cloudflare.com/warp-client/get-started/macos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MacOS"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/warp-client/get-started/macos/#page","headline":"macOS","description":"Install and configure WARP on macOS.","url":"https://developers.cloudflare.com/warp-client/get-started/macos/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MacOS"]}
 ```

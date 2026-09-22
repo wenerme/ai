@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configure IPv6 (beta)
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/ipv6/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/how-to/ipv6/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 IPv6 (beta) for Magic Transit allows customers with existing IPv4 tunnels to enable and test IPv6 functionality with minimal configuration changes. This beta provides an opportunity to evaluate IPv6 addressing, routing, and security within Magic Transit while maintaining the existing IPv4 setup.
 
@@ -25,20 +25,21 @@ Cloudflare transports IPv6 traffic over an IPv6-over-IPv4 GRE tunnel. Here is ho
 1. The IPv6 packet is encapsulated into an IPv4 GRE packet, with the IP protocol field set to `47` (indicating it is a GRE packet) along with a GRE header.
 2. The IPv4 packet header and GRE header are the additional headers (or encapsulation overhead) that ensure the correct routing of the IPv6 traffic.
 3. On most routers that support this tunneling method, the tunnel mode is set to `gre`.
-![The IPv4 packet header and GRE header are the additional headers \(or encapsulation overhead\) that ensure the correct routing of the IPv6 traffic.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=572,height=124,format=webp/_astro/ipv6.CBQeelu5.png)
+
+![The IPv4 packet header and GRE header are the additional headers (or encapsulation overhead) that ensure the correct routing of the IPv6 traffic.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=572,height=124,format=webp/_astro/ipv6.CBQeelu5.png)
 
 ## Current known limitations
 
-* The IPv6 beta is not available for accounts with CNI (Cloudflare Network Interconnect) links configured.
-* MTU (Maximum Transmission Unit) is 1,420 bytes for egress traffic (does not impact Direct Server Return).
-* Cloudflare Network Firewall supports two matching fields for IPv6 traffic: source IP address and destination IP address.
-* Cloudflare supports the advertisement of IPv6 prefixes ranging from `/48` to `/32`.
-* Limited to IPv4-based [tunnel health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/) only.
-* Supports only IPv4-based endpoint health checks.
+- The IPv6 beta is not available for accounts with CNI (Cloudflare Network Interconnect) links configured.
+- MTU (Maximum Transmission Unit) is 1,420 bytes for egress traffic (does not impact Direct Server Return).
+- Cloudflare Network Firewall supports two matching fields for IPv6 traffic: source IP address and destination IP address.
+- Cloudflare supports the advertisement of IPv6 prefixes ranging from `/48` to `/32`.
+- Limited to IPv4-based [tunnel health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/) only.
+- Supports only IPv4-based endpoint health checks.
 
 ## How to configure IPv6
 
-Since IPv6 works over an existing IPv4 tunnel, you need to select either an existing IPv4 GRE tunnel or create a new one to test IPv6\. All settings that apply to the IPv4 GRE tunnel apply to the IPv6 tunnel as well, except for any MSS clamping you might need to configure — refer to [MSS clamping recommendations](#mss-clamping-recommendations) in the following section for more information.
+Since IPv6 works over an existing IPv4 tunnel, you need to select either an existing IPv4 GRE tunnel or create a new one to test IPv6. All settings that apply to the IPv4 GRE tunnel apply to the IPv6 tunnel as well, except for any MSS clamping you might need to configure — refer to [MSS clamping recommendations](#mss-clamping-recommendations) in the following section for more information.
 
 To test and set up IPv6 in the Cloudflare dashboard, complete one new field when creating a new IPv4 GRE tunnel or editing an existing one: **IPv6 Interface address**. Enter the Cloudflare-assigned IPv6 address for the Cloudflare side of the tunnel. Each tunnel is assigned a `/127` subnet from your allocated `/96` range. You configure one address on the Cloudflare side and the other address on your router.
 
@@ -60,13 +61,13 @@ In this example, the first two addresses in the range (`::0` and `::1`) are rese
 
 If you decide to use the first available `/127` after the reserved addresses (`2001:db8:abcd:1234::2/127`), your configuration would be:
 
-* **Cloudflare IPv6 Interface address**: `2001:db8:abcd:1234::2`
-* **Router IPv6 address**: `2001:db8:abcd:1234::3`
+- **Cloudflare IPv6 Interface address**: `2001:db8:abcd:1234::2`
+- **Router IPv6 address**: `2001:db8:abcd:1234::3`
 
 Continuing with the example, the next `/127` for the second tunnel would be `2001:db8:abcd:1234::4/127`. Thus, your configuration would be:
 
-* **Cloudflare IPv6 Interface address**: `2001:db8:abcd:1234::4`
-* **Router IPv6 address**: `2001:db8:abcd:1234::5`
+- **Cloudflare IPv6 Interface address**: `2001:db8:abcd:1234::4`
+- **Router IPv6 address**: `2001:db8:abcd:1234::5`
 
 After the first two reserved addresses, you can continue allocating `/127` subnets sequentially (or in any order you prefer) for as many tunnels as needed until you reach the end of your `/96` range. Each `/127` contains exactly two IPv6 addresses — one for Cloudflare, one for your router.
 
@@ -83,5 +84,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/#page","headline":"Configure IPv6 (beta) · Cloudflare Magic Transit docs","description":"Configure IPv6 support for Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/#page","headline":"Configure IPv6 (beta)","description":"Configure IPv6 support for Magic Transit.","url":"https://developers.cloudflare.com/magic-transit/how-to/ipv6/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPv6"]}
 ```

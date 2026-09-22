@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Build watch paths
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you connect a git repository to Workers, by default a change to any file in the repository will trigger a build. You can configure Workers to include or exclude specific paths to specify if Workers should skip a build for a given path. This can be especially helpful if you are using a monorepo project structure and want to limit the number of builds being kicked off.
 
@@ -21,12 +21,12 @@ When you connect a git repository to Workers, by default a change to any file in
 To configure which paths are included and excluded:
 
 1. In **Overview**, select your Workers project.
-2. Go to **Settings** \> **Build** \> **Build watch paths**. Workers will default to setting your project’s includes paths to everything (\[\*\]) and excludes paths to nothing (`[]`).
+2. Go to **Settings** > **Build** > **Build watch paths**. Workers will default to setting your project’s includes paths to everything (\[\*]) and excludes paths to nothing ( `[]`).
 
 The configuration fields can be filled in two ways:
 
-* **Static filepaths**: Enter the precise name of the file you are looking to include or exclude (for example, `docs/README.md`).
-* **Wildcard syntax:** Use wildcards to match multiple path directories. You can specify wildcards at the start or end of your rule.
+- **Static filepaths**: Enter the precise name of the file you are looking to include or exclude (for example, `docs/README.md`).
+- **Wildcard syntax:** Use wildcards to match multiple path directories. You can specify wildcards at the start or end of your rule.
 
 Wildcard syntax
 
@@ -34,14 +34,14 @@ A wildcard (`*`) is a character that is used within rules. It can be placed alon
 
 For each path in a push event, build watch paths will be evaluated as follows:
 
-* Paths satisfying excludes conditions are ignored first
-* Any remaining paths are checked against includes conditions
-* If any matching path is found, a build is triggered. Otherwise the build is skipped
+- Paths satisfying excludes conditions are ignored first
+- Any remaining paths are checked against includes conditions
+- If any matching path is found, a build is triggered. Otherwise the build is skipped
 
 Workers will bypass the path matching for a push event and default to building the project if:
 
-* A push event contains 0 file changes, in case a user pushes an empty push event to trigger a build
-* A push event contains 3000+ file changes or 20+ commits
+- A push event contains 0 file changes, in case a user pushes an empty push event to trigger a build
+- A push event contains 3000+ file changes or 20+ commits
 
 ## Examples
 
@@ -49,22 +49,22 @@ Workers will bypass the path matching for a push event and default to building t
 
 If you want to trigger a build from all changes within a set of directories, such as all changes in the folders `project-a/` and `packages/`
 
-* Include paths: `project-a/*, packages/*`
-* Exclude paths: \`\`
+- Include paths: `project-a/*, packages/*`
+- Exclude paths: \`\`
 
 ### Example 2
 
 If you want to trigger a build for any changes, but want to exclude changes to a certain directory, such as all changes in a docs/ directory
 
-* Include paths: `*`
-* Exclude paths: `docs/*`
+- Include paths: `*`
+- Exclude paths: `docs/*`
 
 ### Example 3
 
 If you want to trigger a build for a specific file or specific filetype, for example all files ending in `.md`.
 
-* Include paths: `*.md`
-* Exclude paths: \`\`
+- Include paths: `*.md`
+- Exclude paths: \`\`
 
 Was this helpful?
 
@@ -75,5 +75,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/#page","headline":"Build watch paths · Cloudflare Workers docs","description":"Reduce compute for your monorepo by specifying paths for Workers Builds to skip","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/#page","headline":"Build watch paths","description":"Reduce compute for your monorepo by specifying paths for Workers Builds to skip","url":"https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

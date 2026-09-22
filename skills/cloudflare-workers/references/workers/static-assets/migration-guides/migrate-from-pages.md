@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Migrate from Pages to Workers
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can deploy full-stack applications, including front-end static assets and back-end APIs, as well as server-side rendered pages (SSR), with [Cloudflare Workers](https://developers.cloudflare.com/workers/static-assets/).
 
@@ -63,7 +63,7 @@ Now, with **Cloudflare Workers**:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"assets": {
 		"directory": "./dist/client/"
 	}
@@ -73,7 +73,7 @@ Now, with **Cloudflare Workers**:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 
 [assets]
 directory = "./dist/client/"
@@ -95,7 +95,7 @@ For a Single Page Application (SPA):
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "single-page-application"
@@ -106,7 +106,7 @@ For a Single Page Application (SPA):
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 
 [assets]
 directory = "./dist/client/"
@@ -119,7 +119,7 @@ For custom 404 pages:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "404-page"
@@ -130,7 +130,7 @@ For custom 404 pages:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 
 [assets]
 directory = "./dist/client/"
@@ -171,7 +171,7 @@ Then, update your configuration file's `main` field to point to the location of 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"main": "./dist/client/_worker.js", // or some other location if you moved the script out of the static asset directory
 	"assets": {
 		"directory": "./dist/client/"
@@ -182,7 +182,7 @@ Then, update your configuration file's `main` field to point to the location of 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 main = "./dist/client/_worker.js"
 
 [assets]
@@ -215,7 +215,7 @@ Once the Worker script has been compiled, you can update your configuration file
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"main": "./dist/worker/index.js",
 	"assets": {
 		"directory": "./dist/client/"
@@ -226,7 +226,7 @@ Once the Worker script has been compiled, you can update your configuration file
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 main = "./dist/worker/index.js"
 
 [assets]
@@ -243,7 +243,7 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"main": "./dist/worker/index.js",
 	"assets": {
 		"directory": "./dist/client/",
@@ -255,7 +255,7 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 main = "./dist/worker/index.js"
 
 [assets]
@@ -295,7 +295,7 @@ export default class extends WorkerEntrypoint {
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"main": "./worker/index.ts",
 	"assets": {
 		"directory": "./dist/client/"
@@ -306,7 +306,7 @@ export default class extends WorkerEntrypoint {
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 main = "./worker/index.ts"
 
 [assets]
@@ -321,7 +321,7 @@ Pages automatically provided [an `ASSETS` binding](https://developers.cloudflare
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"main": "./worker/index.ts",
 	"assets": {
 		"directory": "./dist/client/",
@@ -333,7 +333,7 @@ Pages automatically provided [an `ASSETS` binding](https://developers.cloudflare
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 main = "./worker/index.ts"
 
 [assets]
@@ -349,7 +349,7 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"compatibility_flags": ["nodejs_compat"],
 	"main": "./worker/index.ts",
 	"placement": {
@@ -365,7 +365,7 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 compatibility_flags = [ "nodejs_compat" ]
 main = "./worker/index.ts"
 
@@ -401,42 +401,47 @@ If you are using Pages' built-in CI/CD system, you can swap this for Workers Bui
 
 Pages automatically creates a preview environment for each project, and can be independently configured.
 
-To get a similar experience in Workers, you must:
+To get a similar experience in Workers:
 
-1. Ensure [preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) are enabled (they are on by default).
+1. Add a `previews` block and enable `workers.dev` Preview URLs in your Wrangler configuration file.
 
    ```jsonc
    {
-   	"name": "my-worker",
-   	// Set this to today's date
-   	"compatibility_date": "2026-09-14",
-   	"main": "./worker/index.ts",
-   	"assets": {
-   		"directory": "./dist/client/"
-   	},
-   	"preview_urls": true
+       "name": "my-worker",
+       // Set this to today's date
+       "compatibility_date": "2026-09-22",
+       "main": "./worker/index.ts",
+       "assets": {
+           "directory": "./dist/client/"
+       },
+       "preview_urls": true,
+       "previews": {}
    }
    ```
 
    ```toml
    name = "my-worker"
    # Set this to today's date
-   compatibility_date = "2026-09-14"
+   compatibility_date = "2026-09-22"
    main = "./worker/index.ts"
    preview_urls = true
+   previews = { }
 
    [assets]
    directory = "./dist/client/"
    ```
 
 
-2. [Enable non-production branch builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds) in Workers Builds.
+2. [Enable preview builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds) in Workers Builds.
+3. If an existing Workers Builds project still uses the previous preview model, complete the [one-time switch to Worker Previews](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#existing-workers-connected-to-builds).
 
-Optionally, you can also [protect these preview URLs with Cloudflare Access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/).
+Optionally, you can also [protect these Preview URLs with Cloudflare Access](https://developers.cloudflare.com/workers/previews/#access-control).
 
 Note
 
-Unlike Pages, Workers does not natively support defining different bindings in production vs. non-production builds. This is something we are actively exploring, but in the meantime, you may wish to consider using [Wrangler Environments](https://developers.cloudflare.com/workers/wrangler/environments/) and an [appropriate Workers Build configuration](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments) to achieve this.
+Previews support different runtime settings for preview builds and production builds. Use [Preview settings](https://developers.cloudflare.com/workers/previews/configuration/) or the `previews` block in your Wrangler configuration to point preview builds at test bindings, variables, secrets, and resources.
+
+For new Workers created with Workers Builds, preview builds use `wrangler preview` by default. Existing projects may need to update their [Preview command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#preview-command) to `npx wrangler preview`.
 
 ### Headers and redirects
 
@@ -450,7 +455,7 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-14",
+	"compatibility_date": "2026-09-22",
 	"main": "./worker/index.ts",
 	"workers_dev": true
 }
@@ -459,7 +464,7 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 main = "./worker/index.ts"
 workers_dev = true
 ```
@@ -516,7 +521,7 @@ This compatibility matrix compares the features of Workers and Pages. Unless oth
 | [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) | ✅ | ❌ |
 | [Rollbacks](https://developers.cloudflare.com/workers/versions-and-deployments/rollbacks/) | ✅ | ✅ |
 | [Gradual Deployments](https://developers.cloudflare.com/workers/versions-and-deployments/) | ✅ | ❌ |
-| [Preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) | ✅ | ✅ |
+| [Preview URLs](https://developers.cloudflare.com/workers/previews/) | ✅ | ✅ |
 | [Testing tools](https://developers.cloudflare.com/workers/testing) | ✅ | ✅ |
 | [Local Development](https://developers.cloudflare.com/workers/local-development/) | ✅ | ✅ |
 | [Remote Development (`--remote`)](https://developers.cloudflare.com/workers/wrangler/commands/) | ✅ | ❌ |
@@ -578,7 +583,7 @@ This compatibility matrix compares the features of Workers and Pages. Unless oth
 1. Workers can use Early Hints when the zone setting is turned on. Your Worker must send the appropriate `Link` headers. For more information, refer to the [103 Early Hints](https://developers.cloudflare.com/workers/examples/103-early-hints/) example. [↩](#user-content-fnref-1)
 2. Middleware can be configured via the [`run_worker_first`](https://developers.cloudflare.com/workers/static-assets/binding/#run_worker_first) option, but is charged as a normal Worker invocation. We plan to explore additional related options in the future. [↩](#user-content-fnref-2)
 3. To [use Durable Objects with your Cloudflare Pages project](https://developers.cloudflare.com/pages/functions/bindings/#durable-objects), you must create a separate Worker with a Durable Object and then declare a binding to it in both your Production and Preview environments. Using Durable Objects with Workers is simpler and recommended. [↩](#user-content-fnref-3)
-4. Workers Builds supports enabling [non-production branch builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds), though does not yet have the same level of configurability as Pages does. [↩](#user-content-fnref-4)
+4. Workers Builds supports enabling [preview builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds), though does not yet have the same level of configurability as Pages does. [↩](#user-content-fnref-4)
 5. Workers [supports popular frameworks](https://developers.cloudflare.com/workers/framework-guides/), many of which implement file-based routing. Additionally, you can use Wrangler to [compile your folder of `functions/`](#pages-functions-with-a-functions-folder) into a Worker to help ease the migration from Pages to Workers. [↩](#user-content-fnref-5)
 6. As in <sup>5</sup>, Wrangler can [compile your Pages Functions into a Worker](#pages-functions-with-a-functions-folder). Or if you are starting from scratch, everything that is possible with Pages Functions can also be achieved by adding code to your Worker or by using framework-specific plugins for relevant third party tools. [↩](#user-content-fnref-6)
 
@@ -591,5 +596,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/#page","headline":"Migrate from Pages to Workers · Cloudflare Workers docs","description":"A guide for migrating from Cloudflare Pages to Cloudflare Workers. Includes a compatibility matrix for comparing the features of Cloudflare Workers and Pages.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/#page","headline":"Migrate from Pages to Workers","description":"A guide for migrating from Cloudflare Pages to Cloudflare Workers. Includes a compatibility matrix for comparing the features of Cloudflare Workers and Pages.","url":"https://developers.cloudflare.com/workers/static-assets/migration-guides/migrate-from-pages/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

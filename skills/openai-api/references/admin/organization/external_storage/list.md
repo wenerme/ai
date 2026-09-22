@@ -36,7 +36,7 @@ List the organization's customer-managed external storage configurations.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -71,6 +71,24 @@ List the organization's customer-managed external storage configurations.
       - `type: "azure"`
 
         - `"azure"`
+
+    - `Gcp object { audience, bucket, region, 4 more }`
+
+      - `audience: string`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `type: "gcp"`
+
+        - `"gcp"`
+
+      - `workload_identity_pool_id: string`
+
+      - `workload_identity_project_number: string`
+
+      - `workload_identity_provider_id: string`
 
   - `status: "pending" or "validated" or "unhealthy"`
 

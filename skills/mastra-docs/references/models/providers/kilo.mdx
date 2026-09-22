@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 381 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 382 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -107,9 +107,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 393216,
-    "inputCost": 0.53196,
-    "outputCost": 1.59588
+    "maxOutput": 943718,
+    "inputCost": 0.624,
+    "outputCost": 2.88
   },
   {
     "model": "kilo/~deepseek/deepseek-v4-flash-latest",
@@ -120,8 +120,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 0.04,
-    "outputCost": 0.4
+    "inputCost": 0.03,
+    "outputCost": 1
   },
   {
     "model": "kilo/~google/gemini-flash-latest",
@@ -239,7 +239,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 102400,
+    "maxOutput": 943718,
     "inputCost": 0.075,
     "outputCost": 0.25
   },
@@ -251,9 +251,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 131072,
-    "inputCost": 0.7728,
-    "outputCost": 2.4288
+    "maxOutput": 943718,
+    "inputCost": 0.6545,
+    "outputCost": 2.057
   },
   {
     "model": "kilo/aion-labs/aion-2.0",
@@ -1468,18 +1468,6 @@ for await (const chunk of stream) {
     "outputCost": 0.4
   },
   {
-    "model": "kilo/kwaipilot/kat-coder-pro-v2",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 144000,
-    "inputCost": 0.3,
-    "outputCost": 1.2
-  },
-  {
     "model": "kilo/kwaipilot/kat-coder-pro-v2.5",
     "imageInput": false,
     "audioInput": false,
@@ -2140,6 +2128,18 @@ for await (const chunk of stream) {
     "outputCost": 1.9
   },
   {
+    "model": "kilo/nex-agi/nex-n2.5-mini",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 235929,
+    "inputCost": 0.025,
+    "outputCost": 0.1
+  },
+  {
     "model": "kilo/nex-agi/nex-n2.5-mini:free",
     "imageInput": true,
     "audioInput": false,
@@ -2150,6 +2150,18 @@ for await (const chunk of stream) {
     "maxOutput": 235929,
     "inputCost": null,
     "outputCost": null
+  },
+  {
+    "model": "kilo/nex-agi/nex-n2.5-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 235929,
+    "inputCost": 0.075,
+    "outputCost": 0.25
   },
   {
     "model": "kilo/nex-agi/nex-n2.5-pro:free",
@@ -3490,8 +3502,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 32768,
+    "contextWindow": 262144,
+    "maxOutput": 235929,
     "inputCost": 0.15,
     "outputCost": 1.2
   },
@@ -4116,8 +4128,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 128000,
-    "inputCost": 0.0825,
-    "outputCost": 0.33
+    "inputCost": 0.13,
+    "outputCost": 0.53
   },
   {
     "model": "kilo/tencent/hy3-preview",

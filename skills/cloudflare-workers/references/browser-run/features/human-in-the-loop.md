@@ -12,16 +12,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Human in the Loop
 
-Last updated Jul 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Some browser automation workflows require manual intervention. A login page may need multi-factor authentication, a form may require sensitive credentials you do not want to pass to an automation script, or a task may be too complex to fully automate. Human in the Loop lets a human step into a live browser session through [Live View](https://developers.cloudflare.com/browser-run/features/live-view/) to handle what automation cannot, then hand control back to the script.
 
 ## Use cases
 
-* **Authentication flows**: Login pages with MFA, SSO, or CAPTCHA that cannot be bypassed programmatically
-* **Sensitive data entry**: Forms requiring credentials or personal information you do not want to pass to an automation script
-* **Complex interactions**: One-off tasks that are too difficult or not worth fully automating, such as configuring a dashboard or approving a workflow
-* **Verification steps**: Confirming an order, reviewing generated content, or approving an action before the script proceeds
+- **Authentication flows**: Login pages with MFA, SSO, or CAPTCHA that cannot be bypassed programmatically
+- **Sensitive data entry**: Forms requiring credentials or personal information you do not want to pass to an automation script
+- **Complex interactions**: One-off tasks that are too difficult or not worth fully automating, such as configuring a dashboard or approving a workflow
+- **Verification steps**: Confirming an order, reviewing generated content, or approving an action before the script proceeds
 
 ## How it works
 
@@ -56,7 +56,7 @@ Refer to [Example: manual detection](#example-manual-detection) for a complete c
 
 Browser Run extends the standard [Chrome DevTools Protocol (CDP) ↗](https://chromedevtools.github.io/devtools-protocol/) with Cloudflare-specific commands under the `Cloudflare.*` namespace. These commands are only available when connected to a Browser Run session and provide capabilities that do not exist in the standard CDP specification, such as requesting human intervention, generating [Live View](https://developers.cloudflare.com/browser-run/features/live-view/) URLs, and tracking handoff state.
 
-You send these commands through a CDP session the same way you would send any standard CDP command. For full parameter and return type details, refer to the [protocol reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/subresources/devtools/subresources/browser/methods/protocol/).
+You send these commands through a CDP session the same way you would send any standard CDP command. For full parameter and return type details, refer to the [protocol reference](https://developers.cloudflare.com/api/resources/browser_rendering/subresources/devtools/subresources/browser/methods/protocol/).
 
 TypeScript types
 
@@ -435,5 +435,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/human-in-the-loop/#page","headline":"Human in the Loop · Cloudflare Browser Run docs","description":"Temporarily hand off browser control to a human operator for authentication, sensitive actions, or tasks that are difficult to fully automate.","url":"https://developers.cloudflare.com/browser-run/features/human-in-the-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/human-in-the-loop/#page","headline":"Human in the Loop","description":"Temporarily hand off browser control to a human operator for authentication, sensitive actions, or tasks that are difficult to fully automate.","url":"https://developers.cloudflare.com/browser-run/features/human-in-the-loop/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

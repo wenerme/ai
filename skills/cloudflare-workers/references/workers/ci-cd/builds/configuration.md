@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When connecting your Git repository to your Worker, you can customize the configurations needed to build and deploy your Worker.
 
@@ -23,11 +23,11 @@ When a commit is pushed to your connected repository, Workers Builds runs a two-
 1. **Build command** *(optional)* - Compiles your project (for example, `npm run build` for frameworks like Next.js or Astro)
 2. **Deploy command** - Deploys your Worker to Cloudflare (defaults to `npx wrangler deploy`)
 
-For preview builds (commits to branches other than your production branch), the deploy command is replaced with a **preview deploy command** (defaults to `npx wrangler versions upload`), which creates a preview version without promoting it to production.
+For preview builds, a **Preview command** runs instead (defaults to `npx wrangler preview`), which creates or updates a [Preview](https://developers.cloudflare.com/workers/previews/) without promoting it to production.
 
 Workers that use Containers
 
-`wrangler deploy` can build and publish container images and roll out container instances. `wrangler versions upload` does not update container images. Preview URLs are not generated for Workers that implement Durable Objects, including Containers. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/#before-production).
+`wrangler deploy` can build and publish container images and roll out container instances. `wrangler versions upload` does not update container images. Version URLs are not generated for Workers that implement Durable Objects, including Containers. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/#before-production).
 
 ## Build settings
 
@@ -44,7 +44,7 @@ Note that when you update and save build settings, the updated settings will be 
 | **Git branch** | Select the branch you would like Cloudflare to listen to for new commits. This will be defaulted to `main`. |
 | **Build command** *(Optional)* | Set a build command if your project requires a build step (e.g. `npm run build`). This is necessary, for example, when using a [front-end framework](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#framework-support) such as Next.js or Remix. |
 | **[Deploy command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#deploy-command)** | The deploy command lets you set the [specific Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) used to deploy your Worker. Your deploy command will default to `npx wrangler deploy` but you may customize this command. Workers Builds will use the Wrangler version set in your `package.json`. |
-| **[Non-production branch deploy command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#non-production-branch-deploy-command)** | Set a command to run when executing [a build for commit on a non-production branch](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds). This will default to `npx wrangler versions upload` but you may customize this command. Workers Builds will use the Wrangler version set in your `package.json`. |
+| **[Preview command](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#preview-command)** | Set the command to run for [preview builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds). Defaults to `npx wrangler preview`. Workers Builds will use the Wrangler version set in your `package.json`. |
 | **Root directory** *(Optional)* | Specify the path to your project. The root directory defines where the build command will be run and can be helpful in [monorepos](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#monorepos) to isolate a specific project within the repository for builds. |
 | **[API token](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#api-token)** *(Optional)* | The API token is used to authenticate your build request and authorize the upload and deployment of your Worker to Cloudflare. By default, Cloudflare will automatically generate an API token for your account when using Workers Builds, and continue to use this API token for all subsequent builds. Alternatively, you can [create your own API token](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/authentication/#generate-tokens), or select one that you already own. |
 | **Build variables and secrets** *(Optional)* | Add environment variables and secrets accessible only to your build. Build variables will not be accessible at runtime. If you would like to configure runtime variables you can do so in **Settings** > **Variables & Secrets** |
@@ -68,26 +68,28 @@ Examples of other deploy commands you can set include:
 | `npx wrangler deploy --containers-rollout=immediate` | [Containers](https://developers.cloudflare.com/containers/) rollout mode for this deploy. Refer to [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/). |
 | `npx wrangler deploy --containers-rollout=none` | Deploy the Worker only. Skip container image build/push and instance rollout. |
 
-### Non-production branch deploy command
+### Preview command
 
-The non-production branch deploy command is only applicable when you have enabled [non-production branch builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds).
+The Preview command runs when you have enabled [preview builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds). Preview builds run for branches that are not your production branch.
 
-It defaults to `npx wrangler versions upload`, producing a [preview URL](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/). Like the build and deploy commands, it can be customized to instead run anything.
+It defaults to `npx wrangler preview`, which creates or updates a [Preview](https://developers.cloudflare.com/workers/previews/) and produces a Preview URL. Like the build and deploy commands, it can be customized.
 
-Note
+If you change this command to `npx wrangler versions upload`, the build creates a Worker version and [Version URL](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/) instead of a Preview. Version URLs use the resources configured for that Worker version and do not create branch-isolated resources.
 
-Preview URLs are not generated for Durable Object Workers, including [Containers](https://developers.cloudflare.com/containers/). For Containers, `versions upload` also does not update the container image. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/#before-production).
-
-Examples of other non-production branch deploy commands you can set include:
+Examples of other Preview commands you can set include:
 
 | Example Command | Description |
 | --- | --- |
-| `yarn exec wrangler versions upload` | You can customize the package manager used to run Wrangler. |
-| `npx wrangler versions upload --env staging` | If you have a [Wrangler environment](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments) Worker, you should set your non-production branch deploy command with the environment flag. For more details, see [Advanced Setups](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments). |
+| `yarn exec wrangler preview` | You can customize the package manager used to run Wrangler. |
+| `npx wrangler preview --env staging` | If you have a [Wrangler environment](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments) Worker, you should set your Preview command with the environment flag. For more details, see [Advanced Setups](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#wrangler-environments). |
+
+To configure what variables, secrets, and bindings your Preview uses, refer to [Preview settings](https://developers.cloudflare.com/workers/previews/configuration/).
 
 ### Automatic configuration for new projects
 
 If your repository does not have a Wrangler configuration file, the deploy command (`wrangler deploy`) will trigger [automatic project configuration](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/). This detects your framework, creates the necessary configuration, and opens a [pull request](https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/) for you to review. Once you merge the PR, your project is configured and future builds will deploy normally.
+
+For new Workers Builds projects, preview builds use `wrangler preview` by default and can use [Preview settings](https://developers.cloudflare.com/workers/previews/configuration/) for preview-specific bindings, variables, secrets, and resources.
 
 ### API token
 
@@ -204,5 +206,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#page","headline":"Configuration · Cloudflare Workers docs","description":"Understand the different settings associated with your build.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#page","headline":"Configuration","description":"Understand the different settings associated with your build.","url":"https://developers.cloudflare.com/workers/ci-cd/builds/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

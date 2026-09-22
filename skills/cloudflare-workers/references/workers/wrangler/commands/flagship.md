@@ -448,6 +448,9 @@ pnpm wrangler flagship flags create [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -510,6 +513,9 @@ pnpm wrangler flagship flags list [APP-ID]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -567,6 +573,67 @@ pnpm wrangler flagship flags get [APP-ID] [KEY]
 - `[KEY]` `string` required
 
   The key of the flag
+- `--json` `boolean` default: false
+
+  Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+## `flagship flags pull`
+
+Pull feature flags from a Flagship app into the local flag store
+
+npmyarnpnpm
+
+```
+npx wrangler flagship flags pull [APP-ID]
+```
+
+```
+yarn wrangler flagship flags pull [APP-ID]
+```
+
+```
+pnpm wrangler flagship flags pull [APP-ID]
+```
+
+- `[APP-ID]` `string` required
+
+  The ID of the app to pull flags from
+- `--persist-to` `string` Specify directory to use for local persistence
 - `--json` `boolean` default: false
 
   Return output as JSON
@@ -650,6 +717,9 @@ pnpm wrangler flagship flags update [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -716,6 +786,9 @@ pnpm wrangler flagship flags set [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -776,6 +849,9 @@ pnpm wrangler flagship flags rules list [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -848,6 +924,9 @@ pnpm wrangler flagship flags rules update [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -911,6 +990,9 @@ pnpm wrangler flagship flags rules delete [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -974,6 +1056,9 @@ pnpm wrangler flagship flags rules reorder [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -1044,6 +1129,9 @@ pnpm wrangler flagship flags split [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -1117,6 +1205,9 @@ pnpm wrangler flagship flags rollout [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -1177,6 +1268,9 @@ pnpm wrangler flagship flags enable [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -1237,6 +1331,9 @@ pnpm wrangler flagship flags disable [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -1301,6 +1398,9 @@ pnpm wrangler flagship flags evaluate [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -1364,6 +1464,9 @@ pnpm wrangler flagship flags delete [APP-ID] [KEY]
 - `--json` `boolean` default: false
 
   Return output as JSON
+- `--local` `boolean` Use the local flag store instead of the remote app
+- `--remote` `boolean` Use the remote app instead of the local flag store
+- `--persist-to` `string` Specify directory to use for local persistence
 
 <details>
 
@@ -1471,5 +1574,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/#page","headline":"Flagship · Cloudflare Workers docs","description":"Wrangler commands for managing Flagship apps, feature flags, targeting rules, rollouts, evaluations, and changelog history.","url":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/#page","headline":"Flagship","description":"Wrangler commands for managing Flagship apps, feature flags, targeting rules, rollouts, evaluations, and changelog history.","url":"https://developers.cloudflare.com/workers/wrangler/commands/flagship/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

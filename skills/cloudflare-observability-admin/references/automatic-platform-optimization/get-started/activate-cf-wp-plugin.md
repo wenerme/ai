@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Activate the Cloudflare WordPress plugin
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After you [change your nameservers](https://developers.cloudflare.com/automatic-platform-optimization/get-started/change-nameservers/), activate the Cloudflare WordPress plugin.
 
@@ -40,8 +40,7 @@ The Cloudflare APO WordPress plugin does not support multisite WordPress install
 
 ## Purchase APO
 
-1. In the Cloudflare dashboard, go to the **Speed** \> **Settings** page.
-[Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
+1. In the Cloudflare dashboard, go to the **Speed** > **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed/optimization)
 2. Go to **Content Optimization**.
 3. For **Automatic Platform Optimization for WordPress**, select **Purchase**.
 4. Enter your payment information and select **Confirm payment**.
@@ -51,7 +50,7 @@ The Cloudflare APO WordPress plugin does not support multisite WordPress install
 The easiest way to begin using APO is directly from Cloudflare’s WordPress plugin. Before you can use APO, you must first install and activate the plugin and then activate APO.
 
 1. Navigate and log in to your WordPress account.
-2. Select **Plugins** \> **Add new**.
+2. Select **Plugins** > **Add new**.
 3. In the search field, enter `Cloudflare`.
 4. Locate the Cloudflare plugin and select **Install now**.
 5. After the plugin finishes installing, select **Activate**. The Cloudflare plugin now displays in your Plugins list.
@@ -62,8 +61,7 @@ To create the connection between WordPress and Cloudflare, you will create an AP
 
 ## Create the API token from Cloudflare
 
-1. In the Cloudflare dashboard, go to the **Account API tokens** page.
-[Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
+1. In the Cloudflare dashboard, go to the **Account API tokens** page. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Select **Create Token**.
 3. Locate **WordPress** from the list and select **Use template**.
 4. Select **Continue to summary** at the bottom of the page.
@@ -95,5 +93,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/#page","headline":"Activate the Cloudflare WordPress plugin · Cloudflare Automatic Platform Optimization docs","description":"The easiest way to begin using APO is directly from Cloudflare's WordPress plugin. Before you can use APO, you must first install and activate the plugin and then activate APO.","url":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/#page","headline":"Activate the Cloudflare WordPress plugin","description":"The easiest way to begin using APO is directly from Cloudflare's WordPress plugin. Before you can use APO, you must first install and activate the plugin and then activate APO.","url":"https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["WordPress"]}
 ```

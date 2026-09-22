@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Billing policy
 
-Last updated May 29, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/billing/understand/billing-policy/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/billing-policy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare plans are billed per domain on your account. Monthly plans are billed every 30 days and annual plans are billed yearly. Add-on services (also referred to as subscriptions) are billed monthly only.
 
@@ -38,9 +38,9 @@ If your account is dunned (downgraded and banned for non payment of dues), the n
 
 When ordering a paid plan, subscription, or add-on service, you must agree to the following:
 
-_By clicking "Enable" you agree that you are purchasing a continuous month-to-month subscription which will automatically renew, and that the price of your selected subscription plan level and/or add on(s) will be billed to your designated payment method monthly as a recurring charge, unless you cancel your subscription(s), through your account dashboard,_ **_before_** _the beginning of your next monthly billing period._
+*By clicking "Enable" you agree that you are purchasing a continuous month-to-month subscription which will automatically renew, and that the price of your selected subscription plan level and/or add on(s) will be billed to your designated payment method monthly as a recurring charge, unless you cancel your subscription(s), through your account dashboard,* ***before*** *the beginning of your next monthly billing period.*
 
-**_You will be billed for the full monthly period in which you cancel and no refunds will be given. By purchasing a subscription, you agree to a minimum one month purchase obligation._**
+***You will be billed for the full monthly period in which you cancel and no refunds will be given. By purchasing a subscription, you agree to a minimum one month purchase obligation.***
 
 Note
 
@@ -50,16 +50,16 @@ For more information on renewal terms and cancellation, refer to the [Terms of U
 
 If your domain is on a paid plan (for example, Pro) and you upgrade to a higher-priced plan (for example, Business),
 
-* Your invoice will reflect the prorated cost of the higher-tiered plan, until the end of your billing cycle.
-* Cloudflare credits the prorated cost of the lower-priced plan, until the end of the billing cycle.
-* At the beginning of the next billing cycle, your invoice will reflect the full cost of the higher-priced plan.
-* Your bill cycle start and end dates are calculated using the UTC (Coordinated Universal Time) time zone, and not your local time zone.
+- Your invoice will reflect the prorated cost of the higher-tiered plan, until the end of your billing cycle.
+- Cloudflare credits the prorated cost of the lower-priced plan, until the end of the billing cycle.
+- At the beginning of the next billing cycle, your invoice will reflect the full cost of the higher-priced plan.
+- Your bill cycle start and end dates are calculated using the UTC (Coordinated Universal Time) time zone, and not your local time zone.
 
 For example, if your billing date is January 1, but you upgrade from Pro to Business, on January 15,
 
-* Your invoice will reflect the prorated Business plan rate for the period of use January 15 - January 30.
-* Cloudflare credits the prorated Pro plan cost from January 1 - January 15.
-* Your invoice for the billing period of January 1 - January 30 will appear in the Cloudflare dashboard on January 31.
+- Your invoice will reflect the prorated Business plan rate for the period of use January 15 - January 30.
+- Cloudflare credits the prorated Pro plan cost from January 1 - January 15.
+- Your invoice for the billing period of January 1 - January 30 will appear in the Cloudflare dashboard on January 31.
 
 Note
 
@@ -69,13 +69,13 @@ All credits are added on the backend of your account and are not visible from th
 
 If your domain is on a paid plan (for example, Business) and you downgrade to a lower-priced plan (for example, Pro),
 
-* Your plan type and higher-tiered Cloudflare plan features are downgraded at the end of the current billing service period.
-* You are billed at the lower-tiered plan and feature rate for the next billing service period.
+- Your plan type and higher-tiered Cloudflare plan features are downgraded at the end of the current billing service period.
+- You are billed at the lower-tiered plan and feature rate for the next billing service period.
 
 For example, if your billing date is February 1, but you downgrade to Pro from the Business plan on February 15,
 
-* You can access Business plan features and services until March 1.
-* Your March plan charges will reflect the downgraded cost.
+- You can access Business plan features and services until March 1.
+- Your March plan charges will reflect the downgraded cost.
 
 ## Billing and payment for Enterprise plans
 
@@ -87,15 +87,15 @@ Enterprise account owners receive invoices directly from the Cloudflare accounti
 
 Cloudflare accepts the following payment methods:
 
-* Visa
-* Mastercard
-* American Express
-* Discover
-* PayPal
-* Apple Pay
-* Google Pay
-* Stripe Link
-* UnionPay
+- Visa
+- Mastercard
+- American Express
+- Discover
+- PayPal
+- Apple Pay
+- Google Pay
+- Stripe Link
+- UnionPay
 
 Note
 
@@ -113,7 +113,7 @@ For services subject to usage-based billing, Cloudflare may preauthorize your cr
 
 If your payment method fails, we may suspend your access to the usage-based billing services for which we conducted the preauthorization. In the case of [R2](https://developers.cloudflare.com/r2/), you will not be able to access your R2 buckets and requests will return errors, but your data will remain secure. If you do not update your payment method within 30 days, the data related to any usage-based billing service(s) may be deleted.
 
-To regain access, you must settle any outstanding balances and pass preauthorization with a valid payment method. To update your primary payment method, go to **Manage Account** \> **Billing** \> **Payment**. Upon validation of your updated payment details, we will promptly reactivate your subscription(s), which will restore access to the relevant data and services.
+To regain access, you must settle any outstanding balances and pass preauthorization with a valid payment method. To update your primary payment method, go to **Manage Account** > **Billing** > **Payment**. Upon validation of your updated payment details, we will promptly reactivate your subscription(s), which will restore access to the relevant data and services.
 
 For assistance, visit our [Support Portal ↗](https://support.cloudflare.com/hc/en-us) and submit a Billing request (category: “Payment issue”) to our Support team. They will assist you in verifying your updated payment information.
 
@@ -121,17 +121,17 @@ For assistance, visit our [Support Portal ↗](https://support.cloudflare.com/hc
 
 The following occurrences cannot be refunded:
 
-* Billing or renewal issues: Often involves charges for renewals, unexpected billing, or issues related to subscription payments.
-* Accidental purchases of services and subscriptions: Includes instances where users bought the wrong service, made a mistake during the purchase process, or unintentionally upgraded their plan.
-* Domain issues: Incorrect domain registration, issues with domain transfers, or accidental domain purchases.
-* Service or plan issues: Issues with a service or plan itself, such as attempts to downgrade, cancel unused services, or problems with specific features.
-* Support issues: Unresolved support issues.
+- Billing or renewal issues: Often involves charges for renewals, unexpected billing, or issues related to subscription payments.
+- Accidental purchases of services and subscriptions: Includes instances where users bought the wrong service, made a mistake during the purchase process, or unintentionally upgraded their plan.
+- Domain issues: Incorrect domain registration, issues with domain transfers, or accidental domain purchases.
+- Service or plan issues: Issues with a service or plan itself, such as attempts to downgrade, cancel unused services, or problems with specific features.
+- Support issues: Unresolved support issues.
 
 ## Related resources
 
-* [Cloudflare Self-Serve Subscription Agreement ↗](https://www.cloudflare.com/terms/)
-* [Understanding Cloudflare Invoices](https://developers.cloudflare.com/billing/manage/invoices/)
-* [Understanding Cloudflare sales tax](https://developers.cloudflare.com/billing/understand/sales-tax/)
+- [Cloudflare Self-Serve Subscription Agreement ↗](https://www.cloudflare.com/terms/)
+- [Understanding Cloudflare Invoices](https://developers.cloudflare.com/billing/manage/invoices/)
+- [Understanding Cloudflare sales tax](https://developers.cloudflare.com/billing/understand/sales-tax/)
 
 Was this helpful?
 
@@ -142,5 +142,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/billing/understand/billing-policy/#page","headline":"Billing policy · Cloudflare Billing docs","description":"Review refund policy, payment methods, and billing terms.","url":"https://developers.cloudflare.com/billing/understand/billing-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/billing/understand/billing-policy/#page","headline":"Billing policy","description":"Review refund policy, payment methods, and billing terms.","url":"https://developers.cloudflare.com/billing/understand/billing-policy/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Delete key-value pairs
 
-Last updated Jun 22, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/kv/api/delete-key-value-pairs/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Jun 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/api/delete-key-value-pairs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 To delete a key-value pair, call the `delete()` method of the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/) on any [KV namespace](https://developers.cloudflare.com/kv/concepts/kv-namespaces/) you have bound to your Worker code:
 
@@ -63,7 +63,7 @@ class Default(WorkerEntrypoint):
 
 The following method is provided to delete from KV:
 
-* [delete()](#delete-method)
+- [delete()](#delete-method)
 
 ### `delete()` method
 
@@ -79,13 +79,13 @@ await self.env.NAMESPACE.delete(key)
 
 #### Parameters
 
-* `key`: `string`
-  * The key to associate with the value.
+- `key`: `string`
+  - The key to associate with the value.
 
 #### Response
 
-* `response`: `Promise<void>`
-  * A `Promise` that resolves if the delete is successful.
+- `response`: `Promise<void>`
+  - A `Promise` that resolves if the delete is successful.
 
 This method returns a promise that you should `await` on to verify successful deletion. Calling `delete()` on a non-existing key is returned as a successful delete.
 
@@ -95,7 +95,7 @@ Calling the `delete()` method will remove the key and value from your KV namespa
 
 ### Delete data in bulk
 
-Delete more than one key-value pair at a time with Wrangler or [via the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/keys/methods/bulk%5Fdelete/).
+Delete more than one key-value pair at a time with Wrangler or [via the REST API](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/subresources/keys/methods/bulk_delete/).
 
 The bulk REST API can accept up to 10,000 KV pairs at once. Bulk writes are not supported using the [KV binding](https://developers.cloudflare.com/kv/concepts/kv-bindings/).
 
@@ -112,5 +112,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/delete-key-value-pairs/#page","headline":"Delete key-value pairs · Cloudflare Workers KV docs","description":"Remove keys and their associated values from a Workers KV namespace using the delete() method.","url":"https://developers.cloudflare.com/kv/api/delete-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/api/delete-key-value-pairs/#page","headline":"Delete key-value pairs","description":"Remove keys and their associated values from a Workers KV namespace using the delete() method.","url":"https://developers.cloudflare.com/kv/api/delete-key-value-pairs/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

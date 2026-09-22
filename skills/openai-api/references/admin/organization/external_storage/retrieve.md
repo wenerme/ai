@@ -10,7 +10,7 @@ Get one customer-managed external storage configuration.
 
 ### Returns
 
-- `OrganizationExternalStorage object { id, created_at, geography, 4 more }`
+- `ExternalStorageConfiguration object { id, created_at, geography, 4 more }`
 
   - `id: string`
 
@@ -24,9 +24,9 @@ Get one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
 
-    - `Aws object { account_id, bucket, external_id, 3 more }`
+    - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
       - `account_id: string`
 
@@ -42,7 +42,7 @@ Get one customer-managed external storage configuration.
 
         - `"aws"`
 
-    - `Azure object { account_name, container, region, 4 more }`
+    - `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
       - `account_name: string`
 
@@ -59,6 +59,24 @@ Get one customer-managed external storage configuration.
       - `type: "azure"`
 
         - `"azure"`
+
+    - `Gcp object { audience, bucket, region, 4 more }`
+
+      - `audience: string`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `type: "gcp"`
+
+        - `"gcp"`
+
+      - `workload_identity_pool_id: string`
+
+      - `workload_identity_project_number: string`
+
+      - `workload_identity_provider_id: string`
 
   - `status: "pending" or "validated" or "unhealthy"`
 

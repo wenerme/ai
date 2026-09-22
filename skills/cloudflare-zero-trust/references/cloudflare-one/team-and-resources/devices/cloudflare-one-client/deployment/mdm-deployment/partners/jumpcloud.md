@@ -12,15 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # JumpCloud
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/jumpcloud/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/jumpcloud/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Windows
 
 1. Log in to the [JumpCloud Admin Portal ↗](https://console.jumpcloud.com).
-2. Go to **Device Management** \> **Software Management**.
-3. Select the **Windows** tab, then select **(+)**.
-![Configuring the Cloudflare One Client in the JumpCloud Windows tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2154,height=1562,format=webp/_astro/jumpcloud.COKUk56X.png)
-_Note: Labels in this image may reflect a previous product name._
+2. Go to **Device Management** > **Software Management**.
+3. Select the **Windows** tab, then select **(+)**.![Configuring the Cloudflare One Client in the JumpCloud Windows tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2154,height=1562,format=webp/_astro/jumpcloud.COKUk56X.png)*Note: Labels in this image may reflect a previous product name.*
 4. In the **Software Name** field, enter a unique display name.
 5. In the **Package ID** field, enter `warp`.
 6. Select **Install this software**.
@@ -28,9 +26,8 @@ _Note: Labels in this image may reflect a previous product name._
 8. (Optional) Select **Allow end users to delay updates for up to one week** to avoid updates during a busy time.
 9. Select **save**.
 10. Select the device(s) you want to deploy the app to:
-
-  * **Single device**: Go to the **Devices** tab and select the target device.
-  * **Device group**: Go to the **Device Groups** tab and select the target device group.
+    - **Single device**: Go to the **Devices** tab and select the target device.
+    - **Device group**: Go to the **Device Groups** tab and select the target device group.
 11. Select **save**.
 12. Select **save** again.
 
@@ -41,16 +38,13 @@ After deploying the Cloudflare One Client, you can check its connection progress
 ## macOS
 
 1. Log in to the [JumpCloud Admin Portal ↗](https://console.jumpcloud.com).
-2. Go to **Device Management** \> **Software Management**.
-3. Select the **Apple** tab, then select **(+)**.
-![Configuring the Cloudflare One Client in the JumpCloud Apple tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1780,height=1286,format=webp/_astro/jumpcloud-mac.B_6biy3e.png)
-_Note: Labels in this image may reflect a previous product name._
+2. Go to **Device Management** > **Software Management**.
+3. Select the **Apple** tab, then select **(+)**.![Configuring the Cloudflare One Client in the JumpCloud Apple tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1780,height=1286,format=webp/_astro/jumpcloud-mac.B_6biy3e.png)*Note: Labels in this image may reflect a previous product name.*
 4. In the **Software Description** field, enter a unique display name.
 5. In the **Software Package URL**, enter the URL location of the `Cloudflare_WARP_<VERSION>.pkg` file. If you do not already have the installer package, [download it here](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#macos).
 6. Select the device(s) you want to deploy the app to:
-
-  * **Single device**: Go to the **Devices** tab and select the target device. To select all devices, select the checkbox next to **Type**.
-  * **Device group**: Go to the **Device Groups** tab and select the target device group. To select all device groups, select the checkbox next to **Type**.
+   - **Single device**: Go to the **Devices** tab and select the target device. To select all devices, select the checkbox next to **Type**.
+   - **Device group**: Go to the **Device Groups** tab and select the target device group. To select all device groups, select the checkbox next to **Type**.
 7. Select **save** to install the client.
 
 Verify that the Cloudflare One Client was installed by selecting the app and viewing the **Status** tab.
@@ -66,5 +60,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/jumpcloud/#page","headline":"JumpCloud · Cloudflare One docs","description":"Learn how to deploy the Cloudflare One Client using JumpCloud.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/jumpcloud/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/jumpcloud/#page","headline":"JumpCloud","description":"Learn how to deploy the Cloudflare One Client using JumpCloud.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/jumpcloud/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

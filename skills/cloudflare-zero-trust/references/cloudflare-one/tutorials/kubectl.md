@@ -12,19 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Connect through Cloudflare Access using kubectl
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can connect to machines over `kubectl` using Cloudflare's Zero Trust platform.
 
 **This walkthrough covers how to:**
 
-* Build a policy in Cloudflare Access to secure the machine
-* Connect a machine to Cloudflare's network using kubectl
-* Connect from a client machine
+- Build a policy in Cloudflare Access to secure the machine
+- Connect a machine to Cloudflare's network using kubectl
+- Connect from a client machine
 
 **Before you start**
 
-* [Add a website to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
+- [Add a website to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
 
 **Time to complete:**
 
@@ -34,7 +34,7 @@ You can connect to machines over `kubectl` using Cloudflare's Zero Trust platfor
 
 ## Create an Access policy
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **Self-hosted and private**.
 4. Select **Add public hostname** and input a subdomain. This will be the hostname where your application will be available to users.
@@ -105,8 +105,7 @@ ingress:
 
 You can now create a DNS record that will route traffic to this Tunnel. Multiple DNS records can point to a single Tunnel and will send traffic to the configured service as long as the hostname is defined with an [ingress rule](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/configuration-file/#file-structure-for-public-hostnames).
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to the **DNS Records** page for your domain.
-[Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to the **DNS Records** page for your domain. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**. Choose `CNAME` as the record type. For **Name**, choose the hostname where you want to create a Tunnel. This should match the hostname of the Access policy.
 3. For **Target**, input the ID of your Tunnel followed by `.cfargotunnel.com`. For example:
 
@@ -114,7 +113,7 @@ You can now create a DNS record that will route traffic to this Tunnel. Multiple
   6ff42ae2-765d-4adf-8112-31c55c1551ef.cfargotunnel.com
 ```
 
-1. Select **Save**.
+4. Select **Save**.
 
 ## Run the Tunnel
 
@@ -159,5 +158,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/#page","headline":"Connect through Cloudflare Access using kubectl · Cloudflare One docs","description":"Connecting to Cloudflare's network using kubectl. Create a Zero Trust policy for your machine. Create an outbound-only connection between your machine and Cloudflared's network.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Kubernetes","TCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/#page","headline":"Connect through Cloudflare Access using kubectl","description":"Connecting to Cloudflare's network using kubectl. Create a Zero Trust policy for your machine. Create an outbound-only connection between your machine and Cloudflared's network.","url":"https://developers.cloudflare.com/cloudflare-one/tutorials/kubectl/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Kubernetes","TCP"]}
 ```

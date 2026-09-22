@@ -24,17 +24,18 @@ Multimodal input in batch is URL-only, and support depends on the provider the b
 
 **Images.** Image parts must be public `http(s)` URLs. Base64 and `data:` URI images are rejected on every provider. Image URLs are accepted when the model accepts image input and the batch routes to a provider whose batch API fetches URLs natively:
 
-| Provider         | Public image URLs | Public file URLs                  |
-| ---------------- | ----------------- | --------------------------------- |
-| OpenAI           | Supported         | Supported on `/v1/responses` only |
-| Anthropic        | Supported         | Supported                         |
-| xAI              | Supported         | Not supported                     |
-| Mistral          | Not supported     | Supported                         |
-| Google Vertex    | Not supported     | Not supported                     |
-| Google AI Studio | Not supported     | Not supported                     |
-| Together         | Not supported     | Not supported                     |
-| Parasail         | Not supported     | Not supported                     |
-| Fireworks        | Not supported     | Not supported                     |
+| Provider                                | Public image URLs | Public file URLs                  |
+| --------------------------------------- | ----------------- | --------------------------------- |
+| OpenAI                                  | Supported         | Supported on `/v1/responses` only |
+| Anthropic                               | Supported         | Supported                         |
+| xAI                                     | Supported         | Not supported                     |
+| Mistral                                 | Not supported     | Supported                         |
+| Google Vertex                           | Not supported     | Not supported                     |
+| Google AI Studio                        | Not supported     | Not supported                     |
+| Together                                | Not supported     | Not supported                     |
+| Parasail                                | Not supported     | Not supported                     |
+| DeepInfra (`/v1/chat/completions` only) | Supported         | Supported                         |
+| Fireworks                               | Not supported     | Not supported                     |
 
 **Files.** File parts (Responses `input_file`, Anthropic `document`, chat completions `file`) are accepted only as URL references, only on the providers marked above, and only for models that list file input. Inline file bytes and provider file IDs are rejected.
 

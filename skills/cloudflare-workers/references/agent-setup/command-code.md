@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Add mTLS authentication and schema validation to protect my API endpoints.
+   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
    ```
 
 
@@ -175,23 +175,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
-```
-
-```txt
 Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Create a Logpush job to stream Workers analytics to my data warehouse.
+```
+
+```txt
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ## Tips
@@ -341,5 +341,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/command-code/#page","headline":"Command Code + Cloudflare · Agent setup docs","description":"Use Command Code with Cloudflare projects, Cloudflare Skills, the Cloudflare MCP servers, and Wrangler from your terminal.","url":"https://developers.cloudflare.com/agent-setup/command-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/command-code/#page","headline":"Command Code + Cloudflare","description":"Use Command Code with Cloudflare projects, Cloudflare Skills, the Cloudflare MCP servers, and Wrangler from your terminal.","url":"https://developers.cloudflare.com/agent-setup/command-code/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

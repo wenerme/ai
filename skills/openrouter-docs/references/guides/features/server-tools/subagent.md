@@ -18,6 +18,8 @@ The `openrouter:subagent` server tool lets a model delegate self-contained tasks
 
 The worker can be **any OpenRouter model**, and it can optionally run as a **sub-agent with its own tools** (for example `openrouter:web_search`). Each task is independent: the worker sees only the task description (not the parent conversation) and keeps no memory between tasks.
 
+You can give the model a choice of **several named workers** by including multiple `openrouter:subagent` entries in the `tools` array, one per worker (see [Multiple subagents](#multiple-subagents)). At most one entry may omit `name` to act as the default.
+
 ## Quick start
 
 <Template
@@ -117,17 +119,18 @@ Pass an optional `parameters` object on the tool entry:
 }
 ```
 
-| Field                      | Default             | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| -------------------------- | ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `model`                    | Outer request model | The worker model that executes delegated tasks (any OpenRouter model). Typically smaller, cheaper, and faster than the delegating model.                                                                                                                                                                                                                                                                                                  |
-| `tools`                    | None                | Tools made available to the worker. Only OpenRouter server tools (such as `openrouter:web_search`) are supported; function tools are rejected with a `400` because the worker has no way to execute them. The subagent may not list itself.                                                                                                                                                                                               |
-| `inherit_functions`        | `false`             | **Experimental — subject to change without notice.** When `true`, the worker inherits every client function defined in the request's top-level `tools` list. Supported on the Responses API (`/api/v1/responses`) only; other APIs reject it with a `400`.                                                                                                                                                                                |
-| `inherited_function_names` | None                | **Experimental — subject to change without notice.** Names of top-level function tools the worker inherits; each matching tool is copied fully into the worker's tools. Ignored when `inherit_functions` is `true` (everything is already inherited). Names are trimmed before validation; whitespace-only names are rejected with a `400`. Supported on the Responses API (`/api/v1/responses`) only; other APIs reject it with a `400`. |
-| `instructions`             | None                | System instructions for the worker.                                                                                                                                                                                                                                                                                                                                                                                                       |
-| `max_tool_calls`           | Provider default    | Max tool-calling steps the worker may take. Only relevant when the worker has tools. Range 1–25. Forwarded to the worker call as `max_tool_calls`.                                                                                                                                                                                                                                                                                        |
-| `max_completion_tokens`    | Provider default    | Max output tokens (including reasoning) for the worker call.                                                                                                                                                                                                                                                                                                                                                                              |
-| `reasoning`                | Provider default    | Reasoning config for the worker call: an object with optional `effort` and `max_tokens`. Both are forwarded to the worker call as `reasoning.effort` and `reasoning.max_tokens`.                                                                                                                                                                                                                                                          |
-| `temperature`              | Provider default    | Sampling temperature (`0`–`2`) forwarded to the worker call.                                                                                                                                                                                                                                                                                                                                                                              |
+| Field                      | Default                 | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| -------------------------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`                     | None (default subagent) | Optional name for this subagent. The model sees one tool per named subagent (plus one default for an entry with no `name`). Names must be unique across entries. Letters, digits, spaces, underscores, and dashes; trimmed; 1–64 chars. See [Multiple subagents](#multiple-subagents).                                                                                                                                                    |
+| `model`                    | Outer request model     | The worker model that executes delegated tasks (any OpenRouter model). Typically smaller, cheaper, and faster than the delegating model.                                                                                                                                                                                                                                                                                                  |
+| `tools`                    | None                    | Tools made available to the worker. Only OpenRouter server tools (such as `openrouter:web_search`) are supported; function tools are rejected with a `400` because the worker has no way to execute them. The subagent may not list itself.                                                                                                                                                                                               |
+| `inherit_functions`        | `false`                 | **Experimental — subject to change without notice.** When `true`, the worker inherits every client function defined in the request's top-level `tools` list. Supported on the Responses API (`/api/v1/responses`) only; other APIs reject it with a `400`.                                                                                                                                                                                |
+| `inherited_function_names` | None                    | **Experimental — subject to change without notice.** Names of top-level function tools the worker inherits; each matching tool is copied fully into the worker's tools. Ignored when `inherit_functions` is `true` (everything is already inherited). Names are trimmed before validation; whitespace-only names are rejected with a `400`. Supported on the Responses API (`/api/v1/responses`) only; other APIs reject it with a `400`. |
+| `instructions`             | None                    | System instructions for the worker.                                                                                                                                                                                                                                                                                                                                                                                                       |
+| `max_tool_calls`           | Provider default        | Max tool-calling steps the worker may take. Only relevant when the worker has tools. Range 1–25. Forwarded to the worker call as `max_tool_calls`.                                                                                                                                                                                                                                                                                        |
+| `max_completion_tokens`    | Provider default        | Max output tokens (including reasoning) for the worker call.                                                                                                                                                                                                                                                                                                                                                                              |
+| `reasoning`                | Provider default        | Reasoning config for the worker call: an object with optional `effort` and `max_tokens`. Both are forwarded to the worker call as `reasoning.effort` and `reasoning.max_tokens`.                                                                                                                                                                                                                                                          |
+| `temperature`              | Provider default        | Sampling temperature (`0`–`2`) forwarded to the worker call.                                                                                                                                                                                                                                                                                                                                                                              |
 
 ### Tool-call arguments
 
@@ -398,6 +401,42 @@ A failed worker never fails the response. In every failure case below, the affec
 * A replayed worker cannot be resumed — its item is missing `call_id` or the task echo, its projected calls or their `subagent_items` were not replayed, a projected call has no `function_call_output`, or the spawning `openrouter:subagent` entry was dropped from `tools`.
 
 One exception: a replayed `function_call` with an invalid or mismatched `subagent_id` (i.e. there is no corresponding `openrouter:subagent` item) is rejected with a `400`.
+
+## Multiple subagents
+
+To offer the model a roster of workers, include **multiple `openrouter:subagent` entries** in the `tools` array, one per worker. Give each its own `name` (plus its own `model`, `instructions`, and the other subagent fields); the model sees one distinct tool per named subagent and delegates to whichever fits the task:
+
+```json lines theme={null}
+{
+  "tools": [
+    {
+      "type": "openrouter:subagent",
+      "parameters": {
+        "name": "summarizer",
+        "model": "~anthropic/claude-haiku-latest",
+        "instructions": "You condense long text into tight summaries."
+      }
+    },
+    {
+      "type": "openrouter:subagent",
+      "parameters": {
+        "name": "researcher",
+        "model": "~openai/gpt-latest",
+        "instructions": "You gather facts. Ground every claim in a source.",
+        "tools": [{ "type": "openrouter:web_search" }]
+      }
+    }
+  ]
+}
+```
+
+Rules for subagent entries:
+
+* **At most one entry may omit `name`** — it becomes the default subagent. Two or more unnamed entries fail the request with a `400`.
+* **Names must be unique** across entries (compared after trimming whitespace). A duplicate name fails the request with a `400`.
+* Names allow **letters, digits, spaces, underscores, and dashes** (e.g. `"Data Extractor"`), are trimmed, and must be 1–64 characters.
+
+Each completed task echoes the `name` of the subagent that produced it, so you can tell workers apart in the response.
 
 ## Recursion protection
 

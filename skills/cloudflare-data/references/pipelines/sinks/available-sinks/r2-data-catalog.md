@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # R2 Data Catalog
 
-Last updated Aug 7, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 Data Catalog sinks write processed data from pipelines as [Apache Iceberg ↗](https://iceberg.apache.org/) tables to [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/). Iceberg tables provide ACID transactions, schema evolution, and time travel capabilities for analytics workloads.
 
-To create an R2 Data Catalog sink, run the [pipelines sinks create](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-create) command and specify the sink type, target bucket, namespace, and table name:
+To create an R2 Data Catalog sink, run the [`pipelines sinks create`](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-create) command and specify the sink type, target bucket, namespace, and table name:
 
 ```bash
 npx wrangler pipelines sinks create my-sink \
@@ -43,11 +43,11 @@ Configure Parquet compression for optimal storage and query performance:
 
 **Available compression options:**
 
-* `zstd` (default) - Best compression ratio
-* `snappy` \- Fastest compression
-* `gzip` \- Good compression, widely supported
-* `lz4` \- Fast compression with reasonable ratio
-* `uncompressed` \- No compression
+- `zstd` (default) - Best compression ratio
+- `snappy` - Fastest compression
+- `gzip` - Good compression, widely supported
+- `lz4` - Fast compression with reasonable ratio
+- `uncompressed` - No compression
 
 ### Row group size
 
@@ -61,8 +61,8 @@ Configure Parquet compression for optimal storage and query performance:
 
 Control when data is written to Iceberg tables. Configure based on your needs:
 
-* **Lower values**: More frequent writes, smaller files, lower latency
-* **Higher values**: Less frequent writes, larger files, better query performance
+- **Lower values**: More frequent writes, smaller files, lower latency
+- **Higher values**: Less frequent writes, larger files, better query performance
 
 ### Roll interval
 
@@ -99,5 +99,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/#page","headline":"R2 Data Catalog · Cloudflare Pipelines Docs","description":"Write data as Apache Iceberg tables to R2 Data Catalog","url":"https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/#page","headline":"R2 Data Catalog","description":"Write data as Apache Iceberg tables to R2 Data Catalog","url":"https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # 2 – Track your history
 
-Last updated May 5, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/terraform/tutorial/track-history/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/tutorial/track-history/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In the [Initialize Terraform](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/) tutorial, you created and applied basic Cloudflare configuration. Now you'll store this configuration in version control for tracking, peer review, and rollback capabilities.
 
@@ -20,7 +20,7 @@ Note
 
 Terraform code snippets below refer to the v5 SDK only.
 
-## 1\. Use environment variables for authentication
+## 1. Use environment variables for authentication
 
 Remove credentials from your Terraform files before committing to version control. The Cloudflare provider v5 reads authentication from environment variables automatically. Update your `main.tf` file to remove the hardcoded API token:
 
@@ -104,7 +104,7 @@ You may see changes detected as Terraform compares your new variable-based confi
 Plan: 0 to add, 1 to change, 0 to destroy.
 ```
 
-## 2\. Store configuration in GitHub
+## 2. Store configuration in GitHub
 
 Create a `.gitignore` file with these contents:
 
@@ -142,5 +142,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/track-history/#page","headline":"Track your history · Cloudflare Terraform docs","description":"Learn how to track history with Cloudflare Terraform.","url":"https://developers.cloudflare.com/terraform/tutorial/track-history/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/terraform/tutorial/track-history/#page","headline":"2 – Track your history","description":"Learn how to track history with Cloudflare Terraform.","url":"https://developers.cloudflare.com/terraform/tutorial/track-history/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

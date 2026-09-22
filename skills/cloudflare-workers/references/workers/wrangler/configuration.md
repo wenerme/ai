@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Sep 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler optionally uses a configuration file to customize the development and deployment setup for a Worker.
 
@@ -39,7 +39,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-21",
+	"compatibility_date": "2026-09-22",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -74,7 +74,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-21"
+compatibility_date = "2026-09-22"
 workers_dev = false
 
 [route]
@@ -178,7 +178,7 @@ The `main` key is optional for assets-only Workers.
 - `workers_dev` `boolean` optional
   - Enables use of `*.workers.dev` subdomain to deploy your Worker. If you have a Worker that is only for `scheduled` events, you can set this to `false`. Defaults to `true`. Refer to [types of routes](#types-of-routes).
 - `preview_urls` `boolean` optional
-  - Enables use of Preview URLs to test your Worker. Defaults to value of `workers_dev`. Refer to [Preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/).
+  - Enables Version URLs and `workers.dev` Preview URLs. If omitted, Wrangler does not change an existing setting. If no setting exists, its initial value depends on `workers_dev`. Refer to [Version URLs](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/) and [Previews](https://developers.cloudflare.com/workers/previews/).
 - `route` `Route` optional
   - A route that your Worker should be deployed to. Only one of `routes` or `route` is required. Refer to [types of routes](#types-of-routes).
 - `routes` `Route[]` optional
@@ -2095,5 +2095,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration - Wrangler · Cloudflare Workers docs","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

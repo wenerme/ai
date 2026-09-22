@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/commands/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler commands for creating, developing, deploying, and managing Workers.
 
@@ -263,6 +263,578 @@ The following global flags work on every command:
   - Path to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
 - `--cwd` `string`
   - Run as if Wrangler was started in the specified directory instead of the current working directory.
+
+---
+
+## `preview`
+
+Create a Preview deployment of the current Worker for branch and pull request work. Use [`wrangler deploy`](#deploy) for production.
+
+```txt
+wrangler preview [<SCRIPT>] [OPTIONS]
+```
+
+Note
+
+None of the options for this command are required. Also, many can be set in your Wrangler file or in your [Previews Base configuration](https://developers.cloudflare.com/workers/previews/configuration/#setting-your-previews-base-configuration). Refer to the [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/) documentation for more information.
+
+- `SCRIPT` `string`
+  - The path to an entry point for your Worker. Only required if your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) does not include a `main` key (for example, `main = "index.js"`).
+- `--name` `string` optional
+  - Name of the Preview. Defaults to the current git branch.
+- `--tag` `string` optional
+  - A tag for this Preview deployment.
+- `--message` `string` optional
+  - A descriptive message for this Preview deployment.
+- `--json` `boolean` (default: false) optional
+  - Return machine-readable output.
+- `--ignore-base-config` `boolean` (default: false) optional
+  - Only use settings from your Wrangler file, ignoring the Preview base config configured in the Cloudflare dashboard.
+- `--worker-name` `string` optional
+  - Name of the Worker to target. Defaults to the name in your local Wrangler file.
+
+The following global flags work on every command:
+
+- `--help` `boolean`
+  - Show help.
+- `--config` `string` (not supported by Pages)
+  - Path to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
+- `--cwd` `string`
+  - Run as if Wrangler was started in the specified directory instead of the current working directory.
+
+For example:
+
+```sh
+npx wrangler preview --name feature-branch
+```
+
+Other Preview branches are not affected.
+
+---
+
+## `preview delete`
+
+Delete a Preview and all its deployments
+
+npmyarnpnpm
+
+```
+npx wrangler preview delete
+```
+
+```
+yarn wrangler preview delete
+```
+
+```
+pnpm wrangler preview delete
+```
+
+- `--name` `string` Name of the Preview to delete (defaults to current git branch)
+- `--skip-confirmation` `boolean` alias: --ydefault: false
+
+  Skip the confirmation prompt
+- `--worker-name` `string` Name of the Worker to target (defaults to the name in your local config file)
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+---
+
+## `preview secret put`
+
+Create or update a secret variable on a Worker Preview and create a new deployment
+
+npmyarnpnpm
+
+```
+npx wrangler preview secret put [KEY]
+```
+
+```
+yarn wrangler preview secret put [KEY]
+```
+
+```
+pnpm wrangler preview secret put [KEY]
+```
+
+- `[KEY]` `string` required
+
+  The secret name to be accessible in the Worker
+- `--name` `string` Name of the Preview (defaults to current git branch)
+- `--message` `string` A descriptive message for this Preview deployment
+- `--tag` `string` A tag for this Preview deployment
+- `--worker-name` `string` Name of the Worker to target (defaults to the name in your local config file)
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+---
+
+## `preview secret delete`
+
+Delete a secret variable from a Worker Preview and create a new deployment
+
+npmyarnpnpm
+
+```
+npx wrangler preview secret delete [KEY]
+```
+
+```
+yarn wrangler preview secret delete [KEY]
+```
+
+```
+pnpm wrangler preview secret delete [KEY]
+```
+
+- `[KEY]` `string` required
+
+  The secret name to delete
+- `--name` `string` Name of the Preview (defaults to current git branch)
+- `--message` `string` A descriptive message for this Preview deployment
+- `--tag` `string` A tag for this Preview deployment
+- `--skip-confirmation` `boolean` alias: --ydefault: false
+
+  Skip the confirmation prompt
+- `--worker-name` `string` Name of the Worker to target (defaults to the name in your local config file)
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+---
+
+## `preview secret list`
+
+List all secrets on a Worker Preview's latest deployment
+
+npmyarnpnpm
+
+```
+npx wrangler preview secret list
+```
+
+```
+yarn wrangler preview secret list
+```
+
+```
+pnpm wrangler preview secret list
+```
+
+- `--name` `string` Name of the Preview (defaults to current git branch)
+- `--json` `boolean` default: false
+
+  Return output as JSON
+- `--worker-name` `string` Name of the Worker to target (defaults to the name in your local config file)
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+---
+
+## `preview secret bulk`
+
+Upload multiple secrets to a Worker Preview and create a new deployment
+
+npmyarnpnpm
+
+```
+npx wrangler preview secret bulk [FILE]
+```
+
+```
+yarn wrangler preview secret bulk [FILE]
+```
+
+```
+pnpm wrangler preview secret bulk [FILE]
+```
+
+- `[FILE]` `string` The file of key-value pairs to upload, as JSON or .env format
+- `--name` `string` Name of the Preview (defaults to current git branch)
+- `--message` `string` A descriptive message for this Preview deployment
+- `--tag` `string` A tag for this Preview deployment
+- `--worker-name` `string` Name of the Worker to target (defaults to the name in your local config file)
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+---
+
+## `preview base-config secret put`
+
+Create or update a secret variable on the Preview base config
+
+npmyarnpnpm
+
+```
+npx wrangler preview base-config secret put [KEY]
+```
+
+```
+yarn wrangler preview base-config secret put [KEY]
+```
+
+```
+pnpm wrangler preview base-config secret put [KEY]
+```
+
+- `[KEY]` `string` required
+
+  The secret name to be accessible in the Worker
+- `--worker-name` `string` Name of the Worker to target (defaults to the name in your local config file)
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+---
+
+## `preview base-config secret delete`
+
+Delete a secret variable from the Preview base config
+
+npmyarnpnpm
+
+```
+npx wrangler preview base-config secret delete [KEY]
+```
+
+```
+yarn wrangler preview base-config secret delete [KEY]
+```
+
+```
+pnpm wrangler preview base-config secret delete [KEY]
+```
+
+- `[KEY]` `string` required
+
+  The secret name to delete
+- `--skip-confirmation` `boolean` alias: --ydefault: false
+
+  Skip the confirmation prompt
+- `--worker-name` `string` Name of the Worker to target (defaults to the name in your local config file)
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+---
+
+## `preview base-config secret list`
+
+List all secrets on the Preview base config
+
+npmyarnpnpm
+
+```
+npx wrangler preview base-config secret list
+```
+
+```
+yarn wrangler preview base-config secret list
+```
+
+```
+pnpm wrangler preview base-config secret list
+```
+
+- `--worker-name` `string` Name of the Worker to target (defaults to the name in your local config file)
+- `--json` `boolean` default: false
+
+  Return output as JSON
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
+
+---
+
+## `preview base-config secret bulk`
+
+Upload multiple secrets to the Preview base config
+
+npmyarnpnpm
+
+```
+npx wrangler preview base-config secret bulk [FILE]
+```
+
+```
+yarn wrangler preview base-config secret bulk [FILE]
+```
+
+```
+pnpm wrangler preview base-config secret bulk [FILE]
+```
+
+- `[FILE]` `string` The file of key-value pairs to upload, as JSON or .env format
+- `--worker-name` `string` Name of the Worker to target (defaults to the name in your local config file)
+
+<details>
+
+<summary>
+
+Global flags
+
+</summary>
+
+- <code>--v</code><code>boolean</code> alias: --version
+
+  Show version number
+- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
+- <code>--config</code><code>string</code> alias: --c
+
+  Path to Wrangler configuration file
+- <code>--env</code><code>string</code> alias: --e
+
+  Environment to use for operations, and for selecting .env and .dev.vars files
+- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
+- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
+
+  Experimental: Enable automatic resource provisioning
+- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
+
+  Automatically provision draft bindings with new resources
+- <code>--install-skills</code><code>boolean</code> default: false
+
+  Install Cloudflare skills for detected AI coding agents before running the command
+- <code>--profile</code><code>string</code>Use a specific auth profile
+
+</details>
 
 ---
 
@@ -1493,5 +2065,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers/#page","headline":"Workers · Cloudflare Workers docs","description":"Wrangler commands for creating, developing, deploying, and managing Workers.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/commands/workers/#page","headline":"Workers","description":"Wrangler commands for creating, developing, deploying, and managing Workers.","url":"https://developers.cloudflare.com/workers/wrangler/commands/workers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

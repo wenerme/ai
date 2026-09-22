@@ -12,61 +12,61 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Slack
 
-Last updated May 6, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/slack-saas/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/slack-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide covers how to configure [Slack ↗](https://slack.com/help/articles/203772216-SAML-single-sign-on) as a SAML application in Cloudflare One.
 
 ## Prerequisites
 
-* An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
-* Admin access to a Slack Business+ or Enterprise Grid plan account
+- An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
+- Admin access to a Slack Business+ or Enterprise Grid plan account
 
-## 1\. Add a SaaS application to Cloudflare One
+## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** \> **Access controls** \> **Applications**.
-2. Select **Create new application** \> **SaaS application**.
-3. For **Application**, select _Slack_.
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+2. Select **Create new application** > **SaaS application**.
+3. For **Application**, select *Slack*.
 4. For the authentication protocol, select **SAML**.
 5. Select **Add application**.
 6. Fill in the following fields:
-  * **Entity ID**: `https://slack.com`
-  * **Assertion Consumer Service URL**: `https://<YOUR_DOMAIN>.slack.com/sso/saml`
-  * **Name ID format**: The format expected by Slack, usually _Email_
+   - **Entity ID**: `https://slack.com`
+   - **Assertion Consumer Service URL**: `https://<YOUR_DOMAIN>.slack.com/sso/saml`
+   - **Name ID format**: The format expected by Slack, usually *Email*
 7. Copy the **SSO endpoint**, **Access Entity ID or Issuer**, and **Public key**.
 8. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 9. Save the application.
 
-## 2\. Create a x.509 certificate
+## 2. Create a x.509 certificate
 
 1. Paste the **Public key** in a text editor.
 2. Wrap the certificate in `-----BEGIN CERTIFICATE-----` and `-----END CERTIFICATE-----`.
 
-## 3\. Add a SAML SSO provider to Slack
+## 3. Add a SAML SSO provider to Slack
 
-1. In Slack, go to **Settings & administrations** \> **Workspace settings** \> **Authentication**.
+1. In Slack, go to **Settings & administrations** > **Workspace settings** > **Authentication**.
 2. Select **Configure**.
 3. Turn on **Test**. Configuration changes will not apply until **Configure** is turned on.
 4. Fill in the following fields:
-  * **Service Provider Issuer URL**: Ensure set to `https://slack.com`.
-  * **SAML SSO URL**: SSO endpoint from application configuration in Cloudflare One.
-  * **Identity Provider Issuer**: Access Entity ID or Issuer from application configuration in Cloudflare One.
-  * **Public Certificate**: Paste the entire x.509 certificate from step [2\. Create a x.509 certificate](#2-create-a-x509-certificate).
+   - **Service Provider Issuer URL**: Ensure set to `https://slack.com`.
+   - **SAML SSO URL**: SSO endpoint from application configuration in Cloudflare One.
+   - **Identity Provider Issuer**: Access Entity ID or Issuer from application configuration in Cloudflare One.
+   - **Public Certificate**: Paste the entire x.509 certificate from step [2. Create a x.509 certificate](#2-create-a-x509-certificate).
 5. Under **Advanced Options**, select **Expand**.
-6. For **AuthnContextClassRef**, ensure _urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport_ is selected.
+6. For **AuthnContextClassRef**, ensure *urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport* is selected.
 7. Ensure **Sign the AuthnRequest** is turned off.
 8. For **SAML Response Signing**, turn on **Sign the Response** and **Sign the Assertion**.
-9. In the main configuration page under **Settings**, choose whether SSO is _required_, _partially required_, or _optional_ for workspace members.
+9. In the main configuration page under **Settings**, choose whether SSO is *required*, *partially required*, or *optional* for workspace members.
 10. (Optional) Under **Customize**, enter a **Sign in Button Label**.
 11. Test your set-up. If all works well, turn **Test** to **Configure**.
 
-1. In Slack, go to **Settings & administration** \> **Organization settings** \> **Security** \> **SSO Settings**.
+1. In Slack, go to **Settings & administration** > **Organization settings** > **Security** > **SSO Settings**.
 2. For **SSO name**, enter your desired name.
 3. Fill in the following fields:
-  * **SAML 2.0 Endpoint URL**: SSO endpoint from application configuration in Cloudflare One.
-  * **Identity Provider Issuer URL**: Access Entity ID or Issuer from application configuration in Cloudflare One.
-  * **Service Provider Issuer URL**: Ensure set to `https://slack.com`.
-  * **x.509 Certificate**: Paste the entire x.509 certificate from step [2\. Create a x.509 certificate](#2-create-a-x509-certificate).
-4. For **AuthnContextClassRef**, ensure _urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport_ is selected.
+   - **SAML 2.0 Endpoint URL**: SSO endpoint from application configuration in Cloudflare One.
+   - **Identity Provider Issuer URL**: Access Entity ID or Issuer from application configuration in Cloudflare One.
+   - **Service Provider Issuer URL**: Ensure set to `https://slack.com`.
+   - **x.509 Certificate**: Paste the entire x.509 certificate from step [2. Create a x.509 certificate](#2-create-a-x509-certificate).
+4. For **AuthnContextClassRef**, ensure *urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport* is selected.
 5. Ensure **Sign the AuthnRequest** is turned off.
 6. For **SAML Response Signing**, turn on **Sign the Response** and **Sign the Assertion**.
 7. Select **Test Configuration**.
@@ -81,5 +81,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/slack-saas/#page","headline":"Slack · Cloudflare One docs","description":"Integrate Slack with Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/slack-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","Slack"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/slack-saas/#page","headline":"Slack","description":"Integrate Slack with Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/slack-saas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["SAML","Slack"]}
 ```

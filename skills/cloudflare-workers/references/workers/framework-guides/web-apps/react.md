@@ -184,7 +184,7 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "my-app",
      // Set this to today's date
-     "compatibility_date": "2026-09-14",
+     "compatibility_date": "2026-09-22",
      "assets": {
        "not_found_handling": "single-page-application"
      }
@@ -194,7 +194,7 @@ If you already have a React + Vite application, you can adapt it to deploy to Cl
    ```toml
    name = "my-app"
    # Set this to today's date
-   compatibility_date = "2026-09-14"
+   compatibility_date = "2026-09-22"
 
    [assets]
    not_found_handling = "single-page-application"
@@ -344,7 +344,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "my-app",
      // Set this to today's date
-     "compatibility_date": "2026-09-14",
+     "compatibility_date": "2026-09-22",
      "main": "./worker/index.ts",
      "assets": {
        "not_found_handling": "single-page-application"
@@ -355,7 +355,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
    ```toml
    name = "my-app"
    # Set this to today's date
-   compatibility_date = "2026-09-14"
+   compatibility_date = "2026-09-22"
    main = "./worker/index.ts"
 
    [assets]
@@ -398,7 +398,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
      "$schema": "./node_modules/wrangler/config-schema.json",
      "name": "cloudflare-vite-tutorial",
      // Set this to today's date
-     "compatibility_date": "2026-09-14",
+     "compatibility_date": "2026-09-22",
      "main": "./worker/index.ts",
      "assets": {
        "not_found_handling": "single-page-application",
@@ -412,7 +412,7 @@ If you want to add an API Worker to your existing React + Vite project, follow t
    ```toml
    name = "cloudflare-vite-tutorial"
    # Set this to today's date
-   compatibility_date = "2026-09-14"
+   compatibility_date = "2026-09-22"
    main = "./worker/index.ts"
 
    [assets]
@@ -484,5 +484,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react/#page","headline":"React + Vite · Cloudflare Workers docs","description":"Create a new React + Vite application or deploy an existing one to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["spa"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react/#page","headline":"React + Vite","description":"Create a new React + Vite application or deploy an existing one to Cloudflare Workers with Workers Assets.","url":"https://developers.cloudflare.com/workers/framework-guides/web-apps/react/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["spa"]}
 ```

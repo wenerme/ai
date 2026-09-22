@@ -4,15 +4,15 @@
 
 # Alpha.Decisions
 
-> Alpha feature endpoints for Decisions (questions and answers) requests
+> Alpha feature endpoints for Decisions requests
 
 ## Overview
 
-Alpha feature endpoints for Decisions (questions and answers) requests
+Alpha feature endpoints for Decisions requests
 
 ### Available Operations
 
-* [Create](#create) - Submit a Decisions (questions and answers) request
+* [Create](#create) - Submit a Decisions request
 
 ## Create
 

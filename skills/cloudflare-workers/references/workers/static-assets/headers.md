@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Headers
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/static-assets/headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Default headers
 
@@ -131,7 +131,7 @@ To enable other domains to fetch every static asset from your Worker, the follow
   Access-Control-Allow-Origin: *
 ```
 
-This applies the `Access-Control-Allow-Origin` header to any incoming URL. Note that the CORS specification only allows `*`, `null`, or an exact origin as valid `Access-Control-Allow-Origin` values — wildcard patterns within origins are not supported. To allow CORS from specific [preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/), you will need to handle this dynamically in your Worker code rather than through the `_headers` file.
+This applies the `Access-Control-Allow-Origin` header to any incoming URL. Note that the CORS specification only allows `*`, `null`, or an exact origin as valid `Access-Control-Allow-Origin` values — wildcard patterns within origins are not supported. To allow CORS from specific [Version URLs](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/), you will need to handle this dynamically in your Worker code rather than through the `_headers` file.
 
 ##### Prevent your workers.dev URLs showing in search results
 
@@ -191,5 +191,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/headers/#page","headline":"Headers · Cloudflare Workers docs","description":"Learn about default and custom headers for Workers static assets, including Cache-Control, ETag, and Content-Type behavior.","url":"https://developers.cloudflare.com/workers/static-assets/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/static-assets/headers/#page","headline":"Headers","description":"Learn about default and custom headers for Workers static assets, including Cache-Control, ETag, and Content-Type behavior.","url":"https://developers.cloudflare.com/workers/static-assets/headers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

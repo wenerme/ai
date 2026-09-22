@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Chrome DevTools Protocol (CDP)
 
-Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/cdp/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/cdp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `/devtools` endpoints provide session management capabilities that follow the [Chrome DevTools Protocol (CDP) ↗](https://chromedevtools.github.io/devtools-protocol/). These endpoints allow you to create persistent browser sessions, manage multiple tabs, and interact with browsers using CDP commands. This is useful for advanced automation, debugging, and remote browser control.
 
@@ -28,11 +28,11 @@ The Chrome DevTools Protocol (CDP) is a remote debugging protocol that allows yo
 
 The browser sessions endpoints enable you to:
 
-* **Create and manage persistent browser sessions** — Launch browser instances that remain active for extended periods
-* **Open, close, and list browser tabs (targets)** — Manage multiple debuggable targets (pages, iframes, etc.) within a single browser instance
-* **Connect via WebSocket to send CDP commands** — Automate browser actions programmatically
-* **View live browser sessions using Chrome DevTools UI** — Debug and inspect remote browser sessions visually
-* **Integrate with existing CDP clients** — Use standard CDP clients like Puppeteer or custom WebSocket implementations
+- **Create and manage persistent browser sessions** — Launch browser instances that remain active for extended periods
+- **Open, close, and list browser tabs (targets)** — Manage multiple debuggable targets (pages, iframes, etc.) within a single browser instance
+- **Connect via WebSocket to send CDP commands** — Automate browser actions programmatically
+- **View live browser sessions using Chrome DevTools UI** — Debug and inspect remote browser sessions visually
+- **Integrate with existing CDP clients** — Use standard CDP clients like Puppeteer or custom WebSocket implementations
 
 ## How it works
 
@@ -52,7 +52,7 @@ HTTP endpoints are also available to manage the browser lifecycle without using 
 4. **Close tab** — `DELETE /devtools/browser/{session_id}/json/close/{target_id}`
 5. **Close session** — `DELETE /devtools/browser/{session_id}`
 
-Check the [API reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/) for the full list of endpoints.
+Check the [API reference](https://developers.cloudflare.com/api/resources/browser_rendering/) for the full list of endpoints.
 
 ## Troubleshooting
 
@@ -67,5 +67,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/#page","headline":"Chrome DevTools Protocol (CDP) · Cloudflare Browser Run docs","description":"Create persistent browser sessions, manage tabs, and interact with browsers using Chrome DevTools Protocol (CDP) commands via the /devtools endpoints.","url":"https://developers.cloudflare.com/browser-run/cdp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/#page","headline":"Chrome DevTools Protocol (CDP)","description":"Create persistent browser sessions, manage tabs, and interact with browsers using Chrome DevTools Protocol (CDP) commands via the /devtools endpoints.","url":"https://developers.cloudflare.com/browser-run/cdp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

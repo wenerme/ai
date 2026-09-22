@@ -12,13 +12,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Session management (HTTP)
 
-Last updated May 28, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/browser-run/cdp/session-management/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/cdp/session-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the HTTP API to manage browser sessions and tabs without using WebSocket connections. This is useful for session lifecycle operations like creating sessions, listing tabs, and cleaning up resources.
 
 Before you begin, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.
 
-The [API reference](https://developers.cloudflare.com/api/resources/browser%5Frendering/) documents all session management endpoints under `/devtools`.
+The [API reference](https://developers.cloudflare.com/api/resources/browser_rendering/) documents all session management endpoints under `/devtools`.
+
+When your code runs in a Worker, you can use the typed [Browser binding API](https://developers.cloudflare.com/browser-run/reference/browser-binding-api/) instead of constructing HTTP requests. The binding exposes `acquire()`, `connectSession()`, `launch()`, and a nested `devtools` target for session and target management.
 
 ## Step 1: Acquire a browser session
 
@@ -95,12 +97,12 @@ The `devtoolsFrontendUrl` is valid for five minutes from when it was generated. 
 
 Once opened, the DevTools UI will load and you can:
 
-* Inspect the DOM and CSS
-* Debug JavaScript with breakpoints
-* Monitor network requests
-* View console messages
-* Execute JavaScript in the console
-* Navigate to different URLs
+- Inspect the DOM and CSS
+- Debug JavaScript with breakpoints
+- Monitor network requests
+- View console messages
+- Execute JavaScript in the console
+- Navigate to different URLs
 
 ## Step 5: Clean up
 
@@ -131,5 +133,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/session-management/#page","headline":"Session management (HTTP) · Cloudflare Browser Run docs","description":"Manage browser sessions and tabs using HTTP endpoints, including creating sessions, listing targets, and opening the Chrome DevTools UI.","url":"https://developers.cloudflare.com/browser-run/cdp/session-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/session-management/#page","headline":"Session management (HTTP)","description":"Manage browser sessions and tabs using HTTP endpoints, including creating sessions, listing targets, and opening the Chrome DevTools UI.","url":"https://developers.cloudflare.com/browser-run/cdp/session-management/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

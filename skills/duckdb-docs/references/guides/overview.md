@@ -29,6 +29,7 @@ To find a list of these tools, check out the [Awesome DuckDB repository](https:/
 
 * [How to authenticate to S3 / AWS](https://duckdb.org/docs/current/core_extensions/aws.html#configuration-and-authentication)
 * [How to load a Parquet file directly from HTTP(S)](https://duckdb.org/docs/current/guides/network_cloud_storage/http_import.html)
+* [How to load a CSV file directly from HTTP(S)](https://duckdb.org/docs/current/guides/network_cloud_storage/http_csv_import.html)
 * [How to load a Parquet file directly from S3](https://duckdb.org/docs/current/guides/network_cloud_storage/s3_import.html)
 * [How to export a Parquet file to S3](https://duckdb.org/docs/current/guides/network_cloud_storage/s3_export.html)
 * [How to load a Parquet file from S3 Express One](https://duckdb.org/docs/current/guides/network_cloud_storage/s3_express_one.html)

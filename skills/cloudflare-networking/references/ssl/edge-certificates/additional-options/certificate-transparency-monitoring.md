@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Certificate Transparency Monitoring
 
-Last updated Aug 13, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Certificate Transparency (CT) Monitoring is an [opt-in](#opt-in-and-out) feature that lets you double-check any SSL/TLS certificates issued for your domain.
 
@@ -20,9 +20,9 @@ CT Monitoring alerts are triggered whenever a certificate that covers your monit
 
 Aspects to consider
 
-* Certificates that Cloudflare did not issue can still trigger CT Monitoring emails. This includes certificates issued by services outside Cloudflare, as well as custom certificates you upload yourself.
-* If your domain is included in a shared certificate, you may receive notifications for domains or subdomains that do not belong to you but are included as subject alternative names (SANs) together with your domain. You can use a tool like [Certificate Search ↗](https://crt.sh/) to gather more information in such cases.
-* CT Monitoring does not detect phishing attempts. For example, for `cloudflare.com`, an alert would not trigger if a certificate was issued for `cloudf1are.com` or `cloud-flare.com`.
+- Certificates that Cloudflare did not issue can still trigger CT Monitoring emails. This includes certificates issued by services outside Cloudflare, as well as custom certificates you upload yourself.
+- If your domain is included in a shared certificate, you may receive notifications for domains or subdomains that do not belong to you but are included as subject alternative names (SANs) together with your domain. You can use a tool like [Certificate Search ↗](https://crt.sh/) to gather more information in such cases.
+- CT Monitoring does not detect phishing attempts. For example, for `cloudflare.com`, an alert would not trigger if a certificate was issued for `cloudf1are.com` or `cloud-flare.com`.
 
 ---
 
@@ -48,9 +48,9 @@ If you can confirm that your organization or a service you use requested the cer
 
 Take action if:
 
-* You do not recognize the issuer or did not request the certificate.
-* You do not recognize the DNS names.
-* Your website has been acting strangely.
+- You do not recognize the issuer or did not request the certificate.
+- You do not recognize the DNS names.
+- Your website has been acting strangely.
 
 ---
 
@@ -60,13 +60,13 @@ Take action if:
 
 Only Certificate Authorities can revoke malicious certificates. If you believe an illegitimate certificate was issued for your domain, contact the Certificate Authority listed as the **Issuer** in the email.
 
-* [GlobalSign support ↗](https://support.globalsign.com/)
-* [GoDaddy support ↗](https://www.godaddy.com/contact-us?sp%5Fhp=B)
-* [Google Trust Services support ↗](https://pki.goog/faq/)
-* [IdenTrust support ↗](https://www.identrust.com/support/support-team)
-* [Let's Encrypt support ↗](https://letsencrypt.org/contact/)
-* [Sectigo support ↗](https://sectigo.com/support)
-* [SSL.com support ↗](https://www.ssl.com/submit-a-ticket/)
+- [GlobalSign support ↗](https://support.globalsign.com/)
+- [GoDaddy support ↗](https://www.godaddy.com/contact-us?sp_hp=B)
+- [Google Trust Services support ↗](https://pki.goog/faq/)
+- [IdenTrust support ↗](https://www.identrust.com/support/support-team)
+- [Let's Encrypt support ↗](https://letsencrypt.org/contact/)
+- [Sectigo support ↗](https://sectigo.com/support)
+- [SSL.com support ↗](https://www.ssl.com/submit-a-ticket/)
 
 ### Option 2: Contact domain registrars
 
@@ -95,5 +95,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/#page","headline":"Certificate Transparency Monitoring · Cloudflare SSL/TLS docs","description":"Certificate Transparency (CT) Monitoring emails you when a new SSL/TLS certificate is issued for your domain, so you can spot unauthorized or mis-issued certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/#page","headline":"Certificate Transparency Monitoring","description":"Certificate Transparency (CT) Monitoring emails you when a new SSL/TLS certificate is issued for your domain, so you can spot unauthorized or mis-issued certificates.","url":"https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

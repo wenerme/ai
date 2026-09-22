@@ -93,7 +93,7 @@ Create a `wrangler.jsonc` file in the root of your project:
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-app",
   // Set this to today's date
-  "compatibility_date": "2026-09-14",
+  "compatibility_date": "2026-09-22",
   "assets": {
     "not_found_handling": "single-page-application"
   }
@@ -103,7 +103,7 @@ Create a `wrangler.jsonc` file in the root of your project:
 ```toml
 name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 
 [assets]
 not_found_handling = "single-page-application"
@@ -211,7 +211,7 @@ Update your Wrangler configuration file to add a `main` field that points to you
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-app",
   // Set this to today's date
-  "compatibility_date": "2026-09-14",
+  "compatibility_date": "2026-09-22",
   "main": "./worker/index.ts",
   "assets": {
     "not_found_handling": "single-page-application"
@@ -222,7 +222,7 @@ Update your Wrangler configuration file to add a `main` field that points to you
 ```toml
 name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 main = "./worker/index.ts"
 
 [assets]
@@ -266,7 +266,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "cloudflare-vite-tutorial",
   // Set this to today's date
-  "compatibility_date": "2026-09-14",
+  "compatibility_date": "2026-09-22",
   "main": "./worker/index.ts",
   "assets": {
     "not_found_handling": "single-page-application",
@@ -280,7 +280,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
 ```toml
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-09-14"
+compatibility_date = "2026-09-22"
 main = "./worker/index.ts"
 
 [assets]
@@ -436,5 +436,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/#page","headline":"Tutorial - React SPA with an API · Cloudflare Workers docs","description":"Create a React SPA with an API Worker using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/#page","headline":"Tutorial - React SPA with an API","description":"Create a React SPA with an API Worker using the Vite plugin","url":"https://developers.cloudflare.com/workers/vite-plugin/tutorial/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

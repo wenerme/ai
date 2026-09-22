@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Versions & deployments
 
-Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/versions-and-deployments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Every time you change your Worker's code or configuration, Workers creates a **version**. A **deployment** determines which version(s) are actively serving traffic.
 
@@ -54,7 +54,7 @@ Wrangler allows you to view the 100 most recent versions and deployments. Refer 
 ## Next steps
 
 - [Deployment management](https://developers.cloudflare.com/workers/versions-and-deployments/deployment-management/) - Upload versions without deploying them and control when they go live
-- [Preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/) - Test new versions before deploying them to production
+- [Version URLs](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/) - Test new versions before deploying them to production
 - [Gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/) - Split traffic between two versions using percentage-based routing
 - [Version affinity](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/version-affinity/) - Consistently route users to the same version across page loads during a gradual deployment
 - [Version overrides](https://developers.cloudflare.com/workers/versions-and-deployments/version-overrides/) - Send a request to a specific version by ID for smoke testing and pinning between Workers
@@ -69,5 +69,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/#page","headline":"Versions & deployments · Cloudflare Workers docs","description":"Understand how Workers tracks changes with versions and releases them with deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/versions-and-deployments/#page","headline":"Versions & deployments","description":"Understand how Workers tracks changes with versions and releases them with deployments.","url":"https://developers.cloudflare.com/workers/versions-and-deployments/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

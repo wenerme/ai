@@ -159,7 +159,7 @@ When you configure BYOK, your provider API keys (OpenAI, Anthropic, Google, etc.
 
 * **Rotate OpenRouter keys freely**: You can rotate your OpenRouter API keys as often as you like for security compliance without touching your provider credentials.
 * **Provider keys stay stable**: Your provider API keys remain unchanged, avoiding the complexity of rotating credentials across multiple AI providers.
-* **Single point of management**: Manage all your provider keys in one place through OpenRouter's [integrations settings](https://openrouter.ai/settings/integrations), while rotating your application-facing OpenRouter keys independently.
+* **Single point of management**: Manage all your provider keys in one place through your workspace's [BYOK settings](https://openrouter.ai/workspaces), while rotating your application-facing OpenRouter keys independently.
 
 This separation of concerns makes BYOK particularly valuable for organizations with strict key rotation policies. You get the security benefits of regular key rotation for your application credentials while maintaining stable, long-lived connections to your AI providers.
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Monitor detections
 
-Last updated Apr 23, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Spam and Malicious emails are blocked outright by Email security, but Suspicious and Spoof dispositions should be monitored. Suspicious messages should be investigated by a security analyst to determine the legitimacy of the message.
 
@@ -22,8 +22,8 @@ Messages that receive a Spoof disposition should be investigated because it sign
 
 In most cases, a Spoof disposition is triggered by a legitimate third-party mail service. If you determine that the Spoofed email is a legitimate business use case, you can either:
 
-* Update your email authentication records.
-* Add an acceptable sender [allow policy](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/) to exempt messages from the Spam, Spoof, or Bulk disposition, but not Malicious or Suspicious, so the content of the message can still be monitored.
+- Update your email authentication records.
+- Add an acceptable sender [allow policy](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/allow-policies/) to exempt messages from the Spam, Spoof, or Bulk disposition, but not Malicious or Suspicious, so the content of the message can still be monitored.
 
 ## Search email messages
 
@@ -33,15 +33,15 @@ You can search for emails that have been processed by Email security, whether th
 
 There are three ways for searching emails:
 
-* Popular screen: A popular screen allows you to view messages based on common pre-defined criteria.
-* Regular screen: A regular screen allows you to investigate your inbox by inserting a term to screen across all criteria.
-* Advanced screen: The advanced screen criteria gives you the option to narrow message results based on specific criteria. The advanced screen has several options (such as keywords, subject keywords, sender domain, and more) to scan your inbox.
+- Popular screen: A popular screen allows you to view messages based on common pre-defined criteria.
+- Regular screen: A regular screen allows you to investigate your inbox by inserting a term to screen across all criteria.
+- Advanced screen: The advanced screen criteria gives you the option to narrow message results based on specific criteria. The advanced screen has several options (such as keywords, subject keywords, sender domain, and more) to scan your inbox.
 
 Additional information on search can be found on the [Screen criteria](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#screen-criteria) documentation.
 
 ### Export messages
 
-With Email security, you can export messages to a CSV file. Via the dashboard, you can export up to 1,000 rows. If you want to export all messages, you can use the [API ↗](https://developers.cloudflare.com/api/resources/email%5Fsecurity/subresources/investigate/methods/get/).
+With Email security, you can export messages to a CSV file. Via the dashboard, you can export up to 1,000 rows. If you want to export all messages, you can use the [API ↗](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate/methods/get/).
 
 Was this helpful?
 
@@ -52,5 +52,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/#page","headline":"Monitor detections · Cloudflare Learning Paths","description":"Review email threat detection results.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/#page","headline":"Monitor detections","description":"Review email threat detection results.","url":"https://developers.cloudflare.com/learning-paths/secure-your-email/monitor-your-inbox/monitor-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

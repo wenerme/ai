@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # GraphQL Analytics
 
-Last updated Apr 17, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the GraphQL Analytics API to review data for Cloudflare Network Firewall (formerly Magic Firewall) network traffic related to rules matching your traffic. This contains both rules you configured in the Network Firewall dashboard, and the rules managed by Cloudflare as a part of [Network Firewall Managed rules](https://developers.cloudflare.com/cloudflare-network-firewall/how-to/enable-managed-rulesets/) and [Network Firewall IDS](https://developers.cloudflare.com/cloudflare-network-firewall/about/ids/) features.
 
@@ -31,7 +31,7 @@ To construct a Network Firewall GraphQL query for an object, you will need a Clo
 
 To construct queries to gather analytics for a particular rule, you need the rule ID for each firewall rule.
 
-1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic%5Ffirewall) page.
+1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall) page.
 2. In the **Custom policies** tab, locate the rule you need the rule ID for from the list and select the three dots > **Edit**.
 3. Locate the **ID** and select the copy button.
 4. Select **Cancel** to return to the **Firewall Policies** page.
@@ -77,10 +77,10 @@ Cloudflare analytics are case sensitive for paths and URIs. Make sure that filte
 
 For each stream, display the:
 
-* Source and destination IP addresses
-* Ingress Cloudflare data centers that received it
-* Total traffic volume in bits and packets received within the hour
-* Actions taken by the firewall rule
+- Source and destination IP addresses
+- Ingress Cloudflare data centers that received it
+- Total traffic volume in bits and packets received within the hour
+- Actions taken by the firewall rule
 
 ```graphql
 query MagicFirewallObtainRules(
@@ -120,9 +120,9 @@ By setting `verdict` to `drop` and `outcome` as `pass`, we are filtering for tra
 
 For each stream, display the:
 
-* Source and destination IP addresses.
-* Ingress Cloudflare data centers that received it.
-* Total traffic volume in bits and packets received within the hour.
+- Source and destination IP addresses.
+- Ingress Cloudflare data centers that received it.
+- Total traffic volume in bits and packets received within the hour.
 
 ```graphql
 query MagicFirewallObtainIDS($accountTag: string!, $start: Time, $end: Time) {
@@ -189,5 +189,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/#page","headline":"GraphQL Analytics · Cloudflare Network Firewall docs","description":"Use the GraphQL Analytics API to review data for Cloudflare Network Firewall network traffic related to rules matching your traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/#page","headline":"GraphQL Analytics","description":"Use the GraphQL Analytics API to review data for Cloudflare Network Firewall network traffic related to rules matching your traffic.","url":"https://developers.cloudflare.com/cloudflare-network-firewall/tutorials/graphql-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 ```

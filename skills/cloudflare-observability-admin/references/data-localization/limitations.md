@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Limitations
 
-Last updated May 4, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/data-localization/limitations/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated May 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/data-localization/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 There are some caveats and limitations when deploying Data Localization Suite features.
 
@@ -34,10 +34,10 @@ For product-specific caveats, refer to [Cloudflare product compatibility](https:
 
 The following features and protocols are not supported by Regional Services and will not work on regionalized hostnames:
 
-* [ICMP ↗](https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/) — Internet Control Message Protocol, used for network diagnostics like `ping`
-* [Encrypted Client Hello (ECH)](https://developers.cloudflare.com/ssl/edge-certificates/ech/) — a privacy feature that encrypts the initial part of a TLS connection
-* [O2O](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/) — origin-to-origin, a Cloudflare for SaaS setup
-* [Onion Routing (Tor)](https://developers.cloudflare.com/network/onion-routing/)
+- [ICMP ↗](https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/) — Internet Control Message Protocol, used for network diagnostics like `ping`
+- [Encrypted Client Hello (ECH)](https://developers.cloudflare.com/ssl/edge-certificates/ech/) — a privacy feature that encrypts the initial part of a TLS connection
+- [O2O](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/) — origin-to-origin, a Cloudflare for SaaS setup
+- [Onion Routing (Tor)](https://developers.cloudflare.com/network/onion-routing/)
 
 Since Regional Services leverages Spectrum (Cloudflare's Layer 4 proxy service) in the background, [Spectrum limitations](https://developers.cloudflare.com/spectrum/reference/limitations/) apply.
 
@@ -53,7 +53,7 @@ Regional Services does not apply to [subrequests](https://developers.cloudflare.
 
 There are certain limitations and caveats when using Customer Metadata Boundary.
 
-When you configure Customer Metadata Boundary to EU, most of the analytics and logging sections in the Cloudflare dashboard will show no data. To view your data, use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) (which respects CMB) or set up [Logpush](https://developers.cloudflare.com/logs/logpush/) to export [HTTP request](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/) logs to a storage destination you control.
+When you configure Customer Metadata Boundary to EU, most of the analytics and logging sections in the Cloudflare dashboard will show no data. To view your data, use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) (which respects CMB) or set up [Logpush](https://developers.cloudflare.com/logs/logpush/) to export [HTTP request](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) logs to a storage destination you control.
 
 To configure Customer Metadata Boundary to EU, you must disable Log Retention for all zones within your account. Log Retention is a legacy feature of [Logpull](https://developers.cloudflare.com/logs/logpull/) (an older API for downloading logs, now superseded by Logpush).
 
@@ -63,8 +63,8 @@ For product-specific caveats, refer to [Cloudflare product compatibility](https:
 
 If you encounter a message on the dashboard indicating that your data is unavailable due to your account's Metadata Boundary configuration, this is because you are trying to access data that is not stored in your region (that is, you are in the US and trying to access data that is only stored in the EU, or vice versa). If you receive this error message while being in the region where your data is stored, there are two potential reasons why you might get this message:
 
-* Your account has Customer Metadata Boundary (CMB) enabled, and your request is being directed to an incorrect region. For example, if you are in the EU and CMB is configured to store your data in the US.
-* If you are trying to access your data from the correct region, such as being in the EU with CMB configured to save your data in the EU, the issue may be caused by network congestion. Typically, this problem resolves within a few minutes.
+- Your account has Customer Metadata Boundary (CMB) enabled, and your request is being directed to an incorrect region. For example, if you are in the EU and CMB is configured to store your data in the US.
+- If you are trying to access your data from the correct region, such as being in the EU with CMB configured to save your data in the EU, the issue may be caused by network congestion. Typically, this problem resolves within a few minutes.
 
 ### Dashboard UI Analytics
 
@@ -79,5 +79,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/limitations/#page","headline":"Limitations · Cloudflare Data Localization Suite docs","description":"Caveats and limitations when deploying Data Localization Suite features.","url":"https://developers.cloudflare.com/data-localization/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/data-localization/limitations/#page","headline":"Limitations","description":"Caveats and limitations when deploying Data Localization Suite features.","url":"https://developers.cloudflare.com/data-localization/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

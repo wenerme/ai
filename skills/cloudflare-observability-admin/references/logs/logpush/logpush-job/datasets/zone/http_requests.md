@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # HTTP requests
 
-Last updated Aug 27, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http%5Frequests/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The descriptions below detail the fields available for `http_requests`.
 
@@ -69,7 +69,7 @@ Cloudflare Bot Score. Scores below 30 are commonly associated with automated tra
 Type: `string`
 
 Detection engine responsible for generating the Bot Score.
-Possible values are _Not Computed_ | _Heuristics_ | _Machine Learning_ | _Behavioral Analysis_ | _Verified Bot_ | _JS Fingerprinting_ | _Cloudflare Service_. Available only for Bot Management customers. To enable this feature, contact your account team.
+Possible values are *Not Computed* | *Heuristics* | *Machine Learning* | *Behavioral Analysis* | *Verified Bot* | *JS Fingerprinting* | *Cloudflare Service*. Available only for Bot Management customers. To enable this feature, contact your account team.
 
 ## BotTags
 
@@ -82,7 +82,7 @@ Type of bot traffic (if available). Refer to [Bot Tags](https://developers.cloud
 Type: `string`
 
 Cache status.
-Possible values are _unknown_ | _miss_ | _expired_ | _updating_ | _stale_ | _hit_ | _ignored_ | _bypass_ | _revalidated_ | _dynamic_ | _stream\_hit_ | _deferred_
+Possible values are *unknown* | *miss* | *expired* | *updating* | *stale* | *hit* | *ignored* | *bypass* | *revalidated* | *dynamic* | *stream\_hit* | *deferred*
 "dynamic" means that a request is not eligible for cache. This can mean, for example that it was blocked by the firewall. Refer to [Cloudflare cache responses](https://developers.cloudflare.com/cache/concepts/cache-responses/) for more details.
 
 ## CacheLockWaitedMs
@@ -150,7 +150,7 @@ IP address of the client.
 Type: `string`
 
 Client IP class.
-Possible values are _unknown_ | _badHost_ | _searchEngine_ | _allowlist_ | _monitoringService_ | _noRecord_ | _scan_ | _tor_.
+Possible values are *unknown* | *badHost* | *searchEngine* | *allowlist* | *monitoringService* | *noRecord* | *scan* | *tor*.
 
 ## ClientLatitude
 
@@ -175,7 +175,7 @@ The SHA256 fingerprint of the certificate presented by the client during mTLS au
 Type: `string`
 
 The status of mTLS authentication. Only populated on the first request on an mTLS connection.
-Possible values are _unknown_ | _ok_ | _absent_ | _untrusted_ | _notyetvalid_ | _expired_.
+Possible values are *unknown* | *ok* | *absent* | *untrusted* | *notyetvalid* | *expired*.
 
 ## ClientRegionCode
 
@@ -446,7 +446,7 @@ List of tags that correlate to the Fraud detections made on a request.
 Type: `string`
 
 Risk of a specific email address.
-Possible values are _low_ | _medium_ | _high_.
+Possible values are *low* | *medium* | *high*.
 
 ## FraudUserID
 
@@ -477,20 +477,20 @@ Inter-request statistics computed for this JA4 fingerprint. JA4Signals field is 
 Type: `string`
 
 Whether the request passed background JavaScript Detection.
-Possible values are _passed_ | _failed_ | _missing_. Available only for Bot Management customers. To enable this feature, contact your account team.
+Possible values are *passed* | *failed* | *missing*. Available only for Bot Management customers. To enable this feature, contact your account team.
 
 ## LeakedCredentialCheckResult
 
 Type: `string`
 
 Result of the check for [leaked credentials](https://developers.cloudflare.com/waf/detections/leaked-credentials/).
-Possible results are: _password\_leaked_ | _username\_and\_password\_leaked_ | _username\_password\_similar_ | _username\_leaked_ | _clean_.
+Possible results are: *password\_leaked* | *username\_and\_password\_leaked* | *username\_password\_similar* | *username\_leaked* | *clean*.
 
 ## MatchedRules
 
 Type: `array[object]`
 
-Array of matched Cloudflare Rules product rules grouped by product. Each object contains: _product_ (string, for example snippets, transform, redirects), _rulesetId_ (string), _rulesetVersion_ (int), and _rules_ (array of objects, each with _id_ (string) and optional _metadata_ (object with string key-value pairs)).
+Array of matched Cloudflare Rules product rules grouped by product. Each object contains: *product* (string, for example snippets, transform, redirects), *rulesetId* (string), *rulesetVersion* (int), and *rules* (array of objects, each with *id* (string) and optional *metadata* (object with string key-value pairs)).
 
 ## OriginDNSResponseTimeMs
 
@@ -611,7 +611,7 @@ Action of the security rule that triggered a terminating action, if any.
 Type: `array[string]`
 
 Array of actions the Cloudflare security products performed on this request. The individual security products associated with this action can be found in SecuritySources and their respective rule IDs can be found in SecurityRuleIDs. The length of the array is the same as SecurityRuleIDs and SecuritySources.
-Possible actions are _unknown_ | _allow_ | _block_ | _challenge_ | _jschallenge_ | _log_ | _connectionClose_ | _challengeSolved_ | _challengeBypassed_ | _jschallengeSolved_ | _jschallengeBypassed_ | _bypass_ | _managedChallenge_ | _managedChallengeNonInteractiveSolved_ | _managedChallengeInteractiveSolved_ | _managedChallengeBypassed_ | _rewrite_ | _forceConnectionClose_ | _skip_ | _precursorInterstitialPageIssued_ | _precursorInterstitialPageBypassed_ | _precursorInterstitialPageSolved_.
+Possible actions are *unknown* | *allow* | *block* | *challenge* | *jschallenge* | *log* | *connectionClose* | *challengeSolved* | *challengeBypassed* | *jschallengeSolved* | *jschallengeBypassed* | *bypass* | *managedChallenge* | *managedChallengeNonInteractiveSolved* | *managedChallengeInteractiveSolved* | *managedChallengeBypassed* | *rewrite* | *forceConnectionClose* | *skip* | *precursorInterstitialPageIssued* | *precursorInterstitialPageBypassed* | *precursorInterstitialPageSolved*.
 
 ## SecurityRuleDescription
 
@@ -636,7 +636,7 @@ Array of rule IDs of the security product that matched the request. The security
 Type: `array[string]`
 
 Array of security products that matched the request. The same product can appear multiple times, which indicates different rules or actions that were activated. The rule IDs can be found in SecurityRuleIDs, and the actions can be found in SecurityActions. The length of the array is the same as SecurityRuleIDs and SecurityActions.
-Possible sources are _unknown_ | _asn_ | _country_ | _ip_ | _ipRange_ | _securityLevel_ | _zoneLockdown_ | _waf_ | _firewallRules_ | _uaBlock_ | _rateLimit_ | _bic_ | _hot_ | _l7ddos_ | _validation_ | _botFight_ | _apiShield_ | _botManagement_ | _dlp_ | _firewallManaged_ | _firewallCustom_ | _apiShieldSchemaValidation_ | _apiShieldTokenValidation_ | _apiShieldSequenceMitigation_ | _precursor_.
+Possible sources are *unknown* | *asn* | *country* | *ip* | *ipRange* | *securityLevel* | *zoneLockdown* | *waf* | *firewallRules* | *uaBlock* | *rateLimit* | *bic* | *hot* | *l7ddos* | *validation* | *botFight* | *apiShield* | *botManagement* | *dlp* | *firewallManaged* | *firewallCustom* | *apiShieldSchemaValidation* | *apiShieldTokenValidation* | *apiShieldSequenceMitigation* | *precursor*.
 
 ## SmartRouteColoID
 
@@ -672,7 +672,7 @@ Overall request score generated by the WAF detection module.
 
 Type: `string`
 
-Additional configuration flags: _simulate (0x1)_ | _null_.
+Additional configuration flags: *simulate (0x1)* | *null*.
 
 ## WAFMatchedVar (deprecated)
 
@@ -773,5 +773,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#page","headline":"HTTP requests · Cloudflare Logs docs","description":"The descriptions below detail the fields available for http_requests.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#page","headline":"HTTP requests","description":"The descriptions below detail the fields available for http_requests.","url":"https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Session recording
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/session-recording/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/session-recording/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Beta
 
@@ -119,7 +119,7 @@ If a session opened multiple tabs, the recording viewer shows a tab selector dro
 You can also retrieve a recording programmatically using the session ID. Use `browser.sessionId()` to capture the session ID before closing the browser, then pass it to the recordings endpoint.
 
 ```bash
-curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/recording/<SESSION_ID> \
+curl https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-run/recording/<SESSION_ID> \
   -H "Authorization: Bearer <API_TOKEN>"
 ```
 
@@ -148,7 +148,7 @@ The event arrays are available under `result.events`. The keys in `result.events
 Use the network recording endpoint to retrieve the requests captured for a specific target. The `target` query parameter is required and must contain one of the target IDs returned in `result.events`:
 
 ```bash
-curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/recording/<SESSION_ID>/network?target=<TARGET_ID>' \
+curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-run/recording/<SESSION_ID>/network?target=<TARGET_ID>' \
   -H "Authorization: Bearer <API_TOKEN>"
 ```
 
@@ -157,7 +157,7 @@ The response is a JSON array containing the recorded requests for that target, i
 To retrieve the network activity as an [HTTP Archive (HAR) 1.2 ↗](https://w3c.github.io/web-performance/specs/HAR/Overview.html) document, set `format=har`:
 
 ```bash
-curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-rendering/recording/<SESSION_ID>/network?target=<TARGET_ID>&format=har' \
+curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-run/recording/<SESSION_ID>/network?target=<TARGET_ID>&format=har' \
   -H "Authorization: Bearer <API_TOKEN>"
 ```
 
@@ -195,5 +195,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/session-recording/#page","headline":"Session recording · Cloudflare Browser Run docs","description":"Record and replay Browser Run sessions to visually debug browser automation scripts.","url":"https://developers.cloudflare.com/browser-run/features/session-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/session-recording/#page","headline":"Session recording","description":"Record and replay Browser Run sessions to visually debug browser automation scripts.","url":"https://developers.cloudflare.com/browser-run/features/session-recording/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

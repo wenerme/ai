@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Get started
 
-Last updated Aug 19, 2026|Copy as Markdown|[View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/get-started/index.md)|[Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Create a learned Schema Profile for one operation. Then review its detections before configuring mitigation.
 
@@ -32,14 +32,12 @@ The first profile appears after the next weekly learning run. This can take up t
 
 ## Learn and review a profile
 
-1. In the Cloudflare dashboard, go to **Web Assets** \> **Operations**.
-[Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+1. In the Cloudflare dashboard, go to **Web Assets** > **Operations**. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Select a discovered operation or [add one manually](https://developers.cloudflare.com/security/web-assets/manage-operations/#add-operations-manually). An operation uses an HTTP method, hostname pattern, and path pattern.
 3. From the operation overflow menu, select **Learn profile**. Discovery and manual creation do not start profiling.
 4. Allow Cloudflare to collect enough qualifying traffic.
 5. From the operation overflow menu, select **View details**. Review the learned schema under **Security overview**.
-6. In **Security** \> **Analytics**, open **Profile Analysis**. Review request time series for profile conformance and violations.
-[Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
+6. In **Security** > **Analytics**, open **Profile Analysis**. Review request time series for profile conformance and violations. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
 7. Drill into sampled logs to review violation reasons.
 8. After reviewing representative production traffic, [create a Custom Rule](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/).
 9. Scope the rule to the intended hostname, path, or operation. Then choose a mitigation action.
@@ -65,5 +63,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/application-profiles/get-started/#page","headline":"Get started · Cloudflare Web Application Firewall (WAF) docs","description":"Learn a Schema Profile and safely configure mitigation.","url":"https://developers.cloudflare.com/waf/detections/application-profiles/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/application-profiles/get-started/#page","headline":"Get started","description":"Learn a Schema Profile and safely configure mitigation.","url":"https://developers.cloudflare.com/waf/detections/application-profiles/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
