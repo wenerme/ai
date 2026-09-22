@@ -1136,6 +1136,15 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="query-duoworkflowevents-workflowid"></a>`workflowId` | [`AiDuoWorkflowsWorkflowID!`](#aiduoworkflowsworkflowid) | Array of request IDs to fetch. |
 
+### `Query.duoWorkflowRecentSessionProjects`
+
+- Introduced in GitLab 19.5.
+- Status: Experiment.
+
+Projects the current user has Duo Agent Platform sessions in, ordered by most recent session activity. Not a complete list: limited to the 50 most recent projects.
+
+Returns [`[Project!]`](#project).
+
 ### `Query.duoWorkflowWorkflows`
 
 - Introduced in GitLab 17.2.
@@ -30306,6 +30315,29 @@ Fields:
 | <a id="terraformstateprotectionruleedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="terraformstateprotectionruleedge-node"></a>`node` | [`TerraformStateProtectionRule`](#terraformstateprotectionrule) | The item at the end of the edge. |
 
+#### `TerraformStateVersionConnection`
+
+The connection type for [`TerraformStateVersion`](#terraformstateversion).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="terraformstateversionconnection-edges"></a>`edges` | [`[TerraformStateVersionEdge]`](#terraformstateversionedge) | A list of edges. |
+| <a id="terraformstateversionconnection-nodes"></a>`nodes` | [`[TerraformStateVersion]`](#terraformstateversion) | A list of nodes. |
+| <a id="terraformstateversionconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `TerraformStateVersionEdge`
+
+The edge type for [`TerraformStateVersion`](#terraformstateversion).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="terraformstateversionedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="terraformstateversionedge-node"></a>`node` | [`TerraformStateVersion`](#terraformstateversion) | The item at the end of the edge. |
+
 #### `TerraformStateVersionRegistryConnection`
 
 The connection type for [`TerraformStateVersionRegistry`](#terraformstateversionregistry).
@@ -34546,7 +34578,7 @@ Fields:
 | <a id="artifactregistrymanifest-osvariant"></a>`osVariant`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. CPU variant an image manifest targets. Null on an index, on most images, and always null on a remote repository. |
 | <a id="artifactregistrymanifest-referrerscount"></a>`referrersCount`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of manifests in the image that name this digest as their subject. Zero when none do, and always zero on a remote repository. Null on a deployment predating the field. |
 | <a id="artifactregistrymanifest-size"></a>`size`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Size of the manifest, in bytes. For a hosted repository, the push-time tree total, where an index total already contains its platform children and so does not sum across sibling rows. For a remote repository, the cached manifest's own payload bytes. |
-| <a id="artifactregistrymanifest-subjectdigest"></a>`subjectDigest`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Digest of the subject manifest a referrer refers to. Null for a manifest that is not a referrer, and null on the manifests list on its default, which excludes referrers unless the caller sets includeReferrers. |
+| <a id="artifactregistrymanifest-subjectdigest"></a>`subjectDigest`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Digest of the subject manifest a referrer refers to. Null for a manifest that is not a referrer. Populated on the referrers connection, where every row is a referrer of the manifest it hangs off. On the manifests connection it is null unless the caller passes includeReferrers, which the default omits. |
 | <a id="artifactregistrymanifest-tagscount"></a>`tagsCount`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of tags pointing at the manifest. Zero when untagged. Null on a deployment predating the field. |
 
 ### `ArtifactRegistryManifestAnnotation`
@@ -34581,6 +34613,7 @@ Fields:
 | <a id="artifactregistrymanifestdetails-osvariant"></a>`osVariant`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. CPU variant an image manifest targets. Null on an index, on most images, and always null on a remote repository. |
 | <a id="artifactregistrymanifestdetails-parentdigests"></a>`parentDigests`  | [`[String!]`](#string) | Introduced in GitLab 19.5. Status: Experiment. Digests of the indexes that reference this manifest, parent id ascending. Empty when no index references it. Null until Artifact Registry serves the field. |
 | <a id="artifactregistrymanifestdetails-parentscount"></a>`parentsCount`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of indexes that reference this manifest. Zero when none do. Null until Artifact Registry serves the field. |
+| <a id="artifactregistrymanifestdetails-referrers"></a>`referrers`  | [`ArtifactRegistryManifestConnection`](#artifactregistrymanifestconnection) | Introduced in GitLab 19.5. Status: Experiment. Manifests in the image that name this manifest as their subject, ordered by digest ascending. Reads at most 20 rows per page and can be selected once per operation, counting every selection of the field. Empty on a remote repository. Returns `null` for a manifest that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 | <a id="artifactregistrymanifestdetails-referrerscount"></a>`referrersCount`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of manifests in the image that name this digest as their subject. Zero when none do, and always zero on a remote repository. Null on a deployment predating the field. |
 | <a id="artifactregistrymanifestdetails-size"></a>`size`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Size of the manifest, in bytes. For a hosted repository, the push-time tree total, where an index total already contains its platform children and so does not sum across sibling rows. For a remote repository, the cached manifest's own payload bytes. |
 | <a id="artifactregistrymanifestdetails-subjectdigest"></a>`subjectDigest`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Digest of the subject manifest this manifest refers to. Null for a manifest that is not a referrer. Populated here even for a referrer, unlike the manifests list, because the detail route serves a referrer row like any other manifest. |
@@ -60822,6 +60855,7 @@ Fields:
 | <a id="terraformstate-permanentdeletionat"></a>`permanentDeletionAt`  | [`Time`](#time) | Introduced in GitLab 19.5. Status: Experiment. Timestamp of when the state will be permanently deleted, if it is scheduled for deletion. |
 | <a id="terraformstate-protectionruleexists"></a>`protectionRuleExists`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Whether a protection rule exists for the Terraform state. |
 | <a id="terraformstate-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp the Terraform state was updated. |
+| <a id="terraformstate-versions"></a>`versions` | [`TerraformStateVersionConnection`](#terraformstateversionconnection) | Versions of the Terraform state, most recent first. (see [Connections](#connections)) |
 
 ### `TerraformStateProtectionRule`
 
@@ -68235,6 +68269,7 @@ Import source.
 | <a id="importsourceuserstatus-pending_reassignment"></a>`PENDING_REASSIGNMENT` | An import source user mapping that is pending reassignment. |
 | <a id="importsourceuserstatus-reassignment_in_progress"></a>`REASSIGNMENT_IN_PROGRESS` | An import source user mapping that is reassignment in progress. |
 | <a id="importsourceuserstatus-rejected"></a>`REJECTED` | An import source user mapping that is rejected. |
+| <a id="importsourceuserstatus-revoked"></a>`REVOKED` | An import source user mapping that is revoked. |
 
 ### `IntegrationType`
 

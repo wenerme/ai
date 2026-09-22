@@ -101,6 +101,11 @@ tags:
   - description: Speech-to-text endpoints
     name: STT
     x-displayName: Transcriptions
+  - description: >-
+      System One endpoints for models such as Jev, compatible with the TypeSafe
+      SDKs. See https://openrouter.ai/docs/guides/community/typesafe-sdk.
+    name: SystemOne
+    x-displayName: System One
   - description: Text-to-speech endpoints
     name: TTS
     x-displayName: Speech
@@ -305,6 +310,7 @@ paths:
                     allowed_models: null
                     allowed_user_ids: null
                     created_at: '2025-08-24T10:30:00Z'
+                    declared_zdr: null
                     disabled: false
                     id: 11111111-2222-3333-4444-555555555555
                     is_byok_only: false
@@ -358,6 +364,7 @@ components:
             allowed_models: null
             allowed_user_ids: null
             created_at: '2025-08-24T10:30:00Z'
+            declared_zdr: null
             disabled: false
             id: 11111111-2222-3333-4444-555555555555
             is_byok_only: false
@@ -452,6 +459,7 @@ components:
         allowed_models: null
         allowed_user_ids: null
         created_at: '2025-08-24T10:30:00Z'
+        declared_zdr: null
         disabled: false
         id: 11111111-2222-3333-4444-555555555555
         is_byok_only: false
@@ -501,6 +509,19 @@ components:
           description: ISO timestamp of when the credential was created.
           example: '2025-08-24T10:30:00Z'
           type: string
+        declared_zdr:
+          description: >-
+            Your declaration of whether the upstream provider account behind
+            this credential has zero data retention (ZDR). `null` inherits
+            OpenRouter's data policy for the provider's endpoint; `true`
+            declares the account ZDR so requests that require ZDR may route to
+            this credential even when the shared endpoint retains data; `false`
+            declares it non-ZDR so such requests never route to it.
+            Self-declared and not verified by OpenRouter.
+          example: null
+          type:
+            - boolean
+            - 'null'
         disabled:
           description: Whether this credential is currently disabled.
           example: false
@@ -574,6 +595,7 @@ components:
         - is_fallback
         - is_required
         - is_byok_only
+        - declared_zdr
         - allowed_models
         - allowed_api_key_hashes
         - allowed_user_ids

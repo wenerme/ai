@@ -8,6 +8,8 @@
 
 Ori Harness runs the agent CLI you already use on OpenRouter. You run one command, and your agent starts with OpenRouter credentials, models, and settings in place. You don't change how you work.
 
+Every `ori` command launches your agent with OpenRouter credentials and organization settings applied to that session, so keep launching through Ori. If you'd rather work inside Claude Desktop, it also connects to OpenRouter natively via gateway mode with an API key — see the [Claude Desktop integration guide](/docs/cookbook/coding-agents/claude-desktop-integration).
+
 ## Install Ori
 
 <Tabs>
@@ -130,7 +132,11 @@ You keep your usual agent flags, and you can pick a model from any provider in t
 
 ## Live model catalog and routing toggles
 
-For Pi (`ori pi`), Prime Agent (`ori prime-agent`), and DeepSeek Harness (`ori dsh`), Ori hooks the agent up to your own OpenRouter model catalog:
+Every agent you launch through Ori uses your OpenRouter model catalog. There are two levels, depending on what the agent's own app exposes:
+
+### In-session catalog and toggles
+
+For Pi (`ori pi`), Prime Agent (`ori prime-agent`), and DeepSeek Harness (`ori dsh`), Ori hooks the agent up to your own OpenRouter model catalog at launch:
 
 * The `/model` list comes from your catalog, so it stays current and leaves out models your organization's policies block.
 * You turn on fast routing with `/fast`: Anthropic fast mode for Claude models, the Fast service tier for OpenAI models, and throughput-sorted (`:nitro`) routing for the rest. On Prime Agent, use `/speed` instead, because Prime Agent has its own `/fast` command.
@@ -139,6 +145,16 @@ For Pi (`ori pi`), Prime Agent (`ori prime-agent`), and DeepSeek Harness (`ori d
 Grok Build (`ori grok`) loads the same catalog into its own model picker, so you don't need to run `grok login`, and its model IDs are OpenRouter model IDs. It doesn't have the `/fast` and `/zdr` toggles.
 
 Muse Code (`ori muse`) also gets your catalog: Ori seeds Muse Code's model cache from OpenRouter before it starts, so its in-session model picker lists OpenRouter model IDs. Muse Code has no `/fast` or `/zdr` toggles either.
+
+### Launch-time catalog validation
+
+The other agents — Claude Code, Cline, Codex, Hermes, Kilo Code, omp, and OpenCode — don't have the in-session toggles, because they don't expose an extension surface Ori can write into. You pick a model with `--model` instead, and Ori validates the model ID against your catalog at launch: near-miss slugs are corrected (with a notice), and unknown IDs pass through untouched.
+
+```sh theme={null}
+ori codex --model openai/gpt-5.3-codex
+```
+
+All OpenRouter organization guardrails, workspace budgets, routing, and billing apply identically at both levels.
 
 ## Guardrails, on every agent
 

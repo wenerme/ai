@@ -1457,11 +1457,11 @@ List user actions and configuration changes within this organization.
 
         The OpenAI geography derived from the storage region.
 
-      - `provider: optional object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+      - `provider: optional AwsExternalStorageProvider or AzureExternalStorageProvider`
 
         The external storage provider configuration.
 
-        - `Aws object { account_id, bucket, external_id, 3 more }`
+        - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
           - `account_id: string`
 
@@ -1477,7 +1477,7 @@ List user actions and configuration changes within this organization.
 
             - `"aws"`
 
-        - `Azure object { account_name, container, region, 4 more }`
+        - `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
           - `account_name: string`
 
@@ -3272,11 +3272,11 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
         The OpenAI geography derived from the storage region.
 
-      - `provider: optional object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+      - `provider: optional AwsExternalStorageProvider or AzureExternalStorageProvider`
 
         The external storage provider configuration.
 
-        - `Aws object { account_id, bucket, external_id, 3 more }`
+        - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
           - `account_id: string`
 
@@ -3292,7 +3292,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
 
             - `"aws"`
 
-        - `Azure object { account_name, container, region, 4 more }`
+        - `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
           - `account_name: string`
 
@@ -5270,7 +5270,7 @@ Register one customer-managed external storage configuration.
 
 ### Returns
 
-- `OrganizationExternalStorage object { id, created_at, geography, 4 more }`
+- `ExternalStorageConfiguration object { id, created_at, geography, 4 more }`
 
   - `id: string`
 
@@ -5284,9 +5284,9 @@ Register one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
 
-    - `Aws object { account_id, bucket, external_id, 3 more }`
+    - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
       - `account_id: string`
 
@@ -5302,7 +5302,7 @@ Register one customer-managed external storage configuration.
 
         - `"aws"`
 
-    - `Azure object { account_name, container, region, 4 more }`
+    - `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
       - `account_name: string`
 
@@ -5447,7 +5447,7 @@ curl -X POST https://api.openai.com/v1/organization/external_storage \
 
 **delete** `/organization/external_storage/{external_storage_id}`
 
-Soft-delete one customer-managed external storage configuration.
+Disconnect a customer-managed external storage configuration. Removing the project's last configuration restores organization-default retention if customer-managed retention was active. Repeating a deletion also completes any interrupted retention update. Cloud storage is unchanged.
 
 ### Path Parameters
 
@@ -5455,7 +5455,7 @@ Soft-delete one customer-managed external storage configuration.
 
 ### Returns
 
-- `OrganizationExternalStorageDeleted object { id, deleted, object }`
+- `ExternalStorageDeleted object { id, deleted, object }`
 
   - `id: string`
 
@@ -5525,75 +5525,73 @@ List the organization's customer-managed external storage configurations.
 
 ### Returns
 
-- `ListExternalStorageResponse object { data, first_id, has_more, 2 more }`
+- `data: array of ExternalStorageConfiguration`
 
-  - `data: array of OrganizationExternalStorage`
+  - `id: string`
 
-    - `id: string`
+  - `created_at: number`
 
-    - `created_at: number`
+  - `geography: string`
 
-    - `geography: string`
+  - `object: "organization.external_storage"`
 
-    - `object: "organization.external_storage"`
+    - `"organization.external_storage"`
 
-      - `"organization.external_storage"`
+  - `project_id: string`
 
-    - `project_id: string`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
 
-    - `provider: object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+    - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
-      - `Aws object { account_id, bucket, external_id, 3 more }`
+      - `account_id: string`
 
-        - `account_id: string`
+      - `bucket: string`
 
-        - `bucket: string`
+      - `external_id: string`
 
-        - `external_id: string`
+      - `region: string`
 
-        - `region: string`
+      - `role_arn: string`
 
-        - `role_arn: string`
+      - `type: "aws"`
 
-        - `type: "aws"`
+        - `"aws"`
 
-          - `"aws"`
+    - `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
-      - `Azure object { account_name, container, region, 4 more }`
+      - `account_name: string`
 
-        - `account_name: string`
+      - `container: string`
 
-        - `container: string`
+      - `region: string`
 
-        - `region: string`
+      - `resource_group: string`
 
-        - `resource_group: string`
+      - `subscription_id: string`
 
-        - `subscription_id: string`
+      - `tenant_id: string`
 
-        - `tenant_id: string`
+      - `type: "azure"`
 
-        - `type: "azure"`
+        - `"azure"`
 
-          - `"azure"`
+  - `status: "pending" or "validated" or "unhealthy"`
 
-    - `status: "pending" or "validated" or "unhealthy"`
+    - `"pending"`
 
-      - `"pending"`
+    - `"validated"`
 
-      - `"validated"`
+    - `"unhealthy"`
 
-      - `"unhealthy"`
+- `first_id: string or null`
 
-  - `first_id: string or null`
+- `has_more: boolean`
 
-  - `has_more: boolean`
+- `last_id: string or null`
 
-  - `last_id: string or null`
+- `object: "list"`
 
-  - `object: "list"`
-
-    - `"list"`
+  - `"list"`
 
 ### Example
 
@@ -5697,7 +5695,7 @@ Get one customer-managed external storage configuration.
 
 ### Returns
 
-- `OrganizationExternalStorage object { id, created_at, geography, 4 more }`
+- `ExternalStorageConfiguration object { id, created_at, geography, 4 more }`
 
   - `id: string`
 
@@ -5711,9 +5709,9 @@ Get one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
 
-    - `Aws object { account_id, bucket, external_id, 3 more }`
+    - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
       - `account_id: string`
 
@@ -5729,7 +5727,7 @@ Get one customer-managed external storage configuration.
 
         - `"aws"`
 
-    - `Azure object { account_name, container, region, 4 more }`
+    - `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
       - `account_name: string`
 
@@ -5825,7 +5823,7 @@ Validate one customer-managed external storage configuration.
 
 ### Returns
 
-- `OrganizationExternalStorage object { id, created_at, geography, 4 more }`
+- `ExternalStorageConfiguration object { id, created_at, geography, 4 more }`
 
   - `id: string`
 
@@ -5839,9 +5837,9 @@ Validate one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
 
-    - `Aws object { account_id, bucket, external_id, 3 more }`
+    - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
       - `account_id: string`
 
@@ -5857,7 +5855,7 @@ Validate one customer-managed external storage configuration.
 
         - `"aws"`
 
-    - `Azure object { account_name, container, region, 4 more }`
+    - `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
       - `account_name: string`
 
@@ -5944,115 +5942,47 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
 ## Domain Types
 
-### Create External Storage Request
+### Aws External Storage Provider
 
-- `CreateExternalStorageRequest object { project_id, provider }`
+- `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
-  - `project_id: string`
+  - `account_id: string`
 
-  - `provider: object { bucket, role_arn, type }  or object { account_name, container, resource_group, 3 more }`
+  - `bucket: string`
 
-    - `Aws object { bucket, role_arn, type }`
+  - `external_id: string`
 
-      - `bucket: string`
+  - `region: string`
 
-      - `role_arn: string`
+  - `role_arn: string`
 
-      - `type: "aws"`
+  - `type: "aws"`
 
-        - `"aws"`
+    - `"aws"`
 
-    - `Azure object { account_name, container, resource_group, 3 more }`
+### Azure External Storage Provider
 
-      - `account_name: string`
+- `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
-      - `container: string`
+  - `account_name: string`
 
-      - `resource_group: string`
+  - `container: string`
 
-      - `subscription_id: string`
+  - `region: string`
 
-      - `tenant_id: string`
+  - `resource_group: string`
 
-      - `type: "azure"`
+  - `subscription_id: string`
 
-        - `"azure"`
+  - `tenant_id: string`
 
-### List External Storage Response
+  - `type: "azure"`
 
-- `ListExternalStorageResponse object { data, first_id, has_more, 2 more }`
+    - `"azure"`
 
-  - `data: array of OrganizationExternalStorage`
+### External Storage Configuration
 
-    - `id: string`
-
-    - `created_at: number`
-
-    - `geography: string`
-
-    - `object: "organization.external_storage"`
-
-      - `"organization.external_storage"`
-
-    - `project_id: string`
-
-    - `provider: object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
-
-      - `Aws object { account_id, bucket, external_id, 3 more }`
-
-        - `account_id: string`
-
-        - `bucket: string`
-
-        - `external_id: string`
-
-        - `region: string`
-
-        - `role_arn: string`
-
-        - `type: "aws"`
-
-          - `"aws"`
-
-      - `Azure object { account_name, container, region, 4 more }`
-
-        - `account_name: string`
-
-        - `container: string`
-
-        - `region: string`
-
-        - `resource_group: string`
-
-        - `subscription_id: string`
-
-        - `tenant_id: string`
-
-        - `type: "azure"`
-
-          - `"azure"`
-
-    - `status: "pending" or "validated" or "unhealthy"`
-
-      - `"pending"`
-
-      - `"validated"`
-
-      - `"unhealthy"`
-
-  - `first_id: string or null`
-
-  - `has_more: boolean`
-
-  - `last_id: string or null`
-
-  - `object: "list"`
-
-    - `"list"`
-
-### Organization External Storage
-
-- `OrganizationExternalStorage object { id, created_at, geography, 4 more }`
+- `ExternalStorageConfiguration object { id, created_at, geography, 4 more }`
 
   - `id: string`
 
@@ -6066,9 +5996,9 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
   - `project_id: string`
 
-  - `provider: object { account_id, bucket, external_id, 3 more }  or object { account_name, container, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider`
 
-    - `Aws object { account_id, bucket, external_id, 3 more }`
+    - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
       - `account_id: string`
 
@@ -6084,7 +6014,7 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
         - `"aws"`
 
-    - `Azure object { account_name, container, region, 4 more }`
+    - `AzureExternalStorageProvider object { account_name, container, region, 4 more }`
 
       - `account_name: string`
 
@@ -6110,9 +6040,9 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
     - `"unhealthy"`
 
-### Organization External Storage Deleted
+### External Storage Deleted
 
-- `OrganizationExternalStorageDeleted object { id, deleted, object }`
+- `ExternalStorageDeleted object { id, deleted, object }`
 
   - `id: string`
 

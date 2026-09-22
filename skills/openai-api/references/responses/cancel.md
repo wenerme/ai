@@ -4459,7 +4459,7 @@ the `background` parameter set to `true` can be cancelled.
 
     - `string`
 
-    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 82 more`
+    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 83 more`
 
       - `"gpt-6-astra"`
 
@@ -4500,6 +4500,8 @@ the `background` parameter set to `true` can be cancelled.
       - `"gpt-5.1-2025-11-13"`
 
       - `"gpt-5.1-codex"`
+
+      - `"gpt-5.1-mini"`
 
       - `"gpt-5.1-chat-latest"`
 

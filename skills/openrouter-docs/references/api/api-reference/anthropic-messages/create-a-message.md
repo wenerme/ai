@@ -101,6 +101,11 @@ tags:
   - description: Speech-to-text endpoints
     name: STT
     x-displayName: Transcriptions
+  - description: >-
+      System One endpoints for models such as Jev, compatible with the TypeSafe
+      SDKs. See https://openrouter.ai/docs/guides/community/typesafe-sdk.
+    name: SystemOne
+    x-displayName: System One
   - description: Text-to-speech endpoints
     name: TTS
     x-displayName: Speech
@@ -505,6 +510,12 @@ components:
           $ref: '#/components/schemas/ProviderPreferences'
         route:
           $ref: '#/components/schemas/DeprecatedRoute'
+        safeguards:
+          items:
+            $ref: '#/components/schemas/AnthropicSafeguard'
+          type:
+            - array
+            - 'null'
         service_tier:
           type: string
         session_id:
@@ -846,6 +857,12 @@ components:
               $ref: '#/components/schemas/OpenRouterMetadata'
             provider:
               $ref: '#/components/schemas/ProviderName'
+            safeguard_results:
+              items:
+                $ref: '#/components/schemas/AnthropicSafeguardResult'
+              type:
+                - array
+                - 'null'
             usage:
               allOf:
                 - $ref: '#/components/schemas/AnthropicUsage'
@@ -1856,6 +1873,8 @@ components:
                 type: approximate
               required:
                 - type
+        x_search:
+          $ref: '#/components/schemas/XSearchOptions'
       required:
         - id
       type: object
@@ -2062,6 +2081,23 @@ components:
       x-fern-ignore: true
       x-speakeasy-deprecation-message: Use providers.sort.partition instead.
       x-speakeasy-ignore: true
+    AnthropicSafeguard:
+      additionalProperties: {}
+      description: A server-side safeguard Anthropic evaluates alongside the completion
+      example:
+        classifier_context:
+          permission_mode: auto
+          v: 1
+        type: dangerous_tool_use
+      properties:
+        classifier_context:
+          additionalProperties: {}
+          type: object
+        type:
+          type: string
+      required:
+        - type
+      type: object
     AnthropicSpeed:
       enum:
         - fast
@@ -2697,6 +2733,34 @@ components:
         - FakeProvider
       example: OpenAI
       type: string
+    AnthropicSafeguardResult:
+      additionalProperties: {}
+      description: >-
+        The outcome of a server-side safeguard, keyed by tool-use id where
+        applicable
+      example:
+        status:
+          tool_uses:
+            toolu_01ABC:
+              outcome: not_flagged
+              type: evaluated
+          type: available
+        type: dangerous_tool_use
+      properties:
+        status:
+          additionalProperties: {}
+          properties:
+            type:
+              type: string
+          required:
+            - type
+          type: object
+        type:
+          type: string
+      required:
+        - type
+        - status
+      type: object
     AnthropicUsage:
       example:
         cache_creation: null
@@ -3414,6 +3478,55 @@ components:
       type:
         - object
         - 'null'
+    XSearchOptions:
+      additionalProperties: false
+      description: >-
+        Enable SpaceXAI X (Twitter) search alongside native web search, with
+        optional filters. Only applies to SpaceXAI endpoints with native search;
+        omit to search the web only. X search is billed separately by SpaceXAI,
+        per post and per user profile fetched.
+      example:
+        allowed_x_handles:
+          - OpenRouterAI
+        from_date: '2025-01-01'
+      properties:
+        allowed_x_handles:
+          description: >-
+            Only include posts from these X handles (max 20). Cannot be used
+            with excluded_x_handles.
+          example:
+            - OpenRouterAI
+          items:
+            type: string
+          maxItems: 20
+          type: array
+        enable_image_understanding:
+          description: Analyze images attached to matching posts.
+          type: boolean
+        enable_video_understanding:
+          description: Analyze videos attached to matching posts.
+          type: boolean
+        excluded_x_handles:
+          description: >-
+            Exclude posts from these X handles (max 20). Cannot be used with
+            allowed_x_handles.
+          example:
+            - spamaccount
+          items:
+            type: string
+          maxItems: 20
+          type: array
+        from_date:
+          description: Start of the post date range (ISO 8601 date, e.g. "2025-01-01").
+          example: '2025-01-01'
+          format: date
+          type: string
+        to_date:
+          description: End of the post date range (ISO 8601 date, e.g. "2025-12-31").
+          example: '2025-12-31'
+          format: date
+          type: string
+      type: object
     PreferredMaxLatency:
       anyOf:
         - format: double
@@ -3782,7 +3895,7 @@ components:
           description: >-
             Limit search results to these domains. Supported by Exa, Firecrawl,
             Parallel, Perplexity, and most native providers (Anthropic, OpenAI,
-            xAI). Cannot be used with excluded_domains.
+            SpaceXAI). Cannot be used with excluded_domains.
           items:
             type: string
           type: array
@@ -3791,8 +3904,8 @@ components:
         excluded_domains:
           description: >-
             Exclude search results from these domains. Supported by Exa,
-            Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and xAI. Cannot
-            be used with allowed_domains.
+            Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and SpaceXAI.
+            Cannot be used with allowed_domains.
           items:
             type: string
           type: array
@@ -3842,6 +3955,8 @@ components:
           $ref: '#/components/schemas/SearchQualityLevel'
         user_location:
           $ref: '#/components/schemas/WebSearchUserLocationServerTool'
+        x_search:
+          $ref: '#/components/schemas/XSearchOptions'
       type: object
     ShellServerToolConfig:
       description: Configuration for the openrouter:shell server tool
@@ -4481,6 +4596,12 @@ components:
           properties:
             container:
               $ref: '#/components/schemas/AnthropicContainer'
+            safeguard_results:
+              items:
+                $ref: '#/components/schemas/AnthropicSafeguardResult'
+              type:
+                - array
+                - 'null'
             stop_details:
               $ref: '#/components/schemas/AnthropicRefusalStopDetails'
             stop_reason:

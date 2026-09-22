@@ -1,6 +1,6 @@
 # Compliance pipelines (deprecated)
 
-Compliance pipelines (deprecated in 17.3, planned to be removed in 19.0) enables centralized CI/CD control for labeled projects. Replaced by pipeline execution policies.
+Compliance pipelines (deprecated in 17.3, planned to be removed in 20.0) enables centralized CI/CD control for labeled projects. Replaced by pipeline execution policies.
 
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated

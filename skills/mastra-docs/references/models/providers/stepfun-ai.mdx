@@ -5,7 +5,7 @@ description: "Browse StepFun (Global) model IDs, capabilities, context windows, 
 
 # [StepFun (Global) logo]StepFun (Global)
 
-Access 8 StepFun (Global) models through Mastra's model router. Authentication is handled automatically using the `STEPFUN_API_KEY` environment variable.
+Access 9 StepFun (Global) models through Mastra's model router. Authentication is handled automatically using the `STEPFUN_API_KEY` environment variable.
 
 Learn more in the [StepFun (Global) documentation](https://platform.stepfun.ai/docs/en/overview/concept).
 
@@ -98,6 +98,18 @@ for await (const chunk of stream) {
     "maxOutput": 256000,
     "inputCost": 0.185,
     "outputCost": 1.11
+  },
+  {
+    "model": "stepfun-ai/step-5-preview",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 1000000,
+    "inputCost": 1,
+    "outputCost": 2.7
   },
   {
     "model": "stepfun-ai/step-tts-2",

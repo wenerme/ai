@@ -10,7 +10,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
 ### Returns
 
-- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or object { environment_id, event_id, reset_count, 3 more }  or 28 more`
+- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentResetEvent or 28 more`
 
   An event emitted by a Managed Agents session.
 
@@ -126,7 +126,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.ready"`
 
-  - `AgentSessionEnvironmentReset object { environment_id, event_id, reset_count, 3 more }`
+  - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
 
     Emitted after a hosted sandbox is replaced. Conversation history survives; changes to the previous sandbox's files and processes do not.
 

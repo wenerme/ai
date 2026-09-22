@@ -2,7 +2,7 @@
 
 **delete** `/organization/external_storage/{external_storage_id}`
 
-Soft-delete one customer-managed external storage configuration.
+Disconnect a customer-managed external storage configuration. Removing the project's last configuration restores organization-default retention if customer-managed retention was active. Repeating a deletion also completes any interrupted retention update. Cloud storage is unchanged.
 
 ### Path Parameters
 
@@ -10,7 +10,7 @@ Soft-delete one customer-managed external storage configuration.
 
 ### Returns
 
-- `OrganizationExternalStorageDeleted object { id, deleted, object }`
+- `ExternalStorageDeleted object { id, deleted, object }`
 
   - `id: string`
 

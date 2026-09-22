@@ -58,7 +58,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Configure Zero Trust access policies to protect my internal staging environment.
+   Add mTLS authentication and schema validation to protect my API endpoints.
    ```
 
 
@@ -171,23 +171,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
-```
-
-```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
-```
-
-```txt
 Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+```
+
+```txt
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Tips

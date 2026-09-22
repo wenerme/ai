@@ -5,7 +5,7 @@ description: "Browse xAI model IDs, capabilities, context windows, and pricing. 
 
 # [xAI logo]xAI
 
-Access 10 xAI models through Mastra's model router. Authentication is handled automatically using the `XAI_API_KEY` environment variable.
+Access 12 xAI models through Mastra's model router. Authentication is handled automatically using the `XAI_API_KEY` environment variable.
 
 Learn more in the [xAI documentation](https://docs.x.ai/docs/models).
 
@@ -110,6 +110,18 @@ for await (const chunk of stream) {
     "outputCost": 6
   },
   {
+    "model": "xai/grok-4.7",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 500000,
+    "maxOutput": 500000,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
     "model": "xai/grok-build-0.1",
     "imageInput": true,
     "audioInput": false,
@@ -123,6 +135,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "xai/grok-imagine-image",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 16000,
+    "maxOutput": null,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "xai/grok-imagine-image-quality",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

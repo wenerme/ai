@@ -33,6 +33,7 @@ Multimodal input in batch is URL-only, and support depends on the provider the b
 | Google Vertex    | Not supported     | Not supported                     |
 | Google AI Studio | Not supported     | Not supported                     |
 | Together         | Not supported     | Not supported                     |
+| Parasail         | Not supported     | Not supported                     |
 | Fireworks        | Not supported     | Not supported                     |
 
 **Files.** File parts (Responses `input_file`, Anthropic `document`, chat completions `file`) are accepted only as URL references, only on the providers marked above, and only for models that list file input. Inline file bytes and provider file IDs are rejected.

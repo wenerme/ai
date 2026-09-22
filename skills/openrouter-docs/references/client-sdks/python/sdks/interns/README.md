@@ -73,7 +73,7 @@ with OpenRouter(
 
 ## create\_intern
 
-Creates an intern in an explicit workspace. The operation also creates its private vault. It can start provisioning immediately or wait for a later provision call. A retry with the same idempotency key and body resumes unfinished work. The request body is capped at 1048576 bytes and a larger body is refused with 413. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/python/docs/api-reference/authentication) required.
+Creates an intern in an explicit workspace. The operation also creates its private vault. It can start provisioning immediately or wait for a later provision call. A retry with the same idempotency key and body resumes unfinished work. The request body is capped at 1048576 bytes and a larger body is refused with 413. A non-empty body must declare `Content-Type: application/json` or it is refused with 415. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/python/docs/api-reference/authentication) required.
 
 ### Example Usage
 
@@ -118,15 +118,15 @@ with OpenRouter(
 
 ### Errors
 
-| Error Type                    | Status Code                       | Content Type     |
-| ----------------------------- | --------------------------------- | ---------------- |
-| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413 | application/json |
-| errors.InternLifecycleError   | 500, 502                          | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX                          | \*/\*            |
+| Error Type                    | Status Code                            | Content Type     |
+| ----------------------------- | -------------------------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413, 415 | application/json |
+| errors.InternLifecycleError   | 500, 502                               | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                               | \*/\*            |
 
 ## delete\_intern
 
-Starts safe teardown of the intern, its runtime and its private vault. The body is optional. Send `{"acknowledge_workspace_loss": true}` to delete a `destroy_failed` intern whose `last_failure_message` names `workspace_archive_failed`, accepting that its workspace is not backed up. The request body is capped at 1048576 bytes and a larger body is refused with 413. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/python/docs/api-reference/authentication) required.
+Starts safe teardown of the intern, its runtime and its private vault. The body is optional. Send `{"acknowledge_workspace_loss": true}` to delete a `destroy_failed` intern whose `last_failure_message` names `workspace_archive_failed`, accepting that its workspace is not backed up. The request body is capped at 1048576 bytes and a larger body is refused with 413. A non-empty body must declare `Content-Type: application/json` or it is refused with 415. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/python/docs/api-reference/authentication) required.
 
 ### Example Usage
 
@@ -166,11 +166,11 @@ with OpenRouter(
 
 ### Errors
 
-| Error Type                    | Status Code                       | Content Type     |
-| ----------------------------- | --------------------------------- | ---------------- |
-| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413 | application/json |
-| errors.InternLifecycleError   | 500, 502                          | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX                          | \*/\*            |
+| Error Type                    | Status Code                            | Content Type     |
+| ----------------------------- | -------------------------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413, 415 | application/json |
+| errors.InternLifecycleError   | 500, 502                               | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                               | \*/\*            |
 
 ## get\_intern
 
@@ -221,7 +221,7 @@ with OpenRouter(
 
 ## update\_intern
 
-Changes the intern name, description, instructions or model. Omitted fields stay unchanged. The request body is capped at 1048576 bytes and a larger body is refused with 413. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/python/docs/api-reference/authentication) required.
+Changes the intern name, description, instructions or model. Omitted fields stay unchanged. The request body is capped at 1048576 bytes and a larger body is refused with 413. A non-empty body must declare `Content-Type: application/json` or it is refused with 415. The API key selects the caller, workspace and visible interns. There is no default workspace fallback. Requests on regional hostnames such as `eu.openrouter.ai` are refused. [API key](/docs/client-sdks/python/docs/api-reference/authentication) required.
 
 ### Example Usage
 
@@ -264,11 +264,11 @@ with OpenRouter(
 
 ### Errors
 
-| Error Type                    | Status Code                       | Content Type     |
-| ----------------------------- | --------------------------------- | ---------------- |
-| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413 | application/json |
-| errors.InternLifecycleError   | 500                               | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX                          | \*/\*            |
+| Error Type                    | Status Code                            | Content Type     |
+| ----------------------------- | -------------------------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413, 415 | application/json |
+| errors.InternLifecycleError   | 500                                    | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                               | \*/\*            |
 
 ## provision\_intern
 
@@ -311,11 +311,11 @@ with OpenRouter(
 
 ### Errors
 
-| Error Type                    | Status Code                       | Content Type     |
-| ----------------------------- | --------------------------------- | ---------------- |
-| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413 | application/json |
-| errors.InternLifecycleError   | 500, 502                          | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX                          | \*/\*            |
+| Error Type                    | Status Code                            | Content Type     |
+| ----------------------------- | -------------------------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413, 415 | application/json |
+| errors.InternLifecycleError   | 500, 502                               | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                               | \*/\*            |
 
 ## suspend\_intern
 
@@ -358,11 +358,11 @@ with OpenRouter(
 
 ### Errors
 
-| Error Type                    | Status Code                       | Content Type     |
-| ----------------------------- | --------------------------------- | ---------------- |
-| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413 | application/json |
-| errors.InternLifecycleError   | 500, 502                          | application/json |
-| errors.OpenRouterDefaultError | 4XX, 5XX                          | \*/\*            |
+| Error Type                    | Status Code                            | Content Type     |
+| ----------------------------- | -------------------------------------- | ---------------- |
+| errors.InternLifecycleError   | 400, 401, 403, 404, 408, 409, 413, 415 | application/json |
+| errors.InternLifecycleError   | 500, 502                               | application/json |
+| errors.OpenRouterDefaultError | 4XX, 5XX                               | \*/\*            |
 
 ## chat
 

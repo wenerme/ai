@@ -101,6 +101,11 @@ tags:
   - description: Speech-to-text endpoints
     name: STT
     x-displayName: Transcriptions
+  - description: >-
+      System One endpoints for models such as Jev, compatible with the TypeSafe
+      SDKs. See https://openrouter.ai/docs/guides/community/typesafe-sdk.
+    name: SystemOne
+    x-displayName: System One
   - description: Text-to-speech endpoints
     name: TTS
     x-displayName: Speech
@@ -534,10 +539,10 @@ components:
             - 'null'
         previous_response_id:
           description: >-
-            Not supported. The Responses API is stateless: no responses are
-            stored, so a previous response cannot be referenced. Requests with a
-            non-null value are rejected with a 400 error. Send the full
-            conversation history in `input` instead.
+            Not supported on this proxy. Each response request is independent:
+            no responses are stored, so a previous response cannot be
+            referenced. Requests with a non-null value are rejected with a 400
+            error. Send the full conversation history in `input` instead.
         prompt:
           $ref: '#/components/schemas/StoredPromptTemplate'
         prompt_cache_key:
@@ -1768,6 +1773,8 @@ components:
                 type: approximate
               required:
                 - type
+        x_search:
+          $ref: '#/components/schemas/XSearchOptions'
       required:
         - id
       type: object
@@ -2209,6 +2216,8 @@ components:
           type: string
         user_location:
           $ref: '#/components/schemas/Preview_WebSearchUserLocation'
+        x_search:
+          $ref: '#/components/schemas/XSearchOptions'
       required:
         - type
       type: object
@@ -2249,6 +2258,8 @@ components:
           type: string
         user_location:
           $ref: '#/components/schemas/Preview_WebSearchUserLocation'
+        x_search:
+          $ref: '#/components/schemas/XSearchOptions'
       required:
         - type
       type: object
@@ -2293,6 +2304,8 @@ components:
           type: string
         user_location:
           $ref: '#/components/schemas/WebSearchUserLocation'
+        x_search:
+          $ref: '#/components/schemas/XSearchOptions'
       required:
         - type
       type: object
@@ -2337,6 +2350,8 @@ components:
           type: string
         user_location:
           $ref: '#/components/schemas/WebSearchUserLocation'
+        x_search:
+          $ref: '#/components/schemas/XSearchOptions'
       required:
         - type
       type: object
@@ -6152,6 +6167,55 @@ components:
       type:
         - object
         - 'null'
+    XSearchOptions:
+      additionalProperties: false
+      description: >-
+        Enable SpaceXAI X (Twitter) search alongside native web search, with
+        optional filters. Only applies to SpaceXAI endpoints with native search;
+        omit to search the web only. X search is billed separately by SpaceXAI,
+        per post and per user profile fetched.
+      example:
+        allowed_x_handles:
+          - OpenRouterAI
+        from_date: '2025-01-01'
+      properties:
+        allowed_x_handles:
+          description: >-
+            Only include posts from these X handles (max 20). Cannot be used
+            with excluded_x_handles.
+          example:
+            - OpenRouterAI
+          items:
+            type: string
+          maxItems: 20
+          type: array
+        enable_image_understanding:
+          description: Analyze images attached to matching posts.
+          type: boolean
+        enable_video_understanding:
+          description: Analyze videos attached to matching posts.
+          type: boolean
+        excluded_x_handles:
+          description: >-
+            Exclude posts from these X handles (max 20). Cannot be used with
+            allowed_x_handles.
+          example:
+            - spamaccount
+          items:
+            type: string
+          maxItems: 20
+          type: array
+        from_date:
+          description: Start of the post date range (ISO 8601 date, e.g. "2025-01-01").
+          example: '2025-01-01'
+          format: date
+          type: string
+        to_date:
+          description: End of the post date range (ISO 8601 date, e.g. "2025-12-31").
+          example: '2025-12-31'
+          format: date
+          type: string
+      type: object
     InputText:
       description: Text input content item
       example:
@@ -7046,7 +7110,7 @@ components:
           description: >-
             Limit search results to these domains. Supported by Exa, Firecrawl,
             Parallel, Perplexity, and most native providers (Anthropic, OpenAI,
-            xAI). Cannot be used with excluded_domains.
+            SpaceXAI). Cannot be used with excluded_domains.
           items:
             type: string
           type: array
@@ -7055,8 +7119,8 @@ components:
         excluded_domains:
           description: >-
             Exclude search results from these domains. Supported by Exa,
-            Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and xAI. Cannot
-            be used with allowed_domains.
+            Firecrawl, Parallel, Perplexity, Anthropic, OpenAI, and SpaceXAI.
+            Cannot be used with allowed_domains.
           items:
             type: string
           type: array
@@ -7106,6 +7170,8 @@ components:
           $ref: '#/components/schemas/SearchQualityLevel'
         user_location:
           $ref: '#/components/schemas/WebSearchUserLocationServerTool'
+        x_search:
+          $ref: '#/components/schemas/XSearchOptions'
       type: object
     ApplyPatchServerToolConfig:
       description: Configuration for the openrouter:apply_patch server tool

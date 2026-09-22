@@ -70,7 +70,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [Mock data source for Grafana](/docs/plugins/grafana-mock-datasource/latest/ "Mock data source for Grafana")
 - [MongoDB data source](/docs/plugins/grafana-mongodb-datasource/latest/ "MongoDB data source")
 - [MQTT data source](/docs/plugins/grafana-mqtt-datasource/latest/ "MQTT data source")
-- [Netlify data source for Grafana](/docs/plugins/grafana-netlify-datasource/latest/ "Netlify data source for Grafana")
+- [Netlify data source](/docs/plugins/grafana-netlify-datasource/latest/ "Netlify data source")
 - [New Relic data source](/docs/plugins/grafana-newrelic-datasource/latest/ "New Relic data source")
 - [OpenSearch data source](/docs/plugins/grafana-opensearch-datasource/latest/ "OpenSearch data source")
 - [Oracle data source](/docs/plugins/grafana-oracle-datasource/latest/ "Oracle data source")

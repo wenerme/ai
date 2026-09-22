@@ -5912,6 +5912,38 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
     - `"agent.session.environment.ready"`
 
+### Agent Session Environment Reset Event
+
+- `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
+
+  Emitted after a hosted sandbox is replaced. Conversation history survives; changes to the previous sandbox's files and processes do not.
+
+  - `environment_id: string`
+
+    The stable environment ID, retained across sandbox replacements.
+
+  - `event_id: string`
+
+    The unique ID of the event.
+
+  - `reset_count: number`
+
+    Monotonically increasing reset number. Repeated notifications share this number.
+
+  - `session_id: string`
+
+    The ID of the session associated with the event.
+
+  - `turn_id: string or null`
+
+    The associated turn, when applicable.
+
+  - `type: "agent.session.environment.reset"`
+
+    The type of the object. Always `agent.session.environment.reset`.
+
+    - `"agent.session.environment.reset"`
+
 ### Agent Session Environment State
 
 - `AgentSessionEnvironmentState object { id, error, status, type }`
@@ -6008,7 +6040,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
 ### Agent Session Event
 
-- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or object { environment_id, event_id, reset_count, 3 more }  or 28 more`
+- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentResetEvent or 28 more`
 
   An event emitted by a Managed Agents session.
 
@@ -6124,7 +6156,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       - `"agent.session.environment.ready"`
 
-  - `AgentSessionEnvironmentReset object { environment_id, event_id, reset_count, 3 more }`
+  - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
 
     Emitted after a hosted sandbox is replaced. Conversation history survives; changes to the previous sandbox's files and processes do not.
 
@@ -24343,7 +24375,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
 ### Returns
 
-- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or object { environment_id, event_id, reset_count, 3 more }  or 28 more`
+- `AgentSessionEvent = AgentSessionErrorEvent or AgentSessionEnvironmentReadyEvent or AgentSessionEnvironmentResetEvent or 28 more`
 
   An event emitted by a Managed Agents session.
 
@@ -24459,7 +24491,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
       - `"agent.session.environment.ready"`
 
-  - `AgentSessionEnvironmentReset object { environment_id, event_id, reset_count, 3 more }`
+  - `AgentSessionEnvironmentResetEvent object { environment_id, event_id, reset_count, 3 more }`
 
     Emitted after a hosted sandbox is replaced. Conversation history survives; changes to the previous sandbox's files and processes do not.
 
@@ -31332,7 +31364,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
     An HTTP credential for OpenAI-hosted environments only. The sandbox receives an environment variable containing a placeholder, not the secret. Use the placeholder unchanged in outgoing requests. The egress proxy replaces the placeholder with the secret for allowed HTTPS destinations on ports 443 and 8443. Sandbox code cannot read the real secret or use it for local computation, such as signing a request.
 
-    - `networking: object { type }  or object { allowed_hosts, type }`
+    - `networking: CredentialNetworkingParam`
 
       The destinations where the proxy can substitute this secret. The environment network policy must also allow them.
 
@@ -31482,7 +31514,7 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -31791,7 +31823,7 @@ Lists a vault's credentials using ID-based pagination without returning secret v
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -32028,7 +32060,7 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -32335,7 +32367,7 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -32542,7 +32574,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
       Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-      - `networking: object { type }  or object { allowed_hosts, type }`
+      - `networking: CredentialNetworking`
 
         The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -32698,7 +32730,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
     Metadata for an HTTP credential used only in OpenAI-hosted environments. Sandbox code receives a placeholder. The proxy substitutes the secret for allowed HTTPS destinations on ports 443 and 8443. The real secret is not available to sandbox code for local computation and is never returned in this resource.
 
-    - `networking: object { type }  or object { allowed_hosts, type }`
+    - `networking: CredentialNetworking`
 
       The destinations where the proxy can substitute the secret, subject to the environment network policy.
 
@@ -32852,7 +32884,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
     An HTTP credential for OpenAI-hosted environments only. The sandbox receives an environment variable containing a placeholder, not the secret. Use the placeholder unchanged in outgoing requests. The egress proxy replaces the placeholder with the secret for allowed HTTPS destinations on ports 443 and 8443. Sandbox code cannot read the real secret or use it for local computation, such as signing a request.
 
-    - `networking: object { type }  or object { allowed_hosts, type }`
+    - `networking: CredentialNetworkingParam`
 
       The destinations where the proxy can substitute this secret. The environment network policy must also allow them.
 
@@ -33009,6 +33041,66 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
     The object type. Always `vault.credential.deleted`.
 
     - `"vault.credential.deleted"`
+
+### Credential Networking
+
+- `CredentialNetworking = object { type }  or object { allowed_hosts, type }`
+
+  Destination permissions for an environment-variable credential. These do not grant network access to the environment.
+
+  - `Unrestricted object { type }`
+
+    Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+    - `type: "unrestricted"`
+
+      The type of the object. Always `unrestricted`.
+
+      - `"unrestricted"`
+
+  - `Limited object { allowed_hosts, type }`
+
+    Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+    - `allowed_hosts: array of string`
+
+      The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+    - `type: "limited"`
+
+      The type of the object. Always `limited`.
+
+      - `"limited"`
+
+### Credential Networking Param
+
+- `CredentialNetworkingParam = object { type }  or object { allowed_hosts, type }`
+
+  Destination permissions for an environment-variable credential. These do not grant network access to the environment.
+
+  - `Unrestricted object { type }`
+
+    Allows substitution for destinations permitted by the environment network policy. Requires `environment.network.access` to be `restricted`, with explicit `allowed_domains`.
+
+    - `type: "unrestricted"`
+
+      The type of the object. Always `unrestricted`.
+
+      - `"unrestricted"`
+
+  - `Limited object { allowed_hosts, type }`
+
+    Allows substitution only for the listed hosts. The environment network policy must also allow these hosts.
+
+    - `allowed_hosts: array of string`
+
+      The 1 to 16 distinct allowed hostnames or IPv4 addresses, normalized to lowercase. Entries contain no scheme, path, port, or wildcard. IPv6 addresses are not supported.
+
+    - `type: "limited"`
+
+      The type of the object. Always `limited`.
+
+      - `"limited"`
 
 ### Mcp OAuth Token Endpoint Auth
 
@@ -46670,14 +46762,14 @@ the `background` parameter set to `true` can be cancelled.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -46723,6 +46815,8 @@ the `background` parameter set to `true` can be cancelled.
       - `"gpt-5.1-2025-11-13"`
 
       - `"gpt-5.1-codex"`
+
+      - `"gpt-5.1-mini"`
 
       - `"gpt-5.1-chat-latest"`
 
@@ -53146,11 +53240,11 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 ### Body Parameters
 
-- `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string or null`
+- `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string or null`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
-  - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+  - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
@@ -53193,6 +53287,8 @@ Learn when and how to compact long-running conversations in the [conversation st
     - `"gpt-5.1-2025-11-13"`
 
     - `"gpt-5.1-codex"`
+
+    - `"gpt-5.1-mini"`
 
     - `"gpt-5.1-chat-latest"`
 
@@ -68754,14 +68850,14 @@ as input for the model's response.
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
 
-- `model: optional "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+- `model: optional "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI
   offers a wide range of models with different capabilities, performance
   characteristics, and price points. Refer to the [model guide](/api/docs/models)
   to browse and compare available models.
 
-  - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+  - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
@@ -68807,6 +68903,8 @@ as input for the model's response.
     - `"gpt-5.1-2025-11-13"`
 
     - `"gpt-5.1-codex"`
+
+    - `"gpt-5.1-mini"`
 
     - `"gpt-5.1-chat-latest"`
 
@@ -75822,14 +75920,14 @@ as input for the model's response.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -75875,6 +75973,8 @@ as input for the model's response.
       - `"gpt-5.1-2025-11-13"`
 
       - `"gpt-5.1-codex"`
+
+      - `"gpt-5.1-mini"`
 
       - `"gpt-5.1-chat-latest"`
 
@@ -88285,14 +88385,14 @@ Retrieves a model response with the given ID.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -88338,6 +88438,8 @@ Retrieves a model response with the given ID.
       - `"gpt-5.1-2025-11-13"`
 
       - `"gpt-5.1-codex"`
+
+      - `"gpt-5.1-mini"`
 
       - `"gpt-5.1-chat-latest"`
 
@@ -105821,14 +105923,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -105874,6 +105976,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `"gpt-5.1-2025-11-13"`
 
       - `"gpt-5.1-codex"`
+
+      - `"gpt-5.1-mini"`
 
       - `"gpt-5.1-chat-latest"`
 
@@ -117519,14 +117623,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -117572,6 +117676,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
+
+        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -129646,14 +129752,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -129699,6 +129805,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
+
+        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -141254,14 +141362,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -141307,6 +141415,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
+
+        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -153137,14 +153247,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -153190,6 +153300,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
+
+        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -164584,14 +164696,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -164637,6 +164749,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
+
+        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -202306,14 +202420,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+    - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -202359,6 +202473,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
+
+        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
@@ -215897,14 +216013,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
         Keys are strings with a maximum length of 64 characters. Values are strings
         with a maximum length of 512 characters.
 
-      - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+      - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
         characteristics, and price points. Refer to the [model guide](/api/docs/models)
         to browse and compare available models.
 
-        - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+        - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
           Model ID used to generate the response, like `gpt-6-astra`. OpenAI
           offers a wide range of models with different capabilities, performance
@@ -215950,6 +216066,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
           - `"gpt-5.1-2025-11-13"`
 
           - `"gpt-5.1-codex"`
+
+          - `"gpt-5.1-mini"`
 
           - `"gpt-5.1-chat-latest"`
 
@@ -229641,14 +229759,14 @@ curl https://api.openai.com/v1/responses/resp_123 \
       Keys are strings with a maximum length of 64 characters. Values are strings
       with a maximum length of 512 characters.
 
-    - `model: optional "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more or string`
+    - `model: optional "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
       characteristics, and price points. Refer to the [model guide](/api/docs/models)
       to browse and compare available models.
 
-      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 101 more`
+      - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
 
         Model ID used to generate the response, like `gpt-6-astra`. OpenAI
         offers a wide range of models with different capabilities, performance
@@ -229694,6 +229812,8 @@ curl https://api.openai.com/v1/responses/resp_123 \
         - `"gpt-5.1-2025-11-13"`
 
         - `"gpt-5.1-codex"`
+
+        - `"gpt-5.1-mini"`
 
         - `"gpt-5.1-chat-latest"`
 
