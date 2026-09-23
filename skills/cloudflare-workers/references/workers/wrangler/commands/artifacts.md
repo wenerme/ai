@@ -57,12 +57,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -77,18 +71,18 @@ Get an Artifacts namespace
 npmyarnpnpm
 
 ```
-npx wrangler artifacts namespaces get [NAME]
+npx wrangler artifacts namespaces get <NAME>
 ```
 
 ```
-yarn wrangler artifacts namespaces get [NAME]
+yarn wrangler artifacts namespaces get <NAME>
 ```
 
 ```
-pnpm wrangler artifacts namespaces get [NAME]
+pnpm wrangler artifacts namespaces get <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The Artifacts namespace name
 - `--json` `boolean` default: false
@@ -114,12 +108,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -134,18 +122,18 @@ Create an Artifacts repository
 npmyarnpnpm
 
 ```
-npx wrangler artifacts repos create [NAME]
+npx wrangler artifacts repos create <NAME>
 ```
 
 ```
-yarn wrangler artifacts repos create [NAME]
+yarn wrangler artifacts repos create <NAME>
 ```
 
 ```
-pnpm wrangler artifacts repos create [NAME]
+pnpm wrangler artifacts repos create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The Artifacts repository name
 - `--namespace` `string` required
@@ -177,12 +165,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -234,12 +216,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -254,18 +230,18 @@ Get an Artifacts repository
 npmyarnpnpm
 
 ```
-npx wrangler artifacts repos get [NAME]
+npx wrangler artifacts repos get <NAME>
 ```
 
 ```
-yarn wrangler artifacts repos get [NAME]
+yarn wrangler artifacts repos get <NAME>
 ```
 
 ```
-pnpm wrangler artifacts repos get [NAME]
+pnpm wrangler artifacts repos get <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The Artifacts repository name
 - `--namespace` `string` required
@@ -294,12 +270,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -314,18 +284,18 @@ Delete an Artifacts repository
 npmyarnpnpm
 
 ```
-npx wrangler artifacts repos delete [NAME]
+npx wrangler artifacts repos delete <NAME>
 ```
 
 ```
-yarn wrangler artifacts repos delete [NAME]
+yarn wrangler artifacts repos delete <NAME>
 ```
 
 ```
-pnpm wrangler artifacts repos delete [NAME]
+pnpm wrangler artifacts repos delete <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The Artifacts repository name
 - `--namespace` `string` required
@@ -357,12 +327,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -377,18 +341,18 @@ Issue a repo-scoped Artifacts token
 npmyarnpnpm
 
 ```
-npx wrangler artifacts repos issue-token [REPO]
+npx wrangler artifacts repos issue-token <REPO>
 ```
 
 ```
-yarn wrangler artifacts repos issue-token [REPO]
+yarn wrangler artifacts repos issue-token <REPO>
 ```
 
 ```
-pnpm wrangler artifacts repos issue-token [REPO]
+pnpm wrangler artifacts repos issue-token <REPO>
 ```
 
-- `[REPO]` `string` required
+- `<REPO>` `string` required
 
   The Artifacts repository name
 - `--namespace` `string` required
@@ -419,12 +383,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

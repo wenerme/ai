@@ -482,10 +482,10 @@
   "openai-docs/guides/amazon-bedrock.md": {
     "url": "https://developers.openai.com/api/docs/guides/amazon-bedrock.md",
     "skill": "openai-docs",
-    "etag": "W/\"a1d0017608f5ccdcd2a518b80ac86b63\"",
-    "lastModified": "Thu, 10 Sep 2026 04:24:17 GMT",
-    "size": 21973,
-    "updatedAt": "2026-09-10T04:24:17.922Z"
+    "etag": "W/\"af4cdd1d7da6ea70d237f1c5d6c08267\"",
+    "lastModified": "Wed, 23 Sep 2026 07:08:43 GMT",
+    "size": 22693,
+    "updatedAt": "2026-09-23T15:00:45.364Z"
   },
   "openai-docs/guides/async-tool-calling.md": {
     "url": "https://developers.openai.com/api/docs/guides/async-tool-calling.md",

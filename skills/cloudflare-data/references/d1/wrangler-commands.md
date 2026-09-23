@@ -25,18 +25,18 @@ This command acts on remote D1 Databases.
 npmyarnpnpm
 
 ```
-npx wrangler d1 create [NAME]
+npx wrangler d1 create <NAME>
 ```
 
 ```
-yarn wrangler d1 create [NAME]
+yarn wrangler d1 create <NAME>
 ```
 
 ```
-pnpm wrangler d1 create [NAME]
+pnpm wrangler d1 create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the new D1 database
 - `--location` `string` A hint for the primary location of the new DB. Options: weur: Western Europe eeur: Eastern Europe apac: Asia Pacific oc: Oceania wnam: Western North America enam: Eastern North America
@@ -64,12 +64,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -86,18 +80,18 @@ This command acts on remote D1 Databases.
 npmyarnpnpm
 
 ```
-npx wrangler d1 info [NAME]
+npx wrangler d1 info <NAME>
 ```
 
 ```
-yarn wrangler d1 info [NAME]
+yarn wrangler d1 info <NAME>
 ```
 
 ```
-pnpm wrangler d1 info [NAME]
+pnpm wrangler d1 info <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the DB
 - `--json` `boolean` default: false
@@ -123,12 +117,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -179,12 +167,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -201,18 +183,18 @@ This command acts on remote D1 Databases.
 npmyarnpnpm
 
 ```
-npx wrangler d1 delete [NAME]
+npx wrangler d1 delete <NAME>
 ```
 
 ```
-yarn wrangler d1 delete [NAME]
+yarn wrangler d1 delete <NAME>
 ```
 
 ```
-pnpm wrangler d1 delete [NAME]
+pnpm wrangler d1 delete <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name or binding of the DB
 - `--skip-confirmation` `boolean` alias: --ydefault: false
@@ -238,12 +220,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -260,18 +236,18 @@ You must provide either --command or --file for this command to run successfully
 npmyarnpnpm
 
 ```
-npx wrangler d1 execute [DATABASE]
+npx wrangler d1 execute <DATABASE>
 ```
 
 ```
-yarn wrangler d1 execute [DATABASE]
+yarn wrangler d1 execute <DATABASE>
 ```
 
 ```
-pnpm wrangler d1 execute [DATABASE]
+pnpm wrangler d1 execute <DATABASE>
 ```
 
-- `[DATABASE]` `string` required
+- `<DATABASE>` `string` required
 
   The name or binding of the DB
 - `--command` `string` The SQL query you wish to execute, or multiple queries separated by ';'
@@ -308,12 +284,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -328,18 +298,18 @@ Export the contents or schema of your database as a .sql file
 npmyarnpnpm
 
 ```
-npx wrangler d1 export [NAME]
+npx wrangler d1 export <NAME>
 ```
 
 ```
-yarn wrangler d1 export [NAME]
+yarn wrangler d1 export <NAME>
 ```
 
 ```
-pnpm wrangler d1 export [NAME]
+pnpm wrangler d1 export <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the D1 database to export
 - `--local` `boolean` Export from your local DB you use with wrangler dev
@@ -373,12 +343,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -397,18 +361,18 @@ For more information about Time Travel, see https://developers.cloudflare.com/d1
 npmyarnpnpm
 
 ```
-npx wrangler d1 time-travel info [DATABASE]
+npx wrangler d1 time-travel info <DATABASE>
 ```
 
 ```
-yarn wrangler d1 time-travel info [DATABASE]
+yarn wrangler d1 time-travel info <DATABASE>
 ```
 
 ```
-pnpm wrangler d1 time-travel info [DATABASE]
+pnpm wrangler d1 time-travel info <DATABASE>
 ```
 
-- `[DATABASE]` `string` required
+- `<DATABASE>` `string` required
 
   The name or binding of the DB
 - `--timestamp` `string` Accepts a Unix (seconds from epoch) or RFC3339 timestamp (e.g. 2023-07-13T08:46:42.228Z) to retrieve a bookmark for
@@ -435,12 +399,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -459,18 +417,18 @@ For more information about Time Travel, see https://developers.cloudflare.com/d1
 npmyarnpnpm
 
 ```
-npx wrangler d1 time-travel restore [DATABASE]
+npx wrangler d1 time-travel restore <DATABASE>
 ```
 
 ```
-yarn wrangler d1 time-travel restore [DATABASE]
+yarn wrangler d1 time-travel restore <DATABASE>
 ```
 
 ```
-pnpm wrangler d1 time-travel restore [DATABASE]
+pnpm wrangler d1 time-travel restore <DATABASE>
 ```
 
-- `[DATABASE]` `string` required
+- `<DATABASE>` `string` required
 
   The name or binding of the DB
 - `--bookmark` `string` Bookmark to use for time travel
@@ -498,12 +456,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -526,21 +478,21 @@ The filename will include a version number and the migration name you specify.
 npmyarnpnpm
 
 ```
-npx wrangler d1 migrations create [DATABASE] [MESSAGE]
+npx wrangler d1 migrations create <DATABASE> <MESSAGE>
 ```
 
 ```
-yarn wrangler d1 migrations create [DATABASE] [MESSAGE]
+yarn wrangler d1 migrations create <DATABASE> <MESSAGE>
 ```
 
 ```
-pnpm wrangler d1 migrations create [DATABASE] [MESSAGE]
+pnpm wrangler d1 migrations create <DATABASE> <MESSAGE>
 ```
 
-- `[DATABASE]` `string` required
+- `<DATABASE>` `string` required
 
   The name or binding of the DB
-- `[MESSAGE]` `string` required
+- `<MESSAGE>` `string` required
 
   The Migration message
 
@@ -563,12 +515,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -583,18 +529,18 @@ View a list of unapplied migration files
 npmyarnpnpm
 
 ```
-npx wrangler d1 migrations list [DATABASE]
+npx wrangler d1 migrations list <DATABASE>
 ```
 
 ```
-yarn wrangler d1 migrations list [DATABASE]
+yarn wrangler d1 migrations list <DATABASE>
 ```
 
 ```
-pnpm wrangler d1 migrations list [DATABASE]
+pnpm wrangler d1 migrations list <DATABASE>
 ```
 
-- `[DATABASE]` `string` required
+- `<DATABASE>` `string` required
 
   The name or binding of the DB
 - `--local` `boolean` Check migrations against a local DB for use with wrangler dev
@@ -623,12 +569,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -651,18 +591,18 @@ If applying a migration results in an error, this migration will be rolled back,
 npmyarnpnpm
 
 ```
-npx wrangler d1 migrations apply [DATABASE]
+npx wrangler d1 migrations apply <DATABASE>
 ```
 
 ```
-yarn wrangler d1 migrations apply [DATABASE]
+yarn wrangler d1 migrations apply <DATABASE>
 ```
 
 ```
-pnpm wrangler d1 migrations apply [DATABASE]
+pnpm wrangler d1 migrations apply <DATABASE>
 ```
 
-- `[DATABASE]` `string` required
+- `<DATABASE>` `string` required
 
   The name or binding of the DB
 - `--local` `boolean` Execute commands/files against a local DB for use with wrangler dev
@@ -691,12 +631,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -716,18 +650,18 @@ This command acts on remote D1 Databases.
 npmyarnpnpm
 
 ```
-npx wrangler d1 insights [NAME]
+npx wrangler d1 insights <NAME>
 ```
 
 ```
-yarn wrangler d1 insights [NAME]
+yarn wrangler d1 insights <NAME>
 ```
 
 ```
-pnpm wrangler d1 insights [NAME]
+pnpm wrangler d1 insights <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the DB
 - `--time-period` `string` default: 1d
@@ -768,12 +702,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

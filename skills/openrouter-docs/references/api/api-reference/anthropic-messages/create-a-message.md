@@ -663,6 +663,8 @@ components:
                     type: object
                   name:
                     type: string
+                  strict:
+                    type: boolean
                   type:
                     enum:
                       - custom

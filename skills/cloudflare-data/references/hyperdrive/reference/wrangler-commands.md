@@ -23,18 +23,18 @@ Create a Hyperdrive config
 npmyarnpnpm
 
 ```
-npx wrangler hyperdrive create [NAME]
+npx wrangler hyperdrive create <NAME>
 ```
 
 ```
-yarn wrangler hyperdrive create [NAME]
+yarn wrangler hyperdrive create <NAME>
 ```
 
 ```
-pnpm wrangler hyperdrive create [NAME]
+pnpm wrangler hyperdrive create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Hyperdrive config
 - `--connection-string` `string` The connection string for the database you want Hyperdrive to connect to - ex: protocol://user:password@host:port/database
@@ -90,12 +90,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -110,18 +104,18 @@ Delete a Hyperdrive config
 npmyarnpnpm
 
 ```
-npx wrangler hyperdrive delete [ID]
+npx wrangler hyperdrive delete <ID>
 ```
 
 ```
-yarn wrangler hyperdrive delete [ID]
+yarn wrangler hyperdrive delete <ID>
 ```
 
 ```
-pnpm wrangler hyperdrive delete [ID]
+pnpm wrangler hyperdrive delete <ID>
 ```
 
-- `[ID]` `string` required
+- `<ID>` `string` required
 
   The ID of the Hyperdrive config
 
@@ -144,12 +138,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -164,18 +152,18 @@ Get a Hyperdrive config
 npmyarnpnpm
 
 ```
-npx wrangler hyperdrive get [ID]
+npx wrangler hyperdrive get <ID>
 ```
 
 ```
-yarn wrangler hyperdrive get [ID]
+yarn wrangler hyperdrive get <ID>
 ```
 
 ```
-pnpm wrangler hyperdrive get [ID]
+pnpm wrangler hyperdrive get <ID>
 ```
 
-- `[ID]` `string` required
+- `<ID>` `string` required
 
   The ID of the Hyperdrive config
 
@@ -198,12 +186,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -248,12 +230,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -301,12 +277,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -321,18 +291,18 @@ Update a Hyperdrive config
 npmyarnpnpm
 
 ```
-npx wrangler hyperdrive update [ID]
+npx wrangler hyperdrive update <ID>
 ```
 
 ```
-yarn wrangler hyperdrive update [ID]
+yarn wrangler hyperdrive update <ID>
 ```
 
 ```
-pnpm wrangler hyperdrive update [ID]
+pnpm wrangler hyperdrive update <ID>
 ```
 
-- `[ID]` `string` required
+- `<ID>` `string` required
 
   The ID of the Hyperdrive config
 - `--name` `string` Give your config a new name
@@ -387,12 +357,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

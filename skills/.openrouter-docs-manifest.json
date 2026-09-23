@@ -144,8 +144,8 @@
   },
   "api/api-reference/anthropic-messages/create-a-message.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/anthropic-messages/create-a-message.md",
-    "size": 209238,
-    "updatedAt": "2026-09-23T04:38:33.506Z"
+    "size": 209298,
+    "updatedAt": "2026-09-23T15:03:46.376Z"
   },
   "api/api-reference/api-keys/create-a-new-api-key.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/api-keys/create-a-new-api-key.md",
@@ -514,8 +514,8 @@
   },
   "api/api-reference/presets/create-a-preset-from-a-messages-request-body.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-a-preset-from-a-messages-request-body.md",
-    "size": 138229,
-    "updatedAt": "2026-09-23T04:38:59.911Z"
+    "size": 138289,
+    "updatedAt": "2026-09-23T15:04:29.530Z"
   },
   "api/api-reference/presets/create-a-preset-from-a-responses-request-body.md": {
     "url": "https://openrouter.ai/docs/api/api-reference/presets/create-a-preset-from-a-responses-request-body.md",
@@ -2282,8 +2282,8 @@
   },
   "guides/overview/auth/workload-identity-federation.md": {
     "url": "https://openrouter.ai/docs/guides/overview/auth/workload-identity-federation.md",
-    "size": 12730,
-    "updatedAt": "2026-09-20T04:50:38.285Z"
+    "size": 12798,
+    "updatedAt": "2026-09-23T15:07:34.469Z"
   },
   "guides/overview/mcp-server.md": {
     "url": "https://openrouter.ai/docs/guides/overview/mcp-server.md",

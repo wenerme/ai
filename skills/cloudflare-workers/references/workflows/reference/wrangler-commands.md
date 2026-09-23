@@ -63,12 +63,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -83,15 +77,15 @@ Describe Workflow resource
 npmyarnpnpm
 
 ```
-npx wrangler workflows describe [NAME]
+npx wrangler workflows describe <NAME>
 ```
 
 ```
-yarn wrangler workflows describe [NAME]
+yarn wrangler workflows describe <NAME>
 ```
 
 ```
-pnpm wrangler workflows describe [NAME]
+pnpm wrangler workflows describe <NAME>
 ```
 
 - `--local` `boolean` Interact with local dev session
@@ -101,7 +95,7 @@ pnpm wrangler workflows describe [NAME]
 - `--json` `boolean` default: false
 
   Output the raw API response as JSON
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the workflow
 
@@ -124,12 +118,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -144,15 +132,15 @@ Delete workflow - when deleting a workflow, it will also delete it's own instanc
 npmyarnpnpm
 
 ```
-npx wrangler workflows delete [NAME]
+npx wrangler workflows delete <NAME>
 ```
 
 ```
-yarn wrangler workflows delete [NAME]
+yarn wrangler workflows delete <NAME>
 ```
 
 ```
-pnpm wrangler workflows delete [NAME]
+pnpm wrangler workflows delete <NAME>
 ```
 
 - `--local` `boolean` Interact with local dev session
@@ -162,7 +150,7 @@ pnpm wrangler workflows delete [NAME]
 - `--json` `boolean` default: false
 
   Output the raw API response as JSON
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the workflow
 
@@ -185,12 +173,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -205,15 +187,15 @@ Trigger a workflow, creating a new instance. Can optionally take a JSON string t
 npmyarnpnpm
 
 ```
-npx wrangler workflows trigger [NAME] [PARAMS]
+npx wrangler workflows trigger <NAME> [PARAMS]
 ```
 
 ```
-yarn wrangler workflows trigger [NAME] [PARAMS]
+yarn wrangler workflows trigger <NAME> [PARAMS]
 ```
 
 ```
-pnpm wrangler workflows trigger [NAME] [PARAMS]
+pnpm wrangler workflows trigger <NAME> [PARAMS]
 ```
 
 - `--local` `boolean` Interact with local dev session
@@ -223,7 +205,7 @@ pnpm wrangler workflows trigger [NAME] [PARAMS]
 - `--json` `boolean` default: false
 
   Output the raw API response as JSON
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the workflow
 - `[PARAMS]` `string` default:
@@ -250,12 +232,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -270,15 +246,15 @@ Instance related commands (list, describe, terminate, pause, resume)
 npmyarnpnpm
 
 ```
-npx wrangler workflows instances list [NAME]
+npx wrangler workflows instances list <NAME>
 ```
 
 ```
-yarn wrangler workflows instances list [NAME]
+yarn wrangler workflows instances list <NAME>
 ```
 
 ```
-pnpm wrangler workflows instances list [NAME]
+pnpm wrangler workflows instances list <NAME>
 ```
 
 - `--local` `boolean` Interact with local dev session
@@ -288,7 +264,7 @@ pnpm wrangler workflows instances list [NAME]
 - `--json` `boolean` default: false
 
   Output the raw API response as JSON
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the workflow
 - `--reverse` `boolean` default: false
@@ -321,12 +297,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -341,15 +311,15 @@ Describe a workflow instance - see its logs, retries and errors
 npmyarnpnpm
 
 ```
-npx wrangler workflows instances describe [NAME] [ID]
+npx wrangler workflows instances describe <NAME> [ID]
 ```
 
 ```
-yarn wrangler workflows instances describe [NAME] [ID]
+yarn wrangler workflows instances describe <NAME> [ID]
 ```
 
 ```
-pnpm wrangler workflows instances describe [NAME] [ID]
+pnpm wrangler workflows instances describe <NAME> [ID]
 ```
 
 - `--local` `boolean` Interact with local dev session
@@ -359,7 +329,7 @@ pnpm wrangler workflows instances describe [NAME] [ID]
 - `--json` `boolean` default: false
 
   Output the raw API response as JSON
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the workflow
 - `[ID]` `string` default: latest
@@ -391,12 +361,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -411,15 +375,15 @@ Send an event to a workflow instance
 npmyarnpnpm
 
 ```
-npx wrangler workflows instances send-event [NAME] [ID]
+npx wrangler workflows instances send-event <NAME> <ID>
 ```
 
 ```
-yarn wrangler workflows instances send-event [NAME] [ID]
+yarn wrangler workflows instances send-event <NAME> <ID>
 ```
 
 ```
-pnpm wrangler workflows instances send-event [NAME] [ID]
+pnpm wrangler workflows instances send-event <NAME> <ID>
 ```
 
 - `--local` `boolean` Interact with local dev session
@@ -429,10 +393,10 @@ pnpm wrangler workflows instances send-event [NAME] [ID]
 - `--json` `boolean` default: false
 
   Output the raw API response as JSON
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the workflow
-- `[ID]` `string` required
+- `<ID>` `string` required
 
   ID of the instance - instead of an UUID you can type 'latest' to get the latest instance and send an event to it
 - `--type` `string` required
@@ -461,12 +425,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -481,15 +439,15 @@ Terminate a workflow instance
 npmyarnpnpm
 
 ```
-npx wrangler workflows instances terminate [NAME] [ID]
+npx wrangler workflows instances terminate <NAME> <ID>
 ```
 
 ```
-yarn wrangler workflows instances terminate [NAME] [ID]
+yarn wrangler workflows instances terminate <NAME> <ID>
 ```
 
 ```
-pnpm wrangler workflows instances terminate [NAME] [ID]
+pnpm wrangler workflows instances terminate <NAME> <ID>
 ```
 
 - `--local` `boolean` Interact with local dev session
@@ -499,10 +457,10 @@ pnpm wrangler workflows instances terminate [NAME] [ID]
 - `--json` `boolean` default: false
 
   Output the raw API response as JSON
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the workflow
-- `[ID]` `string` required
+- `<ID>` `string` required
 
   ID of the instance - instead of an UUID you can type 'latest' to get the latest instance and describe it
 - `--rollback` `boolean` default: false
@@ -528,12 +486,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -548,15 +500,15 @@ Restart a workflow instance
 npmyarnpnpm
 
 ```
-npx wrangler workflows instances restart [NAME] [ID]
+npx wrangler workflows instances restart <NAME> <ID>
 ```
 
 ```
-yarn wrangler workflows instances restart [NAME] [ID]
+yarn wrangler workflows instances restart <NAME> <ID>
 ```
 
 ```
-pnpm wrangler workflows instances restart [NAME] [ID]
+pnpm wrangler workflows instances restart <NAME> <ID>
 ```
 
 - `--local` `boolean` Interact with local dev session
@@ -566,10 +518,10 @@ pnpm wrangler workflows instances restart [NAME] [ID]
 - `--json` `boolean` default: false
 
   Output the raw API response as JSON
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the workflow
-- `[ID]` `string` required
+- `<ID>` `string` required
 
   ID of the instance - instead of an UUID you can type 'latest' to get the latest instance and describe it
 - `--from-step-name` `string` Name of the step to restart from
@@ -595,12 +547,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -615,15 +561,15 @@ Pause a workflow instance
 npmyarnpnpm
 
 ```
-npx wrangler workflows instances pause [NAME] [ID]
+npx wrangler workflows instances pause <NAME> <ID>
 ```
 
 ```
-yarn wrangler workflows instances pause [NAME] [ID]
+yarn wrangler workflows instances pause <NAME> <ID>
 ```
 
 ```
-pnpm wrangler workflows instances pause [NAME] [ID]
+pnpm wrangler workflows instances pause <NAME> <ID>
 ```
 
 - `--local` `boolean` Interact with local dev session
@@ -633,10 +579,10 @@ pnpm wrangler workflows instances pause [NAME] [ID]
 - `--json` `boolean` default: false
 
   Output the raw API response as JSON
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the workflow
-- `[ID]` `string` required
+- `<ID>` `string` required
 
   ID of the instance - instead of an UUID you can type 'latest' to get the latest instance and pause it
 
@@ -659,12 +605,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -679,15 +619,15 @@ Resume a workflow instance
 npmyarnpnpm
 
 ```
-npx wrangler workflows instances resume [NAME] [ID]
+npx wrangler workflows instances resume <NAME> <ID>
 ```
 
 ```
-yarn wrangler workflows instances resume [NAME] [ID]
+yarn wrangler workflows instances resume <NAME> <ID>
 ```
 
 ```
-pnpm wrangler workflows instances resume [NAME] [ID]
+pnpm wrangler workflows instances resume <NAME> <ID>
 ```
 
 - `--local` `boolean` Interact with local dev session
@@ -697,10 +637,10 @@ pnpm wrangler workflows instances resume [NAME] [ID]
 - `--json` `boolean` default: false
 
   Output the raw API response as JSON
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the workflow
-- `[ID]` `string` required
+- `<ID>` `string` required
 
   ID of the instance - instead of an UUID you can type 'latest' to get the latest instance and resume it
 
@@ -723,12 +663,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -743,15 +677,15 @@ Delete workflow instances
 npmyarnpnpm
 
 ```
-npx wrangler workflows instances delete [NAME] [ID]
+npx wrangler workflows instances delete <NAME> [ID]
 ```
 
 ```
-yarn wrangler workflows instances delete [NAME] [ID]
+yarn wrangler workflows instances delete <NAME> [ID]
 ```
 
 ```
-pnpm wrangler workflows instances delete [NAME] [ID]
+pnpm wrangler workflows instances delete <NAME> [ID]
 ```
 
 - `--local` `boolean` Interact with local dev session
@@ -761,7 +695,7 @@ pnpm wrangler workflows instances delete [NAME] [ID]
 - `--json` `boolean` default: false
 
   Output the raw API response as JSON
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the workflow
 - `[ID]` `string` IDs of the instances - you can type 'latest' to get the latest instance and delete it
@@ -786,12 +720,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

@@ -5,7 +5,7 @@ description: "Browse Pioneer model IDs, capabilities, context windows, and prici
 
 # [Pioneer logo]Pioneer
 
-Access 112 Pioneer models through Mastra's model router. Authentication is handled automatically using the `PIONEER_API_KEY` environment variable.
+Access 114 Pioneer models through Mastra's model router. Authentication is handled automatically using the `PIONEER_API_KEY` environment variable.
 
 Learn more in the [Pioneer documentation](https://agent.pioneer.ai/llms.txt).
 
@@ -280,6 +280,18 @@ for await (const chunk of stream) {
     "outputCost": 0.15
   },
   {
+    "model": "pioneer/fastino/gliguard-PII-multi",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 8192,
+    "maxOutput": 8192,
+    "inputCost": 0.15,
+    "outputCost": 0.15
+  },
+  {
     "model": "pioneer/fastino/gliner2-base-v1",
     "imageInput": false,
     "audioInput": false,
@@ -336,6 +348,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 8192,
     "maxOutput": 8192,
+    "inputCost": 0.15,
+    "outputCost": 0.15
+  },
+  {
+    "model": "pioneer/fastino/gliner2.5-multi-v1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 4096,
+    "maxOutput": 4096,
     "inputCost": 0.15,
     "outputCost": 0.15
   },

@@ -23,18 +23,18 @@ Create a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize create [NAME]
+npx wrangler vectorize create <NAME>
 ```
 
 ```
-yarn wrangler vectorize create [NAME]
+yarn wrangler vectorize create <NAME>
 ```
 
 ```
-pnpm wrangler vectorize create [NAME]
+pnpm wrangler vectorize create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index to create (must be unique).
 - `--dimensions` `number` The dimension size to configure this index for, based on the output dimensions of your ML model.
@@ -70,12 +70,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -90,18 +84,18 @@ Delete a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize delete [NAME]
+npx wrangler vectorize delete <NAME>
 ```
 
 ```
-yarn wrangler vectorize delete [NAME]
+yarn wrangler vectorize delete <NAME>
 ```
 
 ```
-pnpm wrangler vectorize delete [NAME]
+pnpm wrangler vectorize delete <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index
 - `--force` `boolean` alias: --ydefault: false
@@ -130,12 +124,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -150,18 +138,18 @@ Get a Vectorize index by name
 npmyarnpnpm
 
 ```
-npx wrangler vectorize get [NAME]
+npx wrangler vectorize get <NAME>
 ```
 
 ```
-yarn wrangler vectorize get [NAME]
+yarn wrangler vectorize get <NAME>
 ```
 
 ```
-pnpm wrangler vectorize get [NAME]
+pnpm wrangler vectorize get <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index.
 - `--json` `boolean` default: false
@@ -190,12 +178,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -247,12 +229,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -267,18 +243,18 @@ List vector identifiers in a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize list-vectors [NAME]
+npx wrangler vectorize list-vectors <NAME>
 ```
 
 ```
-yarn wrangler vectorize list-vectors [NAME]
+yarn wrangler vectorize list-vectors <NAME>
 ```
 
 ```
-pnpm wrangler vectorize list-vectors [NAME]
+pnpm wrangler vectorize list-vectors <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index
 - `--count` `number` Maximum number of vectors to return (1-1000)
@@ -306,12 +282,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -326,18 +296,18 @@ Query a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize query [NAME]
+npx wrangler vectorize query <NAME>
 ```
 
 ```
-yarn wrangler vectorize query [NAME]
+yarn wrangler vectorize query <NAME>
 ```
 
 ```
-pnpm wrangler vectorize query [NAME]
+pnpm wrangler vectorize query <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index
 - `--vector` `number` Vector to query the Vectorize Index
@@ -373,12 +343,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -393,18 +357,18 @@ Insert vectors into a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize insert [NAME]
+npx wrangler vectorize insert <NAME>
 ```
 
 ```
-yarn wrangler vectorize insert [NAME]
+yarn wrangler vectorize insert <NAME>
 ```
 
 ```
-pnpm wrangler vectorize insert [NAME]
+pnpm wrangler vectorize insert <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index.
 - `--file` `string` required
@@ -439,12 +403,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -459,18 +417,18 @@ Upsert vectors into a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize upsert [NAME]
+npx wrangler vectorize upsert <NAME>
 ```
 
 ```
-yarn wrangler vectorize upsert [NAME]
+yarn wrangler vectorize upsert <NAME>
 ```
 
 ```
-pnpm wrangler vectorize upsert [NAME]
+pnpm wrangler vectorize upsert <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index.
 - `--file` `string` required
@@ -502,12 +460,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -522,18 +474,18 @@ Get vectors from a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize get-vectors [NAME]
+npx wrangler vectorize get-vectors <NAME>
 ```
 
 ```
-yarn wrangler vectorize get-vectors [NAME]
+yarn wrangler vectorize get-vectors <NAME>
 ```
 
 ```
-pnpm wrangler vectorize get-vectors [NAME]
+pnpm wrangler vectorize get-vectors <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index.
 - `--ids` `string` required
@@ -559,12 +511,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -579,18 +525,18 @@ Delete vectors in a Vectorize index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize delete-vectors [NAME]
+npx wrangler vectorize delete-vectors <NAME>
 ```
 
 ```
-yarn wrangler vectorize delete-vectors [NAME]
+yarn wrangler vectorize delete-vectors <NAME>
 ```
 
 ```
-pnpm wrangler vectorize delete-vectors [NAME]
+pnpm wrangler vectorize delete-vectors <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index.
 - `--ids` `string` required
@@ -616,12 +562,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -636,18 +576,18 @@ Get additional details about the index
 npmyarnpnpm
 
 ```
-npx wrangler vectorize info [NAME]
+npx wrangler vectorize info <NAME>
 ```
 
 ```
-yarn wrangler vectorize info [NAME]
+yarn wrangler vectorize info <NAME>
 ```
 
 ```
-pnpm wrangler vectorize info [NAME]
+pnpm wrangler vectorize info <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index.
 - `--json` `boolean` default: false
@@ -673,12 +613,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -693,18 +627,18 @@ Enable metadata filtering on the specified property
 npmyarnpnpm
 
 ```
-npx wrangler vectorize create-metadata-index [NAME]
+npx wrangler vectorize create-metadata-index <NAME>
 ```
 
 ```
-yarn wrangler vectorize create-metadata-index [NAME]
+yarn wrangler vectorize create-metadata-index <NAME>
 ```
 
 ```
-pnpm wrangler vectorize create-metadata-index [NAME]
+pnpm wrangler vectorize create-metadata-index <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index.
 - `--propertyName` `string` required
@@ -733,12 +667,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -753,18 +681,18 @@ List metadata properties on which metadata filtering is enabled
 npmyarnpnpm
 
 ```
-npx wrangler vectorize list-metadata-index [NAME]
+npx wrangler vectorize list-metadata-index <NAME>
 ```
 
 ```
-yarn wrangler vectorize list-metadata-index [NAME]
+yarn wrangler vectorize list-metadata-index <NAME>
 ```
 
 ```
-pnpm wrangler vectorize list-metadata-index [NAME]
+pnpm wrangler vectorize list-metadata-index <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index.
 - `--json` `boolean` default: false
@@ -790,12 +718,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -810,18 +732,18 @@ Delete metadata indexes
 npmyarnpnpm
 
 ```
-npx wrangler vectorize delete-metadata-index [NAME]
+npx wrangler vectorize delete-metadata-index <NAME>
 ```
 
 ```
-yarn wrangler vectorize delete-metadata-index [NAME]
+yarn wrangler vectorize delete-metadata-index <NAME>
 ```
 
 ```
-pnpm wrangler vectorize delete-metadata-index [NAME]
+pnpm wrangler vectorize delete-metadata-index <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the Vectorize index.
 - `--propertyName` `string` required
@@ -847,12 +769,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

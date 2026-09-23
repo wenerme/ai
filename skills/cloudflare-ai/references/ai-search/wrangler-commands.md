@@ -62,12 +62,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -82,18 +76,18 @@ Create a new AI Search instance
 npmyarnpnpm
 
 ```
-npx wrangler ai-search create [NAME]
+npx wrangler ai-search create <NAME>
 ```
 
 ```
-yarn wrangler ai-search create [NAME]
+yarn wrangler ai-search create <NAME>
 ```
 
 ```
-pnpm wrangler ai-search create [NAME]
+pnpm wrangler ai-search create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search instance to create (must be unique within its namespace).
 - `--namespace` `string` alias: --n
@@ -141,12 +135,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -161,18 +149,18 @@ Get details of an AI Search instance
 npmyarnpnpm
 
 ```
-npx wrangler ai-search get [NAME]
+npx wrangler ai-search get <NAME>
 ```
 
 ```
-yarn wrangler ai-search get [NAME]
+yarn wrangler ai-search get <NAME>
 ```
 
 ```
-pnpm wrangler ai-search get [NAME]
+pnpm wrangler ai-search get <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search instance.
 - `--namespace` `string` alias: --ndefault: default
@@ -201,12 +189,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -221,18 +203,18 @@ Update an AI Search instance configuration
 npmyarnpnpm
 
 ```
-npx wrangler ai-search update [NAME]
+npx wrangler ai-search update <NAME>
 ```
 
 ```
-yarn wrangler ai-search update [NAME]
+yarn wrangler ai-search update <NAME>
 ```
 
 ```
-pnpm wrangler ai-search update [NAME]
+pnpm wrangler ai-search update <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search instance to update.
 - `--namespace` `string` alias: --ndefault: default
@@ -272,12 +254,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -292,18 +268,18 @@ Delete an AI Search instance
 npmyarnpnpm
 
 ```
-npx wrangler ai-search delete [NAME]
+npx wrangler ai-search delete <NAME>
 ```
 
 ```
-yarn wrangler ai-search delete [NAME]
+yarn wrangler ai-search delete <NAME>
 ```
 
 ```
-pnpm wrangler ai-search delete [NAME]
+pnpm wrangler ai-search delete <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search instance to delete.
 - `--namespace` `string` alias: --ndefault: default
@@ -332,12 +308,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -352,18 +322,18 @@ Get usage statistics for an AI Search instance
 npmyarnpnpm
 
 ```
-npx wrangler ai-search stats [NAME]
+npx wrangler ai-search stats <NAME>
 ```
 
 ```
-yarn wrangler ai-search stats [NAME]
+yarn wrangler ai-search stats <NAME>
 ```
 
 ```
-pnpm wrangler ai-search stats [NAME]
+pnpm wrangler ai-search stats <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search instance.
 - `--namespace` `string` alias: --ndefault: default
@@ -392,12 +362,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -412,18 +376,18 @@ Execute a semantic search query against an AI Search instance
 npmyarnpnpm
 
 ```
-npx wrangler ai-search search [NAME]
+npx wrangler ai-search search <NAME>
 ```
 
 ```
-yarn wrangler ai-search search [NAME]
+yarn wrangler ai-search search <NAME>
 ```
 
 ```
-pnpm wrangler ai-search search [NAME]
+pnpm wrangler ai-search search <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search instance.
 - `--namespace` `string` alias: --ndefault: default
@@ -459,12 +423,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -518,12 +476,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -538,18 +490,18 @@ Create a new AI Search namespace
 npmyarnpnpm
 
 ```
-npx wrangler ai-search namespace create [NAME]
+npx wrangler ai-search namespace create <NAME>
 ```
 
 ```
-yarn wrangler ai-search namespace create [NAME]
+yarn wrangler ai-search namespace create <NAME>
 ```
 
 ```
-pnpm wrangler ai-search namespace create [NAME]
+pnpm wrangler ai-search namespace create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search namespace to create.
 - `--description` `string` Optional description for the namespace (max 256 chars).
@@ -576,12 +528,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -596,18 +542,18 @@ Get details of an AI Search namespace
 npmyarnpnpm
 
 ```
-npx wrangler ai-search namespace get [NAME]
+npx wrangler ai-search namespace get <NAME>
 ```
 
 ```
-yarn wrangler ai-search namespace get [NAME]
+yarn wrangler ai-search namespace get <NAME>
 ```
 
 ```
-pnpm wrangler ai-search namespace get [NAME]
+pnpm wrangler ai-search namespace get <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search namespace.
 - `--json` `boolean` default: false
@@ -633,12 +579,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -653,18 +593,18 @@ Update an AI Search namespace
 npmyarnpnpm
 
 ```
-npx wrangler ai-search namespace update [NAME]
+npx wrangler ai-search namespace update <NAME>
 ```
 
 ```
-yarn wrangler ai-search namespace update [NAME]
+yarn wrangler ai-search namespace update <NAME>
 ```
 
 ```
-pnpm wrangler ai-search namespace update [NAME]
+pnpm wrangler ai-search namespace update <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search namespace to update.
 - `--description` `string` Updated description for the namespace (max 256 chars).
@@ -691,12 +631,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -711,18 +645,18 @@ Delete an AI Search namespace
 npmyarnpnpm
 
 ```
-npx wrangler ai-search namespace delete [NAME]
+npx wrangler ai-search namespace delete <NAME>
 ```
 
 ```
-yarn wrangler ai-search namespace delete [NAME]
+yarn wrangler ai-search namespace delete <NAME>
 ```
 
 ```
-pnpm wrangler ai-search namespace delete [NAME]
+pnpm wrangler ai-search namespace delete <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search namespace to delete.
 - `--force` `boolean` alias: --ydefault: false
@@ -748,12 +682,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -768,18 +696,18 @@ List indexing jobs for an AI Search instance
 npmyarnpnpm
 
 ```
-npx wrangler ai-search jobs list [NAME]
+npx wrangler ai-search jobs list <NAME>
 ```
 
 ```
-yarn wrangler ai-search jobs list [NAME]
+yarn wrangler ai-search jobs list <NAME>
 ```
 
 ```
-pnpm wrangler ai-search jobs list [NAME]
+pnpm wrangler ai-search jobs list <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search instance.
 - `--namespace` `string` alias: --ndefault: default
@@ -812,12 +740,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -832,18 +754,18 @@ Trigger a new indexing job for an AI Search instance
 npmyarnpnpm
 
 ```
-npx wrangler ai-search jobs create [NAME]
+npx wrangler ai-search jobs create <NAME>
 ```
 
 ```
-yarn wrangler ai-search jobs create [NAME]
+yarn wrangler ai-search jobs create <NAME>
 ```
 
 ```
-pnpm wrangler ai-search jobs create [NAME]
+pnpm wrangler ai-search jobs create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search instance.
 - `--namespace` `string` alias: --ndefault: default
@@ -873,12 +795,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -893,21 +809,21 @@ Get details of an AI Search indexing job
 npmyarnpnpm
 
 ```
-npx wrangler ai-search jobs get [NAME] [JOB-ID]
+npx wrangler ai-search jobs get <NAME> <JOB-ID>
 ```
 
 ```
-yarn wrangler ai-search jobs get [NAME] [JOB-ID]
+yarn wrangler ai-search jobs get <NAME> <JOB-ID>
 ```
 
 ```
-pnpm wrangler ai-search jobs get [NAME] [JOB-ID]
+pnpm wrangler ai-search jobs get <NAME> <JOB-ID>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search instance.
-- `[JOB-ID]` `string` required
+- `<JOB-ID>` `string` required
 
   The ID of the indexing job.
 - `--namespace` `string` alias: --ndefault: default
@@ -936,12 +852,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -956,21 +866,21 @@ Cancel an in-progress AI Search indexing job
 npmyarnpnpm
 
 ```
-npx wrangler ai-search jobs cancel [NAME] [JOB-ID]
+npx wrangler ai-search jobs cancel <NAME> <JOB-ID>
 ```
 
 ```
-yarn wrangler ai-search jobs cancel [NAME] [JOB-ID]
+yarn wrangler ai-search jobs cancel <NAME> <JOB-ID>
 ```
 
 ```
-pnpm wrangler ai-search jobs cancel [NAME] [JOB-ID]
+pnpm wrangler ai-search jobs cancel <NAME> <JOB-ID>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search instance.
-- `[JOB-ID]` `string` required
+- `<JOB-ID>` `string` required
 
   The ID of the indexing job to cancel.
 - `--namespace` `string` alias: --ndefault: default
@@ -999,12 +909,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1019,21 +923,21 @@ List log entries for an AI Search indexing job
 npmyarnpnpm
 
 ```
-npx wrangler ai-search jobs logs [NAME] [JOB-ID]
+npx wrangler ai-search jobs logs <NAME> <JOB-ID>
 ```
 
 ```
-yarn wrangler ai-search jobs logs [NAME] [JOB-ID]
+yarn wrangler ai-search jobs logs <NAME> <JOB-ID>
 ```
 
 ```
-pnpm wrangler ai-search jobs logs [NAME] [JOB-ID]
+pnpm wrangler ai-search jobs logs <NAME> <JOB-ID>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the AI Search instance.
-- `[JOB-ID]` `string` required
+- `<JOB-ID>` `string` required
 
   The ID of the indexing job.
 - `--namespace` `string` alias: --ndefault: default
@@ -1066,12 +970,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

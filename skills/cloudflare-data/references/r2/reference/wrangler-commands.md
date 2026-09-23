@@ -29,18 +29,18 @@ Create a new R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket create [NAME]
+npx wrangler r2 bucket create <NAME>
 ```
 
 ```
-yarn wrangler r2 bucket create [NAME]
+yarn wrangler r2 bucket create <NAME>
 ```
 
 ```
-pnpm wrangler r2 bucket create [NAME]
+pnpm wrangler r2 bucket create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the new bucket
 - `--location` `string` The optional location hint that determines geographic placement of the R2 bucket
@@ -73,12 +73,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -93,18 +87,18 @@ Get information about an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket info [BUCKET]
+npx wrangler r2 bucket info <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket info [BUCKET]
+yarn wrangler r2 bucket info <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket info [BUCKET]
+pnpm wrangler r2 bucket info <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the bucket to retrieve info for
 - `--jurisdiction` `string` alias: --J
@@ -133,12 +127,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -153,18 +141,18 @@ Delete an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket delete [BUCKET]
+npx wrangler r2 bucket delete <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket delete [BUCKET]
+yarn wrangler r2 bucket delete <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket delete [BUCKET]
+pnpm wrangler r2 bucket delete <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the bucket to delete
 - `--jurisdiction` `string` alias: --J
@@ -190,12 +178,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -244,12 +226,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -264,18 +240,18 @@ Enable the data catalog on an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog enable [BUCKET]
+npx wrangler r2 bucket catalog enable <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket catalog enable [BUCKET]
+yarn wrangler r2 bucket catalog enable <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket catalog enable [BUCKET]
+pnpm wrangler r2 bucket catalog enable <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the bucket to enable
 
@@ -298,12 +274,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -318,18 +288,18 @@ Disable the data catalog for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog disable [BUCKET]
+npx wrangler r2 bucket catalog disable <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket catalog disable [BUCKET]
+yarn wrangler r2 bucket catalog disable <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket catalog disable [BUCKET]
+pnpm wrangler r2 bucket catalog disable <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the bucket to disable the data catalog for
 
@@ -352,12 +322,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -372,18 +336,18 @@ Get the status of the data catalog for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog get [BUCKET]
+npx wrangler r2 bucket catalog get <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket catalog get [BUCKET]
+yarn wrangler r2 bucket catalog get <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket catalog get [BUCKET]
+pnpm wrangler r2 bucket catalog get <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket whose data catalog status to retrieve
 
@@ -406,12 +370,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -426,18 +384,18 @@ Enable automatic file compaction for your R2 data catalog or a specific table
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog compaction enable [BUCKET] [NAMESPACE] [TABLE]
+npx wrangler r2 bucket catalog compaction enable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
 ```
-yarn wrangler r2 bucket catalog compaction enable [BUCKET] [NAMESPACE] [TABLE]
+yarn wrangler r2 bucket catalog compaction enable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
 ```
-pnpm wrangler r2 bucket catalog compaction enable [BUCKET] [NAMESPACE] [TABLE]
+pnpm wrangler r2 bucket catalog compaction enable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the bucket which contains the catalog
 - `[NAMESPACE]` `string` The namespace containing the table (optional, for table-level compaction)
@@ -466,12 +424,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -496,18 +448,18 @@ Disable automatic file compaction for your R2 data catalog or a specific table
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog compaction disable [BUCKET] [NAMESPACE] [TABLE]
+npx wrangler r2 bucket catalog compaction disable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
 ```
-yarn wrangler r2 bucket catalog compaction disable [BUCKET] [NAMESPACE] [TABLE]
+yarn wrangler r2 bucket catalog compaction disable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
 ```
-pnpm wrangler r2 bucket catalog compaction disable [BUCKET] [NAMESPACE] [TABLE]
+pnpm wrangler r2 bucket catalog compaction disable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the bucket which contains the catalog
 - `[NAMESPACE]` `string` The namespace containing the table (optional, for table-level compaction)
@@ -532,12 +484,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -562,18 +508,18 @@ Enable automatic snapshot expiration for your R2 data catalog or a specific tabl
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog snapshot-expiration enable [BUCKET] [NAMESPACE] [TABLE]
+npx wrangler r2 bucket catalog snapshot-expiration enable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
 ```
-yarn wrangler r2 bucket catalog snapshot-expiration enable [BUCKET] [NAMESPACE] [TABLE]
+yarn wrangler r2 bucket catalog snapshot-expiration enable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
 ```
-pnpm wrangler r2 bucket catalog snapshot-expiration enable [BUCKET] [NAMESPACE] [TABLE]
+pnpm wrangler r2 bucket catalog snapshot-expiration enable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the bucket which contains the catalog
 - `[NAMESPACE]` `string` The namespace containing the table (optional, for table-level snapshot expiration)
@@ -601,12 +547,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -621,18 +561,18 @@ Disable automatic snapshot expiration for your R2 data catalog or a specific tab
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog snapshot-expiration disable [BUCKET] [NAMESPACE] [TABLE]
+npx wrangler r2 bucket catalog snapshot-expiration disable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
 ```
-yarn wrangler r2 bucket catalog snapshot-expiration disable [BUCKET] [NAMESPACE] [TABLE]
+yarn wrangler r2 bucket catalog snapshot-expiration disable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
 ```
-pnpm wrangler r2 bucket catalog snapshot-expiration disable [BUCKET] [NAMESPACE] [TABLE]
+pnpm wrangler r2 bucket catalog snapshot-expiration disable <BUCKET> [NAMESPACE] [TABLE]
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the bucket which contains the catalog
 - `[NAMESPACE]` `string` The namespace containing the table (optional, for table-level snapshot expiration)
@@ -660,12 +600,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -680,18 +614,18 @@ Set the CORS configuration for an R2 bucket from a JSON file
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket cors set [BUCKET]
+npx wrangler r2 bucket cors set <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket cors set [BUCKET]
+yarn wrangler r2 bucket cors set <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket cors set [BUCKET]
+pnpm wrangler r2 bucket cors set <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to set the CORS configuration for
 - `--file` `string` required
@@ -723,12 +657,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -743,18 +671,18 @@ Clear the CORS configuration for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket cors delete [BUCKET]
+npx wrangler r2 bucket cors delete <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket cors delete [BUCKET]
+yarn wrangler r2 bucket cors delete <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket cors delete [BUCKET]
+pnpm wrangler r2 bucket cors delete <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to delete the CORS configuration for
 - `--jurisdiction` `string` alias: --J
@@ -783,12 +711,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -803,18 +725,18 @@ List the CORS rules for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket cors list [BUCKET]
+npx wrangler r2 bucket cors list <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket cors list [BUCKET]
+yarn wrangler r2 bucket cors list <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket cors list [BUCKET]
+pnpm wrangler r2 bucket cors list <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to list the CORS rules for
 - `--jurisdiction` `string` alias: --J
@@ -840,12 +762,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -860,18 +776,18 @@ Enable public access via the r2.dev URL for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket dev-url enable [BUCKET]
+npx wrangler r2 bucket dev-url enable <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket dev-url enable [BUCKET]
+yarn wrangler r2 bucket dev-url enable <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket dev-url enable [BUCKET]
+pnpm wrangler r2 bucket dev-url enable <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to enable public access via its r2.dev URL
 - `--jurisdiction` `string` alias: --J
@@ -900,12 +816,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -920,18 +830,18 @@ Disable public access via the r2.dev URL for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket dev-url disable [BUCKET]
+npx wrangler r2 bucket dev-url disable <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket dev-url disable [BUCKET]
+yarn wrangler r2 bucket dev-url disable <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket dev-url disable [BUCKET]
+pnpm wrangler r2 bucket dev-url disable <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to disable public access via its r2.dev URL
 - `--jurisdiction` `string` alias: --J
@@ -960,12 +870,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -980,18 +884,18 @@ Get the r2.dev URL and status for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket dev-url get [BUCKET]
+npx wrangler r2 bucket dev-url get <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket dev-url get [BUCKET]
+yarn wrangler r2 bucket dev-url get <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket dev-url get [BUCKET]
+pnpm wrangler r2 bucket dev-url get <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket whose r2.dev URL status to retrieve
 - `--jurisdiction` `string` alias: --J
@@ -1017,12 +921,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1037,18 +935,18 @@ Connect a custom domain to an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket domain add [BUCKET]
+npx wrangler r2 bucket domain add <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket domain add [BUCKET]
+yarn wrangler r2 bucket domain add <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket domain add [BUCKET]
+pnpm wrangler r2 bucket domain add <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to connect a custom domain to
 - `--domain` `string` required
@@ -1084,12 +982,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1104,18 +996,18 @@ Remove a custom domain from an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket domain remove [BUCKET]
+npx wrangler r2 bucket domain remove <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket domain remove [BUCKET]
+yarn wrangler r2 bucket domain remove <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket domain remove [BUCKET]
+pnpm wrangler r2 bucket domain remove <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to remove the custom domain from
 - `--domain` `string` required
@@ -1147,12 +1039,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1167,18 +1053,18 @@ Update settings for a custom domain connected to an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket domain update [BUCKET]
+npx wrangler r2 bucket domain update <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket domain update [BUCKET]
+yarn wrangler r2 bucket domain update <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket domain update [BUCKET]
+pnpm wrangler r2 bucket domain update <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket associated with the custom domain to update
 - `--domain` `string` required
@@ -1208,12 +1094,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1228,18 +1108,18 @@ Get custom domain connected to an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket domain get [BUCKET]
+npx wrangler r2 bucket domain get <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket domain get [BUCKET]
+yarn wrangler r2 bucket domain get <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket domain get [BUCKET]
+pnpm wrangler r2 bucket domain get <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket whose custom domain to retrieve
 - `--domain` `string` required
@@ -1268,12 +1148,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1288,18 +1162,18 @@ List custom domains for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket domain list [BUCKET]
+npx wrangler r2 bucket domain list <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket domain list [BUCKET]
+yarn wrangler r2 bucket domain list <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket domain list [BUCKET]
+pnpm wrangler r2 bucket domain list <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket whose connected custom domains will be listed
 - `--jurisdiction` `string` alias: --J
@@ -1325,12 +1199,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1345,18 +1213,18 @@ Add a lifecycle rule to an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lifecycle add [BUCKET] [NAME] [PREFIX]
+npx wrangler r2 bucket lifecycle add <BUCKET> [NAME] [PREFIX]
 ```
 
 ```
-yarn wrangler r2 bucket lifecycle add [BUCKET] [NAME] [PREFIX]
+yarn wrangler r2 bucket lifecycle add <BUCKET> [NAME] [PREFIX]
 ```
 
 ```
-pnpm wrangler r2 bucket lifecycle add [BUCKET] [NAME] [PREFIX]
+pnpm wrangler r2 bucket lifecycle add <BUCKET> [NAME] [PREFIX]
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to add a lifecycle rule to
 - `[NAME]` `string` alias: --id
@@ -1394,12 +1262,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1414,18 +1276,18 @@ Remove a lifecycle rule from an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lifecycle remove [BUCKET]
+npx wrangler r2 bucket lifecycle remove <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket lifecycle remove [BUCKET]
+yarn wrangler r2 bucket lifecycle remove <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket lifecycle remove [BUCKET]
+pnpm wrangler r2 bucket lifecycle remove <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to remove a lifecycle rule from
 - `--name` `string` alias: --idrequired
@@ -1454,12 +1316,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1474,18 +1330,18 @@ List lifecycle rules for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lifecycle list [BUCKET]
+npx wrangler r2 bucket lifecycle list <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket lifecycle list [BUCKET]
+yarn wrangler r2 bucket lifecycle list <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket lifecycle list [BUCKET]
+pnpm wrangler r2 bucket lifecycle list <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to list lifecycle rules for
 - `--jurisdiction` `string` alias: --J
@@ -1511,12 +1367,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1531,18 +1381,18 @@ Set the lifecycle configuration for an R2 bucket from a JSON file
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lifecycle set [BUCKET]
+npx wrangler r2 bucket lifecycle set <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket lifecycle set [BUCKET]
+yarn wrangler r2 bucket lifecycle set <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket lifecycle set [BUCKET]
+pnpm wrangler r2 bucket lifecycle set <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to set lifecycle configuration for
 - `--file` `string` required
@@ -1574,12 +1424,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1594,18 +1438,18 @@ Add a lock rule to an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lock add [BUCKET] [NAME] [PREFIX]
+npx wrangler r2 bucket lock add <BUCKET> [NAME] [PREFIX]
 ```
 
 ```
-yarn wrangler r2 bucket lock add [BUCKET] [NAME] [PREFIX]
+yarn wrangler r2 bucket lock add <BUCKET> [NAME] [PREFIX]
 ```
 
 ```
-pnpm wrangler r2 bucket lock add [BUCKET] [NAME] [PREFIX]
+pnpm wrangler r2 bucket lock add <BUCKET> [NAME] [PREFIX]
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to add a bucket lock rule to
 - `[NAME]` `string` alias: --id
@@ -1641,12 +1485,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1661,18 +1499,18 @@ Remove a bucket lock rule from an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lock remove [BUCKET]
+npx wrangler r2 bucket lock remove <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket lock remove [BUCKET]
+yarn wrangler r2 bucket lock remove <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket lock remove [BUCKET]
+pnpm wrangler r2 bucket lock remove <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to remove a bucket lock rule from
 - `--name` `string` alias: --idrequired
@@ -1701,12 +1539,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1721,18 +1553,18 @@ List lock rules for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lock list [BUCKET]
+npx wrangler r2 bucket lock list <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket lock list [BUCKET]
+yarn wrangler r2 bucket lock list <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket lock list [BUCKET]
+pnpm wrangler r2 bucket lock list <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to list lock rules for
 - `--jurisdiction` `string` alias: --J
@@ -1758,12 +1590,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1778,18 +1604,18 @@ Set the lock configuration for an R2 bucket from a JSON file
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket lock set [BUCKET]
+npx wrangler r2 bucket lock set <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket lock set [BUCKET]
+yarn wrangler r2 bucket lock set <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket lock set [BUCKET]
+pnpm wrangler r2 bucket lock set <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to set lock configuration for
 - `--file` `string` required
@@ -1821,12 +1647,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1841,18 +1661,18 @@ Create an event notification rule for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket notification create [BUCKET]
+npx wrangler r2 bucket notification create <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket notification create [BUCKET]
+yarn wrangler r2 bucket notification create <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket notification create [BUCKET]
+pnpm wrangler r2 bucket notification create <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to create an event notification rule for
 - `--event-types` `"object-create" | "object-delete"` alias: --event-typerequired
@@ -1887,12 +1707,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1907,18 +1721,18 @@ Delete an event notification rule from an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket notification delete [BUCKET]
+npx wrangler r2 bucket notification delete <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket notification delete [BUCKET]
+yarn wrangler r2 bucket notification delete <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket notification delete [BUCKET]
+pnpm wrangler r2 bucket notification delete <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to delete an event notification rule for
 - `--queue` `string` required
@@ -1948,12 +1762,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1968,18 +1776,18 @@ List event notification rules for an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket notification list [BUCKET]
+npx wrangler r2 bucket notification list <BUCKET>
 ```
 
 ```
-yarn wrangler r2 bucket notification list [BUCKET]
+yarn wrangler r2 bucket notification list <BUCKET>
 ```
 
 ```
-pnpm wrangler r2 bucket notification list [BUCKET]
+pnpm wrangler r2 bucket notification list <BUCKET>
 ```
 
-- `[BUCKET]` `string` required
+- `<BUCKET>` `string` required
 
   The name of the R2 bucket to get event notification rules for
 - `--jurisdiction` `string` alias: --J
@@ -2005,12 +1813,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -2025,18 +1827,18 @@ Enable Sippy on an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket sippy enable [NAME]
+npx wrangler r2 bucket sippy enable <NAME>
 ```
 
 ```
-yarn wrangler r2 bucket sippy enable [NAME]
+yarn wrangler r2 bucket sippy enable <NAME>
 ```
 
 ```
-pnpm wrangler r2 bucket sippy enable [NAME]
+pnpm wrangler r2 bucket sippy enable <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the bucket
 - `--jurisdiction` `string` alias: --J
@@ -2072,12 +1874,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -2092,18 +1888,18 @@ Disable Sippy on an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket sippy disable [NAME]
+npx wrangler r2 bucket sippy disable <NAME>
 ```
 
 ```
-yarn wrangler r2 bucket sippy disable [NAME]
+yarn wrangler r2 bucket sippy disable <NAME>
 ```
 
 ```
-pnpm wrangler r2 bucket sippy disable [NAME]
+pnpm wrangler r2 bucket sippy disable <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the bucket
 - `--jurisdiction` `string` alias: --J
@@ -2129,12 +1925,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -2149,18 +1939,18 @@ Check the status of Sippy on an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket sippy get [NAME]
+npx wrangler r2 bucket sippy get <NAME>
 ```
 
 ```
-yarn wrangler r2 bucket sippy get [NAME]
+yarn wrangler r2 bucket sippy get <NAME>
 ```
 
 ```
-pnpm wrangler r2 bucket sippy get [NAME]
+pnpm wrangler r2 bucket sippy get <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the bucket
 - `--jurisdiction` `string` alias: --J
@@ -2186,12 +1976,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -2214,18 +1998,18 @@ Fetch an object from an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 object get [OBJECTPATH]
+npx wrangler r2 object get <OBJECTPATH>
 ```
 
 ```
-yarn wrangler r2 object get [OBJECTPATH]
+yarn wrangler r2 object get <OBJECTPATH>
 ```
 
 ```
-pnpm wrangler r2 object get [OBJECTPATH]
+pnpm wrangler r2 object get <OBJECTPATH>
 ```
 
-- `[OBJECTPATH]` `string` required
+- `<OBJECTPATH>` `string` required
 
   The source object path in the form of {bucket}/{key}
 - `--file` `string` alias: --f
@@ -2260,12 +2044,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -2280,18 +2058,18 @@ Create an object in an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 object put [OBJECTPATH]
+npx wrangler r2 object put <OBJECTPATH>
 ```
 
 ```
-yarn wrangler r2 object put [OBJECTPATH]
+yarn wrangler r2 object put <OBJECTPATH>
 ```
 
 ```
-pnpm wrangler r2 object put [OBJECTPATH]
+pnpm wrangler r2 object put <OBJECTPATH>
 ```
 
-- `[OBJECTPATH]` `string` required
+- `<OBJECTPATH>` `string` required
 
   The destination object path in the form of {bucket}/{key}
 - `--content-type` `string` alias: --ct
@@ -2348,12 +2126,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -2368,18 +2140,18 @@ Delete an object in an R2 bucket
 npmyarnpnpm
 
 ```
-npx wrangler r2 object delete [OBJECTPATH]
+npx wrangler r2 object delete <OBJECTPATH>
 ```
 
 ```
-yarn wrangler r2 object delete [OBJECTPATH]
+yarn wrangler r2 object delete <OBJECTPATH>
 ```
 
 ```
-pnpm wrangler r2 object delete [OBJECTPATH]
+pnpm wrangler r2 object delete <OBJECTPATH>
 ```
 
-- `[OBJECTPATH]` `string` required
+- `<OBJECTPATH>` `string` required
 
   The destination object path in the form of {bucket}/{key}
 - `--local` `boolean` Interact with local storage
@@ -2411,12 +2183,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

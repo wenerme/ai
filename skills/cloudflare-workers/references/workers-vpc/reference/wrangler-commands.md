@@ -23,18 +23,18 @@ Create a new VPC service
 npmyarnpnpm
 
 ```
-npx wrangler vpc service create [NAME]
+npx wrangler vpc service create <NAME>
 ```
 
 ```
-yarn wrangler vpc service create [NAME]
+yarn wrangler vpc service create <NAME>
 ```
 
 ```
-pnpm wrangler vpc service create [NAME]
+pnpm wrangler vpc service create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the VPC service
 - `--type` `string` required
@@ -72,12 +72,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -92,18 +86,18 @@ Delete a VPC service
 npmyarnpnpm
 
 ```
-npx wrangler vpc service delete [SERVICE-ID]
+npx wrangler vpc service delete <SERVICE-ID>
 ```
 
 ```
-yarn wrangler vpc service delete [SERVICE-ID]
+yarn wrangler vpc service delete <SERVICE-ID>
 ```
 
 ```
-pnpm wrangler vpc service delete [SERVICE-ID]
+pnpm wrangler vpc service delete <SERVICE-ID>
 ```
 
-- `[SERVICE-ID]` `string` required
+- `<SERVICE-ID>` `string` required
 
   The ID of the service to delete
 
@@ -126,12 +120,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -146,18 +134,18 @@ Get a VPC service
 npmyarnpnpm
 
 ```
-npx wrangler vpc service get [SERVICE-ID]
+npx wrangler vpc service get <SERVICE-ID>
 ```
 
 ```
-yarn wrangler vpc service get [SERVICE-ID]
+yarn wrangler vpc service get <SERVICE-ID>
 ```
 
 ```
-pnpm wrangler vpc service get [SERVICE-ID]
+pnpm wrangler vpc service get <SERVICE-ID>
 ```
 
-- `[SERVICE-ID]` `string` required
+- `<SERVICE-ID>` `string` required
 
   The ID of the VPC service
 
@@ -180,12 +168,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -230,12 +212,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -250,18 +226,18 @@ Update a VPC service
 npmyarnpnpm
 
 ```
-npx wrangler vpc service update [SERVICE-ID]
+npx wrangler vpc service update <SERVICE-ID>
 ```
 
 ```
-yarn wrangler vpc service update [SERVICE-ID]
+yarn wrangler vpc service update <SERVICE-ID>
 ```
 
 ```
-pnpm wrangler vpc service update [SERVICE-ID]
+pnpm wrangler vpc service update <SERVICE-ID>
 ```
 
-- `[SERVICE-ID]` `string` required
+- `<SERVICE-ID>` `string` required
 
   The ID of the VPC service to update
 - `--name` `string` required
@@ -302,12 +278,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

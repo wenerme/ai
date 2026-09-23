@@ -53,12 +53,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -73,18 +67,18 @@ Get information about a dispatch namespace
 npmyarnpnpm
 
 ```
-npx wrangler dispatch-namespace get [NAME]
+npx wrangler dispatch-namespace get <NAME>
 ```
 
 ```
-yarn wrangler dispatch-namespace get [NAME]
+yarn wrangler dispatch-namespace get <NAME>
 ```
 
 ```
-pnpm wrangler dispatch-namespace get [NAME]
+pnpm wrangler dispatch-namespace get <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the dispatch namespace
 
@@ -107,12 +101,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -127,18 +115,18 @@ Create a dispatch namespace
 npmyarnpnpm
 
 ```
-npx wrangler dispatch-namespace create [NAME]
+npx wrangler dispatch-namespace create <NAME>
 ```
 
 ```
-yarn wrangler dispatch-namespace create [NAME]
+yarn wrangler dispatch-namespace create <NAME>
 ```
 
 ```
-pnpm wrangler dispatch-namespace create [NAME]
+pnpm wrangler dispatch-namespace create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the dispatch namespace
 
@@ -161,12 +149,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -181,18 +163,18 @@ Delete a dispatch namespace
 npmyarnpnpm
 
 ```
-npx wrangler dispatch-namespace delete [NAME]
+npx wrangler dispatch-namespace delete <NAME>
 ```
 
 ```
-yarn wrangler dispatch-namespace delete [NAME]
+yarn wrangler dispatch-namespace delete <NAME>
 ```
 
 ```
-pnpm wrangler dispatch-namespace delete [NAME]
+pnpm wrangler dispatch-namespace delete <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the dispatch namespace
 
@@ -215,12 +197,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -239,21 +215,21 @@ Rename a dispatch namespace
 npmyarnpnpm
 
 ```
-npx wrangler dispatch-namespace rename [OLDNAME] [NEWNAME]
+npx wrangler dispatch-namespace rename <OLDNAME> <NEWNAME>
 ```
 
 ```
-yarn wrangler dispatch-namespace rename [OLDNAME] [NEWNAME]
+yarn wrangler dispatch-namespace rename <OLDNAME> <NEWNAME>
 ```
 
 ```
-pnpm wrangler dispatch-namespace rename [OLDNAME] [NEWNAME]
+pnpm wrangler dispatch-namespace rename <OLDNAME> <NEWNAME>
 ```
 
-- `[OLDNAME]` `string` required
+- `<OLDNAME>` `string` required
 
   Name of the dispatch namespace
-- `[NEWNAME]` `string` required
+- `<NEWNAME>` `string` required
 
   New name of the dispatch namespace
 
@@ -276,12 +252,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
