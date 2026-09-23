@@ -355,12 +355,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -377,18 +371,18 @@ Create or update a secret variable on a Worker Preview and create a new deployme
 npmyarnpnpm
 
 ```
-npx wrangler preview secret put [KEY]
+npx wrangler preview secret put <KEY>
 ```
 
 ```
-yarn wrangler preview secret put [KEY]
+yarn wrangler preview secret put <KEY>
 ```
 
 ```
-pnpm wrangler preview secret put [KEY]
+pnpm wrangler preview secret put <KEY>
 ```
 
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The secret name to be accessible in the Worker
 - `--name` `string` Name of the Preview (defaults to current git branch)
@@ -415,12 +409,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -437,18 +425,18 @@ Delete a secret variable from a Worker Preview and create a new deployment
 npmyarnpnpm
 
 ```
-npx wrangler preview secret delete [KEY]
+npx wrangler preview secret delete <KEY>
 ```
 
 ```
-yarn wrangler preview secret delete [KEY]
+yarn wrangler preview secret delete <KEY>
 ```
 
 ```
-pnpm wrangler preview secret delete [KEY]
+pnpm wrangler preview secret delete <KEY>
 ```
 
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The secret name to delete
 - `--name` `string` Name of the Preview (defaults to current git branch)
@@ -478,12 +466,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -536,12 +518,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -594,12 +570,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -616,18 +586,18 @@ Create or update a secret variable on the Preview base config
 npmyarnpnpm
 
 ```
-npx wrangler preview base-config secret put [KEY]
+npx wrangler preview base-config secret put <KEY>
 ```
 
 ```
-yarn wrangler preview base-config secret put [KEY]
+yarn wrangler preview base-config secret put <KEY>
 ```
 
 ```
-pnpm wrangler preview base-config secret put [KEY]
+pnpm wrangler preview base-config secret put <KEY>
 ```
 
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The secret name to be accessible in the Worker
 - `--worker-name` `string` Name of the Worker to target (defaults to the name in your local config file)
@@ -651,12 +621,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -673,18 +637,18 @@ Delete a secret variable from the Preview base config
 npmyarnpnpm
 
 ```
-npx wrangler preview base-config secret delete [KEY]
+npx wrangler preview base-config secret delete <KEY>
 ```
 
 ```
-yarn wrangler preview base-config secret delete [KEY]
+yarn wrangler preview base-config secret delete <KEY>
 ```
 
 ```
-pnpm wrangler preview base-config secret delete [KEY]
+pnpm wrangler preview base-config secret delete <KEY>
 ```
 
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The secret name to delete
 - `--skip-confirmation` `boolean` alias: --ydefault: false
@@ -711,12 +675,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -768,12 +726,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -823,12 +775,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -911,12 +857,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -941,18 +881,18 @@ Create or update a secret for a Worker
 npmyarnpnpm
 
 ```
-npx wrangler secret put [KEY]
+npx wrangler secret put <KEY>
 ```
 
 ```
-yarn wrangler secret put [KEY]
+yarn wrangler secret put <KEY>
 ```
 
 ```
-pnpm wrangler secret put [KEY]
+pnpm wrangler secret put <KEY>
 ```
 
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The variable name to be accessible in the Worker
 - `--name` `string` Name of the Worker. If this is not specified, it will default to the name specified in your Wrangler config file.
@@ -976,12 +916,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1014,18 +948,18 @@ Delete a secret from a Worker
 npmyarnpnpm
 
 ```
-npx wrangler secret delete [KEY]
+npx wrangler secret delete <KEY>
 ```
 
 ```
-yarn wrangler secret delete [KEY]
+yarn wrangler secret delete <KEY>
 ```
 
 ```
-pnpm wrangler secret delete [KEY]
+pnpm wrangler secret delete <KEY>
 ```
 
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The variable name to be accessible in the Worker
 - `--name` `string` Name of the Worker. If this is not specified, it will default to the name specified in your Wrangler config file.
@@ -1049,12 +983,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1104,12 +1032,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1174,12 +1096,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1265,12 +1181,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1368,12 +1278,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1431,12 +1335,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1492,12 +1390,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1512,18 +1404,18 @@ View the details of a specific version of your Worker
 npmyarnpnpm
 
 ```
-npx wrangler versions view [VERSION-ID]
+npx wrangler versions view <VERSION-ID>
 ```
 
 ```
-yarn wrangler versions view [VERSION-ID]
+yarn wrangler versions view <VERSION-ID>
 ```
 
 ```
-pnpm wrangler versions view [VERSION-ID]
+pnpm wrangler versions view <VERSION-ID>
 ```
 
-- `[VERSION-ID]` `string` required
+- `<VERSION-ID>` `string` required
 
   The Worker Version ID to view
 - `--name` `string` Name of the worker
@@ -1550,12 +1442,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1605,12 +1491,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1660,12 +1540,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1715,12 +1589,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1796,12 +1664,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1861,12 +1723,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1916,12 +1772,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

@@ -21,10 +21,7 @@ For code search, GitLab uses these types in this order:
 ## Available scopes
 
 - Groups scope [introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/249760) in GitLab 19.4 [with a feature flag](../../administration/feature_flags/_index.md) named `elasticsearch_group_search`. Disabled by default.
-
-> [!flag]
-> The availability of the Groups scope is controlled by a feature flag.
-> For more information, see the history.
+- Groups scope [generally available](https://gitlab.com/gitlab-org/gitlab/-/issues/607018) in GitLab 19.5. Feature flag `elasticsearch_group_search` removed.
 
 Scopes describe the type of data you're searching.
 The following scopes are available for basic search:

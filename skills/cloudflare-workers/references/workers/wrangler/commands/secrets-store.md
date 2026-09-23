@@ -31,18 +31,18 @@ Create a secret within a store
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store secret create [STORE-ID]
+npx wrangler secrets-store secret create <STORE-ID>
 ```
 
 ```
-yarn wrangler secrets-store secret create [STORE-ID]
+yarn wrangler secrets-store secret create <STORE-ID>
 ```
 
 ```
-pnpm wrangler secrets-store secret create [STORE-ID]
+pnpm wrangler secrets-store secret create <STORE-ID>
 ```
 
-- `[STORE-ID]` `string` required
+- `<STORE-ID>` `string` required
 
   ID of the store in which the secret resides
 - `--name` `string` required
@@ -77,12 +77,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -111,18 +105,18 @@ Update a secret within a store
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store secret update [STORE-ID]
+npx wrangler secrets-store secret update <STORE-ID>
 ```
 
 ```
-yarn wrangler secrets-store secret update [STORE-ID]
+yarn wrangler secrets-store secret update <STORE-ID>
 ```
 
 ```
-pnpm wrangler secrets-store secret update [STORE-ID]
+pnpm wrangler secrets-store secret update <STORE-ID>
 ```
 
-- `[STORE-ID]` `string` required
+- `<STORE-ID>` `string` required
 
   ID of the store in which the secret resides
 - `--secret-id` `string` required
@@ -155,12 +149,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -175,18 +163,18 @@ Duplicate a secret within a store
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store secret duplicate [STORE-ID]
+npx wrangler secrets-store secret duplicate <STORE-ID>
 ```
 
 ```
-yarn wrangler secrets-store secret duplicate [STORE-ID]
+yarn wrangler secrets-store secret duplicate <STORE-ID>
 ```
 
 ```
-pnpm wrangler secrets-store secret duplicate [STORE-ID]
+pnpm wrangler secrets-store secret duplicate <STORE-ID>
 ```
 
-- `[STORE-ID]` `string` required
+- `<STORE-ID>` `string` required
 
   ID of the store in which the secret resides
 - `--secret-id` `string` required
@@ -223,12 +211,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -243,18 +225,18 @@ Get a secret within a store
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store secret get [STORE-ID]
+npx wrangler secrets-store secret get <STORE-ID>
 ```
 
 ```
-yarn wrangler secrets-store secret get [STORE-ID]
+yarn wrangler secrets-store secret get <STORE-ID>
 ```
 
 ```
-pnpm wrangler secrets-store secret get [STORE-ID]
+pnpm wrangler secrets-store secret get <STORE-ID>
 ```
 
-- `[STORE-ID]` `string` required
+- `<STORE-ID>` `string` required
 
   ID of the store in which the secret resides
 - `--secret-id` `string` required
@@ -284,12 +266,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -318,18 +294,18 @@ Delete a secret within a store
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store secret delete [STORE-ID]
+npx wrangler secrets-store secret delete <STORE-ID>
 ```
 
 ```
-yarn wrangler secrets-store secret delete [STORE-ID]
+yarn wrangler secrets-store secret delete <STORE-ID>
 ```
 
 ```
-pnpm wrangler secrets-store secret delete [STORE-ID]
+pnpm wrangler secrets-store secret delete <STORE-ID>
 ```
 
-- `[STORE-ID]` `string` required
+- `<STORE-ID>` `string` required
 
   ID of the store in which the secret resides
 - `--secret-id` `string` required
@@ -359,12 +335,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -379,18 +349,18 @@ List secrets within a store
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store secret list [STORE-ID]
+npx wrangler secrets-store secret list <STORE-ID>
 ```
 
 ```
-yarn wrangler secrets-store secret list [STORE-ID]
+yarn wrangler secrets-store secret list <STORE-ID>
 ```
 
 ```
-pnpm wrangler secrets-store secret list [STORE-ID]
+pnpm wrangler secrets-store secret list <STORE-ID>
 ```
 
-- `[STORE-ID]` `string` required
+- `<STORE-ID>` `string` required
 
   ID of the store in which to list secrets
 - `--page` `number` default: 1
@@ -423,12 +393,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -451,18 +415,18 @@ Create a store within an account
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store store create [NAME]
+npx wrangler secrets-store store create <NAME>
 ```
 
 ```
-yarn wrangler secrets-store store create [NAME]
+yarn wrangler secrets-store store create <NAME>
 ```
 
 ```
-pnpm wrangler secrets-store store create [NAME]
+pnpm wrangler secrets-store store create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   Name of the store
 - `--remote` `boolean` default: false
@@ -488,12 +452,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -519,18 +477,18 @@ Delete a store within an account
 npmyarnpnpm
 
 ```
-npx wrangler secrets-store store delete [STORE-ID]
+npx wrangler secrets-store store delete <STORE-ID>
 ```
 
 ```
-yarn wrangler secrets-store store delete [STORE-ID]
+yarn wrangler secrets-store store delete <STORE-ID>
 ```
 
 ```
-pnpm wrangler secrets-store store delete [STORE-ID]
+pnpm wrangler secrets-store store delete <STORE-ID>
 ```
 
-- `[STORE-ID]` `string` required
+- `<STORE-ID>` `string` required
 
   ID of the store
 - `--remote` `boolean` default: false
@@ -556,12 +514,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -627,12 +579,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

@@ -19046,7 +19046,9 @@ Arguments:
 | <a id="mutation-workitemdecisionupdate-description"></a>`description` | [`String`](#string) | Context of the decision. |
 | <a id="mutation-workitemdecisionupdate-discussionid"></a>`discussionId` | [`DiscussionID`](#discussionid) | Global ID of the originating discussion thread. |
 | <a id="mutation-workitemdecisionupdate-id"></a>`id` | [`WorkItemsDecisionID!`](#workitemsdecisionid) | Global ID of the decision. |
-| <a id="mutation-workitemdecisionupdate-resolutionrationale"></a>`resolutionRationale` | [`String`](#string) | Reasoning for the resolution. |
+| <a id="mutation-workitemdecisionupdate-resolutionrationale"></a>`resolutionRationale` | [`String`](#string) | Reasoning for the resolution. Can only be updated on resolved decisions. |
+| <a id="mutation-workitemdecisionupdate-resolvedbyid"></a>`resolvedById` | [`UserID`](#userid) | Global ID of the user who resolved the decision. Can only be updated on resolved decisions. |
+| <a id="mutation-workitemdecisionupdate-resolvingnoteid"></a>`resolvingNoteId` | [`NoteID`](#noteid) | Global ID of the comment that resolved the decision. Can only be updated on resolved decisions. |
 | <a id="mutation-workitemdecisionupdate-sourcelink"></a>`sourceLink` | [`String`](#string) | URL of the comment, discussion, or external resource that prompted the decision. |
 | <a id="mutation-workitemdecisionupdate-title"></a>`title` | [`String`](#string) | Question being decided. |
 
@@ -25815,6 +25817,29 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="googlecloudloggingconfigurationtypeedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="googlecloudloggingconfigurationtypeedge-node"></a>`node` | [`GoogleCloudLoggingConfigurationType`](#googlecloudloggingconfigurationtype) | The item at the end of the edge. |
+
+#### `GovernPolicyConnection`
+
+The connection type for [`GovernPolicy`](#governpolicy).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="governpolicyconnection-edges"></a>`edges` | [`[GovernPolicyEdge]`](#governpolicyedge) | A list of edges. |
+| <a id="governpolicyconnection-nodes"></a>`nodes` | [`[GovernPolicy]`](#governpolicy) | A list of nodes. |
+| <a id="governpolicyconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `GovernPolicyEdge`
+
+The edge type for [`GovernPolicy`](#governpolicy).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="governpolicyedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="governpolicyedge-node"></a>`node` | [`GovernPolicy`](#governpolicy) | The item at the end of the edge. |
 
 #### `GovernPolicyEvaluationConnection`
 
@@ -34217,8 +34242,11 @@ Arguments:
 | <a id="analytics-agentplatformsessions-createdeventatto"></a>`createdEventAtTo` | [`Time`](#time) | Filter by session creation timestamp. End of the range. |
 | <a id="analytics-agentplatformsessions-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-agentplatformsessions-flowtype"></a>`flowType` | [`[String!]`](#string) | Filter by one or many flow types. |
+| <a id="analytics-agentplatformsessions-flowtypenot"></a>`flowTypeNot` | [`[String!]`](#string) | Exclude one or many flow types. Maximum is 100. |
 | <a id="analytics-agentplatformsessions-projectid"></a>`projectId` | [`[String!]`](#string) | Filter by one or many project Global IDs. |
+| <a id="analytics-agentplatformsessions-projectidnot"></a>`projectIdNot` | [`[String!]`](#string) | Exclude one or many project Global IDs. Sessions not scoped to a project are returned, because they store `0` rather than NULL. Maximum is 100. |
 | <a id="analytics-agentplatformsessions-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
+| <a id="analytics-agentplatformsessions-useridnot"></a>`userIdNot` | [`[String!]`](#string) | Exclude one or many user Global IDs. Maximum is 100. |
 
 ##### `Analytics.contributions`
 
@@ -34234,6 +34262,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="analytics-contributions-authorid"></a>`authorId` | [`[String!]`](#string) | Filter by one or many author Global IDs. |
+| <a id="analytics-contributions-authoridnot"></a>`authorIdNot` | [`[String!]`](#string) | Exclude one or many author Global IDs. Maximum is 100. |
 | <a id="analytics-contributions-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by contribution timestamp. Start of the range. |
 | <a id="analytics-contributions-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by contribution timestamp. End of the range. |
 | <a id="analytics-contributions-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
@@ -34255,11 +34284,15 @@ Arguments:
 | <a id="analytics-deployments-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by deployment creation timestamp. End of the range. |
 | <a id="analytics-deployments-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-deployments-environmentid"></a>`environmentId` | [`[String!]`](#string) | Filter by one or many environment Global IDs. |
+| <a id="analytics-deployments-environmentidnot"></a>`environmentIdNot` | [`[String!]`](#string) | Exclude one or many environment Global IDs. Maximum is 100. |
 | <a id="analytics-deployments-finishedatfrom"></a>`finishedAtFrom` | [`Time`](#time) | Filter by deployment finish timestamp. Start of the range. |
 | <a id="analytics-deployments-finishedatto"></a>`finishedAtTo` | [`Time`](#time) | Filter by deployment finish timestamp. End of the range. |
 | <a id="analytics-deployments-ref"></a>`ref` | [`[String!]`](#string) | Filter by one or many deployment refs. |
+| <a id="analytics-deployments-refnot"></a>`refNot` | [`[String!]`](#string) | Exclude one or many deployment refs. Maximum is 100. |
 | <a id="analytics-deployments-status"></a>`status` | [`[String!]`](#string) | Filter by one or many deployment statuses. |
+| <a id="analytics-deployments-statusnot"></a>`statusNot` | [`[String!]`](#string) | Exclude one or many deployment statuses. Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100. |
 | <a id="analytics-deployments-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
+| <a id="analytics-deployments-useridnot"></a>`userIdNot` | [`[String!]`](#string) | Exclude one or many user Global IDs. Deployments with no triggering user are excluded as well. Maximum is 100. |
 
 ##### `Analytics.duoCodeSuggestions`
 
@@ -34273,10 +34306,13 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="analytics-duocodesuggestions-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-duocodesuggestions-idename"></a>`ideName` | [`[String!]`](#string) | Filter by IDE name. |
+| <a id="analytics-duocodesuggestions-idenamenot"></a>`ideNameNot` | [`[String!]`](#string) | Exclude one or many IDE names. Maximum is 100. |
 | <a id="analytics-duocodesuggestions-language"></a>`language` | [`[String!]`](#string) | Filter by suggestion language. |
+| <a id="analytics-duocodesuggestions-languagenot"></a>`languageNot` | [`[String!]`](#string) | Exclude one or many suggestion languages. Maximum is 100. |
 | <a id="analytics-duocodesuggestions-timestampfrom"></a>`timestampFrom` | [`Time`](#time) | Filter by suggestion timestamp. Start of the range. |
 | <a id="analytics-duocodesuggestions-timestampto"></a>`timestampTo` | [`Time`](#time) | Filter by suggestion timestamp. End of the range. |
 | <a id="analytics-duocodesuggestions-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
+| <a id="analytics-duocodesuggestions-useridnot"></a>`userIdNot` | [`[String!]`](#string) | Exclude one or many user Global IDs. Maximum is 100. |
 
 ##### `Analytics.duoUsageEvents`
 
@@ -34290,12 +34326,16 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="analytics-duousageevents-descendantsscope"></a>`descendantsScope` | [`AggregationScopeInput`](#aggregationscopeinput) | Child groups and projects to aggregate data for. Not supported at project level. |
 | <a id="analytics-duousageevents-event"></a>`event` | [`[String!]`](#string) | Filter by one or many events. |
+| <a id="analytics-duousageevents-eventnot"></a>`eventNot` | [`[String!]`](#string) | Exclude one or many events. Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100. |
 | <a id="analytics-duousageevents-feature"></a>`feature` | [`[String!]`](#string) | Filter by one or many features. |
+| <a id="analytics-duousageevents-featurenot"></a>`featureNot` | [`[String!]`](#string) | Exclude one or many features. Events with no recognized feature are excluded as well. Maximum is 100. |
 | <a id="analytics-duousageevents-flowtype"></a>`flowType` | [`[String!]`](#string) | Filter by one or many Duo Agent Platform flow types. |
+| <a id="analytics-duousageevents-flowtypenot"></a>`flowTypeNot` | [`[String!]`](#string) | Exclude one or many Duo Agent Platform flow types. Returns only Duo Agent Platform events, because events from elsewhere have no flow type. Maximum is 100. |
 | <a id="analytics-duousageevents-groupid"></a>`groupId` | [`[String!]`](#string) | Filter by one or many group Global IDs, including events from their descendants. |
 | <a id="analytics-duousageevents-timestampfrom"></a>`timestampFrom` | [`Time`](#time) | Filter by event timestamp. Start of the range. |
 | <a id="analytics-duousageevents-timestampto"></a>`timestampTo` | [`Time`](#time) | Filter by event timestamp. End of the range. |
 | <a id="analytics-duousageevents-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
+| <a id="analytics-duousageevents-useridnot"></a>`userIdNot` | [`[String!]`](#string) | Exclude one or many user Global IDs. Maximum is 100. |
 
 ##### `Analytics.duoWorkflows`
 
@@ -34319,9 +34359,13 @@ Arguments:
 | <a id="analytics-duoworkflows-flowtypesusedto"></a>`flowTypesUsedTo` | [`Int`](#int) | Filter by the number of distinct flow types the user ran in the selected period. End of the range. |
 | <a id="analytics-duoworkflows-groupid"></a>`groupId` | [`[String!]`](#string) | Filter by one or many group Global IDs, including flows from their descendants. |
 | <a id="analytics-duoworkflows-projectid"></a>`projectId` | [`[String!]`](#string) | Filter by one or many project Global IDs. |
+| <a id="analytics-duoworkflows-projectidnot"></a>`projectIdNot` | [`[String!]`](#string) | Exclude one or many project Global IDs. Flows created at namespace level are excluded as well. Maximum is 100. |
 | <a id="analytics-duoworkflows-status"></a>`status` | [`[String!]`](#string) | Filter by one or many flow statuses (created, running, finished, failed, ...). |
+| <a id="analytics-duoworkflows-statusnot"></a>`statusNot` | [`[String!]`](#string) | Exclude one or many flow statuses (created, running, finished, failed, ...). Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100. |
 | <a id="analytics-duoworkflows-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
+| <a id="analytics-duoworkflows-useridnot"></a>`userIdNot` | [`[String!]`](#string) | Exclude one or many user Global IDs. Maximum is 100. |
 | <a id="analytics-duoworkflows-workflowdefinition"></a>`workflowDefinition` | [`[String!]`](#string) | Filter by one or many flow types. |
+| <a id="analytics-duoworkflows-workflowdefinitionnot"></a>`workflowDefinitionNot` | [`[String!]`](#string) | Exclude one or many flow types. Maximum is 100. |
 
 ##### `Analytics.mergeRequests`
 
@@ -34337,6 +34381,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="analytics-mergerequests-authorid"></a>`authorId` | [`[String!]`](#string) | Filter by one or many author Global IDs. |
+| <a id="analytics-mergerequests-authoridnot"></a>`authorIdNot` | [`[String!]`](#string) | Exclude one or many author Global IDs. Merge requests with no author are excluded as well. Maximum is 100. |
 | <a id="analytics-mergerequests-createdatfrom"></a>`createdAtFrom` | [`Time`](#time) | Filter by merge request creation timestamp. Start of the range. |
 | <a id="analytics-mergerequests-createdatto"></a>`createdAtTo` | [`Time`](#time) | Filter by merge request creation timestamp. End of the range. |
 | <a id="analytics-mergerequests-createdbyduo"></a>`createdByDuo` | [`[Boolean!]`](#boolean) | Filter by whether the merge request was created by a GitLab Duo Agent Platform session. |
@@ -34344,7 +34389,9 @@ Arguments:
 | <a id="analytics-mergerequests-metricmergedatfrom"></a>`metricMergedAtFrom` | [`Time`](#time) | Filter by merge timestamp. Start of the range. |
 | <a id="analytics-mergerequests-metricmergedatto"></a>`metricMergedAtTo` | [`Time`](#time) | Filter by merge timestamp. End of the range. |
 | <a id="analytics-mergerequests-stateid"></a>`stateId` | [`[String!]`](#string) | Filter by one or many states (opened, closed, merged, locked). |
+| <a id="analytics-mergerequests-stateidnot"></a>`stateIdNot` | [`[String!]`](#string) | Exclude one or many states (opened, closed, merged, locked). Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100. |
 | <a id="analytics-mergerequests-targetbranch"></a>`targetBranch` | [`[String!]`](#string) | Filter by one or many target branches. |
+| <a id="analytics-mergerequests-targetbranchnot"></a>`targetBranchNot` | [`[String!]`](#string) | Exclude one or many target branches. Maximum is 100. |
 
 ##### `Analytics.pipelines`
 
@@ -34363,11 +34410,15 @@ Arguments:
 | <a id="analytics-pipelines-finishedatfrom"></a>`finishedAtFrom` | [`Time`](#time) | Filter by pipeline finish timestamp. Start of the range. |
 | <a id="analytics-pipelines-finishedatto"></a>`finishedAtTo` | [`Time`](#time) | Filter by pipeline finish timestamp. End of the range. |
 | <a id="analytics-pipelines-ref"></a>`ref` | [`[String!]`](#string) | Filter by one or many pipeline refs. |
+| <a id="analytics-pipelines-refnot"></a>`refNot` | [`[String!]`](#string) | Exclude one or many pipeline refs. Pipelines with no ref are excluded as well. Maximum is 100. |
 | <a id="analytics-pipelines-source"></a>`source` | [`[String!]`](#string) | Filter by one or many pipeline sources. |
+| <a id="analytics-pipelines-sourcenot"></a>`sourceNot` | [`[String!]`](#string) | Exclude one or many pipeline sources. Pipelines with no source are excluded as well. Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100. |
 | <a id="analytics-pipelines-startedatfrom"></a>`startedAtFrom` | [`Time`](#time) | Filter by pipeline start timestamp. Start of the range. |
 | <a id="analytics-pipelines-startedatto"></a>`startedAtTo` | [`Time`](#time) | Filter by pipeline start timestamp. End of the range. |
 | <a id="analytics-pipelines-status"></a>`status` | [`[String!]`](#string) | Filter by one or many pipeline statuses. |
+| <a id="analytics-pipelines-statusnot"></a>`statusNot` | [`[String!]`](#string) | Exclude one or many pipeline statuses. Maximum is 100. |
 | <a id="analytics-pipelines-userid"></a>`userId` | [`[String!]`](#string) | Filter by one or many user Global IDs. |
+| <a id="analytics-pipelines-useridnot"></a>`userIdNot` | [`[String!]`](#string) | Exclude one or many user Global IDs. Pipelines with no triggering user are excluded as well. Maximum is 100. |
 
 ### `AnalyzerGroupStatusType`
 
@@ -42048,7 +42099,7 @@ Fields:
 | <a id="duoworkflow-resourceiid"></a>`resourceIid` | [`Int`](#int) | IID of the associated resource (issue or merge request). |
 | <a id="duoworkflow-resourceweburl"></a>`resourceWebUrl` | [`String`](#string) | Web URL of the associated resource (issue or merge request). |
 | <a id="duoworkflow-sourcelink"></a>`sourceLink`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. URL or deep link to the location where the session was triggered from. |
-| <a id="duoworkflow-sourcetype"></a>`sourceType`  | [`DuoWorkflowSourceType`](#duoworkflowsourcetype) | Introduced in GitLab 19.4. Status: Experiment. External system that initiated the session (for example, Slack). |
+| <a id="duoworkflow-sourcetype"></a>`sourceType`  | [`DuoWorkflowSourceType`](#duoworkflowsourcetype) | Introduced in GitLab 19.4. Status: Experiment. Type of source that initiated the session. |
 | <a id="duoworkflow-stalled"></a>`stalled` | [`Boolean`](#boolean) | Workflow got created but has no checkpoints. |
 | <a id="duoworkflow-status"></a>`status` | [`DuoWorkflowStatus`](#duoworkflowstatus) | Status of the session. |
 | <a id="duoworkflow-statusgroup"></a>`statusGroup` | [`DuoWorkflowStatusGroup`](#duoworkflowstatusgroup) | Status group of the flow session. |
@@ -42370,11 +42421,13 @@ Fields:
 | <a id="duoworkflowsaggregationresponse-churneduserscount"></a>`churnedUsersCount` | [`Int`](#int) | Number of unique users who ran a flow in the previous period but not in this one. |
 | <a id="duoworkflowsaggregationresponse-closedmrcount"></a>`closedMrCount` | [`DuoWorkflowsAggregationResponseClosedMrCountMetrics`](#duoworkflowsaggregationresponseclosedmrcountmetrics) | Aggregated `closed_mr_count` metrics. |
 | <a id="duoworkflowsaggregationresponse-createdmrcount"></a>`createdMrCount` | [`DuoWorkflowsAggregationResponseCreatedMrCountMetrics`](#duoworkflowsaggregationresponsecreatedmrcountmetrics) | Aggregated `created_mr_count` metrics. |
+| <a id="duoworkflowsaggregationresponse-creditspermergedmrratio"></a>`creditsPerMergedMrRatio` | [`Float`](#float) | Credits used per Duo-created merge request that was later merged. |
 | <a id="duoworkflowsaggregationresponse-creditsused"></a>`creditsUsed` | [`DuoWorkflowsAggregationResponseCreditsUsedMetrics`](#duoworkflowsaggregationresponsecreditsusedmetrics) | Aggregated `credits_used` metrics. |
 | <a id="duoworkflowsaggregationresponse-dimensions"></a>`dimensions` | [`DuoWorkflowsAggregationResponseDimensions`](#duoworkflowsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
 | <a id="duoworkflowsaggregationresponse-flowtypescount"></a>`flowTypesCount` | [`Int`](#int) | Number of unique flow types. |
 | <a id="duoworkflowsaggregationresponse-joineduserscount"></a>`joinedUsersCount` | [`Int`](#int) | Number of unique users who ran a flow in this period but not in the previous one. |
 | <a id="duoworkflowsaggregationresponse-mergedmrcount"></a>`mergedMrCount` | [`DuoWorkflowsAggregationResponseMergedMrCountMetrics`](#duoworkflowsaggregationresponsemergedmrcountmetrics) | Aggregated `merged_mr_count` metrics. |
+| <a id="duoworkflowsaggregationresponse-openmrcount"></a>`openMrCount` | [`DuoWorkflowsAggregationResponseOpenMrCountMetrics`](#duoworkflowsaggregationresponseopenmrcountmetrics) | Aggregated `open_mr_count` metrics. |
 | <a id="duoworkflowsaggregationresponse-previousperioduserscount"></a>`previousPeriodUsersCount` | [`Int`](#int) | Number of unique users in the previous period. |
 | <a id="duoworkflowsaggregationresponse-projectscount"></a>`projectsCount` | [`Int`](#int) | Number of unique projects. |
 | <a id="duoworkflowsaggregationresponse-returninguserscount"></a>`returningUsersCount` | [`Int`](#int) | Number of unique users who also ran a flow in the previous period. |
@@ -42554,6 +42607,33 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="duoworkflowsaggregationresponsemergedmrcountmetrics-quantile-quantile"></a>`quantile` | [`Float`](#float) |  |
+
+### `DuoWorkflowsAggregationResponseOpenMrCountMetrics`
+
+Aggregated `open_mr_count` metrics for `DuoWorkflows` aggregation engine.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponseopenmrcountmetrics-max"></a>`max` | [`Int`](#int) | Maximum number of merge requests created by the flow that are still open. |
+| <a id="duoworkflowsaggregationresponseopenmrcountmetrics-mean"></a>`mean` | [`Float`](#float) | Mean number of merge requests created by the flow that are still open. |
+| <a id="duoworkflowsaggregationresponseopenmrcountmetrics-min"></a>`min` | [`Int`](#int) | Minimum number of merge requests created by the flow that are still open. |
+| <a id="duoworkflowsaggregationresponseopenmrcountmetrics-sum"></a>`sum` | [`Float`](#float) | Sum of number of merge requests created by the flow that are still open. |
+
+#### Fields with arguments
+
+##### `DuoWorkflowsAggregationResponseOpenMrCountMetrics.quantile`
+
+Quantile of number of merge requests created by the flow that are still open.
+
+Returns [`Float`](#float).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowsaggregationresponseopenmrcountmetrics-quantile-quantile"></a>`quantile` | [`Float`](#float) |  |
 
 ### `DuoWorkflowsAggregationScope`
 
@@ -54916,9 +54996,13 @@ Fields:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Policies stored in the policy store for the organization or group. Returns `null` when the current user cannot read the policies of the container.
+Policies stored in the policy store for the organization or group, paginated forward only. Page with `pageInfo.endCursor` and keep `first` the same between requests; the `ids` argument cannot be combined with pagination arguments. Returns `null` when the current user cannot read the policies of the container.
 
-Returns [`[GovernPolicy!]`](#governpolicy).
+Returns [`GovernPolicyConnection`](#governpolicyconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
 
 Arguments:
 
@@ -67792,12 +67876,23 @@ Type of link between a GitLab Duo Agent Platform session and a pipeline.
 
 ### `DuoWorkflowSourceType`
 
-External system that initiated a Duo Workflow session.
+Where a Duo Workflow session was initiated from.
 
 | Value | Description |
 | ----- | ----------- |
+| <a id="duoworkflowsourcetype-convert_platform_ci_pipeline"></a>`CONVERT_PLATFORM_CI_PIPELINE` | Session initiated from converting a CI pipeline to GitLab CI. |
+| <a id="duoworkflowsourcetype-duo_cli_acp"></a>`DUO_CLI_ACP` | Session initiated from GitLab Duo CLI over ACP. |
+| <a id="duoworkflowsourcetype-duo_cli_interactive"></a>`DUO_CLI_INTERACTIVE` | Session initiated from GitLab Duo CLI in interactive mode. |
+| <a id="duoworkflowsourcetype-duo_cli_run"></a>`DUO_CLI_RUN` | Session initiated from GitLab Duo CLI in run mode. |
+| <a id="duoworkflowsourcetype-fix_pipeline"></a>`FIX_PIPELINE` | Session initiated from fixing a failed pipeline. |
+| <a id="duoworkflowsourcetype-ide_extension"></a>`IDE_EXTENSION` | Session initiated from an IDE extension. |
 | <a id="duoworkflowsourcetype-mcp"></a>`MCP` | Session initiated from MCP. |
+| <a id="duoworkflowsourcetype-merge_request_code_conflict"></a>`MERGE_REQUEST_CODE_CONFLICT` | Session initiated from resolving a merge request conflict. |
+| <a id="duoworkflowsourcetype-merge_request_dependency_bump"></a>`MERGE_REQUEST_DEPENDENCY_BUMP` | Session initiated from bumping a dependency on a merge request. |
+| <a id="duoworkflowsourcetype-merge_request_fix_pipeline"></a>`MERGE_REQUEST_FIX_PIPELINE` | Session initiated from fixing a failed pipeline on a merge request. |
+| <a id="duoworkflowsourcetype-merge_request_resolve_discussion"></a>`MERGE_REQUEST_RESOLVE_DISCUSSION` | Session initiated from resolving a discussion on a merge request. |
 | <a id="duoworkflowsourcetype-slack"></a>`SLACK` | Session initiated from Slack. |
+| <a id="duoworkflowsourcetype-work_item_to_merge_request"></a>`WORK_ITEM_TO_MERGE_REQUEST` | Session initiated from creating a merge request from a work item. |
 
 ### `DuoWorkflowStatus`
 

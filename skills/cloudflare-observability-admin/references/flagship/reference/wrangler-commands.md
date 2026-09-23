@@ -669,18 +669,18 @@ Create a Flagship app
 npmyarnpnpm
 
 ```
-npx wrangler flagship apps create [NAME]
+npx wrangler flagship apps create <NAME>
 ```
 
 ```
-yarn wrangler flagship apps create [NAME]
+yarn wrangler flagship apps create <NAME>
 ```
 
 ```
-pnpm wrangler flagship apps create [NAME]
+pnpm wrangler flagship apps create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the app
 - `--json` `boolean` default: false
@@ -709,12 +709,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -763,12 +757,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -783,18 +771,18 @@ Get a Flagship app
 npmyarnpnpm
 
 ```
-npx wrangler flagship apps get [APP-ID]
+npx wrangler flagship apps get <APP-ID>
 ```
 
 ```
-yarn wrangler flagship apps get [APP-ID]
+yarn wrangler flagship apps get <APP-ID>
 ```
 
 ```
-pnpm wrangler flagship apps get [APP-ID]
+pnpm wrangler flagship apps get <APP-ID>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
 - `--json` `boolean` default: false
@@ -820,12 +808,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -840,18 +822,18 @@ Update a Flagship app
 npmyarnpnpm
 
 ```
-npx wrangler flagship apps update [APP-ID]
+npx wrangler flagship apps update <APP-ID>
 ```
 
 ```
-yarn wrangler flagship apps update [APP-ID]
+yarn wrangler flagship apps update <APP-ID>
 ```
 
 ```
-pnpm wrangler flagship apps update [APP-ID]
+pnpm wrangler flagship apps update <APP-ID>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
 - `--name` `string` required
@@ -880,12 +862,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -900,18 +876,18 @@ Delete a Flagship app
 npmyarnpnpm
 
 ```
-npx wrangler flagship apps delete [APP-ID]
+npx wrangler flagship apps delete <APP-ID>
 ```
 
 ```
-yarn wrangler flagship apps delete [APP-ID]
+yarn wrangler flagship apps delete <APP-ID>
 ```
 
 ```
-pnpm wrangler flagship apps delete [APP-ID]
+pnpm wrangler flagship apps delete <APP-ID>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   One or more app IDs to delete
 - `--force` `boolean` alias: --ydefault: false
@@ -940,12 +916,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -960,21 +930,21 @@ Create a feature flag in a Flagship app
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags create [APP-ID] [KEY]
+npx wrangler flagship flags create <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags create [APP-ID] [KEY]
+yarn wrangler flagship flags create <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags create [APP-ID] [KEY]
+pnpm wrangler flagship flags create <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--variation` `string` alias: --V
@@ -1020,12 +990,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1040,18 +1004,18 @@ List feature flags in a Flagship app
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags list [APP-ID]
+npx wrangler flagship flags list <APP-ID>
 ```
 
 ```
-yarn wrangler flagship flags list [APP-ID]
+yarn wrangler flagship flags list <APP-ID>
 ```
 
 ```
-pnpm wrangler flagship flags list [APP-ID]
+pnpm wrangler flagship flags list <APP-ID>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
 - `--limit` `number` The maximum number of flags to return (1-200)
@@ -1085,12 +1049,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1105,21 +1063,21 @@ Get a feature flag from a Flagship app
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags get [APP-ID] [KEY]
+npx wrangler flagship flags get <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags get [APP-ID] [KEY]
+yarn wrangler flagship flags get <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags get [APP-ID] [KEY]
+pnpm wrangler flagship flags get <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--json` `boolean` default: false
@@ -1148,12 +1106,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1168,18 +1120,18 @@ Pull feature flags from a Flagship app into the local flag store
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags pull [APP-ID]
+npx wrangler flagship flags pull <APP-ID>
 ```
 
 ```
-yarn wrangler flagship flags pull [APP-ID]
+yarn wrangler flagship flags pull <APP-ID>
 ```
 
 ```
-pnpm wrangler flagship flags pull [APP-ID]
+pnpm wrangler flagship flags pull <APP-ID>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app to pull flags from
 - `--persist-to` `string` Specify directory to use for local persistence
@@ -1206,12 +1158,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1226,21 +1172,21 @@ Update a feature flag in a Flagship app
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags update [APP-ID] [KEY]
+npx wrangler flagship flags update <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags update [APP-ID] [KEY]
+yarn wrangler flagship flags update <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags update [APP-ID] [KEY]
+pnpm wrangler flagship flags update <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--enable` `boolean` Enable the flag
@@ -1289,12 +1235,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1309,21 +1249,21 @@ Set the default variation served by a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags set [APP-ID] [KEY]
+npx wrangler flagship flags set <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags set [APP-ID] [KEY]
+yarn wrangler flagship flags set <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags set [APP-ID] [KEY]
+pnpm wrangler flagship flags set <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--variation` `string` aliases: --variant, --Vrequired
@@ -1358,12 +1298,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1378,21 +1312,21 @@ List targeting rules for a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags rules list [APP-ID] [KEY]
+npx wrangler flagship flags rules list <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags rules list [APP-ID] [KEY]
+yarn wrangler flagship flags rules list <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags rules list [APP-ID] [KEY]
+pnpm wrangler flagship flags rules list <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--json` `boolean` default: false
@@ -1421,12 +1355,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1441,21 +1369,21 @@ Update one targeting rule for a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags rules update [APP-ID] [KEY]
+npx wrangler flagship flags rules update <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags rules update [APP-ID] [KEY]
+yarn wrangler flagship flags rules update <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags rules update [APP-ID] [KEY]
+pnpm wrangler flagship flags rules update <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--priority` `number` required
@@ -1496,12 +1424,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1516,21 +1438,21 @@ Delete one targeting rule from a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags rules delete [APP-ID] [KEY]
+npx wrangler flagship flags rules delete <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags rules delete [APP-ID] [KEY]
+yarn wrangler flagship flags rules delete <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags rules delete [APP-ID] [KEY]
+pnpm wrangler flagship flags rules delete <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--priority` `number` required
@@ -1562,12 +1484,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1582,21 +1498,21 @@ Reorder targeting rules for a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags rules reorder [APP-ID] [KEY]
+npx wrangler flagship flags rules reorder <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags rules reorder [APP-ID] [KEY]
+yarn wrangler flagship flags rules reorder <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags rules reorder [APP-ID] [KEY]
+pnpm wrangler flagship flags rules reorder <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--order` `string` required
@@ -1628,12 +1544,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1648,21 +1558,21 @@ Split traffic across variations by percentage
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags split [APP-ID] [KEY]
+npx wrangler flagship flags split <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags split [APP-ID] [KEY]
+yarn wrangler flagship flags split <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags split [APP-ID] [KEY]
+pnpm wrangler flagship flags split <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--weight` `string` alias: --w
@@ -1701,12 +1611,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1721,21 +1625,21 @@ Roll out one variation to a percentage of traffic
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags rollout [APP-ID] [KEY]
+npx wrangler flagship flags rollout <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags rollout [APP-ID] [KEY]
+yarn wrangler flagship flags rollout <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags rollout [APP-ID] [KEY]
+pnpm wrangler flagship flags rollout <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--to` `string` required
@@ -1777,12 +1681,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1797,21 +1695,21 @@ Enable a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags enable [APP-ID] [KEY]
+npx wrangler flagship flags enable <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags enable [APP-ID] [KEY]
+yarn wrangler flagship flags enable <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags enable [APP-ID] [KEY]
+pnpm wrangler flagship flags enable <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   One or more flag keys to enable
 - `--json` `boolean` default: false
@@ -1840,12 +1738,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1860,21 +1752,21 @@ Disable a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags disable [APP-ID] [KEY]
+npx wrangler flagship flags disable <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags disable [APP-ID] [KEY]
+yarn wrangler flagship flags disable <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags disable [APP-ID] [KEY]
+pnpm wrangler flagship flags disable <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   One or more flag keys to disable
 - `--json` `boolean` default: false
@@ -1903,12 +1795,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1923,21 +1809,21 @@ Evaluate a feature flag with optional context
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags evaluate [APP-ID] [KEY]
+npx wrangler flagship flags evaluate <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags evaluate [APP-ID] [KEY]
+yarn wrangler flagship flags evaluate <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags evaluate [APP-ID] [KEY]
+pnpm wrangler flagship flags evaluate <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--context` `string` aliases: --ctx, --C
@@ -1970,12 +1856,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1990,21 +1870,21 @@ Delete a feature flag from a Flagship app
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags delete [APP-ID] [KEY]
+npx wrangler flagship flags delete <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags delete [APP-ID] [KEY]
+yarn wrangler flagship flags delete <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags delete [APP-ID] [KEY]
+pnpm wrangler flagship flags delete <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   One or more flag keys to delete
 - `--force` `boolean` alias: --ydefault: false
@@ -2036,12 +1916,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -2056,21 +1930,21 @@ Show the changelog for a feature flag
 npmyarnpnpm
 
 ```
-npx wrangler flagship flags changelog [APP-ID] [KEY]
+npx wrangler flagship flags changelog <APP-ID> <KEY>
 ```
 
 ```
-yarn wrangler flagship flags changelog [APP-ID] [KEY]
+yarn wrangler flagship flags changelog <APP-ID> <KEY>
 ```
 
 ```
-pnpm wrangler flagship flags changelog [APP-ID] [KEY]
+pnpm wrangler flagship flags changelog <APP-ID> <KEY>
 ```
 
-- `[APP-ID]` `string` required
+- `<APP-ID>` `string` required
 
   The ID of the app
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key of the flag
 - `--limit` `number` The maximum number of entries to return (1-200)
@@ -2101,12 +1975,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

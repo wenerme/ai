@@ -58,7 +58,7 @@ IDEStandalone
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
    ```
 
 
@@ -90,7 +90,7 @@ Skills are instructions the agent loads on demand. The <a href="https://github.c
 - turnstile-spinSet up, repair, or migrate to Cloudflare Turnstile bot verification in an existing frontend and backend, including server-side Siteverify.
 - web-perfAudit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.
 - workers-best-practicesCloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.
-- wranglerRun or troubleshoot Wrangler CLI commands and configure Worker projects for local development, deployment, and Cloudflare resource management.
+- wranglerRun or troubleshoot Wrangler CLI commands and configure Worker projects for local development, Previews, deployment, and Cloudflare resource management.
 
 </details>
 
@@ -168,19 +168,19 @@ Set up custom domains with automatic SSL for my SaaS customers using SSL for Saa
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ## Tips

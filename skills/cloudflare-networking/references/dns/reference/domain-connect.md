@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Domain Connect
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/reference/domain-connect/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/reference/domain-connect/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you are a service provider, consider this page for information on how Cloudflare supports [Domain Connect ↗](https://www.domainconnect.org/) and how you can onboard your template.
 
@@ -114,16 +114,23 @@ For the full list, refer to the [Domain Connect Specification ↗](https://githu
 
 For the full list, refer to the [Domain Connect Specification ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc). Below are the details specific to Cloudflare.
 
+Record types and properties that are not listed in this section are supported as described in the specification.
+
 - **Essential**: Is not supported and will be ignored.
-- **TXT Conflict Matching Mode**: Is not supported and will be ignored.
+- **TXT Conflict Matching Mode**: Is not supported and will be ignored. A `TXT` record from a template only conflicts with an existing `TXT` record on the same name if both have identical content.
 - **TXT Conflict Matching Prefix**: Is not supported and will be ignored.
+
+SPF records
+
+Do not add SPF policies as plain `TXT` records (for example, `v=spf1 include:spf.example.com ~all`). Because TXT conflict matching properties are ignored, a plain `TXT` SPF record is added next to any SPF record that already exists on the same name. Multiple SPF records on the same name cause SPF evaluation to fail with a `permerror`. Use the [`SPFM`](#custom-record-types) record type instead.
 
 #### Custom record types
 
-The following record types are described in the [extensions/exclusions ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#extensionsexclusions) section of the Domain Connect Specification. Below are the details specific to Cloudflare.
+The following record types are not standard DNS record types. They are described in the [SPF TXT record ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#spf-txt-record) and [extensions/exclusions ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#extensionsexclusions) sections of the Domain Connect Specification. Below are the details specific to Cloudflare.
 
-- **APEXCNAME**: This custom record type is not supported and will cause the onboarding to fail. You can use a standard CNAME record instead, as Cloudflare automatically applies [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/) at the zone apex.
-- **REDIR301** and **REDIR302**: When applied, these records are converted to zone-specific [bulk redirect](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/) rules. If a zone has existing bulk redirects before applying the template, they will be replaced.
+- **SPFM**: Supported. Cloudflare merges the `spfRules` of the template with the SPF record that already exists on the target name, as described in the SPF record merging section of the specification. The existing SPF record is replaced by a single merged `TXT` record. If the merge adds new rules, the merged record ends with the `~all` modifier. If no SPF record exists, a new `TXT` record is created from the `spfRules`. This is the recommended way to add SPF policies with a template.
+- **REDIR301** and **REDIR302**: Supported. When applied, these records are converted to zone-specific [bulk redirect](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/) rules. If a zone has existing bulk redirects before applying the template, they will be replaced.
+- **APEXCNAME**: Not supported, and will cause the onboarding to fail. You can use a standard CNAME record instead, as Cloudflare automatically applies [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/) at the zone apex.
 
 ## Template updates
 
@@ -169,5 +176,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/reference/domain-connect/#page","headline":"Domain Connect","description":"Learn how to onboard your templates to use Domain Connect with Cloudflare as DNS provider.","url":"https://developers.cloudflare.com/dns/reference/domain-connect/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/reference/domain-connect/#page","headline":"Domain Connect","description":"Learn how to onboard your templates to use Domain Connect with Cloudflare as DNS provider.","url":"https://developers.cloudflare.com/dns/reference/domain-connect/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

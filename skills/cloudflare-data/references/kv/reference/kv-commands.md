@@ -33,18 +33,18 @@ Create a new namespace
 npmyarnpnpm
 
 ```
-npx wrangler kv namespace create [NAMESPACE]
+npx wrangler kv namespace create <NAMESPACE>
 ```
 
 ```
-yarn wrangler kv namespace create [NAMESPACE]
+yarn wrangler kv namespace create <NAMESPACE>
 ```
 
 ```
-pnpm wrangler kv namespace create [NAMESPACE]
+pnpm wrangler kv namespace create <NAMESPACE>
 ```
 
-- `[NAMESPACE]` `string` required
+- `<NAMESPACE>` `string` required
 
   The name of the new namespace
 - `--preview` `boolean` Interact with a preview namespace
@@ -71,12 +71,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -121,12 +115,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -179,12 +167,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -235,12 +217,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -267,18 +243,18 @@ Write a single key/value pair to the given namespace
 npmyarnpnpm
 
 ```
-npx wrangler kv key put [KEY] [VALUE]
+npx wrangler kv key put <KEY> [VALUE]
 ```
 
 ```
-yarn wrangler kv key put [KEY] [VALUE]
+yarn wrangler kv key put <KEY> [VALUE]
 ```
 
 ```
-pnpm wrangler kv key put [KEY] [VALUE]
+pnpm wrangler kv key put <KEY> [VALUE]
 ```
 
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key to write to
 - `[VALUE]` `string` The value to write
@@ -312,12 +288,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -372,12 +342,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -392,18 +356,18 @@ Read a single value by key from the given namespace
 npmyarnpnpm
 
 ```
-npx wrangler kv key get [KEY]
+npx wrangler kv key get <KEY>
 ```
 
 ```
-yarn wrangler kv key get [KEY]
+yarn wrangler kv key get <KEY>
 ```
 
 ```
-pnpm wrangler kv key get [KEY]
+pnpm wrangler kv key get <KEY>
 ```
 
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key value to get.
 - `--text` `boolean` default: false
@@ -437,12 +401,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -457,18 +415,18 @@ Remove a single key value pair from the given namespace
 npmyarnpnpm
 
 ```
-npx wrangler kv key delete [KEY]
+npx wrangler kv key delete <KEY>
 ```
 
 ```
-yarn wrangler kv key delete [KEY]
+yarn wrangler kv key delete <KEY>
 ```
 
 ```
-pnpm wrangler kv key delete [KEY]
+pnpm wrangler kv key delete <KEY>
 ```
 
-- `[KEY]` `string` required
+- `<KEY>` `string` required
 
   The key value to delete.
 - `--binding` `string` The binding name to the namespace to delete from
@@ -497,12 +455,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -529,18 +481,18 @@ Gets multiple key-value pairs from a namespace
 npmyarnpnpm
 
 ```
-npx wrangler kv bulk get [FILENAME]
+npx wrangler kv bulk get <FILENAME>
 ```
 
 ```
-yarn wrangler kv bulk get [FILENAME]
+yarn wrangler kv bulk get <FILENAME>
 ```
 
 ```
-pnpm wrangler kv bulk get [FILENAME]
+pnpm wrangler kv bulk get <FILENAME>
 ```
 
-- `[FILENAME]` `string` required
+- `<FILENAME>` `string` required
 
   The file containing the keys to get
 - `--binding` `string` The binding name to the namespace to get from
@@ -571,12 +523,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -591,18 +537,18 @@ Upload multiple key-value pairs to a namespace
 npmyarnpnpm
 
 ```
-npx wrangler kv bulk put [FILENAME]
+npx wrangler kv bulk put <FILENAME>
 ```
 
 ```
-yarn wrangler kv bulk put [FILENAME]
+yarn wrangler kv bulk put <FILENAME>
 ```
 
 ```
-pnpm wrangler kv bulk put [FILENAME]
+pnpm wrangler kv bulk put <FILENAME>
 ```
 
-- `[FILENAME]` `string` required
+- `<FILENAME>` `string` required
 
   The file containing the key/value pairs to write
 - `--binding` `string` The binding name to the namespace to write to
@@ -634,12 +580,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -654,18 +594,18 @@ Delete multiple key-value pairs from a namespace
 npmyarnpnpm
 
 ```
-npx wrangler kv bulk delete [FILENAME]
+npx wrangler kv bulk delete <FILENAME>
 ```
 
 ```
-yarn wrangler kv bulk delete [FILENAME]
+yarn wrangler kv bulk delete <FILENAME>
 ```
 
 ```
-pnpm wrangler kv bulk delete [FILENAME]
+pnpm wrangler kv bulk delete <FILENAME>
 ```
 
-- `[FILENAME]` `string` required
+- `<FILENAME>` `string` required
 
   The file containing the keys to delete
 - `--force` `boolean` alias: --f
@@ -697,12 +637,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

@@ -53,7 +53,7 @@ IDETerminalStandaloneExtensionOpen Source
    Open Copilot Chat (**Ctrl+Shift+I** / **Cmd+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+   Set up a KV namespace for edge-cached session storage in my Worker.
    ```
 
 
@@ -87,7 +87,7 @@ Skills are instructions the agent loads on demand. The <a href="https://github.c
 - turnstile-spinSet up, repair, or migrate to Cloudflare Turnstile bot verification in an existing frontend and backend, including server-side Siteverify.
 - web-perfAudit, diagnose, or optimize website loading and interaction performance, Core Web Vitals, and Lighthouse performance scores.
 - workers-best-practicesCloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.
-- wranglerRun or troubleshoot Wrangler CLI commands and configure Worker projects for local development, deployment, and Cloudflare resource management.
+- wranglerRun or troubleshoot Wrangler CLI commands and configure Worker projects for local development, Previews, deployment, and Cloudflare resource management.
 
 </details>
 
@@ -161,23 +161,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips

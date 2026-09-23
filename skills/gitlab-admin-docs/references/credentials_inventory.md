@@ -35,7 +35,7 @@ To view the credentials inventory:
 ### For an instance
 
 1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Credentials**.
+1. In the left sidebar, select **Access** > **Credentials**.
 
 ### For a group
 
@@ -58,7 +58,7 @@ To revoke a personal access token:
 ### For an instance
 
 1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Credentials**.
+1. In the left sidebar, select **Access** > **Credentials**.
 1. Next to the personal access token, select **Revoke**.
    If the token was previously expired or revoked, the associated date is displayed.
 
@@ -81,7 +81,7 @@ To revoke a project or group access token:
 ### For an instance
 
 1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Credentials**.
+1. In the left sidebar, select **Access** > **Credentials**.
 1. Select the **Project and group access tokens** tab.
 1. Next to the project access token, select **Revoke**.
 
@@ -100,7 +100,7 @@ To delete an SSH key:
 ### For an instance
 
 1. In the upper-right corner, select **Admin**.
-1. In the left sidebar, select **Credentials**.
+1. In the left sidebar, select **Access** > **Credentials**.
 1. Select the **SSH keys** tab.
 1. Next to the SSH key, select **Delete**.
 

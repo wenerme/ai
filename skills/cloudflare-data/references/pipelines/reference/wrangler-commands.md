@@ -53,12 +53,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -73,18 +67,18 @@ Create a new pipeline
 npmyarnpnpm
 
 ```
-npx wrangler pipelines create [PIPELINE]
+npx wrangler pipelines create <PIPELINE>
 ```
 
 ```
-yarn wrangler pipelines create [PIPELINE]
+yarn wrangler pipelines create <PIPELINE>
 ```
 
 ```
-pnpm wrangler pipelines create [PIPELINE]
+pnpm wrangler pipelines create <PIPELINE>
 ```
 
-- `[PIPELINE]` `string` required
+- `<PIPELINE>` `string` required
 
   The name of the pipeline to create
 - `--sql` `string` Inline SQL query for the pipeline
@@ -109,12 +103,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -169,12 +157,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -189,18 +171,18 @@ Get details about a specific pipeline
 npmyarnpnpm
 
 ```
-npx wrangler pipelines get [PIPELINE]
+npx wrangler pipelines get <PIPELINE>
 ```
 
 ```
-yarn wrangler pipelines get [PIPELINE]
+yarn wrangler pipelines get <PIPELINE>
 ```
 
 ```
-pnpm wrangler pipelines get [PIPELINE]
+pnpm wrangler pipelines get <PIPELINE>
 ```
 
-- `[PIPELINE]` `string` required
+- `<PIPELINE>` `string` required
 
   The ID or name of the pipeline to retrieve
 - `--json` `boolean` default: false
@@ -226,12 +208,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -246,18 +222,18 @@ Update a pipeline configuration (legacy pipelines only)
 npmyarnpnpm
 
 ```
-npx wrangler pipelines update [PIPELINE]
+npx wrangler pipelines update <PIPELINE>
 ```
 
 ```
-yarn wrangler pipelines update [PIPELINE]
+yarn wrangler pipelines update <PIPELINE>
 ```
 
 ```
-pnpm wrangler pipelines update [PIPELINE]
+pnpm wrangler pipelines update <PIPELINE>
 ```
 
-- `[PIPELINE]` `string` required
+- `<PIPELINE>` `string` required
 
   The name of the legacy pipeline to update
 - `--source` `array` Space separated list of allowed sources. Options are 'http' or 'worker'
@@ -292,12 +268,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -312,18 +282,18 @@ Delete a pipeline
 npmyarnpnpm
 
 ```
-npx wrangler pipelines delete [PIPELINE]
+npx wrangler pipelines delete <PIPELINE>
 ```
 
 ```
-yarn wrangler pipelines delete [PIPELINE]
+yarn wrangler pipelines delete <PIPELINE>
 ```
 
 ```
-pnpm wrangler pipelines delete [PIPELINE]
+pnpm wrangler pipelines delete <PIPELINE>
 ```
 
-- `[PIPELINE]` `string` required
+- `<PIPELINE>` `string` required
 
   The ID or name of the pipeline to delete
 - `--force` `boolean` alias: --ydefault: false
@@ -349,12 +319,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -369,18 +333,18 @@ Create a new stream
 npmyarnpnpm
 
 ```
-npx wrangler pipelines streams create [STREAM]
+npx wrangler pipelines streams create <STREAM>
 ```
 
 ```
-yarn wrangler pipelines streams create [STREAM]
+yarn wrangler pipelines streams create <STREAM>
 ```
 
 ```
-pnpm wrangler pipelines streams create [STREAM]
+pnpm wrangler pipelines streams create <STREAM>
 ```
 
-- `[STREAM]` `string` required
+- `<STREAM>` `string` required
 
   The name of the stream to create
 - `--schema-file` `string` Path to JSON file containing stream schema
@@ -411,12 +375,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -472,12 +430,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -492,18 +444,18 @@ Get details about a specific stream
 npmyarnpnpm
 
 ```
-npx wrangler pipelines streams get [STREAM]
+npx wrangler pipelines streams get <STREAM>
 ```
 
 ```
-yarn wrangler pipelines streams get [STREAM]
+yarn wrangler pipelines streams get <STREAM>
 ```
 
 ```
-pnpm wrangler pipelines streams get [STREAM]
+pnpm wrangler pipelines streams get <STREAM>
 ```
 
-- `[STREAM]` `string` required
+- `<STREAM>` `string` required
 
   The ID or name of the stream to retrieve
 - `--json` `boolean` default: false
@@ -529,12 +481,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -549,18 +495,18 @@ Delete a stream
 npmyarnpnpm
 
 ```
-npx wrangler pipelines streams delete [STREAM]
+npx wrangler pipelines streams delete <STREAM>
 ```
 
 ```
-yarn wrangler pipelines streams delete [STREAM]
+yarn wrangler pipelines streams delete <STREAM>
 ```
 
 ```
-pnpm wrangler pipelines streams delete [STREAM]
+pnpm wrangler pipelines streams delete <STREAM>
 ```
 
-- `[STREAM]` `string` required
+- `<STREAM>` `string` required
 
   The ID or name of the stream to delete
 - `--force` `boolean` alias: --ydefault: false
@@ -586,12 +532,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -606,18 +546,18 @@ Create a new sink
 npmyarnpnpm
 
 ```
-npx wrangler pipelines sinks create [SINK]
+npx wrangler pipelines sinks create <SINK>
 ```
 
 ```
-yarn wrangler pipelines sinks create [SINK]
+yarn wrangler pipelines sinks create <SINK>
 ```
 
 ```
-pnpm wrangler pipelines sinks create [SINK]
+pnpm wrangler pipelines sinks create <SINK>
 ```
 
-- `[SINK]` `string` required
+- `<SINK>` `string` required
 
   The name of the sink to create
 - `--type` `string` required
@@ -662,12 +602,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -723,12 +657,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -743,18 +671,18 @@ Get details about a specific sink
 npmyarnpnpm
 
 ```
-npx wrangler pipelines sinks get [SINK]
+npx wrangler pipelines sinks get <SINK>
 ```
 
 ```
-yarn wrangler pipelines sinks get [SINK]
+yarn wrangler pipelines sinks get <SINK>
 ```
 
 ```
-pnpm wrangler pipelines sinks get [SINK]
+pnpm wrangler pipelines sinks get <SINK>
 ```
 
-- `[SINK]` `string` required
+- `<SINK>` `string` required
 
   The ID or name of the sink to retrieve
 - `--json` `boolean` default: false
@@ -780,12 +708,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -800,18 +722,18 @@ Delete a sink
 npmyarnpnpm
 
 ```
-npx wrangler pipelines sinks delete [SINK]
+npx wrangler pipelines sinks delete <SINK>
 ```
 
 ```
-yarn wrangler pipelines sinks delete [SINK]
+yarn wrangler pipelines sinks delete <SINK>
 ```
 
 ```
-pnpm wrangler pipelines sinks delete [SINK]
+pnpm wrangler pipelines sinks delete <SINK>
 ```
 
-- `[SINK]` `string` required
+- `<SINK>` `string` required
 
   The ID or name of the sink to delete
 - `--force` `boolean` alias: --ydefault: false
@@ -837,12 +759,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

@@ -5,7 +5,7 @@ description: "Browse ClinePass model IDs, capabilities, context windows, and pri
 
 # [ClinePass logo]ClinePass
 
-Access 15 ClinePass models through Mastra's model router. Authentication is handled automatically using the `CLINE_API_KEY` environment variable.
+Access 18 ClinePass models through Mastra's model router. Authentication is handled automatically using the `CLINE_API_KEY` environment variable.
 
 Learn more in the [ClinePass documentation](https://docs.cline.bot/getting-started/clinepass).
 
@@ -172,6 +172,30 @@ for await (const chunk of stream) {
     "outputCost": 3.48
   },
   {
+    "model": "cline-pass/cline-pass/mimo-v2.6-flash",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.14,
+    "outputCost": 0.28
+  },
+  {
+    "model": "cline-pass/cline-pass/mimo-v2.6-pro",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.435,
+    "outputCost": 0.87
+  },
+  {
     "model": "cline-pass/cline-pass/minimax-m3",
     "imageInput": true,
     "audioInput": false,
@@ -182,6 +206,18 @@ for await (const chunk of stream) {
     "maxOutput": 512000,
     "inputCost": 0.3,
     "outputCost": 1.2
+  },
+  {
+    "model": "cline-pass/cline-pass/muse-spark-1.3-contributor",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
   },
   {
     "model": "cline-pass/cline-pass/qwen3.7-max",

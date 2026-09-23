@@ -55,12 +55,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -75,18 +69,18 @@ Create a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues create [NAME]
+npx wrangler queues create <NAME>
 ```
 
 ```
-yarn wrangler queues create [NAME]
+yarn wrangler queues create <NAME>
 ```
 
 ```
-pnpm wrangler queues create [NAME]
+pnpm wrangler queues create <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the queue
 - `--jurisdiction` `string` The jurisdiction of the queue
@@ -112,12 +106,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -132,18 +120,18 @@ Update a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues update [NAME]
+npx wrangler queues update <NAME>
 ```
 
 ```
-yarn wrangler queues update [NAME]
+yarn wrangler queues update <NAME>
 ```
 
 ```
-pnpm wrangler queues update [NAME]
+pnpm wrangler queues update <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the queue
 - `--delivery-delay-secs` `number` How long a published message should be delayed for, in seconds. Must be between 0 and 86400
@@ -168,12 +156,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -188,18 +170,18 @@ Delete a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues delete [NAME]
+npx wrangler queues delete <NAME>
 ```
 
 ```
-yarn wrangler queues delete [NAME]
+yarn wrangler queues delete <NAME>
 ```
 
 ```
-pnpm wrangler queues delete [NAME]
+pnpm wrangler queues delete <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the queue
 
@@ -222,12 +204,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -242,18 +218,18 @@ Get queue information
 npmyarnpnpm
 
 ```
-npx wrangler queues info [NAME]
+npx wrangler queues info <NAME>
 ```
 
 ```
-yarn wrangler queues info [NAME]
+yarn wrangler queues info <NAME>
 ```
 
 ```
-pnpm wrangler queues info [NAME]
+pnpm wrangler queues info <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the queue
 
@@ -276,12 +252,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -296,21 +266,21 @@ Add a Queue Worker Consumer
 npmyarnpnpm
 
 ```
-npx wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
+npx wrangler queues consumer add <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
 ```
-yarn wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
+yarn wrangler queues consumer add <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
 ```
-pnpm wrangler queues consumer add [QUEUE-NAME] [SCRIPT-NAME]
+pnpm wrangler queues consumer add <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
-- `[QUEUE-NAME]` `string` required
+- `<QUEUE-NAME>` `string` required
 
   Name of the queue to configure
-- `[SCRIPT-NAME]` `string` required
+- `<SCRIPT-NAME>` `string` required
 
   Name of the consumer script
 - `--batch-size` `number` Maximum number of messages per batch
@@ -339,12 +309,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -359,21 +323,21 @@ Remove a Queue Worker Consumer
 npmyarnpnpm
 
 ```
-npx wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
+npx wrangler queues consumer remove <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
 ```
-yarn wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
+yarn wrangler queues consumer remove <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
 ```
-pnpm wrangler queues consumer remove [QUEUE-NAME] [SCRIPT-NAME]
+pnpm wrangler queues consumer remove <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
-- `[QUEUE-NAME]` `string` required
+- `<QUEUE-NAME>` `string` required
 
   Name of the queue to configure
-- `[SCRIPT-NAME]` `string` required
+- `<SCRIPT-NAME>` `string` required
 
   Name of the consumer script
 
@@ -396,12 +360,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -416,18 +374,18 @@ List consumers for a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues consumer list [QUEUE-NAME]
+npx wrangler queues consumer list <QUEUE-NAME>
 ```
 
 ```
-yarn wrangler queues consumer list [QUEUE-NAME]
+yarn wrangler queues consumer list <QUEUE-NAME>
 ```
 
 ```
-pnpm wrangler queues consumer list [QUEUE-NAME]
+pnpm wrangler queues consumer list <QUEUE-NAME>
 ```
 
-- `[QUEUE-NAME]` `string` required
+- `<QUEUE-NAME>` `string` required
 
   Name of the queue
 - `--json` `boolean` default: false
@@ -453,12 +411,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -473,18 +425,18 @@ Add a Queue HTTP Pull Consumer
 npmyarnpnpm
 
 ```
-npx wrangler queues consumer http add [QUEUE-NAME]
+npx wrangler queues consumer http add <QUEUE-NAME>
 ```
 
 ```
-yarn wrangler queues consumer http add [QUEUE-NAME]
+yarn wrangler queues consumer http add <QUEUE-NAME>
 ```
 
 ```
-pnpm wrangler queues consumer http add [QUEUE-NAME]
+pnpm wrangler queues consumer http add <QUEUE-NAME>
 ```
 
-- `[QUEUE-NAME]` `string` required
+- `<QUEUE-NAME>` `string` required
 
   Name of the queue for the consumer
 - `--batch-size` `number` Maximum number of messages per batch
@@ -512,12 +464,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -532,18 +478,18 @@ Remove a Queue HTTP Pull Consumer
 npmyarnpnpm
 
 ```
-npx wrangler queues consumer http remove [QUEUE-NAME]
+npx wrangler queues consumer http remove <QUEUE-NAME>
 ```
 
 ```
-yarn wrangler queues consumer http remove [QUEUE-NAME]
+yarn wrangler queues consumer http remove <QUEUE-NAME>
 ```
 
 ```
-pnpm wrangler queues consumer http remove [QUEUE-NAME]
+pnpm wrangler queues consumer http remove <QUEUE-NAME>
 ```
 
-- `[QUEUE-NAME]` `string` required
+- `<QUEUE-NAME>` `string` required
 
   Name of the queue for the consumer
 
@@ -566,12 +512,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -586,18 +526,18 @@ List HTTP pull consumers for a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues consumer http list [QUEUE-NAME]
+npx wrangler queues consumer http list <QUEUE-NAME>
 ```
 
 ```
-yarn wrangler queues consumer http list [QUEUE-NAME]
+yarn wrangler queues consumer http list <QUEUE-NAME>
 ```
 
 ```
-pnpm wrangler queues consumer http list [QUEUE-NAME]
+pnpm wrangler queues consumer http list <QUEUE-NAME>
 ```
 
-- `[QUEUE-NAME]` `string` required
+- `<QUEUE-NAME>` `string` required
 
   Name of the queue
 - `--json` `boolean` default: false
@@ -623,12 +563,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -643,21 +577,21 @@ Add a Queue Worker Consumer
 npmyarnpnpm
 
 ```
-npx wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
+npx wrangler queues consumer worker add <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
 ```
-yarn wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
+yarn wrangler queues consumer worker add <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
 ```
-pnpm wrangler queues consumer worker add [QUEUE-NAME] [SCRIPT-NAME]
+pnpm wrangler queues consumer worker add <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
-- `[QUEUE-NAME]` `string` required
+- `<QUEUE-NAME>` `string` required
 
   Name of the queue to configure
-- `[SCRIPT-NAME]` `string` required
+- `<SCRIPT-NAME>` `string` required
 
   Name of the consumer script
 - `--batch-size` `number` Maximum number of messages per batch
@@ -686,12 +620,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -706,21 +634,21 @@ Remove a Queue Worker Consumer
 npmyarnpnpm
 
 ```
-npx wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
+npx wrangler queues consumer worker remove <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
 ```
-yarn wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
+yarn wrangler queues consumer worker remove <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
 ```
-pnpm wrangler queues consumer worker remove [QUEUE-NAME] [SCRIPT-NAME]
+pnpm wrangler queues consumer worker remove <QUEUE-NAME> <SCRIPT-NAME>
 ```
 
-- `[QUEUE-NAME]` `string` required
+- `<QUEUE-NAME>` `string` required
 
   Name of the queue to configure
-- `[SCRIPT-NAME]` `string` required
+- `<SCRIPT-NAME>` `string` required
 
   Name of the consumer script
 
@@ -743,12 +671,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -763,18 +685,18 @@ List worker consumers for a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues consumer worker list [QUEUE-NAME]
+npx wrangler queues consumer worker list <QUEUE-NAME>
 ```
 
 ```
-yarn wrangler queues consumer worker list [QUEUE-NAME]
+yarn wrangler queues consumer worker list <QUEUE-NAME>
 ```
 
 ```
-pnpm wrangler queues consumer worker list [QUEUE-NAME]
+pnpm wrangler queues consumer worker list <QUEUE-NAME>
 ```
 
-- `[QUEUE-NAME]` `string` required
+- `<QUEUE-NAME>` `string` required
 
   Name of the queue
 - `--json` `boolean` default: false
@@ -800,12 +722,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -820,18 +736,18 @@ Pause message delivery for a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues pause-delivery [NAME]
+npx wrangler queues pause-delivery <NAME>
 ```
 
 ```
-yarn wrangler queues pause-delivery [NAME]
+yarn wrangler queues pause-delivery <NAME>
 ```
 
 ```
-pnpm wrangler queues pause-delivery [NAME]
+pnpm wrangler queues pause-delivery <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the queue
 
@@ -854,12 +770,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -874,18 +784,18 @@ Resume message delivery for a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues resume-delivery [NAME]
+npx wrangler queues resume-delivery <NAME>
 ```
 
 ```
-yarn wrangler queues resume-delivery [NAME]
+yarn wrangler queues resume-delivery <NAME>
 ```
 
 ```
-pnpm wrangler queues resume-delivery [NAME]
+pnpm wrangler queues resume-delivery <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the queue
 
@@ -908,12 +818,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -928,18 +832,18 @@ Purge messages from a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues purge [NAME]
+npx wrangler queues purge <NAME>
 ```
 
 ```
-yarn wrangler queues purge [NAME]
+yarn wrangler queues purge <NAME>
 ```
 
 ```
-pnpm wrangler queues purge [NAME]
+pnpm wrangler queues purge <NAME>
 ```
 
-- `[NAME]` `string` required
+- `<NAME>` `string` required
 
   The name of the queue
 - `--force` `boolean` Skip the confirmation dialog and forcefully purge the Queue
@@ -963,12 +867,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -983,18 +881,18 @@ Create a new event subscription for a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues subscription create [QUEUE]
+npx wrangler queues subscription create <QUEUE>
 ```
 
 ```
-yarn wrangler queues subscription create [QUEUE]
+yarn wrangler queues subscription create <QUEUE>
 ```
 
 ```
-pnpm wrangler queues subscription create [QUEUE]
+pnpm wrangler queues subscription create <QUEUE>
 ```
 
-- `[QUEUE]` `string` required
+- `<QUEUE>` `string` required
 
   The name of the queue to create the subscription for
 - `--source` `string` required
@@ -1032,12 +930,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1052,18 +944,18 @@ List event subscriptions for a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues subscription list [QUEUE]
+npx wrangler queues subscription list <QUEUE>
 ```
 
 ```
-yarn wrangler queues subscription list [QUEUE]
+yarn wrangler queues subscription list <QUEUE>
 ```
 
 ```
-pnpm wrangler queues subscription list [QUEUE]
+pnpm wrangler queues subscription list <QUEUE>
 ```
 
-- `[QUEUE]` `string` required
+- `<QUEUE>` `string` required
 
   The name of the queue to list subscriptions for
 - `--page` `number` default: 1
@@ -1095,12 +987,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1115,18 +1001,18 @@ Get details about a specific event subscription
 npmyarnpnpm
 
 ```
-npx wrangler queues subscription get [QUEUE]
+npx wrangler queues subscription get <QUEUE>
 ```
 
 ```
-yarn wrangler queues subscription get [QUEUE]
+yarn wrangler queues subscription get <QUEUE>
 ```
 
 ```
-pnpm wrangler queues subscription get [QUEUE]
+pnpm wrangler queues subscription get <QUEUE>
 ```
 
-- `[QUEUE]` `string` required
+- `<QUEUE>` `string` required
 
   The name of the queue
 - `--id` `string` required
@@ -1155,12 +1041,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1175,18 +1055,18 @@ Delete an event subscription from a queue
 npmyarnpnpm
 
 ```
-npx wrangler queues subscription delete [QUEUE]
+npx wrangler queues subscription delete <QUEUE>
 ```
 
 ```
-yarn wrangler queues subscription delete [QUEUE]
+yarn wrangler queues subscription delete <QUEUE>
 ```
 
 ```
-pnpm wrangler queues subscription delete [QUEUE]
+pnpm wrangler queues subscription delete <QUEUE>
 ```
 
-- `[QUEUE]` `string` required
+- `<QUEUE>` `string` required
 
   The name of the queue
 - `--id` `string` required
@@ -1215,12 +1095,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command
@@ -1235,18 +1109,18 @@ Update an existing event subscription
 npmyarnpnpm
 
 ```
-npx wrangler queues subscription update [QUEUE]
+npx wrangler queues subscription update <QUEUE>
 ```
 
 ```
-yarn wrangler queues subscription update [QUEUE]
+yarn wrangler queues subscription update <QUEUE>
 ```
 
 ```
-pnpm wrangler queues subscription update [QUEUE]
+pnpm wrangler queues subscription update <QUEUE>
 ```
 
-- `[QUEUE]` `string` required
+- `<QUEUE>` `string` required
 
   The name of the queue
 - `--id` `string` required
@@ -1278,12 +1152,6 @@ Global flags
 
   Environment to use for operations, and for selecting .env and .dev.vars files
 - <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--experimental-provision</code><code>boolean</code> aliases: --x-provisiondefault: true
-
-  Experimental: Enable automatic resource provisioning
-- <code>--experimental-auto-create</code><code>boolean</code> alias: --x-auto-createdefault: true
-
-  Automatically provision draft bindings with new resources
 - <code>--install-skills</code><code>boolean</code> default: false
 
   Install Cloudflare skills for detected AI coding agents before running the command

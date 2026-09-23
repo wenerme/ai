@@ -5,7 +5,7 @@ description: "Browse Kenari model IDs, capabilities, and context windows. Learn 
 
 # [Kenari logo]Kenari
 
-Access 59 Kenari models through Mastra's model router. Authentication is handled automatically using the `KENARI_API_KEY` environment variable.
+Access 60 Kenari models through Mastra's model router. Authentication is handled automatically using the `KENARI_API_KEY` environment variable.
 
 Learn more in the [Kenari documentation](https://kenari.id/docs).
 
@@ -108,6 +108,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1000000,
     "maxOutput": 128000,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "kenari/deepseek-v4-1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
     "inputCost": null,
     "outputCost": null
   },
