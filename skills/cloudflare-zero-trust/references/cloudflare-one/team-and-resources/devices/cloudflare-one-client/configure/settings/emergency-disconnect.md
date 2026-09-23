@@ -226,7 +226,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-*Patch device settings for a Zero Trust accountbash*
+*Update device settingsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings" \
@@ -407,7 +407,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-*Patch device settings for a Zero Trust accountbash*
+*Update device settingsbash*
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/settings" \

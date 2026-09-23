@@ -100,7 +100,7 @@ A successful deployment returns a **Preview URL** that always points to the late
 - [Configuration](https://developers.cloudflare.com/workers/previews/configuration/) - Configure variables, secrets, bindings, and Previews Base.
 - [Resources and isolation](https://developers.cloudflare.com/workers/previews/resources/) - Decide which resources to share or isolate.
 - [Limitations](https://developers.cloudflare.com/workers/previews/resources/#limitations) - Review current support gaps and workarounds.
-- [Examples](https://developers.cloudflare.com/workers/previews/automation-examples/) - Add Preview deployments to CI.
+- [Examples](https://developers.cloudflare.com/workers/previews/examples/) - Add Preview deployments to CI.
 
 Was this helpful?
 

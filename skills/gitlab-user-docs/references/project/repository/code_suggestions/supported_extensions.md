@@ -40,26 +40,24 @@ Code Suggestions also works with other languages, but you must [manually add sup
 | HTML                                | Yes | No               | No     | No                     | No               | No |
 | Java                                | Yes | Yes              | Yes    | Yes                    | Yes              | Yes |
 | JavaScript                          | Yes | Yes              | Yes    | Yes                    | Yes              | Yes |
-| Kotlin                              | No  | Yes <sup>1</sup> | Yes    | Yes                    | Yes              | Yes |
+| Kotlin                              | No  | Yes[^code-requires-third] | Yes    | Yes                    | Yes              | Yes |
 | Markdown                            | Yes | No               | No     | No                     | No               | No |
 | PHP                                 | Yes | Yes              | Yes    | Yes                    | Yes              | Yes |
 | Python                              | Yes | Yes              | Yes    | Yes                    | Yes              | Yes |
 | Ruby                                | Yes | Yes              | Yes    | Yes                    | Yes              | Yes |
 | Rust                                | Yes | Yes              | Yes    | Yes                    | Yes              | Yes |
-| Scala                               | No  | Yes <sup>2</sup> | Yes    | Yes                    | Yes              | Yes |
+| Scala                               | No  | Yes[^supported-languages-code-requires-third] | Yes    | Yes                    | Yes              | Yes |
 | Shell scripts (`bash` only)         | Yes | No               | Yes    | Yes                    | Yes              | Yes |
 | Svelte                              | Yes | Yes              | Yes    | Yes                    | Yes              | Yes |
 | Swift                               | Yes | Yes              | Yes    | Yes                    | Yes              | Yes |
 | TypeScript (`.ts` and `.tsx` files) | Yes | Yes              | Yes    | Yes                    | Yes              | Yes |
-| Terraform                           | No  | Yes <sup>3</sup> | Yes    | No                     | Yes <sup>4</sup> | Yes |
+| Terraform                           | No  | Yes[^supported-languages-code-requires-third-2] | Yes    | No                     | Yes[^requires-third-party] | Yes |
 | Vue                                 | Yes | Yes              | Yes    | Yes                    | Yes              | Yes |
 
-**Footnotes**:
-
-1. VS Code requires a third-party extension that provides Kotlin support.
-1. VS Code requires a third-party extension that provides Scala support.
-1. VS Code requires a third-party extension that provides Terraform support.
-1. Neovim requires a third-party extension that provides the `terraform` file type.
+[^code-requires-third]: VS Code requires a third-party extension that provides Kotlin support.
+[^supported-languages-code-requires-third]: VS Code requires a third-party extension that provides Scala support.
+[^supported-languages-code-requires-third-2]: VS Code requires a third-party extension that provides Terraform support.
+[^requires-third-party]: Neovim requires a third-party extension that provides the `terraform` file type.
 
 > [!note]
 > Some languages are not supported in all JetBrains IDEs, or might require additional

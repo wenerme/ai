@@ -536,3 +536,6 @@ The probabilities differ from step 3 because `refund.reason` is part of the stat
 * [Add Human-in-the-Loop Controls](/docs/cookbook/building-agents/hitl-tools) for the review surface and the resume flow that receives this gate's paused calls
 * [Tool Approval & State](/docs/agent-sdk/call-model/tool-approval-state) for `requireApproval` when a consent gate before execution is the right mechanism
 * [Jev documentation](https://docs.typesafe.ai/introduction) for `score` and `choice` questions, when a tool has more than one legitimate disposition
+* [Jev SDK for TypeScript and Python](/docs/guides/community/typesafe-sdk) to make the same request with the TypeSafe SDK instead of `fetch`
+* [Cut LLM Cost with a Jev-Verified Cascade](/docs/cookbook/evaluate-and-optimize/jev-verified-cascade) for using Jev to verify model answers rather than tool calls
+* [Jev model page](https://openrouter.ai/typesafe/jev-1.13) and [Jev Lab](https://openrouter.ai/labs/jev) for pricing and interactive demos

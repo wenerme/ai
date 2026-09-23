@@ -29,7 +29,7 @@ For code search, GitLab uses these types in this order:
 Scopes describe the type of data you're searching.
 The following scopes are available for basic search:
 
-| Scope          | Global <sup>1</sup> |    Group    | Project |
+| Scope          | Global[^disable-global-search-scopes] |    Group    | Project |
 |----------------|:-------------------:|:-----------:|:-------:|
 | Code           |     No      | No  | Yes |
 | Comments       |     No      | No  | Yes |
@@ -37,15 +37,13 @@ The following scopes are available for basic search:
 | Groups         |     Yes     | Yes | No |
 | Work items     |     Yes     | Yes | Yes |
 | Merge requests |     Yes     | Yes | Yes |
-| Milestones <sup>2</sup> |     Yes     | Yes | Yes |
+| Milestones[^global-basic-search] |     Yes     | Yes | Yes |
 | Projects       |     Yes     | Yes | No |
 | Users          |     Yes     | Yes | Yes |
 | Wikis          |     No      | No  | Yes |
 
-**Footnotes**:
-
-1. An administrator can [disable global search scopes](#disable-global-search-scopes).
-1. Global basic search returns only project milestones, not group milestones.
+[^disable-global-search-scopes]: An administrator can [disable global search scopes](#disable-global-search-scopes).
+[^global-basic-search]: Global basic search returns only project milestones, not group milestones.
 
 ## Specify a search type
 

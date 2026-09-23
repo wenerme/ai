@@ -194,6 +194,10 @@ Lists a vault's credentials using ID-based pagination without returning secret v
 
     The Unix timestamp, in seconds, when the credential was created.
 
+  - `metadata: map[string]`
+
+    Application-defined key-value pairs associated with this credential.
+
   - `name: string`
 
     The human-readable name of the credential.
@@ -260,6 +264,9 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials \
         "type": "mcp_oauth"
       },
       "created_at": 0,
+      "metadata": {
+        "foo": "string"
+      },
       "name": "name",
       "object": "vault.credential",
       "updated_at": 0,

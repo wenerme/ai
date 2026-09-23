@@ -1,0 +1,80 @@
+---
+description: Manage Email security directories in Email Security.
+title: Manage Email security directories
+image: https://developers.cloudflare.com/og-docs.png
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Manage Email security directories
+
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/directories/manage-es-directories/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+You can manage your Email security directory by editing and deleting added users.
+
+Registered users
+
+The Email security directory contains registered users only. A registered user is a user added to the [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/).
+
+To modify or delete users in the Email security directory:
+
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** > **Settings**.
+2. Select **View** on the **Directories** card.
+3. Select **Email security Directory**.
+
+## Add a user
+
+To manually add a user to the Email security directory:
+
+1. On the sidebar, go to **Settings** > **Impersonation registry** > **View**.
+2. Select **Add a user**:
+
+- Choose **Manual input** as the **Input method**.
+- Under **User info**, enter the **Display name**.
+- Under **User email**, enter the **Email addresses**.
+
+3. Select **Save**.
+
+To view users you manually added:
+
+1. Go to **Email security** > **Settings** > **Directories** > **View**.
+2. Select **Email security Directory**.
+3. Any manually added user will be displayed under the table as **REGISTERED**.
+
+## Edit a user
+
+To edit a user in the Email security directory:
+
+1. Select the user you want to edit.
+2. Select the three dots > **Edit**.
+3. Enter a user name and/or email.
+4. Select **Save**.
+
+## Delete a user
+
+To delete a user from the Email security directory:
+
+1. Select the user you want to delete.
+2. Select the three dots > **Delete**.
+3. Read the pop-up message, and then select **Delete user**.
+
+To delete multiple users from the registry at once:
+
+1. Select the users you want to delete.
+2. Select the **Action** dropdown list > **Delete**.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/directories/manage-es-directories/#page","headline":"Manage Email security directories","description":"Manage Email security directories in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/directories/manage-es-directories/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

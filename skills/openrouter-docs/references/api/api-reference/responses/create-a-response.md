@@ -515,6 +515,8 @@ components:
                   $ref: '#/components/schemas/ParetoRouterPlugin'
                 response-healing:
                   $ref: '#/components/schemas/ResponseHealingPlugin'
+                switchyard-router:
+                  $ref: '#/components/schemas/SwitchyardRouterPlugin'
                 web:
                   $ref: '#/components/schemas/WebSearchPlugin'
                 web-fetch:
@@ -531,6 +533,7 @@ components:
               - $ref: '#/components/schemas/ContextCompressionPlugin'
               - $ref: '#/components/schemas/ParetoRouterPlugin'
               - $ref: '#/components/schemas/FusionPlugin'
+              - $ref: '#/components/schemas/SwitchyardRouterPlugin'
           type: array
         presence_penalty:
           format: double
@@ -1701,6 +1704,39 @@ components:
         id:
           enum:
             - response-healing
+          type: string
+      required:
+        - id
+      type: object
+    SwitchyardRouterPlugin:
+      example:
+        algorithm: stage
+        id: switchyard-router
+      properties:
+        algorithm:
+          description: >-
+            Routing algorithm for this request. "capability" calls a small judge
+            model to rate how demanding the task is, then picks the efficient or
+            capable candidate. "stage" reads the tool-result history (errors,
+            repeated failures, edits landing) and calls the judge only when
+            those signals are undecided. "auto" is "stage" without the judge
+            call. "random" picks one candidate at random. "composite" keeps the
+            tier chosen on the last human turn and re-evaluates tool turns with
+            the stage signals. "passthrough" serves the eligible candidates in
+            the order OpenRouter already ranked them, with no routing decision
+            and no judge call. Omit this field to use the platform default,
+            capability.
+          enum:
+            - capability
+            - stage
+            - auto
+            - random
+            - composite
+            - passthrough
+          type: string
+        id:
+          enum:
+            - switchyard-router
           type: string
       required:
         - id

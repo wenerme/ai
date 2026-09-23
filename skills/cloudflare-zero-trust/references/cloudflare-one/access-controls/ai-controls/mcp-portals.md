@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # MCP server portals
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
@@ -124,6 +124,20 @@ To add an MCP server:
 
 Cloudflare Access will validate the server connection and retrieve a list of prompts and tools. Once the server is successfully connected, the [server status](#server-status) will change to **Ready**. You can now add the MCP server to an [MCP server portal](#create-a-portal).
 
+### Connect a private MCP server
+
+MCP server portals can connect to an MCP server available only on your private network. The MCP server URL and its [OAuth protected resource metadata ↗](https://www.rfc-editor.org/rfc/rfc9728.html) can use a private hostname. OAuth authorization server endpoints, such as the authorization and token endpoints, must be accessible on the public Internet. If Cloudflare automatically registers the OAuth client through Dynamic Client Registration (DCR), the registration endpoint must also be accessible on the public Internet.
+
+Before you add the server, connect its network to Cloudflare. Use [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or another [Cloudflare One connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/). Configure a [private hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) or [CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/) for the server.
+
+To add the private MCP server:
+
+1. Follow the steps in [Add an MCP server](#add-an-mcp-server), and enter the private URL in **HTTP URL**.
+2. Turn on **Route traffic through Cloudflare Gateway**. Private server registration and capability synchronization require this setting.
+3. Select **Save and connect server**.
+4. Complete the upstream OAuth flow, if required.
+5. Wait for the server status to change to **Ready**. You can then add the server to a portal.
+
 ### Configure manual OAuth credentials
 
 Use manual OAuth credentials when the upstream provider does not support [OAuth Dynamic Client Registration ↗](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#dynamic-client-registration). This flow uses an OAuth application that you register with the upstream provider.
@@ -207,7 +221,7 @@ To manually refresh the MCP server in Zero Trust:
 2. Go to the **MCP servers** tab and find the server that you want to refresh.
 3. Select the three dots > **Sync capabilities**.
 
-The MCP server page will show the updated list of tools and prompts. New tools and prompts are automatically enabled in the MCP server portal.
+The MCP server page will show the updated list of tools and prompts. By default, new tools and prompts are automatically enabled. For mappings with `default_disabled` set to `true`, they remain hidden until explicitly enabled.
 
 You can also trigger a sync via the API. The sync endpoint returns the current server state after synchronization, including the updated [server status](#server-status), tool count, and [error details](#error-details) if the sync failed.
 
@@ -294,9 +308,11 @@ Turned-off tools will not appear in the portal's tool list. Users will not be ab
 
 ### Use an allowlist pattern
 
-By default, all tools and prompts from an MCP server are available in the portal. You can invert this behavior so that all tools are hidden by default and only explicitly turned-on tools are exposed. This is useful when an MCP server has many tools but you only want to expose a curated subset.
+By default, all tools and prompts from an MCP server are available in the portal. You can invert this behavior so that all capabilities are hidden by default and only explicitly turned-on tools and prompts are exposed. This is useful when an MCP server has many capabilities but you only want to expose a curated subset.
 
-To configure an allowlist via the API, set `default_disabled` to `true` on the server-to-portal mapping, then explicitly list the tools you want to expose in `updated_tools`:
+To configure an allowlist via the API, set `default_disabled` to `true` on the server-to-portal mapping, then explicitly list the tools you want to expose in `updated_tools`. To expose prompts, list them in `updated_prompts` in the same way.
+
+When a portal update includes `servers`, the supplied array replaces the complete server-to-portal mapping. Include every attached server and preserve its existing mapping fields. Omitting a server removes it from the portal, and omitting a mapping field resets that field to its default value.
 
 *API request body (portal update)json*
 
@@ -304,7 +320,7 @@ To configure an allowlist via the API, set `default_disabled` to `true` on the s
 {
 	"servers": [
 		{
-			"id": "example-server",
+			"server_id": "example-server",
 			"default_disabled": true,
 			"updated_tools": [
 				{
@@ -321,7 +337,7 @@ To configure an allowlist via the API, set `default_disabled` to `true` on the s
 }
 ```
 
-With `default_disabled` set to `true`, only `search_documents` and `list_projects` will be available to portal users. All other tools from this server will be hidden.
+With `default_disabled` set to `true`, only `search_documents` and `list_projects` will be available to portal users. All other tools and all prompts from this server will be hidden.
 
 ### Rename tools and prompts with aliases
 
@@ -1080,7 +1096,7 @@ You can also enable or disable a specific server directly from your MCP client w
 
 > Disable my Jira server.
 
-The portal toggles the server and updates the active tool list immediately. Disabling a server removes its tools from the session, which reduces context window usage.
+The portal toggles the server and refreshes the active tool list immediately. The resulting list only includes tools and prompts allowed by the portal policy. A server can be enabled while exposing no tools or prompts if its allowlist is empty.
 
 ### Reauthenticate a server
 
@@ -1234,5 +1250,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#page","headline":"MCP server portals","description":"MCP server portals in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["MCP"]}
 ```

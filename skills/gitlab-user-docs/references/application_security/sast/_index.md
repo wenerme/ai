@@ -370,64 +370,62 @@ For more information about language support plans in SAST, see the [category dir
 
 These languages are supported by both GitLab Advanced SAST (Ultimate) and standard analyzers (all tiers):
 
-| Language               | GitLab Advanced SAST<sup>1</sup> | Standard analyzer<sup>2</sup> |
+| Language               | GitLab Advanced SAST[^advanced-sast-ultimate] | Standard analyzer[^tiers-uses-semgrep] |
 |------------------------|----------------------------------|-------------------------------|
 | C                      | Yes                      | Yes                   |
 | C++                    | Yes                      | Yes                   |
 | C#                     | Yes                      | Yes                   |
 | Go                     | Yes                      | Yes                   |
-| Java<sup>3</sup>       | Yes                      | Yes                   |
+| Java[^including-java-server]       | Yes                      | Yes                   |
 | Java Properties        | Yes                      | Yes                   |
-| JavaScript<sup>4</sup> | Yes                      | Yes                   |
-| Objective-C (iOS)<sup>7</sup> | Yes               | Yes                   |
+| JavaScript[^including-node-react] | Yes                      | Yes                   |
+| Objective-C (iOS)[^advanced-sast-support] | Yes               | Yes                   |
 | PHP                    | Yes                      | Yes                   |
 | Python                 | Yes                      | Yes                   |
-| Ruby<sup>5</sup>       | Yes                      | Yes                   |
-| Swift (iOS)<sup>7</sup> | Yes                     | Yes                   |
+| Ruby[^including-rails]       | Yes                      | Yes                   |
+| Swift (iOS)[^advanced-sast-support] | Yes                     | Yes                   |
 | TypeScript             | Yes                      | Yes                   |
-| YAML<sup>6</sup>       | Yes                      | Yes                   |
+| YAML[^support-restricted-following]       | Yes                      | Yes                   |
 
-**Footnotes**:
+[^advanced-sast-ultimate]: [GitLab Advanced SAST](gitlab_advanced_sast.md) - Ultimate tier only.
+[^tiers-uses-semgrep]: All tiers. Uses [Semgrep](https://gitlab.com/gitlab-org/security-products/analyzers/semgrep) analyzer with [GitLab-managed rules](rules.md#semgrep-based-analyzer) unless otherwise specified.
+[^including-java-server]: Including Java Server Pages (JSP) and Android.
+[^including-node-react]: Including Node.js and React.
+[^including-rails]: Including Ruby on Rails.
+[^support-restricted-following]: YAML support is restricted to the following file patterns:
 
-1. [GitLab Advanced SAST](gitlab_advanced_sast.md) - Ultimate tier only.
-2. All tiers. Uses [Semgrep](https://gitlab.com/gitlab-org/security-products/analyzers/semgrep) analyzer with [GitLab-managed rules](rules.md#semgrep-based-analyzer) unless otherwise specified.
-3. Including Java Server Pages (JSP) and Android.
-4. Including Node.js and React.
-5. Including Ruby on Rails.
-6. YAML support is restricted to the following file patterns:
-   - `application*.yml`
-   - `application*.yaml`
-   - `bootstrap*.yml`
-   - `bootstrap*.yaml`
-7. GitLab Advanced SAST support for Swift and Objective-C is in
-   [beta](../../../policy/development_stages_support.md#beta). Analysis runs as a separate
-   `gitlab-advanced-sast-ext` job, which is enabled together with GitLab Advanced SAST by the
-   shared `GITLAB_ADVANCED_SAST_ENABLED` variable. For more information, see
-   [Swift and Objective-C configuration](advanced_sast_swift_objc.md).
+    - `application*.yml`
+    - `application*.yaml`
+    - `bootstrap*.yml`
+    - `bootstrap*.yaml`
+
+[^advanced-sast-support]: GitLab Advanced SAST support for Swift and Objective-C is in
+    [beta](../../../policy/development_stages_support.md#beta). Analysis runs as a separate
+    `gitlab-advanced-sast-ext` job, which is enabled together with GitLab Advanced SAST by the
+    shared `GITLAB_ADVANCED_SAST_ENABLED` variable. For more information, see
+    [Swift and Objective-C configuration](advanced_sast_swift_objc.md).
 
 ### Languages with standard analyzer support only
 
 These languages are supported by standard analyzers (all tiers) but not by GitLab Advanced SAST:
 
-| Language           | Standard analyzer<sup>1</sup>                                                                           | Proposed support<sup>2</sup> |
+| Language           | Standard analyzer[^languages-standard-tiers-uses-semgrep]                                                                           | Proposed support[^referenced-epic-proposes] |
 |--------------------|---------------------------------------------------------------------------------------------------------|------------------------------|
 | Apex (Salesforce)  | Yes [PMD-Apex](https://gitlab.com/gitlab-org/security-products/analyzers/pmd-apex)              | None                         |
 | Elixir (Phoenix)   | Yes [Sobelow](https://gitlab.com/gitlab-org/security-products/analyzers/sobelow)                | None                         |
-| Groovy             | Yes [SpotBugs](https://gitlab.com/gitlab-org/security-products/analyzers/spotbugs)<sup>3</sup>  | None                         |
-| Kotlin<sup>4</sup> | Yes                                                                                             | [Epic 15173](https://gitlab.com/groups/gitlab-org/-/epics/15173) |
+| Groovy             | Yes [SpotBugs](https://gitlab.com/gitlab-org/security-products/analyzers/spotbugs)[^find-sec-bugs]  | None                         |
+| Kotlin[^including-android] | Yes                                                                                             | [Epic 15173](https://gitlab.com/groups/gitlab-org/-/epics/15173) |
 | Scala              | Yes                                                                                             | [Epic 15174](https://gitlab.com/groups/gitlab-org/-/epics/15174) |
 
-**Footnotes**:
-
-1. All tiers. Uses [Semgrep](https://gitlab.com/gitlab-org/security-products/analyzers/semgrep)
-   analyzer with [GitLab-managed rules](rules.md#semgrep-based-analyzer) unless otherwise specified.
-1. The referenced epic proposes GitLab Advanced SAST support for these languages.
-1. SpotBugs with the find-sec-bugs plugin. Supports Gradle, Maven, and SBT. It can also be used with variants
-   like the Gradle wrapper, Grails, and the Maven wrapper. However, SpotBugs has
-   [limitations](https://gitlab.com/gitlab-org/gitlab/-/issues/350801) when used against Ant-based
-   projects. You should use the GitLab Advanced SAST or Semgrep-based analyzer for Ant-based Java or
-   Scala projects.
-1. Including Android.
+[^languages-standard-tiers-uses-semgrep]: All tiers. Uses [Semgrep](https://gitlab.com/gitlab-org/security-products/analyzers/semgrep)
+    analyzer with [GitLab-managed rules](rules.md#semgrep-based-analyzer) unless otherwise specified.
+[^referenced-epic-proposes]: The referenced epic proposes GitLab Advanced SAST support for these languages.
+[^find-sec-bugs]: SpotBugs with the find-sec-bugs plugin. Supports Gradle, Maven, and SBT. It can also be used with variants
+    like the Gradle wrapper, Grails, and the Maven wrapper. However, SpotBugs has
+    [limitations](https://gitlab.com/gitlab-org/gitlab/-/issues/350801) when used against Ant-based
+    projects. You should use the GitLab Advanced SAST or Semgrep-based analyzer for Ant-based Java or
+    Scala projects.
+[^including-android]: Including Android.
 
 The SAST CI/CD template also includes an analyzer job that can scan Kubernetes manifests and Helm charts; this job is off by default.
 See [Enabling Kubesec analyzer](#enabling-kubesec-analyzer) or consider [IaC scanning](../iac_scanning/_index.md), which supports additional platforms, instead.

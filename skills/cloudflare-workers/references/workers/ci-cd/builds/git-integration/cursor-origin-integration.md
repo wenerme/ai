@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/cursor-origin-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare supports connecting a Cursor Origin repository to your Cloudflare Worker. Workers Builds automatically builds and deploys your Worker when you push a change to the configured production branch. You can also enable [non-production branch builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-non-production-branch-builds) to preview changes without deploying them to production.
+Cloudflare supports connecting a Cursor Origin repository to your Cloudflare Worker. Workers Builds automatically builds and deploys your Worker when you push a change to the configured production branch. You can also enable [preview builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds) to create [Previews](https://developers.cloudflare.com/workers/previews/) without deploying changes to production.
 
 ## Features
 
@@ -24,16 +24,9 @@ Beyond automatic builds and deployments, the Cloudflare Cursor Origin integratio
 
 When a commit is part of a pull request, Cloudflare posts a comment on the pull request with the build status and links to the build.
 
-When a non-production build runs `wrangler versions upload`, the comment also includes two [preview URLs](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/):
+When a preview build runs `wrangler preview`, the comment also includes a [Preview URL](https://developers.cloudflare.com/workers/previews/). This URL lets you test the code changes in an isolated copy of your Worker.
 
-- A versioned preview URL for the specific version created by the build.
-- An aliased preview URL that follows the latest version built from the branch.
-
-The versioned URL does not change. The aliased URL remains stable as you push additional commits to the same branch, making it useful for reviewing an active pull request.
-
-Note
-
-Preview URLs must be enabled for the Worker. Preview URLs are not generated for Workers that implement a [Durable Object](https://developers.cloudflare.com/durable-objects/), including [Containers](https://developers.cloudflare.com/containers/) and [Sandbox](https://developers.cloudflare.com/sandbox/) Workers. Refer to [Preview URL limitations](https://developers.cloudflare.com/workers/versions-and-deployments/preview-urls/#limitations).
+Subsequent pushes to the same branch update the same Preview URL. Each deployment also gets an immutable Deployment URL for testing one exact deployment.
 
 ### Check runs
 

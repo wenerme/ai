@@ -66,7 +66,7 @@ Register one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -102,7 +102,7 @@ Register one customer-managed external storage configuration.
 
         - `"azure"`
 
-    - `Gcp object { audience, bucket, region, 4 more }`
+    - `GcpExternalStorageProvider object { audience, bucket, region, 4 more }`
 
       - `audience: string`
 

@@ -1,0 +1,96 @@
+---
+description: Manage users in your directory in Email Security.
+title: Manage users in your directory
+image: https://developers.cloudflare.com/og-docs.png
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Manage users in your directory
+
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/directories/manage-integrated-directories/manage-users-directory/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Email security allows you to view and manage the [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) status of your users directory.
+
+To manage users directory:
+
+1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** > **Settings**.
+2. Select **View** on the **Directories** card.
+3. Locate your directory, select the three dots > **View details**.
+4. Select **Users**.
+
+## Add users to registry
+
+To add a single user to the registry:
+
+1. Select the name you want to add.
+2. Select the three dots > **Add to registry**.
+
+To add multiple users to the registry at once:
+
+1. Select the names you want to add to the registry.
+2. Select the **Action** dropdown list.
+3. Select **Add to registry**.
+
+## Remove users from registry
+
+Email security allows you to remove users from the registry.
+
+To remove a single user from the registry:
+
+1. Select the name you want to remove.
+2. Select the three dots > **Remove from registry**.
+
+To remove multiple users from the registry at once:
+
+1. Select the names you want to remove from the registry.
+2. Select the **Action** dropdown list.
+3. Select **Remove from registry**.
+
+## Edit a user
+
+To edit a user:
+
+1. Under **Display name**, locate the user you want to edit.
+2. Select the three dots > **Edit**.
+3. Edit the user, then select **Save**.
+
+## Filter a user
+
+You can filter the list of users by registered and unregistered.
+
+A user is registered when they are added to the [impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/). A user is unregistered when they are not part of the impersonation registry.
+
+To filter the impersonation registry:
+
+1. Select **Show filters** > **Impersonation registry**.
+2. Choose one of the following:
+   - **All**: To view registered and unregistered users.
+   - **Registered**: To view registered users.
+   - **Unregistered**: To view unregistered users.
+3. Select **Apply filters**.
+
+To filter users:
+
+1. Select **Show filters** > **Users**.
+2. Choose one of the following:
+   - **All**: To view users in groups and not in groups.
+   - **Users in groups**: To view users in groups.
+   - **Users not in groups**: To view users not in groups.
+3. Select **Apply filters**.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/directories/manage-integrated-directories/manage-users-directory/#page","headline":"Manage users in your directory","description":"Manage users in your directory in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/settings/domains-and-directories/directories/manage-integrated-directories/manage-users-directory/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

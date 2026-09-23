@@ -1165,6 +1165,7 @@ Arguments:
 | <a id="query-duoworkflowworkflows-environment"></a>`environment` | [`WorkflowEnvironment`](#workflowenvironment) | Environment, for example, IDE or web. |
 | <a id="query-duoworkflowworkflows-excludetypes"></a>`excludeTypes` | [`[String!]`](#string) | Types of flows to exclude (for example, ["software_development", "chat"]). |
 | <a id="query-duoworkflowworkflows-ids"></a>`ids` | [`[AiDuoWorkflowsWorkflowID!]`](#aiduoworkflowsworkflowid) | Filter flows by a list of IDs. |
+| <a id="query-duoworkflowworkflows-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project that contains the flows. |
 | <a id="query-duoworkflowworkflows-projectpath"></a>`projectPath` | [`ID`](#id) | Full path of the project that contains the flows. |
 | <a id="query-duoworkflowworkflows-search"></a>`search` | [`String`](#string) | Flow title or goal to search for. |
 | <a id="query-duoworkflowworkflows-sort"></a>`sort` | [`DuoWorkflowsWorkflowSort`](#duoworkflowsworkflowsort) | Sort flows by the criteria. |
@@ -3360,6 +3361,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mutation-aicatalogitemconsumercreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-aicatalogitemconsumercreate-consumerkind"></a>`consumerKind` | [`AiCatalogItemConsumerKind`](#aicatalogitemconsumerkind) | Type of item configuration. `INHERITANCE` is only valid for a top-level group target. |
 | <a id="mutation-aicatalogitemconsumercreate-itemid"></a>`itemId` | [`AiCatalogItemID!`](#aicatalogitemid) | Item to configure. |
 | <a id="mutation-aicatalogitemconsumercreate-parentitemconsumerid"></a>`parentItemConsumerId` | [`AiCatalogItemConsumerID`](#aicatalogitemconsumerid) | Parent item consumer belonging to the top-level group. |
 | <a id="mutation-aicatalogitemconsumercreate-pinnedversion"></a>`pinnedVersion` | [`AiCatalogPinnedVersion`](#aicatalogpinnedversion) | Version to pin the item to, in the format `n.n.n`. Must be a released version. Defaults to the latest released version. Ignored when enabling within the item's managing project, which always tracks the latest released version. |
@@ -4649,6 +4651,31 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mutation-artifactregistryrolerevoke-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactregistryrolerevoke-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+
+### `Mutation.artifactRegistryUpstreamRepositoryDissociate`
+
+- Introduced in GitLab 19.5.
+- Status: Experiment.
+
+Removes an upstream repository association from a virtual repository in Artifact Registry. The upstream repository and its artifacts remain unchanged, and Artifact Registry compacts the remaining upstream positions. Succeeds even when the association is already gone, or the repository is missing, inaccessible, not virtual, or not of the given format.
+
+Input type: `ArtifactRegistryUpstreamRepositoryDissociateInput`
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryupstreamrepositorydissociate-associationid"></a>`associationId` | [`ID!`](#id) | ID of the upstream repository association to remove, as returned by the `id` field on an upstream repository association. Not a GitLab global ID. |
+| <a id="mutation-artifactregistryupstreamrepositorydissociate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryupstreamrepositorydissociate-format"></a>`format` | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Package format of the virtual repository. |
+| <a id="mutation-artifactregistryupstreamrepositorydissociate-name"></a>`name` | [`String!`](#string) | Name of the virtual repository holding the upstream repository, unique within the organization. |
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mutation-artifactregistryupstreamrepositorydissociate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-artifactregistryupstreamrepositorydissociate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 
 ### `Mutation.artifactRegistryUpstreamTestConnection`
 
@@ -27152,6 +27179,29 @@ Fields:
 | <a id="mergerequestparticipantedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="mergerequestparticipantedge-node"></a>`node` | [`MergeRequestParticipant`](#mergerequestparticipant) | The item at the end of the edge. |
 
+#### `MergeRequestResourceLabelEventConnection`
+
+The connection type for [`MergeRequestResourceLabelEvent`](#mergerequestresourcelabelevent).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestresourcelabeleventconnection-edges"></a>`edges` | [`[MergeRequestResourceLabelEventEdge]`](#mergerequestresourcelabeleventedge) | A list of edges. |
+| <a id="mergerequestresourcelabeleventconnection-nodes"></a>`nodes` | [`[MergeRequestResourceLabelEvent]`](#mergerequestresourcelabelevent) | A list of nodes. |
+| <a id="mergerequestresourcelabeleventconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `MergeRequestResourceLabelEventEdge`
+
+The edge type for [`MergeRequestResourceLabelEvent`](#mergerequestresourcelabelevent).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestresourcelabeleventedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="mergerequestresourcelabeleventedge-node"></a>`node` | [`MergeRequestResourceLabelEvent`](#mergerequestresourcelabelevent) | The item at the end of the edge. |
+
 #### `MergeRequestReviewerConnection`
 
 The connection type for [`MergeRequestReviewer`](#mergerequestreviewer).
@@ -33092,6 +33142,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="aicatalogitemconsumer-consumerkind"></a>`consumerKind` | [`AiCatalogItemConsumerKind!`](#aicatalogitemconsumerkind) | Type of configured catalog item. |
 | <a id="aicatalogitemconsumer-enabled"></a>`enabled` | [`Boolean`](#boolean) | Indicates if the configuration item is enabled. |
 | <a id="aicatalogitemconsumer-flowtrigger"></a>`flowTrigger`  | [`AiFlowTriggerType`](#aiflowtriggertype) | Deprecated in GitLab 19.4. Use `flowTriggers`. |
 | <a id="aicatalogitemconsumer-flowtriggers"></a>`flowTriggers`  | [`[AiFlowTriggerType!]`](#aiflowtriggertype) | Introduced in GitLab 19.4. Status: Experiment. Triggers associated with the configured catalog item. |
@@ -34570,16 +34621,19 @@ Fields:
 | <a id="artifactregistrymanifest-architecture"></a>`architecture`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. CPU architecture an image manifest targets. Null on an index, per value on an image whose config did not carry it, and always null on a remote repository. |
 | <a id="artifactregistrymanifest-artifacttype"></a>`artifactType`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Artifact type of the manifest. Null when the manifest declares none. |
 | <a id="artifactregistrymanifest-childrencount"></a>`childrenCount`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of platform children of a manifest index. Zero on an image manifest, and always zero on a remote repository. Null on a deployment predating the field. |
+| <a id="artifactregistrymanifest-childrenpreview"></a>`childrenPreview`  | [`[ArtifactRegistryManifestPlatform!]`](#artifactregistrymanifestplatform) | Introduced in GitLab 19.5. Status: Experiment. First ten platform children of a manifest index, child digest ascending, each with its digest and platform triple. Empty on an image manifest and on a remote repository. childrenCount on this type already carries the true total; read the complete children list on the detail type. Null on a deployment predating the field. |
 | <a id="artifactregistrymanifest-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Time the manifest was pushed. Null if the timestamp is absent or unparseable. |
 | <a id="artifactregistrymanifest-digest"></a>`digest`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Content-addressable digest of the manifest. |
 | <a id="artifactregistrymanifest-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.4. Status: Experiment. ID of the manifest in Artifact Registry. |
 | <a id="artifactregistrymanifest-mediatype"></a>`mediaType`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Media type of the manifest. |
 | <a id="artifactregistrymanifest-os"></a>`os`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Operating system an image manifest targets. Null on an index, per value on an image whose config did not carry it, and always null on a remote repository. |
 | <a id="artifactregistrymanifest-osvariant"></a>`osVariant`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. CPU variant an image manifest targets. Null on an index, on most images, and always null on a remote repository. |
+| <a id="artifactregistrymanifest-parentspreview"></a>`parentsPreview`  | [`[String!]`](#string) | Introduced in GitLab 19.5. Status: Experiment. First ten digests of the indexes that reference this manifest, in the order Artifact Registry returns them. Empty when no index references it. The list carries no parent count; read the complete list, and the total in parentsCount, on the detail type. Null on a deployment predating the field. |
 | <a id="artifactregistrymanifest-referrerscount"></a>`referrersCount`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of manifests in the image that name this digest as their subject. Zero when none do, and always zero on a remote repository. Null on a deployment predating the field. |
 | <a id="artifactregistrymanifest-size"></a>`size`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.4. Status: Experiment. Size of the manifest, in bytes. For a hosted repository, the push-time tree total, where an index total already contains its platform children and so does not sum across sibling rows. For a remote repository, the cached manifest's own payload bytes. |
 | <a id="artifactregistrymanifest-subjectdigest"></a>`subjectDigest`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Digest of the subject manifest a referrer refers to. Null for a manifest that is not a referrer. Populated on the referrers connection, where every row is a referrer of the manifest it hangs off. On the manifests connection it is null unless the caller passes includeReferrers, which the default omits. |
 | <a id="artifactregistrymanifest-tagscount"></a>`tagsCount`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of tags pointing at the manifest. Zero when untagged. Null on a deployment predating the field. |
+| <a id="artifactregistrymanifest-tagspreview"></a>`tagsPreview`  | [`[String!]`](#string) | Introduced in GitLab 19.5. Status: Experiment. First ten tags pointing at the manifest, name ascending. Empty when untagged. tagsCount on this type already carries the true total; read the complete tags list on the detail type. Null on a deployment predating the field. |
 
 ### `ArtifactRegistryManifestAnnotation`
 
@@ -34863,6 +34917,7 @@ Fields:
 | <a id="artifactregistryrepository-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Human-readable description of the repository. Null when unset. |
 | <a id="artifactregistryrepository-downloadscount"></a>`downloadsCount`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Number of artifact downloads from the repository. Buffered, so it can lag. |
 | <a id="artifactregistryrepository-format"></a>`format`  | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.3. Status: Experiment. Package format the repository holds. |
+| <a id="artifactregistryrepository-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. ID of the repository in Artifact Registry. |
 | <a id="artifactregistryrepository-kind"></a>`kind`  | [`ArtifactRegistryRepositoryKind!`](#artifactregistryrepositorykind) | Introduced in GitLab 19.3. Status: Experiment. How the repository sources its artifacts. |
 | <a id="artifactregistryrepository-lastupdatedat"></a>`lastUpdatedAt`  | [`Time`](#time) | Introduced in GitLab 19.3. Status: Experiment. Time the repository content last changed. Null when the content never changed. |
 | <a id="artifactregistryrepository-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.3. Status: Experiment. Name of the repository, unique within its namespace. |
@@ -34886,6 +34941,7 @@ Fields:
 | <a id="artifactregistryrepositorydetails-description"></a>`description`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. Human-readable description of the repository. Null when unset. |
 | <a id="artifactregistryrepositorydetails-downloadscount"></a>`downloadsCount`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Number of artifact downloads from the repository. Buffered, so it can lag. |
 | <a id="artifactregistryrepositorydetails-format"></a>`format`  | [`ArtifactRegistryRepositoryFormat!`](#artifactregistryrepositoryformat) | Introduced in GitLab 19.3. Status: Experiment. Package format the repository holds. |
+| <a id="artifactregistryrepositorydetails-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. ID of the repository in Artifact Registry. |
 | <a id="artifactregistryrepositorydetails-images"></a>`images`  | [`ArtifactRegistryImageConnection`](#artifactregistryimageconnection) | Introduced in GitLab 19.4. Status: Experiment. Images the repository holds. Can be selected once per operation, so one operation reads images for one repository. Returns `null` for a virtual repository, for a repository holding packages, and for a repository that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 | <a id="artifactregistryrepositorydetails-kind"></a>`kind`  | [`ArtifactRegistryRepositoryKind!`](#artifactregistryrepositorykind) | Introduced in GitLab 19.3. Status: Experiment. How the repository sources its artifacts. |
 | <a id="artifactregistryrepositorydetails-lastupdatedat"></a>`lastUpdatedAt`  | [`Time`](#time) | Introduced in GitLab 19.3. Status: Experiment. Time the repository content last changed. Null when the content never changed. |
@@ -37323,6 +37379,7 @@ Fields:
 | <a id="cijob-duration"></a>`duration` | [`Int`](#int) | Duration of the job in seconds. |
 | <a id="cijob-erasedat"></a>`erasedAt` | [`Time`](#time) | When the job was erased. |
 | <a id="cijob-exitcode"></a>`exitCode` | [`Int`](#int) | Exit code of the job. Available for jobs that started after upgrading to GitLab 16.10 and failed with an exit code. |
+| <a id="cijob-expandedenvironmentname"></a>`expandedEnvironmentName` | [`String`](#string) | Variable-expanded name of the environment the job is configured to deploy to, recorded when the pipeline was created. Null when the job does not declare an environment, or when no name was recorded for it. |
 | <a id="cijob-failuremessage"></a>`failureMessage` | [`String`](#string) | Message on why the job failed. |
 | <a id="cijob-finishedat"></a>`finishedAt` | [`Time`](#time) | When a job has finished running. |
 | <a id="cijob-id"></a>`id` | [`JobID`](#jobid) | ID of the job. |
@@ -49140,6 +49197,7 @@ Fields:
 | <a id="mergerequest-rebaseinprogress"></a>`rebaseInProgress` | [`Boolean!`](#boolean) | Indicates if there is a rebase currently in progress for the merge request. |
 | <a id="mergerequest-resolvablediscussionscount"></a>`resolvableDiscussionsCount` | [`Int`](#int) | Number of user discussions that are resolvable in the merge request. |
 | <a id="mergerequest-resolveddiscussionscount"></a>`resolvedDiscussionsCount` | [`Int`](#int) | Number of user discussions that are resolved in the merge request. |
+| <a id="mergerequest-resourcelabelevents"></a>`resourceLabelEvents` | [`MergeRequestResourceLabelEventConnection`](#mergerequestresourcelabeleventconnection) | Label events of the merge request. (see [Connections](#connections)) |
 | <a id="mergerequest-retargeted"></a>`retargeted` | [`Boolean`](#boolean) | Indicates if merge request was retargeted. |
 | <a id="mergerequest-reviewers"></a>`reviewers` | [`MergeRequestReviewerConnection`](#mergerequestreviewerconnection) | Users from whom a review has been requested. (see [Connections](#connections)) |
 | <a id="mergerequest-riskassessment"></a>`riskAssessment`  | [`MergeRequestRiskAssessment`](#mergerequestriskassessment) | Introduced in GitLab 19.4. Status: Experiment. Risk classification for the merge request. Ultimate only. |
@@ -50902,6 +50960,20 @@ Fields:
 | <a id="mergerequestpermissions-removesourcebranch"></a>`removeSourceBranch` | [`Boolean!`](#boolean) | If `true`, the user can perform `remove_source_branch` on this resource. |
 | <a id="mergerequestpermissions-revertoncurrentmergerequest"></a>`revertOnCurrentMergeRequest` | [`Boolean!`](#boolean) | If `true`, the user can perform `revert_on_current_merge_request` on this resource. |
 | <a id="mergerequestpermissions-updatemergerequest"></a>`updateMergeRequest` | [`Boolean!`](#boolean) | If `true`, the user can perform `update_merge_request` on this resource. |
+
+### `MergeRequestResourceLabelEvent`
+
+Label event on a merge request.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequestresourcelabelevent-action"></a>`action` | [`ResourceLabelEventAction!`](#resourcelabeleventaction) | Action of the label event. |
+| <a id="mergerequestresourcelabelevent-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the label event was created. |
+| <a id="mergerequestresourcelabelevent-id"></a>`id` | [`ResourceLabelEventID!`](#resourcelabeleventid) | Global ID of the label event. |
+| <a id="mergerequestresourcelabelevent-label"></a>`label` | [`Label`](#label) | Label associated with the event. Null if the label was deleted. |
+| <a id="mergerequestresourcelabelevent-user"></a>`user` | [`UserCore`](#usercore) | User who triggered the event. |
 
 ### `MergeRequestReviewer`
 
@@ -53955,7 +54027,10 @@ Fields:
 | <a id="pipeline-codequalityreportsummary"></a>`codeQualityReportSummary` | [`CodeQualityReportSummary`](#codequalityreportsummary) | Code Quality report summary for a pipeline. |
 | <a id="pipeline-codequalityreports"></a>`codeQualityReports` | [`CodeQualityDegradationConnection`](#codequalitydegradationconnection) | Code Quality degradations reported on the pipeline. (see [Connections](#connections)) |
 | <a id="pipeline-commit"></a>`commit` | [`Commit`](#commit) | Git commit of the pipeline. |
+| <a id="pipeline-commitauthorgravatar"></a>`commitAuthorGravatar` | [`String`](#string) | Gravatar URL of the author of the pipeline's commit. |
+| <a id="pipeline-commitauthorname"></a>`commitAuthorName` | [`String`](#string) | Name of the author of the pipeline's commit. |
 | <a id="pipeline-commitpath"></a>`commitPath` | [`String`](#string) | Path to the commit that triggered the pipeline. |
+| <a id="pipeline-committitle"></a>`commitTitle` | [`String`](#string) | Title of the pipeline's commit. |
 | <a id="pipeline-committedat"></a>`committedAt` | [`Time`](#time) | Timestamp of the pipeline's commit. |
 | <a id="pipeline-complete"></a>`complete` | [`Boolean!`](#boolean) | Indicates if a pipeline is complete. |
 | <a id="pipeline-computeminutes"></a>`computeMinutes` | [`Float`](#float) | Total minutes consumed by the pipeline. |
@@ -56049,6 +56124,7 @@ Arguments:
 | <a id="project-duoworkflowworkflows-environment"></a>`environment` | [`WorkflowEnvironment`](#workflowenvironment) | Environment, for example, IDE or web. |
 | <a id="project-duoworkflowworkflows-excludetypes"></a>`excludeTypes` | [`[String!]`](#string) | Types of flows to exclude (for example, ["software_development", "chat"]). |
 | <a id="project-duoworkflowworkflows-ids"></a>`ids` | [`[AiDuoWorkflowsWorkflowID!]`](#aiduoworkflowsworkflowid) | Filter flows by a list of IDs. |
+| <a id="project-duoworkflowworkflows-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project that contains the flows. |
 | <a id="project-duoworkflowworkflows-projectpath"></a>`projectPath` | [`ID`](#id) | Full path of the project that contains the flows. |
 | <a id="project-duoworkflowworkflows-search"></a>`search` | [`String`](#string) | Flow title or goal to search for. |
 | <a id="project-duoworkflowworkflows-sort"></a>`sort` | [`DuoWorkflowsWorkflowSort`](#duoworkflowsworkflowsort) | Sort flows by the criteria. |
@@ -65365,6 +65441,15 @@ Possible flow configuration types for AI Catalog agents.
 | ----- | ----------- |
 | <a id="aicatalogflowconfigtype-chat"></a>`CHAT` | Chat flow configuration. |
 
+### `AiCatalogItemConsumerKind`
+
+The type of configured AI catalog item.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aicatalogitemconsumerkind-direct"></a>`DIRECT` | Direct enablement. |
+| <a id="aicatalogitemconsumerkind-inheritance"></a>`INHERITANCE` | Inheritance enablement. |
+
 ### `AiCatalogItemReportReason`
 
 Possible reasons for reporting an AI catalog item.
@@ -70073,6 +70158,15 @@ Process mode for resource groups.
 | <a id="resourcegroupsprocessmode-oldest_first"></a>`OLDEST_FIRST` | Oldest first. |
 | <a id="resourcegroupsprocessmode-unordered"></a>`UNORDERED` | Unordered. |
 
+### `ResourceLabelEventAction`
+
+Action taken on a resource label event.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="resourcelabeleventaction-add"></a>`ADD` | Add action. |
+| <a id="resourcelabeleventaction-remove"></a>`REMOVE` | Remove action. |
+
 ### `ReviewerWildcardId`
 
 Reviewer ID wildcard values.
@@ -70780,6 +70874,7 @@ Name of the feature that the callout is for.
 | <a id="usercalloutfeaturenameenum-duo_panel_empty_state_auto_expanded"></a>`DUO_PANEL_EMPTY_STATE_AUTO_EXPANDED` | Callout feature name for duo_panel_empty_state_auto_expanded. |
 | <a id="usercalloutfeaturenameenum-email_otp_enrollment_callout"></a>`EMAIL_OTP_ENROLLMENT_CALLOUT` | Callout feature name for email_otp_enrollment_callout. |
 | <a id="usercalloutfeaturenameenum-expired_trial_status_widget"></a>`EXPIRED_TRIAL_STATUS_WIDGET` | Callout feature name for expired_trial_status_widget. |
+| <a id="usercalloutfeaturenameenum-explore_analytics_dashboards_promo"></a>`EXPLORE_ANALYTICS_DASHBOARDS_PROMO` | Callout feature name for explore_analytics_dashboards_promo. |
 | <a id="usercalloutfeaturenameenum-feature_flags_new_version"></a>`FEATURE_FLAGS_NEW_VERSION` | Callout feature name for feature_flags_new_version. |
 | <a id="usercalloutfeaturenameenum-feature_library_shimmer_seen"></a>`FEATURE_LIBRARY_SHIMMER_SEEN` | Callout feature name for feature_library_shimmer_seen. |
 | <a id="usercalloutfeaturenameenum-file_tree_browser_popover"></a>`FILE_TREE_BROWSER_POPOVER` | Callout feature name for file_tree_browser_popover. |
@@ -73074,6 +73169,12 @@ An example `RemoteDevelopmentWorkspaceVariableID` is: `"gid://gitlab/RemoteDevel
 A `RemoteDevelopmentWorkspacesAgentConfigID` is a global ID. It is encoded as a string.
 
 An example `RemoteDevelopmentWorkspacesAgentConfigID` is: `"gid://gitlab/RemoteDevelopment::WorkspacesAgentConfig/1"`.
+
+### `ResourceLabelEventID`
+
+A `ResourceLabelEventID` is a global ID. It is encoded as a string.
+
+An example `ResourceLabelEventID` is: `"gid://gitlab/ResourceLabelEvent/1"`.
 
 ### `SbomComponentID`
 

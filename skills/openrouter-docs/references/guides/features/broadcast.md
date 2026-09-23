@@ -382,7 +382,7 @@ Some field names appear at both the top level of the trace and inside each `obse
     </Accordion>
 
     <Accordion title="Timing and latency">
-      | Destination             | `timestamp`                           | `startTime`                           | `endTime`                             | `routerLatencyMs`                     | `timeline`                            |
+      | Destination             | `timestamp`                           | `startTime`                           | `endTime`                             | `routerLatencyMs`                     | `timeline`<br />(raw object)          |
       | ----------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
       | Arize AX                | —                                     | —                                     | —                                     | —                                     | —                                     |
       | Braintrust              | —                                     | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> | —                                     |
@@ -403,6 +403,47 @@ Some field names appear at both the top level of the trace and inside each `obse
       | Snowflake               | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> | —                                     |
       | W\&B Weave              | <Icon icon="check" color="#16a34a" /> | —                                     | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> | —                                     |
       | Webhook                 | —                                     | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> | —                                     |
+    </Accordion>
+
+    <Accordion title="Derived latency metrics">
+      These two keys are computed by OpenRouter from the `timeline` milestones rather than
+      being fields of the trace, so they are not listed in the tables above. Destinations
+      that receive a metadata bag get them as `openrouter_provider_time_to_first_token_ms`
+      and `openrouter_inter_token_latency_ms`; OTLP destinations get the same names dotted
+      (`openrouter.inter_token_latency_ms`).
+
+      Both are sent on the root generation only, and both are **omitted rather than zeroed**
+      when they cannot be measured: time to first token needs `providerRequestMs` and
+      `firstTokenMs`, and inter-token latency needs `firstTokenMs`, `providerBodyEndMs` and
+      at least two output tokens. A non-streamed response or a `max_tokens: 1` request
+      therefore carries the milestones but no inter-token latency.
+
+      Inter-token latency is the mean gap between output tokens, matching vLLM's
+      `request_time_per_output_token`: `(providerBodyEndMs - firstTokenMs) / (output_tokens - 1)`.
+
+      | Destination             | `provider_time_to_first_token_ms`     | `inter_token_latency_ms`              |
+      | ----------------------- | ------------------------------------- | ------------------------------------- |
+      | Arize AX                | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | Braintrust              | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | ClickHouse              | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | Comet Opik              | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | Datadog                 | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | Google BigQuery (beta)  | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | Grafana Cloud           | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | Langfuse                | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | LangSmith               | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | New Relic               | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | OpenTelemetry Collector | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | PostHog                 | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | Raindrop (beta)         | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | Ramp                    | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | S3 / S3-Compatible      | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | Sentry                  | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | Snowflake               | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | W\&B Weave              | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+      | Webhook                 | <Icon icon="check" color="#16a34a" /> | <Icon icon="check" color="#16a34a" /> |
+
+      Every documented destination receives both.
     </Accordion>
 
     <Accordion title="Prompt and completion content">

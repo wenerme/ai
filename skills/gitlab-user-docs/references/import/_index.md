@@ -13,7 +13,7 @@ A migration tool is available for some third-party platforms. Some support
 | Migrate from                                                                   | Groups                  | Projects    | Migration tool | Post-migration mapping |
 |:-------------------------------------------------------------------------------|:------------------------|:------------|:---------------|:-----------------------|
 | [GitLab (by using direct transfer)](../group/import/_index.md)                 | Yes             | Yes | Yes    | Yes            |
-| [GitLab (by using file export)](../project/settings/import_export.md)          | Yes<sup>1</sup> | Yes | Yes    | No             |
+| [GitLab (by using file export)](../project/settings/import_export.md)          | Yes[^file-export-deprecated] | Yes | Yes    | No             |
 | [Bitbucket Server](bitbucket_server.md)                                        | No              | Yes | Yes    | Yes            |
 | [GitHub](../project/import/github.md)                                          | No              | Yes | Yes    | Yes            |
 | [Gitea](gitea.md)                                                              | No              | Yes | Yes    | Yes            |
@@ -28,9 +28,7 @@ A migration tool is available for some third-party platforms. Some support
 | [Team Foundation Version Control (TFVC)](third_party_systems/tfvc.md)          | No              | Yes | No     | No             |
 | [Jira (issues only)](third_party_systems/jira.md)                              | No              | No  | Yes    | No             |
 
-**Footnotes**:
-
-1. Using file exports for group migration is deprecated.
+[^file-export-deprecated]: Using file exports for group migration is deprecated.
 
 ## Migrate from Subversion
 

@@ -35,12 +35,10 @@ For more information, see the links shown on this page for each external provide
 
 | Capability                                      | GitLab.com                              | GitLab Self-Managed                       |
 |-------------------------------------------------|-----------------------------------------|------------------------------------|
-| **User Provisioning**                           | SCIMSAML <sup>1</sup> | LDAP <sup>1</sup>SAML <sup>1</sup>[OmniAuth Providers](../../integration/omniauth.md#supported-providers) <sup>1</sup>SCIM  |
+| **User Provisioning**                           | SCIMSAML[^jit-provisioning] | LDAP[^jit-provisioning]SAML[^jit-provisioning][OmniAuth Providers](../../integration/omniauth.md#supported-providers)[^jit-provisioning]SCIM  |
 | **User Detail Updating** (not group management) | Not Available                           | LDAP Sync                          |
 | **Authentication**                              | SAML at top-level group (1 provider)    | LDAP (multiple providers)Generic OAuth 2.0SAML (only 1 permitted per unique provider)KerberosJWTSmart card[OmniAuth Providers](../../integration/omniauth.md#supported-providers) (only 1 permitted per unique provider) |
 | **Provider-to-GitLab Role Sync**                | SAML Group Sync                         | LDAP Group SyncSAML Group Sync |
 | **User Removal**                                | SCIM (remove user from top-level group) | LDAP (remove user from groups and block from the instance)SCIM |
 
-**Footnotes**:
-
-1. Using Just-In-Time (JIT) provisioning, user accounts are created when the user first signs in.
+[^jit-provisioning]: Using Just-In-Time (JIT) provisioning, user accounts are created when the user first signs in.

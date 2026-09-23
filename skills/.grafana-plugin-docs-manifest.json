@@ -1536,8 +1536,8 @@
   },
   "grafana-pathfinder-app/block-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/block-editor.md",
-    "size": 16793,
-    "updatedAt": "2026-08-19T02:11:33.803Z"
+    "size": 17626,
+    "updatedAt": "2026-09-23T04:43:25.074Z"
   },
   "grafana-pathfinder-app/getting-started.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/getting-started.md",
@@ -1556,13 +1556,13 @@
   },
   "grafana-pathfinder-app/upgrade-notes.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/upgrade-notes.md",
-    "size": 14183,
-    "updatedAt": "2026-08-19T02:11:34.594Z"
+    "size": 15287,
+    "updatedAt": "2026-09-23T04:43:25.730Z"
   },
   "grafana-pyroscope-app/access.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/access.md",
-    "size": 1468,
-    "updatedAt": "2026-06-25T05:42:58.396Z"
+    "size": 1474,
+    "updatedAt": "2026-09-23T04:43:25.884Z"
   },
   "grafana-pyroscope-app/access/profile-settings.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/access/profile-settings.md",
@@ -1571,8 +1571,8 @@
   },
   "grafana-pyroscope-app/choose-a-view.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/choose-a-view.md",
-    "size": 5270,
-    "updatedAt": "2026-06-25T05:42:59.107Z"
+    "size": 6581,
+    "updatedAt": "2026-09-23T04:43:26.199Z"
   },
   "grafana-pyroscope-app/concepts.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/concepts.md",
@@ -1601,13 +1601,13 @@
   },
   "grafana-pyroscope-app/determine-use-case.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/determine-use-case.md",
-    "size": 3954,
-    "updatedAt": "2026-06-25T05:43:01.760Z"
+    "size": 3953,
+    "updatedAt": "2026-09-23T04:43:27.144Z"
   },
   "grafana-pyroscope-app/get-started.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/get-started.md",
-    "size": 1967,
-    "updatedAt": "2026-06-25T05:43:02.122Z"
+    "size": 1973,
+    "updatedAt": "2026-09-23T04:43:27.302Z"
   },
   "grafana-pyroscope-app/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest.md",

@@ -42,12 +42,10 @@ GitLab Duo supports the following types of skills:
 | Level                                                              | GitLab UI | Editor extensions | GitLab Duo CLI |
 |--------------------------------------------------------------------|-------------------------------|-------------------|----------------|
 | User-level: Apply to all of your projects      | No                    | No        | Yes    |
-| Project-level: Apply only to a specific project | Yes <sup>1</sup>                   | Yes       | Yes    |
+| Project-level: Apply only to a specific project | Yes[^foundational-custom-flows]                   | Yes       | Yes    |
 
-**Footnotes**:
-
-1. In the GitLab UI, only foundational and custom flows, excluding Code Review, support project-level
-   skills. GitLab Duo Chat in the GitLab UI does not support skills.
+[^foundational-custom-flows]: In the GitLab UI, only foundational and custom flows, excluding Code Review, support project-level
+    skills. GitLab Duo Chat in the GitLab UI does not support skills.
 
 ## Use Agent Skills with GitLab Duo
 

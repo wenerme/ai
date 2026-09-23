@@ -20,21 +20,19 @@ The Bitbucket Server importer imports a subset of items from Bitbucket Server.
 | Git repository data                                                           | Yes |
 | Pull requests, including comments, user mentions, reviewers, and merge events | Yes |
 | LFS objects                                                                   | Yes |
-| Comments on code<sup>1</sup>                                                  | Yes |
-| Threads<sup>2</sup>                                                           | Yes |
-| Project filters<sup>3</sup>                                                   | Yes |
+| Comments on code[^doesn-allow-comments]                                                  | Yes |
+| Threads[^multiple-threading-levels]                                                           | Yes |
+| Project filters[^project-filtering-doesn]                                                   | Yes |
 | Attachments in Markdown                                                       | No |
 | Task lists                                                                    | No |
 | Emoji reactions                                                               | No |
 | Pull request approvals                                                        | No |
 | Approval rules for pull requests                                              | No |
 
-Footnotes:
-
-1. GitLab doesn't allow comments on arbitrary lines of code. Any out-of-bounds Bitbucket comments are inserted as
-   comments in the merge request.
-1. Multiple threading levels are collapsed into one thread and quotes are added as part of the original comment.
-1. Project filtering doesn't support fuzzy search. Only starts with or full match strings are supported.
+[^doesn-allow-comments]: GitLab doesn't allow comments on arbitrary lines of code. Any out-of-bounds Bitbucket comments are inserted as
+    comments in the merge request.
+[^multiple-threading-levels]: Multiple threading levels are collapsed into one thread and quotes are added as part of the original comment.
+[^project-filtering-doesn]: Project filtering doesn't support fuzzy search. Only starts with or full match strings are supported.
 
 ## Known issues
 

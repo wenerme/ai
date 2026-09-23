@@ -12,7 +12,7 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
 ### Returns
 
-- `Credential object { id, auth, created_at, 4 more }`
+- `Credential object { id, auth, created_at, 5 more }`
 
   Metadata for a stored credential. Secret values are never returned.
 
@@ -156,6 +156,10 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
     The Unix timestamp, in seconds, when the credential was created.
 
+  - `metadata: map[string]`
+
+    Application-defined key-value pairs associated with this credential.
+
   - `name: string`
 
     The human-readable name of the credential.
@@ -202,6 +206,9 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
     "type": "mcp_oauth"
   },
   "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
   "name": "name",
   "object": "vault.credential",
   "updated_at": 0,

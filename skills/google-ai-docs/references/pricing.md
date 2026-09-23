@@ -1174,27 +1174,19 @@ function calling.
 
 ### Standard
 
-<br />
-
-## Gemini 2.5 Computer Use Preview
-
-*[`gemini-2.5-computer-use-preview-10-2025`](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025)*
-
-<br />
-
-<br />
-
-<br />
-
-Our Computer Use model optimized for building browser control agents that
-automate tasks.
-
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|
 | Input price | Free of charge | $1.00 (text / image / video / audio) through December 31, 2026. $2.00 (text / image / video / audio) starting January 1, 2027. |
 | Output price | Free of charge | $5.00 through December 31, 2026. $10.00 starting January 1, 2027. |
 | Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+## Gemini 2.5 Computer Use Preview
+
+*[`gemini-2.5-computer-use-preview-10-2025`](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025)*
+
+Our Computer Use model optimized for building browser control agents that
+automate tasks.
 
 |   | Free Tier | Paid Tier, per 1M tokens in USD |
 |---|---|---|

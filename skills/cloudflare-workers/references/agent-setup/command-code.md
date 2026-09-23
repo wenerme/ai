@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+   Create a Logpush job to stream Workers analytics to my data warehouse.
    ```
 
 
@@ -175,11 +175,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Set up a KV namespace for edge-cached session storage in my Worker.
+```
+
+```txt
 Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
@@ -187,11 +191,7 @@ Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
-```
-
-```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Tips

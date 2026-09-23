@@ -76,7 +76,7 @@ To teach a user how to do something in Grafana, add an **Interactive** block. Th
 
 The **Pick element** button activates a click-anywhere selector picker — point at the element you want the guide to highlight, click it, and the editor fills in the most stable selector it can find. The Selector Health badge next to the field gives you a green/yellow/red signal on how robust the selector is, and the **Test** button flashes the matched element on the page so you can confirm it’s the right one.
 
-For automated sequences, use a **Multistep** block (the system performs each step in order when the user clicks Do it). For sequences the user must perform themselves, use a **Guided** block (the system highlights each step and waits for the user to act).
+For automated sequences, use a **Multistep** block (the system performs each step in order when the user clicks Do it). For sequences the user must perform themselves, use a **Guided** block (the system highlights each step and waits for the user to act). A guided block’s step actions are narrower than a multistep’s: `navigate` and `popout` aren’t offered, because neither gives the reader anything to do.
 
 ### 4. Group steps with sections
 
@@ -88,7 +88,7 @@ If you turn on **Add and record**, the editor immediately enters [recording mode
 
 Keep adding blocks until your guide tells a complete story. The canvas shows each block in order with quick edit, duplicate, and delete buttons:
 
-You can drag blocks by their handle to reorder them, or use **Select blocks** to pick several in one go (useful for merging sequential steps into a single multistep block).
+You can drag blocks by their handle to reorder them, or use **Select blocks** to choose any root or nested block. The selection toolbar can delete one or more blocks in a single confirmed, undoable change; when at least two mergeable steps are selected, it also offers multistep or guided grouping.
 
 ### 6. Save and publish
 
@@ -187,7 +187,9 @@ A read-only render of how the guide looks to end users. Use it to check formatti
 
 The raw JSON of the guide. You can edit it directly here for fine-grained tweaks or to paste in a guide someone else shared with you.
 
-If your edit produces invalid JSON, the editor refuses to switch back to Edit mode until you fix it.
+If your edit produces invalid JSON, or a guide that fails validation, the editor refuses to switch back to Edit mode until you fix it. One rule here is easy to trip over: the first block must not start with a heading that repeats the guide title.
+
+A `guided` block whose steps use the `navigate` or `popout` actions is a different case. Those actions don’t work in a guided block, but the editor still loads the guide, so you can open one that was published before the rule existed and repair it. The step is flagged as a warning on import, and as an error in Edit mode, and you can’t export the guide or open a pull request for it until you fix the step.
 
 ## The pop out button
 
