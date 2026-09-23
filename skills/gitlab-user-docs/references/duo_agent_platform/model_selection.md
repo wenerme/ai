@@ -22,14 +22,12 @@ This table lists the default model for each feature in the Agent Platform.
 | Feature | Model |
 |-------|--------------|
 | GitLab Duo Agentic Chat | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
-| Code Review Flow <sup>1</sup> | Claude Sonnet 5 Gemini Enterprise Agent Platform |
+| Code Review Flow[^earlier-code-review] | Claude Sonnet 5 Gemini Enterprise Agent Platform |
 | Security Review Flow | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
 | All other agents | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
 
-**Footnotes**:
-
-1. For GitLab 19.0 or earlier, Code Review Flow uses the [default LLM](../gitlab_duo/model_selection.md#default-models)
-   set for GitLab Duo Code Review, the non-agentic version.
+[^earlier-code-review]: For GitLab 19.0 or earlier, Code Review Flow uses the [default LLM](../gitlab_duo/model_selection.md#default-models)
+    set for GitLab Duo Code Review, the non-agentic version.
 
 ## Supported models
 
@@ -37,14 +35,15 @@ This table lists the default model for each feature in the Agent Platform.
 - Claude Sonnet 5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6383) as a supported model for Code Review Flow on August 3, 2026.
 - Claude Sonnet 4.5 as a supported model for Code Review Flow [deprecated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6483) on August 10, 2026 and [removed](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6621) on August 25, 2026.
 - GLM 5.3, Kimi K3, and MiniMax M3 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6930) as supported models for GitLab Duo Agentic Chat and all other agents on September 16, 2026.
+- GPT-6 Sol and GPT-6 Luna [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7062) as supported models for GitLab Duo Agentic Chat and all other agents on September 22, 2026.
 
 This table lists the models you can select for features
 in the Agent Platform.
 
-| Model                       | GitLab Duo Agentic Chat | Code Review Flow <sup>1</sup> | Security Review Flow | All other agents |
+| Model                       | GitLab Duo Agentic Chat | Code Review Flow[^supported-models-earlier-code-review] | Security Review Flow | All other agents |
 |-----------------------------|-------------------------|------------------|----------------------|------------------|
-| Claude Fable 5 <sup>2</sup> | Yes             | No       | No           | Yes      |
-| Claude Fable 5.1 <sup>2</sup> | Yes             | No       | No           | Yes      |
+| Claude Fable 5[^model-subject-limited] | Yes             | No       | No           | Yes      |
+| Claude Fable 5.1[^model-subject-limited] | Yes             | No       | No           | Yes      |
 | Claude Sonnet 4.5           | Yes             | No      | Yes          | Yes      |
 | Claude Sonnet 4.6           | Yes             | Yes      | Yes          | Yes      |
 | Claude Sonnet 5             | Yes             | Yes      | No           | Yes      |
@@ -54,6 +53,7 @@ in the Agent Platform.
 | Claude Opus 4.7             | Yes             | No       | No           | Yes      |
 | Claude Opus 4.8             | Yes             | No       | No           | Yes      |
 | Claude Opus 5               | Yes             | No       | No           | Yes      |
+| Claude Opus 5.5             | Yes             | No       | No           | Yes      |
 | Gemini 3.5 Flash            | Yes             | No       | No           | Yes      |
 | Gemini 3.6 Flash            | Yes             | No       | No           | Yes      |
 | Gemini 3.7 Flash            | Yes             | No       | No           | Yes      |
@@ -68,19 +68,19 @@ in the Agent Platform.
 | GPT-5 Mini                  | Yes             | No       | No           | Yes      |
 | GPT-5.4 Mini                | Yes             | No       | No           | Yes      |
 | GPT-5.4 Nano                | Yes             | No       | No           | Yes      |
-| GPT-5.5 <sup>2</sup>        | Yes             | No       | No           | Yes      |
-| GPT-5.6 Sol <sup>2</sup>    | Yes             | No       | No           | Yes      |
-| GPT-5.6 Terra <sup>2</sup>  | Yes             | No       | No           | Yes      |
-| GPT-5.6 Luna <sup>2</sup>   | Yes             | No       | No           | Yes      |
-| GPT-6 Astra <sup>2</sup>    | Yes             | No       | No           | Yes      |
+| GPT-5.5[^model-subject-limited]        | Yes             | No       | No           | Yes      |
+| GPT-5.6 Sol[^model-subject-limited]    | Yes             | No       | No           | Yes      |
+| GPT-5.6 Terra[^model-subject-limited]  | Yes             | No       | No           | Yes      |
+| GPT-5.6 Luna[^model-subject-limited]   | Yes             | No       | No           | Yes      |
+| GPT-6 Astra[^model-subject-limited]    | Yes             | No       | No           | Yes      |
+| GPT-6 Sol[^model-subject-limited]      | Yes             | No       | No           | Yes      |
+| GPT-6 Luna[^model-subject-limited]     | Yes             | No       | No           | Yes      |
 | Kimi K3                     | Yes             | No       | No           | Yes      |
 | MiniMax M3                  | Yes             | No       | No           | Yes      |
 
-**Footnotes**:
-
-1. For GitLab 19.0 or earlier, Code Review Flow can only use the [models available](../gitlab_duo/model_selection.md#gitlab-duo-for-merge-requests)
-   for GitLab Duo Code Review, the non-agentic version.
-1. This model is subject to [limited vendor-side data retention](../gitlab_duo/data_usage.md#data-retention).
+[^supported-models-earlier-code-review]: For GitLab 19.0 or earlier, Code Review Flow can only use the [models available](../gitlab_duo/model_selection.md#gitlab-duo-for-merge-requests)
+    for GitLab Duo Code Review, the non-agentic version.
+[^model-subject-limited]: This model is subject to [limited vendor-side data retention](../gitlab_duo/data_usage.md#data-retention).
 
 ## Select a model for a feature
 

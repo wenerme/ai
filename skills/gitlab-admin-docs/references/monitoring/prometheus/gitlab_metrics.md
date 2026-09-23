@@ -133,7 +133,7 @@ The following metrics are available:
 | `gitlab_ref_cache_trust_events_total`                                          | Counter   |  19.4 | `ref_type`, `event`                                                     | Total ref cache trust lifecycle events. `ref_type` is `branch`, `tag`, or `unknown`. `event` is `granted`, `revoked`, or `grant_skipped`. |
 | `gitlab_ruby_threads_max_expected_threads`                                     | Gauge     |  13.3 |                                                                         | Maximum number of threads expected to be running and performing application work |
 | `gitlab_ruby_threads_running_threads`                                          | Gauge     |  13.3 |                                                                         | Number of running Ruby threads by name |
-| `gitlab_secrets_manager_entitlement_resolutions_total`                         | Counter   |  19.4 | `source`                                                                | Secrets Manager entitlement resolutions that queried Customers Portal; offline and cached resolutions are not counted. `source` is `live` (Customers Portal answered), `lkg_stale` (Customers Portal was unreachable, so GitLab reused its last known good answer), or `fail_closed` (the resolution failed, so GitLab denied access). Premium and Ultimate only. |
+| `gitlab_secrets_manager_entitlement_resolutions_total`                         | Counter   |  19.4 | `source`                                                                | Secrets Manager entitlement resolutions that queried Customers Portal; offline and cached resolutions are not counted. `source` is `live` (Customers Portal answered), `lkg_stale` (Customers Portal was unreachable or answered with an HTTP 5xx error, so GitLab reused its last known good answer), or `fail_closed` (the resolution failed, so GitLab denied access). Premium and Ultimate only. |
 | `gitlab_security_policies_policy_creation_duration_seconds`                    | Histogram |  17.6 |                                                                         | The amount of time to create policy-related configuration |
 | `gitlab_security_policies_policy_deletion_duration_seconds`                    | Histogram |  17.6 |                                                                         | The amount of time to delete policy-related configuration |
 | `gitlab_security_policies_policy_sync_duration_seconds`                        | Histogram |  17.6 |                                                                         | The amount of time to sync policy changes for a policy configuration |
@@ -923,7 +923,7 @@ and the metrics all have these labels:
 | Metric                                              | Type  | Since | Description |
 |:----------------------------------------------------|:------|:------|:------------|
 | `gitlab_database_connection_pool_size`              | Gauge | 13.0  | Total connection pool capacity |
-| `gitlab_database_connection_pool_connections`       | Gauge | 13.0  | Number of connections that have been created in the pool. <sup>1</sup> |
+| `gitlab_database_connection_pool_connections`       | Gauge | 13.0  | Number of connections that have been created in the pool.[^idle-connection-count] |
 | `gitlab_database_connection_pool_busy`              | Gauge | 13.0  | Connections in use where the owner is still alive |
 | `gitlab_database_connection_pool_dead`              | Gauge | 13.0  | Connections in use where the owner is not alive |
 | `gitlab_database_connection_pool_idle`              | Gauge | 13.0  | Connections created, but not currently in use |
@@ -931,9 +931,7 @@ and the metrics all have these labels:
 | `gitlab_database_extended_connection_pool_busy`     | Gauge | 18.11 | Connections in use where the owner is still alive, per thread |
 | `gitlab_database_extended_connection_pool_dead`     | Gauge | 18.11 | Connections in use where the owner is not alive, per thread |
 
-**Footnotes**:
-
-1. Because `idle` counts only initialized connections that are not in use, the total of `busy`, `dead`, and `idle` connections can be less than or equal to the total number of connections.
+[^idle-connection-count]: Because `idle` counts only initialized connections that are not in use, the total of `busy`, `dead`, and `idle` connections can be less than or equal to the total number of connections.
 
 In GitLab 18.11 and later, the default connection pool gauges are
 aggregated across Puma worker processes, so a single time series is

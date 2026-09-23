@@ -2,13 +2,15 @@
 > Fetch the complete documentation index at: https://openrouter.ai/docs/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# TypeSafe SDK
+# Jev SDK for TypeScript and Python (TypeSafe SDK)
 
-> Using the TypeSafe SDK with OpenRouter
+> Point the official TypeSafe JavaScript or Python SDK at OpenRouter to call Jev with your OpenRouter API key
 
 ## TypeSafe SDK
 
-You can point an existing [TypeSafe](https://docs.typesafe.ai) client at OpenRouter by changing its base URL. Requests to System One models such as Jev are then billed to your OpenRouter account and routed through OpenRouter's System One API.
+You can point an existing [TypeSafe](https://docs.typesafe.ai) client at OpenRouter by changing its base URL. Requests to System One models such as [Jev](https://openrouter.ai/typesafe/jev-1.13) are then billed to your OpenRouter account and routed through OpenRouter's System One API. The TypeSafe SDK is available for JavaScript and TypeScript (`@typesafe-ai/sdk`) and for Python (`typesafe_sdk`).
+
+If you would rather call Jev without the TypeSafe SDK, use the [Decisions API](/docs/api/api-reference/alphadecisions/submit-a-decisions-questions-and-answers-request) directly or through the OpenRouter [TypeScript](/docs/client-sdks/typescript/sdks/decisions/README), [Python](/docs/client-sdks/python/sdks/decisions/README), or [Go](/docs/client-sdks/go/sdks/decisions/README) SDK.
 
 ### Base URL
 
@@ -137,3 +139,11 @@ curl https://openrouter.ai/api/v1/systemone \
   "usage": { "input_tokens": 275, "output_tokens": 20, "cost": 0.00003 }
 }
 ```
+
+### Jev resources on OpenRouter
+
+* [Jev model page](https://openrouter.ai/typesafe/jev-1.13) for pricing, context length, and provider details
+* [Gate Agent Tool Calls with Jev](/docs/cookbook/building-agents/gate-tool-calls-with-jev) for approving, blocking, or escalating agent tool calls
+* [Cut LLM Cost with a Jev-Verified Cascade](/docs/cookbook/evaluate-and-optimize/jev-verified-cascade) for verifying cheap-model answers before escalating
+* [Jev Lab](https://openrouter.ai/labs/jev) for interactive demos of Jev's triage, extraction, and oversight patterns
+* [TypeSafe documentation](https://docs.typesafe.ai) for System One concepts, question types, and SDK reference

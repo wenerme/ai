@@ -239,13 +239,19 @@ paths:
               example:
                 error:
                   code: 409
-                  message: The intern is not in a state that allows this operation
+                  message: Another operation holds the intern, retry once it settles
                   metadata:
                     reason: intern_busy
-                    retryable: false
+                    retryable: true
               schema:
                 $ref: '#/components/schemas/InternLifecycleError'
-          description: The intern is not in a state that allows this operation.
+          description: >-
+            The intern is not in a state that allows this operation.
+            `metadata.reason` says whether to try again: `intern_busy` means
+            another operation still holds the intern and carries
+            `metadata.retryable: true`, so the same request may be sent again
+            once it settles. A duplicate delete of an intern already being
+            deleted is not a conflict and is accepted with 202.
         '413':
           content:
             application/json:

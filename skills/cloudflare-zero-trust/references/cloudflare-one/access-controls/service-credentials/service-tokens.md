@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Service tokens
 
-Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can provide automated systems with service tokens to authenticate against your Cloudflare One policies. Cloudflare Access will generate service tokens that consist of a Client ID and a Client Secret. Automated systems or applications can then use these values to reach an application protected by Access.
 
-This section covers how to create, rotate, renew, disable, and revoke a service token.
+This section covers how to create, rotate, renew, disable, and revoke a service token. You can also configure Access to manage inactive service tokens automatically.
 
 ## Create a service token
 
@@ -326,6 +326,43 @@ resource "cloudflare_zero_trust_access_service_token" "example_service_token" {
 }
 ```
 
+## Manage inactive service tokens
+
+You can configure Access to automatically disable or delete service tokens that are no longer in use. The setting applies to all service tokens in your Zero Trust account.
+
+Access considers a service token inactive when all of the following are true:
+
+- The token has not successfully authenticated with an Access application during the configured inactivity period.
+- The token is older than the configured inactivity period.
+- The token is not directly referenced by an Access policy rule.
+
+You can set the inactivity period to a whole number from 30 to 365 days. Disabled tokens remain in your account and can be turned on again. Deleted tokens cannot be recovered.
+
+1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**. [Go to **Access settings** ↗](https://one.dash.cloudflare.com/?to=/:account/access-controls/settings)
+2. Under **Manage service tokens**, turn on **Automatically clean up inactive service tokens**.
+3. Enter an **Inactivity period** from 30 to 365 days.
+4. Choose whether Access should disable or delete inactive tokens.
+5. Select **Save**.
+
+Send a `PATCH` request to update your Zero Trust organization. Set `action` to `disable` or `delete`:
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/organizations" \
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"service_token_inactivity": {
+				"enabled": true,
+				"inactivity_threshold_days": 90,
+				"action": "disable"
+		}
+	}'
+```
+
+To stop automatic cleanup, set `enabled` to `false`.
+
+Cleanup runs gradually in the background. An eligible token may not be disabled or deleted immediately.
+
 ## Turn a service token on or off
 
 Turn off a service token to temporarily prevent it from authenticating. Access preserves the token so you can turn it on again later.
@@ -458,5 +495,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#page","headline":"Service tokens","description":"Service tokens in Access.","url":"https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)","Authentication"]}
 ```

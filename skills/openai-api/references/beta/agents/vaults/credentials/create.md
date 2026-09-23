@@ -170,9 +170,13 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
   The name is trimmed before storage. It must contain 1 to 256 UTF-8 bytes after trimming.
 
+- `metadata: optional map[string]`
+
+  Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters. Defaults to an empty map.
+
 ### Returns
 
-- `Credential object { id, auth, created_at, 4 more }`
+- `Credential object { id, auth, created_at, 5 more }`
 
   Metadata for a stored credential. Secret values are never returned.
 
@@ -316,6 +320,10 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
     The Unix timestamp, in seconds, when the credential was created.
 
+  - `metadata: map[string]`
+
+    Application-defined key-value pairs associated with this credential.
+
   - `name: string`
 
     The human-readable name of the credential.
@@ -371,6 +379,9 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials \
     "type": "mcp_oauth"
   },
   "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
   "name": "name",
   "object": "vault.credential",
   "updated_at": 0,

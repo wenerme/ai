@@ -69,7 +69,7 @@ When a limit is reached, Cloudflare automatically deletes the oldest to make roo
 - **Preview limit**: the Preview that was deployed to least recently is deleted.
 - **Deployment limit**: the oldest deployment in that Preview is deleted.
 
-You can also delete Previews yourself with `npx wrangler preview delete --name <preview-name>`. For a pull request cleanup example, refer to [Delete closed pull request Previews](https://developers.cloudflare.com/workers/previews/automation-examples/#delete-closed-pull-request-previews).
+You can also delete Previews yourself with `npx wrangler preview delete --name <preview-name>`. For a pull request cleanup example, refer to [Delete closed pull request Previews](https://developers.cloudflare.com/workers/previews/examples/#delete-closed-pull-request-previews).
 
 ## Next steps
 

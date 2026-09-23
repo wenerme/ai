@@ -68,7 +68,7 @@ Register one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -104,7 +104,7 @@ Register one customer-managed external storage configuration.
 
         - `"azure"`
 
-    - `Gcp object { audience, bucket, region, 4 more }`
+    - `GcpExternalStorageProvider object { audience, bucket, region, 4 more }`
 
       - `audience: string`
 
@@ -341,7 +341,7 @@ List the organization's customer-managed external storage configurations.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -377,7 +377,7 @@ List the organization's customer-managed external storage configurations.
 
         - `"azure"`
 
-    - `Gcp object { audience, bucket, region, 4 more }`
+    - `GcpExternalStorageProvider object { audience, bucket, region, 4 more }`
 
       - `audience: string`
 
@@ -529,7 +529,7 @@ Get one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -565,7 +565,7 @@ Get one customer-managed external storage configuration.
 
         - `"azure"`
 
-    - `Gcp object { audience, bucket, region, 4 more }`
+    - `GcpExternalStorageProvider object { audience, bucket, region, 4 more }`
 
       - `audience: string`
 
@@ -675,7 +675,7 @@ Validate one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -711,7 +711,7 @@ Validate one customer-managed external storage configuration.
 
         - `"azure"`
 
-    - `Gcp object { audience, bucket, region, 4 more }`
+    - `GcpExternalStorageProvider object { audience, bucket, region, 4 more }`
 
       - `audience: string`
 
@@ -852,7 +852,7 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -888,7 +888,7 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
         - `"azure"`
 
-    - `Gcp object { audience, bucket, region, 4 more }`
+    - `GcpExternalStorageProvider object { audience, bucket, region, 4 more }`
 
       - `audience: string`
 
@@ -925,3 +925,23 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
   - `object: "organization.external_storage.deleted"`
 
     - `"organization.external_storage.deleted"`
+
+### Gcp External Storage Provider
+
+- `GcpExternalStorageProvider object { audience, bucket, region, 4 more }`
+
+  - `audience: string`
+
+  - `bucket: string`
+
+  - `region: string`
+
+  - `type: "gcp"`
+
+    - `"gcp"`
+
+  - `workload_identity_pool_id: string`
+
+  - `workload_identity_project_number: string`
+
+  - `workload_identity_provider_id: string`

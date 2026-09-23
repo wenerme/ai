@@ -19,11 +19,11 @@ The following table summarizes which types of dependencies each scanning tool ca
 |----------------------------------------------------------------------------------------------|---------------------|--------------------|
 | Identify the manifest, lock file, or static file that introduced the dependency              | Yes         | No         |
 | Development dependencies                                                                     | Yes         | No         |
-| Dependencies in a lock file committed to your repository                                     | Yes         | Yes <sup>1</sup> |
-| Binaries built by Go                                                                         | No          | Yes <sup>2</sup> |
+| Dependencies in a lock file committed to your repository                                     | Yes         | Yes[^lock-file-must] |
+| Binaries built by Go                                                                         | No          | Yes[^report-language-specific] |
 | Dynamically linked language-specific dependencies installed by the operating system          | No          | Yes        |
 | Operating system dependencies                                                                | No          | Yes        |
 | Language-specific dependencies installed on the operating system (not built by your project) | No          | Yes        |
 
-1. Lock file must be present in the image to be detected.
-1. [Report language-specific findings](container_scanning/_index.md#report-language-specific-findings) must be enabled, and binaries must be present in the image to be detected.
+[^lock-file-must]: Lock file must be present in the image to be detected.
+[^report-language-specific]: [Report language-specific findings](container_scanning/_index.md#report-language-specific-findings) must be enabled, and binaries must be present in the image to be detected.

@@ -5203,14 +5203,14 @@ the `background` parameter set to `true` can be cancelled.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more or string`
+  - `model: "gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 105 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-5.6-sol" or "gpt-5.6-terra" or 102 more`
+    - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 105 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -5218,6 +5218,10 @@ the `background` parameter set to `true` can be cancelled.
       to browse and compare available models.
 
       - `"gpt-6-astra"`
+
+      - `"gpt-6-sol"`
+
+      - `"gpt-6-luna"`
 
       - `"gpt-5.6-sol"`
 
@@ -5426,6 +5430,8 @@ the `background` parameter set to `true` can be cancelled.
       - `"gpt-daybreak-red-latest"`
 
       - `"gpt-5.6-cyber"`
+
+      - `"gpt-rosalind-research"`
 
     - `string`
 

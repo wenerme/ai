@@ -273,5 +273,8 @@ The following are things to check about the behavior you've implemented.
 Here are a few things you can try next:
 
 * [Decisions API reference](/docs/api/api-reference/alphadecisions/submit-a-decisions-questions-and-answers-request)
+* [Gate Agent Tool Calls with Jev](/docs/cookbook/building-agents/gate-tool-calls-with-jev) to apply the same approve, block, or review pattern to agent tool calls
+* [Jev SDK for TypeScript and Python](/docs/guides/community/typesafe-sdk) to call Jev through the TypeSafe SDK
+* [Jev model page](https://openrouter.ai/typesafe/jev-1.13) and [Jev Lab](https://openrouter.ai/labs/jev) for pricing and interactive demos
 * [RAG with Embeddings & Rerank](/docs/cookbook/evaluate-and-optimize/rag)
 * [Add Human-in-the-Loop Controls to an Agent SDK Agent](/docs/cookbook/building-agents/hitl-tools)

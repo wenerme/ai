@@ -14,7 +14,7 @@ are available on GitLab Self-Managed only.
 
 | Feature | GitLab Duo Pro | GitLab Duo Enterprise | GitLab Duo with Amazon Q |
 |---------|----------------|----------------------|--------------------------|
-| [Code Suggestions](../project/repository/code_suggestions/_index.md) <sup>1</sup> | Yes | Yes | Yes |
+| [Code Suggestions](../project/repository/code_suggestions/_index.md)[^code-suggestions-available] | Yes | Yes | Yes |
 | [GitLab Duo Non-Agentic Chat](../gitlab_duo_chat/_index.md) | Yes | Yes | Yes |
 | [Code Explanation](../gitlab_duo_chat/examples.md#explain-selected-code) in IDEs | Yes | Yes | Yes |
 | [Refactor Code](../gitlab_duo_chat/examples.md#refactor-code-in-the-ide) in IDEs | Yes | Yes | Yes |
@@ -22,18 +22,16 @@ are available on GitLab Self-Managed only.
 | [Test Generation](../gitlab_duo_chat/examples.md#write-tests-in-the-ide) in IDEs | Yes | Yes | Yes |
 | [Code Explanation](../project/repository/code_explain.md) in GitLab UI | Yes | Yes | Yes |
 | [Discussion Summary](../discussions/_index.md#summarize-issue-discussions-with-gitlab-duo-chat) | No | Yes | Yes |
-| [Code Review](code_review.md) <sup>2</sup> | No | Yes | Yes |
+| [Code Review](code_review.md)[^amazon-supports-different] | No | Yes | Yes |
 | [Root Cause Analysis](../gitlab_duo_chat/examples.md#troubleshoot-failed-cicd-jobs-with-root-cause-analysis) | No | Yes | Yes |
 | [Vulnerability Explanation](../application_security/analyze/duo.md) | No | Yes | Yes |
 | [Vulnerability Resolution](../application_security/remediate/duo.md) | No | Yes | Yes |
 | [Merge Commit Message Generation](../project/merge_requests/duo_in_merge_requests.md#generate-a-merge-commit-message) | No | Yes | Yes |
 
-**Footnotes**:
-
-1. Code Suggestions is also available as part of the GitLab Duo Agent Platform, without an
-   additional add-on.
-1. Amazon Q supports a different version of this feature.
-   [View how to use Amazon Q to review code](../duo_amazon_q/_index.md#review-a-merge-request).
+[^code-suggestions-available]: Code Suggestions is also available as part of the GitLab Duo Agent Platform, without an
+    additional add-on.
+[^amazon-supports-different]: Amazon Q supports a different version of this feature.
+    [View how to use Amazon Q to review code](../duo_amazon_q/_index.md#review-a-merge-request).
 
 ## Beta and experimental features
 

@@ -68,7 +68,7 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 | [Convert to GitLab CI/CD Flow](flows/foundational_flows/convert_to_gitlab_ci.md)  Convert legacy CI/CD pipelines to the GitLab CI/CD format. | Yes | Yes  | Yes |
 | [Fix CI/CD Pipeline Flow](flows/foundational_flows/fix_pipeline.md)  Diagnose and automatically fix failing CI/CD pipelines. | Yes | Yes  | Yes |
 | [Software Development Flow](flows/foundational_flows/software_development.md)  Create a full, multi-step plan before executing it. | Yes | Yes  | Yes |
-| [MCP clients](../gitlab_duo/model_context_protocol/mcp_clients.md)  Access GitLab resources and tools from any MCP-compatible AI client or IDE extension. <sup>1</sup> | Yes | Yes | Yes |
+| [MCP clients](../gitlab_duo/model_context_protocol/mcp_clients.md)  Access GitLab resources and tools from any MCP-compatible AI client or IDE extension.[^mcp-clients-consume] | Yes | Yes | Yes |
 | [Custom flows](flows/custom.md)  Combine multiple agents to solve your business problems. | Yes | Yes | Yes |
 | [Interactions in merge requests](../project/merge_requests/duo_in_merge_requests.md#interact-with-gitlab-duo)  Ask questions and discuss feedback in merge request comment threads. | Yes | Yes | Yes |
 | [Resolve merge conflicts](../project/merge_requests/conflicts.md#resolve-conflicts-with-gitlab-duo)  Autonomously analyze merge conflicts, edit conflicting files, and push a resolution commit. | No | Yes | Yes |
@@ -80,9 +80,7 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 | [Permissions Assistant](agents/foundational_agents/permissions_assistant.md)  Select the right permissions when creating a fine-grained personal access token. | No | No  | Yes |
 | [Security Analyst Agent](agents/foundational_agents/security_analyst_agent.md)  Automate repetitive security tasks: Triage issues, analyze vulnerabilities, and generate fixes. | No | No  | Yes |
 
-**Footnotes**:
-
-1. MCP clients do not consume credits directly. However, any Agent Platform usage, such as model requests made through an MCP client, might consume credits.
+[^mcp-clients-consume]: MCP clients do not consume credits directly. However, any Agent Platform usage, such as model requests made through an MCP client, might consume credits.
 
 ## Beta features that consume credits
 

@@ -1,0 +1,101 @@
+---
+description: Blocked senders in Email Security.
+title: Blocked senders
+image: https://developers.cloudflare.com/og-docs.png
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/cloudflare-one/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Blocked senders
+
+Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-senders/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Email security marks all messages from these senders with a malicious [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/).
+
+## How blocked senders work
+
+Blocked senders ensures messages from any sender is automatically marked as malicious, preventing them from reaching users' inbox.
+
+Sometimes, the same email, IP address or domain always sends malicious emails to the company. In this case, you can add an email address, IP address or domain as a blocked sender. You can choose to enter a regular expression by turning **Regular expression** on.
+
+## Configure blocked senders
+
+To configure blocked senders:
+
+1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+2. Select **Email security**.
+3. Select **Policies & rules**, then go to **Inbound** > **Blocked senders**.
+4. On the **Blocked senders** page, select **Add a sender**.
+5. Select the **Input method**: Choose between **Manual input**, and **Upload blocked sender list**:
+   - **Manual input**:
+     - **Sender type**:
+       - **Email addresses**: Must be a valid email.
+       - **IP addresses**: Can only be IPv4. IPv6 and CIDR are invalid entries.
+       - **Domains**: Must be a valid domain.
+       - **Regular expressions**: Must be valid Java expressions. Regular expressions are matched with fields related to the sender email address (envelope from, header from, reply-to), the originating IP address, and the server name for the email. For example, you can enter `.*@domain\.com` to exempt any email address that ends with `domain.com`.
+     - **Notes**: Provide additional information about the blocked sender policy.
+   - **Upload blocked sender list**: Upload a file that follows the [CSV upload format](#csv-uploads).
+6. Select **Save**.
+
+### CSV uploads
+
+You can upload a file no larger than 150 KB. The file can only contain `Blocked Sender`, `Blocked Sender Type`, `Is Regex`, and `Notes` fields. The first row must be a header row.
+
+An example file would look like this:
+
+```txt
+Blocked Sender, Blocked Sender Type, Is Regex, Notes
+john.smith@gmail.com, EMAIL, false, John Smith
+example.com, DOMAIN, false, Melanie Turner
+```
+
+## Export blocked senders
+
+To export all blocked senders:
+
+1. On the **Blocked senders** page, select **Sender**. Selecting **Sender** will select all blocked senders.
+2. Select **Export to CSV**.
+
+To export specific blocked senders:
+
+1. On the **Blocked senders** page, select **Value(s)**. Select the blocked senders you want to export.
+2. Select **Export to CSV**.
+
+## Edit a blocked sender
+
+To edit a blocked sender:
+
+1. On the **Blocked senders** page, select the blocked sender you want to edit.
+2. Select the three dots > **Edit**.
+3. Edit the blocked sender.
+4. Select **Save**.
+
+## Delete a blocked sender
+
+To delete a blocked sender:
+
+1. On the **Blocked senders** page, select the blocked sender you want to delete.
+2. Select the three dots > **Delete**.
+3. On the pop up message, select **Delete**.
+
+To delete multiple blocked senders at once:
+
+1. On the **Blocked senders** page, select the senders you want to delete.
+2. Select **Action**
+3. Select **Delete**.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-senders/#page","headline":"Blocked senders","description":"Blocked senders in Email Security.","url":"https://developers.cloudflare.com/cloudflare-one/email-security/policies/inbound/blocked-senders/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

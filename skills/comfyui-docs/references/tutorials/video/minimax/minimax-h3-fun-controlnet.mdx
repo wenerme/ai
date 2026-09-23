@@ -1,6 +1,6 @@
 ---
 title: "ComfyUI MiniMax H3 Fun ControlNet Union: Pose, Depth, and Canny Control Video"
-description: "Control MiniMax H3 video motion in ComfyUI with Canny, Depth, HED, MLSD, or Pose control videos, or run mask-based video inpainting with the Fun ControlNet Union patch."
+description: "Guide MiniMax H3 video motion in ComfyUI with Canny, Depth, HED, MLSD, or Pose control videos, plus mask-based inpainting with the Fun ControlNet Union patch."
 ---
 
 Control the motion of a MiniMax H3 video with a control video instead of text alone. The Fun ControlNet Union patch ([alibaba-pai/MiniMax-H3-Fun-Controlnet-Union](https://huggingface.co/alibaba-pai/MiniMax-H3-Fun-Controlnet-Union), packaged in [Comfy-Org/MiniMax-H3](https://huggingface.co/Comfy-Org/MiniMax-H3)) is a single checkpoint that conditions H3 on Canny, Depth, HED, MLSD, or Pose control videos, and also runs video inpainting with a mask. It works with both the `fl2va` and `ref2va` transformer files.
@@ -62,7 +62,7 @@ ComfyUI/
 │   ├── 📂 text_encoders/
 │   │   └── qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors
 │   ├── 📂 vae/
-│   │   ├── minimax_h3_video_vae_fp16.safetensors
+│   │   ├── minimax_h3_video_vae_int8_convrot.safetensors
 │   │   └── minimax_h3_audio_vae_fp32.safetensors
 │   ├── 📂 loras/
 │   │   └── minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors

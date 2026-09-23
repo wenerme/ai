@@ -5,7 +5,7 @@ description: "Browse Anthropic model IDs, capabilities, context windows, and pri
 
 # [Anthropic logo]Anthropic
 
-Access 14 Anthropic models through Mastra's model router. Authentication is handled automatically using the `ANTHROPIC_API_KEY` environment variable.
+Access 15 Anthropic models through Mastra's model router. Authentication is handled automatically using the `ANTHROPIC_API_KEY` environment variable.
 
 Learn more in the [Anthropic documentation](https://docs.anthropic.com/en/docs/about-claude/models).
 
@@ -156,6 +156,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 5,
     "outputCost": 25
+  },
+  {
+    "model": "anthropic/claude-opus-5-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 4,
+    "outputCost": 20
   },
   {
     "model": "anthropic/claude-sonnet-4-5",

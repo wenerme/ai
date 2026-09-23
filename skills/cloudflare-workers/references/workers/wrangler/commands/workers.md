@@ -1764,6 +1764,15 @@ pnpm wrangler triggers deploy
 - `--routes` `string` alias: --route
 
   Routes to upload
+- `--experimental-route-zones` `boolean` aliases: --x-route-zonesdefault: false
+
+  Experimental: Enable the --zone and --zone-id flags to attach a zone to the routes passed via --route
+- `--zone` `string` alias: --zones
+
+  Experimental (requires --x-route-zones): Zone name for the routes passed via --route. Pass one value to apply it to all routes, or one value per --route in the same order
+- `--zone-id` `string` alias: --zone-ids
+
+  Experimental (requires --x-route-zones): Zone ID for the routes passed via --route. Pass one value to apply it to all routes, or one value per --route in the same order
 - `--dry-run` `boolean` default: false
 
   Don't actually deploy

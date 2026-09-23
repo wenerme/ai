@@ -36,7 +36,7 @@ List the organization's customer-managed external storage configurations.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or object { audience, bucket, region, 4 more }`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -72,7 +72,7 @@ List the organization's customer-managed external storage configurations.
 
         - `"azure"`
 
-    - `Gcp object { audience, bucket, region, 4 more }`
+    - `GcpExternalStorageProvider object { audience, bucket, region, 4 more }`
 
       - `audience: string`
 

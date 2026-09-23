@@ -358,16 +358,14 @@ The following table lists the membership and visibility rights of project member
 | Action                                    | Direct project member | Inherited project member | Direct shared project member | Inherited shared project member |
 |-------------------------------------------|-----------------------|--------------------------|------------------------------|---------------------------------|
 | Generate boards                           | Yes           | Yes              | Yes                  | Yes                     |
-| View issues of parent groups <sup>1</sup> | Yes           | Yes              | Yes                  | Yes                     |
+| View issues of parent groups[^users-view-issues] | Yes           | Yes              | Yes                  | Yes                     |
 | View labels of parent groups              | Yes           | Yes              | Yes                  | Yes                     |
 | View milestones of parent groups          | Yes           | Yes              | Yes                  | Yes                     |
 | Be shared into other groups               | Yes           | No               | No                   | No                      |
 | Be imported into other projects           | Yes           | No               | No                   | No                      |
 | Share the project with other members      | Yes           | Yes              | Yes                  | Yes                     |
 
-**Footnotes**:
-
-1. Users can view only issues of projects they have access to.
+[^users-view-issues]: Users can view only issues of projects they have access to.
 
 The following table lists the membership and visibility rights of group members.
 

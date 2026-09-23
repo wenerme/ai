@@ -73,7 +73,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Add mTLS authentication and schema validation to protect my API endpoints.
+   Build an image upload and transformation service using R2 and Cloudflare Images.
    ```
 
 
@@ -179,7 +179,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+```
+
+```txt
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
@@ -187,15 +191,11 @@ Set up a Waiting Room to handle flash sale traffic spikes without dropping reque
 ```
 
 ```txt
+Create a Logpush job to stream Workers analytics to my data warehouse.
+```
+
+```txt
 Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ## Tips

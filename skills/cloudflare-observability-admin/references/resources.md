@@ -464,6 +464,8 @@ Products
 
 [**Kentik** Kentik is a network observability company that helps detect attacks on your network and triggers Cloudflare's Magic Transit to begin advertisement. The example scenario includes two mitigations, one which pulls the advertisement from the router and a second mitigation that makes an API call to Cloudflare.](https://developers.cloudflare.com/magic-transit/partners/kentik/)
 
+[**Best practices** Preserve credential boundaries, resource authorization, negotiation ordering, and cleanup when adapting Realtime SFU applications.](https://developers.cloudflare.com/realtime/sfu/best-practices/)
+
 [**AI Vibe Coding Platform** Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/)
 
 [**Enterprise AI agent workspace** Reference architecture for building governed, stateful enterprise AI agent workspaces on Cloudflare.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/)

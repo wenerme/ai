@@ -89,6 +89,7 @@ pnpm wrangler queues create [NAME]
 - `[NAME]` `string` required
 
   The name of the queue
+- `--jurisdiction` `string` The jurisdiction of the queue
 - `--delivery-delay-secs` `number` How long a published message should be delayed for, in seconds. Must be between 0 and 86400
 - `--message-retention-period-secs` `number` How long to retain a message in the queue, in seconds. Must be between 60 and 86400 if on free tier, otherwise must be between 60 and 1209600
 

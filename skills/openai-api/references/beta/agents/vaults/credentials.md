@@ -172,9 +172,13 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
   The name is trimmed before storage. It must contain 1 to 256 UTF-8 bytes after trimming.
 
+- `metadata: optional map[string]`
+
+  Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters. Defaults to an empty map.
+
 ### Returns
 
-- `Credential object { id, auth, created_at, 4 more }`
+- `Credential object { id, auth, created_at, 5 more }`
 
   Metadata for a stored credential. Secret values are never returned.
 
@@ -318,6 +322,10 @@ Creates a vault credential. Secret values are write-only and are never returned.
 
     The Unix timestamp, in seconds, when the credential was created.
 
+  - `metadata: map[string]`
+
+    Application-defined key-value pairs associated with this credential.
+
   - `name: string`
 
     The human-readable name of the credential.
@@ -373,6 +381,9 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials \
     "type": "mcp_oauth"
   },
   "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
   "name": "name",
   "object": "vault.credential",
   "updated_at": 0,
@@ -627,6 +638,10 @@ Lists a vault's credentials using ID-based pagination without returning secret v
 
     The Unix timestamp, in seconds, when the credential was created.
 
+  - `metadata: map[string]`
+
+    Application-defined key-value pairs associated with this credential.
+
   - `name: string`
 
     The human-readable name of the credential.
@@ -693,6 +708,9 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials \
         "type": "mcp_oauth"
       },
       "created_at": 0,
+      "metadata": {
+        "foo": "string"
+      },
       "name": "name",
       "object": "vault.credential",
       "updated_at": 0,
@@ -720,7 +738,7 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
 ### Returns
 
-- `Credential object { id, auth, created_at, 4 more }`
+- `Credential object { id, auth, created_at, 5 more }`
 
   Metadata for a stored credential. Secret values are never returned.
 
@@ -864,6 +882,10 @@ Retrieves vault credential metadata without returning secret values. See [vaults
 
     The Unix timestamp, in seconds, when the credential was created.
 
+  - `metadata: map[string]`
+
+    Application-defined key-value pairs associated with this credential.
+
   - `name: string`
 
     The human-readable name of the credential.
@@ -910,6 +932,9 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
     "type": "mcp_oauth"
   },
   "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
   "name": "name",
   "object": "vault.credential",
   "updated_at": 0,
@@ -917,11 +942,11 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 }
 ```
 
-## Rotate a vault credential
+## Update a vault credential
 
 **post** `/vaults/{vault_id}/credentials/{credential_id}`
 
-Rotates a vault credential's write-only secret and returns only credential metadata. See [vaults](/api/docs/guides/agents-api/tools/vaults).
+Updates credential metadata or rotates its write-only secret. See [vaults](/api/docs/guides/agents-api/tools/vaults).
 
 ### Path Parameters
 
@@ -931,7 +956,7 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
 ### Body Parameters
 
-- `auth: CredentialAuthRotateParam`
+- `auth: optional CredentialAuthRotateParam`
 
   Replacement values for the credential's existing authentication method.
 
@@ -1025,9 +1050,13 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
       - `"environment_variable"`
 
+- `metadata: optional map[string]`
+
+  Replaces all metadata. Omit to preserve it, or pass {} to clear it. Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters.
+
 ### Returns
 
-- `Credential object { id, auth, created_at, 4 more }`
+- `Credential object { id, auth, created_at, 5 more }`
 
   Metadata for a stored credential. Secret values are never returned.
 
@@ -1170,6 +1199,10 @@ Rotates a vault credential's write-only secret and returns only credential metad
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the credential was created.
+
+  - `metadata: map[string]`
+
+    Application-defined key-value pairs associated with this credential.
 
   - `name: string`
 
@@ -1193,14 +1226,9 @@ Rotates a vault credential's write-only secret and returns only credential metad
 
 ```http
 curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
-    -H 'Content-Type: application/json' \
+    -X POST \
     -H 'OpenAI-Beta: agents=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "auth": {
-            "type": "mcp_oauth"
-          }
-        }'
+    -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
 #### Response
@@ -1223,6 +1251,9 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
     "type": "mcp_oauth"
   },
   "created_at": 0,
+  "metadata": {
+    "foo": "string"
+  },
   "name": "name",
   "object": "vault.credential",
   "updated_at": 0,
@@ -1234,7 +1265,7 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
 
 ### Credential
 
-- `Credential object { id, auth, created_at, 4 more }`
+- `Credential object { id, auth, created_at, 5 more }`
 
   Metadata for a stored credential. Secret values are never returned.
 
@@ -1377,6 +1408,10 @@ curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the credential was created.
+
+  - `metadata: map[string]`
+
+    Application-defined key-value pairs associated with this credential.
 
   - `name: string`
 
