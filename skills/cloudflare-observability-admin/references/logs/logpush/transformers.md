@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Transformers
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/transformers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/transformers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Beta
 
-Closed beta
+Beta
 
-Transformers are in closed beta. Contact your Cloudflare Account Executive for access. Beta usage is not billed. The API surface may change before GA.
+Transformers are in beta. Contact your Cloudflare Account Executive for access. Beta usage is not billed.
 
 Transformers let you run a SQL query against each batch of records before Logpush delivers them to your destination. Use them to filter records you do not want to store, reshape fields to match a downstream schema, redact sensitive values, compute new fields, or add static metadata.
 
@@ -73,6 +73,35 @@ Every transformer action is available through the Cloudflare API. To authenticat
 | Update a transformer | `PUT` | `accounts/:account_id/logpush/transformers/:id` |
 | Delete a transformer | `DELETE` | `accounts/:account_id/logpush/transformers/:id` |
 
+The following request creates a transformer that selects three fields from the zone-scoped `dns_logs` dataset:
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Logs Write</code>
+
+</details>
+
+*Create transformerbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/logpush/transformers" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"name": "dns-query-fields",
+		"description": "Selects key fields from DNS query logs.",
+		"code": "SELECT QueryName, QueryType, ResponseCode FROM dns_logs"
+	}'
+```
+
 To attach or detach a transformer from a job, set `transformer_id` on the Logpush job. Refer to [Logpush job setup](https://developers.cloudflare.com/logs/logpush/logpush-job/) for job endpoints.
 
 ## The SQL transformer contract
@@ -121,7 +150,7 @@ In the dashboard, validation errors appear inline in the editor with line and co
 
 | Limit | Value |
 | --- | --- |
-| SQL query size | 10 KB |
+| SQL query size | 250 KB |
 | Transformer name length | 255 bytes |
 | Transformer description length | 4,096 bytes |
 | Filesystem access from a query | None |
@@ -273,11 +302,11 @@ Delivered record:
 
 | HTTP | Message | Cause |
 | --- | --- | --- |
-| `403` | `transformer feature is not available for this account` | Your account does not have access to Transformers. Contact your Cloudflare Account Executive. |
+| `403` | `transformer feature is not available for this account` | Your account does not have access to Transformers. |
 | `400` | `missing required field: name` | Add a `name` field to the request body. |
 | `400` | `missing required field: code` | Add a non-empty `code` field with your SQL query. |
 | `400` | Schema validation error (unknown column, invalid syntax) | The SQL references a field that does not exist, uses unsupported syntax, or has a type mismatch. Fix the query and retry. |
-| `413` | (request entity too large) | The SQL query exceeds 10 KB. Shorten the query. |
+| `413` | (request entity too large) | The SQL query exceeds 250 KB. Shorten the query. |
 | `400` | `transformer N not found for this account` | The transformer ID does not exist, or belongs to a different account. |
 | `400` | `transformer N dataset "X" does not match job dataset "Y"` | The transformer's `FROM` table does not match the job's dataset. |
 
@@ -310,5 +339,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/transformers/#page","headline":"Transformers","description":"Advanced filtering, reshaping, redacting, and computing on Logpush records with SQL before they leave Cloudflare.","url":"https://developers.cloudflare.com/logs/logpush/transformers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/transformers/#page","headline":"Transformers","description":"Advanced filtering, reshaping, redacting, and computing on Logpush records with SQL before they leave Cloudflare.","url":"https://developers.cloudflare.com/logs/logpush/transformers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

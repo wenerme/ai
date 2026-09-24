@@ -19920,7 +19920,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_685443e2baf0"
+              "$ref": "#/components/schemas/RequestBody_adeba0f18ef6"
   "/api/v4/service_accounts":
     post:
       operationId: postApiV4ServiceAccounts
@@ -73485,8 +73485,7 @@ paths:
     get:
       operationId: getApiV4ProjectsIdPipelinesPipelineIdVariables
       summary: List all pipeline variables
-      description: Lists all pipeline variables for a specified pipeline. Use the
-        `page` and `per_page` pagination parameters to control the pagination of results.
+      description: Lists all pipeline variables for a specified pipeline.
       tags:
       - Pipelines
       responses:
@@ -84866,7 +84865,7 @@ components:
           example: 1
         alert_status:
           type: string
-          example: :executable
+          example: executable
         disabled_until:
           type: string
           format: date-time
@@ -92154,6 +92153,8 @@ components:
           type: string
         orbit_auto_index_root_namespace:
           type: string
+        orbit_dap_enabled_by_default:
+          type: string
         duo_workflow_oauth_application_id:
           type: string
         scan_execution_policies_action_limit:
@@ -92948,7 +92949,7 @@ components:
           example: 1
         alert_status:
           type: string
-          example: :executable
+          example: executable
         disabled_until:
           type: string
           format: date-time
@@ -95756,7 +95757,7 @@ components:
           example: 1
         alert_status:
           type: string
-          example: :executable
+          example: executable
         disabled_until:
           type: string
           format: date-time
@@ -106985,7 +106986,7 @@ components:
           description: Scopes available to the application. Separate multiple scopes
             with a space.
           nullable: true
-    RequestBody_685443e2baf0:
+    RequestBody_adeba0f18ef6:
       type: object
       properties:
         admin_mode:
@@ -110000,6 +110001,9 @@ components:
           type: string
           nullable: true
         orbit_auto_index_root_namespace:
+          type: string
+          nullable: true
+        orbit_dap_enabled_by_default:
           type: string
           nullable: true
         duo_workflow_oauth_application_id:

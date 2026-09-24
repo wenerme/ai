@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 49489 files, 546 MiB total
+> 125 skills, 49493 files, 546 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1428,13 +1428,13 @@ Use when implementing React state management with Zustand, including context-sco
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1569 | 19 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 383 | 3.0 MiB |
 | [cloudflare-docs](./skills/cloudflare-docs/SKILL.md) | 3 | 34 KiB |
-| [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 838 | 5.4 MiB |
+| [cloudflare-networking](./skills/cloudflare-networking/SKILL.md) | 838 | 5.5 MiB |
 | [cloudflare-observability-admin](./skills/cloudflare-observability-admin/SKILL.md) | 1282 | 8.6 MiB |
 | [cloudflare-security](./skills/cloudflare-security/SKILL.md) | 1026 | 5.7 MiB |
 | [cloudflare-workers](./skills/cloudflare-workers/SKILL.md) | 846 | 8.1 MiB |
 | [cloudflare-zero-trust](./skills/cloudflare-zero-trust/SKILL.md) | 952 | 20 MiB |
 | [codex-docs](./skills/codex-docs/SKILL.md) | 164 | 1.4 MiB |
-| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 6631 | 36 MiB |
+| [comfyui-docs](./skills/comfyui-docs/SKILL.md) | 6635 | 36 MiB |
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 61 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1642 | 10 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 83 | 1.4 MiB |
@@ -1457,7 +1457,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 175 | 2.0 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 917 | 8.5 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
-| [glab-docs](./skills/glab-docs/SKILL.md) | 318 | 544 KiB |
+| [glab-docs](./skills/glab-docs/SKILL.md) | 318 | 545 KiB |
 | [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 728 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 102 | 3.1 MiB |
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 638 | 6.5 MiB |

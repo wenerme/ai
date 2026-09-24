@@ -160,9 +160,9 @@ configuration_my_model.py
 
 ```python
 
-from transformers import PretrainedConfig
+from transformers import PreTrainedConfig
 
-class MyConfig(PretrainedConfig):
+class MyConfig(PreTrainedConfig):
     base_model_tp_plan = {
         "layers.*.self_attn.k_proj": "colwise",
         "layers.*.self_attn.v_proj": "colwise",

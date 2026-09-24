@@ -84,7 +84,7 @@ Providing roles via `role` or `aria-*` attributes to built-in elements that alre
 
 - `exact: boolean`
 
-  Whether the `name` is matched exactly: case-sensitive and whole-string. Disabled by default. This option is ignored if `name` is a regular expression. Note that exact match still trims whitespace.
+  Whether the `name` is matched exactly: case-sensitive and whole-string. Defaults to [`browser.locators.exact`](/config/browser/locators#browser-locators-exact), which is `true` by default. This option is ignored if `name` is a regular expression. Note that exact match still trims whitespace.
 
   ```tsx
   <button>Hello World</button>
@@ -232,7 +232,7 @@ page.getByAltText('non existing alt text') // ❌
 
 - `exact: boolean`
 
-  Whether the `text` is matched exactly: case-sensitive and whole-string. Disabled by default. This option is ignored if `text` is a regular expression. Note that exact match still trims whitespace.
+  Whether the `text` is matched exactly: case-sensitive and whole-string. Defaults to [`browser.locators.exact`](/config/browser/locators#browser-locators-exact), which is `true` by default. This option is ignored if `text` is a regular expression. Note that exact match still trims whitespace.
 
 **See also**
 
@@ -279,7 +279,7 @@ The `page.getByLabelText('Username')` locator will find every input in the examp
 
 - `exact: boolean`
 
-  Whether the `text` is matched exactly: case-sensitive and whole-string. Disabled by default. This option is ignored if `text` is a regular expression. Note that exact match still trims whitespace.
+  Whether the `text` is matched exactly: case-sensitive and whole-string. Defaults to [`browser.locators.exact`](/config/browser/locators#browser-locators-exact), which is `true` by default. This option is ignored if `text` is a regular expression. Note that exact match still trims whitespace.
 
 **See also**
 
@@ -309,7 +309,7 @@ page.getByPlaceholder('not found') // ❌
 
 - `exact: boolean`
 
-  Whether the `text` is matched exactly: case-sensitive and whole-string. Disabled by default. This option is ignored if `text` is a regular expression. Note that exact match still trims whitespace.
+  Whether the `text` is matched exactly: case-sensitive and whole-string. Defaults to [`browser.locators.exact`](/config/browser/locators#browser-locators-exact), which is `true` by default. This option is ignored if `text` is a regular expression. Note that exact match still trims whitespace.
 
 **See also**
 
@@ -339,7 +339,7 @@ page.getByText('about', { exact: true }) // ❌
 
 - `exact: boolean`
 
-  Whether the `text` is matched exactly: case-sensitive and whole-string. Disabled by default. This option is ignored if `text` is a regular expression. Note that exact match still trims whitespace.
+  Whether the `text` is matched exactly: case-sensitive and whole-string. Defaults to [`browser.locators.exact`](/config/browser/locators#browser-locators-exact), which is `true` by default. This option is ignored if `text` is a regular expression. Note that exact match still trims whitespace.
 
 **See also**
 
@@ -367,7 +367,7 @@ page.getByTitle('Create') // ❌
 
 - `exact: boolean`
 
-  Whether the `text` is matched exactly: case-sensitive and whole-string. Disabled by default. This option is ignored if `text` is a regular expression. Note that exact match still trims whitespace.
+  Whether the `text` is matched exactly: case-sensitive and whole-string. Defaults to [`browser.locators.exact`](/config/browser/locators#browser-locators-exact), which is `true` by default. This option is ignored if `text` is a regular expression. Note that exact match still trims whitespace.
 
 **See also**
 
@@ -389,12 +389,6 @@ page.getByTestId('non-existing-element') // ❌
 ```
 
 > **warning**: It is recommended to use this only after the other locators don't work for your use case. Using `data-testid` attributes does not resemble how your software is used and should be avoided if possible.
-
-**Options**
-
-- `exact: boolean`
-
-  Whether the `text` is matched exactly: case-sensitive and whole-string. Disabled by default. This option is ignored if `text` is a regular expression. Note that exact match still trims whitespace.
 
 **See also**
 
