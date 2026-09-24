@@ -341,8 +341,7 @@ The following configuration set `Content-Type: application/vnd.android.package-a
 - `PROXY_PROTOCOL_TLS_BRIDGING`: **false**: When protocol is https, expect PROXY protocol headers after TLS negotiation.
 - `PROXY_PROTOCOL_HEADER_TIMEOUT`: **5s**: Timeout to wait for PROXY protocol header (set to 0 to have no timeout)
 - `PROXY_PROTOCOL_ACCEPT_UNKNOWN`: **false**: Accept PROXY protocol headers with Unknown type.
-- `DOMAIN`: **localhost**: Domain name of this server.
-- `ROOT_URL`: **`{PROTOCOL}://{DOMAIN}:{HTTP_PORT}/`**:
+- `ROOT_URL`: **`{PROTOCOL}://localhost:{HTTP_PORT}/`**:
    Overwrite the automatically generated public URL.
    This is useful if the internal and the external URL don't match (e.g. behind a reverse proxy).
 - `PUBLIC_URL_DETECTION`: **`auto`**: Controls how to generate the public URL. Most instances should use the "auto" behavior,
@@ -663,8 +662,8 @@ And the following unique queues:
 
 ## OpenID (`openid`)
 
-- `ENABLE_OPENID_SIGNIN`: **true**: Allow authentication in via OpenID.
-- `ENABLE_OPENID_SIGNUP`: **! DISABLE\_REGISTRATION**: Allow registering via OpenID.
+- `ENABLE_OPENID_SIGNIN`: **false**: Allow authentication in via OpenID.
+- `ENABLE_OPENID_SIGNUP`: **false**: Allow registering via OpenID.
 - `WHITELISTED_URIS`: **_empty_**: If non-empty, list of POSIX regex patterns matching
    OpenID URI's to permit.
 - `BLACKLISTED_URIS`: **_empty_**: If non-empty, list of POSIX regex patterns matching

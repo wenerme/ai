@@ -73,7 +73,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
    ```
 
 
@@ -183,19 +183,19 @@ Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ## Tips

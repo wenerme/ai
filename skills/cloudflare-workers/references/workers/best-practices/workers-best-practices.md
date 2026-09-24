@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers Best Practices
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/best-practices/workers-best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Best practices for Workers based on production patterns, Cloudflare's own internal usage, and common issues seen across the developer community.
 
@@ -27,7 +27,7 @@ The [`compatibility_date`](https://developers.cloudflare.com/workers/configurati
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-24",
 	"compatibility_flags": ["nodejs_compat"],
 }
 ```
@@ -36,7 +36,7 @@ The [`compatibility_date`](https://developers.cloudflare.com/workers/configurati
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-24"
 compatibility_flags = [ "nodejs_compat" ]
 ```
 
@@ -51,7 +51,7 @@ The [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nod
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-24",
 	"compatibility_flags": ["nodejs_compat"],
 }
 ```
@@ -60,7 +60,7 @@ The [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nod
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-24"
 compatibility_flags = [ "nodejs_compat" ]
 ```
 
@@ -127,7 +127,7 @@ Secrets (API keys, tokens, database credentials) must never appear in your Wrang
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-24",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// ✅ Good: non-secret configuration lives in version control
@@ -144,7 +144,7 @@ Secrets (API keys, tokens, database credentials) must never appear in your Wrang
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-24"
 compatibility_flags = [ "nodejs_compat" ]
 
 [vars]
@@ -171,7 +171,7 @@ You can also pipe secrets from other tools or environment variables:
 
 ```bash
 # Pipe from another CLI tool
-npx some-cli-tool --get-secret | npx wrangler secret put API_KEY
+npx <some-cli-tool> --get-secret | npx wrangler secret put API_KEY
 # Pipe from an environment variable or .env file
 echo "$API_KEY" | npx wrangler secret put API_KEY
 ```
@@ -189,7 +189,7 @@ Each environment is treated separately. Bindings and vars need to be declared pe
 	"name": "my-api",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-24",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// This binding only applies to the root Worker
@@ -218,7 +218,7 @@ Each environment is treated separately. Bindings and vars need to be declared pe
 name = "my-api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-24"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]
@@ -274,7 +274,7 @@ The most common mistake with routes is missing the DNS record. Without a proxied
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-24",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// Option 1: Custom domain — Worker is the origin, DNS is managed automatically
@@ -292,7 +292,7 @@ The most common mistake with routes is missing the DNS record. Without a proxied
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-24"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[routes]]
@@ -737,7 +737,7 @@ Create a new `Client` on each request. Hyperdrive manages the underlying pool, s
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-24",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"hyperdrive": [{ "binding": "HYPERDRIVE", "id": "<YOUR_HYPERDRIVE_ID>" }],
@@ -748,7 +748,7 @@ Create a new `Client` on each request. Hyperdrive manages the underlying pool, s
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-24"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -964,7 +964,7 @@ For a purely static site, point `assets.directory` at your build output. No Work
 	// Static site — no Worker script needed
 	"name": "my-static-site",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-24",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"assets": {
@@ -976,7 +976,7 @@ For a purely static site, point `assets.directory` at your build output. No Work
 ```toml
 name = "my-static-site"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-24"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -1000,7 +1000,7 @@ Use structured JSON logging with `console.log` so logs are searchable and filter
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-24",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"observability": {
@@ -1021,7 +1021,7 @@ Use structured JSON logging with `console.log` so logs are searchable and filter
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-24"
 compatibility_flags = [ "nodejs_compat" ]
 
 [observability]
@@ -1552,5 +1552,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/best-practices/workers-best-practices/#page","headline":"Workers Best Practices","description":"Code patterns and configuration guidance for building fast, reliable, observable, and secure Workers.","url":"https://developers.cloudflare.com/workers/best-practices/workers-best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/best-practices/workers-best-practices/#page","headline":"Workers Best Practices","description":"Code patterns and configuration guidance for building fast, reliable, observable, and secure Workers.","url":"https://developers.cloudflare.com/workers/best-practices/workers-best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

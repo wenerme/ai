@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Build an image upload and transformation service using R2 and Cloudflare Images.
+   Create a Logpush job to stream Workers analytics to my data warehouse.
    ```
 
 
@@ -175,11 +175,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+```
+
+```txt
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
@@ -187,11 +191,7 @@ Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips

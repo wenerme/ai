@@ -60,7 +60,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Set up a KV namespace for edge-cached session storage in my Worker.
+   Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
    ```
 
 
@@ -166,23 +166,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
-```
-
-```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
-```
-
-```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
 Build a serverless AI inference endpoint on Workers AI with streaming responses.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Add mTLS authentication and schema validation to protect my API endpoints.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Tips

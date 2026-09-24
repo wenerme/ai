@@ -14,6 +14,10 @@ keywords: Ultralytics, TensorRT export, ONNX export, PyTorch to ONNX, quantizati
 
 <hr>
 
+## ::: ultralytics.utils.export.engine.get_tensorrt_logger
+
+<hr>
+
 ## ::: ultralytics.utils.export.engine.best_onnx_opset
 
 <hr>

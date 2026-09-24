@@ -12,7 +12,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Troubleshooting
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+## Certificate stuck in pending validation
+
+If a custom hostname certificate is stuck in **pending validation** or has timed out, a [domain control validation (DCV)](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/dcv-flow/) step did not complete successfully.
+
+Refer to [Troubleshooting certificate validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/troubleshooting/) for:
+
+- A breakdown of which errors require action from the **SaaS provider** versus **your customer**.
+- CA error messages with resolution steps.
+- How to recover from stale tokens or a **Timed Out Validation** status.
+
+---
 
 ## Rate limits
 
@@ -65,26 +77,9 @@ In some circumstances, custom hostnames can also enter a **Moved** state if your
 
 ---
 
-## CAA Errors
+## CAA errors
 
-The `caa_error` in the status of a custom hostname means that the CAA records configured on the domain prevented the Certificate Authority to issue the certificate.
-
-You can check which CAA records are configured on a domain using the `dig` command: `dig CAA example.com`
-
-You will need to ensure that the required CAA records for the selected Certificate Authority are configured. For example, here are the records required to issue [Let's Encrypt ↗](https://letsencrypt.org/docs/caa/) and [Google Trust Services ↗](https://pki.goog/faq/#caa) certificates:
-
-```txt
-example.com CAA 0 issue "pki.goog; cansignhttpexchanges=yes"
-example.com CAA 0 issuewild "pki.goog; cansignhttpexchanges=yes"
-
-example.com CAA 0 issue "letsencrypt.org"
-example.com CAA 0 issuewild "letsencrypt.org"
-
-example.com CAA 0 issue "ssl.com"
-example.com CAA 0 issuewild "ssl.com"
-```
-
-For more details, refer to [CAA records FAQ](https://developers.cloudflare.com/ssl/faq/#caa-records).
+If a custom hostname's `ssl.validation_errors` contains a CAA-related error, refer to [Troubleshooting certificate validation](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/issue-and-validate/validate-certificates/troubleshooting/#caa-records) for resolution steps, including the exact CAA records required per certificate authority.
 
 ---
 
@@ -153,5 +148,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve common issues with custom hostnames, certificates, and rate limits.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/#page","headline":"Troubleshooting","description":"Resolve common issues with custom hostnames, certificates, and rate limits.","url":"https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/reference/troubleshooting/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

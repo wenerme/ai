@@ -1,6 +1,6 @@
 ---
 title: "ComfyUI MiniMax H3 Multiframe Reference Workflow"
-description: "Generate MiniMax H3 video continuations and multi-shot scenes in ComfyUI by anchoring reference frames at specific points along the output timeline with Add Guide nodes."
+description: "Build MiniMax H3 video continuations and multi-shot scenes in ComfyUI by pinning reference frames to set points on the timeline with Add Guide nodes."
 ---
 
 Generate video continuations and multi-shot scenes by anchoring reference frames at specific points along the output timeline. The workflow combines the Reference to Video node with chained Add Guide nodes: each Add Guide pins a still image (plus optional audio) to a frame index, so the video passes through that exact composition at that moment.

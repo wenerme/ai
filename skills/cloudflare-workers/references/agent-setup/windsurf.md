@@ -58,7 +58,7 @@ IDEStandalone
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Add bot protection and rate limiting to my login and checkout endpoints.
+   Check my Workers deployment logs for errors and suggest fixes.
    ```
 
 
@@ -164,23 +164,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Build an image upload and transformation service using R2 and Cloudflare Images.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Create a Logpush job to stream Workers analytics to my data warehouse.
+```
+
+```txt
 Build a serverless AI inference endpoint on Workers AI with streaming responses.
-```
-
-```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
-```
-
-```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
-```
-
-```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Tips
