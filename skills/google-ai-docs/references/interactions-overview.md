@@ -48,14 +48,249 @@ The Interactions API centers around a core resource: the [**`Interaction`**](htt
 
 When you make a call to
 [`interactions.create`](https://ai.google.dev/api/interactions-api#CreateInteraction), you are
-creating a new `Interaction` resource.
+creating a new `Interaction` resource:
+
+### Python
+
+    from google import genai
+
+    client = genai.Client()
+
+    interaction = client.interactions.create(
+        model="gemini-3.8-flash",
+        input="Tell me a short story about a time-traveling lighthouse."
+    )
+
+    print(interaction.output_text)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const client = new GoogleGenAI();
+
+    const interaction = await client.interactions.create({
+      model: "gemini-3.8-flash",
+      input: "Tell me a short story about a time-traveling lighthouse.",
+    });
+
+    console.log(interaction.output_text);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model(Model.of("gemini-3.8-flash"))
+            .input(InteractionsInput.of("Tell me a short story about a time-traveling lighthouse."))
+            .build();
+
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+    System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Tell me a short story about a time-traveling lighthouse."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
+### REST
+
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -d '{
+        "model": "gemini-3.8-flash",
+        "input": "Tell me a short story about a time-traveling lighthouse."
+      }'
 
 ### Server-side state management
 
 You can use the `id` of a completed interaction in a subsequent call using the
 `previous_interaction_id` parameter to continue the conversation. The server
 uses this ID to retrieve the conversation history, saving you from having to
-resend the entire chat history.
+resend the entire chat history:
+
+### Python
+
+    from google import genai
+
+    client = genai.Client()
+
+    # 1. First turn
+    turn1 = client.interactions.create(
+        model="gemini-3.8-flash",
+        input="Hi, my name is Phil."
+    )
+
+    # 2. Second turn (chained using previous_interaction_id)
+    turn2 = client.interactions.create(
+        model="gemini-3.8-flash",
+        input="What is my name?",
+        previous_interaction_id=turn1.id
+    )
+
+    print(turn2.output_text)
+
+### JavaScript
+
+    import { GoogleGenAI } from "@google/genai";
+
+    const client = new GoogleGenAI();
+
+    // 1. First turn
+    const turn1 = await client.interactions.create({
+      model: "gemini-3.8-flash",
+      input: "Hi, my name is Phil.",
+    });
+
+    // 2. Second turn (chained using previous_interaction_id)
+    const turn2 = await client.interactions.create({
+      model: "gemini-3.8-flash",
+      input: "What is my name?",
+      previous_interaction_id: turn1.id,
+    });
+
+    console.log(turn2.output_text);
+
+### Java
+
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.interactions.Model;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+
+    Client client = new Client();
+
+    // 1. First turn
+    Interaction turn1 =
+        client
+            .interactions
+            .create(
+                CreateInteractionRequestBody.of(
+                    CreateModelInteraction.builder()
+                        .model(Model.of("gemini-3.8-flash"))
+                        .input(InteractionsInput.of("Hi, my name is Phil."))
+                        .build()))
+            .interaction()
+            .get();
+
+    // 2. Second turn (chained using previousInteractionId)
+    Interaction turn2 =
+        client
+            .interactions
+            .create(
+                CreateInteractionRequestBody.of(
+                    CreateModelInteraction.builder()
+                        .model(Model.of("gemini-3.8-flash"))
+                        .input(InteractionsInput.of("What is my name?"))
+                        .previousInteractionId(turn1.id().get())
+                        .build()))
+            .interaction()
+            .get();
+
+    System.out.println(turn2.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // 1. First turn
+        turn1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Hi, my name is Phil."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // 2. Second turn (chained using PreviousInteractionID)
+        turn2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:                 interactions.Model("gemini-3.8-flash"),
+                Input:                 interactions.NewInteractionsInput("What is my name?"),
+                PreviousInteractionID: turn1.Interaction.ID,
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if turn2.Interaction.OutputText != nil {
+            fmt.Println(*turn2.Interaction.OutputText)
+        }
+    }
+
+### REST
+
+    # Replace PREVIOUS_INTERACTION_ID with the id returned from the first turn
+    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+      -H "Content-Type: application/json" \
+      -H "x-goog-api-key: $GEMINI_API_KEY" \
+      -d '{
+        "model": "gemini-3.8-flash",
+        "input": "What is my name?",
+        "previous_interaction_id": "PREVIOUS_INTERACTION_ID"
+      }'
 
 The `previous_interaction_id` parameter preserves only the conversation history (inputs and outputs)
 using `previous_interaction_id`. The other parameters are **interaction-scoped**
@@ -138,7 +373,7 @@ projects on the Paid Tier. You can view them directly from the
 | Lyria 3 Pro Preview | Model | `lyria-3-pro-preview` |
 | Deep Research Preview | Agent | `deep-research-preview-04-2026` |
 | Deep Research Preview | Agent | `deep-research-max-preview-04-2026` |
-| Antigravity Preview | Agent | `antigravity-preview-05-2026` |
+| Antigravity Preview | Agent | `antigravity-preview-09-2026` |
 
 ## SDKs
 
@@ -147,6 +382,8 @@ Interactions API.
 
 - On Python, this is `google-genai` package from `2.3.0` version onwards.
 - On JavaScript, this is `@google/genai` package from `2.3.0` version onwards.
+- On Go, this is `google.golang.org/genai` package.
+- On Java, this is `com.google.genai:google-genai` package.
 
 You can learn more about how to install the SDKs on
 [Libraries](https://ai.google.dev/gemini-api/docs/libraries) page.

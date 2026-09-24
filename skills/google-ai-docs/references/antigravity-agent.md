@@ -51,6 +51,42 @@ It is built with Gemini 3.8 Flash and uses the same harness as the Antigravity I
     Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:       interactions.NewInteractionsInput("Read Hacker News, summarize the top 10 stories, and save the results as a PDF."),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -154,6 +190,46 @@ To limit the agent to specific tools, pass only the ones you need:
     Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:       interactions.NewInteractionsInput("Search for the latest AI research papers on reasoning and summarize them."),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                    interactions.NewTool(interactions.URLContext{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -255,6 +331,58 @@ The Antigravity agent supports multimodal inputs. Currently, only `text` and `im
 
     Interaction interactionInline = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interactionInline.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageBytes, err := os.ReadFile("path/to/chart.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent: interactions.AgentOption("antigravity-preview-05-2026"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Analyze this chart and summarize the trends.",
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        Data:     genai.Ptr(base64Image),
+                        MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+                    }),
+                }),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -531,6 +659,113 @@ The following example demonstrates a 2-turn interaction. The agent first request
         System.out.println("Interaction completed with status: " + interaction.status().orElse(null));
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // 1. Define the custom function
+        getWeatherTool := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("get_weather"),
+            Description: genai.Ptr("Gets the current weather for a given location."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "location": map[string]any{
+                        "type":        "string",
+                        "description": "The city and country, e.g. San Francisco, USA",
+                    },
+                },
+                "required": []string{"location"},
+            },
+        })
+
+        // 2. Call the agent with the custom tool (Turn 1)
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:       interactions.NewInteractionsInput("What is the weather in Tokyo?"),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.CodeExecution{}), // Enable default code execution
+                    getWeatherTool, // Add custom function
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        interaction := res.Interaction
+
+        // Check if the agent requested a function call
+        if interaction.Status == interactions.InteractionStatusRequiresAction {
+            executedCalls := make(map[string]bool)
+            for _, step := range interaction.Steps {
+                if fr := step.FunctionResultStep; fr != nil {
+                    executedCalls[fr.CallID] = true
+                }
+            }
+
+            var pendingCalls []*interactions.FunctionCallStep
+            for _, step := range interaction.Steps {
+                if fc := step.FunctionCallStep; fc != nil && !executedCalls[fc.ID] {
+                    pendingCalls = append(pendingCalls, fc)
+                }
+            }
+
+            if len(pendingCalls) > 0 {
+                fcStep := pendingCalls[0]
+                fmt.Printf("Function to call: %s (ID: %s)\n", fcStep.Name, fcStep.ID)
+                fmt.Printf("Arguments: %v\n", fcStep.Arguments)
+
+                // 3. Execute the function locally (simulated get_weather()) and send the result back (Turn 2)
+                resultStep := interactions.FunctionResultStep{
+                    Name:   genai.Ptr(fcStep.Name),
+                    CallID: fcStep.ID,
+                    Result: interactions.NewFunctionResultStepResultUnion(`{"temperature": 23, "unit": "celsius"}`),
+                }
+
+                followupRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+                    Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                        Agent:                 interactions.AgentOption("antigravity-preview-05-2026"),
+                        PreviousInteractionID: interaction.ID,
+                        Environment:           genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(*interaction.EnvironmentID)),
+                        Input: interactions.NewInteractionsInput([]interactions.Step{
+                            interactions.NewStep(resultStep),
+                        }),
+                    }),
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if followupRes.Interaction.OutputText != nil {
+                    fmt.Println(*followupRes.Interaction.OutputText)
+                }
+            } else {
+                fmt.Println("No pending function calls.")
+            }
+        } else {
+            fmt.Printf("Interaction completed with status: %s\n", interaction.Status)
+        }
+    }
+
 ### REST
 
     # 1. Turn 1: Request function call
@@ -667,6 +902,49 @@ When registering an MCP server, you must specify the following fields in the `to
     Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Register a remote HTTP MCP server
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:       interactions.NewInteractionsInput("What is the weather in Tokyo?"),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.MCPServer{
+                        Name: genai.Ptr("weather"), // Must be lowercase
+                        URL:  genai.Ptr("https://gemini-api-demos.uc.r.appspot.com/mcp"),
+                    }),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -751,6 +1029,45 @@ You can configure the underlying Gemini model using `agent_config` to optimize f
 
     Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:       interactions.NewInteractionsInput("Summarize the key differences between functional and object-oriented programming."),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+                AgentConfig: genai.Ptr(interactions.NewCreateAgentInteractionAgentConfig(interactions.AntigravityAgentConfig{
+                    Model: genai.Ptr("gemini-3.5-flash-lite"),
+                })),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -880,6 +1197,65 @@ Agent tasks that involve multi-step reasoning, code execution, or file operation
         System.out.println("Finished with status: " + interaction.status().orElse(null));
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "time"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // 1. Start the interaction in the background
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:       interactions.NewInteractionsInput("Run a complex analysis on the repository."),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+                Background:  genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        interaction := res.Interaction
+        fmt.Printf("Interaction started in background: %s\n", *interaction.ID)
+
+        // 2. Poll for completion
+        for interaction.Status == interactions.InteractionStatusInProgress {
+            time.Sleep(5 * time.Second)
+            getRes, err := client.Interactions.Get(ctx, operations.GetInteractionByIDRequest{
+                ID: *interaction.ID,
+            })
+            if err != nil {
+                log.Fatal(err)
+            }
+            interaction = getRes.Interaction
+        }
+
+        if interaction.Status == interactions.InteractionStatusCompleted {
+            if interaction.OutputText != nil {
+                fmt.Println(*interaction.OutputText)
+            }
+        } else {
+            fmt.Printf("Finished with status: %s\n", interaction.Status)
+        }
+    }
+
 ### REST
 
     # 1. Start the interaction in the background
@@ -918,6 +1294,33 @@ You can cancel a running background interaction using the `cancel` method.
 
     Client client = new Client();
     client.interactions.cancel("INTERACTION_ID");
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        _, err = client.Interactions.Cancel(ctx, operations.CancelInteractionByIDRequest{
+            ID: "INTERACTION_ID",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
 
 ### REST
 
@@ -1043,6 +1446,84 @@ When a background interaction involves stateful tools (like code execution in a 
     }
 
     System.out.println(followup.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "time"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // First turn: run a task in the background
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:       interactions.NewInteractionsInput("Clone https://github.com/google/generative-ai-python and run its tests."),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+                Background:  genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        interaction := res.Interaction
+        for interaction.Status == interactions.InteractionStatusInProgress {
+            time.Sleep(5 * time.Second)
+            getRes, err := client.Interactions.Get(ctx, operations.GetInteractionByIDRequest{
+                ID: *interaction.ID,
+            })
+            if err != nil {
+                log.Fatal(err)
+            }
+            interaction = getRes.Interaction
+        }
+
+        // Second turn: continue in the same environment
+        followupRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:                 interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:                 interactions.NewInteractionsInput("Fix any failing tests and re-run them."),
+                PreviousInteractionID: interaction.ID,
+                Environment:           genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(*interaction.EnvironmentID)),
+                Background:            genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        followup := followupRes.Interaction
+        for followup.Status == interactions.InteractionStatusInProgress {
+            time.Sleep(5 * time.Second)
+            getRes, err := client.Interactions.Get(ctx, operations.GetInteractionByIDRequest{
+                ID: *followup.ID,
+            })
+            if err != nil {
+                log.Fatal(err)
+            }
+            followup = getRes.Interaction
+        }
+
+        if followup.OutputText != nil {
+            fmt.Println(*followup.OutputText)
+        }
+    }
 
 ### REST
 
@@ -1225,6 +1706,69 @@ Because a trigger runs unattended on a schedule, reference a stored [credential]
     System.out.println("Trigger created: " + trigger.id().orElse(""));
     System.out.println("Next run: " + trigger.nextRunTime().orElse(null));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        interactionssdk "google.golang.org/genai/interactions"
+        "google.golang.org/genai/interactions/models/components"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+        "google.golang.org/genai/interactions/models/triggers"
+    )
+
+    func main() {
+        ctx := context.Background()
+        sdk := interactionssdk.New(interactionssdk.WithSecurity(components.Security{
+            APIKey: genai.Ptr(os.Getenv("GEMINI_API_KEY")),
+        }))
+
+        env := interactions.Environment{
+            Network: genai.Ptr(interactions.NewNetwork(interactions.NewEnvironmentNetworkEgressAllowlist(interactions.Allowlist{
+                Allowlist: []interactions.AllowlistEntry{
+                    {
+                        Domain: "api.github.com",
+                        Transform: genai.Ptr(interactions.NewTransform(map[string]string{
+                            "Authorization": "Bearer ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                        })),
+                    },
+                    {
+                        Domain: "github.com",
+                    },
+                },
+            }))),
+        }
+
+        interactionTemplate := interactions.CreateAgentInteraction{
+            Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+            Input:       interactions.NewInteractionsInput("Review open PRs in my-org/my-app for new comments and address feedback. Close issues whose PRs were merged. Then check for new issues labeled 'accepted', skip any already tracked in /workspace/solved-issues/, fix the rest, and open a PR for each. Save reports to /workspace/solved-issues/."),
+            Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(env)),
+        }
+
+        res, err := sdk.Triggers.Create(ctx, operations.CreateTriggerRequest{
+            Body: triggers.TriggerCreateParams{
+                Schedule:    "0 9 * * *",
+                TimeZone:    "America/Argentina/Buenos_Aires",
+                DisplayName: genai.Ptr("issue-solver"),
+                Interaction: triggers.NewInteraction(interactionTemplate),
+            },
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        trigger := res.Trigger
+        fmt.Printf("Trigger created: %s\n", trigger.ID)
+        fmt.Printf("Next run: %v\n", trigger.NextRunTime)
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/triggers" \
@@ -1305,6 +1849,40 @@ Retrieve all triggers associated with your project.
         System.out.println(trigger.id().orElse("") + ": " + trigger.displayName().orElse("") + " (" + trigger.status().orElse(null) + ")");
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        interactionssdk "google.golang.org/genai/interactions"
+        "google.golang.org/genai/interactions/models/components"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        sdk := interactionssdk.New(interactionssdk.WithSecurity(components.Security{
+            APIKey: genai.Ptr(os.Getenv("GEMINI_API_KEY")),
+        }))
+
+        res, err := sdk.Triggers.List(ctx, operations.ListTriggersRequest{})
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.ListTriggersResponse != nil {
+            for _, trigger := range res.ListTriggersResponse.Triggers {
+                fmt.Printf("%s: %s (%v)\n", trigger.ID, *trigger.GetDisplayName(), trigger.Status)
+            }
+        }
+    }
+
 ### REST
 
     curl -X GET "https://generativelanguage.googleapis.com/v1beta/triggers" \
@@ -1339,6 +1917,39 @@ Fetch the full configuration and current state of a single trigger.
     Trigger trigger = client.triggers().get("TRIGGER_ID").trigger().get();
     System.out.println("Schedule: " + trigger.schedule().orElse(""));
     System.out.println("Next run: " + trigger.nextRunTime().orElse(null));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        interactionssdk "google.golang.org/genai/interactions"
+        "google.golang.org/genai/interactions/models/components"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        sdk := interactionssdk.New(interactionssdk.WithSecurity(components.Security{
+            APIKey: genai.Ptr(os.Getenv("GEMINI_API_KEY")),
+        }))
+
+        res, err := sdk.Triggers.Get(ctx, operations.GetTriggerRequest{
+            ID: "TRIGGER_ID",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Printf("Schedule: %s\n", res.Trigger.Schedule)
+        fmt.Printf("Next run: %v\n", res.Trigger.NextRunTime)
+    }
 
 ### REST
 
@@ -1382,6 +1993,51 @@ You can pause a trigger to stop scheduled executions, and resume it to reactivat
     // Resume
     client.triggers().update("TRIGGER_ID", TriggerUpdate.builder().status(TriggerUpdateStatus.ACTIVE).build());
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        interactionssdk "google.golang.org/genai/interactions"
+        "google.golang.org/genai/interactions/models/components"
+        "google.golang.org/genai/interactions/models/operations"
+        "google.golang.org/genai/interactions/models/triggers"
+    )
+
+    func main() {
+        ctx := context.Background()
+        sdk := interactionssdk.New(interactionssdk.WithSecurity(components.Security{
+            APIKey: genai.Ptr(os.Getenv("GEMINI_API_KEY")),
+        }))
+
+        // Pause
+        _, err := sdk.Triggers.Update(ctx, operations.UpdateTriggerRequest{
+            ID: "TRIGGER_ID",
+            Body: triggers.TriggerUpdate{
+                Status: triggers.TriggerUpdateStatusPaused.ToPointer(),
+            },
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Resume
+        _, err = sdk.Triggers.Update(ctx, operations.UpdateTriggerRequest{
+            ID: "TRIGGER_ID",
+            Body: triggers.TriggerUpdate{
+                Status: triggers.TriggerUpdateStatusActive.ToPointer(),
+            },
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
+
 ### REST
 
     # Pause
@@ -1419,6 +2075,35 @@ Permanently remove a trigger. Past execution history is not deleted.
 
     client.triggers().delete("TRIGGER_ID");
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        interactionssdk "google.golang.org/genai/interactions"
+        "google.golang.org/genai/interactions/models/components"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        sdk := interactionssdk.New(interactionssdk.WithSecurity(components.Security{
+            APIKey: genai.Ptr(os.Getenv("GEMINI_API_KEY")),
+        }))
+
+        _, err := sdk.Triggers.Delete(ctx, operations.DeleteTriggerRequest{
+            ID: "TRIGGER_ID",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
+
 ### REST
 
     curl -X DELETE "https://generativelanguage.googleapis.com/v1beta/triggers/TRIGGER_ID" \
@@ -1446,6 +2131,35 @@ Fire a trigger on demand without waiting for the next scheduled time. This works
         .build();
 
     client.triggers().run("TRIGGER_ID");
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        interactionssdk "google.golang.org/genai/interactions"
+        "google.golang.org/genai/interactions/models/components"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        sdk := interactionssdk.New(interactionssdk.WithSecurity(components.Security{
+            APIKey: genai.Ptr(os.Getenv("GEMINI_API_KEY")),
+        }))
+
+        _, err := sdk.Triggers.Run(ctx, operations.RunTriggerRequest{
+            TriggerID: "TRIGGER_ID",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
 
 ### REST
 
@@ -1502,6 +2216,55 @@ View the execution history for a trigger. Each execution includes a `status`, ti
         if (ex.interactionId().isPresent()) {
             Interaction interaction = client.interactions().get(new GetInteractionByIdRequest(ex.interactionId().get())).interaction().get();
             System.out.println(interaction.outputText().orElse(""));
+        }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        interactionssdk "google.golang.org/genai/interactions"
+        "google.golang.org/genai/interactions/models/components"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        sdk := interactionssdk.New(interactionssdk.WithSecurity(components.Security{
+            APIKey: genai.Ptr(os.Getenv("GEMINI_API_KEY")),
+        }))
+
+        res, err := sdk.Triggers.ListExecutions(ctx, operations.ListTriggerExecutionsRequest{
+            TriggerID: "TRIGGER_ID",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.ListTriggerExecutionsResponse != nil {
+            for _, ex := range res.ListTriggerExecutionsResponse.TriggerExecutions {
+                fmt.Printf("%s: %v (%v - %v)\n", ex.ID, ex.Status, ex.StartTime, ex.EndTime)
+
+                // Fetch the full interaction for an execution
+                if ex.InteractionID != nil {
+                    intRes, err := sdk.Interactions.Get(ctx, operations.GetInteractionByIDRequest{
+                        ID: *ex.InteractionID,
+                    })
+                    if err != nil {
+                        log.Fatal(err)
+                    }
+                    if intRes.Interaction.OutputText != nil {
+                        fmt.Println(*intRes.Interaction.OutputText)
+                    }
+                }
+            }
         }
     }
 
@@ -1635,6 +2398,58 @@ Set the budget on the interaction request in `agent_config` alongside `agent` an
     System.out.println("Status: " + interaction.status().orElse(null)); // "incomplete" if budget was hit
     interaction.usage().ifPresent(usage -> System.out.println("Tokens used: " + usage.totalTokens().orElse(0)));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        env := interactions.Environment{
+            Sources: []interactions.Source{
+                {
+                    Type:    interactions.SourceTypeInline.ToPointer(),
+                    Target:  genai.Ptr("/workspace/data.csv"),
+                    Content: genai.Ptr("id,name,value\n1,alpha,100\n2,beta,200\n"),
+                },
+            },
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent: interactions.AgentOption("antigravity-preview-05-2026"),
+                Input: interactions.NewInteractionsInput("Analyze the dataset in /workspace/data.csv and generate a summary report."),
+                AgentConfig: genai.Ptr(interactions.NewCreateAgentInteractionAgentConfig(interactions.AntigravityAgentConfig{
+                    MaxTotalTokens: genai.Ptr(int64(50000)),
+                })),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(env)),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        interaction := res.Interaction
+        fmt.Printf("Status: %s\n", interaction.Status) // "incomplete" if budget was hit
+        if interaction.Usage != nil && interaction.Usage.TotalTokens != nil {
+            fmt.Printf("Tokens used: %d\n", *interaction.Usage.TotalTokens)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1725,6 +2540,49 @@ are preserved. Send a new interaction referencing the original interaction `id` 
 
     Interaction continuation = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println("Status: " + continuation.status().orElse(null));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        interactionID := "INTERACTION_ID"
+        environmentID := "ENVIRONMENT_ID"
+
+        // Continue from where the agent stopped
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:                 interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:                 interactions.NewInteractionsInput("continue"),
+                PreviousInteractionID: genai.Ptr(interactionID),
+                Environment:           genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(environmentID)),
+                AgentConfig: genai.Ptr(interactions.NewCreateAgentInteractionAgentConfig(interactions.AntigravityAgentConfig{
+                    MaxTotalTokens: genai.Ptr(int64(50000)),
+                })),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Printf("Status: %s\n", res.Interaction.Status)
+    }
 
 ### REST
 

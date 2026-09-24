@@ -30,13 +30,14 @@ The `latest` tag is a multi-platform manifest. Docker automatically selects the 
 
 ## Prerequisites
 
-Before starting the container, create a Mesh node and copy its token.
+Before starting the container, create a Mesh node and obtain its token.
 
 1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
-2. Select **Add a node**.
+2. Select **Add participant** > **Add node**.
 3. Enter a name for your node (for example, `k8s-gateway` or `docker-agent`).
 4. Select **Create node**.
-5. Copy the token shown in the dashboard. You will pass it to the container as `MESH_NODE_TOKEN`.
+5. Select **Kubernetes**, **Docker Compose**, or **Docker CLI**.
+6. Follow the displayed instructions. The dashboard masks the node token but includes it when required by a copied command. Docker Compose configurations and Kubernetes manifests reference a secret instead of containing the token.
 
 With an API token that has either `Cloudflare One Connectors Write` or `Cloudflare One Connector: WARP Write` permission, create a node and retrieve its connector token:
 

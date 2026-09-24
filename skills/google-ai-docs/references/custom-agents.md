@@ -110,6 +110,58 @@ Here is an example of passing all three inline:
     Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        env := interactions.Environment{
+            Sources: []interactions.Source{
+                {
+                    Type:    interactions.SourceTypeInline.ToPointer(),
+                    Target:  genai.Ptr(".agents/AGENTS.md"),
+                    Content: genai.Ptr("Always use matplotlib for charts. Include a summary table in every report."),
+                },
+                {
+                    Type:    interactions.SourceTypeInline.ToPointer(),
+                    Target:  genai.Ptr(".agents/skills/slide-maker/SKILL.md"),
+                    Content: genai.Ptr("---\nname: slide-maker\n---\n# Slide Maker\nCreate HTML slide decks from data analysis results."),
+                },
+            },
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:             interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:             interactions.NewInteractionsInput("Analyze the Q1 revenue data and create a slide deck."),
+                SystemInstruction: genai.Ptr("You are a data analyst. Always include visualizations and export results as PDF."),
+                Environment:       genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(env)),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -255,6 +307,53 @@ Mount an `AGENTS.md` using an inline source:
     Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        env := interactions.Environment{
+            Sources: []interactions.Source{
+                {
+                    Type:    interactions.SourceTypeInline.ToPointer(),
+                    Target:  genai.Ptr(".agents/AGENTS.md"),
+                    Content: genai.Ptr("Always use matplotlib for charts. Include a summary table in every report."),
+                },
+            },
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:             interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:             interactions.NewInteractionsInput("Analyze the Q1 revenue data and create a report."),
+                SystemInstruction: genai.Ptr("You are a data analyst. Always include visualizations and export results as PDF."),
+                Environment:       genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(env)),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -371,6 +470,53 @@ Mount a skill using an inline source:
 
     Interaction interaction = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        env := interactions.Environment{
+            Sources: []interactions.Source{
+                {
+                    Type:    interactions.SourceTypeInline.ToPointer(),
+                    Target:  genai.Ptr(".agents/skills/slide-maker/SKILL.md"),
+                    Content: genai.Ptr("---\nname: slide-maker\ndescription: Create HTML slide decks\n---\n# Slide Maker\n\nWhen asked to create a presentation:\n1. Analyze the input data\n2. Create an HTML slide deck with reveal.js\n3. Save to /workspace/output/slides.html"),
+                },
+            },
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:             interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:             interactions.NewInteractionsInput("Create a presentation about our Q1 results."),
+                SystemInstruction: genai.Ptr("You create presentations from data."),
+                Environment:       genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(env)),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -530,6 +676,66 @@ Specify `base_agent`, `id`, `agent_config`, `system_instruction` and `base_envir
     Agent agent = client.agents.create(agentParams).agent().get();
     System.out.println("Created agent: " + agent.id().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/agents"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        env := interactions.Environment{
+            Sources: []interactions.Source{
+                {
+                    Type:    interactions.SourceTypeInline.ToPointer(),
+                    Target:  genai.Ptr(".agents/AGENTS.md"),
+                    Content: genai.Ptr("Always use matplotlib for charts. Include a summary table in every report."),
+                },
+                {
+                    Type:    interactions.SourceTypeInline.ToPointer(),
+                    Target:  genai.Ptr(".agents/skills/slide-maker/SKILL.md"),
+                    Content: genai.Ptr("---\nname: slide-maker\n---\n# Slide Maker\nCreate HTML slide decks from data analysis results."),
+                },
+                {
+                    Type:   interactions.SourceTypeRepository.ToPointer(),
+                    Source: genai.Ptr("https://github.com/my-org/analysis-templates"),
+                    Target: genai.Ptr("/workspace/templates"),
+                },
+            },
+        }
+
+        res, err := client.Agents.Create(ctx, operations.CreateAgentRequest{
+            Body: agents.Agent{
+                ID:        genai.Ptr("data-analyst"),
+                BaseAgent: genai.Ptr("antigravity-preview-05-2026"),
+                AgentConfig: genai.Ptr(agents.NewAgentConfig(interactions.AntigravityAgentConfig{
+                    Model: genai.Ptr("gemini-3.8-flash"),
+                })),
+                SystemInstruction: genai.Ptr("You are a data analyst. Always include visualizations and export results as PDF."),
+                BaseEnvironment:   genai.Ptr(agents.NewBaseEnvironment(env)),
+            },
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Printf("Created agent: %s\n", *res.Agent.ID)
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/agents" \
@@ -647,6 +853,57 @@ Iterate with the base Antigravity agent until the environment is right (packages
 
     Agent agent = client.agents.create(agentParams).agent().get();
     System.out.println("Forked agent successfully: " + agent.id().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/agents"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Step 1: set up the environment interactively
+        intRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:       interactions.NewInteractionsInput("Install pandas, matplotlib, and seaborn. Create an analysis template at /workspace/template.py."),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        interaction := intRes.Interaction
+
+        // Step 2: fork that environment into a managed agent
+        agentRes, err := client.Agents.Create(ctx, operations.CreateAgentRequest{
+            Body: agents.Agent{
+                ID:                genai.Ptr("my-data-analyst"),
+                BaseAgent:         genai.Ptr("antigravity-preview-05-2026"),
+                SystemInstruction: genai.Ptr("You are a data analyst. Use the template at /workspace/template.py for all reports."),
+                BaseEnvironment:   genai.Ptr(agents.NewBaseEnvironment(*interaction.EnvironmentID)),
+            },
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Printf("Forked agent successfully: %s\n", *agentRes.Agent.ID)
+    }
 
 ### REST
 
@@ -788,6 +1045,66 @@ The following example creates an `issue-resolver` agent that can only access Git
     Agent agent = client.agents.create(agentParams).agent().get();
     System.out.println("Created issue-resolver agent successfully: " + agent.id().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/agents"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        env := interactions.Environment{
+            Sources: []interactions.Source{
+                {
+                    Type:   interactions.SourceTypeRepository.ToPointer(),
+                    Source: genai.Ptr("https://github.com/my-org/backend"),
+                    Target: genai.Ptr("/workspace/repo"),
+                },
+            },
+            Network: genai.Ptr(interactions.NewNetwork(interactions.NewEnvironmentNetworkEgressAllowlist(interactions.Allowlist{
+                Allowlist: []interactions.AllowlistEntry{
+                    {
+                        Domain: "api.github.com",
+                        Transform: genai.Ptr(interactions.NewTransform(map[string]string{
+                            "Authorization": "Basic YOUR_BASE64_TOKEN",
+                        })),
+                    },
+                    {
+                        Domain: "pypi.org",
+                    },
+                },
+            }))),
+        }
+
+        res, err := client.Agents.Create(ctx, operations.CreateAgentRequest{
+            Body: agents.Agent{
+                ID:                genai.Ptr("issue-resolver"),
+                BaseAgent:         genai.Ptr("antigravity-preview-05-2026"),
+                SystemInstruction: genai.Ptr("You resolve GitHub issues. Clone the repo, find the bug, write the fix, run the tests, and open a PR."),
+                BaseEnvironment:   genai.Ptr(agents.NewBaseEnvironment(env)),
+            },
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Printf("Created issue-resolver agent successfully: %s\n", *res.Agent.ID)
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/agents" \
@@ -865,6 +1182,42 @@ Call your managed agent with your agent ID by creating a new interaction. Each i
     Interaction result = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(result.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("data-analyst"),
+                Input:       interactions.NewInteractionsInput("Analyze Q1 revenue data from /workspace/templates/sample.csv and create a slide deck."),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -936,6 +1289,44 @@ specific run without changing the stored agent definition.
 
     Interaction result = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(result.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:             interactions.AgentOption("data-analyst"),
+                Input:             interactions.NewInteractionsInput("Analyze Q1 revenue data, but do not create a slide deck. Just output a summary table."),
+                SystemInstruction: genai.Ptr("You are a data analyst. Focus ONLY on summary tables. Ignore default instructions about slides."),
+                Tools:             []interactions.Tool{interactions.NewTool(interactions.CodeExecution{})}, // Override to only use code execution
+                Environment:       genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -1057,6 +1448,59 @@ agent referencing it picks up the new secret on the next run.
     Interaction result = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(result.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Invoke the agent with a fresh token, overriding the base_environment credentials
+        env := interactions.Environment{
+            Network: genai.Ptr(interactions.NewNetwork(interactions.NewEnvironmentNetworkEgressAllowlist(interactions.Allowlist{
+                Allowlist: []interactions.AllowlistEntry{
+                    {
+                        Domain: "api.github.com",
+                        Transform: genai.Ptr(interactions.NewTransform(map[string]string{
+                            "Authorization": "Bearer ghp_REFRESHED_TOKEN",
+                        })),
+                    },
+                    {
+                        Domain: "pypi.org",
+                    },
+                },
+            }))),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("issue-resolver"),
+                Input:       interactions.NewInteractionsInput("Fix issue #42 and open a PR."),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(env)),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1115,6 +1559,38 @@ You can list, get, and delete agents.
         System.out.println(a.id().orElse("") + ": " + a.description().orElse(""));
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Agents.List(ctx, operations.ListAgentsRequest{})
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.AgentListResponse != nil {
+            for _, a := range res.AgentListResponse.Agents {
+                fmt.Printf("%s: %v\n", *a.ID, a.Description)
+            }
+        }
+    }
+
 ### REST
 
     curl -X GET "https://generativelanguage.googleapis.com/v1beta/agents" \
@@ -1142,6 +1618,36 @@ You can list, get, and delete agents.
     Agent agent = client.agents.get("data-analyst").agent().get();
     System.out.println(agent);
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Agents.Get(ctx, operations.GetAgentRequest{
+            ID: "data-analyst",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Printf("%+v\n", res.Agent)
+    }
+
 ### REST
 
     curl -X GET "https://generativelanguage.googleapis.com/v1beta/agents/data-analyst" \
@@ -1166,6 +1672,33 @@ Deleting removes the configuration. Existing environments and interactions creat
     Client client = new Client();
 
     client.agents.delete("data-analyst");
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        _, err = client.Agents.Delete(ctx, operations.DeleteAgentRequest{
+            ID: "data-analyst",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
 
 ### REST
 

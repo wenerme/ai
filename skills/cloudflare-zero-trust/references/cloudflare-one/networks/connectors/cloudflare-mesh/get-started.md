@@ -58,50 +58,13 @@ Choose the dashboard wizard or API and Terraform resources.
 The setup wizard [configures your account for Mesh networking](#required-account-settings) and optionally guides you through creating a Mesh node. This is a one-time setup.
 
 1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
-2. Select **Add a node**.
+2. Select **Add participant** > **Add node**.
 3. Enter a name for your node (for example, `web-server` or `staging-db`).
 4. Select **Create node**.
-5. (Optional) If you have a Linux server, run the install commands shown in the dashboard to bring the node online. If you do not have a server ready, select **I'll connect later** — you can install the node at any time from the node detail page.<details><summary>
-
-   Installation commands</summary>
-
-IP forwarding is not required to reach the node by its Mesh IP. If the node will advertise <a href="https://developers.cloudflare.com/mesh/features/routes/">CIDR routes</a>, enable persistent forwarding before connecting it:
-
-   ```sh
-   printf 'net.ipv4.ip_forward = 1\nnet.ipv6.conf.all.forwarding = 1\nnet.ipv6.conf.all.accept_ra = 2\n' | sudo tee /etc/sysctl.d/99-zzz-cloudflare-warp-connector.conf &&
-   sudo sysctl --system
-   ```
-
-   ```sh
-   curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor -o /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg &&
-   echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(. /etc/os-release && echo $VERSION_CODENAME) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list &&
-   sudo apt-get update -qq && sudo apt-get install -y -qq cloudflare-warp
-   ```
-
-   ```sh
-   sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
-   ```
-
-   On RHEL 9 and later, enable the Extra Packages for Enterprise Linux (EPEL) repository before installing <code>cloudflare-warp</code>. EPEL provides dependencies required by the Cloudflare One Client UI:
-
-   ```sh
-   sudo dnf install -y epel-release
-   ```
-
-   Then install the package:
-
-   ```sh
-   curl -fsSl https://pkg.cloudflareclient.com/cloudflare-warp-ascii.repo | sudo tee /etc/yum.repos.d/cloudflare-warp.repo &&
-   sudo yum install -y cloudflare-warp
-   ```
-
-   ```sh
-   sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
-   ```
-
-   </details>
-
-6. Select **View node details** to complete the setup wizard.
+5. Select **Linux**, **Kubernetes**, **Docker Compose**, or **Docker CLI**.
+6. Follow the installation instructions for your selected method. The dashboard masks the node token but includes it when required by a copied command. Docker Compose configurations and Kubernetes manifests reference a secret instead of containing the token.
+7. (Optional) If you are not ready to install the node, select **I'll connect later**. You can install the node from its detail page later.
+8. If you installed the node, wait for it to connect and select **Continue**.
 
 If you installed the node, it should appear as **Online** on the Mesh overview page along with its assigned **Mesh IP**. If the node does not come online, refer to [Troubleshooting](#troubleshooting).
 
@@ -218,46 +181,15 @@ You can also manage nodes with the [`cloudflare_zero_trust_tunnel_warp_connector
 
 ## 2. Connect a client device
 
-Connect a laptop or phone to your Mesh network:
+Use the Add device workflow to find the Cloudflare One Client installer and organization name for a laptop or phone:
 
-### Windows, macOS, and Linux
+1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+2. Select **Add participant** > **Add device**.
+3. Select the device platform and use the provided link or QR code to install the Cloudflare One Client.
+4. Open the client and select **Cloudflare Zero Trust** when prompted for a connection type.
+5. Enter the organization name displayed in the Mesh dashboard and complete authentication.
 
-To enroll your device using the client GUI:
-
-1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
-2. Launch the Cloudflare One Client.
-3. On the **What would you like to use the Cloudflare One Client for?** screen, select **Zero Trust security**.
-4. Enter your team name.
-5. Complete the authentication steps required by your organization.
-
-   Once authenticated, you will see a Success page and a dialog prompting you to open the Cloudflare One Client.
-6. Select **Open the Cloudflare One Client** to complete the registration.
-
-7. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
-8. Launch the Cloudflare One Client.
-9. Select the Cloudflare logo in the menu bar.
-10. Select the gear icon.
-11. Go to **Preferences** > **Account**.
-12. Select **Login with Cloudflare Zero Trust**.
-13. Enter your team name.
-14. Complete the authentication steps required by your organization.
-
-    Once authenticated, you will see a Success page and a dialog prompting you to open the Cloudflare One Client.
-15. Select **Open Cloudflare WARP.app** to complete the registration.
-
-### iOS and Android
-
-1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Agent app.
-2. Launch the Cloudflare One Agent app.
-3. Select **Next**.
-4. Review the privacy policy and select **Accept**.
-5. Enter your team name.
-6. Complete the authentication steps required by your organization.
-7. After authenticating, select **Install VPN Profile**.
-8. In the **Connection request** popup window, select **OK**.
-9. If you did not enable [auto-connect ↗](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect), manually turn on the switch to **Connected**.
-
-Once you see a **Connected** status, your device is on the mesh and receives its own Mesh IP.
+The workflow does not enroll the device or verify connectivity. After the Cloudflare One Client displays **Connected**, test connectivity as described in [Connect client devices](https://developers.cloudflare.com/mesh/guides/connect-client-devices/#2-verify-connectivity).
 
 ## 3. Test connectivity
 

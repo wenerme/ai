@@ -108,6 +108,49 @@ All generated images include a [SynthID watermark](https://ai.google.dev/respons
       Files.write(Paths.get("generated_image.png"), imageBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput("Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputImage != nil && res.Interaction.OutputImage.Data != nil {
+            imageBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputImage.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("generated_image.png", imageBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -260,6 +303,63 @@ understanding](https://ai.google.dev/gemini-api/docs/image-understanding) page.
       Files.write(Paths.get("generated_image.png"), outputBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        inputBytes, err := os.ReadFile("/path/to/cat_image.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(inputBytes)
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme",
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        Data:     genai.Ptr(base64Image),
+                        MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputImage != nil && res.Interaction.OutputImage.Data != nil {
+            outputBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputImage.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("generated_image.png", outputBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -357,6 +457,52 @@ example shows a prompt to generate an infographic about photosynthesis.
       byte[] imageBytes =
           Base64.getDecoder().decode(interaction.outputImage().get().data().get());
       Files.write(Paths.get("photosynthesis.png"), imageBytes);
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput(`Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plant's favorite food. Show the "ingredients" (sunlight, water, CO2) and the "finished dish" (sugar/energy). The style should be like a page from a colorful kids' cookbook, suitable for a 4th grader.`),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputImage != nil && res.Interaction.OutputImage.Data != nil {
+            imageBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputImage.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("photosynthesis.png", imageBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
     }
 
 ### REST
@@ -477,6 +623,72 @@ You can then use the `previous_interaction_id` to change the language on the gra
       byte[] imageBytes =
           Base64.getDecoder().decode(interaction2.outputImage().get().data().get());
       Files.write(Paths.get("photosynthesis_spanish.png"), imageBytes);
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput("Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plant's favorite food."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.ImageResponseFormat{
+                MimeType:    interactions.ImageResponseFormatMimeTypeImageJpeg.ToPointer(),
+                AspectRatio: interactions.ImageResponseFormatAspectRatio("16:9").ToPointer(),
+                ImageSize:   interactions.ImageResponseFormatImageSizeTwoK.ToPointer(),
+            }),
+        )
+
+        res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:                 interactions.Model("gemini-3.1-flash-image"),
+                Input:                 interactions.NewInteractionsInput("Update this infographic to be in Spanish. Do not change any other elements of the image."),
+                PreviousInteractionID: res1.Interaction.ID,
+                ResponseFormat:        genai.Ptr(format),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res2.Interaction.OutputImage != nil && res2.Interaction.OutputImage.Data != nil {
+            imageBytes, err := base64.StdEncoding.DecodeString(*res2.Interaction.OutputImage.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("photosynthesis_spanish.png", imageBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
     }
 
 ### REST
@@ -691,6 +903,82 @@ can include the following:
       Files.write(Paths.get("office.png"), outBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "An office group photo of these people, they are making funny faces."
+
+        imageBytes, err := os.ReadFile("/path/to/person.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+
+        textContent := interactions.NewContent(interactions.TextContent{
+            Text: prompt,
+        })
+        imageContent := interactions.NewContent(interactions.ImageContent{
+            Data:     genai.Ptr(base64Image),
+            MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+        })
+
+        contents := []interactions.Content{
+            textContent,
+            imageContent,
+            imageContent,
+            imageContent,
+            imageContent,
+            imageContent,
+        }
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.ImageResponseFormat{
+                AspectRatio: interactions.ImageResponseFormatAspectRatio("5:4").ToPointer(),
+                ImageSize:   interactions.ImageResponseFormatImageSizeTwoK.ToPointer(),
+            }),
+        )
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Input:          interactions.NewInteractionsInput(contents),
+                ResponseFormat: genai.Ptr(format),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputImage != nil && res.Interaction.OutputImage.Data != nil {
+            outBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputImage.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("office.png", outBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -826,6 +1114,62 @@ excluded from the response (see [Grounding with Google Image Search](https://ai.
       Files.write(Paths.get("weather.png"), imageBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Visualize the current weather forecast for the next 5 days in San Francisco as a clean, modern weather chart. Add a visual on what I should wear each day"
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.ImageResponseFormat{
+                MimeType:    interactions.ImageResponseFormatMimeTypeImageJpeg.ToPointer(),
+                AspectRatio: interactions.ImageResponseFormatAspectRatio("16:9").ToPointer(),
+            }),
+        )
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput(prompt),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                },
+                ResponseFormat: genai.Ptr(format),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputImage != nil && res.Interaction.OutputImage.Data != nil {
+            imageBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputImage.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("weather.png", imageBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -933,6 +1277,48 @@ used independently or together with Web Search.
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        searchTool := interactions.GoogleSearch{
+            SearchTypes: []interactions.GoogleSearchSearchType{
+                interactions.GoogleSearchSearchTypeWebSearch,
+                interactions.GoogleSearchSearchTypeImageSearch,
+            },
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput("A detailed painting of a Timareta butterfly resting on a flower"),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(searchTool),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = res
+    }
 
 ### REST
 
@@ -1131,6 +1517,76 @@ directly in your API request or upload local video files using the
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.VideoContent{
+                URI:      genai.Ptr("https://www.youtube.com/watch?v=UTdfxFyOQTI"),
+                MimeType: interactions.VideoContentMimeTypeVideoMp4.ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: "Generate a poster image that captures the key themes of this video.",
+            }),
+        }
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.ImageResponseFormat{
+                AspectRatio: interactions.ImageResponseFormatAspectRatio("16:9").ToPointer(),
+            }),
+        )
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Input:          interactions.NewInteractionsInput(contents),
+                ResponseFormat: genai.Ptr(format),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, block := range step.ModelOutputStep.Content {
+                    if block.TextContent != nil {
+                        fmt.Println(block.TextContent.Text)
+                    } else if block.ImageContent != nil && block.ImageContent.Data != nil {
+                        imgBytes, err := base64.StdEncoding.DecodeString(*block.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("video_poster.png", imgBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                        fmt.Println("Image saved as video_poster.png")
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -1275,6 +1731,65 @@ parameters (e.g., 1k) will be rejected.
       Files.write(Paths.get("butterfly.png"), imageBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Da Vinci style anatomical sketch of a dissected Monarch butterfly. Detailed drawings of the head, wings, and legs on textured parchment with notes in English."
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.ImageResponseFormat{
+                MimeType:    interactions.ImageResponseFormatMimeTypeImageJpeg.ToPointer(),
+                AspectRatio: interactions.ImageResponseFormatAspectRatio("1:1").ToPointer(),
+                ImageSize:   interactions.ImageResponseFormatImageSizeOneK.ToPointer(),
+            }),
+        )
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Input:          interactions.NewInteractionsInput(prompt),
+                ResponseFormat: genai.Ptr(format),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+
+        if res.Interaction.OutputImage != nil && res.Interaction.OutputImage.Data != nil {
+            imageBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputImage.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("butterfly.png", imageBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -1382,6 +1897,58 @@ You can check the thoughts that lead to the final image being produced.
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput("A futuristic city built inside a giant glass bottle floating in space"),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ThoughtStep != nil {
+                for _, contentBlock := range step.ThoughtStep.Summary {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        imgBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("thought_image.png", imgBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
     }
 
 #### Interleaved text and images
@@ -1494,6 +2061,62 @@ and save interleaved content, you must manually iterate over `steps`:
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3-pro-image"),
+                Input: interactions.NewInteractionsInput("Write the story of the lifecycle of a monarch butterfly, interleave illustrations"),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageCounter := 1
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        filename := fmt.Sprintf("butterfly_lifecycle_%d.png", imageCounter)
+                        imgBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile(filename, imgBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                        fmt.Printf("\n[Saved illustration: %s]\n", filename)
+                        imageCounter++
+                    }
+                }
+            }
+        }
+    }
+
 #### Controlling thinking levels
 
 With Gemini 3.1 Flash Image and Gemini 3.1 Flash Lite Image, you can control the
@@ -1578,6 +2201,57 @@ amount of thinking the model uses to balance quality and latency. The default
       byte[] imageBytes =
           Base64.getDecoder().decode(interaction.outputImage().get().data().get());
       Files.write(Paths.get("futuristic_city.png"), imageBytes);
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput("A futuristic city built inside a giant glass bottle floating in space"),
+                GenerationConfig: &interactions.GenerationConfig{
+                    ThinkingLevel: interactions.ThinkingLevelHigh.ToPointer(),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+
+        if res.Interaction.OutputImage != nil && res.Interaction.OutputImage.Data != nil {
+            imageBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputImage.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("futuristic_city.png", imageBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
     }
 
 ### REST
@@ -1744,6 +2418,62 @@ have over the results.
       Files.write(Paths.get("coral_reef.png"), imageBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        format := interactions.NewCreateModelInteractionResponseFormat([]interactions.ResponseFormat{
+            interactions.NewResponseFormat(interactions.ImageResponseFormat{
+                MimeType:    interactions.ImageResponseFormatMimeTypeImageJpeg.ToPointer(),
+                AspectRatio: interactions.ImageResponseFormatAspectRatio("16:9").ToPointer(),
+            }),
+        })
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Input:          interactions.NewInteractionsInput("A photorealistic wide-angle shot of a vibrant coral reef teeming with tropical fish. Crystal-clear turquoise water with sunbeams filtering down from the surface, illuminating a sea turtle gliding gracefully over the coral. Shot from a low perspective with a wide-angle lens. Aspect ratio 16:9."),
+                ResponseFormat: genai.Ptr(format),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+
+        if res.Interaction.OutputImage != nil && res.Interaction.OutputImage.Data != nil {
+            imageBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputImage.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("coral_reef.png", imageBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -1873,6 +2603,58 @@ detail (bold lines, colors, etc.) for consistent results.
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput("A kawaii-style sticker of a happy red panda wearing a tiny bamboo hat. It's munching on a green bamboo leaf. The design features bold, clean outlines, simple cel-shading, and a vibrant color palette. The background must be white."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        imgBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("red_panda_sticker.png", imgBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
     }
 
 ### REST
@@ -2018,6 +2800,65 @@ professional asset production.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.ImageResponseFormat{
+                AspectRatio: interactions.ImageResponseFormatAspectRatio("1:1").ToPointer(),
+            }),
+        )
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Input:          interactions.NewInteractionsInput("Create a modern, minimalist logo for a coffee shop called 'The Daily Grind'. The text should be in a clean, bold, sans-serif font. The color scheme is black and white. Put the logo in a circle. Use a coffee bean in a clever way."),
+                ResponseFormat: genai.Ptr(format),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        imgBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("logo_example.jpg", imgBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -2157,6 +2998,58 @@ advertising, or branding.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput("A high-resolution, studio-lit product photograph of a minimalist ceramic coffee mug in matte black, presented on a polished concrete surface. The lighting is a three-point softbox setup designed to create soft, diffused highlights and eliminate harsh shadows. The camera angle is a slightly elevated 45-degree shot to showcase its clean lines. Ultra-realistic, with sharp focus on the steam rising from the coffee. Square image."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        imgBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("product_mockup.png", imgBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -2287,6 +3180,58 @@ materials where text will be overlaid.
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput("A minimalist composition featuring a single, delicate red maple leaf positioned in the bottom-right of the frame. The background is a vast, empty off-white canvas, creating significant negative space for text. Soft, diffused lighting from the top left. Square image."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        imgBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("minimalist_design.png", imgBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
     }
 
 ### REST
@@ -2456,6 +3401,75 @@ prompts work best with Gemini 3 Pro and Gemini 3.1 Flash Image.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageBytes, err := os.ReadFile("/path/to/your/man_in_white_glasses.jpg")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+        textInput := "Make a 3 panel comic in a gritty, noir art style with high-contrast black and white inks. Put the character in a humurous scene."
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.TextContent{
+                Text: textInput,
+            }),
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(base64Image),
+                MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        outBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("comic_panel.jpg", outBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -2602,6 +3616,68 @@ This is useful for news, weather, and other time-sensitive topics.
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.ImageResponseFormat{
+                AspectRatio: interactions.ImageResponseFormatAspectRatio("16:9").ToPointer(),
+            }),
+        )
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput("Make a simple but stylish graphic of last night's Arsenal game in the Champion's League"),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                },
+                ResponseFormat: genai.Ptr(format),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        imgBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("football-score.jpg", imgBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
     }
 
 ### REST
@@ -2784,6 +3860,75 @@ image's style, lighting, and perspective.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageBytes, err := os.ReadFile("/path/to/your/cat_photo.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+        textInput := "Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off."
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.TextContent{
+                Text: textInput,
+            }),
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(base64Image),
+                MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        outBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("cat_with_hat.png", outBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -2959,6 +4104,75 @@ leaving the rest untouched.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageBytes, err := os.ReadFile("/path/to/your/living_room.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+        textInput := "Using the provided image of a living room, change only the blue sofa to be a vintage, brown leather chesterfield sofa. Keep the rest of the room, including the pillows on the sofa and the lighting, unchanged."
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(base64Image),
+                MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: textInput,
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        outBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("living_room_edited.png", outBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -3124,6 +4338,75 @@ artistic style.
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageBytes, err := os.ReadFile("/path/to/your/city.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+        textInput := "Transform the provided photograph of a modern city street at night into the artistic style of Vincent van Gogh's 'Starry Night'. Preserve the original composition of buildings and cars, but render all elements with swirling, impasto brushstrokes and a dramatic palette of deep blues and bright yellows."
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(base64Image),
+                MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: textInput,
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        outBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("city_style_transfer.png", outBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
     }
 
 ### REST
@@ -3322,6 +4605,82 @@ perfect for product mockups or creative collages.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        dressBytes, err := os.ReadFile("/path/to/your/dress.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        modelBytes, err := os.ReadFile("/path/to/your/model.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        textInput := "Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment."
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(base64.StdEncoding.EncodeToString(dressBytes)),
+                MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+            }),
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(base64.StdEncoding.EncodeToString(modelBytes)),
+                MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: textInput,
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        outBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("fashion_ecommerce_shot.png", outBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -3505,6 +4864,82 @@ describe them in great detail along with your edit request.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        womanBytes, err := os.ReadFile("/path/to/your/woman.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        logoBytes, err := os.ReadFile("/path/to/your/logo.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        textInput := "Take the first image of the woman with brown hair, blue eyes, and a neutral expression. Add the logo from the second image onto her black t-shirt. Ensure the woman's face and features remain completely unchanged. The logo should look like it's naturally printed on the fabric, following the folds of the shirt."
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(base64.StdEncoding.EncodeToString(womanBytes)),
+                MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+            }),
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(base64.StdEncoding.EncodeToString(logoBytes)),
+                MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: textInput,
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        outBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("woman_with_logo.png", outBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -3669,6 +5104,74 @@ finished image.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        sketchBytes, err := os.ReadFile("/path/to/your/car_sketch.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        textInput := "Turn this rough pencil sketch of a futuristic car into a polished photo of the finished concept car in a showroom. Keep the sleek lines and low profile from the sketch but add metallic blue paint and neon rim lighting."
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(base64.StdEncoding.EncodeToString(sketchBytes)),
+                MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: textInput,
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    } else if contentBlock.ImageContent != nil && contentBlock.ImageContent.Data != nil {
+                        outBytes, err := base64.StdEncoding.DecodeString(*contentBlock.ImageContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        if err := os.WriteFile("car_photo.png", outBytes, 0644); err != nil {
+                            log.Fatal(err)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -3824,6 +5327,44 @@ To request multiple modalities (for example, both text and the generated image),
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        format := interactions.NewCreateModelInteractionResponseFormat([]interactions.ResponseFormat{
+            interactions.NewResponseFormat(interactions.TextResponseFormat{}),
+            interactions.NewResponseFormat(interactions.ImageResponseFormat{}),
+        })
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Input:          interactions.NewInteractionsInput("Write a short poem about a starry night and generate an image of it."),
+                ResponseFormat: genai.Ptr(format),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = res
+    }
+
 ### REST
 
     curl -s -X POST \
@@ -3901,6 +5442,48 @@ By default, the model matches the output image size to that of your input image,
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.ImageResponseFormat{
+                AspectRatio: interactions.ImageResponseFormatAspectRatio("16:9").ToPointer(),
+                ImageSize:   interactions.ImageResponseFormatImageSizeTwoK.ToPointer(),
+            }),
+        )
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Input:          interactions.NewInteractionsInput(prompt),
+                ResponseFormat: genai.Ptr(format),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = res
+    }
 
 ### REST
 

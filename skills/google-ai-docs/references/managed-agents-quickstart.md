@@ -67,6 +67,45 @@ A single call to the [Interactions API](https://ai.google.dev/gemini-api/docs) p
     System.out.println("Environment ID: " + interaction.environmentId().orElse(""));
     System.out.println("Output: " + interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:       interactions.NewInteractionsInput("Write a Python script that generates the first 20 Fibonacci numbers and saves them to fibonacci.txt. Then read the file and print its contents."),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        interaction := res.Interaction
+        // Print the agent's final output
+        fmt.Printf("Interaction ID: %s\n", *interaction.ID)
+        fmt.Printf("Environment ID: %s\n", *interaction.EnvironmentID)
+        fmt.Printf("Output: %s\n", *interaction.OutputText)
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -134,6 +173,46 @@ Pass both in their respective place to resume:
 
     Interaction interaction2 = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction2.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        interactionID := "INTERACTION_ID"
+        environmentID := "ENVIRONMENT_ID"
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:                 interactions.AgentOption("antigravity-preview-05-2026"),
+                PreviousInteractionID: genai.Ptr(interactionID),
+                Environment:           genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(environmentID)),
+                Input:                 interactions.NewInteractionsInput("Now plot the Fibonacci sequence as a line chart and save it as chart.png."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -229,6 +308,54 @@ For long-running tasks, you can stream the response to see the agent work in rea
           stepStop.usage().ifPresent(System.out::println);
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Input:       interactions.NewInteractionsInput("Read Hacker News, summarize the top 5 stories, and save the results as a PDF."),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+                Stream:      genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        stream := res.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            fmt.Printf("%+v\n", event)
+            if stepStop := event.GetDataStepStop(); stepStop != nil && stepStop.Usage != nil {
+                fmt.Printf("%+v\n", stepStop.Usage)
+            }
+        }
+        if err := stream.Err(); err != nil {
+            log.Fatal(err)
+        }
     }
 
 ### REST
@@ -327,6 +454,47 @@ When the agent creates files inside the sandbox. Download them using the Files A
     HttpResponse<byte[]> response = httpClient.send(request, HttpResponse.BodyHandlers.ofByteArray());
     Files.write(Paths.get("snapshot.tar"), response.body());
     System.out.println("Saved snapshot to snapshot.tar");
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "io"
+        "log"
+        "net/http"
+        "os"
+    )
+
+    func main() {
+        ctx := context.Background()
+        envID := "ENVIRONMENT_ID"
+        apiKey := os.Getenv("GEMINI_API_KEY")
+
+        url := fmt.Sprintf("https://generativelanguage.googleapis.com/v1beta/files/environment-%s:download?alt=media", envID)
+        req, err := http.NewRequestWithContext(ctx, http.MethodGet, url, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+        req.Header.Set("x-goog-api-key", apiKey)
+
+        resp, err := http.DefaultClient.Do(req)
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer resp.Body.Close()
+
+        data, err := io.ReadAll(resp.Body)
+        if err != nil {
+            log.Fatal(err)
+        }
+        if err := os.WriteFile("snapshot.tar", data, 0644); err != nil {
+            log.Fatal(err)
+        }
+        fmt.Println("Saved snapshot to snapshot.tar")
+    }
 
 ### REST
 
@@ -449,6 +617,61 @@ When you save an agent, notice the architectural symmetry with inline interactio
     Agent agent = client.agents.create(agentParams).agent().get();
     System.out.println("Saved agent: " + agent.id().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/agents"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        env := interactions.Environment{
+            Sources: []interactions.Source{
+                {
+                    Type:    interactions.SourceTypeInline.ToPointer(),
+                    Target:  genai.Ptr(".agents/AGENTS.md"),
+                    Content: genai.Ptr("Always include a chart and a summary table in your reports."),
+                },
+                {
+                    Type:   interactions.SourceTypeRepository.ToPointer(),
+                    Source: genai.Ptr("https://github.com/your-org/skills"),
+                    Target: genai.Ptr(".agents/skills"),
+                },
+            },
+        }
+
+        res, err := client.Agents.Create(ctx, operations.CreateAgentRequest{
+            Body: agents.Agent{
+                ID:        genai.Ptr("fibonacci-analyst"),
+                BaseAgent: genai.Ptr("antigravity-preview-05-2026"),
+                AgentConfig: genai.Ptr(agents.NewAgentConfig(interactions.AntigravityAgentConfig{
+                    Model: genai.Ptr("gemini-3.8-flash"),
+                })),
+                SystemInstruction: genai.Ptr("You are a math analysis agent. Generate sequences, visualize them, and export results as PDF reports."),
+                BaseEnvironment:   genai.Ptr(agents.NewBaseEnvironment(env)),
+            },
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Printf("Saved agent: %s\n", *res.Agent.ID)
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/agents" \
@@ -525,6 +748,42 @@ Once you've saved a managed agent, you can invoke it by ID. Each invocation fork
 
     Interaction result = client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(result.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:       interactions.AgentOption("fibonacci-analyst"),
+                Input:       interactions.NewInteractionsInput("Generate the first 50 prime numbers, plot their distribution, and save a PDF report."),
+                Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 

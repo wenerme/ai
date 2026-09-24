@@ -144,6 +144,69 @@ summarize the video.
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "time"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        myfile, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp4", &genai.UploadFileConfig{
+            MIMEType: "video/mp4",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for myfile.State != genai.FileStateActive {
+            fmt.Println("Processing video...")
+            time.Sleep(5 * time.Second)
+            myfile, err = client.Files.Get(ctx, myfile.Name, nil)
+            if err != nil {
+                log.Fatal(err)
+            }
+        }
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.VideoContent{
+                URI:      genai.Ptr(myfile.URI),
+                MimeType: interactions.VideoContentMimeType(myfile.MIMEType).ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: "Summarize this video. Then create a quiz with an answer key based on the information in this video.",
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     VIDEO_PATH="path/to/sample.mp4"
@@ -319,6 +382,61 @@ Here's an example of providing inline video data:
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        videoFileName := "/path/to/your/video.mp4"
+        videoBytes, err := os.ReadFile(videoFileName)
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Video := base64.StdEncoding.EncodeToString(videoBytes)
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.TextContent{
+                Text: "Please summarize the video in 3 sentences.",
+            }),
+            interactions.NewContent(interactions.VideoContent{
+                Data:     genai.Ptr(base64Video),
+                MimeType: interactions.VideoContentMimeTypeVideoMp4.ToPointer(),
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
 > [!NOTE]
@@ -424,6 +542,51 @@ You can pass YouTube URLs directly to Gemini API as part of your request as foll
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.TextContent{
+                Text: "Please summarize the video in 3 sentences.",
+            }),
+            interactions.NewContent(interactions.VideoContent{
+                URI: genai.Ptr("https://www.youtube.com/watch?v=9hE5-98ZeCg"),
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -749,6 +912,10 @@ timestamps of the form `MM:SS`.
 
     String prompt = "What are the examples given at 00:05 and 00:10 supposed to show us?";
 
+### Go
+
+    prompt := "What are the examples given at 00:05 and 00:10 supposed to show us?"
+
 ### REST
 
     PROMPT="What are the examples given at 00:05 and 00:10 supposed to show us?"
@@ -776,6 +943,10 @@ note that it may miss details in videos with rapid motion or quick scene changes
 
     String prompt =
         "Describe the key events in this video, providing both audio and visual details. Include timestamps for salient moments.";
+
+### Go
+
+    prompt := "Describe the key events in this video, providing both audio and visual details. Include timestamps for salient moments."
 
 ### REST
 

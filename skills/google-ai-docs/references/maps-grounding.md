@@ -145,6 +145,74 @@ the Gemini model to use Google Maps data.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("What are the best Italian restaurants within a 15-minute walk from here?"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.GoogleMaps{
+                            Latitude:  genai.Ptr(34.050481),
+                            Longitude: genai.Ptr(-118.248526),
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Print the model's text response and annotations
+        for _, step := range resp.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, content := range step.ModelOutputStep.Content {
+                    if content.TextContent != nil {
+                        fmt.Println(content.TextContent.Text)
+                        if len(content.TextContent.Annotations) > 0 {
+                            fmt.Println("\nSources:")
+                            for _, annotation := range content.TextContent.Annotations {
+                                if annotation.PlaceCitation != nil {
+                                    c := annotation.PlaceCitation
+                                    name := ""
+                                    if c.Name != nil {
+                                        name = *c.Name
+                                    }
+                                    url := ""
+                                    if c.URL != nil {
+                                        url = *c.URL
+                                    }
+                                    fmt.Printf("  - %s: %s\n", name, url)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     # Specifies the API revision to avoid breaking changes when they become default
@@ -331,6 +399,73 @@ user reviews and other Maps data.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Is there a cafe near the corner of 1st and Main that has outdoor seating?"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.GoogleMaps{
+                            Latitude:  genai.Ptr(34.050481),
+                            Longitude: genai.Ptr(-118.248526),
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range resp.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, content := range step.ModelOutputStep.Content {
+                    if content.TextContent != nil {
+                        fmt.Println(content.TextContent.Text)
+                        if len(content.TextContent.Annotations) > 0 {
+                            fmt.Println("\nSources:")
+                            for _, annotation := range content.TextContent.Annotations {
+                                if annotation.PlaceCitation != nil {
+                                    c := annotation.PlaceCitation
+                                    name := ""
+                                    if c.Name != nil {
+                                        name = *c.Name
+                                    }
+                                    url := ""
+                                    if c.URL != nil {
+                                        url = *c.URL
+                                    }
+                                    fmt.Printf("  - %s: %s\n", name, url)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### Providing location-based personalization
 
 Get recommendations tailored to a user's preferences and a specific geographical
@@ -462,6 +597,73 @@ area.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Which family-friendly restaurants near here have the best playground reviews?"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.GoogleMaps{
+                            Latitude:  genai.Ptr(30.2672),
+                            Longitude: genai.Ptr(-97.7431),
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range resp.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, content := range step.ModelOutputStep.Content {
+                    if content.TextContent != nil {
+                        fmt.Println(content.TextContent.Text)
+                        if len(content.TextContent.Annotations) > 0 {
+                            fmt.Println("\nSources:")
+                            for _, annotation := range content.TextContent.Annotations {
+                                if annotation.PlaceCitation != nil {
+                                    c := annotation.PlaceCitation
+                                    name := ""
+                                    if c.Name != nil {
+                                        name = *c.Name
+                                    }
+                                    url := ""
+                                    if c.URL != nil {
+                                        url = *c.URL
+                                    }
+                                    fmt.Printf("  - %s: %s\n", name, url)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### Assisting with itinerary planning
 
 Generate multi-day plans with directions and information about various
@@ -537,6 +739,51 @@ locations, perfect for travel applications.
 
     // ... code to process response
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Plan a day in San Francisco for me. I want to see the Golden Gate Bridge, visit a museum, and have a nice dinner."
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput(prompt),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.GoogleMaps{
+                            Latitude:  genai.Ptr(37.78193),
+                            Longitude: genai.Ptr(-122.40476),
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // ... code to process response
+        fmt.Println(resp.Interaction.GetOutputText())
+    }
 
 ### REST
 

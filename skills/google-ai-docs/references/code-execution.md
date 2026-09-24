@@ -114,6 +114,60 @@ allows the model to generate and run code.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(
+                    "What is the sum of the first 50 prime numbers? " +
+                        "Generate and run code for the calculation, and make sure you get all 50.",
+                ),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.CodeExecution{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if outStep := step.ModelOutputStep; outStep != nil {
+                for _, contentBlock := range outStep.Content {
+                    if textContent := contentBlock.TextContent; textContent != nil {
+                        fmt.Println(textContent.GetText())
+                    }
+                }
+            } else if callStep := step.CodeExecutionCallStep; callStep != nil {
+                if code := callStep.Arguments.GetCode(); code != nil {
+                    fmt.Println(*code)
+                }
+            } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
+                fmt.Println(resultStep.GetResult())
+            }
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -352,6 +406,86 @@ activate this behavior by enabling both Code Execution as a tool and Thinking.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "io"
+        "log"
+        "net/http"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageURL := "https://goo.gle/instrument-img"
+        httpResp, err := http.Get(imageURL)
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer httpResp.Body.Close()
+        imageBytes, err := io.ReadAll(httpResp.Body)
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.ImageContent{
+                        Data:     genai.Ptr(base64Image),
+                        MimeType: interactions.ImageContentMimeType("image/jpeg").ToPointer(),
+                    }),
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Zoom into the expression pedals and tell me how many pedals are there?",
+                    }),
+                }),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.CodeExecution{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if outStep := step.ModelOutputStep; outStep != nil {
+                for _, contentBlock := range outStep.Content {
+                    if textContent := contentBlock.TextContent; textContent != nil {
+                        fmt.Println(textContent.GetText())
+                    } else if imgContent := contentBlock.ImageContent; imgContent != nil && imgContent.Data != nil {
+                        decoded, err := base64.StdEncoding.DecodeString(*imgContent.Data)
+                        if err == nil {
+                            _ = os.WriteFile("output_image.jpg", decoded, 0644)
+                        }
+                    }
+                }
+            } else if callStep := step.CodeExecutionCallStep; callStep != nil {
+                if code := callStep.Arguments.GetCode(); code != nil {
+                    fmt.Println(*code)
+                }
+            } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
+                fmt.Println(resultStep.GetResult())
+            }
+        }
+    }
+
 ### REST
 
     IMG_URL="https://goo.gle/instrument-img"
@@ -519,6 +653,77 @@ You can also use code execution as part of a multi-turn conversation using
         CodeExecutionResultStep resultStep = (CodeExecutionResultStep) step;
         System.out.println(resultStep.result().orElse(""));
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("I have a math question for you."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.CodeExecution{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res1.Interaction.OutputText != nil {
+            fmt.Println(*res1.Interaction.OutputText)
+        }
+
+        res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:                 interactions.Model("gemini-3.8-flash"),
+                PreviousInteractionID: res1.Interaction.ID,
+                Input: interactions.NewInteractionsInput(
+                    "What is the sum of the first 50 prime numbers? " +
+                        "Generate and run code for the calculation, and make sure you get all 50.",
+                ),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.CodeExecution{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res2.Interaction.Steps {
+            if outStep := step.ModelOutputStep; outStep != nil {
+                for _, contentBlock := range outStep.Content {
+                    if textContent := contentBlock.TextContent; textContent != nil {
+                        fmt.Println(textContent.GetText())
+                    }
+                }
+            } else if callStep := step.CodeExecutionCallStep; callStep != nil {
+                if code := callStep.Arguments.GetCode(); code != nil {
+                    fmt.Println(*code)
+                }
+            } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
+                fmt.Println(resultStep.GetResult())
+            }
+        }
     }
 
 ### REST

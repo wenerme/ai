@@ -92,6 +92,47 @@ to verify signatures later. If you lose the signing secret, you'll have to
     System.out.println(
         "Created webhook: " + webhook.name().orElse("") + ", " + webhook.id().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/operations"
+        "google.golang.org/genai/interactions/models/webhooks"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Webhooks.Create(ctx, operations.CreateWebhookRequest{
+            Body: webhooks.WebhookInput{
+                Name: genai.Ptr("MyBatchWebhook"),
+                SubscribedEvents: []webhooks.WebhookSubscribedEvent{
+                    webhooks.WebhookSubscribedEventBatchSucceeded,
+                    webhooks.WebhookSubscribedEventBatchFailed,
+                },
+                URI: "https://my-api.com/gemini-callback",
+            },
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        webhook := res.Webhook
+        // Store webhook.GetNewSigningSecret() securely
+        _ = webhook.GetNewSigningSecret()
+        fmt.Printf("Created webhook: %v, %v\n", webhook.GetName(), webhook.GetID())
+    }
+
 ### REST
 
     curl -X POST \
@@ -153,6 +194,41 @@ Retrieve details about a specific webhook by its resource name.
     System.out.println("URI: " + webhook.uri().orElse(""));
     System.out.println("Events: " + webhook.subscribedEvents().orElse(Collections.emptyList()));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Webhooks.Get(ctx, operations.GetWebhookRequest{
+            ID: "<your_webhook_id>",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        webhook := res.Webhook
+        if webhook.Name != nil {
+            fmt.Printf("Webhook: %s\n", *webhook.Name)
+        }
+        fmt.Printf("URI: %s\n", webhook.URI)
+        fmt.Printf("Events: %v\n", webhook.SubscribedEvents)
+    }
+
 ### REST
 
     curl -X GET \
@@ -205,6 +281,38 @@ List all configured webhooks for the current project, with optional pagination.
     for (Webhook wh : response.webhooks().orElse(Collections.emptyList())) {
       System.out.println(
           wh.id().orElse("") + ": " + wh.name().orElse("") + " -> " + wh.uri().orElse(""));
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Webhooks.List(ctx, operations.ListWebhooksRequest{})
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.WebhookListResponse != nil {
+            for _, wh := range res.WebhookListResponse.Webhooks {
+                fmt.Printf("%v: %v -> %s\n", wh.GetID(), wh.GetName(), wh.URI)
+            }
+        }
     }
 
 ### REST
@@ -281,6 +389,47 @@ subscribed events.
 
     System.out.println("Updated webhook: " + updatedWebhook.name().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/operations"
+        "google.golang.org/genai/interactions/models/webhooks"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Webhooks.Update(ctx, operations.UpdateWebhookRequest{
+            ID:         "<your_webhook_id>",
+            UpdateMask: genai.Ptr("subscribed_events"),
+            Body: &webhooks.WebhookUpdate{
+                SubscribedEvents: []webhooks.WebhookUpdateSubscribedEvent{
+                    webhooks.WebhookUpdateSubscribedEventBatchSucceeded,
+                    webhooks.WebhookUpdateSubscribedEventBatchFailed,
+                    webhooks.WebhookUpdateSubscribedEvent("batch.cancelled"),
+                },
+            },
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Webhook.Name != nil {
+            fmt.Printf("Updated webhook: %s\n", *res.Webhook.Name)
+        }
+    }
+
 ### REST
 
     curl -X PATCH \
@@ -329,6 +478,36 @@ to that endpoint.
     client.webhooks.delete("<your_webhook_id>");
 
     System.out.println("Webhook deleted.");
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        _, err = client.Webhooks.Delete(ctx, operations.DeleteWebhookRequest{
+            ID: "<your_webhook_id>",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println("Webhook deleted.")
+    }
 
 ### REST
 
@@ -405,6 +584,42 @@ time. Store it securely before updating your verification logic.
     // Store response.secret() securely, then update your server's verification config
     String newSecret = response.secret().orElse("");
     System.out.println("New signing secret generated. Update your server configuration.");
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/operations"
+        "google.golang.org/genai/interactions/models/webhooks"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Webhooks.RotateSigningSecret(ctx, operations.RotateSigningSecretRequest{
+            ID: "<your_webhook_id>",
+            Body: &webhooks.RotateSigningSecretRequest{
+                RevocationBehavior: webhooks.RevocationBehaviorRevokePreviousSecretsAfterH24.ToPointer(),
+            },
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Store res.WebhookRotateSigningSecretResponse.GetSecret() securely, then update your server's verification config
+        _ = res.WebhookRotateSigningSecretResponse.GetSecret()
+        fmt.Println("New signing secret generated. Update your server configuration.")
+    }
 
 ### REST
 
@@ -592,6 +807,83 @@ Here is an example using Flask for the HTTP listener:
         });
     server.start();
 
+### Go
+
+    package main
+
+    import (
+        "crypto/hmac"
+        "crypto/sha256"
+        "encoding/base64"
+        "encoding/json"
+        "fmt"
+        "io"
+        "log"
+        "net/http"
+        "os"
+        "strings"
+
+    )
+
+    func main() {
+        signingSecret := os.Getenv("WEBHOOK_SIGNING_SECRET")
+
+        http.HandleFunc("/gemini-callback", func(w http.ResponseWriter, r *http.Request) {
+            payloadBytes, err := io.ReadAll(r.Body)
+            if err != nil {
+                http.Error(w, `{"error": "Failed to read body"}`, http.StatusBadRequest)
+                return
+            }
+            payload := string(payloadBytes)
+            msgID := r.Header.Get("webhook-id")
+            msgTimestamp := r.Header.Get("webhook-timestamp")
+            msgSignature := r.Header.Get("webhook-signature")
+
+            secretBytes, err := base64.StdEncoding.DecodeString(strings.TrimPrefix(signingSecret, "whsec_"))
+            if err != nil {
+                http.Error(w, `{"error": "Invalid secret"}`, http.StatusBadRequest)
+                return
+            }
+
+            toSign := fmt.Sprintf("%s.%s.%s", msgID, msgTimestamp, payload)
+            mac := hmac.New(sha256.New, secretBytes)
+            mac.Write([]byte(toSign))
+            expectedSig := "v1," + base64.StdEncoding.EncodeToString(mac.Sum(nil))
+
+            if msgSignature == "" || !strings.Contains(msgSignature, expectedSig) {
+                http.Error(w, `{"error": "Signature invalid"}`, http.StatusBadRequest)
+                return
+            }
+
+            var event struct {
+                Type string `json:"type"`
+                Data struct {
+                    ID            string `json:"id"`
+                    OutputFileURI string `json:"output_file_uri"`
+                } `json:"data"`
+            }
+            _ = json.Unmarshal(payloadBytes, &event)
+
+            switch event.Type {
+            case "batch.succeeded":
+                fmt.Printf("Batch completed! ID: %s\n", event.Data.ID)
+                if event.Data.OutputFileURI != "" {
+                    fmt.Printf("Batch file: %s\n", event.Data.OutputFileURI)
+                }
+            case "interaction.completed":
+                fmt.Printf("Interaction completed! ID: %s\n", event.Data.ID)
+            case "video.generated":
+                fmt.Printf("Video generated! URI: %s\n", event.Data.OutputFileURI)
+            }
+
+            w.Header().Set("Content-Type", "application/json")
+            w.WriteHeader(http.StatusOK)
+            _, _ = w.Write([]byte(`{"status": "received"}`))
+        })
+
+        log.Fatal(http.ListenAndServe(":8000", nil))
+    }
+
 ## Dynamic webhooks
 
 Dynamic webhooks allow you to bind a webhook endpoint to a **specific request
@@ -686,6 +978,51 @@ Batch).
     System.out.println("Interaction created! ID: " + response.id().orElse(""));
     System.out.println(
         "Status: " + response.status().map(InteractionStatus::value).orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:      interactions.Model("gemini-3.8-flash"),
+                Input:      interactions.NewInteractionsInput("Tell me a short joke about programming."),
+                Background: genai.Ptr(true), // Required when WebhookConfig is specified
+                WebhookConfig: &interactions.WebhookConfig{
+                    Uris: []string{"https://my-api.com/gemini-webhook-dynamic"},
+                    UserMetadata: map[string]any{
+                        "job_group": "nightly-eval",
+                        "priority":  "high",
+                    },
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.ID != nil {
+            fmt.Printf("Interaction created! ID: %s\n", *res.Interaction.ID)
+        }
+        fmt.Printf("Status: %s\n", res.Interaction.Status)
+    }
 
 ### REST
 
@@ -895,6 +1232,96 @@ endpoints](https://www.googleapis.com/oauth2/v3/certs).
           }
         });
     server.start();
+
+### Go
+
+    package main
+
+    import (
+        "crypto"
+        "crypto/rsa"
+        "crypto/sha256"
+        "encoding/base64"
+        "encoding/json"
+        "fmt"
+        "io"
+        "log"
+        "math/big"
+        "net/http"
+        "strings"
+
+    )
+
+    func main() {
+        jwksURI := "https://generativelanguage.googleapis.com/.well-known/jwks.json"
+
+        http.HandleFunc("/gemini-webhook-dynamic", func(w http.ResponseWriter, r *http.Request) {
+            token := r.Header.Get("Webhook-Signature")
+            parts := strings.Split(token, ".")
+            if len(parts) != 3 {
+                http.Error(w, `{"error": "No signature header"}`, http.StatusBadRequest)
+                return
+            }
+
+            headerBytes, err := base64.RawURLEncoding.DecodeString(parts[0])
+            if err != nil {
+                http.Error(w, `{"error": "Invalid header"}`, http.StatusBadRequest)
+                return
+            }
+            var header struct {
+                Kid string `json:"kid"`
+            }
+            _ = json.Unmarshal(headerBytes, &header)
+
+            resp, err := http.Get(jwksURI)
+            if err != nil {
+                http.Error(w, `{"error": "Failed to fetch JWKS"}`, http.StatusBadRequest)
+                return
+            }
+            defer resp.Body.Close()
+            jwksBytes, _ := io.ReadAll(resp.Body)
+
+            var jwks struct {
+                Keys []struct {
+                    Kid string `json:"kid"`
+                    N   string `json:"n"`
+                    E   string `json:"e"`
+                } `json:"keys"`
+            }
+            _ = json.Unmarshal(jwksBytes, &jwks)
+
+            var pubKey *rsa.PublicKey
+            for _, k := range jwks.Keys {
+                if k.Kid == header.Kid {
+                    nBytes, _ := base64.RawURLEncoding.DecodeString(k.N)
+                    eBytes, _ := base64.RawURLEncoding.DecodeString(k.E)
+                    pubKey = &rsa.PublicKey{
+                        N: new(big.Int).SetBytes(nBytes),
+                        E: int(new(big.Int).SetBytes(eBytes).Int64()),
+                    }
+                    break
+                }
+            }
+            if pubKey == nil {
+                http.Error(w, `{"error": "Matching key not found"}`, http.StatusBadRequest)
+                return
+            }
+
+            sigBytes, _ := base64.RawURLEncoding.DecodeString(parts[2])
+            hashed := sha256.Sum256([]byte(parts[0] + "." + parts[1]))
+            if err := rsa.VerifyPKCS1v15(pubKey, crypto.SHA256, hashed[:], sigBytes); err != nil {
+                http.Error(w, `{"error": "Invalid Dynamic signature"}`, http.StatusBadRequest)
+                return
+            }
+
+            fmt.Println("Verified Dynamic payload success.")
+            w.Header().Set("Content-Type", "application/json")
+            w.WriteHeader(http.StatusOK)
+            _, _ = w.Write([]byte(`{"status": "received"}`))
+        })
+
+        log.Fatal(http.ListenAndServe(":8000", nil))
+    }
 
 ## Webhook envelope
 

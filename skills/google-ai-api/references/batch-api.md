@@ -152,7 +152,7 @@ get `https://generativelanguage.googleapis.com/v1beta/{name=batches}`
 `filter` `string` The standard list filter.
 `pageSize` `integer` The standard list page size.
 `pageToken` `string` The standard list page token.
-`returnPartialSuccess` `boolean` When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the `https://ai.google.dev/api/rest/v1beta/ListOperationsResponse#FIELDS.unreachable` field.
+`returnPartialSuccess` `boolean` When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the `ListOperationsResponse.unreachable` field.
 
 This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`.
 
@@ -278,6 +278,13 @@ A `Tool` is a piece of code that enables the system to interact with external sy
 `safetySettings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`)`` Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
 
 This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safetySettings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
+`labels` `map (key: string, value: string)` Optional. Labels with user-defined metadata for the request.
+
+Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed.
+
+Usage: - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
+
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 `systemInstruction` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
 `generationConfig` ``object (`https://ai.google.dev/api/generate-content#GenerationConfig`)`` Optional. Configuration options for model generation and outputs.
 `cachedContent` `string` Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
@@ -286,7 +293,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
 | JSON representation |
 |---|
-| ``` { "model": string, "contents": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) } ], "tools": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Tool`) } ], "toolConfig": { object (`https://ai.google.dev/api/caching#ToolConfig`) }, "safetySettings": [ { object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`) } ], "systemInstruction": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) }, "generationConfig": { object (`https://ai.google.dev/api/generate-content#GenerationConfig`) }, "cachedContent": string, "serviceTier": enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`), "store": boolean } ``` |
+| ``` { "model": string, "contents": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) } ], "tools": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Tool`) } ], "toolConfig": { object (`https://ai.google.dev/api/caching#ToolConfig`) }, "safetySettings": [ { object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`) } ], "labels": { string: string, ... }, "systemInstruction": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) }, "generationConfig": { object (`https://ai.google.dev/api/generate-content#GenerationConfig`) }, "cachedContent": string, "serviceTier": enum (`https://ai.google.dev/api/generate-content#v1beta.ServiceTier`), "store": boolean } ``` |
 
 ## Method: batches.updateEmbedContentBatch
 

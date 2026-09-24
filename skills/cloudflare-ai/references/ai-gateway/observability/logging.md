@@ -12,19 +12,27 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Logging
 
-Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Logging is a fundamental building block for application development. Logs provide insights during the early stages of development and are often critical to understanding issues occurring in production.
+Logs help you monitor requests and troubleshoot application issues. Each log can include the prompt, response, provider, timestamp, status, token usage, cost, duration, and user agent.
 
-Your AI Gateway dashboard shows logs of individual requests, including the user prompt, model response, provider, timestamp, request status, token usage, cost, duration, and the user agent of the client that made the request. When [DLP](https://developers.cloudflare.com/ai-gateway/features/dlp/) policies are configured, logs for requests that trigger a DLP match also include the DLP action taken (Flag or Block), matched policy IDs, matched profile IDs, and the specific detection entries that were triggered. These logs persist, giving you the flexibility to store them for your preferred duration and do more with valuable request data.
+When a request matches a [Data Loss Prevention (DLP)](https://developers.cloudflare.com/ai-gateway/features/dlp/) policy, its log can also include the action and matched policy details.
 
-Each gateway has a storage limit based on your plan. You can customize this limit per gateway in your gateway settings. If your storage limit is reached, new logs will stop being saved. To continue saving logs, you must delete older logs to free up space for new logs. To learn more about your plan limits, refer to [Limits](https://developers.cloudflare.com/ai-gateway/reference/limits/).
+When [Guardrails](https://developers.cloudflare.com/ai-gateway/features/guardrails/) are turned on, Guardrails evaluation calls are also recorded in your logs.
 
-We recommend using an authenticated gateway when storing logs to prevent unauthorized access and protects against invalid requests that can inflate log storage usage and make it harder to find the data you need. Learn more about setting up an [authenticated gateway](https://developers.cloudflare.com/ai-gateway/configuration/authentication/).
+Logging eligibility
+
+New AI Gateway customers who create their first gateway on or after September 24, 2026 follow [Workers Logs pricing and retention](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#pricing).
+
+AI Gateway customers who created a gateway before September 24, 2026 use [Legacy Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/legacy-logs/).
+
+Use an [authenticated gateway](https://developers.cloudflare.com/ai-gateway/configuration/authentication/) to prevent unauthorized access. Authentication also prevents invalid requests from increasing log volume.
 
 ## Default configuration
 
-Logs, which include metrics as well as request and response data, are enabled by default for each gateway. This logging behavior will be uniformly applied to all requests in the gateway. If you are concerned about privacy or compliance and want to turn log collection off, you can go to settings and opt out of logs. If you need to modify the log settings for specific requests, you can override this setting on a per-request basis.
+Logs are enabled by default for each gateway. This setting applies to all requests unless a request overrides it.
+
+You can turn off collection for privacy or compliance requirements.
 
 To change the default log configuration in the dashboard:
 
@@ -107,51 +115,6 @@ When [Data Loss Prevention (DLP)](https://developers.cloudflare.com/ai-gateway/f
 | DLP Entries Matched | The specific detection entry IDs that matched within each profile |
 | DLP Check | Whether the match occurred in the `REQUEST`, `RESPONSE`, or both |
 
-These fields are available both in the dashboard log viewer and through the [Logs API](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/logs/methods/list/). You can filter logs by **DLP Action** in the dashboard to view only flagged or blocked requests. For more details on DLP monitoring, refer to [Monitor DLP events](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/#monitor-dlp-events).
-
-## Managing log storage
-
-To manage your log storage effectively, you can:
-
-- Set Storage Limits: Configure a limit on the number of logs stored per gateway in your gateway settings to ensure you only pay for what you need.
-- Enable Automatic Log Deletion: Activate the Automatic Log Deletion feature in your gateway settings to automatically delete the oldest logs once the storage limit for your account is reached. This ensures new logs are always saved without manual intervention.
-
-## How to delete logs
-
-To manage your log storage effectively and ensure continuous logging, you can delete logs using the following methods:
-
-### Automatic Log Deletion
-
-​To maintain continuous logging within your gateway's storage constraints, enable Automatic Log Deletion in your Gateway settings. This feature automatically deletes the oldest logs once the storage limit for your account is reached, ensuring new logs are saved without manual intervention.
-
-### Manual deletion
-
-To manually delete logs through the dashboard, navigate to the Logs tab in the dashboard. Use the available filters such as status, cache, provider, cost, or any other options in the dropdown to refine the logs you wish to delete. Once filtered, select Delete logs to complete the action.
-
-See full list of available filters and their descriptions below:
-
-| Filter category | Filter options | Filter by description |
-| --- | --- | --- |
-| Status | error, status | error type or status. |
-| Cache | cached, not cached | based on whether they were cached or not. |
-| Provider | specific providers | the selected AI provider. |
-| AI Models | specific models | the selected AI model. |
-| Cost | less than, greater than | cost, specifying a threshold. |
-| Request type | Workers AI Binding, WebSockets | the type of request. |
-| Tokens | Total tokens, Tokens In, Tokens Out | token count (less than or greater than). |
-| Duration | less than, greater than | request duration. |
-| Feedback | equals, does not equal (thumbs up, thumbs down, no feedback) | feedback type. |
-| Metadata Key | equals, does not equal | specific metadata keys. |
-| Metadata Value | equals, does not equal | specific metadata values. |
-| Log ID | equals, does not equal | a specific Log ID. |
-| Event ID | equals, does not equal | a specific Event ID. |
-| DLP Action | FLAG, BLOCK | the DLP action taken on the request. |
-| User Agent | equals, does not equal, contains | the user agent of the client that made the request. |
-
-### API deletion
-
-You can programmatically delete logs using the AI Gateway API. For more comprehensive information on the `DELETE` logs endpoint, check out the [Cloudflare API documentation](https://developers.cloudflare.com/api/resources/ai_gateway/subresources/logs/methods/delete/).
-
 Was this helpful?
 
 YesNo
@@ -161,5 +124,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/logging/#page","headline":"Logging","description":"Store and inspect AI Gateway request logs including prompts, responses, tokens, costs, and DLP actions.","url":"https://developers.cloudflare.com/ai-gateway/observability/logging/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/observability/logging/#page","headline":"Logging","description":"Store and inspect AI Gateway request logs including prompts, responses, tokens, costs, and DLP actions.","url":"https://developers.cloudflare.com/ai-gateway/observability/logging/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

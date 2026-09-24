@@ -228,6 +228,100 @@ JSON Schema types like `object`, `array`, `string`, and `integer`.
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        recipeJsonSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "recipe_name": map[string]any{
+                    "type":        "string",
+                    "description": "The name of the recipe.",
+                },
+                "prep_time_minutes": map[string]any{
+                    "type":        "integer",
+                    "description": "Optional time in minutes to prepare the recipe.",
+                },
+                "ingredients": map[string]any{
+                    "type": "array",
+                    "items": map[string]any{
+                        "type": "object",
+                        "properties": map[string]any{
+                            "name": map[string]any{
+                                "type":        "string",
+                                "description": "Name of the ingredient.",
+                            },
+                            "quantity": map[string]any{
+                                "type":        "string",
+                                "description": "Quantity of the ingredient, including units.",
+                            },
+                        },
+                        "required": []string{"name", "quantity"},
+                    },
+                },
+                "instructions": map[string]any{
+                    "type": "array",
+                    "items": map[string]any{
+                        "type": "string",
+                    },
+                },
+            },
+            "required": []string{"recipe_name", "ingredients", "instructions"},
+        }
+
+        prompt := `Please extract the recipe from the following text.
+    The user wants to make delicious chocolate chip cookies.
+    They need 2 and 1/4 cups of all-purpose flour, 1 teaspoon of baking soda,
+    1 teaspoon of salt, 1 cup of unsalted butter (softened), 3/4 cup of granulated sugar,
+    3/4 cup of packed brown sugar, 1 teaspoon of vanilla extract, and 2 large eggs.
+    For the best part, they'll need 2 cups of semisweet chocolate chips.
+    First, preheat the oven to 375°F (190°C). Then, in a small bowl, whisk together the flour,
+    baking soda, and salt. In a large bowl, cream together the butter, granulated sugar, and brown sugar
+    until light and fluffy. Beat in the vanilla and eggs, one at a time. Gradually beat in the dry
+    ingredients until just combined. Finally, stir in the chocolate chips. Drop by rounded tablespoons
+    onto ungreased baking sheets and bake for 9 to 11 minutes.`
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.TextResponseFormat{
+                MimeType: interactions.TextResponseFormatMimeTypeApplicationJSON.ToPointer(),
+                Schema:   recipeJsonSchema,
+            }),
+        )
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model:          interactions.Model("gemini-3.8-flash"),
+                    Input:          interactions.NewInteractionsInput(prompt),
+                    ResponseFormat: &format,
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(resp.Interaction.GetOutputText())
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -487,6 +581,96 @@ classification, allowing the output structure to vary based on the content.
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        spamDetailsSchema := map[string]any{
+            "type":  "object",
+            "title": "SpamDetails",
+            "properties": map[string]any{
+                "reason": map[string]any{
+                    "type":        "string",
+                    "description": "The reason why the content is considered spam.",
+                },
+                "spam_type": map[string]any{
+                    "type":        "string",
+                    "enum":        []string{"phishing", "scam", "unsolicited promotion", "other"},
+                    "description": "The type of spam.",
+                },
+            },
+            "required": []string{"reason", "spam_type"},
+        }
+
+        notSpamDetailsSchema := map[string]any{
+            "type":  "object",
+            "title": "NotSpamDetails",
+            "properties": map[string]any{
+                "summary": map[string]any{
+                    "type":        "string",
+                    "description": "A brief summary of the content.",
+                },
+                "is_safe": map[string]any{
+                    "type":        "boolean",
+                    "description": "Whether the content is safe for all audiences.",
+                },
+            },
+            "required": []string{"summary", "is_safe"},
+        }
+
+        moderationResultJsonSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "decision": map[string]any{
+                    "anyOf": []any{spamDetailsSchema, notSpamDetailsSchema},
+                },
+            },
+            "required": []string{"decision"},
+        }
+
+        prompt := "Please moderate the following content and provide a decision.\n" +
+            "Content: 'Congratulations! You've won a free cruise to the Bahamas. Click here to claim your prize: www.definitely-not-a-scam.com'"
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.TextResponseFormat{
+                MimeType: interactions.TextResponseFormatMimeTypeApplicationJSON.ToPointer(),
+                Schema:   moderationResultJsonSchema,
+            }),
+        )
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model:          interactions.Model("gemini-3.8-flash"),
+                    Input:          interactions.NewInteractionsInput(prompt),
+                    ResponseFormat: &format,
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(resp.Interaction.GetOutputText())
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -689,6 +873,73 @@ organization chart.
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        employeeJsonSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "name": map[string]any{
+                    "type": "string",
+                },
+                "employee_id": map[string]any{
+                    "type": "integer",
+                },
+                "reports": map[string]any{
+                    "type":        "array",
+                    "description": "A list of employees reporting to this employee.",
+                    "items": map[string]any{
+                        "$ref": "#",
+                    },
+                },
+            },
+            "required": []string{"name", "employee_id", "reports"},
+        }
+
+        prompt := "Generate an organization chart for a small team.\n" +
+            "The manager is Alice, who manages Bob and Charlie. Bob manages David."
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.TextResponseFormat{
+                MimeType: interactions.TextResponseFormatMimeTypeApplicationJSON.ToPointer(),
+                Schema:   employeeJsonSchema,
+            }),
+        )
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model:          interactions.Model("gemini-3.8-flash"),
+                    Input:          interactions.NewInteractionsInput(prompt),
+                    ResponseFormat: &format,
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(resp.Interaction.GetOutputText())
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -889,6 +1140,75 @@ strings that can be concatenated to form the final JSON object.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        feedbackJsonSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "sentiment": map[string]any{
+                    "type": "string",
+                    "enum": []string{"positive", "neutral", "negative"},
+                },
+                "summary": map[string]any{
+                    "type": "string",
+                },
+            },
+            "required": []string{"sentiment", "summary"},
+        }
+
+        prompt := "The new UI is incredibly intuitive. Add a very long summary to test streaming!"
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.TextResponseFormat{
+                MimeType: interactions.TextResponseFormatMimeTypeApplicationJSON.ToPointer(),
+                Schema:   feedbackJsonSchema,
+            }),
+        )
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model:          interactions.Model("gemini-3.8-flash"),
+                    Input:          interactions.NewInteractionsInput(prompt),
+                    ResponseFormat: &format,
+                    Stream:         genai.Ptr(true),
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer resp.InteractionSSEStreamEvent.Close()
+
+        for resp.InteractionSSEStreamEvent.Next() {
+            event := resp.InteractionSSEStreamEvent.Value()
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -N -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1049,6 +1369,76 @@ Gemini 3 lets you combine Structured Outputs with built-in tools, including
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        matchJsonSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "winner": map[string]any{
+                    "type":        "string",
+                    "description": "The name of the winner.",
+                },
+                "final_match_score": map[string]any{
+                    "type":        "string",
+                    "description": "The final match score.",
+                },
+                "scorers": map[string]any{
+                    "type":        "array",
+                    "description": "The name of the scorer.",
+                    "items": map[string]any{
+                        "type": "string",
+                    },
+                },
+            },
+            "required": []string{"winner", "final_match_score", "scorers"},
+        }
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.TextResponseFormat{
+                MimeType: interactions.TextResponseFormatMimeTypeApplicationJSON.ToPointer(),
+                Schema:   matchJsonSchema,
+            }),
+        )
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.1-pro-preview"),
+                    Input: interactions.NewInteractionsInput("Search for all details for the latest Euro."),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.GoogleSearch{}),
+                        interactions.NewTool(interactions.URLContext{}),
+                    },
+                    ResponseFormat: &format,
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(resp.Interaction.GetOutputText())
+    }
 
 ### REST
 

@@ -1650,6 +1650,16 @@ type object (required) No description provided.
 
 Always set to `"place_citation"`.
 url string (optional) URI reference of the place.
+SpeechAnnotation Speech annotation for text content.
+end_index integer (optional) End of the attributed segment, exclusive.
+speaker string (optional) The speaker to associate with this turn.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+style string (optional) Style instruction for the speech synthesis.
+type object (required) No description provided.
+
+Always set to `"speech_metadata"`.
 UrlCitation A URL citation annotation.
 end_index integer (optional) End of the attributed segment, exclusive.
 start_index integer (optional) Start of segment of the response that is attributed to this source.
@@ -2729,6 +2739,16 @@ type object (required) No description provided.
 
 Always set to `"place_citation"`.
 url string (optional) URI reference of the place.
+SpeechAnnotation Speech annotation for text content.
+end_index integer (optional) End of the attributed segment, exclusive.
+speaker string (optional) The speaker to associate with this turn.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+style string (optional) Style instruction for the speech synthesis.
+type object (required) No description provided.
+
+Always set to `"speech_metadata"`.
 UrlCitation A URL citation annotation.
 end_index integer (optional) End of the attributed segment, exclusive.
 start_index integer (optional) Start of segment of the response that is attributed to this source.
@@ -3958,6 +3978,16 @@ type object (required) No description provided.
 
 Always set to `"place_citation"`.
 url string (optional) URI reference of the place.
+SpeechAnnotation Speech annotation for text content.
+end_index integer (optional) End of the attributed segment, exclusive.
+speaker string (optional) The speaker to associate with this turn.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+style string (optional) Style instruction for the speech synthesis.
+type object (required) No description provided.
+
+Always set to `"speech_metadata"`.
 UrlCitation A URL citation annotation.
 end_index integer (optional) End of the attributed segment, exclusive.
 start_index integer (optional) Start of segment of the response that is attributed to this source.
@@ -4612,6 +4642,16 @@ type object (required) No description provided.
 
 Always set to `"place_citation"`.
 url string (optional) URI reference of the place.
+SpeechAnnotation Speech annotation for text content.
+end_index integer (optional) End of the attributed segment, exclusive.
+speaker string (optional) The speaker to associate with this turn.
+start_index integer (optional) Start of segment of the response that is attributed to this source.
+
+Index indicates the start of the segment, measured in bytes.
+style string (optional) Style instruction for the speech synthesis.
+type object (required) No description provided.
+
+Always set to `"speech_metadata"`.
 UrlCitation A URL citation annotation.
 end_index integer (optional) End of the attributed segment, exclusive.
 start_index integer (optional) Start of segment of the response that is attributed to this source.

@@ -166,6 +166,8 @@ This example shows how to define a function that schedules a meeting with attend
         "log"
 
         "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
     )
 
     func main() {
@@ -175,60 +177,52 @@ This example shows how to define a function that schedules a meeting with attend
             log.Fatal(err)
         }
 
-        // Define the function declaration for the model
-        scheduleMeetingFunc := &genai.FunctionDeclaration{
-            Name:        "schedule_meeting",
-            Description: "Schedules a meeting with specified attendees at a given time and date.",
-            Parameters: &genai.Schema{
-                Type: genai.TypeObject,
-                Properties: map[string]*genai.Schema{
-                    "attendees": {
-                        Type:        genai.TypeArray,
-                        Items:       &genai.Schema{Type: genai.TypeString},
-                        Description: "List of people attending the meeting.",
+        scheduleMeetingFunction := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("schedule_meeting"),
+            Description: genai.Ptr("Schedules a meeting with specified attendees at a given time and date."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "attendees": map[string]any{
+                        "type":  "array",
+                        "items": map[string]any{"type": "string"},
                     },
-                    "date": {
-                        Type:        genai.TypeString,
-                        Description: "Date (e.g., '2024-07-29')",
+                    "date": map[string]any{
+                        "type":        "string",
+                        "description": "Date (e.g., '2024-07-29')",
                     },
-                    "time": {
-                        Type:        genai.TypeString,
-                        Description: "Time (e.g., '15:00')",
+                    "time": map[string]any{
+                        "type":        "string",
+                        "description": "Time (e.g., '15:00')",
                     },
-                    "topic": {
-                        Type:        genai.TypeString,
-                        Description: "The meeting topic.",
+                    "topic": map[string]any{
+                        "type":        "string",
+                        "description": "The meeting topic.",
                     },
                 },
-                Required: []string{"attendees", "date", "time", "topic"},
+                "required": []string{"attendees", "date", "time", "topic"},
             },
-        }
+        })
 
-        config := &genai.GenerateContentConfig{
-            Tools: []*genai.Tool{
-                {FunctionDeclarations: []*genai.FunctionDeclaration{scheduleMeetingFunc}},
-            },
-        }
-
-        // Send request with function declarations
-        response, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.8-flash",
-            genai.Text("Schedule a meeting with Bob and Alice for 03/14/2025 at 10:00 AM about Q3 planning."),
-            config,
-        )
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Schedule a meeting with Bob and Alice for 03/14/2025 at 10:00 AM about Q3 planning."),
+                    Tools: []interactions.Tool{scheduleMeetingFunction},
+                },
+            ),
+        })
         if err != nil {
             log.Fatal(err)
         }
 
-        // Check for a function call
-        if len(response.FunctionCalls()) > 0 {
-            functionCall := response.FunctionCalls()[0]
-            fmt.Printf("Function to call: %s\n", functionCall.Name)
-            fmt.Printf("Arguments: %v\n", functionCall.Args)
-        } else {
-            fmt.Println("No function call found in the response.")
-            fmt.Println(response.Text())
+        for _, step := range resp.Interaction.Steps {
+            if step.FunctionCallStep != nil {
+                fc := step.FunctionCallStep
+                fmt.Println("Function to call:", fc.Name)
+                fmt.Println("Arguments:", fc.Arguments)
+            }
         }
     }
 
@@ -395,6 +389,8 @@ This example shows how to define a function that retrieves temperature data for 
         "log"
 
         "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
     )
 
     func main() {
@@ -404,47 +400,40 @@ This example shows how to define a function that retrieves temperature data for 
             log.Fatal(err)
         }
 
-        // Define the function declaration for the model
-        weatherFunc := &genai.FunctionDeclaration{
-            Name:        "get_current_temperature",
-            Description: "Gets the current temperature for a given location.",
-            Parameters: &genai.Schema{
-                Type: genai.TypeObject,
-                Properties: map[string]*genai.Schema{
-                    "location": {
-                        Type:        genai.TypeString,
-                        Description: "The city name, e.g. San Francisco",
+        weatherFunction := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("get_current_temperature"),
+            Description: genai.Ptr("Gets the current temperature for a given location."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "location": map[string]any{
+                        "type":        "string",
+                        "description": "The city name, e.g. San Francisco",
                     },
                 },
-                Required: []string{"location"},
+                "required": []string{"location"},
             },
-        }
+        })
 
-        config := &genai.GenerateContentConfig{
-            Tools: []*genai.Tool{
-                {FunctionDeclarations: []*genai.FunctionDeclaration{weatherFunc}},
-            },
-        }
-
-        // Send request with function declarations
-        response, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.8-flash",
-            genai.Text("What's the temperature in London?"),
-            config,
-        )
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("What's the temperature in London?"),
+                    Tools: []interactions.Tool{weatherFunction},
+                },
+            ),
+        })
         if err != nil {
             log.Fatal(err)
         }
 
-        // Check for a function call
-        if len(response.FunctionCalls()) > 0 {
-            functionCall := response.FunctionCalls()[0]
-            fmt.Printf("Function to call: %s\n", functionCall.Name)
-            fmt.Printf("Arguments: %v\n", functionCall.Args)
-        } else {
-            fmt.Println("No function call found in the response.")
-            fmt.Println(response.Text())
+        for _, step := range resp.Interaction.Steps {
+            if step.FunctionCallStep != nil {
+                fc := step.FunctionCallStep
+                fmt.Println("Function to call:", fc.Name)
+                fmt.Println("Arguments:", fc.Arguments)
+            }
         }
     }
 
@@ -617,6 +606,8 @@ This example shows how to define a function that generates a bar chart from stru
         "log"
 
         "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
     )
 
     func main() {
@@ -626,55 +617,48 @@ This example shows how to define a function that generates a bar chart from stru
             log.Fatal(err)
         }
 
-        // Define the function declaration for the model
-        createChartFunc := &genai.FunctionDeclaration{
-            Name:        "create_bar_chart",
-            Description: "Creates a bar chart given a title, labels, and values.",
-            Parameters: &genai.Schema{
-                Type: genai.TypeObject,
-                Properties: map[string]*genai.Schema{
-                    "title": {
-                        Type:        genai.TypeString,
-                        Description: "The title for the chart.",
+        createChartFunction := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("create_bar_chart"),
+            Description: genai.Ptr("Creates a bar chart given a title, labels, and values."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "title": map[string]any{
+                        "type":        "string",
+                        "description": "The title for the chart.",
                     },
-                    "labels": {
-                        Type:  genai.TypeArray,
-                        Items: &genai.Schema{Type: genai.TypeString},
+                    "labels": map[string]any{
+                        "type":  "array",
+                        "items": map[string]any{"type": "string"},
                     },
-                    "values": {
-                        Type:  genai.TypeArray,
-                        Items: &genai.Schema{Type: genai.TypeNumber},
+                    "values": map[string]any{
+                        "type":  "array",
+                        "items": map[string]any{"type": "number"},
                     },
                 },
-                Required: []string{"title", "labels", "values"},
+                "required": []string{"title", "labels", "values"},
             },
-        }
+        })
 
-        config := &genai.GenerateContentConfig{
-            Tools: []*genai.Tool{
-                {FunctionDeclarations: []*genai.FunctionDeclaration{createChartFunc}},
-            },
-        }
-
-        // Send request with function declarations
-        response, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.8-flash",
-            genai.Text("Create a bar chart titled 'Quarterly Sales' with Q1: 50000, Q2: 75000, Q3: 60000."),
-            config,
-        )
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Create a bar chart titled 'Quarterly Sales' with Q1: 50000, Q2: 75000, Q3: 60000."),
+                    Tools: []interactions.Tool{createChartFunction},
+                },
+            ),
+        })
         if err != nil {
             log.Fatal(err)
         }
 
-        // Check for a function call
-        if len(response.FunctionCalls()) > 0 {
-            functionCall := response.FunctionCalls()[0]
-            fmt.Printf("Function to call: %s\n", functionCall.Name)
-            fmt.Printf("Arguments: %v\n", functionCall.Args)
-        } else {
-            fmt.Println("No function call found in the response.")
-            fmt.Println(response.Text())
+        for _, step := range resp.Interaction.Steps {
+            if step.FunctionCallStep != nil {
+                fc := step.FunctionCallStep
+                fmt.Println("Function to call:", fc.Name)
+                fmt.Println("Arguments:", fc.Arguments)
+            }
         }
     }
 
@@ -811,30 +795,39 @@ multiple functions in a single turn ([parallel function calling](https://ai.goog
 
     package main
 
-    import "google.golang.org/genai"
-
-    var setLightValuesDeclaration = &genai.FunctionDeclaration{
-        Name:        "set_light_values",
-        Description: "Sets the brightness and color temperature of a light.",
-        Parameters: &genai.Schema{
-            Type: genai.TypeObject,
-            Properties: map[string]*genai.Schema{
-                "brightness": {
-                    Type:        genai.TypeInteger,
-                    Description: "Light level from 0 to 100",
-                },
-                "color_temp": {
-                    Type:        genai.TypeString,
-                    Enum:        []string{"daylight", "cool", "warm"},
-                    Description: "Color temperature",
-                },
-            },
-            Required: []string{"brightness", "color_temp"},
-        },
-    }
+    import (
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+    )
 
     func setLightValues(brightness int, colorTemp string) map[string]any {
-        return map[string]any{"brightness": brightness, "colorTemperature": colorTemp}
+        return map[string]any{
+            "brightness":       brightness,
+            "colorTemperature": colorTemp,
+        }
+    }
+
+    func main() {
+        setLightValuesDeclaration := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("set_light_values"),
+            Description: genai.Ptr("Sets the brightness and color temperature of a light."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "brightness": map[string]any{
+                        "type":        "integer",
+                        "description": "Light level from 0 to 100",
+                    },
+                    "color_temp": map[string]any{
+                        "type":        "string",
+                        "enum":        []string{"daylight", "cool", "warm"},
+                        "description": "Color temperature",
+                    },
+                },
+                "required": []string{"brightness", "color_temp"},
+            },
+        })
+        _ = setLightValuesDeclaration
     }
 
 ### Step 2: Call the model with function declarations
@@ -934,28 +927,67 @@ multiple functions in a single turn ([parallel function calling](https://ai.goog
 
 ### Go
 
-    ctx := context.Background()
-    client, err := genai.NewClient(ctx, nil)
-    if err != nil {
-        log.Fatal(err)
-    }
+    package main
 
-    config := &genai.GenerateContentConfig{
-        Tools: []*genai.Tool{
-            {FunctionDeclarations: []*genai.FunctionDeclaration{setLightValuesDeclaration}},
-        },
-    }
+    import (
+        "context"
+        "fmt"
+        "log"
 
-    contents := []*genai.Content{
-        genai.NewContentFromText("Turn the lights down to a romantic level", genai.RoleUser),
-    }
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, config)
-    if err != nil {
-        log.Fatal(err)
-    }
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
 
-    fmt.Println(response.FunctionCalls()[0])
+        setLightValuesDeclaration := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("set_light_values"),
+            Description: genai.Ptr("Sets the brightness and color temperature of a light."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "brightness": map[string]any{
+                        "type":        "integer",
+                        "description": "Light level from 0 to 100",
+                    },
+                    "color_temp": map[string]any{
+                        "type":        "string",
+                        "enum":        []string{"daylight", "cool", "warm"},
+                        "description": "Color temperature",
+                    },
+                },
+                "required": []string{"brightness", "color_temp"},
+            },
+        })
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Turn the lights down to a romantic level"),
+                    Tools: []interactions.Tool{setLightValuesDeclaration},
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        var fcStep *interactions.FunctionCallStep
+        for _, step := range resp.Interaction.Steps {
+            if step.FunctionCallStep != nil {
+                fcStep = step.FunctionCallStep
+                break
+            }
+        }
+        fmt.Println(fcStep)
+    }
 
 The model returns a `function_call` step with `type`, `name`, and `arguments`:
 
@@ -1062,14 +1094,82 @@ The model returns a `function_call` step with `type`, `name`, and `arguments`:
 
 ### Go
 
-    toolCall := response.FunctionCalls()[0]
+    package main
 
-    var result map[string]any
-    if toolCall.Name == "set_light_values" {
-        brightness := int(toolCall.Args["brightness"].(float64))
-        colorTemp := toolCall.Args["color_temp"].(string)
-        result = setLightValues(brightness, colorTemp)
-        fmt.Printf("Function execution result: %v\n", result)
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func setLightValues(brightness int, colorTemp string) map[string]any {
+        return map[string]any{
+            "brightness":       brightness,
+            "colorTemperature": colorTemp,
+        }
+    }
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        setLightValuesDeclaration := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("set_light_values"),
+            Description: genai.Ptr("Sets the brightness and color temperature of a light."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "brightness": map[string]any{
+                        "type":        "integer",
+                        "description": "Light level from 0 to 100",
+                    },
+                    "color_temp": map[string]any{
+                        "type":        "string",
+                        "enum":        []string{"daylight", "cool", "warm"},
+                        "description": "Color temperature",
+                    },
+                },
+                "required": []string{"brightness", "color_temp"},
+            },
+        })
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Turn the lights down to a romantic level"),
+                    Tools: []interactions.Tool{setLightValuesDeclaration},
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range resp.Interaction.Steps {
+            if step.FunctionCallStep != nil {
+                fcStep := step.FunctionCallStep
+                if fcStep.Name == "set_light_values" {
+                    brightness := 25
+                    if b, ok := fcStep.Arguments["brightness"].(float64); ok {
+                        brightness = int(b)
+                    }
+                    colorTemp := "warm"
+                    if c, ok := fcStep.Arguments["color_temp"].(string); ok {
+                        colorTemp = c
+                    }
+                    result := setLightValues(brightness, colorTemp)
+                    fmt.Println("Function execution result:", result)
+                }
+            }
+        }
     }
 
 ### Step 4: Send result back to model
@@ -1206,26 +1306,95 @@ The model returns a `function_call` step with `type`, `name`, and `arguments`:
 
 ### Go
 
-    functionResponsePart := &genai.Part{
-        FunctionResponse: &genai.FunctionResponse{
-            ID:       toolCall.ID,
-            Name:     toolCall.Name,
-            Response: result,
-        },
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        setLightValuesDeclaration := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("set_light_values"),
+            Description: genai.Ptr("Sets the brightness and color temperature of a light."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "brightness": map[string]any{
+                        "type":        "integer",
+                        "description": "Light level from 0 to 100",
+                    },
+                    "color_temp": map[string]any{
+                        "type":        "string",
+                        "enum":        []string{"daylight", "cool", "warm"},
+                        "description": "Color temperature",
+                    },
+                },
+                "required": []string{"brightness", "color_temp"},
+            },
+        })
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Turn the lights down to a romantic level"),
+                    Tools: []interactions.Tool{setLightValuesDeclaration},
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        var fcStep *interactions.FunctionCallStep
+        for _, step := range resp.Interaction.Steps {
+            if step.FunctionCallStep != nil {
+                fcStep = step.FunctionCallStep
+                break
+            }
+        }
+
+        if fcStep != nil {
+            resultJson := `{"brightness": 25, "colorTemperature": "warm"}`
+            resultStep := interactions.NewStep(interactions.FunctionResultStep{
+                Name:   genai.Ptr(fcStep.Name),
+                CallID: fcStep.ID,
+                Result: interactions.NewFunctionResultStepResultUnion([]interactions.FunctionResultSubcontent{
+                    interactions.NewFunctionResultSubcontent(interactions.TextContent{
+                        Text: resultJson,
+                    }),
+                }),
+            })
+
+            finalResp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+                Body: operations.NewCreateInteractionRequestBody(
+                    interactions.CreateModelInteraction{
+                        Model:                 interactions.Model("gemini-3.8-flash"),
+                        PreviousInteractionID: resp.Interaction.ID,
+                        Tools:                 []interactions.Tool{setLightValuesDeclaration},
+                        Input:                 interactions.NewInteractionsInput([]interactions.Step{resultStep}),
+                    },
+                ),
+            })
+            if err != nil {
+                log.Fatal(err)
+            }
+
+            fmt.Println(finalResp.Interaction.GetOutputText())
+        }
     }
-
-    contents = append(contents, response.Candidates[0].Content)
-    contents = append(contents, &genai.Content{
-        Role:  genai.RoleUser,
-        Parts: []*genai.Part{functionResponsePart},
-    })
-
-    finalResponse, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, config)
-    if err != nil {
-        log.Fatal(err)
-    }
-
-    fmt.Println(finalResponse.Text())
 
 ### Stateless function calling
 
@@ -1441,52 +1610,107 @@ In stateless mode, you must pass the full history of the conversation in the `in
 
 ### Go
 
-    ctx := context.Background()
-    client, err := genai.NewClient(ctx, nil)
-    if err != nil {
-        log.Fatal(err)
-    }
+    package main
 
-    config := &genai.GenerateContentConfig{
-        Tools: []*genai.Tool{
-            {FunctionDeclarations: []*genai.FunctionDeclaration{setLightValuesDeclaration}},
-        },
-    }
+    import (
+        "context"
+        "fmt"
+        "log"
 
-    history := []*genai.Content{
-        genai.NewContentFromText("Turn the lights down to a romantic level", genai.RoleUser),
-    }
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", history, config)
-    if err != nil {
-        log.Fatal(err)
-    }
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
 
-    toolCall := response.FunctionCalls()[0]
-    brightness := int(toolCall.Args["brightness"].(float64))
-    colorTemp := toolCall.Args["color_temp"].(string)
-    result := setLightValues(brightness, colorTemp)
-
-    history = append(history, response.Candidates[0].Content)
-    history = append(history, &genai.Content{
-        Role: genai.RoleUser,
-        Parts: []*genai.Part{
-            {
-                FunctionResponse: &genai.FunctionResponse{
-                    ID:       toolCall.ID,
-                    Name:     toolCall.Name,
-                    Response: result,
+        setLightValuesDeclaration := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("set_light_values"),
+            Description: genai.Ptr("Sets the brightness and color temperature of a light."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "brightness": map[string]any{
+                        "type":        "integer",
+                        "description": "Light level from 0 to 100",
+                    },
+                    "color_temp": map[string]any{
+                        "type":        "string",
+                        "enum":        []string{"daylight", "cool", "warm"},
+                        "description": "Color temperature",
+                    },
                 },
+                "required": []string{"brightness", "color_temp"},
             },
-        },
-    })
+        })
 
-    finalResponse, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", history, config)
-    if err != nil {
-        log.Fatal(err)
+        history := []interactions.Step{
+            interactions.NewStep(interactions.UserInputStep{
+                Content: []interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Turn the lights down to a romantic level",
+                    }),
+                },
+            }),
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Store: genai.Ptr(false),
+                    Input: interactions.NewInteractionsInput(history),
+                    Tools: []interactions.Tool{setLightValuesDeclaration},
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        history = append(history, resp.Interaction.Steps...)
+        var fcStep *interactions.FunctionCallStep
+        for _, step := range resp.Interaction.Steps {
+            if step.FunctionCallStep != nil {
+                fcStep = step.FunctionCallStep
+                break
+            }
+        }
+
+        if fcStep != nil {
+            resultJson := `{"brightness": 25, "colorTemperature": "warm"}`
+            history = append(history, interactions.NewStep(interactions.FunctionResultStep{
+                Name:   genai.Ptr(fcStep.Name),
+                CallID: fcStep.ID,
+                Result: interactions.NewFunctionResultStepResultUnion([]interactions.FunctionResultSubcontent{
+                    interactions.NewFunctionResultSubcontent(interactions.TextContent{
+                        Text: resultJson,
+                    }),
+                }),
+            }))
+
+            finalResp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+                Body: operations.NewCreateInteractionRequestBody(
+                    interactions.CreateModelInteraction{
+                        Model: interactions.Model("gemini-3.8-flash"),
+                        Store: genai.Ptr(false),
+                        Input: interactions.NewInteractionsInput(history),
+                        Tools: []interactions.Tool{setLightValuesDeclaration},
+                    },
+                ),
+            })
+            if err != nil {
+                log.Fatal(err)
+            }
+
+            fmt.Println(finalResp.Interaction.GetOutputText())
+        }
     }
-
-    fmt.Println(finalResponse.Text())
 
 ### REST
 
@@ -1719,6 +1943,8 @@ Call multiple functions at once when they are independent:
         "log"
 
         "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
     )
 
     func main() {
@@ -1728,64 +1954,64 @@ Call multiple functions at once when they are independent:
             log.Fatal(err)
         }
 
-        powerDiscoBall := &genai.FunctionDeclaration{
-            Name:        "power_disco_ball",
-            Description: "Powers the disco ball.",
-            Parameters: &genai.Schema{
-                Type: genai.TypeObject,
-                Properties: map[string]*genai.Schema{
-                    "power": {Type: genai.TypeBoolean},
+        powerDiscoBall := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("power_disco_ball"),
+            Description: genai.Ptr("Powers the disco ball."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "power": map[string]any{"type": "boolean"},
                 },
-                Required: []string{"power"},
+                "required": []string{"power"},
             },
-        }
-        startMusic := &genai.FunctionDeclaration{
-            Name:        "start_music",
-            Description: "Play music.",
-            Parameters: &genai.Schema{
-                Type: genai.TypeObject,
-                Properties: map[string]*genai.Schema{
-                    "energetic": {Type: genai.TypeBoolean},
-                    "loud":      {Type: genai.TypeBoolean},
-                },
-                Required: []string{"energetic", "loud"},
-            },
-        }
-        dimLights := &genai.FunctionDeclaration{
-            Name:        "dim_lights",
-            Description: "Dim the lights.",
-            Parameters: &genai.Schema{
-                Type: genai.TypeObject,
-                Properties: map[string]*genai.Schema{
-                    "brightness": {Type: genai.TypeNumber},
-                },
-                Required: []string{"brightness"},
-            },
-        }
+        })
 
-        config := &genai.GenerateContentConfig{
-            Tools: []*genai.Tool{
-                {FunctionDeclarations: []*genai.FunctionDeclaration{powerDiscoBall, startMusic, dimLights}},
-            },
-            ToolConfig: &genai.ToolConfig{
-                FunctionCallingConfig: &genai.FunctionCallingConfig{
-                    Mode: genai.FunctionCallingConfigModeAny,
+        startMusic := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("start_music"),
+            Description: genai.Ptr("Play music."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "energetic": map[string]any{"type": "boolean"},
+                    "loud":      map[string]any{"type": "boolean"},
                 },
+                "required": []string{"energetic", "loud"},
             },
-        }
+        })
 
-        response, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.8-flash",
-            genai.Text("Turn this place into a party!"),
-            config,
-        )
+        dimLights := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("dim_lights"),
+            Description: genai.Ptr("Dim the lights."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "brightness": map[string]any{"type": "number"},
+                },
+                "required": []string{"brightness"},
+            },
+        })
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Turn this place into a party!"),
+                    Tools: []interactions.Tool{powerDiscoBall, startMusic, dimLights},
+                    GenerationConfig: &interactions.GenerationConfig{
+                        ToolChoice: genai.Ptr(interactions.NewToolChoice(interactions.ToolChoiceTypeAny)),
+                    },
+                },
+            ),
+        })
         if err != nil {
             log.Fatal(err)
         }
 
-        for _, fn := range response.FunctionCalls() {
-            fmt.Printf("%s(%v)\n", fn.Name, fn.Args)
+        for _, step := range resp.Interaction.Steps {
+            if step.FunctionCallStep != nil {
+                fc := step.FunctionCallStep
+                fmt.Printf("%s(%v)\n", fc.Name, fc.Arguments)
+            }
         }
     }
 
@@ -2050,6 +2276,8 @@ first, then get weather for that location).
         "log"
 
         "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
     )
 
     func main() {
@@ -2059,49 +2287,61 @@ first, then get weather for that location).
             log.Fatal(err)
         }
 
-        getWeatherForecastDecl := &genai.FunctionDeclaration{
-            Name:        "get_weather_forecast",
-            Description: "Gets the current weather temperature for a given location.",
-            Parameters: &genai.Schema{
-                Type: genai.TypeObject,
-                Properties: map[string]*genai.Schema{
-                    "location": {Type: genai.TypeString, Description: "The location"},
+        getWeatherForecastDeclaration := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("get_weather_forecast"),
+            Description: genai.Ptr("Gets the current weather temperature for a given location."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "location": map[string]any{
+                        "type":        "string",
+                        "description": "The location",
+                    },
                 },
-                Required: []string{"location"},
+                "required": []string{"location"},
             },
-        }
+        })
 
-        setThermostatTemperatureDecl := &genai.FunctionDeclaration{
-            Name:        "set_thermostat_temperature",
-            Description: "Sets the thermostat to a desired temperature.",
-            Parameters: &genai.Schema{
-                Type: genai.TypeObject,
-                Properties: map[string]*genai.Schema{
-                    "temperature": {Type: genai.TypeInteger, Description: "The temperature in Celsius"},
+        setThermostatTemperatureDeclaration := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("set_thermostat_temperature"),
+            Description: genai.Ptr("Sets the thermostat to a desired temperature."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "temperature": map[string]any{
+                        "type":        "integer",
+                        "description": "The temperature in Celsius",
+                    },
                 },
-                Required: []string{"temperature"},
+                "required": []string{"temperature"},
             },
-        }
+        })
 
-        config := &genai.GenerateContentConfig{
-            Tools: []*genai.Tool{
-                {FunctionDeclarations: []*genai.FunctionDeclaration{getWeatherForecastDecl, setThermostatTemperatureDecl}},
-            },
-        }
-
-        response, err := client.Models.GenerateContent(
-            ctx,
-            "gemini-3.8-flash",
-            genai.Text("If it's warmer than 20°C in London, set the thermostat to 20°C, otherwise 18°C."),
-            config,
-        )
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("If it's warmer than 20°C in London, set the thermostat to 20°C, otherwise 18°C."),
+                    Tools: []interactions.Tool{getWeatherForecastDeclaration, setThermostatTemperatureDeclaration},
+                },
+            ),
+        })
         if err != nil {
             log.Fatal(err)
         }
 
-        for _, fn := range response.FunctionCalls() {
-            fmt.Printf("Function to call: %s\n", fn.Name)
-            fmt.Printf("Arguments: %v\n", fn.Args)
+        for _, step := range resp.Interaction.Steps {
+            if step.FunctionCallStep != nil {
+                fc := step.FunctionCallStep
+                fmt.Println("Function to call:", fc.Name)
+                fmt.Println("Arguments:", fc.Arguments)
+            } else if step.ModelOutputStep != nil {
+                for _, part := range step.ModelOutputStep.Content {
+                    if part.TextContent != nil {
+                        fmt.Println(part.TextContent.Text)
+                    }
+                }
+            }
         }
     }
 
@@ -2196,18 +2436,23 @@ Control how the model uses tools using `tool_choice` in `generation_config`:
 
 ### Go
 
-    // Configure function calling mode
-    toolConfig := &genai.ToolConfig{
-        FunctionCallingConfig: &genai.FunctionCallingConfig{
-            Mode:                 genai.FunctionCallingConfigModeAny,
-            AllowedFunctionNames: []string{"get_current_temperature"},
-        },
-    }
+    package main
 
-    // Create the generation config
-    config := &genai.GenerateContentConfig{
-        Tools:      tools, // not defined here.
-        ToolConfig: toolConfig,
+    import (
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+    )
+
+    func main() {
+        generationConfig := interactions.GenerationConfig{
+            ToolChoice: genai.Ptr(interactions.NewToolChoice(interactions.ToolChoiceConfig{
+                AllowedTools: &interactions.AllowedTools{
+                    Mode:  interactions.ToolChoiceTypeAny.ToPointer(),
+                    Tools: []string{"get_current_temperature"},
+                },
+            })),
+        }
+        _ = generationConfig
     }
 
 ### REST
@@ -2459,6 +2704,8 @@ automatically circulates the built-in tool context.
         "log"
 
         "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
     )
 
     func main() {
@@ -2468,62 +2715,72 @@ automatically circulates the built-in tool context.
             log.Fatal(err)
         }
 
-        getWeather := &genai.FunctionDeclaration{
-            Name:        "get_weather",
-            Description: "Gets the weather for a given location.",
-            Parameters: &genai.Schema{
-                Type: genai.TypeObject,
-                Properties: map[string]*genai.Schema{
-                    "location": {
-                        Type:        genai.TypeString,
-                        Description: "The city and state, e.g. San Francisco, CA",
+        getWeather := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("get_weather"),
+            Description: genai.Ptr("Gets the weather for a requested city."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "city": map[string]any{
+                        "type":        "string",
+                        "description": "The city and state, e.g. Utqiaġvik, Alaska",
                     },
                 },
-                Required: []string{"location"},
+                "required": []string{"city"},
             },
+        })
+
+        tools := []interactions.Tool{
+            interactions.NewTool(interactions.GoogleSearch{}),
+            getWeather,
         }
 
-        tools := []*genai.Tool{
-            {GoogleSearch: &genai.GoogleSearch{}},
-            {FunctionDeclarations: []*genai.FunctionDeclaration{getWeather}},
-        }
-
-        config := &genai.GenerateContentConfig{
-            Tools: tools,
-        }
-
-        prompt := "What is the northernmost city in the United States? What's the weather like there today?"
-        response1, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", genai.Text(prompt), config)
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("What is the northernmost city in the United States? What's the weather like there today?"),
+                    Tools: tools,
+                },
+            ),
+        })
         if err != nil {
             log.Fatal(err)
         }
 
-        toolCall := response1.FunctionCalls()[0]
-        fmt.Printf("Function call: %s (ID: %s)\n", toolCall.Name, toolCall.ID)
+        for _, step := range resp.Interaction.Steps {
+            if step.FunctionCallStep != nil {
+                fcStep := step.FunctionCallStep
+                fmt.Printf("Function call: %s (ID: %s)\n", fcStep.Name, fcStep.ID)
+                resultJson := `{"response": "Very cold. 22 degrees Fahrenheit."}`
 
-        history := []*genai.Content{
-            genai.NewContentFromText(prompt, genai.RoleUser),
-            response1.Candidates[0].Content,
-            {
-                Role: genai.RoleUser,
-                Parts: []*genai.Part{
-                    {
-                        FunctionResponse: &genai.FunctionResponse{
-                            ID:       toolCall.ID,
-                            Name:     toolCall.Name,
-                            Response: map[string]any{"response": "Very cold. 22 degrees Fahrenheit."},
+                resultStep := interactions.NewStep(interactions.FunctionResultStep{
+                    Name:   genai.Ptr(fcStep.Name),
+                    CallID: fcStep.ID,
+                    Result: interactions.NewFunctionResultStepResultUnion([]interactions.FunctionResultSubcontent{
+                        interactions.NewFunctionResultSubcontent(interactions.TextContent{
+                            Text: resultJson,
+                        }),
+                    }),
+                })
+
+                resp2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+                    Body: operations.NewCreateInteractionRequestBody(
+                        interactions.CreateModelInteraction{
+                            Model:                 interactions.Model("gemini-3.8-flash"),
+                            PreviousInteractionID: resp.Interaction.ID,
+                            Tools:                 tools,
+                            Input:                 interactions.NewInteractionsInput([]interactions.Step{resultStep}),
                         },
-                    },
-                },
-            },
-        }
+                    ),
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
 
-        response2, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", history, config)
-        if err != nil {
-            log.Fatal(err)
+                fmt.Println(resp2.Interaction.GetOutputText())
+            }
         }
-
-        fmt.Println(response2.Text())
     }
 
 ### REST
@@ -2755,11 +3012,11 @@ The following example shows how to send a function response containing image dat
     import (
         "context"
         "fmt"
-        "io"
         "log"
-        "net/http"
 
         "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
     )
 
     func main() {
@@ -2769,93 +3026,67 @@ The following example shows how to send a function response containing image dat
             log.Fatal(err)
         }
 
-        // 1. Define the function tool
-        getImageDeclaration := &genai.FunctionDeclaration{
-            Name:        "get_image",
-            Description: "Retrieves the image file reference for a specific order item.",
-            Parameters: &genai.Schema{
-                Type: genai.TypeObject,
-                Properties: map[string]*genai.Schema{
-                    "item_name": {
-                        Type:        genai.TypeString,
-                        Description: "The name or description of the item ordered (e.g., 'instrument').",
-                    },
-                },
-                Required: []string{"item_name"},
+        getInstrumentImage := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("get_instrument_image"),
+            Description: genai.Ptr("Gets an image of an instrument."),
+            Parameters: map[string]any{
+                "type": "object",
             },
-        }
+        })
 
-        tools := []*genai.Tool{
-            {FunctionDeclarations: []*genai.FunctionDeclaration{getImageDeclaration}},
-        }
-
-        // 2. Send a message that triggers the tool
-        prompt := "Show me the instrument I ordered last month."
-        response1, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", genai.Text(prompt), &genai.GenerateContentConfig{
-            Tools: tools,
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Show me the instrument."),
+                    Tools: []interactions.Tool{getInstrumentImage},
+                },
+            ),
         })
         if err != nil {
             log.Fatal(err)
         }
 
-        // 3. Handle the function call
-        functionCall := response1.FunctionCalls()[0]
-        requestedItem := functionCall.Args["item_name"]
-        fmt.Printf("Model wants to call: %s\n", functionCall.Name)
-        fmt.Printf("Calling external tool for: %v\n", requestedItem)
-
-        resp, err := http.Get("https://goo.gle/instrument-img")
-        if err != nil {
-            log.Fatal(err)
-        }
-        defer resp.Body.Close()
-        imageBytes, err := io.ReadAll(resp.Body)
-        if err != nil {
-            log.Fatal(err)
+        var toolCall *interactions.FunctionCallStep
+        for _, step := range resp.Interaction.Steps {
+            if step.FunctionCallStep != nil {
+                toolCall = step.FunctionCallStep
+                break
+            }
         }
 
-        functionResponseData := map[string]any{
-            "image_ref": map[string]any{"$ref": "instrument.jpg"},
-        }
+        if toolCall != nil {
+            base64ImageData := "BASE64_IMAGE_DATA"
 
-        functionResponseMultimodalData := &genai.FunctionResponsePart{
-            InlineData: &genai.FunctionResponseBlob{
-                MIMEType:    "image/jpeg",
-                DisplayName: "instrument.jpg",
-                Data:        imageBytes,
-            },
-        }
+            resultStep := interactions.NewStep(interactions.FunctionResultStep{
+                Name:   genai.Ptr(toolCall.Name),
+                CallID: toolCall.ID,
+                Result: interactions.NewFunctionResultStepResultUnion([]interactions.FunctionResultSubcontent{
+                    interactions.NewFunctionResultSubcontent(interactions.TextContent{
+                        Text: "instrument.jpg",
+                    }),
+                    interactions.NewFunctionResultSubcontent(interactions.ImageContent{
+                        MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+                        Data:     genai.Ptr(base64ImageData),
+                    }),
+                }),
+            })
 
-        // 4. Send the tool's result back
-        history := []*genai.Content{
-            genai.NewContentFromText(prompt, genai.RoleUser),
-            response1.Candidates[0].Content,
-            {
-                Role: genai.RoleUser,
-                Parts: []*genai.Part{
-                    {
-                        FunctionResponse: &genai.FunctionResponse{
-                            ID:       functionCall.ID,
-                            Name:     functionCall.Name,
-                            Response: functionResponseData,
-                            Parts:    []*genai.FunctionResponsePart{functionResponseMultimodalData},
-                        },
+            finalResp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+                Body: operations.NewCreateInteractionRequestBody(
+                    interactions.CreateModelInteraction{
+                        Model:                 interactions.Model("gemini-3.8-flash"),
+                        PreviousInteractionID: resp.Interaction.ID,
+                        Input:                 interactions.NewInteractionsInput([]interactions.Step{resultStep}),
                     },
-                },
-            },
-        }
+                ),
+            })
+            if err != nil {
+                log.Fatal(err)
+            }
 
-        response2, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", history, &genai.GenerateContentConfig{
-            Tools: tools,
-            ThinkingConfig: &genai.ThinkingConfig{
-                IncludeThoughts: true,
-            },
-        })
-        if err != nil {
-            log.Fatal(err)
+            fmt.Println(finalResp.Interaction.GetOutputText())
         }
-
-        fmt.Printf("\nFinal model response: %s\n", response2.Text())
     }
 
 ### REST
@@ -2971,6 +3202,46 @@ When using Remote MCP, be aware of the following constraints:
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Check the weather in San Francisco."),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.MCPServer{
+                            Name: genai.Ptr("weather"),
+                            URL:  genai.Ptr("https://gemini-api-demos.uc.r.appspot.com/mcp"),
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = resp
+    }
 
 ### REST
 
@@ -3244,9 +3515,18 @@ reconstruct the complete tool calls before executing them.
         "context"
         "fmt"
         "log"
+        "strings"
 
         "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
     )
+
+    type callState struct {
+        id        string
+        name      string
+        arguments *strings.Builder
+    }
 
     func main() {
         ctx := context.Background()
@@ -3255,39 +3535,76 @@ reconstruct the complete tool calls before executing them.
             log.Fatal(err)
         }
 
-        getWeather := &genai.FunctionDeclaration{
-            Name:        "get_weather",
-            Description: "Gets the weather for a given location.",
-            Parameters: &genai.Schema{
-                Type: genai.TypeObject,
-                Properties: map[string]*genai.Schema{
-                    "location": {
-                        Type:        genai.TypeString,
-                        Description: "The city and state",
+        weatherTool := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("get_weather"),
+            Description: genai.Ptr("Gets the weather for a given location."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "location": map[string]any{
+                        "type":        "string",
+                        "description": "The city and state",
                     },
                 },
-                Required: []string{"location"},
+                "required": []string{"location"},
             },
-        }
+        })
 
-        config := &genai.GenerateContentConfig{
-            Tools: []*genai.Tool{
-                {FunctionDeclarations: []*genai.FunctionDeclaration{getWeather}},
-            },
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model:  interactions.Model("gemini-3.8-flash"),
+                    Input:  interactions.NewInteractionsInput("What is the weather in Paris?"),
+                    Tools:  []interactions.Tool{weatherTool},
+                    Stream: genai.Ptr(true),
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
         }
+        defer resp.InteractionSSEStreamEvent.Close()
 
-        for resp, err := range client.Models.GenerateContentStream(
-            ctx,
-            "gemini-3.8-flash",
-            genai.Text("What is the weather in Paris?"),
-            config,
-        ) {
-            if err != nil {
-                log.Fatal(err)
-            }
-            for _, fc := range resp.FunctionCalls() {
-                fmt.Printf("Function to call: %s\n", fc.Name)
-                fmt.Printf("Arguments: %v\n", fc.Args)
+        currentCalls := make(map[int]*callState)
+        var toolCalls []map[string]any
+
+        for resp.InteractionSSEStreamEvent.Next() {
+            event := resp.InteractionSSEStreamEvent.Value()
+            if stepStart := event.GetDataStepStart(); stepStart != nil {
+                if fcStep := stepStart.GetStepFunctionCall(); fcStep != nil {
+                    idx := stepStart.Index
+                    builder := &strings.Builder{}
+                    if len(fcStep.Arguments) > 0 {
+                        builder.WriteString(fmt.Sprint(fcStep.Arguments))
+                    }
+                    currentCalls[idx] = &callState{
+                        id:        fcStep.ID,
+                        name:      fcStep.Name,
+                        arguments: builder,
+                    }
+                }
+            } else if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                idx := stepDelta.Index
+                if argsDelta := stepDelta.GetDeltaArgumentsDelta(); argsDelta != nil {
+                    if argsDelta.Arguments != nil {
+                        if call, ok := currentCalls[idx]; ok {
+                            call.arguments.WriteString(*argsDelta.Arguments)
+                        }
+                    }
+                } else if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            } else if completed := event.GetDataInteractionCompleted(); completed != nil {
+                for _, call := range currentCalls {
+                    toolCalls = append(toolCalls, map[string]any{
+                        "type":      "function_call",
+                        "id":        call.id,
+                        "name":      call.name,
+                        "arguments": call.arguments.String(),
+                    })
+                }
+                fmt.Println("\nFinal tool calls ready to execute:")
+                fmt.Println(toolCalls)
             }
         }
     }

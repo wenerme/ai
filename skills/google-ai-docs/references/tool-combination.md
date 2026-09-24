@@ -37,7 +37,7 @@ Here's an example that enables built-in and custom tool combinations with
     # The Interactions API manages context automatically across tool calls.
     # The model will first use Google Search, then call getWeather.
     interaction = client.interactions.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         input="What is the northernmost city in the United States? What's the weather like there today?",
         tools=[
             {"type": "google_search"},
@@ -78,7 +78,7 @@ Here's an example that enables built-in and custom tool combinations with
     // The Interactions API manages context automatically across tool calls.
     // The model will first use Google Search, then call getWeather.
     const interaction = await client.interactions.create({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         input: "What is the northernmost city in the United States? What's the weather like there today?",
         tools: [
             { type: "google_search" },
@@ -123,7 +123,7 @@ Here's an example that enables built-in and custom tool combinations with
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.7-flash"))
+            .model(Model.of("gemini-3.8-flash"))
             .input(InteractionsInput.of("What is the weather like where I am right now?"))
             .tools(Arrays.asList(customFunc, new GoogleSearch()))
             .build();
@@ -133,6 +133,53 @@ Here's an example that enables built-in and custom tool combinations with
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        customFunc := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("get_user_location"),
+            Description: genai.Ptr("Retrieves user current location."),
+            Parameters: map[string]any{
+                "type": "object",
+            },
+        })
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("What is the weather like where I am right now?"),
+                Tools: []interactions.Tool{
+                    customFunc,
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     # Specifies the API revision to avoid breaking changes when they become default
@@ -140,7 +187,7 @@ Here's an example that enables built-in and custom tool combinations with
     -H "Content-Type: application/json" \
     -H "x-goog-api-key: $GEMINI_API_KEY" \
     -d '{
-      "model": "gemini-3.7-flash",
+      "model": "gemini-3.8-flash",
       "input": "What is the northernmost city in the United States? What'\''s the weather like there today?",
       "tools": [
         { "type": "google_search" },

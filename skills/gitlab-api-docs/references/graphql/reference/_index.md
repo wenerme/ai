@@ -18118,7 +18118,7 @@ Arguments:
 | <a id="mutation-userpreferencesupdate-organizationgroupsprojectsdisplay"></a>`organizationGroupsProjectsDisplay`  | [`OrganizationGroupProjectDisplay`](#organizationgroupprojectdisplay) | Introduced in GitLab 17.2. Status: Experiment. Default list view for organization groups and projects. |
 | <a id="mutation-userpreferencesupdate-organizationgroupsprojectssort"></a>`organizationGroupsProjectsSort`  | [`OrganizationGroupProjectSort`](#organizationgroupprojectsort) | Introduced in GitLab 17.2. Status: Experiment. Sort order for organization groups and projects. |
 | <a id="mutation-userpreferencesupdate-projectssort"></a>`projectsSort` | [`ProjectSort`](#projectsort) | Sort order for projects. |
-| <a id="mutation-userpreferencesupdate-useworkitemsview"></a>`useWorkItemsView` | [`Boolean`](#boolean) | Use work item view instead of legacy issue view. |
+| <a id="mutation-userpreferencesupdate-useworkitemsview"></a>`useWorkItemsView`  | [`Boolean`](#boolean) | Deprecated in GitLab 19.5. Work item view is always used. |
 | <a id="mutation-userpreferencesupdate-visibilitypipelineidtype"></a>`visibilityPipelineIdType` | [`VisibilityPipelineIdType`](#visibilitypipelineidtype) | Determines whether the pipeline list shows ID or IID. |
 | <a id="mutation-userpreferencesupdate-wikiuseautocommitmessage"></a>`wikiUseAutoCommitMessage`  | [`Boolean`](#boolean) | Introduced in GitLab 18.10. Status: Experiment. Whether to skip the commit message modal and use the auto-generated commit message when saving changes to a wiki document. |
 | <a id="mutation-userpreferencesupdate-workitemsdisplaysettings"></a>`workItemsDisplaySettings`  | [`JSON`](#json) | Introduced in GitLab 18.1. Status: Experiment. Display settings for the work item lists, e.g.: "{ shouldOpenItemsInSidePanel: false }". |
@@ -34624,6 +34624,7 @@ Fields:
 | <a id="artifactregistry-createdat"></a>`createdAt`  | [`Time`](#time) | Introduced in GitLab 19.4. Status: Experiment. Timestamp the registry was provisioned, presented as the active-since date. `null` when the status is `unknown`. |
 | <a id="artifactregistry-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. Artifact Registry's UUID for the namespace mapped to the organization. Neither a GitLab namespace nor a GitLab global ID. Pass it as `resourceId` to the Artifact Registry role mutations. Present even when the status is `unknown`. |
 | <a id="artifactregistry-slug"></a>`slug`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Registry slug, Artifact Registry's immutable identifier for the namespace. `null` when the status is `unknown`. |
+| <a id="artifactregistry-statistics"></a>`statistics`  | [`ArtifactRegistryNamespaceStatistics`](#artifactregistrynamespacestatistics) | Introduced in GitLab 19.5. Status: Experiment. Namespace-wide Artifact Registry statistics, read as the current user when this field is selected. `null` on any unresolved read, so an unavailable service or a drifted slug omits the figures rather than raising. The parent field returns `null` when the `artifact_registry_ui` feature flag is disabled, so this field is not reached. |
 | <a id="artifactregistry-status"></a>`status`  | [`String!`](#string) | Introduced in GitLab 19.4. Status: Experiment. Status Artifact Registry returned, one of `active`, `suspended`, `disabled`, `blocked`, `deleted`, or `purged`, or `unknown` when the mapped namespace did not resolve. Deliberately a string rather than an enum so a status Artifact Registry adds within its API version reaches the response instead of raising. |
 | <a id="artifactregistry-userpermissions"></a>`userPermissions`  | [`ArtifactRegistryNamespacePermissions!`](#artifactregistrynamespacepermissions) | Introduced in GitLab 19.5. Status: Experiment. Permissions Artifact Registry grants the current user on the namespace, read from the namespace details as the user when this field is selected. Advisory, because Artifact Registry authorizes every request on its own. Every permission is `false` when Artifact Registry returned no verdicts. The parent field returns `null` when the `artifact_registry_ui` feature flag is disabled, so this block is not reached. |
 
@@ -34838,6 +34839,17 @@ Fields:
 | <a id="artifactregistrynamespacepermissions-readrepository"></a>`readRepository`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can read repositories of the namespace and their metadata. |
 | <a id="artifactregistrynamespacepermissions-updaterepository"></a>`updateRepository`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can change the settings of the namespace's repositories. |
 | <a id="artifactregistrynamespacepermissions-updaterepositoryupstream"></a>`updateRepositoryUpstream`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can change an upstream of the namespace's repositories. |
+
+### `ArtifactRegistryNamespaceStatistics`
+
+Namespace-wide statistics for an Artifact Registry.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistrynamespacestatistics-deduplicatedsizebytes"></a>`deduplicatedSizeBytes`  | [`BigInt`](#bigint) | Introduced in GitLab 19.5. Status: Experiment. Namespace's storage footprint in bytes, counting each distinct blob once. |
+| <a id="artifactregistrynamespacestatistics-repositoriescount"></a>`repositoriesCount`  | [`BigInt`](#bigint) | Introduced in GitLab 19.5. Status: Experiment. Number of active repositories in the namespace, every format and kind. |
 
 ### `ArtifactRegistryNpmDistTag`
 
@@ -51538,7 +51550,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mergerequestriskassessment-assessedat"></a>`assessedAt` | [`Time`](#time) | When the classification completed. |
 | <a id="mergerequestriskassessment-confidence"></a>`confidence` | [`Int`](#int) | Confidence in the score, from 0 to 100. Derived from how much of the change could be measured and whether the signals agreed. |
-| <a id="mergerequestriskassessment-confidencetier"></a>`confidenceTier` | [`MergeRequestRiskTier`](#mergerequestrisktier) | Tier derived from the confidence score. |
+| <a id="mergerequestriskassessment-confidencetier"></a>`confidenceTier` | [`MergeRequestRiskConfidenceTier`](#mergerequestriskconfidencetier) | Tier derived from the confidence score. |
 | <a id="mergerequestriskassessment-contributingsignals"></a>`contributingSignals` | [`[MergeRequestRiskContributingSignal!]!`](#mergerequestriskcontributingsignal) | What each signal contributed to the score. |
 | <a id="mergerequestriskassessment-domaintags"></a>`domainTags` | [`[String!]!`](#string) | Risk domains the change touches, used to route specialist review. |
 | <a id="mergerequestriskassessment-duoworkflowid"></a>`duoWorkflowId` | [`Int`](#int) | ID of the Duo workflow session that produced the classification. |
@@ -62152,7 +62164,7 @@ Fields:
 | <a id="userpreferences-organizationgroupsprojectssort"></a>`organizationGroupsProjectsSort`  | [`OrganizationGroupProjectSort`](#organizationgroupprojectsort) | Introduced in GitLab 17.2. Status: Experiment. Sort order for organization groups and projects. |
 | <a id="userpreferences-projectssort"></a>`projectsSort` | [`ProjectSort`](#projectsort) | Sort order for projects. |
 | <a id="userpreferences-timezone"></a>`timezone`  | [`String`](#string) | Introduced in GitLab 17.7. Status: Experiment. Timezone of the user. |
-| <a id="userpreferences-useworkitemsview"></a>`useWorkItemsView` | [`Boolean`](#boolean) | Use work item view instead of legacy issue view. |
+| <a id="userpreferences-useworkitemsview"></a>`useWorkItemsView`  | [`Boolean`](#boolean) | Deprecated in GitLab 19.5. Work item view is always used. |
 | <a id="userpreferences-visibilitypipelineidtype"></a>`visibilityPipelineIdType` | [`VisibilityPipelineIdType`](#visibilitypipelineidtype) | Determines whether the pipeline list shows ID or IID. |
 | <a id="userpreferences-wikiuseautocommitmessage"></a>`wikiUseAutoCommitMessage`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.10. Status: Experiment. Whether to skip the commit message modal and use the auto-generated commit message when saving changes to a wiki document. |
 | <a id="userpreferences-workitemsdisplaysettings"></a>`workItemsDisplaySettings` | [`JSON!`](#json) | Display settings for the work item lists. |
@@ -65409,10 +65421,10 @@ Access configured on a granular scope.
 
 | Value | Description |
 | ----- | ----------- |
-| <a id="accesstokengranularscopeaccess-all_memberships"></a>`ALL_MEMBERSHIPS` | Grants access to resources belonging to all groups and projects the user is a member of. |
+| <a id="accesstokengranularscopeaccess-all_memberships"></a>`ALL_MEMBERSHIPS` | Grants access to resources belonging to all groups and projects the user can access. |
 | <a id="accesstokengranularscopeaccess-instance"></a>`INSTANCE` | Grants access to standalone instance-level resources. |
 | <a id="accesstokengranularscopeaccess-personal_projects"></a>`PERSONAL_PROJECTS` | Grants access to resources belonging to all personal projects of a user. |
-| <a id="accesstokengranularscopeaccess-selected_memberships"></a>`SELECTED_MEMBERSHIPS` | Grants access to resources belonging to selected groups and projects the user is a member of. |
+| <a id="accesstokengranularscopeaccess-selected_memberships"></a>`SELECTED_MEMBERSHIPS` | Grants access to resources belonging to selected groups and projects the user can access. |
 | <a id="accesstokengranularscopeaccess-user"></a>`USER` | Grants access to standalone user-level resources. |
 
 ### `AccessTokenSort`
@@ -69245,6 +69257,17 @@ Status of a merge request risk classification.
 | <a id="mergerequestriskassessmentstatus-failed"></a>`FAILED` | Classification could not be completed. |
 | <a id="mergerequestriskassessmentstatus-pending"></a>`PENDING` | Waiting to be classified. |
 | <a id="mergerequestriskassessmentstatus-queued"></a>`QUEUED` | Queued for (re)classification. |
+
+### `MergeRequestRiskConfidenceTier`
+
+Confidence tier derived from a merge request risk confidence score.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="mergerequestriskconfidencetier-high"></a>`HIGH` | High confidence. |
+| <a id="mergerequestriskconfidencetier-low"></a>`LOW` | Low confidence. |
+| <a id="mergerequestriskconfidencetier-medium"></a>`MEDIUM` | Medium confidence. |
+| <a id="mergerequestriskconfidencetier-very_high"></a>`VERY_HIGH` | Very high confidence. |
 
 ### `MergeRequestRiskTier`
 

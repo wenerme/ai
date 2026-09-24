@@ -77,6 +77,45 @@ Here's a minimal example of initializing the client and sending a prompt to the 
 
     System.out.println(interaction);
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Search for 'Gemini API' on Google."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.ComputerUse{
+                        Environment: interactions.EnvironmentEnumBrowser.ToPointer(),
+                    }),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(res.Interaction)
+    }
+
 <br />
 
 > [!NOTE]
@@ -231,6 +270,46 @@ Use the `@google/genai` Node.js SDK to configure a request targeting the browser
 
     System.out.println(interaction);
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Find a flight from SF to Hawaii on Jun 30th, coming back on Jul 6th"),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.ComputerUse{
+                        Environment:                    interactions.EnvironmentEnumBrowser.ToPointer(),
+                        EnablePromptInjectionDetection: genai.Ptr(true),
+                    }),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(res.Interaction)
+    }
+
 ### REST
 
 Use curl to send a request:
@@ -332,6 +411,49 @@ Use curl to send a request:
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     System.out.println(interaction);
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Specify predefined functions to exclude (optional)
+        excludedFunctions := []string{"drag_and_drop"}
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-2.5-computer-use-preview-10-2025"),
+                Input: interactions.NewInteractionsInput("Search for highly rated smart fridges on Google Shopping."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.ComputerUse{
+                        Environment:                 interactions.EnvironmentEnumBrowser.ToPointer(),
+                        ExcludedPredefinedFunctions: excludedFunctions,
+                    }),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(res.Interaction)
+    }
 
 ### 2. Receive the model response
 
@@ -607,6 +729,72 @@ The code below handles both legacy tool commands (`click_at`, `type_text_at`) an
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "fmt"
+
+        "google.golang.org/genai/interactions/models/interactions"
+    )
+
+    func denormalizeX(x, screenWidth int) int {
+        return int(float64(x) / 1000.0 * float64(screenWidth))
+    }
+
+    func denormalizeY(y, screenHeight int) int {
+        return int(float64(y) / 1000.0 * float64(screenHeight))
+    }
+
+    func executeFunctionCalls(interaction *interactions.Interaction, screenWidth, screenHeight int) []map[string]any {
+        var results []map[string]any
+
+        for _, step := range interaction.Steps {
+            if functionCall := step.FunctionCallStep; functionCall != nil {
+                fname := functionCall.Name
+                args := functionCall.Arguments
+                actionResult := map[string]any{}
+
+                intent := args["intent"]
+                if intent == nil {
+                    intent = "N/A"
+                }
+                fmt.Printf("  -> Executing: %s (Intent: %v)\n", fname, intent)
+
+                switch fname {
+                case "click", "click_at":
+                    xVal, _ := args["x"].(float64)
+                    yVal, _ := args["y"].(float64)
+                    actualX := denormalizeX(int(xVal), screenWidth)
+                    actualY := denormalizeY(int(yVal), screenHeight)
+                    _ = actualX
+                    _ = actualY
+                    // Perform mouse click at (actualX, actualY) using your browser automation library
+                case "type", "type_text_at":
+                    text, _ := args["text"].(string)
+                    _ = text
+                    // Type text into active element using your browser automation library
+                case "navigate":
+                    url, _ := args["url"].(string)
+                    _ = url
+                    // Navigate browser to url
+                }
+
+                results = append(results, map[string]any{
+                    "name":   fname,
+                    "callId": functionCall.ID,
+                    "result": actionResult,
+                })
+            }
+        }
+        return results
+    }
+
+    func main() {
+        // Example helper usage with an Interaction response
+    }
+
 ### 4. Capture the new environment state
 
 After executing the actions, send the result of the function execution back to
@@ -713,6 +901,49 @@ multiple actions (parallel calls) were executed, you must send a
         }
         return functionResponses;
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "encoding/base64"
+        "fmt"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+    )
+
+    func getFunctionResponses(screenshotBytes []byte, currentURL string, results []map[string]any) []interactions.Step {
+        var functionResponses []interactions.Step
+        base64Screenshot := base64.StdEncoding.EncodeToString(screenshotBytes)
+
+        for _, entry := range results {
+            name, _ := entry["name"].(string)
+            callID, _ := entry["callId"].(string)
+            jsonResult := fmt.Sprintf(`{"url": "%s"}`, currentURL)
+
+            responseStep := interactions.NewStep(interactions.FunctionResultStep{
+                Name:   genai.Ptr(name),
+                CallID: callID,
+                Result: interactions.NewFunctionResultStepResultUnion([]interactions.FunctionResultSubcontent{
+                    interactions.NewFunctionResultSubcontent(interactions.TextContent{
+                        Text: jsonResult,
+                    }),
+                    interactions.NewFunctionResultSubcontent(interactions.ImageContent{
+                        Data:     genai.Ptr(base64Screenshot),
+                        MimeType: interactions.ImageContentMimeType("image/png").ToPointer(),
+                    }),
+                }),
+            })
+            functionResponses = append(functionResponses, responseStep)
+        }
+        return functionResponses
+    }
+
+    func main() {
+        // Example helper usage to build FunctionResultStep responses
     }
 
 Once you have defined how to capture and format the environment state, you can
@@ -1009,6 +1240,110 @@ model responses and your function responses to the history at each step.
           client.interactions.create(CreateInteractionRequestBody.of(nextParams)).interaction().get();
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "strings"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Constants for screen dimensions
+        screenWidth := 1440
+        screenHeight := 900
+        _ = screenWidth
+        _ = screenHeight
+
+        // Capture initial screenshot from browser driver (e.g. Playwright)
+        initialScreenshot := []byte{}
+        base64Screenshot := base64.StdEncoding.EncodeToString(initialScreenshot)
+        userPrompt := "Go to ai.google.dev/gemini-api/docs and search for pricing."
+        fmt.Println("Goal:", userPrompt)
+
+        computerUseTool := interactions.NewTool(interactions.ComputerUse{
+            Environment:                    interactions.EnvironmentEnumBrowser.ToPointer(),
+            EnablePromptInjectionDetection: genai.Ptr(true),
+        })
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{Text: userPrompt}),
+                    interactions.NewContent(interactions.ImageContent{
+                        Data:     genai.Ptr(base64Screenshot),
+                        MimeType: interactions.ImageContentMimeType("image/png").ToPointer(),
+                    }),
+                }),
+                Tools: []interactions.Tool{computerUseTool},
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        interaction := res.Interaction
+
+        turnLimit := 5
+        for i := 0; i < turnLimit; i++ {
+            fmt.Printf("\n--- Turn %d ---\n", i+1)
+
+            hasFunctionCalls := false
+            for _, step := range interaction.Steps {
+                if step.FunctionCallStep != nil {
+                    hasFunctionCalls = true
+                    break
+                }
+            }
+
+            if !hasFunctionCalls {
+                var parts []string
+                for _, step := range interaction.Steps {
+                    if outStep := step.ModelOutputStep; outStep != nil {
+                        for _, contentBlock := range outStep.Content {
+                            if textContent := contentBlock.TextContent; textContent != nil {
+                                parts = append(parts, textContent.GetText())
+                            }
+                        }
+                    }
+                }
+                fmt.Println("Agent finished:", strings.TrimSpace(strings.Join(parts, " ")))
+                break
+            }
+
+            fmt.Println("Executing actions and capturing state...")
+            // Execute function calls against browser driver and capture []interactions.Step functionResponses
+            var functionResponses []interactions.Step
+
+            nextRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+                Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                    Model:                 interactions.Model("gemini-3.8-flash"),
+                    PreviousInteractionID: interaction.ID,
+                    Input:                 interactions.NewInteractionsInput(functionResponses),
+                    Tools:                 []interactions.Tool{computerUseTool},
+                }),
+            })
+            if err != nil {
+                log.Fatal(err)
+            }
+            interaction = nextRes.Interaction
+        }
+    }
+
 ## Supported environments (Gemini 3.x)
 
 Gemini 3.x models support three environments specified in the `computer_use`
@@ -1237,6 +1572,59 @@ Exclude standard predefined browser actions (such as `click`) and register a cus
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        yieldToUserTool := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("yield_to_user"),
+            Description: genai.Ptr("Yields control back to the user for assistance or verification when an automated action is unsafe or ambiguous."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "reason": map[string]any{
+                        "type":        "string",
+                        "description": "The reason why the agent is yielding control to the human.",
+                    },
+                },
+                "required": []string{"reason"},
+            },
+        })
+
+        _, err = client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Click the submit button. If you need a second factor authentication code, ask me."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.ComputerUse{
+                        Environment:                 interactions.EnvironmentEnumMobile.ToPointer(),
+                        ExcludedPredefinedFunctions: []string{"click"},
+                    }),
+                    yieldToUserTool,
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
+
 #### Gemini 2.5 (Legacy) Custom Tooling
 
 ### Python
@@ -1366,6 +1754,66 @@ Exclude standard predefined browser actions (such as `click`) and register a cus
 
     System.out.println(interaction);
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Define custom tools here
+        customFunction := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("long_press_at"),
+            Description: genai.Ptr("Long-press at specified coordinates."),
+        })
+
+        excludedFunctions := []string{
+            "open_web_browser",
+            "wait_5_seconds",
+            "go_back",
+            "go_forward",
+            "search",
+            "navigate",
+            "hover_at",
+            "scroll_document",
+            "key_combination",
+            "drag_and_drop",
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-2.5-computer-use-preview-10-2025"),
+                Input: interactions.NewInteractionsInput("Open Chrome, then long-press at 200,400."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.ComputerUse{
+                        Environment:                 interactions.EnvironmentEnumBrowser.ToPointer(),
+                        ExcludedPredefinedFunctions: excludedFunctions,
+                    }),
+                    customFunction,
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(res.Interaction)
+    }
+
 ## Managing thinking levels (Gemini 3.x)
 
 For computer use agents, you can configure different thinking levels to balance action quality and execution speed. Lower thinking levels generally achieve a good balance for standard automation tasks.
@@ -1463,6 +1911,45 @@ You can override select policies by passing overrides:
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        _, err = client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Clean up the local folder by archiving old logs."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.ComputerUse{
+                        Environment: interactions.EnvironmentEnumDesktop.ToPointer(),
+                        DisabledSafetyPolicies: []interactions.DisabledSafetyPolicy{
+                            interactions.DisabledSafetyPolicyDataModification,
+                        },
+                    }),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
+
 ### Prompt injection detection (Gemini 3.x)
 
 Computer Use for Gemini 3.5 Flash or later supports an advanced safety
@@ -1539,6 +2026,43 @@ in your Computer Use tool configuration:
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        _, err = client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.5-flash"),
+                Input: interactions.NewInteractionsInput("Search for flight deals and summarize top results."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.ComputerUse{
+                        Environment:                    interactions.EnvironmentEnumDesktop.ToPointer(),
+                        EnablePromptInjectionDetection: genai.Ptr(true),
+                    }),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
 
 ### cURL
 
@@ -1815,39 +2339,83 @@ data and systems:
 
 ### Java
 
-``java
-import com.google.genai.Client;
-import com.google.genai.gaos.models.interactions.ComputerUse;
-import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-import com.google.genai.gaos.models.interactions.EnvironmentEnum;
-import com.google.genai.gaos.models.interactions.Interaction;
-import com.google.genai.gaos.models.interactions.InteractionsInput;
-import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-import java.util.Arrays;
+    import com.google.genai.Client;
+    import com.google.genai.gaos.models.interactions.ComputerUse;
+    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
+    import com.google.genai.gaos.models.interactions.EnvironmentEnum;
+    import com.google.genai.gaos.models.interactions.Interaction;
+    import com.google.genai.gaos.models.interactions.InteractionsInput;
+    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
+    import java.util.Arrays;
 
-Client client = new Client();
+    Client client = new Client();
 
-String systemInstruction =
-"## **RULE 1: Seek User Confirmation (USER_CONFIRMATION)**\n\n"
-+ "This is your first and most important check. If the next required action falls "
-+ "into any of the following categories, you MUST stop immediately, and seek the "
-+ "user's explicit permission.\n\n"
-+ "## **RULE 2: Default Behavior (ACTUATE)**\n\n"
-+ "If an action does **NOT** fall under the conditions for `USER_CONFIRMATION`, "
-+ "your default behavior is to **Actuate**.";
+    String systemInstruction =
+        "## **RULE 1: Seek User Confirmation (USER_CONFIRMATION)**\n\n"
+            + "This is your first and most important check. If the next required action falls "
+            + "into any of the following categories, you MUST stop immediately, and seek the "
+            + "user's explicit permission.\n\n"
+            + "## **RULE 2: Default Behavior (ACTUATE)**\n\n"
+            + "If an action does **NOT** fall under the conditions for `USER_CONFIRMATION`, "
+            + "your default behavior is to **Actuate**.";
 
-CreateModelInteraction params =
-CreateModelInteraction.builder()
-.model("gemini-3.8-flash")
-.systemInstruction(systemInstruction)
-.input(InteractionsInput.of("Prepare a draft but do not send."))
-.tools(
-Arrays.asList(
-ComputerUse.builder().environment(EnvironmentEnum.BROWSER).build()))
-.build();
+    CreateModelInteraction params =
+        CreateModelInteraction.builder()
+            .model("gemini-3.8-flash")
+            .systemInstruction(systemInstruction)
+            .input(InteractionsInput.of("Prepare a draft but do not send."))
+            .tools(
+                Arrays.asList(
+                    ComputerUse.builder().environment(EnvironmentEnum.BROWSER).build()))
+            .build();
 
-Interaction interaction =
-client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();``
+    Interaction interaction =
+        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        systemInstruction := "## **RULE 1: Seek User Confirmation (USER_CONFIRMATION)**\n\n" +
+            "This is your first and most important check. If the next required action falls " +
+            "into any of the following categories, you MUST stop immediately, and seek the " +
+            "user's explicit permission.\n\n" +
+            "## **RULE 2: Default Behavior (ACTUATE)**\n\n" +
+            "If an action does **NOT** fall under the conditions for `USER_CONFIRMATION`, " +
+            "your default behavior is to **Actuate**."
+
+        _, err = client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:             interactions.Model("gemini-3.8-flash"),
+                SystemInstruction: genai.Ptr(systemInstruction),
+                Input:             interactions.NewInteractionsInput("Prepare a draft but do not send."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.ComputerUse{
+                        Environment: interactions.EnvironmentEnumBrowser.ToPointer(),
+                    }),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
 
 1. **Secure execution environment:** Run your agent in a secure, sandboxed environment to limit its potential impact. This can be a sandboxed virtual machine (VM), a container (e.g., Docker), or a dedicated browser profile with limited permissions. See the [GitHub reference implementation](https://github.com/google/computer-use-preview/) for sandbox setup guidance using Docker.
 2. **Input sanitization:** Sanitize all user-generated text in prompts to mitigate the risk of unintended instructions or prompt injection. This is a helpful layer of security, but not a replacement for a secure execution environment.

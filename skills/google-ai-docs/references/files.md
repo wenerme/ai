@@ -104,31 +104,51 @@ The following code uploads a file and then uses the file in a call to
 
 ### Go
 
-    file, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp3", nil)
-    if err != nil {
-        log.Fatal(err)
-    }
-    defer client.Files.Delete(ctx, file.Name)
+    package main
 
-    interaction, err := client.Interactions.Create(ctx, "gemini-3.8-flash", &genai.InteractionRequest{
-        Input: []interface{}{
-            genai.NewPartFromFile(*file),
-            genai.NewPartFromText("Describe this audio clip"),
-        },
-    }, nil)
+    import (
+        "context"
+        "fmt"
+        "log"
 
-    if err != nil {
-        log.Fatal(err)
-    }
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
 
-    // Print the model's text response
-    for _, step := range interaction.Steps {
-        if step.Type == "model_output" {
-            for _, part := range step.Content {
-                if part.Type == "text" {
-                    fmt.Println(part.Text)
-                }
-            }
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        myFile, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp3", &genai.UploadFileConfig{
+            MIMEType: "audio/mp3",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Describe this audio clip",
+                    }),
+                    interactions.NewContent(interactions.AudioContent{
+                        URI:      genai.Ptr(myFile.URI),
+                        MimeType: interactions.AudioContentMimeType(myFile.MIMEType).ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
         }
     }
 
@@ -239,16 +259,36 @@ metadata by calling `files.get`.
 
 ### Go
 
-    file, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp3", nil)
-    if err != nil {
-        log.Fatal(err)
-    }
+    package main
 
-    gotFile, err := client.Files.Get(ctx, file.Name)
-    if err != nil {
-        log.Fatal(err)
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        myFile, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp3", &genai.UploadFileConfig{
+            MIMEType: "audio/mp3",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fileMetadata, err := client.Files.Get(ctx, myFile.Name, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+        fmt.Println(fileMetadata)
     }
-    fmt.Println("Got file:", gotFile.Name)
 
 ### REST
 
@@ -308,11 +348,30 @@ The following code gets a list of all the files uploaded:
 
 ### Go
 
-    for file, err := range client.Files.All(ctx) {
-      if err != nil {
-        log.Fatal(err)
-      }
-      fmt.Println(file.Name)
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println("My files:")
+        for f, err := range client.Files.All(ctx) {
+            if err != nil {
+                log.Fatal(err)
+            }
+            fmt.Println(" ", f.Name)
+        }
     }
 
 ### REST
@@ -373,11 +432,33 @@ uploaded file:
 
 ### Go
 
-    file, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp3", nil)
-    if err != nil {
-        log.Fatal(err)
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        myFile, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp3", &genai.UploadFileConfig{
+            MIMEType: "audio/mp3",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if _, err := client.Files.Delete(ctx, myFile.Name, nil); err != nil {
+            log.Fatal(err)
+        }
     }
-    client.Files.Delete(ctx, file.Name)
 
 ### REST
 

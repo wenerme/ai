@@ -285,6 +285,7 @@ To change this limit on your GitLab Self-Managed instance:
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/362475) in GitLab 15.0 [with a feature flag](../feature_flags/_index.md) named `ci_enforce_throttle_pipelines_creation`. Disabled by default. Enabled on GitLab.com
 - [Enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/196545) in 18.3.
 - CI Lint rate limit [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/599486) in GitLab 19.2 [with a feature flag](../feature_flags/_index.md) named `ci_enforce_ci_lint_rate_limit`. Disabled by default.
+- `ci_lint_limit_per_user` [reset to `0`](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/256176) on all instances in GitLab 19.5.
 
 You can set limits so that users and processes can't request more than a certain number of pipelines each minute.
 These limits can help save resources and improve stability.
@@ -298,9 +299,9 @@ GitLab enforces the following rate limits in this section:
 - **Per user for CI lint requests**: Limits [CI lint](../../ci/yaml/lint.md) requests made by a user across all
   projects. CI lint requests are similar to pipeline creation requests.
 
-On new installations, `ci_lint_limit_per_user` is set to `0` (no limit).
-On instances upgraded to GitLab 19.2, if `pipeline_limit_per_user` is already set to a value greater than `0`,
-`ci_lint_limit_per_user` is initialized to that same value.
+By default, `ci_lint_limit_per_user` is set to `0` (no limit).
+Upgrading to GitLab 19.5 resets this value to `0` on every instance, even where an administrator
+had previously set a limit. If you want to limit CI lint requests, set the value again after upgrading.
 
 For example, if you set a per-user limit of `100`, and a user sends `101` pipeline creation requests
 to the [trigger API](../../ci/triggers/_index.md) within one minute across different projects,
@@ -388,6 +389,39 @@ To configure the per user and project limit:
 1. In the left sidebar, select **Settings** > **CI/CD**.
 1. Expand **Continuous Integration and Deployment**.
 1. Set a value for **Maximum pipeline cancellations per project**.
+1. Select **Save changes**.
+
+## Pipeline retry rate limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/627233) in GitLab 19.5 [with a feature flag](../feature_flags/_index.md) named `rate_limit_pipeline_retry`. Disabled by default.
+
+> [!flag]
+> The availability of this feature is controlled by a feature flag. For more information, see the history.
+
+Retrying a pipeline clones every retryable job, so the cost of retrying scales with the size of the pipeline.
+Repeated retries, whether on one large pipeline or spread across many pipelines in a project, can add up to
+excessive load on your instance. You can limit how often pipelines can be retried to protect against this.
+
+This rate limit applies to pipeline retries made with the
+[retry pipeline REST API](../../api/pipelines.md#retry-jobs-in-a-pipeline), the
+[`pipelineRetry`](../../api/graphql/reference/_index.md#mutationpipelineretry) GraphQL mutation, or the GitLab UI.
+The limit does not apply to automatic job retries, such as those triggered by the
+[`retry`](../../ci/yaml/_index.md#retry) keyword, which uses a different code path.
+
+GitLab enforces the following limits:
+
+- Per user and pipeline: Fixed at `5` requests each minute. This limit is not configurable and always applies.
+- Per user and project: Configurable, with a default of `200` requests each minute.
+  Set the limit to `0` to disable this per-project limit. The per user and pipeline limit still applies.
+
+If either limit is exceeded, the retry request is blocked.
+
+To configure the per user and project limit:
+
+1. In the upper-right corner, select **Admin**.
+1. In the left sidebar, select **Settings** > **CI/CD**.
+1. Expand **Continuous Integration and Deployment**.
+1. Set a value for **Maximum pipeline retries per project**.
 1. Select **Save changes**.
 
 ## Maximum artifacts size

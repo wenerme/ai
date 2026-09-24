@@ -35,11 +35,13 @@ Additionally, Zero Data Retention changes some endpoint behavior: the `store` pa
 
 Besides those specific behavior changes, the endpoints and capabilities listed as No for Zero Data Retention Eligible in the table below may still store application state, even if Zero Data Retention is enabled.
 
-### Zero Data Retention with Private Safety Processing
+<a id="zero-data-retention-with-private-safety-processing"></a>
+
+### ZDR with Private Safety Processing
 
 [Zero Data Retention with Private Safety Processing](https://developers.openai.com/api/docs/guides/private-safety-processing) enables OpenAI to perform automated safety monitoring while preserving Zero Data Retention protections. Endpoint and feature limitations listed on this page still apply.
 
-Customers using Zero Data Retention with Private Safety Processing must configure customer-controlled storage and meet additional technical and operational requirements described in the [Zero Data Retention with Private Safety Processing (PSP) guide](https://developers.openai.com/api/docs/guides/private-safety-processing).
+Customers using ZDR with PSP must configure customer-controlled storage and meet additional technical and operational requirements described in the [ZDR with Private Safety Processing guide](https://developers.openai.com/api/docs/guides/private-safety-processing).
 
 <a id="eyes-off"></a>
 <a id="private-retention-with-private-safety-processing"></a>

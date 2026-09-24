@@ -77,6 +77,65 @@ The following example shows how to compare two recipes from different websites.
 
     await main();
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        url1 := "https://www.foodnetwork.com/recipes/ina-garten/perfect-roast-chicken-recipe-1940592"
+        url2 := "https://www.allrecipes.com/recipe/21151/simple-whole-roast-chicken/"
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(
+                    fmt.Sprintf("Compare the ingredients and cooking times from the recipes at %s and %s", url1, url2),
+                ),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.URLContext{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Print the model's text response and its source annotations
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                        if len(contentBlock.TextContent.Annotations) > 0 {
+                            fmt.Println("\nSources:")
+                            for _, annotation := range contentBlock.TextContent.Annotations {
+                                if annotation.URLCitation != nil {
+                                    fmt.Printf("  - %s: %s\n", annotation.URLCitation.GetTitle(), annotation.URLCitation.GetURL())
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     # Specifies the API revision to avoid breaking changes when they become default
@@ -165,6 +224,52 @@ prompts that require both broad searching and deep analysis of specific pages.
     }
 
     await main();
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Give me three day events schedule based on YOUR_URL. Also let me know what needs to taken care of considering weather and commute."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.URLContext{}),
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.TextContent != nil {
+                        fmt.Println(contentBlock.TextContent.Text)
+                    }
+                }
+            }
+        }
+    }
 
 ### REST
 

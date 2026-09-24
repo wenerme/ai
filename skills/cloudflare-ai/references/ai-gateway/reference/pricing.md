@@ -1,5 +1,5 @@
 ---
-description: Review AI Gateway pricing, including free core features, persistent log storage limits, and premium add-ons.
+description: Review AI Gateway pricing for logs and premium features.
 title: Pricing
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Pricing
 
-Last updated May 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/reference/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway is available to use on all plans.
 
@@ -22,18 +22,24 @@ We will continue to build and expand AI Gateway. Some new features may be additi
 
 You can monitor your usage in the AI Gateway dashboard.
 
-## Persistent logs
+## Logs
 
-Persistent logs are available on all plans. Log storage limits vary by plan.
+Log pricing depends on when you created your first gateway.
 
-### Log storage limits
+### New AI Gateway customers
+
+Customers who create their first gateway on or after September 24, 2026 follow [Workers Logs pricing and retention](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#pricing).
+
+### Existing AI Gateway customers
+
+Customers who created a gateway before September 24, 2026 use [Legacy Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/legacy-logs/). Persistent log storage is available on all plans with these limits:
 
 | Plan | Log storage limit |
 | --- | --- |
 | Workers Free | 100,000 logs total across all gateways |
 | Workers Paid | 10,000,000 logs per gateway |
 
-For more details on log storage behavior and automatic log deletion, refer to [Limits](https://developers.cloudflare.com/ai-gateway/reference/limits/) and [Logging](https://developers.cloudflare.com/ai-gateway/observability/logging/#automatic-log-deletion).
+For storage behavior and deletion options, refer to [Legacy Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/legacy-logs/#manage-storage).
 
 ## Data Loss Prevention (DLP)
 
@@ -51,7 +57,7 @@ A 5% fee is applied to all credits purchased through [Unified Billing](https://d
 
 ## Logpush
 
-Logpush is only available on the Workers Paid plan.
+Logpush is available to all AI Gateway customers on the Workers Paid plan.
 
 |  | Paid plan |
 | --- | --- |
@@ -70,5 +76,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/reference/pricing/#page","headline":"Pricing","description":"Review AI Gateway pricing, including free core features, persistent log storage limits, and premium add-ons.","url":"https://developers.cloudflare.com/ai-gateway/reference/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/reference/pricing/#page","headline":"Pricing","description":"Review AI Gateway pricing for logs and premium features.","url":"https://developers.cloudflare.com/ai-gateway/reference/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

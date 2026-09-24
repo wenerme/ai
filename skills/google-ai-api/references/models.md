@@ -35,7 +35,7 @@ The request body must be empty.
     from google import genai
 
     client = genai.Client()
-    model_info = client.models.get(model="gemini-3.7-flash")
+    model_info = client.models.get(model="gemini-3.8-flash")
     print(model_info)
 
 ### Go
@@ -49,7 +49,7 @@ The request body must be empty.
     	log.Fatal(err)
     }
 
-    modelInfo, err := client.Models.Get(ctx, "gemini-3.7-flash", nil)
+    modelInfo, err := client.Models.Get(ctx, "gemini-3.8-flash", nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -248,6 +248,13 @@ post `https://generativelanguage.googleapis.com/v1beta/{model=models/*}:predict`
 The request body contains data with the following structure:
 Fields `instances[]` ``value (`https://protobuf.dev/reference/protobuf/google.protobuf#value` format)`` Required. The instances that are the input to the prediction call.
 `parameters` ``value (`https://protobuf.dev/reference/protobuf/google.protobuf#value` format)`` Optional. The parameters that govern the prediction call.
+`labels` `map (key: string, value: string)` Optional. Labels with user-defined metadata for the request.
+
+Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed.
+
+Usage: - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
+
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 
 ### Response body
 
@@ -285,6 +292,13 @@ The request body contains data with the following structure:
 Fields `instances[]` ``value (`https://protobuf.dev/reference/protobuf/google.protobuf#value` format)`` Required. The instances that are the input to the prediction call.
 `parameters` ``value (`https://protobuf.dev/reference/protobuf/google.protobuf#value` format)`` Optional. The parameters that govern the prediction call.
 `webhookConfig.uris[]` `string` Optional. If set, these webhook URIs will be used for webhook events instead of the registered webhooks.
+`labels` `map (key: string, value: string)` Optional. Labels with user-defined metadata for the request.
+
+Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed.
+
+Usage: - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
+
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 
 ### Response body
 

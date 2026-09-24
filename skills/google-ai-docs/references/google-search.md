@@ -63,6 +63,45 @@ Grounding helps you build applications that can:
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Who won the euro 2024?"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.GoogleSearch{}),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(resp.Interaction.GetOutputText())
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -264,6 +303,84 @@ of the text it cites. Here's how to extract and display them.
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Who won the euro 2024?"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.GoogleSearch{}),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range resp.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, content := range step.ModelOutputStep.Content {
+                    if content.TextContent != nil {
+                        text := content.TextContent.Text
+                        fmt.Println(text)
+                        if len(content.TextContent.Annotations) > 0 {
+                            fmt.Println("\nCitations:")
+                            for _, annotation := range content.TextContent.Annotations {
+                                if annotation.URLCitation != nil {
+                                    c := annotation.URLCitation
+                                    start := 0
+                                    if c.StartIndex != nil {
+                                        start = *c.StartIndex
+                                    }
+                                    end := 0
+                                    if c.EndIndex != nil {
+                                        end = *c.EndIndex
+                                    }
+                                    citedText := ""
+                                    if start >= 0 && end <= len(text) && start <= end {
+                                        citedText = text[start:end]
+                                    }
+                                    title := ""
+                                    if c.Title != nil {
+                                        title = *c.Title
+                                    }
+                                    url := ""
+                                    if c.URL != nil {
+                                        url = *c.URL
+                                    }
+                                    fmt.Printf("  [%s](%s)\n", title, url)
+                                    fmt.Printf("    Cited text: %q\n", citedText)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
 The output will show the text followed by its citations:
