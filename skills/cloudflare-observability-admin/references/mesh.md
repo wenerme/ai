@@ -20,6 +20,8 @@ Cloudflare Mesh gives every enrolled server, laptop, and phone a private Mesh IP
 
 Mesh nodes run the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) in headless mode on Linux. They can also advertise routes to make private subnets and hostnames reachable from other Mesh participants.
 
+The Mesh participant table lists nodes and enrolled client devices together. You can search for devices, filter by participant type or status, and open a device's Zero Trust details page. If one participant source fails, participants from the other source remain available while you retry the request.
+
 ![The Mesh network map in the Cloudflare dashboard showing nodes and devices connected through Cloudflare](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2070,height=875,format=webp/_astro/mesh-network-map.CED6jNHK.gif)
 
 Note

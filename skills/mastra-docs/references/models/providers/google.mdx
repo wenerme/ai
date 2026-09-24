@@ -69,8 +69,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 65536,
+    "contextWindow": 128000,
+    "maxOutput": 64000,
     "inputCost": 1.25,
     "outputCost": 10
   },
@@ -165,7 +165,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": false,
     "reasoning": true,
-    "contextWindow": 131072,
+    "contextWindow": 65536,
     "maxOutput": 32768,
     "inputCost": 2,
     "outputCost": 120
@@ -189,8 +189,8 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": false,
     "reasoning": true,
-    "contextWindow": 65536,
-    "maxOutput": 65536,
+    "contextWindow": 131072,
+    "maxOutput": 32768,
     "inputCost": 0.5,
     "outputCost": 60
   },
@@ -226,7 +226,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 65536,
-    "maxOutput": 65536,
+    "maxOutput": 4096,
     "inputCost": 0.25,
     "outputCost": 30
   },

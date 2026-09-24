@@ -107,6 +107,34 @@ You can count tokens in the following ways:
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.usage().orElse(null));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        modelInfo, err := client.Models.Get(ctx, "gemini-3.8-flash", nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Printf("Input token limit: %d\n", modelInfo.InputTokenLimit)
+        fmt.Printf("Output token limit: %d\n", modelInfo.OutputTokenLimit)
+    }
+
 ### REST
 
     # Specifies the API revision to avoid breaking changes when they become default
@@ -198,6 +226,67 @@ Count tokens across conversation history using `previous_interaction_id`:
       System.out.println("Input tokens: " + usage.totalInputTokens().orElse(0));
       System.out.println("Output tokens: " + usage.totalOutputTokens().orElse(0));
       System.out.println("Total tokens: " + usage.totalTokens().orElse(0));
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "The quick brown fox jumps over the lazy dog."
+
+        // Count input tokens before sending
+        totalTokens, err := client.Models.CountTokens(ctx, "gemini-3.8-flash", genai.Text(prompt), nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+        fmt.Printf("total_tokens: %d\n", totalTokens.TotalTokens)
+
+        // Create the interaction and inspect the returned usage metadata
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(prompt),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        interaction := res.Interaction
+        if interaction.OutputText != nil {
+            fmt.Println(*interaction.OutputText)
+        }
+        if interaction.Usage != nil {
+            if interaction.Usage.TotalInputTokens != nil {
+                fmt.Printf("Input tokens: %d\n", *interaction.Usage.TotalInputTokens)
+            }
+            if interaction.Usage.TotalOutputTokens != nil {
+                fmt.Printf("Output tokens: %d\n", *interaction.Usage.TotalOutputTokens)
+            }
+            if interaction.Usage.TotalThoughtTokens != nil {
+                fmt.Printf("Thought tokens: %d\n", *interaction.Usage.TotalThoughtTokens)
+            }
+            if interaction.Usage.TotalTokens != nil {
+                fmt.Printf("Total tokens: %d\n", *interaction.Usage.TotalTokens)
+            }
+        }
     }
 
 ### Count multimodal tokens
@@ -306,6 +395,59 @@ Key points about tokenization:
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.usage().orElse(null));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:  interactions.Model("gemini-3.8-flash"),
+                Input:  interactions.NewInteractionsInput("Explain the history of the internet in 3 paragraphs."),
+                Stream: genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        stream := res.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            }
+            if completed := event.GetDataInteractionCompleted(); completed != nil {
+                usage := completed.Interaction.Usage
+                if usage != nil && usage.TotalTokens != nil {
+                    fmt.Printf("\nTotal tokens: %d\n", *usage.TotalTokens)
+                }
+            }
+        }
+        if err := stream.Err(); err != nil {
+            log.Fatal(err)
+        }
+    }
 
 **Inline data example:**
 
@@ -484,6 +626,77 @@ window defines the combined limit of input and output tokens.
     Model modelInfo = client.models.get("gemini-3.8-flash", null);
     System.out.println("Input token limit: " + modelInfo.inputTokenLimit().orElse(0));
     System.out.println("Output token limit: " + modelInfo.outputTokenLimit().orElse(0));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Tell me about this instrument"
+        imageBytes, err := os.ReadFile("/path/to/organ.jpg")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+
+        // Count tokens before creating the interaction
+        parts := []*genai.Part{
+            genai.NewPartFromText(prompt),
+            genai.NewPartFromBytes(imageBytes, "image/jpeg"),
+        }
+        totalTokens, err := client.Models.CountTokens(ctx, "gemini-3.8-flash", []*genai.Content{
+            genai.NewContentFromParts(parts, genai.RoleUser),
+        }, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+        fmt.Printf("Estimated input tokens: %d\n", totalTokens.TotalTokens)
+
+        // Create the multimodal interaction and inspect the usage metadata
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: prompt,
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        Data:     genai.Ptr(base64Image),
+                        MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        interaction := res.Interaction
+        if interaction.OutputText != nil {
+            fmt.Println(*interaction.OutputText)
+        }
+        if interaction.Usage != nil && interaction.Usage.TotalTokens != nil {
+            fmt.Printf("Total tokens billed: %d\n", *interaction.Usage.TotalTokens)
+        }
+    }
 
 Find context window sizes on the [models](https://ai.google.dev/gemini-api/docs/models) page.
 

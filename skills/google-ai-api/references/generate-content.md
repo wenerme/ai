@@ -59,6 +59,13 @@ A `Tool` is a piece of code that enables the system to interact with external sy
 `safetySettings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`)`` Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
 
 This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safetySettings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
+`labels` `map (key: string, value: string)` Optional. Labels with user-defined metadata for the request.
+
+Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed.
+
+Usage: - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
+
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 `systemInstruction` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
 `generationConfig` ``object (`https://ai.google.dev/api/generate-content#GenerationConfig`)`` Optional. Configuration options for model generation and outputs.
 `cachedContent` `string` Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
@@ -75,7 +82,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-3.7-flash", contents="Write a story about a magic backpack."
+        model="gemini-3.8-flash", contents="Write a story about a magic backpack."
     )
     print(response.text)
 
@@ -86,7 +93,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: "Write a story about a magic backpack.",
     });
     console.log(response.text);
@@ -104,7 +111,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     contents := []*genai.Content{
     	genai.NewContentFromText("Write a story about a magic backpack.", genai.RoleUser),
     }
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -127,7 +134,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.7-flash",
+                    "gemini-3.8-flash",
                     "Write a story about a magic backpack.",
                     null);
 
@@ -143,7 +150,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     organ = PIL.Image.open(media / "organ.jpg")
     response = client.models.generate_content(
-        model="gemini-3.7-flash", contents=["Tell me about this instrument", organ]
+        model="gemini-3.8-flash", contents=["Tell me about this instrument", organ]
     )
     print(response.text)
 
@@ -158,7 +165,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: [
         createUserContent([
           "Tell me about this instrument", 
@@ -197,7 +204,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -247,7 +254,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
                     Part.fromText("Tell me about this instrument."),
                     Part.fromBytes(imageData, "image/jpeg"));
 
-    GenerateContentResponse response = client.models.generateContent("gemini-3.7-flash", content, null);
+    GenerateContentResponse response = client.models.generateContent("gemini-3.8-flash", content, null);
 
     System.out.println(response.text());
 
@@ -260,7 +267,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_audio = client.files.upload(file=media / "sample.mp3")
     response = client.models.generate_content(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents=["Give me a summary of this audio file.", sample_audio],
     )
     print(response.text)
@@ -276,7 +283,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: [
         createUserContent([
           "Give me a summary of this audio file.",
@@ -317,7 +324,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -392,7 +399,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         myfile = client.files.get(name=myfile.name)
 
     response = client.models.generate_content(
-        model="gemini-3.7-flash", contents=[myfile, "Describe this video clip"]
+        model="gemini-3.8-flash", contents=[myfile, "Describe this video clip"]
     )
     print(f"{response.text=}")
 
@@ -415,7 +422,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: [
         createUserContent([
           "Describe this video clip",
@@ -468,7 +475,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -545,7 +552,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_pdf = client.files.upload(file=media / "test.pdf")
     response = client.models.generate_content(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents=["Give me a summary of this document:", sample_pdf],
     )
     print(f"{response.text=}")
@@ -581,7 +588,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromParts(parts, genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, nil)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, nil)
     if err != nil {
     	log.Fatal(err)
     }
@@ -648,7 +655,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     # Pass initial history using the "history" argument
     chat = client.chats.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         history=[
             types.Content(role="user", parts=[types.Part(text="Hello")]),
             types.Content(
@@ -672,7 +679,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const chat = ai.chats.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       history: [
         {
           role: "user",
@@ -712,7 +719,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
     }
 
-    chat, err := client.Chats.Create(ctx, "gemini-3.7-flash", nil, history)
+    chat, err := client.Chats.Create(ctx, "gemini-3.8-flash", nil, history)
     if err != nil {
     	log.Fatal(err)
     }
@@ -763,7 +770,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
                     ).build();
 
     Chat chat = client.chats.create(
-            "gemini-3.7-flash",
+            "gemini-3.8-flash",
             GenerateContentConfig.builder()
                     .systemInstruction(userContent)
                     .systemInstruction(modelContent)
@@ -785,7 +792,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     document = client.files.upload(file=media / "a11.txt")
-    model_name = "gemini-3.7-flash"
+    model_name = "gemini-3.8-flash"
 
     cache = client.caches.create(
         model=model_name,
@@ -814,7 +821,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       config: { mimeType: "text/plain" },
     });
     console.log("Uploaded file name:", document.name);
-    const modelName = "gemini-3.7-flash";
+    const modelName = "gemini-3.8-flash";
 
     const contents = [
       createUserContent(createPartFromUri(document.uri, document.mimeType)),
@@ -847,7 +854,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	log.Fatal(err)
     }
 
-    modelName := "gemini-3.7-flash"
+    modelName := "gemini-3.8-flash"
     document, err := client.Files.UploadFromPath(
     	ctx, 
     	filepath.Join(getMedia(), "a11.txt"), 
@@ -911,7 +918,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     result = client.models.generate_content(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents="List a few popular cookie recipes.",
         config=types.GenerateContentConfig(
             response_mime_type="application/json", response_schema=list[Recipe]
@@ -925,7 +932,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: "List a few popular cookie recipes.",
       config: {
         responseMimeType: "application/json",
@@ -977,7 +984,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     response, err := client.Models.GenerateContent(
     	ctx,
-    	"gemini-3.7-flash",
+    	"gemini-3.8-flash",
     	genai.Text("List a few popular cookie recipes."),
     	config,
     )
@@ -1041,7 +1048,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.7-flash",
+                    "gemini-3.8-flash",
                     "List a few popular cookie recipes.",
                     config);
 
@@ -1056,7 +1063,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents=(
             "Write and execute code that calculates the sum of the first 50 prime numbers. "
             "Ensure that only the executable code and its resulting output are generated."
@@ -1083,7 +1090,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     response, err := client.Models.GenerateContent(
     	ctx,
-    	"gemini-3.7-flash",
+    	"gemini-3.8-flash",
     	genai.Text(
     		`Write and execute code that calculates the sum of the first 50 prime numbers.
     		 Ensure that only the executable code and its resulting output are generated.`,
@@ -1111,7 +1118,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.7-flash",
+                    "gemini-3.8-flash",
                     prompt,
                     null);
 
@@ -1149,7 +1156,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     # Create a chat session; function calling (via tools) is enabled in the config.
     chat = client.chats.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         config=types.GenerateContentConfig(tools=[add, subtract, multiply, divide]),
     )
     response = chat.send_message(
@@ -1167,7 +1174,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     if err != nil {
     	log.Fatal(err)
     }
-    modelName := "gemini-3.7-flash"
+    modelName := "gemini-3.8-flash"
 
     // Create the function declarations for arithmetic operations.
     addDeclaration := createArithmeticToolDeclaration("addNumbers", "Return the result of adding two numbers.")
@@ -1387,7 +1394,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
       // Step 1: Call generateContent with function calling enabled.
       const generateContentResponse = await ai.models.generateContent({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         contents:
           "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
         config: {
@@ -1436,7 +1443,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
       console.log("Function result:", resultValue);
 
       // Step 4: Use the chat API to send the result as the final answer.
-      const chat = ai.chats.create({ model: "gemini-3.7-flash" });
+      const chat = ai.chats.create({ model: "gemini-3.8-flash" });
       const chatResponse = await chat.sendMessage({
         message: "The final result is " + resultValue,
       });
@@ -1579,7 +1586,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.7-flash",
+                    "gemini-3.8-flash",
                     "I have 57 cats, each owns 44 mittens, how many mittens is that in total?",
                     config);
 
@@ -1616,7 +1623,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents="Tell me a story about a magic backpack.",
         config=types.GenerateContentConfig(
             candidate_count=1,
@@ -1634,7 +1641,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: "Tell me a story about a magic backpack.",
       config: {
         candidateCount: 1,
@@ -1664,7 +1671,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     response, err := client.Models.GenerateContent(
     	ctx,
-    	"gemini-3.7-flash",
+    	"gemini-3.8-flash",
     	genai.Text("Tell me a story about a magic backpack."),
     	&genai.GenerateContentConfig{
     		CandidateCount:  candidateCount,
@@ -1715,7 +1722,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.7-flash",
+                    "gemini-3.8-flash",
                     "Tell me a story about a magic backpack.",
                     config);
 
@@ -1734,7 +1741,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         "Write a ironic phrase about them including expletives."
     )
     response = client.models.generate_content(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents=unsafe_prompt,
         config=types.GenerateContentConfig(
             safety_settings=[
@@ -1764,7 +1771,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         "I support Martians Soccer Club and I think Jupiterians Football Club sucks! Write a ironic phrase about them including expletives.";
 
       const response = await ai.models.generateContent({
-        model: "gemini-3.7-flash",
+        model: "gemini-3.8-flash",
         contents: unsafePrompt,
         config: {
           safetySettings: [
@@ -1818,7 +1825,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     contents := []*genai.Content{
     	genai.NewContentFromText(unsafePrompt, genai.RoleUser),
     }
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, config)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, config)
     if err != nil {
     	log.Fatal(err)
     }
@@ -1879,7 +1886,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.7-flash",
+                    "gemini-3.8-flash",
                     unsafePrompt,
                     config);
 
@@ -1900,7 +1907,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents="Good morning! How are you?",
         config=types.GenerateContentConfig(
             system_instruction="You are a cat. Your name is Neko."
@@ -1914,7 +1921,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const response = await ai.models.generateContent({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: "Good morning! How are you?",
       config: {
         systemInstruction: "You are a cat. Your name is Neko.",
@@ -1943,7 +1950,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	SystemInstruction: genai.NewContentFromText("You are a cat. Your name is Neko.", genai.RoleUser),
     }
 
-    response, err := client.Models.GenerateContent(ctx, "gemini-3.7-flash", contents, config)
+    response, err := client.Models.GenerateContent(ctx, "gemini-3.8-flash", contents, config)
     if err != nil {
     	log.Fatal(err)
     }
@@ -1974,7 +1981,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     GenerateContentResponse response =
             client.models.generateContent(
-                    "gemini-3.7-flash",
+                    "gemini-3.8-flash",
                     "Good morning! How are you?",
                     config);
 
@@ -2025,6 +2032,13 @@ A `Tool` is a piece of code that enables the system to interact with external sy
 `safetySettings[]` ``object (`https://ai.google.dev/api/generate-content#v1beta.SafetySetting`)`` Optional. A list of unique `SafetySetting` instances for blocking unsafe content.
 
 This will be enforced on the `GenerateContentRequest.contents` and `GenerateContentResponse.candidates`. There should not be more than one setting for each `SafetyCategory` type. The API will block any contents and responses that fail to meet the thresholds set by these settings. This list overrides the default settings for each `SafetyCategory` specified in the safetySettings. If there is no `SafetySetting` for a given `SafetyCategory` provided in the list, the API will use the default safety setting for that category. Harm categories HARM_CATEGORY_HATE_SPEECH, HARM_CATEGORY_SEXUALLY_EXPLICIT, HARM_CATEGORY_DANGEROUS_CONTENT, HARM_CATEGORY_HARASSMENT, HARM_CATEGORY_CIVIC_INTEGRITY, HARM_CATEGORY_JAILBREAK are supported. Refer to the [guide](https://ai.google.dev/gemini-api/docs/safety-settings) for detailed information on available safety settings. Also refer to the [Safety guidance](https://ai.google.dev/gemini-api/docs/safety-guidance) to learn how to incorporate safety considerations in your AI applications.
+`labels` `map (key: string, value: string)` Optional. Labels with user-defined metadata for the request.
+
+Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed.
+
+Usage: - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
+
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 `systemInstruction` ``object (`https://ai.google.dev/api/generate-content#v1beta.Content`)`` Optional. Developer set [system instruction(s)](https://ai.google.dev/gemini-api/docs/system-instructions). Currently, text only.
 `generationConfig` ``object (`https://ai.google.dev/api/generate-content#GenerationConfig`)`` Optional. Configuration options for model generation and outputs.
 `cachedContent` `string` Optional. The name of the content [cached](https://ai.google.dev/gemini-api/docs/caching) to use as context to serve the prediction. Format: `cachedContents/{cachedContent}`
@@ -2041,7 +2055,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     response = client.models.generate_content_stream(
-        model="gemini-3.7-flash", contents="Write a story about a magic backpack."
+        model="gemini-3.8-flash", contents="Write a story about a magic backpack."
     )
     for chunk in response:
         print(chunk.text)
@@ -2054,7 +2068,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: "Write a story about a magic backpack.",
     });
     let text = "";
@@ -2078,7 +2092,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
     for response, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-3.7-flash",
+    	"gemini-3.8-flash",
     	contents,
     	nil,
     ) {
@@ -2101,7 +2115,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     ResponseStream<GenerateContentResponse> responseStream =
             client.models.generateContentStream(
-                    "gemini-3.7-flash",
+                    "gemini-3.8-flash",
                     "Write a story about a magic backpack.",
                     null);
 
@@ -2123,7 +2137,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     organ = PIL.Image.open(media / "organ.jpg")
     response = client.models.generate_content_stream(
-        model="gemini-3.7-flash", contents=["Tell me about this instrument", organ]
+        model="gemini-3.8-flash", contents=["Tell me about this instrument", organ]
     )
     for chunk in response:
         print(chunk.text)
@@ -2140,7 +2154,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     });
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: [
         createUserContent([
           "Tell me about this instrument", 
@@ -2183,7 +2197,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
     for response, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-3.7-flash",
+    	"gemini-3.8-flash",
     	contents,
     	nil,
     ) {
@@ -2231,7 +2245,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     ResponseStream<GenerateContentResponse> responseStream =
             client.models.generateContentStream(
-                    "gemini-3.7-flash",
+                    "gemini-3.8-flash",
                     content,
                     null);
 
@@ -2252,7 +2266,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_audio = client.files.upload(file=media / "sample.mp3")
     response = client.models.generate_content_stream(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents=["Give me a summary of this audio file.", sample_audio],
     )
     for chunk in response:
@@ -2292,7 +2306,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     for result, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-3.7-flash",
+    	"gemini-3.8-flash",
     	contents,
     	nil,
     ) {
@@ -2369,7 +2383,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
         myfile = client.files.get(name=myfile.name)
 
     response = client.models.generate_content_stream(
-        model="gemini-3.7-flash", contents=[myfile, "Describe this video clip"]
+        model="gemini-3.8-flash", contents=[myfile, "Describe this video clip"]
     )
     for chunk in response:
         print(chunk.text)
@@ -2394,7 +2408,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     }
 
     const response = await ai.models.generateContentStream({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       contents: [
         createUserContent([
           "Describe this video clip",
@@ -2453,7 +2467,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     for result, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-3.7-flash",
+    	"gemini-3.8-flash",
     	contents,
     	nil,
     ) {
@@ -2529,7 +2543,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     client = genai.Client()
     sample_pdf = client.files.upload(file=media / "test.pdf")
     response = client.models.generate_content_stream(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         contents=["Give me a summary of this document:", sample_pdf],
     )
 
@@ -2570,7 +2584,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     for result, err := range client.Models.GenerateContentStream(
     	ctx,
-    	"gemini-3.7-flash",
+    	"gemini-3.8-flash",
     	contents,
     	nil,
     ) {
@@ -2638,7 +2652,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
 
     client = genai.Client()
     chat = client.chats.create(
-        model="gemini-3.7-flash",
+        model="gemini-3.8-flash",
         history=[
             types.Content(role="user", parts=[types.Part(text="Hello")]),
             types.Content(
@@ -2668,7 +2682,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     // import {GoogleGenAI} from '@google/genai';
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
     const chat = ai.chats.create({
-      model: "gemini-3.7-flash",
+      model: "gemini-3.8-flash",
       history: [
         {
           role: "user",
@@ -2716,7 +2730,7 @@ This will be enforced on the `GenerateContentRequest.contents` and `GenerateCont
     	genai.NewContentFromText("Hello", genai.RoleUser),
     	genai.NewContentFromText("Great to meet you. What would you like to know?", genai.RoleModel),
     }
-    chat, err := client.Chats.Create(ctx, "gemini-3.7-flash", nil, history)
+    chat, err := client.Chats.Create(ctx, "gemini-3.8-flash", nil, history)
     if err != nil {
     	log.Fatal(err)
     }
@@ -2965,6 +2979,7 @@ Defines the reason why the model stopped generating tokens.
 | `MISSING_THOUGHT_SIGNATURE` | Request has at least one thought signature missing. |
 | `MALFORMED_RESPONSE` | Finished due to malformed response. |
 | `ESCALATION` | Request was filtered by an escalation rule. |
+| `PUP_LIMITED_DISABLED` | Indicates that token generation stopped because the user account is limited or disabled due to Prohibited Use Policy (PUP) violations. |
 
 ## GroundingAttribution
 
@@ -3415,6 +3430,12 @@ Service tier of the request.
   - [JSON representation](https://ai.google.dev/api/generate-content#MediaResolution.SCHEMA_REPRESENTATION)
 - [Level](https://ai.google.dev/api/generate-content#Level)
 - [MediaProcessing](https://ai.google.dev/api/generate-content#MediaProcessing)
+- [AudioTranscription](https://ai.google.dev/api/generate-content#AudioTranscription)
+  - [JSON representation](https://ai.google.dev/api/generate-content#AudioTranscription.SCHEMA_REPRESENTATION)
+- [WordInfo](https://ai.google.dev/api/generate-content#WordInfo)
+  - [JSON representation](https://ai.google.dev/api/generate-content#WordInfo.SCHEMA_REPRESENTATION)
+- [SpeechMetadata](https://ai.google.dev/api/generate-content#SpeechMetadata)
+  - [JSON representation](https://ai.google.dev/api/generate-content#SpeechMetadata.SCHEMA_REPRESENTATION)
 
 The base structured datatype containing multi-part content of a message.
 
@@ -3442,6 +3463,8 @@ A base64-encoded string.
 `partMetadata` ``object (`https://protobuf.dev/reference/protobuf/google.protobuf#struct` format)`` Custom metadata associated with the Part. Agents using genai.Part as content representation may need to keep track of the additional information. For example it can be name of a file/source from which the Part originates or a way to multiplex multiple Part streams.
 `mediaResolution` ``object (`https://ai.google.dev/api/generate-content#MediaResolution`)`` Optional. Media resolution for the input media.
 `mediaProcessing` ``enum (`https://ai.google.dev/api/generate-content#MediaProcessing`)`` Optional. How the model processes this part's media for understanding. Only meaningful for video parts (`inlineData` or `fileData` with video mime). Non-video parts ignore this field.
+`audioTranscription` ``object (`https://ai.google.dev/api/generate-content#AudioTranscription`)`` Optional. Audio (input or output) transcription. This is only set when this Part contains audio data.
+`speechMetadata` ``object (`https://ai.google.dev/api/generate-content#SpeechMetadata`)`` Optional. Metadata applied to text parts to customize how they should be spoken or synthesized, such as specifying speaker identity or speaking style.
 `data` `Union type` The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `text` `string` Inline text.
 `inlineData` ``object (`https://ai.google.dev/api/generate-content#Blob`)`` Inline media bytes.
 `functionCall` ``object (`https://ai.google.dev/api/generate-content#FunctionCall`)`` A predicted `FunctionCall` returned from the model that contains a string representing the `FunctionDeclaration.name` with the arguments and their values.
@@ -3456,7 +3479,7 @@ End of mutually exclusive fields.
 
 | JSON representation |
 |---|
-| ``` { "thought": boolean, "thoughtSignature": string, "partMetadata": { object }, "mediaResolution": { object (`https://ai.google.dev/api/generate-content#MediaResolution`) }, "mediaProcessing": enum (`https://ai.google.dev/api/generate-content#MediaProcessing`), // data "text": string, "inlineData": { object (`https://ai.google.dev/api/generate-content#Blob`) }, "functionCall": { object (`https://ai.google.dev/api/generate-content#FunctionCall`) }, "functionResponse": { object (`https://ai.google.dev/api/generate-content#FunctionResponse`) }, "fileData": { object (`https://ai.google.dev/api/generate-content#FileData`) }, "executableCode": { object (`https://ai.google.dev/api/generate-content#ExecutableCode`) }, "codeExecutionResult": { object (`https://ai.google.dev/api/generate-content#CodeExecutionResult`) }, "toolCall": { object (`https://ai.google.dev/api/generate-content#ToolCall`) }, "toolResponse": { object (`https://ai.google.dev/api/generate-content#ToolResponse`) } // Union type // metadata "videoMetadata": { object (`https://ai.google.dev/api/generate-content#VideoMetadata`) } // Union type } ``` |
+| ``` { "thought": boolean, "thoughtSignature": string, "partMetadata": { object }, "mediaResolution": { object (`https://ai.google.dev/api/generate-content#MediaResolution`) }, "mediaProcessing": enum (`https://ai.google.dev/api/generate-content#MediaProcessing`), "audioTranscription": { object (`https://ai.google.dev/api/generate-content#AudioTranscription`) }, "speechMetadata": { object (`https://ai.google.dev/api/generate-content#SpeechMetadata`) }, // data "text": string, "inlineData": { object (`https://ai.google.dev/api/generate-content#Blob`) }, "functionCall": { object (`https://ai.google.dev/api/generate-content#FunctionCall`) }, "functionResponse": { object (`https://ai.google.dev/api/generate-content#FunctionResponse`) }, "fileData": { object (`https://ai.google.dev/api/generate-content#FileData`) }, "executableCode": { object (`https://ai.google.dev/api/generate-content#ExecutableCode`) }, "codeExecutionResult": { object (`https://ai.google.dev/api/generate-content#CodeExecutionResult`) }, "toolCall": { object (`https://ai.google.dev/api/generate-content#ToolCall`) }, "toolResponse": { object (`https://ai.google.dev/api/generate-content#ToolResponse`) } // Union type // metadata "videoMetadata": { object (`https://ai.google.dev/api/generate-content#VideoMetadata`) } // Union type } ``` |
 
 ## Blob
 
@@ -3467,10 +3490,11 @@ Fields `mimeType` `string` The IANA standard MIME type of the source data. Examp
 `data` `string (https://developers.google.com/discovery/v1/type-format format)` Raw bytes for media formats.
 
 A base64-encoded string.
+`displayName` `string` Optional. Specifies the name used to refer to this blob to the model (e.g. "my_blob.png"). Used as the blob reference identifier when `verbalizationMode` is set to `REFERENCE_ONLY`.
 
 | JSON representation |
 |---|
-| ``` { "mimeType": string, "data": string } ``` |
+| ``` { "mimeType": string, "data": string, "displayName": string } ``` |
 
 ## FunctionCall
 
@@ -3543,10 +3567,11 @@ Specifies how the response should be scheduled in the conversation.
 URI based data.
 Fields `mimeType` `string` Optional. The IANA standard MIME type of the source data.
 `fileUri` `string` Required. URI.
+`displayName` `string` Optional. Specifies the name used to refer to this file to the model (e.g. "my_file.pdf"). Used as the file reference identifier when `verbalizationMode` is set to `REFERENCE_ONLY`.
 
 | JSON representation |
 |---|
-| ``` { "mimeType": string, "fileUri": string } ``` |
+| ``` { "mimeType": string, "fileUri": string, "displayName": string } ``` |
 
 ## ExecutableCode
 
@@ -3679,6 +3704,42 @@ How the model processes input media for understanding.
 | `MEDIA_PROCESSING_UNSPECIFIED` | Defaults to model-specific processing. |
 | `STATIC` | Fixed-rate frame extraction. All frames placed in context. |
 | `AGENTIC` | Model-driven dynamic navigation. Recommended for most use cases. |
+
+## AudioTranscription
+
+The transcription of an audio part. For multi-speaker audio, each speaker segment is a separate Part with its own AudioTranscription carrying the speakerLabel.
+Fields `text` `string` Required. The transcription text of this audio segment.
+`speakerLabel` `string` Optional. A label identifying the speaker of this audio segment (e.g. "spk_1", "spk_2"). Present when diarization is set.
+`words[]` ``object (`https://ai.google.dev/api/generate-content#WordInfo`)`` Optional. Detailed word-level transcriptions and timing details. Present when wordTimestamp is set.
+
+| JSON representation |
+|---|
+| ``` { "text": string, "speakerLabel": string, "words": [ { object (`https://ai.google.dev/api/generate-content#WordInfo`) } ] } ``` |
+
+## WordInfo
+
+Information about a single recognized word.
+Fields `word` `string` Required. Transcript of the word.
+`startOffset` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#duration` format)`` Optional. Start offset in time of the word relative to the start of the audio.
+
+A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: `"3.5s"`.
+`endOffset` ``string (`https://protobuf.dev/reference/protobuf/google.protobuf#duration` format)`` Optional. End offset in time of the word relative to the start of the audio.
+
+A duration in seconds with up to nine fractional digits, ending with '`s`'. Example: `"3.5s"`.
+
+| JSON representation |
+|---|
+| ``` { "word": string, "startOffset": string, "endOffset": string } ``` |
+
+## SpeechMetadata
+
+Speech metadata for `text` parts.
+Fields `speaker` `string` Optional. Optional speaker name for multi-speaker synthesis.
+`style` `string` Optional. Optional style instruction for the speech synthesis.
+
+| JSON representation |
+|---|
+| ``` { "speaker": string, "style": string } ``` |
 
 ## Environment
 
@@ -4176,10 +4237,17 @@ If included, the server will automatically reduce the size of the context when i
 `inputAudioTranscription` ``object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`)`` Optional. If set, enables transcription of voice input. The transcription aligns with the input audio language, if configured.
 `outputAudioTranscription` ``object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`)`` Optional. If set, enables transcription of the model's audio output. The transcription aligns with the language code specified for the output audio, if configured.
 `historyConfig` ``object (`https://ai.google.dev/api/generate-content#HistoryConfig`)`` Optional. Configures the exchange of history between the client and the server.
+`labels` `map (key: string, value: string)` Optional. Labels with user-defined metadata for the request.
+
+Optional. Labels must follow standard unified Cloud label requirements: - Label keys must start with a letter. - Label keys and values can be no longer than 63 characters (Unicode codepoints) and can only contain lowercase letters, numeric characters, underscores, and dashes. - International characters are allowed.
+
+Usage: - Safety identifiers from aggregators: Use the key `safety_identifier` (e.g. `{"safety_identifier": "user_session_123"}`)
+
+An object containing a list of `"key": value` pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
 
 | JSON representation |
 |---|
-| ``` { "model": string, "generationConfig": { object (`https://ai.google.dev/api/generate-content#GenerationConfig`) }, "systemInstruction": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) }, "tools": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Tool`) } ], "realtimeInputConfig": { object (`https://ai.google.dev/api/generate-content#RealtimeInputConfig`) }, "sessionResumption": { object (`https://ai.google.dev/api/generate-content#SessionResumptionConfig`) }, "contextWindowCompression": { object (`https://ai.google.dev/api/generate-content#ContextWindowCompressionConfig`) }, "inputAudioTranscription": { object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`) }, "outputAudioTranscription": { object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`) }, "historyConfig": { object (`https://ai.google.dev/api/generate-content#HistoryConfig`) } } ``` |
+| ``` { "model": string, "generationConfig": { object (`https://ai.google.dev/api/generate-content#GenerationConfig`) }, "systemInstruction": { object (`https://ai.google.dev/api/generate-content#v1beta.Content`) }, "tools": [ { object (`https://ai.google.dev/api/generate-content#v1beta.Tool`) } ], "realtimeInputConfig": { object (`https://ai.google.dev/api/generate-content#RealtimeInputConfig`) }, "sessionResumption": { object (`https://ai.google.dev/api/generate-content#SessionResumptionConfig`) }, "contextWindowCompression": { object (`https://ai.google.dev/api/generate-content#ContextWindowCompressionConfig`) }, "inputAudioTranscription": { object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`) }, "outputAudioTranscription": { object (`https://ai.google.dev/api/generate-content#AudioTranscriptionConfig`) }, "historyConfig": { object (`https://ai.google.dev/api/generate-content#HistoryConfig`) }, "labels": { string: string, ... } } ``` |
 
 ## GenerationConfig
 
@@ -4195,6 +4263,8 @@ Fields `stopSequences[]` `string` Optional. The set of character sequences (up t
 Optional. Output schema of the generated candidate text. Schemas must be a subset of the [OpenAPI schema](https://spec.openapis.org/oas/v3.0.3#schema) and can be objects, primitives or arrays.
 
 If set, a compatible `responseMimeType` must also be set. Compatible MIME types: `application/json`: Schema for JSON response. Refer to the [JSON text generation guide](https://ai.google.dev/gemini-api/docs/json-mode) for more details.
+
+Deprecated. Use `responseFormat` instead.
 `_responseJsonSchema
 (deprecated)` ``value (`https://protobuf.dev/reference/protobuf/google.protobuf#value` format)``
 
@@ -4231,6 +4301,8 @@ While the full JSON Schema may be sent, not all features are supported. Specific
 The non-standard `propertyOrdering` property may also be set.
 
 Cyclic references are unrolled to a limited degree and, as such, may only be used within non-required properties. (Nullable properties are not sufficient.) If `$ref` is set on a sub-schema, no other properties, except for than those starting as a `$`, may be set.
+
+Deprecated. Use `responseFormat` instead.
 `responseJsonSchema` ``value (`https://protobuf.dev/reference/protobuf/google.protobuf#value` format)`` Optional. An internal detail. Use `responseJsonSchema` rather than this field.
 `responseModalities[]` ``enum (`https://ai.google.dev/api/generate-content#Modality`)`` Optional. The requested modalities of the response. Represents the set of modalities that the model can return, and should be expected in the response. This is an exact match to the modalities of the response.
 
@@ -4315,11 +4387,16 @@ Valid values are: `de-DE`, `en-AU`, `en-GB`, `en-IN`, `en-US`, `es-US`, `fr-FR`,
 
 The configuration for the voice to use.
 Fields `voice_config` `Union type` The configuration for the speaker to use. The following is a list of mutually exclusive fields. At most one of the fields will be set in a response: `prebuiltVoiceConfig` ``object (`https://ai.google.dev/api/generate-content#PrebuiltVoiceConfig`)`` The configuration for the prebuilt voice to use.
+`voice` `string` Optional. The speaker identifier for synthesis. Supported formats:
+
+- Speaker name for prebuilt voices (for example, `Orus` or `Kore`).
+- Voice ID for stored voices (for example, `voice_xxx`).
+- Voice replication key (for example, `voicekey_xxx`).
 End of mutually exclusive fields.
 
 | JSON representation |
 |---|
-| ``` { // voice_config "prebuiltVoiceConfig": { object (`https://ai.google.dev/api/generate-content#PrebuiltVoiceConfig`) } // Union type } ``` |
+| ``` { // voice_config "prebuiltVoiceConfig": { object (`https://ai.google.dev/api/generate-content#PrebuiltVoiceConfig`) }, "voice": string // Union type } ``` |
 
 ## PrebuiltVoiceConfig
 

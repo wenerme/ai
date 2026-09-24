@@ -108,6 +108,56 @@ in the request:
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        uploadedFile, err := client.Files.UploadFromPath(ctx, "path/to/organ.jpg", &genai.UploadFileConfig{
+            MIMEType: "image/jpeg",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Caption this image.",
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        URI:      genai.Ptr(uploadedFile.URI),
+                        MimeType: interactions.ImageContentMimeType(uploadedFile.MIMEType).ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     # First upload the file using the Files API, then use the URI:
@@ -217,6 +267,57 @@ You can provide image data as base64-encoded strings:
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageBytes, err := os.ReadFile("path/to/small-sample.jpg")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Caption this image.",
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        Data:     genai.Ptr(base64Image),
+                        MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -339,6 +440,56 @@ Files API. See the [Files API guide](https://ai.google.dev/gemini-api/docs/files
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        myFile, err := client.Files.UploadFromPath(ctx, "path/to/sample.jpg", &genai.UploadFileConfig{
+            MIMEType: "image/jpeg",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Caption this image.",
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        URI:      genai.Ptr(myFile.URI),
+                        MimeType: interactions.ImageContentMimeType(myFile.MIMEType).ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     # First upload the file (see Files API guide for details)
@@ -453,6 +604,53 @@ objects in the `input` array:
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "What is different between these two images?",
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        URI:      genai.Ptr("https://example.com/image1.jpg"),
+                        MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        URI:      genai.Ptr("https://example.com/image2.jpg"),
+                        MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -636,6 +834,91 @@ your original image size.
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Detect the all of the prominent items in the image. The box_2d should be [ymin, xmin, ymax, xmax] normalized to 0-1000."
+
+        boundingBoxSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "box_2d": map[string]any{
+                    "type":        "array",
+                    "items":       map[string]any{"type": "integer"},
+                    "description": "The 2D bounding box of the item as [ymin, xmin, ymax, xmax] normalized to 0-1000.",
+                },
+                "mask": map[string]any{
+                    "type":        "array",
+                    "items":       map[string]any{"type": "array", "items": map[string]any{"type": "integer"}},
+                    "description": "The segmentation mask of the item as a polygon of [x,y] coordinates, normalized to 0-1000.",
+                },
+                "label": map[string]any{
+                    "type":        "string",
+                    "description": "A descriptive label for the item.",
+                },
+            },
+            "required": []string{"box_2d", "mask", "label"},
+        }
+
+        boundingBoxesSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "boxes": map[string]any{
+                    "type":  "array",
+                    "items": boundingBoxSchema,
+                },
+            },
+            "required": []string{"boxes"},
+        }
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.TextResponseFormat{
+                MimeType: interactions.TextResponseFormatMimeTypeApplicationJSON.ToPointer(),
+                Schema:   boundingBoxesSchema,
+            }),
+        )
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: prompt,
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        URI:      genai.Ptr("https://example.com/image.png"),
+                        MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+                    }),
+                }),
+                ResponseFormat: genai.Ptr(format),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -864,6 +1147,97 @@ The model predicts a JSON list, where each item represents a segmentation mask. 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println("Segmentation results: " + interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Give the segmentation masks for the wooden and glass items.\n" +
+            "Output a JSON list of segmentation masks where each entry contains the 2D\n" +
+            "bounding box in the key \"box_2d\", the segmentation mask in key \"mask\", and\n" +
+            "the text label in the key \"label\". Use descriptive labels."
+
+        boundingBoxSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "box_2d": map[string]any{
+                    "type":        "array",
+                    "items":       map[string]any{"type": "integer"},
+                    "description": "The 2D bounding box of the item as [ymin, xmin, ymax, xmax] normalized to 0-1000.",
+                },
+                "mask": map[string]any{
+                    "type":        "array",
+                    "items":       map[string]any{"type": "array", "items": map[string]any{"type": "integer"}},
+                    "description": "The segmentation mask of the item as a polygon of [x,y] coordinates, normalized to 0-1000.",
+                },
+                "label": map[string]any{
+                    "type":        "string",
+                    "description": "A descriptive label for the item.",
+                },
+            },
+            "required": []string{"box_2d", "mask", "label"},
+        }
+
+        boundingBoxesSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "boxes": map[string]any{
+                    "type":  "array",
+                    "items": boundingBoxSchema,
+                },
+            },
+            "required": []string{"boxes"},
+        }
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.TextResponseFormat{
+                MimeType: interactions.TextResponseFormatMimeTypeApplicationJSON.ToPointer(),
+                Schema:   boundingBoxesSchema,
+            }),
+        )
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: prompt,
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        URI:      genai.Ptr("https://example.com/image.png"),
+                        MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+                    }),
+                }),
+                ResponseFormat: genai.Ptr(format),
+                GenerationConfig: &interactions.GenerationConfig{
+                    ThinkingLevel: interactions.ThinkingLevelMinimal.ToPointer(),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println("Segmentation results: " + *res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 

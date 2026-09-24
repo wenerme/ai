@@ -6386,6 +6386,7 @@ paths:
     get:
       operationId: getApiV4VulnerabilitiesIdIssueLinks
       summary: Get related issues for a vulnerability
+      description: Lists related issues for a vulnerability.
       tags:
       - Vulnerabilities
       responses:
@@ -6409,6 +6410,7 @@ paths:
     post:
       operationId: postApiV4VulnerabilitiesIdIssueLinks
       summary: Relate an issue to a vulnerability
+      description: Relates an issue to a vulnerability.
       tags:
       - Vulnerabilities
       responses:
@@ -6439,6 +6441,7 @@ paths:
     delete:
       operationId: deleteApiV4VulnerabilitiesIdIssueLinksIssueLinkId
       summary: Delete a link between an issue and a vulnerability
+      description: Deletes a link between an issue and a vulnerability.
       tags:
       - Vulnerabilities
       responses:
@@ -11793,6 +11796,7 @@ paths:
     get:
       operationId: getApiV4GroupsIdDashEpicsEpicIidEpics
       summary: Get related epics
+      description: Lists all child epics of an epic.
       tags:
       - Epics
       responses:
@@ -11828,6 +11832,7 @@ paths:
     post:
       operationId: postApiV4GroupsIdDashEpicsEpicIidEpics
       summary: Create and relate epic to a parent
+      description: Creates a new epic and associates it with the provided parent epic.
       tags:
       - Epics
       responses:
@@ -11872,6 +11877,8 @@ paths:
     post:
       operationId: postApiV4GroupsIdDashEpicsEpicIidEpicsChildEpicId
       summary: Relate epics
+      description: Creates an association between two epics, designating one as the
+        parent epic and the other as the child epic.
       tags:
       - Epics
       responses:
@@ -11917,6 +11924,7 @@ paths:
     delete:
       operationId: deleteApiV4GroupsIdDashEpicsEpicIidEpicsChildEpicId
       summary: Remove epics relation
+      description: Unassigns a child epic from a parent epic.
       tags:
       - Epics
       responses:
@@ -11958,6 +11966,7 @@ paths:
     put:
       operationId: putApiV4GroupsIdDashEpicsEpicIidEpicsChildEpicId
       summary: Reorder child epics
+      description: Reorders a child epic.
       tags:
       - Epics
       responses:
@@ -12917,6 +12926,7 @@ paths:
     put:
       operationId: putApiV4GroupsIdApprovalRulesApprovalRuleId
       summary: Update group approval rule
+      description: Updates an approval rule for a group.
       tags:
       - Approval rules
       responses:
@@ -19910,7 +19920,7 @@ paths:
         content:
           application/json:
             schema:
-              "$ref": "#/components/schemas/RequestBody_02f7c66b6a32"
+              "$ref": "#/components/schemas/RequestBody_685443e2baf0"
   "/api/v4/service_accounts":
     post:
       operationId: postApiV4ServiceAccounts
@@ -61111,6 +61121,7 @@ paths:
     get:
       operationId: getApiV4GeoProxy
       summary: Returns a Geo proxy response
+      description: Determines if the current Geo site should proxy requests.
       tags:
       - Geo
       responses:
@@ -73647,6 +73658,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+        '429':
+          description: Too Many Requests
         '400':
           description: Bad Request
       parameters:
@@ -75203,6 +75216,17 @@ paths:
         schema:
           type: boolean
           default: false
+        in: query
+      - name: download_mode
+        required: false
+        description: Requested download transfer mode (`proxy` or `direct`). Only
+          honored when allowed by the object storage configuration.
+        schema:
+          type: string
+          enum:
+          - proxy
+          - direct
+          nullable: true
         in: query
   "/api/v4/projects/{id}/resource_groups":
     get:
@@ -84573,6 +84597,43 @@ components:
           type: integer
           format: int64
           example: 3
+    APIEntitiesMergeRequestAuthor:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        username:
+          type: string
+          example: admin
+        public_email:
+          type: string
+          example: john@example.com
+        name:
+          type: string
+          example: Administrator
+        state:
+          type: string
+          example: active
+        locked:
+          type: boolean
+        avatar_url:
+          type: string
+          example: https://gravatar.com/avatar/1
+        avatar_path:
+          type: string
+          example: "/user/avatar/28/The-Big-Lebowski-400-400.png"
+        custom_attributes:
+          type: array
+          items:
+            "$ref": "#/components/schemas/APIEntitiesCustomAttribute"
+        web_url:
+          type: string
+          example: https://gitlab.example.com/root
+        bot:
+          type: boolean
+          example: false
     APIEntitiesIssuableReferences:
       type: object
       properties:
@@ -84645,7 +84706,7 @@ components:
         downvotes:
           type: integer
         author:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          "$ref": "#/components/schemas/APIEntitiesMergeRequestAuthor"
         assignees:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         assignee:
@@ -88973,7 +89034,7 @@ components:
         downvotes:
           type: integer
         author:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          "$ref": "#/components/schemas/APIEntitiesMergeRequestAuthor"
         assignees:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         assignee:
@@ -91772,6 +91833,8 @@ components:
         downstream_pipeline_trigger_limit_per_project_user_sha:
           type: string
         pipeline_cancel_limit_per_user_project:
+          type: string
+        pipeline_retry_limit_per_user_project:
           type: string
         asciidoc_max_includes:
           type: string
@@ -97035,7 +97098,7 @@ components:
         downvotes:
           type: integer
         author:
-          "$ref": "#/components/schemas/APIEntitiesUserBasic"
+          "$ref": "#/components/schemas/APIEntitiesMergeRequestAuthor"
         assignees:
           "$ref": "#/components/schemas/APIEntitiesUserBasic"
         assignee:
@@ -106922,7 +106985,7 @@ components:
           description: Scopes available to the application. Separate multiple scopes
             with a space.
           nullable: true
-    RequestBody_02f7c66b6a32:
+    RequestBody_685443e2baf0:
       type: object
       properties:
         admin_mode:
@@ -107837,6 +107900,11 @@ components:
           type: integer
           description: Maximum number of pipeline cancellations allowed per minute
             for a given project.
+          nullable: true
+        pipeline_retry_limit_per_user_project:
+          type: integer
+          description: Maximum number of pipeline retries allowed per minute for a
+            given project.
           nullable: true
         ai_action_api_rate_limit:
           type: integer

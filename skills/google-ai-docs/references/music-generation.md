@@ -99,6 +99,54 @@ the `steps` schema.
 
     interaction.outputText().ifPresent(lyrics -> System.out.println("Lyrics:\n" + lyrics));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("lyria-3-clip-preview"),
+                Input: interactions.NewInteractionsInput("A short instrumental acoustic guitar piece."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputAudio != nil && res.Interaction.OutputAudio.Data != nil {
+            audioBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputAudio.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("music.mp3", audioBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Printf("Lyrics:\n%s\n", *res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -162,6 +210,40 @@ using [timestamps](https://ai.google.dev/gemini-api/docs/music-generation#timing
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("lyria-3.5"),
+                Input: interactions.NewInteractionsInput(
+                    "An epic cinematic orchestral piece about a journey home. Starts with a solo piano intro, builds through sweeping strings, and climaxes with a massive wall of sound.",
+                ),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = res
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -221,6 +303,41 @@ the `response_format`.
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("lyria-3.5"),
+                Input: interactions.NewInteractionsInput("A beautiful piano melody."),
+                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
+                    interactions.NewResponseFormat(interactions.AudioResponseFormat{}),
+                )),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = res
+    }
 
 ### REST
 
@@ -303,6 +420,54 @@ Content blocks with `audio` type contain the base64 encoded audio data.
 
     if (interaction.outputText().isPresent()) {
       System.out.println("Lyrics:\n" + interaction.outputText().get());
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("lyria-3.5"),
+                Input: interactions.NewInteractionsInput("A song about a starry night."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputAudio != nil && res.Interaction.OutputAudio.Data != nil {
+            audioBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputAudio.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("output.mp3", audioBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Printf("Lyrics:\n%s\n", *res.Interaction.OutputText)
+        }
     }
 
 ### REST
@@ -429,6 +594,70 @@ received), you can manually iterate over `steps` instead:
       Files.write(Paths.get("output.mp3"), audioData);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+        "strings"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("lyria-3.5"),
+                Input: interactions.NewInteractionsInput("A song about a starry night."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        var lyrics []string
+        var audioData []byte
+
+        for _, step := range res.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, contentBlock := range step.ModelOutputStep.Content {
+                    if contentBlock.AudioContent != nil && contentBlock.AudioContent.Data != nil {
+                        decoded, err := base64.StdEncoding.DecodeString(*contentBlock.AudioContent.Data)
+                        if err != nil {
+                            log.Fatal(err)
+                        }
+                        audioData = decoded
+                    } else if contentBlock.TextContent != nil {
+                        lyrics = append(lyrics, contentBlock.TextContent.Text)
+                    }
+                }
+            }
+        }
+
+        if len(lyrics) > 0 {
+            fmt.Printf("Lyrics:\n%s\n", strings.Join(lyrics, "\n"))
+        }
+
+        if audioData != nil {
+            if err := os.WriteFile("output.mp3", audioData, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ## Generate music from images
 
 Lyria 3.5 supports multimodal inputs --- you can provide up to **10 images**
@@ -522,6 +751,56 @@ inspired by the visual content.
 
     Interaction response =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageBytes, err := os.ReadFile("desert_sunset.jpg")
+        if err != nil {
+            log.Fatal(err)
+        }
+        imageB64 := base64.StdEncoding.EncodeToString(imageBytes)
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.TextContent{
+                Text: "An atmospheric ambient track inspired by the mood and colors in this image.",
+            }),
+            interactions.NewContent(interactions.ImageContent{
+                MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+                Data:     genai.Ptr(imageB64),
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("lyria-3.5"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = res
+    }
 
 ### REST
 
@@ -639,6 +918,55 @@ song structure:
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Create a dreamy indie pop song with the following lyrics:\n\n" +
+            "[Verse 1]\n" +
+            "Walking through the neon glow,\n" +
+            "city lights reflect below,\n" +
+            "every shadow tells a story,\n" +
+            "every corner, fading glory.\n\n" +
+            "[Chorus]\n" +
+            "We are the echoes in the night,\n" +
+            "burning brighter than the light,\n" +
+            "hold on tight, don't let me go,\n" +
+            "we are the echoes down below.\n\n" +
+            "[Verse 2]\n" +
+            "Footsteps lost on empty streets,\n" +
+            "rhythms sync to heartbeats,\n" +
+            "whispers carried by the breeze,\n" +
+            "dancing through the autumn leaves."
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("lyria-3.5"),
+                Input: interactions.NewInteractionsInput(prompt),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = res
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -715,6 +1043,43 @@ are delivered, and how the song progresses:
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "[0:00 - 0:10] Intro: Begin with a soft lo-fi beat and muffled vinyl crackle.\n" +
+            "[0:10 - 0:30] Verse 1: Add a warm Fender Rhodes piano melody and gentle vocals singing about a rainy morning.\n" +
+            "[0:30 - 0:50] Chorus: Full band with upbeat drums and soaring synth leads. The lyrics are hopeful and uplifting.\n" +
+            "[0:50 - 1:00] Outro: Fade out with the piano melody alone."
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("lyria-3.5"),
+                Input: interactions.NewInteractionsInput(prompt),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = res
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -765,6 +1130,40 @@ required, you can prompt the model to produce instrumental-only tracks:
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("lyria-3-clip-preview"),
+                Input: interactions.NewInteractionsInput(
+                    "A bright chiptune melody in C Major, retro 8-bit video game style. Instrumental only, no vocals.",
+                ),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = res
+    }
 
 ### REST
 
@@ -817,6 +1216,40 @@ style and pronunciation to match the language.
 
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("lyria-3.5"),
+                Input: interactions.NewInteractionsInput(
+                    "Crée une chanson pop romantique en français sur un coucher de soleil à Paris. Utilise du piano et de la guitare acoustique.",
+                ),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = res
+    }
 
 ### REST
 

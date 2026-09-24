@@ -73,6 +73,51 @@ camera movement, lighting and mood for best results.
       Files.write(Paths.get("marble.mp4"), videoBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-omni-1.1-flash"),
+                Input: interactions.NewInteractionsInput(
+                    "A marble rolling fast on a chain reaction style track, continuous smooth shot.",
+                ),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputVideo != nil && res.Interaction.OutputVideo.Data != nil {
+            videoBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputVideo.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("marble.mp4", videoBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY" \
@@ -194,6 +239,58 @@ is the default.
       Files.write(Paths.get("example.mp4"), videoBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        videoFormat := interactions.VideoResponseFormat{
+            AspectRatio: interactions.VideoResponseFormatAspectRatioNineHundredAndSixteen.ToPointer(),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-omni-1.1-flash"),
+                Input: interactions.NewInteractionsInput(
+                    "A futuristic city with neon lights and flying cars, cyberpunk style",
+                ),
+                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
+                    interactions.NewResponseFormat(videoFormat),
+                )),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputVideo != nil && res.Interaction.OutputVideo.Data != nil {
+            videoBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputVideo.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("example.mp4", videoBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY" \
@@ -292,6 +389,56 @@ parameter in `response_format`. The default resolution is 720p.
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
       byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
       Files.write(Paths.get("hires.mp4"), videoBytes);
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        videoFormat := interactions.VideoResponseFormat{
+            Resolution: interactions.ResolutionOneThousandAndEightyp.ToPointer(),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-omni-1.1-flash"),
+                Input: interactions.NewInteractionsInput("A drone shot of a mountain landscape at sunrise."),
+                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
+                    interactions.NewResponseFormat(videoFormat),
+                )),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputVideo != nil && res.Interaction.OutputVideo.Data != nil {
+            videoBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputVideo.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("hires.mp4", videoBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
     }
 
 ### REST
@@ -410,6 +557,65 @@ To generate a realistic video of the drawing.
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
       byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
       Files.write(Paths.get("clownfish.mp4"), videoBytes);
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageBytes, err := os.ReadFile("drawing.jpg")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(base64Image),
+                MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: "turn this into realistic footage, using the drawing only as a guide for movement, do not show the drawing in the final video",
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-omni-1.1-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputVideo != nil && res.Interaction.OutputVideo.Data != nil {
+            videoBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputVideo.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("clownfish.mp4", videoBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
     }
 
 ### REST
@@ -535,6 +741,75 @@ ending frame.
       Files.write(Paths.get("interpolation.mp4"), videoBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        firstBytes, err := os.ReadFile("first_frame.jpg")
+        if err != nil {
+            log.Fatal(err)
+        }
+        lastBytes, err := os.ReadFile("last_frame.jpg")
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        firstFrameB64 := base64.StdEncoding.EncodeToString(firstBytes)
+        lastFrameB64 := base64.StdEncoding.EncodeToString(lastBytes)
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(firstFrameB64),
+                MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+            }),
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(lastFrameB64),
+                MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: "A smooth cinematic transition from a lush green forest at sunrise to a snowy forest under a starry night sky.",
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-omni-1.1-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputVideo != nil && res.Interaction.OutputVideo.Data != nil {
+            videoBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputVideo.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("interpolation.mp4", videoBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY" \
@@ -647,6 +922,75 @@ to generate a video of the cat playing with the yarn.
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
       byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
       Files.write(Paths.get("cat.mp4"), videoBytes);
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        catBytes, err := os.ReadFile("cat.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+        yarnBytes, err := os.ReadFile("yarn.png")
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        catB64 := base64.StdEncoding.EncodeToString(catBytes)
+        yarnB64 := base64.StdEncoding.EncodeToString(yarnBytes)
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(catB64),
+                MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+            }),
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(yarnB64),
+                MimeType: interactions.ImageContentMimeTypeImagePng.ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: "A cat playfully batting at a ball of yarn.",
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-omni-1.1-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputVideo != nil && res.Interaction.OutputVideo.Data != nil {
+            videoBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputVideo.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("cat.mp4", videoBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
     }
 
 ### REST
@@ -788,6 +1132,72 @@ to video example.
       Files.write(Paths.get("example.mp4"), videoBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageBytes, err := os.ReadFile("drawing.jpg")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.ImageContent{
+                Data:     genai.Ptr(base64Image),
+                MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: "turn this into realistic footage, using the drawing only as a guide for movement, do not show the drawing in the final video",
+            }),
+        }
+
+        generationConfig := &interactions.GenerationConfig{
+            VideoConfig: &interactions.VideoConfig{
+                Task: interactions.TaskImageToVideo.ToPointer(),
+            },
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:            interactions.Model("gemini-omni-1.1-flash"),
+                Input:            interactions.NewInteractionsInput(contents),
+                GenerationConfig: generationConfig,
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputVideo != nil && res.Interaction.OutputVideo.Data != nil {
+            videoBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputVideo.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("example.mp4", videoBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -906,6 +1316,62 @@ The following example demonstrates how to generate a first video then edit it:
     if (res2.outputVideo().isPresent() && res2.outputVideo().get().data().isPresent()) {
       byte[] videoBytes = Base64.getDecoder().decode(res2.outputVideo().get().data().get());
       Files.write(Paths.get("example.mp4"), videoBytes);
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Turn 1: Generate initial video
+        res1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-omni-1.1-flash"),
+                Input: interactions.NewInteractionsInput("A woman playing violin outdoors."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Turn 2: Edit the previous video
+        res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:                 interactions.Model("gemini-omni-1.1-flash"),
+                PreviousInteractionID: res1.Interaction.ID,
+                Input:                 interactions.NewInteractionsInput("Make the violin invisible."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res2.Interaction.OutputVideo != nil && res2.Interaction.OutputVideo.Data != nil {
+            videoBytes, err := base64.StdEncoding.DecodeString(*res2.Interaction.OutputVideo.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("example.mp4", videoBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
     }
 
 ### REST
@@ -1071,6 +1537,83 @@ The following example shows how to edit the following original video:
       Files.write(Paths.get("example.mp4"), videoBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+        "time"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Upload video using the file API
+        videoFile, err := client.Files.UploadFromPath(ctx, "Video.mp4", &genai.UploadFileConfig{
+            MIMEType: "video/mp4",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for videoFile.State == genai.FileStateProcessing {
+            fmt.Println("Waiting for video to be processed.")
+            time.Sleep(10 * time.Second)
+            videoFile, err = client.Files.Get(ctx, videoFile.Name, nil)
+            if err != nil {
+                log.Fatal(err)
+            }
+        }
+
+        if videoFile.State == genai.FileStateFailed {
+            log.Fatalf("Video processing failed: %s", videoFile.State)
+        }
+        fmt.Printf("Video processing complete: %s\n", videoFile.URI)
+
+        // Edit your video
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.VideoContent{
+                URI: genai.Ptr(videoFile.URI),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: "When the person touches the mirror, make the mirror ripple beautifully like liquid, and the person's arm turns into reflective mirror material",
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-omni-1.1-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputVideo != nil && res.Interaction.OutputVideo.Data != nil {
+            videoBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputVideo.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("example.mp4", videoBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     #!/bin/bash
@@ -1151,14 +1694,14 @@ video is `ACTIVE` before downloading.
     import { GoogleGenAI } from '@google/genai';
     const ai = new GoogleGenAI({});
 
-    // 1. Request video via URI delivery
+    // 1. Request video using URI delivery
     const interaction = await ai.interactions.create({
       model: 'gemini-omni-1.1-flash',
       input: 'A beautiful sunset.',
       response_format: { type: 'video', delivery: 'uri' },
     });
 
-    // 2. Extract file name and poll for ACTIVE state
+    // 2. Extract filename and poll for ACTIVE state
     const videoOutput = interaction.output_video;
     const fileId = videoOutput.uri.match(/files\/([a-zA-Z0-9]+)/)[1];
     const name = `files/${fileId}`;
@@ -1196,7 +1739,7 @@ video is `ACTIVE` before downloading.
 
     Client client = new Client();
 
-    // 1. Request video via URI delivery
+    // 1. Request video using URI delivery
     VideoResponseFormat videoFormat =
         VideoResponseFormat.builder()
             .delivery(VideoResponseFormatDelivery.URI)
@@ -1212,7 +1755,7 @@ video is `ACTIVE` before downloading.
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
-    // 2. Extract file name and poll for ACTIVE state
+    // 2. Extract filename and poll for ACTIVE state
     VideoContent videoOutput = interaction.outputVideo().get();
     String uri = videoOutput.uri().get();
     String[] parts = uri.split("/");
@@ -1233,6 +1776,78 @@ video is `ACTIVE` before downloading.
 
     // 3. Download the final video
     client.files.download(uri, "output.mp4", null);
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "os"
+        "strings"
+        "time"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // 1. Request video using URI delivery
+        videoFormat := interactions.VideoResponseFormat{
+            Delivery: interactions.VideoResponseFormatDeliveryURI.ToPointer(),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-omni-1.1-flash"),
+                Input: interactions.NewInteractionsInput("A beautiful sunset."),
+                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
+                    interactions.NewResponseFormat(videoFormat),
+                )),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // 2. Extract filename and poll for ACTIVE state
+        uri := *res.Interaction.OutputVideo.URI
+        parts := strings.Split(uri, "/")
+        fileName := parts[len(parts)-1]
+
+        fmt.Println("Waiting for video processing...")
+        var fileInfo *genai.File
+        for {
+            fileInfo, err = client.Files.Get(ctx, "files/"+fileName, nil)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if fileInfo.State == genai.FileStateActive {
+                break
+            } else if fileInfo.State == genai.FileStateFailed {
+                log.Fatal("Generation failed.")
+            }
+            time.Sleep(5 * time.Second)
+        }
+
+        // 3. Download the final video
+        videoBytes, err := client.Files.Download(ctx, genai.NewDownloadURIFromFile(fileInfo), nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+        if err := os.WriteFile("output.mp4", videoBytes, 0644); err != nil {
+            log.Fatal(err)
+        }
+    }
 
 ### REST
 
@@ -1414,6 +2029,67 @@ You can extend:
       Files.write(Paths.get("extended.mp4"), videoBytes);
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Upload your video using the Files API
+        videoFile, err := client.Files.UploadFromPath(ctx, "my_video.mp4", &genai.UploadFileConfig{
+            MIMEType: "video/mp4",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Extend the video using prompt-based extension
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.VideoContent{
+                URI: genai.Ptr(videoFile.URI),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: "Continue the scene.",
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-omni-1.1-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputVideo != nil && res.Interaction.OutputVideo.Data != nil {
+            videoBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputVideo.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("extended.mp4", videoBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?key=$API_KEY"     -H "Content-Type: application/json"     -d '{
@@ -1537,6 +2213,76 @@ introduce new characters or elements into the extended video:
     if (interaction.outputVideo().isPresent() && interaction.outputVideo().get().data().isPresent()) {
       byte[] videoBytes = Base64.getDecoder().decode(interaction.outputVideo().get().data().get());
       Files.write(Paths.get("extended_with_character.mp4"), videoBytes);
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Upload base video and reference image using the Files API
+        videoFile, err := client.Files.UploadFromPath(ctx, "my_video.mp4", &genai.UploadFileConfig{
+            MIMEType: "video/mp4",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        characterImg, err := client.Files.UploadFromPath(ctx, "character.png", &genai.UploadFileConfig{
+            MIMEType: "image/png",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Extend the video while introducing the reference character
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.VideoContent{
+                URI: genai.Ptr(videoFile.URI),
+            }),
+            interactions.NewContent(interactions.ImageContent{
+                URI: genai.Ptr(characterImg.URI),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: "Extend this video: have the character shown in <IMAGE_REF_0> enter the scene and wave.",
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-omni-1.1-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputVideo != nil && res.Interaction.OutputVideo.Data != nil {
+            videoBytes, err := base64.StdEncoding.DecodeString(*res.Interaction.OutputVideo.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("extended_with_character.mp4", videoBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
     }
 
 ### REST

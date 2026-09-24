@@ -54,9 +54,9 @@ flowchart LR
 When you create a Mesh node through the dashboard, high availability is enabled by default. To create a new node:
 
 1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
-2. Select **Add a node**.
+2. Select **Add participant** > **Add node**.
 3. Follow the setup wizard. The node is created with HA enabled automatically.
-4. Copy the install commands and run them on your Linux host.
+4. Select an installation method and follow the displayed instructions.
 
 To create a node with high availability via the API, set `ha: true` in the request body:
 

@@ -16,50 +16,18 @@ Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Client devices — laptops, phones, and desktops — join your Mesh network by installing the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and enrolling. Each device receives a [Mesh IP](https://developers.cloudflare.com/mesh/concepts/#mesh-ips) and can immediately communicate with every other enrolled device and Mesh node.
 
-## Prerequisites
-
-- [Device enrollment permissions](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) are configured for your account. The Mesh [setup wizard](https://developers.cloudflare.com/mesh/get-started/) handles this automatically.
-
 ## 1. Enroll the Cloudflare One Client
 
-Connect a laptop or phone to your Mesh network:
+Use the Mesh dashboard to find the Cloudflare One Client installer and organization name for your device:
 
-### Windows, macOS, and Linux
+1. In the Cloudflare dashboard, go to **Networking** > **Mesh**. [Go to **Mesh** ↗](https://dash.cloudflare.com/?to=/:account/mesh)
+2. Select **Add participant** > **Add device**.
+3. Select Windows, macOS, Linux, iOS, or Android.
+4. Use the provided link or QR code to install the Cloudflare One Client.
+5. Open the client and select **Cloudflare Zero Trust** when prompted for a connection type.
+6. Enter the organization name displayed in the Mesh dashboard and complete authentication.
 
-To enroll your device using the client GUI:
-
-1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
-2. Launch the Cloudflare One Client.
-3. On the **What would you like to use the Cloudflare One Client for?** screen, select **Zero Trust security**.
-4. Enter your team name.
-5. Complete the authentication steps required by your organization.
-
-   Once authenticated, you will see a Success page and a dialog prompting you to open the Cloudflare One Client.
-6. Select **Open the Cloudflare One Client** to complete the registration.
-
-7. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Client.
-8. Launch the Cloudflare One Client.
-9. Select the Cloudflare logo in the menu bar.
-10. Select the gear icon.
-11. Go to **Preferences** > **Account**.
-12. Select **Login with Cloudflare Zero Trust**.
-13. Enter your team name.
-14. Complete the authentication steps required by your organization.
-
-    Once authenticated, you will see a Success page and a dialog prompting you to open the Cloudflare One Client.
-15. Select **Open Cloudflare WARP.app** to complete the registration.
-
-### iOS and Android
-
-1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and install the Cloudflare One Agent app.
-2. Launch the Cloudflare One Agent app.
-3. Select **Next**.
-4. Review the privacy policy and select **Accept**.
-5. Enter your team name.
-6. Complete the authentication steps required by your organization.
-7. After authenticating, select **Install VPN Profile**.
-8. In the **Connection request** popup window, select **OK**.
-9. If you did not enable [auto-connect ↗](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect), manually turn on the switch to **Connected**.
+The Add device workflow does not enroll the device or verify connectivity. For manual installation and enrollment instructions, refer to [Download the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/) and [Enroll a device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/manual-deployment/).
 
 ### Headless Windows, macOS, and Linux devices
 
@@ -70,6 +38,8 @@ For platform-specific installation methods and configuration file locations, ref
 This method works on [supported Windows, macOS, and Linux systems](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/). Service-token devices use the shared identity `non_identity@<team-name>.cloudflareaccess.com`. Policies based on identity provider users or groups do not apply to these devices. To assign device profiles, use the expression `identity.service_token_uuid == "<SERVICE_TOKEN_ID>"`, where `<SERVICE_TOKEN_ID>` is the service token resource UUID (`id`), not its `auth_client_id`. Place this [Service Token selector](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#service-token) before broader OS or email profiles. Use the shared non-identity email only when all Service Auth devices should match the profile.
 
 After enrollment, the device receives a Mesh IP and connects to your Mesh network.
+
+The device then appears with Mesh nodes in the participant table under **Networking** > **Mesh**. Use the table to search for devices, filter participants by type or status, and open a device's Zero Trust details page. If more results are available, select **Load more participants**, **Load more nodes**, or **Load more devices**. New results append without replacing the participants already shown.
 
 ## 2. Verify connectivity
 

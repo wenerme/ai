@@ -97,6 +97,42 @@ Initialize the client and make a request:
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Explain how AI works in a few words."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -202,6 +238,42 @@ For more fluid interactions, stream the response as it's generated. Each `step.d
       for (InteractionSSEStreamEvent event : stream) {
         System.out.println(event);
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Write a haiku about coding."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
     }
 
 ### REST
@@ -332,6 +404,53 @@ Chain interactions by passing `previous_interaction_id`. The server manages the 
     Interaction interaction2 =
         client.interactions.create(CreateInteractionRequestBody.of(params2)).interaction().get();
     System.out.println("Response 2: " + interaction2.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:  interactions.Model("gemini-3.8-flash"),
+                Input:  interactions.NewInteractionsInput("Explain quantum computing in simple terms."),
+                Stream: genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        stream := res.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            }
+        }
+        if err := stream.Err(); err != nil {
+            log.Fatal(err)
+        }
+    }
 
 ### REST
 
@@ -479,6 +598,57 @@ Set `store=false` and manage conversation history on the client side. You must p
     Interaction interaction2 =
         client.interactions.create(CreateInteractionRequestBody.of(params2)).interaction().get();
     System.out.println("Response 2: " + interaction2.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // 1. First turn
+        res1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Hi, my name is Alex."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res1.Interaction.OutputText != nil {
+            fmt.Println(*res1.Interaction.OutputText)
+        }
+
+        // 2. Second turn (passing PreviousInteractionID)
+        res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:                 interactions.Model("gemini-3.8-flash"),
+                Input:                 interactions.NewInteractionsInput("What's my name?"),
+                PreviousInteractionID: res1.Interaction.ID,
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res2.Interaction.OutputText != nil {
+            fmt.Println(*res2.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -652,6 +822,58 @@ Gemini models understand images, audio, video, and documents natively. Pass medi
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageBytes, err := os.ReadFile("path/to/organ.jpg")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "What is in this image?",
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        Data:     genai.Ptr(base64Image),
+                        MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     # Base64-encode local image
@@ -773,6 +995,85 @@ Gemini can generate images natively using the [Nano Banana](https://ai.google.de
         byte[] imageBytes = Base64.getDecoder().decode(generatedImage.data().get());
         Files.write(Path.of("generated_image.png"), imageBytes);
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        weatherTool := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("get_current_weather"),
+            Description: genai.Ptr("Gets the current weather for a given location."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "location": map[string]any{
+                        "type":        "string",
+                        "description": "The city and state, e.g. San Francisco, CA",
+                    },
+                },
+                "required": []string{"location"},
+            },
+        })
+
+        // 1. Send prompt with tool declaration
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("What is the weather like in Boston?"),
+                Tools: []interactions.Tool{weatherTool},
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // 2. Check if the model requested a function call
+        for _, step := range res.Interaction.Steps {
+            if call := step.FunctionCallStep; call != nil {
+                fmt.Printf("Function to call: %s\n", call.Name)
+                fmt.Printf("Arguments: %v\n", call.Arguments)
+
+                // 3. Execute your local function and send the result back
+                finalRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+                    Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                        Model:                 interactions.Model("gemini-3.8-flash"),
+                        PreviousInteractionID: res.Interaction.ID,
+                        Input: interactions.NewInteractionsInput([]interactions.Step{
+                            interactions.NewStep(interactions.FunctionResultStep{
+                                Name:   genai.Ptr(call.Name),
+                                CallID: call.ID,
+                                Result: interactions.NewFunctionResultStepResultUnion(`{"temperature": "72F", "condition": "Sunny"}`),
+                            }),
+                        }),
+                    }),
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+
+                if finalRes.Interaction.OutputText != nil {
+                    fmt.Println(*finalRes.Interaction.OutputText)
+                }
+            }
+        }
     }
 
 ### REST
@@ -945,6 +1246,69 @@ Configure the model to return JSON that matches a schema you define. Structured 
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Who won the latest Super Bowl and what was the score?"),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+
+        // Optional: Inspect search queries and citations
+        for _, step := range res.Interaction.Steps {
+            if searchCall := step.GoogleSearchCallStep; searchCall != nil {
+                fmt.Printf("Search queries: %v\n", searchCall.Arguments.Queries)
+            } else if modelOut := step.ModelOutputStep; modelOut != nil {
+                for _, part := range modelOut.Content {
+                    if textPart := part.TextContent; textPart != nil {
+                        for _, annotation := range textPart.Annotations {
+                            if citation := annotation.URLCitation; citation != nil {
+                                var title, url string
+                                if citation.Title != nil {
+                                    title = *citation.Title
+                                }
+                                if citation.URL != nil {
+                                    url = *citation.URL
+                                }
+                                fmt.Printf("Source: %s (%s)\n", title, url)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1101,6 +1465,53 @@ Ground the model's response in real-time information with Google Search. The API
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Calculate the 20th Fibonacci number and verify if it is prime."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.CodeExecution{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if codeCall := step.CodeExecutionCallStep; codeCall != nil {
+                fmt.Printf("Generated Code:\n%s\n", codeCall.Arguments.Code)
+            } else if codeRes := step.CodeExecutionResultStep; codeRes != nil {
+                fmt.Printf("Execution Output:\n%s\n", codeRes.Result)
+            }
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
     }
 
 ### REST
@@ -1387,6 +1798,67 @@ Function calling lets you connect the model to your code. You declare a function
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Turn 1: Create a CSV file in the sandbox
+        turn1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Write a Python script to save a CSV file 'sales.csv' with 5 rows of sample data."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.CodeExecution{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        var env *interactions.CreateModelInteractionEnvironment
+        if turn1.Interaction.EnvironmentID != nil {
+            env = genai.Ptr(interactions.NewCreateModelInteractionEnvironment(*turn1.Interaction.EnvironmentID))
+        }
+
+        // Turn 2: Reuse the sandbox environment to analyze the file created in Turn 1
+        turn2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:                 interactions.Model("gemini-3.8-flash"),
+                PreviousInteractionID: turn1.Interaction.ID,
+                Environment:           env,
+                Input:                 interactions.NewInteractionsInput("Now read 'sales.csv' and compute the total revenue."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.CodeExecution{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if turn2.Interaction.OutputText != nil {
+            fmt.Println(*turn2.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     # Turn 1: Send prompt with function declaration
@@ -1672,6 +2144,61 @@ You can also use function calling in stateless mode by managing the conversation
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        recipeSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "recipe_name":       map[string]any{"type": "string"},
+                "prep_time_minutes": map[string]any{"type": "integer"},
+                "ingredients": map[string]any{
+                    "type":  "array",
+                    "items": map[string]any{"type": "string"},
+                },
+            },
+            "required": []string{"recipe_name", "prep_time_minutes", "ingredients"},
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Give me a quick recipe for chocolate chip cookies."),
+                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
+                    interactions.NewResponseFormat(interactions.TextResponseFormat{
+                        MimeType: interactions.TextResponseFormatMimeTypeApplicationJSON.ToPointer(),
+                        Schema:   recipeSchema,
+                    }),
+                )),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     # Turn 1: Send request with tools and store: false
@@ -1849,6 +2376,57 @@ Managed agents run in a remote sandbox with access to tools like code execution 
     System.out.println("Environment: " + interaction.environmentId().orElse(""));
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-pro"),
+                Input: interactions.NewInteractionsInput("Solve this logic puzzle: Three gods A, B, and C are called True, False, and Random..."),
+                GenerationConfig: &interactions.GenerationConfig{
+                    ThinkingLevel:     interactions.ThinkingLevelHigh.ToPointer(),
+                    ThinkingSummaries: interactions.ThinkingSummariesAuto.ToPointer(),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Print thought summaries if returned
+        for _, step := range res.Interaction.Steps {
+            if thought := step.ThoughtStep; thought != nil {
+                for _, part := range thought.Summary {
+                    if part.TextContent != nil {
+                        fmt.Printf("Thought Summary: %s\n", part.TextContent.Text)
+                    }
+                }
+            }
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Printf("Answer: %s\n", *res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1967,6 +2545,65 @@ Set `background=True` to run long tasks asynchronously. Poll for results with `i
         break;
       }
       Thread.sleep(5000);
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "time"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Start a Deep Research agent in the background
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
+                Agent:      interactions.AgentOption("deep-research-pro-preview-12-2025"),
+                Input:      interactions.NewInteractionsInput("Research the competitive landscape of solid-state EV batteries in 2026."),
+                Background: genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        interaction := res.Interaction
+        fmt.Printf("Started research job: %s\n", *interaction.ID)
+
+        // Poll until completion
+        for interaction.Status != interactions.InteractionStatusCompleted && interaction.Status != interactions.InteractionStatusFailed {
+            time.Sleep(10 * time.Second)
+            getRes, err := client.Interactions.Get(ctx, operations.GetInteractionByIDRequest{
+                ID: *interaction.ID,
+            })
+            if err != nil {
+                log.Fatal(err)
+            }
+            interaction = getRes.Interaction
+            fmt.Printf("Current status: %s\n", interaction.Status)
+        }
+
+        if interaction.Status == interactions.InteractionStatusCompleted {
+            if interaction.OutputText != nil {
+                fmt.Println(*interaction.OutputText)
+            }
+        } else {
+            fmt.Printf("Research failed: %v\n", interaction.Errors)
+        }
     }
 
 ### REST

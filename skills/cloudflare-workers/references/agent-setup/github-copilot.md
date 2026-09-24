@@ -60,7 +60,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Set up a KV namespace for edge-cached session storage in my Worker.
    ```
 
 
@@ -166,11 +166,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Create a Logpush job to stream Workers analytics to my data warehouse.
+```
+
+```txt
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
@@ -178,11 +182,7 @@ Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ## Tips

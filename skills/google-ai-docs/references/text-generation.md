@@ -53,6 +53,42 @@ Here's a basic example:
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("How does AI work?"),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -144,6 +180,45 @@ over cost, latency, and intelligence. For more details, see the
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("How does AI work?"),
+                GenerationConfig: &interactions.GenerationConfig{
+                    ThinkingLevel: interactions.ThinkingLevelMinimal.ToPointer(),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -216,6 +291,43 @@ a `system_instruction` parameter to configure the model's behavior.
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:             interactions.Model("gemini-3.8-flash"),
+                Input:             interactions.NewInteractionsInput("Hello there"),
+                SystemInstruction: genai.Ptr("You are a cat. Your name is Neko."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -287,6 +399,45 @@ temperature, using the `generation_config` parameter.
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Explain the concept of Occam's Razor and provide a simple, everyday example."),
+                GenerationConfig: &interactions.GenerationConfig{
+                    MaxOutputTokens: genai.Ptr(500),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -399,6 +550,58 @@ media files. The following example demonstrates providing an image:
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        imageBytes, err := os.ReadFile("/path/to/organ.jpg")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Image := base64.StdEncoding.EncodeToString(imageBytes)
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Tell me about this instrument",
+                    }),
+                    interactions.NewContent(interactions.ImageContent{
+                        Data:     genai.Ptr(base64Image),
+                        MimeType: interactions.ImageContentMimeTypeImageJpeg.ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -513,6 +716,53 @@ guide.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:  interactions.Model("gemini-3.8-flash"),
+                Input:  interactions.NewInteractionsInput("Explain how AI works"),
+                Stream: genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        stream := res.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            }
+        }
+        if err := stream.Err(); err != nil {
+            log.Fatal(err)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions?alt=sse" \
@@ -607,6 +857,57 @@ and the API automatically manages conversation history.
     Interaction interaction2 =
         client.interactions.create(CreateInteractionRequestBody.of(params2)).interaction().get();
     System.out.println("Response 2: " + interaction2.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // First turn
+        turn1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Hello, I have 2 dogs in my house."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if turn1.Interaction.OutputText != nil {
+            fmt.Printf("Model: %s\n", *turn1.Interaction.OutputText)
+        }
+
+        // Second turn (chained using PreviousInteractionID)
+        turn2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:                 interactions.Model("gemini-3.8-flash"),
+                PreviousInteractionID: turn1.Interaction.ID,
+                Input:                 interactions.NewInteractionsInput("How many paws are in my house?"),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if turn2.Interaction.OutputText != nil {
+            fmt.Printf("Model: %s\n", *turn2.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -734,6 +1035,64 @@ Streaming can also be used for multi-turn conversations by combining
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        turn1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Hello, I have 2 dogs in my house."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:                 interactions.Model("gemini-3.8-flash"),
+                PreviousInteractionID: turn1.Interaction.ID,
+                Input:                 interactions.NewInteractionsInput("How many paws are in my house?"),
+                Stream:                genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        stream := res2.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            }
+        }
+        if err := stream.Err(); err != nil {
+            log.Fatal(err)
+        }
     }
 
 ### REST
@@ -894,6 +1253,64 @@ To use stateless mode:
     Interaction interaction2 =
         client.interactions.create(CreateInteractionRequestBody.of(params2)).interaction().get();
     System.out.println("Response 2: " + interaction2.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Step{
+                    interactions.NewStep(interactions.UserInputStep{
+                        Content: []interactions.Content{
+                            interactions.NewContent(interactions.TextContent{
+                                Text: "Hello, I have 2 dogs in my house.",
+                            }),
+                        },
+                    }),
+                    interactions.NewStep(interactions.ModelOutputStep{
+                        Content: []interactions.Content{
+                            interactions.NewContent(interactions.TextContent{
+                                Text: "That's great! Two dogs must keep your house lively.",
+                            }),
+                        },
+                    }),
+                    interactions.NewStep(interactions.UserInputStep{
+                        Content: []interactions.Content{
+                            interactions.NewContent(interactions.TextContent{
+                                Text: "How many paws are in my house?",
+                            }),
+                        },
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 

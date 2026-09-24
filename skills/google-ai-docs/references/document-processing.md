@@ -115,6 +115,57 @@ The following example shows you how to pass PDF data inline:
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        pdfBytes, err := os.ReadFile("path/to/document.pdf")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Pdf := base64.StdEncoding.EncodeToString(pdfBytes)
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.DocumentContent{
+                        Data:     genai.Ptr(base64Pdf),
+                        MimeType: interactions.DocumentContentMimeTypeApplicationPdf.ToPointer(),
+                    }),
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Summarize this document",
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     PDF_PATH="path/to/document.pdf"
@@ -229,6 +280,56 @@ You can also upload a local PDF file for processing:
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        uploadedFile, err := client.Files.UploadFromPath(ctx, "file.pdf", &genai.UploadFileConfig{
+            MIMEType: "application/pdf",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.DocumentContent{
+                        URI:      genai.Ptr(uploadedFile.URI),
+                        MimeType: interactions.DocumentContentMimeType(uploadedFile.MIMEType).ToPointer(),
+                    }),
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Summarize this document",
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -422,6 +523,72 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "bytes"
+        "context"
+        "fmt"
+        "io"
+        "log"
+        "net/http"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        longContextPdfPath := "https://arxiv.org/pdf/2312.11805"
+        resp, err := http.Get(longContextPdfPath)
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer resp.Body.Close()
+        pdfBytes, err := io.ReadAll(resp.Body)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        sampleDoc, err := client.Files.Upload(ctx, bytes.NewReader(pdfBytes), &genai.UploadFileConfig{
+            MIMEType: "application/pdf",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Summarize this document"
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.DocumentContent{
+                        URI:      genai.Ptr(sampleDoc.URI),
+                        MimeType: interactions.DocumentContentMimeType(sampleDoc.MIMEType).ToPointer(),
+                    }),
+                    interactions.NewContent(interactions.TextContent{
+                        Text: prompt,
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     PDF_PATH="https://arxiv.org/pdf/2312.11805"
@@ -598,6 +765,56 @@ Use the File API to simplify uploading and processing large PDF files from URLs:
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        sampleFile, err := client.Files.UploadFromPath(ctx, "large_file.pdf", &genai.UploadFileConfig{
+            MIMEType: "application/pdf",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.DocumentContent{
+                        URI:      genai.Ptr(sampleFile.URI),
+                        MimeType: interactions.DocumentContentMimeType(sampleFile.MIMEType).ToPointer(),
+                    }),
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Summarize this document",
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     PDF_PATH="large_file.pdf"
@@ -708,6 +925,44 @@ metadata by calling [`files.get`](https://ai.google.dev/api/rest/v1beta/files/ge
 
     File fileInfo = client.files.get(file.name().orElse(""), null);
     System.out.println(fileInfo.toJson());
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if err := os.WriteFile("example.pdf", []byte("hello"), 0644); err != nil {
+            log.Fatal(err)
+        }
+
+        file, err := client.Files.UploadFromPath(ctx, "example.pdf", &genai.UploadFileConfig{
+            MIMEType: "application/pdf",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fileInfo, err := client.Files.Get(ctx, file.Name, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+        fmt.Println(fileInfo)
+    }
 
 ### REST
 
@@ -885,6 +1140,94 @@ prompt stays within the model's context window.
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "bytes"
+        "context"
+        "fmt"
+        "io"
+        "log"
+        "net/http"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        docURL1 := "https://arxiv.org/pdf/2312.11805"
+        docURL2 := "https://arxiv.org/pdf/2403.05530"
+
+        resp1, err := http.Get(docURL1)
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer resp1.Body.Close()
+        docData1, err := io.ReadAll(resp1.Body)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp2, err := http.Get(docURL2)
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer resp2.Body.Close()
+        docData2, err := io.ReadAll(resp2.Body)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        samplePdf1, err := client.Files.Upload(ctx, bytes.NewReader(docData1), &genai.UploadFileConfig{
+            MIMEType: "application/pdf",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        samplePdf2, err := client.Files.Upload(ctx, bytes.NewReader(docData2), &genai.UploadFileConfig{
+            MIMEType: "application/pdf",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "What is the difference between each of the main benchmarks between these two papers? Output these in a table."
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.DocumentContent{
+                        URI:      genai.Ptr(samplePdf1.URI),
+                        MimeType: interactions.DocumentContentMimeType(samplePdf1.MIMEType).ToPointer(),
+                    }),
+                    interactions.NewContent(interactions.DocumentContent{
+                        URI:      genai.Ptr(samplePdf2.URI),
+                        MimeType: interactions.DocumentContentMimeType(samplePdf2.MIMEType).ToPointer(),
+                    }),
+                    interactions.NewContent(interactions.TextContent{
+                        Text: prompt,
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 

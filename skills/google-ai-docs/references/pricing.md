@@ -633,6 +633,100 @@ generation and editing.
 
 ^\*^ Image output is priced at $30 per 1,000,000 tokens. Output images at 1K (1024x1024px) consume 1120 tokens and are equivalent to $0.0336 per image.
 
+## Gemini 3.8 Flash TTS
+
+*[`gemini-3.8-flash-tts`](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts)*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.8-flash-tts)
+
+Our 3.8 Flash Text-to-Speech audio model engineered for studio-grade voice fidelity, expressive acting, and long-form stability.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $0.50 (text) through December 31, 2026. $1.00 (text) starting January 1, 2027. |
+| Output price | Free of charge | $9.00 (audio) through December 31, 2026. $18.00 (audio) starting January 1, 2027. |
+| Context caching price | Free of charge | $0.125 (input caching) through December 31, 2026. $0.25 (input caching) starting January 1, 2027. $0.50 / 1,000,000 tokens per hour (storage price) through December 31, 2026. $1.00 / 1,000,000 tokens per hour (storage price) starting January 1, 2027. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Batch
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.25 (text) through December 31, 2026. $0.50 (text) starting January 1, 2027. |
+| Output price | Not available | $4.50 (audio) through December 31, 2026. $9.00 (audio) starting January 1, 2027. |
+| Context caching price | Not available | $0.0625 (input caching) through December 31, 2026. $0.125 (input caching) starting January 1, 2027. $0.50 / 1,000,000 tokens per hour (storage price) through December 31, 2026. $1.00 / 1,000,000 tokens per hour (storage price) starting January 1, 2027. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Flex
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.25 (text) through December 31, 2026. $0.50 (text) starting January 1, 2027. |
+| Output price | Not available | $4.50 (audio) through December 31, 2026. $9.00 (audio) starting January 1, 2027. |
+| Context caching price | Not available | $0.025 (input caching) through December 31, 2026. $0.05 (input caching) starting January 1, 2027. $0.50 / 1,000,000 tokens per hour (storage price) through December 31, 2026. $1.00 / 1,000,000 tokens per hour (storage price) starting January 1, 2027. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Priority
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $0.90 (text) through December 31, 2026. $1.80 (text) starting January 1, 2027. |
+| Output price | Free of charge | $16.20 (audio) through December 31, 2026. $32.40 (audio) starting January 1, 2027. |
+| Context caching price | Free of charge | $0.225 (input caching) through December 31, 2026. $0.45 (input caching) starting January 1, 2027. $0.50 / 1,000,000 tokens per hour (storage price) through December 31, 2026. $1.00 / 1,000,000 tokens per hour (storage price) starting January 1, 2027. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ Audio tokens correspond to 25 tokens per second of audio.
+
+## Gemini 3.8 Flash-Lite TTS
+
+*[`gemini-3.8-flash-lite-tts`](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-lite-tts)*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-3.8-flash-lite-tts)
+
+Our 3.8 Flash-Lite Text-to-Speech audio model optimized for high-throughput, low-latency, and cost-efficient conversational speech.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $0.50 (text) through December 31, 2026. $1.00 (text) starting January 1, 2027. |
+| Output price | Free of charge | $6.00 (audio) through December 31, 2026. $12.00 (audio) starting January 1, 2027. |
+| Context caching price | Free of charge | $0.125 (input caching) through December 31, 2026. $0.25 (input caching) starting January 1, 2027. $0.50 / 1,000,000 tokens per hour (storage price) through December 31, 2026. $1.00 / 1,000,000 tokens per hour (storage price) starting January 1, 2027. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Batch
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.25 (text) through December 31, 2026. $0.50 (text) starting January 1, 2027. |
+| Output price | Not available | $3.00 (audio) through December 31, 2026. $6.00 (audio) starting January 1, 2027. |
+| Context caching price | Not available | $0.0625 (input caching) through December 31, 2026. $0.125 (input caching) starting January 1, 2027. $0.50 / 1,000,000 tokens per hour (storage price) through December 31, 2026. $1.00 / 1,000,000 tokens per hour (storage price) starting January 1, 2027. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Flex
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.25 (text) through December 31, 2026. $0.50 (text) starting January 1, 2027. |
+| Output price | Not available | $3.00 (audio) through December 31, 2026. $6.00 (audio) starting January 1, 2027. |
+| Context caching price | Not available | $0.025 (input caching) through December 31, 2026. $0.05 (input caching) starting January 1, 2027. $0.50 / 1,000,000 tokens per hour (storage price) through December 31, 2026. $1.00 / 1,000,000 tokens per hour (storage price) starting January 1, 2027. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Priority
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Free of charge | $0.90 (text) through December 31, 2026. $1.80 (text) starting January 1, 2027. |
+| Output price | Free of charge | $10.80 (audio) through December 31, 2026. $21.60 (audio) starting January 1, 2027. |
+| Context caching price | Free of charge | $0.225 (input caching) through December 31, 2026. $0.45 (input caching) starting January 1, 2027. $0.50 / 1,000,000 tokens per hour (storage price) through December 31, 2026. $1.00 / 1,000,000 tokens per hour (storage price) starting January 1, 2027. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ Audio tokens correspond to 25 tokens per second of audio.
+
 ## Gemini 3.1 Flash TTS Preview
 
 *[`gemini-3.1-flash-tts-preview`](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview)*

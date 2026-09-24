@@ -102,6 +102,59 @@ input types and limits.
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        pdfBytes, err := os.ReadFile("my_local_file.pdf")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Pdf := base64.StdEncoding.EncodeToString(pdfBytes)
+
+        prompt := "Summarize this document"
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: prompt,
+                    }),
+                    interactions.NewContent(interactions.DocumentContent{
+                        Data:     genai.Ptr(base64Pdf),
+                        MimeType: interactions.DocumentContentMimeTypeApplicationPdf.ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     # Encode the local file to base64
@@ -248,6 +301,66 @@ input.
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "io"
+        "log"
+        "net/http"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        docURL := "https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf"
+        resp, err := http.Get(docURL)
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer resp.Body.Close()
+        docData, err := io.ReadAll(resp.Body)
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Pdf := base64.StdEncoding.EncodeToString(docData)
+
+        prompt := "Summarize this document"
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.DocumentContent{
+                        Data:     genai.Ptr(base64Pdf),
+                        MimeType: interactions.DocumentContentMimeTypeApplicationPdf.ToPointer(),
+                    }),
+                    interactions.NewContent(interactions.TextContent{
+                        Text: prompt,
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     DOC_URL="https://discovery.ucl.ac.uk/id/eprint/10089234/1/343019_3_art_0_py4t4l_convrt.pdf"
@@ -388,6 +501,58 @@ temporarily (48 hours) and processed for efficient retrieval by the model.
     Interaction interaction =
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        docFile, err := client.Files.UploadFromPath(ctx, "path/to/your/sample.pdf", &genai.UploadFileConfig{
+            MIMEType: "application/pdf",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Summarize this document"
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.TextContent{
+                        Text: prompt,
+                    }),
+                    interactions.NewContent(interactions.DocumentContent{
+                        URI:      genai.Ptr(docFile.URI),
+                        MimeType: interactions.DocumentContentMimeType(docFile.MIMEType).ToPointer(),
+                    }),
+                }),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -561,22 +726,39 @@ download and re-upload it. You can register it directly with the File API.
 
 ### Java
 
-`java
-import com.google.auth.oauth2.GoogleCredentials;
-import java.io.FileInputStream;
-import java.util.Arrays;
-import java.util.List;
+    import com.google.auth.oauth2.GoogleCredentials;
+    import java.io.FileInputStream;
+    import java.util.Arrays;
+    import java.util.List;
 
-List<String> gcsReadScopes =
-Arrays.asList(
-"https://www.googleapis.com/auth/devstorage.read_only",
-"https://www.googleapis.com/auth/cloud-platform");
+    List<String> gcsReadScopes =
+        Arrays.asList(
+            "https://www.googleapis.com/auth/devstorage.read_only",
+            "https://www.googleapis.com/auth/cloud-platform");
 
-String serviceAccountFile = "service-account.json";
+    String serviceAccountFile = "service-account.json";
 
-GoogleCredentials credentials =
-GoogleCredentials.fromStream(new FileInputStream(serviceAccountFile))
-.createScoped(gcsReadScopes);`
+    GoogleCredentials credentials =
+        GoogleCredentials.fromStream(new FileInputStream(serviceAccountFile))
+            .createScoped(gcsReadScopes);
+
+### Go
+
+    package main
+
+    import (
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        cc := &genai.ClientConfig{}
+        if err := cc.UseDefaultCredentials(); err != nil {
+            log.Fatal(err)
+        }
+        _ = cc.Credentials
+    }
 
 ### CLI
 
@@ -697,6 +879,68 @@ for an example.
       Interaction interaction =
           client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
       System.out.println(interaction.outputText().orElse(""));
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        cc := &genai.ClientConfig{}
+        if err := cc.UseDefaultCredentials(); err != nil {
+            log.Fatal(err)
+        }
+        client, err := genai.NewClient(ctx, cc)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        registeredGcsFiles, err := client.Files.RegisterFiles(
+            ctx,
+            []string{"gs://my_bucket/some_object.pdf", "gs://bucket2/object2.txt"},
+            cc.Credentials,
+            nil,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        prompt := "Summarize this file."
+
+        for _, f := range registeredGcsFiles.Files {
+            fmt.Println(f.Name)
+            res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+                Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput([]interactions.Content{
+                        interactions.NewContent(interactions.TextContent{
+                            Text: prompt,
+                        }),
+                        interactions.NewContent(interactions.DocumentContent{
+                            URI:      genai.Ptr(f.URI),
+                            MimeType: interactions.DocumentContentMimeType(f.MIMEType).ToPointer(),
+                        }),
+                    }),
+                }),
+            })
+            if err != nil {
+                log.Fatal(err)
+            }
+            if res.Interaction.OutputText != nil {
+                fmt.Println(*res.Interaction.OutputText)
+            }
+        }
     }
 
 ### CLI

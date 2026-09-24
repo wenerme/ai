@@ -67,6 +67,42 @@ Initiating an interaction with a thinking model is similar to any other interact
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-pro"),
+                Input: interactions.NewInteractionsInput("Explain the concept of Occam's Razor and provide a simple, everyday example."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -193,6 +229,45 @@ with `thinking_summaries`:
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("Provide a list of 3 famous physicists and their key contributions"),
+                GenerationConfig: &interactions.GenerationConfig{
+                    ThinkingLevel: interactions.ThinkingLevelLow.ToPointer(),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
     }
 
 ### REST
@@ -379,6 +454,56 @@ delta types:
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("What is the sum of the first 50 prime numbers?"),
+                GenerationConfig: &interactions.GenerationConfig{
+                    ThinkingLevel:     interactions.ThinkingLevelHigh.ToPointer(),
+                    ThinkingSummaries: interactions.ThinkingSummariesAuto.ToPointer(),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if thought := step.ThoughtStep; thought != nil {
+                for _, part := range thought.Summary {
+                    if part.TextContent != nil {
+                        fmt.Printf("Thought summary:\n%s\n\n", part.TextContent.Text)
+                    }
+                }
+            }
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Printf("Answer:\n%s\n", *res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -501,6 +626,62 @@ the amount of reasoning effort based on the complexity of the request. You can c
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-pro"),
+                Input: interactions.NewInteractionsInput("What is the sum of the first 50 prime numbers?"),
+                GenerationConfig: &interactions.GenerationConfig{
+                    ThinkingLevel:     interactions.ThinkingLevelHigh.ToPointer(),
+                    ThinkingSummaries: interactions.ThinkingSummariesAuto.ToPointer(),
+                },
+                Stream: genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        stream := res.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if thoughtDelta := stepDelta.GetDeltaThoughtSummary(); thoughtDelta != nil {
+                    if textContent := thoughtDelta.GetContentText(); textContent != nil {
+                        fmt.Printf("[Thought Summary] %s\n", textContent.Text)
+                    }
+                }
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            }
+        }
+        if err := stream.Err(); err != nil {
+            log.Fatal(err)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -592,6 +773,61 @@ tokens from the `total_thought_tokens` field.
       Usage usage = interaction.usage().get();
       System.out.println("Thoughts tokens: " + usage.totalThoughtTokens().orElse(0));
       System.out.println("Output tokens: " + usage.totalOutputTokens().orElse(0));
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Turn 1: Execute a reasoning + tool use interaction
+        turn1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-pro"),
+                Input: interactions.NewInteractionsInput("Compare the GDP growth of Japan and Germany in 2025."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                },
+                GenerationConfig: &interactions.GenerationConfig{
+                    ThinkingLevel: interactions.ThinkingLevelHigh.ToPointer(),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        // Turn 2: Pass PreviousInteractionID so thought signatures are automatically preserved
+        turn2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:                 interactions.Model("gemini-3.8-pro"),
+                PreviousInteractionID: turn1.Interaction.ID,
+                Input:                 interactions.NewInteractionsInput("Now summarize that comparison in a 3-row markdown table."),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if turn2.Interaction.OutputText != nil {
+            fmt.Println(*turn2.Interaction.OutputText)
+        }
     }
 
 Thinking models generate full thoughts to improve the quality of the final

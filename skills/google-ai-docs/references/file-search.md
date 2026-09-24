@@ -207,6 +207,101 @@ This example shows how to directly upload a file to the
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "time"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fileSearchStore, err := client.FileSearchStores.Create(ctx, &genai.CreateFileSearchStoreConfig{
+            DisplayName:    "your-fileSearchStore-name",
+            EmbeddingModel: "models/gemini-embedding-2",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        operation, err := client.FileSearchStores.UploadToFileSearchStoreFromPath(
+            ctx,
+            "sample.txt",
+            fileSearchStore.Name,
+            &genai.UploadToFileSearchStoreConfig{
+                DisplayName: "display-file-name",
+            },
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for !operation.Done {
+            time.Sleep(5 * time.Second)
+            operation, err = client.Operations.GetUploadToFileSearchStoreOperation(ctx, operation, nil)
+            if err != nil {
+                log.Fatal(err)
+            }
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Can you tell me about [insert question]"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.FileSearch{
+                            FileSearchStoreNames: []string{fileSearchStore.Name},
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range resp.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, content := range step.ModelOutputStep.Content {
+                    if content.TextContent != nil {
+                        fmt.Println(content.TextContent.Text)
+                        if len(content.TextContent.Annotations) > 0 {
+                            fmt.Println("\nSources:")
+                            for _, annotation := range content.TextContent.Annotations {
+                                if annotation.FileCitation != nil {
+                                    c := annotation.FileCitation
+                                    fileName := ""
+                                    if c.FileName != nil {
+                                        fileName = *c.FileName
+                                    }
+                                    source := ""
+                                    if c.Source != nil {
+                                        source = *c.Source
+                                    }
+                                    fmt.Printf("  - %s: %s\n", fileName, source)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     # 1. Create a File Search store
@@ -424,6 +519,84 @@ Alternatively, you can upload an existing file and [import it to your file searc
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "time"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        sampleFile, err := client.Files.UploadFromPath(ctx, "sample.txt", &genai.UploadFileConfig{
+            DisplayName: "display_file_name",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fileSearchStore, err := client.FileSearchStores.Create(ctx, &genai.CreateFileSearchStoreConfig{
+            DisplayName:    "your-fileSearchStore-name",
+            EmbeddingModel: "models/gemini-embedding-2",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        operation, err := client.FileSearchStores.ImportFile(ctx, fileSearchStore.Name, sampleFile.Name, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for !operation.Done {
+            time.Sleep(5 * time.Second)
+            operation, err = client.Operations.GetImportFileOperation(ctx, operation, nil)
+            if err != nil {
+                log.Fatal(err)
+            }
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Can you tell me about [insert question]"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.FileSearch{
+                            FileSearchStoreNames: []string{fileSearchStore.Name},
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range resp.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, content := range step.ModelOutputStep.Content {
+                    if content.TextContent != nil {
+                        fmt.Println(content.TextContent.Text)
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     # 1. Upload file using the Files API
@@ -572,6 +745,55 @@ tokens.
     }
 
     System.out.println("Custom chunking complete.");
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+        "time"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        operation, err := client.FileSearchStores.UploadToFileSearchStoreFromPath(
+            ctx,
+            "sample.txt",
+            "fileSearchStores/my-file-search-store",
+            &genai.UploadToFileSearchStoreConfig{
+                DisplayName: "file-name",
+                ChunkingConfig: &genai.ChunkingConfig{
+                    WhiteSpaceConfig: &genai.WhiteSpaceConfig{
+                        MaxTokensPerChunk: genai.Ptr(int32(200)),
+                        MaxOverlapTokens:  genai.Ptr(int32(20)),
+                    },
+                },
+            },
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for !operation.Done {
+            time.Sleep(5 * time.Second)
+            operation, err = client.Operations.GetUploadToFileSearchStoreOperation(ctx, operation, nil)
+            if err != nil {
+                log.Fatal(err)
+            }
+        }
+
+        fmt.Println("Custom chunking complete.")
+    }
 
 ### REST
 
@@ -729,6 +951,54 @@ Here are some examples of how to manage your File Search stores:
     client.fileSearchStores.delete(
         fileSearchStore.name().get(), DeleteFileSearchStoreConfig.builder().force(true).build());
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fileSearchStore, err := client.FileSearchStores.Create(ctx, &genai.CreateFileSearchStoreConfig{
+            DisplayName:    "myfilesearchstore123",
+            EmbeddingModel: "models/gemini-embedding-2",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for store, err := range client.FileSearchStores.All(ctx) {
+            if err != nil {
+                log.Fatal(err)
+            }
+            fmt.Println(store)
+        }
+
+        myFileSearchStore, err := client.FileSearchStores.Get(ctx, fileSearchStore.Name, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = myFileSearchStore
+
+        err = client.FileSearchStores.Delete(ctx, fileSearchStore.Name, &genai.DeleteFileSearchStoreConfig{
+            Force: genai.Ptr(true),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/fileSearchStores?key=${GEMINI_API_KEY}" \
@@ -798,6 +1068,46 @@ document by name.
         "fileSearchStores/myfilesearchstore123/documents/sampletxt123",
         DeleteDocumentConfig.builder().force(true).build());
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for documentInStore, err := range client.FileSearchStores.Documents.All(ctx, "fileSearchStores/myfilesearchstore123") {
+            if err != nil {
+                log.Fatal(err)
+            }
+            fmt.Println(documentInStore)
+        }
+
+        fileSearchDocument, err := client.FileSearchStores.Documents.Get(ctx, "fileSearchStores/myfilesearchstore123/documents/sampletxt123", nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+        fmt.Println(fileSearchDocument)
+
+        err = client.FileSearchStores.Documents.Delete(ctx, "fileSearchStores/myfilesearchstore123/documents/sampletxt123", &genai.DeleteDocumentConfig{
+            Force: genai.Ptr(true),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
+
 ### REST
 
     curl "https://generativelanguage.googleapis.com/v1beta/fileSearchStores/myfilesearchstore123/documents?key=${GEMINI_API_KEY}"
@@ -857,6 +1167,41 @@ additional context. Metadata is a set of key-value pairs.
                         CustomMetadata.builder().key("author").stringValue("Robert Graves").build(),
                         CustomMetadata.builder().key("year").numericValue(1934f).build()))
                 .build());
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        op, err := client.FileSearchStores.ImportFile(
+            ctx,
+            "fileSearchStores/myfilesearchstore123",
+            "files/samplefile123",
+            &genai.ImportFileConfig{
+                CustomMetadata: []*genai.CustomMetadata{
+                    {Key: "author", StringValue: "Robert Graves"},
+                    {Key: "year", NumericValue: genai.Ptr(float32(1934))},
+                },
+            },
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = op
+    }
 
 This is useful when you have multiple documents in a File Search store and want
 to search only a subset of them.
@@ -949,6 +1294,56 @@ to search only a subset of them.
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Tell me about the book 'I, Claudius'"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.FileSearch{
+                            FileSearchStoreNames: []string{"fileSearchStores/myfilesearchstore123"},
+                            MetadataFilter:       genai.Ptr(`author="Robert Graves"`),
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range resp.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, content := range step.ModelOutputStep.Content {
+                    if content.TextContent != nil {
+                        fmt.Println(content.TextContent.Text)
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1013,6 +1408,34 @@ process both text and images.
                 .displayName("Multimodal Catalog")
                 .embeddingModel("models/gemini-embedding-2")
                 .build());
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        store, err := client.FileSearchStores.Create(ctx, &genai.CreateFileSearchStoreConfig{
+            DisplayName:    "Multimodal Catalog",
+            EmbeddingModel: "models/gemini-embedding-2",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        _ = store
+    }
 
 ### REST
 
@@ -1109,6 +1532,55 @@ You can access citation information through the `annotations` attribute inside t
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Can you tell me about [insert question]"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.FileSearch{
+                            FileSearchStoreNames: []string{"fileSearchStores/myfilesearchstore123"},
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range resp.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, content := range step.ModelOutputStep.Content {
+                    if content.TextContent != nil && len(content.TextContent.Annotations) > 0 {
+                        fmt.Println(content.TextContent.Annotations)
+                    }
+                }
+            }
+        }
     }
 
 ### REST
@@ -1226,6 +1698,59 @@ You can access this information through the `page_number` attribute of a
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Can you tell me about [insert question]"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.FileSearch{
+                            FileSearchStoreNames: []string{"fileSearchStores/myfilesearchstore123"},
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range resp.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, content := range step.ModelOutputStep.Content {
+                    if content.TextContent != nil {
+                        for _, annotation := range content.TextContent.Annotations {
+                            if annotation.FileCitation != nil && annotation.FileCitation.PageNumber != nil {
+                                fmt.Println("Cited Page:", *annotation.FileCitation.PageNumber)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
 ### REST
@@ -1372,6 +1897,64 @@ download the media:
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Can you tell me about [insert question]"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.FileSearch{
+                            FileSearchStoreNames: []string{"fileSearchStores/myfilesearchstore123"},
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range resp.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, content := range step.ModelOutputStep.Content {
+                    if content.TextContent != nil {
+                        for _, annotation := range content.TextContent.Annotations {
+                            if annotation.FileCitation != nil && annotation.FileCitation.MediaID != nil {
+                                fmt.Println("Cited Media ID:", *annotation.FileCitation.MediaID)
+                                blobContent, err := client.FileSearchStores.DownloadMedia(ctx, *annotation.FileCitation.MediaID, nil)
+                                if err != nil {
+                                    log.Fatal(err)
+                                }
+                                _ = blobContent
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ### REST
 
     curl -X GET "https://generativelanguage.googleapis.com/v1/fileSearchStores/my-store-123/media/BlobId-456" \
@@ -1476,6 +2059,57 @@ contains this custom metadata.
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("Tell me about [insert question]"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.FileSearch{
+                            FileSearchStoreNames: []string{"fileSearchStores/myfilesearchstore123"},
+                        }),
+                    },
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range resp.Interaction.Steps {
+            if step.ModelOutputStep != nil {
+                for _, content := range step.ModelOutputStep.Content {
+                    if content.TextContent != nil {
+                        for _, annotation := range content.TextContent.Annotations {
+                            fmt.Println(annotation)
+                        }
+                    }
+                }
+            }
+        }
     }
 
 ### REST
@@ -1635,6 +2269,70 @@ Starting with Gemini 3 models, you can combine file search tool with
         client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
 
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        moneyJsonSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "amount": map[string]any{
+                    "type":        "string",
+                    "description": "The numerical part of the amount.",
+                },
+                "currency": map[string]any{
+                    "type":        "string",
+                    "description": "The currency of amount.",
+                },
+            },
+            "required": []string{"amount", "currency"},
+        }
+
+        format := interactions.NewCreateModelInteractionResponseFormat(
+            interactions.NewResponseFormat(interactions.TextResponseFormat{
+                MimeType: interactions.TextResponseFormatMimeTypeApplicationJSON.ToPointer(),
+                Schema:   moneyJsonSchema,
+            }),
+        )
+
+        resp, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(
+                interactions.CreateModelInteraction{
+                    Model: interactions.Model("gemini-3.8-flash"),
+                    Input: interactions.NewInteractionsInput("What is the minimum hourly wage in Tokyo right now?"),
+                    Tools: []interactions.Tool{
+                        interactions.NewTool(interactions.FileSearch{
+                            FileSearchStoreNames: []string{"fileSearchStores/myfilesearchstore123"},
+                        }),
+                    },
+                    ResponseFormat: &format,
+                },
+            ),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(resp.Interaction.GetOutputText())
+    }
 
 ### REST
 

@@ -74,6 +74,53 @@ When creating an Interaction, you can set `stream: true` to incrementally stream
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:  interactions.Model("gemini-3.8-flash"),
+                Input:  interactions.NewInteractionsInput("Explain quantum computing in simple terms."),
+                Stream: genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        stream := res.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            }
+        }
+        if err := stream.Err(); err != nil {
+            log.Fatal(err)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -522,6 +569,62 @@ conversation:
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-pro"),
+                Input: interactions.NewInteractionsInput("Solve the Monty Hall problem step-by-step."),
+                GenerationConfig: &interactions.GenerationConfig{
+                    ThinkingLevel:     interactions.ThinkingLevelHigh.ToPointer(),
+                    ThinkingSummaries: interactions.ThinkingSummariesAuto.ToPointer(),
+                },
+                Stream: genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        stream := res.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if thoughtDelta := stepDelta.GetDeltaThoughtSummary(); thoughtDelta != nil {
+                    if textContent := thoughtDelta.GetContentText(); textContent != nil {
+                        fmt.Printf("[Thought] %s\n", textContent.Text)
+                    }
+                }
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            }
+        }
+        if err := stream.Err(); err != nil {
+            log.Fatal(err)
+        }
+    }
+
 ### REST
 
 **Turn 1:** Request function call
@@ -810,6 +913,80 @@ The following example uses both a `function` tool and `google_search` in one req
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        weatherTool := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("get_weather"),
+            Description: genai.Ptr("Gets the current weather for a given location."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "location": map[string]any{"type": "string"},
+                },
+                "required": []string{"location"},
+            },
+        })
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:  interactions.Model("gemini-3.8-flash"),
+                Input:  interactions.NewInteractionsInput("What is the weather in Tokyo and Paris?"),
+                Tools:  []interactions.Tool{weatherTool},
+                Stream: genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        stream := res.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            if stepStart := event.GetDataStepStart(); stepStart != nil {
+                if call := stepStart.GetStepFunctionCall(); call != nil {
+                    fmt.Printf("\n[Function Call Started] %s (id: %s)\n", call.Name, call.ID)
+                }
+            }
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if argsDelta := stepDelta.GetDeltaArgumentsDelta(); argsDelta != nil && argsDelta.Arguments != nil {
+                    fmt.Printf("[Args Delta] %s\n", *argsDelta.Arguments)
+                }
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            }
+            if completed := event.GetDataInteractionCompleted(); completed != nil {
+                interaction := completed.Interaction
+                if interaction.Status == interactions.InteractionSseEventInteractionStatusRequiresAction {
+                    fmt.Printf("\nStream paused: Waiting for tool outputs for interaction %s\n", interaction.ID)
+                }
+            }
+        }
+        if err := stream.Err(); err != nil {
+            log.Fatal(err)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1002,6 +1179,75 @@ When the model uses thinking, you'll receive `thought` steps with two distinct d
       }
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput("What are the top news stories in AI today, and calculate 2^64 - 1?"),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                    interactions.NewTool(interactions.CodeExecution{}),
+                },
+                Stream: genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        stream := res.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            if stepStart := event.GetDataStepStart(); stepStart != nil {
+                step := stepStart.Step
+                if searchCall := step.GoogleSearchCallStep; searchCall != nil {
+                    fmt.Printf("[Google Search Started] id: %s\n", searchCall.ID)
+                } else if searchRes := step.GoogleSearchResultStep; searchRes != nil {
+                    fmt.Printf("[Google Search Results Received] for call_id: %s\n", searchRes.CallID)
+                } else if codeCall := step.CodeExecutionCallStep; codeCall != nil {
+                    fmt.Printf("[Code Execution Started] id: %s\n", codeCall.ID)
+                } else if codeRes := step.CodeExecutionResultStep; codeRes != nil {
+                    fmt.Printf("[Code Execution Finished] output: %s\n", codeRes.Result)
+                }
+            }
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if searchDelta := stepDelta.GetDeltaGoogleSearchCall(); searchDelta != nil {
+                    fmt.Printf("[Search Queries] %v\n", searchDelta.Arguments.Queries)
+                }
+                if codeDelta := stepDelta.GetDeltaCodeExecutionCall(); codeDelta != nil {
+                    fmt.Printf("[Code Delta] %s\n", codeDelta.Arguments.Code)
+                }
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            }
+        }
+        if err := stream.Err(); err != nil {
+            log.Fatal(err)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -1171,6 +1417,73 @@ The Interactions API supports agents like Deep Research. Agents use `background=
               .ifPresent(tokens -> System.out.println("\n\nTotal Tokens: " + tokens));
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-flash-image-preview"),
+                Input: interactions.NewInteractionsInput("Generate a watercolor illustration of a lighthouse at sunset and describe the scene."),
+                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat([]interactions.ResponseFormat{
+                    interactions.NewResponseFormat(interactions.TextResponseFormat{}),
+                    interactions.NewResponseFormat(interactions.ImageResponseFormat{}),
+                })),
+                Stream: genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        stream := res.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+                if imgDelta := stepDelta.GetDeltaImage(); imgDelta != nil && imgDelta.Data != nil {
+                    imageBytes, err := base64.StdEncoding.DecodeString(*imgDelta.Data)
+                    if err != nil {
+                        log.Fatal(err)
+                    }
+                    if err := os.WriteFile("lighthouse.png", imageBytes, 0644); err != nil {
+                        log.Fatal(err)
+                    }
+                    fmt.Println("\n[Saved lighthouse.png]")
+                }
+            }
+            if completed := event.GetDataInteractionCompleted(); completed != nil {
+                // You can also access the final image using interaction.GetOutputImage() on a non-streamed or retrieved interaction
+                fmt.Println("\nGeneration complete!")
+            }
+        }
+        if err := stream.Err(); err != nil {
+            log.Fatal(err)
+        }
     }
 
 ### REST
@@ -1343,6 +1656,90 @@ The following example uses `gemini-3.1-flash-image` (Nano Banana 2) to search fo
           }
         }
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        var interactionID string
+        var lastEventID *string
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model:  interactions.Model("gemini-3.8-pro"),
+                Input:  interactions.NewInteractionsInput("Write a detailed 5-section guide to distributed consensus algorithms."),
+                Stream: genai.Ptr(true),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        stream := res.InteractionSSEStreamEvent
+        defer stream.Close()
+
+        for stream.Next() {
+            event := stream.Value()
+            if created := event.GetDataInteractionCreated(); created != nil {
+                interactionID = created.Interaction.ID
+                if created.EventID != nil {
+                    lastEventID = created.EventID
+                }
+            }
+            if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                if stepDelta.EventID != nil {
+                    lastEventID = stepDelta.EventID
+                }
+                if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                    fmt.Print(textDelta.GetText())
+                }
+            }
+        }
+
+        if err := stream.Err(); err != nil {
+            fmt.Printf("\nStream interrupted (%v). Resuming...\n", err)
+            if interactionID != "" && lastEventID != nil {
+                resumedRes, err := client.Interactions.Get(ctx, operations.GetInteractionByIDRequest{
+                    ID:          interactionID,
+                    Stream:      genai.Ptr(true),
+                    LastEventID: lastEventID,
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                resumedStream := resumedRes.InteractionSSEStreamEvent
+                defer resumedStream.Close()
+
+                for resumedStream.Next() {
+                    event := resumedStream.Value()
+                    if stepDelta := event.GetDataStepDelta(); stepDelta != nil {
+                        if textDelta := stepDelta.GetDeltaText(); textDelta != nil {
+                            fmt.Print(textDelta.GetText())
+                        }
+                    }
+                }
+                if err := resumedStream.Err(); err != nil {
+                    log.Fatal(err)
+                }
+            }
+        }
     }
 
 ### REST

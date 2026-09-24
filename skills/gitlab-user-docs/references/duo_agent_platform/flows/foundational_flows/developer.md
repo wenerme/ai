@@ -97,10 +97,7 @@ To create a merge request from an issue:
 ### Use the flow in Agentic Chat
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
+- Generally available in GitLab 19.5. Feature flag `agentic_foundational_flow_tool` removed.
 
 You can use the Developer Flow in a GitLab Duo Agentic Chat conversation to
 complete different tasks, such as:

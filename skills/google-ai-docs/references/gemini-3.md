@@ -68,6 +68,41 @@ Get started with a few lines of code:
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-pro-preview"),
+                Input: interactions.NewInteractionsInput("Find the race condition in this multi-threaded C++ snippet: [code here]"),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -190,6 +225,44 @@ constrain the model's thinking level to `low`.
         client.interactions.create(CreateInteractionRequestBody.of(request)).interaction().get();
 
     System.out.println(interaction.outputText().orElse(""));
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-pro-preview"),
+                Input: interactions.NewInteractionsInput("How does AI work?"),
+                GenerationConfig: &interactions.GenerationConfig{
+                    ThinkingLevel: interactions.ThinkingLevelLow.ToPointer(),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
 
 ### REST
 
@@ -361,6 +434,71 @@ Gemini 3 models allow you to combine [Structured Outputs](https://ai.google.dev/
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        schema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "winner": map[string]any{
+                    "type":        "string",
+                    "description": "The name of the winner.",
+                },
+                "final_match_score": map[string]any{
+                    "type":        "string",
+                    "description": "The final match score.",
+                },
+                "scorers": map[string]any{
+                    "type":        "array",
+                    "items":       map[string]any{"type": "string"},
+                    "description": "The name of the scorer.",
+                },
+            },
+            "required": []string{"winner", "final_match_score", "scorers"},
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.1-pro-preview"),
+                Input: interactions.NewInteractionsInput("Search for all details for the latest Euro."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                    interactions.NewTool(interactions.URLContext{}),
+                },
+                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
+                    interactions.NewResponseFormat(interactions.TextResponseFormat{
+                        MimeType: interactions.TextResponseFormatMimeType("application/json").ToPointer(),
+                        Schema:   schema,
+                    }),
+                )),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -507,6 +645,58 @@ options, see the [Image Generation guide](https://ai.google.dev/gemini-api/docs/
     if (generatedImage.isPresent() && generatedImage.get().data().isPresent()) {
       byte[] imageBytes = Base64.getDecoder().decode(generatedImage.get().data().get());
       Files.write(Paths.get("weather_tokyo.png"), imageBytes);
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3-pro-image-preview"),
+                Input: interactions.NewInteractionsInput("Generate an infographic of the current weather in Tokyo."),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.GoogleSearch{}),
+                },
+                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
+                    interactions.NewResponseFormat(interactions.ImageResponseFormat{
+                        AspectRatio: interactions.ImageResponseFormatAspectRatioOneHundredAndSixtyNine.ToPointer(),
+                        ImageSize:   interactions.ImageResponseFormatImageSize("4K").ToPointer(),
+                    }),
+                )),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if generatedImage := res.Interaction.GetOutputImage(); generatedImage != nil && generatedImage.Data != nil {
+            imageBytes, err := base64.StdEncoding.DecodeString(*generatedImage.Data)
+            if err != nil {
+                log.Fatal(err)
+            }
+            if err := os.WriteFile("weather_tokyo.png", imageBytes, 0644); err != nil {
+                log.Fatal(err)
+            }
+        }
     }
 
 ### REST
@@ -696,6 +886,79 @@ code to manipulate images when needed.
         CodeExecutionResultStep resultStep = (CodeExecutionResultStep) step;
         System.out.println("Output: " + resultStep.result().orElse(""));
       }
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "io"
+        "log"
+        "net/http"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        httpRes, err := http.Get("https://goo.gle/instrument-img")
+        if err != nil {
+            log.Fatal(err)
+        }
+        defer httpRes.Body.Close()
+        imageBytes, err := io.ReadAll(httpRes.Body)
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64ImageData := base64.StdEncoding.EncodeToString(imageBytes)
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3-flash-preview"),
+                Input: interactions.NewInteractionsInput([]interactions.Content{
+                    interactions.NewContent(interactions.ImageContent{
+                        MimeType: interactions.ImageContentMimeType("image/jpeg").ToPointer(),
+                        Data:     genai.Ptr(base64ImageData),
+                    }),
+                    interactions.NewContent(interactions.TextContent{
+                        Text: "Zoom into the expression pedals and tell me how many pedals are there?",
+                    }),
+                }),
+                Tools: []interactions.Tool{
+                    interactions.NewTool(interactions.CodeExecution{}),
+                },
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if modelOutput := step.ModelOutputStep; modelOutput != nil {
+                for _, contentBlock := range modelOutput.Content {
+                    if textContent := contentBlock.TextContent; textContent != nil {
+                        fmt.Println("Text:", textContent.Text)
+                    }
+                }
+            } else if callStep := step.CodeExecutionCallStep; callStep != nil {
+                if callStep.Arguments.Code != nil {
+                    fmt.Println("Code:", *callStep.Arguments.Code)
+                }
+            } else if resultStep := step.CodeExecutionResultStep; resultStep != nil {
+                fmt.Println("Output:", resultStep.Result)
+            }
+        }
     }
 
 ### REST
@@ -969,6 +1232,104 @@ function responses:
       System.out.println("Final model response: " + interaction2.outputText().orElse(""));
     }
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "io"
+        "log"
+        "net/http"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        getImageTool := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("get_image"),
+            Description: genai.Ptr("Retrieves the image file reference for a specific order item."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "item_name": map[string]any{
+                        "type":        "string",
+                        "description": "The name or description of the item ordered (e.g., 'instrument').",
+                    },
+                },
+                "required": []string{"item_name"},
+            },
+        })
+
+        res1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3-flash-preview"),
+                Input: interactions.NewInteractionsInput("Use the get_image tool to show me the instrument I ordered last month."),
+                Tools: []interactions.Tool{getImageTool},
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res1.Interaction.Steps {
+            if fcStep := step.FunctionCallStep; fcStep != nil {
+                fmt.Println("Tool Call:", fcStep.Name)
+
+                httpRes, err := http.Get("https://goo.gle/instrument-img")
+                if err != nil {
+                    log.Fatal(err)
+                }
+                defer httpRes.Body.Close()
+                imageBytes, err := io.ReadAll(httpRes.Body)
+                if err != nil {
+                    log.Fatal(err)
+                }
+                base64ImageData := base64.StdEncoding.EncodeToString(imageBytes)
+
+                funcResult := interactions.NewStep(interactions.FunctionResultStep{
+                    Name:   genai.Ptr(fcStep.Name),
+                    CallID: fcStep.ID,
+                    Result: interactions.NewFunctionResultStepResultUnion([]interactions.FunctionResultSubcontent{
+                        interactions.NewFunctionResultSubcontent(interactions.TextContent{
+                            Text: "instrument.jpg",
+                        }),
+                        interactions.NewFunctionResultSubcontent(interactions.ImageContent{
+                            MimeType: interactions.ImageContentMimeType("image/jpeg").ToPointer(),
+                            Data:     genai.Ptr(base64ImageData),
+                        }),
+                    }),
+                })
+
+                res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+                    Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                        Model:                 interactions.Model("gemini-3-flash-preview"),
+                        PreviousInteractionID: res1.Interaction.ID,
+                        Tools:                 []interactions.Tool{getImageTool},
+                        Input:                 interactions.NewInteractionsInput([]interactions.Step{funcResult}),
+                    }),
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if res2.Interaction.OutputText != nil {
+                    fmt.Println("Final model response:", *res2.Interaction.OutputText)
+                }
+                break
+            }
+        }
+    }
+
 ### REST
 
     IMG_URL="https://goo.gle/instrument-img"
@@ -1204,6 +1565,85 @@ more complex workflows.
       Interaction finalInteraction =
           client.interactions.create(CreateInteractionRequestBody.of(finalRequest)).interaction().get();
       System.out.println(finalInteraction.outputText().orElse(""));
+    }
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        getWeather := interactions.NewTool(interactions.Function{
+            Name:        genai.Ptr("getWeather"),
+            Description: genai.Ptr("Gets the weather for a requested city."),
+            Parameters: map[string]any{
+                "type": "object",
+                "properties": map[string]any{
+                    "city": map[string]any{
+                        "type":        "string",
+                        "description": "The city and state, e.g. Utqiaġvik, Alaska",
+                    },
+                },
+                "required": []string{"city"},
+            },
+        })
+
+        tools := []interactions.Tool{
+            interactions.NewTool(interactions.GoogleSearch{}),
+            getWeather,
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3-flash-preview"),
+                Input: interactions.NewInteractionsInput("What is the northernmost city in the United States? What's the weather like there today?"),
+                Tools: tools,
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        for _, step := range res.Interaction.Steps {
+            if fcStep := step.FunctionCallStep; fcStep != nil {
+                funcResult := interactions.NewStep(interactions.FunctionResultStep{
+                    Name:   genai.Ptr(fcStep.Name),
+                    CallID: fcStep.ID,
+                    Result: interactions.NewFunctionResultStepResultUnion(`{"response": "Very cold. 22 degrees Fahrenheit."}`),
+                })
+
+                finalRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+                    Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                        Model:                 interactions.Model("gemini-3-flash-preview"),
+                        PreviousInteractionID: res.Interaction.ID,
+                        Tools:                 tools,
+                        Input:                 interactions.NewInteractionsInput([]interactions.Step{funcResult}),
+                    }),
+                })
+                if err != nil {
+                    log.Fatal(err)
+                }
+                if finalRes.Interaction.OutputText != nil {
+                    fmt.Println(*finalRes.Interaction.OutputText)
+                }
+                break
+            }
+        }
     }
 
 ## Migration from Gemini 2.5

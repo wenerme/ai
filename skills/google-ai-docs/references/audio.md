@@ -89,6 +89,59 @@ Gemini can analyze audio input and generate text responses.
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        uploadedFile, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp3", &genai.UploadFileConfig{
+            MIMEType: "audio/mp3",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.TextContent{
+                Text: "Describe this audio clip",
+            }),
+            interactions.NewContent(interactions.AudioContent{
+                URI:      genai.Ptr(uploadedFile.URI),
+                MimeType: interactions.AudioContentMimeType(uploadedFile.MIMEType).ToPointer(),
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     # First upload the file, then use the URI:
@@ -328,6 +381,91 @@ timestamps, speaker diarization, and emotion detection using
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        youtubeURL := "https://www.youtube.com/watch?v=ku-N-eS1lgM"
+
+        prompt := "Process the audio file and generate a detailed transcription.\n\n" +
+            "Requirements:\n" +
+            "1. Identify distinct speakers (e.g., Speaker 1, Speaker 2).\n" +
+            "2. Provide accurate timestamps for each segment (Format: MM:SS).\n" +
+            "3. Detect the primary language of each segment.\n" +
+            "4. If not English, provide the English translation.\n" +
+            "5. Identify the primary emotion: Happy, Sad, Angry, or Neutral.\n" +
+            "6. Provide a brief summary at the beginning."
+
+        responseSchema := map[string]any{
+            "type": "object",
+            "properties": map[string]any{
+                "summary": map[string]any{"type": "string"},
+                "segments": map[string]any{
+                    "type": "array",
+                    "items": map[string]any{
+                        "type": "object",
+                        "properties": map[string]any{
+                            "speaker":   map[string]any{"type": "string"},
+                            "timestamp": map[string]any{"type": "string"},
+                            "content":   map[string]any{"type": "string"},
+                            "language":  map[string]any{"type": "string"},
+                            "emotion": map[string]any{
+                                "type": "string",
+                                "enum": []string{"happy", "sad", "angry", "neutral"},
+                            },
+                        },
+                        "required": []string{"speaker", "timestamp", "content", "emotion"},
+                    },
+                },
+            },
+            "required": []string{"summary", "segments"},
+        }
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.VideoContent{
+                URI:      genai.Ptr(youtubeURL),
+                MimeType: interactions.VideoContentMimeTypeVideoMp4.ToPointer(),
+            }),
+            interactions.NewContent(interactions.TextContent{
+                Text: prompt,
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+                ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
+                    interactions.NewResponseFormat(responseSchema),
+                )),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
@@ -468,6 +606,60 @@ Use the [Files API](https://ai.google.dev/gemini-api/docs/files) for files large
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    // Upload an audio file using the Files API (recommended for files > 20 MB)
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        uploadedFile, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp3", &genai.UploadFileConfig{
+            MIMEType: "audio/mp3",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.TextContent{
+                Text: "Describe this audio clip",
+            }),
+            interactions.NewContent(interactions.AudioContent{
+                URI:      genai.Ptr(uploadedFile.URI),
+                MimeType: interactions.AudioContentMimeType(uploadedFile.MIMEType).ToPointer(),
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     # First upload the file using the Files API, then use the URI:
@@ -580,6 +772,60 @@ For small audio files under 20MB total request size:
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "encoding/base64"
+        "fmt"
+        "log"
+        "os"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        audioBytes, err := os.ReadFile("path/to/small-sample.mp3")
+        if err != nil {
+            log.Fatal(err)
+        }
+        base64Audio := base64.StdEncoding.EncodeToString(audioBytes)
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.TextContent{
+                Text: "Describe this audio clip",
+            }),
+            interactions.NewContent(interactions.AudioContent{
+                Data:     genai.Ptr(base64Audio),
+                MimeType: interactions.AudioContentMimeTypeAudioMp3.ToPointer(),
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ### REST
 
     AUDIO_PATH="path/to/sample.mp3"
@@ -686,6 +932,59 @@ To get a transcript, ask for it in the prompt:
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        uploadedFile, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp3", &genai.UploadFileConfig{
+            MIMEType: "audio/mp3",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.TextContent{
+                Text: "Generate a transcript of the speech.",
+            }),
+            interactions.NewContent(interactions.AudioContent{
+                URI:      genai.Ptr(uploadedFile.URI),
+                MimeType: interactions.AudioContentMimeType(uploadedFile.MIMEType).ToPointer(),
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ## Refer to timestamps
 
 Use `MM:SS` format to reference specific sections:
@@ -758,6 +1057,59 @@ Use `MM:SS` format to reference specific sections:
 
     System.out.println(interaction.outputText().orElse(""));
 
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+        "google.golang.org/genai/interactions/models/interactions"
+        "google.golang.org/genai/interactions/models/operations"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        uploadedFile, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp3", &genai.UploadFileConfig{
+            MIMEType: "audio/mp3",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        contents := []interactions.Content{
+            interactions.NewContent(interactions.TextContent{
+                Text: "Provide a transcript from 02:30 to 03:29.",
+            }),
+            interactions.NewContent(interactions.AudioContent{
+                URI:      genai.Ptr(uploadedFile.URI),
+                MimeType: interactions.AudioContentMimeType(uploadedFile.MIMEType).ToPointer(),
+            }),
+        }
+
+        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
+            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
+                Model: interactions.Model("gemini-3.8-flash"),
+                Input: interactions.NewInteractionsInput(contents),
+            }),
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        if res.Interaction.OutputText != nil {
+            fmt.Println(*res.Interaction.OutputText)
+        }
+    }
+
 ## Count tokens
 
 Count tokens in an audio file:
@@ -805,6 +1157,47 @@ Count tokens in an audio file:
             null);
 
     System.out.println(response);
+
+### Go
+
+    package main
+
+    import (
+        "context"
+        "fmt"
+        "log"
+
+        "google.golang.org/genai"
+    )
+
+    func main() {
+        ctx := context.Background()
+        client, err := genai.NewClient(ctx, nil)
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        uploadedFile, err := client.Files.UploadFromPath(ctx, "path/to/sample.mp3", &genai.UploadFileConfig{
+            MIMEType: "audio/mp3",
+        })
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        response, err := client.Models.CountTokens(
+            ctx,
+            "gemini-3.8-flash",
+            []*genai.Content{
+                genai.NewContentFromURI(uploadedFile.URI, uploadedFile.MIMEType, genai.RoleUser),
+            },
+            nil,
+        )
+        if err != nil {
+            log.Fatal(err)
+        }
+
+        fmt.Println(response.TotalTokens)
+    }
 
 ## Supported audio formats
 
