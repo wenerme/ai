@@ -36,7 +36,7 @@ This model is not available through standard Workers Free billing. To use it, up
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,310,720 tokens |
 | Terms and License | [link ↗](https://huggingface.co/zai-org/GLM-5.3-Flash/blob/main/LICENSE) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
-| Reasoning | Yes |
+| Reasoning | `low``high``max` (default) |
 | Vision | Yes |
 | Unit Pricing | $0.15 per M input tokens, $0.50 per M output tokens, $0.03 per M cached input tokens |
 
@@ -205,7 +205,7 @@ presence\_penalty
 
 reasoning\_effort
 
-<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+<code>string | null</code>enum: max, high, lowReasoning effort. Supported levels: max, high, low. Reasoning cannot be disabled. Compatibility aliases: none maps to max; minimal maps to max; medium maps to max; xhigh maps to max.
 
 ▶chat\_template\_kwargs{}
 
@@ -369,7 +369,7 @@ presence\_penalty
 
 reasoning\_effort
 
-<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+<code>string | null</code>enum: max, high, lowReasoning effort. Supported levels: max, high, low. Reasoning cannot be disabled. Compatibility aliases: none maps to max; minimal maps to max; medium maps to max; xhigh maps to max.
 
 ▶chat\_template\_kwargs{}
 

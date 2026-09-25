@@ -25,49 +25,24 @@ Still, this is completely optional since both options have the same effect at th
 
 ## Where will the runner download scripts when using actions such as `actions/checkout@v4`?
 
-There are tens of thousands of [actions scripts](https://github.com/marketplace?type=actions) in GitHub, and when you write `uses: actions/checkout@v4`, it downloads the scripts from [github.com/actions/checkout](http://github.com/actions/checkout) by default.
-But what if you want to use actions from other places such as gitea.com instead of GitHub?
+From `https://github.com` by default, or from your own instance when `[actions].DEFAULT_ACTIONS_URL` is `self`, see the [Configuration Cheat Sheet](../../administration/config-cheat-sheet.md#actions-actions).
 
-The good news is that you can specify the URL prefix to use actions from anywhere.
-This is an extra syntax in Gitea Actions.
-For example:
+To use an action from elsewhere, name its host:
 
-- `uses: https://gitea.com/xxx/xxx@xxx`
-- `uses: https://github.com/xxx/xxx@xxx`
-- `uses: http://your_gitea_instance.com/xxx@xxx`
-
-Be careful, the `https://` or `http://` prefix is necessary!
-
-This is one of the differences from GitHub Actions which supports actions scripts only from GitHub.
-But it should allow users much more flexibility in how they run Actions.
-
-Alternatively, if you want your runners to download actions from your own Gitea instance by default, you can configure it by setting `[actions].DEFAULT_ACTIONS_URL`.
-See [Configuration Cheat Sheet](../../administration/config-cheat-sheet.md#actions-actions).
+- `uses: https://gitea.com/owner/repo@ref`
+- `uses: http://your_gitea_instance.com/owner/repo@ref`
+- `uses: self:owner/repo@ref` for your own Gitea instance
 
 ## How to limit the permission of the runners?
 
-Runners have no more permissions than simply connecting to your Gitea instance.
-When any runner receives a job to run, it will temporarily gain limited permission to the repository associated with the job.
-If you want to give more permissions to the runner, allowing it to access more private repositories or external systems, you can pass [secrets](usage/actions/secrets.md) to it.
-
-Refined permission control to Actions is a complicated job.
-In the future, we will add more options to Gitea to make it more configurable, such as allowing more write access to repositories or read access to all repositories in the same organization.
+Runners only connect to your Gitea instance.
+For each job, a runner gets a `GITEA_TOKEN` limited to the job's repository, see [Actions job token permissions](token-permissions.md).
+To give a job access to more private repositories or external systems, pass it [secrets](usage/actions/secrets.md).
 
 ## Which operating systems are supported by Gitea Runner?
 
-We released official binaries for Linux, macOS, and Windows.
-While other operating systems are theoretically supported if it is supported by golang and docker(docker mode enabled).
-
-One thing to note is that if you choose to run jobs directly on the host instead of in job containers, the environmental differences between operating systems may cause unexpected failures.
-
-For example, bash is not available on Windows in most cases, while act tries to use bash to run scripts by default.
-Therefore, you need to specify `powershell` as the default shell in your workflow file, see [defaults.run](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#defaultsrun).
-
-```yaml
-defaults:
-  run:
-    shell: powershell
-```
+Official binaries are released for Linux, macOS and Windows.
+Other systems supported by Go and Docker work in theory.
 
 ## How to avoid being hacked?
 
@@ -96,42 +71,13 @@ It is exciting to be able to reuse them.
 
 ## What if it runs on multiple labels, such as `runs-on: [label_a, label_b]`?
 
-This is valid syntax.
-It means that it should run on runners that have both the `label_a` **and** `label_b` labels, see [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idruns-on).
-Unfortunately, the runner does not work this way until v0.2.11.
-As mentioned, we map labels to environments:
-
-- `ubuntu` → `ubuntu:22.04`
-- `centos` → `centos:8`
-
-But we need to map label groups to environments instead, like so:
-
-- `[ubuntu]` → `ubuntu:22.04`
-- `[with-gpu]` → `linux:with-gpu`
-- `[ubuntu, with-gpu]` → `ubuntu:22.04_with-gpu`
-
-We also need to re-design how tasks are assigned to runners.
-A runner with `ubuntu`, `centos`, or `with-gpu` does not necessarily indicate that it can accept jobs with `[centos, with-gpu]`.
-Therefore, the runner should inform the Gitea instance that it can only accept jobs with `[ubuntu]`, `[centos]`, `[with-gpu]`, and `[ubuntu, with-gpu]`.
-This is not a technical problem, it was just overlooked in the early design.
-See [runtime.go#L65](https://gitea.com/gitea/runner/src/commit/90b8cc6a7a48f45cc28b5ef9660ebf4061fcb336/runtime/runtime.go#L65).
-
-Currently, the runner attempts to match everyone in the labels and uses the first match it finds.
+The job runs on a runner that has all of the labels, as on [GitHub](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idruns-on).
+The runner uses the environment of the first label it has.
 
 ## What is the difference between agent labels and custom labels for a runner?
 
-[labels]
-
-Agent labels are reported to the Gitea instance by the runner during registration.
-Custom labels, on the other hand, are added manually by a Gitea administrator or owners of the organization or repository (depending on the level of the runner).
-
-However, the design here needs improvement, as it currently has some rough edges.
-You can add a custom label such as `centos` to a registered runner, which means the runner will receive jobs with `runs-on: centos`.
-However, the runner may not know which environment to use for this label, resulting in it using a default image or leading to a logical dead end.
-This default may not match user expectations.
-See [runtime.go#L71](https://gitea.com/gitea/runner/src/commit/90b8cc6a7a48f45cc28b5ef9660ebf4061fcb336/runtime/runtime.go#L71).
-
-In the meantime, we suggest that you re-register your runner if you want to change its labels.
+Gitea no longer has custom labels.
+A runner declares its labels every time it starts, from its `runner.labels` configuration or the labels given at registration, so change them there and restart the runner.
 
 ## Will there be more implementations for Gitea Actions runner?
 
@@ -174,3 +120,6 @@ For events supported only by GitHub, see GitHub's [documentation](https://docs.g
 
 Go to the repository's **Settings** > **Actions** > **General** page and add collaborative owners.
 The private repositories of collaborative owners are allowed to access the actions and workflows in the current repository.
+
+To share within the same user or organization, add the private repositories under its **Settings** > **Actions** > **General** > **Cross-Repository Access** instead.
+See [Cross-repository access](token-permissions.md#cross-repository-access).

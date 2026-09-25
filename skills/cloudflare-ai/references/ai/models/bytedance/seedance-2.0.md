@@ -326,7 +326,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run
 
 prompt
 
-`string`requiredmaxLength: 10000Text prompt describing the video to generate
+`string`requiredmaxLength: 2000Text prompt describing the video to generate
 
 image
 

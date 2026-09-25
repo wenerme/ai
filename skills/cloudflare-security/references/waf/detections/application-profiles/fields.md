@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Fields
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/application-profiles/fields/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Schema Profile detections populate these fields after an applicable profile becomes available:
 
@@ -21,9 +21,37 @@ Schema Profile detections populate these fields after an applicable profile beco
 | `cf.schema_validation.learned.violated` | `Boolean` | Learned Schema Profile | `true` when an evaluated request violates the learned profile. | Security Analytics and Custom Rules |
 | `cf.schema_validation.uploaded.violated` | `Boolean` | Uploaded schema | `true` when an evaluated request violates the supplied schema. | Security Analytics and Custom Rules |
 
+## Violated parameters
+
+The following fields identify the names of Schema Profile violations by request location.
+
+| Field | Type | Source | Meaning | Available in |
+| --- | --- | --- | --- | --- |
+| `cf.schema_validation.learned.path.violated_parameters` | `Array<String>` | Learned Schema Profile | Names of violating path parameters. | Custom Rules |
+| `cf.schema_validation.learned.query.violated_parameters` | `Array<String>` | Learned Schema Profile | Names of violating query parameters. | Custom Rules |
+| `cf.schema_validation.learned.headers.violated_parameters` | `Array<String>` | Learned Schema Profile | Names of violating request headers. | Custom Rules |
+| `cf.schema_validation.learned.cookies.violated_parameters` | `Array<String>` | Learned Schema Profile | Names of violating cookies. | Custom Rules |
+| `cf.schema_validation.learned.body.violated_parameters` | `Array<String>` | Learned Schema Profile | JSON path of a request body violation. | Custom Rules |
+| `cf.schema_validation.uploaded.path.violated_parameters` | `Array<String>` | Uploaded schema | Names of violating path parameters. | Custom Rules |
+| `cf.schema_validation.uploaded.query.violated_parameters` | `Array<String>` | Uploaded schema | Names of violating query parameters. | Custom Rules |
+| `cf.schema_validation.uploaded.headers.violated_parameters` | `Array<String>` | Uploaded schema | Names of violating request headers. | Custom Rules |
+| `cf.schema_validation.uploaded.cookies.violated_parameters` | `Array<String>` | Uploaded schema | Names of violating cookies. | Custom Rules |
+| `cf.schema_validation.uploaded.body.violated_parameters` | `Array<String>` | Uploaded schema | JSON path of a request body violation. | Custom Rules |
+
+For body violations, the array contains the first detected violation's JSON path. A value of `$` identifies the body without a more specific path.
+
+## Undeclared query parameters
+
+These fields contain URL-decoded query parameter names presented in a request but not declared in the schema.
+
+| Field | Type | Source | Meaning | Available in |
+| --- | --- | --- | --- | --- |
+| `cf.schema_validation.learned.query.undeclared_parameters` | `Array<String>` | Learned Schema Profile | Names of query parameters present in the request but not declared in the schema. | Custom Rules |
+| `cf.schema_validation.uploaded.query.undeclared_parameters` | `Array<String>` | Uploaded schema | Names of query parameters present in the request but not declared in the schema. | Custom Rules |
+
 ## Violation details
 
-Sampled violations in Profile Analysis contain four structured fields:
+Sampled violations in Profile Analysis contain four structured fields that report the first detected violation for the request:
 
 | Field | Type | Meaning |
 | --- | --- | --- |
@@ -31,8 +59,6 @@ Sampled violations in Profile Analysis contain four structured fields:
 | `error_class` | `String` | Stable, broad category for grouping similar violations. |
 | `error_detail` | `String` | Optional specific reason within the error class. |
 | `target` | `String` | Optional parameter, header, cookie, or `$`-prefixed JSON body path associated with the violation. |
-
-These values provide context in sampled logs. Schema Validation reports the first detected failure for each request.
 
 ### Error classes
 
@@ -106,5 +132,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/application-profiles/fields/#page","headline":"Fields","description":"Reference Schema Profile detection fields and usage.","url":"https://developers.cloudflare.com/waf/detections/application-profiles/fields/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/detections/application-profiles/fields/#page","headline":"Fields","description":"Reference Schema Profile detection fields and usage.","url":"https://developers.cloudflare.com/waf/detections/application-profiles/fields/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

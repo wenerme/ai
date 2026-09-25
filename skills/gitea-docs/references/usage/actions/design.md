@@ -17,7 +17,7 @@ Additionally, the runner will introduce itself to Gitea and declare what kind of
 
 Earlier, we mentioned that `runs-on: ubuntu-latest` in a workflow file means that the job will be run on a runner with the `ubuntu-latest` label.
 But how does the runner know to run `ubuntu-latest`? The answer lies in mapping the label to an environment.
-That's why when you add custom labels during registration, you will need to input some complex content like `my_custom_label:docker://centos:7`.
+That's why each label of a runner names an environment, like `my_custom_label:docker://centos:7`.
 This means that the runner can take the job which needs to run on `my_custom_label`, and it will run it via a docker container with the image `centos:7`.
 
 Docker isn't the only option, though.
@@ -32,7 +32,6 @@ So,
 - `my_custom_label:docker://node:18`: Run jobs labeled with `my_custom_label` using the `node:18` Docker image.
 - `my_custom_label:host`: Run jobs labeled with `my_custom_label` directly on the host.
 - `my_custom_label`: Same as `my_custom_label:host`.
-- `my_custom_label:vm:ubuntu-latest`: (Example only, not implemented) Run jobs labeled with `my_custom_label` using a virtual machine with the `ubuntu-latest` ISO.
 
 ## Communication protocol
 
@@ -41,7 +40,7 @@ However, we did not think it was a good idea to have Gitea listen on a new port.
 Instead, we wanted to reuse the HTTP port, which means we needed a protocol that is compatible with HTTP.
 We chose to use gRPC over HTTP.
 
-We use [actions-proto-def](https://gitea.com/gitea/actions-proto-def) and [actions-proto-go](https://gitea.com/gitea/actions-proto-go) to wire them up.
+The protocol is defined in [actions-proto-def](https://gitea.com/gitea/actions-proto-def), its Go code lives in [actionslib](https://gitea.com/gitea/actionslib).
 More information about gRPC can be found on [its website](https://grpc.io/).
 
 ## Network architecture
@@ -69,7 +68,8 @@ However, if a job container tries to fetch code from localhost, it will fail bec
 ### Connection 3, runner to internet
 
 When you use some actions like `actions/checkout@v4`, the runner downloads the scripts, not the job containers.
-By default, it downloads from [github.com](http://github.com/), so it requires access to the internet. If you configure the `DEFAULT_ACTIONS_URL` to `self`, then it will download from your Gitea instance by default. Then it will not connect to internet when downloading the action itself.
+By default, it downloads them from [github.com](https://github.com/), which requires internet access.
+With `DEFAULT_ACTIONS_URL` set to `self`, or with `uses: self:owner/repo@ref`, it downloads them from your Gitea instance instead.
 It also downloads some docker images from Docker Hub by default, which also requires internet access.
 
 However, internet access is not strictly necessary.

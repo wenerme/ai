@@ -183,6 +183,12 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-3.8-flash`
 
   Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
+- `gemini-3.8-flash-tts`
+
+  Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
+- `gemini-3.8-flash-lite-tts`
+
+  Gemini 3.8 Flash Lite TTS - High-speed and cost-efficient, ideal for rapid dubbing, media localization, and high-throughput voice agents. Direct replacement for gemini-3.1-flash-tts-preview.
 - `lyria-3-clip-preview`
 
   Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
@@ -427,7 +433,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Simple Request
 
-<iframe src="https:///frame/api/interactions-api_f8bcd6ef7818802628a427eda23ebcba0619ce2c11940672df30493b8d05725b.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_699d783e5d1492e317d6986809577c6f95b5e0376ee0cb5bb4660ccfe281127e.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -469,7 +475,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Multi-turn
 
-<iframe src="https:///frame/api/interactions-api_8dfb1463b086a692bdc22ce9d34e4084076aa6e54f92eeb860a9a1bd8a11713e.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_db0502261209c60e43f4c3c63c6da8b05501215ac7e8874bceba44f78a087005.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -511,7 +517,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Image Input
 
-<iframe src="https:///frame/api/interactions-api_ea7fca9f2f1f8c90c60cd56d6da9b12c82064b8f0b49c1ea4abebe97bcedb97e.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_e95fa7ab7bf9d00d46087fb9a573c5c2130d31aa485850262e72ba3d4143f52b.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -557,7 +563,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Function Calling
 
-<iframe src="https:///frame/api/interactions-api_c808a0944479b0858cea3cafd7b02ccb74ee39cf0f6e2beb2561ec31242da1a9.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_cd85d2defab23e7425605f43da338ec821905657e56f2ef65346dec4496b5b12.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -598,7 +604,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Deep Research
 
-<iframe src="https:///frame/api/interactions-api_44facab73994bd2f6546532734c6e69b6f533565457ce97495a7eed88440cce3.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_9430368664e27ab7dcc1e9e0f96f704283c5cce1056007fe8414905fa7823df5.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -640,7 +646,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Antigravity Agent
 
-<iframe src="https:///frame/api/interactions-api_b546d19e319f742b4c1a776e84d61439d54871115a7572aec693d73cd9df7c00.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_43b197f22acccd2cb80acaf05452865e08eb921742fd7b941da027737ba514a3.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -683,7 +689,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Reuse Environment
 
-<iframe src="https:///frame/api/interactions-api_a6617eb2b0c6f01d22b907c11c7c4a84c7609b6b154f7924e77405fd5e1d6559.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_3531ee28722df7530d1a662733f36052dfcd5dd27d41e2aa49a7809b039d89ef.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -726,11 +732,11 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### With Sources
 
-<iframe src="https:///frame/api/interactions-api_222fb79d50689d8343834d872533623803a84be6615c694275fa0a8e308b06a5.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_a7c0d6ece6fcaef8ce5ed625b91d6050c1c1b980fd0351a00e87c7314c8c2f42.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### Custom Agent
 
-<iframe src="https:///frame/api/interactions-api_1518a687bddd73b3dbf076d090d63ccba0bf0adff4caeee8a6ddcb53a0b5ebd6.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_136984c87c22450571beb550a06827c0c721c6703e135d53c41b18badab0d3dc.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ## Canceling an interaction
 
@@ -749,7 +755,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Cancel Interaction
 
-<iframe src="https:///frame/api/interactions-api_51cc99d1cf6891cf46a52413632d15221a55fdec3919f1dfc02490c2c937d637.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_1efe8a55919df523452dc80ee88d1a299e49c447a7db1b688befc677ccdd4214.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -919,7 +925,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Get Interaction
 
-<iframe src="https:///frame/api/interactions-api_b2490381d0fe440147f2af6009a18f46ef83634ab9b5a289edf24516d77b135b.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_f00da288965e4991aced1c160bc449960f7a2235e8c67fe419d0ffad238ff500.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -1074,7 +1080,7 @@ If successful, the response is empty.
 
 ### Delete
 
-<iframe src="https:///frame/api/interactions-api_53aae4c0295a1b0267711808f068d4f39c64345e844fbf8869bbdefa51bb0f3a.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_c8aab21c12456968451c0098f8644f7945b6f194f93a470e6cf3f8cc8d5cb943.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ## Resources
 
@@ -1230,6 +1236,12 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-3.8-flash`
 
   Gemini 3.8 Flash - Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.
+- `gemini-3.8-flash-tts`
+
+  Gemini 3.8 Flash TTS - Flagship TTS model for Voice Design and dual-speaker screenplay control. Prompt custom vocal personas, direct line-by-line delivery, and add vocal bursts.
+- `gemini-3.8-flash-lite-tts`
+
+  Gemini 3.8 Flash Lite TTS - High-speed and cost-efficient, ideal for rapid dubbing, media localization, and high-throughput voice agents. Direct replacement for gemini-3.1-flash-tts-preview.
 - `lyria-3-clip-preview`
 
   Our low-latency, music generation model optimized for high-fidelity audio clips and precise rhythmic control.
@@ -1946,35 +1958,35 @@ Always set to `"url_context"`.
 
 ### CodeExecution
 
-<iframe src="https:///frame/api/interactions-api_21fbd8763313ec611b39ebb361415a685914b6d96fe2bb19d937bb5fcc96b8ff.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_60921f83eb8d07eccc88459e990e79649a1d00cb736509bc3ffb854c77e2a78f.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### ComputerUse
 
-<iframe src="https:///frame/api/interactions-api_81999a9cf44e0496f20f80e2d114b7d618a5fe361108ac96aa166205e8cec902.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_ab7f67dd37c0d02874a3da46f675a2a26c8c78f2aa3e5852eb0f9a67e1ac57f3.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### FileSearch
 
-<iframe src="https:///frame/api/interactions-api_3bd422760214953c2ecf9835fe80d44dba7c212ec2984ab09fcdea4740e58d46.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_d44ae41bc2dadacae862adfcee52a3a56cd426603973f74e668e4c30021764b1.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### Function
 
-<iframe src="https:///frame/api/interactions-api_7917a44300421a2fe7375a99e8507c22647e4cd5ffd2e66fedeeeea62e68129b.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_1c08155ba7e48ee4ec2eb31d6f1041e263bcbc040eff8e4c0ccf267fe2efffb3.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### GoogleMaps
 
-<iframe src="https:///frame/api/interactions-api_3b44e00b70d65cb6ef2935ac4a1a4e1e9b824335c7fb7cc707062660cdeb50b0.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_81d4cb055d6b64e901907ed5e6794481099d301bb772f0f57fd89c5721cd3267.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### GoogleSearch
 
-<iframe src="https:///frame/api/interactions-api_6cf4fa3e14e229928a669cb3a94e958e6081fedd5eae4e8a73d8e64219d6d005.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_ef9d228072661835e61196d3098a50ec2ffda5568d6373b50846aa2aaec579b6.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### McpServer
 
-<iframe src="https:///frame/api/interactions-api_a77dcb58324425b88cad29f9831d9b801d7b83c2603395f8730cce94c1149051.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_794bac621044450899ba634e8bf233806331381820672dc917e6ff5b54c8ce35.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### UrlContext
 
-<iframe src="https:///frame/api/interactions-api_0c5d5a989d3c502f66af18c77e3b2f1ad72a20fa3ce65ca3e981a90827a044a0.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_0383a858ce733f1b1c5c61bd9db38876fe0c1f595702b1ef67ccd2d8f401e93d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### InteractionSseEvent
 

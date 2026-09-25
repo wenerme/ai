@@ -32,7 +32,7 @@ Qwen 3.8 27B is a 27-billion-parameter instruction-tuned language model from Ali
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
-| Reasoning | Yes |
+| Reasoning | `low``medium``xhigh` (default) |
 | Vision | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.45 per M input tokens, $3.20 per M output tokens, $0.05 per M cached input tokens |
@@ -202,7 +202,7 @@ presence\_penalty
 
 reasoning\_effort
 
-<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+<code>string | null</code>enum: low, medium, xhighReasoning effort. Supported levels: low, medium, xhigh.
 
 ▶chat\_template\_kwargs{}
 
@@ -366,7 +366,7 @@ presence\_penalty
 
 reasoning\_effort
 
-<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+<code>string | null</code>enum: low, medium, xhighReasoning effort. Supported levels: low, medium, xhigh.
 
 ▶chat\_template\_kwargs{}
 

@@ -123,7 +123,7 @@ Advanced settings
   - Make sure that the value is relatively static and within the first 10 KB of the HTML page.
 - **Simulate Zone**:
   - It is recommended to use the same zone in which the Load Balancer exists.
-  - Changes the egress zone settings of a health monitor request to ensure compatibility with features like <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/">Authenticated Origin Pulls (mTLS)</a>, <a href="https://developers.cloudflare.com/argo-smart-routing/">Argo Smart Routing</a>, <a href="https://developers.cloudflare.com/ssl/client-certificates/byo-ca/">Bring your own CA (mTLS)</a>, <a href="https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/">Dedicated CDN Egress IPs</a>, and <a href="https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/">HTTP/2 to Origin</a>.
+  - Changes the egress zone settings of a health monitor request to ensure compatibility with features like <a href="https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/">Authenticated Origin Pulls (mTLS)</a>, <a href="https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/">Origin CA (mTLS)</a>, <a href="https://developers.cloudflare.com/argo-smart-routing/">Argo Smart Routing</a>, <a href="https://developers.cloudflare.com/smart-shield/configuration/dedicated-egress-ips/">Dedicated CDN Egress IPs</a>, and <a href="https://developers.cloudflare.com/speed/optimization/protocol/http2-to-origin/">HTTP/2 to Origin</a>.
 - **Follow Redirects**:
   - Instead of reporting a <code>301</code> or <code>302</code> code as unhealthy, the health monitor request follows redirects to the final endpoint.
 - **Configure Request Header(s)**:

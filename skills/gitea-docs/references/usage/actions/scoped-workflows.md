@@ -96,8 +96,8 @@ Enforcement scope:
 
 Scoped workflows can call reusable workflows:
 
-- A **local** reference (`uses: ./...`) resolves against the **source** repository: the repository the calling workflow's content came from, not the consuming repository.
-- A **cross-repository** reference (`uses: owner/repo/...@ref`) is resolved with the **consuming repository's** read permission. If it points to a private repository, make sure every consuming repository can read it; otherwise the workflow will fail there.
+- A **local** reference (`uses: ./...` or `uses: $/...`) resolves against the **source** repository: the repository the calling workflow's content came from, not the consuming repository.
+- A **cross-repository** reference (`uses: owner/repo/...@ref` or `uses: self:owner/repo/...@ref`) is resolved with the **consuming repository's** read permission. If it points to a private repository, make sure every consuming repository can read it; otherwise the workflow will fail there.
 
 A reusable workflow can live under `SCOPED_WORKFLOW_DIRS` (or `WORKFLOW_DIRS`) of the source repository.
 

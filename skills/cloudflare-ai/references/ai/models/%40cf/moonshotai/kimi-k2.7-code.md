@@ -36,7 +36,7 @@ This model is not available through standard Workers Free billing. To use it, up
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Terms and License | [link ↗](https://huggingface.co/moonshotai/Kimi-K2.7-Code/blob/main/LICENSE) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
-| Reasoning | Yes |
+| Reasoning | Always on |
 | Vision | Yes |
 | Unit Pricing | $0.95 per M input tokens, $4.00 per M output tokens, $0.19 per M cached input tokens |
 
@@ -203,10 +203,6 @@ presence\_penalty
 
 <code>number | null</code>Penalizes new tokens based on whether they appear in the text so far.
 
-reasoning\_effort
-
-<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
-
 ▶chat\_template\_kwargs{}
 
 <code>object</code>
@@ -366,10 +362,6 @@ parallel\_tool\_calls
 presence\_penalty
 
 <code>number | null</code>Penalizes new tokens based on whether they appear in the text so far.
-
-reasoning\_effort
-
-<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 

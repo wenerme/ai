@@ -37,7 +37,7 @@ This model is not available through standard Workers Free billing. To use it, up
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 262,144 tokens |
 | Terms and License | [link ↗](https://huggingface.co/moonshotai/Kimi-K2.6/blob/main/LICENSE) |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
-| Reasoning | Yes |
+| Reasoning | `none``high` (default) |
 | Vision | Yes |
 | Batch | Yes |
 | Unit Pricing | $0.95 per M input tokens, $4.00 per M output tokens, $0.16 per M cached input tokens |
@@ -207,7 +207,7 @@ presence\_penalty
 
 reasoning\_effort
 
-<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+<code>string | null</code>enum: high, noneReasoning effort. Supported levels: high, none. Compatibility aliases: low maps to high; medium maps to high; max maps to high.
 
 ▶chat\_template\_kwargs{}
 
@@ -371,7 +371,7 @@ presence\_penalty
 
 reasoning\_effort
 
-<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
+<code>string | null</code>enum: high, noneReasoning effort. Supported levels: high, none. Compatibility aliases: low maps to high; medium maps to high; max maps to high.
 
 ▶chat\_template\_kwargs{}
 

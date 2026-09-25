@@ -34,6 +34,32 @@ NVIDIA Nemotron 3 Super is a hybrid MoE model with leading accuracy for multi-ag
 | Reasoning | Yes |
 | Unit Pricing | $0.50 per M input tokens, $1.50 per M output tokens |
 
+## Reasoning effort
+
+Nemotron supports normal reasoning, low reasoning, and reasoning turned off. It does not currently select these modes from the top-level`reasoning_effort` field. Pass the corresponding options through `chat_template_kwargs` instead.
+
+To use low reasoning, set both `enable_thinking` and`low_effort`:
+
+```python
+response = client.chat.completions.create(
+    model="@cf/nvidia/nemotron-3-120b-a12b",
+    messages=[{"role": "user", "content": "What is the capital of Japan?"}],
+    max_tokens=16000,
+    temperature=1.0,
+    top_p=0.95,
+    extra_body={
+        "chat_template_kwargs": {
+            "enable_thinking": True,
+            "low_effort": True,
+        }
+    },
+)
+```
+
+The low-effort option appends `{reasoning effort: low}` to the latest user message. To turn reasoning off, set`enable_thinking` to `False`. For coding agents, set`force_nonempty_content` to `True` in the same`chat_template_kwargs` object.
+
+For more information, refer to [NVIDIA's Nemotron API client example](https://huggingface.co/nvidia/NVIDIA-Nemotron-3-Super-120B-A12B-FP8#api-client).
+
 ## Playground
 
 Try out this model with Workers AI LLM Playground. It does not require any setup or authentication and is an instant way to preview and test a model directly in the browser.
@@ -129,13 +155,9 @@ Workers AI also supports OpenAI compatible API endpoints for `/v1/chat/completio
 
 ### Input
 
-prompt
-
-`string`requiredminLength: 1The input text prompt for the model to generate a response.
-
 model
 
-`string`ID of the model to use (e.g. '@cf/zai-org/glm-4.7-flash, etc').
+`string`ID of the model to use (for example, '@cf/nvidia/nemotron-3-120b-a12b').
 
 ▶audio{}
 
@@ -159,7 +181,7 @@ top\_logprobs
 
 max\_tokens
 
-`integer | null`Deprecated in favor of max\_completion\_tokens. The maximum number of tokens to generate.
+`integer | null`The maximum number of tokens to generate.
 
 max\_completion\_tokens
 
@@ -167,11 +189,11 @@ max\_completion\_tokens
 
 metadata
 
-`object | null`Set of 16 key-value pairs that can be attached to the object.
+`object | null`Set of key-value pairs that can be attached to the object.
 
 modalities
 
-`array | null`Output types requested from the model (e.g. \['text'] or \['text', 'audio']).
+`array | null`Output types requested from the model.
 
 n
 
@@ -189,13 +211,9 @@ presence\_penalty
 
 `number | null`Penalizes new tokens based on whether they appear in the text so far.
 
-reasoning\_effort
-
-`string | null`enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
-
 ▶chat\_template\_kwargs{}
 
-`object`
+`object`Nemotron chat-template controls for normal reasoning, low-effort reasoning, and non-reasoning responses.
 
 ▶response\_format
 
@@ -211,7 +229,7 @@ seed
 
 store
 
-`boolean | null`Whether to store the output for model distillation / evals.
+`boolean | null`Whether to store the output for model distillation or evaluation.
 
 stream
 
@@ -252,6 +270,10 @@ user
 ▶functions\[]
 
 `array`minItems: 1maxItems: 128
+
+prompt
+
+`string`requiredminLength: 1The input text prompt for the model to generate a response.
 
 ### Output
 

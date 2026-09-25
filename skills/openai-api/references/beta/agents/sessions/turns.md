@@ -58,7 +58,7 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
 
       A stable, machine-readable failure category.
 
@@ -89,6 +89,10 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
       - `"cyber_policy"`
 
         The request was rejected by a safety policy.
+
+      - `"misalignment_policy_violation"`
+
+        The request was blocked by the safety systems.
 
       - `"connection_failed"`
 
@@ -315,7 +319,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
 
       A stable, machine-readable failure category.
 
@@ -346,6 +350,10 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
       - `"cyber_policy"`
 
         The request was rejected by a safety policy.
+
+      - `"misalignment_policy_violation"`
+
+        The request was blocked by the safety systems.
 
       - `"connection_failed"`
 
@@ -536,7 +544,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 14 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
 
       A stable, machine-readable failure category.
 
@@ -567,6 +575,10 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
       - `"cyber_policy"`
 
         The request was rejected by a safety policy.
+
+      - `"misalignment_policy_violation"`
+
+        The request was blocked by the safety systems.
 
       - `"connection_failed"`
 

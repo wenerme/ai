@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Set up Data Loss Prevention (DLP)
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Add Data Loss Prevention (DLP) to any AI Gateway to start scanning AI prompts and responses for sensitive data.
 
@@ -53,6 +53,76 @@ After enabling DLP, you can create policies to define how sensitive data should 
      - **Response** - Scan AI model responses before returning to users
      - **Both** - Scan both requests and responses
 3. Click **Save** to save your policy configuration.
+
+## Configure DLP with the API
+
+Use the [Update a Gateway](https://developers.cloudflare.com/api/resources/ai_gateway/methods/update/) endpoint to manage DLP programmatically:
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>AI Gateway Write</code>
+
+</details>
+
+*Update a Gatewaybash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/gateways/$ID" \
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"rate_limiting_interval": 0,
+		"rate_limiting_limit": 0,
+		"collect_logs": true,
+		"cache_ttl": 0,
+		"cache_invalidate_on_update": false,
+		"dlp": {
+				"enabled": true,
+				"policies": [
+						{
+								"id": "block-financial-prompts",
+								"enabled": true,
+								"action": "BLOCK",
+								"profiles": [
+										"DLP_PROFILE_ID"
+								],
+								"check": [
+										"REQUEST"
+								]
+						}
+				]
+		}
+	}'
+```
+
+The following `dlp` object blocks requests that match the selected DLP profile:
+
+```json
+{
+	"dlp": {
+		"enabled": true,
+		"policies": [
+			{
+				"id": "block-financial-prompts",
+				"enabled": true,
+				"action": "BLOCK",
+				"profiles": ["DLP_PROFILE_ID"],
+				"check": ["REQUEST"]
+			}
+		]
+	}
+}
+```
+
+The update endpoint uses `PUT`. Retrieve the current gateway first and preserve its existing settings in the update body. Omitting the `dlp` property removes the gateway's DLP configuration.
 
 ## Manage DLP policies
 
@@ -223,5 +293,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/#page","headline":"Set up Data Loss Prevention (DLP)","description":"Enable and configure DLP policies on your AI Gateway to scan prompts and responses for sensitive data.","url":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/#page","headline":"Set up Data Loss Prevention (DLP)","description":"Enable and configure DLP policies on your AI Gateway to scan prompts and responses for sensitive data.","url":"https://developers.cloudflare.com/ai-gateway/features/dlp/set-up-dlp/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

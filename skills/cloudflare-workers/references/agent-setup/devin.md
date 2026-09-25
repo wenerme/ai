@@ -1,6 +1,6 @@
 ---
-description: Agentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition.
-title: Windsurf + Cloudflare
+description: A full IDE with an agent manager built in — the command center for managing all your agents in one place. Made by Cognition.
+title: Devin + Cloudflare
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
@@ -12,23 +12,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 [All agents](https://developers.cloudflare.com/agent-setup/)
 
-![](https://developers.cloudflare.com/icons/agents/windsurf/light.svg)![](https://developers.cloudflare.com/icons/agents/windsurf/dark.svg)
+![](https://developers.cloudflare.com/icons/agents/devin/light.svg)![](https://developers.cloudflare.com/icons/agents/devin/dark.svg)
 
 Cognition
 
-# Windsurf + Cloudflare
+# Devin + Cloudflare
 
-Agentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition.
+A full IDE with an agent manager built in — the command center for managing all your agents in one place. Made by Cognition.
 
-IDEStandalone
+IDETerminalStandaloneCloudExtension
 
-[Cloudflare Skills](https://github.com/cloudflare/skills)· [Cloudflare Code Mode API MCP](https://github.com/cloudflare/mcp)· [Cloudflare Domain Specific MCPs](https://github.com/cloudflare/mcp-server-cloudflare)· [Windsurf Docs](https://docs.windsurf.com)
+[Cloudflare Skills](https://github.com/cloudflare/skills)· [Cloudflare Code Mode API MCP](https://github.com/cloudflare/mcp)· [Cloudflare Domain Specific MCPs](https://github.com/cloudflare/mcp-server-cloudflare)· [Devin Docs](https://docs.devin.ai)
 
 ## Quick start
 
-1. **Download Windsurf**
+1. **Download Devin Desktop**
 
-   Download Windsurf for macOS, Windows, or Linux from the [Windsurf downloads page ↗](https://windsurf.com/download).
+   Download Devin Desktop for macOS, Windows, or Linux from the [Devin Desktop downloads page ↗](https://devin.ai/download).
 2. **Install Cloudflare Skills**
 
    ```bash
@@ -58,7 +58,7 @@ IDEStandalone
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Check my Workers deployment logs for errors and suggest fixes.
+   Add a cron trigger to my Worker that processes a job queue every hour.
    ```
 
 
@@ -164,11 +164,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
@@ -176,11 +176,11 @@ Optimize my Worker to serve WebP images with responsive resizing using Cloudflar
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ## Tips
@@ -193,11 +193,11 @@ Build a serverless AI inference endpoint on Workers AI with streaming responses.
 
 <details>
 
-<summary>Does Windsurf support Cloudflare Skills?
+<summary>Does Devin Desktop support Cloudflare Skills?
 
 </summary>
 
-Yes. Windsurf supports Agent Skills in Cascade. Install the Cloudflare Skills bundle from <a href="https://github.com/cloudflare/skills">cloudflare/skills ↗</a> — see the <a href="https://docs.windsurf.com/windsurf/cascade/skills">Windsurf Cascade Skills documentation ↗</a> for where Cascade discovers and loads Skills.
+Yes. Devin Desktop supports Agent Skills in Cascade. Install the Cloudflare Skills bundle from <a href="https://github.com/cloudflare/skills">cloudflare/skills ↗</a> — refer to the <a href="https://docs.devin.ai/desktop/cascade/skills">Devin Desktop Cascade Skills documentation ↗</a> for where Cascade discovers and loads Skills.
 
 </details>
 
@@ -207,7 +207,7 @@ Yes. Windsurf supports Agent Skills in Cascade. Install the Cloudflare Skills bu
 
 </summary>
 
-All three complement each other. Cloudflare Skills teach Cascade the patterns and conventions for Workers development. The Cloudflare API MCP server handles platform operations (DNS, WAF, Zero Trust, R2 buckets). Wrangler in Windsurf's integrated terminal covers local dev and deploys. Cascade coordinates between them naturally.
+All three complement each other. Cloudflare Skills teach Cascade the patterns and conventions for Workers development. The Cloudflare API MCP server handles platform operations (DNS, WAF, Zero Trust, R2 buckets). Wrangler in Devin Desktop's integrated terminal covers local dev and deploys. Cascade coordinates between them naturally.
 
 </details>
 
@@ -229,7 +229,7 @@ Yes. Cascade can run <code>npx wrangler deploy</code> in the integrated terminal
 
 </summary>
 
-Verify your <code>mcp_config.json</code> configuration. Restart Windsurf after making changes. Ensure the MCP server URL ends with <code>/mcp</code>.
+Verify your <code>mcp_config.json</code> configuration. Restart Devin Desktop after making changes. Ensure the MCP server URL ends with <code>/mcp</code>.
 
 </details>
 
@@ -266,5 +266,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/windsurf/#page","headline":"Windsurf + Cloudflare","description":"Agentic IDE with Cascade context and Flows for multi-step tasks. Made by Cognition.","url":"https://developers.cloudflare.com/agent-setup/windsurf/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/devin/#page","headline":"Devin + Cloudflare","description":"A full IDE with an agent manager built in — the command center for managing all your agents in one place. Made by Cognition.","url":"https://developers.cloudflare.com/agent-setup/devin/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -242,3 +242,43 @@ curl -X POST https://api.openai.com/v1/organization/external_storage \
   "created_at": 1711471533
 }
 ```
+
+### Google Cloud Storage
+
+```http
+curl -X POST https://api.openai.com/v1/organization/external_storage \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "project_id": "proj_gcp123",
+    "provider": {
+      "type": "gcp",
+      "bucket": "customer-gcp-retention",
+      "workload_identity_project_number": "123456789012",
+      "workload_identity_pool_id": "customer-pool",
+      "workload_identity_provider_id": "customer-provider"
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.external_storage",
+  "id": "extstorage_gcp123",
+  "project_id": "proj_gcp123",
+  "provider": {
+    "type": "gcp",
+    "bucket": "customer-gcp-retention",
+    "workload_identity_project_number": "123456789012",
+    "workload_identity_pool_id": "customer-pool",
+    "workload_identity_provider_id": "customer-provider",
+    "region": "us-central1",
+    "audience": "proj_gcp123"
+  },
+  "geography": "US",
+  "status": "pending",
+  "created_at": 1711471400
+}
+```

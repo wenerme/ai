@@ -1211,8 +1211,8 @@
   },
   "grafana-lokiexplore-app/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/troubleshooting.md",
-    "size": 15535,
-    "updatedAt": "2026-08-13T02:58:38.254Z"
+    "size": 16273,
+    "updatedAt": "2026-09-25T04:46:20.025Z"
   },
   "grafana-lokiexplore-app/view-logs.md": {
     "url": "https://grafana.com/docs/plugins/grafana-lokiexplore-app/latest/view-logs.md",

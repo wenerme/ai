@@ -95,7 +95,6 @@ The table below indicates when application state is stored for each endpoint. Ze
 | `/v1/completions`          |           No           |          30 days           |              None              |              Yes               |                            No                            |
 | `/v1/live/sessions`        |           No           |          30 days           |   None, or 30 days if stored   |  Yes, with limitations below   |                            No                            |
 | `/v1/realtime`             |           No           |          30 days           |              None              |              Yes               |                            No                            |
-| `/v1/videos`               |           No           |          30 days           |              None              |               No               |                            No                            |
 
 #### `/v1/chat/completions`
 
@@ -131,9 +130,9 @@ The table below indicates when application state is stored for each endpoint. Ze
 
 - Files can be manually deleted via the API or the dashboard, or can be automatically deleted by setting the `expires_after` parameter. See [here](https://developers.openai.com/api/reference/resources/files/methods/create#files_create-expires_after) for more information.
 
-#### `/v1/videos`
+#### Historical Videos API retention
 
-- The `v1/videos` API includes a workflow that saves data to disk while processing and retains it for 48 hours to allow the caller to download the produced video and then for 30 days for abuse monitoring. `v1/videos` is currently blocked for MAM or ZDR requests. If your organization has data retention controls enabled, configure a project with its retention setting set to **None** as described in [Configuring data retention controls](#configuring-data-retention-controls) to use `/v1/videos` with that project.
+Before the September 24, 2026 shutdown, the Videos API documentation specified 48 hours for downloading generated videos, followed by 30 days of retention for abuse monitoring. These periods describe the policy documented before shutdown; they do not promise download access after shutdown. See the [Videos API shutdown notice](https://developers.openai.com/api/docs/deprecations#2026-03-24-sora-2-video-generation-models-and-videos-api).
 
 #### Image and file inputs
 
