@@ -23,7 +23,7 @@ Smart Placement applies to Pages Functions and middleware. Normally, assets are 
 Smart Placement on Pages currently has some caveats. While assets are always meant to be served from a location closest to the user, there are two exceptions to this behavior:
 
 1. If using middleware for every request ( `functions/_middleware.js`) when Smart Placement is enabled, all assets will be served from a location closest to your back-end infrastructure. This may result in an unexpected increase in latency as a result.
-2. When using [`env.ASSETS.fetch` ↗](https://developers.cloudflare.com/pages/functions/advanced-mode/), assets served via the `ASSETS` fetcher from your Pages Function are served from the same location as your Function. This could be the location closest to your back-end infrastructure and not the user.
+2. When using [`env.ASSETS.fetch` ↗︎](https://developers.cloudflare.com/pages/functions/advanced-mode/), assets served via the `ASSETS` fetcher from your Pages Function are served from the same location as your Function. This could be the location closest to your back-end infrastructure and not the user.
 
 Note
 
@@ -46,7 +46,7 @@ To enable Smart Placement via the dashboard:
 
 ## Give feedback on Smart Placement
 
-Smart Placement is in beta. To share your thoughts and experience with Smart Placement, join the [Cloudflare Developer Discord ↗](https://discord.cloudflare.com).
+Smart Placement is in beta. To share your thoughts and experience with Smart Placement, join the [Cloudflare Developer Discord ↗︎](https://discord.cloudflare.com).
 
 Was this helpful?
 

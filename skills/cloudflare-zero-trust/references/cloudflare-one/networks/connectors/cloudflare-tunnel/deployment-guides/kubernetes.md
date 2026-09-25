@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/kubernetes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Kubernetes ↗](https://kubernetes.io/) is a container orchestration tool that is used to deploy applications onto physical or virtual machines, scale the deployment to meet traffic demands, and push updates without downtime. The Kubernetes cluster, or environment, where the application instances are running is connected internally through a private network. You can install the `cloudflared` daemon inside of the Kubernetes cluster in order to connect applications inside of the cluster to Cloudflare.
+[Kubernetes ↗︎](https://kubernetes.io/) is a container orchestration tool that is used to deploy applications onto physical or virtual machines, scale the deployment to meet traffic demands, and push updates without downtime. The Kubernetes cluster, or environment, where the application instances are running is connected internally through a private network. You can install the `cloudflared` daemon inside of the Kubernetes cluster in order to connect applications inside of the cluster to Cloudflare.
 
 This guide will cover how to expose a Kubernetes service to the public Internet using a remotely-managed Cloudflare Tunnel. For the purposes of this example, we will deploy a basic web application alongside `cloudflared` in Google Kubernetes Engine (GKE). The same principles apply to any other Kubernetes environment (such as `minikube`, `kubeadm`, or a cloud-based Kubernetes service) where `cloudflared` can connect to Cloudflare's network.
 
@@ -24,13 +24,13 @@ If your server is behind a restrictive firewall, verify it can reach Cloudflare 
 
 Locally-managed tunnels
 
-If you are looking to set up a locally-managed tunnel in Kubernetes, refer to the [example code in GitHub ↗](https://github.com/cloudflare/argo-tunnel-examples/tree/master/named-tunnel-k8s).
+If you are looking to set up a locally-managed tunnel in Kubernetes, refer to the [example code in GitHub ↗︎](https://github.com/cloudflare/argo-tunnel-examples/tree/master/named-tunnel-k8s).
 
 ## Architecture
 
 ![Diagram showing how a user connects to Kubernetes services through Cloudflare Tunnel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1192,height=635,format=webp/_astro/kubernetes-tunnel.C8IQcJlu.png)
 
-As shown in the diagram, we recommend setting up `cloudflared` as an adjacent [deployment ↗](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) to the application deployments. Having a separate Kubernetes deployment for `cloudflared` allows you to scale `cloudflared` independently of the application. In the `cloudflared` deployment, you can spin up [multiple replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) running the same Cloudflare Tunnel — there is no need to build a dedicated tunnel for each `cloudflared` pod. Each `cloudflared` replica / pod can reach all Kubernetes services in the cluster.
+As shown in the diagram, we recommend setting up `cloudflared` as an adjacent [deployment ↗︎](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) to the application deployments. Having a separate Kubernetes deployment for `cloudflared` allows you to scale `cloudflared` independently of the application. In the `cloudflared` deployment, you can spin up [multiple replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) running the same Cloudflare Tunnel — there is no need to build a dedicated tunnel for each `cloudflared` pod. Each `cloudflared` replica / pod can reach all Kubernetes services in the cluster.
 
 Note
 
@@ -42,14 +42,14 @@ Once the cluster is connected to Cloudflare, you can configure Cloudflare Tunnel
 
 To complete the following procedure, you will need:
 
-- [A Google Cloud Project ↗](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project)
+- [A Google Cloud Project ↗︎](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project)
 - [A zone on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
 
 ## 1. Create a GKE cluster
 
 To create a new Kubernetes cluster in Google Cloud:
 
-1. Open [Google Cloud ↗](https://console.cloud.google.com/) and go to **Kubernetes Engine**.
+1. Open [Google Cloud ↗︎](https://console.cloud.google.com/) and go to **Kubernetes Engine**.
 2. In **Clusters**, select **Create**.
 3. Name the cluster. In this example, we will name it `cloudflare-tunnel`.
 4. (Optional) Choose your desired region and other cluster specifications. For this example, we will use the default specifications.
@@ -76,7 +76,7 @@ To create a new Kubernetes cluster in Google Cloud:
 
 ## 2. Create pods for the web app
 
-A pod represents an instance of a running process in the cluster. In this example, we will deploy the [httpbin ↗](https://httpbin.org/) application with two pods and make the pods accessible inside the cluster at `httpbin-service:80`.
+A pod represents an instance of a running process in the cluster. In this example, we will deploy the [httpbin ↗︎](https://httpbin.org/) application with two pods and make the pods accessible inside the cluster at `httpbin-service:80`.
 
 1. Create a folder for your Kubernetes manifest files:
 
@@ -193,7 +193,7 @@ Leave the Cloudflare Tunnel browser tab open while we focus on the Kubernetes de
 
 ## 4. Store the tunnel token
 
-`cloudflared` uses a tunnel token to run a remotely-managed Cloudflare Tunnel. You can store the tunnel token in a [Kubernetes secret ↗](https://kubernetes.io/docs/concepts/configuration/secret/).
+`cloudflared` uses a tunnel token to run a remotely-managed Cloudflare Tunnel. You can store the tunnel token in a [Kubernetes secret ↗︎](https://kubernetes.io/docs/concepts/configuration/secret/).
 
 1. In GKE Cloud Shell, create a `tunnel-token.yaml` file with the following content. Make sure to replace `<YOUR_TUNNEL_TOKEN>` with your tunnel token ( `eyJhIjoiNWFiNGU5Z...`).
 

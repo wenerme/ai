@@ -65,7 +65,7 @@ Note
 
 WAF attack score is only available to Business customers (limited access to a single field) and Enterprise customers (full access).
 
-[WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/) is a machine-learning layer that complements Cloudflare's managed rulesets, providing additional protection against [SQL injection ↗](https://www.cloudflare.com/learning/security/threats/sql-injection/) (SQLi), [cross-site scripting ↗](https://www.cloudflare.com/learning/security/threats/cross-site-scripting/) (XSS), and many [remote code execution ↗](https://www.cloudflare.com/learning/security/what-is-remote-code-execution/) (RCE) attacks. It helps identify rule bypasses and potentially new, undiscovered attacks.
+[WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/) is a machine-learning layer that complements Cloudflare's managed rulesets, providing additional protection against [SQL injection ↗︎](https://www.cloudflare.com/learning/security/threats/sql-injection/) (SQLi), [cross-site scripting ↗︎](https://www.cloudflare.com/learning/security/threats/cross-site-scripting/) (XSS), and many [remote code execution ↗︎](https://www.cloudflare.com/learning/security/what-is-remote-code-execution/) (RCE) attacks. It helps identify rule bypasses and potentially new, undiscovered attacks.
 
 If you are an Enterprise customer, do the following:
 

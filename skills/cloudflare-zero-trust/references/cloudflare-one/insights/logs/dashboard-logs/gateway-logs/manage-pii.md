@@ -45,7 +45,7 @@ Changes to this setting do not affect PII already stored in previous logs.
 
 To turn on the setting to exclude PII:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** > **Traffic settings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Traffic policies** > **Traffic settings**.
 2. In **Traffic logging**, turn on **Exclude personally identifiable information (PII) from logs**.
 
 Was this helpful?

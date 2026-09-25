@@ -16,7 +16,7 @@ Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developer
 
 In the final part of the AI Image Playground series, Kristian teaches how to utilize Cloudflare's [R2](https://developers.cloudflare.com/r2) object storage in order to maintain and keep track of each AI generated image.
 
-Refer to the AI Image Playground [GitHub repository ↗](https://github.com/kristianfreeman/workers-ai-image-playground) to follow along locally.
+Refer to the AI Image Playground [GitHub repository ↗︎](https://github.com/kristianfreeman/workers-ai-image-playground) to follow along locally.
 
 <details>
 

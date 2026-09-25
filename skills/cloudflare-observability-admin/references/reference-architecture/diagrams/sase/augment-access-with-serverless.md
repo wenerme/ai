@@ -20,13 +20,13 @@ Companies using Zero Trust Network Access (ZTNA) services build policies to dete
 
 Secure access requires a range of attributes being available to the policy engine for evaluation. With Cloudflare's ZTNA service, [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), it is possible to include in the policy an external request to another API that provides part of the data required for the access decision.
 
-For example, you might have a policy which states all members of the group "Engineers", who have authenticated with credentials that required a hard token, can have access to the self-hosted source code repository. But you also want to only allow engineers who have completed security training. That data might be available in another system, so Cloudflare allows you to, as part of the policy check, make a call using [Workers ↗](https://workers.cloudflare.com/) to the training system to determine if this user has passed security training.
+For example, you might have a policy which states all members of the group "Engineers", who have authenticated with credentials that required a hard token, can have access to the self-hosted source code repository. But you also want to only allow engineers who have completed security training. That data might be available in another system, so Cloudflare allows you to, as part of the policy check, make a call using [Workers ↗︎](https://workers.cloudflare.com/) to the training system to determine if this user has passed security training.
 
 Additionally, once authentication and the policy checks are successful Cloudflare passes traffic to the protected origin. It is important to note that the origin should, too, verify that the incoming requests are authenticated by Cloudflare in order to avoid any illegitimate access. Cloudflare inserts a JWT token in the traffic destined to the origin to prove cryptographically that the request was successfully authenticated, and the origin can use this data as part of its authorization logic.
 
 To help integrate these types of use cases, Cloudflare has an [entire development platform](https://developers.cloudflare.com/workers/) on which you can design and run your own business logic. This means you spend less time trying to piece a solution together and more time getting the integration done.
 
-This document outlines how to combine both solutions to enhance Cloudflare Access capabilities in terms of [authorization and authentication ↗](https://www.cloudflare.com/learning/access-management/what-is-access-control/).
+This document outlines how to combine both solutions to enhance Cloudflare Access capabilities in terms of [authorization and authentication ↗︎](https://www.cloudflare.com/learning/access-management/what-is-access-control/).
 
 ## Showcased products
 
@@ -40,7 +40,7 @@ Cloudflare Zero Trust replaces legacy security perimeters with Cloudflare's glob
 
 ## Use-cases
 
-- **Custom authorization logic**: Access External evaluation using Workers as a backend (for example, using your own implementation of [Open Policy Agent aka OPA ↗](https://www.openpolicyagent.org/integrations/cloudflare-worker/)])
+- **Custom authorization logic**: Access External evaluation using Workers as a backend (for example, using your own implementation of [Open Policy Agent aka OPA ↗︎](https://www.openpolicyagent.org/integrations/cloudflare-worker/)])
 - **Augmented [JSON Web Token (JWT)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/)**: Using Cloudflare's own authentication JWT material, for example, adding posture details as part of an incoming request.
 - **Serverless augmented apps protected with Zero-trust**: Allowing anyone building serverless applications to benefit from native ZTNA features
 
@@ -66,7 +66,7 @@ External authorization with Cloudflare's external evaluation functionality
 
 When a user successfully authenticates and is authorized to access a protected application, Cloudflare inserts a [JSON Web Token (JWT)](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) into the HTTP traffic sent to the origin. This token serves as a valuable asset for expanding custom business logic through secure processing. The format for that JWT is deterministic and rather lightweight to avoid overloading the requests towards origin unnecessarily.
 
-Here is an example of a JWT sent to an origin (use [JWT.io ↗](http://jwt.io) to read the contents of a JWT)
+Here is an example of a JWT sent to an origin (use [JWT.io ↗︎](http://jwt.io) to read the contents of a JWT)
 
 *JWT contentjson*
 
@@ -184,7 +184,7 @@ How to augment Cloudflare Access JWT with Cloudflare's Workers
 
 - [External Evaluation rules](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/)
 - [SASE reference architecture](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
-- [External Evaluation blog post ↗](https://blog.cloudflare.com/access-external-validation-rules/)
+- [External Evaluation blog post ↗︎](https://blog.cloudflare.com/access-external-validation-rules/)
 
 Was this helpful?
 

@@ -214,7 +214,7 @@ class MyDurableObject(DurableObject):
 ## Related resources
 
 - Understand how to [use the Alarms API](https://developers.cloudflare.com/durable-objects/examples/alarms-api/) in an end-to-end example.
-- Read the [Durable Objects alarms announcement blog post ↗](https://blog.cloudflare.com/durable-objects-alarms/).
+- Read the [Durable Objects alarms announcement blog post ↗︎](https://blog.cloudflare.com/durable-objects-alarms/).
 - Review the [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) documentation for Durable Objects.
 
 Was this helpful?

@@ -67,7 +67,7 @@ When exporting and importing, special tags starting by `cf-` allow you to contro
 
 ### Comments
 
-Comments are treated as [graphic Unicode characters ↗](https://en.wikipedia.org/wiki/Graphic_character), meaning that they are case-sensitive and do not have any character limitations. However, comments do not support newline (`\n`) or carriage return (`\r`) characters.
+Comments are treated as [graphic Unicode characters ↗︎](https://en.wikipedia.org/wiki/Graphic_character), meaning that they are case-sensitive and do not have any character limitations. However, comments do not support newline (`\n`) or carriage return (`\r`) characters.
 
 ### Tags
 

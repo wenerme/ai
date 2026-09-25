@@ -102,7 +102,7 @@ If your website loads in a lot of player instances, PageSpeed Insights will pena
 
 If you are using thumbnails, you can use [animated thumbnails](https://developers.cloudflare.com/stream/viewing-videos/displaying-thumbnails/#animated-gif-thumbnails) that link to the video pages.
 
-If multiple players are on the same page, you can lazy load any players that are not visible in the initial viewport. For more information about lazy loading, refer to [Mozilla's lazy loading documentation ↗](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#lazy).
+If multiple players are on the same page, you can lazy load any players that are not visible in the initial viewport. For more information about lazy loading, refer to [Mozilla's lazy loading documentation ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#lazy).
 
 Was this helpful?
 

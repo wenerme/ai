@@ -26,7 +26,7 @@ As an IT administrator, you want to identify shadow MCP traffic to prevent unaut
   - Account-level `Zero Trust: Read`
   - Account-level `DLP: Write`
   - Account-level `Gateway: Write`
-- Your Cloudflare account ID (available in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) under **Account Home**)
+- Your Cloudflare account ID (available in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login) under **Account Home**)
 - Familiarity with [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/) queries
 - A working knowledge of TypeScript and REST APIs
 

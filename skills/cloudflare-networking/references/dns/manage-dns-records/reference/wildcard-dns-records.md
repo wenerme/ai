@@ -89,7 +89,7 @@ If you have only these two records on your domain:
 In this example, <code>123.abc.example.com</code> is a descendant of <code>abc.example.com</code>, and <code>abc.example.com</code> has no records associated with it. The behavior will depend on the type of nameservers you are using:
 
 - Standard nameservers: The wildcard <code>*.example.com</code> will still apply to <code>abc.example.com</code>.
-- <a href="https://developers.cloudflare.com/dns/foundation-dns/setup/">Advanced nameservers</a><sup><a href="#user-content-fn-1">1</a></sup>: In compliance with <a href="https://www.rfc-editor.org/rfc/rfc4592.html">RFC 4592 ↗</a>, the wildcard <code>*.example.com</code> will not apply to <code>abc.example.com</code>.
+- <a href="https://developers.cloudflare.com/dns/foundation-dns/setup/">Advanced nameservers</a><sup><a href="#user-content-fn-1">1</a></sup>: In compliance with <a href="https://www.rfc-editor.org/rfc/rfc4592.html">RFC 4592 ↗︎</a>, the wildcard <code>*.example.com</code> will not apply to <code>abc.example.com</code>.
 
 </details>
 
@@ -112,7 +112,7 @@ This means that a wildcard certificate covering `example.com` and `*.example.com
 
 ## Additional information
 
-For more information on wildcard records — as well as more details about their limitations — refer to the [introductory blog post ↗](https://blog.cloudflare.com/wildcard-proxy-for-everyone/).
+For more information on wildcard records — as well as more details about their limitations — refer to the [introductory blog post ↗︎](https://blog.cloudflare.com/wildcard-proxy-for-everyone/).
 
 ## Footnotes
 

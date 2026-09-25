@@ -84,7 +84,7 @@ ingress:
 
 You can use wildcards to match traffic to multiple subdomains. For example, if you set the `hostname` key to `*.example.com`, both `alpha.example.com` and `beta.example.com` will route traffic to your origin. `cloudflared` does not support wildcards in the middle of the hostname, such as `test.*.example.com`.
 
-You can also enter regular expressions for the `path` key. For example, if `hostname` is `static.example.com` and `path` is `\.(jpg|png|css|js)$`, matching URLs could include `https://static.example.com/data.js`, `http://static.example.com/images/photo.jpg`, and so on. Cloudflare parses the path regex using the [Go `syntax` package ↗](https://pkg.go.dev/regexp/syntax).
+You can also enter regular expressions for the `path` key. For example, if `hostname` is `static.example.com` and `path` is `\.(jpg|png|css|js)$`, matching URLs could include `https://static.example.com/data.js`, `http://static.example.com/images/photo.jpg`, and so on. Cloudflare parses the path regex using the [Go `syntax` package ↗︎](https://pkg.go.dev/regexp/syntax).
 
 Path forwarding
 

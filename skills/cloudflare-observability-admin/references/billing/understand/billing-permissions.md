@@ -38,7 +38,7 @@ The Billing role can view and pay but cannot change subscriptions or plans. To b
 
 ## Assign the Billing role
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 2. Select your account.
 3. Go to **Manage Account** > **Members**.
 4. Select **Invite** to add a new member, or select an existing member to edit their role.
@@ -55,7 +55,7 @@ API tokens used for billing endpoints require the `Billing Read` or `Billing Edi
 3. Use the **Custom token** template.
 4. Under **Permissions**, select **Account** > **Billing** > **Read** (or **Edit**).
 
-For full API documentation, refer to the [Cloudflare API reference ↗](https://developers.cloudflare.com/api/).
+For full API documentation, refer to the [Cloudflare API reference ↗︎](https://developers.cloudflare.com/api/).
 
 ## Related resources
 

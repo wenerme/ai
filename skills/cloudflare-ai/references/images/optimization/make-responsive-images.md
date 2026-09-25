@@ -41,7 +41,7 @@ To keep images sharp, you can provide a separate, higher-resolution version for 
 
 ## Use the `srcset` attribute
 
-When you embed an image using an `<img>` element, you can use its [`srcset` ↗](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img#srcset) attribute to give the browser a list of the same image at different sizes.
+When you embed an image using an `<img>` element, you can use its [`srcset` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/img#srcset) attribute to give the browser a list of the same image at different sizes.
 
 The browser evaluates screen size, pixel density, and network conditions, then selects the single best match.
 

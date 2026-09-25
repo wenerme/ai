@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Overview
 
-In this guide, you will use a WordPress plugin, [Simply Static ↗](https://wordpress.org/plugins/simply-static/), to convert your existing WordPress site to a static website deployed with Cloudflare Pages.
+In this guide, you will use a WordPress plugin, [Simply Static ↗︎](https://wordpress.org/plugins/simply-static/), to convert your existing WordPress site to a static website deployed with Cloudflare Pages.
 
 ## Prerequisites
 
@@ -27,7 +27,7 @@ This guide assumes that you are:
 
 ## Setup
 
-To start, install the [Simply Static ↗](https://wordpress.org/plugins/simply-static/) plugin to export your WordPress site. In your WordPress dashboard, go to **Plugins** > **Add New**.
+To start, install the [Simply Static ↗︎](https://wordpress.org/plugins/simply-static/) plugin to export your WordPress site. In your WordPress dashboard, go to **Plugins** > **Add New**.
 
 Search for `Simply Static` and confirm that the resulting plugin that you will be installing matches the plugin below.
 
@@ -73,7 +73,7 @@ With a static version of your site being served, you can:
 - Run your WordPress instance locally, or put your WordPress site behind [Cloudflare Access](https://developers.cloudflare.com/pages/configuration/preview-deployments/#customize-preview-deployments-access) to only give access to your contributors. This has a significant effect on the number of attack vectors for your WordPress site and its content.
 - Downgrade your WordPress hosting plan to a cheaper plan. Because the memory and bandwidth requirements for your WordPress instance are now smaller, you can often host it on a cheaper plan, or moving to shared hosting.
 
-Connect with the [Cloudflare Developer community on Discord ↗](https://discord.cloudflare.com) to ask questions and discuss the platform with other developers.
+Connect with the [Cloudflare Developer community on Discord ↗︎](https://discord.cloudflare.com) to ask questions and discuss the platform with other developers.
 
 Was this helpful?
 

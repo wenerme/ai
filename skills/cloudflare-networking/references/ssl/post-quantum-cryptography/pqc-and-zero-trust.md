@@ -16,7 +16,7 @@ Last updated Jul 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) replaces legacy corporate security perimeters with Cloudflare's global network, making access to the Internet and to corporate resources faster and safer for teams around the world.
 
-Organizations can obtain end-to-end post-quantum encryption of their private network traffic by sending it over Cloudflare One's post-quantum on-ramps and off-ramps. This protects traffic against [harvest-now, decrypt-later ↗](https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later) attacks even if the individual applications are not yet upgraded to post-quantum encryption.
+Organizations can obtain end-to-end post-quantum encryption of their private network traffic by sending it over Cloudflare One's post-quantum on-ramps and off-ramps. This protects traffic against [harvest-now, decrypt-later ↗︎](https://en.wikipedia.org/wiki/Harvest_now,_decrypt_later) attacks even if the individual applications are not yet upgraded to post-quantum encryption.
 
 Post-quantum encryption is offered in all major Cloudflare One network configurations, including the following on-ramps:
 
@@ -105,13 +105,13 @@ Traffic leaves the Cloudflare network over a post-quantum Cloudflare IPsec link 
 
 [Cloudflare IPsec](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/) also supports post-quantum key agreement with compatible third-party network devices using standard IKEv2. This extends post-quantum protection to organizations that connect their own routers and firewalls to Cloudflare's global network instead of using the Cloudflare One Appliance.
 
-The hybrid key agreement is negotiated using ML-KEM as an additional Key Exchange to classical Diffie-Hellman during the IKEv2 handshake, as defined in [RFC 9370 ↗](https://datatracker.ietf.org/doc/rfc9370/) and [draft-ietf-ipsecme-ikev2-mlkem ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/). For the list of validated third-party platforms and their supported parameters, refer to [Tested third-party vendor interoperability](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#tested-third-party-vendor-interoperability).
+The hybrid key agreement is negotiated using ML-KEM as an additional Key Exchange to classical Diffie-Hellman during the IKEv2 handshake, as defined in [RFC 9370 ↗︎](https://datatracker.ietf.org/doc/rfc9370/) and [draft-ietf-ipsecme-ikev2-mlkem ↗︎](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-mlkem/). For the list of validated third-party platforms and their supported parameters, refer to [Tested third-party vendor interoperability](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#tested-third-party-vendor-interoperability).
 
-Cloudflare also supports downgrade protection for IPsec tunnels via the [`IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` ↗](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/) extension. Both the initiator and Cloudflare (responder) must support the extension for protection to be effective. Refer to [Downgrade protection](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#improved-downgrade-protection-beta).
+Cloudflare also supports downgrade protection for IPsec tunnels via the [`IKE_SA_INIT_FULL_TRANSCRIPT_AUTH` ↗︎](https://datatracker.ietf.org/doc/draft-ietf-ipsecme-ikev2-downgrade-prevention/) extension. Both the initiator and Cloudflare (responder) must support the extension for protection to be effective. Refer to [Downgrade protection](https://developers.cloudflare.com/cloudflare-wan/reference/gre-ipsec-tunnels/#improved-downgrade-protection-beta).
 
 ## Secure Web Gateway
 
-A [secure web gateway (SWG) ↗](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/) is used to secure access to third-party websites on the public Internet by intercepting and inspecting TLS traffic.
+A [secure web gateway (SWG) ↗︎](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/) is used to secure access to third-party websites on the public Internet by intercepting and inspecting TLS traffic.
 
 [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) [supports post-quantum cryptography for HTTPS traffic](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#post-quantum-support). As long as the third-party website that is being inspected supports post-quantum key agreement, Cloudflare's SWG also supports post-quantum key agreement.
 
@@ -123,7 +123,7 @@ The client reaches Gateway through one of the post-quantum on-ramps: the [Cloudf
 
 **2. Connection from Gateway to the origin server**
 
-A TLS connection is initiated from a data center in Cloudflare's network to the origin server, which is typically controlled by a third party. The connection from Cloudflare's SWG supports post-quantum key agreement, as long as the third-party origin server also supports post-quantum key agreement. You can test this out by using [https://pq.cloudflareresearch.com/ ↗](https://pq.cloudflareresearch.com/) as your third-party origin server.
+A TLS connection is initiated from a data center in Cloudflare's network to the origin server, which is typically controlled by a third party. The connection from Cloudflare's SWG supports post-quantum key agreement, as long as the third-party origin server also supports post-quantum key agreement. You can test this out by using [https://pq.cloudflareresearch.com/ ↗︎](https://pq.cloudflareresearch.com/) as your third-party origin server.
 
 Was this helpful?
 

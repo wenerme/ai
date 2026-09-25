@@ -35,7 +35,7 @@ Here are the options we suggest to work around this issue:
 
 Note
 
-Logging request response time at your origin web server may help identify the cause of resource slowness. Contact your hosting provider or site administrator for assistance in adjusting log formats or search for related logging documentation for your brand of web server such as [Apache ↗](http://httpd.apache.org/docs/current/mod/mod_log_config.html) or [Nginx ↗](http://nginx.org/en/docs/http/ngx_http_log_module.html#log_format).
+Logging request response time at your origin web server may help identify the cause of resource slowness. Contact your hosting provider or site administrator for assistance in adjusting log formats or search for related logging documentation for your brand of web server such as [Apache ↗︎](http://httpd.apache.org/docs/current/mod/mod_log_config.html) or [Nginx ↗︎](http://nginx.org/en/docs/http/ngx_http_log_module.html#log_format).
 
 ### Resolution on Cloudflare
 
@@ -48,7 +48,7 @@ Here are some other actions you can take on the Cloudflare side:
 
 Note
 
-Note that you may observe a 1 second difference between the timeout you have set and the actual time at which the Error `524` is returned. This is expected, it is due to the current work on implementing our proxy - [Pingora ↗](https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/). As a workaround, you can simply set the timeout to one second more (126 seconds instead of 125 seconds, for example).
+Note that you may observe a 1 second difference between the timeout you have set and the actual time at which the Error `524` is returned. This is expected, it is due to the current work on implementing our proxy - [Pingora ↗︎](https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/). As a workaround, you can simply set the timeout to one second more (126 seconds instead of 125 seconds, for example).
 
 ### Diagnose with Origin Analytics
 

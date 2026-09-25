@@ -30,7 +30,7 @@ Agents spend most of their time waiting. Waiting for user input (seconds to days
 
 Durable Objects invert this model. An agent exists as an addressable entity with persistent state, but consumes zero compute when hibernated. When something happens — an HTTP request, a WebSocket message, a scheduled alarm, an inbound email — the platform wakes the agent, loads its state from SQLite, and hands it the event. The agent does its work, then goes back to sleep.
 
-This is the [actor model ↗](https://en.wikipedia.org/wiki/Actor_model): each agent has an identity, durable state, and wakes on message. You do not manage servers, routing, health checks, or restart logic. The platform handles placement, scaling, and recovery.
+This is the [actor model ↗︎](https://en.wikipedia.org/wiki/Actor_model): each agent has an identity, durable state, and wakes on message. You do not manage servers, routing, health checks, or restart logic. The platform handles placement, scaling, and recovery.
 
 The economics follow directly:
 

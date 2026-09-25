@@ -20,7 +20,7 @@ Many widely used forum platforms are compatible with Cloudflare.
 
 These include:
 
-- [Discourse ↗](https://community.cloudflare.com/t/using-discourse-with-cloudflare-best-practices/602890)
+- [Discourse ↗︎](https://community.cloudflare.com/t/using-discourse-with-cloudflare-best-practices/602890)
 - vBulletin
 - Xenforo
 - MyBB

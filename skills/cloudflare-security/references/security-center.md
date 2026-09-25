@@ -39,7 +39,7 @@ Cloudflare Security Center is available to customers on all plans.
 
 The frequency of automatic security scans depends on your Cloudflare plan, ranging from every 7 days on Free, Pro, and Business plans to every 3 days on Enterprise plans. Refer to [Scan frequency](https://developers.cloudflare.com/security/security-insights/how-it-works/#scan-frequency) for more information.
 
-If you have any comments, questions, or bugs to report, create a post in the [Cloudflare Community forum ↗](https://community.cloudflare.com/c/security/security-center/65).
+If you have any comments, questions, or bugs to report, create a post in the [Cloudflare Community forum ↗︎](https://community.cloudflare.com/c/security/security-center/65).
 
 ## Limitations
 

@@ -24,17 +24,17 @@ Where needed, multiple key servers can be deployed and balanced between using yo
 
 ## Key type
 
-Key servers support both ECDSA and RSA keys, though signatures for RSA are an [order of magnitude more expensive ↗](https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/) to compute and thus consider type of keys used when planning the number of key servers in your deployment.
+Key servers support both ECDSA and RSA keys, though signatures for RSA are an [order of magnitude more expensive ↗︎](https://blog.cloudflare.com/ecdsa-the-digital-signature-algorithm-of-a-better-internet/) to compute and thus consider type of keys used when planning the number of key servers in your deployment.
 
 ECDSA signing can be broken down into two steps. Since the first step — generating random values (to be used later with the private key and message to be signed) — represents the majority of the computational cost, we pre-generate these random values to significantly reduce latency. ECDSA signing requests are computationally isolated from RSA signing requests using separate worker pools to keep them as fast as possible.
 
-Additional details can be found in the [gokeyless server readme file ↗](https://github.com/cloudflare/gokeyless#readme) file.
+Additional details can be found in the [gokeyless server readme file ↗︎](https://github.com/cloudflare/gokeyless#readme) file.
 
 ---
 
 ## Benchmarks
 
-We conducted benchmarks using [Cloudflare's gokeyless bench tool ↗](https://github.com/cloudflare/gokeyless/tree/master/cmd/bench) on a then current-generation, compute-optimized EC2 instance ([c5.xlarge ↗](https://aws.amazon.com/ec2/instance-types/c5/)). This particular instance has 4 vCPUs powered by 3.0 GHz Intel Xeon processors:
+We conducted benchmarks using [Cloudflare's gokeyless bench tool ↗︎](https://github.com/cloudflare/gokeyless/tree/master/cmd/bench) on a then current-generation, compute-optimized EC2 instance ([c5.xlarge ↗︎](https://aws.amazon.com/ec2/instance-types/c5/)). This particular instance has 4 vCPUs powered by 3.0 GHz Intel Xeon processors:
 
 ```txt
 c5$ cat /proc/cpuinfo|grep "model name"

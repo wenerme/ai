@@ -62,7 +62,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -98,7 +98,7 @@ To get captive portal logs:
 
 macOS limitation
 
-On macOS, [**Automatically join this network** ↗](https://support.apple.com/guide/mac-help/wi-fi-settings-on-mac-mh11935/mac) should be enabled on the Wi-Fi network that is causing issues. This setting is enabled by default. If manually disabled, the captive portal diagnostic will fail to capture meaningful data and the device will not automatically reconnect to this network.
+On macOS, [**Automatically join this network** ↗︎](https://support.apple.com/guide/mac-help/wi-fi-settings-on-mac-mh11935/mac) should be enabled on the Wi-Fi network that is causing issues. This setting is enabled by default. If manually disabled, the captive portal diagnostic will fail to capture meaningful data and the device will not automatically reconnect to this network.
 
 Once the diagnostic finishes running, the Cloudflare One Client will place a `warp-captive-portal-diag-<date>-<time>.zip` file on the user's desktop. The end user can now share this file with their IT administrator.
 

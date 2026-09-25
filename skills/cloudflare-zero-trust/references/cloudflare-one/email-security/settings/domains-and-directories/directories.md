@@ -18,7 +18,7 @@ Directories are folders to store user data. Email security allows you to manage 
 
 To add a directory:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) > **Email security**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/) > **Email security**.
 2. Select **Settings** > **Domains & directories**.
 3. Select **View** on the **Directories** card.
 4. On the **Domains & directories** page, select **Add a directory** > **Connect an integration**.

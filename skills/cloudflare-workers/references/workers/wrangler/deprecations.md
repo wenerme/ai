@@ -24,7 +24,7 @@ Usage of [Workers Sites](https://developers.cloudflare.com/workers/wrangler/conf
 
 ### Service environments
 
-Usage of [Service Environments ↗](https://blog.cloudflare.com/introducing-worker-services/#services-have-environments), enabled via the `legacy_env` property in Wrangler config, is deprecated. Instead, we recommend migrating to [Wrangler Environments](https://developers.cloudflare.com/workers/wrangler/configuration/#environments). Support for using Service Environments with Wrangler will be removed in a future version of Wrangler.
+Usage of [Service Environments ↗︎](https://blog.cloudflare.com/introducing-worker-services/#services-have-environments), enabled via the `legacy_env` property in Wrangler config, is deprecated. Instead, we recommend migrating to [Wrangler Environments](https://developers.cloudflare.com/workers/wrangler/configuration/#environments). Support for using Service Environments with Wrangler will be removed in a future version of Wrangler.
 
 ## Wrangler v3
 
@@ -74,15 +74,15 @@ These options prevent `wrangler pages dev` from being able to accurately emulate
 
 #### `--legacy-assets` and the `legacy_assets` config file property
 
-We recommend you [migrate to Workers assets ↗](https://developers.cloudflare.com/workers/static-assets/)
+We recommend you [migrate to Workers assets ↗︎](https://developers.cloudflare.com/workers/static-assets/)
 
 #### `--node-compat` and the `node_compat` config file property
 
-Instead, use the [`nodejs_compat` compatibility flag ↗](https://developers.cloudflare.com/workers/runtime-apis/nodejs). This includes the functionality from legacy `node_compat` polyfills and natively implemented Node.js APIs.
+Instead, use the [`nodejs_compat` compatibility flag ↗︎](https://developers.cloudflare.com/workers/runtime-apis/nodejs). This includes the functionality from legacy `node_compat` polyfills and natively implemented Node.js APIs.
 
 #### The `usage_model` config file property
 
-This no longer has any effect, after the [rollout of Workers Standard Pricing ↗](https://blog.cloudflare.com/workers-pricing-scale-to-zero/).
+This no longer has any effect, after the [rollout of Workers Standard Pricing ↗︎](https://blog.cloudflare.com/workers-pricing-scale-to-zero/).
 
 ## Wrangler v2
 
@@ -117,7 +117,7 @@ Refer to the following list for common fields that are no longer required.
 - `wrangler preview` - Use the `wrangler dev` command, for running your worker in your local environment.
 - `wrangler generate` - If you want to use a starter template, clone its GitHub repository and manually initialize it.
 - `wrangler route` - Routes are defined in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/).
-- `wrangler report` - If you find a bug, report it at [Wrangler issues ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
+- `wrangler report` - If you find a bug, report it at [Wrangler issues ↗︎](https://github.com/cloudflare/workers-sdk/issues/new/choose).
 - `wrangler build` - If you wish to access the output from bundling your Worker, use `wrangler deploy --outdir=path/to/output`.
 
 #### New fields
@@ -267,15 +267,15 @@ Routes are specified in the [Wrangler configuration file](https://developers.clo
 | Property | v1 | v2 | Notes |
 | --- | --- | --- | --- |
 | `type = "webpack"` | ✅ | ❌ | Removed, refer to [this guide](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/eject-webpack/) to migrate. |
-| `type = "rust"` | ✅ | ❌ | Removed, use [`workers-rs` ↗](https://github.com/cloudflare/workers-rs) instead. |
+| `type = "rust"` | ✅ | ❌ | Removed, use [`workers-rs` ↗︎](https://github.com/cloudflare/workers-rs) instead. |
 | `type = "javascript"` | ✅ | 🚧 | No longer required, can be omitted. |
 
 #### Features
 
 | Feature | v1 | v2 | Notes |
 | --- | --- | --- | --- |
-| TypeScript | ❌ | ✅ | You can give wrangler a TypeScript file, and it will automatically transpile it to JavaScript using [`esbuild` ↗](https://github.com/evanw/esbuild) under-the-hood. |
-| Local mode | ❌ | ✅ | `wrangler dev --local` will run your Worker on your local machine instead of on our network. This is powered by [Miniflare ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare/). |
+| TypeScript | ❌ | ✅ | You can give wrangler a TypeScript file, and it will automatically transpile it to JavaScript using [`esbuild` ↗︎](https://github.com/evanw/esbuild) under-the-hood. |
+| Local mode | ❌ | ✅ | `wrangler dev --local` will run your Worker on your local machine instead of on our network. This is powered by [Miniflare ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare/). |
 
 Was this helpful?
 

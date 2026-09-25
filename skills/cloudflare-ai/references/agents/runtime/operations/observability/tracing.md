@@ -40,7 +40,7 @@ enabled = true
 
 ## View agent activity
 
-Open the [Agents tab ↗](https://dash.cloudflare.com/?to=/:account/agents) in the Cloudflare Dashboard to see traced agents and subagents. The overview shows each agent's model, session count, runs, and total token usage.
+Open the [Agents tab ↗︎](https://dash.cloudflare.com/?to=/:account/agents) in the Cloudflare Dashboard to see traced agents and subagents. The overview shows each agent's model, session count, runs, and total token usage.
 
 A session is a conversation made up of one or more turns. A turn is one request to an agent and its response.
 
@@ -125,7 +125,7 @@ export class MyAgent extends Think<Env> {
 
 ### Flue
 
-[Flue v2+ ↗](https://flueframework.com/blog/flue-2/) also automatically instruments your agent and emits the [standard span structure](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#trace-structure). No additional tracing setup is required.
+[Flue v2+ ↗︎](https://flueframework.com/blog/flue-2/) also automatically instruments your agent and emits the [standard span structure](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#trace-structure). No additional tracing setup is required.
 
 #### Exclude payloads
 
@@ -147,7 +147,7 @@ instrument(createCloudflareTracing({ content: false }));
 
 ### AI SDK
 
-For direct [AI SDK ↗](https://sdk.vercel.ai/) calls, wrap the namespace once:
+For direct [AI SDK ↗︎](https://sdk.vercel.ai/) calls, wrap the namespace once:
 
 ```js
 import * as ai from "ai";
@@ -279,11 +279,11 @@ const tracedAI = wrapAISDK(ai, {
 
 If your agent does not use one of our currently supported frameworks, instrument it with the [Workers custom spans API](https://developers.cloudflare.com/workers/observability/traces/custom-spans/). Create an `invoke_agent` span for each turn, with `chat` spans for model calls, `execute_tool` spans for tool runs, and `tool_approval` spans for approvals.
 
-For span names, attributes, and implementation examples, refer to the [OpenTelemetry GenAI reference implementations ↗](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/reference/README.md). Adapt these examples to the Workers custom spans API.
+For span names, attributes, and implementation examples, refer to the [OpenTelemetry GenAI reference implementations ↗︎](https://github.com/open-telemetry/semantic-conventions-genai/blob/main/reference/README.md). Adapt these examples to the Workers custom spans API.
 
 Note
 
-Workers does not yet support the [OpenTelemetry API ↗](https://opentelemetry.io/) directly. Cloudflare is working to add support so libraries and agent frameworks that emit OpenTelemetry spans can integrate without manual custom-span instrumentation.
+Workers does not yet support the [OpenTelemetry API ↗︎](https://opentelemetry.io/) directly. Cloudflare is working to add support so libraries and agent frameworks that emit OpenTelemetry spans can integrate without manual custom-span instrumentation.
 
 #### Add agent identity
 
@@ -302,7 +302,7 @@ For custom spans, add payload attributes manually. Use `gen_ai.input.messages`, 
 
 ## Exporting traces
 
-Span attributes follow the [OpenTelemetry Generative AI semantic conventions ↗](https://github.com/open-telemetry/semantic-conventions-genai), so any tool that reads OpenTelemetry data can consume them. To send traces to an external destination, [configure an OpenTelemetry Protocol (OTLP) endpoint](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/) in Workers Observability.
+Span attributes follow the [OpenTelemetry Generative AI semantic conventions ↗︎](https://github.com/open-telemetry/semantic-conventions-genai), so any tool that reads OpenTelemetry data can consume them. To send traces to an external destination, [configure an OpenTelemetry Protocol (OTLP) endpoint](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/) in Workers Observability.
 
 ## Pricing
 

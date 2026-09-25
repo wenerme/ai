@@ -46,7 +46,7 @@ You must provide either `url` or `html`:
 
 ### Get all links on a page
 
-This example grabs all links from the [Cloudflare Doc's homepage ↗](https://developers.cloudflare.com/). The response will be a JSON array containing the links found on the page.
+This example grabs all links from the [Cloudflare Doc's homepage ↗︎](https://developers.cloudflare.com/). The response will be a JSON array containing the links found on the page.
 
 ```bash
 curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/links' \

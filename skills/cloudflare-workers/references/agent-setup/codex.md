@@ -28,7 +28,7 @@ TerminalStandaloneCloudExtensionOpen Source
 
 1. **Install Codex**
 
-   Install the Codex CLI. macOS and Linux are fully supported; use WSL2 on Windows. For Homebrew or other install methods, see the [Codex CLI setup guide ↗](https://developers.openai.com/codex/cli/).
+   Install the Codex CLI. macOS and Linux are fully supported; use WSL2 on Windows. For Homebrew or other install methods, see the [Codex CLI setup guide ↗︎](https://developers.openai.com/codex/cli/).
 
    ```bash
    npm install -g @openai/codex
@@ -58,14 +58,14 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Set up rate limiting and WAF rules to block abuse on my public API.
+   Build an image upload and transformation service using R2 and Cloudflare Images.
    ```
 
 
 
 1. **Download Codex**
 
-   Follow the download instructions for your operating system at [developers.openai.com/codex/app ↗](https://developers.openai.com/codex/app).
+   Follow the download instructions for your operating system at [developers.openai.com/codex/app ↗︎](https://developers.openai.com/codex/app).
 2. **Install the Cloudflare plugin**
 
    In the Codex app, go to **Plugins** and install **Cloudflare**.![Install the Cloudflare plugin in the Codex desktop app.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2658,height=1712,format=webp/_astro/codex-desktop.6tRb7-2M.png)
@@ -114,7 +114,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 - Code mode APIcode modeBroad access to the full Cloudflare API via code execution, with minimal token overheadhttps://mcp.cloudflare.com/mcp
 - Code Mode servercode modeBest when you want broad access across Cloudflare's APIs through code executionhttps://mcp.cloudflare.com/mcp
 - AI Gateway serverSearch your logs, get details about the prompts and responseshttps://ai-gateway.mcp.cloudflare.com/mcp
-- Audit Logs serverQuery audit logs and generate reports for reviewhttps://auditlogs.mcp.cloudflare.com/mcp
 - AutoRAG serverSearch and query account AutoRAG instanceshttps://autorag.mcp.cloudflare.com/mcp
 - Browser Run serverFetch web pages, convert them to markdown and take screenshotshttps://browser.mcp.cloudflare.com/mcp
 - Cloudflare Blog serverSearch and read posts from the Cloudflare Bloghttps://blog.mcp.cloudflare.com/mcp
@@ -171,7 +170,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
@@ -179,15 +182,11 @@ Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
 Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
-```
-
-```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Tips

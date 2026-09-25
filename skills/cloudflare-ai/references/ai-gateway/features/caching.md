@@ -34,7 +34,7 @@ Caching is disabled by default. To enable caching globally, set the default cach
 
 To set the default caching configuration in the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Select **AI** > **AI Gateway**.
 3. Select **Settings**.
 4. Enable **Cache Responses**.

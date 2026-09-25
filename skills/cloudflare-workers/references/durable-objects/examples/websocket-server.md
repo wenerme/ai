@@ -399,7 +399,7 @@ new_sqlite_classes = [ "WebSocketServer" ]
 
 ### Related resources
 
-- [Durable Objects: Edge Chat Demo ↗](https://github.com/cloudflare/workers-chat-demo).
+- [Durable Objects: Edge Chat Demo ↗︎](https://github.com/cloudflare/workers-chat-demo).
 
 Was this helpful?
 

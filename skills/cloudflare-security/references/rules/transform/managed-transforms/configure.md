@@ -293,7 +293,7 @@ All of the following <a href="https://developers.cloudflare.com/fundamentals/api
 
 </details>
 
-Configure the [`cloudflare_managed_transforms` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/managed_transforms) resource:
+Configure the [`cloudflare_managed_transforms` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/managed_transforms) resource:
 
 ```tf
 resource "cloudflare_managed_transforms" "tf_example" {

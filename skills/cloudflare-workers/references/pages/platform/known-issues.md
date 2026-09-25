@@ -48,11 +48,11 @@ Here are some known bugs and issues with Cloudflare Pages:
 
 - [Functions](https://developers.cloudflare.com/pages/functions/) does not currently support adding/removing polyfills, so your bundler (for example, webpack) may not run.
 - `passThroughOnException()` is not currently available for Advanced Mode Pages Functions (Pages Functions which use an `_worker.js` file).
-- `passThroughOnException()` is not currently as resilient as it is in Workers. We currently wrap Pages Functions code in a [try...catch ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) block and fallback to calling `env.ASSETS.fetch()`. This means that any critical failures (such as exceeding CPU time or exceeding memory) may still throw an error.
+- `passThroughOnException()` is not currently as resilient as it is in Workers. We currently wrap Pages Functions code in a [try...catch ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) block and fallback to calling `env.ASSETS.fetch()`. This means that any critical failures (such as exceeding CPU time or exceeding memory) may still throw an error.
 
 ## Enable Access on your `*.pages.dev` domain
 
-If you would like to enable [Cloudflare Access ↗](https://www.cloudflare.com/teams-access/)] for your preview deployments and your `*.pages.dev` domain, you must:
+If you would like to enable [Cloudflare Access ↗︎](https://www.cloudflare.com/teams-access/)] for your preview deployments and your `*.pages.dev` domain, you must:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your Pages project.
@@ -69,7 +69,7 @@ At this step, your `*.pages.dev` domain has been secured behind Access. To resec
 
 If you have a custom domain and protected your `*.pages.dev` domain behind Access, you must:
 
-10. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**. Select **Create new application** > **Self-hosted and private**.
+10. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**. Select **Create new application** > **Self-hosted and private**.
 11. Select **Add public hostname** and select your custom domain from the *Domain* dropdown menu.
 12. Configure your access rules to define who can reach the Access authentication page.
 13. Select **Create**.
@@ -78,7 +78,7 @@ Caution
 
 If you do not configure an Access policy for your custom domain, an Access authentication will render but not work for your custom domain visitors. If your Pages project has a custom domain, make sure to add an Access policy as described above in steps 10 through 13 to avoid any authentication issues.
 
-If you have an issue that you do not see listed, let the team know in the Cloudflare Workers Discord. Get your invite at [discord.cloudflare.com ↗](https://discord.cloudflare.com), and share your bug report in the #pages-general channel.
+If you have an issue that you do not see listed, let the team know in the Cloudflare Workers Discord. Get your invite at [discord.cloudflare.com ↗︎](https://discord.cloudflare.com), and share your bug report in the #pages-general channel.
 
 ## Delete a project with a high number of deployments
 

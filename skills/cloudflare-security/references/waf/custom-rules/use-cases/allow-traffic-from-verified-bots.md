@@ -34,7 +34,7 @@ The rule expression uses the [`cf.client.bot`](https://developers.cloudflare.com
 - [Use case: Challenge bad bots](https://developers.cloudflare.com/waf/custom-rules/use-cases/challenge-bad-bots/)
 - [Cloudflare bot solutions](https://developers.cloudflare.com/bots/)
 - [Troubleshooting: Bing's Site Scan blocked by a WAF managed rule](https://developers.cloudflare.com/waf/troubleshooting/blocked-bing-site-scans/)
-- [Learning Center: What is a web crawler? ↗](https://www.cloudflare.com/learning/bots/what-is-a-web-crawler/)
+- [Learning Center: What is a web crawler? ↗︎](https://www.cloudflare.com/learning/bots/what-is-a-web-crawler/)
 
 Was this helpful?
 

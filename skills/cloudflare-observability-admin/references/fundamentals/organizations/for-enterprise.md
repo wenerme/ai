@@ -97,7 +97,7 @@ Before you create an Organization:
 
 ### Create an Organization
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Select **Organizations**.
 3. Select **Create organization**.
 4. Enter a name for the Organization.
@@ -122,7 +122,7 @@ To remove an account from your Organization, contact [Cloudflare Support](https:
 
 Organization Super Administrators can create up to five Free accounts within an Enterprise Organization.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Accounts**. [Go to **Accounts** ↗](https://dash.cloudflare.com/)
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **Accounts**. [Go to **Accounts** ↗](https://dash.cloudflare.com/)
 2. Select **Create Account**.
 3. Enter an account name.
 4. For **Organization**, select the destination Organization.
@@ -240,7 +240,7 @@ You can manage Organizations programmatically using the [Cloudflare Organization
 
 ### Terraform
 
-You can manage Organizations using the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/organization).
+You can manage Organizations using the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/organization).
 
 Note
 

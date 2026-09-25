@@ -50,7 +50,7 @@ Exclude rules take precedence over include rules. Filtering is applied in this o
 
 ### Pattern syntax
 
-Patterns use a case-sensitive wildcard syntax based on [micromatch ↗](https://github.com/micromatch/micromatch):
+Patterns use a case-sensitive wildcard syntax based on [micromatch ↗︎](https://github.com/micromatch/micromatch):
 
 | Wildcard | Meaning |
 | --- | --- |

@@ -16,9 +16,9 @@ Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Introduction
 
-Traditional VPN solutions create several problems for VoIP deployments, primarily due to their inefficiencies in handling real-time traffic protocols such as [SIP ↗](https://en.wikipedia.org/wiki/Session_Initiation_Protocol) and [RTP ↗](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). Legacy VPN deployments introduce high latency and jitter, which negatively impact voice call quality. Additionally, they often struggle with [NAT ↗](https://en.wikipedia.org/wiki/Network_address_translation) traversal, leading to connection issues for VoIP calls.
+Traditional VPN solutions create several problems for VoIP deployments, primarily due to their inefficiencies in handling real-time traffic protocols such as [SIP ↗︎](https://en.wikipedia.org/wiki/Session_Initiation_Protocol) and [RTP ↗︎](https://en.wikipedia.org/wiki/Real-time_Transport_Protocol). Legacy VPN deployments introduce high latency and jitter, which negatively impact voice call quality. Additionally, they often struggle with [NAT ↗︎](https://en.wikipedia.org/wiki/Network_address_translation) traversal, leading to connection issues for VoIP calls.
 
-Cloudflare improves over traditional VPN solutions by leveraging its [global network ↗](https://www.cloudflare.com/network/) of data centers in over 330 cities to significantly reduce latency for remote users. When using our device agent, remote users are automatically connected to the nearest Cloudflare data center, thus reducing latency.
+Cloudflare improves over traditional VPN solutions by leveraging its [global network ↗︎](https://www.cloudflare.com/network/) of data centers in over 330 cities to significantly reduce latency for remote users. When using our device agent, remote users are automatically connected to the nearest Cloudflare data center, thus reducing latency.
 
 This document explains how to architect access to a self-hosted VoIP service using Cloudflare. Note the solution below uses [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) (formerly WARP Connector), a small piece of software deployed on a server in the same subnet as the VoIP servers and creates bi-directional traffic flow through Cloudflare to users.
 

@@ -16,7 +16,7 @@ Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Cloudflare Workers accounts come with a `workers.dev` subdomain that is configurable in the Cloudflare dashboard. Your `workers.dev` subdomain allows you getting started quickly by deploying Workers without first onboarding your custom domain to Cloudflare.
 
-It's recommended to run production Workers on a [Workers route or custom domain](https://developers.cloudflare.com/workers/configuration/routing/), rather than on your `workers.dev` subdomain. Your `workers.dev` subdomain is treated as a [Free website ↗](https://www.cloudflare.com/plans/) and is intended for personal or hobby projects that aren't business-critical.
+It's recommended to run production Workers on a [Workers route or custom domain](https://developers.cloudflare.com/workers/configuration/routing/), rather than on your `workers.dev` subdomain. Your `workers.dev` subdomain is treated as a [Free website ↗︎](https://www.cloudflare.com/plans/) and is intended for personal or hobby projects that aren't business-critical.
 
 ## Configure `workers.dev`
 
@@ -85,7 +85,7 @@ Worker names can be up to 255 characters when not using a `workers.dev` subdomai
 
 ## Related resources
 
-- [Announcing `workers.dev` ↗](https://blog.cloudflare.com/announcing-workers-dev)
+- [Announcing `workers.dev` ↗︎](https://blog.cloudflare.com/announcing-workers-dev)
 - [Wrangler routes configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#types-of-routes)
 
 Was this helpful?

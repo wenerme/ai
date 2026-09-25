@@ -48,7 +48,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
 }
 ```
 
-The `WorkflowEvent` type accepts an optional [type parameter ↗](https://www.typescriptlang.org/docs/handbook/2/generics.html#working-with-generic-type-variables) that allows you to provide a type for the `payload` property within the `WorkflowEvent`.
+The `WorkflowEvent` type accepts an optional [type parameter ↗︎](https://www.typescriptlang.org/docs/handbook/2/generics.html#working-with-generic-type-variables) that allows you to provide a type for the `payload` property within the `WorkflowEvent`.
 
 Refer to the [events and parameters](https://developers.cloudflare.com/workflows/build/events-and-parameters/) documentation for how to handle events within your Workflow code.
 
@@ -102,7 +102,7 @@ Returning state
 
 When returning state from a `step`, ensure that the object you return is *serializable*.
 
-Primitive types like `string`, `number`, and `boolean`, along with composite structures such as `Array` and `Object` (provided they only contain serializable values), can be serialized. Any [structured-cloneable ↗](https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone) type can be serialized, as long it is no longer than 1 MB.
+Primitive types like `string`, `number`, and `boolean`, along with composite structures such as `Array` and `Object` (provided they only contain serializable values), can be serialized. Any [structured-cloneable ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Window/structuredClone) type can be serialized, as long it is no longer than 1 MB.
 
 On the other hand, objects that include `Function` or `Symbol` types, and objects with circular references, cannot be serialized. The Workflow instance will throw an error if objects with those types is returned.
 
@@ -434,7 +434,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 	"name": "workflows-starter",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"workflows": [
 		{
 			// name of your workflow
@@ -453,7 +453,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 name = "workflows-starter"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[workflows]]
 name = "workflows-starter"
@@ -479,7 +479,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 	"name": "web-api-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"workflows": [
 		{
 			// name of your workflow
@@ -501,7 +501,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 name = "web-api-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[workflows]]
 name = "billing-workflow"
@@ -558,7 +558,7 @@ Throws an error if the provided ID is already used by an existing instance that 
 
 Caution
 
-Providing a type parameter does *not* validate that the incoming event matches your type definition. In TypeScript, properties (fields) that do not exist or conform to the type you provided will be dropped. If you need to validate incoming events, we recommend a library such as [zod ↗](https://zod.dev/) or your own validator logic.
+Providing a type parameter does *not* validate that the incoming event matches your type definition. In TypeScript, properties (fields) that do not exist or conform to the type you provided will be dropped. If you need to validate incoming events, we recommend a library such as [zod ↗︎](https://zod.dev/) or your own validator logic.
 
 You can also provide a type parameter to the `Workflows` type when creating (triggering) a Workflow instance using the `create` method of the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow). Note that this does *not* propagate type information into the Workflow itself, as TypeScript types are a build-time construct.
 

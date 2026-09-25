@@ -16,7 +16,7 @@ Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Email Service exposes analytics that allow you to inspect email sending performance and delivery rates across all your domains.
 
-The metrics displayed in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) charts are queried from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically](#query-via-the-graphql-api) via GraphQL or HTTP client.
+The metrics displayed in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) charts are queried from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically](#query-via-the-graphql-api) via GraphQL or HTTP client.
 
 ## Metrics
 
@@ -35,7 +35,7 @@ Metrics can be queried (and are retained) for the past 31 days.
 
 Per-domain analytics for Email Service are available in the Cloudflare dashboard. To view current and historical metrics:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **Compute** > **Email Service** and select **Email Sending** or **Email Routing**.
 3. Select an existing domain or view account-wide metrics.
 4. Select the **Analytics** tab.

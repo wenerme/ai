@@ -60,7 +60,7 @@ A single policy can perform both actions: remediate a finding and send a webhook
 
 #### Get started
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Policies**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Policies**.
 2. Select **Create a policy**.
 3. Under **Basic information**, enter a **Policy name** and, optionally, a **Description**.
 4. Under **Choose how you want to trigger the policy**, select a **Vendor**, **Integration**, and **Finding type**.
@@ -81,7 +81,7 @@ CASB remediation policies are now available in Cloudflare One.
 
 **CASB adds support for Claude Compliance API**
 
-[Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/) now integrates with the [Claude Compliance API ↗](https://support.claude.com/en/articles/13015708-access-the-compliance-api). This enhancement gives security teams visibility into Claude usage patterns, admin activity, and compliance-relevant events across their organization.
+[Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/) now integrates with the [Claude Compliance API ↗︎](https://support.claude.com/en/articles/13015708-access-the-compliance-api). This enhancement gives security teams visibility into Claude usage patterns, admin activity, and compliance-relevant events across their organization.
 
 The Claude Compliance API provides structured access to audit logs and administrative actions within Claude Enterprise and Claude Platform. Cloudflare CASB ingests this data to surface security findings that help organizations enhance their security posture and enforce AI governance.
 
@@ -197,7 +197,7 @@ To learn more about managing roles and permissions, refer to the [Manage account
 
 **New CASB integrations for ChatGPT, Claude, and Gemini**
 
-[Cloudflare CASB ↗](https://www.cloudflare.com/zero-trust/products/casb/) now supports three of the most widely used GenAI platforms — **OpenAI ChatGPT**, **Anthropic Claude**, and **Google Gemini**. These API-based integrations give security teams agentless visibility into posture, data, and compliance risks across their organization’s use of generative AI.
+[Cloudflare CASB ↗︎](https://www.cloudflare.com/zero-trust/products/casb/) now supports three of the most widely used GenAI platforms — **OpenAI ChatGPT**, **Anthropic Claude**, and **Google Gemini**. These API-based integrations give security teams agentless visibility into posture, data, and compliance risks across their organization’s use of generative AI.
 
 ![Cloudflare CASB showing selection of new findings for ChatGPT, Claude, and Gemini integrations.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2335,height=1776,format=webp/_astro/casb-ai-integrations-preview.B-zsSA1P.png)
 
@@ -210,9 +210,9 @@ To learn more about managing roles and permissions, refer to the [Manage account
 
 #### Learn more
 
-- [ChatGPT integration docs ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/openai/)
-- [Claude integration docs ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/)
-- [Gemini integration docs ↗](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gemini/)
+- [ChatGPT integration docs ↗︎](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/openai/)
+- [Claude integration docs ↗︎](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/anthropic/)
+- [Gemini integration docs ↗︎](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/google-workspace/gemini/)
 
 These integrations are available to all Cloudflare One customers today.
 
@@ -235,7 +235,7 @@ The new dashboard includes:
 
 ![Data Security Analytics](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3254,height=1580,format=webp/_astro/cf1-data-security-analytics-v1.BGl6fYXl.png)
 
-To access the new dashboard, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights** on the sidebar.
+To access the new dashboard, log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/) and go to **Insights** on the sidebar.
 
 ## 2024-11-22
 
@@ -248,7 +248,7 @@ You can also [connect your AWS compute account](https://developers.cloudflare.co
 
 To connect a compute account to your AWS integration:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Integrations**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Integrations**.
 2. Find and select your AWS integration.
 3. Select **Open connection instructions**.
 4. Follow the instructions provided to connect a new compute account.

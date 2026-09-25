@@ -28,7 +28,7 @@ To verify your email:
 
 Note
 
-If someone else used your email to sign up for a Cloudflare account, you can remove this account by going to our [unintended registration ↗](https://dash.cloudflare.com/unintended-registration) page and entering the information at the end of your confirmation email.
+If someone else used your email to sign up for a Cloudflare account, you can remove this account by going to our [unintended registration ↗︎](https://dash.cloudflare.com/unintended-registration) page and entering the information at the end of your confirmation email.
 
 ## Resend verification emails
 

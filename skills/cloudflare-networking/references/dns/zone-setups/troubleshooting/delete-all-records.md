@@ -28,7 +28,7 @@ You can delete records in bulk via the dashboard, which removes the need for cus
 
 Warning
 
-This script uses [jq ↗](https://jqlang.github.io/jq/) to format `JSON` outputs for readability. Refer to [Make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/) for details.
+This script uses [jq ↗︎](https://jqlang.github.io/jq/) to format `JSON` outputs for readability. Refer to [Make API calls](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/) for details.
 
 ```bash
 zoneid=<ZONE_ID>

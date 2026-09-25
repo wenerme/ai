@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/network-flow/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-If you cannot find your answer here, refer to the [community page ↗](https://community.cloudflare.com/) for more resources.
+If you cannot find your answer here, refer to the [community page ↗︎](https://community.cloudflare.com/) for more resources.
 
 ## I am getting an "Invalid account settings request body: account name format contains illegal characters or is not supported" error when trying to create a rule.
 

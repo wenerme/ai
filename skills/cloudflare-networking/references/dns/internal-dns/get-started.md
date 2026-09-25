@@ -262,7 +262,7 @@ The Gateway configuration must exist within the same Cloudflare account where th
 
 Besides selecting an internal DNS view when setting up your resolver policies, you can also enable the **fallback through public DNS** option.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** > **Firewall policies** > **Resolver policies**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Traffic policies** > **Firewall policies** > **Resolver policies**.
 2. Select **Add a policy** and enter a name and description.
 3. Create an expression for the traffic you wish to route. For guidance about selectors, operators, and values, refer to [Gateway resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/#selectors).
 4. Select **Use Internal DNS**. Choose the view that queries matching the expression should be sent to.
@@ -284,9 +284,9 @@ Once you add the Gateway resolver policy, it will be listed in the respective in
 
 ## Manage with Terraform
 
-You can also manage Internal DNS resources with the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs). The patterns are identical to public DNS zones — the only difference is setting `type = "internal"` on the `cloudflare_zone` resource.
+You can also manage Internal DNS resources with the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs). The patterns are identical to public DNS zones — the only difference is setting `type = "internal"` on the `cloudflare_zone` resource.
 
-Use a zone-scoped API token for day-to-day management and an account-level token for creating new zones. If your token is scoped to specific zones, remember to update it when you add new internal zones. For a complete working example, refer to the [Terraform provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+Use a zone-scoped API token for day-to-day management and an account-level token for creating new zones. If your token is scoped to specific zones, remember to update it when you add new internal zones. For a complete working example, refer to the [Terraform provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 Was this helpful?
 

@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Background
 
-All HTTP request and response headers are available through the [Headers API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
+All HTTP request and response headers are available through the [Headers API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
 
 When a header name possesses multiple values, those values will be concatenated as a single, comma-delimited string value. This means that `Headers.get` will always return a string or a `null` value. This applies to all header names except for `Set-Cookie`, which requires `Headers.getAll`. This is documented below in [Differences](#differences).
 
@@ -47,11 +47,11 @@ Workers type definitions (from `@cloudflare/workers-types` or generated via [`wr
 
 Despite the fact that the `Headers.getAll` method has been made obsolete in web browsers, Workers still provides this method for use with the `Set-Cookie` header. This is because cookies often contain date strings, which include commas. This can make parsing multiple values in a `Set-Cookie` header difficult.
 
-Any attempts to use `Headers.getAll` with other header names will throw an error. A brief history of `Headers.getAll` is available in this [GitHub issue ↗](https://github.com/whatwg/fetch/issues/973).
+Any attempts to use `Headers.getAll` with other header names will throw an error. A brief history of `Headers.getAll` is available in this [GitHub issue ↗︎](https://github.com/whatwg/fetch/issues/973).
 
 ### `Set-Cookie` handling
 
-Due to [RFC 6265 ↗](https://www.rfc-editor.org/rfc/rfc6265) prohibiting folding multiple `Set-Cookie` headers into a single header, the `Headers.append` method allows you to set multiple `Set-Cookie` response headers instead of appending the value onto the existing header.
+Due to [RFC 6265 ↗︎](https://www.rfc-editor.org/rfc/rfc6265) prohibiting folding multiple `Set-Cookie` headers into a single header, the `Headers.append` method allows you to set multiple `Set-Cookie` response headers instead of appending the value onto the existing header.
 
 ```js
 const headers = new Headers();
@@ -65,7 +65,7 @@ console.log(headers.getAll("Set-Cookie"));
 
 ### `USVString` return type
 
-In Cloudflare Workers, the `Headers.get` method returns a [`USVString` ↗](https://mdn2.netlify.app/en-us/docs/web/api/usvstring/) instead of a [`ByteString` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), which is specified by the web standard. For most scenarios, this should have no noticeable effect. To compare the differences between these two string classes, refer to this [Playground example ↗](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbMutvvsCMALAJx-cAzAHZeANkG8AHAAZOU7t2EBWAEy9eqsXNWdOALg5HjbHv34jxk2fMUr1m7Z12cAsACgAwuioQApr7YACJQAM4w6KFQ0D76JBhYeATEJFRwwH4MAERQNH4AHgB0AFahWaSoUGAB6Zk5eUWlWR7evgEQ2AAqdDB+cXAwMGBQAMYEUD7IxXAAbnChIwiwEADUwOi44H4eHgURSCS4fqhw4BAkAN7uAJDzdFQj8X4QIwAWABQIfgCOIH6hEAAlJcbtdqucxucGCQsoBeDcAXHtZUHgkggCCoKSeAgkaFUPwAdxInQKEAAog8Nn4EO9AYUAiNKe9IYDkc8SPTKbgsVCSABlCBLKgAc0KqAQ6GAnleiG8R3ehQVaIx3JZoIZVFC6GqhTA6CF7yynVeYRIJrgJAAqryAGr8wVCkj46KvEjmyH6LIAGhIzLVPk12t1+sNxtCprD5oAQnR-Hbcg6nRAXW7sT5LZ0AGLYKQe70co5cgiq67XZDIEgACT8cCOCAjXxIoRAg0iflwJAg6EdmAA1iQfGA6I7nSRo7GBfHQt6yGj+yAEKCy6bgEM-BlfOM0yBQv9LTa48LQoUiaHUiSSMM8cOwGASDBBec4Ivy-jEFR466KLOk2FCqzzq81a1mGuIEpWQFUqE7wXDC+ZttgkJZHEcGFucAC+xbXF8EDzlQZ6EgASv8EQan4BpSn4Ix9pQ5xJn4JAAAatAGfgMa6NAdoBJBEeE-r0YBNaQR2XY7vRdFzhAMCzgyK6IGE-qFF6lwkAJwEkBhNxoe4aEeCYelGGYAiWBI0hyAoShqBoWg6HoLQ+P4gQhLxUQxFQcQJDg+CEKQaQZNkGSEF5cDlPEVQ1H5WRkLqZDNF49ntF0PR9K6gzDJCExUFMmpUDs7gXFkwBwLkAD66ybNUSH1EcjRlDp7j6Q1rCGRYogmTY5n2FZTguMwHhAA).
+In Cloudflare Workers, the `Headers.get` method returns a [`USVString` ↗︎](https://mdn2.netlify.app/en-us/docs/web/api/usvstring/) instead of a [`ByteString` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String), which is specified by the web standard. For most scenarios, this should have no noticeable effect. To compare the differences between these two string classes, refer to this [Playground example ↗︎](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbMutvvsCMALAJx-cAzAHZeANkG8AHAAZOU7t2EBWAEy9eqsXNWdOALg5HjbHv34jxk2fMUr1m7Z12cAsACgAwuioQApr7YACJQAM4w6KFQ0D76JBhYeATEJFRwwH4MAERQNH4AHgB0AFahWaSoUGAB6Zk5eUWlWR7evgEQ2AAqdDB+cXAwMGBQAMYEUD7IxXAAbnChIwiwEADUwOi44H4eHgURSCS4fqhw4BAkAN7uAJDzdFQj8X4QIwAWABQIfgCOIH6hEAAlJcbtdqucxucGCQsoBeDcAXHtZUHgkggCCoKSeAgkaFUPwAdxInQKEAAog8Nn4EO9AYUAiNKe9IYDkc8SPTKbgsVCSABlCBLKgAc0KqAQ6GAnleiG8R3ehQVaIx3JZoIZVFC6GqhTA6CF7yynVeYRIJrgJAAqryAGr8wVCkj46KvEjmyH6LIAGhIzLVPk12t1+sNxtCprD5oAQnR-Hbcg6nRAXW7sT5LZ0AGLYKQe70co5cgiq67XZDIEgACT8cCOCAjXxIoRAg0iflwJAg6EdmAA1iQfGA6I7nSRo7GBfHQt6yGj+yAEKCy6bgEM-BlfOM0yBQv9LTa48LQoUiaHUiSSMM8cOwGASDBBec4Ivy-jEFR466KLOk2FCqzzq81a1mGuIEpWQFUqE7wXDC+ZttgkJZHEcGFucAC+xbXF8EDzlQZ6EgASv8EQan4BpSn4Ix9pQ5xJn4JAAAatAGfgMa6NAdoBJBEeE-r0YBNaQR2XY7vRdFzhAMCzgyK6IGE-qFF6lwkAJwEkBhNxoe4aEeCYelGGYAiWBI0hyAoShqBoWg6HoLQ+P4gQhLxUQxFQcQJDg+CEKQaQZNkGSEF5cDlPEVQ1H5WRkLqZDNF49ntF0PR9K6gzDJCExUFMmpUDs7gXFkwBwLkAD66ybNUSH1EcjRlDp7j6Q1rCGRYogmTY5n2FZTguMwHhAA).
 
 ## Cloudflare headers
 

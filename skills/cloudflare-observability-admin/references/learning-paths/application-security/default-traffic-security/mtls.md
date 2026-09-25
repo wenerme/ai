@@ -18,7 +18,7 @@ Mutual TLS (mTLS) authentication uses client certificates to ensure traffic betw
 
 ![mTLS sequence diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=900,height=1256,format=webp/_astro/api-shield-call-sequence.DjXyNgan.png)
 
-Support includes [gRPC ↗](https://grpc.io/docs/what-is-grpc/introduction/)-based APIs, which use binary formats such as protocol buffers rather than JSON.
+Support includes [gRPC ↗︎](https://grpc.io/docs/what-is-grpc/introduction/)-based APIs, which use binary formats such as protocol buffers rather than JSON.
 
 ## Creating a mTLS rule
 

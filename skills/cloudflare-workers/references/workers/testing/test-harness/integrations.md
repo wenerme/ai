@@ -18,7 +18,7 @@ You can use `createTestHarness()` with existing tools in the Node.js ecosystem. 
 
 ## Mock Service Worker
 
-If your Worker makes outbound `fetch()` requests, you can use [Mock Service Worker (MSW) ↗](https://mswjs.io/) to intercept them and return predictable responses. MSW provides reusable request handlers that can be shared across tests.
+If your Worker makes outbound `fetch()` requests, you can use [Mock Service Worker (MSW) ↗︎](https://mswjs.io/) to intercept them and return predictable responses. MSW provides reusable request handlers that can be shared across tests.
 
 For example, you can start MSW before the tests, reject unhandled requests, and reset handlers after each test:
 
@@ -102,7 +102,7 @@ test("loads a user profile", async ({ expect }) => {
 
 ## Playwright
 
-If you are building a web application and want to verify user flows in a real browser, use [Playwright ↗](https://playwright.dev/) with the test harness. Playwright can navigate pages, interact with the user interface, and verify the behavior of your Workers project end to end.
+If you are building a web application and want to verify user flows in a real browser, use [Playwright ↗︎](https://playwright.dev/) with the test harness. Playwright can navigate pages, interact with the user interface, and verify the behavior of your Workers project end to end.
 
 A Playwright fixture can start a test server with `createTestHarness()` before browser tests. If you want to mock outbound `fetch()` requests, you can also use [MSW](#mock-service-worker) to intercept them at the same time.
 

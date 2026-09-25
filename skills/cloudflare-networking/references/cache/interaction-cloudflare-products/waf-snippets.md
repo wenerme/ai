@@ -31,7 +31,7 @@ A[User's request] --> B[WAF] --> C[Cache] --> D[R2]
 
 A presigned URL is a regular URL with a cryptographic token appended to it. The token contains a hash-based message authentication code (HMAC) computed from the URL path, a timestamp, and a secret key shared between the signing service and the validator. Anyone with the URL can access the content until the token expires, but the token cannot be reused for a different URL path.
 
-You can presign URLs similar to [S3 ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html), enabling you to share direct access to your content with an associated timeout. This approach can be implemented using a combination of Snippets, Rules, or Cloudflare Workers.
+You can presign URLs similar to [S3 ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html), enabling you to share direct access to your content with an associated timeout. This approach can be implemented using a combination of Snippets, Rules, or Cloudflare Workers.
 
 For optimal performance, we recommend separating the creation and validation processes:
 

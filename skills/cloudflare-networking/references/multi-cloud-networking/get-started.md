@@ -30,7 +30,7 @@ Once Cloudflare has the credentials required to access your cloud environments, 
 
 ### 2. Create IAM policy
 
-1. Create a [custom IAM policy ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) in your AWS account, and take note of the name you entered. Then, paste the following [JSON code ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_version.html) in the JSON tab:
+1. Create a [custom IAM policy ↗︎](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) in your AWS account, and take note of the name you entered. Then, paste the following [JSON code ↗︎](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_version.html) in the JSON tab:
 
 ```json
 {
@@ -62,7 +62,7 @@ Once Cloudflare has the credentials required to access your cloud environments, 
 
 ### 3. Authorize access to your AWS account
 
-1. Create an [AWS role ↗](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-custom.html) with the following settings:
+1. Create an [AWS role ↗︎](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-custom.html) with the following settings:
    - **Trusted entity type**: Select **Custom trust policy**, and paste the custom trust policy returned by the Cloudflare dashboard.
    - **Permissions**: Add the IAM policy you created in the previous step, along with these AWS-managed policies:
      - `NetworkAdministrator`
@@ -100,11 +100,11 @@ Multi-Cloud Networking does not support personal Microsoft accounts. Sign in usi
 1. Select **Create service principal**. You will be redirected to Microsoft's login page.
 2. Enter your Azure credentials. If your account does not have administrator privileges, you may need to pass this link to an account that has administrator privileges.
 3. The next screen lists Cloudflare required permissions to access your account. Select **Accept**.
-4. [Add a role assignment ↗](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal). The purpose of this step is to give the app that you registered in step 1 permission to access your Azure Subscription.
+4. [Add a role assignment ↗︎](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal). The purpose of this step is to give the app that you registered in step 1 permission to access your Azure Subscription.
    - In step 3 of the linked document, select the **Contributor** role from the **Privileged administrator roles** tab.
    - In step 4 of the linked document, search for `mcn-provider-integrations-bot-prod` when selecting members.
 5. In **Provide account information**, enter your **Tenant ID** and **Subscription ID**.
-6. In **Verify account ownership**, [add the tags displayed in the Cloudflare dashboard ↗](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources-portal).
+6. In **Verify account ownership**, [add the tags displayed in the Cloudflare dashboard ↗︎](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources-portal).
 
    Note
 
@@ -128,16 +128,16 @@ The first discovery of resources may not succeed in all regions while the IAM po
 
 ### 2. Authorize access to your Google account
 
-1. Create a new [GCP service account ↗](https://cloud.google.com/iam/docs/service-accounts-create) in your **Google account** > **GCP Console** > **IAM & Admin** > **Service Accounts**.
+1. Create a new [GCP service account ↗︎](https://cloud.google.com/iam/docs/service-accounts-create) in your **Google account** > **GCP Console** > **IAM & Admin** > **Service Accounts**.
 2. Grant the new service account these roles:
    - `Compute Network Admin`
    - `Compute Viewer`
 3. Under **IAM & Admin** > **Service Accounts**, select the service account you just created, and navigate to the **Permissions** tab.
-4. Grant the **Service Account Token Creator** role to our bot account to allow it to impersonate this service account. Learn how to grant a specific role [in Google's documentation ↗](https://cloud.google.com/iam/docs/manage-access-service-accounts#grant-single-role):
+4. Grant the **Service Account Token Creator** role to our bot account to allow it to impersonate this service account. Learn how to grant a specific role [in Google's documentation ↗︎](https://cloud.google.com/iam/docs/manage-access-service-accounts#grant-single-role):
    - `mcn-integrations-bot-prod@mcn-gcp-01.iam.gserviceaccount.com`
 5. In the **service account email field**, enter the email account that you used to create the GCP service account.
-6. In the **Project ID field**, enter the [project ID ↗](https://support.google.com/googleapi/answer/7014113?hl=en) associated with your project.
-7. [Add the label ↗](https://cloud.google.com/resource-manager/docs/creating-managing-labels#create-labels) displayed in the dashboard of your project.
+6. In the **Project ID field**, enter the [project ID ↗︎](https://support.google.com/googleapi/answer/7014113?hl=en) associated with your project.
+7. [Add the label ↗︎](https://cloud.google.com/resource-manager/docs/creating-managing-labels#create-labels) displayed in the dashboard of your project.
 8. Select **I authorize Cloudflare to access my GCP account.** If your account does not have administrator privileges, you may need to pass this link to an account that has administrator privileges.
 9. Select **Authorize**.
 

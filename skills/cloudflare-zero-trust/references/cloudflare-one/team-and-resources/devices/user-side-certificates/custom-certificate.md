@@ -63,7 +63,7 @@ If your users need to connect to self-signed origin servers, create an HTTP Allo
      -addext "keyUsage=critical,keyCertSign,cRLSign"
    ```
 
-   The `-addext` flags add the `basicConstraints` and `keyUsage` extensions required by [RFC 5280 ↗](https://datatracker.ietf.org/doc/html/rfc5280) for CA certificates. Without them, some TLS clients may reject certificates signed by your custom CA. In particular, Python 3.13 and later enforce strict RFC 5280 compliance by default ( `ssl.VERIFY_X509_STRICT`), causing HTTPS requests to fail for devices using the Cloudflare One Client when the uploaded CA does not include these extensions.
+   The `-addext` flags add the `basicConstraints` and `keyUsage` extensions required by [RFC 5280 ↗︎](https://datatracker.ietf.org/doc/html/rfc5280) for CA certificates. Without them, some TLS clients may reject certificates signed by your custom CA. In particular, Python 3.13 and later enforce strict RFC 5280 compliance by default ( `ssl.VERIFY_X509_STRICT`), causing HTTPS requests to fail for devices using the Cloudflare One Client when the uploaded CA does not include these extensions.
 
    The `-days 365` value controls certificate expiry. A shorter duration reduces risk if the key is compromised, but requires more frequent rotation. Rotating a deployed BYOPKI certificate is a disruptive operation, so choose an expiry that balances security with operational overhead.<details><summary>
 
@@ -118,7 +118,7 @@ When preparing your certificate and private key for upload, be sure to remove an
 
 You can upload a single root certificate or a full certificate chain. When uploading a certificate chain via the dashboard, API, or Terraform, concatenate the root certificate and any intermediate certificates in PEM format, with the root certificate first.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings** > **Certificates**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings** > **Certificates**.
 2. Select **Upload certificate**.
 3. Enter the private key and SSL certificate you generated or select **Paste certificate from file** to upload them from a file. If uploading a certificate chain, paste all certificates (root and intermediates) in PEM format with the root certificate first.
 4. Select **Upload custom certificate**.
@@ -275,7 +275,7 @@ If Gateway returns an **HTTP Response Code: 526** after deploying a custom certi
 
 ### Python 3.13+ SSL errors with the Cloudflare One Client
 
-Python 3.13 and later enable `ssl.VERIFY_X509_STRICT` by default, which requires CA certificates to comply with [RFC 5280 ↗](https://datatracker.ietf.org/doc/html/rfc5280). If your BYOPKI certificate was generated without the `keyUsage` and `basicConstraints` extensions, Python HTTPS requests will fail when the Cloudflare One Client is active. To resolve the issue, [generate a new custom root CA](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/#generate-a-custom-root-ca) and upload it to Cloudflare.
+Python 3.13 and later enable `ssl.VERIFY_X509_STRICT` by default, which requires CA certificates to comply with [RFC 5280 ↗︎](https://datatracker.ietf.org/doc/html/rfc5280). If your BYOPKI certificate was generated without the `keyUsage` and `basicConstraints` extensions, Python HTTPS requests will fail when the Cloudflare One Client is active. To resolve the issue, [generate a new custom root CA](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/custom-certificate/#generate-a-custom-root-ca) and upload it to Cloudflare.
 
 Was this helpful?
 

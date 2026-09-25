@@ -134,7 +134,7 @@ See the full [Workers Stream binding API reference](https://developers.cloudflar
 
 ## Profiles
 
-To create, list, delete, or get information about the profile, you will need your [Cloudflare API token ↗](https://www.cloudflare.com/a/account/my-account).
+To create, list, delete, or get information about the profile, you will need your [Cloudflare API token ↗︎](https://www.cloudflare.com/a/account/my-account).
 
 ### Optional parameters
 

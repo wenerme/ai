@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-SvelteKit is the official framework for building modern web applications with [Svelte ↗](https://svelte.dev), an increasingly popular open-source tool for creating user interfaces. Unlike most frameworks, SvelteKit uses Svelte, a compiler that transforms your component code into efficient JavaScript, enabling SvelteKit to deliver fast, reactive applications that update the DOM surgically as the application state changes.
+SvelteKit is the official framework for building modern web applications with [Svelte ↗︎](https://svelte.dev), an increasingly popular open-source tool for creating user interfaces. Unlike most frameworks, SvelteKit uses Svelte, a compiler that transforms your component code into efficient JavaScript, enabling SvelteKit to deliver fast, reactive applications that update the DOM surgically as the application state changes.
 
-In this guide, you will create a new SvelteKit application and deploy it using Cloudflare Pages. You will use [`SvelteKit` ↗](https://kit.svelte.dev/), the official Svelte framework for building web applications of all sizes.
+In this guide, you will create a new SvelteKit application and deploy it using Cloudflare Pages. You will use [`SvelteKit` ↗︎](https://kit.svelte.dev/), the official Svelte framework for building web applications of all sizes.
 
 ## Setting up a new project
 
-Use the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate SvelteKit's official setup tool, and provide the option to deploy instantly.
+Use the [`create-cloudflare` ↗︎](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate SvelteKit's official setup tool, and provide the option to deploy instantly.
 
 To use `create-cloudflare` to create a new SvelteKit project, run the following command:
 
@@ -50,15 +50,15 @@ npm run dev
 
 ## Before you continue
 
-All of the framework guides assume you already have a fundamental understanding of [Git ↗](https://git-scm.com/). If you are new to Git, refer to this [summarized Git handbook ↗](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
+All of the framework guides assume you already have a fundamental understanding of [Git ↗︎](https://git-scm.com/). If you are new to Git, refer to this [summarized Git handbook ↗︎](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
 
-If you clone with SSH, you must [generate SSH keys ↗](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) on each computer you use to push or pull from GitHub.
+If you clone with SSH, you must [generate SSH keys ↗︎](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) on each computer you use to push or pull from GitHub.
 
-Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/git-handbook/) and [Git documentation ↗](https://git-scm.com/book/en/v2) for more information.
+Refer to the [GitHub documentation ↗︎](https://guides.github.com/introduction/git-handbook/) and [Git documentation ↗︎](https://git-scm.com/book/en/v2) for more information.
 
 ## Create a GitHub repository
 
-Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
+Create a new GitHub repository by visiting [repo.new ↗︎](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
 ```sh
 git init
@@ -71,11 +71,11 @@ git push -u origin main
 
 ## SvelteKit Cloudflare configuration
 
-To use SvelteKit with Cloudflare Pages, you need to add the [Cloudflare adapter ↗](https://kit.svelte.dev/docs/adapter-cloudflare) to your application.
+To use SvelteKit with Cloudflare Pages, you need to add the [Cloudflare adapter ↗︎](https://kit.svelte.dev/docs/adapter-cloudflare) to your application.
 
 Note
 
-If using [`create-cloudflare` (C3) ↗](https://www.npmjs.com/package/create-cloudflare), you can bypass adding an adapter as C3 automatically installs any necessary adapters and configures them when creating your project.
+If using [`create-cloudflare` (C3) ↗︎](https://www.npmjs.com/package/create-cloudflare), you can bypass adding an adapter as C3 automatically installs any necessary adapters and configures them when creating your project.
 
 1. Install the Cloudflare Adapter by running `npm i --save-dev @sveltejs/adapter-cloudflare` in your terminal.
 2. Include the adapter in `svelte.config.js`:
@@ -129,13 +129,13 @@ Note
 
 In addition to the Cloudflare adapter, review other adapters you can use in your project:
 
-- [`@sveltejs/adapter-auto` ↗](https://www.npmjs.com/package/@sveltejs/adapter-auto)
+- [`@sveltejs/adapter-auto` ↗︎](https://www.npmjs.com/package/@sveltejs/adapter-auto)
 
-  SvelteKit's default adapter automatically chooses the adapter for your current environment. If you use this adapter, [no configuration is needed ↗](https://kit.svelte.dev/docs/adapter-auto). However, the default adapter introduces a few disadvantages for local development because it has no way of knowing what platform the application is going to be deployed to.
+  SvelteKit's default adapter automatically chooses the adapter for your current environment. If you use this adapter, [no configuration is needed ↗︎](https://kit.svelte.dev/docs/adapter-auto). However, the default adapter introduces a few disadvantages for local development because it has no way of knowing what platform the application is going to be deployed to.
 
 To solve this issue, provide a `CF_PAGES` variable to SvelteKit so that the adapter can detect the Pages platform. For example, when locally building the application: `CF_PAGES=1 vite build`.
 
-- [`@sveltejs/adapter-static` ↗](https://www.npmjs.com/package/@sveltejs/adapter-static) Only produces client-side static assets (no server-side rendering) and is compatible with Cloudflare Pages. Review the [official SvelteKit documentation ↗](https://kit.svelte.dev/docs/adapter-static) for instructions on how to set up the adapter. Keep in mind that if you decide to use this adapter, the build directory, instead of `.svelte-kit/cloudflare`, becomes `build`. You must also configure your Cloudflare Pages application's build directory accordingly.
+- [`@sveltejs/adapter-static` ↗︎](https://www.npmjs.com/package/@sveltejs/adapter-static) Only produces client-side static assets (no server-side rendering) and is compatible with Cloudflare Pages. Review the [official SvelteKit documentation ↗︎](https://kit.svelte.dev/docs/adapter-static) for instructions on how to set up the adapter. Keep in mind that if you decide to use this adapter, the build directory, instead of `.svelte-kit/cloudflare`, becomes `build`. You must also configure your Cloudflare Pages application's build directory accordingly.
 
 Caution
 
@@ -145,7 +145,7 @@ If you are using any adapter different from the default SvelteKit adapter, remem
 
 ### Deploy via the `create-cloudflare` CLI (C3)
 
-If you use [`create-cloudflare`(C3) ↗](https://www.npmjs.com/package/create-cloudflare) to create your new Svelte project, C3 will install all dependencies needed for your project and prompt you to deploy your project via the CLI. If you deploy, your site will be live and you will be provided with a deployment URL.
+If you use [`create-cloudflare`(C3) ↗︎](https://www.npmjs.com/package/create-cloudflare) to create your new Svelte project, C3 will install all dependencies needed for your project and prompt you to deploy your project via the CLI. If you deploy, your site will be live and you will be provided with a deployment URL.
 
 ### Deploy via the Cloudflare dashboard
 
@@ -194,7 +194,7 @@ export const GET = (({ url }) => {
 
 SvelteKit API Routes
 
-For more information about SvelteKit API Routes, refer to the [SvelteKit documentation ↗](https://kit.svelte.dev/docs/routing#server).
+For more information about SvelteKit API Routes, refer to the [SvelteKit documentation ↗︎](https://kit.svelte.dev/docs/routing#server).
 
 ## Learn more
 

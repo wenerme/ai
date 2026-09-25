@@ -49,7 +49,7 @@ export class MyAgent extends Agent {
 }
 ```
 
-For a complete working example, see [x402-mcp on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/x402-mcp).
+For a complete working example, see [x402-mcp on GitHub ↗︎](https://github.com/cloudflare/agents/tree/main/examples/x402-mcp).
 
 ## Environment setup
 
@@ -63,7 +63,7 @@ MY_PRIVATE_KEY="0x..."
 npx wrangler secret put MY_PRIVATE_KEY
 ```
 
-Use `base-sepolia` for testing. Get test USDC from the [Circle faucet ↗](https://faucet.circle.com/).
+Use `base-sepolia` for testing. Get test USDC from the [Circle faucet ↗︎](https://faucet.circle.com/).
 
 ## Related
 

@@ -20,7 +20,7 @@ For example, users in one identity provider group (signifying a specific office 
 
 ## Create a new profile
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Select **Create new profile**. This will make a copy of the **Default** profile.
 3. Enter any name for the profile.
 4. Create rules to define the devices that will use this profile. Learn more about the available [Selectors](#selectors), [Operators](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#comparison-operators), and [Values](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#value).
@@ -77,9 +77,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy" 
 	}'
 ```
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Create a new profile using the [`cloudflare_zero_trust_device_custom_profile` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile) resource:
+2. Create a new profile using the [`cloudflare_zero_trust_device_custom_profile` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile) resource:
 
    ```tf
    resource "cloudflare_zero_trust_device_custom_profile" "example" {
@@ -113,7 +113,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy" 
 
 ## Edit profile settings
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to update and select **Configure**.
 3. Use [selectors](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#selectors) to add or adjust match rules, and modify [device client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-settings) for this profile as needed.
 
@@ -133,13 +133,13 @@ It may take up to 10 minutes for newly updated settings to propagate to devices.
 
 To verify the last active device profile for a specific device:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices**.
 2. Under devices, find your device.
 3. Review the device profile under **Last active device profile**.
 
 To verify the last active device profile for a user's devices:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Users**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Users**.
 2. Under **User name**, find the user you would like to investigate.
 3. Select **Devices** to see all devices used by the user.
 4. Find the device you want to investigate and verify the last active device profile for that device under the **Device profile** column.
@@ -210,7 +210,7 @@ Apply a device profile based on the [OS version](https://developers.cloudflare.c
 
 Note
 
-The OS version must be specified as a valid [Semver ↗](https://semver.org/). For example, if your device is running OS version `1.2`, you must enter `1.2.0`.
+The OS version must be specified as a valid [Semver ↗︎](https://semver.org/). For example, if your device is running OS version `1.2`, you must enter `1.2.0`.
 
 ### Managed network
 

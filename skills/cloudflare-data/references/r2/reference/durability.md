@@ -27,7 +27,7 @@ R2's durability is built on multiple layers of redundancy and data protection:
 ### Considerations
 
 - Durability is not a guarantee of data availability. It is a measure of the likelihood of data loss.
-- R2 provides an availability [SLA of 99.9% ↗](https://www.cloudflare.com/r2-service-level-agreement/)
+- R2 provides an availability [SLA of 99.9% ↗︎](https://www.cloudflare.com/r2-service-level-agreement/)
 - Durability does not prevent intentional or accidental deletion of data. Use [bucket locks](https://developers.cloudflare.com/r2/buckets/bucket-locks/) and/or bucket-scoped [API tokens](https://developers.cloudflare.com/r2/api/tokens/) to limit access to data.
 - Durability is also distinct from [consistency](https://developers.cloudflare.com/r2/reference/consistency/), which describes how reads and writes are reflected in the system's state (e.g. eventual consistency vs. strong consistency).
 

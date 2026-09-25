@@ -81,7 +81,7 @@ The `cloudflared` daemon can stream logs from any tunnel in your account to the 
    cloudflared tail <UUID>
    ```
 
-   For a more structured view of the JSON message, you can pipe the output to tools like [jq ↗](https://stedolan.github.io/jq/):
+   For a more structured view of the JSON message, you can pipe the output to tools like [jq ↗︎](https://stedolan.github.io/jq/):
 
    ```sh
    cloudflared tail --output=json <UUID> | jq .

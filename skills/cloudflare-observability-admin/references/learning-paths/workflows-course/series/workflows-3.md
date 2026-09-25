@@ -20,7 +20,7 @@ Cloudflare Workflows provide a powerful way to manage asynchronous, durable proc
 
 If you want to dive into detail, refer to the following pages:
 
-- [Source code for the Punderful repository ↗](https://github.com/craigsdennis/punderful-workflows)
+- [Source code for the Punderful repository ↗︎](https://github.com/craigsdennis/punderful-workflows)
 - [Cloudflare Workflows](https://developers.cloudflare.com/workflows/)
 - [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/)
 
@@ -28,13 +28,13 @@ Workflows allow you to kick off asynchronous processes without blocking the user
 
 Locate the `addInteraction` function in `src/index.tsx`:
 
-[See here ↗](https://github.com/craigsdennis/punderful-workflows/blob/main/src/index.tsx#L237)
+[See here ↗︎](https://github.com/craigsdennis/punderful-workflows/blob/main/src/index.tsx#L237)
 
 This function is called when a user interacts with a pun (for example, likes it). Instead of performing the interaction logic directly, it offloads the work to a workflow.
 
 Examine the `InteractionWorkflow` definition in `src/workflows/interaction.ts`. This workflow performs tasks like checking if the user/session exists and recording the interaction in the database.
 
-[See here ↗](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/interaction.ts)
+[See here ↗︎](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/interaction.ts)
 
 ### Leaderboard Code
 
@@ -42,7 +42,7 @@ A common use case for background processes is crunching data and caching results
 
 Examine the `LeaderboardWorkflow` in `src/workflows/leaderboard.ts`. This workflow performs a database query to find trending puns and then stores the results in Cloudflare KV (Key-Value Store).
 
-[See here ↗](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/leaderboard.ts)
+[See here ↗︎](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/leaderboard.ts)
 
 This workflow can be scheduled to run periodically to update the leaderboard data.
 
@@ -52,7 +52,7 @@ The Wrangler configuration file is used to configure your Worker and Workflows. 
 
 The episode repository uses the older pattern of a top-level `[triggers]` section plus a `scheduled` handler in the main Worker to create a `LEADERBOARD_WORKFLOW` instance on a timer.
 
-[See here ↗](https://github.com/craigsdennis/punderful-workflows/blob/main/wrangler.toml#L68)
+[See here ↗︎](https://github.com/craigsdennis/punderful-workflows/blob/main/wrangler.toml#L68)
 
 In current Workflows projects, you can usually schedule the Workflow directly on its binding instead:
 
@@ -88,7 +88,7 @@ Workflows can also be used for more complex, multi-step processes, including int
 
 Examine the `PuntificatorWorkflow` definition in `src/workflows/puntificator.ts`.
 
-[See here ↗](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/puntificator.ts)
+[See here ↗︎](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/puntificator.ts)
 
 This workflow includes steps to:
 
@@ -99,7 +99,7 @@ This workflow includes steps to:
 
 Crucially, this workflow includes a `step.sleep` call:
 
-[See here ↗](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/puntificator.ts#L135)
+[See here ↗︎](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/puntificator.ts#L135)
 
 This step pauses the workflow execution for a specified duration. This is useful for waiting to consider user feedback on a published pun before potentially taking further action based on its popularity.
 
@@ -109,13 +109,13 @@ Workflows can initiate other workflows, allowing you to compose complex processe
 
 In the `PuntificatorWorkflow`, find where it calls the `PUBLISH` workflow.
 
-[See here ↗](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/puntificator.ts#L115)
+[See here ↗︎](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/puntificator.ts#L115)
 
 This demonstrates how one workflow can trigger another, enabling the separation of concerns and modular design.
 
 Examine the `PublishWorkflow` in `src/workflows/publish.ts`.
 
-[See here ↗](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/publish.ts)
+[See here ↗︎](https://github.com/craigsdennis/punderful-workflows/blob/main/src/workflows/publish.ts)
 
 This workflow handles the logic for publishing a pun, likely involving saving it to the database and making it visible on the site.
 

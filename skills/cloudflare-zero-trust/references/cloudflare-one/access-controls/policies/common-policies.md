@@ -73,7 +73,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "allow_employees_by_email_domain" {
@@ -151,7 +151,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_group` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_group) resource:
+Configure the [`cloudflare_zero_trust_access_group` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_group) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_group" "approved_countries" {
@@ -248,7 +248,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "allow_employees_from_specific_countries" {
@@ -280,7 +280,7 @@ resource "cloudflare_zero_trust_access_policy" "allow_employees_from_specific_co
 }
 ```
 
-The `cloudflare_zero_trust_access_group.approved_countries` reference points to the [`cloudflare_zero_trust_access_group` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_group) resource created above.
+The `cloudflare_zero_trust_access_group.approved_countries` reference points to the [`cloudflare_zero_trust_access_group` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_group) resource created above.
 
 ## Require device posture for sensitive applications
 
@@ -358,7 +358,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "require_device_posture" {
@@ -386,8 +386,8 @@ resource "cloudflare_zero_trust_access_policy" "require_device_posture" {
 }
 ```
 
-- Replace the `okta` rule with the appropriate [`cloudflare_zero_trust_access_identity_provider` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource for your identity provider. To configure the identity provider resource, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
-- To configure the [`cloudflare_zero_trust_device_posture_rule` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_posture_rule) resources referenced above, refer to [Device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
+- Replace the `okta` rule with the appropriate [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource for your identity provider. To configure the identity provider resource, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
+- To configure the [`cloudflare_zero_trust_device_posture_rule` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_posture_rule) resources referenced above, refer to [Device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
 To reuse these device requirements across multiple applications, create a [rule group](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/groups/) called "Corporate device requirements" that contains the posture checks. You can then reference this rule group in the Require field of any policy.
 
@@ -453,7 +453,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 	}'
 ```
 
-The `auth_method` value uses [RFC 8176 ↗](https://datatracker.ietf.org/doc/html/rfc8176#section-2) authentication method reference values. For example, `swk` represents a software-secured key (security key). Replace the `okta` rule with the [appropriate rule for your identity provider](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/create/). To get your identity provider ID, use the [List Access identity providers](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/identity_providers/methods/list/) endpoint. To get `<GATEWAY_CHECK_ID>`, use the [List device posture checks](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/posture/methods/list/) endpoint.
+The `auth_method` value uses [RFC 8176 ↗︎](https://datatracker.ietf.org/doc/html/rfc8176#section-2) authentication method reference values. For example, `swk` represents a software-secured key (security key). Replace the `okta` rule with the [appropriate rule for your identity provider](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/policies/methods/create/). To get your identity provider ID, use the [List Access identity providers](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/identity_providers/methods/list/) endpoint. To get `<GATEWAY_CHECK_ID>`, use the [List device posture checks](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/posture/methods/list/) endpoint.
 
 <details>
 
@@ -469,7 +469,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "require_mfa" {
@@ -497,10 +497,10 @@ resource "cloudflare_zero_trust_access_policy" "require_mfa" {
 }
 ```
 
-The `auth_method` value uses [RFC 8176 ↗](https://datatracker.ietf.org/doc/html/rfc8176#section-2) authentication method reference values. For example, `swk` represents a software-secured key (security key).
+The `auth_method` value uses [RFC 8176 ↗︎](https://datatracker.ietf.org/doc/html/rfc8176#section-2) authentication method reference values. For example, `swk` represents a software-secured key (security key).
 
-- Replace the `okta` rule with the appropriate [`cloudflare_zero_trust_access_identity_provider` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource for your identity provider. To configure the identity provider resource, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
-- To configure the [`cloudflare_zero_trust_device_posture_rule` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_posture_rule) resource referenced above, refer to [Device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
+- Replace the `okta` rule with the appropriate [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource for your identity provider. To configure the identity provider resource, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
+- To configure the [`cloudflare_zero_trust_device_posture_rule` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_posture_rule) resource referenced above, refer to [Device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
 ### Independent MFA
 
@@ -582,7 +582,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "allow_contractor_access_with_otp" {
@@ -609,7 +609,7 @@ resource "cloudflare_zero_trust_access_policy" "allow_contractor_access_with_otp
 }
 ```
 
-To configure the [`cloudflare_zero_trust_access_identity_provider` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource for OTP (configured with `type = "onetimepin"`), refer to [One-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/).
+To configure the [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource for OTP (configured with `type = "onetimepin"`), refer to [One-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/).
 
 Caution
 
@@ -687,7 +687,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 	}'
 ```
 
-First, configure the [`cloudflare_zero_trust_gateway_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings) resource to enable Clientless Web Isolation on your account if you have not already:
+First, configure the [`cloudflare_zero_trust_gateway_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings) resource to enable Clientless Web Isolation on your account if you have not already:
 
 <details>
 
@@ -714,7 +714,7 @@ resource "cloudflare_zero_trust_gateway_settings" "gateway_settings" {
 }
 ```
 
-Then, configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource with `isolation_required` set to `true`:
+Then, configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource with `isolation_required` set to `true`:
 
 <details>
 
@@ -782,7 +782,7 @@ For more information, refer to [Isolate self-hosted application](https://develop
 
 ## Block requests from high-risk countries
 
-If your organization restricts access from certain countries due to internal policy or regulatory requirements such as [OFAC sanctions ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries) or [ITAR regulations ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries), you can create a Block policy that denies access from those regions. Adding a corporate IP allowlist as an Exclude rule ensures that employees connecting through trusted office networks are not inadvertently blocked.
+If your organization restricts access from certain countries due to internal policy or regulatory requirements such as [OFAC sanctions ↗︎](https://orpa.princeton.edu/export-controls/sanctioned-countries) or [ITAR regulations ↗︎](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries), you can create a Block policy that denies access from those regions. Adding a corporate IP allowlist as an Exclude rule ensures that employees connecting through trusted office networks are not inadvertently blocked.
 
 Note
 
@@ -849,7 +849,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "block_high_risk_countries" {
@@ -869,7 +869,7 @@ resource "cloudflare_zero_trust_access_policy" "block_high_risk_countries" {
 }
 ```
 
-To configure the [`cloudflare_zero_trust_list` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_list) resource referenced above (configured with `type = "IP"`), refer to [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/).
+To configure the [`cloudflare_zero_trust_list` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_list) resource referenced above (configured with `type = "IP"`), refer to [Lists](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/).
 
 Block policies are best used together with [Allow policies](#allow-employees-by-email-domain) to carve out exceptions. Because Access denies all requests by default, users who do not match a Block policy are still denied unless they match an Allow policy.
 
@@ -938,7 +938,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "exclude_high_risk_users" {
@@ -1029,7 +1029,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "authenticate_service_with_token" {
@@ -1049,7 +1049,7 @@ resource "cloudflare_zero_trust_access_policy" "authenticate_service_with_token"
 }
 ```
 
-To configure the [`cloudflare_zero_trust_access_service_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource referenced above, refer to [Service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).
+To configure the [`cloudflare_zero_trust_access_service_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource referenced above, refer to [Service tokens](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/).
 
 ## Authenticate a service using mutual TLS
 
@@ -1112,7 +1112,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "authenticate_service_with_mtls" {
@@ -1178,7 +1178,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "authenticate_service_with_valid_certificate" {
@@ -1267,7 +1267,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "require_purpose_justification" {
@@ -1297,8 +1297,8 @@ resource "cloudflare_zero_trust_access_policy" "require_purpose_justification" {
 }
 ```
 
-- Replace the `okta` rule with the appropriate [`cloudflare_zero_trust_access_identity_provider` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource for your identity provider. To configure the identity provider resource, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
-- To configure the [`cloudflare_zero_trust_device_posture_rule` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_posture_rule) resources referenced above, refer to [Device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
+- Replace the `okta` rule with the appropriate [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource for your identity provider. To configure the identity provider resource, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
+- To configure the [`cloudflare_zero_trust_device_posture_rule` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_posture_rule) resources referenced above, refer to [Device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/).
 
 You can combine purpose justification with [temporary authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/temporary-auth/) to additionally require approval from a designated reviewer before granting access.
 
@@ -1355,7 +1355,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
+Configure the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource:
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "bypass_public_endpoint" {

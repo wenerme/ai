@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/tools/payments/mpp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Machine Payments Protocol (MPP) ↗](https://mpp.dev) is an open protocol for machine-to-machine payments. It standardizes the HTTP `402 Payment Required` status code with a formal authentication scheme proposed to the [IETF ↗](https://paymentauth.org). MPP gives agents, applications, and people one interface to pay for a service in the same HTTP request.
+[Machine Payments Protocol (MPP) ↗︎](https://mpp.dev) is an open protocol for machine-to-machine payments. It standardizes the HTTP `402 Payment Required` status code with a formal authentication scheme proposed to the [IETF ↗︎](https://paymentauth.org). MPP gives agents, applications, and people one interface to pay for a service in the same HTTP request.
 
 MPP is payment-method agnostic. It supports stablecoins, cards through Stripe, and custom payment methods. A service can offer more than one method.
 
@@ -36,7 +36,7 @@ MPP defines three payment intents:
 - **`session`** — Charge for measured usage.
 - **`subscription`** — Sell recurring access.
 
-For more information, refer to [MPP payment intents ↗](https://mpp.dev/intents/).
+For more information, refer to [MPP payment intents ↗︎](https://mpp.dev/intents/).
 
 ## Compatibility with x402
 
@@ -54,14 +54,14 @@ Pay HTTP services and MCP tools from a Cloudflare Agent
 
 ## SDKs
 
-MPP provides SDKs for TypeScript, Python, Rust, Go, and Ruby. The Cloudflare guides use the TypeScript [`mppx` SDK ↗](https://mpp.dev/sdk/typescript/).
+MPP provides SDKs for TypeScript, Python, Rust, Go, and Ruby. The Cloudflare guides use the TypeScript [`mppx` SDK ↗︎](https://mpp.dev/sdk/typescript/).
 
-For current packages and integrations, refer to the [MPP SDK documentation ↗](https://mpp.dev/sdk/).
+For current packages and integrations, refer to the [MPP SDK documentation ↗︎](https://mpp.dev/sdk/).
 
 ## Related
 
-- [mpp.dev ↗](https://mpp.dev) — Protocol documentation and guides
-- [IETF specification ↗](https://paymentauth.org) — Payment HTTP Authentication Scheme
+- [mpp.dev ↗︎](https://mpp.dev) — Protocol documentation and guides
+- [IETF specification ↗︎](https://paymentauth.org) — Payment HTTP Authentication Scheme
 - [Pay Per Crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/) — Cloudflare-native web content monetization
 
 Was this helpful?

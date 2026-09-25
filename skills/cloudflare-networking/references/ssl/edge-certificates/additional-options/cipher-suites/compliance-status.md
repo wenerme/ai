@@ -24,7 +24,7 @@ Also [enable TLS 1.3](https://developers.cloudflare.com/ssl/edge-certificates/ad
 
 ## PCI DSS
 
-Recommended cipher suites for compliance with the [Payment Card Industry Data Security Standard (PCI DSS) ↗](https://www.pcisecuritystandards.org/standards/pci-dss/). Enhances payment card data security.
+Recommended cipher suites for compliance with the [Payment Card Industry Data Security Standard (PCI DSS) ↗︎](https://www.pcisecuritystandards.org/standards/pci-dss/). Enhances payment card data security.
 
 <details>
 
@@ -42,7 +42,7 @@ If you are customizing cipher suites via API, refer to [Steps and API examples](
 
 ## FIPS-140-3
 
-Recommended cipher suites for compliance with the [Federal Information Processing Standard (140-3) ↗](https://csrc.nist.gov/pubs/fips/140-3/final). Used to approve cryptographic modules.
+Recommended cipher suites for compliance with the [Federal Information Processing Standard (140-3) ↗︎](https://csrc.nist.gov/pubs/fips/140-3/final). Used to approve cryptographic modules.
 
 <details>
 

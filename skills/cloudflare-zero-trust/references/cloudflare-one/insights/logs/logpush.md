@@ -22,7 +22,7 @@ With Cloudflare's [Logpush](https://developers.cloudflare.com/logs/logpush/) ser
 
 To configure Logpush for Zero Trust logs:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Logs**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Insights** > **Logs**.
 2. Select **Manage Logpush**.
 3. In Logpush, select **Create a Logpush job**. A Logpush job defines which dataset to export and where to send it.
 4. Choose a [Logpush destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/).
@@ -74,7 +74,7 @@ Logpush logs the following fields for each DNS query:
 - Response TTL
 - Response data
 
-Logpush provides DNS response data in two formats. `ResourceRecords` contains the raw DNS response in [Base64-encoded binary format ↗](https://datatracker.ietf.org/doc/html/rfc1035#section-4.1.3), which is compact but requires decoding before it is human-readable. `ResourceRecordsJSON` contains the same data in JSON, with the record name, type, class, TTL, and response data already parsed. For example:
+Logpush provides DNS response data in two formats. `ResourceRecords` contains the raw DNS response in [Base64-encoded binary format ↗︎](https://datatracker.ietf.org/doc/html/rfc1035#section-4.1.3), which is compact but requires decoding before it is human-readable. `ResourceRecordsJSON` contains the same data in JSON, with the record name, type, class, TTL, and response data already parsed. For example:
 
 ```json
 {

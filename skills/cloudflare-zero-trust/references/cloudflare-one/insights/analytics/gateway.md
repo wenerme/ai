@@ -22,7 +22,7 @@ Gateway analytics include three separate dashboards:
 
 To review Gateway analytics:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Go to **Dashboards**.
 3. Select your desired dashboard.
 
@@ -36,7 +36,7 @@ The HTTP request analytics dashboard helps you identify trends in how your HTTP 
 
 To review a detailed description of an HTTP request and its associated policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Select **Logs**.
 3. Select **HTTP request logs**.
 4. Use the **Policy** filter to view HTTP requests that triggered a policy or other filters to narrow down your results.
@@ -60,7 +60,7 @@ The DNS query analytics dashboard helps you identify trends in how your DNS poli
 
 To review a detailed description of a DNS query and its associated policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Select **Logs**.
 3. Select **DNS query logs**.
 4. Use the **Policy** filter to view DNS queries that triggered a policy or other filters to narrow down your results.
@@ -83,7 +83,7 @@ The Network policy analytics dashboard helps you identify trends in how your Gat
 
 To review a detailed description of a network session and its associated policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Select **Logs**.
 3. Select **Network logs**.
 4. Use the **Policy** filter to view network sessions that triggered a policy or other filters to narrow down your results.
@@ -114,7 +114,7 @@ You can use the [GraphQL Analytics API](https://developers.cloudflare.com/analyt
 | `gatewayResolverByCustomResolverGroups` | Metrics for Gateway DNS queries resolved using custom resolvers. |
 | `gatewayResolverByCategoryAdaptiveGroups` | Metrics for Gateway DNS queries sorted by [domain category](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) with adaptive sampling. |
 
-To explore the schema, you can use a GraphQL client such as [GraphiQL ↗](https://github.com/graphql/graphiql/tree/main/packages/graphiql#readme) or [Altair ↗](https://altairgraphql.dev/).
+To explore the schema, you can use a GraphQL client such as [GraphiQL ↗︎](https://github.com/graphql/graphiql/tree/main/packages/graphiql#readme) or [Altair ↗︎](https://altairgraphql.dev/).
 
 1. [Create an API token](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/api-token-auth/) with the following permissions:
 

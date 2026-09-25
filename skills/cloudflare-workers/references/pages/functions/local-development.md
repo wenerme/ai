@@ -30,7 +30,7 @@ With your folder of static assets set up, run the following command to start loc
 npx wrangler pages dev <DIRECTORY-OF-ASSETS>
 ```
 
-This will then start serving your Pages project. You can press `b` to open the browser on your local site, (available, by default, on [http://localhost:8788 ↗](http://localhost:8788)).
+This will then start serving your Pages project. You can press `b` to open the browser on your local site, (available, by default, on [http://localhost:8788 ↗︎](http://localhost:8788)).
 
 Note
 

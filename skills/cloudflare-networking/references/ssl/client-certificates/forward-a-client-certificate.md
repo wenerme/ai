@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Add Client-Cert and Client-Cert-Chain headers (RFC 9440)
 
-[RFC 9440 ↗](https://datatracker.ietf.org/doc/html/rfc9440) defines the `Client-Cert` and `Client-Cert-Chain` HTTP header fields for passing client certificate information to origin servers. You can construct these headers using [request header modification rules](https://developers.cloudflare.com/rules/transform/request-header-modification/) with the following Ruleset Engine fields:
+[RFC 9440 ↗︎](https://datatracker.ietf.org/doc/html/rfc9440) defines the `Client-Cert` and `Client-Cert-Chain` HTTP header fields for passing client certificate information to origin servers. You can construct these headers using [request header modification rules](https://developers.cloudflare.com/rules/transform/request-header-modification/) with the following Ruleset Engine fields:
 
 - [`cf.tls_client_auth.cert_rfc9440`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_rfc9440/) — The client leaf certificate encoded in RFC 9440 formatting (see reference).
 - [`cf.tls_client_auth.cert_chain_rfc9440`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_chain_rfc9440/) — The certificate chain (excluding the leaf certificate) encoded in RFC 9440 formatting (see reference).
@@ -34,7 +34,7 @@ The `cert_rfc9440` and `cert_chain_rfc9440` fields are populated **regardless of
 - [`cf.tls_client_auth.cert_verified`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_verified/) — Returns `true` when the client certificate is valid.
 - [`cf.tls_client_auth.cert_revoked`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_revoked/) — Returns `true` when the client certificate has been revoked.
 
-A client can also include its own `Client-Cert` or `Client-Cert-Chain` headers on a request to inject arbitrary values. As described in the [RFC 9440 security considerations ↗](https://datatracker.ietf.org/doc/html/rfc9440#name-security-considerations), you must unconditionally remove any existing `Client-Cert` and `Client-Cert-Chain` headers from incoming requests, regardless of certificate validity. This prevents a client from injecting forged certificate data that your origin would trust.
+A client can also include its own `Client-Cert` or `Client-Cert-Chain` headers on a request to inject arbitrary values. As described in the [RFC 9440 security considerations ↗︎](https://datatracker.ietf.org/doc/html/rfc9440#name-security-considerations), you must unconditionally remove any existing `Client-Cert` and `Client-Cert-Chain` headers from incoming requests, regardless of certificate validity. This prevents a client from injecting forged certificate data that your origin would trust.
 
 See [Enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/) for details on how to configure mTLS and certificate validation.
 

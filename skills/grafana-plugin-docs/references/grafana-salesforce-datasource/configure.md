@@ -7,7 +7,7 @@ description: "Learn how to configure the Salesforce data source for Grafana."
 
 # Configure the Salesforce data source
 
-This document explains configuration options for Salesforce data source in Grafana.
+This document explains configuration options for the Salesforce data source in Grafana.
 
 ## Before you begin
 
@@ -20,7 +20,7 @@ Before you can configure the Salesforce data source, ensure you have the followi
   - **New setups (recommended)**: An [External Client App](https://help.salesforce.com/s/articleView?id=sf.connected_app_overview.htm&type=5) with JWT authentication (refer to [External Client App settings](#external-client-app-settings)).
   - **Existing setups**: A [Connected App](https://help.salesforce.com/s/articleView?id=sf.connected_app_overview.htm&type=5) configured with OAuth settings (refer to [Connected App settings](#connected-app-settings)).
 - Any free or paid [Grafana Cloud](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
-- Grafana version 9.5.13 or later.
+- Grafana version 11.6.7 or later.
 - The `Organization Administrator` role in Grafana to add data sources.
 
 ## Salesforce app configuration
@@ -126,7 +126,7 @@ Once you have installed the Salesforce plugin, complete the following steps to a
 2. Enter `Salesforce` in the search bar.
 3. Select the **Salesforce data source** tile.
 4. Click **Add new data source** in the upper right.
-5. You are taken to the **Settings** tab where you will set up your Salesforce configuration.
+5. You are taken to the **Settings** tab where you set up your Salesforce configuration.
 
 ## Salesforce configuration options
 
@@ -135,7 +135,7 @@ Following is a list of configuration options for Salesforce.
 The first option is to give the connection a name:
 
 - **Name** - The name for your data source. This is how you refer to the data source in queries and panels. Examples: Salesforce\_Sales\_Prod1, SF-Prod-East1.
-- **Default** - Toggle to select the default name in dashboard panels. This will set it as the default data source when you access a dashboard panel.
+- **Default** - Toggle to set this as the default data source. Grafana selects the default data source automatically in new dashboard panels.
 
 ### Connection settings
 
@@ -167,6 +167,8 @@ Add the following under **Digital Signature**:
 - **Certificate**: The certificate that is used as the digital signature in your Salesforce app. To generate a certificate, refer to [Generate a Certificate Signed by a Certificate Authority](https://help.salesforce.com/s/articleView?id=sf.security_keys_uploading_signed_cert.htm&type=5). To generate a self-signed certificate, refer to [Generate a Self-Signed Certificate](https://help.salesforce.com/s/articleView?id=sf.security_keys_creating.htm&type=5).
 - **Private key**: Add the private key for the certificate.
 
+Alternatively, click **Generate** to have Grafana create a self-signed certificate and private key pair. Grafana downloads the certificate as a `.pem` file, which you then upload to your Salesforce app under **Use digital signatures**. After a certificate is configured, click **Download** to save a copy of it.
+
 Add the following under **App Credentials**:
 
 - **User name**: The user name for the Salesforce account used to connect to Salesforce. Examples: `salesforce_admin@abccompany.com`.
@@ -174,12 +176,26 @@ Add the following under **App Credentials**:
 
 ### Optional settings
 
-- **Environment** - Click the drop-down to select your environment.
+- **Environment** - Click the drop-down to select the Salesforce environment to connect to:
+
+  - **Production** - Connects using `login.salesforce.com`.
+  - **Sandbox** - Connects using `test.salesforce.com`.
 - **Private data source connect** - ***Only for Grafana Cloud users.*** Private data source connect, or PDC, allows you to establish a private, secured connection between a Grafana Cloud instance, or stack, and data sources secured within a private network. Click the drop-down to locate the URL for PDC. For more information regarding Grafana PDC refer to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/).
+- **Enable Secure Socks Proxy** - ***Only for self-managed Grafana.*** Toggle to route the data source connection through the Grafana secure SOCKS proxy to reach Salesforce on a different network. This option appears only when the `secureSocksDSProxyEnabled` feature toggle is enabled and requires Grafana version 10.0.0 or later. For more information, refer to [Configure a data source connection proxy](/docs/grafana/latest/setup-grafana/configure-grafana/proxy/).
 
-Once you have added your connection settings, click **Test** to test the data source connection.
+## Verify the connection
 
-## Configure the data source with provisioning
+After you configure your connection settings, click **Save &amp; test** to verify the connection. When the test succeeds, Grafana displays a message similar to the following, which confirms that Grafana can authenticate with Salesforce and reach your org:
+
+[Copy code to clipboard] Copy
+
+```none
+Data source is working and connected to https://your-org.my.salesforce.com
+```
+
+If the test fails, refer to [Troubleshoot Salesforce data source issues](/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting/) for common license, connection, configuration, and authentication errors and their solutions.
+
+## Provision the data source with YAML files
 
 Configure the Salesforce data source using Grafana’s provisioning system by defining settings in YAML files. For details on the provisioning system and configuration options, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#datasources).
 
@@ -226,7 +242,7 @@ jsonData:
   sandbox: true
 ```
 
-## Configure the data source with Terraform
+## Provision the data source with Terraform
 
 You can configure the Salesforce data source as code using the [Grafana Terraform provider](https://registry.terraform.io/providers/grafana/grafana/latest/docs). This approach enables version-controlled, reproducible data source configurations across environments.
 

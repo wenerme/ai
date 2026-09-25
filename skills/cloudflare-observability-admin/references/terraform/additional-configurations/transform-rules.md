@@ -65,7 +65,7 @@ All of the following <a href="https://developers.cloudflare.com/fundamentals/api
 
 </details>
 
-Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "transform_url_rewrite" {
@@ -146,7 +146,7 @@ All of the following <a href="https://developers.cloudflare.com/fundamentals/api
 
 </details>
 
-Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "transform_modify_request_headers" {
@@ -242,7 +242,7 @@ All of the following <a href="https://developers.cloudflare.com/fundamentals/api
 
 </details>
 
-Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "transform_modify_response_headers" {
@@ -332,7 +332,7 @@ All of the following <a href="https://developers.cloudflare.com/fundamentals/api
 
 </details>
 
-Configure the [`cloudflare_managed_transforms` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/managed_transforms) resource:
+Configure the [`cloudflare_managed_transforms` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/managed_transforms) resource:
 
 ```tf
 resource "cloudflare_managed_transforms" "tf_example" {

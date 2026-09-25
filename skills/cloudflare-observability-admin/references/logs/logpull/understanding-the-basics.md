@@ -42,7 +42,7 @@ To turn the resulting log data into a JSON array with one array element per log 
 
 `<API request data> | jq -s`
 
-Refer to [Download jq ↗](https://jqlang.github.io/jq/download/) for more information on obtaining and installing `jq`.
+Refer to [Download jq ↗︎](https://jqlang.github.io/jq/download/) for more information on obtaining and installing `jq`.
 
 The following is a sample log with default fields:
 

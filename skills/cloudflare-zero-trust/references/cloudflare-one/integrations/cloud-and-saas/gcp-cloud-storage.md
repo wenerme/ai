@@ -28,7 +28,7 @@ For the GCP Cloud Storage integration to function, Cloudflare CASB requires the 
 - `roles/viewer`
 - `roles/storage.admin`
 
-These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission scope, refer to the [GCP IAM roles for Cloud Storage documentation ↗](https://cloud.google.com/storage/docs/access-control/iam-roles).
+These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission scope, refer to the [GCP IAM roles for Cloud Storage documentation ↗︎](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
 ## Compute account
 
@@ -38,7 +38,7 @@ You can connect a GCP compute account to your CASB integration to perform [Data 
 
 To connect a compute account to your GCP integration:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** > **Cloud & SaaS integrations**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Integrations** > **Cloud & SaaS integrations**.
 2. Find and select your GCP integration.
 3. Select **Open connection instructions**.
 4. Follow the instructions provided to connect a new compute account.
@@ -50,7 +50,7 @@ You can only connect one compute account to an integration. To remove a compute 
 
 Once your GCP compute account has successfully connected to your CASB integration, you can configure where and how to scan for sensitive data:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** > **Cloud & SaaS integrations**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Integrations** > **Cloud & SaaS integrations**.
 2. Find and select your GCP integration.
 3. Select **Create new configuration**.
 4. In **Resources**, choose the buckets you want to scan. Select **Continue**.

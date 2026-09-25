@@ -22,7 +22,7 @@ Since Entrust is not within the [certificate authorities](https://developers.clo
 
 New Entrust certificates issued on **November 12, 2024 or after** will not be trusted on Chrome by default. And new Entrust certificates issued on **December 1, 2024 or after** will not be trusted on Mozilla by default.
 
-Refer to the announcements ([Chrome ↗](https://security.googleblog.com/2024/06/sustaining-digital-certificate-security.html), [Mozilla ↗](https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/jCvkhBjg9Yw?pli=1)) for a full list of roots that will be distrusted.
+Refer to the announcements ([Chrome ↗︎](https://security.googleblog.com/2024/06/sustaining-digital-certificate-security.html), [Mozilla ↗︎](https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/jCvkhBjg9Yw?pli=1)) for a full list of roots that will be distrusted.
 
 ## Entrust's response
 
@@ -42,8 +42,8 @@ Since Cloudflare also [partners with SSL.com](https://developers.cloudflare.com/
 ## More resources
 
 - [Use Cloudflare with SSL.com certificates](https://developers.cloudflare.com/ssl/reference/certificate-authorities/)
-- [Google Security Blog ↗](https://security.googleblog.com/2024/06/sustaining-digital-certificate-security.html)
-- [Entrust TLS Certificate Information Center ↗](https://www.entrust.com/tls-certificate-information-center)
+- [Google Security Blog ↗︎](https://security.googleblog.com/2024/06/sustaining-digital-certificate-security.html)
+- [Entrust TLS Certificate Information Center ↗︎](https://www.entrust.com/tls-certificate-information-center)
 
 Was this helpful?
 

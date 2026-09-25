@@ -30,7 +30,7 @@ For more details about how O2O is different than other Cloudflare setups, refer 
 
 WP Engine customers can enable O2O on any Cloudflare zone plan.
 
-To enable O2O for a specific hostname within a Cloudflare zone, [create](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) a Proxied `CNAME` DNS record with a target of one of the following WP Engine CNAMEs. Which WP Engine CNAME is used will depend on your current [WP Engine network type ↗](https://wpengine.com/support/network/).
+To enable O2O for a specific hostname within a Cloudflare zone, [create](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) a Proxied `CNAME` DNS record with a target of one of the following WP Engine CNAMEs. Which WP Engine CNAME is used will depend on your current [WP Engine network type ↗︎](https://wpengine.com/support/network/).
 
 | Type | Name | Target | Proxy status |
 | --- | --- | --- | --- |
@@ -38,7 +38,7 @@ To enable O2O for a specific hostname within a Cloudflare zone, [create](https:/
 
 Note
 
-For questions about WP Engine setup, refer to their [support guide ↗](https://wpengine.com/support/wordpress-best-practice-configuring-dns-for-wp-engine/#Point_DNS_Using_CNAME_Flattening).
+For questions about WP Engine setup, refer to their [support guide ↗︎](https://wpengine.com/support/wordpress-best-practice-configuring-dns-for-wp-engine/#Point_DNS_Using_CNAME_Flattening).
 
 If you cannot activate your domain using [proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/), reach out to your account team.
 

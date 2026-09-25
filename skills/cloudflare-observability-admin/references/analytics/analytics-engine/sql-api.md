@@ -24,7 +24,7 @@ Authentication is done via bearer token. An `Authorization: Bearer <token>` head
 
 Use the dashboard to create a token with permission to read analytics data on your account:
 
-1. Visit the [API tokens ↗](https://dash.cloudflare.com/profile/api-tokens) page in the Cloudflare dashboard.
+1. Visit the [API tokens ↗︎](https://dash.cloudflare.com/profile/api-tokens) page in the Cloudflare dashboard.
 2. Select **Create Token**.
 3. Select **Create Custom Token**.
 4. Complete the **Create Custom Token** form as follows:

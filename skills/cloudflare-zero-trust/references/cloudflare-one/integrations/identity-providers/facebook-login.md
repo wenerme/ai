@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Use these steps to set up Facebook as your identity provider.
 
-1. Go to [developers.facebook.com ↗](https://developers.facebook.com/). Create a Developer account if you do not have one.
+1. Go to [developers.facebook.com ↗︎](https://developers.facebook.com/). Create a Developer account if you do not have one.
 2. Select **Create App** at the top-right. The **Create an app** card displays.
 3. Enter the **App name** and **App contact email**. Then, select **Next**.
 4. In the **Add use cases** page, select **Authenticate and request data from users with Facebook Login**. Select **Next**.
@@ -26,9 +26,9 @@ Use these steps to set up Facebook as your identity provider.
 8. In the [Cloudflare dashboard](https://developers.cloudflare.com/dash.cloudflare.com), go to **Zero Trust** > **Integrations** > **Identity providers**.
 9. Under **Your identity providers**, select **Add an identity provider**.
 10. Fill in the **App ID** and **App Secret** obtained from Facebook.
-11. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
+11. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
 12. Select **Save**.
-13. Go back to **My Apps** in [developers.facebook.com ↗](https://developers.facebook.com/), and select your app.
+13. Go back to **My Apps** in [developers.facebook.com ↗︎](https://developers.facebook.com/), and select your app.
 14. Under **App customization and requirements**, select **Customize the Authenticate and request data from users with Facebook Login use case**.
 15. Select **Settings**, and ensure that **Use Strict Mode for redirect URIs** slider is set to **Yes**.
 16. In the **Valid OAuth Redirect URIs** field, enter the following URL:
@@ -37,7 +37,7 @@ Use these steps to set up Facebook as your identity provider.
     https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
     ```
 
-    You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+    You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 17. Select **Save Changes**.
 
 To test that your connection is working, follow the steps on [SSO Integration](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/#test-idps-in-cloudflare-one).

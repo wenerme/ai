@@ -53,7 +53,7 @@ For more details on when custom rules are needed, refer to [custom rules](https:
 
 ## How do I get started?
 
-To get started, review our [setup guides](https://developers.cloudflare.com/bots/get-started/). If you have any questions, visit the [community ↗](https://community.cloudflare.com/) to engage with other Cloudflare users.
+To get started, review our [setup guides](https://developers.cloudflare.com/bots/get-started/). If you have any questions, visit the [community ↗︎](https://community.cloudflare.com/) to engage with other Cloudflare users.
 
 Was this helpful?
 

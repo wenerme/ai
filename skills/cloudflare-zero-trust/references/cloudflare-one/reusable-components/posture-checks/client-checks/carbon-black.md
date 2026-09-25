@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/carbon-black/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare One can check if [Carbon Black ↗](https://www.carbonblack.com/) is running on a device to determine if a request should be allowed to reach a protected resource.
+Cloudflare One can check if [Carbon Black ↗︎](https://www.carbonblack.com/) is running on a device to determine if a request should be allowed to reach a protected resource.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ Cloudflare One can check if [Carbon Black ↗](https://www.carbonblack.com/) is 
 
 ## Configure the Carbon Black check
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks**.
 2. Go to **Cloudflare One Client checks** and select **Add a check**.
 3. Select **Carbon Black**.
 4. You will be prompted for the following information:

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/analytics/network-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can access real-time and historical network data in Network Analytics. Explore Cloudflare WAN traffic (in packets or bytes) over time in a time series, and filter the data by different [packet ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) characteristics.
+You can access real-time and historical network data in Network Analytics. Explore Cloudflare WAN traffic (in packets or bytes) over time in a time series, and filter the data by different [packet ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) characteristics.
 
 Data is aggregated into time intervals that vary based on the selected zoom level. For example, a daily view shows 24-hour averages, which can flatten short-term traffic spikes. As a result, longer time intervals display lower peak bandwidth values compared to more granular views like five-minute intervals.
 

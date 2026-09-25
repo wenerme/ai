@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Gateway can perform [SSL/TLS decryption ↗](https://www.cloudflare.com/learning/security/what-is-https-inspection/) to inspect HTTPS traffic for malware and other security risks. TLS decryption is required for HTTP policies to inspect HTTPS traffic. Without it, information contained within HTTPS encryption, such as the full URL, headers, and request body, [will not be visible to Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect).
+Cloudflare Gateway can perform [SSL/TLS decryption ↗︎](https://www.cloudflare.com/learning/security/what-is-https-inspection/) to inspect HTTPS traffic for malware and other security risks. TLS decryption is required for HTTP policies to inspect HTTPS traffic. Without it, information contained within HTTPS encryption, such as the full URL, headers, and request body, [will not be visible to Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect).
 
 When you turn on TLS decryption, Gateway will decrypt all traffic sent over HTTPS, apply your HTTP policies, and then re-encrypt the request with a [user-side certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/).
 
@@ -30,12 +30,12 @@ Before you turn on TLS decryption, ensure you have installed either a [Cloudflar
 
 To turn on TLS decryption:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Configure the `tls_decrypt` argument in [`cloudflare_zero_trust_gateway_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings):
+2. Configure the `tls_decrypt` argument in [`cloudflare_zero_trust_gateway_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings):
 
    ```tf
    resource "cloudflare_zero_trust_gateway_settings" "team_name" {
@@ -99,7 +99,7 @@ The pass through policy will bypass insecure connection upgrades for any device 
 
 To disable automatic HTTPS upgrades on a per-browser basis, go to [Chrome flags](chrome://flags/#https-upgrades) and turn off **HTTPS Upgrades**.
 
-Chrome Enterprise users can turn off automatic HTTPS upgrades for all URLs with a [`HttpsUpgradesEnabled` management policy ↗](https://chromeenterprise.google/policies/#HttpsUpgradesEnabled).
+Chrome Enterprise users can turn off automatic HTTPS upgrades for all URLs with a [`HttpsUpgradesEnabled` management policy ↗︎](https://chromeenterprise.google/policies/#HttpsUpgradesEnabled).
 
 ### Mutual TLS (mTLS)
 
@@ -107,7 +107,7 @@ In mutual TLS (mTLS), both the client and server present certificates to verify 
 
 ### ESNI and ECH
 
-Websites that adhere to [ESNI or Encrypted Client Hello (ECH) standards ↗](https://blog.cloudflare.com/encrypted-client-hello/) encrypt the Server Name Indication (SNI) during the TLS handshake and are therefore incompatible with HTTP inspection. Gateway relies on the SNI to match an HTTP request to a policy — if the SNI is encrypted, Gateway cannot determine which policy to apply. If the ECH fails, browsers will retry the TLS handshake using the unencrypted SNI from the initial request. To avoid this behavior, you can disable ECH in your users' browsers.
+Websites that adhere to [ESNI or Encrypted Client Hello (ECH) standards ↗︎](https://blog.cloudflare.com/encrypted-client-hello/) encrypt the Server Name Indication (SNI) during the TLS handshake and are therefore incompatible with HTTP inspection. Gateway relies on the SNI to match an HTTP request to a policy — if the SNI is encrypted, Gateway cannot determine which policy to apply. If the ECH fails, browsers will retry the TLS handshake using the unencrypted SNI from the initial request. To avoid this behavior, you can disable ECH in your users' browsers.
 
 You can still apply all [network policy filters](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#selectors) except for SNI and SNI Domain. To restrict ESNI and ECH traffic, an option is to filter out all port `80` and `443` traffic that does not include an SNI header.
 
@@ -123,12 +123,12 @@ By default, TLS decryption can use both TLS version 1.2 and 1.3. However, some e
 
 ### Enable FIPS compliance
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. In **Proxy and inspection**, turn on **Inspect HTTPS requests with TLS decryption**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Configure the `tls_decrypt` argument in [`cloudflare_zero_trust_gateway_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings):
+2. Configure the `tls_decrypt` argument in [`cloudflare_zero_trust_gateway_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings):
 
    ```tf
    resource "cloudflare_zero_trust_gateway_settings" "team_name" {

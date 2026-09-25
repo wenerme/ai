@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Background
 
-The `scheduler` global provides task scheduling APIs based on the [WICG Scheduling APIs proposal ↗](https://github.com/WICG/scheduling-apis). Workers currently implement the `scheduler.wait()` method.
+The `scheduler` global provides task scheduling APIs based on the [WICG Scheduling APIs proposal ↗︎](https://github.com/WICG/scheduling-apis). Workers currently implement the `scheduler.wait()` method.
 
 `scheduler.wait()` returns a Promise that resolves after a given number of milliseconds. It is an `await`-able alternative to `setTimeout()` that does not require a callback.
 
@@ -183,7 +183,7 @@ export default {
 - [Timers](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#timers) — `setTimeout()` and `setInterval()` APIs
 - [Performance and timers](https://developers.cloudflare.com/workers/runtime-apis/performance/) — `performance.now()` and timer security behavior
 - [AbortController and AbortSignal](https://developers.cloudflare.com/workers/runtime-apis/web-standards/#abortcontroller-and-abortsignal) — cancel asynchronous operations
-- [WICG Scheduling APIs proposal ↗](https://github.com/WICG/scheduling-apis) — the specification this API is based on
+- [WICG Scheduling APIs proposal ↗︎](https://github.com/WICG/scheduling-apis) — the specification this API is based on
 
 Was this helpful?
 

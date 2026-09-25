@@ -41,7 +41,7 @@ The Gateway custom block page is a different concept from [Access custom block p
 
 For DNS policies, you will need to enable the block page on a per-policy basis.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **DNS**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
 3. Under **Configure policy settings**, turn on **Modify Gateway block behavior**.
 4. Choose your block behavior:
@@ -52,10 +52,10 @@ For DNS policies, you will need to enable the block page on a per-policy basis.
 
 Depending on your settings, Gateway will display a block page in your users' browsers or redirect them to a specified URL when they are blocked by this policy.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
 2. Choose a DNS policy with a Block action.
-3. In the policy's [`rule_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_policy), turn on `block_page_enabled`. If you have configured a [custom Gateway block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#customize-the-block-page), you can optionally show an additional `block_reason` when traffic is blocked by this policy.
+3. In the policy's [`rule_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_policy), turn on `block_page_enabled`. If you have configured a [custom Gateway block page](https://developers.cloudflare.com/cloudflare-one/reusable-components/custom-pages/gateway-block-page/#customize-the-block-page), you can optionally show an additional `block_reason` when traffic is blocked by this policy.
 
    ```tf
    resource "cloudflare_zero_trust_gateway_policy" "dns_block_security_categories" {
@@ -94,7 +94,7 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Custom pages**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
 3. Choose **Custom Gateway block page**. Gateway will display a preview of your custom block page. Available customizations include:
    - Your organization's name
@@ -105,9 +105,9 @@ To customize your block page:
    - Background color
 4. Select **Save**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. In [`cloudflare_zero_trust_gateway_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings), configure the `block_page` argument with your customizations:
+2. In [`cloudflare_zero_trust_gateway_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings), configure the `block_page` argument with your customizations:
 
    ```tf
    resource "cloudflare_zero_trust_gateway_settings" "team_name" {

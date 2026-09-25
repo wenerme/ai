@@ -50,7 +50,7 @@ In DNS resolution, a resolver eventually acquires a list of all IPs where author
 
 When, instead of advertising all IPs in all data centers, this group logic is applied, resiliency is improved because, if one of the data centers experiences a localized issue, the resolver can fall back to an IP advertised by the next closest data center. The third group adds another layer of redundancy, further enhancing resiliency.
 
-Refer to [our blog post ↗](https://blog.cloudflare.com/foundation-dns-launch) for an in-depth explanation of the distributed groups logic.
+Refer to [our blog post ↗︎](https://blog.cloudflare.com/foundation-dns-launch) for an in-depth explanation of the distributed groups logic.
 
 Note
 

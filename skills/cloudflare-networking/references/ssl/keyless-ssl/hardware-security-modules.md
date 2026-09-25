@@ -20,7 +20,7 @@ In addition to private keys stored on disk, Keyless SSL supports keys stored in 
 
 ## Why use Keyless SSL with an HSM?
 
-Hardware Security Modules (HSMs) facilitate a higher level of protection for your private keys over storing them directly on your key server. The primary responsibility of an HSM is safeguarding private keys and performing operations such as signing or encryption internally. In addition to access control, that means the physical device must offer some degree of tamper-resistance in order to be compliant with government or [industry regulations such as FIPS 140 ↗](https://csrc.nist.gov/pubs/fips/140-3/final).
+Hardware Security Modules (HSMs) facilitate a higher level of protection for your private keys over storing them directly on your key server. The primary responsibility of an HSM is safeguarding private keys and performing operations such as signing or encryption internally. In addition to access control, that means the physical device must offer some degree of tamper-resistance in order to be compliant with government or [industry regulations such as FIPS 140 ↗︎](https://csrc.nist.gov/pubs/fips/140-3/final).
 
 Moreover, many HSMs are also capable of generating keys and producing cryptographically secure randomness. Some are purpose-built to perform cryptographic computations more efficiently.
 
@@ -38,10 +38,10 @@ For more details on initializing your PKCS#11 token, refer to [Configuration](ht
 
 Keyless SSL has interoperability with the following modules:
 
-- [Entrust nShield Connect ↗](https://www.entrust.com/digital-security/hsm)
-- [Gemalto SafeNet Luna ↗](https://cpl.thalesgroup.com/compliance/fips-common-criteria-validations)
-- [SoftHSMv2 ↗](https://github.com/opendnssec/SoftHSMv2)
-- [YubiKey Neo ↗](https://www.yubico.com/product/yubikey-neo/)
+- [Entrust nShield Connect ↗︎](https://www.entrust.com/digital-security/hsm)
+- [Gemalto SafeNet Luna ↗︎](https://cpl.thalesgroup.com/compliance/fips-common-criteria-validations)
+- [SoftHSMv2 ↗︎](https://github.com/opendnssec/SoftHSMv2)
+- [YubiKey Neo ↗︎](https://www.yubico.com/product/yubikey-neo/)
 
 Also, the following cloud HSM offerings have been tested with Keyless SSL:
 

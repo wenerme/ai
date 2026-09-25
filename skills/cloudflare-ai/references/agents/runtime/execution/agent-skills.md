@@ -165,7 +165,7 @@ export class SkillsAgent extends Think<Env> {
 }
 ```
 
-Refer to the [`agent-skills` example ↗](https://github.com/cloudflare/agents/tree/main/examples/agent-skills) for bundled skills, R2-backed skills, and script execution.
+Refer to the [`agent-skills` example ↗︎](https://github.com/cloudflare/agents/tree/main/examples/agent-skills) for bundled skills, R2-backed skills, and script execution.
 
 ## Related
 

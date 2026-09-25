@@ -24,7 +24,7 @@ The node:zlib module provides compression functionality implemented using Gzip, 
 import zlib from "node:zlib";
 ```
 
-The full `node:zlib` API is documented in the [Node.js documentation for `node:zlib` ↗](https://nodejs.org/api/zlib.html).
+The full `node:zlib` API is documented in the [Node.js documentation for `node:zlib` ↗︎](https://nodejs.org/api/zlib.html).
 
 Was this helpful?
 

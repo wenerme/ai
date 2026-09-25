@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/get-started/setup-google-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security** > **Settings**.
 3. Select **Connect an integration**, choose **Google Workspace CASB + EMAIL**, then select **Select Integration**.
 4. Follow the wizard to create an integration, then select **Create Integration**. Refer to [Enable Gmail BCC integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/) for further instructions.

@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Magic Transit leverages Cloudflare's global anycast network. As of writing this guide, Cloudflare's global network spans over 330 cities, and has over 405 Tbps network capacity. This bandwidth allows it to absorb all manners of attack that otherwise would overwhelm a typical data center or on-premise hardware Distributed Denial-of-Service (DDoS) appliances.
 
-The number of DDoS attacks has been steadily increasing in recent years. In the first quarter of 2025, Cloudflare [mitigated 16.8 million network-layer DDoS attacks ↗](https://blog.cloudflare.com/ddos-threat-report-for-2025-q1/#ddos-attacks-in-numbers). This represents a 397% increase quarter over quarter and a 509% increase year over year.
+The number of DDoS attacks has been steadily increasing in recent years. In the first quarter of 2025, Cloudflare [mitigated 16.8 million network-layer DDoS attacks ↗︎](https://blog.cloudflare.com/ddos-threat-report-for-2025-q1/#ddos-attacks-in-numbers). This represents a 397% increase quarter over quarter and a 509% increase year over year.
 
 Other advantages of choosing Magic Transit:
 

@@ -26,7 +26,7 @@ This example demonstrates how to access a private S3 bucket that is not exposed 
 
 A Cloudflare Tunnel creates a secure connection from your private network to Cloudflare. This tunnel will allow Workers to securely access your private resources.
 
-1. Navigate to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc/tunnels) and select the **Tunnels** tab.
+1. Navigate to the [Workers VPC dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/vpc/tunnels) and select the **Tunnels** tab.
 2. Select **Create** to create a new tunnel.
 3. Enter a name for your tunnel (for example, `s3-tunnel`) and select **Save tunnel**.
 4. Choose your operating system and architecture. The dashboard will provide specific installation instructions for your environment.
@@ -106,7 +106,7 @@ Update your Wrangler configuration file:
 	"name": "private-s3-gateway",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"vpc_services": [
 		{
 			"binding": "S3_STORAGE",
@@ -121,7 +121,7 @@ Update your Wrangler configuration file:
 name = "private-s3-gateway"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[vpc_services]]
 binding = "S3_STORAGE"

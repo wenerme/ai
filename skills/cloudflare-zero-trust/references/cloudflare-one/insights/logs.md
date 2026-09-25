@@ -53,7 +53,7 @@ You can use Cloudflare Zero Trust with the Data Localization Suite to restrict d
 
 ## Data privacy
 
-For more information on how we use this data, refer to our [Privacy Policy ↗](https://www.cloudflare.com/application/privacypolicy/).
+For more information on how we use this data, refer to our [Privacy Policy ↗︎](https://www.cloudflare.com/application/privacypolicy/).
 
 ## Footnotes
 

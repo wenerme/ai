@@ -37,12 +37,12 @@ Once you have [gathered the required data](https://developers.cloudflare.com/fun
 ## Configure user and group synchronization
 
 1. Navigate to the newly created application under **Manage** from the sidebar menu, select **Users and groups**.
-2. [Assign users and groups to the application ↗](https://learn.microsoft.com/entra/identity/enterprise-apps/assign-user-or-group-access-portal).
+2. [Assign users and groups to the application ↗︎](https://learn.microsoft.com/entra/identity/enterprise-apps/assign-user-or-group-access-portal).
 3. After the users are assigned, navigate to **Provisioning** on the sidebar menu and select **Start Provisioning**.
 
 Note
 
-To successfully synchronize the group details into Cloudflare the `User Principal Name` (of `Identity`) and `Email` (of `Contact Information`) fields of each user must be identical. Values are case-sensitive, and the User Principal Name can only contain alphanumeric characters. Learn more about [how to create, invite, and delete users ↗](https://learn.microsoft.com/entra/fundamentals/how-to-create-delete-users).
+To successfully synchronize the group details into Cloudflare the `User Principal Name` (of `Identity`) and `Email` (of `Contact Information`) fields of each user must be identical. Values are case-sensitive, and the User Principal Name can only contain alphanumeric characters. Learn more about [how to create, invite, and delete users ↗︎](https://learn.microsoft.com/entra/fundamentals/how-to-create-delete-users).
 
 4. To validate which users and groups have been synchronized, navigate to **Provisioning logs** on the sidebar menu. You can also [review the Cloudflare Audit Logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/).
 

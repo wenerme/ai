@@ -16,7 +16,7 @@ Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Create PlanetScale Postgres or MySQL databases with globally distributed Workers applications.
 
-Cloudflare partners with [PlanetScale ↗](https://planetscale.com/) to provide PlanetScale-hosted Postgres and MySQL (Vitess) databases to Workers. [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) connects [Workers](https://developers.cloudflare.com/workers/) to PlanetScale databases with built-in database connection pooling and query caching for faster performance.
+Cloudflare partners with [PlanetScale ↗︎](https://planetscale.com/) to provide PlanetScale-hosted Postgres and MySQL (Vitess) databases to Workers. [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) connects [Workers](https://developers.cloudflare.com/workers/) to PlanetScale databases with built-in database connection pooling and query caching for faster performance.
 
 Get the best of both products, build for Workers global distribution and optimize for regional data access. Get started by creating a PlanetScale database in the Cloudflare dashboard.
 
@@ -28,7 +28,7 @@ Note
 
 The `wrangler hyperdrive planetscale signature` command is experimental, and its interface may change.
 
-You can also create a Cloudflare-billed PlanetScale database from the command line with the [PlanetScale CLI ↗](https://planetscale.com/docs/reference/planetscale-cli) (`pscale`), using [Wrangler](https://developers.cloudflare.com/workers/wrangler/) to authorize the Cloudflare billing side of the request. This requires `pscale` v0.313.0 or newer.
+You can also create a Cloudflare-billed PlanetScale database from the command line with the [PlanetScale CLI ↗︎](https://planetscale.com/docs/reference/planetscale-cli) (`pscale`), using [Wrangler](https://developers.cloudflare.com/workers/wrangler/) to authorize the Cloudflare billing side of the request. This requires `pscale` v0.313.0 or newer.
 
 Generate the billing authorization:
 
@@ -63,7 +63,7 @@ Your PlanetScale credentials stay between you and `pscale`. Wrangler authorizes 
 
 The signature is a cryptographically signed token that authorizes creating a database billed to your Cloudflare account. Treat it as a credential and do not share it.
 
-Refer to [PlanetScale's documentation ↗](https://planetscale.com/docs/reference/database#create-a-database) for the options `pscale database create` supports.
+Refer to [PlanetScale's documentation ↗︎](https://planetscale.com/docs/reference/database#create-a-database) for the options `pscale database create` supports.
 
 ## Workers + PlanetScale
 
@@ -78,7 +78,7 @@ Hyperdrive provides the connection glue between Workers and PlanetScale. It pool
 ![Request flow from a user request to Workers, Hyperdrive caches, connection pools, and PlanetScale.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1280,height=240,format=svg/_astro/planetscale-request-flow.CYsRfKtG.svg)
 
 1. **Run near the user.** When a user sends a request, Cloudflare routes it to a nearby location. Your Worker runs in that location, so request handling starts close to the user.
-2. **Check for cached reads locally.** On the same Cloudflare server handling the Worker request, Hyperdrive sets up your database connection in single digit milliseconds (p90 4ms) so that your database client/driver can send queries immediately. Hyperdrive's connection setup performs [TCP ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/?cf_target_id=09C713714C8E4B80173505A0C31C63BC) connection startup, [TLS ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/?cf_target_id=F13EF8B8F82B5AFEF99A8D9DA7DA3342) encryption, and client authentication all on the same local machine, removing any network roundtrips and latency to your database. Once the database connection is ready if the Worker sends a cacheable read query and the result is cached, Hyperdrive returns it without leaving that location.
+2. **Check for cached reads locally.** On the same Cloudflare server handling the Worker request, Hyperdrive sets up your database connection in single digit milliseconds (p90 4ms) so that your database client/driver can send queries immediately. Hyperdrive's connection setup performs [TCP ↗︎](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/?cf_target_id=09C713714C8E4B80173505A0C31C63BC) connection startup, [TLS ↗︎](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/?cf_target_id=F13EF8B8F82B5AFEF99A8D9DA7DA3342) encryption, and client authentication all on the same local machine, removing any network roundtrips and latency to your database. Once the database connection is ready if the Worker sends a cacheable read query and the result is cached, Hyperdrive returns it without leaving that location.
 3. **Forward when needed with caching in-between.** If no local cached result exists, or if the query cannot be cached, Hyperdrive sends the query across Cloudflare's network to a location close to your PlanetScale database. Hyperdrive checks another cache in that location before it reaches the database; this cache is populated by multiple requests to your database to improve your cache hit ratios similar to tiered caching .
 4. **Query PlanetScale only when necessary.** If neither cache has the result, Hyperdrive sends the query to PlanetScale using an already available pool of database connections. Writes and other uncacheable queries go to PlanetScale so the database remains the source of truth. Multiple layers of caching reduce overall load on your database.
 
@@ -92,15 +92,15 @@ Choose PlanetScale Postgres or MySQL, and keep using familiar database drivers, 
 
 ### Performance and reliability
 
-Run production databases on PlanetScale infrastructure with commitment to performance and reliability that power trusted [customer workloads ↗](https://planetscale.com/).
+Run production databases on PlanetScale infrastructure with commitment to performance and reliability that power trusted [customer workloads ↗︎](https://planetscale.com/).
 
 ### Modern development workflow
 
-Use [development branches ↗](https://planetscale.com/docs/postgres/branching) to test database changes, [query insights ↗](https://planetscale.com/docs/postgres/monitoring/query-insights) to understand query performance, and the [Model Context Protocol (MCP) server ↗](https://planetscale.com/docs/connect/ai-tooling) to give agents access to database insights data, all without needing a database administrator (DBA).
+Use [development branches ↗︎](https://planetscale.com/docs/postgres/branching) to test database changes, [query insights ↗︎](https://planetscale.com/docs/postgres/monitoring/query-insights) to understand query performance, and the [Model Context Protocol (MCP) server ↗︎](https://planetscale.com/docs/connect/ai-tooling) to give agents access to database insights data, all without needing a database administrator (DBA).
 
 ### Cloudflare billing
 
-When you create a PlanetScale database from the Cloudflare dashboard, you are billed via your Cloudflare account — you will see a line item on your Cloudflare invoice for your PlanetScale usage. The pricing for PlanetScale is the same when you create and use databases via Cloudflare as it is when you buy directly from PlanetScale. For more pricing details, refer to [PlanetScale's pricing ↗](https://planetscale.com/pricing). You can introspect per-database billing usage via PlanetScale's [dashboard ↗](https://planetscale.com/docs/billing#organization-usage-and-billing-page).
+When you create a PlanetScale database from the Cloudflare dashboard, you are billed via your Cloudflare account — you will see a line item on your Cloudflare invoice for your PlanetScale usage. The pricing for PlanetScale is the same when you create and use databases via Cloudflare as it is when you buy directly from PlanetScale. For more pricing details, refer to [PlanetScale's pricing ↗︎](https://planetscale.com/pricing). You can introspect per-database billing usage via PlanetScale's [dashboard ↗︎](https://planetscale.com/docs/billing#organization-usage-and-billing-page).
 
 ## FAQ
 
@@ -112,7 +112,7 @@ How do I get support for my PlanetScale database?
 
 </summary>
 
-Support for your PlanetScale databases created via Cloudflare is provided by PlanetScale at their Standard level support or your procured PlanetScale support plan. For help with your PlanetScale database, refer to <a href="https://planetscale.com/docs/support">PlanetScale Support ↗</a> for more information or contact the PlanetScale support team directly via the <a href="https://support.planetscale.com/">PlanetScale support portal ↗</a>.
+Support for your PlanetScale databases created via Cloudflare is provided by PlanetScale at their Standard level support or your procured PlanetScale support plan. For help with your PlanetScale database, refer to <a href="https://planetscale.com/docs/support">PlanetScale Support ↗︎</a> for more information or contact the PlanetScale support team directly via the <a href="https://support.planetscale.com/">PlanetScale support portal ↗︎</a>.
 
 </details>
 

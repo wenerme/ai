@@ -49,7 +49,7 @@ To set up a load balancer with **active-active failover**, either:
 
 Note
 
-For more background reading on server failover and common configurations, refer to [our Learning Center ↗](https://www.cloudflare.com/learning/performance/what-is-server-failover/).
+For more background reading on server failover and common configurations, refer to [our Learning Center ↗︎](https://www.cloudflare.com/learning/performance/what-is-server-failover/).
 
 Was this helpful?
 

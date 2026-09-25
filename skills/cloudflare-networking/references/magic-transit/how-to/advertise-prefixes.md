@@ -18,7 +18,7 @@ Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 You can bring your own public IP addresses to Cloudflare to use with Magic Transit. This is also known as bring your own IP (BYOIP). This process involves two distinct types of prefixes:
 
-1. **IP prefixes**: Each IP address block you bring to Cloudflare requires an IP prefix entry. The IP prefix includes the permission (Letter of Agency (LOA)) that allows Cloudflare to announce the network or its subnets. You can also define your optional [Autonomous System Number (ASN) ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) to be included in our advertised AS path.
+1. **IP prefixes**: Each IP address block you bring to Cloudflare requires an IP prefix entry. The IP prefix includes the permission (Letter of Agency (LOA)) that allows Cloudflare to announce the network or its subnets. You can also define your optional [Autonomous System Number (ASN) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) to be included in our advertised AS path.
 2. **BGP prefixes**: These control which prefixes Cloudflare announces from its global network. By default, each IP prefix has one matching BGP prefix. You can configure additional, more-specific BGP prefixes (subnets of the IP prefix), up to a maximum prefix length of `/24`.
 
 ### IP prefixes
@@ -29,10 +29,10 @@ There is no billing limit on the accepted prefix sizes. However, only prefixes u
 
 Provide all IP prefixes you plan to onboard, along with the ASNs from which you will advertise them. When specifying prefixes, observe these guidelines:
 
-- Prefixes must include at least 256 IP addresses ( `/24` in CIDR ([Classless Inter-Domain Routing ↗](https://www.cloudflare.com/learning/network-layer/what-is-routing/)) notation). If you do not meet the `/24` prefix length requirement, refer to [Use a Cloudflare IP](https://developers.cloudflare.com/magic-transit/cloudflare-ips/).
+- Prefixes must include at least 256 IP addresses ( `/24` in CIDR ([Classless Inter-Domain Routing ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-routing/)) notation). If you do not meet the `/24` prefix length requirement, refer to [Use a Cloudflare IP](https://developers.cloudflare.com/magic-transit/cloudflare-ips/).
 - Internet Routing Registry entries and LOA must match the prefixes and originating prefixes you submit to Cloudflare.
 - When using contiguous prefixes, specify aggregate prefixes where possible.
-- When using Route Origin Authorizations (ROAs) to sign routes for [resource public key infrastructure (RPKI) ↗](https://tools.ietf.org/html/rfc8210), the prefix and originating ASN must match the onboarding submission.
+- When using Route Origin Authorizations (ROAs) to sign routes for [resource public key infrastructure (RPKI) ↗︎](https://tools.ietf.org/html/rfc8210), the prefix and originating ASN must match the onboarding submission.
 - If you do not own an ASN, you can use the Cloudflare Customer ASN (AS13335).
 
 #### Cloudflare ASN vs. your own ASN
@@ -204,7 +204,7 @@ For example, if you have a CDN zone with a Magic Transit-protected origin that i
 
 ### Mitigating stuck BGP routes
 
-When you prepare to remove traffic for a [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/) prefix from the Cloudflare edge, a direct BGP withdrawal action carries the risk of a stuck BGP route. This state occurs when a route becomes stuck in the Internet's [Default-Free Zone (DFZ) ↗](https://en.wikipedia.org/wiki/Default-free_zone). Core routers that missed the withdrawal announcement continue forwarding traffic to a now-inactive next-hop (what is known as a blackhole). You can read more about this in our blog post [BGP zombies and excessive path hunting ↗](https://blog.cloudflare.com/going-bgp-zombie-hunting).
+When you prepare to remove traffic for a [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/) prefix from the Cloudflare edge, a direct BGP withdrawal action carries the risk of a stuck BGP route. This state occurs when a route becomes stuck in the Internet's [Default-Free Zone (DFZ) ↗︎](https://en.wikipedia.org/wiki/Default-free_zone). Core routers that missed the withdrawal announcement continue forwarding traffic to a now-inactive next-hop (what is known as a blackhole). You can read more about this in our blog post [BGP zombies and excessive path hunting ↗︎](https://blog.cloudflare.com/going-bgp-zombie-hunting).
 
 This risk is especially evident in the use case where the global routing table relies on more-specific to less-specific prefix routing fallback. Since this fallback mechanism is highly prone to route instability, Cloudflare recommends a multi-step draining process.
 
@@ -306,7 +306,7 @@ When you withdraw a prefix using BGP, you must ensure the prefix is withdrawn ac
 
 ### Example router configurations
 
-The following examples show peering configurations for [Cisco IOS ↗](https://www.cisco.com/c/en/us/td/docs/ios/fundamentals/command/reference/cf_book.html) and [Juniper Junos OS ↗](https://www.juniper.net/documentation/us/en/software/junos/cli/index.html) for on-demand deployments leveraging BGP control. The IP addresses used are from Cloudflare's route reflectors and should be left as is.
+The following examples show peering configurations for [Cisco IOS ↗︎](https://www.cisco.com/c/en/us/td/docs/ios/fundamentals/command/reference/cf_book.html) and [Juniper Junos OS ↗︎](https://www.juniper.net/documentation/us/en/software/junos/cli/index.html) for on-demand deployments leveraging BGP control. The IP addresses used are from Cloudflare's route reflectors and should be left as is.
 
 #### Cisco IOS
 

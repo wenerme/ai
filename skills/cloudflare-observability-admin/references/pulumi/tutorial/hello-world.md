@@ -24,13 +24,13 @@ You will provision resources that qualify under free tier offerings for both Pul
 
 Ensure you have:
 
-- A Cloudflare account and API Token with permission to edit the resources in this tutorial. If you need to, sign up for a [Cloudflare account ↗](https://www.cloudflare.com/sign-up) before continuing. Your token must have the following:
+- A Cloudflare account and API Token with permission to edit the resources in this tutorial. If you need to, sign up for a [Cloudflare account ↗︎](https://www.cloudflare.com/sign-up) before continuing. Your token must have the following:
   - `Account-Workers Scripts-Edit` permission
   - `Zone-Workers Route-Edit` permission
   - `Zone-DNS-Edit` permission
-- A Pulumi Cloud account. You can sign up for an [always-free individual tier ↗](https://app.pulumi.com/signup).
+- A Pulumi Cloud account. You can sign up for an [always-free individual tier ↗︎](https://app.pulumi.com/signup).
 - The [Pulumi CLI](https://developers.cloudflare.com/pulumi/installing/) is installed on your machine.
-- A [Pulumi-supported programming language ↗](https://github.com/pulumi/pulumi?tab=readme-ov-file#languages) configured. (TypeScript, JavaScript, Python, Go, .NET, Java, or use YAML)
+- A [Pulumi-supported programming language ↗︎](https://github.com/pulumi/pulumi?tab=readme-ov-file#languages) configured. (TypeScript, JavaScript, Python, Go, .NET, Java, or use YAML)
 - A Cloudflare-managed domain. Complete the [Add a site tutorial](https://developers.cloudflare.com/pulumi/tutorial/add-site/) to bring your existing domain under Cloudflare.
 
 ## 1. Initialize your project
@@ -48,9 +48,9 @@ cd serverless-cloudflare
 
 ### b. Login to Pulumi Cloud
 
-[Pulumi Cloud ↗](https://www.pulumi.com/product/pulumi-cloud/) is a hosted service that provides a secure and scalable platform for managing your infrastructure as code. You will use it to store your Pulumi backend configurations.
+[Pulumi Cloud ↗︎](https://www.pulumi.com/product/pulumi-cloud/) is a hosted service that provides a secure and scalable platform for managing your infrastructure as code. You will use it to store your Pulumi backend configurations.
 
-At the prompt, press Enter to log into your Pulumi Cloud account via the browser. Alternatively, you may provide a [Pulumi Cloud access token ↗](https://www.pulumi.com/docs/pulumi-cloud/access-management/access-tokens/).
+At the prompt, press Enter to log into your Pulumi Cloud account via the browser. Alternatively, you may provide a [Pulumi Cloud access token ↗︎](https://www.pulumi.com/docs/pulumi-cloud/access-management/access-tokens/).
 
 ```sh
 pulumi login
@@ -58,7 +58,7 @@ pulumi login
 
 ### c. Create a new program
 
-A Pulumi program is code written in a [supported programming language ↗](https://github.com/pulumi/pulumi?tab=readme-ov-file#languages) that defines infrastructure resources.
+A Pulumi program is code written in a [supported programming language ↗︎](https://github.com/pulumi/pulumi?tab=readme-ov-file#languages) that defines infrastructure resources.
 
 To create a program, select your language of choice and run the `pulumi` command:
 
@@ -98,7 +98,7 @@ pulumi new yaml --name serverless-cloudflare --yes
 
 ### d. Create a stack
 
-A Pulumi [stack ↗](https://www.pulumi.com/docs/concepts/stack/) is an instance of a Pulumi program. Stacks are independently configurable and may represent different environments (development, staging, production) or feature branches. For this tutorial, you'll use the `dev` stack.
+A Pulumi [stack ↗︎](https://www.pulumi.com/docs/concepts/stack/) is an instance of a Pulumi program. Stacks are independently configurable and may represent different environments (development, staging, production) or feature branches. For this tutorial, you'll use the `dev` stack.
 
 To instantiate your `dev` stack, run:
 
@@ -111,7 +111,7 @@ You have not defined any resources at this point, so you'll have an empty stack.
 
 ### e. Save your application settings
 
-In this step, you will store your application settings in a Pulumi [ESC Environment ↗](https://www.pulumi.com/docs/esc/environments/), a YAML file containing configurations and secrets. These can be accessed in several ways, including a Pulumi program. All ESC Environments securely reside in your Pulumi Cloud account and can be fully managed via the Pulumi CLI. For this tutorial, you will store the following values:
+In this step, you will store your application settings in a Pulumi [ESC Environment ↗︎](https://www.pulumi.com/docs/esc/environments/), a YAML file containing configurations and secrets. These can be accessed in several ways, including a Pulumi program. All ESC Environments securely reside in your Pulumi Cloud account and can be fully managed via the Pulumi CLI. For this tutorial, you will store the following values:
 
 - Your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 - A valid Cloudflare API [token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/).
@@ -180,7 +180,7 @@ go get github.com/pulumi/pulumi-cloudflare/sdk/v3/go/cloudflare
 go: downloading github.com/pulumi/pulumi-cloudflare ...
 ```
 
-Below are Apache Maven instructions. For other Java project managers such as Gradle, see the official [Maven repository ↗](https://central.sonatype.com/artifact/com.pulumi/cloudflare/overview)
+Below are Apache Maven instructions. For other Java project managers such as Gradle, see the official [Maven repository ↗︎](https://central.sonatype.com/artifact/com.pulumi/cloudflare/overview)
 
 1. Open your `pom.xml` file.
 2. Add the Pulumi Cloudflare dependency inside the `<dependencies>` section.
@@ -217,11 +217,11 @@ There are no dependencies to download for YAML. Skip ahead.
 
 ## 2. Define Cloudflare resources in code
 
-With the Cloudflare package installed, you can now define any [supported Cloudflare resource ↗](https://www.pulumi.com/registry/packages/cloudflare/) in your Pulumi program. Next, define a Worker, a Route, and a DNS Record.
+With the Cloudflare package installed, you can now define any [supported Cloudflare resource ↗︎](https://www.pulumi.com/registry/packages/cloudflare/) in your Pulumi program. Next, define a Worker, a Route, and a DNS Record.
 
 ### a. Add a Workers script
 
-The [Workers Script resource ↗](https://www.pulumi.com/registry/packages/cloudflare/api-docs/workersscript/) represents a Cloudflare Worker that can be deployed to the Cloudflare network.
+The [Workers Script resource ↗︎](https://www.pulumi.com/registry/packages/cloudflare/api-docs/workersscript/) represents a Cloudflare Worker that can be deployed to the Cloudflare network.
 
 Replace the contents of your entrypoint file with the following:
 
@@ -433,7 +433,7 @@ resources:
 
 ### b. Add a Route
 
-You will now add a [Workers Route resource ↗](https://www.pulumi.com/registry/packages/cloudflare/api-docs/workersroute/) to your Pulumi program so the Workers script can have an endpoint and be active. To properly configure the Route, you will also look up the zone ID for your domain.
+You will now add a [Workers Route resource ↗︎](https://www.pulumi.com/registry/packages/cloudflare/api-docs/workersroute/) to your Pulumi program so the Workers script can have an endpoint and be active. To properly configure the Route, you will also look up the zone ID for your domain.
 
 Add the following code snippet to your entrypoint file **after** the Worker script resource:
 
@@ -562,7 +562,7 @@ route:
 
 ### c. Add a DNS Record
 
-You will now add a DNS [Record resource ↗](https://www.pulumi.com/registry/packages/cloudflare/api-docs/record/) to resolve the previously configured Route. In the next step, you'll also output the Route URL so it can be easily accessed.
+You will now add a DNS [Record resource ↗︎](https://www.pulumi.com/registry/packages/cloudflare/api-docs/record/) to resolve the previously configured Route. In the next step, you'll also output the Route URL so it can be easily accessed.
 
 Add the following code snippet to your entrypoint file **after** the Route resource:
 
@@ -1102,7 +1102,7 @@ pulumi stack rm dev
 
 ## Next steps
 
-Visit the [Cloudflare package documentation ↗](https://www.pulumi.com/docs/reference/pkg/cloudflare/) to explore other resources you can define with Pulumi and Cloudflare.
+Visit the [Cloudflare package documentation ↗︎](https://www.pulumi.com/docs/reference/pkg/cloudflare/) to explore other resources you can define with Pulumi and Cloudflare.
 
 Was this helpful?
 

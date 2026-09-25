@@ -22,7 +22,7 @@ To enforce TLS across all emails, you will need to enforce TLS requirements when
 
 To set up a partner domain:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and select **Email security**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/) and select **Email security**.
 2. Select **Policies & rules**, then go to **Inbound** > **Partner domain TLS**.
 3. Select **Add a domain**.
 4. Enter a valid domain name. You can also exclude subdomains by selecting **Add exclude**.

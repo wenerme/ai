@@ -18,7 +18,7 @@ Enter an abuse contact email address to ensure you are receiving communications 
 
 To update your abuse contact email address:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
 2. Go to **Manage Account** > **Configurations**.
 3. For **Abuse report contact email address**, select **Change email address**.
 4. Enter and confirm your new email and select **Save**.

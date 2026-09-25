@@ -142,7 +142,7 @@ For detailed configuration, refer to the [Proxy endpoints documentation](https:/
 
 ## Clientless Web Isolation
 
-Clientless Web Isolation allows users to securely access web applications through a remote browser without installing the Cloudflare One Client. Users navigate to a prefixed URL (`https://<team-name>.cloudflareaccess.com/browser/<URL>`), authenticate through Cloudflare Access, and Cloudflare renders the web content in an isolated browser, streaming only [safe draw commands ↗](https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation/) to the user's device while enforcing isolation policies.
+Clientless Web Isolation allows users to securely access web applications through a remote browser without installing the Cloudflare One Client. Users navigate to a prefixed URL (`https://<team-name>.cloudflareaccess.com/browser/<URL>`), authenticate through Cloudflare Access, and Cloudflare renders the web content in an isolated browser, streaming only [safe draw commands ↗︎](https://blog.cloudflare.com/cloudflare-and-remote-browser-isolation/) to the user's device while enforcing isolation policies.
 
 Use Clientless Web Isolation when you need to provide secure web access for unmanaged devices (contractors, BYOD), enable access to sensitive applications without requiring endpoint software, or on-ramp users who cannot install the Cloudflare One Client.
 

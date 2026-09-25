@@ -22,7 +22,7 @@ You can also connect Hyperdrive to a private database using [Workers VPC (Recomm
 
 ## How it works
 
-When your database is isolated within a private network (such as a [virtual private cloud ↗](https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud) or an on-premise network), you must enable a secure connection from your network to Cloudflare.
+When your database is isolated within a private network (such as a [virtual private cloud ↗︎](https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud) or an on-premise network), you must enable a secure connection from your network to Cloudflare.
 
 - [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) is used to establish the secure tunnel connection.
 - [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) is used to restrict access to your tunnel such that only specific Hyperdrive configurations can access it.
@@ -35,7 +35,7 @@ The Cloudflare Tunnel will establish an outbound bidirectional connection from y
 
 ## Before you start
 
-All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 Warning
 
@@ -91,7 +91,7 @@ Automatic creation
 
 Create a Hyperdrive configuration in the Cloudflare dashboard to automatically configure Hyperdrive to connect to your Cloudflare Tunnel.
 
-1. In the <a href="https://dash.cloudflare.com/?to=/:account/workers/hyperdrive">Cloudflare dashboard ↗</a>, navigate to **Storage &amp; Databases &gt; Hyperdrive** and click **Create configuration**.
+1. In the <a href="https://dash.cloudflare.com/?to=/:account/workers/hyperdrive">Cloudflare dashboard ↗︎</a>, navigate to **Storage &amp; Databases &gt; Hyperdrive** and click **Create configuration**.
 2. Select **Private database**.
 3. In the **Networking details** section, select the tunnel you are connecting to.
 4. In the **Networking details** section, select the hostname associated to the tunnel. If there is no hostname for your database, return to step <a href="https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database/#12-connect-your-database-using-a-public-hostname">1.2. Connect your database using a public hostname</a>.
@@ -115,7 +115,7 @@ Manual creation
 
 The service token will be used to restrict requests to the tunnel, and is needed for the next step.
 
-1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Service credentials** &gt; **Service Tokens**.
+1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Service credentials** &gt; **Service Tokens**.
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
 4. Set a **Service Token Duration** of <code>Non-expiring</code>. This prevents the service token from expiring, ensuring it can be used throughout the life of the Hyperdrive configuration.
@@ -132,7 +132,7 @@ The service token will be used to restrict requests to the tunnel, and is needed
 
 <a href="https://developers.cloudflare.com/cloudflare-one/access-controls/policies/">Cloudflare Access</a> will be used to verify that requests to the tunnel originate from Hyperdrive using the service token created above.
 
-1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Applications**.
+1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Applications**.
 2. Select **Create new application**.
 3. Select **Self-hosted and private**.
 4. Select **Add public hostname** and enter the subdomain and domain that was previously set for the tunnel application.
@@ -215,7 +215,7 @@ id = "<YOUR_DATABASE_ID>"
 Specifically:
 
 - The value (string) you set for the `binding` (binding name) will be used to reference this database in your Worker. In this tutorial, name your binding `HYPERDRIVE`.
-- The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
+- The binding must be [a valid JavaScript variable name ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
 - Your binding is available in your Worker at `env.<BINDING_NAME>`.
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
@@ -247,7 +247,7 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 
 Validate that you can connect to your database from Workers and make queries.
 
-Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query to validate that the connection has been successful.
+Use [node-postgres ↗︎](https://node-postgres.com/) (`pg`) to send a test query to validate that the connection has been successful.
 
 Install the `node-postgres` driver:
 
@@ -302,7 +302,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -315,7 +315,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -368,9 +368,9 @@ npx wrangler deploy
 
 If you successfully receive the list of `pg_tables` from your database when you access your deployed Worker, your Hyperdrive has now been configured to securely connect to a private database using [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) and [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/).
 
-Use [mysql2 ↗](https://github.com/sidorares/node-mysql2) to send a test query to validate that the connection has been successful.
+Use [mysql2 ↗︎](https://github.com/sidorares/node-mysql2) to send a test query to validate that the connection has been successful.
 
-Install the [mysql2 ↗](https://github.com/sidorares/node-mysql2) driver:
+Install the [mysql2 ↗︎](https://github.com/sidorares/node-mysql2) driver:
 
 npmyarnpnpmbun
 
@@ -403,7 +403,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -416,7 +416,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

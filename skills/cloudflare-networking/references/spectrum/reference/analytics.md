@@ -58,7 +58,7 @@ Combine filters using `OR` and `AND` boolean logic:
 
   Note
 
-  Note that the semicolon is a reserved character in URLs ([RFC 1738 ↗](https://www.rfc-editor.org/rfc/rfc1738)) and should be percent-encoded as `%3B`.
+  Note that the semicolon is a reserved character in URLs ([RFC 1738 ↗︎](https://www.rfc-editor.org/rfc/rfc1738)) and should be percent-encoded as `%3B`.
 
 ## Analytics request structure
 

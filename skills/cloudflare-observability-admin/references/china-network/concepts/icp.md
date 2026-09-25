@@ -18,7 +18,7 @@ To operate a website in China, you need government permission called an Internet
 
 The ICP system is a licensing regime established by the Telecommunications Regulations of the People's Republic of China (中华人民共和国电信条例), introduced in September 2000.
 
-Under the ICP regime, all websites with their own domain name that operate inside China must obtain a license. This applies whether the site is hosted on a server in Mainland China or delivered to visitors in China through a CDN. Licenses are issued at the provincial level. You can use the Ministry of Industry and Information Technology (MIIT) website to [check if a domain already has an ICP number ↗](https://beian.miit.gov.cn/#/Integrated/recordQuery) (only available in Chinese).
+Under the ICP regime, all websites with their own domain name that operate inside China must obtain a license. This applies whether the site is hosted on a server in Mainland China or delivered to visitors in China through a CDN. Licenses are issued at the provincial level. You can use the Ministry of Industry and Information Technology (MIIT) website to [check if a domain already has an ICP number ↗︎](https://beian.miit.gov.cn/#/Integrated/recordQuery) (only available in Chinese).
 
 All public websites in Mainland China must have an ICP number [displayed on the website's home page](#display-your-icp-number). Websites with the same apex domain can share the same ICP number. China-based hosting providers are instructed to shut down any website (often without notice) without an ICP number.
 

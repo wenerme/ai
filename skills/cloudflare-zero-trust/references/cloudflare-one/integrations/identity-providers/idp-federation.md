@@ -37,7 +37,7 @@ When a user in a recipient account authenticates, the request is routed through 
 
 The dashboard combines grant creation and sharing into a single flow. If a federation grant already exists for the IdP, it will be reused; otherwise, one is created automatically.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Find the IdP you want to share and select the three dots menu.
 3. Select **Share**.
 4. Select the recipient accounts you want to share the IdP with.
@@ -135,7 +135,7 @@ Deleting the federation grant immediately removes the IdP connection from all re
 
 The dashboard handles both grant and share deletion in a single flow.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Find the shared IdP and select the three dots menu.
 3. Select **Unshare**.
 4. Confirm the action.

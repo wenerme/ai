@@ -32,7 +32,7 @@ The meeting object contains several properties that organize different aspects o
 
 ### Self/Local Participant
 
-The [`meeting.self` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
+The [`meeting.self` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
 
@@ -82,7 +82,7 @@ await meeting.self.getCurrentDevices(); // {audio: MediaDevice, video: MediaDevi
 await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
 ```
 
-The [`meeting.self` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
+The [`meeting.self` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
 
@@ -132,7 +132,7 @@ await meeting.self.getCurrentDevices(); // {audio: MediaDevice, video: MediaDevi
 await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
 ```
 
-The [`meeting.self` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
+The [`meeting.self` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
 
@@ -346,7 +346,7 @@ meeting.localUser.shouldShowSetupScreen() // Check if setup screen should be sho
 meeting.localUser.shouldJoinMediaRoom() // Check if local user should join media room
 ```
 
-The [`meeting.self` ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
+The [`meeting.self` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
 
@@ -400,7 +400,7 @@ await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
 
 ### `meeting.participants` - All Remote Participants
 
-The [`meeting.participants` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKParticipants) contains maps of all remote participants in the meeting, organized by their state.
+The [`meeting.participants` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKParticipants) contains maps of all remote participants in the meeting, organized by their state.
 
 Note
 
@@ -839,7 +839,7 @@ participant.stageStatus // Stage status
 participant.flags // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
 ```
 
-The [`meeting.participants` ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKParticipants) contains maps of all remote participants in the meeting, organized by their state.
+The [`meeting.participants` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKParticipants) contains maps of all remote participants in the meeting, organized by their state.
 
 Note
 
@@ -916,7 +916,7 @@ participant.screenShareTrack; // Screen share MediaStreamTrack
 
 ### `meeting.meta` - Meeting Metadata
 
-The [`meeting.meta` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
+The [`meeting.meta` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
 
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
@@ -924,7 +924,7 @@ meeting.meta.meetingTitle; // Meeting Title
 meeting.meta.meetingStartedTimestamp; // Meeting start time
 ```
 
-The [`meeting.meta` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
+The [`meeting.meta` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
 
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
@@ -932,7 +932,7 @@ meeting.meta.meetingTitle; // Meeting Title
 meeting.meta.meetingStartedTimestamp; // Meeting start time
 ```
 
-The [`meeting.meta` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
+The [`meeting.meta` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
 
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
@@ -994,7 +994,7 @@ meeting.meta.syncTab(
 )
 ```
 
-The [`meeting.meta` ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKMeta) contains information about the meeting room itself.
+The [`meeting.meta` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKMeta) contains information about the meeting room itself.
 
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
@@ -1006,7 +1006,7 @@ meeting.meta.meetingStartedTimestamp; // Meeting start time
 
 ### `meeting.chat` - Chat Messages
 
-The [`meeting.chat` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
+The [`meeting.chat` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
 
 ```javascript
 // Get all chat messages
@@ -1027,7 +1027,7 @@ meeting.chat.on("chatUpdate", ({ message, messages }) => {
 });
 ```
 
-The [`meeting.chat` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
+The [`meeting.chat` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
 
 ```javascript
 // Get all chat messages
@@ -1048,7 +1048,7 @@ meeting.chat.on("chatUpdate", ({ message, messages }) => {
 });
 ```
 
-The [`meeting.chat` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
+The [`meeting.chat` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
 
 ```javascript
 // Get all chat messages
@@ -1170,7 +1170,7 @@ default:
 }
 ```
 
-The [`meeting.chat` ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
+The [`meeting.chat` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
 
 ```javascript
 // Get all chat messages
@@ -1195,7 +1195,7 @@ meeting.chat.on("chatUpdate", ({ message, messages }) => {
 
 ### `meeting.polls` - Polls
 
-The [`meeting.polls` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
+The [`meeting.polls` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
 
 ```javascript
 // Get all polls
@@ -1213,7 +1213,7 @@ await meeting.polls.create(
 await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.polls.items
 ```
 
-The [`meeting.polls` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
+The [`meeting.polls` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
 
 ```javascript
 // Get all polls
@@ -1231,7 +1231,7 @@ await meeting.polls.create(
 await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.polls.items
 ```
 
-The [`meeting.polls` ↗](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
+The [`meeting.polls` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
 
 ```javascript
 // Get all polls
@@ -1322,7 +1322,7 @@ extension MeetingViewModel: RtkPollsEventListener {
 meeting.addPollsEventListener(self)
 ```
 
-The [`meeting.polls` ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPolls) manages polls in the meeting.
+The [`meeting.polls` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPolls) manages polls in the meeting.
 
 ```javascript
 // Get all polls
@@ -1497,7 +1497,7 @@ extension MeetingViewModel: RtkPluginsEventListener {
 meeting.addPluginsEventListener(self)
 ```
 
-The [`meeting.plugins` ↗](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPlugins) manages meeting plugins (collaborative apps).
+The [`meeting.plugins` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPlugins) manages meeting plugins (collaborative apps).
 
 ```javascript
 // Get all available plugins

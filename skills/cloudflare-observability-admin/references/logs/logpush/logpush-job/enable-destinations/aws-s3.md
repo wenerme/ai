@@ -32,8 +32,8 @@ Cloudflare Logpush supports pushing logs directly to Amazon S3 via the Cloudflar
    - **Path** - bucket location within the storage container
    - **Organize logs into daily subfolders** (recommended)
    - **Bucket region**
-   - If your policy requires [AWS SSE-S3 AES256 Server Side Encryption ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html).
-   - For **Grant Cloudflare access to upload files to your bucket**, make sure your bucket has a [policy ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-policies-s3.html#iam-policy-ex0) (if you did not add it already):
+   - If your policy requires [AWS SSE-S3 AES256 Server Side Encryption ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/serv-side-encryption.html).
+   - For **Grant Cloudflare access to upload files to your bucket**, make sure your bucket has a [policy ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-policies-s3.html#iam-policy-ex0) (if you did not add it already):
      - Copy the JSON policy, then go to your bucket in the Amazon S3 console and paste the policy in **Permissions** > **Bucket Policy** and select **Save**.
 
 When you are done entering the destination details, select **Continue**.
@@ -64,7 +64,7 @@ Ensure **Log Share** permissions are enabled, before attempting to read or confi
 
 To enable Logpush to Amazon S3:
 
-1. Create an S3 bucket. Refer to [instructions from Amazon ↗](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
+1. Create an S3 bucket. Refer to [instructions from Amazon ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
    Note
 
@@ -91,7 +91,7 @@ To enable Logpush to Amazon S3:
 
 Note
 
-Logpush uses multipart upload for S3. Aborted uploads will result in incomplete files remaining in your bucket. To minimize your storage costs, Amazon recommends configuring a lifecycle rule using the `AbortIncompleteMultipartUpload` action. Refer to [Uploading and copying objects using multipart upload ↗](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config).
+Logpush uses multipart upload for S3. Aborted uploads will result in incomplete files remaining in your bucket. To minimize your storage costs, Amazon recommends configuring a lifecycle rule using the `AbortIncompleteMultipartUpload` action. Refer to [Uploading and copying objects using multipart upload ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config).
 
 Was this helpful?
 

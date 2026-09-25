@@ -20,7 +20,7 @@ This guide covers security best practices for MCP servers that act as OAuth prox
 
 ## OAuth protection with workers-oauth-provider
 
-Cloudflare's [`workers-oauth-provider` ↗](https://github.com/cloudflare/workers-oauth-provider) handles token management, client registration, and access token validation:
+Cloudflare's [`workers-oauth-provider` ↗︎](https://github.com/cloudflare/workers-oauth-provider) handles token management, client registration, and access token validation:
 
 ```js
 import { OAuthProvider } from "@cloudflare/workers-oauth-provider";

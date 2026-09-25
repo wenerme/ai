@@ -34,16 +34,16 @@ Session timeouts have no impact on Gateway DNS policies. DNS policies remain act
 
 To configure a session timeout for a Gateway policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. Choose either **Network** or **HTTP**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. Choose either **Network** or **HTTP**.
 2. Add a policy and select the *Allow* action. Alternatively, choose any existing *Allow* policy.
 3. Under **Step 4 - Configure policy settings**, select **Edit** next to **Enforce Cloudflare One Client session duration**.
 4. Enter a session expiration time in `1h30m0s` format and save.
 5. Save the policy.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
 2. Choose a Network ( `l4`) or HTTP ( `http`) policy with an Allow action.
-3. In the policy's [`rule_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_policy), use the `check_session` argument to enable and configure a session timeout:
+3. In the policy's [`rule_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_policy), use the `check_session` argument to enable and configure a session timeout:
 
    ```tf
    resource "cloudflare_zero_trust_gateway_policy" "network_allow_wiki_IPs" {

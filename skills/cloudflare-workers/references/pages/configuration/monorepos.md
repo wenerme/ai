@@ -36,7 +36,7 @@ GitHub will display separate comments for each project with the updated project 
 
 ### GitHub check runs and GitLab commit statuses
 
-If you have multiple projects associated with your repository, your [GitHub check run ↗](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#checks) or [Gitlab commit status ↗](https://docs.gitlab.com/ee/user/project/merge_requests/status_checks.html) will appear like the following on your repository:
+If you have multiple projects associated with your repository, your [GitHub check run ↗︎](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#checks) or [Gitlab commit status ↗︎](https://docs.gitlab.com/ee/user/project/merge_requests/status_checks.html) will appear like the following on your repository:
 
 ![GitHub check run](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1020,height=316,format=webp/_astro/ghcheckrun.Cv3SMhfT.png)![GitLab commit status](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=584,height=176,format=webp/_astro/glcommitstatus.BXV17OMM.png)
 
@@ -44,12 +44,12 @@ If a build skips for any reason (i.e. CI Skip, build watch paths, or branch depl
 
 ## Monorepo management tools:
 
-While Pages does not provide specialized tooling for dependency management in monorepos, you may choose to bring additional tooling to help manage your repository. For simple subpackage management, you can utilize tools like [npm ↗](https://docs.npmjs.com/cli/v8/using-npm/workspaces), [pnpm ↗](https://pnpm.io/workspaces), and [Yarn ↗](https://yarnpkg.com/features/workspaces) workspaces. You can also use more powerful tools such as [Turborepo ↗](https://turbo.build/repo/docs), [NX ↗](https://nx.dev/getting-started/intro), or [Lerna ↗](https://lerna.js.org/docs/getting-started) to additionally manage dependencies and task execution.
+While Pages does not provide specialized tooling for dependency management in monorepos, you may choose to bring additional tooling to help manage your repository. For simple subpackage management, you can utilize tools like [npm ↗︎](https://docs.npmjs.com/cli/v8/using-npm/workspaces), [pnpm ↗︎](https://pnpm.io/workspaces), and [Yarn ↗︎](https://yarnpkg.com/features/workspaces) workspaces. You can also use more powerful tools such as [Turborepo ↗︎](https://turbo.build/repo/docs), [NX ↗︎](https://nx.dev/getting-started/intro), or [Lerna ↗︎](https://lerna.js.org/docs/getting-started) to additionally manage dependencies and task execution.
 
 ## Limitations
 
 - You must be using [Build System V2](https://developers.cloudflare.com/pages/configuration/build-image/#v2-build-system) or later in order for monorepo support to be enabled.
-- You can configure a maximum of 5 Pages projects per repository. If you need this limit raised, contact your Cloudflare account team or use the [Limit Increase Request Form ↗](https://docs.google.com/forms/d/e/1FAIpQLSd_fwAVOboH9SlutMonzbhCxuuuOmiU1L_I5O2CFbXf_XXMRg/viewform).
+- You can configure a maximum of 5 Pages projects per repository. If you need this limit raised, contact your Cloudflare account team or use the [Limit Increase Request Form ↗︎](https://docs.google.com/forms/d/e/1FAIpQLSd_fwAVOboH9SlutMonzbhCxuuuOmiU1L_I5O2CFbXf_XXMRg/viewform).
 
 Was this helpful?
 

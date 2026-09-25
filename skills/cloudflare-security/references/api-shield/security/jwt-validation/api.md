@@ -72,7 +72,7 @@ It is highly recommended to validate the output of the API call to check that th
 
 ## Token configuration JSON object
 
-The example below shows a JSON object with all of the information necessary to create a token configuration using the Cloudflare API. If you would like to create JWKs for testing, refer to [mkjwk JSON Web Key Generator ↗](https://mkjwk.org/).
+The example below shows a JSON object with all of the information necessary to create a token configuration using the Cloudflare API. If you would like to create JWKs for testing, refer to [mkjwk JSON Web Key Generator ↗︎](https://mkjwk.org/).
 
 *Examplejson*
 

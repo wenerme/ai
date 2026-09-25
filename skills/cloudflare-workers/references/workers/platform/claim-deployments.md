@@ -16,9 +16,9 @@ Last updated Jul 14, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Temporary preview accounts let you deploy and test [Workers](https://developers.cloudflare.com/workers/) before you authenticate with Cloudflare. You can then claim the account to keep its deployments and supported resources.
 
-[Cloudflare Drop ↗](https://www.cloudflare.com/drop/) demonstrates this preview-and-claim lifecycle for static sites. Platforms can use the REST API to offer a similar experience for generated applications.
+[Cloudflare Drop ↗︎](https://www.cloudflare.com/drop/) demonstrates this preview-and-claim lifecycle for static sites. Platforms can use the REST API to offer a similar experience for generated applications.
 
-For design context, refer to [Temporary Cloudflare Accounts for AI agents ↗](https://blog.cloudflare.com/temporary-accounts/).
+For design context, refer to [Temporary Cloudflare Accounts for AI agents ↗︎](https://blog.cloudflare.com/temporary-accounts/).
 
 ![Diagram showing an AI agent deploying, verifying, and redeploying a Worker in a temporary account, then a user authenticating and claiming the account to keep its resources](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1748,height=368,format=webp/_astro/claim-deployments-flow.Co0tUHG4.png)
 
@@ -293,7 +293,7 @@ This synchronous Node.js solver is CPU-intensive and blocks the event loop. Run 
 
 ### Create a temporary account
 
-Require the user to accept Cloudflare's [Terms of Service ↗](https://www.cloudflare.com/terms/) and [Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/) before account creation. Set `acceptTermsOfService` to `"yes"` only after the user accepts both.
+Require the user to accept Cloudflare's [Terms of Service ↗︎](https://www.cloudflare.com/terms/) and [Privacy Policy ↗︎](https://www.cloudflare.com/privacypolicy/) before account creation. Set `acceptTermsOfService` to `"yes"` only after the user accepts both.
 
 Then send the proof-of-work solution with the required policy fields:
 
@@ -364,7 +364,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/worke
 
 For a script available on `workers.dev`, combine `result.subdomain` with the script name to create the deployment URL: `https://<SCRIPT_NAME>.<SUBDOMAIN>.workers.dev`.
 
-Use the [Cloudflare TypeScript SDK ↗](https://github.com/cloudflare/cloudflare-typescript) for supported resource operations after provisioning the temporary account:
+Use the [Cloudflare TypeScript SDK ↗︎](https://github.com/cloudflare/cloudflare-typescript) for supported resource operations after provisioning the temporary account:
 
 ```typescript
 import Cloudflare from "cloudflare";

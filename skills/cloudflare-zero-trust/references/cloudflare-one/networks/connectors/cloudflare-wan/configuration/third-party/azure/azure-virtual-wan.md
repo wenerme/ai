@@ -18,13 +18,13 @@ This tutorial provides information on how to connect Cloudflare WAN (formerly Ma
 
 ## Prerequisites
 
-You will need to have an existing Resource group, Virtual Network, and Virtual Machine created in your Azure account. Refer to [Microsoft's documentation ↗](https://learn.microsoft.com/en-us/azure/virtual-network/) to learn more on how to create these.
+You will need to have an existing Resource group, Virtual Network, and Virtual Machine created in your Azure account. Refer to [Microsoft's documentation ↗︎](https://learn.microsoft.com/en-us/azure/virtual-network/) to learn more on how to create these.
 
 ## Start Azure configuration
 
 ### 1. Create a Virtual WAN
 
-To connect one or more VNets to Cloudflare WAN via a Virtual WAN hub, you first need to create a Virtual WAN (vWAN) resource representing your Azure network. If you already have a vWAN that you wish to connect to Cloudflare WAN, continue to the next step. Refer to [Microsoft's documentation ↗](https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-site-to-site-portal#openvwan) to learn more.
+To connect one or more VNets to Cloudflare WAN via a Virtual WAN hub, you first need to create a Virtual WAN (vWAN) resource representing your Azure network. If you already have a vWAN that you wish to connect to Cloudflare WAN, continue to the next step. Refer to [Microsoft's documentation ↗︎](https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-site-to-site-portal#openvwan) to learn more.
 
 1. In the Azure portal, go to your **Virtual WANs** page.
 2. Select the option to create a **Virtual WAN**.
@@ -36,11 +36,11 @@ Using traditional hub and spoke terminology, a Virtual WAN Hub deployed within a
 
 1. Create a **Virtual WAN Hub**.
 2. In **Basics**:
-   1. Select your resource group as well as your desired region, capacity, and hub routing preference. Microsoft recommends using the default hub routing preference of **ExpressRoute** unless you have a specific need to change this setting. Refer to [Microsoft's documentation ↗](https://learn.microsoft.com/en-us/azure/virtual-wan/about-virtual-hub-routing-preference) to learn more about Azure hub routing preferences.
-   2. Configure the **Hub Private Address Space**. Choose an [address space with a subnet mask of `/24` or greater ↗](https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-site-to-site-portal#hub) that does not overlap with the address spaces of any VNets you wish to attach to the vWAN Hub, nor with any of your Cloudflare WAN sites.
+   1. Select your resource group as well as your desired region, capacity, and hub routing preference. Microsoft recommends using the default hub routing preference of **ExpressRoute** unless you have a specific need to change this setting. Refer to [Microsoft's documentation ↗︎](https://learn.microsoft.com/en-us/azure/virtual-wan/about-virtual-hub-routing-preference) to learn more about Azure hub routing preferences.
+   2. Configure the **Hub Private Address Space**. Choose an [address space with a subnet mask of `/24` or greater ↗︎](https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-site-to-site-portal#hub) that does not overlap with the address spaces of any VNets you wish to attach to the vWAN Hub, nor with any of your Cloudflare WAN sites.
 3. In **Site to Site**:
    1. In **Do you want to create a Site to site (VPN gateway)?** select **Yes**.
-   2. Select your desired **Gateway scale units** and **Routing Preference**. Refer to [Microsoft's documentation ↗](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/routing-preference-overview#routing-via-microsoft-global-network) to learn more about Azure routing preferences.
+   2. Select your desired **Gateway scale units** and **Routing Preference**. Refer to [Microsoft's documentation ↗︎](https://learn.microsoft.com/en-us/azure/virtual-network/ip-services/routing-preference-overview#routing-via-microsoft-global-network) to learn more about Azure routing preferences.
 4. Select **Create**. Note that the deployment time for the vWAN Hub and VPN Gateway may take 30 minutes or more.
 5. After the VPN Gateway has finished provisioning, go to **Virtual WAN** > **Hubs** > **Your vHub** > **Connectivity** > **VPN (Site to site)**.
 6. In the **Essentials** dropdown select the VPN Gateway listed.
@@ -68,7 +68,7 @@ Tunnel health checks make use of ICMP probes sent from the Cloudflare side of th
 - **Cloudflare Dashboard:** In your IPsec tunnel configuration as the address of the virtual tunnel interface (VTI) (so that Cloudflare knows what address to send probes from). Cloudflare requires this address in CIDR notation with a `/31` netmask.
 - **Azure Portal:** In your VPN site's address space (so that Azure routes probe responses back over the tunnel). Azure requires this address in CIDR notation with a `/32` netmask.
 
-Cloudflare recommends that you select a unique `/31` subnet ([RFC 1918 — Address Allocation for Private Internets ↗](https://datatracker.ietf.org/doc/html/rfc1918)) for each IPsec tunnel which is treated as a Point-to-Point Link and provides the ideal addressing scheme to satisfy both requirements.
+Cloudflare recommends that you select a unique `/31` subnet ([RFC 1918 — Address Allocation for Private Internets ↗︎](https://datatracker.ietf.org/doc/html/rfc1918)) for each IPsec tunnel which is treated as a Point-to-Point Link and provides the ideal addressing scheme to satisfy both requirements.
 
 Example:
 
@@ -80,7 +80,7 @@ Note
 
 It is important to ensure the subnet selected for the Interface Address does not overlap with any other subnet.
 
-You should also refer to RFC 3021 for more information on using 31-bit prefixes on [IPv4 Point-to-Point Links ↗](https://datatracker.ietf.org/doc/html/rfc3021).
+You should also refer to RFC 3021 for more information on using 31-bit prefixes on [IPv4 Point-to-Point Links ↗︎](https://datatracker.ietf.org/doc/html/rfc3021).
 
 To configure the Address Space for the Local Network Gateway to support Tunnel Health Checks:
 
@@ -108,7 +108,7 @@ When connecting your Azure vHub VPN Gateway to Cloudflare WAN, you need to creat
 2. Make sure you have the following settings:
    1. **Interface address**: Add the upper IP address within the first `/31` subnet selected in step 4 of the Start Azure Configuration section. Refer to [Tunnel endpoints](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) for more details.
    2. **Customer endpoint**: The first public IP associated with your Azure VPN Gateway. For example, `40.xxx.xxx.xxx`.
-   3. **Cloudflare endpoint**: Use one of the Cloudflare anycast addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). This will also be the IP address corresponding to the VPN Site in Azure. For example, `162.xxx.xxx.xxx`.
+   3. **Cloudflare endpoint**: Use one of the Cloudflare anycast addresses assigned to your account, available in [Leased IPs ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). This will also be the IP address corresponding to the VPN Site in Azure. For example, `162.xxx.xxx.xxx`.
    4. **Health check rate**: Medium (default).
    5. **Health check type**: Reply (default).
    6. **Health check direction**: Bidirectional (default).
@@ -133,7 +133,7 @@ To create a **VPN Gateway Connection**:
 1. Go to **Virtual WAN** > **Hubs** > **Your vHub** > **Connectivity** > **VPN (Site to site)** and remove the default filter **Hub association: Connected** to display the **VPN Site** created above.
 2. Check the box next to your VPN Site and select **Connect VPN sites**.
 
-Choose the following settings. These settings have been tested by Cloudflare. However, when setting up your VPN connection note that there are other configuration parameters are also technically feasible, as documented in the [Azure documentation ↗](https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-ipsec) and in the [Cloudflare documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters).
+Choose the following settings. These settings have been tested by Cloudflare. However, when setting up your VPN connection note that there are other configuration parameters are also technically feasible, as documented in the [Azure documentation ↗︎](https://learn.microsoft.com/en-us/azure/virtual-wan/virtual-wan-ipsec) and in the [Cloudflare documentation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters).
 
 1. **PSK**: Provide the PSK generated by Cloudflare for your IPsec tunnels.
 2. **Protocol**: *IKEv2*

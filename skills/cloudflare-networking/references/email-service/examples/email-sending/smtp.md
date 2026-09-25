@@ -44,7 +44,7 @@ curl --ssl-reqd \
 
 The sender domain must be onboarded for Email Sending on the account that owns the API token.
 
-Install [Nodemailer ↗](https://nodemailer.com/) with `npm install nodemailer`.
+Install [Nodemailer ↗︎](https://nodemailer.com/) with `npm install nodemailer`.
 
 ### Send an email
 
@@ -106,7 +106,7 @@ try {
 }
 ```
 
-Uses the standard-library [`smtplib` ↗](https://docs.python.org/3/library/smtplib.html) (Python 3.8 or later).
+Uses the standard-library [`smtplib` ↗︎](https://docs.python.org/3/library/smtplib.html) (Python 3.8 or later).
 
 ### Send an email
 

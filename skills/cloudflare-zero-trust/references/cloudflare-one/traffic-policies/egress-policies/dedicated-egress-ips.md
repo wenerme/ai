@@ -29,7 +29,7 @@ You can request additional dedicated egress IPs at any time. Contact your accoun
 To start routing traffic through dedicated egress IPs:
 
 1. Contact your account team to obtain a dedicated egress IP.
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 3. Turn on **Allow Secure Web Gateway to proxy traffic**.
 4. Select **TCP**.
 5. (Optional) Select **UDP**. This will allow HTTP/3 traffic to egress with your dedicated IPs.
@@ -45,13 +45,13 @@ To check if your device is using the correct dedicated egress IP:
 3. Determine the source IPv6 address of your device by going to `https://ipv6.icanhazip.com/`.
 4. Verify that the source IPv4 and IPv6 addresses match your dedicated egress IP.
 
-When testing against another origin, you may see either an IPv4 or IPv6 address. Gateway does not control which protocol is used — some origins only support one protocol, and when both are available, the client operating system and browser decide. For example, Windows [favors IPv6 by default ↗](https://learn.microsoft.com/troubleshoot/windows-server/networking/configure-ipv6-in-windows).
+When testing against another origin, you may see either an IPv4 or IPv6 address. Gateway does not control which protocol is used — some origins only support one protocol, and when both are available, the client operating system and browser decide. For example, Windows [favors IPv6 by default ↗︎](https://learn.microsoft.com/troubleshoot/windows-server/networking/configure-ipv6-in-windows).
 
 ## IPs
 
 ### Bring your own IP address (BYOIP)
 
-If your organization already owns IPv4 or IPv6 addresses from a regional Internet registry, you can use them as dedicated egress IPs instead of Cloudflare-provided addresses. To obtain an IPv6 range, refer to [American Registry for Internet Numbers (ARIN) ↗](https://www.arin.net/resources/guide/ipv6/first_request/) or [Regional Internet Registry for Europe, Middle East and Central Asia (RIPE NCC) ↗](https://www.ripe.net/manage-ips-and-asns/ipv6/request-ipv6/).
+If your organization already owns IPv4 or IPv6 addresses from a regional Internet registry, you can use them as dedicated egress IPs instead of Cloudflare-provided addresses. To obtain an IPv6 range, refer to [American Registry for Internet Numbers (ARIN) ↗︎](https://www.arin.net/resources/guide/ipv6/first_request/) or [Regional Internet Registry for Europe, Middle East and Central Asia (RIPE NCC) ↗︎](https://www.ripe.net/manage-ips-and-asns/ipv6/request-ipv6/).
 
 After you onboard your IP addresses, they appear as options when you create an [egress policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/) and choose **Use dedicated egress IPs (Cloudflare or BYOIP)** as the [egress method](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/#egress-methods). BYOIP dedicated egress IPs do not support [IP geolocation](#ip-geolocation).
 
@@ -61,7 +61,7 @@ For more information, refer to [Cloudflare BYOIP](https://developers.cloudflare.
 
 If you do not have your own authority-provided IPv4 and IPv6 addresses, you can use dedicated egress IPs with a Cloudflare IP address.
 
-You can find your leased Gateway dedicated egress IPs on the dashboard under [**Address space** > **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+You can find your leased Gateway dedicated egress IPs on the dashboard under [**Address space** > **Leased IPs** ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 ## Limitations
 
@@ -109,21 +109,21 @@ Supported IP geolocation databases
 
 </summary>
 
-- <a href="https://developers.google.com/maps/documentation/geolocation/overview">Google ↗</a>
-- <a href="https://www.maxmind.com/en/geoip-databases">MaxMind GeoIP ↗</a>
-- <a href="https://www.transunion.com/solution/truvalidate/digital-insights/ip-intelligence">TransUnion Neustar TruValidate IP Intelligence ↗</a>
-- <a href="https://www.abstractapi.com/ip-geolocation-api">Abstract IP Geolocation API ↗</a>
-- <a href="https://db-ip.com/">DB-IP ↗</a>
-- <a href="https://www.digitalelement.com/">Digital Element ↗</a>
-- <a href="https://geotargetly.com/">Geo Targetly ↗</a>
-- <a href="https://ip-api.com/">IP-API.com ↗</a>
-- <a href="https://lite.ip2location.com/">IP2Location ↗</a>
-- <a href="https://ipinfo.io/">IPinfo.io ↗</a>
-- <a href="https://ip2c.org/">ip2c.org ↗</a>
-- <a href="https://ipapi.com/">ipapi ↗</a>
-- <a href="https://ipgeolocation.io/">ipgeolocation.io ↗</a>
-- <a href="https://www.ipify.org/">ipify ↗</a>
-- <a href="https://ipstack.com/">Ipstack ↗</a>
+- <a href="https://developers.google.com/maps/documentation/geolocation/overview">Google ↗︎</a>
+- <a href="https://www.maxmind.com/en/geoip-databases">MaxMind GeoIP ↗︎</a>
+- <a href="https://www.transunion.com/solution/truvalidate/digital-insights/ip-intelligence">TransUnion Neustar TruValidate IP Intelligence ↗︎</a>
+- <a href="https://www.abstractapi.com/ip-geolocation-api">Abstract IP Geolocation API ↗︎</a>
+- <a href="https://db-ip.com/">DB-IP ↗︎</a>
+- <a href="https://www.digitalelement.com/">Digital Element ↗︎</a>
+- <a href="https://geotargetly.com/">Geo Targetly ↗︎</a>
+- <a href="https://ip-api.com/">IP-API.com ↗︎</a>
+- <a href="https://lite.ip2location.com/">IP2Location ↗︎</a>
+- <a href="https://ipinfo.io/">IPinfo.io ↗︎</a>
+- <a href="https://ip2c.org/">ip2c.org ↗︎</a>
+- <a href="https://ipapi.com/">ipapi ↗︎</a>
+- <a href="https://ipgeolocation.io/">ipgeolocation.io ↗︎</a>
+- <a href="https://www.ipify.org/">ipify ↗︎</a>
+- <a href="https://ipstack.com/">Ipstack ↗︎</a>
 
 </details>
 

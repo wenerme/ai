@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/m365-journaling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Microsoft 365 journaling is a post-delivery setup method that ensures a copy of every incoming and outgoing email is forwarded to Cloudflare for analysis. When you create a [journal rule ↗](https://learn.microsoft.com/en-us/exchange/security-and-compliance/journaling/journaling#journal-rules) in the Microsoft Purview compliance portal, Cloudflare can scan messages that have already landed in your inbox.
+Microsoft 365 journaling is a post-delivery setup method that ensures a copy of every incoming and outgoing email is forwarded to Cloudflare for analysis. When you create a [journal rule ↗︎](https://learn.microsoft.com/en-us/exchange/security-and-compliance/journaling/journaling#journal-rules) in the Microsoft Purview compliance portal, Cloudflare can scan messages that have already landed in your inbox.
 
 The following diagram shows how this works:
 
@@ -22,7 +22,7 @@ The following diagram shows how this works:
 
 To enable Microsoft 365 journaling deployment:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) > **Email security**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/) > **Email security**.
 2. Select **Overview**. If you have not purchased Email security, select **Contact Sales**. Otherwise, select **Set up** > **BCC/Journaling**.
 3. Select **Integrate with MS** > **Authorize**.
 4. Continue with [Integrate with Microsoft 365](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/m365-journaling/#1-integrate-with-microsoft-365) to connect your Microsoft integration.
@@ -62,7 +62,7 @@ To view your connected domains:
 
 ## 2. Configure journal rule
 
-1. Log in to the [Microsoft Purview compliance portal ↗](https://compliance.microsoft.com/homepage).
+1. Log in to the [Microsoft Purview compliance portal ↗︎](https://compliance.microsoft.com/homepage).
 2. On the sidebar, go to **Settings** (the gear icon) > **Data Lifecycle Management** > **Exchange (legacy)**.
 3. In **Send undeliverable journal reports to** enter the email address of a valid user account. Note that you cannot use a team or group address. Select **Save** once you entered the email address.
 4. On the sidebar, go to **Solutions** > **Data Lifecycle Management** > **Exchange (legacy)**.
@@ -81,7 +81,7 @@ Once saved, the rule is automatically active. However, it may take a few minutes
 
 To verify that the deployment has been successful and that your emails are being scanned:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), select **Email security**.
 2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Under **Your domains**, locate your domain, and verify that **Status** (which describes the state of the configuration) displays **Active**.
 
@@ -89,7 +89,7 @@ To verify that the deployment has been successful and that your emails are being
 
 To verift that your domain has been added successfully and that your emails are being scanned:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), select **Email security**.
 2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Under **Your domains**, locate your domain, and verify that **Status** is set to **Active**. The **Configured method** should be **BCC/Journaling**.
 

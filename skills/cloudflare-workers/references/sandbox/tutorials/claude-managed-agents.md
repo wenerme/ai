@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare provides a self-managed environment for [Claude Managed Agents ↗](https://platform.claude.com/docs/en/managed-agents/overview). The agent loop runs on the Anthropic platform, while Cloudflare provides the runtime — sandboxes, egress control, browser access, email, and custom tools — that the agent's actions execute in.
+Cloudflare provides a self-managed environment for [Claude Managed Agents ↗︎](https://platform.claude.com/docs/en/managed-agents/overview). The agent loop runs on the Anthropic platform, while Cloudflare provides the runtime — sandboxes, egress control, browser access, email, and custom tools — that the agent's actions execute in.
 
 This integration ships as an open-source deployment template. Fork the repo, deploy it to your Cloudflare account, and customize it as needed.
 
@@ -51,7 +51,7 @@ Use a self-managed Cloudflare environment when you need:
 
 ## Get started
 
-Follow the [onboarding guide ↗](https://github.com/cloudflare/claude-managed-agents#onboarding-guide) in the repository to deploy the control plane to your account. The guide walks through creating an Anthropic environment, setting secrets, provisioning storage, deploying the Worker, and configuring webhooks.
+Follow the [onboarding guide ↗︎](https://github.com/cloudflare/claude-managed-agents#onboarding-guide) in the repository to deploy the control plane to your account. The guide walks through creating an Anthropic environment, setting secrets, provisioning storage, deploying the Worker, and configuring webhooks.
 
 Note
 
@@ -63,16 +63,16 @@ The repository includes detailed documentation on each capability:
 
 | Topic | What it covers |
 | --- | --- |
-| [Connecting to private services ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/connecting-to-private-services.md) | Reach services in other clouds, on-prem, or on your laptop with Workers VPC bindings |
-| [Applying egress policies ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/applying-egress-policies.md) | Inject credentials and lock down agent sessions. Set up allow/deny lists, header injection, custom Worker proxies, and VPC routing |
-| [Isolate vs VM-based sandboxes ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/isolate-vs-vm-sandboxes.md) | Pick the best agent execution environment |
-| [Agent email ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/agent-email.md) | Give agents their own email addresses and sending abilities |
-| [Browser rendering tools ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/browser-rendering-tools.md) | Observable agent browser interactions with Browser Run |
-| [Adding custom tools ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/adding-custom-tools.md) | New tools are declared in a single file — [`src/tools/custom-tools.ts` ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/src/tools/custom-tools.ts) |
-| [Customizing sandboxes ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/customizing-sandboxes.md) | Change `Dockerfile` and `instance_type` knobs for the MicroVM backend |
-| [Snapshots and state persistence ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/snapshots-and-state-persistence.md) | State persistence across both sandbox types |
-| [Architecture ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/architecture.md) | Request lifecycle from webhook ingress through dispatch to either sandbox backend, and every Worker binding the control plane uses |
-| [Securing access ↗](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/securing-access.md) | Secure access to the CMA control plane |
+| [Connecting to private services ↗︎](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/connecting-to-private-services.md) | Reach services in other clouds, on-prem, or on your laptop with Workers VPC bindings |
+| [Applying egress policies ↗︎](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/applying-egress-policies.md) | Inject credentials and lock down agent sessions. Set up allow/deny lists, header injection, custom Worker proxies, and VPC routing |
+| [Isolate vs VM-based sandboxes ↗︎](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/isolate-vs-vm-sandboxes.md) | Pick the best agent execution environment |
+| [Agent email ↗︎](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/agent-email.md) | Give agents their own email addresses and sending abilities |
+| [Browser rendering tools ↗︎](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/browser-rendering-tools.md) | Observable agent browser interactions with Browser Run |
+| [Adding custom tools ↗︎](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/adding-custom-tools.md) | New tools are declared in a single file — [`src/tools/custom-tools.ts` ↗︎](https://github.com/cloudflare/claude-managed-agents/blob/main/src/tools/custom-tools.ts) |
+| [Customizing sandboxes ↗︎](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/customizing-sandboxes.md) | Change `Dockerfile` and `instance_type` knobs for the MicroVM backend |
+| [Snapshots and state persistence ↗︎](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/snapshots-and-state-persistence.md) | State persistence across both sandbox types |
+| [Architecture ↗︎](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/architecture.md) | Request lifecycle from webhook ingress through dispatch to either sandbox backend, and every Worker binding the control plane uses |
+| [Securing access ↗︎](https://github.com/cloudflare/claude-managed-agents/blob/main/docs/securing-access.md) | Secure access to the CMA control plane |
 
 Was this helpful?
 

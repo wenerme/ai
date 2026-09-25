@@ -44,7 +44,7 @@ In versions 9.0 above, you can leave both of these options enabled.
 
 This file shares several fields with Cloudflare Access so you do not have to input this data.
 
-11. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+11. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 12. Under **Your identity providers**, select **Add new identity provider**.
 13. Select SAML.
 14. In the **IdP Entity ID** field, enter the following URL:
@@ -53,7 +53,7 @@ This file shares several fields with Cloudflare Access so you do not have to inp
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 
-You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 
 15. Fill the other fields with values from your Ping dashboard.
 16. Select **Save**.

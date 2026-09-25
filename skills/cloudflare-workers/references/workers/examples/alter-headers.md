@@ -138,7 +138,7 @@ app.get('*', async (c) => {
 export default app;
 ```
 
-You can also use the [`custom-headers-example` template ↗](https://github.com/kristianfreeman/custom-headers-example) to deploy this code to your custom domain.
+You can also use the [`custom-headers-example` template ↗︎](https://github.com/kristianfreeman/custom-headers-example) to deploy this code to your custom domain.
 
 Was this helpful?
 

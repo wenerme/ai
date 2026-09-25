@@ -38,7 +38,7 @@ Without any configuration required, you can choose to skip a deployment on an ad
 
 ### Check runs
 
-If you have one or multiple projects connected to a repository (i.e. a [monorepo](https://developers.cloudflare.com/pages/configuration/monorepos/)), you can check on the status of each build within GitHub via [GitHub check runs ↗](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#checks).
+If you have one or multiple projects connected to a repository (i.e. a [monorepo](https://developers.cloudflare.com/pages/configuration/monorepos/)), you can check on the status of each build within GitHub via [GitHub check runs ↗︎](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks#checks).
 
 You can see the checks by selecting the status icon next to a commit within your GitHub repository. In the example below, you can select the green check mark to see the results of the check run.
 
@@ -52,21 +52,21 @@ If a build skips for any reason (i.e. CI Skip, build watch paths, or branch depl
 
 ## Manage access
 
-You can deploy projects to Cloudflare Workers from your company or side project on GitHub using the [Cloudflare Workers & Pages GitHub App ↗](https://github.com/apps/cloudflare-workers-and-pages).
+You can deploy projects to Cloudflare Workers from your company or side project on GitHub using the [Cloudflare Workers & Pages GitHub App ↗︎](https://github.com/apps/cloudflare-workers-and-pages).
 
 ### Organizational access
 
 You can deploy projects to Cloudflare Pages from your company or side project on both GitHub and GitLab.
 
-When authorizing Cloudflare Pages to access a GitHub account, you can specify access to your individual account or an organization that you belong to on GitHub. In order to be able to add the Cloudflare Pages installation to that organization, your user account must be an owner or have the appropriate role within the organization (that is, the GitHub Apps Manager role). More information on these roles can be seen on [GitHub's documentation ↗](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization#github-app-managers).
+When authorizing Cloudflare Pages to access a GitHub account, you can specify access to your individual account or an organization that you belong to on GitHub. In order to be able to add the Cloudflare Pages installation to that organization, your user account must be an owner or have the appropriate role within the organization (that is, the GitHub Apps Manager role). More information on these roles can be seen on [GitHub's documentation ↗︎](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/roles-in-an-organization#github-app-managers).
 
 GitHub security consideration
 
-A GitHub account should only point to one Cloudflare account. If you are setting up Cloudflare with GitHub for your organization, Cloudflare recommends that you limit the scope of the application to only the repositories you intend to build with Pages. To modify these permissions, go to the [Applications page ↗](https://github.com/settings/installations) on GitHub and select **Switch settings context** to access your GitHub organization settings. Then, select **Cloudflare Workers & Pages** > For **Repository access**, select **Only select repositories** > select your repositories.
+A GitHub account should only point to one Cloudflare account. If you are setting up Cloudflare with GitHub for your organization, Cloudflare recommends that you limit the scope of the application to only the repositories you intend to build with Pages. To modify these permissions, go to the [Applications page ↗︎](https://github.com/settings/installations) on GitHub and select **Switch settings context** to access your GitHub organization settings. Then, select **Cloudflare Workers & Pages** > For **Repository access**, select **Only select repositories** > select your repositories.
 
 ### Remove access
 
-You can remove Cloudflare Pages' access to your GitHub repository or account by going to the [Applications page ↗](https://github.com/settings/installations) on GitHub (if you are in an organization, select Switch settings context to access your GitHub organization settings). The GitHub App is named Cloudflare Workers and Pages, and it is shared between Workers and Pages projects.
+You can remove Cloudflare Pages' access to your GitHub repository or account by going to the [Applications page ↗︎](https://github.com/settings/installations) on GitHub (if you are in an organization, select Switch settings context to access your GitHub organization settings). The GitHub App is named Cloudflare Workers and Pages, and it is shared between Workers and Pages projects.
 
 #### Remove Cloudflare access to a GitHub repository
 
@@ -93,7 +93,7 @@ If you see errors where Cloudflare Pages cannot access your git repository, you 
 | **Organization** | `https://github.com/organizations/<YOUR_ORGANIZATION_NAME>/settings/installations` |
 
 2. In the Cloudflare Workers and Pages GitHub App settings page, navigate to **Uninstall "Cloudflare Workers and Pages"** and select **Uninstall**.
-3. Go back to the [**Workers & Pages** overview ↗](https://dash.cloudflare.com) page. Select **Create application** > **Pages** > **Connect to Git**.
+3. Go back to the [**Workers & Pages** overview ↗︎](https://dash.cloudflare.com) page. Select **Create application** > **Pages** > **Connect to Git**.
 4. Select the **+ Add account** button, select the GitHub account you want to add, and then select **Install & Authorize**.
 5. You should be redirected to the create project page with your GitHub account or organization in the account list.
 6. Attempt to make a new deployment with your project which was previously broken.

@@ -20,8 +20,8 @@ Workflows support local development using [Wrangler](https://developers.cloudfla
 
 To develop locally with Workflows, you will need:
 
-- [Wrangler v3.89.0 ↗](https://blog.cloudflare.com/wrangler3/) or later.
-- Node.js version of `18.0.0` or later. Consider using a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node versions.
+- [Wrangler v3.89.0 ↗︎](https://blog.cloudflare.com/wrangler3/) or later.
+- Node.js version of `18.0.0` or later. Consider using a Node version manager like [Volta ↗︎](https://volta.sh/) or [nvm ↗︎](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node versions.
 - If you are new to Workflows and/or Cloudflare Workers, refer to the [Workflows Guide](https://developers.cloudflare.com/workflows/get-started/guide/) to install `wrangler` and deploy their first Workflows.
 
 ## Start a local development session

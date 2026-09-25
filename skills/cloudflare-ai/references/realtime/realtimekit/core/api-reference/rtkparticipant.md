@@ -76,7 +76,7 @@ The picture of the participant.
 
 ### participant.customParticipantId
 
-The custom id of the participant set during [https://developers.cloudflare.com/api/resources/realtime\_kit/subresources/meetings/methods/add\_participant ↗](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant) REST API
+The custom id of the participant set during [https://developers.cloudflare.com/api/resources/realtime\_kit/subresources/meetings/methods/add\_participant ↗︎](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant) REST API
 
 **Kind**: instance property of [`RTKParticipant`](#module_RTKParticipant)
 

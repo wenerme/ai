@@ -173,8 +173,8 @@ The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only —
 | Intel Read | Grants read access to [Intel](https://developers.cloudflare.com/security-center/intel-apis/). |
 | Intel Edit | Grants write access to [Intel](https://developers.cloudflare.com/security-center/intel-apis/). |
 | Integration Edit | Grants write access to integrations. |
-| IOT Read | Grants read access to [IOT ↗](https://blog.cloudflare.com/rethinking-internet-of-things-security/). |
-| IOT Edit | Grants write access to [IOT ↗](https://blog.cloudflare.com/rethinking-internet-of-things-security/). |
+| IOT Read | Grants read access to [IOT ↗︎](https://blog.cloudflare.com/rethinking-internet-of-things-security/). |
+| IOT Edit | Grants write access to [IOT ↗︎](https://blog.cloudflare.com/rethinking-internet-of-things-security/). |
 | IP Prefixes: Read | Grants access to read IP prefix settings. |
 | IP Prefixes: Edit | Grants access to read/write IP prefix settings. |
 | IP Prefixes: BGP On Demand Read | Grants access to read IP prefix BGP configuration. |
@@ -349,8 +349,8 @@ The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only —
 | Intel Read | Grants read access to [Intel](https://developers.cloudflare.com/security-center/intel-apis/). |
 | Intel Write | Grants write access to [Intel](https://developers.cloudflare.com/security-center/intel-apis/). |
 | Integration Write | Grants write access to integrations. |
-| IOT Read | Grants read access to [IOT ↗](https://blog.cloudflare.com/rethinking-internet-of-things-security/). |
-| IOT Write | Grants write access to [IOT ↗](https://blog.cloudflare.com/rethinking-internet-of-things-security/). |
+| IOT Read | Grants read access to [IOT ↗︎](https://blog.cloudflare.com/rethinking-internet-of-things-security/). |
+| IOT Write | Grants write access to [IOT ↗︎](https://blog.cloudflare.com/rethinking-internet-of-things-security/). |
 | IP Prefixes: Read | Grants access to read IP prefix settings. |
 | IP Prefixes: Write | Grants access to read/write IP prefix settings. |
 | IP Prefixes: BGP On Demand Read | Grants access to read IP prefix BGP configuration. |

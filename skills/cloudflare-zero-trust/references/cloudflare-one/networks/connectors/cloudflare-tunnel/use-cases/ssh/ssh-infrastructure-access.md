@@ -36,7 +36,7 @@ To connect your devices to Cloudflare:
 
 ## 3. Route server IPs through the Cloudflare One Client
 
-By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatracker.ietf.org/doc/html/rfc1918), which are IP addresses typically used in private networks and not reachable from the Internet. In order for the Cloudflare One Client to send traffic to your SSH server, you must configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that the IP/CIDR of your SSH server routes through the Cloudflare One Client.
+By default, WARP excludes traffic bound for [RFC 1918 space ↗︎](https://datatracker.ietf.org/doc/html/rfc1918), which are IP addresses typically used in private networks and not reachable from the Internet. In order for the Cloudflare One Client to send traffic to your SSH server, you must configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that the IP/CIDR of your SSH server routes through the Cloudflare One Client.
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:
@@ -67,7 +67,7 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Targets**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Targets**.
 2. Select **Add a target**.
 3. In **Target hostname**, enter a user-friendly name for the target. We recommend using the server hostname, for example `production-server`. The target hostname does not need to be unique and can be reused for multiple targets. Hostnames are used to define the targets secured by an Access application; they are not used for DNS address resolution.<details><summary>
 
@@ -120,9 +120,9 @@ Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api_token):
    - `Zero Trust Write`
-2. Configure the [`cloudflare_zero_trust_infrastructure_access_target` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_infrastructure_access_target) resource:
+2. Configure the [`cloudflare_zero_trust_infrastructure_access_target` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_infrastructure_access_target) resource:
 
    ```tf
    resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {
@@ -141,13 +141,13 @@ The following example requires Cloudflare provider version `>=4.45.0`.
    }
    ```
 
-   To manage tags with Terraform, use the [`cloudflare_resource_tag` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/resource_tag) resource.
+   To manage tags with Terraform, use the [`cloudflare_resource_tag` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/resource_tag) resource.
 
 Next, create an Access application to secure the target.
 
 ## 5. Add an infrastructure application
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **Infrastructure**.
 4. Enter any name for the application.
@@ -261,9 +261,9 @@ Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api_token):
    - `Access: Apps and Policies Write`
-2. Use the [`cloudflare_zero_trust_access_application` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_access_application) resource to create an infrastructure application:
+2. Use the [`cloudflare_zero_trust_access_application` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_access_application) resource to create an infrastructure application:
 
    ```tf
    resource "cloudflare_zero_trust_access_application" "infra-app" {
@@ -283,7 +283,7 @@ The following example requires Cloudflare provider version `>=4.45.0`.
    ```
 
    To match targets by tag, define `include`, `require`, or `exclude` blocks with `tags` selectors.
-3. Use the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_access_policy) resource to add an infrastructure policy to the application:
+3. Use the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_access_policy) resource to add an infrastructure policy to the application:
 
    ```tf
    resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {
@@ -321,7 +321,7 @@ To prevent Cloudflare One Client users from accessing your entire private networ
 
 By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). To evaluate Access applications before or after specific Gateway policies:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
 
    | Selector | Operator | Value | Action |
    | --- | --- | --- | --- |
@@ -346,7 +346,7 @@ Other short-lived CAs, such as those used to [secure SSH servers behind Cloudfla
 
 To generate a Cloudflare SSH CA and get its public key:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **SSH**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **SSH**.
 2. Select **Add a certificate**.
 3. Under **SSH with Access for Infrastructure**, select **Generate SSH CA**. A new row will appear in the short-lived certificates table called **SSH with Access for Infrastructure**.
 4. Select the **SSH with Access for Infrastructure** certificate.
@@ -528,7 +528,7 @@ Follow these instructions to encrypt and download SSH command logs from Zero Tru
 
 To log SSH commands, you will need to generate an HPKE key pair and upload the public key to Cloudflare.
 
-1. [Download ↗](https://github.com/cloudflare/ssh-log-cli/releases/latest/) the Cloudflare `ssh-log-cli` utility.
+1. [Download ↗︎](https://github.com/cloudflare/ssh-log-cli/releases/latest/) the Cloudflare `ssh-log-cli` utility.
 2. Using the `ssh-log-cli` utility, generate a public and private key pair.
 
    ```sh
@@ -541,7 +541,7 @@ To log SSH commands, you will need to generate an HPKE key pair and upload the p
    ```
 
    This command outputs two files, an `sshkey.pub` public key and a matching `sshkey` private key.
-3. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+3. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 4. In **SSH log encryption public key**, paste the contents of `sshkey.pub` and select **Save**.
 
 All proxied SSH commands are immediately encrypted using this public key. The matching private key is required to view logs.
@@ -550,7 +550,7 @@ All proxied SSH commands are immediately encrypted using this public key. The ma
 
 To turn off SSH command logging, delete your uploaded public key:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings** > **SSH log encryption public key**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings** > **SSH log encryption public key**.
 2. Select **Remove**.
 3. Select **Remove key** to confirm.
 
@@ -575,12 +575,12 @@ SSH command logs are not visible from the dashboard itself and must be exported 
 
 To manually retrieve logs:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs**.
 2. Select **SSH command logs**.
 3. Filter the logs using the name of your [SSH application](#5-add-an-infrastructure-application).
 4. Select the SSH session for which you want to export command logs.
 5. In the side panel, scroll down to **SSH logs** and select **Download**.
-6. To decrypt the log, follow the instructions in the [SSH Logging CLI repository ↗](https://github.com/cloudflare/ssh-log-cli/). In the following example, `sshkey` is the private key that matches the public key uploaded to Cloudflare.
+6. To decrypt the log, follow the instructions in the [SSH Logging CLI repository ↗︎](https://github.com/cloudflare/ssh-log-cli/). In the following example, `sshkey` is the private key that matches the public key uploaded to Cloudflare.
 
    ```sh
    ./ssh-log-cli decrypt -i sshlog -k sshkey
@@ -666,7 +666,7 @@ Note
 
 You will need Cloudflare dashboard access and log view [permissions](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) to proceed with this step.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs**.
 2. Select **Access authentication logs**.
 3. Select the application you are testing or filter *Infrastructure* as the App Type.
 4. Review the **Decision**. If the **Decision** is `Access denied`, select the application and copy the name under App.
@@ -687,7 +687,7 @@ The target's IP address must route through the Cloudflare One Client. A device c
 
 To check the active profile and its Split Tunnel configuration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices**.
 2. Find the user's device and note its **Last active device profile**.
 3. Go to **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 4. Edit the active profile and open **Split Tunnels**.

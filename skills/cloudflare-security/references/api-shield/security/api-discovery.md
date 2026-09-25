@@ -48,7 +48,7 @@ jp-api.example.com/api/v1/users/{var1}
 
 Cloudflare consolidates these to `{hostVar1}.example.com/api/v1/users/{var1}`.
 
-For more technical details, refer to the [blog post ↗](https://blog.cloudflare.com/ml-api-discovery-and-schema-learning/).
+For more technical details, refer to the [blog post ↗︎](https://blog.cloudflare.com/ml-api-discovery-and-schema-learning/).
 
 ### Discovered operations
 

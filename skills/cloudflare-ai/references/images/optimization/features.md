@@ -69,7 +69,7 @@ URL breakdown
 | Part | Description |
 | --- | --- |
 | <code>imagedelivery.net</code> | A shared, Cloudflare-owned domain for optimizing images that are hosted in Images. As an alternative, you can also <a href="https://developers.cloudflare.com/images/optimization/hosted-images/serve-from-custom-domains/">serve images from your own domain</a>. |
-| <code>&lt;ACCOUNT_HASH&gt;</code> | A unique identifier for your Cloudflare account. You can find your account hash in the <a href="https://dash.cloudflare.com/?to=/:account/images/hosted">Cloudflare dashboard ↗</a> under **Images** &gt; **Developer Resources**. |
+| <code>&lt;ACCOUNT_HASH&gt;</code> | A unique identifier for your Cloudflare account. You can find your account hash in the <a href="https://dash.cloudflare.com/?to=/:account/images/hosted">Cloudflare dashboard ↗︎</a> under **Images** &gt; **Developer Resources**. |
 | <code>&lt;IMAGE-ID&gt;</code> | The unique identifier for a hosted image. When you upload to Images, Cloudflare automatically generates an image ID. You can also set a <a href="https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/">custom ID</a> to use your own path structure. |
 | <code>&lt;VARIANT-OR-OPTIONS&gt;</code> | Here, you can specify a <a href="https://developers.cloudflare.com/images/optimization/hosted-images/create-variants/">predefined variant</a> or a list of optimization parameters, separated by a comma. A valid URL must specify either a variant or at least one parameter. |
 
@@ -495,7 +495,7 @@ This can be combined with the [`zoom`](https://developers.cloudflare.com/images/
 | --- | --- | --- |
 | **Original** | **Default crop** | `gravity=face` |
 
-*Photograph by [Suad Kamardeen (@suadkamardeen) on Unsplash ↗](https://unsplash.com/photos/woman-in-black-cardigan-standing-beside-pink-flowers-UO-82DJ3rcc)*
+*Photograph by [Suad Kamardeen (@suadkamardeen) on Unsplash ↗︎](https://unsplash.com/photos/woman-in-black-cardigan-standing-beside-pink-flowers-UO-82DJ3rcc)*
 
 #### `left`, `right`, `top`, `bottom`
 
@@ -647,7 +647,7 @@ cf: {image: {saturation: 0.5}}
 
 Automatically isolates the subject of an image by replacing the background with transparent pixels. Accepts `foreground`. The default is none.
 
-This feature uses an open-source model called BiRefNet through [Workers AI](https://developers.cloudflare.com/workers-ai/). Read more about Cloudflare's [approach to responsible AI ↗](https://www.cloudflare.com/trust-hub/responsible-ai/).
+This feature uses an open-source model called BiRefNet through [Workers AI](https://developers.cloudflare.com/workers-ai/). Read more about Cloudflare's [approach to responsible AI ↗︎](https://www.cloudflare.com/trust-hub/responsible-ai/).
 
 | ![Original image](https://developers.cloudflare.com/_astro/original.DuemPfHh.jpg) | ![segment=foreground output](https://developers.cloudflare.com/_astro/segment-foreground.B6UYNLDs.png) |
 | --- | --- |
@@ -693,10 +693,10 @@ accept-ch: rtt, save-data, ect, downlink
 
 `slow-connection-quality` applies when the client hint is present and any of the following conditions are met:
 
-- [rtt ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/RTT): Greater than 150ms.
-- [save-data ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Save-Data): Value is "on".
-- [ect ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/ECT): Value is one of `slow-2g|2g|3g`.
-- [downlink ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Downlink): Less than 5Mbps.
+- [rtt ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/RTT): Greater than 150ms.
+- [save-data ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Save-Data): Value is "on".
+- [ect ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/ECT): Value is one of `slow-2g|2g|3g`.
+- [downlink ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Downlink): Less than 5Mbps.
 
 ```txt
 slow-connection-quality=50
@@ -762,7 +762,7 @@ Controls the algorithm used when an image needs to be enlarged. This parameter w
 Accepts the following values:
 
 - `interpolate` (default) — Uses bicubic interpolation, which may reduce image quality. This is the default behavior when `upscale` is not specified.
-- `generate` — Uses AI upscaling ([ESRGAN ↗](https://github.com/xinntao/ESRGAN)) to produce sharper, more detailed results when enlarging images.
+- `generate` — Uses AI upscaling ([ESRGAN ↗︎](https://github.com/xinntao/ESRGAN)) to produce sharper, more detailed results when enlarging images.
 
 When `upscale=generate` is specified, the AI model runs a single pass at the nearest supported scale (2x or 4x), then adjusts to the exact target dimensions. Scale factors beyond 4x are handled with AI upscaling to 4x, then bicubic interpolation for the remainder.
 

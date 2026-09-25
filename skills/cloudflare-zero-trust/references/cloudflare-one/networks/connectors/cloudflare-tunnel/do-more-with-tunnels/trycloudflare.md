@@ -55,11 +55,11 @@ TryCloudflare quick tunnels are currently not supported if a `config.yaml` confi
 - Quick Tunnels are subject to a hard limit on the number of concurrent requests that can be proxied at any point in time. Currently, this limit is 200 in-flight requests. If a Quick Tunnel hits this limit, the HTTP response will return a `429` status code.
 - Quick Tunnels do not support Server-Sent Events (SSE).
 
-These limitations only apply to Quick Tunnels. To avoid these limitations, [sign up ↗](https://dash.cloudflare.com/sign-up) for a Cloudflare account and [create a Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/).
+These limitations only apply to Quick Tunnels. To avoid these limitations, [sign up ↗︎](https://dash.cloudflare.com/sign-up) for a Cloudflare account and [create a Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/).
 
 ### Legal
 
-Your installation of cloudflared software constitutes a symbol of your signature indicating that you accept the terms of the [Cloudflare License](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/license/), [Terms ↗](https://www.cloudflare.com/terms/) and [Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/).
+Your installation of cloudflared software constitutes a symbol of your signature indicating that you accept the terms of the [Cloudflare License](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/license/), [Terms ↗︎](https://www.cloudflare.com/terms/) and [Privacy Policy ↗︎](https://www.cloudflare.com/privacypolicy/).
 
 Was this helpful?
 

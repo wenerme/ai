@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/payment-methods/instant-bank-payments-link/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Instant Bank Payments (IBP) via [Link ↗](https://link.co/) lets you pay for Cloudflare services directly from your bank account. Link is a one-click checkout wallet that stores your payment details. If you already have a bank account saved in Link, it appears as a payment option at checkout. If not, you can connect one during the checkout flow.
+Instant Bank Payments (IBP) via [Link ↗︎](https://link.co/) lets you pay for Cloudflare services directly from your bank account. Link is a one-click checkout wallet that stores your payment details. If you already have a bank account saved in Link, it appears as a payment option at checkout. If not, you can connect one during the checkout flow.
 
 ## How Instant Bank Payments works
 
@@ -46,7 +46,7 @@ Card-based Link payments display your card's last four digits, distinguishing th
 
 ## View your payment history
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Invoices** to view your invoice and payment history.
 
@@ -79,7 +79,7 @@ Bank payments through Link process in the same checkout flow as card payments. Y
 
 ### Bank account removal
 
-You can manage your saved payment methods, including bank accounts, through the [Link wallet ↗](https://link.co/). Removing a bank account does not affect previously completed payments.
+You can manage your saved payment methods, including bank accounts, through the [Link wallet ↗︎](https://link.co/). Removing a bank account does not affect previously completed payments.
 
 ### Incorrect charges
 

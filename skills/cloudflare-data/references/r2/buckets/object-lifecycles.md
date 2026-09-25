@@ -47,7 +47,7 @@ When you create an object lifecycle rule, you can specify which prefix you would
 
 ### Wrangler
 
-1. Install [`npm` ↗](https://docs.npmjs.com/getting-started).
+1. Install [`npm` ↗︎](https://docs.npmjs.com/getting-started).
 2. Install [Wrangler, the Developer Platform CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 3. Log in to Wrangler with the [`wrangler login` command](https://developers.cloudflare.com/workers/wrangler/commands/general/#login).
 4. Add a lifecycle rule to your bucket by running the [`r2 bucket lifecycle add` command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-lifecycle-add).

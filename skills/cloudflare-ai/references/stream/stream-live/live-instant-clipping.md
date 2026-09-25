@@ -49,7 +49,7 @@ This manifest can be played and seeked using any HLS-compatible player.
 
 ### Reading headers
 
-Reading headers when loading a manifest requires adjusting how players handle the response. For example, if using [HLS.js ↗](https://github.com/video-dev/hls.js) and the default loader, override the `pLoader` (playlist loader) class:
+Reading headers when loading a manifest requires adjusting how players handle the response. For example, if using [HLS.js ↗︎](https://github.com/video-dev/hls.js) and the default loader, override the `pLoader` (playlist loader) class:
 
 ```js
 let currentPreviewStart;

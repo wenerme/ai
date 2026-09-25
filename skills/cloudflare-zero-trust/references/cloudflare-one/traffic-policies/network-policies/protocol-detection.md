@@ -22,7 +22,7 @@ Protocol detection only applies to devices connected to Cloudflare One via the C
 
 To turn on protocol detection:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings** > **Proxy and inspection settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings** > **Proxy and inspection settings**.
 2. Turn on **Allow protocol detection**.
 
 You can now use *Detected Protocol* as a selector in a [Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/#detected-protocol).

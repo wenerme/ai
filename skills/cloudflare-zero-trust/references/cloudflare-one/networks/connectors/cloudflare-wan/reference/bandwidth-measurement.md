@@ -20,8 +20,8 @@ Cloudflare measures Cloudflare WAN (formerly Magic WAN) usage based on the 95th 
 
 Cloudflare WAN bandwidth includes the sum of traffic routed to and from the Cloudflare WAN network namespace across all your connections. This measurement includes traffic from the following tunnel types:
 
-- [GRE (Generic Routing Encapsulation) ↗](https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/)
-- [IPsec (Internet Protocol Security) ↗](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/)
+- [GRE (Generic Routing Encapsulation) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-gre-tunneling/)
+- [IPsec (Internet Protocol Security) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/)
 - [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-tunnel/)
 - [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/)
 

@@ -18,7 +18,7 @@ Cloudflare Zaraz offers backwards compatibility with the `dataLayer` function fo
 
 To keep the Zaraz script as small and fast as possible, the data layer compatibility mode is disabled by default. To enable it:
 
-1. Go to [**Zaraz** ↗](https://dash.cloudflare.com/?to=/:account/:zone/zaraz) > **Settings**.
+1. Go to [**Zaraz** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/zaraz) > **Settings**.
 2. Enable the **Data layer compatibility mode** toggle. Refer to [Zaraz settings](https://developers.cloudflare.com/zaraz/reference/settings/) for more information.
 
 ## Using the data layer with Zaraz

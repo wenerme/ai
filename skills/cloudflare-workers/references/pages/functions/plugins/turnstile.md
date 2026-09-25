@@ -74,7 +74,7 @@ This Plugin only exposes a single route to verify an incoming Turnstile response
 
 The Plugin is mounted with a single object parameter with the following properties:
 
-[`secret` ↗](https://dash.cloudflare.com/login) is mandatory and can both be found in your Turnstile dashboard.
+[`secret` ↗︎](https://dash.cloudflare.com/login) is mandatory and can both be found in your Turnstile dashboard.
 
 `response` and `remoteip` are optional strings. `response` is the Turnstile token to verify. If it is not provided, the plugin will default to extracting `cf-turnstile-response` value from a `multipart/form-data` request). `remoteip` is the requester's IP address. This defaults to the `CF-Connecting-IP` header of the request.
 

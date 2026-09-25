@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/detections/leaked-credentials/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The leaked credentials [traffic detection](https://developers.cloudflare.com/waf/detections/) scans incoming requests for credentials (usernames and passwords) previously leaked from [data breaches ↗](https://www.cloudflare.com/learning/security/what-is-a-data-breach/).
+The leaked credentials [traffic detection](https://developers.cloudflare.com/waf/detections/) scans incoming requests for credentials (usernames and passwords) previously leaked from [data breaches ↗︎](https://www.cloudflare.com/learning/security/what-is-a-data-breach/).
 
 Note
 
@@ -26,7 +26,7 @@ When you turn on leaked credentials detection, Cloudflare scans incoming HTTP re
 
 Detected credentials are compared against a database of known leaked credentials. This database consists of:
 
-- The [Have I Been Pwned (HIBP) ↗](https://haveibeenpwned.com) matched passwords dataset (passwords only)
+- The [Have I Been Pwned (HIBP) ↗︎](https://haveibeenpwned.com) matched passwords dataset (passwords only)
 - Cloudflare-collected credentials (usernames)
 - Leaked credentials pairs (username and password)
 
@@ -35,7 +35,7 @@ Based on the results, Cloudflare populates [leaked credentials fields](#leaked-c
 - **Analyze traffic**: Review detection results in the [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) dashboard to understand how often leaked credentials appear in your traffic.
 - **Create rules**: Use the fields in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) or [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) to challenge or block requests that contain compromised credentials.
 
-Leaked credentials can appear in your traffic for different reasons. An attacker may be performing a [credential stuffing ↗](https://www.cloudflare.com/learning/bots/what-is-credential-stuffing/) attack, or a legitimate user may be reusing a previously leaked password.
+Leaked credentials can appear in your traffic for different reasons. An attacker may be performing a [credential stuffing ↗︎](https://www.cloudflare.com/learning/bots/what-is-credential-stuffing/) attack, or a legitimate user may be reusing a previously leaked password.
 
 ### Notify your origin server
 

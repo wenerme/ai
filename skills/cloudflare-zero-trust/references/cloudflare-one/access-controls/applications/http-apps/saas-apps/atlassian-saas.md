@@ -14,18 +14,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/atlassian-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [Atlassian Cloud ↗](https://support.atlassian.com/security-and-access-policies/docs/configure-saml-single-sign-on-with-an-identity-provider/) as a SAML application in Cloudflare One.
+This guide covers how to configure [Atlassian Cloud ↗︎](https://support.atlassian.com/security-and-access-policies/docs/configure-saml-single-sign-on-with-an-identity-provider/) as a SAML application in Cloudflare One.
 
 ## Prerequisites
 
 - An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
 - Admin access to an Atlassian Cloud account
 - Atlassian Guard Standard subscription
-- A [domain ↗](https://support.atlassian.com/user-management/docs/verify-a-domain-to-manage-accounts/) verified in Atlassian Cloud
+- A [domain ↗︎](https://support.atlassian.com/user-management/docs/verify-a-domain-to-manage-accounts/) verified in Atlassian Cloud
 
 ## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application** > **SaaS application**.
 3. For **Application**, select *Atlassian*.
 4. For the authentication protocol, select **SAML**.
@@ -69,7 +69,7 @@ This guide covers how to configure [Atlassian Cloud ↗](https://support.atlassi
 
 ## 5. Create an authentication policy to test integration
 
-To enable SSO for users in Atlassian Cloud, create an [Atlassian authentication policy ↗](https://support.atlassian.com/security-and-access-policies/docs/configure-authentication-policies-for-your-organization/):
+To enable SSO for users in Atlassian Cloud, create an [Atlassian authentication policy ↗︎](https://support.atlassian.com/security-and-access-policies/docs/configure-authentication-policies-for-your-organization/):
 
 1. In Atlassian Cloud, go to **Security** > **Authentication policies**.
 2. Select **Add policy**.

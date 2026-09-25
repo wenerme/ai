@@ -27,7 +27,7 @@ This also means that SSL Labs or similar SSL validators are expected to flag the
 ### Solutions
 
 - Make sure the [proxy status](https://developers.cloudflare.com/dns/proxy-status/) of your DNS records and any [page rules](https://developers.cloudflare.com/rules/page-rules/) (if existing) are set up correctly. If so, you can try to turn proxying off and then on again and wait a few minutes.
-- If you must have direct connections between clients and your origin server, consider installing a publicly trusted certificate at your origin instead. This process is done outside of Cloudflare, where you should issue the certificate directly from a certificate authority (CA) of your choice. You can still use Full (strict) [encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/), as long as the CA is listed on the [Cloudflare trust store ↗](https://github.com/cloudflare/cfssl_trust).
+- If you must have direct connections between clients and your origin server, consider installing a publicly trusted certificate at your origin instead. This process is done outside of Cloudflare, where you should issue the certificate directly from a certificate authority (CA) of your choice. You can still use Full (strict) [encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/), as long as the CA is listed on the [Cloudflare trust store ↗︎](https://github.com/cloudflare/cfssl_trust).
 
 ## The issuer of this certificate could not be found
 

@@ -18,7 +18,7 @@ Caution
 
 This page is for Wrangler v1, which has been deprecated. [Learn how to update to the latest version of Wrangler](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/).
 
-Wrangler allows you to develop modern ES6 applications with support for modules. This support is possible because of Wrangler's [webpack ↗](https://webpack.js.org/) integration. This document describes how Wrangler uses webpack to build your Workers and how you can bring your own configuration.
+Wrangler allows you to develop modern ES6 applications with support for modules. This support is possible because of Wrangler's [webpack ↗︎](https://webpack.js.org/) integration. This document describes how Wrangler uses webpack to build your Workers and how you can bring your own configuration.
 
 Configuration and webpack version
 
@@ -39,7 +39,7 @@ module.exports = {
 
 The `"main"` field in the `package.json` file determines the `entry` configuration value. When undefined or missing, `"main"` defaults to `index.js`, meaning that `entry` also defaults to `index.js`.
 
-The default configuration sets `target` to `webworker`. This is the correct value because Cloudflare Workers are built to match the [Service Worker API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API). Refer to the [webpack documentation ↗](https://webpack.js.org/concepts/targets/) for an explanation of this `target` value.
+The default configuration sets `target` to `webworker`. This is the correct value because Cloudflare Workers are built to match the [Service Worker API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API). Refer to the [webpack documentation ↗︎](https://webpack.js.org/concepts/targets/) for an explanation of this `target` value.
 
 ## Bring your own configuration
 
@@ -164,7 +164,7 @@ module.exports = {
 
 ## Shimming globals
 
-When you want to bring your own implementation of an existing global API, you may [shim ↗](https://webpack.js.org/guides/shimming/#shimming-globals) a third-party module in its place as a webpack plugin.
+When you want to bring your own implementation of an existing global API, you may [shim ↗︎](https://webpack.js.org/guides/shimming/#shimming-globals) a third-party module in its place as a webpack plugin.
 
 For example, you may want to replace the `URL` global class with the `url-polyfill` npm package. After defining the package as a dependency in your `package.json` file and installing it, add a plugin entry to your webpack configuration.
 

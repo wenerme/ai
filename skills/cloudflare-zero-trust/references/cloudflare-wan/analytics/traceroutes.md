@@ -30,7 +30,7 @@ You can access detailed data from the traceroute, including:
 
 - Time to live (TTL) and host
 - Autonomous system (AS) number
-- [Packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) sent in the traceroute
+- [Packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) sent in the traceroute
 - Average, minimum, and maximum latency
 - Standard deviation of latency
 

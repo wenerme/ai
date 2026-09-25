@@ -71,7 +71,7 @@ Throws: `BadRequestError`, `QuotaReachedError`, `MaxFileSizeError`, `RateLimited
 
 Create a basic direct upload URL for client-side uploads without an API key. Returns `Promise<`[`StreamDirectUpload`](#streamdirectupload)`>` with `uploadURL` and `id`.
 
-*This method does not currently support files over 200MB.* For larger direct uploads, refer to the [API request for provisioning a TUS endpoint ↗](http://localhost:1111/stream/uploading-videos/direct-creator-uploads/#direct-creator-uploads-with-tus-protocol).\_
+*This method does not currently support files over 200MB.* For larger direct uploads, refer to the [API request for provisioning a TUS endpoint ↗︎](http://localhost:1111/stream/uploading-videos/direct-creator-uploads/#direct-creator-uploads-with-tus-protocol).\_
 
 - `params` (required): A [`StreamDirectUploadCreateParams`](#streamdirectuploadcreateparams) object with the following properties:
   - `maxDurationSeconds` (required): Maximum duration of the uploaded video in seconds.

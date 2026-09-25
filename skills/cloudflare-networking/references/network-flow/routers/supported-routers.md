@@ -34,8 +34,8 @@ pfSense
 
 </summary>
 
-- <a href="https://www.pfsense.org/">pfSense website ↗</a>
-- **Supported hardware model or plugin**: <a href="https://docs.netgate.com/pfsense/en/latest/recipes/netflow-with-softflowd.html">softflowd ↗</a>
+- <a href="https://www.pfsense.org/">pfSense website ↗︎</a>
+- **Supported hardware model or plugin**: <a href="https://docs.netgate.com/pfsense/en/latest/recipes/netflow-with-softflowd.html">softflowd ↗︎</a>
 
 </details>
 
@@ -47,7 +47,7 @@ Ubiquiti
 
 </summary>
 
-- <a href="https://www.ui.com/">Ubiquiti website ↗</a>
+- <a href="https://www.ui.com/">Ubiquiti website ↗︎</a>
 - **Supported hardware model or plugin**: UISP EdgeRouter series
 
 </details>
@@ -74,7 +74,7 @@ Cisco
 
 </summary>
 
-- <a href="https://community.cisco.com/t5/security-knowledge-base/netflow-support-matrix/ta-p/3644638?attachment-id=203270">NetFlow/sFlow Support Matrix ↗</a>
+- <a href="https://community.cisco.com/t5/security-knowledge-base/netflow-support-matrix/ta-p/3644638?attachment-id=203270">NetFlow/sFlow Support Matrix ↗︎</a>
 - **Supported hardware model or plugin**: ASR series, Catalyst series, ISR series, Nexus 1000v, Nexus 5000, Nexus 6000, Nexus 7000, Nexus 9000, WLC series, 800 series (not 860)
 
 </details>
@@ -99,7 +99,7 @@ Meraki
 
 </summary>
 
-- <a href="https://community.cisco.com/t5/security-knowledge-base/netflow-support-matrix/ta-p/3644638?attachment-id=203270">NetFlow/sFlow Support Matrix (Meraki on page 2) ↗</a>
+- <a href="https://community.cisco.com/t5/security-knowledge-base/netflow-support-matrix/ta-p/3644638?attachment-id=203270">NetFlow/sFlow Support Matrix (Meraki on page 2) ↗︎</a>
 - **Supported hardware model or plugin**: MX series, Z1 series
 
 </details>
@@ -112,7 +112,7 @@ Mikrotik
 
 </summary>
 
-- <a href="https://wiki.mikrotik.com/wiki/Manual:IP/Traffic_Flow">MikroTik website ↗</a>
+- <a href="https://wiki.mikrotik.com/wiki/Manual:IP/Traffic_Flow">MikroTik website ↗︎</a>
 - **Supported hardware model or plugin**: Router OS v2.9, v3, v4, and later
 
 </details>
@@ -137,7 +137,7 @@ Ubiquiti
 
 </summary>
 
-- <a href="https://www.ui.com/">Ubiquiti website ↗</a>
+- <a href="https://www.ui.com/">Ubiquiti website ↗︎</a>
 - **Supported hardware model or plugin**: 7950 XRS series, 7750 SR series
 
 </details>
@@ -152,8 +152,8 @@ pfSense
 
 </summary>
 
-- <a href="https://www.pfsense.org/">pfSense website ↗</a>
-- **Supported hardware model or plugin**: <a href="https://docs.netgate.com/pfsense/en/latest/recipes/netflow-with-softflowd.html">softflowd ↗</a>
+- <a href="https://www.pfsense.org/">pfSense website ↗︎</a>
+- **Supported hardware model or plugin**: <a href="https://docs.netgate.com/pfsense/en/latest/recipes/netflow-with-softflowd.html">softflowd ↗︎</a>
 
 </details>
 
@@ -165,8 +165,8 @@ OpenWrt
 
 </summary>
 
-- <a href="https://openwrt.org/start">OpenWrt website ↗</a>
-- **Supported hardware model or plugin**: <a href="https://openwrt.org/toh/start">Table of supported routers ↗</a><br> <a href="https://openwrt.org/packages/pkgdata/softflowd">OpenWrt NetFlow support ↗</a>
+- <a href="https://openwrt.org/start">OpenWrt website ↗︎</a>
+- **Supported hardware model or plugin**: <a href="https://openwrt.org/toh/start">Table of supported routers ↗︎</a><br> <a href="https://openwrt.org/packages/pkgdata/softflowd">OpenWrt NetFlow support ↗︎</a>
 
 </details>
 
@@ -206,7 +206,7 @@ Cisco
 
 </summary>
 
-- <a href="https://community.cisco.com/t5/security-knowledge-base/netflow-support-matrix/ta-p/3644638?attachment-id=203270">NetFlow/sFlow Support Matrix ↗</a>
+- <a href="https://community.cisco.com/t5/security-knowledge-base/netflow-support-matrix/ta-p/3644638?attachment-id=203270">NetFlow/sFlow Support Matrix ↗︎</a>
 - **Supported hardware model or plugin**: 350 series Managed Switches, 350X series Stackable Managed Switches, 550X series Stackable Managed Switches, 8000 series Routers, ASR 9000 series Routers, Catalyst 1000 series, Catalyst 2960-L series, ME 1200 series, NCS 540 series Routers, NCS 5500 series Routers, Nexus 3000 series, Nexus 3100 series, Nexus 3200 series, Nexus 3600 series, Nexus 9200 series, Nexus 9300 series, Nexus 9500 series
 
 </details>

@@ -20,7 +20,7 @@ Cloudflare provides security, performance, and reliability services to millions 
 
 If you find abusive content on a website that uses Cloudflare, you can submit a report in one of three ways:
 
-- **Public form**: Use [Submit an abuse report ↗](https://abuse.cloudflare.com/) to report abuse to Cloudflare. This form is available to anyone on the Internet.
+- **Public form**: Use [Submit an abuse report ↗︎](https://abuse.cloudflare.com/) to report abuse to Cloudflare. This form is available to anyone on the Internet.
 - **Cloudflare dashboard**: Entitled Cloudflare customers can submit abuse reports from the **Abuse reports** page. You must have the **Trust & Safety**, **Admin**, or **Super Admin** role. [Go to **Abuse reports** ↗](https://dash.cloudflare.com/?to=/:account/abuse-reports)
 - **Cloudflare API**: Entitled Cloudflare customers can submit abuse reports using the [Abuse Reports API](https://developers.cloudflare.com/api/resources/abuse_reports/). You must have the **Trust & Safety**, **Admin**, or **Super Admin** role.
 

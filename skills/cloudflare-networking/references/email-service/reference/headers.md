@@ -54,8 +54,8 @@ Email Service rejects the entire send request if it contains a disallowed header
 
 | Header | RFC | Notes |
 | --- | --- | --- |
-| `In-Reply-To` | [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) | Critical for email threading in all clients |
-| `References` | [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) | Critical for email threading in all clients |
+| `In-Reply-To` | [RFC 5322 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322) | Critical for email threading in all clients |
+| `References` | [RFC 5322 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322) | Critical for email threading in all clients |
 | `Thread-Index` | Microsoft (non-standard) | Conversation index used by Outlook and Exchange Online |
 | `Thread-Topic` | Microsoft (non-standard) | Conversation subject used by Outlook and Exchange Online |
 
@@ -63,47 +63,47 @@ Email Service rejects the entire send request if it contains a disallowed header
 
 | Header | RFC | Notes |
 | --- | --- | --- |
-| `List-Unsubscribe` | [RFC 2369 ↗](https://datatracker.ietf.org/doc/html/rfc2369) | Must contain `<https://...>` and/or `<mailto:...>` URI(s). HTTP (non-TLS) URIs are rejected. Gmail and Yahoo require this for bulk senders. Always DKIM-signed per RFC 8058. |
-| `List-Unsubscribe-Post` | [RFC 8058 ↗](https://datatracker.ietf.org/doc/html/rfc8058) | Must be exactly `List-Unsubscribe=One-Click` (case-sensitive). Requires `List-Unsubscribe` with an HTTPS URI. |
-| `List-Id` | [RFC 2919 ↗](https://datatracker.ietf.org/doc/html/rfc2919) | List identification |
-| `List-Archive` | [RFC 2369 ↗](https://datatracker.ietf.org/doc/html/rfc2369) | URL to list archive |
-| `List-Help` | [RFC 2369 ↗](https://datatracker.ietf.org/doc/html/rfc2369) | URL for help |
-| `List-Owner` | [RFC 2369 ↗](https://datatracker.ietf.org/doc/html/rfc2369) | List owner contact |
-| `List-Post` | [RFC 2369 ↗](https://datatracker.ietf.org/doc/html/rfc2369) | Address for posting |
-| `List-Subscribe` | [RFC 2369 ↗](https://datatracker.ietf.org/doc/html/rfc2369) | Subscribe URL or address |
+| `List-Unsubscribe` | [RFC 2369 ↗︎](https://datatracker.ietf.org/doc/html/rfc2369) | Must contain `<https://...>` and/or `<mailto:...>` URI(s). HTTP (non-TLS) URIs are rejected. Gmail and Yahoo require this for bulk senders. Always DKIM-signed per RFC 8058. |
+| `List-Unsubscribe-Post` | [RFC 8058 ↗︎](https://datatracker.ietf.org/doc/html/rfc8058) | Must be exactly `List-Unsubscribe=One-Click` (case-sensitive). Requires `List-Unsubscribe` with an HTTPS URI. |
+| `List-Id` | [RFC 2919 ↗︎](https://datatracker.ietf.org/doc/html/rfc2919) | List identification |
+| `List-Archive` | [RFC 2369 ↗︎](https://datatracker.ietf.org/doc/html/rfc2369) | URL to list archive |
+| `List-Help` | [RFC 2369 ↗︎](https://datatracker.ietf.org/doc/html/rfc2369) | URL for help |
+| `List-Owner` | [RFC 2369 ↗︎](https://datatracker.ietf.org/doc/html/rfc2369) | List owner contact |
+| `List-Post` | [RFC 2369 ↗︎](https://datatracker.ietf.org/doc/html/rfc2369) | Address for posting |
+| `List-Subscribe` | [RFC 2369 ↗︎](https://datatracker.ietf.org/doc/html/rfc2369) | Subscribe URL or address |
 | `Precedence` | De facto standard | Accepted values: `bulk`, `list`, `junk` |
 
 ### Automated message identification
 
 | Header | RFC | Notes |
 | --- | --- | --- |
-| `Auto-Submitted` | [RFC 3834 ↗](https://datatracker.ietf.org/doc/html/rfc3834) | Values: `auto-generated`, `auto-replied`, `auto-notified` |
+| `Auto-Submitted` | [RFC 3834 ↗︎](https://datatracker.ietf.org/doc/html/rfc3834) | Values: `auto-generated`, `auto-replied`, `auto-notified` |
 
 ### Content and display
 
 | Header | RFC | Notes |
 | --- | --- | --- |
-| `Content-Language` | [RFC 3282 ↗](https://datatracker.ietf.org/doc/html/rfc3282) | Language of content (for example, `en`, `fr`) |
-| `Keywords` | [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) | Message keywords (comma-separated for multiple values) |
-| `Comments` | [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) | Additional comments (comma-separated for multiple values) |
-| `Importance` | [RFC 2156 ↗](https://datatracker.ietf.org/doc/html/rfc2156) | Values: `high`, `normal`, `low` |
-| `Priority` | [RFC 2156 ↗](https://datatracker.ietf.org/doc/html/rfc2156) | Values: `normal`, `non-urgent`, `urgent` |
-| `Sensitivity` | [RFC 2156 ↗](https://datatracker.ietf.org/doc/html/rfc2156) | Values: `personal`, `private`, `company-confidential` |
-| `Organization` | [RFC 4021 ↗](https://datatracker.ietf.org/doc/html/rfc4021) | Sender's organization name |
+| `Content-Language` | [RFC 3282 ↗︎](https://datatracker.ietf.org/doc/html/rfc3282) | Language of content (for example, `en`, `fr`) |
+| `Keywords` | [RFC 5322 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322) | Message keywords (comma-separated for multiple values) |
+| `Comments` | [RFC 5322 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322) | Additional comments (comma-separated for multiple values) |
+| `Importance` | [RFC 2156 ↗︎](https://datatracker.ietf.org/doc/html/rfc2156) | Values: `high`, `normal`, `low` |
+| `Priority` | [RFC 2156 ↗︎](https://datatracker.ietf.org/doc/html/rfc2156) | Values: `normal`, `non-urgent`, `urgent` |
+| `Sensitivity` | [RFC 2156 ↗︎](https://datatracker.ietf.org/doc/html/rfc2156) | Values: `personal`, `private`, `company-confidential` |
+| `Organization` | [RFC 4021 ↗︎](https://datatracker.ietf.org/doc/html/rfc4021) | Sender's organization name |
 
 ### Delivery and notification
 
 | Header | RFC | Notes |
 | --- | --- | --- |
-| `Require-Recipient-Valid-Since` | [RFC 7293 ↗](https://datatracker.ietf.org/doc/html/rfc7293) | Address reuse protection |
-| `Expires` | [RFC 2156 ↗](https://datatracker.ietf.org/doc/html/rfc2156) | Date and time after which the message is no longer valid |
-| `Reply-By` | [RFC 2156 ↗](https://datatracker.ietf.org/doc/html/rfc2156) | Date and time by which a reply is requested |
+| `Require-Recipient-Valid-Since` | [RFC 7293 ↗︎](https://datatracker.ietf.org/doc/html/rfc7293) | Address reuse protection |
+| `Expires` | [RFC 2156 ↗︎](https://datatracker.ietf.org/doc/html/rfc2156) | Date and time after which the message is no longer valid |
+| `Reply-By` | [RFC 2156 ↗︎](https://datatracker.ietf.org/doc/html/rfc2156) | Date and time by which a reply is requested |
 
 ### Modern standards
 
 | Header | RFC | Notes |
 | --- | --- | --- |
-| `Archived-At` | [RFC 5064 ↗](https://datatracker.ietf.org/doc/html/rfc5064) | URL where message is archived |
+| `Archived-At` | [RFC 5064 ↗︎](https://datatracker.ietf.org/doc/html/rfc5064) | URL where message is archived |
 
 ### Custom X-headers
 
@@ -172,7 +172,7 @@ The total payload is calculated as `sum(len(name) + 2 + len(value) + 2)` for all
 
 1. **Header names** — ASCII only, no spaces, no colons, 1–100 characters. Allowlisted headers must match `[A-Za-z0-9\-]+`. X-headers must match `X-[A-Za-z0-9\-_]+` (underscores allowed only in X-headers).
 2. **Header values** — UTF-8 allowed, maximum 2,048 bytes, no bare CR/LF. Empty values are rejected.
-3. **Case-insensitive matching** — Header names are matched case-insensitively per [RFC 5322 §2.2 ↗](https://datatracker.ietf.org/doc/html/rfc5322#section-2.2). The canonical casing from the allowlist is used in the generated message.
+3. **Case-insensitive matching** — Header names are matched case-insensitively per [RFC 5322 §2.2 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322#section-2.2). The canonical casing from the allowlist is used in the generated message.
 4. **Proper line folding** — Long headers are folded at 78 characters per RFC 5322 using CRLF+WSP, not MIME encoding.
 5. **Single occurrence** — The `headers` type is `{ [key]: string }`, so each header name can appear at most once. For headers that support multiple values (such as `Keywords` or `Comments`), use comma-separated values in a single string.
 

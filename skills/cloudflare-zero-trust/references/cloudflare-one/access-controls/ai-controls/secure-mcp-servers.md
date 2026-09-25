@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can secure [Model Context Protocol (MCP) servers ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) with Cloudflare Access. Choose an approach based on who manages the MCP server code and hostname:
+You can secure [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) with Cloudflare Access. Choose an approach based on who manages the MCP server code and hostname:
 
 | Approach | Best for | Auth handled by |
 | --- | --- | --- |
@@ -26,7 +26,7 @@ You can secure [Model Context Protocol (MCP) servers ↗](https://www.cloudflare
 Use this setup when the MCP server runs on a hostname you control in Cloudflare, but the server code is managed by a third party and already handles its own OAuth flow. In this setup, do not enable Access Managed OAuth. You also do not need to add the MCP server hostname as a public hostname on the generated Access application.
 
 1. Ensure the MCP server hostname has **Proxy status** turned on in Cloudflare DNS.
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **AI controls**.
+2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **AI controls**.
 3. Go to the **MCP servers** tab.
 4. Select **Add an MCP server**.
 5. Enter a name for the server.
@@ -56,7 +56,7 @@ The following guide uses a remote MCP server on [Cloudflare Workers](https://dev
 
 ### 1. Deploy an example MCP server
 
-To deploy our [example MCP server ↗](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access) to your Cloudflare account:
+To deploy our [example MCP server ↗︎](https://github.com/cloudflare/ai/tree/main/demos/remote-mcp-cf-access) to your Cloudflare account:
 
 1. Select the following button to launch the quickstart flow:
 
@@ -78,8 +78,8 @@ You can use the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangle
 
 Prerequisites
 
-- Install [npm ↗](https://docs.npmjs.com/getting-started)
-- Install [Node.js ↗](https://nodejs.org/en/)
+- Install [npm ↗︎](https://docs.npmjs.com/getting-started)
+- Install [Node.js ↗︎](https://nodejs.org/en/)
 
 1. Open a terminal and clone our example project:
 
@@ -139,7 +139,7 @@ The Worker will be deployed to your `*.workers.dev` subdomain at `mcp-server-cf-
 
 ### 2. Create an Access for SaaS app
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **SaaS application**.
 4. In **Application**, enter a custom name (for example, `MCP server`) and select the textbox that appears below.
@@ -214,7 +214,7 @@ Your MCP server needs to perform an OAuth 2.0 authorization flow to get an `acce
 
 To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-example-mcp-server):
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the `mcp-server-cf-access` Worker.
 3. Go to **Settings**.
 4. Under **Variables and Secrets**, update each secret with the corresponding value obtained from the [Access for SaaS app](#2-create-an-access-for-saas-app).
@@ -278,11 +278,11 @@ To add OAuth endpoints and credentials to our [example MCP server](#1-deploy-an-
 
 ### 4. Test the connection
 
-You can now connect to your MCP server at `https://mcp-server-cf-access.<YOUR_SUBDOMAIN>.workers.dev/mcp` using [Workers AI Playground ↗](https://playground.ai.cloudflare.com/), [MCP inspector ↗](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients) that support remote MCP servers.
+You can now connect to your MCP server at `https://mcp-server-cf-access.<YOUR_SUBDOMAIN>.workers.dev/mcp` using [Workers AI Playground ↗︎](https://playground.ai.cloudflare.com/), [MCP inspector ↗︎](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients) that support remote MCP servers.
 
 To test in Workers AI Playground:
 
-1. Go to [Workers AI Playground ↗](https://playground.ai.cloudflare.com/).
+1. Go to [Workers AI Playground ↗︎](https://playground.ai.cloudflare.com/).
 2. Under **MCP Servers**, enter `https://mcp-server-cf-access.<YOUR_SUBDOMAIN>.workers.dev/mcp` for the MCP server URL.
 3. Select **Connect**.
 4. A popup window will appear requesting access to the MCP server. Select **Approve**.

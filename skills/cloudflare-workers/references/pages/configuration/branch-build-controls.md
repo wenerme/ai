@@ -64,7 +64,7 @@ Here Pages will include any branches with the indicated prefixes and exclude eve
 
 **Example 2:**
 
-If you wanted to prevent [dependabot ↗](https://github.com/dependabot) from creating a deployment for each PR it creates, you can exclude those branches with the following:
+If you wanted to prevent [dependabot ↗︎](https://github.com/dependabot) from creating a deployment for each PR it creates, you can exclude those branches with the following:
 
 - Include Preview branches: `*`
 - Exclude Preview branches: `dependabot/*`

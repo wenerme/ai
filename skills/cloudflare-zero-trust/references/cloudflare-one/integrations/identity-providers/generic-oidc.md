@@ -25,7 +25,7 @@ Cloudflare Access has a generic OpenID Connect (OIDC) connector to help you inte
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 3. Copy the content of these fields:
    - Client ID
    - Client secret
@@ -37,11 +37,11 @@ Cloudflare Access has a generic OpenID Connect (OIDC) connector to help you inte
 
 ## 2. Add an OIDC provider to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Choose **OpenID Connect**.
 4. Name your identity provider and fill in the required fields with the information obtained from your identity provider.
-5. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
+5. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
 6. (Optional) To enable SCIM, refer to [Synchronize users and groups](#synchronize-users-and-groups).
 7. (Optional) Under **Optional configurations**, enter [custom OIDC claims](#oidc-claims) that you wish to add to users' identity. This information will be available in the [user identity endpoint](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/application-token/#user-identity).
 8. Select **Save**.
@@ -92,9 +92,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/identity_
 	}'
 ```
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Organizations, Identity Providers, and Groups Write`
-2. Configure the [`cloudflare_zero_trust_access_identity_provider` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource:
+2. Configure the [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource:
 
    ```tf
    resource "cloudflare_zero_trust_access_identity_provider" "generic_oidc_example" {
@@ -137,7 +137,7 @@ Your identity provider must support SCIM version 2.0.
 
 ### 1. Enable SCIM in Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Find the IdP integration and select **Edit**.
 3. Turn on **Enable SCIM**.
 4. (Optional) Configure the following settings:
@@ -182,7 +182,7 @@ All OIDC IdP integrations support the use of custom OIDC claims. Once configured
 To add a custom OIDC claim to an IdP integration:
 
 1. In your identity provider, ensure that the custom claim is included in your OIDC ID token.
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 3. Under **Your identity providers**, find your identity provider and select **Edit**.
 4. Under **OIDC Claims**, enter the name of your custom claim (for example, `oid`).
 5. Select **Save**.

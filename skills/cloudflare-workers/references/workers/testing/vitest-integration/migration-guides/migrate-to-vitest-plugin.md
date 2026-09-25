@@ -57,7 +57,7 @@ The same rename applies to subpath imports, including `@cloudflare/vitest-plugin
 
 ## Update request mocking
 
-To mock outbound requests, use [`@msw/cloudflare` ↗](https://github.com/mswjs/cloudflare). For setup instructions, refer to [Mock outbound requests](https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/).
+To mock outbound requests, use [`@msw/cloudflare` ↗︎](https://github.com/mswjs/cloudflare). For setup instructions, refer to [Mock outbound requests](https://developers.cloudflare.com/workers/testing/vitest-integration/mock-outbound-requests/).
 
 Was this helpful?
 

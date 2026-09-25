@@ -27,7 +27,7 @@ The example custom rules in this page can bypass Cloudflare's security features 
 
 ## Use ASN in custom rules
 
-If a customer or partner is large enough, you could set up a custom rule based on an [autonomous system number (ASN) ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/).
+If a customer or partner is large enough, you could set up a custom rule based on an [autonomous system number (ASN) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/).
 
 ### Allow traffic by ASN
 

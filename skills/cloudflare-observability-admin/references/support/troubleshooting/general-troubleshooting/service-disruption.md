@@ -27,7 +27,7 @@ What to expect with your website:
 
 If you are a Cloudflare enterprise customer, contact your account team for further assistance.
 
-For further details, refer to the [Russian Internet users are unable to access the open Internet blog post ↗](https://blog.cloudflare.com/russian-internet-users-are-unable-to-access-the-open-internet/).
+For further details, refer to the [Russian Internet users are unable to access the open Internet blog post ↗︎](https://blog.cloudflare.com/russian-internet-users-are-unable-to-access-the-open-internet/).
 
 Was this helpful?
 

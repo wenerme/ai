@@ -23,7 +23,7 @@ Email security allows you to configure the following additional detections:
 
 To configure additional detections:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **Settings**.
 4. On the Settings page, go to **Detection settings** > **Additional detections**, and select **Edit**.
@@ -51,7 +51,7 @@ To enable blank email detection:
 
 ## Configure ACH change from free email detection
 
-[Automated Clearing House (ACH) ↗](https://en.wikipedia.org/wiki/Automated_clearing_house) is a banking term related to direct deposits. ACH change from free email detection detects payroll inquiries or change requests from free email domains and assigns a default disposition. You can choose between **Malicious** and **Suspicious** as dispositions.
+[Automated Clearing House (ACH) ↗︎](https://en.wikipedia.org/wiki/Automated_clearing_house) is a banking term related to direct deposits. ACH change from free email detection detects payroll inquiries or change requests from free email domains and assigns a default disposition. You can choose between **Malicious** and **Suspicious** as dispositions.
 
 To enable ACH change from free email detection:
 

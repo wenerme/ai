@@ -31,7 +31,7 @@ The **Traffic** tab displays information about all incoming HTTP requests for yo
 In this tab you can perform several tasks:
 
 - View the traffic distribution for your domain.
-- Understand which traffic is being mitigated by Cloudflare security products, and where non-mitigated traffic is being served from (Cloudflare global network or [origin server ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server/)).
+- Understand which traffic is being mitigated by Cloudflare security products, and where non-mitigated traffic is being served from (Cloudflare global network or [origin server ↗︎](https://www.cloudflare.com/learning/cdn/glossary/origin-server/)).
 - Analyze suspicious traffic and create tailored custom [security rules](https://developers.cloudflare.com/security/rules/) based on applied filters.
 - [Find an appropriate rate limit](https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/) for incoming traffic.
 

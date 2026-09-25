@@ -18,9 +18,9 @@ This tutorial explains how to configure IPsec VPN between Cloudflare WAN (former
 
 ## Prerequisites
 
-You need to have a GCP VPN gateway created in your GCP account. This is needed to route traffic between your GCP virtual private cloud (VPC) and Cloudflare WAN. Refer to the [GCP documentation ↗](https://cloud.google.com/network-connectivity/docs/vpn/how-to/creating-static-vpns) for more information about creating a Cloud VPN gateway.
+You need to have a GCP VPN gateway created in your GCP account. This is needed to route traffic between your GCP virtual private cloud (VPC) and Cloudflare WAN. Refer to the [GCP documentation ↗︎](https://cloud.google.com/network-connectivity/docs/vpn/how-to/creating-static-vpns) for more information about creating a Cloud VPN gateway.
 
-A Classic VPN Gateway is required to support static routing. Route tables will also need to be manually configured to allow the routing between the VPN and Cloudflare WAN to work. Refer to [GCP routing options ↗](https://cloud.google.com/network-connectivity/docs/vpn/concepts/choosing-networks-routing#ts-tun-routing) to learn more about GCP VPC routing.
+A Classic VPN Gateway is required to support static routing. Route tables will also need to be manually configured to allow the routing between the VPN and Cloudflare WAN to work. Refer to [GCP routing options ↗︎](https://cloud.google.com/network-connectivity/docs/vpn/concepts/choosing-networks-routing#ts-tun-routing) to learn more about GCP VPC routing.
 
 ## Google Cloud Platform
 
@@ -43,7 +43,7 @@ Cloudflare WAN does not yet support private routing via IPv6.
 2. Select the **Cloud VPN Tunnels** tab > **Create VPN Tunnel**.
 3. Select the VPN Gateway you have created > **Continue**.
 4. Give your tunnel a descriptive name.
-5. For **Remote Peer IP Address**, use one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+5. For **Remote Peer IP Address**, use one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 6. In **IKE version**, select **IKEv2**.
 7. You can generate an IKE pre-shared key, or add one you already own. If you generate one during this set up, keep it somewhere safe since you will need it in other steps to finish setting up Cloudflare WAN and GCP.
 8. Choose **Route-based** as routing option.
@@ -57,7 +57,7 @@ You can add new IP ranges once the VPN object is created. They will need to be c
 
 ### Static Routes
 
-Static routing is necessary to route traffic between your VPN and Cloudflare WAN. Follow these steps to create them for your VPC. Refer to [VPN route documentation ↗](https://cloud.google.com/vpc/docs/routes) to learn more about VPN routing.
+Static routing is necessary to route traffic between your VPN and Cloudflare WAN. Follow these steps to create them for your VPC. Refer to [VPN route documentation ↗︎](https://cloud.google.com/vpc/docs/routes) to learn more about VPN routing.
 
 1. Go to **VPC network** > **Routes**.
 2. Select **Route Management**.

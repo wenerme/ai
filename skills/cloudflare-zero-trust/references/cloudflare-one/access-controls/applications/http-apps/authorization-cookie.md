@@ -18,7 +18,7 @@ When you protect a site with Cloudflare Access, Cloudflare checks every HTTP req
 
 ## Access JWTs
 
-The `CF_Authorization` cookie contains the user's identity in the form of a [JSON Web Token (JWT) ↗](https://www.cloudflare.com/learning/access-management/token-based-authentication/). Cloudflare securely creates these tokens through the OAUTH or SAML integration between Cloudflare Access and the configured identity provider.
+The `CF_Authorization` cookie contains the user's identity in the form of a [JSON Web Token (JWT) ↗︎](https://www.cloudflare.com/learning/access-management/token-based-authentication/). Cloudflare securely creates these tokens through the OAUTH or SAML integration between Cloudflare Access and the configured identity provider.
 
 Access generates two separate `CF_Authorization` tokens depending on the domain:
 
@@ -63,13 +63,13 @@ The following Access cookies are essential to Access functionality. Cookies that
 
 | Details | Expiration | HttpOnly | SameSite | Required? |
 | --- | --- | --- | --- | --- |
-| [CSRF ↗](https://www.cloudflare.com/learning/security/threats/cross-site-request-forgery/) token used on the `cloudflareaccess.com` [team domain](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name) | 4 hours | Yes | None | Required |
+| [CSRF ↗︎](https://www.cloudflare.com/learning/security/threats/cross-site-request-forgery/) token used on the `cloudflareaccess.com` [team domain](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name) | 4 hours | Yes | None | Required |
 
 ### CF\_AppSession
 
 | Details | Expiration | HttpOnly | SameSite | Required? |
 | --- | --- | --- | --- | --- |
-| [CSRF ↗](https://www.cloudflare.com/learning/security/threats/cross-site-request-forgery/) token used per application domain, scoped to individual applications behind Access | 24 hours | Yes | None | Required |
+| [CSRF ↗︎](https://www.cloudflare.com/learning/security/threats/cross-site-request-forgery/) token used per application domain, scoped to individual applications behind Access | 24 hours | Yes | None | Required |
 
 ### CF\_Device
 
@@ -89,7 +89,7 @@ Cloudflare Access provides optional security settings that can be added to the b
 
 To enable these settings:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the application you would like to configure and select **Configure**.
 3. Select **Advanced settings** and scroll down to **Cookie settings**.
 4. Configure the desired cookie settings.
@@ -97,7 +97,7 @@ To enable these settings:
 
 ### SameSite Attribute
 
-The [`SameSite` ↗](https://web.dev/samesite-cookies-explained/) Attribute selector restricts the cookie to only being sent if the cookie's defined site matches the site being requested in the browser. This adds protection against [cross-site request forgery (CSRF) ↗](https://en.wikipedia.org/wiki/Cross-site_request_forgery).
+The [`SameSite` ↗︎](https://web.dev/samesite-cookies-explained/) Attribute selector restricts the cookie to only being sent if the cookie's defined site matches the site being requested in the browser. This adds protection against [cross-site request forgery (CSRF) ↗︎](https://en.wikipedia.org/wiki/Cross-site_request_forgery).
 
 The selector options are:
 
@@ -105,7 +105,7 @@ The selector options are:
 - **Lax** - Cookies are allowed to be sent with top-level navigations and will be sent along with GET requests initiated by third party websites.
 - **Strict** - Cookies will only be sent in a first-party context and not be sent along with requests initiated by third party websites.
 
-Refer to the [Mozilla documentation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie#samesitesamesite-value) for more information.
+Refer to the [Mozilla documentation ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie#samesitesamesite-value) for more information.
 
 Caution
 

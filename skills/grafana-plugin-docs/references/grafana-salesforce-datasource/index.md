@@ -57,6 +57,7 @@ The following are current known limitations:
 - Ad-hoc filters are not supported.
 - Only SOQL queries, and data that is accessible via SOQL, are supported. SOSL and SAQL query formats are not currently supported.
 - Salesforce Commerce Cloud (SFCC) is not supported.
+- Custom Salesforce login domains, such as My Domain URLs like `login.mycorp.salesforce.com`, are not supported. The data source connects only through `login.salesforce.com` for production and `test.salesforce.com` for sandbox.
 
 ## Plugin updates
 

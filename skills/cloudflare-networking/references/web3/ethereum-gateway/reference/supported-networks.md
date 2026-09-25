@@ -18,8 +18,8 @@ Currently, Cloudflare Ethereum gateways support [interacting with](https://devel
 
 | Network | Usage |
 | --- | --- |
-| [Ethereum Mainnet ↗](https://ethereum.org/en/enterprise/) | Append `/v1/mainnet` to calls to your gateway or the Cloudflare public gateway (`cloudflare-eth.com`). |
-| [Sepolia Testnet ↗](https://sepolia.dev/) | Append `/v1/sepolia` to calls to your gateway. |
+| [Ethereum Mainnet ↗︎](https://ethereum.org/en/enterprise/) | Append `/v1/mainnet` to calls to your gateway or the Cloudflare public gateway (`cloudflare-eth.com`). |
+| [Sepolia Testnet ↗︎](https://sepolia.dev/) | Append `/v1/sepolia` to calls to your gateway. |
 
 Was this helpful?
 

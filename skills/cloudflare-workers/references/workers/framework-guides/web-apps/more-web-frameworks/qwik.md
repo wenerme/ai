@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/qwik/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this guide, you will create a new [Qwik ↗](https://qwik.dev/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)).
+In this guide, you will create a new [Qwik ↗︎](https://qwik.dev/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)).
 
 ## 1. Set up a new project
 
-Use the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Qwik's official setup tool, and provide the option to deploy instantly.
+Use the [`create-cloudflare` ↗︎](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Qwik's official setup tool, and provide the option to deploy instantly.
 
 To use `create-cloudflare` to create a new Qwik project with Workers Assets, run the following command:
 
@@ -84,7 +84,7 @@ pnpm run deploy
 
 ## Bindings
 
-Your Qwik application can be fully integrated with the Cloudflare Developer Platform, in both local development and in production, by using product bindings. The [Qwik documentation ↗](https://qwik.dev/docs/deployments/cloudflare-pages/#context) provides information about configuring bindings and how you can access them in your Qwik endpoint methods.
+Your Qwik application can be fully integrated with the Cloudflare Developer Platform, in both local development and in production, by using product bindings. The [Qwik documentation ↗︎](https://qwik.dev/docs/deployments/cloudflare-pages/#context) provides information about configuring bindings and how you can access them in your Qwik endpoint methods.
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 

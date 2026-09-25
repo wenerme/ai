@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-nuxt-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Nuxt ↗](https://nuxt.com) is a web framework making Vue.js-based development simple and powerful.
+[Nuxt ↗︎](https://nuxt.com) is a web framework making Vue.js-based development simple and powerful.
 
 In this guide, you will create a new Nuxt application and deploy it using Cloudflare Pages.
 
@@ -38,7 +38,7 @@ yarn create cloudflare my-nuxt-app --framework=nuxt --platform=pages
 pnpm create cloudflare@latest my-nuxt-app --framework=nuxt --platform=pages
 ```
 
-C3 will ask you a series of setup questions and create a new project with [`nuxi` (the official Nuxt CLI) ↗](https://github.com/nuxt/cli). C3 will also install the necessary adapters along with the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/#check-your-wrangler-version).
+C3 will ask you a series of setup questions and create a new project with [`nuxi` (the official Nuxt CLI) ↗︎](https://github.com/nuxt/cli). C3 will also install the necessary adapters along with the [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/#check-your-wrangler-version).
 
 After creating your project, C3 will generate a new `my-nuxt-app` directory using the default Nuxt template, updated to be fully compatible with Cloudflare Pages.
 
@@ -54,7 +54,7 @@ The initial deployment created via C3 is referred to as a [Direct Upload](https:
 
 ## Configure and deploy a project without C3
 
-To deploy a Nuxt project without C3, follow the [Nuxt Get Started guide ↗](https://nuxt.com/docs/getting-started/installation). After you have set up your Nuxt project, choose either the [Git integration guide](https://developers.cloudflare.com/pages/get-started/git-integration/) or [Direct Upload guide](https://developers.cloudflare.com/pages/get-started/direct-upload/) to deploy your Nuxt project on Cloudflare Pages.
+To deploy a Nuxt project without C3, follow the [Nuxt Get Started guide ↗︎](https://nuxt.com/docs/getting-started/installation). After you have set up your Nuxt project, choose either the [Git integration guide](https://developers.cloudflare.com/pages/get-started/git-integration/) or [Direct Upload guide](https://developers.cloudflare.com/pages/get-started/direct-upload/) to deploy your Nuxt project on Cloudflare Pages.
 
 ## Git integration
 
@@ -64,11 +64,11 @@ Git integration
 
 Currently, you cannot add Git integration to existing Pages applications. If you have already deployed your application, you need to create a new Pages application in order to add Git integration to it.
 
-Setup requires a basic understanding of [Git ↗](https://git-scm.com/). If you are new to Git, refer to GitHub's [summarized Git handbook ↗](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
+Setup requires a basic understanding of [Git ↗︎](https://git-scm.com/). If you are new to Git, refer to GitHub's [summarized Git handbook ↗︎](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
 
 ### Create a GitHub repository
 
-Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
+Create a new GitHub repository by visiting [repo.new ↗︎](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
 ```sh
 # Skip the following three commands if you have built your application
@@ -156,7 +156,7 @@ declare module "h3" {
 
 ### Access bindings in your Nuxt application
 
-In Nuxt, add server-side code via [Server Routes and Middleware ↗](https://nuxt.com/docs/guide/directory-structure/server#server-directory). The `defineEventHandler()` method is used to define your API endpoints in which you can access Cloudflare's context via the provided `context` field. The `context` field allows you to access any bindings set for your application.
+In Nuxt, add server-side code via [Server Routes and Middleware ↗︎](https://nuxt.com/docs/guide/directory-structure/server#server-directory). The `defineEventHandler()` method is used to define your API endpoints in which you can access Cloudflare's context via the provided `context` field. The `context` field allows you to access any bindings set for your application.
 
 The following code block shows an example of accessing a KV namespace in Nuxt.
 

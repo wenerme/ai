@@ -37,7 +37,7 @@ You now have a CPU profile.
 
 Note
 
-For Rust Workers, add the following to your `Cargo.toml` to preserve [DWARF ↗](https://dwarfstd.org/) debug symbols (from [this comment ↗](https://github.com/rustwasm/wasm-pack/issues/1351#issuecomment-2100231587)):
+For Rust Workers, add the following to your `Cargo.toml` to preserve [DWARF ↗︎](https://dwarfstd.org/) debug symbols (from [this comment ↗︎](https://github.com/rustwasm/wasm-pack/issues/1351#issuecomment-2100231587)):
 
 *Cargo.tomltoml*
 
@@ -46,7 +46,7 @@ For Rust Workers, add the following to your `Cargo.toml` to preserve [DWARF ↗]
 dwarf-debug-info = true
 ```
 
-Then, update your `wrangler.toml` to configure wasm-pack (via worker-build) to use the `dev` [profile ↗](https://rustwasm.github.io/docs/wasm-pack/commands/build.html#profile) to preserve debug symbols.
+Then, update your `wrangler.toml` to configure wasm-pack (via worker-build) to use the `dev` [profile ↗︎](https://rustwasm.github.io/docs/wasm-pack/commands/build.html#profile) to preserve debug symbols.
 
 *wrangler.tomltoml*
 
@@ -108,7 +108,7 @@ This shows the relative times allocated to each function. At the top of the list
 
 ## Additional Resources
 
-To learn more about how to use the CPU profiler, see [Google's documentation on Profiling the CPU in DevTools ↗](https://developer.chrome.com/docs/devtools/performance/nodejs#profile).
+To learn more about how to use the CPU profiler, see [Google's documentation on Profiling the CPU in DevTools ↗︎](https://developer.chrome.com/docs/devtools/performance/nodejs#profile).
 
 To learn how to use DevTools to gain insight into memory, see the [Memory Usage Documentation](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/).
 

@@ -18,7 +18,7 @@ To set up PhishNet with Google Workspace you need admin access to your Google Wo
 
 ## Set up PhishNet for Google Workspace
 
-1. Log in to [Google Workspace Marketplace apps ↗](https://workspace.google.com/marketplace/app/cloudflare_phishnet/11369379045) using this direct link and an administrator account.
+1. Log in to [Google Workspace Marketplace apps ↗︎](https://workspace.google.com/marketplace/app/cloudflare_phishnet/11369379045) using this direct link and an administrator account.
 2. Select **Admin install** to install Cloudflare PhishNet. Read the warning, and select **Continue**.
 3. You will be redirected to the **Allow data access** page, where you can choose to install Cloudflare PhishNet for **Everyone at your organization**, or **Certain groups or organizational units**. If you choose the latter option, you will have to select the users in the next step.
 4. After choosing the groups you want to install PhishNet for, agree with Google's terms of service, and select **Finish**.

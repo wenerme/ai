@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [Cloudflare dashboard ↗](https://dash.cloudflare.com/) provides a catalog of saved analytics views under **Zero Trust** > **Insights** for reporting and investigation. Analytics Dashboards provide visualizations of your log data.
+The [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) provides a catalog of saved analytics views under **Zero Trust** > **Insights** for reporting and investigation. Analytics Dashboards provide visualizations of your log data.
 
 Refer to [Insights overview](https://developers.cloudflare.com/cloudflare-one/insights/) to learn how to use Analytics dashboards together with [Analytics Overview](https://developers.cloudflare.com/cloudflare-one/insights/analytics-overview/) and [Digital Experience Monitoring (DEX)](https://developers.cloudflare.com/cloudflare-one/insights/dex/) for complete visibility and troubleshooting.
 

@@ -22,7 +22,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -200,7 +200,7 @@ To create a TLS endpoint using Windows Internet Information Services (IIS) Manag
 
 ### Supported cipher suites
 
-The Cloudflare One Client establishes a TLS connection using [Rustls ↗](https://github.com/rustls/rustls). Make sure your TLS endpoint accepts one of the [cipher suites supported by Rustls ↗](https://docs.rs/rustls/0.21.10/src/rustls/suites.rs.html#125-143).
+The Cloudflare One Client establishes a TLS connection using [Rustls ↗︎](https://github.com/rustls/rustls). Make sure your TLS endpoint accepts one of the [cipher suites supported by Rustls ↗︎](https://docs.rs/rustls/0.21.10/src/rustls/suites.rs.html#125-143).
 
 ## 2. Extract the SHA-256 fingerprint
 
@@ -232,7 +232,7 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 
 ## 3. Add managed network to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
 2. Select **Managed networks** and select **Add new managed network**.
 3. Name your network location.
 4. In **Host and Port**, enter the private IP address and port number of your [TLS endpoint](#create-a-new-tls-endpoint) (for example, `192.168.185.198:3333`).
@@ -243,9 +243,9 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 5. (Optional) In **TLS Cert SHA-256**, enter the [SHA-256 fingerprint](#2-extract-the-sha-256-fingerprint) of the TLS certificate. This field is only needed for self-signed certificates. If a TLS fingerprint is not supplied, the Cloudflare One Client validates the certificate against the local certificate store and checks that it is signed by a public certificate authority.
 6. Select **Save**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Add a managed network using the [`cloudflare_zero_trust_device_managed_network` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_managed_network) resource:
+2. Add a managed network using the [`cloudflare_zero_trust_device_managed_network` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_managed_network) resource:
 
    ```tf
    resource "cloudflare_zero_trust_device_managed_networks" "office" {
@@ -269,7 +269,7 @@ If a device profile uses [Split Tunnels](https://developers.cloudflare.com/cloud
 
 ## 4. Configure device profile
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Create a [new profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) or edit an existing profile.
 3. To apply this profile whenever a device connects to your network, add the following rule:
 
@@ -278,7 +278,7 @@ If a device profile uses [Split Tunnels](https://developers.cloudflare.com/cloud
    | Managed network | is | `<NETWORK-NAME>` |
 4. Save the profile.
 
-In [`cloudflare_zero_trust_device_custom_profile` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile), configure a `match` expression using the `network` selector. For example, the following device profile will match all devices connected a specific managed network:
+In [`cloudflare_zero_trust_device_custom_profile` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile), configure a `match` expression using the `network` selector. For example, the following device profile will match all devices connected a specific managed network:
 
 ```tf
 resource "cloudflare_zero_trust_device_custom_profile" "office" {

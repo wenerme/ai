@@ -26,10 +26,10 @@ For Cloudflare Advanced Network Firewall customers, rate limiting (beta) is avai
 
 To add a policy:
 
-1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall) page.
+1. In the Cloudflare dashboard, go to the [Firewall Policies ↗︎](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall) page.
 2. Select the **Rate limiting** tab, then select **Add a policy**.
 3. Fill out the information for your new policy:
-   - Select the **Field**: At the moment, you can only choose a [colo name ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/cloudflare-network-firewall/).
+   - Select the **Field**: At the moment, you can only choose a [colo name ↗︎](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/cloudflare-network-firewall/).
    - Select the **Operator**: Choose among **equals** or **is in**.
    - Select the **Value**.
 4. When you are done, select **Save policy**.
@@ -38,7 +38,7 @@ To add a policy:
 
 To edit a policy:
 
-1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall) page.
+1. In the Cloudflare dashboard, go to the [Firewall Policies ↗︎](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall) page.
 2. Select the **Rate limiting** tab.
 3. Locate the policy you want to edit in the list and select **Edit**.
 4. Edit the policy with your changes and select **Edit policy**.
@@ -47,7 +47,7 @@ To edit a policy:
 
 To delete an existing policy:
 
-1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall) page.
+1. In the Cloudflare dashboard, go to the [Firewall Policies ↗︎](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall) page.
 2. Select the **Rate limiting** tab.
 3. Locate the policy you want to delete from the list.
 4. Select the three dots, then select **Remove**.

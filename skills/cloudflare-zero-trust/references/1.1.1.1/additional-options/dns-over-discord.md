@@ -16,7 +16,7 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 The 1.1.1.1 DNS over Discord bot allows you to run DNS lookups and WHOIS queries directly inside Discord, which is useful when you are debugging DNS issues collaboratively or need quick record checks without switching to a terminal.
 
-[Invite the bot to your Discord server ↗](https://cfl.re/3nM6VfQ) to make it available in that server's channels, or [add the bot to your Discord account ↗](https://dns-over-discord.v4.wtf/invite/user) to use it anywhere in Discord.
+[Invite the bot to your Discord server ↗︎](https://cfl.re/3nM6VfQ) to make it available in that server's channels, or [add the bot to your Discord account ↗︎](https://dns-over-discord.v4.wtf/invite/user) to use it anywhere in Discord.
 
 ## Perform DNS lookups
 
@@ -241,7 +241,7 @@ Example:
 
 ### `privacy` command
 
-The `/privacy` command displays the Privacy Policy notice for using the 1.1.1.1 DNS over Discord bot. You can also [refer to the Privacy Policy page ↗](https://dns-over-discord.v4.wtf/privacy) to access it.
+The `/privacy` command displays the Privacy Policy notice for using the 1.1.1.1 DNS over Discord bot. You can also [refer to the Privacy Policy page ↗︎](https://dns-over-discord.v4.wtf/privacy) to access it.
 
 Example:
 
@@ -251,7 +251,7 @@ Example:
 
 ### `terms` command
 
-The `/terms` command displays the Terms of Service notice for using the 1.1.1.1 DNS over Discord bot. You can also [refer to the Terms of Service page ↗](https://dns-over-discord.v4.wtf/terms) to access it.
+The `/terms` command displays the Terms of Service notice for using the 1.1.1.1 DNS over Discord bot. You can also [refer to the Terms of Service page ↗︎](https://dns-over-discord.v4.wtf/terms) to access it.
 
 Example:
 
@@ -261,7 +261,7 @@ Example:
 
 ### `github` command
 
-The DNS over Discord bot is open-source, and the `/github` command provides a quick link to access the GitHub repository. The GitHub repository can be accessed at [https://github.com/MattIPv4/DNS-over-Discord/ ↗](https://github.com/MattIPv4/DNS-over-Discord/).
+The DNS over Discord bot is open-source, and the `/github` command provides a quick link to access the GitHub repository. The GitHub repository can be accessed at [https://github.com/MattIPv4/DNS-over-Discord/ ↗︎](https://github.com/MattIPv4/DNS-over-Discord/).
 
 Example:
 
@@ -271,7 +271,7 @@ Example:
 
 ### `invite` command
 
-The `/invite` command provides the user with a quick link to invite the 1.1.1.1 DNS over Discord bot to another Discord server, or to add it to a Discord account. The bot can be invited at any time with [https://cfl.re/3nM6VfQ ↗](https://cfl.re/3nM6VfQ). The bot can also be added to accounts with [https://dns-over-discord.v4.wtf/invite/user ↗](https://dns-over-discord.v4.wtf/invite/user).
+The `/invite` command provides the user with a quick link to invite the 1.1.1.1 DNS over Discord bot to another Discord server, or to add it to a Discord account. The bot can be invited at any time with [https://cfl.re/3nM6VfQ ↗︎](https://cfl.re/3nM6VfQ). The bot can also be added to accounts with [https://dns-over-discord.v4.wtf/invite/user ↗︎](https://dns-over-discord.v4.wtf/invite/user).
 
 ```txt
 /invite
@@ -281,9 +281,9 @@ The `/invite` command provides the user with a quick link to invite the 1.1.1.1 
 
 ## Development
 
-The DNS over Discord bot is deployed on [Cloudflare Workers ↗](https://workers.cloudflare.com/).
+The DNS over Discord bot is deployed on [Cloudflare Workers ↗︎](https://workers.cloudflare.com/).
 
-You can find the source code for the bot on GitHub, as well as information on getting started with contributing to the project, at [https://github.com/MattIPv4/DNS-over-Discord/ ↗](https://github.com/MattIPv4/DNS-over-Discord/).
+You can find the source code for the bot on GitHub, as well as information on getting started with contributing to the project, at [https://github.com/MattIPv4/DNS-over-Discord/ ↗︎](https://github.com/MattIPv4/DNS-over-Discord/).
 
 Was this helpful?
 

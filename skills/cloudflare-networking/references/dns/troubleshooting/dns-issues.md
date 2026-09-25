@@ -70,7 +70,7 @@ When a resolver is queried for a hostname that has no DNS records yet, it caches
 For newly created records:
 
 - The resolver might not have cached the new record yet. Instead, it is using a prior `NXDOMAIN` cache entry that says "this record does not exist," which was generated if the hostname was queried before you created the record.
-- The duration of this negative cache is determined by the `MINIMUM` field in your zone's SOA record (per [RFC 2308 ↗](https://datatracker.ietf.org/doc/html/rfc2308)), not the TTL of the record you just created. Different resolvers may cache for varying durations.
+- The duration of this negative cache is determined by the `MINIMUM` field in your zone's SOA record (per [RFC 2308 ↗︎](https://datatracker.ietf.org/doc/html/rfc2308)), not the TTL of the record you just created. Different resolvers may cache for varying durations.
 
 This means:
 
@@ -96,10 +96,10 @@ In this example, the negative cache response will continue for 256 more seconds.
 
 To verify the record resolves correctly, you can purge the cache for public resolvers and query the record. If this works, other resolvers will eventually start resolving as well:
 
-- [Purge 1.1.1.1 cache ↗](https://one.one.one.one/purge-cache/)
-- [Purge 8.8.8.8 cache ↗](https://dns.google/cache)
-- [Query 8.8.8.8 ↗](https://dns.google/)
-- [Query and refresh OpenDNS cache ↗](https://cachecheck.opendns.com/)
+- [Purge 1.1.1.1 cache ↗︎](https://one.one.one.one/purge-cache/)
+- [Purge 8.8.8.8 cache ↗︎](https://dns.google/cache)
+- [Query 8.8.8.8 ↗︎](https://dns.google/)
+- [Query and refresh OpenDNS cache ↗︎](https://cachecheck.opendns.com/)
 
 #### Further debugging
 

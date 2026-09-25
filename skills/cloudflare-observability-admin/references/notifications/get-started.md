@@ -24,7 +24,7 @@ To create a notification via the Cloudflare dashboard, you will need to have the
 
 You can also create a notification if you have the account edit role, which allows you create any type of notification.
 
-An API token needs to have the [Notifications Read/Write permission ↗](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) to create a notification,
+An API token needs to have the [Notifications Read/Write permission ↗︎](https://developers.cloudflare.com/fundamentals/api/reference/permissions/) to create a notification,
 
 Some notifications can only be created if you have a Professional, Business or Enterprise account or if you are using a particular Cloudflare product.
 

@@ -45,7 +45,7 @@ At least 24 hours prior to converting your zone, disable DNSSEC at your authorit
 
 Note
 
-As a best practice, you should also delete the previous [zone activation TXT record](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/#1-convert-your-zone-and-review-dns-records) at your authoritative DNS provider. To locate this value in the Cloudflare dashboard, go to the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page and find the **Verification TXT Record**.
+As a best practice, you should also delete the previous [zone activation TXT record](https://developers.cloudflare.com/dns/zone-setups/partial-setup/setup/#1-convert-your-zone-and-review-dns-records) at your authoritative DNS provider. To locate this value in the Cloudflare dashboard, go to the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page and find the **Verification TXT Record**.
 
 ## 3. Convert to full setup
 
@@ -57,13 +57,13 @@ In the Cloudflare dashboard:
 
 ## 4. Activate full setup
 
-Get your assigned Cloudflare nameservers from the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page and [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) at your registrar.
+Get your assigned Cloudflare nameservers from the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page and [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) at your registrar.
 
 Caution
 
 If you are counting on Universal SSL certificates to cover your website or application, make sure to add Cloudflare nameservers to your registrar within 72 hours of the conversion process.
 
-Cloudflare recommends that you also [enable DNSSEC](https://developers.cloudflare.com/dns/dnssec/) from the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page and add the DS record to your registrar.
+Cloudflare recommends that you also [enable DNSSEC](https://developers.cloudflare.com/dns/dnssec/) from the [**DNS Settings** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page and add the DS record to your registrar.
 
 Once all the DNS TTLs expire, all your DNS queries will be answered by the Cloudflare global network.
 

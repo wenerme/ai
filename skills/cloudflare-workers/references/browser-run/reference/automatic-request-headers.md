@@ -41,12 +41,12 @@ The following headers are meant to ensure transparency and cannot be removed or 
 | `cf-brapi-request-id` | A unique identifier for the Browser Run request when using [Quick Actions](https://developers.cloudflare.com/browser-run/quick-actions/) |
 | `cf-brapi-devtools` | A unique identifier for the Browser Run request when using [Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/playwright/), or [CDP](https://developers.cloudflare.com/browser-run/cdp/) |
 | `cf-biso-devtools` | A flag indicating the request originated from Cloudflare's rendering infrastructure |
-| `Signature-agent` | [The location of the bot public keys ↗](https://web-bot-auth.cloudflare-browser-rendering-085.workers.dev), used to sign the request and verify it came from Cloudflare |
-| `Signature` and `Signature-input` | A digital signature, used to validate requests, as shown in [this architecture document ↗](https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture) |
+| `Signature-agent` | [The location of the bot public keys ↗︎](https://web-bot-auth.cloudflare-browser-rendering-085.workers.dev), used to sign the request and verify it came from Cloudflare |
+| `Signature` and `Signature-input` | A digital signature, used to validate requests, as shown in [this architecture document ↗︎](https://datatracker.ietf.org/doc/html/draft-meunier-web-bot-auth-architecture) |
 
 ### About Web Bot Auth
 
-The `Signature` headers use an authentication method called [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/). Web Bot Auth leverages cryptographic signatures in HTTP messages to verify that a request comes from an automated bot. To verify a request originated from Cloudflare Browser Run, use the keys found on [this directory ↗](https://web-bot-auth.cloudflare-browser-rendering-085.workers.dev/.well-known/http-message-signatures-directory) to verify the `Signature` and `Signature-Input` found in the headers from the incoming request. A successful verification proves that the request originated from Cloudflare Browser Run and has not been tampered with in transit.
+The `Signature` headers use an authentication method called [Web Bot Auth](https://developers.cloudflare.com/bots/reference/bot-verification/web-bot-auth/). Web Bot Auth leverages cryptographic signatures in HTTP messages to verify that a request comes from an automated bot. To verify a request originated from Cloudflare Browser Run, use the keys found on [this directory ↗︎](https://web-bot-auth.cloudflare-browser-rendering-085.workers.dev/.well-known/http-message-signatures-directory) to verify the `Signature` and `Signature-Input` found in the headers from the incoming request. A successful verification proves that the request originated from Cloudflare Browser Run and has not been tampered with in transit.
 
 ### Bot detection
 

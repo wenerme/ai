@@ -16,11 +16,11 @@ Connect Hyperdrive to a Supabase Postgres database.
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/supabase/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example shows you how to connect Hyperdrive to a [Supabase ↗](https://supabase.com/) Postgres database.
+This example shows you how to connect Hyperdrive to a [Supabase ↗︎](https://supabase.com/) Postgres database.
 
 ## 1. Allow Hyperdrive access
 
-You can connect Hyperdrive to any existing Supabase database as the Postgres user which is set up during project creation. Alternatively, to create a new user for Hyperdrive, run these commands in the [SQL Editor ↗](https://supabase.com/dashboard/project/_/sql/new).
+You can connect Hyperdrive to any existing Supabase database as the Postgres user which is set up during project creation. Alternatively, to create a new user for Hyperdrive, run these commands in the [SQL Editor ↗︎](https://supabase.com/dashboard/project/_/sql/new).
 
 ```sql
 CREATE ROLE hyperdrive_user LOGIN PASSWORD 'sufficientlyRandomPassword';
@@ -29,7 +29,7 @@ CREATE ROLE hyperdrive_user LOGIN PASSWORD 'sufficientlyRandomPassword';
 GRANT postgres to hyperdrive_user;
 ```
 
-The database endpoint can be found in the [database settings page ↗](https://supabase.com/dashboard/project/_/settings/database).
+The database endpoint can be found in the [database settings page ↗︎](https://supabase.com/dashboard/project/_/settings/database).
 
 With a database user, password, database endpoint (hostname and port) and database name (default: postgres), you can now set up Hyperdrive.
 
@@ -78,7 +78,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -97,7 +97,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -166,7 +166,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -179,7 +179,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -226,7 +226,7 @@ export default {
 
 Note
 
-When connecting to a Supabase database with Hyperdrive, you should use a driver like [node-postgres (pg)](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/node-postgres/) or [Postgres.js](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/postgres-js/) to connect directly to the underlying database instead of the [Supabase JavaScript client ↗](https://github.com/supabase/supabase-js). Hyperdrive is optimized for database access for Workers and will perform global connection pooling and fast query routing by connecting directly to your database.
+When connecting to a Supabase database with Hyperdrive, you should use a driver like [node-postgres (pg)](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/node-postgres/) or [Postgres.js](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/postgres-js/) to connect directly to the underlying database instead of the [Supabase JavaScript client ↗︎](https://github.com/supabase/supabase-js). Hyperdrive is optimized for database access for Workers and will perform global connection pooling and fast query routing by connecting directly to your database.
 
 ## Next steps
 

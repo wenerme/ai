@@ -20,7 +20,7 @@ Imports skip unsupported objects and files in the source. You can also target pa
 
 ## Check storage class support
 
-Use Import from S3 for buckets that contain images in non-archival storage classes. Import from S3 skips images in [archival storage classes ↗](https://aws.amazon.com/s3/storage-classes/#Archive), which require a separate import.
+Use Import from S3 for buckets that contain images in non-archival storage classes. Import from S3 skips images in [archival storage classes ↗︎](https://aws.amazon.com/s3/storage-classes/#Archive), which require a separate import.
 
 Import from S3 skips images stored using S3 Glacier tiers (not including Glacier Instant Retrieval) and logs them in the migration log. It also skips and logs images stored using S3 Intelligent Tiering in the Deep Archive tier.
 

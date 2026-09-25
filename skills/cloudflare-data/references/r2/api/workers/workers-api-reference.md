@@ -141,7 +141,7 @@ class Default(WorkerEntrypoint):
 
 Note
 
-Cloudflare recommends using the `httpEtag` field when returning an etag in a response header. This ensures the etag is quoted and conforms to [RFC 9110 ↗](https://www.rfc-editor.org/rfc/rfc9110#section-8.8.3).
+Cloudflare recommends using the `httpEtag` field when returning an etag in a response header. This ensures the etag is quoted and conforms to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-8.8.3).
 
 - The etag associated with the object upload.
 - `httpEtag` `string`
@@ -373,9 +373,9 @@ If the condition check for `put()` fails, `null` will be returned instead of the
 - `uploadedAfter` `Date` optional
   - Performs the operation if the object was uploaded after the given date.
 
-Alternatively, you can pass a `Headers` object containing conditional headers to `R2GetOptions` and `R2PutOptions`. For information on these conditional headers, refer to [the MDN docs on conditional requests ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests#conditional_headers). All conditional headers aside from `If-Range` are supported.
+Alternatively, you can pass a `Headers` object containing conditional headers to `R2GetOptions` and `R2PutOptions`. For information on these conditional headers, refer to [the MDN docs on conditional requests ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Conditional_requests#conditional_headers). All conditional headers aside from `If-Range` are supported.
 
-For more specific information about conditional requests, refer to [RFC 7232 ↗](https://datatracker.ietf.org/doc/html/rfc7232).
+For more specific information about conditional requests, refer to [RFC 7232 ↗︎](https://datatracker.ietf.org/doc/html/rfc7232).
 
 ### HTTP Metadata
 

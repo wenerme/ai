@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/top-level-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare supports over 400 [top-level domains (TLDs) ↗](https://www.cloudflare.com/learning/dns/top-level-domain/) and is always evaluating adding new TLDs. We have no specific timeframes for TLDs not yet listed. You can find the full list of supported and coming soon TLDs on the [TLD policies page ↗](https://www.cloudflare.com/tld-policies/).
+Cloudflare supports over 400 [top-level domains (TLDs) ↗︎](https://www.cloudflare.com/learning/dns/top-level-domain/) and is always evaluating adding new TLDs. We have no specific timeframes for TLDs not yet listed. You can find the full list of supported and coming soon TLDs on the [TLD policies page ↗︎](https://www.cloudflare.com/tld-policies/).
 
 Note
 

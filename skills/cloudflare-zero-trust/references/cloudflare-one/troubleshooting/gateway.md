@@ -20,7 +20,7 @@ This guide helps you troubleshoot common issues with Cloudflare Gateway policies
 
 ### A website is blocked incorrectly
 
-If you believe a domain has been incorrectly blocked by Gateway's security categories or threat intelligence, you can use the [Cloudflare Radar categorization feedback form ↗](https://radar.cloudflare.com/categorization-feedback/) to request a review.
+If you believe a domain has been incorrectly blocked by Gateway's security categories or threat intelligence, you can use the [Cloudflare Radar categorization feedback form ↗︎](https://radar.cloudflare.com/categorization-feedback/) to request a review.
 
 ### Error 526: Invalid SSL certificate
 
@@ -93,7 +93,7 @@ The most important concept is [Gateway policy precedence](https://developers.clo
 
 To resolve Gateway policy precedence issues:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. Review the order of your DNS, Network, and HTTP policies.
 3. Ensure that your most specific Allow, Do Not Scan, or Do Not Inspect policies have a lower order number than your general Block policies.
 4. Drag and drop policies to reorder them as needed. An Allow policy for `teams.microsoft.com` should be placed before a general Block policy for all file sharing applications.

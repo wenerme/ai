@@ -134,7 +134,7 @@ The `element` argument, used only in element handlers, is a representation of a 
 - `removed` boolean
   - Indicates whether the element has been removed or replaced by one of the previous handlers.
 - `namespaceURI` string
-  - Represents the [namespace URI ↗](https://infra.spec.whatwg.org/#namespaces) of an element.
+  - Represents the [namespace URI ↗︎](https://infra.spec.whatwg.org/#namespaces) of an element.
 
 #### Methods
 
@@ -257,7 +257,7 @@ class ElementHandler {
 
 ### Doctype
 
-The `doctype` function on a document handler allows developers to query a document's [doctype ↗](https://developer.mozilla.org/en-US/docs/Glossary/Doctype).
+The `doctype` function on a document handler allows developers to query a document's [doctype ↗︎](https://developer.mozilla.org/en-US/docs/Glossary/Doctype).
 
 ```js
 class DocumentHandler {
@@ -376,7 +376,7 @@ async function handle(request) {
 
 ## Related resources
 
-- [Introducing `HTMLRewriter` ↗](https://blog.cloudflare.com/introducing-htmlrewriter/)
+- [Introducing `HTMLRewriter` ↗︎](https://blog.cloudflare.com/introducing-htmlrewriter/)
 - [Tutorial: Localize a Website](https://developers.cloudflare.com/pages/tutorials/localize-a-website/)
 - [Example: rewrite links](https://developers.cloudflare.com/workers/examples/rewrite-links/)
 - [Example: Inject Turnstile](https://developers.cloudflare.com/workers/examples/turnstile-html-rewriter/)

@@ -22,7 +22,7 @@ Create the SFU session when ready to begin that connection's SDP exchange. [Unco
 | --- | --- | --- |
 | [Publish audio or video](#publish-audio-or-video) | Make local media available to subscribers | [Video room](https://developers.cloudflare.com/realtime/sfu/examples/video-room/) |
 | [Receive a published track](#receive-a-published-track) | Play another endpoint's media | [Video room](https://developers.cloudflare.com/realtime/sfu/examples/video-room/) |
-| [Send messages between two endpoints](#send-messages-between-two-endpoints) | Exchange application data without media tracks | [DataChannel example ↗](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels) |
+| [Send messages between two endpoints](#send-messages-between-two-endpoints) | Exchange application data without media tracks | [DataChannel example ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels) |
 | [Receive media and send controls](#receive-media-and-send-controls) | Watch a publisher and return authorized input | [Cloud gaming](https://developers.cloudflare.com/realtime/sfu/examples/cloud-gaming/) |
 
 For an existing connection, refer to [Add media](#add-media-to-an-existing-connection), [Add DataChannels](#add-datachannels-to-a-media-connection), or [Close media tracks](#close-media-tracks). To run an application before implementing these exchanges, follow the [quickstart](https://developers.cloudflare.com/realtime/sfu/get-started/).
@@ -39,7 +39,7 @@ Check the HTTP status, public errors, and individual resource results on every A
 
 WebRTC uses Interactive Connectivity Establishment (ICE) to find a working network path. Configure it for the networks your endpoints support. Cloudflare's public STUN server is `stun.cloudflare.com:3478`. STUN helps discover network addresses. [TURN](https://developers.cloudflare.com/realtime/turn/) can relay traffic when an endpoint's network requires it.
 
-Install connection-state handlers and give connection waits a timeout that reports failure. After setting a local description, gather network candidates before sending `pc.localDescription` to your backend. The [cloud-gaming WebRTC helpers ↗](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/src/client/webrtc.ts) demonstrate bounded candidate gathering.
+Install connection-state handlers and give connection waits a timeout that reports failure. After setting a local description, gather network candidates before sending `pc.localDescription` to your backend. The [cloud-gaming WebRTC helpers ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/src/client/webrtc.ts) demonstrate bounded candidate gathering.
 
 ## Publish audio or video
 
@@ -257,7 +257,7 @@ Start here when an existing PeerConnection has completed media-only negotiation 
 The recipes use a known starting state. Existing integrations may negotiate transport in a different order:
 
 - **DataChannels before media:** complete the message recipe's transport exchange, then add media on the same session. Finish each exchange before the next operation.
-- **Media and DataChannels in the first offer:** an endpoint can negotiate both in its initial `tracks/new` offer. After that exchange, skip `datachannels/establish` and allocate application channels through `datachannels/new`. The [Pocket Radio firmware walkthrough ↗](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/firmware/docs/sfu.md) demonstrates this setup.
+- **Media and DataChannels in the first offer:** an endpoint can negotiate both in its initial `tracks/new` offer. After that exchange, skip `datachannels/establish` and allocate application channels through `datachannels/new`. The [Pocket Radio firmware walkthrough ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/firmware/docs/sfu.md) demonstrates this setup.
 - **DataChannel setup already started:** finish its outstanding offer/answer exchange and connection wait. An already-negotiated transport can carry additional application channels. Do not use `datachannels/establish` as a repeated initialization check.
 
 ## Complete an SFU offer

@@ -79,7 +79,7 @@ Avoid key rotation issues
 To verify the token manually:
 
 1. Copy the JWT from the `Cf-Access-Jwt-Assertion` request header.
-2. Go to [jwt.io ↗](https://jwt.io/).
+2. Go to [jwt.io ↗︎](https://jwt.io/).
 3. Select the RS256 algorithm.
 4. Paste the JWT into the **Encoded** box.
 5. In the **Payload** box, ensure that the `iss` field points to your team domain ( `https://<your-team-name>.cloudflareaccess.com`). `jwt.io` uses the `iss` value to fetch the public key for token validation.
@@ -97,7 +97,7 @@ Cloudflare Access assigns a unique AUD tag to each application. The `aud` claim 
 
 To get the AUD tag:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Configure** for your application.
 3. From **Additional settings**, copy the **Application Audience (AUD) Tag**.
 
@@ -107,7 +107,7 @@ You can now paste the AUD tag into your token validation script. The AUD tag wil
 
 When Cloudflare Access is in front of your [Worker](https://developers.cloudflare.com/workers), your Worker still needs to validate the JWT that Cloudflare Access adds to the `Cf-Access-Jwt-Assertion` header on the incoming request.
 
-The following code will validate the JWT using the [jose NPM package ↗](https://www.npmjs.com/package/jose):
+The following code will validate the JWT using the [jose NPM package ↗︎](https://www.npmjs.com/package/jose):
 
 ```js
 import { jwtVerify, createRemoteJWKSet } from "jose";

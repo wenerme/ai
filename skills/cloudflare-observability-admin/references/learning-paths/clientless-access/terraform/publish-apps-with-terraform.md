@@ -14,14 +14,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/clientless-access/terraform/publish-apps-with-terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to use the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) to quickly publish and secure a private application. In the following example, we will add a new published application to an existing Cloudflare Tunnel, configure how `cloudflared` proxies traffic to the application, and secure the application with Cloudflare Access.
+This guide covers how to use the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) to quickly publish and secure a private application. In the following example, we will add a new published application to an existing Cloudflare Tunnel, configure how `cloudflared` proxies traffic to the application, and secure the application with Cloudflare Access.
 
 ## Prerequisites
 
 - [Add your domain to Cloudflare](https://developers.cloudflare.com/learning-paths/clientless-access/initial-setup/add-site/)
 - [Configure an IdP integration](https://developers.cloudflare.com/learning-paths/clientless-access/initial-setup/configure-idp/)
 - [Create a Cloudflare Tunnel](https://developers.cloudflare.com/learning-paths/clientless-access/connect-private-applications/create-tunnel/#create-a-tunnel) via the Zero Trust dashboard
-- Install the [Terraform client ↗](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
+- Install the [Terraform client ↗︎](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 - [Create an API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) (refer to the [minimum required permissions](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/terraform/#3-create-a-cloudflare-api-token))
 
 ## 1. Create a Terraform configuration directory
@@ -102,7 +102,7 @@ Add the following resources to your Terraform configuration.
 
 ### Add published application to Cloudflare Tunnel
 
-Using the [`cloudflare_tunnel_config` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/tunnel_config) resource, create an ingress rule that maps your application to a public DNS record. This example makes `localhost:8080` available on `app.mycompany.com`, sets the [Connect Timeout](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#connecttimeout), and enables [Access JWT validation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#access).
+Using the [`cloudflare_tunnel_config` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/tunnel_config) resource, create an ingress rule that maps your application to a public DNS record. This example makes `localhost:8080` available on `app.mycompany.com`, sets the [Connect Timeout](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#connecttimeout), and enables [Access JWT validation](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/origin-parameters/#access).
 
 ```txt
 resource "cloudflare_tunnel_config" "example_config" {
@@ -136,7 +136,7 @@ Published application configurations must include a catch-all ingress rule at th
 
 ### Create an Access application
 
-Using the [`cloudflare_access_application` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_application) resource, add the application to Cloudflare Access.
+Using the [`cloudflare_access_application` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_application) resource, add the application to Cloudflare Access.
 
 ```txt
 resource "cloudflare_access_application" "example_app" {
@@ -151,7 +151,7 @@ resource "cloudflare_access_application" "example_app" {
 
 ### Create an Access policy
 
-Using the [`cloudflare_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_application) resource, create a policy to secure the application. The following policy will only allow access to users who authenticate through your identity provider.
+Using the [`cloudflare_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/access_application) resource, create a policy to secure the application. The following policy will only allow access to users who authenticate through your identity provider.
 
 ```txt
 resource "cloudflare_access_policy" "example_policy" {
@@ -200,7 +200,7 @@ You can view your new tunnel in the Cloudflare dashboard under **Networking** > 
 
 [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 
-Your Access application and policy are under **Zero Trust** > **Access controls** > **[Applications ↗](https://dash.cloudflare.com/?to=/:account/one/access/apps)**.
+Your Access application and policy are under **Zero Trust** > **Access controls** > **[Applications ↗︎](https://dash.cloudflare.com/?to=/:account/one/access/apps)**.
 
 Note
 

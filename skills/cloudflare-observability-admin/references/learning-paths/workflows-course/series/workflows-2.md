@@ -20,7 +20,7 @@ Workflows can be used to process batches of data, ensuring each item in the batc
 
 If you want to dive into detail, refer to the following pages:
 
-- [Source code for the Punderful repository ↗](https://github.com/craigsdennis/punderful-workflows)
+- [Source code for the Punderful repository ↗︎](https://github.com/craigsdennis/punderful-workflows)
 - [Cloudflare Workflows](https://developers.cloudflare.com/workflows/)
 - [Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/)
 
@@ -30,7 +30,7 @@ The Punderful application processes user-submitted puns by performing content mo
 
 The following code snippet shows the endpoint responsible for batch processing:
 
-[See here ↗](https://github.com/craigsdennis/punderful-workflows/tree/main/src/index.tsx#L291)
+[See here ↗︎](https://github.com/craigsdennis/punderful-workflows/tree/main/src/index.tsx#L291)
 
 This code:
 

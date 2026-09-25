@@ -49,7 +49,7 @@ Be aware that you need a role of **Maintainer** or above to successfully link yo
 
 ### Cloning git repository
 
-Possible errors in this step could be caused by lack of Git Large File Storage (LFS). Check your LFS usage by referring to the [GitHub ↗](https://docs.github.com/en/billing/managing-billing-for-git-large-file-storage/viewing-your-git-large-file-storage-usage) and [GitLab ↗](https://docs.gitlab.com/ee/topics/git/lfs/) documentation.
+Possible errors in this step could be caused by lack of Git Large File Storage (LFS). Check your LFS usage by referring to the [GitHub ↗︎](https://docs.github.com/en/billing/managing-billing-for-git-large-file-storage/viewing-your-git-large-file-storage-usage) and [GitLab ↗︎](https://docs.gitlab.com/ee/topics/git/lfs/) documentation.
 
 Make sure to also review your submodule configuration by going to the `.gitmodules` file in your root directory. This file needs to contain both a `path` and a `url` property.
 
@@ -87,7 +87,7 @@ Make sure there are no emojis or special characters as part of your commit messa
 
 Possible errors in this step could be caused by incorrect Pages Functions configuration. Refer to the [Functions](https://developers.cloudflare.com/pages/functions/) documentation for more information on Functions setup.
 
-If you are not using Functions or have reviewed that your Functions configuration does not contain any errors, review the [Cloudflare Status site ↗](https://www.cloudflarestatus.com/) for Cloudflare network issues that could be causing the build failure.
+If you are not using Functions or have reviewed that your Functions configuration does not contain any errors, review the [Cloudflare Status site ↗︎](https://www.cloudflarestatus.com/) for Cloudflare network issues that could be causing the build failure.
 
 ## Differences between `pages.dev` and custom domains
 
@@ -181,7 +181,7 @@ Once the custom domain has been successfully completed, you may [reinstate the z
 
 Still having issues
 
-If you have done the steps above and your domain is still verifying after 15 minutes, join our [Discord ↗](https://discord.cloudflare.com) for support or contact our support team through the [Support Portal ↗](https://dash.cloudflare.com/?to=/:account/support).
+If you have done the steps above and your domain is still verifying after 15 minutes, join our [Discord ↗︎](https://discord.cloudflare.com) for support or contact our support team through the [Support Portal ↗︎](https://dash.cloudflare.com/?to=/:account/support).
 
 ### Missing `index.html` on the root `pages.dev` URL
 
@@ -193,7 +193,7 @@ Upload an `index.html` file to resolve this issue.
 
 If you need additional guidance on build errors, contact your Cloudflare account team (Enterprise) or refer to the [Support Center](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for guidance on contacting Cloudflare Support.
 
-You can also ask questions in the Pages section of the [Cloudflare Developers Discord ↗](https://discord.com/invite/cloudflaredev).
+You can also ask questions in the Pages section of the [Cloudflare Developers Discord ↗︎](https://discord.com/invite/cloudflaredev).
 
 Was this helpful?
 

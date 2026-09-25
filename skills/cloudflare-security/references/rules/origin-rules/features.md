@@ -31,7 +31,7 @@ Notes
 
 ## Server Name Indication (SNI)
 
-Allows you to override the Server Name Indication (SNI) <sup>[1](#user-content-fn-1)</sup> value of a request. For more information, refer to [What is SNI (Server Name Indication)? ↗](https://www.cloudflare.com/learning/ssl/what-is-sni/) in the Learning Center.
+Allows you to override the Server Name Indication (SNI) <sup>[1](#user-content-fn-1)</sup> value of a request. For more information, refer to [What is SNI (Server Name Indication)? ↗︎](https://www.cloudflare.com/learning/ssl/what-is-sni/) in the Learning Center.
 
 Notes
 

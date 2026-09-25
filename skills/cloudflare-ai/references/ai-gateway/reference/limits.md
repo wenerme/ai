@@ -74,7 +74,7 @@ DLP profiles are shared with Cloudflare One and are not coupled to individual ga
 
 Need a higher limit?
 
-To request an increase to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/cuXu1QnQCrSNkkaS8). If the limit can be increased, Cloudflare will contact you with next steps.
+To request an increase to a limit, complete the [Limit Increase Request Form ↗︎](https://forms.gle/cuXu1QnQCrSNkkaS8). If the limit can be increased, Cloudflare will contact you with next steps.
 
 Was this helpful?
 

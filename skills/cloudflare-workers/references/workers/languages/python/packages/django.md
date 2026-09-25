@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/django/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Django ↗](https://www.djangoproject.com/) is supported in Python Workers.
+[Django ↗︎](https://www.djangoproject.com/) is supported in Python Workers.
 
-Django applications use protocols called the [Web Server Gateway Interface (WSGI) ↗](https://peps.python.org/pep-3333/) or [Asynchronous Server Gateway Interface (ASGI) ↗](https://asgi.readthedocs.io/en/latest/).
+Django applications use protocols called the [Web Server Gateway Interface (WSGI) ↗︎](https://peps.python.org/pep-3333/) or [Asynchronous Server Gateway Interface (ASGI) ↗︎](https://asgi.readthedocs.io/en/latest/).
 
-This means that Django never reads from or writes to a socket itself. A WSGI/ASGI application expects to be hooked up to a WSGI/ASGI server, such as [uvicorn ↗](https://uvicorn.dev/). The WSGI/ASGI server handles all of the raw sockets on the application’s behalf.
+This means that Django never reads from or writes to a socket itself. A WSGI/ASGI application expects to be hooked up to a WSGI/ASGI server, such as [uvicorn ↗︎](https://uvicorn.dev/). The WSGI/ASGI server handles all of the raw sockets on the application’s behalf.
 
 Python Workers provide adaptors for both WSGI and ASGI, so you can choose any based on whether your Django application deploys to WSGI or ASGI.
 
@@ -108,7 +108,7 @@ Create the secret with `uv run pywrangler secret put DJANGO_SECRET_KEY`.
 
 ## Use Cloudflare storage as Django backends
 
-You can use Cloudflare [D1](https://developers.cloudflare.com/d1/) and [Durable Objects](https://developers.cloudflare.com/durable-objects/) as Django database backends. To use them, you need to install the [`django-cf` ↗](https://github.com/cloudflare/workers-py/tree/main/packages/django-cf) package.
+You can use Cloudflare [D1](https://developers.cloudflare.com/d1/) and [Durable Objects](https://developers.cloudflare.com/durable-objects/) as Django database backends. To use them, you need to install the [`django-cf` ↗︎](https://github.com/cloudflare/workers-py/tree/main/packages/django-cf) package.
 
 Add `django-cf` to your dependencies:
 
@@ -279,8 +279,8 @@ class Default(WorkerEntrypoint):
 
 Clone the `cloudflare/python-workers-examples` repository and run Django examples:
 
-- [django ↗](https://github.com/cloudflare/python-workers-examples/tree/main/django)
-- [django with D1 backend ↗](https://github.com/cloudflare/python-workers-examples/tree/main/django-todo-d1)
+- [django ↗︎](https://github.com/cloudflare/python-workers-examples/tree/main/django)
+- [django with D1 backend ↗︎](https://github.com/cloudflare/python-workers-examples/tree/main/django-todo-d1)
 
 Was this helpful?
 

@@ -41,17 +41,17 @@ Most importantly, this splits information about the Client so that no single rol
 
 It is important to note that the unlinkability between token issuance and redemption provided by Privacy Pass only partially relies on the separation of roles. To provide meaningful privacy, the anonymity set–e.g., the group of clients that are part of the same deployment setup–must also be kept large. Anything that causes clients to see different setups splits them into smaller groups, shrinking anonymity.
 
-For more information, see the Privacy Pass RFC's [guidelines ↗](https://datatracker.ietf.org/doc/html/rfc9576#name-privacy-considerations).
+For more information, see the Privacy Pass RFC's [guidelines ↗︎](https://datatracker.ietf.org/doc/html/rfc9576#name-privacy-considerations).
 
 ---
 
 ## Example deployment models
 
-The main structural choice is determining whether the Attester, Issuer, and Origin have overlap in their operating entities or are kept entirely separate. While a fully split model is the most secure, there are benefits to combining certain entities based on the use case. Other possible models include joint Attester-Issuer and joint Issuer-Origin, which don't break the privacy guarantees as long as [additional guidelines ↗](https://datatracker.ietf.org/doc/html/rfc9576#name-deployment-models) are followed.
+The main structural choice is determining whether the Attester, Issuer, and Origin have overlap in their operating entities or are kept entirely separate. While a fully split model is the most secure, there are benefits to combining certain entities based on the use case. Other possible models include joint Attester-Issuer and joint Issuer-Origin, which don't break the privacy guarantees as long as [additional guidelines ↗︎](https://datatracker.ietf.org/doc/html/rfc9576#name-deployment-models) are followed.
 
 ### Apple's Private Access Token (PAT) deployment
 
-[Apple created PATs ↗](https://developer.apple.com/videos/play/wwdc2022/10077/) to almost entirely bypass CAPTCHA challenges for their iOS 16+ users on Safari and participating apps and third-party browsers. In this deployment, Apple leverages their role as a hardware provider to allow them to attest to device legitimacy using signals such as valid Apple ID and device integrity checks instead of through a CAPTCHA. The role separation is structure like this:
+[Apple created PATs ↗︎](https://developer.apple.com/videos/play/wwdc2022/10077/) to almost entirely bypass CAPTCHA challenges for their iOS 16+ users on Safari and participating apps and third-party browsers. In this deployment, Apple leverages their role as a hardware provider to allow them to attest to device legitimacy using signals such as valid Apple ID and device integrity checks instead of through a CAPTCHA. The role separation is structure like this:
 
 | Role | Operated by |
 | --- | --- |
@@ -79,7 +79,7 @@ This deployment uses a **joint Attester-Issuer model**, where Cloudflare operate
 
 ## Privacy Pass as part of another product
 
-Privacy Pass also powers existing Cloudflare products. The most established example is [Privacy Proxy](https://developers.cloudflare.com/privacy-proxy/), used in single-hop ([Microsoft Edge Secure Network ↗](https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network/)) and double-hop ([Apple Private Relay ↗](https://blog.cloudflare.com/icloud-private-relay/)) deployments, where Privacy Pass handles the initial authentication between the client and the proxy (or the first proxy, in double-hop). If your use case fits an existing product, that may be the simplest path. For the proxy-level architecture, see [Privacy Proxy deployment models](https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/).
+Privacy Pass also powers existing Cloudflare products. The most established example is [Privacy Proxy](https://developers.cloudflare.com/privacy-proxy/), used in single-hop ([Microsoft Edge Secure Network ↗︎](https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network/)) and double-hop ([Apple Private Relay ↗︎](https://blog.cloudflare.com/icloud-private-relay/)) deployments, where Privacy Pass handles the initial authentication between the client and the proxy (or the first proxy, in double-hop). If your use case fits an existing product, that may be the simplest path. For the proxy-level architecture, see [Privacy Proxy deployment models](https://developers.cloudflare.com/privacy-proxy/concepts/deployment-models/).
 
 ---
 
@@ -87,7 +87,7 @@ Privacy Pass also powers existing Cloudflare products. The most established exam
 
 - [Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/)
 - [Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/) — what deploying one of these models with Cloudflare looks like.
-- [Replace CAPTCHAs with Private Access Tokens (Apple WWDC22) ↗](https://developer.apple.com/videos/play/wwdc2022/10077/) — Apple's overview of its Private Access Token deployment.
+- [Replace CAPTCHAs with Private Access Tokens (Apple WWDC22) ↗︎](https://developer.apple.com/videos/play/wwdc2022/10077/) — Apple's overview of its Private Access Token deployment.
 
 Was this helpful?
 

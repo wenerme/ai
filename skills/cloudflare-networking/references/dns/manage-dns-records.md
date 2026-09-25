@@ -16,7 +16,7 @@ Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 DNS records contain information about your domain and are used to make your website or application available to visitors and other web services.
 
-Each DNS record belongs to a different type, and each type serves a different purpose. For background about the different types of DNS records, refer to the [Learning Center ↗](https://www.cloudflare.com/learning/dns/dns-records/). To quickly find reference information about a specific type, refer to [DNS record types](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/).
+Each DNS record belongs to a different type, and each type serves a different purpose. For background about the different types of DNS records, refer to the [Learning Center ↗︎](https://www.cloudflare.com/learning/dns/dns-records/). To quickly find reference information about a specific type, refer to [DNS record types](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/).
 
 Depending on the providers you used to [get your domain name](https://developers.cloudflare.com/fundamentals/manage-domains/#get-a-domain-name) and [host your website or application](https://developers.cloudflare.com/fundamentals/manage-domains/#host-your-domain), it is expected that DNS records were automatically created on your behalf. According to your [setup](https://developers.cloudflare.com/dns/zone-setups/), you can use Cloudflare to manage your DNS records.
 

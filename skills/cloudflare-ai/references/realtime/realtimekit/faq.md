@@ -24,9 +24,9 @@ How can I generate a Cloudflare API token?
 
 </summary>
 
-To use RealtimeKit APIs, you must have a <a href="https://dash.cloudflare.com">Cloudflare account ↗</a>.
+To use RealtimeKit APIs, you must have a <a href="https://dash.cloudflare.com">Cloudflare account ↗︎</a>.
 
-Follow the <a href="https://developers.cloudflare.com/fundamentals/api/get-started/create-token/">Create API token guide</a> to create a token from the <a href="https://dash.cloudflare.com/profile/api-tokens">Cloudflare dashboard ↗</a>. When configuring permissions, select **Realtime** &gt; **Realtime Admin**. Configure additional <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">access policies and restrictions</a> for your use case.
+Follow the <a href="https://developers.cloudflare.com/fundamentals/api/get-started/create-token/">Create API token guide</a> to create a token from the <a href="https://dash.cloudflare.com/profile/api-tokens">Cloudflare dashboard ↗︎</a>. When configuring permissions, select **Realtime** &gt; **Realtime Admin**. Configure additional <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">access policies and restrictions</a> for your use case.
 
 Cloudflare API tokens authenticate requests to Cloudflare APIs. Use these tokens only in your backend. Never expose an API token to your frontend or share it with an end user.
 
@@ -372,7 +372,7 @@ I cannot send a chat message
 
 There could be multiple reasons for this.
 
-First, try a sample meeting on the <a href="https://examples.realtime.cloudflare.com/">demo app ↗</a>. If you cannot send a message in the demo app, contact support. If you can send a message in the demo app, the issue is on the integration side.
+First, try a sample meeting on the <a href="https://examples.realtime.cloudflare.com/">demo app ↗︎</a>. If you cannot send a message in the demo app, contact support. If you can send a message in the demo app, the issue is on the integration side.
 
 To troubleshoot integration issues, first check if the user has joined the meeting successfully. If the user has <a href="https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/">joined</a> the meeting successfully, check if the user's <a href="https://developers.cloudflare.com/realtime/realtimekit/concepts/preset/">preset</a> has permissions to send messages. If you are using a custom UI, check if the core <a href="https://developers.cloudflare.com/realtime/realtimekit/core/chat/">Chat APIs</a> are working to eliminate the Core SDK from the usual suspects.
 
@@ -422,7 +422,7 @@ How can I check if my network and devices are ready for a RealtimeKit meeting?
 
 </summary>
 
-Go to <a href="https://test.realtime.cloudflare.com/">test.realtime.cloudflare.com ↗</a> and run the pre-call test. The test checks your camera, microphone, and network, and verifies connectivity to Cloudflare Realtime endpoints, so you can confirm that the required services are not blocked by your network or firewall before joining a meeting. For required domains and ports, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/network-allowlist/">Network allowlist</a>.
+Go to <a href="https://test.realtime.cloudflare.com/">test.realtime.cloudflare.com ↗︎</a> and run the pre-call test. The test checks your camera, microphone, and network, and verifies connectivity to Cloudflare Realtime endpoints, so you can confirm that the required services are not blocked by your network or firewall before joining a meeting. For required domains and ports, refer to <a href="https://developers.cloudflare.com/realtime/realtimekit/network-allowlist/">Network allowlist</a>.
 
 </details>
 
@@ -438,7 +438,7 @@ Can I use the Cloudflare hosted demo app or examples in my website as an iframe?
 
 We strongly recommend against embedding the Cloudflare hosted demo app or examples as an iframe in your website, even if you pass authentication tokens via URL parameters.
 
-Instead, set up the default meeting UI in your own website by following the <a href="https://developers.cloudflare.com/realtime/realtimekit/ui-kit/">UI Kit setup guide</a> or deploy the <a href="https://github.com/cloudflare/realtimekit-web-examples/">RealtimeKit web examples ↗</a> under your own domain. The effort required for either approach is minimal and provides significant benefits:
+Instead, set up the default meeting UI in your own website by following the <a href="https://developers.cloudflare.com/realtime/realtimekit/ui-kit/">UI Kit setup guide</a> or deploy the <a href="https://github.com/cloudflare/realtimekit-web-examples/">RealtimeKit web examples ↗︎</a> under your own domain. The effort required for either approach is minimal and provides significant benefits:
 
 - **Control**: You maintain full control over the user experience, structure, and interface.
 - **Stability**: Your implementation remains consistent and will not change overnight, protecting your product from sudden disruptions.

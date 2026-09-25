@@ -46,7 +46,7 @@ These records are automatically created to allow Cloudflare edge certificates ([
 
 As these records are tied to the certificates, they cannot be deleted via the Cloudflare dashboard.
 
-If you need more `_acme-challenge.<hostname>` TXT records in order to provision certificates on your side, you can [manually add them](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) under [DNS records ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records).
+If you need more `_acme-challenge.<hostname>` TXT records in order to provision certificates on your side, you can [manually add them](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) under [DNS records ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records).
 
 If you want to remove these records:
 
@@ -143,9 +143,9 @@ Third-party tools can sometimes fail to return correct DNS results if a recursiv
 
 In this circumstance, purge your public DNS cache via these methods:
 
-- [Purge your DNS cache at OpenDNS ↗](http://www.opendns.com/support/cache/)
-- [Purge your DNS cache at Google ↗](https://developers.google.com/speed/public-dns/cache)
-- [Purge your DNS cache locally ↗](https://docs.cpanel.net/knowledge-base/dns/how-to-clear-your-dns-cache/)
+- [Purge your DNS cache at OpenDNS ↗︎](http://www.opendns.com/support/cache/)
+- [Purge your DNS cache at Google ↗︎](https://developers.google.com/speed/public-dns/cache)
+- [Purge your DNS cache locally ↗︎](https://docs.cpanel.net/knowledge-base/dns/how-to-clear-your-dns-cache/)
 
 Was this helpful?
 

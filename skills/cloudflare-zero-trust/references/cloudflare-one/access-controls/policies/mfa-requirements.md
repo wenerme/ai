@@ -34,7 +34,7 @@ IdP-based MFA enforcement is only available with the following identity provider
 
 To enforce an IdP MFA requirement on an application:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Find the application for which you want to enforce MFA and select **Configure**. Alternatively, [create a new application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/).
 3. Go to **Policies**.
 4. If your application already has a policy containing an identity requirement, find it and select **Configure**.
@@ -59,7 +59,7 @@ When users authenticate with their identity provider, the IdP shares their usern
 
 Certain identity providers also share the MFA method presented by the user. Access can add these values into the JWT. For example, if the user authenticated with their password and a security key, the IdP can send a confirmation to Cloudflare Access. Access then stores that method in the JWT issued to the user.
 
-Cloudflare Access follows [RFC 8176 ↗](https://tools.ietf.org/html/rfc8176), Authentication Method Reference Values, to define authentication methods.
+Cloudflare Access follows [RFC 8176 ↗︎](https://tools.ietf.org/html/rfc8176), Authentication Method Reference Values, to define authentication methods.
 
 ## Independent MFA
 
@@ -95,7 +95,7 @@ Each application has three MFA options:
 
 To configure MFA for an application:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Find the application you want to configure and select **Configure**.
 3. Scroll down to **Authentication** and select the **MFA**.tab.
 4. Select one of the following options:
@@ -110,7 +110,7 @@ To configure MFA for an infrastructure application, refer to [Infrastructure app
 
 Each policy has the same three MFA options described in [Configure independent MFA for an application](#configure-independent-mfa-for-an-application). Policy-level settings override application-level settings.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Choose an **Allow** policy and select **Configure**.
 3. Under **Multi-factor authentication (MFA)**, select an option:
    - To inherit the application or organization setting, select **Respect global enforcement setting**.
@@ -215,7 +215,7 @@ Dashboard
 
 </summary>
 
-1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Applications**.
+1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Applications**.
 2. Find your infrastructure application and select **Configure**.
 3. Go to the **Authentication** tab and select **MFA**.
 4. Select one of the following options:
@@ -270,7 +270,7 @@ Dashboard
 
 </summary>
 
-1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Applications**.
+1. In the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a>, go to **Zero Trust** &gt; **Access controls** &gt; **Applications**.
 2. Find your infrastructure application and select **Configure**.
 3. Go to **Policies** and select the policy you want to configure.
 4. Under **Multi-factor authentication (MFA)**, select an option:

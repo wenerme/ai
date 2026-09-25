@@ -25,7 +25,7 @@ Accelerate websites and applications with Cloudflare CDN (Content Delivery Netwo
 
 ## Prerequisites
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 - A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare's network. Caching, image optimization, speed optimizations, Argo Smart Routing, and Load Balancing all operate at the edge and require traffic to pass through Cloudflare.
 - Web Analytics can be added to any site without a proxied domain by [adding the JavaScript snippet](https://developers.cloudflare.com/web-analytics/get-started/) to your pages directly.
 

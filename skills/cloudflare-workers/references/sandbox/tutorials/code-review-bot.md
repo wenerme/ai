@@ -20,8 +20,8 @@ Build a GitHub bot that responds to pull requests, clones the repository in a sa
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -31,19 +31,19 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
 You'll also need:
 
-- A [GitHub account ↗](https://github.com/) and [fine-grained personal access token ↗](https://github.com/settings/personal-access-tokens/new) with the following permissions:
+- A [GitHub account ↗︎](https://github.com/) and [fine-grained personal access token ↗︎](https://github.com/settings/personal-access-tokens/new) with the following permissions:
   - **Repository access**: Select the specific repository you want to test with
   - **Permissions** > **Repository permissions**:
     - **Metadata**: Read-only (required)
     - **Contents**: Read-only (required to clone the repository)
     - **Pull requests**: Read and write (required to post review comments)
-- An [Anthropic API key ↗](https://console.anthropic.com/) for Claude
+- An [Anthropic API key ↗︎](https://console.anthropic.com/) for Claude
 - A GitHub repository for testing
 
 ## 1. Create your project
@@ -299,7 +299,7 @@ EOF
 Replace the placeholder values with:
 
 - `GITHUB_TOKEN`: Your GitHub personal access token with repo permissions
-- `ANTHROPIC_API_KEY`: Your API key from the [Anthropic Console ↗](https://console.anthropic.com/)
+- `ANTHROPIC_API_KEY`: Your API key from the [Anthropic Console ↗︎](https://console.anthropic.com/)
 - `WEBHOOK_SECRET`: A random string (for example: `openssl rand -hex 32`)
 
 Note
@@ -399,7 +399,7 @@ A GitHub code review bot that:
 
 - [Git operations](https://developers.cloudflare.com/sandbox/api/files/#gitcheckout) - Advanced repository handling
 - [Sessions API](https://developers.cloudflare.com/sandbox/api/sessions/) - Manage long-running sandbox operations
-- [GitHub Apps ↗](https://docs.github.com/en/apps) - Build a proper GitHub App
+- [GitHub Apps ↗︎](https://docs.github.com/en/apps) - Build a proper GitHub App
 
 Was this helpful?
 

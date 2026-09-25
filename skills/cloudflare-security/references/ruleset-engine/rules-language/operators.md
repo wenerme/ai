@@ -170,7 +170,7 @@ The `wildcard`/`strict wildcard` operators always consider the entire field valu
 
 Customers on Business and Enterprise plans have access to the `matches` operator. Regular expression matching is performed using the Rust regular expression engine.
 
-If you are using a regular expression, you can test it using a tool like [Regular Expressions 101 ↗](https://regex101.com/?flavor=rust&regex=) or [Rustexp ↗](https://rustexp.lpil.uk/).
+If you are using a regular expression, you can test it using a tool like [Regular Expressions 101 ↗︎](https://regex101.com/?flavor=rust&regex=) or [Rustexp ↗︎](https://rustexp.lpil.uk/).
 
 For more information on regular expressions, refer to [String values and regular expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#string-values-and-regular-expressions).
 

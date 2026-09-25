@@ -79,7 +79,7 @@ In your Sanity project's Settings page, find the **Webhooks** section, and add t
 
 ### WordPress
 
-You can configure WordPress to trigger a Pages Deploy Hook by installing the free **WP Webhooks** plugin. The plugin includes a number of triggers, such as **Send Data on New Post, Send Data on Post Update** and **Send Data on Post Deletion**, all of which allow you to trigger new Pages deployments as your WordPress data changes. Select a trigger on the sidebar of the plugin settings and then [**Add Webhook URL** ↗](https://wordpress.org/plugins/wp-webhooks/), pasting in your unique Deploy Hook URL.
+You can configure WordPress to trigger a Pages Deploy Hook by installing the free **WP Webhooks** plugin. The plugin includes a number of triggers, such as **Send Data on New Post, Send Data on Post Update** and **Send Data on Post Deletion**, all of which allow you to trigger new Pages deployments as your WordPress data changes. Select a trigger on the sidebar of the plugin settings and then [**Add Webhook URL** ↗︎](https://wordpress.org/plugins/wp-webhooks/), pasting in your unique Deploy Hook URL.
 
 ![Configuring Deploy Hooks with WordPress](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2488,height=1045,format=webp/_astro/wordpress.VDVl6Kuz.png)
 
@@ -95,7 +95,7 @@ In your Strapi Admin Panel, you can set up and configure webhooks to enhance you
 
 In the Strapi Admin Panel, you can configure your webhook to be triggered based on events. You can adjust these settings to create a new deployment of your Cloudflare Pages site automatically when a Strapi entry or media asset is created, updated, or deleted.
 
-Be sure to add the webhook configuration to the [production ↗](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/installation.html) Strapi application that powers your Cloudflare site.
+Be sure to add the webhook configuration to the [production ↗︎](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/installation.html) Strapi application that powers your Cloudflare site.
 
 ![Configuring Deploy Hooks with Strapi](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2559,height=1440,format=webp/_astro/strapi.BuGuUrHn.png)
 

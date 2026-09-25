@@ -32,7 +32,7 @@ Cloudflare's IPFS gateway provides a read-only, HTTP-accessible interface to the
 
 Note
 
-For more pricing details, refer to the [Web3 product page ↗](https://www.cloudflare.com/application-services/products/web3/).
+For more pricing details, refer to the [Web3 product page ↗︎](https://www.cloudflare.com/application-services/products/web3/).
 
 Was this helpful?
 

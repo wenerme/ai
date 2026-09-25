@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/playwright-mcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[`@cloudflare/playwright-mcp` ↗](https://github.com/cloudflare/playwright-mcp) is a [Playwright MCP ↗](https://github.com/microsoft/playwright-mcp) server fork that provides browser automation capabilities using Playwright and Browser Run.
+[`@cloudflare/playwright-mcp` ↗︎](https://github.com/cloudflare/playwright-mcp) is a [Playwright MCP ↗︎](https://github.com/microsoft/playwright-mcp) server fork that provides browser automation capabilities using Playwright and Browser Run.
 
 This server enables LLMs to interact with web pages through structured accessibility snapshots, bypassing the need for screenshots or visually-tuned models. Its key features are:
 
@@ -24,7 +24,7 @@ This server enables LLMs to interact with web pages through structured accessibi
 
 Note
 
-The current version of Cloudflare Playwright MCP [v1.1.1 ↗](https://github.com/cloudflare/playwright/releases/tag/v1.1.1) is in sync with upstream Playwright MCP [v0.0.30 ↗](https://github.com/microsoft/playwright-mcp/releases/tag/v0.0.30).
+The current version of Cloudflare Playwright MCP [v1.1.1 ↗︎](https://github.com/cloudflare/playwright/releases/tag/v1.1.1) is in sync with upstream Playwright MCP [v0.0.30 ↗︎](https://github.com/microsoft/playwright-mcp/releases/tag/v0.0.30).
 
 ## Quick start
 
@@ -34,13 +34,13 @@ If you are already familiar with Cloudflare Workers and you want to get started 
 
 This creates a repository in your GitHub account and deploys the application to Cloudflare Workers. Use this option if you are familiar with Cloudflare Workers, and wish to skip the step-by-step guidance.
 
-Check our [GitHub page ↗](https://github.com/cloudflare/playwright-mcp) for more information on how to build and deploy Playwright MCP.
+Check our [GitHub page ↗︎](https://github.com/cloudflare/playwright-mcp) for more information on how to build and deploy Playwright MCP.
 
 ## Deploying
 
 Follow these steps to deploy `@cloudflare/playwright-mcp`:
 
-1. Install the Playwright MCP [npm package ↗](https://www.npmjs.com/package/@cloudflare/playwright-mcp).
+1. Install the Playwright MCP [npm package ↗︎](https://www.npmjs.com/package/@cloudflare/playwright-mcp).
 
 npmyarnpnpmbun
 
@@ -72,7 +72,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"name": "playwright-mcp-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "BROWSER",
@@ -99,7 +99,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 name = "playwright-mcp-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]
@@ -153,9 +153,9 @@ The server is now available at `https://[my-mcp-url].workers.dev/sse` and you ca
 
 ![Screenshot of the AI Playground](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1420,height=914,format=webp/_astro/playground-ai-screenshot.v44jFMBu.png)
 
-[Cloudflare AI Playground ↗](https://playground.ai.cloudflare.com/) is a great way to test MCP servers using LLM models available in Workers AI.
+[Cloudflare AI Playground ↗︎](https://playground.ai.cloudflare.com/) is a great way to test MCP servers using LLM models available in Workers AI.
 
-1. Go to [https://playground.ai.cloudflare.com/ ↗](https://playground.ai.cloudflare.com/).
+1. Go to [https://playground.ai.cloudflare.com/ ↗︎](https://playground.ai.cloudflare.com/).
 2. Ensure that the model is set to `llama-3.3-70b-instruct-fp8-fast`.
 3. In **MCP Servers**, set **URL** to `https://[my-mcp-url].workers.dev/sse`.
 4. Click **Connect**.
@@ -175,9 +175,9 @@ Try this sequence of instructions to see Playwright MCP in action:
 4. "And create another todo in Yoda style"
 5. "Take a screenshot"
 
-You can also use other MCP clients like [Claude Desktop ↗](https://github.com/cloudflare/playwright-mcp/blob/main/cloudflare/example/README.md#use-with-claude-desktop).
+You can also use other MCP clients like [Claude Desktop ↗︎](https://github.com/cloudflare/playwright-mcp/blob/main/cloudflare/example/README.md#use-with-claude-desktop).
 
-Check our [GitHub page ↗](https://github.com/cloudflare/playwright-mcp) for more examples and MCP client configuration options, and refer to the developer documentation on how to [build Agents on Cloudflare](https://developers.cloudflare.com/agents/).
+Check our [GitHub page ↗︎](https://github.com/cloudflare/playwright-mcp) for more examples and MCP client configuration options, and refer to the developer documentation on how to [build Agents on Cloudflare](https://developers.cloudflare.com/agents/).
 
 Was this helpful?
 

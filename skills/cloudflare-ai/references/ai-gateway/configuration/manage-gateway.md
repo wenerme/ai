@@ -47,7 +47,7 @@ Auto-creation only applies to the gateway ID `default`. Using any other gateway 
 
 [Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** > **AI Gateway**.
 3. Select **Create Gateway**.
 4. Enter your **Gateway name**. Note: Gateway name has a 64 character limit.
@@ -68,7 +68,7 @@ To set up an AI Gateway using the API:
 
 To edit an AI Gateway in the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** > **AI Gateway**.
 3. Select your gateway.
 4. Go to **Settings** and update as needed.
@@ -103,7 +103,7 @@ You can configure your gateway to automatically retry failed requests to upstrea
 
 To configure retry settings:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** > **AI Gateway** and select your gateway.
 3. Go to **Settings** and find the **Retry Requests** section.
 4. Turn on the toggle to turn on automatic retries.
@@ -123,7 +123,7 @@ Deleting your gateway is permanent and can not be undone.
 
 To delete an AI Gateway in the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** > **AI Gateway**.
 3. Select your gateway from the list of available options.
 4. Go to **Settings**.

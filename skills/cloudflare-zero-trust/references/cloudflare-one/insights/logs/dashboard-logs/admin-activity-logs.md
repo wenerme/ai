@@ -16,7 +16,7 @@ Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Admin activity logs record configuration changes made by members of your Cloudflare account. These logs are useful for auditing who changed a policy or setting and investigating unexpected configuration changes. Use these logs to monitor when a member creates, updates, or deletes configurations in your [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#create-a-zero-trust-organization).
 
-To view admin activity logs, log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** > **Insights** > **Logs** > **Admin activity logs**.
+To view admin activity logs, log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **Zero Trust** > **Insights** > **Logs** > **Admin activity logs**.
 
 ## Explanation of the fields
 

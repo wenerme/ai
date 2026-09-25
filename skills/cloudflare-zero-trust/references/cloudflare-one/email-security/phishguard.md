@@ -34,7 +34,7 @@ Additionally, PhishGuard analysts:
 
 To use PhishGuard:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **PhishGuard**.
 
@@ -60,7 +60,7 @@ The ROI Calculator displays:
 
 ## Insider threat defense
 
-An [insider threat ↗](https://www.cloudflare.com/en-gb/learning/access-management/what-is-an-insider-threat/) is a risk to an organization's security stemming from someone associated with the organization. PhishGuard looks for threat actor groups.
+An [insider threat ↗︎](https://www.cloudflare.com/en-gb/learning/access-management/what-is-an-insider-threat/) is a risk to an organization's security stemming from someone associated with the organization. PhishGuard looks for threat actor groups.
 
 Insider threat defense on the dashboard displays **Insider leads** and **Insider reports generated**. **Insider leads** displays the number of emails identified as potential insider threat email. **Insider reports generated** displays the number of reports created based on insider leads.
 
@@ -103,7 +103,7 @@ If you select the three dots, you can:
   - **Overview**: An Overview of the report. This includes date and time of the report, type of attack performed, and more.
   - **Target and victimology**: Company targeted.
   - **Details**: Displays information such as delivery disposition, current disposition, ES Alert ID, Message-ID, Timestamp, Subject, and Attempted Fraudulent Amount.
-  - **Indicators of compromise (IOC)**: [Indicators of compromise (IOC) ↗](https://www.cloudflare.com/en-gb/learning/security/what-are-indicators-of-compromise/) are information about a specific security breach that can help security teams determine if an attack has taken place.
+  - **Indicators of compromise (IOC)**: [Indicators of compromise (IOC) ↗︎](https://www.cloudflare.com/en-gb/learning/security/what-are-indicators-of-compromise/) are information about a specific security breach that can help security teams determine if an attack has taken place.
 - Preview email.
 - [Move email](https://developers.cloudflare.com/cloudflare-one/email-security/settings/auto-moves/).
 

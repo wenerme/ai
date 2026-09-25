@@ -28,7 +28,7 @@ Initial reads from a location do not have a cached value. Data must be read from
 
 Hot and cold read
 
-A hot read means that the data is cached on Cloudflare's edge network using the [CDN ↗](https://developers.cloudflare.com/cache/), whether it is in a local cache or a regional cache. A cold read means that the data is not cached, so the data must be fetched from the central stores.
+A hot read means that the data is cached on Cloudflare's edge network using the [CDN ↗︎](https://developers.cloudflare.com/cache/), whether it is in a local cache or a regional cache. A cold read means that the data is not cached, so the data must be fetched from the central stores.
 
 ![Initial reads will miss the cache and go to the nearest central data store first.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1236,height=453,format=svg/_astro/kv-slow-read.CTQ3d4MF.svg)
 
@@ -44,7 +44,7 @@ KV is optimized for high-read applications. It stores data centrally and uses a 
 
 To improve KV performance, increase the [`cacheTtl` parameter](https://developers.cloudflare.com/kv/api/read-key-value-pairs/#cachettl-parameter) up from its default 60 seconds.
 
-KV achieves high performance by [caching ↗](https://www.cloudflare.com/en-gb/learning/cdn/what-is-caching/) which makes reads eventually-consistent with writes.
+KV achieves high performance by [caching ↗︎](https://www.cloudflare.com/en-gb/learning/cdn/what-is-caching/) which makes reads eventually-consistent with writes.
 
 Changes are usually immediately visible in the Cloudflare global network location at which they are made. Changes may take up to 60 seconds or more to be visible in other global network locations as their cached versions of the data time out.
 
@@ -74,7 +74,7 @@ Workers KV is an eventually-consistent edge key-value store. That makes it ideal
 
 In these scenarios, Workers are invoked in a data center closest to the user and Workers KV data will be cached in that region for subsequent requests to minimize latency.
 
-If you have a **write-heavy** [Redis ↗](https://redis.io)-type workload where you are updating the same key tens or hundreds of times per second, KV will not be an ideal fit. If you can revisit how your application writes to single key-value pairs and spread your writes across several discrete keys, Workers KV can suit your needs. Alternatively, [Durable Objects](https://developers.cloudflare.com/durable-objects/) provides a key-value API with higher writes per key rate limits.
+If you have a **write-heavy** [Redis ↗︎](https://redis.io)-type workload where you are updating the same key tens or hundreds of times per second, KV will not be an ideal fit. If you can revisit how your application writes to single key-value pairs and spread your writes across several discrete keys, Workers KV can suit your needs. Alternatively, [Durable Objects](https://developers.cloudflare.com/durable-objects/) provides a key-value API with higher writes per key rate limits.
 
 ## Security
 

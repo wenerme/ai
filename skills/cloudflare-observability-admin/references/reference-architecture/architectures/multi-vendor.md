@@ -28,7 +28,7 @@ This reference architecture is designed for IT, security or network professional
 
 To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
+- What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗︎](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
 
 Those who read this reference architecture will learn:
 
@@ -47,7 +47,7 @@ Cloud-based security and performance providers like Cloudflare work as a reverse
 
 Normal traffic flow without a reverse proxy would involve a client sending a DNS lookup request, receiving the origin IP address, and communicating directly to the origin server(s). This is visualized in Figure 1.
 
-When a reverse proxy is introduced, the client still sends a DNS lookup request to its resolver, which is the first stop in the DNS lookup. In this case, the DNS resolver returns a vendor’s reverse proxy IP address to the client and the client then makes a request to the vendor’s reverse proxy. The cloud-based proxy solution can now provide additional security, performance, and reliability services like [CDN ↗](https://www.cloudflare.com/cdn/), [WAF ↗](https://www.cloudflare.com/waf/), [DDoS ↗](https://www.cloudflare.com/ddos/), [API Shield ↗](https://www.cloudflare.com/products/api-shield/), [Bot Management ↗](https://www.cloudflare.com/products/bot-management/) capabilities, etc, before deciding, based on security policy, whether to route the client request to the respective origin server(s). This is visualized in Figure 2.
+When a reverse proxy is introduced, the client still sends a DNS lookup request to its resolver, which is the first stop in the DNS lookup. In this case, the DNS resolver returns a vendor’s reverse proxy IP address to the client and the client then makes a request to the vendor’s reverse proxy. The cloud-based proxy solution can now provide additional security, performance, and reliability services like [CDN ↗︎](https://www.cloudflare.com/cdn/), [WAF ↗︎](https://www.cloudflare.com/waf/), [DDoS ↗︎](https://www.cloudflare.com/ddos/), [API Shield ↗︎](https://www.cloudflare.com/products/api-shield/), [Bot Management ↗︎](https://www.cloudflare.com/products/bot-management/) capabilities, etc, before deciding, based on security policy, whether to route the client request to the respective origin server(s). This is visualized in Figure 2.
 
 ![Figure 2: Client request routed through reverse proxy for additional security and performance services](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1461,height=632,format=webp/_astro/Figure_2.Ca4wC8bv.png "Figure 2")
 
@@ -61,11 +61,11 @@ In some cases, the vendor providing the reverse proxy also provides DNS services
 
 ## Cloudflare’s reverse proxy architecture and solution
 
-Cloudflare provides a reverse proxy architecture using its global [anycast network ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) for the respective security, performance, and reliability services it provides. Anycast is a network addressing and routing method in which incoming requests can be routed to a variety of different locations or ‘nodes’ advertising the same IP address space. Cloudflare is extremely performant and reliable thanks to anycast, as well as its global presence in [hundreds of cities worldwide ↗](https://www.cloudflare.com/network/). Cloudflare is also directly connected to 12,000 networks, including every major ISP, cloud provider, and enterprise, and within \~50 ms from 95% of the world’s Internet-connected population.
+Cloudflare provides a reverse proxy architecture using its global [anycast network ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) for the respective security, performance, and reliability services it provides. Anycast is a network addressing and routing method in which incoming requests can be routed to a variety of different locations or ‘nodes’ advertising the same IP address space. Cloudflare is extremely performant and reliable thanks to anycast, as well as its global presence in [hundreds of cities worldwide ↗︎](https://www.cloudflare.com/network/). Cloudflare is also directly connected to 12,000 networks, including every major ISP, cloud provider, and enterprise, and within \~50 ms from 95% of the world’s Internet-connected population.
 
 Cloudflare has one global network with every service running on every server in every Cloudflare data center. Since Cloudflare’s network uses anycast, the closest data center to the client will respond to the client request. This decreases latency while improving network resiliency, availability, and security due to the increased overall distribution of traffic across Cloudflare's network.
 
-[Cloudflare’s global anycast network ↗](https://www.cloudflare.com/network/) provides the following advantages:
+[Cloudflare’s global anycast network ↗︎](https://www.cloudflare.com/network/) provides the following advantages:
 
 - Incoming traffic is routed to the nearest data center with the capacity to process the requests efficiently.
 - Availability and redundancy is inherently provided. Since multiple nodes advertise the same IP address, if one node were to fail, requests are simply routed to another node in close proximity.
@@ -376,7 +376,7 @@ Most vendors also provide an option of directly connecting to their network. Dir
 
 *Figure 14*
 
-The above diagram describes origin connectivity through [Cloudflare Network Interconnect (CNI) ↗](https://blog.cloudflare.com/cloudflare-network-interconnect/) which allows you to connect your network infrastructure directly with Cloudflare and communicate only over those direct links. CNI allows customers to interconnect branch and headquarter locations directly with Cloudflare. Customers can interconnect with Cloudflare in one of three ways: over a private network interconnect (PNI) available at [Cloudflare peering facilities ↗](https://www.peeringdb.com/net/4224), via an IX at any of the [many global exchanges Cloudflare participates in ↗](https://bgp.he.net/AS13335#_ix), or through one of our [interconnection platform partners ↗](https://blog.cloudflare.com/cloudflare-network-interconnect-partner-program).
+The above diagram describes origin connectivity through [Cloudflare Network Interconnect (CNI) ↗︎](https://blog.cloudflare.com/cloudflare-network-interconnect/) which allows you to connect your network infrastructure directly with Cloudflare and communicate only over those direct links. CNI allows customers to interconnect branch and headquarter locations directly with Cloudflare. Customers can interconnect with Cloudflare in one of three ways: over a private network interconnect (PNI) available at [Cloudflare peering facilities ↗︎](https://www.peeringdb.com/net/4224), via an IX at any of the [many global exchanges Cloudflare participates in ↗︎](https://bgp.he.net/AS13335#_ix), or through one of our [interconnection platform partners ↗︎](https://blog.cloudflare.com/cloudflare-network-interconnect-partner-program).
 
 Cloudflare’s global network allows for ease of connecting to the network regardless of where your infrastructure and employees are.
 
@@ -400,7 +400,7 @@ Authenticated Origin Pulls helps ensure requests to your origin server come from
 
 This authentication becomes particularly important with the [Cloudflare Web Application Firewall (WAF)](https://developers.cloudflare.com/waf/). Together with the WAF, you can make sure that all traffic is evaluated before receiving a response from your origin server.
 
-If you want your domain to be [FIPS ↗](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards) compliant, you must upload your own certificate. This option is available for both [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) and [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) authenticated origin pulls.
+If you want your domain to be [FIPS ↗︎](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards) compliant, you must upload your own certificate. This option is available for both [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) and [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) authenticated origin pulls.
 
 ## Summary
 

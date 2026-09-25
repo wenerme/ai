@@ -18,7 +18,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 The `451` status code indicates that the server cannot deliver the requested resource due to legal actions or restrictions.
 
-For more details, refer to [RFC 7725 ↗](https://tools.ietf.org/html/rfc7725).
+For more details, refer to [RFC 7725 ↗︎](https://tools.ietf.org/html/rfc7725).
 
 ### Common use cases
 

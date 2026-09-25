@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/tutorials/serverless-timeseries-api-with-timescale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in [Timescale ↗](https://www.timescale.com/) (they make PostgreSQL faster in the cloud).
+In this tutorial, you will learn to build an API on Workers which will ingest and query time-series data stored in [Timescale ↗︎](https://www.timescale.com/) (they make PostgreSQL faster in the cloud).
 
-You will create and deploy a Worker function that exposes API routes for ingesting data, and use [Hyperdrive ↗](https://developers.cloudflare.com/hyperdrive/) to proxy your database connection from the edge and maintain a connection pool to prevent us having to make a new database connection on every request.
+You will create and deploy a Worker function that exposes API routes for ingesting data, and use [Hyperdrive ↗︎](https://developers.cloudflare.com/hyperdrive/) to proxy your database connection from the edge and maintain a connection pool to prevent us having to make a new database connection on every request.
 
 You will learn how to:
 
@@ -26,7 +26,7 @@ You will learn how to:
 - Connect your Worker to your Timescale database service with Hyperdrive.
 - Query your new API.
 
-You can learn more about Timescale by reading their [documentation ↗](https://docs.timescale.com/getting-started/latest/services/).
+You can learn more about Timescale by reading their [documentation ↗︎](https://docs.timescale.com/getting-started/latest/services/).
 
 ---
 
@@ -68,9 +68,9 @@ cd timescale-api
 
 Note
 
-If you have not signed up for Timescale, go to the [signup page ↗](https://timescale.com/signup) where you can start a free 30 day trial with no credit card.
+If you have not signed up for Timescale, go to the [signup page ↗︎](https://timescale.com/signup) where you can start a free 30 day trial with no credit card.
 
-If you are creating a new service, go to the [Timescale Console ↗](https://console.cloud.timescale.com/) and follow these steps:
+If you are creating a new service, go to the [Timescale Console ↗︎](https://console.cloud.timescale.com/) and follow these steps:
 
 1. Select **Create Service** by selecting the black plus in the upper right.
 2. Choose **Time Series** as the service type.
@@ -81,7 +81,7 @@ If you are creating a new service, go to the [Timescale Console ↗](https://con
 7. Copy the password which is displayed. You will not be able to retrieve this again.
 8. Select **I stored my password, go to service overview**.
 
-If you are using a service you created previously, you can retrieve your service connection information in the [Timescale Console ↗](https://console.cloud.timescale.com/):
+If you are using a service you created previously, you can retrieve your service connection information in the [Timescale Console ↗︎](https://console.cloud.timescale.com/):
 
 1. Select the service (database) you want Hyperdrive to connect to.
 2. Expand **Connection info**.
@@ -103,11 +103,11 @@ This will be referred to as **SERVICEURL** in the following sections.
 
 ## 3. Create your Hypertable
 
-Timescale allows you to convert regular PostgreSQL tables into [hypertables ↗](https://docs.timescale.com/use-timescale/latest/hypertables/), tables used to deal with time-series, events, or analytics data. Once you have made this change, Timescale will seamlessly manage the hypertable's partitioning, as well as allow you to apply other features like compression or continuous aggregates.
+Timescale allows you to convert regular PostgreSQL tables into [hypertables ↗︎](https://docs.timescale.com/use-timescale/latest/hypertables/), tables used to deal with time-series, events, or analytics data. Once you have made this change, Timescale will seamlessly manage the hypertable's partitioning, as well as allow you to apply other features like compression or continuous aggregates.
 
 Connect to your Timescale database using the Service URL you copied in the last step (it has the password embedded).
 
-If you are using the default PostgreSQL CLI tool [**psql** ↗](https://www.timescale.com/blog/how-to-install-psql-on-mac-ubuntu-debian-windows/) to connect, you would run psql like below (substituting your **Service URL** from the previous step). You could also connect using a graphical tool like [PgAdmin ↗](https://www.pgadmin.org/).
+If you are using the default PostgreSQL CLI tool [**psql** ↗︎](https://www.timescale.com/blog/how-to-install-psql-on-mac-ubuntu-debian-windows/) to connect, you would run psql like below (substituting your **Service URL** from the previous step). You could also connect using a graphical tool like [PgAdmin ↗︎](https://www.pgadmin.org/).
 
 ```sh
 psql <SERVICEURL>
@@ -153,7 +153,7 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 	"name": "timescale-api",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -171,7 +171,7 @@ This command outputs your Hyperdrive ID. You can now bind your Hyperdrive config
 name = "timescale-api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -327,7 +327,7 @@ In this tutorial, you have learned how to create a working example to ingest and
 ## Next steps
 
 - Learn more about [How Hyperdrive Works](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
-- Learn more about [Timescale ↗](https://timescale.com).
+- Learn more about [Timescale ↗︎](https://timescale.com).
 - Refer to the [troubleshooting guide](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) to debug common issues.
 
 Was this helpful?

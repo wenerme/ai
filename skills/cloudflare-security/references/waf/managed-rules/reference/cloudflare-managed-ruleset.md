@@ -276,7 +276,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 # Configure a ruleset at the zone level for the "http_request_firewall_managed" phase

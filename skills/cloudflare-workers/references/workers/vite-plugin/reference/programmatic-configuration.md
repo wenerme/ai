@@ -205,7 +205,7 @@ export default defineConfig({
 
 ## Configuration merging behavior
 
-The `config` option uses [defu ↗](https://github.com/unjs/defu) for merging configuration objects.
+The `config` option uses [defu ↗︎](https://github.com/unjs/defu) for merging configuration objects.
 
 - Object properties are recursively merged
 - Arrays are concatenated ( `config` values first, then existing values)

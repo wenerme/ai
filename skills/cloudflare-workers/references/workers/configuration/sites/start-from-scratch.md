@@ -22,7 +22,7 @@ This guide shows how to quickly start a new Workers Sites project from scratch.
 
 ## Getting started
 
-1. Ensure you have the latest version of [git ↗](https://git-scm.com/downloads) and [Node.js ↗](https://nodejs.org/en/download/) installed.
+1. Ensure you have the latest version of [git ↗︎](https://git-scm.com/downloads) and [Node.js ↗︎](https://nodejs.org/en/download/) installed.
 2. In your terminal, clone the `worker-sites-template` starter repository. The following example creates a project called `my-site`:
 
    ```sh

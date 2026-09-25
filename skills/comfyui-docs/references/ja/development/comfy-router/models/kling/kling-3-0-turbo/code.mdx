@@ -1,11 +1,11 @@
 ---
 title: "Comfy Router で Kling 3.0 Turbo を使用する"
 description: "Comfy Router 経由で kling/kling-3.0-turbo を呼び出します: エンドポイント、リクエスト形状、Router が返すレスポンスについて説明します。"
-translationSourceHash: a89dd905
+translationSourceHash: c0c1a97a
 translationFrom: development/comfy-router/models/kling/kling-3-0-turbo/code.mdx
 translationBlockHashes:
   "_intro": b67babfc
-  "Quick start": dcd57017
+  "Quick start": a2145573
   "Serving providers": 7ec93d4f
   "Schema": 2e661ab0
   "Examples": 0a9a8bbe
@@ -15,11 +15,13 @@ translationBlockHashes:
 
 ## クイックスタート
 
-[Comfy ワークスペース](https://platform.comfy.org/profile/api-keys?onboarding=router)でキーを作成し、`COMFY_API_KEY` としてエクスポートします。Python、TypeScript、Swift のスニペットは Comfy SDK（`pip install comfy-sdk`、`npm install @comfyorg/sdk`、および [`ComfySwiftSDK`](https://github.com/Comfy-Org/comfy-swift-sdk) Swift パッケージ）を使用しています。cURL のスニペットは、同じ呼び出しを生の HTTP で行うものです。
+[Comfy ワークスペース](https://platform.comfy.org/profile/api-keys?onboarding=router)でキーを作成し、`COMFY_API_KEY` としてエクスポートします。Python と TypeScript のスニペットは Comfy SDK（`pip install comfy-sdk` および `npm install @comfyorg/sdk`）を使用しています。cURL のスニペットは、同じ呼び出しを生の HTTP で行うものです。
 
 **モデル ID:** `kling/kling-3.0-turbo`
 
 **エンドポイント:** `POST https://api.comfy.org/v2/models/kling/kling-3.0-turbo`
+
+  
 
 ```python Python
 from comfy_sdk import Comfy
@@ -59,28 +61,6 @@ const { data } = await comfy.models.run("kling/kling-3.0-turbo", {
 console.log(data);
 ```
 
-```swift Swift
-import Foundation
-import ComfySwiftSDK
-
-// 環境変数から COMFY_API_KEY を読み取ります。
-// SDK は呼び出しごとに冪等性キーを発行し、自動リトライ時に再利用します。
-let client = ComfyCloudClient(apiKey: ProcessInfo.processInfo.environment["COMFY_API_KEY"]!)
-let result = try await client.models.run(
-    "kling/kling-3.0-turbo",
-    input: [
-        "prompt": "A neon-lit alley in the rain, slow dolly forward.",
-        "settings": [
-            "aspect_ratio": "16:9",
-            "duration": 5,
-            "resolution": "1080p",
-        ],
-    ]
-)
-
-print(result.output)
-```
-
 ```bash cURL
 curl https://api.comfy.org/v2/models/kling/kling-3.0-turbo \
   -H "X-API-Key: $COMFY_API_KEY" \
@@ -94,33 +74,37 @@ curl https://api.comfy.org/v2/models/kling/kling-3.0-turbo \
 同じボディを `POST https://api.comfy.org/v2/models/kling/kling-3.0-turbo/requests` に送信します。Router は実行が受け付けられ次第 `201` と `request_id` を返し、結果は準備が整った時点で、このプロセスからでも別のプロセスからでも取得できます。ステータス、キャンセル、結果の取得の詳細は [キュー配信](/ja/development/comfy-router/queue) を参照してください。
 
 ```python Python
-from comfy_sdk import Comfy
+import asyncio
+from comfy_sdk import AsyncComfy
 
 # 環境変数から COMFY_API_KEY を読み取ります。
 # submit() を呼び出すたびに独自の Idempotency-Key が発行され、自動リトライで再利用されます。
-with Comfy() as client:
-    handle = client.models.submit(
-        "kling/kling-3.0-turbo",
-        {
-            "prompt": "A neon-lit alley in the rain, slow dolly forward.",
-            "settings": {
-                "aspect_ratio": "16:9",
-                "duration": 5,
-                "resolution": "1080p",
+async def main():
+    async with AsyncComfy() as client:
+        handle = await client.models.submit(
+            "kling/kling-3.0-turbo",
+            {
+                "prompt": "A neon-lit alley in the rain, slow dolly forward.",
+                "settings": {
+                    "aspect_ratio": "16:9",
+                    "duration": 5,
+                    "resolution": "1080p",
+                },
             },
-        },
-    )
-    print("request_id:", handle.request_id)  # モデル ID と合わせて、別のプロセスに必要な情報はこれだけです
+        )
+        print("request_id:", handle.request_id)  # モデル ID と合わせて、別のプロセスに必要な情報はこれだけです
 
-    # リクエストが完了するまでポーリングし、サーバーが指定する Retry-After の秒数だけ待機します。
-    for update in handle.iter_events():
-        print(update.status, update.queue_position)
+        # リクエストが完了するまでポーリングし、サーバーが指定する Retry-After の秒数だけ待機します。
+        async for update in handle.iter_events():
+            print(update.status, update.queue_position)
 
-    # プロバイダー自身のペイロードで、models.run() が返すのと同じ値です。
-    # 失敗またはキャンセル済みのリクエストは、ここで型付きの Router エラーを発生させます。
-    result = handle.get()
+        # プロバイダー自身のペイロードで、models.run() が返すのと同じ値です。
+        # 失敗またはキャンセル済みのリクエストは、ここで型付きの Router エラーを発生させます。
+        result = await handle.get()
 
-print(result)
+    print(result)
+
+asyncio.run(main())
 ```
 
 ```typescript TypeScript
@@ -147,38 +131,6 @@ for await (const update of handle.events()) {
 const result = await handle.get();
 
 console.log(result.data);
-```
-
-```swift Swift
-import Foundation
-import ComfySwiftSDK
-
-// 環境変数から COMFY_API_KEY を読み取ります。
-// submit() を呼び出すたびに独自の Idempotency-Key が発行され、自動リトライで再利用されます。
-let client = ComfyCloudClient(apiKey: ProcessInfo.processInfo.environment["COMFY_API_KEY"]!)
-let handle = try await client.models.submit(
-    "kling/kling-3.0-turbo",
-    input: [
-        "prompt": "A neon-lit alley in the rain, slow dolly forward.",
-        "settings": [
-            "aspect_ratio": "16:9",
-            "duration": 5,
-            "resolution": "1080p",
-        ],
-    ]
-)
-print("requestId:", handle.requestId)  // モデル ID と合わせて、別のプロセスに必要な情報はこれだけです
-
-// リクエストが完了するまでポーリングし、サーバーが指定する Retry-After の秒数だけ待機します。
-for try await update in handle.events() {
-    print(update.state.rawValue, update.queuePosition.map(String.init) ?? "unknown")
-}
-
-// プロバイダー自身のペイロードで、models.run() が返すのと同じ値です。
-// 失敗またはキャンセル済みのリクエストは、ここで型付きの Router エラーをスローします。
-let result = try await handle.result()
-
-print(result.output)
 ```
 
 ```bash cURL

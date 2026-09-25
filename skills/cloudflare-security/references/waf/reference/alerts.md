@@ -31,7 +31,7 @@ For instructions on how to set up a notification for a security alert, refer to 
 
 ## Alert logic
 
-Security alerts use a static threshold together with a [z-score ↗](https://en.wikipedia.org/wiki/Standard_score) calculation over the last six hours and five-minute buckets of events. An alert is triggered whenever the z-score value is above 3.5 and the spike crosses a threshold of 200 security events. You will not receive duplicate alerts within the same two-hour time frame.
+Security alerts use a static threshold together with a [z-score ↗︎](https://en.wikipedia.org/wiki/Standard_score) calculation over the last six hours and five-minute buckets of events. An alert is triggered whenever the z-score value is above 3.5 and the spike crosses a threshold of 200 security events. You will not receive duplicate alerts within the same two-hour time frame.
 
 ## Alert types
 

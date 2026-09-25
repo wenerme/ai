@@ -33,7 +33,7 @@ Before getting started, you will need:
 
 ### Enable bucket lock via Wrangler
 
-1. Install [`npm` ↗](https://docs.npmjs.com/getting-started).
+1. Install [`npm` ↗︎](https://docs.npmjs.com/getting-started).
 2. Install [Wrangler, the Developer Platform CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 3. Log in to Wrangler with the [`wrangler login` command](https://developers.cloudflare.com/workers/wrangler/commands/general/#login).
 4. Add a bucket lock rule to your bucket by running the [`r2 bucket lock add` command](https://developers.cloudflare.com/workers/wrangler/commands/r2/#r2-bucket-lock-add).

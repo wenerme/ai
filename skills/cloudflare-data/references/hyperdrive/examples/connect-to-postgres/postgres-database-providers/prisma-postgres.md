@@ -16,7 +16,7 @@ Connect Hyperdrive to a Prisma Postgres database.
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/prisma-postgres/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example shows you how to connect Hyperdrive to a [Prisma Postgres ↗](https://www.prisma.io/postgres) database.
+This example shows you how to connect Hyperdrive to a [Prisma Postgres ↗︎](https://www.prisma.io/postgres) database.
 
 ## 1. Allow Hyperdrive access
 
@@ -24,7 +24,7 @@ You can connect Hyperdrive to any existing Prisma Postgres database by using you
 
 ### Prisma Data Platform
 
-1. Go to the [**Prisma Data Platform Console** ↗](https://console.prisma.io/) and select the project (database) you wish to connect to.
+1. Go to the [**Prisma Data Platform Console** ↗︎](https://console.prisma.io/) and select the project (database) you wish to connect to.
 2. Select **Connect to your database** > **Any client**.
 3. Select **Generate database credentials**. Copy the connection string for your Prisma Postgres database.
 4. Edit the connection string to make it compatible with Hyperdrive.
@@ -38,7 +38,7 @@ postgres://USERNAME:PASSWORD@HOSTNAME_OR_IP_ADDRESS:PORT/database_name
 
 Note
 
-An alternative to the Prisma Data Platform is to use the [`create-db` ↗](https://www.npmjs.com/package/create-db) package. This package will generate a quick temporary Prisma Postgres database for you to use.
+An alternative to the Prisma Data Platform is to use the [`create-db` ↗︎](https://www.npmjs.com/package/create-db) package. This package will generate a quick temporary Prisma Postgres database for you to use.
 
 ```bash
 npx create-db@latest
@@ -87,7 +87,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -106,7 +106,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -175,7 +175,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -188,7 +188,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -235,7 +235,7 @@ export default {
 
 ## 4. Configure Hyperdrive maximum connections
 
-Prisma Postgres has limits on the number of direct connections that can be made to the database using Hyperdrive. Refer to [Prisma Postgres limits ↗](https://www.prisma.io/docs/postgres/database/direct-connections?utm_source=website&utm_medium=postgres-page#connection-limit).
+Prisma Postgres has limits on the number of direct connections that can be made to the database using Hyperdrive. Refer to [Prisma Postgres limits ↗︎](https://www.prisma.io/docs/postgres/database/direct-connections?utm_source=website&utm_medium=postgres-page#connection-limit).
 
 Note
 
@@ -246,7 +246,7 @@ There are two limits to consider here.
 
 Hyperdrive's origin connection limit should be lower than the Prisma Postgres connection limit, since Hyperdrive's origin connection limit is a soft limit, and Hyperdrive may create more connections if there are network disruptions that prevent existing connections from being used.
 
-1. From the [Cloudflare Hyperdrive dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive), select your newly created Hyperdrive configuration.
+1. From the [Cloudflare Hyperdrive dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive), select your newly created Hyperdrive configuration.
 2. Go to **Settings**.
 3. In **Origin connection limit**, select **Edit Settings**, and set your maximum connections to a number that is lower than your Prisma connection limit.
 

@@ -18,9 +18,9 @@ Note
 
 For compatibility dates of `2026-08-04` or later, Workers enables both `nodejs_compat` and `nodejs_compat_v2` by default. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date. For earlier dates, add `nodejs_compat` to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in. For instructions to turn off Node.js compatibility, refer to the [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-The [Node.js streams API ↗](https://nodejs.org/api/stream.html) is the original API for working with streaming data in JavaScript, predating the [WHATWG ReadableStream standard ↗](https://streams.spec.whatwg.org/). A stream is an abstract interface for working with streaming data in Node.js. Streams can be readable, writable, or both. All streams are instances of [EventEmitter](https://developers.cloudflare.com/workers/runtime-apis/nodejs/eventemitter/).
+The [Node.js streams API ↗︎](https://nodejs.org/api/stream.html) is the original API for working with streaming data in JavaScript, predating the [WHATWG ReadableStream standard ↗︎](https://streams.spec.whatwg.org/). A stream is an abstract interface for working with streaming data in Node.js. Streams can be readable, writable, or both. All streams are instances of [EventEmitter](https://developers.cloudflare.com/workers/runtime-apis/nodejs/eventemitter/).
 
-Where possible, you should use the [WHATWG standard "Web Streams" API ↗](https://streams.spec.whatwg.org/), which is [supported in Workers ↗](https://streams.spec.whatwg.org/).
+Where possible, you should use the [WHATWG standard "Web Streams" API ↗︎](https://streams.spec.whatwg.org/), which is [supported in Workers ↗︎](https://streams.spec.whatwg.org/).
 
 ```js
 import { Readable, Transform } from "node:stream";
@@ -80,7 +80,7 @@ export default {
 };
 ```
 
-Refer to the [Node.js documentation for `stream` ↗](https://nodejs.org/api/stream.html) for more information.
+Refer to the [Node.js documentation for `stream` ↗︎](https://nodejs.org/api/stream.html) for more information.
 
 Was this helpful?
 

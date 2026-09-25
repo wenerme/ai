@@ -26,7 +26,7 @@ This tutorial covers how to build a [Cloudflare R2 bucket](https://developers.cl
 
 ## Create a Cloudflare R2 bucket
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **R2 Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to the **R2 Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Create bucket**.
 3. Enter an identifiable name for the bucket, then select **Create bucket**.
 
@@ -43,7 +43,7 @@ This tutorial covers how to build a [Cloudflare R2 bucket](https://developers.cl
 
 ## Connect a Zero Trust Logpush job
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Logs**. Select **Manage Logpush**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Insights** > **Logs**. Select **Manage Logpush**.
 2. Select **Connect a service**.
 3. Choose which data sets and fields you want to send to your bucket. Select **Next**.
 4. Select **S3 Compatible**.

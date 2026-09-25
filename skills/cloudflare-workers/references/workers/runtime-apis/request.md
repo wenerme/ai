@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/request/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [`Request` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request) interface represents an HTTP request and is part of the [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
+The [`Request` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request) interface represents an HTTP request and is part of the [Fetch API](https://developers.cloudflare.com/workers/runtime-apis/fetch/).
 
 ## Background
 
@@ -66,9 +66,9 @@ An object containing properties that you want to apply to the request.
 - `cf` RequestInitCfProperties optional
   - Cloudflare-specific properties that can be set on the `Request` that control how Cloudflare’s global network handles the request.
 - `method` `string` optional
-  - The HTTP request method. The default is `GET`. In Workers, all [HTTP request methods ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) are supported, except for [`CONNECT` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/CONNECT).
+  - The HTTP request method. The default is `GET`. In Workers, all [HTTP request methods ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods) are supported, except for [`CONNECT` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/CONNECT).
 - `headers` Headers optional
-  - A [`Headers` object ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
+  - A [`Headers` object ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
 - `body` string | ReadableStream | FormData | URLSearchParams optional
   - The request body, if any.
   - Note that a request using the GET or HEAD method cannot have a body.
@@ -89,7 +89,7 @@ fetch(event.request, { cf: { scrapeShield: false } })
 Invalid or incorrectly-named keys in the `cf` object will be silently ignored. Consider using TypeScript and generating types by running [`wrangler types`](https://developers.cloudflare.com/workers/languages/typescript/#generate-types) to ensure proper use of the `cf` object.
 
 - `apps` `boolean` optional
-  - Whether [Cloudflare Apps ↗](https://www.cloudflare.com/apps/) should be enabled for this request. Defaults to `true`.
+  - Whether [Cloudflare Apps ↗︎](https://www.cloudflare.com/apps/) should be enabled for this request. Defaults to `true`.
 - `cacheEverything` `boolean` optional
   - Treats all content as static and caches all [file types](https://developers.cloudflare.com/cache/concepts/default-cache-behavior#default-cached-file-extensions) beyond the Cloudflare default cached content. Respects cache headers from the origin web server. This is equivalent to setting the Page Rule [**Cache Level** (to **Cache Everything**)](https://developers.cloudflare.com/rules/page-rules/reference/settings/). Defaults to `false`. This option applies to `GET` and `HEAD` request methods only.
 - `cacheKey` `string` optional
@@ -105,13 +105,13 @@ Invalid or incorrectly-named keys in the `cf` object will be silently ignored. C
 - `image` Object | null optional
   - Enables [Image Resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) for this request. The possible values are described in [Transform images via Workers](https://developers.cloudflare.com/images/optimization/transformations/transform-via-workers/) documentation.
 - `polish` `string` optional
-  - Sets [Polish ↗](https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati/) mode. The possible values are `lossy`, `lossless` or `off`.
+  - Sets [Polish ↗︎](https://blog.cloudflare.com/introducing-polish-automatic-image-optimizati/) mode. The possible values are `lossy`, `lossless` or `off`.
 - `resolveOverride` `string` optional
   - Directs the request to an alternate origin server by overriding the DNS lookup. The value of `resolveOverride` specifies an alternate hostname which will be used when determining the origin IP address, instead of using the hostname specified in the URL. The `Host` header of the request will still match what is in the URL. Thus, `resolveOverride` allows a request to be sent to a different server than the URL / `Host` header specifies. However, `resolveOverride` will only take effect if both the URL host and the host specified by `resolveOverride` are within your zone. If either specifies a host from a different zone / domain, then the option will be ignored for security reasons. If you need to direct a request to a host outside your zone (while keeping the `Host` header pointing within your zone), first create a CNAME record within your zone pointing to the outside host, and then set `resolveOverride` to point at the CNAME record. Note that, for security reasons, it is not possible to set the `Host` header to specify a host outside of your zone unless the request is actually being sent to that host.
 - `scrapeShield` `boolean` optional
-  - Whether [ScrapeShield ↗](https://blog.cloudflare.com/introducing-scrapeshield-discover-defend-dete/) should be enabled for this request, if otherwise configured for this zone. Defaults to `true`.
+  - Whether [ScrapeShield ↗︎](https://blog.cloudflare.com/introducing-scrapeshield-discover-defend-dete/) should be enabled for this request, if otherwise configured for this zone. Defaults to `true`.
 - `webp` `boolean` optional
-  - Enables or disables [WebP ↗](https://blog.cloudflare.com/a-very-webp-new-year-from-cloudflare/) image format in [Polish](https://developers.cloudflare.com/images/polish/).
+  - Enables or disables [WebP ↗︎](https://blog.cloudflare.com/a-very-webp-new-year-from-cloudflare/) image format in [Polish](https://developers.cloudflare.com/images/polish/).
 
 #### The `cf.vary` property
 
@@ -195,7 +195,7 @@ All properties of an incoming `Request` object (the request you receive from the
   - An object containing properties about the incoming request provided by Cloudflare’s global network.
   - This property is read-only (unless created from an existing `Request`). To modify its values, pass in the new values on the [`cf` key of the `init` options argument](https://developers.cloudflare.com/workers/runtime-apis/request/#the-cf-property-requestinitcfproperties) when creating a new `Request` object.
 - `headers` Headers read-only
-  - A [`Headers` object ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
+  - A [`Headers` object ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Headers).
   - Compared to browsers, Cloudflare Workers imposes very few restrictions on what headers you are allowed to send. For example, a browser will not allow you to set the `Cookie` header, since the browser is responsible for handling cookies itself. Workers, however, has no special understanding of cookies, and treats the `Cookie` header like any other header.
 
   Caution
@@ -276,7 +276,7 @@ All properties of an incoming `Request` object (the request you receive from the
 
 ### `IncomingRequestCfProperties`
 
-In addition to the properties on the standard [`Request` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare’s global network.
+In addition to the properties on the standard [`Request` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Request) object, the `request.cf` object on an inbound `Request` contains information about the request provided by Cloudflare’s global network.
 
 All plans have access to:
 
@@ -293,7 +293,7 @@ All plans have access to:
 - `clientTcpRtt` number | undefined
   - The smoothed round-trip time (RTT) between the client and Cloudflare for TCP connections, in milliseconds. Only present when the client connected over TCP (HTTP/1 and HTTP/2). For example, `22`.
 - `colo` string
-  - The three-letter [`IATA` ↗](https://en.wikipedia.org/wiki/IATA_airport_code) airport code of the data center that the request hit, for example, `"DFW"`.
+  - The three-letter [`IATA` ↗︎](https://en.wikipedia.org/wiki/IATA_airport_code) airport code of the data center that the request hit, for example, `"DFW"`.
 - `country` string | null
   - Country of the incoming request. The two-letter country code in the request. This is the same value as that provided in the `CF-IPCountry` header, for example, `"US"`.
 - `edgeL4` Object | undefined
@@ -318,9 +318,9 @@ All plans have access to:
 - `tlsClientExtensionsSha1Le` string
   - The SHA-1 hash (Base64-encoded) of the TLS client extensions sent during the handshake, encoded in little-endian format. For example, `"7zIpdDU5pvFPPBI2/PCzqbaXnRA="`.
 - `tlsClientHelloLength` string
-  - The length of the client hello message sent in a [TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). For example, `"508"`. Specifically, the length of the bytestring of the client hello.
+  - The length of the client hello message sent in a [TLS handshake ↗︎](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). For example, `"508"`. Specifically, the length of the bytestring of the client hello.
 - `tlsClientRandom` string
-  - The value of the 32-byte random value provided by the client in a [TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). Refer to [RFC 8446 ↗](https://datatracker.ietf.org/doc/html/rfc8446#section-4.1.2) for more details.
+  - The value of the 32-byte random value provided by the client in a [TLS handshake ↗︎](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). Refer to [RFC 8446 ↗︎](https://datatracker.ietf.org/doc/html/rfc8446#section-4.1.2) for more details.
 - `tlsVersion` string
   - The TLS version of the connection to Cloudflare, for example, `TLSv1.3`.
 - `city` string | null
@@ -336,9 +336,9 @@ All plans have access to:
 - `metroCode` string | null
   - Metro code (DMA) of the incoming request, for example, `"635"`.
 - `region` string | null
-  - If known, the [ISO 3166-2 ↗](https://en.wikipedia.org/wiki/ISO_3166-2) name for the first level region associated with the IP address of the incoming request, for example, `"Texas"`.
+  - If known, the [ISO 3166-2 ↗︎](https://en.wikipedia.org/wiki/ISO_3166-2) name for the first level region associated with the IP address of the incoming request, for example, `"Texas"`.
 - `regionCode` string | null
-  - If known, the [ISO 3166-2 ↗](https://en.wikipedia.org/wiki/ISO_3166-2) code for the first-level region associated with the IP address of the incoming request, for example, `"TX"`.
+  - If known, the [ISO 3166-2 ↗︎](https://en.wikipedia.org/wiki/ISO_3166-2) code for the first-level region associated with the IP address of the incoming request, for example, `"TX"`.
 - `timezone` string
   - Timezone of the incoming request, for example, `"America/Chicago"`.
 
@@ -357,9 +357,9 @@ These methods are only available on an instance of a `Request` object or through
 - `clone()` : Request
   - Creates a copy of the `Request` object.
 - `arrayBuffer()` : Promise\<ArrayBuffer>
-  - Returns a promise that resolves with an [`ArrayBuffer` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) representation of the request body.
+  - Returns a promise that resolves with an [`ArrayBuffer` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) representation of the request body.
 - `formData()` : Promise\<FormData>
-  - Returns a promise that resolves with a [`FormData` ↗](https://developer.mozilla.org/en-US/docs/Web/API/FormData) representation of the request body.
+  - Returns a promise that resolves with a [`FormData` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/FormData) representation of the request body.
 - `json()` : Promise\<Object>
   - Returns a promise that resolves with a JSON representation of the request body.
 - `text()` : Promise\<string>

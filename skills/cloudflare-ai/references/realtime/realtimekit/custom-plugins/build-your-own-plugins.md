@@ -188,14 +188,14 @@ For richer, full-featured collaboration, you can pair your plugin with a dedicat
 
 | Framework | Description | Notes |
 | --- | --- | --- |
-| **[Collab-Kit ↗](https://docs.collab-kit.com/)** | Full-featured SDK for building collaborative apps. | Beta |
-| **[Party-Kit ↗](https://docs.partykit.io/)** | Low-level framework for building collaborative applications. | Open source |
+| **[Collab-Kit ↗︎](https://docs.collab-kit.com/)** | Full-featured SDK for building collaborative apps. | Beta |
+| **[Party-Kit ↗︎](https://docs.partykit.io/)** | Low-level framework for building collaborative applications. | Open source |
 
 ## Next steps
 
 - Review the [Plugins](https://developers.cloudflare.com/realtime/realtimekit/core/plugins/) API for the complete `Plugin` and `Plugins` reference.
 - Use [collaborative stores](https://developers.cloudflare.com/realtime/realtimekit/collaborative-stores/) to build richer shared experiences.
-- Get started with the [RealtimeKit plugins example ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/plugins) for a working React implementation.
+- Get started with the [RealtimeKit plugins example ↗︎](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/plugins) for a working React implementation.
 
 Was this helpful?
 

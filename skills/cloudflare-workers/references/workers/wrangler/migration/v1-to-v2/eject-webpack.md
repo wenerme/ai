@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 This guide describes the steps to migrate a webpack project from Wrangler v1 to Wrangler v2. After completing this guide, [update your Wrangler version](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/update-v1-to-v2/).
 
-Previous versions of Wrangler offered rudimentary support for [webpack ↗](https://webpack.js.org/) with the `type` and `webpack_config` keys in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). Starting with Wrangler v2, Wrangler no longer supports the `type` and `webpack_config` keys, but you can still use webpack with your Workers.
+Previous versions of Wrangler offered rudimentary support for [webpack ↗︎](https://webpack.js.org/) with the `type` and `webpack_config` keys in the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). Starting with Wrangler v2, Wrangler no longer supports the `type` and `webpack_config` keys, but you can still use webpack with your Workers.
 
 As a developer using webpack with Workers, you may be in one of four categories:
 
@@ -25,7 +25,7 @@ As a developer using webpack with Workers, you may be in one of four categories:
 3. [I use `type = webpack` and `webpack_config = <path/to/webpack.config.js>` to handle JSX, TypeScript, WebAssembly, HTML files, and other non-standard filetypes.](#i-use-type--webpack-and-webpack_config--pathtowebpackconfigjs-to-handle-jsx-typescript-webassembly-html-files-and-other-non-standard-filetypes).
 4. [I use `type = webpack` and `webpack_config = <path/to/webpack.config.js>` to perform code-transforms and/or other code-modifying functionality.](#i-use-type--webpack-and-webpack_config--pathtowebpackconfigjs-to-perform-code-transforms-andor-other-code-modifying-functionality).
 
-If you do not see yourself represented, [file an issue ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose) and we can assist you with your specific situation and improve this guide for future readers.
+If you do not see yourself represented, [file an issue ↗︎](https://github.com/cloudflare/workers-sdk/issues/new/choose) and we can assist you with your specific situation and improve this guide for future readers.
 
 ### I use `[build]` to run webpack (or another bundler) external to Wrangler.
 
@@ -47,9 +47,9 @@ You should remove the `type` and `webpack_config` keys from your Wrangler file.
 
 Wrangler v2 drops support for project types, including `type = webpack` and configuration via the `webpack_config` key. If your webpack configuration performs operations beyond adding loaders (for example, for TypeScript) you will need to maintain your custom webpack configuration. In the long term, you should [migrate to an external `[build]` process](https://developers.cloudflare.com/workers/wrangler/custom-builds/). In the short term, it is still possible to reproduce Wrangler v1's build steps in newer versions of Wrangler by following the instructions below.
 
-1. Add [wranglerjs-compat-webpack-plugin ↗](https://www.npmjs.com/package/wranglerjs-compat-webpack-plugin) as a `devDependency`.
+1. Add [wranglerjs-compat-webpack-plugin ↗︎](https://www.npmjs.com/package/wranglerjs-compat-webpack-plugin) as a `devDependency`.
 
-[wrangler-js ↗](https://www.npmjs.com/package/wrangler-js), shipped as a separate library from [Wrangler v1 ↗](https://www.npmjs.com/package/@cloudflare/wrangler/v/1.19.11), is a Node script that configures and executes [webpack 4 ↗](https://unpkg.com/browse/wrangler-js@0.1.11/package.json) for you. When you set `type = webpack`, Wrangler v1 would execute this script for you. We have ported the functionality over to a new package, [wranglerjs-compat-webpack-plugin ↗](https://www.npmjs.com/package/wranglerjs-compat-webpack-plugin), which you can use as a [webpack plugin ↗](https://v4.webpack.js.org/configuration/plugins/).
+[wrangler-js ↗︎](https://www.npmjs.com/package/wrangler-js), shipped as a separate library from [Wrangler v1 ↗︎](https://www.npmjs.com/package/@cloudflare/wrangler/v/1.19.11), is a Node script that configures and executes [webpack 4 ↗︎](https://unpkg.com/browse/wrangler-js@0.1.11/package.json) for you. When you set `type = webpack`, Wrangler v1 would execute this script for you. We have ported the functionality over to a new package, [wranglerjs-compat-webpack-plugin ↗︎](https://www.npmjs.com/package/wranglerjs-compat-webpack-plugin), which you can use as a [webpack plugin ↗︎](https://v4.webpack.js.org/configuration/plugins/).
 
 To do that, you will need to add it as a dependency:
 

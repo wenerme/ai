@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/render/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare partners with [Render ↗](https://render.com) to provide Render customers’ web services and static sites with Cloudflare’s performance and security benefits.
+Cloudflare partners with [Render ↗︎](https://render.com) to provide Render customers’ web services and static sites with Cloudflare’s performance and security benefits.
 
 If you use Render and also have a Cloudflare plan, you can use your own Cloudflare zone to proxy web traffic to your zone first, then Render's (the SaaS Provider) zone second. This configuration option is called [O2O](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/).
 
@@ -38,7 +38,7 @@ To enable O2O for a specific hostname within a Cloudflare zone, [create](https:/
 
 Note
 
-For more details about Render setup, refer to their [documentation ↗](https://render.com/docs/configure-cloudflare-dns).
+For more details about Render setup, refer to their [documentation ↗︎](https://render.com/docs/configure-cloudflare-dns).
 
 If you cannot activate your domain using [proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/), reach out to your Cloudflare account team or your Render support team.
 

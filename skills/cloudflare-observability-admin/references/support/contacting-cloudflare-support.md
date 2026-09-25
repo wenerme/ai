@@ -27,7 +27,7 @@ Caution
 
 **Do not share** any sensitive information, such as passwords, credit card numbers, private keys, or API keys with Cloudflare Support.
 
-Before notifying Cloudflare of an issue with your site, refer to the  [Cloudflare Status Page ↗](https://www.cloudflarestatus.com/). If reporting issues with your site, ensure to provide adequate details in the support case *(refer to [Getting help with an issue](#getting-help-with-an-issue) for more information)*.
+Before notifying Cloudflare of an issue with your site, refer to the  [Cloudflare Status Page ↗︎](https://www.cloudflarestatus.com/). If reporting issues with your site, ensure to provide adequate details in the support case *(refer to [Getting help with an issue](#getting-help-with-an-issue) for more information)*.
 
 ---
 
@@ -37,9 +37,9 @@ As a Cloudflare customer, you can contact Cloudflare for support via the communi
 
 |  | Enterprise | Business | Pro | Free |
 | --- | --- | --- | --- | --- |
-| [Community ↗](https://community.cloudflare.com/)<br>Join the community to ask basic troubleshooting questions and to view the latest resources (such as tips for resolving common issues and configuration guidance). | Yes | Yes | Recommended | Recommended |
-| [Discord ↗](https://discord.cloudflare.com/)<br>Join the Discord community to ask basic troubleshooting questions (mainly focused on the Developer Platform). | Yes | Yes | Recommended | Recommended |
-| [Support case ↗](https://dash.cloudflare.com/?to=/:account/support)<br>Use to troubleshoot specific issues or errors. Response times depend on your plan. | Yes | Yes | Yes | No<sup>[1](#user-content-fn-1)</sup> |
+| [Community ↗︎](https://community.cloudflare.com/)<br>Join the community to ask basic troubleshooting questions and to view the latest resources (such as tips for resolving common issues and configuration guidance). | Yes | Yes | Recommended | Recommended |
+| [Discord ↗︎](https://discord.cloudflare.com/)<br>Join the Discord community to ask basic troubleshooting questions (mainly focused on the Developer Platform). | Yes | Yes | Recommended | Recommended |
+| [Support case ↗︎](https://dash.cloudflare.com/?to=/:account/support)<br>Use to troubleshoot specific issues or errors. Response times depend on your plan. | Yes | Yes | Yes | No<sup>[1](#user-content-fn-1)</sup> |
 | **Chat**<br>Use to troubleshoot specific issues or errors. Response times depend on your plan. | Yes | Yes | No | No |
 | **Emergency Phone** <br>Use phone support to reach out during emergencies such as site outages or DDoS attacks. | Yes | No | No | No |
 
@@ -150,7 +150,7 @@ The maximum file size is **20 MB**. If you need to share a larger file, please p
 
 When sending Cloudflare Support packet captures, please do the following:
 
-1. Filter for relevant traffic. Use a display filter and then save [export specified packets ↗](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html) to reduce the file size.
+1. Filter for relevant traffic. Use a display filter and then save [export specified packets ↗︎](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html) to reduce the file size.
 2. Include the name of the device and interface/tunnel in the file name.
 3. Describe what each packet capture shows.
 
@@ -240,7 +240,7 @@ Below are definitions of the priority levels Cloudflare assigns to cases and the
 
 ### SLOs for other plans
 
-- Pay-as-you-go and Free customers - No SLAs are offered, but customers are responded to in the order in which their request is received. For a quicker answer, we highly recommend searching or posting on our  [Community forums ↗](https://community.cloudflare.com/).
+- Pay-as-you-go and Free customers - No SLAs are offered, but customers are responded to in the order in which their request is received. For a quicker answer, we highly recommend searching or posting on our  [Community forums ↗︎](https://community.cloudflare.com/).
 
 ## Supported languages
 

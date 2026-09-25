@@ -25,7 +25,7 @@ The Cloudflare One Client allows organizations to have granular control over the
 | Connection | Protocol | Purpose |
 | --- | --- | --- |
 | WARP tunnel ([via WireGuard or MASQUE](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol)) | UDP | Send IP packets to Gateway for network policy enforcement, HTTP policy enforcement, and private network access. |
-| [DoH ↗](https://www.cloudflare.com/learning/dns/dns-over-tls/) | HTTPS | Send DNS requests to Gateway for DNS policy enforcement. The DoH connection is maintained inside of the WARP tunnel. |
+| [DoH ↗︎](https://www.cloudflare.com/learning/dns/dns-over-tls/) | HTTPS | Send DNS requests to Gateway for DNS policy enforcement. The DoH connection is maintained inside of the WARP tunnel. |
 | Device orchestration | HTTPS | Perform user registration, check device posture, apply device client profile settings. |
 
 ```
@@ -339,7 +339,7 @@ The Cloudflare One Client modifies the operating system firewall to enforce your
 
 ## iOS, Android, and ChromeOS
 
-On iOS and Android/ChromeOS, the Cloudflare One Agent installs itself as a VPN client to capture and route all traffic. The app is built on the official VPN framework for iOS and Android. For more information, refer to Apple's [NetworkExtension documentation ↗](https://developer.apple.com/documentation/networkextension) and Google's [Android developer documentation ↗](https://developer.android.com/guide/topics/connectivity/vpn).
+On iOS and Android/ChromeOS, the Cloudflare One Agent installs itself as a VPN client to capture and route all traffic. The app is built on the official VPN framework for iOS and Android. For more information, refer to Apple's [NetworkExtension documentation ↗︎](https://developer.apple.com/documentation/networkextension) and Google's [Android developer documentation ↗︎](https://developer.android.com/guide/topics/connectivity/vpn).
 
 Note that ChromeOS runs the Android app in a virtual machine, rather than running a native Chrome app.
 

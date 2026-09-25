@@ -22,7 +22,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -56,7 +56,7 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Targets are protocol-agnostic, meaning that you do not need to define a new target for each protocol that runs on the server. To create a new target:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Targets**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Targets**.
 2. Select **Add a target**.
 3. In **Target hostname**, enter a user-friendly name for the target. We recommend using the server hostname, for example `production-server`. The target hostname does not need to be unique and can be reused for multiple targets. Hostnames are used to define the targets secured by an Access application; they are not used for DNS address resolution.<details><summary>
 
@@ -109,9 +109,9 @@ Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api_token):
    - `Zero Trust Write`
-2. Configure the [`cloudflare_zero_trust_infrastructure_access_target` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_infrastructure_access_target) resource:
+2. Configure the [`cloudflare_zero_trust_infrastructure_access_target` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_infrastructure_access_target) resource:
 
    ```tf
    resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {
@@ -130,7 +130,7 @@ The following example requires Cloudflare provider version `>=4.45.0`.
    }
    ```
 
-   To manage tags with Terraform, use the [`cloudflare_resource_tag` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/resource_tag) resource.
+   To manage tags with Terraform, use the [`cloudflare_resource_tag` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/resource_tag) resource.
 
 Next, create an Access application to secure the target.
 
@@ -148,7 +148,7 @@ Each tag key can only appear once on a target. For example, a target can have `e
 
 You can filter and sort targets by tag values.
 
-In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Targets**. Use the filter and sort controls to narrow the list by tag key or value.
+In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Targets**. Use the filter and sort controls to narrow the list by tag key or value.
 
 To filter targets by tag, add one or more `tag` query parameters:
 
@@ -170,7 +170,7 @@ The sort parameter also uses `:` in `order=tag:<key>` because it identifies the 
 
 ## 2. Add an infrastructure application
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **Infrastructure**.
 4. Enter any name for the application.
@@ -284,9 +284,9 @@ Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api_token):
    - `Access: Apps and Policies Write`
-2. Use the [`cloudflare_zero_trust_access_application` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_access_application) resource to create an infrastructure application:
+2. Use the [`cloudflare_zero_trust_access_application` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_access_application) resource to create an infrastructure application:
 
    ```tf
    resource "cloudflare_zero_trust_access_application" "infra-app" {
@@ -306,7 +306,7 @@ The following example requires Cloudflare provider version `>=4.45.0`.
    ```
 
    To match targets by tag, define `include`, `require`, or `exclude` blocks with `tags` selectors.
-3. Use the [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_access_policy) resource to add an infrastructure policy to the application:
+3. Use the [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_access_policy) resource to add an infrastructure policy to the application:
 
    ```tf
    resource "cloudflare_zero_trust_access_policy" "infra-app-policy" {
@@ -336,7 +336,7 @@ The targets in this application are now secured by your infrastructure policies.
 
 By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). To evaluate Access applications before or after specific Gateway policies:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
 
    | Selector | Operator | Value | Action |
    | --- | --- | --- | --- |

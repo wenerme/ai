@@ -75,7 +75,7 @@ If you want to automatically issue certificates for all proxied hostnames withou
 
 ### Domain name length limits
 
-These limits are defined by internet standards ([RFC 1035 ↗](https://www.rfc-editor.org/rfc/rfc1035) and [RFC 5280 ↗](https://www.rfc-editor.org/rfc/rfc5280)) and apply to all certificates, regardless of the certificate authority:
+These limits are defined by internet standards ([RFC 1035 ↗︎](https://www.rfc-editor.org/rfc/rfc1035) and [RFC 5280 ↗︎](https://www.rfc-editor.org/rfc/rfc5280)) and apply to all certificates, regardless of the certificate authority:
 
 - **Total domain length**: The entire domain name cannot exceed 253 characters.
 - **Label length**: Each individual level (the text between dots) cannot exceed 63 characters.
@@ -94,7 +94,7 @@ A single advanced certificate can include up to **50 hosts** (SANs) total. The z
 
 ### Consistency across certificate authorities
 
-The character-length limits above (253-character total, 63-character label, 64-character CN) are defined by IETF standards ([RFC 1035 ↗](https://www.rfc-editor.org/rfc/rfc1035), [RFC 5280 ↗](https://www.rfc-editor.org/rfc/rfc5280)) and apply uniformly across all CAs. Other constraints, such as the per-certificate SAN count and supported validity periods, are Cloudflare advanced certificates limits or vary by CA. Refer to [Certificate authorities](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) for CA-specific details.
+The character-length limits above (253-character total, 63-character label, 64-character CN) are defined by IETF standards ([RFC 1035 ↗︎](https://www.rfc-editor.org/rfc/rfc1035), [RFC 5280 ↗︎](https://www.rfc-editor.org/rfc/rfc5280)) and apply uniformly across all CAs. Other constraints, such as the per-certificate SAN count and supported validity periods, are Cloudflare advanced certificates limits or vary by CA. Refer to [Certificate authorities](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) for CA-specific details.
 
 ## Related resources
 

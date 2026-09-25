@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/anthropic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Anthropic ↗](https://www.anthropic.com/) helps build reliable, interpretable, and steerable AI systems.
+[Anthropic ↗︎](https://www.anthropic.com/) helps build reliable, interpretable, and steerable AI systems.
 
 ## Endpoint
 

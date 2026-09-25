@@ -26,7 +26,7 @@ The OpenTelemetry (OTEL) integration automatically exports trace spans for AI re
 - Cost estimates
 - Custom metadata
 
-This integration follows the [OpenTelemetry specification ↗](https://opentelemetry.io/docs/specs/otel/) for distributed tracing and uses the OTLP (OpenTelemetry Protocol) format, supporting both JSON and protobuf encoding.
+This integration follows the [OpenTelemetry specification ↗︎](https://opentelemetry.io/docs/specs/otel/) for distributed tracing and uses the OTLP (OpenTelemetry Protocol) format, supporting both JSON and protobuf encoding.
 
 ## Configuration
 
@@ -46,7 +46,7 @@ To enable OpenTelemetry tracing for your gateway, configure one or more OTEL exp
 
 ## Exported Span Attributes
 
-AI Gateway exports spans with the following attributes following the [Semantic Conventions for Gen AI ↗](https://opentelemetry.io/docs/specs/semconv/gen-ai/):
+AI Gateway exports spans with the following attributes following the [Semantic Conventions for Gen AI ↗︎](https://opentelemetry.io/docs/specs/semconv/gen-ai/):
 
 ### Standard Attributes
 
@@ -106,11 +106,11 @@ When these headers are provided, the AI Gateway span will use them to link with 
 
 AI Gateway's OTEL integration works with any OpenTelemetry-compatible backend, including:
 
-- [Honeycomb ↗](https://www.honeycomb.io/)
-- [Braintrust ↗](https://www.braintrust.dev/docs/integrations/sdk-integrations/opentelemetry)
-- [Langfuse ↗](https://langfuse.com/integrations/native/opentelemetry)
-- [Datadog ↗](https://docs.datadoghq.com/opentelemetry/setup/agentless/)
-- [New Relic ↗](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/)
+- [Honeycomb ↗︎](https://www.honeycomb.io/)
+- [Braintrust ↗︎](https://www.braintrust.dev/docs/integrations/sdk-integrations/opentelemetry)
+- [Langfuse ↗︎](https://langfuse.com/integrations/native/opentelemetry)
+- [Datadog ↗︎](https://docs.datadoghq.com/opentelemetry/setup/agentless/)
+- [New Relic ↗︎](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/)
 
 Note
 

@@ -50,7 +50,7 @@ Refer to [Endpoint labeling service](https://developers.cloudflare.com/api-shiel
 
 Introducing Cloudflare's Web and API Vulnerability Scanner (Open Beta)
 
-Cloudflare is launching the [Open Beta of the **Web and API Vulnerability Scanner** ↗](https://blog.cloudflare.com/vulnerability-scanner) for all [API Shield](https://developers.cloudflare.com/api-shield/) customers. This new, stateful Dynamic Application Security Testing (DAST) platform helps teams proactively find logic flaws in their APIs.
+Cloudflare is launching the [Open Beta of the **Web and API Vulnerability Scanner** ↗︎](https://blog.cloudflare.com/vulnerability-scanner) for all [API Shield](https://developers.cloudflare.com/api-shield/) customers. This new, stateful Dynamic Application Security Testing (DAST) platform helps teams proactively find logic flaws in their APIs.
 
 The initial release focuses on detecting Broken Object Level Authorization (BOLA) vulnerabilities by building API call graphs to simulate attacker and owner contexts, then testing these contexts by sending real HTTP requests to your APIs.
 
@@ -132,7 +132,7 @@ In addition, API Shield has two new 'beta' scans for **Broken Object Level Autho
 
 We are currently accepting more customers into our beta. Contact your account team if you are interested in BOLA attack detection for your API.
 
-Refer to the [blog post ↗](https://blog.cloudflare.com/cloudflare-security-posture-management/) for more information about Cloudflare's expanded posture management capabilities.
+Refer to the [blog post ↗︎](https://blog.cloudflare.com/cloudflare-security-posture-management/) for more information about Cloudflare's expanded posture management capabilities.
 
 ## 2025-02-17
 
@@ -198,7 +198,7 @@ Customers can now use the fields inside [JSON Web Tokens (known as claims)](http
 
 **Build sequence mitigation rules via the Cloudflare dashboard**
 
-Customers can now build [Sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/) rules with a new user interface inside the API Shield section of the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+Customers can now build [Sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/) rules with a new user interface inside the API Shield section of the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 
 ## 2024-02-23
 

@@ -58,9 +58,9 @@ If you are using Cloudflare for DNS, you can leave the [TTL setting as **Auto**]
 Below is a list with instructions on how to edit MX records for some popular services:
 
 - **Cloudflare**: [Set up email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
-- **GoDaddy**: [Edit an MX Record ↗](https://www.godaddy.com/help/edit-an-mx-record-19235)
-- **AWS**: [Creating records by using the Amazon Route 53 console ↗](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html)
-- **Azure**: [Create DNS records in a custom domain for a web app ↗](https://learn.microsoft.com/en-us/azure/dns/dns-web-sites-custom-domain)
+- **GoDaddy**: [Edit an MX Record ↗︎](https://www.godaddy.com/help/edit-an-mx-record-19235)
+- **AWS**: [Creating records by using the Amazon Route 53 console ↗︎](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html)
+- **Azure**: [Create DNS records in a custom domain for a web app ↗︎](https://learn.microsoft.com/en-us/azure/dns/dns-web-sites-custom-domain)
 
 ## 1. Add a Sender Group for Email security Email Protection IPs
 
@@ -94,7 +94,7 @@ You need to configure the Incoming Relays section to tell IronPort to ignore ups
 
 Make sure you disable Sender Policy Framework (SPF) checks in IronPort. Because Email security is acting as the MX record, if you do not disable SPF checks, IronPort will block emails due to an SPF failure.
 
-Refer to [Cisco's documentation ↗](https://www.cisco.com/c/en/us/support/docs/security/email-security-appliance/117973-faq-esa-00.html) for more information on how to disable SPF checks.
+Refer to [Cisco's documentation ↗︎](https://www.cisco.com/c/en/us/support/docs/security/email-security-appliance/117973-faq-esa-00.html) for more information on how to disable SPF checks.
 
 ## 4. Set up MX/Inline
 

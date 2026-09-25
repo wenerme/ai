@@ -18,13 +18,13 @@ This guide will instruct you through:
 
 - Creating your first [R2 bucket](https://developers.cloudflare.com/r2/buckets/) and enabling its [data catalog](https://developers.cloudflare.com/r2-data-catalog/).
 - Creating an [API token](https://developers.cloudflare.com/r2/api/tokens/) needed for query engines to authenticate with your data catalog.
-- Using [PyIceberg ↗](https://py.iceberg.apache.org/) to create your first Iceberg table in a [marimo ↗](https://marimo.io/) Python notebook.
-- Using [PyIceberg ↗](https://py.iceberg.apache.org/) to load sample data into your table and query it.
+- Using [PyIceberg ↗︎](https://py.iceberg.apache.org/) to create your first Iceberg table in a [marimo ↗︎](https://marimo.io/) Python notebook.
+- Using [PyIceberg ↗︎](https://py.iceberg.apache.org/) to load sample data into your table and query it.
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -34,7 +34,7 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
@@ -70,7 +70,7 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a 
 
 ## 2. Create an API token
 
-Iceberg clients (including [PyIceberg ↗](https://py.iceberg.apache.org/)) must authenticate to the catalog with an [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) that has both R2 and catalog permissions.
+Iceberg clients (including [PyIceberg ↗︎](https://py.iceberg.apache.org/)) must authenticate to the catalog with an [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) that has both R2 and catalog permissions.
 
 1. In the Cloudflare dashboard, go to the **R2 object storage** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2/overview)
 2. Select **Manage API tokens**.
@@ -82,11 +82,11 @@ Iceberg clients (including [PyIceberg ↗](https://py.iceberg.apache.org/)) must
 
 ## 3. Install uv
 
-You need to install a Python package manager. In this guide, use [uv ↗](https://docs.astral.sh/uv/). If you do not already have uv installed, follow the [installing uv guide ↗](https://docs.astral.sh/uv/getting-started/installation/).
+You need to install a Python package manager. In this guide, use [uv ↗︎](https://docs.astral.sh/uv/). If you do not already have uv installed, follow the [installing uv guide ↗︎](https://docs.astral.sh/uv/getting-started/installation/).
 
 ## 4. Install marimo and set up your project with uv
 
-We will use [marimo ↗](https://github.com/marimo-team/marimo) as a Python notebook.
+We will use [marimo ↗︎](https://github.com/marimo-team/marimo) as a Python notebook.
 
 1. Create a directory where our notebook will be stored:
 

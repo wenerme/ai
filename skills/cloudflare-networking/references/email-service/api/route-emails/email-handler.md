@@ -89,7 +89,7 @@ export default {
 };
 ```
 
-Use [`postal-mime` ↗](https://www.npmjs.com/package/postal-mime) to parse the MIME structure of an incoming email. The parser handles multipart boundaries, transfer encodings, and character sets correctly.
+Use [`postal-mime` ↗︎](https://www.npmjs.com/package/postal-mime) to parse the MIME structure of an incoming email. The parser handles multipart boundaries, transfer encodings, and character sets correctly.
 
 ```ts
 import PostalMime from "postal-mime";
@@ -192,7 +192,7 @@ Replies through the Workers API must satisfy the following requirements, otherwi
 - The outgoing sender domain must match the domain that received the email.
 - The reply is rejected if the incoming email has more than 100 entries in its `References` header, to prevent reply loops and abuse.
 
-The reply payload is an `EmailMessage` built from a raw MIME string. The examples below use [`mimetext` ↗](https://www.npmjs.com/package/mimetext) to build the MIME body. The `mimetext` package requires the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
+The reply payload is an `EmailMessage` built from a raw MIME string. The examples below use [`mimetext` ↗︎](https://www.npmjs.com/package/mimetext) to build the MIME body. The `mimetext` package requires the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
 
 ```ts
 import { EmailMessage } from "cloudflare:email";

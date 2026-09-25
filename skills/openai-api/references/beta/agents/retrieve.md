@@ -94,7 +94,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: "auto" or "default" or "flex" or 2 more`
+  - `service_tier: "auto" or "default" or "flex" or 3 more`
 
     The resolved service-tier policy used for model requests.
 
@@ -107,6 +107,8 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `text: AgentText`
 

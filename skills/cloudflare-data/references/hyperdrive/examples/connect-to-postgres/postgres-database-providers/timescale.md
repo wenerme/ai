@@ -16,9 +16,9 @@ Connect Hyperdrive to a Timescale time-series database.
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/timescale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example shows you how to connect Hyperdrive to a [Timescale ↗](https://www.timescale.com/) time-series database. Timescale is built on PostgreSQL, and includes powerful time-series, event and analytics features.
+This example shows you how to connect Hyperdrive to a [Timescale ↗︎](https://www.timescale.com/) time-series database. Timescale is built on PostgreSQL, and includes powerful time-series, event and analytics features.
 
-You can learn more about Timescale by referring to their [Timescale services documentation ↗](https://docs.timescale.com/getting-started/latest/services/).
+You can learn more about Timescale by referring to their [Timescale services documentation ↗︎](https://docs.timescale.com/getting-started/latest/services/).
 
 ## 1. Allow Hyperdrive access
 
@@ -30,7 +30,7 @@ Note
 
 Similar to most services, Timescale requires you to reset the password associated with your database user if you do not have it stored securely. You should ensure that you do not break any existing clients if when you reset the password.
 
-To retrieve your credentials and database endpoint in the [Timescale Console ↗](https://console.cloud.timescale.com/):
+To retrieve your credentials and database endpoint in the [Timescale Console ↗︎](https://console.cloud.timescale.com/):
 
 1. Select the service (database) you want Hyperdrive to connect to.
 2. Expand **Connection info**.
@@ -87,7 +87,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -106,7 +106,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -175,7 +175,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -188,7 +188,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

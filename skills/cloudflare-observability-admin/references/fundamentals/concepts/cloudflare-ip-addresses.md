@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 When you add a domain to Cloudflare and [proxy its DNS records](https://developers.cloudflare.com/dns/proxy-status/), visitors who look up your domain receive a Cloudflare IP address instead of your origin server's real IP address. This hides your origin server's IP address and allows Cloudflare to optimize, cache, and protect all requests before forwarding them to you.
 
-Cloudflare has several [IP address ranges ↗](https://www.cloudflare.com/ips/) which are shared by all proxied hostnames. Together, these IP addresses form the backbone of Cloudflare's anycast network — a routing method where the same IP address is announced from data centers worldwide, so each visitor's request is routed to a nearby data center.
+Cloudflare has several [IP address ranges ↗︎](https://www.cloudflare.com/ips/) which are shared by all proxied hostnames. Together, these IP addresses form the backbone of Cloudflare's anycast network — a routing method where the same IP address is announced from data centers worldwide, so each visitor's request is routed to a nearby data center.
 
 Note
 
@@ -24,7 +24,7 @@ Cloudflare uses other IP ranges for various products and services, but these add
 
 ## Allow Cloudflare IP addresses
 
-All traffic to [proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/) passes through Cloudflare before reaching your origin server. This means that your origin server will stop receiving traffic from individual visitor IP addresses and instead receive traffic from [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips), which are shared by all proxied hostnames.
+All traffic to [proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/) passes through Cloudflare before reaching your origin server. This means that your origin server will stop receiving traffic from individual visitor IP addresses and instead receive traffic from [Cloudflare IP addresses ↗︎](https://www.cloudflare.com/ips), which are shared by all proxied hostnames.
 
 To your origin server's firewall, this can look like a limited number of sources sending a high volume of traffic — which may trigger automatic blocking or rate limiting. Because all visitor traffic appears to come from Cloudflare IP addresses, blocking these IPs — even accidentally — will prevent visitor traffic from reaching your application.
 
@@ -36,9 +36,9 @@ The guidance above applies to domains that use Cloudflare's HTTP proxy. [Magic T
 
 To avoid blocking Cloudflare IP addresses unintentionally, you also want to allow Cloudflare IP addresses at your origin web server.
 
-You can explicitly allow these IP addresses with a [.htaccess file ↗](https://httpd.apache.org/docs/trunk/mod/mod_authz_core.html#require) or by using [iptables ↗](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables/#block-or-allow-traffic-by-port-number-to-create-an-iptables-firewall).
+You can explicitly allow these IP addresses with a [.htaccess file ↗︎](https://httpd.apache.org/docs/trunk/mod/mod_authz_core.html#require) or by using [iptables ↗︎](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables/#block-or-allow-traffic-by-port-number-to-create-an-iptables-firewall).
 
-The following example demonstrates how you could use an iptables rule to allow a Cloudflare IP address range. Replace `$ip` below with one of the [Cloudflare IP address ranges ↗](https://www.cloudflare.com/ips). You will need to run this command once for each IP range listed on that page.
+The following example demonstrates how you could use an iptables rule to allow a Cloudflare IP address range. Replace `$ip` below with one of the [Cloudflare IP address ranges ↗︎](https://www.cloudflare.com/ips). You will need to run this command once for each IP range listed on that page.
 
 ```bash
 # For IPv4 addresses
@@ -54,7 +54,7 @@ For more specific guidance, contact your hosting provider or website administrat
 
 If someone discovers your origin server's IP address — for example, through historical DNS records or mail server configuration — they could send traffic directly to your server, bypassing Cloudflare's security protections entirely. To prevent this, block all traffic that does not come from Cloudflare IP addresses or the IP addresses of your trusted partners, vendors, or applications.
 
-For example, you might [update your iptables ↗](https://www.linode.com/docs/guides/control-network-traffic-with-iptables/#block-or-allow-traffic-by-port-number-to-create-an-iptables-firewall) with the following commands:
+For example, you might [update your iptables ↗︎](https://www.linode.com/docs/guides/control-network-traffic-with-iptables/#block-or-allow-traffic-by-port-number-to-create-an-iptables-firewall) with the following commands:
 
 ```sh
 # For IPv4 addresses
@@ -70,7 +70,7 @@ For more specific guidance, contact your hosting provider or website administrat
 To avoid blocking Cloudflare IP addresses unintentionally, review your external tools to check that:
 
 - Any security plugins — such as those for WordPress — allow Cloudflare IP addresses.
-- The [ModSecurity ↗](https://github.com/SpiderLabs/ModSecurity) plugin is up to date.
+- The [ModSecurity ↗︎](https://github.com/SpiderLabs/ModSecurity) plugin is up to date.
 
 ### Further protection
 
@@ -80,14 +80,14 @@ For further recommendations on securing your origin server, refer to our guide o
 
 Enterprise customers who do not want to use Cloudflare IP addresses — which are shared by all proxied hostnames — have two potential alternatives:
 
-- [**Bring Your Own IP (BYOIP)**](https://developers.cloudflare.com/byoip/): Cloudflare announces your IPs (an IP address range you lease/own) in all of our [locations ↗](https://www.cloudflare.com/network/).
+- [**Bring Your Own IP (BYOIP)**](https://developers.cloudflare.com/byoip/): Cloudflare announces your IPs (an IP address range you lease/own) in all of our [locations ↗︎](https://www.cloudflare.com/network/).
 - **Static IP addresses**: Cloudflare sets static IP addresses for your domain. For more details, contact your account team.
 
 Business and Enterprise customers can also reduce the number of Cloudflare IPs that their domain shares with other Cloudflare customer domains by [uploading a Custom SSL certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/).
 
 ### IP range updates
 
-Cloudflare's IP ranges do not change frequently. When they do change, they are added to our [list of IP ranges ↗](https://www.cloudflare.com/en-in/ips/) before being put into production. You can also use the Cloudflare API to programmatically keep your configuration updated.
+Cloudflare's IP ranges do not change frequently. When they do change, they are added to our [list of IP ranges ↗︎](https://www.cloudflare.com/en-in/ips/) before being put into production. You can also use the Cloudflare API to programmatically keep your configuration updated.
 
 ## AWS VPC routing conflict with Cloudflare IP ranges
 

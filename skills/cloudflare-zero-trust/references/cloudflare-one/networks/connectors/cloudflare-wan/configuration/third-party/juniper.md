@@ -172,7 +172,7 @@ Junos OS operates with two main command-line interface (CLI) modes, Operational 
 
 #### Operational Mode (>)
 
-[Operational mode ↗](https://www.juniper.net/documentation/us/en/software/junos/cli/topics/topic-map/junos-cli-operational-overview.html) is the default state upon logging into a Junos device, used for monitoring, troubleshooting, and displaying device status.
+[Operational mode ↗︎](https://www.juniper.net/documentation/us/en/software/junos/cli/topics/topic-map/junos-cli-operational-overview.html) is the default state upon logging into a Junos device, used for monitoring, troubleshooting, and displaying device status.
 
 - Prompt: `user@host>`
 - Purpose: View real-time information, check interface status, view routing tables, test connectivity (ping/traceroute), and restart processes.
@@ -181,7 +181,7 @@ Junos OS operates with two main command-line interface (CLI) modes, Operational 
 
 #### Configuration Mode (#)
 
-[Configuration mode ↗](https://www.juniper.net/documentation/us/en/software/junos/cli/topics/topic-map/cli-configuration.html) is used to make changes to the device's configuration, such as defining interfaces, routing protocols, and system properties.
+[Configuration mode ↗︎](https://www.juniper.net/documentation/us/en/software/junos/cli/topics/topic-map/cli-configuration.html) is used to make changes to the device's configuration, such as defining interfaces, routing protocols, and system properties.
 
 - Prompt: `user@host#`
 - Purpose: Edit, add, or remove configuration statements.
@@ -353,7 +353,7 @@ The recommended MSS value 1360 may need to be adjusted based on the nature of th
 set security flow tcp-mss ipsec-vpn mss 1360
 ```
 
-See [How to change the MSS of TCP traffic passing through an IPsec VPN ↗](https://supportportal.juniper.net/s/article/SRX-How-to-change-the-MSS-of-TCP-traffic-passing-through-an-IPsec-VPN) for more details.
+See [How to change the MSS of TCP traffic passing through an IPsec VPN ↗︎](https://supportportal.juniper.net/s/article/SRX-How-to-change-the-MSS-of-TCP-traffic-passing-through-an-IPsec-VPN) for more details.
 
 ### Security Policies
 
@@ -391,7 +391,7 @@ set security policies from-zone trust to-zone cloudflare policy trust-to-cloudfl
 
 *Perform in Configuration Mode*
 
-HPE Juniper Networking provides multiple methods for performing Policy-Based Routing. [Filter-Based Forwarding ↗](https://www.juniper.net/documentation/us/en/software/junos/routing-policy/topics/concept/firewall-filter-option-filter-based-forwarding-overview.html) is the preferred method as it permits selectively routing traffic based on source, destination, protocol (and a wide variety of other matching criteria) through Cloudflare WAN or local Internet breakout with ease.
+HPE Juniper Networking provides multiple methods for performing Policy-Based Routing. [Filter-Based Forwarding ↗︎](https://www.juniper.net/documentation/us/en/software/junos/routing-policy/topics/concept/firewall-filter-option-filter-based-forwarding-overview.html) is the preferred method as it permits selectively routing traffic based on source, destination, protocol (and a wide variety of other matching criteria) through Cloudflare WAN or local Internet breakout with ease.
 
 This example assumes traffic originating from 192.168.125.0/24 (ingress interface `ge-0/0/1.0` zone `trust`) to any destination will be routed via the Cloudflare WAN IPsec Tunnels.
 
@@ -786,20 +786,20 @@ EVERYTHING_ELSE_count               4371377            18732
 
 Refer to the CLI Reference Guide for further details on each command referenced within this document:
 
-- [CLI Reference Guide ↗](https://www.juniper.net/documentation/us/en/software/junos/cli-reference/)
-- [Route-Based IPsec VPNs ↗](https://www.juniper.net/documentation/us/en/software/junos/vpn-ipsec/topics/topic-map/security-route-based-ipsec-vpns.html)
-- [Route-Based VPN with IKEv2 ↗](https://www.juniper.net/documentation/us/en/software/junos/vpn-ipsec/topics/topic-map/security-vpns-for-ikev2.html)
-- [Route-Based and Policy-Based VPNs with NAT-T ↗](https://www.juniper.net/documentation/us/en/software/junos/vpn-ipsec/topics/topic-map/security-route-based-and-policy-based-vpns-with-nat-t.html)
-- [Configuring Filter-Based Forwarding ↗](https://www.juniper.net/documentation/us/en/software/junos/routing-policy/topics/example/filter-based-forwarding-example.html)
+- [CLI Reference Guide ↗︎](https://www.juniper.net/documentation/us/en/software/junos/cli-reference/)
+- [Route-Based IPsec VPNs ↗︎](https://www.juniper.net/documentation/us/en/software/junos/vpn-ipsec/topics/topic-map/security-route-based-ipsec-vpns.html)
+- [Route-Based VPN with IKEv2 ↗︎](https://www.juniper.net/documentation/us/en/software/junos/vpn-ipsec/topics/topic-map/security-vpns-for-ikev2.html)
+- [Route-Based and Policy-Based VPNs with NAT-T ↗︎](https://www.juniper.net/documentation/us/en/software/junos/vpn-ipsec/topics/topic-map/security-route-based-and-policy-based-vpns-with-nat-t.html)
+- [Configuring Filter-Based Forwarding ↗︎](https://www.juniper.net/documentation/us/en/software/junos/routing-policy/topics/example/filter-based-forwarding-example.html)
 
 ## Resources - Juniper Knowledge Base
 
 Valid support credentials may be required to view some/all of the following documents:
 
-- [\[SRX\] How do I tell if a VPN Tunnel SA (Security Association) is active - KB10090 ↗](https://supportportal.juniper.net/s/article/SRX-How-do-I-tell-if-a-VPN-Tunnel-SA-Security-Association-is-active)
-- [\[SRX\] How to configure syslog to display VPN status messages - KB10097 ↗](https://supportportal.juniper.net/s/article/SRX-How-to-configure-syslog-to-display-VPN-status-messages)
-- [\[SRX\] How to troubleshoot IKE Phase 2 VPN connection issues - KB10099 ↗](https://supportportal.juniper.net/s/article/SRX-How-to-troubleshoot-IKE-Phase-2-VPN-connection-issues)
-- [\[SRX\] How to enable VPN (IKE/IPsec) traceoptions for specific SAs (Security Associations) - KB19943 ↗](https://supportportal.juniper.net/s/article/SRX-How-to-enable-VPN-IKE-IPsec-traceoptions-for-specific-SAs-Security-Associations)
+- [\[SRX\] How do I tell if a VPN Tunnel SA (Security Association) is active - KB10090 ↗︎](https://supportportal.juniper.net/s/article/SRX-How-do-I-tell-if-a-VPN-Tunnel-SA-Security-Association-is-active)
+- [\[SRX\] How to configure syslog to display VPN status messages - KB10097 ↗︎](https://supportportal.juniper.net/s/article/SRX-How-to-configure-syslog-to-display-VPN-status-messages)
+- [\[SRX\] How to troubleshoot IKE Phase 2 VPN connection issues - KB10099 ↗︎](https://supportportal.juniper.net/s/article/SRX-How-to-troubleshoot-IKE-Phase-2-VPN-connection-issues)
+- [\[SRX\] How to enable VPN (IKE/IPsec) traceoptions for specific SAs (Security Associations) - KB19943 ↗︎](https://supportportal.juniper.net/s/article/SRX-How-to-enable-VPN-IKE-IPsec-traceoptions-for-specific-SAs-Security-Associations)
 
 Was this helpful?
 

@@ -330,7 +330,7 @@ When the region is set to `us`, `cloudflared` uses different US-specific hostnam
 
 Note
 
-For [FedRAMP High ↗](https://www.cloudflare.com/cloudflare-for-government/) environments, the tunnel token determines routing to FedRAMP data centers automatically — no `--region` flag is required. Refer to [Tunnel with firewall](https://developers.cloudflare.com/tunnel/configuration/#us-region-configuration#region-fedramp-high) for the FedRAMP-specific endpoints your firewall must allow.
+For [FedRAMP High ↗︎](https://www.cloudflare.com/cloudflare-for-government/) environments, the tunnel token determines routing to FedRAMP data centers automatically — no `--region` flag is required. Refer to [Tunnel with firewall](https://developers.cloudflare.com/tunnel/configuration/#us-region-configuration#region-fedramp-high) for the FedRAMP-specific endpoints your firewall must allow.
 
 ### `retries`
 

@@ -98,7 +98,7 @@ CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/ex
 
 [rclone](https://developers.cloudflare.com/r2/examples/rclone/) is ideal for bulk uploads, migrations, and syncing directories.
 
-1. [Install rclone ↗](https://rclone.org/install/) (version 1.59 or later).
+1. [Install rclone ↗︎](https://rclone.org/install/) (version 1.59 or later).
 2. Configure a new remote:
 
    ```sh
@@ -117,7 +117,7 @@ CLI tools that use the S3 API ([AWS CLI](https://developers.cloudflare.com/r2/ex
 
 The [AWS CLI](https://developers.cloudflare.com/r2/examples/aws/aws-cli/) works with R2 by specifying a custom endpoint.
 
-1. [Install the AWS CLI ↗](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) for your operating system.
+1. [Install the AWS CLI ↗︎](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) for your operating system.
 2. Configure your credentials:
 
    ```sh

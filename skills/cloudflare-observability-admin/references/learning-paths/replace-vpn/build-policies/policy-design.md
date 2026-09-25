@@ -76,7 +76,7 @@ Gather any existing security policies or block lists that you wish to migrate fr
 
 Descaler program
 
-If you are an Enterprise organization migrating from Zscaler, you can use our [Descaler toolkit ↗](https://blog.cloudflare.com/descaler-program/) to export policies from Zscaler Internet Access (ZIA) and import them into Cloudflare Gateway.
+If you are an Enterprise organization migrating from Zscaler, you can use our [Descaler toolkit ↗︎](https://blog.cloudflare.com/descaler-program/) to export policies from Zscaler Internet Access (ZIA) and import them into Cloudflare Gateway.
 
 Was this helpful?
 

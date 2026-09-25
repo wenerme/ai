@@ -18,7 +18,7 @@ Note
 
 Cloudflare provides HTTP header customization for Pages projects by adding a `_headers` file to your project. Refer to the [documentation](https://developers.cloudflare.com/pages/configuration/headers/) for more information.
 
-More advanced customization of HTTP headers is available through Cloudflare Workers [serverless functions ↗](https://www.cloudflare.com/learning/serverless/what-is-serverless/).
+More advanced customization of HTTP headers is available through Cloudflare Workers [serverless functions ↗︎](https://www.cloudflare.com/learning/serverless/what-is-serverless/).
 
 If you have not deployed a Worker before, get started with our [tutorial](https://developers.cloudflare.com/workers/get-started/guide/). For the purpose of this tutorial, accomplish steps one (Sign up for a Workers account) through four (Generate a new project) before returning to this page.
 
@@ -26,7 +26,7 @@ Before continuing, ensure that your Cloudflare Pages project is connected to a [
 
 ## Writing a Workers function
 
-Workers functions are written in [JavaScript ↗](https://www.cloudflare.com/learning/serverless/serverless-javascript/). When a Worker makes a request to a Cloudflare Pages application, it will receive a response. The response a Worker receives is immutable, meaning it cannot be changed. In order to add, delete, or alter headers, clone the response and modify the headers on a new `Response` instance. Return the new response to the browser with your desired header changes. An example of this is shown below:
+Workers functions are written in [JavaScript ↗︎](https://www.cloudflare.com/learning/serverless/serverless-javascript/). When a Worker makes a request to a Cloudflare Pages application, it will receive a response. The response a Worker receives is immutable, meaning it cannot be changed. In order to add, delete, or alter headers, clone the response and modify the headers on a new `Response` instance. Return the new response to the browser with your desired header changes. An example of this is shown below:
 
 *Setting custom headers with a Workers functionjs*
 
@@ -59,7 +59,7 @@ export default {
 
 ## Deploying a Workers function in the dashboard
 
-The easiest way to start deploying your Workers function is by typing [workers.new ↗](https://workers.new/) in the browser. Log in to your account to be automatically directed to the Workers & Pages dashboard. From the Workers & Pages dashboard, write your function or use one of the [examples from the Workers documentation](https://developers.cloudflare.com/workers/examples/).
+The easiest way to start deploying your Workers function is by typing [workers.new ↗︎](https://workers.new/) in the browser. Log in to your account to be automatically directed to the Workers & Pages dashboard. From the Workers & Pages dashboard, write your function or use one of the [examples from the Workers documentation](https://developers.cloudflare.com/workers/examples/).
 
 Select **Save and Deploy** when your script is ready and set a [route](https://developers.cloudflare.com/workers/configuration/routing/routes/) in your domain's zone settings.
 
@@ -67,7 +67,7 @@ For example, [here is a Workers script](https://developers.cloudflare.com/worker
 
 ## Deploying a Workers function using the CLI
 
-If you would like to skip writing this file yourself, you can use our `custom-headers-example` [template ↗](https://github.com/kristianfreeman/custom-headers-example) to generate a new Workers function with [wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the Workers CLI tool.
+If you would like to skip writing this file yourself, you can use our `custom-headers-example` [template ↗︎](https://github.com/kristianfreeman/custom-headers-example) to generate a new Workers function with [wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the Workers CLI tool.
 
 *Generating a serverless function with wranglersh*
 

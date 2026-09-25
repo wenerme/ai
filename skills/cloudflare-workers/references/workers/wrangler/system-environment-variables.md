@@ -59,7 +59,7 @@ Wrangler supports the following environment variables:
 - `NODE_ENV` `string` optional
   - Sets the value of `process.env.NODE_ENV` in your Worker code. Defaults to `"development"` for `wrangler dev` and `"production"` for `wrangler deploy` and `wrangler versions upload`. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/#node_env) for more information.
 - `WRANGLER_SEND_METRICS` `boolean` optional
-  - Options for this are `true` and `false`. Defaults to `true`. Controls whether Wrangler can send anonymous usage data to Cloudflare for this project. You can learn more about this in our [data policy ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
+  - Options for this are `true` and `false`. Defaults to `true`. Controls whether Wrangler can send anonymous usage data to Cloudflare for this project. You can learn more about this in our [data policy ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
 - `WRANGLER_SEND_ERROR_REPORTS` `boolean` optional
   - Options for this are `true` and `false`. Defaults to `undefined`. Controls whether Wrangler can send non-user error reports to Cloudflare for this project. If `undefined`, Wrangler will ask the user whether to send an error report each time there is a non-user error.
 - `CLOUDFLARE_HYPERDRIVE_LOCAL_CONNECTION_STRING_<BINDING_NAME>` `string` optional
@@ -83,9 +83,9 @@ Wrangler supports the following environment variables:
 - `WRANGLER_R2_SQL_AUTH_TOKEN` `string` optional
   - API token used for executing queries with [R2 SQL](https://developers.cloudflare.com/r2-sql).
 - `WRANGLER_OUTPUT_FILE_PATH` `string` optional
-  - Specifies a file path where Wrangler will write output data in [ND-JSON ↗](https://github.com/ndjson/ndjson-spec) (newline-delimited JSON) format. Each line in the file is a separate JSON object containing information about Wrangler operations such as deployments, version uploads, and errors. This is useful for CI/CD pipelines and automation tools that need to programmatically access deployment information. If both `WRANGLER_OUTPUT_FILE_PATH` and `WRANGLER_OUTPUT_FILE_DIRECTORY` are set, `WRANGLER_OUTPUT_FILE_PATH` takes precedence.
+  - Specifies a file path where Wrangler will write output data in [ND-JSON ↗︎](https://github.com/ndjson/ndjson-spec) (newline-delimited JSON) format. Each line in the file is a separate JSON object containing information about Wrangler operations such as deployments, version uploads, and errors. This is useful for CI/CD pipelines and automation tools that need to programmatically access deployment information. If both `WRANGLER_OUTPUT_FILE_PATH` and `WRANGLER_OUTPUT_FILE_DIRECTORY` are set, `WRANGLER_OUTPUT_FILE_PATH` takes precedence.
 - `WRANGLER_OUTPUT_FILE_DIRECTORY` `string` optional
-  - Specifies a directory where Wrangler will create a randomly-named file (format: `wrangler-output-<timestamp>-<random>.json`) to write output data in [ND-JSON ↗](https://github.com/ndjson/ndjson-spec) format. This is useful when you want to keep output files organized in a specific directory but do not need to control the exact filename. If both `WRANGLER_OUTPUT_FILE_PATH` and `WRANGLER_OUTPUT_FILE_DIRECTORY` are set, `WRANGLER_OUTPUT_FILE_PATH` takes precedence.
+  - Specifies a directory where Wrangler will create a randomly-named file (format: `wrangler-output-<timestamp>-<random>.json`) to write output data in [ND-JSON ↗︎](https://github.com/ndjson/ndjson-spec) format. This is useful when you want to keep output files organized in a specific directory but do not need to control the exact filename. If both `WRANGLER_OUTPUT_FILE_PATH` and `WRANGLER_OUTPUT_FILE_DIRECTORY` are set, `WRANGLER_OUTPUT_FILE_PATH` takes precedence.
 - `WRANGLER_CACHE_DIR` `string` optional
   - Custom directory for Wrangler's cache files. When set, this overrides the default cache location ( `node_modules/.cache/wrangler`). Useful for environments that do not use a traditional `node_modules` directory, such as Yarn PnP.
 - `MINIFLARE_CACHE_DIR` `string` optional

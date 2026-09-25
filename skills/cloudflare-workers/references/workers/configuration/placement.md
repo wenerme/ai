@@ -156,7 +156,7 @@ Examples include a primary database, a virtual machine, or a Kubernetes cluster 
 
 Note
 
-Workers run on [Cloudflare's global network ↗](https://www.cloudflare.com/network/), not inside cloud provider regions. Placement Hints run your Worker in the data center with the lowest latency to your specified cloud region. At extremely high request volumes (hundreds of thousands of requests per second or more), Cloudflare may run instances across a more distributed area to balance traffic.
+Workers run on [Cloudflare's global network ↗︎](https://www.cloudflare.com/network/), not inside cloud provider regions. Placement Hints run your Worker in the data center with the lowest latency to your specified cloud region. At extremely high request volumes (hundreds of thousands of requests per second or more), Cloudflare may run instances across a more distributed area to balance traffic.
 
 ### Specify a cloud region
 
@@ -227,7 +227,7 @@ Placement Hints support Amazon Web Services (AWS), Google Cloud Platform (GCP), 
 | GCP | `gcp:{region}` | `gcp:us-east4`, `gcp:europe-west1`, `gcp:asia-east1` |
 | Azure | `azure:{region}` | `azure:westeurope`, `azure:eastus`, `azure:southeastasia` |
 
-For a full list of region codes, refer to [AWS regions ↗](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html), [GCP regions ↗](https://cloud.google.com/compute/docs/regions-zones), or [Azure regions ↗](https://learn.microsoft.com/en-us/azure/reliability/regions-list).
+For a full list of region codes, refer to [AWS regions ↗︎](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html), [GCP regions ↗︎](https://cloud.google.com/compute/docs/regions-zones), or [Azure regions ↗︎](https://learn.microsoft.com/en-us/azure/reliability/regions-list).
 
 ## Placement Behavior
 
@@ -383,7 +383,7 @@ The `auth-worker` runs at the edge to reject unauthorized requests quickly. Auth
 
 ### Durable Objects
 
-[Durable Objects](https://developers.cloudflare.com/durable-objects/) provide automatic placement without configuration. Queries to a Durable Object's embedded [SQLite database](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) are effectively [zero-latency ↗](https://blog.cloudflare.com/sqlite-in-durable-objects/) because compute runs in the same process as the data.
+[Durable Objects](https://developers.cloudflare.com/durable-objects/) provide automatic placement without configuration. Queries to a Durable Object's embedded [SQLite database](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) are effectively [zero-latency ↗︎](https://blog.cloudflare.com/sqlite-in-durable-objects/) because compute runs in the same process as the data.
 
 Do as much work as possible within the Durable Object and return a composite result, rather than making multiple round-trips from your Worker:
 

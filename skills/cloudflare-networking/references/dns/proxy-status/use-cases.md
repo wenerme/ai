@@ -24,7 +24,7 @@ You should proxy all A, AAAA, and CNAME records that serve HTTP or HTTPS web tra
 - Subdomains that serve web content (for example, `blog.example.com`, `app.example.com`)
 - API endpoints that accept HTTP/HTTPS requests and do not require origin IP validation
 
-Proxied records benefit from [DDoS protection ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/), [caching](https://developers.cloudflare.com/cache/), [WAF](https://developers.cloudflare.com/waf/), and other Cloudflare security and performance features.
+Proxied records benefit from [DDoS protection ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/), [caching](https://developers.cloudflare.com/cache/), [WAF](https://developers.cloudflare.com/waf/), and other Cloudflare security and performance features.
 
 When traffic is proxied through Cloudflare, the following behaviors apply. You may need to adjust your origin configuration, depending on your use case.
 
@@ -111,7 +111,7 @@ Cloudflare automatically [prevents proxying](https://developers.cloudflare.com/d
 
 Some third-party services validate the origin IP address of incoming API calls or webhook deliveries. When you proxy the DNS record for an endpoint that sends outbound requests or receives webhooks, the remote service sees Cloudflare's IP addresses instead of your server's IP address. This causes the validation to fail.
 
-If a third-party service requires IP-based validation and does not accept [Cloudflare's IP ranges ↗](https://www.cloudflare.com/ips/), set the record for that service to **DNS-only**.
+If a third-party service requires IP-based validation and does not accept [Cloudflare's IP ranges ↗︎](https://www.cloudflare.com/ips/), set the record for that service to **DNS-only**.
 
 Was this helpful?
 

@@ -27,7 +27,7 @@ Before using email with Agents, you need:
 
 ### Domain setup
 
-1. Log in to the [Cloudflare Dashboard ↗](https://dash.cloudflare.com).
+1. Log in to the [Cloudflare Dashboard ↗︎](https://dash.cloudflare.com).
 2. Go to **Compute & AI** > **Email Service**.
 3. Select **Onboard Domain** and choose your domain.
 4. Add the DNS records (SPF and DKIM) to authorize sending.
@@ -374,7 +374,7 @@ type AgentEmail = {
 
 ### Parsing email content
 
-Use a library like [postal-mime ↗](https://www.npmjs.com/package/postal-mime) to parse the raw email:
+Use a library like [postal-mime ↗︎](https://www.npmjs.com/package/postal-mime) to parse the raw email:
 
 ```js
 import PostalMime from "postal-mime";

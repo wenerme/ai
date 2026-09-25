@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/fetch/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [Fetch API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) provides an interface for asynchronously fetching resources via HTTP requests inside of a Worker.
+The [Fetch API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) provides an interface for asynchronously fetching resources via HTTP requests inside of a Worker.
 
 Note
 
-Asynchronous tasks such as `fetch` must be executed within a [handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/). If you try to call `fetch()` within [global scope ↗](https://developer.mozilla.org/en-US/docs/Glossary/Global_scope), your Worker will throw an error. Learn more about [the Request context](https://developers.cloudflare.com/workers/runtime-apis/request/#the-request-context).
+Asynchronous tasks such as `fetch` must be executed within a [handler](https://developers.cloudflare.com/workers/runtime-apis/handlers/). If you try to call `fetch()` within [global scope ↗︎](https://developer.mozilla.org/en-US/docs/Glossary/Global_scope), your Worker will throw an error. Learn more about [the Request context](https://developers.cloudflare.com/workers/runtime-apis/request/#the-request-context).
 
 Worker to Worker
 
@@ -68,7 +68,7 @@ class Default(WorkerEntrypoint):
 
 ### Parameters
 
-- [`resource` ↗](https://developer.mozilla.org/en-US/docs/Web/API/fetch#resource) Request | string | URL
+- [`resource` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/fetch#resource) Request | string | URL
 - `options` options
   - `cache` `undefined | 'no-store' | 'no-cache'` optional
     - Standard HTTP `cache` header. Only `cache: 'no-store'` and `cache: 'no-cache'` are supported. Any other `cache` header will result in a `TypeError` with the message `Unsupported cache mode: <attempted-cache-mode>`. \_ For all requests this forwards the `Pragma: no-cache` and `Cache-Control: no-cache` headers to the origin. \_ For `no-store`, requests to origins not hosted by Cloudflare bypass the use of Cloudflare's caches. \_ For `no-cache`, requests to origins not hosted by Cloudflare are forced to revalidate with the origin before responding.
@@ -78,7 +78,7 @@ class Default(WorkerEntrypoint):
 
 ## How the `Accept-Encoding` header is handled
 
-When making a subrequest with the `fetch()` API, you can specify which forms of compression to prefer that the server will respond with (if the server supports it) by including the [`Accept-Encoding` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Accept-Encoding) header.
+When making a subrequest with the `fetch()` API, you can specify which forms of compression to prefer that the server will respond with (if the server supports it) by including the [`Accept-Encoding` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Accept-Encoding) header.
 
 Workers supports both the gzip and brotli compression algorithms. Usually it is not necessary to specify `Accept-Encoding` or `Content-Encoding` headers in the Workers Runtime production environment – brotli or gzip compression is automatically requested when fetching from an origin and applied to the response when returning data to the client, depending on the capabilities of the client and origin server.
 

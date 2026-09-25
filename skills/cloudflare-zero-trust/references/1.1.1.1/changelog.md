@@ -21,7 +21,7 @@ Last updated Jul 20, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 **RFC 8509 root key trust anchor sentinel support**
 
-1.1.1.1 now supports [RFC 8509 ↗](https://datatracker.ietf.org/doc/html/rfc8509) root key trust anchor sentinels. They let you check whether the responding resolver trusts a DNSSEC root key ahead of a key rollover.
+1.1.1.1 now supports [RFC 8509 ↗︎](https://datatracker.ietf.org/doc/html/rfc8509) root key trust anchor sentinels. They let you check whether the responding resolver trusts a DNSSEC root key ahead of a key rollover.
 
 To check for KSK-2024 (key tag 38696), query DNSSEC-signed names in `dnstest.dev`:
 
@@ -53,7 +53,7 @@ These are breaking changes. The DoH JSON format has no formal RFC and its schema
 
 #### Human-readable display for additional record types
 
-Several record types previously returned their `data` field in [RFC 3597 ↗](https://datatracker.ietf.org/doc/html/rfc3597) generic hex encoding (`\# <length> <hex>`). These now use standard presentation format:
+Several record types previously returned their `data` field in [RFC 3597 ↗︎](https://datatracker.ietf.org/doc/html/rfc3597) generic hex encoding (`\# <length> <hex>`). These now use standard presentation format:
 
 ```txt
 CAA:        0 issue "letsencrypt.org"
@@ -69,7 +69,7 @@ OPENPGPKEY: AwEA...
 
 #### Numeric DNSSEC algorithm identifiers
 
-DNSSEC-related records now use numeric algorithm identifiers as defined in [RFC 4034 ↗](https://datatracker.ietf.org/doc/html/rfc4034) instead of mnemonic names. This affects `RRSIG`, `DS`, `CDS`, `DNSKEY`, and `CDNSKEY` records. For example, `RSASHA256` becomes `8`, `ECDSAP256SHA256` becomes `13`, and `ED25519` becomes `15`. DS digest types also change from mnemonic to numeric: `SHA-256` becomes `2`.
+DNSSEC-related records now use numeric algorithm identifiers as defined in [RFC 4034 ↗︎](https://datatracker.ietf.org/doc/html/rfc4034) instead of mnemonic names. This affects `RRSIG`, `DS`, `CDS`, `DNSKEY`, and `CDNSKEY` records. For example, `RSASHA256` becomes `8`, `ECDSAP256SHA256` becomes `13`, and `ED25519` becomes `15`. DS digest types also change from mnemonic to numeric: `SHA-256` becomes `2`.
 
 *Beforetxt*
 

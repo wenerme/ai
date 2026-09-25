@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/network-visibility/diagnostics/packet-captures/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Packet captures record network traffic flowing through Cloudflare's network so you can analyze individual packets for troubleshooting or security investigations. The output is contained within one or more files in PCAP format, which you can open in tools like [Wireshark ↗](https://www.wireshark.org/).
+Packet captures record network traffic flowing through Cloudflare's network so you can analyze individual packets for troubleshooting or security investigations. The output is contained within one or more files in PCAP format, which you can open in tools like [Wireshark ↗︎](https://www.wireshark.org/).
 
 There are two capture types:
 
@@ -31,7 +31,7 @@ Currently, when a packet capture is requested, packets flowing through Cloudflar
 
 Note
 
-For help determining which data center to select for a packet capture, go to [https://cloudflare.com/cdn-cgi/trace ↗](https://cloudflare.com/cdn-cgi/trace) and refer to the `colo` field. Note some data centers can be regional such as `ORD` while other names may be more specific like `ord02`. Either of these names can be used for this same field.
+For help determining which data center to select for a packet capture, go to [https://cloudflare.com/cdn-cgi/trace ↗︎](https://cloudflare.com/cdn-cgi/trace) and refer to the `colo` field. Note some data centers can be regional such as `ORD` while other names may be more specific like `ord02`. Either of these names can be used for this same field.
 
 ### Packet capture limits
 
@@ -186,7 +186,7 @@ The response is a JSON body that contains the details of the job running to buil
 
 ## Check packet capture status
 
-1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
+1. In the Cloudflare dashboard, go to [Network health ↗︎](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Go to the **Diagnostics** tab.
 3. Locate your capture under **Network packet captures**.
 
@@ -236,13 +236,13 @@ The capture status displays one of the following options:
 
 After your request finishes processing, you can download your packet captures.
 
-1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** > **Diagnostics**.
+1. In the [Cloudflare One ↗︎](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** > **Diagnostics**.
 2. In **Packet captures**, select **Start a capture**.
 3. Locate your packet capture you want to download, and select **Download**.
 
 Packet captures are available to download when the **Status** displays **Success**.
 
-Full captures can produce multiple PCAP files per capture because the capture can run across multiple machines at the data center. To merge these into a single file for analysis, refer to [Wireshark's mergecap documentation ↗](https://www.wireshark.org/docs/man-pages/mergecap.html).
+Full captures can produce multiple PCAP files per capture because the capture can run across multiple machines at the data center. To merge these into a single file for analysis, refer to [Wireshark's mergecap documentation ↗︎](https://www.wireshark.org/docs/man-pages/mergecap.html).
 
 **Full PCAPs**
 

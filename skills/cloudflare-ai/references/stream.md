@@ -22,7 +22,7 @@ You can use Stream to build your own video features in websites and native apps,
 
 Stream automatically encodes and delivers videos using the H.264 codec with adaptive bitrate streaming, supporting resolutions from 360p to 1080p. This ensures smooth playback across different devices and network conditions.
 
-Cloudflare Stream runs on [Cloudflare’s global cloud network ↗](https://www.cloudflare.com/network/) in hundreds of cities worldwide.
+Cloudflare Stream runs on [Cloudflare’s global cloud network ↗︎](https://www.cloudflare.com/network/) in hundreds of cities worldwide.
 
 [Get started](https://developers.cloudflare.com/stream/get-started/) [Stream dashboard](https://dash.cloudflare.com/?to=/:account/stream)
 

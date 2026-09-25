@@ -38,7 +38,7 @@ In these cases, Cloudflare's DDoS Protection systems may flag that traffic as ma
 
 To remedy a false positive:
 
-1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
+1. In the Cloudflare dashboard, go to the [Network analytics ↗︎](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
 2. Apply filters to the displayed data.<details><summary>
 
    For WAF/CDN customers</summary>
@@ -103,7 +103,7 @@ The system chooses the mitigation action based on the logic and the DDoS protect
 
 If you are experiencing a DDoS attack detected by Cloudflare and the applied mitigation action is not sufficiently strict, change the rule action to *Block*:
 
-1. In the Cloudflare dashboard, go to the [Network analytics ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
+1. In the Cloudflare dashboard, go to the [Network analytics ↗︎](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics) page.
 2. Apply filters to the displayed data.<details><summary>
 
    For WAF/CDN customers</summary>

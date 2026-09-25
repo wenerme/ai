@@ -105,7 +105,7 @@ curl "https://api.cloudflare.com/client/v4/radar/bgp/hijacks/events?invlovedAsn=
 
 ## Search BGP route leak events
 
-BGP route leak is another type of BGP anomalies that Cloudflare Radar detects. Currently, we focus on detecting specifically the `provider-customer-provider` type of route leak. You can learn more about our design and methodology in [our blog post ↗](https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar/).
+BGP route leak is another type of BGP anomalies that Cloudflare Radar detects. Currently, we focus on detecting specifically the `provider-customer-provider` type of route leak. You can learn more about our design and methodology in [our blog post ↗︎](https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar/).
 
 In the following example, we will query the [BGP route leak events API](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/leaks/subresources/events/methods/list/) for the most recent BGP route leak events affecting `AS64512`.
 
@@ -218,7 +218,7 @@ In your Wrangler file, change the default checking frequency (once per hour) to 
 	"name": "hijack-alerts",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"triggers": {
 		"crons": [
 			"*/5 * * * *"
@@ -232,7 +232,7 @@ In your Wrangler file, change the default checking frequency (once per hour) to 
 name = "hijack-alerts"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [triggers]
 crons = [ "*/5 * * * *" ]

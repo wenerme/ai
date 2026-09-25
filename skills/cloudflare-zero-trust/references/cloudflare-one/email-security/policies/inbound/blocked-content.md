@@ -28,7 +28,7 @@ This is useful when your organization needs to block emails containing specific 
 
 To create a blocked content policy:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **Policies & rules**, then go to **Inbound** > **Blocked content**.
 4. Select **Create a policy**.

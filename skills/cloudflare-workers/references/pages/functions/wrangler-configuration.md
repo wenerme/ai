@@ -22,7 +22,7 @@ Note
 
 As of Wrangler v3.91.0, Wrangler supports both JSON (`wrangler.json` or `wrangler.jsonc`) and TOML (`wrangler.toml`) for its configuration file. Prior to that version, only `wrangler.toml` was supported.
 
-Pages Functions can be configured two ways, either via the [Cloudflare dashboard ↗](https://dash.cloudflare.com) or the Wrangler configuration file, a file used to customize the development and deployment setup for [Workers](https://developers.cloudflare.com/workers/) and Pages Functions.
+Pages Functions can be configured two ways, either via the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) or the Wrangler configuration file, a file used to customize the development and deployment setup for [Workers](https://developers.cloudflare.com/workers/) and Pages Functions.
 
 This page serves as a reference on how to configure your Pages project via the Wrangler configuration file.
 
@@ -178,7 +178,7 @@ The Wrangler configuration file applies locally when using `wrangler pages dev`.
 	"name": "my-pages-app",
 	"pages_build_output_dir": "./dist",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -196,7 +196,7 @@ The Wrangler configuration file applies locally when using `wrangler pages dev`.
 name = "my-pages-app"
 pages_build_output_dir = "./dist"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]
@@ -433,7 +433,7 @@ Inheritable keys are configurable at the top-level, and can be inherited (or ove
 - `compatibility_flags` string\[] optional
   - A list of flags that enable features from upcoming features of the Workers runtime, usually used together with `compatibility_date`. Refer to [compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/).
 - `send_metrics` `boolean` optional
-  - Whether Wrangler should send usage data to Cloudflare for this project. Defaults to `true`. You can learn more about this in our [data policy ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
+  - Whether Wrangler should send usage data to Cloudflare for this project. Defaults to `true`. You can learn more about this in our [data policy ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
 - `limits` Limits optional
   - Configures limits to be imposed on execution at runtime. Refer to [Limits](#limits).
 - `placement` Placement optional

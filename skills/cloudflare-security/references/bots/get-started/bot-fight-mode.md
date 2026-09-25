@@ -18,11 +18,11 @@ Bot Fight Mode is a simple, free product that helps detect and mitigate bot traf
 
 - Identifies traffic matching patterns of known bots
 - Issues computationally expensive challenges that force the requesting client to perform CPU-intensive calculations, increasing the cost for bots to send automated requests
-- Notifies [Bandwidth Alliance ↗](https://cloudflare.com/bandwidth-alliance/) partners (if applicable) to disable bots
+- Notifies [Bandwidth Alliance ↗︎](https://cloudflare.com/bandwidth-alliance/) partners (if applicable) to disable bots
 
 ## Considerations
 
-Bot Fight Mode and Super Bot Fight Mode use the same underlying technology that powers our [Bot Management ↗](https://www.cloudflare.com/products/bot-management/) product. Specifically, these products:
+Bot Fight Mode and Super Bot Fight Mode use the same underlying technology that powers our [Bot Management ↗︎](https://www.cloudflare.com/products/bot-management/) product. Specifically, these products:
 
 - Protect entire domains without endpoint restrictions
 - Cannot be customized, adjusted, or reconfigured via WAF custom rules

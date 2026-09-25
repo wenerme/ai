@@ -16,13 +16,13 @@ Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 When a browser requests a page, the origin server takes time to prepare the full response. Early Hints uses this wait time to send the browser a preliminary `103` response containing `Link` headers that tell the browser which assets it will need. The browser can start loading those assets before the full response arrives, which speeds up page loads.
 
-Early Hints is defined in [RFC 8297 ↗](https://httpwg.org/specs/rfc8297.html) as a new HTTP status code (`103 Early Hints`). Cloudflare caches and serves these `103` responses with `Link` headers from your HTML pages, reducing user-perceived latency.
+Early Hints is defined in [RFC 8297 ↗︎](https://httpwg.org/specs/rfc8297.html) as a new HTTP status code (`103 Early Hints`). Cloudflare caches and serves these `103` responses with `Link` headers from your HTML pages, reducing user-perceived latency.
 
 Note
 
 Early Hints is currently only supported over HTTP/2 and HTTP/3.
 
-For more information about Early Hints, refer to the [Cloudflare ↗](https://blog.cloudflare.com/early-hints) and [Google Chrome ↗](https://developer.chrome.com/en/blog/early-hints/) blogs.
+For more information about Early Hints, refer to the [Cloudflare ↗︎](https://blog.cloudflare.com/early-hints) and [Google Chrome ↗︎](https://developer.chrome.com/en/blog/early-hints/) blogs.
 
 ## Availability
 
@@ -42,7 +42,7 @@ Early Hints are only generated and cached:
 
 - For URIs with `.html`, `.htm`, or `.php` file extensions, or no file extension
 - On 200, 301, or 302 response return codes
-- When the response contains [link headers ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Link) with preconnect or preload rel types, such as `Link: </img/preloaded.png>; rel=preload`
+- When the response contains [link headers ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Link) with preconnect or preload rel types, such as `Link: </img/preloaded.png>; rel=preload`
 
 Note
 
@@ -52,7 +52,7 @@ Early Hints cache entries are keyed by request URI and ignore query strings.
 
 Cloudflare will asynchronously look up and emit a cached 103 Early Hints response ahead of a main response.
 
-Currently, only certain browser versions will take action to preload or preconnect on receiving Early Hints, such as Google Chrome M94 and higher. Instructions for running WebPageTest to experiment with compatible client browsers can be found in the [blog post ↗](https://blog.cloudflare.com/early-hints/#testing-early-hints-with-web-page-test).
+Currently, only certain browser versions will take action to preload or preconnect on receiving Early Hints, such as Google Chrome M94 and higher. Instructions for running WebPageTest to experiment with compatible client browsers can be found in the [blog post ↗︎](https://blog.cloudflare.com/early-hints/#testing-early-hints-with-web-page-test).
 
 Additionally, keep the following in mind:
 

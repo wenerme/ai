@@ -67,7 +67,7 @@ Caution
 
 ## 2. Create an Access application
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Add an application** > **Self-hosted**.
 3. Name the application, for example `AI Search`.
 4. Add the public hostname of your custom domain, for example `access.search.example.com`.

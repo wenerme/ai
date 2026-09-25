@@ -93,7 +93,7 @@ Create a `wrangler.jsonc` file in the root of your project:
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-app",
   // Set this to today's date
-  "compatibility_date": "2026-09-22",
+  "compatibility_date": "2026-09-25",
   "assets": {
     "not_found_handling": "single-page-application"
   }
@@ -103,7 +103,7 @@ Create a `wrangler.jsonc` file in the root of your project:
 ```toml
 name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [assets]
 not_found_handling = "single-page-application"
@@ -211,7 +211,7 @@ Update your Wrangler configuration file to add a `main` field that points to you
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "my-app",
   // Set this to today's date
-  "compatibility_date": "2026-09-22",
+  "compatibility_date": "2026-09-25",
   "main": "./worker/index.ts",
   "assets": {
     "not_found_handling": "single-page-application"
@@ -222,7 +222,7 @@ Update your Wrangler configuration file to add a `main` field that points to you
 ```toml
 name = "my-app"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "./worker/index.ts"
 
 [assets]
@@ -266,7 +266,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "cloudflare-vite-tutorial",
   // Set this to today's date
-  "compatibility_date": "2026-09-22",
+  "compatibility_date": "2026-09-25",
   "main": "./worker/index.ts",
   "assets": {
     "not_found_handling": "single-page-application",
@@ -280,7 +280,7 @@ If you would instead like to define the routes that invoke your Worker explicitl
 ```toml
 name = "cloudflare-vite-tutorial"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "./worker/index.ts"
 
 [assets]
@@ -425,7 +425,7 @@ Possible next steps include:
 
 - Adding a binding to another Cloudflare service such as a [KV namespace](https://developers.cloudflare.com/kv/) or [D1 database](https://developers.cloudflare.com/d1/)
 - Expanding the API to include additional routes
-- Using a library, such as [Hono ↗](https://hono.dev/) or [tRPC ↗](https://trpc.io/), in your API Worker
+- Using a library, such as [Hono ↗︎](https://hono.dev/) or [tRPC ↗︎](https://trpc.io/), in your API Worker
 
 Was this helpful?
 

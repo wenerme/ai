@@ -25,14 +25,14 @@ Before installing and setting up the WARP client, ensure that your device meets 
 | **OS version** | 5.0+ |
 | --- | --- |
 
-[Download for Android ↗](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone)
+[Download for Android ↗︎](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone)
 
 ## iOS
 
 | **OS version** | iOS 11+ |
 | --- | --- |
 
-[Download for iOS ↗](https://apps.apple.com/us/app/id1423538627)
+[Download for iOS ↗︎](https://apps.apple.com/us/app/id1423538627)
 
 ## Linux
 
@@ -46,10 +46,10 @@ Before installing and setting up the WARP client, ensure that your device meets 
 
 ## Footnotes
 
-1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗](https://docs.fedoraproject.org/en-US/epel/) repository ( `sudo dnf install epel-release`) before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. [↩](#user-content-fnref-1)
+1. On RHEL 9 and later, enable the [Extra Packages for Enterprise Linux (EPEL) ↗︎](https://docs.fedoraproject.org/en-US/epel/) repository ( `sudo dnf install epel-release`) before installing `cloudflare-warp`. EPEL provides dependencies required by the client UI. [↩](#user-content-fnref-1)
 2. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-2)
 
-[Download for Linux ↗](https://pkg.cloudflareclient.com/)
+[Download for Linux ↗︎](https://pkg.cloudflareclient.com/)
 
 ## macOS
 
@@ -65,7 +65,7 @@ Before installing and setting up the WARP client, ensure that your device meets 
 
 1. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-1)
 
-[Download for macOS ↗](https://downloads.cloudflareclient.com/v1/download/macos/ga)
+[Download for macOS ↗︎](https://downloads.cloudflareclient.com/v1/download/macos/ga)
 
 ## Windows
 
@@ -82,7 +82,7 @@ Before installing and setting up the WARP client, ensure that your device meets 
 
 1. Minimum 1281 bytes with [Path MTU Discovery](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/) [↩](#user-content-fnref-1)
 
-[Download for Windows ↗](https://downloads.cloudflareclient.com/v1/download/windows/ga)
+[Download for Windows ↗︎](https://downloads.cloudflareclient.com/v1/download/windows/ga)
 
 Was this helpful?
 

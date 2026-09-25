@@ -16,19 +16,19 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Cloudflare's Key Transparency Auditor validates Log audit proofs and provides a signature for them. The Log can then distribute these signatures to its end-users, and provides users with confidence that keys have not been tampered with.
 
-In order to verify our work, you can use [Plexi ↗](https://github.com/cloudflare/plexi), a CLI tool that allows anyone to perform proof verification locally via a public [API](https://developers.cloudflare.com/key-transparency/api/).
+In order to verify our work, you can use [Plexi ↗︎](https://github.com/cloudflare/plexi), a CLI tool that allows anyone to perform proof verification locally via a public [API](https://developers.cloudflare.com/key-transparency/api/).
 
 ## Features
 
 - Verify authenticity of a signature, to confirm it has been signed by a given public key
-- Verify the validity of [facebook/akd ↗](https://github.com/facebook/akd) proofs
+- Verify the validity of [facebook/akd ↗︎](https://github.com/facebook/akd) proofs
 - List Logs an Auditor monitors
 
 ## Installation
 
 | Environment | CLI Command |
 | --- | --- |
-| [Cargo ↗](https://www.rust-lang.org/tools/install) (Rust 1.81+) | `cargo install plexi` |
+| [Cargo ↗︎](https://www.rust-lang.org/tools/install) (Rust 1.81+) | `cargo install plexi` |
 
 ## Usage
 
@@ -50,7 +50,7 @@ A common remote is provided below:
 | --- | --- |
 | Cloudflare | `https://plexi.key-transparency.cloudflare.com` |
 
-If you have deployed your own auditor, you can add a remote by filing a [GitHub issue ↗](https://github.com/cloudflare/plexi/issues).
+If you have deployed your own auditor, you can add a remote by filing a [GitHub issue ↗︎](https://github.com/cloudflare/plexi/issues).
 
 ### List monitored Logs
 

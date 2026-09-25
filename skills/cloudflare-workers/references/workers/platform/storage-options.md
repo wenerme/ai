@@ -42,9 +42,9 @@ Storage options can also be used by your front-end application built with Cloudf
 
 There are three options for SQL-based databases available when building applications with Workers.
 
-- **Hyperdrive** if you have an existing Postgres or MySQL database, require large (1TB, 100TB or more) single databases, and/or want to use your existing database tools. You can also connect Hyperdrive to database platforms like [PlanetScale ↗](https://planetscale.com/) or [Neon ↗](https://neon.tech/).
+- **Hyperdrive** if you have an existing Postgres or MySQL database, require large (1TB, 100TB or more) single databases, and/or want to use your existing database tools. You can also connect Hyperdrive to database platforms like [PlanetScale ↗︎](https://planetscale.com/) or [Neon ↗︎](https://neon.tech/).
 - **D1** for lightweight, serverless applications that are read-heavy, have global users that benefit from D1's [read replication](https://developers.cloudflare.com/d1/best-practices/read-replication/), and do not require you to manage and maintain a traditional RDBMS.
-- **Durable Objects** for stateful serverless workloads, per-user or per-customer SQL state, and building distributed systems (D1 and Queues are built on Durable Objects) where Durable Object's [strict serializability ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/) enables global ordering of requests and storage operations.
+- **Durable Objects** for stateful serverless workloads, per-user or per-customer SQL state, and building distributed systems (D1 and Queues are built on Durable Objects) where Durable Object's [strict serializability ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/) enables global ordering of requests and storage operations.
 
 ### Session storage
 
@@ -52,7 +52,7 @@ We recommend using [Workers KV](https://developers.cloudflare.com/kv/) for stori
 
 Frequently read keys benefit from KV's [internal cache](https://developers.cloudflare.com/kv/concepts/how-kv-works/), and repeated reads to these "hot" keys will typically see latencies in the 500µs to 10ms range.
 
-Authentication frameworks like [OpenAuth ↗](https://openauth.js.org/docs/storage/cloudflare/) use Workers KV as session storage when deployed to Cloudflare, and [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) uses KV to securely store and distribute user credentials so that they can be validated as close to the user as possible and reduce overall latency.
+Authentication frameworks like [OpenAuth ↗︎](https://openauth.js.org/docs/storage/cloudflare/) use Workers KV as session storage when deployed to Cloudflare, and [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) uses KV to securely store and distribute user credentials so that they can be validated as close to the user as possible and reduce overall latency.
 
 ## Product overviews
 
@@ -106,7 +106,7 @@ It is ideal for projects that require:
 
 To get started with Durable Objects:
 
-- Read the [introductory blog post ↗](https://blog.cloudflare.com/introducing-workers-durable-objects/).
+- Read the [introductory blog post ↗︎](https://blog.cloudflare.com/introducing-workers-durable-objects/).
 - Review the [Durable Objects documentation](https://developers.cloudflare.com/durable-objects/).
 - Get started with [Durable Objects](https://developers.cloudflare.com/durable-objects/get-started/).
 - Learn about Durable Objects [Limits](https://developers.cloudflare.com/durable-objects/platform/limits/).
@@ -216,7 +216,7 @@ Cloudflare Workers offers a SQLite-backed serverless database product - [D1](htt
 
 **D1 is a managed database product.**
 
-D1 fits into a familiar architecture for developers, where application servers communicate with a database over the network. Application servers are typically Workers; however, D1 also supports external, non-Worker access via an [HTTP API ↗](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/query/), which helps unlock [third-party tooling](https://developers.cloudflare.com/d1/reference/community-projects/#_top) support for D1.
+D1 fits into a familiar architecture for developers, where application servers communicate with a database over the network. Application servers are typically Workers; however, D1 also supports external, non-Worker access via an [HTTP API ↗︎](https://developers.cloudflare.com/api/resources/d1/subresources/database/methods/query/), which helps unlock [third-party tooling](https://developers.cloudflare.com/d1/reference/community-projects/#_top) support for D1.
 
 D1 aims for a "batteries included" feature set, including the above HTTP API, [database schema management](https://developers.cloudflare.com/d1/reference/migrations/#_top), [data import/export](https://developers.cloudflare.com/d1/best-practices/import-export-data/), and [database query insights](https://developers.cloudflare.com/d1/observability/metrics-analytics/#query-insights).
 

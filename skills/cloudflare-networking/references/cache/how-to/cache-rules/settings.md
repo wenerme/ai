@@ -539,7 +539,7 @@ Refer to <a href="https://developers.cloudflare.com/cache/how-to/cache-rules/cre
 
 #### Origin Cache Control (Enterprise-only)
 
-When this option is enabled, Cloudflare will aim to strictly adhere to [RFC 7234 ↗](https://datatracker.ietf.org/doc/html/rfc7234). Enterprise customers have the ability to select if Cloudflare will adhere to this behavior. Free, Pro, and Business customers have this option enabled by default and cannot disable it.
+When this option is enabled, Cloudflare will aim to strictly adhere to [RFC 7234 ↗︎](https://datatracker.ietf.org/doc/html/rfc7234). Enterprise customers have the ability to select if Cloudflare will adhere to this behavior. Free, Pro, and Business customers have this option enabled by default and cannot disable it.
 
 <details>
 

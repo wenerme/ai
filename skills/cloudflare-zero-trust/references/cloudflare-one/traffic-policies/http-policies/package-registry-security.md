@@ -54,7 +54,7 @@ The following selectors are available for [HTTP policies](https://developers.clo
 | `pkg.name` | Package Name | `pkg.name == "lodash"` | The package name extracted from the download URL. |
 | `pkg.version` | Package Version | `pkg.version == "4.17.21"` | The package version extracted from the download URL. Supports exact match and ecosystem-aware comparison operators. |
 | `pkg.namespace` | Package Namespace | `pkg.namespace == "@babel"` | The package namespace, when the ecosystem supports one. For npm this is the scope, for Maven this is the group ID, and for Go this is the module path. |
-| `pkg.purl` | Package URL | `pkg.purl == "pkg:npm/lodash@4.17.21"` | The [Package URL (PURL) ↗](https://github.com/package-url/purl-spec) derived from the detected coordinates. Available in the API only. |
+| `pkg.purl` | Package URL | `pkg.purl == "pkg:npm/lodash@4.17.21"` | The [Package URL (PURL) ↗︎](https://github.com/package-url/purl-spec) derived from the detected coordinates. Available in the API only. |
 
 ### Build expressions in the dashboard
 

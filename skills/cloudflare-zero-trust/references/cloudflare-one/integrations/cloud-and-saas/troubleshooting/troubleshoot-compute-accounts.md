@@ -20,7 +20,7 @@ Cloudflare CASB detects when compute accounts are unhealthy or outdated. Common 
 
 To identify unhealthy compute accounts:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS integrations**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS integrations**.
 2. Choose the integration you created for cloud scanning.
 3. Select **Manage compute accounts**.
 
@@ -38,7 +38,7 @@ Upgrading a compute account applies the latest software features, bug fixes, and
 
 To upgrade a compute account:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS integrations**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS integrations**.
 2. Choose the integration you created for cloud scanning.
 3. Select **Open connection instructions**.
 4. Follow the instructions provided to validate your local Terraform and CLI configuration.
@@ -72,7 +72,7 @@ To roll your API token:
 
 4. Copy your API token.
 
-Once you roll your API token in Cloudflare, you can update the API token value in your secrets manager for [Amazon Web Services (AWS) ↗](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_update-secret-value.html) or [Google Cloud Platform (GCP) ↗](https://cloud.google.com/secret-manager/docs/edit-secrets).
+Once you roll your API token in Cloudflare, you can update the API token value in your secrets manager for [Amazon Web Services (AWS) ↗︎](https://docs.aws.amazon.com/secretsmanager/latest/userguide/manage_update-secret-value.html) or [Google Cloud Platform (GCP) ↗︎](https://cloud.google.com/secret-manager/docs/edit-secrets).
 
 ### Common token issues
 

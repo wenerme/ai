@@ -16,7 +16,7 @@ Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 You can check whether or not APO is working by verifying APO headers are present. When APO is working, three headers are present: `CF-Cache-Status`, `cf-apo-via`, `cf-edge-cache`.
 
-1. Visit [Uptrends.com ↗](https://www.uptrends.com/tools/http-response-header-check).
+1. Visit [Uptrends.com ↗︎](https://www.uptrends.com/tools/http-response-header-check).
 2. In the text field, enter the URL for your WordPress homepage including the `https://www.`.
 3. Select **Start test**. The **Response Headers** table displays.
 4. Locate the three header responses and their description. APO is working correctly when the headers exactly match the headers below.

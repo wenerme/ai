@@ -14,12 +14,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/prisma-orm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Prisma ORM ↗](https://www.prisma.io/docs) is a Node.js and TypeScript ORM with a focus on type safety and developer experience. This example demonstrates how to use Prisma ORM with PostgreSQL via Cloudflare Hyperdrive in a Workers application.
+[Prisma ORM ↗︎](https://www.prisma.io/docs) is a Node.js and TypeScript ORM with a focus on type safety and developer experience. This example demonstrates how to use Prisma ORM with PostgreSQL via Cloudflare Hyperdrive in a Workers application.
 
 ## Prerequisites
 
 - A Cloudflare account with Workers access
-- A PostgreSQL database (such as [Prisma Postgres ↗](https://www.prisma.io/postgres))
+- A PostgreSQL database (such as [Prisma Postgres ↗︎](https://www.prisma.io/postgres))
 - A [Hyperdrive configuration to your PostgreSQL database](https://developers.cloudflare.com/hyperdrive/get-started/#3-connect-hyperdrive-to-a-database)
 - An existing [Worker project](https://developers.cloudflare.com/workers/get-started/guide/)
 
@@ -94,7 +94,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your Wran
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -107,7 +107,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your Wran
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

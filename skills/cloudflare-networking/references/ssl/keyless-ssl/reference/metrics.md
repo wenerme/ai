@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/reference/metrics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The gokeyless key server exposes a [Prometheus ↗](https://prometheus.io/) metrics endpoint that you can use to monitor signing performance, error rates, connection health, and certificate expiry. This endpoint can also be scraped by the OpenTelemetry Collector Prometheus receiver, making the metrics available to any OpenTelemetry-compatible backend.
+The gokeyless key server exposes a [Prometheus ↗︎](https://prometheus.io/) metrics endpoint that you can use to monitor signing performance, error rates, connection health, and certificate expiry. This endpoint can also be scraped by the OpenTelemetry Collector Prometheus receiver, making the metrics available to any OpenTelemetry-compatible backend.
 
 ## Metrics endpoint
 

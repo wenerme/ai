@@ -44,7 +44,7 @@ fetch(imageURL, {
 });
 ```
 
-These typings are also available in [our Workers TypeScript definitions library ↗](https://github.com/cloudflare/workers-types).
+These typings are also available in [our Workers TypeScript definitions library ↗︎](https://github.com/cloudflare/workers-types).
 
 `cf.image` is available on any zone that hosts a Worker, including `*.workers.dev` subdomains. Each transformation is billed to the account that owns the Worker.
 

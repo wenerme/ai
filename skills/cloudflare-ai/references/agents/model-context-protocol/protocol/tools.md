@@ -28,7 +28,7 @@ Bridge MCP tools from a Cloudflare McpAgent into Chrome's experimental WebMCP AP
 
 ## Defining tools
 
-Use `server.registerTool()` to register a tool on a stateless `McpServer` instance. Each tool has a name, a description, an input schema defined with a schema library like [Zod ↗](https://zod.dev) or [Valibot ↗](https://valibot.dev), and a handler function.
+Use `server.registerTool()` to register a tool on a stateless `McpServer` instance. Each tool has a name, a description, an input schema defined with a schema library like [Zod ↗︎](https://zod.dev) or [Valibot ↗︎](https://valibot.dev), and a handler function.
 
 ```js
 import { McpServer } from "@modelcontextprotocol/server";

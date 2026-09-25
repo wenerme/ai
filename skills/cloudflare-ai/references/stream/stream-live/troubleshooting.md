@@ -35,7 +35,7 @@ The keyframe interval (also called GOP size) is a measurement of how often keyfr
 4. Look at your **Upload-to-Duration Ratio** chart.
 
    It should be a consistent flat line below 90%. If you see an inconsistent or wavy line, or a line that is consistently above 100%, try the following troubleshooting steps:
-   - [Check that your Internet upload speed ↗](https://speed.cloudflare.com/) is at least 20 Mbps. If it is below 20 Mbps, use common troubleshooting steps such as restarting your router, using an Ethernet connection instead of Wi-Fi, or contacting your Internet service provider.
+   - [Check that your Internet upload speed ↗︎](https://speed.cloudflare.com/) is at least 20 Mbps. If it is below 20 Mbps, use common troubleshooting steps such as restarting your router, using an Ethernet connection instead of Wi-Fi, or contacting your Internet service provider.
    - Check the video bitrate setting in the software or service you use to send the stream to Cloudflare.
      - If it is "variable", change it to "constant" with a specific number, like 8 Mbps.
      - If it is above 15 Mbps, lower it to 8 Mbps or 70% of your Internet speed, whichever is lower.

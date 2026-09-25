@@ -21,14 +21,14 @@ Cloudflare DNS offers a few different [setup options](https://developers.cloudfl
 Make sure that you:
 
 - Create a Cloudflare account — If you have not already, [sign up for a Cloudflare account](https://developers.cloudflare.com/fundamentals/account/create-account/).
-- Own a domain name — You need a registered domain (for example, `example.com`). If you do not have one, you can [register a domain at-cost through Cloudflare Registrar ↗](https://dash.cloudflare.com/?to=/:account/domains/register). Domains purchased through Cloudflare Registrar automatically use Cloudflare for authoritative DNS, so you can skip the rest of this tutorial.
+- Own a domain name — You need a registered domain (for example, `example.com`). If you do not have one, you can [register a domain at-cost through Cloudflare Registrar ↗︎](https://dash.cloudflare.com/?to=/:account/domains/register). Domains purchased through Cloudflare Registrar automatically use Cloudflare for authoritative DNS, so you can skip the rest of this tutorial.
 
 ## 1. Add your domain to Cloudflare
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com). [Go to **Domains** ↗](https://dash.cloudflare.com/?to=/:account/domains/overview)
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com). [Go to **Domains** ↗](https://dash.cloudflare.com/?to=/:account/domains/overview)
 2. Select **Onboard a domain**.
 3. Enter your apex domain (for example, `example.com`) and choose how you would like to add your DNS records.
-4. Select **Continue** and choose a [plan ↗](https://www.cloudflare.com/plans/#compare-features).
+4. Select **Continue** and choose a [plan ↗︎](https://www.cloudflare.com/plans/#compare-features).
 
 <details>
 
@@ -61,9 +61,9 @@ curl "https://api.cloudflare.com/client/v4/zones" \
 
 Note
 
-If Cloudflare is unable to identify your domain as a registered domain, make sure you are using an existing [top-level domain ↗](https://www.cloudflare.com/learning/dns/top-level-domain/) (`.com`, `.net`, `.biz`, or others).
+If Cloudflare is unable to identify your domain as a registered domain, make sure you are using an existing [top-level domain ↗︎](https://www.cloudflare.com/learning/dns/top-level-domain/) (`.com`, `.net`, `.biz`, or others).
 
-Cloudflare requires your apex domain to be one level below a valid TLD defined in the [Public Suffix List (PSL) ↗](https://github.com/publicsuffix/list/blob/master/public_suffix_list.dat). Enterprise customers can onboard lower-level subdomains using [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
+Cloudflare requires your apex domain to be one level below a valid TLD defined in the [Public Suffix List (PSL) ↗︎](https://github.com/publicsuffix/list/blob/master/public_suffix_list.dat). Enterprise customers can onboard lower-level subdomains using [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/).
 
 <details>
 
@@ -73,7 +73,7 @@ DNS records quick scan
 
 </summary>
 
-Cloudflare can <a href="https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/">automatically scan for your records</a> and add them to the <a href="https://developers.cloudflare.com/dns/concepts/#zone">DNS zone</a> for you, or you can add records manually. These records show up under your domain on the <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns/records">**DNS Records** ↗</a> page of the dashboard.
+Cloudflare can <a href="https://developers.cloudflare.com/dns/zone-setups/reference/dns-quick-scan/">automatically scan for your records</a> and add them to the <a href="https://developers.cloudflare.com/dns/concepts/#zone">DNS zone</a> for you, or you can add records manually. These records show up under your domain on the <a href="https://dash.cloudflare.com/?to=/:account/:zone/dns/records">**DNS Records** ↗︎</a> page of the dashboard.
 
 Note
 
@@ -216,7 +216,7 @@ Cloudflare automatically assigns nameservers to a domain and these assignments c
 
 ### 3.2. Log in to your registrar
 
-Log in to the admin account for your domain registrar. If you do not know your provider, use [ICANN Lookup ↗](https://lookup.icann.org/).
+Log in to the admin account for your domain registrar. If you do not know your provider, use [ICANN Lookup ↗︎](https://lookup.icann.org/).
 
 Note
 
@@ -236,28 +236,28 @@ Provider-specific DNSSEC instructions
 
 This is not an exhaustive list, but the following links may be helpful:
 
-- <a href="https://support.dnsimple.com/articles/cloudflare-ds-record/">DNSimple ↗</a>
-- <a href="https://support.domaindiscount24.com/hc/articles/4409759478161">Domaindiscount24 ↗</a>
-- <a href="https://help.dreamhost.com/hc/en-us/articles/219539467">DreamHost ↗</a>
-- <a href="https://www.dynadot.com/help/question/set-DNSSEC">Dynadot ↗</a>
-- <a href="https://support.enom.com/support/solutions/articles/201000065386">Enom ↗</a>
-- <a href="https://docs.gandi.net/en/domain_names/advanced_users/dnssec.html">Gandi ↗</a>
-- <a href="https://www.godaddy.com/help/add-a-ds-record-23865">GoDaddy ↗</a>
-- <a href="https://www.hostinger.com/support/3667267-how-to-use-dnssec-records-at-hostinger/">Hostinger ↗</a>
-- <a href="https://support.hover.com/support/solutions/articles/201000064716">Hover ↗</a>
-- <a href="https://faq.infomaniak.com/2187">Infomaniak ↗</a>
-- <a href="https://www.inmotionhosting.com/support/edu/cpanel/enable-dnssec-cloudflare/">InMotion Hosting ↗</a>
-- <a href="https://kb.inwx.com/en-us/3-nameserver/131">INWX ↗</a>
-- <a href="https://joker.com/faq/books/jokercom-faq-en/page/dnssec">Joker.com ↗</a>
-- <a href="https://www.name.com/support/articles/205439058-managing-dnssec">Name.com ↗</a>
-- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/9722/2232/managing-dnssec-for-domains-pointed-to-custom-dns/">Namecheap ↗</a>
-- <a href="https://support.nameisp.com/knowledgebase/dns">NameISP ↗</a>
-- <a href="https://www.namesilo.com/support/v2/articles/domain-manager/ds-records">Namesilo ↗</a>
-- <a href="https://help.ovhcloud.com/csm/en-dns-secure-domain-dnssec?id=kb_article_view&amp;sysparm_article=KB0051637">OVH ↗</a>
-- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-dnssec">Squarespace ↗</a>
-- <a href="https://registro.br/tecnologia/dnssec/?secao=tutoriais-dns">Registro.br ↗</a>
-- <a href="https://kb.porkbun.com/article/93-how-to-install-dnssec">Porkbun ↗</a> (do not fill out **keyData**)
-- <a href="https://www.transip.eu/knowledgebase/150-secure-domains-custom-nameservers-dnssec/">TransIP ↗</a>
+- <a href="https://support.dnsimple.com/articles/cloudflare-ds-record/">DNSimple ↗︎</a>
+- <a href="https://support.domaindiscount24.com/hc/articles/4409759478161">Domaindiscount24 ↗︎</a>
+- <a href="https://help.dreamhost.com/hc/en-us/articles/219539467">DreamHost ↗︎</a>
+- <a href="https://www.dynadot.com/help/question/set-DNSSEC">Dynadot ↗︎</a>
+- <a href="https://support.enom.com/support/solutions/articles/201000065386">Enom ↗︎</a>
+- <a href="https://docs.gandi.net/en/domain_names/advanced_users/dnssec.html">Gandi ↗︎</a>
+- <a href="https://www.godaddy.com/help/add-a-ds-record-23865">GoDaddy ↗︎</a>
+- <a href="https://www.hostinger.com/support/3667267-how-to-use-dnssec-records-at-hostinger/">Hostinger ↗︎</a>
+- <a href="https://support.hover.com/support/solutions/articles/201000064716">Hover ↗︎</a>
+- <a href="https://faq.infomaniak.com/2187">Infomaniak ↗︎</a>
+- <a href="https://www.inmotionhosting.com/support/edu/cpanel/enable-dnssec-cloudflare/">InMotion Hosting ↗︎</a>
+- <a href="https://kb.inwx.com/en-us/3-nameserver/131">INWX ↗︎</a>
+- <a href="https://joker.com/faq/books/jokercom-faq-en/page/dnssec">Joker.com ↗︎</a>
+- <a href="https://www.name.com/support/articles/205439058-managing-dnssec">Name.com ↗︎</a>
+- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/9722/2232/managing-dnssec-for-domains-pointed-to-custom-dns/">Namecheap ↗︎</a>
+- <a href="https://support.nameisp.com/knowledgebase/dns">NameISP ↗︎</a>
+- <a href="https://www.namesilo.com/support/v2/articles/domain-manager/ds-records">Namesilo ↗︎</a>
+- <a href="https://help.ovhcloud.com/csm/en-dns-secure-domain-dnssec?id=kb_article_view&amp;sysparm_article=KB0051637">OVH ↗︎</a>
+- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-dnssec">Squarespace ↗︎</a>
+- <a href="https://registro.br/tecnologia/dnssec/?secao=tutoriais-dns">Registro.br ↗︎</a>
+- <a href="https://kb.porkbun.com/article/93-how-to-install-dnssec">Porkbun ↗︎</a> (do not fill out **keyData**)
+- <a href="https://www.transip.eu/knowledgebase/150-secure-domains-custom-nameservers-dnssec/">TransIP ↗︎</a>
 
 </details>
 
@@ -280,41 +280,41 @@ Provider-specific instructions
 
 This is not an exhaustive list of provider-specific instructions, but the following links may be helpful:
 
-- <a href="https://www.ionos.com/help/domains/using-your-own-name-servers/using-your-own-name-servers-for-a-domain/">Ionos ↗</a>
-- <a href="https://help.101domain.com/kb/managing-name-server-records">101Domain ↗</a>
-- <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-name-servers-glue-records.html#domain-name-servers-glue-records-adding-changing">Amazon ↗</a>
-- <a href="https://help.blacknight.com/hc/articles/4413036322321-How-do-I-change-the-nameservers-for-my-domain">Blacknight ↗</a>
-- <a href="https://www.bluehost.com/help/article/custom-nameservers">BlueHost ↗</a>
-- <a href="https://directnic.com/knowledge/article/33:how%2Bdo%2Bi%2Bmodify%2Bname%2Bservers%2Bfor%2Bmy%2Bdomain%2Bname%253F">DirectNIC ↗</a>
-- <a href="http://www.dnsmadeeasy.com/support/faq/">DNSMadeEasy ↗</a>
-- <a href="https://www.domain.com/help/article/domain-management-how-to-update-nameservers">Domain.com ↗</a>
-- <a href="https://www.dotster.com/help/article/domain-management-how-to-update-nameservers">Dotster ↗</a>
-- <a href="https://help.dreamhost.com/hc/en-us/articles/360038897151">DreamHost ↗</a>
-- <a href="https://kb.easydns.com/knowledge/settingchanging-nameservers/">EasyDNS ↗</a>
-- <a href="https://help.enom.com/hc/en-us/articles/115000486451-Nameservers-NS">Enom ↗</a>
-- <a href="https://www.fastdomain.com/hosting/help/transfer_client_start">Fast Domain ↗</a>
-- <a href="https://billing.flokinet.is/index.php?rp=/knowledgebase/57/Nameserver-and-DNS-records.html">FlokiNET ↗</a>
-- <a href="https://docs.gandi.net/en/domain_names/common_operations/changing_nameservers.html">Gandi ↗</a>
-- <a href="https://www.godaddy.com/help/change-nameservers-for-your-domain-names-664">GoDaddy ↗</a>
-- <a href="https://www.hostgator.com/help/article/changing-name-servers">HostGator ↗</a>
-- <a href="https://hostico.ro/docs/setarea-nameserverelor-din-contul-de-client-hostico/">Hostico ↗</a>
-- <a href="https://my.hostmonster.com/cgi/help/222">HostMonster ↗</a>
-- <a href="https://support.hover.com/support/solutions/articles/201000064742-changing-your-domain-nameservers">Hover ↗</a>
-- <a href="https://faq.internetbs.net/hc/en-gb/articles/4516921367837-How-to-update-Nameservers-for-a-domain">Internetdbs ↗</a>
-- <a href="https://www.ipage.com/help/article/domain-management-how-to-update-nameservers">iPage ↗</a>
-- <a href="https://support.melbourneit.au/docs/how-do-i-manage-my-dns-on-cpanel">MelbourneIT ↗</a>
-- <a href="https://support.moniker.com/hc/en-gb/articles/10101271418653-How-to-update-Nameservers-for-a-domain">Moniker ↗</a>
-- <a href="https://www.name.com/support/articles/205934457-registering-custom-nameservers">Name.com ↗</a>
-- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain">Namecheap ↗</a>
-- <a href="https://www.networksolutions.com/manage-it/edit-nameservers.jsp">Network Solutions ↗</a>
-- <a href="https://docs.ovh.com/gb/en/domains/web_hosting_general_information_about_dns_servers/#step-2-edit-your-domains-dns-servers">OVH ↗</a>
-- <a href="https://kb.porkbun.com/article/22-how-to-change-your-nameservers">Porkbun ↗</a>
-- <a href="https://support.rackspace.com/how-to/rackspace-name-servers/">Rackspace ↗</a>
-- <a href="https://www.register.com/knowledge">Register ↗</a>
-- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-open-the-domain-s-advanced-settings">Squarespace ↗</a>
-- <a href="https://kb.site5.com/dns-2/custom-nameservers/">Site5 ↗</a>
-- <a href="https://cloud.ibm.com/docs/dns?topic=dns-add-edit-or-delete-custom-name-servers-for-a-domain">Softlayer ↗</a>
-- <a href="https://helpcenter.yola.com/hc/articles/360012492660-Changing-your-name-servers">Yola ↗</a>
+- <a href="https://www.ionos.com/help/domains/using-your-own-name-servers/using-your-own-name-servers-for-a-domain/">Ionos ↗︎</a>
+- <a href="https://help.101domain.com/kb/managing-name-server-records">101Domain ↗︎</a>
+- <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-name-servers-glue-records.html#domain-name-servers-glue-records-adding-changing">Amazon ↗︎</a>
+- <a href="https://help.blacknight.com/hc/articles/4413036322321-How-do-I-change-the-nameservers-for-my-domain">Blacknight ↗︎</a>
+- <a href="https://www.bluehost.com/help/article/custom-nameservers">BlueHost ↗︎</a>
+- <a href="https://directnic.com/knowledge/article/33:how%2Bdo%2Bi%2Bmodify%2Bname%2Bservers%2Bfor%2Bmy%2Bdomain%2Bname%253F">DirectNIC ↗︎</a>
+- <a href="http://www.dnsmadeeasy.com/support/faq/">DNSMadeEasy ↗︎</a>
+- <a href="https://www.domain.com/help/article/domain-management-how-to-update-nameservers">Domain.com ↗︎</a>
+- <a href="https://www.dotster.com/help/article/domain-management-how-to-update-nameservers">Dotster ↗︎</a>
+- <a href="https://help.dreamhost.com/hc/en-us/articles/360038897151">DreamHost ↗︎</a>
+- <a href="https://kb.easydns.com/knowledge/settingchanging-nameservers/">EasyDNS ↗︎</a>
+- <a href="https://help.enom.com/hc/en-us/articles/115000486451-Nameservers-NS">Enom ↗︎</a>
+- <a href="https://www.fastdomain.com/hosting/help/transfer_client_start">Fast Domain ↗︎</a>
+- <a href="https://billing.flokinet.is/index.php?rp=/knowledgebase/57/Nameserver-and-DNS-records.html">FlokiNET ↗︎</a>
+- <a href="https://docs.gandi.net/en/domain_names/common_operations/changing_nameservers.html">Gandi ↗︎</a>
+- <a href="https://www.godaddy.com/help/change-nameservers-for-your-domain-names-664">GoDaddy ↗︎</a>
+- <a href="https://www.hostgator.com/help/article/changing-name-servers">HostGator ↗︎</a>
+- <a href="https://hostico.ro/docs/setarea-nameserverelor-din-contul-de-client-hostico/">Hostico ↗︎</a>
+- <a href="https://my.hostmonster.com/cgi/help/222">HostMonster ↗︎</a>
+- <a href="https://support.hover.com/support/solutions/articles/201000064742-changing-your-domain-nameservers">Hover ↗︎</a>
+- <a href="https://faq.internetbs.net/hc/en-gb/articles/4516921367837-How-to-update-Nameservers-for-a-domain">Internetdbs ↗︎</a>
+- <a href="https://www.ipage.com/help/article/domain-management-how-to-update-nameservers">iPage ↗︎</a>
+- <a href="https://support.melbourneit.au/docs/how-do-i-manage-my-dns-on-cpanel">MelbourneIT ↗︎</a>
+- <a href="https://support.moniker.com/hc/en-gb/articles/10101271418653-How-to-update-Nameservers-for-a-domain">Moniker ↗︎</a>
+- <a href="https://www.name.com/support/articles/205934457-registering-custom-nameservers">Name.com ↗︎</a>
+- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain">Namecheap ↗︎</a>
+- <a href="https://www.networksolutions.com/manage-it/edit-nameservers.jsp">Network Solutions ↗︎</a>
+- <a href="https://docs.ovh.com/gb/en/domains/web_hosting_general_information_about_dns_servers/#step-2-edit-your-domains-dns-servers">OVH ↗︎</a>
+- <a href="https://kb.porkbun.com/article/22-how-to-change-your-nameservers">Porkbun ↗︎</a>
+- <a href="https://support.rackspace.com/how-to/rackspace-name-servers/">Rackspace ↗︎</a>
+- <a href="https://www.register.com/knowledge">Register ↗︎</a>
+- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-open-the-domain-s-advanced-settings">Squarespace ↗︎</a>
+- <a href="https://kb.site5.com/dns-2/custom-nameservers/">Site5 ↗︎</a>
+- <a href="https://cloud.ibm.com/docs/dns?topic=dns-add-edit-or-delete-custom-name-servers-for-a-domain">Softlayer ↗︎</a>
+- <a href="https://helpcenter.yola.com/hc/articles/360012492660-Changing-your-name-servers">Yola ↗︎</a>
 
 </details>
 
@@ -328,7 +328,7 @@ When your domain is **Active**:
 
 - You will receive an email from Cloudflare.
 - Your domain will have a [status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) of **Active** on the **Domains** page of your account.
-- Online tools such as [https://www.whatsmydns.net/ ↗](https://www.whatsmydns.net/) will show your Cloudflare-assigned nameservers (most of these tools use cached query results, so it may take longer for them to show the updated nameservers).
+- Online tools such as [https://www.whatsmydns.net/ ↗︎](https://www.whatsmydns.net/) will show your Cloudflare-assigned nameservers (most of these tools use cached query results, so it may take longer for them to show the updated nameservers).
 - CLI commands will show your Cloudflare-assigned nameservers
 
 ```txt

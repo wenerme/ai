@@ -41,7 +41,7 @@ You can get average (`avg`) or maximum (`max`) utilization values (in percentage
 
 Refer to the query below to learn how to get average utilization and maximum utilization by point of presence, and filter the results.
 
-You can also select the button at the bottom to use this query for your account via the [Cloudflare GraphQL API Explorer ↗](https://graphql.cloudflare.com/explorer). Make sure to provide your account ID and timestamps, and replace the placeholders for `popName`, `egressIp`, and `origin` as needed.
+You can also select the button at the bottom to use this query for your account via the [Cloudflare GraphQL API Explorer ↗︎](https://graphql.cloudflare.com/explorer). Make sure to provide your account ID and timestamps, and replace the placeholders for `popName`, `egressIp`, and `origin` as needed.
 
 ```graphql
 query AegisIpUtilizationQuery(

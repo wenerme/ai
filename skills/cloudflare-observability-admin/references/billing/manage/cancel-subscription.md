@@ -51,7 +51,7 @@ To change your plan instead of canceling, select **Change** under **Active Subsc
 
 Caution
 
-Fees are non-refundable. You are billed for the full billing period in which you cancel and no refunds are issued for unused time. After cancellation, you retain access to paid services through the end of the current billing period. For full terms, refer to the [Cloudflare Terms of Use ↗](https://www.cloudflare.com/terms/).
+Fees are non-refundable. You are billed for the full billing period in which you cancel and no refunds are issued for unused time. After cancellation, you retain access to paid services through the end of the current billing period. For full terms, refer to the [Cloudflare Terms of Use ↗︎](https://www.cloudflare.com/terms/).
 
 ## Related resources
 

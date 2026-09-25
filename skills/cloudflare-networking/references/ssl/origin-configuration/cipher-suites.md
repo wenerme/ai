@@ -20,7 +20,7 @@ Note
 
 Refer to [cipher suites supported at Cloudflare's global network](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/) to know what cipher suites Cloudflare presents to browsers and other user agents.
 
-The list order is based on how the cipher suites appear in the [ClientHello ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/#:~:text=client%20hello), communicating Cloudflare's preference.
+The list order is based on how the cipher suites appear in the [ClientHello ↗︎](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/#:~:text=client%20hello), communicating Cloudflare's preference.
 
 ## Supported cipher suites by protocol
 
@@ -42,11 +42,11 @@ The list order is based on how the cipher suites appear in the [ClientHello ↗]
 
 ### TLS 1.3 cipher suites
 
-Although TLS 1.3 uses the same cipher suite space as previous versions of TLS, TLS 1.3 cipher suites are defined differently, only specifying the symmetric ciphers, and cannot be used for TLS 1.2 ([RFC 8446 ↗](https://www.rfc-editor.org/rfc/rfc8446.html)).
+Although TLS 1.3 uses the same cipher suite space as previous versions of TLS, TLS 1.3 cipher suites are defined differently, only specifying the symmetric ciphers, and cannot be used for TLS 1.2 ([RFC 8446 ↗︎](https://www.rfc-editor.org/rfc/rfc8446.html)).
 
 Similarly, TLS 1.2 and lower cipher suites cannot be used with TLS 1.3. BoringSSL also hard-codes cipher preferences in the order above for TLS 1.3.
 
-Based on BoringSSL, Cloudflare system will return the names listed above. However, the corresponding names defined in [RFC 8446 ↗](https://www.rfc-editor.org/rfc/rfc8446.html) are the following:
+Based on BoringSSL, Cloudflare system will return the names listed above. However, the corresponding names defined in [RFC 8446 ↗︎](https://www.rfc-editor.org/rfc/rfc8446.html) are the following:
 
 - `TLS_AES_128_GCM_SHA256`
 - `TLS_AES_256_GCM_SHA384`
@@ -56,7 +56,7 @@ Based on BoringSSL, Cloudflare system will return the names listed above. Howeve
 
 Cloudflare will present the cipher suites to your origin and your server will select whichever cipher suite it prefers.
 
-However, if you want to ensure that your origin server supports the same cipher suites that Cloudflare supports at our global network and you use [NGINX ↗](https://en.wikipedia.org/wiki/Nginx) for TLS termination on your origin, you can apply the following configuration:
+However, if you want to ensure that your origin server supports the same cipher suites that Cloudflare supports at our global network and you use [NGINX ↗︎](https://en.wikipedia.org/wiki/Nginx) for TLS termination on your origin, you can apply the following configuration:
 
 ```txt
 ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3;

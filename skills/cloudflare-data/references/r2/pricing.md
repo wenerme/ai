@@ -25,7 +25,7 @@ All included usage is on a monthly basis.
 
 Note
 
-To learn about potential cost savings from using R2, refer to the [R2 pricing calculator ↗](https://r2-calculator.cloudflare.com/).
+To learn about potential cost savings from using R2, refer to the [R2 pricing calculator ↗︎](https://r2-calculator.cloudflare.com/).
 
 ## R2 pricing
 
@@ -119,7 +119,7 @@ As objects are migrated to R2, they are served from R2, and you are charged for 
 
 ## Pricing calculator
 
-To learn about potential cost savings from using R2, refer to the [R2 pricing calculator ↗](https://r2-calculator.cloudflare.com/).
+To learn about potential cost savings from using R2, refer to the [R2 pricing calculator ↗︎](https://r2-calculator.cloudflare.com/).
 
 ## R2 billing examples
 

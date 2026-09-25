@@ -18,7 +18,7 @@ Ship features safely with feature flags.
 
 Flagship is Cloudflare's feature flag service. It lets you control feature visibility in your applications without redeploying code. Define flags with targeting rules and percentage-based rollouts, then evaluate them directly inside your Workers through a [native binding](https://developers.cloudflare.com/flagship/binding/) or from server and browser applications with [OpenFeature SDKs](https://developers.cloudflare.com/flagship/sdk/).
 
-[OpenFeature ↗](https://openfeature.dev/) is the CNCF open standard for feature flag management. Flagship ships official SDKs for TypeScript (Workers, Node.js, and browsers), Python, and Go. You can swap providers without changing evaluation code.
+[OpenFeature ↗︎](https://openfeature.dev/) is the CNCF open standard for feature flag management. Flagship ships official SDKs for TypeScript (Workers, Node.js, and browsers), Python, and Go. You can swap providers without changing evaluation code.
 
 Check out the [Get started guide](https://developers.cloudflare.com/flagship/get-started/) to create your first feature flag.
 

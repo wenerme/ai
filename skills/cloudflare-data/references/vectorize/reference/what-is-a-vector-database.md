@@ -27,7 +27,7 @@ A vector database determines what other data (represented as vectors) is near yo
 - Recommendation engines, used to return content similar to the input based on different criteria (for example previous product sales, or user history).
 - Anomaly detection, used to identify whether specific data points are similar to existing data, or different.
 
-Vector databases can also power [Retrieval Augmented Generation ↗](https://arxiv.org/abs/2005.11401) (RAG) tasks, which allow you to bring additional context to LLMs (Large Language Models) by using the context from a vector search to augment the user prompt.
+Vector databases can also power [Retrieval Augmented Generation ↗︎](https://arxiv.org/abs/2005.11401) (RAG) tasks, which allow you to bring additional context to LLMs (Large Language Models) by using the context from a vector search to augment the user prompt.
 
 ### Vector search
 
@@ -61,7 +61,7 @@ When a user initiates a prompt, instead of passing it (without additional contex
 
 [Create a RAG application today with AI Search](https://developers.cloudflare.com/ai-search/) to deploy a fully managed RAG pipeline in just a few clicks. AI Search automatically sets up Vectorize, handles continuous indexing, and serves responses through a single API.
 
-<sup>1</sup> You can learn more about the theory behind RAG by reading the [RAG paper ↗](https://arxiv.org/abs/2005.11401). <sup>1</sup> You can learn more about the theory behind RAG by reading the [RAG paper ↗](https://arxiv.org/abs/2005.11401).
+<sup>1</sup> You can learn more about the theory behind RAG by reading the [RAG paper ↗︎](https://arxiv.org/abs/2005.11401). <sup>1</sup> You can learn more about the theory behind RAG by reading the [RAG paper ↗︎](https://arxiv.org/abs/2005.11401).
 
 ## Terminology
 

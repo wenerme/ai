@@ -96,7 +96,7 @@ You will need to either provide a certificate for only those hosts or change the
 
 ## Key servers on Windows
 
-Cloudflare currently only provide packages for the supported GNU/Linux distributions as per the [Cloudflare package repository ↗](https://pkg.cloudflare.com/).
+Cloudflare currently only provide packages for the supported GNU/Linux distributions as per the [Cloudflare package repository ↗︎](https://pkg.cloudflare.com/).
 
 However, the key server is open source so you may attempt to build and deploy a binary, but running on Windows is not a supported configuration so you may experience problems that Cloudflare will not be able to help with.
 

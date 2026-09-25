@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/redwoodsdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this guide, you will create a new [RedwoodSDK ↗](https://rwsdk.com/) application and deploy it to Cloudflare Workers.
+In this guide, you will create a new [RedwoodSDK ↗︎](https://rwsdk.com/) application and deploy it to Cloudflare Workers.
 
 RedwoodSDK is a framework for building server-side web applications on Cloudflare. It is a Vite plugin that provides SSR, React Server Components, Server Functions, and realtime capabilities.
 

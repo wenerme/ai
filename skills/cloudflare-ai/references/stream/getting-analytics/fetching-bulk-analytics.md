@@ -24,7 +24,7 @@ The Stream Analytics API uses the Cloudflare GraphQL Analytics API, which can be
 
 1. In the Cloudflare dashboard, go to the **Account API tokens** page. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens)
 2. Generate an API token with the **Account Analytics** permission.
-3. Use a GraphQL client of your choice to make your first query. [Postman ↗](https://www.postman.com/) has a built-in GraphQL client which can help you run your first query and introspect the GraphQL schema to understand what is possible.
+3. Use a GraphQL client of your choice to make your first query. [Postman ↗︎](https://www.postman.com/) has a built-in GraphQL client which can help you run your first query and introspect the GraphQL schema to understand what is possible.
 
 Refer to the sections below for available metrics, dimensions, fields, and example queries.
 

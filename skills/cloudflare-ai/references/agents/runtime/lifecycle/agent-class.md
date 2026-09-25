@@ -16,13 +16,13 @@ Last updated Aug 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 The core of the `agents` library is the `Agent` class. You extend it, override a few methods, and get state management, WebSockets, scheduling, RPC, and more for free. This page explains how `Agent` is built, layer by layer, so you understand what is happening under the hood.
 
-The snippets shown here are illustrative and do not necessarily represent best practices. For the full API, refer to the [API reference](https://developers.cloudflare.com/agents/runtime/) and the [source code ↗](https://github.com/cloudflare/agents/blob/main/packages/agents/src/index.ts).
+The snippets shown here are illustrative and do not necessarily represent best practices. For the full API, refer to the [API reference](https://developers.cloudflare.com/agents/runtime/) and the [source code ↗︎](https://github.com/cloudflare/agents/blob/main/packages/agents/src/index.ts).
 
 ## What is the Agent?
 
 The `Agent` class is an extension of `DurableObject` — agents *are* Durable Objects. If you are not familiar with Durable Objects, read [What are Durable Objects](https://developers.cloudflare.com/durable-objects/) first. At their core, Durable Objects are globally addressable (each instance has a unique ID), single-threaded compute instances with long-term storage (key-value and SQLite).
 
-`Agent` does not extend `DurableObject` directly. It extends `Server` from the [`partyserver` ↗](https://github.com/cloudflare/partykit/tree/main/packages/partyserver) package, which extends `DurableObject`. Think of it as layers: **DurableObject** > **Server** > **Agent**.
+`Agent` does not extend `DurableObject` directly. It extends `Server` from the [`partyserver` ↗︎](https://github.com/cloudflare/partykit/tree/main/packages/partyserver) package, which extends `DurableObject`. Think of it as layers: **DurableObject** > **Server** > **Agent**.
 
 ## Layer 0: Durable Object
 
@@ -115,7 +115,7 @@ Lastly, it is worth mentioning that the Durable Object also has the Worker `Env`
 
 ## Layer 1: `Server` (partyserver)
 
-Now that you have seen what Durable Objects provide out of the box, the `Server` class from [`partyserver` ↗](https://github.com/cloudflare/partykit/tree/main/packages/partyserver) will make more sense. It is an opinionated `DurableObject` wrapper that replaces low-level primitives with developer-friendly callbacks.
+Now that you have seen what Durable Objects provide out of the box, the `Server` class from [`partyserver` ↗︎](https://github.com/cloudflare/partykit/tree/main/packages/partyserver) will make more sense. It is an opinionated `DurableObject` wrapper that replaces low-level primitives with developer-friendly callbacks.
 
 `Server` does not add any storage operations of its own — it only wraps the Durable Object lifecycle.
 
@@ -188,7 +188,7 @@ There's also `this.broadcast` that sends a WS message to all connected clients (
 
 ### `this.name`
 
-It is hard to get a Durable Object's `name` from within it. `partyserver` tries to make it available in `this.name` but it is not a perfect solution. Learn more about it in [this GitHub issue ↗](https://github.com/cloudflare/workerd/issues/2240).
+It is hard to get a Durable Object's `name` from within it. `partyserver` tries to make it available in `this.name` but it is not a perfect solution. Learn more about it in [this GitHub issue ↗︎](https://github.com/cloudflare/workerd/issues/2240).
 
 ## Layer 2: Agent
 

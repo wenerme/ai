@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/cursor-cloud-agents/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Run Cursor Cloud Agents on Cloudflare via [self-hosted machines ↗](https://cursor.com/docs/cloud-agent/self-hosted). Each Cursor session assigned to the deployment runs in an isolated container backed by Cloudflare Containers.
+Run Cursor Cloud Agents on Cloudflare via [self-hosted machines ↗︎](https://cursor.com/docs/cloud-agent/self-hosted). Each Cursor session assigned to the deployment runs in an isolated container backed by Cloudflare Containers.
 
 Cursor hosts the agent loop, inference, and planning. Cloudflare runs commands, file edits, repository operations, and other tools inside infrastructure that you control.
 
@@ -25,8 +25,8 @@ You need:
 - A Cursor Enterprise plan with self-hosted machines enabled
 - A Cursor team service-account API key with agent scope
 - A Cloudflare Workers Paid account with access to Containers and R2
-- [Node.js 20 ↗](https://nodejs.org/) or later
-- A running [Docker ↗](https://www.docker.com/) daemon for deployment and local development
+- [Node.js 20 ↗︎](https://nodejs.org/) or later
+- A running [Docker ↗︎](https://www.docker.com/) daemon for deployment and local development
 
 ### Configure a Cursor team pool
 
@@ -38,7 +38,7 @@ CURSOR_API_KEY="$CURSOR_API_KEY" agent worker --pool cloudflare-test start
 
 The command registers the pool and temporarily connects your local machine as a worker. After the pool appears in Cursor, stop the worker with `Ctrl+C` and run `unset CURSOR_API_KEY`. Record the pool name for `CURSOR_POOL`. Keep the local worker stopped while testing the Cloudflare deployment so it does not claim the agent request.
 
-For more information, refer to [Cursor team pools ↗](https://cursor.com/docs/cloud-agent/self-hosted-guides/pool).
+For more information, refer to [Cursor team pools ↗︎](https://cursor.com/docs/cloud-agent/self-hosted-guides/pool).
 
 ## Deploy the template
 
@@ -108,7 +108,7 @@ The template deploys a Worker, a Durable Object namespace, a container applicati
 
 Repository-bound agents route work by Git remote. The team pool name provides an additional routing constraint.
 
-1. Go to [Cursor Cloud Agents ↗](https://cursor.com/agents).
+1. Go to [Cursor Cloud Agents ↗︎](https://cursor.com/agents).
 2. Start an agent and select a repository.
 3. Select **Self-hosted**, then select the name configured in `CURSOR_POOL`.
 4. Wait for Cursor to assign the session to the deployment. The Worker then starts a container for the session. The initial scheduled controller run can take up to five minutes to begin.
@@ -125,7 +125,7 @@ The Cursor worker derives its repository label from the Git remote. Do not confi
 
 Any-repository agents route work by team pool name. They start with an empty working directory and no Git remote.
 
-1. Go to [Cursor Cloud Agents ↗](https://cursor.com/agents).
+1. Go to [Cursor Cloud Agents ↗︎](https://cursor.com/agents).
 2. Start an agent and select the **Any repo** group.
 3. Select the team pool name configured in `CURSOR_POOL`.
 
@@ -219,9 +219,9 @@ If you change the cron interval, update both `triggers.crons` in `wrangler.jsonc
 
 ## Related resources
 
-- [Cursor Cloudflare Workers template ↗](https://github.com/anysphere/cloudflare-workers)
-- [Cursor self-hosted machines overview ↗](https://cursor.com/docs/cloud-agent/self-hosted)
-- [Cursor team pools ↗](https://cursor.com/docs/cloud-agent/self-hosted-guides/pool)
+- [Cursor Cloudflare Workers template ↗︎](https://github.com/anysphere/cloudflare-workers)
+- [Cursor self-hosted machines overview ↗︎](https://cursor.com/docs/cloud-agent/self-hosted)
+- [Cursor team pools ↗︎](https://cursor.com/docs/cloud-agent/self-hosted-guides/pool)
 - [Cloudflare Containers](https://developers.cloudflare.com/containers/)
 - [R2](https://developers.cloudflare.com/r2/)
 

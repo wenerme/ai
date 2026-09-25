@@ -28,7 +28,7 @@ To ensure your submission is valid:
 
 To view invalid submissions:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security** > **Submissions**.
 3. Select **Invalid submissions**.
 
@@ -40,7 +40,7 @@ You can filter based on **Date Range** and **Submitted by** (which will list ema
 
 To enable Invalid submission email notifications:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security** > **Settings**.
 3. Go to **Invalid submission emails** and turn on **Invalid submission email notifications**.
 

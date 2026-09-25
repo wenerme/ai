@@ -63,7 +63,7 @@ You can also create gateways manually with a custom name and configuration throu
 
 <a href="https://dash.cloudflare.com/?to=/:account/ai/ai-gateway">Go to **AI Gateway** ↗</a>
 
-1. Log into the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a> and select your account.
+1. Log into the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a> and select your account.
 2. Go to **AI** &gt; **AI Gateway**.
 3. Select **Create Gateway**.
 4. Enter your **Gateway name**. Note: Gateway name has a 64 character limit.

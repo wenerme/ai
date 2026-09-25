@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Review answers to the most commonly asked questions on Cloudflare Zero Trust, as well as a troubleshooting section to help you solve common issues and errors you may come across.
 
-If you cannot find the answer you are looking for, go to our [community page ↗](https://community.cloudflare.com/) and post your question there.
+If you cannot find the answer you are looking for, go to our [community page ↗︎](https://community.cloudflare.com/) and post your question there.
 
 ---
 

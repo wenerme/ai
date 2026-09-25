@@ -22,7 +22,7 @@ The sections below cover frequently asked questions about Cloudflare authoritati
 
 ### Is Cloudflare a free DNS (domain nameserver) provider?
 
-Yes. Cloudflare offers [free DNS services ↗](https://www.cloudflare.com/dns) to customers on all plans. Note that:
+Yes. Cloudflare offers [free DNS services ↗︎](https://www.cloudflare.com/dns) to customers on all plans. Note that:
 
 - You do not need to change your hosting provider to use Cloudflare.
 - You do not need to move away from your registrar. The only change you make with your registrar is to point the authoritative nameservers to the Cloudflare nameservers.
@@ -45,7 +45,7 @@ Yes. Enterprise customers can add subdomains directly to Cloudflare via [subdoma
 
 Yes, EDNS0 is a building block for modern DNS implementations and is enabled for all Cloudflare customers. EDNS0 adds support for signaling if the DNS Resolver (recursive DNS provider) supports larger message sizes and DNSSEC.
 
-EDNS0 is the first approved set of mechanisms for [DNS extensions ↗](http://en.wikipedia.org/wiki/Extension_mechanisms_for_DNS), originally published as [RFC 2671 ↗](https://www.rfc-editor.org/rfc/rfc2671.html).
+EDNS0 is the first approved set of mechanisms for [DNS extensions ↗︎](http://en.wikipedia.org/wiki/Extension_mechanisms_for_DNS), originally published as [RFC 2671 ↗︎](https://www.rfc-editor.org/rfc/rfc2671.html).
 
 ---
 
@@ -57,7 +57,7 @@ On the **DNS Records** page, locate the **Cloudflare Nameservers** card.
 
 [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 
-Also, the IP address associated with a specific Cloudflare nameserver can be retrieved via a dig command or a third-party DNS lookup tool hosted online such as [whatsmydns.net ↗](https://www.whatsmydns.net/):
+Also, the IP address associated with a specific Cloudflare nameserver can be retrieved via a dig command or a third-party DNS lookup tool hosted online such as [whatsmydns.net ↗︎](https://www.whatsmydns.net/):
 
 ```sh
 dig kate.ns.cloudflare.com
@@ -73,7 +73,7 @@ To verify that your domain's parent zone is publishing the Cloudflare nameserver
 
 Make the change at your registrar, which is where you registered your domain. This may or may not be your hosting provider - refer to [Update nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) for further context.
 
-If you do not know who your registrar is for the domain, a WHOIS search can help. You can use [ICANN Lookup ↗](https://lookup.icann.org/), for example.
+If you do not know who your registrar is for the domain, a WHOIS search can help. You can use [ICANN Lookup ↗︎](https://lookup.icann.org/), for example.
 
 Caution
 
@@ -91,41 +91,41 @@ Provider-specific instructions
 
 This is not an exhaustive list of provider-specific instructions, but the following links may be helpful:
 
-- <a href="https://www.ionos.com/help/domains/using-your-own-name-servers/using-your-own-name-servers-for-a-domain/">Ionos ↗</a>
-- <a href="https://help.101domain.com/kb/managing-name-server-records">101Domain ↗</a>
-- <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-name-servers-glue-records.html#domain-name-servers-glue-records-adding-changing">Amazon ↗</a>
-- <a href="https://help.blacknight.com/hc/articles/4413036322321-How-do-I-change-the-nameservers-for-my-domain">Blacknight ↗</a>
-- <a href="https://www.bluehost.com/help/article/custom-nameservers">BlueHost ↗</a>
-- <a href="https://directnic.com/knowledge/article/33:how%2Bdo%2Bi%2Bmodify%2Bname%2Bservers%2Bfor%2Bmy%2Bdomain%2Bname%253F">DirectNIC ↗</a>
-- <a href="http://www.dnsmadeeasy.com/support/faq/">DNSMadeEasy ↗</a>
-- <a href="https://www.domain.com/help/article/domain-management-how-to-update-nameservers">Domain.com ↗</a>
-- <a href="https://www.dotster.com/help/article/domain-management-how-to-update-nameservers">Dotster ↗</a>
-- <a href="https://help.dreamhost.com/hc/en-us/articles/360038897151">DreamHost ↗</a>
-- <a href="https://kb.easydns.com/knowledge/settingchanging-nameservers/">EasyDNS ↗</a>
-- <a href="https://help.enom.com/hc/en-us/articles/115000486451-Nameservers-NS">Enom ↗</a>
-- <a href="https://www.fastdomain.com/hosting/help/transfer_client_start">Fast Domain ↗</a>
-- <a href="https://billing.flokinet.is/index.php?rp=/knowledgebase/57/Nameserver-and-DNS-records.html">FlokiNET ↗</a>
-- <a href="https://docs.gandi.net/en/domain_names/common_operations/changing_nameservers.html">Gandi ↗</a>
-- <a href="https://www.godaddy.com/help/change-nameservers-for-your-domain-names-664">GoDaddy ↗</a>
-- <a href="https://www.hostgator.com/help/article/changing-name-servers">HostGator ↗</a>
-- <a href="https://hostico.ro/docs/setarea-nameserverelor-din-contul-de-client-hostico/">Hostico ↗</a>
-- <a href="https://my.hostmonster.com/cgi/help/222">HostMonster ↗</a>
-- <a href="https://support.hover.com/support/solutions/articles/201000064742-changing-your-domain-nameservers">Hover ↗</a>
-- <a href="https://faq.internetbs.net/hc/en-gb/articles/4516921367837-How-to-update-Nameservers-for-a-domain">Internetdbs ↗</a>
-- <a href="https://www.ipage.com/help/article/domain-management-how-to-update-nameservers">iPage ↗</a>
-- <a href="https://support.melbourneit.au/docs/how-do-i-manage-my-dns-on-cpanel">MelbourneIT ↗</a>
-- <a href="https://support.moniker.com/hc/en-gb/articles/10101271418653-How-to-update-Nameservers-for-a-domain">Moniker ↗</a>
-- <a href="https://www.name.com/support/articles/205934457-registering-custom-nameservers">Name.com ↗</a>
-- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain">Namecheap ↗</a>
-- <a href="https://www.networksolutions.com/manage-it/edit-nameservers.jsp">Network Solutions ↗</a>
-- <a href="https://docs.ovh.com/gb/en/domains/web_hosting_general_information_about_dns_servers/#step-2-edit-your-domains-dns-servers">OVH ↗</a>
-- <a href="https://kb.porkbun.com/article/22-how-to-change-your-nameservers">Porkbun ↗</a>
-- <a href="https://support.rackspace.com/how-to/rackspace-name-servers/">Rackspace ↗</a>
-- <a href="https://www.register.com/knowledge">Register ↗</a>
-- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-open-the-domain-s-advanced-settings">Squarespace ↗</a>
-- <a href="https://kb.site5.com/dns-2/custom-nameservers/">Site5 ↗</a>
-- <a href="https://cloud.ibm.com/docs/dns?topic=dns-add-edit-or-delete-custom-name-servers-for-a-domain">Softlayer ↗</a>
-- <a href="https://helpcenter.yola.com/hc/articles/360012492660-Changing-your-name-servers">Yola ↗</a>
+- <a href="https://www.ionos.com/help/domains/using-your-own-name-servers/using-your-own-name-servers-for-a-domain/">Ionos ↗︎</a>
+- <a href="https://help.101domain.com/kb/managing-name-server-records">101Domain ↗︎</a>
+- <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-name-servers-glue-records.html#domain-name-servers-glue-records-adding-changing">Amazon ↗︎</a>
+- <a href="https://help.blacknight.com/hc/articles/4413036322321-How-do-I-change-the-nameservers-for-my-domain">Blacknight ↗︎</a>
+- <a href="https://www.bluehost.com/help/article/custom-nameservers">BlueHost ↗︎</a>
+- <a href="https://directnic.com/knowledge/article/33:how%2Bdo%2Bi%2Bmodify%2Bname%2Bservers%2Bfor%2Bmy%2Bdomain%2Bname%253F">DirectNIC ↗︎</a>
+- <a href="http://www.dnsmadeeasy.com/support/faq/">DNSMadeEasy ↗︎</a>
+- <a href="https://www.domain.com/help/article/domain-management-how-to-update-nameservers">Domain.com ↗︎</a>
+- <a href="https://www.dotster.com/help/article/domain-management-how-to-update-nameservers">Dotster ↗︎</a>
+- <a href="https://help.dreamhost.com/hc/en-us/articles/360038897151">DreamHost ↗︎</a>
+- <a href="https://kb.easydns.com/knowledge/settingchanging-nameservers/">EasyDNS ↗︎</a>
+- <a href="https://help.enom.com/hc/en-us/articles/115000486451-Nameservers-NS">Enom ↗︎</a>
+- <a href="https://www.fastdomain.com/hosting/help/transfer_client_start">Fast Domain ↗︎</a>
+- <a href="https://billing.flokinet.is/index.php?rp=/knowledgebase/57/Nameserver-and-DNS-records.html">FlokiNET ↗︎</a>
+- <a href="https://docs.gandi.net/en/domain_names/common_operations/changing_nameservers.html">Gandi ↗︎</a>
+- <a href="https://www.godaddy.com/help/change-nameservers-for-your-domain-names-664">GoDaddy ↗︎</a>
+- <a href="https://www.hostgator.com/help/article/changing-name-servers">HostGator ↗︎</a>
+- <a href="https://hostico.ro/docs/setarea-nameserverelor-din-contul-de-client-hostico/">Hostico ↗︎</a>
+- <a href="https://my.hostmonster.com/cgi/help/222">HostMonster ↗︎</a>
+- <a href="https://support.hover.com/support/solutions/articles/201000064742-changing-your-domain-nameservers">Hover ↗︎</a>
+- <a href="https://faq.internetbs.net/hc/en-gb/articles/4516921367837-How-to-update-Nameservers-for-a-domain">Internetdbs ↗︎</a>
+- <a href="https://www.ipage.com/help/article/domain-management-how-to-update-nameservers">iPage ↗︎</a>
+- <a href="https://support.melbourneit.au/docs/how-do-i-manage-my-dns-on-cpanel">MelbourneIT ↗︎</a>
+- <a href="https://support.moniker.com/hc/en-gb/articles/10101271418653-How-to-update-Nameservers-for-a-domain">Moniker ↗︎</a>
+- <a href="https://www.name.com/support/articles/205934457-registering-custom-nameservers">Name.com ↗︎</a>
+- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain">Namecheap ↗︎</a>
+- <a href="https://www.networksolutions.com/manage-it/edit-nameservers.jsp">Network Solutions ↗︎</a>
+- <a href="https://docs.ovh.com/gb/en/domains/web_hosting_general_information_about_dns_servers/#step-2-edit-your-domains-dns-servers">OVH ↗︎</a>
+- <a href="https://kb.porkbun.com/article/22-how-to-change-your-nameservers">Porkbun ↗︎</a>
+- <a href="https://support.rackspace.com/how-to/rackspace-name-servers/">Rackspace ↗︎</a>
+- <a href="https://www.register.com/knowledge">Register ↗︎</a>
+- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-open-the-domain-s-advanced-settings">Squarespace ↗︎</a>
+- <a href="https://kb.site5.com/dns-2/custom-nameservers/">Site5 ↗︎</a>
+- <a href="https://cloud.ibm.com/docs/dns?topic=dns-add-edit-or-delete-custom-name-servers-for-a-domain">Softlayer ↗︎</a>
+- <a href="https://helpcenter.yola.com/hc/articles/360012492660-Changing-your-name-servers">Yola ↗︎</a>
 
 </details>
 
@@ -181,7 +181,7 @@ If changes to records with large TTLs are anticipated, it may make sense to redu
 
 Because of Cloudflare's many advanced DNS features like CNAME flattening, it can be complex and even impossible to give correct answers to `ANY` queries. For example, when DNS records dynamically come and go or are stored remotely, it can be taxing or even impossible to get all the results at the same time.
 
-Refer to [Deprecating the DNS ANY meta-query type ↗](https://blog.cloudflare.com/deprecating-dns-any-meta-query-type/) for details. The decision to block `ANY` does not affect DNS Firewall customers.
+Refer to [Deprecating the DNS ANY meta-query type ↗︎](https://blog.cloudflare.com/deprecating-dns-any-meta-query-type/) for details. The decision to block `ANY` does not affect DNS Firewall customers.
 
 ### How do I add ANAME records on Cloudflare?
 
@@ -193,7 +193,7 @@ ANAME or ALIAS are DNS records used by specific DNS providers. If your previous 
 
 ### Why does my TXT record show a double quote in the middle of the value?
 
-This is expected behavior. Per [RFC 4408 ↗](https://www.rfc-editor.org/rfc/rfc4408#section-3.1.3) and the DNS protocol specification ([RFC 1035 ↗](https://www.rfc-editor.org/rfc/rfc1035#section-3.3.14)), a single DNS TXT record is composed of one or more character strings, each with a maximum length of 255 characters. When the value you enter exceeds 255 characters, it must be split into multiple strings. Each string is enclosed in double quotes (`"`), so the resulting record may appear to have a quote in the middle — for example, `"first part" "second part"`.
+This is expected behavior. Per [RFC 4408 ↗︎](https://www.rfc-editor.org/rfc/rfc4408#section-3.1.3) and the DNS protocol specification ([RFC 1035 ↗︎](https://www.rfc-editor.org/rfc/rfc1035#section-3.3.14)), a single DNS TXT record is composed of one or more character strings, each with a maximum length of 255 characters. When the value you enter exceeds 255 characters, it must be split into multiple strings. Each string is enclosed in double quotes (`"`), so the resulting record may appear to have a quote in the middle — for example, `"first part" "second part"`.
 
 This splitting is required by the DNS protocol and is performed by all DNS providers, even if some do not display it in their UI or API. For all major TXT record use cases (such as SPF, DKIM, and DMARC), the receiving application will concatenate the strings back together, so the behavior of the record is not affected.
 

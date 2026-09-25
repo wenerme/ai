@@ -20,7 +20,7 @@ Note
 
 If you are interested in using Smart Shield Advanced with Dedicated CDN Egress IPs, reach out to your account team.
 
-Dedicated CDN Egress IPs was formerly known as Cloudflare Aegis ([release blog post ↗](https://blog.cloudflare.com/cloudflare-aegis/)).
+Dedicated CDN Egress IPs was formerly known as Cloudflare Aegis ([release blog post ↗︎](https://blog.cloudflare.com/cloudflare-aegis/)).
 
 ## Benefits
 

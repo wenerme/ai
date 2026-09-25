@@ -16,7 +16,7 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Use the `matched-data-cli` tool to decrypt a payload in the command line.
 
-1. [Download ↗](https://github.com/cloudflare/matched-data-cli/releases) the `matched-data-cli` tool for your platform from the **Releases** page on GitHub, under **Assets**.
+1. [Download ↗︎](https://github.com/cloudflare/matched-data-cli/releases) the `matched-data-cli` tool for your platform from the **Releases** page on GitHub, under **Assets**.
 2. Extract the content of the downloaded `.tar.gz` file to a local folder.
 3. Open a command line window and change to the local folder containing the `matched-data-cli` binary.
 
@@ -70,7 +70,7 @@ Encryption formats
 
 The format of the encrypted payload can change over time. The `matched-data-cli` tool returns an error if it cannot decrypt a new encryption format.
 
-To fix this error, [download ↗](https://github.com/cloudflare/matched-data-cli/releases) a newer version of the tool from GitHub and try again.
+To fix this error, [download ↗︎](https://github.com/cloudflare/matched-data-cli/releases) a newer version of the tool from GitHub and try again.
 
 Was this helpful?
 

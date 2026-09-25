@@ -20,7 +20,7 @@ This section covers how to create, rotate, renew, disable, and revoke a service 
 
 ## Create a service token
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**.
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
 4. Choose a **Service Token Duration**. This sets the expiration date for the token.
@@ -77,9 +77,9 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
    This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Service Tokens Write`
-2. Configure the [`cloudflare_zero_trust_access_service_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource:
+2. Configure the [`cloudflare_zero_trust_access_service_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource:
 
    ```tf
    resource "cloudflare_zero_trust_access_service_token" "example_service_token" {
@@ -228,7 +228,7 @@ Rotate a service token secret when you suspect exposure or as part of regular cr
 
 You can set a grace period during which both secrets work. Use this period to update your services before Access revokes the previous secret.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**. [Go to  ↗](https://one.dash.cloudflare.com/?to=/:account/access/service-auth/service-tokens)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**. [Go to  ↗](https://one.dash.cloudflare.com/?to=/:account/access/service-auth/service-tokens)
 2. Locate the token and select the three dots > **Rotate secret**.
 3. In **Keep the current secret valid for**, choose when Access should revoke the current secret. Available grace periods range from one hour to 30 days. To revoke it when you rotate, select *Revoke immediately*.
 4. Select **Rotate**.
@@ -253,7 +253,7 @@ To revoke the previous secret immediately, omit `previous_client_secret_expires_
 
 Service tokens expire according to the token duration you selected when you created the token.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**.
 2. Locate the token you want to renew.
 3. To extend the token's lifetime by one year, select **Refresh**.
 4. To extend the token's lifetime by more than a year:
@@ -312,7 +312,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_t
 	}'
 ```
 
-To renew the service token, update the `duration` attribute on the [`cloudflare_zero_trust_access_service_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource and apply the change. Cloudflare resets the expiration relative to the time of the update.
+To renew the service token, update the `duration` attribute on the [`cloudflare_zero_trust_access_service_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource and apply the change. Cloudflare resets the expiration relative to the time of the update.
 
 ```tf
 resource "cloudflare_zero_trust_access_service_token" "example_service_token" {
@@ -338,7 +338,7 @@ Access considers a service token inactive when all of the following are true:
 
 You can set the inactivity period to a whole number from 30 to 365 days. Disabled tokens remain in your account and can be turned on again. Deleted tokens cannot be recovered.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**. [Go to **Access settings** ↗](https://one.dash.cloudflare.com/?to=/:account/access-controls/settings)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**. [Go to **Access settings** ↗](https://one.dash.cloudflare.com/?to=/:account/access-controls/settings)
 2. Under **Manage service tokens**, turn on **Automatically clean up inactive service tokens**.
 3. Enter an **Inactivity period** from 30 to 365 days.
 4. Choose whether Access should disable or delete inactive tokens.
@@ -369,7 +369,7 @@ Turn off a service token to temporarily prevent it from authenticating. Access p
 
 Turning off a token also stops its previous secret from working during an active rotation grace period.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**. [Go to  ↗](https://one.dash.cloudflare.com/?to=/:account/access/service-auth/service-tokens)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**. [Go to  ↗](https://one.dash.cloudflare.com/?to=/:account/access/service-auth/service-tokens)
 2. Locate the token and select the three dots.
 3. To stop the token from authenticating, select **Disable token** > **Disable**.
 4. To restore authentication, select **Enable token** > **Enable**.
@@ -408,7 +408,7 @@ To turn the token on again, set `enabled` to `true`.
 
 If you need to revoke access before the token expires, delete the token. Services that rely on a deleted service token can no longer reach your application.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**.
 2. **Delete** the token you need to revoke.
 
 Make a `DELETE` request to the [Delete a service token](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/delete/) endpoint:
@@ -435,7 +435,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/service_t
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
 
-To revoke the service token, remove the [`cloudflare_zero_trust_access_service_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource from your configuration and run `terraform apply`, or target the resource for destruction:
+To revoke the service token, remove the [`cloudflare_zero_trust_access_service_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource from your configuration and run `terraform apply`, or target the resource for destruction:
 
 ```sh
 terraform destroy -target=cloudflare_zero_trust_access_service_token.example_service_token
@@ -477,7 +477,7 @@ Extend the expiration date of the service token. For more details, refer to <a h
 
 To configure a service token expiration alert:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com), go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com), go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Select **Add**.
 3. Select *Expiring Access Service Token*.
 4. Enter a name for your alert and an optional description.

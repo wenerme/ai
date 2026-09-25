@@ -25,7 +25,7 @@ In this example, we will connect a gRPC server to Cloudflare using the `cloudfla
 
 ## 1. Set up a gRPC server
 
-1. To set up a gRPC Python application, follow this [quick start guide ↗](https://grpc.io/docs/languages/python/quickstart/).
+1. To set up a gRPC Python application, follow this [quick start guide ↗︎](https://grpc.io/docs/languages/python/quickstart/).
 2. Start the server:
 
 ```sh
@@ -47,7 +47,7 @@ To establish a secure, outbound-only connection to Cloudflare:
 
 ## 3. Route private network IPs through the Cloudflare One Client
 
-By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatracker.ietf.org/doc/html/rfc1918), which are IP addresses typically used in private networks and not reachable from the Internet. In order for the Cloudflare One Client to send traffic to your private network, you must configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that the IP/CIDR of your private network routes through the Cloudflare One Client.
+By default, WARP excludes traffic bound for [RFC 1918 space ↗︎](https://datatracker.ietf.org/doc/html/rfc1918), which are IP addresses typically used in private networks and not reachable from the Internet. In order for the Cloudflare One Client to send traffic to your private network, you must configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that the IP/CIDR of your private network routes through the Cloudflare One Client.
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:
@@ -101,7 +101,7 @@ To set up the gRPC client:
 
 1. [Deploy the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) on your device in Traffic and DNS mode.
 2. [Create device enrollment rules](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/device-enrollment/) to determine which devices can enroll to your Zero Trust organization.
-3. Install gRPC on the device by following this [quick start guide ↗](https://grpc.io/docs/languages/python/quickstart/).
+3. Install gRPC on the device by following this [quick start guide ↗︎](https://grpc.io/docs/languages/python/quickstart/).
 4. Modify `greeter.py` to point to the private IP of your gRPC server. This is the same private IP configured in your [Cloudflare Tunnel routes](#2-connect-the-server-to-cloudflare). For example,
 
 ```python

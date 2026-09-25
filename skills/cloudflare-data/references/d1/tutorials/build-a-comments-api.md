@@ -14,12 +14,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/d1/tutorials/build-a-comments-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this tutorial, you will use D1 and [Hono ↗](https://hono.dev/) to build a JSON API that stores and retrieves comments for a blog. You will create a D1 database, define a schema, and wire up `GET` and `POST` endpoints that read from and write to the database.
+In this tutorial, you will use D1 and [Hono ↗︎](https://hono.dev/) to build a JSON API that stores and retrieves comments for a blog. You will create a D1 database, define a schema, and wire up `GET` and `POST` endpoints that read from and write to the database.
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -29,7 +29,7 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
@@ -65,7 +65,7 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a 
 
 ## 2. Install Hono
 
-Install [Hono ↗](https://hono.dev/), a lightweight web framework for building APIs on Workers:
+Install [Hono ↗︎](https://hono.dev/), a lightweight web framework for building APIs on Workers:
 
 npmyarnpnpmbun
 
@@ -104,7 +104,7 @@ bun add hono
      "name": "d1-comments-api",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-09-22",
+     "compatibility_date": "2026-09-25",
      "d1_databases": [
        {
          "binding": "DB",
@@ -119,7 +119,7 @@ bun add hono
    name = "d1-comments-api"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
 
    [[d1_databases]]
    binding = "DB" # available in your Worker on env.DB

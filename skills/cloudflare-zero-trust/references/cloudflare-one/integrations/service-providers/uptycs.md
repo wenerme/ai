@@ -37,7 +37,7 @@ To obtain these values:
 
 ## 2. Add Uptycs as a service provider
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Service providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Service providers**.
 2. Select **Add new**.
 3. Select **Uptycs**.
 4. Enter any name for the provider. This name will be used throughout the dashboard to reference this connection.
@@ -48,7 +48,7 @@ To obtain these values:
 
 ## 3. Configure the posture check
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks** > **Service provider checks**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks** > **Service provider checks**.
 2. Select **Add a check**.
 3. Select the Uptycs provider.
 4. Enter any name for the posture check.

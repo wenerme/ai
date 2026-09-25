@@ -147,7 +147,7 @@ After you turn on Sensitive Data Detection, API Shield queries WAF events from t
 
 Open the operation details to review the detected sensitive data types. Select **Explore Events** to view matched events in Security Events.
 
-After you turn on Sensitive Data Detection for your zone, you can [browse the Sensitive Data Detection ruleset ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/data/ruleset/e22d83c647c64a3eae91b71b499d988e/rules). The link will not work if Sensitive Data Detection is not turned on.
+After you turn on Sensitive Data Detection for your zone, you can [browse the Sensitive Data Detection ruleset ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/security/data/ruleset/e22d83c647c64a3eae91b71b499d988e/rules). The link will not work if Sensitive Data Detection is not turned on.
 
 ## Limitations
 

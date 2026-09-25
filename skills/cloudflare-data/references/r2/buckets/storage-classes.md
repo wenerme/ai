@@ -79,7 +79,7 @@ To learn more about how to transition objects from Standard storage to Infrequen
 
 ## Change storage class for objects
 
-You can change the storage class of an object which is already stored in R2 using the [`CopyObject` API ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html).
+You can change the storage class of an object which is already stored in R2 using the [`CopyObject` API ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html).
 
 Use the `x-amz-storage-class` header to change between `STANDARD` and `STANDARD_IA`.
 

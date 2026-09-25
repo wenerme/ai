@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/workers/devplat/intro-to-devplat/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [Cloudflare Developer Platform ↗](https://www.cloudflare.com/developer-platform/products/) offers various services to empower developers to build full-stack applications, including: [compute ↗](https://www.cloudflare.com/developer-platform/products/#compute), [storage ↗](https://www.cloudflare.com/developer-platform/products/#storage), [web development, image optimization, video streaming ↗](https://www.cloudflare.com/developer-platform/products/#webdev) and [AI ↗](https://ai.cloudflare.com/).
+The [Cloudflare Developer Platform ↗︎](https://www.cloudflare.com/developer-platform/products/) offers various services to empower developers to build full-stack applications, including: [compute ↗︎](https://www.cloudflare.com/developer-platform/products/#compute), [storage ↗︎](https://www.cloudflare.com/developer-platform/products/#storage), [web development, image optimization, video streaming ↗︎](https://www.cloudflare.com/developer-platform/products/#webdev) and [AI ↗︎](https://ai.cloudflare.com/).
 
 It is important to note that the developer platform product offering is growing with new releases and features updates. To review a list of product documentation related to Cloudflare Developer Platform:
 
-1. Go to [Cloudflare Docs ↗](https://developers.cloudflare.com).
+1. Go to [Cloudflare Docs ↗︎](https://developers.cloudflare.com).
 2. Select **Product directory** in the top menu.
 3. Select the **Developer platform** filter to view [product documentation for Cloudflare Developer Platform products](https://developers.cloudflare.com/directory/?product-group=Developer+platform).
 
@@ -73,11 +73,11 @@ You have learned:
 
 ## Feedback
 
-To improve this learning path, [file an issue on GitHub ↗](https://github.com/cloudflare/cloudflare-docs/issues/new/choose).
+To improve this learning path, [file an issue on GitHub ↗︎](https://github.com/cloudflare/cloudflare-docs/issues/new/choose).
 
 ## Community
 
-Connect with the [Cloudflare Developer Platform community on Discord ↗](https://discord.cloudflare.com) to ask questions, share what you are building, and discuss the platform with other developers.
+Connect with the [Cloudflare Developer Platform community on Discord ↗︎](https://discord.cloudflare.com) to ask questions, share what you are building, and discuss the platform with other developers.
 
 Was this helpful?
 

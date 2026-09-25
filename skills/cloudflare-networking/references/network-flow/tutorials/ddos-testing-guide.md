@@ -30,7 +30,7 @@ If you are an Enterprise customer with Network Flow enabled, contact your Cloudf
 
 Refer to [Simulating test DDoS attacks](https://developers.cloudflare.com/ddos-protection/reference/simulate-ddos-attack/) for more information.
 
-If you need help conducting a simulated DDoS attack, [fill out this form ↗](https://forms.gle/6tBZNu7shoaCmP9h6).
+If you need help conducting a simulated DDoS attack, [fill out this form ↗︎](https://forms.gle/6tBZNu7shoaCmP9h6).
 
 Was this helpful?
 

@@ -21,7 +21,7 @@ When choosing which endpoint IP addresses to monitor with health checks, use the
 - Provide one IP address for each of the prefixes Cloudflare advertises.
 - Redundant IPs routed through the same ISP (Internet Service Provider) and infrastructure are not necessary but are useful when troubleshooting.
 
-Cloudflare pings health check IPs from within the [published Cloudflare IP range ↗](https://www.cloudflare.com/ips/), which is also available through the [Cloudflare API](https://developers.cloudflare.com/api/resources/ips/methods/list/).
+Cloudflare pings health check IPs from within the [published Cloudflare IP range ↗︎](https://www.cloudflare.com/ips/), which is also available through the [Cloudflare API](https://developers.cloudflare.com/api/resources/ips/methods/list/).
 
 When configuring an endpoint health check for an IP prefix, select an IP address within the range of that IP prefix. Refer to the table for an example of an endpoint health check configuration.
 

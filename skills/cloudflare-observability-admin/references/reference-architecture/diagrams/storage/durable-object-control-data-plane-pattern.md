@@ -18,7 +18,7 @@ Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developer
 
 [Durable Objects](https://developers.cloudflare.com/durable-objects/) are built on-top of [Cloudflare Workers](https://developers.cloudflare.com/workers/) spanning several locations across our global infrastructure network. Each Durable Object instance has its own durable storage persisted across requests, in-memory state, single-threaded execution, and can be placed in a specific region.
 
-A single Durable Object instance has certain [performance and storage capabilities](https://developers.cloudflare.com/durable-objects/platform/limits/). Therefore, to scale an application without being restricted by the limits of a single instance we need to shard our application data as much as possible, and take advantage of the [Cloudflare infrastructure ↗](https://www.cloudflare.com/en-gb/network/) by spreading our Durable Object instances across the world, moving both the data and compute as close to the users as possible.
+A single Durable Object instance has certain [performance and storage capabilities](https://developers.cloudflare.com/durable-objects/platform/limits/). Therefore, to scale an application without being restricted by the limits of a single instance we need to shard our application data as much as possible, and take advantage of the [Cloudflare infrastructure ↗︎](https://www.cloudflare.com/en-gb/network/) by spreading our Durable Object instances across the world, moving both the data and compute as close to the users as possible.
 
 This document describes a useful architectural pattern to separate the control plane from the data plane of your application to achieve great performance and reliability without compromising on functionality.
 
@@ -62,12 +62,12 @@ In conclusion, as long as you find a way to shard your application's data model 
 ## Related resources
 
 - [Durable Objects Namespace documentation](https://developers.cloudflare.com/durable-objects/api/namespace/)
-- [Durable Objects: Easy, Fast, Correct — Choose three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/)
-- [Zero-latency SQLite storage in every Durable Object ↗](https://blog.cloudflare.com/sqlite-in-durable-objects/)
-- [Data, Control, Management: Three Planes, Different Altitudes ↗](https://thenewstack.io/data-control-management-three-planes-different-altitudes/)
+- [Durable Objects: Easy, Fast, Correct — Choose three ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/)
+- [Zero-latency SQLite storage in every Durable Object ↗︎](https://blog.cloudflare.com/sqlite-in-durable-objects/)
+- [Data, Control, Management: Three Planes, Different Altitudes ↗︎](https://thenewstack.io/data-control-management-three-planes-different-altitudes/)
 - Examples of this architectural pattern in real-world applications:
-  - [Durable Objects aren't just durable, they're fast: a 10x speedup for Cloudflare Queues ↗](https://blog.cloudflare.com/how-we-built-cloudflare-queues/)
-  - [Building a global TiddlyWiki hosting platform with Cloudflare Durable Objects and Workers — Tiddlyflare ↗](https://www.lambrospetrou.com/articles/tiddlyflare/)
+  - [Durable Objects aren't just durable, they're fast: a 10x speedup for Cloudflare Queues ↗︎](https://blog.cloudflare.com/how-we-built-cloudflare-queues/)
+  - [Building a global TiddlyWiki hosting platform with Cloudflare Durable Objects and Workers — Tiddlyflare ↗︎](https://www.lambrospetrou.com/articles/tiddlyflare/)
 
 Was this helpful?
 

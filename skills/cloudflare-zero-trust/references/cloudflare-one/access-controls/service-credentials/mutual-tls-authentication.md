@@ -20,7 +20,7 @@ Access mTLS is available with Enterprise and pay-as-you-go Zero Trust plans. It 
 
 This page covers Access mTLS for Service Auth policies. [Zone-level mTLS](https://developers.cloudflare.com/api-shield/security/mtls/) is a separate feature with different plan availability.
 
-[Mutual TLS (mTLS) authentication ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) requires both the client and the server to present certificates during the TLS handshake. In the Cloudflare Access implementation, the CA you upload is used to verify the client certificate (server certificate verification is handled by standard TLS). Access mTLS serves two purposes:
+[Mutual TLS (mTLS) authentication ↗︎](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) requires both the client and the server to present certificates during the TLS handshake. In the Cloudflare Access implementation, the CA you upload is used to verify the client certificate (server certificate verification is handled by standard TLS). Access mTLS serves two purposes:
 
 - **Authenticate devices that do not use an identity provider** — Automated systems and IoT devices can prove their identity by presenting a client certificate instead of logging in through an IdP.
 - **Add a second authentication factor** — Team members who log in through an IdP can also be required to present a valid client certificate, providing an additional layer of security.
@@ -31,7 +31,7 @@ When you upload a root certificate authority (CA) to Access, only requests from 
 
 Important
 
-The mTLS certificate is used only to verify the client certificate. It does not control the SSL certificate presented during the [server hello ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/).
+The mTLS certificate is used only to verify the client certificate. It does not control the SSL certificate presented during the [server hello ↗︎](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/).
 
 ## Enforce mTLS authentication
 
@@ -63,7 +63,7 @@ The mTLS certificate is used only to verify the client certificate. It does not 
 
 ### Add mTLS to your Access application
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Mutual TLS**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Mutual TLS**.
 2. Select **Add mTLS Certificate**.
 3. Enter any name for the root CA.
 4. In **Certificate content**, paste the contents of your root CA.
@@ -153,7 +153,7 @@ You can use open source private key infrastructure (PKI) tools to generate certi
 
 ### OpenSSL
 
-This section covers how to use [OpenSSL ↗](https://www.openssl.org/) to generate a root and intermediate certificate, and then issue client certificates that can authenticate against the CA chain.
+This section covers how to use [OpenSSL ↗︎](https://www.openssl.org/) to generate a root and intermediate certificate, and then issue client certificates that can authenticate against the CA chain.
 
 #### Generate the root CA
 
@@ -256,7 +256,7 @@ You can now use the client certificate (`client.pem`) and its key (`client.key`)
 
 ### Cloudflare PKI
 
-This guide uses [Cloudflare's PKI toolkit ↗](https://github.com/cloudflare/cfssl) to generate a root CA and client certificates from JSON files.
+This guide uses [Cloudflare's PKI toolkit ↗︎](https://github.com/cloudflare/cfssl) to generate a root CA and client certificates from JSON files.
 
 #### 1. Install dependencies
 
@@ -265,7 +265,7 @@ The process requires two packages from Cloudflare's PKI toolkit:
 - `cf-ssl`
 - `cfssljson`
 
-You can install these packages from the [Cloudflare SSL GitHub repository ↗](https://github.com/cloudflare/cfssl). You will need a working installation of Go, version 1.12 or later. Alternatively, you can [download the packages ↗](https://github.com/cloudflare/cfssl) directly. Use the instructions under Installation to install the toolkit, and ensure that you install all of the utility programs in the toolkit.
+You can install these packages from the [Cloudflare SSL GitHub repository ↗︎](https://github.com/cloudflare/cfssl). You will need a working installation of Go, version 1.12 or later. Alternatively, you can [download the packages ↗︎](https://github.com/cloudflare/cfssl) directly. Use the instructions under Installation to install the toolkit, and ensure that you install all of the utility programs in the toolkit.
 
 #### 2. Generate the root CA
 
@@ -386,11 +386,11 @@ You can use the Cloudflare PKI toolkit to generate a certificate revocation list
 
 
 
-You will need to add the CRL to your server or enforce the revocation in a Cloudflare Worker. An example Worker Script can be found on the [Cloudflare GitHub repository ↗](https://github.com/cloudflare/access-crl-worker-template).
+You will need to add the CRL to your server or enforce the revocation in a Cloudflare Worker. An example Worker Script can be found on the [Cloudflare GitHub repository ↗︎](https://github.com/cloudflare/access-crl-worker-template).
 
 ## Add Client-Cert and Client-Cert-Chain headers (RFC 9440)
 
-[RFC 9440 ↗](https://datatracker.ietf.org/doc/html/rfc9440) defines the `Client-Cert` and `Client-Cert-Chain` HTTP header fields for passing client certificate information to origin servers. You can construct these headers using [request header modification rules](https://developers.cloudflare.com/rules/transform/request-header-modification/) with the following Ruleset Engine fields:
+[RFC 9440 ↗︎](https://datatracker.ietf.org/doc/html/rfc9440) defines the `Client-Cert` and `Client-Cert-Chain` HTTP header fields for passing client certificate information to origin servers. You can construct these headers using [request header modification rules](https://developers.cloudflare.com/rules/transform/request-header-modification/) with the following Ruleset Engine fields:
 
 - [`cf.tls_client_auth.cert_rfc9440`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_rfc9440/) — The client leaf certificate encoded in RFC 9440 formatting (see reference).
 - [`cf.tls_client_auth.cert_chain_rfc9440`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_chain_rfc9440/) — The certificate chain (excluding the leaf certificate) encoded in RFC 9440 formatting (see reference).
@@ -408,7 +408,7 @@ The `cert_rfc9440` and `cert_chain_rfc9440` fields are populated **regardless of
 - [`cf.tls_client_auth.cert_verified`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_verified/) — Returns `true` when the client certificate is valid.
 - [`cf.tls_client_auth.cert_revoked`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_revoked/) — Returns `true` when the client certificate has been revoked.
 
-A client can also include its own `Client-Cert` or `Client-Cert-Chain` headers on a request to inject arbitrary values. As described in the [RFC 9440 security considerations ↗](https://datatracker.ietf.org/doc/html/rfc9440#name-security-considerations), you must unconditionally remove any existing `Client-Cert` and `Client-Cert-Chain` headers from incoming requests, regardless of certificate validity. This prevents a client from injecting forged certificate data that your origin would trust.
+A client can also include its own `Client-Cert` or `Client-Cert-Chain` headers on a request to inject arbitrary values. As described in the [RFC 9440 security considerations ↗︎](https://datatracker.ietf.org/doc/html/rfc9440#name-security-considerations), you must unconditionally remove any existing `Client-Cert` and `Client-Cert-Chain` headers from incoming requests, regardless of certificate validity. This prevents a client from injecting forged certificate data that your origin would trust.
 
 See [Enable mTLS](https://developers.cloudflare.com/ssl/client-certificates/enable-mtls/) for details on how to configure mTLS and certificate validation.
 

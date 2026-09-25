@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/observability/logging/logpush/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-AI Gateway allows you to securely export logs to an external storage location, where you can decrypt and process them. You can toggle Workers Logpush on and off in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) settings. This product is available on the Workers Paid plan. For pricing information, refer to [Pricing](https://developers.cloudflare.com/ai-gateway/reference/pricing).
+AI Gateway allows you to securely export logs to an external storage location, where you can decrypt and process them. You can toggle Workers Logpush on and off in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) settings. This product is available on the Workers Paid plan. For pricing information, refer to [Pricing](https://developers.cloudflare.com/ai-gateway/reference/pricing).
 
 Workers Logpush works with [AI Gateway logging](https://developers.cloudflare.com/ai-gateway/observability/logging/) and [Legacy Logs](https://developers.cloudflare.com/ai-gateway/observability/logging/legacy-logs/).
 
@@ -30,7 +30,7 @@ To export logs using Workers Logpush, you must have logs turned on for the gatew
 
 Need a higher limit?
 
-To request an increase to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/cuXu1QnQCrSNkkaS8). If the limit can be increased, Cloudflare will contact you with next steps.
+To request an increase to a limit, complete the [Limit Increase Request Form ↗︎](https://forms.gle/cuXu1QnQCrSNkkaS8). If the limit can be increased, Cloudflare will contact you with next steps.
 
 ## How logs are encrypted
 

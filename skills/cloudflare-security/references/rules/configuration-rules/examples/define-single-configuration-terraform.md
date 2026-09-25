@@ -51,7 +51,7 @@ Use the `ref` field to get stable rule IDs across updates when using Terraform. 
 For additional guidance on using Terraform with Cloudflare, refer to the following resources:
 
 - [Terraform documentation](https://developers.cloudflare.com/terraform/)
-- [Cloudflare Provider for Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
+- [Cloudflare Provider for Terraform ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
 
 Was this helpful?
 

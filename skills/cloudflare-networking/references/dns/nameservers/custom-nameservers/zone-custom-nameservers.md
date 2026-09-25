@@ -44,15 +44,15 @@ Cloudflare will assign an IPv4 and an IPv6 address to each ZCNS name and automat
 The next step depends on whether you are using [Cloudflare Registrar](https://developers.cloudflare.com/registrar/) for your domain:
 
 - If you are using Cloudflare Registrar for your domain, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to add the custom nameservers and IP addresses as glue records to the domain.
-- If you are not using Cloudflare Registrar for your domain, add the zone custom nameservers at your registrar as your authoritative nameservers and as glue (A and AAAA) records ([RFC 1912 ↗](https://www.rfc-editor.org/rfc/rfc1912.html)). If you do not add these records, DNS lookups for your domain will fail.
+- If you are not using Cloudflare Registrar for your domain, add the zone custom nameservers at your registrar as your authoritative nameservers and as glue (A and AAAA) records ([RFC 1912 ↗︎](https://www.rfc-editor.org/rfc/rfc1912.html)). If you do not add these records, DNS lookups for your domain will fail.
 
 ### Secondary zones
 
 If you are using [Cloudflare as a secondary DNS provider](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/), you can still set up zone custom nameservers. After following the [steps above](https://developers.cloudflare.com/dns/nameservers/custom-nameservers/zone-custom-nameservers/#primary-zones-full-setup) to create zone custom nameservers, do the following:
 
-1. Get the ZCNS IPs. You can find them on the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page or you can use the [Zone details endpoint](https://developers.cloudflare.com/api/resources/zones/methods/get/) to get the `vanity_name_servers_ips`.
+1. Get the ZCNS IPs. You can find them on the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page or you can use the [Zone details endpoint](https://developers.cloudflare.com/api/resources/zones/methods/get/) to get the `vanity_name_servers_ips`.
 2. At your primary DNS provider, add [`NS` records](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ns) and, on the subdomains that you used as ZCNS names, add `A/AAAA` records.
-3. At your registrar, add the zone custom nameservers as your authoritative nameservers and as glue (A and AAAA) records ([RFC 1912 ↗](https://www.rfc-editor.org/rfc/rfc1912.html)).
+3. At your registrar, add the zone custom nameservers as your authoritative nameservers and as glue (A and AAAA) records ([RFC 1912 ↗︎](https://www.rfc-editor.org/rfc/rfc1912.html)).
 
 ## Remove zone custom nameservers
 

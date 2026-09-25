@@ -14,17 +14,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/tutorials/pruna-p-video/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial shows how to call the [Pruna's P-video ↗](https://replicate.com/prunaai/p-video) model on [Replicate](https://developers.cloudflare.com/ai-gateway/usage/providers/replicate/) through AI Gateway.
+This tutorial shows how to call the [Pruna's P-video ↗︎](https://replicate.com/prunaai/p-video) model on [Replicate](https://developers.cloudflare.com/ai-gateway/usage/providers/replicate/) through AI Gateway.
 
 ## Prerequisites
 
-- A [Cloudflare account ↗](https://cloudflare.com/sign-up)
-- A [Replicate account ↗](https://replicate.com/) with an API token
+- A [Cloudflare account ↗︎](https://cloudflare.com/sign-up)
+- A [Replicate account ↗︎](https://replicate.com/) with an API token
 
 ## 1. Get a Replicate API token
 
-1. Go to [replicate.com ↗](https://replicate.com/) and sign up for an account.
-2. Once logged in, go to [replicate.com/settings/api-tokens ↗](https://replicate.com/account/api-tokens).
+1. Go to [replicate.com ↗︎](https://replicate.com/) and sign up for an account.
+2. Once logged in, go to [replicate.com/settings/api-tokens ↗︎](https://replicate.com/account/api-tokens).
 3. Select **Create token** and give it a name.
 4. Copy the token and store it somewhere safe.
 
@@ -32,7 +32,7 @@ This tutorial shows how to call the [Pruna's P-video ↗](https://replicate.com/
 
 [Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** > **AI Gateway**.
 3. Select **Create Gateway**.
 4. Enter your **Gateway name**. Note: Gateway name has a 64 character limit.
@@ -97,7 +97,7 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/replicate/pr
 - `cf-aig-authorization` — your Cloudflare API token (for authenticated gateways).
 - `Prefer: wait` — blocks until the prediction completes instead of returning immediately.
 
-For a full list of available input parameters, check out the [prunaai/p-video model page ↗](https://replicate.com/prunaai/p-video) on Replicate.
+For a full list of available input parameters, check out the [prunaai/p-video model page ↗︎](https://replicate.com/prunaai/p-video) on Replicate.
 
 When the prediction completes, the response includes the `output` field with a URL to the generated video file.
 

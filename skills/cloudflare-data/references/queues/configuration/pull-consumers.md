@@ -38,7 +38,7 @@ To configure a pull-based consumer and receive messages from a queue, you need t
 
 ## 1. Enable HTTP pull
 
-You can enable HTTP pull or change a queue from push-based to pull-based via the `wrangler` CLI or via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/). Enabling HTTP pull from a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) is no longer supported.
+You can enable HTTP pull or change a queue from push-based to pull-based via the `wrangler` CLI or via the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/). Enabling HTTP pull from a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) is no longer supported.
 
 Note
 
@@ -85,8 +85,8 @@ You may authenticate and run multiple concurrent pull-based consumers against a 
 
 To create an API token:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
-2. Go to **My Profile** > [API Tokens ↗](https://dash.cloudflare.com/profile/api-tokens).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
+2. Go to **My Profile** > [API Tokens ↗︎](https://dash.cloudflare.com/profile/api-tokens).
 3. Select **Create Token**.
 4. Scroll to the bottom of the page and select **Create Custom Token**.
 5. Give the token a name. For example, `queue-pull-token`.
@@ -202,7 +202,7 @@ Each message object has five fields:
 
 1. `body` - this may be base64 encoded based on the [content-type the message was published as](#content-types).
 2. `id` - a unique, read-only ephemeral identifier for the message.
-3. `timestamp_ms` - when the message was published to the queue in milliseconds since the [Unix epoch ↗](https://en.wikipedia.org/wiki/Unix_time). This allows you to determine how old a message is by subtracting it from the current timestamp.
+3. `timestamp_ms` - when the message was published to the queue in milliseconds since the [Unix epoch ↗︎](https://en.wikipedia.org/wiki/Unix_time). This allows you to determine how old a message is by subtracting it from the current timestamp.
 4. `attempts` - how many times the message has been attempted to be delivered in full. When this reaches the value of `max_retries`, the message will not be re-delivered and will be deleted from the queue permanently.
 5. `lease_id` - the encoded lease ID of the message. The `lease_id` is used to explicitly acknowledge or retry the message.
 
@@ -334,7 +334,7 @@ Pull-based consumers cannot decode the `v8` content type as it is specific to th
 
 When publishing to a queue that has an external consumer, you should be aware that certain content types may be encoded in a way that allows them to be safely serialized within a JSON object.
 
-For both the `json` and `bytes` content types, this means that they will be base64-encoded ([RFC 4648 ↗](https://datatracker.ietf.org/doc/html/rfc4648)). The `text` type will be sent as a plain UTF-8 encoded string.
+For both the `json` and `bytes` content types, this means that they will be base64-encoded ([RFC 4648 ↗︎](https://datatracker.ietf.org/doc/html/rfc4648)). The `text` type will be sent as a plain UTF-8 encoded string.
 
 Your consumer will need to decode the `json` and `bytes` types before operating on the data.
 

@@ -33,11 +33,11 @@ You can use Cloudflare Access to add Zero Trust rules to a self-hosted instance 
 
 This section walks through deploying GitLab in DigitalOcean. If you have already deployed GitLab, you can skip this section.
 
-Create a Droplet that has 16 GB of RAM and 6 CPUs. This should make it possible to support 500 users, based on [GitLab's resource recommendations ↗](https://docs.gitlab.com/ee/install/requirements.html).
+Create a Droplet that has 16 GB of RAM and 6 CPUs. This should make it possible to support 500 users, based on [GitLab's resource recommendations ↗︎](https://docs.gitlab.com/ee/install/requirements.html).
 
 ![Create Droplet](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3104,height=1978,format=webp/_astro/create-droplet.5w9w-Z20.png)
 
-GitLab will provide an external IP that is exposed to the Internet (for now). You will need to connect to the deployed server using this external IP for the initial configuration. You can secure connections to the IP by [adding SSH keys ↗](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2) to your DigitalOcean account.
+GitLab will provide an external IP that is exposed to the Internet (for now). You will need to connect to the deployed server using this external IP for the initial configuration. You can secure connections to the IP by [adding SSH keys ↗︎](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2) to your DigitalOcean account.
 
 This example uses a macOS machine to configure the Droplet. Copy the IP address assigned to the machine from DigitalOcean.
 
@@ -49,7 +49,7 @@ Open Terminal and run the following command, replacing the IP address with the I
 ssh root@134.209.124.123
 ```
 
-Next, install GitLab. This example uses the [Ubuntu package ↗](https://about.gitlab.com/install/#ubuntu) and the steps in the GitLab documentation, with a few exceptions called out below.
+Next, install GitLab. This example uses the [Ubuntu package ↗︎](https://about.gitlab.com/install/#ubuntu) and the steps in the GitLab documentation, with a few exceptions called out below.
 
 Run the following commands to begin.
 
@@ -240,7 +240,7 @@ This command should be run as a `systemd` service for long-term use; if it termi
 
 You can now create DNS records for GitLab in the Cloudflare dashboard. Remember, you will still need two records - one for the web application and one for SSH traffic.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to the **DNS Records** page for your domain. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to the **DNS Records** page for your domain. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**. Choose `CNAME` as the record type.
 3. In the **Name** field, input `gitlab`.
 4. In the **Target** field, input the ID of the Tunnel created followed by `cfargotunnel.com`. In this example, that value is:

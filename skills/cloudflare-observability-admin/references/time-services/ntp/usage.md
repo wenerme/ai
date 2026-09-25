@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/time-services/ntp/usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Network Time Protocol ↗](https://tools.ietf.org/html/rfc1305) (NTP) is an Internet protocol designed to synchronize time between computer systems communicating over unreliable and variable-latency network paths. Cloudflare offers its version of NTP for free so you can use our [global anycast network ↗](https://www.cloudflare.com/network/) to synchronize time from our closest server.
+[Network Time Protocol ↗︎](https://tools.ietf.org/html/rfc1305) (NTP) is an Internet protocol designed to synchronize time between computer systems communicating over unreliable and variable-latency network paths. Cloudflare offers its version of NTP for free so you can use our [global anycast network ↗︎](https://www.cloudflare.com/network/) to synchronize time from our closest server.
 
 To use our NTP server, change the time configuration in your device to point to `time.cloudflare.com`.
 
@@ -45,24 +45,24 @@ To have your Windows machine synchronize time from `time.cloudflare.com`:
 
 ## Linux
 
-Cloudflare's time servers are included in [pool.ntp.org ↗](https://www.ntppool.org/en/) which is the default time service for many Linux distributions and network appliances. If your NTP client is synchronizing from one of the below servers, you are already using Cloudflare's time services.
+Cloudflare's time servers are included in [pool.ntp.org ↗︎](https://www.ntppool.org/en/) which is the default time service for many Linux distributions and network appliances. If your NTP client is synchronizing from one of the below servers, you are already using Cloudflare's time services.
 
-- [162.159.200.1 ↗](https://www.ntppool.org/scores/162.159.200.1)
-- [162.159.200.123 ↗](https://www.ntppool.org/scores/162.159.200.123)
-- [2606:4700:f1::1 ↗](https://www.ntppool.org/scores/2606:4700:f1::1)
-- [2606:4700:f1::123 ↗](https://www.ntppool.org/scores/2606:4700:f1::123)
+- [162.159.200.1 ↗︎](https://www.ntppool.org/scores/162.159.200.1)
+- [162.159.200.123 ↗︎](https://www.ntppool.org/scores/162.159.200.123)
+- [2606:4700:f1::1 ↗︎](https://www.ntppool.org/scores/2606:4700:f1::1)
+- [2606:4700:f1::123 ↗︎](https://www.ntppool.org/scores/2606:4700:f1::123)
 
 To manually configure your NTP client to use our time service, please first refer to the documentation for your Linux distribution to determine which NTP client you are using and where the configuration files are stored.
 
 For example:
 
-- [Ubuntu ↗](https://ubuntu.com/server/docs/about-time-synchronisation)
-- [Debian ↗](https://wiki.debian.org/NTP)
-- [RHEL ↗](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite)
+- [Ubuntu ↗︎](https://ubuntu.com/server/docs/about-time-synchronisation)
+- [Debian ↗︎](https://wiki.debian.org/NTP)
+- [RHEL ↗︎](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-configuring_ntp_using_the_chrony_suite)
 
 Exact configuration will vary by Linux distribution, but below are some example configurations for popular clients:
 
-### [chrony ↗](https://chrony-project.org)
+### [chrony ↗︎](https://chrony-project.org)
 
 1. Add `time.cloudflare.com` as a server in the configuration file on your system (e.g., `/etc/chrony/chrony.conf`)
 
@@ -79,7 +79,7 @@ Exact configuration will vary by Linux distribution, but below are some example 
 
 
 
-### [systemd-timesyncd ↗](https://man7.org/linux/man-pages/man5/timesyncd.conf.5.html)
+### [systemd-timesyncd ↗︎](https://man7.org/linux/man-pages/man5/timesyncd.conf.5.html)
 
 1. Add `time.cloudflare.com` to the `[Time]` section of the configuration file on your system (e.g., `/etc/systemd/timesyncd.conf`)
 
@@ -97,7 +97,7 @@ Exact configuration will vary by Linux distribution, but below are some example 
 
 
 
-### [ntpd ↗](https://linux.die.net/man/5/ntp.conf)
+### [ntpd ↗︎](https://linux.die.net/man/5/ntp.conf)
 
 1. Add `time.cloudflare.com` as a server in the configuration file on your system (e.g., `/etc/ntp.conf`)
 

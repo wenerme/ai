@@ -105,7 +105,7 @@ The following is an example of suggested rules, but you should only make changes
 
 Alternatively, if you have Cloudflare Layer 7 protection, the Cloudflare Public IP addresses can be permitted as the source IP addresses to the destination IP addresses for the HTTP/HTTPS inbound traffic. This recommendation effectively replaces Rule 1 in the example above.
 
-For a list of Cloudflare's IP addresses, refer to [Cloudflare's IP addresses ↗](https://www.cloudflare.com/ips/).
+For a list of Cloudflare's IP addresses, refer to [Cloudflare's IP addresses ↗︎](https://www.cloudflare.com/ips/).
 
 ### Suggested rules for Cloudflare proxied traffic
 

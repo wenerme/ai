@@ -16,10 +16,10 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To validate that Cloudflare is receiving traffic from a user device:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. Under **Log traffic activity**, enable activity logging for all DNS logs.
 3. On your device, open a browser and go to any website.
-4. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs** > **DNS**.
+4. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs** > **DNS**.
 5. Make sure DNS queries from your device appear.
 
 ## Best practices

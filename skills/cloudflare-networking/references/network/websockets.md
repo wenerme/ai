@@ -40,7 +40,7 @@ To enable **WebSockets** connections to your origin server with the API, send a 
 
 Note
 
-Cloudflare also supports [ASP.NET SignalR ↗](http://signalr.net/), which helps negotiate which transport method to use (long polling or WebSockets).
+Cloudflare also supports [ASP.NET SignalR ↗︎](http://signalr.net/), which helps negotiate which transport method to use (long polling or WebSockets).
 
 ## Availability
 
@@ -63,12 +63,12 @@ When Cloudflare releases new code to its global network, we may restart servers,
 
 ### Best practices
 
-- Implement a [keepalive ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#pings_and_pongs_the_heartbeat_of_websockets).
+- Implement a [keepalive ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers#pings_and_pongs_the_heartbeat_of_websockets).
 - Review and then remove or extend timeout settings on the origin and/or on the client.
 
 ### Troubleshooting
 
-Investigating issues with Websocket can be facilitated with client tools like [wscat ↗](https://github.com/websockets/wscat). Being able to reproduce an issue on a single URL with a minimalistic tool helps narrowing down the issue.
+Investigating issues with Websocket can be facilitated with client tools like [wscat ↗︎](https://github.com/websockets/wscat). Being able to reproduce an issue on a single URL with a minimalistic tool helps narrowing down the issue.
 
 The `EdgeStartTimestamp` and `EdgeStopTimestamp` fields in [HTTP requests logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) represent the duration of the WebSocket connection (they do not represent the initial HTTP connection).
 

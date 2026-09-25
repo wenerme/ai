@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/network-layer-attacks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Network layer attacks show [DDoS ↗](https://www.cloudflare.com/en-gb/learning/ddos/layer-3-ddos-attacks/) attack trends at the network layer. These attacks can be split by the network protocol they use: [ICMP ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/internet-control-message-protocol-icmp/), [TCP ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/), [UDP ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/user-datagram-protocol-udp/) and others.
+Network layer attacks show [DDoS ↗︎](https://www.cloudflare.com/en-gb/learning/ddos/layer-3-ddos-attacks/) attack trends at the network layer. These attacks can be split by the network protocol they use: [ICMP ↗︎](https://www.cloudflare.com/en-gb/learning/ddos/glossary/internet-control-message-protocol-icmp/), [TCP ↗︎](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/), [UDP ↗︎](https://www.cloudflare.com/en-gb/learning/ddos/glossary/user-datagram-protocol-udp/) and others.
 
 Note
 
-Unlike what happens in [Application Layer Attacks](https://developers.cloudflare.com/radar/investigate/application-layer-attacks/), in network layer attacks location attribution does not use the location associated with the client's IP address. Instead, it uses the location of the data center itself. This is due to [IP spoofing ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/ip-spoofing/).
+Unlike what happens in [Application Layer Attacks](https://developers.cloudflare.com/radar/investigate/application-layer-attacks/), in network layer attacks location attribution does not use the location associated with the client's IP address. Instead, it uses the location of the data center itself. This is due to [IP spoofing ↗︎](https://www.cloudflare.com/en-gb/learning/ddos/glossary/ip-spoofing/).
 
-When filtering by location or autonomous system (AS), we are filtering by the source location/AS of the attack — which can be very different to the location of the human orchestrator of the attack. Refer to [botnets ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/) for more information.
+When filtering by location or autonomous system (AS), we are filtering by the source location/AS of the attack — which can be very different to the location of the human orchestrator of the attack. Refer to [botnets ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-botnet/) for more information.
 
 ## List of endpoints
 
@@ -68,7 +68,7 @@ If we inspect the abbreviated response below, we can conclude that globally, at 
 }
 ```
 
-We can also conclude that the distribution of network layer attacks coming from Singapore — or, more accurately, reaching Cloudflare's data center located in Singapore — differs quite a bit from the worldwide distribution. At those times, the distribution of network layer attacks clearly favors [TCP ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/).
+We can also conclude that the distribution of network layer attacks coming from Singapore — or, more accurately, reaching Cloudflare's data center located in Singapore — differs quite a bit from the worldwide distribution. At those times, the distribution of network layer attacks clearly favors [TCP ↗︎](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/).
 
 For more information refer to the [API reference](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries/) for this endpoint.
 
@@ -106,7 +106,7 @@ curl "https://api.cloudflare.com/client/v4/radar/attacks/layer3/summary?location
 }
 ```
 
-The response shows that the attacks coming from Russia to other locations tended to use the [UDP ↗](https://www.cloudflare.com/en-gb/learning/ddos/glossary/user-datagram-protocol-udp/) network protocol at those timestamps.
+The response shows that the attacks coming from Russia to other locations tended to use the [UDP ↗︎](https://www.cloudflare.com/en-gb/learning/ddos/glossary/user-datagram-protocol-udp/) network protocol at those timestamps.
 
 For more information refer to the [API reference](https://developers.cloudflare.com/api/resources/radar/subresources/attacks/subresources/layer3/methods/timeseries/) for this endpoint.
 

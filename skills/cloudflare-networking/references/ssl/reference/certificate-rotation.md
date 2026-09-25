@@ -45,7 +45,7 @@ After ordering, the new certificate pack moves through several intermediate stat
 
 Do not delete the old certificate pack until the new one reaches **Active**. Refer to [Certificate statuses](https://developers.cloudflare.com/ssl/reference/certificate-statuses/) for a description of each stage.
 
-Monitor progress on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page in the dashboard, or poll the [Get Certificate Pack](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/get/) API endpoint.
+Monitor progress on the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page in the dashboard, or poll the [Get Certificate Pack](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/get/) API endpoint.
 
 For zones using Cloudflare as authoritative DNS (full setup), most validations complete within minutes. For [partial (CNAME) setups](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), you will need to place DCV tokens manually - refer to [DCV methods](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/) for details. DCV tokens expire if not satisfied within their validity window (7 days for Let's Encrypt, 14 days for Google Trust Services and SSL.com).
 
@@ -86,9 +86,9 @@ Set `wait_for_active_status = true` on the new resource to have Terraform block 
 1. Add the new `cloudflare_certificate_pack` resource with `wait_for_active_status = true` and run `terraform apply`. The apply will not complete until the pack is Active.
 2. Remove the old resource from your configuration and run `terraform apply` to delete it.
 
-For zero-downtime rotation of a single resource (where you cannot have both old and new in state simultaneously), use Terraform's [`create_before_destroy` ↗](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#create_before_destroy) lifecycle meta-argument.
+For zero-downtime rotation of a single resource (where you cannot have both old and new in state simultaneously), use Terraform's [`create_before_destroy` ↗︎](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#create_before_destroy) lifecycle meta-argument.
 
-Refer to the [`cloudflare_certificate_pack` provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/certificate_pack) for the full resource schema.
+Refer to the [`cloudflare_certificate_pack` provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/certificate_pack) for the full resource schema.
 
 ---
 
@@ -98,7 +98,7 @@ Refer to the [`cloudflare_certificate_pack` provider documentation ↗](https://
 
 Let's Encrypt limits new certificates to five per seven-day window for the same exact set of hostnames. Repeated rotations (for example, during testing or automation loops) can exhaust this limit and block further issuance for up to a week.
 
-If you hit this limit, switch the certificate authority to [Google Trust Services or SSL.com](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) or wait for the rate limit window to expire. Refer to [Let's Encrypt rate limits ↗](https://letsencrypt.org/docs/rate-limits/) for details.
+If you hit this limit, switch the certificate authority to [Google Trust Services or SSL.com](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) or wait for the rate limit window to expire. Refer to [Let's Encrypt rate limits ↗︎](https://letsencrypt.org/docs/rate-limits/) for details.
 
 ### Pack stuck in Pending Validation
 

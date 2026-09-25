@@ -26,7 +26,7 @@ The pricing structure varies based on the service being used.
 
 The following products bill based on consumption. Many products include a free tier or included usage — you are only charged for usage that exceeds the included amount.
 
-For current overage rates, refer to the [Cloudflare plans page ↗](https://www.cloudflare.com/plans/) or each product's pricing page linked below. Rates may change — the links below are always up to date.
+For current overage rates, refer to the [Cloudflare plans page ↗︎](https://www.cloudflare.com/plans/) or each product's pricing page linked below. Rates may change — the links below are always up to date.
 
 | Product | Billable metric | Free tier or included usage | Pricing details |
 | --- | --- | --- | --- |
@@ -79,7 +79,7 @@ For example, Argo Smart Routing has **Notify when total bytes of traffic exceeds
 
 ### Set up usage notifications
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 2. Select your account.
 3. Go to **Notifications**. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 4. Select **Add** to create a new notification for **Billable Usage**.

@@ -29,7 +29,7 @@ No pre-created service account or pre-shared API key is required. Agents handle 
 
 ### x402
 
-[x402 ↗](https://www.x402.org/) is a payment standard created by Coinbase. It uses on-chain stablecoin payments (USDC on Base, Ethereum, Solana, and other networks) and defines three HTTP headers — `PAYMENT-REQUIRED`, `PAYMENT-SIGNATURE`, and `PAYMENT-RESPONSE` — to carry challenges, credentials, and receipts. Servers can offload verification and settlement to a **facilitator** service so they do not need direct blockchain connectivity. It is governed by Coinbase and Cloudflare, two of the founding members of the x402 Foundation.
+[x402 ↗︎](https://www.x402.org/) is a payment standard created by Coinbase. It uses on-chain stablecoin payments (USDC on Base, Ethereum, Solana, and other networks) and defines three HTTP headers — `PAYMENT-REQUIRED`, `PAYMENT-SIGNATURE`, and `PAYMENT-RESPONSE` — to carry challenges, credentials, and receipts. Servers can offload verification and settlement to a **facilitator** service so they do not need direct blockchain connectivity. It is governed by Coinbase and Cloudflare, two of the founding members of the x402 Foundation.
 
 The Agents SDK provides first-class x402 integration:
 
@@ -38,7 +38,7 @@ The Agents SDK provides first-class x402 integration:
 
 ### Machine Payments Protocol
 
-[Machine Payments Protocol (MPP) ↗](https://mpp.dev) is an open payment protocol. It adds the `WWW-Authenticate: Payment` and `Authorization: Payment` headers to HTTP `402` responses.
+[Machine Payments Protocol (MPP) ↗︎](https://mpp.dev) is an open payment protocol. It adds the `WWW-Authenticate: Payment` and `Authorization: Payment` headers to HTTP `402` responses.
 
 MPP supports multiple payment methods beyond blockchains, including cards (via Stripe) and stablecoins. The `mppx` SDK supports one-time, usage-based, and recurring payments. MPP is also backwards-compatible with x402: MPP clients can consume existing x402 services without modification.
 
@@ -62,10 +62,10 @@ Give an Agent MPP-aware HTTP fetch and MCP clients
 
 ## Related
 
-- [x402.org ↗](https://x402.org) — x402 protocol specification
-- [mpp.dev ↗](https://mpp.dev) — MPP protocol specification
+- [x402.org ↗︎](https://x402.org) — x402 protocol specification
+- [mpp.dev ↗︎](https://mpp.dev) — MPP protocol specification
 - [Pay Per Crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/) — Cloudflare-native monetization for web content
-- [x402 examples ↗](https://github.com/cloudflare/agents/tree/main/examples) — Complete working code
+- [x402 examples ↗︎](https://github.com/cloudflare/agents/tree/main/examples) — Complete working code
 
 Was this helpful?
 

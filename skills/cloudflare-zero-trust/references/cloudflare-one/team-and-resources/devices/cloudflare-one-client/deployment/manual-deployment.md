@@ -54,7 +54,7 @@ The device is now protected by your organization's Zero Trust policies.
 
 To enroll your device using the terminal:
 
-1. [Download ↗](https://pkg.cloudflareclient.com/) and install the Cloudflare One Client package.
+1. [Download ↗︎](https://pkg.cloudflareclient.com/) and install the Cloudflare One Client package.
 2. Open a terminal window. Ensure that you are logged into the terminal as the current user and not as root.
 3. (Optional) Validate your organization's team name:
 
@@ -137,7 +137,7 @@ The device is now protected by your organization's Zero Trust policies. For more
 6. Complete the authentication steps required by your organization.
 7. After authenticating, select **Install VPN Profile**.
 8. In the **Connection request** popup window, select **OK**.
-9. If you did not enable [auto-connect ↗](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect), manually turn on the switch to **Connected**.
+9. If you did not enable [auto-connect ↗︎](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect), manually turn on the switch to **Connected**.
 
 The device is now protected by your organization's Zero Trust policies.
 

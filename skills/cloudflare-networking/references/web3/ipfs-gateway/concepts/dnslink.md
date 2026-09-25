@@ -20,7 +20,7 @@ A restricted gateway differs from a [universal gateway](https://developers.cloud
 
 ## What is DNSLink?
 
-Every file on [IPFS](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/) is identified by a [CID ↗](https://docs.ipfs.io/concepts/glossary/#cid) — a long string like `bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze`. These CIDs are not practical for end users to type or remember, the same way IP addresses (`192.0.2.1`) are not practical compared to domain names (`example.com`).
+Every file on [IPFS](https://developers.cloudflare.com/web3/ipfs-gateway/concepts/ipfs/) is identified by a [CID ↗︎](https://docs.ipfs.io/concepts/glossary/#cid) — a long string like `bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze`. These CIDs are not practical for end users to type or remember, the same way IP addresses (`192.0.2.1`) are not practical compared to domain names (`example.com`).
 
 DNSLink solves this by mapping a human-readable domain name to an IPFS CID through a DNS TXT record. You put your website files into an IPFS directory and create a DNSLink record pointing your domain to that directory's CID. Users then access your site through a readable URL like `https://cf-ipfs.com/ipns/en.wikipedia-on-ipfs.org/`, and the gateway resolves it to the correct CID.
 
@@ -28,7 +28,7 @@ DNSLink also simplifies content updates. When you publish a new version of your 
 
 Note
 
-For additional details, refer to the official [IPFS documentation ↗](https://docs.ipfs.tech/concepts/dnslink/).
+For additional details, refer to the official [IPFS documentation ↗︎](https://docs.ipfs.tech/concepts/dnslink/).
 
 ## How is it used with Cloudflare?
 

@@ -40,7 +40,7 @@ When connecting a device to Cloudflare WAN, you will have virtual IP addresses f
 
 Route packets back to Cloudflare One Client devices from services behind an anycast GRE or other type tunnel. Complete this configuration before installing WARP. Otherwise, your infrastructure will not route packets correctly to Cloudflare global network and connectivity will fail.
 
-Cloudflare will assign IP addresses from the virtual IP (VIP) space to your devices. To view your virtual IP address, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select **Zero Trust** > **My Team > Devices**.
+Cloudflare will assign IP addresses from the virtual IP (VIP) space to your devices. To view your virtual IP address, go to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select **Zero Trust** > **My Team > Devices**.
 
 All packets with a destination IP in the VIP space need to be routed back through the tunnel. For example, with a single GRE tunnel named `gre1`, in Linux, the following command would add a routing rule that would route such packets:
 
@@ -97,7 +97,7 @@ Before testing, [configure domain fallback](https://developers.cloudflare.com/cl
 
 If WARP integration has been enabled for the account within the last day, log off and on again in the Cloudflare One Client before testing.
 
-To check if the Cloudflare One Client is working correctly as an on-ramp, you can do a resolution test on a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) for a server or service in the Cloudflare WAN. Test this from a user with a device.
+To check if the Cloudflare One Client is working correctly as an on-ramp, you can do a resolution test on a [fully qualified domain name (FQDN) ↗︎](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) for a server or service in the Cloudflare WAN. Test this from a user with a device.
 
 For example:
 

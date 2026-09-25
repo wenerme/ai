@@ -73,7 +73,7 @@ Important
 - Currently, SNI Rewrite is not supported for wildcard custom hostnames. Subdomains covered by a wildcard custom hostname send the custom origin server name as the SNI value.
 - In the [O2O context](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/) (when requests are originating from a proxied hostname on a zone also on Cloudflare), changing the SNI value to use host header is currently not supported.
 - SNI overrides defined in an [Origin Rule](https://developers.cloudflare.com/rules/origin-rules/) will take precedence over SNI rewrites.
-- SNI Rewrite usage is subject to the [Service-Specific Terms ↗](https://www.cloudflare.com/service-specific-terms-application-services/#ssl-for-saas-terms).
+- SNI Rewrite usage is subject to the [Service-Specific Terms ↗︎](https://www.cloudflare.com/service-specific-terms-application-services/#ssl-for-saas-terms).
 
 ### Set an SNI rewrite
 

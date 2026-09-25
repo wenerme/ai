@@ -54,7 +54,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -85,7 +85,7 @@ The external endpoint URL should:
 
 #### Cipher suites
 
-The Cloudflare One Client establishes a TLS connection using [Rustls ↗](https://github.com/rustls/rustls). Make sure your HTTPS endpoint accepts one of the [cipher suites supported by Rustls ↗](https://docs.rs/rustls/0.21.10/src/rustls/suites.rs.html#125-143).
+The Cloudflare One Client establishes a TLS connection using [Rustls ↗︎](https://github.com/rustls/rustls). Make sure your HTTPS endpoint accepts one of the [cipher suites supported by Rustls ↗︎](https://docs.rs/rustls/0.21.10/src/rustls/suites.rs.html#125-143).
 
 ### 1. Create an external disconnect endpoint
 
@@ -198,7 +198,7 @@ SHA256 Fingerprint=DD4F4806C57A5BBAF1AA5B080F0541DA75DB468D0A1FE731310149500CCD8
 
 To configure External Emergency Disconnect using the dashboard:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Management**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Management**.
 2. Select **Global disconnection settings**.
 3. Find **Manage device connection using an external signal** and select **Edit**.
 4. Configure the following fields:
@@ -286,7 +286,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -385,7 +385,7 @@ The current status is also available in [client diagnostic logs](https://develop
 
 If the external endpoint becomes unavailable or serves an invalid configuration, Cloudflare One Clients can get stuck in the emergency disconnect state. You can recover clients by removing their External Emergency Disconnect configuration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Management**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Management**.
 2. Select **Global disconnection settings**.
 3. Turn off **Manage device connection using an external signal**.
 

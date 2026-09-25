@@ -143,12 +143,12 @@ Virtual Tunnel Interfaces (VTIs) cannot be configured on MX appliances.
 ### Meraki implementation and compatibility notes
 
 - **Firmware prerequisite**: The minimum required firmware for this configuration is MX 19.2.7.
-- **Hardware compatibility**: Older Meraki hardware may be physically incapable of running 19.2.7. Route-Based VPN support is required for this architecture. Refer to [Product firmware restrictions ↗](https://documentation.meraki.com/Platform_Management/Product_Information/Compatibility_and_Firmware/Firmware_Upgrades/Product_Firmware_Version_Restrictions) to determine whether your MX platform supports firmware release 19.2.7 or later.
+- **Hardware compatibility**: Older Meraki hardware may be physically incapable of running 19.2.7. Route-Based VPN support is required for this architecture. Refer to [Product firmware restrictions ↗︎](https://documentation.meraki.com/Platform_Management/Product_Information/Compatibility_and_Firmware/Firmware_Upgrades/Product_Firmware_Version_Restrictions) to determine whether your MX platform supports firmware release 19.2.7 or later.
 - **Active/Standby configuration**: Redundant tunnels associated with Non-Meraki VPN connections are Active/Standby. Both tunnels are established, but Meraki only routes traffic via the primary IPsec VPN peer and dynamically fails over to the secondary IPsec VPN peer based on tunnel monitoring probes.
   - **Anycast and tunnel redundancy**: Despite the Active/Standby nature of IPsec VPN tunnels on the MX platform, high availability is maintained at the network layer because the Cloudflare remote endpoint IPs are advertised via BGP anycast across the Cloudflare global network and provide inherent geographic and logical redundancy.
 - **Route-Based VPN support**: While often associated with specific cloud integrations, version 19.2.7 supports Route-Based IPsec VPN for third-party devices generally, including Cloudflare WAN.
 - **Redundancy and Multi-Uplink**: This documentation specifically covers Active/Standby tunnel configurations.
-  - **Multi-Uplink IPsec VPN**: The Meraki [Multi-Uplink IPsec VPN ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Multi-Uplink_IPsec_VPN) feature is outside the scope of this guide.
+  - **Multi-Uplink IPsec VPN**: The Meraki [Multi-Uplink IPsec VPN ↗︎](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Multi-Uplink_IPsec_VPN) feature is outside the scope of this guide.
 - **Anti-Replay Protection**: Cloudflare recommends [disabling Anti-Replay Protection](https://developers.cloudflare.com/cloudflare-wan/reference/anti-replay-protection/) for optimal performance with Cloudflare WAN. The Cisco Meraki MX platform does not permit administrators to disable this feature.
   - This is a known Meraki platform limitation.
   - In environments with high jitter or out-of-order packet delivery on the underlay (ISP network), this may cause intermittent packet drops on the MX side of the IPsec VPN tunnels.
@@ -213,9 +213,9 @@ The MX platform uses tunnel monitoring to enable failover between primary and se
 
 The tunnel health probes are used in addition to Dead Peer Detection to determine overall reachability of resources on the remote side of the IPsec tunnels.
 
-Meraki reserves the IP address `192.0.2.3/32` (part of TEST-NET-1, defined in [RFC 5737 ↗](https://datatracker.ietf.org/doc/html/rfc5737)) as the source IP for tunnel monitor probes. Refer to [Primary and secondary IPsec tunnels ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Primary_and_Secondary_IPsec_VPN_Tunnels) for details.
+Meraki reserves the IP address `192.0.2.3/32` (part of TEST-NET-1, defined in [RFC 5737 ↗︎](https://datatracker.ietf.org/doc/html/rfc5737)) as the source IP for tunnel monitor probes. Refer to [Primary and secondary IPsec tunnels ↗︎](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Primary_and_Secondary_IPsec_VPN_Tunnels) for details.
 
-As `192.0.2.3/32` falls outside the traditional [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) address space, you must add it to the [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing) dataplane associated with your Cloudflare account.
+As `192.0.2.3/32` falls outside the traditional [RFC 1918 ↗︎](https://datatracker.ietf.org/doc/html/rfc1918) address space, you must add it to the [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing) dataplane associated with your Cloudflare account.
 
 Contact Cloudflare to request assistance with adding the `internal_authorized_prefixes` option to your account, with `192.0.2.3/32` included.
 
@@ -368,7 +368,7 @@ If multiple MX appliances with different private subnets inherit the same Non-Me
 
 #### Source-based default routing
 
-[Source-Based Default Routing ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Networks_and_Routing/Source_Based_Default_Routing) enables an administrator to create a source-based default route and specify a next hop as a security appliance over Auto VPN or on a device on the LAN.
+[Source-Based Default Routing ↗︎](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Networks_and_Routing/Source_Based_Default_Routing) enables an administrator to create a source-based default route and specify a next hop as a security appliance over Auto VPN or on a device on the LAN.
 
 Source-Based Default Routing cannot be used in conjunction with Non-Meraki VPN endpoints, including Cloudflare WAN.
 
@@ -738,11 +738,11 @@ Ensure tunnel health checks for both `CF_WAN_TUN_01` and `CF_WAN_TUN_02` are con
 
 ## Meraki references
 
-- [Connection Monitoring for WAN Failover ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Firewall_and_Traffic_Shaping/Connection_Monitoring_for_WAN_Failover#Enhanced_WAN_Failover_and_Failback)
-- [MX Routing Behavior ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Networks_and_Routing/MX_Routing_Behavior)
-- [Organization Overview ↗](https://documentation.meraki.com/Platform_Management/Dashboard_Administration/Operate_and_Maintain/Inventory_and_Devices/Organization_Overview)
-- [Primary and Secondary IPsec VPN Tunnels ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Primary_and_Secondary_IPsec_VPN_Tunnels)
-- [Site-to-Site VPN ↗](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Site-to-Site_VPN_Settings#Peer_availability)
+- [Connection Monitoring for WAN Failover ↗︎](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Firewall_and_Traffic_Shaping/Connection_Monitoring_for_WAN_Failover#Enhanced_WAN_Failover_and_Failback)
+- [MX Routing Behavior ↗︎](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Networks_and_Routing/MX_Routing_Behavior)
+- [Organization Overview ↗︎](https://documentation.meraki.com/Platform_Management/Dashboard_Administration/Operate_and_Maintain/Inventory_and_Devices/Organization_Overview)
+- [Primary and Secondary IPsec VPN Tunnels ↗︎](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Primary_and_Secondary_IPsec_VPN_Tunnels)
+- [Site-to-Site VPN ↗︎](https://documentation.meraki.com/SASE_and_SD-WAN/MX/Design_and_Configure/Configuration_Guides/Site-to-site_VPN/Site-to-Site_VPN_Settings#Peer_availability)
 
 Was this helpful?
 

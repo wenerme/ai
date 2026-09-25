@@ -37,7 +37,7 @@ Repo tokens are issued in the format `art_v1_<40 hex>?expires=<unix_seconds>`. T
 
 ### Git `extraHeader` parameter
 
-Git's [`http.extraHeader` ↗](https://git-scm.com/docs/git-config#Documentation/git-config.txt-httpextraHeader) setting lets you attach an HTTP header to git requests.
+Git's [`http.extraHeader` ↗︎](https://git-scm.com/docs/git-config#Documentation/git-config.txt-httpextraHeader) setting lets you attach an HTTP header to git requests.
 
 If you want to use the full token string returned by the API, pass it as a Bearer token:
 

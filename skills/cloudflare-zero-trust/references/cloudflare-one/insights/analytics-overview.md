@@ -16,7 +16,7 @@ Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 The Cloudflare One Analytics overview provides a dashboard that reports on how Cloudflare One is protecting your organization and networks. Use this page to monitor usage and potential security concerns within your organization.
 
-To view the Analytics overview, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com) and go to **Overview**.
+To view the Analytics overview, log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com) and go to **Overview**.
 
 The Analytics overview includes reports and insights across the following products and categories:
 

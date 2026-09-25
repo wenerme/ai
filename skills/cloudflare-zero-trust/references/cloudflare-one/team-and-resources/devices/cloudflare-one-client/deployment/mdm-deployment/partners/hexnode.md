@@ -97,7 +97,7 @@ After deploying the Cloudflare One Client, you can check its connection progress
 
 1. On your Hexnode console, go to **Apps** > **Add Apps** > **Store App**.
 2. Select *iOS* as the app platform.
-3. Search for [**Cloudflare One Agent** ↗](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492) and **Add** the app.
+3. Search for [**Cloudflare One Agent** ↗︎](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492) and **Add** the app.
 4. Set up an XML file with the supported app configurations for the app. Refer this sample XML code to identify the supported arguments:
 
    ```xml
@@ -136,7 +136,7 @@ After deploying the Cloudflare One Client, you can check its connection progress
 ## Android
 
 1. On your Hexnode console, go to **Apps** > **Add Apps** > **Managed Google Apps**.
-2. Search for the app [**Cloudflare One Agent** ↗](https://play.google.com/store/apps/details?id=com.cloudflare.cloudflareoneagent).
+2. Search for the app [**Cloudflare One Agent** ↗︎](https://play.google.com/store/apps/details?id=com.cloudflare.cloudflareoneagent).
 3. Approve the app as a Managed Google Play app.
 4. Go to **Policies** and create a new policy.
 5. Go to **Android** > **App Configurations** > **Add new configuration**.

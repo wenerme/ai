@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The DDoS Attack Protection managed rulesets provide comprehensive protection against a [variety of DDoS attacks](https://developers.cloudflare.com/ddos-protection/about/attack-coverage/) across L3/4 (network layer) and L7 (application layer) of the [OSI model ↗](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/).
+The DDoS Attack Protection managed rulesets provide comprehensive protection against a [variety of DDoS attacks](https://developers.cloudflare.com/ddos-protection/about/attack-coverage/) across L3/4 (network layer) and L7 (application layer) of the [OSI model ↗︎](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/).
 
 The available managed rulesets are:
 

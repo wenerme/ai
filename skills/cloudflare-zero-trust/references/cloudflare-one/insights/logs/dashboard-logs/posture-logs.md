@@ -16,7 +16,7 @@ Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Posture logs show the results of [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) — security requirements such as OS version, disk encryption, or endpoint protection status — reported by the Cloudflare One Client. Use these logs to identify which devices are passing or failing your organization's posture requirements and to troubleshoot individual check results.
 
-To view device posture logs, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights** > **Logs** > **Posture logs**. Logs will only display if you have configured [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) for your Zero Trust organization.
+To view device posture logs, log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/) and go to **Insights** > **Logs** > **Posture logs**. Logs will only display if you have configured [device posture checks](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/) for your Zero Trust organization.
 
 Enterprise users can generate more detailed logs with [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 

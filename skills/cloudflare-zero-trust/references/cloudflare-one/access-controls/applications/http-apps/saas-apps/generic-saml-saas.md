@@ -30,7 +30,7 @@ Obtain the following URLs from your SaaS application account:
 
 ## 2. Add your application to Access
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **SaaS application**.
 4. Select your **Application** from the drop-down menu. If your application is not listed, enter a custom name in the **Application** field and select the textbox that appears below.
@@ -103,7 +103,7 @@ To send additional SAML attributes to your SaaS application, configure the follo
 
 ### JSONata attribute transforms
 
-In **Advanced settings** > **Transformation**, you can enter a [JSONata ↗](https://jsonata.org/) script that modifies a copy of the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/). This is useful for setting default values, excluding email addresses, or ensuring usernames meet arbitrary criteria. Access will send the modified user identity to the SaaS application as SAML attributes.
+In **Advanced settings** > **Transformation**, you can enter a [JSONata ↗︎](https://jsonata.org/) script that modifies a copy of the [User Registry identity](https://developers.cloudflare.com/cloudflare-one/team-and-resources/users/users/). This is useful for setting default values, excluding email addresses, or ensuring usernames meet arbitrary criteria. Access will send the modified user identity to the SaaS application as SAML attributes.
 
 This corresponds to the `saml_attribute_transform_jsonata` field in the [Access applications API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/).
 
@@ -419,7 +419,7 @@ Result after applying the JSONata transform:
 
 By default, Access sends the user's email address as the SAML `NameID`. Some SaaS applications require a different value, such as an employee ID, a modified email address, or a username from a legacy system.
 
-You can customize the `NameID` by setting the `name_id_transform_jsonata` field on the SaaS application via the [Access applications API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/). This field accepts a [JSONata ↗](https://jsonata.org/) expression that evaluates against the user's identity and must return a single string value. The result replaces the default `NameID` in the SAML assertion.
+You can customize the `NameID` by setting the `name_id_transform_jsonata` field on the SaaS application via the [Access applications API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/create/). This field accepts a [JSONata ↗︎](https://jsonata.org/) expression that evaluates against the user's identity and must return a single string value. The result replaces the default `NameID` in the SAML assertion.
 
 Note
 

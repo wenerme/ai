@@ -20,8 +20,8 @@ Queues support local development workflows using [Wrangler](https://developers.c
 
 To develop locally with Queues, you will need:
 
-- [Wrangler v3.1.0 ↗](https://blog.cloudflare.com/wrangler3/) or later.
-- Node.js version of `18.0.0` or later. Consider using a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node versions.
+- [Wrangler v3.1.0 ↗︎](https://blog.cloudflare.com/wrangler3/) or later.
+- Node.js version of `18.0.0` or later. Consider using a Node version manager like [Volta ↗︎](https://volta.sh/) or [nvm ↗︎](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node versions.
 - If you are new to Queues and/or Cloudflare Workers, refer to the [Queues tutorial](https://developers.cloudflare.com/queues/get-started/) to install `wrangler` and deploy their first Queue.
 
 ## Start a local development session
@@ -50,7 +50,7 @@ Wrangler supports running multiple Workers simultaneously with a single command.
 
 Caution
 
-Support for running multiple Workers at once with one Wrangler command is experimental, and subject to change as we work on the experience. If you run into bugs or have any feedback, [open an issue on the workers-sdk repository ↗](https://github.com/cloudflare/workers-sdk/issues/new)
+Support for running multiple Workers at once with one Wrangler command is experimental, and subject to change as we work on the experience. If you run into bugs or have any feedback, [open an issue on the workers-sdk repository ↗︎](https://github.com/cloudflare/workers-sdk/issues/new)
 
 For example, if your project has the following directory structure:
 

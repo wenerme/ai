@@ -18,7 +18,7 @@ Set up Cloudflare Mesh so your devices and servers can reach each other by priva
 
 ## Prerequisites
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up)
 - A [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization) with an active subscription, including the Free plan
 - A laptop or phone to connect as a client device
 - (Optional) A Linux server to deploy a Mesh node<details><summary>
@@ -32,7 +32,7 @@ Set up Cloudflare Mesh so your devices and servers can reach each other by priva
   | **Memory** | 35 MB |
   | **Network interface type** | Wi-Fi or LAN |
   | **MTU** | 1381 bytes recommended <sup><a href="#user-content-fn-2">2</a></sup> | ## Footnotes<a href="#footnote-label"></a>
-  1. On RHEL 9 and later, enable the <a href="https://docs.fedoraproject.org/en-US/epel/">Extra Packages for Enterprise Linux (EPEL) ↗</a> repository (<code>sudo dnf install epel-release</code>) before installing <code>cloudflare-warp</code>. EPEL provides dependencies required by the client UI. <a href="#user-content-fnref-1">↩</a>
+  1. On RHEL 9 and later, enable the <a href="https://docs.fedoraproject.org/en-US/epel/">Extra Packages for Enterprise Linux (EPEL) ↗︎</a> repository (<code>sudo dnf install epel-release</code>) before installing <code>cloudflare-warp</code>. EPEL provides dependencies required by the client UI. <a href="#user-content-fnref-1">↩</a>
   2. Minimum 1281 bytes with <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/path-mtu-discovery/">Path MTU Discovery</a> <a href="#user-content-fnref-2">↩</a></details>
 
 Mesh nodes are optional
@@ -177,7 +177,7 @@ sudo yum install -y cloudflare-warp
 sudo warp-cli --accept-tos connector new <TOKEN> && sudo warp-cli --accept-tos connect
 ```
 
-You can also manage nodes with the [`cloudflare_zero_trust_tunnel_warp_connector` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_warp_connector) resource. Use [`cloudflare_zero_trust_tunnel_warp_connector_config` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_warp_connector_config) to manage node configuration.
+You can also manage nodes with the [`cloudflare_zero_trust_tunnel_warp_connector` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_warp_connector) resource. Use [`cloudflare_zero_trust_tunnel_warp_connector_config` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_warp_connector_config) to manage node configuration.
 
 ## 2. Connect a client device
 
@@ -224,7 +224,7 @@ For automated deployments, the device profile documentation includes API and Ter
 
 ### Automated settings
 
-The [`cloudflare_zero_trust_device_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource supports unique device IPs and the TCP and UDP Gateway proxies:
+The [`cloudflare_zero_trust_device_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource supports unique device IPs and the TCP and UDP Gateway proxies:
 
 ```tf
 resource "cloudflare_zero_trust_device_settings" "mesh" {

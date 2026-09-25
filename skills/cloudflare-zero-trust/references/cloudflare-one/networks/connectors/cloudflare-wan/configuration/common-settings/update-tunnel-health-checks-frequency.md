@@ -46,7 +46,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec
 
 ## Configure Connector
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) > **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/) > **Networks**.
 2. Go to **Connectors** > **Appliances**.
 3. In **Profiles**, find the Connector profile you want to edit > select the three dots > **Edit**.
 4. In **Network Configuration** > **WAN configuration** > select your WAN > **Edit**.

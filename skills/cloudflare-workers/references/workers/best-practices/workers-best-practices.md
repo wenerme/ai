@@ -27,7 +27,7 @@ The [`compatibility_date`](https://developers.cloudflare.com/workers/configurati
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-24",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 }
 ```
@@ -36,7 +36,7 @@ The [`compatibility_date`](https://developers.cloudflare.com/workers/configurati
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-24"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 ```
 
@@ -51,7 +51,7 @@ The [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nod
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-24",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 }
 ```
@@ -60,7 +60,7 @@ The [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nod
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-24"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 ```
 
@@ -127,7 +127,7 @@ Secrets (API keys, tokens, database credentials) must never appear in your Wrang
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-24",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// ✅ Good: non-secret configuration lives in version control
@@ -144,7 +144,7 @@ Secrets (API keys, tokens, database credentials) must never appear in your Wrang
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-24"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [vars]
@@ -189,7 +189,7 @@ Each environment is treated separately. Bindings and vars need to be declared pe
 	"name": "my-api",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-24",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// This binding only applies to the root Worker
@@ -218,7 +218,7 @@ Each environment is treated separately. Bindings and vars need to be declared pe
 name = "my-api"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-24"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]
@@ -274,7 +274,7 @@ The most common mistake with routes is missing the DNS record. Without a proxied
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-24",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 
 	// Option 1: Custom domain — Worker is the origin, DNS is managed automatically
@@ -292,7 +292,7 @@ The most common mistake with routes is missing the DNS record. Without a proxied
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-24"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[routes]]
@@ -737,7 +737,7 @@ Create a new `Client` on each request. Hyperdrive manages the underlying pool, s
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-24",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"hyperdrive": [{ "binding": "HYPERDRIVE", "id": "<YOUR_HYPERDRIVE_ID>" }],
@@ -748,7 +748,7 @@ Create a new `Client` on each request. Hyperdrive manages the underlying pool, s
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-24"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -964,7 +964,7 @@ For a purely static site, point `assets.directory` at your build output. No Work
 	// Static site — no Worker script needed
 	"name": "my-static-site",
 	// Set this to today's date
-	"compatibility_date": "2026-09-24",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"assets": {
@@ -976,7 +976,7 @@ For a purely static site, point `assets.directory` at your build output. No Work
 ```toml
 name = "my-static-site"
 # Set this to today's date
-compatibility_date = "2026-09-24"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -1000,7 +1000,7 @@ Use structured JSON logging with `console.log` so logs are searchable and filter
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-24",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 
 	"observability": {
@@ -1021,7 +1021,7 @@ Use structured JSON logging with `console.log` so logs are searchable and filter
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-24"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [observability]
@@ -1213,7 +1213,7 @@ A `Promise` that is not `await`ed, `return`ed, or passed to `ctx.waitUntil()` is
 
 Choose based on whether the response depends on the work. Use `await` or `return` for work that must complete before the response is correct. Use `ctx.waitUntil()` for work that can run after the response is sent and can finish within the `waitUntil()` time limit.
 
-Enable the `no-floating-promises` lint rule to catch these at development time. If you use ESLint, enable [`@typescript-eslint/no-floating-promises` ↗](https://typescript-eslint.io/rules/no-floating-promises/). If you use oxlint, enable [`typescript/no-floating-promises` ↗](https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-floating-promises.html).
+Enable the `no-floating-promises` lint rule to catch these at development time. If you use ESLint, enable [`@typescript-eslint/no-floating-promises` ↗︎](https://typescript-eslint.io/rules/no-floating-promises/). If you use oxlint, enable [`typescript/no-floating-promises` ↗︎](https://oxc.rs/docs/guide/usage/linter/rules/typescript/no-floating-promises.html).
 
 ```bash
 # ESLint (typescript-eslint)

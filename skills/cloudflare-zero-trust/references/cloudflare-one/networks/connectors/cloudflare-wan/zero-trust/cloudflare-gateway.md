@@ -81,7 +81,7 @@ end
 
 By default, the following traffic routed through IPsec/GRE tunnels and destined to public IP addresses is proxied/filtered through Cloudflare Gateway:
 
-- TCP, UDP, and ICMP traffic sourced from [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) IPs or devices.
+- TCP, UDP, and ICMP traffic sourced from [RFC 1918 ↗︎](https://datatracker.ietf.org/doc/html/rfc1918) IPs or devices.
 - TCP and UDP traffic sourced from [BYOIP](https://developers.cloudflare.com/byoip/) or [Leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/) and destined to a well-known port ( `0`- `1023`).
 
 By default, traffic destined to public IPs will be routed over the public Internet. If you want to configure specific public IP ranges to be routed through your IPsec/GRE tunnels instead of over the public Internet after filtering, contact your account team.
@@ -98,7 +98,7 @@ Contact your account team to enable Gateway filtering for traffic destined to ro
 
 When enabled, TCP/UDP traffic meeting **all** the following criteria will be proxied and filtered by Cloudflare Gateway:
 
-- **Source and destination IPs**: Both must be part of [RFC1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) space, [WARP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-one-client/), [BYOIP](https://developers.cloudflare.com/byoip/), or [Leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/).
+- **Source and destination IPs**: Both must be part of [RFC1918 ↗︎](https://datatracker.ietf.org/doc/html/rfc1918) space, [WARP](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-one-client/), [BYOIP](https://developers.cloudflare.com/byoip/), or [Leased IPs](https://developers.cloudflare.com/magic-transit/cloudflare-ips/).
 - **Source port**: Must be a client port strictly higher than `1023`.
 - **Destination port**: Must be a well-known port (lower than `1024`).
 
@@ -138,7 +138,7 @@ This applies when using [Magic Transit With Egress Option](https://developers.cl
 
 Additionally, test both `http://ifconfig.me` (non-TLS) and `https://ifconfig.me` (TLS) to ensure that your [TCP maximum segment size (MSS Clamping)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/get-started/#set-maximum-segment-size) has been set properly.
 
-If the HTTPS query hangs or fails but HTTP works, the MSS value may be too high or not set. Reduce this value on your customer premise equipment to match the overhead introduced by your [IKE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters) and [ESP ↗](https://en.wikipedia.org/wiki/IPsec#Encapsulating_Security_Payload) settings.
+If the HTTPS query hangs or fails but HTTP works, the MSS value may be too high or not set. Reduce this value on your customer premise equipment to match the overhead introduced by your [IKE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters) and [ESP ↗︎](https://en.wikipedia.org/wiki/IPsec#Encapsulating_Security_Payload) settings.
 
 Was this helpful?
 

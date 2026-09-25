@@ -26,7 +26,7 @@ Refer to [Deprecations](https://developers.cloudflare.com/workers/wrangler/depre
 
 ## Additional assistance
 
-If you do have an issue or need further assistance, [file an issue ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose) in the `workers-sdk` repo on GitHub.
+If you do have an issue or need further assistance, [file an issue ↗︎](https://github.com/cloudflare/workers-sdk/issues/new/choose) in the `workers-sdk` repo on GitHub.
 
 Was this helpful?
 

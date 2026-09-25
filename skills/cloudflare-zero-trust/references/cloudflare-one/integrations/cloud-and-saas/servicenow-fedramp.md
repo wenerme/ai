@@ -23,7 +23,7 @@ The ServiceNow (FedRAMP) integration detects a variety of data loss prevention, 
 ## Integration prerequisites
 
 - `admin` access to a ServiceNow (FedRAMP) instance
-- Ability to [create an OAuth API endpoint for external clients ↗](https://docs.servicenow.com/csh?topicname=t_CreateEndpointforExternalClients)
+- Ability to [create an OAuth API endpoint for external clients ↗︎](https://docs.servicenow.com/csh?topicname=t_CreateEndpointforExternalClients)
 
 Note
 
@@ -35,7 +35,7 @@ For the ServiceNow (FedRAMP) integration to function, Cloudflare CASB requires t
 
 - `Global` application scope
 
-These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [ServiceNow Application scope documentation ↗](https://docs.servicenow.com/bundle/utah-application-development/page/build/applications/concept/c_GlobalScope.html).
+These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [ServiceNow Application scope documentation ↗︎](https://docs.servicenow.com/bundle/utah-application-development/page/build/applications/concept/c_GlobalScope.html).
 
 ## Security findings
 

@@ -38,7 +38,7 @@ JSON Mode is compatible with OpenAI’s implementation; to enable add the `respo
 }
 ```
 
-Where `json_schema` must be a valid [JSON Schema ↗](https://json-schema.org/) declaration.
+Where `json_schema` must be a valid [JSON Schema ↗︎](https://json-schema.org/) declaration.
 
 ## JSON Mode example
 

@@ -18,11 +18,11 @@ Cloudflare uses various cookies to maximize network resources, manage traffic, a
 
 ## Understanding the Cloudflare Cookies
 
-As defined in our [Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/), all the cookies listed below are strictly necessary to provide the services requested by our customers, unless otherwise stated.
+As defined in our [Privacy Policy ↗︎](https://www.cloudflare.com/privacypolicy/), all the cookies listed below are strictly necessary to provide the services requested by our customers, unless otherwise stated.
 
 As mentioned in our Privacy Policy, Cloudflare encourages our customers to disclose the use of these cookies to their end users. In some jurisdictions, customers may be required by law to disclose these cookies to their end users.
 
-By default, cookie data may be processed in Cloudflare's data center in the United States and is subject to the cross-border data transfer section 7 of the Cloudflare [Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/). Customers who use the [Data Localization Suite](https://developers.cloudflare.com/data-localization/) can control where cookie data is processed (with [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/)) and logged (using the [Customer Metadata Boundary](https://developers.cloudflare.com/data-localization/metadata-boundary/)).
+By default, cookie data may be processed in Cloudflare's data center in the United States and is subject to the cross-border data transfer section 7 of the Cloudflare [Privacy Policy ↗︎](https://www.cloudflare.com/privacypolicy/). Customers who use the [Data Localization Suite](https://developers.cloudflare.com/data-localization/) can control where cookie data is processed (with [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/)) and logged (using the [Customer Metadata Boundary](https://developers.cloudflare.com/data-localization/metadata-boundary/)).
 
 ### \_\_cflb cookie for Cloudflare Load Balancer session affinity
 
@@ -60,7 +60,7 @@ You can disable the `__cf_bm` cookie using the `bm_cookie_enabled` field [via th
 
 The `cf_clearance` cookie is required for [JavaScript detections](https://developers.cloudflare.com/bots/additional-configurations/javascript-detections/). JavaScript detections are stored in the `cf_clearance` cookie.
 
-The `cf_clearance` cookie is set with `SameSite=None; Secure; Partitioned` so that challenge state is preserved across cross-site requests while complying with [CHIPS ↗ ↗](https://developers.google.com/privacy-sandbox/cookies/chips). When the cookie is issued inside a third-party context, it is stored in a partition keyed to the top-level site and is not shared across embedding sites. For details, refer to [Partitioned cookies (CHIPS) and `cf_clearance`](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#partitioned-cookies-chips-and-cf_clearance).
+The `cf_clearance` cookie is set with `SameSite=None; Secure; Partitioned` so that challenge state is preserved across cross-site requests while complying with [CHIPS ↗ ↗︎](https://developers.google.com/privacy-sandbox/cookies/chips). When the cookie is issued inside a third-party context, it is stored in a partition keyed to the top-level site and is not shared across embedding sites. For details, refer to [Partitioned cookies (CHIPS) and `cf_clearance`](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/#partitioned-cookies-chips-and-cf_clearance).
 
 ### cf\_ob\_info and cf\_use\_ob cookie for Cloudflare Always Online
 

@@ -27,7 +27,7 @@ For detailed information about BGP architecture, Edge Resiliency Mode, and route
 Your Cloudflare account team determines CNI eligibility and port availability. Notably:
 
 - CNI ports are currently offered at no charge to Enterprise customers.
-  - Non-Enterprise customers (and any third party) may peer with Cloudflare via Internet Exchange according to our [open peering policy ↗](https://www.cloudflare.com/peering-policy/).
+  - Non-Enterprise customers (and any third party) may peer with Cloudflare via Internet Exchange according to our [open peering policy ↗︎](https://www.cloudflare.com/peering-policy/).
 - CNI is available at select Cloudflare data centers:
   - The type of Dataplane offered in that location will determine specifications of the supported connection, such as the MTU.
   - The diversity offered in the location will vary.
@@ -86,7 +86,7 @@ The following are the maximum throughput rates supported by the CNI connection. 
 Consider the following service levels when planning your deployment:
 
 - **No Formal SLA**:
-  - CNI is currently offered at no charge and without a formal [Service Level Agreement (SLA) ↗](https://www.cloudflare.com/service-specific-terms-network-services/#cf-network-interconnect-terms).
+  - CNI is currently offered at no charge and without a formal [Service Level Agreement (SLA) ↗︎](https://www.cloudflare.com/service-specific-terms-network-services/#cf-network-interconnect-terms).
   - Cloudflare will work to restore CNI service in the event of a Cloudflare issue. In some Cloudflare data centers the recovery time could be several days. Therefore, we always recommend backup connectivity to a different device or via an Internet tunnel.
 - **Observability**: There is no visibility of the interconnect config/status within the Cloudflare dashboard.
 - **Availability**: Locations that support device-level diversity can maintain connectivity during maintenance when your connections terminate on separate devices. Single-device deployments will experience full service disruption during maintenance.
@@ -139,7 +139,7 @@ Enterprise customers using Cloudflare WAN can get started with Cloud Interconnec
 
 #### AWS Direct Connect (beta)
 
-If you are a Cloudflare WAN customer, you can connect to [AWS Direct Connect ↗](https://docs.aws.amazon.com/directconnect/) using Cloud Interconnect. Cloud Interconnect supports AWS Dedicated Direct Connect, which provides a full physical port allocation in AWS. AWS Hosted Direct Connect is not yet supported.
+If you are a Cloudflare WAN customer, you can connect to [AWS Direct Connect ↗︎](https://docs.aws.amazon.com/directconnect/) using Cloud Interconnect. Cloud Interconnect supports AWS Dedicated Direct Connect, which provides a full physical port allocation in AWS. AWS Hosted Direct Connect is not yet supported.
 
 For your AWS Dedicated Direct Connect, you can choose between connection speeds of 10 Gbps or 1 Gbps.
 
@@ -156,10 +156,10 @@ To connect to AWS Direct Connect:
 2. Select **Create an interconnect**.
 3. Under **Cloud Interconnect**, select **Create new**.
 4. Under **Google Integration**, select **Select integration**.
-5. Give your interconnect a name and optionally a description. Make sure the MTU value matches the MTU configured on the [GCP VLAN attachment ↗](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/dedicated/creating-vlan-attachments).
+5. Give your interconnect a name and optionally a description. Make sure the MTU value matches the MTU configured on the [GCP VLAN attachment ↗︎](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/dedicated/creating-vlan-attachments).
 6. Select **Continue**.
 7. From the **Interface speed** drop-down menu, select an interface speed. GCP will charge you based on the speed of the interconnect that you choose.
-8. Enter your [VLAN attachment pairing key ↗](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/partner/creating-vlan-attachments).
+8. Enter your [VLAN attachment pairing key ↗︎](https://cloud.google.com/network-connectivity/docs/interconnect/how-to/partner/creating-vlan-attachments).
 9. Select **Continue**.
 10. Review the details you provided, and select **Confirm order**.
 
@@ -175,7 +175,7 @@ After you have configured your Google Cloud Interconnect, you will need to add r
   - Add [static routes](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#configure-static-routes) to your Cloudflare WAN routing table with [legacy bidirectional tunnel health checks](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/#legacy-bidirectional-health-checks) to detect failures and steer traffic to alternative paths.
   - Note that routes advertised by BGP from GCP Cloud Router will be ignored.
 - To create routes in GCP routing table to direct traffic towards Cloudflare, you must use the GCP Cloud Router:
-  - Add [custom learned routes to Cloud Router ↗](https://cloud.google.com/network-connectivity/docs/router/how-to/configure-custom-learned-routes).
+  - Add [custom learned routes to Cloud Router ↗︎](https://cloud.google.com/network-connectivity/docs/router/how-to/configure-custom-learned-routes).
   - Use the BGP session. Reach out to your account team to request a list of one or more prefixes to advertise, and specify the interconnect ID you want to advertise over.
 
 Was this helpful?

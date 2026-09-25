@@ -33,16 +33,16 @@ Non-proxiable targets
 </summary>
 
 - Exact match:
-  - <code>dkim2.mcsv.net</code> (<a href="https://mailchimp.com/help/set-up-email-domain-authentication/">Mailchimp documentation ↗</a>)
-  - <code>dkim3.mcsv.net</code> (<a href="https://mailchimp.com/help/set-up-email-domain-authentication/">Mailchimp documentation ↗</a>)
-  - <code>zmverify.zoho.com</code> (<a href="https://www.zoho.com/mail/help/adminconsole/domain-verification.html">Zoho documentation ↗</a>)
-  - <code>dkim.infusionmail.com</code> (<a href="https://help.keap.com/help/dmarc">Keap documentation ↗</a>)
+  - <code>dkim2.mcsv.net</code> (<a href="https://mailchimp.com/help/set-up-email-domain-authentication/">Mailchimp documentation ↗︎</a>)
+  - <code>dkim3.mcsv.net</code> (<a href="https://mailchimp.com/help/set-up-email-domain-authentication/">Mailchimp documentation ↗︎</a>)
+  - <code>zmverify.zoho.com</code> (<a href="https://www.zoho.com/mail/help/adminconsole/domain-verification.html">Zoho documentation ↗︎</a>)
+  - <code>dkim.infusionmail.com</code> (<a href="https://help.keap.com/help/dmarc">Keap documentation ↗︎</a>)
 - Exact match or subdomain of:
-  - <code>dkim.amazonses.com</code> (<a href="https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#just-verify-domain-proc">Amazon SES documentation ↗</a>)
+  - <code>dkim.amazonses.com</code> (<a href="https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html#just-verify-domain-proc">Amazon SES documentation ↗︎</a>)
 - Subdomain of:
-  - <code>onmicrosoft.com</code> (<a href="https://learn.microsoft.com/defender-office-365/email-authentication-dkim-configure">Microsoft documentation ↗</a>)
-  - <code>dkim.intercom.io</code> (<a href="https://www.intercom.com/help/articles/9744849-connect-your-email-support-channel">Intercom documentation ↗</a>)
-  - <code>acm-validations.aws</code> (<a href="https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html">AWS certificate manager documentation ↗</a>)
+  - <code>onmicrosoft.com</code> (<a href="https://learn.microsoft.com/defender-office-365/email-authentication-dkim-configure">Microsoft documentation ↗︎</a>)
+  - <code>dkim.intercom.io</code> (<a href="https://www.intercom.com/help/articles/9744849-connect-your-email-support-channel">Intercom documentation ↗︎</a>)
+  - <code>acm-validations.aws</code> (<a href="https://docs.aws.amazon.com/acm/latest/userguide/dns-validation.html">AWS certificate manager documentation ↗︎</a>)
 
 </details>
 

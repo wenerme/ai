@@ -20,7 +20,7 @@ The reliable way to read these values is from a real browser. A site's exact hex
 
 Try it live
 
-You can see the finished extractor in action at the [Browser Run demo ↗](https://what-can-browser-run-do.examples.workers.dev/brand). Enter any URL to view the brand kit it pulls from the live page.
+You can see the finished extractor in action at the [Browser Run demo ↗︎](https://what-can-browser-run-do.examples.workers.dev/brand). Enter any URL to view the brand kit it pulls from the live page.
 
 In this tutorial, you will:
 
@@ -714,7 +714,7 @@ Because everything is read from real computed styles, the values reflect what th
 
 ## Production considerations
 
-- **Guard user-supplied URLs.** If the URL comes from untrusted input, block private and link-local addresses ( `localhost`, `10.0.0.0/8`, `192.168.0.0/16`, `169.254.0.0/16`) to avoid [server-side request forgery ↗](https://owasp.org/www-community/attacks/Server_Side_Request_Forgery), and only allow `http:` and `https:` schemes.
+- **Guard user-supplied URLs.** If the URL comes from untrusted input, block private and link-local addresses ( `localhost`, `10.0.0.0/8`, `192.168.0.0/16`, `169.254.0.0/16`) to avoid [server-side request forgery ↗︎](https://owasp.org/www-community/attacks/Server_Side_Request_Forgery), and only allow `http:` and `https:` schemes.
 - **Reuse browser sessions under load.** Instead of `puppeteer.launch()` on every request, reuse idle sessions with [`puppeteer.sessions()`](https://developers.cloudflare.com/browser-run/puppeteer/) and `puppeteer.connect()`, and call `disconnect()` (not `close()`) to keep the session warm for the next request. This avoids cold-start time and helps you stay within [concurrency limits](https://developers.cloudflare.com/browser-run/limits/).
 - **Cache aggressively.** Extraction is the expensive step. Keying the KV cache by normalized URL with the `cacheKeyFor` function makes repeat lookups instant and keeps you within Browser Run limits.
 
@@ -727,7 +727,7 @@ Note
 - [Cloudflare's Puppeteer fork](https://developers.cloudflare.com/browser-run/puppeteer/)
 - [Browser Run limits](https://developers.cloudflare.com/browser-run/limits/)
 - [Workers KV](https://developers.cloudflare.com/kv/)
-- [Other Puppeteer examples ↗](https://github.com/cloudflare/puppeteer/tree/main/examples)
+- [Other Puppeteer examples ↗︎](https://github.com/cloudflare/puppeteer/tree/main/examples)
 
 Was this helpful?
 

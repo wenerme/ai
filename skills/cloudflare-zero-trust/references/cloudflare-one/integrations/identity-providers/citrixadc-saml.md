@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/citrixadc-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare One can integrate with Citrix ADC (formerly Citrix NetScaler ADC) as a SAML IdP. Documentation from Citrix shows you [how to configure Citrix ADC as a SAML IdP ↗](https://docs.citrix.com/en-us/citrix-adc/12-1/aaa-tm/saml-authentication/citrix-adc-saml-idp.html). These steps are specific to Cloudflare One.
+Cloudflare One can integrate with Citrix ADC (formerly Citrix NetScaler ADC) as a SAML IdP. Documentation from Citrix shows you [how to configure Citrix ADC as a SAML IdP ↗︎](https://docs.citrix.com/en-us/citrix-adc/12-1/aaa-tm/saml-authentication/citrix-adc-saml-idp.html). These steps are specific to Cloudflare One.
 
 ## Set up Citrix ADC (SAML)
 
@@ -28,7 +28,7 @@ To set up Citrix ADC (SAML) as your identity provider:
    1. Go to **Traffic Management** > **SSL**.
    2. Select **Create and Install a Server Test Certificate**.
 2. Select **Configuration** and enter a **Certificate File Name**, **Fully Qualified Domain Name**, and a select a **Country**.![Citrix AD Create and Install Test Certificate interface with file name, domain name, and country](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1158,height=567,format=webp/_astro/citrixadc-saml-2.D4502Bei.png)
-3. Create a publicly accessible authentication vServer and configure the user identity source (like, local users, LDAP) by following this [Citrix documentation ↗](https://docs.citrix.com/en-us/citrix-adc/12-1/aaa-tm/authentication-virtual-server/ns-aaa-setup-auth-vserver-tsk.html).
+3. Create a publicly accessible authentication vServer and configure the user identity source (like, local users, LDAP) by following this [Citrix documentation ↗︎](https://docs.citrix.com/en-us/citrix-adc/12-1/aaa-tm/authentication-virtual-server/ns-aaa-setup-auth-vserver-tsk.html).
 
    For the rest of this example, the user refers to the IdP address `idp.yourdomain.com`.
 
@@ -66,7 +66,7 @@ To set up Citrix ADC (SAML) as your identity provider:
    add authentication samlIdPPolicy samlPol_CloudflareAccess -rule true -action samlProf_CloudflareAccess
    bind authentication vserver nsidp -policy samlPol_CloudflareAccess
    ```
-3. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+3. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 4. Under **Your identity providers**, select **Add new identity provider**.
 5. Configure the fields as follows:
 

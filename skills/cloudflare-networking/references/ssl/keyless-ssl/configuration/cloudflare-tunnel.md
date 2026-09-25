@@ -89,7 +89,7 @@ If you plan to run Keyless SSL in a [high availability setup](https://developers
 
 ### Install
 
-These steps are also at the [Cloudflare package repository ↗](https://pkg.cloudflare.com/).
+These steps are also at the [Cloudflare package repository ↗︎](https://pkg.cloudflare.com/).
 
 #### Debian/Ubuntu packages
 
@@ -195,7 +195,7 @@ The Origin CA API key (Service Key) used for Keyless SSL enrollment is deprecate
 
 **To migrate**, upgrade to gokeyless 1.18.0 or later, create an API Token with **Zone > SSL and Certificates > Edit**, and set the `api_token` value in `/etc/keyless/gokeyless.yaml` (or the `KEYLESS_API_TOKEN` environment variable). You can then remove the `origin_ca_api_key` value.
 
-Refer to the [gokeyless 1.18.0 release notes ↗](https://github.com/cloudflare/gokeyless/releases/tag/v1.18.0) and the [Origin CA keys deprecation notice](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/) for details.
+Refer to the [gokeyless 1.18.0 release notes ↗︎](https://github.com/cloudflare/gokeyless/releases/tag/v1.18.0) and the [Origin CA keys deprecation notice](https://developers.cloudflare.com/fundamentals/api/get-started/ca-keys/) for details.
 
 ### Populate keys
 

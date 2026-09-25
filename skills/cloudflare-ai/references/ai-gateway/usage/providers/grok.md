@@ -22,7 +22,7 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok
 
 ## URL structure
 
-When making requests to [Grok ↗](https://docs.x.ai/docs#getting-started), replace `https://api.x.ai/v1` in the URL you are currently using with `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok`.
+When making requests to [Grok ↗︎](https://docs.x.ai/docs#getting-started), replace `https://api.x.ai/v1` in the URL you are currently using with `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/grok`.
 
 ## Prerequisites
 

@@ -18,7 +18,7 @@ This page lists open source libraries and tools you can use to connect to Privac
 
 ## tokio-quiche
 
-[tokio-quiche ↗](https://github.com/cloudflare/quiche/tree/master/tokio-quiche) is Cloudflare's open source async QUIC and HTTP/3 library for Rust. It combines the [quiche ↗](https://github.com/cloudflare/quiche) QUIC implementation with the [Tokio ↗](https://tokio.rs/) async runtime.
+[tokio-quiche ↗︎](https://github.com/cloudflare/quiche/tree/master/tokio-quiche) is Cloudflare's open source async QUIC and HTTP/3 library for Rust. It combines the [quiche ↗︎](https://github.com/cloudflare/quiche) QUIC implementation with the [Tokio ↗︎](https://tokio.rs/) async runtime.
 
 tokio-quiche powers Privacy Proxy infrastructure, including Proxy B for iCloud Private Relay and Cloudflare's Oxy-based proxies. It handles millions of HTTP/3 requests per second in production.
 
@@ -40,29 +40,29 @@ tokio-quiche = "0.1"
 
 ### Resources
 
-- [GitHub repository ↗](https://github.com/cloudflare/quiche/tree/master/tokio-quiche)
-- [crates.io ↗](https://crates.io/crates/tokio-quiche)
-- [Blog post: Async QUIC and HTTP/3 made easy ↗](https://blog.cloudflare.com/async-quic-and-http-3-made-easy-tokio-quiche-is-now-open-source/)
+- [GitHub repository ↗︎](https://github.com/cloudflare/quiche/tree/master/tokio-quiche)
+- [crates.io ↗︎](https://crates.io/crates/tokio-quiche)
+- [Blog post: Async QUIC and HTTP/3 made easy ↗︎](https://blog.cloudflare.com/async-quic-and-http-3-made-easy-tokio-quiche-is-now-open-source/)
 
 ---
 
 ## quiche
 
-[quiche ↗](https://github.com/cloudflare/quiche) is Cloudflare's low-level QUIC and HTTP/3 implementation in Rust. It provides a sans-io design that can integrate into any application architecture.
+[quiche ↗︎](https://github.com/cloudflare/quiche) is Cloudflare's low-level QUIC and HTTP/3 implementation in Rust. It provides a sans-io design that can integrate into any application architecture.
 
 quiche is the foundation that tokio-quiche builds upon. Use quiche directly if you need fine-grained control over I/O or are integrating with a non-Tokio runtime.
 
 ### Resources
 
-- [GitHub repository ↗](https://github.com/cloudflare/quiche)
-- [Documentation ↗](https://docs.quic.tech/quiche/)
-- [crates.io ↗](https://crates.io/crates/quiche)
+- [GitHub repository ↗︎](https://github.com/cloudflare/quiche)
+- [Documentation ↗︎](https://docs.quic.tech/quiche/)
+- [crates.io ↗︎](https://crates.io/crates/quiche)
 
 ---
 
 ## Chaussette
 
-[Chaussette ↗](https://github.com/cloudflare/chaussette) is a SOCKS5-to-CONNECT proxy designed for Privacy Proxy. It accepts local SOCKS5 connections and forwards them as HTTP CONNECT requests to Privacy Proxy.
+[Chaussette ↗︎](https://github.com/cloudflare/chaussette) is a SOCKS5-to-CONNECT proxy designed for Privacy Proxy. It accepts local SOCKS5 connections and forwards them as HTTP CONNECT requests to Privacy Proxy.
 
 Chaussette is useful for integrating applications that support SOCKS5 but not HTTP CONNECT proxying.
 
@@ -86,7 +86,7 @@ Then configure your application to use `socks5://127.0.0.1:1987` as its proxy.
 
 ### Resources
 
-- [GitHub repository ↗](https://github.com/cloudflare/chaussette)
+- [GitHub repository ↗︎](https://github.com/cloudflare/chaussette)
 
 ---
 
@@ -101,13 +101,13 @@ curl -v \
   https://example.com
 ```
 
-curl can also be [built with quiche ↗](https://github.com/curl/curl/blob/master/docs/HTTP3.md#quiche-version) for HTTP/3 support.
+curl can also be [built with quiche ↗︎](https://github.com/curl/curl/blob/master/docs/HTTP3.md#quiche-version) for HTTP/3 support.
 
 ---
 
 ## privacypass-ts
 
-[privacypass-ts ↗](https://github.com/cloudflare/privacypass-ts) is Cloudflare's TypeScript implementation of the Privacy Pass protocol. Use this library to issue and redeem Privacy Pass tokens for authenticating with Privacy Proxy.
+[privacypass-ts ↗︎](https://github.com/cloudflare/privacypass-ts) is Cloudflare's TypeScript implementation of the Privacy Pass protocol. Use this library to issue and redeem Privacy Pass tokens for authenticating with Privacy Proxy.
 
 ### Features
 
@@ -123,8 +123,8 @@ npm install @cloudflare/privacypass-ts
 
 ### Resources
 
-- [GitHub repository ↗](https://github.com/cloudflare/privacypass-ts)
-- [npm package ↗](https://www.npmjs.com/package/@cloudflare/privacypass-ts)
+- [GitHub repository ↗︎](https://github.com/cloudflare/privacypass-ts)
+- [npm package ↗︎](https://www.npmjs.com/package/@cloudflare/privacypass-ts)
 
 Was this helpful?
 

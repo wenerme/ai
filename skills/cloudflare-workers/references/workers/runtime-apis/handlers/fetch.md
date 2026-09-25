@@ -28,7 +28,7 @@ export default {
 
 Note
 
-The Workers runtime does not support `XMLHttpRequest` (XHR). Learn the difference between `XMLHttpRequest` and `fetch()` in the [MDN ↗](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) documentation.
+The Workers runtime does not support `XMLHttpRequest` (XHR). Learn the difference between `XMLHttpRequest` and `fetch()` in the [MDN ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest) documentation.
 
 ### Parameters
 

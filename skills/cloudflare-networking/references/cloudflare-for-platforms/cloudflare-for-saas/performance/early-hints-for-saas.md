@@ -27,7 +27,7 @@ Before you can employ Early Hints for SaaS, you need to create a custom hostname
 ## Enable Early Hints per custom hostname via the API
 
 1. [Locate your zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/), available in the Cloudflare dashboard.
-2. Locate your Authentication Key on the [**API Tokens** ↗](https://dash.cloudflare.com/?to=/:account/profile/api-tokens) page, under **Global API Key**.
+2. Locate your Authentication Key on the [**API Tokens** ↗︎](https://dash.cloudflare.com/?to=/:account/profile/api-tokens) page, under **Global API Key**.
 3. If you are [creating a new custom hostname](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/create/), make an API call such as the example below, specifying `"early_hints": "on"`:
 
 <details>

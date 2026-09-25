@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/getting-started/authentication/graphql-client-headers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-1. Launch [GraphiQL ↗](https://www.gatsbyjs.com/docs/how-to/querying-data/running-queries-with-graphiql/).
+1. Launch [GraphiQL ↗︎](https://www.gatsbyjs.com/docs/how-to/querying-data/running-queries-with-graphiql/).
 2. Select **Edit HTTP Headers**. ![Clicking Edit HTTP Headers](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1018,height=721,format=webp/_astro/GraphiQL-edit-http-headers.Cc0SaBrH.png) The **Edit HTTP Headers** window appears. ![Editing HTTP Headers Window](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=921,height=212,format=webp/_astro/GraphiQL-edit-http-headers-window.D6rNIUCL.png)
 3. Select **Add Header** to configure authentication. You can use Cloudflare Analytics API token authentication (recommended) or Cloudflare API key authentication.
    - **Token authentication**:

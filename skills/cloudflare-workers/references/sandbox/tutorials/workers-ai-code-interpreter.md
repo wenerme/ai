@@ -24,8 +24,8 @@ A Cloudflare Worker that accepts natural language prompts, uses GPT-OSS to decid
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -35,13 +35,13 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
 You'll also need:
 
-- [Docker ↗](https://www.docker.com/) running locally
+- [Docker ↗︎](https://www.docker.com/) running locally
 
 ## 1. Create your project
 
@@ -118,7 +118,7 @@ The template includes the proper Wrangler configuration:
   "name": "sandbox-code-interpreter-example",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-09-22",
+  "compatibility_date": "2026-09-25",
   "ai": {
     "binding": "AI"
   },
@@ -146,7 +146,7 @@ The template includes the proper Wrangler configuration:
 name = "sandbox-code-interpreter-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [ai]
 binding = "AI"
@@ -260,8 +260,8 @@ You deployed a sophisticated code interpreter that:
 ## Related resources
 
 - [Workers AI](https://developers.cloudflare.com/workers-ai/) - Learn about Cloudflare's AI platform
-- [workers-ai-provider package ↗](https://github.com/cloudflare/ai/tree/main/packages/workers-ai-provider) - Official Workers AI integration
-- [Vercel AI SDK ↗](https://sdk.vercel.ai/) - Universal toolkit for AI applications
+- [workers-ai-provider package ↗︎](https://github.com/cloudflare/ai/tree/main/packages/workers-ai-provider) - Official Workers AI integration
+- [Vercel AI SDK ↗︎](https://sdk.vercel.ai/) - Universal toolkit for AI applications
 - [GPT-OSS model documentation](https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/) - Model details and capabilities
 
 Was this helpful?

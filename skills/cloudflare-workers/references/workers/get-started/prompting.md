@@ -18,9 +18,9 @@ You can create Workers applications from simple prompts in your favorite agent o
 
 ## Teach your agent about Workers
 
-Connect the [`cloudflare-docs` ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search) MCP (Model Context Protocol) server to teach your agent about Workers. Add the server URL `https://docs.mcp.cloudflare.com/mcp` to your agent configuration ([learn more](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/)).
+Connect the [`cloudflare-docs` ↗︎](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search) MCP (Model Context Protocol) server to teach your agent about Workers. Add the server URL `https://docs.mcp.cloudflare.com/mcp` to your agent configuration ([learn more](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/)).
 
-You can also connect the [`cloudflare-observability` ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability) MCP server (`https://observability.mcp.cloudflare.com/mcp`). This helps your agent check logs, look for exceptions, and automatically fix issues.
+You can also connect the [`cloudflare-observability` ↗︎](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability) MCP server (`https://observability.mcp.cloudflare.com/mcp`). This helps your agent check logs, look for exceptions, and automatically fix issues.
 
 ## Example prompts
 
@@ -1434,11 +1434,11 @@ You can use the prompt in several ways:
 - Within the user context window, with your own user prompt inserted between the `<user_prompt>` tags (**easiest**)
 - As the `system` prompt for models that support system prompts
 - Adding it to the prompt library or file context in your preferred IDE:
-  - Cursor: add the prompt to [your Project Rules ↗](https://docs.cursor.com/context/rules-for-ai)
-  - Zed: use [the `/file` command ↗](https://zed.dev/docs/assistant/assistant-panel) to add the prompt to the Assistant context
-  - Windsurf: use [the `@-mention` command ↗](https://docs.codeium.com/chat/overview) to include a file containing the prompt to your Chat
+  - Cursor: add the prompt to [your Project Rules ↗︎](https://docs.cursor.com/context/rules-for-ai)
+  - Zed: use [the `/file` command ↗︎](https://zed.dev/docs/assistant/assistant-panel) to add the prompt to the Assistant context
+  - Windsurf: use [the `@-mention` command ↗︎](https://docs.codeium.com/chat/overview) to include a file containing the prompt to your Chat
   - Claude Code: add the prompt to your `CLAUDE.md` configuration after running `/init` to include best practices to a Workers project
-  - GitHub Copilot: create the [`.github/copilot-instructions.md` ↗](https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot) file at the root of your project and add the prompt
+  - GitHub Copilot: create the [`.github/copilot-instructions.md` ↗︎](https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot) file at the root of your project and add the prompt
 
 Note
 
@@ -1448,11 +1448,11 @@ Depending on the model and user prompt, it may generate invalid code, configurat
 
 ## Use docs in your editor
 
-AI-enabled editors, including Cursor and Windsurf, can index documentation. Cursor includes the Cloudflare Developer Docs by default: you can use the [`@Docs` ↗](https://cursor.com/docs/context/mentions#docs) command.
+AI-enabled editors, including Cursor and Windsurf, can index documentation. Cursor includes the Cloudflare Developer Docs by default: you can use the [`@Docs` ↗︎](https://cursor.com/docs/context/mentions#docs) command.
 
-In other editors, such as Zed or Windsurf, you can use `llms-full.txt` files to provide comprehensive documentation context for indexing. For Workers-specific documentation indexing, use [`https://developers.cloudflare.com/workers/llms-full.txt` ↗](https://developers.cloudflare.com/workers/llms-full.txt). For the complete Cloudflare documentation archive, use the root level [`https://developers.cloudflare.com/llms-full.txt` ↗](https://developers.cloudflare.com/llms-full.txt) instead.
+In other editors, such as Zed or Windsurf, you can use `llms-full.txt` files to provide comprehensive documentation context for indexing. For Workers-specific documentation indexing, use [`https://developers.cloudflare.com/workers/llms-full.txt` ↗︎](https://developers.cloudflare.com/workers/llms-full.txt). For the complete Cloudflare documentation archive, use the root level [`https://developers.cloudflare.com/llms-full.txt` ↗︎](https://developers.cloudflare.com/llms-full.txt) instead.
 
-You can also link an agent to `llms.txt` files while prompting to provide similar context without the need for offline indexing. For workers-specific documentation, use [`https://developers.cloudflare.com/workers/llms.txt` ↗](https://developers.cloudflare.com/workers/llms.txt). For context of the entire Cloudflare documentation, use the root level [`https://developers.cloudflare.com/llms.txt` ↗](https://developers.cloudflare.com/llms.txt).
+You can also link an agent to `llms.txt` files while prompting to provide similar context without the need for offline indexing. For workers-specific documentation, use [`https://developers.cloudflare.com/workers/llms.txt` ↗︎](https://developers.cloudflare.com/workers/llms.txt). For context of the entire Cloudflare documentation, use the root level [`https://developers.cloudflare.com/llms.txt` ↗︎](https://developers.cloudflare.com/llms.txt).
 
 The *Copy Page* button is also available on any individual page to paste that page's content directly.
 
@@ -1462,11 +1462,11 @@ You can combine these with the Workers system prompt on this page to improve you
 
 To get the most out of AI models and tools, review the following guides on prompt engineering and structure:
 
-- OpenAI's [prompt engineering ↗](https://platform.openai.com/docs/guides/prompt-engineering) guide and [best practices ↗](https://platform.openai.com/docs/guides/reasoning-best-practices) for using reasoning models.
-- The [prompt engineering ↗](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) guide from Anthropic.
-- Google's [quick start guide ↗](https://services.google.com/fh/files/misc/gemini-for-google-workspace-prompting-guide-101.pdf) for writing effective prompts.
-- Meta's [prompting documentation ↗](https://www.llama.com/docs/how-to-guides/prompting/) for their Llama model family.
-- GitHub's guide for [prompt engineering ↗](https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/prompt-engineering-for-copilot-chat) when using Copilot Chat.
+- OpenAI's [prompt engineering ↗︎](https://platform.openai.com/docs/guides/prompt-engineering) guide and [best practices ↗︎](https://platform.openai.com/docs/guides/reasoning-best-practices) for using reasoning models.
+- The [prompt engineering ↗︎](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview) guide from Anthropic.
+- Google's [quick start guide ↗︎](https://services.google.com/fh/files/misc/gemini-for-google-workspace-prompting-guide-101.pdf) for writing effective prompts.
+- Meta's [prompting documentation ↗︎](https://www.llama.com/docs/how-to-guides/prompting/) for their Llama model family.
+- GitHub's guide for [prompt engineering ↗︎](https://docs.github.com/en/copilot/using-github-copilot/copilot-chat/prompt-engineering-for-copilot-chat) when using Copilot Chat.
 
 Was this helpful?
 

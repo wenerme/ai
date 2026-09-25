@@ -64,7 +64,7 @@ Refunds for stablecoin payments are returned as USDC to the wallet you paid from
 
 ## View your payment history
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Invoices**. Stablecoin payments are listed with payment method `crypto`.
 

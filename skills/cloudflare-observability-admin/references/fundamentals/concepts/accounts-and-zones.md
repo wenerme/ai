@@ -45,7 +45,7 @@ end
 
 Each user has a profile that contains several settings, such as [Communication preferences](https://developers.cloudflare.com/fundamentals/user-profiles/customize-account/#notifications) and [Language preferences](https://developers.cloudflare.com/fundamentals/user-profiles/customize-account/#language).
 
-To access your profile, select the user icon and then **My Profile** from any page within the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+To access your profile, select the user icon and then **My Profile** from any page within the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 
 ## Accounts
 
@@ -53,9 +53,9 @@ An account refers to an organization account, which contains one or more users a
 
 Several account-level products - such as [Workers](https://developers.cloudflare.com/workers/), [Pages](https://developers.cloudflare.com/pages/), [Security Center](https://developers.cloudflare.com/security-center/), and [Bulk redirects](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/) - can affect some or all zones contained within that account.
 
-After you [log in ↗](https://dash.cloudflare.com) and select an account - but before you select a zone - the sidebar will list account-level products.
+After you [log in ↗︎](https://dash.cloudflare.com) and select an account - but before you select a zone - the sidebar will list account-level products.
 
-When you log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com), you can access all accounts where your user is a member. To access account settings and account-level products from within a zone, use the **Accounts** option from the navigation sidebar.
+When you log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com), you can access all accounts where your user is a member. To access account settings and account-level products from within a zone, use the **Accounts** option from the navigation sidebar.
 
 ## Zones
 
@@ -63,13 +63,13 @@ Domains (or [subdomains](https://developers.cloudflare.com/dns/zone-setups/subdo
 
 Zone-level services - such as [Load Balancers](https://developers.cloudflare.com/load-balancing/) and [Cache rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) - only affect your website, application, or API for that zone and not other zones, even if they are contained within the same account.
 
-When you log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and choose an account, you can view a list of all zones within that account.
+When you log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and choose an account, you can view a list of all zones within that account.
 
 Once you are within a zone, items within the sidebar will be zone-related products. If you need to change to another zone, use the forward arrow next to the zone name or by go back to the homepage of your account.
 
 ## Footnotes
 
-1. Similar to [DNS zones ↗](https://www.cloudflare.com/learning/dns/glossary/dns-zone/), but with additional capabilities. [↩](#user-content-fnref-1)
+1. Similar to [DNS zones ↗︎](https://www.cloudflare.com/learning/dns/glossary/dns-zone/), but with additional capabilities. [↩](#user-content-fnref-1)
 
 Was this helpful?
 

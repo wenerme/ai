@@ -27,7 +27,7 @@ Posture findings include misconfigurations, unauthorized user activity, and othe
 
 To view details about the posture findings that CASB found:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
 2. Choose **SaaS** or **Cloud**.
 3. To view details about a finding, select the finding's name
 
@@ -50,7 +50,7 @@ Cloudflare CASB labels each finding with one of the following severity levels:
 
 You can change the severity level for a finding at any time in case the default assignment does not suit your environment:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
 2. Locate the finding you want to modify and select **Manage**.
 3. In the severity level drop-down menu, choose your desired setting (*Critical*, *High*, *Medium*, or *Low*).
 
@@ -62,7 +62,7 @@ Content findings include instances of potential data exposure as identified by [
 
 To view details about the content findings that CASB found:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Content Findings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Content Findings**.
 2. Choose **SaaS** or **Cloud**.
 3. To view details about a finding, select the finding's name.
 
@@ -74,13 +74,13 @@ AWS users can configure a [compute account](https://developers.cloudflare.com/cl
 
 File findings for some integrations (such as [Microsoft 365](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/microsoft-365/#file-sharing) and [Box](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/box/#file-sharing)) may link to an inaccessible file. To access the actual shared file:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
 2. Choose **SaaS** or **Cloud**.
 3. Locate the individual finding, then select **Manage**.
 4. In **Active Instances**, select the file name.
 5. In **Shared Links**, select the linked file instance.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Content Findings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Content Findings**.
 2. Choose **SaaS** or **Cloud**.
 3. Select the file name of the detected asset.
 4. In **Sharing details**, select the linked file instance.
@@ -94,7 +94,7 @@ After reviewing your findings, you may decide that certain posture findings are 
 
 ### Ignore a finding
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
 2. Locate the active finding you want to hide.
 3. In the three-dot menu, select **Move to ignore**.
 
@@ -102,7 +102,7 @@ The finding's status will change from **Active** to **Ignored**. CASB will conti
 
 ### Hide an instance of a finding
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
 2. Choose the active finding you want to hide, then select **Manage**.
 3. In **Active**, find the instance you want to hide.
 4. In the three-dot menu, select **Move to hidden**.
@@ -115,7 +115,7 @@ After you configure one or more [CASB webhooks](https://developers.cloudflare.co
 
 CASB webhooks currently support posture finding instances only.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Posture Findings**.
 2. Choose **SaaS** or **Cloud**.
 3. Choose the finding you want to review, then select **Manage**.
 4. In **Active Instances**, select an instance.
@@ -135,7 +135,7 @@ In addition to detecting and surfacing misconfigurations or issues with SaaS and
 
 Before you can remediate findings, [add a new integration](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) and choose *Read-Write mode* during setup. Alternatively, you can update an existing integration:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Cloud & SaaS findings** > **Integrations**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Cloud & SaaS findings** > **Integrations**.
 2. Choose your integration, then select **Configure**.
 3. In **Integration permissions**, choose *Read-Write mode*.
 4. Select **Update integration**. CASB will redirect you to your Microsoft 365 configuration.
@@ -147,7 +147,7 @@ CASB can now remediate supported findings directly.
 
 To remediate a supported finding:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Cloud & SaaS findings** > **Posture Findings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Cloud & SaaS findings** > **Posture Findings**.
 2. Choose a supported finding type, then select **Manage**.
 3. In **Active Instances**, select an instance.
 4. In **Remediation details**, choose a remediation action to take.

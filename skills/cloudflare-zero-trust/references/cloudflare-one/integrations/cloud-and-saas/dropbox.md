@@ -38,7 +38,7 @@ For the Dropbox integration to function, Cloudflare CASB requires the following 
 - `groups.read`
 - `sessions.list`
 
-These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [Dropbox API Permissions documentation ↗](https://developers.dropbox.com/oauth-guide#dropbox-api-permissions).
+These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [Dropbox API Permissions documentation ↗︎](https://developers.dropbox.com/oauth-guide#dropbox-api-permissions).
 
 ## Security findings
 

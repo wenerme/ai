@@ -37,7 +37,7 @@ However, customers can easily block all unwanted traffic to these ports by using
 
 You can find all our public compliance resources in the following pages:
 
-- [Certifications and compliance resources ↗](https://www.cloudflare.com/trust-hub/compliance-resources/)
+- [Certifications and compliance resources ↗︎](https://www.cloudflare.com/trust-hub/compliance-resources/)
 - [Compliance documentation](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/compliance-docs/)
 
 You can access Compliance documents in the Cloudflare dashboard by selecting your account where you are a Super Administrator and then navigating to **Support** > **Compliance Documents**.

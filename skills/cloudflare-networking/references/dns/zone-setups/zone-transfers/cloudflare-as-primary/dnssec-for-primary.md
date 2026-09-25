@@ -24,7 +24,7 @@ Note that:
 
 - This process requires that your other DNS provider(s) also support multi-signer DNSSEC.
 - Although you can complete a few steps via the dashboard, currently the whole process can only be completed using the API.
-- Enabling **DNSSEC** and **Multi-signer DNSSEC** in [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) only replaces the first step below. You still have to follow the rest of this tutorial to complete the setup.
+- Enabling **DNSSEC** and **Multi-signer DNSSEC** in [**DNS Settings** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) only replaces the first step below. You still have to follow the rest of this tutorial to complete the setup.
 
 ## Steps
 
@@ -94,7 +94,7 @@ Command line query example:
 $ dig <ZONE_NAME> dnskey @<CLOUDFLARE_NAMESERVER> +noall +answer | grep 256
 ```
 
-4. Add DS records to your registrar, one for each provider. You can see your Cloudflare DS record on the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, under **DS Record**.
+4. Add DS records to your registrar, one for each provider. You can see your Cloudflare DS record on the [**DNS Settings** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, under **DS Record**.
 
 The nameserver settings at your registrar should include the nameservers of all providers you will be using for your multi-signer DNSSEC setup.
 

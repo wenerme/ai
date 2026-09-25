@@ -38,7 +38,7 @@ You have three options:
 
 - **Run the Worker on the apex domain** ( `yourdomain.com`) so preview URLs stay at the first level ( `*.yourdomain.com`), which Universal SSL covers automatically. This is the simplest option.
 - **Use [Advanced Certificate Manager](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/)** ($10/month) to provision a certificate for `*.sandbox.yourdomain.com` through the Cloudflare dashboard.
-- **Upload a custom certificate** from a provider like [Let's Encrypt ↗](https://letsencrypt.org/) (free). Generate a wildcard certificate for `*.sandbox.yourdomain.com` using the DNS-01 challenge, then upload it via the Cloudflare dashboard under **SSL/TLS > Edge Certificates > [Custom Certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/)**. You will need to renew it before expiry.
+- **Upload a custom certificate** from a provider like [Let's Encrypt ↗︎](https://letsencrypt.org/) (free). Generate a wildcard certificate for `*.sandbox.yourdomain.com` using the DNS-01 challenge, then upload it via the Cloudflare dashboard under **SSL/TLS > Edge Certificates > [Custom Certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/)**. You will need to renew it before expiry.
 
 ## Prerequisites
 
@@ -70,7 +70,7 @@ Add a wildcard route to your Wrangler configuration:
 	"name": "my-sandbox-app",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"routes": [
 		{
 			"pattern": "*.yourdomain.com/*",
@@ -85,7 +85,7 @@ Add a wildcard route to your Wrangler configuration:
 name = "my-sandbox-app"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[routes]]
 pattern = "*.yourdomain.com/*"

@@ -22,7 +22,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -45,7 +45,7 @@ Devices must be actively connected to the Internet for remote captures to run.
 
 To capture data from a remote device:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
 2. Select up to 10 devices that you want to run a capture on. Devices must be [registered](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) in your Zero Trust organization.
 3. Configure the types of captures to run.
    - **Packet captures (PCAP)**: Performs packet captures for traffic outside of the WARP tunnel (default network interface) and traffic inside of the WARP tunnel ([virtual interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic)).
@@ -67,7 +67,7 @@ To view a list of captures, go to **Insights** > **Digital experience** > **Diag
 
 ## Download remote captures
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
 2. Find a successful capture.
 3. Select the three-dot menu and select **Download**.
 
@@ -93,7 +93,7 @@ The diagnostics analyzer highlights what Cloudflare determines to be the most im
 
 To access the diagnostics analyzer:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
 2. Locate an existing `warp-diag` log from the list or select **Run diagnostics** to generate a new `warp-diag` log.
 3. Select the three dots for the `warp-diag` log that you want to analyze, then select **View Device Diag**.
 

@@ -80,7 +80,7 @@ Cloudflare provides three primary ways to track your consumption and maintain fi
 
 ### Configure a usage alert
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select **Manage account**.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select **Manage account**.
 2. Go to **Notifications** > **Add**.
 3. Select **Usage-based Billing**.
 4. Define your threshold and the notification destination (email, PagerDuty, or webhooks).
@@ -93,7 +93,7 @@ To stop using Log Explorer and end associated charges, you must complete both of
 
 Disabling datasets stops additional ingestion charges immediately.
 
-1. Go to the [Manage datasets ↗](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources) page at the account level.
+1. Go to the [Manage datasets ↗︎](https://dash.cloudflare.com/?to=/:account/log-explorer/manage-sources) page at the account level.
 2. Use the toggle to turn off each dataset you no longer need.
 3. Select **Stop ingesting logs** to confirm.
 
@@ -101,7 +101,7 @@ Disabling datasets stops additional ingestion charges immediately.
 
 This prevents the subscription from renewing at the next billing cycle.
 
-1. Go to the [Billing ↗](https://dash.cloudflare.com/?to=/:account/billing) page.
+1. Go to the [Billing ↗︎](https://dash.cloudflare.com/?to=/:account/billing) page.
 2. In the **Subscriptions** tab, find the **Log Explorer** subscription and select **Cancel**.
 
 Was this helpful?

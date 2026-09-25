@@ -272,7 +272,7 @@ To learn more and get started, refer to the [DNS Analytics documentation](https:
 
 **Internal DNS (beta) now manageable in the Cloudflare dashboard**
 
-Participating beta testers can now fully configure [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/) directly in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/internal-dns).
+Participating beta testers can now fully configure [Internal DNS](https://developers.cloudflare.com/dns/internal-dns/) directly in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/internal-dns).
 
 #### Internal DNS enables customers to:
 

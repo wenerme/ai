@@ -46,7 +46,7 @@ To retrieve those values:
 
 ## 2. Add Workspace ONE as a service provider
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Service providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Service providers**.
 2. Select **Add new**.
 3. Select **Workspace ONE**.
 4. Enter any name for the provider. This name will be used throughout the dashboard to reference this connection.
@@ -58,7 +58,7 @@ To retrieve those values:
 
 ## 3. Configure the posture check
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks** > **Service provider checks**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks** > **Service provider checks**.
 2. Select **Add a check**.
 3. Select the Workspace ONE provider.
 4. Enter any name for the posture check.
@@ -70,7 +70,7 @@ You can now use this posture check in a [device posture policy](https://develope
 
 ## Device posture attributes
 
-Workspace ONE posture checks work with the [Compliance flags ↗](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/UEM_Managing_Devices/GUID-CompliancePolicies.html) in Workspace ONE. All compliance tests must pass for the device to be considered compliant.
+Workspace ONE posture checks work with the [Compliance flags ↗︎](https://docs.vmware.com/en/VMware-Workspace-ONE-UEM/services/UEM_Managing_Devices/GUID-CompliancePolicies.html) in Workspace ONE. All compliance tests must pass for the device to be considered compliant.
 
 Was this helpful?
 

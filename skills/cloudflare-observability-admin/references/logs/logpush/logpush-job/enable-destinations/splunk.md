@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/splunk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [HTTP Event Collector (HEC) ↗](https://dev.splunk.com/enterprise/docs/devtools/httpeventcollector/) is a reliable method to receive data from Splunk Enterprise or Splunk Cloud Platform. Cloudflare Logpush supports pushing logs directly to Splunk HEC via the Cloudflare dashboard or API.
+The [HTTP Event Collector (HEC) ↗︎](https://dev.splunk.com/enterprise/docs/devtools/httpeventcollector/) is a reliable method to receive data from Splunk Enterprise or Splunk Cloud Platform. Cloudflare Logpush supports pushing logs directly to Splunk HEC via the Cloudflare dashboard or API.
 
 ## Manage via the Cloudflare dashboard
 
@@ -29,9 +29,9 @@ The [HTTP Event Collector (HEC) ↗](https://dev.splunk.com/enterprise/docs/devt
 4. In **Select a destination**, choose **Splunk**.
 5. Enter or select the following destination information:
    - **Splunk HEC URL**
-   - **Channel ID** - This is a random GUID that you can generate using [guidgenerator.com ↗](https://guidgenerator.com/).
+   - **Channel ID** - This is a random GUID that you can generate using [guidgenerator.com ↗︎](https://guidgenerator.com/).
    - **Auth Token** - Event Collector token prefixed with the word `Splunk`. For example: `Splunk 1234EXAMPLEKEY`.
-   - **Source Type** - For example, `cloudflare:json`. If you are using the [Cloudflare App for Splunk ↗](https://splunkbase.splunk.com/app/4501), refer to the appropriate source type for the corresponding datasets under the **Details** section. For instance, for Zero Trust Access requests logs, the source type is `cloudflare:access`.
+   - **Source Type** - For example, `cloudflare:json`. If you are using the [Cloudflare App for Splunk ↗︎](https://splunkbase.splunk.com/app/4501), refer to the appropriate source type for the corresponding datasets under the **Details** section. For instance, for Zero Trust Access requests logs, the source type is `cloudflare:access`.
    - **Use insecure skip verify option** (not recommended).
 
 When you are done entering the destination details, select **Continue**.
@@ -71,7 +71,7 @@ To create a job, make a `POST` request to the Logpush jobs endpoint with the fol
     - Ensure you have enabled HEC in Splunk. Refer to [Splunk Analytics Integrations](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/) for information on how to set up HEC in Splunk.
     - You may notice an API request failed with a 504 error, when adding an incorrect URL. Splunk Cloud endpoint URL usually contains `http-inputs-` or similar text before the hostname.
   - **\<SPLUNK\_CHANNEL\_ID>**: A unique channel ID. This is a random GUID that you can generate by:
-    - Using an online tool like the [GUID generator ↗](https://www.guidgenerator.com/).
+    - Using an online tool like the [GUID generator ↗︎](https://www.guidgenerator.com/).
     - Using the command line. For example: `python -c 'import uuid; print(uuid.uuid4())'`.
   - **\<INSECURE\_SKIP\_VERIFY>**: Boolean value. Cloudflare recommends setting this value to `false`. Setting this value to `true` is equivalent to using the `-k` option with `curl` as shown in Splunk examples and is **not** recommended. Only set this value to `true` when HEC uses a self-signed certificate.
 
@@ -237,7 +237,7 @@ Cloudflare expects the HEC network port to be configured to `:443` or `:8088`. O
 
 ### Cloudflare Splunk App integration
 
-Logpush integrates with the [Cloudflare App for Splunk ↗](https://splunkbase.splunk.com/app/4501/). As long as you ingest logs using the `cloudflare:json` source type, you can use the Cloudflare Splunk App to analyze and visualize your logs.
+Logpush integrates with the [Cloudflare App for Splunk ↗︎](https://splunkbase.splunk.com/app/4501/). As long as you ingest logs using the `cloudflare:json` source type, you can use the Cloudflare Splunk App to analyze and visualize your logs.
 
 For detailed setup instructions, refer to [Splunk Analytics integration](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/).
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/change-super-admin/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-If you or someone in your organization leaves or loses access to email, you can add another Super Administrator using any other Super Administrator on your Account with a [verified email ↗](https://developers.cloudflare.com/fundamentals/account/verify-email-address/) address.
+If you or someone in your organization leaves or loses access to email, you can add another Super Administrator using any other Super Administrator on your Account with a [verified email ↗︎](https://developers.cloudflare.com/fundamentals/account/verify-email-address/) address.
 
 First, [add a member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) to your account and assign the **Super Administrator** role.
 

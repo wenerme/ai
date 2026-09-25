@@ -145,11 +145,11 @@ Applications can be incompatible with [TLS decryption](https://developers.cloudf
 
 #### Microsoft 365 integration
 
-To optimize performance for Microsoft 365 applications and services, you can bypass TLS decryption by turning on the Microsoft 365 traffic integration. This will create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) for all [Microsoft 365 domains and IP addresses ↗](https://docs.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-ip-web-service) specified by Microsoft. This policy also uses Cloudflare intelligence to identify other Microsoft 365 traffic not explicitly defined.
+To optimize performance for Microsoft 365 applications and services, you can bypass TLS decryption by turning on the Microsoft 365 traffic integration. This will create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#do-not-inspect) for all [Microsoft 365 domains and IP addresses ↗︎](https://docs.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-ip-web-service) specified by Microsoft. This policy also uses Cloudflare intelligence to identify other Microsoft 365 traffic not explicitly defined.
 
 To turn on the Microsoft 365 integration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings** > **Policy settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings** > **Policy settings**.
 2. In **Bypass decryption of Microsoft 365 traffic**, select **Create policy**.
 3. To verify the policy was created, select **View policy**. Alternatively, go to **Traffic policies** > **HTTP policies**. A policy named Microsoft 365 Auto Generated will be enabled in your list.
 

@@ -47,7 +47,7 @@ The [`/crawl` endpoint](https://developers.cloudflare.com/browser-run/quick-acti
 
 Need higher limits?
 
-The limits below are defaults for Workers Paid users. If you need to scale beyond them, Cloudflare can increase your account limits. [Request higher limits ↗](https://forms.gle/CdueDKvb26mTaepa9).
+The limits below are defaults for Workers Paid users. If you need to scale beyond them, Cloudflare can increase your account limits. [Request higher limits ↗︎](https://forms.gle/CdueDKvb26mTaepa9).
 
 | Feature | Limit |
 | --- | --- |
@@ -64,9 +64,9 @@ The limits below are defaults for Workers Paid users. If you need to scale beyon
 If you are hitting concurrency [limits](https://developers.cloudflare.com/browser-run/limits/#workers-paid), or want to optimize concurrent browser usage, here are a few tips:
 
 - Optimize with tabs or shared browsers: Instead of launching a new browser for each task, consider opening multiple tabs or running multiple actions within the same browser instance.
-- [Reuse sessions](https://developers.cloudflare.com/browser-run/features/reuse-sessions/): You can optimize your setup and decrease startup time by reusing sessions instead of launching a new browser every time. If you are concerned about maintaining test isolation (for example, for tests that depend on a clean environment), we recommend using [incognito browser contexts ↗](https://pptr.dev/api/puppeteer.browser.createbrowsercontext), which isolate cookies and cache with other sessions.
+- [Reuse sessions](https://developers.cloudflare.com/browser-run/features/reuse-sessions/): You can optimize your setup and decrease startup time by reusing sessions instead of launching a new browser every time. If you are concerned about maintaining test isolation (for example, for tests that depend on a clean environment), we recommend using [incognito browser contexts ↗︎](https://pptr.dev/api/puppeteer.browser.createbrowsercontext), which isolate cookies and cache with other sessions.
 
-If you are still running into concurrency limits you can [request a higher limit ↗](https://forms.gle/CdueDKvb26mTaepa9).
+If you are still running into concurrency limits you can [request a higher limit ↗︎](https://forms.gle/CdueDKvb26mTaepa9).
 
 ### Can I increase the browser timeout?
 

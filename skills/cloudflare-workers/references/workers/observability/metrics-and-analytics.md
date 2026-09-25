@@ -33,7 +33,7 @@ There are two metrics that can help you understand the health of your Worker in 
 
 The first graph shows historical request counts from the Workers runtime broken down into successful requests, errored requests, and subrequests.
 
-- **Total**: All incoming requests registered by a Worker. Requests blocked by [WAF ↗](https://www.cloudflare.com/waf/) or other security features will not count.
+- **Total**: All incoming requests registered by a Worker. Requests blocked by [WAF ↗︎](https://www.cloudflare.com/waf/) or other security features will not count.
 - **Success**: Requests that returned a Success or Client Disconnected invocation status.
 - **Errors**: Requests that returned a Script Threw Exception, Exceeded Resources, or Internal Error invocation status — refer to [Invocation Statuses](https://developers.cloudflare.com/workers/observability/metrics-and-analytics/#invocation-statuses) for a breakdown of where your errors are coming from.
 
@@ -51,19 +51,19 @@ Subrequests are requests triggered by calling `fetch` from within a Worker. A su
 
 Wall time represents the elapsed time in milliseconds between the start of a Worker invocation, and when the Workers runtime determines that no more JavaScript needs to run. Specifically, wall time per execution chart measures the wall time that the JavaScript context remained open — including time spent waiting on I/O, and time spent executing in your Worker's [`waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) handler. Wall time is not the same as the time it takes your Worker to send the final byte of a response back to the client - wall time can be higher, if tasks within `waitUntil()` are still running after the response has been sent, or it can be lower. For example, when returning a response with a large body, the Workers runtime can, in some cases, determine that no more JavaScript needs to run, and closes the JavaScript context before all the bytes have passed through and been sent.
 
-The Wall Time per execution chart shows historical wall time data broken down into relevant quantiles using [reservoir sampling ↗](https://en.wikipedia.org/wiki/Reservoir_sampling). Learn more about [interpreting quantiles ↗](https://www.statisticshowto.com/quantile-definition-find-easy-steps/).
+The Wall Time per execution chart shows historical wall time data broken down into relevant quantiles using [reservoir sampling ↗︎](https://en.wikipedia.org/wiki/Reservoir_sampling). Learn more about [interpreting quantiles ↗︎](https://www.statisticshowto.com/quantile-definition-find-easy-steps/).
 
 ### CPU Time per execution
 
-The CPU Time per execution chart shows historical CPU time data broken down into relevant quantiles using [reservoir sampling ↗](https://en.wikipedia.org/wiki/Reservoir_sampling). Learn more about [interpreting quantiles ↗](https://www.statisticshowto.com/quantile-definition-find-easy-steps/). In some cases, higher quantiles may appear to exceed [CPU time limits](https://developers.cloudflare.com/workers/platform/limits/#cpu-time) without generating invocation errors because of a mechanism in the Workers runtime that allows rollover CPU time for requests below the CPU limit.
+The CPU Time per execution chart shows historical CPU time data broken down into relevant quantiles using [reservoir sampling ↗︎](https://en.wikipedia.org/wiki/Reservoir_sampling). Learn more about [interpreting quantiles ↗︎](https://www.statisticshowto.com/quantile-definition-find-easy-steps/). In some cases, higher quantiles may appear to exceed [CPU time limits](https://developers.cloudflare.com/workers/platform/limits/#cpu-time) without generating invocation errors because of a mechanism in the Workers runtime that allows rollover CPU time for requests below the CPU limit.
 
 ### Execution duration (GB-seconds)
 
-The Duration per request chart shows historical [duration](https://developers.cloudflare.com/workers/platform/limits/#duration) per Worker invocation. The data is broken down into relevant quantiles, similar to the CPU time chart. Learn more about [interpreting quantiles ↗](https://www.statisticshowto.com/quantile-definition-find-easy-steps/). Understanding duration on your Worker is especially useful when you are intending to do a significant amount of computation on the Worker itself.
+The Duration per request chart shows historical [duration](https://developers.cloudflare.com/workers/platform/limits/#duration) per Worker invocation. The data is broken down into relevant quantiles, similar to the CPU time chart. Learn more about [interpreting quantiles ↗︎](https://www.statisticshowto.com/quantile-definition-find-easy-steps/). Understanding duration on your Worker is especially useful when you are intending to do a significant amount of computation on the Worker itself.
 
 ### Memory usage
 
-The Memory usage chart shows how much V8 isolate memory your Worker uses at the time of each invocation, broken down into P50, P90, P99, and P999 percentiles using [reservoir sampling ↗](https://en.wikipedia.org/wiki/Reservoir_sampling). For more information, refer to [Interpreting quantiles ↗](https://www.statisticshowto.com/quantile-definition-find-easy-steps/).
+The Memory usage chart shows how much V8 isolate memory your Worker uses at the time of each invocation, broken down into P50, P90, P99, and P999 percentiles using [reservoir sampling ↗︎](https://en.wikipedia.org/wiki/Reservoir_sampling). For more information, refer to [Interpreting quantiles ↗︎](https://www.statisticshowto.com/quantile-definition-find-easy-steps/).
 
 Workers run in V8 [isolates](https://developers.cloudflare.com/workers/reference/how-workers-works/#isolates), each with a [128 MB memory limit](https://developers.cloudflare.com/workers/platform/limits/#memory). A single isolate can handle many concurrent requests and shares memory across them. The memory usage metric reflects how much of this shared memory is in use at the time of each invocation.
 
@@ -92,7 +92,7 @@ Worker invocation statuses indicate whether a Worker executed successfully or fa
 
 ¹ The Exceeded Resources status may appear when the Worker exceeds a [runtime limit](https://developers.cloudflare.com/workers/platform/limits/#request-and-response-limits). The most common cause is excessive CPU time, but is also caused by a Worker exceeding startup time or free tier limits.
 
-² The Internal Error status may appear when the Workers runtime fails to process a request due to an internal failure in our system. These errors are not caused by any issue with the Worker code nor any resource limit. While requests with Internal Error status are rare, some may appear during normal operation. These requests are not counted towards usage for billing purposes. If you notice an elevated rate of requests with Internal Error status, review [www.cloudflarestatus.com ↗](https://www.cloudflarestatus.com/).
+² The Internal Error status may appear when the Workers runtime fails to process a request due to an internal failure in our system. These errors are not caused by any issue with the Worker code nor any resource limit. While requests with Internal Error status are rare, some may appear during normal operation. These requests are not counted towards usage for billing purposes. If you notice an elevated rate of requests with Internal Error status, review [www.cloudflarestatus.com ↗︎](https://www.cloudflarestatus.com/).
 
 To further investigate exceptions, use [`wrangler tail`](https://developers.cloudflare.com/workers/wrangler/commands/general/#tail).
 
@@ -125,7 +125,7 @@ Zone data can be scoped by time range within the last 30 days. The dashboard inc
 This chart shows subrequests — requests triggered by calling `fetch` from within a Worker — broken down by cache status.
 
 - **Uncached**: Requests answered directly by your origin server or other servers responding to subrequests.
-- **Cached**: Requests answered by Cloudflare’s [cache ↗](https://www.cloudflare.com/learning/cdn/what-is-caching/). As Cloudflare caches more of your content, it accelerates content delivery and reduces load on your origin.
+- **Cached**: Requests answered by Cloudflare’s [cache ↗︎](https://www.cloudflare.com/learning/cdn/what-is-caching/). As Cloudflare caches more of your content, it accelerates content delivery and reduces load on your origin.
 
 ### Bandwidth
 

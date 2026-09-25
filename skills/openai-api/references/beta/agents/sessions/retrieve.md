@@ -88,7 +88,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
           Automatically selects the most detailed summary supported by the model.
 
-    - `service_tier: "auto" or "default" or "flex" or 2 more`
+    - `service_tier: "auto" or "default" or "flex" or 3 more`
 
       The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -101,6 +101,8 @@ Retrieves the current state of a managed agent session. See [managing sessions](
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `text: AgentText`
 

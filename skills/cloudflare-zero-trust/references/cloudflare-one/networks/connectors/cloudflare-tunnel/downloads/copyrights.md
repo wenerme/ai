@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ---
 
-[https://github.com/BurntSushi/toml ↗](https://github.com/BurntSushi/toml)
+[https://github.com/BurntSushi/toml ↗︎](https://github.com/BurntSushi/toml)
 
 The MIT License (MIT)
 
@@ -30,7 +30,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
-[https://github.com/Sirupsen/logrus ↗](https://github.com/Sirupsen/logrus)
+[https://github.com/Sirupsen/logrus ↗︎](https://github.com/Sirupsen/logrus)
 
 The MIT License (MIT)
 
@@ -44,7 +44,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
-[https://github.com/beorn7/perks/ ↗](https://github.com/beorn7/perks/)
+[https://github.com/beorn7/perks/ ↗︎](https://github.com/beorn7/perks/)
 
 Copyright (C) 2013 Blake Mizerany
 
@@ -56,15 +56,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
-[https://github.com/certifi/gocertifi ↗](https://github.com/certifi/gocertifi)
+[https://github.com/certifi/gocertifi ↗︎](https://github.com/certifi/gocertifi)
 
-This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at [http://mozilla.org/MPL/2.0/ ↗](http://mozilla.org/MPL/2.0/).
+This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at [http://mozilla.org/MPL/2.0/ ↗︎](http://mozilla.org/MPL/2.0/).
 
 ---
 
-[https://github.com/coreos/go-oidc/ ↗](https://github.com/coreos/go-oidc/) [https://github.com/coreos/go-systemd/ ↗](https://github.com/coreos/go-systemd/)
+[https://github.com/coreos/go-oidc/ ↗︎](https://github.com/coreos/go-oidc/) [https://github.com/coreos/go-systemd/ ↗︎](https://github.com/coreos/go-systemd/)
 
-Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗](http://www.apache.org/licenses/)
+Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗︎](http://www.apache.org/licenses/)
 
 TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
 
@@ -135,7 +135,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 ---
 
-[https://github.com/facebookgo/grace ↗](https://github.com/facebookgo/grace)
+[https://github.com/facebookgo/grace ↗︎](https://github.com/facebookgo/grace)
 
 BSD License
 
@@ -153,7 +153,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 ---
 
-[https://github.com/getsentry/raven-go ↗](https://github.com/getsentry/raven-go)
+[https://github.com/getsentry/raven-go ↗︎](https://github.com/getsentry/raven-go)
 
 Copyright (c) 2013 Apollic Software, LLC. All rights reserved. Copyright (c) 2015 Functional Software, Inc. All rights reserved.
 
@@ -167,7 +167,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 ---
 
-[https://github.com/glycerine/rbtree ↗](https://github.com/glycerine/rbtree)
+[https://github.com/glycerine/rbtree ↗︎](https://github.com/glycerine/rbtree)
 
 Copyright (C) 2012 Yasushi Saito
 
@@ -179,11 +179,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
-[https://github.com/golang/protobuf ↗](https://github.com/golang/protobuf)
+[https://github.com/golang/protobuf ↗︎](https://github.com/golang/protobuf)
 
 Go support for Protocol Buffers - Google's data interchange format
 
-Copyright 2010 The Go Authors. All rights reserved. [https://github.com/golang/protobuf ↗](https://github.com/golang/protobuf)
+Copyright 2010 The Go Authors. All rights reserved. [https://github.com/golang/protobuf ↗︎](https://github.com/golang/protobuf)
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
@@ -197,7 +197,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 ---
 
-[https://github.com/lib/pq ↗](https://github.com/lib/pq)
+[https://github.com/lib/pq ↗︎](https://github.com/lib/pq)
 
 Copyright (c) 2011-2013, 'pq' Contributors Portions Copyright (C) 2011 Blake Mizerany
 
@@ -209,7 +209,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
-[https://godoc.org/github.com/matttproud/golang\\\_protobuf\\\_extensions/pbutil ↗](https://godoc.org/github.com/matttproud/golang%5C_protobuf%5C_extensions/pbutil)
+[https://godoc.org/github.com/matttproud/golang\\\_protobuf\\\_extensions/pbutil ↗︎](https://godoc.org/github.com/matttproud/golang%5C_protobuf%5C_extensions/pbutil)
 
 ```plaintext
                              Apache License
@@ -286,7 +286,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 ---
 
-[https://github.com/mitchellh/go-homedir ↗](https://github.com/mitchellh/go-homedir)
+[https://github.com/mitchellh/go-homedir ↗︎](https://github.com/mitchellh/go-homedir)
 
 The MIT License (MIT)
 
@@ -300,7 +300,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
-[https://github.com/pkg/errors ↗](https://github.com/pkg/errors)
+[https://github.com/pkg/errors ↗︎](https://github.com/pkg/errors)
 
 Copyright (c) 2015, Dave Cheney [dave@cheney.net](mailto:dave@cheney.net) All rights reserved.
 
@@ -313,7 +313,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 ---
 
-[https://github.com/prometheus/client\_golang ↗](https://github.com/prometheus/client_golang) [https://github.com/prometheus/client\_model ↗](https://github.com/prometheus/client_model) [https://github.com/prometheus/common ↗](https://github.com/prometheus/common) [https://github.com/prometheus/procfs ↗](https://github.com/prometheus/procfs)
+[https://github.com/prometheus/client\_golang ↗︎](https://github.com/prometheus/client_golang) [https://github.com/prometheus/client\_model ↗︎](https://github.com/prometheus/client_model) [https://github.com/prometheus/common ↗︎](https://github.com/prometheus/common) [https://github.com/prometheus/procfs ↗︎](https://github.com/prometheus/procfs)
 
 ```plaintext
                              Apache License
@@ -390,7 +390,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 ---
 
-[https://github.com/urfave/cli ↗](https://github.com/urfave/cli)
+[https://github.com/urfave/cli ↗︎](https://github.com/urfave/cli)
 
 MIT License
 
@@ -404,7 +404,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 ---
 
-[https://github.com/go-yaml/yaml ↗](https://github.com/go-yaml/yaml)
+[https://github.com/go-yaml/yaml ↗︎](https://github.com/go-yaml/yaml)
 
 ```plaintext
                              Apache License
@@ -481,7 +481,7 @@ Unless required by applicable law or agreed to in writing, software distributed 
 
 ---
 
-[https://zombiezen.com/go/capnproto2 ↗](https://zombiezen.com/go/capnproto2)
+[https://zombiezen.com/go/capnproto2 ↗︎](https://zombiezen.com/go/capnproto2)
 
 go-capnproto is licensed under the terms of the MIT license reproduced below.
 

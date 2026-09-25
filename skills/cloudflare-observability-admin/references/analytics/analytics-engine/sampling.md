@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-engine/sampling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Workers Analytics Engine offers the ability to write an extensive amount of data and retrieve it quickly, at minimal or no cost. To facilitate writing large amounts of data at a reasonable cost, Workers Analytics Engine employs weighted adaptive [sampling ↗](<https://en.wikipedia.org/wiki/Sampling_(statistics)>).
+Workers Analytics Engine offers the ability to write an extensive amount of data and retrieve it quickly, at minimal or no cost. To facilitate writing large amounts of data at a reasonable cost, Workers Analytics Engine employs weighted adaptive [sampling ↗︎](<https://en.wikipedia.org/wiki/Sampling_(statistics)>).
 
-When utilizing sampling, you do not need every single data point to answer questions about a dataset. For a sufficiently large dataset, the [necessary sample size ↗](https://select-statistics.co.uk/blog/importance-effect-sample-size/) does not depend on the size of the original population. Necessary sample size depends on the variance of your measure, the size of the subgroups you analyze, and how accurate your estimate must be.
+When utilizing sampling, you do not need every single data point to answer questions about a dataset. For a sufficiently large dataset, the [necessary sample size ↗︎](https://select-statistics.co.uk/blog/importance-effect-sample-size/) does not depend on the size of the original population. Necessary sample size depends on the variance of your measure, the size of the subgroups you analyze, and how accurate your estimate must be.
 
 The implication for Analytics Engine is that we can compress very large datasets into many fewer observations, yet still answer most queries with very high accuracy. This enables us to offer an analytics service that can measure very high rates of usage, with unbounded cardinality, at a low and predictable price.
 
@@ -82,15 +82,15 @@ Note that the accuracy of results is not determined by the sample interval, simi
 
 To determine the sample interval for each event, note that most analytics have some important type of subgroup that must be analyzed with accurate results. For example, you may want to analyze user usage or traffic to specific hostnames. Analytics Engine users can define these groups by populating the `index` field when writing an event. This allows for more targeted and precise analysis within the specified groups.
 
-The next observation is that these index values likely have a very different number of events written to them. In fact, the usage of most web services follows a [Pareto distribution ↗](https://en.wikipedia.org/wiki/Pareto_distribution), meaning that the top few users will account for the vast majority of the usage. Pareto distributions are common and look like this:
+The next observation is that these index values likely have a very different number of events written to them. In fact, the usage of most web services follows a [Pareto distribution ↗︎](https://en.wikipedia.org/wiki/Pareto_distribution), meaning that the top few users will account for the vast majority of the usage. Pareto distributions are common and look like this:
 
 ![In this graphic, each bar represents a user; the height of the bar is their total usage.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1798,height=1092,format=webp/_astro/total-usage.DT9rN3Uq.png)
 
-If we took a [simple random sample ↗](https://en.wikipedia.org/wiki/Simple_random_sample) of one percent (1%) of this data, and we applied that to the whole population, you may be able to track your largest customers accurately — but you would lose visibility into what your smaller customers are doing:
+If we took a [simple random sample ↗︎](https://en.wikipedia.org/wiki/Simple_random_sample) of one percent (1%) of this data, and we applied that to the whole population, you may be able to track your largest customers accurately — but you would lose visibility into what your smaller customers are doing:
 
 ![The same graphic as above, but now based on a 1% sample of the data.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1904,height=1136,format=webp/_astro/sample-data.Db8bZbVI.png)
 
-Notice that the larger bars look more or less unchanged, and yet they are still quite accurate. But as you analyze smaller customers, results get [quantized ↗](<https://en.wikipedia.org/wiki/Quantization_(signal_processing)>) and may even be rounded to 0 entirely.
+Notice that the larger bars look more or less unchanged, and yet they are still quite accurate. But as you analyze smaller customers, results get [quantized ↗︎](<https://en.wikipedia.org/wiki/Quantization_(signal_processing)>) and may even be rounded to 0 entirely.
 
 This shows that while a one percent (1%) or even smaller sample of a large population may be sufficient, we may need to store a larger proportion of events for a small population to get accurate results.
 
@@ -108,7 +108,7 @@ Refer back to the mapping analogy above. Regardless of the map area shown, the t
 
 Equitable sampling ensures that an equal amount of data is maintained for each index within a specific time frame. However, queries can vary significantly in the duration of time they target. Some queries may only require a 10-minute data snapshot, while others might need to analyze data spanning 10 weeks — a period which is 10,000 times longer.
 
-To address this issue, we employ a method called [adaptive bit rate ↗](https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/) (ABR). With ABR, queries that cover longer time ranges will retrieve data from a higher sample interval, allowing them to be completed within a fixed time limit. In simpler terms, just as screen size or bandwidth is a fixed resource in our mapping analogy, the time required to complete a query is also fixed. Therefore, irrespective of the volume of data involved, we need to limit the total number of rows scanned to provide an answer to the query. This helps to ensure fairness: regardless of the size of the underlying dataset being queried, we ensure that all queries receive an equivalent share of the available computing time.
+To address this issue, we employ a method called [adaptive bit rate ↗︎](https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/) (ABR). With ABR, queries that cover longer time ranges will retrieve data from a higher sample interval, allowing them to be completed within a fixed time limit. In simpler terms, just as screen size or bandwidth is a fixed resource in our mapping analogy, the time required to complete a query is also fixed. Therefore, irrespective of the volume of data involved, we need to limit the total number of rows scanned to provide an answer to the query. This helps to ensure fairness: regardless of the size of the underlying dataset being queried, we ensure that all queries receive an equivalent share of the available computing time.
 
 To achieve this, we store the data in multiple resolutions (that is, with different levels of detail, for instance, 100%, 10%, 1%) derived from the equitably sampled data. At query time, we select the most suitable data resolution to read based on the query's complexity. The query's complexity is determined by the number of rows to be retrieved and the probability of the query completing within a specified time limit of N seconds. By dynamically selecting the appropriate resolution, we optimize the query performance and ensure it stays within the allotted time budget.
 

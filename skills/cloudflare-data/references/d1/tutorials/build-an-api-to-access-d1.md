@@ -24,12 +24,12 @@ To access a D1 database outside of a Worker project, you need to create an API u
 
 Note
 
-D1 uses parameterized queries. This prevents SQL injection. To make your API more secure, validate the input using a library like [zod ↗](https://zod.dev/).
+D1 uses parameterized queries. This prevents SQL injection. To make your API more secure, validate the input using a library like [zod ↗︎](https://zod.dev/).
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 3. Have an existing D1 database. Refer to [Get started tutorial for D1](https://developers.cloudflare.com/d1/get-started/).
 
 <details>
@@ -40,7 +40,7 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
@@ -78,7 +78,7 @@ Create a new Worker to create and deploy your API.
 
 ## 2. Install Hono
 
-In this tutorial, you will use [Hono ↗](https://github.com/honojs/hono), an Express.js-style framework, to build the API.
+In this tutorial, you will use [Hono ↗︎](https://github.com/honojs/hono), an Express.js-style framework, to build the API.
 
 1. To use Hono in this project, install it using `npm`:npmyarnpnpmbun
 
@@ -131,9 +131,9 @@ In this step, we have defined the name of the API key to be `API_KEY`.
 
 To initialize the application, you need to import the required packages, initialize a new Hono application, and configure the following middleware:
 
-- [Bearer Auth ↗](https://hono.dev/docs/middleware/builtin/bearer-auth): Adds authentication to the API.
-- [Logger ↗](https://hono.dev/docs/middleware/builtin/logger): Allows monitoring the flow of requests and responses.
-- [Pretty JSON ↗](https://hono.dev/docs/middleware/builtin/pretty-json): Enables "JSON pretty print" for JSON response bodies.
+- [Bearer Auth ↗︎](https://hono.dev/docs/middleware/builtin/bearer-auth): Adds authentication to the API.
+- [Logger ↗︎](https://hono.dev/docs/middleware/builtin/logger): Allows monitoring the flow of requests and responses.
+- [Pretty JSON ↗︎](https://hono.dev/docs/middleware/builtin/pretty-json): Enables "JSON pretty print" for JSON response bodies.
 
 1. Replace the contents of the `src/index.ts` file with the code below.
 
@@ -469,7 +469,7 @@ Now that everything is working as expected, the last step is to deploy it to the
    npx wrangler d1 execute d1-http-example --file=./schemas/schema.sql --remote
    ```
 
-   You should now be able to view the table on the [Cloudflare dashboard > **Storage & Databases** > **D1**. ↗](https://dash.cloudflare.com/?to=/:account/workers/d1/)
+   You should now be able to view the table on the [Cloudflare dashboard > **Storage & Databases** > **D1**. ↗︎](https://dash.cloudflare.com/?to=/:account/workers/d1/)
 2. To deploy the application to the Cloudflare network, run the following command:
 
    ```sh
@@ -540,11 +540,11 @@ Now that everything is working as expected, the last step is to deploy it to the
 In this tutorial, you have:
 
 1. Created an API that interacts with your D1 database.
-2. Deployed this API to the Workers. You can use this API in your external application to execute queries against your D1 database. The full code for this tutorial can be found on [GitHub ↗](https://github.com/harshil1712/d1-http-example/tree/main).
+2. Deployed this API to the Workers. You can use this API in your external application to execute queries against your D1 database. The full code for this tutorial can be found on [GitHub ↗︎](https://github.com/harshil1712/d1-http-example/tree/main).
 
 ## Next steps
 
-You can check out a similar implementation that uses Zod for validation in [this GitHub repository ↗](https://github.com/elithrar/http-api-d1-example). If you want to build an OpenAPI compliant API for your D1 database, you should use the [Cloudflare Workers OpenAPI 3.1 template ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-openapi).
+You can check out a similar implementation that uses Zod for validation in [this GitHub repository ↗︎](https://github.com/elithrar/http-api-d1-example). If you want to build an OpenAPI compliant API for your D1 database, you should use the [Cloudflare Workers OpenAPI 3.1 template ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-openapi).
 
 Was this helpful?
 

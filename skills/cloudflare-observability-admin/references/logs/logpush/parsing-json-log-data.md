@@ -18,7 +18,7 @@ After downloading your Cloudflare Logs data, you can use different tools to pars
 
 One of those tools used to parse your JSON log data is `jq`.
 
-Refer to [Download jq ↗](https://jqlang.github.io/jq/download/) for more information on obtaining and installing `jq`.
+Refer to [Download jq ↗︎](https://jqlang.github.io/jq/download/) for more information on obtaining and installing `jq`.
 
 Note
 

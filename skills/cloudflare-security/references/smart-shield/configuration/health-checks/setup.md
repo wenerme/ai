@@ -18,7 +18,7 @@ Refer to the section below to learn how to manage your Smart Shield health check
 
 ## Create and edit health checks
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account and domain.
 2. Go to **Speed** > **Smart Shield**.
 3. For Health Checks, select **Manage**.
 4. Select **Create** or find an existing health check and select **Edit**.
@@ -33,7 +33,7 @@ You can configure [notification emails](https://developers.cloudflare.com/notifi
 
 The email provides information to determine what caused the health status change. You can evaluate when the change happened, the status of the origin server, if and why it is unhealthy, the expected response code, and the received response code. Refer to [common error codes](https://developers.cloudflare.com/smart-shield/configuration/health-checks/analytics/#common-error-codes) for further guidance.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account and domain.
 2. Go to **Speed** > **Smart Shield**.
 3. For Health Checks, select **Manage** and then **Configure an alert**.
 4. Fill out the **Notification name** and **Description**.

@@ -77,7 +77,7 @@ Using Memory Snapshotting in DevTools, you've identified the object and line of 
 
 ## Additional Resources
 
-To learn more about how to use Memory Snapshotting, see [Google's documentation on Memory Heap Snapshots ↗](https://developer.chrome.com/docs/devtools/memory-problems/heap-snapshots).
+To learn more about how to use Memory Snapshotting, see [Google's documentation on Memory Heap Snapshots ↗︎](https://developer.chrome.com/docs/devtools/memory-problems/heap-snapshots).
 
 To learn how to use DevTools to gain insight into CPU usage, see the [CPU Profiling Documentation](https://developers.cloudflare.com/workers/observability/dev-tools/cpu-usage/).
 

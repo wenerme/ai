@@ -19,21 +19,21 @@ There are two self-serve ways to see Privacy Pass in action:
 - **Get a real token with the demo tool:** the fastest way to obtain a real, issuer-signed token, using a browser tool and a Cloudflare-provided demo issuer.
 - **See a local example:** run the complete issuance and redemption flow on your own machine in a few minutes, using real Blind RSA cryptography.
 
-To understand the protocol itself, refer to [Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/). When you are ready to validate a real, Cloudflare-operated deployment, refer to [Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/) and [contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to begin setting up the necessary infrastructure.
+To understand the protocol itself, refer to [Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/). When you are ready to validate a real, Cloudflare-operated deployment, refer to [Production Deployment Testing](https://developers.cloudflare.com/privacy-pass/production-deployment-testing/) and [contact us ↗︎](https://www.cloudflare.com/lp/privacy-edge/) to begin setting up the necessary infrastructure.
 
 ---
 
 ## Get a real token with the demo tool
 
-The quickest way to see what an issuer-signed token looks like is with Cloudflare's [Privacy Pass Demo Tool ↗](https://privacypass-demo.cloudflare.app/). Pointed at an issuer, it runs the full issuance flow in your browser and returns a verified token.
+The quickest way to see what an issuer-signed token looks like is with Cloudflare's [Privacy Pass Demo Tool ↗︎](https://privacypass-demo.cloudflare.app/). Pointed at an issuer, it runs the full issuance flow in your browser and returns a verified token.
 
 ### Prerequisites
 
-- Our **demo issuer directory URL**, provided here: [https://demo-pat.issuer.cloudflare.com/.well-known/private-token-issuer-directory ↗](https://demo-pat.issuer.cloudflare.com/.well-known/private-token-issuer-directory).
+- Our **demo issuer directory URL**, provided here: [https://demo-pat.issuer.cloudflare.com/.well-known/private-token-issuer-directory ↗︎](https://demo-pat.issuer.cloudflare.com/.well-known/private-token-issuer-directory).
 
 ### How to get a token
 
-1. Open the [Privacy Pass demo tool ↗](https://privacypass-demo.cloudflare.app/).
+1. Open the [Privacy Pass demo tool ↗︎](https://privacypass-demo.cloudflare.app/).
 2. In **Fetch from issuer URL**, paste the demo issuer directory URL and submit. The tool displays the issuer directory—a list of `token-keys` with token type `2` (Blind RSA)—and automatically fills in the fields for the following steps.
 3. In **Create challenge**, submit the prefilled form. The tool builds a `WWW-Authenticate` token challenge from the issuer's key.
 4. In **Send Token Request**, submit the prefilled form. The tool blinds the request, sends it to the issuer, unblinds the response, and verifies the result.
@@ -59,11 +59,11 @@ You can run the issuance and redemption flow on your machine in a few minutes, w
 
 ### Prerequisites
 
-- [Node.js ↗](https://nodejs.org/) and [git ↗](https://git-scm.com/).
+- [Node.js ↗︎](https://nodejs.org/) and [git ↗︎](https://git-scm.com/).
 
 ### Run the example
 
-The [@cloudflare/privacypass-ts ↗](https://github.com/cloudflare/privacypass-ts) library ships runnable examples. Clone the repository and install dependencies:
+The [@cloudflare/privacypass-ts ↗︎](https://github.com/cloudflare/privacypass-ts) library ships runnable examples. Clone the repository and install dependencies:
 
 ```sh
 git clone https://github.com/cloudflare/privacypass-ts.git
@@ -71,7 +71,7 @@ cd privacypass-ts
 npm ci
 ```
 
-The publicly-verifiable example ([`pub_verif.example.ts` ↗](https://github.com/cloudflare/privacypass-ts/blob/main/examples/pub_verif.example.ts)) only exports its functions, so add a small runner that calls just that one. Create `examples/run-pub-verif.ts`:
+The publicly-verifiable example ([`pub_verif.example.ts` ↗︎](https://github.com/cloudflare/privacypass-ts/blob/main/examples/pub_verif.example.ts)) only exports its functions, so add a small runner that calls just that one. Create `examples/run-pub-verif.ts`:
 
 ```ts
 import { publicVerifiableTokensPSS } from "./pub_verif.example.js";

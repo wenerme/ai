@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cipher suites are a combination of ciphers used to negotiate security settings during the [SSL/TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/) (and therefore separate from the [SSL/TLS protocol](https://developers.cloudflare.com/ssl/reference/protocols/)).
+Cipher suites are a combination of ciphers used to negotiate security settings during the [SSL/TLS handshake ↗︎](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/) (and therefore separate from the [SSL/TLS protocol](https://developers.cloudflare.com/ssl/reference/protocols/)).
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ Configuration conditions
 
 - Cipher suites are used in combination with other <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/#related-ssltls-settings">SSL/TLS settings</a>.
 - You cannot set specific TLS 1.3 ciphers. Instead, you can <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/#enable-tls-13">enable TLS 1.3</a> for your entire zone and Cloudflare will use all applicable <a href="https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/">TLS 1.3 cipher suites</a>.
-- Each cipher suite also supports a specific algorithm (RSA or ECDSA), so you should consider the algorithms in use by your edge certificates when making your ciphers selection. You can find this information under each certificate listed on the <a href="https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates">**Edge Certificates** ↗</a> page. \* It is not possible to configure minimum TLS version nor cipher suites for <a href="https://developers.cloudflare.com/pages/">Cloudflare Pages</a> hostnames.
+- Each cipher suite also supports a specific algorithm (RSA or ECDSA), so you should consider the algorithms in use by your edge certificates when making your ciphers selection. You can find this information under each certificate listed on the <a href="https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates">**Edge Certificates** ↗︎</a> page. \* It is not possible to configure minimum TLS version nor cipher suites for <a href="https://developers.cloudflare.com/pages/">Cloudflare Pages</a> hostnames.
 
 </details>
 

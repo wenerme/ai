@@ -32,7 +32,7 @@ Only certain customers have access to this feature. For more details, see the [P
 
 All fields except for organizational\_unit and key\_type are required. If you do not specify a `key_type`, the default of `rsa2048` (RSA 2048 bit) will be used; the other option is `p256v1` (NIST P-256).
 
-Common names are restricted to 64 characters and subject alternative names (SANs) are limited to 255 characters, [per RFC 5280 ↗](https://tools.ietf.org/html/rfc5280). You must specify at least one SAN, and the list of SANs should include the common name.
+Common names are restricted to 64 characters and subject alternative names (SANs) are limited to 255 characters, [per RFC 5280 ↗︎](https://tools.ietf.org/html/rfc5280). You must specify at least one SAN, and the list of SANs should include the common name.
 
 ```bash
 request_body=$(< <(cat <<EOF

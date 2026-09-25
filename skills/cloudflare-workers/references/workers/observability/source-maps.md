@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/source-maps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Stack traces ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) help with debugging your code when your application encounters an unhandled exception. Stack traces show you the specific functions that were called, in what order, from which line and file, and with what arguments.
+[Stack traces ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) help with debugging your code when your application encounters an unhandled exception. Stack traces show you the specific functions that were called, in what order, from which line and file, and with what arguments.
 
 Most JavaScript code is first bundled, often transpiled, and then minified before being deployed to production. This process creates smaller bundles to optimize performance and converts code from TypeScript to Javascript if needed.
 
@@ -38,7 +38,7 @@ When `upload_source_maps` is set to `true`, Wrangler will automatically generate
 
 Note
 
-Miniflare can also [output source maps ↗](https://miniflare.dev/developing/source-maps) for use in local development or [testing](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests).
+Miniflare can also [output source maps ↗︎](https://miniflare.dev/developing/source-maps) for use in local development or [testing](https://developers.cloudflare.com/workers/testing/miniflare/writing-tests).
 
 ## Stack traces
 
@@ -48,7 +48,7 @@ You can then view the stack trace when streaming [real-time logs](https://develo
 
 Note
 
-The source map is retrieved after your Worker invocation completes — it's an asynchronous process that does not impact your Worker's CPU utilization or performance. Source maps are not accessible inside the Worker at runtime, if you `console.log()` the [stack property ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) within a Worker, you will not get a deobfuscated stack trace.
+The source map is retrieved after your Worker invocation completes — it's an asynchronous process that does not impact your Worker's CPU utilization or performance. Source maps are not accessible inside the Worker at runtime, if you `console.log()` the [stack property ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) within a Worker, you will not get a deobfuscated stack trace.
 
 When Cloudflare attempts to remap a stack trace to the Worker's source map, it does so line-by-line, remapping as much as possible. If a line of the stack trace cannot be remapped for any reason, Cloudflare will leave that line of the stack trace unchanged, and continue to the next line of the stack trace.
 

@@ -18,7 +18,7 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Cloudflare has bot management capabilities to help identify and mitigate automated traffic to protect domains from bad bots. [Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/bot-fight-mode/) and [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) are options available on Free and Pro/Business accounts respectively. They offer a subset of features and capabilities available for Enterprise accounts. This reference architecture diagram focuses on [Enterprise Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) available for Enterprise customers.
 
-With [Enterprise Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) customers have the maximum protection, features, and capability. A [bot score ↗](https://developers.cloudflare.com/bots/concepts/bot-score/) is exposed for every request. Cloudflare applies a layered detection approach to Bot Management with several detection engines that cumulatively can impact the bot score. A bot score is a score from 1 to 99 that indicates the likelihood that the request came from a bot. Scores below 30 are commonly associated with bot traffic and customers can then take action on this score with [WAF custom rules ↗](https://developers.cloudflare.com/waf/custom-rules/) or [Workers ↗](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties). Additionally, customers can view this score along with other bot specifics like bot score source, bot detection IDs, and bot detection tags in the Bots, Security Analytics, and Events dashboards; these fields can also be seen in more detailed logs in Log Explorer or, with Log Push, logs with these respective fields can be exported to 3rd party SIEMs/Analytics platforms.
+With [Enterprise Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/) customers have the maximum protection, features, and capability. A [bot score ↗︎](https://developers.cloudflare.com/bots/concepts/bot-score/) is exposed for every request. Cloudflare applies a layered detection approach to Bot Management with several detection engines that cumulatively can impact the bot score. A bot score is a score from 1 to 99 that indicates the likelihood that the request came from a bot. Scores below 30 are commonly associated with bot traffic and customers can then take action on this score with [WAF custom rules ↗︎](https://developers.cloudflare.com/waf/custom-rules/) or [Workers ↗︎](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties). Additionally, customers can view this score along with other bot specifics like bot score source, bot detection IDs, and bot detection tags in the Bots, Security Analytics, and Events dashboards; these fields can also be seen in more detailed logs in Log Explorer or, with Log Push, logs with these respective fields can be exported to 3rd party SIEMs/Analytics platforms.
 
 ## Definitions
 
@@ -26,7 +26,7 @@ With [Enterprise Bot Management](https://developers.cloudflare.com/bots/get-star
 - **Bot Score Source:** Bot Score Source is the detection engine used for the bot score.
 - **Bot Detection ID:** [Detection IDs](https://developers.cloudflare.com/bots/additional-configurations/detection-ids/) are static rules used to detect predictable bot behavior with no overlap with human traffic. Detection IDs refer to the precise [detection](https://developers.cloudflare.com/bots/concepts/bot-detection-engines/) used to identify a bot, which could be from heuristics, verified bot detections, or anomaly detections.
 - **Bot Tag:** [Bot tags](https://developers.cloudflare.com/bots/concepts/bot-tags/) provide more detail about why Cloudflare assigned a [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) to a request.
-- **Verified Bots:** Cloudflare maintains [a list of "Verified" good bots ↗](https://radar.cloudflare.com/traffic/verified-bots) which can be used in policies to insure good bots such as those associated with a search engine are not blocked.
+- **Verified Bots:** Cloudflare maintains [a list of "Verified" good bots ↗︎](https://radar.cloudflare.com/traffic/verified-bots) which can be used in policies to insure good bots such as those associated with a search engine are not blocked.
 - **AI Bots:** [If the feature is enabled](https://developers.cloudflare.com/bots/concepts/bot/#ai-bots), Cloudflare will detect and block verified AI bots that respect `robots.txt` and crawl rate, and do not hide their behavior from your website. The rule has also been expanded to include more signatures of AI bots that do not follow the rules.
 
 ## Cloudflare Bot Management Detection Engines
@@ -57,10 +57,10 @@ Cloudflare bot score and bot traffic analysis is available in several locations.
 
 # Related Resources
 
-- [Cloudflare Bot Management Product Page ↗](https://www.cloudflare.com/application-services/products/bot-management/)
-- [Cloudflare Blog - Bot Management ↗](https://blog.cloudflare.com/tag/bot-management/)
+- [Cloudflare Bot Management Product Page ↗︎](https://www.cloudflare.com/application-services/products/bot-management/)
+- [Cloudflare Blog - Bot Management ↗︎](https://blog.cloudflare.com/tag/bot-management/)
 - [Bots documentation](https://developers.cloudflare.com/bots/)
-- [Video: Cloudflare Bot Management and Turnstile with Demo ↗](https://youtu.be/6EnekTohO7I?si=tk8FUB0xtk1PxsJV)
+- [Video: Cloudflare Bot Management and Turnstile with Demo ↗︎](https://youtu.be/6EnekTohO7I?si=tk8FUB0xtk1PxsJV)
 
 Was this helpful?
 

@@ -21,7 +21,7 @@ This guide instructs you on how to:
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/).
 2. [Connect your domain to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/).
 3. Make sure your domain is [proxying traffic through Cloudflare](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy).
 
@@ -41,7 +41,7 @@ To block specific AI crawlers:
 
 Quality of AI crawler detection
 
-On the free plan, AI Crawl Control identifies AI crawlers based on their [user agent strings ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent). This enables AI Crawl Control to detect well-known, self-identifying AI crawlers.
+On the free plan, AI Crawl Control identifies AI crawlers based on their [user agent strings ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent). This enables AI Crawl Control to detect well-known, self-identifying AI crawlers.
 
 Upgrade your plan to enable a more thorough detection using Cloudflare's [Bot Management detection ID](https://developers.cloudflare.com/bots/reference/bot-management-variables/#ruleset-engine-fields) field.
 
@@ -68,7 +68,7 @@ Note that on free plans, the **Metrics** tab only displays metrics for the past 
 
 | All plans | Enterprise plans with Bot Management |
 | --- | --- |
-| AI crawler detection via [user agent strings ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent) | Advanced AI crawler detection via [Bot Management detection ID](https://developers.cloudflare.com/bots/reference/bot-management-variables/#ruleset-engine-fields) |
+| AI crawler detection via [user agent strings ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent) | Advanced AI crawler detection via [Bot Management detection ID](https://developers.cloudflare.com/bots/reference/bot-management-variables/#ruleset-engine-fields) |
 | Maximum 24-hour analytics window | Configurable analytics timeframes |
 | Allow/block controls | Allow/block controls, and the ability to charge AI crawlers using [pay per crawl](https://developers.cloudflare.com/ai-crawl-control/features/pay-per-crawl/what-is-pay-per-crawl/) |
 
@@ -82,7 +82,7 @@ Note that on free plans, the **Metrics** tab only displays metrics for the past 
 
 Refer to the following related resources:
 
-- Cloudflare blog: [Start auditing and controlling the AI models accessing your content ↗](https://blog.cloudflare.com/nl-nl/cloudflare-ai-audit-control-ai-content-crawlers/)
+- Cloudflare blog: [Start auditing and controlling the AI models accessing your content ↗︎](https://blog.cloudflare.com/nl-nl/cloudflare-ai-audit-control-ai-content-crawlers/)
 - Block AI crawlers that do not adhere to recommended guidelines using [Cloudflare AI Labyrinth](https://developers.cloudflare.com/bots/additional-configurations/ai-labyrinth/).
 - [Direct AI crawlers with managed robots.txt](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/).
 

@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/tutorials/grafana/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Grafana ↗](https://grafana.com/) is a dashboard tool that visualizes data stored in other databases. You can use Grafana to convert your [tunnel metrics](https://developers.cloudflare.com/tunnel/observability/#metrics) into actionable insights.
+[Grafana ↗︎](https://grafana.com/) is a dashboard tool that visualizes data stored in other databases. You can use Grafana to convert your [tunnel metrics](https://developers.cloudflare.com/tunnel/observability/#metrics) into actionable insights.
 
-It is not possible to push metrics directly from `cloudflared` to Grafana. Instead, `cloudflared` runs a [Prometheus ↗](https://prometheus.io) metrics endpoint, which a Prometheus server periodically scrapes. Grafana then uses Prometheus as a data source to present metrics to the administrator.
+It is not possible to push metrics directly from `cloudflared` to Grafana. Instead, `cloudflared` runs a [Prometheus ↗︎](https://prometheus.io) metrics endpoint, which a Prometheus server periodically scrapes. Grafana then uses Prometheus as a data source to present metrics to the administrator.
 
 ```
 flowchart LR
@@ -52,7 +52,7 @@ If your tunnel was created via the dashboard, the [`--metrics`](https://develope
 
 On the Prometheus and Grafana server (`192.168.1.2`):
 
-1. [Download ↗](https://prometheus.io/download/) Prometheus.
+1. [Download ↗︎](https://prometheus.io/download/) Prometheus.
 2. Extract Prometheus:
 
    ```sh
@@ -114,7 +114,7 @@ Refer to [Available metrics](https://developers.cloudflare.com/tunnel/observabil
 
 ## Connect Grafana to Prometheus
 
-1. [Download ↗](https://grafana.com/grafana/download) and install Grafana.
+1. [Download ↗︎](https://grafana.com/grafana/download) and install Grafana.
 2. Start Grafana as a system service:
 
    ```sh

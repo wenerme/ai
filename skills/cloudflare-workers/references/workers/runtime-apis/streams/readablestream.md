@@ -39,7 +39,7 @@ let reader = readable.getReader({ mode: 'byob' });
 - `cancel(reasonstringoptional)` : Promise\<void>
   - Cancels the stream. `reason` is an optional human-readable string indicating the reason for cancellation. `reason` will be passed to the underlying source’s cancel algorithm. Any data not yet read is lost.
 - `tee()` : \[ReadableStream, ReadableStream]
-  - Locks the stream and returns an array of two new `ReadableStream` instances, each of which reads the same data as the original stream. Backpressure to the underlying source follows the branch with the most unread data, which avoids unbounded buffering when one branch reads more slowly than the other, as long as the underlying source responds to backpressure. Refer to [workerd's streams documentation ↗](https://github.com/cloudflare/workerd/blob/main/src/workerd/api/streams/README.md#tee-behavior) for implementation details.
+  - Locks the stream and returns an array of two new `ReadableStream` instances, each of which reads the same data as the original stream. Backpressure to the underlying source follows the branch with the most unread data, which avoids unbounded buffering when one branch reads more slowly than the other, as long as the underlying source responds to backpressure. Refer to [workerd's streams documentation ↗︎](https://github.com/cloudflare/workerd/blob/main/src/workerd/api/streams/README.md#tee-behavior) for implementation details.
 - `values(optionsObject)` : AsyncIterableIterator
   - Returns an async iterator that reads and consumes the chunks of the stream. This method accepts an object argument indicating options. The only supported option is `preventCancel`, which, when `true`, prevents the stream from being canceled when the iterator exits early (for example, from a `break` statement). A `ReadableStream` is also async iterable directly:
 
@@ -90,8 +90,8 @@ const stream = ReadableStream.from(
 ## Related resources
 
 - [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/)
-- [Readable streams in the WHATWG Streams API specification ↗](https://streams.spec.whatwg.org/#rs-model)
-- [MDN’s `ReadableStream` documentation ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+- [Readable streams in the WHATWG Streams API specification ↗︎](https://streams.spec.whatwg.org/#rs-model)
+- [MDN’s `ReadableStream` documentation ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
 
 Was this helpful?
 

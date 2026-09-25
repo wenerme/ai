@@ -16,7 +16,7 @@ Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Add Guardrails to any gateway to start evaluating and potentially modifying responses.
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** > **AI Gateway**.
 3. Select a gateway.
 4. Go to **Guardrails**.

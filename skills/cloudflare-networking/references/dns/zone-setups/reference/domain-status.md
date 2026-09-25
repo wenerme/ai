@@ -73,7 +73,7 @@ Cloudflare responds to DNS queries for pending zones on the assigned Cloudflare 
 - [CNAME setup (Partial)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/): You have either not added the verification TXT record to your authoritative DNS provider or the record has not yet been authenticated by Cloudflare.
 - [Cloudflare as Secondary DNS provider](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/): When you have either not [changed your authoritative nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to include the Cloudflare Secondary nameservers or your change has not yet been authenticated by Cloudflare.
 
-After you add your domain, Cloudflare performs checks on a schedule to confirm you have updated your nameservers. The first check occurs after 60 seconds and the following attempts happen at gradually increased intervals. You can re-trigger the check [via API](https://developers.cloudflare.com/api/resources/zones/subresources/activation_check/methods/trigger/) or on the Dashboard, in the respective domain [Overview page ↗](https://dash.cloudflare.com/?to=/:account/:zone/).
+After you add your domain, Cloudflare performs checks on a schedule to confirm you have updated your nameservers. The first check occurs after 60 seconds and the following attempts happen at gradually increased intervals. You can re-trigger the check [via API](https://developers.cloudflare.com/api/resources/zones/subresources/activation_check/methods/trigger/) or on the Dashboard, in the respective domain [Overview page ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/).
 
 The activation check behavior depends on your zone setup:
 

@@ -76,11 +76,11 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
 
 ## Enable the Integration in Elastic
 
-Once the Logpush job is configured, follow Elastics instructions for [setting up the Integration ↗](https://docs.elastic.co/integrations/cloudflare_logpush) in the Elastic app.
+Once the Logpush job is configured, follow Elastics instructions for [setting up the Integration ↗︎](https://docs.elastic.co/integrations/cloudflare_logpush) in the Elastic app.
 
 ## View Dashboards
 
-Log in to your [Elastic account ↗](https://www.elastic.co/) to view prebuilt dashboards and configure alerts.
+Log in to your [Elastic account ↗︎](https://www.elastic.co/) to view prebuilt dashboards and configure alerts.
 
 Was this helpful?
 

@@ -39,7 +39,7 @@ You can configure BYOK from the dashboard or by using the API.
 
 When you add a provider key from the dashboard, AI Gateway creates and names the Secrets Store secret automatically.
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** > **AI Gateway**.
 3. Select your gateway or create a new one.
 4. Go to the **Provider Keys** section.

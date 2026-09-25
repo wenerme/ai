@@ -26,15 +26,15 @@ Every file added to IPFS is given a unique address derived from a hash of the fi
 
 Because the CID is derived from the content itself, two identical files always produce the same CID, and any change to a file produces a different CID. This is what makes IPFS "content-addressed" — you look up files by what they contain, not by where they are stored.
 
-IPFS uses [SHA-256 ↗](https://en.wikipedia.org/wiki/SHA-2) by default, and encodes the result with [Base58 ↗](https://en.wikipedia.org/wiki/Base58) — an encoding scheme that omits visually ambiguous characters (such as zero and the capital letter O) to reduce transcription errors.
+IPFS uses [SHA-256 ↗︎](https://en.wikipedia.org/wiki/SHA-2) by default, and encodes the result with [Base58 ↗︎](https://en.wikipedia.org/wiki/Base58) — an encoding scheme that omits visually ambiguous characters (such as zero and the capital letter O) to reduce transcription errors.
 
 A CID typically looks like: `QmXoypizjW3WknFiJnKLwHCnL72vedxjQkDDP1mXWo6uco`
 
-IPFS also supports other encodings ([Base32 ↗](https://en.wikipedia.org/wiki/Base32)) and hash algorithms ([SHA-3 ↗](https://en.wikipedia.org/wiki/SHA-3), [BLAKE2 ↗](<https://en.wikipedia.org/wiki/BLAKE_(hash_function)>)).
+IPFS also supports other encodings ([Base32 ↗︎](https://en.wikipedia.org/wiki/Base32)) and hash algorithms ([SHA-3 ↗︎](https://en.wikipedia.org/wiki/SHA-3), [BLAKE2 ↗︎](<https://en.wikipedia.org/wiki/BLAKE_(hash_function)>)).
 
 ## Uploading to IPFS
 
-IPFS tracks which computers have which files using a [Distributed Hash Table (DHT) ↗](https://en.wikipedia.org/wiki/Distributed_hash_table) — a lookup system that maps CIDs to the network addresses of computers hosting that content. No single computer holds the entire lookup table. Instead, each computer in the network stores a portion of it and knows where to find the rest.
+IPFS tracks which computers have which files using a [Distributed Hash Table (DHT) ↗︎](https://en.wikipedia.org/wiki/Distributed_hash_table) — a lookup system that maps CIDs to the network addresses of computers hosting that content. No single computer holds the entire lookup table. Instead, each computer in the network stores a portion of it and knows where to find the rest.
 
 "Uploading" content to IPFS does not mean sending your file to a central server. It means announcing to the network that you have the content by adding an entry to the DHT that maps your file's CID to your network address. When someone else wants to download that file, they look up the CID in the DHT, find your address, and download the data directly from you.
 
@@ -59,7 +59,7 @@ Directories make it possible to address an entire static website with a single C
 
 ## Related resources
 
-For help with additional concepts, refer to the [IPFS ↗](https://docs.ipfs.tech/concepts/) documentation.
+For help with additional concepts, refer to the [IPFS ↗︎](https://docs.ipfs.tech/concepts/) documentation.
 
 Was this helpful?
 

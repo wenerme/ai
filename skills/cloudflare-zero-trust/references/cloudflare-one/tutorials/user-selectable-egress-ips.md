@@ -144,7 +144,7 @@ Each tunnel connected to your private network should have each of your virtual n
 
 Next, assign your dedicated egress IPs to each virtual network using Gateway egress policies.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Egress policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Egress policies**.
 2. Select **Add a policy**.
 3. Name your policy. We recommend including the country or region traffic will egress from.
 4. Add the virtual network with the *Virtual Network* selector. For example:
@@ -228,7 +228,7 @@ iOS and Android
 </summary>
 
 1. On your user's device, log in to your Zero Trust organization in the Cloudflare One Agent app.
-2. In a browser, go to <a href="https://ifconfig.me/">ifconfig.me ↗</a>. Your organization's default egress IP should appear in **IP Address**.
+2. In a browser, go to <a href="https://ifconfig.me/">ifconfig.me ↗︎</a>. Your organization's default egress IP should appear in **IP Address**.
 3. In Cloudflare One Agent, go to **Advanced** &gt; **Connection options** &gt; **Virtual networks**. Choose a virtual network you created.
 4. Check the egress IP address by reloading the browser page from Step 1. The IP address specified in your egress policy should appear in **IP Address**.
 

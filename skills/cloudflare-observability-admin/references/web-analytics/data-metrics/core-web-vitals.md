@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/web-analytics/data-metrics/core-web-vitals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Core Web Vitals ↗](https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/) are high-level metrics designed to measure the perceived performance of websites and web applications.
+[Core Web Vitals ↗︎](https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/) are high-level metrics designed to measure the perceived performance of websites and web applications.
 
 Three core Web Vitals metrics are measured: Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift. Each of these metrics is automatically assigned a rating of Good, Needs Improvement, or Poor based on the thresholds defined by Google.
 
@@ -29,13 +29,13 @@ Core Web Vitals enables you to easily pinpoint which elements in a web page are 
 
 Core Web Vitals is divided into three main sections, each one with information about a specific feature that affects user experience:
 
-- [Largest Contentful Paint (LCP) ↗](https://web.dev/optimize-lcp/): Measures perceived load speed by the user — how long the main content of the page takes to be loaded.
-- [Interaction to Next Paint (INP) ↗](https://web.dev/inp/): Measures user interface responsiveness – how quickly a website responds to user interactions like clicks, taps or key presses.
-- [Cumulative Layout Shift (CLS) ↗](https://web.dev/optimize-cls/): Measures visual stability — to what extent there are unexpected shifts in the page layout during and after page load.
+- [Largest Contentful Paint (LCP) ↗︎](https://web.dev/optimize-lcp/): Measures perceived load speed by the user — how long the main content of the page takes to be loaded.
+- [Interaction to Next Paint (INP) ↗︎](https://web.dev/inp/): Measures user interface responsiveness – how quickly a website responds to user interactions like clicks, taps or key presses.
+- [Cumulative Layout Shift (CLS) ↗︎](https://web.dev/optimize-cls/): Measures visual stability — to what extent there are unexpected shifts in the page layout during and after page load.
 
 Note
 
-Currently, Cumulative Layout Shift is only supported in Chromium browsers, Firefox and Safari have not implemented [support for the Layout Instability API ↗](https://caniuse.com/wf-layout-instability).
+Currently, Cumulative Layout Shift is only supported in Chromium browsers, Firefox and Safari have not implemented [support for the Layout Instability API ↗︎](https://caniuse.com/wf-layout-instability).
 
 Each of these metrics represents an impact to the user experience, which is quantified and graded by Web Analytics.
 
@@ -67,7 +67,7 @@ The URL path at the time the Core Web Vitals are captured.
 
 #### Value
 
-[The metric value ↗](https://web.dev/cls/#layout-shift-score) for each Core Web Vitals. This value is in milliseconds for LCP or INP and a score for CLS.
+[The metric value ↗︎](https://web.dev/cls/#layout-shift-score) for each Core Web Vitals. This value is in milliseconds for LCP or INP and a score for CLS.
 
 ### Additional data collected for Largest Contentful Paint
 

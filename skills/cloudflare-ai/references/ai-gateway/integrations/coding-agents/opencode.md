@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/opencode/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[OpenCode ↗](https://opencode.ai/) is an open source coding agent that supports custom provider configuration. Point its built-in providers at AI Gateway to observe and control model requests from OpenCode.
+[OpenCode ↗︎](https://opencode.ai/) is an open source coding agent that supports custom provider configuration. Point its built-in providers at AI Gateway to observe and control model requests from OpenCode.
 
 Note
 
-This custom setup is intended for organizations that need more control and want to distribute configuration to a team. For individual use, OpenCode's standard [Cloudflare AI Gateway provider setup ↗](https://opencode.ai/docs/providers/#cloudflare-ai-gateway) is usually sufficient.
+This custom setup is intended for organizations that need more control and want to distribute configuration to a team. For individual use, OpenCode's standard [Cloudflare AI Gateway provider setup ↗︎](https://opencode.ai/docs/providers/#cloudflare-ai-gateway) is usually sufficient.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ Before you start, you need:
 
 - An AI Gateway and its gateway slug.
 - [Sufficient Unified Billing credits](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#load-credits) or a stored [provider key](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) with the `default` alias for each provider.
-- [OpenCode installed ↗](https://opencode.ai/docs/).
+- [OpenCode installed ↗︎](https://opencode.ai/docs/).
 
 ## Connect with a gateway token
 
@@ -102,7 +102,7 @@ To use this method, you also need an [authenticated gateway](https://developers.
    }
    ```
 
-   Leave each `apiKey` value empty. AI Gateway supplies provider credentials through Unified Billing or your stored provider keys. To use a stored key without the `default` alias, add the [`cf-aig-byok-alias` header](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/#key-aliases) to that provider's `headers` object. Remove providers that you do not use. For more configuration options, refer to [OpenCode providers ↗](https://opencode.ai/docs/providers/).
+   Leave each `apiKey` value empty. AI Gateway supplies provider credentials through Unified Billing or your stored provider keys. To use a stored key without the `default` alias, add the [`cf-aig-byok-alias` header](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/#key-aliases) to that provider's `headers` object. Remove providers that you do not use. For more configuration options, refer to [OpenCode providers ↗︎](https://opencode.ai/docs/providers/).
 3. Start OpenCode and select a configured provider and model:
 
    ```sh
@@ -125,7 +125,7 @@ Caution
 
 OpenCode executes the `auth.command` from the discovery file. Only host these files on infrastructure that you control. Protect the configuration host and its DNS from unauthorized changes.
 
-Users can override remote configuration in their global or project configuration. To enforce organization-wide settings, refer to [OpenCode managed settings ↗](https://opencode.ai/docs/config/#managed-settings).
+Users can override remote configuration in their global or project configuration. To enforce organization-wide settings, refer to [OpenCode managed settings ↗︎](https://opencode.ai/docs/config/#managed-settings).
 
 The following example uses `ai.example.com` for the AI Gateway domain and `config.example.com` for the configuration host. Replace both hostnames with your own values.
 

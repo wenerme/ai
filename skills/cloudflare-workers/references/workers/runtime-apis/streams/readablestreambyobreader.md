@@ -58,7 +58,7 @@ In practice, the Workers team has found that `read` typically fills only 1% of t
 ## Related resources
 
 - [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/)
-- [Background about BYOB readers in the Streams API WHATWG specification ↗](https://streams.spec.whatwg.org/#byob-readers)
+- [Background about BYOB readers in the Streams API WHATWG specification ↗︎](https://streams.spec.whatwg.org/#byob-readers)
 
 Was this helpful?
 

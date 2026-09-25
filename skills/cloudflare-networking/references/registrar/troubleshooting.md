@@ -34,7 +34,7 @@ Authorization codes are usually only valid for a limited period. If your code is
 
 ## Cannot find where to enter your authorization code
 
-Unlike some registrars, Cloudflare does not allow you to submit an authorization code upfront. Cloudflare requires your domain to be active on its network first so that your site benefits from Cloudflare performance and security features from the moment the transfer begins. You must first [add your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/), and wait for the zone to show **Active** status in the Cloudflare dashboard. Only then will the [Transfer Domains ↗](https://dash.cloudflare.com/?to=/:account/registrar/transfer) page allow you to enter your code.
+Unlike some registrars, Cloudflare does not allow you to submit an authorization code upfront. Cloudflare requires your domain to be active on its network first so that your site benefits from Cloudflare performance and security features from the moment the transfer begins. You must first [add your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to Cloudflare, [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/), and wait for the zone to show **Active** status in the Cloudflare dashboard. Only then will the [Transfer Domains ↗︎](https://dash.cloudflare.com/?to=/:account/registrar/transfer) page allow you to enter your code.
 
 If your zone is still **Pending**, verify that you updated nameservers correctly at your current registrar and wait up to 24 hours. If you already have an authorization code, keep in mind that most codes are only valid for a limited period. If your code expires while you wait for the zone to activate, request a new one from your current registrar before proceeding.
 
@@ -98,7 +98,7 @@ Most domains can be transferred with WHOIS privacy enabled. However, some regist
 
 ## Payment failed during transfer
 
-If your payment method was declined after submitting the authorization code, the transfer may be in a partially started state. Update your payment method in your Cloudflare billing settings and check the [Transfer Domains ↗](https://dash.cloudflare.com/?to=/:account/registrar/transfer) page for the current status.
+If your payment method was declined after submitting the authorization code, the transfer may be in a partially started state. Update your payment method in your Cloudflare billing settings and check the [Transfer Domains ↗︎](https://dash.cloudflare.com/?to=/:account/registrar/transfer) page for the current status.
 
 ## Transfer is taking too long
 
@@ -106,7 +106,7 @@ Domain transfers typically take 3-5 business days. Some TLDs (such as `.mx`) can
 
 ## Domain not available for transfer
 
-Your domain may not appear on the [Transfer Domains ↗](https://dash.cloudflare.com/?to=/:account/registrar/transfer) page if:
+Your domain may not appear on the [Transfer Domains ↗︎](https://dash.cloudflare.com/?to=/:account/registrar/transfer) page if:
 
 - You have not [added your domain](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) to your Cloudflare account, or it is still in **Pending** status. Your domain must be **Active** before you can transfer it.
 - The domain was registered or previously transferred in the last 60 days (ICANN requirement).

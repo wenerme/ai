@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/indicator-feeds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare's threat intelligence team crowdsources attack trends and protects users automatically, such as from zero-day vulnerabilities like the [HTTP/2 Rapid Reset attack ↗](https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack/). However, in some cases, Cloudflare will partner with external entities that have their own feeds which can be shared with eligible Cloudflare users.
+Cloudflare's threat intelligence team crowdsources attack trends and protects users automatically, such as from zero-day vulnerabilities like the [HTTP/2 Rapid Reset attack ↗︎](https://blog.cloudflare.com/technical-breakdown-http2-rapid-reset-ddos-attack/). However, in some cases, Cloudflare will partner with external entities that have their own feeds which can be shared with eligible Cloudflare users.
 
 With Custom Indicator Feeds, Cloudflare provides a threat intelligence feed based on data received from various Cyber Defense Collaboration groups. The security filtering capabilities are available to eligible public and private sector organizations.
 
@@ -24,8 +24,8 @@ Cloudflare provides some feeds to Gateway users without the need to establish a 
 
 | Name | Description | Availability |
 | --- | --- | --- |
-| [Treasury Early Indicator Feed ↗](https://www.cloudflare.com/press-releases/2024/us-department-of-treasury-pnnl-finserv-threat-intel-feed/), Feed ID 14 | Threat data for financial institutions provided by the US Department of Treasury and Pacific Northwest National Laboratory (PNNL). For more information, contact your account team. | Approved financial services organizations |
-| [UK NCSC Public Threat Indicators ↗](https://www.ncsc.gov.uk/information/pdns) Feed ID 24 | Recursive DNS service supplied by the UK National Cyber Security Centre (NCSC) to block DNS-based malware. | All users |
+| [Treasury Early Indicator Feed ↗︎](https://www.cloudflare.com/press-releases/2024/us-department-of-treasury-pnnl-finserv-threat-intel-feed/), Feed ID 14 | Threat data for financial institutions provided by the US Department of Treasury and Pacific Northwest National Laboratory (PNNL). For more information, contact your account team. | Approved financial services organizations |
+| [UK NCSC Public Threat Indicators ↗︎](https://www.ncsc.gov.uk/information/pdns) Feed ID 24 | Recursive DNS service supplied by the UK National Cyber Security Centre (NCSC) to block DNS-based malware. | All users |
 | Cloudforce One - Public Feed Feed ID 34 | Feed of indicators. | All users |
 
 ## Get started
@@ -76,7 +76,7 @@ Providers can create and manage a Custom Indicator Feed with the [Custom Indicat
    ```
 
 
-3. Upload data to the feed with the [Update indicator feed data endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator_feeds/subresources/snapshots/methods/update/). Uploaded indicator data must be in a [`.stix2` ↗](https://oasis-open.github.io/cti-documentation/stix/intro) formatted file. The [maximum upload file size](https://developers.cloudflare.com/r2/platform/limits/) is 4.995 GiB.
+3. Upload data to the feed with the [Update indicator feed data endpoint](https://developers.cloudflare.com/api/resources/intel/subresources/indicator_feeds/subresources/snapshots/methods/update/). Uploaded indicator data must be in a [`.stix2` ↗︎](https://oasis-open.github.io/cti-documentation/stix/intro) formatted file. The [maximum upload file size](https://developers.cloudflare.com/r2/platform/limits/) is 4.995 GiB.
 
    *Update indicator feed databash*
 
@@ -162,7 +162,7 @@ Providers can create and manage a Custom Indicator Feed with the [Custom Indicat
 
 Once an account is granted access to a feed, it will be available to match traffic as a [selector in Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#indicator-feeds).
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** > **Firewall policies**. Select **DNS**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Traffic policies** > **Firewall policies**. Select **DNS**.
 2. To create a new DNS policy, select **Add a policy**.
 3. Name your policy.
 4. In **Traffic**, add a condition with the **Indicator Feeds** selector. If your account has been granted access to a Custom Indicator Feed, Gateway will list the feed in **Value**. For example, you can block sites that appear in a feed:

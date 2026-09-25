@@ -16,7 +16,7 @@ Connect Hyperdrive to a pgEdge Postgres database.
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/pgedge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example shows you how to connect Hyperdrive to a [pgEdge ↗](https://pgedge.com/) Postgres database. pgEdge Cloud provides easy deployment of fully-managed, fully-distributed, and secure Postgres.
+This example shows you how to connect Hyperdrive to a [pgEdge ↗︎](https://pgedge.com/) Postgres database. pgEdge Cloud provides easy deployment of fully-managed, fully-distributed, and secure Postgres.
 
 ## 1. Allow Hyperdrive access
 
@@ -26,7 +26,7 @@ You can connect Hyperdrive to any existing pgEdge database with the default user
 
 To retrieve your connection string from the pgEdge dashboard:
 
-1. Go to the [**pgEdge dashboard** ↗](https://app.pgedge.com) and select the database you wish to connect to.
+1. Go to the [**pgEdge dashboard** ↗︎](https://app.pgedge.com) and select the database you wish to connect to.
 2. From the **Connect to your database** section, note down the connection string (starting with `postgres://app@...`) from the **Connection String** text box.
 
 ## 2. Create a database configuration
@@ -70,7 +70,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -89,7 +89,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -158,7 +158,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -171,7 +171,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

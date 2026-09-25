@@ -18,7 +18,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 With Adaptive Bit Rate (ABR) sampling, every analytics query that supports ABR will be calculated at a resolution matching the query. Depending on the size of your query, the ABR mechanism will choose the best sampling rate and fetch a response from one of the sample tables encapsulated behind each [Network Analytics node](https://developers.cloudflare.com/analytics/graphql-api/migration-guides/network-analytics-v2/node-reference/). The cardinality and accuracy are preserved even for historical data.
 
-For more background information on Adaptive Bit Rate sampling, refer to the [Explaining Cloudflare's ABR Analytics ↗](https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/) blog post.
+For more background information on Adaptive Bit Rate sampling, refer to the [Explaining Cloudflare's ABR Analytics ↗︎](https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/) blog post.
 
 ## Edge Sample Enrichment
 

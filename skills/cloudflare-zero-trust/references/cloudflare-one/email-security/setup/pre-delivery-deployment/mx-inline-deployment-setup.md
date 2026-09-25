@@ -18,13 +18,13 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To use Email security, you will need to have:
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up)
 - A [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization)
 - A domain to protect
 
 ## Initiate MX/Inline configuration
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **Overview**. Select one of the following options:
 
@@ -45,7 +45,7 @@ MX/Inline does not require an integration for protection to be effective. Howeve
 
 To associate an integration:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS Integrations** > **Integrations**
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Integrations** > **Cloud & SaaS Integrations** > **Integrations**
 2. Select **Connect an integration**.
 3. Select an application: Choose between **Google Workspace CASB + EMAIL**, or **Microsoft CASB + EMAIL**.
    - Refer to [Enable Gmail BCC integration](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/#1-create-a-service-account-in-your-gcp-project) if you select **Google Workspace CASB + EMAIL**.
@@ -101,7 +101,7 @@ Then, follow the steps to [Set up MX/Inline](https://developers.cloudflare.com/c
 
 To verify that the deployment has been successful and that your emails are being scanned:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), select **Email security**.
 2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Under **Your domains**, locate your domain, and verify that **Status** (which describes the state of the configuration) displays **Active**.
 

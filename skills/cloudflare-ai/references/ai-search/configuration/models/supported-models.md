@@ -18,7 +18,7 @@ This page lists all models supported by AI Search and their lifecycle status.
 
 Request model support
 
-If you would like to use a model that is not currently supported, reach out to us on [Discord ↗](https://discord.gg/cloudflaredev) to request it.
+If you would like to use a model that is not currently supported, reach out to us on [Discord ↗︎](https://discord.gg/cloudflaredev) to request it.
 
 ## Production models
 

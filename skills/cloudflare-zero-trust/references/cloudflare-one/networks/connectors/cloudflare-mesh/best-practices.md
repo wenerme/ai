@@ -82,17 +82,17 @@ When deploying Mesh nodes in a cloud VPC, you may need to configure additional p
 
 ### Google Cloud Platform (GCP)
 
-[Enable IP forwarding ↗](https://cloud.google.com/vpc/docs/using-routes#canipforward) on the VM instance where you installed the Mesh node.
+[Enable IP forwarding ↗︎](https://cloud.google.com/vpc/docs/using-routes#canipforward) on the VM instance where you installed the Mesh node.
 
 ### Amazon Web Services (AWS)
 
-- Disable [source/destination checking ↗](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) on the EC2 instance.
-- In your [subnet route table ↗](https://docs.aws.amazon.com/vpc/latest/userguide/subnet-route-tables.html), add a route for Mesh traffic (for example, `100.96.0.0/12`) pointing to the EC2 instance.
+- Disable [source/destination checking ↗︎](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html) on the EC2 instance.
+- In your [subnet route table ↗︎](https://docs.aws.amazon.com/vpc/latest/userguide/subnet-route-tables.html), add a route for Mesh traffic (for example, `100.96.0.0/12`) pointing to the EC2 instance.
 
 ### Microsoft Azure
 
-- [Enable IP forwarding ↗](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface?tabs=azure-portal#enable-or-disable-ip-forwarding) on the network interface of the VM.
-- Add a [user-defined route ↗](https://learn.microsoft.com/en-us/azure/virtual-network/manage-route-table) for Mesh traffic pointing to the VM's private IP.
+- [Enable IP forwarding ↗︎](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface?tabs=azure-portal#enable-or-disable-ip-forwarding) on the network interface of the VM.
+- Add a [user-defined route ↗︎](https://learn.microsoft.com/en-us/azure/virtual-network/manage-route-table) for Mesh traffic pointing to the VM's private IP.
 
 ## Running Mesh on a DNS server
 
@@ -148,7 +148,7 @@ If source devices send packets near the maximum size (1,460 bytes or more), the 
 
 - Set the MTU on source devices (servers, cameras, IoT devices) to **1,280 bytes** to ensure packets fit after encapsulation.
 - For TCP-only traffic, apply MSS clamping on your router with a value of **1,240 bytes** (1,280 MTU - 20 byte IP header - 20 byte TCP header).
-- Modern applications using [Path MTU Discovery (PMTUD) ↗](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) typically handle this automatically.
+- Modern applications using [Path MTU Discovery (PMTUD) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) typically handle this automatically.
 
 Was this helpful?
 

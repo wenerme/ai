@@ -24,11 +24,11 @@ The recommended registries are AFRINIC, APNIC, ARIN, LACNIC, and RIPE. Refer to 
 
 | Route registry | URL |
 | --- | --- |
-| AFRINIC | [https://afrinic.net/internet-routing-registry#guide ↗](https://afrinic.net/internet-routing-registry#guide) |
-| APNIC | [https://www.apnic.net/manage-ip/apnic-services/routing-registry/ ↗](https://www.apnic.net/manage-ip/apnic-services/routing-registry/) |
-| ARIN | [https://www.arin.net/resources/manage/irr/quickstart/ ↗](https://www.arin.net/resources/manage/irr/quickstart/) |
-| LACNIC | [https://lacnic.zendesk.com/hc/articles/360038667154-What-are-a-route-and-a-route-6-objects ↗](https://lacnic.zendesk.com/hc/articles/360038667154-What-are-a-route-and-a-route-6-objects) |
-| RIPE | [https://www.ripe.net/manage-ips-and-asns/db/support/managing-route-objects-in-the-irr ↗](https://www.ripe.net/manage-ips-and-asns/db/support/managing-route-objects-in-the-irr) |
+| AFRINIC | [https://afrinic.net/internet-routing-registry#guide ↗︎](https://afrinic.net/internet-routing-registry#guide) |
+| APNIC | [https://www.apnic.net/manage-ip/apnic-services/routing-registry/ ↗︎](https://www.apnic.net/manage-ip/apnic-services/routing-registry/) |
+| ARIN | [https://www.arin.net/resources/manage/irr/quickstart/ ↗︎](https://www.arin.net/resources/manage/irr/quickstart/) |
+| LACNIC | [https://lacnic.zendesk.com/hc/articles/360038667154-What-are-a-route-and-a-route-6-objects ↗︎](https://lacnic.zendesk.com/hc/articles/360038667154-What-are-a-route-and-a-route-6-objects) |
+| RIPE | [https://www.ripe.net/manage-ips-and-asns/db/support/managing-route-objects-in-the-irr ↗︎](https://www.ripe.net/manage-ips-and-asns/db/support/managing-route-objects-in-the-irr) |
 
 ## Verify an IRR entry
 
@@ -48,7 +48,7 @@ Add or update IRR entries when they meet any of these criteria:
 
 ### Subnet prefix verification
 
-Use [IRR Explorer ↗](https://irrexplorer.nlnog.net) to verify which ASN is associated with a subnet prefix.
+Use [IRR Explorer ↗︎](https://irrexplorer.nlnog.net) to verify which ASN is associated with a subnet prefix.
 
 **Method:** Search for the subnet prefix IP, for example, `162.211.156.0/24`.
 
@@ -56,7 +56,7 @@ Use [IRR Explorer ↗](https://irrexplorer.nlnog.net) to verify which ASN is ass
 
 ### ASN verification
 
-Use [IRR Explorer ↗](https://irrexplorer.nlnog.net) to verify which prefixes are associated with an ASN.
+Use [IRR Explorer ↗︎](https://irrexplorer.nlnog.net) to verify which prefixes are associated with an ASN.
 
 **Method:** Search for the ASN, for example `AS13335`.
 

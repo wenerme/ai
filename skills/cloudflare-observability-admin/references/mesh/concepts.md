@@ -73,9 +73,9 @@ If a Mesh node's device profile uses WireGuard instead, the following capabiliti
 
 Every participant is assigned a private IP from the `100.96.0.0/12` range. In other parts of the Cloudflare One documentation, these addresses are referred to as [device IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/).
 
-This range uses [CGNAT address space ↗](https://datatracker.ietf.org/doc/html/rfc6598) to avoid conflicts with RFC 1918 private ranges (`10.x`, `172.16.x`, `192.168.x`). If the default range conflicts with your network, you can [configure a custom subnet](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/).
+This range uses [CGNAT address space ↗︎](https://datatracker.ietf.org/doc/html/rfc6598) to avoid conflicts with RFC 1918 private ranges (`10.x`, `172.16.x`, `192.168.x`). If the default range conflicts with your network, you can [configure a custom subnet](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/).
 
-View a device's Mesh IP on the [Mesh overview page ↗](https://dash.cloudflare.com/?to=/:account/mesh) or on the node detail page in the dashboard.
+View a device's Mesh IP on the [Mesh overview page ↗︎](https://dash.cloudflare.com/?to=/:account/mesh) or on the node detail page in the dashboard.
 
 For details on reserved ranges, refer to [Reserved IP addresses](https://developers.cloudflare.com/cloudflare-one/networks/routes/reserved-ips/).
 
@@ -111,7 +111,7 @@ If you have used Tailscale, WireGuard, or a similar product, here is how concept
 | MagicDNS / custom DNS | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/">Local Domain Fallback</a> + <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/">Gateway resolver policies</a> |
 | ACLs / access rules | <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/">Gateway network policies</a> + <a href="https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/">device posture</a> |
 | Exit node | Attach a public CIDR to a Mesh node and traffic to those IPs exits through that node. For broader Internet filtering, use <a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/">Gateway egress policies</a>. |
-| Admin console | <a href="https://dash.cloudflare.com/?to=/:account/mesh">Cloudflare dashboard ↗</a> under **Networking** &gt; **Mesh** |
+| Admin console | <a href="https://dash.cloudflare.com/?to=/:account/mesh">Cloudflare dashboard ↗︎</a> under **Networking** &gt; **Mesh** |
 
 Key differences:
 

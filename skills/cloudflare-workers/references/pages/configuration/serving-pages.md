@@ -60,7 +60,7 @@ We will insert assets into the cache on a per-data center basis. Assets have a t
 
 ## Headers
 
-By default, Pages automatically adds several [HTTP response headers ↗](https://developer.mozilla.org/en-US/docs/Glossary/Response_header) when serving assets, including:
+By default, Pages automatically adds several [HTTP response headers ↗︎](https://developer.mozilla.org/en-US/docs/Glossary/Response_header) when serving assets, including:
 
 *Headers always addedtxt*
 

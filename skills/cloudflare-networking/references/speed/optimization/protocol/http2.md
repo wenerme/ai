@@ -18,7 +18,7 @@ HTTP/2 uses the TCP transport protocol and TLS to secure communications and impr
 
 Note
 
-For more background on HTTP/2, visit the [Learning Center ↗](https://www.cloudflare.com/learning/performance/http2-vs-http1.1/).
+For more background on HTTP/2, visit the [Learning Center ↗︎](https://www.cloudflare.com/learning/performance/http2-vs-http1.1/).
 
 ## Availability
 
@@ -37,7 +37,7 @@ Domains on Free plans cannot disable Cloudflare's HTTP/2 setting.
 
 To disable **HTTP/2** in the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Select your account and zone.
 3. Go to **Speed** > **Settings**.
 4. Go to **Protocol Optimization**.
@@ -57,9 +57,9 @@ The origin web server may be sending improperly formatted HTTP response headers.
 
 Make a request directly to your origin web server and inspect its HTTP response headers for anomalies. Make sure that the field values respect the following requirements:
 
-- [RFC 9110 ↗](https://www.rfc-editor.org/rfc/rfc9110.html#section-5.5)
-- [RFC 9113 ↗](https://www.rfc-editor.org/rfc/rfc9113.html#section-8.2.1)
-- [RFC 5234 ↗](https://www.rfc-editor.org/rfc/rfc5234#appendix-B.1)
+- [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#section-5.5)
+- [RFC 9113 ↗︎](https://www.rfc-editor.org/rfc/rfc9113.html#section-8.2.1)
+- [RFC 5234 ↗︎](https://www.rfc-editor.org/rfc/rfc5234#appendix-B.1)
 
 ### Compression issues
 

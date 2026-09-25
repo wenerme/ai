@@ -66,7 +66,7 @@ This is an internal error in the Cloudflare Pages SCM system. You can attempt to
 
 #### `GitHub/GitLab is having an incident and push events to Cloudflare are operating in a degraded state. Check their status page for more details.`
 
-This indicates that GitHub or GitLab may be experiencing an incident affecting push events to Cloudflare. It is recommended to monitor their status page ([GitHub ↗](https://www.githubstatus.com/), [GitLab ↗](https://status.gitlab.com/)) for updates and try deploying again later.
+This indicates that GitHub or GitLab may be experiencing an incident affecting push events to Cloudflare. It is recommended to monitor their status page ([GitHub ↗︎](https://www.githubstatus.com/), [GitLab ↗︎](https://status.gitlab.com/)) for updates and try deploying again later.
 
 Was this helpful?
 

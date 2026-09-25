@@ -45,7 +45,7 @@ All Cloudflare transactional emails will be sent from [noreply@notify.cloudflare
 
 4. Your inbox previously bounced too many messages from Cloudflare
 
-If you email server or mailbox was not working for any period of time, our mail service will stop attempting to send you messages if too many messages bounce. In this scenario, you will need to visit the [Support Portal ↗](https://dash.cloudflare.com/?to=/:account/support) and select the category Account > My Profile > Other.
+If you email server or mailbox was not working for any period of time, our mail service will stop attempting to send you messages if too many messages bounce. In this scenario, you will need to visit the [Support Portal ↗︎](https://dash.cloudflare.com/?to=/:account/support) and select the category Account > My Profile > Other.
 
 Was this helpful?
 

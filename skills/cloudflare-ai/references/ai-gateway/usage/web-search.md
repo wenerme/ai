@@ -31,7 +31,7 @@ For providers whose product is search itself — Perplexity and Parallel — ref
 
 ## Anthropic web search
 
-Anthropic models expose web search through their native [`web_search_20250305` tool ↗](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool). Add it to the `tools` array on a `POST /ai/v1/messages` request.
+Anthropic models expose web search through their native [`web_search_20250305` tool ↗︎](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool). Add it to the `tools` array on a `POST /ai/v1/messages` request.
 
 Supported models — `anthropic/claude-haiku-4.5`, `anthropic/claude-opus-4.5`, `anthropic/claude-opus-4.6`, `anthropic/claude-opus-4.7`, `anthropic/claude-opus-4.8`, `anthropic/claude-sonnet-4.5`, `anthropic/claude-sonnet-4.6`.
 
@@ -106,11 +106,11 @@ const resp = await env.AI.run(
 );
 ```
 
-Search invocations and results appear in the response as `server_tool_use` and `web_search_tool_result` content blocks. Configurable parameters include `max_uses`, `allowed_domains`, `blocked_domains`, and `user_location` — refer to Anthropic's [web search tool documentation ↗](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool) for the full list.
+Search invocations and results appear in the response as `server_tool_use` and `web_search_tool_result` content blocks. Configurable parameters include `max_uses`, `allowed_domains`, `blocked_domains`, and `user_location` — refer to Anthropic's [web search tool documentation ↗︎](https://platform.claude.com/docs/en/agents-and-tools/tool-use/web-search-tool) for the full list.
 
 ## OpenAI web search
 
-OpenAI models expose web search through the [`web_search_preview` tool ↗](https://developers.openai.com/api/docs/guides/tools-web-search) on the Responses API. Use the `POST /ai/v1/responses` endpoint and add the tool to the `tools` array.
+OpenAI models expose web search through the [`web_search_preview` tool ↗︎](https://developers.openai.com/api/docs/guides/tools-web-search) on the Responses API. Use the `POST /ai/v1/responses` endpoint and add the tool to the `tools` array.
 
 Supported models — `openai/gpt-4.1`, `openai/gpt-4.1-mini`, `openai/gpt-4o`, `openai/gpt-4o-mini`, `openai/gpt-5`, `openai/gpt-5-mini`, `openai/gpt-5-nano`, `openai/gpt-5.1`, `openai/gpt-5.4`, `openai/gpt-5.4-mini`, `openai/gpt-5.4-nano`, `openai/gpt-5.4-pro`, `openai/gpt-5.5`, `openai/gpt-5.5-pro`, `openai/o3`, `openai/o4-mini`.
 
@@ -172,7 +172,7 @@ Both `{ "type": "web_search_preview" }` and `{ "type": "web_search" }` are accep
 
 ## xAI web search
 
-xAI's multi-agent Grok model exposes web search through the [`web_search` tool ↗](https://docs.x.ai/developers/tools/web-search) on the Responses API. Add `{ "type": "web_search" }` to the `tools` array on a `POST /ai/v1/responses` request.
+xAI's multi-agent Grok model exposes web search through the [`web_search` tool ↗︎](https://docs.x.ai/developers/tools/web-search) on the Responses API. Add `{ "type": "web_search" }` to the `tools` array on a `POST /ai/v1/responses` request.
 
 Supported models — `xai/grok-4.20-multi-agent-0309`.
 
@@ -232,7 +232,7 @@ const resp = await env.AI.run(
 
 ## Alibaba (Qwen) web search
 
-Alibaba DashScope Qwen models enable web search through a top-level [`enable_search` ↗](https://www.alibabacloud.com/help/en/model-studio/qwen-search) flag on a chat completions request. Unlike Anthropic, OpenAI, and xAI, there is no `tools` entry — web search is activated by the flag alone.
+Alibaba DashScope Qwen models enable web search through a top-level [`enable_search` ↗︎](https://www.alibabacloud.com/help/en/model-studio/qwen-search) flag on a chat completions request. Unlike Anthropic, OpenAI, and xAI, there is no `tools` entry — web search is activated by the flag alone.
 
 Supported models — `alibaba/qwen3-max`, `alibaba/qwen3.5-397b-a17b`.
 
@@ -311,7 +311,7 @@ AI Gateway does not provide a provider-agnostic web search abstraction. Call the
 
 ### Perplexity
 
-Call any [Perplexity Sonar model ↗](https://docs.perplexity.ai/docs/sonar/models) through the [Perplexity provider proxy](https://developers.cloudflare.com/ai-gateway/usage/providers/perplexity/).
+Call any [Perplexity Sonar model ↗︎](https://docs.perplexity.ai/docs/sonar/models) through the [Perplexity provider proxy](https://developers.cloudflare.com/ai-gateway/usage/providers/perplexity/).
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/perplexity-ai/chat/completions \
@@ -327,7 +327,7 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/perplexity-a
 
 ### Parallel
 
-Call Parallel's Search API through the [Parallel provider proxy](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/). Refer to Parallel's [Search API documentation ↗](https://docs.parallel.ai/search/search-quickstart) for the full request schema.
+Call Parallel's Search API through the [Parallel provider proxy](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/). Refer to Parallel's [Search API documentation ↗︎](https://docs.parallel.ai/search/search-quickstart) for the full request schema.
 
 ```bash
 curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1beta/search \

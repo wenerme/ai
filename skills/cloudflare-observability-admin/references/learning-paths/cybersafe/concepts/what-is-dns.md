@@ -37,7 +37,7 @@ B -- 93.184.216.34 --> A
 
 ## Related resources
 
-For more background information on DNS, refer to our [Learning Center ↗](https://www.cloudflare.com/learning/dns/what-is-dns/).
+For more background information on DNS, refer to our [Learning Center ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/).
 
 Was this helpful?
 

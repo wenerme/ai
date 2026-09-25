@@ -26,7 +26,7 @@ Currently, when a packet capture is requested, packets flowing at Cloudflare's g
 
 Note
 
-For help determining which data center to select for a packet capture, visit [https://cloudflare.com/cdn-cgi/trace ↗](https://cloudflare.com/cdn-cgi/trace) and refer to the `colo` field. Note some data centers can be regional such as `ORD` while other names may be more specific like `ord02`. Either of these names can be used for this same field.
+For help determining which data center to select for a packet capture, visit [https://cloudflare.com/cdn-cgi/trace ↗︎](https://cloudflare.com/cdn-cgi/trace) and refer to the `colo` field. Note some data centers can be regional such as `ORD` while other names may be more specific like `ord02`. Either of these names can be used for this same field.
 
 ### Packet capture limits
 
@@ -43,7 +43,7 @@ For help determining which data center to select for a packet capture, visit [ht
 - `time_limit`: The minimum value is `1` seconds and maximum value is `86400` seconds.
 - `byte_limit`: The minimum value is `1` byte and maximum value is `1000000000` bytes.
 
-1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
+1. In the Cloudflare dashboard, go to [Network health ↗︎](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**, then select **Start a capture**.
 3. Choose the type of capture you want to perform, and select **Next**.
 4. Fill out the required fields to begin the capture and then select **Start**.
@@ -180,7 +180,7 @@ The response is a JSON body that contains the details of the job running to buil
 
 ## Check packet capture status
 
-1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
+1. In the Cloudflare dashboard, go to [Network health ↗︎](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
 3. Locate your capture under **Network packet captures**.
 
@@ -230,13 +230,13 @@ The capture status displays one of the following options:
 
 After your request finishes processing, you can download your packet captures.
 
-1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
+1. In the Cloudflare dashboard, go to [Network health ↗︎](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics**.
 3. Locate your packet capture you want to download, and select **Download**.
 
 Packet captures are available to download when the **Status** displays **Success**.
 
-For more information on how to process multiple saved capture files into a single output file, refer to [Wireshark's mergecap documentation ↗](https://www.wireshark.org/docs/man-pages/mergecap.html).
+For more information on how to process multiple saved capture files into a single output file, refer to [Wireshark's mergecap documentation ↗︎](https://www.wireshark.org/docs/man-pages/mergecap.html).
 
 **Full PCAPs**
 
@@ -255,7 +255,7 @@ curl https://api.cloudflare.com/client/v4/accounts/{account_id}/pcaps/{pcap_id}/
 
 ## List packet captures
 
-1. In the Cloudflare dashboard, go to [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
+1. In the Cloudflare dashboard, go to [Network health ↗︎](https://dash.cloudflare.com/?to=/:account/networking-insights/health).
 2. Select **Diagnostics** > **Network packet captures**.
 
 The list of packet captures associated with your account displays.
@@ -300,7 +300,7 @@ Due to the nature of Cloudflare network, your traffic may traverse various physi
 
 - Multiple PCAP Files: A single full PCAP capture may produce many small PCAP files, as a capture is taken for each physical server your traffic traverses in a Cloudflare location.
   - You can get more granular by applying packet-specific filters like protocol, port (and more) to target the traffic you need.
-- Merging for Analysis: To view the traffic as a single flow, you can use a tool like mergecap to combine the individual files into one larger file for analysis in Wireshark. Refer to the [Wireshark mergecap documentation ↗](https://www.wireshark.org/docs/wsug_html_chunked/AppToolsmergecap.html) for instructions.
+- Merging for Analysis: To view the traffic as a single flow, you can use a tool like mergecap to combine the individual files into one larger file for analysis in Wireshark. Refer to the [Wireshark mergecap documentation ↗︎](https://www.wireshark.org/docs/wsug_html_chunked/AppToolsmergecap.html) for instructions.
 
 Was this helpful?
 

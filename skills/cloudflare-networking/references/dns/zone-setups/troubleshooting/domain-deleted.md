@@ -36,11 +36,11 @@ Note
 
 If your domain was using a [primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/), your registrar needs to use Cloudflare nameservers as the authoritative nameservers for your domain.
 
-1. Use either the command-line based `whois` application provided with your operating system or a website such as [ICANN Lookup ↗](https://lookup.icann.org/).
+1. Use either the command-line based `whois` application provided with your operating system or a website such as [ICANN Lookup ↗︎](https://lookup.icann.org/).
    - If you are unable to find the nameserver details for your domain, reach out to your domain registrar or domain provider to provide the domain registration information.
    - Ensure Cloudflare's nameservers are the only two nameservers listed in the domain registration details.
    - Ensure nameservers are spelled correctly in the domain registration.
-2. Confirm that the nameservers exactly match the nameservers provided within the **Cloudflare Nameservers** card on the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page.
+2. Confirm that the nameservers exactly match the nameservers provided within the **Cloudflare Nameservers** card on the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page.
 3. If you identify incorrect information, log in to your domain provider's portal to make updates or contact your domain provider for assistance.
 
 ---

@@ -221,7 +221,7 @@ A cron trigger (`* * * * *`) primes the pool automatically after deployment. Set
 
 - [Bridge overview](https://developers.cloudflare.com/sandbox/bridge/) — What the bridge is, deployment, and usage examples.
 - [Sandbox API reference](https://developers.cloudflare.com/sandbox/api/) — Complete Sandbox SDK method reference.
-- [Bridge source on GitHub ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge) — Worker, Dockerfile, and OpenAPI schema.
+- [Bridge source on GitHub ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge) — Worker, Dockerfile, and OpenAPI schema.
 
 Was this helpful?
 

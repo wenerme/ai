@@ -34,7 +34,7 @@ This feature is only available for customers on an Enterprise plan. Contact your
 
 To configure Schema validation in the Cloudflare dashboard:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account and domain.
 2. Select **Security** > **API Shield**.
 3. Go to **Schema validation** and select **Add schema**.
 4. Enter a descriptive name for your policy and optionally edit the expression to trigger Schema validation. For example, if your API is available at `http://api.example.com/v1`, include a check for the *Hostname* field — equal to `api.example.com` — and a check for the *URI Path* field using a regular expression — matching the regex `^/v1`.

@@ -20,7 +20,7 @@ Consider the sections below to understand the expected behaviors, depending on D
 
 For each [proxied DNS record](https://developers.cloudflare.com/dns/proxy-status/) in your zone, Cloudflare will transfer out two `A` and two `AAAA` records.
 
-These records correspond to the [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips) used for proxying traffic.
+These records correspond to the [Cloudflare IP addresses ↗︎](https://www.cloudflare.com/ips) used for proxying traffic.
 
 ## DNS-only CNAME records
 

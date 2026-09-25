@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 By default, Version Management is not enabled on a zone.
 
-To enable [Version Management ↗](https://dash.cloudflare.com/?to=/:account/:zone/versioning):
+To enable [Version Management ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/versioning):
 
 1. Log in to the Cloudflare dashboard. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Select your account and zone.

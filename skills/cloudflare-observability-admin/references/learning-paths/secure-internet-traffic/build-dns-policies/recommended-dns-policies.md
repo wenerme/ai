@@ -230,7 +230,7 @@ resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
 
 ## All-DNS-GeoCountryIP-Blocklist
 
-Block websites hosted in countries categorized as high risk. The designation of such countries may result from your organization's users or through the implementation of regulations including [EAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries), [OFAC ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries), and [ITAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries).
+Block websites hosted in countries categorized as high risk. The designation of such countries may result from your organization's users or through the implementation of regulations including [EAR ↗︎](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries), [OFAC ↗︎](https://orpa.princeton.edu/export-controls/sanctioned-countries), and [ITAR ↗︎](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries).
 
 | Selector | Operator | Value | Action |
 | --- | --- | --- | --- |
@@ -270,7 +270,7 @@ resource "cloudflare_zero_trust_gateway_policy" "dns_geolocation_block_policy" {
 
 ## All-DNS-DomainTopLevel-Blocklist
 
-Block frequently misused top-level domains (TLDs) to reduce security risks, especially when there is no discernible advantage to be gained from allowing access. Similarly, restricting access to specific country-level TLDs may be necessary to comply with regulations such as [OFAC ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries) and [ITAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries).
+Block frequently misused top-level domains (TLDs) to reduce security risks, especially when there is no discernible advantage to be gained from allowing access. Similarly, restricting access to specific country-level TLDs may be necessary to comply with regulations such as [OFAC ↗︎](https://orpa.princeton.edu/export-controls/sanctioned-countries) and [ITAR ↗︎](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries).
 
 | Selector | Operator | Value | Action |
 | --- | --- | --- | --- |

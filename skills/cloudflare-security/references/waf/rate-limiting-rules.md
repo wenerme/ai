@@ -116,7 +116,7 @@ For Terraform examples, refer to [Rate limiting rules configuration using Terraf
 
 ## Related resources
 
-- [Learning Center: What is rate limiting? ↗](https://www.cloudflare.com/learning/bots/what-is-rate-limiting/)
+- [Learning Center: What is rate limiting? ↗︎](https://www.cloudflare.com/learning/bots/what-is-rate-limiting/)
 - [Cloudflare Rate Limiting (previous version, no longer available)](https://developers.cloudflare.com/waf/reference/legacy/old-rate-limiting/): Documentation for the previous version of rate limiting rules (billed based on usage).
 
 Was this helpful?

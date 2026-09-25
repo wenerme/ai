@@ -91,7 +91,7 @@ This is often a cosmetic error with Windows Network Connectivity Status Indicato
 
 ### Setup Wizard ends prematurely
 
-This usually indicates a missing dependency, such as .NET Framework `4.7.2` or later. Legacy systems (like Windows 10 Enterprise 1607) may require a manual update of the [.NET Framework Runtime ↗](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472).
+This usually indicates a missing dependency, such as .NET Framework `4.7.2` or later. Legacy systems (like Windows 10 Enterprise 1607) may require a manual update of the [.NET Framework Runtime ↗︎](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net472).
 
 ## Other environment issues
 

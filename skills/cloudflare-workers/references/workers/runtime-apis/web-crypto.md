@@ -51,7 +51,7 @@ The Web Crypto API differs significantly from the [Node.js Crypto API](https://d
 ### Parameters
 
 - `algorithm`string | object
-  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#Syntax).
+  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#Syntax).
 
 ### Usage
 
@@ -110,7 +110,7 @@ export default {
 ## Methods
 
 - `crypto.randomUUID()` : string
-  - Generates a new random (version 4) UUID as defined in [RFC 4122 ↗](https://www.rfc-editor.org/rfc/rfc4122.txt).
+  - Generates a new random (version 4) UUID as defined in [RFC 4122 ↗︎](https://www.rfc-editor.org/rfc/rfc4122.txt).
 - `crypto.getRandomValues(bufferArrayBufferView)` : ArrayBufferView
   - Fills the passed `ArrayBufferView` with cryptographically sound random values and returns the `buffer`.
 
@@ -121,7 +121,7 @@ export default {
 
 ## SubtleCrypto Methods
 
-These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto#Methods), which is also documented in detail on MDN.
+These methods are all accessed via [`crypto.subtle` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto#Methods), which is also documented in detail on MDN.
 
 ### encrypt
 
@@ -131,7 +131,7 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `algorithm`object
-  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt#Syntax).
+  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/encrypt#Syntax).
 - `key`CryptoKey
 - `data`BufferSource
 
@@ -143,7 +143,7 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `algorithm`object
-  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/decrypt#Syntax).
+  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/decrypt#Syntax).
 - `key`CryptoKey
 - `data`BufferSource
 
@@ -155,7 +155,7 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `algorithm`string | object
-  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign#Syntax).
+  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/sign#Syntax).
 - `key`CryptoKey
 - `data`ArrayBuffer
 
@@ -167,7 +167,7 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `algorithm`string | object
-  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/verify#Syntax).
+  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/verify#Syntax).
 - `key`CryptoKey
 - `signature`ArrayBuffer
 - `data`ArrayBuffer
@@ -180,7 +180,7 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `algorithm`string | object
-  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#Syntax).
+  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/digest#Syntax).
 - `data`ArrayBuffer
 
 ### generateKey
@@ -204,10 +204,10 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `algorithm`object
-  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey#Syntax).
+  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey#Syntax).
 - `extractable`bool
 - `keyUsages`Array
-  - An Array of strings indicating the [possible usages of the new key ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey#Syntax).
+  - An Array of strings indicating the [possible usages of the new key ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/generateKey#Syntax).
 
 ### deriveKey
 
@@ -217,13 +217,13 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `algorithm`object
-  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveKey#Syntax).
+  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveKey#Syntax).
 - `baseKeyCryptoKey`
 - `derivedKeyAlgorithmobject`
-  - Defines the algorithm the derived key will be used for in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveKey#Syntax).
+  - Defines the algorithm the derived key will be used for in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveKey#Syntax).
 - `extractablebool`
 - `keyUsagesArray`
-  - An Array of strings indicating the [possible usages of the new key ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveKey#Syntax)
+  - An Array of strings indicating the [possible usages of the new key ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveKey#Syntax)
 
 ### deriveBits
 
@@ -233,7 +233,7 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `algorithm`object
-  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveBits#Syntax).
+  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/deriveBits#Syntax).
 - `baseKey`CryptoKey
 - `length`int
   - Length of the bit string to derive.
@@ -246,13 +246,13 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `format`string
-  - Describes [the format of the key to be imported ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#Syntax).
+  - Describes [the format of the key to be imported ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#Syntax).
 - `keyData`ArrayBuffer
 - `algorithm`object
-  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#Syntax).
+  - Describes the algorithm to be used, including any required parameters, in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#Syntax).
 - `extractable`bool
 - `keyUsages`Array
-  - An Array of strings indicating the [possible usages of the new key ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#Syntax)
+  - An Array of strings indicating the [possible usages of the new key ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/importKey#Syntax)
 
 ### exportKey
 
@@ -262,7 +262,7 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `format`string
-  - Describes the [format in which the key will be exported ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/exportKey#Syntax).
+  - Describes the [format in which the key will be exported ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/exportKey#Syntax).
 - `key`CryptoKey
 
 ### wrapKey
@@ -273,11 +273,11 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `format`string
-  - Describes the [format in which the key will be exported ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/wrapKey#Syntax) before being encrypted.
+  - Describes the [format in which the key will be exported ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/wrapKey#Syntax) before being encrypted.
 - `key`CryptoKey
 - `wrappingKey`CryptoKey
 - `wrapAlgo`object
-  - Describes the algorithm to be used to encrypt the exported key, including any required parameters, in [an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/wrapKey#Syntax).
+  - Describes the algorithm to be used to encrypt the exported key, including any required parameters, in [an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/wrapKey#Syntax).
 
 ### unwrapKey
 
@@ -288,16 +288,16 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 #### Parameters
 
 - `format`string
-  - Described the [data format of the key to be unwrapped ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/unwrapKey#Syntax).
+  - Described the [data format of the key to be unwrapped ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/unwrapKey#Syntax).
 - `key`CryptoKey
 - `unwrappingKey`CryptoKey
 - `unwrapAlgo`object
-  - Describes the algorithm that was used to encrypt the wrapped key, [in an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/unwrapKey#Syntax).
+  - Describes the algorithm that was used to encrypt the wrapped key, [in an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/unwrapKey#Syntax).
 - `unwrappedKeyAlgo`object
-  - Describes the key to be unwrapped, [in an algorithm-specific format ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/unwrapKey#Syntax).
+  - Describes the key to be unwrapped, [in an algorithm-specific format ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/unwrapKey#Syntax).
 - `extractable`bool
 - `keyUsages`Array
-  - An Array of strings indicating the [possible usages of the new key ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/unwrapKey#Syntax)
+  - An Array of strings indicating the [possible usages of the new key ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto/unwrapKey#Syntax)
 
 ### timingSafeEqual
 
@@ -311,7 +311,7 @@ These methods are all accessed via [`crypto.subtle` ↗](https://developer.mozil
 
 ### Supported algorithms
 
-Workers implements all operations of the [WebCrypto standard ↗](https://www.w3.org/TR/WebCryptoAPI/), as shown in the following table.
+Workers implements all operations of the [WebCrypto standard ↗︎](https://www.w3.org/TR/WebCryptoAPI/), as shown in the following table.
 
 A checkmark (✓) indicates that this feature is believed to be fully supported according to the spec.
  An x (✘) indicates that this feature is part of the specification but not implemented.
@@ -342,7 +342,7 @@ A checkmark (✓) indicates that this feature is believed to be fully supported 
 
 **Footnotes:**
 
-1. Algorithms as specified in the [Secure Curves API ↗](https://wicg.github.io/webcrypto-secure-curves).
+1. Algorithms as specified in the [Secure Curves API ↗︎](https://wicg.github.io/webcrypto-secure-curves).
 2. Legacy non-standard EdDSA is supported for the Ed25519 curve in addition to the Secure Curves version. Since this algorithm is non-standard, note the following while using it:
    - Use `NODE-ED25519` as the algorithm and `namedCurve` parameters.
    - Unlike NodeJS, Cloudflare will not support raw import of private keys.
@@ -353,8 +353,8 @@ A checkmark (✓) indicates that this feature is believed to be fully supported 
 
 ## Related resources
 
-- [SubtleCrypto documentation on MDN ↗](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto)
-- [SubtleCrypto documentation as part of the W3C Web Crypto API specification ↗](https://www.w3.org/TR/WebCryptoAPI//#subtlecrypto-interface)
+- [SubtleCrypto documentation on MDN ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto)
+- [SubtleCrypto documentation as part of the W3C Web Crypto API specification ↗︎](https://www.w3.org/TR/WebCryptoAPI//#subtlecrypto-interface)
 - [Example: signing requests](https://developers.cloudflare.com/workers/examples/signing-requests/)
 
 Was this helpful?

@@ -41,7 +41,7 @@ would be sorted to:
 
 To enable Query String Sort:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Select your account and zone.
 3. Go to **Caching** > **Configuration**.
 4. For **Enable Query String Sort**, switch the toggle to **On**.
@@ -59,11 +59,11 @@ For example in the WordPress admin UI, you might notice any of the following beh
 - Inability to drag any widget to a sidebar in **Appearance** > **Widgets**
 - Inability to edit menus in **Appearance** > **Menus**
 
-To understand why this happens, note that WordPress  [concatenates JavaScript files ↗](https://developer.wordpress.org/advanced-administration/wordpress/wp-config/#disable-javascript-concatenation) to speed up the administration interface. The way WordPress implements this involves multiple occurrences of `load[]` parameters in the query string, where the order of those parameters is crucial.
+To understand why this happens, note that WordPress  [concatenates JavaScript files ↗︎](https://developer.wordpress.org/advanced-administration/wordpress/wp-config/#disable-javascript-concatenation) to speed up the administration interface. The way WordPress implements this involves multiple occurrences of `load[]` parameters in the query string, where the order of those parameters is crucial.
 
 Note
 
-Note that more recent versions of WordPress may not experience this issue, as a patch has been implemented in WordPress since 2019. The patch can be found at [WordPress Core Trac Changeset 45456 ↗](https://core.trac.wordpress.org/changeset/45456).
+Note that more recent versions of WordPress may not experience this issue, as a patch has been implemented in WordPress since 2019. The patch can be found at [WordPress Core Trac Changeset 45456 ↗︎](https://core.trac.wordpress.org/changeset/45456).
 
 ### Identify the problem
 
@@ -111,7 +111,7 @@ To learn more about Cache Rules, visit  [Cache Rules](https://developers.cloudf
 
 ## Related resources
 
-- [Increasing Cache Hit Rates with Query String Sort ↗](https://blog.cloudflare.com/increasing-cache-hit-rates-with-query-string-sort/)
+- [Increasing Cache Hit Rates with Query String Sort ↗︎](https://blog.cloudflare.com/increasing-cache-hit-rates-with-query-string-sort/)
 - [Best Practice: Caching Everything While Ignoring Query Strings](https://developers.cloudflare.com/cache/how-to/cache-rules/examples/cache-everything-ignore-query-strings/)
 
 Was this helpful?

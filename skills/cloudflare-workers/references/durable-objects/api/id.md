@@ -179,7 +179,7 @@ assert eu_id.jurisdiction == "eu", "jurisdiction matches namespace"
 
 ## Related resources
 
-- [Durable Objects: Easy, Fast, Correct – Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+- [Durable Objects: Easy, Fast, Correct – Choose Three ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 Was this helpful?
 

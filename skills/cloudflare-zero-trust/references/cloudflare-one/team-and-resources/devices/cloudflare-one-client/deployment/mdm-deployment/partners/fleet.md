@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/fleet/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to deploy the Cloudflare One Client (formerly WARP) using [Fleet ↗](https://fleetdm.com/) device management software.
+This guide covers how to deploy the Cloudflare One Client (formerly WARP) using [Fleet ↗︎](https://fleetdm.com/) device management software.
 
 ## macOS
 
@@ -31,7 +31,7 @@ This guide covers how to deploy the Cloudflare One Client (formerly WARP) using 
 4. Select **Add profile** and upload the custom `.mobileconfig`.
 5. Select the hosts which require the Cloudflare One Client:
    - **All hosts**: Deploys the Cloudflare One Client to all hosts in the team.
-   - **Custom**: Deploys the Cloudflare One Client to a subset of the hosts in the team. Use [labels ↗](https://fleetdm.com/guides/managing-labels-in-fleet#basic-article) to define the hosts that should be included or excluded.
+   - **Custom**: Deploys the Cloudflare One Client to a subset of the hosts in the team. Use [labels ↗︎](https://fleetdm.com/guides/managing-labels-in-fleet#basic-article) to define the hosts that should be included or excluded.
 6. Select **Add profile**.
 
 The defined hosts will immediately receive the deployment profile, but the Cloudflare One Client is not yet installed.
@@ -57,7 +57,7 @@ To deploy the uploaded `.pkg` file to your hosts:
 3. Go to **Software** and search for `Cloudflare`.
 4. Select **Actions** > **Install**.
 
-Installation will happen automatically when the host comes online. To deploy with REST API or GitOps, refer to the [Fleet documentation ↗](https://fleetdm.com/guides/deploy-software-packages).
+Installation will happen automatically when the host comes online. To deploy with REST API or GitOps, refer to the [Fleet documentation ↗︎](https://fleetdm.com/guides/deploy-software-packages).
 
 After deploying the Cloudflare One Client, you can check its connection progress using the [Connectivity status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) messages displayed in the Cloudflare One Client GUI.
 
@@ -117,7 +117,7 @@ To deploy the uploaded `.pkg` file to your hosts:
 3. Go to **Software** and search for `Cloudflare`.
 4. Select **Actions** > **Install**.
 
-Installation will happen automatically when the host comes online. To deploy with REST API or GitOps, refer to the [Fleet documentation ↗](https://fleetdm.com/guides/deploy-software-packages).
+Installation will happen automatically when the host comes online. To deploy with REST API or GitOps, refer to the [Fleet documentation ↗︎](https://fleetdm.com/guides/deploy-software-packages).
 
 After deploying the Cloudflare One Client, you can check its connection progress using the [Connectivity status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) messages displayed in the Cloudflare One Client GUI.
 
@@ -132,7 +132,7 @@ To uninstall the Fleet-deployed Cloudflare One Client:
 
 ## Linux
 
-Fleet allows you to [execute custom scripts ↗](https://fleetdm.com/guides/scripts) on Linux hosts. The following example script creates an [MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#linux) and installs the Cloudflare One Client on an Ubuntu 22.04 host:
+Fleet allows you to [execute custom scripts ↗︎](https://fleetdm.com/guides/scripts) on Linux hosts. The following example script creates an [MDM file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#linux) and installs the Cloudflare One Client on an Ubuntu 22.04 host:
 
 ```sh
 #!/bin/sh
@@ -152,7 +152,7 @@ echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] ht
 sudo apt-get -y update && sudo apt-get -y install cloudflare-warp
 ```
 
-To install the Cloudflare One Client on other Linux distributions, refer to the [package repository ↗](https://pkg.cloudflareclient.com/).
+To install the Cloudflare One Client on other Linux distributions, refer to the [package repository ↗︎](https://pkg.cloudflareclient.com/).
 
 Was this helpful?
 

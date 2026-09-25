@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agent-setup/visual-studio-code/detailed-walkthrough/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This walkthrough connects Visual Studio Code directly to the Cloudflare API using the [Cloudflare MCP server ↗](https://github.com/cloudflare/mcp-server-cloudflare). By the end, you can create a DNS record by typing a sentence, without leaving the editor.
+This walkthrough connects Visual Studio Code directly to the Cloudflare API using the [Cloudflare MCP server ↗︎](https://github.com/cloudflare/mcp-server-cloudflare). By the end, you can create a DNS record by typing a sentence, without leaving the editor.
 
 The Cloudflare MCP server at `mcp.cloudflare.com` exposes the Cloudflare API to any MCP-capable agent. The Visual Studio Code Copilot agent connects to it, and you run API calls from natural language.
 
@@ -60,7 +60,7 @@ For the condensed version, refer to the [Visual Studio Code quick start](https:/
    The root key in Visual Studio Code is `servers`. Configurations written for Cursor or Claude Desktop use `mcpServers`, which does nothing here.
 6. **Start the server**
 
-   After you save the file, a **Start** link appears on the `cloudflare-api` server definition. It looks like a comment, but it is a button (a [CodeLens ↗](https://learn.microsoft.com/en-us/visualstudio/ide/find-code-changes-and-other-history-with-codelens)). Select it, then allow the authentication prompt. Your browser opens the Cloudflare authorization page.![Visual Studio Code showing the Start CodeLens on the Cloudflare MCP server definition in mcp.json](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1538,height=1030,format=webp/_astro/vscode-start-cloudflare-mcp.CFgXmbiP.png)
+   After you save the file, a **Start** link appears on the `cloudflare-api` server definition. It looks like a comment, but it is a button (a [CodeLens ↗︎](https://learn.microsoft.com/en-us/visualstudio/ide/find-code-changes-and-other-history-with-codelens)). Select it, then allow the authentication prompt. Your browser opens the Cloudflare authorization page.![Visual Studio Code showing the Start CodeLens on the Cloudflare MCP server definition in mcp.json](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1538,height=1030,format=webp/_astro/vscode-start-cloudflare-mcp.CFgXmbiP.png)
 7. **Choose an access template**
 
    The authorization page is where you decide what the agent can access. This example selects **Full access** to modify DNS records. You can also start with **Read only** or build a **Custom** permission set. Scope the grant to a single account, then review what you are granting.![Cloudflare MCP authorization page showing access templates and account scope options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1551,height=1644,format=webp/_astro/cloudflare-mcp-access-template.BuSG8Wod.png) Before you authorize, know two things. **Full access** lets the agent create and delete real resources, which is why this belongs on a demo account. You can revoke the grant at any time from the dashboard under **My Profile** > **Access Management** > **Connected Applications**, which is also the page to visit if a re-authorization behaves unexpectedly.
@@ -91,7 +91,7 @@ For the condensed version, refer to the [Visual Studio Code quick start](https:/
     ```
 12. **Create a DNS record**
 
-    Ask the agent to create a DNS AAAA record and turn on the Cloudflare proxy. This example points `test.cloudflaredemo.net` at `100::`, a reserved placeholder address from the IPv6 discard prefix `0100::/64` ([RFC 6666 ↗](https://www.rfc-editor.org/rfc/rfc6666)). Because the record is proxied, Cloudflare intercepts requests before they reach this address. Approve the tool call (**Always Allow**), and the agent reports the record created.![Copilot Chat creating a proxied AAAA DNS record through the Cloudflare MCP server](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1479,height=1054,format=webp/_astro/cloudflare-mcp-create-aaaa-record.9y7YCmFb.png)
+    Ask the agent to create a DNS AAAA record and turn on the Cloudflare proxy. This example points `test.cloudflaredemo.net` at `100::`, a reserved placeholder address from the IPv6 discard prefix `0100::/64` ([RFC 6666 ↗︎](https://www.rfc-editor.org/rfc/rfc6666)). Because the record is proxied, Cloudflare intercepts requests before they reach this address. Approve the tool call (**Always Allow**), and the agent reports the record created.![Copilot Chat creating a proxied AAAA DNS record through the Cloudflare MCP server](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1479,height=1054,format=webp/_astro/cloudflare-mcp-create-aaaa-record.9y7YCmFb.png)
 
     ```txt
     Create a AAAA record for test.cloudflaredemo.net pointing to 100:: and enable the proxy.
@@ -145,7 +145,7 @@ You now have an AI agent with read and write access to Cloudflare services in th
 ## Related resources
 
 - [Visual Studio Code quick start](https://developers.cloudflare.com/agent-setup/visual-studio-code/) — condensed setup, tips, FAQ, and troubleshooting.
-- [Cloudflare MCP server ↗](https://github.com/cloudflare/mcp-server-cloudflare) — domain-specific MCP servers.
+- [Cloudflare MCP server ↗︎](https://github.com/cloudflare/mcp-server-cloudflare) — domain-specific MCP servers.
 - [Cloudflare API](https://developers.cloudflare.com/api/) — the full REST API reference.
 
 Was this helpful?

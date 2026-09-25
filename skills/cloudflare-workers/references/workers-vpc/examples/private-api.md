@@ -26,7 +26,7 @@ This example demonstrates how to access a private REST API that is not exposed t
 
 A Cloudflare Tunnel creates a secure connection from your private network to Cloudflare. This tunnel will allow Workers to securely access your private resources.
 
-1. Navigate to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc/tunnels) and select the **Tunnels** tab.
+1. Navigate to the [Workers VPC dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/vpc/tunnels) and select the **Tunnels** tab.
 2. Select **Create** to create a new tunnel.
 3. Enter a name for your tunnel (for example, `private-api-tunnel`) and select **Save tunnel**.
 4. Choose your operating system and architecture. The dashboard will provide specific installation instructions for your environment.
@@ -67,7 +67,7 @@ Update your Wrangler configuration file:
 	"name": "private-api-gateway",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"vpc_services": [
 		{
 			"binding": "INTERNAL_API",
@@ -83,7 +83,7 @@ Update your Wrangler configuration file:
 name = "private-api-gateway"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[vpc_services]]
 binding = "INTERNAL_API"

@@ -31,7 +31,7 @@ curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audit
 
 Refer to the example below to publish a new epoch by requesting its signature.
 
-This API is authenticated via [mTLS ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/), so that only a Log owner can publish new epochs.
+This API is authenticated via [mTLS ↗︎](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/), so that only a Log owner can publish new epochs.
 
 ```sh
 curl 'https://plexi.key-transparency.cloudflare.com/namespaces/{namespace}/audits' \

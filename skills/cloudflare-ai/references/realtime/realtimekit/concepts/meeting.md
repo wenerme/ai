@@ -82,7 +82,7 @@ Each week, when participants join for that week’s standup, a **new Session** i
 
 > **Note**: This distinction is important for billing. You are charged on a per-participant basis only for the duration of an active Session, not for an idle Meeting.
 
-You can get the details of your sessions from the [RealtimeKit Dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit) or using the [Sessions API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/sessions/) endpoints.
+You can get the details of your sessions from the [RealtimeKit Dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/realtime/kit) or using the [Sessions API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/sessions/) endpoints.
 
 ![Sessions in RealtimeKit Dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3024,height=1616,format=webp/_astro/dashboard-sessions.dvN7oDwZ.png)
 

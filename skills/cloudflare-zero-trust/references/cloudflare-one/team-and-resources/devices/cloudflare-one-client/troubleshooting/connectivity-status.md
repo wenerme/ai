@@ -22,7 +22,7 @@ To print status messages to the console, run the `warp-cli -l status` command be
 | --- | --- |
 | Verifying connection settings | Initializes connection components based on your [device client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/). |
 | Validating network | Validates Ethernet and/or Wi-Fi network connectivity. |
-| Initializing IP connection | Checks for IPv4 and IPv6 connectivity to Cloudflare using the [Happy Eyeballs algorithm ↗](https://datatracker.ietf.org/doc/html/rfc6555). |
+| Initializing IP connection | Checks for IPv4 and IPv6 connectivity to Cloudflare using the [Happy Eyeballs algorithm ↗︎](https://datatracker.ietf.org/doc/html/rfc6555). |
 | Establishing a connection | Connects to the endpoint discovered by Happy Eyeballs. |
 | Building a Tunnel | Creates a [virtual network interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#virtual-interface) on the operating system for the WARP tunnel. |
 | Configuring the firewall | Configures the system firewall to allow WARP tunnel traffic. |

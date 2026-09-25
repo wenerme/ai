@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/google-cloud-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [Google Cloud ↗](https://support.google.com/cloudidentity/topic/7558767) as a SAML application in Cloudflare One.
+This guide covers how to configure [Google Cloud ↗︎](https://support.google.com/cloudidentity/topic/7558767) as a SAML application in Cloudflare One.
 
 Caution
 
@@ -27,11 +27,11 @@ When configuring Google Cloud with Access, the following limitations apply:
 
 - An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
 - Admin access to a Google Workspace account
-- [Cloud Identity Free or Premium ↗](https://support.google.com/cloudidentity/answer/7389973) set up in your organization's Google Cloud account
+- [Cloud Identity Free or Premium ↗︎](https://support.google.com/cloudidentity/answer/7389973) set up in your organization's Google Cloud account
 
 ## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application** > **SaaS application**.
 3. For **Application**, select *Google Cloud*.
 4. For the authentication protocol, select **SAML**.
@@ -52,7 +52,7 @@ When configuring Google Cloud with Access, the following limitations apply:
 
 ## 3. Create an SSO provider in Google Cloud
 
-1. In your [Google Admin console ↗](https://admin.google.com/), go to **Security** > **Authentication** > **SSO with third party IdP**.
+1. In your [Google Admin console ↗︎](https://admin.google.com/), go to **Security** > **Authentication** > **SSO with third party IdP**.
 2. Select **Third-party SSO profile for your organization** > **Add SSO Profile**.
 3. Turn on **Set up SSO with third-party identity provider**.
 4. Fill in the following information:

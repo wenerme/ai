@@ -36,7 +36,7 @@ A policy can run a remediation action, send a webhook, or both.
 
 ## Create a policy
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Policies**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Policies**.
 2. Select **Create a policy**.
 3. Under **Basic information**, enter a **Policy name**. Optionally, enter a **Description**.
 4. Under **Choose how you want to trigger the policy**, select a **Vendor**.
@@ -106,7 +106,7 @@ When a policy sends a webhook, the payload uses the same format as a webhook sen
 
 ## Edit, turn off, or delete a policy
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Policies**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Policies**.
 2. Select the policy to update.
 3. Modify the policy's basic information, trigger, or actions.
 4. Select **Save changes**.

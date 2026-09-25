@@ -21,7 +21,7 @@ By default, Security Analytics shows requests from end users (requests to your s
 Use the Security Analytics dashboard to:
 
 - View the traffic distribution for your domain.
-- Understand which traffic is being mitigated by Cloudflare security products, and where non-mitigated traffic is being served from (Cloudflare global network or [origin server ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server/)).
+- Understand which traffic is being mitigated by Cloudflare security products, and where non-mitigated traffic is being served from (Cloudflare global network or [origin server ↗︎](https://www.cloudflare.com/learning/cdn/glossary/origin-server/)).
 - Analyze suspicious traffic and create tailored WAF custom rules based on applied filters.
 - Review Cloudflare's security scores ([attack score](https://developers.cloudflare.com/waf/detections/attack-score/), [bot score](https://developers.cloudflare.com/bots/concepts/bot-score/), [malicious uploads](https://developers.cloudflare.com/waf/detections/malicious-uploads/), and [leaked credentials](https://developers.cloudflare.com/waf/detections/leaked-credentials/) results) with real data from your traffic.
 - [Analyze attack signature matches](https://developers.cloudflare.com/waf/detections/attack-signature-detection/analyze-attack-signatures/) by Ref, category, and WAF Attack Score.
@@ -44,7 +44,7 @@ Zone/domain-level analytics are included with all plans, though the retention pe
 
 To use Security Analytics:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to the account or zone/domain dashboard:
    - For the zone/domain dashboard, go to the **Analytics** page. [Go to **Analytics** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/analytics)
    - For the account dashboard, go to the **Security Analytics** page. [Go to **Security analytics** ↗](https://dash.cloudflare.com/?to=/:account/security-center/analytics)
@@ -112,7 +112,7 @@ The main chart displays the following data for the selected time frame, accordin
 - **Attack analysis**: [WAF attack score](https://developers.cloudflare.com/waf/detections/attack-score/) and [attack signature](https://developers.cloudflare.com/waf/detections/attack-signature-detection/analyze-attack-signatures/) analysis of incoming requests.
 - **Bot analysis**: [Bot score](https://developers.cloudflare.com/bots/concepts/bot-score/) analysis of incoming requests, classifying them as *Automated*, *Likely automated*, *Likely human*, or *Verified bot*.
 - **Request rate analysis**: Displays data on the request rate for traffic matching the selected filters and time period. Use this tab to [find an appropriate rate limit](https://developers.cloudflare.com/waf/rate-limiting-rules/find-rate-limit/) for incoming traffic matching the applied filters.
-- **Cloudy analysis** (beta): Get insights about your application security by using plain language to interrogate your data. For more information, refer to [our blog post ↗](https://blog.cloudflare.com/security-analytics-ai-assistant).
+- **Cloudy analysis** (beta): Get insights about your application security by using plain language to interrogate your data. For more information, refer to [our blog post ↗︎](https://blog.cloudflare.com/security-analytics-ai-assistant).
 
 ### Top statistics
 

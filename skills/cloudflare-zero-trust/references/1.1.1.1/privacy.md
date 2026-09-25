@@ -16,9 +16,9 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Cloudflare maintains separate privacy commitments depending on how you use 1.1.1.1:
 
-- [1.1.1.1 Public DNS Resolver](https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/): Privacy commitments for the 1.1.1.1 public DNS resolver, including what data Cloudflare collects, uses, retains, and shares. Governed by the Cloudflare [Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/).
+- [1.1.1.1 Public DNS Resolver](https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/): Privacy commitments for the 1.1.1.1 public DNS resolver, including what data Cloudflare collects, uses, retains, and shares. Governed by the Cloudflare [Privacy Policy ↗︎](https://www.cloudflare.com/privacypolicy/).
 - [Resolver for Firefox](https://developers.cloudflare.com/1.1.1.1/privacy/cloudflare-resolver-firefox/): Privacy commitments specific to the Cloudflare Resolver for Firefox, where Cloudflare acts as a data processor under Mozilla's instructions. This is separate from the 1.1.1.1 public DNS resolver and is not covered by the main Cloudflare Privacy Policy.
-- [1.1.1.1 Application ↗](https://www.cloudflare.com/application/privacypolicy/): Privacy policy for Cloudflare's consumer-facing 1.1.1.1 applications, including the 1.1.1.1 app for iOS and Android.
+- [1.1.1.1 Application ↗︎](https://www.cloudflare.com/application/privacypolicy/): Privacy policy for Cloudflare's consumer-facing 1.1.1.1 applications, including the 1.1.1.1 app for iOS and Android.
 
 Was this helpful?
 

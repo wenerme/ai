@@ -31,7 +31,7 @@ This guide will get you started with creating and managing configured Health Che
 
 ## Manage Health Checks
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account and domain.
 2. Go to **Traffic** > **Health Checks**.
 3. Navigate to your health check and select **Edit**.
 4. Edit your Health Check.

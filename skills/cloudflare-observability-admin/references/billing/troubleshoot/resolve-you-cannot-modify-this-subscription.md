@@ -31,7 +31,7 @@ If you intended to cancel a subscription, no further action is required. Your su
 
 After requesting cancellation, the **Subscriptions** page shows the end date under **Ending on**.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
 2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Subscriptions**.
 4. Locate the product you canceled.
@@ -43,7 +43,7 @@ Cloudflare does not issue refunds for canceled subscriptions. Instead, your subs
 
 If you do not want to pay for the next billing period, cancel your subscription before the current billing period ends. You can find this date on the **Subscriptions** page by checking the renewal date, for example **Renews on Aug 29, 2025**.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
 2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Subscriptions**.
 4. Locate the product you want to cancel.
@@ -53,7 +53,7 @@ If you do not want to pay for the next billing period, cancel your subscription 
 
 If you changed your decision and the cancellation has not taken effect yet, you can select **Cancel Downgrade** next to the appropriate subscription.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
 2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Subscriptions**.
 4. Locate the product you canceled.

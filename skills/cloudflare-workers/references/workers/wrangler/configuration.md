@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler optionally uses a configuration file to customize the development and deployment setup for a Worker.
 
@@ -144,8 +144,10 @@ Top-level keys apply to the Worker as a whole (and therefore all environments). 
 
 - `keep_vars` `boolean` optional
   - Whether Wrangler should keep variables configured in the dashboard on deploy. Refer to [source of truth](#source-of-truth).
+- `addresses` `string[]` optional
+  - A list of inbound email addresses that [Email Routing](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#configure-rules-with-wrangler) routes to this Worker. Each entry is either a literal recipient address (for example, `support@example.com`) or a `*@domain` catch-all (for example, `*@example.com`). Catch-all entries support apex domains only. When you deploy the Worker or its triggers, Wrangler reconciles the Worker's managed Email Routing rules with this list.
 - `send_metrics` `boolean` optional
-  - Whether Wrangler should send usage data to Cloudflare for this project. Defaults to `true`. You can learn more about this in our [data policy ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
+  - Whether Wrangler should send usage data to Cloudflare for this project. Defaults to `true`. You can learn more about this in our [data policy ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
 - `dependencies_instrumentation` `object` optional
   - Configures npm package dependency instrumentation when deploying or uploading a Worker version. Defaults to enabled.
   - `enabled` `boolean` — Whether Wrangler should collect and send npm package dependency metadata (package names and versions). Defaults to `true`.
@@ -206,9 +208,9 @@ The `main` key is optional for assets-only Workers.
   - Not applicable if you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 - `minify` `boolean` optional
   - Minify the Worker script before uploading.
-  - If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), `minify` is replaced by Vite's [`build.minify` ↗](https://vite.dev/config/build-options.html#build-minify).
+  - If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), `minify` is replaced by Vite's [`build.minify` ↗︎](https://vite.dev/config/build-options.html#build-minify).
 - `keep_names` `boolean` optional
-  - Wrangler uses esbuild to process the Worker code for development and deployment. This option allows you to specify whether esbuild should apply its [keepNames ↗](https://esbuild.github.io/api/#keep-names) logic to the code or not. Defaults to `true`.
+  - Wrangler uses esbuild to process the Worker code for development and deployment. This option allows you to specify whether esbuild should apply its [keepNames ↗︎](https://esbuild.github.io/api/#keep-names) logic to the code or not. Defaults to `true`.
 - `logpush` `boolean` optional
   - Enables Workers Trace Events Logpush for a Worker. Any scripts with this property will automatically get picked up by the Workers Logpush job configured for your account. Defaults to `false`. Refer to [Workers Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/).
 - `limits` `Limits` optional
@@ -235,7 +237,7 @@ Non-inheritable keys are configurable at the top-level, but cannot be inherited 
 
 - `define` `Record<string, string>` optional
   - A map of values to substitute when deploying your Worker.
-  - If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), `define` is replaced by Vite's [`define` ↗](https://vite.dev/config/shared-options.html#define).
+  - If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), `define` is replaced by Vite's [`define` ↗︎](https://vite.dev/config/shared-options.html#define).
 - `vars` `object` optional
   - A map of environment variables to set when deploying your Worker. Refer to [Environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/).
 - `durable_objects` `object` optional
@@ -507,7 +509,7 @@ The [Workers Browser Run API](https://developers.cloudflare.com/browser-run/) al
 A [browser binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) will provide your Worker with an authenticated endpoint to interact with a dedicated Chromium browser instance.
 
 - `binding` `string` required
-  - The binding name used to refer to the browser binding. The value (string) you set will be used to reference this headless browser in your Worker. The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "HEAD_LESS"` or `binding = "simulatedBrowser"` would both be valid names for the binding.
+  - The binding name used to refer to the browser binding. The value (string) you set will be used to reference this headless browser in your Worker. The binding must be [a valid JavaScript variable name ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "HEAD_LESS"` or `binding = "simulatedBrowser"` would both be valid names for the binding.
 
 Example:
 
@@ -531,7 +533,7 @@ binding = "<BINDING_NAME>"
 To bind D1 databases to your Worker, assign an array of the below object to the `[[d1_databases]]` key.
 
 - `binding` `string` required
-  - The binding name used to refer to the D1 database. The value (string) you set will be used to reference this database in your Worker. The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_DB"` or `binding = "productionDB"` would both be valid names for the binding.
+  - The binding name used to refer to the D1 database. The value (string) you set will be used to reference this database in your Worker. The binding must be [a valid JavaScript variable name ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_DB"` or `binding = "productionDB"` would both be valid names for the binding.
 - `database_name` `string` required
   - The name of the database. This is a human-readable name that allows you to distinguish between different databases, and is set when you first create the database.
 - `database_id` `string` required
@@ -576,7 +578,7 @@ database_id = "<DATABASE_ID>"
 Dispatch namespace bindings allow for communication between a [dynamic dispatch Worker](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dynamic-dispatch-worker) and a [dispatch namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dispatch-namespace). Dispatch namespace bindings are used in [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/). Workers for Platforms helps you deploy serverless functions programmatically on behalf of your customers.
 
 - `binding` `string` required
-  - The binding name. The value (string) you set will be used to reference this database in your Worker. The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_NAMESPACE"` or `binding = "productionNamespace"` would both be valid names for the binding.
+  - The binding name. The value (string) you set will be used to reference this database in your Worker. The binding must be [a valid JavaScript variable name ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_NAMESPACE"` or `binding = "productionNamespace"` would both be valid names for the binding.
 - `namespace` `string` required
   - The name of the [dispatch namespace](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/how-workers-for-platforms-works/#dispatch-namespace).
 - `outbound` `object` optional
@@ -1020,7 +1022,7 @@ To bind Queues to your producer Worker, assign an array of the below object to t
 - `queue` `string` required
   - The name of the queue, used on the Cloudflare dashboard.
 - `binding` `string` required
-  - The binding name used to refer to the queue in your Worker. The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_QUEUE"` or `binding = "productionQueue"` would both be valid names for the binding.
+  - The binding name used to refer to the queue in your Worker. The binding must be [a valid JavaScript variable name ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_QUEUE"` or `binding = "productionQueue"` would both be valid names for the binding.
 - `delivery_delay` `number` optional
   - The number of seconds to [delay messages sent to a queue](https://developers.cloudflare.com/queues/configuration/batching-retries/#delay-messages) for by default. This can be overridden on a per-message or per-batch basis.
 
@@ -1318,7 +1320,7 @@ binding = "AI"
 To bind Workflows to your Worker, assign an array of the below object to the `workflows` key.
 
 - `binding` `string` required
-  - The binding name used to refer to the Workflow in your Worker. The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_WORKFLOW"` would be a valid name for the binding.
+  - The binding name used to refer to the Workflow in your Worker. The binding must be [a valid JavaScript variable name ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_WORKFLOW"` would be a valid name for the binding.
 - `name` `string` required
   - The name of the Workflow.
 - `class_name` `string` required
@@ -1594,7 +1596,7 @@ It is also possible to include additional modules into your Worker, which are up
 - `type` `string` required
   - The type of module. Must be one of: `ESModule`, `CommonJS`, `CompiledWasm`, `Text` or `Data`.
 - `globs` `string[]` required
-  - An array of glob rules (for example, `["**/*.md"]`). Refer to [glob ↗](https://man7.org/linux/man-pages/man7/glob.7.html).
+  - An array of glob rules (for example, `["**/*.md"]`). Refer to [glob ↗︎](https://man7.org/linux/man-pages/man7/glob.7.html).
 - `fallthrough` `boolean` optional
   - When set to `true` on a rule, this allows you to have multiple rules for the same `Type`.
 
@@ -1639,7 +1641,7 @@ export default {
 
 Normally Wrangler will only include additional modules that are statically imported in your source code as in the example above. By setting `find_additional_modules` to `true` in your configuration file, Wrangler will traverse the file tree below `base_dir`. Any files that match `rules` will also be included as unbundled, external modules in the deployed Worker. `base_dir` defaults to the directory containing your `main` entrypoint.
 
-See [https://developers.cloudflare.com/workers/wrangler/bundling/ ↗](https://developers.cloudflare.com/workers/wrangler/bundling/) for more details and examples.
+See [https://developers.cloudflare.com/workers/wrangler/bundling/ ↗︎](https://developers.cloudflare.com/workers/wrangler/bundling/) for more details and examples.
 
 ### Python Workers
 
@@ -1668,7 +1670,7 @@ By default, `python_modules.exclude` is set to `["**/*.pyc"]`, so be sure to inc
 
 Note
 
-If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), you should use Vite's [server options ↗](https://vite.dev/config/server-options.html) instead.
+If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), you should use Vite's [server options ↗︎](https://vite.dev/config/server-options.html) instead.
 
 You can configure various aspects of local development, such as the local protocol or port.
 
@@ -1757,7 +1759,7 @@ Note
 
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
-These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
+These files should be formatted using the [dotenv ↗︎](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
 
 *.dev.vars / .envbash*
 
@@ -1792,7 +1794,7 @@ It is possible to control how `.env` files are loaded in local development by se
 
 Note
 
-If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), `alias` is replaced Vite's [`resolve.alias` ↗](https://vite.dev/config/shared-options.html#resolve-alias).
+If you're using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/), `alias` is replaced Vite's [`resolve.alias` ↗︎](https://vite.dev/config/shared-options.html#resolve-alias).
 
 You can configure Wrangler to replace all calls to import a particular package with a module of your choice, by configuring the `alias` field:
 
@@ -1839,7 +1841,7 @@ If an alias is the correct solution for your dependency issue, you have several 
 
 You can use module aliasing to provide an implementation of an NPM package that does not work on Workers — even if you only rely on that NPM package indirectly, as a dependency of one of your Worker's dependencies.
 
-For example, some NPM packages depend on [`node-fetch` ↗](https://www.npmjs.com/package/node-fetch), a package that provided a polyfill of the [`fetch()` API](https://developers.cloudflare.com/workers/runtime-apis/fetch/), before it was built into Node.js.
+For example, some NPM packages depend on [`node-fetch` ↗︎](https://www.npmjs.com/package/node-fetch), a package that provided a polyfill of the [`fetch()` API](https://developers.cloudflare.com/workers/runtime-apis/fetch/), before it was built into Node.js.
 
 `node-fetch` isn't needed in Workers, because the `fetch()` API is provided by the Workers runtime. And `node-fetch` doesn't work on Workers, because it relies on currently unsupported Node.js APIs from the `http`/`https` modules.
 
@@ -1868,7 +1870,7 @@ export default fetch;
 
 You can use module aliasing to provide your own polyfill implementation of a Node.js API that is not yet available in the Workers runtime.
 
-For example, let's say the NPM package you rely on calls [`fs.readFile` ↗](https://nodejs.org/api/fs.html#fsreadfilepath-options-callback). You can alias the fs module by adding the following to your Worker's Wrangler configuration file:
+For example, let's say the NPM package you rely on calls [`fs.readFile` ↗︎](https://nodejs.org/api/fs.html#fsreadfilepath-options-callback). You can alias the fs module by adding the following to your Worker's Wrangler configuration file:
 
 ```jsonc
 {
@@ -2093,5 +2095,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

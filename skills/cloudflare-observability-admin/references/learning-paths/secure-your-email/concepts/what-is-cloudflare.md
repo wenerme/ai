@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/learning-paths/secure-your-email/concepts/what-is-cloudflare/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare is one of the world's largest [connectivity cloud networks ↗](https://blog.cloudflare.com/welcome-to-connectivity-cloud). Today, anyone with an Internet presence can have faster and more secure websites and applications thanks to Cloudflare. This includes bloggers, businesses, and even non-profits.
+Cloudflare is one of the world's largest [connectivity cloud networks ↗︎](https://blog.cloudflare.com/welcome-to-connectivity-cloud). Today, anyone with an Internet presence can have faster and more secure websites and applications thanks to Cloudflare. This includes bloggers, businesses, and even non-profits.
 
 Millions of Internet properties are on Cloudflare, and our network is growing by tens of thousands each day. Cloudflare powers Internet requests for millions of websites and serves 55 million HTTP requests per second on average.
 

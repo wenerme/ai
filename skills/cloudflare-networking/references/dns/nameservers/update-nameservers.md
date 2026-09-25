@@ -32,9 +32,9 @@ If you are using Cloudflare Registrar with [custom nameservers](https://develope
 
 ### Your domain uses a different registrar
 
-If you have acquired your domain from a [registrar ↗](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/) other than Cloudflare Registrar - and it has not been [delegated](#your-domain-is-delegated) - you need to update your nameservers at your registrar.
+If you have acquired your domain from a [registrar ↗︎](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/) other than Cloudflare Registrar - and it has not been [delegated](#your-domain-is-delegated) - you need to update your nameservers at your registrar.
 
-If you do not know who your registrar is, you can use a Whois search, such as [ICANN Lookup ↗](https://lookup.icann.org/). If the registrar indicated on your Whois search result is not a service that you have interacted directly with, you may [have acquired your domain from a reseller](#you-have-acquired-your-domain-from-a-reseller).
+If you do not know who your registrar is, you can use a Whois search, such as [ICANN Lookup ↗︎](https://lookup.icann.org/). If the registrar indicated on your Whois search result is not a service that you have interacted directly with, you may [have acquired your domain from a reseller](#you-have-acquired-your-domain-from-a-reseller).
 
 <details>
 
@@ -46,53 +46,53 @@ Provider-specific instructions
 
 This is not an exhaustive list of provider-specific instructions, but the following links may be helpful:
 
-- <a href="https://www.ionos.com/help/domains/using-your-own-name-servers/using-your-own-name-servers-for-a-domain/">Ionos ↗</a>
-- <a href="https://help.101domain.com/kb/managing-name-server-records">101Domain ↗</a>
-- <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-name-servers-glue-records.html#domain-name-servers-glue-records-adding-changing">Amazon ↗</a>
-- <a href="https://help.blacknight.com/hc/articles/4413036322321-How-do-I-change-the-nameservers-for-my-domain">Blacknight ↗</a>
-- <a href="https://www.bluehost.com/help/article/custom-nameservers">BlueHost ↗</a>
-- <a href="https://directnic.com/knowledge/article/33:how%2Bdo%2Bi%2Bmodify%2Bname%2Bservers%2Bfor%2Bmy%2Bdomain%2Bname%253F">DirectNIC ↗</a>
-- <a href="http://www.dnsmadeeasy.com/support/faq/">DNSMadeEasy ↗</a>
-- <a href="https://www.domain.com/help/article/domain-management-how-to-update-nameservers">Domain.com ↗</a>
-- <a href="https://www.dotster.com/help/article/domain-management-how-to-update-nameservers">Dotster ↗</a>
-- <a href="https://help.dreamhost.com/hc/en-us/articles/360038897151">DreamHost ↗</a>
-- <a href="https://kb.easydns.com/knowledge/settingchanging-nameservers/">EasyDNS ↗</a>
-- <a href="https://help.enom.com/hc/en-us/articles/115000486451-Nameservers-NS">Enom ↗</a>
-- <a href="https://www.fastdomain.com/hosting/help/transfer_client_start">Fast Domain ↗</a>
-- <a href="https://billing.flokinet.is/index.php?rp=/knowledgebase/57/Nameserver-and-DNS-records.html">FlokiNET ↗</a>
-- <a href="https://docs.gandi.net/en/domain_names/common_operations/changing_nameservers.html">Gandi ↗</a>
-- <a href="https://www.godaddy.com/help/change-nameservers-for-your-domain-names-664">GoDaddy ↗</a>
-- <a href="https://www.hostgator.com/help/article/changing-name-servers">HostGator ↗</a>
-- <a href="https://hostico.ro/docs/setarea-nameserverelor-din-contul-de-client-hostico/">Hostico ↗</a>
-- <a href="https://my.hostmonster.com/cgi/help/222">HostMonster ↗</a>
-- <a href="https://support.hover.com/support/solutions/articles/201000064742-changing-your-domain-nameservers">Hover ↗</a>
-- <a href="https://faq.internetbs.net/hc/en-gb/articles/4516921367837-How-to-update-Nameservers-for-a-domain">Internetdbs ↗</a>
-- <a href="https://www.ipage.com/help/article/domain-management-how-to-update-nameservers">iPage ↗</a>
-- <a href="https://support.melbourneit.au/docs/how-do-i-manage-my-dns-on-cpanel">MelbourneIT ↗</a>
-- <a href="https://support.moniker.com/hc/en-gb/articles/10101271418653-How-to-update-Nameservers-for-a-domain">Moniker ↗</a>
-- <a href="https://www.name.com/support/articles/205934457-registering-custom-nameservers">Name.com ↗</a>
-- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain">Namecheap ↗</a>
-- <a href="https://www.networksolutions.com/manage-it/edit-nameservers.jsp">Network Solutions ↗</a>
-- <a href="https://docs.ovh.com/gb/en/domains/web_hosting_general_information_about_dns_servers/#step-2-edit-your-domains-dns-servers">OVH ↗</a>
-- <a href="https://kb.porkbun.com/article/22-how-to-change-your-nameservers">Porkbun ↗</a>
-- <a href="https://support.rackspace.com/how-to/rackspace-name-servers/">Rackspace ↗</a>
-- <a href="https://www.register.com/knowledge">Register ↗</a>
-- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-open-the-domain-s-advanced-settings">Squarespace ↗</a>
-- <a href="https://kb.site5.com/dns-2/custom-nameservers/">Site5 ↗</a>
-- <a href="https://cloud.ibm.com/docs/dns?topic=dns-add-edit-or-delete-custom-name-servers-for-a-domain">Softlayer ↗</a>
-- <a href="https://helpcenter.yola.com/hc/articles/360012492660-Changing-your-name-servers">Yola ↗</a>
+- <a href="https://www.ionos.com/help/domains/using-your-own-name-servers/using-your-own-name-servers-for-a-domain/">Ionos ↗︎</a>
+- <a href="https://help.101domain.com/kb/managing-name-server-records">101Domain ↗︎</a>
+- <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-name-servers-glue-records.html#domain-name-servers-glue-records-adding-changing">Amazon ↗︎</a>
+- <a href="https://help.blacknight.com/hc/articles/4413036322321-How-do-I-change-the-nameservers-for-my-domain">Blacknight ↗︎</a>
+- <a href="https://www.bluehost.com/help/article/custom-nameservers">BlueHost ↗︎</a>
+- <a href="https://directnic.com/knowledge/article/33:how%2Bdo%2Bi%2Bmodify%2Bname%2Bservers%2Bfor%2Bmy%2Bdomain%2Bname%253F">DirectNIC ↗︎</a>
+- <a href="http://www.dnsmadeeasy.com/support/faq/">DNSMadeEasy ↗︎</a>
+- <a href="https://www.domain.com/help/article/domain-management-how-to-update-nameservers">Domain.com ↗︎</a>
+- <a href="https://www.dotster.com/help/article/domain-management-how-to-update-nameservers">Dotster ↗︎</a>
+- <a href="https://help.dreamhost.com/hc/en-us/articles/360038897151">DreamHost ↗︎</a>
+- <a href="https://kb.easydns.com/knowledge/settingchanging-nameservers/">EasyDNS ↗︎</a>
+- <a href="https://help.enom.com/hc/en-us/articles/115000486451-Nameservers-NS">Enom ↗︎</a>
+- <a href="https://www.fastdomain.com/hosting/help/transfer_client_start">Fast Domain ↗︎</a>
+- <a href="https://billing.flokinet.is/index.php?rp=/knowledgebase/57/Nameserver-and-DNS-records.html">FlokiNET ↗︎</a>
+- <a href="https://docs.gandi.net/en/domain_names/common_operations/changing_nameservers.html">Gandi ↗︎</a>
+- <a href="https://www.godaddy.com/help/change-nameservers-for-your-domain-names-664">GoDaddy ↗︎</a>
+- <a href="https://www.hostgator.com/help/article/changing-name-servers">HostGator ↗︎</a>
+- <a href="https://hostico.ro/docs/setarea-nameserverelor-din-contul-de-client-hostico/">Hostico ↗︎</a>
+- <a href="https://my.hostmonster.com/cgi/help/222">HostMonster ↗︎</a>
+- <a href="https://support.hover.com/support/solutions/articles/201000064742-changing-your-domain-nameservers">Hover ↗︎</a>
+- <a href="https://faq.internetbs.net/hc/en-gb/articles/4516921367837-How-to-update-Nameservers-for-a-domain">Internetdbs ↗︎</a>
+- <a href="https://www.ipage.com/help/article/domain-management-how-to-update-nameservers">iPage ↗︎</a>
+- <a href="https://support.melbourneit.au/docs/how-do-i-manage-my-dns-on-cpanel">MelbourneIT ↗︎</a>
+- <a href="https://support.moniker.com/hc/en-gb/articles/10101271418653-How-to-update-Nameservers-for-a-domain">Moniker ↗︎</a>
+- <a href="https://www.name.com/support/articles/205934457-registering-custom-nameservers">Name.com ↗︎</a>
+- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/767/10/how-can-i-change-the-nameservers-for-my-domain">Namecheap ↗︎</a>
+- <a href="https://www.networksolutions.com/manage-it/edit-nameservers.jsp">Network Solutions ↗︎</a>
+- <a href="https://docs.ovh.com/gb/en/domains/web_hosting_general_information_about_dns_servers/#step-2-edit-your-domains-dns-servers">OVH ↗︎</a>
+- <a href="https://kb.porkbun.com/article/22-how-to-change-your-nameservers">Porkbun ↗︎</a>
+- <a href="https://support.rackspace.com/how-to/rackspace-name-servers/">Rackspace ↗︎</a>
+- <a href="https://www.register.com/knowledge">Register ↗︎</a>
+- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-open-the-domain-s-advanced-settings">Squarespace ↗︎</a>
+- <a href="https://kb.site5.com/dns-2/custom-nameservers/">Site5 ↗︎</a>
+- <a href="https://cloud.ibm.com/docs/dns?topic=dns-add-edit-or-delete-custom-name-servers-for-a-domain">Softlayer ↗︎</a>
+- <a href="https://helpcenter.yola.com/hc/articles/360012492660-Changing-your-name-servers">Yola ↗︎</a>
 
 </details>
 
 ### You have acquired your domain from a reseller
 
-Some services, such as website builders ([Squarespace ↗](https://support.squarespace.com/hc/articles/115003671428-Who-s-my-domain-provider), for example), are not registrars but act as a [reseller ↗](https://www.icann.org/resources/pages/reseller-2013-05-03-en), allowing you to buy domains directly from them.
+Some services, such as website builders ([Squarespace ↗︎](https://support.squarespace.com/hc/articles/115003671428-Who-s-my-domain-provider), for example), are not registrars but act as a [reseller ↗︎](https://www.icann.org/resources/pages/reseller-2013-05-03-en), allowing you to buy domains directly from them.
 
 In that case, you may have to update your nameservers in the reseller platform, not at the registrar.
 
 Note
 
-Refer to [Squarespace documentation ↗](https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-open-the-domain-s-advanced-settings) on how to update nameservers in their platform.
+Refer to [Squarespace documentation ↗︎](https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-open-the-domain-s-advanced-settings) on how to update nameservers in their platform.
 
 ### Your domain is delegated
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/how-to/create-partial-zone/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A [partial zone](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) lets you use Cloudflare for a subdomain while keeping your existing authoritative DNS provider for the parent domain. This guide shows how to automate the setup using the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+A [partial zone](https://developers.cloudflare.com/dns/zone-setups/partial-setup/) lets you use Cloudflare for a subdomain while keeping your existing authoritative DNS provider for the parent domain. This guide shows how to automate the setup using the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 Caution
 
@@ -67,13 +67,13 @@ Terraform places the zone in a **Pending** state. You must add the necessary DNS
 
 Note
 
-Refer to the [cloudflare\_zone docs ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone) in the Terraform provider documentation when you need to reference other zone properties.
+Refer to the [cloudflare\_zone docs ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone) in the Terraform provider documentation when you need to reference other zone properties.
 
 ## Related resources
 
 - [Partial zone setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/)
 - [Convert a full zone to partial](https://developers.cloudflare.com/dns/zone-setups/conversions/convert-full-to-partial/)
-- [`cloudflare_zone` resource ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone)
+- [`cloudflare_zone` resource ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zone)
 
 Was this helpful?
 

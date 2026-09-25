@@ -54,7 +54,7 @@ If you have not added a zone, add one by selecting **Add** > **Connect a domain*
 
 ## Use GitHub Actions
 
-[GitHub Actions ↗](https://docs.github.com/en/actions) is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline when using GitHub. You can create workflows that build and test every pull request to your repository or deploy merged pull requests to production.
+[GitHub Actions ↗︎](https://docs.github.com/en/actions) is a continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline when using GitHub. You can create workflows that build and test every pull request to your repository or deploy merged pull requests to production.
 
 After setting up your project, you can set up a GitHub Action to automate your subsequent deployments with Wrangler.
 
@@ -72,7 +72,7 @@ Add the value of your Cloudflare account ID and Cloudflare API token as `CLOUDFL
 
 ### Set up a workflow
 
-Create a `.github/workflows/pages-deployment.yaml` file at the root of your project. The `.github/workflows/pages-deployment.yaml` file will contain the jobs you specify on the request, that is: `on: [push]` in this case. It can also be on a pull request. For a detailed explanation of GitHub Actions syntax, refer to the [official documentation ↗](https://docs.github.com/en/actions).
+Create a `.github/workflows/pages-deployment.yaml` file at the root of your project. The `.github/workflows/pages-deployment.yaml` file will contain the jobs you specify on the request, that is: `on: [push]` in this case. It can also be on a pull request. For a detailed explanation of GitHub Actions syntax, refer to the [official documentation ↗︎](https://docs.github.com/en/actions).
 
 In your `pages-deployment.yaml` file, copy the following content:
 
@@ -110,7 +110,7 @@ This workflow automatically triggers on the current git branch, unless you add a
 
 ## Using CircleCI for CI/CD
 
-[CircleCI ↗](https://circleci.com/) is another continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. It can be configured to efficiently run complex pipelines with caching, docker layer caching, and resource classes.
+[CircleCI ↗︎](https://circleci.com/) is another continuous integration and continuous delivery (CI/CD) platform that allows you to automate your build, test, and deployment pipeline. It can be configured to efficiently run complex pipelines with caching, docker layer caching, and resource classes.
 
 Similar to GitHub Actions, CircleCI can use Wrangler to continuously deploy your projects each time to push to your code.
 
@@ -160,7 +160,7 @@ Wrangler requires a Node version of at least `16.17.0`. You must upgrade your No
 
 You can modify the Wrangler command with any [`wrangler pages deploy` options](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy).
 
-After all the specified steps, define a `workflow` at the end of your file. You can learn more about creating a custom process with CircleCI from the [official documentation ↗](https://circleci.com/docs/2.0/concepts/).
+After all the specified steps, define a `workflow` at the end of your file. You can learn more about creating a custom process with CircleCI from the [official documentation ↗︎](https://circleci.com/docs/2.0/concepts/).
 
 ## Travis CI for CI/CD
 
@@ -174,7 +174,7 @@ Set the environment variable's name and value and the branch you want it to be a
 
 ### Setup
 
-Go to [Travis-ci.com ↗](https://Travis-ci.com) and enable your repository by login in with your preferred provider. This guide uses GitHub. Next, create a `.travis.yml` file and copy the following into the file:
+Go to [Travis-ci.com ↗︎](https://Travis-ci.com) and enable your repository by login in with your preferred provider. This guide uses GitHub. Next, create a `.travis.yml` file and copy the following into the file:
 
 ```yaml
 language: node_js

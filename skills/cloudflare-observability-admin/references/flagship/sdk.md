@@ -16,15 +16,15 @@ Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Evaluate Flagship feature flags using OpenFeature.
 
-[OpenFeature ↗](https://openfeature.dev/) is the CNCF standard for feature flag interfaces. It provides a vendor-neutral API so you can switch between flag providers without changing evaluation code.
+[OpenFeature ↗︎](https://openfeature.dev/) is the CNCF standard for feature flag interfaces. It provides a vendor-neutral API so you can switch between flag providers without changing evaluation code.
 
-Flagship provides official OpenFeature-compatible SDKs for TypeScript, Python, and Go. The source code is available on [GitHub ↗](https://github.com/cloudflare/flagship).
+Flagship provides official OpenFeature-compatible SDKs for TypeScript, Python, and Go. The source code is available on [GitHub ↗︎](https://github.com/cloudflare/flagship).
 
 | SDK | Package | Runtime | Evaluation modes |
 | --- | --- | --- | --- |
-| TypeScript | [`@cloudflare/flagship` ↗](https://www.npmjs.com/package/@cloudflare/flagship) | Workers, Node.js, browsers | Workers binding, HTTP, browser prefetch cache |
-| Python | [`cloudflare-flagship` ↗](https://pypi.org/project/cloudflare-flagship/) | Python server applications | HTTP |
-| Go | [`github.com/cloudflare/flagship/sdks/go` ↗](https://pkg.go.dev/github.com/cloudflare/flagship/sdks/go) | Go server applications | HTTP |
+| TypeScript | [`@cloudflare/flagship` ↗︎](https://www.npmjs.com/package/@cloudflare/flagship) | Workers, Node.js, browsers | Workers binding, HTTP, browser prefetch cache |
+| Python | [`cloudflare-flagship` ↗︎](https://pypi.org/project/cloudflare-flagship/) | Python server applications | HTTP |
+| Go | [`github.com/cloudflare/flagship/sdks/go` ↗︎](https://pkg.go.dev/github.com/cloudflare/flagship/sdks/go) | Go server applications | HTTP |
 
 ## SDKs
 

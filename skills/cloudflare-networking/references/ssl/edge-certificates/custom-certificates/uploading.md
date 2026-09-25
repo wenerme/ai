@@ -30,7 +30,7 @@ Full list of requirements
 
 Each custom certificate you upload must:
 
-- Be encoded in PEM format (PEM, PKCS#7, or PKCS#12). See <a href="https://www.sslshopper.com/article-most-common-openssl-commands.html">Converting Using OpenSSL ↗</a> for conversion examples.
+- Be encoded in PEM format (PEM, PKCS#7, or PKCS#12). See <a href="https://www.sslshopper.com/article-most-common-openssl-commands.html">Converting Using OpenSSL ↗︎</a> for conversion examples.
 - Not have a <a href="https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/remove-file-key-password/">key file password</a>.
 - Not be expiring in less than 14 days from time of upload.
 - Have a subject alternative name (SAN) matching at least one hostname in the zone where it is being uploaded.
@@ -113,7 +113,7 @@ EOF
 ))
 ```
 
-You can optionally add [geographic restrictions ↗](https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/) that specify where your private key can physically be decrypted:
+You can optionally add [geographic restrictions ↗︎](https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/) that specify where your private key can physically be decrypted:
 
 ```bash
 request_body=$(< <(cat <<EOF
@@ -172,7 +172,7 @@ For more guidance, refer to [Create a CAA record](https://developers.cloudflare.
 
 To renew a custom certificate that is approaching expiry, or to replace a certificate with updated key material, follow the steps below. **This is the recommended renewal path** — it does not consume an additional certificate quota slot and avoids downtime.
 
-Before you update an existing custom certificate, you might want to consider having active [universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) or [advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) certificates as fallback options. Go to the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page to check a list of hostnames and status of the edge certificates in your zone.
+Before you update an existing custom certificate, you might want to consider having active [universal](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) or [advanced](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) certificates as fallback options. Go to the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page to check a list of hostnames and status of the edge certificates in your zone.
 
 If you are on an Enterprise plan and want to update a custom (modern) certificate, also consider requesting access to [Staging environment (Beta)](https://developers.cloudflare.com/ssl/edge-certificates/staging-environment/).
 

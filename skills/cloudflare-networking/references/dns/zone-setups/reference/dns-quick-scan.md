@@ -64,7 +64,7 @@ The [use cases section](#use-case-examples) below provides some examples of DNS 
 
 Since the DNS records quick scan is not tailored to the specific zone you are adding to Cloudflare, there can be cases where not all records are picked up.
 
-For example, if you have very specific hostnames - such as `my-store1900.example.com` instead of `store.example.com` - or if you have set up a [DKIM record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/) that uses a more custom name - `this._domainkey` instead of `default._domainkey` - it is expected that the scan will not find the specific DNS records.
+For example, if you have very specific hostnames - such as `my-store1900.example.com` instead of `store.example.com` - or if you have set up a [DKIM record ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/) that uses a more custom name - `this._domainkey` instead of `default._domainkey` - it is expected that the scan will not find the specific DNS records.
 
 Important
 
@@ -80,7 +80,7 @@ You should always [review your DNS records](https://developers.cloudflare.com/dn
 
 The value `@` indicates the domain apex - in the example above, `domain.test` or `example.com`.
 
-Virtually all zones on a [primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/) are expected to have at least one [address record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/) pointing to the IP address where the website or application is hosted.
+Virtually all zones on a [primary setup (full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/) are expected to have at least one [address record ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/) pointing to the IP address where the website or application is hosted.
 
 ### www records
 

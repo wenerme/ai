@@ -44,7 +44,7 @@ A target represents a single resource in your infrastructure (such as a server, 
 
 Create a target for each Windows machine that requires RDP access. To create a new target:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Targets**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Targets**.
 2. Select **Add a target**.
 3. In **Target hostname**, enter a user-friendly name for the target. We recommend using the server hostname, for example `production-server`. The target hostname does not need to be unique and can be reused for multiple targets. Hostnames are used to define the targets secured by an Access application; they are not used for DNS address resolution.<details><summary>
 
@@ -90,9 +90,9 @@ Provider versions
 
 The following example requires Cloudflare provider version `>=4.45.0`.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/api_token):
    - `Zero Trust Write`
-2. Configure the [`cloudflare_zero_trust_infrastructure_access_target` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_infrastructure_access_target) resource:
+2. Configure the [`cloudflare_zero_trust_infrastructure_access_target` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/4.45.0/docs/resources/zero_trust_infrastructure_access_target) resource:
 
    ```tf
    resource "cloudflare_zero_trust_infrastructure_access_target" "infra-ssh-target" {
@@ -129,7 +129,7 @@ A record
 
 </summary>
 
-The following DNS record points your public subdomain (<code>rdp</code>) to an IPv4 address in the <a href="https://datatracker.ietf.org/doc/html/rfc5735">Class E address space ↗</a>.
+The following DNS record points your public subdomain (<code>rdp</code>) to an IPv4 address in the <a href="https://datatracker.ietf.org/doc/html/rfc5735">Class E address space ↗︎</a>.
 
 - **Type**: *A*
 - **Name**: <code>rdp</code>
@@ -146,7 +146,7 @@ AAAA record
 
 </summary>
 
-The following DNS record points your public subdomain (<code>rdp</code>) to the IPv6 <a href="https://www.rfc-editor.org/rfc/rfc6666.html">discard address range ↗</a>:
+The following DNS record points your public subdomain (<code>rdp</code>) to the IPv6 <a href="https://www.rfc-editor.org/rfc/rfc6666.html">discard address range ↗︎</a>:
 
 - **Type**: *AAAA*
 - **Name**: <code>rdp</code>
@@ -178,7 +178,7 @@ The DNS record does not need to point to an active destination IP address or hos
 
 ## 4. Create an Access application
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **Self-hosted and private**.
 4. Select **Add public hostname**.
@@ -195,7 +195,7 @@ The DNS record does not need to point to an active destination IP address or hos
    You can only enable browser-based RDP on domains and subdomains, not for specific paths. The selected domain and subdomain must also have a corresponding DNS record (refer to [Step 3](#3-create-a-dns-record)).
 6. Turn on **Allow access through browser-based RDP, SSH, or VNC sessions**, then select *RDP* from the dropdown menu.
 7. In **Target criteria**, select the [target hostname(s)](#2-add-a-target) that define your RDP servers. The application definition will apply to all targets that share the selected target hostname, including any targets added in the future.
-8. In **Port**, enter the [RDP listening port ↗](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/change-listening-port) of your server. It will likely be port `3389`.
+8. In **Port**, enter the [RDP listening port ↗︎](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/change-listening-port) of your server. It will likely be port `3389`.
 9. (Optional) If you run RDP on more than one port, select **Add new target criteria** and reconfigure the same target hostname(s) with the different port number.
 10. Under **Access policies**, add an existing policy or [create a new policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/policy-management/) to control who can connect to your application. All Access applications are deny by default -- a user must match an Allow policy before they are granted access.
 
@@ -229,7 +229,7 @@ The DNS record does not need to point to an active destination IP address or hos
 
 By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). To evaluate Access applications before or after specific Gateway policies:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
 
    | Selector | Operator | Value | Action |
    | --- | --- | --- | --- |
@@ -301,7 +301,7 @@ When a user attempts a restricted clipboard action, the clipboard content is rep
 
 ### Configure connection settings
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate your browser-based RDP application and select **Configure**.
 3. Select the **Policies** tab.
 4. Create a new policy or select an existing policy to edit.
@@ -357,7 +357,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies"
 	}'
 ```
 
-Using the `connection_rules` attribute within a [`cloudflare_zero_trust_access_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource, configure the allowed formats in each direction. Use `text` for text clipboard and `file` for file transfer. For example, the following policy allows text clipboard in both directions but only allows file uploads (local to remote).
+Using the `connection_rules` attribute within a [`cloudflare_zero_trust_access_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_policy) resource, configure the allowed formats in each direction. Use `text` for text clipboard and `file` for file transfer. For example, the following policy allows text clipboard in both directions but only allows file uploads (local to remote).
 
 ```tf
 resource "cloudflare_zero_trust_access_policy" "rdp-policy" {
@@ -526,7 +526,7 @@ Google tag gateway is configured at the zone level and cannot be scoped to speci
 - **Clipboard data types**: Text clipboard controls only support text data. Image clipboard transfers are not supported.
 - **File transfer availability**: File transfer is in beta. Refer to [Transfer files](#transfer-files) for supported functionality and limitations.
 - **Print to local printer**: Local printing from a browser-based RDP session is only supported for PDF files through the [file transfer control panel](#print-pdfs).
-- **Network Level Authentication for Entra-joined accounts**: Browser-based RDP does not support PKU2U authentication which is required for [Network Level Authentication (NLA) ↗](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/remotepc/remote-desktop-allow-access#why-allow-connections-only-with-network-level-authentication) with Entra-joined accounts. Connecting to Entra-joined accounts requires disabling enforcement of NLA on the remote Windows machine. You can disable NLA from **Settings** > **System** > **Remote Desktop**, or use the Local Group Policy Editor to disable **Require user authentication for remote connections by using Network Level Authentication**. When disabling NLA, only turn off NLA itself — do not switch the security layer to the legacy **RDP** option, because browser-based RDP still requires TLS (refer to the **RDP security layer must allow TLS** limitation).
+- **Network Level Authentication for Entra-joined accounts**: Browser-based RDP does not support PKU2U authentication which is required for [Network Level Authentication (NLA) ↗︎](https://learn.microsoft.com/en-us/windows-server/remote/remote-desktop-services/remotepc/remote-desktop-allow-access#why-allow-connections-only-with-network-level-authentication) with Entra-joined accounts. Connecting to Entra-joined accounts requires disabling enforcement of NLA on the remote Windows machine. You can disable NLA from **Settings** > **System** > **Remote Desktop**, or use the Local Group Policy Editor to disable **Require user authentication for remote connections by using Network Level Authentication**. When disabling NLA, only turn off NLA itself — do not switch the security layer to the legacy **RDP** option, because browser-based RDP still requires TLS (refer to the **RDP security layer must allow TLS** limitation).
 - **RDP security layer must allow TLS**: Browser-based RDP connects to the remote machine over TLS, so the machine's RDP security layer must be set to at least **Negotiate** (or **SSL**). If the server is set to use the legacy **RDP** security layer, connections will fail. You can configure this in the Local Group Policy Editor by setting **Require use of specific security layer for remote (RDP) connections** to **Negotiate** or **SSL**.
 - **Clipboard browser compatibility**: Automatic clipboard sharing between the local and remote machine is only available in Chromium-based browsers by default (Google Chrome, Microsoft Edge, Opera, Brave). To enable this functionality in Firefox:
   1. Type `about:config` into the browser address bar and press **Enter**.

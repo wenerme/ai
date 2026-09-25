@@ -22,7 +22,7 @@ Budget alerts are available to Pay-as-you-go accounts only. Enterprise contract 
 
 ## Create a budget alert
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Select **Billable Usage**.
 4. Select **Create budget alert**.

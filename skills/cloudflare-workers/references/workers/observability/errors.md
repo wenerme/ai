@@ -33,7 +33,7 @@ When a Worker running in production has an error that prevents it from returning
 | `1042` | Worker tried to fetch from another Worker on the same zone, which is only [supported](https://developers.cloudflare.com/workers/runtime-apis/fetch/) when the [`global_fetch_strictly_public` compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#global-fetch-strictly-public) is used. |
 | `10162` | Module has an unsupported Content-Type. |
 
-Other `11xx` errors generally indicate a problem with the Workers runtime itself. Refer to the [status page ↗](https://www.cloudflarestatus.com) if you are experiencing an error.
+Other `11xx` errors generally indicate a problem with the Workers runtime itself. Refer to the [status page ↗︎](https://www.cloudflarestatus.com) if you are experiencing an error.
 
 ### Loop limit
 
@@ -67,7 +67,7 @@ export default {
 };
 ```
 
-You can prevent this by enforcing the [`no-floating-promises` eslint rule ↗](https://typescript-eslint.io/rules/no-floating-promises/), which reports when a Promise is created and not properly handled.
+You can prevent this by enforcing the [`no-floating-promises` eslint rule ↗︎](https://typescript-eslint.io/rules/no-floating-promises/), which reports when a Promise is created and not properly handled.
 
 #### Cause 2: WebSocket connections that are never closed
 
@@ -276,7 +276,7 @@ Exceptions will show up under the `exceptions` field in the JSON returned by `wr
 
 ## Set up a 3rd party logging service
 
-A Worker can make HTTP requests to any HTTP service on the public Internet. You can use a service like [Sentry ↗](https://sentry.io) to collect error logs from your Worker, by making an HTTP request to the service to report the error. Refer to your service’s API documentation for details on what kind of request to make.
+A Worker can make HTTP requests to any HTTP service on the public Internet. You can use a service like [Sentry ↗︎](https://sentry.io) to collect error logs from your Worker, by making an HTTP request to the service to report the error. Refer to your service’s API documentation for details on what kind of request to make.
 
 When using an external logging strategy, remember that floating promises (promises that are neither `await`ed, `return`ed, nor passed to `ctx.waitUntil()`) may be canceled when the Worker invocation completes. A Worker invocation has not completed while it is still streaming a response body to the client. To run logging after the response is complete, pass the request promise to [`ctx.waitUntil()`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil). For example:
 
@@ -324,7 +324,7 @@ function postLog(data) {
 
 ## Collect and persist Wasm core dumps
 
-Configure the [Wasm Coredump Service ↗](https://github.com/cloudflare/wasm-coredump) to collect coredumps from your Rust Workers applications and persist them to logs, Sentry, or R2 for analysis with [wasmgdb ↗](https://github.com/xtuc/wasm-coredump/tree/main/bin/wasmgdb). Read the [blog post ↗](https://blog.cloudflare.com/wasm-coredumps/) for more details.
+Configure the [Wasm Coredump Service ↗︎](https://github.com/cloudflare/wasm-coredump) to collect coredumps from your Rust Workers applications and persist them to logs, Sentry, or R2 for analysis with [wasmgdb ↗︎](https://github.com/xtuc/wasm-coredump/tree/main/bin/wasmgdb). Read the [blog post ↗︎](https://blog.cloudflare.com/wasm-coredumps/) for more details.
 
 ## Go to origin on error
 

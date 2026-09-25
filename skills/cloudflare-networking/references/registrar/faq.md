@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗](https://community.cloudflare.com/) to explore more resources.
+Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗︎](https://community.cloudflare.com/) to explore more resources.
 
 - [Domain management](#domain-management)
 - [Domain transfers](#domain-transfers)
@@ -180,7 +180,7 @@ The redemption period lasts for 30 days. During this time, it may be possible to
 
 If the domain is in a state where it can be restored, the Manage Domain page in the Registrar section of the dashboard will display a message indicating the domain is restorable. You will then be able to initiate the restore process directly from the dashboard.
 
-Cloudflare does not guarantee against domain loss in the sense of fully indemnifying you for business losses if you lose your domain. However, mechanisms are in place to alert you of domain expiration and redemption grace periods should your domain expire. You can also elect to set up your domain registration to renew automatically. For an additional layer of control over your domains, refer to [Domain Protection Service ↗](https://www.cloudflare.com/products/registrar/custom-domain-protection/).
+Cloudflare does not guarantee against domain loss in the sense of fully indemnifying you for business losses if you lose your domain. However, mechanisms are in place to alert you of domain expiration and redemption grace periods should your domain expire. You can also elect to set up your domain registration to renew automatically. For an additional layer of control over your domains, refer to [Domain Protection Service ↗︎](https://www.cloudflare.com/products/registrar/custom-domain-protection/).
 
 ### My domain's registration was not extended by one year after transferring to Cloudflare
 
@@ -198,7 +198,7 @@ If this already happened, you have effectively paid twice for the same year. You
 
 ### How much does Cloudflare Registrar cost
 
-Refer to [What is Cloudflare Registrar ↗](https://www.cloudflare.com/learning/dns/what-is-cloudflare-registrar/) for more information on pricing.
+Refer to [What is Cloudflare Registrar ↗︎](https://www.cloudflare.com/learning/dns/what-is-cloudflare-registrar/) for more information on pricing.
 
 ### Can I get a refund for a domain I registered or renewed by mistake
 

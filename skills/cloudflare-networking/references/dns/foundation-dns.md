@@ -38,8 +38,8 @@ Both advanced nameservers and unique ZSK/KSK are opt-in configurations. Refer to
 
 ## Related resources
 
-- [Release blog post ↗](https://blog.cloudflare.com/foundation-dns-launch)
-- [Product page ↗](https://www.cloudflare.com/dns/foundation-dns/)
+- [Release blog post ↗︎](https://blog.cloudflare.com/foundation-dns-launch)
+- [Product page ↗︎](https://www.cloudflare.com/dns/foundation-dns/)
 
 Was this helpful?
 

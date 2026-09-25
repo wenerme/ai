@@ -107,7 +107,7 @@ ADD COLUMN expires_at AS (date(timestamp, '+30 days'));
 ## Additional considerations
 
 - Tables must have at least one non-generated column. You cannot define a table with only generated column(s).
-- Expressions can only reference other columns in the same table and row, and must only use [deterministic functions ↗](https://www.sqlite.org/deterministic.html). Functions like `random()`, sub-queries or aggregation functions cannot be used to define a generated column.
+- Expressions can only reference other columns in the same table and row, and must only use [deterministic functions ↗︎](https://www.sqlite.org/deterministic.html). Functions like `random()`, sub-queries or aggregation functions cannot be used to define a generated column.
 - Columns added to an existing table via `ALTER TABLE ... ADD COLUMN` must be `VIRTUAL`. You cannot add a `STORED` column to an existing table.
 
 Was this helpful?

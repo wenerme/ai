@@ -30,11 +30,11 @@ Workers AI gives you access to:
 
 Custom requirements
 
-If you have custom requirements like private custom models or higher limits, complete the [Custom Requirements Form ↗](https://forms.gle/axnnpGDb6xrmR31T6). Cloudflare will contact you with next steps.
+If you have custom requirements like private custom models or higher limits, complete the [Custom Requirements Form ↗︎](https://forms.gle/axnnpGDb6xrmR31T6). Cloudflare will contact you with next steps.
 
 Workers AI is now Generally Available
 
-To report bugs or give feedback, go to the [#workers-ai Discord channel ↗](https://discord.cloudflare.com). If you are having issues with Wrangler, report issues in the [Wrangler GitHub repository ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
+To report bugs or give feedback, go to the [#workers-ai Discord channel ↗︎](https://discord.cloudflare.com). If you are having issues with Wrangler, report issues in the [Wrangler GitHub repository ↗︎](https://github.com/cloudflare/workers-sdk/issues/new/choose).
 
 ---
 

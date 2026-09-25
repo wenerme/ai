@@ -20,7 +20,7 @@ If you are using a Cloudflare IP, you do not need to advertise your prefixes.
 
 Caution
 
-You must [put the appropriate MSS clamps](#set-maximum-segment-size) in place before [routing ↗](https://www.cloudflare.com/learning/network-layer/what-is-routing/) changes are made. Failure to apply an MSS clamp can result in dropped packets and hard-to-debug connectivity issues.
+You must [put the appropriate MSS clamps](#set-maximum-segment-size) in place before [routing ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-routing/) changes are made. Failure to apply an MSS clamp can result in dropped packets and hard-to-debug connectivity issues.
 
 Also, when using [Cloudflare Network Interconnect](https://developers.cloudflare.com/magic-transit/network-interconnect/) with Magic Transit you must set the following MSS clamp sizes to accommodate additional overhead:
 

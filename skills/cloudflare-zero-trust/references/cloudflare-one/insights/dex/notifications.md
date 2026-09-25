@@ -18,7 +18,7 @@ Administrators can receive alerts when Cloudflare detects connectivity issues wi
 
 ## Manage notifications
 
-DEX notifications are configured on the [Cloudflare dashboard ↗](https://dash.cloudflare.com/). For more information, refer to [Create a notification](https://developers.cloudflare.com/notifications/get-started/#create-a-notification).
+DEX notifications are configured on the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/). For more information, refer to [Create a notification](https://developers.cloudflare.com/notifications/get-started/#create-a-notification).
 
 ## Available notifications
 
@@ -131,7 +131,7 @@ To learn more about the alert logic, refer to <a href="https://developers.cloudf
 
 ### Z-score
 
-Cloudflare uses a z-score to detect unusual traffic spikes or drops. A [z-score ↗](https://en.wikipedia.org/wiki/Standard_score) is the number of standard deviations the current value is from the mean. Cloudflare calculates the mean and standard deviation by comparing the current five minutes to the past four hours. This is measured every five minutes.
+Cloudflare uses a z-score to detect unusual traffic spikes or drops. A [z-score ↗︎](https://en.wikipedia.org/wiki/Standard_score) is the number of standard deviations the current value is from the mean. Cloudflare calculates the mean and standard deviation by comparing the current five minutes to the past four hours. This is measured every five minutes.
 
 To trigger an alert, the z-score value must be above 3.5 or below -3.5, which indicates the current value is significantly different from the recent baseline.
 

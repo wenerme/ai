@@ -90,9 +90,9 @@ When a client calls a paid tool without payment, the server returns 402 with pay
 
 ## Testing
 
-Use `base-sepolia` and get test USDC from the [Circle faucet ↗](https://faucet.circle.com/).
+Use `base-sepolia` and get test USDC from the [Circle faucet ↗︎](https://faucet.circle.com/).
 
-For a complete working example, refer to [x402-mcp on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/x402-mcp).
+For a complete working example, refer to [x402-mcp on GitHub ↗︎](https://github.com/cloudflare/agents/tree/main/examples/x402-mcp).
 
 ## Related
 

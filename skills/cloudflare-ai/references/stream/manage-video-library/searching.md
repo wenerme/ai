@@ -18,7 +18,7 @@ You can search for videos by name through the Stream API by adding a `search` qu
 
 ## What you will need
 
-To make API requests you will need a [Cloudflare API token ↗](https://www.cloudflare.com/a/account/my-account) and your Cloudflare [account ID ↗](https://www.cloudflare.com/a/overview/).
+To make API requests you will need a [Cloudflare API token ↗︎](https://www.cloudflare.com/a/account/my-account) and your Cloudflare [account ID ↗︎](https://www.cloudflare.com/a/overview/).
 
 ## cURL example
 

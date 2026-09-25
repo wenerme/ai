@@ -34,7 +34,7 @@ To use Regional Services, you need to first create a DNS record in the dashboard
 
 Note
 
-Some regions may not appear on the dropdown because newly announced regions mentioned in the [blog post ↗](https://blog.cloudflare.com/expanding-regional-services-configuration-flexibility-for-customers) are subject to approval by Cloudflare's internal team. For more information and entitlement reach out to your account team.
+Some regions may not appear on the dropdown because newly announced regions mentioned in the [blog post ↗︎](https://blog.cloudflare.com/expanding-regional-services-configuration-flexibility-for-customers) are subject to approval by Cloudflare's internal team. For more information and entitlement reach out to your account team.
 
 Refer to the table on [Available regions and product support](https://developers.cloudflare.com/data-localization/region-support/) for the complete list of available regions, their definitions and product support
 
@@ -347,7 +347,7 @@ To verify that your regional map is being applied correctly, check the `IngressC
 
 ## Terraform support
 
-You can also configure Regional Services using Terraform. For more details, refer to the [`cloudflare_regional_hostname` resource ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/regional_hostname) in the Terraform documentation.
+You can also configure Regional Services using Terraform. For more details, refer to the [`cloudflare_regional_hostname` resource ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/regional_hostname) in the Terraform documentation.
 
 Was this helpful?
 

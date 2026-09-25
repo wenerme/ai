@@ -28,13 +28,13 @@ TerminalStandaloneCloudExtension
 
 1. **Install Command Code**
 
-   Install [Command Code ↗](https://commandcode.ai). For the full walkthrough, refer to the [Command Code quickstart ↗](https://commandcode.ai/docs/quickstart).
+   Install [Command Code ↗︎](https://commandcode.ai). For the full walkthrough, refer to the [Command Code quickstart ↗︎](https://commandcode.ai/docs/quickstart).
 
    ```sh
    npm i -g command-code@latest
    ```
 
-   This installs the `command-code` CLI, with the alias `cmd`. On Windows, the alias is `cmdc`. For the full list of models you can run, refer to [Available Models ↗](https://commandcode.ai/docs/reference/cli/models).
+   This installs the `command-code` CLI, with the alias `cmd`. On Windows, the alias is `cmdc`. For the full list of models you can run, refer to [Available Models ↗︎](https://commandcode.ai/docs/reference/cli/models).
 2. **Open your Cloudflare project**
 
    Change into the directory that contains your Cloudflare project, where `wrangler.jsonc` lives (if it already exists):
@@ -50,14 +50,14 @@ TerminalStandaloneCloudExtension
    cmd skills add https://github.com/cloudflare/skills
    ```
 
-   This installs the Cloudflare Skills into `.commandcode/skills/`, including `wrangler`, `workers-best-practices`, `durable-objects`, and `agents-sdk`. Pass `--skill <name>` to install a single skill, or `--global` to install into `~/.commandcode/skills/` for every project. For more information, refer to [Command Code Skills ↗](https://commandcode.ai/docs/skills).
+   This installs the Cloudflare Skills into `.commandcode/skills/`, including `wrangler`, `workers-best-practices`, `durable-objects`, and `agents-sdk`. Pass `--skill <name>` to install a single skill, or `--global` to install into `~/.commandcode/skills/` for every project. For more information, refer to [Command Code Skills ↗︎](https://commandcode.ai/docs/skills).
 4. **Add the Cloudflare MCP server**
 
    ```sh
    cmd mcp add --transport http cloudflare https://mcp.cloudflare.com/mcp
    ```
 
-   Complete the OAuth flow in your browser when Command Code prompts you, then choose the permissions to grant. For scopes, transports, and per-project configuration, refer to [Command Code MCP ↗](https://commandcode.ai/docs/mcp).
+   Complete the OAuth flow in your browser when Command Code prompts you, then choose the permissions to grant. For scopes, transports, and per-project configuration, refer to [Command Code MCP ↗︎](https://commandcode.ai/docs/mcp).
 5. **Start a session and try a prompt**
 
    ```sh
@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Build an image upload and transformation service using R2 and Cloudflare Images.
+   Set up rate limiting and WAF rules to block abuse on my public API.
    ```
 
 
@@ -118,7 +118,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 - Code mode APIcode modeBroad access to the full Cloudflare API via code execution, with minimal token overheadhttps://mcp.cloudflare.com/mcp
 - Code Mode servercode modeBest when you want broad access across Cloudflare's APIs through code executionhttps://mcp.cloudflare.com/mcp
 - AI Gateway serverSearch your logs, get details about the prompts and responseshttps://ai-gateway.mcp.cloudflare.com/mcp
-- Audit Logs serverQuery audit logs and generate reports for reviewhttps://auditlogs.mcp.cloudflare.com/mcp
 - AutoRAG serverSearch and query account AutoRAG instanceshttps://autorag.mcp.cloudflare.com/mcp
 - Browser Run serverFetch web pages, convert them to markdown and take screenshotshttps://browser.mcp.cloudflare.com/mcp
 - Cloudflare Blog serverSearch and read posts from the Cloudflare Bloghttps://blog.mcp.cloudflare.com/mcp
@@ -175,23 +174,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips
@@ -200,7 +199,7 @@ Set up AI Gateway to route requests across OpenAI and Workers AI with automatic 
 - `cmd skills add` writes to `.commandcode/skills/` for the current project. Add `--global` to install into `~/.commandcode/skills/` and make the skills available everywhere.
 - The MCP server is saved to your local config by default. Optionally, add `--scope project` to save it to `.mcp.json` instead and share it with your team.
 - Use the Cloudflare API MCP server for account resources and domain-specific servers for focused workflows.
-- Record project conventions in `AGENTS.md` so they carry across sessions. Refer to [Memory ↗](https://commandcode.ai/docs/memory) for where Command Code reads and writes them.
+- Record project conventions in `AGENTS.md` so they carry across sessions. Refer to [Memory ↗︎](https://commandcode.ai/docs/memory) for where Command Code reads and writes them.
 
 ## FAQ
 
@@ -240,7 +239,7 @@ Into <code>.commandcode/skills/</code> for the current project, or <code>~/.comm
 
 </summary>
 
-Code Mode is how the Cloudflare API MCP server fits all 2,500+ API endpoints into about 1,000 tokens. Instead of exposing every endpoint as a separate tool, it exposes <code>search()</code> and <code>execute()</code>. Command Code writes JavaScript to call them. For more information, refer to <a href="https://blog.cloudflare.com/code-mode-mcp/">Code Mode ↗</a>.
+Code Mode is how the Cloudflare API MCP server fits all 2,500+ API endpoints into about 1,000 tokens. Instead of exposing every endpoint as a separate tool, it exposes <code>search()</code> and <code>execute()</code>. Command Code writes JavaScript to call them. For more information, refer to <a href="https://blog.cloudflare.com/code-mode-mcp/">Code Mode ↗︎</a>.
 
 </details>
 
@@ -250,7 +249,7 @@ Code Mode is how the Cloudflare API MCP server fits all 2,500+ API endpoints int
 
 </summary>
 
-Command Code works with models from Anthropic, OpenAI, Moonshot, DeepSeek, Z.ai, Alibaba, MiniMax, and others. Run <code>cmd --list-models</code> to see what is available to you, or <code>/model</code> to switch inside a session. For the current list, refer to <a href="https://commandcode.ai/docs/reference/cli/models">Available Models ↗</a>.
+Command Code works with models from Anthropic, OpenAI, Moonshot, DeepSeek, Z.ai, Alibaba, MiniMax, and others. Run <code>cmd --list-models</code> to see what is available to you, or <code>/model</code> to switch inside a session. For the current list, refer to <a href="https://commandcode.ai/docs/reference/cli/models">Available Models ↗︎</a>.
 
 </details>
 
@@ -260,7 +259,7 @@ Command Code works with models from Anthropic, OpenAI, Moonshot, DeepSeek, Z.ai,
 
 </summary>
 
-Through Taste. Every accept, reject, and edit becomes a signal, and the learned preferences are stored in taste packages that you can share across projects and with your team. For more information, refer to <a href="https://commandcode.ai/docs/taste">Taste ↗</a>.
+Through Taste. Every accept, reject, and edit becomes a signal, and the learned preferences are stored in taste packages that you can share across projects and with your team. For more information, refer to <a href="https://commandcode.ai/docs/taste">Taste ↗︎</a>.
 
 </details>
 
@@ -270,7 +269,7 @@ Through Taste. Every accept, reject, and edit becomes a signal, and the learned 
 
 </summary>
 
-Yes. Headless mode runs Command Code non-interactively, so it can lint, test, or deploy a Worker from a pipeline. For more information, refer to <a href="https://commandcode.ai/docs/headless">Headless Mode ↗</a>.
+Yes. Headless mode runs Command Code non-interactively, so it can lint, test, or deploy a Worker from a pipeline. For more information, refer to <a href="https://commandcode.ai/docs/headless">Headless Mode ↗︎</a>.
 
 </details>
 
@@ -280,7 +279,7 @@ Yes. Headless mode runs Command Code non-interactively, so it can lint, test, or
 
 </summary>
 
-No. Command Code is a commercial product with a subscription plan. For details, refer to <a href="https://commandcode.ai/docs/resources/pricing-limits">Pricing and Limits ↗</a>.
+No. Command Code is a commercial product with a subscription plan. For details, refer to <a href="https://commandcode.ai/docs/resources/pricing-limits">Pricing and Limits ↗︎</a>.
 
 </details>
 

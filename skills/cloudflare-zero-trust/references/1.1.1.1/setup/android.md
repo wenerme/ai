@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/android/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [1.1.1.1: Faster Internet ↗](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone) app is the recommended way to set up 1.1.1.1 on Android. It automatically configures your phone to use 1.1.1.1 on any network you connect to.
+The [1.1.1.1: Faster Internet ↗︎](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone) app is the recommended way to set up 1.1.1.1 on Android. It automatically configures your phone to use 1.1.1.1 on any network you connect to.
 
 The app also allows you to enable encryption for DNS queries or enable [WARP mode](https://developers.cloudflare.com/warp-client/), which keeps all your HTTP traffic private and secure, including your DNS queries to 1.1.1.1.
 
@@ -22,7 +22,7 @@ You can select between these options in the app settings. By default, the app us
 
 ## Set up 1.1.1.1: Faster Internet
 
-1. Download [1.1.1.1: Faster Internet from Google Play ↗](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone) for free.
+1. Download [1.1.1.1: Faster Internet from Google Play ↗︎](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone) for free.
 2. Launch 1.1.1.1: Faster Internet and accept the Terms of Service.
 3. Toggle the **WARP** button to **Connected**.
 4. Install the VPN profile that allows your phone to connect securely to 1.1.1.1.

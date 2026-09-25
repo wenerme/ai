@@ -119,7 +119,7 @@ Cloudflare API
 </summary>
 
 - Version Management environments — including their routing expressions and version assignments — can be managed through the public <a href="https://developers.cloudflare.com/api/resources/zones/subresources/environments/">Environments API</a>.
-- Creating, cloning, and editing zone versions (the configuration snapshots themselves) are currently only available through the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>.
+- Creating, cloning, and editing zone versions (the configuration snapshots themselves) are currently only available through the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a>.
 
 </details>
 

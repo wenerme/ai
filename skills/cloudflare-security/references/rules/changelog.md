@@ -206,7 +206,7 @@ For more information, refer to [Request Header Transform Rules](https://develope
 
 **New mTLS certificate fields for Transform Rules**
 
-Cloudflare now exposes four new fields in the Transform Rules phase that encode client certificate data in [RFC 9440 ↗](https://www.rfc-editor.org/rfc/rfc9440) format. Previously, forwarding client certificate information to your origin required custom parsing of PEM-encoded fields or non-standard HTTP header formats. These new fields produce output in the standardized `Client-Cert` and `Client-Cert-Chain` header format defined by RFC 9440, so your origin can consume them directly without any additional decoding logic.
+Cloudflare now exposes four new fields in the Transform Rules phase that encode client certificate data in [RFC 9440 ↗︎](https://www.rfc-editor.org/rfc/rfc9440) format. Previously, forwarding client certificate information to your origin required custom parsing of PEM-encoded fields or non-standard HTTP header formats. These new fields produce output in the standardized `Client-Cert` and `Client-Cert-Chain` header format defined by RFC 9440, so your origin can consume them directly without any additional decoding logic.
 
 Each certificate is DER-encoded, Base64-encoded, and wrapped in colons. For example, `:MIIDsT...Vw==:`. A chain of intermediates is expressed as a comma-separated list of such values.
 
@@ -594,7 +594,7 @@ What's new:
 - **Part of the Cloudflare Rules platform** – Snippets inherit request modifications from other Cloudflare products and support sequential execution, allowing you to run multiple Snippets on the same request and apply custom modifications step by step.
 - **Trace integration** – Use [Cloudflare Trace](https://developers.cloudflare.com/rules/trace-request/) to see which Snippets were triggered on a request — helping you understand traffic flow and debug more effectively.![Snippets shown in Cloudflare Trace results](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=800,height=334,format=webp/_astro/snippets-ga-trace.WlCshaFo.gif)
 
-Learn more in the [launch blog post ↗](https://blog.cloudflare.com/snippets/).
+Learn more in the [launch blog post ↗︎](https://blog.cloudflare.com/snippets/).
 
 ## 2025-02-12
 
@@ -693,7 +693,7 @@ What’s new:
 - **Auto-complete & syntax highlighting** – Get suggestions and avoid mistakes.
 - **Code formatting & refactoring** – Write cleaner, more readable code.
 
-Try it now in [Rules > Snippets ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/snippets).
+Try it now in [Rules > Snippets ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/rules/snippets).
 
 ## 2025-01-09
 
@@ -709,7 +709,7 @@ What you can do:
 - **Understand execution order** – See how rules run in sequence.
 - **Debug easily** – Use [Trace](https://developers.cloudflare.com/rules/trace-request/) without switching tabs.
 
-Check it out in [Rules > Overview ↗](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview).
+Check it out in [Rules > Overview ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/rules/overview).
 
 ## 2024-12-11
 
@@ -793,55 +793,55 @@ Try it via [creating a Rewrite URL rule in the dashboard](https://developers.clo
 
 **Automatic DNS Validation for Cloudflare Rules**
 
-The Cloudflare dashboard now automatically validates [DNS records ↗](https://developers.cloudflare.com/dns/proxy-status/) and [Cloudflare for SaaS custom hostnames ↗](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) for rules targeting specific hostnames or URLs. To prevent misconfigured rules and ensure smoother deployments, you will get proactive warnings for missing or misconfigured DNS records and custom hostnames.
+The Cloudflare dashboard now automatically validates [DNS records ↗︎](https://developers.cloudflare.com/dns/proxy-status/) and [Cloudflare for SaaS custom hostnames ↗︎](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/) for rules targeting specific hostnames or URLs. To prevent misconfigured rules and ensure smoother deployments, you will get proactive warnings for missing or misconfigured DNS records and custom hostnames.
 
 ## 2024-09-17
 
 **Compression Rules available to all plans with Zstandard support**
 
-[Compression Rules ↗](https://developers.cloudflare.com/rules/compression-rules/) now support Zstandard compression and are available in all Cloudflare plans. Users in the Free plan will gradually get access throughout 2024.
+[Compression Rules ↗︎](https://developers.cloudflare.com/rules/compression-rules/) now support Zstandard compression and are available in all Cloudflare plans. Users in the Free plan will gradually get access throughout 2024.
 
 ## 2024-09-13
 
 **Snippets now available in beta**
 
-[Cloudflare Snippets ↗](https://developers.cloudflare.com/rules/snippets/) have transitioned from alpha to beta.
+[Cloudflare Snippets ↗︎](https://developers.cloudflare.com/rules/snippets/) have transitioned from alpha to beta.
 
 ## 2024-09-10
 
 **wildcard\_replace() function now supported in URL rewrites**
 
-You can now use the [`wildcard_replace()` ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard_replace) function in rewrite expressions of [URL rewrites ↗](https://developers.cloudflare.com/rules/transform/url-rewrite/).
+You can now use the [`wildcard_replace()` ↗︎](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard_replace) function in rewrite expressions of [URL rewrites ↗︎](https://developers.cloudflare.com/rules/transform/url-rewrite/).
 
 ## 2024-09-05
 
 **New Rules Templates for one-click rule creation**
 
-The new **Rules** > **Templates** page in the Cloudflare dashboard allows you to create common rules with a single click, featuring dozens of pre-built templates. You can also access these templates directly from each product's rule builder. Also, explore the [Examples gallery ↗](https://developers.cloudflare.com/rules/examples/) in the developer docs for real-world use cases and inspiration.
+The new **Rules** > **Templates** page in the Cloudflare dashboard allows you to create common rules with a single click, featuring dozens of pre-built templates. You can also access these templates directly from each product's rule builder. Also, explore the [Examples gallery ↗︎](https://developers.cloudflare.com/rules/examples/) in the developer docs for real-world use cases and inspiration.
 
 ## 2024-08-22
 
 **Simplified UI for Single Redirects with wildcard support**
 
-The simplified UI for [Single Redirects ↗](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) is now available to all users, making URL redirects easier and more intuitive. This update builds on the recent [wildcard support ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard_replace) in Ruleset Engine products. Access the new UI under **Rules > Redirect Rules**. Learn more about wildcard support and our open-source Rust crate in the [blog post ↗](https://blog.cloudflare.com/wildcard-rules).
+The simplified UI for [Single Redirects ↗︎](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/) is now available to all users, making URL redirects easier and more intuitive. This update builds on the recent [wildcard support ↗︎](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard_replace) in Ruleset Engine products. Access the new UI under **Rules > Redirect Rules**. Learn more about wildcard support and our open-source Rust crate in the [blog post ↗︎](https://blog.cloudflare.com/wildcard-rules).
 
 ## 2024-08-20
 
 **Cloud Connector now available to all customers**
 
-Cloud Connector (beta) is now available to all customers. For setup details, refer to the [documentation ↗](https://developers.cloudflare.com/rules/cloud-connector/), explore [examples ↗](https://developers.cloudflare.com/rules/cloud-connector/examples/), and check out the [blog post ↗](https://blog.cloudflare.com/cloud-connector).
+Cloud Connector (beta) is now available to all customers. For setup details, refer to the [documentation ↗︎](https://developers.cloudflare.com/rules/cloud-connector/), explore [examples ↗︎](https://developers.cloudflare.com/rules/cloud-connector/examples/), and check out the [blog post ↗︎](https://blog.cloudflare.com/cloud-connector).
 
 ## 2024-08-16
 
 **Cloud Connector now available to all free customers**
 
-Cloud Connector (beta) is now available to all free and a subset of paid customers. This rollout will be [gradually extended ↗](https://developers.cloudflare.com/rules/cloud-connector/#availability) to all Cloudflare users, simplifying multi-cloud management and enhancing integration with Cloudflare's Connectivity Cloud. For more information, refer to the [blog post ↗](https://blog.cloudflare.com/cloud-connector).
+Cloud Connector (beta) is now available to all free and a subset of paid customers. This rollout will be [gradually extended ↗︎](https://developers.cloudflare.com/rules/cloud-connector/#availability) to all Cloudflare users, simplifying multi-cloud management and enhancing integration with Cloudflare's Connectivity Cloud. For more information, refer to the [blog post ↗︎](https://blog.cloudflare.com/cloud-connector).
 
 ## 2024-08-12
 
 **Cloudflare Snippets limits have been upgraded**
 
-Cloudflare Snippets (alpha) now allow multiple subrequests depending on your plan. For more information, refer to the [Availability ↗](https://developers.cloudflare.com/rules/snippets/#availability).
+Cloudflare Snippets (alpha) now allow multiple subrequests depending on your plan. For more information, refer to the [Availability ↗︎](https://developers.cloudflare.com/rules/snippets/#availability).
 
 ## 2024-07-31
 
@@ -849,8 +849,8 @@ Cloudflare Snippets (alpha) now allow multiple subrequests depending on your pla
 
 Wildcards are now supported across our Ruleset Engine-based products, including Single Redirects, Cache Rules, Transform Rules, WAF, Waiting Room, and more:
 
-- You can now use the `wildcard` and `strict wildcard` operators with any string field in the Ruleset Engine, such as full URI, host, headers, cookies, user-agent, and country. For more details, refer to [Operators ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/) and [Wildcard matching ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching).
-- In [Single Redirects ↗](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), the `wildcard_replace()` function allows you to use segments matched by the `wildcard` and `strict wildcard` operators in redirect URL targets. For more information, refer to [Functions ↗](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard_replace).
+- You can now use the `wildcard` and `strict wildcard` operators with any string field in the Ruleset Engine, such as full URI, host, headers, cookies, user-agent, and country. For more details, refer to [Operators ↗︎](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/) and [Wildcard matching ↗︎](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching).
+- In [Single Redirects ↗︎](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/), the `wildcard_replace()` function allows you to use segments matched by the `wildcard` and `strict wildcard` operators in redirect URL targets. For more information, refer to [Functions ↗︎](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#wildcard_replace).
 
 ## 2024-07-01
 
@@ -868,7 +868,7 @@ Cloudflare Snippets (alpha) are now available to all Enterprise customers. Custo
 
 **Page Rules migration**
 
-The [Page Rules migration guide ↗](https://developers.cloudflare.com/rules/reference/page-rules-migration/) is now available for users interested in transitioning to modern Rules features instead of Page Rules. Explore the guide for detailed instructions on migrating your configurations.
+The [Page Rules migration guide ↗︎](https://developers.cloudflare.com/rules/reference/page-rules-migration/) is now available for users interested in transitioning to modern Rules features instead of Page Rules. Explore the guide for detailed instructions on migrating your configurations.
 
 ## 2024-05-13
 

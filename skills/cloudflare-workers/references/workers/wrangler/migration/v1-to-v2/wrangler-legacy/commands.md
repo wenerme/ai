@@ -18,7 +18,7 @@ Caution
 
 This page is for Wrangler v1, which has been deprecated. [Learn how to update to the latest version of Wrangler](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/).
 
-Complete list of all commands available for [`wrangler` ↗](https://github.com/cloudflare/wrangler-legacy), the Workers CLI.
+Complete list of all commands available for [`wrangler` ↗︎](https://github.com/cloudflare/wrangler-legacy), the Workers CLI.
 
 ---
 
@@ -34,12 +34,12 @@ Default values indicated by =value.
 
 - `$NAME` =worker optional
   - The name of the Workers project. This is both the directory name and `name` property in the generated [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/configuration/) file.
-- `$TEMPLATE` = [https://github.com/cloudflare/worker-template ↗](https://github.com/cloudflare/worker-template) optional
-  - The GitHub URL of the [repository to use as the template ↗](https://github.com/cloudflare/worker-template) for generating the project.
+- `$TEMPLATE` = [https://github.com/cloudflare/worker-template ↗︎](https://github.com/cloudflare/worker-template) optional
+  - The GitHub URL of the [repository to use as the template ↗︎](https://github.com/cloudflare/worker-template) for generating the project.
 - `--type=$TYPE` =webpack optional
   - The type of project; one of `webpack`, `javascript`, or `rust`.
 - `--site` optional
-  - When defined, the default `$TEMPLATE` value is changed to [`cloudflare/workers-sdk/templates/worker-sites` ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-sites). This scaffolds a [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch) project.
+  - When defined, the default `$TEMPLATE` value is changed to [`cloudflare/workers-sdk/templates/worker-sites` ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-sites). This scaffolds a [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch) project.
 
 ---
 
@@ -58,7 +58,7 @@ Default values indicated by =value.
 - `--type=$TYPE` =webpack optional
   - The type of project; one of `webpack`, `javascript`, or `rust`.
 - `--site` optional
-  - When defined, the default `$TEMPLATE` value is changed to [`cloudflare/workers-sdk/templates/worker-sites` ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-sites). This scaffolds a [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch) project.
+  - When defined, the default `$TEMPLATE` value is changed to [`cloudflare/workers-sdk/templates/worker-sites` ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-sites). This scaffolds a [Workers Site](https://developers.cloudflare.com/workers/configuration/sites/start-from-scratch) project.
 
 ---
 
@@ -149,13 +149,13 @@ To use this command, the following fields are required in your Wrangler file:
 - `account_id` string
   - The Cloudflare account ID. This can be found in the Cloudflare dashboard, for example, `account_id = "a655bacaf2b4cad0e2b51c5236a6b974"`.
 
-You can publish to [\<your-worker>.\<your-subdomain>.workers.dev ↗](https://workers.dev) or to a custom domain.
+You can publish to [\<your-worker>.\<your-subdomain>.workers.dev ↗︎](https://workers.dev) or to a custom domain.
 
 When you publish changes to an existing Worker script, all new requests will automatically route to the updated version of the Worker without downtime. Any inflight requests will continue running on the previous version until completion. Once all inflight requests have finished complete, the previous Worker version will be purged and will no longer handle requests.
 
 ### Publishing to workers.dev
 
-To publish to [`*.workers.dev` ↗](https://workers.dev), you will first need to have a subdomain registered. You can register a subdomain by executing the [`wrangler subdomain`](#subdomain) command.
+To publish to [`*.workers.dev` ↗︎](https://workers.dev), you will first need to have a subdomain registered. You can register a subdomain by executing the [`wrangler subdomain`](#subdomain) command.
 
 After you have registered a subdomain, add `workers_dev` to your Wrangler file.
 
@@ -220,7 +220,7 @@ wrangler dev
 👂  Listening on http://127.0.0.1:8787
 ```
 
-With `wrangler dev` running, you can send HTTP requests to `localhost:8787` and your Worker should execute as expected. You will also see `console.log` messages and exceptions appearing in your terminal. If either of these things do not happen, or you think the output is incorrect, [file an issue ↗](https://github.com/cloudflare/wrangler-legacy).
+With `wrangler dev` running, you can send HTTP requests to `localhost:8787` and your Worker should execute as expected. You will also see `console.log` messages and exceptions appearing in your terminal. If either of these things do not happen, or you think the output is incorrect, [file an issue ↗︎](https://github.com/cloudflare/wrangler-legacy).
 
 ---
 
@@ -257,7 +257,7 @@ Legacy issues with existing cloudflared configuration
 
 ## preview
 
-Preview your project using the [Cloudflare Workers preview service ↗](https://cloudflareworkers.com/).
+Preview your project using the [Cloudflare Workers preview service ↗︎](https://cloudflareworkers.com/).
 
 ```sh
 wrangler preview [--watch] [--env $ENVIRONMENT_NAME] [ --url $URL] [$METHOD] [$BODY]
@@ -295,7 +295,7 @@ export BROWSER="/mnt/c/tools/firefox.exe"
 wrangler preview
 ```
 
-Spaces in filepaths are not common in Linux, and some programs like `xdg-open` will break on [paths with spaces ↗](https://github.com/microsoft/WSL/issues/3632#issuecomment-432821522). You can work around this by linking the binary to your `/usr/local/bin`:
+Spaces in filepaths are not common in Linux, and some programs like `xdg-open` will break on [paths with spaces ↗︎](https://github.com/microsoft/WSL/issues/3632#issuecomment-432821522). You can work around this by linking the binary to your `/usr/local/bin`:
 
 ```sh
 ln -s "/mnt/c/Program Files/Mozilla Firefox/firefox.exe" firefox
@@ -304,9 +304,9 @@ export BROWSER=firefox
 
 #### Setting $BROWSER to `wsl-open`
 
-Another option is to install [wsl-open ↗](https://github.com/4U6U57/wsl-open#standalone) and set the `$BROWSER` [env variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) to `wsl-open` via `wsl-open -w`. This ensures that `xdg-open` uses `wsl-open` when it attempts to open your browser.
+Another option is to install [wsl-open ↗︎](https://github.com/4U6U57/wsl-open#standalone) and set the `$BROWSER` [env variable](https://developers.cloudflare.com/workers/configuration/environment-variables/) to `wsl-open` via `wsl-open -w`. This ensures that `xdg-open` uses `wsl-open` when it attempts to open your browser.
 
-If you are using WSL 2, you will need to install `wsl-open` following their [standalone method ↗](https://github.com/4U6U57/wsl-open#standalone) rather than through `npm`. This is because their npm package has not yet been updated with WSL 2 support.
+If you are using WSL 2, you will need to install `wsl-open` following their [standalone method ↗︎](https://github.com/4U6U57/wsl-open#standalone) rather than through `npm`. This is because their npm package has not yet been updated with WSL 2 support.
 
 ---
 
@@ -340,7 +340,7 @@ Default values indicated by =value.
 
 ## subdomain
 
-Create or change your [`*.workers.dev` ↗](https://workers.dev) subdomain.
+Create or change your [`*.workers.dev` ↗︎](https://workers.dev) subdomain.
 
 ```sh
 wrangler subdomain <name>
@@ -400,7 +400,7 @@ wrangler secret list --env ENVIRONMENT_NAME
 
 ## kv
 
-The `kv` subcommand allows you to store application data in the Cloudflare network to be accessed from Workers using [Workers KV ↗](https://www.cloudflare.com/products/workers-kv/). KV operations are scoped to your account, so in order to use any of these commands, you:
+The `kv` subcommand allows you to store application data in the Cloudflare network to be accessed from Workers using [Workers KV ↗︎](https://www.cloudflare.com/products/workers-kv/). KV operations are scoped to your account, so in order to use any of these commands, you:
 
 - must configure an `account_id` in your project's Wrangler file.
 - run all `wrangler kv:<command>` operations in your terminal from the project's root directory.

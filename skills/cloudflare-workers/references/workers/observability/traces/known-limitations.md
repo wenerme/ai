@@ -16,7 +16,7 @@ Last updated Jun 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Workers tracing is currently in open beta. This page documents current limitations and any upcoming features on our roadmap.
 
-To provide more feedback and send feature requests, head to the [Workers tracing GitHub discussion ↗](https://github.com/cloudflare/workers-sdk/discussions/11062).
+To provide more feedback and send feature requests, head to the [Workers tracing GitHub discussion ↗︎](https://github.com/cloudflare/workers-sdk/discussions/11062).
 
 ### Non-I/O operations may report time of 0 ms
 
@@ -28,13 +28,13 @@ The Cloudflare Workers team is exploring security measures that would allow expo
 
 When exporting traces to external platforms, trace IDs are not propagated to services outside of Cloudflare. This means traces from your Workers will not link with traces from non-Cloudflare services in your observability tools.
 
-We are working on automatic trace context propagation using [W3C Trace Context standards ↗](https://www.w3.org/TR/trace-context/), which will enable complete end-to-end visibility across your existing tools and services.
+We are working on automatic trace context propagation using [W3C Trace Context standards ↗︎](https://www.w3.org/TR/trace-context/), which will enable complete end-to-end visibility across your existing tools and services.
 
 ### Incomplete spans attributes
 
 We are planning to add more detailed attributes on each span. You can find a complete list of what is already instrumented [here](https://developers.cloudflare.com/workers/observability/traces/spans-and-attributes).
 
-Your feedback on any missing information will help us prioritize additions and changes. Please comment on the [Workers tracing GitHub discussion ↗](https://github.com/cloudflare/workers-sdk/discussions/11062) if specific attributes would be helpful to use tracing effectively.
+Your feedback on any missing information will help us prioritize additions and changes. Please comment on the [Workers tracing GitHub discussion ↗︎](https://github.com/cloudflare/workers-sdk/discussions/11062) if specific attributes would be helpful to use tracing effectively.
 
 ### Span and attribute names subject to change
 

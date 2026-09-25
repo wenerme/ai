@@ -20,7 +20,7 @@ The application security dashboard is your starting point to better understand t
 
 Cloudflare is gradually making the new **Security** dashboard available by default to users. Users who do not have the new dashboard by default can still manually opt in:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com), and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com), and select your account and domain.
 2. Open any page under **Security**.
 3. In the top right-hand corner of the page, select **Try new dashboard**.
 

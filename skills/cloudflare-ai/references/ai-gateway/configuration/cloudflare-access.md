@@ -31,7 +31,7 @@ Once a custom domain is protected by Access, every request to that domain must p
 ## Set up Access on a gateway
 
 1. [Set up a custom domain](https://developers.cloudflare.com/ai-gateway/configuration/custom-domains/) for the gateway you want to protect.
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **AI** > **AI Gateway**.
+2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **AI** > **AI Gateway**.
 3. Select the gateway you configured with a custom domain.
 4. Go to the **Access** tab and set up Cloudflare Access on the gateway.
 5. Add Access policies that define which users can call the gateway.

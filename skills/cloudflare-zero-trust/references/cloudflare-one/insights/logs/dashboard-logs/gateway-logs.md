@@ -28,7 +28,7 @@ Gateway logs show the public IP address in the **Source IP** field. Private IP a
 
 To view Gateway activity logs:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs**.
 2. Choose a type of Gateway log:
    - **DNS query logs**
    - **Network logs**
@@ -50,7 +50,7 @@ By default, Gateway logs all events, including DNS queries and HTTP requests tha
 
 To customize what Gateway logs:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. Under **Traffic logging** > **Log traffic activity**, choose your preference for DNS, Network, and HTTP logs.
 
 These settings only apply to logs displayed in Cloudflare One. Logpush data is unaffected.
@@ -99,7 +99,7 @@ These settings only apply to logs displayed in Cloudflare One. Logpush data is u
 | Field | Description |
 | --- | --- |
 | **Query ID** | UUID of the query assigned by Cloudflare. |
-| **Query type** | Type of [DNS query ↗](https://en.wikipedia.org/wiki/List_of_DNS_record_types). |
+| **Query type** | Type of [DNS query ↗︎](https://en.wikipedia.org/wiki/List_of_DNS_record_types). |
 | **Initial query domain categories** | [Content categories](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) that the domain belongs to. |
 | **Matched categories** | Name of the Gateway policy category that match the domain. |
 | **Matched indicator feed names** | Name of the indicator feeds that matched a Gateway policy. |
@@ -126,7 +126,7 @@ These settings only apply to logs displayed in Cloudflare One. Logpush data is u
 | **Resolved IP categories** | Content categories associated with the resolved IPs in the response. |
 | **Resolved IPs** | Resolved IPs in the response. |
 | **Authoritative nameserver IP** | IP address of the authoritative nameserver answering the DNS query. |
-| **EDE errors** | [Extended DNS error codes ↗](https://www.rfc-editor.org/rfc/rfc8914.html) in the response. |
+| **EDE errors** | [Extended DNS error codes ↗︎](https://www.rfc-editor.org/rfc/rfc8914.html) in the response. |
 
 #### Custom resolver
 
@@ -303,7 +303,7 @@ Enhanced file detection is an optional feature that extracts more file informati
 
 To turn on enhanced file detection:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. In **Proxy and inspection settings**, turn on **Inspect HTTPS requests with TLS decryption**.
 3. In **Policy settings**, turn on **Allow enhanced file detection**.
 

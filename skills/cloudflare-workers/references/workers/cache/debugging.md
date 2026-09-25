@@ -50,7 +50,7 @@ A response with `Cache-Control: no-cache` *is* stored, but Cloudflare treats eve
 
 If you wanted long-lived cache hits, use `max-age` instead. Refer to [`no-cache` is not a bypass](https://developers.cloudflare.com/workers/cache/configuration/#automatic-bypass-conditions).
 
-If the response carries **no** `Cache-Control` header at all, behavior depends on the status code: Workers Caching applies [RFC 9111 heuristic freshness ↗](https://www.rfc-editor.org/rfc/rfc9111#name-calculating-heuristic-fresh) and caches default-cacheable status codes for a heuristic TTL — for example, `200` is cached for 2 hours and `404` for 3 minutes. For the full table of default TTLs, refer to [Responses with no `Cache-Control` header are still cached](https://developers.cloudflare.com/workers/cache/configuration/#cache-control-semantics) in the configuration reference. If you do not want any of these defaults to apply, set `Cache-Control` explicitly on the response.
+If the response carries **no** `Cache-Control` header at all, behavior depends on the status code: Workers Caching applies [RFC 9111 heuristic freshness ↗︎](https://www.rfc-editor.org/rfc/rfc9111#name-calculating-heuristic-fresh) and caches default-cacheable status codes for a heuristic TTL — for example, `200` is cached for 2 hours and `404` for 3 minutes. For the full table of default TTLs, refer to [Responses with no `Cache-Control` header are still cached](https://developers.cloudflare.com/workers/cache/configuration/#cache-control-semantics) in the configuration reference. If you do not want any of these defaults to apply, set `Cache-Control` explicitly on the response.
 
 **Check the request method.** Only `GET` and `HEAD` requests are cached. Everything else is `BYPASS`. `GET` and `HEAD` requests for the same URL share the same cache entry — refer to [Cache keys](https://developers.cloudflare.com/workers/cache/cache-keys/#what-goes-into-the-cache-key) for how Cloudflare handles populating the cache from either method.
 
@@ -61,7 +61,7 @@ If the response carries **no** `Cache-Control` header at all, behavior depends o
 
 If your Worker unconditionally sets `Set-Cookie` (for example, a session cookie on every response), the response is never cached. Either remove the cookie from cacheable responses, or separate cookie-setting and cacheable responses into different routes.
 
-**Check the status code.** Workers Caching follows [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111). Responses with status codes that are not cacheable by default (for example, `401`, `403`, `500`) are not stored unless you explicitly mark them with cacheable directives.
+**Check the status code.** Workers Caching follows [RFC 9111 ↗︎](https://www.rfc-editor.org/rfc/rfc9111). Responses with status codes that are not cacheable by default (for example, `401`, `403`, `500`) are not stored unless you explicitly mark them with cacheable directives.
 
 A few status codes are never cached, even with explicit `Cache-Control`:
 
@@ -132,7 +132,7 @@ If any of those is false, requests for stale entries fall through to inline reva
 Common reasons `UPDATING` does not appear:
 
 - **No `stale-while-revalidate` directive on the response.** The default SWR window is `0`, so without an explicit directive every stale request is foreground-revalidated.
-- **`s-maxage`, `must-revalidate`, or `proxy-revalidate` is present.** Per [RFC 9111 §4.2.4 ↗](https://www.rfc-editor.org/rfc/rfc9111#section-4.2.4), these directives forbid serving stale content, so Cloudflare disables `stale-while-revalidate` (and `stale-if-error`) when any of them is present. Use `max-age` for the edge freshness window if you want stale-serving to work.
+- **`s-maxage`, `must-revalidate`, or `proxy-revalidate` is present.** Per [RFC 9111 §4.2.4 ↗︎](https://www.rfc-editor.org/rfc/rfc9111#section-4.2.4), these directives forbid serving stale content, so Cloudflare disables `stale-while-revalidate` (and `stale-if-error`) when any of them is present. Use `max-age` for the edge freshness window if you want stale-serving to work.
 - **The SWR window has elapsed.** If your response uses `max-age=60, stale-while-revalidate=120`, you will see `UPDATING` for requests arriving in the 120 seconds after the entry goes stale. Requests arriving after that revert to inline revalidation.
 
 ## `Cf-Cache-Status: STALE` appears unexpectedly

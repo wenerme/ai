@@ -19,7 +19,7 @@ Understanding the key metrics in web analytics is essential for optimizing your 
 - **Visits** - A page view that originated from a different website or direct link. Cloudflare checks where the HTTP referer does not match the hostname. One visit can consist of multiple page views.
 - **Page views** - A successful HTTP response with a content-type of HTML.
 - **Page load time** - The total amount of time required to load the page.
-- **[Core Web Vitals ↗](https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/)** - Higher-level metrics designed by Google to capture the user experience more completely.
+- **[Core Web Vitals ↗︎](https://www.cloudflare.com/learning/performance/what-are-core-web-vitals/)** - Higher-level metrics designed by Google to capture the user experience more completely.
 
 ![Web Analytics overview page](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1730,height=988,format=webp/_astro/dash-web_analytics-overview.Z0JtJyOL.png)
 

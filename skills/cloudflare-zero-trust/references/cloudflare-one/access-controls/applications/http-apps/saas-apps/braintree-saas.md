@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/braintree-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [Braintree ↗](https://developer.paypal.com/braintree/articles/guides/single-sign-on-sso) as a SAML application in Cloudflare One.
+This guide covers how to configure [Braintree ↗︎](https://developer.paypal.com/braintree/articles/guides/single-sign-on-sso) as a SAML application in Cloudflare One.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ This guide covers how to configure [Braintree ↗](https://developer.paypal.com/
 
 ## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application** > **SaaS application**.
 3. For **Application**, enter `Braintree` and select the textbox that appears below.
 4. For the authentication protocol, select **SAML**.
@@ -38,7 +38,7 @@ This guide covers how to configure [Braintree ↗](https://developer.paypal.com/
 
 ## 2. Enable SSO Configuration in Braintree
 
-1. In Braintree, create a [support ticket ↗](https://developer.paypal.com/braintree/help).
+1. In Braintree, create a [support ticket ↗︎](https://developer.paypal.com/braintree/help).
 2. In **Search Issues**, enter `Login and password issues` and select the corresponding value.
 3. In **Issue Details**, fill in the following:
    - **Merchant ID**: Your Braintree Merchant ID. This is the 16-digit value that follows `/merchants/`in your Braintree Control Panel URL.
@@ -51,7 +51,7 @@ This guide covers how to configure [Braintree ↗](https://developer.paypal.com/
 
 ## 3. Finish adding a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Braintree** > **Edit** > **Overview**.
 3. Replace the temporary values for **Entity ID** and **Assertion Consumer Service URL** with the link provided in the successful SSO configuration email from Braintree support. You will use the same link for both values.
 4. Select **Save Application**.

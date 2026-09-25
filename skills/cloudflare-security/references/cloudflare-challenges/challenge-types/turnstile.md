@@ -38,7 +38,7 @@ While there are three types of widgets that you can choose to implement on your 
 
   Link to Cloudflare's Turnstile Privacy Policy
 
-  As a condition of enabling invisible mode, you must reference Cloudflare's [Turnstile Privacy Addendum ↗](https://www.cloudflare.com/turnstile-privacy-policy/) in your own privacy policy.
+  As a condition of enabling invisible mode, you must reference Cloudflare's [Turnstile Privacy Addendum ↗︎](https://www.cloudflare.com/turnstile-privacy-policy/) in your own privacy policy.
 
 ## Implementation
 

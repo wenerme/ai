@@ -16,7 +16,7 @@ Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Background
 
-The [Cache API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Cache) allows fine grained control of reading and writing from the [Cloudflare global network ↗](https://www.cloudflare.com/network/) cache.
+The [Cache API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Cache) allows fine grained control of reading and writing from the [Cloudflare global network ↗︎](https://www.cloudflare.com/network/) cache.
 
 Note
 
@@ -47,7 +47,7 @@ let cache = caches.default;
 await cache.match(request);
 ```
 
-You may create and manage additional Cache instances via the [`caches.open` ↗](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/open) method.
+You may create and manage additional Cache instances via the [`caches.open` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/CacheStorage/open) method.
 
 ```js
 let myCache = await caches.open('custom:cache');
@@ -108,8 +108,8 @@ The `stale-while-revalidate` and `stale-if-error` directives are not supported w
 `cache.put` will throw an error if:
 
 - The `request` passed is a method other than `GET`.
-- The `response` passed has a `status` of [`206 Partial Content` ↗](https://www.webfx.com/web-development/glossary/http-status-codes/what-is-a-206-status-code/).
-- The `response` passed contains the header `Vary: *`. The value of the `Vary` header is an asterisk ( `*`). Refer to the [Cache API specification ↗](https://w3c.github.io/ServiceWorker/#cache-put) for more information.
+- The `response` passed has a `status` of [`206 Partial Content` ↗︎](https://www.webfx.com/web-development/glossary/http-status-codes/what-is-a-206-status-code/).
+- The `response` passed contains the header `Vary: *`. The value of the `Vary` header is an asterisk ( `*`). Refer to the [Cache API specification ↗︎](https://w3c.github.io/ServiceWorker/#cache-put) for more information.
 
 #### Errors
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/uploading-videos/resumable-uploads/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-If you need to upload a video that is over 200 MB, you must use the [tus protocol ↗](https://tus.io/). Even if the video is under 200 MB, if your connection is potentially unreliable, Cloudflare recommends using the tus protocol because it is resumable. A resumable upload ensures that the upload can be interrupted and resumed without uploading the previous data again.
+If you need to upload a video that is over 200 MB, you must use the [tus protocol ↗︎](https://tus.io/). Even if the video is under 200 MB, if your connection is potentially unreliable, Cloudflare recommends using the tus protocol because it is resumable. A resumable upload ensures that the upload can be interrupted and resumed without uploading the previous data again.
 
 To use the tus protocol with end user videos, refer to [Direct Creator Uploads with tus](https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads/#direct-creator-uploads-with-tus-protocol).
 
@@ -30,7 +30,7 @@ If your video is under 200 MB and your connection is reliable, you can use a bas
 
 Before you can upload a video using tus, you will need to download a tus client.
 
-For more information, refer to the [tus Python client ↗](https://github.com/tus/tus-py-client) which is available through pip, Python's package manager.
+For more information, refer to the [tus Python client ↗︎](https://github.com/tus/tus-py-client) which is available through pip, Python's package manager.
 
 *Install Python clientpython*
 
@@ -58,7 +58,7 @@ INFO Created: https://api.cloudflare.com/client/v4/accounts/d467d4f0fcbcd9791b61
 
 ### Golang example
 
-Before you begin, import a tus client such as [go-tus ↗](https://github.com/eventials/go-tus) to upload from your Go applications.
+Before you begin, import a tus client such as [go-tus ↗︎](https://github.com/eventials/go-tus) to upload from your Go applications.
 
 The `go-tus` library does not return the response headers to the calling function, which makes it difficult to read the video ID from the `stream-media-id` header. As a workaround, create a [Direct Creator Upload](https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads/) link. That API response will include the TUS endpoint as well as the video ID. Setting a Creator ID is not required.
 
@@ -119,7 +119,7 @@ upload.Progress()
 upload.Finished()
 ```
 
-Refer to [go-tus ↗](https://github.com/eventials/go-tus) for functionality such as resuming uploads.
+Refer to [go-tus ↗︎](https://github.com/eventials/go-tus) for functionality such as resuming uploads.
 
 ### Node.js example
 
@@ -201,7 +201,7 @@ upload.start();
 
 ## Specify upload options
 
-The tus protocol allows you to add optional parameters in the [`Upload-Metadata` header ↗](https://tus.io/protocols/resumable-upload.html#upload-metadata).
+The tus protocol allows you to add optional parameters in the [`Upload-Metadata` header ↗︎](https://tus.io/protocols/resumable-upload.html#upload-metadata).
 
 ### Supported options in `Upload-Metadata`
 

@@ -40,7 +40,7 @@ To do this:
 
 ![After selecting your custom domain, you will be asked to activate it.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1816,height=869,format=webp/_astro/pages_custom_domain-2.BTtd80-v.png)
 
-After activating your custom domain, go to [DNS ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns) for the `example.com` zone and find the `CNAME` record with the name `staging` and change the target to include your branch alias.
+After activating your custom domain, go to [DNS ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns) for the `example.com` zone and find the `CNAME` record with the name `staging` and change the target to include your branch alias.
 
 In this instance, change `your-project.pages.dev` to `staging.your-project.pages.dev`.
 

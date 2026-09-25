@@ -32,7 +32,7 @@ Make sure you consider the following:
 
 - Proxying traffic with secondary zones requires a setting that is not turned on by default. Refer to [Secondary DNS override](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/) to learn more. The steps below include enabling this setting.
 - There are a few options for [DNSSEC with incoming zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/). If you want to use DNSSEC, plan for which option you will configure and confirm that your other DNS provider(s) support the setup.
-- You can prepare SSL/TLS in advance by either ordering an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/) or [uploading a custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/). You should confirm that the certificate covers all your proxied hostnames and that the [status of your SSL certificate ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) is **Active**.
+- You can prepare SSL/TLS in advance by either ordering an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/) or [uploading a custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/). You should confirm that the certificate covers all your proxied hostnames and that the [status of your SSL certificate ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) is **Active**.
 
 ## 1. Prepare a zone file
 
@@ -117,7 +117,7 @@ This step is essential so that Cloudflare can keep the proxy status of the recor
 
 3. Use the [Edit Zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) with `type` set to `secondary`, to convert the zone type.
 
-   You can verify if it answers as expected by querying the new assigned secondary nameservers. You can find your nameservers on the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, and they should follow a format like `ns0123.secondary.cloudflare.com`.
+   You can verify if it answers as expected by querying the new assigned secondary nameservers. You can find your nameservers on the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, and they should follow a format like `ns0123.secondary.cloudflare.com`.
 
 ```bash
 # Replace ns0123 with your actual Cloudflare nameservers
@@ -166,7 +166,7 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 Use the [Update Secondary Zone Configuration endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/zone_transfers/subresources/peers/methods/update/) to link your Cloudflare zone to the peer DNS server.
 
-4. On the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, confirm the linked peer is listed under **DNS Zone Transfers**, and select **Initiate zone transfer**. Alternatively, you can use the [Force AXFR endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/zone_transfers/subresources/force_axfr/methods/create/).
+4. On the [**DNS Settings** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, confirm the linked peer is listed under **DNS Zone Transfers**, and select **Initiate zone transfer**. Alternatively, you can use the [Force AXFR endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/zone_transfers/subresources/force_axfr/methods/create/).
 
 Was this helpful?
 

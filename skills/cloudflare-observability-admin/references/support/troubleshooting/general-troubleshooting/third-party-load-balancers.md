@@ -84,8 +84,8 @@ The recommended solution is to configure an F5 OneConnect profile with a single 
 
 - [Session affinity](https://developers.cloudflare.com/load-balancing/understand-basics/session-affinity/)
 - [TCP connections and keep-alives](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/)
-- [F5 K7208: Overview of the OneConnect profile ↗](https://my.f5.com/manage/s/article/K7208)
-- [F5 K7964: The BIG-IP system may appear to ignore persistence information for Keep-Alive connections ↗](https://my.f5.com/manage/s/article/K7964)
+- [F5 K7208: Overview of the OneConnect profile ↗︎](https://my.f5.com/manage/s/article/K7208)
+- [F5 K7964: The BIG-IP system may appear to ignore persistence information for Keep-Alive connections ↗︎](https://my.f5.com/manage/s/article/K7964)
 
 Was this helpful?
 

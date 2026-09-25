@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Fine tuning an AI model gives you the opportunity to add additional training data to the model. Workers AI allows for [Low-Rank Adaptation, LoRA, adapters](https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/) that will allow you to finetune our models.
 
-In this tutorial, we will explore how to create our own LoRAs. We will focus on [LLM Finetuning using AutoTrain ↗](https://huggingface.co/docs/autotrain/llm_finetuning).
+In this tutorial, we will explore how to create our own LoRAs. We will focus on [LLM Finetuning using AutoTrain ↗︎](https://huggingface.co/docs/autotrain/llm_finetuning).
 
 ## 1. Create a CSV file with your training data
 
@@ -36,7 +36,7 @@ If your training row contains newlines, you should wrap it with quotes.
 "human: What is the meaning of life? \n bot: 42."
 ```
 
-Different models, like Mistral, will provide a specific [chat template/instruction format ↗](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1#instruction-format)
+Different models, like Mistral, will provide a specific [chat template/instruction format ↗︎](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.1#instruction-format)
 
 ```text
 <s>[INST] What is the meaning of life? [/INST] 42</s>
@@ -44,7 +44,7 @@ Different models, like Mistral, will provide a specific [chat template/instructi
 
 ## 2. Configure the HuggingFace Autotrain Advanced Notebook
 
-Open the [HuggingFace Autotrain Advanced Notebook ↗](https://colab.research.google.com/github/huggingface/autotrain-advanced/blob/main/colabs/AutoTrain_LLM.ipynb)
+Open the [HuggingFace Autotrain Advanced Notebook ↗︎](https://colab.research.google.com/github/huggingface/autotrain-advanced/blob/main/colabs/AutoTrain_LLM.ipynb)
 
 In order to give your AutoTrain ample memory, you will need to need to choose a different Runtime. From the menu at the top of the Notebook choose Runtime > Change Runtime Type. Choose A100.
 
@@ -67,11 +67,11 @@ Modify the following fields
 
 ### Optional Section: Push to Hub
 
-Although not required to use AutoTrain, creating a [HuggingFace account ↗](https://huggingface.co/join) will help you keep your finetune artifacts in a handy repository for you to refer to later.
+Although not required to use AutoTrain, creating a [HuggingFace account ↗︎](https://huggingface.co/join) will help you keep your finetune artifacts in a handy repository for you to refer to later.
 
 If you do not perform the HuggingFace setup you can still download your files from the Notebook.
 
-Follow the instructions [in the notebook ↗](https://colab.research.google.com/github/huggingface/autotrain-advanced/blob/main/colabs/AutoTrain_LLM.ipynb) to create an account and token if necessary.
+Follow the instructions [in the notebook ↗︎](https://colab.research.google.com/github/huggingface/autotrain-advanced/blob/main/colabs/AutoTrain_LLM.ipynb) to create an account and token if necessary.
 
 ### Section: Hyperparameters
 

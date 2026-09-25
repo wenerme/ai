@@ -28,7 +28,7 @@ You will encounter this error if you try to do one of the following:
 
 Cloudflare prevents you from creating this combination of records because if a CNAME record is provided for a hostname DNS servers expect only that CNAME record to provide DNS information for that hostname.
 
-Adding additional records would send conflicting information to DNS servers. For a technical explanation of the mechanism behind this, refer to [RFC 1034 ↗](https://www.rfc-editor.org/rfc/rfc1034).
+Adding additional records would send conflicting information to DNS servers. For a technical explanation of the mechanism behind this, refer to [RFC 1034 ↗︎](https://www.rfc-editor.org/rfc/rfc1034).
 
 ## Solution
 
@@ -40,8 +40,8 @@ CNAME records are the only IP resolution record with this type of limitation. Yo
 
 ## Footnotes
 
-1. [CNAME records ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-cname-record/) map a domain name to another (canonical) domain name. They can be used to resolve other record types present on the target domain name. [↩](#user-content-fnref-1)
-2. [A and AAAA records ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/) map a domain name to one or multiple IPv4 or IPv6 address(es). [↩](#user-content-fnref-2)
+1. [CNAME records ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-cname-record/) map a domain name to another (canonical) domain name. They can be used to resolve other record types present on the target domain name. [↩](#user-content-fnref-1)
+2. [A and AAAA records ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-a-record/) map a domain name to one or multiple IPv4 or IPv6 address(es). [↩](#user-content-fnref-2)
 
 Was this helpful?
 

@@ -122,7 +122,7 @@ Intune will now execute the Powershell script on the target devices and overwrit
 
 After deploying the Cloudflare One Client, you can check its connection progress using the [Connectivity status](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/connectivity-status/) messages displayed in the Cloudflare One Client GUI.
 
-If you prefer to use Intune's Win32 App tool to run the Powershell script, refer to the [Intune documentation ↗](https://learn.microsoft.com/en-us/mem/intune/apps/apps-win32-app-management).
+If you prefer to use Intune's Win32 App tool to run the Powershell script, refer to the [Intune documentation ↗︎](https://learn.microsoft.com/en-us/mem/intune/apps/apps-win32-app-management).
 
 ## macOS
 
@@ -130,11 +130,11 @@ The following steps outline deploying the Cloudflare One Client on macOS using I
 
 Caution
 
-Do not deploy the Cloudflare One Client via [Intune's line-of-business (LOB) deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/lob-apps-macos). This deployment type is not supported. Use [Intune's `.pkg` deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg) instead to successfully install the Cloudflare One Client on macOS.
+Do not deploy the Cloudflare One Client via [Intune's line-of-business (LOB) deployment method ↗︎](https://learn.microsoft.com/en-us/intune/intune-service/apps/lob-apps-macos). This deployment type is not supported. Use [Intune's `.pkg` deployment method ↗︎](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg) instead to successfully install the Cloudflare One Client on macOS.
 
 ### Prerequisites
 
-- A [Microsoft Intune account ↗](https://login.microsoftonline.com/).
+- A [Microsoft Intune account ↗︎](https://login.microsoftonline.com/).
 - A Cloudflare account that has a [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization).
 - macOS devices enrolled in Intune.
 
@@ -160,7 +160,7 @@ You must deploy a [user-side certificate](https://developers.cloudflare.com/clou
 
 #### 1.2 Upload user-side certificate to Intune
 
-1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** > select **macOS**.![Intune admin console where you select macOS before creating a policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3754,height=1497,format=webp/_astro/devices-macos.CVmp807I.png)
+1. In the [Microsoft Intune admin center ↗︎](https://intune.microsoft.com), go to **Devices** > select **macOS**.![Intune admin console where you select macOS before creating a policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3754,height=1497,format=webp/_astro/devices-macos.CVmp807I.png)
 2. Under **Manage devices**, select **Configuration**.![Intune admin console where you will create a new policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1506,height=892,format=webp/_astro/manage-devices-configuration.DAFUmjfO.png)
 3. Select **Create** > **New Policy**.
 4. For **Profile Type**, select *Templates* > select **Trusted certificate** as the Template name > select **Create**.
@@ -240,7 +240,7 @@ Sharing this certificate with Intune automates the installation of this certific
    Best practice
 
    Start by deploying the template in its default, minimal form. This helps you verify a successful deployment before adding custom parameters.
-5. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** > **macOS**.
+5. In the [Microsoft Intune admin center ↗︎](https://intune.microsoft.com), go to **Devices** > **macOS**.
 6. Under **Manage devices**, select **Configuration**.
 7. Select **Create** > **New Policy**.
 8. For **Profile Type**, select *Templates* > select **Custom** as the **Template name** > select **Create**.
@@ -264,7 +264,7 @@ Complete Step 4 at least one hour after steps 1, 2, and 3 so clients have enough
    Repeat this step to update the Cloudflare One Client when a new release is available
 
    Every time a new Cloudflare One Client version is released, you must repeat this process and get a new `.pkg` file for the new version.
-2. Log in to the [Microsoft Intune admin center ↗](https://intune.microsoft.com), and go to **Apps** > **macOS**.
+2. Log in to the [Microsoft Intune admin center ↗︎](https://intune.microsoft.com), and go to **Apps** > **macOS**.
 3. Select **Create**.
 4. For **App type**, select *macOS app (PKG)*.
 5. In **App information**, select the `.pkg` file you downloaded and input required details. Enter `Cloudflare` as the Publisher.
@@ -285,7 +285,7 @@ The following steps outline how to deploy the Cloudflare One Agent (Cloudflare O
 
 ### Prerequisites
 
-- A [Microsoft Intune account ↗](https://intune.microsoft.com)
+- A [Microsoft Intune account ↗︎](https://intune.microsoft.com)
 - A Cloudflare account that has a [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/faq/getting-started-faq/#what-is-a-team-domainteam-name)
 - iOS/iPadOS devices enrolled in Intune
 - [TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/) enabled in Cloudflare Gateway (if you plan to inspect HTTPS traffic)
@@ -301,7 +301,7 @@ You must deploy a [user-side certificate](https://developers.cloudflare.com/clou
 
 #### 1.2 Upload user-side certificate to Intune
 
-1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), go to **Devices** > select **iOS/iPadOS**.![Intune admin console where you select iOS/iPadOS before creating a policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1898,height=747,format=webp/_astro/devices-iOS.DY1lHEJ0.png)
+1. In the [Microsoft Intune admin center ↗︎](https://intune.microsoft.com), go to **Devices** > select **iOS/iPadOS**.![Intune admin console where you select iOS/iPadOS before creating a policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1898,height=747,format=webp/_astro/devices-iOS.DY1lHEJ0.png)
 2. Under **Manage devices**, select **Configuration**.![Intune admin console where you will create a new policy](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1217,height=584,format=webp/_astro/manage-devices-configuration-iOS.CAfH5ZA2.png)
 3. Select **Create** > **New Policy**.
 4. For **Profile Type**, select *Templates* > select **Trusted certificate** as the Template name > select **Create**.
@@ -315,7 +315,7 @@ Sharing this certificate with Intune automates the installation of this certific
 
 ### 2. Add Cloudflare One Agent app to Intune configuration
 
-1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), select **Apps** > **iOS/iPadOS**.
+1. In the [Microsoft Intune admin center ↗︎](https://intune.microsoft.com), select **Apps** > **iOS/iPadOS**.
 2. Select **Create**.
 3. For App type, select *iOS store app* > select **Select** to continue.
 4. Select **Search the App Store** and search for the [Cloudflare One Agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#ios). After you have found the Cloudflare One Agent, select it and select **Select** to continue.
@@ -331,7 +331,7 @@ By completing this step, you deliver the Cloudflare One Client to targeted iOS d
 
 ### 3. Configure Cloudflare One Agent app
 
-1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com), select **Apps** > **Manage apps** > **Configuration**.
+1. In the [Microsoft Intune admin center ↗︎](https://intune.microsoft.com), select **Apps** > **Manage apps** > **Configuration**.
 2. Select **Create** > *Managed devices*.
 3. In **Basics**, input the necessary field(s) and give your policy an easily identifiable name like `Cloudflare One Agent`. Select *iOS/iPadOS* for Platform and target the Cloudflare One Agent app. Select **Next**.
 4. In **Settings**, select *Enter XML data* and copy and paste the following:
@@ -359,7 +359,7 @@ By completing this step, you preconfigure the Cloudflare One Agent with your [Ze
 
 ### Intune configuration
 
-Intune allows you to insert [predefined variables ↗](https://learn.microsoft.com/en-us/mem/intune/apps/app-configuration-policies-use-ios#tokens-used-in-the-property-list) into the XML configuration file. For example, you can set the [`unique_client_id`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#unique_client_id) key to `{{deviceid}}` for a [device UUID posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/device-uuid/) deployment.
+Intune allows you to insert [predefined variables ↗︎](https://learn.microsoft.com/en-us/mem/intune/apps/app-configuration-policies-use-ios#tokens-used-in-the-property-list) into the XML configuration file. For example, you can set the [`unique_client_id`](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#unique_client_id) key to `{{deviceid}}` for a [device UUID posture check](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/client-checks/device-uuid/) deployment.
 
 ### Per-app VPN for iOS
 
@@ -369,7 +369,7 @@ Per-app VPN is supported on Cloudflare One Agent version `1.8` or greater for iO
 
 Before proceeding with per-app VPN configuration, you must make sure [Auto connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect) is disabled in Zero Trust. To disable Auto connect:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Select your device profile and select **Edit**.
 3. Turn off **Auto Connect**.
 
@@ -505,7 +505,7 @@ Note
 
 Per-app VPN is supported on the Cloudflare One Agent app version `2.3` or greater for Android.
 
-Review the following steps to approve and deploy the Cloudflare One Agent application in Microsoft Intune and use a configuration policy to set up the per-app VPN. To use the per-app VPN, the admin must have linked the Microsoft Intune account with the Google-managed Play account. For more information, refer to [Connect your Intune account to your managed Google Play account in the Microsoft documentation ↗](https://learn.microsoft.com/en-us/mem/intune/enrollment/connect-intune-android-enterprise).
+Review the following steps to approve and deploy the Cloudflare One Agent application in Microsoft Intune and use a configuration policy to set up the per-app VPN. To use the per-app VPN, the admin must have linked the Microsoft Intune account with the Google-managed Play account. For more information, refer to [Connect your Intune account to your managed Google Play account in the Microsoft documentation ↗︎](https://learn.microsoft.com/en-us/mem/intune/enrollment/connect-intune-android-enterprise).
 
 #### Approve the Cloudflare One Agent app within Microsoft Intune
 

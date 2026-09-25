@@ -138,7 +138,7 @@ Select **Save** to apply changes for the Profile.
 1. In the **IKE/IPsec Settings** tab, select:
    1. **IP Version**: *IPv4*
    2. **Primary VPN Gateway**
-      1. **Public IP**: Specify one of the two Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+      1. **Public IP**: Specify one of the two Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 2. In **IKE Proposal**, expand **View advanced settings for IKE Proposal**:
    1. **Encryption**: *AES 256 CBC*
    2. **DH Group**: *14*

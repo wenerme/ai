@@ -16,7 +16,7 @@ Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 You can only add or remove applications to Breakout traffic and Prioritized traffic. To add or remove applications:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Find the Appliance that you want to edit > select the three dots next to it > **Edit**.
 4. Go to **Traffic steering** > **Breakout traffic** or **Prioritized traffic**.

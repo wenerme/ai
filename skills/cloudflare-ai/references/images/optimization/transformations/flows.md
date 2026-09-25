@@ -43,7 +43,7 @@ This is well-suited for situations where you want to optimize your images broadl
 
 ## How flows work
 
-Before setting up a flow, make sure that transformations are turned on for your zone under **Images** > **Transformations** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/images/transformations).
+Before setting up a flow, make sure that transformations are turned on for your zone under **Images** > **Transformations** in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/images/transformations).
 
 When an image is requested on your zone, Cloudflare checks to see whether the request matches the conditions for any of your configured flows:
 
@@ -68,7 +68,7 @@ Currently, Cloudflare supports flows to handle migrations from Fastly Image Opti
 
 To add a provider flow:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **Images** > **Transformations** and select your zone.
 3. Select the **Automation** tab, then select **Add provider flow**.
 4. Choose **Fastly** as the provider.
@@ -78,7 +78,7 @@ To add a provider flow:
 
 ### 1. Create a new flow
 
-In the Cloudflare dashboard, go to [**Images** > **Transformations** ↗](https://dash.cloudflare.com/?to=/:account/images/transformations) and select the zone where you want to set up the custom flow.
+In the Cloudflare dashboard, go to [**Images** > **Transformations** ↗︎](https://dash.cloudflare.com/?to=/:account/images/transformations) and select the zone where you want to set up the custom flow.
 
 Go to the **Automation** tab and select **Add custom flow** to open the side panel where you can configure your flow.
 

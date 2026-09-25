@@ -18,7 +18,7 @@ The Cloudflare Vite plugin has debugging enabled by default and listens on port 
 
 ## DevTools
 
-When running `vite dev` or `vite preview`, a `/__debug` route is added that provides access to [Cloudflare's implementation ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/chrome-devtools-patches) of [Chrome's DevTools ↗](https://developer.chrome.com/docs/devtools/overview). Navigating to this route will open a DevTools tab for each of the Workers in your application.
+When running `vite dev` or `vite preview`, a `/__debug` route is added that provides access to [Cloudflare's implementation ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/chrome-devtools-patches) of [Chrome's DevTools ↗︎](https://developer.chrome.com/docs/devtools/overview). Navigating to this route will open a DevTools tab for each of the Workers in your application.
 
 Once the tab(s) are open, you can make a request to your application and start debugging your Worker code.
 
@@ -28,7 +28,7 @@ When debugging multiple Workers, you may need to allow your browser to open pop-
 
 ## VS Code
 
-To set up [VS Code ↗](https://code.visualstudio.com/) to support breakpoint debugging in your application, you should create a `.vscode/launch.json` file that contains the following configuration:
+To set up [VS Code ↗︎](https://code.visualstudio.com/) to support breakpoint debugging in your application, you should create a `.vscode/launch.json` file that contains the following configuration:
 
 *.vscode/launch.jsonjson*
 

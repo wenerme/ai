@@ -34,7 +34,7 @@ Last updated Sep 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Need a higher limit?
 
-To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
+To request an adjustment to a limit, complete the [Limit Increase Request Form ↗︎](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
 
 ---
 
@@ -134,7 +134,7 @@ To resolve a memory limit error:
 
 1. **Stream request and response bodies** — Use [`TransformStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) or [`node:stream`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/) instead of buffering entire payloads in memory.
 2. **Avoid large in-memory objects** — Store large data in [KV](https://developers.cloudflare.com/kv/), [R2](https://developers.cloudflare.com/r2/), or [D1](https://developers.cloudflare.com/d1/) instead of holding it in Worker memory.
-3. **Update Zod** — If your Worker uses Zod, use [version 4.5.0 or later ↗](https://github.com/colinhacks/zod/releases/tag/v4.5.0). Earlier versions use substantially more memory per schema.
+3. **Update Zod** — If your Worker uses Zod, use [version 4.5.0 or later ↗︎](https://github.com/colinhacks/zod/releases/tag/v4.5.0). Earlier versions use substantially more memory per schema.
 4. **Profile memory usage** — Use [memory profiling with DevTools](https://developers.cloudflare.com/workers/observability/dev-tools/memory-usage/) locally to identify leaks and high-memory allocations.
 
 To view memory errors in the dashboard:
@@ -305,7 +305,7 @@ To reduce startup time, avoid expensive work in global scope. Move initializatio
 
 Need a higher limit?
 
-To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
+To request an adjustment to a limit, complete the [Limit Increase Request Form ↗︎](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
 
 ---
 

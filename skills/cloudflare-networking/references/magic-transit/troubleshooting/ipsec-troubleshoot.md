@@ -146,7 +146,7 @@ Some customer routers cannot fully disable IPsec anti-replay protection, which i
 
 ## Health check failures when using IPsec
 
-In the default unidirectional (DSR) configuration, Magic Transit health check responses travel over the public internet back to Cloudflare, not through the IPsec tunnel. This means your ISP or upstream network must allow the health check response packets from your prefix to reach [Cloudflare's IP ranges ↗](https://www.cloudflare.com/ips/).
+In the default unidirectional (DSR) configuration, Magic Transit health check responses travel over the public internet back to Cloudflare, not through the IPsec tunnel. This means your ISP or upstream network must allow the health check response packets from your prefix to reach [Cloudflare's IP ranges ↗︎](https://www.cloudflare.com/ips/).
 
 If your ISP is blocking these response packets, health checks will fail even when the IPsec tunnel and data plane are working correctly.
 

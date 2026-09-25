@@ -83,7 +83,7 @@ For example, if a request makes two D1 calls and the second one fails, the trace
 
 ## API
 
-Local Explorer exposes an API at `/cdn-cgi/local/explorer/api` that provides programmatic access to the same operations available in the browser interface. The API serves an [OpenAPI specification ↗](https://www.openapis.org/) that describes all available endpoints, parameters, and response formats.
+Local Explorer exposes an API at `/cdn-cgi/local/explorer/api` that provides programmatic access to the same operations available in the browser interface. The API serves an [OpenAPI specification ↗︎](https://www.openapis.org/) that describes all available endpoints, parameters, and response formats.
 
 To retrieve the OpenAPI spec:
 
@@ -93,7 +93,7 @@ curl http://localhost:8787/cdn-cgi/local/explorer/api
 
 ### Use with AI agents
 
-When Wrangler or the Cloudflare Vite plugin detects it is running inside an AI agent, it prints a hint with the Local Explorer API endpoint directly to the terminal. The agent can fetch the [OpenAPI specification ↗](https://www.openapis.org/) from that endpoint to discover all available operations, then make API calls to read or modify local data, query traces and logs, and debug your Worker.
+When Wrangler or the Cloudflare Vite plugin detects it is running inside an AI agent, it prints a hint with the Local Explorer API endpoint directly to the terminal. The agent can fetch the [OpenAPI specification ↗︎](https://www.openapis.org/) from that endpoint to discover all available operations, then make API calls to read or modify local data, query traces and logs, and debug your Worker.
 
 The hint includes the API URL and relevant endpoints:
 

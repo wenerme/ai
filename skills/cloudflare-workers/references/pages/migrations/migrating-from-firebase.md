@@ -38,7 +38,7 @@ After you have found your build directory and build command, you can move your p
 
 If you have not pushed your static site to GitHub before, you should do so before continuing. This will also give you access to features like automatic deployments, and [deployment previews](https://developers.cloudflare.com/pages/configuration/preview-deployments/).
 
-You can create a new repository by visiting [repo.new ↗](https://repo.new) and following the instructions to push your project up to GitHub.
+You can create a new repository by visiting [repo.new ↗︎](https://repo.new) and following the instructions to push your project up to GitHub.
 
 Use the [Get started guide](https://developers.cloudflare.com/pages/get-started/) to add your project to Cloudflare Pages, using the **build command** and **build directory** that you saved earlier.
 

@@ -18,7 +18,7 @@ You must [generate an Access Key](https://developers.cloudflare.com/r2/api/token
 
 
 
-[`s3mini` ↗](https://www.npmjs.com/package/s3mini) is a zero-dependency, lightweight (\~20 KB minified) TypeScript S3 client that uses AWS SigV4 signing. It runs natively on Node.js, Bun, and Cloudflare Workers without polyfills.
+[`s3mini` ↗︎](https://www.npmjs.com/package/s3mini) is a zero-dependency, lightweight (\~20 KB minified) TypeScript S3 client that uses AWS SigV4 signing. It runs natively on Node.js, Bun, and Cloudflare Workers without polyfills.
 
 Unlike the AWS SDKs, s3mini expects a **bucket-scoped endpoint** — the bucket name is part of the endpoint URL, so you do not pass a separate `bucket` parameter to each operation.
 

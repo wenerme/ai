@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Configure Cloudflare using HashiCorp's “Infrastructure as Code” tool, Terraform. With [Cloudflare’s Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs), you can manage the Cloudflare global network using the same familiar tools you use to automate the rest of your infrastructure. Define and store configuration in source code repositories like GitHub, track and version changes over time, and roll back when needed — all without needing to use the Cloudflare APIs.
+Configure Cloudflare using HashiCorp's “Infrastructure as Code” tool, Terraform. With [Cloudflare’s Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs), you can manage the Cloudflare global network using the same familiar tools you use to automate the rest of your infrastructure. Define and store configuration in source code repositories like GitHub, track and version changes over time, and roll back when needed — all without needing to use the Cloudflare APIs.
 
-Report Terraform configuration issues via [GitHub ↗](https://github.com/cloudflare/terraform-provider-cloudflare/issues/new/choose).
+Report Terraform configuration issues via [GitHub ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/issues/new/choose).
 
 Was this helpful?
 

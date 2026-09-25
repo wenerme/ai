@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Cloudflare One Appliance (formerly Magic WAN Connector) software is certified for use on the [Dell Networking Virtual Edge Platform ↗](https://www.dell.com/support/home/en-us/product-support/product/dell-emc-networking-vep1445-vep1485/docs). It can be purchased with software pre-installed through our partner network for plug-and-play connectivity to Cloudflare One.
+The Cloudflare One Appliance (formerly Magic WAN Connector) software is certified for use on the [Dell Networking Virtual Edge Platform ↗︎](https://www.dell.com/support/home/en-us/product-support/product/dell-emc-networking-vep1445-vep1485/docs). It can be purchased with software pre-installed through our partner network for plug-and-play connectivity to Cloudflare One.
 
 ## Security and other information
 
@@ -33,7 +33,7 @@ ICMP traffic is routed through the Internet and bypasses [Cloudflare Gateway](ht
 
 ## VLAN ID
 
-This feature allows you to have multiple [virtual LANs ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-lan/) (VLANs) configured over the same physical port on your Cloudflare One Appliance. VLAN tagging adds an extra header to [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) in order to identify which VLAN the packet belongs to and to route it appropriately. This effectively allows you to run multiple networks over the same physical port.
+This feature allows you to have multiple [virtual LANs ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-lan/) (VLANs) configured over the same physical port on your Cloudflare One Appliance. VLAN tagging adds an extra header to [packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) in order to identify which VLAN the packet belongs to and to route it appropriately. This effectively allows you to run multiple networks over the same physical port.
 
 A non-zero value set up for the VLAN ID field in your WAN/LAN is used to handle VLAN-tagged traffic. Cloudflare uses the VLAN ID to handle traffic coming into your Cloudflare One Appliance device, and applies a VLAN tag with the configured VLAN ID for traffic going out of your Cloudflare One Appliance through WAN/LAN.
 

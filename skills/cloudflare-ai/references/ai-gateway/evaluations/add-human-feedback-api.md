@@ -177,7 +177,7 @@ If you had negative feedback, adjust the body of the request to be `-1`.
 
 You can verify the feedback submission in two ways:
 
-- **Through the [Cloudflare dashboard ↗](https://dash.cloudflare.com)**: check the updated feedback on the AI Gateway interface.
+- **Through the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com)**: check the updated feedback on the AI Gateway interface.
 - **Through the API**: Send another GET request to retrieve the updated log entry and confirm the feedback has been recorded.
 
 Was this helpful?

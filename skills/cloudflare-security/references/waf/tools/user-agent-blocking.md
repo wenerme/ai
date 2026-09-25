@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/user-agent-blocking/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-User Agent Blocking allows you to block specific browser or web application [`User-Agent` request headers ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent). User agent rules apply to the entire domain instead of individual subdomains.
+User Agent Blocking allows you to block specific browser or web application [`User-Agent` request headers ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent). User agent rules apply to the entire domain instead of individual subdomains.
 
 User agent rules are applied after [zone lockdown rules](https://developers.cloudflare.com/waf/tools/zone-lockdown/). If you allow an IP address via Zone Lockdown, it will skip any user agent rules.
 

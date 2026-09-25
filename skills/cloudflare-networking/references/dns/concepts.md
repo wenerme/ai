@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/concepts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Domain Name System (DNS) translates human-readable domain names (like `example.com`) into IP addresses that computers use to locate each other on the Internet. This page covers key DNS concepts used throughout the Cloudflare DNS documentation. For more concepts and broader descriptions, refer to the [Cloudflare Learning Center ↗](https://www.cloudflare.com/learning/dns/what-is-dns/).
+The Domain Name System (DNS) translates human-readable domain names (like `example.com`) into IP addresses that computers use to locate each other on the Internet. This page covers key DNS concepts used throughout the Cloudflare DNS documentation. For more concepts and broader descriptions, refer to the [Cloudflare Learning Center ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/).
 
 ## Domain
 
@@ -22,7 +22,7 @@ Also known as domain name, a domain is the string of text that identifies a spec
 
 ## Registrar
 
-Before you can start using the Cloudflare DNS service, you must first have a domain. You obtain a domain through a registrar, a service that handles the reservation of domain names as explained in the [Learning Center ↗](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/).
+Before you can start using the Cloudflare DNS service, you must first have a domain. You obtain a domain through a registrar, a service that handles the reservation of domain names as explained in the [Learning Center ↗︎](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name-registrar/).
 
 Very often the same company that offers domain registration also offers web hosting and DNS management.
 
@@ -30,7 +30,7 @@ You can register a domain name at cost (without markup fees) through [Cloudflare
 
 ## Nameserver
 
-DNS resolution — the process of translating a domain name into an IP address — involves several types of servers. In this documentation, nameserver usually refers to the Cloudflare authoritative nameservers, the servers that hold the definitive DNS records for your domain and provide the final answer in DNS resolution. For more context on the different server types involved, refer to the [article about DNS server types ↗](https://www.cloudflare.com/learning/dns/dns-server-types/).
+DNS resolution — the process of translating a domain name into an IP address — involves several types of servers. In this documentation, nameserver usually refers to the Cloudflare authoritative nameservers, the servers that hold the definitive DNS records for your domain and provide the final answer in DNS resolution. For more context on the different server types involved, refer to the [article about DNS server types ↗︎](https://www.cloudflare.com/learning/dns/dns-server-types/).
 
 Refer to [Nameservers](https://developers.cloudflare.com/dns/nameservers/) for details on the different nameserver offerings.
 
@@ -58,7 +58,7 @@ For more details about using DNS records within Cloudflare, refer to [Manage DNS
 
 ## Zone
 
-A DNS zone is an administrative boundary that defines who controls the DNS records for a given domain and its subdomains. For example, the zone for `example.com` contains the records for `example.com` and its subdomains like `blog.example.com`. Read more in the ["What is a DNS zone?" Learning Center article ↗](https://www.cloudflare.com/learning/dns/glossary/dns-zone/).
+A DNS zone is an administrative boundary that defines who controls the DNS records for a given domain and its subdomains. For example, the zone for `example.com` contains the records for `example.com` and its subdomains like `blog.example.com`. Read more in the ["What is a DNS zone?" Learning Center article ↗︎](https://www.cloudflare.com/learning/dns/glossary/dns-zone/).
 
 Each domain added to a Cloudflare account is listed on the account home page as a zone. The exact properties and behaviors of your zone depend on its [DNS setup](https://developers.cloudflare.com/dns/zone-setups/).
 
@@ -144,7 +144,7 @@ Full record name: <code>sub.example.com</code>
 
 ## DNSSEC
 
-Without additional protection, DNS responses can be spoofed — an attacker could return a forged response and redirect visitors to a malicious site. DNSSEC (DNS Security Extensions) addresses this by adding cryptographic signatures to DNS records. These signatures can then be checked to verify that a record came from the correct DNS server, preventing anyone else from issuing false DNS records on your behalf and redirecting traffic intended for your domain. You can read more about it in the [article about DNS security ↗](https://www.cloudflare.com/learning/dns/dns-security/).
+Without additional protection, DNS responses can be spoofed — an attacker could return a forged response and redirect visitors to a malicious site. DNSSEC (DNS Security Extensions) addresses this by adding cryptographic signatures to DNS records. These signatures can then be checked to verify that a record came from the correct DNS server, preventing anyone else from issuing false DNS records on your behalf and redirecting traffic intended for your domain. You can read more about it in the [article about DNS security ↗︎](https://www.cloudflare.com/learning/dns/dns-security/).
 
 For help setting up DNSSEC in Cloudflare, refer to [Enable DNSSEC](https://developers.cloudflare.com/dns/dnssec/).
 

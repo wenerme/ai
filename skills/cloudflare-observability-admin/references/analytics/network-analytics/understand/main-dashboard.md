@@ -142,7 +142,7 @@ Dashboard tabs for [specific mitigation systems](https://developers.cloudflare.c
 
 ## Data center country/Source data center
 
-Displays the top source [Cloudflare data centers ↗](https://www.cloudflare.com/en-gb/network/) where the displayed traffic was ingested. The same card can also display the country associated with these top source data centers.
+Displays the top source [Cloudflare data centers ↗︎](https://www.cloudflare.com/en-gb/network/) where the displayed traffic was ingested. The same card can also display the country associated with these top source data centers.
 
 To switch between **Data center country** and **Source data center** information, use the dropdown in the card.
 

@@ -16,7 +16,7 @@ Last updated Feb 18, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Introduction
 
-SaaS applications have become essential tools in today's business operations. While SaaS applications reduce IT and infrastructure burden, they also introduce new security challenges that traditional architectures struggle to address. Many companies today are on the path to implementing a [Zero Trust architecture ↗](https://zerotrustroadmap.org/), which heavily combines identity, device and network information to better secure applications.
+SaaS applications have become essential tools in today's business operations. While SaaS applications reduce IT and infrastructure burden, they also introduce new security challenges that traditional architectures struggle to address. Many companies today are on the path to implementing a [Zero Trust architecture ↗︎](https://zerotrustroadmap.org/), which heavily combines identity, device and network information to better secure applications.
 
 However SaaS applications tend to focus their security on their own platform, such as storing data at rest in a secure manner and ensuring their applications are not exposing customer data due to application vulnerabilities. This document is going to cover how to address some of the limitations of SaaS applications by using Cloudflare's Secure Access Service Edge (SASE) platform. Specifically our Zero Trust Network Access (ZTNA) and Secure Web Gateway (SWG) services, combined with integrations to your existing identity and device security vendors.
 

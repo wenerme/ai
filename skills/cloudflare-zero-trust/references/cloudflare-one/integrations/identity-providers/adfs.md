@@ -16,7 +16,7 @@ Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Caution
 
-Microsoft recommends migrating your Active Directory Federation Service (AD FS) SSO to Microsoft Entra ID. For more information, refer to [Microsoft Learn ↗](https://learn.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview).
+Microsoft recommends migrating your Active Directory Federation Service (AD FS) SSO to Microsoft Entra ID. For more information, refer to [Microsoft Learn ↗︎](https://learn.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview).
 
 To set up the Microsoft Entra ID IdP integration with Cloudflare One, refer to [Microsoft Entra ID](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/).
 
@@ -31,7 +31,7 @@ To get started, you need:
 - A Microsoft server running with Active Directory Federation Services (AD FS) installed. All screenshots in these instructions are for Server 2012R2. Similar steps will work for newer versions.
 - A browser safe certificate for Active Directory Federation Services (AD FS).
 
-Once you fulfill the requirements above, you are ready to begin. Installation and basic configuration of Active Directory Federation Services (AD FS) is outside the scope of this guide. A detailed guide can be found in a [Microsoft KB ↗](<https://docs.microsoft.com/en-us/previous-versions/dynamicscrm-2016/deployment-administrators-guide/gg188612(v=crm.8)>).
+Once you fulfill the requirements above, you are ready to begin. Installation and basic configuration of Active Directory Federation Services (AD FS) is outside the scope of this guide. A detailed guide can be found in a [Microsoft KB ↗︎](<https://docs.microsoft.com/en-us/previous-versions/dynamicscrm-2016/deployment-administrators-guide/gg188612(v=crm.8)>).
 
 Then to begin the connection between Cloudflare Access and AD FS create a Relying Party Trust in AD FS.
 
@@ -60,7 +60,7 @@ To create a Relying Party Trust:
     https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
     ```
 
-    You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+    You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 15. Select **Next**. The **Configure Identifiers** step displays.![Add relying party trust wizard with callback URL pasted into open form field](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1446,height=1166,format=webp/_astro/adfs-7.BHM4h9Ct.png)
 16. Paste your callback URL in the **Relying party trust identifier** field.
 17. Select **Next**. In the **Configure Multi-factor Authentication Now?** step, you can configure multi-factor authentication.
@@ -134,7 +134,7 @@ Set-ADFSRelyingPartyTrust -TargetName "Name of RPT Display Name" -SamlResponseSi
 
 To enable Cloudflare One to accept the claims and assertions sent from AD FS, follow these steps:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **SAML**.
 4. Enter an IdP **Name**.

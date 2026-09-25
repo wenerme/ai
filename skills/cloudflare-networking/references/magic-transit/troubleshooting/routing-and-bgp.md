@@ -102,7 +102,7 @@ This section covers BGP peering sessions (beta) between your network and Cloudfl
 
 1. **Wait for propagation**: Allow up to five minutes for full global propagation. Changes propagate across Cloudflare quickly but external networks update at varying speeds.
 2. **Verify return path routing**: Ensure your network has routes to send return traffic back through Cloudflare for egress configurations. For ingress-only or direct server return configurations, route return traffic through your tunnels.
-3. **Check external visibility**: Use BGP looking glass tools such as [bgp.he.net ↗](https://bgp.he.net) or [RIPE RIS ↗](https://ris.ripe.net/) to confirm your prefix is visible from external networks.
+3. **Check external visibility**: Use BGP looking glass tools such as [bgp.he.net ↗︎](https://bgp.he.net) or [RIPE RIS ↗︎](https://ris.ripe.net/) to confirm your prefix is visible from external networks.
 4. **Verify RPKI configuration**: If you use Resource Public Key Infrastructure (RPKI), confirm your Route Origin Authorization (ROA) records match your prefix and the ASN configuration in Cloudflare.
 
 ### Traffic loss during prefix withdrawal
@@ -198,7 +198,7 @@ In the case of interconnects provisioned by third parties, you may need to reque
 
 **Check for maintenance:**
 
-1. Review [Cloudflare Status ↗](https://www.cloudflarestatus.com/) for scheduled maintenance affecting your CNI location.
+1. Review [Cloudflare Status ↗︎](https://www.cloudflarestatus.com/) for scheduled maintenance affecting your CNI location.
 2. Some maintenance events may temporarily affect CNI connectivity even when marked as non-disruptive.
 
 Refer to [Network Interconnect](https://developers.cloudflare.com/network-interconnect/) for CNI configuration and setup information.
@@ -296,7 +296,7 @@ show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
 - [Network Interconnect](https://developers.cloudflare.com/network-interconnect/): CNI setup and BGP peering
 - [Troubleshoot tunnel health](https://developers.cloudflare.com/magic-transit/troubleshooting/tunnel-health/): Tunnel-specific diagnostic steps
 - [Network Analytics](https://developers.cloudflare.com/magic-transit/analytics/network-analytics/): Traffic analysis and monitoring
-- [Cloudflare Status ↗](https://www.cloudflarestatus.com/): Maintenance and incident notifications
+- [Cloudflare Status ↗︎](https://www.cloudflarestatus.com/): Maintenance and incident notifications
 
 Was this helpful?
 

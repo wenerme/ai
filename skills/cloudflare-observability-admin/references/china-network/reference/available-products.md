@@ -44,7 +44,7 @@ The following products and features are available on the Cloudflare China Networ
 | [Assets](https://developers.cloudflare.com/workers/static-assets/) | Upload static assets (HTML, CSS, images and other files) as part of your Worker — Cloudflare will handle caching and serving them to web browsers. |
 | [Environment variables](https://developers.cloudflare.com/workers/configuration/environment-variables/) | Attach text strings or JSON values to your Worker. |
 | [Images](https://developers.cloudflare.com/images/optimization/binding/)<sup>[4](#user-content-fn-4)</sup> | Store, transform, optimize, and deliver images at scale. |
-| [mTLS](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/) | Securely connect to backend servers over [mTLS ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/). |
+| [mTLS](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/) | Securely connect to backend servers over [mTLS ↗︎](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/). |
 | [Rate Limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/) | Define rate limits and write code around them in your Worker. |
 | [Secrets](https://developers.cloudflare.com/workers/configuration/secrets/) | Attach encrypted text values to your Worker. |
 | [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) | Service bindings allow one Worker to call into another, without going through a publicly-accessible URL. |
@@ -58,7 +58,7 @@ The following products and features are available on the Cloudflare China Networ
 | --- | --- |
 | [IPv6](https://developers.cloudflare.com/network/ipv6-compatibility/) | All data centers have IPv6 support by default. |
 | [SSL/TLS](https://developers.cloudflare.com/ssl/) | Customer Certificate, Dedicated Certificate, Universal Certificate, Custom, ACM (Dedicated), Universal SSL. |
-| [HTTP/3 (QUIC) ↗](https://www.cloudflare.com/learning/performance/what-is-http3/) | The latest version of the HTTP protocol to optimize page loading performance. |
+| [HTTP/3 (QUIC) ↗︎](https://www.cloudflare.com/learning/performance/what-is-http3/) | The latest version of the HTTP protocol to optimize page loading performance. |
 | [WebSockets](https://developers.cloudflare.com/workers/runtime-apis/websockets/) | Real-time communication with Cloudflare Workers serverless functions. |
 
 ## Zero Trust Services

@@ -22,17 +22,17 @@ Here you will find information regarding Email Service, along with best practice
 
 ### Contact information
 
-The best way to contact us is using our [community forum ↗](https://community.cloudflare.com/new-topic?category=Feedback/Previews%20%26%20Betas&tags=email) or our [Discord server ↗](https://discord.cloudflare.com).
+The best way to contact us is using our [community forum ↗︎](https://community.cloudflare.com/new-topic?category=Feedback/Previews%20%26%20Betas&tags=email) or our [Discord server ↗︎](https://discord.cloudflare.com).
 
 To report email abuse, contact us at [mailabuse@cloudflare.com](mailto:mailabuse@cloudflare.com).
 
 ### Authenticated Received Chain (ARC)
 
-Email Service supports [Authenticated Received Chain (ARC) ↗](https://arc-spec.org/). ARC allows intermediate email servers, such as forwarders, to attach a record of the original authentication results to a message. The destination server can then verify the authenticity of forwarded messages even when SPF or DKIM would otherwise fail due to forwarding. Major providers, including Google, also support ARC.
+Email Service supports [Authenticated Received Chain (ARC) ↗︎](https://arc-spec.org/). ARC allows intermediate email servers, such as forwarders, to attach a record of the original authentication results to a message. The destination server can then verify the authenticity of forwarded messages even when SPF or DKIM would otherwise fail due to forwarding. Major providers, including Google, also support ARC.
 
 ### DKIM signature
 
-[DKIM (DomainKeys Identified Mail) ↗](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) ensures that email messages are not altered in transit between the sender and the recipient's SMTP servers through public-key cryptography.
+[DKIM (DomainKeys Identified Mail) ↗︎](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) ensures that email messages are not altered in transit between the sender and the recipient's SMTP servers through public-key cryptography.
 
 Through this standard, the sender publishes its public key to a domain's DNS once, and then signs the body of each message before it leaves the server. The recipient server reads the message, gets the domain public key from the domain's DNS, and validates the signature to ensure the message was not altered in transit.
 
@@ -56,7 +56,7 @@ dig TXT cf2024-1._domainkey.email.cloudflare.net +short
 
 ### DMARC enforcing
 
-Email Service supports Domain-based Message Authentication, Reporting & Conformance (DMARC). When sending emails, Email Service ensures proper SPF and DKIM alignment to pass DMARC authentication. For Email Routing, incoming emails are rejected if they fail authentication according to the sender's DMARC policy. Refer to [dmarc.org ↗](https://dmarc.org/) for more information on this protocol.
+Email Service supports Domain-based Message Authentication, Reporting & Conformance (DMARC). When sending emails, Email Service ensures proper SPF and DKIM alignment to pass DMARC authentication. For Email Routing, incoming emails are rejected if they fail authentication according to the sender's DMARC policy. Refer to [dmarc.org ↗︎](https://dmarc.org/) for more information on this protocol.
 
 It is recommended that all domains implement the DMARC protocol for optimal email deliverability.
 
@@ -143,7 +143,7 @@ a-h.cloudflare-email.net.
 
 ### Sender rewriting
 
-For forwarded emails, Email Routing uses the [Sender Rewriting Scheme ↗](https://en.wikipedia.org/wiki/Sender_Rewriting_Scheme) to rewrite the envelope sender (the SMTP `MAIL FROM` address) to a Cloudflare-controlled forwarding domain. This rewriting allows SPF to pass at the destination server even though the message is being relayed. The `From:` header of the message is not modified.
+For forwarded emails, Email Routing uses the [Sender Rewriting Scheme ↗︎](https://en.wikipedia.org/wiki/Sender_Rewriting_Scheme) to rewrite the envelope sender (the SMTP `MAIL FROM` address) to a Cloudflare-controlled forwarding domain. This rewriting allows SPF to pass at the destination server even though the message is being relayed. The `From:` header of the message is not modified.
 
 ### SMTP errors
 
@@ -159,7 +159,7 @@ For Email Routing, inbound mail from senders on RBLs is rejected with an SMTP er
 554 <YOUR_IP_ADDRESS> found on one or more RBLs (abusixip). Refer to https://developers.cloudflare.com/email-service/reference/postmaster/#realtime-block-lists
 ```
 
-You can use tools like [MxToolbox ↗](https://mxtoolbox.com/blacklists.aspx) to check a sending IP against multiple block lists at once. If you believe your emails are being incorrectly blocked, contact the RBL maintainer directly or reach out through Cloudflare support channels.
+You can use tools like [MxToolbox ↗︎](https://mxtoolbox.com/blacklists.aspx) to check a sending IP against multiple block lists at once. If you believe your emails are being incorrectly blocked, contact the RBL maintainer directly or reach out through Cloudflare support channels.
 
 ### SPF record breakdown
 
@@ -169,7 +169,7 @@ Email Service publishes its SPF data under `_spf.mx.cloudflare.net`. You can res
 dig TXT _spf.mx.cloudflare.net +short
 ```
 
-The record uses the format defined in [RFC 7208 ↗](https://datatracker.ietf.org/doc/html/rfc7208):
+The record uses the format defined in [RFC 7208 ↗︎](https://datatracker.ietf.org/doc/html/rfc7208):
 
 ```txt
 "v=spf1 ip4:104.30.0.0/20 ~all"
@@ -196,7 +196,7 @@ Below, you will find information regarding known limitations for Email Service, 
 
 ### Email address internationalization (EAI)
 
-Email Routing does not support [internationalized email addresses ↗](https://en.wikipedia.org/wiki/International_email). Email Routing only supports [internationalized domain names ↗](https://en.wikipedia.org/wiki/Internationalized_domain_name).
+Email Routing does not support [internationalized email addresses ↗︎](https://en.wikipedia.org/wiki/International_email). Email Routing only supports [internationalized domain names ↗︎](https://en.wikipedia.org/wiki/Internationalized_domain_name).
 
 This means that you can have email addresses with an internationalized domain, but not an internationalized local-part (the first part of your email address, before the @ symbol). Refer to the following examples:
 
@@ -209,7 +209,7 @@ Email Routing does not forward non-delivery reports to the original sender. This
 
 ### Restrictive DMARC policies can make forwarded emails fail
 
-Due to the nature of email forwarding, restrictive DMARC policies might make forwarded emails fail to be delivered. Refer to [dmarc.org ↗](https://dmarc.org/) for more information.
+Due to the nature of email forwarding, restrictive DMARC policies might make forwarded emails fail to be delivered. Refer to [dmarc.org ↗︎](https://dmarc.org/) for more information.
 
 ### Sending or replying to an email from your Cloudflare domain
 

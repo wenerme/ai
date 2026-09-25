@@ -60,7 +60,7 @@ The output of each `wrangler tail` log is a structured JSON object:
 }
 ```
 
-By piping the output to tools like [`jq` ↗](https://stedolan.github.io/jq/), you can query and manipulate the requests to look for specific information:
+By piping the output to tools like [`jq` ↗︎](https://stedolan.github.io/jq/), you can query and manipulate the requests to look for specific information:
 
 ```sh
 npx wrangler tail | jq .event.request.url

@@ -18,12 +18,12 @@ Some AI providers support real-time, low-latency interactions over WebSockets. A
 
 ## Supported Providers
 
-- [OpenAI ↗](https://platform.openai.com/docs/guides/realtime-websocket)
-- [Google AI Studio ↗](https://ai.google.dev/gemini-api/docs/multimodal-live)
-- [Cartesia ↗](https://docs.cartesia.ai/api-reference/tts/tts)
-- [ElevenLabs ↗](https://elevenlabs.io/docs/conversational-ai/api-reference/conversational-ai/websocket)
-- [Fal AI ↗](https://docs.fal.ai/model-apis/model-endpoints/websockets)
-- [Deepgram (Workers AI) ↗](https://developers.cloudflare.com/workers-ai/models/?authors=deepgram)
+- [OpenAI ↗︎](https://platform.openai.com/docs/guides/realtime-websocket)
+- [Google AI Studio ↗︎](https://ai.google.dev/gemini-api/docs/multimodal-live)
+- [Cartesia ↗︎](https://docs.cartesia.ai/api-reference/tts/tts)
+- [ElevenLabs ↗︎](https://elevenlabs.io/docs/conversational-ai/api-reference/conversational-ai/websocket)
+- [Fal AI ↗︎](https://docs.fal.ai/model-apis/model-endpoints/websockets)
+- [Deepgram (Workers AI) ↗︎](https://developers.cloudflare.com/workers-ai/models/?authors=deepgram)
 
 ## Authentication
 
@@ -172,7 +172,7 @@ ws.send(
 );
 ```
 
-For more information on Fal AI's WebSocket API, see their [HTTP over WebSocket documentation ↗](https://docs.fal.ai/model-apis/model-endpoints/websockets).
+For more information on Fal AI's WebSocket API, see their [HTTP over WebSocket documentation ↗︎](https://docs.fal.ai/model-apis/model-endpoints/websockets).
 
 ### Deepgram (Workers AI)
 

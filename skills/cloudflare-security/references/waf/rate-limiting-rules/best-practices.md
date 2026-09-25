@@ -98,7 +98,7 @@ The following example rule will track the rate of requests to the `/login` endpo
 
 ## Protecting against credential stuffing
 
-A typical use case of rate limiting is to protect a login endpoint against attacks such as [credential stuffing ↗](https://www.cloudflare.com/learning/bots/what-is-credential-stuffing/). The following example contains three different rate limiting rules with increasing penalties to manage clients making too many requests.
+A typical use case of rate limiting is to protect a login endpoint against attacks such as [credential stuffing ↗︎](https://www.cloudflare.com/learning/bots/what-is-credential-stuffing/). The following example contains three different rate limiting rules with increasing penalties to manage clients making too many requests.
 
 **Rule #1**
 
@@ -189,7 +189,7 @@ If your OTP endpoint returns `200` for both valid and invalid codes (with the re
 
 ## Limiting the number of operations
 
-You can use rate limiting to limit the number of operations performed by a client. The exact rule providing this protection will depend on your application. The following examples address [content scraping ↗](https://www.cloudflare.com/learning/bots/what-is-content-scraping/) via query string parameters or JSON body.
+You can use rate limiting to limit the number of operations performed by a client. The exact rule providing this protection will depend on your application. The following examples address [content scraping ↗︎](https://www.cloudflare.com/learning/bots/what-is-content-scraping/) via query string parameters or JSON body.
 
 ### Prevent content scraping (via query string)
 
@@ -401,7 +401,7 @@ You could also combine Path with the `x-api-key` header (or IP, if you do not ha
 
 Preventing server overload for GraphQL APIs can be different from preventing overload for RESTful APIs. One of the biggest challenges posed by applications built on GraphQL is that a single path manages all queries to the server, and every request is usually a `POST` operation. This prevents different rate limits for different API use cases based on the HTTP method and URI path.
 
-However, instead of using the method and path like a RESTful API, the purpose of the request is usually embedded in the body, which has information on what data the client wants to fetch or mutate (according to [GraphQL's terminology ↗](https://graphql.org/learn/queries/) for server-side data modification), along with any additional data required to carry out the action.
+However, instead of using the method and path like a RESTful API, the purpose of the request is usually embedded in the body, which has information on what data the client wants to fetch or mutate (according to [GraphQL's terminology ↗︎](https://graphql.org/learn/queries/) for server-side data modification), along with any additional data required to carry out the action.
 
 To prevent server overload, consider the following approaches:
 
@@ -468,7 +468,7 @@ When the origin server processes a request, it adds a `score` HTTP header to the
 
 API Shield customers can use GraphQL malicious query protection to protect their GraphQL APIs. GraphQL malicious query protection scans your GraphQL traffic for queries that could overload your origin and result in a denial of service. You can build rules that limit the query depth and size of incoming GraphQL queries in order to block suspiciously large or complex queries.
 
-Refer to [API Shield documentation ↗](https://developers.cloudflare.com/api-shield/security/graphql-protection/) for more information on GraphQL malicious query protection.
+Refer to [API Shield documentation ↗︎](https://developers.cloudflare.com/api-shield/security/graphql-protection/) for more information on GraphQL malicious query protection.
 
 ## Footnotes
 

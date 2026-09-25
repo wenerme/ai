@@ -22,7 +22,7 @@ This error indicates that the SSL handshake between Cloudflare and the origin we
 
 Error `525` occurs when these two conditions are true:
 
-- The [SSL handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/) fails between Cloudflare and the origin web server.
+- The [SSL handshake ↗︎](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/) fails between Cloudflare and the origin web server.
 - [*Full* or *Full (Strict)*](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes) **SSL** is set in the **Overview** tab of your Cloudflare **SSL/TLS** app.
 
 Note
@@ -40,7 +40,7 @@ Contact your hosting provider to exclude the following common causes at your ori
 
 Note
 
-If `525` errors occur intermittently, review the origin web server error logs to determine the cause. Configure Apache to [log mod\_ssl errors ↗](https://cwiki.apache.org/confluence/display/HTTPD/DebuggingSSLProblems#Enable_SSL_logging). Also, nginx includes SSL errors in its standard error log, but may possibly require [an increased log level ↗](https://docs.nginx.com/nginx/admin-guide/monitoring/logging/).
+If `525` errors occur intermittently, review the origin web server error logs to determine the cause. Configure Apache to [log mod\_ssl errors ↗︎](https://cwiki.apache.org/confluence/display/HTTPD/DebuggingSSLProblems#Enable_SSL_logging). Also, nginx includes SSL errors in its standard error log, but may possibly require [an increased log level ↗︎](https://docs.nginx.com/nginx/admin-guide/monitoring/logging/).
 
 - Verify that a certificate is installed on your origin server. For details on running tests, refer to [Troubleshoot requests with curl](https://developers.cloudflare.com/support/troubleshooting/general-troubleshooting/gathering-information-for-troubleshooting-sites/#troubleshoot-requests-with-curl). If no certificate is installed, you can generate and install a free [Cloudflare origin CA certificate](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca) to encrypt traffic between Cloudflare and your origin web server.
 - [Review the cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/) used by your server to ensure they are compatible with Cloudflare.

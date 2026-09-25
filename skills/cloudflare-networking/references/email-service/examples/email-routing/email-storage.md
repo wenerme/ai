@@ -20,7 +20,7 @@ Store and process incoming emails with comprehensive storage, queue processing, 
 
 ## Store emails in KV
 
-Store emails in a KV namespace for later processing. This example uses [`mimetext` ↗](https://www.npmjs.com/package/mimetext) to build replies, which requires the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
+Store emails in a KV namespace for later processing. This example uses [`mimetext` ↗︎](https://www.npmjs.com/package/mimetext) to build replies, which requires the [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) compatibility flag.
 
 ```typescript
 import { EmailMessage } from "cloudflare:email";

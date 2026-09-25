@@ -16,7 +16,7 @@ Last updated Oct 13, 2025|Copy as Markdown| [View as Markdown](https://developer
 
 In part 2, Kristian expands upon the existing environment built in part 1, by showing you how to integrate new AI models and introduce new parameters that allow you to customize how images are generated.
 
-Refer to the AI Image Playground [GitHub repository ↗](https://github.com/kristianfreeman/workers-ai-image-playground) to follow along locally.
+Refer to the AI Image Playground [GitHub repository ↗︎](https://github.com/kristianfreeman/workers-ai-image-playground) to follow along locally.
 
 <details>
 

@@ -26,7 +26,7 @@ To prevent issues and simplify the advertisement process during an attack scenar
 You can avoid latency and the possibility of dropped routes by enabling prefix advertisement from Cloudflare before you withdraw the advertisement from your data center.
 
 1. Refer to [configure dynamic advertisement](#configure-dynamic-advertisement). This operation requires your account ID, prefix IDs, and API key.
-2. Verify the advertisement using a looking glass of your choice, such as [Hurricane Electric Internet Services ↗](https://lg.he.net/). Use the Cloudflare ASN ( `13335`) to track the advertisement route.
+2. Verify the advertisement using a looking glass of your choice, such as [Hurricane Electric Internet Services ↗︎](https://lg.he.net/). Use the Cloudflare ASN ( `13335`) to track the advertisement route.
 3. Remove the prefix advertisement that originates from your data center.
 
 Note
@@ -40,7 +40,7 @@ Enablement takes approximately five to seven minutes.
 ## Disable or withdraw prefix advertisement
 
 1. Add the prefix advertisement to your data center.
-2. (Optional) Verify the advertisement using a looking glass of your choice, such as [Hurricane Electric Internet Services ↗](https://lg.he.net/).
+2. (Optional) Verify the advertisement using a looking glass of your choice, such as [Hurricane Electric Internet Services ↗︎](https://lg.he.net/).
 3. Refer to [configure dynamic advertisement](#configure-dynamic-advertisement). This operation requires your account ID, prefix IDs, and API key.
 
 Disablement takes approximately 15 minutes.
@@ -49,7 +49,7 @@ Disablement takes approximately 15 minutes.
 
 ### Via the Cloudflare dashboard
 
-1. Log in to your [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log in to your [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **IP Addresses** > **BYOIP Prefixes**.
 3. Select **Edit** at the end of the entry.
 4. From **Edit IP Prefixes**, select **Advertised** or **Withdrawn** under **Status**.
@@ -65,7 +65,7 @@ Most dynamic advertisement operations require that you supply the Cloudflare ID 
 
 ## Obtain prefix IDs
 
-1. Log in to your [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log in to your [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **IP Addresses** > **BYOIP Prefixes**.
 3. Find the CIDR for which you want the prefix ID, and select the arrow next to it.
 4. Under **Prefix ID**, select **Copy** to add the value to your clipboard.

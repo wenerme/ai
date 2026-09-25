@@ -32,7 +32,7 @@ For the GitHub integration to function, Cloudflare CASB requires the following G
 | Metadata | `Read-only` | View metadata surrounding an organization's assets, excluding sensitive private repository information. |
 | Organization administration | `Read-only` | View information on organization settings |
 
-These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [GitHub App permissions reference ↗](https://docs.github.com/en/rest/overview/permissions-required-for-github-apps).
+These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [GitHub App permissions reference ↗︎](https://docs.github.com/en/rest/overview/permissions-required-for-github-apps).
 
 ## Security findings
 
@@ -53,7 +53,7 @@ To stay up-to-date with new CASB findings as they are added, bookmark this page 
 | GitHub: Organization repository has default WRITE permission | `fc074da0-1e1c-4982-8673-0852d70bf80c` | Medium | A repository's default write protection settings were not changed. |
 | GitHub: Repository not updated in 12+ months | `68b6ef6d-7e00-4761-b3f1-fcf323dc9c26` | Medium | No changes were made to a repository in at least a year. |
 
-Learn more about [GitHub branch protection rules ↗](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule).
+Learn more about [GitHub branch protection rules ↗︎](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/managing-a-branch-protection-rule).
 
 ### User accounts
 

@@ -29,7 +29,7 @@ If your domain uses a [partial (`CNAME`) setup](https://developers.cloudflare.co
 
 ## 1. Add your application to Access
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **Self-hosted and private**.
 4. Select **Add public hostname**.
@@ -93,7 +93,7 @@ At your external DNS provider, create a CNAME record with the following values:
 
 Note
 
-The zone apex (for example, `example.com`) cannot use a CNAME record due to [DNS specification restrictions ↗](https://datatracker.ietf.org/doc/html/rfc1912#section-2.4). Some DNS providers work around this with [CNAME flattening](https://developers.cloudflare.com/dns/zone-setups/partial-setup/#cname-flattening), which resolves the CNAME at the provider level. If your provider does not support CNAME flattening, use a subdomain instead.
+The zone apex (for example, `example.com`) cannot use a CNAME record due to [DNS specification restrictions ↗︎](https://datatracker.ietf.org/doc/html/rfc1912#section-2.4). Some DNS providers work around this with [CNAME flattening](https://developers.cloudflare.com/dns/zone-setups/partial-setup/#cname-flattening), which resolves the CNAME at the provider level. If your provider does not support CNAME flattening, use a subdomain instead.
 
 ## Product compatibility
 

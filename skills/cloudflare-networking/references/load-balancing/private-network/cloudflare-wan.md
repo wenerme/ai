@@ -39,7 +39,7 @@ Pools can be created using either the Cloudflare dashboard or the API. Refer to 
 3. On the next step you can choose to associate this load balancer with either:
 
 - A CGNAT IP from the Cloudflare range or
-- A custom [RFC1918 address ↗](https://datatracker.ietf.org/doc/html/rfc1918).
+- A custom [RFC1918 address ↗︎](https://datatracker.ietf.org/doc/html/rfc1918).
 
 4. Add a descriptive name to identify your Load Balancer.
 5. Proceed through the setup.

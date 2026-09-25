@@ -67,7 +67,7 @@ With Code Mode, generated code runs in a sandbox. Calls from that code cross the
 
 ## Connect external tools with MCP
 
-The [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io/introduction) standardizes how AI applications discover and invoke externally hosted tools. MCP describes the source and transport of a tool, not how the model must invoke it.
+The [Model Context Protocol (MCP) ↗︎](https://modelcontextprotocol.io/introduction) standardizes how AI applications discover and invoke externally hosted tools. MCP describes the source and transport of a tool, not how the model must invoke it.
 
 An Agent can expose MCP tools through either model interface:
 

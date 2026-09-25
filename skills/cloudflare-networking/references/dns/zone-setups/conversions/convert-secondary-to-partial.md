@@ -55,7 +55,7 @@ The <code>CNAME</code> record for <code>www.example.com</code> would be:
 
 1. Back at your Cloudflare zone, confirm that you have all the `A`, `AAAA`, or `CNAME` [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) needed for the hostnames you pointed to `{your-hostname}.cdn.cloudflare.net` in the previous step. You can also delete any DNS records that have a different type, as they will no longer resolve once you convert your zone to a CNAME setup (partial).
 2. Use the [Edit Zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) with `type` set to `partial` to convert the zone type. Existing DNS records will not be affected.
-3. On the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, get the **Verification TXT Record** and add it at your authoritative DNS provider.<details><summary>
+3. On the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, get the **Verification TXT Record** and add it at your authoritative DNS provider.<details><summary>
 
    Example verification record</summary>
 
@@ -67,7 +67,7 @@ A verification record for <code>sub.example.com</code> might be:
 
    If your authoritative DNS provider automatically appends DNS record <code>name</code> fields with your domain, make sure to only insert <code>cloudflare-verify</code> as the record name. Otherwise, it may result in an incorrect record name, such as <code>cloudflare-verify.sub.example.com.sub.example.com</code>.
 
-   After creating the record, you can use this <a href="https://digwebinterface.com/?type=TXT&amp;ns=auth&amp;nameservers=">Dig Web Interface link ↗</a> to search (<code>dig</code>) for <code>cloudflare-verify.&lt;YOUR DOMAIN&gt;</code> and validate if it is working.</details>
+   After creating the record, you can use this <a href="https://digwebinterface.com/?type=TXT&amp;ns=auth&amp;nameservers=">Dig Web Interface link ↗︎</a> to search (<code>dig</code>) for <code>cloudflare-verify.&lt;YOUR DOMAIN&gt;</code> and validate if it is working.</details>
 
 Note
 

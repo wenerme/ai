@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/send-emails-with-postmark/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this tutorial, you will learn how to send transactional emails from Workers using [Postmark ↗](https://postmarkapp.com/). At the end of this tutorial, you’ll be able to:
+In this tutorial, you will learn how to send transactional emails from Workers using [Postmark ↗︎](https://postmarkapp.com/). At the end of this tutorial, you’ll be able to:
 
 - Create a Worker to send emails.
 - Sign up and add a Cloudflare domain to Postmark.
@@ -25,10 +25,10 @@ In this tutorial, you will learn how to send transactional emails from Workers u
 
 To continue with this tutorial, you’ll need:
 
-- A  [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages), if you don’t already have one.
+- A  [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages), if you don’t already have one.
 - A [registered](https://developers.cloudflare.com/registrar/get-started/register-domain/) domain.
-- Installed [npm ↗](https://docs.npmjs.com/getting-started).
-- A [Postmark account ↗](https://account.postmarkapp.com/sign_up).
+- Installed [npm ↗︎](https://docs.npmjs.com/getting-started).
+- A [Postmark account ↗︎](https://account.postmarkapp.com/sign_up).
 
 ## Create a Worker project
 
@@ -56,7 +56,7 @@ export default {
 
 ## Add your domain to Postmark
 
-If you don’t already have a Postmark account, you can sign up for a [free account here ↗](https://account.postmarkapp.com/sign_up). After signing up, check your inbox for a link to confirm your sender signature. This verifies and enables you to send emails from your registered email address.
+If you don’t already have a Postmark account, you can sign up for a [free account here ↗︎](https://account.postmarkapp.com/sign_up). After signing up, check your inbox for a link to confirm your sender signature. This verifies and enables you to send emails from your registered email address.
 
 To enable email sending from other addresses on your domain, navigate to `Sender Signatures` on the Postmark dashboard, `Add Domain or Signature` > `Add Domain`, then type in your domain and click on `Verify Domain`.
 
@@ -80,7 +80,7 @@ The final step is putting it all together in a Worker. In your Worker, make a po
 
 Note
 
-[Postmark’s JavaScript library ↗](https://www.npmjs.com/package/postmark) is currently not supported on Workers. Use the [email API ↗](https://postmarkapp.com/developer/user-guide/send-email-with-api) instead.
+[Postmark’s JavaScript library ↗︎](https://www.npmjs.com/package/postmark) is currently not supported on Workers. Use the [email API ↗︎](https://postmarkapp.com/developer/user-guide/send-email-with-api) instead.
 
 ```jsx
 export default {
@@ -102,7 +102,7 @@ export default {
 };
 ```
 
-To test your code locally, run the following command and navigate to [http://localhost:8787/ ↗](http://localhost:8787/) in a browser:
+To test your code locally, run the following command and navigate to [http://localhost:8787/ ↗︎](http://localhost:8787/) in a browser:
 
 ```sh
 npm start

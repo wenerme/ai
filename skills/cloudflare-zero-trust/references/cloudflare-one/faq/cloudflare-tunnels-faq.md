@@ -18,7 +18,7 @@ Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## ​Can I create a Tunnel for an apex domain?
 
-Yes. With [Named Tunnels ↗](https://blog.cloudflare.com/argo-tunnels-that-live-forever/) you can create a CNAME at the apex that points to the named tunnel.
+Yes. With [Named Tunnels ↗︎](https://blog.cloudflare.com/argo-tunnels-that-live-forever/) you can create a CNAME at the apex that points to the named tunnel.
 
 ## ​Does Cloudflare Tunnel support Websockets?
 
@@ -65,7 +65,7 @@ If your server is correctly locked down, you will see:
 
 It depends on how you route the traffic.
 
-Public hostname routes make applications available on the Internet through Cloudflare's reverse proxy. On Free, Pro, and Business plans, the [service-specific terms ↗](https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-free-pro-or-business) require you to use a specific paid service to serve video and other large files.
+Public hostname routes make applications available on the Internet through Cloudflare's reverse proxy. On Free, Pro, and Business plans, the [service-specific terms ↗︎](https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-free-pro-or-business) require you to use a specific paid service to serve video and other large files.
 
 Refer to [Delivering videos with Cloudflare](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/) for available options, such as [Stream](https://developers.cloudflare.com/stream/).
 
@@ -96,7 +96,7 @@ No. You cannot undo a tunnel deletion. If the tunnel was locally-managed, its [`
 Before contacting the Cloudflare support team:
 
 1. Take note of any specific error messages and/or problematic behaviors.
-2. Make sure that `cloudflared` is updated to the [latest version ↗](https://github.com/cloudflare/cloudflared).
+2. Make sure that `cloudflared` is updated to the [latest version ↗︎](https://github.com/cloudflare/cloudflared).
 3. Gather any relevant error/access logs from your server.
 4. If needed set [`--loglevel`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/run-parameters/#loglevel) to `debug`, so the Cloudflare support team can get more info from the `cloudflared.log` file.
 5. Include your [Cloudflare Tunnel diagnostic logs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/troubleshoot-tunnels/diag-logs/) ( `cloudflared-diag-YYYY-MM-DDThh-mm-ss.zip`).

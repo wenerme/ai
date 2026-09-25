@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/rust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Workers provides support for Rust via the [`workers-rs` crate ↗](https://github.com/cloudflare/workers-rs), which makes [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis) and [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to developer platform products, such as [Workers KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [R2](https://developers.cloudflare.com/r2/), and [Queues](https://developers.cloudflare.com/queues/), available directly from your Rust code.
+Cloudflare Workers provides support for Rust via the [`workers-rs` crate ↗︎](https://github.com/cloudflare/workers-rs), which makes [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis) and [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to developer platform products, such as [Workers KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [R2](https://developers.cloudflare.com/r2/), and [Queues](https://developers.cloudflare.com/queues/), available directly from your Rust code.
 
 By following this guide, you will learn how to build a Worker entirely in the Rust programming language.
 
@@ -22,8 +22,8 @@ By following this guide, you will learn how to build a Worker entirely in the Ru
 
 Before starting this guide, make sure you have:
 
-- A recent version of [`Rust` ↗](https://rustup.rs/)
-- [`npm` ↗](https://docs.npmjs.com/getting-started)
+- A recent version of [`Rust` ↗︎](https://rustup.rs/)
+- [`npm` ↗︎](https://docs.npmjs.com/getting-started)
 - The Rust `wasm32-unknown-unknown` toolchain:
 
 ```sh
@@ -46,7 +46,7 @@ cargo generate cloudflare/workers-rs
 
 Your project will be created in a new directory that you named, in which you will find the following files and folders:
 
-- `Cargo.toml` - The standard project configuration file for Rust's [`Cargo` ↗](https://doc.rust-lang.org/cargo/) package manager. The template pre-populates some best-practice settings for building for Wasm on Workers.
+- `Cargo.toml` - The standard project configuration file for Rust's [`Cargo` ↗︎](https://doc.rust-lang.org/cargo/) package manager. The template pre-populates some best-practice settings for building for Wasm on Workers.
 - `wrangler.toml` - Wrangler configuration, pre-populated with a custom build command to invoke `worker-build` (Refer to [Wrangler Bundling](https://developers.cloudflare.com/workers/languages/rust/#bundling-worker-build)).
 - `src` - Rust source directory, pre-populated with Hello World Worker.
 
@@ -64,7 +64,7 @@ Note
 
 If you have issues with this step or you do not have access to a browser interface, refer to the [`wrangler login`](https://developers.cloudflare.com/workers/wrangler/commands/general/#login) documentation for more information.
 
-Go to [http://localhost:8787 ↗](http://localhost:8787) to review your Worker running. Any changes you make to your code will trigger a rebuild, and reloading the page will show you the up-to-date output of your Worker.
+Go to [http://localhost:8787 ↗︎](http://localhost:8787) to review your Worker running. Any changes you make to your code will trigger a rebuild, and reloading the page will show you the up-to-date output of your Worker.
 
 ## 3. Write your Worker code
 
@@ -88,7 +88,7 @@ There is some counterintuitive behavior going on here:
 
 ### Related runtime APIs
 
-`workers-rs` provides a runtime API which closely matches Worker's JavaScript API, and enables integration with Worker's platform features. For detailed documentation of the API, refer to [`docs.rs/worker` ↗](https://docs.rs/worker/latest/worker/).
+`workers-rs` provides a runtime API which closely matches Worker's JavaScript API, and enables integration with Worker's platform features. For detailed documentation of the API, refer to [`docs.rs/worker` ↗︎](https://docs.rs/worker/latest/worker/).
 
 #### `event` macro
 
@@ -96,47 +96,47 @@ This macro allows you to define entrypoints to your Worker. The `event` macro su
 
 - `fetch` - Invoked by an incoming HTTP request.
 - `scheduled` - Invoked by [`Cron Triggers`](https://developers.cloudflare.com/workers/configuration/cron-triggers/).
-- `queue` - Invoked by incoming message batches from [Queues](https://developers.cloudflare.com/queues/) (Requires `queue` feature in `Cargo.toml`, refer to the [`workers-rs` GitHub repository and `queues` feature flag ↗](https://github.com/cloudflare/workers-rs#queues)).
+- `queue` - Invoked by incoming message batches from [Queues](https://developers.cloudflare.com/queues/) (Requires `queue` feature in `Cargo.toml`, refer to the [`workers-rs` GitHub repository and `queues` feature flag ↗︎](https://github.com/cloudflare/workers-rs#queues)).
 - `start` - Invoked when the Worker is first launched (such as, to install panic hooks).
 
 #### `fetch` parameters
 
 The `fetch` handler provides three arguments which match the JavaScript API:
 
-1. **[`Request` ↗](https://docs.rs/worker/latest/worker/struct.Request.html)**
+1. **[`Request` ↗︎](https://docs.rs/worker/latest/worker/struct.Request.html)**
 
-An object representing the incoming request. This includes methods for accessing headers, method, path, Cloudflare properties, and body (with support for asynchronous streaming and JSON deserialization with [Serde ↗](https://serde.rs/)).
+An object representing the incoming request. This includes methods for accessing headers, method, path, Cloudflare properties, and body (with support for asynchronous streaming and JSON deserialization with [Serde ↗︎](https://serde.rs/)).
 
-2. **[`Env` ↗](https://docs.rs/worker/latest/worker/struct.Env.html)**
+2. **[`Env` ↗︎](https://docs.rs/worker/latest/worker/struct.Env.html)**
 
 Provides access to Worker [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/).
 
-- [`Secret` ↗](https://docs.rs/worker/latest/worker/struct.Secret.html) - Secret value configured in Cloudflare dashboard or using `wrangler secret put`.
-- [`Var` ↗](https://docs.rs/worker/latest/worker/type.Var.html) - Environment variable defined in `wrangler.toml`.
-- [`KvStore` ↗](https://docs.rs/worker/latest/worker/kv/struct.KvStore.html) - Workers [KV](https://developers.cloudflare.com/kv/api/) namespace binding.
-- [`ObjectNamespace` ↗](https://docs.rs/worker/latest/worker/durable/struct.ObjectNamespace.html) - [Durable Object](https://developers.cloudflare.com/durable-objects/) binding.
-- [`Fetcher` ↗](https://docs.rs/worker/latest/worker/struct.Fetcher.html) - [Service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) to another Worker.
-- [`Bucket` ↗](https://docs.rs/worker/latest/worker/struct.Bucket.html) - [R2](https://developers.cloudflare.com/r2/) Bucket binding.
-- [`D1Database` ↗](https://docs.rs/worker/latest/worker/d1/struct.D1Database.html) - [D1](https://developers.cloudflare.com/d1/) database binding.
-- [`Queue` ↗](https://docs.rs/worker/latest/worker/struct.Queue.html) - [Queues](https://developers.cloudflare.com/queues/) producer binding.
-- [`Ai` ↗](https://docs.rs/worker/latest/worker/struct.Ai.html) - [Workers AI](https://developers.cloudflare.com/workers-ai/) binding.
-- [`Hyperdrive` ↗](https://docs.rs/worker/latest/worker/struct.Hyperdrive.html) - [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) binding.
-- [`AnalyticsEngineDataset` ↗](https://docs.rs/worker/latest/worker/struct.AnalyticsEngineDataset.html) - [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) binding.
-- [`DynamicDispatcher` ↗](https://docs.rs/worker/latest/worker/struct.DynamicDispatcher.html) - [Dynamic Dispatch](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/) binding.
-- [`SecretStore` ↗](https://docs.rs/worker/latest/worker/struct.SecretStore.html) - [Secrets Store](https://developers.cloudflare.com/secrets-store/) binding.
-- [`RateLimiter` ↗](https://docs.rs/worker/latest/worker/struct.RateLimiter.html) - [Rate Limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/) binding.
+- [`Secret` ↗︎](https://docs.rs/worker/latest/worker/struct.Secret.html) - Secret value configured in Cloudflare dashboard or using `wrangler secret put`.
+- [`Var` ↗︎](https://docs.rs/worker/latest/worker/type.Var.html) - Environment variable defined in `wrangler.toml`.
+- [`KvStore` ↗︎](https://docs.rs/worker/latest/worker/kv/struct.KvStore.html) - Workers [KV](https://developers.cloudflare.com/kv/api/) namespace binding.
+- [`ObjectNamespace` ↗︎](https://docs.rs/worker/latest/worker/durable/struct.ObjectNamespace.html) - [Durable Object](https://developers.cloudflare.com/durable-objects/) binding.
+- [`Fetcher` ↗︎](https://docs.rs/worker/latest/worker/struct.Fetcher.html) - [Service binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) to another Worker.
+- [`Bucket` ↗︎](https://docs.rs/worker/latest/worker/struct.Bucket.html) - [R2](https://developers.cloudflare.com/r2/) Bucket binding.
+- [`D1Database` ↗︎](https://docs.rs/worker/latest/worker/d1/struct.D1Database.html) - [D1](https://developers.cloudflare.com/d1/) database binding.
+- [`Queue` ↗︎](https://docs.rs/worker/latest/worker/struct.Queue.html) - [Queues](https://developers.cloudflare.com/queues/) producer binding.
+- [`Ai` ↗︎](https://docs.rs/worker/latest/worker/struct.Ai.html) - [Workers AI](https://developers.cloudflare.com/workers-ai/) binding.
+- [`Hyperdrive` ↗︎](https://docs.rs/worker/latest/worker/struct.Hyperdrive.html) - [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) binding.
+- [`AnalyticsEngineDataset` ↗︎](https://docs.rs/worker/latest/worker/struct.AnalyticsEngineDataset.html) - [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) binding.
+- [`DynamicDispatcher` ↗︎](https://docs.rs/worker/latest/worker/struct.DynamicDispatcher.html) - [Dynamic Dispatch](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/configuration/dynamic-dispatch/) binding.
+- [`SecretStore` ↗︎](https://docs.rs/worker/latest/worker/struct.SecretStore.html) - [Secrets Store](https://developers.cloudflare.com/secrets-store/) binding.
+- [`RateLimiter` ↗︎](https://docs.rs/worker/latest/worker/struct.RateLimiter.html) - [Rate Limiting](https://developers.cloudflare.com/workers/runtime-apis/bindings/rate-limit/) binding.
 
-3. **[`Context` ↗](https://docs.rs/worker/latest/worker/struct.Context.html)**
+3. **[`Context` ↗︎](https://docs.rs/worker/latest/worker/struct.Context.html)**
 
 Provides access to [`waitUntil`](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil) (deferred asynchronous tasks) and [`passThroughOnException`](https://developers.cloudflare.com/workers/runtime-apis/context/#passthroughonexception) (fail open) functionality.
 
-#### [`Response` ↗](https://docs.rs/worker/latest/worker/struct.Response.html)
+#### [`Response` ↗︎](https://docs.rs/worker/latest/worker/struct.Response.html)
 
-The `fetch` handler expects a [`Response` ↗](https://docs.rs/worker/latest/worker/struct.Response.html) return type, which includes support for streaming responses to the client asynchronously. This is also the return type of any subrequests made from your Worker. There are methods for accessing status code and headers, as well as streaming the body asynchronously or deserializing from JSON using [Serde ↗](https://serde.rs/).
+The `fetch` handler expects a [`Response` ↗︎](https://docs.rs/worker/latest/worker/struct.Response.html) return type, which includes support for streaming responses to the client asynchronously. This is also the return type of any subrequests made from your Worker. There are methods for accessing status code and headers, as well as streaming the body asynchronously or deserializing from JSON using [Serde ↗︎](https://serde.rs/).
 
 #### `Router`
 
-Implements convenient [routing API ↗](https://docs.rs/worker/latest/worker/struct.Router.html) to serve multiple paths from one Worker. Refer to the [`Router` example in the `worker-rs` GitHub repository ↗](https://github.com/cloudflare/workers-rs#or-use-the-router).
+Implements convenient [routing API ↗︎](https://docs.rs/worker/latest/worker/struct.Router.html) to serve multiple paths from one Worker. Refer to the [`Router` example in the `worker-rs` GitHub repository ↗︎](https://github.com/cloudflare/workers-rs#or-use-the-router).
 
 ## 4. Deploy your Worker project
 
@@ -162,7 +162,7 @@ Wasm Workers are invoked from a JavaScript entrypoint script which is created au
 
 To access platform features such as bindings, Wasm Workers must be able to access methods from the JavaScript runtime API.
 
-This interoperability is achieved using [`wasm-bindgen` ↗](https://wasm-bindgen.github.io/wasm-bindgen/), which provides the glue code needed to import runtime APIs to, and export event handlers from, the Wasm module. `wasm-bindgen` also provides [`js-sys` ↗](https://docs.rs/js-sys/latest/js_sys/), which implements types for interacting with JavaScript objects. In practice, this is an implementation detail, as `workers-rs`'s API handles conversion to and from JavaScript objects, and interaction with imported JavaScript runtime APIs for you.
+This interoperability is achieved using [`wasm-bindgen` ↗︎](https://wasm-bindgen.github.io/wasm-bindgen/), which provides the glue code needed to import runtime APIs to, and export event handlers from, the Wasm module. `wasm-bindgen` also provides [`js-sys` ↗︎](https://docs.rs/js-sys/latest/js_sys/), which implements types for interacting with JavaScript objects. In practice, this is an implementation detail, as `workers-rs`'s API handles conversion to and from JavaScript objects, and interaction with imported JavaScript runtime APIs for you.
 
 Note
 
@@ -199,11 +199,11 @@ import { myFunction } from "path/to/mylib.js";
 
 ### Async (`wasm-bindgen-futures`)
 
-[`wasm-bindgen-futures` ↗](https://wasm-bindgen.github.io/wasm-bindgen/api/wasm_bindgen_futures/) (part of the `wasm-bindgen` project) provides interoperability between Rust Futures and JavaScript Promises. `workers-rs` invokes the entire event handler function using `spawn_local`, meaning that you can program using async Rust, which is turned into a single JavaScript Promise and run on the JavaScript event loop. Calls to imported JavaScript runtime APIs are automatically converted to Rust Futures that can be invoked from async Rust functions.
+[`wasm-bindgen-futures` ↗︎](https://wasm-bindgen.github.io/wasm-bindgen/api/wasm_bindgen_futures/) (part of the `wasm-bindgen` project) provides interoperability between Rust Futures and JavaScript Promises. `workers-rs` invokes the entire event handler function using `spawn_local`, meaning that you can program using async Rust, which is turned into a single JavaScript Promise and run on the JavaScript event loop. Calls to imported JavaScript runtime APIs are automatically converted to Rust Futures that can be invoked from async Rust functions.
 
 ### Bundling (`worker-build`)
 
-To run the resulting Wasm binary on Workers, `workers-rs` includes a build tool called [`worker-build` ↗](https://github.com/cloudflare/workers-rs/tree/main/worker-build) which:
+To run the resulting Wasm binary on Workers, `workers-rs` includes a build tool called [`worker-build` ↗︎](https://github.com/cloudflare/workers-rs/tree/main/worker-build) which:
 
 1. Creates a JavaScript entrypoint script that properly invokes the module using `wasm-bindgen`'s JavaScript API.
 2. Invokes `web-pack` to minify and bundle the JavaScript code.
@@ -222,11 +222,11 @@ strip = true
 codegen-units = 1
 ```
 
-Finally, `worker-bundle` automatically invokes [`wasm-opt` ↗](https://github.com/brson/wasm-opt-rs) to further optimize binary size before upload.
+Finally, `worker-bundle` automatically invokes [`wasm-opt` ↗︎](https://github.com/brson/wasm-opt-rs) to further optimize binary size before upload.
 
 ## Related resources
 
-- [Rust Wasm Book ↗](https://rustwasm.github.io/docs/book/)
+- [Rust Wasm Book ↗︎](https://rustwasm.github.io/docs/book/)
 
 Was this helpful?
 

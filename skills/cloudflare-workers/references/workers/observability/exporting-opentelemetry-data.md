@@ -33,16 +33,16 @@ Below are common OTLP endpoint formats for popular observability providers. Refe
 | --- | --- | --- |
 | [**Honeycomb**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/) | `https://api.honeycomb.io/v1/traces` | `https://api.honeycomb.io/v1/logs` |
 | [**Grafana Cloud**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/) | `https://otlp-gateway-{region}.grafana.net/otlp/v1/traces` | `https://otlp-gateway-{region}.grafana.net/otlp/v1/logs`\[^1] |
-| [**Firetiger** ↗](https://docs.firetiger.com/ingest/cloudflare-workers.html) | `https://ingest.cloud.firetiger.com/v1/traces` | `https://ingest.cloud.firetiger.com/v1/logs` |
+| [**Firetiger** ↗︎](https://docs.firetiger.com/ingest/cloudflare-workers.html) | `https://ingest.cloud.firetiger.com/v1/traces` | `https://ingest.cloud.firetiger.com/v1/logs` |
 | [**Axiom**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/) | `https://api.axiom.co/v1/traces` | `https://api.axiom.co/v1/logs` |
 | [**Sentry**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/sentry/) | `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/traces` | `https://{HOST}/api/{PROJECT_ID}/integration/otlp/v1/logs` |
-| [**Sematext** ↗](https://sematext.com/docs/guide/managed-otlp-endpoint/) | `https://otlp-receiver.sematext.com` (US), `https://otlp-receiver.eu.sematext.com` (EU) | `https://otlp-receiver.sematext.com` (US), `https://otlp-receiver.eu.sematext.com` (EU) |
+| [**Sematext** ↗︎](https://sematext.com/docs/guide/managed-otlp-endpoint/) | `https://otlp-receiver.sematext.com` (US), `https://otlp-receiver.eu.sematext.com` (EU) | `https://otlp-receiver.sematext.com` (US), `https://otlp-receiver.eu.sematext.com` (EU) |
 | [**PostHog**](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/posthog/) | Not supported | `https://{REGION}.i.posthog.com/i/v1/logs` |
-| [**Datadog** ↗](https://docs.datadoghq.com/opentelemetry/setup/otlp_ingest/managed_platforms/) | `https://cloudflare.integrations.otlp.{DD_SITE}/v1/traces` | `https://cloudflare.integrations.otlp.{DD_SITE}/v1/logs` |
-| [**New Relic** ↗](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/) | `https://otlp.nr-data.net/v1/traces` | `https://otlp.nr-data.net/v1/logs` |
-| [**Splunk Observability** ↗](https://dev.splunk.com/observability/reference/api/ingest_data/latest) | `https://ingest.{REALM}.signalfx.com/v2/trace/otlp` | N/A |
-| [**Splunk Platform** ↗](https://github.com/splunk/splunk-connect-for-otlp) | `http://splunk.internal:4318/v1/traces` | `http://splunk.internal:4318/v1/logs` |
-| [**SigNoz** ↗](https://signoz.io/docs/integrations/outposts/cloudflare-workers/) | `https://ingest.<region>.signoz.cloud:443/v1/traces` | `https://ingest.<region>.signoz.cloud:443/v1/logs` |
+| [**Datadog** ↗︎](https://docs.datadoghq.com/opentelemetry/setup/otlp_ingest/managed_platforms/) | `https://cloudflare.integrations.otlp.{DD_SITE}/v1/traces` | `https://cloudflare.integrations.otlp.{DD_SITE}/v1/logs` |
+| [**New Relic** ↗︎](https://docs.newrelic.com/docs/opentelemetry/best-practices/opentelemetry-otlp/) | `https://otlp.nr-data.net/v1/traces` | `https://otlp.nr-data.net/v1/logs` |
+| [**Splunk Observability** ↗︎](https://dev.splunk.com/observability/reference/api/ingest_data/latest) | `https://ingest.{REALM}.signalfx.com/v2/trace/otlp` | N/A |
+| [**Splunk Platform** ↗︎](https://github.com/splunk/splunk-connect-for-otlp) | `http://splunk.internal:4318/v1/traces` | `http://splunk.internal:4318/v1/logs` |
+| [**SigNoz** ↗︎](https://signoz.io/docs/integrations/outposts/cloudflare-workers/) | `https://ingest.<region>.signoz.cloud:443/v1/traces` | `https://ingest.<region>.signoz.cloud:443/v1/logs` |
 
 Authentication
 
@@ -56,11 +56,11 @@ To start sending data to your destination, you'll need to create a destination i
 
 Protocol
 
-Cloudflare does not support the [Binary format ↗](https://opentelemetry.io/docs/specs/otlp/#binary-protobuf-encoding) for OTLP ingest.
+Cloudflare does not support the [Binary format ↗︎](https://opentelemetry.io/docs/specs/otlp/#binary-protobuf-encoding) for OTLP ingest.
 
 ![Observability Destinations dashboard showing configured destinations for Grafana and Honeycomb with their respective endpoints and status](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1794,height=750,format=webp/_astro/destinations.B-CW_OSI.png)
 
-1. Head to your account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section of the dashboard
+1. Head to your account's [Workers Observability ↗︎](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section of the dashboard
 2. Click add destination.
 3. Configure your destination:
    - **Destination Name** - A descriptive name (e.g., "Grafana-tracing", "Honeycomb-Logs")

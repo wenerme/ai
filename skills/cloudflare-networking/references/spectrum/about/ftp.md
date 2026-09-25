@@ -24,11 +24,11 @@ This feature requires an Enterprise plan. If you would like to upgrade, contact 
 
 FTP leverages two different sockets, one for issuing commands and the other for actual data transfer. The control socket takes care of users logging in and sending commands, and the data socket is where directory listings and files actually get transferred.
 
-There are two ways in which client and server can establish a data socket: active and passive. In active mode, the server connects *back* to the client on a port that they have specified, which can create issues where clients are behind an NAT. The alternative is passive mode, where the server opens an extra port that the client then connects to. For an overview of active versus passive FTP, refer to [Active FTP vs. Passive FTP, a Definitive Explanation ↗](http://slacksite.com/other/ftp.html).
+There are two ways in which client and server can establish a data socket: active and passive. In active mode, the server connects *back* to the client on a port that they have specified, which can create issues where clients are behind an NAT. The alternative is passive mode, where the server opens an extra port that the client then connects to. For an overview of active versus passive FTP, refer to [Active FTP vs. Passive FTP, a Definitive Explanation ↗︎](http://slacksite.com/other/ftp.html).
 
 In passive mode, the FTP server communicates a port that the client should connect to, which is done on the control socket via a PASV command. By default, the FTP server responds with the IP address that it is listening on. This scenario is fine for servers running directly on a public-facing IP but creates issues when a server is behind an NAT, firewall, or Cloudflare Spectrum.
 
-Alternatively, more modern FTP server software supports [FTP extensions ↗](https://tools.ietf.org/html/rfc2428), which introduces the EPSV command that omits the IP address that the client should connect on. Instead, the client connects to the same IP that it connected to for the control pane.
+Alternatively, more modern FTP server software supports [FTP extensions ↗︎](https://tools.ietf.org/html/rfc2428), which introduces the EPSV command that omits the IP address that the client should connect on. Instead, the client connects to the same IP that it connected to for the control pane.
 
 ## What Does and Does Not Work
 
@@ -56,7 +56,7 @@ Additionally, the FTP server needs to be configured to expose the correct IP whe
 
 Some FTP servers also allow dynamic resolving of hostnames. In this case, it is recommended to use the Spectrum app URL instead of the IP.
 
-Example configuration for [vsftpd ↗](https://security.appspot.com/vsftpd.html):
+Example configuration for [vsftpd ↗︎](https://security.appspot.com/vsftpd.html):
 
 > ```bash
 > pasv_min_port=20000
@@ -81,7 +81,7 @@ On the ProFTPD server side use the following example configuration:
 - `AllowForeignAddress`: You can use the option `on` to allow all IPs, but it is recommended to only allow [Cloudflare IP](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/#allow-cloudflare-ip-addresses).
 - `PassivePorts`: `50000-50500`
 
-For more details, refer to the [ProFTPD documentation ↗](http://www.proftpd.org/docs/modules/mod_core.html).
+For more details, refer to the [ProFTPD documentation ↗︎](http://www.proftpd.org/docs/modules/mod_core.html).
 
 ## SFTP
 
@@ -89,9 +89,9 @@ Unlike FTP or FTPS, enabling Spectrum for SFTP does not require extra configurat
 
 ## Microsoft Windows IIS FTP
 
-Refer to the [Microsoft Windows IIS documentation ↗](https://docs.microsoft.com/en-us/iis/publish/using-the-ftp-service/configuring-ftp-firewall-settings-in-iis-7#step-1-configure-the-passive-port-range-for-the-ftp-service) to configure a static data port range and external IP matching your Spectrum application.
+Refer to the [Microsoft Windows IIS documentation ↗︎](https://docs.microsoft.com/en-us/iis/publish/using-the-ftp-service/configuring-ftp-firewall-settings-in-iis-7#step-1-configure-the-passive-port-range-for-the-ftp-service) to configure a static data port range and external IP matching your Spectrum application.
 
-Additionally, IIS requires that the source IP for both, FTP control and data connections are the same. However, when using Spectrum, this requirement may not be met, as both connections often terminate on different servers with their own unique egress IPs. To ensure proper functionality, also set `dataChannelSecurity/matchClientAddressForPasv = false`. Refer to [Microsoft Windows IIS FTP Official Guide ↗](https://learn.microsoft.com/en-us/iis/configuration/system.applicationhost/sites/site/ftpserver/security/datachannelsecurity) for further details.
+Additionally, IIS requires that the source IP for both, FTP control and data connections are the same. However, when using Spectrum, this requirement may not be met, as both connections often terminate on different servers with their own unique egress IPs. To ensure proper functionality, also set `dataChannelSecurity/matchClientAddressForPasv = false`. Refer to [Microsoft Windows IIS FTP Official Guide ↗︎](https://learn.microsoft.com/en-us/iis/configuration/system.applicationhost/sites/site/ftpserver/security/datachannelsecurity) for further details.
 
 Was this helpful?
 

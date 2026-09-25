@@ -114,7 +114,7 @@ The following limits apply to Functions logs:
 
 ## Sourcemaps
 
-If you're debugging an uncaught exception, you might find that the [stack traces ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) in your logs contain line numbers to generated JavaScript files. Using Pages' support for [source maps ↗](https://web.dev/articles/source-maps) you can get stack traces that match with the line numbers and symbols of your original source code.
+If you're debugging an uncaught exception, you might find that the [stack traces ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) in your logs contain line numbers to generated JavaScript files. Using Pages' support for [source maps ↗︎](https://web.dev/articles/source-maps) you can get stack traces that match with the line numbers and symbols of your original source code.
 
 Note
 

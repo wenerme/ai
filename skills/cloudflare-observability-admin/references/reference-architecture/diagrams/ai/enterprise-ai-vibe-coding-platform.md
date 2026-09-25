@@ -16,7 +16,7 @@ Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Introduction
 
-[Vibe coding ↗](https://www.cloudflare.com/learning/ai/ai-vibe-coding/) is a software development practice that uses large language models (LLMs) to generate applications from natural language descriptions. An enterprise AI vibe coding platform is an internal tool where employees describe what they want to build in natural language, and the platform generates working code, shows a live preview, and publishes it, all within an environment the organization controls.
+[Vibe coding ↗︎](https://www.cloudflare.com/learning/ai/ai-vibe-coding/) is a software development practice that uses large language models (LLMs) to generate applications from natural language descriptions. An enterprise AI vibe coding platform is an internal tool where employees describe what they want to build in natural language, and the platform generates working code, shows a live preview, and publishes it, all within an environment the organization controls.
 
 This allows all employees to build internal tools, dashboards, and business applications regardless of previous software development experiences. Without governance, each AI-built application risks uncontrolled data exposure, unapproved LLM provider usage, and code with an unknown security posture.
 

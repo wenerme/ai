@@ -62,11 +62,11 @@ WorkersDeployed
 
 Wrangler handles configuration automatically
 
-In this guide, you will create a new [Solid ↗](https://www.solidjs.com/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)).
+In this guide, you will create a new [Solid ↗︎](https://www.solidjs.com/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)).
 
 ## 1. Set up a new project
 
-Use the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Solid's official setup tool, and provide the option to deploy instantly.
+Use the [`create-cloudflare` ↗︎](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Solid's official setup tool, and provide the option to deploy instantly.
 
 To use `create-cloudflare` to create a new Solid project with Workers Assets, run the following command:
 
@@ -132,7 +132,7 @@ pnpm run deploy
 
 ## Bindings
 
-Your Solid application can be fully integrated with the Cloudflare Developer Platform, in both local development and in production, by using product bindings. The [Solid documentation ↗](https://docs.solidjs.com/reference/server-utilities/get-request-event) provides information about how to access platform primitives, including bindings. Specifically, for Cloudflare, you can use [`getRequestEvent().nativeEvent.context.cloudflare.env` ↗](https://docs.solidjs.com/solid-start/advanced/request-events#nativeevent) to access bindings.
+Your Solid application can be fully integrated with the Cloudflare Developer Platform, in both local development and in production, by using product bindings. The [Solid documentation ↗︎](https://docs.solidjs.com/reference/server-utilities/get-request-event) provides information about how to access platform primitives, including bindings. Specifically, for Cloudflare, you can use [`getRequestEvent().nativeEvent.context.cloudflare.env` ↗︎](https://docs.solidjs.com/solid-start/advanced/request-events#nativeevent) to access bindings.
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 

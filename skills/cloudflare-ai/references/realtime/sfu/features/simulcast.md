@@ -114,7 +114,7 @@ Check the track result before advancing application state. Refer to the [OpenAPI
 
 The `simulcast` object selects a layer and its fallback policy:
 
-- `preferredRid`: The preferred encoding's RID, as [specified by the publisher ↗](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters#encodings).
+- `preferredRid`: The preferred encoding's RID, as [specified by the publisher ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/RTCRtpSender/setParameters#encodings).
 - `priorityOrdering`: Controls how the SFU handles bandwidth constraints.
   - `none`: Keep sending the layer selected by `preferredRid`, even if there is not enough bandwidth.
   - `asciibetical`: Use alphabetical ordering ( `a` to `z`) to determine priority. `a` is most desirable and `z` is least desirable.
@@ -128,7 +128,7 @@ Both `priorityOrdering` and `ridNotAvailable` default to `none`. Neither selects
 
 The [video-room example](https://developers.cloudflare.com/realtime/sfu/examples/video-room/) demonstrates the publication and subscription lifecycle you would extend with simulcast. Use the publisher configuration on this page when adding video encodings.
 
-The [simulcast echo sample ↗](https://github.com/cloudflare/realtime-examples/tree/main/echo-simulcast) is a legacy reference. It places an SFU token in browser code and is not a recommended application starting point. Keep SFU API calls on your backend when adapting the sample.
+The [simulcast echo sample ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/echo-simulcast) is a legacy reference. It places an SFU token in browser code and is not a recommended application starting point. Keep SFU API calls on your backend when adapting the sample.
 
 Was this helpful?
 

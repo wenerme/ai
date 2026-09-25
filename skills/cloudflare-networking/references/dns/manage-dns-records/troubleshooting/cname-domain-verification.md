@@ -27,9 +27,9 @@ Consider the sections below if this is not working correctly for you.
 You may find issues if you have one of the following:
 
 - The CNAME record you created for domain verification is set to [**Proxied**](https://developers.cloudflare.com/dns/proxy-status/).
-- The CNAME record is correctly set to DNS only (not proxied) but, in your [zone settings ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings), [**CNAME flattening for all CNAME records**](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/#for-all-cname-records) is on.
+- The CNAME record is correctly set to DNS only (not proxied) but, in your [zone settings ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings), [**CNAME flattening for all CNAME records**](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/#for-all-cname-records) is on.
 - The CNAME record is correctly set to DNS only (not proxied) but CNAME flattening is set [for that record specifically](https://developers.cloudflare.com/dns/cname-flattening/set-up-cname-flattening/#per-record).
-- An [NS record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-ns-record/) exists, causing a different DNS provider to be authoritative for the subdomain.
+- An [NS record ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-ns-record/) exists, causing a different DNS provider to be authoritative for the subdomain.
 
 ## Solution
 

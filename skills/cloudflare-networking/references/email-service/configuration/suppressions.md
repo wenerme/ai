@@ -37,7 +37,7 @@ Entries created in the dashboard have the `manual` reason. They apply to every s
 
 You can paste addresses or upload `.csv`, `.json`, or `.txt` files. Supported file contents are:
 
-- `.csv` or `.txt`: Put one entry on each line as `<EMAIL_ADDRESS>` or `<EMAIL_ADDRESS>,<EXPIRATION_TIMESTAMP>`. Use an [RFC 3339 ↗](https://datatracker.ietf.org/doc/html/rfc3339) timestamp and omit the header row.
+- `.csv` or `.txt`: Put one entry on each line as `<EMAIL_ADDRESS>` or `<EMAIL_ADDRESS>,<EXPIRATION_TIMESTAMP>`. Use an [RFC 3339 ↗︎](https://datatracker.ietf.org/doc/html/rfc3339) timestamp and omit the header row.
 - `.json`: Use an array of address strings or objects. Each object requires `email` and can include an RFC 3339 `expires_at` timestamp.
 
 1. In **Suppressions**, select **Import**.

@@ -35,7 +35,7 @@ If your manual test fails, troubleshoot the Cloudflare One Client. Cloudflare re
 
 Analytics provide visualizations of [log data](https://developers.cloudflare.com/learning-paths/replace-vpn/build-policies/test-your-first-application/#review-logs). To review Access or Gateway analytics:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Analytics** > **Dashboards**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Analytics** > **Dashboards**.
 2. Select **[Access event analytics](https://developers.cloudflare.com/cloudflare-one/insights/analytics/access/)** for a summary of login events or **[Application Access Report](https://developers.cloudflare.com/cloudflare-one/insights/analytics/application-access/)** for a summary of overall Access Activity.
 3. Select the **HTTP request analytics**, **DNS query analytics** or **Network session analytics** depending on [your Gateway investigation scope](https://developers.cloudflare.com/cloudflare-one/insights/analytics/gateway/).
 
@@ -45,13 +45,13 @@ Analytics provide visualizations of [log data](https://developers.cloudflare.com
 
 To review traffic activity for applications protected by Access:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs**.
 2. Select **Access authentication logs**.
 3. Review the [per-request logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/#per-request-logs) for your application.
 
 To review traffic activity in the [Gateway logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/):
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs**.
 2. Select **HTTP request logs**, **Network logs**, or **DNS query logs** depending on your investigation scope.
 
 Refer to [Troubleshoot Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/troubleshoot-gateway/) to troubleshoot common issues with Gateway egress policies.
@@ -85,7 +85,7 @@ An HTTP test sends a `GET` request from an end-user device to a specific web app
 
 To set up an HTTP test for an application:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Select the **Tests** tab.
 3. Select **Add a Test**.
 4. Fill in the following fields:
@@ -103,10 +103,10 @@ An HTTP test measures the following data:
 
 | Data | Description |
 | --- | --- |
-| Resource fetch time | Total time of all steps of the request, measured from [`startTime` to `responseEnd` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Resource_timing). |
+| Resource fetch time | Total time of all steps of the request, measured from [`startTime` to `responseEnd` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Resource_timing). |
 | Server response time | Round-trip time for the device to receive a response from the target. |
 | DNS response time | Round-trip time for the DNS query to resolve. |
-| HTTP status codes | [Status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status) returned by the target. |
+| HTTP status codes | [Status code ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status) returned by the target. |
 
 ### 2.2. Set up notifications
 

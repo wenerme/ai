@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Session API provides persistent conversation storage for agents, with tree-structured messages (inspired by [Pi ↗](https://pi.dev)), context blocks, compaction, full-text search, and AI-controllable tools. By default, it uses Durable Object SQLite. External Postgres storage is also available for apps that need shared database access, analytics, or cross-Durable Object queries.
+The Session API provides persistent conversation storage for agents, with tree-structured messages (inspired by [Pi ↗︎](https://pi.dev)), context blocks, compaction, full-text search, and AI-controllable tools. By default, it uses Durable Object SQLite. External Postgres storage is also available for apps that need shared database access, analytics, or cross-Durable Object queries.
 
 Experimental
 
@@ -1221,9 +1221,9 @@ By default, storage is in Durable Object SQLite and tables are created lazily on
 
 ## Acknowledgments
 
-- Session's tree-structured messages are inspired by [Pi ↗](https://pi.dev).
-- Context blocks are inspired by [Letta AI memory blocks ↗](https://www.letta.com/blog/memory-blocks).
-- Formatting of blocks is inspired by [Hermes Agent ↗](https://github.com/nousresearch/hermes-agent).
+- Session's tree-structured messages are inspired by [Pi ↗︎](https://pi.dev).
+- Context blocks are inspired by [Letta AI memory blocks ↗︎](https://www.letta.com/blog/memory-blocks).
+- Formatting of blocks is inspired by [Hermes Agent ↗︎](https://github.com/nousresearch/hermes-agent).
 
 ## Related
 

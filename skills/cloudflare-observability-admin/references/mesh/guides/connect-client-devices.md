@@ -53,7 +53,7 @@ nc -vz <MESH-IP> 22
 Test-NetConnection <MESH-IP> -Port 22
 ```
 
-Replace `<MESH-IP>` with the Mesh IP of a node (visible on the [Mesh overview page ↗](https://dash.cloudflare.com/?to=/:account/mesh)) or another enrolled device. Replace port `22` with the port used by your service. You can test HTTP services from a mobile browser. If you turned on the ICMP Gateway proxy, you can also run `ping <MESH-IP>` as a diagnostic check.
+Replace `<MESH-IP>` with the Mesh IP of a node (visible on the [Mesh overview page ↗︎](https://dash.cloudflare.com/?to=/:account/mesh)) or another enrolled device. Replace port `22` with the port used by your service. You can test HTTP services from a mobile browser. If you turned on the ICMP Gateway proxy, you can also run `ping <MESH-IP>` as a diagnostic check.
 
 If the device profile routes `www.cloudflare.com` through WARP, verify the data path:
 

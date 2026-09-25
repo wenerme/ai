@@ -59,7 +59,7 @@ The following table describes the parameters available:
 | sample | - Return only a sample of records - Do not include if returning all records - Value can range from `0.0` (exclusive) to `1.0` (inclusive) - `sample=0.1` means return 10% (1 in 10) of all records - Results are random; therefore, different numbers of results for repeated requests are likely | /logs/received | No |
 | fields | - Comma-separated list of fields to return - If empty, the default list is returned | /logs/received /logs/rayids | No |
 | timestamps | - Format in which timestamp fields will be returned - Value options are: `unixnano` (default), `unix`, `rfc3339` - Timestamps returned as integers for `unix` and `unixnano` and as strings for `rfc3339` | /logs/received /logs/rayids | No |
-| CVE-2021-44228 | - Optional redaction for [CVE-2021-44228 ↗](https://www.cve.org/CVERecord?id=CVE-2021-44228). This option will replace every occurrence of the string `${` with `x{`. For example: `CVE-2021-44228=true` | /logs/received | No |
+| CVE-2021-44228 | - Optional redaction for [CVE-2021-44228 ↗︎](https://www.cve.org/CVERecord?id=CVE-2021-44228). This option will replace every occurrence of the string `${` with `x{`. For example: `CVE-2021-44228=true` | /logs/received | No |
 
 Note
 
@@ -112,7 +112,7 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/logs/received?start=2
 --header "X-Auth-Key: <API_KEY>"
 ```
 
-Refer to [Download jq ↗](https://jqlang.github.io/jq/download/) for more information on obtaining and installing `jq`.
+Refer to [Download jq ↗︎](https://jqlang.github.io/jq/download/) for more information on obtaining and installing `jq`.
 
 Refer to [HTTP request fields](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests) for the currently available fields.
 

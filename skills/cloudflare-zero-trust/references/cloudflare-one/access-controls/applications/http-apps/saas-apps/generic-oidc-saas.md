@@ -29,7 +29,7 @@ Some SaaS applications provide the Redirect URL after you [configure the SSO pro
 
 ## 2. Add your application to Access
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **SaaS application**.
 4. Select your **Application** from the drop-down menu. If your application is not listed, enter a custom name in the **Application** field and select the textbox that appears below.
@@ -37,7 +37,7 @@ Some SaaS applications provide the Redirect URL after you [configure the SSO pro
 6. Select **Add application**.
 7. In **Scopes**, select the user attributes that you want Access to send in the ID token. For more information about configuring OIDC scopes and claims, refer to [OIDC claims](#oidc-claims).
 8. In **Redirect URLs**, enter the callback URL obtained from the SaaS application.
-9. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
+9. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
 10. Copy the following values to input into your SaaS application. Different SaaS applications may require different sets of input values.
 
     | Field | Description |
@@ -73,7 +73,7 @@ Open an incognito browser window and go to the SaaS application's login URL. You
 
 ## OIDC claims
 
-OIDC claims refer to the user identity characteristics that Cloudflare Access shares with your OIDC SaaS application upon successful authentication. An OIDC scope defines a set of OIDC claims. By default, Cloudflare Access passes all [standard claims ↗](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) that are included in the `openid`, `email`, `profile`, and `groups` scopes (if available).
+OIDC claims refer to the user identity characteristics that Cloudflare Access shares with your OIDC SaaS application upon successful authentication. An OIDC scope defines a set of OIDC claims. By default, Cloudflare Access passes all [standard claims ↗︎](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims) that are included in the `openid`, `email`, `profile`, and `groups` scopes (if available).
 
 | Scope | Description |
 | --- | --- |

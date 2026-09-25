@@ -33,7 +33,7 @@ For more information on string syntaxes and escaping, refer to [String values an
 
 ### Why is my regular expression pattern not working?
 
-If you are using a regular expression, it is recommended that you test it with a tool such as [Regular Expressions 101 ↗](https://regex101.com/?flavor=rust&regex=) or [Rustexp ↗](https://rustexp.lpil.uk).
+If you are using a regular expression, it is recommended that you test it with a tool such as [Regular Expressions 101 ↗︎](https://regex101.com/?flavor=rust&regex=) or [Rustexp ↗︎](https://rustexp.lpil.uk).
 
 ### Why are some rules bypassed when I did not create an exception?
 
@@ -48,13 +48,13 @@ Cloudflare may block requests when it detects activity that could be unsafe. Com
 - Security protection against malicious traffic, DDoS attacks, or other threats.
 - Excessive requests in a short time (rate limiting).
 - Bot-like or automated traffic.
-- IP addresses listed on public blocklists, such as [Project Honey Pot ↗](https://projecthoneypot.org/).
+- IP addresses listed on public blocklists, such as [Project Honey Pot ↗︎](https://projecthoneypot.org/).
 
 If you are a site visitor:
 
 - Contact the site owner, providing details of your actions when the block occurred and the Cloudflare Ray ID displayed at the bottom of the error page.
 - Avoid suspicious inputs or automated scripts.
-- Check your IP reputation through [Project Honey Pot ↗](https://projecthoneypot.org/).
+- Check your IP reputation through [Project Honey Pot ↗︎](https://projecthoneypot.org/).
 
 If you are the site owner:
 
@@ -78,9 +78,9 @@ Refer to the [Challenges documentation](https://developers.cloudflare.com/cloudf
 
 #### Bots currently detected
 
-[Cloudflare Radar ↗](https://radar.cloudflare.com/verified-bots) lists a **sample** of known bots that the WAF currently detects. When traffic comes from these bots and others not listed, the `cf.client.bot` field is set to `true`.
+[Cloudflare Radar ↗︎](https://radar.cloudflare.com/verified-bots) lists a **sample** of known bots that the WAF currently detects. When traffic comes from these bots and others not listed, the `cf.client.bot` field is set to `true`.
 
-To submit a friendly bot to be verified, go to the [**Verified bots** ↗](https://radar.cloudflare.com/traffic/verified-bots) page in Cloudflare Radar and select **Add a bot**.
+To submit a friendly bot to be verified, go to the [**Verified bots** ↗︎](https://radar.cloudflare.com/traffic/verified-bots) page in Cloudflare Radar and select **Add a bot**.
 
 For more information on verified bots, refer to [Bots](https://developers.cloudflare.com/bots/concepts/bot/).
 

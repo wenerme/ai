@@ -77,7 +77,7 @@ Once you [create a new hostname](https://developers.cloudflare.com/cloudflare-fo
 
 
 - [**API**](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/): Within the `ssl` object, store the values present in the `validation_records` array (specifically `http_url` and `http_body`).
-- **Dashboard**: When viewing an individual certificate on the [**Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames) page, refer to the values for **Certificate validation request** and **Certificate validation response**.
+- **Dashboard**: When viewing an individual certificate on the [**Custom Hostnames** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames) page, refer to the values for **Certificate validation request** and **Certificate validation response**.
 
 At your origin, make the `http_body` available in a TXT record at the path specified in `http_url`. This path should also be publicly accessible to anyone on the Internet so your CA can access it.
 

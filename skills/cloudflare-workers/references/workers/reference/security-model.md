@@ -22,9 +22,9 @@ To this end, Workers is designed to make it impossible for code to measure its o
 
 While these early design decisions have proven effective, Cloudflare is continuing to add defense-in-depth, including techniques to disrupt attacks by rescheduling Workers to create additional layers of isolation between suspicious Workers and high-value Workers.
 
-The Workers approach is very different from the approach taken by most of the industry. It is resistant to the entire range of [Spectre-style attacks ↗](https://www.cloudflare.com/learning/security/threats/meltdown-spectre/), without requiring special attention paid to each one and without needing to block speculation in general. However, because the Workers approach is different, it requires careful study. Cloudflare is currently working with researchers at Graz University of Technology (TU Graz) to study what has been done. These researchers include some of the people who originally discovered Spectre. Cloudflare will publish the results of this research as they become available.
+The Workers approach is very different from the approach taken by most of the industry. It is resistant to the entire range of [Spectre-style attacks ↗︎](https://www.cloudflare.com/learning/security/threats/meltdown-spectre/), without requiring special attention paid to each one and without needing to block speculation in general. However, because the Workers approach is different, it requires careful study. Cloudflare is currently working with researchers at Graz University of Technology (TU Graz) to study what has been done. These researchers include some of the people who originally discovered Spectre. Cloudflare will publish the results of this research as they become available.
 
-For more details, refer to [this talk ↗](https://www.infoq.com/presentations/cloudflare-v8/) by Kenton Varda, architect of Cloudflare Workers. Spectre is covered near the end.
+For more details, refer to [this talk ↗︎](https://www.infoq.com/presentations/cloudflare-v8/) by Kenton Varda, architect of Cloudflare Workers. Spectre is covered near the end.
 
 ## Architectural overview
 
@@ -164,9 +164,9 @@ Currently, Workers does not allow any access to the local filesystem. Therefore,
 
 But, imagine if Workers did want to support local filesystem access in the future. How can that be done? Workers should not see the whole filesystem. Imagine, though, if each Worker had its own private directory on the filesystem where it can store whatever it wants.
 
-To do this, Workers would use a design based on [capability-based security ↗](https://en.wikipedia.org/wiki/Capability-based_security). Capabilities are a big topic, but in this case, what it would mean is that Cloudflare would give the Worker an object of type `Directory`, representing a directory on the filesystem. This object would have an API that allows creating and opening files and subdirectories, but does not permit traversing up the parent directory. Effectively, each Worker would see its private `Directory` as if it were the root of their own filesystem.
+To do this, Workers would use a design based on [capability-based security ↗︎](https://en.wikipedia.org/wiki/Capability-based_security). Capabilities are a big topic, but in this case, what it would mean is that Cloudflare would give the Worker an object of type `Directory`, representing a directory on the filesystem. This object would have an API that allows creating and opening files and subdirectories, but does not permit traversing up the parent directory. Effectively, each Worker would see its private `Directory` as if it were the root of their own filesystem.
 
-How would such an API be implemented? As described above, the sandbox process cannot access the real filesystem. Instead, file access would be mediated by the supervisor process. The sandbox talks to the supervisor using [Cap’n Proto RPC ↗](https://capnproto.org/rpc.html), a capability-based RPC protocol. (Cap’n Proto is an open source project currently maintained by the Cloudflare Workers team.) This protocol makes it very easy to implement capability-based APIs, so that Cloudflare can strictly limit the sandbox to accessing only the files that belong to the Workers it is running.
+How would such an API be implemented? As described above, the sandbox process cannot access the real filesystem. Instead, file access would be mediated by the supervisor process. The sandbox talks to the supervisor using [Cap’n Proto RPC ↗︎](https://capnproto.org/rpc.html), a capability-based RPC protocol. (Cap’n Proto is an open source project currently maintained by the Cloudflare Workers team.) This protocol makes it very easy to implement capability-based APIs, so that Cloudflare can strictly limit the sandbox to accessing only the files that belong to the Workers it is running.
 
 Now what about network access? Today, Workers are allowed to talk to the rest of the world only via HTTP — both incoming and outgoing. There is no API for other forms of network access, therefore it is prohibited; although, Cloudflare plans to support other protocols in the future.
 
@@ -182,7 +182,7 @@ Workers rely heavily on isolation provided by V8, the JavaScript engine built by
 
 But, what happens after a bug is found and reported? V8 is open source, so fixes for security bugs are developed in the open and released to everyone at the same time. It is important that any patch be rolled out to production as fast as possible, before malicious actors can develop an exploit.
 
-The time between publishing the fix and deploying it is known as the patch gap. Google previously [announced that Chrome’s patch gap had been reduced from 33 days to 15 days ↗](https://www.zdnet.com/article/google-cuts-chrome-patch-gap-in-half-from-33-to-15-days/).
+The time between publishing the fix and deploying it is known as the patch gap. Google previously [announced that Chrome’s patch gap had been reduced from 33 days to 15 days ↗︎](https://www.zdnet.com/article/google-cuts-chrome-patch-gap-in-half-from-33-to-15-days/).
 
 Fortunately, Cloudflare directly controls the machines on which the Workers runtime operates. Nearly the entire build and release process has been automated, so the moment a V8 patch is published, Cloudflare systems automatically build a new release of the Workers runtime and, after one-click sign-off from the necessary (human) reviewers, automatically push that release out to production.
 
@@ -190,13 +190,13 @@ As a result, the Workers patch gap is now under 24 hours. A patch published by V
 
 ## Spectre: Introduction
 
-The V8 team at Google has stated that [V8 itself cannot defend against Spectre ↗](https://arxiv.org/abs/1902.05178). Workers does not need to depend on V8 for this. The Workers environment presents many alternative approaches to mitigating Spectre.
+The V8 team at Google has stated that [V8 itself cannot defend against Spectre ↗︎](https://arxiv.org/abs/1902.05178). Workers does not need to depend on V8 for this. The Workers environment presents many alternative approaches to mitigating Spectre.
 
 ### What is it?
 
 Spectre is a class of attacks in which a malicious program can trick the CPU into speculatively performing computation using data that the program is not supposed to have access to. The CPU eventually realizes the problem and does not allow the program to see the results of the speculative computation. However, the program may be able to derive bits of the secret data by looking at subtle side effects of the computation, such as the effects on the cache.
 
-For more information about Spectre, refer to the [Learning Center page on the topic ↗](https://www.cloudflare.com/learning/security/threats/meltdown-spectre/).
+For more information about Spectre, refer to the [Learning Center page on the topic ↗︎](https://www.cloudflare.com/learning/security/threats/meltdown-spectre/).
 
 ### Why does it matter for Workers?
 
@@ -262,7 +262,7 @@ Workers does not allow our customers to upload native-code binaries to run on th
 
 This, in itself, does not necessarily make Spectre attacks harder. However, this is presented as step 0 because it is fundamental to enabling the following steps.
 
-Accepting native code programs implies being beholden to an existing CPU architecture (typically, x86). In order to execute code with reasonable performance, it is usually necessary to run the code directly on real hardware, severely limiting the host’s control over how that execution plays out. For example, a kernel or hypervisor has no ability to prohibit applications from invoking the `CLFLUSH` instruction, an instruction [which is useful in side channel attacks ↗](https://gruss.cc/files/flushflush.pdf) and almost nothing else.
+Accepting native code programs implies being beholden to an existing CPU architecture (typically, x86). In order to execute code with reasonable performance, it is usually necessary to run the code directly on real hardware, severely limiting the host’s control over how that execution plays out. For example, a kernel or hypervisor has no ability to prohibit applications from invoking the `CLFLUSH` instruction, an instruction [which is useful in side channel attacks ↗︎](https://gruss.cc/files/flushflush.pdf) and almost nothing else.
 
 Moreover, supporting native code typically implies supporting whole existing operating systems and software stacks, which bring with them decades of expectations about how the architecture works under them. For example, x86 CPUs allow a kernel or hypervisor to disable the RDTSC instruction, which reads a high-precision timer. Realistically, though, disabling it will break many programs because they are implemented to use RDTSC any time they want to know the current time.
 

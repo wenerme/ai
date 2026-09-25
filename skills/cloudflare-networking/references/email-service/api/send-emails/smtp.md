@@ -70,10 +70,10 @@ The sender domain (`welcome@yourdomain.com`) must be onboarded for [Email Sendin
 
 ## Authentication
 
-Cloudflare's SMTP endpoint supports two SASL mechanisms, both defined by [RFC 4954 ↗](https://datatracker.ietf.org/doc/html/rfc4954):
+Cloudflare's SMTP endpoint supports two SASL mechanisms, both defined by [RFC 4954 ↗︎](https://datatracker.ietf.org/doc/html/rfc4954):
 
-- `AUTH PLAIN` — preferred. Single round trip, [RFC 4616 ↗](https://datatracker.ietf.org/doc/html/rfc4616).
-- `AUTH LOGIN` — legacy [draft-murchison-sasl-login ↗](https://datatracker.ietf.org/doc/html/draft-murchison-sasl-login-00). Supported for compatibility with older clients.
+- `AUTH PLAIN` — preferred. Single round trip, [RFC 4616 ↗︎](https://datatracker.ietf.org/doc/html/rfc4616).
+- `AUTH LOGIN` — legacy [draft-murchison-sasl-login ↗︎](https://datatracker.ietf.org/doc/html/draft-murchison-sasl-login-00). Supported for compatibility with older clients.
 
 In both cases, the username is the literal string `api_token` and the password is your Cloudflare API token.
 
@@ -140,7 +140,7 @@ Account-wide quotas (daily sending limits, content limits, header limits) are sh
 
 ## Response codes
 
-Cloudflare's SMTP server returns standard [RFC 5321 ↗](https://datatracker.ietf.org/doc/html/rfc5321) reply codes alongside [RFC 3463 ↗](https://datatracker.ietf.org/doc/html/rfc3463) enhanced status codes.
+Cloudflare's SMTP server returns standard [RFC 5321 ↗︎](https://datatracker.ietf.org/doc/html/rfc5321) reply codes alongside [RFC 3463 ↗︎](https://datatracker.ietf.org/doc/html/rfc3463) enhanced status codes.
 
 | Code | Meaning |
 | --- | --- |

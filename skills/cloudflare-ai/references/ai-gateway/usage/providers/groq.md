@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/groq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Groq ↗](https://groq.com/) delivers high-speed processing and low-latency performance.
+[Groq ↗︎](https://groq.com/) delivers high-speed processing and low-latency performance.
 
 ## Endpoint
 
@@ -24,7 +24,7 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq
 
 ## URL structure
 
-When making requests to [Groq ↗](https://groq.com/), replace `https://api.groq.com/openai/v1` in the URL you're currently using with `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq`.
+When making requests to [Groq ↗︎](https://groq.com/), replace `https://api.groq.com/openai/v1` in the URL you're currently using with `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq`.
 
 ## Prerequisites
 
@@ -58,7 +58,7 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/groq/chat/co
 
 ### Use Groq SDK with JavaScript
 
-If using the [`groq-sdk` ↗](https://www.npmjs.com/package/groq-sdk), set your endpoint like this:
+If using the [`groq-sdk` ↗︎](https://www.npmjs.com/package/groq-sdk), set your endpoint like this:
 
 *JavaScriptjs*
 

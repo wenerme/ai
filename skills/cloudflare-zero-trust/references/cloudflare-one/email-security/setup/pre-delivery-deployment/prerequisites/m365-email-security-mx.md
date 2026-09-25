@@ -58,26 +58,26 @@ If you are using Cloudflare for DNS, you can leave the [TTL setting as **Auto**]
 Below is a list with instructions on how to edit MX records for some popular services:
 
 - **Cloudflare**: [Set up email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
-- **GoDaddy**: [Edit an MX Record ↗](https://www.godaddy.com/help/edit-an-mx-record-19235)
-- **AWS**: [Creating records by using the Amazon Route 53 console ↗](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html)
-- **Azure**: [Create DNS records in a custom domain for a web app ↗](https://learn.microsoft.com/en-us/azure/dns/dns-web-sites-custom-domain)
+- **GoDaddy**: [Edit an MX Record ↗︎](https://www.godaddy.com/help/edit-an-mx-record-19235)
+- **AWS**: [Creating records by using the Amazon Route 53 console ↗︎](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html)
+- **Azure**: [Create DNS records in a custom domain for a web app ↗︎](https://learn.microsoft.com/en-us/azure/dns/dns-web-sites-custom-domain)
 
 ## 1. Add Email security IP addresses to Allow List
 
-1. Go to the [Anti-spam policies page ↗](https://security.microsoft.com/antispam) > Select **Edit connection filter policy**.
+1. Go to the [Anti-spam policies page ↗︎](https://security.microsoft.com/antispam) > Select **Edit connection filter policy**.
 2. In **Always allow messages from the following IP addresses or address range**, add IP addresses and CIDR blocks mentioned in the [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/) page.
 3. Select **Save**.
 4. Microsoft recommends disabling SPF Hard fail when an email solution is placed in front of it:
-   - Return to the [Anti-spam option ↗](https://security.microsoft.com/antispam).
+   - Return to the [Anti-spam option ↗︎](https://security.microsoft.com/antispam).
    - Select **Default anti-spam policy**.
-   - Select **[Edit spam threshold and properties ↗](https://learn.microsoft.com/en-us/defender-office-365/anti-spam-bulk-complaint-level-bcl-about)** > **Mark as spam** > **SPF record: hard fail**, and ensure it is set to **Off**.
+   - Select **[Edit spam threshold and properties ↗︎](https://learn.microsoft.com/en-us/defender-office-365/anti-spam-bulk-complaint-level-bcl-about)** > **Mark as spam** > **SPF record: hard fail**, and ensure it is set to **Off**.
 5. Select **Save**.
 
 ## 2. Configure Enhanced Filtering
 
 ### Create an inbound connector
 
-1. [Set up a connector ↗](https://learn.microsoft.com/en-us/exchange/mail-flow-best-practices/use-connectors-to-configure-mail-flow/set-up-connectors-to-route-mail#1-set-up-a-connector-from-your-email-server-to-microsoft-365-or-office-365).
+1. [Set up a connector ↗︎](https://learn.microsoft.com/en-us/exchange/mail-flow-best-practices/use-connectors-to-configure-mail-flow/set-up-connectors-to-route-mail#1-set-up-a-connector-from-your-email-server-to-microsoft-365-or-office-365).
 2. Select **Partner organization** under **Connection from**.
    - Provide a name for the connector:
      - **Name**: `Email security Inbound Connector`
@@ -90,7 +90,7 @@ Below is a list with instructions on how to edit MX records for some popular ser
 
 Now that the inbound connector has been configured, you will need to enable the enhanced filtering configuration of the connector.
 
-1. Go to the [Security admin console ↗](https://security.microsoft.com/homepage), and [enable enhanced filtering ↗](https://learn.microsoft.com/en-us/exchange/mail-flow-best-practices/use-connectors-to-configure-mail-flow/enhanced-filtering-for-connectors#use-the-microsoft-defender-portal-to-configure-enhanced-filtering-for-connectors-on-an-inbound-connector).
+1. Go to the [Security admin console ↗︎](https://security.microsoft.com/homepage), and [enable enhanced filtering ↗︎](https://learn.microsoft.com/en-us/exchange/mail-flow-best-practices/use-connectors-to-configure-mail-flow/enhanced-filtering-for-connectors#use-the-microsoft-defender-portal-to-configure-enhanced-filtering-for-connectors-on-an-inbound-connector).
 2. Select **Automatically detect and skip the last IP address** and **Apply to entire organization**.
 3. Select **Save**.
 
@@ -98,7 +98,7 @@ Now that the inbound connector has been configured, you will need to enable the 
 
 To configure anti-spam policies:
 
-1. Open the [Microsoft 365 Defender console ↗](https://security.microsoft.com/).
+1. Open the [Microsoft 365 Defender console ↗︎](https://security.microsoft.com/).
 2. Go to **Email & collaboration** > **Policies & rules**.
 3. Select **Threat policies**.
 4. Under **Policies**, select **Anti-spam**.
@@ -122,7 +122,7 @@ To configure anti-spam policies:
 
 To create the transport rules that will send emails with certain [dispositions](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions) to Email security:
 
-1. Open the new [Exchange admin center ↗](https://admin.exchange.microsoft.com/#/homepage).
+1. Open the new [Exchange admin center ↗︎](https://admin.exchange.microsoft.com/#/homepage).
 2. Go to **Mail flow** > **Rules**.
 3. Select **Add a Rule** > **Create a new rule**.
 4. Set the following rule conditions:
@@ -165,7 +165,7 @@ This step should not be performed until 72 hours after all domains in your Micro
 
 #### Create Connector
 
-1. Go to the new [Exchange admin center ↗](https://admin.exchange.microsoft.com/#/homepage).
+1. Go to the new [Exchange admin center ↗︎](https://admin.exchange.microsoft.com/#/homepage).
 2. Go to **Mail flow** > **Connectors**.
 3. Select **Add a connector**.
 4. Go to **Connection from** > **Partner organization**.

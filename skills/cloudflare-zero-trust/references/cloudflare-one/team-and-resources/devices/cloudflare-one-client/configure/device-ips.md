@@ -22,7 +22,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -62,7 +62,7 @@ Create a custom IP subnet when the [default IPv4 range](#default-device-ips) con
 
 To define a custom IPv4 subnet for device IPs:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
 2. Under **Device IP subnets**, select **Add new IP subnet**.
 3. Enter any name for the subnet.
 4. In **CIDR**, enter a valid IPv4 CIDR block from the supported private ranges:
@@ -92,7 +92,7 @@ Assign [custom IP subnets](#create-an-ip-subnet) to ensure devices are provision
 
 To assign IP subnets to your devices:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
 2. Under **Device IP profiles**, select **Add new IP profile**.
 3. Enter a name for this group of devices (for example, `IT department`).
 4. Create rules to define the users or devices that will receive these IPs. Learn more about the available [Selectors](#selectors), [Operators](#comparison-operators), and [Values](#value).
@@ -171,7 +171,7 @@ In the **Value** field, you can input a single value when using an equality comp
 
 ### Regular expressions
 
-Regular expressions are evaluated using Rust. The Rust implementation is slightly different than regex libraries used elsewhere. For more information, refer to our guide for [Wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/#wildcards). To evaluate if your regex matches, you can use [Rustexp ↗](https://rustexp.lpil.uk/).
+Regular expressions are evaluated using Rust. The Rust implementation is slightly different than regex libraries used elsewhere. For more information, refer to our guide for [Wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/#wildcards). To evaluate if your regex matches, you can use [Rustexp ↗︎](https://rustexp.lpil.uk/).
 
 If you want to match multiple values, you can use the pipe symbol (`|`) as an OR operator. You do not need to use an escape character (`\`) before the pipe symbol. For example, the following expression evaluates to true when the user's email domain matches either `@acme.com` or `@widgets.com`:
 
@@ -200,7 +200,7 @@ The Cloudflare One Client checks the IP profiles from top to bottom as they appe
 
 To check the virtual IP addresses assigned to a specific device registration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices**.
 2. Select your device > **View details**. Device filters
 
    The Cloudflare One dashboard defaults to showing devices that were last seen within the past year. You can select **Show filters** to change the date range or filter by the last active user.
@@ -277,7 +277,7 @@ Monitor the consumption of your IPv4 subnets to ensure you have enough addresses
 
 Use the Cloudflare One dashboard to view a high-level overview of assigned and available IPs:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
 2. Locate the **Device IP subnets** table.
 3. The **IPs assigned** column displays the total number of IPs currently assigned to active device registrations versus the total capacity of the CIDR block.
 
@@ -414,7 +414,7 @@ Example script to filter registrations by IP
 
 Cloudflare does not support editing an existing IPv4 subnet definition. To assign a different IPv4 subnet to your devices:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
 2. Under **Device IP profiles**, find the device group associated with the old subnet and select **Edit**.
 3. Select **Create new subnet IP range** to define a new subnet.
 4. Select **Save**.

@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Background
 
-The [MessageChannel API ↗](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel) provides a way to create a communication channel between different parts of your application.
+The [MessageChannel API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/MessageChannel) provides a way to create a communication channel between different parts of your application.
 
 The Workers runtime provides a minimal implementation of the `MessageChannel` API that is currently limited to uses with a single Worker instance. This means that you can use `MessageChannel` to send messages between different parts of your Worker, but not across different Workers.
 

@@ -18,7 +18,7 @@ If you control your own IP prefix(es), you can set up reverse zones with PTR rec
 
 ## PTR records
 
-PTR records specify the allowed hosts for a given IP address. They are the opposite of [A records ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-a-record) and used for reverse DNS lookups.
+PTR records specify the allowed hosts for a given IP address. They are the opposite of [A records ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-a-record) and used for reverse DNS lookups.
 
 Historically, PTR records prevented outbound SMTP servers from being blocked by spam filters. However, more modern DNS records — [SPF, DKIM, and DMARC](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/#prevent-domain-spoofing) — provide better verifications of domain ownership.
 
@@ -33,7 +33,7 @@ The following Cloudflare customers can create reverse zones.
 - Customers with an IPv4 or IPv6 address space can add the IPv4 or IPv6 reverse zone for their IP space to their account, and create the required PTR records for forward resolution.
 - DNS Firewall customers need to contact their account team to add PTR records for the IPs used for their DNS Firewall clusters.
 
-If your account does not meet these qualifications and you do not own the IP prefix you want to add PTR records on, contact the owner of the IP address based on a [whois lookup ↗](https://lookup.icann.org/).
+If your account does not meet these qualifications and you do not own the IP prefix you want to add PTR records on, contact the owner of the IP address based on a [whois lookup ↗︎](https://lookup.icann.org/).
 
 ## Set up a reverse zone
 
@@ -120,8 +120,8 @@ After this process, your reverse zone will be activated and you can perform reve
 
 While setting up reverse zones, the following third-party tools may be useful:
 
-- [Reverse DNS record generator ↗](https://www.whatsmydns.net/reverse-dns-generator)
-- [IPv6 subnet calculator ↗](https://www.internex.at/de/toolbox/ipv6)
+- [Reverse DNS record generator ↗︎](https://www.whatsmydns.net/reverse-dns-generator)
+- [IPv6 subnet calculator ↗︎](https://www.internex.at/de/toolbox/ipv6)
 
 Was this helpful?
 

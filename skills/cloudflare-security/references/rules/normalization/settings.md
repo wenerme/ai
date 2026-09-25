@@ -22,7 +22,7 @@ Default value: *RFC-3986*
 
 Selects the type of normalization to perform:
 
-- *RFC-3986* – Applies URL normalization strictly according to [RFC 3986 ↗](https://datatracker.ietf.org/doc/html/rfc3986).
+- *RFC-3986* – Applies URL normalization strictly according to [RFC 3986 ↗︎](https://datatracker.ietf.org/doc/html/rfc3986).
 - *Cloudflare* – In addition to what is defined in RFC 3986, applies [extra URL normalization techniques](https://developers.cloudflare.com/rules/normalization/how-it-works/#cloudflare-normalization).
 
 ## Normalize incoming URLs

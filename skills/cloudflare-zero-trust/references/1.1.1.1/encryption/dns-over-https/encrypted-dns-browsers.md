@@ -53,7 +53,7 @@ Note
 
 ## Check if the browser is configured correctly
 
-Visit [1.1.1.1 help page ↗](https://one.one.one.one/help) and check if `Using DNS over HTTPS (DoH)` shows `Yes`.
+Visit [1.1.1.1 help page ↗︎](https://one.one.one.one/help) and check if `Using DNS over HTTPS (DoH)` shows `Yes`.
 
 Was this helpful?
 

@@ -52,7 +52,7 @@ Requests blocked by a firewall rule with a *Block* action would get a Cloudflare
 
 Requests blocked by a WAF custom rule will get a different response: the WAF block response. To customize the default block response, you can either:
 
-- Define a custom WAF block response for your entire zone in [**Error Pages** ↗](https://dash.cloudflare.com/?to=/:account/:zone/error-pages) > **WAF block**. This error page will always have an HTML content type.
+- Define a custom WAF block response for your entire zone in [**Error Pages** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/error-pages) > **WAF block**. This error page will always have an HTML content type.
 - [Define a custom response](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/#configure-a-custom-response-for-blocked-requests) for requests blocked by a specific WAF custom rule. This custom response supports other content types besides HTML.
 
 If you have customized your 1XXX error page in Error Pages for requests blocked by firewall rules, you will need to create a new response page for blocked requests using one of the above methods.
@@ -118,7 +118,7 @@ The preferred API for managing WAF custom rules is the [Rulesets API](https://de
 
 The Firewall Rules API and Filters API are no longer supported since 2025-06-15. There is now a single list of rules for both firewall rules and WAF custom rules, and this list contains WAF custom rules. Thanks to an internal conversion process, the Firewall Rules API and Filters API return firewall rules/filters converted from these WAF custom rules until the APIs sunset date.
 
-If you are using Terraform, you must update your configuration to use [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resources with the `http_request_firewall_custom` phase to manage custom rules. For more information on updating your Terraform configuration, refer to [Relevant changes for Terraform users](#relevant-changes-for-terraform-users).
+If you are using Terraform, you must update your configuration to use [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resources with the `http_request_firewall_custom` phase to manage custom rules. For more information on updating your Terraform configuration, refer to [Relevant changes for Terraform users](#relevant-changes-for-terraform-users).
 
 ## Relevant changes for dashboard users
 
@@ -140,10 +140,10 @@ Refer to the WAF documentation for [examples of managing WAF custom rules using 
 
 **The following Terraform resources from the Cloudflare provider are now deprecated:**
 
-- [`cloudflare_firewall_rule` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/firewall_rule)
-- [`cloudflare_filter` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/filter)
+- [`cloudflare_firewall_rule` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/firewall_rule)
+- [`cloudflare_filter` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/filter)
 
-These resources are no longer supported since 2025-06-15. If you are using these resources to manage your Firewall Rules configuration, you must manually update any Terraform configuration to [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resources to prevent any issues.
+These resources are no longer supported since 2025-06-15. If you are using these resources to manage your Firewall Rules configuration, you must manually update any Terraform configuration to [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resources to prevent any issues.
 
 There will be a single list of rules for both firewall rules and WAF custom rules.
 
@@ -153,7 +153,7 @@ Refer to the documentation about Terraform for [examples of configuring WAF cust
 
 ### Replace your configuration using `cf-terraforming`
 
-You can use the [`cf-terraforming` ↗](https://github.com/cloudflare/cf-terraforming) tool to generate the Terraform configuration for your current WAF custom rules (converted by Cloudflare from your firewall rules). Then, import the new resources to Terraform state.
+You can use the [`cf-terraforming` ↗︎](https://github.com/cloudflare/cf-terraforming) tool to generate the Terraform configuration for your current WAF custom rules (converted by Cloudflare from your firewall rules). Then, import the new resources to Terraform state.
 
 The recommended steps for replacing your firewall rules (and filters) configuration in Terraform with a new ruleset configuration are the following.
 
@@ -276,7 +276,7 @@ The recommended steps for replacing your firewall rules (and filters) configurat
 For details on importing Cloudflare resources to Terraform and using the `cf-terraforming` tool, refer to the following resources:
 
 - [Import Cloudflare resources](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/)
-- [`cf-terraforming` GitHub repository ↗](https://github.com/cloudflare/cf-terraforming)
+- [`cf-terraforming` GitHub repository ↗︎](https://github.com/cloudflare/cf-terraforming)
 
 ## Final remarks
 

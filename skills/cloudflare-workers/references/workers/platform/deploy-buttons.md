@@ -68,7 +68,7 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
   "name": "my-worker",
   "main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
   "vars": {
     "API_HOST": "https://example.com",
   },
@@ -79,13 +79,13 @@ Cloudflare will read the Wrangler configuration file of your source repo to dete
 name = "my-worker"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [vars]
 API_HOST = "https://example.com"
 ```
 
-[Worker secrets](https://developers.cloudflare.com/workers/configuration/secrets/) can be defined in a `.dev.vars.example` or `.env.example` file with a [dotenv ↗](https://www.npmjs.com/package/dotenv) format:
+[Worker secrets](https://developers.cloudflare.com/workers/configuration/secrets/) can be defined in a `.dev.vars.example` or `.env.example` file with a [dotenv ↗︎](https://www.npmjs.com/package/dotenv) format:
 
 *.dev.vars.exampleini*
 
@@ -100,7 +100,7 @@ COOKIE_SIGNING_KEY=my-secret # comment
   "name": "my-worker",
   "main": "./src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"secrets_store_secrets": [
 		{
 			"binding": "API_KEY",
@@ -115,7 +115,7 @@ COOKIE_SIGNING_KEY=my-secret # comment
 name = "my-worker"
 main = "./src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[secrets_store_secrets]]
 binding = "API_KEY"

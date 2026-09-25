@@ -76,7 +76,7 @@ Follow the [media-close sequence](https://developers.cloudflare.com/realtime/sfu
 
 ## Learn with an example
 
-[Run the video room](https://developers.cloudflare.com/realtime/sfu/get-started/) to publish camera and microphone tracks, discover another participant, and pull remote media. Its [architecture guide ↗](https://github.com/cloudflare/realtime-examples/blob/main/video-room/ARCHITECTURE.md#identifier-ownership) maps each identifier to the component that owns it.
+[Run the video room](https://developers.cloudflare.com/realtime/sfu/get-started/) to publish camera and microphone tracks, discover another participant, and pull remote media. Its [architecture guide ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/video-room/ARCHITECTURE.md#identifier-ownership) maps each identifier to the component that owns it.
 
 Was this helpful?
 

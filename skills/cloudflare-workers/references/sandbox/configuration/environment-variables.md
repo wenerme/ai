@@ -298,7 +298,7 @@ When mounting S3-compatible object storage, the SDK uses **s3fs-fuse** under the
 
 **Get R2 API tokens:**
 
-1. Go to [**R2** > **Overview** ↗](https://dash.cloudflare.com/?to=/:account/r2) in the Cloudflare dashboard
+1. Go to [**R2** > **Overview** ↗︎](https://dash.cloudflare.com/?to=/:account/r2) in the Cloudflare dashboard
 2. Select **Manage R2 API Tokens**
 3. Create a token with **Object Read & Write** permissions
 4. Copy the **Access Key ID** and **Secret Access Key**

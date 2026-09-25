@@ -27,12 +27,12 @@ This guide will walk you through configuring Cloudflare Workers to export OpenTe
 
 Before you begin, ensure you have:
 
-- An active [Grafana Cloud account ↗](https://grafana.com/auth/sign-up/create-user) (free tier available)
+- An active [Grafana Cloud account ↗︎](https://grafana.com/auth/sign-up/create-user) (free tier available)
 - A deployed Worker that you want to monitor
 
 ## Step 1: Access the OpenTelemetry setup guide
 
-1. Log in to your [Grafana Cloud portal ↗](https://grafana.com/)
+1. Log in to your [Grafana Cloud portal ↗︎](https://grafana.com/)
 2. From your organization's home page, navigate to **Connections** → **Add new connection**
 3. Search for "OpenTelemetry" and select **OpenTelemetry (OTLP)**
 4. Select **Quickstart** then select **JavaScript**
@@ -43,7 +43,7 @@ Before you begin, ensure you have:
 
 ## Step 2: Set up destination
 
-1. Navigate to your Cloudflare account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
+1. Navigate to your Cloudflare account's [Workers Observability ↗︎](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
 2. Click **Add destination** and configure a destination name (e.g. `grafana-tracing`)
 3. From Grafana, copy your Otel endpoint, auth header, and auth value
 

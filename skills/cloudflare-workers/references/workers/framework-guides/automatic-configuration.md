@@ -67,7 +67,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 	"name": "my-project",
 	"main": "dist/_worker.js/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 	"assets": {
 		"binding": "ASSETS",
@@ -84,7 +84,7 @@ A new Wrangler configuration file is created with settings appropriate for your 
 name = "my-project"
 main = "dist/_worker.js/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [assets]
@@ -231,7 +231,7 @@ You can also manually configure your project by following the framework-specific
 
 For Next.js projects, automatic configuration uses [vinext](https://developers.cloudflare.com/workers/framework-guides/web-apps/nextjs/) as the default deployment path for Cloudflare Workers. The generated configuration adds the vinext and Vite dependencies, creates the Cloudflare Workers configuration, and adds package scripts for development, builds, and deployment.
 
-vinext supports Next.js caching features such as Incremental Static Regeneration (ISR), `"use cache"`, and `unstable_cache`. For production applications, configure the generated Workers project with the cache backend your application requires. For more information, refer to [vinext caching ↗](https://github.com/cloudflare/vinext#caching).
+vinext supports Next.js caching features such as Incremental Static Regeneration (ISR), `"use cache"`, and `unstable_cache`. For production applications, configure the generated Workers project with the cache backend your application requires. For more information, refer to [vinext caching ↗︎](https://github.com/cloudflare/vinext#caching).
 
 If you need the OpenNext adapter instead of vinext, configure it manually by following the [OpenNext adapter guide](https://developers.cloudflare.com/workers/framework-guides/web-apps/opennext/).
 
@@ -255,7 +255,7 @@ If a Wrangler configuration file already exists, automatic configuration will no
 
 Support for monorepos and npm/yarn/pnpm workspaces is currently limited. Wrangler analyzes the project directory where you run the command, but does not detect dependencies installed at the workspace root. This can cause framework detection to fail if the framework is listed as a dependency in the workspace's root `package.json` rather than in the individual project's `package.json`.
 
-If you encounter issues, report them in the [Wrangler GitHub repository ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
+If you encounter issues, report them in the [Wrangler GitHub repository ↗︎](https://github.com/cloudflare/workers-sdk/issues/new/choose).
 
 Was this helpful?
 

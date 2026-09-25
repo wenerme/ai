@@ -18,7 +18,7 @@ Use Workers Static Assets Instead
 
 You should use [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) to host full-stack applications instead of Workers Sites. It has been deprecated in Wrangler v4, and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) does not support Workers Sites. Do not use Workers Sites for new projects.
 
-Workers Sites enables developers to deploy static applications directly to Workers. It can be used for deploying applications built with static site generators like [Hugo ↗](https://gohugo.io) and [Gatsby ↗](https://www.gatsbyjs.org), or front-end frameworks like [Vue ↗](https://vuejs.org) and [React ↗](https://reactjs.org).
+Workers Sites enables developers to deploy static applications directly to Workers. It can be used for deploying applications built with static site generators like [Hugo ↗︎](https://gohugo.io) and [Gatsby ↗︎](https://www.gatsbyjs.org), or front-end frameworks like [Vue ↗︎](https://vuejs.org) and [React ↗︎](https://reactjs.org).
 
 To deploy with Workers Sites, select from one of these three approaches depending on the state of your target project:
 

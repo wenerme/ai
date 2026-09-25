@@ -794,7 +794,7 @@ class MyAgent extends Agent<Env> {
 
 The example uses a 55-second timeout because MCP SDK requests default to 60 seconds. If your client call sets a longer request timeout, adjust this timeout to finish first.
 
-Refer to the [`mcp-client` example ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-client) for the browser implementation. [`mcp-elicitation-mrtr` ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation-mrtr) demonstrates stateless elicitation. [`mcp-elicitation` ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation) demonstrates legacy elicitation.
+Refer to the [`mcp-client` example ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-client) for the browser implementation. [`mcp-elicitation-mrtr` ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation-mrtr) demonstrates stateless elicitation. [`mcp-elicitation` ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation) demonstrates legacy elicitation.
 
 For server-side patterns, refer to [Elicitation with a stateless handler](https://developers.cloudflare.com/agents/model-context-protocol/apis/handler-api/#elicitation-with-a-stateless-handler) and [Elicitation on legacy servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#elicitation-on-legacy-servers).
 
@@ -1303,7 +1303,7 @@ export class MyAgent extends Agent<Env> {
 }
 ```
 
-If you do not override this method, the agent uses the default provider which performs [OAuth 2.0 Dynamic Client Registration ↗](https://datatracker.ietf.org/doc/html/rfc7591) with the MCP server.
+If you do not override this method, the agent uses the default provider which performs [OAuth 2.0 Dynamic Client Registration ↗︎](https://datatracker.ietf.org/doc/html/rfc7591) with the MCP server.
 
 ### Custom storage backend
 

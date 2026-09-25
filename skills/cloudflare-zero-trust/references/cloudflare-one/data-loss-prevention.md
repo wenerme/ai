@@ -50,7 +50,7 @@ To get started, refer to [Scan SaaS applications with DLP](https://developers.cl
 
 ## Email security
 
-Data Loss Prevention integrates with [Cloudflare Email Security](https://developers.cloudflare.com/cloudflare-one/email-security/) to scan [outbound emails](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/) for sensitive data. Outbound DLP requires [Microsoft 365 ↗](https://www.cloudflare.com/learning/cloud/what-is-microsoft-365/) and uses a client-side Outlook add-in to inspect emails before they are sent.
+Data Loss Prevention integrates with [Cloudflare Email Security](https://developers.cloudflare.com/cloudflare-one/email-security/) to scan [outbound emails](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/) for sensitive data. Outbound DLP requires [Microsoft 365 ↗︎](https://www.cloudflare.com/learning/cloud/what-is-microsoft-365/) and uses a client-side Outlook add-in to inspect emails before they are sent.
 
 To get started, refer to [Outbound Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/email-security/outbound-dlp/).
 

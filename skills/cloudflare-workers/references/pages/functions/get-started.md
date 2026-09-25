@@ -50,7 +50,7 @@ Refer to [Routing](https://developers.cloudflare.com/pages/functions/routing/) f
 
 Set these configurations by passing an argument to your [Wrangler](https://developers.cloudflare.com/workers/wrangler/commands/pages/#pages-dev) command or by setting them in the dashboard. To set Pages compatibility flags in the Cloudflare dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
 2. Select **Workers & Pages** and select your Pages project.
 3. Select **Settings** > **Functions** > **Compatibility Flags**.
 4. Configure your Production and Preview compatibility flags as needed.

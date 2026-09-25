@@ -18,7 +18,7 @@ Encrypt and store sensitive information as secrets that are securely reusable ac
 
 Available in open beta
 
-Cloudflare Secrets Store is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all [Cloudflare data centers ↗](https://www.cloudflare.com/network/).
+Cloudflare Secrets Store is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all [Cloudflare data centers ↗︎](https://www.cloudflare.com/network/).
 
 Secrets Store is currently compatible with [Cloudflare Workers](https://developers.cloudflare.com/secrets-store/integrations/workers/) and [AI Gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). Integrations with other products will be added in the future.
 

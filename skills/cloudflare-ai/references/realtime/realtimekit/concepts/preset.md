@@ -32,9 +32,9 @@ Example: Large Ed-Tech Classroom
 
 ### Create a Preset
 
-A set of default presets are created for you, when you create an app via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit).
+A set of default presets are created for you, when you create an app via the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/realtime/kit).
 
-You can also create a preset using the [dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit) or the [Create Preset API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/presets/methods/create/).
+You can also create a preset using the [dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/realtime/kit) or the [Create Preset API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/presets/methods/create/).
 
 ```bash
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/presets \
@@ -48,7 +48,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP
 
 ### Preset Editor
 
-We provide a UI-based editor to create and manage the presets in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit).
+We provide a UI-based editor to create and manage the presets in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/realtime/kit).
 
 ![Preset Editor](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3452,height=1898,format=webp/_astro/preset-editor.CoEtzs7E.png)
 

@@ -24,7 +24,7 @@ If you have not yet purchased Email security, you can try Email security with Re
 
 Protect your email inbox with Email security.
 
-Cloudflare Email Security uses AI, threat intelligence, and security rules to analyze every incoming email, protecting your organization from phishing, malware, [Business Email Compromise ↗](https://www.cloudflare.com/en-gb/learning/email-security/business-email-compromise-bec/) (where attackers impersonate executives or authority figures to commit fraud), vendor email fraud, and spam.
+Cloudflare Email Security uses AI, threat intelligence, and security rules to analyze every incoming email, protecting your organization from phishing, malware, [Business Email Compromise ↗︎](https://www.cloudflare.com/en-gb/learning/email-security/business-email-compromise-bec/) (where attackers impersonate executives or authority figures to commit fraud), vendor email fraud, and spam.
 
 It integrates with your existing email provider (such as Outlook or Gmail) and can be deployed via [API](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/api/), [BCC](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/gmail-bcc-setup/)/ [Journaling](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/journaling-setup/m365-journaling/), or [MX/Inline](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/mx-inline-deployment-setup/).
 
@@ -39,11 +39,11 @@ The Email security overview provides you with:
 - **Recommendations**: Suggested next steps to improve your configuration. For example, submitting misclassified emails for reclassification, creating policies, or protecting users at risk of [impersonation](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/).
 - **Email security metrics**: Activity from the last seven days.
 - **Recently modified policies**: A list of recently changed policies.
-- **Education and resources**: Links to [implementation guides](https://developers.cloudflare.com/cloudflare-one/implementation-guides/), [Email security changelogs](https://developers.cloudflare.com/cloudflare-one/changelog/email-security/), and [API documentation ↗](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate/methods/get/)
+- **Education and resources**: Links to [implementation guides](https://developers.cloudflare.com/cloudflare-one/implementation-guides/), [Email security changelogs](https://developers.cloudflare.com/cloudflare-one/changelog/email-security/), and [API documentation ↗︎](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate/methods/get/)
 
 To access the Email security overview:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Go to **Email security** > **Overview**.
 
 ---

@@ -283,7 +283,7 @@ Stateful coordination layer that enables Sandbox to maintain persistent environm
 
 ## Coding agents
 
-Install [Cloudflare Skills ↗](https://github.com/cloudflare/skills) for your agent ([Agent setup](https://developers.cloudflare.com/agent-setup/)). Use **`sandbox-stable`** with the main docs on this site while you are on the current stable package. Use **`sandbox-next`** for `@cloudflare/sandbox@next` (recommended for new projects). When you are ready to port an existing app, use **`sandbox-migrate-to-next`**.
+Install [Cloudflare Skills ↗︎](https://github.com/cloudflare/skills) for your agent ([Agent setup](https://developers.cloudflare.com/agent-setup/)). Use **`sandbox-stable`** with the main docs on this site while you are on the current stable package. Use **`sandbox-next`** for `@cloudflare/sandbox@next` (recommended for new projects). When you are ready to port an existing app, use **`sandbox-migrate-to-next`**.
 
 ### [Tutorials](https://developers.cloudflare.com/sandbox/tutorials/)
 

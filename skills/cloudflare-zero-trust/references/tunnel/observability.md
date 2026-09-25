@@ -18,7 +18,7 @@ Cloudflare Tunnel exposes logs, metrics, and diagnostic tools to help you monito
 
 ## Tunnel health
 
-You can check your tunnel connection status in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) by going to **Networking** > **Tunnels**, or by running `cloudflared tunnel list`.
+You can check your tunnel connection status in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) by going to **Networking** > **Tunnels**, or by running `cloudflared tunnel list`.
 
 [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 
@@ -142,7 +142,7 @@ The `cloudflared` daemon can stream logs from any tunnel in your account to the 
    cloudflared tail <UUID>
    ```
 
-   For a more structured view of the JSON message, you can pipe the output to tools like [jq ↗](https://stedolan.github.io/jq/):
+   For a more structured view of the JSON message, you can pipe the output to tools like [jq ↗︎](https://stedolan.github.io/jq/):
 
    ```sh
    cloudflared tail --output=json <UUID> | jq .
@@ -194,7 +194,7 @@ To filter the stream to specific replicas, select the **Filter** icon and expand
 
 ## Metrics
 
-Tunnel metrics show a Cloudflare Tunnel's throughput and resource usage over time. When you run a tunnel, `cloudflared` will spin up a Prometheus metrics endpoint — an HTTP server that exposes metrics in [Prometheus ↗](https://prometheus.io/docs/introduction/overview/) format. You can use the Prometheus toolkit on a remote machine to scrape metrics data from the `cloudflared` server.
+Tunnel metrics show a Cloudflare Tunnel's throughput and resource usage over time. When you run a tunnel, `cloudflared` will spin up a Prometheus metrics endpoint — an HTTP server that exposes metrics in [Prometheus ↗︎](https://prometheus.io/docs/introduction/overview/) format. You can use the Prometheus toolkit on a remote machine to scrape metrics data from the `cloudflared` server.
 
 ### Default metrics server address
 

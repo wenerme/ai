@@ -82,7 +82,7 @@ To update the billing profile address:
 
 To update the address stored on a specific payment method, edit that payment method from the **Payment methods** panel on the **Subscriptions** page. The address you enter is saved both with the payment method and with the card issuer.
 
-If you pay by PayPal, refer to PayPal's [billing address documentation ↗](https://www.paypal.com/ai/smarthelp/article/how-do-i-edit-the-billing-address-linked-to-my-credit-card-faq680).
+If you pay by PayPal, refer to PayPal's [billing address documentation ↗︎](https://www.paypal.com/ai/smarthelp/article/how-do-i-edit-the-billing-address-linked-to-my-credit-card-faq680).
 
 ## Update billing email address
 

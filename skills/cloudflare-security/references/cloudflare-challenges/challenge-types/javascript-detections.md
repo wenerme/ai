@@ -20,7 +20,7 @@ While Challenge Pages and Turnstile rely on client-side signals to determine the
 
 ## Process
 
-JavaScript Detections is implemented on your website via a lightweight, invisible JavaScript code snippet that follows Cloudflare's [privacy standards ↗](https://www.cloudflare.com/privacypolicy/).
+JavaScript Detections is implemented on your website via a lightweight, invisible JavaScript code snippet that follows Cloudflare's [privacy standards ↗︎](https://www.cloudflare.com/privacypolicy/).
 
 JavaScript is injected only in response to requests for HTML pages or page views, excluding AJAX calls. API and mobile application traffic is unaffected.
 

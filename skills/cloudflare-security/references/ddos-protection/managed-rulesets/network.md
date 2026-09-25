@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ddos-protection/managed-rulesets/network/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Cloudflare Network-layer [DDoS Attack ↗](https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack/) Protection managed ruleset is a set of pre-configured rules used to match [known DDoS attack vectors](https://developers.cloudflare.com/ddos-protection/about/attack-coverage/) at levels 3 and 4 of the OSI model.
+The Cloudflare Network-layer [DDoS Attack ↗︎](https://www.cloudflare.com/en-gb/learning/ddos/what-is-a-ddos-attack/) Protection managed ruleset is a set of pre-configured rules used to match [known DDoS attack vectors](https://developers.cloudflare.com/ddos-protection/about/attack-coverage/) at levels 3 and 4 of the OSI model.
 
 Cloudflare updates the list of rules in the managed ruleset on a regular basis. Refer to the [changelog](https://developers.cloudflare.com/ddos-protection/change-log/network/) for more information on recent and upcoming changes.
 

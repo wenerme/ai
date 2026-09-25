@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Email routing rules and addresses
 
-Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In Email Routing, a routing rule pairs an email pattern with a destination — either a verified email address or a Worker. You can route emails to either:
 
@@ -31,7 +31,7 @@ You can also send to verified destination addresses directly through the [REST A
 
 ### Add a destination address
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **Compute** > **Email Service** > **Email Routing** > **Destination Addresses**. [Go to **Email Routing** ↗](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 3. Under **Destination addresses**, enter the email address you want to use as a destination in the inline form and submit it.
 4. Cloudflare sends a verification email to that address. Open the email and select **Verify email address** to activate it.
@@ -48,7 +48,7 @@ Deleting a destination address automatically disables all routing rules that use
 
 ## Routing rules
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account and domain.
 2. Go to **Compute** > **Email Service** > **Email Routing** > **Routing Rules**. [Go to **Email Routing** ↗](https://dash.cloudflare.com/?to=/:account/email-service/routing)
 3. Select **Create routing rule**.
 4. In **Email pattern**, enter the local part of the email address you want to use (for example, `my-new-email`), and select your domain.
@@ -92,7 +92,7 @@ Renaming a Worker removes the binding between that Worker and any routes that po
 
 ### Delete a routing rule
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account and domain.
 2. Go to **Compute** > **Email Service** > **Email Routing** > **Routing Rules**.
 3. Identify the routing rule you want to delete.
 4. Select **Delete** and confirm the action.
@@ -115,13 +115,57 @@ To enable the catch-all rule:
 
 ### Subaddressing
 
-Email Routing supports subaddressing, also known as plus addressing, as defined in [RFC 5233 ↗](https://www.rfc-editor.org/rfc/rfc5233). This enables using the "+" separator to augment your routing rules with arbitrary detail information.
+Email Routing supports subaddressing, also known as plus addressing, as defined in [RFC 5233 ↗︎](https://www.rfc-editor.org/rfc/rfc5233). This enables using the "+" separator to augment your routing rules with arbitrary detail information.
 
 You can enable subaddressing at **Compute** > **Email Service** > **Email Routing** > **Settings**.
 
-Once enabled, you can use subaddressing with any of your routing rules. For example, if you send an email to `user+detail@example.com` it will be matched by the `user@example.com` routing rule. The `+detail` part does not affect rule matching, but it is preserved in `message.to` and can be inspected by a [Worker](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/), an [Agent application ↗](https://github.com/cloudflare/agents/tree/main/examples/email-agent), or via the activity log.
+Once enabled, you can use subaddressing with any of your routing rules. For example, if you send an email to `user+detail@example.com` it will be matched by the `user@example.com` routing rule. The `+detail` part does not affect rule matching, but it is preserved in `message.to` and can be inspected by a [Worker](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/), an [Agent application ↗︎](https://github.com/cloudflare/agents/tree/main/examples/email-agent), or via the activity log.
 
 If a routing rule for `user+detail@example.com` already exists, it takes precedence over the rule for `user@example.com`. This prevents breaking existing routing rules and allows certain sub-addresses to be captured by a specific rule.
+
+## Configure rules with Wrangler
+
+If your routing rules send mail to a [Worker](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/), you can define them in your Worker's [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) instead of creating them in the dashboard. Add the inbound addresses to the top-level `addresses` field:
+
+This feature requires Wrangler 4.113.0 or later.
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "my-worker",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-09-25",
+  "addresses": [
+    "support@example.com",
+    "*@example.com"
+  ]
+}
+```
+
+```toml
+name = "my-worker"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-09-25"
+addresses = ["support@example.com", "*@example.com"]
+```
+
+Each entry is either a literal recipient address (for example, `support@example.com`), which creates a routing rule for that address, or a `*@domain` catch-all (for example, `*@example.com`), which configures the [catch-all rule](#catch-all-rule) for that domain. Catch-all entries support apex domains only. To route mail sent to an Email Routing subdomain, list each literal recipient address, such as `support@mail.example.com`.
+
+Every entry uses the *Send to a Worker* action to route mail to the Worker you are deploying.
+
+The `addresses` field is top-level only and applies to every [environment](https://developers.cloudflare.com/workers/wrangler/environments/) of the Worker. Wrangler ignores `addresses` values under `env`.
+
+If you omit `addresses`, Wrangler does not change Email Routing rules. If you set `addresses` to an empty array, Wrangler removes every Email Routing rule managed by this Worker.
+
+When you run [`wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#deploy) or [`wrangler triggers deploy`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#triggers), Wrangler reconciles the Email Routing rules for the addresses you listed. It adds rules for new entries, updates the rules it manages, and removes managed rules that are no longer listed. Wrangler prints the planned changes and asks you to confirm before applying a destructive change, such as deleting or taking over a rule. In non-interactive environments, Wrangler does not apply destructive changes and exits with an error after deploying the Worker.
+
+To validate your local configuration without deploying or checking remote rules, run `wrangler deploy --dry-run`.
+
+Note
+
+Rules created from `addresses` are managed by your Wrangler configuration file. The dashboard warns you before an edit detaches a managed rule. On the next deploy, Wrangler reports a takeover conflict and asks for confirmation before restoring the configured rule.
 
 ## Next steps
 
@@ -139,5 +183,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#page","headline":"Email routing rules and addresses","description":"Create and manage routing rules, destination addresses, and the catch-all rule in Email Service.","url":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/#page","headline":"Email routing rules and addresses","description":"Create and manage routing rules, destination addresses, and the catch-all rule in Email Service.","url":"https://developers.cloudflare.com/email-service/configuration/email-routing-addresses/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

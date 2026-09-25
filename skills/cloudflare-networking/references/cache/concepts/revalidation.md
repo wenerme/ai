@@ -32,7 +32,7 @@ If your origin sets `stale-while-revalidate` but you want to override it, you ca
 
 ### Directives that disable stale-while-revalidate
 
-When [Origin Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/#enable-origin-cache-control) is enabled, the following `Cache-Control` directives prevent Cloudflare from serving stale content, per [RFC 9111 §4.2.4 ↗](https://www.rfc-editor.org/rfc/rfc9111.html#section-4.2.4):
+When [Origin Cache Control](https://developers.cloudflare.com/cache/concepts/cache-control/#enable-origin-cache-control) is enabled, the following `Cache-Control` directives prevent Cloudflare from serving stale content, per [RFC 9111 §4.2.4 ↗︎](https://www.rfc-editor.org/rfc/rfc9111.html#section-4.2.4):
 
 - **`must-revalidate`** — Prohibits serving stale content; the cache must revalidate with the origin first.
 - **`proxy-revalidate`** — Same as `must-revalidate`, but only applies to shared caches (like Cloudflare).
@@ -49,7 +49,7 @@ For all available directives or behavior when Origin Cache Control is disabled, 
 
 ## Smart revalidation towards users
 
-When both [`Last-Modified` ↗](https://datatracker.ietf.org/doc/html/rfc7232?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A15%2C%22targetId%22%3A%226C8153BAEF7BC0C5A331E28F8BCF1ABA%22%7D#section-2.2) and [`Etag` ↗](https://datatracker.ietf.org/doc/html/rfc7232?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A13%2C%22targetId%22%3A%226C8153BAEF7BC0C5A331E28F8BCF1ABA%22%7D#section-2.3) headers are absent from the origin server response, Smart Edge Revalidation will use the time the object was cached on Cloudflare's global network as the `Last-Modified` header value. When a browser sends a revalidation request to Cloudflare using `If-Modified-Since` or `If-None-Match`, our global network can answer those revalidation questions using the `Last-Modified` header generated from Smart Edge Revalidation. In this way, our global network can ensure efficient revalidation even if the headers are not sent from the origin.
+When both [`Last-Modified` ↗︎](https://datatracker.ietf.org/doc/html/rfc7232?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A15%2C%22targetId%22%3A%226C8153BAEF7BC0C5A331E28F8BCF1ABA%22%7D#section-2.2) and [`Etag` ↗︎](https://datatracker.ietf.org/doc/html/rfc7232?cf_history_state=%7B%22guid%22%3A%22C255D9FF78CD46CDA4F76812EA68C350%22%2C%22historyId%22%3A13%2C%22targetId%22%3A%226C8153BAEF7BC0C5A331E28F8BCF1ABA%22%7D#section-2.3) headers are absent from the origin server response, Smart Edge Revalidation will use the time the object was cached on Cloudflare's global network as the `Last-Modified` header value. When a browser sends a revalidation request to Cloudflare using `If-Modified-Since` or `If-None-Match`, our global network can answer those revalidation questions using the `Last-Modified` header generated from Smart Edge Revalidation. In this way, our global network can ensure efficient revalidation even if the headers are not sent from the origin.
 
 Was this helpful?
 

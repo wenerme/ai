@@ -223,7 +223,7 @@ const { success } = await env.MY_RATE_LIMITER.limit({ key: ipAddress })
 
 ## Locality
 
-Rate limits that you define and enforce in your Worker are local to the [Cloudflare location ↗](https://www.cloudflare.com/network/) that your Worker runs in.
+Rate limits that you define and enforce in your Worker are local to the [Cloudflare location ↗︎](https://www.cloudflare.com/network/) that your Worker runs in.
 
 For example, if a request comes in from Sydney, Australia, to the Worker shown above, after 100 requests in a 60 second window, any further requests for a particular path would be rejected, and a 429 HTTP status code returned. But this would only apply to requests served in Sydney. For each unique key you pass to your rate limiting binding, there is a unique limit per Cloudflare location.
 
@@ -256,9 +256,9 @@ Rate limiting bindings are not currently visible in the Cloudflare dashboard. To
 
 ## Examples
 
-- [`@elithrar/workers-hono-rate-limit` ↗](https://github.com/elithrar/workers-hono-rate-limit) — Middleware that lets you easily add rate limits to routes in your [Hono ↗](https://hono.dev/) application.
-- [`@hono-rate-limiter/cloudflare` ↗](https://github.com/rhinobase/hono-rate-limiter) — Middleware that lets you easily add rate limits to routes in your [Hono ↗](https://hono.dev/) application, with multiple data stores to choose from.
-- [`hono-cf-rate-limit` ↗](https://github.com/bytaesu/hono-cf-rate-limit) — Middleware for Hono applications that applies rate limiting in Cloudflare Workers, powered by Wrangler’s built-in features.
+- [`@elithrar/workers-hono-rate-limit` ↗︎](https://github.com/elithrar/workers-hono-rate-limit) — Middleware that lets you easily add rate limits to routes in your [Hono ↗︎](https://hono.dev/) application.
+- [`@hono-rate-limiter/cloudflare` ↗︎](https://github.com/rhinobase/hono-rate-limiter) — Middleware that lets you easily add rate limits to routes in your [Hono ↗︎](https://hono.dev/) application, with multiple data stores to choose from.
+- [`hono-cf-rate-limit` ↗︎](https://github.com/bytaesu/hono-cf-rate-limit) — Middleware for Hono applications that applies rate limiting in Cloudflare Workers, powered by Wrangler’s built-in features.
 
 Was this helpful?
 

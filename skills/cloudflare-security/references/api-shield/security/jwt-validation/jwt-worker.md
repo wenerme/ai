@@ -18,10 +18,10 @@ Use a Worker to automatically keep your identity provider’s latest public key 
 
 ## Prerequisites
 
-- Find your zone ID. You can locate this ID in your zone overview in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+- Find your zone ID. You can locate this ID in your zone overview in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 - Find your identity provider’s JSON Web Key Set (JWKs) URL. Identity providers commonly list it in Open Authorization (OAuth) settings.
 - Create a [token validation configuration](https://developers.cloudflare.com/api-shield/security/jwt-validation/#add-a-token-validation-configuration).
-- [Create a new API token ↗](https://dash.cloudflare.com/profile/api-tokens) with the API Gateway `Write` permission.
+- [Create a new API token ↗︎](https://dash.cloudflare.com/profile/api-tokens) with the API Gateway `Write` permission.
 
 ## Process
 

@@ -18,9 +18,9 @@ Because Magic Transit wraps your traffic in additional headers (encapsulation), 
 
 ## MTU and MSS
 
-The [maximum transmission unit (MTU) ↗](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) is a measurement representing the largest data packet that a network-connected device will accept. The MTU almost always applies to Layer 3 of the Open Systems Interconnection (OSI) model in networking and includes the entire packet, including all headers (Transmission Control Protocol (TCP), Internet Protocol (IP), etc.) and the data (payload) itself. For example, packets must not exceed 1,500 bytes to route through the Internet.
+The [maximum transmission unit (MTU) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) is a measurement representing the largest data packet that a network-connected device will accept. The MTU almost always applies to Layer 3 of the Open Systems Interconnection (OSI) model in networking and includes the entire packet, including all headers (Transmission Control Protocol (TCP), Internet Protocol (IP), etc.) and the data (payload) itself. For example, packets must not exceed 1,500 bytes to route through the Internet.
 
-The [maximum segment size (MSS) ↗](https://www.cloudflare.com/learning/network-layer/what-is-mss/) refers to the amount of data that you can send in a single TCP datagram packet. You determine this value by subtracting the size of the IP and TCP headers from the MTU, which instructs the router how large the payload can be. It applies to Layer 4 of the OSI model in networking.
+The [maximum segment size (MSS) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-mss/) refers to the amount of data that you can send in a single TCP datagram packet. You determine this value by subtracting the size of the IP and TCP headers from the MTU, which instructs the router how large the payload can be. It applies to Layer 4 of the OSI model in networking.
 
 One common misconception about MSS/MTU is that setting these values negatively impacts performance. While there is a slight performance penalty, it is worse not to configure these values to account for the specificities of your network.
 
@@ -46,7 +46,7 @@ Consider a UDP datagram of size 3,000 bytes (8 bytes for the UDP header + 2,992 
 
 ![A diagram showing a UDP datagram and its various components.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=592,height=334,format=webp/_astro/udp-datagram.CfIb9Urm.png)
 
-Suppose that the UDP datagram has source port `389` and is destined for a Magic Transit customer IP address. Suppose also that the Magic Transit customer has a firewall rule in place that drops UDP traffic with source port `389`, a common [Connectionless Lightweight Directory Access Protocol (CLDAP) ↗](https://blog.cloudflare.com/reflections-on-reflections) reflection attack vector.
+Suppose that the UDP datagram has source port `389` and is destined for a Magic Transit customer IP address. Suppose also that the Magic Transit customer has a firewall rule in place that drops UDP traffic with source port `389`, a common [Connectionless Lightweight Directory Access Protocol (CLDAP) ↗︎](https://blog.cloudflare.com/reflections-on-reflections) reflection attack vector.
 
 The three preceding packet fragments will arrive at Cloudflare, but only the first fragment contains a UDP header with source port information. The second and third fragments contain UDP data but do not have UDP header information.
 
@@ -82,7 +82,7 @@ Cloudflare only recommends applying a MSS clamp to adjust the size of TCP packet
 
 ## MSS with Magic Transit and Direct Server Return
 
-Asymmetric [routing ↗](https://www.cloudflare.com/learning/network-layer/what-is-routing/) is a common scenario especially with Magic Transit. Ingress traffic from the Internet enters the Cloudflare network, then traverses a GRE tunnel (MTU of 1,476 bytes), and egress traffic from the datacenter is sent through Direct Server Return (DSR) over the Internet (MTU of 1,500 bytes).
+Asymmetric [routing ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-routing/) is a common scenario especially with Magic Transit. Ingress traffic from the Internet enters the Cloudflare network, then traverses a GRE tunnel (MTU of 1,476 bytes), and egress traffic from the datacenter is sent through Direct Server Return (DSR) over the Internet (MTU of 1,500 bytes).
 
 In an asymmetric scenario, you need to reduce the MSS value of packets sent by Magic Transit users to the Internet to reduce the size of packets sent from the Internet towards their network. To accomplish this, you must configure either the customer's end-hosts or an MSS clamp on an intermediary device on the egress path of traffic leaving their network. The following chart details how MSS values affect payload sizes on both routing paths.
 
@@ -115,7 +115,7 @@ The MSS value depends on how your network is set up.
 
 ### IPsec tunnels
 
-For IPsec tunnels, the value you need to specify depends on how your network is set up. The MSS clamping value is lower than for GRE tunnels because the physical interface sees IPsec-encrypted [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/), not TCP packets, and MSS clamping does not apply to those.
+For IPsec tunnels, the value you need to specify depends on how your network is set up. The MSS clamping value is lower than for GRE tunnels because the physical interface sees IPsec-encrypted [packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/), not TCP packets, and MSS clamping does not apply to those.
 
 - **Magic Transit ingress-only traffic (DSR):**
   - **On your edge router transit ports**: Set the TCP MSS clamp to 1,436 bytes maximum.

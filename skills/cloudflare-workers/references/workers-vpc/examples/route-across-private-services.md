@@ -19,7 +19,7 @@ This example shows how to use Workers VPC to create a centralized gateway that r
 ## Prerequisites
 
 - Multiple private APIs or services running in your VPC/virtual network (we'll use a user service and orders service)
-- Cloudflare Tunnel configured and running (follow the [Get Started guide](https://developers.cloudflare.com/workers-vpc/get-started/#2-set-up-cloudflare-tunnel) to set up or [create a tunnel from the dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc/tunnels))
+- Cloudflare Tunnel configured and running (follow the [Get Started guide](https://developers.cloudflare.com/workers-vpc/get-started/#2-set-up-cloudflare-tunnel) to set up or [create a tunnel from the dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/vpc/tunnels))
 - Workers account with Workers VPC access
 
 ## 1. Create the VPC Services
@@ -52,7 +52,7 @@ Update your Wrangler configuration file:
 	"name": "api-gateway",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"vpc_services": [
 		{
 			"binding": "USER_SERVICE",
@@ -71,7 +71,7 @@ Update your Wrangler configuration file:
 name = "api-gateway"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[vpc_services]]
 binding = "USER_SERVICE"

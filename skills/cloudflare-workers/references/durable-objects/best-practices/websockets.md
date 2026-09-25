@@ -31,7 +31,7 @@ Key characteristics:
 - WebSocket sessions are long-lived, making Durable Objects ideal for accepting connections
 - A single Durable Object instance can coordinate between multiple clients (for example, chat rooms or multiplayer games)
 
-Refer to [Cloudflare Edge Chat Demo ↗](https://github.com/cloudflare/workers-chat-demo) for an example of using Durable Objects with WebSockets.
+Refer to [Cloudflare Edge Chat Demo ↗︎](https://github.com/cloudflare/workers-chat-demo) for an example of using Durable Objects with WebSockets.
 
 ### Why use Hibernation?
 
@@ -235,7 +235,7 @@ Prior to `wrangler@3.13.2` and Miniflare `v3.20231016.0`, WebSockets did not hib
 
 The Cloudflare runtime automatically handles WebSocket protocol ping frames:
 
-- Incoming [ping frames ↗](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2) receive automatic pong responses
+- Incoming [ping frames ↗︎](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2) receive automatic pong responses
 - Ping/pong handling does not interrupt hibernation
 - The `webSocketMessage` handler is not called for control frames
 
@@ -356,7 +356,7 @@ Key behaviors:
 - Serialized attachments persist through hibernation as long as the WebSocket remains healthy
 - If either side closes the connection, attachments are lost
 - Modifications to `value` after calling this method are not retained unless you call it again
-- The `value` can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm)
+- The `value` can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm)
 - Maximum serialized size is 16,384 bytes
 
 For larger values or data that must persist beyond WebSocket lifetime, use the [Storage API](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) and store the corresponding key as an attachment.
@@ -762,8 +762,8 @@ Code updates disconnect all WebSockets. Deploying a new version restarts every D
 
 ## Related resources
 
-- [Mozilla Developer Network's (MDN) documentation on the WebSocket class ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
-- [Cloudflare's WebSocket template for building applications on Workers using WebSockets ↗](https://github.com/cloudflare/websocket-template)
+- [Mozilla Developer Network's (MDN) documentation on the WebSocket class ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
+- [Cloudflare's WebSocket template for building applications on Workers using WebSockets ↗︎](https://github.com/cloudflare/websocket-template)
 - [Durable Object base class](https://developers.cloudflare.com/durable-objects/api/base/)
 - [Durable Object State interface](https://developers.cloudflare.com/durable-objects/api/state/)
 

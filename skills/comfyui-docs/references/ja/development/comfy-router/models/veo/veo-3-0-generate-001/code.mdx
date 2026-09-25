@@ -1,11 +1,11 @@
 ---
 title: "Comfy Router で Veo 3.0 Generate 001 を使用する"
 description: "Comfy Router 経由で veo/veo-3.0-generate-001 を呼び出します。エンドポイント、リクエストの形状、Router が返すレスポンスについて説明します。"
-translationSourceHash: 9c236752
+translationSourceHash: ba0d0c93
 translationFrom: development/comfy-router/models/veo/veo-3-0-generate-001/code.mdx
 translationBlockHashes:
   "_intro": c87da726
-  "Quick start": e8f1c5bc
+  "Quick start": 86fd21d8
   "Schema": e9acd9e6
   "Examples": 88e27039
 ---
@@ -14,9 +14,9 @@ translationBlockHashes:
 
 ## クイックスタート
 
-[お使いの Comfy ワークスペース](https://platform.comfy.org/profile/api-keys?onboarding=router)でキーを作成し、`COMFY_API_KEY` としてエクスポートします。Python、TypeScript、Swift のスニペットは Comfy SDK（`pip install comfy-sdk`、`npm install @comfyorg/sdk`、および [`ComfySwiftSDK`](https://github.com/Comfy-Org/comfy-swift-sdk) Swift パッケージ）を使用しています。cURL のスニペットは、同じ呼び出しを生の HTTP で行うものです。
+[お使いの Comfy ワークスペース](https://platform.comfy.org/profile/api-keys?onboarding=router)でキーを作成し、`COMFY_API_KEY` としてエクスポートします。Python と TypeScript のスニペットは Comfy SDK（`pip install comfy-sdk` および `npm install @comfyorg/sdk`）を使用しています。cURL のスニペットは、同じ呼び出しを生の HTTP で行うものです。
 
-**モデルID:** `veo/veo-3.0-generate-001`
+**モデル ID:** `veo/veo-3.0-generate-001`
 
 **エンドポイント:** `POST https://api.comfy.org/v2/models/veo/veo-3.0-generate-001`
 
@@ -68,32 +68,6 @@ const { data } = await comfy.models.run("veo/veo-3.0-generate-001", {
 console.log(data);
 ```
 
-```swift Swift
-import Foundation
-import ComfySwiftSDK
-
-// 環境変数から COMFY_API_KEY を読み取ります。
-// SDK は呼び出しごとに冪等性キーを発行し、自動リトライのために再利用します。
-let client = ComfyCloudClient(apiKey: ProcessInfo.processInfo.environment["COMFY_API_KEY"]!)
-let result = try await client.models.run(
-    "veo/veo-3.0-generate-001",
-    input: [
-        "instances": [
-            [
-                "prompt": "a single red maple leaf falling onto still water, slow motion",
-            ],
-        ],
-        "parameters": [
-            "durationSeconds": 4,
-            "generateAudio": false,
-            "sampleCount": 1,
-        ],
-    ]
-)
-
-print(result.output)
-```
-
 ```bash cURL
 curl https://api.comfy.org/v2/models/veo/veo-3.0-generate-001 \
   -H "X-API-Key: $COMFY_API_KEY" \
@@ -107,37 +81,41 @@ curl https://api.comfy.org/v2/models/veo/veo-3.0-generate-001 \
 同じボディを `POST https://api.comfy.org/v2/models/veo/veo-3.0-generate-001/requests` に送信します。Router は実行が受け付けられるとすぐに `request_id` とともに `201` を返し、結果は準備ができ次第、このプロセスからでも別のプロセスからでも収集できます。[キュー配信](/ja/development/comfy-router/queue)では、ステータス、キャンセル、収集について順を追って説明します。
 
 ```python Python
-from comfy_sdk import Comfy
+import asyncio
+from comfy_sdk import AsyncComfy
 
-# 環境変数 COMFY_API_KEY を読み取ります。
+# 環境変数から COMFY_API_KEY を読み取ります。
 # 各 submit() 呼び出しは独自の Idempotency-Key を発行し、自動リトライのために再利用します。
-with Comfy() as client:
-    handle = client.models.submit(
-        "veo/veo-3.0-generate-001",
-        {
-            "instances": [
-                {
-                    "prompt": "a single red maple leaf falling onto still water, slow motion",
+async def main():
+    async with AsyncComfy() as client:
+        handle = await client.models.submit(
+            "veo/veo-3.0-generate-001",
+            {
+                "instances": [
+                    {
+                        "prompt": "a single red maple leaf falling onto still water, slow motion",
+                    },
+                ],
+                "parameters": {
+                    "durationSeconds": 4,
+                    "generateAudio": False,
+                    "sampleCount": 1,
                 },
-            ],
-            "parameters": {
-                "durationSeconds": 4,
-                "generateAudio": False,
-                "sampleCount": 1,
             },
-        },
-    )
-    print("request_id:", handle.request_id)  # モデル ID と合わせて、別のプロセスに必要なのはこれだけです
+        )
+        print("request_id:", handle.request_id)  # モデル ID と合わせて、別のプロセスに必要なのはこれだけです
 
-    # リクエストが完了するまでポーリングし、サーバーが指定する Retry-After だけ待機します。
-    for update in handle.iter_events():
-        print(update.status, update.queue_position)
+        # リクエストが完了するまでポーリングし、サーバーが指定する Retry-After だけ待機します。
+        async for update in handle.iter_events():
+            print(update.status, update.queue_position)
 
-    # プロバイダー自身のペイロードで、models.run() が返す値と同じです。
-    # 失敗またはキャンセル済みのリクエストは、ここで型付きの Router エラーを発生させます。
-    result = handle.get()
+        # プロバイダー自身のペイロードで、models.run() が返す値と同じです。
+        # 失敗またはキャンセル済みのリクエストは、ここで型付きの Router エラーを発生させます。
+        result = await handle.get()
 
-print(result)
+    print(result)
+
+asyncio.run(main())
 ```
 
 ```typescript TypeScript
@@ -168,42 +146,6 @@ for await (const update of handle.events()) {
 const result = await handle.get();
 
 console.log(result.data);
-```
-
-```swift Swift
-import Foundation
-import ComfySwiftSDK
-
-// 環境変数 COMFY_API_KEY を読み取ります。
-// 各 submit() 呼び出しは独自の Idempotency-Key を発行し、自動リトライのために再利用します。
-let client = ComfyCloudClient(apiKey: ProcessInfo.processInfo.environment["COMFY_API_KEY"]!)
-let handle = try await client.models.submit(
-    "veo/veo-3.0-generate-001",
-    input: [
-        "instances": [
-            [
-                "prompt": "a single red maple leaf falling onto still water, slow motion",
-            ],
-        ],
-        "parameters": [
-            "durationSeconds": 4,
-            "generateAudio": false,
-            "sampleCount": 1,
-        ],
-    ]
-)
-print("requestId:", handle.requestId)  // モデル ID と合わせて、別のプロセスに必要なのはこれだけです
-
-// リクエストが完了するまでポーリングし、サーバーが指定する Retry-After だけ待機します。
-for try await update in handle.events() {
-    print(update.state.rawValue, update.queuePosition.map(String.init) ?? "unknown")
-}
-
-// プロバイダー自身のペイロードで、models.run() が返す値と同じです。
-// 失敗またはキャンセル済みのリクエストは、ここで型付きの Router エラーをスローします。
-let result = try await handle.result()
-
-print(result.output)
 ```
 
 ```bash cURL
@@ -443,6 +385,7 @@ curl https://api.comfy.org/v2/models/veo/veo-3.0-generate-001/requests/$REQUEST_
 </ParamField>
 
 Router が `GET /v2/models/veo/veo-3.0-generate-001/openapi.json` で提供するスキーマから生成されています。これは、リクエストがプロバイダーに到達する前に Router が呼び出しを検証する際に使用するドキュメントと同じものです。
+
 ### 出力
 
 <ResponseField name="done" type="boolean">
@@ -497,7 +440,7 @@ Router が `GET /v2/models/veo/veo-3.0-generate-001/openapi.json` で提供す�
   ビデオの MIME タイプ（video/mp4）
 </ResponseField>
 
-## 例 {#examples}
+## 例
 
 ### 入力
 

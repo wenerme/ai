@@ -24,7 +24,7 @@ When we detect an HTML file, a series of things happen to the HTML content befor
 
 - Some elements are ignored, including `script` and `style` tags.
 - Meta tags are extracted. These include `title`, `description`, `og:title`, `og:description` and `og:image`.
-- [JSON-LD ↗](https://json-ld.org/) content is extracted, if it exists. This will be appended at the end of the converted markdown.
+- [JSON-LD ↗︎](https://json-ld.org/) content is extracted, if it exists. This will be appended at the end of the converted markdown.
 - The base URL to use for resolving relative links is extracted from the `<base>` element<sup>1</sup>, if it exists, according to the spec (that is, only the first instance of the base URL is counted).
 - If the `cssSelector` option is:
   - present, then only those elements that match the selector are kept for further processing;
@@ -54,7 +54,7 @@ Afterwards:
 
 - Metadata is extracted. This can be removed from the final result. Refer to [Conversion Options](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/#pdf) for more details.
 - Each page is parsed in sequence.
-- We try to obtain a `StructTree` object from the PDF file. This data structure is a tree of tagged elements that make up the PDF contents, as specified by [ISO 14289 (PDF/UA) ↗](https://www.iso.org/standard/64599.html).
+- We try to obtain a `StructTree` object from the PDF file. This data structure is a tree of tagged elements that make up the PDF contents, as specified by [ISO 14289 (PDF/UA) ↗︎](https://www.iso.org/standard/64599.html).
 - If none is obtained, we extract the text of the page *as-is* and return it.
 - If we manage to obtain a `StructTree`, we traverse its nodes to build a semantic Markdown representation of its contents.
 

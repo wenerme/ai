@@ -20,7 +20,7 @@ Access policies define the users who can log in to your Access applications. You
 
 To create a reusable Access policy:
 
-1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
+1. In [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Select **Add a policy**.
 3. Enter a **Policy name**.
 4. Choose an [**Action**](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/#actions) for the policy.
@@ -39,7 +39,7 @@ You can now add this policy to an [Access application](https://developers.cloudf
 
 To make changes to an existing Access policy:
 
-1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
+1. In [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Locate the policy you want to update and select **Configure**.
 3. Once you have made the necessary changes, select **Save**.
 
@@ -49,7 +49,7 @@ The updated policy is now in effect for all associated Access applications.
 
 To delete a reusable Access policy:
 
-1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies** and locate the policy you want to delete.
+1. In [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies** and locate the policy you want to delete.
 2. If the policy is used by an application, remove the policy from all associated applications.
 3. Select **Delete**.
 4. A pop-up message will ask you to confirm your decision to delete the policy. Select **Delete**.
@@ -66,7 +66,7 @@ The Access policy builder allows you to test your rules before saving any change
 
 To test an individual Access policy:
 
-1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
+1. In [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Locate the policy you want to test and select **Configure**.
 3. Go to **Policy tester** and select **Test policies**.
 
@@ -78,7 +78,7 @@ You can test your Access application policies against your user population befor
 
 To test if users have access to an application:
 
-1. In [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the application you want to test and select **Configure**.
 3. Go to **Policies** > **Policy tester**.
 4. To test all active users in your organization, select **Test policies**.

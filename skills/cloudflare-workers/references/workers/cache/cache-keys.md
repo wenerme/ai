@@ -35,7 +35,7 @@ As anti-cache-poisoning measures, the key also includes:
 - The `x-forwarded-host`, `x-host`, `x-forwarded-scheme` (unless its value is `http` or `https`), `x-original-url`, `x-rewrite-url`, and `forwarded` request headers.
 - The value of the `Cloudflare-Workers-Version-Key` request header. This header is not set by Cloudflare automatically — it is only meaningful if a caller (for example, an upstream Worker or proxy) chooses to include it to explicitly partition the cache further. This is independent of the automatic per-version keying described above, which is controlled by [`cache.cross_version_cache`](https://developers.cloudflare.com/workers/cache/configuration/#cross-version-caching).
 
-These three bullets are not something you should normally need to reason about. Some frameworks interpret the method-override and URL-rewrite headers as overriding the effective method or URL of a request, which can lead to [cache poisoning ↗](https://portswigger.net/research/practical-web-cache-poisoning) if two requests differ only in those headers but produce materially different responses. Including them in the cache key ensures a poisoned entry only affects requests that carry the same poisoned header.
+These three bullets are not something you should normally need to reason about. Some frameworks interpret the method-override and URL-rewrite headers as overriding the effective method or URL of a request, which can lead to [cache poisoning ↗︎](https://portswigger.net/research/practical-web-cache-poisoning) if two requests differ only in those headers but produce materially different responses. Including them in the cache key ensures a poisoned entry only affects requests that carry the same poisoned header.
 
 Requests that differ only in request headers that are not part of the cache key (for example, `User-Agent`, `Accept-Language`, `Cookie`, or `Authorization`) return the same cached response. This is usually what you want — you do not want every user agent string or language preference producing a separate cache entry. If you do need content negotiation, set [`Vary`](https://developers.cloudflare.com/workers/cache/configuration/#vary) on the response, or handle it inside your Worker and produce a canonical response per URL.
 
@@ -302,7 +302,7 @@ In this pattern the default entrypoint is a gateway that should run on every req
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -315,7 +315,7 @@ In this pattern the default entrypoint is a gateway that should run on every req
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [cache]
 enabled = true

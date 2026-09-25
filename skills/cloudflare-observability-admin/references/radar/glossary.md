@@ -18,7 +18,7 @@ This page provides a list of terms and concepts to help you understand Radar and
 
 ## AI bot and crawler traffic
 
-HTTP request activity from user agents associated with AI assistants, AI data scrapers, and AI search crawlers. This information is normalized to show trends in traffic volume, providing insights into the activity levels of AI-driven web interactions over time. User agents included in this analysis are derived from the AI-focused user agents listed in the [ai.robots.txt ↗](https://github.com/ai-robots-txt/ai.robots.txt) repository.
+HTTP request activity from user agents associated with AI assistants, AI data scrapers, and AI search crawlers. This information is normalized to show trends in traffic volume, providing insights into the activity levels of AI-driven web interactions over time. User agents included in this analysis are derived from the AI-focused user agents listed in the [ai.robots.txt ↗︎](https://github.com/ai-robots-txt/ai.robots.txt) repository.
 
 ## Application-level attacks
 
@@ -26,29 +26,29 @@ Layer 7 attack information based on mitigated requests, including the most frequ
 
 ## Authentication methods
 
-[SPF ↗](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#spf), [DKIM ↗](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#dkim), and [DMARC ↗](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#dmarc) are policy-driven email authentication methods and when used together, they help prevent spammers, phishers, and other unauthorized parties from sending emails on behalf of a domain they do not own. PASS is the share of processed messages that pass the associated checks. FAIL is the share of processed messages that fail the associated checks. NONE is the share of processed messages for which no associated policy could be found. Data for these metrics comes from Cloudflare’s email routing service.
+[SPF ↗︎](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#spf), [DKIM ↗︎](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#dkim), and [DMARC ↗︎](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#dmarc) are policy-driven email authentication methods and when used together, they help prevent spammers, phishers, and other unauthorized parties from sending emails on behalf of a domain they do not own. PASS is the share of processed messages that pass the associated checks. FAIL is the share of processed messages that fail the associated checks. NONE is the share of processed messages for which no associated policy could be found. Data for these metrics comes from Cloudflare’s email routing service.
 
 ## Autonomous systems
 
 The Internet is a network of networks, and autonomous systems are the networks that make up the Internet. More specifically, an autonomous system (AS) is a large network or group of networks that has a unified routing policy - the process by which a path through one or more networks is chosen.
 
-Data packets hop from one AS to another until they reach their final destination. Every computer or device that connects to the Internet is connected to an AS. ISPs have one or more ASes, and each AS is assigned an official Autonomous System Number (ASN) for use in Border Gateway Protocol (BGP) routing. For example, Cloudflare's ASN is AS13335. Learn more in the [Cloudflare Learning Center ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/).
+Data packets hop from one AS to another until they reach their final destination. Every computer or device that connects to the Internet is connected to an AS. ISPs have one or more ASes, and each AS is assigned an official Autonomous System Number (ASN) for use in Border Gateway Protocol (BGP) routing. For example, Cloudflare's ASN is AS13335. Learn more in the [Cloudflare Learning Center ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/).
 
 ## Autonomous System Provider Authorization (ASPA)
 
-[Autonomous System Provider Authorization (ASPA) ↗](https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification/) is a cryptographic object within the [Resource Public Key Infrastructure (RPKI) ↗](https://en.wikipedia.org/wiki/Resource_Public_Key_Infrastructure) that extends route security beyond origin validation. While RPKI Route Origin Authorizations (ROAs) verify which [Autonomous System (AS) ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) is authorized to originate a prefix, ASPA validates the BGP `AS_PATH` by allowing an AS to declare its authorized upstream transit providers, enabling detection of route leaks and certain BGP hijacks with forged path segments.
+[Autonomous System Provider Authorization (ASPA) ↗︎](https://datatracker.ietf.org/doc/draft-ietf-sidrops-aspa-verification/) is a cryptographic object within the [Resource Public Key Infrastructure (RPKI) ↗︎](https://en.wikipedia.org/wiki/Resource_Public_Key_Infrastructure) that extends route security beyond origin validation. While RPKI Route Origin Authorizations (ROAs) verify which [Autonomous System (AS) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) is authorized to originate a prefix, ASPA validates the BGP `AS_PATH` by allowing an AS to declare its authorized upstream transit providers, enabling detection of route leaks and certain BGP hijacks with forged path segments.
 
-Each ASPA record is created by a **Customer AS (CAS)** and lists a **Set of Provider ASes (SPAS)** authorized to propagate its routes upstream. Routers use these Customer-to-Provider relationships to evaluate whether a BGP `AS_PATH` is consistent with the legitimate routing topology, producing a verification outcome of `Valid`, `Invalid`, or `Unknown`. Although the IETF specification remains in draft, support for creating ASPA objects is available in RIR portals such as [ARIN ↗](https://www.arin.net/announcements/20260120/) and [RIPE NCC ↗](https://labs.ripe.net/author/tim_bruijnzeels/aspa-in-the-rpki-dashboard-a-new-layer-of-routing-security/), and validation logic has been implemented in routing stacks including [OpenBGPD ↗](https://www.undeadly.org/cgi?action=article;sid=20231002135058) and [BIRD ↗](https://bird.network.cz/?get_doc&v=20&f=bird-5.html).
+Each ASPA record is created by a **Customer AS (CAS)** and lists a **Set of Provider ASes (SPAS)** authorized to propagate its routes upstream. Routers use these Customer-to-Provider relationships to evaluate whether a BGP `AS_PATH` is consistent with the legitimate routing topology, producing a verification outcome of `Valid`, `Invalid`, or `Unknown`. Although the IETF specification remains in draft, support for creating ASPA objects is available in RIR portals such as [ARIN ↗︎](https://www.arin.net/announcements/20260120/) and [RIPE NCC ↗︎](https://labs.ripe.net/author/tim_bruijnzeels/aspa-in-the-rpki-dashboard-a-new-layer-of-routing-security/), and validation logic has been implemented in routing stacks including [OpenBGPD ↗︎](https://www.undeadly.org/cgi?action=article;sid=20231002135058) and [BIRD ↗︎](https://bird.network.cz/?get_doc&v=20&f=bird-5.html).
 
 ## BGP announcements
 
-Border Gateway Protocol (BGP) is the routing protocol for the Internet. Much like the post office processing mail, BGP picks the most efficient routes for delivering Internet traffic. A BGP announcement is a way for an AS to say to another, "When you receive traffic to this network prefix, please send it to me". That message is then processed and (possibly) forwarded to other ASes, allowing for every AS in the path to learn where to send traffic to that network prefix. Learn more in the [Cloudflare Learning Center ↗](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/).
+Border Gateway Protocol (BGP) is the routing protocol for the Internet. Much like the post office processing mail, BGP picks the most efficient routes for delivering Internet traffic. A BGP announcement is a way for an AS to say to another, "When you receive traffic to this network prefix, please send it to me". That message is then processed and (possibly) forwarded to other ASes, allowing for every AS in the path to learn where to send traffic to that network prefix. Learn more in the [Cloudflare Learning Center ↗︎](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/).
 
 On Cloudflare Radar, we provide time series charts for both the volume of BGP messages announced by ASes and the total size of their announced IP address space. BGP message volume shows the level of overall routing activity for a given AS, while announced IP address space indicates the size of the networks a given AS operates over time. We represent the IP address space size with the number of minimum routable network prefix sizes, which are the number of /24 prefixes for IPv4 and /48s for IPv6. Correspondingly, a /24 prefix represents 256 IP addresses while a /48 represents 2^80 IP addresses.
 
 ## BGP route leaks
 
-[BGP route leaks ↗](https://www.rfc-editor.org/rfc/rfc7908.html) are defined as the propagation of routing announcements beyond their intended scope. In Cloudflare Radar, you can inspect the detected route leak events on the corresponding autonomous system number (ASN) pages. The columns in the table are defined as follows:
+[BGP route leaks ↗︎](https://www.rfc-editor.org/rfc/rfc7908.html) are defined as the propagation of routing announcements beyond their intended scope. In Cloudflare Radar, you can inspect the detected route leak events on the corresponding autonomous system number (ASN) pages. The columns in the table are defined as follows:
 
 - `From`: The autonomous system (AS) from which the routes are learned from.
 - `By`: The AS that leaked the routes, or the leaker.
@@ -59,11 +59,11 @@ On Cloudflare Radar, we provide time series charts for both the volume of BGP me
 - `Origins`: The number of origin ASes a route leak event affects.
 - `Vantage Points`: The number of route collectors that observed a route leak event.
 
-Learn more about our route leak detection system design and usages in [How we detect route leaks and our new Cloudflare Radar route leak service ↗](https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar/) blog post.
+Learn more about our route leak detection system design and usages in [How we detect route leaks and our new Cloudflare Radar route leak service ↗︎](https://blog.cloudflare.com/route-leak-detection-with-cloudflare-radar/) blog post.
 
 ## BGP origin hijacks
 
-[BGP origin hijack ↗](https://www.cloudflare.com/learning/security/glossary/bgp-hijacking/) is one type of BGP anomaly where networks falsely announce ownership for groups of IP addresses (prefixes) that they do not own, control, or route to. A BGP origin hijack can redirect Internet traffic to the hijacker from its legitimate destination, causing data loss with potential leak of private/confidential information.
+[BGP origin hijack ↗︎](https://www.cloudflare.com/learning/security/glossary/bgp-hijacking/) is one type of BGP anomaly where networks falsely announce ownership for groups of IP addresses (prefixes) that they do not own, control, or route to. A BGP origin hijack can redirect Internet traffic to the hijacker from its legitimate destination, causing data loss with potential leak of private/confidential information.
 
 In Cloudflare Radar, you can inspect the detected BGP origin hijack events in the "BGP Origin Hijacks" table. The columns of the table are defined as follows:
 
@@ -76,17 +76,17 @@ In Cloudflare Radar, you can inspect the detected BGP origin hijack events in th
 - `Confidence`: The level of confidence that we have on the event being a true hijacks. Values can be `High`, `Medium`, or `Low`.
 - `Tags`: The relevant evidence presented as short tags, presenting key facts we compiled using additional data sources, such as RPKI validation results or network relationship.
 
-You can also access the detection result programmatically via our [public API](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/hijacks/subresources/events/methods/list/) ([CC BY-NC 4.0 ↗](https://creativecommons.org/licenses/by-nc/4.0/) license).
+You can also access the detection result programmatically via our [public API](https://developers.cloudflare.com/api/resources/radar/subresources/bgp/subresources/hijacks/subresources/events/methods/list/) ([CC BY-NC 4.0 ↗︎](https://creativecommons.org/licenses/by-nc/4.0/) license).
 
 ## BGP real-time routes
 
-Cloudflare Radar's prefix routing page displays real-time BGP routes as a [Sankey diagram ↗](https://en.wikipedia.org/wiki/Sankey_diagram). This visualization is built using MRT data from [RouteViews ↗](https://www.routeviews.org/routeviews/) and [RIPE RIS ↗](https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris/), combined with real-time streams from RouteViews' Kafka instance and [RIS Live ↗](https://ris-live.ripe.net/).
+Cloudflare Radar's prefix routing page displays real-time BGP routes as a [Sankey diagram ↗︎](https://en.wikipedia.org/wiki/Sankey_diagram). This visualization is built using MRT data from [RouteViews ↗︎](https://www.routeviews.org/routeviews/) and [RIPE RIS ↗︎](https://www.ripe.net/analyse/internet-measurements/routing-information-service-ris/), combined with real-time streams from RouteViews' Kafka instance and [RIS Live ↗︎](https://ris-live.ripe.net/).
 
-By default, the route visualization shows paths from the originating AS to [Tier-1 networks ↗](https://en.wikipedia.org/wiki/Tier_1_network), omitting the segments from Tier-1 networks to BGP route collectors for clarity. Users can choose to see the complete paths using the "Show full paths" toggle.
+By default, the route visualization shows paths from the originating AS to [Tier-1 networks ↗︎](https://en.wikipedia.org/wiki/Tier_1_network), omitting the segments from Tier-1 networks to BGP route collectors for clarity. Users can choose to see the complete paths using the "Show full paths" toggle.
 
-Above the visualization, a table details the prefix origin, including the originating AS, its visibility percentage across route collectors, and [RPKI ↗](https://blog.cloudflare.com/rpki-details/) validation status (`valid`, `invalid`, `unknown`).
+Above the visualization, a table details the prefix origin, including the originating AS, its visibility percentage across route collectors, and [RPKI ↗︎](https://blog.cloudflare.com/rpki-details/) validation status (`valid`, `invalid`, `unknown`).
 
-Hovering over a link in the diagram reveals a tooltip with the connected ASNs, the observing BGP route collectors (from [RIPE RIS ↗](https://ris.ripe.net/docs/route-collectors/) and [RouteViews ↗](https://www.routeviews.org/routeviews/collectors/)), and the last update timestamp.
+Hovering over a link in the diagram reveals a tooltip with the connected ASNs, the observing BGP route collectors (from [RIPE RIS ↗︎](https://ris.ripe.net/docs/route-collectors/) and [RouteViews ↗︎](https://www.routeviews.org/routeviews/collectors/)), and the last update timestamp.
 
 ## Bot vs. human traffic
 
@@ -100,11 +100,11 @@ Encryption is a critical part of a safe Internet. SSL/TLS is the standard securi
 
 In Cloudflare Radar, you can view all certificates issued for a given domain by a trusted Certificate Authority that are listed in active certificate transparency logs.
 
-You can review the certificates issued for your domain name to ensure that there have been no incorrect or fraudulent issuances of certificates associated with your domains. You can also sign up to receive alerts from our certificate transparency monitor in the [Cloudflare Dashboard ↗](https://dash.cloudflare.com/).
+You can review the certificates issued for your domain name to ensure that there have been no incorrect or fraudulent issuances of certificates associated with your domains. You can also sign up to receive alerts from our certificate transparency monitor in the [Cloudflare Dashboard ↗︎](https://dash.cloudflare.com/).
 
 ## Certificate Transparency
 
-[Certificate Transparency (CT) ↗](https://certificate.transparency.dev/) is an Internet security standard for monitoring and auditing the issuance of digital certificates issued by Certification Authorities (CAs). CT helps detect misissued or malicious certificates by requiring CAs to publicly log all certificates they issue in append-only, verifiable logs. These logs are monitored by various entities, including browsers and security researchers, to ensure transparency and trust in the certificate ecosystem.
+[Certificate Transparency (CT) ↗︎](https://certificate.transparency.dev/) is an Internet security standard for monitoring and auditing the issuance of digital certificates issued by Certification Authorities (CAs). CT helps detect misissued or malicious certificates by requiring CAs to publicly log all certificates they issue in append-only, verifiable logs. These logs are monitored by various entities, including browsers and security researchers, to ensure transparency and trust in the certificate ecosystem.
 
 Key entities in CT include:
 
@@ -120,7 +120,7 @@ Share of inbound connections to Cloudflare from mail transfer agents with the gi
 
 ## Connection quality
 
-Connection quality metrics include download and upload speed, latency (round-trip time), and latency jitter (round-trip time stability), reflecting the best expected performance for specific countries or ASNs. These metrics are derived from speed tests initiated by end users on the [Cloudflare Speed Test website ↗](https://speed.cloudflare.com/), aggregated over the previous 90 days. The underlying raw data is freely accessible for analysis through [Measurement Lab's BigQuery ↗](https://blog.cloudflare.com/aim-database-for-internet-quality/).
+Connection quality metrics include download and upload speed, latency (round-trip time), and latency jitter (round-trip time stability), reflecting the best expected performance for specific countries or ASNs. These metrics are derived from speed tests initiated by end users on the [Cloudflare Speed Test website ↗︎](https://speed.cloudflare.com/), aggregated over the previous 90 days. The underlying raw data is freely accessible for analysis through [Measurement Lab's BigQuery ↗︎](https://blog.cloudflare.com/aim-database-for-internet-quality/).
 
 In speed, latency, and jitter rankings, only countries where users run speed tests with sufficient regularity are included. Consequently, certain countries may be excluded from the rankings, even though their data can be found in other sections of Radar.
 
@@ -130,27 +130,27 @@ Cloudflare Speed Test measures latency multiple times over the course of the tes
 
 Cloudflare uses a variety of data sources to categorize domains. Using Cloudflare Radar, you can view the content categories associated with a given domain. Cloudflare customers using [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/) or [1.1.1.1 for Families](https://developers.cloudflare.com/1.1.1.1/setup/#1111-for-families) can decide to block certain categories, like "Adult Content", in addition to security threats like malware and phishing.
 
-In some cases, a domain may be miscategorized. For example, a social media site might be categorized as "Shopping & Auctions". If you believe a domain is miscategorized, or a domain has not yet been categorized, please provide your suggested category using [this form ↗](https://radar.cloudflare.com/domains/feedback) to bring it to our attention.
+In some cases, a domain may be miscategorized. For example, a social media site might be categorized as "Shopping & Auctions". If you believe a domain is miscategorized, or a domain has not yet been categorized, please provide your suggested category using [this form ↗︎](https://radar.cloudflare.com/domains/feedback) to bring it to our attention.
 
 ## DNS
 
-The [Domain Name System (DNS) ↗](https://www.cloudflare.com/learning/dns/what-is-dns/) is a network service that is most commonly used to translate human-readable domain names into numerical IP addresses that computers can use to talk to each other. It is an essential Internet service, and is also used to look up other network-related information.
+The [Domain Name System (DNS) ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/) is a network service that is most commonly used to translate human-readable domain names into numerical IP addresses that computers can use to talk to each other. It is an essential Internet service, and is also used to look up other network-related information.
 
 The data displayed on Radar for DNS is based on aggregated and anonymized DNS lookups to Cloudflare's [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/) public resolver service.
 
 ## DNS magnitude
 
-DNS Magnitude is a metric originally developed by [nic.at ↗](https://www.nic.at/media/files/pdf/dns-magnitude-paper-20200601.pdf) (PDF) to estimate a domain’s overall visibility on the Internet.
+DNS Magnitude is a metric originally developed by [nic.at ↗︎](https://www.nic.at/media/files/pdf/dns-magnitude-paper-20200601.pdf) (PDF) to estimate a domain’s overall visibility on the Internet.
 
 Instead of only counting the total number of DNS queries, DNS Magnitude incorporates a sense of how many unique clients send queries to domains within the TLD. This approach gives a more accurate picture of a TLD’s reach, since a small number of sources can generate a large number of queries. Our ranking is based on queries observed at Cloudflare’s [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/) public resolver. We aggregate individual client IP addresses into subnets, referred to here as "networks".
 
 The magnitude value ranges from 0 to 10, with higher values (closer to 10) indicating that the TLD is queried by a broader range of networks.
 
-This reflects greater global visibility and, in some cases, a higher likelihood of name collision across different systems. [According to ICANN ↗](https://www.icann.org/resources/pages/name-collision-2013-12-06-en), a name collision occurs when an attempt to resolve a name used in a private name space (such as under a non-delegated Top-Level Domain) results in a query to the public DNS. When the administrative boundaries of private and public namespaces overlap, name resolution may yield unintended or harmful results. For example, if ICANN were to delegate `.home`, that could cause significant issues for hobbyists that use the (currently non-delegated) TLD within their local networks.
+This reflects greater global visibility and, in some cases, a higher likelihood of name collision across different systems. [According to ICANN ↗︎](https://www.icann.org/resources/pages/name-collision-2013-12-06-en), a name collision occurs when an attempt to resolve a name used in a private name space (such as under a non-delegated Top-Level Domain) results in a query to the public DNS. When the administrative boundaries of private and public namespaces overlap, name resolution may yield unintended or harmful results. For example, if ICANN were to delegate `.home`, that could cause significant issues for hobbyists that use the (currently non-delegated) TLD within their local networks.
 
 ## Domain rankings
 
-Domain Rankings is based on our anonymized and aggregated [1.1.1.1 DNS resolver](https://developers.cloudflare.com/1.1.1.1/) data, complies with our [privacy policy ↗](https://www.cloudflare.com/en-gb/privacypolicy/), and aims to identify the top most popular domains that reflect how people use the Internet globally. Domain Rankings’ popularity metric is best described as the estimated number of unique users that access a domain over some period of time.
+Domain Rankings is based on our anonymized and aggregated [1.1.1.1 DNS resolver](https://developers.cloudflare.com/1.1.1.1/) data, complies with our [privacy policy ↗︎](https://www.cloudflare.com/en-gb/privacypolicy/), and aims to identify the top most popular domains that reflect how people use the Internet globally. Domain Rankings’ popularity metric is best described as the estimated number of unique users that access a domain over some period of time.
 
 Trending domains are domains which are currently experiencing an increase in popularity. Domains Trending Today are domains spiking in popularity, reflecting increased interest potentially related to a particular event or a topic. Domains Trending This Week are domains that have steadily grown in popularity, reflecting an increase of their user base over the week.
 
@@ -160,19 +160,19 @@ Countries contributing traffic to this AS, and their relative contribution as pe
 
 ## HTTP origins
 
-HTTP origins trends provide visibility into the status of traffic between [Cloudflare's global network ↗](https://www.cloudflare.com/network/) and cloud-based [origin infrastructure ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server/). This data comes from requests sent by Cloudflare to origin servers. The metrics track key indicators such as HTTP status codes, response times, and traffic volume over time, allowing us to identify degradations, outages, or anomalies in origin server performance and availability.
+HTTP origins trends provide visibility into the status of traffic between [Cloudflare's global network ↗︎](https://www.cloudflare.com/network/) and cloud-based [origin infrastructure ↗︎](https://www.cloudflare.com/learning/cdn/glossary/origin-server/). This data comes from requests sent by Cloudflare to origin servers. The metrics track key indicators such as HTTP status codes, response times, and traffic volume over time, allowing us to identify degradations, outages, or anomalies in origin server performance and availability.
 
 Measurements are aggregated across requests from all Cloudflare data centers made to cloud-based origin infrastructure. Performance data is median-based (p50) for all views, including overall and provider-level breakdowns. Region-specific views additionally show quartile distributions (25th, 50th, and 75th percentiles).
 
 ## Internet outages
 
-Internet connectivity can experience outages or disruptions due to a number of factors. These factors include power outages, damage to fiber optic cables, severe weather, natural disasters, or government directed shutdowns. Outages may be sub-national or national in geographic scope, or may impact one or more [ASNs ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/). Some outages may be brief, lasting just a few minutes, while others can stretch on for months — the duration can be related, in part, to the underlying cause. Internet outages listed in the Cloudflare Radar Outage Center are notable drops in traffic that have generally been corroborated with third party-information, which may include a social media or status page post from a telecommunications provider, a news report, or industry/community mailing lists.
+Internet connectivity can experience outages or disruptions due to a number of factors. These factors include power outages, damage to fiber optic cables, severe weather, natural disasters, or government directed shutdowns. Outages may be sub-national or national in geographic scope, or may impact one or more [ASNs ↗︎](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/). Some outages may be brief, lasting just a few minutes, while others can stretch on for months — the duration can be related, in part, to the underlying cause. Internet outages listed in the Cloudflare Radar Outage Center are notable drops in traffic that have generally been corroborated with third party-information, which may include a social media or status page post from a telecommunications provider, a news report, or industry/community mailing lists.
 
-An early warning signal that an Internet outage may be underway on a given network or in a given country is an anomalous drop in traffic as compared to historical traffic patterns and trends. Internet anomalies listed in the Cloudflare Radar Outage Center represent an algorithmically-observed anomalous drop in traffic for the listed entity. If a given entry is marked as verified, it means that we have manually corroborated the observed drop in traffic across multiple Cloudflare data sources and/or third-party sources such as [IODA ↗](https://ioda.inetintel.cc.gatech.edu/), or third-party sources of information, such as those listed above. In the case of the latter, an associated Internet outage event will be opened, with the event listed in the Internet Outages table (and API).
+An early warning signal that an Internet outage may be underway on a given network or in a given country is an anomalous drop in traffic as compared to historical traffic patterns and trends. Internet anomalies listed in the Cloudflare Radar Outage Center represent an algorithmically-observed anomalous drop in traffic for the listed entity. If a given entry is marked as verified, it means that we have manually corroborated the observed drop in traffic across multiple Cloudflare data sources and/or third-party sources such as [IODA ↗︎](https://ioda.inetintel.cc.gatech.edu/), or third-party sources of information, such as those listed above. In the case of the latter, an associated Internet outage event will be opened, with the event listed in the Internet Outages table (and API).
 
 ## Internet services ranking
 
-Internet services ranking is based on our anonymized and aggregated [1.1.1.1 DNS resolver](https://developers.cloudflare.com/1.1.1.1/) data, complies with our [privacy policy ↗](https://www.cloudflare.com/en-gb/privacypolicy/), and aims to identify the top most popular Internet services that reflect how people use the Internet globally. A service represents one or more domains aggregated together. Ranking popularity metric is best described as the estimated number of unique users that access domains associated with a service, over some period of time.
+Internet services ranking is based on our anonymized and aggregated [1.1.1.1 DNS resolver](https://developers.cloudflare.com/1.1.1.1/) data, complies with our [privacy policy ↗︎](https://www.cloudflare.com/en-gb/privacypolicy/), and aims to identify the top most popular Internet services that reflect how people use the Internet globally. A service represents one or more domains aggregated together. Ranking popularity metric is best described as the estimated number of unique users that access domains associated with a service, over some period of time.
 
 ## Internet traffic trends
 
@@ -202,7 +202,7 @@ The IQI methodology requires a minimum number of measurements to generate estima
 
 An IRR AS-SET is a named collection of Autonomous System Numbers (ASNs) within the Internet Routing Registry (IRR) used to define and manage BGP routing policies. By grouping related networks, such as customers and downstream peers, under a single identifier, network operators can automate the creation of BGP filters, which are essential for preventing the propagation of BGP route leaks. AS-SETs can be hierarchical, meaning they can include other AS-SETs as members, creating a scalable but complex structure. To quantify this complexity, the "AS Cone" measures the total number of unique ASNs in a fully expanded set (its downstream footprint), while "Upstreams" measures how many other AS-SETs include it directly or indirectly, providing insight into its role in the global routing system.
 
-An AS-SET does not inherently includes its owner networks. Cloudflare Radar infers the owner by matching the AS-SET name on [PeeringDB ↗](https://www.peeringdb.com/) or by the name itself. When an AS-SET's owner can be inferred via both methods, we prefer the PeeringDB information.
+An AS-SET does not inherently includes its owner networks. Cloudflare Radar infers the owner by matching the AS-SET name on [PeeringDB ↗︎](https://www.peeringdb.com/) or by the name itself. When an AS-SET's owner can be inferred via both methods, we prefer the PeeringDB information.
 
 ## Leaked credentials
 
@@ -214,7 +214,7 @@ The Mobile Operating Systems graph shows the distribution of mobile device reque
 
 ## Most observed TLDs
 
-[Top-level domains, also known as TLDs ↗](https://www.cloudflare.com/learning/dns/top-level-domain/), are found in the right-most portion of a hostname. As of February 2024, there are nearly 1600 Top Level Domains listed in the [IANA Root Zone Database ↗](https://www.iana.org/domains/root/db). On Radar, we are sharing our own perspective on these TLDs, highlighting those with the largest shares of spam and malicious emails. The analysis is based on the sending domain’s TLD, found in the `From:` header of an email message. Data for this metric comes from Cloudflare’s cloud email security service.
+[Top-level domains, also known as TLDs ↗︎](https://www.cloudflare.com/learning/dns/top-level-domain/), are found in the right-most portion of a hostname. As of February 2024, there are nearly 1600 Top Level Domains listed in the [IANA Root Zone Database ↗︎](https://www.iana.org/domains/root/db). On Radar, we are sharing our own perspective on these TLDs, highlighting those with the largest shares of spam and malicious emails. The analysis is based on the sending domain’s TLD, found in the `From:` header of an email message. Data for this metric comes from Cloudflare’s cloud email security service.
 
 ## Network-level DDoS attacks
 
@@ -226,7 +226,7 @@ Network-level DDoS attacks graphs are based on traffic measured in bytes.
 
 ## Post-quantum encryption adoption
 
-The Post-Quantum Encryption Adoption graph shows the share of HTTPS requests to Cloudflare that are encrypted with post-quantum (PQ) cryptography. Additional details about Cloudflare's support for PQ cryptography can be found at [Cloudflare Research ↗](https://pq.cloudflareresearch.com/).
+The Post-Quantum Encryption Adoption graph shows the share of HTTPS requests to Cloudflare that are encrypted with post-quantum (PQ) cryptography. Additional details about Cloudflare's support for PQ cryptography can be found at [Cloudflare Research ↗︎](https://pq.cloudflareresearch.com/).
 
 ## Post-quantum origin support
 
@@ -234,19 +234,19 @@ The post-quantum origin support dataset provides insights into the TLS key excha
 
 ## Robots.txt
 
-A [robots.txt ↗](https://www.cloudflare.com/learning/bots/what-is-robots-txt/) file contains instructions for bots that tell them which webpages they can and cannot access.
+A [robots.txt ↗︎](https://www.cloudflare.com/learning/bots/what-is-robots-txt/) file contains instructions for bots that tell them which webpages they can and cannot access.
 
 The data displayed for robots.txt is based on successfully parsed robots.txt files from the top 10,000 domains. From these files, we count the occurrences of each user agent under the `Allow` and `Disallow` directives. A user agent is classified as "fully allowed" or "fully disallowed" if the directive value is `*`. Otherwise, if the user agent is only allowed or disallowed to crawl specific paths, it is classified as "partially allowed" or "partially disallowed."
 
-Currently, we only include AI-focused user agents listed in the [ai.robots.txt ↗](https://github.com/ai-robots-txt/ai.robots.txt) repository.
+Currently, we only include AI-focused user agents listed in the [ai.robots.txt ↗︎](https://github.com/ai-robots-txt/ai.robots.txt) repository.
 
 ## TCP resets and timeouts
 
-In the Transmission Control Protocol (TCP), client-initiated connection resets (via the RST flag, TCP's "panic button") are atypical, and indicate to the server that *something went wrong* requiring the connection to be closed immediately. Similarly, connection timeouts (where the server closes a connection due to an unresponsive client) should not happen in conventional data exchanges. For comparison, a typical TCP connection consists of a 3-way handshake initiated by a client with a SYN packet to the server, then a data exchange moderated with ACK and PSH flags in the data packets, and finally a graceful close initiated from either side with a FIN packet. A FIN close is considered graceful because it ensures both sides complete their data transfer before closing the connection. In contrast, a timeout or RST flag triggers a hard stop, even if data is waiting to be sent or acknowledged. See [RFC 9293 ↗](https://datatracker.ietf.org/doc/html/rfc9293) for more details on the TCP protocol.
+In the Transmission Control Protocol (TCP), client-initiated connection resets (via the RST flag, TCP's "panic button") are atypical, and indicate to the server that *something went wrong* requiring the connection to be closed immediately. Similarly, connection timeouts (where the server closes a connection due to an unresponsive client) should not happen in conventional data exchanges. For comparison, a typical TCP connection consists of a 3-way handshake initiated by a client with a SYN packet to the server, then a data exchange moderated with ACK and PSH flags in the data packets, and finally a graceful close initiated from either side with a FIN packet. A FIN close is considered graceful because it ensures both sides complete their data transfer before closing the connection. In contrast, a timeout or RST flag triggers a hard stop, even if data is waiting to be sent or acknowledged. See [RFC 9293 ↗︎](https://datatracker.ietf.org/doc/html/rfc9293) for more details on the TCP protocol.
 
-A TCP server may see timed-out or reset connections for a variety of reasons. Some are benign, such as client applications that lose connectivity or abruptly shut down (e.g., browsers cleaning up closed tabs or port scanners). Others are more concerning, such as [DoS attacks ↗](https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/) or third-party interference. In some cases, a close examination of the packets in a connection can help to shed light on the reason for termination. For example, [Global, Passive Detection of Connection Tampering ↗](https://research.cloudflare.com/publications/SundaraRaman2023/) finds that certain packet patterns can be linked to middlebox connection tampering.
+A TCP server may see timed-out or reset connections for a variety of reasons. Some are benign, such as client applications that lose connectivity or abruptly shut down (e.g., browsers cleaning up closed tabs or port scanners). Others are more concerning, such as [DoS attacks ↗︎](https://www.cloudflare.com/learning/ddos/syn-flood-ddos-attack/) or third-party interference. In some cases, a close examination of the packets in a connection can help to shed light on the reason for termination. For example, [Global, Passive Detection of Connection Tampering ↗︎](https://research.cloudflare.com/publications/SundaraRaman2023/) finds that certain packet patterns can be linked to middlebox connection tampering.
 
-On Cloudflare Radar’s [Security & Attacks page ↗](https://radar.cloudflare.com/security-and-attacks), you can view statistics on resets and timeouts from a sample of TCP connections to Cloudflare’s servers, broken down by how far the connection progressed before termination. The plot lines are defined as follows:
+On Cloudflare Radar’s [Security & Attacks page ↗︎](https://radar.cloudflare.com/security-and-attacks), you can view statistics on resets and timeouts from a sample of TCP connections to Cloudflare’s servers, broken down by how far the connection progressed before termination. The plot lines are defined as follows:
 
 - **Post-SYN (mid-handshake)**: Connection resets or timeouts after the server received only a single SYN packet.
 - **Post-ACK (immediately post-handshake)**: Connection resets or timeouts after the server received both a SYN packet and an ACK packet, meaning the connection was successfully established.
@@ -254,7 +254,7 @@ On Cloudflare Radar’s [Security & Attacks page ↗](https://radar.cloudflare.c
 - **Later (after multiple data packets)**: Connection resets within the first 10 packets from the client, but after the server has received multiple data packets.
 - **None**: All other connections.
 
-Learn more about the TCP resets and timeouts dataset in our [blog post ↗](https://blog.cloudflare.com/tcp-resets-timeouts).
+Learn more about the TCP resets and timeouts dataset in our [blog post ↗︎](https://blog.cloudflare.com/tcp-resets-timeouts).
 
 ## TLD nameserver performance
 
@@ -292,7 +292,7 @@ The data displayed on domain-specific geographic traffic patterns is based solel
 
 ## Web crawlers
 
-[Web crawlers ↗](https://www.cloudflare.com/learning/bots/what-is-a-web-crawler/) are a type of bot that browses the Internet to collect and index website content. They are used by search engines like Google or Bing to make pages discoverable in search results.
+[Web crawlers ↗︎](https://www.cloudflare.com/learning/bots/what-is-a-web-crawler/) are a type of bot that browses the Internet to collect and index website content. They are used by search engines like Google or Bing to make pages discoverable in search results.
 
 They are also used by AI platforms, either to gather content for training large language models, or to retrieve up-to-date information for AI assistants. In both search and AI cases, crawlers work by following links from one page to another, creating a map of online content.
 

@@ -76,7 +76,7 @@ The response will include `"offlabel": true` when the feature is active.
 
 ### Link to Cloudflare's Turnstile Privacy Policy
 
-As a condition of enabling offlabel, you must reference Cloudflare's [Turnstile Privacy Addendum ↗](https://www.cloudflare.com/turnstile-privacy-policy/) in one of two ways:
+As a condition of enabling offlabel, you must reference Cloudflare's [Turnstile Privacy Addendum ↗︎](https://www.cloudflare.com/turnstile-privacy-policy/) in one of two ways:
 
 1. Link to it in your own privacy policy.
 2. Configure the widget to display a link to Cloudflare's privacy policy using the [JavaScript Render Parameters](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/widget-configurations/#complete-configuration-reference).

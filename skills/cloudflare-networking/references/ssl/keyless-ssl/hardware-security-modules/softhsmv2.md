@@ -60,7 +60,7 @@ sudo -u keyless softhsm2-util --init-token --slot 0 --label test-token --pin 123
 The token has been initialized.
 ```
 
-Using cfssl, we generate the [private keys and Certificate Signing Requests (CSRs) ↗](https://github.com/cloudflare/cfssl), the latter of which will be sent to a Certificate Authority (CA) for signing.
+Using cfssl, we generate the [private keys and Certificate Signing Requests (CSRs) ↗︎](https://github.com/cloudflare/cfssl), the latter of which will be sent to a Certificate Authority (CA) for signing.
 
 ```bash
 cat <<EOF | tee csr.json

@@ -30,7 +30,7 @@ Static IPs are available as an add-on purchase for Enterprise plans.
 
 ## Check Static IPs
 
-You can find your leased Static IPs for CDN Ingress on the dashboard under [**Address space** > **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+You can find your leased Static IPs for CDN Ingress on the dashboard under [**Address space** > **Leased IPs** ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 Was this helpful?
 

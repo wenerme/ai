@@ -125,7 +125,7 @@ Cloudflare API
 </summary>
 
 - Version Management environments — including their routing expressions and version assignments — can be managed through the public <a href="https://developers.cloudflare.com/api/resources/zones/subresources/environments/">Environments API</a>.
-- Creating, cloning, and editing zone versions (the configuration snapshots themselves) are currently only available through the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>.
+- Creating, cloning, and editing zone versions (the configuration snapshots themselves) are currently only available through the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a>.
 
 </details>
 
@@ -264,7 +264,7 @@ To use Version Management, the following must all be true:
 - Your zone is in an [active](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) state.
 - Your zone uses [WAF managed rules](https://developers.cloudflare.com/waf/managed-rules/).
 - Your zone has migrated to use [custom rules](https://developers.cloudflare.com/waf/custom-rules/) instead of Firewall Rules (deprecated).
-- Your account uses the [new WAF ↗](https://blog.cloudflare.com/new-cloudflare-waf/) (if not, contact your account team).
+- Your account uses the [new WAF ↗︎](https://blog.cloudflare.com/new-cloudflare-waf/) (if not, contact your account team).
 - Your user account must have a Super Administrator or Administrator [role](https://developers.cloudflare.com/fundamentals/manage-members/roles/). **Zone Versioning** roles cannot create new versions.
 - Your user account must have an API Key provisioned (if not, [view your API Key](https://developers.cloudflare.com/fundamentals/api/get-started/keys/#view-your-global-api-key)).
 - Your user account must have API Access enabled. Refer to [control API Access](https://developers.cloudflare.com/fundamentals/api/how-to/control-api-access/) for more information.

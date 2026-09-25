@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/external-cicd/gitlab-cicd/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can deploy Workers with [GitLab CI/CD ↗](https://docs.gitlab.com/ee/ci/pipelines/index.html). Here is how you can set up your Gitlab CI/CD pipeline.
+You can deploy Workers with [GitLab CI/CD ↗︎](https://docs.gitlab.com/ee/ci/pipelines/index.html). Here is how you can set up your Gitlab CI/CD pipeline.
 
 ## 1. Authentication
 
@@ -51,11 +51,11 @@ Caution
 
 Don't store the value of `CLOUDFLARE_API_TOKEN` in your repository, as it gives access to deploy Workers on your account. Instead, you should utilize your CI/CD provider's support for storing secrets.
 
-2. Create a workflow that will be responsible for deploying the Worker. This workflow should run `wrangler deploy`. Review an example [GitHub Actions ↗](https://docs.github.com/en/actions/using-workflows/about-workflows) workflow in the following section.
+2. Create a workflow that will be responsible for deploying the Worker. This workflow should run `wrangler deploy`. Review an example [GitHub Actions ↗︎](https://docs.github.com/en/actions/using-workflows/about-workflows) workflow in the following section.
 
 ### GitLab Pipelines
 
-Refer to [GitLab's blog ↗](https://about.gitlab.com/blog/2022/11/21/deploy-remix-with-gitlab-and-cloudflare/) for an example pipeline. Under the `script` key, replace `npm run deploy` with [`npx wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy).
+Refer to [GitLab's blog ↗︎](https://about.gitlab.com/blog/2022/11/21/deploy-remix-with-gitlab-and-cloudflare/) for an example pipeline. Under the `script` key, replace `npm run deploy` with [`npx wrangler deploy`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy).
 
 Was this helpful?
 

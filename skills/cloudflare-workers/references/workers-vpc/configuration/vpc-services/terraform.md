@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-VPC Services can be managed as infrastructure using the [`cloudflare_connectivity_directory_service` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity_directory_service) resource in the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/).
+VPC Services can be managed as infrastructure using the [`cloudflare_connectivity_directory_service` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity_directory_service) resource in the [Cloudflare Terraform provider](https://developers.cloudflare.com/terraform/).
 
 This maps directly to the [connectivity directory](https://developers.cloudflare.com/api/resources/connectivity/subresources/directory/subresources/services/) — the underlying API that the dashboard and Wrangler CLI also use to create and manage VPC Services. The same [VPC Service configuration fields](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/#vpc-service-configuration) (type, host, ports, tunnel ID) apply regardless of how the service is created.
 
@@ -270,7 +270,7 @@ resource "cloudflare_connectivity_directory_service" "example" {
 }
 ```
 
-For the full schema, refer to the [Terraform registry documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity_directory_service).
+For the full schema, refer to the [Terraform registry documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/connectivity_directory_service).
 
 Was this helpful?
 

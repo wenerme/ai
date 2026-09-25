@@ -52,7 +52,7 @@ The following table outlines the JSON functions built into D1 and example usage.
 | `json ->> path` | Extract the value(s) at the given path using path syntax and return it as a SQL type. | |
 | `json_insert(json, path, value)` | Insert a value at the given path. Does not overwrite an existing value. | |
 | `json_object(label1, value1, ...)` | Accepts pairs of (keys, values) and returns a JSON object. | `json_object('temp', 45, 'wind_speed_mph', 13)` returns `{"temp":45,"wind_speed_mph":13}` |
-| `json_patch(target, patch)` | Uses a JSON [MergePatch ↗](https://tools.ietf.org/html/rfc7396) approach to merge the provided patch into the target JSON object. | |
+| `json_patch(target, patch)` | Uses a JSON [MergePatch ↗︎](https://tools.ietf.org/html/rfc7396) approach to merge the provided patch into the target JSON object. | |
 | `json_remove(json, path, ...)` | Remove the key and value at the specified path. | `json_remove('[60,70,80,90]', '$[0]')` returns `70,80,90]` |
 | `json_replace(json, path, value)` | Insert a value at the given path. Overwrites an existing value, but does not create a new key if it doesn't exist. | |
 | `json_set(json, path, value)` | Insert a value at the given path. Overwrites an existing value. | |
@@ -63,11 +63,11 @@ The following table outlines the JSON functions built into D1 and example usage.
 | `json_each(value)` - `json_each(value, path)` | Returns each element within the object as an individual row. It will only traverse the top-level object. | |
 | `json_tree(value)` - `json_tree(value, path)` | Returns each element within the object as an individual row. It traverses the full object. | |
 
-The SQLite [JSON extension ↗](https://www.sqlite.org/json1.html), on which D1 builds on, has additional usage examples.
+The SQLite [JSON extension ↗︎](https://www.sqlite.org/json1.html), on which D1 builds on, has additional usage examples.
 
 ## Error Handling
 
-JSON functions will return a `malformed JSON` error when operating over data that isn't JSON and/or is not valid JSON. D1 considers valid JSON to be [RFC 7159 ↗](https://www.rfc-editor.org/rfc/rfc7159.txt) conformant.
+JSON functions will return a `malformed JSON` error when operating over data that isn't JSON and/or is not valid JSON. D1 considers valid JSON to be [RFC 7159 ↗︎](https://www.rfc-editor.org/rfc/rfc7159.txt) conformant.
 
 In the following example, calling `json_extract` over a string (not valid JSON) will cause the query to return a `malformed JSON` error:
 

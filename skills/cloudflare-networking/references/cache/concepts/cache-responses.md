@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/concepts/cache-responses/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The `CF-Cache-Status` header output indicates whether a resource is cached or not. To investigate cache responses returned by this header, use services like [Redbot ↗](https://redbot.org/), [webpagetest.org ↗](http://www.webpagetest.org/), or a visual tool like [Cloudflare Optics plugin ↗](https://chromewebstore.google.com/detail/cloudflare-optics/mdjgbjnbdnhneejmmaabmccfehigbjbe).
+The `CF-Cache-Status` header output indicates whether a resource is cached or not. To investigate cache responses returned by this header, use services like [Redbot ↗︎](https://redbot.org/), [webpagetest.org ↗︎](http://www.webpagetest.org/), or a visual tool like [Cloudflare Optics plugin ↗︎](https://chromewebstore.google.com/detail/cloudflare-optics/mdjgbjnbdnhneejmmaabmccfehigbjbe).
 
 Age response header
 

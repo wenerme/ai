@@ -38,7 +38,7 @@ Health notifications work alongside the Health Dashboard to provide both real-ti
 
 - The **Health Dashboard** displays up to **30 days** of health metrics for each Logpush job in the Cloudflare dashboard.
 - The raw health metrics can be queried via the `logpushHealthAdaptiveGroups` dataset in the GraphQL API.
-- You can explore or test queries using the [Cloudflare GraphQL Explorer ↗](https://graphql.cloudflare.com/explorer).
+- You can explore or test queries using the [Cloudflare GraphQL Explorer ↗︎](https://graphql.cloudflare.com/explorer).
 
 ## Key concepts in job health
 
@@ -181,7 +181,7 @@ Logpush is designed to handle temporary destination issues through automatic ret
 
 Retries do not stop after a fixed number of attempts. Instead, Cloudflare continues to retry a batch until either the upload succeeds and the batch is marked as delivered, or the buffered data ages out of the internal retention window. When data ages out, the batch is dropped (recorded as [`1201 FlushMaxLag`](#destination-error-codes)) and the log lines it contained are permanently lost.
 
-If no batch has been successfully delivered for **24 hours**, Cloudflare assumes the destination is permanently unavailable and disables the job. You can re-enable the job from the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) once the destination issue is resolved. Cloudflare cannot backfill logs generated while the job was disabled.
+If no batch has been successfully delivered for **24 hours**, Cloudflare assumes the destination is permanently unavailable and disables the job. You can re-enable the job from the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) once the destination issue is resolved. Cloudflare cannot backfill logs generated while the job was disabled.
 
 When a destination is slow but still accepting uploads, Logpush automatically increases the number of parallel uploads to catch up. Once the destination recovers and lag returns to normal, concurrency scales back down.
 

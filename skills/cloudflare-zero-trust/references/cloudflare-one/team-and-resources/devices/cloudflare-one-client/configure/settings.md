@@ -36,7 +36,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Any mode | All plans |
 
@@ -98,7 +98,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | Traffic and DNS mode, Local proxy mode | All plans |
 
@@ -125,7 +125,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | Windows, macOS, Linux | Traffic and DNS mode, Traffic only mode | All plans |
 
@@ -152,7 +152,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Traffic and DNS mode | All plans |
 
@@ -178,7 +178,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -213,7 +213,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -242,7 +242,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -273,7 +273,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Any mode | All plans |
 
@@ -293,7 +293,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Any mode | All plans |
 
@@ -311,7 +311,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -330,10 +330,10 @@ Configures the protocol used to route IP traffic from the device to Cloudflare G
 
 **Value**:
 
-- **WireGuard**: Establishes a [WireGuard ↗](https://www.wireguard.com/) connection to Cloudflare. The Cloudflare One Client will encrypt traffic using a non-FIPs compliant cipher suite, `TLS_CHACHA20_POLY1305_SHA256`. When switching from MASQUE to WireGuard, users may lose Internet connectivity if their Wi-Fi network blocks the [ports and IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#warp-ingress-ip) required for WireGuard to function.
-- **MASQUE**: (default) Establishes an HTTP/3 connection to Cloudflare. The Cloudflare One Client will encrypt traffic using TLS 1.3 and a [FIPS 140-3 ↗](https://csrc.nist.gov/pubs/fips/140-3/final) compliant cipher suite, `TLS_AES_256_GCM_SHA384`. [Assign a unique IP address to each device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#assign-a-unique-ip-address-to-each-device) is enabled by default for devices with MASQUE enabled.
+- **WireGuard**: Establishes a [WireGuard ↗︎](https://www.wireguard.com/) connection to Cloudflare. The Cloudflare One Client will encrypt traffic using a non-FIPs compliant cipher suite, `TLS_CHACHA20_POLY1305_SHA256`. When switching from MASQUE to WireGuard, users may lose Internet connectivity if their Wi-Fi network blocks the [ports and IPs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/firewall/#warp-ingress-ip) required for WireGuard to function.
+- **MASQUE**: (default) Establishes an HTTP/3 connection to Cloudflare. The Cloudflare One Client will encrypt traffic using TLS 1.3 and a [FIPS 140-3 ↗︎](https://csrc.nist.gov/pubs/fips/140-3/final) compliant cipher suite, `TLS_AES_256_GCM_SHA384`. [Assign a unique IP address to each device](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#assign-a-unique-ip-address-to-each-device) is enabled by default for devices with MASQUE enabled.
 
-For more details on WireGuard versus MASQUE, refer to our [blog post ↗](https://blog.cloudflare.com/zero-trust-warp-with-a-masque).
+For more details on WireGuard versus MASQUE, refer to our [blog post ↗︎](https://blog.cloudflare.com/zero-trust-warp-with-a-masque).
 
 ### Lock device client switch
 
@@ -345,7 +345,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Any mode | All plans |
 
@@ -370,7 +370,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Any mode | All plans |
 
@@ -388,7 +388,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | macOS, Windows, Linux | Any mode | All plans |
 
@@ -410,7 +410,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Any mode | All plans |
 
@@ -435,7 +435,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Any mode | All plans |
 
@@ -456,7 +456,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Any mode | All plans |
 
@@ -474,7 +474,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Traffic and DNS mode, DNS only mode | All plans |
 
@@ -492,7 +492,7 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Any mode | All plans |
 
@@ -510,17 +510,17 @@ Feature availability
 
 </summary>
 
-| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| Operating Systems | <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- | --- |
 | All systems | Any mode | All plans |
 
 </details>
 
-Creates [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) Exclude entries for all [Microsoft 365 IP addresses specified by Microsoft ↗](https://docs.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-ip-web-service). To use this setting, **Split Tunnels** must be set to **Exclude IPs and domains**. Once enabled, all Microsoft 365 network traffic will bypass the Cloudflare One Client and Gateway.
+Creates [Split Tunnel](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) Exclude entries for all [Microsoft 365 IP addresses specified by Microsoft ↗︎](https://docs.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-ip-web-service). To use this setting, **Split Tunnels** must be set to **Exclude IPs and domains**. Once enabled, all Microsoft 365 network traffic will bypass the Cloudflare One Client and Gateway.
 
 Note
 
-Along with the IP addresses provided by Microsoft's [IP Address and URL web service ↗](https://learn.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-ip-web-service?view=o365-worldwide), enabling this option automatically adds the following Split Tunnel Exclude entries for Microsoft Teams:
+Along with the IP addresses provided by Microsoft's [IP Address and URL web service ↗︎](https://learn.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-ip-web-service?view=o365-worldwide), enabling this option automatically adds the following Split Tunnel Exclude entries for Microsoft Teams:
 
 - `24.24.24.24/32`
 - `52.120.0.0/14`
@@ -535,7 +535,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -558,7 +558,7 @@ Warning
 
 Enabling this setting comes with two major consequences:
 
-- **Device is exposed to security threats.** The user may be unaware that traffic to what used to be their company's private network is now actually being routed to their local network. This leaves the device vulnerable to [on-path attackers ↗](https://www.cloudflare.com/learning/security/threats/on-path-attack/) and other security vulnerabilities. For example, imagine that a user's typical workflow involves logging into a remote desktop on the corporate network at `10.0.0.30`. A bad actor could set up a fake server on the local network at `10.0.0.30`. If the user goes to `10.0.0.30` while **Access local network** is enabled, the attacker can now steal their credentials.
+- **Device is exposed to security threats.** The user may be unaware that traffic to what used to be their company's private network is now actually being routed to their local network. This leaves the device vulnerable to [on-path attackers ↗︎](https://www.cloudflare.com/learning/security/threats/on-path-attack/) and other security vulnerabilities. For example, imagine that a user's typical workflow involves logging into a remote desktop on the corporate network at `10.0.0.30`. A bad actor could set up a fake server on the local network at `10.0.0.30`. If the user goes to `10.0.0.30` while **Access local network** is enabled, the attacker can now steal their credentials.
 - **User loses access to corporate resources.** — While accessing their local network, the user will be unable to connect to corporate resources that fall within the same IP/CIDR range.
 
 #### Access local network as a user
@@ -591,7 +591,7 @@ Version 2026.1 and earlier
 
 #### Limitations
 
-- The Cloudflare One Client will only exclude local networks in the [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) address space. Other IP addresses such as CGNAT are not supported.
+- The Cloudflare One Client will only exclude local networks in the [RFC 1918 ↗︎](https://datatracker.ietf.org/doc/html/rfc1918) address space. Other IP addresses such as CGNAT are not supported.
 - The maximum excluded subnet size is `/24`.
 - If a device has multiple network interfaces with distinct local IP ranges, the Cloudflare One Client will only exclude one of those networks. To access a specific local network, disable the other interfaces and disconnect/reconnect the Cloudflare One Client.
 
@@ -605,7 +605,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -634,7 +634,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -649,16 +649,16 @@ Feature availability
 
 </details>
 
-Microsoft's [System Center Configuration Manager ↗](https://learn.microsoft.com/en-us/intune/configmgr/) (SCCM) is used to manage software on Windows devices based on the [boundary group ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/define-site-boundaries-and-boundary-groups), or network location, to which they belong. You can assign Cloudflare One Clients to a SCCM boundary group based on their [managed network](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/) and other device profile attributes. When **SCCM VPN Boundary Support** is turned on, the Cloudflare One Client will modify the description field on its [virtual network interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic). This allows you to define a VPN boundary group that matches on the network interface description.
+Microsoft's [System Center Configuration Manager ↗︎](https://learn.microsoft.com/en-us/intune/configmgr/) (SCCM) is used to manage software on Windows devices based on the [boundary group ↗︎](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/define-site-boundaries-and-boundary-groups), or network location, to which they belong. You can assign Cloudflare One Clients to a SCCM boundary group based on their [managed network](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/) and other device profile attributes. When **SCCM VPN Boundary Support** is turned on, the Cloudflare One Client will modify the description field on its [virtual network interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic). This allows you to define a VPN boundary group that matches on the network interface description.
 
 **Value:**
 
 - `Disabled`: (default) The client network interface description is `Cloudflare WARP Interface Tunnel`.
-- `Enabled`: The client network interface description is `(SCCM) Cloudflare WARP Interface Tunnel` for devices which have the [SCCM client ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/clients/deploy/deploy-clients-to-windows-computers) installed. Devices without the SCCM client will still use the default `Cloudflare WARP Interface Tunnel` description. The Cloudflare One Client checks if the SCCM client is installed by looking for the SMS Agent Host ( `ccmexec.exe`) Windows service.
+- `Enabled`: The client network interface description is `(SCCM) Cloudflare WARP Interface Tunnel` for devices which have the [SCCM client ↗︎](https://learn.microsoft.com/en-us/intune/configmgr/core/clients/deploy/deploy-clients-to-windows-computers) installed. Devices without the SCCM client will still use the default `Cloudflare WARP Interface Tunnel` description. The Cloudflare One Client checks if the SCCM client is installed by looking for the SMS Agent Host ( `ccmexec.exe`) Windows service.
 
 #### Example SCCM configuration
 
-Assume you want to push software updates from a cloud based [distribution point ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/boundary-groups-distribution-points) if the device is remote, but use on-prem servers if the device is on the office network. To set up these boundary groups:
+Assume you want to push software updates from a cloud based [distribution point ↗︎](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/boundary-groups-distribution-points) if the device is remote, but use on-prem servers if the device is on the office network. To set up these boundary groups:
 
 1. In Zero Trust:
 
@@ -712,7 +712,7 @@ To check if **SCCM VPN Boundary Support** is active on a device, run the followi
 
 2. In Microsoft SCCM:
 
-   a. [Create a boundary ↗](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/boundaries#create-a-boundary) with the following settings:
+   a. [Create a boundary ↗︎](https://learn.microsoft.com/en-us/intune/configmgr/core/servers/deploy/configure/boundaries#create-a-boundary) with the following settings:
    - **Description**: `Remote Cloudflare One Clients`
    - **Type**: *VPN*
    - **Connection description**: `(SCCM) Cloudflare WARP Interface Tunnel`
@@ -731,7 +731,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -805,7 +805,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -834,7 +834,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>DNS only mode</li></ul> | All plans |
 

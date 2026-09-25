@@ -29,7 +29,7 @@ Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (f
 
 ## 1. Configure Cloudflare WAN
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Cloudflare WAN**, and select **Create**.
 3. Select **IPsec tunnel** > **Next**, and fill in the following settings:
    - **Name**: `unifi-gw-primary`
@@ -75,7 +75,7 @@ Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (f
 
 ## 3. Add pre-shared key to Cloudflare
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. In **Cloudflare WAN**, find the IPsec tunnel you have just created.
 3. Select your tunnel and then **Edit**.
 4. Paste the preshared key from [Step 2](#2-configure-site-to-site-vpn-on-unifi).
@@ -83,7 +83,7 @@ Connect a Ubiquiti UniFi Gateway to Cloudflare's network using Cloudflare WAN (f
 
 ## 4. Configure Routes
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Routes** > **WAN routes** > **Create**.
 3. Enter the following settings:
    - **Prefix**: Your local network (for example, `192.168.1.0/24`).
@@ -103,7 +103,7 @@ Cloudflare
 
 </summary>
 
-1. Log in to <a href="https://one.dash.cloudflare.com/">Cloudflare One ↗</a>, and go to **Insights**.
+1. Log in to <a href="https://one.dash.cloudflare.com/">Cloudflare One ↗︎</a>, and go to **Insights**.
 2. Go to **Network visibility** &gt; **WAN connector health**.
 3. Find the tunnel you have just created and make sure its status shows **Up**. Refer to <a href="https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/common-settings/check-tunnel-health-dashboard/">Check tunnel health in the dashboard</a> for more information.
 

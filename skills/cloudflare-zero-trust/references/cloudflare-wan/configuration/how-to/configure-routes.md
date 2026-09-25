@@ -31,7 +31,7 @@ The dashboard **Routes** page shows the routes for all of your connectors — in
 
 The following IPv4 address ranges are allowed in the Cloudflare Virtual Network routing table:
 
-- [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) address space, specifically `10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`.
+- [RFC 1918 ↗︎](https://datatracker.ietf.org/doc/html/rfc1918) address space, specifically `10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`.
 
 When using Cloudflare WAN and Cloudflare Tunnel together, consider the IP ranges utilized in the static routes of Cloudflare Tunnel when selecting static routes for Cloudflare WAN. For more information, refer to [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/).
 

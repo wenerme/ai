@@ -37,9 +37,9 @@ Until Cloudflare provides an SSL certificate for your domain, the following erro
 
 ### Resolution
 
-Even with a Cloudflare SSL certificate provisioned for your domain, older browsers display errors about untrusted SSL certificates because they do not  [support the Server Name Indication (SNI) protocol ↗](https://en.wikipedia.org/wiki/Server_Name_Indication#Support) used by Cloudflare Universal SSL certificates.
+Even with a Cloudflare SSL certificate provisioned for your domain, older browsers display errors about untrusted SSL certificates because they do not  [support the Server Name Indication (SNI) protocol ↗︎](https://en.wikipedia.org/wiki/Server_Name_Indication#Support) used by Cloudflare Universal SSL certificates.
 
-To solve, [determine if the browser supports SNI ↗](https://caniuse.com/#feat=sni). If not, upgrade your browser.
+To solve, [determine if the browser supports SNI ↗︎](https://caniuse.com/#feat=sni). If not, upgrade your browser.
 
 Note
 
@@ -103,7 +103,7 @@ Visitors to your site observe an OCSP response error.
 
 This error is either caused by the browser version or an issue requiring attention by one of Cloudflare’s SSL vendors. In order to properly diagnose,  [contact Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with the following information provided by the visitor that observes the browser error:
 
-1. The output from [https://aboutmybrowser.com/ ↗](https://aboutmybrowser.com/)  .
+1. The output from [https://aboutmybrowser.com/ ↗︎](https://aboutmybrowser.com/)  .
 2. The output of `https://<YOUR_DOMAIN>/cdn-cgi/trace` from the visitor’s browser.
 
 ---
@@ -133,7 +133,7 @@ You are getting the error `NET::ERR_CERT_COMMON_NAME_INVALID` in your browser.
 
 ### Resolution
 
-- Make sure that you are using a browser that supports [SNI (Server Name Indication) ↗](https://www.cloudflare.com/learning/ssl/what-is-sni/). Refer to [Browser compatibility](https://developers.cloudflare.com/ssl/reference/browser-compatibility/) for more details.
+- Make sure that you are using a browser that supports [SNI (Server Name Indication) ↗︎](https://www.cloudflare.com/learning/ssl/what-is-sni/). Refer to [Browser compatibility](https://developers.cloudflare.com/ssl/reference/browser-compatibility/) for more details.
 - Ensure that the hostname you are accessing is set to [proxied (orange cloud)](https://developers.cloudflare.com/dns/proxy-status/) in the DNS tab of your Cloudflare Dashboard.
 - If the hostname you are accessing is a second level subdomain (such as  `dev.www.example.com`), you'll need to either:
   - Purchase an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager) that covers  `dev.www.example.com`.
@@ -142,7 +142,7 @@ You are getting the error `NET::ERR_CERT_COMMON_NAME_INVALID` in your browser.
 
 Note
 
-The following [`openssl` ↗](https://www.openssl.org/) command might help troubleshooting TLS handshake between the client and the Cloudflare network edge:
+The following [`openssl` ↗︎](https://www.openssl.org/) command might help troubleshooting TLS handshake between the client and the Cloudflare network edge:
 
 ```sh
 openssl s_client -connect example.com:443 -servername example.com version
@@ -166,7 +166,7 @@ When clicking `Approve Certificate` on a Certificate Approval renewal email, you
 
 ### Resolution
 
-Check the status of the certificate on the [Cloudflare dashboard ↗](https://dash.cloudflare.com?to=/:account/:zone/ssl-tls). If the status is `Active`, you can disregard this email and the error message.
+Check the status of the certificate on the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com?to=/:account/:zone/ssl-tls). If the status is `Active`, you can disregard this email and the error message.
 
 Was this helpful?
 

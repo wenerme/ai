@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare has integrations with Microsoft Sentinel to make analyzing your Cloudflare data easier and in a centralized space. Cloudflare has two versions of this connector available. We recommend utilizing the latest Codeless Connector integration as it provides easier setup, cost management, and integrates with [Sentinel Data Lake ↗](https://learn.microsoft.com/en-us/azure/sentinel/datalake/sentinel-lake-overview).
+Cloudflare has integrations with Microsoft Sentinel to make analyzing your Cloudflare data easier and in a centralized space. Cloudflare has two versions of this connector available. We recommend utilizing the latest Codeless Connector integration as it provides easier setup, cost management, and integrates with [Sentinel Data Lake ↗︎](https://learn.microsoft.com/en-us/azure/sentinel/datalake/sentinel-lake-overview).
 
-**[Sentinel CCF Solution ↗](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)** (recommended): The Codeless Connector Framework (CCF) provides partners, advanced users, and developers the ability to create custom connectors for ingesting data to Microsoft Sentinel.
+**[Sentinel CCF Solution ↗︎](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)** (recommended): The Codeless Connector Framework (CCF) provides partners, advanced users, and developers the ability to create custom connectors for ingesting data to Microsoft Sentinel.
 
-**[Sentinel Function Based Connector ↗](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudflare.cloudflare_sentinel?tab=Overview)**: The Cloudflare connector for Microsoft Sentinel uses [Azure Functions ↗](https://azure.microsoft.com/en-us/products/functions) to process security logs from Cloudflare's Logpush service and ingest them directly into the SIEM platform.
+**[Sentinel Function Based Connector ↗︎](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudflare.cloudflare_sentinel?tab=Overview)**: The Cloudflare connector for Microsoft Sentinel uses [Azure Functions ↗︎](https://azure.microsoft.com/en-us/products/functions) to process security logs from Cloudflare's Logpush service and ingest them directly into the SIEM platform.
 
 Legacy connector deprecation
 
@@ -33,7 +33,7 @@ Before you begin, make sure the following prerequisites are met.
 ### Azure resources
 
 - **Azure subscription** with permission to create and manage resources ( `Contributor` or `Owner` role recommended).
-- **Azure Storage account** with [Azure Data Lake Storage Gen2 enabled ↗](https://learn.microsoft.com/en-us/azure/storage/blobs/create-data-lake-storage-account) (hierarchical namespace on). Although the generic Logpush Azure destination supports standard Blob Storage, the CCF connector requires hierarchical namespace. Logpush writes the Cloudflare log files to this account.
+- **Azure Storage account** with [Azure Data Lake Storage Gen2 enabled ↗︎](https://learn.microsoft.com/en-us/azure/storage/blobs/create-data-lake-storage-account) (hierarchical namespace on). Although the generic Logpush Azure destination supports standard Blob Storage, the CCF connector requires hierarchical namespace. Logpush writes the Cloudflare log files to this account.
 - **Azure Blob container** inside the storage account, dedicated to receiving Cloudflare Logpush files. The CCF connector monitors this container for new files via Event Grid.
 - **Microsoft Sentinel workspace** already deployed on top of a Log Analytics workspace. The connector's Data Collection Rule (DCR) and Data Collection Endpoint (DCE) are tied to this Log Analytics workspace, and all ingested Cloudflare log records land in tables within it.
 - **Cloudflare account** with access to the domain or account whose logs you want to export, and permission to configure Logpush jobs.
@@ -46,7 +46,7 @@ The deploying user must have **Microsoft Sentinel Contributor**, `Contributor`, 
 
 At deployment time, the Cloudflare CCF connector service principal receives `Storage Blob Data Reader` on the storage account to read log files from the Blob container and `Storage Queue Data Contributor` to read and delete pointer messages from the Storage Queue.
 
-Refer to the Microsoft documentation on [Azure roles for Microsoft Sentinel ↗](https://learn.microsoft.com/en-us/azure/sentinel/roles) and [Azure roles for storage ↗](https://learn.microsoft.com/en-us/azure/storage/blobs/assign-azure-role-data-access) for details.
+Refer to the Microsoft documentation on [Azure roles for Microsoft Sentinel ↗︎](https://learn.microsoft.com/en-us/azure/sentinel/roles) and [Azure roles for storage ↗︎](https://learn.microsoft.com/en-us/azure/storage/blobs/assign-azure-role-data-access) for details.
 
 ### Event Grid resource provider
 
@@ -67,9 +67,9 @@ By default, the storage account must allow public network access so that the con
 
 - If you are not restricting access with a Network Security Perimeter (NSP), open the storage account's **Networking** blade and set **Public network access** to **Enabled from all networks**.
 - Restricting access using selected virtual networks or IPv4 CIDR ranges is not supported for this connector, because of Azure Storage firewall limitations around IP ranges and caller region affinity.
-- If network restrictions are required for compliance, use an [Azure Network Security Perimeter (NSP) ↗](https://learn.microsoft.com/en-us/azure/private-link/network-security-perimeter-concepts) instead. Include the Sentinel service tag inbound ranges in the NSP rules and configure the Event Grid system topic subscription to use system-assigned managed identity delivery.
+- If network restrictions are required for compliance, use an [Azure Network Security Perimeter (NSP) ↗︎](https://learn.microsoft.com/en-us/azure/private-link/network-security-perimeter-concepts) instead. Include the Sentinel service tag inbound ranges in the NSP rules and configure the Event Grid system topic subscription to use system-assigned managed identity delivery.
 
-Refer to Microsoft's guidance on [enabling storage network security for Sentinel ↗](https://learn.microsoft.com/en-us/azure/sentinel/enable-storage-network-security) for the full options.
+Refer to Microsoft's guidance on [enabling storage network security for Sentinel ↗︎](https://learn.microsoft.com/en-us/azure/sentinel/enable-storage-network-security) for the full options.
 
 ### Storage account and Sentinel co-location
 
@@ -77,7 +77,7 @@ The Azure Blob Storage account and the Microsoft Sentinel workspace must live in
 
 ## Step 2: Set up a Logpush job
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **Analytics** > **Logs** and select **Logpush**.
 3. Select **Create Logpush Job**. Choose the log type you want to export (for example, **HTTP requests**).
 4. For the destination, select **Azure Blob Storage**.
@@ -91,7 +91,7 @@ For complete details, refer to the [Cloudflare Logpush to Azure documentation](h
 
 ## Step 3: Install the Cloudflare CCF solution
 
-1. Log in to the Azure portal and open your Microsoft Sentinel workspace. If you do not have one yet, follow Microsoft's [onboarding guide ↗](https://learn.microsoft.com/en-us/azure/sentinel/quickstart-onboard) to create a Log Analytics workspace and enable Microsoft Sentinel on it.
+1. Log in to the Azure portal and open your Microsoft Sentinel workspace. If you do not have one yet, follow Microsoft's [onboarding guide ↗︎](https://learn.microsoft.com/en-us/azure/sentinel/quickstart-onboard) to create a Log Analytics workspace and enable Microsoft Sentinel on it.
 2. In the left navigation pane, under **Content management**, select **Content hub**. If the page appears empty, refresh and wait for the content list to load.
 3. In the search bar, enter `Cloudflare` and press **Enter**.
 4. Select the **Cloudflare CCF** solution and select **Install**.
@@ -104,7 +104,7 @@ For complete details, refer to the [Cloudflare Logpush to Azure documentation](h
 
 On the connector page, fill in the following fields:
 
-- **Service Principal ID**: this field is prepopulated with the object ID of the Cloudflare CCF connector service principal in your tenant. If it is empty, ensure that admin consent has been granted for the Cloudflare CCF connector application in your Microsoft Entra tenant, then reload the page. Refer to Microsoft's [admin consent workflow ↗](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/configure-admin-consent-workflow) for details.
+- **Service Principal ID**: this field is prepopulated with the object ID of the Cloudflare CCF connector service principal in your tenant. If it is empty, ensure that admin consent has been granted for the Cloudflare CCF connector application in your Microsoft Entra tenant, then reload the page. Refer to Microsoft's [admin consent workflow ↗︎](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/configure-admin-consent-workflow) for details.
 - **Blob Container URL**: in the Azure portal, open the storage account that receives Cloudflare logs. Under **Data storage** > **Containers**, open the target container, go to **Properties**, and copy the URL.
 - **Storage Account Resource Group Name**, **Storage Account Location**, and **Storage Account Subscription ID**: available on the storage account's **Overview** page.
 - **Event Grid System Topic Name**: leave this field blank on the first deployment. The ARM template creates the topic automatically. If you are reconfiguring an existing deployment, open **Event Grid** > **System topics** in the Azure portal, filter by location, and copy the name of the topic whose **Source** matches your storage account.
@@ -152,13 +152,13 @@ To resolve the error:
 2. **Verify network access**: confirm that public network access is enabled on the storage account, or that a Network Security Perimeter is configured as described in [Prerequisites](#network-access-configuration). Selected network limits using IPv4 CIDR addresses are not supported.
 3. **Retry the deployment**: after you align the resources, re-run the ARM template deployment. The `CreateDataFlowResources` error should not recur.
 
-For the full list of storage-related failure modes and mitigations, refer to Microsoft's [Azure Storage Blob connector troubleshooting guide ↗](https://learn.microsoft.com/en-us/azure/sentinel/azure-storage-blob-connector-troubleshoot).
+For the full list of storage-related failure modes and mitigations, refer to Microsoft's [Azure Storage Blob connector troubleshooting guide ↗︎](https://learn.microsoft.com/en-us/azure/sentinel/azure-storage-blob-connector-troubleshoot).
 
 ## Supported Logs
 
 We support the following fields to be utilized within the Sentinel Connectors (CCF & Function based). You can push all log fields to Azure using our logpush function as described in [Enable Microsoft Azure](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/azure/) documentation.
 
-The CCF connector normalizes Cloudflare log fields to the [Microsoft Sentinel ASIM schema ↗](https://learn.microsoft.com/en-us/azure/sentinel/normalization) where a canonical equivalent exists (for example, `ClientIP` becomes `SrcIpAddr`, `EdgeResponseStatus` becomes `HttpStatusCode`), and preserves Cloudflare-native names for fields that do not have a schema equivalent. Use the field names in the following tables in your KQL queries against the connector's output table.
+The CCF connector normalizes Cloudflare log fields to the [Microsoft Sentinel ASIM schema ↗︎](https://learn.microsoft.com/en-us/azure/sentinel/normalization) where a canonical equivalent exists (for example, `ClientIP` becomes `SrcIpAddr`, `EdgeResponseStatus` becomes `HttpStatusCode`), and preserves Cloudflare-native names for fields that do not have a schema equivalent. Use the field names in the following tables in your KQL queries against the connector's output table.
 
 <details>
 
@@ -210,9 +210,9 @@ ClientRequestURI<br> ClientTlsStatus<br> EdgeRequestHost<br> EdgeResponseStatus<
 
 ## Resources
 
-[Download Cloudflare's CCF Sentinel Solution ↗](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)
-[Microsoft Data Lake Overview ↗](https://learn.microsoft.com/en-us/azure/sentinel/datalake/sentinel-lake-overview)
-[About the CCF Platform ↗](https://learn.microsoft.com/en-us/azure/sentinel/create-codeless-connector)
+[Download Cloudflare's CCF Sentinel Solution ↗︎](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)
+[Microsoft Data Lake Overview ↗︎](https://learn.microsoft.com/en-us/azure/sentinel/datalake/sentinel-lake-overview)
+[About the CCF Platform ↗︎](https://learn.microsoft.com/en-us/azure/sentinel/create-codeless-connector)
 
 Was this helpful?
 

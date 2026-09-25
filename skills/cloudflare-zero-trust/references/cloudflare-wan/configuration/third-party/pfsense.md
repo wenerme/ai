@@ -33,7 +33,7 @@ This tutorial requires the following information:
 
 ## Example scenario
 
-This tutorial uses the following IP addresses. These examples replace legally routable IP addresses with IPv4 Address Blocks Reserved for Documentation ([RFC 5737 ↗](https://datatracker.ietf.org/doc/html/rfc5737)) addresses within the `203.0.113.0/24` subnet.
+This tutorial uses the following IP addresses. These examples replace legally routable IP addresses with IPv4 Address Blocks Reserved for Documentation ([RFC 5737 ↗︎](https://datatracker.ietf.org/doc/html/rfc5737)) addresses within the `203.0.113.0/24` subnet.
 
 | Tunnel name | `PF_TUNNEL_01` | `PF_TUNNEL_02` |
 | --- | --- | --- |
@@ -55,7 +55,7 @@ Use the Cloudflare dashboard or API to [configure two IPsec tunnels](https://dev
    - **Tunnel name**: `PF_TUNNEL_01`
    - **Interface address**: `10.252.2.26/31`
    - **Customer endpoint**: `203.0.113.254`
-   - **Cloudflare endpoint**: Enter one of the anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+   - **Cloudflare endpoint**: Enter one of the anycast IP addresses assigned to your account, available in [Leased IPs ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
    - **Health check rate**: *Medium*
    - **Health check type**: *Request*
    - **Health check direction**: *Bidirectional*
@@ -126,7 +126,7 @@ Install pfSense and boot up. Then, assign and set LAN and WAN interfaces, as wel
 
 ### Configure IPsec Phase 1
 
-Add a new IPsec tunnel [Phase 1 entry ↗](https://docs.netgate.com/pfsense/en/latest/vpn/ipsec/configure-p1.html), with the following settings:
+Add a new IPsec tunnel [Phase 1 entry ↗︎](https://docs.netgate.com/pfsense/en/latest/vpn/ipsec/configure-p1.html), with the following settings:
 
 - **General Information**
   - **Description**: `CF1_IPsec_P1`
@@ -150,7 +150,7 @@ Add a new IPsec tunnel [Phase 1 entry ↗](https://docs.netgate.com/pfsense/en/l
 
 ### Configure IPsec Phase 2
 
-Add a new IPsec tunnel [Phase 2 entry ↗](https://docs.netgate.com/pfsense/en/latest/vpn/ipsec/configure-p2.html), with the following settings. Create two separate Phase 2 entries (one for tunnel 1 and one for tunnel 2), adjusting the IP addresses for local and remote networks accordingly:
+Add a new IPsec tunnel [Phase 2 entry ↗︎](https://docs.netgate.com/pfsense/en/latest/vpn/ipsec/configure-p2.html), with the following settings. Create two separate Phase 2 entries (one for tunnel 1 and one for tunnel 2), adjusting the IP addresses for local and remote networks accordingly:
 
 - **General Information**
   - **Description**: `CF1_IPsec_P2`

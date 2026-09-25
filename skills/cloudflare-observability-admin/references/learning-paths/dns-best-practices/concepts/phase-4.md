@@ -37,7 +37,7 @@ Enable DNSSEC only after you are confident that DNS is resolving correctly throu
 2. Navigate to the DNSSEC management section for your domain.
 3. Add the `DS` record details provided by Cloudflare.
 
-After adding the `DS` record, allow time for propagation and then validate your configuration with tools such as [DNSViz ↗](https://dnsviz.net) or [Verisign's DNSSEC debugger ↗](https://dnssec-debugger.verisignlabs.com/). For more information, refer to [DNSSEC](https://developers.cloudflare.com/dns/dnssec/).
+After adding the `DS` record, allow time for propagation and then validate your configuration with tools such as [DNSViz ↗︎](https://dnsviz.net) or [Verisign's DNSSEC debugger ↗︎](https://dnssec-debugger.verisignlabs.com/). For more information, refer to [DNSSEC](https://developers.cloudflare.com/dns/dnssec/).
 
 Note
 

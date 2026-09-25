@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/bots/additional-configurations/ja3-ja4-fingerprint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[**JA3** ↗](https://github.com/salesforce/ja3) and [**JA4** ↗](https://github.com/FoxIO-LLC/ja4) **fingerprints** identify TLS clients based on how they initiate connections. Each client type (browser, bot, or application) has distinct connection characteristics, so the resulting fingerprint acts as a stable identifier across different destination IPs, ports, and certificates.
+[**JA3** ↗︎](https://github.com/salesforce/ja3) and [**JA4** ↗︎](https://github.com/FoxIO-LLC/ja4) **fingerprints** identify TLS clients based on how they initiate connections. Each client type (browser, bot, or application) has distinct connection characteristics, so the resulting fingerprint acts as a stable identifier across different destination IPs, ports, and certificates.
 
 JA4 improves on JA3 by sorting ClientHello extensions, which reduces the number of unique fingerprints for modern browsers and makes grouping easier.
 
@@ -87,7 +87,7 @@ The JA3 or JA4 fingerprint is an SSL/TLS-based identifier and can be null or emp
 - Since JA3 and JA4 are calculated during the TLS (SSL) handshake, they will not be present for non-encrypted HTTP traffic.
 - The field may be empty when a [Worker](https://developers.cloudflare.com/workers/) sends a request to a zone that is either internal to Cloudflare's network (for example, non-proxied/internal O2O) or to a third-party origin, or when a Worker is routing traffic to the target zone.
 - The fingerprints may be absent when Bot Management itself is skipped for a request, as the feature is responsible for calculating and populating these values.
-- With [TLS Session Resumption ↗](https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure/), once the initial TLS handshake is successfully completed, subsequent connections will be streamlined. This results in no further fingerprint calculation.
+- With [TLS Session Resumption ↗︎](https://blog.cloudflare.com/tls-session-resumption-full-speed-and-secure/), once the initial TLS handshake is successfully completed, subsequent connections will be streamlined. This results in no further fingerprint calculation.
 
 In [Orange-to-Orange (O2O)](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/) scenarios where Bot Management is in effect, JA3/JA4 fingerprints are preserved through the O2O chain and represent the eyeball (end-user) connection. This includes requests on the O2O zone and any corresponding subrequests.
 

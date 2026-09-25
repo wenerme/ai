@@ -20,7 +20,7 @@ Below you will find answers to our most commonly asked questions regarding Hyper
 
 ### Does Hyperdrive use specific IP addresses to connect to my database?
 
-Hyperdrive connects to your database using [Cloudflare's IP address ranges ↗](https://www.cloudflare.com/ips/). These are shared by all Hyperdrive configurations and other Cloudflare products.
+Hyperdrive connects to your database using [Cloudflare's IP address ranges ↗︎](https://www.cloudflare.com/ips/). These are shared by all Hyperdrive configurations and other Cloudflare products.
 
 You can use this to configure restrictions in your database firewall to restrict the IP addresses that can access your database.
 

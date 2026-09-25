@@ -20,7 +20,7 @@ Cloudflare Analytics is a comprehensive product that encompasses all metadata ge
 
 ### Account Analytics (beta)
 
-Available under **Analytics & Logs** in your Cloudflare dashboard when you log in, Account Analytics (beta) shows you an [overview of traffic for all domains](https://developers.cloudflare.com/analytics/account-and-zone-analytics/account-analytics/) under your Cloudflare account, such as requests and bandwidth by country, information related to security, cache, and errors, among others. To access Account Analytics, [log in to the Cloudflare dashboard ↗](https://dash.cloudflare.com/login), select the appropriate account, and go to **Analytics & Logs** > **Account Analytics**.
+Available under **Analytics & Logs** in your Cloudflare dashboard when you log in, Account Analytics (beta) shows you an [overview of traffic for all domains](https://developers.cloudflare.com/analytics/account-and-zone-analytics/account-analytics/) under your Cloudflare account, such as requests and bandwidth by country, information related to security, cache, and errors, among others. To access Account Analytics, [log in to the Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login), select the appropriate account, and go to **Analytics & Logs** > **Account Analytics**.
 
 ### Network Analytics
 
@@ -34,13 +34,13 @@ Web Analytics (formerly known as Browser Insights) [provides free, privacy-first
 
 ### Carbon Impact Report
 
-Carbon Impact Report gives you a [report on carbon savings ↗](https://blog.cloudflare.com/understand-and-reduce-your-carbon-impact-with-cloudflare/) from using Cloudflare services versus Internet averages for your usage volume.
+Carbon Impact Report gives you a [report on carbon savings ↗︎](https://blog.cloudflare.com/understand-and-reduce-your-carbon-impact-with-cloudflare/) from using Cloudflare services versus Internet averages for your usage volume.
 
-Cloudflare is committed to use 100% renewable energy sources, but also to [remove all greenhouse gases emitted ↗](https://blog.cloudflare.com/cloudflare-committed-to-building-a-greener-internet/) as a result of powering our network since 2010.
+Cloudflare is committed to use 100% renewable energy sources, but also to [remove all greenhouse gases emitted ↗︎](https://blog.cloudflare.com/cloudflare-committed-to-building-a-greener-internet/) as a result of powering our network since 2010.
 
 ## Analytics related to specific properties
 
-Access aggregated traffic, security, and performance metrics for each domain proxied through Cloudflare. To access these analytics, [log in to the Cloudflare dashboard ↗](https://dash.cloudflare.com/login), select your account and domain, and go to the **Analytics & Logs** section.
+Access aggregated traffic, security, and performance metrics for each domain proxied through Cloudflare. To access these analytics, [log in to the Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login), select your account and domain, and go to the **Analytics & Logs** section.
 
 Data available under the **Analytics & Logs** section includes:
 

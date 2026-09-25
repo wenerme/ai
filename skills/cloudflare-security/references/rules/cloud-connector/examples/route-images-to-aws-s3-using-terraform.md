@@ -42,7 +42,7 @@ resource "cloudflare_cloud_connector_rules" "serve_images_in_aws" {
 For additional guidance on using Terraform with Cloudflare, refer to the following resources:
 
 - [Terraform documentation](https://developers.cloudflare.com/terraform/)
-- [Cloudflare Provider for Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
+- [Cloudflare Provider for Terraform ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (reference documentation)
 
 Was this helpful?
 

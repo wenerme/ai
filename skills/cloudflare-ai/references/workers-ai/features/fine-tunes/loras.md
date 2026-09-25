@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/fine-tunes/loras/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Workers AI supports fine-tuned inference with adapters trained with [Low-Rank Adaptation ↗](https://blog.cloudflare.com/fine-tuned-inference-with-loras). This feature is in open beta and free during this period.
+Workers AI supports fine-tuned inference with adapters trained with [Low-Rank Adaptation ↗︎](https://blog.cloudflare.com/fine-tuned-inference-with-loras). This feature is in open beta and free during this period.
 
 ## Limitations
 
@@ -30,7 +30,7 @@ Workers AI supports fine-tuned inference with adapters trained with [Low-Rank Ad
 
 ### Finding open-source LoRA adapters
 
-We have started a [Hugging Face Collection ↗](https://huggingface.co/collections/Cloudflare/workers-ai-compatible-loras-6608dd9f8d305a46e355746e) that lists a few LoRA adapters that are compatible with Workers AI. Generally, any LoRA adapter that fits our limitations above should work.
+We have started a [Hugging Face Collection ↗︎](https://huggingface.co/collections/Cloudflare/workers-ai-compatible-loras-6608dd9f8d305a46e355746e) that lists a few LoRA adapters that are compatible with Workers AI. Generally, any LoRA adapter that fits our limitations above should work.
 
 ### Training your own LoRA adapters
 

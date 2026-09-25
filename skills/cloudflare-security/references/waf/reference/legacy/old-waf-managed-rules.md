@@ -20,9 +20,9 @@ Caution
 
 - This page contains documentation about the previous implementation of WAF Managed Rules. For more information on the new version, refer to [Managed Rules](https://developers.cloudflare.com/waf/managed-rules/).
 - All customers with access to the previous version of WAF managed rules can [upgrade to the new version](https://developers.cloudflare.com/waf/reference/legacy/old-waf-managed-rules/upgrade/).
-- The new WAF Managed Rules provide the [Cloudflare Free Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/) to all customers, including customers on a Free plan. Refer to the [announcement blog post ↗](https://blog.cloudflare.com/waf-for-everyone/) for details.
+- The new WAF Managed Rules provide the [Cloudflare Free Managed Ruleset](https://developers.cloudflare.com/waf/managed-rules/) to all customers, including customers on a Free plan. Refer to the [announcement blog post ↗︎](https://blog.cloudflare.com/waf-for-everyone/) for details.
 
-Examples of [malicious content ↗](https://www.cloudflare.com/learning/security/what-is-web-application-security/) that managed rules identify include:
+Examples of [malicious content ↗︎](https://www.cloudflare.com/learning/security/what-is-web-application-security/) that managed rules identify include:
 
 - Common keywords used in comment spam ( `XX`, `Rolex`, `Viagra`, etc.)
 - Cross-site scripting attacks (XSS)
@@ -44,7 +44,7 @@ You can use the sampled logs in the [Security Events](https://developers.cloudfl
 
 The Cloudflare Managed Ruleset contains security rules written and curated by Cloudflare. Select a ruleset name under **Group** to reveal the rule descriptions.
 
-**Cloudflare Specials** is a group that provides core firewall security against [common attacks ↗](https://www.cloudflare.com/learning/security/what-is-web-application-security/).
+**Cloudflare Specials** is a group that provides core firewall security against [common attacks ↗︎](https://www.cloudflare.com/learning/security/what-is-web-application-security/).
 
 Note
 
@@ -88,7 +88,7 @@ Review the entry in [sampled logs](https://developers.cloudflare.com/waf/analyti
 
 ### Control the OWASP package
 
-The OWASP ModSecurity Core Rule Set package contains several rules from the [OWASP project ↗](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Cloudflare does not write or curate OWASP rules. Unlike the Cloudflare Managed Ruleset, specific OWASP rules are either turned *On* or *Off.*
+The OWASP ModSecurity Core Rule Set package contains several rules from the [OWASP project ↗︎](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Cloudflare does not write or curate OWASP rules. Unlike the Cloudflare Managed Ruleset, specific OWASP rules are either turned *On* or *Off.*
 
 To manage OWASP thresholds, set the **Sensitivity** to *Low*, *Medium*, or *High* under **Package: OWASP ModSecurity Core Rule Set**.
 

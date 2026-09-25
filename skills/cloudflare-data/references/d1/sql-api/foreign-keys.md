@@ -116,7 +116,7 @@ CREATE TABLE scores (
 
 ## Next Steps
 
-- Read the SQLite [`FOREIGN KEY` ↗](https://www.sqlite.org/foreignkeys.html) documentation.
+- Read the SQLite [`FOREIGN KEY` ↗︎](https://www.sqlite.org/foreignkeys.html) documentation.
 - Learn how to [use the D1 Workers Binding API](https://developers.cloudflare.com/d1/worker-api/) from within a Worker.
 - Understand how [database migrations work](https://developers.cloudflare.com/d1/reference/migrations/) with D1.
 

@@ -22,8 +22,8 @@ Looking for a managed option?
 
 At the end of this tutorial, you will have built an AI tool that allows you to store information and query it using a Large Language Model. This pattern, known as Retrieval Augmented Generation, or RAG, is a useful project you can build by combining multiple aspects of Cloudflare's AI toolkit. You do not need to have experience working with AI tools to build this application.
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -33,11 +33,11 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
-You will also need access to [Vectorize](https://developers.cloudflare.com/vectorize/platform/pricing/). During this tutorial, we will show how you can optionally integrate with [Anthropic Claude ↗](http://anthropic.com) as well. You will need an [Anthropic API key ↗](https://docs.anthropic.com/en/api/getting-started) to do so.
+You will also need access to [Vectorize](https://developers.cloudflare.com/vectorize/platform/pricing/). During this tutorial, we will show how you can optionally integrate with [Anthropic Claude ↗︎](http://anthropic.com) as well. You will need an [Anthropic API key ↗︎](https://docs.anthropic.com/en/api/getting-started) to do so.
 
 ## 1. Create a new Worker project
 
@@ -80,8 +80,8 @@ What files did C3 create?
 1. <code>wrangler.jsonc</code>: Your <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#sample-wrangler-configuration">Wrangler</a> configuration file.
 2. <code>index.js</code> (in <code>/src</code>): A minimal <code>'Hello World!'</code> Worker written in <a href="https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/">ES module</a> syntax.
 3. <code>package.json</code>: A minimal Node dependencies configuration file.
-4. <code>package-lock.json</code>: Refer to <a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json"><code>npm</code> documentation on <code>package-lock.json</code> ↗</a>.
-5. <code>node_modules</code>: Refer to <a href="https://docs.npmjs.com/cli/v7/configuring-npm/folders#node-modules"><code>npm</code> documentation <code>node_modules</code> ↗</a>.
+4. <code>package-lock.json</code>: Refer to <a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json"><code>npm</code> documentation on <code>package-lock.json</code> ↗︎</a>.
+5. <code>node_modules</code>: Refer to <a href="https://docs.npmjs.com/cli/v7/configuring-npm/folders#node-modules"><code>npm</code> documentation <code>node_modules</code> ↗︎</a>.
 
 </details>
 
@@ -101,7 +101,7 @@ After you have created your first Worker, run the [`wrangler dev`](https://devel
 npx wrangler dev
 ```
 
-You will now be able to go to [http://localhost:8787 ↗](http://localhost:8787) to see your Worker running. Any changes you make to your code will trigger a rebuild, and reloading the page will show you the up-to-date output of your Worker.
+You will now be able to go to [http://localhost:8787 ↗︎](http://localhost:8787) to see your Worker running. Any changes you make to your code will trigger a rebuild, and reloading the page will show you the up-to-date output of your Worker.
 
 ## 3. Adding the AI binding
 
@@ -463,7 +463,7 @@ export default app;
 
 ## 8. Adding Anthropic Claude model (optional)
 
-If you are working with larger documents, you have the option to use Anthropic's [Claude models ↗](https://claude.ai/), which have large context windows and are well-suited to RAG workflows.
+If you are working with larger documents, you have the option to use Anthropic's [Claude models ↗︎](https://claude.ai/), which have large context windows and are well-suited to RAG workflows.
 
 To begin, install the `@anthropic-ai/sdk` package:
 
@@ -681,7 +681,7 @@ When pushing to your `*.workers.dev` subdomain for the first time, you may see [
 
 ## Related resources
 
-A full version of this codebase is available on GitHub. It includes a frontend UI for querying, adding, and deleting notes, as well as a backend API for interacting with the database and vector index. You can find it here: [github.com/kristianfreeman/cloudflare-retrieval-augmented-generation-example ↗](https://github.com/kristianfreeman/cloudflare-retrieval-augmented-generation-example/).
+A full version of this codebase is available on GitHub. It includes a frontend UI for querying, adding, and deleting notes, as well as a backend API for interacting with the database and vector index. You can find it here: [github.com/kristianfreeman/cloudflare-retrieval-augmented-generation-example ↗︎](https://github.com/kristianfreeman/cloudflare-retrieval-augmented-generation-example/).
 
 To do more:
 

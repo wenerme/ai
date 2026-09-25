@@ -38,7 +38,7 @@ After making changes to your DNS records, you may need to wait a few minutes for
 
 Note
 
-For additional troubleshooting help, refer to the [Community troubleshooting guide ↗](https://community.cloudflare.com/t/community-tip-fixing-the-dns-probe-finished-nxdomain-error/42818).
+For additional troubleshooting help, refer to the [Community troubleshooting guide ↗︎](https://community.cloudflare.com/t/community-tip-fixing-the-dns-probe-finished-nxdomain-error/42818).
 
 Was this helpful?
 

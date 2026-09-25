@@ -29,7 +29,7 @@ Cloudflare can render SSH, VNC, and RDP applications in a browser without the ne
 
 To turn on browser rendering for an SSH or VNC application:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the SSH or VNC application you created when [connecting the server to Cloudflare](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/). Select **Configure**.
 3. Turn on **Allow access through browser-based RDP, SSH, or VNC sessions**, then select *SSH* or *VNC*. Note
 

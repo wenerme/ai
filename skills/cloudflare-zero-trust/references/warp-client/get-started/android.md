@@ -22,7 +22,7 @@ By default, 1.1.1.1:Faster Internet is configured to WARP mode. You can also con
 
 ## Set up 1.1.1.1: Faster Internet
 
-1. Download [1.1.1.1: Faster Internet from Google Play ↗](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone) for free.
+1. Download [1.1.1.1: Faster Internet from Google Play ↗︎](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone) for free.
 2. Launch 1.1.1.1: Faster Internet and accept the Terms of Service.
 3. Toggle the **WARP** button to **Connected**.
 4. Install the VPN profile that allows your phone to connect securely to 1.1.1.1.

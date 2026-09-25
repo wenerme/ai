@@ -24,7 +24,7 @@ The Activity log allows you to sort through all email activities and check actio
 
 The Activity log surfaces the same per-event data that is also available programmatically through the [`emailSendingAdaptive` and `emailRoutingAdaptive` datasets](https://developers.cloudflare.com/email-service/observability/metrics-analytics/) in the GraphQL Analytics API.
 
-For Email Routing, you can expand an individual email in the Activity log to inspect authentication results ([SPF ↗](https://datatracker.ietf.org/doc/html/rfc7208), [DKIM ↗](https://datatracker.ietf.org/doc/html/rfc6376), and [DMARC ↗](https://datatracker.ietf.org/doc/html/rfc7489)).
+For Email Routing, you can expand an individual email in the Activity log to inspect authentication results ([SPF ↗︎](https://datatracker.ietf.org/doc/html/rfc7208), [DKIM ↗︎](https://datatracker.ietf.org/doc/html/rfc6376), and [DMARC ↗︎](https://datatracker.ietf.org/doc/html/rfc7489)).
 
 ### Email sending logs
 
@@ -76,7 +76,7 @@ For sent emails, expand the email in the Activity log to open the **Preview** se
 - **Text**: The plain text body.
 - **Headers**: The message headers.
 - **Attachments**: Files included with the message.
-- **Raw**: The full raw [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) message source.
+- **Raw**: The full raw [RFC 5322 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322) message source.
 
 To make sent messages previewable, turn on [**Email preview**](https://developers.cloudflare.com/email-service/configuration/domains/#email-preview) for the sending domain. Previews cover messages sent while the setting is turned on and are retained for about seven days. New sending domains have **Email preview** turned on automatically.
 

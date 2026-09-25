@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Phases list
 
-Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/reference/phases-list/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following tables list the [phases](https://developers.cloudflare.com/ruleset-engine/about/phases/) of Cloudflare products powered by the Ruleset Engine, in the order those phases are executed. Some products such as the Cloudflare Web Application Firewall have more than one associated phase.
 
 ## Network layer
 
-[Network-layer ↗](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) phases apply to packets received on the Cloudflare global network.
+[Network-layer ↗︎](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) phases apply to packets received on the Cloudflare global network.
 
 | Phase name | Used in product/feature |
 | --- | --- |
@@ -30,7 +30,7 @@ The following tables list the [phases](https://developers.cloudflare.com/ruleset
 
 ## Application layer
 
-[Application-layer ↗](https://www.cloudflare.com/learning/ddos/what-is-layer-7/) phases apply to requests received on the Cloudflare global network.
+[Application-layer ↗︎](https://www.cloudflare.com/learning/ddos/what-is-layer-7/) phases apply to requests received on the Cloudflare global network.
 
 ### Request phases
 
@@ -42,13 +42,13 @@ The phases execute in the order they appear in the table.
 | `http_request_sanitize` | [URL normalization](https://developers.cloudflare.com/rules/normalization/) |
 | `http_request_transform` | [URL Rewrite Rules](https://developers.cloudflare.com/rules/transform/url-rewrite/) |
 | *N/A* (internal phase) | [Waiting Room Rules](https://developers.cloudflare.com/waiting-room/additional-options/waiting-room-rules/) |
-| `http_request_api_gateway_early`\* | [API Shield](https://developers.cloudflare.com/api-shield/) |
+| *N/A* (internal detection phase)† | [API Shield](https://developers.cloudflare.com/api-shield/) |
 | `http_config_settings` | [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/) |
 | `http_request_origin` | [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/) |
 | `ddos_l7`\* | [HTTP DDoS Attack Protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/) |
 | `http_request_firewall_custom` | [Custom rules (Web Application Firewall)](https://developers.cloudflare.com/waf/custom-rules/) |
 | `http_ratelimit` | [Rate limiting rules (WAF)](https://developers.cloudflare.com/waf/rate-limiting-rules/) |
-| `http_request_api_gateway_late` | [API Shield](https://developers.cloudflare.com/api-shield/) |
+| *N/A* (internal mitigation phase)‡ | [API Shield](https://developers.cloudflare.com/api-shield/) |
 | `http_request_firewall_managed` | [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/) |
 | `http_request_sbfm` | [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/) |
 | *N/A* (internal phase) | [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) application check |
@@ -60,6 +60,10 @@ The phases execute in the order they appear in the table.
 | `http_request_cloud_connector` | [Cloud Connector](https://developers.cloudflare.com/rules/cloud-connector/) |
 
 \* *This phase is for configuration purposes only — the corresponding rules will not be executed at this stage in the request handling process.*
+
+† *Detections run at this phase. Detection results are available to later phases.*
+
+‡ *Mitigation actions can run at this stage if configured.*
 
 For Cloudflare Access, the `Cloudflare Access` row refers to Access application checking. Access enforcement and handling run in later internal phases, after Bulk Redirects.
 
@@ -90,5 +94,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/reference/phases-list/#page","headline":"Phases list","description":"Complete list of phases available in the Ruleset Engine.","url":"https://developers.cloudflare.com/ruleset-engine/reference/phases-list/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/reference/phases-list/#page","headline":"Phases list","description":"Complete list of phases available in the Ruleset Engine.","url":"https://developers.cloudflare.com/ruleset-engine/reference/phases-list/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

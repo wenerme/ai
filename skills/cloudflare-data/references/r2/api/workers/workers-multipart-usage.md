@@ -22,7 +22,7 @@ This guide assumes you have set up the [R2 binding](https://developers.cloudflar
 
 The following example Worker exposes an HTTP API which enables applications to use the multipart API through the Worker.
 
-In this example, each request is routed based on the HTTP method and the action request parameter. As your Worker becomes more complicated, consider utilizing a serverless web framework such as [Hono ↗](https://honojs.dev/) to handle the routing for you.
+In this example, each request is routed based on the HTTP method and the action request parameter. As your Worker becomes more complicated, consider utilizing a serverless web framework such as [Hono ↗︎](https://honojs.dev/) to handle the routing for you.
 
 The following example Worker includes any new information about the state of the multipart upload in the response to each request. For the request which creates the multipart upload, the `uploadId` is returned. For requests uploading a part, the part number and `etag` are returned. In turn, the client keeps track of this state, and includes the uploadId in subsequent requests, and the `etag` and part number of each part when completing a multipart upload.
 
@@ -289,7 +289,7 @@ The next section is optional and shows an example of a Python script which uploa
 
 ## Perform a multipart upload with your Worker (optional)
 
-This example application uploads a local file to the Worker in multiple parts. It uses Python's built-in `ThreadPoolExecutor` to parallelize the uploading of parts to the Worker, which increases upload speeds. HTTP requests to the Worker are made with the [requests ↗](https://pypi.org/project/requests/) library.
+This example application uploads a local file to the Worker in multiple parts. It uses Python's built-in `ThreadPoolExecutor` to parallelize the uploading of parts to the Worker, which increases upload speeds. HTTP requests to the Worker are made with the [requests ↗︎](https://pypi.org/project/requests/) library.
 
 Utilizing the multipart API in this way also allows you to use your Worker to upload files larger than the [Workers request body size limit](https://developers.cloudflare.com/workers/platform/limits#request-limits). The uploading of individual parts is still subject to this limit.
 

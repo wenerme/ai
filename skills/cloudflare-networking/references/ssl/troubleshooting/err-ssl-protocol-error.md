@@ -124,7 +124,7 @@ If the above steps do not resolve the issue, collect the following information f
 3. **Browser and OS version** - Including any security software installed
 4. **Network information** - Whether they are on a corporate network, using a VPN, or have any proxy configured
 
-Check [Cloudflare Status ↗](https://www.cloudflarestatus.com/) to verify there are no ongoing incidents affecting SSL/TLS.
+Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com/) to verify there are no ongoing incidents affecting SSL/TLS.
 
 If the issue persists and affects many visitors, [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with the diagnostic information collected.
 

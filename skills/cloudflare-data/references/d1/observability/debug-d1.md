@@ -16,7 +16,7 @@ Last updated Aug 11, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 D1 allows you to capture exceptions and log errors returned when querying a database. To debug D1, you will use the same tools available when [debugging Workers](https://developers.cloudflare.com/workers/observability/).
 
-D1's [`stmt.`](https://developers.cloudflare.com/d1/worker-api/prepared-statements/) and [`db.`](https://developers.cloudflare.com/d1/worker-api/d1-database/) methods throw an [Error object ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) whenever an error occurs. To capture exceptions, log the `e.message` value.
+D1's [`stmt.`](https://developers.cloudflare.com/d1/worker-api/prepared-statements/) and [`db.`](https://developers.cloudflare.com/d1/worker-api/d1-database/) methods throw an [Error object ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error) whenever an error occurs. To capture exceptions, log the `e.message` value.
 
 For example, the code below has a query with an invalid keyword - `INSERTZ` instead of `INSERT`:
 
@@ -41,7 +41,7 @@ The code above throws the following error message:
 
 Note
 
-Prior to [`wrangler` 3.1.1 ↗](https://github.com/cloudflare/workers-sdk/releases/tag/wrangler%403.1.1), D1 JavaScript errors used the [cause property ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause) for detailed error messages.
+Prior to [`wrangler` 3.1.1 ↗︎](https://github.com/cloudflare/workers-sdk/releases/tag/wrangler%403.1.1), D1 JavaScript errors used the [cause property ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause) for detailed error messages.
 
 To inspect these errors when using older versions of `wrangler`, you should log `error?.cause?.message`.
 
@@ -97,7 +97,7 @@ D1 ensures that any retry attempt does not cause database writes, making the aut
 
 Note
 
-Only read-only queries (queries containing only the following SQLite keywords: `SELECT`, `EXPLAIN`, `WITH`) are retried. Queries containing any [SQLite keyword ↗](https://sqlite.org/lang_keywords.html) that leads to database writes are not retried.
+Only read-only queries (queries containing only the following SQLite keywords: `SELECT`, `EXPLAIN`, `WITH`) are retried. Queries containing any [SQLite keyword ↗︎](https://sqlite.org/lang_keywords.html) that leads to database writes are not retried.
 
 ## View logs
 
@@ -105,9 +105,9 @@ View a stream of live logs from your Worker by using [`wrangler tail`](https://d
 
 ## Report issues
 
-- To report bugs or request features, go to the [Cloudflare Community Forums ↗](https://community.cloudflare.com/c/developers/d1/85).
-- To give feedback, go to the [D1 Discord channel ↗](https://discord.com/invite/cloudflaredev).
-- If you are having issues with Wrangler, report issues in the [Wrangler GitHub repository ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
+- To report bugs or request features, go to the [Cloudflare Community Forums ↗︎](https://community.cloudflare.com/c/developers/d1/85).
+- To give feedback, go to the [D1 Discord channel ↗︎](https://discord.com/invite/cloudflaredev).
+- If you are having issues with Wrangler, report issues in the [Wrangler GitHub repository ↗︎](https://github.com/cloudflare/workers-sdk/issues/new/choose).
 
 You should include as much of the following in any bug report:
 

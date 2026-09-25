@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/zaraz/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗](https://community.cloudflare.com/) or [Discord channel ↗](https://discord.cloudflare.com) to explore additional resources.
+Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗︎](https://community.cloudflare.com/) or [Discord channel ↗︎](https://discord.cloudflare.com) to explore additional resources.
 
 - [General](#general)
 - [Tools](#tools)
@@ -60,7 +60,7 @@ We recommend disabling [Rocket Loader](https://developers.cloudflare.com/speed/o
 
 #### Is Zaraz compatible with Content Security Policies (CSP)?
 
-Yes. To learn more about how Zaraz compatibility with [CSP](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/) configurations works, refer to the [Cloudflare Zaraz supports CSP ↗](https://blog.cloudflare.com/cloudflare-zaraz-supports-csp/) blog post.
+Yes. To learn more about how Zaraz compatibility with [CSP](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/content-security-policies/) configurations works, refer to the [Cloudflare Zaraz supports CSP ↗︎](https://blog.cloudflare.com/cloudflare-zaraz-supports-csp/) blog post.
 
 #### Does Cloudflare process my HTML, removing existing scripts and then injecting Zaraz?
 
@@ -166,7 +166,7 @@ If you have enabled "Single Page Application support" in Zaraz Settings, your Cu
 
 #### What if I want to use a tool that is not supported by Zaraz?
 
-The Zaraz engineering team is adding support to new tools all the time. You can also refer to the [community space ↗](https://community.cloudflare.com/c/developers/integrationrequest/68) to ask for new integrations.
+The Zaraz engineering team is adding support to new tools all the time. You can also refer to the [community space ↗︎](https://community.cloudflare.com/c/developers/integrationrequest/68) to ask for new integrations.
 
 #### I cannot get a tool to load when the website is loaded. Do I have to add code to my website?
 

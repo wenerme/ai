@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/cohere/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Cohere ↗](https://cohere.com/) build AI models designed to solve real-world business challenges.
+[Cohere ↗︎](https://cohere.com/) build AI models designed to solve real-world business challenges.
 
 ## Endpoint
 
@@ -24,7 +24,7 @@ https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere
 
 ## URL structure
 
-When making requests to [Cohere ↗](https://cohere.com/), replace `https://api.cohere.ai/v1` in the URL you're currently using with `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere`.
+When making requests to [Cohere ↗︎](https://cohere.com/), replace `https://api.cohere.ai/v1` in the URL you're currently using with `https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere`.
 
 ## Prerequisites
 
@@ -57,7 +57,7 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/cohere/v1/ch
 
 ### Use Cohere SDK with Python
 
-If using the [`cohere-python-sdk` ↗](https://github.com/cohere-ai/cohere-python), set your endpoint like this:
+If using the [`cohere-python-sdk` ↗︎](https://github.com/cohere-ai/cohere-python), set your endpoint like this:
 
 *Pythonjs*
 

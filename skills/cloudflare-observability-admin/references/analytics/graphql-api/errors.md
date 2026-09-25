@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/errors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The GraphQL Analytics API is a RESTful API based on HTTPS requests and JSON responses, and will return familiar HTTP status codes (for example, `404`, `500`, `504`). However, in contrast to the common REST approach, a `200` response can contain an error, conforming to the [GraphQL specification ↗](https://graphql.github.io/graphql-spec/June2018/#sec-Errors).
+The GraphQL Analytics API is a RESTful API based on HTTPS requests and JSON responses, and will return familiar HTTP status codes (for example, `404`, `500`, `504`). However, in contrast to the common REST approach, a `200` response can contain an error, conforming to the [GraphQL specification ↗︎](https://graphql.github.io/graphql-spec/June2018/#sec-Errors).
 
 All responses contain an `errors` array, which will be `null` if there are no errors, and include at least one error object if there was an error. Non-null error objects will contain the following fields:
 
@@ -50,7 +50,7 @@ Sample error messages:
 
 These messages indicate a temporary server-side issue. The first message typically means the upstream database is unreachable or returned an error. The second message means the server has reached its maximum number of concurrent queries.
 
-Retry the request after a short delay. If the error persists, check the [Cloudflare status page ↗](https://www.cloudflarestatus.com/) for ongoing incidents.
+Retry the request after a short delay. If the error persists, check the [Cloudflare status page ↗︎](https://www.cloudflarestatus.com/) for ongoing incidents.
 
 ### Dataset accessibility limits exceeded
 
@@ -61,7 +61,7 @@ Sample error messages:
 - `limit must be positive number and not greater than...` (HTTP `400`)
 - `query time range is too large...` (HTTP `400`)
 
-These messages indicate that the query exceeds what is allowed for the particular dataset under the current [plan ↗](https://www.cloudflare.com/plans/), and an upgrade should be considered. Refer to [Node limits](https://developers.cloudflare.com/analytics/graphql-api/limits/#node-limits-and-availability) for details.
+These messages indicate that the query exceeds what is allowed for the particular dataset under the current [plan ↗︎](https://www.cloudflare.com/plans/), and an upgrade should be considered. Refer to [Node limits](https://developers.cloudflare.com/analytics/graphql-api/limits/#node-limits-and-availability) for details.
 
 ### Parsing issues
 
@@ -104,7 +104,7 @@ Sample error message:
 
 - `Internal server error` (HTTP `500`)
 
-This is a generic error indicating an unexpected failure. If it persists, contact [Cloudflare Support ↗](https://support.cloudflare.com/) with the full request and response, including the `Ray-ID` header from the HTTP response.
+This is a generic error indicating an unexpected failure. If it persists, contact [Cloudflare Support ↗︎](https://support.cloudflare.com/) with the full request and response, including the `Ray-ID` header from the HTTP response.
 
 Was this helpful?
 

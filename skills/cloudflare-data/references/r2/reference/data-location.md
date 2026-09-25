@@ -74,7 +74,7 @@ Location Hints are only honored the first time a bucket with a given name is cre
 
 Jurisdictional Restrictions guarantee objects in a bucket are stored within a specific jurisdiction.
 
-Use Jurisdictional Restrictions when you need to ensure data is stored and processed within a jurisdiction to meet data residency requirements, including local regulations such as the [GDPR ↗](https://gdpr-info.eu/) or [FedRAMP ↗](https://blog.cloudflare.com/cloudflare-achieves-fedramp-authorization/).
+Use Jurisdictional Restrictions when you need to ensure data is stored and processed within a jurisdiction to meet data residency requirements, including local regulations such as the [GDPR ↗︎](https://gdpr-info.eu/) or [FedRAMP ↗︎](https://blog.cloudflare.com/cloudflare-achieves-fedramp-authorization/).
 
 ### Set jurisdiction via the Cloudflare dashboard
 
@@ -117,7 +117,7 @@ When interacting with R2 resources that belong to a defined jurisdiction with th
 
 You can use your jurisdiction-specific endpoint for any [supported S3 API operations](https://developers.cloudflare.com/r2/api/s3/api/). When using a jurisdiction endpoint, you will not be able to access R2 resources outside of that jurisdiction.
 
-The example below shows how to create an R2 bucket in the `eu` jurisdiction using the [`@aws-sdk/client-s3` ↗](https://www.npmjs.com/package/@aws-sdk/client-s3) package for JavaScript.
+The example below shows how to create an R2 bucket in the `eu` jurisdiction using the [`@aws-sdk/client-s3` ↗︎](https://www.npmjs.com/package/@aws-sdk/client-s3) package for JavaScript.
 
 ```js
 import { S3Client, CreateBucketCommand } from "@aws-sdk/client-s3";

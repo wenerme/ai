@@ -76,7 +76,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
       Automatically selects the most detailed summary supported by the model.
 
-- `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+- `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
   The service tier used for model requests.
 
@@ -99,6 +99,10 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
   - `"fast"`
 
     Uses the fast service tier.
+
+  - `"ultrafast"`
+
+    Uses the ultrafast service tier.
 
 - `text: optional AgentTextParam or null`
 
@@ -438,7 +442,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: "auto" or "default" or "flex" or 2 more`
+  - `service_tier: "auto" or "default" or "flex" or 3 more`
 
     The resolved service-tier policy used for model requests.
 
@@ -451,6 +455,8 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `text: AgentText`
 

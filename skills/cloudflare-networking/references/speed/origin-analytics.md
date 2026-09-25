@@ -22,7 +22,7 @@ Use Origin Analytics to identify slow endpoints, monitor origin response times, 
 
 To open the Origin Analytics tab:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account and domain.
 2. Go to **Speed** > **Origin Analytics**.
 
 ## Metrics
@@ -70,7 +70,7 @@ The following table describes how to use Origin Analytics to investigate common 
 | Issue | What to check |
 | --- | --- |
 | [524 timeout errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-524/) | Origin response time chart. If P95 is approaching the timeout threshold, identify slow paths in the **Top endpoints** table. |
-| [522 connection errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | Verify that your firewall allows [Cloudflare IP ranges ↗](https://www.cloudflare.com/ips/) and that your origin is listening on the expected port. |
+| [522 connection errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-522/) | Verify that your firewall allows [Cloudflare IP ranges ↗︎](https://www.cloudflare.com/ips/) and that your origin is listening on the expected port. |
 | [520 unknown errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/error-520/) | Origin status code chart. If the origin returned a `200` but Cloudflare served a `520`, the origin response was malformed (for example, oversized headers or an early connection close). |
 
 ## Related resources

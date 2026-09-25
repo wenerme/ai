@@ -42,7 +42,7 @@ Only route specific Route 53 zones, or VPC Endpoints (such as `vpce.amazonaws.co
 
 To view the domains subject to Local Domain Fallback:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
 3. Scroll down to **Local Domain Fallback** and select **Manage**.
 
@@ -54,7 +54,7 @@ Local Domain Fallback configuration only impacts where DNS requests get resolved
 
 To view the fallback domains applied to a device, you can:
 
-- In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > find the target device and the **Last active device profile** > follow the [steps above](#view-domains).
+- In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > find the target device and the **Last active device profile** > follow the [steps above](#view-domains).
 - (Desktop only) Run `warp-cli settings` in the terminal of the target device and review the [fallback domains](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/#fallback-domains) section of the output.
 - (Desktop only) Collect [client diagnostic logs](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/diagnostic-logs/) for the device and review the [fallback domain](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/troubleshooting-guide/#fallback-domains) section in `warp_settings.txt`.
 
@@ -62,7 +62,7 @@ To view the fallback domains applied to a device, you can:
 
 To add a domain to the Local Domain Fallback list:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
 3. Scroll down to **Local Domain Fallback** and select **Manage**.
 
@@ -72,7 +72,7 @@ To add a domain to the Local Domain Fallback list:
 
 A Local Domain Fallback list is scoped to a specific [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/). If a device profile does not have a corresponding Local Domain Fallback resource, those devices will use the default local domains shown in Step 2.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
 2. (Optional) Create a list of domains that you can reuse across multiple device profiles. For example, you can declare a local value in the same module as your device profiles:
 
@@ -131,7 +131,7 @@ A Local Domain Fallback list is scoped to a specific [device profile](https://de
    ```
 
 
-3. To configure Local Domain Fallback for the default device profile, use the [`cloudflare_zero_trust_device_default_profile_local_domain_fallback` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_default_profile_local_domain_fallback) resource. To configure Local Domain Fallback for a custom device profile, use [`cloudflare_zero_trust_device_custom_profile_local_domain_fallback` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile_local_domain_fallback). For example:
+3. To configure Local Domain Fallback for the default device profile, use the [`cloudflare_zero_trust_device_default_profile_local_domain_fallback` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_default_profile_local_domain_fallback) resource. To configure Local Domain Fallback for a custom device profile, use [`cloudflare_zero_trust_device_custom_profile_local_domain_fallback` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_custom_profile_local_domain_fallback). For example:
 
    *device-profiles.tftf*
 
@@ -176,7 +176,7 @@ For more information, refer to [How the Cloudflare One Client handles DNS reques
 
 ### Delete a domain
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to view or modify and select **Configure**.
 3. Scroll down to **Local Domain Fallback** and select **Manage**.
 
@@ -186,7 +186,7 @@ The domain will no longer be excluded from Gateway DNS policies, effective immed
 
 ## Reverse DNS lookups for internal IPs
 
-By default, Warp sends [reverse DNS queries ↗](https://www.cloudflare.com/learning/dns/glossary/reverse-dns/) to public DNS servers. To lookup the domain name associated with an internal IP address, [add a local domain fallback entry](#add-a-domain) for `in-addr.arpa` (IPv4) and/or `ip6.arpa` (IPv6) that points to your internal DNS server IP. `in-addr.arpa` and `ip6.arpa` are top-level domains [reserved ↗](https://www.iana.org/domains/arpa) for reverse DNS queries. By adding a local domain fallback entry for these domains, all reverse DNS queries (such as `dig -x 1.1.1.1`) will now resolve through your local DNS server.
+By default, Warp sends [reverse DNS queries ↗︎](https://www.cloudflare.com/learning/dns/glossary/reverse-dns/) to public DNS servers. To lookup the domain name associated with an internal IP address, [add a local domain fallback entry](#add-a-domain) for `in-addr.arpa` (IPv4) and/or `ip6.arpa` (IPv6) that points to your internal DNS server IP. `in-addr.arpa` and `ip6.arpa` are top-level domains [reserved ↗︎](https://www.iana.org/domains/arpa) for reverse DNS queries. By adding a local domain fallback entry for these domains, all reverse DNS queries (such as `dig -x 1.1.1.1`) will now resolve through your local DNS server.
 
 ## Related resources
 

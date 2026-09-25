@@ -49,7 +49,7 @@ If your application sends multiple requests to the same Worker, use `.get()` wit
 
 ## View Dynamic Workers usage
 
-To view the number of billable Dynamic Workers invoked during your billing period, go to **Workers & Pages** > **Overview** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+To view the number of billable Dynamic Workers invoked during your billing period, go to **Workers & Pages** > **Overview** in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 
 Dynamic Workers usage data only goes back to June 1, 2026.
 

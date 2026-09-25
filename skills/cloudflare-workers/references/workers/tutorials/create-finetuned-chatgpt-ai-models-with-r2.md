@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/create-finetuned-chatgpt-ai-models-with-r2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this tutorial, you will use the [OpenAI ↗](https://openai.com) API and [Cloudflare R2](https://developers.cloudflare.com/r2) to create a [fine-tuned model ↗](https://platform.openai.com/docs/guides/fine-tuning).
+In this tutorial, you will use the [OpenAI ↗︎](https://openai.com) API and [Cloudflare R2](https://developers.cloudflare.com/r2) to create a [fine-tuned model ↗︎](https://platform.openai.com/docs/guides/fine-tuning).
 
 This feature in OpenAI's API allows you to derive a custom model from OpenAI's various large language models based on a set of custom instructions and example answers. These instructions and example answers are written in a document, known as a fine-tune document. This document will be stored in R2 and dynamically provided to OpenAI's APIs when creating a new fine-tune model.
 
@@ -26,15 +26,15 @@ In order to use this feature, you will do the following tasks:
 
 ![Demo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2978,height=1744,format=webp/_astro/finetune-example.Df8cOHyQ.png)
 
-To review the completed code for this application, refer to the [GitHub repository for this tutorial ↗](https://github.com/kristianfreeman/openai-finetune-r2-example).
+To review the completed code for this application, refer to the [GitHub repository for this tutorial ↗︎](https://github.com/kristianfreeman/openai-finetune-r2-example).
 
 ## Prerequisites
 
 Before you start, make sure you have:
 
-- A Cloudflare account with access to R2. If you do not have a Cloudflare account, [sign up ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) before continuing. Then purchase R2 from your Cloudflare dashboard.
+- A Cloudflare account with access to R2. If you do not have a Cloudflare account, [sign up ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages) before continuing. Then purchase R2 from your Cloudflare dashboard.
 - An OpenAI API key.
-- A fine-tune document, structured as [JSON Lines ↗](https://jsonlines.org/). Use the [example document ↗](https://github.com/kristianfreeman/openai-finetune-r2-example/blob/16ca53ca9c8589834abe317487eeedb8a24c7643/example_data.jsonl) in the source code.
+- A fine-tune document, structured as [JSON Lines ↗︎](https://jsonlines.org/). Use the [example document ↗︎](https://github.com/kristianfreeman/openai-finetune-r2-example/blob/16ca53ca9c8589834abe317487eeedb8a24c7643/example_data.jsonl) in the source code.
 
 ## 1. Create a Worker application
 
@@ -115,7 +115,7 @@ bucket_name = "<YOUR_BUCKET_NAME>"
 
 ## 4. Initialize your Worker application
 
-You will use [Hono ↗](https://hono.dev/), a lightweight framework for building Cloudflare Workers applications. Hono provides an interface for defining routes and middleware functions. Inside your project directory, run the following command to install Hono:
+You will use [Hono ↗︎](https://hono.dev/), a lightweight framework for building Cloudflare Workers applications. Hono provides an interface for defining routes and middleware functions. Inside your project directory, run the following command to install Hono:
 
 npmyarnpnpmbun
 
@@ -135,7 +135,7 @@ pnpm add hono
 bun add hono
 ```
 
-You also need to install the [OpenAI Node API library ↗](https://www.npmjs.com/package/openai). This library provides convenient access to the OpenAI REST API in a Node.js project. To install the library, execute the following command:
+You also need to install the [OpenAI Node API library ↗︎](https://www.npmjs.com/package/openai). This library provides convenient access to the OpenAI REST API in a Node.js project. To install the library, execute the following command:
 
 npmyarnpnpmbun
 
@@ -310,7 +310,7 @@ Finally, visit `/jobs` to see the status of your fine-tune jobs in OpenAI. Once 
 
 ![Jobs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1606,height=1144,format=webp/_astro/finetune-jobs.BQ_jbiJu.png)
 
-Visit the [OpenAI Playground ↗](https://platform.openai.com/playground) in order to use your fine-tune model. Select your fine-tune model from the top-left dropdown of the interface.
+Visit the [OpenAI Playground ↗︎](https://platform.openai.com/playground) in order to use your fine-tune model. Select your fine-tune model from the top-left dropdown of the interface.
 
 ![Demo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2978,height=1744,format=webp/_astro/finetune-example.Df8cOHyQ.png)
 
@@ -327,7 +327,7 @@ openai.chat.completions.create({
 
 To build more with Workers, refer to [Tutorials](https://developers.cloudflare.com/workers/tutorials).
 
-If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with other developers and the Cloudflare team.
+If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗︎](https://discord.cloudflare.com) to connect with other developers and the Cloudflare team.
 
 Was this helpful?
 

@@ -38,7 +38,7 @@ pnpm create cloudflare@latest my-hono-app --template=cloudflare/templates/vite-r
 
 ## What is Hono?
 
-[Hono ↗](https://hono.dev/) is an ultra-fast, lightweight framework for building web applications, and works fantastically with Cloudflare Workers. With Workers Assets, you can easily combine a Hono API running on Workers with a SPA to create a full-stack app.
+[Hono ↗︎](https://hono.dev/) is an ultra-fast, lightweight framework for building web applications, and works fantastically with Cloudflare Workers. With Workers Assets, you can easily combine a Hono API running on Workers with a SPA to create a full-stack app.
 
 ## Creating a full-stack Hono app with a React SPA
 
@@ -127,7 +127,7 @@ This project uses Vite for local development and build, and thus comes with all 
 
 ## Bindings
 
-The [Hono documentation ↗](https://hono.dev/docs/getting-started/cloudflare-workers#bindings) provides information on how you can access bindings in your Hono app.
+The [Hono documentation ↗︎](https://hono.dev/docs/getting-started/cloudflare-workers#bindings) provides information on how you can access bindings in your Hono app.
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 

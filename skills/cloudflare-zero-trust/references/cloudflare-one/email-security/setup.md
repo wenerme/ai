@@ -84,7 +84,7 @@ Refer to [Dispositions](https://developers.cloudflare.com/cloudflare-one/email-s
 
 ## 3. Set up the impersonation registry
 
-Most [business email compromise (BEC) ↗](https://www.cloudflare.com/en-gb/learning/email-security/business-email-compromise-bec/) targets executives or finance roles. You must add addresses of roles who are likely to be impersonated. Refer to [Impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) to learn how to add a user to the impersonation registry.
+Most [business email compromise (BEC) ↗︎](https://www.cloudflare.com/en-gb/learning/email-security/business-email-compromise-bec/) targets executives or finance roles. You must add addresses of roles who are likely to be impersonated. Refer to [Impersonation registry](https://developers.cloudflare.com/cloudflare-one/email-security/settings/detection-settings/impersonation-registry/) to learn how to add a user to the impersonation registry.
 
 Roles you may want to include in the impersonation registry are:
 

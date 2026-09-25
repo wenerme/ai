@@ -30,7 +30,7 @@ If your domain recently expired and you renewed it, wait at least 45 days after 
 
 Note
 
-If you purchased your domain through Cloudflare Registrar, [ICANN ↗](https://www.icann.org/) requires you to verify your registrant email address. If your email is unverified or if the verification has expired, ICANN places a hold on the domain and replaces your nameservers with parking server nameservers (NS). Once you complete verification, your nameservers are automatically restored.
+If you purchased your domain through Cloudflare Registrar, [ICANN ↗︎](https://www.icann.org/) requires you to verify your registrant email address. If your email is unverified or if the verification has expired, ICANN places a hold on the domain and replaces your nameservers with parking server nameservers (NS). Once you complete verification, your nameservers are automatically restored.
 
 ---
 
@@ -82,28 +82,28 @@ Provider-specific DNSSEC instructions
 
 This is not an exhaustive list, but the following links may be helpful:
 
-- <a href="https://support.dnsimple.com/articles/cloudflare-ds-record/">DNSimple ↗</a>
-- <a href="https://support.domaindiscount24.com/hc/articles/4409759478161">Domaindiscount24 ↗</a>
-- <a href="https://help.dreamhost.com/hc/en-us/articles/219539467">DreamHost ↗</a>
-- <a href="https://www.dynadot.com/help/question/set-DNSSEC">Dynadot ↗</a>
-- <a href="https://support.enom.com/support/solutions/articles/201000065386">Enom ↗</a>
-- <a href="https://docs.gandi.net/en/domain_names/advanced_users/dnssec.html">Gandi ↗</a>
-- <a href="https://www.godaddy.com/help/add-a-ds-record-23865">GoDaddy ↗</a>
-- <a href="https://www.hostinger.com/support/3667267-how-to-use-dnssec-records-at-hostinger/">Hostinger ↗</a>
-- <a href="https://support.hover.com/support/solutions/articles/201000064716">Hover ↗</a>
-- <a href="https://faq.infomaniak.com/2187">Infomaniak ↗</a>
-- <a href="https://www.inmotionhosting.com/support/edu/cpanel/enable-dnssec-cloudflare/">InMotion Hosting ↗</a>
-- <a href="https://kb.inwx.com/en-us/3-nameserver/131">INWX ↗</a>
-- <a href="https://joker.com/faq/books/jokercom-faq-en/page/dnssec">Joker.com ↗</a>
-- <a href="https://www.name.com/support/articles/205439058-managing-dnssec">Name.com ↗</a>
-- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/9722/2232/managing-dnssec-for-domains-pointed-to-custom-dns/">Namecheap ↗</a>
-- <a href="https://support.nameisp.com/knowledgebase/dns">NameISP ↗</a>
-- <a href="https://www.namesilo.com/support/v2/articles/domain-manager/ds-records">Namesilo ↗</a>
-- <a href="https://help.ovhcloud.com/csm/en-dns-secure-domain-dnssec?id=kb_article_view&amp;sysparm_article=KB0051637">OVH ↗</a>
-- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-dnssec">Squarespace ↗</a>
-- <a href="https://registro.br/tecnologia/dnssec/?secao=tutoriais-dns">Registro.br ↗</a>
-- <a href="https://kb.porkbun.com/article/93-how-to-install-dnssec">Porkbun ↗</a> (do not fill out **keyData**)
-- <a href="https://www.transip.eu/knowledgebase/150-secure-domains-custom-nameservers-dnssec/">TransIP ↗</a>
+- <a href="https://support.dnsimple.com/articles/cloudflare-ds-record/">DNSimple ↗︎</a>
+- <a href="https://support.domaindiscount24.com/hc/articles/4409759478161">Domaindiscount24 ↗︎</a>
+- <a href="https://help.dreamhost.com/hc/en-us/articles/219539467">DreamHost ↗︎</a>
+- <a href="https://www.dynadot.com/help/question/set-DNSSEC">Dynadot ↗︎</a>
+- <a href="https://support.enom.com/support/solutions/articles/201000065386">Enom ↗︎</a>
+- <a href="https://docs.gandi.net/en/domain_names/advanced_users/dnssec.html">Gandi ↗︎</a>
+- <a href="https://www.godaddy.com/help/add-a-ds-record-23865">GoDaddy ↗︎</a>
+- <a href="https://www.hostinger.com/support/3667267-how-to-use-dnssec-records-at-hostinger/">Hostinger ↗︎</a>
+- <a href="https://support.hover.com/support/solutions/articles/201000064716">Hover ↗︎</a>
+- <a href="https://faq.infomaniak.com/2187">Infomaniak ↗︎</a>
+- <a href="https://www.inmotionhosting.com/support/edu/cpanel/enable-dnssec-cloudflare/">InMotion Hosting ↗︎</a>
+- <a href="https://kb.inwx.com/en-us/3-nameserver/131">INWX ↗︎</a>
+- <a href="https://joker.com/faq/books/jokercom-faq-en/page/dnssec">Joker.com ↗︎</a>
+- <a href="https://www.name.com/support/articles/205439058-managing-dnssec">Name.com ↗︎</a>
+- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/9722/2232/managing-dnssec-for-domains-pointed-to-custom-dns/">Namecheap ↗︎</a>
+- <a href="https://support.nameisp.com/knowledgebase/dns">NameISP ↗︎</a>
+- <a href="https://www.namesilo.com/support/v2/articles/domain-manager/ds-records">Namesilo ↗︎</a>
+- <a href="https://help.ovhcloud.com/csm/en-dns-secure-domain-dnssec?id=kb_article_view&amp;sysparm_article=KB0051637">OVH ↗︎</a>
+- <a href="https://support.squarespace.com/hc/articles/4404183898125-Nameservers-and-DNSSEC-for-Squarespace-managed-domains#toc-dnssec">Squarespace ↗︎</a>
+- <a href="https://registro.br/tecnologia/dnssec/?secao=tutoriais-dns">Registro.br ↗︎</a>
+- <a href="https://kb.porkbun.com/article/93-how-to-install-dnssec">Porkbun ↗︎</a> (do not fill out **keyData**)
+- <a href="https://www.transip.eu/knowledgebase/150-secure-domains-custom-nameservers-dnssec/">TransIP ↗︎</a>
 
 </details>
 
@@ -123,12 +123,12 @@ Nameserver instructions for popular registrars
 
 Each registrar has a different interface for updating nameservers. These links explain the process at popular registrars:
 
-- <a href="https://support.enom.com/support/solutions/articles/201000065324-preparing-your-domain-for-transfer">Enom ↗</a>
-- <a href="https://www.godaddy.com/help/transfer-my-domain-away-from-godaddy-3560">GoDaddy ↗</a>
-- <a href="https://www.ionos.com/help/domains/domain-transfers/#acc4514">Ionos by 1&amp;1 ↗</a>
-- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/258/84/what-should-i-do-to-transfer-a-domain-from-namecheap/">Namecheap ↗</a>
-- <a href="https://www.networksolutions.com/help/article/transfer-out-of-network-solutions">Network Solutions ↗</a>
-- <a href="https://support.squarespace.com/hc/articles/205812338-Transferring-a-domain-away-from-Squarespace">Squarespace ↗</a>
+- <a href="https://support.enom.com/support/solutions/articles/201000065324-preparing-your-domain-for-transfer">Enom ↗︎</a>
+- <a href="https://www.godaddy.com/help/transfer-my-domain-away-from-godaddy-3560">GoDaddy ↗︎</a>
+- <a href="https://www.ionos.com/help/domains/domain-transfers/#acc4514">Ionos by 1&amp;1 ↗︎</a>
+- <a href="https://www.namecheap.com/support/knowledgebase/article.aspx/258/84/what-should-i-do-to-transfer-a-domain-from-namecheap/">Namecheap ↗︎</a>
+- <a href="https://www.networksolutions.com/help/article/transfer-out-of-network-solutions">Network Solutions ↗︎</a>
+- <a href="https://support.squarespace.com/hc/articles/205812338-Transferring-a-domain-away-from-Squarespace">Squarespace ↗︎</a>
 
 </details>
 

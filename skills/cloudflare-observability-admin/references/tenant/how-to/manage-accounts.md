@@ -26,7 +26,7 @@ When you create an account with the Tenant API, your Cloudflare user owns that a
 
 To create an account under your tenant using the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Go to **Tenants** > **Managed Accounts**.
 3. Select **Create Account**.
 4. Enter the **Account Name**, **Account Description**, and **Tenant Unit**.
@@ -139,7 +139,7 @@ When you create an account with the Tenant API, your Cloudflare user owns that a
 
 To view any accounts owned by your tenant using the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Go to **Tenants** > **Managed Accounts**.
 
 To fetch any accounts owned by your tenant using the API, send a [`GET`](https://developers.cloudflare.com/api/resources/accounts/methods/list/) request to the `/accounts` endpoint.

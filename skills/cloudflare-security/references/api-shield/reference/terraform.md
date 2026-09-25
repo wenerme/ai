@@ -20,20 +20,20 @@ The following resources are available to configure through Terraform:
 
 **Session identifiers**
 
-- [`api_shield` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_shield) for configuring session identifiers in API Shield.
+- [`api_shield` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_shield) for configuring session identifiers in API Shield.
 
 **Web Assets operations**
 
-- [`api_shield_operation` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_shield_operation) for configuring operations.
+- [`api_shield_operation` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_shield_operation) for configuring operations.
 
 **Schema validation**
 
-- [`cloudflare_schema_validation_schemas` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/schema_validation_schemas) for configuring a schema in [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/). ~~ [`api_shield_schema` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_shield_schema)~~ has been deprecated and will be removed in a future version of the terraform provider.
+- [`cloudflare_schema_validation_schemas` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/schema_validation_schemas) for configuring a schema in [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/). ~~ [`api_shield_schema` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_shield_schema)~~ has been deprecated and will be removed in a future version of the terraform provider.
 
 **JWT Validation**
 
-- [`cloudflare_token_validation_config` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/token_validation_config) for setting up JWT validation with specific keying material and token locations.
-- [`cloudflare_token_validation_rules` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/token_validation_rules) for setting up rules to action on the validation result.
+- [`cloudflare_token_validation_config` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/token_validation_config) for setting up JWT validation with specific keying material and token locations.
+- [`cloudflare_token_validation_rules` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/token_validation_rules) for setting up rules to action on the validation result.
 
 ## Manage API Shield session identifiers
 

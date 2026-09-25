@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/openai-agents-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[OpenAI Agents API ↗](https://developers.openai.com/api/docs/guides/agents-api/overview) gives your application access to the Codex harness through an OpenAI-managed API. OpenAI manages sessions, orchestration, context compaction, and recovery while your application provides tools and Cloudflare Containers can provide the execution environment.
+[OpenAI Agents API ↗︎](https://developers.openai.com/api/docs/guides/agents-api/overview) gives your application access to the Codex harness through an OpenAI-managed API. OpenAI manages sessions, orchestration, context compaction, and recovery while your application provides tools and Cloudflare Containers can provide the execution environment.
 
 Run self-hosted OpenAI Agents API sessions in Cloudflare Containers. Each session has a Durable Object backed by a container running `codex exec-server`. Signed OpenAI webhooks manage session orchestration.
 
 ![Architecture showing an application creating an OpenAI task, webhooks starting a Cloudflare container, and the application fetching the result](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=4160,height=4000,format=webp/_astro/openai-agents-api-arch.CCqSDnZe.jpg)
 
-The [Cloudflare executor template ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api) includes the worker and container image used in this guide.
+The [Cloudflare executor template ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api) includes the worker and container image used in this guide.
 
 ## How it works
 
@@ -35,7 +35,7 @@ You need:
 - A Cloudflare account with Containers access
 - OpenAI Agents API access and an OpenAI API key
 - curl
-- For manual deployment, Node.js 24 or newer, npm, [Docker ↗](https://www.docker.com/), and Wrangler
+- For manual deployment, Node.js 24 or newer, npm, [Docker ↗︎](https://www.docker.com/), and Wrangler
 
 Create a restricted OpenAI API key, referred to in this guide as the "executor key", for use by `codex exec-server`. It requires `api.model.read` and `api.agents.environments.connect`. The application key used by the Worker requires `api.agents.read`. Both keys must belong to the same organization, project, and user or service-account owner.
 
@@ -93,7 +93,7 @@ export OPENAI_AGENT_ID="agent_..."
    ```
 
    The container stays available for 30 seconds (configurable via `EXECUTOR_KEEP_ALIVE_SECONDS`). Prewarming and idle snapshots are enabled by default.
-3. **Register the webhook.** In [OpenAI project webhook settings ↗](https://platform.openai.com/settings/project/webhooks), register the publicly reachable endpoint `https://<YOUR_WORKER>.workers.dev/webhook`.
+3. **Register the webhook.** In [OpenAI project webhook settings ↗︎](https://platform.openai.com/settings/project/webhooks), register the publicly reachable endpoint `https://<YOUR_WORKER>.workers.dev/webhook`.
 
    Subscribe to these events:
    - `agent.session.created`
@@ -267,7 +267,7 @@ curl "https://api.openai.com/v1/agents/sessions/$SESSION_ID/events" \
 
 ## Agents API on Cloudflare Workers
 
-For a complete TypeScript application with an HTTP interface, refer to the [basic Agents API example ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api/basic) in the Cloudflare Sandbox SDK repository.
+For a complete TypeScript application with an HTTP interface, refer to the [basic Agents API example ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api/basic) in the Cloudflare Sandbox SDK repository.
 
 The example uses the OpenAI Agents API TypeScript SDK to create self-hosted sessions backed by the deployed executor Worker. It includes endpoints for initial input, follow-up input, and cleanup. Its `POST /demo` endpoint runs the complete workflow: create a session, write and read a file in the container, send a follow-up message, then delete the OpenAI session and Cloudflare executor.
 
@@ -353,10 +353,10 @@ For more information, refer to [Containers architecture](https://developers.clou
 
 ## Related resources
 
-- [Cloudflare reference worker ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api)
-- [OpenAI Agents API documentation ↗](https://developers.openai.com/api/docs/guides/agents-api/overview)
-- [OpenAI Python Cloudflare webhook example ↗](https://github.com/OpenAI/agents-api-python-preview/tree/main/examples/self_hosted_sandbox/webhook_managed/cloudflare)
-- [OpenAI TypeScript Cloudflare webhook example ↗](https://github.com/OpenAI/agents-api-typescript-preview/tree/main/examples/self_hosted_sandbox/webhook_managed/cloudflare)
+- [Cloudflare reference worker ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/openai/agents-api)
+- [OpenAI Agents API documentation ↗︎](https://developers.openai.com/api/docs/guides/agents-api/overview)
+- [OpenAI Python Cloudflare webhook example ↗︎](https://github.com/OpenAI/agents-api-python-preview/tree/main/examples/self_hosted_sandbox/webhook_managed/cloudflare)
+- [OpenAI TypeScript Cloudflare webhook example ↗︎](https://github.com/OpenAI/agents-api-typescript-preview/tree/main/examples/self_hosted_sandbox/webhook_managed/cloudflare)
 - [Cloudflare Containers](https://developers.cloudflare.com/containers/)
 
 Was this helpful?

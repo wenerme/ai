@@ -18,15 +18,15 @@ Use Workers Static Assets Instead
 
 You should use [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) to host full-stack applications instead of Workers Sites. It has been deprecated in Wrangler v4, and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) does not support Workers Sites. Do not use Workers Sites for new projects.
 
-Workers Sites require [Wrangler ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler) — make sure to use the [latest version](https://developers.cloudflare.com/workers/wrangler/install-and-update/#update-wrangler).
+Workers Sites require [Wrangler ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler) — make sure to use the [latest version](https://developers.cloudflare.com/workers/wrangler/install-and-update/#update-wrangler).
 
 To deploy a pre-existing static site project, start with a pre-generated site. Workers Sites works with all static site generators, for example:
 
-- [Hugo ↗](https://gohugo.io/getting-started/quick-start/)
-- [Gatsby ↗](https://www.gatsbyjs.org/docs/quick-start/), requires Node
-- [Jekyll ↗](https://jekyllrb.com/docs/), requires Ruby
-- [Eleventy ↗](https://www.11ty.io/#quick-start), requires Node
-- [WordPress ↗](https://wordpress.org) (refer to the tutorial on [deploying static WordPress sites with Pages](https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/))
+- [Hugo ↗︎](https://gohugo.io/getting-started/quick-start/)
+- [Gatsby ↗︎](https://www.gatsbyjs.org/docs/quick-start/), requires Node
+- [Jekyll ↗︎](https://jekyllrb.com/docs/), requires Ruby
+- [Eleventy ↗︎](https://www.11ty.io/#quick-start), requires Node
+- [WordPress ↗︎](https://wordpress.org) (refer to the tutorial on [deploying static WordPress sites with Pages](https://developers.cloudflare.com/pages/how-to/deploy-a-wordpress-site/))
 
 ## Getting started
 

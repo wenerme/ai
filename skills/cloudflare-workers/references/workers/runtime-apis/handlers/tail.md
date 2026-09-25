@@ -115,7 +115,7 @@ Outcome is equivalent to the exit status of a script and an indicator of whether
 - `cf` object
   - Contains the data from [`IncomingRequestCfProperties`](https://developers.cloudflare.com/workers/runtime-apis/request/#incomingrequestcfproperties).
 - `headers` object
-  - Header name/value entries (redacted by default). Header names are lowercased, and the values associated with duplicate header names are concatenated, with the string `", "` (comma space) interleaved, similar to [the Fetch standard ↗](https://fetch.spec.whatwg.org/#concept-header-list-get).
+  - Header name/value entries (redacted by default). Header names are lowercased, and the values associated with duplicate header names are concatenated, with the string `", "` (comma space) interleaved, similar to [the Fetch standard ↗︎](https://fetch.spec.whatwg.org/#concept-header-list-get).
 - `method` string
   - The HTTP request method.
 - `url` string

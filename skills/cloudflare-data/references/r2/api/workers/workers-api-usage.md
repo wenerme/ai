@@ -256,7 +256,7 @@ class Default(WorkerEntrypoint):
 
 Prevent potential errors when accessing request.body
 
-The body of a [Request ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request) can only be accessed once. If you previously used `request.formData()` in the same request, you may encounter a TypeError when attempting to access `request.body`.
+The body of a [Request ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Request) can only be accessed once. If you previously used `request.formData()` in the same request, you may encounter a TypeError when attempting to access `request.body`.
 
 To avoid errors, create a clone of the Request object with `request.clone()` for each subsequent attempt to access a Request's body. Keep in mind that Workers have a [memory limit of 128 MB per Worker](https://developers.cloudflare.com/workers/platform/limits/#memory) and loading particularly large files into a Worker's memory multiple times may reach this limit. To ensure memory usage does not reach this limit, consider using [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/).
 
@@ -371,7 +371,7 @@ You can verify your authorization logic is working through the following command
 
 Caution
 
-When uploading files to R2 via `curl`, ensure you use **[`--data-binary` ↗](https://everything.curl.dev/http/post/binary)** instead of `--data` or `-d`. Files will otherwise be truncated.
+When uploading files to R2 via `curl`, ensure you use **[`--data-binary` ↗︎](https://everything.curl.dev/http/post/binary)** instead of `--data` or `-d`. Files will otherwise be truncated.
 
 ```sh
 # Attempt to write an object without providing the "X-Custom-Auth-Key" header

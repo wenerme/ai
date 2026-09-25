@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/flask/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Flask ↗](https://flask.palletsprojects.com/) is supported in Python Workers.
+[Flask ↗︎](https://flask.palletsprojects.com/) is supported in Python Workers.
 
 Flask applications rely on a protocol called the Web Server Gateway Interface (WSGI). This means that Flask never directly reads or writes to a socket, instead relying on the WSGI server to communicate.
 
-Python Workers include a [WSGI server ↗](https://github.com/cloudflare/workers-py/blob/main/packages/runtime-sdk/src/workers/wsgi.py) which you can use with Flask applications.
+Python Workers include a [WSGI server ↗︎](https://github.com/cloudflare/workers-py/blob/main/packages/runtime-sdk/src/workers/wsgi.py) which you can use with Flask applications.
 
 ## Create a Flask Worker
 
@@ -52,7 +52,7 @@ Use this quick start to run a minimal Flask application.
      "name": "my-flask-worker",
      "main": "src/worker.py",
      // Set this to today's date
-     "compatibility_date": "2026-09-22",
+     "compatibility_date": "2026-09-25",
      "compatibility_flags": ["python_workers"]
    }
    ```
@@ -62,7 +62,7 @@ Use this quick start to run a minimal Flask application.
    name = "my-flask-worker"
    main = "src/worker.py"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "python_workers" ]
    ```
 
@@ -123,7 +123,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
   "name": "my-flask-worker",
   "main": "src/worker.py",
   // Set this to today's date
-  "compatibility_date": "2026-09-22",
+  "compatibility_date": "2026-09-25",
   "compatibility_flags": ["python_workers"],
   "assets": {
     "directory": "./public/",
@@ -138,7 +138,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
 name = "my-flask-worker"
 main = "src/worker.py"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "python_workers" ]
 
 [assets]

@@ -57,7 +57,7 @@ After updating the Cloudflare One Client, monitor the issue to see if it recurs.
 
 #### Via the Cloudflare dashboard
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Your devices**.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Your devices**.
 2. Select the device you want to investigate.
 3. Find the device's client version under **Client version** in the side menu.
 4. Compare your device's version with the [latest version of the Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
@@ -178,7 +178,7 @@ Devices must be actively connected to the Internet for remote captures to run.
 
 To capture data from a remote device:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
 2. Select up to 10 devices that you want to run a capture on. Devices must be [registered](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) in your Zero Trust organization.
 3. Configure the types of captures to run.
    - **Packet captures (PCAP)**: Performs packet captures for traffic outside of the WARP tunnel (default network interface) and traffic inside of the WARP tunnel ([virtual interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic)).
@@ -200,7 +200,7 @@ To view a list of captures, go to **Insights** > **Digital experience** > **Diag
 
 #### Download remote captures
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
 2. Find a successful capture.
 3. Select the three-dot menu and select **Download**.
 
@@ -449,7 +449,7 @@ A profile ID is a unique identifier assigned to each [device profile](https://de
 
 To check that the applied device profile is the intended device profile:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Find and select the device profile intended for the device.
 3. Under **Profile details**, compare the displayed **Profile ID** with the `Profile ID` in the `warp-settings.txt` file.
 
@@ -499,7 +499,7 @@ When troubleshooting the Cloudflare One Client for managed network issues:
    If the endpoint is down, you will receive a `Could not find certificate from <stdin>` response.
 
    If you received a returned SHA-256 fingerprint:
-   1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
+   1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles**.
    2. Go to **Managed networks** > **Edit**.
    3. Compare the TLS Cert SHA-256 in the dashboard with the returned fingerprint in your terminal to ensure they match.
 2. Use a single profile for a single location.
@@ -512,7 +512,7 @@ If a user is having issues with a device profile, it may be because they are not
 
 To check that the user belongs to the intended group:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Your devices**.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Your devices**.
 2. Select the user.
 3. Under **User Registry Identity**, select the user's name.
 4. The **Get-identity endpoint** lists all the groups the user belongs to.
@@ -529,7 +529,7 @@ Reauthenticating resets your [session duration](https://developers.cloudflare.co
 
 To modify the match rules of a device profile, you will need to edit the device profile. To edit the device profile:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Locate the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to update and select **Configure**.
 3. Use [selectors](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/#selectors) to add or adjust match rules, and modify [device client settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-settings) for this profile as needed.
 
@@ -572,7 +572,7 @@ After downloading the client diagnostic logs, review that your configuration is 
    `Exclude mode` means all traffic will be sent through the WARP tunnel except for the IPs and domains you specify.
 
    `Include mode` means only traffic destined to the IPs or domains you specify will be sent through the WARP tunnel.
-2. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+2. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 3. Find and select the device profile intended for the device.
 4. Select **Edit**.
 5. Find **Split Tunnels** and note the mode you have selected > select **Manage**.

@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vite3-project/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Vite ↗](https://vitejs.dev) is a next-generation build tool for front-end developers. With [the release of Vite 3 ↗](https://vitejs.dev/blog/announcing-vite3.html), developers can make use of new command line (CLI) improvements, starter templates, and [more ↗](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#300-2022-07-13) to help build their front-end applications.
+[Vite ↗︎](https://vitejs.dev) is a next-generation build tool for front-end developers. With [the release of Vite 3 ↗︎](https://vitejs.dev/blog/announcing-vite3.html), developers can make use of new command line (CLI) improvements, starter templates, and [more ↗︎](https://github.com/vitejs/vite/blob/main/packages/vite/CHANGELOG.md#300-2022-07-13) to help build their front-end applications.
 
-Cloudflare Pages has native support for Vite 3 projects. Refer to the blog post on [improvements to the Pages build process ↗](https://blog.cloudflare.com/cloudflare-pages-build-improvements/), including sub-second build initialization, for more information on using Vite 3 and Cloudflare Pages to optimize your application's build tooling.
+Cloudflare Pages has native support for Vite 3 projects. Refer to the blog post on [improvements to the Pages build process ↗︎](https://blog.cloudflare.com/cloudflare-pages-build-improvements/), including sub-second build initialization, for more information on using Vite 3 and Cloudflare Pages to optimize your application's build tooling.
 
 In this guide, you will learn how to start a new project using Vite 3, and deploy it to Cloudflare Pages.
 
@@ -48,7 +48,7 @@ Done. Now run:
   npm run dev
 ```
 
-You will now create a new GitHub repository, and push your code using [GitHub's `gh` command line (CLI) ↗](https://cli.github.com):
+You will now create a new GitHub repository, and push your code using [GitHub's `gh` command line (CLI) ↗︎](https://cli.github.com):
 
 ```sh
 git init

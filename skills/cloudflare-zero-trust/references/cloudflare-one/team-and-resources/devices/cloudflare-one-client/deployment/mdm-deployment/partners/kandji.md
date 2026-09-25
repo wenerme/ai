@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/partners/kandji/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Kandji deploys the Cloudflare One Client (formerly WARP) as a custom app. For an overview of how Kandji deploys custom apps, refer to their [knowledge base article ↗](https://support.kandji.io/custom-apps-overview).
+Kandji deploys the Cloudflare One Client (formerly WARP) as a custom app. For an overview of how Kandji deploys custom apps, refer to their [knowledge base article ↗︎](https://support.kandji.io/custom-apps-overview).
 
 ## macOS
 
-For the simplest deployment, Kandji has created a downloadable configuration profile that enables the Cloudflare One Client's user notifications and configures its Privacy Preference Policy Control ([PPPC ↗](https://support.kandji.io/create-a-privacy-preferences-policy-control-profile)) to have Full Disk Access.
+For the simplest deployment, Kandji has created a downloadable configuration profile that enables the Cloudflare One Client's user notifications and configures its Privacy Preference Policy Control ([PPPC ↗︎](https://support.kandji.io/create-a-privacy-preferences-policy-control-profile)) to have Full Disk Access.
 
-1. Download the [custom profile ↗](https://github.com/kandji-inc/support/blob/64e0d8c8fa393d0967d2519aea60b5c834754563/Configuration%20Profiles/cloudflare_warp.mobileconfig).
+1. Download the [custom profile ↗︎](https://github.com/kandji-inc/support/blob/64e0d8c8fa393d0967d2519aea60b5c834754563/Configuration%20Profiles/cloudflare_warp.mobileconfig).
 2. Add the custom profile:
    1. Go to **Library** > **Add New** > **Add Library Item** > **Custom Profile**.
    2. Select **Add & Configure**.
@@ -225,7 +225,7 @@ exit 0
 
 ## TLS decryption
 
-The Kandji macOS agent uses certificate pinning, which is incompatible with [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/). If Gateway TLS decryption is [turned on](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption), you must create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/common-policies/#skip-inspection-for-groups-of-applications) to exempt Kandji from SSL/TLS inspection. For more information, refer to the [Kandji documentation ↗](https://support.kandji.io/kb/using-kandji-on-enterprise-networks#SSL/TLS-Inspection).
+The Kandji macOS agent uses certificate pinning, which is incompatible with [Gateway TLS decryption](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/). If Gateway TLS decryption is [turned on](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tls-decryption/#turn-on-tls-decryption), you must create a [Do Not Inspect policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/common-policies/#skip-inspection-for-groups-of-applications) to exempt Kandji from SSL/TLS inspection. For more information, refer to the [Kandji documentation ↗︎](https://support.kandji.io/kb/using-kandji-on-enterprise-networks#SSL/TLS-Inspection).
 
 Was this helpful?
 

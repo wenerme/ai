@@ -20,8 +20,8 @@ Test email routing behavior locally using `wrangler dev` to simulate incoming em
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -31,7 +31,7 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
@@ -43,14 +43,14 @@ Configure your Wrangler file:
 {
 	"name": "email-routing-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 }
 ```
 
 ```toml
 name = "email-routing-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 ```
 
 ## Basic routing worker
@@ -91,7 +91,7 @@ Start your development server:
 npx wrangler dev
 ```
 
-Send a test email using the local endpoint. The request body must be a raw email message in [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) format, and the message must include a `Message-ID` header:
+Send a test email using the local endpoint. The request body must be a raw email message in [RFC 5322 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322) format, and the message must include a `Message-ID` header:
 
 ```bash
 curl --request POST 'http://localhost:8787/cdn-cgi/local/email' \

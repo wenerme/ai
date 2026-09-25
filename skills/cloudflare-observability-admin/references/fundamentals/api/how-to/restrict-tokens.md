@@ -21,13 +21,13 @@ API tokens can be restricted at runtime in two ways:
 
 ## Client IP address range filtering
 
-Client IP address restrictions control which IP addresses can make API requests with this token. By default, if no filtering is applied, all IP addresses can use the token. Once an `Is in` rule is applied, the token can only be used from the defined IP addresses. Define ranges with [CIDR notation ↗](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation). To allow an IP range with exceptions, define `Is not in` to exempt specific IPs or smaller ranges.
+Client IP address restrictions control which IP addresses can make API requests with this token. By default, if no filtering is applied, all IP addresses can use the token. Once an `Is in` rule is applied, the token can only be used from the defined IP addresses. Define ranges with [CIDR notation ↗︎](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation). To allow an IP range with exceptions, define `Is not in` to exempt specific IPs or smaller ranges.
 
 ![IP Address filtering options](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1802,height=442,format=webp/_astro/ip-filter.DbEuurVj.png)
 
 Note
 
-Client IP address range filtering is not applied to the [Verify Token ↗](https://developers.cloudflare.com/api/resources/user/subresources/tokens/methods/verify/) endpoint.
+Client IP address range filtering is not applied to the [Verify Token ↗︎](https://developers.cloudflare.com/api/resources/user/subresources/tokens/methods/verify/) endpoint.
 
 ## Time to live (TTL) constraints
 

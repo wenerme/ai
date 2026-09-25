@@ -22,7 +22,7 @@ DMARC Management does not support modifications to SPF records when a CNAME reco
 
 To enable DMARC Management:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **Email** > **DMARC Management**.
 3. Select **Enable DMARC Management**.
 4. DMARC Management will scan your zone for DMARC records, and will present you with two outcomes:

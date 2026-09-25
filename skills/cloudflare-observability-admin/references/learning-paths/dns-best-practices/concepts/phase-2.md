@@ -22,7 +22,7 @@ At least 24-48 hours (or longer, ideally matching your longest current TTLs) bef
 
 This ensures that DNS resolvers worldwide will cache your old records for a shorter period, allowing changes to propagate more quickly when you switch to Cloudflare.
 
-- SOA Record: Also consider lowering the `MINIMUM` field in your SOA record, which dictates the TTL to be used for negative responses ([RFC 2308 ↗](https://www.rfc-editor.org/rfc/rfc2308.html#section-4)).
+- SOA Record: Also consider lowering the `MINIMUM` field in your SOA record, which dictates the TTL to be used for negative responses ([RFC 2308 ↗︎](https://www.rfc-editor.org/rfc/rfc2308.html#section-4)).
 
 ## 2. Export zone files from BIND
 

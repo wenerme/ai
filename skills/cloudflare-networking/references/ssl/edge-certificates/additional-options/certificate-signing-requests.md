@@ -42,7 +42,7 @@ To create a CSR:
 
 To use a CSR:
 
-1. On the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page, select the CSR record you just created under **Certificate Signing Request (CSR)**.
+1. On the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page, select the CSR record you just created under **Certificate Signing Request (CSR)**.
 2. Copy (or select **Click to copy**) the value for **Certificate Signing Request**.
 3. Obtain a certificate from the Certificate Authority (CA) of your choice using your CSR.
 4. When you [upload the custom certificate](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/) to Cloudflare, select an **Encoding mode** of **Certificate Signing Request (CSR)** and enter the associated value.

@@ -32,7 +32,7 @@ Suspicious domain age means that after 7 days (this number corresponds to the Ma
 
 To view whether a domain is malicious or suspicious:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Investigation**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Investigation**.
 2. Run a screen. For example, select **Run screen** for **Malicious emails**, then select **Run screen**.
 3. Under **Your matching messages**, if any message displays **Domain Age** under **Threat types**, that means that the domain age is too low, and therefore the disposition assigned is Malicious. If the domain is legitimate, you can add it as a trusted domain:
 
@@ -43,7 +43,7 @@ To view whether a domain is malicious or suspicious:
 
 To configure a trusted domain:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **Policies & rules**, then go to **Inbound** > **Trusted domains**.
 4. On the **Trusted domains** page, select **Add a domain**.

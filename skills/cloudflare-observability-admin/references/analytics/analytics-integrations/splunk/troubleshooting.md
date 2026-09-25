@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/troubleshooting/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use this guide to resolve common issues when analyzing [Cloudflare Logs ↗](https://www.cloudflare.com/products/cloudflare-logs/) through the [Cloudflare App for Splunk](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/).
+Use this guide to resolve common issues when analyzing [Cloudflare Logs ↗︎](https://www.cloudflare.com/products/cloudflare-logs/) through the [Cloudflare App for Splunk](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/).
 
 Support scope
 
@@ -31,7 +31,7 @@ Defaulting to timestamp of previous event.
 
 **Cause:** In older versions of the Cloudflare App for Splunk, the `cloudflare:json` sourcetype extracts `_time` from the `EdgeStartTimestamp` JSON key, which only exists in HTTP requests logs. Firewall Events use a different key (`Datetime`), so timestamp extraction fails and Splunk silently falls back to the timestamp of the most recently indexed event.
 
-**Fix:** Upgrade to the latest version of the [Cloudflare App for Splunk ↗](https://splunkbase.splunk.com/app/4501/). The current release parses both `EdgeStartTimestamp` and `Datetime` under the `cloudflare:json` sourcetype.
+**Fix:** Upgrade to the latest version of the [Cloudflare App for Splunk ↗︎](https://splunkbase.splunk.com/app/4501/). The current release parses both `EdgeStartTimestamp` and `Datetime` under the `cloudflare:json` sourcetype.
 
 If you cannot upgrade immediately, or if you maintain a customized `props.conf`, update the `cloudflare:json` stanza on your indexer or heavy forwarder to match both keys, then restart the Splunk service:
 
@@ -58,7 +58,7 @@ The `Cloudflare – Security (WAF)` dashboard in the Cloudflare App for Splunk l
 
 Splunk does not raise an error when a search references a field that is absent from all indexed events — it completes the search and returns zero results, leaving every dashboard panel empty.
 
-**Fix:** Upgrade to the latest version of the [Cloudflare App for Splunk ↗](https://splunkbase.splunk.com/app/4501/). The current release references `SecurityRuleIDs` and `SecurityRuleDescription` throughout the WAF dashboard, saved searches, and macros.
+**Fix:** Upgrade to the latest version of the [Cloudflare App for Splunk ↗︎](https://splunkbase.splunk.com/app/4501/). The current release references `SecurityRuleIDs` and `SecurityRuleDescription` throughout the WAF dashboard, saved searches, and macros.
 
 If you maintain a customized fork of the app, replace all references to `FirewallMatchesRuleIDs{}` and `WAFRuleMessage` in your dashboard XML, saved searches, and macros with `SecurityRuleIDs` and `SecurityRuleDescription`, respectively.
 
@@ -68,7 +68,7 @@ If you maintain a customized fork of the app, replace all references to `Firewal
 
 If your issue is not covered here:
 
-- Consult the [Cloudflare App for Splunk page ↗](https://splunkbase.splunk.com/app/4501/) on Splunkbase for the latest version and release notes.
+- Consult the [Cloudflare App for Splunk page ↗︎](https://splunkbase.splunk.com/app/4501/) on Splunkbase for the latest version and release notes.
 - Review the [Cloudflare Logs change notices](https://developers.cloudflare.com/logs/reference/change-notices/) for recent schema changes that may affect your searches or dashboards.
 - [Contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for issues involving Cloudflare-side log delivery.
 - Contact your Splunk representative or your integration partner for issues within your Splunk environment.

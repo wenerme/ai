@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Once you set up SSL/TLS on your application, you can adjust the following settings on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page:
+Once you set up SSL/TLS on your application, you can adjust the following settings on the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page:
 
 - [Cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/)
 - [Certificate Transparency Monitoring](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/certificate-transparency-monitoring/)

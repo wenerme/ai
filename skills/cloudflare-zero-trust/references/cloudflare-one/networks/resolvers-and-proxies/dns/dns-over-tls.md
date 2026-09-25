@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 By default, DNS is sent over a plaintext connection. DNS over TLS (DoT) is a standard for encrypting DNS queries to keep them secure and private. DoT uses the same security protocol, TLS, that HTTPS websites use to encrypt and authenticate communications.
 
-Cloudflare supports DoT on standard port `853` over TLS 1.2 and TLS 1.3 in compliance with [RFC7858 ↗](https://tools.ietf.org/html/rfc7858).
+Cloudflare supports DoT on standard port `853` over TLS 1.2 and TLS 1.3 in compliance with [RFC7858 ↗︎](https://tools.ietf.org/html/rfc7858).
 
 ## Configure DoT queries
 
@@ -24,7 +24,7 @@ Cloudflare supports DoT on standard port `853` over TLS 1.2 and TLS 1.3 in compl
 
 Each Gateway DNS location has a unique DoT hostname. DNS locations and corresponding DoT hostnames have policies associated with them.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies**.
 2. Under **DNS locations**, [add a new location](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/) or select an existing location from the list.
 3. Under **DoT endpoint**, copy the value in **DoT addresses**.
 

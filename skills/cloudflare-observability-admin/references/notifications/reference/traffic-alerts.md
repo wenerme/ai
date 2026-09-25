@@ -20,7 +20,7 @@ Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 **Advanced Error Rate** alerts allow you to monitor either your origin or edge status code. You can select which zones and specific status codes to be alerted on and the sensitivity of the alert. Optionally, you can also filter out certain IP addresses and choose whether to group your alerts by status code.
 
-Once you have set up an alert, Cloudflare checks to see which zones should be monitored for the error rate. The [Clickhouse ABR database ↗](https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/) is polled for origin HTTP response codes for those zones. The [service-level objective (SLO) ↗](https://sre.google/workbook/alerting-on-slos/) that is set in the alert is used to determine whether the rate of 5xx response codes to total responses is acceptable.
+Once you have set up an alert, Cloudflare checks to see which zones should be monitored for the error rate. The [Clickhouse ABR database ↗︎](https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/) is polled for origin HTTP response codes for those zones. The [service-level objective (SLO) ↗︎](https://sre.google/workbook/alerting-on-slos/) that is set in the alert is used to determine whether the rate of 5xx response codes to total responses is acceptable.
 
 Instead of using thresholds to calculate error rates, Cloudflare uses burn rates. When you select your SLO, the “error budget” for a set period of time is calculated to determine the burn rate. The burn rate is how quickly the error budget is used for that time period. For example, a burn rate of 1 means that the entirety of the error budget will be used up within the set time period.
 

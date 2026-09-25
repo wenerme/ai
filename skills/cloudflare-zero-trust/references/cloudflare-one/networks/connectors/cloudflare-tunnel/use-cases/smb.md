@@ -18,7 +18,7 @@ The Server Message Block (SMB) protocol allows users to read, write, and access 
 
 Note
 
-SMB is sensitive to network latency. When a share is accessed over a remote connection rather than a local network, the protocol's block-based, round-trip-heavy design can slow transfers. For guidance on improving SMB performance over a WAN, refer to Microsoft's [Performance tuning for SMB file servers ↗](https://learn.microsoft.com/en-us/windows-server/administration/performance-tuning/role/file-server/smb-file-server).
+SMB is sensitive to network latency. When a share is accessed over a remote connection rather than a local network, the protocol's block-based, round-trip-heavy design can slow transfers. For guidance on improving SMB performance over a WAN, refer to Microsoft's [Performance tuning for SMB file servers ↗︎](https://learn.microsoft.com/en-us/windows-server/administration/performance-tuning/role/file-server/smb-file-server).
 
 Cloudflare Zero Trust offers two solutions for connecting to SMB servers:
 
@@ -27,7 +27,7 @@ Cloudflare Zero Trust offers two solutions for connecting to SMB servers:
 
 ## Set up an SMB server on Linux
 
-While SMB was developed for Microsoft Windows, Samba provides SMB connectivity from UNIX-like and BSD systems. A Samba server can be set up using this [guide ↗](https://ubuntu.com/tutorials/install-and-configure-samba#1-overview) on an Ubuntu machine.
+While SMB was developed for Microsoft Windows, Samba provides SMB connectivity from UNIX-like and BSD systems. A Samba server can be set up using this [guide ↗︎](https://ubuntu.com/tutorials/install-and-configure-samba#1-overview) on an Ubuntu machine.
 
 ## Connect to SMB server with the Cloudflare One Client to Tunnel
 
@@ -51,7 +51,7 @@ To connect your devices to Cloudflare:
 
 ### 3. Route private network IPs through the Cloudflare One Client
 
-By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatracker.ietf.org/doc/html/rfc1918), which are IP addresses typically used in private networks and not reachable from the Internet. In order for the Cloudflare One Client to send traffic to your private network, you must configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that the IP/CIDR of your private network routes through the Cloudflare One Client.
+By default, WARP excludes traffic bound for [RFC 1918 space ↗︎](https://datatracker.ietf.org/doc/html/rfc1918), which are IP addresses typically used in private networks and not reachable from the Internet. In order for the Cloudflare One Client to send traffic to your private network, you must configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that the IP/CIDR of your private network routes through the Cloudflare One Client.
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:

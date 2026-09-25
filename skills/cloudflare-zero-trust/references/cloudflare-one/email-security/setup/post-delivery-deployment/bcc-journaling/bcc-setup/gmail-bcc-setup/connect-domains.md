@@ -35,7 +35,7 @@ Under **Source**, the dashboard will display **Google integration**, along with 
 
 To add additional domains:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** > **Settings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Email security** > **Settings**.
 2. Select **Connect an integration** > **BCC/Journaling** > **Integrate with Google** > **Authorize**.
 3. **Connect domains**: Select the domains you want to add, then select **Next**.
 4. (Optional) Select **Add manual domains**: Enter additional domains manually, then select **Next**.
@@ -51,7 +51,7 @@ To add additional domains:
 
 To verify that the deployment has been successful and that your emails are being scanned:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), select **Email security**.
 2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Under **Your domains**, locate your domain, and verify that **Status** (which describes the state of the configuration) displays **Active**.
 

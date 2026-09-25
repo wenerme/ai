@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/bundling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-By default, Wrangler bundles your Worker code using [`esbuild` ↗](https://esbuild.github.io/). This means that Wrangler has built-in support for importing modules from [npm ↗](https://www.npmjs.com/) defined in your `package.json`. To review the exact code that Wrangler will upload to Cloudflare, run `npx wrangler deploy --dry-run --outdir dist`, which will show your Worker code after Wrangler's bundling.
+By default, Wrangler bundles your Worker code using [`esbuild` ↗︎](https://esbuild.github.io/). This means that Wrangler has built-in support for importing modules from [npm ↗︎](https://www.npmjs.com/) defined in your `package.json`. To review the exact code that Wrangler will upload to Cloudflare, run `npx wrangler deploy --dry-run --outdir dist`, which will show your Worker code after Wrangler's bundling.
 
 <details>
 
@@ -118,7 +118,7 @@ NODE_ENV=staging pnpm wrangler dev
 
 ## Conditional exports
 
-Wrangler respects the [conditional `exports` field ↗](https://nodejs.org/api/packages.html#conditional-exports) in `package.json`. This allows developers to implement isomorphic libraries that have different implementations depending on the JavaScript runtime they are running in. When bundling, Wrangler will try to load the [`workerd` key ↗](https://runtime-keys.proposal.wintercg.org/#workerd). Refer to the Wrangler repository for [an example isomorphic package ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/isomorphic-random-example).
+Wrangler respects the [conditional `exports` field ↗︎](https://nodejs.org/api/packages.html#conditional-exports) in `package.json`. This allows developers to implement isomorphic libraries that have different implementations depending on the JavaScript runtime they are running in. When bundling, Wrangler will try to load the [`workerd` key ↗︎](https://runtime-keys.proposal.wintercg.org/#workerd). Refer to the Wrangler repository for [an example isomorphic package ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/isomorphic-random-example).
 
 ## Disable bundling
 

@@ -26,7 +26,7 @@ Worker code goes live on deploy. Container instances update with a [rollout](htt
 
 Recall that Containers are backed by [Durable Objects](https://developers.cloudflare.com/durable-objects/) and [Workers](https://developers.cloudflare.com/workers/). Requests are first routed through a Worker, which is generally handled by a datacenter in a location with the best latency between itself and the requesting user. A different datacenter may be selected to optimize overall latency, if [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) is on, or if the nearest location is under heavy load.
 
-Because all Container requests are passed through a Worker, end-users cannot make non-HTTP TCP or UDP requests to a Container instance. If you have a use case that requires inbound TCP or UDP from an end-user, please [let us know ↗](https://forms.gle/AGSq54VvUje6kmKu8).
+Because all Container requests are passed through a Worker, end-users cannot make non-HTTP TCP or UDP requests to a Container instance. If you have a use case that requires inbound TCP or UDP from an end-user, please [let us know ↗︎](https://forms.gle/AGSq54VvUje6kmKu8).
 
 ### Worker to Durable Object
 

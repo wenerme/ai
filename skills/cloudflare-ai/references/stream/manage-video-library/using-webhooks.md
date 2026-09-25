@@ -152,7 +152,7 @@ Retrieve the `Webhook-Signature` header from the webhook request and split the s
 
 Split each value again using the `=` character.
 
-The value for `time` is the current [UNIX time ↗](https://en.wikipedia.org/wiki/Unix_time) when the server sent the request. `sig1` is the signature of the request body.
+The value for `time` is the current [UNIX time ↗︎](https://en.wikipedia.org/wiki/Unix_time) when the server sent the request. `sig1` is the signature of the request body.
 
 At this point, you should discard requests with timestamps that are too old for your application.
 
@@ -188,7 +188,7 @@ If the signatures match, you can trust that Cloudflare sent the webhook.
 
 **Golang**
 
-Using [crypto/hmac ↗](https://golang.org/pkg/crypto/hmac/#pkg-overview):
+Using [crypto/hmac ↗︎](https://golang.org/pkg/crypto/hmac/#pkg-overview):
 
 ```go
 package main

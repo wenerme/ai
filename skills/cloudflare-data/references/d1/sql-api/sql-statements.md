@@ -22,15 +22,15 @@ You can execute any of these statements via the D1 console in the Cloudflare das
 
 D1 supports a subset of SQLite extensions for added functionality, including:
 
-- [FTS5 module ↗](https://www.sqlite.org/fts5.html) for full-text search (including `fts5vocab`).
-- [JSON extension ↗](https://www.sqlite.org/json1.html) for JSON functions and operators.
-- [Math functions ↗](https://sqlite.org/lang_mathfunc.html).
+- [FTS5 module ↗︎](https://www.sqlite.org/fts5.html) for full-text search (including `fts5vocab`).
+- [JSON extension ↗︎](https://www.sqlite.org/json1.html) for JSON functions and operators.
+- [Math functions ↗︎](https://sqlite.org/lang_mathfunc.html).
 
-Refer to the [source code ↗](https://github.com/cloudflare/workerd/blob/4c42a4a9d3390c88e9bd977091c9d3395a6cd665/src/workerd/util/sqlite.c%2B%2B#L269) for the full list of supported functions.
+Refer to the [source code ↗︎](https://github.com/cloudflare/workerd/blob/4c42a4a9d3390c88e9bd977091c9d3395a6cd665/src/workerd/util/sqlite.c%2B%2B#L269) for the full list of supported functions.
 
 ## Compatible PRAGMA statements
 
-D1 supports some [SQLite PRAGMA ↗](https://www.sqlite.org/pragma.html) statements. The PRAGMA statement is an SQL extension for SQLite. PRAGMA commands can be used to:
+D1 supports some [SQLite PRAGMA ↗︎](https://www.sqlite.org/pragma.html) statements. The PRAGMA statement is an SQL extension for SQLite. PRAGMA commands can be used to:
 
 - Modify the behavior of certain SQLite operations.
 - Query the SQLite library for internal data about schemas or tables (but note that PRAGMA statements cannot query the contents of a table).
@@ -499,7 +499,7 @@ Currently, D1 does not support `PRAGMA optimize(-1)`.
 
 `PRAGMA optimize(-1)` is a command which displays all optimizations that would have been performed without actually executing them.
 
-Refer to [SQLite PRAGMA optimize documentation ↗](https://www.sqlite.org/pragma.html#pragma_optimize) for more information on how `PRAGMA optimize` optimizes a database.
+Refer to [SQLite PRAGMA optimize documentation ↗︎](https://www.sqlite.org/pragma.html#pragma_optimize) for more information on how `PRAGMA optimize` optimizes a database.
 
 ## Query `sqlite_master`
 

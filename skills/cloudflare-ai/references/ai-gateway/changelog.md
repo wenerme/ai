@@ -345,13 +345,13 @@ For more information, refer to the [AI Gateway documentation](https://developers
 
 **Manage and deploy your AI provider keys through Bring Your Own Key (BYOK) with AI Gateway, now powered by Cloudflare Secrets Store**
 
-Cloudflare Secrets Store is now integrated with AI Gateway, allowing you to store, manage, and deploy your AI provider keys in a secure and seamless configuration through [Bring Your Own Key ↗](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). Instead of passing your AI provider keys directly in every request header, you can centrally manage each key with Secrets Store and deploy in your gateway configuration using only a reference, rather than passing the value in plain text.
+Cloudflare Secrets Store is now integrated with AI Gateway, allowing you to store, manage, and deploy your AI provider keys in a secure and seamless configuration through [Bring Your Own Key ↗︎](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). Instead of passing your AI provider keys directly in every request header, you can centrally manage each key with Secrets Store and deploy in your gateway configuration using only a reference, rather than passing the value in plain text.
 
-You can now create a secret directly from your AI Gateway [in the dashboard ↗](http://dash.cloudflare.com/?to=/:account/ai-gateway) by navigating into your gateway -> **Provider Keys** -> **Add**.
+You can now create a secret directly from your AI Gateway [in the dashboard ↗︎](http://dash.cloudflare.com/?to=/:account/ai-gateway) by navigating into your gateway -> **Provider Keys** -> **Add**.
 
 ![Import repo or choose template](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2410,height=1842,format=webp/_astro/add-secret-ai-gateway.B-SIPr6s.png)
 
-You can also create your secret with the newly available **ai\_gateway** scope via [wrangler ↗](https://developers.cloudflare.com/workers/wrangler/commands/), the [Secrets Store dashboard ↗](http://dash.cloudflare.com/?to=/:account/secrets-store), or the [API ↗](https://developers.cloudflare.com/api/resources/secrets_store/).
+You can also create your secret with the newly available **ai\_gateway** scope via [wrangler ↗︎](https://developers.cloudflare.com/workers/wrangler/commands/), the [Secrets Store dashboard ↗︎](http://dash.cloudflare.com/?to=/:account/secrets-store), or the [API ↗︎](https://developers.cloudflare.com/api/resources/secrets_store/).
 
 Then, pass the key in the request header using its Secrets Store reference:
 
@@ -382,7 +382,7 @@ const message = await anthropic.messages.create({
 });
 ```
 
-For more information, check out the [blog ↗](https://blog.cloudflare.com/ai-gateway-aug-2025-refresh)!
+For more information, check out the [blog ↗︎](https://blog.cloudflare.com/ai-gateway-aug-2025-refresh)!
 
 ## 2025-06-03
 
@@ -424,9 +424,9 @@ We are excited to announce that [AI Gateway](https://developers.cloudflare.com/a
 
 This new capability allows developers to establish persistent, low-latency connections between their applications and AI models, enabling natural, real-time conversational AI experiences, including speech-to-speech interactions.
 
-The Realtime WebSockets API works with the [OpenAI Realtime API ↗](https://platform.openai.com/docs/guides/realtime#connect-with-websockets), [Google Gemini Live API ↗](https://ai.google.dev/gemini-api/docs/multimodal-live), and supports real-time text and speech interactions with models from [Cartesia ↗](https://docs.cartesia.ai/api-reference/tts/tts), and [ElevenLabs ↗](https://elevenlabs.io/docs/conversational-ai/api-reference/conversational-ai/websocket).
+The Realtime WebSockets API works with the [OpenAI Realtime API ↗︎](https://platform.openai.com/docs/guides/realtime#connect-with-websockets), [Google Gemini Live API ↗︎](https://ai.google.dev/gemini-api/docs/multimodal-live), and supports real-time text and speech interactions with models from [Cartesia ↗︎](https://docs.cartesia.ai/api-reference/tts/tts), and [ElevenLabs ↗︎](https://elevenlabs.io/docs/conversational-ai/api-reference/conversational-ai/websocket).
 
-Here's how you can connect AI Gateway to [OpenAI's Realtime API ↗](https://platform.openai.com/docs/guides/realtime#connect-with-websockets) using WebSockets:
+Here's how you can connect AI Gateway to [OpenAI's Realtime API ↗︎](https://platform.openai.com/docs/guides/realtime#connect-with-websockets) using WebSockets:
 
 *OpenAI Realtime API examplejavascript*
 
@@ -471,7 +471,7 @@ Within the AI Gateway settings, you can configure:
 
 ![Guardrails in AI Gateway](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2524,height=444,format=webp/_astro/Guardrails.BTNc0qeC.png)
 
-Learn more in the [blog ↗](https://blog.cloudflare.com/guardrails-in-ai-gateway/) or our [documentation](https://developers.cloudflare.com/ai-gateway/features/guardrails/).
+Learn more in the [blog ↗︎](https://blog.cloudflare.com/guardrails-in-ai-gateway/) or our [documentation](https://developers.cloudflare.com/ai-gateway/features/guardrails/).
 
 ## 2025-02-06
 

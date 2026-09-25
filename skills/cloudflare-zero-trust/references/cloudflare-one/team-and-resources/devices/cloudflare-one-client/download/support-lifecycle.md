@@ -52,10 +52,10 @@ The Cloudflare One Client is guaranteed to support operating systems for the pri
 
 ### Windows
 
-The Cloudflare One Client support policy for Windows follows [Microsoft's Lifecycle Policy ↗](https://learn.microsoft.com/en-us/lifecycle/).
+The Cloudflare One Client support policy for Windows follows [Microsoft's Lifecycle Policy ↗︎](https://learn.microsoft.com/en-us/lifecycle/).
 
-- **Windows 10 and 11**: The Cloudflare One Client supports [Windows client versions ↗](https://learn.microsoft.com/en-us/windows/release-health/supported-versions-windows-client) as long as they remain in active servicing under Microsoft's Modern Lifecycle Policy. Enterprise LTSC editions must remain under Mainstream Support.
-- **Windows Server**: Cloudflare One Client support for Windows Server is pending. Once testing is complete, our policy will be to support [Windows Server LTSC releases ↗](https://learn.microsoft.com/en-us/windows/release-health/windows-server-release-info) within their Mainstream Support window. Annual Channel releases of Windows Server will not be supported.
+- **Windows 10 and 11**: The Cloudflare One Client supports [Windows client versions ↗︎](https://learn.microsoft.com/en-us/windows/release-health/supported-versions-windows-client) as long as they remain in active servicing under Microsoft's Modern Lifecycle Policy. Enterprise LTSC editions must remain under Mainstream Support.
+- **Windows Server**: Cloudflare One Client support for Windows Server is pending. Once testing is complete, our policy will be to support [Windows Server LTSC releases ↗︎](https://learn.microsoft.com/en-us/windows/release-health/windows-server-release-info) within their Mainstream Support window. Annual Channel releases of Windows Server will not be supported.
 
 Note
 
@@ -95,7 +95,7 @@ As of September 2026, the following major versions of macOS are supported:
 
 ### Debian
 
-The Cloudflare One Client supports all Debian releases within their [standard EOL window ↗](https://www.debian.org/releases/). Devices must be updated to the latest point release (for example, `12.12`) to receive support.
+The Cloudflare One Client supports all Debian releases within their [standard EOL window ↗︎](https://www.debian.org/releases/). Devices must be updated to the latest point release (for example, `12.12`) to receive support.
 
 As of December 2025, the following versions of Debian are supported:
 
@@ -106,7 +106,7 @@ As of December 2025, the following versions of Debian are supported:
 
 ### Ubuntu
 
-The Cloudflare One Client supports all Ubuntu releases within their [Standard Security Maintenance window ↗](https://ubuntu.com/about/release-cycle). Devices must be updated to the latest point release (for example, `22.04.5`) to receive support.
+The Cloudflare One Client supports all Ubuntu releases within their [Standard Security Maintenance window ↗︎](https://ubuntu.com/about/release-cycle). Devices must be updated to the latest point release (for example, `22.04.5`) to receive support.
 
 As of December 2025, the following versions of Ubuntu are supported:
 
@@ -120,7 +120,7 @@ As of December 2025, the following versions of Ubuntu are supported:
 
 ### Red Hat Enterprise Linux (RHEL)
 
-Cloudflare One Client support for RHEL is pending. Once testing is complete, our policy will be to support all major versions of RHEL within their [Full Support window ↗](https://access.redhat.com/product-life-cycles). Devices must be updated to the latest minor release (for example, `9.4`) to receive support.
+Cloudflare One Client support for RHEL is pending. Once testing is complete, our policy will be to support all major versions of RHEL within their [Full Support window ↗︎](https://access.redhat.com/product-life-cycles). Devices must be updated to the latest minor release (for example, `9.4`) to receive support.
 
 As of April 2026, only RHEL 8 has completed full compatibility testing, which is now out of the Red Hat Full Support window. Starting with Cloudflare One Client version 2026.6.822.0, RHEL 9 and RHEL 10 are supported for [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) functionality only.
 
@@ -145,7 +145,7 @@ As of December 2025, the following versions of iOS and iPadOS are supported:
 
 ### Android
 
-The Cloudflare One Client supports the current major Android release and the three previous major releases. Devices must have the latest available [Android Security Patch Level ↗](https://source.android.com/docs/security/bulletin/asb-overview) installed to receive support.
+The Cloudflare One Client supports the current major Android release and the three previous major releases. Devices must have the latest available [Android Security Patch Level ↗︎](https://source.android.com/docs/security/bulletin/asb-overview) installed to receive support.
 
 Note
 
@@ -165,7 +165,7 @@ As of December 2025, the following versions of Android are supported:
 
 The Cloudflare One Client supports only the current ChromeOS release on the Stable, LTS, and LTSC channels.
 
-Unlike other operating systems listed in this document, specific ChromeOS version numbers are not tracked here due to the rapid release cadence of the platform (approximately every four weeks to six months). Refer to the official [ChromeOS Release Schedule ↗](https://chromiumdash.appspot.com/schedule) to verify the current version for your channel.
+Unlike other operating systems listed in this document, specific ChromeOS version numbers are not tracked here due to the rapid release cadence of the platform (approximately every four weeks to six months). Refer to the official [ChromeOS Release Schedule ↗︎](https://chromiumdash.appspot.com/schedule) to verify the current version for your channel.
 
 Was this helpful?
 

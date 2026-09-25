@@ -72,7 +72,7 @@ When using the [`--region us`](https://developers.cloudflare.com/cloudflare-one/
 
 ### Region FedRAMP High
 
-When deploying `cloudflared` in a [FedRAMP High ↗](https://www.cloudflare.com/cloudflare-for-government/) environment, `cloudflared` automatically routes to FedRAMP data centers based on the [tunnel token](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/). Ensure your firewall allows outbound connections to these FedRAMP-specific destinations on port `7844` (TCP/UDP).
+When deploying `cloudflared` in a [FedRAMP High ↗︎](https://www.cloudflare.com/cloudflare-for-government/) environment, `cloudflared` automatically routes to FedRAMP data centers based on the [tunnel token](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/remote-tunnel-permissions/). Ensure your firewall allows outbound connections to these FedRAMP-specific destinations on port `7844` (TCP/UDP).
 
 #### `fed-region1.v2.argotunnel.com`
 
@@ -112,11 +112,11 @@ Allows `cloudflared` to download the latest release and perform a software updat
 
 | IPv4 | IPv6 | Port | Protocols |
 | --- | --- | --- | --- |
-| [GitHub's IPs ↗](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses) | [GitHub's IPs ↗](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses) | 443 | TCP (HTTPS) |
+| [GitHub's IPs ↗︎](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses) | [GitHub's IPs ↗︎](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-githubs-ip-addresses) | 443 | TCP (HTTPS) |
 
 #### `<your-team-name>.cloudflareaccess.com`
 
-Allows `cloudflared` to validate the Access JWT. Only required if the [`access` ↗](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/cloudflared-parameters/origin-parameters/#access) setting is enabled.
+Allows `cloudflared` to validate the Access JWT. Only required if the [`access` ↗︎](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/cloudflared-parameters/origin-parameters/#access) setting is enabled.
 
 | IPv4 | IPv6 | Port | Protocols |
 | --- | --- | --- | --- |
@@ -124,7 +124,7 @@ Allows `cloudflared` to validate the Access JWT. Only required if the [`access` 
 
 #### `pqtunnels.cloudflareresearch.com`
 
-Allows `cloudflared` to report [post-quantum key exchange ↗](https://blog.cloudflare.com/post-quantum-tunnel/) errors to Cloudflare.
+Allows `cloudflared` to report [post-quantum key exchange ↗︎](https://blog.cloudflare.com/post-quantum-tunnel/) errors to Cloudflare.
 
 | IPv4 | IPv6 | Port | Protocols |
 | --- | --- | --- | --- |
@@ -195,7 +195,7 @@ Alternatively, you may use operating system (OS)-level firewall rules to block a
 
 
 7. Run your tunnel and check that all configured services are still accessible to the outside world via the tunnel, but not via the external IP address of the server.
-8. By default, rules you add via the `iptables` command are stored only in memory and do not persist on reboot. There are many different ways to save and reload your firewall rules, depending on your Linux distribution. For example, on Debian you can use the [`iptables-persistent` ↗](https://packages.debian.org/sid/iptables-persistent) package:
+8. By default, rules you add via the `iptables` command are stored only in memory and do not persist on reboot. There are many different ways to save and reload your firewall rules, depending on your Linux distribution. For example, on Debian you can use the [`iptables-persistent` ↗︎](https://packages.debian.org/sid/iptables-persistent) package:
 
    ```sh
    sudo apt install iptables-persistent

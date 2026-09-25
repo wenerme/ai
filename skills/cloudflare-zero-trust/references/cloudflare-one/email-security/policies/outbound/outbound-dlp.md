@@ -31,7 +31,7 @@ An outbound policy allows you to control outbound email flow.
 
 To create an outbound DLP policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Email security**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Email security**.
 2. Select **Policies & rules**, then go to **Outbound** > **Outbound DLP**.
 3. Select **Add a policy**.
 4. Name your policy.
@@ -60,20 +60,20 @@ The Data Loss Prevention (DLP) Assist add-in allows Microsoft 365 users to deplo
 
 To set up DLP Assist add-in:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Email security**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Email security**.
 2. Select **Policies & rules**, then go to **Outbound** > **Outbound DLP**.
 3. Select **View Microsoft add-in instructions** > Select **Download add-in**. This downloads a `.xml` file necessary to install the add-in on the client side.
 4. Set up the add-in in Microsoft 365:
-   - Log in to the [Microsoft admin panel ↗](https://security.microsoft.com/homepage) and go to **Microsoft 365 Admin Center** > **Settings** > **Integrated Apps**.
+   - Log in to the [Microsoft admin panel ↗︎](https://security.microsoft.com/homepage) and go to **Microsoft 365 Admin Center** > **Settings** > **Integrated Apps**.
    - Choose **Upload custom apps** and select **Office Add-in** for the application type.
    - Select **Upload manifest file (.xml) from device**.
    - Upload the Cloudflare add-in file you downloaded in step three. Then, verify and complete the wizard. It can take up to 24 hours for an add-in to propagate.
 
-The add-in works by inserting headers into the [EML ↗](https://en.wikipedia.org/wiki/EML) on the client side before the message is sent out.
+The add-in works by inserting headers into the [EML ↗︎](https://en.wikipedia.org/wiki/EML) on the client side before the message is sent out.
 
 To block, encrypt, or send approval, you can configure rules within Microsoft Purview DLP:
 
-1. Go to [Microsoft Purview ↗](https://purview.microsoft.com/datalossprevention/overview?tid=11648e1c-3d60-40e2-bf07-f8d481e48e2d).
+1. Go to [Microsoft Purview ↗︎](https://purview.microsoft.com/datalossprevention/overview?tid=11648e1c-3d60-40e2-bf07-f8d481e48e2d).
 2. Select **Policies** > **Create policy**.
 3. Do not choose any templates or custom policy. Select **Next**.
 4. Choose a name and description for the policy: You can choose any name. However, this guide will use `Cloudflare Assist Block`.

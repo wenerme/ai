@@ -32,11 +32,11 @@ Subsequent pushes to the same branch update the same Preview URL. Each deploymen
 
 Enabling GitLab Merge Request events for existing connections
 
-New GitLab connections are automatically configured to receive merge request events, which enable commenting functionality. For existing connections, you'll need to manually enable `Merge request events` in the Webhooks tab of your project's settings. You can follow GitLab's documentation for guidance on [managing webhooks ↗](https://docs.gitlab.com/user/project/integrations/webhooks/#manage-webhooks).
+New GitLab connections are automatically configured to receive merge request events, which enable commenting functionality. For existing connections, you'll need to manually enable `Merge request events` in the Webhooks tab of your project's settings. You can follow GitLab's documentation for guidance on [managing webhooks ↗︎](https://docs.gitlab.com/user/project/integrations/webhooks/#manage-webhooks).
 
 ### Commit Status
 
-If you have one or multiple Workers connected to a repository (i.e. a [monorepo](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#monorepos)), you can check on the status of each build within GitLab via [GitLab commit status ↗](https://docs.gitlab.com/ee/user/project/merge_requests/status_checks.html).
+If you have one or multiple Workers connected to a repository (i.e. a [monorepo](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#monorepos)), you can check on the status of each build within GitLab via [GitLab commit status ↗︎](https://docs.gitlab.com/ee/user/project/merge_requests/status_checks.html).
 
 You can see the statuses by selecting the status icon next to a commit or by going to **Build** > **Pipelines** within your GitLab repository. In the example below, you can select on the green check mark to see the results of the check run.
 
@@ -58,15 +58,15 @@ When you authorize Cloudflare Workers to access your GitLab account, you automat
 
 ### Remove access
 
-You can remove Cloudflare Workers' access to your GitLab account by navigating to [Authorized Applications page ↗](https://gitlab.com/-/profile/applications) on GitLab. Find the applications called Cloudflare Pages and select the **Revoke** button to revoke access.
+You can remove Cloudflare Workers' access to your GitLab account by navigating to [Authorized Applications page ↗︎](https://gitlab.com/-/profile/applications) on GitLab. Find the applications called Cloudflare Pages and select the **Revoke** button to revoke access.
 
 Note that the GitLab application Cloudflare Workers is shared between Workers and Pages projects, and removing access to GitLab will disable new builds for Workers and Pages, though your previous deployments will continue to be hosted by Cloudflare Workers.
 
 ### Reinstall the Cloudflare GitLab App
 
-1. Go to your application settings page on GitLab: [https://gitlab.com/-/profile/applications ↗](https://gitlab.com/-/profile/applications)
+1. Go to your application settings page on GitLab: [https://gitlab.com/-/profile/applications ↗︎](https://gitlab.com/-/profile/applications)
 2. Click the "Revoke" button on your Cloudflare Workers installation if it exists.
-3. Go back to the [**Workers & Pages** overview ↗](https://dash.cloudflare.com) page. Select **Create application** > **Pages** > **Connect to Git**.
+3. Go back to the [**Workers & Pages** overview ↗︎](https://dash.cloudflare.com) page. Select **Create application** > **Pages** > **Connect to Git**.
 4. Select the **+ Add account** button, select the GitLab account you want to add, and then select **Install & Authorize**.
 5. You should be redirected to the create project page with your GitLab account or organization in the account list.
 6. Attempt to make a new deployment with your project which was previously broken.

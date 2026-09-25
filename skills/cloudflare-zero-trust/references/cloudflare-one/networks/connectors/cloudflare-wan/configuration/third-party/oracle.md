@@ -36,7 +36,7 @@ Caution
 
 The code above is an example of how you might generate a random key. However, make sure you generate a key that is strong enough to comply with your security needs.
 
-You can try this code in the [Workers playground ↗](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYDqApmQNJQQBimYACFKNRHSoBzAB4ArAEoBBANYR5AEVYAJAOJCAagA0AXCxYduvAVhHVaEmQpVrNug4YCwAKADC6KhDsAdjqUADOMOhhvFD+xiQYWHgExCRUcMDsDABEUDTs0gB0smHZpKhQYEEZWbn5RSXZ3n4BQRDYACp0MOzxcDAwYFAAxgSxVMiycABucGHDCLAQANTA6Ljg7N7eBZFIJLjsqHDgECQA3l4AkHMSwwnsEMMAFgAUAJQXXtdXw-5hZzgJAYaXYAHcSABVPIQAAcigQCDgdFeABZYe8iD8Ft0IOhCpJHvI4DR0MB9HAwCB2GFXnBMT8qmcyHN2AA2VEAZQgiykwPIeLgr25vMkhVQCDJPmeiD8h0K-UGKKo4DAABoSPSGT8WWF2VyeXlJPzdfqRUbCgh2IM4MN2K9kAAdZbISQagDk7vePyuvr9JADlutYFt9qdyFdHq9Pr9voDJCDNrtDoYkZInu1vr+VABCTylPNfJBpo5hbFYRAZABoteAAYNQBmABMmauVogIAQVFBEPkNMiOftFXSYDLGsufue7DghwQYXiE792WzgWCEG67Gy8WygWkKGeEGAYGyap9AF9T76zwyrhevGesd4zMwLDx+IJbGJ6FI5EpVBptD0Ixmn8Vd2lCCIohiOIEkEZJCFIdJMhyTJCHwQgyjzKokNqMgwHQMgml8UC2k6Dc+gGIZRmgfxJjCfxti8c5lzJeBoDISpeDoAB9dDN2MbIm1rJtUWwWsGzEgB2E8WOANioA4oZ1241AQ0kUpjAAbWyKh1nYEpuL+OSCGyABdNVsmAOA8m4tYNiqLc6kOBpSjPJ9n1fKwP1Eewfycf9XCAwxmG8IA).
+You can try this code in the [Workers playground ↗︎](https://workers.cloudflare.com/playground#LYVwNgLglgDghgJwgegGYHsHALQBM4RwDcABAEbogB2+CAngLzbPYDqApmQNJQQBimYACFKNRHSoBzAB4ArAEoBBANYR5AEVYAJAOJCAagA0AXCxYduvAVhHVaEmQpVrNug4YCwAKADC6KhDsAdjqUADOMOhhvFD+xiQYWHgExCRUcMDsDABEUDTs0gB0smHZpKhQYEEZWbn5RSXZ3n4BQRDYACp0MOzxcDAwYFAAxgSxVMiycABucGHDCLAQANTA6Ljg7N7eBZFIJLjsqHDgECQA3l4AkHMSwwnsEMMAFgAUAJQXXtdXw-5hZzgJAYaXYAHcSABVPIQAAcigQCDgdFeABZYe8iD8Ft0IOhCpJHvI4DR0MB9HAwCB2GFXnBMT8qmcyHN2AA2VEAZQgiykwPIeLgr25vMkhVQCDJPmeiD8h0K-UGKKo4DAABoSPSGT8WWF2VyeXlJPzdfqRUbCgh2IM4MN2K9kAAdZbISQagDk7vePyuvr9JADlutYFt9qdyFdHq9Pr9voDJCDNrtDoYkZInu1vr+VABCTylPNfJBpo5hbFYRAZABoteAAYNQBmABMmauVogIAQVFBEPkNMiOftFXSYDLGsufue7DghwQYXiE792WzgWCEG67Gy8WygWkKGeEGAYGyap9AF9T76zwyrhevGesd4zMwLDx+IJbGJ6FI5EpVBptD0Ixmn8Vd2lCCIohiOIEkEZJCFIdJMhyTJCHwQgyjzKokNqMgwHQMgml8UC2k6Dc+gGIZRmgfxJjCfxti8c5lzJeBoDISpeDoAB9dDN2MbIm1rJtUWwWsGzEgB2E8WOANioA4oZ1241AQ0kUpjAAbWyKh1nYEpuL+OSCGyABdNVsmAOA8m4tYNiqLc6kOBpSjPJ9n1fKwP1Eewfycf9XCAwxmG8IA).
 
 ## Oracle Cloud
 
@@ -102,7 +102,7 @@ After configuring the Oracle Site-to-site VPN connection and the tunnels, go to 
    - **Tunnel name**: Enter a name.
    - **Interface address**: Enter the internal tunnel IP on the Cloudflare side of the IPsec tunnel. In this example, it is `10.200.1.0/31`.
    - **Customer endpoint**: The Oracle VPN public IP address.
-   - **Cloudflare endpoint**: Enter one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+   - **Cloudflare endpoint**: Enter one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
    - **Health check type**: **Request**
    - **Health check direction**: **Unidirectional**
    - **Health check target**: **Default**

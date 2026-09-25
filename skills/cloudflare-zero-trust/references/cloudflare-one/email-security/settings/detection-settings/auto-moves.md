@@ -20,12 +20,12 @@ Use auto-moves to enforce email security policy without relying on end users to 
 
 To configure auto-move events:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **Settings** > **Auto-moves** > **View**.
 4. Select **Configure**.
 5. For each disposition (malicious, spam, bulk, suspicious, spoof), choose what happens to matching emails:
-   - **Soft delete - user recoverable**: Moves the message to the user's **Recoverable Items - Deleted** folder. The user can still find and restore the message. This option is only available for Microsoft 365 customers. Refer to [Microsoft 365 Exchange data deletion ↗](https://learn.microsoft.com/en-us/compliance/assurance/assurance-exchange-online-data-deletion) for more information.
+   - **Soft delete - user recoverable**: Moves the message to the user's **Recoverable Items - Deleted** folder. The user can still find and restore the message. This option is only available for Microsoft 365 customers. Refer to [Microsoft 365 Exchange data deletion ↗︎](https://learn.microsoft.com/en-us/compliance/assurance/assurance-exchange-online-data-deletion) for more information.
    - **Hard delete - admin recoverable**: Removes the message from the user's inbox entirely. Only an administrator can recover it.
    - **Move to trash**: Moves the message to the user's trash or deleted items folder. This option is only available for Google Workspace users.
    - **Move to junk**: Moves the message to the user's junk or spam folder.

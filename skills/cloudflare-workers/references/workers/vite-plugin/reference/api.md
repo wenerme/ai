@@ -56,7 +56,7 @@ It accepts an optional `PluginConfig` parameter.
 
   Optional Vite environment options. By default, the environment name is the Worker name with `-` characters replaced with `_`. Setting the name here will override this. A typical use case is setting `viteEnvironment: { name: "ssr" }` to apply the Worker to the SSR environment.
 
-  The `childEnvironments` option is for supporting React Server Components via [@vitejs/plugin-rsc ↗](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc) and frameworks that build on top of it. This enables embedding additional environments with separate module graphs inside a single Worker.
+  The `childEnvironments` option is for supporting React Server Components via [@vitejs/plugin-rsc ↗︎](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc) and frameworks that build on top of it. This enables embedding additional environments with separate module graphs inside a single Worker.
 
   See [Vite Environments](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/) for more information.
 - `persistState` `boolean | { path: string }` optional
@@ -137,7 +137,7 @@ Auxiliary Workers require a `configPath`, a `config` option, or both. `CLOUDFLAR
 
   Optional Vite environment options. By default, the environment name is the Worker name with `-` characters replaced with `_`. Setting the name here will override this.
 
-  The `childEnvironments` option is for supporting React Server Components via [@vitejs/plugin-rsc ↗](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc) and frameworks that build on top of it. This enables embedding additional environments with separate module graphs inside a single Worker.
+  The `childEnvironments` option is for supporting React Server Components via [@vitejs/plugin-rsc ↗︎](https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-rsc) and frameworks that build on top of it. This enables embedding additional environments with separate module graphs inside a single Worker.
 
   See [Vite Environments](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/) for more information.
 

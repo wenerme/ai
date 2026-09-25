@@ -46,7 +46,7 @@ On-premise data center 2: 203.0.113.128/25
 
 *Note: Labels in this image may reflect a previous product name.*
 
-1. Using Border Gateway Protocol ([BGP ↗](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/)), Cloudflare advertises customer’s protected IP prefixes to the Internet from all of Cloudflare’s global data centers, enabling [IP Anycast ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/), so that Internet traffic destined to these protected IP prefixes will always be routed to the Cloudflare data center that is closest to the source of the traffic.
+1. Using Border Gateway Protocol ([BGP ↗︎](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/)), Cloudflare advertises customer’s protected IP prefixes to the Internet from all of Cloudflare’s global data centers, enabling [IP Anycast ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/), so that Internet traffic destined to these protected IP prefixes will always be routed to the Cloudflare data center that is closest to the source of the traffic.
 
 At the same time, on-premise network(s) and cloud provider network(s) would stop advertising the same exact prefixes from their respective on-premises border routers and cloud border routers. This ensures all Internet traffic destined to the Magic Transit protected IP prefixes will be routed through the Cloudflare network.
 

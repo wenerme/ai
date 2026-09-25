@@ -26,7 +26,7 @@ By serving fonts from your own domain through Cloudflare's optimized infrastruct
 
 ### Does Cloudflare Fonts collect or log user data?
 
-No, Cloudflare Fonts does not collect or log user data during the font delivery process. Cloudflare is committed to a [privacy-first ↗](https://www.cloudflare.com/privacypolicy/) approach, ensuring that your users' data remains confidential.
+No, Cloudflare Fonts does not collect or log user data during the font delivery process. Cloudflare is committed to a [privacy-first ↗︎](https://www.cloudflare.com/privacypolicy/) approach, ensuring that your users' data remains confidential.
 
 ## Implementation and integration
 

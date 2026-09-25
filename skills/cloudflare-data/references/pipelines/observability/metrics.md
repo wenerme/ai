@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Pipelines expose metrics which allow you to measure data ingested, processed, and delivered to sinks.
 
-The metrics displayed in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) are queried from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically](#query-via-the-graphql-api) via GraphQL or HTTP client.
+The metrics displayed in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) are queried from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically](#query-via-the-graphql-api) via GraphQL or HTTP client.
 
 ## Metrics
 
@@ -95,7 +95,7 @@ To prevent incorrect data from being ingested in the first place, consider using
 
 Per-pipeline analytics are available in the Cloudflare dashboard. To view current and historical metrics for a pipeline:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
 2. Go to **Pipelines** > **Pipelines**.
 3. Select a pipeline.
 4. Go to the **Metrics** tab to view its metrics or **Errors** tab to view dropped events.

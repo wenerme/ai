@@ -133,7 +133,7 @@ const fullScreenRef = useRef<HTMLDivElement>(null);
 <RtkFullscreenToggle targetElement={fullScreenRef.current} />
 ```
 
-A complete example to build your own UI with custom controlbar can be found [here ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/create-your-own-ui) with the custom controlbar component [here ↗](https://github.com/cloudflare/realtimekit-web-examples/blob/main/react-examples/examples/create-your-own-ui/src/components/meeting-control-bar.tsx).
+A complete example to build your own UI with custom controlbar can be found [here ↗︎](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/create-your-own-ui) with the custom controlbar component [here ↗︎](https://github.com/cloudflare/realtimekit-web-examples/blob/main/react-examples/examples/create-your-own-ui/src/components/meeting-control-bar.tsx).
 
 RealtimeKit UI Kit provides the [`rtk-controlbar`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-controlbar) component for a default controlbar.
 
@@ -202,7 +202,7 @@ if (fullscreenToggle) {
 }
 ```
 
-A complete example to build your own UI with custom controlbar can be found [here ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/html-examples/examples/create-your-own-ui) with the custom controlbar component [here ↗](https://github.com/cloudflare/realtimekit-web-examples/blob/main/html-examples/examples/create-your-own-ui/components/meeting-control-bar.js).
+A complete example to build your own UI with custom controlbar can be found [here ↗︎](https://github.com/cloudflare/realtimekit-web-examples/tree/main/html-examples/examples/create-your-own-ui) with the custom controlbar component [here ↗︎](https://github.com/cloudflare/realtimekit-web-examples/blob/main/html-examples/examples/create-your-own-ui/components/meeting-control-bar.js).
 
 RealtimeKit UI Kit provides the [`rtk-controlbar`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-controlbar) component for a default controlbar.
 

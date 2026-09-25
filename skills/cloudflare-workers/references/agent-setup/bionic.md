@@ -28,7 +28,7 @@ StandaloneCloud
 
 1. **Install LM Studio Bionic**
 
-   Download and install Bionic from the [LM Studio Bionic website ↗](https://lmstudio.ai/).
+   Download and install Bionic from the [LM Studio Bionic website ↗︎](https://lmstudio.ai/).
 2. **Create a Code Project**
 
    In Bionic, create a **Code Project**, then select the local directory that contains your Cloudflare project. If your project has a `wrangler.jsonc` file, select the directory that contains it.
@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
    ```
 
 
@@ -97,7 +97,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 - Code mode APIcode modeBroad access to the full Cloudflare API via code execution, with minimal token overheadhttps://mcp.cloudflare.com/mcp
 - Code Mode servercode modeBest when you want broad access across Cloudflare's APIs through code executionhttps://mcp.cloudflare.com/mcp
 - AI Gateway serverSearch your logs, get details about the prompts and responseshttps://ai-gateway.mcp.cloudflare.com/mcp
-- Audit Logs serverQuery audit logs and generate reports for reviewhttps://auditlogs.mcp.cloudflare.com/mcp
 - AutoRAG serverSearch and query account AutoRAG instanceshttps://autorag.mcp.cloudflare.com/mcp
 - Browser Run serverFetch web pages, convert them to markdown and take screenshotshttps://browser.mcp.cloudflare.com/mcp
 - Cloudflare Blog serverSearch and read posts from the Cloudflare Bloghttps://blog.mcp.cloudflare.com/mcp
@@ -154,15 +153,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
-```
-
-```txt
 Build a serverless AI inference endpoint on Workers AI with streaming responses.
-```
-
-```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
@@ -170,7 +161,15 @@ Set up a Waiting Room to handle flash sale traffic spikes without dropping reque
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ## Tips
@@ -197,7 +196,7 @@ Use both. The Cloudflare API MCP server handles Cloudflare account operations, s
 
 </summary>
 
-Add <code><a href="https://mcp.cloudflare.com/mcp">https://mcp.cloudflare.com/mcp ↗</a></code> as a remote MCP server. When Bionic prompts you, complete the OAuth authorization flow in your browser and choose the permissions to grant.
+Add <code><a href="https://mcp.cloudflare.com/mcp">https://mcp.cloudflare.com/mcp ↗︎</a></code> as a remote MCP server. When Bionic prompts you, complete the OAuth authorization flow in your browser and choose the permissions to grant.
 
 </details>
 
@@ -229,7 +228,7 @@ Code Mode is how the Cloudflare API MCP server fits all 2,500+ API endpoints int
 
 </summary>
 
-Confirm that the server URL is <code><a href="https://mcp.cloudflare.com/mcp">https://mcp.cloudflare.com/mcp ↗</a></code>. Remove and re-add the remote MCP server in Bionic, then try connecting again.
+Confirm that the server URL is <code><a href="https://mcp.cloudflare.com/mcp">https://mcp.cloudflare.com/mcp ↗︎</a></code>. Remove and re-add the remote MCP server in Bionic, then try connecting again.
 
 </details>
 
@@ -239,7 +238,7 @@ Confirm that the server URL is <code><a href="https://mcp.cloudflare.com/mcp">ht
 
 </summary>
 
-Add the Cloudflare documentation MCP server at <code><a href="https://docs.mcp.cloudflare.com/mcp">https://docs.mcp.cloudflare.com/mcp ↗</a></code> so Bionic can retrieve current documentation. Alternatively, point Bionic to <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of all products, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
+Add the Cloudflare documentation MCP server at <code><a href="https://docs.mcp.cloudflare.com/mcp">https://docs.mcp.cloudflare.com/mcp ↗︎</a></code> so Bionic can retrieve current documentation. Alternatively, point Bionic to <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of all products, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
 
 </details>
 

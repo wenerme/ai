@@ -58,19 +58,19 @@ If you are using Cloudflare for DNS, you can leave the [TTL setting as **Auto**]
 Below is a list with instructions on how to edit MX records for some popular services:
 
 - **Cloudflare**: [Set up email records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/email-records/)
-- **GoDaddy**: [Edit an MX Record ↗](https://www.godaddy.com/help/edit-an-mx-record-19235)
-- **AWS**: [Creating records by using the Amazon Route 53 console ↗](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html)
-- **Azure**: [Create DNS records in a custom domain for a web app ↗](https://learn.microsoft.com/en-us/azure/dns/dns-web-sites-custom-domain)
+- **GoDaddy**: [Edit an MX Record ↗︎](https://www.godaddy.com/help/edit-an-mx-record-19235)
+- **AWS**: [Creating records by using the Amazon Route 53 console ↗︎](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resource-record-sets-creating.html)
+- **Azure**: [Create DNS records in a custom domain for a web app ↗︎](https://learn.microsoft.com/en-us/azure/dns/dns-web-sites-custom-domain)
 
 ## Requirements
 
 - Provisioned Email security account.
-- Access to the Google administrator console ([Google administrator console ↗](https://admin.google.com/) > **Apps** > **Google Workspace** > **Gmail**).
+- Access to the Google administrator console ([Google administrator console ↗︎](https://admin.google.com/) > **Apps** > **Google Workspace** > **Gmail**).
 - Access to the domain nameserver hosting the MX records for the domains that will be processed by Email security.
 
 ## 1. Set up Inbound Email Configuration
 
-Set up [Inbound Email Configuration ↗](https://support.google.com/a/answer/60730?hl=en) with the following details:
+Set up [Inbound Email Configuration ↗︎](https://support.google.com/a/answer/60730?hl=en) with the following details:
 
 - In **Gateway IPs**, select the **Add** link, and add the IPs mentioned in [Egress IPs](https://developers.cloudflare.com/cloudflare-one/email-security/setup/pre-delivery-deployment/egress-ips/).
 - Select **Automatically detect external IP (recommended)**.
@@ -80,7 +80,7 @@ Set up [Inbound Email Configuration ↗](https://support.google.com/a/answer/607
 
 ## 2. (Optional) Set up an email quarantine
 
-[Set up an email quarantine ↗](https://support.google.com/a/answer/6104172?hl=en#add-new-quarantine) with the following details:
+[Set up an email quarantine ↗︎](https://support.google.com/a/answer/6104172?hl=en#add-new-quarantine) with the following details:
 
 - **Name**: Email security Malicious.
 - **Description**: Email security Malicious.
@@ -88,11 +88,11 @@ Set up [Inbound Email Configuration ↗](https://support.google.com/a/answer/607
 - For the **Outbound denial consequence**, select **Drop message**.
 - Select **SAVE**.
 
-To access the newly created quarantine, select **GO TO ADMIN QUARANTINE** or access the quarantine directly by pointing your browser to [https://email-quarantine.google.com/adminreview ↗](https://email-quarantine.google.com/adminreview).
+To access the newly created quarantine, select **GO TO ADMIN QUARANTINE** or access the quarantine directly by pointing your browser to [https://email-quarantine.google.com/adminreview ↗︎](https://email-quarantine.google.com/adminreview).
 
 ## 3. (Optional) Create a content compliance filter
 
-Go to **Compliance**, and create a [content compliance filter ↗](https://support.google.com/a/answer/1346934?hl=en#zippy=%2Cstep-go-to-gmail-compliance-settings-in-the-google-admin-console%2Cstep-enter-email-messages-to-affect) to send malicious messages to quarantine. Enter the following details:
+Go to **Compliance**, and create a [content compliance filter ↗︎](https://support.google.com/a/answer/1346934?hl=en#zippy=%2Cstep-go-to-gmail-compliance-settings-in-the-google-admin-console%2Cstep-enter-email-messages-to-affect) to send malicious messages to quarantine. Enter the following details:
 
 - **Content compliance**: Add `Quarantine Email security Malicious`.
 - **Email messages to affect**: Select **Inbound**.
@@ -128,7 +128,7 @@ This step should not be performed until 72 hours after all domains in your Googl
 
 After 72 hours, the MX record DNS update will have sufficiently propagated across the Internet. It is now safe to secure your email flow. This will ensure that Google Workspace only accepts messages that are first received by Email security. This step is highly recommended to prevent threat actors from using cached MX entries to bypass Email security by injecting messages directly into Google Workspace.
 
-1. Access the [Google Administrative Console ↗](https://admin.google.com/), then select **Apps** > **Google Workspace** > **Gmail**.
+1. Access the [Google Administrative Console ↗︎](https://admin.google.com/), then select **Apps** > **Google Workspace** > **Gmail**.
 2. Select **Spam, Phishing and Malware**.
 3. Go to **Inbound gateway** and select **Edit Inbound gateway**.
 4. Enable **Reject all mail not from gateway IPs** and select **Save**.

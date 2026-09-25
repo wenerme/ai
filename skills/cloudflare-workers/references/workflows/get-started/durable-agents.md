@@ -46,8 +46,8 @@ Follow the steps below to learn how to build a durable AI agent from scratch.
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -57,11 +57,11 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
-You will also need an [Anthropic API key ↗](https://platform.claude.com/settings/keys) for LLM calls. New accounts include free credits.
+You will also need an [Anthropic API key ↗︎](https://platform.claude.com/settings/keys) for LLM calls. New accounts include free credits.
 
 ## 1. Create a new Worker project
 
@@ -446,7 +446,7 @@ export class ResearchAgent extends Agent<Env, State> {
    	"name": "durable-ai-agent",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"observability": {
    		"enabled": true
    	},
@@ -479,7 +479,7 @@ export class ResearchAgent extends Agent<Env, State> {
    name = "durable-ai-agent"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
 
    [observability]
    enabled = true

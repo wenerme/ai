@@ -27,18 +27,18 @@ Only A, AAAA, and CNAME records can be proxied.
 Before you set up Secondary DNS override, make sure that you have:
 
 - [Set up a secondary DNS zone](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/setup/) and confirmed your DNS records are transferred correctly.
-- Set your [DNSSEC with Secondary DNS ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings/) option to either **Unsigned** or **Live Signing**. If set to [Pre-signed](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/#set-up-pre-signed-dnssec), Cloudflare will treat all your DNS records as unproxied (DNS only).
+- Set your [DNSSEC with Secondary DNS ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings/) option to either **Unsigned** or **Live Signing**. If set to [Pre-signed](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/#set-up-pre-signed-dnssec), Cloudflare will treat all your DNS records as unproxied (DNS only).
 - Removed all nameservers from your registrar except for those provided by Cloudflare (highly recommended).
 
   Caution
 
-  If you use Secondary DNS override and keep other nameservers at your registrar, DNS responses will be inconsistent across DNS providers, which goes against [official standards ↗](https://www.iana.org/help/nameserver-requirements).
+  If you use Secondary DNS override and keep other nameservers at your registrar, DNS responses will be inconsistent across DNS providers, which goes against [official standards ↗︎](https://www.iana.org/help/nameserver-requirements).
 
 ## Set up Secondary DNS override
 
 1. In the Cloudflare dashboard, go to the **DNS Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 2. Enable **Secondary DNS override**.
-3. On the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, for specific A, AAAA, or CNAME records, select the grey cloud icon to set their **Proxy status** to **Proxied**.
+3. On the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, for specific A, AAAA, or CNAME records, select the grey cloud icon to set their **Proxy status** to **Proxied**.
 
 1. To enable Secondary DNS override on a zone, use the following PATCH request:
 
@@ -87,7 +87,7 @@ Once you create a CNAME record at the apex, existing A or AAAA records on the zo
 
 ## Verify that your records are proxied
 
-Query DNS at your assigned Secondary DNS nameserver to confirm the DNS response Cloudflare returns. Records proxied by Cloudflare return [Cloudflare IPs ↗](https://www.cloudflare.com/ips/).
+Query DNS at your assigned Secondary DNS nameserver to confirm the DNS response Cloudflare returns. Records proxied by Cloudflare return [Cloudflare IPs ↗︎](https://www.cloudflare.com/ips/).
 
 Was this helpful?
 

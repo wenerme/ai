@@ -18,7 +18,7 @@ You can include the encrypted matched payload in your [Logpush](https://develope
 
 The payload, in its encrypted form, is available in the [`encrypted_matched_data` property](#structure-of-encrypted_matched_data-property-in-logpush) of the `Metadata` field.
 
-However, you may want to decrypt the matched payload before storing the logs in your SIEM system of choice. Cloudflare provides a [sample Worker project ↗](https://github.com/cloudflare/matched-data-worker) on GitHub that does the following:
+However, you may want to decrypt the matched payload before storing the logs in your SIEM system of choice. Cloudflare provides a [sample Worker project ↗︎](https://github.com/cloudflare/matched-data-worker) on GitHub that does the following:
 
 1. Behaves as an S3-compatible storage to receive logs from Logpush. These logs will contain encrypted matched payload data.
 2. Decrypts matched payload data using your private key.
@@ -26,7 +26,7 @@ However, you may want to decrypt the matched payload before storing the logs in 
 
 You will need to make some changes to the sample project to push the logs containing decrypted payload data to your log storage system.
 
-Refer to the Worker project's [README ↗](https://github.com/cloudflare/matched-data-worker/blob/main/README.md) for more information on configuring and deploying this Worker project.
+Refer to the Worker project's [README ↗︎](https://github.com/cloudflare/matched-data-worker/blob/main/README.md) for more information on configuring and deploying this Worker project.
 
 ## Structure of `encrypted_matched_data` property in Logpush
 

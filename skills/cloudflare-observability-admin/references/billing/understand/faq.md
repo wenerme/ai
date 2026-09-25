@@ -80,7 +80,7 @@ Can I get a refund?
 
 </summary>
 
-Fees are non-refundable. You are billed for the full billing period in which you cancel and no refunds are issued for unused time. After cancellation, you retain access to paid services through the end of the current billing period. For full terms, refer to the <a href="https://www.cloudflare.com/terms/">Cloudflare Terms of Use ↗</a>.
+Fees are non-refundable. You are billed for the full billing period in which you cancel and no refunds are issued for unused time. After cancellation, you retain access to paid services through the end of the current billing period. For full terms, refer to the <a href="https://www.cloudflare.com/terms/">Cloudflare Terms of Use ↗︎</a>.
 
 For details, refer to <a href="https://developers.cloudflare.com/billing/understand/billing-policy/">Billing policy</a>.
 
@@ -94,7 +94,7 @@ How do I change my billing email?
 
 </summary>
 
-1. Log in to the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>.
+1. Log in to the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a>.
 2. Select your account.
 3. Go to **Manage Account** &gt; **Billing**.
 4. Select the **Payment** tab.
@@ -126,7 +126,7 @@ How do I download my invoices?
 
 </summary>
 
-1. Log in to the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>.
+1. Log in to the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a>.
 2. Select your account.
 3. Go to **Manage Account** &gt; **Billing**.
 4. On the **Invoices and documents** tab, find the invoice and select the download icon next to the invoice number.
@@ -145,7 +145,7 @@ How do I cancel a subscription or plan?
 
 Cancellations take effect at the end of the current billing period. You retain access to paid features until then. To cancel:
 
-1. Log in to the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗</a>.
+1. Log in to the <a href="https://dash.cloudflare.com/">Cloudflare dashboard ↗︎</a>.
 2. Select your account.
 3. Go to **Manage Account** &gt; **Billing** &gt; **Subscriptions**.
 4. Find the subscription and select **Cancel**.

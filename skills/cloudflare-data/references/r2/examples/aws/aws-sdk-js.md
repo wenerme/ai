@@ -20,7 +20,7 @@ You must [generate an Access Key](https://developers.cloudflare.com/r2/api/token
 
 If you are interested in the newer version of the AWS JavaScript SDK visit this [dedicated aws-sdk-js-v3 example page](https://developers.cloudflare.com/r2/examples/aws/aws-sdk-js-v3/).
 
-JavaScript or TypeScript users may continue to use the [`aws-sdk` ↗](https://www.npmjs.com/package/aws-sdk) npm package as per normal. You must pass in the R2 configuration credentials when instantiating your `S3` service client:
+JavaScript or TypeScript users may continue to use the [`aws-sdk` ↗︎](https://www.npmjs.com/package/aws-sdk) npm package as per normal. You must pass in the R2 configuration credentials when instantiating your `S3` service client:
 
 ```ts
 import S3 from "aws-sdk/clients/s3.js";
@@ -116,7 +116,7 @@ curl -X PUT "https://my-bucket.<ACCOUNT_ID>.r2.cloudflarestorage.com/dog.png?X-A
 When generating presigned URLs for uploads, you can limit abuse and misuse by:
 
 1. **Restricting Content-Type**: Specify the allowed content type in the presigned URL parameters. The upload will fail if the client sends a different `Content-Type` header.
-2. **Configuring CORS**: Set up [CORS rules](https://developers.cloudflare.com/r2/buckets/cors/#add-cors-policies-from-the-dashboard) on your bucket to control which origins can upload files. Configure CORS via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/overview) by adding a JSON policy to your bucket settings:
+2. **Configuring CORS**: Set up [CORS rules](https://developers.cloudflare.com/r2/buckets/cors/#add-cors-policies-from-the-dashboard) on your bucket to control which origins can upload files. Configure CORS via the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/r2/overview) by adding a JSON policy to your bucket settings:
 
 ```json
 [

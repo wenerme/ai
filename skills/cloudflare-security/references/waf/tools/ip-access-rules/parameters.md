@@ -42,7 +42,7 @@ An IP Access rule will apply a certain action to incoming traffic based on the v
 
 ## Country
 
-Specify a country using two-letter [ISO-3166-1 alpha-2 codes ↗](https://www.iso.org/iso-3166-country-codes.html). Additionally, the Cloudflare dashboard accepts country names. For example:
+Specify a country using two-letter [ISO-3166-1 alpha-2 codes ↗︎](https://www.iso.org/iso-3166-country-codes.html). Additionally, the Cloudflare dashboard accepts country names. For example:
 
 - `US`
 - `CN`

@@ -18,7 +18,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Cloudflare launched Bandwidth Alliance in 2018 – a group of forward-looking cloud and storage providers who have agreed to waive or steeply discount egress costs for mutual customers. 
 
-Cloudflare customers using Azure can lower their egress bills between Cloudflare and Azure via [Microsoft Routing Preference ↗](https://docs.microsoft.com/en-us/azure/virtual-network/routing-preference-overview).
+Cloudflare customers using Azure can lower their egress bills between Cloudflare and Azure via [Microsoft Routing Preference ↗︎](https://docs.microsoft.com/en-us/azure/virtual-network/routing-preference-overview).
 
 ---
 
@@ -36,14 +36,14 @@ To lower your data transfer costs from Azure and Cloudflare: 
 
 ![Example of where to enter endpoint URLs from Microsoft Azure into your Cloudflare dashboard.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1279,height=360,format=webp/_astro/bandwidth-alliance.BYbPK3YS.png)
 
-For additional details, refer to [Configure network routing preference for Azure Storage ↗](https://docs.microsoft.com/en-us/azure/storage/common/configure-network-routing-preference?tabs=azure-portal) and [Microsoft Routing Preference ↗](https://docs.microsoft.com/en-us/azure/storage/common/network-routing-preference).
+For additional details, refer to [Configure network routing preference for Azure Storage ↗︎](https://docs.microsoft.com/en-us/azure/storage/common/configure-network-routing-preference?tabs=azure-portal) and [Microsoft Routing Preference ↗︎](https://docs.microsoft.com/en-us/azure/storage/common/network-routing-preference).
 
 ---
 
 ## Related resources
 
-- [Microsoft Azure data transfer announcement ↗](https://blog.cloudflare.com/discounted-egress-for-cloudflare-customers-from-microsoft-azure-is-now-available/) (blog)
-- [Bandwidth Alliance ↗](https://www.cloudflare.com/bandwidth-alliance/)
+- [Microsoft Azure data transfer announcement ↗︎](https://blog.cloudflare.com/discounted-egress-for-cloudflare-customers-from-microsoft-azure-is-now-available/) (blog)
+- [Bandwidth Alliance ↗︎](https://www.cloudflare.com/bandwidth-alliance/)
 
 Was this helpful?
 

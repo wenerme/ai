@@ -33,7 +33,7 @@ This is not an exhaustive list of Cloudflare products and features.
 | [Cache](https://developers.cloudflare.com/cache/) | Yes\* | Yes | Though caching is possible on a customer zone, it is generally discouraged (especially for HTML).<br><br>Your SaaS provider likely performs its own caching outside of Cloudflare and caching on your zone might lead to out-of-sync or stale cache states.<br><br>Customer zones can still cache content that are not routed through a SaaS provider's zone. |
 | [China Network](https://developers.cloudflare.com/china-network/) | No | No | |
 | [DNS](https://developers.cloudflare.com/dns/) | Yes\* | Yes | As a SaaS customer, do not remove the records related to your Cloudflare for SaaS setup.<br><br>Otherwise, your traffic will begin routing away from your SaaS provider. |
-| [HTTP/2 prioritization ↗](https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web/) | Yes | Yes\* | This feature must be enabled on the customer zone to function. |
+| [HTTP/2 prioritization ↗︎](https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web/) | Yes | Yes\* | This feature must be enabled on the customer zone to function. |
 | [Image resizing](https://developers.cloudflare.com/images/optimization/transformations/overview/) | Yes | Yes | |
 | IPv6 | Yes | Yes | |
 | [IPv6 Compatibility](https://developers.cloudflare.com/network/ipv6-compatibility/) | Yes | Yes\* | If the customer zone has **IPv6 Compatibility** enabled, generally the SaaS zone should as well.<br><br>If not, make sure the SaaS zone enables [Pseudo IPv4](https://developers.cloudflare.com/network/pseudo-ipv4/). |

@@ -507,7 +507,7 @@ This means early retries are fast (often under 200ms), and later retries back of
 
 ### Backoff strategy
 
-The retry system uses the "Full Jitter" strategy from the [AWS Architecture Blog ↗](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/). Given 3 attempts with default settings:
+The retry system uses the "Full Jitter" strategy from the [AWS Architecture Blog ↗︎](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/). Given 3 attempts with default settings:
 
 | Attempt | Upper Bound | Actual Delay |
 | --- | --- | --- |

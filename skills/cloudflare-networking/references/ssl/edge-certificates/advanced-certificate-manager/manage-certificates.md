@@ -18,7 +18,7 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 If you are using an existing [Universal SSL certificate](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/), Cloudflare will automatically replace this certificate once you finish ordering your advanced certificate.
 
-Once you order a certificate, you can review the [certificate's status](https://developers.cloudflare.com/ssl/reference/certificate-statuses/) on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or via the API with a [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/list/).
+Once you order a certificate, you can review the [certificate's status](https://developers.cloudflare.com/ssl/reference/certificate-statuses/) on the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or via the API with a [GET request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/list/).
 
 To create a new advanced certificate in the dashboard:
 
@@ -35,7 +35,7 @@ To create a new advanced certificate in the dashboard:
 
 To create a new certificate using the API, send a [POST request](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/create/) to the Cloudflare API.
 
-If you need certificates for hostnames longer than 64 characters ([RFC 5280 ↗](https://www.rfc-editor.org/rfc/rfc5280.html)), set the `cloudflare_branding` option to `true`. This will add `sni.cloudflaressl.com` in the Common Name (CN) field and will include the long hostname as a part of the Subject Alternative Name (SAN).
+If you need certificates for hostnames longer than 64 characters ([RFC 5280 ↗︎](https://www.rfc-editor.org/rfc/rfc5280.html)), set the `cloudflare_branding` option to `true`. This will add `sni.cloudflaressl.com` in the Common Name (CN) field and will include the long hostname as a part of the Subject Alternative Name (SAN).
 
 Caution
 
@@ -63,7 +63,7 @@ To restart validation for a certificate in a `validation_timed_out` status, send
 
 ## Restrict cipher suites
 
-Cipher suites are a combination of ciphers used to negotiate security settings during the [SSL/TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/) (and therefore separate from the [SSL/TLS protocol](https://developers.cloudflare.com/ssl/reference/protocols/)).
+Cipher suites are a combination of ciphers used to negotiate security settings during the [SSL/TLS handshake ↗︎](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/) (and therefore separate from the [SSL/TLS protocol](https://developers.cloudflare.com/ssl/reference/protocols/)).
 
 For more details, refer to [Customize cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/).
 

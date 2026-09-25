@@ -212,10 +212,10 @@ If your organization does not currently allow inbound/outbound communication ove
 
   macOS 15.0 through 15.4
 
-  Due to changes in macOS Sequoia versions 15.0 through 15.4, you must update your [macOS firewall settings ↗](https://support.apple.com/guide/mac-help/change-firewall-settings-on-mac-mh11783/mac) to allow the Cloudflare One Client to manage your device's firewall. Later versions of macOS are not affected because of changes Apple introduced to fix the unexpected breaking changes in their firewall.
+  Due to changes in macOS Sequoia versions 15.0 through 15.4, you must update your [macOS firewall settings ↗︎](https://support.apple.com/guide/mac-help/change-firewall-settings-on-mac-mh11783/mac) to allow the Cloudflare One Client to manage your device's firewall. Later versions of macOS are not affected because of changes Apple introduced to fix the unexpected breaking changes in their firewall.
 
   To allow the Cloudflare One Client to function on macOS Sequoia versions 15.0 through 15.4 while still blocking unwanted incoming traffic, follow these steps:
-  1. Turn off the following [macOS firewall settings ↗](https://support.apple.com/guide/mac-help/change-firewall-settings-on-mac-mh11783/mac):
+  1. Turn off the following [macOS firewall settings ↗︎](https://support.apple.com/guide/mac-help/change-firewall-settings-on-mac-mh11783/mac):
   - **Block all incoming connections**
   - **Automatically allow built-in software to receive incoming connections**
   - **Automatically allow downloaded signed software to receive incoming connections**

@@ -18,7 +18,7 @@ Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 ### What is the Cloudflare resolver for Firefox?
 
-Every time you type a web address, such as [www.mozilla.org ↗](http://www.mozilla.org) or [www.firefox.com ↗](http://www.firefox.com), into a web browser, the web browser sends a query to a DNS resolver. If DNS is like the card catalog of the Internet, then a DNS resolver is like a helpful librarian that knows how to use the information from that catalog to track down the exact location of a website. Whenever a resolver receives your query it looks up the IP address associated with the web address that you entered and relays that information to your web browser. “DNS resolution” as this process is referred to, is a crucial component of your Internet experience because without it your web browser would be unable to communicate with the servers that host your favorite websites, since communication requires knowing the IP addresses of those websites.
+Every time you type a web address, such as [www.mozilla.org ↗︎](http://www.mozilla.org) or [www.firefox.com ↗︎](http://www.firefox.com), into a web browser, the web browser sends a query to a DNS resolver. If DNS is like the card catalog of the Internet, then a DNS resolver is like a helpful librarian that knows how to use the information from that catalog to track down the exact location of a website. Whenever a resolver receives your query it looks up the IP address associated with the web address that you entered and relays that information to your web browser. “DNS resolution” as this process is referred to, is a crucial component of your Internet experience because without it your web browser would be unable to communicate with the servers that host your favorite websites, since communication requires knowing the IP addresses of those websites.
 
 For most Internet users, the DNS resolver that they use is either the one that comes with the operating system running on their machines or the one that is set by their network provider. In some cases, these resolvers leave a lot to be desired because of their susceptibility to unwanted spying and other security threats.
 
@@ -26,7 +26,7 @@ To address this, Mozilla has partnered with Cloudflare to provide DNS resolution
 
 ### What information does the Cloudflare resolver for Firefox collect?
 
-Any data Cloudflare handles as a result of its resolver for Firefox is as a data processor acting pursuant to Mozilla's data processing instructions. The data Cloudflare collects and processes pursuant to its agreement with Mozilla is not covered by the [Cloudflare Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/). As part of its agreement with Mozilla, Cloudflare has agreed to collect only a limited amount of data about the DNS requests sent to the Cloudflare resolver for Firefox via the Firefox browser. Cloudflare will collect only the following information from Firefox users:
+Any data Cloudflare handles as a result of its resolver for Firefox is as a data processor acting pursuant to Mozilla's data processing instructions. The data Cloudflare collects and processes pursuant to its agreement with Mozilla is not covered by the [Cloudflare Privacy Policy ↗︎](https://www.cloudflare.com/privacypolicy/). As part of its agreement with Mozilla, Cloudflare has agreed to collect only a limited amount of data about the DNS requests sent to the Cloudflare resolver for Firefox via the Firefox browser. Cloudflare will collect only the following information from Firefox users:
 
 - date
 - dateTime

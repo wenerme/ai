@@ -35,7 +35,7 @@ The typical setup requirements are:
 
    ```txt
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
-   ``` You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   ``` You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 3. Set the **Name ID/Email format** to `emailAddress`.
 4. (Optional) Set the signature policy to *Always Sign*.
 
@@ -50,7 +50,7 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 
 ## 2. Add a SAML identity provider to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Select **Add new identity provider** and select **SAML**.
 3. Choose a descriptive name for your identity provider.
 4. Enter the **Single Sign on URL**, **IdP Entity ID or Issuer URL**, and **Signing certificate** obtained from your identity provider.
@@ -58,9 +58,9 @@ To download the SAML metadata file, copy-paste the metadata endpoint into a web 
 6. (Optional) Under **Optional configurations**, configure [additional SAML options](#optional-configurations).
 7. Select **Save**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Organizations, Identity Providers, and Groups Write`
-2. Configure the [`cloudflare_zero_trust_access_identity_provider` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource:
+2. Configure the [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource:
 
    ```tf
    resource "cloudflare_zero_trust_access_identity_provider" "generic_saml_example" {
@@ -104,7 +104,7 @@ Your identity provider must support SCIM version 2.0.
 
 ### 1. Enable SCIM in Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Find the IdP integration and select **Edit**.
 3. Turn on **Enable SCIM**.
 4. (Optional) Configure the following settings:
@@ -156,7 +156,7 @@ SAML assertion encryption is separate from [signed AuthN requests](https://devel
 
 To turn on SAML assertion encryption:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Select your SAML identity provider and select **Edit**.
 3. Under **SAML encryption**, turn on the **Enable SAML encryption** toggle. Access will automatically generate an encryption certificate.
 4. Copy the displayed certificate (in PEM format) or the certificate set ID.
@@ -188,7 +188,7 @@ Encryption certificates are valid for one year. Thirty days before a certificate
 
 To manually rotate a certificate:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Select your SAML identity provider and select **Edit**.
 3. Under **SAML encryption**, select **Rotate certificate**.
 4. Upload the new certificate to your identity provider.

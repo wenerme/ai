@@ -98,7 +98,7 @@ DNSViz is a public, free online tool to visualize and help discover issues with 
 
 To visualize and discover potential issues with DNSSEC:
 
-1. Go to [https://dnsviz.net/ ↗](https://dnsviz.net/).
+1. Go to [https://dnsviz.net/ ↗︎](https://dnsviz.net/).
 2. Enter a domain name in the text field that appears.
 3. If DNSViz has never analyzed the site before, select **Analyze**.
 4. If the site has been analyzed by DNSViz before, select **Update Now**.
@@ -178,7 +178,7 @@ In this example, DNSSEC is misconfigured if a proper DNS response is received wh
 
 ## Delete remaining DNSKEY records after disabling DNSSEC
 
-After disabling DNSSEC, DNSKEY records continue to appear in DNS queries and zone transfers. In the `disabled` state, Cloudflare still signs the zone and serves RRSIG, NSEC, and DNSKEY records. This is expected behavior and **not a misconfiguration or error**. Refer to [DNSSEC states](https://developers.cloudflare.com/dns/dnssec/dnssec-states/) and [RFC 8078 ↗](https://www.rfc-editor.org/rfc/rfc8078.html#section-4) for details.
+After disabling DNSSEC, DNSKEY records continue to appear in DNS queries and zone transfers. In the `disabled` state, Cloudflare still signs the zone and serves RRSIG, NSEC, and DNSKEY records. This is expected behavior and **not a misconfiguration or error**. Refer to [DNSSEC states](https://developers.cloudflare.com/dns/dnssec/dnssec-states/) and [RFC 8078 ↗︎](https://www.rfc-editor.org/rfc/rfc8078.html#section-4) for details.
 
 However, some security vendors or audit tools may flag these DNSKEY records as problematic, reporting "DNSKEY record found but no DS record found" with a security outcome of "Provably Insecure". You can remove the DNSKEY records using the API.
 

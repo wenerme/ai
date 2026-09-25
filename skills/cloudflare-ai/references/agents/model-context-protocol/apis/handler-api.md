@@ -205,7 +205,7 @@ Elicitation through a stateless handler returns `input_required` and completes t
 
 Use `inputRequired(...)` to request input. Read that round's accepted form content from `context.mcpReq.inputResponses` with `acceptedContent(...)`. Seal trusted intermediate values needed by later rounds into integrity-protected `requestState`.
 
-Refer to the [stateless elicitation example ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation-mrtr) for a two-round tool flow. For stateful pushed requests, refer to [Elicitation on legacy servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#elicitation-on-legacy-servers).
+Refer to the [stateless elicitation example ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation-mrtr) for a two-round tool flow. For stateful pushed requests, refer to [Elicitation on legacy servers](https://developers.cloudflare.com/agents/model-context-protocol/apis/agent-api/#elicitation-on-legacy-servers).
 
 ### Origin validation and CORS
 

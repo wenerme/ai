@@ -73,7 +73,7 @@ An updated [`compatibility_date`](https://developers.cloudflare.com/workers/conf
 
 ### Exporting OpenTelemetry traces to a 3rd party destination
 
-Workers tracing follows [OpenTelemetry (OTel) standards ↗](https://opentelemetry.io/). This makes it compatible with popular observability platforms, such as [Honeycomb](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/), [Grafana Cloud](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/), and [Axiom](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/), while requiring zero development effort from you. If your observability provider has an available OpenTelemetry endpoint, you can export traces (and logs)!
+Workers tracing follows [OpenTelemetry (OTel) standards ↗︎](https://opentelemetry.io/). This makes it compatible with popular observability platforms, such as [Honeycomb](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/), [Grafana Cloud](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/), and [Axiom](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/), while requiring zero development effort from you. If your observability provider has an available OpenTelemetry endpoint, you can export traces (and logs)!
 
 You can also set `persist: false` to export traces to your destination without persisting them in the Cloudflare dashboard. This allows you to use a third-party observability provider as your sole traces destination.
 
@@ -120,7 +120,7 @@ head_sampling_rate = 0.6
 
 If you have `head_sampling_rate` configured for logs, you can also create a separate rate for traces.
 
-Sampling is [head-based ↗](https://opentelemetry.io/docs/concepts/sampling/#head-sampling), meaning that non-traced requests do not incur any tracing overhead.
+Sampling is [head-based ↗︎](https://opentelemetry.io/docs/concepts/sampling/#head-sampling), meaning that non-traced requests do not incur any tracing overhead.
 
 ### Limits & Pricing
 

@@ -37,7 +37,7 @@ Common use cases where this tradeoff is acceptable include reading shared assets
 
 To mount an R2 bucket, install a FUSE adapter in your Dockerfile and configure it to run at container startup.
 
-This example uses [tigrisfs ↗](https://github.com/tigrisdata/tigrisfs), which supports S3-compatible storage including R2:
+This example uses [tigrisfs ↗︎](https://github.com/tigrisdata/tigrisfs), which supports S3-compatible storage including R2:
 
 <details>
 
@@ -138,7 +138,7 @@ The `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` should be stored as secrets,
 
 Creating your R2 AWS API keys
 
-To get your `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`, [head to your R2 dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/overview) and create a new R2 Access API key. Use the generated the `Access Key ID` as your `AWS_ACCESS_KEY_ID` and `Secret Access Key` is the `AWS_SECRET_ACCESS_KEY`.
+To get your `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`, [head to your R2 dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/r2/overview) and create a new R2 Access API key. Use the generated the `Access Key ID` as your `AWS_ACCESS_KEY_ID` and `Secret Access Key` is the `AWS_SECRET_ACCESS_KEY`.
 
 ```json
 {
@@ -199,9 +199,9 @@ This is useful for shared assets or configuration files where you want to ensure
 ## Related resources
 
 - [Container environment variables](https://developers.cloudflare.com/containers/examples/env-vars-and-secrets/) - Learn how to pass secrets and variables to Containers
-- [tigrisfs ↗](https://github.com/tigrisdata/tigrisfs) - FUSE adapter for S3-compatible storage including R2
-- [s3fs ↗](https://github.com/s3fs-fuse/s3fs-fuse) - Alternative FUSE adapter for S3-compatible storage
-- [gcsfuse ↗](https://github.com/GoogleCloudPlatform/gcsfuse) - FUSE adapter for Google Cloud Storage buckets
+- [tigrisfs ↗︎](https://github.com/tigrisdata/tigrisfs) - FUSE adapter for S3-compatible storage including R2
+- [s3fs ↗︎](https://github.com/s3fs-fuse/s3fs-fuse) - Alternative FUSE adapter for S3-compatible storage
+- [gcsfuse ↗︎](https://github.com/GoogleCloudPlatform/gcsfuse) - FUSE adapter for Google Cloud Storage buckets
 
 Was this helpful?
 

@@ -98,7 +98,7 @@ Resolver policies do not automatically update when you change the virtual networ
 
 To create a resolver policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Resolver policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Resolver policies**.
 2. Select **Add a policy**.
 3. Create an expression for your desired traffic. For example, you can resolve a hostname for an internal service:
 
@@ -115,9 +115,9 @@ To create a resolver policy:
 
 Custom resolvers are saved to your account for future use. You can add up to 10 IPv4 and 10 IPv6 addresses to a policy.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Create a resolver policy using the [`cloudflare_zero_trust_gateway_policy` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_policy) resource:
+2. Create a resolver policy using the [`cloudflare_zero_trust_gateway_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_policy) resource:
 
    ```tf
    resource "cloudflare_zero_trust_gateway_policy" "resolver_policy" {
@@ -165,7 +165,7 @@ Terraform provider v4 precedence limitation
 
 To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint.
 
-To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
+To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
 
 ## Send DNS queries sourced from dedicated egress IPs Closed beta
 
@@ -182,7 +182,7 @@ By default, DNS requests that Gateway sends to your custom resolvers use shared 
 
 ### Enable dedicated egress on a resolver policy
 
-1. In the [Cloudflare One dashboard ↗](https://dash.cloudflare.com/one), go to **Traffic policies** > **Resolver policies**.
+1. In the [Cloudflare One dashboard ↗︎](https://dash.cloudflare.com/one), go to **Traffic policies** > **Resolver policies**.
 2. Create or edit a resolver policy that uses custom DNS resolvers.
 3. Under the custom resolver configuration, turn on **Use dedicated egress IPs for DNS requests to custom resolvers**.
 4. Select a **Primary IPv4**, **IPv6**, and optionally a **Secondary IPv4** address from the available dedicated egress IPs.
@@ -307,7 +307,7 @@ Geolocation is determined from the device's public IP address (typically assigne
 
 Use this selector to filter based on the country where the query arrived to Gateway from.
 
-Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a country, enter its [ISO 3166-1 Alpha-2 code ↗](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
+Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a country, enter its [ISO 3166-1 Alpha-2 code ↗︎](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
 | UI name | API example | Evaluation phase |
 | --- | --- | --- |
@@ -359,7 +359,7 @@ In the **Value** field, you can input a single value when using an equality comp
 
 ### Regular expressions
 
-Regular expressions are evaluated using Rust. The Rust implementation is slightly different than regex libraries used elsewhere. For more information, refer to our guide for [Wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/#wildcards). To evaluate if your regex matches, you can use [Rustexp ↗](https://rustexp.lpil.uk/).
+Regular expressions are evaluated using Rust. The Rust implementation is slightly different than regex libraries used elsewhere. For more information, refer to our guide for [Wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/#wildcards). To evaluate if your regex matches, you can use [Rustexp ↗︎](https://rustexp.lpil.uk/).
 
 If you want to match multiple values, you can use the pipe symbol (`|`) as an OR operator. You do not need to use an escape character (`\`) before the pipe symbol. For example, the following expression evaluates to true when the hostname matches either `.*whispersystems.org` or `.*signal.org`:
 

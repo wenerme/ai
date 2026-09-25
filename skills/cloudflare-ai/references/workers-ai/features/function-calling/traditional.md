@@ -64,7 +64,7 @@ The LLM will then return a JSON object with the required arguments and the name 
 ]
 ```
 
-For a working example on how to do function calling, take a look at our [demo app ↗](https://github.com/craigsdennis/lightbulb-moment-tool-calling/blob/main/src/index.ts).
+For a working example on how to do function calling, take a look at our [demo app ↗︎](https://github.com/craigsdennis/lightbulb-moment-tool-calling/blob/main/src/index.ts).
 
 Was this helpful?
 

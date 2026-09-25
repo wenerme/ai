@@ -38,15 +38,15 @@ You need a Live Input on Stream. Follow the [Start a live stream](https://develo
 
 - **RTMPS URL**, which will most likely be `rtmps://live.cloudflare.com:443/live/`
 - **RTMPS Key**, which is specific to the new live input
-- Whether you selected the beta "Low-Latency HLS Support" or not. For your first test, leave this *disabled.* ([What is that? ↗](https://blog.cloudflare.com/cloudflare-stream-low-latency-hls-open-beta))
+- Whether you selected the beta "Low-Latency HLS Support" or not. For your first test, leave this *disabled.* ([What is that? ↗︎](https://blog.cloudflare.com/cloudflare-stream-low-latency-hls-open-beta))
 
 ## 2. Install OBS
 
-Download [OBS Studio ↗](https://obsproject.com/) for Windows, macOS, or Linux. The OBS Knowledge Base includes several [installation guides ↗](https://obsproject.com/kb/category/1), but installer defaults are generally acceptable.
+Download [OBS Studio ↗︎](https://obsproject.com/) for Windows, macOS, or Linux. The OBS Knowledge Base includes several [installation guides ↗︎](https://obsproject.com/kb/category/1), but installer defaults are generally acceptable.
 
 ## 3. First Launch OBS Configuration
 
-When you first launch OBS, the Auto-Configuration Wizard will ask a few questions and offer recommended settings. See their [Quick Start Guide ↗](https://obsproject.com/kb/quick-start-guide) for more details. For a quick start with Stream, use these settings:
+When you first launch OBS, the Auto-Configuration Wizard will ask a few questions and offer recommended settings. See their [Quick Start Guide ↗︎](https://obsproject.com/kb/quick-start-guide) for more details. For a quick start with Stream, use these settings:
 
 - **Step 1: "Usage Information"**
   - Select "Optimize for streaming, recording is secondary."
@@ -61,11 +61,11 @@ When you first launch OBS, the Auto-Configuration Wizard will ask a few question
 
 ## 4. Set up a Stage
 
-Add some test content to the stage in OBS. In this example, I have added a background image, a web browser (to show [time.is ↗](https://time.is)), and an overlay of my webcam:
+Add some test content to the stage in OBS. In this example, I have added a background image, a web browser (to show [time.is ↗︎](https://time.is)), and an overlay of my webcam:
 
 ![OBS Stage](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1918,height=1027,format=webp/_astro/obs-stage.Dp0DktA1.png)
 
-OBS offers many different audio, video, still, and generated sources to set up your broadcast content. Use the "+" button in the "Sources" panel to add content. Check out the [OBS Sources Guide ↗](https://obsproject.com/kb/sources-guide) for more information. For an initial test, use a source that will show some motion: try a webcam ("Video Capture Device"), a screen share ("Display Capture"), or a browser with a site that has moving content.
+OBS offers many different audio, video, still, and generated sources to set up your broadcast content. Use the "+" button in the "Sources" panel to add content. Check out the [OBS Sources Guide ↗︎](https://obsproject.com/kb/sources-guide) for more information. For an initial test, use a source that will show some motion: try a webcam ("Video Capture Device"), a screen share ("Display Capture"), or a browser with a site that has moving content.
 
 ## 5. Go Live
 

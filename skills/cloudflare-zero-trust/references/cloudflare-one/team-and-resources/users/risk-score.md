@@ -28,7 +28,7 @@ Cloudflare One assigns a risk score of Low, Medium, or High based on detections 
 
 To view a user's risk score:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Teams & Resources**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Teams & Resources**.
 2. Select **Users**.
 3. Select **Risk score** > **Risk scoring**.
 4. Select a user's name to view their instances of risk behaviors, if any. You can select an instance of a risk behavior to view the log associated with the detection.
@@ -39,7 +39,7 @@ Users that have had their risk score [cleared](#clear-a-users-risk-score) will n
 
 If required, you can reset risk scores for specific users. Once reset, users will not appear in the associated risk table until they trigger another risk behavior.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Teams & Resources**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Teams & Resources**.
 2. Select **Risk score** > **Risk scoring**.
 3. Select the user you want to clear the risk score for.
 4. In **User risk overview**, select **Reset user risk**.
@@ -52,7 +52,7 @@ In addition to controls in Cloudflare One, Okta users can send risk scores to Ok
 First, configure Cloudflare One to send user risk scores to Okta.
 
 1. Set up the [Okta SSO integration](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta/).
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 3. In **Your identity providers**, locate your Okta integration and select **Edit**.
 4. Turn on **Send risk score to Okta**.
 5. Select **Save**.
@@ -66,7 +66,7 @@ Next, configure Okta to receive your risk scores.
 4. In **Well-known URL**, enter the well-known URL value provided by Cloudflare One.
 5. Select **Create**.
 
-For more information on configuring user risk score within Okta, refer to the [Okta documentation ↗](https://help.okta.com/oie/en-us/content/topics/itp/overview.htm).
+For more information on configuring user risk score within Okta, refer to the [Okta documentation ↗︎](https://help.okta.com/oie/en-us/content/topics/itp/overview.htm).
 
 While the Okta integration is turned on, Cloudflare One will send any user risk score updates to Okta, including score increases and resets. Score update events will appear in your [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/).
 
@@ -103,7 +103,7 @@ When a risk behavior is disabled, monitoring for future activity will cease. Pre
 
 You can change the risk level for a behavior at any time.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Teams & Resources**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Teams & Resources**.
 2. Go to **Users**.
 3. Select **Risk score** > **Risk behaviors**.
 4. Select the risk behavior you want to modify.
@@ -116,7 +116,7 @@ You can use risk scores to control access to applications protected by [Cloudfla
 
 To add a risk score requirement to an Access policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Create a new policy or select an existing policy to edit.
 3. Add a rule with the *User Risk Score* selector.
 4. For **Value**, select one or more risk levels (Low, Medium, High, or Unscored). The rule matches a user only when their current risk level is one of the selected values.

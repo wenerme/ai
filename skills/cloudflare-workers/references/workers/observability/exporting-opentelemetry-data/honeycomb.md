@@ -28,12 +28,12 @@ This guide will walk you through configuring your Cloudflare Worker application 
 
 Before you begin, ensure you have:
 
-- An active [Honeycomb account ↗](https://ui.honeycomb.io/signup) (free tier available)
+- An active [Honeycomb account ↗︎](https://ui.honeycomb.io/signup) (free tier available)
 - A deployed Worker that you want to monitor
 
 ## Step 1: Get your Honeycomb API key
 
-1. Log in to your [Honeycomb account ↗](https://ui.honeycomb.io/)
+1. Log in to your [Honeycomb account ↗︎](https://ui.honeycomb.io/)
 2. Navigate to your account settings by clicking on your profile icon in the top right
 3. Select **Team Settings**
 4. In the left sidebar, click **Environments** and click the gear icon
@@ -60,7 +60,7 @@ Honeycomb provides separate OTLP endpoints for traces and logs:
 
 ### Configure trace destination
 
-1. Navigate to your Cloudflare account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
+1. Navigate to your Cloudflare account's [Workers Observability ↗︎](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
 2. Click **Add destination**
 3. Configure your trace destination:
    - **Destination Name**: `honeycomb-traces` (or any descriptive name)

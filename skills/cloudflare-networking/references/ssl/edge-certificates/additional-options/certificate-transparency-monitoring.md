@@ -16,19 +16,19 @@ Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Certificate Transparency (CT) Monitoring is an [opt-in](#opt-in-and-out) feature that lets you double-check any SSL/TLS certificates issued for your domain.
 
-CT Monitoring alerts are triggered whenever a certificate that covers your monitored domain is issued by a [Certificate Authority (CA)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) and added to a public CT log. Alerts for certificates Cloudflare issues on your behalf, including backup certificates, are automatically filtered out. For more information, refer to [Certificate Transparency Monitoring filtering behavior ↗](https://blog.cloudflare.com/certificate-transparency-monitoring-ga), or to the [introductory blog post ↗](https://blog.cloudflare.com/introducing-certificate-transparency-monitoring/) to learn more about how CT Monitoring works.
+CT Monitoring alerts are triggered whenever a certificate that covers your monitored domain is issued by a [Certificate Authority (CA)](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) and added to a public CT log. Alerts for certificates Cloudflare issues on your behalf, including backup certificates, are automatically filtered out. For more information, refer to [Certificate Transparency Monitoring filtering behavior ↗︎](https://blog.cloudflare.com/certificate-transparency-monitoring-ga), or to the [introductory blog post ↗︎](https://blog.cloudflare.com/introducing-certificate-transparency-monitoring/) to learn more about how CT Monitoring works.
 
 Aspects to consider
 
 - Certificates that Cloudflare did not issue can still trigger CT Monitoring emails. This includes certificates issued by services outside Cloudflare, as well as custom certificates you upload yourself.
-- If your domain is included in a shared certificate, you may receive notifications for domains or subdomains that do not belong to you but are included as subject alternative names (SANs) together with your domain. You can use a tool like [Certificate Search ↗](https://crt.sh/) to gather more information in such cases.
+- If your domain is included in a shared certificate, you may receive notifications for domains or subdomains that do not belong to you but are included as subject alternative names (SANs) together with your domain. You can use a tool like [Certificate Search ↗︎](https://crt.sh/) to gather more information in such cases.
 - CT Monitoring does not detect phishing attempts. For example, for `cloudflare.com`, an alert would not trigger if a certificate was issued for `cloudf1are.com` or `cloud-flare.com`.
 
 ---
 
 ## Opt in and out
 
-Alerts are turned off by default. If you want to receive alerts, go to the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates#ct-alerting-card) page and turn on **Certificate Transparency Monitoring**, then select **Add Email**.
+Alerts are turned off by default. If you want to receive alerts, go to the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates#ct-alerting-card) page and turn on **Certificate Transparency Monitoring**, then select **Add Email**.
 
 To stop receiving alerts, turn off **Certificate Transparency Monitoring** or remove your email from the feature card.
 
@@ -44,7 +44,7 @@ Most alerts are routine. Open the email and check three things:
 2. **The issuer.** Did you or your organization request this certificate, or was it requested by a service you use? The issuer is listed as the [Certificate Authority](https://developers.cloudflare.com/ssl/reference/certificate-authorities/) in the email.
 3. **The DNS names and validity dates.** Do they look reasonable?
 
-If you can confirm that your organization or a service you use requested the certificate, no action is required. Otherwise, investigate the issuance with your security team or certificate provider. You can review certificates configured on Cloudflare from the [Edge Certificates page ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) in the dashboard. For external certificates, review the CT log entry or use [Certificate Search ↗](https://crt.sh/).
+If you can confirm that your organization or a service you use requested the certificate, no action is required. Otherwise, investigate the issuance with your security team or certificate provider. You can review certificates configured on Cloudflare from the [Edge Certificates page ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) in the dashboard. For external certificates, review the CT log entry or use [Certificate Search ↗︎](https://crt.sh/).
 
 Take action if:
 
@@ -60,13 +60,13 @@ Take action if:
 
 Only Certificate Authorities can revoke malicious certificates. If you believe an illegitimate certificate was issued for your domain, contact the Certificate Authority listed as the **Issuer** in the email.
 
-- [GlobalSign support ↗](https://support.globalsign.com/)
-- [GoDaddy support ↗](https://www.godaddy.com/contact-us?sp_hp=B)
-- [Google Trust Services support ↗](https://pki.goog/faq/)
-- [IdenTrust support ↗](https://www.identrust.com/support/support-team)
-- [Let's Encrypt support ↗](https://letsencrypt.org/contact/)
-- [Sectigo support ↗](https://sectigo.com/support)
-- [SSL.com support ↗](https://www.ssl.com/submit-a-ticket/)
+- [GlobalSign support ↗︎](https://support.globalsign.com/)
+- [GoDaddy support ↗︎](https://www.godaddy.com/contact-us?sp_hp=B)
+- [Google Trust Services support ↗︎](https://pki.goog/faq/)
+- [IdenTrust support ↗︎](https://www.identrust.com/support/support-team)
+- [Let's Encrypt support ↗︎](https://letsencrypt.org/contact/)
+- [Sectigo support ↗︎](https://sectigo.com/support)
+- [SSL.com support ↗︎](https://www.ssl.com/submit-a-ticket/)
 
 ### Option 2: Contact domain registrars
 
@@ -82,7 +82,7 @@ If someone is attempting to impersonate you online, you should absolutely take a
 
 ## HTTP Public Key Pinning
 
-Certificate Transparency Monitoring addresses the same problems as HTTP Public Key Pinning (HPKP), but with [fewer technical issues ↗](https://scotthelme.co.uk/im-giving-up-on-hpkp/).
+Certificate Transparency Monitoring addresses the same problems as HTTP Public Key Pinning (HPKP), but with [fewer technical issues ↗︎](https://scotthelme.co.uk/im-giving-up-on-hpkp/).
 
 Cloudflare does not offer or support HPKP and advises against using it with Universal SSL.
 

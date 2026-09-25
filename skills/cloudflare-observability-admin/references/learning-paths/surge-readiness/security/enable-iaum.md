@@ -18,13 +18,13 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 If you are under attack and have this feature enabled during the attack, visitors will receive an interstitial page for about five seconds while the traffic is analyzed to make sure it is a legitimate human visitor. The vast majority of Layer 7 attack scripts are defeated by IUAM and can be honed via Page Rules.
 
-Refer to [I'm Under Attack Mode ↗](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/) for more information.
+Refer to [I'm Under Attack Mode ↗︎](https://developers.cloudflare.com/fundamentals/reference/under-attack-mode/) for more information.
 
 ## Change Access Control List (ACL)
 
 An ACL refers to rules that are applied to port numbers or IP addresses that are available on a host permitting use of the service. When you only allow Cloudflare IPs, you eliminate threats attempting to attack your origin IP range.
 
-Refer to [Cloudflare IP Ranges ↗](https://www.cloudflare.com/ips) for more information.
+Refer to [Cloudflare IP Ranges ↗︎](https://www.cloudflare.com/ips) for more information.
 
 ## Change Origin IPs and update Cloudflare DNS records
 

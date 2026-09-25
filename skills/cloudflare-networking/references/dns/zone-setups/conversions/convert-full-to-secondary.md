@@ -54,7 +54,7 @@ Follow the steps below to achieve this conversion.
    2. Go to **DNS Settings**.
    3. Under **DNS Zone Transfers**, for **TSIG**, select **Create**.
    4. Enter the following information:
-      - **TSIG name**: The name of the TSIG object using domain name syntax (more details in [RFC 8945 section 4.2 ↗](https://datatracker.ietf.org/doc/html/rfc8945#section-4.2)).
+      - **TSIG name**: The name of the TSIG object using domain name syntax (more details in [RFC 8945 section 4.2 ↗︎](https://datatracker.ietf.org/doc/html/rfc8945#section-4.2)).
       - **Secret (optional)**: Get a shared secret to add to your third-party nameservers. If left blank, this field generates a random secret.
       - **Algorithm**: Choose a TSIG signing algorithm.
    5. Select **Create**.
@@ -81,9 +81,9 @@ Follow the steps below to achieve this conversion.
 2. In the Cloudflare dashboard, go to the **DNS Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings)
 3. Select **Manage linked peers** under **DNS Zone Transfers**.
 4. Link the peer server you created in the previous steps and select **Save**.
-5. Back on the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, select **Initiate zone transfer**.
+5. Back on the [**DNS Settings** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, select **Initiate zone transfer**.
 6. Confirm the DNS records are transferring as expected.
-7. Go to the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page and take note of your new **Cloudflare Nameservers**.
+7. Go to the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page and take note of your new **Cloudflare Nameservers**.
 8. At your domain registrar (or parent zone), [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to include the `secondary.cloudflare.com` nameservers.
 
 Was this helpful?

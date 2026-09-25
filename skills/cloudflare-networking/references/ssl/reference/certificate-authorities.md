@@ -42,22 +42,22 @@ For Universal certificates, Cloudflare controls the validity periods and certifi
 #### Limitations
 
 - Hostname on certificate can contain up to 10 levels of subdomains.
-- Duplicate certificate limit of [5 certificates ↗](https://letsencrypt.org/docs/rate-limits/) per week.
+- Duplicate certificate limit of [5 certificates ↗︎](https://letsencrypt.org/docs/rate-limits/) per week.
 - Redsys<sup>[1](#user-content-fn-1)</sup> is not compatible with Let's Encrypt certificates. If you use Redsys and find issues with Let's Encrypt certificates, order an advanced certificate or upload a custom certificate to use a different CA.
 
 #### Browser compatibility
 
 Warning
 
-This section summarizes commonly requested client support information. For the complete and most up-to-date certificate compatibility, refer to [Let's Encrypt documentation ↗](https://letsencrypt.org/docs/certificate-compatibility/).
+This section summarizes commonly requested client support information. For the complete and most up-to-date certificate compatibility, refer to [Let's Encrypt documentation ↗︎](https://letsencrypt.org/docs/certificate-compatibility/).
 
-The main determining factor for whether a platform can validate Let's Encrypt certificates is whether that platform trusts the self-signed ISRG Root X1 certificate. As Let's Encrypt announced a [change in its chain of trust in 2024 ↗](https://blog.cloudflare.com/shortening-lets-encrypt-change-of-trust-no-impact-to-cloudflare-customers/), older devices (for example Android 7.0 and earlier) that only trust the cross-signed version of the ISRG Root X1 are no longer compatible.
+The main determining factor for whether a platform can validate Let's Encrypt certificates is whether that platform trusts the self-signed ISRG Root X1 certificate. As Let's Encrypt announced a [change in its chain of trust in 2024 ↗︎](https://blog.cloudflare.com/shortening-lets-encrypt-change-of-trust-no-impact-to-cloudflare-customers/), older devices (for example Android 7.0 and earlier) that only trust the cross-signed version of the ISRG Root X1 are no longer compatible.
 
-You can find the full list of supported clients in the [Let's Encrypt documentation ↗](https://letsencrypt.org/docs/certificate-compatibility/). Older versions of Android and Java clients might not be compatible with Let's Encrypt certificates.
+You can find the full list of supported clients in the [Let's Encrypt documentation ↗︎](https://letsencrypt.org/docs/certificate-compatibility/). Older versions of Android and Java clients might not be compatible with Let's Encrypt certificates.
 
 #### Other resources
 
-[Let's Encrypt Root CAs ↗](https://letsencrypt.org/certificates/): For checking compatibility between chain and client. As explained in [Certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/), you should **not** use this list for pinning against.
+[Let's Encrypt Root CAs ↗︎](https://letsencrypt.org/certificates/): For checking compatibility between chain and client. As explained in [Certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/), you should **not** use this list for pinning against.
 
 ---
 
@@ -70,13 +70,13 @@ You can find the full list of supported clients in the [Let's Encrypt documentat
 
 Warning
 
-This section summarizes commonly requested client support information. For the complete and most up-to-date certificate compatibility, refer to [Google Trust Services documentation ↗](https://pki.goog/faq/).
+This section summarizes commonly requested client support information. For the complete and most up-to-date certificate compatibility, refer to [Google Trust Services documentation ↗︎](https://pki.goog/faq/).
 
-By cross-signing with a [GlobalSign root CA ↗](https://valid.r1.roots.globalsign.com/) that has been installed in client devices for more than 20 years, Google Trust Services can ensure optimal support across a wide range of devices.
+By cross-signing with a [GlobalSign root CA ↗︎](https://valid.r1.roots.globalsign.com/) that has been installed in client devices for more than 20 years, Google Trust Services can ensure optimal support across a wide range of devices.
 
 Currently trusted by Microsoft, Mozilla, Safari, Cisco, Oracle Java, and Qihoo’s 360 browser, all browsers or operating systems that depend on these root programs are covered.
 
-You can use the [root CAs list ↗](https://pki.goog/faq/#connecting-to-google) for checking compatibility between chain and client but, as explained in [Certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/), you should **not** use this list for pinning against.
+You can use the [root CAs list ↗︎](https://pki.goog/faq/#connecting-to-google) for checking compatibility between chain and client but, as explained in [Certificate pinning](https://developers.cloudflare.com/ssl/reference/certificate-pinning/), you should **not** use this list for pinning against.
 
 ---
 
@@ -93,15 +93,15 @@ SSL.com DCV tokens are specific for RSA certificates and ECDSA certificates. Thi
 
 Warning
 
-This section summarizes commonly requested client support information. For the complete and most up-to-date certificate compatibility, refer to [SSL.com documentation ↗](https://www.ssl.com/browser_compatibility/).
+This section summarizes commonly requested client support information. For the complete and most up-to-date certificate compatibility, refer to [SSL.com documentation ↗︎](https://www.ssl.com/browser_compatibility/).
 
 SSL.com is highly compatible, being accepted by over 99.9% of browsers, tablets, and mobile devices.
 
-SSL.com certificates are [cross-signed with Certum ↗](https://www.ssl.com/repository/) and the [CA that cross-signs intermediates ↗](https://crt.sh/?caid=840) is from 2004.
+SSL.com certificates are [cross-signed with Certum ↗︎](https://www.ssl.com/repository/) and the [CA that cross-signs intermediates ↗︎](https://crt.sh/?caid=840) is from 2004.
 
 #### Other resources
 
-[Acceptable top level domains (TLDs) and current restrictions ↗](https://www.ssl.com/acceptable-top-level-domains-tlds-for-ssl-certificates/)
+[Acceptable top level domains (TLDs) and current restrictions ↗︎](https://www.ssl.com/acceptable-top-level-domains-tlds-for-ssl-certificates/)
 
 ---
 
@@ -112,7 +112,7 @@ SSL.com certificates are [cross-signed with Certum ↗](https://www.ssl.com/repo
 
 #### Browser compatibility
 
-Refer to [Sectigo documentation ↗](https://www.sectigo.com/resource-library/sectigo-certificate-authority-root-keys).
+Refer to [Sectigo documentation ↗︎](https://www.sectigo.com/resource-library/sectigo-certificate-authority-root-keys).
 
 ---
 

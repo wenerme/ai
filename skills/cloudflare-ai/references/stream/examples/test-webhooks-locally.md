@@ -30,8 +30,8 @@ This example shows how to:
 
 ## Prerequisites
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up) with Stream enabled
-- [Node.js ↗](https://nodejs.org/) (v18 or later)
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up) with Stream enabled
+- [Node.js ↗︎](https://nodejs.org/) (v18 or later)
 - The [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed ( `npm install -g wrangler`)
 
 ## 1. Create a Worker project

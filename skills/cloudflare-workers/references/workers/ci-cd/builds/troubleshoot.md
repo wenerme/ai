@@ -66,7 +66,7 @@ If you are running into errors associated with your Git integration, you can try
 
 ## For additional support
 
-If you discover additional issues or would like to provide feedback, reach out to us in the [Cloudflare Developers Discord ↗](https://discord.com/channels/595317990191398933/1052656806058528849).
+If you discover additional issues or would like to provide feedback, reach out to us in the [Cloudflare Developers Discord ↗︎](https://discord.com/channels/595317990191398933/1052656806058528849).
 
 Was this helpful?
 

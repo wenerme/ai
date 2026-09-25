@@ -61,7 +61,7 @@ Individual domain rules are recommended because they restrict access to only the
 
 ## Verify connectivity
 
-Run the [RealtimeKit pre-call test ↗](https://test.realtime.cloudflare.com/) to verify your device can reach the required services.
+Run the [RealtimeKit pre-call test ↗︎](https://test.realtime.cloudflare.com/) to verify your device can reach the required services.
 
 Was this helpful?
 

@@ -54,13 +54,13 @@ Connect and secure internal services:
 
 ### Create a new application
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
-- [Node.js ↗](https://nodejs.org/) (version 16.17.0 or later) installed on your machine.
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
+- [Node.js ↗︎](https://nodejs.org/) (version 16.17.0 or later) installed on your machine.
 - [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed.
 
 ### Use an existing application
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 - A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare. This is required for API Shield, rate limiting, and application security.
 - For securing internal services with Cloudflare Tunnel and Access: a [Cloudflare One organization](https://developers.cloudflare.com/cloudflare-one/setup/) created in the Cloudflare dashboard.
 

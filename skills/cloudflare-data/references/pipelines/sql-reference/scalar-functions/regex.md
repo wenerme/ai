@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/regex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-*Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗](https://arrow.apache.org/datafusion/) (via [Arroyo ↗](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
+*Cloudflare Pipelines scalar function implementations are based on [Apache DataFusion ↗︎](https://arrow.apache.org/datafusion/) (via [Arroyo ↗︎](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
 
-Cloudflare Pipelines uses a [PCRE-like ↗](https://en.wikibooks.org/wiki/Regular_Expressions/Perl-Compatible_Regular_Expressions) regular expression [syntax ↗](https://docs.rs/regex/latest/regex/#syntax) (minus support for several features including look-around and backreferences).
+Cloudflare Pipelines uses a [PCRE-like ↗︎](https://en.wikibooks.org/wiki/Regular_Expressions/Perl-Compatible_Regular_Expressions) regular expression [syntax ↗︎](https://docs.rs/regex/latest/regex/#syntax) (minus support for several features including look-around and backreferences).
 
 ## `regexp_like`
 
-Returns true if a [regular expression ↗](https://docs.rs/regex/latest/regex/#syntax) has at least one match in a string, false otherwise.
+Returns true if a [regular expression ↗︎](https://docs.rs/regex/latest/regex/#syntax) has at least one match in a string, false otherwise.
 
 ```plaintext
 regexp_like(str, regexp[, flags])
@@ -54,11 +54,11 @@ SELECT regexp_like('aBc', '(b|d)', 'i');
 +--------------------------------------------------+
 ```
 
-Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
+Additional examples can be found [here ↗︎](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
 
 ## `regexp_match`
 
-Returns a list of [regular expression ↗](https://docs.rs/regex/latest/regex/#syntax) matches in a string.
+Returns a list of [regular expression ↗︎](https://docs.rs/regex/latest/regex/#syntax) matches in a string.
 
 ```plaintext
 regexp_match(str, regexp[, flags])
@@ -92,11 +92,11 @@ SELECT regexp_match('aBc', '(b|d)', 'i');
 +---------------------------------------------------+
 ```
 
-Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
+Additional examples can be found [here ↗︎](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
 
 ## `regexp_replace`
 
-Replaces substrings in a string that match a [regular expression ↗](https://docs.rs/regex/latest/regex/#syntax).
+Replaces substrings in a string that match a [regular expression ↗︎](https://docs.rs/regex/latest/regex/#syntax).
 
 ```plaintext
 regexp_replace(str, regexp, replacement[, flags])
@@ -132,7 +132,7 @@ SELECT regexp_replace('aBc', '(b|d)', 'Ab\\1a', 'i');
 +-------------------------------------------------------------------+
 ```
 
-Additional examples can be found [here ↗](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
+Additional examples can be found [here ↗︎](https://github.com/apache/datafusion/blob/main/datafusion-examples/examples/regexp.rs)
 
 ## `position`
 

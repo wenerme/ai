@@ -38,7 +38,7 @@ Removing a user will delete all device registrations associated with the user. F
 
 ### Check number of seats used
 
-To check the number of seats consumed by active users in your organization, log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust**. **Cloudflare One overview** will display the amount of seats consumed and the remaining amount available. For more details on your users, go to **Team & Resources** > **Users**.
+To check the number of seats consumed by active users in your organization, log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **Zero Trust**. **Cloudflare One overview** will display the amount of seats consumed and the remaining amount available. For more details on your users, go to **Team & Resources** > **Users**.
 
 ### Revoke a user
 
@@ -46,7 +46,7 @@ When you revoke a user, this action will terminate active sessions, but will not
 
 To revoke a user from your Zero Trust Organization:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Users**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Users**.
 2. Select the checkbox next to a user with an **Active** status in the **Seat usage** column.
 3. Select **Action** > **Revoke**.
 4. Select **Revoke sessions**.
@@ -59,7 +59,7 @@ Removing a user from your Zero Trust Organization will free up the seat the user
 
 To remove a user from your Zero Trust Organization:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Users**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Users**.
 2. Select the checkbox next to a user with an **Active** status in the **Seat usage** column.
 3. Select **Action** > **Remove users**.
 4. Select **Remove**.
@@ -78,7 +78,7 @@ Cloudflare One can automatically remove any user who does not log in to an Acces
 
 To enable user seat expiration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Settings** > **Admin controls**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Settings** > **Admin controls**.
 2. In **Remove inactive users from seats**, select **Edit**.
 3. Select an inactivity time from the dropdown menu.
 4. Select **Save**.

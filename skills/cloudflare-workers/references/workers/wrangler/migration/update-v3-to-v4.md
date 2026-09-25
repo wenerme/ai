@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/migration/update-v3-to-v4/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Wrangler v4 is a major release focused on updates to underlying systems and dependencies, along with improvements to keep Wrangler commands consistent and clear. Unlike previous major versions of Wrangler, which were [foundational rewrites ↗](https://blog.cloudflare.com/wrangler-v2-beta/) and [rearchitectures ↗](https://blog.cloudflare.com/wrangler3/) — Version 4 of Wrangler includes a much smaller set of changes. If you use Wrangler today, your workflow is very unlikely to change.
+Wrangler v4 is a major release focused on updates to underlying systems and dependencies, along with improvements to keep Wrangler commands consistent and clear. Unlike previous major versions of Wrangler, which were [foundational rewrites ↗︎](https://blog.cloudflare.com/wrangler-v2-beta/) and [rearchitectures ↗︎](https://blog.cloudflare.com/wrangler3/) — Version 4 of Wrangler includes a much smaller set of changes. If you use Wrangler today, your workflow is very unlikely to change.
 
 While many users should expect a no-op upgrade, the following sections outline the more significant changes and steps for migrating where necessary.
 
@@ -58,8 +58,8 @@ pnpm wrangler --version
 
 ### Summary of changes
 
-- **Updated Node.js support policy:** Node.js v16, which reached End-of-Life in 2022, is no longer supported in Wrangler v4. Wrangler now follows Node.js's [official support lifecycle ↗](https://nodejs.org/en/about/previous-releases).
-- **Upgraded esbuild version**: Wrangler uses [esbuild ↗](https://esbuild.github.io/) to bundle Worker code before deploying it, and was previously pinned to esbuild v0.17.19. Wrangler v4 uses esbuild v0.24, which could impact dynamic wildcard imports. Going forward, Wrangler will be periodically updating the `esbuild` version included with Wrangler, and since `esbuild` is a pre-1.0.0 tool, this may sometimes include breaking changes to how bundling works. In particular, we may bump the `esbuild` version in a Wrangler minor version.
+- **Updated Node.js support policy:** Node.js v16, which reached End-of-Life in 2022, is no longer supported in Wrangler v4. Wrangler now follows Node.js's [official support lifecycle ↗︎](https://nodejs.org/en/about/previous-releases).
+- **Upgraded esbuild version**: Wrangler uses [esbuild ↗︎](https://esbuild.github.io/) to bundle Worker code before deploying it, and was previously pinned to esbuild v0.17.19. Wrangler v4 uses esbuild v0.24, which could impact dynamic wildcard imports. Going forward, Wrangler will be periodically updating the `esbuild` version included with Wrangler, and since `esbuild` is a pre-1.0.0 tool, this may sometimes include breaking changes to how bundling works. In particular, we may bump the `esbuild` version in a Wrangler minor version.
 - **Commands default to local mode**: All commands that can run in either local or remote mode now default to local, requiring a `--remote` flag for API queries.
 - **Deprecated commands and configurations removed:** Legacy commands, flags, and configurations are removed.
 
@@ -67,7 +67,7 @@ pnpm wrangler --version
 
 ### Updated Node.js support policy
 
-Wrangler now supports only Node.js versions that align with [Node.js's official lifecycle ↗](https://nodejs.org/en/about/previous-releases):
+Wrangler now supports only Node.js versions that align with [Node.js's official lifecycle ↗︎](https://nodejs.org/en/about/previous-releases):
 
 - **Supported**: Current, Active LTS, Maintenance LTS
 - **No longer supported:** Node.js v16 (EOL in 2022)
@@ -171,7 +171,7 @@ All previously deprecated features in [Wrangler v2](https://developers.cloudflar
 - Legacy Node.js compatibility (using `wrangler dev/deploy --node-compat` or the `node_compat` config file property). Instead, use the [`nodejs_compat` compatibility flag](https://developers.cloudflare.com/workers/runtime-apis/nodejs/). This includes the functionality from legacy `node_compat` polyfills and natively implemented Node.js APIs.
 - `wrangler version`. Instead, use `wrangler --version` to check the current version of Wrangler.
 - `getBindingsProxy()` (via `import { getBindingsProxy } from "wrangler"`). Instead, use the [`getPlatformProxy()` API](https://developers.cloudflare.com/workers/wrangler/api/#getplatformproxy), which takes exactly the same arguments.
-- `usage_model`. This no longer has any effect, after the [rollout of Workers Standard Pricing ↗](https://blog.cloudflare.com/workers-pricing-scale-to-zero/).
+- `usage_model`. This no longer has any effect, after the [rollout of Workers Standard Pricing ↗︎](https://blog.cloudflare.com/workers-pricing-scale-to-zero/).
 
 <details>
 

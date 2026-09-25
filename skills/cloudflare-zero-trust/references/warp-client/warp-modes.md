@@ -28,7 +28,7 @@ Refer to [1.1.1.1 resolver](https://developers.cloudflare.com/1.1.1.1/encryption
 
 Formerly known as **1.1.1.1 with WARP**.
 
-The WARP application uses [MASQUE ↗](https://blog.cloudflare.com/zero-trust-warp-with-a-masque/) to encrypt and send traffic from your device directly to Cloudflare's global network. This ensures Internet traffic between your device and the Internet is secure and private, while also preventing third parties from accessing your traffic. All traffic<sup>[1](#user-content-fn-1)</sup> tunneled over the MASQUE connection is encrypted using [post-quantum cryptography ↗](https://blog.cloudflare.com/post-quantum-warp/) to protect against [harvest-now-decrypt-later attacks ↗](https://www.nist.gov/cybersecurity/what-post-quantum-cryptography).
+The WARP application uses [MASQUE ↗︎](https://blog.cloudflare.com/zero-trust-warp-with-a-masque/) to encrypt and send traffic from your device directly to Cloudflare's global network. This ensures Internet traffic between your device and the Internet is secure and private, while also preventing third parties from accessing your traffic. All traffic<sup>[1](#user-content-fn-1)</sup> tunneled over the MASQUE connection is encrypted using [post-quantum cryptography ↗︎](https://blog.cloudflare.com/post-quantum-warp/) to protect against [harvest-now-decrypt-later attacks ↗︎](https://www.nist.gov/cybersecurity/what-post-quantum-cryptography).
 
 This mode is available in three flavors:
 
@@ -36,7 +36,7 @@ This mode is available in three flavors:
 - **Traffic and DNS (TLS)** — All device traffic is routed through WARP, and DNS queries are encrypted via DNS-over-TLS (DoT).
 - **Traffic and DNS (HTTPS)** — All device traffic is routed through WARP, and DNS queries are encrypted via DNS-over-HTTPS (DoH).
 
-If the site you are visiting is already a Cloudflare customer, the content is immediately sent to your device. If not, Cloudflare uses its global network of data centers to devise the shortest path to the site. For more information, refer to our blog post [Introducing WARP: Fixing Mobile Internet Performance and Security ↗](https://blog.cloudflare.com/1111-warp-better-vpn/).
+If the site you are visiting is already a Cloudflare customer, the content is immediately sent to your device. If not, Cloudflare uses its global network of data centers to devise the shortest path to the site. For more information, refer to our blog post [Introducing WARP: Fixing Mobile Internet Performance and Security ↗︎](https://blog.cloudflare.com/1111-warp-better-vpn/).
 
 Caution
 

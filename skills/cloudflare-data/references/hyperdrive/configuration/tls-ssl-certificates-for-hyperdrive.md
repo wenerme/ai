@@ -87,7 +87,7 @@ Hyperdrive will attempt to connect to your database with the provided credential
 
 ## Client certificates
 
-Your database can be configured to verify a certificate provided by the client (in this case, Hyperdrive). This serves as an additional factor to authenticate clients (in addition to the username and password). Refer to the [PostgreSQL ↗](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-CLIENTCERT) or [MySQL ↗](https://dev.mysql.com/doc/refman/8.0/en/using-encrypted-connections.html) documentation for more details.
+Your database can be configured to verify a certificate provided by the client (in this case, Hyperdrive). This serves as an additional factor to authenticate clients (in addition to the username and password). Refer to the [PostgreSQL ↗︎](https://www.postgresql.org/docs/current/libpq-ssl.html#LIBPQ-SSL-CLIENTCERT) or [MySQL ↗︎](https://dev.mysql.com/doc/refman/8.0/en/using-encrypted-connections.html) documentation for more details.
 
 For the database server to be able to verify the client certificates, Hyperdrive must be configured to provide a certificate file (`client-cert.pem`) and a private key with which the certificate was generated (`private-key.pem`).
 

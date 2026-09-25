@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare assigns an IPv4 anycast address to your account for use as the tunnel destination for your network's routers. You can find this address in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). To request additional endpoint addresses, contact your account team.
+Cloudflare assigns an IPv4 anycast address to your account for use as the tunnel destination for your network's routers. You can find this address in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). To request additional endpoint addresses, contact your account team.
 
 Cloudflare handles failures on its network automatically by advertising your endpoint IP from multiple nodes across many globally distributed data centers. To handle failures on your network, configure two tunnels from separate routers.
 
@@ -22,7 +22,7 @@ Cloudflare handles failures on its network automatically by advertising your end
 
 Before creating a tunnel, make sure you have the following information:
 
-- **Cloudflare endpoint address**: The anycast IP address assigned to your account. You can find it in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+- **Cloudflare endpoint address**: The anycast IP address assigned to your account. You can find it in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 - **Customer endpoint IP**: A public Internet routable IP address outside of the prefixes Cloudflare will advertise on your behalf (typically provided by your ISP). Not required if using [Cloudflare Network Interconnect](https://developers.cloudflare.com/network-interconnect/) or for IPsec tunnels (unless your router uses an IKE ID of type `ID_IPV4_ADDR`).
 - **Interface address**: A `/31` (recommended) or `/30` subnet from RFC 1918 private IP space ( `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) or `169.254.240.0/20`(this address space is also a link-local address).
 
@@ -85,7 +85,7 @@ GRE tunnel
 </summary>
 
 7. In **Customer GRE endpoint**, enter your router's public IP address. You do not need this value if you use a physical or virtual connection like Cloudflare Network Interconnect because Cloudflare provides it.
-8. In **Cloudflare GRE endpoint**, enter one of the anycast addresses assigned to your account. You can find them in <a href="https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space">Leased IPs ↗</a>.
+8. In **Cloudflare GRE endpoint**, enter one of the anycast addresses assigned to your account. You can find them in <a href="https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space">Leased IPs ↗︎</a>.
 9. *(Optional)* Leave the default values for **TTL** and **MTU**, or customize them for your network.
 10. *(Optional)* Configure health check settings. Expand the following to learn more about each option:<details><summary>
 
@@ -114,7 +114,7 @@ IPsec tunnel
 </summary>
 
 7. *(Optional)* In **Customer endpoint**, enter your router's public IP address. This value is only required if your router uses an IKE ID of type <code>ID_IPV4_ADDR</code>.
-8. In **Cloudflare endpoint**, enter one of the anycast addresses assigned to your account. You can find them in <a href="https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space">Leased IPs ↗</a>.
+8. In **Cloudflare endpoint**, enter one of the anycast addresses assigned to your account. You can find them in <a href="https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space">Leased IPs ↗︎</a>.
 9. *(Optional)* Configure health check settings. Expand the following to learn more about each option:<details><summary>
 
    Health check options</summary>
@@ -453,7 +453,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/magic/ipsec
 
 ## Bidirectional vs unidirectional health checks
 
-To check for tunnel health, Cloudflare sends a [health check probe](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/) consisting of ICMP (Internet Control Message Protocol) reply [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) to your network. Cloudflare needs to receive these probes to know if your tunnel is healthy.
+To check for tunnel health, Cloudflare sends a [health check probe](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/) consisting of ICMP (Internet Control Message Protocol) reply [packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) to your network. Cloudflare needs to receive these probes to know if your tunnel is healthy.
 
 Cloudflare defaults to bidirectional health checks for Cloudflare WAN, and unidirectional health checks for Magic Transit (direct server return). However, routing unidirectional ICMP reply packets over the Internet to Cloudflare is sometimes subject to drops by intermediate network devices, such as stateful firewalls. Magic Transit customers with egress traffic can modify this setting to bidirectional.
 
@@ -462,7 +462,7 @@ Cloudflare defaults to bidirectional health checks for Cloudflare WAN, and unidi
 For customers using the legacy health check system with a public IP range, Cloudflare recommends:
 
 - Configuring the tunnel health check target IP address to one within the `172.64.240.252/30` prefix range.
-- Applying a policy-based route that matches [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) with a source IP address equal to the configured tunnel health check target (for example `172.64.240.253/32`), and route them over the tunnel back to Cloudflare.
+- Applying a policy-based route that matches [packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) with a source IP address equal to the configured tunnel health check target (for example `172.64.240.253/32`), and route them over the tunnel back to Cloudflare.
 
 ## Next steps
 

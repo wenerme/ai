@@ -18,7 +18,7 @@ Note
 
 Not recommended for new deployments. We recommend using the [Tanium service-to-service integration](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/taniums2s/) to get device posture signals from Tanium.
 
-Cloudflare Access can use endpoint data from [Tanium™ ↗](https://www.tanium.com/) to determine if a request should be allowed to reach a protected resource. When users attempt to connect to a resource protected by Access with a Tanium rule, Cloudflare Access will validate the user's identity, and the browser will connect to the Tanium agent before making a decision to grant access.
+Cloudflare Access can use endpoint data from [Tanium™ ↗︎](https://www.tanium.com/) to determine if a request should be allowed to reach a protected resource. When users attempt to connect to a resource protected by Access with a Tanium rule, Cloudflare Access will validate the user's identity, and the browser will connect to the Tanium agent before making a decision to grant access.
 
 Gateway policy limitation
 
@@ -35,8 +35,8 @@ Note
 
 The integration does not currently support Safari.
 
-1. Configure your Tanium deployment using the [step-by-step documentation ↗](https://docs.tanium.com/endpoint_identity/endpoint_identity/userguide.html) provided. You will need the public key to integrate your Tanium deployment with Cloudflare Access.
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks**.
+1. Configure your Tanium deployment using the [step-by-step documentation ↗︎](https://docs.tanium.com/endpoint_identity/endpoint_identity/userguide.html) provided. You will need the public key to integrate your Tanium deployment with Cloudflare Access.
+2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks**.
 3. Go to **Cloudflare One Client checks** and select **Add a check**.
 4. Select **Tanium** from the list of providers.
 5. Enter any **Name** for the integration.

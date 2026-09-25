@@ -16,7 +16,7 @@ Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Note
 
-This feature is only available if your account has at least one zone with a pro plan or above. For more information, refer to our [plans ↗](https://www.cloudflare.com/plans/).
+This feature is only available if your account has at least one zone with a pro plan or above. For more information, refer to our [plans ↗︎](https://www.cloudflare.com/plans/).
 
 You can set up webhooks to receive notifications about your upload workflow. This will send an HTTP POST request to a specified endpoint when an image either successfully uploads or fails to upload.
 

@@ -76,7 +76,7 @@ Super Slurper should support transfers from all S3-compatible storage providers,
 
 Note
 
-Have you tested and verified another S3-compatible provider? [Open a pull request ↗](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2/data-migration/super-slurper.mdx) or [create a GitHub issue ↗](https://github.com/cloudflare/cloudflare-docs/issues/new).
+Have you tested and verified another S3-compatible provider? [Open a pull request ↗︎](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/r2/data-migration/super-slurper.mdx) or [create a GitHub issue ↗︎](https://github.com/cloudflare/cloudflare-docs/issues/new).
 
 ## Create credentials for storage providers
 
@@ -141,7 +141,7 @@ Relying on matching ETags before and after the migration is therefore discourage
 
 ### Archive storage classes
 
-Objects stored using AWS S3 [archival storage classes ↗](https://aws.amazon.com/s3/storage-classes/#Archive) will be skipped and need to be copied separately. Specifically:
+Objects stored using AWS S3 [archival storage classes ↗︎](https://aws.amazon.com/s3/storage-classes/#Archive) will be skipped and need to be copied separately. Specifically:
 
 - Files stored using S3 Glacier tiers (not including Glacier Instant Retrieval) will be skipped and logged in the migration log.
 - Files stored using S3 Intelligent Tiering and placed in Deep Archive tier will be skipped and logged in the migration log.

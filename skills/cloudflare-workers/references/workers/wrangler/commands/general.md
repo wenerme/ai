@@ -88,7 +88,7 @@ wrangler login [OPTIONS]
 - `--use-keyring` `boolean` optional
   - Stores the OAuth credentials in your operating system keychain instead of the default plaintext TOML file. Refer to [Storing OAuth credentials in the OS keychain](#storing-oauth-credentials-in-the-os-keychain) for details. Use `--no-use-keyring` to opt back out. The choice is persisted across Wrangler invocations.
 - `--device` `boolean` optional
-  - Defaults to `false`. Uses the OAuth 2.0 Device Authorization Grant ([RFC 8628 ↗](https://www.rfc-editor.org/rfc/rfc8628)) instead of the default `localhost` callback flow. Refer to [Use `wrangler login` without a local callback server](#use-wrangler-login-without-a-local-callback-server).
+  - Defaults to `false`. Uses the OAuth 2.0 Device Authorization Grant ([RFC 8628 ↗︎](https://www.rfc-editor.org/rfc/rfc8628)) instead of the default `localhost` callback flow. Refer to [Use `wrangler login` without a local callback server](#use-wrangler-login-without-a-local-callback-server).
 
 Note
 
@@ -168,7 +168,7 @@ If you would rather not map ports at all, use [`wrangler login --device`](#use-w
 
 The default `wrangler login` flow needs your browser to be able to reach a temporary local server on `localhost:8976`. In some environments — remote SSH sessions, containers without forwarded ports, GitHub Codespaces, or otherwise restricted networks — that callback URL is unreachable from the browser, and setting up the workarounds for remote machines and containers may be difficult.
 
-For those cases, pass `--device` to use the [OAuth 2.0 Device Authorization Grant ↗](https://www.rfc-editor.org/rfc/rfc8628) instead. This flow does not start a local callback server. Instead, Wrangler prints a verification URL and a short user code to the terminal, opens the verification URL in your default browser, and polls Cloudflare for an access token while you approve the request.
+For those cases, pass `--device` to use the [OAuth 2.0 Device Authorization Grant ↗︎](https://www.rfc-editor.org/rfc/rfc8628) instead. This flow does not start a local callback server. Instead, Wrangler prints a verification URL and a short user code to the terminal, opens the verification URL in your default browser, and polls Cloudflare for an access token while you approve the request.
 
 ```sh
 npx wrangler login --device
@@ -220,11 +220,11 @@ By default, Wrangler stores the OAuth access token and refresh token returned by
 npx wrangler login --use-keyring
 ```
 
-When `--use-keyring` is enabled, Wrangler writes the credentials into an [AES-256-GCM ↗](https://en.wikipedia.org/wiki/Galois/Counter_Mode)-encrypted file (`default.enc`, alongside the legacy `default.toml` location) and stores the 32-byte encryption key in your OS keychain:
+When `--use-keyring` is enabled, Wrangler writes the credentials into an [AES-256-GCM ↗︎](https://en.wikipedia.org/wiki/Galois/Counter_Mode)-encrypted file (`default.enc`, alongside the legacy `default.toml` location) and stores the 32-byte encryption key in your OS keychain:
 
-- **macOS** uses the built-in [Keychain ↗](https://support.apple.com/guide/keychain-access/welcome/mac) via `/usr/bin/security`.
-- **Linux** uses [libsecret ↗](https://wiki.gnome.org/Projects/Libsecret) via the `secret-tool` CLI from the `libsecret-tools` package. Wrangler will print a per-distro install hint if `secret-tool` is not available.
-- **Windows** uses [Credential Manager ↗](https://support.microsoft.com/en-us/windows/accessing-credential-manager-1b5c916a-6a16-889f-8581-fc16e8165ac0) via [`@napi-rs/keyring` ↗](https://www.npmjs.com/package/@napi-rs/keyring), which Wrangler installs lazily the first time you opt in (≈1.9 MB one-time download). In non-interactive environments such as CI, install the binding ahead of time with `npm install -g @napi-rs/keyring@<version>` or stay on the default plaintext path.
+- **macOS** uses the built-in [Keychain ↗︎](https://support.apple.com/guide/keychain-access/welcome/mac) via `/usr/bin/security`.
+- **Linux** uses [libsecret ↗︎](https://wiki.gnome.org/Projects/Libsecret) via the `secret-tool` CLI from the `libsecret-tools` package. Wrangler will print a per-distro install hint if `secret-tool` is not available.
+- **Windows** uses [Credential Manager ↗︎](https://support.microsoft.com/en-us/windows/accessing-credential-manager-1b5c916a-6a16-889f-8581-fc16e8165ac0) via [`@napi-rs/keyring` ↗︎](https://www.npmjs.com/package/@napi-rs/keyring), which Wrangler installs lazily the first time you opt in (≈1.9 MB one-time download). In non-interactive environments such as CI, install the binding ahead of time with `npm install -g @napi-rs/keyring@<version>` or stay on the default plaintext path.
 
 If a plaintext credentials file exists when you first opt in, Wrangler reads it, encrypts the contents into the new `.enc` file, and deletes the plaintext file.
 
@@ -654,7 +654,7 @@ Global flags
 
 ## `telemetry`
 
-Cloudflare collects anonymous usage data to improve Wrangler. You can learn more about this in our [data policy ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
+Cloudflare collects anonymous usage data to improve Wrangler. You can learn more about this in our [data policy ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler/telemetry.md).
 
 You can manage sharing of usage data at any time using these commands.
 

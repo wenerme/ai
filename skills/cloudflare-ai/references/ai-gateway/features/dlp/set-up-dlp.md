@@ -22,7 +22,7 @@ Add Data Loss Prevention (DLP) to any AI Gateway to start scanning AI prompts an
 
 ## Enable DLP for AI Gateway
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** > **AI Gateway**.
 3. Select a gateway where you want to enable DLP.
 4. Go to the **Firewall** tab.

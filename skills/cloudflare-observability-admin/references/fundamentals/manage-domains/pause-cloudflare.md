@@ -33,7 +33,7 @@ Disabling a zone does not impact Spectrum applications.
 
 Instead of pausing Cloudflare globally, you can disable the proxy on individual records:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account and domain.
 2. Go to **DNS** > **Records**. Choose the record and select **Edit**.
 3. Toggle **Proxy Status** to **Off**.
 

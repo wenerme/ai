@@ -34,7 +34,7 @@ Terraform provider v4 precedence limitation
 
 To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint.
 
-To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
+To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
 
 ## Actions
 
@@ -178,7 +178,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/plans/zero-trust-services/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/plans/zero-trust-services/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | Enterprise |
 
@@ -225,7 +225,7 @@ Policy context fields
 
 </details>
 
-Ensure that your operating system allows notifications for the Cloudflare One Client. Your device may not display notifications if focus, do not disturb, or screen sharing settings are turned on. To turn on client notifications on macOS devices running DisplayLink software, you may have to allow system notifications when mirroring your display. For more information, refer to the [macOS documentation ↗](https://support.apple.com/guide/mac-help/change-notifications-settings-mh40583/mac).
+Ensure that your operating system allows notifications for the Cloudflare One Client. Your device may not display notifications if focus, do not disturb, or screen sharing settings are turned on. To turn on client notifications on macOS devices running DisplayLink software, you may have to allow system notifications when mirroring your display. For more information, refer to the [macOS documentation ↗︎](https://support.apple.com/guide/mac-help/change-notifications-settings-mh40583/mac).
 
 ### Override
 
@@ -535,7 +535,7 @@ Use this selector to filter based on the continent that the query resolves to. G
 
 ### Resolved Country
 
-Use this selector to filter based on the country that the query resolves to. Geolocation is determined from the IP address in the response. To specify a country, enter its [ISO 3166-1 Alpha 2 code ↗](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
+Use this selector to filter based on the country that the query resolves to. Geolocation is determined from the IP address in the response. To specify a country, enter its [ISO 3166-1 Alpha 2 code ↗︎](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
 | UI name | API example | Evaluation phase |
 | --- | --- | --- |
@@ -551,7 +551,7 @@ Use this selector to filter based on the IP addresses that the query resolves to
 
 ### Request Context Categories
 
-Use this selector to match a dynamic list of [category IDs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#category-and-subcategory-ids) sent in the [EDNS (Extension Mechanisms for DNS) ↗](https://datatracker.ietf.org/doc/html/rfc6891) portion of a DNS query. EDNS allows extra metadata to be attached to a DNS query beyond the standard fields. Gateway reads category IDs from the EDNS OPT code `65050`.
+Use this selector to match a dynamic list of [category IDs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/domain-categories/#category-and-subcategory-ids) sent in the [EDNS (Extension Mechanisms for DNS) ↗︎](https://datatracker.ietf.org/doc/html/rfc6891) portion of a DNS query. EDNS allows extra metadata to be attached to a DNS query beyond the standard fields. Gateway reads category IDs from the EDNS OPT code `65050`.
 
 | UI name | API example | Evaluation phase |
 | --- | --- | --- |
@@ -591,7 +591,7 @@ Geolocation is determined from the device's public IP address (typically assigne
 
 Use this selector to filter based on the country where the query arrived to Gateway from.
 
-Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a country, enter its [ISO 3166-1 Alpha-2 code ↗](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
+Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a country, enter its [ISO 3166-1 Alpha-2 code ↗︎](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
 | UI name | API example | Evaluation phase |
 | --- | --- | --- |
@@ -651,7 +651,7 @@ In the **Value** field, you can input a single value when using an equality comp
 
 ### Regular expressions
 
-Regular expressions are evaluated using Rust. The Rust implementation is slightly different than regex libraries used elsewhere. For more information, refer to our guide for [Wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/#wildcards). To evaluate if your regex matches, you can use [Rustexp ↗](https://rustexp.lpil.uk/).
+Regular expressions are evaluated using Rust. The Rust implementation is slightly different than regex libraries used elsewhere. For more information, refer to our guide for [Wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/#wildcards). To evaluate if your regex matches, you can use [Rustexp ↗︎](https://rustexp.lpil.uk/).
 
 If you want to match multiple values, you can use the pipe symbol (`|`) as an OR operator. You do not need to use an escape character (`\`) before the pipe symbol. For example, the following expression evaluates to true when the hostname matches either `.*whispersystems.org` or `.*signal.org`:
 
@@ -676,9 +676,9 @@ The **Or** operator will only work with conditions in the same expression group.
 
 ### Third-party filtering conflict
 
-Gateway will not properly filter traffic sent through third-party VPNs or other Internet filtering software, such as [iCloud Private Relay ↗](https://support.apple.com/102602) or [Google Chrome IP Protection ↗](https://github.com/GoogleChrome/ip-protection#ip-protection). To ensure your DNS policies apply to your traffic, Cloudflare recommends turning off software that may interfere with Gateway.
+Gateway will not properly filter traffic sent through third-party VPNs or other Internet filtering software, such as [iCloud Private Relay ↗︎](https://support.apple.com/102602) or [Google Chrome IP Protection ↗︎](https://github.com/GoogleChrome/ip-protection#ip-protection). To ensure your DNS policies apply to your traffic, Cloudflare recommends turning off software that may interfere with Gateway.
 
-To turn off iCloud Private Relay, refer to the Apple user guides for [macOS ↗](https://support.apple.com/guide/mac-help/use-icloud-private-relay-mchlecadabe0/) or [iOS ↗](https://support.apple.com/guide/iphone/protect-web-browsing-icloud-private-relay-iph499d287c2/).
+To turn off iCloud Private Relay, refer to the Apple user guides for [macOS ↗︎](https://support.apple.com/guide/mac-help/use-icloud-private-relay-mchlecadabe0/) or [iOS ↗︎](https://support.apple.com/guide/iphone/protect-web-browsing-icloud-private-relay-iph499d287c2/).
 
 ### Cloudflare WAN forwarding
 

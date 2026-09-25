@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## 403 Forbidden
 
-The `403 Forbidden` status code indicates that the client's request was understood by the server but cannot be fulfilled due to insufficient permissions to access the requested resource. For more details, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+The `403 Forbidden` status code indicates that the client's request was understood by the server but cannot be fulfilled due to insufficient permissions to access the requested resource. For more details, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 
@@ -24,7 +24,7 @@ If you encounter a `403` error without the Cloudflare branding, this means that 
 
 - Permission rules configured on the origin web server (for example, in an Apache `.htaccess` file).
 - Mod\_security rules.
-- IP deny rules, such as blocking traffic from certain IP ranges. Make sure that [Cloudflare's IP ranges ↗](https://www.cloudflare.com/ips) are not being blocked.
+- IP deny rules, such as blocking traffic from certain IP ranges. Make sure that [Cloudflare's IP ranges ↗︎](https://www.cloudflare.com/ips) are not being blocked.
 
 ### Cloudflare-specific information
 
@@ -41,7 +41,7 @@ Cloudflare may serve `403` responses in the following scenarios:
 
 Cloudflare may also serve an unstyled `403` error page in specific cases. These errors are not logged because they occur early in Cloudflare's infrastructure, before domain configuration is loaded. An example is:
 
-- [SNI ↗](https://www.cloudflare.com/learning/ssl/what-is-sni/): A `403` error is returned when the client sends a host that does not match the SNI (Server Name Indication).
+- [SNI ↗︎](https://www.cloudflare.com/learning/ssl/what-is-sni/): A `403` error is returned when the client sends a host that does not match the SNI (Server Name Indication).
 
 Was this helpful?
 

@@ -31,7 +31,7 @@ Cloudflare Logpush supports pushing logs directly to Google Cloud Storage (GCS) 
    - **Bucket** - GCS bucket name
    - **Path** - bucket location within the storage container
    - **Organize logs into daily subfolders** (recommended)
-   - For **Grant Cloudflare access to upload files to your bucket**, make sure your bucket has added Cloudflare’s IAM as a user with a [Storage Object Admin role ↗](https://cloud.google.com/storage/docs/access-control/iam-roles).
+   - For **Grant Cloudflare access to upload files to your bucket**, make sure your bucket has added Cloudflare’s IAM as a user with a [Storage Object Admin role ↗︎](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
 When you are done entering the destination details, select **Continue**.
 
@@ -57,14 +57,14 @@ Ensure **Log Share** permissions are enabled, before attempting to read or confi
 
 To enable Logpush to GCS:
 
-1. Create a GCS bucket. Refer to [instructions from GCS ↗](https://cloud.google.com/storage/docs/creating-buckets#storage-create-bucket-console).
+1. Create a GCS bucket. Refer to [instructions from GCS ↗︎](https://cloud.google.com/storage/docs/creating-buckets#storage-create-bucket-console).
 2. In **Storage** > **Browser** > **Bucket** > **Permissions**, add the member `logpush@cloudflare-data.iam.gserviceaccount.com` with `Storage Object Admin` permission.
 
 ## Compression and decompressive transcoding
 
 Logpush always delivers log files in gzip-compressed format. When uploading to GCS, Logpush sets `Content-Encoding: gzip` on the object metadata.
 
-GCS performs [decompressive transcoding ↗](https://cloud.google.com/storage/docs/transcoding) by default. This means that when a client downloads an object stored with `Content-Encoding: gzip`, GCS may automatically decompress the file in transit if the client does not include `Accept-Encoding: gzip` in the request headers. When this happens, the downloaded file contains uncompressed data even though the filename retains the `.gz` extension.
+GCS performs [decompressive transcoding ↗︎](https://cloud.google.com/storage/docs/transcoding) by default. This means that when a client downloads an object stored with `Content-Encoding: gzip`, GCS may automatically decompress the file in transit if the client does not include `Accept-Encoding: gzip` in the request headers. When this happens, the downloaded file contains uncompressed data even though the filename retains the `.gz` extension.
 
 To download log files in their original compressed format, use one of the following approaches:
 

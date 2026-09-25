@@ -32,8 +32,8 @@ A Worker that processes data, stores results in an R2 bucket mounted as a local 
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -43,14 +43,14 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
 You'll also need:
 
-- [Docker ↗](https://www.docker.com/) running locally
-- An R2 bucket (create one in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2))
+- [Docker ↗︎](https://www.docker.com/) running locally
+- An R2 bucket (create one in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/r2))
 
 ## 1. Create your project
 
@@ -96,7 +96,7 @@ Add an R2 bucket binding to your `wrangler.json`:
 }
 ```
 
-Replace `my-data-bucket` with your R2 bucket name. Create the bucket first in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2).
+Replace `my-data-bucket` with your R2 bucket name. Create the bucket first in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/r2).
 
 ## 3. Build the data processor
 
@@ -310,13 +310,13 @@ Try this flow:
 
 Replace YOUR\_ACCOUNT\_ID
 
-Replace `YOUR_ACCOUNT_ID` in the endpoint URL with your Cloudflare account ID. Find it in the [dashboard ↗](https://dash.cloudflare.com/) under **R2** > **Overview**.
+Replace `YOUR_ACCOUNT_ID` in the endpoint URL with your Cloudflare account ID. Find it in the [dashboard ↗︎](https://dash.cloudflare.com/) under **R2** > **Overview**.
 
 ## 4. Deploy to production
 
 **Generate R2 API tokens:**
 
-1. Go to **R2** > **Overview** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/)
+1. Go to **R2** > **Overview** in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/)
 2. Select **Manage R2 API Tokens**
 3. Create a token with **Object Read & Write** permissions
 4. Copy the **Access Key ID** and **Secret Access Key**

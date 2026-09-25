@@ -148,7 +148,7 @@ After confirming the endpoints and monitors are set up correctly and return the 
 7. For the purposes of this tutorial, leave the [**Custom Rules**](https://developers.cloudflare.com/load-balancing/additional-options/load-balancing-rules/) option empty.
 8. On the **Review** page, review your configuration and select **Save as Draft**.
 
-A DNS record of the type `LB` will be created under [**DNS** > **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) with the hostname you have defined, and a corresponding load balancer will be added to [**Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
+A DNS record of the type `LB` will be created under [**DNS** > **Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) with the hostname you have defined, and a corresponding load balancer will be added to [**Load Balancing** ↗︎](https://dash.cloudflare.com/?to=/:account/load-balancing)
 
 ## Optional - Deploy on a test hostname
 

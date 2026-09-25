@@ -36,7 +36,7 @@ You can also compare network tests in Observatory by selecting any two completed
 
 ## Real user monitoring (RUM)
 
-Real user monitoring (also known as RUM), on the other hand, captures real metrics from real users accessing your own websites. This provides information that synthetic tests cannot capture, as users might access your website from different parts of the world, with different network conditions, ISPs, devices, browsers, browser extensions and other software competing for resources. Real user data also includes a user interaction metric that synthetic tests do not offer: [Interaction to Next Paint (INP) ↗](https://web.dev/inp/).
+Real user monitoring (also known as RUM), on the other hand, captures real metrics from real users accessing your own websites. This provides information that synthetic tests cannot capture, as users might access your website from different parts of the world, with different network conditions, ISPs, devices, browsers, browser extensions and other software competing for resources. Real user data also includes a user interaction metric that synthetic tests do not offer: [Interaction to Next Paint (INP) ↗︎](https://web.dev/inp/).
 
 Free customers have RUM enabled automatically, with traffic from EEA/UK/CH excluded, and can switch it off if they prefer. Customers on other plans may enable RUM as needed.
 

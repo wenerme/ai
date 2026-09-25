@@ -24,7 +24,7 @@ This functionality is also what allows you to use a [root custom domain](https:/
 
 With CNAME flattening, Cloudflare finds the IP address that a CNAME points to. This process could involve a single lookup or multiple (if your CNAME points to another CNAME). Cloudflare then returns the final IP address instead of a CNAME record, helping DNS queries resolve faster.
 
-For more details on the steps involved in CNAME flattening, review the [CNAME flattening diagram](https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/) and refer to the [Cloudflare blog post ↗](https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/).
+For more details on the steps involved in CNAME flattening, review the [CNAME flattening diagram](https://developers.cloudflare.com/dns/cname-flattening/cname-flattening-diagram/) and refer to the [Cloudflare blog post ↗︎](https://blog.cloudflare.com/introducing-cname-flattening-rfc-compliant-cnames-at-a-domains-root/).
 
 Note
 

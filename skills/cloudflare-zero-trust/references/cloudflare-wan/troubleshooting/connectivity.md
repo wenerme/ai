@@ -57,7 +57,7 @@ Determine which Cloudflare data center your traffic is entering. This is the onl
 
 ### Use traceroute
 
-Run a `traceroute` from the source network to your Cloudflare WAN prefix. Look for the Cloudflare data center hostname in the trace output, which contains a three-letter [IATA airport code ↗](https://en.wikipedia.org/wiki/IATA_airport_code) that identifies the data center.
+Run a `traceroute` from the source network to your Cloudflare WAN prefix. Look for the Cloudflare data center hostname in the trace output, which contains a three-letter [IATA airport code ↗︎](https://en.wikipedia.org/wiki/IATA_airport_code) that identifies the data center.
 
 ```sh
 traceroute 203.0.113.1
@@ -87,7 +87,7 @@ You can identify which data centers handle your traffic by using **Network Analy
 
 If your tunnels are healthy at the relevant data center but you still experience connectivity issues, check for broader platform issues.
 
-1. Go to [Cloudflare Status ↗](https://www.cloudflarestatus.com/).
+1. Go to [Cloudflare Status ↗︎](https://www.cloudflarestatus.com/).
 2. Look for any active incidents or maintenance at the data center you identified.
 3. Check for any incidents that might affect your traffic, such as outages related to networking, BYOIP, or the services your configuration depends on.
 
@@ -109,7 +109,7 @@ If you have worked through this guide and cannot resolve the issue, gather the f
 
 - **Traceroute output** from your source network to your Cloudflare WAN prefix
 - **Dashboard screenshots** showing tunnel health at the relevant data center
-- **Distributed traceroutes** using tools like [ping.pe ↗](https://ping.pe) to test reachability from multiple global locations
+- **Distributed traceroutes** using tools like [ping.pe ↗︎](https://ping.pe) to test reachability from multiple global locations
 - **Packet captures** from your router if traffic loss is confirmed
 
 ## Related resources

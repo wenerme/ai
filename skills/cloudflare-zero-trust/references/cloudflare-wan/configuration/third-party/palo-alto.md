@@ -552,7 +552,7 @@ set rulebase security rules cloudflare-to-trust rule-type universal
 
 ## Policy Based Forwarding
 
-[Policy Based Forwarding ↗](https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-admin/policy/policy-based-forwarding) (aka Policy-Based Routing) allows you to apply additional matching criteria to specific traffic flows that will override routes defined within the Virtual Router.
+[Policy Based Forwarding ↗︎](https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-admin/policy/policy-based-forwarding) (aka Policy-Based Routing) allows you to apply additional matching criteria to specific traffic flows that will override routes defined within the Virtual Router.
 
 You may only want to direct traffic through Cloudflare WAN if destined for another Cloudflare WAN site, while Internet-bound traffic continues to get forwarded directly through local Internet breakout.
 
@@ -634,7 +634,7 @@ If you have Cloudflare One configured to perform [HTTPS traffic inspection](http
 
 #### Display IKE & IPsec Security Associations
 
-Use [show ↗](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/administration/troubleshooting/troubleshooting-site-to-site-vpn-issues-using-cli) commands to display Phase 1 and Phase 2 security associations:
+Use [show ↗︎](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/administration/troubleshooting/troubleshooting-site-to-site-vpn-issues-using-cli) commands to display Phase 1 and Phase 2 security associations:
 
 ```txt
 admin@panfw01> show vpn ike-sa
@@ -658,7 +658,7 @@ Show IKEv2 SA: Total 2 gateways found. 2 ike sa found.
 
 #### Manually Initiate IKE & IPsec Security Associations
 
-Use [test ↗](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/administration/troubleshooting/troubleshooting-site-to-site-vpn-issues-using-cli) commands to force Phase 1 and Phase 2 security associations:
+Use [test ↗︎](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/administration/troubleshooting/troubleshooting-site-to-site-vpn-issues-using-cli) commands to force Phase 1 and Phase 2 security associations:
 
 ```txt
 admin@panfw01> test vpn ike-sa gateway cf-wan-ike-gw-01
@@ -686,12 +686,12 @@ Initiate 1 IPSec SA for tunnel cf-wan-ipsec-tun-02.
 
 ### Palo Alto Networks Documentation
 
-- [Troubleshoot your IPSec VPN tunnel connection ↗](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/administration/troubleshooting/test-vpn-connectivity)
-- [Troubleshoot site-to-site VPN issues using CLI ↗](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/administration/troubleshooting/troubleshooting-site-to-site-vpn-issues-using-cli)
+- [Troubleshoot your IPSec VPN tunnel connection ↗︎](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/administration/troubleshooting/test-vpn-connectivity)
+- [Troubleshoot site-to-site VPN issues using CLI ↗︎](https://docs.paloaltonetworks.com/network-security/ipsec-vpn/administration/troubleshooting/troubleshooting-site-to-site-vpn-issues-using-cli)
 
 ### Palo Alto Networks Knowledge Base
 
-- [How to troubleshoot IPSec VPN connectivity issues ↗](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000ClivCAC)
+- [How to troubleshoot IPSec VPN connectivity issues ↗︎](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000ClivCAC)
 
 Was this helpful?
 

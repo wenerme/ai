@@ -60,7 +60,7 @@ The custom hostname can activate on the new zone even if the certificate is stil
 
 Note
 
-Verify that the custom hostname successfully activated after the migration on the [**Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames) page.
+Verify that the custom hostname successfully activated after the migration on the [**Custom Hostnames** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames) page.
 
 Was this helpful?
 

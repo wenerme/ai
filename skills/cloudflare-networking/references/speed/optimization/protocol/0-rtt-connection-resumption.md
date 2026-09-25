@@ -20,7 +20,7 @@ We support 0-RTT for GET, HEAD, and OPTIONS requests, facilitating faster respon
 
 In line with 0-RTT standards, we add the `Early-Data: 1` header to 0-RTT requests, which allows origin servers to identify when a request has used 0-RTT resumption. Customers should be able to see the `Early-Data: 1` header for any 0-RTT requests connecting to their origin.
 
-For more information on 0-RTT, including its functionality and potential limitations, refer to our [blog post ↗](https://blog.cloudflare.com/even-faster-connection-establishment-with-quic-0-rtt-resumption/).
+For more information on 0-RTT, including its functionality and potential limitations, refer to our [blog post ↗︎](https://blog.cloudflare.com/even-faster-connection-establishment-with-quic-0-rtt-resumption/).
 
 ## Availability
 

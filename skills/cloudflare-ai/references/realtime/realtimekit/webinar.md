@@ -31,7 +31,7 @@ Every RealtimeKit app includes two default presets for webinars. Assign one of t
 
 Before you set up a webinar, make sure that you have:
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com) with a RealtimeKit app.
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com) with a RealtimeKit app.
 - An API token with Realtime Admin permissions. Keep it server-side. Do not expose it in frontend code.
 - A backend that can call the RealtimeKit REST API to create meetings and add participants.
 - A frontend application ready to integrate [RealtimeKit UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/).
@@ -40,7 +40,7 @@ If you have not completed these requirements, refer to [Quickstart](https://deve
 
 ## Set up a webinar
 
-1. In the [RealtimeKit dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit), go to **Presets** and review the default `webinar_presenter` and `webinar_viewer` presets. Both presets have **Meeting Type** set to **Video (WebRTC)** and **Manage Stage (Webinar)** turned on under **Configuration** > **Stage & Media**.
+1. In the [RealtimeKit dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/realtime/kit), go to **Presets** and review the default `webinar_presenter` and `webinar_viewer` presets. Both presets have **Meeting Type** set to **Video (WebRTC)** and **Manage Stage (Webinar)** turned on under **Configuration** > **Stage & Media**.
 2. Create a meeting using the [Create Meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/). Save the returned meeting `id` for the next step.
 3. Add each presenter and viewer to the meeting using the [Add Participant API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/add_participant/). Assign `webinar_presenter` to presenters and `webinar_viewer` to viewers.
 4. Deliver each participant's returned `authToken` only to the frontend session for that specific user.

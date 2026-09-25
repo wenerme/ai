@@ -54,7 +54,7 @@ Cloudflare's partner JD Cloud and the local authorities continuously track the s
 
 ### What is content vetting and why do I need JD Cloud to vet my domain's content before onboarding?
 
-The JD Cloud network is proxying content inside of China for customers who have purchased Cloudflare China Network. To ensure compliance with China’s Internet regulations and with [JD Cloud's service terms ↗](https://docs.jdcloud.com/cn/product-service-agreement/starshield-terms-of-service), JD Cloud must review the content of all the domains before onboarding those domains to their network. They can approve or reject any domain based on the nature of its content. For more information, contact your sales team.
+The JD Cloud network is proxying content inside of China for customers who have purchased Cloudflare China Network. To ensure compliance with China’s Internet regulations and with [JD Cloud's service terms ↗︎](https://docs.jdcloud.com/cn/product-service-agreement/starshield-terms-of-service), JD Cloud must review the content of all the domains before onboarding those domains to their network. They can approve or reject any domain based on the nature of its content. For more information, contact your sales team.
 
 ## Products and features
 

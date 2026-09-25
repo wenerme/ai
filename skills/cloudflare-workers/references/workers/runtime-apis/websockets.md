@@ -70,7 +70,7 @@ let [client, server] = Object.values(new WebSocketPair());
 #### Parameters
 
 - `codeinteger` optional
-  - An integer indicating the close code sent by the server. This should match an option from the [list of status codes ↗](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent#status_codes) provided by the WebSocket spec.
+  - An integer indicating the close code sent by the server. This should match an option from the [list of status codes ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent#status_codes) provided by the WebSocket spec.
 - `reasonstring` optional
   - A human-readable string indicating why the WebSocket connection was closed.
 
@@ -131,7 +131,7 @@ WebSocket messages received by a Worker have a size limit of 32 MiB (33,554,432 
 
 ## Close behavior
 
-With the [`web_socket_auto_reply_to_close`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the Workers runtime automatically sends a reciprocal Close frame when it receives a Close frame from the peer. The `readyState` transitions to `CLOSED` before the `close` event fires. This matches the [WebSocket specification ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close_event) and standard browser behavior.
+With the [`web_socket_auto_reply_to_close`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-auto-reply-to-close) compatibility flag (enabled by default on compatibility dates on or after `2026-04-07`), the Workers runtime automatically sends a reciprocal Close frame when it receives a Close frame from the peer. The `readyState` transitions to `CLOSED` before the `close` event fires. This matches the [WebSocket specification ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close_event) and standard browser behavior.
 
 If you still call `close()` inside the `close` event handler, the call is silently ignored. Existing code that manually replies to Close frames will continue to work without changes.
 
@@ -173,9 +173,9 @@ On compatibility dates before `2026-04-07` (or with the `web_socket_manual_reply
 
 ## Binary messages
 
-WebSocket frames carry either text or binary payloads, and the choice between the two is made by the sender at the time the frame is sent. Text frames are always delivered to the `message` event as JavaScript strings. Binary frames are delivered either as [`Blob` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Blob) or as [`ArrayBuffer` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer), depending on the WebSocket's `binaryType`.
+WebSocket frames carry either text or binary payloads, and the choice between the two is made by the sender at the time the frame is sent. Text frames are always delivered to the `message` event as JavaScript strings. Binary frames are delivered either as [`Blob` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Blob) or as [`ArrayBuffer` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer), depending on the WebSocket's `binaryType`.
 
-With the [`websocket_standard_binary_type`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-standard-binary-type) compatibility flag (enabled by default on compatibility dates on or after `2026-03-17`), `binaryType` defaults to `"blob"` and binary frames are delivered as `Blob` objects. This matches the [WebSocket specification ↗](https://websockets.spec.whatwg.org/) and standard browser behavior. Without the flag, `binaryType` defaults to `"arraybuffer"` and binary frames are delivered as `ArrayBuffer`, matching the runtime's historical behavior.
+With the [`websocket_standard_binary_type`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#websocket-standard-binary-type) compatibility flag (enabled by default on compatibility dates on or after `2026-03-17`), `binaryType` defaults to `"blob"` and binary frames are delivered as `Blob` objects. This matches the [WebSocket specification ↗︎](https://websockets.spec.whatwg.org/) and standard browser behavior. Without the flag, `binaryType` defaults to `"arraybuffer"` and binary frames are delivered as `ArrayBuffer`, matching the runtime's historical behavior.
 
 The `binaryType` property itself is always available. To opt back into `ArrayBuffer` delivery for a single WebSocket, assign `binaryType` before calling `accept()`:
 
@@ -202,14 +202,14 @@ ws.addEventListener("message", (event) => {
 
 An incoming binary frame is fully buffered before the `message` event fires, regardless of `binaryType`. The choice between `Blob` and `ArrayBuffer` does not change when or whether the frame is received — only how you access its bytes:
 
-- With `"arraybuffer"`, `event.data` is an [`ArrayBuffer` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer). You can inspect its size and read bytes synchronously (for example, `new Uint8Array(event.data)`).
-- With `"blob"`, `event.data` is a [`Blob` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Blob). Reading the bytes is asynchronous — for example, `await event.data.arrayBuffer()` or `await event.data.bytes()`.
+- With `"arraybuffer"`, `event.data` is an [`ArrayBuffer` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer). You can inspect its size and read bytes synchronously (for example, `new Uint8Array(event.data)`).
+- With `"blob"`, `event.data` is a [`Blob` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Blob). Reading the bytes is asynchronous — for example, `await event.data.arrayBuffer()` or `await event.data.bytes()`.
 
 Under the new default, a binary message handler must be `async` in order to read the payload. If you want to keep an existing synchronous handler, set `binaryType` to `"arraybuffer"` on the WebSocket.
 
 ### When the value takes effect
 
-Per the [WebSocket specification ↗](https://websockets.spec.whatwg.org/#feedback-from-the-protocol), `binaryType` is mutable: the value is consulted at the moment each binary frame is dispatched to the `message` event, so assigning a new value affects only subsequent messages. If you want every binary message on a WebSocket to be delivered as the same type, assign `binaryType` before calling `accept()`. That guarantees the setting is in place before the runtime starts dispatching any incoming frames.
+Per the [WebSocket specification ↗︎](https://websockets.spec.whatwg.org/#feedback-from-the-protocol), `binaryType` is mutable: the value is consulted at the moment each binary frame is dispatched to the `message` event, so assigning a new value affects only subsequent messages. If you want every binary message on a WebSocket to be delivered as the same type, assign `binaryType` before calling `accept()`. That guarantees the setting is in place before the runtime starts dispatching any incoming frames.
 
 ### Worker-wide opt-out
 
@@ -223,8 +223,8 @@ This flag has no effect on the Durable Object hibernatable WebSocket [`webSocket
 
 ## Related resources
 
-- [Mozilla Developer Network's (MDN) documentation on the WebSocket class ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
-- [Our WebSocket template for building applications on Workers using WebSockets ↗](https://github.com/cloudflare/websocket-template)
+- [Mozilla Developer Network's (MDN) documentation on the WebSocket class ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
+- [Our WebSocket template for building applications on Workers using WebSockets ↗︎](https://github.com/cloudflare/websocket-template)
 
 Was this helpful?
 

@@ -25,7 +25,7 @@ You can access this feature via the [API](https://developers.cloudflare.com/api/
 
 To create a custom API token:
 
-1. From the [Cloudflare dashboard ↗](https://dash.cloudflare.com/profile/api-tokens/), go to **My Profile** > **API Tokens** for user tokens. Go to **Create Custom Token** > **Get started**.
+1. From the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/profile/api-tokens/), go to **My Profile** > **API Tokens** for user tokens. Go to **Create Custom Token** > **Get started**.
 2. Enter a **Token name**, for example, `Open Port Scanning`.
 3. In **Permissions**:
    - Choose **Account**.
@@ -61,7 +61,7 @@ To configure Open Port Scanning, follow these steps:
 
 Beta feature notice
 
-Open Port Scanning feature is currently in closed beta. The Cloudforce One team appreciates your feedback as the team works to enhance its functionality and user experience. If you want to subscribe to this feature or participate in the beta program, [join our closed beta for Port Scanning ↗](https://www.cloudflare.com/lp/open-port-scanning-beta/).
+Open Port Scanning feature is currently in closed beta. The Cloudforce One team appreciates your feedback as the team works to enhance its functionality and user experience. If you want to subscribe to this feature or participate in the beta program, [join our closed beta for Port Scanning ↗︎](https://www.cloudflare.com/lp/open-port-scanning-beta/).
 
 ## Default ports
 

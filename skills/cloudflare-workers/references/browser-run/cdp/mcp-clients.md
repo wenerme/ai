@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can use the CDP endpoints with AI coding agents through the [Model Context Protocol (MCP) ↗](https://modelcontextprotocol.io/). The [chrome-devtools-mcp ↗](https://github.com/ChromeDevTools/chrome-devtools-mcp) package provides an MCP server that allows AI assistants to control and inspect browser sessions.
+You can use the CDP endpoints with AI coding agents through the [Model Context Protocol (MCP) ↗︎](https://modelcontextprotocol.io/). The [chrome-devtools-mcp ↗︎](https://github.com/ChromeDevTools/chrome-devtools-mcp) package provides an MCP server that allows AI assistants to control and inspect browser sessions.
 
 Before you begin, [create a custom API Token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `Browser Rendering - Edit` permission.
 
@@ -96,7 +96,7 @@ Add to `~/.cursor/mcp.json`:
 
 Replace `ACCOUNT_ID` with your Cloudflare account ID and `API_TOKEN` with your Browser Run API token. You can obtain these from your Cloudflare dashboard.
 
-For other MCP clients, refer to the [chrome-devtools-mcp documentation ↗](https://github.com/ChromeDevTools/chrome-devtools-mcp/tree/main?tab=readme-ov-file#mcp-client-configuration).
+For other MCP clients, refer to the [chrome-devtools-mcp documentation ↗︎](https://github.com/ChromeDevTools/chrome-devtools-mcp/tree/main?tab=readme-ov-file#mcp-client-configuration).
 
 ## Example usage
 
@@ -129,12 +129,12 @@ The `--wsEndpoint` parameter creates a new browser session automatically when th
 
 ## Additional resources
 
-- [chrome-devtools-mcp repository ↗](https://github.com/ChromeDevTools/chrome-devtools-mcp) - Official MCP server for Chrome DevTools
-- [Model Context Protocol documentation ↗](https://modelcontextprotocol.io/) - Learn more about MCP
-- [Claude Desktop MCP setup ↗](https://modelcontextprotocol.io/docs/develop/connect-local-servers) - Configure MCP servers in Claude Desktop
-- [Claude Code MCP setup ↗](https://docs.anthropic.com/en/docs/claude-code/mcp) - Configure MCP servers in Claude Code
-- [Cursor MCP setup ↗](https://cursor.com/docs/mcp) - Configure MCP servers in Cursor
-- [OpenCode MCP setup ↗](https://opencode.ai/docs/mcp-servers/) - Configure MCP servers in OpenCode
+- [chrome-devtools-mcp repository ↗︎](https://github.com/ChromeDevTools/chrome-devtools-mcp) - Official MCP server for Chrome DevTools
+- [Model Context Protocol documentation ↗︎](https://modelcontextprotocol.io/) - Learn more about MCP
+- [Claude Desktop MCP setup ↗︎](https://modelcontextprotocol.io/docs/develop/connect-local-servers) - Configure MCP servers in Claude Desktop
+- [Claude Code MCP setup ↗︎](https://docs.anthropic.com/en/docs/claude-code/mcp) - Configure MCP servers in Claude Code
+- [Cursor MCP setup ↗︎](https://cursor.com/docs/mcp) - Configure MCP servers in Cursor
+- [OpenCode MCP setup ↗︎](https://opencode.ai/docs/mcp-servers/) - Configure MCP servers in OpenCode
 
 ## Troubleshooting
 

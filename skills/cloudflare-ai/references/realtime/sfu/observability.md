@@ -78,9 +78,9 @@ Use application state and resource results to distinguish these failures:
 
 ## Learn with an example
 
-The [video-room troubleshooting guide ↗](https://github.com/cloudflare/realtime-examples/blob/main/video-room/TROUBLESHOOTING.md) connects authentication, media, and room lifecycle symptoms to checks. The [cloud-gaming guide ↗](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/TROUBLESHOOTING.md) distinguishes Container startup, publisher readiness, media, and control ownership.
+The [video-room troubleshooting guide ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/video-room/TROUBLESHOOTING.md) connects authentication, media, and room lifecycle symptoms to checks. The [cloud-gaming guide ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/TROUBLESHOOTING.md) distinguishes Container startup, publisher readiness, media, and control ownership.
 
-For device setup and browser recovery, use [Pocket Radio troubleshooting ↗](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/TROUBLESHOOTING.md). The [WebSocket adapter reference](https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/#troubleshooting) explains its public errors and media-format checks.
+For device setup and browser recovery, use [Pocket Radio troubleshooting ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/TROUBLESHOOTING.md). The [WebSocket adapter reference](https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/#troubleshooting) explains its public errors and media-format checks.
 
 Was this helpful?
 

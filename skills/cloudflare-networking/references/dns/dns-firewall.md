@@ -48,7 +48,7 @@ DNS Firewall provides the following benefits while allowing your organization to
 - Bandwidth savings
 - [Rate limiting per data center](https://developers.cloudflare.com/dns/dns-firewall/setup/#additional-options)
 - Minimum and maximum cache TTL specification
-- DNS [ANY ↗](https://datatracker.ietf.org/doc/html/rfc8482) query type block
+- DNS [ANY ↗︎](https://datatracker.ietf.org/doc/html/rfc8482) query type block
 
 Was this helpful?
 

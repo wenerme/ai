@@ -22,7 +22,7 @@ Switch from exposed credentials check to [leaked credentials detection](https://
 
 The following Terraform configuration example addresses a common use case of exposed credentials checks.
 
-For more information, refer to the [Terraform Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+For more information, refer to the [Terraform Cloudflare provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 If you are using the Cloudflare API, refer to [Configure exposed credentials checks via API](https://developers.cloudflare.com/waf/managed-rules/check-for-exposed-credentials/configure-api/).
 

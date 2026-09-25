@@ -44,7 +44,7 @@ When ordering a paid plan, subscription, or add-on service, you must agree to th
 
 Note
 
-For more information on renewal terms and cancellation, refer to the [Terms of Use ↗](https://www.cloudflare.com/terms/).
+For more information on renewal terms and cancellation, refer to the [Terms of Use ↗︎](https://www.cloudflare.com/terms/).
 
 ## Upgrade or downgrade Cloudflare paid plans
 
@@ -115,7 +115,7 @@ If your payment method fails, we may suspend your access to the usage-based bill
 
 To regain access, you must settle any outstanding balances and pass preauthorization with a valid payment method. To update your primary payment method, go to **Manage Account** > **Billing** > **Payment**. Upon validation of your updated payment details, we will promptly reactivate your subscription(s), which will restore access to the relevant data and services.
 
-For assistance, visit our [Support Portal ↗](https://support.cloudflare.com/hc/en-us) and submit a Billing request (category: “Payment issue”) to our Support team. They will assist you in verifying your updated payment information.
+For assistance, visit our [Support Portal ↗︎](https://support.cloudflare.com/hc/en-us) and submit a Billing request (category: “Payment issue”) to our Support team. They will assist you in verifying your updated payment information.
 
 ## Non-refundable occurrences
 
@@ -129,7 +129,7 @@ The following occurrences cannot be refunded:
 
 ## Related resources
 
-- [Cloudflare Self-Serve Subscription Agreement ↗](https://www.cloudflare.com/terms/)
+- [Cloudflare Self-Serve Subscription Agreement ↗︎](https://www.cloudflare.com/terms/)
 - [Understanding Cloudflare Invoices](https://developers.cloudflare.com/billing/manage/invoices/)
 - [Understanding Cloudflare sales tax](https://developers.cloudflare.com/billing/understand/sales-tax/)
 

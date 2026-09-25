@@ -33,7 +33,7 @@ Cloudflare only caches resources within the Cloudflare data center that serve th
 
 Discover the benefits of caching with Cloudflare's CDN and understand the default cache behavior.
 
-- [Understand what is a CDN ↗](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/)
+- [Understand what is a CDN ↗︎](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/)
 - [Understand default cache behavior](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/)
 - [Understand the default file types Cloudflare caches](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions)
 

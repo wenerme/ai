@@ -52,9 +52,9 @@ You can safely ignore these warnings, since they are related to the reports that
 
 ### Redirects to other domains
 
-Rule violations reported via CSP's [report-only directive](https://developers.cloudflare.com/client-side-security/reference/csp-header/) do not take into consideration any redirects or redirect HTTP status codes. This is [by design ↗](https://www.w3.org/TR/CSP3/#create-violation-for-request) for security reasons.
+Rule violations reported via CSP's [report-only directive](https://developers.cloudflare.com/client-side-security/reference/csp-header/) do not take into consideration any redirects or redirect HTTP status codes. This is [by design ↗︎](https://www.w3.org/TR/CSP3/#create-violation-for-request) for security reasons.
 
-Some third-party services you may want to cover in your allow rules perform redirects. An example of such a service is Google Ads, which [does not work well with CSP policies ↗](https://support.google.com/adsense/thread/102839782?hl=en&msgid=103611259).
+Some third-party services you may want to cover in your allow rules perform redirects. An example of such a service is Google Ads, which [does not work well with CSP policies ↗︎](https://support.google.com/adsense/thread/102839782?hl=en&msgid=103611259).
 
 For example, if you add the `adservice.google.com` domain to an allow rule, you could get rule violation reports for this domain due to redirects to a different domain (not present in your allow rule). In this case, the violation report would still mention the original domain, and not the domain of the redirected destination, which can cause some confusion.
 

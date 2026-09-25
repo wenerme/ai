@@ -14,19 +14,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/warp-client/known-issues-and-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Below you will find answers to our most commonly asked questions regarding the WARP client. If you cannot find the answer you are looking for, refer to the [community page ↗](https://community.cloudflare.com/) to explore more resources.
+Below you will find answers to our most commonly asked questions regarding the WARP client. If you cannot find the answer you are looking for, refer to the [community page ↗︎](https://community.cloudflare.com/) to explore more resources.
 
 ## Why am I not connecting to a closer Cloudflare data center?
 
-As our [Network Map ↗](https://www.cloudflare.com/network/) shows, we have locations all over the globe. However, in the Advanced Connection stats of our application, you may notice that the server you are connecting to is not necessarily the one physically closest to your location. This can be due to a number of reasons:
+As our [Network Map ↗︎](https://www.cloudflare.com/network/) shows, we have locations all over the globe. However, in the Advanced Connection stats of our application, you may notice that the server you are connecting to is not necessarily the one physically closest to your location. This can be due to a number of reasons:
 
-- We work hard to prevent it, but sometimes your nearest server might be having problems. [Check the system status ↗](https://www.cloudflarestatus.com/?_ga=2.155811579.1117044671.1600983837-1079355427.1599074097) for more information.
+- We work hard to prevent it, but sometimes your nearest server might be having problems. [Check the system status ↗︎](https://www.cloudflarestatus.com/?_ga=2.155811579.1117044671.1600983837-1079355427.1599074097) for more information.
 - Your Internet provider may choose to route traffic along an alternate path for reasons such as cost savings, reliability, or other infrastructure concerns.
 - Not all Cloudflare locations are WARP enabled. We are constantly evaluating performance and how users are connecting, bringing more servers online with WARP all the time.
 
 ## Does WARP reveal my IP address to websites I visit?
 
-No. 1.1.1.1 + WARP replaces your original IP address with a Cloudflare IP that consistently and accurately represents your approximate location. This happens regardless of whether the site is on the Cloudflare network or not. Refer to our [blog post ↗](https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network/) for more information on this topic.
+No. 1.1.1.1 + WARP replaces your original IP address with a Cloudflare IP that consistently and accurately represents your approximate location. This happens regardless of whether the site is on the Cloudflare network or not. Refer to our [blog post ↗︎](https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network/) for more information on this topic.
 
 Note
 

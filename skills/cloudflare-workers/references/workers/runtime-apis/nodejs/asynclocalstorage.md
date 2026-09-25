@@ -20,7 +20,7 @@ Note
 
 For compatibility dates of `2026-08-04` or later, Workers enables both `nodejs_compat` and `nodejs_compat_v2` by default. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date. For earlier dates, add `nodejs_compat` to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in. For instructions to turn off Node.js compatibility, refer to the [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-Cloudflare Workers provides an implementation of a subset of the Node.js [`AsyncLocalStorage` ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#class-asynclocalstorage) API for creating in-memory stores that remain coherent through asynchronous operations.
+Cloudflare Workers provides an implementation of a subset of the Node.js [`AsyncLocalStorage` ↗︎](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#class-asynclocalstorage) API for creating in-memory stores that remain coherent through asynchronous operations.
 
 ## Constructor
 
@@ -160,7 +160,7 @@ console.log(myResource.doSomething()); // prints 123
 
 ## `AsyncResource`
 
-The [`AsyncResource` ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#class-asyncresource) class is a component of Node.js' async context tracking API that allows users to create their own async contexts. Objects that extend from `AsyncResource` are capable of propagating the async context in much the same way as promises.
+The [`AsyncResource` ↗︎](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#class-asyncresource) class is a component of Node.js' async context tracking API that allows users to create their own async contexts. Objects that extend from `AsyncResource` are capable of propagating the async context in much the same way as promises.
 
 Note that `AsyncLocalStorage.snapshot()` and `AsyncLocalStorage.bind()` provide a better approach. `AsyncResource` is provided solely for backwards compatibility with Node.js.
 
@@ -202,10 +202,10 @@ console.log(myResource.doSomething()); // prints 123
 
 ## Caveats
 
-- The `AsyncLocalStorage` implementation provided by Workers intentionally omits support for the [`asyncLocalStorage.enterWith()` ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#asynclocalstorageenterwithstore) and [`asyncLocalStorage.disable()` ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#asynclocalstoragedisable) methods.
-- Workers does not implement the full [`async_hooks` ↗](https://nodejs.org/dist/latest-v18.x/docs/api/async_hooks.html) API upon which Node.js' implementation of `AsyncLocalStorage` is built.
+- The `AsyncLocalStorage` implementation provided by Workers intentionally omits support for the [`asyncLocalStorage.enterWith()` ↗︎](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#asynclocalstorageenterwithstore) and [`asyncLocalStorage.disable()` ↗︎](https://nodejs.org/dist/latest-v18.x/docs/api/async_context.html#asynclocalstoragedisable) methods.
+- Workers does not implement the full [`async_hooks` ↗︎](https://nodejs.org/dist/latest-v18.x/docs/api/async_hooks.html) API upon which Node.js' implementation of `AsyncLocalStorage` is built.
 - Workers does not implement the ability to create an `AsyncResource` with an explicitly identified trigger context as allowed by Node.js. This means that a new `AsyncResource` will always be bound to the async context in which it was created.
-- Thenables (non-Promise objects that expose a `then()` method) are not fully supported when using `AsyncLocalStorage`. When working with thenables, instead use [`AsyncLocalStorage.snapshot()` ↗](https://nodejs.org/api/async_context.html#static-method-asynclocalstoragesnapshot) to capture a snapshot of the current context.
+- Thenables (non-Promise objects that expose a `then()` method) are not fully supported when using `AsyncLocalStorage`. When working with thenables, instead use [`AsyncLocalStorage.snapshot()` ↗︎](https://nodejs.org/api/async_context.html#static-method-asynclocalstoragesnapshot) to capture a snapshot of the current context.
 
 Was this helpful?
 

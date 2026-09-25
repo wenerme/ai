@@ -33,7 +33,7 @@ wrangler tunnel create <NAME>
 - `NAME` `string` required
   - A name for your tunnel. Must be unique within your account.
 
-Tunnels created via Wrangler are always **remotely managed** — configure them in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/tunnels) or via the API.
+Tunnels created via Wrangler are always **remotely managed** — configure them in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/tunnels) or via the API.
 
 After creation, use `wrangler tunnel run` with the tunnel ID to start the tunnel.
 
@@ -183,7 +183,7 @@ wrangler tunnel run [TUNNEL] [OPTIONS]
 - `--log-level` `string` (default: info) optional
   - Log level for `cloudflared`. Does not affect Wrangler logs (controlled by `WRANGLER_LOG`). One of: `debug`, `info`, `warn`, `error`, `fatal`.
 
-Named tunnels are **remotely managed** — configure ingress rules (which local services to expose) in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/tunnels) or via the API before running the tunnel.
+Named tunnels are **remotely managed** — configure ingress rules (which local services to expose) in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/tunnels) or via the API before running the tunnel.
 
 There are two ways to run a tunnel:
 

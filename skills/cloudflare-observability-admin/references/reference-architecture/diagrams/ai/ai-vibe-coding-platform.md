@@ -16,7 +16,7 @@ Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Introduction
 
-An AI-powered coding platform (sometimes referred to as a [“vibe coding” ↗](https://www.cloudflare.com/learning/ai/ai-vibe-coding/) platform) enables users to build applications by describing what they want in natural language. These platforms allow anyone to build applications by handling everything from code generation, testing and debugging, to project deployment.
+An AI-powered coding platform (sometimes referred to as a [“vibe coding” ↗︎](https://www.cloudflare.com/learning/ai/ai-vibe-coding/) platform) enables users to build applications by describing what they want in natural language. These platforms allow anyone to build applications by handling everything from code generation, testing and debugging, to project deployment.
 
 Building the infrastructure for such a platform introduces a unique set of challenges. AI-generated code is inherently untrusted and must be executed in a secure, sandbox to prevent abuse and ensure isolation between users. To support rapid, conversational development, the platform must provide near-instantaneous feedback loops with live previews and real-time debugging. Finally, the platform needs a way to deploy and host the thousands or millions of applications its users will create, without running up the costs of traditional server infrastructure.
 
@@ -24,7 +24,7 @@ Cloudflare has all the components required to build one of these platforms — f
 
 ![Figure 1: AI Vibe Coding Platform on Cloudflare](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2764,height=1135,format=svg/_astro/cf-vibe-plat.hdatWAqi.svg)
 
-To get started with a reference implementation of an AI vibe coding platform immediately, deploy this [starter template ↗](https://github.com/cloudflare/vibesdk) to your Cloudflare account:
+To get started with a reference implementation of an AI vibe coding platform immediately, deploy this [starter template ↗︎](https://github.com/cloudflare/vibesdk) to your Cloudflare account:
 
 [![Deploy to Cloudflare Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/vibesdk)
 
@@ -57,7 +57,7 @@ When using various AI providers, you need visibility into costs, the ability to 
 If you’re building an AI code generator and want it to be more knowledgeable about how to best build applications on Cloudflare, there are two tools we recommend using:
 
 - **[Cloudflare Workers Prompt](https://developers.cloudflare.com/workers/get-started/prompting/#build-workers-using-a-prompt):** Structured prompt with examples that teach AI models about Cloudflare's APIs, configuration patterns, and best practices. Include these in your AI system for higher quality code output.
-- **[Cloudflare’s Documentation MCP server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search):** If your AI tool supports [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/), connect it to Cloudflare's documentation MCP server to get up-to-date knowledge about Cloudflare’s platform.
+- **[Cloudflare’s Documentation MCP server ↗︎](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search):** If your AI tool supports [Model Context Protocol (MCP)](https://developers.cloudflare.com/agents/model-context-protocol/), connect it to Cloudflare's documentation MCP server to get up-to-date knowledge about Cloudflare’s platform.
 
 ## Development environment for executing AI-generated code
 

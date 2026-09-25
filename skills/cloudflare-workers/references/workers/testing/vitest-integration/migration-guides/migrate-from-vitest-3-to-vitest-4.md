@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/migration-guides/migrate-from-vitest-3-to-vitest-4/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-`@cloudflare/vitest-pool-workers` v0.13.0 adds support for [Vitest 4 ↗](https://vitest.dev/blog/vitest-4). v0.12.x is the last version to support Vitest 3.x. It continues to work if you are not ready to migrate.
+`@cloudflare/vitest-pool-workers` v0.13.0 adds support for [Vitest 4 ↗︎](https://vitest.dev/blog/vitest-4). v0.12.x is the last version to support Vitest 3.x. It continues to work if you are not ready to migrate.
 
 Note
 
@@ -158,7 +158,7 @@ The `env` and `SELF` exports from `cloudflare:test` are deprecated in favor of `
 
 ### Replace fetchMock
 
-The `import { fetchMock } from "cloudflare:test"` import has been removed. Mock `globalThis.fetch` directly or use ecosystem libraries such as [MSW ↗](https://mswjs.io/). Refer to the [request mocking example ↗](https://github.com/cloudflare/workers-sdk/blob/1aee99059d6025c7ea8ef88b3ea421922eee6354/fixtures/vitest-pool-workers-examples/request-mocking/test/imperative.test.ts) for a complete example.
+The `import { fetchMock } from "cloudflare:test"` import has been removed. Mock `globalThis.fetch` directly or use ecosystem libraries such as [MSW ↗︎](https://mswjs.io/). Refer to the [request mocking example ↗︎](https://github.com/cloudflare/workers-sdk/blob/1aee99059d6025c7ea8ef88b3ea421922eee6354/fixtures/vitest-pool-workers-examples/request-mocking/test/imperative.test.ts) for a complete example.
 
 ## Migrate test files with a coding agent
 
@@ -178,7 +178,7 @@ Migrate my @cloudflare/vitest-pool-workers tests from v0.12.x to v0.13.x (Vitest
 
 ## Upstream Vitest 4 changes
 
-For breaking changes in Vitest 4 itself that may affect your tests, refer to the [Vitest 4 migration guide ↗](https://vitest.dev/guide/migration#vitest-4). If you run into issues, open a discussion on the [workers-sdk GitHub repository ↗](https://github.com/cloudflare/workers-sdk/discussions).
+For breaking changes in Vitest 4 itself that may affect your tests, refer to the [Vitest 4 migration guide ↗︎](https://vitest.dev/guide/migration#vitest-4). If you run into issues, open a discussion on the [workers-sdk GitHub repository ↗︎](https://github.com/cloudflare/workers-sdk/discussions).
 
 ## Related resources
 

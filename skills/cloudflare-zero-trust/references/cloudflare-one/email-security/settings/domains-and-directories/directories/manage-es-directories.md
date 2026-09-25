@@ -22,7 +22,7 @@ The Email security directory contains registered users only. A registered user i
 
 To modify or delete users in the Email security directory:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** > **Settings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Email security** > **Settings**.
 2. Select **View** on the **Directories** card.
 3. Select **Email security Directory**.
 

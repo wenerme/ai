@@ -20,7 +20,7 @@ The Gateway proxy is required for filtering HTTP and network traffic via the Clo
 
 ## Proxy algorithm
 
-Gateway uses the [Happy Eyeballs algorithm ↗](https://datatracker.ietf.org/doc/html/rfc6555), which tries IPv4 and IPv6 connections with a staggered fallback and uses whichever address family responds first, to proxy traffic in the following order:
+Gateway uses the [Happy Eyeballs algorithm ↗︎](https://datatracker.ietf.org/doc/html/rfc6555), which tries IPv4 and IPv6 connections with a staggered fallback and uses whichever address family responds first, to proxy traffic in the following order:
 
 1. The user's browser initiates the TCP handshake by sending Gateway a TCP SYN segment.
 2. Gateway sends a SYN segment to the origin server.
@@ -133,13 +133,13 @@ To use the ICMP proxy with Cloudflare Tunnel, you may need to configure the `clo
 
 In your environment, modify the `ping_group_range` parameter to include the Group ID (GID) of the user running `cloudflared`.
 
-By default the [`cloudflared` Docker container ↗](https://github.com/cloudflare/cloudflared/blob/master/Dockerfile#L29C6-L29C13) executes as a user called `nonroot` inside of the container. `nonroot` is a specific user that exists in the [base image ↗](https://github.com/GoogleContainerTools/distroless/blob/859eeea1f9b3b7d59bdcd7e24a977f721e4a406c/base/base.bzl#L8) we use, and its Group ID is hardcoded to 65532.
+By default the [`cloudflared` Docker container ↗︎](https://github.com/cloudflare/cloudflared/blob/master/Dockerfile#L29C6-L29C13) executes as a user called `nonroot` inside of the container. `nonroot` is a specific user that exists in the [base image ↗︎](https://github.com/GoogleContainerTools/distroless/blob/859eeea1f9b3b7d59bdcd7e24a977f721e4a406c/base/base.bzl#L8) we use, and its Group ID is hardcoded to 65532.
 
 ## Turn on the Gateway proxy
 
 The Gateway proxy toggle only applies to traffic from Cloudflare One Client devices. Gateway will always proxy traffic sent with [PAC files](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/proxy-endpoints/) or [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) regardless of this setting.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. In **Proxy and inspection settings**, turn on **Allow Secure Web Gateway to proxy traffic**.
 3. Select **TCP**.
 4. (Optional) Depending on your use case, you can select **UDP** and/or **ICMP**.

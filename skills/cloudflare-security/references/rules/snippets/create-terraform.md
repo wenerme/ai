@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/snippets/create-terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can create Snippets using the [Terraform Cloudflare provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest).
+You can create Snippets using the [Terraform Cloudflare provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest).
 
 To get started with Terraform for Cloudflare configuration, refer to [Get started](https://developers.cloudflare.com/terraform/installing/).
 
@@ -55,7 +55,7 @@ All `snippet_name` values in the `cloudflare_snippet_rules` resource must match 
 
 ## More resources
 
-Refer to the [Terraform Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) for more information on the `cloudflare_snippet` and `cloudflare_snippet_rules` resources.
+Refer to the [Terraform Cloudflare provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) for more information on the `cloudflare_snippet` and `cloudflare_snippet_rules` resources.
 
 Was this helpful?
 

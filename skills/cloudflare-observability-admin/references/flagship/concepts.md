@@ -20,7 +20,7 @@ Flagship organizes feature flags into apps. You define flags with variants and t
 
 Flagship feature flags go through three stages from creation to evaluation:
 
-1. **Configure** — Create flags and targeting rules in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) or through the [API](https://developers.cloudflare.com/api/resources/flagship).
+1. **Configure** — Create flags and targeting rules in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) or through the [API](https://developers.cloudflare.com/api/resources/flagship).
 2. **Propagate** — Flagship automatically distributes your flag configuration across Cloudflare's global network within seconds.
 3. **Evaluate** — Your Worker (or SDK) evaluates flags locally using the propagated configuration. There is no round-trip to a central server.
 

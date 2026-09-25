@@ -24,7 +24,7 @@ When using Geo Key Manager or Keyless SSL (a service where your private key stay
 
 When a visitor first connects to your site, Cloudflare must complete a TLS handshake (the initial negotiation that establishes an encrypted connection). If the data center handling the connection does not hold your private key, it must contact a key server in an authorized region. This extra step adds latency corresponding to the round-trip time between the two locations, which can be as much as a second if the key server is on the other side of the world. Once the handshake is complete, the key server is not involved. Furthermore, if the visitor reconnects within the TLS Session Resumption window (a mechanism that reuses previous connection parameters), the private key is not required. Hence, latency is only added for the initial connection establishment.
 
-Learn more about how it works in our [blog post ↗](https://blog.cloudflare.com/geo-key-manager-how-it-works/).
+Learn more about how it works in our [blog post ↗︎](https://blog.cloudflare.com/geo-key-manager-how-it-works/).
 
 ## Regional Services
 
@@ -34,7 +34,7 @@ For product-specific caveats, refer to [Cloudflare product compatibility](https:
 
 The following features and protocols are not supported by Regional Services and will not work on regionalized hostnames:
 
-- [ICMP ↗](https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/) — Internet Control Message Protocol, used for network diagnostics like `ping`
+- [ICMP ↗︎](https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/) — Internet Control Message Protocol, used for network diagnostics like `ping`
 - [Encrypted Client Hello (ECH)](https://developers.cloudflare.com/ssl/edge-certificates/ech/) — a privacy feature that encrypts the initial part of a TLS connection
 - [O2O](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/how-it-works/) — origin-to-origin, a Cloudflare for SaaS setup
 - [Onion Routing (Tor)](https://developers.cloudflare.com/network/onion-routing/)

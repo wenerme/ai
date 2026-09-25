@@ -35,11 +35,11 @@ You must [create a Flagship app](https://developers.cloudflare.com/flagship/get-
 
 ## Create an account-wide token
 
-[Create an account-wide Flagship token ↗](https://dash.cloudflare.com/?to=/:account/api-tokens) to open the Account API tokens page. Then create a custom token and leave the resource set to **Entire Account**.
+[Create an account-wide Flagship token ↗︎](https://dash.cloudflare.com/?to=/:account/api-tokens) to open the Account API tokens page. Then create a custom token and leave the resource set to **Entire Account**.
 
 To create the token yourself:
 
-1. In the Cloudflare dashboard, go to the **Account API tokens** page. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens) You can also create a user token from [My Profile ↗](https://dash.cloudflare.com/profile/api-tokens) > **API Tokens**.
+1. In the Cloudflare dashboard, go to the **Account API tokens** page. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens) You can also create a user token from [My Profile ↗︎](https://dash.cloudflare.com/profile/api-tokens) > **API Tokens**.
 2. Select **Create Token**.
 3. Select **Create Custom Token** > **Get started**.
 4. Enter a token name.
@@ -55,11 +55,11 @@ The token secret is **only shown once**. Do not store the secret in plaintext wh
 
 ## Create an app-scoped token
 
-[Create an app-scoped Flagship token ↗](https://dash.cloudflare.com/?to=/:account/api-tokens&permissionGroupKeys=%5B%7B%22key%22:%22flagship_app%22,%22type%22:%22evaluate%22%7D%5D&scope=specified_flagship_app) to open the token form with **Specified Flagship apps** and **Flagship App Evaluate** already selected. Then choose the app and create the token.
+[Create an app-scoped Flagship token ↗︎](https://dash.cloudflare.com/?to=/:account/api-tokens&permissionGroupKeys=%5B%7B%22key%22:%22flagship_app%22,%22type%22:%22evaluate%22%7D%5D&scope=specified_flagship_app) to open the token form with **Specified Flagship apps** and **Flagship App Evaluate** already selected. Then choose the app and create the token.
 
 To create the token yourself:
 
-1. In the Cloudflare dashboard, go to the **Account API tokens** page. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens) You can also create a user token from [My Profile ↗](https://dash.cloudflare.com/profile/api-tokens) > **API Tokens**.
+1. In the Cloudflare dashboard, go to the **Account API tokens** page. [Go to **Account API tokens** ↗](https://dash.cloudflare.com/?to=/:account/api-tokens) You can also create a user token from [My Profile ↗︎](https://dash.cloudflare.com/profile/api-tokens) > **API Tokens**.
 2. Select **Create Token**.
 3. Select **Create Custom Token** > **Get started**.
 4. Enter a token name that describes where you will use it, such as `checkout-service-ci`.

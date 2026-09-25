@@ -45,7 +45,7 @@ The application and DNS server are now connected to Cloudflare.
 
 ## Enable Clientless Web Isolation
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Browser isolation** > **Browser isolation settings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Browser isolation** > **Browser isolation settings**.
 2. Turn on **Allow users to open a remote browser without the device client**.
 
 3. For **Permissions**, select **Manage**.

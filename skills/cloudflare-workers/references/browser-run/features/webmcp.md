@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/webmcp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[WebMCP ↗](https://developer.chrome.com/blog/webmcp-epp) (Web Model Context Protocol) is a browser API that lets websites expose structured tools for AI agents to discover and execute directly. Instead of slow screenshot-analyze-click loops, agents can call website functions like `searchFlights()` or `bookTicket()` with typed parameters, making browser automation faster, more reliable, and less fragile.
+[WebMCP ↗︎](https://developer.chrome.com/blog/webmcp-epp) (Web Model Context Protocol) is a browser API that lets websites expose structured tools for AI agents to discover and execute directly. Instead of slow screenshot-analyze-click loops, agents can call website functions like `searchFlights()` or `bookTicket()` with typed parameters, making browser automation faster, more reliable, and less fragile.
 
 ## Get started
 
@@ -42,8 +42,8 @@ It will open a live view of your browser session.
 
 You can now interact with the page as you would in a regular browser.
 
-1. Go to one of the sites listed in the [WebMCP documentation ↗](https://github.com/GoogleChromeLabs/webmcp-tools/?tab=readme-ov-file#demos). The following instructions are based on the [L'Atelier Hotel Chain ↗](https://github.com/GoogleChromeLabs/webmcp-tools/tree/main/demos/hotel-chain) demo.
-2. Open the [hotel chain demo URL ↗](https://googlechromelabs.github.io/webmcp-tools/demos/hotel-chain/) and then, in the **Console** tab, run the following JavaScript statement to list the available tools:
+1. Go to one of the sites listed in the [WebMCP documentation ↗︎](https://github.com/GoogleChromeLabs/webmcp-tools/?tab=readme-ov-file#demos). The following instructions are based on the [L'Atelier Hotel Chain ↗︎](https://github.com/GoogleChromeLabs/webmcp-tools/tree/main/demos/hotel-chain) demo.
+2. Open the [hotel chain demo URL ↗︎](https://googlechromelabs.github.io/webmcp-tools/demos/hotel-chain/) and then, in the **Console** tab, run the following JavaScript statement to list the available tools:
 
    ```js
    navigator.modelContextTesting.listTools();
@@ -125,7 +125,7 @@ After you select **Confirm Reservation**, you will get a confirmation message an
 
 #### 1. Configure Chrome DevTools MCP
 
-[Chrome DevTools MCP ↗](https://github.com/ChromeDevTools/chrome-devtools-mcp) allows AI agents to control a browser via CDP. Configure your MCP client (such as Claude Desktop, Claude Code, Cursor, or OpenCode) with the following settings. For more details on MCP client configuration, refer to [Using with MCP clients](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/).
+[Chrome DevTools MCP ↗︎](https://github.com/ChromeDevTools/chrome-devtools-mcp) allows AI agents to control a browser via CDP. Configure your MCP client (such as Claude Desktop, Claude Code, Cursor, or OpenCode) with the following settings. For more details on MCP client configuration, refer to [Using with MCP clients](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/).
 
 ```json
 {
@@ -193,7 +193,7 @@ evaluate_script({
 
 Once configured, your AI agent can navigate to WebMCP-enabled sites and use WebMCP tools. Here is an example conversation:
 
-**You:** Go to [https://googlechromelabs.github.io/webmcp-tools/demos/hotel-chain/ ↗](https://googlechromelabs.github.io/webmcp-tools/demos/hotel-chain/) and find me a hotel in Paris with breakfast. Use WebMCP tools when available.
+**You:** Go to [https://googlechromelabs.github.io/webmcp-tools/demos/hotel-chain/ ↗︎](https://googlechromelabs.github.io/webmcp-tools/demos/hotel-chain/) and find me a hotel in Paris with breakfast. Use WebMCP tools when available.
 
 *Agent navigates to the site, lists WebMCP tools, executes `search_location` with "Paris", then `filter_search_results` with breakfast amenity, and presents the results.*
 
@@ -228,8 +228,8 @@ You can now view the live browser session and interact with it.
 
 ## More resources
 
-- [Chrome WebMCP blog post ↗](https://developer.chrome.com/blog/webmcp-epp)
-- [WebMCP specification ↗](https://github.com/webmachinelearning/webmcp)
+- [Chrome WebMCP blog post ↗︎](https://developer.chrome.com/blog/webmcp-epp)
+- [WebMCP specification ↗︎](https://github.com/webmachinelearning/webmcp)
 
 ## Troubleshooting
 

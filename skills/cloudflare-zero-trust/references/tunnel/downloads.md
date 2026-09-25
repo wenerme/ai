@@ -20,24 +20,24 @@ To download and install `cloudflared` manually, use one of the following links.
 
 ## GitHub repository
 
-`cloudflared` is an [open source project ↗](https://github.com/cloudflare/cloudflared) maintained by Cloudflare.
+`cloudflared` is an [open source project ↗︎](https://github.com/cloudflare/cloudflared) maintained by Cloudflare.
 
-- [All releases ↗](https://github.com/cloudflare/cloudflared/releases)
-- [Release notes ↗](https://github.com/cloudflare/cloudflared/blob/master/RELEASE_NOTES)
+- [All releases ↗︎](https://github.com/cloudflare/cloudflared/releases)
+- [Release notes ↗︎](https://github.com/cloudflare/cloudflared/blob/master/RELEASE_NOTES)
 
 ## Latest release
 
 ### Linux
 
-You can download and install `cloudflared` via the [Cloudflare Package Repository ↗](https://pkg.cloudflare.com/).
+You can download and install `cloudflared` via the [Cloudflare Package Repository ↗︎](https://pkg.cloudflare.com/).
 
 Alternatively, download the latest release directly:
 
 | Type | amd64 / x86-64 | x86 (32-bit) | ARM | ARM64 |
 | --- | --- | --- | --- | --- |
-| Binary | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64) | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386) | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm) | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64) |
-| .deb | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb) | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386.deb) | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm.deb) | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb) |
-| .rpm | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-x86_64.rpm) | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386.rpm) | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm.rpm) | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-aarch64.rpm) |
+| Binary | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64) | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386) | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm) | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64) |
+| .deb | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb) | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386.deb) | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm.deb) | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb) |
+| .rpm | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-x86_64.rpm) | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386.rpm) | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm.rpm) | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-aarch64.rpm) |
 
 ### macOS
 
@@ -47,16 +47,16 @@ Download and install `cloudflared` via Homebrew:
 brew install cloudflared
 ```
 
-Alternatively, download the [latest Darwin arm64 release ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-darwin-arm64.tgz) or [latest Darwin amd64 release ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-darwin-amd64.tgz) directly.
+Alternatively, download the [latest Darwin arm64 release ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-darwin-arm64.tgz) or [latest Darwin amd64 release ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-darwin-amd64.tgz) directly.
 
 ### Windows
 
-Download the latest release from [GitHub ↗](https://github.com/cloudflare/cloudflared/releases/latest):
+Download the latest release from [GitHub ↗︎](https://github.com/cloudflare/cloudflared/releases/latest):
 
 | Type | 32-bit | 64-bit |
 | --- | --- | --- |
-| Executable | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-386.exe) | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe) |
-| MSI | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-386.msi) | [Download ↗](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.msi) |
+| Executable | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-386.exe) | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.exe) |
+| MSI | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-386.msi) | [Download ↗︎](https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-windows-amd64.msi) |
 
 Note
 
@@ -64,7 +64,7 @@ Instances of `cloudflared` do not automatically update on Windows. You will need
 
 ### Docker
 
-A Docker image of `cloudflared` is [available on DockerHub ↗](https://hub.docker.com/r/cloudflare/cloudflared).
+A Docker image of `cloudflared` is [available on DockerHub ↗︎](https://hub.docker.com/r/cloudflare/cloudflared).
 
 ## Deprecated releases
 

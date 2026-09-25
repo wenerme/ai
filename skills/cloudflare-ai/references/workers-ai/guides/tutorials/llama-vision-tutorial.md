@@ -18,7 +18,7 @@ Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Before you begin, ensure you have the following:
 
-1. A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up) with Workers and Workers AI enabled.
+1. A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up) with Workers and Workers AI enabled.
 2. Your `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_AUTH_TOKEN`.
    - You can generate an API token in your Cloudflare dashboard under API Tokens.
 3. Node.js installed for working with Cloudflare Workers (optional but recommended).

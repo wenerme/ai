@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/function-calling/embedded/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide will instruct you through setting up and deploying your first Workers AI project with embedded function calling. You will use Workers, a Workers AI binding, the [`ai-utils package` ↗](https://github.com/cloudflare/ai-utils), and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network with embedded function calling.
+This guide will instruct you through setting up and deploying your first Workers AI project with embedded function calling. You will use Workers, a Workers AI binding, the [`ai-utils package` ↗︎](https://github.com/cloudflare/ai-utils), and a large language model (LLM) to deploy your first AI-powered application on the Cloudflare global network with embedded function calling.
 
 ## 1. Create a Worker project with Workers AI
 
@@ -167,7 +167,7 @@ sequenceDiagram
 
 ```
 
-The `ai-utils package` is also open-sourced on [Github ↗](https://github.com/cloudflare/ai-utils).
+The `ai-utils package` is also open-sourced on [Github ↗︎](https://github.com/cloudflare/ai-utils).
 
 ## 4. Local development & deployment
 

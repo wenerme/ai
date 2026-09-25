@@ -262,7 +262,7 @@ Use this checklist before you depend on a Sandbox SDK release that has removed t
 
 ## Coding agents
 
-Coding agents with [Cloudflare Skills ↗](https://github.com/cloudflare/skills) installed ([Agent setup](https://developers.cloudflare.com/agent-setup/)) should use **`sandbox-stable`** for work on the current stable package and follow **this guide** for deprecated-API cleanup while staying on stable. For a full move to Sandbox SDK 1.0 (`@next`), use **`sandbox-migrate-to-next`** (and the [1.0 migrate guide](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)) instead.
+Coding agents with [Cloudflare Skills ↗︎](https://github.com/cloudflare/skills) installed ([Agent setup](https://developers.cloudflare.com/agent-setup/)) should use **`sandbox-stable`** for work on the current stable package and follow **this guide** for deprecated-API cleanup while staying on stable. For a full move to Sandbox SDK 1.0 (`@next`), use **`sandbox-migrate-to-next`** (and the [1.0 migrate guide](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/)) instead.
 
 ## 1.0 preview
 

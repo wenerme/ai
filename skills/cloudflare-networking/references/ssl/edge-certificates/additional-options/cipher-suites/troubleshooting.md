@@ -62,9 +62,9 @@ You cannot set specific TLS 1.3 ciphers. Instead, you can enable [TLS 1.3](https
 
 ## SSL Labs weak ciphers report
 
-If you try to [disable](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) all of the `WEAK` cipher suites according to what is listed on a  [Qualys SSL Labs ↗](https://www.ssllabs.com/ssltest/) report, you might notice that the naming conventions are not the same.
+If you try to [disable](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) all of the `WEAK` cipher suites according to what is listed on a  [Qualys SSL Labs ↗︎](https://www.ssllabs.com/ssltest/) report, you might notice that the naming conventions are not the same.
 
-This is because SSL Labs follows RFC cipher naming convention while Cloudflare follows OpenSSL cipher naming convention. The cipher suite names list in the [OpenSSL documentation ↗](https://www.openssl.org/docs/man1.0.2/man1/ciphers.html) may help you map the names.
+This is because SSL Labs follows RFC cipher naming convention while Cloudflare follows OpenSSL cipher naming convention. The cipher suite names list in the [OpenSSL documentation ↗︎](https://www.openssl.org/docs/man1.0.2/man1/ciphers.html) may help you map the names.
 
 ## Warnings related to CVE-2019-1559
 

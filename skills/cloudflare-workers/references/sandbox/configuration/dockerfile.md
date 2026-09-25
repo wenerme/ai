@@ -69,7 +69,7 @@ The `-python` variant includes everything in the default image plus:
 
 The `-opencode` variant includes everything in the default image plus:
 
-- [OpenCode CLI ↗](https://opencode.ai) for AI-powered coding agents
+- [OpenCode CLI ↗︎](https://opencode.ai) for AI-powered coding agents
 
 ## Creating a custom image
 
@@ -189,7 +189,7 @@ If you have existing startup scripts that end with `exec bun /container-server/d
 
 - [Image Management](https://developers.cloudflare.com/containers/guides/image-management/) - Building and pushing images to Cloudflare's registry
 - [Wrangler configuration](https://developers.cloudflare.com/sandbox/configuration/wrangler/) - Using custom images in wrangler.jsonc
-- [Docker documentation ↗](https://docs.docker.com/reference/dockerfile/) - Complete Dockerfile syntax
+- [Docker documentation ↗︎](https://docs.docker.com/reference/dockerfile/) - Complete Dockerfile syntax
 - [Container concepts](https://developers.cloudflare.com/sandbox/concepts/containers/) - Understanding the runtime environment
 
 Was this helpful?

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/ibm-cloud-hsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The example below was tested using [IBM Cloud HSM 7.0 ↗](https://console.bluemix.net/docs/infrastructure/hardware-security-modules/about.html#about-ibm-cloud-hsm), a FIPS 140-2 Level 3 certified implementation based on the Gemalto SafeNet Luna a750.
+The example below was tested using [IBM Cloud HSM 7.0 ↗︎](https://console.bluemix.net/docs/infrastructure/hardware-security-modules/about.html#about-ibm-cloud-hsm), a FIPS 140-2 Level 3 certified implementation based on the Gemalto SafeNet Luna a750.
 
 ---
 
@@ -22,8 +22,8 @@ The example below was tested using [IBM Cloud HSM 7.0 ↗](https://console.bluem
 
 Make sure that you have:
 
-- Initialized [your device ↗](https://console.bluemix.net/docs/infrastructure/hardware-security-modules/initialize_hsm.html#initializing-the-ibm-cloud-hsm)
-- Installed the [SafeNet client software ↗](https://cpl.thalesgroup.com/node/11350)
+- Initialized [your device ↗︎](https://console.bluemix.net/docs/infrastructure/hardware-security-modules/initialize_hsm.html#initializing-the-ibm-cloud-hsm)
+- Installed the [SafeNet client software ↗︎](https://cpl.thalesgroup.com/node/11350)
 
 ---
 

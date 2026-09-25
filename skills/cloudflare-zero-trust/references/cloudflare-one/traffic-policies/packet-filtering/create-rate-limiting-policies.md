@@ -26,7 +26,7 @@ For Cloudflare Advanced Network Firewall customers, rate limiting (beta) is avai
 
 To add a policy:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
 2. In the **Rate limiting** tab, select **Add a policy**.
 3. Fill out the information for your new policy:
    - Select the **Field**: At the moment, you can only choose a [data center name](https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/) (for example, `ORD` for Chicago).
@@ -38,7 +38,7 @@ To add a policy:
 
 To edit a policy:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
 2. Select the **Rate limiting** tab.
 3. Locate the policy you want to edit in the list and select **Edit**.
 4. Edit the policy with your changes and select **Edit policy**.
@@ -47,7 +47,7 @@ To edit a policy:
 
 To delete an existing policy:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
 2. Select the **Rate limiting** tab.
 3. Locate the policy you want to delete from the list.
 4. Select the three dots, then select **Remove**.

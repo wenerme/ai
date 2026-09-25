@@ -24,7 +24,7 @@ Rule groups are distinct from groups in your identity provider, like Okta groups
 
 To create an Access rule group:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**, and select the **Rule groups** tab.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**, and select the **Rule groups** tab.
 2. Select **Add a group**.
 3. Enter a name for the group (for example, `Lisbon-team`).
 4. Specify as many rules as needed to define your user group. For example, the following rules define a team based in Lisbon, Portugal:

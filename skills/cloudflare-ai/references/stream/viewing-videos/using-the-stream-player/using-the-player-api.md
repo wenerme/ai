@@ -60,7 +60,7 @@ To use this SDK, add an additional `<script>` tag to your website:
 
 Note
 
-Some browsers prevent videos with audio from playing automatically. You may add the `mute` attribute to allow your videos to autoplay. For more information, review the [iOS video policies ↗](https://webkit.org/blog/6784/new-video-policies-for-ios/).
+Some browsers prevent videos with audio from playing automatically. You may add the `mute` attribute to allow your videos to autoplay. For more information, review the [iOS video policies ↗︎](https://webkit.org/blog/6784/new-video-policies-for-ios/).
 
 - `buffered` TimeRanges readonly
   - An object conforming to the TimeRanges interface. This object is normalized, which means that ranges are ordered, don't overlap, aren't empty, and don't touch (adjacent ranges are folded into one bigger range).
@@ -80,7 +80,7 @@ This will *only* work once during initialization. Beyond that point the user has
 - `ended` boolean readonly
   - Returns whether the video has ended.
 - `letterboxColor` string
-  - Any valid [CSS color value ↗](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) provided will be applied to the letterboxing/pillarboxing of the player's UI. This can be set to `transparent` to avoid letterboxing/pillarboxing when not in fullscreen mode.
+  - Any valid [CSS color value ↗︎](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) provided will be applied to the letterboxing/pillarboxing of the player's UI. This can be set to `transparent` to avoid letterboxing/pillarboxing when not in fullscreen mode.
 - `loop` boolean
   - Sets or returns whether the video should start over when it reaches the end
 - `muted` boolean
@@ -97,7 +97,7 @@ Note
 The `<video>` element does not force the browser to follow the value of this attribute; it is a mere hint. Even though the `preload="none"` option is a valid HTML5 attribute, Stream player will always load some metadata to initialize the player. The amount of data loaded in this case is negligible.
 
 - `primaryColor` string
-  - Any valid [CSS color value ↗](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) provided will be applied to certain elements of the player's UI.
+  - Any valid [CSS color value ↗︎](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) provided will be applied to certain elements of the player's UI.
 - `volume` float
   - Sets or returns volume from 0.0 (silent) to 1.0 (maximum value)
 
@@ -105,7 +105,7 @@ The `<video>` element does not force the browser to follow the value of this att
 
 ### Standard Video Element Events
 
-We support most of the [standardized media element events ↗](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events).
+We support most of the [standardized media element events ↗︎](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events).
 
 - `abort`
   - Sent when playback is aborted; for example, if the media is playing and is restarted from the beginning, this event is sent.

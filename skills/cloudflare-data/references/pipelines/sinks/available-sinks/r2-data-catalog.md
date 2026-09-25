@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sinks/available-sinks/r2-data-catalog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-R2 Data Catalog sinks write processed data from pipelines as [Apache Iceberg ↗](https://iceberg.apache.org/) tables to [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/). Iceberg tables provide ACID transactions, schema evolution, and time travel capabilities for analytics workloads.
+R2 Data Catalog sinks write processed data from pipelines as [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables to [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/). Iceberg tables provide ACID transactions, schema evolution, and time travel capabilities for analytics workloads.
 
 To create an R2 Data Catalog sink, run the [`pipelines sinks create`](https://developers.cloudflare.com/workers/wrangler/commands/pipelines/#pipelines-sinks-create) command and specify the sink type, target bucket, namespace, and table name:
 
@@ -51,7 +51,7 @@ Configure Parquet compression for optimal storage and query performance:
 
 ### Row group size
 
-[Row groups ↗](https://parquet.apache.org/docs/file-format/configurations/) are sets of rows in a Parquet file that are stored together, affecting memory usage and query performance. Configure the target row group size in MB:
+[Row groups ↗︎](https://parquet.apache.org/docs/file-format/configurations/) are sets of rows in a Parquet file that are stored together, affecting memory usage and query performance. Configure the target row group size in MB:
 
 ```bash
 --target-row-group-size 256

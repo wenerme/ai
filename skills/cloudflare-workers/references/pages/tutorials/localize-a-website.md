@@ -24,17 +24,17 @@ This tutorial uses the [`HTMLRewriter`](https://developers.cloudflare.com/worker
 
 ## Before you continue
 
-All of the framework guides assume you already have a fundamental understanding of [Git ↗](https://git-scm.com/). If you are new to Git, refer to this [summarized Git handbook ↗](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
+All of the framework guides assume you already have a fundamental understanding of [Git ↗︎](https://git-scm.com/). If you are new to Git, refer to this [summarized Git handbook ↗︎](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
 
-If you clone with SSH, you must [generate SSH keys ↗](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) on each computer you use to push or pull from GitHub.
+If you clone with SSH, you must [generate SSH keys ↗︎](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) on each computer you use to push or pull from GitHub.
 
-Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/git-handbook/) and [Git documentation ↗](https://git-scm.com/book/en/v2) for more information.
+Refer to the [GitHub documentation ↗︎](https://guides.github.com/introduction/git-handbook/) and [Git documentation ↗︎](https://git-scm.com/book/en/v2) for more information.
 
 ## Prerequisites
 
-This tutorial is designed to use an existing website. To simplify this process, you will use a free HTML5 template from [HTML5 UP ↗](https://html5up.net). With this website as the base, you will use the `HTMLRewriter` functionality in the Workers platform to overlay an i18n layer, automatically translating the site based on the user’s language.
+This tutorial is designed to use an existing website. To simplify this process, you will use a free HTML5 template from [HTML5 UP ↗︎](https://html5up.net). With this website as the base, you will use the `HTMLRewriter` functionality in the Workers platform to overlay an i18n layer, automatically translating the site based on the user’s language.
 
-If you would like to deploy your own version of the site, you can find the source [on GitHub ↗](https://github.com/lauragift21/i18n-example-workers). Instructions on how to deploy this application can be found in the project’s README.
+If you would like to deploy your own version of the site, you can find the source [on GitHub ↗︎](https://github.com/lauragift21/i18n-example-workers). Instructions on how to deploy this application can be found in the project’s README.
 
 ## Create a new application
 
@@ -71,7 +71,7 @@ ls
 public src package.json
 ```
 
-We have to make a few adjustments to the generated project, first we want to the replace the content inside of the `public` directory, with the default generated HTML code for the HTML5 UP template seen in the demo screenshot: download a [release ↗](https://github.com/signalnerve/i18n-example-workers/archive/v1.0.zip) (ZIP file) of the code for this project and copy the `public` folder to your own project to get started.
+We have to make a few adjustments to the generated project, first we want to the replace the content inside of the `public` directory, with the default generated HTML code for the HTML5 UP template seen in the demo screenshot: download a [release ↗︎](https://github.com/signalnerve/i18n-example-workers/archive/v1.0.zip) (ZIP file) of the code for this project and copy the `public` folder to your own project to get started.
 
 Next, let's create a functions directory with an `index.js` file, this will be where the logic of the application will be written.
 
@@ -91,7 +91,7 @@ The example website in this tutorial is a basic single-page HTML project that li
 
 ![Demo code shown in Chrome DevTools with the elements described above](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1000,height=934,format=webp/_astro/code-example.Csjrvc1w.png)
 
-What is unique about this page is the addition of [data attributes ↗](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) in the HTML – custom attributes defined on a number of elements on this page. The `data-i18n-key` on the `h1` tag on this page, as well as many of the `p` tags, indicates that there is a corresponding internationalization key, which should be used to look up a translation for this text:
+What is unique about this page is the addition of [data attributes ↗︎](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes) in the HTML – custom attributes defined on a number of elements on this page. The `data-i18n-key` on the `h1` tag on this page, as well as many of the `p` tags, indicates that there is a corresponding internationalization key, which should be used to look up a translation for this text:
 
 ```html
 <!-- source clipped from i18n-example site -->
@@ -188,7 +188,7 @@ To implement this:
 2. Pass a `countryStrings` object into our `ElementHandler`, so that it can be used during the parsing process.
 3. Grab the `Accept-Language` header from an incoming request, parse it, and pass the parsed language to `ElementHandler`.
 
-To parse the `Accept-Language` header, install the [`accept-language-parser` ↗](https://www.npmjs.com/package/accept-language-parser) npm package:
+To parse the `Accept-Language` header, install the [`accept-language-parser` ↗︎](https://www.npmjs.com/package/accept-language-parser) npm package:
 
 ```sh
 npm i accept-language-parser
@@ -286,7 +286,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 	"name": "i18n-example",
 	"pages_build_output_dir": "./public",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22"
+	"compatibility_date": "2026-09-25"
 }
 ```
 
@@ -295,7 +295,7 @@ To deploy your application to a `*.pages.dev` subdomain, you need to specify a d
 name = "i18n-example"
 pages_build_output_dir = "./public"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 ```
 
 Next, you need to configure a deploy script in `package.json` file in your project. Add a deploy script with the value `wrangler pages deploy`:
@@ -317,7 +317,7 @@ npm run deploy
 
 ## Related resources
 
-In this tutorial, you built and deployed an i18n tool using `HTMLRewriter`. To review the full source code for this application, refer to the [repository on GitHub ↗](https://github.com/lauragift21/i18n-example-workers).
+In this tutorial, you built and deployed an i18n tool using `HTMLRewriter`. To review the full source code for this application, refer to the [repository on GitHub ↗︎](https://github.com/lauragift21/i18n-example-workers).
 
 If you want to get started building your own projects, review the existing list of [Quickstart templates](https://developers.cloudflare.com/workers/get-started/quickstarts/).
 

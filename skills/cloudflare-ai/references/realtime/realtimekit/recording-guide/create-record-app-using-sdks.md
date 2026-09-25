@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/create-record-app-using-sdks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When you join a RealtimeKit meeting, the meeting layout is automatically designed to optimize your experience. This includes focusing on shared content and highlighting active speakers, while participants are shown in small thumbnail views. When you start recording the meeting, it is recorded with the same layout using the default UI kit component called [RtkGrid ↗](https://docs.realtime.cloudflare.com/react-ui-kit/components/rtk-grid).
+When you join a RealtimeKit meeting, the meeting layout is automatically designed to optimize your experience. This includes focusing on shared content and highlighting active speakers, while participants are shown in small thumbnail views. When you start recording the meeting, it is recorded with the same layout using the default UI kit component called [RtkGrid ↗︎](https://docs.realtime.cloudflare.com/react-ui-kit/components/rtk-grid).
 
 If you wish to have a customized layout for your recording application, RealtimeKit's custom recording SDKs provide the flexibility to tailor the appearance of your recordings according to your preferences. You can choose from options like:
 
@@ -81,11 +81,11 @@ You might see a WebSocket error in the browser console while testing locally bec
 
 ### Examples
 
-Refer to the [recording SDK app examples ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/recording-sdk-app-examples) for sample implementations, including a [recording with watermark example ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/recording-sdk-app-examples/react-examples/recording-with-watermark).
+Refer to the [recording SDK app examples ↗︎](https://github.com/cloudflare/realtimekit-web-examples/tree/main/recording-sdk-app-examples) for sample implementations, including a [recording with watermark example ↗︎](https://github.com/cloudflare/realtimekit-web-examples/tree/main/recording-sdk-app-examples/react-examples/recording-with-watermark).
 
 ## Recording SDK reference
 
-The custom recording SDKs are used on top of the [UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/) or [Core SDK](https://developers.cloudflare.com/realtime/realtimekit/core/). The [`@cloudflare/realtimekit-recording-sdk` package ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-recording-sdk) provides the `RealtimeKitRecording` class for managing recording functionality.
+The custom recording SDKs are used on top of the [UI Kit](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/) or [Core SDK](https://developers.cloudflare.com/realtime/realtimekit/core/). The [`@cloudflare/realtimekit-recording-sdk` package ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-recording-sdk) provides the `RealtimeKitRecording` class for managing recording functionality.
 
 ### Constructor
 
@@ -182,7 +182,7 @@ Once `stopRecording` is called, the recorder in your recording app will exit aft
 
 ### Step 7: Deploy the recording app
 
-Once you've created the app, deploy it using a platform like [Cloudflare Workers ↗](https://cloudflare.com/workers). Make sure to note the URL where you have deployed the app, as you will have to enter this URL in RealtimeKit's recording API.
+Once you've created the app, deploy it using a platform like [Cloudflare Workers ↗︎](https://cloudflare.com/workers). Make sure to note the URL where you have deployed the app, as you will have to enter this URL in RealtimeKit's recording API.
 
 ### Step 8: Specify the custom URL
 

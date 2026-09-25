@@ -18,7 +18,7 @@ Note
 
 For compatibility dates of `2026-08-04` or later, Workers enables both `nodejs_compat` and `nodejs_compat_v2` by default. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date. For earlier dates, add `nodejs_compat` to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in. For instructions to turn off Node.js compatibility, refer to the [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-You can use [`node:fs` ↗](https://nodejs.org/api/fs.html) to access a virtual file system in Workers.
+You can use [`node:fs` ↗︎](https://nodejs.org/api/fs.html) to access a virtual file system in Workers.
 
 The `node:fs` module is available in Workers runtimes that support Node.js compatibility using the `nodejs_compat` compatibility flag. Any Worker running with `nodejs_compat` enabled and with a compatibility date of `2025-09-01` or later will have access to `node:fs` by default. It is also possible to enable `node:fs` on Workers with an earlier compatibility date using a combination of the `nodejs_compat` and `enable_nodejs_fs_module` flags. To disable `node:fs` you can set the `disable_nodejs_fs_module` flag.
 
@@ -30,7 +30,7 @@ const config = readFileSync("/bundle/config.txt", "utf8");
 writeFileSync("/tmp/abc.txt", "Hello, world!");
 ```
 
-The Workers Virtual File System (VFS) is a memory-based file system that allows you to read modules included in your Worker bundle as read-only files, access a directory for writing temporary files, or access common [character devices ↗](https://linux-kernel-labs.github.io/refs/heads/master/labs/device_drivers.html) like `/dev/null`, `/dev/random`, `/dev/full`, and `/dev/zero`.
+The Workers Virtual File System (VFS) is a memory-based file system that allows you to read modules included in your Worker bundle as read-only files, access a directory for writing temporary files, or access common [character devices ↗︎](https://linux-kernel-labs.github.io/refs/heads/master/labs/device_drivers.html) like `/dev/null`, `/dev/random`, `/dev/full`, and `/dev/zero`.
 
 The directory structure initially looks like:
 
@@ -106,7 +106,7 @@ The following `node:fs` APIs are not supported in Workers, or are only partially
 - Timestamps for files are always set to the Unix epoch ( `1970-01-01T00:00:00Z`).
 - File permissions and ownership are not supported.
 
-The full `node:fs` API is documented in the [Node.js documentation for `node:fs` ↗](https://nodejs.org/api/fs.html).
+The full `node:fs` API is documented in the [Node.js documentation for `node:fs` ↗︎](https://nodejs.org/api/fs.html).
 
 Was this helpful?
 

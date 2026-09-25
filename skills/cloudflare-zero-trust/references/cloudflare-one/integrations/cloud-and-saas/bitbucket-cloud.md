@@ -43,7 +43,7 @@ For the Bitbucket Cloud integration to function, Cloudflare CASB requires the fo
 - `webhook`
 - `wiki`
 
-These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission scope, refer to the [Atlassian scopes documentation ↗](https://developer.atlassian.com/cloud/bitbucket/rest/intro/#oauth-2-0).
+These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission scope, refer to the [Atlassian scopes documentation ↗︎](https://developer.atlassian.com/cloud/bitbucket/rest/intro/#oauth-2-0).
 
 ## Security findings
 

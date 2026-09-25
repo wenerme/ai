@@ -58,17 +58,17 @@ DNS filtering only applies to the hostname — `subdomain.domain.tld`. You canno
 
 Secure Web Gateways (SWGs) offer a greater set of capabilities, including:
 
-- [URL filtering ↗](https://www.cloudflare.com/learning/access-management/what-is-url-filtering/) to block specific paths and queries
+- [URL filtering ↗︎](https://www.cloudflare.com/learning/access-management/what-is-url-filtering/) to block specific paths and queries
 - L4 firewalls to block ports and protocols
 - Antivirus scanning
-- [Data loss prevention ↗](https://www.cloudflare.com/learning/access-management/what-is-dlp/)
-- [Browser isolation ↗](https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/)
+- [Data loss prevention ↗︎](https://www.cloudflare.com/learning/access-management/what-is-dlp/)
+- [Browser isolation ↗︎](https://www.cloudflare.com/learning/access-management/what-is-browser-isolation/)
 
 However, this can make SWGs more complex to deploy. Therefore, many organizations will start with DNS filtering as an initial layer of defense against Internet threats.
 
 ## Related resources
 
-- For more background information on DNS filtering, refer to our [Learning Center ↗](https://www.cloudflare.com/learning/access-management/what-is-dns-filtering/).
+- For more background information on DNS filtering, refer to our [Learning Center ↗︎](https://www.cloudflare.com/learning/access-management/what-is-dns-filtering/).
 
 ## Next steps
 

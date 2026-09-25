@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dynamic-workers/examples/dynamic-workers-playground/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Try the Dynamic Workers [playground ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground) to write or import code from GitHub, bundle it at runtime, execute it in a Dynamic Worker, and view real-time logs.
+Try the Dynamic Workers [playground ↗︎](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground) to write or import code from GitHub, bundle it at runtime, execute it in a Dynamic Worker, and view real-time logs.
 
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground)
 
@@ -22,14 +22,14 @@ Try the Dynamic Workers [playground ↗](https://github.com/cloudflare/agents/tr
 
 ## What this demo shows
 
-- **Runtime bundling** — Uses [`@cloudflare/worker-bundler` ↗](https://www.npmjs.com/package/@cloudflare/worker-bundler) to resolve npm dependencies and compile TypeScript inside a Worker
+- **Runtime bundling** — Uses [`@cloudflare/worker-bundler` ↗︎](https://www.npmjs.com/package/@cloudflare/worker-bundler) to resolve npm dependencies and compile TypeScript inside a Worker
 - **Dynamic execution** — Loads bundled code into an isolated Dynamic Worker
 - **Caching** — Reuses previously bundled Workers when the source has not changed
 - **Real-time output** — Streams the response body, console logs, execution timing, and bundle metadata back to the client
 
 ## Bundling code at runtime
 
-The playground uses [`@cloudflare/worker-bundler` ↗](https://www.npmjs.com/package/@cloudflare/worker-bundler) to compile TypeScript, resolve npm dependencies, and produce modules the Worker Loader can execute.
+The playground uses [`@cloudflare/worker-bundler` ↗︎](https://www.npmjs.com/package/@cloudflare/worker-bundler) to compile TypeScript, resolve npm dependencies, and produce modules the Worker Loader can execute.
 
 Pass source files and a `package.json` to `createWorker()`, which resolves dependencies and returns bundled modules ready to load as a Dynamic Worker:
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-dedicated-hsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial uses [Azure Dedicated HSM ↗](https://azure.microsoft.com/en-us/services/azure-dedicated-hsm/) — a FIPS 140-2 Level 3 certified implementation based on the Gemalto SafeNet Luna a790.
+This tutorial uses [Azure Dedicated HSM ↗︎](https://azure.microsoft.com/en-us/services/azure-dedicated-hsm/) — a FIPS 140-2 Level 3 certified implementation based on the Gemalto SafeNet Luna a790.
 
 ---
 
@@ -22,8 +22,8 @@ This tutorial uses [Azure Dedicated HSM ↗](https://azure.microsoft.com/en-us/s
 
 Make sure you have:
 
-- Followed Microsoft's [tutorial ↗](https://docs.microsoft.com/en-us/azure/dedicated-hsm/tutorial-deploy-hsm-powershell) for deploying HSMs into an existing virtual network using PowerShell
-- Installed the [SafeNet client software ↗](https://cpl.thalesgroup.com/node/11350)
+- Followed Microsoft's [tutorial ↗︎](https://docs.microsoft.com/en-us/azure/dedicated-hsm/tutorial-deploy-hsm-powershell) for deploying HSMs into an existing virtual network using PowerShell
+- Installed the [SafeNet client software ↗︎](https://cpl.thalesgroup.com/node/11350)
 
 ---
 

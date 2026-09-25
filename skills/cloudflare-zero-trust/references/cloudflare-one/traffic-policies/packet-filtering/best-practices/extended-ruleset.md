@@ -109,7 +109,7 @@ Alternatively, if you have Cloudflare Layer 7 protection, the Cloudflare public 
 
 Caution
 
-Cloudflare's IP ranges may change. Refer to [Cloudflare's IP addresses ↗](https://www.cloudflare.com/ips/) for the current list, or use an [IP list](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists) that you update periodically rather than hardcoding ranges in your rules.
+Cloudflare's IP ranges may change. Refer to [Cloudflare's IP addresses ↗︎](https://www.cloudflare.com/ips/) for the current list, or use an [IP list](https://developers.cloudflare.com/waf/tools/lists/custom-lists/#ip-lists) that you update periodically rather than hardcoding ranges in your rules.
 
 ### Suggested rules for Cloudflare proxied traffic
 

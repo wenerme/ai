@@ -28,7 +28,7 @@ Create a microfrontend project:
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://dash.cloudflare.com/?to=/:account/workers-and-pages/create?type=vmfe)
 
-This template automatically creates a router worker with pre-configured routing logic, and lets you configure [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) to Workers you have already deployed to your Cloudflare account. The code or this template is available on GitHub at [cloudflare/templates ↗](https://github.com/cloudflare/templates/tree/main/microfrontend-template).
+This template automatically creates a router worker with pre-configured routing logic, and lets you configure [Service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/) to Workers you have already deployed to your Cloudflare account. The code or this template is available on GitHub at [cloudflare/templates ↗︎](https://github.com/cloudflare/templates/tree/main/microfrontend-template).
 
 ## How it works
 
@@ -205,7 +205,7 @@ For Chromium-based browsers, the router uses the **Speculation Rules API** - a m
 
 ## Smooth transitions
 
-You can enable smooth page transitions between microfrontends using the [View Transitions API ↗](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API).
+You can enable smooth page transitions between microfrontends using the [View Transitions API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/View_Transitions_API).
 
 To enable smooth transitions, set `"smoothTransitions": true` in your `ROUTES` configuration:
 

@@ -67,7 +67,7 @@ You must add both `python_workflows` and `python_workers` compatibility flags to
 		"python_workflows"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"workflows": [
 		{
 			"name": "workflows-demo",
@@ -84,7 +84,7 @@ name = "hello-python"
 main = "src/entry.py"
 compatibility_flags = [ "python_workers", "python_workflows" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[workflows]]
 name = "workflows-demo"
@@ -104,7 +104,7 @@ To deploy a Python Workflow to Cloudflare, run [`wrangler deploy`](https://devel
 npx wrangler@latest deploy
 ```
 
-Join the #python-workers channel in the [Cloudflare Developers Discord ↗](https://discord.cloudflare.com/) and let us know what you would like to see next.
+Join the #python-workers channel in the [Cloudflare Developers Discord ↗︎](https://discord.cloudflare.com/) and let us know what you would like to see next.
 
 Was this helpful?
 

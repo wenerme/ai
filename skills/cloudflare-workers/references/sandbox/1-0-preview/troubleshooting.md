@@ -78,7 +78,7 @@ For agents and long-running tools on `@next`:
 4. On a later request: `getProcess(id)` while the same container may still hold it; otherwise `exec` again.
 5. Use a [terminal](https://developers.cloudflare.com/sandbox/1-0-preview/terminals/) only when you need a human PTY, not as a session substitute.
 
-Refer to [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/), [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/), and examples in the [sandbox-sdk ↗](https://github.com/cloudflare/sandbox-sdk/tree/next/examples) repo (`claude-code`, `codex`, `opencode`, and others).
+Refer to [Process execution](https://developers.cloudflare.com/sandbox/1-0-preview/processes/), [Migrate](https://developers.cloudflare.com/sandbox/1-0-preview/migrate/), and examples in the [sandbox-sdk ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/next/examples) repo (`claude-code`, `codex`, `opencode`, and others).
 
 ## Related
 

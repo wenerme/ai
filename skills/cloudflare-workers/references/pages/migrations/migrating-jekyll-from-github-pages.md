@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/migrations/migrating-jekyll-from-github-pages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this tutorial, you will learn how to migrate an existing [GitHub Pages site using Jekyll ↗](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll) to Cloudflare Pages. Jekyll is one of the most popular static site generators used with GitHub Pages, and migrating your GitHub Pages site to Cloudflare Pages will take a few short steps.
+In this tutorial, you will learn how to migrate an existing [GitHub Pages site using Jekyll ↗︎](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll) to Cloudflare Pages. Jekyll is one of the most popular static site generators used with GitHub Pages, and migrating your GitHub Pages site to Cloudflare Pages will take a few short steps.
 
 This tutorial will guide you through:
 
@@ -33,12 +33,12 @@ If you have a Jekyll-based site not deployed on GitHub Pages, refer to [the Jeky
 
 This tutorial assumes:
 
-1. You have an existing GitHub Pages site using [Jekyll ↗](https://jekyllrb.com/)
+1. You have an existing GitHub Pages site using [Jekyll ↗︎](https://jekyllrb.com/)
 2. You have some familiarity with running Ruby's command-line tools, and have both `gem` and `bundle` installed.
 3. You know how to use a few basic Git operations, including `add`, `commit`, `push`, and `pull`.
 4. You have read the [Get Started](https://developers.cloudflare.com/pages/get-started/) guide for Cloudflare Pages.
 
-If you do not have Rubygems (`gem`) or Bundler (`bundle`) installed on your machine, refer to the installation guides for [Rubygems ↗](https://rubygems.org/pages/download) and [Bundler ↗](https://bundler.io/).
+If you do not have Rubygems (`gem`) or Bundler (`bundle`) installed on your machine, refer to the installation guides for [Rubygems ↗︎](https://rubygems.org/pages/download) and [Bundler ↗︎](https://bundler.io/).
 
 ## Preparing your GitHub Pages repository
 
@@ -138,7 +138,7 @@ After deploying your site, you will receive a unique subdomain for your project 
 
 ## Migrating your custom domain
 
-If you are using a [custom domain with GitHub Pages ↗](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site), you must update your DNS record(s) to point at your new Cloudflare Pages deployment. This will require you to update the `CNAME` record at the DNS provider for your domain to point to `<your-pages-site>.pages.dev`, replacing `<your-username>.github.io`.
+If you are using a [custom domain with GitHub Pages ↗︎](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site), you must update your DNS record(s) to point at your new Cloudflare Pages deployment. This will require you to update the `CNAME` record at the DNS provider for your domain to point to `<your-pages-site>.pages.dev`, replacing `<your-username>.github.io`.
 
 Note that it may take some time for DNS caches to expire and for this change to be reflected, depending on the DNS TTL (time-to-live) value you set when you originally created the record.
 

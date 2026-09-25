@@ -37,7 +37,7 @@ If the tag does not exist in the HTML, but you are still sure that your page is 
 
 ## Other issues with Cloudflare Fonts
 
-If you experience any issues or have questions while using Cloudflare Fonts, refer to the [Cloudflare Community ↗](https://community.cloudflare.com/) pages or contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for assistance.
+If you experience any issues or have questions while using Cloudflare Fonts, refer to the [Cloudflare Community ↗︎](https://community.cloudflare.com/) pages or contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for assistance.
 
 Was this helpful?
 

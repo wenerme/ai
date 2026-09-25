@@ -22,7 +22,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -37,7 +37,7 @@ Feature availability
 
 </details>
 
-The [Maximum Transmission Unit (MTU) ↗](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) is the largest data packet size that a device can send over a network without fragmentation. When you connect to services through the Cloudflare One Client (formerly WARP), your data is encapsulated, which adds extra headers and increases the overall packet size. On some networks, especially cellular or guest Wi-Fi networks, the network's MTU may be smaller than the Cloudflare One Client's [default packet size](#recommended-mtu). This mismatch forces packets to be fragmented or dropped entirely, leading to connection instability or complete connection failures.
+The [Maximum Transmission Unit (MTU) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) is the largest data packet size that a device can send over a network without fragmentation. When you connect to services through the Cloudflare One Client (formerly WARP), your data is encapsulated, which adds extra headers and increases the overall packet size. On some networks, especially cellular or guest Wi-Fi networks, the network's MTU may be smaller than the Cloudflare One Client's [default packet size](#recommended-mtu). This mismatch forces packets to be fragmented or dropped entirely, leading to connection instability or complete connection failures.
 
 The Cloudflare One Client's Path MTU Discovery (PMTUD) feature solves this problem by actively probing for the minimum MTU along the entire network path between the device and Cloudflare. The Cloudflare One Client will then dynamically adjust its [tunnel interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#virtual-interface) MTU based on the probe results. This allows the Cloudflare One Client to maintain a stable connection on low MTU networks and take advantage of higher MTUs when available.
 

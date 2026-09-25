@@ -18,7 +18,7 @@ Looking for Zero Trust?
 
 This documentation is for the consumer version of WARP (1.1.1.1 with WARP). If you are using WARP for Zero Trust security, refer to the [Cloudflare One Client documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/).
 
-1. [Download ↗](https://downloads.cloudflareclient.com/v1/download/windows/ga) Cloudflare WARP for Windows.
+1. [Download ↗︎](https://downloads.cloudflareclient.com/v1/download/windows/ga) Cloudflare WARP for Windows.
 2. Go to your predefined download folder and open the executable file to install WARP.
 3. Follow the instructions to complete installation. Cloudflare WARP will automatically launch and appear in your menu bar with the Cloudflare logo.
 4. Select **Next** and **Accept** Cloudflare's privacy policy.

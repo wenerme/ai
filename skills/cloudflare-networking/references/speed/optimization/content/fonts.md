@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/speed/optimization/content/fonts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Fonts is a feature designed for websites that use [Google Fonts ↗](https://fonts.google.com/). It rewrites Google Fonts to be delivered from a website’s own origin, eliminating the need to rely on third-party font providers. Cloudflare Fonts is tailored to improve website performance and user privacy without the need for any code changes or self-hosting of fonts.
+Cloudflare Fonts is a feature designed for websites that use [Google Fonts ↗︎](https://fonts.google.com/). It rewrites Google Fonts to be delivered from a website’s own origin, eliminating the need to rely on third-party font providers. Cloudflare Fonts is tailored to improve website performance and user privacy without the need for any code changes or self-hosting of fonts.
 
 ## How Cloudflare Fonts works
 
@@ -55,7 +55,7 @@ While Cloudflare Fonts offers powerful font optimization capabilities, it is imp
 - **Font transformation**: Currently, Cloudflare Fonts exclusively supports Google Fonts transformation.
 - **APO compatibility**: Cloudflare Fonts does not operate when [Automatic Platform Optimization](https://developers.cloudflare.com/automatic-platform-optimization/) (APO) is enabled. Cloudflare APO automatically optimizes Google Fonts in a similar way.
 - **CSS import**: Cloudflare Fonts is compatible only with the `<link>` setup for Google Fonts and does not support the CSS `@import` method.
-- **CSP headers**: Cloudflare Fonts does not modify [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy) headers. Certain CSP configurations may make Cloudflare Fonts stop working, such as restrictions on inline styles through [`style-src` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/style-src), or restriction of fonts originating from the site's own origin via [`font-src` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/font-src).
+- **CSP headers**: Cloudflare Fonts does not modify [Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy) headers. Certain CSP configurations may make Cloudflare Fonts stop working, such as restrictions on inline styles through [`style-src` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/style-src), or restriction of fonts originating from the site's own origin via [`font-src` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/font-src).
 - **Fallback mechanism**: In cases where Cloudflare Fonts does not support a specific page, it will gracefully fallback to using Google Fonts.
 
 Was this helpful?

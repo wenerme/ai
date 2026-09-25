@@ -20,7 +20,7 @@ D1 has fully-featured support for local development, running the same version of
 
 Note
 
-This guide assumes you are using [Wrangler v3.0 ↗](https://blog.cloudflare.com/wrangler3/) or later.
+This guide assumes you are using [Wrangler v3.0 ↗︎](https://blog.cloudflare.com/wrangler3/) or later.
 
 Users new to D1 and/or Cloudflare Workers should visit the [D1 tutorial](https://developers.cloudflare.com/d1/get-started/) to install `wrangler` and deploy their first database.
 
@@ -142,9 +142,9 @@ Users of wrangler `2.x` must use the `--persist` flag: previous versions of wran
 
 ### Miniflare
 
-[Miniflare ↗](https://miniflare.dev/) allows you to simulate a Workers and resources like D1 using the same underlying runtime and code as used in production.
+[Miniflare ↗︎](https://miniflare.dev/) allows you to simulate a Workers and resources like D1 using the same underlying runtime and code as used in production.
 
-You can use Miniflare's [support for D1 ↗](https://miniflare.dev/storage/d1) to create D1 databases you can use for testing:
+You can use Miniflare's [support for D1 ↗︎](https://miniflare.dev/storage/d1) to create D1 databases you can use for testing:
 
 ```jsonc
 {

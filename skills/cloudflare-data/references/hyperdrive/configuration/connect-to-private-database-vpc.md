@@ -20,7 +20,7 @@ For the Tunnel and Access approach, refer to [Connect to a private database usin
 
 ## How it works
 
-When your database is isolated within a private network (such as a [virtual private cloud ↗](https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud) or an on-premise network), you must enable a secure connection from your network to Cloudflare.
+When your database is isolated within a private network (such as a [virtual private cloud ↗︎](https://www.cloudflare.com/learning/cloud/what-is-a-virtual-private-cloud) or an on-premise network), you must enable a secure connection from your network to Cloudflare.
 
 - [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) is used to establish a secure outbound connection from your private network to Cloudflare.
 - A [VPC Service](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) is used to route traffic from your Worker through the tunnel to your database, without requiring Cloudflare Access applications or service tokens.
@@ -35,7 +35,7 @@ flowchart LR
 
 ## Before you start
 
-All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ All of the tutorials assume you have already completed the [Get started guide](h
 
 If you do not already have a tunnel running in the same network as your database, create one.
 
-1. Go to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc/tunnels) and select the **Tunnels** tab.
+1. Go to the [Workers VPC dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/vpc/tunnels) and select the **Tunnels** tab.
 2. Select **Create** to create a tunnel.
 3. Enter a name for your tunnel and select **Save tunnel**.
 4. Choose your operating system and architecture. The dashboard will provide installation instructions.
@@ -86,7 +86,7 @@ Replace:
 
 The command will return a service ID. Save this value for the next step.
 
-You can also create a TCP VPC Service from the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc). Refer to [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) for all configuration options.
+You can also create a TCP VPC Service from the [Workers VPC dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/vpc). Refer to [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) for all configuration options.
 
 ### TLS certificate verification
 
@@ -177,7 +177,7 @@ id = "<YOUR_DATABASE_ID>"
 Specifically:
 
 - The value (string) you set for the `binding` (binding name) will be used to reference this database in your Worker. In this tutorial, name your binding `HYPERDRIVE`.
-- The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
+- The binding must be [a valid JavaScript variable name ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
 - Your binding is available in your Worker at `env.<BINDING_NAME>`.
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
@@ -207,7 +207,7 @@ Learn more about setting up [Hyperdrive for local development](https://developer
 
 ## 5. Query the database
 
-Use [node-postgres ↗](https://node-postgres.com/) (`pg`) to send a test query.
+Use [node-postgres ↗︎](https://node-postgres.com/) (`pg`) to send a test query.
 
 Install the `node-postgres` driver:
 
@@ -262,7 +262,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -275,7 +275,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -328,9 +328,9 @@ npx wrangler deploy
 
 If you receive a list of `pg_tables` from your database when you access your deployed Worker, Hyperdrive is connected to your private database through Workers VPC.
 
-Use [mysql2 ↗](https://github.com/sidorares/node-mysql2) to send a test query.
+Use [mysql2 ↗︎](https://github.com/sidorares/node-mysql2) to send a test query.
 
-Install the [mysql2 ↗](https://github.com/sidorares/node-mysql2) driver:
+Install the [mysql2 ↗︎](https://github.com/sidorares/node-mysql2) driver:
 
 npmyarnpnpmbun
 
@@ -363,7 +363,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -376,7 +376,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

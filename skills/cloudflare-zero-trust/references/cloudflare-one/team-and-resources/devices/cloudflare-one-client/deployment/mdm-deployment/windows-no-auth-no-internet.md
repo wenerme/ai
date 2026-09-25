@@ -24,7 +24,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -74,7 +74,7 @@ When the Cloudflare One Client reads this configuration and detects that no user
 
 ## Block access to RFC 1918 ranges in lockdown state
 
-By default, the Cloudflare One Client permits traffic to [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) private address ranges (`10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`) while the device is locked down. This allows the device to reach on-premise resources such as a domain controller, an MDM server, or a local printer before the user authenticates.
+By default, the Cloudflare One Client permits traffic to [RFC 1918 ↗︎](https://datatracker.ietf.org/doc/html/rfc1918) private address ranges (`10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`) while the device is locked down. This allows the device to reach on-premise resources such as a domain controller, an MDM server, or a local printer before the user authenticates.
 
 To block RFC 1918 traffic during lockdown, set `no_auth_no_internet_block_rfc_1918` to `true`:
 

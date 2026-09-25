@@ -22,7 +22,7 @@ Workers AI is included in both the [Free and Paid Workers plans](https://develop
 
 Our free allocation allows anyone to use a total of **10,000 Neurons per day at no charge**. To use more than 10,000 Neurons per day, you need to sign up for the [Workers Paid plan](https://developers.cloudflare.com/workers/platform/pricing/#workers). On Workers Paid, you will be charged at $0.011 / 1,000 Neurons for any usage above the free allocation of 10,000 Neurons per day.
 
-You can monitor your Neuron usage in the [Cloudflare Workers AI dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/workers-ai).
+You can monitor your Neuron usage in the [Cloudflare Workers AI dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/ai/workers-ai).
 
 All limits reset daily at 00:00 UTC. If you exceed any one of the above limits, further operations will fail with an error.
 

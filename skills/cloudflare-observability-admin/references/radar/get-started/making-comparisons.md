@@ -20,7 +20,7 @@ When comparing time series, across locations/time ranges/etc., in endpoints that
 
 ## Compare locations
 
-In the following example, we will compare the traffic change across two different locations — United States and Portugal. The example will use [alpha-2 codes ↗](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) for the last seven days:
+In the following example, we will compare the traffic change across two different locations — United States and Portugal. The example will use [alpha-2 codes ↗︎](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) for the last seven days:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=us_data&dateRange=7d&location=US&name=pt_data&dateRange=7d&location=PT&format=json" \
@@ -102,7 +102,7 @@ Examining this information, we can conclude that the maximum value was reached a
 
 ### Use specific timestamps
 
-You can also request for specific timestamps. In the following example, we will ask for data relative to [Tonga ↗](https://blog.cloudflare.com/tonga-internet-outage/) in October versus January 2022, when there was an outage.
+You can also request for specific timestamps. In the following example, we will ask for data relative to [Tonga ↗︎](https://blog.cloudflare.com/tonga-internet-outage/) in October versus January 2022, when there was an outage.
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=tonga&dateStart=2022-10-15T02%3A00%3A00Z&dateEnd=2022-10-15T05%3A00%3A00Z&location=TO&name=tonga_outage&dateStart=2022-01-15T02%3A00%3A00Z&dateEnd=2022-01-15T05%3A00%3A00Z&location=TO&format=json&aggInterval=1h" \

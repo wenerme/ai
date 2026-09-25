@@ -60,6 +60,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [Infinity data source plugin for Grafana](/docs/plugins/yesoreyeram-infinity-datasource/latest/ "Infinity data source plugin for Grafana")
 - [Install and upgrade the Azure Data Explorer data source plugin](/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/ "Install and upgrade the Azure Data Explorer data source plugin")
 - [Interactive learning](/docs/plugins/grafana-pathfinder-app/latest/ "Interactive learning")
+- [Introduction to Prometheus Alerting](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/ "Introduction to Prometheus Alerting")
 - [Investigations App](/docs/plugins/grafana-investigations-app/latest/ "Investigations App")
 - [Jenkins data source for Grafana](/docs/plugins/grafana-jenkins-datasource/latest/ "Jenkins data source for Grafana")
 - [Jira data source](/docs/plugins/grafana-jira-datasource/latest/ "Jira data source")

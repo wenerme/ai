@@ -18,7 +18,7 @@ HTTP/3 uses QUIC, which is a secure-by-default transport protocol. HTTP/3 improv
 
 Note
 
-For more background on HTTP/3, visit the [Learning Center ↗](https://www.cloudflare.com/learning/performance/what-is-http3/).
+For more background on HTTP/3, visit the [Learning Center ↗︎](https://www.cloudflare.com/learning/performance/what-is-http3/).
 
 Note
 
@@ -36,7 +36,7 @@ HTTP/3 is available to all plans (though it does require an [SSL certificate at 
 
 To enable **HTTP/3** in the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Select your account and zone.
 3. Go to **Speed** > **Settings**.
 4. Go to **Protocol Optimization**.

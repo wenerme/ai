@@ -110,7 +110,7 @@ Deploy the Worker for end-to-end audio. The SFU needs a publicly reachable WebSo
    ```
 
 
-2. **Configure the application.** In the checked-in Wrangler configuration, set `CF_ACCOUNT` and `REALTIME_SFU_APP_ID` to your account and SFU app identifiers. Follow the [configuration guide ↗](https://github.com/cloudflare/realtime-examples/tree/main/ai-tts-stt#configuration) for the model and audio-processing configuration.
+2. **Configure the application.** In the checked-in Wrangler configuration, set `CF_ACCOUNT` and `REALTIME_SFU_APP_ID` to your account and SFU app identifiers. Follow the [configuration guide ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/ai-tts-stt#configuration) for the model and audio-processing configuration.
 
    Add the backend secrets through Wrangler's interactive prompts:npmyarnpnpm
 
@@ -176,11 +176,11 @@ Deploy the Worker for end-to-end audio. The SFU needs a publicly reachable WebSo
 5. **Generate speech.** In the publisher tab, enter text and select **Generate Speech**. Confirm that the listener plays the generated audio.
 6. **Transcribe speech.** In the publisher tab, select the **STT** tab, then **Start Mic**, and allow microphone access. Wait for the WebRTC connection to become connected, then select **Start Forwarding**. Speak and observe the returned transcript.
 
-The example's [deployment and use guide ↗](https://github.com/cloudflare/realtime-examples/tree/main/ai-tts-stt#deploy-and-use) describes the controls and URL patterns in detail.
+The example's [deployment and use guide ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/ai-tts-stt#deploy-and-use) describes the controls and URL patterns in detail.
 
 ## Stop and clean up
 
-To stop the example's flows, select **Stop Forwarding**, **Stop Mic**, and **Unpublish** as applicable. Review the example's [Stop the Session and Debug Cleanup instructions ↗](https://github.com/cloudflare/realtime-examples/tree/main/ai-tts-stt#deploy-and-use) before deleting the backend or exposing administrative operations. Resource ownership and failure recovery need validation for your integration.
+To stop the example's flows, select **Stop Forwarding**, **Stop Mic**, and **Unpublish** as applicable. Review the example's [Stop the Session and Debug Cleanup instructions ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/ai-tts-stt#deploy-and-use) before deleting the backend or exposing administrative operations. Resource ownership and failure recovery need validation for your integration.
 
 ## Adapt the example
 
@@ -188,7 +188,7 @@ For a spoken tutor, connect finalized transcripts to your dialogue logic and sen
 
 ## Inspect the implementation
 
-Follow the [TTS implementation guide ↗](https://github.com/cloudflare/realtime-examples/blob/main/ai-tts-stt/TTSAdapter.md) for speech generation, conversion, and publication. The [STT implementation guide ↗](https://github.com/cloudflare/realtime-examples/blob/main/ai-tts-stt/STTAdapter.md) covers microphone forwarding and transcript delivery.
+Follow the [TTS implementation guide ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/ai-tts-stt/TTSAdapter.md) for speech generation, conversion, and publication. The [STT implementation guide ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/ai-tts-stt/STTAdapter.md) covers microphone forwarding and transcript delivery.
 
 ## Troubleshooting
 
@@ -196,7 +196,7 @@ Use [adapter troubleshooting](https://developers.cloudflare.com/realtime/sfu/fea
 
 ## Try another example
 
-For video processing, the [WebRTC-to-JPEG example ↗](https://github.com/cloudflare/realtime-examples/tree/main/video-to-jpeg) demonstrates an SFU video track delivered as JPEG frames to a Worker.
+For video processing, the [WebRTC-to-JPEG example ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/video-to-jpeg) demonstrates an SFU video track delivered as JPEG frames to a Worker.
 
 Was this helpful?
 

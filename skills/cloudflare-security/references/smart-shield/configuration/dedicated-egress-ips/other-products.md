@@ -20,7 +20,7 @@ Use Dedicated CDN Egress IPs in combination with different Cloudflare products.
 
 You can use Dedicated CDN Egress IPs combined with [Cloudflare Network Interconnect (CNI)](https://developers.cloudflare.com/network-interconnect/) to secure your applications with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) without installing software or customizing code on your server.
 
-While Access allows you to enforce policies at the hostname level, other solutions are usually necessary to protect against origin IP bypass <sup>[1](#user-content-fn-1)</sup>. With Dedicated CDN Egress IPs, you only allow a small number of IPs (that are not publicly listed) through your network firewall and, with Cloudflare Network Interconnect, you can use a completely private path between Cloudflare and your application server, without exposure to the public Internet. For details and background, refer to the [Cloudflare blog ↗](https://blog.cloudflare.com/access-aegis-cni).
+While Access allows you to enforce policies at the hostname level, other solutions are usually necessary to protect against origin IP bypass <sup>[1](#user-content-fn-1)</sup>. With Dedicated CDN Egress IPs, you only allow a small number of IPs (that are not publicly listed) through your network firewall and, with Cloudflare Network Interconnect, you can use a completely private path between Cloudflare and your application server, without exposure to the public Internet. For details and background, refer to the [Cloudflare blog ↗︎](https://blog.cloudflare.com/access-aegis-cni).
 
 Dedicated CDN Egress IPs are included within [BGP advertisement over CNI](https://developers.cloudflare.com/network-interconnect/).
 

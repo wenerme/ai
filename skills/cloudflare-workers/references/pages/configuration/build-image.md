@@ -178,7 +178,7 @@ The following features are not currently supported when using the v3 build syste
 
 ## Build environment
 
-Cloudflare Pages builds are run in a [gVisor ↗](https://gvisor.dev/docs/) container.
+Cloudflare Pages builds are run in a [gVisor ↗︎](https://gvisor.dev/docs/) container.
 
 | **Build environment** | Ubuntu `22.04.2` |
 | --- | --- |
@@ -201,7 +201,7 @@ If you are currently using the v1 or v2 build image, your project will be automa
 - **v1 build image**: If you are using the Pages v1 build image, your project will be automatically moved to v3 on September 15, 2026.
 - **v2 build image**: If you are using the Pages v2 build image, your project will be automatically moved to v3 on February 23, 2027.
 
-You will receive 6 months’ notice before the deprecation date via the [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/), dashboard notifications, and email.
+You will receive 6 months’ notice before the deprecation date via the [Cloudflare Changelog ↗︎](https://developers.cloudflare.com/changelog/), dashboard notifications, and email.
 
 Going forward, the v3 build image will receive rolling updates to preinstalled software per the policy below. There will be no further build image version changes.
 
@@ -214,7 +214,7 @@ Preinstalled software (languages and tools) will be updated before reaching end-
 
 **How you'll be notified (for changes requiring notice):**
 
-- [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/)
+- [Cloudflare Changelog ↗︎](https://developers.cloudflare.com/changelog/)
 - Dashboard notifications for projects that will receive the update
 - Email notifications to project owners
 
@@ -224,7 +224,7 @@ To maintain a specific version and avoid automatic updates, [override the defaul
 
 To avoid unexpected build failures:
 
-- **Monitor announcements** via the [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/), dashboard notifications, and email
+- **Monitor announcements** via the [Cloudflare Changelog ↗︎](https://developers.cloudflare.com/changelog/), dashboard notifications, and email
 - **Plan for migration** when you receive update notices
 - **Pin specific versions** of critical preinstalled software by [overriding default versions](https://developers.cloudflare.com/pages/configuration/build-image/#override-default-versions)
 

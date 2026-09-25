@@ -16,11 +16,11 @@ Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 If your origin only receives traffic from proxied records, use Cloudflare origin CA certificates to encrypt traffic between Cloudflare and your origin web server and reduce bandwidth consumption. Once deployed, these certificates are compatible with [Strict SSL mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/).
 
-For more background information on origin CA certificates, refer to the [introductory blog post ↗](https://blog.cloudflare.com/cloudflare-ca-encryption-origin/).
+For more background information on origin CA certificates, refer to the [introductory blog post ↗︎](https://blog.cloudflare.com/cloudflare-ca-encryption-origin/).
 
 API Access required
 
-Users who do not have [**API Access** ↗](https://dash.cloudflare.com/?to=/:account/members) will receive an error while trying to create or revoke an origin CA certificate. Refer to [Troubleshooting](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/troubleshooting/#this-zone-is-either-not-part-of-your-account-or-you-do-not-have-access-to-it) for guidance.
+Users who do not have [**API Access** ↗︎](https://dash.cloudflare.com/?to=/:account/members) will receive an error while trying to create or revoke an origin CA certificate. Refer to [Troubleshooting](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/troubleshooting/#this-zone-is-either-not-part-of-your-account-or-you-do-not-have-access-to-it) for guidance.
 
 ## Availability
 
@@ -69,20 +69,20 @@ To add an Origin CA certificate to your origin web server
 1. Upload the Origin CA certificate (created in [Step 1](#1-create-an-origin-ca-certificate)) to your origin web server.
 2. Update your web server configuration:
 
-- [Apache httpd ↗](https://www.digicert.com/kb/csr-ssl-installation/apache-openssl.htm)
-- [GoDaddy Hosting ↗](https://www.digitalcandy.agency/website-tips/cloudflare-origin-ca-free-ssl-installation-on-godaddy/)
-- [Microsoft IIS 7 ↗](https://knowledge.digicert.com/tutorials/iis7-create-csr-install-ssl-certificate)
-- [Microsoft IIS 8 and 8.5 ↗](https://knowledge.digicert.com/tutorials/iis-8-create-csr-install-ssl-certificate)
-- [Microsoft IIS 10 ↗](https://www.digicert.com/kb/csr-creation-ssl-installation-iis-10.htm)
-- [NGINX ↗](https://www.digicert.com/kb/csr-ssl-installation/nginx-openssl.htm)
-- [Apache Tomcat ↗](https://knowledge.digicert.com/tutorials/tomcat-install-your-ssl-certificate-on-a-tomcat-server)
-- [Amazon Web Services ↗](https://knowledge.digicert.com/tutorials/amazon-aws-create-csr-install-ssl-certificate)
-- [Apache cPanel ↗](https://www.digicert.com/kb/ssl-certificate-installation-apache-cpanel.htm)
-- [Ubuntu Server with Apache2 ↗](https://www.digicert.com/kb/csr-ssl-installation/ubuntu-server-with-apache2-openssl.htm#ssl_certificate_install)
+- [Apache httpd ↗︎](https://www.digicert.com/kb/csr-ssl-installation/apache-openssl.htm)
+- [GoDaddy Hosting ↗︎](https://www.digitalcandy.agency/website-tips/cloudflare-origin-ca-free-ssl-installation-on-godaddy/)
+- [Microsoft IIS 7 ↗︎](https://knowledge.digicert.com/tutorials/iis7-create-csr-install-ssl-certificate)
+- [Microsoft IIS 8 and 8.5 ↗︎](https://knowledge.digicert.com/tutorials/iis-8-create-csr-install-ssl-certificate)
+- [Microsoft IIS 10 ↗︎](https://www.digicert.com/kb/csr-creation-ssl-installation-iis-10.htm)
+- [NGINX ↗︎](https://www.digicert.com/kb/csr-ssl-installation/nginx-openssl.htm)
+- [Apache Tomcat ↗︎](https://knowledge.digicert.com/tutorials/tomcat-install-your-ssl-certificate-on-a-tomcat-server)
+- [Amazon Web Services ↗︎](https://knowledge.digicert.com/tutorials/amazon-aws-create-csr-install-ssl-certificate)
+- [Apache cPanel ↗︎](https://www.digicert.com/kb/ssl-certificate-installation-apache-cpanel.htm)
+- [Ubuntu Server with Apache2 ↗︎](https://www.digicert.com/kb/csr-ssl-installation/ubuntu-server-with-apache2-openssl.htm#ssl_certificate_install)
 
 Note
 
-If you do not see your server in the list above, search the [DigiCert documentation ↗](https://www.digicert.com/search-results) or contact your hosting provider, web admin, or server vendor.
+If you do not see your server in the list above, search the [DigiCert documentation ↗︎](https://www.digicert.com/search-results) or contact your hosting provider, web admin, or server vendor.
 
 3. (Required for some) Upload the [Cloudflare CA root certificate](#cloudflare-origin-ca-root-certificate) to your origin server. This can also be referred to as the certificate chain.
 4. Enable SSL and port `443` at your origin web server.
@@ -106,7 +106,7 @@ Site visitors may see untrusted certificate errors if you [pause Cloudflare](htt
 
 If you misplace your key material or do not want a certificate to be trusted, you may want to revoke your certificate. You cannot undo this process.
 
-To prevent visitors from seeing warnings about an insecure certificate, you may want to set your [SSL/TLS encryption](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) to **Full** or **Flexible** before revoking your certificate. Do this globally via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls) or for a specific hostname via a [Page Rule](https://developers.cloudflare.com/rules/page-rules/).
+To prevent visitors from seeing warnings about an insecure certificate, you may want to set your [SSL/TLS encryption](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) to **Full** or **Flexible** before revoking your certificate. Do this globally via the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls) or for a specific hostname via a [Page Rule](https://developers.cloudflare.com/rules/page-rules/).
 
 To revoke a certificate:
 

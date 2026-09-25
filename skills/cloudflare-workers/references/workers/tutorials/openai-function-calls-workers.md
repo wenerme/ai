@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this tutorial, you will build a project that leverages [OpenAI's function calling ↗](https://platform.openai.com/docs/guides/function-calling) feature, available in OpenAI's latest Chat Completions API models.
+In this tutorial, you will build a project that leverages [OpenAI's function calling ↗︎](https://platform.openai.com/docs/guides/function-calling) feature, available in OpenAI's latest Chat Completions API models.
 
 The function calling feature allows the AI model to intelligently decide when to call a function based on the input, and respond in JSON format to match the function's signature. You will use the function calling feature to request for the model to determine a website URL which contains information relevant to a message from the user, retrieve the text content of the site, and, finally, return a final response from the model informed by real-time web data.
 
@@ -30,7 +30,7 @@ The function calling feature allows the AI model to intelligently decide when to
 
 ## Before you start
 
-All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 ## 1. Create a new Worker project
 
@@ -66,7 +66,7 @@ cd openai-function-calling-workers
 
 Inside of your new `openai-function-calling-workers` directory, find the `src/index.js` file. You will configure this file for most of the tutorial.
 
-You will also need an OpenAI account and API key for this tutorial. If you do not have one, [create a new OpenAI account ↗](https://platform.openai.com/signup) and [create an API key ↗](https://platform.openai.com/account/api-keys) to continue with this tutorial. Make sure to store you API key somewhere safe so you can use it later.
+You will also need an OpenAI account and API key for this tutorial. If you do not have one, [create a new OpenAI account ↗︎](https://platform.openai.com/signup) and [create an API key ↗︎](https://platform.openai.com/account/api-keys) to continue with this tutorial. Make sure to store you API key somewhere safe so you can use it later.
 
 ## 2. Make a request to OpenAI
 
@@ -134,7 +134,7 @@ For local development, create a new file `.dev.vars` in your Worker project and 
 OPENAI_API_KEY = "<YOUR_OPENAI_API_KEY>"
 ```
 
-Now, make a request to the OpenAI [Chat Completions API ↗](https://platform.openai.com/docs/guides/gpt/chat-completions-api):
+Now, make a request to the OpenAI [Chat Completions API ↗︎](https://platform.openai.com/docs/guides/gpt/chat-completions-api):
 
 ```js
 export default {
@@ -220,7 +220,7 @@ async function read_website_content(url) {
 }
 ```
 
-In this function, you take the URL that you received from OpenAI and use JavaScript's [`Fetch API` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to pull the content of the website and extract the paragraph text. Now we need to determine when to call this function.
+In this function, you take the URL that you received from OpenAI and use JavaScript's [`Fetch API` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) to pull the content of the website and extract the paragraph text. Now we need to determine when to call this function.
 
 ## 4. Process the Assistant's Messages
 
@@ -275,11 +275,11 @@ You can now preview your Worker at `<YOUR_WORKER>.<YOUR_SUBDOMAIN>.workers.dev`.
 
 ## 6. Next steps
 
-Reference the [finished code for this tutorial on GitHub ↗](https://github.com/LoganGrasby/Cloudflare-OpenAI-Functions-Demo/blob/main/src/worker.js).
+Reference the [finished code for this tutorial on GitHub ↗︎](https://github.com/LoganGrasby/Cloudflare-OpenAI-Functions-Demo/blob/main/src/worker.js).
 
-To continue working with Workers and AI, refer to [the guide on using LangChain and Cloudflare Workers together ↗](https://blog.cloudflare.com/langchain-and-cloudflare/) or [how to build a ChatGPT plugin with Cloudflare Workers ↗](https://blog.cloudflare.com/magic-in-minutes-how-to-build-a-chatgpt-plugin-with-cloudflare-workers/).
+To continue working with Workers and AI, refer to [the guide on using LangChain and Cloudflare Workers together ↗︎](https://blog.cloudflare.com/langchain-and-cloudflare/) or [how to build a ChatGPT plugin with Cloudflare Workers ↗︎](https://blog.cloudflare.com/magic-in-minutes-how-to-build-a-chatgpt-plugin-with-cloudflare-workers/).
 
-If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with fellow developers and the Cloudflare team.
+If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗︎](https://discord.cloudflare.com) to connect with fellow developers and the Cloudflare team.
 
 Was this helpful?
 

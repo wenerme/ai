@@ -37,7 +37,7 @@ Breakout traffic will not work for applications that use DNS-over-HTTPS.
 
 A note on security
 
-We recommend [routing ↗](https://www.cloudflare.com/learning/network-layer/what-is-routing/) all traffic through our global network for comprehensive security filtering and access controls. However, there may be specific cases where you want a subset of traffic to bypass Cloudflare's security filtering and route it directly to the Internet. You can scope this breakout traffic to specific applications from the Cloudflare dashboard.
+We recommend [routing ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-routing/) all traffic through our global network for comprehensive security filtering and access controls. However, there may be specific cases where you want a subset of traffic to bypass Cloudflare's security filtering and route it directly to the Internet. You can scope this breakout traffic to specific applications from the Cloudflare dashboard.
 
 For details on how Cloudflare routes traffic, refer to [Traffic steering](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/).
 
@@ -96,7 +96,7 @@ You can now add this new app to the Breakout traffic list in your Cloudflare One
 
 You need to configure Breakout traffic applications for each of your existing sites, as this is a per-site configuration.
 
-1. Log in to the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Cloudflare One Appliance you want to configure > **Edit**.
 4. Select **Traffic Steering**.
@@ -187,7 +187,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 ### Delete an application from Cloudflare One Appliance
 
-1. Log in to the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Appliance you want to configure > **Edit**.
 4. Select **Traffic Steering**.
@@ -265,7 +265,7 @@ With this preferred breakout port, customers have direct control over their loca
 
 To pin applications to a WAN port:
 
-1. Log in to the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Cloudflare One Appliance you want to configure > **Edit**.
 4. In **Traffic steering** > **Breakout Traffic** find the application you want to pin to a WAN port.

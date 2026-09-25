@@ -20,14 +20,14 @@ Following is the third party license information for RealtimeKit SDKs.
 
 The following SDKs are collectively referred to as Web SDKs:
 
-- [`@cloudflare/realtimekit` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit)
-- [`@cloudflare/realtimekit-ui` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-ui)
-- [`@cloudflare/realtimekit-react` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react)
-- [`@cloudflare/realtimekit-react-ui` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui)
-- [`@cloudflare/realtimekit-angular-ui` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui)
-- [`@cloudflare/realtimekit-ui-addons` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-ui-addons)
-- [`@cloudflare/realtimekit-recording-sdk` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-recording-sdk)
-- [`@cloudflare/realtimekit-virtual-background` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-virtual-background)
+- [`@cloudflare/realtimekit` ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit)
+- [`@cloudflare/realtimekit-ui` ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-ui)
+- [`@cloudflare/realtimekit-react` ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-react)
+- [`@cloudflare/realtimekit-react-ui` ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui)
+- [`@cloudflare/realtimekit-angular-ui` ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui)
+- [`@cloudflare/realtimekit-ui-addons` ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-ui-addons)
+- [`@cloudflare/realtimekit-recording-sdk` ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-recording-sdk)
+- [`@cloudflare/realtimekit-virtual-background` ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-virtual-background)
 
 Overview of licenses:
 
@@ -40,17 +40,17 @@ Overview of licenses:
 
 Used by:
 
-[broker-factory ↗](https://github.com/chrisguttandin/broker-factory)
+[broker-factory ↗︎](https://github.com/chrisguttandin/broker-factory)
 
-[fast-unique-numbers ↗](https://github.com/chrisguttandin/fast-unique-numbers)
+[fast-unique-numbers ↗︎](https://github.com/chrisguttandin/fast-unique-numbers)
 
-[worker-factory ↗](https://github.com/chrisguttandin/worker-factory)
+[worker-factory ↗︎](https://github.com/chrisguttandin/worker-factory)
 
-[worker-timers ↗](https://github.com/chrisguttandin/worker-timers)
+[worker-timers ↗︎](https://github.com/chrisguttandin/worker-timers)
 
-[worker-timers-broker ↗](https://github.com/chrisguttandin/worker-timers-broker)
+[worker-timers-broker ↗︎](https://github.com/chrisguttandin/worker-timers-broker)
 
-[worker-timers-worker ↗](https://github.com/chrisguttandin/worker-timers-worker)
+[worker-timers-worker ↗︎](https://github.com/chrisguttandin/worker-timers-worker)
 
 ```plaintext
 MIT License
@@ -80,11 +80,11 @@ SOFTWARE.
 
 Used by:
 
-[@floating-ui/core ↗](https://github.com/floating-ui/floating-ui)
+[@floating-ui/core ↗︎](https://github.com/floating-ui/floating-ui)
 
-[@floating-ui/dom ↗](https://github.com/floating-ui/floating-ui)
+[@floating-ui/dom ↗︎](https://github.com/floating-ui/floating-ui)
 
-[@floating-ui/utils ↗](https://github.com/floating-ui/floating-ui)
+[@floating-ui/utils ↗︎](https://github.com/floating-ui/floating-ui)
 
 ```plaintext
 MIT License
@@ -114,7 +114,7 @@ SOFTWARE.
 
 Used by:
 
-[uuid ↗](https://github.com/uuidjs/uuid)
+[uuid ↗︎](https://github.com/uuidjs/uuid)
 
 ```plaintext
 The MIT License (MIT)
@@ -132,7 +132,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[bowser ↗](https://github.com/lancedikson/bowser)
+[bowser ↗︎](https://github.com/lancedikson/bowser)
 
 ```plaintext
 Copyright 2015, Dustin Diaz (the "Original Author")
@@ -180,7 +180,7 @@ Original Author, when distributed with the Software.
 
 Used by:
 
-[sdp-transform ↗](https://github.com/clux/sdp-transform)
+[sdp-transform ↗︎](https://github.com/clux/sdp-transform)
 
 ```plaintext
 (The MIT License)
@@ -211,7 +211,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[@babel/runtime ↗](https://github.com/babel/babel)
+[@babel/runtime ↗︎](https://github.com/babel/babel)
 
 ```plaintext
 MIT License
@@ -242,7 +242,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[tslib ↗](https://github.com/Microsoft/tslib)
+[tslib ↗︎](https://github.com/Microsoft/tslib)
 
 ```plaintext
 Copyright (c) Microsoft Corporation.
@@ -263,7 +263,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
 Used by:
 
-[@protobuf-ts/runtime ↗](https://github.com/timostamm/protobuf-ts)
+[@protobuf-ts/runtime ↗︎](https://github.com/timostamm/protobuf-ts)
 
 ```plaintext
 Apache License
@@ -446,7 +446,7 @@ Apache License
 
 Used by:
 
-[hark ↗](https://github.com/latentflip/hark)
+[hark ↗︎](https://github.com/latentflip/hark)
 
 ```plaintext
 License file is not available for hark.
@@ -459,7 +459,7 @@ Please refer to the package repository for complete license information.
 
 Used by:
 
-[wildemitter ↗](https://github.com/HenrikJoreteg/wildemitter)
+[wildemitter ↗︎](https://github.com/HenrikJoreteg/wildemitter)
 
 ```plaintext
 MIT License
@@ -489,7 +489,7 @@ SOFTWARE.
 
 Used by:
 
-[hls.js ↗](https://github.com/video-dev/hls.js)
+[hls.js ↗︎](https://github.com/video-dev/hls.js)
 
 ```plaintext
 Copyright (c) 2017 Dailymotion (http://www.dailymotion.com)
@@ -526,7 +526,7 @@ THE SOFTWARE.
 
 Used by:
 
-[lodash-es ↗](https://github.com/lodash/lodash)
+[lodash-es ↗︎](https://github.com/lodash/lodash)
 
 ```plaintext
 Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
@@ -582,7 +582,7 @@ terms above.
 
 Used by:
 
-[resize-observer-polyfill ↗](https://github.com/que-etc/resize-observer-polyfill)
+[resize-observer-polyfill ↗︎](https://github.com/que-etc/resize-observer-polyfill)
 
 ```plaintext
 The MIT License (MIT)
@@ -612,7 +612,7 @@ SOFTWARE.
 
 Used by:
 
-[Volcomix/virtual-background ↗](https://github.com/Volcomix/virtual-background)
+[Volcomix/virtual-background ↗︎](https://github.com/Volcomix/virtual-background)
 
 ```plaintext
 Apache License
@@ -822,8 +822,8 @@ Apache License
 
 The following SDKs are collectively referred to as Android SDKs:
 
-- [`com.cloudflare.realtimekit:core-android` ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core-android)
-- [`com.cloudflare.realtimekit:ui-android` ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/ui-android)
+- [`com.cloudflare.realtimekit:core-android` ↗︎](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core-android)
+- [`com.cloudflare.realtimekit:ui-android` ↗︎](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/ui-android)
 
 Overview of licenses:
 
@@ -833,35 +833,35 @@ Overview of licenses:
 
 Used by:
 
-[androidx.appcompat:appcompat ↗](https://cs.android.com/androidx/platform/frameworks/support)
+[androidx.appcompat:appcompat ↗︎](https://cs.android.com/androidx/platform/frameworks/support)
 
-[androidx.constraintlayout:constraintlayout ↗](https://github.com/androidx/constraintlayout)
+[androidx.constraintlayout:constraintlayout ↗︎](https://github.com/androidx/constraintlayout)
 
-[androidx.core:core-ktx ↗](https://cs.android.com/androidx/platform/frameworks/support)
+[androidx.core:core-ktx ↗︎](https://cs.android.com/androidx/platform/frameworks/support)
 
-[androidx.lifecycle:lifecycle-viewmodel-ktx ↗](https://cs.android.com/androidx/platform/frameworks/support)
+[androidx.lifecycle:lifecycle-viewmodel-ktx ↗︎](https://cs.android.com/androidx/platform/frameworks/support)
 
-[androidx.startup:startup-runtime ↗](https://cs.android.com/androidx/platform/frameworks/support)
+[androidx.startup:startup-runtime ↗︎](https://cs.android.com/androidx/platform/frameworks/support)
 
-[com.google.android.material:material ↗](https://github.com/material-components/material-components-android)
+[com.google.android.material:material ↗︎](https://github.com/material-components/material-components-android)
 
-[com.squareup.wire:wire-runtime ↗](https://github.com/square/wire)
+[com.squareup.wire:wire-runtime ↗︎](https://github.com/square/wire)
 
-[com.squareup.wire:wire-runtime-jvm ↗](https://github.com/square/wire)
+[com.squareup.wire:wire-runtime-jvm ↗︎](https://github.com/square/wire)
 
-[io.github.crow-misia.libyuv:libyuv-android ↗](https://github.com/crow-misia/libyuv-android)
+[io.github.crow-misia.libyuv:libyuv-android ↗︎](https://github.com/crow-misia/libyuv-android)
 
-[org.jetbrains.kotlin:kotlin-bom ↗](https://github.com/JetBrains/kotlin)
+[org.jetbrains.kotlin:kotlin-bom ↗︎](https://github.com/JetBrains/kotlin)
 
-[org.jetbrains.kotlin:kotlin-stdlib ↗](https://github.com/JetBrains/kotlin)
+[org.jetbrains.kotlin:kotlin-stdlib ↗︎](https://github.com/JetBrains/kotlin)
 
-[org.jetbrains.kotlin:kotlin-stdlib-common ↗](https://github.com/JetBrains/kotlin)
+[org.jetbrains.kotlin:kotlin-stdlib-common ↗︎](https://github.com/JetBrains/kotlin)
 
-[org.jetbrains.kotlin:kotlin-stdlib-jdk8 ↗](https://github.com/JetBrains/kotlin)
+[org.jetbrains.kotlin:kotlin-stdlib-jdk8 ↗︎](https://github.com/JetBrains/kotlin)
 
-[org.jetbrains.kotlinx:kotlinx-datetime ↗](https://github.com/Kotlin/kotlinx-datetime)
+[org.jetbrains.kotlinx:kotlinx-datetime ↗︎](https://github.com/Kotlin/kotlinx-datetime)
 
-[org.jetbrains.kotlinx:kotlinx-datetime-jvm ↗](https://github.com/Kotlin/kotlinx-datetime)
+[org.jetbrains.kotlinx:kotlinx-datetime-jvm ↗︎](https://github.com/Kotlin/kotlinx-datetime)
 
 ```plaintext
 Apache License
@@ -1071,11 +1071,11 @@ Apache License
 
 Used by:
 
-[org.jetbrains.kotlinx:kotlinx-coroutines-android ↗](https://github.com/Kotlin/kotlinx.coroutines)
+[org.jetbrains.kotlinx:kotlinx-coroutines-android ↗︎](https://github.com/Kotlin/kotlinx.coroutines)
 
-[org.jetbrains.kotlinx:kotlinx-coroutines-core ↗](https://github.com/Kotlin/kotlinx.coroutines)
+[org.jetbrains.kotlinx:kotlinx-coroutines-core ↗︎](https://github.com/Kotlin/kotlinx.coroutines)
 
-[org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm ↗](https://github.com/Kotlin/kotlinx.coroutines)
+[org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm ↗︎](https://github.com/Kotlin/kotlinx.coroutines)
 
 ```plaintext
 Apache License
@@ -1285,9 +1285,9 @@ Apache License
 
 Used by:
 
-[org.jetbrains.kotlinx:atomicfu ↗](https://github.com/Kotlin/kotlinx.atomicfu)
+[org.jetbrains.kotlinx:atomicfu ↗︎](https://github.com/Kotlin/kotlinx.atomicfu)
 
-[org.jetbrains.kotlinx:atomicfu-jvm ↗](https://github.com/Kotlin/kotlinx.atomicfu)
+[org.jetbrains.kotlinx:atomicfu-jvm ↗︎](https://github.com/Kotlin/kotlinx.atomicfu)
 
 ```plaintext
 /*
@@ -1311,9 +1311,9 @@ Used by:
 
 Used by:
 
-[org.jetbrains.kotlinx:kotlinx-serialization-json ↗](https://github.com/Kotlin/kotlinx.serialization)
+[org.jetbrains.kotlinx:kotlinx-serialization-json ↗︎](https://github.com/Kotlin/kotlinx.serialization)
 
-[org.jetbrains.kotlinx:kotlinx-serialization-json-jvm ↗](https://github.com/Kotlin/kotlinx.serialization)
+[org.jetbrains.kotlinx:kotlinx-serialization-json-jvm ↗︎](https://github.com/Kotlin/kotlinx.serialization)
 
 ```plaintext
 Apache License
@@ -1523,7 +1523,7 @@ Apache License
 
 Used by:
 
-[io.ktor:ktor-bom ↗](https://github.com/ktorio/ktor)
+[io.ktor:ktor-bom ↗︎](https://github.com/ktorio/ktor)
 
 ```plaintext
 Apache License
@@ -1733,7 +1733,7 @@ Apache License
 
 Used by:
 
-[io.coil-kt:coil ↗](https://github.com/coil-kt/coil)
+[io.coil-kt:coil ↗︎](https://github.com/coil-kt/coil)
 
 ```plaintext
 Apache License
@@ -1943,9 +1943,9 @@ Apache License
 
 The following SDKs are collectively referred to as iOS SDKs:
 
-- [`RealtimeKit` ↗](https://github.com/dyte-in/RealtimeKitCoreiOS)
-- [`RealtimeKitUI` ↗](https://github.com/dyte-in/RealtimeKitUI)
-- [`RealtimeKit KMM Core` ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core-iosarm64)
+- [`RealtimeKit` ↗︎](https://github.com/dyte-in/RealtimeKitCoreiOS)
+- [`RealtimeKitUI` ↗︎](https://github.com/dyte-in/RealtimeKitUI)
+- [`RealtimeKit KMM Core` ↗︎](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core-iosarm64)
 
 Overview of licenses:
 
@@ -1955,13 +1955,13 @@ Overview of licenses:
 
 Used by:
 
-[com.squareup.wire:wire-runtime-iosarm64 ↗](https://github.com/square/wire)
+[com.squareup.wire:wire-runtime-iosarm64 ↗︎](https://github.com/square/wire)
 
-[org.jetbrains.kotlin:kotlin-stdlib ↗](https://github.com/JetBrains/kotlin)
+[org.jetbrains.kotlin:kotlin-stdlib ↗︎](https://github.com/JetBrains/kotlin)
 
-[org.jetbrains.kotlin:kotlin-stdlib-common ↗](https://github.com/JetBrains/kotlin)
+[org.jetbrains.kotlin:kotlin-stdlib-common ↗︎](https://github.com/JetBrains/kotlin)
 
-[org.jetbrains.kotlinx:kotlinx-datetime-iosarm64 ↗](https://github.com/Kotlin/kotlinx-datetime)
+[org.jetbrains.kotlinx:kotlinx-datetime-iosarm64 ↗︎](https://github.com/Kotlin/kotlinx-datetime)
 
 ```plaintext
 Apache License
@@ -2171,7 +2171,7 @@ Apache License
 
 Used by:
 
-[io.ktor:ktor-bom ↗](https://github.com/ktorio/ktor)
+[io.ktor:ktor-bom ↗︎](https://github.com/ktorio/ktor)
 
 ```plaintext
 Apache License
@@ -2381,7 +2381,7 @@ Apache License
 
 Used by:
 
-[org.jetbrains.kotlinx:atomicfu-iosarm64 ↗](https://github.com/Kotlin/kotlinx.atomicfu)
+[org.jetbrains.kotlinx:atomicfu-iosarm64 ↗︎](https://github.com/Kotlin/kotlinx.atomicfu)
 
 ```plaintext
 /*
@@ -2405,7 +2405,7 @@ Used by:
 
 Used by:
 
-[org.jetbrains.kotlinx:kotlinx-coroutines-core-iosarm64 ↗](https://github.com/Kotlin/kotlinx.coroutines)
+[org.jetbrains.kotlinx:kotlinx-coroutines-core-iosarm64 ↗︎](https://github.com/Kotlin/kotlinx.coroutines)
 
 ```plaintext
 Apache License
@@ -2615,7 +2615,7 @@ Apache License
 
 Used by:
 
-[org.jetbrains.kotlinx:kotlinx-serialization-json-iosarm64 ↗](https://github.com/Kotlin/kotlinx.serialization)
+[org.jetbrains.kotlinx:kotlinx-serialization-json-iosarm64 ↗︎](https://github.com/Kotlin/kotlinx.serialization)
 
 ```plaintext
 Apache License
@@ -2825,8 +2825,8 @@ Apache License
 
 The following SDKs are collectively referred to as React Native SDKs:
 
-- [`@cloudflare/realtimekit-react-native` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native)
-- [`@cloudflare/realtimekit-react-native-ui` ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui)
+- [`@cloudflare/realtimekit-react-native` ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native)
+- [`@cloudflare/realtimekit-react-native-ui` ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui)
 
 Overview of licenses:
 
@@ -2844,35 +2844,35 @@ Overview of licenses:
 
 Used by:
 
-[@babel/code-frame ↗](https://github.com/babel/babel)
+[@babel/code-frame ↗︎](https://github.com/babel/babel)
 
-[@babel/compat-data ↗](https://github.com/babel/babel)
+[@babel/compat-data ↗︎](https://github.com/babel/babel)
 
-[@babel/core ↗](https://github.com/babel/babel)
+[@babel/core ↗︎](https://github.com/babel/babel)
 
-[@babel/generator ↗](https://github.com/babel/babel)
+[@babel/generator ↗︎](https://github.com/babel/babel)
 
-[@babel/helper-compilation-targets ↗](https://github.com/babel/babel)
+[@babel/helper-compilation-targets ↗︎](https://github.com/babel/babel)
 
-[@babel/helper-globals ↗](https://github.com/babel/babel)
+[@babel/helper-globals ↗︎](https://github.com/babel/babel)
 
-[@babel/helper-module-imports ↗](https://github.com/babel/babel)
+[@babel/helper-module-imports ↗︎](https://github.com/babel/babel)
 
-[@babel/helper-module-transforms ↗](https://github.com/babel/babel)
+[@babel/helper-module-transforms ↗︎](https://github.com/babel/babel)
 
-[@babel/helper-string-parser ↗](https://github.com/babel/babel)
+[@babel/helper-string-parser ↗︎](https://github.com/babel/babel)
 
-[@babel/helper-validator-identifier ↗](https://github.com/babel/babel)
+[@babel/helper-validator-identifier ↗︎](https://github.com/babel/babel)
 
-[@babel/helper-validator-option ↗](https://github.com/babel/babel)
+[@babel/helper-validator-option ↗︎](https://github.com/babel/babel)
 
-[@babel/runtime ↗](https://github.com/babel/babel)
+[@babel/runtime ↗︎](https://github.com/babel/babel)
 
-[@babel/template ↗](https://github.com/babel/babel)
+[@babel/template ↗︎](https://github.com/babel/babel)
 
-[@babel/traverse ↗](https://github.com/babel/babel)
+[@babel/traverse ↗︎](https://github.com/babel/babel)
 
-[@babel/types ↗](https://github.com/babel/babel)
+[@babel/types ↗︎](https://github.com/babel/babel)
 
 ```plaintext
 MIT License
@@ -2903,31 +2903,31 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[@svgr/babel-plugin-add-jsx-attribute ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/babel-plugin-add-jsx-attribute ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/babel-plugin-remove-jsx-attribute ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/babel-plugin-remove-jsx-attribute ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/babel-plugin-remove-jsx-empty-expression ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/babel-plugin-remove-jsx-empty-expression ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/babel-plugin-replace-jsx-attribute-value ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/babel-plugin-replace-jsx-attribute-value ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/babel-plugin-svg-dynamic-title ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/babel-plugin-svg-dynamic-title ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/babel-plugin-svg-em-dimensions ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/babel-plugin-svg-em-dimensions ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/babel-plugin-transform-react-native-svg ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/babel-plugin-transform-react-native-svg ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/babel-plugin-transform-svg-component ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/babel-plugin-transform-svg-component ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/babel-preset ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/babel-preset ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/core ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/core ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/hast-util-to-babel-ast ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/hast-util-to-babel-ast ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/plugin-jsx ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/plugin-jsx ↗︎](https://github.com/gregberge/svgr.git#main)
 
-[@svgr/plugin-svgo ↗](https://github.com/gregberge/svgr.git#main)
+[@svgr/plugin-svgo ↗︎](https://github.com/gregberge/svgr.git#main)
 
 ```plaintext
 Copyright 2017 Smooth Code
@@ -2943,23 +2943,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[callsites ↗](https://github.com/sindresorhus/callsites)
+[callsites ↗︎](https://github.com/sindresorhus/callsites)
 
-[camelcase ↗](https://github.com/sindresorhus/camelcase)
+[camelcase ↗︎](https://github.com/sindresorhus/camelcase)
 
-[env-paths ↗](https://github.com/sindresorhus/env-paths)
+[env-paths ↗︎](https://github.com/sindresorhus/env-paths)
 
-[import-fresh ↗](https://github.com/sindresorhus/import-fresh)
+[import-fresh ↗︎](https://github.com/sindresorhus/import-fresh)
 
-[index-to-position ↗](https://github.com/sindresorhus/index-to-position)
+[index-to-position ↗︎](https://github.com/sindresorhus/index-to-position)
 
-[parent-module ↗](https://github.com/sindresorhus/parent-module)
+[parent-module ↗︎](https://github.com/sindresorhus/parent-module)
 
-[parse-json ↗](https://github.com/sindresorhus/parse-json)
+[parse-json ↗︎](https://github.com/sindresorhus/parse-json)
 
-[tagged-tag ↗](https://github.com/sindresorhus/tagged-tag)
+[tagged-tag ↗︎](https://github.com/sindresorhus/tagged-tag)
 
-[type-fest ↗](https://github.com/sindresorhus/type-fest)
+[type-fest ↗︎](https://github.com/sindresorhus/type-fest)
 
 ```plaintext
 MIT License
@@ -2977,21 +2977,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[call-bind-apply-helpers ↗](https://github.com/ljharb/call-bind-apply-helpers)
+[call-bind-apply-helpers ↗︎](https://github.com/ljharb/call-bind-apply-helpers)
 
-[call-bound ↗](https://github.com/ljharb/call-bound)
+[call-bound ↗︎](https://github.com/ljharb/call-bound)
 
-[es-define-property ↗](https://github.com/ljharb/es-define-property)
+[es-define-property ↗︎](https://github.com/ljharb/es-define-property)
 
-[es-errors ↗](https://github.com/ljharb/es-errors)
+[es-errors ↗︎](https://github.com/ljharb/es-errors)
 
-[es-object-atoms ↗](https://github.com/ljharb/es-object-atoms)
+[es-object-atoms ↗︎](https://github.com/ljharb/es-object-atoms)
 
-[possible-typed-array-names ↗](https://github.com/ljharb/possible-typed-array-names)
+[possible-typed-array-names ↗︎](https://github.com/ljharb/possible-typed-array-names)
 
-[side-channel-list ↗](https://github.com/ljharb/side-channel-list)
+[side-channel-list ↗︎](https://github.com/ljharb/side-channel-list)
 
-[side-channel-map ↗](https://github.com/ljharb/side-channel-map)
+[side-channel-map ↗︎](https://github.com/ljharb/side-channel-map)
 
 ```plaintext
 MIT License
@@ -3021,19 +3021,19 @@ SOFTWARE.
 
 Used by:
 
-[css-select ↗](https://github.com/fb55/css-select)
+[css-select ↗︎](https://github.com/fb55/css-select)
 
-[css-what ↗](https://github.com/fb55/css-what)
+[css-what ↗︎](https://github.com/fb55/css-what)
 
-[domelementtype ↗](https://github.com/fb55/domelementtype)
+[domelementtype ↗︎](https://github.com/fb55/domelementtype)
 
-[domhandler ↗](https://github.com/fb55/domhandler)
+[domhandler ↗︎](https://github.com/fb55/domhandler)
 
-[domutils ↗](https://github.com/fb55/domutils)
+[domutils ↗︎](https://github.com/fb55/domutils)
 
-[entities ↗](https://github.com/fb55/entities)
+[entities ↗︎](https://github.com/fb55/entities)
 
-[nth-check ↗](https://github.com/fb55/nth-check)
+[nth-check ↗︎](https://github.com/fb55/nth-check)
 
 ```plaintext
 Copyright (c) Felix Böhm
@@ -3053,17 +3053,17 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Used by:
 
-[broker-factory ↗](https://github.com/chrisguttandin/broker-factory)
+[broker-factory ↗︎](https://github.com/chrisguttandin/broker-factory)
 
-[fast-unique-numbers ↗](https://github.com/chrisguttandin/fast-unique-numbers)
+[fast-unique-numbers ↗︎](https://github.com/chrisguttandin/fast-unique-numbers)
 
-[worker-factory ↗](https://github.com/chrisguttandin/worker-factory)
+[worker-factory ↗︎](https://github.com/chrisguttandin/worker-factory)
 
-[worker-timers ↗](https://github.com/chrisguttandin/worker-timers)
+[worker-timers ↗︎](https://github.com/chrisguttandin/worker-timers)
 
-[worker-timers-broker ↗](https://github.com/chrisguttandin/worker-timers-broker)
+[worker-timers-broker ↗︎](https://github.com/chrisguttandin/worker-timers-broker)
 
-[worker-timers-worker ↗](https://github.com/chrisguttandin/worker-timers-worker)
+[worker-timers-worker ↗︎](https://github.com/chrisguttandin/worker-timers-worker)
 
 ```plaintext
 MIT License
@@ -3093,15 +3093,15 @@ SOFTWARE.
 
 Used by:
 
-[is-arguments ↗](https://github.com/inspect-js/is-arguments)
+[is-arguments ↗︎](https://github.com/inspect-js/is-arguments)
 
-[is-generator-function ↗](https://github.com/inspect-js/is-generator-function)
+[is-generator-function ↗︎](https://github.com/inspect-js/is-generator-function)
 
-[is-nan ↗](https://github.com/es-shims/is-nan)
+[is-nan ↗︎](https://github.com/es-shims/is-nan)
 
-[is-regex ↗](https://github.com/inspect-js/is-regex)
+[is-regex ↗︎](https://github.com/inspect-js/is-regex)
 
-[object-is ↗](https://github.com/es-shims/object-is)
+[object-is ↗︎](https://github.com/es-shims/object-is)
 
 ```plaintext
 The MIT License (MIT)
@@ -3130,13 +3130,13 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[cipher-base ↗](https://github.com/crypto-browserify/cipher-base)
+[cipher-base ↗︎](https://github.com/crypto-browserify/cipher-base)
 
-[create-hash ↗](https://github.com/crypto-browserify/createHash)
+[create-hash ↗︎](https://github.com/crypto-browserify/createHash)
 
-[create-hmac ↗](https://github.com/crypto-browserify/createHmac)
+[create-hmac ↗︎](https://github.com/crypto-browserify/createHmac)
 
-[evp\_bytestokey ↗](https://github.com/crypto-browserify/EVP_BytesToKey)
+[evp\_bytestokey ↗︎](https://github.com/crypto-browserify/EVP_BytesToKey)
 
 ```plaintext
 The MIT License (MIT)
@@ -3166,13 +3166,13 @@ SOFTWARE.
 
 Used by:
 
-[@jridgewell/gen-mapping ↗](https://github.com/jridgewell/sourcemaps)
+[@jridgewell/gen-mapping ↗︎](https://github.com/jridgewell/sourcemaps)
 
-[@jridgewell/remapping ↗](https://github.com/jridgewell/sourcemaps)
+[@jridgewell/remapping ↗︎](https://github.com/jridgewell/sourcemaps)
 
-[@jridgewell/sourcemap-codec ↗](https://github.com/jridgewell/sourcemaps)
+[@jridgewell/sourcemap-codec ↗︎](https://github.com/jridgewell/sourcemaps)
 
-[@jridgewell/trace-mapping ↗](https://github.com/jridgewell/sourcemaps)
+[@jridgewell/trace-mapping ↗︎](https://github.com/jridgewell/sourcemaps)
 
 ```plaintext
 Copyright 2024 Justin Ridgewell <justin@ridgewell.name>
@@ -3200,11 +3200,11 @@ SOFTWARE.
 
 Used by:
 
-[is-callable ↗](https://github.com/inspect-js/is-callable)
+[is-callable ↗︎](https://github.com/inspect-js/is-callable)
 
-[is-typed-array ↗](https://github.com/inspect-js/is-typed-array)
+[is-typed-array ↗︎](https://github.com/inspect-js/is-typed-array)
 
-[which-typed-array ↗](https://github.com/inspect-js/which-typed-array)
+[which-typed-array ↗︎](https://github.com/inspect-js/which-typed-array)
 
 ```plaintext
 The MIT License (MIT)
@@ -3234,11 +3234,11 @@ SOFTWARE.
 
 Used by:
 
-[base-64 ↗](https://github.com/mathiasbynens/base64)
+[base-64 ↗︎](https://github.com/mathiasbynens/base64)
 
-[jsesc ↗](https://github.com/mathiasbynens/jsesc)
+[jsesc ↗︎](https://github.com/mathiasbynens/jsesc)
 
-[punycode ↗](https://github.com/mathiasbynens/punycode.js)
+[punycode ↗︎](https://github.com/mathiasbynens/punycode.js)
 
 ```plaintext
 Copyright Mathias Bynens <https://mathiasbynens.be/>
@@ -3267,11 +3267,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[@types/hoist-non-react-statics ↗](https://github.com/DefinitelyTyped/DefinitelyTyped)
+[@types/hoist-non-react-statics ↗︎](https://github.com/DefinitelyTyped/DefinitelyTyped)
 
-[@types/lodash ↗](https://github.com/DefinitelyTyped/DefinitelyTyped)
+[@types/lodash ↗︎](https://github.com/DefinitelyTyped/DefinitelyTyped)
 
-[@types/lodash.isequal ↗](https://github.com/DefinitelyTyped/DefinitelyTyped)
+[@types/lodash.isequal ↗︎](https://github.com/DefinitelyTyped/DefinitelyTyped)
 
 ```plaintext
     MIT License
@@ -3301,9 +3301,9 @@ Used by:
 
 Used by:
 
-[assert ↗](https://github.com/browserify/commonjs-assert)
+[assert ↗︎](https://github.com/browserify/commonjs-assert)
 
-[util ↗](https://github.com/browserify/node-util)
+[util ↗︎](https://github.com/browserify/node-util)
 
 ```plaintext
 Copyright Joyent, Inc. and other Node contributors. All rights reserved.
@@ -3330,9 +3330,9 @@ IN THE SOFTWARE.
 
 Used by:
 
-[call-bind ↗](https://github.com/ljharb/call-bind)
+[call-bind ↗︎](https://github.com/ljharb/call-bind)
 
-[get-intrinsic ↗](https://github.com/ljharb/get-intrinsic)
+[get-intrinsic ↗︎](https://github.com/ljharb/get-intrinsic)
 
 ```plaintext
 MIT License
@@ -3362,9 +3362,9 @@ SOFTWARE.
 
 Used by:
 
-[dunder-proto ↗](https://github.com/es-shims/dunder-proto)
+[dunder-proto ↗︎](https://github.com/es-shims/dunder-proto)
 
-[math-intrinsics ↗](https://github.com/es-shims/math-intrinsics)
+[math-intrinsics ↗︎](https://github.com/es-shims/math-intrinsics)
 
 ```plaintext
 MIT License
@@ -3394,9 +3394,9 @@ SOFTWARE.
 
 Used by:
 
-[gopd ↗](https://github.com/ljharb/gopd)
+[gopd ↗︎](https://github.com/ljharb/gopd)
 
-[safe-regex-test ↗](https://github.com/ljharb/safe-regex-test)
+[safe-regex-test ↗︎](https://github.com/ljharb/safe-regex-test)
 
 ```plaintext
 MIT License
@@ -3426,9 +3426,9 @@ SOFTWARE.
 
 Used by:
 
-[hasown ↗](https://github.com/inspect-js/hasOwn)
+[hasown ↗︎](https://github.com/inspect-js/hasOwn)
 
-[set-function-length ↗](https://github.com/ljharb/set-function-length)
+[set-function-length ↗︎](https://github.com/ljharb/set-function-length)
 
 ```plaintext
 MIT License
@@ -3458,9 +3458,9 @@ SOFTWARE.
 
 Used by:
 
-[define-data-property ↗](https://github.com/ljharb/define-data-property)
+[define-data-property ↗︎](https://github.com/ljharb/define-data-property)
 
-[typed-array-buffer ↗](https://github.com/inspect-js/typed-array-buffer)
+[typed-array-buffer ↗︎](https://github.com/inspect-js/typed-array-buffer)
 
 ```plaintext
 MIT License
@@ -3490,9 +3490,9 @@ SOFTWARE.
 
 Used by:
 
-[hash-base ↗](https://github.com/crypto-browserify/hash-base)
+[hash-base ↗︎](https://github.com/crypto-browserify/hash-base)
 
-[md5.js ↗](https://github.com/crypto-browserify/md5.js)
+[md5.js ↗︎](https://github.com/crypto-browserify/md5.js)
 
 ```plaintext
 The MIT License (MIT)
@@ -3522,9 +3522,9 @@ THE SOFTWARE.
 
 Used by:
 
-[randombytes ↗](https://github.com/crypto-browserify/randombytes)
+[randombytes ↗︎](https://github.com/crypto-browserify/randombytes)
 
-[randomfill ↗](https://github.com/crypto-browserify/randomfill)
+[randomfill ↗︎](https://github.com/crypto-browserify/randomfill)
 
 ```plaintext
 MIT License
@@ -3554,9 +3554,9 @@ SOFTWARE.
 
 Used by:
 
-[diffie-hellman ↗](https://github.com/crypto-browserify/diffie-hellman)
+[diffie-hellman ↗︎](https://github.com/crypto-browserify/diffie-hellman)
 
-[public-encrypt ↗](https://github.com/crypto-browserify/publicEncrypt)
+[public-encrypt ↗︎](https://github.com/crypto-browserify/publicEncrypt)
 
 ```plaintext
 Copyright (c) 2017 Calvin Metcalf
@@ -3584,9 +3584,9 @@ SOFTWARE.
 
 Used by:
 
-[side-channel ↗](https://github.com/ljharb/side-channel)
+[side-channel ↗︎](https://github.com/ljharb/side-channel)
 
-[side-channel-weakmap ↗](https://github.com/ljharb/side-channel-weakmap)
+[side-channel-weakmap ↗︎](https://github.com/ljharb/side-channel-weakmap)
 
 ```plaintext
 MIT License
@@ -3616,9 +3616,9 @@ SOFTWARE.
 
 Used by:
 
-[no-case ↗](https://github.com/blakeembrey/change-case)
+[no-case ↗︎](https://github.com/blakeembrey/change-case)
 
-[snake-case ↗](https://github.com/blakeembrey/change-case)
+[snake-case ↗︎](https://github.com/blakeembrey/change-case)
 
 ```plaintext
 The MIT License (MIT)
@@ -3648,7 +3648,7 @@ THE SOFTWARE.
 
 Used by:
 
-[uuid ↗](https://github.com/uuidjs/uuid)
+[uuid ↗︎](https://github.com/uuidjs/uuid)
 
 ```plaintext
 The MIT License (MIT)
@@ -3666,7 +3666,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[bowser ↗](https://github.com/lancedikson/bowser)
+[bowser ↗︎](https://github.com/lancedikson/bowser)
 
 ```plaintext
 Copyright 2015, Dustin Diaz (the "Original Author")
@@ -3714,7 +3714,7 @@ Original Author, when distributed with the Software.
 
 Used by:
 
-[sdp-transform ↗](https://github.com/clux/sdp-transform)
+[sdp-transform ↗︎](https://github.com/clux/sdp-transform)
 
 ```plaintext
 (The MIT License)
@@ -3745,7 +3745,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[tslib ↗](https://github.com/Microsoft/tslib)
+[tslib ↗︎](https://github.com/Microsoft/tslib)
 
 ```plaintext
 Copyright (c) Microsoft Corporation.
@@ -3766,7 +3766,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
 Used by:
 
-[@protobuf-ts/runtime ↗](https://github.com/timostamm/protobuf-ts)
+[@protobuf-ts/runtime ↗︎](https://github.com/timostamm/protobuf-ts)
 
 ```plaintext
                                 Apache License
@@ -3949,7 +3949,7 @@ Used by:
 
 Used by:
 
-[events ↗](https://github.com/Gozala/events)
+[events ↗︎](https://github.com/Gozala/events)
 
 ```plaintext
 MIT
@@ -3980,7 +3980,7 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[fast-base64-decode ↗](https://github.com/LinusU/fast-base64-decode)
+[fast-base64-decode ↗︎](https://github.com/LinusU/fast-base64-decode)
 
 ```plaintext
 MIT License
@@ -4010,7 +4010,7 @@ SOFTWARE.
 
 Used by:
 
-[node-libs-react-native ↗](https://github.com/parshap/node-libs-react-native)
+[node-libs-react-native ↗︎](https://github.com/parshap/node-libs-react-native)
 
 ```plaintext
 (The MIT License)
@@ -4041,7 +4041,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[inherits ↗](https://github.com/isaacs/inherits)
+[inherits ↗︎](https://github.com/isaacs/inherits)
 
 ```plaintext
 The ISC License
@@ -4065,7 +4065,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
 Used by:
 
-[function-bind ↗](https://github.com/Raynos/function-bind)
+[function-bind ↗︎](https://github.com/Raynos/function-bind)
 
 ```plaintext
 Copyright (c) 2013 Raynos.
@@ -4093,7 +4093,7 @@ THE SOFTWARE.
 
 Used by:
 
-[get-proto ↗](https://github.com/ljharb/get-proto)
+[get-proto ↗︎](https://github.com/ljharb/get-proto)
 
 ```plaintext
 MIT License
@@ -4123,7 +4123,7 @@ SOFTWARE.
 
 Used by:
 
-[has-symbols ↗](https://github.com/inspect-js/has-symbols)
+[has-symbols ↗︎](https://github.com/inspect-js/has-symbols)
 
 ```plaintext
 MIT License
@@ -4153,7 +4153,7 @@ SOFTWARE.
 
 Used by:
 
-[has-tostringtag ↗](https://github.com/inspect-js/has-tostringtag)
+[has-tostringtag ↗︎](https://github.com/inspect-js/has-tostringtag)
 
 ```plaintext
 MIT License
@@ -4183,7 +4183,7 @@ SOFTWARE.
 
 Used by:
 
-[available-typed-arrays ↗](https://github.com/inspect-js/available-typed-arrays)
+[available-typed-arrays ↗︎](https://github.com/inspect-js/available-typed-arrays)
 
 ```plaintext
 MIT License
@@ -4213,7 +4213,7 @@ SOFTWARE.
 
 Used by:
 
-[has-property-descriptors ↗](https://github.com/inspect-js/has-property-descriptors)
+[has-property-descriptors ↗︎](https://github.com/inspect-js/has-property-descriptors)
 
 ```plaintext
 MIT License
@@ -4243,7 +4243,7 @@ SOFTWARE.
 
 Used by:
 
-[for-each ↗](https://github.com/Raynos/for-each)
+[for-each ↗︎](https://github.com/Raynos/for-each)
 
 ```plaintext
 The MIT License (MIT)
@@ -4273,7 +4273,7 @@ SOFTWARE.
 
 Used by:
 
-[define-properties ↗](https://github.com/ljharb/define-properties)
+[define-properties ↗︎](https://github.com/ljharb/define-properties)
 
 ```plaintext
 The MIT License (MIT)
@@ -4303,7 +4303,7 @@ THE SOFTWARE.
 
 Used by:
 
-[object-keys ↗](https://github.com/ljharb/object-keys)
+[object-keys ↗︎](https://github.com/ljharb/object-keys)
 
 ```plaintext
 The MIT License (MIT)
@@ -4333,7 +4333,7 @@ THE SOFTWARE.
 
 Used by:
 
-[object.assign ↗](https://github.com/ljharb/object.assign)
+[object.assign ↗︎](https://github.com/ljharb/object.assign)
 
 ```plaintext
 The MIT License (MIT)
@@ -4363,7 +4363,7 @@ SOFTWARE.
 
 Used by:
 
-[browserify-zlib ↗](https://github.com/devongovett/browserify-zlib)
+[browserify-zlib ↗︎](https://github.com/devongovett/browserify-zlib)
 
 ```plaintext
 The MIT License (MIT)
@@ -4442,7 +4442,7 @@ IN THE SOFTWARE.
 
 Used by:
 
-[pako ↗](https://github.com/nodeca/pako)
+[pako ↗︎](https://github.com/nodeca/pako)
 
 ```plaintext
 (The MIT License)
@@ -4472,7 +4472,7 @@ THE SOFTWARE.
 
 Used by:
 
-[buffer ↗](https://github.com/feross/buffer)
+[buffer ↗︎](https://github.com/feross/buffer)
 
 ```plaintext
 The MIT License (MIT)
@@ -4502,7 +4502,7 @@ THE SOFTWARE.
 
 Used by:
 
-[base64-js ↗](https://github.com/beatgammit/base64-js)
+[base64-js ↗︎](https://github.com/beatgammit/base64-js)
 
 ```plaintext
 The MIT License (MIT)
@@ -4532,7 +4532,7 @@ THE SOFTWARE.
 
 Used by:
 
-[ieee754 ↗](https://github.com/feross/ieee754)
+[ieee754 ↗︎](https://github.com/feross/ieee754)
 
 ```plaintext
 Copyright 2008 Fair Oaks Labs, Inc.
@@ -4552,7 +4552,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 Used by:
 
-[console-browserify ↗](https://github.com/browserify/console-browserify)
+[console-browserify ↗︎](https://github.com/browserify/console-browserify)
 
 ```plaintext
 Copyright (c) 2012 Raynos.
@@ -4580,7 +4580,7 @@ THE SOFTWARE.
 
 Used by:
 
-[constants-browserify ↗](https://github.com/juliangruber/constants-browserify)
+[constants-browserify ↗︎](https://github.com/juliangruber/constants-browserify)
 
 ```plaintext
 Copyright (c) 2013 Julian Gruber <julian@juliangruber.com>
@@ -4596,7 +4596,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[domain-browser ↗](https://github.com/bevry/domain-browser)
+[domain-browser ↗︎](https://github.com/bevry/domain-browser)
 
 ```plaintext
 <!-- LICENSEFILE/ -->
@@ -4706,7 +4706,7 @@ THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS "AS IS" AND WIT
 
 Used by:
 
-[https-browserify ↗](https://github.com/substack/https-browserify)
+[https-browserify ↗︎](https://github.com/substack/https-browserify)
 
 ```plaintext
 This software is released under the MIT license:
@@ -4735,7 +4735,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[os-browserify ↗](https://github.com/CoderPuppy/os-browserify)
+[os-browserify ↗︎](https://github.com/CoderPuppy/os-browserify)
 
 ```plaintext
 The MIT License (MIT)
@@ -4765,7 +4765,7 @@ SOFTWARE.
 
 Used by:
 
-[path-browserify ↗](https://github.com/browserify/path-browserify)
+[path-browserify ↗︎](https://github.com/browserify/path-browserify)
 
 ```plaintext
 MIT License
@@ -4794,7 +4794,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[process ↗](https://github.com/shtylman/node-process)
+[process ↗︎](https://github.com/shtylman/node-process)
 
 ```plaintext
 (The MIT License)
@@ -4825,7 +4825,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[querystring-es3 ↗](https://github.com/mike-spainhower/querystring)
+[querystring-es3 ↗︎](https://github.com/mike-spainhower/querystring)
 
 ```plaintext
 Copyright 2012 Irakli Gozalishvili. All rights reserved.
@@ -4852,7 +4852,7 @@ IN THE SOFTWARE.
 
 Used by:
 
-[react-native-crypto ↗](https://github.com/tradle/react-native-crypto)
+[react-native-crypto ↗︎](https://github.com/tradle/react-native-crypto)
 
 ```plaintext
 The MIT License
@@ -4885,7 +4885,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[browserify-cipher ↗](https://github.com/crypto-browserify/browserify-cipher)
+[browserify-cipher ↗︎](https://github.com/crypto-browserify/browserify-cipher)
 
 ```plaintext
 The MIT License (MIT)
@@ -4915,7 +4915,7 @@ SOFTWARE.
 
 Used by:
 
-[browserify-aes ↗](https://github.com/crypto-browserify/browserify-aes)
+[browserify-aes ↗︎](https://github.com/crypto-browserify/browserify-aes)
 
 ```plaintext
 The MIT License (MIT)
@@ -4945,7 +4945,7 @@ SOFTWARE.
 
 Used by:
 
-[buffer-xor ↗](https://github.com/crypto-browserify/buffer-xor)
+[buffer-xor ↗︎](https://github.com/crypto-browserify/buffer-xor)
 
 ```plaintext
 The MIT License (MIT)
@@ -4975,7 +4975,7 @@ SOFTWARE.
 
 Used by:
 
-[safe-buffer ↗](https://github.com/feross/safe-buffer)
+[safe-buffer ↗︎](https://github.com/feross/safe-buffer)
 
 ```plaintext
 The MIT License (MIT)
@@ -5005,7 +5005,7 @@ THE SOFTWARE.
 
 Used by:
 
-[readable-stream ↗](https://github.com/nodejs/readable-stream)
+[readable-stream ↗︎](https://github.com/nodejs/readable-stream)
 
 ```plaintext
 Node.js is licensed for use as follows:
@@ -5061,7 +5061,7 @@ IN THE SOFTWARE.
 
 Used by:
 
-[abort-controller ↗](https://github.com/mysticatea/abort-controller)
+[abort-controller ↗︎](https://github.com/mysticatea/abort-controller)
 
 ```plaintext
 MIT License
@@ -5091,7 +5091,7 @@ SOFTWARE.
 
 Used by:
 
-[event-target-shim ↗](https://github.com/mysticatea/event-target-shim)
+[event-target-shim ↗︎](https://github.com/mysticatea/event-target-shim)
 
 ```plaintext
 The MIT License (MIT)
@@ -5121,7 +5121,7 @@ SOFTWARE.
 
 Used by:
 
-[string\_decoder ↗](https://github.com/nodejs/string_decoder)
+[string\_decoder ↗︎](https://github.com/nodejs/string_decoder)
 
 ```plaintext
 Node.js is licensed for use as follows:
@@ -5177,7 +5177,7 @@ IN THE SOFTWARE.
 
 Used by:
 
-[ripemd160 ↗](https://github.com/crypto-browserify/ripemd160)
+[ripemd160 ↗︎](https://github.com/crypto-browserify/ripemd160)
 
 ```plaintext
 The MIT License (MIT)
@@ -5207,7 +5207,7 @@ SOFTWARE.
 
 Used by:
 
-[sha.js ↗](https://github.com/crypto-browserify/sha.js)
+[sha.js ↗︎](https://github.com/crypto-browserify/sha.js)
 
 ```plaintext
 Copyright (c) 2013-2018 sha.js contributors
@@ -5264,7 +5264,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Used by:
 
-[to-buffer ↗](https://github.com/browserify/to-buffer)
+[to-buffer ↗︎](https://github.com/browserify/to-buffer)
 
 ```plaintext
 The MIT License (MIT)
@@ -5294,7 +5294,7 @@ THE SOFTWARE.
 
 Used by:
 
-[isarray ↗](https://github.com/juliangruber/isarray)
+[isarray ↗︎](https://github.com/juliangruber/isarray)
 
 ```plaintext
 MIT License
@@ -5324,7 +5324,7 @@ SOFTWARE.
 
 Used by:
 
-[browserify-des ↗](https://github.com/crypto-browserify/browserify-des)
+[browserify-des ↗︎](https://github.com/crypto-browserify/browserify-des)
 
 ```plaintext
 The MIT License (MIT)
@@ -5354,7 +5354,7 @@ SOFTWARE.
 
 Used by:
 
-[des.js ↗](https://github.com/indutny/des.js)
+[des.js ↗︎](https://github.com/indutny/des.js)
 
 ```plaintext
 This software is licensed under the MIT License.
@@ -5372,7 +5372,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[minimalistic-assert ↗](https://github.com/calvinmetcalf/minimalistic-assert)
+[minimalistic-assert ↗︎](https://github.com/calvinmetcalf/minimalistic-assert)
 
 ```plaintext
 Copyright 2015 Calvin Metcalf
@@ -5394,7 +5394,7 @@ PERFORMANCE OF THIS SOFTWARE.
 
 Used by:
 
-[browserify-sign ↗](https://github.com/crypto-browserify/browserify-sign)
+[browserify-sign ↗︎](https://github.com/crypto-browserify/browserify-sign)
 
 ```plaintext
 Copyright (c) 2014-2015 Calvin Metcalf and browserify-sign contributors
@@ -5416,7 +5416,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 Used by:
 
-[bn.js ↗](https://github.com/indutny/bn.js)
+[bn.js ↗︎](https://github.com/indutny/bn.js)
 
 ```plaintext
 Copyright Fedor Indutny, 2015.
@@ -5444,7 +5444,7 @@ SOFTWARE.
 
 Used by:
 
-[browserify-rsa ↗](https://github.com/crypto-browserify/browserify-rsa)
+[browserify-rsa ↗︎](https://github.com/crypto-browserify/browserify-rsa)
 
 ```plaintext
 The MIT License (MIT)
@@ -5474,7 +5474,7 @@ SOFTWARE.
 
 Used by:
 
-[elliptic ↗](https://github.com/indutny/elliptic)
+[elliptic ↗︎](https://github.com/indutny/elliptic)
 
 ```plaintext
 This software is licensed under the MIT License.
@@ -5492,7 +5492,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[brorand ↗](https://github.com/indutny/brorand)
+[brorand ↗︎](https://github.com/indutny/brorand)
 
 ```plaintext
 This software is licensed under the MIT License.
@@ -5510,7 +5510,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[hash.js ↗](https://github.com/indutny/hash.js)
+[hash.js ↗︎](https://github.com/indutny/hash.js)
 
 ```plaintext
 This software is licensed under the MIT License.
@@ -5528,7 +5528,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[hmac-drbg ↗](https://github.com/indutny/hmac-drbg)
+[hmac-drbg ↗︎](https://github.com/indutny/hmac-drbg)
 
 ```plaintext
 This software is licensed under the MIT License.
@@ -5546,7 +5546,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[minimalistic-crypto-utils ↗](https://github.com/indutny/minimalistic-crypto-utils)
+[minimalistic-crypto-utils ↗︎](https://github.com/indutny/minimalistic-crypto-utils)
 
 ```plaintext
 This software is licensed under the MIT License.
@@ -5564,7 +5564,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[parse-asn1 ↗](https://github.com/crypto-browserify/parse-asn1)
+[parse-asn1 ↗︎](https://github.com/crypto-browserify/parse-asn1)
 
 ```plaintext
 Copyright (c) 2017, crypto-browserify contributors
@@ -5586,7 +5586,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 Used by:
 
-[asn1.js ↗](https://github.com/indutny/asn1.js)
+[asn1.js ↗︎](https://github.com/indutny/asn1.js)
 
 ```plaintext
 MIT License
@@ -5616,7 +5616,7 @@ SOFTWARE.
 
 Used by:
 
-[safer-buffer ↗](https://github.com/ChALkeR/safer-buffer)
+[safer-buffer ↗︎](https://github.com/ChALkeR/safer-buffer)
 
 ```plaintext
 MIT License
@@ -5646,7 +5646,7 @@ SOFTWARE.
 
 Used by:
 
-[pbkdf2 ↗](https://github.com/crypto-browserify/pbkdf2)
+[pbkdf2 ↗︎](https://github.com/crypto-browserify/pbkdf2)
 
 ```plaintext
 The MIT License (MIT)
@@ -5676,7 +5676,7 @@ SOFTWARE.
 
 Used by:
 
-[create-ecdh ↗](https://github.com/crypto-browserify/createECDH)
+[create-ecdh ↗︎](https://github.com/crypto-browserify/createECDH)
 
 ```plaintext
 The MIT License (MIT)
@@ -5706,7 +5706,7 @@ SOFTWARE.
 
 Used by:
 
-[miller-rabin ↗](https://github.com/indutny/miller-rabin)
+[miller-rabin ↗︎](https://github.com/indutny/miller-rabin)
 
 ```plaintext
 This software is licensed under the MIT License.
@@ -5724,7 +5724,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[react-native-randombytes ↗](https://github.com/mvayngrib/react-native-randombytes)
+[react-native-randombytes ↗︎](https://github.com/mvayngrib/react-native-randombytes)
 
 ```plaintext
 The MIT License (MIT)
@@ -5754,7 +5754,7 @@ SOFTWARE.
 
 Used by:
 
-[sjcl ↗](https://github.com/bitwiseshiftleft/sjcl)
+[sjcl ↗︎](https://github.com/bitwiseshiftleft/sjcl)
 
 ```plaintext
 SJCL is open. You can use, modify and redistribute it under a BSD
@@ -5821,7 +5821,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 Used by:
 
-[stream-http ↗](https://github.com/jhiesey/stream-http)
+[stream-http ↗︎](https://github.com/jhiesey/stream-http)
 
 ```plaintext
 The MIT License
@@ -5854,7 +5854,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[builtin-status-codes ↗](https://github.com/bendrucker/builtin-status-codes)
+[builtin-status-codes ↗︎](https://github.com/bendrucker/builtin-status-codes)
 
 ```plaintext
 The MIT License (MIT)
@@ -5884,7 +5884,7 @@ THE SOFTWARE.
 
 Used by:
 
-[xtend ↗](https://github.com/Raynos/xtend)
+[xtend ↗︎](https://github.com/Raynos/xtend)
 
 ```plaintext
 The MIT License (MIT)
@@ -5913,7 +5913,7 @@ THE SOFTWARE.
 
 Used by:
 
-[timers-browserify ↗](https://github.com/jryans/timers-browserify)
+[timers-browserify ↗︎](https://github.com/jryans/timers-browserify)
 
 ```plaintext
 # timers-browserify
@@ -5968,7 +5968,7 @@ The `lib/node` directory borrows files from joyent/node which uses the following
 
 Used by:
 
-[setimmediate ↗](https://github.com/yuzujs/setImmediate)
+[setimmediate ↗︎](https://github.com/yuzujs/setImmediate)
 
 ```plaintext
 Copyright (c) 2012 Barnesandnoble.com, llc, Donavon West, and Domenic Denicola
@@ -5997,7 +5997,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[tty-browserify ↗](https://github.com/browserify/tty-browserify)
+[tty-browserify ↗︎](https://github.com/browserify/tty-browserify)
 
 ```plaintext
 This software is released under the MIT license:
@@ -6024,7 +6024,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[url ↗](https://github.com/defunctzombie/node-url)
+[url ↗︎](https://github.com/defunctzombie/node-url)
 
 ```plaintext
 The MIT License (MIT)
@@ -6054,7 +6054,7 @@ SOFTWARE.
 
 Used by:
 
-[qs ↗](https://github.com/ljharb/qs)
+[qs ↗︎](https://github.com/ljharb/qs)
 
 ```plaintext
 BSD 3-Clause License
@@ -6092,7 +6092,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Used by:
 
-[object-inspect ↗](https://github.com/inspect-js/object-inspect)
+[object-inspect ↗︎](https://github.com/inspect-js/object-inspect)
 
 ```plaintext
 MIT License
@@ -6122,7 +6122,7 @@ SOFTWARE.
 
 Used by:
 
-[react-native-url-polyfill ↗](https://github.com/charpeni/react-native-url-polyfill)
+[react-native-url-polyfill ↗︎](https://github.com/charpeni/react-native-url-polyfill)
 
 ```plaintext
 MIT License
@@ -6152,7 +6152,7 @@ SOFTWARE.
 
 Used by:
 
-[whatwg-url-without-unicode ↗](https://github.com/charpeni/whatwg-url)
+[whatwg-url-without-unicode ↗︎](https://github.com/charpeni/whatwg-url)
 
 ```plaintext
 The MIT License (MIT)
@@ -6182,7 +6182,7 @@ THE SOFTWARE.
 
 Used by:
 
-[webidl-conversions ↗](https://github.com/jsdom/webidl-conversions)
+[webidl-conversions ↗︎](https://github.com/jsdom/webidl-conversions)
 
 ```plaintext
 # The BSD 2-Clause License
@@ -6203,7 +6203,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 Used by:
 
-[text-encoding-polyfill ↗](https://github.com/inexorabletash/text-encoding)
+[text-encoding-polyfill ↗︎](https://github.com/inexorabletash/text-encoding)
 
 ```plaintext
 The encoding indexes, algorithms, and many comments in the code
@@ -6449,7 +6449,7 @@ For more information, please refer to <http://unlicense.org/>
 
 Used by:
 
-[lodash ↗](https://github.com/lodash/lodash)
+[lodash ↗︎](https://github.com/lodash/lodash)
 
 ```plaintext
 Copyright OpenJS Foundation and other contributors <https://openjsf.org/>
@@ -6505,7 +6505,7 @@ terms above.
 
 Used by:
 
-[radio-buttons-react-native ↗](https://github.com/sramezani/radio-buttons-react-native)
+[radio-buttons-react-native ↗︎](https://github.com/sramezani/radio-buttons-react-native)
 
 ```plaintext
 MIT License
@@ -6535,7 +6535,7 @@ SOFTWARE.
 
 Used by:
 
-[react-native-element-dropdown ↗](https://github.com/hoaphantn7604/react-native-element-dropdown)
+[react-native-element-dropdown ↗︎](https://github.com/hoaphantn7604/react-native-element-dropdown)
 
 ```plaintext
 MIT License
@@ -6564,7 +6564,7 @@ SOFTWARE.
 
 Used by:
 
-[react-native-gifted-chat ↗](https://github.com/FaridSafi/react-native-gifted-chat)
+[react-native-gifted-chat ↗︎](https://github.com/FaridSafi/react-native-gifted-chat)
 
 ```plaintext
 The MIT License (MIT)
@@ -6594,7 +6594,7 @@ SOFTWARE.
 
 Used by:
 
-[@expo/react-native-action-sheet ↗](https://github.com/expo/react-native-action-sheet)
+[@expo/react-native-action-sheet ↗︎](https://github.com/expo/react-native-action-sheet)
 
 ```plaintext
 The MIT License (MIT)
@@ -6624,7 +6624,7 @@ SOFTWARE.
 
 Used by:
 
-[hoist-non-react-statics ↗](https://github.com/mridgway/hoist-non-react-statics)
+[hoist-non-react-statics ↗︎](https://github.com/mridgway/hoist-non-react-statics)
 
 ```plaintext
 Software License Agreement (BSD License)
@@ -6662,7 +6662,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Used by:
 
-[react-is ↗](https://github.com/facebook/react)
+[react-is ↗︎](https://github.com/facebook/react)
 
 ```plaintext
 MIT License
@@ -6692,7 +6692,7 @@ SOFTWARE.
 
 Used by:
 
-[dayjs ↗](https://github.com/iamkun/dayjs)
+[dayjs ↗︎](https://github.com/iamkun/dayjs)
 
 ```plaintext
 MIT License
@@ -6722,7 +6722,7 @@ SOFTWARE.
 
 Used by:
 
-[lodash.isequal ↗](https://github.com/lodash/lodash)
+[lodash.isequal ↗︎](https://github.com/lodash/lodash)
 
 ```plaintext
 Copyright JS Foundation and other contributors <https://js.foundation/>
@@ -6778,7 +6778,7 @@ terms above.
 
 Used by:
 
-[react-native-communications ↗](https://github.com/anarchicknight/react-native-communications)
+[react-native-communications ↗︎](https://github.com/anarchicknight/react-native-communications)
 
 ```plaintext
 The MIT License (MIT)
@@ -6808,7 +6808,7 @@ SOFTWARE.
 
 Used by:
 
-[react-native-iphone-x-helper ↗](https://github.com/ptelad/react-native-iphone-x-helper)
+[react-native-iphone-x-helper ↗︎](https://github.com/ptelad/react-native-iphone-x-helper)
 
 ```plaintext
 MIT License
@@ -6838,7 +6838,7 @@ SOFTWARE.
 
 Used by:
 
-[react-native-lightbox-v2 ↗](https://github.com/cbbfcd/react-native-lightbox)
+[react-native-lightbox-v2 ↗︎](https://github.com/cbbfcd/react-native-lightbox)
 
 ```plaintext
 The MIT License (MIT)
@@ -6868,7 +6868,7 @@ SOFTWARE.
 
 Used by:
 
-[react-native-parsed-text ↗](https://github.com/taskrabbit/react-native-parsed-text)
+[react-native-parsed-text ↗︎](https://github.com/taskrabbit/react-native-parsed-text)
 
 ```plaintext
 MIT License
@@ -6898,7 +6898,7 @@ SOFTWARE.
 
 Used by:
 
-[prop-types ↗](https://github.com/facebook/prop-types)
+[prop-types ↗︎](https://github.com/facebook/prop-types)
 
 ```plaintext
 MIT License
@@ -6928,7 +6928,7 @@ SOFTWARE.
 
 Used by:
 
-[loose-envify ↗](https://github.com/zertosh/loose-envify)
+[loose-envify ↗︎](https://github.com/zertosh/loose-envify)
 
 ```plaintext
 The MIT License (MIT)
@@ -6958,7 +6958,7 @@ THE SOFTWARE.
 
 Used by:
 
-[js-tokens ↗](https://github.com/lydell/js-tokens)
+[js-tokens ↗︎](https://github.com/lydell/js-tokens)
 
 ```plaintext
 The MIT License (MIT)
@@ -6988,7 +6988,7 @@ THE SOFTWARE.
 
 Used by:
 
-[object-assign ↗](https://github.com/sindresorhus/object-assign)
+[object-assign ↗︎](https://github.com/sindresorhus/object-assign)
 
 ```plaintext
 The MIT License (MIT)
@@ -7018,7 +7018,7 @@ THE SOFTWARE.
 
 Used by:
 
-[react-native-svg-transformer ↗](https://github.com/kristerkari/react-native-svg-transformer)
+[react-native-svg-transformer ↗︎](https://github.com/kristerkari/react-native-svg-transformer)
 
 ```plaintext
 The MIT License (MIT)
@@ -7048,7 +7048,7 @@ SOFTWARE.
 
 Used by:
 
-[debug ↗](https://github.com/debug-js/debug)
+[debug ↗︎](https://github.com/debug-js/debug)
 
 ```plaintext
 (The MIT License)
@@ -7076,7 +7076,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[ms ↗](https://github.com/vercel/ms)
+[ms ↗︎](https://github.com/vercel/ms)
 
 ```plaintext
 The MIT License (MIT)
@@ -7106,7 +7106,7 @@ SOFTWARE.
 
 Used by:
 
-[json5 ↗](https://github.com/json5/json5)
+[json5 ↗︎](https://github.com/json5/json5)
 
 ```plaintext
 MIT License
@@ -7138,7 +7138,7 @@ SOFTWARE.
 
 Used by:
 
-[semver ↗](https://github.com/npm/node-semver)
+[semver ↗︎](https://github.com/npm/node-semver)
 
 ```plaintext
 The ISC License
@@ -7162,7 +7162,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 Used by:
 
-[gensync ↗](https://github.com/loganfsmyth/gensync)
+[gensync ↗︎](https://github.com/loganfsmyth/gensync)
 
 ```plaintext
 Copyright 2018 Logan Smyth <loganfsmyth@gmail.com>
@@ -7178,7 +7178,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[@babel/parser ↗](https://github.com/babel/babel)
+[@babel/parser ↗︎](https://github.com/babel/babel)
 
 ```plaintext
 Copyright (C) 2012-2014 by various contributors (see AUTHORS)
@@ -7206,7 +7206,7 @@ THE SOFTWARE.
 
 Used by:
 
-[@babel/helpers ↗](https://github.com/babel/babel)
+[@babel/helpers ↗︎](https://github.com/babel/babel)
 
 ```plaintext
 MIT License
@@ -7238,7 +7238,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[picocolors ↗](https://github.com/alexeyraspopov/picocolors)
+[picocolors ↗︎](https://github.com/alexeyraspopov/picocolors)
 
 ```plaintext
 ISC License
@@ -7262,7 +7262,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 Used by:
 
-[@jridgewell/resolve-uri ↗](https://github.com/jridgewell/resolve-uri)
+[@jridgewell/resolve-uri ↗︎](https://github.com/jridgewell/resolve-uri)
 
 ```plaintext
 Copyright 2019 Justin Ridgewell <jridgewell@google.com>
@@ -7290,7 +7290,7 @@ SOFTWARE.
 
 Used by:
 
-[convert-source-map ↗](https://github.com/thlorenz/convert-source-map)
+[convert-source-map ↗︎](https://github.com/thlorenz/convert-source-map)
 
 ```plaintext
 Copyright 2013 Thorsten Lorenz.
@@ -7322,7 +7322,7 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[lru-cache ↗](https://github.com/isaacs/node-lru-cache)
+[lru-cache ↗︎](https://github.com/isaacs/node-lru-cache)
 
 ```plaintext
 The ISC License
@@ -7346,7 +7346,7 @@ IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 Used by:
 
-[browserslist ↗](https://github.com/browserslist/browserslist)
+[browserslist ↗︎](https://github.com/browserslist/browserslist)
 
 ```plaintext
 The MIT License (MIT)
@@ -7375,7 +7375,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[baseline-browser-mapping ↗](https://github.com/web-platform-dx/baseline-browser-mapping)
+[baseline-browser-mapping ↗︎](https://github.com/web-platform-dx/baseline-browser-mapping)
 
 ```plaintext
                                  Apache License
@@ -7585,7 +7585,7 @@ Used by:
 
 Used by:
 
-[caniuse-lite ↗](https://github.com/browserslist/caniuse-lite)
+[caniuse-lite ↗︎](https://github.com/browserslist/caniuse-lite)
 
 ```plaintext
 Attribution 4.0 International
@@ -7989,7 +7989,7 @@ Creative Commons may be contacted at creativecommons.org.
 
 Used by:
 
-[electron-to-chromium ↗](https://github.com/kilian/electron-to-chromium)
+[electron-to-chromium ↗︎](https://github.com/kilian/electron-to-chromium)
 
 ```plaintext
 Copyright 2018 Kilian Valkhof
@@ -8003,7 +8003,7 @@ THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH RE
 
 Used by:
 
-[node-releases ↗](https://github.com/chicoxyzzy/node-releases)
+[node-releases ↗︎](https://github.com/chicoxyzzy/node-releases)
 
 ```plaintext
 The MIT License
@@ -8033,7 +8033,7 @@ THE SOFTWARE.
 
 Used by:
 
-[update-browserslist-db ↗](https://github.com/browserslist/update-db)
+[update-browserslist-db ↗︎](https://github.com/browserslist/update-db)
 
 ```plaintext
 The MIT License (MIT)
@@ -8062,7 +8062,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[escalade ↗](https://github.com/lukeed/escalade)
+[escalade ↗︎](https://github.com/lukeed/escalade)
 
 ```plaintext
 MIT License
@@ -8080,7 +8080,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[cosmiconfig ↗](https://github.com/cosmiconfig/cosmiconfig)
+[cosmiconfig ↗︎](https://github.com/cosmiconfig/cosmiconfig)
 
 ```plaintext
 The MIT License (MIT)
@@ -8110,7 +8110,7 @@ SOFTWARE.
 
 Used by:
 
-[resolve-from ↗](https://github.com/sindresorhus/resolve-from)
+[resolve-from ↗︎](https://github.com/sindresorhus/resolve-from)
 
 ```plaintext
 MIT License
@@ -8128,7 +8128,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[js-yaml ↗](https://github.com/nodeca/js-yaml)
+[js-yaml ↗︎](https://github.com/nodeca/js-yaml)
 
 ```plaintext
 (The MIT License)
@@ -8158,7 +8158,7 @@ THE SOFTWARE.
 
 Used by:
 
-[argparse ↗](https://github.com/nodeca/argparse)
+[argparse ↗︎](https://github.com/nodeca/argparse)
 
 ```plaintext
 A. HISTORY OF THE SOFTWARE
@@ -8421,7 +8421,7 @@ OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 Used by:
 
-[svg-parser ↗](https://github.com/Rich-Harris/svg-parser)
+[svg-parser ↗︎](https://github.com/Rich-Harris/svg-parser)
 
 ```plaintext
 License file is not available for svg-parser.
@@ -8433,7 +8433,7 @@ Please refer to the package repository for complete license information.
 
 Used by:
 
-[deepmerge ↗](https://github.com/TehShrike/deepmerge)
+[deepmerge ↗︎](https://github.com/TehShrike/deepmerge)
 
 ```plaintext
 The MIT License (MIT)
@@ -8463,7 +8463,7 @@ THE SOFTWARE.
 
 Used by:
 
-[svgo ↗](https://github.com/svg/svgo)
+[svgo ↗︎](https://github.com/svg/svgo)
 
 ```plaintext
 MIT License
@@ -8493,7 +8493,7 @@ SOFTWARE.
 
 Used by:
 
-[commander ↗](https://github.com/tj/commander.js)
+[commander ↗︎](https://github.com/tj/commander.js)
 
 ```plaintext
 (The MIT License)
@@ -8524,7 +8524,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 Used by:
 
-[boolbase ↗](https://github.com/fb55/boolbase)
+[boolbase ↗︎](https://github.com/fb55/boolbase)
 
 ```plaintext
 Copyright (c) 2014-2015, Felix Boehm <me@feedic.com>
@@ -8546,7 +8546,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 Used by:
 
-[dom-serializer ↗](https://github.com/cheeriojs/dom-serializer)
+[dom-serializer ↗︎](https://github.com/cheeriojs/dom-serializer)
 
 ```plaintext
 License
@@ -8566,7 +8566,7 @@ THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 Used by:
 
-[css-tree ↗](https://github.com/csstree/csstree)
+[css-tree ↗︎](https://github.com/csstree/csstree)
 
 ```plaintext
 Copyright (C) 2016-2024 by Roman Dvornov
@@ -8594,7 +8594,7 @@ THE SOFTWARE.
 
 Used by:
 
-[mdn-data ↗](https://github.com/mdn/data)
+[mdn-data ↗︎](https://github.com/mdn/data)
 
 ```plaintext
 CC0 1.0 Universal
@@ -8719,7 +8719,7 @@ For more information, please see
 
 Used by:
 
-[source-map-js ↗](https://github.com/7rulnik/source-map-js)
+[source-map-js ↗︎](https://github.com/7rulnik/source-map-js)
 
 ```plaintext
 Copyright (c) 2009-2011, Mozilla Foundation and contributors
@@ -8755,7 +8755,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 Used by:
 
-[csso ↗](https://github.com/css/csso)
+[csso ↗︎](https://github.com/css/csso)
 
 ```plaintext
 Copyright (C) 2015-2021 by Roman Dvornov
@@ -8784,7 +8784,7 @@ THE SOFTWARE.
 
 Used by:
 
-[sax ↗](https://github.com/isaacs/sax-js)
+[sax ↗︎](https://github.com/isaacs/sax-js)
 
 ```plaintext
 The ISC License
@@ -8834,7 +8834,7 @@ Copyright (c) 2010-2024 Mathias Bynens <https://mathiasbynens.be/>
 
 Used by:
 
-[path-dirname ↗](https://github.com/es128/path-dirname)
+[path-dirname ↗︎](https://github.com/es128/path-dirname)
 
 ```plaintext
 The MIT License (MIT)
@@ -8864,7 +8864,7 @@ IN THE SOFTWARE.
 
 Used by:
 
-[react-native-switch ↗](https://github.com/shahen94/react-native-switch)
+[react-native-switch ↗︎](https://github.com/shahen94/react-native-switch)
 
 ```plaintext
 MIT License
@@ -8894,7 +8894,7 @@ SOFTWARE.
 
 Used by:
 
-[abortcontroller-polyfill ↗](https://github.com/mo/abortcontroller-polyfill)
+[abortcontroller-polyfill ↗︎](https://github.com/mo/abortcontroller-polyfill)
 
 ```plaintext
 MIT License
@@ -8924,7 +8924,7 @@ SOFTWARE.
 
 Used by:
 
-[initials ↗](https://github.com/gr2m/initials)
+[initials ↗︎](https://github.com/gr2m/initials)
 
 ```plaintext
 MIT License

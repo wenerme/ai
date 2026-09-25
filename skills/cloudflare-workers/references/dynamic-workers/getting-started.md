@@ -29,13 +29,13 @@ Dynamic Workers support two loading modes:
 
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers)
 
-Use this "hello world" [starter ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers) to get a Worker deployed that can load and execute Dynamic Workers.
+Use this "hello world" [starter ↗︎](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers) to get a Worker deployed that can load and execute Dynamic Workers.
 
 #### Dynamic Workers Playground
 
 [![Deploy to Workers](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground)
 
-You can also deploy the [Dynamic Workers Playground ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground), where you can write or import code, bundle it at runtime with `@cloudflare/worker-bundler`, execute it through a Dynamic Worker, and see real-time responses and execution logs.
+You can also deploy the [Dynamic Workers Playground ↗︎](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground), where you can write or import code, bundle it at runtime with `@cloudflare/worker-bundler`, execute it through a Dynamic Worker, and see real-time responses and execution logs.
 
 ## Configure Worker Loader
 
@@ -69,7 +69,7 @@ export default {
 	async fetch(request, env) {
 		// Load a worker.
 		const worker = env.LOADER.load({
-			compatibilityDate: "2026-09-22",
+			compatibilityDate: "2026-09-25",
 
 			mainModule: "src/index.js",
 			modules: {
@@ -148,7 +148,7 @@ const worker = env.LOADER.get("hello-v1", async () => {
 
 	// Return the same format as `env.LOADER.load()` accepts.
 	return {
-		compatibilityDate: "2026-09-22",
+		compatibilityDate: "2026-09-25",
 		mainModule: "index.js",
 		modules: { "index.js": code },
 		globalOutbound: null,
@@ -188,7 +188,7 @@ To run Python code in a Dynamic Worker, you must include the `python_workers` co
 
 ```js
 const worker = env.LOADER.load({
-	compatibilityDate: "2026-09-22",
+	compatibilityDate: "2026-09-25",
 	compatibilityFlags: ["python_workers"],
 	mainModule: "worker.py",
 	modules: {
@@ -224,7 +224,7 @@ class Default(WorkerEntrypoint):
 
 If your Dynamic Worker needs TypeScript compilation or npm dependencies, the code must be transpiled and bundled before passing to the Worker Loader.
 
-[`@cloudflare/worker-bundler` ↗](https://www.npmjs.com/package/@cloudflare/worker-bundler) is a library that handles this for you. Use it to bundle source files into a format that `load()` and `get()` accept:
+[`@cloudflare/worker-bundler` ↗︎](https://www.npmjs.com/package/@cloudflare/worker-bundler) is a library that handles this for you. Use it to bundle source files into a format that `load()` and `get()` accept:
 
 ```js
 import { createWorker } from "@cloudflare/worker-bundler";
@@ -244,7 +244,7 @@ const worker = env.LOADER.get("my-worker", async () => {
 		},
 	});
 
-	return { mainModule, modules, compatibilityDate: "2026-09-22" };
+	return { mainModule, modules, compatibilityDate: "2026-09-25" };
 });
 ```
 

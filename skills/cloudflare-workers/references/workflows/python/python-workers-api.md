@@ -180,7 +180,7 @@ class CtxWorkflow(WorkflowEntrypoint):
 
 ### Create an instance via binding
 
-Note that `env` is a JavaScript object exposed to the Python script via [JsProxy ↗](https://pyodide.org/en/stable/usage/api/python-api/ffi.html#pyodide.ffi.JsProxy). You can access the binding like you would on a JavaScript worker. Refer to the [Workflow binding documentation](https://developers.cloudflare.com/workflows/build/workers-api/#workflow) to learn more about the methods available.
+Note that `env` is a JavaScript object exposed to the Python script via [JsProxy ↗︎](https://pyodide.org/en/stable/usage/api/python-api/ffi.html#pyodide.ffi.JsProxy). You can access the binding like you would on a JavaScript worker. Refer to the [Workflow binding documentation](https://developers.cloudflare.com/workflows/build/workers-api/#workflow) to learn more about the methods available.
 
 Let's consider the previous binding called `MY_WORKFLOW`. Here's how you would create a new instance:
 

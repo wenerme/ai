@@ -45,8 +45,8 @@ struct MyView_Previews: PreviewProvider {
 
 ### Download and run an example app
 
-1. Download [this example app ↗](https://developer.apple.com/documentation/avfoundation/offline_playback_and_storage/using_avfoundation_to_play_and_persist_http_live_streams) from Apple's developer docs
-2. Open and run the app using [Xcode ↗](https://developer.apple.com/xcode/).
+1. Download [this example app ↗︎](https://developer.apple.com/documentation/avfoundation/offline_playback_and_storage/using_avfoundation_to_play_and_persist_http_live_streams) from Apple's developer docs
+2. Open and run the app using [Xcode ↗︎](https://developer.apple.com/xcode/).
 3. Search in Xcode for `m3u8`, and open the `Streams` file
 4. Replace the value of `playlist_url` with the HLS manifest URL for your video.
 

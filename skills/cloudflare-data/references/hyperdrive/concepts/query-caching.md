@@ -36,7 +36,7 @@ SELECT * FROM articles WHERE DATE(published_time) = ?
 ORDER BY published_time DESC LIMIT 50
 ```
 
-Mutating queries (including `INSERT`, `UPSERT`, or `CREATE TABLE`) and queries that use functions designated as [`volatile` ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) or [`stable` ↗](https://www.postgresql.org/docs/current/xfunc-volatility.html) by PostgreSQL are not cached:
+Mutating queries (including `INSERT`, `UPSERT`, or `CREATE TABLE`) and queries that use functions designated as [`volatile` ↗︎](https://www.postgresql.org/docs/current/xfunc-volatility.html) or [`stable` ↗︎](https://www.postgresql.org/docs/current/xfunc-volatility.html) by PostgreSQL are not cached:
 
 ```sql
 -- Not cached: mutating queries

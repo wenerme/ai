@@ -647,7 +647,7 @@ This `POST` request creates a content security rule (previously called a policy)
 
 All other scripts would trigger a rule violation, but those scripts would not be blocked.
 
-For more information on Content Security Policy (CSP) directives and values, refer to the [MDN documentation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy).
+For more information on Content Security Policy (CSP) directives and values, refer to the [MDN documentation ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy).
 
 Note
 

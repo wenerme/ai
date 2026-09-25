@@ -27,7 +27,7 @@ The `@cloudflare/ai-chat` package provides two primary APIs:
 
 Advanced helpers are also available from `@cloudflare/ai-chat/react`, `@cloudflare/ai-chat/types`, and `agents/chat`; see [Exports](#exports) for the full package surface.
 
-Built on the [AI SDK ↗](https://ai-sdk.dev) and Cloudflare Durable Objects, you get:
+Built on the [AI SDK ↗︎](https://ai-sdk.dev) and Cloudflare Durable Objects, you get:
 
 - **Automatic message persistence** — conversations stored in SQLite, survive restarts
 - **Resumable streaming** — disconnected clients resume mid-stream without data loss
@@ -1214,7 +1214,7 @@ const { messages, sendMessage, status } = useChat({
 
 The transport covers new turns, regenerated turns, and stream cancellation. It is a lower-level primitive than `useAgentChat`: loading persisted history, automatic stream resume after a reconnect, cross-tab transcript synchronization, and client-side tool continuations remain the React hook's responsibility. Implement whichever of those your client needs on top of the transport.
 
-The [`vue-chat` example ↗](https://github.com/cloudflare/agents/tree/main/examples/vue-chat) shows a minimal Vue client, and [`ai-chat` ↗](https://github.com/cloudflare/agents/tree/main/examples/ai-chat) shows the full React integration for comparison.
+The [`vue-chat` example ↗︎](https://github.com/cloudflare/agents/tree/main/examples/vue-chat) shows a minimal Vue client, and [`ai-chat` ↗︎](https://github.com/cloudflare/agents/tree/main/examples/ai-chat) shows the full React integration for comparison.
 
 ## Tools
 
@@ -1913,7 +1913,7 @@ Since `onChatMessage` gives you full control over the `streamText` call, you can
 
 ### Dynamic model and tool control
 
-Use [`prepareStep` ↗](https://ai-sdk.dev/docs/agents/loop-control) to change the model, available tools, or system prompt between steps in a multi-step agent loop:
+Use [`prepareStep` ↗︎](https://ai-sdk.dev/docs/agents/loop-control) to change the model, available tools, or system prompt between steps in a multi-step agent loop:
 
 ```js
 import { streamText, convertToModelMessages, tool, stepCountIs } from "ai";
@@ -2008,7 +2008,7 @@ export class ChatAgent extends AIChatAgent {
 
 ### Language model middleware
 
-Use [`wrapLanguageModel` ↗](https://ai-sdk.dev/docs/ai-sdk-core/middleware) to add guardrails, RAG, caching, or logging without modifying your chat logic:
+Use [`wrapLanguageModel` ↗︎](https://ai-sdk.dev/docs/ai-sdk-core/middleware) to add guardrails, RAG, caching, or logging without modifying your chat logic:
 
 ```js
 import { streamText, convertToModelMessages, wrapLanguageModel } from "ai";
@@ -2079,7 +2079,7 @@ Multiple middlewares compose in order: `middleware: [first, second]` applies as 
 
 ### Structured output
 
-Use [`generateObject` ↗](https://ai-sdk.dev/docs/ai-sdk-core/generating-structured-data) inside tools for structured data extraction:
+Use [`generateObject` ↗︎](https://ai-sdk.dev/docs/ai-sdk-core/generating-structured-data) inside tools for structured data extraction:
 
 ```js
 import {
@@ -2175,7 +2175,7 @@ Note
 
 This section covers **in-process** subagents using the AI SDK's `ToolLoopAgent`. For **Durable Object sub-agents** with their own isolated storage and typed RPC, refer to [Sub-agents](https://developers.cloudflare.com/agents/runtime/execution/sub-agents/). To run Think or `AIChatAgent` sub-agents as retained, streaming tools, refer to [Agents as tools](https://developers.cloudflare.com/agents/runtime/execution/agent-tools/).
 
-Tools can delegate work to focused sub-calls with their own context. Use [`ToolLoopAgent` ↗](https://ai-sdk.dev/docs/reference/ai-sdk-core/tool-loop-agent) to define a reusable agent, then call it from a tool's `execute`:
+Tools can delegate work to focused sub-calls with their own context. Use [`ToolLoopAgent` ↗︎](https://ai-sdk.dev/docs/reference/ai-sdk-core/tool-loop-agent) to define a reusable agent, then call it from a tool's `execute`:
 
 ```js
 import {
@@ -2322,7 +2322,7 @@ This pattern is useful when:
 - You want to parallelize independent research (multiple tool calls run concurrently)
 - You need different models or system prompts for different subtasks
 
-For more, refer to the [AI SDK Agents docs ↗](https://ai-sdk.dev/docs/agents/overview), [Subagents ↗](https://ai-sdk.dev/docs/agents/subagents), and [Preliminary Tool Results ↗](https://ai-sdk.dev/docs/ai-sdk-core/tools-and-tool-calling#preliminary-tool-results).
+For more, refer to the [AI SDK Agents docs ↗︎](https://ai-sdk.dev/docs/agents/overview), [Subagents ↗︎](https://ai-sdk.dev/docs/agents/subagents), and [Preliminary Tool Results ↗︎](https://ai-sdk.dev/docs/ai-sdk-core/tools-and-tool-calling#preliminary-tool-results).
 
 ## Multi-client sync
 

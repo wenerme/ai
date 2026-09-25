@@ -58,7 +58,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -170,7 +170,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -204,7 +204,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -338,7 +338,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -512,8 +512,8 @@ Configures the protocol used to route IP traffic from the device to Cloudflare G
 
 **Value:**
 
-- `masque` — (default) [MASQUE ↗](https://datatracker.ietf.org/wg/masque/about/) protocol
-- `wireguard` — [WireGuard ↗](https://www.wireguard.com/) protocol
+- `masque` — (default) [MASQUE ↗︎](https://datatracker.ietf.org/wg/masque/about/) protocol
+- `wireguard` — [WireGuard ↗︎](https://www.wireguard.com/) protocol
 
 ## Top-level parameters
 
@@ -548,7 +548,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -614,7 +614,7 @@ Allows the Cloudflare One Client to connect with a service token before a user c
 
 ## Per-app VPN parameters (Android)
 
-[Per-app VPN ↗](https://support.google.com/work/android/answer/9213914?hl=en) parameters allow you to choose the Android apps that can send traffic through the WARP tunnel. Admins can configure these parameters via any MDM tool that supports deploying an Android app to managed devices or work profiles.
+[Per-app VPN ↗︎](https://support.google.com/work/android/answer/9213914?hl=en) parameters allow you to choose the Android apps that can send traffic through the WARP tunnel. Admins can configure these parameters via any MDM tool that supports deploying an Android app to managed devices or work profiles.
 
 ### `app_identifier`
 

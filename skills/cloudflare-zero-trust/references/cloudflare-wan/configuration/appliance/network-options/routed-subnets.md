@@ -56,7 +56,7 @@ Blue represents directly-attached subnets, and red represents routed subnets.
 
 To add a routed subnet to your LAN, you need:
 
-- **A prefix**: The subnet's CIDR prefix; Cloudflare will automatically install static routes to this prefix in our global network (to forward [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) for this subnet to the right Cloudflare One Appliance), and in your Cloudflare One Appliance (to forward packets for this subnet to the right LAN interface). In the figure above, the routed subnet in the center has the prefix `192.168.200.0/24`.
+- **A prefix**: The subnet's CIDR prefix; Cloudflare will automatically install static routes to this prefix in our global network (to forward [packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) for this subnet to the right Cloudflare One Appliance), and in your Cloudflare One Appliance (to forward packets for this subnet to the right LAN interface). In the figure above, the routed subnet in the center has the prefix `192.168.200.0/24`.
 - **A next-hop address**: The address of the L3 router to which the Cloudflare One Appliance should forward packets for this subnet. In the figure, the routed subnet in the center has the next-hop address `192.168.100.10`.
 
 Optionally, you can also [enable NAT for a subnet](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/network-options/nat-subnet/) by providing a static overlay prefix.

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/cursor-origin-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Cursor Origin ↗](https://cursor.com/origin) is Cursor's Git hosting platform. Cloudflare supports connecting a Cursor Origin repository to your Cloudflare Worker. Workers Builds automatically builds and deploys your Worker when you push a change to the configured production branch. You can also enable [preview builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds) to create [Previews](https://developers.cloudflare.com/workers/previews/) without deploying changes to production.
+[Cursor Origin ↗︎](https://cursor.com/origin) is Cursor's Git hosting platform. Cloudflare supports connecting a Cursor Origin repository to your Cloudflare Worker. Workers Builds automatically builds and deploys your Worker when you push a change to the configured production branch. You can also enable [preview builds](https://developers.cloudflare.com/workers/ci-cd/builds/build-branches/#configure-preview-builds) to create [Previews](https://developers.cloudflare.com/workers/previews/) without deploying changes to production.
 
 ## Features
 
@@ -40,14 +40,14 @@ When you use [build watch paths](https://developers.cloudflare.com/workers/ci-cd
 
 To install the Cloudflare app for Cursor Origin:
 
-1. Open the [Cloudflare app in Cursor ↗](https://cursor.com/codebase/settings/apps/public/cloudflare).
+1. Open the [Cloudflare app in Cursor ↗︎](https://cursor.com/codebase/settings/apps/public/cloudflare).
 2. Select **Install**.
 3. Choose the Origin owner and grant access to either all repositories or selected repositories.
 4. Follow the prompts to connect the installation to your Cloudflare account and configure the Worker build.
 
 ## Manage access
 
-You can manage the Cloudflare app from [Cursor codebase settings ↗](https://cursor.com/codebase/settings/apps).
+You can manage the Cloudflare app from [Cursor codebase settings ↗︎](https://cursor.com/codebase/settings/apps).
 
 ### Team access
 
@@ -59,7 +59,7 @@ Cloudflare recommends granting access only to repositories that you intend to co
 
 To change the repositories available to Cloudflare:
 
-1. Open [Cursor codebase settings ↗](https://cursor.com/codebase/settings/apps).
+1. Open [Cursor codebase settings ↗︎](https://cursor.com/codebase/settings/apps).
 2. Select the Cloudflare app.
 3. Update the repositories that the installation can access.
 
@@ -67,7 +67,7 @@ Removing a repository from the installation disables new builds for Workers conn
 
 ### Remove access
 
-To remove Cloudflare's access to all repositories owned by the selected Origin user or team, uninstall the Cloudflare app from [Cursor codebase settings ↗](https://cursor.com/codebase/settings/apps).
+To remove Cloudflare's access to all repositories owned by the selected Origin user or team, uninstall the Cloudflare app from [Cursor codebase settings ↗︎](https://cursor.com/codebase/settings/apps).
 
 Uninstalling the app disables new builds for every Worker connected through that installation. Previous deployments continue to run on Cloudflare.
 
@@ -77,9 +77,9 @@ If you only want to stop automatic builds for one Worker, [disconnect the Git re
 
 If the Origin connection cannot access a repository or receive new changes, reinstall the app:
 
-1. Open [Cursor codebase settings ↗](https://cursor.com/codebase/settings/apps).
+1. Open [Cursor codebase settings ↗︎](https://cursor.com/codebase/settings/apps).
 2. Select the Cloudflare app and uninstall it.
-3. Open the [Cloudflare app in Cursor ↗](https://cursor.com/codebase/settings/apps/public/cloudflare).
+3. Open the [Cloudflare app in Cursor ↗︎](https://cursor.com/codebase/settings/apps/public/cloudflare).
 4. Select **Install**, choose the Origin owner, and grant repository access.
 5. Follow the prompts to reconnect the installation to Cloudflare.
 6. Retry the build.

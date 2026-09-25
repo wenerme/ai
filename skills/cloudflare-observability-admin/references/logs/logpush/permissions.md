@@ -46,13 +46,13 @@ The **Administrator** role includes `Logs Edit` but does not include `Zero Trust
 
 If you encounter the error `reading job for product '<product>' is not allowed (1004)`, this indicates that the API token you are using does not have the required permissions. Ensure your token or user account has both permissions listed above.
 
-For more details, refer to the [Logpush Permission Update for Zero Trust Datasets ↗](https://developers.cloudflare.com/changelog/2025-11-05-logpush-permissions-update/).
+For more details, refer to the [Logpush Permission Update for Zero Trust Datasets ↗︎](https://developers.cloudflare.com/changelog/2025-11-05-logpush-permissions-update/).
 
 ### Assign or remove a role
 
 To check the list of members in your account, or to manage roles and permissions:
 
-1. Navigate to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select your account.
+1. Navigate to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login) and select your account.
 2. From your Account Home, go to **Manage Account** > **Members**.
 3. Enter a member’s email address to add them to your account, and select **Invite**.
 4. Alternatively, scroll down to the **Members** card to find a list of members with their status and role.

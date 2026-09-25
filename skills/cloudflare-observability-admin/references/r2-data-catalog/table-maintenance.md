@@ -56,7 +56,7 @@ The dashboard checks your permissions before accepting the request. Queueing can
 
 ## Why do I need compaction?
 
-Every write operation in [Apache Iceberg ↗](https://iceberg.apache.org/), no matter how small or large, results in a series of new files being generated. As time goes on, the number of files can grow unbounded. This can lead to:
+Every write operation in [Apache Iceberg ↗︎](https://iceberg.apache.org/), no matter how small or large, results in a series of new files being generated. As time goes on, the number of files can grow unbounded. This can lead to:
 
 - Slower queries and increased I/O operations: Without compaction, query engines will have to open and read each individual file, resulting in longer query times and increased costs.
 - Increased metadata overhead: Query engines must scan metadata files to determine which ones to read. With thousands of small files, query planning takes longer even before data is accessed.

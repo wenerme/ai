@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Stream lets you or your users [stream live video ↗](https://www.cloudflare.com/learning/video/what-is-live-streaming/), and play live video in your website or app, without managing and configuring any of your own infrastructure.
+Cloudflare Stream lets you or your users [stream live video ↗︎](https://www.cloudflare.com/learning/video/what-is-live-streaming/), and play live video in your website or app, without managing and configuring any of your own infrastructure.
 
 ## How Stream works
 
@@ -33,7 +33,7 @@ As long as your streaming software reconnects, Stream Live will continue to inge
 
 ## Bitrate estimates at each quality level (bitrate ladder)
 
-Cloudflare Stream transcodes and makes live streams available to viewers at multiple quality levels. This is commonly referred to as [Adaptive Bitrate Streaming (ABR) ↗](https://www.cloudflare.com/learning/video/what-is-adaptive-bitrate-streaming).
+Cloudflare Stream transcodes and makes live streams available to viewers at multiple quality levels. This is commonly referred to as [Adaptive Bitrate Streaming (ABR) ↗︎](https://www.cloudflare.com/learning/video/what-is-adaptive-bitrate-streaming).
 
 With ABR, client video players need to be provided with estimates of how much bandwidth will be needed to play each quality level (ex: 1080p). Stream creates and updates these estimates dynamically by analyzing the bitrate of your users' live streams. This ensures that live video plays at the highest quality a viewer has adequate bandwidth to play, even in cases where the broadcaster's software or hardware provides incomplete or inaccurate information about the bitrate of their live content.
 

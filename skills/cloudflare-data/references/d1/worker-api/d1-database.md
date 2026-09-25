@@ -95,7 +95,7 @@ Refer to the [`bind` method documentation](https://developers.cloudflare.com/d1/
 
 Sends multiple SQL statements inside a single call to the database. This can have a huge performance impact as it reduces latency from network round trips to D1. D1 operates in auto-commit. Our implementation guarantees that each statement in the list will execute and commit, sequentially, non-concurrently.
 
-Batched statements are [SQL transactions ↗](https://www.sqlite.org/lang_transaction.html). If a statement in the sequence fails, then an error is returned for that specific statement, and it aborts or rolls back the entire sequence.
+Batched statements are [SQL transactions ↗︎](https://www.sqlite.org/lang_transaction.html). If a statement in the sequence fails, then an error is returned for that specific statement, and it aborts or rolls back the entire sequence.
 
 To send batch statements, provide `D1Database::batch` a list of prepared statements and get the results in the same order.
 

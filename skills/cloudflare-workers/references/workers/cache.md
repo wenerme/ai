@@ -25,7 +25,7 @@ Workers Cache is **your Worker's cache**. It is owned by your Worker, operated b
 A Worker is a zoneless entity — a Worker can be bound to any number of [zones](https://developers.cloudflare.com/fundamentals/concepts/accounts-and-zones/#zones), run on `workers.dev`, or be invoked entirely through service bindings without ever touching a zone. The cache follows the Worker, not a zone, so:
 
 - **No zone configuration for caching applies to Workers Caching.** [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/), [Page Rules](https://developers.cloudflare.com/rules/page-rules/), cache level settings, the zone's [default cached-file-extensions](https://developers.cloudflare.com/cache/concepts/default-cache-behavior/#default-cached-file-extensions) list, and every other zone-level cache control have no effect on a Worker's cache.
-- **Your Worker is in full control.** You set `Cache-Control` headers on your responses, and Cloudflare honors them per [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111). That is the entire configuration surface.
+- **Your Worker is in full control.** You set `Cache-Control` headers on your responses, and Cloudflare honors them per [RFC 9111 ↗︎](https://www.rfc-editor.org/rfc/rfc9111). That is the entire configuration surface.
 - **The cache is shared across every way the Worker can be invoked.** A Worker bound to `api.example.com`, `api.example.net`, and invoked over a service binding serves the same cached responses to all three — the cache is keyed by the request path, entrypoint, `ctx.props`, and (by default) the Worker version, not by hostname. See [Cache keys](https://developers.cloudflare.com/workers/cache/cache-keys/).
 
 ### The Worker is the configuration surface
@@ -135,7 +135,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
  "name": "my-worker",
  "main": "src/index.ts",
  // Set this to today's date
- "compatibility_date": "2026-09-22",
+ "compatibility_date": "2026-09-25",
  "cache": {
   "enabled": true,
  },
@@ -146,7 +146,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [cache]
 enabled = true
@@ -241,7 +241,7 @@ The second request receives the cached response. The `timestamp` and `random` va
 - **Only `fetch()` invocations go through the cache.** Custom [RPC methods](https://developers.cloudflare.com/workers/runtime-apis/rpc/) on a `WorkerEntrypoint` (for example `ctx.exports.Backend.getUser(id)`) bypass the cache entirely and always run the callee. To cache a piece of work, expose it as a `fetch` handler on its own entrypoint.
 - **WebSocket upgrade requests bypass the cache.** A `GET` request carrying `Upgrade: websocket` always invokes your Worker.
 - Other invocation types — [`scheduled`](https://developers.cloudflare.com/workers/configuration/cron-triggers/) (Cron Triggers), [`queue`](https://developers.cloudflare.com/queues/configuration/javascript-apis/#consumer) consumers, [Workflows](https://developers.cloudflare.com/workflows/), [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/), [Durable Object](https://developers.cloudflare.com/durable-objects/) invocations, [Email Workers](https://developers.cloudflare.com/email-service/api/route-emails/email-handler/) — always run without cache involvement.
-- Cacheability is determined by the response headers your Worker returns. Workers Caching follows the semantics defined in [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111), including [heuristic freshness ↗](https://www.rfc-editor.org/rfc/rfc9111#name-calculating-heuristic-fresh) for responses that do not carry `Cache-Control`. Refer to [Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/) for the full list of directives Cloudflare respects.
+- Cacheability is determined by the response headers your Worker returns. Workers Caching follows the semantics defined in [RFC 9111 ↗︎](https://www.rfc-editor.org/rfc/rfc9111), including [heuristic freshness ↗︎](https://www.rfc-editor.org/rfc/rfc9111#name-calculating-heuristic-fresh) for responses that do not carry `Cache-Control`. Refer to [Cache-Control](https://developers.cloudflare.com/cache/concepts/cache-control/) for the full list of directives Cloudflare respects.
 - Cloudflare's standard [cache bypass conditions](https://developers.cloudflare.com/cache/concepts/cache-responses/#bypass) apply. In particular, responses with a `Set-Cookie` header and requests with an `Authorization` header trigger automatic bypass.
 - [Previews](https://developers.cloudflare.com/workers/previews/) are supported. Each Preview caches independently of your production deployment, so testing a cache-affecting change in a Preview never touches production's cached responses.
 - [Workers for Platforms](https://developers.cloudflare.com/cloudflare-for-platforms/workers-for-platforms/) is supported. Each user Worker has its own cache, isolated from the dispatcher and from other user Workers in the namespace.
@@ -250,7 +250,7 @@ The `Cf-Cache-Status` response header tells you what happened for each request. 
 
 ## Content negotiation with `Vary`
 
-Workers Caching honors the [`Vary` ↗](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) response header as defined in [RFC 9110 ↗](https://www.rfc-editor.org/rfc/rfc9110.html) and [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with). When your Worker returns a `Vary` header, Cloudflare stores a separate cached variant per distinct combination of the listed request header values, and only returns a cached variant when the incoming request's headers match the ones the variant was stored under.
+Workers Caching honors the [`Vary` ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) response header as defined in [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html) and [RFC 9111 ↗︎](https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with). When your Worker returns a `Vary` header, Cloudflare stores a separate cached variant per distinct combination of the listed request header values, and only returns a cached variant when the incoming request's headers match the ones the variant was stored under.
 
 This lets a single URL cache multiple representations — for example, different encodings, different content types, or different languages — without your Worker coordinating content negotiation by hand:
 
@@ -339,7 +339,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -352,7 +352,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [cache]
 enabled = true

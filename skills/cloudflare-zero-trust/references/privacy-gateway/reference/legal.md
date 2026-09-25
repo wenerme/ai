@@ -18,7 +18,7 @@ Privacy Gateway is a managed gateway service deployed on Cloudflare’s global n
 
 OHTTP introduces a trusted third party (Cloudflare in this case), called a relay, between client and server. The relay’s purpose is to forward requests from client to server, and likewise to forward responses from server to client. These messages are encrypted between client and server such that the relay learns nothing of the application data, beyond the server the client is interacting with.
 
-The Privacy Gateway service follows [Cloudflare’s privacy policy ↗](https://www.cloudflare.com/privacypolicy/).
+The Privacy Gateway service follows [Cloudflare’s privacy policy ↗︎](https://www.cloudflare.com/privacypolicy/).
 
 ## What Cloudflare sees
 

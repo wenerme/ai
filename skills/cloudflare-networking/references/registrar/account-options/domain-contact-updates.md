@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/account-options/domain-contact-updates/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-It is important that you keep your contact details accurate and up-to-date. [ICANN rules state ↗](https://www.icann.org/resources/pages/registrant-contact-information-wdrp-2017-08-31-en) that if you do not have updated contact information, your domain name registration may be suspended or even cancelled.
+It is important that you keep your contact details accurate and up-to-date. [ICANN rules state ↗︎](https://www.icann.org/resources/pages/registrant-contact-information-wdrp-2017-08-31-en) that if you do not have updated contact information, your domain name registration may be suspended or even cancelled.
 
 The contact information you can update includes:
 

@@ -69,7 +69,7 @@ Dynamic variables require an active identity session. If Gateway cannot resolve 
 
 To create an HTTP policy with header operations:
 
-1. In the [Cloudflare One dashboard ↗](https://dash.cloudflare.com/one), go to **Traffic policies** > **Firewall policies** > **HTTP**.
+1. In the [Cloudflare One dashboard ↗︎](https://dash.cloudflare.com/one), go to **Traffic policies** > **Firewall policies** > **HTTP**.
 2. Select **Add a policy**.
 3. Build an expression to match the traffic you want to modify.
 4. In **Action**, select *Allow*.
@@ -128,13 +128,13 @@ If you save a HAR (HTTP Archive) file from a browser to analyze your web traffic
 
 To verify Gateway is applying a custom header:
 
-1. In your policy with custom headers, add a selector to match traffic for [HTTPBin ↗](https://httpbin.org/), an open-source site for testing HTTP requests. For example:
+1. In your policy with custom headers, add a selector to match traffic for [HTTPBin ↗︎](https://httpbin.org/), an open-source site for testing HTTP requests. For example:
 
    | Selector | Operator | Value | Logic | Action | Untrusted certificate action |
    | --- | --- | --- | --- | --- | --- |
    | Application | in | *Google Workspace* | Or | Allow | Block |
    | Domain | in | `httpbin.org` |  |  |  |
-2. On your device, go to [`httpbin.org/anything` ↗](https://httpbin.org/anything). Your custom header will appear in the list of headers.
+2. On your device, go to [`httpbin.org/anything` ↗︎](https://httpbin.org/anything). Your custom header will appear in the list of headers.
 3. (Optional) Remove the HTTPBin expression from your policy.
 
 ## Use cases
@@ -171,7 +171,7 @@ Microsoft 365 tenant control requires two policies. When you order your policies
 | --- | --- |
 | <code>Restrict-Access-To-Tenants</code>, <code>Restrict-Access-Context</code> | Your organization's domain |
 
-For more information, refer to the <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/tenant-restrictions">Microsoft Entra ID documentation ↗</a>.
+For more information, refer to the <a href="https://learn.microsoft.com/entra/identity/enterprise-apps/tenant-restrictions">Microsoft Entra ID documentation ↗︎</a>.
 
 </details>
 
@@ -191,7 +191,7 @@ Google Workspace
 | --- | --- |
 | <code>X-GoogApps-Allowed-Domains</code> | Your organization's domain |
 
-For more information, refer to the <a href="https://support.google.com/a/answer/1668854">Google Workspace documentation ↗</a>.
+For more information, refer to the <a href="https://support.google.com/a/answer/1668854">Google Workspace documentation ↗︎</a>.
 
 </details>
 
@@ -211,7 +211,7 @@ Slack
 | --- | --- |
 | <code>X-Slack-Allowed-Workspaces-Requester</code>, <code>X-Slack-Allowed-Workspaces</code> | Your organization's workspace |
 
-For more information, refer to the <a href="https://slack.com/help/articles/360024821873-Approve-Slack-workspaces-for-your-network">Slack documentation ↗</a>.
+For more information, refer to the <a href="https://slack.com/help/articles/360024821873-Approve-Slack-workspaces-for-your-network">Slack documentation ↗︎</a>.
 
 </details>
 
@@ -231,7 +231,7 @@ Dropbox
 | --- | --- |
 | <code>X-Dropbox-allowed-Team-Ids</code> | Your organization's ID |
 
-For more information, refer to the <a href="https://help.dropbox.com/security/network-control">Dropbox documentation ↗</a>.
+For more information, refer to the <a href="https://help.dropbox.com/security/network-control">Dropbox documentation ↗︎</a>.
 
 </details>
 
@@ -251,7 +251,7 @@ ChatGPT
 | --- | --- |
 | <code>Chatgpt-Allowed-Workspace-Id</code> | Your organization's workspace ID |
 
-For more information, refer to the <a href="https://help.openai.com/articles/8798594-what-is-a-workspace-how-do-i-access-my-chatgpt-business-workspace">OpenAI documentation ↗</a>.
+For more information, refer to the <a href="https://help.openai.com/articles/8798594-what-is-a-workspace-how-do-i-access-my-chatgpt-business-workspace">OpenAI documentation ↗︎</a>.
 
 </details>
 
@@ -273,9 +273,9 @@ Claude
 
 To allow access from multiple organizations, enter a comma-separated list of UUIDs with no spaces (for example, <code>&lt;org-uuid-1&gt;,&lt;org-uuid-2&gt;</code>).
 
-You can find your organization UUID in **Settings** &gt; **Account** &gt; **Organization ID** on <a href="https://claude.ai/settings/account">claude.ai ↗</a>.
+You can find your organization UUID in **Settings** &gt; **Account** &gt; **Organization ID** on <a href="https://claude.ai/settings/account">claude.ai ↗︎</a>.
 
-For more information, refer to the <a href="https://support.claude.com/en/articles/13198485-enforce-network-level-access-control-with-tenant-restrictions">Claude documentation ↗</a>.
+For more information, refer to the <a href="https://support.claude.com/en/articles/13198485-enforce-network-level-access-control-with-tenant-restrictions">Claude documentation ↗︎</a>.
 
 </details>
 
@@ -333,7 +333,7 @@ You can include custom headers in an HTTP policy to allow your users through [Cl
 
 You can configure [Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/) to send custom headers. This is useful for implementing tenant control for isolated SaaS applications or sending arbitrary custom request headers to isolated websites.
 
-To use custom headers with Browser Isolation, create two HTTP policies targeting the same domain or application group. For example, you can create policies for [HTTPBin ↗](https://httpbin.org/), an open-source site for testing HTTP requests:
+To use custom headers with Browser Isolation, create two HTTP policies targeting the same domain or application group. For example, you can create policies for [HTTPBin ↗︎](https://httpbin.org/), an open-source site for testing HTTP requests:
 
 1. Create an Isolate policy for `httpbin.org`.
 
@@ -348,7 +348,7 @@ To use custom headers with Browser Isolation, create two HTTP policies targeting
    | Custom header name | Custom header value |
    | --- | --- |
    | `Example-Header` | `example-value` |
-3. Go to [`httpbin.org/anything` ↗](https://httpbin.org/anything). Cloudflare will render the site in an isolated browser. Your custom header will appear in the list of headers.
+3. Go to [`httpbin.org/anything` ↗︎](https://httpbin.org/anything). Cloudflare will render the site in an isolated browser. Your custom header will appear in the list of headers.
 
 Was this helpful?
 

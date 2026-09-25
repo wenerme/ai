@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/infrastructure/security-file/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can manage your [security.txt ↗](https://en.wikipedia.org/wiki/Security.txt) file via the dashboard or the [API](https://developers.cloudflare.com/api/resources/security_txt/).
+You can manage your [security.txt ↗︎](https://en.wikipedia.org/wiki/Security.txt) file via the dashboard or the [API](https://developers.cloudflare.com/api/resources/security_txt/).
 
 Note
 
@@ -22,7 +22,7 @@ When using the API, the preferred languages field name is `preferred_languages` 
 
 To manage your security.txt file via the Cloudflare dashboard:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), select your account and domain.
 2. Go to **Security** > **Settings** and filter by **Web application exploits**.
 3. Under **Security.txt** > **Configurations**, select the edit icon.
 

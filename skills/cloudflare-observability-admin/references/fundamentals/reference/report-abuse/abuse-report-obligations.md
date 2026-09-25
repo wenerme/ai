@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/abuse-report-obligations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare permits any interested party to submit abuse reports directly to Cloudflare via [abuse.cloudflare.com ↗](https://abuse.cloudflare.com/).
+Cloudflare permits any interested party to submit abuse reports directly to Cloudflare via [abuse.cloudflare.com ↗︎](https://abuse.cloudflare.com/).
 
 Abuse reports may be submitted for suspected copyright or trademark infringement, illegal, or harmful content (for example, child sex abuse materials), technical abuse (for example, phishing or malware), or other reasons.
 

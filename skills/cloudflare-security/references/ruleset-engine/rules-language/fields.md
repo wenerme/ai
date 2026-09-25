@@ -25,9 +25,9 @@ Refer to the [Fields reference](https://developers.cloudflare.com/ruleset-engine
 
 ## Differences from Wireshark display fields
 
-Most fields supported by the Cloudflare Rules language use the same naming conventions as [Wireshark display fields ↗](https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html). However, there are some subtle differences between Cloudflare and Wireshark:
+Most fields supported by the Cloudflare Rules language use the same naming conventions as [Wireshark display fields ↗︎](https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html). However, there are some subtle differences between Cloudflare and Wireshark:
 
-- Wireshark supports [CIDR (Classless Inter-Domain Routing) notation ↗](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) for expressing IP address ranges in equality comparisons ( `ip.src == 1.2.3.0/24`, for example). Cloudflare does not.
+- Wireshark supports [CIDR (Classless Inter-Domain Routing) notation ↗︎](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) for expressing IP address ranges in equality comparisons ( `ip.src == 1.2.3.0/24`, for example). Cloudflare does not.
 
   To evaluate a range of addresses using CIDR notation, use the [`in`](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#comparison-operators) comparison operator as in this example: `ip.src in {1.2.3.0/24 4.5.6.0/24}`.
 - In Wireshark, `ssl` is a protocol field containing hundreds of other fields of various types that are available for comparison in multiple ways. However, in the Rules language [`ssl`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/ssl/) is a single Boolean field that indicates whether the connection from the client to Cloudflare is encrypted.

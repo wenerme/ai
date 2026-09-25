@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/cloud-connector/create-terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can create Cloud Connector rules using the [Terraform Cloudflare provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest).
+You can create Cloud Connector rules using the [Terraform Cloudflare provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest).
 
 To get started with Terraform for Cloudflare configuration, refer to [Get started](https://developers.cloudflare.com/terraform/installing/).
 
@@ -80,7 +80,7 @@ resource "cloudflare_cloud_connector_rules" "cloud_connector_rules" {
 
 ## More resources
 
-Refer to the [Terraform Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) for more information on the `cloudflare_cloud_connector_rules` resource.
+Refer to the [Terraform Cloudflare provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) for more information on the `cloudflare_cloud_connector_rules` resource.
 
 Was this helpful?
 

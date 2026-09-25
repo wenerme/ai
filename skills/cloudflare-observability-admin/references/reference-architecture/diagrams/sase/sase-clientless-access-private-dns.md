@@ -18,7 +18,7 @@ Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Using Cloudflare to access private resources - such as applications, servers, and networks that are not exposed directly to the internet - usually involves deploying an ([agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)) to devices and then using a server-side agent ([cloudflared](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/), [Cloudflare Mesh](https://developers.cloudflare.com/mesh/)), to connect the private network or application to Cloudflare. This document describes an alternative approach which removes the need to deploy software to the user's device, making it easier for allowing third party access such as contractors and partners.
 
-Typically, to provide access to internal resources, you use Cloudflare Zero Trust Network Access [ZTNA ↗](https://www.cloudflare.com/learning/access-management/what-is-ztna/) which supports two methods for how the user device accesses a private resource.
+Typically, to provide access to internal resources, you use Cloudflare Zero Trust Network Access [ZTNA ↗︎](https://www.cloudflare.com/learning/access-management/what-is-ztna/) which supports two methods for how the user device accesses a private resource.
 
 - A CNAME in public DNS, that resolves to a hostname representing the Cloudflare tunnel which proxies the request to the internal application.
 - An IP address exposed by Cloudflare tunnel, that again, proxies traffic direct to that IP address.
@@ -35,11 +35,11 @@ Follow this [tutorial](https://developers.cloudflare.com/cloudflare-one/tutorial
 
 *Figure 1: Remote browser connected to private web service using internal hostname*
 
-1. Users start their access by authenticating to the [Cloudflare Browser Isolation ↗](https://your_team_domain.cloudflareaccess.com/browser) service. Note this is a browser running on Cloudflare’s edge network, therefore all requests will by default be handled by Cloudflare. The contents are rendered back to the users’ browser via secure encrypted vector streams that use HTTPS and WebRTC channels.
-2. Once the user has authenticated to the remote browser, they make a request to an internal hostname which is a record in the internal DNS service. e.g. [https://app.company.internal ↗](https://app.company.internal)
+1. Users start their access by authenticating to the [Cloudflare Browser Isolation ↗︎](https://your_team_domain.cloudflareaccess.com/browser) service. Note this is a browser running on Cloudflare’s edge network, therefore all requests will by default be handled by Cloudflare. The contents are rendered back to the users’ browser via secure encrypted vector streams that use HTTPS and WebRTC channels.
+2. Once the user has authenticated to the remote browser, they make a request to an internal hostname which is a record in the internal DNS service. e.g. [https://app.company.internal ↗︎](https://app.company.internal)
 3. Cloudflare looks up the internal hostname using [resolver policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/resolver-policies/), and gets the private IP address from the internal DNS server. This DNS resolution takes place within the Cloudflare network and requires no DNS client changes on the user's device.
 4. Cloudflare evaluates the network firewall policies and verifies if the user has permission to reach the destination addresses.
-5. If the request passes the policy, it is sent via secure [QUIC ↗](https://blog.cloudflare.com/getting-cloudflare-tunnels-to-connect-to-the-cloudflare-network-with-quic) tunnels to the Cloudflared connectors which then is reverse proxied to the application servers. All data is transmitted securely through Cloudflare back to the users’ browser via encrypted vector streams.
+5. If the request passes the policy, it is sent via secure [QUIC ↗︎](https://blog.cloudflare.com/getting-cloudflare-tunnels-to-connect-to-the-cloudflare-network-with-quic) tunnels to the Cloudflared connectors which then is reverse proxied to the application servers. All data is transmitted securely through Cloudflare back to the users’ browser via encrypted vector streams.
 
 ## Related resources
 

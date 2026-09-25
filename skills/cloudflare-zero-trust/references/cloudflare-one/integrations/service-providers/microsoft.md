@@ -28,7 +28,7 @@ Note
 
 Linux devices are not supported. Microsoft Intune does not collect hardware details, including serial numbers, for Linux devices. Cloudflare matches devices using serial numbers, so posture checks return empty results for Linux.
 
-Refer to Microsoft's [device details ↗](https://learn.microsoft.com/en-us/intune/device-management/inventory-and-status/device-details) documentation.
+Refer to Microsoft's [device details ↗︎](https://learn.microsoft.com/en-us/intune/device-management/inventory-and-status/device-details) documentation.
 
 ## 1. Obtain Microsoft Graph settings
 
@@ -55,7 +55,7 @@ To retrieve those values:
 
 ## 2. Add Intune as a service provider
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Service providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Service providers**.
 2. Select **Add new**.
 3. Select **Microsoft Endpoint Manager**.
 4. Enter any name for the provider. This name will be used throughout the dashboard to reference this connection.
@@ -66,7 +66,7 @@ To retrieve those values:
 
 ## 3. Configure the posture check
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks** > **Service provider checks**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks** > **Service provider checks**.
 2. Select **Add a check**.
 3. Select the Microsoft Endpoint Manager provider.
 4. Enter any name for the posture check.
@@ -78,9 +78,9 @@ You can now use this posture check in a [device posture policy](https://develope
 
 ## Device posture attributes
 
-The Microsoft Endpoint Manager device posture check relies on information from the Microsoft Graph API. Refer to Microsoft's [ComplianceState ↗](https://docs.microsoft.com/en-us/graph/api/resources/intune-devices-compliancestate?view=graph-rest-1.0) and [List managedDevices ↗](https://docs.microsoft.com/en-us/graph/api/intune-devices-manageddevice-list?view=graph-rest-1.0) documentation for a list of properties returned by the API.
+The Microsoft Endpoint Manager device posture check relies on information from the Microsoft Graph API. Refer to Microsoft's [ComplianceState ↗︎](https://docs.microsoft.com/en-us/graph/api/resources/intune-devices-compliancestate?view=graph-rest-1.0) and [List managedDevices ↗︎](https://docs.microsoft.com/en-us/graph/api/intune-devices-manageddevice-list?view=graph-rest-1.0) documentation for a list of properties returned by the API.
 
-To learn more about how to control ComplianceState, refer to Microsoft's [compliance policies guide ↗](https://docs.microsoft.com/en-us/mem/intune/protect/device-compliance-get-started).
+To learn more about how to control ComplianceState, refer to Microsoft's [compliance policies guide ↗︎](https://docs.microsoft.com/en-us/mem/intune/protect/device-compliance-get-started).
 
 Was this helpful?
 

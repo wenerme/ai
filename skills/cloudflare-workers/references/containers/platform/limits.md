@@ -50,7 +50,7 @@ Custom instance types have the following constraints:
 
 For workloads requiring less than 1 vCPU, use the predefined instance types such as `lite` or `basic`.
 
-If you need larger instance sizes or higher account-level limits, contact your account team, file a support ticket, or fill out [this form ↗](https://forms.gle/CscdaEGuw5Hb6H2s7).
+If you need larger instance sizes or higher account-level limits, contact your account team, file a support ticket, or fill out [this form ↗︎](https://forms.gle/CscdaEGuw5Hb6H2s7).
 
 ## Account limits
 

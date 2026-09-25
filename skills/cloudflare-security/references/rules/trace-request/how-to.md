@@ -18,7 +18,7 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ### 1. Configure one or more Cloudflare products
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com), and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com), and select your account.
 2. Set configuration settings at the account level, or select a domain and configure settings for one or more Cloudflare products.
 
 ### 2. Build a trace

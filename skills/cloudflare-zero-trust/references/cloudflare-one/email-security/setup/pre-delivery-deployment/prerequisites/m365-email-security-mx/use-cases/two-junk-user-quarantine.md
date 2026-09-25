@@ -20,7 +20,7 @@ In this tutorial, you will learn how to deliver `BULK` messages to the user's ju
 
 To create quarantine policies:
 
-1. Open the [Microsoft 365 Defender console ↗](https://security.microsoft.com/).
+1. Open the [Microsoft 365 Defender console ↗︎](https://security.microsoft.com/).
 2. Go to **Email & collaboration** > **Policies & rules**.
 3. Select **Threat policies**.
 4. Under **Rules**, select **Quarantine policies**.
@@ -51,7 +51,7 @@ To create quarantine policies:
 
 To configure quarantine notifications:
 
-1. Open the [Microsoft 365 Defender console ↗](https://security.microsoft.com/).
+1. Open the [Microsoft 365 Defender console ↗︎](https://security.microsoft.com/).
 2. Go to **Email & collaboration** > **Policies & rules**.
 3. Select **Threat policies**.
 4. Under **Rules**, select **Quarantine policies**.
@@ -63,7 +63,7 @@ To configure quarantine notifications:
 
 To configure anti-spam policies:
 
-1. Open the [Microsoft 365 Defender console ↗](https://security.microsoft.com/).
+1. Open the [Microsoft 365 Defender console ↗︎](https://security.microsoft.com/).
 2. Go to **Email & collaboration** > **Policies & rules**.
 3. Select **Threat policies**.
 4. Under **Policies**, select **Anti-spam**.
@@ -87,7 +87,7 @@ To configure anti-spam policies:
 
 To create the transport rules that will send emails with certain [disposition](https://developers.cloudflare.com/cloudflare-one/email-security/reference/dispositions-and-attributes/#dispositions) to Email security:
 
-1. Open the new [Exchange admin center ↗](https://admin.exchange.microsoft.com/#/homepage).
+1. Open the new [Exchange admin center ↗︎](https://admin.exchange.microsoft.com/#/homepage).
 2. Go to **Mail flow** > **Rules**.
 3. Select **Add a Rule** > **Create a new rule**.
 4. Set the following rule conditions:

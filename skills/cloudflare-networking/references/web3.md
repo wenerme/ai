@@ -51,10 +51,10 @@ Use Ethereum Gateway
 Cloudflare's Web3 gateways provide HTTP-accessible interfaces to Web3 networks. Instead of running your own IPFS or Ethereum node, you access these networks through Cloudflare, which provides:
 
 - **Ease of access**: Access content from Web3 networks without installing or running any special software.
-- **Security**: Get the protection benefits of Cloudflare's global anycast network for [enhanced security ↗](https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported/).
+- **Security**: Get the protection benefits of Cloudflare's global anycast network for [enhanced security ↗︎](https://blog.cloudflare.com/cloudflare-thwarts-17-2m-rps-ddos-attack-the-largest-ever-reported/).
 - **Reduced maintenance**: Cloudflare — not your developers — maintains and monitors the gateway infrastructure.
-- **Reliability**: Cloudflare's global anycast network provides a high level of [reliability and availability ↗](https://www.cloudflare.com/network/).
-- **Performance**: With data centers in [hundreds of cities worldwide ↗](https://www.cloudflare.com/network/), responses are cached and served from locations close to your end users.
+- **Reliability**: Cloudflare's global anycast network provides a high level of [reliability and availability ↗︎](https://www.cloudflare.com/network/).
+- **Performance**: With data centers in [hundreds of cities worldwide ↗︎](https://www.cloudflare.com/network/), responses are cached and served from locations close to your end users.
 
 ---
 

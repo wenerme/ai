@@ -63,7 +63,7 @@ Now, with **Cloudflare Workers**:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"assets": {
 		"directory": "./dist/client/"
 	}
@@ -73,7 +73,7 @@ Now, with **Cloudflare Workers**:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [assets]
 directory = "./dist/client/"
@@ -95,7 +95,7 @@ For a Single Page Application (SPA):
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "single-page-application"
@@ -106,7 +106,7 @@ For a Single Page Application (SPA):
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [assets]
 directory = "./dist/client/"
@@ -119,7 +119,7 @@ For custom 404 pages:
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"assets": {
 		"directory": "./dist/client/",
 		"not_found_handling": "404-page"
@@ -130,7 +130,7 @@ For custom 404 pages:
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [assets]
 directory = "./dist/client/"
@@ -171,7 +171,7 @@ Then, update your configuration file's `main` field to point to the location of 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"main": "./dist/client/_worker.js", // or some other location if you moved the script out of the static asset directory
 	"assets": {
 		"directory": "./dist/client/"
@@ -182,7 +182,7 @@ Then, update your configuration file's `main` field to point to the location of 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "./dist/client/_worker.js"
 
 [assets]
@@ -207,7 +207,7 @@ yarn wrangler pages functions build --outdir=./dist/worker/
 pnpm wrangler pages functions build --outdir=./dist/worker/
 ```
 
-Although this command will remain available to you to run at any time, we do recommend considering using another framework if you wish to continue to use file-based routing. [HonoX ↗](https://github.com/honojs/honox) is one popular option.
+Although this command will remain available to you to run at any time, we do recommend considering using another framework if you wish to continue to use file-based routing. [HonoX ↗︎](https://github.com/honojs/honox) is one popular option.
 
 Once the Worker script has been compiled, you can update your configuration file's `main` field to point to the location it was built to:
 
@@ -215,7 +215,7 @@ Once the Worker script has been compiled, you can update your configuration file
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"main": "./dist/worker/index.js",
 	"assets": {
 		"directory": "./dist/client/"
@@ -226,7 +226,7 @@ Once the Worker script has been compiled, you can update your configuration file
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "./dist/worker/index.js"
 
 [assets]
@@ -243,7 +243,7 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"main": "./dist/worker/index.js",
 	"assets": {
 		"directory": "./dist/client/",
@@ -255,7 +255,7 @@ Workers, on the other hand, will default to serving static assets ahead of your 
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "./dist/worker/index.js"
 
 [assets]
@@ -295,7 +295,7 @@ export default class extends WorkerEntrypoint {
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"main": "./worker/index.ts",
 	"assets": {
 		"directory": "./dist/client/"
@@ -306,7 +306,7 @@ export default class extends WorkerEntrypoint {
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "./worker/index.ts"
 
 [assets]
@@ -321,7 +321,7 @@ Pages automatically provided [an `ASSETS` binding](https://developers.cloudflare
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"main": "./worker/index.ts",
 	"assets": {
 		"directory": "./dist/client/",
@@ -333,7 +333,7 @@ Pages automatically provided [an `ASSETS` binding](https://developers.cloudflare
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "./worker/index.ts"
 
 [assets]
@@ -349,7 +349,7 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 	"main": "./worker/index.ts",
 	"placement": {
@@ -365,7 +365,7 @@ If you had customized [placement](https://developers.cloudflare.com/workers/conf
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 main = "./worker/index.ts"
 
@@ -409,7 +409,7 @@ To get a similar experience in Workers:
    {
        "name": "my-worker",
        // Set this to today's date
-       "compatibility_date": "2026-09-22",
+       "compatibility_date": "2026-09-25",
        "main": "./worker/index.ts",
        "assets": {
            "directory": "./dist/client/"
@@ -422,7 +422,7 @@ To get a similar experience in Workers:
    ```toml
    name = "my-worker"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    main = "./worker/index.ts"
    preview_urls = true
    previews = { }
@@ -455,7 +455,7 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"main": "./worker/index.ts",
 	"workers_dev": true
 }
@@ -464,7 +464,7 @@ Where previously you were offered a `pages.dev` subdomain for your Pages project
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "./worker/index.ts"
 workers_dev = true
 ```
@@ -497,17 +497,17 @@ pnpm wrangler pages project delete
 
 ## Migrate your project using an AI coding assistant
 
-You can add the following [experimental prompt ↗](https://developers.cloudflare.com/workers/prompts/pages-to-workers.txt) in your preferred coding assistant (e.g. Claude Code, Cursor) to make your project compatible with Workers:
+You can add the following [experimental prompt ↗︎](https://developers.cloudflare.com/workers/prompts/pages-to-workers.txt) in your preferred coding assistant (e.g. Claude Code, Cursor) to make your project compatible with Workers:
 
 ```plaintext
 https://developers.cloudflare.com/workers/prompts/pages-to-workers.txt
 ```
 
-You can also use the Cloudflare Documentation [MCP server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search) in your coding assistant to provide better context to your LLM when building with Workers, which includes this prompt when you ask to migrate from Pages to Workers.
+You can also use the Cloudflare Documentation [MCP server ↗︎](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search) in your coding assistant to provide better context to your LLM when building with Workers, which includes this prompt when you ask to migrate from Pages to Workers.
 
 ## Compatibility matrix
 
-This compatibility matrix compares the features of Workers and Pages. Unless otherwise stated below, what works in Pages works in Workers, and what works in Workers works in Pages. Think something is missing from this list? [Open a pull request ↗](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/static-assets/compatibility-matrix.mdx) or [create a GitHub issue ↗](https://github.com/cloudflare/cloudflare-docs/issues/new).
+This compatibility matrix compares the features of Workers and Pages. Unless otherwise stated below, what works in Pages works in Workers, and what works in Workers works in Pages. Think something is missing from this list? [Open a pull request ↗︎](https://github.com/cloudflare/cloudflare-docs/edit/production/src/content/docs/workers/static-assets/compatibility-matrix.mdx) or [create a GitHub issue ↗︎](https://github.com/cloudflare/cloudflare-docs/issues/new).
 
 **Legend**
  ✅: Supported
@@ -525,7 +525,7 @@ This compatibility matrix compares the features of Workers and Pages. Unless oth
 | [Testing tools](https://developers.cloudflare.com/workers/testing) | ✅ | ✅ |
 | [Local Development](https://developers.cloudflare.com/workers/local-development/) | ✅ | ✅ |
 | [Remote Development (`--remote`)](https://developers.cloudflare.com/workers/wrangler/commands/) | ✅ | ❌ |
-| [Quick Editor in Dashboard ↗](https://blog.cloudflare.com/improved-quick-edit) | ✅ | ❌ |
+| [Quick Editor in Dashboard ↗︎](https://blog.cloudflare.com/improved-quick-edit) | ✅ | ❌ |
 | **Static Assets** |  | |
 | [Early Hints](https://developers.cloudflare.com/pages/configuration/early-hints/) | 🟡 <sup>[1](#user-content-fn-1)</sup> | ✅ |
 | [Custom HTTP headers for static assets](https://developers.cloudflare.com/workers/static-assets/headers/) | ✅ | ✅ |

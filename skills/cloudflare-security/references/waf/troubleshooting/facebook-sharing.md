@@ -30,7 +30,7 @@ To resolve issues sharing to Facebook, do one of the following:
 - Create a [skip rule](https://developers.cloudflare.com/waf/custom-rules/skip/) for ASNs `AS32934` and `AS63293` (use the *Skip* action and configure the rule to skip **Security Level**).
 - Review existing configuration rules and Page Rules and make sure they are not affecting requests from Facebook IPs.
 
-If you experience issues with Facebook sharing, you can re-scrape pages via the **Fetch New Scrape Information** option on Facebook's Object Debugger. Facebook [provides an API ↗](https://developers.facebook.com/docs/sharing/opengraph/using-objects) to help update a large number of resources.
+If you experience issues with Facebook sharing, you can re-scrape pages via the **Fetch New Scrape Information** option on Facebook's Object Debugger. Facebook [provides an API ↗︎](https://developers.facebook.com/docs/sharing/opengraph/using-objects) to help update a large number of resources.
 
 If you continue to have issues, you can [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) with the URLs of your website that cannot share to Facebook, and confirming that you have re-scraped the URLs.
 

@@ -133,7 +133,7 @@ Configure endpoint ICE, STUN, and TURN as part of [connection preparation](https
 
 ## Learn with an example
 
-[Run the video room](https://developers.cloudflare.com/realtime/sfu/get-started/) to follow backend session and track operations. The [DataChannel example ↗](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels#api-and-lifecycle) shows the same API boundary in a small local Node.js server.
+[Run the video room](https://developers.cloudflare.com/realtime/sfu/get-started/) to follow backend session and track operations. The [DataChannel example ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels#api-and-lifecycle) shows the same API boundary in a small local Node.js server.
 
 Was this helpful?
 

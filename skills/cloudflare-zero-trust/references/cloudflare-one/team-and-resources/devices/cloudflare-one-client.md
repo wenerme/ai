@@ -22,8 +22,8 @@ The Cloudflare One Client (formerly WARP) securely and privately sends traffic f
 
 The Cloudflare One Client creates encrypted connections between your device and Cloudflare's network. It does this in two ways:
 
-- **Proxy tunnel** — Encrypts and routes your device's internet and private network traffic through Cloudflare, using the [WireGuard ↗](https://www.wireguard.com/) or [MASQUE ↗](https://blog.cloudflare.com/zero-trust-warp-with-a-masque) protocol.
-- **DNS proxy** — Sends your device's DNS queries to Cloudflare over an encrypted channel ([DNS-over-HTTPS ↗](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/)), where [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) can filter them.
+- **Proxy tunnel** — Encrypts and routes your device's internet and private network traffic through Cloudflare, using the [WireGuard ↗︎](https://www.wireguard.com/) or [MASQUE ↗︎](https://blog.cloudflare.com/zero-trust-warp-with-a-masque) protocol.
+- **DNS proxy** — Sends your device's DNS queries to Cloudflare over an encrypted channel ([DNS-over-HTTPS ↗︎](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/)), where [Gateway DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/) can filter them.
 
 The client runs on all major operating systems and can be deployed through common endpoint management tools (such as Intune, JAMF, or JumpCloud).
 

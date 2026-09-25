@@ -24,7 +24,7 @@ To explore other connection scenarios, refer to [Replace your VPN](https://devel
 
 ## Prerequisites
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 - A Linux device or virtual machine on your first private network. This is where you install your first mesh node.
 - A second Linux device or virtual machine on a separate private network. This is where you install your second mesh node.
 

@@ -45,8 +45,8 @@ If you do not have a Git account linked to your Cloudflare account, you will be 
 
 You can check the following pages to see if your Git integration has been installed:
 
-- [GitHub Applications page ↗](https://github.com/settings/installations) (if you're in an organization, select **Switch settings context** to access your GitHub organization settings)
-- [GitLab Authorized Applications page ↗](https://gitlab.com/-/profile/applications)
+- [GitHub Applications page ↗︎](https://github.com/settings/installations) (if you're in an organization, select **Switch settings context** to access your GitHub organization settings)
+- [GitLab Authorized Applications page ↗︎](https://gitlab.com/-/profile/applications)
 
 For details on providing access to organization accounts, see the [GitHub](https://developers.cloudflare.com/pages/configuration/git-integration/github-integration/#organizational-access) and [GitLab](https://developers.cloudflare.com/pages/configuration/git-integration/gitlab-integration/#organizational-access) guides.
 

@@ -26,7 +26,7 @@ Note
 
 To view user submissions:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security** > **Submissions**.
 3. Select **User submissions**.
 

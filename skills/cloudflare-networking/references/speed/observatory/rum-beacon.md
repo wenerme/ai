@@ -23,36 +23,36 @@ The RUM beacon script can be enabled into a webpage in two ways:
 
 ## Data collection
 
-Once downloaded to the browser, the RUM beacon script runs as JavaScript in the browser. It collects performance data from browser [APIs ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) and sends this data to Cloudflare for processing.
+Once downloaded to the browser, the RUM beacon script runs as JavaScript in the browser. It collects performance data from browser [APIs ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API) and sends this data to Cloudflare for processing.
 
 The data collected from the browser is summarized in the table below:
 
 | Field | Example | Description | How it is collected |
 | --- | --- | --- | --- |
 | `pageloadId` | 0c698922-8d60-40bf-85ac-7982b5f8034d | The unique ID for the page. | Generated in the browser code. |
-| `referrer` | [https://cfrumtest.com/ ↗](https://cfrumtest.com/) | The referring page URL. | If it is a multi-page application (MPA), then it is generated from [document.referrer ↗](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer). If it is a single-page application (SPA), then it is generated from a local in-memory variable in the beacon code which stores previous URLs. |
-| `startTime` | 1693488419352 | Baseline for performance-related timestamps. | [performance.timeOrigin ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance/timeOrigin) |
-| `memory` | `{ totalJSHeapSize: 39973671, usedJSHeapSize: 39127515, jsHeapSizeLimit: 4294705152 }` | Measures memory heap size. | [performance.memory ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance/memory) (deprecated) |
-| `timings` | Object of [PerformanceTiming ↗](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming) | Timing data. | [performance.timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance/timing) (deprecated, fallback when `timingV2` is unavailable) |
-| `timingV2` | Array of [PerformanceNavigationTiming ↗](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming) | Navigation timing data. | [performance.getEntriesByType("navigation") ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByType) |
-| `resources` | Array of [PerformanceResourceTiming ↗](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming) | Resource timing data. | [performance.getEntriesByType("resource") ↗](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming) |
-| `firstPaint` | Array of [PerformancePaintTiming ↗](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) | Paint timing data. | [performance.getEntriesByType("paint") ↗](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) |
-| `firstContentfulPaint` | 209 | First Contentful Paint metric. | [web-vitals module ↗](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
-| `FCP` | 209 | First Contentful Paint metric. | [web-vitals module ↗](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
-| `LCP` | 209 | Largest Contentful Paint metric. | [web-vitals module ↗](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
-| `CLS` | 0.001 | Cumulative Layout Shift metric. | [web-vitals module ↗](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
+| `referrer` | [https://cfrumtest.com/ ↗︎](https://cfrumtest.com/) | The referring page URL. | If it is a multi-page application (MPA), then it is generated from [document.referrer ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer). If it is a single-page application (SPA), then it is generated from a local in-memory variable in the beacon code which stores previous URLs. |
+| `startTime` | 1693488419352 | Baseline for performance-related timestamps. | [performance.timeOrigin ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance/timeOrigin) |
+| `memory` | `{ totalJSHeapSize: 39973671, usedJSHeapSize: 39127515, jsHeapSizeLimit: 4294705152 }` | Measures memory heap size. | [performance.memory ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance/memory) (deprecated) |
+| `timings` | Object of [PerformanceTiming ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming) | Timing data. | [performance.timing ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance/timing) (deprecated, fallback when `timingV2` is unavailable) |
+| `timingV2` | Array of [PerformanceNavigationTiming ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming) | Navigation timing data. | [performance.getEntriesByType("navigation") ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByType) |
+| `resources` | Array of [PerformanceResourceTiming ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming) | Resource timing data. | [performance.getEntriesByType("resource") ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming) |
+| `firstPaint` | Array of [PerformancePaintTiming ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) | Paint timing data. | [performance.getEntriesByType("paint") ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/PerformancePaintTiming) |
+| `firstContentfulPaint` | 209 | First Contentful Paint metric. | [web-vitals module ↗︎](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
+| `FCP` | 209 | First Contentful Paint metric. | [web-vitals module ↗︎](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
+| `LCP` | 209 | Largest Contentful Paint metric. | [web-vitals module ↗︎](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
+| `CLS` | 0.001 | Cumulative Layout Shift metric. | [web-vitals module ↗︎](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
 |  |  |  | |
-| `TTFB` | 0.03 | Time to First Byte metric. | [web-vitals module ↗](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
-| `INP` | 1.23 | Interaction to Next Paint metric. | [web-vitals module ↗](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
-| `landingPath` | [https://cfrumtest.com/ ↗](https://cfrumtest.com/) | The landing page URL. | [performance.getEntriesByType("navigation") ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByType) |
+| `TTFB` | 0.03 | Time to First Byte metric. | [web-vitals module ↗︎](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
+| `INP` | 1.23 | Interaction to Next Paint metric. | [web-vitals module ↗︎](https://www.npmjs.com/package/web-vitals) <sup>[1](#user-content-fn-1)</sup> |
+| `landingPath` | [https://cfrumtest.com/ ↗︎](https://cfrumtest.com/) | The landing page URL. | [performance.getEntriesByType("navigation") ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance/getEntriesByType) |
 
 ## Data processing
 
-RUM data is generally processed at the nearest Cloudflare data center based on how the incoming request is routed. This is determined by a number of factors including [Anycast ↗](https://www.cloudflare.com/en-gb/learning/cdn/glossary/anycast-network/) and [Unimog ↗](https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/). Since RUM data does not use location services, it may be processed in a different country or region from where it originated. Although the RUM service receives the client/source IP address from the beacon as part of normal HTTP request handling process, it discards the IP address at the nearest Cloudflare data center and does not store it in core databases or logs.
+RUM data is generally processed at the nearest Cloudflare data center based on how the incoming request is routed. This is determined by a number of factors including [Anycast ↗︎](https://www.cloudflare.com/en-gb/learning/cdn/glossary/anycast-network/) and [Unimog ↗︎](https://blog.cloudflare.com/unimog-cloudflares-edge-load-balancer/). Since RUM data does not use location services, it may be processed in a different country or region from where it originated. Although the RUM service receives the client/source IP address from the beacon as part of normal HTTP request handling process, it discards the IP address at the nearest Cloudflare data center and does not store it in core databases or logs.
 
 ## Privacy information
 
-The RUM beacon script does not store any data in the browser or access any storage data, such as [cookies ↗](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie), [localStorage ↗](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), [sessionStorage ↗](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage), IP address, or [IndexedDB ↗](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB). The data we collect is performance data from the browser performance [APIs ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API). This performance data is ephemeral and only relates to the current webpage that is being viewed. If the user refreshes their browser, all the previous performance data is gone and new performance data starts being available. This data is not stored or accessed from anywhere on the device, it is only available as in-memory data.
+The RUM beacon script does not store any data in the browser or access any storage data, such as [cookies ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie), [localStorage ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), [sessionStorage ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage), IP address, or [IndexedDB ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API/Using_IndexedDB). The data we collect is performance data from the browser performance [APIs ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API). This performance data is ephemeral and only relates to the current webpage that is being viewed. If the user refreshes their browser, all the previous performance data is gone and new performance data starts being available. This data is not stored or accessed from anywhere on the device, it is only available as in-memory data.
 
 ## RUM excluding EEA/EU
 

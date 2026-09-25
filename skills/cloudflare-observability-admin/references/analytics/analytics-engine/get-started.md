@@ -79,7 +79,7 @@ For the purpose of this example, we will use the SQL API.
 
 ### Create an API token
 
-Create an [API Token ↗](https://dash.cloudflare.com/profile/api-tokens) that has the `Account Analytics Read` permission.
+Create an [API Token ↗︎](https://dash.cloudflare.com/profile/api-tokens) that has the `Account Analytics Read` permission.
 
 ### Write your first query
 

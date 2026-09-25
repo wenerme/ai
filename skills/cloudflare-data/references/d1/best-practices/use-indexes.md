@@ -99,7 +99,7 @@ Note that you cannot modify this table, or an existing index. To modify an index
 
 ## Test an index
 
-Validate that an index was used for a query by prepending a query with [`EXPLAIN QUERY PLAN` ↗](https://www.sqlite.org/eqp.html). This will output a query plan for the succeeding statement, including which (if any) indexes were used.
+Validate that an index was used for a query by prepending a query with [`EXPLAIN QUERY PLAN` ↗︎](https://www.sqlite.org/eqp.html). This will output a query plan for the succeeding statement, including which (if any) indexes were used.
 
 For example, if you assume the `users` table has an `email_address TEXT` column and you created an index `CREATE UNIQUE INDEX idx_email_address ON users(email_address)`, any query with a predicate on `email_address` should use your index.
 
@@ -128,12 +128,12 @@ Most unexpectedly large D1 bills come from a small number of frequently run quer
 | `JOIN other ON other.x = main.y` where `other.x` is unindexed | Depending on the query plan, D1 may scan the joined table repeatedly or create a temporary index. | Index the column used in the join's `ON` condition (here, `other.x`), then verify the plan with `EXPLAIN QUERY PLAN`. |
 | A correlated subquery such as `WHERE id = (SELECT ... WHERE inner.key = outer.key ...)` | Depending on the query plan, D1 may evaluate the inner query for each candidate row. A scan in the inner query can multiply the number of rows read. | Index the column(s) the subquery filters and joins on, then verify the plan with `EXPLAIN QUERY PLAN`. |
 | `ORDER BY RANDOM() LIMIT 1` | D1 must read and sort the entire result set to pick a random row - an index cannot help. | Avoid `ORDER BY RANDOM()` on large tables. Choose a sampling strategy that fits the primary key type, distribution, and required randomness. |
-| `WHERE column LIKE '%term%'` (leading wildcard), including inside `COUNT(*)` | A leading `%` prevents a regular B-tree index from optimizing `LIKE`, so the query usually requires a full scan. | Remove the leading wildcard where possible. A prefix search such as `LIKE 'term%'` can use an index in some cases. For arbitrary substring searches, consider [FTS5 with the trigram tokenizer ↗](https://www.sqlite.org/fts5.html#the_trigram_tokenizer), which can optimize patterns containing at least three consecutive non-wildcard Unicode characters. FTS5 indexes increase storage and write costs, so benchmark them for your workload. Verify either approach with `EXPLAIN QUERY PLAN`. |
+| `WHERE column LIKE '%term%'` (leading wildcard), including inside `COUNT(*)` | A leading `%` prevents a regular B-tree index from optimizing `LIKE`, so the query usually requires a full scan. | Remove the leading wildcard where possible. A prefix search such as `LIKE 'term%'` can use an index in some cases. For arbitrary substring searches, consider [FTS5 with the trigram tokenizer ↗︎](https://www.sqlite.org/fts5.html#the_trigram_tokenizer), which can optimize patterns containing at least three consecutive non-wildcard Unicode characters. FTS5 indexes increase storage and write costs, so benchmark them for your workload. Verify either approach with `EXPLAIN QUERY PLAN`. |
 | Re-running `CREATE INDEX` (or other schema changes) on every request | Building an index writes a row for every row it indexes, and writes are billed at a higher rate than reads. Doing this per request repeats that cost. | Run schema changes once with [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/), not on your application's hot path. |
 
 Note
 
-An index only pays off when a query runs often enough for the saved rows to matter. A single expensive query that runs thousands of times per day is far more important to fix than a complex query that runs occasionally. Check the [D1 dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/d1) or the `meta.rows_read` and `meta.rows_written` fields in your query results to find your most expensive queries.
+An index only pays off when a query runs often enough for the saved rows to matter. A single expensive query that runs thousands of times per day is far more important to fix than a complex query that runs occasionally. Check the [D1 dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/d1) or the `meta.rows_read` and `meta.rows_written` fields in your query results to find your most expensive queries.
 
 When trying to spot queries that might be improved by adding an index, focus on read-heavy queries with a large value for `Rows read / rows returned`.
 

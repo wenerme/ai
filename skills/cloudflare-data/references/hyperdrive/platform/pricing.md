@@ -45,9 +45,9 @@ Hyperdrive limits are automatically adjusted when subscribed to a Workers Paid p
 
 You can create PlanetScale Postgres and MySQL databases from Cloudflare and bill PlanetScale database usage through your Cloudflare account as a pay-as-you-go customer.
 
-PlanetScale database usage is separate from Hyperdrive usage. When you create a PlanetScale database from the Cloudflare dashboard, PlanetScale usage appears on your Cloudflare invoice each billing period as a dollar total at PlanetScale's standard [pricing ↗](https://planetscale.com/pricing).
+PlanetScale database usage is separate from Hyperdrive usage. When you create a PlanetScale database from the Cloudflare dashboard, PlanetScale usage appears on your Cloudflare invoice each billing period as a dollar total at PlanetScale's standard [pricing ↗︎](https://planetscale.com/pricing).
 
-You can view per-database billing usage in the [PlanetScale dashboard ↗](https://planetscale.com/docs/billing#organization-usage-and-billing-page). To learn how PlanetScale databases work with Workers and Hyperdrive, refer to [PlanetScale Postgres and MySQL with Hyperdrive](https://developers.cloudflare.com/hyperdrive/planetscale/).
+You can view per-database billing usage in the [PlanetScale dashboard ↗︎](https://planetscale.com/docs/billing#organization-usage-and-billing-page). To learn how PlanetScale databases work with Workers and Hyperdrive, refer to [PlanetScale Postgres and MySQL with Hyperdrive](https://developers.cloudflare.com/hyperdrive/planetscale/).
 
 ## Pricing FAQ
 

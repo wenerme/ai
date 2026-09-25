@@ -18,7 +18,7 @@ Filters constrain queries to a particular account or set of zones, requests by d
 
 ## Filter Structure
 
-The GraphQL filter is represented by the [GraphQL Input Object ↗](https://graphql.github.io/graphql-spec/June2018/#sec-Input-Objects), which exposes Boolean algebra on nodes.
+The GraphQL filter is represented by the [GraphQL Input Object ↗︎](https://graphql.github.io/graphql-spec/June2018/#sec-Input-Objects), which exposes Boolean algebra on nodes.
 
 You can use filters as an argument on the following resources:
 

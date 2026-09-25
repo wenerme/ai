@@ -48,11 +48,11 @@ Mozilla Firefox
 4. In **Choose provider**, choose *Custom*.
 5. In the field, enter <code>https://&lt;YOUR_DOH_SUBDOMAIN&gt;.cloudflare-gateway.com/dns-query</code>.
 
-Firefox is now configured to use your DoH endpoint. For more information on configuring DoH settings in Firefox, refer to <a href="https://support.mozilla.org/kb/dns-over-https">Mozilla's documentation ↗</a>.
+Firefox is now configured to use your DoH endpoint. For more information on configuring DoH settings in Firefox, refer to <a href="https://support.mozilla.org/kb/dns-over-https">Mozilla's documentation ↗︎</a>.
 
 Note
 
-If you want to enforce DNS policies through the Cloudflare One Client instead of over DoH, you can disable DoH for your organization by blocking the <a href="https://support.mozilla.org/kb/canary-domain-use-application-dnsnet">Firefox DoH canary domain ↗</a>.
+If you want to enforce DNS policies through the Cloudflare One Client instead of over DoH, you can disable DoH for your organization by blocking the <a href="https://support.mozilla.org/kb/canary-domain-use-application-dnsnet">Firefox DoH canary domain ↗︎</a>.
 
 </details>
 
@@ -69,7 +69,7 @@ Google Chrome
 3. Select **With Custom**.
 4. In the **Enter custom provider** field, enter <code>https://&lt;YOUR_DOH_SUBDOMAIN&gt;.cloudflare-gateway.com/dns-query</code>.
 
-Read more about <a href="https://www.chromium.org/developers/dns-over-https">enabling DNS over HTTPS ↗</a> on Chrome.
+Read more about <a href="https://www.chromium.org/developers/dns-over-https">enabling DNS over HTTPS ↗︎</a> on Chrome.
 
 </details>
 
@@ -192,10 +192,10 @@ nslookup -type=AAAA <your-subdomain>.cloudflare-gateway.com
 ```
 
 3. Copy the resulting IP addresses.
-4. <a href="https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support#add-a-new-doh-server-to-the-list-of-known-servers">Add the addresses ↗</a> to your list of known DoH servers.
-5. <a href="https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support#configure-the-dns-client-to-support-doh">Configure the Windows Server client ↗</a> or <a href="https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support#configuring-doh-through-group-policy">set up a Group Policy ↗</a> to use DoH.
+4. <a href="https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support#add-a-new-doh-server-to-the-list-of-known-servers">Add the addresses ↗︎</a> to your list of known DoH servers.
+5. <a href="https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support#configure-the-dns-client-to-support-doh">Configure the Windows Server client ↗︎</a> or <a href="https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support#configuring-doh-through-group-policy">set up a Group Policy ↗︎</a> to use DoH.
 
-For more information, refer to <a href="https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support">Microsoft's DoH guide ↗</a> for Windows Server 2022 and newer.
+For more information, refer to <a href="https://learn.microsoft.com/en-us/windows-server/networking/dns/doh-client-support">Microsoft's DoH guide ↗︎</a> for Windows Server 2022 and newer.
 
 </details>
 

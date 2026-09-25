@@ -27,7 +27,7 @@ Note that north-south traffic routed through Cloudflare's Secure Web Gateway is 
 Before setting up a connection between EdgeConnect and Cloudflare, you must have:
 
 - A contract that includes Cloudflare WAN (formerly Magic WAN) and Secure Web Gateway.
-- Received two Cloudflare endpoints (anycast IP addresses), available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+- Received two Cloudflare endpoints (anycast IP addresses), available in [Leased IPs ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 - Determined a private static /31 IP pair to use with each tunnel. The /31 pairs should be from a different private subnet, separate from the private subnets used behind each EdgeConnect appliance.
 - The EdgeConnect devices used in this tutorial and on v9.0.
 
@@ -118,7 +118,7 @@ Cloudflare's <a href="https://developers.cloudflare.com/cloudflare-wan/reference
 
 To create the overlay policy:
 
-1. Create a compound application, which is a combination of all <a href="https://www.cloudflare.com/ips/">Cloudflare public IPs ↗</a> and ICMP packets.
+1. Create a compound application, which is a combination of all <a href="https://www.cloudflare.com/ips/">Cloudflare public IPs ↗︎</a> and ICMP packets.
 
 ![Application definition screen with IP values](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=660,height=289,format=webp/_astro/app-definition.rcGh7Hqx.png)
 
@@ -145,7 +145,7 @@ Cloudflare's <a href="https://developers.cloudflare.com/cloudflare-wan/reference
 
 To create the overlay policy:
 
-1. Create a compound application, which is a combination of all <a href="https://www.cloudflare.com/ips/">Cloudflare public IPs ↗</a> and ICMP packets.
+1. Create a compound application, which is a combination of all <a href="https://www.cloudflare.com/ips/">Cloudflare public IPs ↗︎</a> and ICMP packets.
 
 ![Application definition screen with IP values](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=660,height=289,format=webp/_astro/app-definition.rcGh7Hqx.png)
 

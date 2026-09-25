@@ -60,7 +60,7 @@ Invisible mode is ideal for users who want to prioritize visitor and visual expe
 
 Link to Cloudflare's Turnstile Privacy Policy
 
-As a condition of enabling invisible mode, you must reference Cloudflare's [Turnstile Privacy Addendum ↗](https://www.cloudflare.com/turnstile-privacy-policy/) in your own privacy policy.
+As a condition of enabling invisible mode, you must reference Cloudflare's [Turnstile Privacy Addendum ↗︎](https://www.cloudflare.com/turnstile-privacy-policy/) in your own privacy policy.
 
 ---
 

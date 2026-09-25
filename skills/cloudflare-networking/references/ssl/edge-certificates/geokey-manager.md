@@ -37,7 +37,7 @@ The Data Localization Suite (DLS) is a set of products that helps customers who 
 
 [Geo Key Manager (v1)](https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/)
 
-The first version of Geo Key Manager supports 3 regions: U.S., E.U., and a set of High Security Data Centers. If you would like to restrict your private key to another country or region, [apply for the closed beta ↗](https://www.cloudflare.com/lp/geo-key-manager/) of the new version.
+The first version of Geo Key Manager supports 3 regions: U.S., E.U., and a set of High Security Data Centers. If you would like to restrict your private key to another country or region, [apply for the closed beta ↗︎](https://www.cloudflare.com/lp/geo-key-manager/) of the new version.
 
 ---
 

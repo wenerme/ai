@@ -20,13 +20,13 @@ This guide covers common HTTP/2 and HTTP/3 issues, including origin incompatibil
 
 - The origin's `max_concurrent_streams` is negotiated during the handshake process.
 - If a `GOAWAY(0)` is received, it is likely due to a server restart or another reason causing the server to refuse new streams.
-- For more information, refer to [RFC 9113 - SETTINGS\_MAX\_CONCURRENT\_STREAMS ↗](https://datatracker.ietf.org/doc/html/rfc9113).
+- For more information, refer to [RFC 9113 - SETTINGS\_MAX\_CONCURRENT\_STREAMS ↗︎](https://datatracker.ietf.org/doc/html/rfc9113).
 
 ## H2 Multiplexing - Origin incompatibility/issues
 
 - Multiplexing issues can arise due to incorrect server configurations.
-- Use [netlogs ↗](https://www.chromium.org/developers/design-documents/network-stack/netlog/) to identify `SETTINGS_MAX_CONCURRENT_STREAMS` violations or unexpected `GOAWAY` frames.
-- For more information, refer to [Stream Concurrency Issues ↗](https://datatracker.ietf.org/doc/html/rfc9113#name-stream-concurrency).
+- Use [netlogs ↗︎](https://www.chromium.org/developers/design-documents/network-stack/netlog/) to identify `SETTINGS_MAX_CONCURRENT_STREAMS` violations or unexpected `GOAWAY` frames.
+- For more information, refer to [Stream Concurrency Issues ↗︎](https://datatracker.ietf.org/doc/html/rfc9113#name-stream-concurrency).
 
 ## Generic browser errors
 
@@ -42,11 +42,11 @@ These errors do not necessarily indicate a protocol-level issue. Follow these st
 2. If the issue persists in HTTP/1.1, address the underlying error before testing HTTP/2 or HTTP/3.
 3. If the issue does not persist, analyze netlogs for HTTP/2 or HTTP/3-specific issues.
 
-For more information, refer to [Chromium URL Request Header ↗](https://chromium.googlesource.com/chromium/src/+/HEAD/net/url_request/url_request.h).
+For more information, refer to [Chromium URL Request Header ↗︎](https://chromium.googlesource.com/chromium/src/+/HEAD/net/url_request/url_request.h).
 
 ## Chrome stalls or fails only on HTTP/3
 
-If the issue reproduces only in Chrome over HTTP/3 and disappears when HTTP/3 is disabled, the problem may be related to a browser-side QUIC handling issue rather than your origin server. This is a known Chrome issue ([crbug.com/41161335 ↗](https://issues.chromium.org/issues/41161335)) — Cloudflare's QUIC implementation is not the cause.
+If the issue reproduces only in Chrome over HTTP/3 and disappears when HTTP/3 is disabled, the problem may be related to a browser-side QUIC handling issue rather than your origin server. This is a known Chrome issue ([crbug.com/41161335 ↗︎](https://issues.chromium.org/issues/41161335)) — Cloudflare's QUIC implementation is not the cause.
 
 Symptoms can include:
 

@@ -18,7 +18,7 @@ Follow this guide to create a Workers application using the Cloudflare dashboard
 
 Try the Playground
 
-The quickest way to experiment with Cloudflare Workers is in the [Playground ↗](https://workers.cloudflare.com/playground). The Playground does not require any setup. It is an instant way to preview and test a Worker directly in the browser.
+The quickest way to experiment with Cloudflare Workers is in the [Playground ↗︎](https://workers.cloudflare.com/playground). The Playground does not require any setup. It is an instant way to preview and test a Worker directly in the browser.
 
 ## Prerequisites
 

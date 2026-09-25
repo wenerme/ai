@@ -83,7 +83,7 @@ No code
 
 To find pools with existing notifications in the dashboard:
 
-1. Log into the <a href="https://dash.cloudflare.com">Cloudflare dashboard ↗</a> and select your account and domain.
+1. Log into the <a href="https://dash.cloudflare.com">Cloudflare dashboard ↗︎</a> and select your account and domain.
 2. Go to **Load Balancing**.
 3. Select the **Pools** tab.
 4. On a pool, select **Edit**.

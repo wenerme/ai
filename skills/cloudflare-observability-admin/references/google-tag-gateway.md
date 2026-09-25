@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Google tag gateway for advertisers allows website owners using Cloudflare as a CDN to get the most out of ad measurement tools with just a few clicks. It allows you to deploy Google scripts using your own domain, enhancing data privacy and improving signal measurement recovery. Unlike standard setups where tags are requested from a Google domain, Google tag gateway for advertisers loads the tag from your domain and sends measurement events to your domain, where they are forwarded to Google.
 
-Learn more about why we built it and how it works in our [blog post ↗](https://blog.cloudflare.com/google-tag-gateway-for-advertisers/).
+Learn more about why we built it and how it works in our [blog post ↗︎](https://blog.cloudflare.com/google-tag-gateway-for-advertisers/).
 
 ## Pricing
 
@@ -24,11 +24,11 @@ Google tag gateway for advertisers is free to use. Requests routed through the g
 
 ## Get started
 
-Site owners can enable this feature in one of two ways: through the Google tag console, or through the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/tag-management/google-tag-gateway).
+Site owners can enable this feature in one of two ways: through the Google tag console, or through the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/tag-management/google-tag-gateway).
 
 ### Configure in Google Tag Manager
 
-The fastest way to set up Google tag gateway for advertisers is in Google Tag Manager. [Follow the steps in Google's Help Center ↗](https://support.google.com/analytics/answer/16061641).
+The fastest way to set up Google tag gateway for advertisers is in Google Tag Manager. [Follow the steps in Google's Help Center ↗︎](https://support.google.com/analytics/answer/16061641).
 
 ### Configure in the Cloudflare dashboard
 
@@ -42,7 +42,7 @@ Your Cloudflare dashboard user must have one of the following [Account Roles](ht
 
 ![Google tag gateway for advertisers configuration](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2344,height=1194,format=webp/_astro/google-tag-configuration.DAsbB12B.png)
 
-4. Add your Google tag ID and the path on your website reserved for the Google tag. The [Google tag ID ↗](https://support.google.com/analytics/answer/9539598?hl=en) can be found in the Google Tag Experience dashboard. The measurement path is an unused path on your site that will load Google Tag Manager and all subsequent measurement requests.
+4. Add your Google tag ID and the path on your website reserved for the Google tag. The [Google tag ID ↗︎](https://support.google.com/analytics/answer/9539598?hl=en) can be found in the Google Tag Experience dashboard. The measurement path is an unused path on your site that will load Google Tag Manager and all subsequent measurement requests.
 
 ![Add to ID and path](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1828,height=1050,format=webp/_astro/google-tag-id-path.FiWAyHgy.png)
 
@@ -56,15 +56,15 @@ Google tag gateway for advertisers is configured at the zone level. When you ena
 
 ### Handle subdomain-specific logic with triggers
 
-If you need different tag behavior for specific subdomains (for example, only firing certain tags on `shop.example.com`), you can use [Google Tag Manager triggers ↗](https://support.google.com/tagmanager/answer/7679316) to control when tags fire. For example, you can create a trigger condition like **Page Hostname** equals `shop.example.com` to restrict a tag to a specific subdomain.
+If you need different tag behavior for specific subdomains (for example, only firing certain tags on `shop.example.com`), you can use [Google Tag Manager triggers ↗︎](https://support.google.com/tagmanager/answer/7679316) to control when tags fire. For example, you can create a trigger condition like **Page Hostname** equals `shop.example.com` to restrict a tag to a specific subdomain.
 
 This approach lets you maintain a single zone-wide Google tag gateway configuration while still customizing tag behavior per subdomain.
 
 ## Related resources
 
-- [Google Developer Docs: Set up Google tag gateway for advertisers ↗](https://developers.google.com/tag-platform/tag-manager/gateway/setup-guide?setup=auto)
-- [Google Help Center: Set up Google tag gateway for advertisers in the Google tag with Cloudflare ↗](https://support.google.com/tagmanager/answer/16061406)
-- [Google Help Center: Set up Google tag gateway for advertisers in Google Tag Manager with Cloudflare ↗](https://support.google.com/analytics/answer/16061641)
+- [Google Developer Docs: Set up Google tag gateway for advertisers ↗︎](https://developers.google.com/tag-platform/tag-manager/gateway/setup-guide?setup=auto)
+- [Google Help Center: Set up Google tag gateway for advertisers in the Google tag with Cloudflare ↗︎](https://support.google.com/tagmanager/answer/16061406)
+- [Google Help Center: Set up Google tag gateway for advertisers in Google Tag Manager with Cloudflare ↗︎](https://support.google.com/analytics/answer/16061641)
 
 Was this helpful?
 

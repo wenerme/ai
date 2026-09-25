@@ -40,7 +40,7 @@ For additional details and reference architectures on specific services, see our
 
 Cloud-based security and performance providers like Cloudflare work as a reverse proxy. A reverse proxy is a server that sits in front of web servers and forwards client requests to those web servers. Reverse proxies are typically implemented to help increase security, performance, and reliability.
 
-Normal traffic flow without a reverse proxy would involve a client sending a DNS lookup request, receiving the origin IP address, and communicating directly to the [origin server(s) ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server/).
+Normal traffic flow without a reverse proxy would involve a client sending a DNS lookup request, receiving the origin IP address, and communicating directly to the [origin server(s) ↗︎](https://www.cloudflare.com/learning/cdn/glossary/origin-server/).
 
 When a reverse proxy is introduced, the client still sends a DNS lookup request to its resolver, which is the first stop in the DNS lookup. In some cases, the vendor providing the reverse proxy also provides DNS services; this is visualized in Figure 3 below. However, the client now communicates to the reverse proxy and the reverse proxy communicates to the origin server(s). This traffic flow, where all traffic passes through the reverse proxy, allows for additional application security, performance, and reliability services to be implemented easily for applications.
 
@@ -72,7 +72,7 @@ Additionally, in this model, the customer has to open firewall rules for the ori
 
 In addition to IP blocking at the origin-side firewall, we also strongly recommend additional verification of traffic via either the ["Full (Strict)" SSL setting](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/) or [mTLS auth](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/) to ensure all traffic is sourced from requests passing through the customer configured zones.
 
-Cloudflare also supports [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/). When BYOIP is configured, the Cloudflare global network will announce a customer’s own IP prefixes and the prefixes can be used with the respective Cloudflare Layer 7 services. This allows customers to proxy traffic through Cloudflare and still have the customer IP address returned in the DNS resolution. This can be [beneficial ↗](https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip/) for cases where the customer IP prefixes are already allow-listed and updating firewall rules is not desirable or present an administrative hurdle.
+Cloudflare also supports [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/). When BYOIP is configured, the Cloudflare global network will announce a customer’s own IP prefixes and the prefixes can be used with the respective Cloudflare Layer 7 services. This allows customers to proxy traffic through Cloudflare and still have the customer IP address returned in the DNS resolution. This can be [beneficial ↗︎](https://blog.cloudflare.com/bringing-your-own-ips-to-cloudflare-byoip/) for cases where the customer IP prefixes are already allow-listed and updating firewall rules is not desirable or present an administrative hurdle.
 
 #### Private connection over the Internet - Tunnel
 
@@ -100,7 +100,7 @@ Most vendors also provide an option of directly connecting to their network. Dir
 
 *Figure 6: Connectivity from Cloudflare to origin server(s) via Cloudflare Network Interconnect (CNI)*
 
-The above diagram describes origin connectivity through [Cloudflare Network Interconnect (CNI) ↗](https://blog.cloudflare.com/cloudflare-network-interconnect/) which allows you to connect your network infrastructure directly with Cloudflare and communicate only over those direct links. CNI allows customers to interconnect branch and headquarter locations directly with Cloudflare. Customers can interconnect with Cloudflare in one of three ways: over a private network interconnect (PNI) available at [Cloudflare peering facilities ↗](https://www.peeringdb.com/net/4224), via an IX at any of the [many global exchanges Cloudflare participates in ↗](https://bgp.he.net/AS13335#_ix), or through one of Cloudflare’s [interconnection platform partners ↗](https://blog.cloudflare.com/cloudflare-network-interconnect-partner-program).
+The above diagram describes origin connectivity through [Cloudflare Network Interconnect (CNI) ↗︎](https://blog.cloudflare.com/cloudflare-network-interconnect/) which allows you to connect your network infrastructure directly with Cloudflare and communicate only over those direct links. CNI allows customers to interconnect branch and headquarter locations directly with Cloudflare. Customers can interconnect with Cloudflare in one of three ways: over a private network interconnect (PNI) available at [Cloudflare peering facilities ↗︎](https://www.peeringdb.com/net/4224), via an IX at any of the [many global exchanges Cloudflare participates in ↗︎](https://bgp.he.net/AS13335#_ix), or through one of Cloudflare’s [interconnection platform partners ↗︎](https://blog.cloudflare.com/cloudflare-network-interconnect-partner-program).
 
 Cloudflare’s global network allows for ease of connecting to the network regardless of where your infrastructure and employees are.
 
@@ -112,7 +112,7 @@ Regardless of which connectivity model is used, DNS resolution is done first and
 
 #### Securing connectivity with Cloudflare Tunnel
 
-Although there are multiple ways to onboard an application to use Cloudflare services, a common approach is to use Cloudflare DNS as the primary authoritative DNS. The additional benefit for customers here is that Cloudflare is consistently ranked the [fastest available authoritative DNS provider globally ↗](https://www.dnsperf.com/#!dns-providers).
+Although there are multiple ways to onboard an application to use Cloudflare services, a common approach is to use Cloudflare DNS as the primary authoritative DNS. The additional benefit for customers here is that Cloudflare is consistently ranked the [fastest available authoritative DNS provider globally ↗︎](https://www.dnsperf.com/#!dns-providers).
 
 In this example, we’ll connect our origin server to Cloudflare securely with Cloudflare Tunnel. You can configure DNS in the dashboard and enter the site you want to onboard. You’ll receive a pair of Cloudflare nameservers to configure at your domain registrar’s site. Once that’s completed, Cloudflare becomes the primary authoritative DNS provider.
 

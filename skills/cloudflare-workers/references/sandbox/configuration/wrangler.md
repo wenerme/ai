@@ -23,7 +23,7 @@ The minimum required configuration for using Sandbox SDK:
 	"name": "my-sandbox-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 	"containers": [
 		{
@@ -52,7 +52,7 @@ The minimum required configuration for using Sandbox SDK:
 name = "my-sandbox-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[containers]]
@@ -122,7 +122,7 @@ npx wrangler secret put R2_ACCESS_KEY_ID
 npx wrangler secret put R2_SECRET_ACCESS_KEY
 ```
 
-Create an R2 API token in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **R2** > **Overview** > **Manage R2 API Tokens**. The token needs **Object Read & Write** permissions for your backup bucket.
+Create an R2 API token in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) under **R2** > **Overview** > **Manage R2 API Tokens**. The token needs **Object Read & Write** permissions for your backup bucket.
 
 The SDK uses these credentials to generate presigned URLs that allow the container to transfer backup archives directly to and from R2. For a complete setup walkthrough, refer to the [backup and restore guide](https://developers.cloudflare.com/sandbox/guides/backup-restore/).
 

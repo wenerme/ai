@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/sql-reference/scalar-functions/json/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Pipelines provides two set of JSON functions, the first based on PostgreSQL's SQL functions and syntax, and the second based on the [JSONPath ↗](https://jsonpath.com/) standard.
+Cloudflare Pipelines provides two set of JSON functions, the first based on PostgreSQL's SQL functions and syntax, and the second based on the [JSONPath ↗︎](https://jsonpath.com/) standard.
 
 ## SQL functions
 
@@ -131,7 +131,7 @@ SELECT json_length('{"a": [1, 2, 3]}', 'a') FROM source;
 
 ## Json path functions
 
-JSON functions provide basic json parsing functions using [JsonPath ↗](https://goessner.net/articles/JsonPath/), an evolving standard for querying JSON objects.
+JSON functions provide basic json parsing functions using [JsonPath ↗︎](https://goessner.net/articles/JsonPath/), an evolving standard for querying JSON objects.
 
 ### extract\_json
 

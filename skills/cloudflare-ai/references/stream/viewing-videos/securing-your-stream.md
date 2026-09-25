@@ -386,7 +386,7 @@ Each accessRule must include 2 required properties:
 
 Depending on the rule type, accessRules support 2 additional properties:
 
-- `country`: an array of 2-letter country codes in [ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search) format.
+- `country`: an array of 2-letter country codes in [ISO 3166-1 Alpha 2 ↗︎](https://www.iso.org/obp/ui/#search) format.
 - `ip`: an array of ip ranges. It is recommended to include both IPv4 and IPv6 variants in a rule if possible. Having only a single variant in a rule means that rule will ignore the other variant. For example, an IPv4-based rule will never be applicable to a viewer connecting from an IPv6 address. CIDRs should be preferred over specific IP addresses. Some devices, such as mobile, may change their IP over the course of a view. Video Access Control are evaluated continuously while a video is being viewed. As a result, overly strict IP rules may disrupt playback.
 
 ***Example 1: Block views from a specific country***
@@ -441,7 +441,7 @@ By default, Stream embed codes can be used on any domain. If needed, you can lim
 In the dashboard, you will see a text box by each video labeled `Enter allowed origin domains separated by commas`. If you click on it, you can list the domains that the Stream embed code should be able to be used on. \`
 
 - `*.badtortilla.com` covers `a.badtortilla.com`, `a.b.badtortilla.com` and does not cover `badtortilla.com`
-- `example.com` does not cover [www.example.com ↗](http://www.example.com) or any subdomain of example.com
+- `example.com` does not cover [www.example.com ↗︎](http://www.example.com) or any subdomain of example.com
 - `localhost` requires a port if it is not being served over HTTP on port 80 or over HTTPS on port 443
 - There is no path support - `example.com` covers `example.com/\*`
 

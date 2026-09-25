@@ -57,7 +57,7 @@ The limit to deliver an animated GIF/WebP animation is 100 megapixels. However, 
 
 When serving animations, we recommend using video formats like MP4 and WebM for best performance. As the GIF format has inefficient compression, high resolution animations typically have larger file sizes and take longer to compress.
 
-To optimize remote videos, you can use [media transformations ↗](https://developers.cloudflare.com/stream/transform-videos/).
+To optimize remote videos, you can use [media transformations ↗︎](https://developers.cloudflare.com/stream/transform-videos/).
 
 ### Limits for the Images binding
 
@@ -115,7 +115,7 @@ If you store in Images, then you can use any predefined variant as a placeholder
 
 Similarly, you can use Images to serve a sanitized SVG that is stored in your own origin, like in [R2](https://developers.cloudflare.com/r2/).
 
-When SVG files are served, they are sanitized using [`svg-hush` ↗](https://github.com/cloudflare/svg-hush), an open-source tool developed by Cloudflare to make SVGs as safe as possible. It streams the files without buffering, enabling us to quickly filter them on the fly. SVG files are XML documents and can contain links or Javascript features that may pose a security concern.
+When SVG files are served, they are sanitized using [`svg-hush` ↗︎](https://github.com/cloudflare/svg-hush), an open-source tool developed by Cloudflare to make SVGs as safe as possible. It streams the files without buffering, enabling us to quickly filter them on the fly. SVG files are XML documents and can contain links or Javascript features that may pose a security concern.
 
 The `svg-hush` tool filters SVGs and removes potentially risky features, such as:
 

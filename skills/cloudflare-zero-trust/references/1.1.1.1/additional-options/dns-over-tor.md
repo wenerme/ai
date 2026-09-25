@@ -20,13 +20,13 @@ The hidden resolver (Cloudflare's DNS resolver accessible through Tor) is still 
 
 When you send a standard DNS query, both your ISP and the DNS resolver can see your IP address and the domains you look up. Cloudflare's Tor onion service routes your DNS queries through the Tor network, which guarantees a significantly higher level of anonymity than making requests directly. The resolver never sees your IP address, and your ISP cannot determine that you attempted to resolve a domain name.
 
-Read more about this service in [this blog post ↗](https://blog.cloudflare.com/welcome-hidden-resolver/).
+Read more about this service in [this blog post ↗︎](https://blog.cloudflare.com/welcome-hidden-resolver/).
 
 ## Setting up a Tor client
 
 Unlike standard DNS modes where traffic is sent directly to an IP address, the Tor network routes traffic without exposing IP addresses. This means all connections to the hidden resolver must go through a Tor client.
 
-Before you start, head to the [Tor Project website ↗](https://www.torproject.org/download/download.html.en) to download and install a Tor client. If you use the Tor Browser, it will automatically start a [SOCKS proxy ↗](https://en.wikipedia.org/wiki/SOCKS) at `127.0.0.1:9150`.
+Before you start, head to the [Tor Project website ↗︎](https://www.torproject.org/download/download.html.en) to download and install a Tor client. If you use the Tor Browser, it will automatically start a [SOCKS proxy ↗︎](https://en.wikipedia.org/wiki/SOCKS) at `127.0.0.1:9150`.
 
 If you use Tor from the command line, create the following configuration file:
 
@@ -62,7 +62,7 @@ alt-svc: h2="dns4torpnlfs2ifuz2s2yf3fc7rdmsbhm6rw75euj35pac6ap25zgqad.onion:443"
 
 ## Setting up a local DNS proxy using socat
 
-Not all DNS clients support connecting to the Tor network directly. The [`socat` ↗](http://www.dest-unreach.org/socat/) utility bridges this gap by forwarding local ports through the Tor proxy, so any DNS-speaking software can reach the hidden resolver.
+Not all DNS clients support connecting to the Tor network directly. The [`socat` ↗︎](http://www.dest-unreach.org/socat/) utility bridges this gap by forwarding local ports through the Tor proxy, so any DNS-speaking software can reach the hidden resolver.
 
 ### DNS over TCP, TLS, and HTTPS
 
@@ -76,7 +76,7 @@ From here, you can follow the regular guide for [setting up 1.1.1.1](https://dev
 
 ### DNS over HTTPS
 
-[As explained in the blog post ↗](https://blog.cloudflare.com/welcome-hidden-resolver/), the preferred method is DNS over HTTPS (DoH), which encrypts the entire DNS query within an HTTPS connection. To set it up:
+[As explained in the blog post ↗︎](https://blog.cloudflare.com/welcome-hidden-resolver/), the preferred method is DNS over HTTPS (DoH), which encrypts the entire DNS query within an HTTPS connection. To set it up:
 
 1. Download `cloudflared` by following the guide for [connecting to 1.1.1.1 using DNS over HTTPS clients](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/dns-over-https-client/).
 2. Start a Tor SOCKS proxy and use `socat` to forward port TCP:443 to localhost:

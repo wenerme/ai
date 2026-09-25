@@ -43,7 +43,7 @@ By not updating to the latest version, you will be using a Machine Learning mode
 | v2 | Introduced dynamic inter-request features to leverage the Cloudflare network to detect new bots more accurately. <br><br>Feedback other Bot Management detection mechanisms to the machine learning model to more accurately detect bots. | Q1 2020 |
 | v3 | Fixed accuracy issues under some conditions in the previous version. | Q2 2020 |
 | v4 | Improved scoring for iOS devices. <br><br>Fixed scoring inaccuracy in Firefox builds. | Q1 2021 |
-| v5 | Recalibrated model for the [removal of `_cfduid` cookie ↗](https://blog.cloudflare.com/deprecating-cfduid-cookie/). <br><br> Introduced new signals to reduce false negatives. | Q2 2021 |
+| v5 | Recalibrated model for the [removal of `_cfduid` cookie ↗︎](https://blog.cloudflare.com/deprecating-cfduid-cookie/). <br><br> Introduced new signals to reduce false negatives. | Q2 2021 |
 | v6 | Significantly improved scoring for native Android application traffic. <br><br>Improved scoring on the newest versions of Chromium browsers. | Q1 2022 |
 | v7 | Increased recognition of distributed botnets. <br><br>Improved HTTP/3 scoring. | Q1 2024 |
 | v8 | Improved detection of residential proxies. <br><br>Increased weight on network level traffic characteristics. | Q2 2024 |

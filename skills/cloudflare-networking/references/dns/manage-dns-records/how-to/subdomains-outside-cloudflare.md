@@ -38,7 +38,7 @@ Cloudflare's CDN and security services are not applied to delegated subdomains.
 
 To delegate a subdomain such as `blog.example.com`, tell DNS resolvers where to find the zone file:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
 2. Select the domain that contains the subdomain to be delegated.
 3. Go to the **DNS Records** page. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 4. Create `NS` records for the subdomain. For example:
@@ -55,7 +55,7 @@ To delegate a subdomain such as `blog.example.com`, tell DNS resolvers where to 
 
 When creating NS records, there are limits on the number of nameservers that can be associated with a single delegation name.
 
-According to DNS standards defined in [RFC 1912 ↗](https://www.rfc-editor.org/rfc/rfc1912.html), a delegation should not include more than seven nameserver names for the same delegation name.
+According to DNS standards defined in [RFC 1912 ↗︎](https://www.rfc-editor.org/rfc/rfc1912.html), a delegation should not include more than seven nameserver names for the same delegation name.
 
 To align with these standards and maintain platform stability:
 

@@ -116,25 +116,25 @@ HTTP test client IP postal code, for example `90001`. HTTP tests only.
 
 Type: `int`
 
-HTTP test result connect end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
+HTTP test result connect end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPConnectStartMs
 
 Type: `int`
 
-HTTP test result connect start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
+HTTP test result connect start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPDomainLookupEndMs
 
 Type: `int`
 
-HTTP test result domain lookup end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
+HTTP test result domain lookup end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPDomainLookupStartMs
 
 Type: `int`
 
-HTTP test result domain lookup start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
+HTTP test result domain lookup start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPErrorMessage
 
@@ -152,19 +152,19 @@ HTTP test method. HTTP tests only.
 
 Type: `int`
 
-HTTP test redirect end timestamp, in milliseconds elapsed since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
+HTTP test redirect end timestamp, in milliseconds elapsed since test start. HTTP tests only. Refer to [Resource timing ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPRedirectStartMs
 
 Type: `int`
 
-HTTP test redirect start timestamp, in milliseconds elapsed since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
+HTTP test redirect start timestamp, in milliseconds elapsed since test start. HTTP tests only. Refer to [Resource timing ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPRequestStartMs
 
 Type: `int`
 
-HTTP test result request start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
+HTTP test result request start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPResponseBody
 
@@ -182,7 +182,7 @@ Size of the HTTP response body. HTTP tests only.
 
 Type: `int`
 
-HTTP test result response end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
+HTTP test result response end, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPResponseHeaderBytes
 
@@ -200,13 +200,13 @@ HTTP response headers, for example `[{"name": "Content-Type", "value": "text/htm
 
 Type: `int`
 
-HTTP test result response start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
+HTTP test result response start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPSecureConnectionStartMs
 
 Type: `int`
 
-HTTP test result secure connection start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
+HTTP test result secure connection start, in milliseconds since test start. HTTP tests only. Refer to [Resource timing ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Resource_Timing_API/Using_the_Resource_Timing_API) for more details.
 
 ## HTTPServerIPASN
 

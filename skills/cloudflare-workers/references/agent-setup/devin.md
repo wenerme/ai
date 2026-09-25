@@ -28,7 +28,7 @@ IDETerminalStandaloneCloudExtension
 
 1. **Download Devin Desktop**
 
-   Download Devin Desktop for macOS, Windows, or Linux from the [Devin Desktop downloads page ↗](https://devin.ai/download).
+   Download Devin Desktop for macOS, Windows, or Linux from the [Devin Desktop downloads page ↗︎](https://devin.ai/download).
 2. **Install Cloudflare Skills**
 
    ```bash
@@ -38,7 +38,7 @@ IDETerminalStandaloneCloudExtension
 
 3. **Configure Cloudflare MCP servers**
 
-   Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗](https://github.com/cloudflare/mcp).
+   Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗︎](https://github.com/cloudflare/mcp).
 
    ```json
    {
@@ -58,7 +58,7 @@ IDETerminalStandaloneCloudExtension
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Add a cron trigger to my Worker that processes a job queue every hour.
+   Use Workers for Platforms to let my customers deploy their own code in isolated environments.
    ```
 
 
@@ -107,7 +107,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 - Code mode APIcode modeBroad access to the full Cloudflare API via code execution, with minimal token overheadhttps://mcp.cloudflare.com/mcp
 - Code Mode servercode modeBest when you want broad access across Cloudflare's APIs through code executionhttps://mcp.cloudflare.com/mcp
 - AI Gateway serverSearch your logs, get details about the prompts and responseshttps://ai-gateway.mcp.cloudflare.com/mcp
-- Audit Logs serverQuery audit logs and generate reports for reviewhttps://auditlogs.mcp.cloudflare.com/mcp
 - AutoRAG serverSearch and query account AutoRAG instanceshttps://autorag.mcp.cloudflare.com/mcp
 - Browser Run serverFetch web pages, convert them to markdown and take screenshotshttps://browser.mcp.cloudflare.com/mcp
 - Cloudflare Blog serverSearch and read posts from the Cloudflare Bloghttps://blog.mcp.cloudflare.com/mcp
@@ -164,23 +163,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Tips
@@ -197,7 +196,7 @@ Set up custom domains with automatic SSL for my SaaS customers using SSL for Saa
 
 </summary>
 
-Yes. Devin Desktop supports Agent Skills in Cascade. Install the Cloudflare Skills bundle from <a href="https://github.com/cloudflare/skills">cloudflare/skills ↗</a> — refer to the <a href="https://docs.devin.ai/desktop/cascade/skills">Devin Desktop Cascade Skills documentation ↗</a> for where Cascade discovers and loads Skills.
+Yes. Devin Desktop supports Agent Skills in Cascade. Install the Cloudflare Skills bundle from <a href="https://github.com/cloudflare/skills">cloudflare/skills ↗︎</a> — refer to the <a href="https://docs.devin.ai/desktop/cascade/skills">Devin Desktop Cascade Skills documentation ↗︎</a> for where Cascade discovers and loads Skills.
 
 </details>
 

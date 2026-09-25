@@ -22,7 +22,7 @@ Usage:
 formatDateTime(<datetime expression>, <format string>[, <timezone string>])
 ```
 
-`formatDateTime` prints a datetime as a string according to a provided format string. Refer to [ClickHouse's documentation ↗](https://clickhouse.com/docs/en/sql-reference/functions/date-time-functions/#formatdatetime) for a list of supported formatting options.
+`formatDateTime` prints a datetime as a string according to a provided format string. Refer to [ClickHouse's documentation ↗︎](https://clickhouse.com/docs/en/sql-reference/functions/date-time-functions/#formatdatetime) for a list of supported formatting options.
 
 Examples:
 

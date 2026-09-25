@@ -22,7 +22,7 @@ This guide uses today's stable `@cloudflare/sandbox` package.
 
 For **new projects**, we recommend the [1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/) on `@cloudflare/sandbox@next` so you start on the APIs that become Sandbox SDK 1.0. Refer to [Get started with the 1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/get-started/).
 
-Coding agents: install [Cloudflare Skills ↗](https://github.com/cloudflare/skills) ([Agent setup](https://developers.cloudflare.com/agent-setup/)). Use **`sandbox-stable`** with this guide; use **`sandbox-next`** for `@next`; use **`sandbox-migrate-to-next`** when porting.
+Coding agents: install [Cloudflare Skills ↗︎](https://github.com/cloudflare/skills) ([Agent setup](https://developers.cloudflare.com/agent-setup/)). Use **`sandbox-stable`** with this guide; use **`sandbox-next`** for `@next`; use **`sandbox-migrate-to-next`** when porting.
 
 What you're building
 
@@ -30,8 +30,8 @@ A simple API that can safely execute Python code and perform file operations in 
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -41,15 +41,15 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
 ### Ensure Docker is running locally
 
-Sandbox SDK uses [Docker ↗](https://www.docker.com/) to build container images alongside your Worker.
+Sandbox SDK uses [Docker ↗︎](https://www.docker.com/) to build container images alongside your Worker.
 
-You must have Docker running locally when you run `wrangler deploy`. For most people, the best way to install Docker is to follow the [docs for installing Docker Desktop ↗](https://docs.docker.com/desktop/). Other tools like [Colima ↗](https://github.com/abiosoft/colima) may also work.
+You must have Docker running locally when you run `wrangler deploy`. For most people, the best way to install Docker is to follow the [docs for installing Docker Desktop ↗︎](https://docs.docker.com/desktop/). Other tools like [Colima ↗︎](https://github.com/abiosoft/colima) may also work.
 
 You can check that Docker is running properly by running the `docker info` command in your terminal. If Docker is running, the command will succeed. If Docker is not running, the `docker info` command will hang or return an error including the message "Cannot connect to the Docker daemon".
 

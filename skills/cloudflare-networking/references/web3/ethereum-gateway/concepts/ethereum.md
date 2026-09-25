@@ -34,9 +34,9 @@ When a new block is added, it is broadcast to every node in the network. Because
 
 ## Read and write content
 
-To read data from Ethereum — such as checking account balances or querying smart contract state — you need access to an Ethereum node. You can run a node yourself (for example, using [go-ethereum ↗](https://github.com/ethereum/go-ethereum/)) or use a gateway like Cloudflare's. Reads are performed through the [JSON-RPC API ↗](https://github.com/ethereum/wiki/wiki/JSON-RPC), a standard interface for sending queries to the network.
+To read data from Ethereum — such as checking account balances or querying smart contract state — you need access to an Ethereum node. You can run a node yourself (for example, using [go-ethereum ↗︎](https://github.com/ethereum/go-ethereum/)) or use a gateway like Cloudflare's. Reads are performed through the [JSON-RPC API ↗︎](https://github.com/ethereum/wiki/wiki/JSON-RPC), a standard interface for sending queries to the network.
 
-To write data — such as sending a transaction or deploying a smart contract — you also use the JSON-RPC API, but you must additionally provide ETH to pay for the transaction fee and sign the transaction with the private key from your [Ethereum wallet ↗](https://www.ethereum.org/use/#_3-what-is-a-wallet-and-which-one-should-i-use). Once submitted, the transaction is broadcast to the network and included in the blockchain.
+To write data — such as sending a transaction or deploying a smart contract — you also use the JSON-RPC API, but you must additionally provide ETH to pay for the transaction fee and sign the transaction with the private key from your [Ethereum wallet ↗︎](https://www.ethereum.org/use/#_3-what-is-a-wallet-and-which-one-should-i-use). Once submitted, the transaction is broadcast to the network and included in the blockchain.
 
 ## Connect your website to the gateway
 
@@ -44,7 +44,7 @@ To access the Ethereum network from a custom domain name — without running you
 
 ## Related resources
 
-If you’re interested in learning more, you can read the official [RPC documentation ↗](https://github.com/ethereum/wiki/wiki/JSON-RPC), along with the official documentation [provided by Ethereum ↗](https://www.ethereum.org/use/).
+If you’re interested in learning more, you can read the official [RPC documentation ↗︎](https://github.com/ethereum/wiki/wiki/JSON-RPC), along with the official documentation [provided by Ethereum ↗︎](https://www.ethereum.org/use/).
 
 Was this helpful?
 

@@ -27,8 +27,8 @@ These five fields are available in rule expressions. Security Analytics logs onl
 | Threat intelligence datasets <br> `cf.intel.ip.datasets` <br> `Array<String>` | Dataset that flagged the IP address. Values: `ddos`, `waf`. |
 | Target industries <br> `cf.intel.ip.target_industries` <br> `Array<String>` | Industries this IP address has targeted. Refer to [target industries](#target-industries) for valid values. |
 | Attacker names <br> `cf.intel.ip.attacker_names` <br> `Array<String>` | Threat actor names associated with this IP address (for example, `CONVOLUTEDKRILL`). |
-| Attacker countries <br> `cf.intel.ip.attacker_countries` <br> `Array<String>` | Source countries of the threat activity, as [ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search/code/) codes. |
-| Target countries <br> `cf.intel.ip.target_countries` <br> `Array<String>` | Countries this IP address has targeted, as [ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search/code/) codes. |
+| Attacker countries <br> `cf.intel.ip.attacker_countries` <br> `Array<String>` | Source countries of the threat activity, as [ISO 3166-1 Alpha 2 ↗︎](https://www.iso.org/obp/ui/#search/code/) codes. |
+| Target countries <br> `cf.intel.ip.target_countries` <br> `Array<String>` | Countries this IP address has targeted, as [ISO 3166-1 Alpha 2 ↗︎](https://www.iso.org/obp/ui/#search/code/) codes. |
 
 ## Case sensitivity
 

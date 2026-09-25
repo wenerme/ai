@@ -49,7 +49,7 @@ export default defineConfig({
 
 Note
 
-Review the [Vitest documentation ↗](https://vitest.dev/) for more information on testing, including the test API reference and advanced testing techniques.
+Review the [Vitest documentation ↗︎](https://vitest.dev/) for more information on testing, including the test API reference and advanced testing techniques.
 
 Tests use the `vitest` framework. A basic test suite for your Agent can validate how your Agent responds to requests, but can also unit test your Agent's methods and state.
 
@@ -126,7 +126,7 @@ Your worker has access to the following bindings:
 
 This spins up a local development server that runs the same runtime as Cloudflare Workers, and allows you to iterate on your Agent's code and test it locally without deploying it.
 
-Visit the [`wrangler dev` ↗](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) docs to review the CLI flags and configuration options.
+Visit the [`wrangler dev` ↗︎](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) docs to review the CLI flags and configuration options.
 
 Was this helpful?
 

@@ -28,14 +28,14 @@ Cloudflare Logpush supports pushing logs directly to Datadog via the Cloudflare 
 
 4. In **Select a destination**, choose **Datadog**.
 5. Enter or select the following destination information:
-   - **Datadog URL Endpoint**, which can be either one below. You can find the difference at [Datadog API reference ↗](https://docs.datadoghq.com/api/latest/logs/).
+   - **Datadog URL Endpoint**, which can be either one below. You can find the difference at [Datadog API reference ↗︎](https://docs.datadoghq.com/api/latest/logs/).
 
 - `http-intake.logs.datadoghq.com/v1/input`
 
 - `http-intake.logs.datadoghq.com/api/v2/logs`
 
-- **Datadog API Key**, can be retrieved by following [these steps ↗](https://docs.datadoghq.com/account_management/api-app-keys/#add-an-api-key-or-client-token).
-- **Service**, **Hostname**, **Datadog ddsource field**, and **ddtags** fields can be set as URL parameters. For more information, refer to the [Logs section ↗](https://docs.datadoghq.com/api/latest/logs/) in Datadog's documentation. While these parameters are optional, they can be useful for indexing or processing logs. Note that the values of these parameters may contain special characters, which should be URL encoded.
+- **Datadog API Key**, can be retrieved by following [these steps ↗︎](https://docs.datadoghq.com/account_management/api-app-keys/#add-an-api-key-or-client-token).
+- **Service**, **Hostname**, **Datadog ddsource field**, and **ddtags** fields can be set as URL parameters. For more information, refer to the [Logs section ↗︎](https://docs.datadoghq.com/api/latest/logs/) in Datadog's documentation. While these parameters are optional, they can be useful for indexing or processing logs. Note that the values of these parameters may contain special characters, which should be URL encoded.
 
 When you are done entering the destination details, select **Continue**.
 
@@ -69,12 +69,12 @@ To create a job, make a `POST` request to the Logpush jobs endpoint with the fol
 
 - **name** (optional) - Use your domain name as the job name.
 - **destination\_conf** - A log destination consisting of an endpoint URL, authorization header, and zero or more optional parameters that Datadog supports in the string format below.
-  - **\<DATADOG\_ENDPOINT\_URL>**: The Datadog HTTP logs intake endpoint, which can be either one below. You can find the difference at [Datadog API reference ↗](https://docs.datadoghq.com/api/latest/logs/).
+  - **\<DATADOG\_ENDPOINT\_URL>**: The Datadog HTTP logs intake endpoint, which can be either one below. You can find the difference at [Datadog API reference ↗︎](https://docs.datadoghq.com/api/latest/logs/).
 
-  [https://http-intake.logs.datadoghq.com/v1/input\` ↗](https://http-intake.logs.datadoghq.com/v1/input%60)
+  [https://http-intake.logs.datadoghq.com/v1/input\` ↗︎](https://http-intake.logs.datadoghq.com/v1/input%60)
 
   `https://http-intake.logs.datadoghq.com/api/v2/logs`
-- `<DATADOG_API_KEY>`: The Datadog API token can be retrieved by following [these steps ↗](https://docs.datadoghq.com/account_management/api-app-keys/#add-an-api-key-or-client-token). For example, `20e6d94e8c57924ad1be3c29bcaee0197d`.
+- `<DATADOG_API_KEY>`: The Datadog API token can be retrieved by following [these steps ↗︎](https://docs.datadoghq.com/account_management/api-app-keys/#add-an-api-key-or-client-token). For example, `20e6d94e8c57924ad1be3c29bcaee0197d`.
 - `ddsource`: Set to `cloudflare`.
 - `service`, `host`, `ddtags`: Optional parameters allowed by Datadog.
 
@@ -166,7 +166,7 @@ To analyze and visualize Cloudflare metrics using the Cloudflare Integration til
 
 ## Limitations
 
-Note the following Logpush sending limitations, as described in the [Datadog documentation ↗](https://docs.datadoghq.com/api/latest/logs/).
+Note the following Logpush sending limitations, as described in the [Datadog documentation ↗︎](https://docs.datadoghq.com/api/latest/logs/).
 
 Send your logs to your Datadog platform over HTTP. Limits per HTTP request are the following:
 

@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/playwright/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Playwright ↗](https://playwright.dev/) is an open-source package developed by Microsoft that can do browser automation tasks; it is commonly used to write frontend tests, create screenshots, or crawl pages.
+[Playwright ↗︎](https://playwright.dev/) is an open-source package developed by Microsoft that can do browser automation tasks; it is commonly used to write frontend tests, create screenshots, or crawl pages.
 
-The Workers team forked a [version of Playwright ↗](https://github.com/cloudflare/playwright) that was modified to be compatible with [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Browser Run](https://developers.cloudflare.com/browser-run/).
+The Workers team forked a [version of Playwright ↗︎](https://github.com/cloudflare/playwright) that was modified to be compatible with [Cloudflare Workers](https://developers.cloudflare.com/workers/) and [Browser Run](https://developers.cloudflare.com/browser-run/).
 
-Our version is open sourced and can be found in [Cloudflare's fork of Playwright ↗](https://github.com/cloudflare/playwright). The npm package can be installed from [npmjs ↗](https://www.npmjs.com/) as [@cloudflare/playwright ↗](https://www.npmjs.com/package/@cloudflare/playwright):
+Our version is open sourced and can be found in [Cloudflare's fork of Playwright ↗︎](https://github.com/cloudflare/playwright). The npm package can be installed from [npmjs ↗︎](https://www.npmjs.com/) as [@cloudflare/playwright ↗︎](https://www.npmjs.com/package/@cloudflare/playwright):
 
 npmyarnpnpmbun
 
@@ -40,11 +40,11 @@ bun add -d @cloudflare/playwright
 
 Note
 
-The current version is [`@cloudflare/playwright` v1.3.0 ↗](https://github.com/cloudflare/playwright/releases/tag/v1.3.0), based on [Playwright v1.58.2 ↗](https://playwright.dev/docs/release-notes#version-158).
+The current version is [`@cloudflare/playwright` v1.3.0 ↗︎](https://github.com/cloudflare/playwright/releases/tag/v1.3.0), based on [Playwright v1.58.2 ↗︎](https://playwright.dev/docs/release-notes#version-158).
 
 ## Use Playwright in a Worker
 
-In this [example ↗](https://github.com/cloudflare/playwright/tree/main/packages/playwright-cloudflare/examples/todomvc), you will run Playwright tests in a Cloudflare Worker using the [todomvc ↗](https://demo.playwright.dev/todomvc) application.
+In this [example ↗︎](https://github.com/cloudflare/playwright/tree/main/packages/playwright-cloudflare/examples/todomvc), you will run Playwright tests in a Cloudflare Worker using the [todomvc ↗︎](https://demo.playwright.dev/todomvc) application.
 
 If you want to skip the steps and get started quickly, select **Deploy to Cloudflare** below.
 
@@ -64,7 +64,7 @@ To use the latest version of `@cloudflare/playwright`, your Worker configuration
 	"workers_dev": true,
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"upload_source_maps": true,
 	"browser": {
 		"binding": "MYBROWSER",
@@ -79,7 +79,7 @@ main = "src/index.ts"
 workers_dev = true
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 upload_source_maps = true
 
 [browser]
@@ -110,7 +110,7 @@ Let's look at some examples of how to use Playwright:
 
 ### Take a screenshot
 
-Using browser automation to take screenshots of web pages is a common use case. This script tells the browser to navigate to [https://demo.playwright.dev/todomvc ↗](https://demo.playwright.dev/todomvc), create some items, take a screenshot of the page, and return the image in the response.
+Using browser automation to take screenshots of web pages is a common use case. This script tells the browser to navigate to [https://demo.playwright.dev/todomvc ↗︎](https://demo.playwright.dev/todomvc), create some items, take a screenshot of the page, and return the image in the response.
 
 ```ts
 import { launch } from "@cloudflare/playwright";
@@ -148,7 +148,7 @@ export default {
 
 ### Trace
 
-A Playwright trace is a detailed log of your workflow execution that captures information like user clicks and navigation actions, screenshots of the page, and any console messages generated and used for debugging. Developers can take a `trace.zip` file and either open it [locally ↗](https://playwright.dev/docs/trace-viewer#opening-the-trace) or upload it to the [Playwright Trace Viewer ↗](https://trace.playwright.dev/), a GUI tool that helps you explore the data.
+A Playwright trace is a detailed log of your workflow execution that captures information like user clicks and navigation actions, screenshots of the page, and any console messages generated and used for debugging. Developers can take a `trace.zip` file and either open it [locally ↗︎](https://playwright.dev/docs/trace-viewer#opening-the-trace) or upload it to the [Playwright Trace Viewer ↗︎](https://trace.playwright.dev/), a GUI tool that helps you explore the data.
 
 Here's an example of a worker generating a trace file:
 
@@ -195,7 +195,7 @@ export default {
 
 ### Assertions
 
-One of the most common use cases for using Playwright is software testing. Playwright includes test assertion features in its APIs; refer to [Assertions ↗](https://playwright.dev/docs/test-assertions) in the Playwright documentation for details. Here's an example of a Worker doing `expect()` test assertions of the [todomvc ↗](https://demo.playwright.dev/todomvc) demo page:
+One of the most common use cases for using Playwright is software testing. Playwright includes test assertion features in its APIs; refer to [Assertions ↗︎](https://playwright.dev/docs/test-assertions) in the Playwright documentation for details. Here's an example of a Worker doing `expect()` test assertions of the [todomvc ↗︎](https://demo.playwright.dev/todomvc) demo page:
 
 ```ts
 import { launch } from "@cloudflare/playwright";
@@ -233,7 +233,7 @@ export default {
 
 ### Storage state
 
-Playwright supports [storage state ↗](https://playwright.dev/docs/api/class-browsercontext#browsercontext-storage-state) to obtain and persist cookies and other storage data. In this example, you will use storage state to persist cookies and other storage data in [Workers KV](https://developers.cloudflare.com/kv).
+Playwright supports [storage state ↗︎](https://playwright.dev/docs/api/class-browsercontext#browsercontext-storage-state) to obtain and persist cookies and other storage data. In this example, you will use storage state to persist cookies and other storage data in [Workers KV](https://developers.cloudflare.com/kv).
 
 First, ensure you have a KV namespace. You can create a new one with:
 
@@ -249,7 +249,7 @@ Then, add the KV namespace to your Wrangler configuration file:
 	"main": "src/index.ts",
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"browser": {
 		"binding": "MYBROWSER",
 	},
@@ -267,7 +267,7 @@ name = "storage-state-examples"
 main = "src/index.ts"
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [browser]
 binding = "MYBROWSER"
@@ -321,7 +321,7 @@ This is an inactivity timeout, not a maximum session duration. Sessions can rema
 
 ### Session Reuse
 
-The best way to improve the performance of your Browser Run Worker is to reuse sessions by keeping the browser open after you have finished with it, and connecting to that session each time you have a new request. Playwright handles [`browser.close` ↗](https://playwright.dev/docs/api/class-browser#browser-close) differently from Puppeteer. In Playwright, if the browser was obtained using a `connect` session, the session will disconnect. If the browser was obtained using a `launch` session, the session will close.
+The best way to improve the performance of your Browser Run Worker is to reuse sessions by keeping the browser open after you have finished with it, and connecting to that session each time you have a new request. Playwright handles [`browser.close` ↗︎](https://playwright.dev/docs/api/class-browser#browser-close) differently from Puppeteer. In Playwright, if the browser was obtained using a `connect` session, the session will disconnect. If the browser was obtained using a `launch` session, the session will close.
 
 ```js
 import { env } from "cloudflare:workers";
@@ -453,16 +453,16 @@ You should also be able to access this information in the dashboard, albeit with
 
 ## Playwright API
 
-The full Playwright API can be found at the [Playwright API documentation ↗](https://playwright.dev/docs/api/class-playwright).
+The full Playwright API can be found at the [Playwright API documentation ↗︎](https://playwright.dev/docs/api/class-playwright).
 
 The following capabilities are not yet fully supported, but we’re actively working on them:
 
-- [Playwright Test ↗](https://playwright.dev/docs/test-configuration) except [Assertions ↗](https://playwright.dev/docs/test-assertions)
-- [Components ↗](https://playwright.dev/docs/test-components)
-- [Firefox ↗](https://playwright.dev/docs/api/class-playwright#playwright-firefox), [Android ↗](https://playwright.dev/docs/api/class-android) and [Electron ↗](https://playwright.dev/docs/api/class-electron), as well as different versions of Chrome
-- [Videos ↗](https://playwright.dev/docs/next/videos)
+- [Playwright Test ↗︎](https://playwright.dev/docs/test-configuration) except [Assertions ↗︎](https://playwright.dev/docs/test-assertions)
+- [Components ↗︎](https://playwright.dev/docs/test-components)
+- [Firefox ↗︎](https://playwright.dev/docs/api/class-playwright#playwright-firefox), [Android ↗︎](https://playwright.dev/docs/api/class-android) and [Electron ↗︎](https://playwright.dev/docs/api/class-electron), as well as different versions of Chrome
+- [Videos ↗︎](https://playwright.dev/docs/next/videos)
 
-This is **not an exhaustive list** — expect rapid changes as we work toward broader parity with the original feature set. You can also check [latest test results ↗](https://playwright-full-test-report.pages.dev/) for a granular up to date list of the features that are fully supported.
+This is **not an exhaustive list** — expect rapid changes as we work toward broader parity with the original feature set. You can also check [latest test results ↗︎](https://playwright-full-test-report.pages.dev/) for a granular up to date list of the features that are fully supported.
 
 Was this helpful?
 

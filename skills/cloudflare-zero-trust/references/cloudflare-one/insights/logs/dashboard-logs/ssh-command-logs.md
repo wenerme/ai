@@ -16,7 +16,7 @@ Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 SSH command logs record the commands that users run on infrastructure targets protected by [Access for Infrastructure](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/). Use these logs to audit user activity on your SSH servers and investigate specific sessions.
 
-To view SSH command logs, log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and go to **Insights** > **Logs** > **SSH command logs**.
+To view SSH command logs, log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/) and go to **Insights** > **Logs** > **SSH command logs**.
 
 ## Prerequisites
 
@@ -29,11 +29,11 @@ To generate SSH command logs, you must:
 
 SSH command logs displayed in the dashboard are encrypted using the public key you provided during setup. The logs are not readable in the dashboard — you must download and decrypt them locally. To view the contents of the logs:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Logs** > **SSH command logs**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Insights** > **Logs** > **SSH command logs**.
 2. Filter the logs using the name of your SSH application.
 3. Select the SSH session for which you want to export command logs.
 4. In the side panel, scroll down to **SSH logs** and select **Download**.
-5. Decrypt the log using the [SSH Logging CLI ↗](https://github.com/cloudflare/ssh-log-cli/) and the private key that corresponds to the public key you uploaded.
+5. Decrypt the log using the [SSH Logging CLI ↗︎](https://github.com/cloudflare/ssh-log-cli/) and the private key that corresponds to the public key you uploaded.
 
 ## Log fields
 
@@ -47,7 +47,7 @@ SSH command logs displayed in the dashboard are encrypted using the public key y
 | **Session start datetime** | Timestamp when the SSH session started. |
 | **Session finish datetime** | Timestamp when the SSH session ended. |
 | **Program type** | Type of SSH program: `shell` (interactive terminal), `exec` (single command execution), `x11`, `direct-tcpip`, or `forwarded-tcpip`. Note that `x11`, `direct-tcpip`, and `forwarded-tcpip` correspond to SSH features that are [not currently supported](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/use-cases/ssh/ssh-infrastructure-access/#known-limitations) by Access for Infrastructure. |
-| **Payload** | Captured request/response data in [asciicast v2 ↗](https://docs.asciinema.org/manual/asciicast/v2/) format, a structured terminal recording format. Includes commands for `exec` programs. |
+| **Payload** | Captured request/response data in [asciicast v2 ↗︎](https://docs.asciinema.org/manual/asciicast/v2/) format, a structured terminal recording format. Includes commands for `exec` programs. |
 | **Error** | SSH error message, if an error occurred during the session. |
 
 ## Export SSH logs with Logpush

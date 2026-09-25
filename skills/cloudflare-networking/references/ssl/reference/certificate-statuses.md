@@ -68,13 +68,13 @@ When you use [client certificates](https://developers.cloudflare.com/ssl/client-
 
 ### SSL/TLS
 
-Monitor a certificate's status on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or by using the [Get Certificate Pack endpoint](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/get/).
+Monitor a certificate's status on the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page or by using the [Get Certificate Pack endpoint](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/get/).
 
 For more details on certificate validation, refer to [Domain Control Validation](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/).
 
 ### SSL for SaaS
 
-Monitor a certificate's status on the [**Custom Hostnames** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames) page or by using the [Custom Hostname Details endpoint](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/).
+Monitor a certificate's status on the [**Custom Hostnames** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/custom-hostnames) page or by using the [Custom Hostname Details endpoint](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/get/).
 
 The Custom Hostname Details endpoint returns separate status fields for hostname activation and certificate status. Use the top-level `status` field to monitor hostname activation. Use the nested `ssl.status` field to monitor certificate issuance and deployment.
 

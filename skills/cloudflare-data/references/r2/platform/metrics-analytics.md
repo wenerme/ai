@@ -16,7 +16,7 @@ Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [R2](https://developers.cloudflare.com/r2/) exposes analytics for requests, storage, and bandwidth usage across your buckets.
 
-The metrics displayed for a bucket in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) are queried from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically](#query-via-the-graphql-api) via GraphQL or HTTP client.
+The metrics displayed for a bucket in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) are queried from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically](#query-via-the-graphql-api) via GraphQL or HTTP client.
 
 ## Metrics
 
@@ -51,7 +51,7 @@ Therefore, if you want to query metrics about a bucket which has a specified jur
 
 | Field | Description |
 | --- | --- |
-| bucketName | The bucket this storage value is for. For buckets with a jurisdiction specified, you must include the [jurisdiction ↗](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) followed by an underscore before the bucket name. For example: `eu_your-bucket-name` |
+| bucketName | The bucket this storage value is for. For buckets with a jurisdiction specified, you must include the [jurisdiction ↗︎](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions) followed by an underscore before the bucket name. For example: `eu_your-bucket-name` |
 | payloadSize | The size of the objects in the bucket. |
 | metadataSize | The size of the metadata of the objects in the bucket. |
 | objectCount | The number of objects in the bucket. |

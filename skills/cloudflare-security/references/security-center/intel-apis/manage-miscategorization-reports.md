@@ -19,7 +19,7 @@ This guide will show you how to manage miscategorization of reports. To complete
 1. Create an [API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) if you do not have one already.
 2. Choose **Custom Token**.
 3. Name the token, and grant permissions.
-4. Send a `POST` request to the miscategorization [API endpoint ↗](https://developers.cloudflare.com/api/resources/intel/subresources/miscategorizations/methods/create/). You can find an example below:
+4. Send a `POST` request to the miscategorization [API endpoint ↗︎](https://developers.cloudflare.com/api/resources/intel/subresources/miscategorizations/methods/create/). You can find an example below:
 
 *Example of a POST request to miscategorization APIjson*
 

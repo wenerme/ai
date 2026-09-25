@@ -14,18 +14,18 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/zoom-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [Zoom ↗](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0060673) as a SAML application in Cloudflare One.
+This guide covers how to configure [Zoom ↗︎](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0060673) as a SAML application in Cloudflare One.
 
 ## Prerequisites
 
 - An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
 - Admin access to a Zoom Business, Education, or Enterprise account
-- An [associated domain ↗](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0066259) configured in your Zoom account
-- A [vanity URL ↗](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0061540) configured in your Zoom account
+- An [associated domain ↗︎](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0066259) configured in your Zoom account
+- A [vanity URL ↗︎](https://support.zoom.com/hc/en/article?id=zm_kb&sysparm_article=KB0061540) configured in your Zoom account
 
 ## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application** > **SaaS application**.
 3. For **Application**, select *Zoom*.
 4. For the authentication protocol, select **SAML**.

@@ -24,7 +24,7 @@ Workers AI provides OpenAI-compatible endpoints for [text generation](https://de
 
 Most Workers AI text generation models support the OpenAI Chat Completions API. Embedding models support the OpenAI Embeddings API.
 
-Use the [OpenAI JavaScript SDK ↗](https://github.com/openai/openai-node) by setting the Workers AI base URL, API token, and model name.
+Use the [OpenAI JavaScript SDK ↗︎](https://github.com/openai/openai-node) by setting the Workers AI base URL, API token, and model name.
 
 *OpenAI SDK examplejs*
 

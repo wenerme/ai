@@ -16,9 +16,9 @@ Last updated Mar 3, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 ## Introduction
 
-Cloudflare helps organizations transform their networks by providing secure, high-performance connectivity for on-premises networks, virtual cloud networks and access to SaaS applications. As applications migrate to the cloud, [Cloudflare's SASE ↗](https://www.cloudflare.com/zero-trust/) platform enables businesses to replace traditional on-premise solutions, ensuring secure access, low latency, and automated scalability across distributed environments. This approach reduces reliance on legacy hardware, simplifies IT management, and improves user experience for cloud-based services.
+Cloudflare helps organizations transform their networks by providing secure, high-performance connectivity for on-premises networks, virtual cloud networks and access to SaaS applications. As applications migrate to the cloud, [Cloudflare's SASE ↗︎](https://www.cloudflare.com/zero-trust/) platform enables businesses to replace traditional on-premise solutions, ensuring secure access, low latency, and automated scalability across distributed environments. This approach reduces reliance on legacy hardware, simplifies IT management, and improves user experience for cloud-based services.
 
-Cloudflare One Appliance (formerly Magic WAN Connector) is a physical, or virtual (deployed as a VM on a hypervisor) device which, using [Zero Touch Provisioning ↗](https://en.wikipedia.org/wiki/Zero-touch_provisioning), automatically on-ramps traffic for a local network to Cloudflare, and replaces existing, difficult to manage edge hardware.
+Cloudflare One Appliance (formerly Magic WAN Connector) is a physical, or virtual (deployed as a VM on a hypervisor) device which, using [Zero Touch Provisioning ↗︎](https://en.wikipedia.org/wiki/Zero-touch_provisioning), automatically on-ramps traffic for a local network to Cloudflare, and replaces existing, difficult to manage edge hardware.
 
 Every organization and network is different, and as such there is no one-size-fits-all when it comes to how a Cloudflare One Appliance can be deployed. Therefore, the purpose of this document is to provide a high-level explanation of the deployment options that would make sense to most environments, while also describing the support of a few advanced use cases.
 
@@ -131,8 +131,8 @@ To summarize, Cloudflare One Appliance is a Zero-Touch Provisioning (ZTP) device
 
 ## Related Resources
 
-- [Cloudflare WAN - Cloud-delivered enterprise networking ↗](https://www.cloudflare.com/en-gb/network-services/products/magic-wan/)
-- [Announcing the Cloudflare One Appliance: the easiest on-ramp to your next generation network ↗](https://blog.cloudflare.com/magic-wan-connector/)
+- [Cloudflare WAN - Cloud-delivered enterprise networking ↗︎](https://www.cloudflare.com/en-gb/network-services/products/magic-wan/)
+- [Announcing the Cloudflare One Appliance: the easiest on-ramp to your next generation network ↗︎](https://blog.cloudflare.com/magic-wan-connector/)
 - [Configuring Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)
 
 Was this helpful?

@@ -36,7 +36,7 @@ pnpm create cloudflare@latest my-docusaurus-app --framework=docusaurus
 
 ## What is Docusaurus?
 
-[Docusaurus ↗](https://docusaurus.io/) is an open-source framework for building, deploying, and maintaining documentation websites. It is built on React and provides an intuitive way to create static websites with a focus on documentation.
+[Docusaurus ↗︎](https://docusaurus.io/) is an open-source framework for building, deploying, and maintaining documentation websites. It is built on React and provides an intuitive way to create static websites with a focus on documentation.
 
 Docusaurus is designed to be easy to use and customizable, making it a popular choice for developers and organizations looking to create documentation sites quickly.
 
@@ -60,7 +60,7 @@ Docusaurus is designed to be easy to use and customizable, making it a popular c
 
    What's happening behind the scenes?</summary>
 
-When you run this command, C3 creates a new project directory, initiates <a href="https://docusaurus.io/docs/installation">Docusaurus' official setup tool ↗</a>, and configures the project for Cloudflare. It then offers the option to instantly deploy your application to Cloudflare.</details>
+When you run this command, C3 creates a new project directory, initiates <a href="https://docusaurus.io/docs/installation">Docusaurus' official setup tool ↗︎</a>, and configures the project for Cloudflare. It then offers the option to instantly deploy your application to Cloudflare.</details>
 
 2. **Develop locally.**
 
@@ -114,7 +114,7 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
    		"name": "my-docusaurus-app",
    		// Update to today's date
    		// Set this to today's date
-   		"compatibility_date": "2026-09-22",
+   		"compatibility_date": "2026-09-25",
    		"assets": {
    			"directory": "./build"
    		}
@@ -124,7 +124,7 @@ If your Docusaurus project is entirely pre-rendered (which it usually is), follo
    ```toml
    name = "my-docusaurus-app"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
 
    [assets]
    directory = "./build"

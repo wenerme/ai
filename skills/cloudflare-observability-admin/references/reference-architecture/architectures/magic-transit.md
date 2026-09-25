@@ -24,9 +24,9 @@ This reference architecture is designed for IT or network professionals with som
 
 To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
+- What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗︎](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
 
-- Blog: [Magic Transit makes your network smarter, better, stronger, and cheaper to operate ↗](https://blog.cloudflare.com/magic-transit) (14 minute read)
+- Blog: [Magic Transit makes your network smarter, better, stronger, and cheaper to operate ↗︎](https://blog.cloudflare.com/magic-transit) (14 minute read)
 
 Those who read this reference architecture will learn:
 
@@ -37,7 +37,7 @@ Those who read this reference architecture will learn:
 
 Protecting network infrastructure from DDoS attacks demands a unique combination of strength and speed. Volumetric attacks can easily overwhelm hardware boxes and their bandwidth-constrained Internet links. And most cloud-based solutions redirect traffic to centralized scrubbing centers, which impacts network performance significantly.
 
-Cloudflare Magic Transit provides DDoS protection and traffic acceleration for on-premise, cloud, and hybrid networks. With data centers spanning [hundreds of cities ↗](https://www.cloudflare.com/network/) and offering hundreds of Tbps in mitigation capacity, Magic Transit can detect and mitigate attacks close to their source of origin in under three seconds globally on average — all while routing traffic faster than the public Internet.
+Cloudflare Magic Transit provides DDoS protection and traffic acceleration for on-premise, cloud, and hybrid networks. With data centers spanning [hundreds of cities ↗︎](https://www.cloudflare.com/network/) and offering hundreds of Tbps in mitigation capacity, Magic Transit can detect and mitigate attacks close to their source of origin in under three seconds globally on average — all while routing traffic faster than the public Internet.
 
 ![Figure 1: Magic transit overview](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1212,height=644,format=webp/_astro/magic-transit-ref-arch-1.BqSmsUYf.png "Figure 1: Magic transit overview")
 
@@ -166,7 +166,7 @@ Cloudflare Network Firewall is deployed and configured as part of Magic Transit.
 
 In Cloudflare Network Firewall rules, administrators can match and filter network traffic not only based on the typical 5-tuple (source/destination IP, source/destination port, protocol) information carried in the IP packet header but also other packet information such as IP packet length, IP header length, TTL, etc. In addition, geographical information such as the name of the Cloudflare data center/colo, the region, and the country the data centers are located in can also be used in configuring Network Firewall rules (geo-blocking).
 
-For further details on Cloudflare Network Firewall and its configuration, refer to [Introducing Magic Firewall ↗](https://blog.cloudflare.com/introducing-magic-firewall/) and [Cloudflare Network Firewall documentation](https://developers.cloudflare.com/cloudflare-network-firewall/).
+For further details on Cloudflare Network Firewall and its configuration, refer to [Introducing Magic Firewall ↗︎](https://blog.cloudflare.com/introducing-magic-firewall/) and [Cloudflare Network Firewall documentation](https://developers.cloudflare.com/cloudflare-network-firewall/).
 
 ## A note on always-on and on-demand deployments
 
@@ -180,9 +180,9 @@ Of all approaches and deployment options, the always-on method provides the most
 
 However, depending on the provider, diverting all traffic through the DDoS mitigation provider’s cloud might add latency that is suboptimal for business-critical applications. Cloudflare is architected so that customers do not incur a latency penalty as a result of attacks — even for always-on deployments. Analyzing traffic at the edge is the only way to mitigate at scale without impacting performance.
 
-This is because ingesting traffic via anycast ensures that traffic travels only to the nearest Cloudflare data center for inspection. With data centers in [hundreds of cities worldwide ↗](https://www.cloudflare.com/network/), it is likely to be a short distance. This eliminates the trombone effect.
+This is because ingesting traffic via anycast ensures that traffic travels only to the nearest Cloudflare data center for inspection. With data centers in [hundreds of cities worldwide ↗︎](https://www.cloudflare.com/network/), it is likely to be a short distance. This eliminates the trombone effect.
 
-In many cases, [traffic is faster when routed over Cloudflare ↗](https://www.cloudflare.com/static/360e550c8890054d5e5835efb9fb8dd1/Magic_Transit_protects_networks_while_also_improving_performance__1_.pdf) than over the public Internet. We believe customers should not have to sacrifice performance to achieve comprehensive security.
+In many cases, [traffic is faster when routed over Cloudflare ↗︎](https://www.cloudflare.com/static/360e550c8890054d5e5835efb9fb8dd1/Magic_Transit_protects_networks_while_also_improving_performance__1_.pdf) than over the public Internet. We believe customers should not have to sacrifice performance to achieve comprehensive security.
 
 ## Summary
 
@@ -192,7 +192,7 @@ Cloudflare offers comprehensive network services to connect and protect on-premi
 - Magic Transit comes with a built-in network firewall that helps customers phase out on-premise firewalls and deploy network security as-a-service that scales.
 - In addition to protecting and routing traffic for external-facing services of an enterprise (i.e. north-south Internet-routable traffic), customers can connect and protect east-west “intra-enterprise” internal traffic using Cloudflare WAN.
 
-If you would like to learn more about Magic Transit, Cloudflare WAN, or Cloudflare Network Firewall, [contact us for a demo ↗](https://www.cloudflare.com/magic-transit/).
+If you would like to learn more about Magic Transit, Cloudflare WAN, or Cloudflare Network Firewall, [contact us for a demo ↗︎](https://www.cloudflare.com/magic-transit/).
 
 Was this helpful?
 

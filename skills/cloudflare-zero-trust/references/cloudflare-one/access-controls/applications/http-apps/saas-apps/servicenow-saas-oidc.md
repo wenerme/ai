@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/servicenow-saas-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [ServiceNow ↗](https://docs.servicenow.com/bundle/washingtondc-platform-security/page/integrate/single-sign-on/task/create-OIDC-configuration-SSO.html) as an OIDC application in Cloudflare One.
+This guide covers how to configure [ServiceNow ↗︎](https://docs.servicenow.com/bundle/washingtondc-platform-security/page/integrate/single-sign-on/task/create-OIDC-configuration-SSO.html) as an OIDC application in Cloudflare One.
 
 ## Prerequisites
 
@@ -23,14 +23,14 @@ This guide covers how to configure [ServiceNow ↗](https://docs.servicenow.com/
 
 ## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application** > **SaaS application**.
 3. For **Application**, enter `ServiceNow` and select the corresponding textbox that appears.
 4. For the authentication protocol, select **OIDC**.
 5. Select **Add application**.
 6. In **Scopes**, select the attributes that you want Access to send in the ID token.
 7. In **Redirect URLs**, enter `https://<INSTANCE-NAME>.service-now.com/navpage.do`.
-8. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
+8. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
 9. Copy the **Client secret** and **Client ID**.
 10. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 11. (Optional) In **Experience settings**, configure [App Launcher settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) by turning on **Enable App in App Launcher** and, in **App Launcher URL**, entering `https://<INSTANCE-NAME>.service-now.com`.
@@ -61,7 +61,7 @@ This guide covers how to configure [ServiceNow ↗](https://docs.servicenow.com/
 
 ## 4. Test the integration
 
-For SSO to appear on the login screen, you must have [account recovery ↗](https://docs.servicenow.com/bundle/washingtondc-platform-security/page/integrate/single-sign-on/concept/sso-acct-recovery.html) enabled and configured for at least one admin account. After account recovery is configured, log out of ServiceNow and open an incognito browser window. Go to your ServiceNow URL. Select the SSO name you just configured, which will prompt you to sign in with your identity provider. When the integration is successful, you can go back to the OIDC configuration screen to turn on **Default** and/or **Auto Redirect IDP**.
+For SSO to appear on the login screen, you must have [account recovery ↗︎](https://docs.servicenow.com/bundle/washingtondc-platform-security/page/integrate/single-sign-on/concept/sso-acct-recovery.html) enabled and configured for at least one admin account. After account recovery is configured, log out of ServiceNow and open an incognito browser window. Go to your ServiceNow URL. Select the SSO name you just configured, which will prompt you to sign in with your identity provider. When the integration is successful, you can go back to the OIDC configuration screen to turn on **Default** and/or **Auto Redirect IDP**.
 
 Was this helpful?
 

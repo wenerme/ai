@@ -18,7 +18,7 @@ You can use version overrides to send a request to a specific version of your Wo
 
 ## How to set version overrides
 
-To specify a version override in your request, set the `Cloudflare-Workers-Version-Overrides` header on the request to your Worker. `Cloudflare-Workers-Version-Overrides` is a [Dictionary Structured Header ↗](https://www.rfc-editor.org/rfc/rfc8941#name-dictionaries) that can contain multiple key-value pairs. Each **key** indicates the name of the Worker the override should be applied to. The **value** indicates the version ID that should be used and must be a [String ↗](https://www.rfc-editor.org/rfc/rfc8941#name-strings). For example:
+To specify a version override in your request, set the `Cloudflare-Workers-Version-Overrides` header on the request to your Worker. `Cloudflare-Workers-Version-Overrides` is a [Dictionary Structured Header ↗︎](https://www.rfc-editor.org/rfc/rfc8941#name-dictionaries) that can contain multiple key-value pairs. Each **key** indicates the name of the Worker the override should be applied to. The **value** indicates the version ID that should be used and must be a [String ↗︎](https://www.rfc-editor.org/rfc/rfc8941#name-strings). For example:
 
 ```sh
 curl -s https://example.com -H 'Cloudflare-Workers-Version-Overrides: my-worker-name="dc8dcd28-271b-4367-9840-6c244f84cb40"'
@@ -26,7 +26,7 @@ curl -s https://example.com -H 'Cloudflare-Workers-Version-Overrides: my-worker-
 
 Version must be in current deployment
 
-A version override will only be applied if the specified version is in the current deployment. The versions in the current deployment can be found using the [`wrangler deployments list`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deployments-list) command or on the [**Workers & Pages** page of the Cloudflare dashboard > select your Worker > **Deployments** > **Active Deployment** ↗](https://dash.cloudflare.com/?to=/:account/workers/services/view/:worker/production/deployments).
+A version override will only be applied if the specified version is in the current deployment. The versions in the current deployment can be found using the [`wrangler deployments list`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deployments-list) command or on the [**Workers & Pages** page of the Cloudflare dashboard > select your Worker > **Deployments** > **Active Deployment** ↗︎](https://dash.cloudflare.com/?to=/:account/workers/services/view/:worker/production/deployments).
 
 Workers currently only supports serving **two** different versions in one deployment. Follow the instructions for [gradual deployments](https://developers.cloudflare.com/workers/versions-and-deployments/gradual-deployments/#use-gradual-deployments) to ensure the requested version is in the current deployment. You can set the new version to 0% traffic to avoid normal traffic being routed to it.
 
@@ -35,11 +35,11 @@ Workers currently only supports serving **two** different versions in one deploy
 There are a number of reasons why a request's version override may not be applied. For example:
 
 - The deployment may not contain the specified version. It can take up to a couple of seconds to be available globally after a recent change.
-- The header value may not be a valid [Dictionary ↗](https://www.rfc-editor.org/rfc/rfc8941#name-dictionaries).
+- The header value may not be a valid [Dictionary ↗︎](https://www.rfc-editor.org/rfc/rfc8941#name-dictionaries).
 
 In the case that a request's version override is not applied, the request will be routed according to the percentages set in the gradual deployment configuration.
 
-You can observe the version of your Worker that was invoked using [Observability ↗](https://developers.cloudflare.com/workers/observability/), including in features such as [Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/). Alternatively, if you want to inform clients about the version they ran (e.g. for faster and more transparent debugging), you could use the [version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) and return the version ID in the Worker's response.
+You can observe the version of your Worker that was invoked using [Observability ↗︎](https://developers.cloudflare.com/workers/observability/), including in features such as [Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/). Alternatively, if you want to inform clients about the version they ran (e.g. for faster and more transparent debugging), you could use the [version metadata binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/version-metadata/) and return the version ID in the Worker's response.
 
 ## Smoke test example
 

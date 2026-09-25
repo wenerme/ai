@@ -77,7 +77,7 @@ You can now add this new app to the Prioritized traffic list in your Cloudflare 
 
 You need to configure Prioritized traffic applications for each of your existing sites, as this is a per-site configuration.
 
-1. Log in to the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Cloudflare One Appliance you want to configure > **Edit**.
 4. Select **Traffic Steering**.
@@ -167,7 +167,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 ### Delete an application from Cloudflare One Appliance
 
-1. Log in to the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Appliance you want to configure > **Edit**.
 4. Select **Traffic Steering**.

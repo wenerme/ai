@@ -42,13 +42,13 @@ If you receive these error messages, make sure that:
 
 - You are providing the apex domain (also known as "root domain", e.g. `example.com`) and not a subdomain ( `www.example.com`).
 - Your domain is fully registered and its registration data lists its nameservers.
-- Your domain uses a verified [top-level domain (TLD) ↗](https://publicsuffix.org/list/).
+- Your domain uses a verified [top-level domain (TLD) ↗︎](https://publicsuffix.org/list/).
 
 ---
 
 ## Resolve DNS for apex domain
 
-Before a domain can be added to Cloudflare, the domain must return `NS` records for valid, working nameservers. `NS` records can be checked via third-party online tools such as [https://www.whatsmydns.net ↗](https://www.whatsmydns.net/) or via a command-line terminal using a dig command:
+Before a domain can be added to Cloudflare, the domain must return `NS` records for valid, working nameservers. `NS` records can be checked via third-party online tools such as [https://www.whatsmydns.net ↗︎](https://www.whatsmydns.net/) or via a command-line terminal using a dig command:
 
 ```sh
 dig +short ns cloudflare.com
@@ -62,7 +62,7 @@ ns6.cloudflare.com.
 ns7.cloudflare.com.
 ```
 
-Additionally, the domain must return a valid `SOA` record when queried. `SOA` records can be checked via third-party online tools such as [https://www.whatsmydns.net ↗](https://www.whatsmydns.net/) or via a command-line terminal:
+Additionally, the domain must return a valid `SOA` record when queried. `SOA` records can be checked via third-party online tools such as [https://www.whatsmydns.net ↗︎](https://www.whatsmydns.net/) or via a command-line terminal:
 
 ```sh
 dig +short soa cloudflare.com
@@ -108,11 +108,11 @@ In this case, you need to remove the zone hold if you own the Cloudflare account
 
 If you are not the owner of the Cloudflare account that has the hold on the zone, using an online WHOIS tool might help you finding the owner of a website.
 
-See this [external WHOIS tool ↗](https://www.godaddy.com/whois) or this [other external tool ↗](https://www.whois.com/whois/).
+See this [external WHOIS tool ↗︎](https://www.godaddy.com/whois) or this [other external tool ↗︎](https://www.whois.com/whois/).
 
 The owner might be your hosting provider, or a SaaS service provider.
 
-You can also use the [Cloudflare Forgot Email? ↗](https://dash.cloudflare.com/forgot-email) page, and check the documentation related to the [Forgot Email? feature](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#forgot-your-email-address).
+You can also use the [Cloudflare Forgot Email? ↗︎](https://dash.cloudflare.com/forgot-email) page, and check the documentation related to the [Forgot Email? feature](https://developers.cloudflare.com/fundamentals/user-profiles/change-password-or-email/#forgot-your-email-address).
 
 Was this helpful?
 

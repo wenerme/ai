@@ -80,7 +80,7 @@ Only available to customers on Business and Enterprise plans.
 
    Note
 
-   The **Hash** value shown in the script details for each script version is an internal identifier. This differs from the file content hash defined by <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">Subresource Integrity (SRI) ↗</a> that is required to be used in <a href="https://developers.cloudflare.com/client-side-security/rules/">content security rules</a>.</details>
+   The **Hash** value shown in the script details for each script version is an internal identifier. This differs from the file content hash defined by <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity">Subresource Integrity (SRI) ↗︎</a> that is required to be used in <a href="https://developers.cloudflare.com/client-side-security/rules/">content security rules</a>.</details>
 
 <details><summary>
 
@@ -103,7 +103,7 @@ Only available to customers on Business and Enterprise plans.
      - **Secure**: The value of the <code>Secure</code> cookie attribute.
      - **Same site**: The value of the <code>SameSite</code> cookie attribute.
 
-   Except for **Domain** and **Path**, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">standard cookie attributes ↗</a> are only available for first-party cookies, where Cloudflare detected the <code>set-cookie</code> HTTP response header in HTTP traffic.</details>
+   Except for **Domain** and **Path**, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">standard cookie attributes ↗︎</a> are only available for first-party cookies, where Cloudflare detected the <code>set-cookie</code> HTTP response header in HTTP traffic.</details>
 
 ## Export data
 

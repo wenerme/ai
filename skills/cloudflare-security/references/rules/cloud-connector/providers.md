@@ -51,14 +51,14 @@ The SSL setting applied to requests between Cloud Connector and AWS S3 depends o
 
 ### Get the bucket URL
 
-1. Go to the [Amazon S3 console ↗](https://console.aws.amazon.com/s3/) and select **Buckets** in the navigation pane.
+1. Go to the [Amazon S3 console ↗︎](https://console.aws.amazon.com/s3/) and select **Buckets** in the navigation pane.
 2. Select the bucket name.
 3. Go to the **Properties** tab.
 4. Select the **Static Website Hosting** card. The **Endpoint** field shows your bucket URL.
 
-For more information, refer to the [Amazon S3 documentation ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EnableWebsiteHosting.html).
+For more information, refer to the [Amazon S3 documentation ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EnableWebsiteHosting.html).
 
-Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/).
+Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗︎](https://www.cloudflare.com/ips/).
 
 ## Google Cloud Platform - Cloud Storage
 
@@ -74,7 +74,7 @@ Cloud Connector supports both subdomain and URI path-style URLs:
 
 ### Get the bucket URL
 
-1. Go to the [Google Cloud console ↗](https://console.cloud.google.com/storage/browser) and select **Buckets**.
+1. Go to the [Google Cloud console ↗︎](https://console.cloud.google.com/storage/browser) and select **Buckets**.
 2. Select the bucket name.
 3. For one of the files already in the bucket, select the link icon in the **Public** column to copy the file's public URL to the clipboard. The file URL will have the following format:
 
@@ -83,9 +83,9 @@ Cloud Connector supports both subdomain and URI path-style URLs:
    To obtain the subdomain bucket URL, refactor the file URL to `<BUCKET_NAME>.storage.googleapis.com` format.
     To obtain the URI path bucket URL, remove `https://` and `/<BUCKET_NAME>/<OBJECT_NAME>` from the file URL.
 
-If the files in your bucket are not publicly accessible, you must change the bucket permissions. For details, refer to the [Google Cloud Storage documentation ↗](https://cloud.google.com/storage/docs/access-control/making-data-public#buckets).
+If the files in your bucket are not publicly accessible, you must change the bucket permissions. For details, refer to the [Google Cloud Storage documentation ↗︎](https://cloud.google.com/storage/docs/access-control/making-data-public#buckets).
 
-Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/).
+Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗︎](https://www.cloudflare.com/ips/).
 
 ## Microsoft Azure - Blob Storage
 
@@ -98,13 +98,13 @@ For Azure Blog Storage, Cloud Connector supports only subdomain URLs like `<BUCK
 
 ### Get the bucket URL
 
-1. Go to the [Azure portal ↗](https://portal.azure.com/) and select your storage account.
+1. Go to the [Azure portal ↗︎](https://portal.azure.com/) and select your storage account.
 2. In the menu pane, under **Settings**, select **Endpoints**.
 3. Get your bucket URL from the **Blob service** endpoint or the **Static website** endpoint.
 
-If the blob container is not configured for public access, you must change the container settings. For details, refer to the [Azure Storage documentation ↗](https://learn.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure?tabs=portal).
+If the blob container is not configured for public access, you must change the container settings. For details, refer to the [Azure Storage documentation ↗︎](https://learn.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure?tabs=portal).
 
-Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/).
+Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗︎](https://www.cloudflare.com/ips/).
 
 ## Oracle Cloud Infrastructure Object Storage
 
@@ -126,9 +126,9 @@ For path-style endpoints, include the bucket name in the incoming request path. 
 
 For virtual-hosted endpoints, the bucket name is part of the hostname. An incoming request to `https://example.com/index.html` maps to `/index.html` on that bucket. OCI requires virtual-hosted bucket names to use a regional scope and a DNS-compatible name that is unique within the region.
 
-For more information, refer to [Object Storage Dedicated Endpoints ↗](https://docs.oracle.com/en-us/iaas/Content/Object/Concepts/dedicatedendpoints.htm), [Amazon S3 Compatibility API Hosted Style Support in Object Storage ↗](https://docs.oracle.com/en-us/iaas/Content/Object/s3-virtual-style.htm), and [Changing an Object Storage Bucket's Visibility ↗](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/managingbuckets_topic-To_change_the_visibility_of_a_bucket.htm).
+For more information, refer to [Object Storage Dedicated Endpoints ↗︎](https://docs.oracle.com/en-us/iaas/Content/Object/Concepts/dedicatedendpoints.htm), [Amazon S3 Compatibility API Hosted Style Support in Object Storage ↗︎](https://docs.oracle.com/en-us/iaas/Content/Object/s3-virtual-style.htm), and [Changing an Object Storage Bucket's Visibility ↗︎](https://docs.oracle.com/en-us/iaas/Content/Object/Tasks/managingbuckets_topic-To_change_the_visibility_of_a_bucket.htm).
 
-Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips/).
+Once you configure Cloud Connector with your storage provider's public bucket, you may wish that only Cloudflare can access the objects in that bucket. To achieve this, check your provider's documentation on how to create a policy that only allows incoming requests from [Cloudflare IP addresses ↗︎](https://www.cloudflare.com/ips/).
 
 Was this helpful?
 

@@ -14,14 +14,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Below is an example of using [PySpark ↗](https://spark.apache.org/docs/latest/api/python/index.html) to connect to R2 Data Catalog.
+Below is an example of using [PySpark ↗︎](https://spark.apache.org/docs/latest/api/python/index.html) to connect to R2 Data Catalog.
 
 ## Prerequisites
 
-- Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
+- Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
 - [Create an R2 bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/) and [enable the data catalog](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/#enable-r2-data-catalog-on-a-bucket).
 - [Create an R2 API token](https://developers.cloudflare.com/r2/api/tokens/) with both [R2 and data catalog permissions](https://developers.cloudflare.com/r2/api/tokens/#permissions).
-- Install the [PySpark ↗](https://spark.apache.org/docs/latest/api/python/getting_started/install.html) library.
+- Install the [PySpark ↗︎](https://spark.apache.org/docs/latest/api/python/getting_started/install.html) library.
 
 ## Example usage
 

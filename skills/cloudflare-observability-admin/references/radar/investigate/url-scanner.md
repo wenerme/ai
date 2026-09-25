@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/url-scanner/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-To better understand Internet usage around the world, use Cloudflare's URL Scanner. With Cloudflare's URL Scanner, you have the ability to investigate the details of a domain, IP, URL, or ASN. Cloudflare's URL Scanner is available in the Security Center of the Cloudflare dashboard, [Cloudflare Radar ↗](https://radar.cloudflare.com/scan), and the Cloudflare [API](https://developers.cloudflare.com/api/resources/url_scanner/).
+To better understand Internet usage around the world, use Cloudflare's URL Scanner. With Cloudflare's URL Scanner, you have the ability to investigate the details of a domain, IP, URL, or ASN. Cloudflare's URL Scanner is available in the Security Center of the Cloudflare dashboard, [Cloudflare Radar ↗︎](https://radar.cloudflare.com/scan), and the Cloudflare [API](https://developers.cloudflare.com/api/resources/url_scanner/).
 
 ## Use the API
 
@@ -35,7 +35,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/urlscanner/v2/s
 }'
 ```
 
-By default, the report will have a `Public` visibility level, which means it will appear in the [recent scans ↗](https://radar.cloudflare.com/scan#recent-scans) list and in search results. It will also include a single screenshot with desktop resolution.
+By default, the report will have a `Public` visibility level, which means it will appear in the [recent scans ↗︎](https://radar.cloudflare.com/scan#recent-scans) list and in search results. It will also include a single screenshot with desktop resolution.
 
 A successful response will have a status code of `200` and be similar to the following:
 
@@ -49,7 +49,7 @@ A successful response will have a status code of `200` and be similar to the fol
 }
 ```
 
-You can submit up to 100 URLs at the same time via the [API ↗](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/bulk_create/).
+You can submit up to 100 URLs at the same time via the [API ↗︎](https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/bulk_create/).
 
 The `uuid` property in the response above identifies the scan and will be required when fetching the scan report.
 
@@ -72,9 +72,9 @@ Here's an example request body with some custom configuration options:
 }
 ```
 
-Above, the visibility level is set as `Unlisted`, which means that the scan report won't be included in the [recent scans ↗](https://radar.cloudflare.com/scan#recent-scans) list nor in search results. In effect, only users with knowledge of the scan ID will be able to access it.
+Above, the visibility level is set as `Unlisted`, which means that the scan report won't be included in the [recent scans ↗︎](https://radar.cloudflare.com/scan#recent-scans) list nor in search results. In effect, only users with knowledge of the scan ID will be able to access it.
 
-There will also be three screenshots taken of the webpage, one per target device type. The [`User-Agent` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent) will be set as "XXX-my-user-agent". Note that you can set any custom HTTP header, including [Authorization ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Authorization).
+There will also be three screenshots taken of the webpage, one per target device type. The [`User-Agent` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent) will be set as "XXX-my-user-agent". Note that you can set any custom HTTP header, including [Authorization ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Authorization).
 
 Header
 
@@ -94,7 +94,7 @@ The response will include, among others, the following top properties:
 - `data.cookies` - Cookies set by the page.
 - `data.globals` - Non-standard JavaScript global variables.
 - `data.console` - Console logs.
-- `data.performance` - Timings as given by the [`PerformanceNavigationTiming` ↗](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming) interface.
+- `data.performance` - Timings as given by the [`PerformanceNavigationTiming` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming) interface.
 - `meta` - Meta processors output including detected technologies, domain and URL categories, rank, geolocation information, and others.
 - `lists.ips` - IPs contacted.
 - `lists.asns` - AS Numbers contacted.
@@ -111,8 +111,8 @@ Some examples of more specific properties include:
 - `task.status` - Current scan status, for example, `Queued`, `InProgress`, or `Finished`.
 - `meta.processors.domainCategories` - Cloudflare categories of the main hostname contacted.
 - `meta.processors.phishing` - What kind of phishing, if any, was detected.
-- `meta.processors.radarRank` - [Cloudflare Radar Rank ↗](http://blog.cloudflare.com/radar-domain-rankings/) of the main hostname contacted.
-- `meta.processors.wappa` - The kind of technologies detected as being in use by the website, with the help of [Wappalyzer ↗](https://github.com/Lissy93/wapalyzer).
+- `meta.processors.radarRank` - [Cloudflare Radar Rank ↗︎](http://blog.cloudflare.com/radar-domain-rankings/) of the main hostname contacted.
+- `meta.processors.wappa` - The kind of technologies detected as being in use by the website, with the help of [Wappalyzer ↗︎](https://github.com/Lissy93/wapalyzer).
 - `page.url` - URL of the primary request, after all HTTP redirects.
 - `page.country` - Country name from geolocation data associated with the main IP address contacted.
 - `page.history` - Main page history, including any HTTP redirects.
@@ -175,7 +175,7 @@ To scan a URL based on your geographic location:
 2. Go to **Location** > Select which country to scan the URL from.
 3. Select **Scan now**.
 
-You can also use the [API ↗](<https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/create/#(params)%20default%20%3E%20(param)%20account_id%20%3E%20>) to scan a URL from a specific location.
+You can also use the [API ↗︎](<https://developers.cloudflare.com/api/resources/url_scanner/subresources/scans/methods/create/#(params)%20default%20%3E%20(param)%20account_id%20%3E%20>) to scan a URL from a specific location.
 
 In Security Center, you can retrieve pre-filtered information by:
 

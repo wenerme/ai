@@ -26,14 +26,14 @@ Gateway will display a global block page in the browser of any user whose traffi
 
 To configure the global block page:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** > **Custom pages**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Reusable components** > **Custom pages**.
 2. Under **Account Gateway block page**, Gateway will display the current block page setting. Select **Manage**.
 3. Choose whether to use the [default Gateway block page](#use-the-default-block-page), a [URL redirect](#redirect-to-a-block-page), or a [custom Gateway block page](#customize-the-block-page).
 4. Select **Save**.
 
 ### Use the default block page
 
-When you choose **Default Gateway block page**, Gateway will display a [block page hosted by Cloudflare ↗](https://blocked.teams.cloudflare.com/). This is the default option for all traffic blocked by Gateway.
+When you choose **Default Gateway block page**, Gateway will display a [block page hosted by Cloudflare ↗︎](https://blocked.teams.cloudflare.com/). This is the default option for all traffic blocked by Gateway.
 
 ### Redirect to a block page
 
@@ -41,7 +41,7 @@ Instead of displaying the Cloudflare block page, you can configure Gateway to re
 
 To redirect users to a non-Cloudflare block page:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** > **Custom pages**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Reusable components** > **Custom pages**.
 2. Under **Account Gateway block page**, select **Manage**.
 3. Choose **URL redirect**.
 4. Enter the URL you want to redirect blocked traffic to.
@@ -96,7 +96,7 @@ You can customize the Cloudflare-hosted block page by making global changes that
 
 To customize your block page:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Custom pages**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Custom pages**.
 2. Under **Account Gateway block page**, select **Customize**.
 3. Choose **Custom Gateway block page**. Gateway will display a preview of your custom block page. Available customizations include:
    - Your organization's name
@@ -107,9 +107,9 @@ To customize your block page:
    - Background color
 4. Select **Save**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. In [`cloudflare_zero_trust_gateway_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings), configure the `block_page` argument with your customizations:
+2. In [`cloudflare_zero_trust_gateway_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_gateway_settings), configure the `block_page` argument with your customizations:
 
    ```tf
    resource "cloudflare_zero_trust_gateway_settings" "team_name" {
@@ -159,7 +159,7 @@ For DNS Block policies, you will need to turn on the block page for each policy 
 
 To turn on the block page or override your global block page setting for an individual policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **DNS**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **DNS**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
 3. Under **Configure policy settings**, turn on **Modify Gateway block behavior**.
 4. Choose your block behavior:
@@ -170,7 +170,7 @@ To turn on the block page or override your global block page setting for an indi
 
 Depending on your settings, Gateway will display a block page in your users' browsers or redirect them to a specified URL when they are blocked by this policy.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **HTTP**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **HTTP**.
 2. Select **Add a policy** to create a new policy, or choose the policy you want to customize and select **Edit**. You can only edit the block page for policies with a Block action.
 3. Under **Configure policy settings**, go to **Modify Gateway block behavior**.
 4. Choose your block behavior:
@@ -198,9 +198,9 @@ To block the resolution of queries for DNS records with types other than `A` or 
 
 ### Third-party filtering conflict
 
-Gateway will not properly filter traffic sent through third-party VPNs or other Internet filtering software, such as [iCloud Private Relay ↗](https://support.apple.com/102602) or [Google Chrome IP Protection ↗](https://github.com/GoogleChrome/ip-protection#ip-protection). To ensure your DNS policies apply to your traffic, Cloudflare recommends turning off software that may interfere with Gateway.
+Gateway will not properly filter traffic sent through third-party VPNs or other Internet filtering software, such as [iCloud Private Relay ↗︎](https://support.apple.com/102602) or [Google Chrome IP Protection ↗︎](https://github.com/GoogleChrome/ip-protection#ip-protection). To ensure your DNS policies apply to your traffic, Cloudflare recommends turning off software that may interfere with Gateway.
 
-To turn off iCloud Private Relay, refer to the Apple user guides for [macOS ↗](https://support.apple.com/guide/mac-help/use-icloud-private-relay-mchlecadabe0/) or [iOS ↗](https://support.apple.com/guide/iphone/protect-web-browsing-icloud-private-relay-iph499d287c2/).
+To turn off iCloud Private Relay, refer to the Apple user guides for [macOS ↗︎](https://support.apple.com/guide/mac-help/use-icloud-private-relay-mchlecadabe0/) or [iOS ↗︎](https://support.apple.com/guide/iphone/protect-web-browsing-icloud-private-relay-iph499d287c2/).
 
 ### Data center and IP address matching
 

@@ -54,7 +54,7 @@ However, the following products have limited capabilities with gRPC requests:
 
 To change the **gRPC** setting in the dashboard:
 
-1. Log in to your [Cloudflare account ↗](https://dash.cloudflare.com) and go to a specific domain.
+1. Log in to your [Cloudflare account ↗︎](https://dash.cloudflare.com) and go to a specific domain.
 2. Go to **Network**.
 3. For **gRPC**, switch the toggle to **On**.
 

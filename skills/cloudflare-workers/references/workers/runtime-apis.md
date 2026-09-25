@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [Workers runtime ↗](https://blog.cloudflare.com/workerd-open-source-workers-runtime/) is designed to be [JavaScript standards compliant ↗](https://ecma-international.org/publications-and-standards/standards/ecma-262/) and web-interoperable. Wherever possible, it uses web platform APIs, so that code can be reused across client and server, as well as across [WinterCG ↗](https://wintercg.org/) JavaScript runtimes.
+The [Workers runtime ↗︎](https://blog.cloudflare.com/workerd-open-source-workers-runtime/) is designed to be [JavaScript standards compliant ↗︎](https://ecma-international.org/publications-and-standards/standards/ecma-262/) and web-interoperable. Wherever possible, it uses web platform APIs, so that code can be reused across client and server, as well as across [WinterCG ↗︎](https://wintercg.org/) JavaScript runtimes.
 
 [Workers runtime features](https://developers.cloudflare.com/workers/runtime-apis/) are [compatible with a subset of Node.js APIs](https://developers.cloudflare.com/workers/runtime-apis/nodejs) and the ability to set a [compatibility date or compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-dates/).
 

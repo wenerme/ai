@@ -18,7 +18,7 @@ This guide will instruct you through setting up and deploying your first Workers
 
 ## Prerequisites
 
-Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
+Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
 
 ## 1. Get API token and Account ID
 

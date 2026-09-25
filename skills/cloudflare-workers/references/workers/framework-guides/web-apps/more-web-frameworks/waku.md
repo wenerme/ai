@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/waku/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this guide, you will create a new [Waku ↗](https://waku.gg/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)). Waku is a minimal React framework built for [React 19 ↗](https://react.dev/blog/2024/12/05/react-19) and [React Server Components ↗](https://react.dev/reference/rsc/server-components). The use of Server Components is completely optional. It can be configured to run Server Components during build and output static HTML or it can be configured to run with dynamic React server rendering. It is built on top of [Hono ↗](https://hono.dev/) and [Vite ↗](https://vite.dev/).
+In this guide, you will create a new [Waku ↗︎](https://waku.gg/) application and deploy to Cloudflare Workers (with the new [Workers Assets](https://developers.cloudflare.com/workers/static-assets/)). Waku is a minimal React framework built for [React 19 ↗︎](https://react.dev/blog/2024/12/05/react-19) and [React Server Components ↗︎](https://react.dev/reference/rsc/server-components). The use of Server Components is completely optional. It can be configured to run Server Components during build and output static HTML or it can be configured to run with dynamic React server rendering. It is built on top of [Hono ↗︎](https://hono.dev/) and [Vite ↗︎](https://vite.dev/).
 
 Already have a Waku project?
 
@@ -62,7 +62,7 @@ Wrangler handles configuration automatically
 
 ## 1. Set up a new project
 
-Use the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Waku's official setup tool, and provide the option to deploy instantly.
+Use the [`create-cloudflare` ↗︎](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Waku's official setup tool, and provide the option to deploy instantly.
 
 To use `create-cloudflare` to create a new Waku project with Workers Assets, run the following command:
 
@@ -136,7 +136,7 @@ pnpm run deploy
 
 ## Bindings
 
-Your Waku application can be fully integrated with the Cloudflare Developer Platform, in both local development and in production, by using product bindings. The [Waku Cloudflare documentation ↗](https://waku.gg/guides/cloudflare#accessing-cloudflare-bindings-execution-context-and-request-response-objects) provides information about configuring bindings and how you can access them in your React Server Components.
+Your Waku application can be fully integrated with the Cloudflare Developer Platform, in both local development and in production, by using product bindings. The [Waku Cloudflare documentation ↗︎](https://waku.gg/guides/cloudflare#accessing-cloudflare-bindings-execution-context-and-request-response-objects) provides information about configuring bindings and how you can access them in your React Server Components.
 
 ## Static assets
 

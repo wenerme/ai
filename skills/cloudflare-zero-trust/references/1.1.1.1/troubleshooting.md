@@ -56,7 +56,7 @@ Caution
 
 The network information command reveals your IP address. Only include this in reports to Cloudflare if you are comfortable sharing this information.
 
-For additional analysis, you can generate a [DNSViz ↗](http://dnsviz.net/) report for the domain in question.
+For additional analysis, you can generate a [DNSViz ↗︎](http://dnsviz.net/) report for the domain in question.
 
 ## Connectivity and routing issues
 
@@ -147,9 +147,9 @@ If your traceroute fails at the first hop (the first network device after your c
 
 ## Additional resources
 
-- [1.1.1.1 DNS Resolver homepage ↗](https://1.1.1.1)
+- [1.1.1.1 DNS Resolver homepage ↗︎](https://1.1.1.1)
 - [DNS over TLS documentation](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/)
-- [Diagnostic tool ↗](https://one.one.one.one/help/)
+- [Diagnostic tool ↗︎](https://one.one.one.one/help/)
 
 Was this helpful?
 

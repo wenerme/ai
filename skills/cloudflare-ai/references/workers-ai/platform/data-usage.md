@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/platform/data-usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare processes certain customer data in order to provide the Workers AI service, subject to our [Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/) and [Self-Serve Subscription Agreement ↗](https://www.cloudflare.com/terms/) or [Enterprise Subscription Agreement ↗](https://www.cloudflare.com/enterpriseterms/) (as applicable).
+Cloudflare processes certain customer data in order to provide the Workers AI service, subject to our [Privacy Policy ↗︎](https://www.cloudflare.com/privacypolicy/) and [Self-Serve Subscription Agreement ↗︎](https://www.cloudflare.com/terms/) or [Enterprise Subscription Agreement ↗︎](https://www.cloudflare.com/enterpriseterms/) (as applicable).
 
 Cloudflare neither creates nor trains the AI models made available on Workers AI. The models constitute Third-Party Services and may be subject to open source or other license terms that apply between you and the model provider. Be sure to review the license terms applicable to each model (if any).
 

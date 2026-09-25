@@ -84,17 +84,17 @@ https://customer-f33zs165nr7gyfy4.cloudflarestream.com/6b9e68b07dfee8cc2d116e4c5
 
 ## Play live video in native apps with less than 1 second latency
 
-If you need ultra low latency, and your users view live video in native apps, you can stream live video with [**glass-to-glass latency of less than 1 second** ↗](https://blog.cloudflare.com/magic-hdmi-cable/), by using SRT or RTMPS for playback.
+If you need ultra low latency, and your users view live video in native apps, you can stream live video with [**glass-to-glass latency of less than 1 second** ↗︎](https://blog.cloudflare.com/magic-hdmi-cable/), by using SRT or RTMPS for playback.
 
 ![Diagram showing SRT and RTMPS playback via the Cloudflare Network](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1178,height=801,format=webp/_astro/stream-rtmps-srt-playback-magic-hdmi-cable.D_FiXuDG.png)
 
-SRT and RTMPS playback is built into [ffmpeg ↗](https://ffmpeg.org/). You will need to integrate ffmpeg with your own video player —  neither [AVPlayer (iOS)](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/ios/) nor [ExoPlayer (Android)](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/android/) natively support SRT or RTMPS playback.
+SRT and RTMPS playback is built into [ffmpeg ↗︎](https://ffmpeg.org/). You will need to integrate ffmpeg with your own video player —  neither [AVPlayer (iOS)](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/ios/) nor [ExoPlayer (Android)](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/android/) natively support SRT or RTMPS playback.
 
 Note
 
 Stream only supports the SRT caller mode, which is responsible for broadcasting a live stream after a connection is established.
 
-We recommend using [ffmpeg-kit ↗](https://github.com/arthenica/ffmpeg-kit) as a cross-platform wrapper for ffmpeg.
+We recommend using [ffmpeg-kit ↗︎](https://github.com/arthenica/ffmpeg-kit) as a cross-platform wrapper for ffmpeg.
 
 ### Examples
 

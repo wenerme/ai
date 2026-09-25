@@ -14,17 +14,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/docusign-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [Docusign ↗](https://support.docusign.com/s/document-item?bundleId=rrf1583359212854&topicId=ozd1583359139126.html) as a SAML application in Cloudflare One.
+This guide covers how to configure [Docusign ↗︎](https://support.docusign.com/s/document-item?bundleId=rrf1583359212854&topicId=ozd1583359139126.html) as a SAML application in Cloudflare One.
 
 ## Prerequisites
 
 - An [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) configured in Cloudflare One
 - Admin access to a Docusign account that has Single Sign-On available
-- A [domain ↗](https://support.docusign.com/s/document-item?bundleId=rrf1583359212854&topicId=gso1583359141256.html) verified in Docusign
+- A [domain ↗︎](https://support.docusign.com/s/document-item?bundleId=rrf1583359212854&topicId=gso1583359141256.html) verified in Docusign
 
 ## 1. Create the Access for SaaS application
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **SaaS application**.
 4. Use the following configuration:

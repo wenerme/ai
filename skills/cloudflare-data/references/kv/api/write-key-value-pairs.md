@@ -126,7 +126,7 @@ An `expiration` setting on a key will result in that key being deleted, even in 
 
 There are two ways to specify when a key should expire:
 
-- Set a key's expiration using an absolute time specified in a number of [seconds since the UNIX epoch ↗](https://en.wikipedia.org/wiki/Unix_time). For example, if you wanted a key to expire at 12:00AM UTC on April 1, 2019, you would set the key’s expiration to `1554076800`.
+- Set a key's expiration using an absolute time specified in a number of [seconds since the UNIX epoch ↗︎](https://en.wikipedia.org/wiki/Unix_time). For example, if you wanted a key to expire at 12:00AM UTC on April 1, 2019, you would set the key’s expiration to `1554076800`.
 - Set a key's expiration time to live (TTL) using a relative number of seconds from the current time. For example, if you wanted a key to expire 10 minutes after creating it, you would set its expiration TTL to `600`.
 
 Expiration targets that are less than 60 seconds into the future are not supported. This is true for both expiration methods.

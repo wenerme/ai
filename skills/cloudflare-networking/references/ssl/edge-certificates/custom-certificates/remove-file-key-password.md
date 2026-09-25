@@ -55,7 +55,7 @@ Windows
 
 </summary>
 
-1. Go to <a href="https://indy.fulgan.com/SSL/">https://indy.fulgan.com/SSL/ ↗</a> and download the latest version of OpenSSL for your x86 or x86\_64 operating system.
+1. Go to <a href="https://indy.fulgan.com/SSL/">https://indy.fulgan.com/SSL/ ↗︎</a> and download the latest version of OpenSSL for your x86 or x86\_64 operating system.
 2. Open the <code>.zip</code> file and extract it.
 3. Select **openssl.exe**.
 4. In the command window that appears, run:

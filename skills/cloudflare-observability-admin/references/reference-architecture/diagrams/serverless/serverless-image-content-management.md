@@ -28,14 +28,14 @@ The servicing of images to requesting clients is secured by link signature, resi
 
 | Product | Function |
 | --- | --- |
-| [DDoS ↗](https://www.cloudflare.com/application-services/products/bot-management/) | Volumetric attack protection |
-| [Bot Management ↗](https://www.cloudflare.com/ddos/) | Protection against scraping and general sophisticated automated abuse |
-| [Web Application Firewall ↗](https://www.cloudflare.com/application-services/products/waf/) | Protection against web threats |
-| [CDN ↗](https://www.cloudflare.com/application-services/products/cdn/) | Cache spreading of the images |
-| [Optimization ↗](https://www.cloudflare.com/application-services/products/website-optimization/) | Compression and acceleration of the image delivery |
-| [Workers ↗](https://workers.cloudflare.com/) | Compute of the several serverless micro services |
-| [AI ↗](https://ai.cloudflare.com/) | Image classification |
-| [R2 ↗](https://www.cloudflare.com/developer-platform/r2/) | S3-type object-storage platform |
+| [DDoS ↗︎](https://www.cloudflare.com/application-services/products/bot-management/) | Volumetric attack protection |
+| [Bot Management ↗︎](https://www.cloudflare.com/ddos/) | Protection against scraping and general sophisticated automated abuse |
+| [Web Application Firewall ↗︎](https://www.cloudflare.com/application-services/products/waf/) | Protection against web threats |
+| [CDN ↗︎](https://www.cloudflare.com/application-services/products/cdn/) | Cache spreading of the images |
+| [Optimization ↗︎](https://www.cloudflare.com/application-services/products/website-optimization/) | Compression and acceleration of the image delivery |
+| [Workers ↗︎](https://workers.cloudflare.com/) | Compute of the several serverless micro services |
+| [AI ↗︎](https://ai.cloudflare.com/) | Image classification |
+| [R2 ↗︎](https://www.cloudflare.com/developer-platform/r2/) | S3-type object-storage platform |
 | [KV](https://developers.cloudflare.com/kv/) | Image metadata storage |
 
 ## Getting started
@@ -70,7 +70,7 @@ A [Cloudflare Worker](https://developers.cloudflare.com/workers/) script meticul
 
 ### 6. Image classification
 
-With [Cloudflare AI ↗](https://ai.cloudflare.com/) at its core, our [image classification](https://developers.cloudflare.com/workers-ai/models/) inference model will rapidly inspect each incoming image, classifying them in real-time. This cutting-edge technology allows us to streamline the process of moderating content, significantly reducing the need for a dedicated team to sift through and review every submission.
+With [Cloudflare AI ↗︎](https://ai.cloudflare.com/) at its core, our [image classification](https://developers.cloudflare.com/workers-ai/models/) inference model will rapidly inspect each incoming image, classifying them in real-time. This cutting-edge technology allows us to streamline the process of moderating content, significantly reducing the need for a dedicated team to sift through and review every submission.
 
 Was this helpful?
 

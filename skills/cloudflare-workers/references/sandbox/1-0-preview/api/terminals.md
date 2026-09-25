@@ -266,7 +266,7 @@ For the full Worker + xterm.js path, refer to [Terminals](https://developers.clo
 
 ## Client helper: `@cloudflare/sandbox/xterm`
 
-`SandboxAddon` integrates [xterm.js ↗](https://xtermjs.org/) with preview terminals.
+`SandboxAddon` integrates [xterm.js ↗︎](https://xtermjs.org/) with preview terminals.
 
 ```js
 import { SandboxAddon } from "@cloudflare/sandbox/xterm";

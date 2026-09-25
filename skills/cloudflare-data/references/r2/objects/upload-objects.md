@@ -880,9 +880,9 @@ Refer to R2's [S3 API documentation](https://developers.cloudflare.com/r2/api/s3
 
 ### Rclone
 
-[Rclone ↗](https://rclone.org/) is a command-line tool for managing files on cloud storage. Rclone works well for uploading multiple files from your local machine or copying data from other cloud storage providers.
+[Rclone ↗︎](https://rclone.org/) is a command-line tool for managing files on cloud storage. Rclone works well for uploading multiple files from your local machine or copying data from other cloud storage providers.
 
-To use rclone, install it onto your machine using their official documentation - [Install rclone ↗](https://rclone.org/install/).
+To use rclone, install it onto your machine using their official documentation - [Install rclone ↗︎](https://rclone.org/install/).
 
 Upload files with the `rclone copy` command:
 
