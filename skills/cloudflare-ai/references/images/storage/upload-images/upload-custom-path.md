@@ -20,7 +20,7 @@ Custom paths support:
 
 - Up to 1,024 characters.
 - Any number of subpaths.
-- The [UTF-8 encoding standard ↗](https://en.wikipedia.org/wiki/UTF-8) for characters.
+- The [UTF-8 encoding standard ↗︎](https://en.wikipedia.org/wiki/UTF-8) for characters.
 
 Note
 

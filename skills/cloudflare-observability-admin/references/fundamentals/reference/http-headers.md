@@ -20,7 +20,7 @@ Cloudflare passes all HTTP request headers to your origin web server and adds ad
 
 Note
 
-Cloudflare may remove HTTP request headers with names considered invalid [according to NGINX ↗](https://nginx.org/en/docs/http/ngx_http_core_module.html#ignore_invalid_headers) — for example, header names containing a `.` (dot) character.
+Cloudflare may remove HTTP request headers with names considered invalid [according to NGINX ↗︎](https://nginx.org/en/docs/http/ngx_http_core_module.html#ignore_invalid_headers) — for example, header names containing a `.` (dot) character.
 
 ### Accept-Encoding
 
@@ -54,7 +54,7 @@ If **Pseudo IPv4** is set to `Overwrite Headers` - Cloudflare overwrites the exi
 
 ### CF-EW-Via
 
-This header is used for loop detection, similar to the `CDN-Loop` [header ↗](https://blog.cloudflare.com/preventing-request-loops-using-cdn-loop/).
+This header is used for loop detection, similar to the `CDN-Loop` [header ↗︎](https://blog.cloudflare.com/preventing-request-loops-using-cdn-loop/).
 
 ### CF-Pseudo-IPv4
 
@@ -112,7 +112,7 @@ Enterprise customers can see all requests via [Cloudflare Logs](https://develope
 
 The `CF-IPCountry` header contains a two-character country code of the originating visitor's country.
 
-Besides the [ISO-3166-1 alpha-2 codes ↗](https://www.iso.org/iso-3166-country-codes.html), Cloudflare uses the following special country codes:
+Besides the [ISO-3166-1 alpha-2 codes ↗︎](https://www.iso.org/iso-3166-country-codes.html), Cloudflare uses the following special country codes:
 
 - `XX` - Used for clients without country code data.
 - `T1` - Used for clients using the Tor network.

@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/using-ai-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Agents can call AI models from any provider. [Workers AI](https://developers.cloudflare.com/workers-ai/) is built in and requires no API keys. You can also use [OpenAI ↗](https://platform.openai.com/docs/quickstart?language=javascript), [Anthropic ↗](https://docs.anthropic.com/en/api/client-sdks#typescript), [Google Gemini ↗](https://ai.google.dev/gemini-api/docs/openai), or any service that exposes an OpenAI-compatible API.
+Agents can call AI models from any provider. [Workers AI](https://developers.cloudflare.com/workers-ai/) is built in and requires no API keys. You can also use [OpenAI ↗︎](https://platform.openai.com/docs/quickstart?language=javascript), [Anthropic ↗︎](https://docs.anthropic.com/en/api/client-sdks#typescript), [Google Gemini ↗︎](https://ai.google.dev/gemini-api/docs/openai), or any service that exposes an OpenAI-compatible API.
 
-The [AI SDK ↗](https://ai-sdk.dev/docs/introduction) provides a unified interface across all of these providers, and is what `AIChatAgent` and the starter template use under the hood. You can also use the model routing features in [AI Gateway](https://developers.cloudflare.com/ai-gateway/) to route across providers, eval responses, and manage rate limits.
+The [AI SDK ↗︎](https://ai-sdk.dev/docs/introduction) provides a unified interface across all of these providers, and is what `AIChatAgent` and the starter template use under the hood. You can also use the model routing features in [AI Gateway](https://developers.cloudflare.com/ai-gateway/) to route across providers, eval responses, and manage rate limits.
 
 ## Calling AI Models
 
@@ -260,7 +260,7 @@ Visit the [AI Gateway documentation](https://developers.cloudflare.com/ai-gatewa
 
 ## AI SDK
 
-The [AI SDK ↗](https://ai-sdk.dev/docs/introduction) provides a unified API for text generation, tool calling, structured responses, and more. It works with any provider that has an AI SDK adapter, including Workers AI via [`workers-ai-provider` ↗](https://www.npmjs.com/package/workers-ai-provider).
+The [AI SDK ↗︎](https://ai-sdk.dev/docs/introduction) provides a unified API for text generation, tool calling, structured responses, and more. It works with any provider that has an AI SDK adapter, including Workers AI via [`workers-ai-provider` ↗︎](https://www.npmjs.com/package/workers-ai-provider).
 
 npmyarnpnpmbun
 
@@ -384,7 +384,7 @@ export class MyAgent extends Agent {
 
 ## OpenAI-compatible endpoints
 
-Agents can call models across any service that supports the OpenAI API. For example, you can use the OpenAI SDK to call one of [Google's Gemini models ↗](https://ai.google.dev/gemini-api/docs/openai#node.js) directly from your Agent.
+Agents can call models across any service that supports the OpenAI API. For example, you can use the OpenAI SDK to call one of [Google's Gemini models ↗︎](https://ai.google.dev/gemini-api/docs/openai#node.js) directly from your Agent.
 
 Agents can stream responses back over HTTP using Server-Sent Events (SSE) from within an `onRequest` handler, or by using the native [WebSocket API](https://developers.cloudflare.com/agents/runtime/communication/websockets/) to stream responses back to a client.
 

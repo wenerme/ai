@@ -18,7 +18,7 @@ Deprecated
 
 Evaluations are deprecated and no longer supported for new accounts.
 
-This guide walks you through the process of setting up an evaluation in AI Gateway. These steps are done in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+This guide walks you through the process of setting up an evaluation in AI Gateway. These steps are done in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 
 ## 1. Select or create a dataset
 

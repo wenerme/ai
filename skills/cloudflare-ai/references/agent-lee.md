@@ -33,7 +33,7 @@ With Agent Lee, you can:
 - Revisit your earlier conversations with Agent Lee.
 - Open a Cloudflare Support case, if your account is eligible.
 
-To get started, log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select **Ask AI** in the upper-right corner of any dashboard page.
+To get started, log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select **Ask AI** in the upper-right corner of any dashboard page.
 
 Agent Lee was previously referred to as Cloudflare Agent.
 
@@ -138,7 +138,7 @@ Agent Lee can list, search, and summarize conversations you have had with it. It
 
 ### Data usage
 
-Agent Lee does not currently use your conversations, prompts, or account data to train AI models, nor do we share your data with other Cloudflare customers. Should these practices change in the future, we will provide advance notice to keep you informed. For Cloudflare's authoritative data handling commitments, refer to the [Cloudflare Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/).
+Agent Lee does not currently use your conversations, prompts, or account data to train AI models, nor do we share your data with other Cloudflare customers. Should these practices change in the future, we will provide advance notice to keep you informed. For Cloudflare's authoritative data handling commitments, refer to the [Cloudflare Privacy Policy ↗︎](https://www.cloudflare.com/privacypolicy/).
 
 ---
 
@@ -147,7 +147,7 @@ Agent Lee does not currently use your conversations, prompts, or account data to
 Agent Lee cannot:
 
 - Deploy applications on your behalf or run code for you (it can generate small starter projects and [export the source](https://developers.cloudflare.com/agent-lee/take-home-code/) for you to clone)
-- Replace [Cloudflare Support ↗](https://support.cloudflare.com) for account recovery or outages (it can prepare a support case for you, but only if your account is eligible and you confirm it)
+- Replace [Cloudflare Support ↗︎](https://support.cloudflare.com) for account recovery or outages (it can prepare a support case for you, but only if your account is eligible and you confirm it)
 - Access payment methods, billing history, or API tokens
 - Operate across multiple accounts: sessions are scoped to your authenticated account
 - Query raw log data or Logpush datasets
@@ -178,7 +178,7 @@ Agent Lee is built on Cloudflare's own developer platform using the same primiti
 - [Agents SDK](https://developers.cloudflare.com/agents/)
 - [Human in the Loop](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/)
 - [Workers AI](https://developers.cloudflare.com/workers-ai/)
-- [Blog post: Introducing Agent Lee ↗](https://blog.cloudflare.com/introducing-agent-lee)
+- [Blog post: Introducing Agent Lee ↗︎](https://blog.cloudflare.com/introducing-agent-lee)
 
 Was this helpful?
 

@@ -18,7 +18,7 @@ Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ### Make sure your key and certificate match
 
-You can use an external tool such as the [SSLShopper Certificate Key Matcher ↗](https://www.sslshopper.com/certificate-key-matcher.html) to check your certificate and make sure the key matches.
+You can use an external tool such as the [SSLShopper Certificate Key Matcher ↗︎](https://www.sslshopper.com/certificate-key-matcher.html) to check your certificate and make sure the key matches.
 
 Alternatively, use `openssl` to verify the match by comparing the public key hash of both files. This method works for both RSA and ECDSA certificates:
 
@@ -146,7 +146,7 @@ You are trying to upload a certificate to the [custom origin trust store](https:
 
 **Solution**
 
-When creating a self-signed root CA certificate, ensure you use the `-extensions v3_ca` option with OpenSSL. Refer to [this community post ↗](https://community.cloudflare.com/t/only-root-ca-certificate-is-allowed-code-1411/505318) for more details.
+When creating a self-signed root CA certificate, ensure you use the `-extensions v3_ca` option with OpenSSL. Refer to [this community post ↗︎](https://community.cloudflare.com/t/only-root-ca-certificate-is-allowed-code-1411/505318) for more details.
 
 ### The SSL attribute is invalid. Please refer to the API documentation, check your input and try again. (Code: 1434)
 
@@ -168,7 +168,7 @@ If you try to upload a certificate **type** but have already reached your quota,
 
 **Solution**
 
-First, check your custom certificate entitlements on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page.
+First, check your custom certificate entitlements on the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page.
 
 Then, when actually uploading or editing the certificate, make sure you select the appropriate option for **Legacy Client Support**.
 
@@ -196,7 +196,7 @@ Add the leaf to the `.crt` file, or just use the leaf by itself since the Certif
 
 **Root cause**
 
-Cloudflare verifies that uploaded custom certificates include a hostname for the associated zone. Moreover, this hostname must be included as a Subject Alternative Name (SAN). This is following the standard set by the [CA/Browser Forum ↗](https://cabforum.org/wp-content/uploads/BRv1.2.5.pdf#page=16).
+Cloudflare verifies that uploaded custom certificates include a hostname for the associated zone. Moreover, this hostname must be included as a Subject Alternative Name (SAN). This is following the standard set by the [CA/Browser Forum ↗︎](https://cabforum.org/wp-content/uploads/BRv1.2.5.pdf#page=16).
 
 **Solution**
 
@@ -220,7 +220,7 @@ Contact your Certificate Authority (CA) to confirm whether your current certific
 
 Make sure your certificate complies with these [requirements](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/uploading/#certificate-requirements).
 
-Check that the certificate and private keys match before uploading the certificate in the Cloudflare dashboard. This [external resource ↗](https://www.sslshopper.com/article-most-common-openssl-commands.html) might help.
+Check that the certificate and private keys match before uploading the certificate in the Cloudflare dashboard. This [external resource ↗︎](https://www.sslshopper.com/article-most-common-openssl-commands.html) might help.
 
 ### The certificate and private key pair you uploaded is invalid. (Code: 2200)
 

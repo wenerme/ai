@@ -24,7 +24,7 @@ A request is not serviced because the domain has reached [plan limits for Cloudf
 
 ### Resolution:
 
-Purchase the Unlimited Workers plan via the [Plans page ↗](https://dash.cloudflare.com/redirect?account=workers/plans) on the Workers dashboard.
+Purchase the Unlimited Workers plan via the [Plans page ↗︎](https://dash.cloudflare.com/redirect?account=workers/plans) on the Workers dashboard.
 
 Was this helpful?
 

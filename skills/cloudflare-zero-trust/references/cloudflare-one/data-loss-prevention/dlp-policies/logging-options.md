@@ -121,7 +121,7 @@ Gateway allows you to send copies of entire HTTP requests matched in HTTP Allow 
 
 To set up the DLP Forensic Copy Logpush job:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** >**Logs**, and select **Manage Logpush**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** >**Logs**, and select **Manage Logpush**.
 2. In Logpush, select **Create a Logpush job**.
 3. Choose a [Logpush destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/).
 4. In **Configure logpush job**, choose the *DLP forensic copies* dataset. Select **Create Logpush job**.

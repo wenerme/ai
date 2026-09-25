@@ -28,7 +28,7 @@ IDETerminalStandaloneExtensionOpen Source
 
 1. **Install Visual Studio Code and GitHub Copilot**
 
-   Install [Visual Studio Code ↗](https://code.visualstudio.com/) and make sure it is fully up to date. Then install the [GitHub Copilot extension ↗](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) and sign in with a GitHub account. The Copilot free tier is enough to try this.
+   Install [Visual Studio Code ↗︎](https://code.visualstudio.com/) and make sure it is fully up to date. Then install the [GitHub Copilot extension ↗︎](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) and sign in with a GitHub account. The Copilot free tier is enough to try this.
 2. **Configure the Cloudflare MCP server**
 
    Create `.vscode/mcp.json` inside your workspace folder:
@@ -44,7 +44,7 @@ IDETerminalStandaloneExtensionOpen Source
    }
    ```
 
-   Visual Studio Code uses `servers` as the root key. Configurations copied from Cursor or Claude Desktop use `mcpServers` and will silently do nothing here. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗](https://github.com/cloudflare/mcp).
+   Visual Studio Code uses `servers` as the root key. Configurations copied from Cursor or Claude Desktop use `mcpServers` and will silently do nothing here. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗︎](https://github.com/cloudflare/mcp).
 3. **Start the server and authorize**
 
    After you save `mcp.json`, Visual Studio Code shows a **Start** CodeLens on the `cloudflare-api` server definition. Select it and complete the OAuth flow to authorize the Cloudflare MCP server against your account. Start with a demo account until you are comfortable with the scope you grant.
@@ -53,7 +53,7 @@ IDETerminalStandaloneExtensionOpen Source
    Open Copilot Chat (**Ctrl+Shift+I** / **Cmd+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+   Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
    ```
 
 
@@ -104,7 +104,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 - Code mode APIcode modeBroad access to the full Cloudflare API via code execution, with minimal token overheadhttps://mcp.cloudflare.com/mcp
 - Code Mode servercode modeBest when you want broad access across Cloudflare's APIs through code executionhttps://mcp.cloudflare.com/mcp
 - AI Gateway serverSearch your logs, get details about the prompts and responseshttps://ai-gateway.mcp.cloudflare.com/mcp
-- Audit Logs serverQuery audit logs and generate reports for reviewhttps://auditlogs.mcp.cloudflare.com/mcp
 - AutoRAG serverSearch and query account AutoRAG instanceshttps://autorag.mcp.cloudflare.com/mcp
 - Browser Run serverFetch web pages, convert them to markdown and take screenshotshttps://browser.mcp.cloudflare.com/mcp
 - Cloudflare Blog serverSearch and read posts from the Cloudflare Bloghttps://blog.mcp.cloudflare.com/mcp
@@ -161,23 +160,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ## Tips

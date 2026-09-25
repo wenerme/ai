@@ -35,7 +35,7 @@ RealtimeKit can record the audio and video of multiple users in a meeting, as we
 
 ## How composite recording works
 
-Composite recordings are powered by anonymous virtual bot users who join your meeting, record it, and then upload it to RealtimeKit's Cloudflare R2 bucket. For video files, we currently support the [H.264 ↗](https://en.wikipedia.org/wiki/Advanced_Video_Coding) and [VP8 ↗](https://en.wikipedia.org/wiki/VP8) codecs.
+Composite recordings are powered by anonymous virtual bot users who join your meeting, record it, and then upload it to RealtimeKit's Cloudflare R2 bucket. For video files, we currently support the [H.264 ↗︎](https://en.wikipedia.org/wiki/Advanced_Video_Coding) and [VP8 ↗︎](https://en.wikipedia.org/wiki/VP8) codecs.
 
 1. When the recording is finished, it is stored in RealtimeKit's Cloudflare R2 bucket.
 2. RealtimeKit generates a downloadable link from which the recording can be downloaded. You can get the download URL using the [Fetch details of a recording API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/get_one_recording/) or from the Developer Portal.

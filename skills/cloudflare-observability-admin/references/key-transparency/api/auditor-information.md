@@ -16,7 +16,7 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 The Auditor is designed to sign epoch information, which includes the time at which the request is received by the Auditor, the epoch number, and the epoch digest. The Auditor serializes this information in binary using protobuf or bincode and checks whether the requested inclusion is valid, as in it satisfies [publication constraints](https://developers.cloudflare.com/key-transparency/api/epochs/#constraints).
 
-If the Log is setup to provide [AKD ↗](https://github.com/facebook/akd) audit proof, the Auditor verifies them asynchronously.
+If the Log is setup to provide [AKD ↗︎](https://github.com/facebook/akd) audit proof, the Auditor verifies them asynchronously.
 
 ## Get Auditor information
 

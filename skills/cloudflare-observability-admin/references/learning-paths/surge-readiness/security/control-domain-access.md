@@ -25,7 +25,7 @@ IP Access Rules can be applied based on:
 
 Note
 
-We recommend locking down your origin with an Access Control List (ACL) which only allows [Cloudflare IPs ↗](http://www.cloudflare.com/ips).
+We recommend locking down your origin with an Access Control List (ACL) which only allows [Cloudflare IPs ↗︎](http://www.cloudflare.com/ips).
 
 Actions:
 

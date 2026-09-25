@@ -29,7 +29,7 @@ The FortiGate configuration was tested on two different FortiGate firewalls:
 
 To set up Cloudflare WAN, add IPsec tunnels and static routes to your Cloudflare account using the dashboard or API.
 
-Before proceeding, ensure that you have the IPv4 anycast address assigned to your account. You can find it in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+Before proceeding, ensure that you have the IPv4 anycast address assigned to your account. You can find it in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 ### IPsec tunnels
 
@@ -47,10 +47,10 @@ By default, the static routes are defined with the priority set to `100`. Cloudf
 
 1. Follow the [Configure static routes](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-routes/#create-a-static-route) instructions to create a static route.
 2. For the first route, ensure the following settings are defined:
-   - **Prefix**: Specify the [RFC1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) subnet that exists behind the first IPsec tunnel you have defined in the previous section.
+   - **Prefix**: Specify the [RFC1918 ↗︎](https://datatracker.ietf.org/doc/html/rfc1918) subnet that exists behind the first IPsec tunnel you have defined in the previous section.
    - **Tunnel/Next hop**: Select your first tunnel (Tunnel 01 of 02).
 3. For the second route, ensure the following settings are defined:
-   - **Prefix**: Specify the [RFC1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) subnet that exists behind the second IPsec tunnel defined in the previous section.
+   - **Prefix**: Specify the [RFC1918 ↗︎](https://datatracker.ietf.org/doc/html/rfc1918) subnet that exists behind the second IPsec tunnel defined in the previous section.
    - **Tunnel/Next hop**: Select your second tunnel (Tunnel 02 of 02).
 
 ## Fortinet FortiGate configuration
@@ -59,7 +59,7 @@ By default, the static routes are defined with the priority set to `100`. Cloudf
 
 Enable asymmetric routing for ICMP to ensure health checks work as expected. This option is required. Otherwise, the tunnel health checks, which are critical for proper Cloudflare WAN functionality, will not work as designed.
 
-Enabling asymmetric routing will affect FortiGate behavior. To learn more, refer to [How FortiGate behaves when asymmetric routing is enabled ↗](https://community.fortinet.com/t5/FortiGate/Technical-Note-How-the-FortiGate-behaves-when-asymmetric-routing/ta-p/198575).
+Enabling asymmetric routing will affect FortiGate behavior. To learn more, refer to [How FortiGate behaves when asymmetric routing is enabled ↗︎](https://community.fortinet.com/t5/FortiGate/Technical-Note-How-the-FortiGate-behaves-when-asymmetric-routing/ta-p/198575).
 
 ```txt
 config system settings
@@ -91,11 +91,11 @@ fortigate # config vpn ipsec phase1-interface
         set nattraversal enable
 ```
 
-Refer to [Fortinet's documentation ↗](https://community.fortinet.com/t5/FortiGate/Technical-Tip-IPSec-VPN-NAT-traversal/ta-p/197873) for more details.
+Refer to [Fortinet's documentation ↗︎](https://community.fortinet.com/t5/FortiGate/Technical-Tip-IPSec-VPN-NAT-traversal/ta-p/197873) for more details.
 
 ### Disable anti-replay protection
 
-For route-based IPsec configurations, you will need to disable anti-replay protection. The following command disables anti-replay protection globally, but you can also do this per firewall policy. Refer to Fortinet's documentation on [anti-replay support per policy ↗](https://community.fortinet.com/t5/FortiGate/Technical-Tip-Anti-Replay-option-support-per-policy/ta-p/191435) to learn more.
+For route-based IPsec configurations, you will need to disable anti-replay protection. The following command disables anti-replay protection globally, but you can also do this per firewall policy. Refer to Fortinet's documentation on [anti-replay support per policy ↗︎](https://community.fortinet.com/t5/FortiGate/Technical-Tip-Anti-Replay-option-support-per-policy/ta-p/191435) to learn more.
 
 ```txt
 config system global
@@ -285,7 +285,7 @@ end
 
 ### Create Address Objects
 
-Create Address Objects to represent the [Cloudflare IPv4 address space ↗](https://www.cloudflare.com/ips) as well as objects for the bidirectional health check anycast IPs:
+Create Address Objects to represent the [Cloudflare IPv4 address space ↗︎](https://www.cloudflare.com/ips) as well as objects for the bidirectional health check anycast IPs:
 
 ```txt
 config firewall address

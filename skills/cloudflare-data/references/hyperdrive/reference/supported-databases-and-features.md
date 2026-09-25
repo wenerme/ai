@@ -46,7 +46,7 @@ Hyperdrive also supports databases that are compatible with the Postgres or MySQ
 
 ### PostgreSQL
 
-Hyperdrive supports the following [PostgreSQL TLS (SSL) ↗](https://www.postgresql.org/docs/current/libpq-ssl.html) connection modes when connecting to your origin database:
+Hyperdrive supports the following [PostgreSQL TLS (SSL) ↗︎](https://www.postgresql.org/docs/current/libpq-ssl.html) connection modes when connecting to your origin database:
 
 | Mode | Supported | Details |
 | --- | --- | --- |
@@ -58,7 +58,7 @@ Hyperdrive supports the following [PostgreSQL TLS (SSL) ↗](https://www.postgre
 
 ### MySQL
 
-Hyperdrive supports the following [MySQL TLS (SSL) ↗](https://dev.mysql.com/doc/refman/8.0/en/connection-options.html#option_general_ssl-mode) connection modes when connecting to your origin database:
+Hyperdrive supports the following [MySQL TLS (SSL) ↗︎](https://dev.mysql.com/doc/refman/8.0/en/connection-options.html#option_general_ssl-mode) connection modes when connecting to your origin database:
 
 | Mode | Supported | Details |
 | --- | --- | --- |
@@ -72,7 +72,7 @@ Refer to [SSL/TLS certificates](https://developers.cloudflare.com/hyperdrive/con
 
 ## Supported PostgreSQL authentication modes
 
-Hyperdrive supports the following [authentication modes ↗](https://www.postgresql.org/docs/current/auth-methods.html) for connecting to PostgreSQL databases:
+Hyperdrive supports the following [authentication modes ↗︎](https://www.postgresql.org/docs/current/auth-methods.html) for connecting to PostgreSQL databases:
 
 - Password Authentication ( `md5`)
 - Password Authentication ( `password`) (clear-text password)
@@ -83,7 +83,7 @@ Hyperdrive supports the following [authentication modes ↗](https://www.postgre
 Hyperdrive does not support the following PostgreSQL features:
 
 - SQL-level management of prepared statements, such as using `PREPARE`, `DISCARD`, `DEALLOCATE`, or `EXECUTE`.
-- Advisory locks ([PostgreSQL documentation ↗](https://www.postgresql.org/docs/current/explicit-locking.html#ADVISORY-LOCKS)).
+- Advisory locks ([PostgreSQL documentation ↗︎](https://www.postgresql.org/docs/current/explicit-locking.html#ADVISORY-LOCKS)).
 - `LISTEN` and `NOTIFY`.
 - `PREPARE` and `DEALLOCATE`.
 - Any modification to per-session state not explicitly documented as supported elsewhere.
@@ -95,9 +95,9 @@ Hyperdrive does not support the following MySQL features:
 - Non-UTF8 characters in queries
 - `USE` statements
 - Multi-statement queries
-- Prepared statement queries via SQL (using `PREPARE` and `EXECUTE` statements) and [protocol-level prepared statements ↗](https://sidorares.github.io/node-mysql2/docs/documentation/prepared-statements).
+- Prepared statement queries via SQL (using `PREPARE` and `EXECUTE` statements) and [protocol-level prepared statements ↗︎](https://sidorares.github.io/node-mysql2/docs/documentation/prepared-statements).
 - `COM_INIT_DB` messages
-- [Authentication plugins ↗](https://dev.mysql.com/doc/refman/8.4/en/authentication-plugins.html) other than `caching_sha2_password` or `mysql_native_password`
+- [Authentication plugins ↗︎](https://dev.mysql.com/doc/refman/8.4/en/authentication-plugins.html) other than `caching_sha2_password` or `mysql_native_password`
 
 In cases where you need to issue these unsupported statements from your application, the Hyperdrive team recommends setting up a second, direct client without Hyperdrive.
 

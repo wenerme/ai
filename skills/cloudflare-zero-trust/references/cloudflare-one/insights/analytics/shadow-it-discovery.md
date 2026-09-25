@@ -18,7 +18,7 @@ Shadow IT SaaS analytics provides visibility into the SaaS applications your use
 
 To access Shadow IT SaaS analytics:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Go to **Dashboards**.
 3. Select **Shadow IT: SaaS analytics**.
 
@@ -45,7 +45,7 @@ To organize applications into their approval status for your organization, you c
 
 To set the status of an application:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Applications**.
 2. Locate the card for the application.
 3. In the three-dot menu, select the option to mark your desired status.
 
@@ -79,7 +79,7 @@ After marking applications, you can create [HTTP policies](https://developers.cl
 
 To create an HTTP status policy directly from Shadow IT Discovery:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Select **Dashboards** > **Shadow IT: SaaS analytics**.
 3. Select **Set application statuses**.
 4. Select **Manage HTTP status policies**, then choose an application status and select **Create policy**.

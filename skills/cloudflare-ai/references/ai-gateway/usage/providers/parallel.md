@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/parallel/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Parallel ↗](https://parallel.ai/) is a web API purpose-built for AIs, providing production-ready outputs with minimal hallucination and evidence-based results.
+[Parallel ↗︎](https://parallel.ai/) is a web API purpose-built for AIs, providing production-ready outputs with minimal hallucination and evidence-based results.
 
 ## Endpoint
 
@@ -42,7 +42,7 @@ When making requests to Parallel, ensure you have the following:
 
 ### Tasks API
 
-The [Tasks API ↗](https://docs.parallel.ai/task-api/task-quickstart) allows you to create comprehensive research and analysis tasks.
+The [Tasks API ↗︎](https://docs.parallel.ai/task-api/task-quickstart) allows you to create comprehensive research and analysis tasks.
 
 #### cURL example
 
@@ -58,7 +58,7 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1/
 
 ### Search API
 
-The [Search API ↗](https://docs.parallel.ai/search-api/search-quickstart) enables advanced search with configurable parameters.
+The [Search API ↗︎](https://docs.parallel.ai/search-api/search-quickstart) enables advanced search with configurable parameters.
 
 #### cURL example
 
@@ -80,7 +80,7 @@ curl https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/parallel/v1b
 
 ## Chat API
 
-The [Chat API ↗](https://docs.parallel.ai/chat-api/chat-quickstart) is supported through AI Gateway's Unified Chat Completions API. See below for more details:
+The [Chat API ↗︎](https://docs.parallel.ai/chat-api/chat-quickstart) is supported through AI Gateway's Unified Chat Completions API. See below for more details:
 
 ## OpenAI-Compatible Endpoint
 
@@ -129,7 +129,7 @@ try {
 
 ### FindAll API
 
-The [FindAll API ↗](https://docs.parallel.ai/findall-api/findall-quickstart) enables structured data extraction from complex queries.
+The [FindAll API ↗︎](https://docs.parallel.ai/findall-api/findall-quickstart) enables structured data extraction from complex queries.
 
 #### cURL example
 

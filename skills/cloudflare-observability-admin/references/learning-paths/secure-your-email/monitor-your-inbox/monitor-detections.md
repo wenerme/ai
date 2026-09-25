@@ -18,7 +18,7 @@ Spam and Malicious emails are blocked outright by Email security, but Suspicious
 
 [PhishGuard](https://developers.cloudflare.com/cloudflare-one/email-security/phishguard/) (Cloudflare's managed email security service) can review these messages for you and move them from the end user inbox if they are deemed malicious.
 
-Messages that receive a Spoof disposition should be investigated because it signals that the traffic is either non-compliant with your email authentication process [SPF ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/), [DKIM ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/), [DMARC ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/), or has a mismatching Envelope From and Header From value.
+Messages that receive a Spoof disposition should be investigated because it signals that the traffic is either non-compliant with your email authentication process [SPF ↗︎](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/), [DKIM ↗︎](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/), [DMARC ↗︎](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/), or has a mismatching Envelope From and Header From value.
 
 In most cases, a Spoof disposition is triggered by a legitimate third-party mail service. If you determine that the Spoofed email is a legitimate business use case, you can either:
 
@@ -41,7 +41,7 @@ Additional information on search can be found on the [Screen criteria](https://d
 
 ### Export messages
 
-With Email security, you can export messages to a CSV file. Via the dashboard, you can export up to 1,000 rows. If you want to export all messages, you can use the [API ↗](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate/methods/get/).
+With Email security, you can export messages to a CSV file. Via the dashboard, you can export up to 1,000 rows. If you want to export all messages, you can use the [API ↗︎](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate/methods/get/).
 
 Was this helpful?
 

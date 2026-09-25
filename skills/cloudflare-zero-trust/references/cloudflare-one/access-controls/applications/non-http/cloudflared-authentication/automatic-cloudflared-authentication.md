@@ -22,7 +22,7 @@ Automatic `cloudflared` authentication allows users to skip this login page if t
 
 To enable automatic `cloudflared` authentication:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate your application and select **Configure**.
 3. Go to **Authentication**.
 4. Turn on **Allow automatic Cloudflared authentication**.

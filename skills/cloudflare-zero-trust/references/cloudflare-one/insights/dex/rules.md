@@ -22,7 +22,7 @@ Use DEX rules to scope a test to a specific group within your fleet for more pre
 
 To create a rule:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Select the **Rules** tab.
 3. Select **Add a rule**.
 4. Give your rule a name and build your desired expressions.
@@ -52,7 +52,7 @@ After you have created a rule, you can add it to a test. If you do not add a rul
 
 To add a rule to a test:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Select the **Tests** tab.
 3. Choose an existing test and select **Edit**, or select **Add a test** to make a new test.
 4. Under **Select DEX rules**, select the rule you would like to apply.
@@ -64,7 +64,7 @@ It may take up to 10 minutes for newly updated settings to propagate to devices.
 
 To view which tests a rule is being applied to:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Select the **Rules** tab.
 3. Choose a rule and select **Edit**.
 4. Select the **DEX tests** tab and review the list of tests that include your selected rule.
@@ -75,7 +75,7 @@ You can create a new test from the [DEX test dashboard as described above](https
 
 To create a new test using a rule from DEX rules:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Select the **Rules** tab.
 3. Select a rule and select **Edit**.
 4. Select the **DEX tests** tab.

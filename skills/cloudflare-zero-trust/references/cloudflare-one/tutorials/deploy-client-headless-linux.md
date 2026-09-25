@@ -33,7 +33,7 @@ Fully automated deployments rely on a service token to enroll the Cloudflare One
 
 To create a service token:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**.
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
 4. Choose a **Service Token Duration**. This sets the expiration date for the token.
@@ -90,9 +90,9 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
    This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Service Tokens Write`
-2. Configure the [`cloudflare_zero_trust_access_service_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource:
+2. Configure the [`cloudflare_zero_trust_access_service_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource:
 
    ```tf
    resource "cloudflare_zero_trust_access_service_token" "example_service_token" {
@@ -161,7 +161,7 @@ Device enrollment permissions determine the users and devices that can register 
 
 To allow devices to enroll using a service token:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices**. Select the **Management** tab.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices**. Select the **Management** tab.
 2. In **Device enrollment permissions**, select **Manage**.
 3. In the **Policies** tab, select **Create new policy**. A new tab will open with the policy creation page.
 4. For **Action**, select *Service Auth*.
@@ -230,7 +230,7 @@ You can use a shell script to automate WARP installation and registration. The f
    ```
 
 
-3. If you are using Debian or RHEL / CentOS, modify the `warp()` function so that it installs the correct [WARP package ↗](https://pkg.cloudflareclient.com/) for your OS.
+3. If you are using Debian or RHEL / CentOS, modify the `warp()` function so that it installs the correct [WARP package ↗︎](https://pkg.cloudflareclient.com/) for your OS.
 4. Modify the values in the `mdm()` function:
    1. For `auth_client_id` and `auth_client_secret`, replace the string values with the Client ID and Client Secret of your [service token](https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/#1-create-a-service-token).
    2. For `organization`, replace `your-team-name` with your Zero Trust team name.

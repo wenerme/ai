@@ -24,7 +24,7 @@ Without content selectors, AI Search applies a default processing pipeline that 
 
 ## Configure in the dashboard
 
-1. Go to the [AI Search ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search) page in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
+1. Go to the [AI Search ↗︎](https://dash.cloudflare.com/?to=/:account/ai/ai-search) page in the Cloudflare dashboard. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 2. Select your AI Search instance, or select **Create** to create a new one with a **Website** data source.
 3. Under the data source settings, locate the **Content selectors** section.
 4. Select **Add selector**.

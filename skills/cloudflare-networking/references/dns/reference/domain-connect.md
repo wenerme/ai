@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/reference/domain-connect/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-If you are a service provider, consider this page for information on how Cloudflare supports [Domain Connect ↗](https://www.domainconnect.org/) and how you can onboard your template.
+If you are a service provider, consider this page for information on how Cloudflare supports [Domain Connect ↗︎](https://www.domainconnect.org/) and how you can onboard your template.
 
 ## What is Domain Connect
 
@@ -28,16 +28,16 @@ In practice, this means that when a user that owns `example.com` and has Cloudfl
 
 ### Before you begin
 
-- Note that Cloudflare only supports the [Domain Connect synchronous flow ↗](https://www.domainconnect.org/getting-started/).
-- Domain Connect templates and tools are published on GitHub, so you must have a GitHub account and be familiar with [GitHub forks and pull requests ↗](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks).
+- Note that Cloudflare only supports the [Domain Connect synchronous flow ↗︎](https://www.domainconnect.org/getting-started/).
+- Domain Connect templates and tools are published on GitHub, so you must have a GitHub account and be familiar with [GitHub forks and pull requests ↗︎](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks).
 
 ### 1. Add templates to the repository
 
 Domain Connect templates are published and maintained on a GitHub repository.
 
-1. Create a fork of the [templates repository ↗](https://github.com/Domain-Connect/Templates).
+1. Create a fork of the [templates repository ↗︎](https://github.com/Domain-Connect/Templates).
 2. Add your template. You can create a copy of one of the existing templates and edit it according to your needs.
-   - Refer to the [Domain Connect Specification ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc) for details on the different available fields. Note
+   - Refer to the [Domain Connect Specification ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc) for details on the different available fields. Note
 
      Not all fields (properties) are supported by Cloudflare, and some will be mandatory for onboarding your template. Refer to the [properties support](#properties-support) section below for details.
    - If present, you must set the `syncBlock` field on your template to `false`. This means the template flow will be synchronous, which is the only option supported by Cloudflare.
@@ -46,7 +46,7 @@ Domain Connect templates are published and maintained on a GitHub repository.
 
 Tip
 
-You can use Domain Connect's [linter tool ↗](https://github.com/Domain-Connect/dc-template-linter) with the option `-cloudflare` enabled to check your template against Cloudflare specific rules.
+You can use Domain Connect's [linter tool ↗︎](https://github.com/Domain-Connect/dc-template-linter) with the option `-cloudflare` enabled to check your template against Cloudflare specific rules.
 
 4. Submit a pull request to have your templates added to the repository.
 
@@ -68,25 +68,25 @@ Send an email to `domain-connect@cloudflare.com`, including the following inform
    Proxy status is applied per template. If needed, organize the records in different templates to specify a different default proxy status per template. Once the records have been created, the domain owner can always change the proxy status for `A`, `AAAA`, and `CNAME` records later.
 5. (Optional) A Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/) for you to test the flow.
 
-   If you have a [DNS provider discovery ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#dns-provider-discovery) automation in place and will not list new DNS providers manually, Cloudflare can initially restrict your template to be exposed to the specified account only. Once you confirm everything is working as expected, Cloudflare will publish your template on the discovery endpoint, to be picked up by your automation.
+   If you have a [DNS provider discovery ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#dns-provider-discovery) automation in place and will not list new DNS providers manually, Cloudflare can initially restrict your template to be exposed to the specified account only. Once you confirm everything is working as expected, Cloudflare will publish your template on the discovery endpoint, to be picked up by your automation.
 
 ## Properties support
 
-In the [Domain Connect Specification ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc) you will find the following properties:
+In the [Domain Connect Specification ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc) you will find the following properties:
 
-- Properties that you can use with your [apply template URL ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#apply-template).
-- Properties for [defining the template itself ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#template-definition).
-- Properties for defining the individual [DNS records ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#template-record).
+- Properties that you can use with your [apply template URL ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#apply-template).
+- Properties for [defining the template itself ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#template-definition).
+- Properties for defining the individual [DNS records ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#template-record).
 
 While most of these are supported by Cloudflare, some are required and others are not supported.
 
 Linter tool
 
-Use Domain Connect's [linter tool ↗](https://github.com/Domain-Connect/dc-template-linter) with the option `-cloudflare` enabled to check your template against Cloudflare specific rules.
+Use Domain Connect's [linter tool ↗︎](https://github.com/Domain-Connect/dc-template-linter) with the option `-cloudflare` enabled to check your template against Cloudflare specific rules.
 
 ### Apply template URL
 
-For the full list, refer to the [Domain Connect Specification ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc). Below are the details specific to Cloudflare.
+For the full list, refer to the [Domain Connect Specification ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc). Below are the details specific to Cloudflare.
 
 - **Redirect URI**: Domain Connect's documentation states that it must be scoped to the `syncRedirectDomain` from the template, or the request must be signed. Cloudflare requires the request to be signed and, as such, does not check if the `redirect_uri` is scoped to the `syncRedirectDomain`.
 - **State**: Is not supported and will be ignored.
@@ -96,7 +96,7 @@ For the full list, refer to the [Domain Connect Specification ↗](https://githu
 
 ### Template definition
 
-For the full list, refer to the [Domain Connect Specification ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc). Below are the details specific to Cloudflare.
+For the full list, refer to the [Domain Connect Specification ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc). Below are the details specific to Cloudflare.
 
 - **Service Provider Name**: Will be displayed on the user interface.
 - **Service Name**: Will **not** be displayed on the user interface.
@@ -112,7 +112,7 @@ For the full list, refer to the [Domain Connect Specification ↗](https://githu
 
 ### DNS records
 
-For the full list, refer to the [Domain Connect Specification ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc). Below are the details specific to Cloudflare.
+For the full list, refer to the [Domain Connect Specification ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc). Below are the details specific to Cloudflare.
 
 Record types and properties that are not listed in this section are supported as described in the specification.
 
@@ -126,7 +126,7 @@ Do not add SPF policies as plain `TXT` records (for example, `v=spf1 include:spf
 
 #### Custom record types
 
-The following record types are not standard DNS record types. They are described in the [SPF TXT record ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#spf-txt-record) and [extensions/exclusions ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#extensionsexclusions) sections of the Domain Connect Specification. Below are the details specific to Cloudflare.
+The following record types are not standard DNS record types. They are described in the [SPF TXT record ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#spf-txt-record) and [extensions/exclusions ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#extensionsexclusions) sections of the Domain Connect Specification. Below are the details specific to Cloudflare.
 
 - **SPFM**: Supported. Cloudflare merges the `spfRules` of the template with the SPF record that already exists on the target name, as described in the SPF record merging section of the specification. The existing SPF record is replaced by a single merged `TXT` record. If the merge adds new rules, the merged record ends with the `~all` modifier. If no SPF record exists, a new `TXT` record is created from the `spfRules`. This is the recommended way to add SPF policies with a template.
 - **REDIR301** and **REDIR302**: Supported. When applied, these records are converted to zone-specific [bulk redirect](https://developers.cloudflare.com/rules/url-forwarding/bulk-redirects/) rules. If a zone has existing bulk redirects before applying the template, they will be replaced.
@@ -140,7 +140,7 @@ The automation compares the template version number in Cloudflare with the autho
 
 Note
 
-The authoritative source must be in raw `json` format for the automation to work correctly, as in [this example ↗](https://raw.githubusercontent.com/Domain-Connect/Templates/master/exampleservice.domainconnect.org.template1.json).
+The authoritative source must be in raw `json` format for the automation to work correctly, as in [this example ↗︎](https://raw.githubusercontent.com/Domain-Connect/Templates/master/exampleservice.domainconnect.org.template1.json).
 
 If the source template is unavailable, or technically invalid, Cloudflare will keep the previous template in use until the updated version is fixed.
 
@@ -161,11 +161,11 @@ Send an email to `domain-connect@cloudflare.com` with the following information:
 
 The most common issues after template onboarding are validation errors, typically caused by `syncPubKeyDomain` TXT records.
 
-You can fix these by republishing the signature, using tools such as the one provided by [Domain Connect ↗](https://exampleservice.domainconnect.org/sig). Additionally, you can test signature validation with this [public key debug tool ↗](https://github.com/kerolasa/dc-debug-pubkey).
+You can fix these by republishing the signature, using tools such as the one provided by [Domain Connect ↗︎](https://exampleservice.domainconnect.org/sig). Additionally, you can test signature validation with this [public key debug tool ↗︎](https://github.com/kerolasa/dc-debug-pubkey).
 
 ## Footnotes
 
-1. A domain that can be queried for `TXT` records containing a public key to verify your digital signature. Refer to [digitally signed requests ↗](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#digitally-sign-requests) for details. [↩](#user-content-fnref-1) [↩<sup>2</sup>](#user-content-fnref-1-2)
+1. A domain that can be queried for `TXT` records containing a public key to verify your digital signature. Refer to [digitally signed requests ↗︎](https://github.com/Domain-Connect/spec/blob/master/Domain%20Connect%20Spec%20Draft.adoc#digitally-sign-requests) for details. [↩](#user-content-fnref-1) [↩<sup>2</sup>](#user-content-fnref-1-2)
 
 Was this helpful?
 

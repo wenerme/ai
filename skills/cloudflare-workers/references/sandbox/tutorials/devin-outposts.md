@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/tutorials/devin-outposts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Run [Devin agents ↗](https://docs.devin.ai/onboard-devin/outposts) on Cloudflare. Each Devin session runs in its own isolated sandbox backed by Cloudflare Containers.
+Run [Devin agents ↗︎](https://docs.devin.ai/onboard-devin/outposts) on Cloudflare. Each Devin session runs in its own isolated sandbox backed by Cloudflare Containers.
 
 ## Prerequisites
 
@@ -22,7 +22,7 @@ You need:
 
 - A Devin Enterprise organization with permission to manage outposts and service users
 - A Cloudflare account with access to Workers, Containers, and R2
-- For manual deployment, [Node.js 24 ↗](https://nodejs.org/) and a running [Docker ↗](https://www.docker.com/) daemon
+- For manual deployment, [Node.js 24 ↗︎](https://nodejs.org/) and a running [Docker ↗︎](https://www.docker.com/) daemon
 
 ### Get your Devin credentials
 
@@ -35,7 +35,7 @@ You need:
 
 2. Create or select an outpost. Copy its outpost ID for `DEVIN_OUTPOST_ID` and its token for `DEVIN_API_TOKEN`.
 
-For more information about outposts, refer to the [Devin Outposts overview ↗](https://docs.devin.ai/onboard-devin/outposts).
+For more information about outposts, refer to the [Devin Outposts overview ↗︎](https://docs.devin.ai/onboard-devin/outposts).
 
 ## Deploy with one click
 
@@ -141,8 +141,8 @@ Checkpoints provide suspend-and-resume persistence, not continuous backups. An a
 
 ## Related resources
 
-- [Devin Outposts overview ↗](https://docs.devin.ai/onboard-devin/outposts)
-- [Devin Outpost deployment template ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/devin)
+- [Devin Outposts overview ↗︎](https://docs.devin.ai/onboard-devin/outposts)
+- [Devin Outpost deployment template ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/devin)
 - [Cloudflare Containers](https://developers.cloudflare.com/containers/)
 - [R2](https://developers.cloudflare.com/r2/)
 

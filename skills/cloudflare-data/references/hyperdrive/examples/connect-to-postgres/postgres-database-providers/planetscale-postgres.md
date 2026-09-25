@@ -16,7 +16,7 @@ Connect Hyperdrive to a PlanetScale PostgreSQL database.
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/planetscale-postgres/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example shows you how to connect Hyperdrive to a [PlanetScale ↗](https://planetscale.com/) PostgreSQL database.
+This example shows you how to connect Hyperdrive to a [PlanetScale ↗︎](https://planetscale.com/) PostgreSQL database.
 
 ## 1. Allow Hyperdrive access
 
@@ -24,7 +24,7 @@ You can connect Hyperdrive to any existing PlanetScale PostgreSQL database by cr
 
 ### PlanetScale Dashboard
 
-1. Go to the [**PlanetScale dashboard** ↗](https://app.planetscale.com/) and select the database you wish to connect to.
+1. Go to the [**PlanetScale dashboard** ↗︎](https://app.planetscale.com/) and select the database you wish to connect to.
 2. Click **Connect**.
 3. Create a new role for your Hyperdrive configuration (recommended):
    1. Ensure the minimum required permissions for Hyperdrive to read and write data to your tables:
@@ -91,7 +91,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -110,7 +110,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -179,7 +179,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -192,7 +192,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -239,7 +239,7 @@ export default {
 
 Note
 
-When connecting to a PlanetScale PostgreSQL database with Hyperdrive, you should use a driver like [node-postgres (pg)](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/node-postgres/) or [Postgres.js](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/postgres-js/) to connect directly to the underlying database instead of the [PlanetScale serverless driver ↗](https://planetscale.com/docs/tutorials/planetscale-serverless-driver). Hyperdrive is optimized for database access for Workers and will perform global connection pooling and fast query routing by connecting directly to your database.
+When connecting to a PlanetScale PostgreSQL database with Hyperdrive, you should use a driver like [node-postgres (pg)](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/node-postgres/) or [Postgres.js](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/postgres-js/) to connect directly to the underlying database instead of the [PlanetScale serverless driver ↗︎](https://planetscale.com/docs/tutorials/planetscale-serverless-driver). Hyperdrive is optimized for database access for Workers and will perform global connection pooling and fast query routing by connecting directly to your database.
 
 ## Next steps
 

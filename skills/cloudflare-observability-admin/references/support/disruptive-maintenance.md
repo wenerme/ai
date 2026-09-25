@@ -16,7 +16,7 @@ Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Scheduled maintenance windows
 
-Planned maintenance is published on the [Cloudflare Status page ↗](https://www.cloudflarestatus.com/).
+Planned maintenance is published on the [Cloudflare Status page ↗︎](https://www.cloudflarestatus.com/).
 
 During these maintenance windows, customers may experience a slight increase in latency to the edge location which is under maintenance.
 
@@ -24,7 +24,7 @@ During these maintenance windows, customers may experience a slight increase in 
 
 There are two ways to be notified about scheduled maintenance.
 
-Status page notifications are delivered independently of Cloudflare infrastructure and fire even if Cloudflare itself is down. You can subscribe by email, webhook, Slack, Discord, or Google Chat. For more information, refer to [status page notifications ↗](https://www.cloudflarestatus.com/docs/notifications).
+Status page notifications are delivered independently of Cloudflare infrastructure and fire even if Cloudflare itself is down. You can subscribe by email, webhook, Slack, Discord, or Google Chat. For more information, refer to [status page notifications ↗︎](https://www.cloudflarestatus.com/docs/notifications).
 
 You can also receive maintenance updates through [Cloudflare Notifications](https://developers.cloudflare.com/notifications/), which delivers to the destinations configured on your account.
 
@@ -58,9 +58,9 @@ Refer to [Cloudflare Notifications](https://developers.cloudflare.com/notificati
 
 ## Unplanned maintenance
 
-Cloudflare operates a redundant [anycast network ↗](https://www.cloudflare.com/en-gb/learning/cdn/glossary/anycast-network/) that is capable of automatically removing locations from our network if they require unplanned maintenance or experience an emergency event. In such cases, traffic will be rerouted automatically to alternative locations.
+Cloudflare operates a redundant [anycast network ↗︎](https://www.cloudflare.com/en-gb/learning/cdn/glossary/anycast-network/) that is capable of automatically removing locations from our network if they require unplanned maintenance or experience an emergency event. In such cases, traffic will be rerouted automatically to alternative locations.
 
-To check for unplanned maintenance, confirm whether a location was re-routed by checking if its status is listed as **Re-routed** in the [status page locations view ↗](https://www.cloudflarestatus.com/locations). Exceptionally, an incident may be declared for maintenance at a location, in which case updates are available on the [Cloudflare Status page ↗](https://www.cloudflarestatus.com/).
+To check for unplanned maintenance, confirm whether a location was re-routed by checking if its status is listed as **Re-routed** in the [status page locations view ↗︎](https://www.cloudflarestatus.com/locations). Exceptionally, an incident may be declared for maintenance at a location, in which case updates are available on the [Cloudflare Status page ↗︎](https://www.cloudflarestatus.com/).
 
 ## Interconnections at locations under maintenance
 

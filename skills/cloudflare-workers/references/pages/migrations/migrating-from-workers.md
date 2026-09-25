@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 In this tutorial, you will learn how to migrate an existing [Cloudflare Workers Sites](https://developers.cloudflare.com/workers/configuration/sites/) application to Cloudflare Pages.
 
-As a prerequisite, you should have a Cloudflare Workers Sites project, created with [Wrangler ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler).
+As a prerequisite, you should have a Cloudflare Workers Sites project, created with [Wrangler ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler).
 
 Cloudflare Pages provides built-in defaults for every aspect of serving your site. You can port custom behavior in your Worker — such as custom caching logic — to your Cloudflare Pages project using [Functions](https://developers.cloudflare.com/pages/functions/). This enables an easy-to-use, file-based routing system. You can also migrate your custom headers and redirects to Pages.
 

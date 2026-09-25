@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/security-center/investigate/investigate-threats/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Users can investigate the details of an IP address, domain name, URL, or Autonomous System Number (ASN). You can find the Investigate feature in your Cloudflare account's Security Center and in [Cloudflare Radar ↗](https://radar.cloudflare.com/scan).
+Users can investigate the details of an IP address, domain name, URL, or Autonomous System Number (ASN). You can find the Investigate feature in your Cloudflare account's Security Center and in [Cloudflare Radar ↗︎](https://radar.cloudflare.com/scan).
 
 You can search with Investigate by [IP address](https://developers.cloudflare.com/security-center/investigate/investigate-threats/#ip-address), [domain](https://developers.cloudflare.com/security-center/investigate/investigate-threats/#domain), [URL](https://developers.cloudflare.com/security-center/investigate/investigate-threats/#url) and [AS number](https://developers.cloudflare.com/security-center/investigate/investigate-threats/#as-number).
 
@@ -24,13 +24,13 @@ Search methods are also available through the [API](https://developers.cloudflar
 
 ## IP Address
 
-An [IP address ↗](https://www.cloudflare.com/learning/dns/glossary/what-is-my-ip-address/) is a unique address that identifies a server. It stands for [Internet Protocol ↗](https://www.cloudflare.com/learning/network-layer/internet-protocol/), which is the set of rules that allows servers to communicate with each other.
+An [IP address ↗︎](https://www.cloudflare.com/learning/dns/glossary/what-is-my-ip-address/) is a unique address that identifies a server. It stands for [Internet Protocol ↗︎](https://www.cloudflare.com/learning/network-layer/internet-protocol/), which is the set of rules that allows servers to communicate with each other.
 
-IP address search allows you to search both [IPv4 and IPv6 ↗](https://www.cloudflare.com/learning/dns/glossary/what-is-my-ip-address/) addresses and retrieve relevant information such as their pointer records, AS numbers and passive DNS records.
+IP address search allows you to search both [IPv4 and IPv6 ↗︎](https://www.cloudflare.com/learning/dns/glossary/what-is-my-ip-address/) addresses and retrieve relevant information such as their pointer records, AS numbers and passive DNS records.
 
 ## Domain
 
-A [domain name ↗](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/) is a string of text that maps to an IP address. Domain names are used to help people remember where websites are hosted. Domain names are purchased through [registrars](https://developers.cloudflare.com/registrar/) and can be acquired easily by anyone.
+A [domain name ↗︎](https://www.cloudflare.com/learning/dns/glossary/what-is-a-domain-name/) is a string of text that maps to an IP address. Domain names are used to help people remember where websites are hosted. Domain names are purchased through [registrars](https://developers.cloudflare.com/registrar/) and can be acquired easily by anyone.
 
 When you search for a domain name, Cloudflare will provide an overview of the domain's [category](#domain-categories) and IP addresses it currently resolves to.
 
@@ -44,7 +44,7 @@ As part of the domain search results, Cloudflare show the WHOIS details and a hi
 
 ## AS Number
 
-An [AS number ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) is a group of IP addresses belonging to and controlled by a single organization. The entire group of networks have a single unified routing policy. The [Internet Assigned Numbers Authority ↗](https://www.iana.org/) (IANA) is the organization responsible for managing the assignment and distribution of AS numbers. The AS number's routing policies are used by [BGP ↗](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/) which is how Cloudflare's [anycast network ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) works.
+An [AS number ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) is a group of IP addresses belonging to and controlled by a single organization. The entire group of networks have a single unified routing policy. The [Internet Assigned Numbers Authority ↗︎](https://www.iana.org/) (IANA) is the organization responsible for managing the assignment and distribution of AS numbers. The AS number's routing policies are used by [BGP ↗︎](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/) which is how Cloudflare's [anycast network ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) works.
 
 When you search for an AS number, Cloudflare will return registration data such as its country, description and type. It will also display data such as domain count, top 10 domains and subnets.
 
@@ -71,7 +71,7 @@ If you want to scan a URL:
 1. In the Cloudflare dashboard, go to the **Investigate** page. [Go to **Investigate** ↗](https://dash.cloudflare.com/?to=/:account/security-center/investigate)
 2. Enter the URL, then select **Search**.
 
-Alternatively, to scan a URL, go to [Cloudflare Radar ↗](https://radar.cloudflare.com/) > **URL scanner**. Enter the URL, then select **Publish**.
+Alternatively, to scan a URL, go to [Cloudflare Radar ↗︎](https://radar.cloudflare.com/) > **URL scanner**. Enter the URL, then select **Publish**.
 
 Note
 

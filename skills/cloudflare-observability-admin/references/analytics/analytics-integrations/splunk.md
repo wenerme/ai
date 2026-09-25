@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/splunk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial explains how to analyze [Cloudflare Logs ↗](https://www.cloudflare.com/products/cloudflare-logs/) using the [Cloudflare App for Splunk ↗](https://splunkbase.splunk.com/app/4501/).
+This tutorial explains how to analyze [Cloudflare Logs ↗︎](https://www.cloudflare.com/products/cloudflare-logs/) using the [Cloudflare App for Splunk ↗︎](https://splunkbase.splunk.com/app/4501/).
 
 ## Prerequisites
 
@@ -22,11 +22,11 @@ Before sending your Cloudflare log data to Splunk, ensure that you:
 
 - Have an existing Splunk Enterprise or Cloud account
 - Have a Cloudflare Enterprise account
-- Consult the [Splunk documentation ↗](https://splunkbase.splunk.com/app/4501/) for the Cloudflare App
+- Consult the [Splunk documentation ↗︎](https://splunkbase.splunk.com/app/4501/) for the Cloudflare App
 
 ## Task 1 - Install and Configure the Cloudflare App for Splunk
 
-To install the [Cloudflare App for Splunk ↗](https://splunkbase.splunk.com/app/4501/):
+To install the [Cloudflare App for Splunk ↗︎](https://splunkbase.splunk.com/app/4501/):
 
 1. Log in to your Splunk instance.
 2. Under **Apps** > **Find More Apps**, search for *Cloudflare App for Splunk.*
@@ -56,7 +56,7 @@ To install the [Cloudflare App for Splunk ↗](https://splunkbase.splunk.com/app
 
    Enable HEC and SSL
 
-   After creating the token, go to **Settings** > **Data inputs** > **HTTP Event Collector** > **Global Settings** and confirm that **All Tokens** is turned on and that **Enable SSL** is selected, then select **Save**. Verify that the status of your new HEC token is enabled in the token list. Refer to the [Splunk HEC documentation ↗](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector) for details.
+   After creating the token, go to **Settings** > **Data inputs** > **HTTP Event Collector** > **Global Settings** and confirm that **All Tokens** is turned on and that **Enable SSL** is selected, then select **Save**. Verify that the status of your new HEC token is enabled in the token list. Refer to the [Splunk HEC documentation ↗︎](https://docs.splunk.com/Documentation/Splunk/latest/Data/UsetheHTTPEventCollector) for details.
 8. Verify whether Splunk is using a self-signed certificate. You'll need this information when creating the Logpush job.
 9. Determine the endpoint to use to send the data to. The endpoint should be:
 
@@ -72,7 +72,7 @@ Where:
 - `port`: 443 or 8088
 - `endpoint`: services/collector/raw
 
-For example: `https://prd-p-0qk3h.splunkcloud.com:8088/services/collector/raw`. Refer to the [Splunk Documentation ↗](https://docs.splunk.com/Documentation/SplunkCloud/latest/Data/UsetheHTTPEventCollector) for more details and examples.
+For example: `https://prd-p-0qk3h.splunkcloud.com:8088/services/collector/raw`. Refer to the [Splunk Documentation ↗︎](https://docs.splunk.com/Documentation/SplunkCloud/latest/Data/UsetheHTTPEventCollector) for more details and examples.
 
 **Post Installation Notes**
 
@@ -80,13 +80,13 @@ You can change the **Index Name** after the initial configuration by clicking on
 
 ![Splunk interface highlighting Apps menu and Manage Apps option along with Enable Acceleration checkbox](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2534,height=1104,format=webp/_astro/splunk-settings-advanced-search-search-macros.Bt1szjjM.png)
 
-The Cloudflare App for Splunk comes with a custom Cloudflare Data Model that has an acceleration time frame of 1 day but is not accelerated by default. If you enable [Data Model acceleration ↗](https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Acceleratedatamodels), we recommend that the Data Model is only accelerated for 1 or 7 days to ensure there are no adverse effects within your Splunk environment.
+The Cloudflare App for Splunk comes with a custom Cloudflare Data Model that has an acceleration time frame of 1 day but is not accelerated by default. If you enable [Data Model acceleration ↗︎](https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Acceleratedatamodels), we recommend that the Data Model is only accelerated for 1 or 7 days to ensure there are no adverse effects within your Splunk environment.
 
 Enable or disable acceleration after the initial configuration by accessing the app Set up page by clicking the **Apps** dropdown, then **Manage Apps** > **Cloudflare Set Up**.
 
 ![Splunk Advanced Search page highlighted Search macros and Advanced search](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2522,height=1060,format=webp/_astro/splunk-apps-manage-apps-cloudflare-set-up-enable-data-model-acceleration.KQW0iwYr.png)
 
-You can also manually configure Data Models by going to **Settings** > **Data models**. Learn more about data model acceleration in the [Splunk documentation ↗](https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Acceleratedatamodels).
+You can also manually configure Data Models by going to **Settings** > **Data models**. Learn more about data model acceleration in the [Splunk documentation ↗︎](https://docs.splunk.com/Documentation/Splunk/latest/Knowledge/Acceleratedatamodels).
 
 ## Task 2 - create the Cloudflare Logpush job to Splunk
 
@@ -186,7 +186,7 @@ Available Filters:
 
 ## Splunk CIM field mappings
 
-The Cloudflare App for Splunk maps Cloudflare log fields to [Splunk Common Information Model (CIM) ↗](https://docs.splunk.com/Documentation/CIM/latest/User/Overview) field names, so that you can search, correlate, and accelerate Cloudflare data alongside other CIM-compliant sources in your Splunk deployment. The following tables list the mappings the app applies per Cloudflare Logpush dataset.
+The Cloudflare App for Splunk maps Cloudflare log fields to [Splunk Common Information Model (CIM) ↗︎](https://docs.splunk.com/Documentation/CIM/latest/User/Overview) field names, so that you can search, correlate, and accelerate Cloudflare data alongside other CIM-compliant sources in your Splunk deployment. The following tables list the mappings the app applies per Cloudflare Logpush dataset.
 
 ### HTTP requests
 

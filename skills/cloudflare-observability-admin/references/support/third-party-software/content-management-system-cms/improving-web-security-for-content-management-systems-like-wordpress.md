@@ -34,7 +34,7 @@ The [WAF Managed Rulesets](https://developers.cloudflare.com/waf/managed-rules/)
 
 ### Managed Rulesets on the Free Plan
 
-While the feature to customize these managed rulesets required a paid plan, the [Free Cloudflare Managed Ruleset ↗](https://blog.cloudflare.com/waf-for-everyone/#the-free-cloudflare-managed-ruleset) is automatically deployed on any new Cloudflare zone. This ruleset is specially designed to reduce false positives to a minimum across a very broad range of traffic types. As of today, the ruleset contains the following rules:
+While the feature to customize these managed rulesets required a paid plan, the [Free Cloudflare Managed Ruleset ↗︎](https://blog.cloudflare.com/waf-for-everyone/#the-free-cloudflare-managed-ruleset) is automatically deployed on any new Cloudflare zone. This ruleset is specially designed to reduce false positives to a minimum across a very broad range of traffic types. As of today, the ruleset contains the following rules:
 
 - Log4J rules matching payloads in the URI and HTTP headers;
 - Shellshock rules;
@@ -92,7 +92,7 @@ Now that you’ve elevated your security to protect the publicly accessible part
 
 ### Zero Trust
 
-[Zero Trust ↗](https://www.cloudflare.com/plans/zero-trust-services/) Web Applications is the best way to limit access to your admin panel. You can restrict access based on user instead of device, and it allows for very granular control. Setup of a Self-hosted web application is very easy, for more information refer to the [Self-hosted applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) section of the Zero Trust developer documentation.
+[Zero Trust ↗︎](https://www.cloudflare.com/plans/zero-trust-services/) Web Applications is the best way to limit access to your admin panel. You can restrict access based on user instead of device, and it allows for very granular control. Setup of a Self-hosted web application is very easy, for more information refer to the [Self-hosted applications](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/) section of the Zero Trust developer documentation.
 
 After configuring a web application, users will be required to authenticate in some way before they can access the restricted content. The default method is through email multifactor authentication:
 
@@ -116,7 +116,7 @@ Do the following:
 
 ### Rate Limiting
 
-Rate limiting rules can help protect your login page from an attacker trying to guess your account password with a [brute force attack ↗](https://www.cloudflare.com/learning/bots/brute-force-attack/). You can define rate limits for requests matching an expression, as well as the action to perform when those rate limits are reached.
+Rate limiting rules can help protect your login page from an attacker trying to guess your account password with a [brute force attack ↗︎](https://www.cloudflare.com/learning/bots/brute-force-attack/). You can define rate limits for requests matching an expression, as well as the action to perform when those rate limits are reached.
 
 Rate Limiting Rules are now available unmetered, on all plans. For more information, refer to the [developer documentation](https://developers.cloudflare.com/waf/rate-limiting-rules/).
 
@@ -127,7 +127,7 @@ Rate Limiting Rules are now available unmetered, on all plans. For more informat
 - [WAF Managed Rules](https://developers.cloudflare.com/waf/managed-rules/)
 - [Cloudflare OWASP Core Ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/)
 - [Configure a custom rule with the Skip action](https://developers.cloudflare.com/waf/custom-rules/skip/)
-- [Zero Trust Services ↗](https://www.cloudflare.com/plans/zero-trust-services/)
+- [Zero Trust Services ↗︎](https://www.cloudflare.com/plans/zero-trust-services/)
 - [Client certificates](https://developers.cloudflare.com/ssl/client-certificates/)
 - [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/)
 

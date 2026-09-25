@@ -55,12 +55,12 @@ Handle flash sales, seasonal peaks, and viral demand:
 
 ### Create a new application
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 - A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare. All solutions in this use case require traffic to pass through Cloudflare's network.
 
 ### Use an existing application
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 - A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare's network.
 - If your store is hosted on a SaaS platform that already uses Cloudflare — such as [Shopify](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/shopify/), [BigCommerce](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/bigcommerce/), or [Salesforce Commerce Cloud](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/saas-customers/provider-guides/salesforce-commerce-cloud/) — follow the setup steps in the provider guide for your platform to add your own Cloudflare zone on top of your provider's existing configuration.
 

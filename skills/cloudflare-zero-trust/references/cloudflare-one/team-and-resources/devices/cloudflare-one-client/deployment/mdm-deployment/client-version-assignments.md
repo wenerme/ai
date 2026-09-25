@@ -26,7 +26,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -63,7 +63,7 @@ When a device is targeted by a deployment group, the client suppresses the local
 
 ## Set up a deployment group
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices**.
 2. Select the **Management** tab.
 3. Under **Client version assignments**, select **Manage**.
 4. Select **Create new deployment group**.
@@ -99,9 +99,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deployme
 	}'
 ```
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Create a deployment group using the [`cloudflare_zero_trust_device_deployment_groups` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_deployment_groups) resource:
+2. Create a deployment group using the [`cloudflare_zero_trust_device_deployment_groups` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_deployment_groups) resource:
 
    ```tf
    resource "cloudflare_zero_trust_device_deployment_groups" "example" {

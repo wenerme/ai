@@ -50,7 +50,7 @@ To set up a notification:
 
 ## Edit an existing notification
 
-To edit, delete, or disable a notification, go to your [account notifications ↗](https://dash.cloudflare.com/?to=/:account/notifications).
+To edit, delete, or disable a notification, go to your [account notifications ↗︎](https://dash.cloudflare.com/?to=/:account/notifications).
 
 ---
 

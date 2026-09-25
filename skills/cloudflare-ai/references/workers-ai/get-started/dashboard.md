@@ -18,7 +18,7 @@ Follow this guide to create a Workers AI application using the Cloudflare dashbo
 
 ## Prerequisites
 
-Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
+Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
 
 ## Setup
 
@@ -49,12 +49,12 @@ Once you have created your Worker script, you can edit and deploy your Worker us
 
 To develop more advanced applications or [implement tests](https://developers.cloudflare.com/workers/testing/), start working in the Wrangler CLI.
 
-1. Install [`npm` ↗](https://docs.npmjs.com/getting-started).
-2. Install [`Node.js` ↗](https://nodejs.org/en/).
+1. Install [`npm` ↗︎](https://docs.npmjs.com/getting-started).
+2. Install [`Node.js` ↗︎](https://nodejs.org/en/).
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
+Use a Node version manager like [Volta ↗︎](https://volta.sh/) or [nvm ↗︎](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), discussed later in this guide, requires a Node version of `16.17.0` or later.
 
 3. Run the following command, replacing the value of `[<DIRECTORY>]` which the location you want to put your Worker Script.
 

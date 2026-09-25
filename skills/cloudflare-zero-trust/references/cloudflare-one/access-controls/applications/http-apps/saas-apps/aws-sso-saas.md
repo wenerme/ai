@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/aws-sso-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [AWS ↗](https://docs.aws.amazon.com/singlesignon/latest/userguide/manage-your-identity-source-idp.html) as a SAML application in Cloudflare One.
+This guide covers how to configure [AWS ↗︎](https://docs.aws.amazon.com/singlesignon/latest/userguide/manage-your-identity-source-idp.html) as a SAML application in Cloudflare One.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ Next, we will obtain **Identity provider metadata** from Cloudflare One.
 
 ## 2. Add a SaaS application to Cloudflare One
 
-1. In a separate tab or window, open the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Zero Trust** > **Access controls** > **Applications**.
+1. In a separate tab or window, open the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application** > **SaaS application**.
 3. For **Application**, select *Amazon AWS*.
 4. For the authentication protocol, select **SAML**.
@@ -42,7 +42,7 @@ Next, we will obtain **Identity provider metadata** from Cloudflare One.
    - **Entity ID**: IAM Identity Center issuer URL
    - **Assertion Consumer Service URL**: IAM Identity Center Assertion Consumer Service (ACS) URL
    - **Name ID format**: *Email*
-7. (Optional) Additional SAML attribute statements can be passed from your IdP to AWS SSO. To learn more about AWS Attribute mapping, refer to [Attribute mappings - AWS Single Sign-On ↗](https://docs.aws.amazon.com/singlesignon/latest/userguide/attributemappingsconcept.html#supportedidpattributes).
+7. (Optional) Additional SAML attribute statements can be passed from your IdP to AWS SSO. To learn more about AWS Attribute mapping, refer to [Attribute mappings - AWS Single Sign-On ↗︎](https://docs.aws.amazon.com/singlesignon/latest/userguide/attributemappingsconcept.html#supportedidpattributes).
 8. AWS supports uploading a metadata XML file. To download your SAML metadata from Access:
    1. Copy the **SAML Metadata endpoint**.
    2. In a separate browser window, go to the SAML Metadata endpoint ( `https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/sso/saml/xxx/saml-metadata`).

@@ -18,7 +18,7 @@ AI Crawl Control enables you to take specific action for each AI crawler.
 
 To manage AI crawlers:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **AI Crawl Control**. [Go to **AI Crawl Control** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 3. Go to the **Security** tab.
 
@@ -36,7 +36,7 @@ The **Crawlers** tab displays a table of AI crawlers that are requesting access 
 
 Quality of AI crawler detection
 
-On the free plan, AI Crawl Control identifies AI crawlers based on their [user agent strings ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent). This enables AI Crawl Control to detect well-known, self-identifying AI crawlers.
+On the free plan, AI Crawl Control identifies AI crawlers based on their [user agent strings ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent). This enables AI Crawl Control to detect well-known, self-identifying AI crawlers.
 
 Upgrade your plan to enable a more thorough detection using Cloudflare's [Bot Management detection ID](https://developers.cloudflare.com/bots/reference/bot-management-variables/#ruleset-engine-fields) field.
 
@@ -74,9 +74,9 @@ Pay per crawl beta
 
 Pay per crawl is currently in closed beta.
 
-To find out how to join the beta program, reach out to us at [Pay per crawl signup ↗](https://www.cloudflare.com/paypercrawl-signup/), or contact your account executive if you are an existing Enterprise customer.
+To find out how to join the beta program, reach out to us at [Pay per crawl signup ↗︎](https://www.cloudflare.com/paypercrawl-signup/), or contact your account executive if you are an existing Enterprise customer.
 
-To learn more about pay per crawl, refer to Cloudflare blog: [Introducing pay per crawl: enabling content owners to charge AI crawlers for access ↗](https://blog.cloudflare.com/introducing-pay-per-crawl/).
+To learn more about pay per crawl, refer to Cloudflare blog: [Introducing pay per crawl: enabling content owners to charge AI crawlers for access ↗︎](https://blog.cloudflare.com/introducing-pay-per-crawl/).
 
 For each AI crawler, you can take one of three actions: allow, charge, or block.
 
@@ -127,7 +127,7 @@ This provides you with a channel to open dialogue with the AI crawler owner, and
 
 To edit these values:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **AI Crawl Control**. [Go to **AI Crawl Control** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 3. Go to the **Settings** tab.
 4. Under **Block response**, select **Edit**.

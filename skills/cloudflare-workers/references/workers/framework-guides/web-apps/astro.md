@@ -38,11 +38,11 @@ pnpm create cloudflare@latest my-astro-app --framework=astro
 
 ## What is Astro?
 
-[Astro ↗](https://astro.build/) is a JavaScript web framework designed for creating websites that display large amounts of content (such as blogs, documentation sites, or online stores).
+[Astro ↗︎](https://astro.build/) is a JavaScript web framework designed for creating websites that display large amounts of content (such as blogs, documentation sites, or online stores).
 
-Astro emphasizes performance through minimal client-side JavaScript - by default, it renders as much content as possible at build time, or [on-demand ↗](https://docs.astro.build/en/guides/on-demand-rendering/) on the "server" - this can be a Cloudflare Worker. [“Islands” ↗](https://docs.astro.build/en/concepts/islands/) of JavaScript are added only where interactivity or personalization is needed.
+Astro emphasizes performance through minimal client-side JavaScript - by default, it renders as much content as possible at build time, or [on-demand ↗︎](https://docs.astro.build/en/guides/on-demand-rendering/) on the "server" - this can be a Cloudflare Worker. [“Islands” ↗︎](https://docs.astro.build/en/concepts/islands/) of JavaScript are added only where interactivity or personalization is needed.
 
-Astro is also framework-agnostic, and supports every major UI framework, including React, Preact, Svelte, Vue, SolidJS, via its official [integrations ↗](https://astro.build/integrations/).
+Astro is also framework-agnostic, and supports every major UI framework, including React, Preact, Svelte, Vue, SolidJS, via its official [integrations ↗︎](https://astro.build/integrations/).
 
 ## Deploy a new Astro project on Workers
 
@@ -64,7 +64,7 @@ Astro is also framework-agnostic, and supports every major UI framework, includi
 
    What's happening behind the scenes?</summary>
 
-When you run this command, C3 creates a new project directory, initiates <a href="https://docs.astro.build/en/tutorial/1-setup/2/">Astro's official setup tool ↗</a>, and configures the project for Cloudflare. It then offers the option to instantly deploy your application to Cloudflare.</details>
+When you run this command, C3 creates a new project directory, initiates <a href="https://docs.astro.build/en/tutorial/1-setup/2/">Astro's official setup tool ↗︎</a>, and configures the project for Cloudflare. It then offers the option to instantly deploy your application to Cloudflare.</details>
 
 2. **Develop locally.**
 
@@ -167,7 +167,7 @@ If your Astro project is entirely pre-rendered, follow these steps:
    {
    	"name": "my-astro-app",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"assets": {
    		"directory": "./dist"
    	}
@@ -177,7 +177,7 @@ If your Astro project is entirely pre-rendered, follow these steps:
    ```toml
    name = "my-astro-app"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
 
    [assets]
    directory = "./dist"
@@ -225,7 +225,7 @@ The key part of this config is the <code>assets</code> field, which tells Wrangl
 
 ### If your site uses on demand rendering
 
-If your Astro project uses [on demand rendering (also known as SSR) ↗](https://docs.astro.build/en/guides/on-demand-rendering/), follow these steps:
+If your Astro project uses [on demand rendering (also known as SSR) ↗︎](https://docs.astro.build/en/guides/on-demand-rendering/), follow these steps:
 
 1. **Install the Astro Cloudflare adapter**npmyarnpnpm
 
@@ -245,7 +245,7 @@ If your Astro project uses [on demand rendering (also known as SSR) ↗](https:/
 
    What's happening behind the scenes?</summary>
 
-This command installs the Cloudflare adapter and makes the appropriate changes to your <code>astro.config.mjs</code> file in one step. By default, this sets the build output configuration to <code>output: 'server'</code>, which server renders all your pages by default. If there are certain pages that *don't* need on demand rendering/SSR, for example static pages like a privacy policy, you should set <code>export const prerender = true</code> for that page or route to pre-render it. You can read more about the adapter configuration options <a href="https://docs.astro.build/en/guides/integrations-guide/cloudflare/#options">in the Astro docs ↗</a>.</details>
+This command installs the Cloudflare adapter and makes the appropriate changes to your <code>astro.config.mjs</code> file in one step. By default, this sets the build output configuration to <code>output: 'server'</code>, which server renders all your pages by default. If there are certain pages that *don't* need on demand rendering/SSR, for example static pages like a privacy policy, you should set <code>export const prerender = true</code> for that page or route to pre-render it. You can read more about the adapter configuration options <a href="https://docs.astro.build/en/guides/integrations-guide/cloudflare/#options">in the Astro docs ↗︎</a>.</details>
 
 2. **Add a `.assetsignore` file** Create a `.assetsignore` file in your `public/` folder, and add the following lines to it:
 
@@ -269,7 +269,7 @@ This command installs the Cloudflare adapter and makes the appropriate changes t
    	"main": "./dist/_worker.js/index.js",
    	// Update to today's date
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": ["nodejs_compat"],
    	"assets": {
    		"binding": "ASSETS",
@@ -285,7 +285,7 @@ This command installs the Cloudflare adapter and makes the appropriate changes t
    name = "my-astro-app"
    main = "./dist/_worker.js/index.js"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [assets]
@@ -346,11 +346,11 @@ You cannot use bindings if you're using Astro to generate a purely static site.
 
 With bindings, your Astro application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more. Refer to the [bindings overview](https://developers.cloudflare.com/workers/runtime-apis/bindings/) for more information on what's available and how to configure them.
 
-The [Astro docs ↗](https://docs.astro.build/en/guides/integrations-guide/cloudflare/#cloudflare-runtime) provide information about how you can access them in your `locals`.
+The [Astro docs ↗︎](https://docs.astro.build/en/guides/integrations-guide/cloudflare/#cloudflare-runtime) provide information about how you can access them in your `locals`.
 
 ## Sessions
 
-Astro's [Sessions API ↗](https://docs.astro.build/en/guides/sessions/) allows you to store user data between requests, such as user preferences, shopping carts, or authentication credentials. When using the Cloudflare adapter, Astro automatically configures [Workers KV](https://developers.cloudflare.com/kv/) for session storage.
+Astro's [Sessions API ↗︎](https://docs.astro.build/en/guides/sessions/) allows you to store user data between requests, such as user preferences, shopping carts, or authentication credentials. When using the Cloudflare adapter, Astro automatically configures [Workers KV](https://developers.cloudflare.com/kv/) for session storage.
 
 Wrangler automatically provisions a KV namespace named `SESSION` when you deploy, so no manual setup is required.
 
@@ -363,7 +363,7 @@ const cart = await Astro.session?.get("cart");
 <a href="/checkout">{cart?.length ?? 0} items</a>
 ```
 
-You can customize the KV binding name with the [`sessionKVBindingName` ↗](https://docs.astro.build/en/guides/integrations-guide/cloudflare/#sessionkvbindingname) adapter option if you want to use a different binding name.
+You can customize the KV binding name with the [`sessionKVBindingName` ↗︎](https://docs.astro.build/en/guides/integrations-guide/cloudflare/#sessionkvbindingname) adapter option if you want to use a different binding name.
 
 ## Custom 404 pages
 
@@ -388,13 +388,13 @@ This tells Cloudflare to serve your custom 404 page (for example, `src/pages/404
 
 ## Astro's build configuration
 
-The Astro Cloudflare adapter sets the build output configuration to `output: 'server'`, which means all pages are rendered on-demand in your Cloudflare Worker. If there are certain pages that *don't* need on demand rendering/SSR, for example static pages such as a privacy policy, you should set `export const prerender = true` for that page or route to pre-render it. You can read more about on-demand rendering [in the Astro docs ↗](https://docs.astro.build/en/guides/on-demand-rendering/).
+The Astro Cloudflare adapter sets the build output configuration to `output: 'server'`, which means all pages are rendered on-demand in your Cloudflare Worker. If there are certain pages that *don't* need on demand rendering/SSR, for example static pages such as a privacy policy, you should set `export const prerender = true` for that page or route to pre-render it. You can read more about on-demand rendering [in the Astro docs ↗︎](https://docs.astro.build/en/guides/on-demand-rendering/).
 
 If you want to use Astro as a static site generator, you do not need the Astro Cloudflare adapter. Astro will pre-render all pages at build time by default, and you can simply upload those static assets to be served by Cloudflare.
 
 ## Node.js requirements
 
-Astro 5.x supports Node.js 18.20.8, Node.js 20.3.0 and later 20.x releases, or Node.js 22.0.0 or later. Astro 6.x and 7.x require Node.js 22.12.0 or later. If you use [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/), its default Node.js version meets these requirements. If you override the default, select a version that meets [Astro's Node.js requirements ↗](https://docs.astro.build/en/install-and-setup/#prerequisites).
+Astro 5.x supports Node.js 18.20.8, Node.js 20.3.0 and later 20.x releases, or Node.js 22.0.0 or later. Astro 6.x and 7.x require Node.js 22.12.0 or later. If you use [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/), its default Node.js version meets these requirements. If you override the default, select a version that meets [Astro's Node.js requirements ↗︎](https://docs.astro.build/en/install-and-setup/#prerequisites).
 
 Was this helpful?
 

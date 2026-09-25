@@ -14,19 +14,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/registrar/account-options/icloud-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-With [iCloud Custom Email Domain ↗](https://support.apple.com/kb/HT212514), you can now purchase a custom domain right from iCloud Settings through Cloudflare and have it automatically set up with your iCloud Mail account. It's great if you want to create a custom email domain for you or your family, such as @examplefamily.com.
+With [iCloud Custom Email Domain ↗︎](https://support.apple.com/kb/HT212514), you can now purchase a custom domain right from iCloud Settings through Cloudflare and have it automatically set up with your iCloud Mail account. It's great if you want to create a custom email domain for you or your family, such as @examplefamily.com.
 
 You will need an active iCloud+ subscription to add a custom email domain.
 
 ## Purchase custom email domain
 
-If you want to buy a custom email domain, go to your [iCloud ↗](https://www.icloud.com/settings/) settings and scroll down to **Custom Email Domain**.
+If you want to buy a custom email domain, go to your [iCloud ↗︎](https://www.icloud.com/settings/) settings and scroll down to **Custom Email Domain**.
 
 ---
 
 ## Log in to Cloudflare
 
-Once you have bought a custom email domain, you can manage your domain and other options through the [Cloudflare Dashboard ↗](https://dash.cloudflare.com/login).
+Once you have bought a custom email domain, you can manage your domain and other options through the [Cloudflare Dashboard ↗︎](https://dash.cloudflare.com/login).
 
 ### Signing in with Apple
 
@@ -70,7 +70,7 @@ If you are not receiving emails intended for your new email address, review your
 
 ![Your iCloud custom email domain should have a specific set of records created by default.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1600,height=602,format=webp/_astro/icloud-custom-domain-dns-example.DXfRAhRV.png)
 
-If your domain has records similar to those listed above and you are still experiencing problems with your new email address, contact [Apple Support ↗](https://support.apple.com/).
+If your domain has records similar to those listed above and you are still experiencing problems with your new email address, contact [Apple Support ↗︎](https://support.apple.com/).
 
 ---
 

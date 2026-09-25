@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
+An MCP server portal centralizes multiple [Model Context Protocol (MCP) servers ↗︎](https://www.cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) onto a single HTTP endpoint.
 
 ![MCP clients connect through an MCP portal to access internal MCP servers and SaaS MCP servers.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1034,height=600,format=webp/_astro/mcp-portal.B5web1ii.png)
 
@@ -49,9 +49,9 @@ For servers that use automatic OAuth registration, background synchronization of
 
 ### Transport
 
-The portal accepts stateless [MCP `2026-07-28` ↗](https://modelcontextprotocol.io/specification/2026-07-28) and earlier 2025 Streamable HTTP clients at its `/mcp` endpoint. The portal selects the protocol from each request. You do not need to configure a protocol version.
+The portal accepts stateless [MCP `2026-07-28` ↗︎](https://modelcontextprotocol.io/specification/2026-07-28) and earlier 2025 Streamable HTTP clients at its `/mcp` endpoint. The portal selects the protocol from each request. You do not need to configure a protocol version.
 
-The portal connects to upstream MCP servers using [Streamable HTTP ↗](https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http) or [SSE ↗](https://spec.modelcontextprotocol.io/specification/2024-11-05/basic/transports/#server-sent-events-sse-deprecated) transport. For Streamable HTTP servers, the portal checks for MCP `2026-07-28` support and uses the stateless protocol when available. If the upstream server does not support it, the portal falls back to the 2025 handshake on the same connection. SSE connections always use the legacy protocol.
+The portal connects to upstream MCP servers using [Streamable HTTP ↗︎](https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http) or [SSE ↗︎](https://spec.modelcontextprotocol.io/specification/2024-11-05/basic/transports/#server-sent-events-sse-deprecated) transport. For Streamable HTTP servers, the portal checks for MCP `2026-07-28` support and uses the stateless protocol when available. If the upstream server does not support it, the portal falls back to the 2025 handshake on the same connection. SSE connections always use the legacy protocol.
 
 Client and upstream protocol selection are independent. For example, a 2025 client can connect through a portal to a stateless upstream server. A stateless client can also connect to a legacy upstream server.
 
@@ -105,12 +105,12 @@ Add individual MCP servers to Cloudflare Access to bring them under centralized 
 
 To add an MCP server:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Go to the **MCP servers** tab.
 3. Select **Add an MCP server**.
 4. Enter any name for the server.
 5. (Optional) Enter a custom string for the **Server ID**.
-6. In **HTTP URL**, enter the full URL of your MCP server. For example, if you want to add the [Cloudflare Documentation MCP server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search), enter `https://docs.mcp.cloudflare.com/mcp`.
+6. In **HTTP URL**, enter the full URL of your MCP server. For example, if you want to add the [Cloudflare Documentation MCP server ↗︎](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/docs-ai-search), enter `https://docs.mcp.cloudflare.com/mcp`.
 7. Add [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) to show or hide the server in an [MCP server portal](#create-a-portal). The MCP server link will only appear in the portal for users who match an Allow policy. Users who do not pass an Allow policy will not see this server through any portals.
 
    Caution
@@ -123,7 +123,7 @@ Cloudflare Access will validate the server connection and retrieve a list of pro
 
 ### Connect a private MCP server
 
-MCP server portals can connect to an MCP server available only on your private network. The MCP server URL and its [OAuth protected resource metadata ↗](https://www.rfc-editor.org/rfc/rfc9728.html) can use a private hostname. OAuth authorization server endpoints, such as the authorization and token endpoints, must be accessible on the public Internet. If Cloudflare automatically registers the OAuth client through Dynamic Client Registration (DCR), the registration endpoint must also be accessible on the public Internet.
+MCP server portals can connect to an MCP server available only on your private network. The MCP server URL and its [OAuth protected resource metadata ↗︎](https://www.rfc-editor.org/rfc/rfc9728.html) can use a private hostname. OAuth authorization server endpoints, such as the authorization and token endpoints, must be accessible on the public Internet. If Cloudflare automatically registers the OAuth client through Dynamic Client Registration (DCR), the registration endpoint must also be accessible on the public Internet.
 
 Before you add the server, connect its network to Cloudflare. Use [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) or another [Cloudflare One connector](https://developers.cloudflare.com/cloudflare-one/networks/connectors/). Configure a [private hostname route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-private-hostname/) or [CIDR route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/) for the server.
 
@@ -137,7 +137,7 @@ To add the private MCP server:
 
 ### Configure manual OAuth credentials
 
-Use manual OAuth credentials when the upstream provider does not support [OAuth Dynamic Client Registration ↗](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#dynamic-client-registration). This flow uses an OAuth application that you register with the upstream provider.
+Use manual OAuth credentials when the upstream provider does not support [OAuth Dynamic Client Registration ↗︎](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#dynamic-client-registration). This flow uses an OAuth application that you register with the upstream provider.
 
 1. Add the MCP server with **OAuth** as its authentication method.
 2. In **Zero Trust** > **Access controls** > **MCP Portals**, go to the **MCP servers** tab.
@@ -164,7 +164,7 @@ Manual credentials require per-user authentication. Leave **Require user auth** 
 
 ### MCP Apps
 
-[MCP Apps ↗](https://modelcontextprotocol.io/extensions/apps/overview) — tools that declare a UI resource in their description — will also be available after successfully connecting to an MCP server. A list of MCP clients that support MCP Apps is available in the [Extension Support Matrix ↗](https://modelcontextprotocol.io/extensions/client-matrix).
+[MCP Apps ↗︎](https://modelcontextprotocol.io/extensions/apps/overview) — tools that declare a UI resource in their description — will also be available after successfully connecting to an MCP server. A list of MCP clients that support MCP Apps is available in the [Extension Support Matrix ↗︎](https://modelcontextprotocol.io/extensions/client-matrix).
 
 ### Server status
 
@@ -195,7 +195,7 @@ If `is_upstream` is `true`, use `status_code`, `mcp_code`, and `cause` to troubl
 
 To reauthenticate an MCP server in Cloudflare Access:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Go to the **MCP servers** tab.
 3. Select the server that you want to reauthenticate, then select **Edit**.
 4. Select **Authenticate server**.
@@ -214,7 +214,7 @@ Synchronization uses the admin credential, not individual user credentials. If t
 
 To manually refresh the MCP server in Zero Trust:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Go to the **MCP servers** tab and find the server that you want to refresh.
 3. Select the three dots > **Sync capabilities**.
 
@@ -252,7 +252,7 @@ If an upstream OAuth provider rejects the callback URL, check whether **Use the 
 
 To create an MCP server portal:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Select **Add MCP server portal**.
 3. Enter any name for the portal.
 4. Under **Custom domain**, select a domain from an active zone in your account. You can optionally specify a subdomain.
@@ -273,7 +273,7 @@ Users can now [connect to the portal](#connect-to-a-portal) at `https://<subdoma
 
 Cloudflare Access automatically creates an Access application for each MCP server portal. You can customize the portal login experience by updating Access application settings:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Find the portal that you want to configure, then select the three dots > **Edit**.
 3. To configure identity providers for the portal:
    1. Go to **Authentication**.
@@ -295,7 +295,7 @@ When you add an MCP server to a portal, all of its tools and prompts are availab
 
 To hide specific tools or prompts from portal users:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
 3. Under **Servers**, select the server name to open its tools panel.
 4. Scroll down to the **Tools** section, then turn off the toggle next to any tool or prompt that you want to hide from users.![The tools panel for an MCP server shows a list of tools with a toggle next to each one.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1017,height=855,format=webp/_astro/mcp-portal-manage-tools.CAqPUw2R.png)
@@ -365,7 +365,7 @@ Custom descriptions follow the same precedence. Set a description by including t
 
 To set an alias that applies to a specific portal:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
 3. Go to the **Servers** tab.
 4. Select the **Tools authorized** or **Prompts authorized** value for the server you want to configure (for example, `10/10`).
@@ -375,7 +375,7 @@ To set an alias that applies to a specific portal:
 
 To set an alias that applies across all portals using a server:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Go to the **MCP servers** tab.
 3. Find the server you want to configure, then select the three dots > **Edit**.
 4. Go to the **Tools** or **Prompts** tab.
@@ -681,7 +681,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/ai-c
 
 ## Configure via Terraform
 
-You can manage MCP server portals using the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs). Use the `cloudflare_zero_trust_access_mcp_server_portal` resource to create and configure portals programmatically.
+You can manage MCP server portals using the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs). Use the `cloudflare_zero_trust_access_mcp_server_portal` resource to create and configure portals programmatically.
 
 Caution
 
@@ -709,7 +709,7 @@ resource "cloudflare_dns_record" "mcp_portal" {
 }
 ```
 
-For the full list of supported resource arguments, refer to the [Terraform provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+For the full list of supported resource arguments, refer to the [Terraform provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 ## Code Mode
 
@@ -809,7 +809,7 @@ Portal traffic ignores the global TLS decryption setting, but it still respects 
 
 ### Supported transports
 
-Gateway routing supports [Streamable HTTP ↗](https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http) connections only. If an upstream MCP server is configured with a Server-Sent Events (SSE) endpoint (a URL ending in `/sse`), the portal will automatically attempt to connect using Streamable HTTP instead. If the upstream server does not support Streamable HTTP, the connection will fail when Gateway routing is turned on.
+Gateway routing supports [Streamable HTTP ↗︎](https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http) connections only. If an upstream MCP server is configured with a Server-Sent Events (SSE) endpoint (a URL ending in `/sse`), the portal will automatically attempt to connect using Streamable HTTP instead. If the upstream server does not support Streamable HTTP, the connection will fail when Gateway routing is turned on.
 
 ### Enable Gateway routing
 
@@ -819,7 +819,7 @@ You can route every server in a portal through Gateway or turn on routing for in
 
 To route traffic from every MCP server in a portal through Gateway:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Find the portal you want to configure, then select the three dots > **Edit**.
 3. Under **Basic information**, turn on **Route traffic through Cloudflare Gateway**.
 4. Select **Save**.
@@ -828,7 +828,7 @@ To route traffic from every MCP server in a portal through Gateway:
 
 To route traffic from one MCP server through Gateway without enabling Gateway routing for the entire portal:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **AI controls**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **AI controls**.
 2. Go to the **MCP servers** tab.
 3. Find the server you want to configure, then select the three dots > **Edit**.
 4. Under **Basic information**, turn on **Route traffic through Cloudflare Gateway**.
@@ -868,11 +868,11 @@ The agent can retry the request, but it will continue to be blocked until the co
 
 ## Connect to a portal
 
-Users can connect to your MCP server running at `https://<subdomain>.<domain>/mcp` using [Workers AI Playground ↗](https://playground.ai.cloudflare.com/), [MCP inspector ↗](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients) that support remote MCP servers.
+Users can connect to your MCP server running at `https://<subdomain>.<domain>/mcp` using [Workers AI Playground ↗︎](https://playground.ai.cloudflare.com/), [MCP inspector ↗︎](https://github.com/modelcontextprotocol/inspector), or [other MCP clients](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/#connect-your-mcp-server-to-claude-and-other-mcp-clients) that support remote MCP servers.
 
 To test in Workers AI Playground:
 
-1. Go to [Workers AI Playground ↗](https://playground.ai.cloudflare.com/).
+1. Go to [Workers AI Playground ↗︎](https://playground.ai.cloudflare.com/).
 2. Under **MCP Servers**, enter `https://<subdomain>.<domain>/mcp` for the portal URL.
 3. Select **Connect**.
 4. In the popup window, log in to your Cloudflare Access identity provider.
@@ -1066,7 +1066,7 @@ For more information on the Code Mode pattern behind `search_and_execute`, refer
 
 ## Manage portal sessions
 
-Once connected to a portal, users can manage their upstream MCP server sessions without leaving their MCP client. The portal uses [MCP elicitations ↗](https://modelcontextprotocol.io/specification/2025-03-26/server/elicitation) to provide a server selection page where you can enable or disable servers, log out of individual servers, and reauthenticate.
+Once connected to a portal, users can manage their upstream MCP server sessions without leaving their MCP client. The portal uses [MCP elicitations ↗︎](https://modelcontextprotocol.io/specification/2025-03-26/server/elicitation) to provide a server selection page where you can enable or disable servers, log out of individual servers, and reauthenticate.
 
 ### Return to the server selection page
 
@@ -1119,7 +1119,7 @@ When an admin adds a new upstream MCP server to a portal, the portal automatical
 
 Portal logs allow you to monitor user activity through an MCP server portal. You can view logs on a per-portal or per-server basis.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **MCP Portals**.
 2. Find the portal or server that you want to view logs for, then select the three dots > **Edit**.
 3. Select **Logs**.
 
@@ -1147,7 +1147,7 @@ To set up a Logpush job for MCP portal logs, refer to [Logpush integration](http
 
 MCP server portals have the following known limitations:
 
-- **Only remote HTTP MCP servers are supported.** MCP servers that use [stdio transport only ↗](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports) (for example, `github/github-mcp-server`) do not expose a remote HTTP endpoint and cannot be added to an MCP server portal. To use a stdio-only server, you must self-host it behind an HTTP endpoint and authenticate with a [bearer token or custom headers](#create-an-mcp-server).
+- **Only remote HTTP MCP servers are supported.** MCP servers that use [stdio transport only ↗︎](https://modelcontextprotocol.io/specification/2025-11-25/basic/transports) (for example, `github/github-mcp-server`) do not expose a remote HTTP endpoint and cannot be added to an MCP server portal. To use a stdio-only server, you must self-host it behind an HTTP endpoint and authenticate with a [bearer token or custom headers](#create-an-mcp-server).
 - **Some MCP servers block proxy-based clients.** Certain MCP servers reject requests from proxy-based clients like MCP server portals, returning a `403` error on the registration endpoint. These servers are not compatible with MCP server portals until those providers add Cloudflare as a supported MCP client.
 - **Manual OAuth capabilities are captured during the first user authorization.** Servers configured with [manual OAuth credentials](#configure-manual-oauth-credentials) remain in **Waiting** status until a user completes upstream OAuth. Cloudflare stores the tools and prompts returned during that connection. Background and manual capability synchronization do not refresh them.
 - **Admin OAuth tokens can expire silently.** The admin credential used to [authenticate an MCP server](#reauthenticate-the-mcp-server) is subject to the upstream provider's token expiration policy. When the token expires, the server status changes to **Error** or **Sync Required** and the server will not appear in the portal for end users. Admins are not notified when this happens. Periodically check the [server status](#server-status) and [reauthenticate](#reauthenticate-the-mcp-server) servers that show an error.
@@ -1196,7 +1196,7 @@ A `522` error indicates that Cloudflare cannot reach the portal's origin. This t
 The `Waiting` status means Cloudflare is attempting to connect to the upstream MCP server and fetch its tools and prompts. If the server stays in this status:
 
 1. Verify that the upstream MCP server URL is correct and the server is reachable.
-2. Check that the upstream server supports [Streamable HTTP ↗](https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http) or SSE transport. The portal will attempt multiple connection strategies automatically.
+2. Check that the upstream server supports [Streamable HTTP ↗︎](https://spec.modelcontextprotocol.io/specification/2025-03-26/basic/transports/#streamable-http) or SSE transport. The portal will attempt multiple connection strategies automatically.
 3. If the server requires authentication, verify that the admin credentials are valid by [reauthenticating the server](#reauthenticate-the-mcp-server).
 4. Select the three dots > **Sync capabilities** to manually retry the connection.
 
@@ -1235,7 +1235,7 @@ Errors such as `invalid_redirect_uri`, `invalid_client_metadata`, or `Redirect U
 
 The portal homepage displays your Access organization name and branding. If the displayed name is incorrect:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Settings** > **General** > **Team name**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Settings** > **General** > **Team name**.
 2. Update your team name. The change will take effect the next time a user visits the portal homepage.
 
 Was this helpful?

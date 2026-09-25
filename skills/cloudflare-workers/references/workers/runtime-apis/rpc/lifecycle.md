@@ -30,12 +30,12 @@ In many cases (described below), the system will automatically realize when a st
 
 ## Explicit Resource Management
 
-To ensure resources are properly disposed of, you should use [Explicit Resource Management ↗](https://github.com/tc39/proposal-explicit-resource-management), a new JavaScript language feature that allows you to explicitly signal when resources can be disposed of. Explicit Resource Management is a Stage 3 TC39 proposal — it is [coming to V8 soon ↗](https://bugs.chromium.org/p/v8/issues/detail?id=13559).
+To ensure resources are properly disposed of, you should use [Explicit Resource Management ↗︎](https://github.com/tc39/proposal-explicit-resource-management), a new JavaScript language feature that allows you to explicitly signal when resources can be disposed of. Explicit Resource Management is a Stage 3 TC39 proposal — it is [coming to V8 soon ↗︎](https://bugs.chromium.org/p/v8/issues/detail?id=13559).
 
 Explicit Resource Management adds the following language features:
 
-- The [`using` declaration ↗](https://github.com/tc39/proposal-explicit-resource-management?tab=readme-ov-file#using-declarations)
-- [`Symbol.dispose` and `Symbol.asyncDispose` ↗](https://github.com/tc39/proposal-explicit-resource-management?tab=readme-ov-file#additions-to-symbol)
+- The [`using` declaration ↗︎](https://github.com/tc39/proposal-explicit-resource-management?tab=readme-ov-file#using-declarations)
+- [`Symbol.dispose` and `Symbol.asyncDispose` ↗︎](https://github.com/tc39/proposal-explicit-resource-management?tab=readme-ov-file#additions-to-symbol)
 
 If a variable is declared with `using`, when the variable is no longer in scope, the variable's disposer will be invoked. For example:
 
@@ -158,7 +158,7 @@ await func(stub);
 // stub2 is still valid
 ```
 
-You can think of `dup()` like the [Unix system call of the same name ↗](https://man7.org/linux/man-pages/man2/dup.2.html): it creates a new handle pointing at the same target, which must be independently closed (disposed).
+You can think of `dup()` like the [Unix system call of the same name ↗︎](https://man7.org/linux/man-pages/man2/dup.2.html): it creates a new handle pointing at the same target, which must be independently closed (disposed).
 
 If the instance of the [`RpcTarget` class](https://developers.cloudflare.com/workers/runtime-apis/rpc/) that the stubs point to has a disposer, the disposer will only be invoked when all duplicates have been disposed. However, this only applies to duplicates that originate from the same stub. If the same instance of `RpcTarget` is passed over RPC multiple times, a new stub is created each time, and these are not considered duplicates of each other. Thus, the disposer will be invoked once for each time the `RpcTarget` was sent.
 

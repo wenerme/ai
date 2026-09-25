@@ -54,9 +54,9 @@ The **Metrics** tab now includes a **Content Format** chart showing what content
 
 #### Directives tab (formerly Robots.txt)
 
-The **Robots.txt** tab has been renamed to **Directives** and now includes a link to check your site's [Agent Readiness ↗](https://isitagentready.com) score.
+The **Robots.txt** tab has been renamed to **Directives** and now includes a link to check your site's [Agent Readiness ↗︎](https://isitagentready.com) score.
 
-Refer to our [blog post on preparing for the agentic Internet ↗](https://blog.cloudflare.com/agent-readiness/) for more on why these capabilities matter.
+Refer to our [blog post on preparing for the agentic Internet ↗︎](https://blog.cloudflare.com/agent-readiness/) for more on why these capabilities matter.
 
 ## 2026-03-24
 
@@ -232,7 +232,7 @@ The Robots.txt tab allows you to:
 
 - Monitor the health status of `robots.txt` files across all your hostnames, including HTTP status codes, and identify hostnames that need a `robots.txt` file.
 - Track the total number of requests to each `robots.txt` file, with breakdowns of successful versus unsuccessful requests.
-- Check whether your `robots.txt` files contain [Content Signals ↗](https://contentsignals.org/) directives for AI training, search, and AI input.
+- Check whether your `robots.txt` files contain [Content Signals ↗︎](https://contentsignals.org/) directives for AI training, search, and AI input.
 - Identify crawlers that request paths explicitly disallowed by your `robots.txt` directives, including the crawler name, operator, violated path, specific directive, and violation count.
 - Filter `robots.txt` request data by crawler, operator, category, and custom time ranges.
 

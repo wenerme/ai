@@ -108,7 +108,7 @@ You can also access the Log Explorer dashboard directly from the [Security Analy
 
 All the tables supported by Log Explorer contain a special column called `date`, which helps to narrow down the amount of data that is scanned to respond to your query, resulting in faster query response times. The value of `date` must be in the form of `YYYY-MM-DD`. For example, to query logs that occurred on October 12, 2023, add the following to your `WHERE` clause: `date = '2023-10-12'`. The column supports the standard operators of `<`, `>`, and `=`.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login) and select your account.
 2. Go to **Log Explorer** > **Log Search** > **Custom SQL**.
 3. Enter the following SQL query:
 

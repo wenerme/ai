@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/guides/run-mesh-in-containers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [`cloudflare/mesh` ↗](https://hub.docker.com/r/cloudflare/mesh) Docker image packages a Cloudflare Mesh node for Linux containers. It runs the Cloudflare One Client's `warp-svc` daemon headlessly in a minimal [Wolfi ↗](https://wolfi.dev/)-based runtime.
+The [`cloudflare/mesh` ↗︎](https://hub.docker.com/r/cloudflare/mesh) Docker image packages a Cloudflare Mesh node for Linux containers. It runs the Cloudflare One Client's `warp-svc` daemon headlessly in a minimal [Wolfi ↗︎](https://wolfi.dev/)-based runtime.
 
 Use the container image to add Mesh nodes to Docker Compose stacks, Kubernetes clusters, and CI/CD pipelines — without installing packages on the host.
 
@@ -72,7 +72,7 @@ Install `jq`, then set `ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` before running th
 
 Note
 
-Mesh nodes can also be managed with Terraform using the [`cloudflare_zero_trust_tunnel_warp_connector` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_warp_connector) resource. To manage node configuration, use [`cloudflare_zero_trust_tunnel_warp_connector_config` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_warp_connector_config).
+Mesh nodes can also be managed with Terraform using the [`cloudflare_zero_trust_tunnel_warp_connector` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_warp_connector) resource. To manage node configuration, use [`cloudflare_zero_trust_tunnel_warp_connector_config` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_warp_connector_config).
 
 If this is your first Mesh node, configure the [required account settings](https://developers.cloudflare.com/mesh/get-started/#required-account-settings). You can use the dashboard wizard, APIs, or Terraform.
 
@@ -346,7 +346,7 @@ kubectl exec cloudflare-mesh-sidecar-0 -c mesh -- warp-cli status
 
 | Parameter | Description |
 | --- | --- |
-| `MESH_NODE_TOKEN` | **Required** for initial registration. Create the token under **Networking** > **Mesh** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/mesh), or via the [API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/warp_connector/methods/create/). |
+| `MESH_NODE_TOKEN` | **Required** for initial registration. Create the token under **Networking** > **Mesh** in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/mesh), or via the [API](https://developers.cloudflare.com/api/resources/zero_trust/subresources/tunnels/subresources/warp_connector/methods/create/). |
 | `SRCNAT_ENABLED` | Controls [source NAT](#source-nat). Defaults to `true`. Accepts `true`, `false`, `1`, or `0`. |
 | `/var/lib/cloudflare-warp` | Stores registration state. Persist this path with a volume to maintain a stable Mesh identity across container recreation. |
 

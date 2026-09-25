@@ -69,7 +69,7 @@ await someResponse.body.pipeTo(writable);
 ## Related resources
 
 - [Streams](https://developers.cloudflare.com/workers/runtime-apis/streams/)
-- [Writable streams in the WHATWG Streams API specification ↗](https://streams.spec.whatwg.org/#ws-model)
+- [Writable streams in the WHATWG Streams API specification ↗︎](https://streams.spec.whatwg.org/#ws-model)
 
 Was this helpful?
 

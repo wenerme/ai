@@ -138,7 +138,7 @@ cleanup:
 
 ### Use wrangler-action instead
 
-If you prefer a wrapper, use [`cloudflare/wrangler-action` ↗](https://github.com/cloudflare/wrangler-action). It exposes Preview URLs as outputs and can create a GitHub Deployment.
+If you prefer a wrapper, use [`cloudflare/wrangler-action` ↗︎](https://github.com/cloudflare/wrangler-action). It exposes Preview URLs as outputs and can create a GitHub Deployment.
 
 ## Monorepo with multiple Workers
 

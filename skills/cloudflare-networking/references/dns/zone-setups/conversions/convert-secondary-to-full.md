@@ -40,7 +40,7 @@ At this point, your zone will be read-only.
 
    Caution
 
-   Leaving Pre-signed DNSSEC enabled after converting to a full zone can prevent DNS records from propagating to Cloudflare's edge, causing your zone to return `REFUSED` responses. If you experience this after converting, verify by querying your assigned nameservers using [digwebinterface.com ↗](https://digwebinterface.com/), then check the [DNSSEC Details endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/get/) for `dnssec_presigned: true` and disable it using the [Edit DNSSEC Status endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/) with `dnssec_presigned` set to `false`.
+   Leaving Pre-signed DNSSEC enabled after converting to a full zone can prevent DNS records from propagating to Cloudflare's edge, causing your zone to return `REFUSED` responses. If you experience this after converting, verify by querying your assigned nameservers using [digwebinterface.com ↗︎](https://digwebinterface.com/), then check the [DNSSEC Details endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/get/) for `dnssec_presigned: true` and disable it using the [Edit DNSSEC Status endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/) with `dnssec_presigned` set to `false`.
 2. Make sure the [proxy statuses](https://developers.cloudflare.com/dns/proxy-status/) of your DNS records are consistently set:
    - If you have [Secondary DNS override](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/), confirm each record has the appropriate setting (**Proxied** or **DNS only**).
    - If [Secondary DNS override](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/proxy-traffic/) is disabled, make sure all of your DNS records are listed as **DNS only**.
@@ -49,7 +49,7 @@ At this point, your zone will be read-only.
 ## 3. Convert your zone
 
 1. Use the [Edit Zone endpoint](https://developers.cloudflare.com/api/resources/zones/methods/edit/) with `type` set to `full` to convert the zone type. Existing DNS records will not be affected.
-2. Go to the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page and take note of your new **Cloudflare Nameservers**.
+2. Go to the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page and take note of your new **Cloudflare Nameservers**.
 3. At your domain registrar (or parent zone), [update your nameservers](https://developers.cloudflare.com/dns/nameservers/update-nameservers/). Replace the nameservers ending in `secondary.cloudflare.com` by the ones ending in `ns.cloudflare.com`.
 
    Note

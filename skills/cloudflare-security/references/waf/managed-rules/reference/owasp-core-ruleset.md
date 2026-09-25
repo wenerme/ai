@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Cloudflare OWASP Core Ruleset is Cloudflare's implementation of the [OWASP ModSecurity Core Rule Set ↗](https://owasp.org/www-project-modsecurity-core-rule-set/) (CRS) version 3.3.0.
+The Cloudflare OWASP Core Ruleset is Cloudflare's implementation of the [OWASP ModSecurity Core Rule Set ↗︎](https://owasp.org/www-project-modsecurity-core-rule-set/) (CRS) version 3.3.0.
 
 The Cloudflare OWASP Core Ruleset is designed to work as a single entity to calculate a [threat score](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#request-threat-score) and execute an action based on that score. When a rule in the ruleset matches a request, the threat score increases according to the rule score. If the final threat score is greater than the configured [score threshold](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/concepts/#score-threshold), Cloudflare executes the action configured in the last rule of the ruleset.
 
@@ -24,9 +24,9 @@ The Cloudflare OWASP Core Ruleset is prone to false positives and offers only ma
 
 ## OWASP Top 10 versus Cloudflare Rulesets
 
-The Cloudflare OWASP Core Ruleset is Cloudflare's implementation of the OWASP ModSecurity Core Rule Set version 3.3.0, which is different from the [OWASP Top 10 ↗](https://owasp.org/www-project-top-ten/).
+The Cloudflare OWASP Core Ruleset is Cloudflare's implementation of the OWASP ModSecurity Core Rule Set version 3.3.0, which is different from the [OWASP Top 10 ↗︎](https://owasp.org/www-project-top-ten/).
 
-The [OWASP Top 10 ↗](https://owasp.org/www-project-top-ten/) is a list of the most severe application security risks, designed to raise awareness among practitioners and developers. While some risks can be addressed by a web application firewall, others require different solutions or must be mitigated during application development. Specifically:
+The [OWASP Top 10 ↗︎](https://owasp.org/www-project-top-ten/) is a list of the most severe application security risks, designed to raise awareness among practitioners and developers. While some risks can be addressed by a web application firewall, others require different solutions or must be mitigated during application development. Specifically:
 
 - Cryptographic Failures
 - Insecure Design

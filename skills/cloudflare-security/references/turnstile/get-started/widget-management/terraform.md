@@ -20,7 +20,7 @@ Manage Turnstile widgets as code using Terraform for version control and automat
 
 Before you begin, you must have:
 
-- [Terraform ↗](https://terraform.io/) installed
+- [Terraform ↗︎](https://terraform.io/) installed
 - A Cloudflare API token with `Account:Turnstile:Edit permissions`
 - (Optional) A `cf-terraforming` tool for importing existing widgets
 

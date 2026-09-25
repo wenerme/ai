@@ -18,13 +18,13 @@ You must [generate an Access Key](https://developers.cloudflare.com/r2/api/token
 
 
 
-This example shows how to configure R2 with Terraform using the [AWS provider ↗](https://github.com/hashicorp/terraform-provider-aws).
+This example shows how to configure R2 with Terraform using the [AWS provider ↗︎](https://github.com/hashicorp/terraform-provider-aws).
 
 Note for using AWS provider
 
 For using only the Cloudflare provider, see [Terraform](https://developers.cloudflare.com/r2/examples/terraform/).
 
-With [`terraform` ↗](https://developer.hashicorp.com/terraform/downloads) installed:
+With [`terraform` ↗︎](https://developer.hashicorp.com/terraform/downloads) installed:
 
 1. Create `main.tf` file, or edit your existing Terraform configuration
 2. Populate the endpoint URL at `endpoints.s3` with your [Cloudflare account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/)

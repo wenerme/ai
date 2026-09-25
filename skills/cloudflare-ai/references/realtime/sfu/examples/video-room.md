@@ -18,7 +18,7 @@ Build a browser room where participants publish camera and microphone tracks and
 
 [Run the quickstart](https://developers.cloudflare.com/realtime/sfu/get-started/) [Open the source](https://github.com/cloudflare/realtime-examples/tree/main/video-room)
 
-The example is experimental. It includes backend authentication and authorization, reconnect, and cleanup. Its [production guide ↗](https://github.com/cloudflare/realtime-examples/blob/main/video-room/PRODUCTION.md) identifies the policies and controls to integrate for your application.
+The example is experimental. It includes backend authentication and authorization, reconnect, and cleanup. Its [production guide ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/video-room/PRODUCTION.md) identifies the policies and controls to integrate for your application.
 
 ## How it works
 
@@ -155,11 +155,11 @@ The example does not implement screen sharing, chat, recording, simulcast contro
 
 ## Inspect the implementation
 
-Trace the example's [signaling and state flow ↗](https://github.com/cloudflare/realtime-examples/blob/main/video-room/ARCHITECTURE.md#signaling-and-state-flow) and [SDP serialization ↗](https://github.com/cloudflare/realtime-examples/blob/main/video-room/ARCHITECTURE.md#sdp-serialization).
+Trace the example's [signaling and state flow ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/video-room/ARCHITECTURE.md#signaling-and-state-flow) and [SDP serialization ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/video-room/ARCHITECTURE.md#sdp-serialization).
 
 ## Troubleshooting
 
-Use the [troubleshooting guide ↗](https://github.com/cloudflare/realtime-examples/blob/main/video-room/TROUBLESHOOTING.md) for media, authentication, and lifecycle symptoms.
+Use the [troubleshooting guide ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/video-room/TROUBLESHOOTING.md) for media, authentication, and lifecycle symptoms.
 
 Was this helpful?
 

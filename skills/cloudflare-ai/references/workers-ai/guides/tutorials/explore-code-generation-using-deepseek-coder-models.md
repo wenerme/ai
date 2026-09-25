@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-code-generation-using-deepseek-coder-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A handy way to explore all of the models available on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗](https://jupyter.org/).
+A handy way to explore all of the models available on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗︎](https://jupyter.org/).
 
 You can [download the DeepSeek Coder notebook](https://developers.cloudflare.com/workers-ai/static/documentation/notebooks/deepseek-coder-exploration.ipynb) or view the embedded notebook below.
 
@@ -22,7 +22,7 @@ You can [download the DeepSeek Coder notebook](https://developers.cloudflare.com
 
 ## Exploring Code Generation Using DeepSeek Coder
 
-AI Models being able to generate code unlocks all sorts of use cases. The [DeepSeek Coder ↗](https://github.com/deepseek-ai/DeepSeek-Coder) models `@hf/thebloke/deepseek-coder-6.7b-base-awq` and `@hf/thebloke/deepseek-coder-6.7b-instruct-awq` are now available on [Workers AI](https://developers.cloudflare.com/workers-ai).
+AI Models being able to generate code unlocks all sorts of use cases. The [DeepSeek Coder ↗︎](https://github.com/deepseek-ai/DeepSeek-Coder) models `@hf/thebloke/deepseek-coder-6.7b-base-awq` and `@hf/thebloke/deepseek-coder-6.7b-instruct-awq` are now available on [Workers AI](https://developers.cloudflare.com/workers-ai).
 
 Let's explore them using the API!
 
@@ -56,7 +56,7 @@ import requests
 
 ### Configuring your environment
 
-To use the API you'll need your [Cloudflare Account ID ↗](https://dash.cloudflare.com) (head to Workers & Pages > Overview > Account details > Account ID) and a [Workers AI enabled API Token ↗](https://dash.cloudflare.com/profile/api-tokens).
+To use the API you'll need your [Cloudflare Account ID ↗︎](https://dash.cloudflare.com) (head to Workers & Pages > Overview > Account details > Account ID) and a [Workers AI enabled API Token ↗︎](https://dash.cloudflare.com/profile/api-tokens).
 
 If you want to add these files to your environment, you can create a new file named `.env`
 

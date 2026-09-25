@@ -30,11 +30,11 @@ Alternatively, you can connect to your databases over in your private network us
 
 ### Cloud Console
 
-When creating the instance or when editing an existing instance in the [Google Cloud Console ↗](https://console.cloud.google.com/sql/instances):
+When creating the instance or when editing an existing instance in the [Google Cloud Console ↗︎](https://console.cloud.google.com/sql/instances):
 
 To allow Hyperdrive to reach your instance:
 
-1. In the [Cloud Console ↗](https://console.cloud.google.com/sql/instances), select the instance you want Hyperdrive to connect to.
+1. In the [Cloud Console ↗︎](https://console.cloud.google.com/sql/instances), select the instance you want Hyperdrive to connect to.
 2. Expand **Connections** > **Networking** > ensure **Public IP** is enabled > **Add a Network** and input `0.0.0.0/0`.
 3. Select **Done** > **Save** to persist your changes.
 4. Select **Overview** from the sidebar and note down the **Public IP address** of your instance.
@@ -86,7 +86,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 	"name": "hyperdrive-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -105,7 +105,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -115,7 +115,7 @@ id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 
 ## 3. Use Hyperdrive from your Worker
 
-Install the [mysql2 ↗](https://github.com/sidorares/node-mysql2) driver:
+Install the [mysql2 ↗︎](https://github.com/sidorares/node-mysql2) driver:
 
 npmyarnpnpmbun
 
@@ -148,7 +148,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -161,7 +161,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

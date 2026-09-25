@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/network-layers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Below is a list of the different layers that makes up the [open systems interconnection (OSI) model ↗](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) and the associated Cloudflare products.
+Below is a list of the different layers that makes up the [open systems interconnection (OSI) model ↗︎](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) and the associated Cloudflare products.
 
 Note
 

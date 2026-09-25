@@ -22,7 +22,7 @@ Note
 
 This feature is available for Cloudflare Advanced Network Firewall users. For access, contact your account team.
 
-1. In the Cloudflare dashboard, go to the [Firewall Policies ↗](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall) page.
+1. In the Cloudflare dashboard, go to the [Firewall Policies ↗︎](https://dash.cloudflare.com/?to=/:account/network-security/magic_firewall) page.
 2. Select **IDS** and turn on **IDS**.
 
 To start using IDS via the API, first create a new ruleset in the `magic-transit-ids-managed` phase with a rule which is enabled.

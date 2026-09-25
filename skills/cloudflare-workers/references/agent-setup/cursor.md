@@ -28,10 +28,10 @@ IDETerminalStandaloneCloud
 
 1. **Install Cursor**
 
-   Download Cursor for macOS, Windows, or Linux from the [Cursor downloads page ↗](https://cursor.com/downloads). For additional information, see the [Cursor installation guide ↗](https://cursor.com/docs/get-started/installation).
+   Download Cursor for macOS, Windows, or Linux from the [Cursor downloads page ↗︎](https://cursor.com/downloads). For additional information, see the [Cursor installation guide ↗︎](https://cursor.com/docs/get-started/installation).
 2. **Install the Cloudflare plugin**
 
-   In Cursor, run the following command or install from the [Cursor Marketplace ↗](https://cursor.com/marketplace/cloudflare). This installs Cloudflare Skills and registers the Cloudflare MCP servers.
+   In Cursor, run the following command or install from the [Cursor Marketplace ↗︎](https://cursor.com/marketplace/cloudflare). This installs Cloudflare Skills and registers the Cloudflare MCP servers.
 
    ```txt
    /add-plugin cloudflare
@@ -43,7 +43,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
    ```
 
 
@@ -92,7 +92,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 - Code mode APIcode modeBroad access to the full Cloudflare API via code execution, with minimal token overheadhttps://mcp.cloudflare.com/mcp
 - Code Mode servercode modeBest when you want broad access across Cloudflare's APIs through code executionhttps://mcp.cloudflare.com/mcp
 - AI Gateway serverSearch your logs, get details about the prompts and responseshttps://ai-gateway.mcp.cloudflare.com/mcp
-- Audit Logs serverQuery audit logs and generate reports for reviewhttps://auditlogs.mcp.cloudflare.com/mcp
 - AutoRAG serverSearch and query account AutoRAG instanceshttps://autorag.mcp.cloudflare.com/mcp
 - Browser Run serverFetch web pages, convert them to markdown and take screenshotshttps://browser.mcp.cloudflare.com/mcp
 - Cloudflare Blog serverSearch and read posts from the Cloudflare Bloghttps://blog.mcp.cloudflare.com/mcp
@@ -149,23 +148,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ## Tips

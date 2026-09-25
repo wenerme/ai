@@ -45,9 +45,9 @@ This page tracks changes made to Cloudflare Workers before 2023. For a view of m
 
 ## 2022-10-10
 
-- Fixed a bug where if an ES-modules-syntax script exported an array-typed value from the top-level module, the upload API would refuse it with a [`500` error ↗](https://community.cloudflare.com/t/community-tip-fixing-error-500-internal-server-error/44453).
+- Fixed a bug where if an ES-modules-syntax script exported an array-typed value from the top-level module, the upload API would refuse it with a [`500` error ↗︎](https://community.cloudflare.com/t/community-tip-fixing-error-500-internal-server-error/44453).
 - `console.log` now prints more information about certain objects, for example Promises.
-- The Workers Runtime is now built from the Open Source code in: [GitHub - cloudflare/workerd: The JavaScript / Wasm runtime that powers Cloudflare Workers ↗](https://github.com/cloudflare/workerd).
+- The Workers Runtime is now built from the Open Source code in: [GitHub - cloudflare/workerd: The JavaScript / Wasm runtime that powers Cloudflare Workers ↗︎](https://github.com/cloudflare/workerd).
 
 ## 2022-09-16
 
@@ -61,7 +61,7 @@ This page tracks changes made to Cloudflare Workers before 2023. For a view of m
 
 - A `Headers` object with the `range` header can now be used for range within `R2GetOptions` for the `get` R2 binding.
 - When headers are used for `onlyIf` within `R2GetOptions` for the `get` R2 binding, they now correctly compare against the second granularity. This allows correctly round-tripping to the browser and back. Additionally, `secondsGranularity` is now an option that can be passed into options constructed by hand to specify this when constructing outside Headers for the same effect.
-- Fixed the TypeScript type of `DurableObjectState.id` in [@cloudflare/workers-types ↗](https://github.com/cloudflare/workers-types) to always be a `DurableObjectId`.
+- Fixed the TypeScript type of `DurableObjectState.id` in [@cloudflare/workers-types ↗︎](https://github.com/cloudflare/workers-types) to always be a `DurableObjectId`.
 - Validation errors during Worker upload for module scripts now include correct line and column numbers.
 - Bugfix, Profiling tools and flame graphs via Chrome’s debug tools now properly report information.
 
@@ -93,7 +93,7 @@ This page tracks changes made to Cloudflare Workers before 2023. For a view of m
 
 ## 2022-05-26
 
-- The static `Response.json()` method can be used to initialize a Response object with a JSON-serialized payload (refer to [whatwg/fetch #1392 ↗](https://github.com/whatwg/fetch/pull/1392)).
+- The static `Response.json()` method can be used to initialize a Response object with a JSON-serialized payload (refer to [whatwg/fetch #1392 ↗︎](https://github.com/whatwg/fetch/pull/1392)).
 - R2 exceptions being thrown now have the `error` code appended in the message in parenthesis. This is a stop-gap until we are able to explicitly add the code property on the thrown `Error` object.
 
 ## 2022-05-19
@@ -146,7 +146,7 @@ This page tracks changes made to Cloudflare Workers before 2023. For a view of m
 
 ## 2022-03-17
 
-- The standard [ByteLengthQueuingStrategy ↗](https://developer.mozilla.org/en-US/docs/Web/API/ByteLengthQueuingStrategy) and [CountQueuingStrategy ↗](https://developer.mozilla.org/en-US/docs/Web/API/CountQueuingStrategy) classes are now available.
+- The standard [ByteLengthQueuingStrategy ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/ByteLengthQueuingStrategy) and [CountQueuingStrategy ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/CountQueuingStrategy) classes are now available.
 - When the `capture_async_api_throws` flag is set, built-in Cloudflare-specific and Web Platform Standard APIs that return Promises will no longer throw errors synchronously and will instead return rejected promises. Exception is given with fatal errors such as out of memory errors.
 - Fix R2 publish date rendering.
 - Fix R2 bucket binding .get populating contentRange with garbage. contentRange is now undefined as intended.
@@ -173,11 +173,11 @@ This page tracks changes made to Cloudflare Workers before 2023. For a view of m
 
 ## 2022-02-18
 
-- `TextDecoder` now supports Windows-1252 labels (aka ASCII): [Encoding API Encodings - Web APIs | MDN ↗](https://developer.mozilla.org/en-US/docs/Web/API/Encoding_API/Encodings).
+- `TextDecoder` now supports Windows-1252 labels (aka ASCII): [Encoding API Encodings - Web APIs | MDN ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Encoding_API/Encodings).
 
 ## 2022-02-11
 
-- WebSocket message sends were erroneously not respecting Durable Object output gates as described in the [I/O gate blog post ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/). That bug has now been fixed, meaning that WebSockets will now never send a message under the assumption that a storage write has succeeded unless that write actually has succeeded.
+- WebSocket message sends were erroneously not respecting Durable Object output gates as described in the [I/O gate blog post ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/). That bug has now been fixed, meaning that WebSockets will now never send a message under the assumption that a storage write has succeeded unless that write actually has succeeded.
 
 ## 2022-02-05
 
@@ -212,19 +212,19 @@ This page tracks changes made to Cloudflare Workers before 2023. For a view of m
 - `AbortSignal.timeout(delay)` returns an `AbortSignal` that will be triggered after the given number of milliseconds.
 - Preview implementations of the new `ReadableStream` and new `WritableStream` constructors are available behind the `streams_enable_constructors` feature flag.
 - `crypto.DigestStream` is a non-standard extension to the crypto API that supports generating a hash digest from streaming data. The `DigestStream` itself is a `WritableStream` that does not retain the data written into it; instead, it generates a digest hash automatically when the flow of data has ended. The same hash algorithms supported by `crypto.subtle.digest()` are supported by the `crypto.DigestStream`.
-- Added early support for the `scheduler.wait()` API, which is [going through the WICG standardization process ↗](https://github.com/WICG/scheduling-apis), to provide an `await`-able alternative to `setTimeout()`.
+- Added early support for the `scheduler.wait()` API, which is [going through the WICG standardization process ↗︎](https://github.com/WICG/scheduling-apis), to provide an `await`-able alternative to `setTimeout()`.
 - Fixed bug in `deleteAll` in Durable Objects containing more than 10000 keys that could sometimes cause incomplete data deletion and/or hangs.
 
 ## 2021-12-02
 
 - The Streams spec requires that methods returning promises must not throw synchronous errors. As part of the effort of making the Streams implementation more spec compliant, we are converting a number of sync throws to async rejections.
-- Major V8 update: 9.6 → 9.7. See [V8 release v9.7 · V8 ↗](https://v8.dev/blog/v8-release-97) for more details.
+- Major V8 update: 9.6 → 9.7. See [V8 release v9.7 · V8 ↗︎](https://v8.dev/blog/v8-release-97) for more details.
 
 ## 2021-11-19
 
 - Durable Object stubs that receive an overload exception will be permanently broken to match the behavior of other exception types.
 - Fixed issue where preview service claimed Let’s Encrypt certificates were expired.
-- [`structuredClone()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) is now supported.
+- [`structuredClone()` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/structuredClone) is now supported.
 
 ## 2021-11-12
 
@@ -233,8 +233,8 @@ This page tracks changes made to Cloudflare Workers before 2023. For a view of m
 
 ## 2021-11-05
 
-- Upgrade to V8 9.6. This adds support for WebAssembly reference types. Refer to the [V8 release v9.6 · V8 ↗](https://v8.dev/blog/v8-release-96) for more details.
-- Streams: When using the BYOB reader, the `ArrayBuffer` of the provided TypedArray should be detached, per the Streams spec. Because Workers was not previously enforcing that rule, and changing to comply with the spec could breaking existing code, a new compatibility flag, [streams\_byob\_reader\_detaches\_buffer ↗](https://github.com/cloudflare/cloudflare-docs/pull/2644), has been introduced that will be enabled by default on 2021-11-10. User code should never try to reuse an `ArrayBuffer` that has been passed in to a BYOB readers `read()` method. The more recently added extension method `readAtLeast()` will always detach the `ArrayBuffer` and is unaffected by the compatibility flag setting.
+- Upgrade to V8 9.6. This adds support for WebAssembly reference types. Refer to the [V8 release v9.6 · V8 ↗︎](https://v8.dev/blog/v8-release-96) for more details.
+- Streams: When using the BYOB reader, the `ArrayBuffer` of the provided TypedArray should be detached, per the Streams spec. Because Workers was not previously enforcing that rule, and changing to comply with the spec could breaking existing code, a new compatibility flag, [streams\_byob\_reader\_detaches\_buffer ↗︎](https://github.com/cloudflare/cloudflare-docs/pull/2644), has been introduced that will be enabled by default on 2021-11-10. User code should never try to reuse an `ArrayBuffer` that has been passed in to a BYOB readers `read()` method. The more recently added extension method `readAtLeast()` will always detach the `ArrayBuffer` and is unaffected by the compatibility flag setting.
 
 ## 2021-10-21
 
@@ -248,7 +248,7 @@ This page tracks changes made to Cloudflare Workers before 2023. For a view of m
 
 - `request.signal` will always return an `AbortSignal`.
 - Cloudflare Workers’ integration with Chrome DevTools profiling now more accurately reports the line numbers and time elapsed. Previously, the line numbers were shown as one line later then the actual code, and the time shown would be proportional but much longer than the actual time used.
-- Upgrade to v8 9.5. Refer to [V8 release v9.5 · V8 ↗](https://v8.dev/blog/v8-release-95) for more details.
+- Upgrade to v8 9.5. Refer to [V8 release v9.5 · V8 ↗︎](https://v8.dev/blog/v8-release-95) for more details.
 
 ## 2021-09-24
 
@@ -272,7 +272,7 @@ This page tracks changes made to Cloudflare Workers before 2023. For a view of m
 ## 2021-07-30
 
 - Fixed a hang in Durable Objects when reading more than 16MB of data at once (for example, with a large `list()` operation).
-- Added a new compatibility flag `html_rewriter_treats_esi_include_as_void_tag` which causes `HTMLRewriter` to treat `<esi:include>` and `<esi:comment>` as void tags, such that they are considered to have neither an end tag nor nested content. To opt a worker into the new behavior, you must use Wrangler v1.19.0 or newer and specify the flag in `wrangler.toml`. Refer to the [Wrangler compatibility flag notes ↗](https://github.com/cloudflare/wrangler-legacy/pull/2009) for details.
+- Added a new compatibility flag `html_rewriter_treats_esi_include_as_void_tag` which causes `HTMLRewriter` to treat `<esi:include>` and `<esi:comment>` as void tags, such that they are considered to have neither an end tag nor nested content. To opt a worker into the new behavior, you must use Wrangler v1.19.0 or newer and specify the flag in `wrangler.toml`. Refer to the [Wrangler compatibility flag notes ↗︎](https://github.com/cloudflare/wrangler-legacy/pull/2009) for details.
 
 ## 2021-07-23
 
@@ -281,14 +281,14 @@ This page tracks changes made to Cloudflare Workers before 2023. For a view of m
 ## 2021-07-16
 
 - Workers can now make up to 1000 subrequests to Durable Objects from a within a single request invocation, up from the prior limit of 50.
-- Major changes to Durable Objects implementation, the details of which will be the subject of an upcoming blog post. In theory, the changes should not harm existing apps, except to make them faster. Let your account team know if you observe anything unusual or report your issue in the [Workers Discord ↗](https://discord.cloudflare.com).
+- Major changes to Durable Objects implementation, the details of which will be the subject of an upcoming blog post. In theory, the changes should not harm existing apps, except to make them faster. Let your account team know if you observe anything unusual or report your issue in the [Workers Discord ↗︎](https://discord.cloudflare.com).
 - Durable Object constructors may now initiate I/O, such as `fetch()` calls.
 - Added Durable Objects `state.blockConcurrencyWhile()` API useful for delaying delivery of requests and other events while performing some critical state-affecting task. For example, this can be used to perform start-up initialization in an object’s constructor.
 - In Durable Objects, the callback passed to `storage.transaction()` can now return a value, which will be propagated as the return value of the `transaction()` call.
 
 ## 2021-07-13
 
-- The preview service now prints a warning in the devtools console when a script uses `Response/Request.clone()` but does not read one of the cloned bodies. Such a situation forces the runtime to buffer the entire message body in memory, which reduces performance. [Find an example here ↗](https://cloudflareworkers.com/#823fbe463bfafd5a06bcfeabbdf5eeae:https://tutorial.cloudflareworkers.com).
+- The preview service now prints a warning in the devtools console when a script uses `Response/Request.clone()` but does not read one of the cloned bodies. Such a situation forces the runtime to buffer the entire message body in memory, which reduces performance. [Find an example here ↗︎](https://cloudflareworkers.com/#823fbe463bfafd5a06bcfeabbdf5eeae:https://tutorial.cloudflareworkers.com).
 
 ## 2021-07-01
 
@@ -522,7 +522,7 @@ Changes last week:
 
 Changes this week:
 
-- Fixed a regression in HTMLRewriter: [https://github.com/cloudflare/lol-html/issues/50 ↗](https://github.com/cloudflare/lol-html/issues/50)
+- Fixed a regression in HTMLRewriter: [https://github.com/cloudflare/lol-html/issues/50 ↗︎](https://github.com/cloudflare/lol-html/issues/50)
 - Common HTTP method names passed to `fetch()` or `new Request()` are now case-insensitive as required by the Fetch API spec.
 
 Changes last week (… forgot to post):

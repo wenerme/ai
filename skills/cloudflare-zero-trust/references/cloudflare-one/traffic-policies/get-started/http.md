@@ -37,10 +37,10 @@ To filter HTTP requests from a device:
 
 To verify your device is connected to Cloudflare One and traffic is flowing through Gateway:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. Under **Log traffic activity**, enable activity logging for all HTTP logs.
 3. On your device, open a browser and go to any website.
-4. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs** > **HTTP**.
+4. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs** > **HTTP**.
 5. Make sure HTTP requests from your device appear.
 
 After creating your first HTTP policy in the next step, you can test it by visiting a URL that your policy should block and confirming the request is denied.
@@ -51,7 +51,7 @@ An HTTP policy defines which requests to match (for example, uploads to file-sha
 
 To create a new HTTP policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow or block.

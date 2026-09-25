@@ -294,7 +294,7 @@ For routine deploys after migration, refer to [Deploy a Sandbox application](htt
 
 ## Coding agents
 
-Install [Cloudflare Skills ↗](https://github.com/cloudflare/skills) for your agent ([Agent setup](https://developers.cloudflare.com/agent-setup/)). The **`sandbox-migrate-to-next`** skill performs this migration. For new apps on `@next`, use **`sandbox-next`**. For day-to-day work on the current stable package, use **`sandbox-stable`**. Deprecated-API cleanup while staying on stable is in the [2026 deprecation guide](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/) (and **`sandbox-stable`**) before or instead of this guide.
+Install [Cloudflare Skills ↗︎](https://github.com/cloudflare/skills) for your agent ([Agent setup](https://developers.cloudflare.com/agent-setup/)). The **`sandbox-migrate-to-next`** skill performs this migration. For new apps on `@next`, use **`sandbox-next`**. For day-to-day work on the current stable package, use **`sandbox-stable`**. Deprecated-API cleanup while staying on stable is in the [2026 deprecation guide](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/) (and **`sandbox-stable`**) before or instead of this guide.
 
 ## Related
 

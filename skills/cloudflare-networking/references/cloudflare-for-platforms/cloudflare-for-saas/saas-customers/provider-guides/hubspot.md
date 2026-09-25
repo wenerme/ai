@@ -28,7 +28,7 @@ For more details about how O2O is different than other Cloudflare setups, refer 
 
 ## Enable
 
-O2O is enabled per hostname, so to enable O2O for a specific hostname within your Cloudflare zone, [create](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) a Proxied `CNAME` DNS record with a target of your corresponding HubSpot CNAME. Which HubSpot CNAME is targeted will depend on your current [HubSpot proxy settings ↗](https://developers.hubspot.com/docs/cms/developer-reference/reverse-proxy-support#configure-the-proxy).
+O2O is enabled per hostname, so to enable O2O for a specific hostname within your Cloudflare zone, [create](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) a Proxied `CNAME` DNS record with a target of your corresponding HubSpot CNAME. Which HubSpot CNAME is targeted will depend on your current [HubSpot proxy settings ↗︎](https://developers.hubspot.com/docs/cms/developer-reference/reverse-proxy-support#configure-the-proxy).
 
 | Type | Name | Target | Proxy status |
 | --- | --- | --- | --- |
@@ -36,7 +36,7 @@ O2O is enabled per hostname, so to enable O2O for a specific hostname within you
 
 Note
 
-For questions about your HubSpot setup, refer to [HubSpot's reverse proxy support guide ↗](https://developers.hubspot.com/docs/cms/best-practices/testing-staging-performance/reverse-proxies/overview).
+For questions about your HubSpot setup, refer to [HubSpot's reverse proxy support guide ↗︎](https://developers.hubspot.com/docs/cms/best-practices/testing-staging-performance/reverse-proxies/overview).
 
 ## Product compatibility
 

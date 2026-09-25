@@ -18,7 +18,7 @@ You must [generate an Access Key](https://developers.cloudflare.com/r2/api/token
 
 
 
-JavaScript or TypeScript users may continue to use the [`aws4fetch` ↗](https://www.npmjs.com/package/aws4fetch) npm package as per normal. This package uses the `fetch` and `SubtleCrypto` APIs which you will be familiar with when working in browsers or with Cloudflare Workers.
+JavaScript or TypeScript users may continue to use the [`aws4fetch` ↗︎](https://www.npmjs.com/package/aws4fetch) npm package as per normal. This package uses the `fetch` and `SubtleCrypto` APIs which you will be familiar with when working in browsers or with Cloudflare Workers.
 
 You must pass in the R2 configuration credentials when instantiating your `S3` service client:
 
@@ -145,7 +145,7 @@ curl -X PUT "https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/dog.png?X-A
 When generating presigned URLs for uploads, you can limit abuse and misuse by:
 
 1. **Restricting Content-Type**: Specify the `Content-Type` header in the request when signing. The upload will fail if the client sends a different `Content-Type` header.
-2. **Configuring CORS**: Set up [CORS rules](https://developers.cloudflare.com/r2/buckets/cors/#add-cors-policies-from-the-dashboard) on your bucket to control which origins can upload files. Configure CORS via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/overview) by adding a JSON policy to your bucket settings:
+2. **Configuring CORS**: Set up [CORS rules](https://developers.cloudflare.com/r2/buckets/cors/#add-cors-policies-from-the-dashboard) on your bucket to control which origins can upload files. Configure CORS via the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/r2/overview) by adding a JSON policy to your bucket settings:
 
 ```json
 [

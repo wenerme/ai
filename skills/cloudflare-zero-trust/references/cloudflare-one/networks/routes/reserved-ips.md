@@ -73,7 +73,7 @@ The default IPv4 range is `100.96.0.0/12`. If this range conflicts with services
 
 ## Private Load Balancer IPs
 
-Private Load Balancer IPs are virtual addresses allocated to [Private Network Load Balancers](https://developers.cloudflare.com/load-balancing/private-network/). Each private load balancer receives a `/32` address from the `100.112.0.0/16` range by default, which serves as the load balancer's virtual IP for traffic distribution to private endpoints. Alternatively, you can configure a custom [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) `/32` address for each load balancer.
+Private Load Balancer IPs are virtual addresses allocated to [Private Network Load Balancers](https://developers.cloudflare.com/load-balancing/private-network/). Each private load balancer receives a `/32` address from the `100.112.0.0/16` range by default, which serves as the load balancer's virtual IP for traffic distribution to private endpoints. Alternatively, you can configure a custom [RFC 1918 ↗︎](https://datatracker.ietf.org/doc/html/rfc1918) `/32` address for each load balancer.
 
 ## Split Tunnel configuration
 

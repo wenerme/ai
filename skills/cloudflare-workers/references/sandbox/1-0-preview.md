@@ -197,7 +197,7 @@ Common `@next` failures and where to fix them.
 
 ## Coding agents
 
-Install [Cloudflare Skills ↗](https://github.com/cloudflare/skills) for your agent ([Agent setup](https://developers.cloudflare.com/agent-setup/)). Use **`sandbox-next`** for work on `@next` (recommended for new projects). Existing apps on the current stable package should use **`sandbox-stable`** until you are ready to move, then **`sandbox-migrate-to-next`**. Deprecated-API cleanup while staying on stable is covered in the [2026 deprecation guide](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/) and **`sandbox-stable`**.
+Install [Cloudflare Skills ↗︎](https://github.com/cloudflare/skills) for your agent ([Agent setup](https://developers.cloudflare.com/agent-setup/)). Use **`sandbox-next`** for work on `@next` (recommended for new projects). Existing apps on the current stable package should use **`sandbox-stable`** until you are ready to move, then **`sandbox-migrate-to-next`**. Deprecated-API cleanup while staying on stable is covered in the [2026 deprecation guide](https://developers.cloudflare.com/sandbox/guides/2026-deprecation/) and **`sandbox-stable`**.
 
 ## Stable documentation
 

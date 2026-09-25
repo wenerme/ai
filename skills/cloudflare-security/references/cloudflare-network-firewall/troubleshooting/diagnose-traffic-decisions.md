@@ -19,7 +19,7 @@ When traffic is unexpectedly blocked, multiple Cloudflare systems could be respo
 Traffic passing through Cloudflare's network is evaluated by several independent security systems in the following sequence:
 
 1. Network-layer DDoS protection: This layer manages DDoS rulesets.
-2. Advanced TCP protection: Cloudflare carries a stateful TCP inspection known as ([flowtrackd ↗](https://blog.cloudflare.com/announcing-flowtrackd/)).
+2. Advanced TCP protection: Cloudflare carries a stateful TCP inspection known as ([flowtrackd ↗︎](https://blog.cloudflare.com/announcing-flowtrackd/)).
 3. Network Firewall: Your custom and managed firewall rules.
 
 Each system operates independently. Traffic blocked by an earlier system never reaches later systems for evaluation.
@@ -38,11 +38,11 @@ Before making changes, gather the following information:
 - When did the issue start?
 - Were any configuration changes made recently?
 - Is this affecting all traffic or specific flows?
-- Check [Cloudflare Status ↗](https://www.cloudflarestatus.com/) for any ongoing incidents
+- Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com/) for any ongoing incidents
 
 ## Filter dropped traffic
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 2. Under **Protect & Connect**, go to **Insights** > **Network analytics**.
 3. In the **All Traffic** tab, select **Add filter**.
 4. Configure the filter:
@@ -80,7 +80,7 @@ If your traffic was blocked by your Network Firewall configuration:
 
 If you cannot identify the issue from Network Analytics, use [packet captures](https://developers.cloudflare.com/cloudflare-network-firewall/packet-captures/) to inspect the actual traffic:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 2. Under **Protect & Connect**, go to **Insights** > **Network health**.
 3. Go to **Diagnostics**, and configure a packet capture filter matching the affected traffic. Note that the packet capture (pcap) might be empty because packets were dropped.
 4. Analyze the captured packets to understand traffic characteristics.

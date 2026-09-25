@@ -26,7 +26,7 @@ Cloudflare Registrar offers one-click DNSSEC activation for free to all customer
 2. Find the domain that you want to activate DNSSEC and select **Manage**.
 3. Select **Configuration** > **Enable DNSSEC**. If DNSSEC was previously activated, select **Disable DNSSEC** to disable it.
 
-Cloudflare publishes delegation signer (DS) records in the form of [CDS and CDNSKEY records ↗](https://www.cloudflare.com/dns/dnssec/how-dnssec-works/) for a domain delegated to Cloudflare. Cloudflare Registrar scans those records at regular intervals, gathers those details and sends them to your domain's registry.
+Cloudflare publishes delegation signer (DS) records in the form of [CDS and CDNSKEY records ↗︎](https://www.cloudflare.com/dns/dnssec/how-dnssec-works/) for a domain delegated to Cloudflare. Cloudflare Registrar scans those records at regular intervals, gathers those details and sends them to your domain's registry.
 
 This process can take one to two days after you first enable DNSSEC.
 
@@ -36,9 +36,9 @@ If your domain is not on Cloudflare Registrar, you can enable DNSSEC in [**DNS**
 
 ## Confirming DNSSEC
 
-When DNSSEC has been successfully applied to your domain, Cloudflare shows you a confirmed status. Go to [**DNS** > **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) in the Cloudflare dashboard, and scroll down to **DNSSEC**.
+When DNSSEC has been successfully applied to your domain, Cloudflare shows you a confirmed status. Go to [**DNS** > **Settings** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) in the Cloudflare dashboard, and scroll down to **DNSSEC**.
 
-You can also confirm this by reviewing the [WHOIS information ↗](https://lookup.icann.org/) for your domain. Domains with DNSSEC will read `signedDelegation` in the DNSSEC field.
+You can also confirm this by reviewing the [WHOIS information ↗︎](https://lookup.icann.org/) for your domain. Domains with DNSSEC will read `signedDelegation` in the DNSSEC field.
 
 Was this helpful?
 

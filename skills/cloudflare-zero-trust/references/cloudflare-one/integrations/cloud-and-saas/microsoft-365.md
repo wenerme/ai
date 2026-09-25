@@ -32,7 +32,7 @@ This integration covers the following Microsoft 365 products:
 ## Integration prerequisites
 
 - A Microsoft 365 account with an active Microsoft Business Basic, Microsoft Business Standard, Microsoft 365 E3, Microsoft 365 E5, or Microsoft 365 F3 subscription
-- [Global admin role ↗](https://docs.microsoft.com/en-us/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide#commonly-used-microsoft-365-admin-center-roles) or equivalent permissions in Microsoft 365
+- [Global admin role ↗︎](https://docs.microsoft.com/en-us/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide#commonly-used-microsoft-365-admin-center-roles) or equivalent permissions in Microsoft 365
 
 ## Integration permissions
 
@@ -74,7 +74,7 @@ Additionally, to [remediate findings](https://developers.cloudflare.com/cloudfla
 - `Organization.ReadWrite.All`
 - `Mail.ReadWrite`
 
-To learn more about each permission, refer to the [Microsoft Graph permissions documentation ↗](https://docs.microsoft.com/en-us/graph/permissions-reference).
+To learn more about each permission, refer to the [Microsoft Graph permissions documentation ↗︎](https://docs.microsoft.com/en-us/graph/permissions-reference).
 
 ## Security findings
 
@@ -193,13 +193,13 @@ Note
 
 Requires [Cloudflare Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/).
 
-Microsoft provides [MIP sensitivity labels ↗](https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide) to classify and protect sensitive data. When you add the CASB Microsoft 365 integration, Cloudflare will automatically retrieve the labels from your Microsoft account and populate them in a [DLP Profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/integration-profiles/).
+Microsoft provides [MIP sensitivity labels ↗︎](https://learn.microsoft.com/en-us/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide) to classify and protect sensitive data. When you add the CASB Microsoft 365 integration, Cloudflare will automatically retrieve the labels from your Microsoft account and populate them in a [DLP Profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/integration-profiles/).
 
 Caution
 
-DLP does not filter or log [MIP sublabels ↗](https://learn.microsoft.com/purview/sensitivity-labels#sublabels-that-use-parent-labels-or-label-groups). Only top-level sensitivity labels will be detected, filtered, and logged.
+DLP does not filter or log [MIP sublabels ↗︎](https://learn.microsoft.com/purview/sensitivity-labels#sublabels-that-use-parent-labels-or-label-groups). Only top-level sensitivity labels will be detected, filtered, and logged.
 
-To ensure DLP will detect and filter all sensitive data, use only [MIP top-level labels ↗](https://learn.microsoft.com/purview/sensitivity-labels#top-level-labels).
+To ensure DLP will detect and filter all sensitive data, use only [MIP top-level labels ↗︎](https://learn.microsoft.com/purview/sensitivity-labels#top-level-labels).
 
 Was this helpful?
 

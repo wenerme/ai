@@ -20,7 +20,7 @@ Before you upload your video, review the options for uploading a video, supporte
 
 | Upload method | When to use |
 | --- | --- |
-| [Stream Dashboard ↗](https://dash.cloudflare.com/?to=/:account/stream) | Upload videos from the Stream Dashboard without writing any code. |
+| [Stream Dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/stream) | Upload videos from the Stream Dashboard without writing any code. |
 | [Upload with a link](https://developers.cloudflare.com/stream/uploading-videos/upload-via-link/) | Upload videos using a link, such as an S3 bucket or content management system. |
 | [Upload video file](https://developers.cloudflare.com/stream/uploading-videos/upload-video-file/) | Upload videos stored on a computer. |
 | [Direct creator uploads](https://developers.cloudflare.com/stream/uploading-videos/direct-creator-uploads/) | Allows end users of your website or app to upload videos directly to Cloudflare Stream. |

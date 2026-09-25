@@ -22,7 +22,7 @@ No, they are not. DLP stands for [Data Loss Prevention](https://developers.cloud
 
 ## Are Cloudflare's services GDPR compliant?
 
-Yes, even without DLS, Cloudflare services are designed to satisfy the requirements of the GDPR (General Data Protection Regulation). Cloudflare services are also verified compliant with the EU Cloud Code of Conduct (EU Cloud CoC), Verification-ID: 2023LVL02SCOPE4316. For further information, visit EU Cloud CoC [public register ↗](https://eucoc.cloud/en/public-register).
+Yes, even without DLS, Cloudflare services are designed to satisfy the requirements of the GDPR (General Data Protection Regulation). Cloudflare services are also verified compliant with the EU Cloud Code of Conduct (EU Cloud CoC), Verification-ID: 2023LVL02SCOPE4316. For further information, visit EU Cloud CoC [public register ↗︎](https://eucoc.cloud/en/public-register).
 
 ## How can I use DLS?
 

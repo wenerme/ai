@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/insights/dex/dex-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The MCP server [(Model Context Protocol) ↗](https://cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) for Digital Experience Monitoring (DEX) is an AI tool that allows customers to ask a question like, "Show me the connectivity and performance metrics for the device used by carly‌@acme.com", and receive an answer that contains data from the DEX API.
+The MCP server [(Model Context Protocol) ↗︎](https://cloudflare.com/learning/ai/what-is-model-context-protocol-mcp/) for Digital Experience Monitoring (DEX) is an AI tool that allows customers to ask a question like, "Show me the connectivity and performance metrics for the device used by carly‌@acme.com", and receive an answer that contains data from the DEX API.
 
 Any Cloudflare One customer using a Free, Pay-as-you-go, or Enterprise account can access the DEX MCP server.
 
@@ -30,7 +30,7 @@ Cloudflare's AI Playground allows you to quickly try out the DEX MCP server.
 You can test the DEX MCP server in less than one minute by visiting the AI Playground's website.
 
 1. Copy the URL for the DEX MCP server: `https://dex.mcp.cloudflare.com/mcp`.
-2. Open [playground.ai.cloudflare.com ↗](https://playground.ai.cloudflare.com) in a browser.
+2. Open [playground.ai.cloudflare.com ↗︎](https://playground.ai.cloudflare.com) in a browser.
 3. Find the section in the left sidebar titled **MCP Servers**.
 4. Paste the URL for the DEX MCP server into the URL input box and select **Connect**.
 5. Authenticate your Cloudflare account, and then start asking questions about your DEX data.
@@ -49,7 +49,7 @@ If you have any issues during the configuration process, you can ask your AI ass
 
 You need a Claude Pro account (or higher subscription) to configure an MCP server.
 
-1. Download the [Claude desktop client ↗](https://claude.ai/download).
+1. Download the [Claude desktop client ↗︎](https://claude.ai/download).
 2. Open the Claude desktop client, and log in or set up an account.
 3. Expand the left sidebar menu, and select **Claude Code**.
 4. Under **Desktop app**, select **Developer** to show the **Local MCP servers** page.
@@ -80,7 +80,7 @@ All tiers of Google AI Free, Pro, and Ultra offer an MCP server integration via 
 
 You will need to use a CLI of your choice and npm or homebrew to install and access the Gemini CLI.
 
-1. Visit the GitHub page for the [Gemini CLI ↗](https://github.com/google-gemini/gemini-cli) and follow the installation instructions.
+1. Visit the GitHub page for the [Gemini CLI ↗︎](https://github.com/google-gemini/gemini-cli) and follow the installation instructions.
 2. Navigate to the `settings.json` file for your Gemini CLI install and open it in a text editor of your choice.<details><summary>File path for the <code>settings.json</code> file</summary>
 
    - Windows: <code>%USERPROFILE%\.gemini\settings.json</code>
@@ -111,7 +111,7 @@ You will need to use a CLI of your choice and npm or homebrew to install and acc
 
 You need a ChatGPT Pro or Business account to configure an MCP server. ChatGPT Free and Plus do not support MCP servers.
 
-1. Download the [ChatGPT desktop app ↗](https://chatgpt.com/features/desktop).
+1. Download the [ChatGPT desktop app ↗︎](https://chatgpt.com/features/desktop).
 2. Open the ChatGPT desktop app, and log in or set up an account.
 3. Open the **Settings** menu and select **Connectors**.
 4. Select the option to create a new Connector.

@@ -16,7 +16,7 @@ Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Cloudflare continuously monitors whether each tunnel connecting your network to Cloudflare is reachable and performing well. When a tunnel becomes unhealthy, Cloudflare automatically steers traffic to an alternate path — without requiring manual intervention. This monitoring relies on tunnel health check probes.
 
-A tunnel health check probe consists of an [ICMP (Internet Control Message Protocol) ↗](https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/) payload encapsulated in the protocol of the tunnel being tested. For example, if the tunnel is an Internet Protocol Security (IPsec) tunnel, the ICMP [packet ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) is encrypted within the Encapsulating Security Payload (ESP) packet of the tunnel.
+A tunnel health check probe consists of an [ICMP (Internet Control Message Protocol) ↗︎](https://www.cloudflare.com/learning/ddos/glossary/internet-control-message-protocol-icmp/) payload encapsulated in the protocol of the tunnel being tested. For example, if the tunnel is an Internet Protocol Security (IPsec) tunnel, the ICMP [packet ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) is encrypted within the Encapsulating Security Payload (ESP) packet of the tunnel.
 
 A tunnel health check probe travels from Cloudflare to the tunnel origin, then returns a response to Cloudflare. Cloudflare uses this response to determine the probe outcome and calculate the tunnel state (the following sections explain this in greater detail).
 
@@ -54,7 +54,7 @@ A tunnel health check probe can have two possible directions — unidirectional 
 
 #### Unidirectional
 
-A unidirectional health check probe stays encapsulated in one direction and comes into the origin through the tunnel (from Cloudflare to the origin). The response comes back to Cloudflare unencapsulated and routes outside of the tunnel following standard Internet [routing ↗](https://www.cloudflare.com/learning/network-layer/what-is-routing/).
+A unidirectional health check probe stays encapsulated in one direction and comes into the origin through the tunnel (from Cloudflare to the origin). The response comes back to Cloudflare unencapsulated and routes outside of the tunnel following standard Internet [routing ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-routing/).
 
 The target defaults to the publicly routable origin specified as the `customer_endpoint` on the tunnel, if present. Otherwise, you can use a custom target.
 
@@ -267,7 +267,7 @@ Applying a penalty instead of removing the route altogether preserves redundancy
 
 ## Cloudflare data centers and tunnels
 
-In the event a Cloudflare data center is down, Cloudflare's global network does not advertise your prefixes, and Cloudflare routes your packets to the next closest data center. To check the system status for Cloudflare's global network and dashboard, refer to [Cloudflare System Status ↗](https://www.cloudflarestatus.com/).
+In the event a Cloudflare data center is down, Cloudflare's global network does not advertise your prefixes, and Cloudflare routes your packets to the next closest data center. To check the system status for Cloudflare's global network and dashboard, refer to [Cloudflare System Status ↗︎](https://www.cloudflarestatus.com/).
 
 ## Recovery
 

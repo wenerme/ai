@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jan 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The easiest way to get started with [Workers AI](https://developers.cloudflare.com/workers-ai/) is to try it out in the [Multi-modal Playground ↗](https://multi-modal.ai.cloudflare.com/) and the [LLM playground ↗](https://playground.ai.cloudflare.com/). If you decide that you want to integrate your code with Workers AI, you may then decide to use its [REST API endpoints](https://developers.cloudflare.com/workers-ai/get-started/rest-api/) or a [Worker binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/).
+The easiest way to get started with [Workers AI](https://developers.cloudflare.com/workers-ai/) is to try it out in the [Multi-modal Playground ↗︎](https://multi-modal.ai.cloudflare.com/) and the [LLM playground ↗︎](https://playground.ai.cloudflare.com/). If you decide that you want to integrate your code with Workers AI, you may then decide to use its [REST API endpoints](https://developers.cloudflare.com/workers-ai/get-started/rest-api/) or a [Worker binding](https://developers.cloudflare.com/workers-ai/configuration/bindings/).
 
 But what about the data? What if you want these models to ingest data that is stored outside Cloudflare?
 
@@ -25,8 +25,8 @@ In this tutorial, you will learn how to bring data from Google BigQuery to a Clo
 You will need:
 
 - A [Cloudflare Worker](https://developers.cloudflare.com/workers/) project running a [Hello World script](https://developers.cloudflare.com/workers/get-started/guide/).
-- A Google Cloud Platform [service account ↗](https://cloud.google.com/iam/docs/service-accounts-create#iam-service-accounts-create-console) with an [associated key ↗](https://cloud.google.com/iam/docs/keys-create-delete#iam-service-account-keys-create-console) file downloaded that has read access to BigQuery.
-- Access to a BigQuery table with some test data that allows you to create a [BigQuery Job Query ↗](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query). For this tutorial it is recommended you that you create your own table as [sampled tables ↗](https://cloud.google.com/bigquery/public-data#sample_tables), unless cloned to your own GCP namespace, won't allow you to run job queries against them. For this example, the [Hacker News Corpus ↗](https://www.kaggle.com/datasets/hacker-news/hacker-news-corpus) was used under its MIT licence.
+- A Google Cloud Platform [service account ↗︎](https://cloud.google.com/iam/docs/service-accounts-create#iam-service-accounts-create-console) with an [associated key ↗︎](https://cloud.google.com/iam/docs/keys-create-delete#iam-service-account-keys-create-console) file downloaded that has read access to BigQuery.
+- Access to a BigQuery table with some test data that allows you to create a [BigQuery Job Query ↗︎](https://cloud.google.com/bigquery/docs/reference/rest/v2/jobs/query). For this tutorial it is recommended you that you create your own table as [sampled tables ↗︎](https://cloud.google.com/bigquery/public-data#sample_tables), unless cloned to your own GCP namespace, won't allow you to run job queries against them. For this example, the [Hacker News Corpus ↗︎](https://www.kaggle.com/datasets/hacker-news/hacker-news-corpus) was used under its MIT licence.
 
 ## 1. Set up your Cloudflare Worker
 
@@ -164,9 +164,9 @@ You now have access to the GCP credentials from a Worker. Next, you will install
 
 ## 3. Install library to handle JWT operations
 
-To interact with BigQuery's REST API, you will need to generate a [JSON Web Token ↗](https://jwt.io/introduction) to authenticate your requests using the credentials that you have loaded into Worker secrets in the previous step.
+To interact with BigQuery's REST API, you will need to generate a [JSON Web Token ↗︎](https://jwt.io/introduction) to authenticate your requests using the credentials that you have loaded into Worker secrets in the previous step.
 
-For this tutorial, you will be using the [jose ↗](https://www.npmjs.com/package/jose?activeTab=readme) library for JWT-related operations. Install it by running the following command in a console:
+For this tutorial, you will be using the [jose ↗︎](https://www.npmjs.com/package/jose?activeTab=readme) library for JWT-related operations. Install it by running the following command in a console:
 
 ```sh
 npm i jose
@@ -232,7 +232,7 @@ Now that you have created a JWT, it is time to do an API call to BigQuery to fet
 
 With the JWT token created in the previous step, issue an API request to BigQuery's API to retrieve data from a table.
 
-You will now query the table that you created in BigQuery earlier in this tutorial. This example uses a sampled version of the [Hacker News Corpus ↗](https://www.kaggle.com/datasets/hacker-news/hacker-news-corpus) that was used under its MIT licence and uploaded to BigQuery.
+You will now query the table that you created in BigQuery earlier in this tutorial. This example uses a sampled version of the [Hacker News Corpus ↗︎](https://www.kaggle.com/datasets/hacker-news/hacker-news-corpus) that was used under its MIT licence and uploaded to BigQuery.
 
 ```javascript
 const queryBQ = async (bqJWT, path) => {

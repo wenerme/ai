@@ -34,7 +34,7 @@ The table below lists the service types you can route to a public hostname. Non-
 
 ## IPv6 service addresses
 
-When the service value is an IPv6 literal, wrap the address in square brackets as defined by [RFC 3986 ↗](https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2). The brackets are required so that the `:` characters in the address are not confused with the port separator.
+When the service value is an IPv6 literal, wrap the address in square brackets as defined by [RFC 3986 ↗︎](https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2). The brackets are required so that the `:` characters in the address are not confused with the port separator.
 
 | Service type | Example `service` value |
 | --- | --- |

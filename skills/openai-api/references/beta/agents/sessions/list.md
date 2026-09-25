@@ -110,7 +110,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           Automatically selects the most detailed summary supported by the model.
 
-    - `service_tier: "auto" or "default" or "flex" or 2 more`
+    - `service_tier: "auto" or "default" or "flex" or 3 more`
 
       The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -123,6 +123,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `text: AgentText`
 

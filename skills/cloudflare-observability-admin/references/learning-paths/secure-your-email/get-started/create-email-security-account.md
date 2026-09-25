@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To create your Email security account, you will need the alphanumeric string on the URL when logged in to the Cloudflare dashboard.
 
-If you do not have a Cloudflare account, you can create one for free by referring to the [Cloudflare sign-up page ↗](https://dash.cloudflare.com/sign-up).
+If you do not have a Cloudflare account, you can create one for free by referring to the [Cloudflare sign-up page ↗︎](https://dash.cloudflare.com/sign-up).
 
 Once you have created your account, your account team will create an Email security account for you.
 

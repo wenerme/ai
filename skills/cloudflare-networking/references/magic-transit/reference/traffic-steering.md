@@ -37,7 +37,7 @@ The following IPv4 address ranges are allowed in the Magic Transit Virtual Netwo
 If traffic does not match any route you have configured in the virtual network, Cloudflare applies default behavior based on the destination address type:
 
 - **Public (Internet-routable) addresses**: Traffic exits to the Internet.
-- **Private addresses** ([RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) or [CGNAT/RFC 6598 ↗](https://datatracker.ietf.org/doc/html/rfc6598)): Traffic is dropped (null routed), because private addresses are not routable on the public Internet and Cloudflare has no path to deliver them without a matching route.
+- **Private addresses** ([RFC 1918 ↗︎](https://datatracker.ietf.org/doc/html/rfc1918) or [CGNAT/RFC 6598 ↗︎](https://datatracker.ietf.org/doc/html/rfc6598)): Traffic is dropped (null routed), because private addresses are not routable on the public Internet and Cloudflare has no path to deliver them without a matching route.
 
 ### Route prioritization
 
@@ -271,7 +271,7 @@ and are reserved for use as examples in documentation.
 
 ## Equal-cost multi-path routing
 
-Equal-cost multi-path routing uses hashes calculated from [packet ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) data to determine the route chosen. The hash always uses the source and destination IP addresses. For TCP and UDP packets, the hash includes the source and destination ports as well. The ECMP algorithm divides the hash for each packet by the number of equal-cost next hops. The modulus (remainder) determines the route the packet takes.
+Equal-cost multi-path routing uses hashes calculated from [packet ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) data to determine the route chosen. The hash always uses the source and destination IP addresses. For TCP and UDP packets, the hash includes the source and destination ports as well. The ECMP algorithm divides the hash for each packet by the number of equal-cost next hops. The modulus (remainder) determines the route the packet takes.
 
 Using ECMP has a number of consequences:
 
@@ -460,7 +460,7 @@ If instead you are seeking to do public peering with the Cloudflare ASN 13335 at
 
 Cloudflare redistributes routes received from your device into the Magic Transit Virtual Network routing table.
 
-All routes in the Magic Transit Virtual Network routing table are advertised to BGP peers. Each BGP peer receives each prefix route along with the full `AS_PATH`, with the selected Cloudflare side [ASN ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) prepended. This is so that the peer can accurately perform [loop prevention ↗](https://datatracker.ietf.org/doc/html/rfc4271#section-9.1.2).
+All routes in the Magic Transit Virtual Network routing table are advertised to BGP peers. Each BGP peer receives each prefix route along with the full `AS_PATH`, with the selected Cloudflare side [ASN ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) prepended. This is so that the peer can accurately perform [loop prevention ↗︎](https://datatracker.ietf.org/doc/html/rfc4271#section-9.1.2).
 
 BGP peering sessions can advertise reachable prefixes to a peer and withdraw previously advertised prefixes. This propagation takes no more than a few minutes.
 

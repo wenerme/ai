@@ -24,7 +24,7 @@ On **`@cloudflare/sandbox@next`**, terminals use `createTerminal`, `getTerminal`
 
 ## How terminal connections work
 
-Terminal connections use WebSockets to stream raw bytes between a browser terminal (like [xterm.js ↗](https://xtermjs.org/)) and a pseudo-terminal (PTY) process running inside the sandbox container.
+Terminal connections use WebSockets to stream raw bytes between a browser terminal (like [xterm.js ↗︎](https://xtermjs.org/)) and a pseudo-terminal (PTY) process running inside the sandbox container.
 
 ```txt
 Browser (xterm.js) <-- WebSocket --> Worker <-- proxy --> Container PTY (bash)

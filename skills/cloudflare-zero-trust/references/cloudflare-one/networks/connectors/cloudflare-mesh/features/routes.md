@@ -266,7 +266,7 @@ Hostname routes replace [virtual networks](https://developers.cloudflare.com/clo
 
    `wiki.internal.local` · `10.0.0.50`
 
-For a deeper look at the packet flow behind hostname routing, refer to the [announcement blog post ↗](https://blog.cloudflare.com/tunnel-hostname-routing/).
+For a deeper look at the packet flow behind hostname routing, refer to the [announcement blog post ↗︎](https://blog.cloudflare.com/tunnel-hostname-routing/).
 
 ### Prerequisites
 
@@ -278,9 +278,9 @@ For a deeper look at the packet flow behind hostname routing, refer to the [anno
   3. Select **TCP**.
   4. Select **UDP** (required to proxy traffic to internal DNS resolvers).
   5. (Recommended) To proxy traffic for diagnostic tools such as `ping` and `traceroute`, select **ICMP**. You may also need to [update your system](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#icmp) to allow ICMP traffic through `cloudflared`.
-  1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+  1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
      - `Zero Trust Write`
-  2. Turn on the TCP and/or UDP proxy using the [`cloudflare_zero_trust_device_settings` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource:
+  2. Turn on the TCP and/or UDP proxy using the [`cloudflare_zero_trust_device_settings` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) resource:
 
      ```tf
      resource "cloudflare_zero_trust_device_settings "global_warp_settings" {
@@ -389,7 +389,7 @@ After adding a hostname route, secure it with either an [Access self-hosted appl
 
 ### Limitations
 
-Starting with [Chrome 142 ↗](https://developer.chrome.com/release-notes/142), Local Network Access (LNA) restricts requests from websites to local IP addresses. LNA is implemented at the Chromium engine level, so this affects all Chromium-based browsers (for example, Microsoft Edge, Brave, and Opera), not only Google Chrome. This can affect accounts whose Gateway initial resolved IP range is still drawn from Carrier-Grade NAT (CGNAT) address space (`100.64.0.0/10`) — for example, the legacy default range `100.80.0.0/16`, or a custom range configured within CGNAT space. These browsers categorize such addresses as belonging to a local network. When a website loaded from a public IP makes subrequests to a domain resolved through an initial resolved IP in this space, the browser treats this as a public-to-local network request and displays a prompt asking the user to allow access to devices on the local network. The browser blocks requests to these domains until the user accepts this prompt.
+Starting with [Chrome 142 ↗︎](https://developer.chrome.com/release-notes/142), Local Network Access (LNA) restricts requests from websites to local IP addresses. LNA is implemented at the Chromium engine level, so this affects all Chromium-based browsers (for example, Microsoft Edge, Brave, and Opera), not only Google Chrome. This can affect accounts whose Gateway initial resolved IP range is still drawn from Carrier-Grade NAT (CGNAT) address space (`100.64.0.0/10`) — for example, the legacy default range `100.80.0.0/16`, or a custom range configured within CGNAT space. These browsers categorize such addresses as belonging to a local network. When a website loaded from a public IP makes subrequests to a domain resolved through an initial resolved IP in this space, the browser treats this as a public-to-local network request and displays a prompt asking the user to allow access to devices on the local network. The browser blocks requests to these domains until the user accepts this prompt.
 
 This commonly occurs when an Egress policy matches broadly used domains (such as `cloudfront.net` or `github.com`), causing subrequests from public pages to resolve into CGNAT space.
 
@@ -410,10 +410,10 @@ If iframes are nested, every iframe in the chain must include the appropriate at
 
 To avoid this issue, choose one of the following options:
 
-- **Override IP address space classification (Chrome 146+)**: Use the [`LocalNetworkAccessIpAddressSpaceOverrides` ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessIpAddressSpaceOverrides) Chrome Enterprise policy to reclassify your CGNAT-space initial resolved IP range (for example, `100.80.0.0/16`) as public. This is the most targeted fix because it only changes the classification for the initial resolved IP range rather than disabling security checks entirely.
-- **Allow specific URLs (Chrome 140+)**: Use the [`LocalNetworkAccessAllowedForUrls` ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessAllowedForUrls) Chrome Enterprise policy to exempt specific websites from Local Network Access checks. Note that `https://*` is a valid entry to disable checks for all URLs.
-- **Allow specific URLs (Chrome 146+)**: Use the [`LocalNetworkAllowedForUrls` ↗](https://chromeenterprise.google/policies/#LocalNetworkAllowedForUrls) Chrome Enterprise policy, which replaces `LocalNetworkAccessAllowedForUrls` starting in Chrome 146.
-- **Opt out of Local Network Access restrictions (Chrome 142-152)**: Use the [`LocalNetworkAccessRestrictionsTemporaryOptOut` ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessRestrictionsTemporaryOptOut) Chrome Enterprise policy to completely opt out of Local Network Access restrictions. This is a temporary policy and will be removed after Chrome 152.
+- **Override IP address space classification (Chrome 146+)**: Use the [`LocalNetworkAccessIpAddressSpaceOverrides` ↗︎](https://chromeenterprise.google/policies/#LocalNetworkAccessIpAddressSpaceOverrides) Chrome Enterprise policy to reclassify your CGNAT-space initial resolved IP range (for example, `100.80.0.0/16`) as public. This is the most targeted fix because it only changes the classification for the initial resolved IP range rather than disabling security checks entirely.
+- **Allow specific URLs (Chrome 140+)**: Use the [`LocalNetworkAccessAllowedForUrls` ↗︎](https://chromeenterprise.google/policies/#LocalNetworkAccessAllowedForUrls) Chrome Enterprise policy to exempt specific websites from Local Network Access checks. Note that `https://*` is a valid entry to disable checks for all URLs.
+- **Allow specific URLs (Chrome 146+)**: Use the [`LocalNetworkAllowedForUrls` ↗︎](https://chromeenterprise.google/policies/#LocalNetworkAllowedForUrls) Chrome Enterprise policy, which replaces `LocalNetworkAccessAllowedForUrls` starting in Chrome 146.
+- **Opt out of Local Network Access restrictions (Chrome 142-152)**: Use the [`LocalNetworkAccessRestrictionsTemporaryOptOut` ↗︎](https://chromeenterprise.google/policies/#LocalNetworkAccessRestrictionsTemporaryOptOut) Chrome Enterprise policy to completely opt out of Local Network Access restrictions. This is a temporary policy and will be removed after Chrome 152.
 - **Disable the Chrome feature flag**: Go to `chrome://flags` and set the **Local Network Access Checks** flag to *Disabled*. This approach is suitable for individual users but not for enterprise-wide deployment.
 
 Was this helpful?

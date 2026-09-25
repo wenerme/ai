@@ -30,7 +30,7 @@ During this process, Cloudflare scans your existing WordPress.com DNS records an
 
 WordPress.com does not guarantee the IP address will never change. For maximum uptime, you should complete the following:
 
-2\. Find your `<site>.wordpress.com` domain from the [Manage Domains ↗](https://wordpress.com/domains/manage) page. The domain will look like `examplecom.wordpress.com`, i.e. your domain with non-alphanumeric characters removed.
+2\. Find your `<site>.wordpress.com` domain from the [Manage Domains ↗︎](https://wordpress.com/domains/manage) page. The domain will look like `examplecom.wordpress.com`, i.e. your domain with non-alphanumeric characters removed.
 
 3\. Enter the domain into your browser's address bar to make sure the domain is correct.
 
@@ -52,7 +52,7 @@ Cloudflare Web Analytics gives web creators the information they need in a simpl
 
 ### Cloudflare
 
-1\. [Open your dashboard ↗](https://dash.cloudflare.com/) and select the Account menu > **Account Home**.
+1\. [Open your dashboard ↗︎](https://dash.cloudflare.com/) and select the Account menu > **Account Home**.
 
 2\. On the Account homepage, select **Analytics & Logs > Web Analytics**.
 
@@ -78,22 +78,22 @@ WordPress.com automatically adds the javascript to each page of your site. You c
 
 ## **Automatic Platform Optimization for WordPress.com ($5/month, included with Pro and Business plans)**
 
-Cloudflare's [Automatic Platform Optimization ↗](https://www.cloudflare.com/automatic-platform-optimization/wordpress/) for WordPress.com is the easiest way to drastically speed up your WordPress.com site. With the [APO plugin ↗](https://wordpress.org/plugins/cloudflare/), Cloudflare accelerates your WordPress.com site by intelligently caching dynamic content, which means fast performance for your visitors no matter where they are. For more information, refer to [Automatic Platform Optimization](https://developers.cloudflare.com/automatic-platform-optimization/) and to the [blog ↗](https://blog.cloudflare.com/automatic-platform-optimizations-starting-with-wordpress/).
+Cloudflare's [Automatic Platform Optimization ↗︎](https://www.cloudflare.com/automatic-platform-optimization/wordpress/) for WordPress.com is the easiest way to drastically speed up your WordPress.com site. With the [APO plugin ↗︎](https://wordpress.org/plugins/cloudflare/), Cloudflare accelerates your WordPress.com site by intelligently caching dynamic content, which means fast performance for your visitors no matter where they are. For more information, refer to [Automatic Platform Optimization](https://developers.cloudflare.com/automatic-platform-optimization/) and to the [blog ↗︎](https://blog.cloudflare.com/automatic-platform-optimizations-starting-with-wordpress/).
 
 ### **Requirements**
 
 Caution
 
-The [Automatic Platform Optimization (APO) ↗](https://www.cloudflare.com/automatic-platform-optimization/wordpress/) feature requires that you be on a [Full Setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/) using Cloudflare nameservers.
+The [Automatic Platform Optimization (APO) ↗︎](https://www.cloudflare.com/automatic-platform-optimization/wordpress/) feature requires that you be on a [Full Setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/) using Cloudflare nameservers.
 
 - Cloudflare free plan + $5/month APO add-on or a Pro or Business plan subscription (includes APO)
 - WordPress.com Business plan or above (requires plugins)
 
 ### **Install and enable APO**
 
-1\. From WordPress, install the [Cloudflare WordPress plugin ↗](https://wordpress.org/plugins/cloudflare/) on your WordPress website or update to the latest version (3.8.2 or higher).
+1\. From WordPress, install the [Cloudflare WordPress plugin ↗︎](https://wordpress.org/plugins/cloudflare/) on your WordPress website or update to the latest version (3.8.2 or higher).
 
-2\. [Authenticate the plugin ↗](https://wordpress.org/plugins/cloudflare/#installation) to connect to Cloudflare if you have not already done so.
+2\. [Authenticate the plugin ↗︎](https://wordpress.org/plugins/cloudflare/#installation) to connect to Cloudflare if you have not already done so.
 
 3\. From the Home screen of the Cloudflare section, turn on Automatic Platform Optimization.
 
@@ -105,7 +105,7 @@ For more details, refer to [Understanding Automatic Platform Optimization (APO) 
 
 ### **How do I verify that Cloudflare is now my DNS provider on record?**
 
-1\. Visit [https://dnschecker.org ↗](https://dnschecker.org/#A/s-steiner.com).
+1\. Visit [https://dnschecker.org ↗︎](https://dnschecker.org/#A/s-steiner.com).
 
 2\. From the dropdown under **DNS Check, s**elect NS record.
 

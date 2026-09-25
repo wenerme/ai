@@ -49,7 +49,7 @@ The token is valid for the [session duration](https://developers.cloudflare.com/
 
 ## Access your API
 
-Once you have retrieved a token, you can access the protected API. The `cloudflared` command-line tool includes a wrapper for transferring data via `curl`, which uses URL syntax (for more, see the [curl ↗](https://github.com/curl/curl) GitHub project). The wrapper injects the token into the `curl` request as a query argument named *token*. You can invoke the wrapper as follows:
+Once you have retrieved a token, you can access the protected API. The `cloudflared` command-line tool includes a wrapper for transferring data via `curl`, which uses URL syntax (for more, see the [curl ↗︎](https://github.com/curl/curl) GitHub project). The wrapper injects the token into the `curl` request as a query argument named *token*. You can invoke the wrapper as follows:
 
 ```sh
 cloudflared access curl http://example.com

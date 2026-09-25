@@ -24,7 +24,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -100,7 +100,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    ```
 
 
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks**.
+2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks**.
 3. Go to **Cloudflare One Client checks** and select **Add a check**.
 4. Select **Client certificate**.
 5. You will be prompted for the following information:

@@ -42,13 +42,13 @@ When you format a CSV file for upload:
 
 To upload the list to the Cloudflare dashboard:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Lists**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Lists**.
 2. Select **Upload CSV**.
 3. Next, specify a **List name**, enter an optional description, and choose a **List type**.
 4. Drag and drop a file into the **CSV file** window, or select a file.
 5. Select **Create**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
 2. Decode the contents of the CSV file and store it as a local value:
 
@@ -59,7 +59,7 @@ To upload the list to the Cloudflare dashboard:
    ```
 
 
-3. Create a list using the [`cloudflare_zero_trust_list` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_list) resource:
+3. Create a list using the [`cloudflare_zero_trust_list` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_list) resource:
 
    ```tf
    resource "cloudflare_zero_trust_list" "ips_from_csv" {
@@ -77,7 +77,7 @@ You can now use this list in the policy builder by choosing the *in list* operat
 
 ## Create a list manually
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Lists**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Lists**.
 2. Select **Create manual list**.
 3. Next, specify a **List name**, enter an optional description, and choose a **List type**.
 4. Enter your list element manually into the **Add entry** field and select **Add**.
@@ -104,9 +104,9 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/lists" \
 	}'
 ```
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Zero Trust Write`
-2. Create a list using the [`cloudflare_zero_trust_list` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_list) resource.
+2. Create a list using the [`cloudflare_zero_trust_list` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_list) resource.
 
    Example list of IPs:
 

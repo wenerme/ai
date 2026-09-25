@@ -28,7 +28,7 @@ In the event that an upstream DNS server takes too long to respond, or the upstr
 
 - If possible, temporarily replace the proxied CNAME with a proxied A record. This may not always be possible, especially if the upstream target is a load balancer or if it returns dynamic responses.
 - Report the issues to the zone owner or DNS provider for the upstream target that is unresponsive.
-- You can also raise the issue through the DNS Operations Analysis and Research Center (DNS OARC). Consider its [chat platform ↗](https://www.dns-oarc.net/oarc/services/chat) or [email lists ↗](https://www.dns-oarc.net/oarc/lists).
+- You can also raise the issue through the DNS Operations Analysis and Research Center (DNS OARC). Consider its [chat platform ↗︎](https://www.dns-oarc.net/oarc/services/chat) or [email lists ↗︎](https://www.dns-oarc.net/oarc/lists).
 
 ## Footnotes
 

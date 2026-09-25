@@ -26,7 +26,7 @@ This page covers the format of Cloudflare-generated error responses. For convert
 
 ## Content negotiation
 
-Cloudflare selects the response format based on the client's `Accept` header, following standard [HTTP content negotiation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation). When multiple formats are acceptable, quality factors (`q` values) determine precedence. At the same quality value, the first-listed type wins.
+Cloudflare selects the response format based on the client's `Accept` header, following standard [HTTP content negotiation ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation). When multiple formats are acceptable, quality factors (`q` values) determine precedence. At the same quality value, the first-listed type wins.
 
 | `Accept` header sent | Response format |
 | --- | --- |
@@ -224,7 +224,7 @@ curl --silent --compressed --dump-header - --output /dev/null \
 
 Both JSON and Markdown responses contain the same set of fields. JSON responses return them as a flat object; Markdown responses place them in YAML frontmatter followed by prose sections. The field definitions below apply to both formats.
 
-JSON responses follow [RFC 9457 (Problem Details for HTTP APIs) ↗](https://www.rfc-editor.org/rfc/rfc9457). Any HTTP client that understands Problem Details can parse the five standard members (`type`, `title`, `status`, `detail`, `instance`) without Cloudflare-specific code.
+JSON responses follow [RFC 9457 (Problem Details for HTTP APIs) ↗︎](https://www.rfc-editor.org/rfc/rfc9457). Any HTTP client that understands Problem Details can parse the five standard members (`type`, `title`, `status`, `detail`, `instance`) without Cloudflare-specific code.
 
 ### RFC 9457 standard members
 
@@ -296,7 +296,7 @@ The `error_category` field classifies the fault so that clients can route retry 
 
 ## Retry-After header
 
-Retryable error codes include a standard [`Retry-After` ↗](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.3) HTTP response header. The header value in seconds matches the `retry_after` field in the response body.
+Retryable error codes include a standard [`Retry-After` ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-10.2.3) HTTP response header. The header value in seconds matches the `retry_after` field in the response body.
 
 ### 5xx Retry-After values
 
@@ -341,7 +341,7 @@ If a WAF rate limiting rule has already set a dynamic `Retry-After` value on the
 - [Custom Errors](https://developers.cloudflare.com/rules/custom-errors/)
 - [Connection limits](https://developers.cloudflare.com/fundamentals/reference/connection-limits/)
 - [Markdown for Agents](https://developers.cloudflare.com/fundamentals/reference/markdown-for-agents/) (content conversion)
-- [RFC 9457 — Problem Details for HTTP APIs ↗](https://www.rfc-editor.org/rfc/rfc9457)
+- [RFC 9457 — Problem Details for HTTP APIs ↗︎](https://www.rfc-editor.org/rfc/rfc9457)
 
 Was this helpful?
 

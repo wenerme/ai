@@ -213,7 +213,7 @@ The following error codes may be returned when sending emails:
 
 ## Legacy `EmailMessage` API
 
-The `EmailMessage` API remains supported for backward compatibility. Use it when you already have a raw [RFC 5322 ↗](https://datatracker.ietf.org/doc/html/rfc5322) MIME message to send. For new code, prefer the structured [`send()` method](#send-method) above.
+The `EmailMessage` API remains supported for backward compatibility. Use it when you already have a raw [RFC 5322 ↗︎](https://datatracker.ietf.org/doc/html/rfc5322) MIME message to send. For new code, prefer the structured [`send()` method](#send-method) above.
 
 ```ts
 import { EmailMessage } from "cloudflare:email";

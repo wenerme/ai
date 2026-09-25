@@ -22,7 +22,7 @@ Access to snapshot based backups for D1 alpha databases described in this docume
 
 Time Travel
 
-Databases using D1's [production storage subsystem ↗](https://blog.cloudflare.com/d1-turning-it-up-to-11/) can use Time Travel point-in-time recovery. [Time Travel](https://developers.cloudflare.com/d1/reference/time-travel/) replaces the snapshot based backups used for legacy alpha databases.
+Databases using D1's [production storage subsystem ↗︎](https://blog.cloudflare.com/d1-turning-it-up-to-11/) can use Time Travel point-in-time recovery. [Time Travel](https://developers.cloudflare.com/d1/reference/time-travel/) replaces the snapshot based backups used for legacy alpha databases.
 
 To understand which storage subsystem your database uses, run `wrangler d1 info YOUR_DATABASE` and check for the `version` field in the output.Databases with `version: alpha` only support the older, snapshot based backup API.
 

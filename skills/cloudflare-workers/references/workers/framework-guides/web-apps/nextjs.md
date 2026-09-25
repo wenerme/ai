@@ -16,21 +16,21 @@ Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Use vinext to create or migrate a Next.js application and deploy it to Cloudflare Workers.
 
-Cloudflare recommends [vinext ↗](https://vinext.dev/) as the default way to run Next.js applications on Cloudflare Workers. vinext gives you two starting points: scaffold a new Workers-ready app with `create-vinext-app`, or add vinext to an existing Next.js 16 app with a single non-destructive `vinext init` (your existing `next dev` keeps working). You do not need a Cloudflare-specific template either way.
+Cloudflare recommends [vinext ↗︎](https://vinext.dev/) as the default way to run Next.js applications on Cloudflare Workers. vinext gives you two starting points: scaffold a new Workers-ready app with `create-vinext-app`, or add vinext to an existing Next.js 16 app with a single non-destructive `vinext init` (your existing `next dev` keeps working). You do not need a Cloudflare-specific template either way.
 
 Already on OpenNext? See [other Next.js deployment paths](#use-another-nextjs-deployment-path).
 
 ## What is Next.js?
 
-[Next.js ↗](https://nextjs.org/) is a [React ↗](https://react.dev/) framework for building full-stack applications.
+[Next.js ↗︎](https://nextjs.org/) is a [React ↗︎](https://react.dev/) framework for building full-stack applications.
 
 Next.js supports server-side rendering, client-side rendering, static generation, React Server Components, Server Actions, route handlers, and middleware.
 
 ## What is vinext?
 
-[vinext ↗](https://github.com/cloudflare/vinext) is a Vite plugin that reimplements the Next.js API surface. You can keep your existing `app/`, `pages/`, `next.config.js`, and `public/` directories while using the Vite toolchain.
+[vinext ↗︎](https://github.com/cloudflare/vinext) is a Vite plugin that reimplements the Next.js API surface. You can keep your existing `app/`, `pages/`, `next.config.js`, and `public/` directories while using the Vite toolchain.
 
-vinext is in beta. Before adopting it for an existing production application, run the compatibility check from your project directory and review the [vinext compatibility dashboard ↗](https://vinext.dev/compatibility).
+vinext is in beta. Before adopting it for an existing production application, run the compatibility check from your project directory and review the [vinext compatibility dashboard ↗︎](https://vinext.dev/compatibility).
 
 npmyarnpnpm
 
@@ -64,7 +64,7 @@ vinext supports most commonly used Next.js features on Cloudflare Workers:
 | Cloudflare bindings | Supported | Use `cloudflare:workers` in server components, route handlers, and server actions. |
 | Image optimization | Partially supported | Cloudflare image optimization is available at request time. |
 
-For detailed compatibility results, refer to [vinext compatibility ↗](https://vinext.dev/compatibility).
+For detailed compatibility results, refer to [vinext compatibility ↗︎](https://vinext.dev/compatibility).
 
 ## Choose a setup path
 

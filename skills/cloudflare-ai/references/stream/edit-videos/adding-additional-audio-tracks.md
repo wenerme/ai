@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 A video must be uploaded before additional audio tracks can be attached to it. In the following example URLs, the video’s UID is referenced as `VIDEO_UID`.
 
-To add an audio track to a video a [Cloudflare API Token ↗](https://www.cloudflare.com/a/account/my-account) is required.
+To add an audio track to a video a [Cloudflare API Token ↗︎](https://www.cloudflare.com/a/account/my-account) is required.
 
 The API will make a best effort to handle any mismatch between the duration of the uploaded audio file and the video duration, though we recommend uploading audio files that match the duration of the video. If the duration of the audio file is longer than the video, the additional audio track will be truncated to match the video duration. If the duration of the audio file is shorter than the video, silence will be appended at the end of the audio track to match the video duration.
 

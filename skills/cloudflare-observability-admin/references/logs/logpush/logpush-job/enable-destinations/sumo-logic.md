@@ -27,7 +27,7 @@ Cloudflare Logpush supports pushing logs directly to Sumo Logic via the Cloudfla
 3. Select **Create a Logpush job**.
 
 4. In **Select a destination**, choose **Sumo Logic**.
-5. Enter the **HTTP Source Address**. To get the HTTP Source Address (URL) configure a [Sumo Logic Hosted Collector ↗](https://help.sumologic.com/docs/send-data/hosted-collectors/) with an [HTTP Logs & Metrics Source ↗](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics/). Note that the same collector can be used for multiple Logpush jobs, but each job must have a dedicated source. When you are done entering the destination details, select **Continue**.
+5. Enter the **HTTP Source Address**. To get the HTTP Source Address (URL) configure a [Sumo Logic Hosted Collector ↗︎](https://help.sumologic.com/docs/send-data/hosted-collectors/) with an [HTTP Logs & Metrics Source ↗︎](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/logs-metrics/). Note that the same collector can be used for multiple Logpush jobs, but each job must have a dedicated source. When you are done entering the destination details, select **Continue**.
 6. Select the dataset to push to the storage service.
 7. In the next step, you need to configure your logpush job:
    - Enter the **Job name**.
@@ -49,15 +49,15 @@ Ensure **Log Share** permissions are enabled, before attempting to read or confi
 
 To enable Logpush to Sumo Logic:
 
-1. Configure a Hosted Collector. Refer to [instructions from Sumo Logic ↗](https://help.sumologic.com/docs/send-data/hosted-collectors/configure-hosted-collector/).
-2. Configure an HTTP Logs & Metrics Source. Refer to [instructions from Sumo Logic ↗](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/). The last step indicates how to get the HTTP Source Address (URL).
+1. Configure a Hosted Collector. Refer to [instructions from Sumo Logic ↗︎](https://help.sumologic.com/docs/send-data/hosted-collectors/configure-hosted-collector/).
+2. Configure an HTTP Logs & Metrics Source. Refer to [instructions from Sumo Logic ↗︎](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/). The last step indicates how to get the HTTP Source Address (URL).
 3. Provide the HTTP Source Address (URL) when prompted by the Logpush API or UI.
 
 Notes
 
-- Logpush will stop working if you regenerate the HTTP Source Address (URL). Refer to [generate a new URL for an HTTP Source from Sumo Logic ↗](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/generate-new-url/). To use the new URL, you will have to get a new ownership challenge and update the destination for your job.
-- Sumo Logic may impose throttling and caps on your log ingestion to prevent your account from using **On-Demand Capacity**. Refer to [manage ingestion ↗](https://help.sumologic.com/docs/manage/ingestion-volume/log-ingestion/).
-- To analyze and visualize Cloudflare Logs using the Cloudflare App for Sumo Logic, follow the steps in the Sumo Logic integration documentation to [install the Cloudflare App ↗](https://help.sumologic.com/docs/integrations/saas-cloud/cloudflare/#installing-the-cloudflare-app) and [view the Cloudflare dashboards ↗](https://help.sumologic.com/docs/integrations/saas-cloud/cloudflare/#viewing-the-cloudflare-dashboards).
+- Logpush will stop working if you regenerate the HTTP Source Address (URL). Refer to [generate a new URL for an HTTP Source from Sumo Logic ↗︎](https://help.sumologic.com/docs/send-data/hosted-collectors/http-source/generate-new-url/). To use the new URL, you will have to get a new ownership challenge and update the destination for your job.
+- Sumo Logic may impose throttling and caps on your log ingestion to prevent your account from using **On-Demand Capacity**. Refer to [manage ingestion ↗︎](https://help.sumologic.com/docs/manage/ingestion-volume/log-ingestion/).
+- To analyze and visualize Cloudflare Logs using the Cloudflare App for Sumo Logic, follow the steps in the Sumo Logic integration documentation to [install the Cloudflare App ↗︎](https://help.sumologic.com/docs/integrations/saas-cloud/cloudflare/#installing-the-cloudflare-app) and [view the Cloudflare dashboards ↗︎](https://help.sumologic.com/docs/integrations/saas-cloud/cloudflare/#viewing-the-cloudflare-dashboards).
 
 Was this helpful?
 

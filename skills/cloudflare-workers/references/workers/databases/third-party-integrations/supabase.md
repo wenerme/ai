@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/databases/third-party-integrations/supabase/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Supabase ↗](https://supabase.com/) is an open source Firebase alternative and a PostgreSQL database service that offers real-time functionality, database backups, and extensions. With Supabase, developers can quickly set up a PostgreSQL database and build applications.
+[Supabase ↗︎](https://supabase.com/) is an open source Firebase alternative and a PostgreSQL database service that offers real-time functionality, database backups, and extensions. With Supabase, developers can quickly set up a PostgreSQL database and build applications.
 
 Note
 
@@ -26,10 +26,10 @@ If you want to connect directly to the Supabase Postgres database, connect using
 
 To set up an integration with Supabase:
 
-1. You need to have an existing Supabase database to connect to. [Create a Supabase database ↗](https://supabase.com/docs/guides/database/tables#creating-tables) or [have an existing database to connect to Supabase and load data from ↗](https://supabase.com/docs/guides/database/tables#loading-data).
+1. You need to have an existing Supabase database to connect to. [Create a Supabase database ↗︎](https://supabase.com/docs/guides/database/tables#creating-tables) or [have an existing database to connect to Supabase and load data from ↗︎](https://supabase.com/docs/guides/database/tables#loading-data).
 2. Create a `countries` table with the following query. You can create a table in your Supabase dashboard in two ways:
    - Use the table editor, which allows you to set up Postgres similar to a spreadsheet.
-   - Alternatively, use the [SQL editor ↗](https://supabase.com/docs/guides/database/overview#the-sql-editor):
+   - Alternatively, use the [SQL editor ↗︎](https://supabase.com/docs/guides/database/overview#the-sql-editor):
 
    ```sql
    CREATE TABLE countries (
@@ -50,7 +50,7 @@ To set up an integration with Supabase:
 
 4. Configure the Supabase database credentials in your Worker:
 
-   You need to add your Supabase URL and anon key as secrets to your Worker. Get these from your [Supabase Dashboard ↗](https://supabase.com/dashboard) under **Settings** > **API**, then add them as secrets using Wrangler:
+   You need to add your Supabase URL and anon key as secrets to your Worker. Get these from your [Supabase Dashboard ↗︎](https://supabase.com/dashboard) under **Settings** > **API**, then add them as secrets using Wrangler:
 
    ```sh
    # Add the Supabase URL as a secret
@@ -103,15 +103,15 @@ To set up an integration with Supabase:
 
 
 
-To learn more about Supabase, refer to [Supabase's official documentation ↗](https://supabase.com/docs).
+To learn more about Supabase, refer to [Supabase's official documentation ↗︎](https://supabase.com/docs).
 
 When connecting to Supabase with Hyperdrive, you connect directly to the underlying Postgres database. This provides the lowest latency for database queries when accessed server-side from Workers. To connect to Supabase using [Hyperdrive](https://developers.cloudflare.com/hyperdrive), follow these steps:
 
 ## 1. Allow Hyperdrive access
 
-You can connect Hyperdrive to any existing Supabase database as the Postgres user which is set up during project creation. Alternatively, to create a new user for Hyperdrive, run these commands in the [SQL Editor ↗](https://supabase.com/dashboard/project/_/sql/new).
+You can connect Hyperdrive to any existing Supabase database as the Postgres user which is set up during project creation. Alternatively, to create a new user for Hyperdrive, run these commands in the [SQL Editor ↗︎](https://supabase.com/dashboard/project/_/sql/new).
 
-The database endpoint can be found in the [database settings page ↗](https://supabase.com/dashboard/project/_/settings/database).
+The database endpoint can be found in the [database settings page ↗︎](https://supabase.com/dashboard/project/_/settings/database).
 
 With a database user, password, database endpoint (hostname and port) and database name (default: postgres), you can now set up Hyperdrive.
 
@@ -156,7 +156,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -175,7 +175,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -244,7 +244,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -257,7 +257,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -304,7 +304,7 @@ export default {
 
 Note
 
-When connecting to a Supabase database with Hyperdrive, you should use a driver like [node-postgres (pg)](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/node-postgres/) or [Postgres.js](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/postgres-js/) to connect directly to the underlying database instead of the [Supabase JavaScript client ↗](https://github.com/supabase/supabase-js). Hyperdrive is optimized for database access for Workers and will perform global connection pooling and fast query routing by connecting directly to your database.
+When connecting to a Supabase database with Hyperdrive, you should use a driver like [node-postgres (pg)](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/node-postgres/) or [Postgres.js](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/postgres-js/) to connect directly to the underlying database instead of the [Supabase JavaScript client ↗︎](https://github.com/supabase/supabase-js). Hyperdrive is optimized for database access for Workers and will perform global connection pooling and fast query routing by connecting directly to your database.
 
 ## Next steps
 

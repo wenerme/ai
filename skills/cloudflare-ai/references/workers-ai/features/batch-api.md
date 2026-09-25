@@ -20,7 +20,7 @@ Batch processing is useful for large workloads such as summarization or embeddin
 
 When you send a batch request, the API immediately acknowledges receipt with a status like `queued` and provides a unique `request_id`. This ID is later used to poll for the final responses once the processing is complete.
 
-You can use the Batch API by either creating and deploying a Cloudflare Worker that leverages the [Batch API with the AI binding](https://developers.cloudflare.com/workers-ai/features/batch-api/workers-binding/), using the [REST API](https://developers.cloudflare.com/workers-ai/features/batch-api/rest-api/) directly or by starting from a [template ↗](https://github.com/craigsdennis/batch-please-workers-ai).
+You can use the Batch API by either creating and deploying a Cloudflare Worker that leverages the [Batch API with the AI binding](https://developers.cloudflare.com/workers-ai/features/batch-api/workers-binding/), using the [REST API](https://developers.cloudflare.com/workers-ai/features/batch-api/rest-api/) directly or by starting from a [template ↗︎](https://github.com/craigsdennis/batch-please-workers-ai).
 
 Note
 

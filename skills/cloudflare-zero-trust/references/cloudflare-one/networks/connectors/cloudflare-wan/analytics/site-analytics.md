@@ -64,7 +64,7 @@ Cloudflare WAN site data
 
 To start using network overview:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Go to **Insights** > **Network visibility**.
 
 You will have access to an overview map with all your active sites, and any alerts for sites that are unhealthy or have no status available to them.

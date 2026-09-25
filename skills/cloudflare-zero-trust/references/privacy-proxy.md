@@ -18,11 +18,11 @@ A MASQUE-based forward proxy that protects user privacy while preserving geoloca
 
 Enterprise-only
 
-Privacy Proxy is a managed proxy service that runs on Cloudflare's global network. It uses the [MASQUE ↗](https://datatracker.ietf.org/wg/masque/about/) protocol suite to proxy TCP and UDP traffic via HTTP CONNECT and CONNECT-UDP methods over HTTP/2 and HTTP/3.
+Privacy Proxy is a managed proxy service that runs on Cloudflare's global network. It uses the [MASQUE ↗︎](https://datatracker.ietf.org/wg/masque/about/) protocol suite to proxy TCP and UDP traffic via HTTP CONNECT and CONNECT-UDP methods over HTTP/2 and HTTP/3.
 
 Privacy Proxy separates user identity from user activity. Users authenticate to the proxy without revealing which destinations they visit, and destination servers see requests from Cloudflare IP addresses without learning who made them.
 
-Privacy Proxy powers services like [Microsoft Edge Secure Network ↗](https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network/) and serves as a second-hop relay for [iCloud Private Relay ↗](https://blog.cloudflare.com/icloud-private-relay/).
+Privacy Proxy powers services like [Microsoft Edge Secure Network ↗︎](https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network/) and serves as a second-hop relay for [iCloud Private Relay ↗︎](https://blog.cloudflare.com/icloud-private-relay/).
 
 ---
 
@@ -68,7 +68,7 @@ Cloudflare's consumer VPN application that uses similar privacy-preserving proxy
 
 ## Availability
 
-Privacy Proxy is available as a managed service for Enterprise customers. [Contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to discuss your use case and get started.
+Privacy Proxy is available as a managed service for Enterprise customers. [Contact us ↗︎](https://www.cloudflare.com/lp/privacy-edge/) to discuss your use case and get started.
 
 Was this helpful?
 

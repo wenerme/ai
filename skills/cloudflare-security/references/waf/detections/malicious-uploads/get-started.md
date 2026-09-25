@@ -66,7 +66,7 @@ Enabling malicious uploads detection can introduce latency since content objects
 
 Use [Security Analytics](https://developers.cloudflare.com/waf/analytics/security-analytics/) and HTTP logs to validate that malicious content objects are being detected correctly.
 
-You can use the [EICAR anti-malware test file ↗](https://www.eicar.org/download-anti-malware-testfile/) to test content scanning (select the ZIP format).
+You can use the [EICAR anti-malware test file ↗︎](https://www.eicar.org/download-anti-malware-testfile/) to test content scanning (select the ZIP format).
 
 Alternatively, create a custom rule like described in the next step using a *Log* action instead of a mitigation action like *Block*. This rule will generate [security events](https://developers.cloudflare.com/waf/analytics/security-events/) that will allow you to validate your configuration.
 

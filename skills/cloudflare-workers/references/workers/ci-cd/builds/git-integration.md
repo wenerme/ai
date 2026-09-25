@@ -28,15 +28,15 @@ If you are using a different Git provider (e.g. Bitbucket), you can use an [exte
 
 Workers Builds provides direct integration with GitHub and GitLab accounts that are *not* self-hosted, as well as Cursor Origin user and team repositories.
 
-When connecting a GitHub or GitLab repository for the first time, follow the prompts in the Cloudflare dashboard to authorize the Git provider. To connect Cursor Origin, install the [Cloudflare app in Cursor ↗](https://cursor.com/codebase/settings/apps/public/cloudflare) and follow the installation prompts.
+When connecting a GitHub or GitLab repository for the first time, follow the prompts in the Cloudflare dashboard to authorize the Git provider. To connect Cursor Origin, install the [Cloudflare app in Cursor ↗︎](https://cursor.com/codebase/settings/apps/public/cloudflare) and follow the installation prompts.
 
 ![Connect a Git repository in Workers Builds](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1354,height=318,format=webp/_astro/builds-git-repo-connect.Do4CyWZv.png)
 
 You can check the following pages to see if your Git integration has been installed:
 
-- [GitHub Applications page ↗](https://github.com/settings/installations) (if you are in an organization, select **Switch settings context** to access your GitHub organization settings)
-- [GitLab Authorized Applications page ↗](https://gitlab.com/-/profile/applications)
-- [Cursor codebase settings ↗](https://cursor.com/codebase/settings/apps)
+- [GitHub Applications page ↗︎](https://github.com/settings/installations) (if you are in an organization, select **Switch settings context** to access your GitHub organization settings)
+- [GitLab Authorized Applications page ↗︎](https://gitlab.com/-/profile/applications)
+- [Cursor codebase settings ↗︎](https://cursor.com/codebase/settings/apps)
 
 For details on managing provider access, refer to the [GitHub](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/github-integration/#organizational-access), [GitLab](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/gitlab-integration/#organizational-access), and [Cursor Origin](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/cursor-origin-integration/#team-access) integration guides.
 

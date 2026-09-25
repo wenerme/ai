@@ -55,7 +55,7 @@ By default, an account is limited to **10 unique Spectrum hostnames** using Clou
 
 You can confirm regionalization using the same method as any other Regional Services configuration — refer to [Verify Regional Services behavior](https://developers.cloudflare.com/data-localization/how-to/#verify-regional-services-behavior) for the general guidance.
 
-Every Cloudflare HTTP response includes a `CF-RAY` header that ends with a three-letter [IATA airport code ↗](https://en.wikipedia.org/wiki/IATA_airport_code) identifying the data center where TLS termination occurred. Send a request to your regionalized hostname and check that the code corresponds to a data center inside your configured region:
+Every Cloudflare HTTP response includes a `CF-RAY` header that ends with a three-letter [IATA airport code ↗︎](https://en.wikipedia.org/wiki/IATA_airport_code) identifying the data center where TLS termination occurred. Send a request to your regionalized hostname and check that the code corresponds to a data center inside your configured region:
 
 ```bash
 curl --head https://www.example.com 2>&1 | grep -i cf-ray
@@ -71,7 +71,7 @@ In this example, `MUC` (Munich) confirms that the request was processed in the E
 
 ## Custom regions
 
-If the [managed regions](https://developers.cloudflare.com/data-localization/region-support/#region-types) do not match your compliance requirements, you can request a custom region that restricts processing to a specific set of data centers. Custom regions are set up through your account team. To learn more about how custom regions work, refer to the [Custom regions blog post ↗](https://blog.cloudflare.com/custom-regions/).
+If the [managed regions](https://developers.cloudflare.com/data-localization/region-support/#region-types) do not match your compliance requirements, you can request a custom region that restricts processing to a specific set of data centers. Custom regions are set up through your account team. To learn more about how custom regions work, refer to the [Custom regions blog post ↗︎](https://blog.cloudflare.com/custom-regions/).
 
 ## Related resources
 

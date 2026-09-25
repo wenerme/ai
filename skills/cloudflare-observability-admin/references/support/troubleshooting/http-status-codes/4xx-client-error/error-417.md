@@ -18,7 +18,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 The `417 Expectation Failed` status code indicates that the server could not meet the requirements specified in the `Expect` header of the client's request.
 
-For more details, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+For more details, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 

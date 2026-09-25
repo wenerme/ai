@@ -40,11 +40,11 @@ flowchart TB
 
 - S3 bucket to be protected by Cloudflare Zero Trust
 - AWS VPC with one EC2 virtual machine (VM) hosting the [Cloudflare Tunnel daemon](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)
-- S3 bucket and AWS VPC configured in the same [AWS region ↗](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html)
+- S3 bucket and AWS VPC configured in the same [AWS region ↗︎](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html)
 
 ### 1. Create a VPC endpoint in AWS
 
-1. In the [AWS dashboard ↗](https://aws.amazon.com/console/), go to **Services** > **Networking & Content Delivery** > **VPC**.
+1. In the [AWS dashboard ↗︎](https://aws.amazon.com/console/), go to **Services** > **Networking & Content Delivery** > **VPC**.
 2. Under **Virtual private cloud**, go to **Endpoints**.
 3. Select **Create endpoint** and name the endpoint.
 4. Choose *AWS services* as the service category.
@@ -149,7 +149,7 @@ flowchart TB
 
 ### 1. Set up a bucket policy to restrict access to a specific IP address
 
-1. In the [AWS dashboard ↗](https://aws.amazon.com/console/), go to **Services** > **Storage** > **S3**.
+1. In the [AWS dashboard ↗︎](https://aws.amazon.com/console/), go to **Services** > **Storage** > **S3**.
 2. Go to **Buckets** > **\<your-S3-bucket02>** > **Permissions**.
 3. Disable **Block all public access**.
 4. In **Bucket policy**, add the following policy:
@@ -190,7 +190,7 @@ A bucket website endpoint will be available at `http://<your-S3-bucket02>.s3-web
 
 ### 3. Setup a dedicated egress IP policy
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Egress policies**. Select **Add a policy**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Egress policies**. Select **Add a policy**.
 2. Create a policy that specifies which proxied traffic Gateway should assign a [dedicated egress IP](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/) to. For more information, refer to [Egress policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/).
 3. In **Select an egress IP**, choose *Use dedicated Cloudflare egress IPs*. Select the dedicated egress IP defined in your bucket policy.
 4. Select **Create policy**.

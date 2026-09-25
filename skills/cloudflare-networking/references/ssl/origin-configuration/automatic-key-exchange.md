@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/automatic-key-exchange/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Automatic key exchange allows Cloudflare to establish faster connections to origin servers by predicting which key agreements origins support. When establishing a TLS 1.3 connection to the origin, Cloudflare sends a key share for the predicted key agreement in the initial ClientHello, which can remove one network round trip by avoiding a [HelloRetryRequest ↗](https://www.rfc-editor.org/rfc/rfc8446.html#section-4.1.4).
+Automatic key exchange allows Cloudflare to establish faster connections to origin servers by predicting which key agreements origins support. When establishing a TLS 1.3 connection to the origin, Cloudflare sends a key share for the predicted key agreement in the initial ClientHello, which can remove one network round trip by avoiding a [HelloRetryRequest ↗︎](https://www.rfc-editor.org/rfc/rfc8446.html#section-4.1.4).
 
-This feature is separate from your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/). The encryption mode controls whether Cloudflare uses HTTPS and validates your origin certificate. Automatic key exchange controls the [key shares ↗](https://datatracker.ietf.org/doc/html/rfc8446#section-4.2.8) sent when starting an HTTPS connection. The same preference is applied for all of a zone's origins.
+This feature is separate from your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/). The encryption mode controls whether Cloudflare uses HTTPS and validates your origin certificate. Automatic key exchange controls the [key shares ↗︎](https://datatracker.ietf.org/doc/html/rfc8446#section-4.2.8) sent when starting an HTTPS connection. The same preference is applied for all of a zone's origins.
 
 ## Requirements and scope
 

@@ -21,7 +21,7 @@ When a resource is intentionally and permanently removed, servers use the `410 G
 - The server suggests that links referencing the resource should be removed.
 - The server is not obligated to use this status code instead of a `404` response, nor is it required to maintain this response for any specific period of time.
 
-For more details, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+For more details, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 

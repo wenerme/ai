@@ -18,7 +18,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 1. Ensure that you have a Cloudflare Enterprise plan. If you do not have an Enterprise plan yet, you must upgrade.
 2. Add the Cloudflare China Network package (a separate subscription) to your Enterprise plan.
-3. Agree to the [China Service Supplemental Terms ↗](https://www.cloudflare.com/supplemental-terms/#china-service).
+3. Agree to the [China Service Supplemental Terms ↗︎](https://www.cloudflare.com/supplemental-terms/#china-service).
 
 Contact your sales team for more information on these steps.
 

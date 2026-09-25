@@ -18,7 +18,7 @@ Learn how you can use D1 within your existing application and architecture.
 
 ## Featured Demos
 
-- [Starter code for D1 Sessions API ↗](https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template): An introduction to D1 Sessions API. This demo simulates purchase orders administration.
+- [Starter code for D1 Sessions API ↗︎](https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template): An introduction to D1 Sessions API. This demo simulates purchase orders administration.
 
   [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template)
 

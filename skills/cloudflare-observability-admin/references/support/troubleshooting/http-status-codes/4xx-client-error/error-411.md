@@ -18,7 +18,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 The `411 Length Required` status code indicates that the client did not specify the `Content-Length` of the request body in the headers, and this information is required to obtain the resource. The client may resend the request after adding the required header field.
 
-For more details, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+For more details, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 

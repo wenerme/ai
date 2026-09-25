@@ -25,15 +25,15 @@ The redirect location should be specified in one of the following ways:
 
 The 300 Multiple Choices status indicates that multiple options are available for the requested resource, and the client may select one.
 
-For more information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 
 The status is typically used when a resource is available in multiple representations or formats. For instance:
 
 - Offering multiple versions of a video in different formats (for example, MP4, AVI).
-- Providing a list of files with different [extensions ↗](https://en.wikipedia.org/wiki/File_extensions) or compression types.
-- Presenting [word sense disambiguation ↗](https://en.wikipedia.org/wiki/Word_sense_disambiguation) options for a term with multiple meanings.
+- Providing a list of files with different [extensions ↗︎](https://en.wikipedia.org/wiki/File_extensions) or compression types.
+- Presenting [word sense disambiguation ↗︎](https://en.wikipedia.org/wiki/Word_sense_disambiguation) options for a term with multiple meanings.
 
 The response may include a `Location` header pointing to a preferred option or provide a payload with hyperlinks to the available choices, allowing the client to decide.
 
@@ -45,7 +45,7 @@ Cloudflare generally bypasses the 300 Multiple Choices response for automated re
 
 The 301 Moved Permanently status indicates that the requested resource has been assigned a new permanent URI. All future references to this resource should use one of the enclosed URIs.
 
-For more information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 
@@ -67,7 +67,7 @@ The 302 Found status, also referred to as a temporary redirect, indicates that t
 
 While the User-Agent may follow the `Location` header to retrieve the resource, it should not replace the current URI as it would for a 301 Moved Permanently.
 
-For more information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 
@@ -85,7 +85,7 @@ Cloudflare can generate these responses, eliminating the need to send a request 
 
 The 303 See Other status indicates that the client should retrieve the resource at a different URI using a `GET` request. Unlike a 301 Moved Permanently redirect, the resource at the redirect location is not necessarily equivalent to the originally requested resource.
 
-For more information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 
@@ -99,9 +99,9 @@ Cloudflare allows for the configuration of 303 redirects through [Redirect Rules
 
 ## 304 Not Modified
 
-The 304 Not Modified status indicates that the requested resource is available and valid in the client's cache. This means that the origin server has not modified the resource since the client's last request, allowing the client to use the cached resource without connecting to the origin server again. Requirements for caches receiving a 304 response are defined in [Section 4.3.4 of RFC 7234 ↗](https://tools.ietf.org/html/rfc7234#section-4.3.4).
+The 304 Not Modified status indicates that the requested resource is available and valid in the client's cache. This means that the origin server has not modified the resource since the client's last request, allowing the client to use the cached resource without connecting to the origin server again. Requirements for caches receiving a 304 response are defined in [Section 4.3.4 of RFC 7234 ↗︎](https://tools.ietf.org/html/rfc7234#section-4.3.4).
 
-For more information, refer to [RFC 7232 ↗](https://tools.ietf.org/html/rfc7232).
+For more information, refer to [RFC 7232 ↗︎](https://tools.ietf.org/html/rfc7232).
 
 ### Common use cases
 
@@ -128,7 +128,7 @@ This status code indicates that subsequent requests should be sent through the s
 
 The 307 Temporary Redirect status indicates that a requested resource has been temporarily moved to a different URI, as specified in the `Location` header. Unlike a 302 redirect, the original request method (for example, `GET` or `POST`) must remain unchanged when the redirect is followed automatically. This ensures that temporary changes to a resource's location do not disrupt the intended behavior of the request. User agents may automatically follow the redirect using the `Location` header, but should not replace the original URI for future requests.
 
-For more information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 
@@ -142,7 +142,7 @@ Cloudflare can handle 307 Temporary Redirect responses efficiently, enabling tem
 
 The 308 Permanent Redirect status indicates that the requested resource has been permanently moved to a new URI, as specified in the `Location` header. Unlike a 301 redirect, the original request method (for example, `GET`, `POST`) must remain unchanged when automatically following the redirect. User agents should follow the redirect using the `Location` header and replace the original URI with the new one for subsequent requests.
 
-For more information, refer to [RFC 7538 ↗](https://tools.ietf.org/html/rfc7538#section-3).
+For more information, refer to [RFC 7538 ↗︎](https://tools.ietf.org/html/rfc7538#section-3).
 
 ### Common use cases
 

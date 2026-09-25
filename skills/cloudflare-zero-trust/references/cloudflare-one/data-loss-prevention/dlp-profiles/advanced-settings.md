@@ -22,7 +22,7 @@ Profile settings are distinct from [DLP settings](https://developers.cloudflare.
 
 To edit profile settings for an existing predefined or custom DLP profile:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Choose a profile, then select **Edit**.
 3. In **Settings**, configure the [settings](#available-settings) for your profile.
 4. Select **Save profile**.
@@ -79,7 +79,7 @@ Confidence threshold is set on the DLP profile. Not all detection entries suppor
 
 To change the confidence threshold of a DLP profile:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Select the profile, then select **Edit**.
 3. In **Settings** > **Confidence threshold**, choose a new confidence threshold from the dropdown menu.
 4. Select **Save profile**.

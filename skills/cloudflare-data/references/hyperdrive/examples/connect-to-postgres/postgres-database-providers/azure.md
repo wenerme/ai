@@ -34,7 +34,7 @@ Alternatively, you can connect to your databases over in your private network us
 
 To connect to your Azure Database for PostgreSQL instance using public Internet connectivity:
 
-1. In the [Azure Portal ↗](https://portal.azure.com/), select the instance you want Hyperdrive to connect to.
+1. In the [Azure Portal ↗︎](https://portal.azure.com/), select the instance you want Hyperdrive to connect to.
 2. Expand **Settings** > **Networking** > ensure **Public access** is enabled > in **Firewall rules** add `0.0.0.0` as **Start IP address** and `255.255.255.255` as **End IP address**.
 3. Select **Save** to persist your changes.
 4. Select **Overview** from the sidebar and note down the **Server name** of your instance.
@@ -86,7 +86,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -105,7 +105,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -174,7 +174,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -187,7 +187,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

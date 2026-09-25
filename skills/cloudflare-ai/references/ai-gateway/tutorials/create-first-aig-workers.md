@@ -18,8 +18,8 @@ This tutorial guides you through creating your first AI Gateway using Workers AI
 
 ## Sign up and log in
 
-1. **Sign up**: If you do not have a Cloudflare account, [sign up ↗](https://cloudflare.com/sign-up).
-2. **Log in**: Access the Cloudflare dashboard by logging in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login).
+1. **Sign up**: If you do not have a Cloudflare account, [sign up ↗︎](https://cloudflare.com/sign-up).
+2. **Log in**: Access the Cloudflare dashboard by logging in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login).
 
 ## Create gateway
 
@@ -27,7 +27,7 @@ Then, create a new AI Gateway.
 
 [Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** > **AI Gateway**.
 3. Select **Create Gateway**.
 4. Enter your **Gateway name**. Note: Gateway name has a 64 character limit.
@@ -87,7 +87,7 @@ Monitor your AI Gateway to view usage metrics.
 
 To build more with Workers, refer to [Tutorials](https://developers.cloudflare.com/workers/tutorials/).
 
-If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with other developers and the Cloudflare team.
+If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗︎](https://discord.cloudflare.com) to connect with other developers and the Cloudflare team.
 
 Was this helpful?
 

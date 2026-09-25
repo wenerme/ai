@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 The free version of Network Flow (formerly Magic Network Monitoring) is available to all Cloudflare accounts.
 
-Join [Cloudflare's Discord server ↗](https://discord.com/invite/cloudflaredev) to discuss Network Flow use cases, configuration, and troubleshooting. The Network Flow product and engineering team regularly engages with the community.
+Join [Cloudflare's Discord server ↗︎](https://discord.com/invite/cloudflaredev) to discuss Network Flow use cases, configuration, and troubleshooting. The Network Flow product and engineering team regularly engages with the community.
 
 In the Discord server, find the **magic-network-monitoring** channel under the **Cloudflare One** category.
 

@@ -37,7 +37,7 @@ AI Gateway inspects all interactions in real time by evaluating content against 
 
 ## Related resource
 
-- [Cloudflare Blog: Keep AI interactions secure and risk-free with Guardrails in AI Gateway ↗](https://blog.cloudflare.com/guardrails-in-ai-gateway/)
+- [Cloudflare Blog: Keep AI interactions secure and risk-free with Guardrails in AI Gateway ↗︎](https://blog.cloudflare.com/guardrails-in-ai-gateway/)
 
 Was this helpful?
 

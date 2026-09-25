@@ -133,7 +133,7 @@ Cloudflare Network Firewall is available to Enterprise users only.
 
 To block TCP SYN packets to a specific destination:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Firewall policies** > **Custom policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Firewall policies** > **Custom policies**.
 2. Select **Add a policy**.
 3. Create a rule with the destination IP address or CIDR range you want to block. For example, to block all traffic to `10.0.0.0/8`, use the expression `ip.dst in {10.0.0.0/8}` with a **Block** action.
 4. Select **Add new policy**.
@@ -249,7 +249,7 @@ Terraform provider v4 precedence limitation
 
 To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint.
 
-To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
+To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
 
 ## Example
 
@@ -294,7 +294,7 @@ Therefore, the user is able to connect to `https://test.example.com`.
 
 ## Precedence calculations
 
-When arranging policies in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), Gateway automatically calculates the precedence for rearranged policies.
+When arranging policies in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), Gateway automatically calculates the precedence for rearranged policies.
 
 When using the API to create a policy, unless the precedence is explicitly defined in the policy, Gateway will assign precedence to policies starting at `1000`. Every time a new policy is added to the bottom of the order, Gateway will calculate the current highest precedence in the account and add a random integer between 1 and 100 to `1000` so that it now claims the maximum precedence in the account. To manually update a policy's precedence, use the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint. You can set a policy's precedence to any value that is not already in use.
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/functions/plugins/graphql/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The GraphQL Pages Plugin creates a GraphQL server which can respond to `application/json` and `application/graphql` `POST` requests. It responds with [the GraphQL Playground ↗](https://github.com/graphql/graphql-playground) for `GET` requests.
+The GraphQL Pages Plugin creates a GraphQL server which can respond to `application/json` and `application/graphql` `POST` requests. It responds with [the GraphQL Playground ↗︎](https://github.com/graphql/graphql-playground) for `GET` requests.
 
 ## Installation
 

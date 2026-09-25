@@ -20,7 +20,7 @@ Cloudflare supports the following custom list types:
 
 - [Lists with IP addresses](#ip-lists) (also known as IP lists)
 - [Lists with hostnames](#lists-with-hostnames)
-- [Lists with ASNs](#lists-with-asns) ([autonomous system ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) numbers)
+- [Lists with ASNs](#lists-with-asns) ([autonomous system ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) numbers)
 
 Note
 

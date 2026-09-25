@@ -35,7 +35,7 @@ Centrify secures access to infrastructure, DevOps, cloud, and other modern enter
     https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
     ```
 
-    You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+    You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 11. Select **Save**.
 12. In the middle menu pane, select **User Access**.
 13. Select **Add**. The **Select Role** dialog displays.
@@ -49,7 +49,7 @@ Centrify secures access to infrastructure, DevOps, cloud, and other modern enter
 
 ### 2. Add Centrify to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **SAML**.
 4. Copy and paste the corresponding information from Centrify into the fields.

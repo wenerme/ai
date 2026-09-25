@@ -112,7 +112,7 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: "auto" or "default" or "flex" or 2 more`
+  - `service_tier: "auto" or "default" or "flex" or 3 more`
 
     The resolved service-tier policy used for model requests.
 
@@ -125,6 +125,8 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `text: AgentText`
 

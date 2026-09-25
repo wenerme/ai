@@ -18,11 +18,11 @@ Note
 
 For compatibility dates of `2026-08-04` or later, Workers enables both `nodejs_compat` and `nodejs_compat_v2` by default. These flags are not used for these compatibility dates. Existing projects do not need to remove them when updating their compatibility date. For earlier dates, add `nodejs_compat` to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) to opt in. For instructions to turn off Node.js compatibility, refer to the [Node.js compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-The [`process` ↗](https://nodejs.org/docs/latest/api/process.html) module in Node.js provides a number of useful APIs related to the current process.
+The [`process` ↗︎](https://nodejs.org/docs/latest/api/process.html) module in Node.js provides a number of useful APIs related to the current process.
 
 Initially Workers only supported `nextTick`, `env`, `exit`, `getBuiltinModule`, `platform` and `features` on process, which was then updated with the [`enable_nodejs_process_v2`](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enable-process-v2-implementation) flag to include most Node.js process features.
 
-Refer to the [Node.js documentation for `process` ↗](https://nodejs.org/docs/latest/api/process.html) for more information.
+Refer to the [Node.js documentation for `process` ↗︎](https://nodejs.org/docs/latest/api/process.html) for more information.
 
 Workers-specific implementation details apply when adapting Node.js process support for a serverless environment, which are described in more detail below.
 
@@ -74,7 +74,7 @@ process.env === env; // false! they are no longer the same object
 
 ## `process.nextTick()`
 
-The Workers implementation of `process.nextTick()` is a wrapper for the standard Web Platform API [`queueMicrotask()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask).
+The Workers implementation of `process.nextTick()` is a wrapper for the standard Web Platform API [`queueMicrotask()` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/queueMicrotask).
 
 ```js
 import { env, nextTick } from "node:process";
@@ -89,7 +89,7 @@ nextTick(() => {
 
 ## Stdio
 
-[`process.stdout` ↗](https://nodejs.org/docs/latest/api/process.html#processstdout), [`process.stderr` ↗](https://nodejs.org/docs/latest/api/process.html#processstderr) and [`process.stdin` ↗](https://nodejs.org/docs/latest/api/process.html#processstdin) are supported as streams. `stdin` is treated as an empty readable stream. `stdout` and `stderr` are non-TTY writable streams, which output to normal logging output only with `stdout:` and `stderr:` prefixing.
+[`process.stdout` ↗︎](https://nodejs.org/docs/latest/api/process.html#processstdout), [`process.stderr` ↗︎](https://nodejs.org/docs/latest/api/process.html#processstderr) and [`process.stdin` ↗︎](https://nodejs.org/docs/latest/api/process.html#processstdin) are supported as streams. `stdin` is treated as an empty readable stream. `stdout` and `stderr` are non-TTY writable streams, which output to normal logging output only with `stdout:` and `stderr:` prefixing.
 
 The line buffer works by storing writes to stdout or stderr until either a newline character `\n` is encountered or until the next microtask, when the log is then flushed to the output.
 
@@ -97,13 +97,13 @@ This ensures compatibility with inspector and structured logging outputs.
 
 ## Current Working Directory
 
-[`process.cwd()` ↗](https://nodejs.org/docs/latest/api/process.html#processcwd) is the *current working directory*, used as the default path for all filesystem operations, and is initialized to `/bundle`.
+[`process.cwd()` ↗︎](https://nodejs.org/docs/latest/api/process.html#processcwd) is the *current working directory*, used as the default path for all filesystem operations, and is initialized to `/bundle`.
 
-[`process.chdir()` ↗](https://nodejs.org/docs/latest/api/process.html#processchdirdirectory) allows modifying the `cwd` and is respected by FS operations when using `enable_nodejs_fs_module`.
+[`process.chdir()` ↗︎](https://nodejs.org/docs/latest/api/process.html#processchdirdirectory) allows modifying the `cwd` and is respected by FS operations when using `enable_nodejs_fs_module`.
 
 ## Hrtime
 
-While [`process.hrtime` ↗](https://nodejs.org/docs/latest/api/process.html#processhrtimetime) high-resolution timer is available, it provides an inaccurate timer for compatibility only.
+While [`process.hrtime` ↗︎](https://nodejs.org/docs/latest/api/process.html#processhrtimetime) high-resolution timer is available, it provides an inaccurate timer for compatibility only.
 
 Was this helpful?
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/provide-specific-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-If you are [submitting an abuse report ↗](https://abuse.cloudflare.com) to Cloudflare because our IP address appears in the WHOIS and DNS records for a website, it is very likely that the website is one of millions of websites that use our pass-through security and content distribution network (CDN) services. Because assets on the same website may be hosted by different providers, it is important that you submit the URL for that specific asset to enable appropriate action. This guide will teach you how to identify URLs for specific video or images on a webpage.
+If you are [submitting an abuse report ↗︎](https://abuse.cloudflare.com) to Cloudflare because our IP address appears in the WHOIS and DNS records for a website, it is very likely that the website is one of millions of websites that use our pass-through security and content distribution network (CDN) services. Because assets on the same website may be hosted by different providers, it is important that you submit the URL for that specific asset to enable appropriate action. This guide will teach you how to identify URLs for specific video or images on a webpage.
 
 ## Get the URL for specific content
 
@@ -31,9 +31,9 @@ Providing the most specific and helpful URL enables Cloudflare to correctly iden
 
 ## Submitting the abuse report
 
-Once you have identified the URL for the specific asset, you can [submit an abuse report ↗](https://abuse.cloudflare.com) through Cloudflare's online abuse reporting process.
+Once you have identified the URL for the specific asset, you can [submit an abuse report ↗︎](https://abuse.cloudflare.com) through Cloudflare's online abuse reporting process.
 
-You can learn more about the process, and what you can expect from Cloudflare in response to such abuse reports, from [our abuse policy ↗](https://www.cloudflare.com/trust-hub/reporting-abuse/).
+You can learn more about the process, and what you can expect from Cloudflare in response to such abuse reports, from [our abuse policy ↗︎](https://www.cloudflare.com/trust-hub/reporting-abuse/).
 
 Was this helpful?
 

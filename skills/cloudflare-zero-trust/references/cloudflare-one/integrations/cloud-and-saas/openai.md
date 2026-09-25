@@ -24,7 +24,7 @@ This integration covers the following OpenAI products:
 
 Note
 
-Before you begin, ensure that OpenAI has enabled ChatGPT Enterprise Compliance API access for your organization. You will need a Project API key issued for your organization, your Organization ID, and your Workspace ID. These are available in your [OpenAI Project API Keys ↗](https://platform.openai.com/settings/organization/projects).
+Before you begin, ensure that OpenAI has enabled ChatGPT Enterprise Compliance API access for your organization. You will need a Project API key issued for your organization, your Organization ID, and your Workspace ID. These are available in your [OpenAI Project API Keys ↗︎](https://platform.openai.com/settings/organization/projects).
 
 If Compliance API access is not yet turned on for your organization, refer to [Enable Compliance API access](#enable-combliane-api-access).
 
@@ -46,7 +46,7 @@ Compliance API access is required to use the OpenAI CASB integration. To enable 
 2. OpenAI will verify the key and grant the requested Compliance API scopes.
 3. After the scopes are granted, [add the OpenAI integration to CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/). When prompted, enter your Open AI Admin API key, Organization ID, and Workspace ID (available at `https://chatgpt.com/admin/settings`).
 
-For more information, refer to the [OpenAI Help Center ↗](https://help.openai.com/articles/9261474-compliance-api-for-enterprise-customers).
+For more information, refer to the [OpenAI Help Center ↗︎](https://help.openai.com/articles/9261474-compliance-api-for-enterprise-customers).
 
 ## Integration permissions
 

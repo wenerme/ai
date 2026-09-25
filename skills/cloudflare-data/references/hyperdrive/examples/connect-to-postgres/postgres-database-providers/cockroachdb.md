@@ -16,7 +16,7 @@ Connect Hyperdrive to a CockroachDB database.
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/cockroachdb/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example shows you how to connect Hyperdrive to a [CockroachDB ↗](https://www.cockroachlabs.com/) database cluster. CockroachDB is a PostgreSQL-compatible distributed SQL database with strong consistency guarantees.
+This example shows you how to connect Hyperdrive to a [CockroachDB ↗︎](https://www.cockroachlabs.com/) database cluster. CockroachDB is a PostgreSQL-compatible distributed SQL database with strong consistency guarantees.
 
 ## 1. Allow Hyperdrive access
 
@@ -24,18 +24,18 @@ To allow Hyperdrive to connect to your database, you will need to ensure that Hy
 
 ### CockroachDB Console
 
-The steps below assume you have an [existing CockroachDB Cloud account ↗](https://www.cockroachlabs.com/docs/cockroachcloud/quickstart) and database cluster created.
+The steps below assume you have an [existing CockroachDB Cloud account ↗︎](https://www.cockroachlabs.com/docs/cockroachcloud/quickstart) and database cluster created.
 
 To create and/or fetch your database credentials:
 
-1. Go to the [CockroachDB Cloud console ↗](https://cockroachlabs.cloud/clusters) and select the cluster you want Hyperdrive to connect to.
+1. Go to the [CockroachDB Cloud console ↗︎](https://cockroachlabs.cloud/clusters) and select the cluster you want Hyperdrive to connect to.
 2. Select **SQL Users** from the sidebar on the left, and select **Add User**.
 3. Enter a username (for example, \`hyperdrive-user), and select **Generate & Save Password**.
 4. Note down the username and copy the password to a temporary location.
 
 To retrieve your database connection details:
 
-1. Go to the [CockroachDB Cloud console ↗](https://cockroachlabs.cloud/clusters) and select the cluster you want Hyperdrive to connect to.
+1. Go to the [CockroachDB Cloud console ↗︎](https://cockroachlabs.cloud/clusters) and select the cluster you want Hyperdrive to connect to.
 2. Select **Connect** in the top right.
 3. Choose the user you created, for example, `hyperdrive-user`.
 4. Select the database, for example `defaultdb`.
@@ -85,7 +85,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -104,7 +104,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -173,7 +173,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -186,7 +186,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

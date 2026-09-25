@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/send-emails-with-resend/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this tutorial, you will learn how to send transactional emails from Workers using [Resend ↗](https://resend.com/). At the end of this tutorial, you’ll be able to:
+In this tutorial, you will learn how to send transactional emails from Workers using [Resend ↗︎](https://resend.com/). At the end of this tutorial, you’ll be able to:
 
 - Create a Worker to send emails.
 - Sign up and add a Cloudflare domain to Resend.
@@ -25,10 +25,10 @@ In this tutorial, you will learn how to send transactional emails from Workers u
 
 To continue with this tutorial, you’ll need:
 
-- A  [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages), if you don’t already have one.
+- A  [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages), if you don’t already have one.
 - A [registered](https://developers.cloudflare.com/registrar/get-started/register-domain/) domain.
-- Installed [npm ↗](https://docs.npmjs.com/getting-started).
-- A [Resend account ↗](https://resend.com/signup).
+- Installed [npm ↗︎](https://docs.npmjs.com/getting-started).
+- A [Resend account ↗︎](https://resend.com/signup).
 
 ## Create a Worker project
 
@@ -56,7 +56,7 @@ export default {
 
 ## Add your domain to Resend
 
-If you don’t already have a Resend account, you can sign up for a [free account here ↗](https://resend.com/signup). After signing up, go to `Domains` using the side menu, and click the button to add a new domain. On the modal, enter the domain you want to add and then select a region.
+If you don’t already have a Resend account, you can sign up for a [free account here ↗︎](https://resend.com/signup). After signing up, go to `Domains` using the side menu, and click the button to add a new domain. On the modal, enter the domain you want to add and then select a region.
 
 Next, you’re presented with a list of DNS records to add to your Cloudflare domain. On your Cloudflare dashboard, select the domain you entered earlier and navigate to `DNS` > `Records`. Copy/paste the DNS records (DKIM, SPF, and DMARC records) from Resend to your Cloudflare domain.
 
@@ -101,7 +101,7 @@ export default {
 };
 ```
 
-To test your code locally, run the following command and navigate to [http://localhost:8787/ ↗](http://localhost:8787/) in a browser:
+To test your code locally, run the following command and navigate to [http://localhost:8787/ ↗︎](http://localhost:8787/) in a browser:
 
 ```sh
 npm start

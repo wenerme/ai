@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-tls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-By default, DNS is sent over a plaintext connection. DNS over TLS (DoT) is one way to send DNS queries over an encrypted connection. Cloudflare supports DNS over TLS on standard port `853` and is compliant with [RFC 7858 ↗](https://tools.ietf.org/html/rfc7858).
+By default, DNS is sent over a plaintext connection. DNS over TLS (DoT) is one way to send DNS queries over an encrypted connection. Cloudflare supports DNS over TLS on standard port `853` and is compliant with [RFC 7858 ↗︎](https://tools.ietf.org/html/rfc7858).
 
 DoT wraps standard DNS traffic inside a TLS-encrypted TCP connection. This prevents anyone between your device and the resolver from reading or modifying your DNS queries.
 
@@ -29,7 +29,7 @@ A stub resolver is the DNS client software on your device that sends queries to 
 3. The DNS stub resolver initiates a TLS handshake — a process where both sides agree on encryption parameters and the client verifies the server's identity.
 4. In the TLS handshake, 1.1.1.1 presents its TLS certificate.
 5. Once the TLS connection is established, the DNS stub resolver can send DNS over an encrypted connection, preventing eavesdropping and tampering.
-6. All DNS queries sent over the TLS connection must comply with specifications of [sending DNS over TCP ↗](https://tools.ietf.org/html/rfc1035#section-4.2.2).
+6. All DNS queries sent over the TLS connection must comply with specifications of [sending DNS over TCP ↗︎](https://tools.ietf.org/html/rfc1035#section-4.2.2).
 
 ## Example
 

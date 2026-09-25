@@ -159,7 +159,7 @@ Sets the opacity of the overlay. Accepts a decimal value between `0.0` (fully tr
 
 ### `composite`
 
-Controls how the overlay is blended with the base image using [Porter-Duff compositing operations ↗](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/feComposite). The default is `over`.
+Controls how the overlay is blended with the base image using [Porter-Duff compositing operations ↗︎](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/feComposite). The default is `over`.
 
 The composite mode only affects the area within the overlay's bounding box. The base image is always preserved outside of this area.
 

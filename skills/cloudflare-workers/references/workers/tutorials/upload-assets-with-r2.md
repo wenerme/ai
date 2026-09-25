@@ -20,13 +20,13 @@ This tutorial explains how to create a TypeScript-based Cloudflare Workers proje
 
 To continue:
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
-2. Install [`npm` ↗](https://docs.npmjs.com/getting-started).
-3. Install [`Node.js` ↗](https://nodejs.org/en/). Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
+2. Install [`npm` ↗︎](https://docs.npmjs.com/getting-started).
+3. Install [`Node.js` ↗︎](https://nodejs.org/en/). Use a Node version manager like [Volta ↗︎](https://volta.sh/) or [nvm ↗︎](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
 
 ## Create a Worker application
 
-First, use the [`create-cloudflare` CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) to create a new Worker. To do this, open a terminal window and run the following command:
+First, use the [`create-cloudflare` CLI ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) to create a new Worker. To do this, open a terminal window and run the following command:
 
 npmyarnpnpm
 
@@ -190,7 +190,7 @@ You have successfully created a Cloudflare Worker that allows you to interact wi
 
 To build more with R2 and Workers, refer to [Tutorials](https://developers.cloudflare.com/workers/tutorials/) and the [R2 documentation](https://developers.cloudflare.com/r2/).
 
-If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with fellow developers and the Cloudflare team.
+If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗︎](https://discord.cloudflare.com) to connect with fellow developers and the Cloudflare team.
 
 Was this helpful?
 

@@ -20,7 +20,7 @@ R2 SQL is in **open beta**, and any developer with an [R2 subscription](https://
 
 Query Apache Iceberg tables managed by R2 Data Catalog using SQL.
 
-R2 SQL is Cloudflare's serverless, distributed, analytics query engine for querying [Apache Iceberg ↗](https://iceberg.apache.org/) tables stored in [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/). R2 SQL is designed to efficiently query large amounts of data by automatically utilizing file pruning, Cloudflare's distributed compute, and R2 object storage.
+R2 SQL is Cloudflare's serverless, distributed, analytics query engine for querying [Apache Iceberg ↗︎](https://iceberg.apache.org/) tables stored in [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/). R2 SQL is designed to efficiently query large amounts of data by automatically utilizing file pruning, Cloudflare's distributed compute, and R2 object storage.
 
 ```sh
 ❯ npx wrangler r2 sql query "3373912de3f5202317188ae01300bd6_data-catalog" \

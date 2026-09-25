@@ -50,7 +50,7 @@ You need to manually delete data for:
 - Selective based deletes using conditional logic.
 - Removing stale or unreferenced files that R2 Data Catalog does not manage.
 
-The following are basic examples using PySpark but similar operations can be performed using other Iceberg-compatible engines. To configure PySpark, refer to our [example](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-python/) or the official [PySpark documentation ↗](https://spark.apache.org/docs/latest/api/python/getting_started/index.html).
+The following are basic examples using PySpark but similar operations can be performed using other Iceberg-compatible engines. To configure PySpark, refer to our [example](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-python/) or the official [PySpark documentation ↗︎](https://spark.apache.org/docs/latest/api/python/getting_started/index.html).
 
 ### Deleting rows from a table
 
@@ -213,7 +213,7 @@ R2 Data Catalog can automate [rewriting data files](https://developers.cloudflar
 - [Table maintenance](https://developers.cloudflare.com/r2-data-catalog/table-maintenance/) - Learn about automatic maintenance operations
 - [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/) - Overview and getting started guide
 - [Query data](https://developers.cloudflare.com/r2-sql/query-data) - Query tables with R2 SQL
-- [Apache Iceberg Maintenance ↗](https://iceberg.apache.org/docs/latest/maintenance/) - Official Iceberg documentation on table maintenance
+- [Apache Iceberg Maintenance ↗︎](https://iceberg.apache.org/docs/latest/maintenance/) - Official Iceberg documentation on table maintenance
 
 ## Footnotes
 

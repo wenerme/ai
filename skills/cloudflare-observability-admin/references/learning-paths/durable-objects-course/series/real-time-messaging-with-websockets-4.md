@@ -20,12 +20,12 @@ Now, we'll take it a step further by enabling our server to receive and broadcas
 
 For additional resources on learning Durable Objects with Cloudflare, refer to the following resources:
 
-- [Veet Github repository code ↗](https://github.com/megaconfidence/veet)
+- [Veet Github repository code ↗︎](https://github.com/megaconfidence/veet)
 - [Cloudflare Durable Objects documentation](https://developers.cloudflare.com/durable-objects/)
 - [Cloudflare TURN service documentation](https://developers.cloudflare.com/realtime/turn/)
 - [CLI command for creating new Workers and Pages projects](https://developers.cloudflare.com/pages/get-started/c3/)
-- [Hopscotch.io for local WebSocket testing ↗](https://hoppscotch.io/)
-- [Sign up for a Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- [Hopscotch.io for local WebSocket testing ↗︎](https://hoppscotch.io/)
+- [Sign up for a Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up)
 
 ### [Watch Episode 1: Introduction to the series](https://developers.cloudflare.com/learning-paths/durable-objects-course/series/introduction-to-series-1/)
 

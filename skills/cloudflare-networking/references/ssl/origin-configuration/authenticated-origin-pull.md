@@ -48,7 +48,7 @@ Note
 
 Global AOP uses a Cloudflare-provided certificate shared across all accounts, so it only proves a request came from the Cloudflare network — not from your account specifically. If you need to guarantee requests come from your account, set up [zone-level](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/zone-level/) or [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) AOP with your own certificate.
 
-Using your own certificate is also required for [FIPS ↗](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards) compliance. For broader origin protection guidance, refer to [Protect your origin server](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/).
+Using your own certificate is also required for [FIPS ↗︎](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standards) compliance. For broader origin protection guidance, refer to [Protect your origin server](https://developers.cloudflare.com/fundamentals/security/protect-your-origin-server/).
 
 ## Post-quantum certificates
 

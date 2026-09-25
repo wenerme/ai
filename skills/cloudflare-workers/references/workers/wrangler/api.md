@@ -360,7 +360,7 @@ const result = await experimental_generateTypes({
 
 Caution
 
-`unstable_startWorker()` is deprecated. Cloudflare recommends [`createTestHarness()`](#createtestharness) for integration testing. To start a development server programmatically, use the Vite [`createServer()` ↗](https://vite.dev/guide/api-javascript.html#createserver) API with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
+`unstable_startWorker()` is deprecated. Cloudflare recommends [`createTestHarness()`](#createtestharness) for integration testing. To start a development server programmatically, use the Vite [`createServer()` ↗︎](https://vite.dev/guide/api-javascript.html#createserver) API with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 
 This API exposes the internals of Wrangler's dev server, and allows you to customise how it runs. For example, you could use `unstable_startWorker()` to run integration tests against your Worker. This example uses `node:test`, but should apply to any testing framework:
 
@@ -393,7 +393,7 @@ describe("worker", () => {
 
 Caution
 
-`unstable_dev()` is deprecated. Cloudflare recommends [`createTestHarness()`](#createtestharness) for integration testing. To start a development server programmatically, use the Vite [`createServer()` ↗](https://vite.dev/guide/api-javascript.html#createserver) API with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
+`unstable_dev()` is deprecated. Cloudflare recommends [`createTestHarness()`](#createtestharness) for integration testing. To start a development server programmatically, use the Vite [`createServer()` ↗︎](https://vite.dev/guide/api-javascript.html#createserver) API with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
 
 Start an HTTP server for testing your Worker.
 

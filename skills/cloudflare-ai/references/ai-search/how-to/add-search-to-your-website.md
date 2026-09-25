@@ -22,8 +22,8 @@ This tutorial creates an AI Search instance that indexes your website, then adds
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -33,7 +33,7 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
@@ -192,7 +192,7 @@ declare module "react" {
 }
 ```
 
-This types the tags loosely so any attribute is allowed. For stricter, per-component types, refer to the [React demo declarations ↗](https://github.com/cloudflare/ai-search-snippet/blob/main/apps/demo-react/index.d.ts) in the snippet repository.
+This types the tags loosely so any attribute is allowed. For stricter, per-component types, refer to the [React demo declarations ↗︎](https://github.com/cloudflare/ai-search-snippet/blob/main/apps/demo-react/index.d.ts) in the snippet repository.
 
 ## 5. Allow your local origin
 

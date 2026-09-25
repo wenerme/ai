@@ -20,7 +20,7 @@ The Private Network application type can no longer be created from the dashboard
 
 Existing **Private Network** applications continue to function and can still be managed. These applications were originally configured with the following steps:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications** > **Add an application**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications** > **Add an application**.
 2. Select **Private Network**.
 3. Name your application.
 4. For **Application type**, select *Destination IP*.

@@ -185,7 +185,7 @@ Do not issue one long-lived write token to every agent. Mint the narrowest token
 
 ### Use git notes for prompts and model output
 
-Use [git notes ↗](https://git-scm.com/docs/git-notes) to attach prompts, model output, run IDs, or other harness metadata to a commit without changing the commit object or working tree.
+Use [git notes ↗︎](https://git-scm.com/docs/git-notes) to attach prompts, model output, run IDs, or other harness metadata to a commit without changing the commit object or working tree.
 
 This lets you use Artifacts as both the versioned filesystem for agent work and the source of truth for your agent harness. Your files stay focused on the work product, while the commit notes hold the surrounding execution context.
 

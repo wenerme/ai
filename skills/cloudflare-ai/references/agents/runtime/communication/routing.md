@@ -1065,7 +1065,7 @@ export default {
 
 ### Using a framework (Hono)
 
-If you are using a framework like [Hono ↗](https://hono.dev/), authenticate in middleware before calling the agent:
+If you are using a framework like [Hono ↗︎](https://hono.dev/), authenticate in middleware before calling the agent:
 
 ```js
 import { Agent, getAgentByName } from "agents";

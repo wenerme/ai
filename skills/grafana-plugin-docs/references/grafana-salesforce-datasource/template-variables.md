@@ -18,9 +18,9 @@ For an introduction to templates and variables, refer to the following topics:
 
 ## Create Salesforce query variables
 
-To add a new Salesforce query variable, refer to [Add a query variable](/docs/grafana/latest/variables/variable-types/add-query-variable/). Select your Salesforce data source and write a SOQL query that returns your desired variable options.
+To add a new Salesforce query variable, refer to [Add a query variable](/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Select your Salesforce data source and write a SOQL query that returns your desired variable options.
 
-You can use either the SOQL Editor or Query Builder mode to create variable queries.
+You can use either SOQL editor or Query builder mode to create variable queries.
 
 ### Single value variables
 
@@ -82,7 +82,7 @@ SELECT DISTINCT StageName FROM Opportunity ORDER BY StageName
 soql [Copy code to clipboard] Copy
 
 ```soql
-SELECT Id, Name FROM RecordType WHERE SubjectType = 'Opportunity' ORDER BY Name
+SELECT Id, Name FROM RecordType WHERE SobjectType = 'Opportunity' ORDER BY Name
 ```
 
 ### Custom picklist values
@@ -95,7 +95,7 @@ SELECT DISTINCT Status__c FROM CustomObject__c ORDER BY Status__c
 
 ## Use variables in queries
 
-After you create a variable, you can use it in your Salesforce queries using [variable syntax](/docs/grafana/latest/variables/syntax/).
+After you create a variable, you can use it in your Salesforce queries using [variable syntax](/docs/grafana/latest/dashboards/variables/variable-syntax/).
 
 For example, if you have a variable named `account`, you can use it in a SOQL query:
 
@@ -119,11 +119,15 @@ WHERE AccountId IN (${account:singlequote})
 
 The `singlequote` formatting option wraps each value in single quotes, which is required for string comparisons in SOQL.
 
+> Note
+>
+> The Salesforce data source automatically wraps multi-value selections in single quotes. When more than one value is selected, `IN (${account})` produces the same quoted list as `IN (${account:singlequote})`. Use the explicit `singlequote` format because it also quotes a single selection correctly.
+
 ## Limitations
 
 The following limitations apply to template variables with the Salesforce data source:
 
 - **Ad-hoc filters are not supported.** You cannot use the ad-hoc filters variable type with Salesforce.
-- **Reports mode does not support variables.** Variable queries must use SOQL Editor or Query Builder mode.
+- **Reports mode does not support variables.** Variable queries must use SOQL editor or Query builder mode.
 
-For more information about variables, refer to [Templates and variables](/docs/grafana/latest/variables/).
+For more information about variables, refer to [Templates and variables](/docs/grafana/latest/dashboards/variables/).

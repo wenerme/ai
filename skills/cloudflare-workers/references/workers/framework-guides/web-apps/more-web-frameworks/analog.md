@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/more-web-frameworks/analog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-In this guide, you will create a new [Analog ↗](https://analogjs.org/) application and deploy to Cloudflare Workers.
+In this guide, you will create a new [Analog ↗︎](https://analogjs.org/) application and deploy to Cloudflare Workers.
 
-[Analog ↗](https://analogjs.org/) is a fullstack meta-framework for Angular, powered by [Vite ↗](https://vitejs.dev/) and [Nitro ↗](https://nitro.unjs.io/).
+[Analog ↗︎](https://analogjs.org/) is a fullstack meta-framework for Angular, powered by [Vite ↗︎](https://vitejs.dev/) and [Nitro ↗︎](https://nitro.unjs.io/).
 
 Already have an Analog project?
 
@@ -64,7 +64,7 @@ Wrangler handles configuration automatically
 
 ## 1. Set up a new project
 
-Use the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Analog's official setup tool, and provide the option to deploy instantly.
+Use the [`create-cloudflare` ↗︎](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Analog's official setup tool, and provide the option to deploy instantly.
 
 To use `create-cloudflare` to create a new Analog project, run the following command:
 
@@ -130,7 +130,7 @@ pnpm run deploy
 
 ## Bindings
 
-Your Analog application can be fully integrated with the Cloudflare Developer Platform, in both local development and in production, by using product bindings. The [Nitro documentation ↗](https://nitro.unjs.io/deploy/providers/cloudflare#direct-access-to-cloudflare-bindings) provides information about configuring bindings and how you can access them in your Analog API routes.
+Your Analog application can be fully integrated with the Cloudflare Developer Platform, in both local development and in production, by using product bindings. The [Nitro documentation ↗︎](https://nitro.unjs.io/deploy/providers/cloudflare#direct-access-to-cloudflare-bindings) provides information about configuring bindings and how you can access them in your Analog API routes.
 
 With bindings, your application can be fully integrated with the Cloudflare Developer Platform, giving you access to compute, storage, AI and more.
 

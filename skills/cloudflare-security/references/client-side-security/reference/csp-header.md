@@ -34,7 +34,7 @@ Configuring [log rules](https://developers.cloudflare.com/client-side-security/r
 
 ## Related resources
 
-- [Mozilla Developer Network's (MDN) documentation on Content-Security-Policy-Report-Only ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy-Report-Only)
+- [Mozilla Developer Network's (MDN) documentation on Content-Security-Policy-Report-Only ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy-Report-Only)
 
 Was this helpful?
 

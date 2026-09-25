@@ -34,7 +34,7 @@ Turnstile performs client-side security challenges on behalf of the website oper
 
 Note
 
-For detailed information on Turnstile's data privacy practices, refer to the [Turnstile Privacy Addendum ↗](https://www.cloudflare.com/turnstile-privacy-policy/).
+For detailed information on Turnstile's data privacy practices, refer to the [Turnstile Privacy Addendum ↗︎](https://www.cloudflare.com/turnstile-privacy-policy/).
 
 ### Widget types
 

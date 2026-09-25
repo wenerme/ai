@@ -20,8 +20,8 @@ This guide uses the [Agents SDK](https://developers.cloudflare.com/agents/) and 
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -31,7 +31,7 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
@@ -125,7 +125,7 @@ Add an `agent_memory` binding to your Wrangler configuration. If you use the Age
   "name": "memory-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-09-22",
+  "compatibility_date": "2026-09-25",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -161,7 +161,7 @@ Add an `agent_memory` binding to your Wrangler configuration. If you use the Age
 name = "memory-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]

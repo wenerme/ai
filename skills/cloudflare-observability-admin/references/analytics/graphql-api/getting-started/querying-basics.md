@@ -234,10 +234,10 @@ Here are some helpful articles about working with the Cloudflare Analytics API a
 
 ### General info on the GraphQL framework
 
-- [How to use GraphQL (tutorials) ↗](https://www.howtographql.com/)
-- [Thinking in Graphs ↗](https://graphql.org/learn/thinking-in-graphs/)
-- [What data can you can query in the GraphQL type system (schemas) ↗](https://graphql.org/learn/schema/)
-- [How to pass variables in GraphiQL (Medium article with quick tips) ↗](https://medium.com/graphql-mastery/graphql-quick-tip-how-to-pass-variables-into-a-mutation-in-graphiql-23ecff4add57)
+- [How to use GraphQL (tutorials) ↗︎](https://www.howtographql.com/)
+- [Thinking in Graphs ↗︎](https://graphql.org/learn/thinking-in-graphs/)
+- [What data can you can query in the GraphQL type system (schemas) ↗︎](https://graphql.org/learn/schema/)
+- [How to pass variables in GraphiQL (Medium article with quick tips) ↗︎](https://medium.com/graphql-mastery/graphql-quick-tip-how-to-pass-variables-into-a-mutation-in-graphiql-23ecff4add57)
 
 Was this helpful?
 

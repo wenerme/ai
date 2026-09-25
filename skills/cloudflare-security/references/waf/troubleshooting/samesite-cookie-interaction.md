@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/troubleshooting/samesite-cookie-interaction/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Google Chrome enforces SameSite cookie behavior ↗](https://www.chromium.org/updates/same-site) to protect against marketing cookies that track users and Cross-site Request Forgery (CSRF) that allows attackers to steal or manipulate your cookies.
+[Google Chrome enforces SameSite cookie behavior ↗︎](https://www.chromium.org/updates/same-site) to protect against marketing cookies that track users and Cross-site Request Forgery (CSRF) that allows attackers to steal or manipulate your cookies.
 
 The `SameSite` cookie attribute has three different modes:
 
@@ -79,7 +79,7 @@ To resolve the issue, move your website traffic to HTTPS. Cloudflare offers two 
 
 ## Partitioned cookies (CHIPS) and `cf_clearance`
 
-Cloudflare sets the `Partitioned` attribute on the `cf_clearance` cookie (and on the internal `cf_chl_*` cookies used by the Challenge Platform) to comply with [Cookies Having Independent Partitioned State (CHIPS) ↗ ↗](https://developers.google.com/privacy-sandbox/cookies/chips).
+Cloudflare sets the `Partitioned` attribute on the `cf_clearance` cookie (and on the internal `cf_chl_*` cookies used by the Challenge Platform) to comply with [Cookies Having Independent Partitioned State (CHIPS) ↗ ↗︎](https://developers.google.com/privacy-sandbox/cookies/chips).
 
 With CHIPS, a cookie set in a third-party context (for example, inside an iframe or from a cross-site subresource) is stored in a partition keyed to the top-level site, rather than being shared across all sites that embed the third party. On Chromium-based browsers that block third-party cookies, this preserves challenge state for cross-site embeds that would otherwise be broken. On browsers that do not implement CHIPS, the `Partitioned` attribute is ignored and behavior is unchanged.
 
@@ -97,7 +97,7 @@ The `Partitioned` attribute only takes effect on cookies that are also set with 
 
 ## Related resources
 
-- [SameSite cookies explained ↗](https://web.dev/samesite-cookies-explained/)
+- [SameSite cookies explained ↗︎](https://web.dev/samesite-cookies-explained/)
 - [Cloudflare Cookies](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/)
 - [Cloudflare SSL FAQ](https://developers.cloudflare.com/ssl/faq/)
 - [Automatic HTTPS Rewrites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/automatic-https-rewrites/)

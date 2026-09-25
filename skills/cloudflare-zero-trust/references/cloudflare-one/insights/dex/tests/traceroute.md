@@ -22,7 +22,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -43,7 +43,7 @@ A traceroute test measures the network path of an IP packet from an end-user dev
 
 To set up a traceroute test for an application:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Select the **Tests** tab.
 3. Select **Add a Test**.
 4. Fill in the following fields:
@@ -67,7 +67,7 @@ A traceroute test measures the following data:
 | Number of hops | Number of routers encountered between the device and the target. |
 | Packet loss | Percentage of IP packets that failed to receive a response. |
 | Availability | Percentage of tests where at least one packet reached the destination. A value below 100% means the destination was completely unreachable during some test runs. |
-| Last seen ISP | The Internet Service Provider that is managing the connection from the device to Cloudflare. (Only available on macOS and Windows.) <br> <br> DEX looks up the IP address of the ISP in a geolocation database and returns the corresponding [ASO (Autonomous System Organization) and ASN (Autonomous System Number) ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/). If the ASO and ASN are `Unknown`, it means this information is unavailable in the geolocation data provider. |
+| Last seen ISP | The Internet Service Provider that is managing the connection from the device to Cloudflare. (Only available on macOS and Windows.) <br> <br> DEX looks up the IP address of the ISP in a geolocation database and returns the corresponding [ASO (Autonomous System Organization) and ASN (Autonomous System Number) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/). If the ASO and ASN are `Unknown`, it means this information is unavailable in the geolocation data provider. |
 
 ## Export DEX application test logs
 

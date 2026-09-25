@@ -27,7 +27,7 @@ Detection entries include:
 
 ## Manage detection entries
 
-In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries** to create, review, and manage detection entries.
+In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries** to create, review, and manage detection entries.
 
 The Detection entries section includes dedicated views for different entry types, including **All**, **Pattern**, **Predefined**, **Datasets**, **Documents**, and **AI prompt topics**. You can use search and filters to find specific entries and review details such as type, status, and last updated time.
 
@@ -49,7 +49,7 @@ For a full list, refer to [Predefined detection entries](https://developers.clou
 
 Pattern entries use regular expressions to detect text patterns in scanned content. You can create pattern entries independently of a DLP profile and reuse them across multiple custom profiles.
 
-Regular expressions are written in Rust. Cloudflare recommends validating your regex with [Rustexp ↗](https://rustexp.lpil.uk/).
+Regular expressions are written in Rust. Cloudflare recommends validating your regex with [Rustexp ↗︎](https://rustexp.lpil.uk/).
 
 DLP detects UTF-8 characters, which can be up to 4 bytes each. Custom text pattern detections are limited to 1024 bytes in length.
 
@@ -57,7 +57,7 @@ DLP does not support regular expressions with `+` or `*` operators because they 
 
 ### Create a pattern entry
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Pattern** tab, select **Add Pattern**.
 3. Enter a name. Optionally, add a description.
 4. In **Value**, enter the regular expression you want to detect.
@@ -90,7 +90,7 @@ To select which Exact Data Match columns to use, you will need to [reupload any 
 
 ### Upload a new Exact Data Match dataset
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Datasets** tab, select **Add a dataset**.
 3. Select **Exact Data Match (EDM)**.
 4. Upload your dataset file. Select **Next**.
@@ -106,7 +106,7 @@ The dataset will appear in the list with an **Uploading** status. Once the uploa
 
 Uploaded Exact Data Match datasets are read-only. To update a dataset, you must upload a new file to replace the original.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Datasets** tab, select the dataset you want to update.
 3. Select **Upload dataset** and choose your updated dataset. Select **Next**.
 4. Review and choose the new columns. Select **Next**.
@@ -130,7 +130,7 @@ Column title cells may result in false positives in Custom Wordlist datasets and
 
 ### Upload a new Custom Wordlist dataset
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Datasets** tab, select **Add a dataset**.
 3. Select **Custom Wordlist (CWL)**.
 4. Name your dataset. Optionally, add a description.
@@ -146,7 +146,7 @@ The dataset will appear in the list with an **Uploading** status. Once the uploa
 
 Uploaded Custom Wordlist datasets are read-only. To update a dataset, you must upload a new file to replace the original.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Datasets** tab, select the dataset you want to update.
 3. Select **Upload dataset** and choose your updated dataset. Select **Next**.
 4. Select **Save dataset**.
@@ -165,7 +165,7 @@ DLP supports documents in `.docx` and `.txt` format. Documents must be under 10 
 
 ### Upload a new document entry
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Documents** tab, select **Add a document entry**.
 3. Name your document. Optionally, add a description.
 4. In **Minimum similarity for matches**, enter a value between 0% and 100%.
@@ -180,7 +180,7 @@ To use your uploaded document fingerprint, add it as an existing entry to one or
 
 Uploaded document entries are read-only. To update a document entry, you must upload a new file to replace the original.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Detection entries**.
 2. From the **Documents** tab, choose the document you want to update and select **Edit**.
 3. (Optional) Update the name and minimum similarity for matches for your document entry. You can also open the existing uploaded document.
 4. In **Update document entry**, choose and upload your updated document file.

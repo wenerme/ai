@@ -119,7 +119,7 @@ Do not forget to enter the fully-qualified domain names (FQDN / associated hostn
 
 Customers can identify which client sends the Client Certificates by [forwarding client certificate headers](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/#forward-a-client-certificate) to the origin server. Customers can then store and use the certificate information such as Common Name (CN), Serial number, and other fields along with the device number to perform additional checks or logics.
 
-Additionally, authenticated requests also send the `Cf-Access-Jwt-Assertion\` JWT header to the origin server. To decode the header value, you can use [jwt.io ↗](https://jwt.io/).
+Additionally, authenticated requests also send the `Cf-Access-Jwt-Assertion\` JWT header to the origin server. To decode the header value, you can use [jwt.io ↗︎](https://jwt.io/).
 
 ## 4. Create the self-hosted applications
 

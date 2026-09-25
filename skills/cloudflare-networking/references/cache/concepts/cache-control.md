@@ -16,7 +16,7 @@ Last updated Jun 30, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Origin Cache Control is a Cloudflare feature. When enabled on an Enterprise customer's website, it indicates that Cloudflare should strictly respect `Cache-Control` directives received from the origin server. Free, Pro and Business customers have this feature enabled by default.
 
-`Cache-Control` directives in the HTTP response from your origin server provide specific [caching instructions ↗](https://datatracker.ietf.org/doc/html/rfc7234) to intermediary services like Cloudflare.
+`Cache-Control` directives in the HTTP response from your origin server provide specific [caching instructions ↗︎](https://datatracker.ietf.org/doc/html/rfc7234) to intermediary services like Cloudflare.
 
 With the Origin Cache Control feature enabled, `Cache-Control` directives present in the origin server's response will be followed as specified. For example, if the response includes a `max-age` directive of 3,600 seconds, Cloudflare will cache the resource for that duration before checking the origin server again for updates.
 
@@ -35,7 +35,7 @@ A `Cache-Control` header can include a number of directives, and the directive d
 
 Note
 
-For more information about `Cache-Control` directives at origin servers, refer to the [Mozilla Cache-Control documentation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control).
+For more information about `Cache-Control` directives at origin servers, refer to the [Mozilla Cache-Control documentation ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control).
 
 If multiple directives are passed together, each directive is separated by a comma. If the directive takes an argument, it follows the directive separated by an equal sign. For example: `max-age=86400`.
 
@@ -66,11 +66,11 @@ When setting `no-cache` with Origin Cache Control off, Cloudflare does not cache
 
 \`s-maxage\` disables \`stale-while-revalidate\`
 
-Per [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111.html#section-5.2.2.10-4), `s-maxage` incorporates the semantics of `proxy-revalidate`, which means a shared cache must not serve stale content without first revalidating with the origin. For a complete list of directives that disable `stale-while-revalidate` and workarounds, refer to [Controlling stale behavior](https://developers.cloudflare.com/cache/concepts/revalidation/#controlling-stale-behavior).
+Per [RFC 9111 ↗︎](https://www.rfc-editor.org/rfc/rfc9111.html#section-5.2.2.10-4), `s-maxage` incorporates the semantics of `proxy-revalidate`, which means a shared cache must not serve stale content without first revalidating with the origin. For a complete list of directives that disable `stale-while-revalidate` and workarounds, refer to [Controlling stale behavior](https://developers.cloudflare.com/cache/concepts/revalidation/#controlling-stale-behavior).
 
 - `no-cache` — Indicates the response cannot be used to satisfy a subsequent request without successful validation on the origin server. This allows an origin server to prevent a cache from using the origin to satisfy a request without contacting it, even by caches that have been configured to send stale responses.
 
-Ensure the HTTP `Expires` header is set in your origin server to use Greenwich Mean Time (GMT) as stipulated in [RFC 2616 ↗](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3 "3.3.1 Full Date").
+Ensure the HTTP `Expires` header is set in your origin server to use Greenwich Mean Time (GMT) as stipulated in [RFC 2616 ↗︎](https://www.w3.org/Protocols/rfc2616/rfc2616-sec3.html#sec3.3 "3.3.1 Full Date").
 
 ### Revalidation
 
@@ -104,7 +104,7 @@ Additional directives that influence cache behavior are listed below.
 
 ### Understand `no-store` and `no-cache` directives
 
-There is often confusion between the directives `Cache-Control: no-store` and `Cache-Control: no-cache`, particularly regarding how they impact browser caching and features like the [Back-Forward Cache ↗](https://developer.mozilla.org/en-US/docs/Glossary/bfcache) (BFCache).
+There is often confusion between the directives `Cache-Control: no-store` and `Cache-Control: no-cache`, particularly regarding how they impact browser caching and features like the [Back-Forward Cache ↗︎](https://developer.mozilla.org/en-US/docs/Glossary/bfcache) (BFCache).
 
 #### `no-store`
 
@@ -123,7 +123,7 @@ For more information about how these directives behave when Origin Cache Control
 
 ## Enable Origin Cache Control
 
-If you enable Origin Cache Control, Cloudflare will aim to strictly adhere to [RFC 7234 ↗](https://datatracker.ietf.org/doc/html/rfc7234). Enterprise customers have the ability to select if Cloudflare will adhere to this behavior, enabling or disabling Origin Cache Control for their websites through cache rules in the [dashboard](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#origin-cache-control-enterprise-only) or via [API](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#origin-cache-control-enterprise-only). Free, Pro, and Business customers have this option enabled by default and cannot disable it.
+If you enable Origin Cache Control, Cloudflare will aim to strictly adhere to [RFC 7234 ↗︎](https://datatracker.ietf.org/doc/html/rfc7234). Enterprise customers have the ability to select if Cloudflare will adhere to this behavior, enabling or disabling Origin Cache Control for their websites through cache rules in the [dashboard](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#origin-cache-control-enterprise-only) or via [API](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#origin-cache-control-enterprise-only). Free, Pro, and Business customers have this option enabled by default and cannot disable it.
 
 ## Origin Cache Control behavior
 
@@ -165,7 +165,7 @@ Condition | | | | | Origin Cache Control disabled behavior | | | | | Origin Cach
 
 Note
 
-When the `Cloudflare-Cdn-Cache-Control` header is set, OCC is turned **on** (regardless of whether OCC is enabled or disabled). As a result, we apply our Authorization header logic (per [RFC 7234, Section 3.2 ↗](https://tools.ietf.org/html/rfc7234#section-3.2)) to allow only the `s-maxage`, `must-revalidate`, or `public` directives. If any other directive is present, we do not cache the asset and instead return `BYPASS`.
+When the `Cloudflare-Cdn-Cache-Control` header is set, OCC is turned **on** (regardless of whether OCC is enabled or disabled). As a result, we apply our Authorization header logic (per [RFC 7234, Section 3.2 ↗︎](https://tools.ietf.org/html/rfc7234#section-3.2)) to allow only the `s-maxage`, `must-revalidate`, or `public` directives. If any other directive is present, we do not cache the asset and instead return `BYPASS`.
 
 ## Examples
 

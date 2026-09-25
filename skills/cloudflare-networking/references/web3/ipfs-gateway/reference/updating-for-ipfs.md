@@ -24,11 +24,11 @@ Using only relative links within a web application supports all of these at once
 
 ## Angular, React, Vue
 
-These popular JavaScript frameworks are covered in a [blog post ↗](https://medium.com/pinata/how-to-easily-host-a-website-on-ipfs-9d842b5d6a01) from [Pinata ↗](https://pinata.cloud/). They are fixed with minor config changes.
+These popular JavaScript frameworks are covered in a [blog post ↗︎](https://medium.com/pinata/how-to-easily-host-a-website-on-ipfs-9d842b5d6a01) from [Pinata ↗︎](https://pinata.cloud/). They are fixed with minor config changes.
 
 ## Gatsby
 
-Gatsby is a JavaScript framework based on React. There is a [plugin ↗](https://www.gatsbyjs.org/packages/gatsby-plugin-ipfs/) for it that ensures links are relative.
+Gatsby is a JavaScript framework based on React. There is a [plugin ↗︎](https://www.gatsbyjs.org/packages/gatsby-plugin-ipfs/) for it that ensures links are relative.
 
 ## Jekyll
 
@@ -53,7 +53,7 @@ This snippet also prefixing any links with `{{base}}`. So for example, we would 
 
 ## Generic
 
-For other frameworks, or if a framework was not used, there's a script called [make-relative ↗](https://github.com/tmcw/make-relative) that will parse the HTML of a website and automatically rewrite links and images to be relative.
+For other frameworks, or if a framework was not used, there's a script called [make-relative ↗︎](https://github.com/tmcw/make-relative) that will parse the HTML of a website and automatically rewrite links and images to be relative.
 
 Was this helpful?
 

@@ -18,11 +18,11 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 This error indicates that the request was not sent with the proper authentication credentials. The server requires authentication to process the request.
 
-For more details, refer to [RFC 7235 ↗](https://tools.ietf.org/html/rfc7235).
+For more details, refer to [RFC 7235 ↗︎](https://tools.ietf.org/html/rfc7235).
 
 ### Common use cases
 
-A `401 Unauthorized` error occurs when the client fails to provide valid authentication credentials. The server responds with at least one challenge in the form of a `WWW-Authenticate` header field, as outlined in [section 4.1 ↗](https://datatracker.ietf.org/doc/html/rfc7235#section-4.1).
+A `401 Unauthorized` error occurs when the client fails to provide valid authentication credentials. The server responds with at least one challenge in the form of a `WWW-Authenticate` header field, as outlined in [section 4.1 ↗︎](https://datatracker.ietf.org/doc/html/rfc7235#section-4.1).
 
 If the client resends the request with the same credentials and the challenge remains unchanged, the server may return an entity to assist the client in identifying the correct credentials needed.
 

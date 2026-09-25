@@ -168,7 +168,7 @@ data: {"count": 42}\n\n
 
 ### With AI SDK
 
-The [AI SDK ↗](https://ai-sdk.dev/) provides built-in SSE streaming:
+The [AI SDK ↗︎](https://ai-sdk.dev/) provides built-in SSE streaming:
 
 ```js
 import { Agent } from "agents";

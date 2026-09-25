@@ -37,7 +37,7 @@ You will need the email address associated with your Cloudflare account, Cloudfl
 9. Under **Uncategorized Views**, select **Cloudflare Saved View**. This displays the data explorer.
 10. From **Options** > **Time**, you can edit the **Lookback** information to review traffic source information for a specific time period.
 
-For additional information about Kentik and Magic Transit, refer to [Kentik's Magic Transit setup ↗](https://kb.kentik.com/v1/docs/mitigation-overview#cloudflare-mt-setup).
+For additional information about Kentik and Magic Transit, refer to [Kentik's Magic Transit setup ↗︎](https://kb.kentik.com/v1/docs/mitigation-overview#cloudflare-mt-setup).
 
 ## Access Cloudflare account
 

@@ -20,7 +20,7 @@ This error indicates that a Cloudflare DNS record points to a prohibited IP, pre
 
 ### Common causes
 
-- A DNS record in your Cloudflare DNS app points to one of [Cloudflare's IP addresses ↗](https://www.cloudflare.com/ips/).
+- A DNS record in your Cloudflare DNS app points to one of [Cloudflare's IP addresses ↗︎](https://www.cloudflare.com/ips/).
 - An incorrect target is specified for a CNAME record in your Cloudflare DNS app.
 - Your domain is not on Cloudflare but has a CNAME that refers to a Cloudflare domain.
 

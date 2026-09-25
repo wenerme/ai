@@ -126,7 +126,7 @@ console.log(`Request headers: ${JSON.stringify(request.headers)}`);
 
 Both attempts result in what appears to be an empty object — the string `"{}"` — even though calling `request.headers.has("Your-Header-Name")` might return true. This is the same behavior that browsers implement.
 
-The reason this happens is because [Headers ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers) objects do not store headers in enumerable JavaScript properties, so the developer console and JSON stringifier do not know how to read the names and values of the headers. It is not actually an empty object, but rather an opaque object.
+The reason this happens is because [Headers ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Headers) objects do not store headers in enumerable JavaScript properties, so the developer console and JSON stringifier do not know how to read the names and values of the headers. It is not actually an empty object, but rather an opaque object.
 
 `Headers` objects are iterable, which you can take advantage of to develop a couple of quick one-liners for debug-printing headers.
 
@@ -147,9 +147,9 @@ This works because:
 
 The `Map` approach works for calls to `console.log()`. If you need to stringify your headers, you will discover that stringifying a `Map` yields nothing more than `[object Map]`.
 
-Even though a `Map` stores its data in enumerable properties, those properties are [Symbol ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)-keyed. Because of this, `JSON.stringify()` will [ignore Symbol-keyed properties ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#symbols_and_json.stringify) and you will receive an empty `{}`.
+Even though a `Map` stores its data in enumerable properties, those properties are [Symbol ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol)-keyed. Because of this, `JSON.stringify()` will [ignore Symbol-keyed properties ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol#symbols_and_json.stringify) and you will receive an empty `{}`.
 
-Instead, you can take advantage of the iterability of the `Headers` object in a new way by applying the [spread operator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) (`...`) to it.
+Instead, you can take advantage of the iterability of the `Headers` object in a new way by applying the [spread operator ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) (`...`) to it.
 
 ```js
 let requestHeaders = JSON.stringify([...request.headers], null, 2);
@@ -158,7 +158,7 @@ console.log(`Request headers: ${requestHeaders}`);
 
 ### Convert headers into an object with Object.fromEntries (ES2019)
 
-ES2019 provides [`Object.fromEntries` ↗](https://github.com/tc39/proposal-object-from-entries) which is a call to convert the headers into an object:
+ES2019 provides [`Object.fromEntries` ↗︎](https://github.com/tc39/proposal-object-from-entries) which is a call to convert the headers into an object:
 
 ```js
 let headersObject = Object.fromEntries(request.headers);

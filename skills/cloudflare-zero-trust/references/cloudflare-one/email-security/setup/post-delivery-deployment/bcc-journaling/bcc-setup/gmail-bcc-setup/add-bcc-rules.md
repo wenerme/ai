@@ -20,7 +20,7 @@ BCC stands for Blind Carbon Copy. A BCC rule is a Google Workspace feature that 
 
 To add BCC rules:
 
-1. Log in to the [Google Admin Console ↗](https://admin.google.com/).
+1. Log in to the [Google Admin Console ↗︎](https://admin.google.com/).
 2. On the sidebar, go to **Apps** > **Google Workspace** > **Gmail** > **Compliance**.
 3. Go to **Content Compliance** > Select **Edit**.
 4. Add a **Content Compliance** filter, and name it `Email security - BCC`.
@@ -31,13 +31,13 @@ To add BCC rules:
      - Select **Advanced content match**.
      - In **Location**, select **Headers + Body**.
      - In **Match type**, select **Matches regex**.
-     - In **Regexp**, input `.*`. You can customize the regex as needed and test within the admin page or on sites like [Regexr ↗](https://regexr.com/).
+     - In **Regexp**, input `.*`. You can customize the regex as needed and test within the admin page or on sites like [Regexr ↗︎](https://regexr.com/).
      - Select **SAVE**.
 7. In **If the above expressions match, do the following**:
    - Select **Modify message**.
      - Ensure that **Envelope recipient** > **Change envelope recipient** is unselected, so that emails will not be dropped as an unintended consequence. You will select this option at a later stage.
      - Go to **Also deliver to**, select **Add more recipients** > **ADD** > Choose **Advanced**:
-       - Under **Envelope recipient**, select **Change envelope recipient** > **Replace recipient** > Enter the service address. This is the service address you copied and pasted in step 5 when [connecting your domains](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/connect-domains/). If you did not copy and paste the service address: - In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security**. - Go to **Settings** and locate your domain under **Your domains**. - Select the three dots > **View domain** > **Service address**. Copy and paste the service address.
+       - Under **Envelope recipient**, select **Change envelope recipient** > **Replace recipient** > Enter the service address. This is the service address you copied and pasted in step 5 when [connecting your domains](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/connect-domains/). If you did not copy and paste the service address: - In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Email security**. - Go to **Settings** and locate your domain under **Your domains**. - Select the three dots > **View domain** > **Service address**. Copy and paste the service address.
        - Under **Spam and delivery options**, ensure **Suppress bounces from this recipient** is not enabled.
        - Under **Headers**, select **Add X-Gm-Spam and X-Gm-Phishy headers**.
        - Select **SAVE**.
@@ -46,7 +46,7 @@ To add BCC rules:
 
 To verify that BCC rules have been configured successfully:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** > **Settings**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Email security** > **Settings**.
 2. Select **Domains** > **View**.
 3. Locate your domain. Under Status, the dashboard should display **Active**. This means that the BCC rules have been configured successfully, and your mail flow is being detected.
 

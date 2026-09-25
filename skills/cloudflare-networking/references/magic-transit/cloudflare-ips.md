@@ -28,7 +28,7 @@ When you use a Cloudflare-owned IP space, you do not need a Letter of Agency (LO
 
 ## Check your Cloudflare IPs
 
-You can find your leased Anycast IPs for Magic Transit on the dashboard under [**Address space** > **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+You can find your leased Anycast IPs for Magic Transit on the dashboard under [**Address space** > **Leased IPs** ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 Was this helpful?
 

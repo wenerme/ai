@@ -41,15 +41,15 @@ Whether you are a seasoned security expert or a newcomer to Email security, this
 
 To build a stronger understanding of Cloudflare, we recommend the following resources:
 
-- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (five-minute read) or [Video ↗](https://www.cloudflare.com/what-is-cloudflare/video) (two minutes)
-- [Cloudflare Blog ↗](https://blog.cloudflare.com/tag/cloud-email-security/) | [Email security ↗](https://blog.cloudflare.com/tag/cloud-email-security/) and [Phishing ↗](https://blog.cloudflare.com/tag/phishing/)
-- CISA | [Phishing Guidance: Stopping the Attack Cycle at Phase One ↗](https://www.cisa.gov/publications/phishing-guidance-stopping-attack-cycle-phase-one)
+- What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (five-minute read) or [Video ↗︎](https://www.cloudflare.com/what-is-cloudflare/video) (two minutes)
+- [Cloudflare Blog ↗︎](https://blog.cloudflare.com/tag/cloud-email-security/) | [Email security ↗︎](https://blog.cloudflare.com/tag/cloud-email-security/) and [Phishing ↗︎](https://blog.cloudflare.com/tag/phishing/)
+- CISA | [Phishing Guidance: Stopping the Attack Cycle at Phase One ↗︎](https://www.cisa.gov/publications/phishing-guidance-stopping-attack-cycle-phase-one)
 
 By the end of this reference architecture, you will have learned how Cloudflare protects your email and what considerations should be made for choosing how to deploy. You will learn about the specific components, technologies, and configurations involved in the Cloudflare Email security solution. This includes how it integrates with existing email infrastructure and leverages cloud-based services.
 
 ## Email security deployment options
 
-Cloudflare Email security is a modern approach to solving phishing attacks. Cloudflare solution is built upon AI and Machine Learning utilizing elastics services in addition to benefiting from Cloudflare expansive threat intelligence network. Cloudflare Email security was designed as the only true Cloud Elastic Service with shared intelligence and [Supervised ML ↗](https://www.ibm.com/think/topics/supervised-learning) capable of any deployment method available for email. However, choosing the right deployment model is crucial for maximizing the benefits of Email security.
+Cloudflare Email security is a modern approach to solving phishing attacks. Cloudflare solution is built upon AI and Machine Learning utilizing elastics services in addition to benefiting from Cloudflare expansive threat intelligence network. Cloudflare Email security was designed as the only true Cloud Elastic Service with shared intelligence and [Supervised ML ↗︎](https://www.ibm.com/think/topics/supervised-learning) capable of any deployment method available for email. However, choosing the right deployment model is crucial for maximizing the benefits of Email security.
 
 This document will discuss the following methods to deploy and where you would use them:
 
@@ -83,7 +83,7 @@ With an Inline deployment, all emails destined for one or more domains are filte
 
 The diagram above describes the following:
 
-1. Email arrives at Cloudflare based on [MX records ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-mx-record/).
+1. Email arrives at Cloudflare based on [MX records ↗︎](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-mx-record/).
 2. Cloudflare inspects email body, header, and attachments and assigns the appropriate disposition:
    - Malicious
    - Spam
@@ -166,11 +166,11 @@ Before deploying Email security via [API deployment](https://developers.cloudfla
   - 10,000 API requests in a 10 minute period
   - Four concurrent requests
   - 150 megabytes (MB) upload (PATCH, POST, PUT) in a five-minute period
-  - Refer to [Outlook service limits ↗](https://learn.microsoft.com/en-us/graph/throttling-limits#outlook-service-limits)
+  - Refer to [Outlook service limits ↗︎](https://learn.microsoft.com/en-us/graph/throttling-limits#outlook-service-limits)
 - The Gmail API is subject to a daily usage limit that applies to all requests made from your application, and per-user rate limits. Each limit is identified in terms of quota units, or an abstract unit of measurement representing Gmail resource usage. The main request limits are described as follows:
   - Per user rate limit of 250 quota units per user per second, moving average (allows short bursts).
   - Per-method Quota Usage is based on the number of quota units consumed by a request depending on the method called.
-  - For example, `messages.get` and `messages.attachments.get` consume five quota units. Refer to [Per-method quota usage ↗](https://developers.google.com/gmail/api/reference/quota#per-method_quota_usage)
+  - For example, `messages.get` and `messages.attachments.get` consume five quota units. Refer to [Per-method quota usage ↗︎](https://developers.google.com/gmail/api/reference/quota#per-method_quota_usage)
 - Requires read/write access into mailboxes which some security/email teams may not allow.
 - Only Microsoft 365 has true API support. Google allows for API remediation but still requires a Compliance Rule to deliver emails using SMTP for scanning. On-prem Exchange requires PowerShell and does not have APIs for auto-moves.
 - Messages cannot be modified after delivery as per Microsoft 365/Google requirements. This means we cannot perform URL Rewriting to Cloudflare [email link isolation](https://developers.cloudflare.com/cloudflare-one/email-security/investigation/search-email/#open-links) or append text to the email subject or body. Those features are only available using an Inline deployment.

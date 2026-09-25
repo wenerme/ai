@@ -517,7 +517,7 @@ Wrangler also supports running your Pages project and bound Workers in the same 
 
 Caution
 
-Support for running multiple Workers in the same dev session with one Wrangler command is experimental, and subject to change as we work on the experience. If you run into bugs or have any feedback, [open an issue on the workers-sdk repository ↗](https://github.com/cloudflare/workers-sdk/issues/new)
+Support for running multiple Workers in the same dev session with one Wrangler command is experimental, and subject to change as we work on the experience. If you run into bugs or have any feedback, [open an issue on the workers-sdk repository ↗︎](https://github.com/cloudflare/workers-sdk/issues/new)
 
 Note
 
@@ -576,7 +576,7 @@ If using a queue producer binding with a Pages Function, you will be able to sen
 
 Note
 
-PostgreSQL drivers like [`Postgres.js` ↗](https://github.com/porsager/postgres) depend on Node.js APIs. Pages Functions with Hyperdrive bindings must be [deployed with Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs).
+PostgreSQL drivers like [`Postgres.js` ↗︎](https://github.com/porsager/postgres) depend on Node.js APIs. Pages Functions with Hyperdrive bindings must be [deployed with Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs).
 
 ```jsonc
 {
@@ -584,14 +584,14 @@ PostgreSQL drivers like [`Postgres.js` ↗](https://github.com/porsager/postgres
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22"
+	"compatibility_date": "2026-09-25"
 }
 ```
 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 ```
 
 [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) is a service for connecting to your existing databases from Cloudflare Workers and Pages Functions.
@@ -793,7 +793,7 @@ Note
 
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
-These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
+These files should be formatted using the [dotenv ↗︎](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
 
 *.dev.vars / .envbash*
 

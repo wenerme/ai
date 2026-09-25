@@ -20,7 +20,7 @@ All zones within your Cloudflare account - regardless of using [standard](https:
 
 ## Further reading
 
-For more background information, refer to [How DNSSEC works ↗](https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works/).
+For more background information, refer to [How DNSSEC works ↗︎](https://www.cloudflare.com/learning/dns/dnssec/how-dnssec-works/).
 
 For details about DNSSEC settings at Cloudflare, refer to the [DNSSEC documentation](https://developers.cloudflare.com/dns/dnssec/).
 

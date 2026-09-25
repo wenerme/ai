@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pulumi/installing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Follow the recommended steps for your operating system below. For official instructions on installing Pulumi and other install options, refer to [Install Pulumi ↗](https://www.pulumi.com/docs/install/).
+Follow the recommended steps for your operating system below. For official instructions on installing Pulumi and other install options, refer to [Install Pulumi ↗︎](https://www.pulumi.com/docs/install/).
 
 Note
 
-Pulumi is free, open source, and optionally pairs with the [Pulumi Cloud ↗](https://www.pulumi.com/product/pulumi-cloud/) to make managing infrastructure secure, reliable, and hassle-free.
+Pulumi is free, open source, and optionally pairs with the [Pulumi Cloud ↗︎](https://www.pulumi.com/product/pulumi-cloud/) to make managing infrastructure secure, reliable, and hassle-free.
 
 Caution
 
@@ -44,7 +44,7 @@ curl -fsSL https://get.pulumi.com | sh
 
 ### Windows
 
-1. Download the latest installer from the [Pulumi Repository ↗](https://github.com/pulumi/pulumi-winget/releases/latest)
+1. Download the latest installer from the [Pulumi Repository ↗︎](https://github.com/pulumi/pulumi-winget/releases/latest)
 2. Double click the MSI file and complete the wizard.
 
 ## Verify installation
@@ -57,7 +57,7 @@ pulumi version
 
 Note
 
-For upgrades and installation alternatives, refer to [Install Pulumi ↗](https://www.pulumi.com/docs/install/).
+For upgrades and installation alternatives, refer to [Install Pulumi ↗︎](https://www.pulumi.com/docs/install/).
 
 ## Next steps
 

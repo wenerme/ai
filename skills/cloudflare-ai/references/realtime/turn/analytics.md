@@ -65,9 +65,9 @@ Note
 
 GraphQL is a self-documenting protocol. You can use any GraphQL client to explore the schema and available fields. Popular options include:
 
-- **[Altair ↗](https://altairgraphql.dev/)**: A feature-rich GraphQL client with schema documentation explorer
-- **[GraphiQL ↗](https://github.com/graphql/graphiql)**: The original GraphQL IDE
-- **[Postman ↗](https://www.postman.com/)**: Supports GraphQL queries with schema introspection
+- **[Altair ↗︎](https://altairgraphql.dev/)**: A feature-rich GraphQL client with schema documentation explorer
+- **[GraphiQL ↗︎](https://github.com/graphql/graphiql)**: The original GraphQL IDE
+- **[Postman ↗︎](https://www.postman.com/)**: Supports GraphQL queries with schema introspection
 
 To explore the full schema, configure your client to connect to `https://api.cloudflare.com/client/v4/graphql` with your API credentials. Refer to [Explore the GraphQL schema](https://developers.cloudflare.com/analytics/graphql-api/getting-started/explore-graphql-schema/) for detailed instructions.
 

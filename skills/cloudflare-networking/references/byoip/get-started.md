@@ -16,7 +16,7 @@ Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To use your own IP addresses with Cloudflare, please check with your account team to confirm your contract covers this functionality. You will need to configure settings specific to the services you want to use, as well as meet some standard requirements for all BYOIP customers.
 
-Once your account configurations are in place, consider the sections below to learn how to set up your BYOIP prefixes. Also make sure to review the [BYOIP Service-Specific Terms ↗](https://www.cloudflare.com/service-specific-terms-network-services/#bring-your-own-ip-terms).
+Once your account configurations are in place, consider the sections below to learn how to set up your BYOIP prefixes. Also make sure to review the [BYOIP Service-Specific Terms ↗︎](https://www.cloudflare.com/service-specific-terms-network-services/#bring-your-own-ip-terms).
 
 Magic Transit
 
@@ -25,11 +25,11 @@ The process described on this page does not support onboarding IP prefixes for u
 ## Before you begin
 
 - Your prefix must be registered under one of the Regional Internet Registries (RIRs):
-  - [AFRINIC ↗](https://afrinic.net/)
-  - [APNIC ↗](https://www.apnic.net/)
-  - [ARIN ↗](https://www.arin.net/)
-  - [LACNIC ↗](https://lacnic.net/)
-  - [RIPE ↗](https://www.ripe.net/)
+  - [AFRINIC ↗︎](https://afrinic.net/)
+  - [APNIC ↗︎](https://www.apnic.net/)
+  - [ARIN ↗︎](https://www.arin.net/)
+  - [LACNIC ↗︎](https://lacnic.net/)
+  - [RIPE ↗︎](https://www.ripe.net/)
 - Also verify that your [Internet Routing Registry (IRR)](https://developers.cloudflare.com/byoip/concepts/irr-entries/) records are up to date and contain:
   - `route` or `route6` objects matching the exact prefixes you want to onboard
   - `origin` matching the correct ASN you want to onboard
@@ -37,7 +37,7 @@ The process described on this page does not support onboarding IP prefixes for u
   Use Cloudflare's ASN
 
   The process described on this page only supports using Cloudflare's ASN (AS13335). If you must announce the prefixes under your own ASN, contact your account team.
-- You must use [Resource Public Key Infrastructure (RPKI) validation](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/) and make sure your ROAs are accurate. You can use [Cloudflare's RPKI Portal ↗](https://rpki.cloudflare.com/?view=validator) and a second source such as [Routinator ↗](https://rpki-validator.ripe.net/ui/) to double-check your prefixes.
+- You must use [Resource Public Key Infrastructure (RPKI) validation](https://developers.cloudflare.com/byoip/concepts/route-filtering-rpki/) and make sure your ROAs are accurate. You can use [Cloudflare's RPKI Portal ↗︎](https://rpki.cloudflare.com/?view=validator) and a second source such as [Routinator ↗︎](https://rpki-validator.ripe.net/ui/) to double-check your prefixes.
 - If you are not familiar with how Cloudflare API works, refer to [Fundamentals](https://developers.cloudflare.com/fundamentals/api/). Make sure you have the necessary permissions and that you have your account ID.
 
 ---

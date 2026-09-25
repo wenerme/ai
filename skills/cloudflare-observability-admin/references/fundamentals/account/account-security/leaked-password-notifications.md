@@ -16,13 +16,13 @@ Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Cloudflare automatically checks if your password has been compromised when you log in to the Cloudflare dashboard. Every time you log in to your account, we will securely verify through threat intelligence sources to confirm if your password has been leaked in a past data breach.
 
-Refer to the [blog post ↗](https://blog.cloudflare.com/helping-keep-customers-safe-with-leaked-password-notification/) for more information on how Cloudflare checks for leaked credentials.
+Refer to the [blog post ↗︎](https://blog.cloudflare.com/helping-keep-customers-safe-with-leaked-password-notification/) for more information on how Cloudflare checks for leaked credentials.
 
 Note
 
 Cloudflare does not have additional information about the specific breach or Internet service that potentially lost your password.
 
-Popular online tools such as [Have I Been Pwned ↗](https://haveibeenpwned.com/) can help you better understand where your external accounts were attacked. If you reused this password in other systems, it is recommended that you reset it in those as well.
+Popular online tools such as [Have I Been Pwned ↗︎](https://haveibeenpwned.com/) can help you better understand where your external accounts were attacked. If you reused this password in other systems, it is recommended that you reset it in those as well.
 
 If your password is found in a data breach, we will email you information on how to reset your password and prompt you to do so in the Cloudflare dashboard.
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/setup/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-By default, your devices use a [DNS server ↗](https://www.cloudflare.com/learning/dns/what-is-dns/) provided by your Internet service provider (ISP). You can change this to use 1.1.1.1 instead, which gives you faster and more private DNS resolution. Some [ISPs and network equipment providers](https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/) already partner with Cloudflare to offer this.
+By default, your devices use a [DNS server ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/) provided by your Internet service provider (ISP). You can change this to use 1.1.1.1 instead, which gives you faster and more private DNS resolution. Some [ISPs and network equipment providers](https://developers.cloudflare.com/1.1.1.1/infrastructure/network-operators/) already partner with Cloudflare to offer this.
 
 If your provider does not use Cloudflare, follow the instructions for your device or router below.
 
@@ -86,18 +86,18 @@ When a queried domain is classified as malicious, Cloudflare returns the address
 
 Domain miscategorization
 
-If you are using 1.1.1.1 for Families and a domain is incorrectly blocked or allowed, [submit feedback ↗](https://radar.cloudflare.com/categorization-feedback/) to help improve Cloudflare's categorization. Your submission is anonymous.
+If you are using 1.1.1.1 for Families and a domain is incorrectly blocked or allowed, [submit feedback ↗︎](https://radar.cloudflare.com/categorization-feedback/) to help improve Cloudflare's categorization. Your submission is anonymous.
 
 ### Test 1.1.1.1 for Families
 
 After configuring 1.1.1.1 for Families, verify that filtering is working with the following test URLs:
 
-- [https://malware.testcategory.com/ ↗](https://malware.testcategory.com/) — Tests whether known malware domains are blocked.
-- [https://nudity.testcategory.com/ ↗](https://nudity.testcategory.com/) — Tests whether adult content and malware domains are blocked.
+- [https://malware.testcategory.com/ ↗︎](https://malware.testcategory.com/) — Tests whether known malware domains are blocked.
+- [https://nudity.testcategory.com/ ↗︎](https://nudity.testcategory.com/) — Tests whether adult content and malware domains are blocked.
 
 ### DNS over HTTPS (DoH)
 
-DNS over HTTPS (DoH) encrypts your DNS queries by sending them as HTTPS requests. This prevents anyone between your device and the resolver — such as your ISP or a network attacker — from seeing which domains you look up. For more information, refer to the [Learning Center article on DNS encryption ↗](https://www.cloudflare.com/learning/dns/dns-over-tls/).
+DNS over HTTPS (DoH) encrypts your DNS queries by sending them as HTTPS requests. This prevents anyone between your device and the resolver — such as your ISP or a network attacker — from seeing which domains you look up. For more information, refer to the [Learning Center article on DNS encryption ↗︎](https://www.cloudflare.com/learning/dns/dns-over-tls/).
 
 To configure an encrypted DoH connection to 1.1.1.1 for Families, enter one of the following URLs in your DoH-compatible client or router:
 
@@ -131,7 +131,7 @@ https://family.cloudflare-dns.com/dns-query
 
 ### DNS over TLS (DoT)
 
-DNS over TLS (DoT) encrypts DNS queries using TLS on a dedicated port (`853`). Like DoH, it prevents eavesdropping on your DNS traffic. For more information, refer to the [Learning Center article on DNS encryption ↗](https://www.cloudflare.com/learning/dns/dns-over-tls/).
+DNS over TLS (DoT) encrypts DNS queries using TLS on a dedicated port (`853`). Like DoH, it prevents eavesdropping on your DNS traffic. For more information, refer to the [Learning Center article on DNS encryption ↗︎](https://www.cloudflare.com/learning/dns/dns-over-tls/).
 
 To configure an encrypted DoT connection to 1.1.1.1 for Families, enter one of the following hostnames in your DoT-compatible client or router:
 

@@ -40,7 +40,7 @@ For more information, refer to [API configuration](https://developers.cloudflare
 
 **Azure Functions-based Microsoft Sentinel connector deprecation**
 
-Cloudflare Enterprise customers using the [Azure Functions-based Microsoft Sentinel connector ↗](https://marketplace.microsoft.com/en-us/product/cloudflare.cloudflare_sentinel?tab=Overview) must migrate to the [Cloudflare for Microsoft Sentinel Codeless Connector Framework (CCF) connector ↗](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview) by 2026-09-14.
+Cloudflare Enterprise customers using the [Azure Functions-based Microsoft Sentinel connector ↗︎](https://marketplace.microsoft.com/en-us/product/cloudflare.cloudflare_sentinel?tab=Overview) must migrate to the [Cloudflare for Microsoft Sentinel Codeless Connector Framework (CCF) connector ↗︎](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview) by 2026-09-14.
 
 Microsoft is deprecating the Azure Monitor HTTP Data Collector API. Support for the API ends on 2026-09-14. As a result, Cloudflare will no longer maintain the Azure Functions-based connector after that date.
 
@@ -48,11 +48,11 @@ To migrate, follow the [Microsoft Sentinel integration setup guide](https://deve
 
 #### Additional resources
 
-- [Download Cloudflare's CCF Sentinel Solution ↗](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)
-- [Microsoft Sentinel data lake overview ↗](https://learn.microsoft.com/en-us/azure/sentinel/datalake/sentinel-lake-overview)
-- [About the CCF platform ↗](https://learn.microsoft.com/en-us/azure/sentinel/create-codeless-connector)
+- [Download Cloudflare's CCF Sentinel Solution ↗︎](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)
+- [Microsoft Sentinel data lake overview ↗︎](https://learn.microsoft.com/en-us/azure/sentinel/datalake/sentinel-lake-overview)
+- [About the CCF platform ↗︎](https://learn.microsoft.com/en-us/azure/sentinel/create-codeless-connector)
 
-For more information, refer to Microsoft's [Azure Monitor HTTP Data Collector API deprecation notice ↗](https://learn.microsoft.com/en-us/previous-versions/azure/azure-monitor/logs/data-collector-api?tabs=powershell).
+For more information, refer to Microsoft's [Azure Monitor HTTP Data Collector API deprecation notice ↗︎](https://learn.microsoft.com/en-us/previous-versions/azure/azure-monitor/logs/data-collector-api?tabs=powershell).
 
 ## 2026-08-20
 
@@ -79,7 +79,7 @@ For the complete field definitions for each dataset, refer to [Logpush datasets]
 
 **Per-zone post-quantum visibility in Logpush and Log Explorer**
 
-[Cloudflare Radar ↗](https://radar.cloudflare.com/post-quantum) publishes global statistics on post-quantum key agreement adoption across all Cloudflare traffic, but until now customers had no way to see the same measurement scoped to their own zones. This is now possible because the [`http_requests`](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) Logpush dataset — also queryable in [Log Explorer](https://developers.cloudflare.com/log-explorer/) — includes a new `ClientTLSKeyExchangeGroup` field.
+[Cloudflare Radar ↗︎](https://radar.cloudflare.com/post-quantum) publishes global statistics on post-quantum key agreement adoption across all Cloudflare traffic, but until now customers had no way to see the same measurement scoped to their own zones. This is now possible because the [`http_requests`](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/) Logpush dataset — also queryable in [Log Explorer](https://developers.cloudflare.com/log-explorer/) — includes a new `ClientTLSKeyExchangeGroup` field.
 
 The field reports the TLS key exchange group negotiated on the client-to-Cloudflare connection, by group name. Post-quantum connections appear as `X25519MLKEM768`, and classical connections appear as `X25519`, `P-256`, or another named group. A value of `UNK` means the group could not be determined, and `NONE` means either RSA key exchange was used or TLS was not used.
 
@@ -314,7 +314,7 @@ For the complete field definitions, refer to [Gateway DNS dataset](https://devel
 
 Cloudflare Logpush now supports **BigQuery** as a native destination.
 
-Logs from Cloudflare can be sent to [Google Cloud BigQuery ↗](https://cloud.google.com/bigquery) via [Logpush](https://developers.cloudflare.com/logs/logpush/). The destination can be configured through the Logpush UI in the Cloudflare dashboard or by using the [Logpush API](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/).
+Logs from Cloudflare can be sent to [Google Cloud BigQuery ↗︎](https://cloud.google.com/bigquery) via [Logpush](https://developers.cloudflare.com/logs/logpush/). The destination can be configured through the Logpush UI in the Cloudflare dashboard or by using the [Logpush API](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/).
 
 For more information, refer to the [Destination Configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/bigquery/) documentation.
 
@@ -367,7 +367,7 @@ For the complete field definitions for each dataset, refer to [Logpush datasets]
 
 Cloudflare Logpush now supports **SentinelOne** as a native destination.
 
-Logs from Cloudflare can be sent to [SentinelOne AI SIEM ↗](https://www.sentinelone.com/) via [Logpush](https://developers.cloudflare.com/logs/logpush/). The destination can be configured through the Logpush UI in the Cloudflare dashboard or by using the [Logpush API](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/).
+Logs from Cloudflare can be sent to [SentinelOne AI SIEM ↗︎](https://www.sentinelone.com/) via [Logpush](https://developers.cloudflare.com/logs/logpush/). The destination can be configured through the Logpush UI in the Cloudflare dashboard or by using the [Logpush API](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/).
 
 For more information, refer to the [Destination Configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/sentinelone/) documentation.
 
@@ -406,7 +406,7 @@ Update your UI, API or Terraform configurations to include the new permissions. 
 
 **Azure Sentinel Connector**
 
-Logpush now supports integration with [Microsoft Sentinel ↗](https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-sentinel).The new Azure Sentinel Connector built on Microsoft’s Codeless Connector Framework (CCF), is now available. This solution replaces the previous Azure Functions-based connector, offering significant improvements in security, data control, and ease of use for customers. Logpush customers can send logs to Azure Blob Storage and configure this new Sentinel Connector to ingest those logs directly into Microsoft Sentinel.
+Logpush now supports integration with [Microsoft Sentinel ↗︎](https://www.microsoft.com/en-us/security/business/siem-and-xdr/microsoft-sentinel).The new Azure Sentinel Connector built on Microsoft’s Codeless Connector Framework (CCF), is now available. This solution replaces the previous Azure Functions-based connector, offering significant improvements in security, data control, and ease of use for customers. Logpush customers can send logs to Azure Blob Storage and configure this new Sentinel Connector to ingest those logs directly into Microsoft Sentinel.
 
 This upgrade significantly streamlines log ingestion, improves security, and provides greater control:
 
@@ -415,7 +415,7 @@ This upgrade significantly streamlines log ingestion, improves security, and pro
 - Enhanced Security: CCF provides a higher level of security compared to the older Azure Functions connector.
 - Data Lake Integration: Includes native integration with Data Lake.
 
-Find the new solution [here ↗](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview) and refer to the [Cloudflare's developer documentation ↗](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/#supported-logs:~:text=WorkBook%20fields,-Analytic%20rules)for more information on the connector, including setup steps, supported logs and Microsoft's resources.
+Find the new solution [here ↗︎](https://marketplace.microsoft.com/en-us/product/azure-application/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview) and refer to the [Cloudflare's developer documentation ↗︎](https://developers.cloudflare.com/analytics/analytics-integrations/sentinel/#supported-logs:~:text=WorkBook%20fields,-Analytic%20rules)for more information on the connector, including setup steps, supported logs and Microsoft's resources.
 
 ## 2025-08-22
 
@@ -439,7 +439,7 @@ To get started, work with your Cloudflare account team to provision Aegis IPs, t
 
 Cloudflare Logpush now supports IBM Cloud Logs as a native destination.
 
-Logs from Cloudflare can be sent to [IBM Cloud Logs ↗](https://www.ibm.com/products/cloud-logs) via [Logpush](https://developers.cloudflare.com/logs/logpush/). The setup can be done through the Logpush UI in the Cloudflare Dashboard or by using the [Logpush API](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/). The integration requires IBM Cloud Logs HTTP Source Address and an IBM API Key. The feature also allows for filtering events and selecting specific log fields.
+Logs from Cloudflare can be sent to [IBM Cloud Logs ↗︎](https://www.ibm.com/products/cloud-logs) via [Logpush](https://developers.cloudflare.com/logs/logpush/). The setup can be done through the Logpush UI in the Cloudflare Dashboard or by using the [Logpush API](https://developers.cloudflare.com/api/resources/logpush/subresources/jobs/). The integration requires IBM Cloud Logs HTTP Source Address and an IBM API Key. The feature also allows for filtering events and selecting specific log fields.
 
 For more information, refer to [Destination Configuration](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/ibm-cloud-logs/) documentation.
 

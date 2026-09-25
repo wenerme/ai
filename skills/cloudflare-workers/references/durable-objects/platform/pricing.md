@@ -60,7 +60,7 @@ await foo.baz(); // treated as part of the same RPC session created by calling b
 await durableObjectStub.cat(); // billed as a request
 ```
 
-<sup>2</sup> A request is needed to create a WebSocket connection. There is no charge for outgoing WebSocket messages, nor for incoming <a href="https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2">WebSocket protocol pings ↗</a>. For compute requests billing-only, a 20:1 ratio is applied to incoming WebSocket messages to factor in smaller messages for real-time communication. For example, 100 WebSocket incoming messages would be charged as 5 requests for billing purposes. The 20:1 ratio does not affect Durable Object metrics and analytics, which reflect actual usage.
+<sup>2</sup> A request is needed to create a WebSocket connection. There is no charge for outgoing WebSocket messages, nor for incoming <a href="https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2">WebSocket protocol pings ↗︎</a>. For compute requests billing-only, a 20:1 ratio is applied to incoming WebSocket messages to factor in smaller messages for real-time communication. For example, 100 WebSocket incoming messages would be charged as 5 requests for billing purposes. The 20:1 ratio does not affect Durable Object metrics and analytics, which reflect actual usage.
 
 <sup>3</sup> Application level auto-response messages handled by <a href="https://developers.cloudflare.com/durable-objects/best-practices/websockets/"><code>state.setWebSocketAutoResponse()</code></a> will not incur additional wall-clock time, and so they will not be charged.
 

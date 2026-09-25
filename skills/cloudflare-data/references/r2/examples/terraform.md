@@ -18,13 +18,13 @@ You must [generate an Access Key](https://developers.cloudflare.com/r2/api/token
 
 
 
-This example shows how to configure R2 with Terraform using the [Cloudflare provider ↗](https://github.com/cloudflare/terraform-provider-cloudflare).
+This example shows how to configure R2 with Terraform using the [Cloudflare provider ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare).
 
 Note for using AWS provider
 
 When using the Cloudflare Terraform provider, you can only manage buckets. To configure items such as CORS and object lifecycles, you will need to use the [AWS Provider](https://developers.cloudflare.com/r2/examples/terraform-aws/).
 
-With [`terraform` ↗](https://developer.hashicorp.com/terraform/downloads) installed, create `main.tf` and copy the content below replacing with your API Token.
+With [`terraform` ↗︎](https://developer.hashicorp.com/terraform/downloads) installed, create `main.tf` and copy the content below replacing with your API Token.
 
 ```hcl
 terraform {

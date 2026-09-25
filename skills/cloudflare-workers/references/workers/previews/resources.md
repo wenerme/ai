@@ -62,7 +62,7 @@ With [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/cont
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"migrations": [
 		{ "tag": "v1", "new_classes": ["Counter"] }
 	],
@@ -72,7 +72,7 @@ With [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/cont
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 previews = { }
 
 [[migrations]]
@@ -152,7 +152,7 @@ Declare the SQLite-backed Durable Object migration and the container configurati
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"migrations": [
 		{ "tag": "v1", "new_sqlite_classes": ["MyContainer"] }
 	],
@@ -179,7 +179,7 @@ Declare the SQLite-backed Durable Object migration and the container configurati
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[migrations]]
 tag = "v1"
@@ -214,7 +214,7 @@ return container.fetch(request);
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"migrations": [
 		{ "tag": "v1", "new_sqlite_classes": ["MyContainer"] }
 	],
@@ -251,7 +251,7 @@ return container.fetch(request);
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[migrations]]
 tag = "v1"
@@ -397,7 +397,7 @@ npx wrangler preview --name feature-login
 
 ## Limitations
 
-Preview support for these areas may come later. If one of these limitations blocks your workflow, [open an issue in the workers-sdk repository ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose). Describe whether the resource should be shared, auto-created per Preview, and cleaned up when the Preview is deleted.
+Preview support for these areas may come later. If one of these limitations blocks your workflow, [open an issue in the workers-sdk repository ↗︎](https://github.com/cloudflare/workers-sdk/issues/new/choose). Describe whether the resource should be shared, auto-created per Preview, and cleaned up when the Preview is deleted.
 
 ### Service bindings
 

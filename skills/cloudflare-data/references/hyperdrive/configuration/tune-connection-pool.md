@@ -28,7 +28,7 @@ You can configure the connection pool size using the Cloudflare dashboard, the W
 
 To configure connection pool size via the dashboard:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
 2. Go to **Storage & databases** > **Hyperdrive**. [Go to **Hyperdrive** ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive)
 3. Select your Hyperdrive configuration.
 4. Select **Settings**.
@@ -61,7 +61,7 @@ The Hyperdrive connection pool limit is a "soft limit". This means that it is po
 
 Note
 
-You can request adjustments to Hyperdrive's origin connection limits. To request an increase, submit a [Limit Increase Request ↗](https://forms.gle/eX6pXvit1wBv77Yw5) and Cloudflare will contact you with next steps. Cloudflare also regularly monitors the Hyperdrive channel in [Cloudflare's Discord community ↗](https://discord.cloudflare.com/) and can answer questions regarding limits and requests.
+You can request adjustments to Hyperdrive's origin connection limits. To request an increase, submit a [Limit Increase Request ↗︎](https://forms.gle/eX6pXvit1wBv77Yw5) and Cloudflare will contact you with next steps. Cloudflare also regularly monitors the Hyperdrive channel in [Cloudflare's Discord community ↗︎](https://discord.cloudflare.com/) and can answer questions regarding limits and requests.
 
 ## Best practices
 

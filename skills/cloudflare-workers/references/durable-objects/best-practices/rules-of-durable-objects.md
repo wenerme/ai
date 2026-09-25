@@ -789,8 +789,8 @@ Note
 
 For production applications, use a migration library that handles version tracking and execution automatically:
 
-- [`durable-utils` ↗](https://github.com/lambrospetrou/durable-utils#sqlite-schema-migrations) — provides a `SQLSchemaMigrations` class that tracks executed migrations both in memory and in storage.
-- [`@cloudflare/actors` storage utilities ↗](https://github.com/cloudflare/actors/blob/main/packages/storage/src/sql-schema-migrations.ts) — a reference implementation of the same pattern used by the Cloudflare Actors framework.
+- [`durable-utils` ↗︎](https://github.com/lambrospetrou/durable-utils#sqlite-schema-migrations) — provides a `SQLSchemaMigrations` class that tracks executed migrations both in memory and in storage.
+- [`@cloudflare/actors` storage utilities ↗︎](https://github.com/cloudflare/actors/blob/main/packages/storage/src/sql-schema-migrations.ts) — a reference implementation of the same pattern used by the Cloudflare Actors framework.
 
 If you prefer not to use a library, you can track schema versions manually using a `_sql_schema_migrations` table. The following example demonstrates this approach:
 
@@ -1286,7 +1286,7 @@ export class Account extends DurableObject<Env> {
 }
 ```
 
-For more details, see [Durable Objects: Easy, Fast, Correct — Choose three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/) and the [glossary](https://developers.cloudflare.com/durable-objects/reference/glossary/).
+For more details, see [Durable Objects: Easy, Fast, Correct — Choose three ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/) and the [glossary](https://developers.cloudflare.com/durable-objects/reference/glossary/).
 
 ### Avoid race conditions with non-storage I/O
 

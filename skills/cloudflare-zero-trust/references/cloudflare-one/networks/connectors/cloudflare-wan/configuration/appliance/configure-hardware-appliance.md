@@ -18,7 +18,7 @@ In this page you will find instructions on how to configure Cloudflare One Appli
 
 ## Prerequisites
 
-You need to purchase [Cloudflare WAN ↗](https://www.cloudflare.com/magic-wan/) before you can purchase and use Cloudflare One Appliance. Cloudflare One Appliance can function as your primary edge device for your network, or be deployed in-line with existing network gear.
+You need to purchase [Cloudflare WAN ↗︎](https://www.cloudflare.com/magic-wan/) before you can purchase and use Cloudflare One Appliance. Cloudflare One Appliance can function as your primary edge device for your network, or be deployed in-line with existing network gear.
 
 You also need to purchase Cloudflare One Appliance before you can start configuring your settings in the Cloudflare dashboard. Contact your account representative to learn more about purchasing options for Cloudflare One Appliance.
 
@@ -65,7 +65,7 @@ Refer to the [Bootstrap workflow](#bootstrap-via-serial-console).
 
 ## Port speeds
 
-The hardware version of the Cloudflare One Appliance includes two [SFP+ ports ↗](https://en.wikipedia.org/wiki/Small_Form-factor_Pluggable) that support 10G throughput, as well as six RJ45 ports that support 1G throughput.
+The hardware version of the Cloudflare One Appliance includes two [SFP+ ports ↗︎](https://en.wikipedia.org/wiki/Small_Form-factor_Pluggable) that support 10G throughput, as well as six RJ45 ports that support 1G throughput.
 
 Refer to [SFP+ port information](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/configure-hardware-appliance/sfp-port-information/) for details on this topic.
 
@@ -77,7 +77,7 @@ Refer to [SFP+ port information](https://developers.cloudflare.com/cloudflare-on
 
 To set up and use the hardware version of Cloudflare One Appliance (formerly Magic WAN Connector), you first need to register it with your account. This is not applicable to Virtual Cloudflare One Appliance.
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances**, and select **Register an appliance**.
 3. In **Appliance details** > **Serial number**, insert the serial number for your device. You can optionally add notes about the Cloudflare One Appliance you are adding to the dashboard.
 4. (Optional) Select **Add** under **Serial number** to add multiple Cloudflare One Appliances at once to your account.
@@ -91,7 +91,7 @@ You need to create a profile for your appliance before connecting it to the Inte
 
 To create a profile:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Create a profile**.
 3. In **Name**, enter a descriptive name for your Cloudflare One Appliance. Optionally, you can also add a description for it.
 4. You need to decide if you want to turn on high availability for the Cloudflare One Appliance. For details, refer to [About high availability configurations](#about-high-availability-configurations).
@@ -106,7 +106,7 @@ To create a profile:
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
-1. In **WAN configuration**, select **Create**. You can create one or more [wide area networks (WANs) ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-wan/). Configuring multiple WANs will create multiple IPsec tunnels (one IPsec tunnel per WAN port). This allows Cloudflare One Appliance to load balance traffic over WANs of equal priority. It also allows Cloudflare One Appliance to failover between circuits according to their [health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/). Refer to [WAN settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/#wan-settings) for more details. Note
+1. In **WAN configuration**, select **Create**. You can create one or more [wide area networks (WANs) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-wan/). Configuring multiple WANs will create multiple IPsec tunnels (one IPsec tunnel per WAN port). This allows Cloudflare One Appliance to load balance traffic over WANs of equal priority. It also allows Cloudflare One Appliance to failover between circuits according to their [health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/tunnel-health-checks/). Refer to [WAN settings](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/appliance/reference/#wan-settings) for more details. Note
 
    This is not the same as a high availability (HA) configuration. HA configurations need two Cloudflare One Appliance devices to work. For details, refer to [About high availability configurations](#about-high-availability-configurations).
 2. In **Interface name**, enter a descriptive name for your WAN.
@@ -279,7 +279,7 @@ Remember that if you chose the DHCP method you have to connect Cloudflare One Ap
 
 When you are ready to connect your Cloudflare One Appliance to the Cloudflare network:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances**.
 3. Find the Cloudflare One Appliance you want to activate, select the three dots next to it > **Edit**. Make sure you verify the serial number to choose the right Cloudflare One Appliance you want to activate.
 4. In the new window, the **Status** dropdown will show as **Deactivated**. Select it to change the status to **Activated**.
@@ -331,7 +331,7 @@ To access the serial port on Cloudflare One Appliance you will need the followin
 ### 1. Access the device's serial port
 
 1. Using the Phillips screwdriver, loosen the screw covering the serial console panel on the back of the Cloudflare One Appliance and turn the panel out of the way.
-   - Pictures and more instructions can be found on [Dell's Technical Documents ↗](https://www.dell.com/support/kbdoc/en-us/000134440/how-to-access-console-port-of-dell-emc-networking-virtual-edge-platform-1405-series).
+   - Pictures and more instructions can be found on [Dell's Technical Documents ↗︎](https://www.dell.com/support/kbdoc/en-us/000134440/how-to-access-console-port-of-dell-emc-networking-virtual-edge-platform-1405-series).
 2. Connect your computer to your Cloudflare One Appliance device using the USB cable.
 
 #### Default password
@@ -344,11 +344,11 @@ To access the Cloudflare One Appliance device environment you need a serial term
 
 #### Windows
 
-Cloudflare recommends using PuTTY for Windows. Download PuTTY from the [official website ↗](https://www.putty.org/) and then install it.
+Cloudflare recommends using PuTTY for Windows. Download PuTTY from the [official website ↗︎](https://www.putty.org/) and then install it.
 
 1. Check the COM port of the USB to UART device in the Windows Device Manager. It should appear as something similar to `Silicon Labs CP210x USB to UART Bridge (COMX)`.
 2. Take note of the value in the parentheses (COMX).
-   - For details on creating a serial console connection, refer to the [Dell Documentation Page ↗](https://infohub.delltechnologies.com/l/virtual-edge-platform-vep-1405-series-diag-os-and-tools-release-notes/bios-installation-and-configuration).
+   - For details on creating a serial console connection, refer to the [Dell Documentation Page ↗︎](https://infohub.delltechnologies.com/l/virtual-edge-platform-vep-1405-series-diag-os-and-tools-release-notes/bios-installation-and-configuration).
 3. Launch PuTTY.
 4. Under **Category**, make sure that **Session** (the first item) is selected.
 5. Under **Connection type**, select **Serial**.
@@ -359,7 +359,7 @@ Cloudflare recommends using PuTTY for Windows. Download PuTTY from the [official
 
 #### macOS
 
-Cloudflare recommends installing Screen for macOS. You can install Screen via `brew install screen`. If you do not have `brew` installed, follow the instructions on [Brew's Official Website ↗](https://brew.sh/) to install it.
+Cloudflare recommends installing Screen for macOS. You can install Screen via `brew install screen`. If you do not have `brew` installed, follow the instructions on [Brew's Official Website ↗︎](https://brew.sh/) to install it.
 
 1. Open the macOS Terminal.
 2. Run `ls /dev/cu.*` to list the connected serial devices.
@@ -442,7 +442,7 @@ Cloudflare One Appliance automatically creates [IPsec tunnels](https://developer
 
 To check the IPsec tunnels and static routes created by your Cloudflare One Appliance:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Connectors**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Connectors**.
 2. In **Cloudflare WAN** you can inspect the IPsec tunnels created by your Cloudflare One Appliance.
 3. In **Routes** you can inspect the static routes created by your Cloudflare One Appliance.
 

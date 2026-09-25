@@ -18,7 +18,7 @@ Create a Cloudflare Tunnel and publish your first application in under 5 minutes
 
 ## Prerequisites
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up)
 - A [domain on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) (required to publish applications)
 - A server or VM with internet access where you will install `cloudflared`
 
@@ -30,7 +30,7 @@ If your server is behind a restrictive firewall, verify it can reach Cloudflare 
 
 To create a new Cloudflare Tunnel:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select **Create Tunnel**.
 3. Enter a name for your tunnel (for example, `production-web` or `staging-api`).
 4. Select **Create Tunnel**.
@@ -78,7 +78,7 @@ To make an application accessible from the Internet, add a published application
 
 If your origin already serves HTTPS or redirects HTTP to HTTPS, refer to [Troubleshoot HTTPS origins](https://developers.cloudflare.com/tunnel/troubleshooting/https-origins/) to choose the **Service URL** and origin settings.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** > **Tunnels** and select your tunnel. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Networking** > **Tunnels** and select your tunnel. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Under **Routes**, select **Add route**.
 3. Select **Published application**.
 4. Under **Hostname**, enter a subdomain and select a domain from the drop-down menu.
@@ -152,7 +152,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 
 3. Install `cloudflared` on your server and run the tunnel using the `token` obtained in [Create a tunnel](https://developers.cloudflare.com/tunnel/get-started/#create-a-tunnel):
-   1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
+   1. [Download and install ↗︎](https://pkg.cloudflare.com/index.html) `cloudflared`.
    2. Run the following command:
 
       ```sh

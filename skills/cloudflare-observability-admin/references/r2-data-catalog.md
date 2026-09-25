@@ -18,7 +18,7 @@ Note
 
 R2 Data Catalog is in **public beta**, and any developer with an [R2 subscription](https://developers.cloudflare.com/r2/pricing/) can start using it.
 
-R2 Data Catalog is a managed [Apache Iceberg ↗](https://iceberg.apache.org/) data catalog built directly into your R2 bucket. It exposes a standard Iceberg REST catalog interface, so you can connect the engines you already use, like [Spark](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-scala/), [Snowflake](https://developers.cloudflare.com/r2-data-catalog/config-examples/snowflake/), and [PyIceberg](https://developers.cloudflare.com/r2-data-catalog/config-examples/pyiceberg/).
+R2 Data Catalog is a managed [Apache Iceberg ↗︎](https://iceberg.apache.org/) data catalog built directly into your R2 bucket. It exposes a standard Iceberg REST catalog interface, so you can connect the engines you already use, like [Spark](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-scala/), [Snowflake](https://developers.cloudflare.com/r2-data-catalog/config-examples/snowflake/), and [PyIceberg](https://developers.cloudflare.com/r2-data-catalog/config-examples/pyiceberg/).
 
 R2 Data Catalog makes it easy to turn an R2 bucket into a data warehouse or lakehouse for a variety of analytical workloads including log analytics, business intelligence, and data pipelines. R2's zero-egress fee model means that data users and consumers can access and analyze data from different clouds, data platforms, or regions without incurring transfer costs.
 
@@ -26,13 +26,13 @@ To get started with R2 Data Catalog, refer to the [R2 Data Catalog: Getting star
 
 ## What is Apache Iceberg?
 
-[Apache Iceberg ↗](https://iceberg.apache.org/) is an open table format designed to handle large-scale analytics datasets stored in object storage. Key features include:
+[Apache Iceberg ↗︎](https://iceberg.apache.org/) is an open table format designed to handle large-scale analytics datasets stored in object storage. Key features include:
 
 - ACID transactions - Ensures reliable, concurrent reads and writes with full data integrity.
 - Optimized metadata - Avoids costly full table scans by using indexed metadata for faster queries.
 - Full schema evolution - Allows adding, renaming, and deleting columns without rewriting data.
 
-Iceberg is already [widely supported ↗](https://iceberg.apache.org/vendors/) by engines like Apache Spark, Trino, Snowflake, DuckDB, and ClickHouse, with a fast-growing community behind it.
+Iceberg is already [widely supported ↗︎](https://iceberg.apache.org/vendors/) by engines like Apache Spark, Trino, Snowflake, DuckDB, and ClickHouse, with a fast-growing community behind it.
 
 ## Why do you need a data catalog?
 

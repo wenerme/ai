@@ -21,7 +21,7 @@ This error indicates that the host is not configured to serve web traffic.
 ### Common causes
 
 - Cloudflare staff disabled proxying for the domain due to abuse or terms of service violations.
-- DNS changes have not yet propagated or the site owner's DNS A records point to [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips).
+- DNS changes have not yet propagated or the site owner's DNS A records point to [Cloudflare IP addresses ↗︎](https://www.cloudflare.com/ips).
 
 ### Resolution
 

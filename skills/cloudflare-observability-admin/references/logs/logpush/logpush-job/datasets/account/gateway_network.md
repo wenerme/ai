@@ -106,6 +106,24 @@ Type: `string`
 
 Email associated with the user identity where the network session originated from.
 
+## IsIsolated
+
+Type: `bool`
+
+Whether the network session originated from an isolated browser.
+
+## Offramp
+
+Type: `string`
+
+Traffic destination type.
+
+## Onramp
+
+Type: `string`
+
+Traffic source type.
+
 ## OverrideIP
 
 Type: `string`

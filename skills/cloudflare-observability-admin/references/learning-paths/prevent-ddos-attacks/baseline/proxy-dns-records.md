@@ -20,7 +20,7 @@ The first - and often easiest - step of DDoS protection is making sure your DNS 
 
 ### Without Cloudflare
 
-Without Cloudflare, DNS lookups for your application's URL return the IP address of your [origin server ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server/).
+Without Cloudflare, DNS lookups for your application's URL return the IP address of your [origin server ↗︎](https://www.cloudflare.com/learning/cdn/glossary/origin-server/).
 
 | URL | Returned IP address |
 | --- | --- |
@@ -39,7 +39,7 @@ Another way of thinking about this concept is that visitors directly connect wit
 
 ### With Cloudflare
 
-With Cloudflare — meaning your domain or subdomain is using [proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/) — DNS lookups for your application's URL will resolve to [Cloudflare anycast IPs ↗](https://www.cloudflare.com/ips/) instead of their original DNS target.
+With Cloudflare — meaning your domain or subdomain is using [proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/) — DNS lookups for your application's URL will resolve to [Cloudflare anycast IPs ↗︎](https://www.cloudflare.com/ips/) instead of their original DNS target.
 
 | URL | Returned IP address |
 | --- | --- |

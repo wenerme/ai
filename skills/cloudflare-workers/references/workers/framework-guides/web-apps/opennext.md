@@ -20,7 +20,7 @@ Cloudflare recommends [vinext](https://developers.cloudflare.com/workers/framewo
 
 Use this guide to maintain an existing OpenNext application. Migrate to vinext when compatibility allows.
 
-[OpenNext ↗](https://opennext.js.org/) adapts the output of `next build` so it can run on different platforms, including Cloudflare Workers.
+[OpenNext ↗︎](https://opennext.js.org/) adapts the output of `next build` so it can run on different platforms, including Cloudflare Workers.
 
 ## Supported features
 
@@ -44,7 +44,7 @@ Most Next.js features are supported by the Cloudflare OpenNext adapter:
 | Composable Caching (`"use cache"`) | Supported | Composable Caching is experimental in Next.js. |
 | Node.js in Middleware | Not yet supported | Node.js middleware introduced in Next.js 15.2 is not yet supported. |
 
-For detailed OpenNext documentation, refer to [OpenNext for Cloudflare ↗](https://opennext.js.org/cloudflare).
+For detailed OpenNext documentation, refer to [OpenNext for Cloudflare ↗︎](https://opennext.js.org/cloudflare).
 
 ## Configure OpenNext manually
 
@@ -98,7 +98,7 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
      "name": "my-app",
      "main": ".open-next/worker.js",
      // Set this to today's date
-     "compatibility_date": "2026-09-22",
+     "compatibility_date": "2026-09-25",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -116,7 +116,7 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
    name = "my-app"
    main = ".open-next/worker.js"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = ["nodejs_compat"]
 
    [assets]
@@ -140,7 +140,7 @@ Wrangler automatic configuration uses vinext for Next.js projects. To use OpenNe
    export default defineCloudflareConfig();
    ```
 
-   Use this file to configure OpenNext features such as caching. For more information, refer to [OpenNext caching ↗](https://opennext.js.org/cloudflare/caching).
+   Use this file to configure OpenNext features such as caching. For more information, refer to [OpenNext caching ↗︎](https://opennext.js.org/cloudflare/caching).
 5. **Update `package.json`.**
 
    Add scripts for previewing, deploying, and generating Cloudflare types:
@@ -219,7 +219,7 @@ Workers Builds
 
 [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/) requires you to configure environment variables in [Build variables and secrets](https://developers.cloudflare.com/workers/ci-cd/builds/configuration/#build-variables-and-secrets).
 
-This ensures the Next.js build has access to both public `NEXT_PUBLIC_` variables and non-public variables required for static generation and server-side build work. For more information, refer to [OpenNext environment variables ↗](https://opennext.js.org/cloudflare/howtos/env-vars#workers-builds).
+This ensures the Next.js build has access to both public `NEXT_PUBLIC_` variables and non-public variables required for static generation and server-side build work. For more information, refer to [OpenNext environment variables ↗︎](https://opennext.js.org/cloudflare/howtos/env-vars#workers-builds).
 
 Was this helpful?
 

@@ -24,7 +24,7 @@ Ephemeral IDs are scoped to your Cloudflare account and cannot be shared across 
 
 This approach is particularly effective against credential stuffing and fake account creation attacks, where attackers rotate IP addresses to evade detection.
 
-Refer to the [blog post ↗](https://blog.cloudflare.com/turnstile-ephemeral-ids-for-fraud-detection/) for more information.
+Refer to the [blog post ↗︎](https://blog.cloudflare.com/turnstile-ephemeral-ids-for-fraud-detection/) for more information.
 
 ---
 

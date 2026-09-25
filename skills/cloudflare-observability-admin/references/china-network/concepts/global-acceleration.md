@@ -77,7 +77,7 @@ Travel SIM offers temporary, seamless Cloudflare One Client access for individua
 
 ### 1. Validate prerequisites
 
-Ensure that you have a Cloudflare [Enterprise plan ↗](https://www.cloudflare.com/plans/enterprise/) and [China Network](https://developers.cloudflare.com/china-network/), if you want CDN Global Acceleration. Cloudflare One Client and Cloudflare WAN entitlements are required for Cloudflare One Client Connection or Cloudflare WAN Global Acceleration.
+Ensure that you have a Cloudflare [Enterprise plan ↗︎](https://www.cloudflare.com/plans/enterprise/) and [China Network](https://developers.cloudflare.com/china-network/), if you want CDN Global Acceleration. Cloudflare One Client and Cloudflare WAN entitlements are required for Cloudflare One Client Connection or Cloudflare WAN Global Acceleration.
 
 ### 2. Sign contract
 

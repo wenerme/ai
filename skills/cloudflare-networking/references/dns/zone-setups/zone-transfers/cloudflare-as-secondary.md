@@ -16,7 +16,7 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 With incoming zone transfers, you can keep your primary DNS provider and use Cloudflare as a secondary DNS provider.
 
-When you make edits in your primary DNS provider, those DNS records will be transferred from your primary DNS provider to Cloudflare via zone transfer using [AXFR ↗](https://datatracker.ietf.org/doc/html/rfc5936) or [IXFR ↗](https://datatracker.ietf.org/doc/html/rfc1995).
+When you make edits in your primary DNS provider, those DNS records will be transferred from your primary DNS provider to Cloudflare via zone transfer using [AXFR ↗︎](https://datatracker.ietf.org/doc/html/rfc5936) or [IXFR ↗︎](https://datatracker.ietf.org/doc/html/rfc1995).
 
 ```
 flowchart LR

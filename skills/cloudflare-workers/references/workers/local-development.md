@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can build, run, and test your Worker code on your own local machine before deploying it to Cloudflare's network. This is made possible through [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), a simulator that executes your Worker code using the same runtime used in production, [`workerd` ↗](https://github.com/cloudflare/workerd).
+You can build, run, and test your Worker code on your own local machine before deploying it to Cloudflare's network. This is made possible through [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/), a simulator that executes your Worker code using the same runtime used in production, [`workerd` ↗︎](https://github.com/cloudflare/workerd).
 
 [By default](https://developers.cloudflare.com/workers/local-development/#defaults), your Worker's bindings [connect to locally simulated resources](https://developers.cloudflare.com/workers/local-development/#bindings-during-local-development), but can be configured to interact with the real, production resource with [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings).
 
@@ -47,7 +47,7 @@ yarn wrangler dev
 pnpm wrangler dev
 ```
 
-2. [**Vite** ↗](https://vite.dev/), using the [**Cloudflare Vite plugin**](https://developers.cloudflare.com/workers/vite-plugin/).
+2. [**Vite** ↗︎](https://vite.dev/), using the [**Cloudflare Vite plugin**](https://developers.cloudflare.com/workers/vite-plugin/).
 
 npmyarnpnpm
 
@@ -96,7 +96,7 @@ During local development, your Worker code interacts with these bindings using t
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 
 	"r2_buckets": [
 		{
@@ -111,7 +111,7 @@ During local development, your Worker code interacts with these bindings using t
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -131,7 +131,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 {
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 
 	"env": {
 		"production": {
@@ -158,7 +158,7 @@ Remote Bindings work well together with [Workers Environments](https://developer
 ```toml
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[env.production.r2_buckets]]
 bucket_name = "screenshots-bucket"
@@ -333,7 +333,7 @@ If `remote: true` is specified in Wrangler configuration for any of the followin
 
 Note
 
-If you have use-cases for connecting to any of the remote resources above, please [open a feature request ↗](https://github.com/cloudflare/workers-sdk/issues) in our [`workers-sdk` repository ↗](https://github.com/cloudflare/workers-sdk).
+If you have use-cases for connecting to any of the remote resources above, please [open a feature request ↗︎](https://github.com/cloudflare/workers-sdk/issues) in our [`workers-sdk` repository ↗︎](https://github.com/cloudflare/workers-sdk).
 
 #### Using remote resources with Durable Objects and Workflows
 

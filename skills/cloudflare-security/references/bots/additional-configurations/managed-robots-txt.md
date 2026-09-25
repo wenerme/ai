@@ -43,7 +43,7 @@ Disallow: /langtest
 Sitemap: https://www.crawlstop.com/sitemap.xml
 ```
 
-With the managed `robots.txt` enabled, Cloudflare will prepend our managed content before your original content, resulting in what you can view at [https://www.crawlstop.com/robots.txt ↗](https://www.crawlstop.com/robots.txt).
+With the managed `robots.txt` enabled, Cloudflare will prepend our managed content before your original content, resulting in what you can view at [https://www.crawlstop.com/robots.txt ↗︎](https://www.crawlstop.com/robots.txt).
 
 *Feature enabledtxt*
 
@@ -176,7 +176,7 @@ Google Search Console may occasionally report `Syntax not understood` for Conten
 
 ## Content use signal
 
-Cloudflare is testing `content-use`, an optional extension to [Content Signals ↗](https://contentsignals.org/) that lives in your `robots.txt`. It adds a fourth field alongside the existing `search`, `ai-input`, and `ai-train` signals to describe what a crawler may keep and reuse after accessing your content. The field takes one of three values, from least to most permissive:
+Cloudflare is testing `content-use`, an optional extension to [Content Signals ↗︎](https://contentsignals.org/) that lives in your `robots.txt`. It adds a fourth field alongside the existing `search`, `ai-input`, and `ai-train` signals to describe what a crawler may keep and reuse after accessing your content. The field takes one of three values, from least to most permissive:
 
 | Value | Meaning |
 | --- | --- |

@@ -22,7 +22,7 @@ Some admins choose to test by authenticating with a [one-time PIN (OTP)](https:/
 
 To add an identity provider:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.
 3. Select the identity provider you want to add.
 
@@ -32,9 +32,9 @@ To add an identity provider:
    Each identity provider will have different required fields for you to fill in. Step-by-step instructions are shown in the dashboard side panel. Alternatively, refer to the [IdP-specific documentation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 5. Once you have filled in the necessary fields, select **Save**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Organizations, Identity Providers, and Groups Write`
-2. Add an identity provider to Cloudflare One using the [`cloudflare_zero_trust_access_identity_provider` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource. For example, to add a Microsoft Entra ID integration:
+2. Add an identity provider to Cloudflare One using the [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource. For example, to add a Microsoft Entra ID integration:
 
    ```tf
    resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {

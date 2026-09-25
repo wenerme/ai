@@ -167,7 +167,7 @@ Register the hook in `.claude/settings.json`:
 - [Pay from Agents SDK](https://developers.cloudflare.com/agents/tools/payments/x402/pay-from-agents-sdk/) — Use the Agents SDK for more control
 - [Charge for HTTP content](https://developers.cloudflare.com/agents/tools/payments/x402/charge-for-http-content/) — Build the server side
 - [Human-in-the-loop guide](https://developers.cloudflare.com/agents/concepts/agentic-patterns/human-in-the-loop/) — Implement approval workflows
-- [x402.org ↗](https://x402.org) — Protocol specification
+- [x402.org ↗︎](https://x402.org) — Protocol specification
 
 Was this helpful?
 

@@ -20,7 +20,7 @@ R2 implements some extensions on top of the basic S3 API. This page outlines the
 
 The [Workers R2 API](https://developers.cloudflare.com/r2/api/workers/workers-api-reference/) supports Unicode in keys and values natively without requiring any additional encoding or decoding for the `customMetadata` field. These fields map to the `x-amz-meta-`-prefixed headers used within the R2 S3-compatible API endpoint.
 
-HTTP header names and values may only contain ASCII characters, which is a small subset of the Unicode character library. To easily accommodate users, R2 adheres to [RFC 2047 ↗](https://datatracker.ietf.org/doc/html/rfc2047) and automatically decodes all `x-amz-meta-*` header values before storage. On retrieval, any metadata values with unicode are RFC 2047-encoded before rendering the response. The length limit for metadata values is applied to the decoded Unicode value.
+HTTP header names and values may only contain ASCII characters, which is a small subset of the Unicode character library. To easily accommodate users, R2 adheres to [RFC 2047 ↗︎](https://datatracker.ietf.org/doc/html/rfc2047) and automatically decodes all `x-amz-meta-*` header values before storage. On retrieval, any metadata values with unicode are RFC 2047-encoded before rendering the response. The length limit for metadata values is applied to the decoded Unicode value.
 
 Metadata variance
 
@@ -42,7 +42,7 @@ If using Unicode in object key names, refer to [Unicode Interoperability](https:
 
 ## Auto-creating buckets on upload
 
-If you are creating buckets on demand, you might initiate an upload with the assumption that a target bucket exists. In this situation, if you received a `NoSuchBucket` error, you would probably issue a `CreateBucket` operation. However, following this approach can cause issues: if the body has already been partially consumed, the upload will need to be aborted. A common solution to this issue, followed by other object storage providers, is to use the [HTTP `100` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/100) response to detect whether the body should be sent, or if the bucket must be created before retrying the upload. However, Cloudflare does not support the HTTP `100` response. Even if the HTTP `100` response was supported, you would still have additional latency due to the round trips involved.
+If you are creating buckets on demand, you might initiate an upload with the assumption that a target bucket exists. In this situation, if you received a `NoSuchBucket` error, you would probably issue a `CreateBucket` operation. However, following this approach can cause issues: if the body has already been partially consumed, the upload will need to be aborted. A common solution to this issue, followed by other object storage providers, is to use the [HTTP `100` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status/100) response to detect whether the body should be sent, or if the bucket must be created before retrying the upload. However, Cloudflare does not support the HTTP `100` response. Even if the HTTP `100` response was supported, you would still have additional latency due to the round trips involved.
 
 To support sending an upload with a streaming body to a bucket that may not exist yet, upload operations such as `PutObject` or `CreateMultipartUpload` allow you to specify a header that will ensure the `NoSuchBucket` error is not returned. If the bucket does not exist at the time of upload, it is implicitly instantiated with the following `CreateBucket` request:
 
@@ -96,7 +96,7 @@ The XML response contains a `NextContinuationToken` and `IsTruncated` elements a
 
 Note
 
-This feature is currently in beta. If you have feedback, reach out to us on the [Cloudflare Developer Discord ↗](https://discord.cloudflare.com) in the #r2-storage channel or open a thread on the [Community Forum ↗](https://community.cloudflare.com/c/developers/storage/81).
+This feature is currently in beta. If you have feedback, reach out to us on the [Cloudflare Developer Discord ↗︎](https://discord.cloudflare.com) in the #r2-storage channel or open a thread on the [Community Forum ↗︎](https://community.cloudflare.com/c/developers/storage/81).
 
 `CopyObject` already supports conditions that relate to the source object through the `x-amz-copy-source-if-...` headers as part of our compliance with the S3 API. In addition to this, R2 supports an R2 specific set of headers that allow the `CopyObject` operation to be conditional on the target object:
 

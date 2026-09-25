@@ -94,7 +94,7 @@ different types.
 
 **Fix:** Update the existing table schema directly through the Azure Monitor REST API before redeploying the connector. Run the update from Azure Cloud Shell using an account that holds the `Log Analytics Contributor` role on the workspace.
 
-1. Download the latest `CloudflareV2_CL.json` schema definition from the Cloudflare CCF connector solution package (available in the [Microsoft Sentinel Content Hub ↗](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)) and upload it to your Cloud Shell session.
+1. Download the latest `CloudflareV2_CL.json` schema definition from the Cloudflare CCF connector solution package (available in the [Microsoft Sentinel Content Hub ↗︎](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview)) and upload it to your Cloud Shell session.
 2. Request an Azure Resource Manager access token:
 
    ```sh
@@ -120,11 +120,11 @@ different types.
 **Cause:** The Data Collection Rule (DCR) schema is out of sync with the Cloudflare Logpush schema being delivered. Two variants are common:
 
 - **Datatype mismatch:** A field is declared with the wrong Sentinel datatype in the DCR `streamDeclarations` — for example, a numeric field declared as `string`, or a variable-shape field such as `BotDetectionIDs` declared as anything other than `dynamic`. The record is ingested, but the mismatched column is populated with `null`.
-- **Reserved column name conflict:** A Cloudflare field name collides with a [Microsoft Sentinel reserved column name ↗](https://learn.microsoft.com/azure/azure-monitor/logs/create-custom-table?tabs=azure-portal-1%2Cazure-portal-2%2Cazure-portal-3#add-or-delete-a-custom-column). For example, the Cloudflare Network Error Logging (NEL) dataset contains a `Type` field, but `Type` is reserved in Sentinel. Fields with reserved names cannot be stored under their original name.
+- **Reserved column name conflict:** A Cloudflare field name collides with a [Microsoft Sentinel reserved column name ↗︎](https://learn.microsoft.com/azure/azure-monitor/logs/create-custom-table?tabs=azure-portal-1%2Cazure-portal-2%2Cazure-portal-3#add-or-delete-a-custom-column). For example, the Cloudflare Network Error Logging (NEL) dataset contains a `Type` field, but `Type` is reserved in Sentinel. Fields with reserved names cannot be stored under their original name.
 
 **Fix:**
 
-1. Upgrade the Cloudflare CCF solution to the latest version from the [Microsoft Sentinel Content Hub ↗](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview). New releases progressively correct field datatypes shipped by the connector and add support for new Cloudflare Logpush fields.
+1. Upgrade the Cloudflare CCF solution to the latest version from the [Microsoft Sentinel Content Hub ↗︎](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview). New releases progressively correct field datatypes shipped by the connector and add support for new Cloudflare Logpush fields.
 2. If missing fields persist after upgrading — for example, because the DCR has been customized — apply a manual fix:
    - **For datatype mismatches:** Update the field's datatype in both the DCR `streamDeclarations` and the `CloudflareV2_CL` table definition to match the Cloudflare Logpush schema (for example, `real` for floating-point values such as `EdgeResponseCompressionRatio`, or `dynamic` for `BotDetectionIDs`).
    - **For reserved name conflicts:** Rename the field in the DCR `transformKql` transformation and add the renamed column to the `CloudflareV2_CL` table definition. For example, to preserve the NEL `Type` value:
@@ -149,7 +149,7 @@ The Cloudflare workbook shipped with the CCF solution loads but shows no data, o
 
 **Cause:** In earlier releases, the workbook shipped with the Cloudflare CCF solution referenced the legacy `Cloudflare_CL` table and the legacy `CloudflareDataConnector`. The CCF connector ingests into `CloudflareV2_CL` through a parser, so workbook queries against the legacy table return no results even when logs are ingesting correctly.
 
-**Fix:** Upgrade the Cloudflare CCF solution to a version whose workbook references the CCF connector's parser and the `CloudflareV2_CL` table. The latest solution release is available from the [Microsoft Sentinel Content Hub ↗](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview).
+**Fix:** Upgrade the Cloudflare CCF solution to a version whose workbook references the CCF connector's parser and the `CloudflareV2_CL` table. The latest solution release is available from the [Microsoft Sentinel Content Hub ↗︎](https://marketplace.microsoft.com/en-us/product/cloudflare.azure-sentinel-solution-cloudflare-ccf?tab=Overview).
 
 **Verify:** Reopen the workbook. Panels should populate with recent Cloudflare log data.
 
@@ -157,7 +157,7 @@ The Cloudflare workbook shipped with the CCF solution loads but shows no data, o
 
 If your issue is not covered here:
 
-- Consult the [Cloudflare CCF solution page ↗](https://azuremarketplace.microsoft.com/marketplace/apps/cloudflare.azure-sentinel-solution-cloudflare-ccf) on the Azure Marketplace for the latest solution version and deployment prerequisites.
+- Consult the [Cloudflare CCF solution page ↗︎](https://azuremarketplace.microsoft.com/marketplace/apps/cloudflare.azure-sentinel-solution-cloudflare-ccf) on the Azure Marketplace for the latest solution version and deployment prerequisites.
 - Review the [Cloudflare Logs change notices](https://developers.cloudflare.com/logs/reference/change-notices/) for recent schema changes that may affect your DCR or table definitions.
 - [Contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) for issues involving Cloudflare-side log delivery.
 - Contact Microsoft Support for issues isolated to Microsoft Azure or the Microsoft Sentinel CCF environment.

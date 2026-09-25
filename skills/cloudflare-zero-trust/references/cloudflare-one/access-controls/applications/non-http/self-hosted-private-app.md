@@ -29,7 +29,7 @@ This feature replaces the legacy [private network app type](https://developers.c
 
 ## Add your application to Access
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **Self-hosted and private**.
 4. To add an application using its private IP:
@@ -104,7 +104,7 @@ For applications served over plaintext HTTP on port `80`, Cloudflare Access pres
 
 For applications that are not HTTP or HTTPS (for example, SSH, RDP, or arbitrary TCP/UDP), the Cloudflare One Client manages the session. When authentication is required, the operating system displays an `Authentication required` notification from the Cloudflare One Client. Cloudflare One Client notifications must be allowed in the operating system settings. When the user selects the notification, the Cloudflare One Client opens a browser window with your Access login page.
 
-Ensure that your operating system allows notifications for the Cloudflare One Client. Your device may not display notifications if focus, do not disturb, or screen sharing settings are turned on. To turn on client notifications on macOS devices running DisplayLink software, you may have to allow system notifications when mirroring your display. For more information, refer to the [macOS documentation ↗](https://support.apple.com/guide/mac-help/change-notifications-settings-mh40583/mac).
+Ensure that your operating system allows notifications for the Cloudflare One Client. Your device may not display notifications if focus, do not disturb, or screen sharing settings are turned on. To turn on client notifications on macOS devices running DisplayLink software, you may have to allow system notifications when mirroring your display. For more information, refer to the [macOS documentation ↗︎](https://support.apple.com/guide/mac-help/change-notifications-settings-mh40583/mac).
 
 While authentication is pending, the Cloudflare icon in the macOS menu bar or Windows system tray indicates that action is required. If the user misses the notification, they can open the Cloudflare One Client and select **Profile** > **Account information** > **Re-authenticate**. In version 2026.1 and earlier, select **Preferences** > **Account** > **Re-Authenticate Session**. After authentication, retry the connection.
 
@@ -114,7 +114,7 @@ While authentication is pending, the Cloudflare icon in the macOS menu bar or Wi
 
 By default, Cloudflare will evaluate Access application policies after evaluating all [Gateway network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/). To evaluate Access applications before or after specific Gateway policies:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. In **Network**, [create a Network policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/) with the following configuration:
 
    | Selector | Operator | Value | Action |
    | --- | --- | --- | --- |
@@ -139,7 +139,7 @@ To use Browser Isolation for an application on a private IP address with a non-`
 
 ### Google Chrome restricts access to private hostnames
 
-Starting with [Chrome 142 ↗](https://developer.chrome.com/release-notes/142), Local Network Access (LNA) restricts requests from websites to local IP addresses. LNA is implemented at the Chromium engine level, so this affects all Chromium-based browsers (for example, Microsoft Edge, Brave, and Opera), not only Google Chrome. This can affect accounts whose Gateway initial resolved IP range is still drawn from Carrier-Grade NAT (CGNAT) address space (`100.64.0.0/10`) — for example, the legacy default range `100.80.0.0/16`, or a custom range configured within CGNAT space. These browsers categorize such addresses as belonging to a local network. When a website loaded from a public IP makes subrequests to a domain resolved through an initial resolved IP in this space, the browser treats this as a public-to-local network request and displays a prompt asking the user to allow access to devices on the local network. The browser blocks requests to these domains until the user accepts this prompt.
+Starting with [Chrome 142 ↗︎](https://developer.chrome.com/release-notes/142), Local Network Access (LNA) restricts requests from websites to local IP addresses. LNA is implemented at the Chromium engine level, so this affects all Chromium-based browsers (for example, Microsoft Edge, Brave, and Opera), not only Google Chrome. This can affect accounts whose Gateway initial resolved IP range is still drawn from Carrier-Grade NAT (CGNAT) address space (`100.64.0.0/10`) — for example, the legacy default range `100.80.0.0/16`, or a custom range configured within CGNAT space. These browsers categorize such addresses as belonging to a local network. When a website loaded from a public IP makes subrequests to a domain resolved through an initial resolved IP in this space, the browser treats this as a public-to-local network request and displays a prompt asking the user to allow access to devices on the local network. The browser blocks requests to these domains until the user accepts this prompt.
 
 This commonly occurs when an Egress policy matches broadly used domains (such as `cloudfront.net` or `github.com`), causing subrequests from public pages to resolve into CGNAT space.
 
@@ -160,10 +160,10 @@ If iframes are nested, every iframe in the chain must include the appropriate at
 
 To avoid this issue, choose one of the following options:
 
-- **Override IP address space classification (Chrome 146+)**: Use the [`LocalNetworkAccessIpAddressSpaceOverrides` ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessIpAddressSpaceOverrides) Chrome Enterprise policy to reclassify your CGNAT-space initial resolved IP range (for example, `100.80.0.0/16`) as public. This is the most targeted fix because it only changes the classification for the initial resolved IP range rather than disabling security checks entirely.
-- **Allow specific URLs (Chrome 140+)**: Use the [`LocalNetworkAccessAllowedForUrls` ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessAllowedForUrls) Chrome Enterprise policy to exempt specific websites from Local Network Access checks. Note that `https://*` is a valid entry to disable checks for all URLs.
-- **Allow specific URLs (Chrome 146+)**: Use the [`LocalNetworkAllowedForUrls` ↗](https://chromeenterprise.google/policies/#LocalNetworkAllowedForUrls) Chrome Enterprise policy, which replaces `LocalNetworkAccessAllowedForUrls` starting in Chrome 146.
-- **Opt out of Local Network Access restrictions (Chrome 142-152)**: Use the [`LocalNetworkAccessRestrictionsTemporaryOptOut` ↗](https://chromeenterprise.google/policies/#LocalNetworkAccessRestrictionsTemporaryOptOut) Chrome Enterprise policy to completely opt out of Local Network Access restrictions. This is a temporary policy and will be removed after Chrome 152.
+- **Override IP address space classification (Chrome 146+)**: Use the [`LocalNetworkAccessIpAddressSpaceOverrides` ↗︎](https://chromeenterprise.google/policies/#LocalNetworkAccessIpAddressSpaceOverrides) Chrome Enterprise policy to reclassify your CGNAT-space initial resolved IP range (for example, `100.80.0.0/16`) as public. This is the most targeted fix because it only changes the classification for the initial resolved IP range rather than disabling security checks entirely.
+- **Allow specific URLs (Chrome 140+)**: Use the [`LocalNetworkAccessAllowedForUrls` ↗︎](https://chromeenterprise.google/policies/#LocalNetworkAccessAllowedForUrls) Chrome Enterprise policy to exempt specific websites from Local Network Access checks. Note that `https://*` is a valid entry to disable checks for all URLs.
+- **Allow specific URLs (Chrome 146+)**: Use the [`LocalNetworkAllowedForUrls` ↗︎](https://chromeenterprise.google/policies/#LocalNetworkAllowedForUrls) Chrome Enterprise policy, which replaces `LocalNetworkAccessAllowedForUrls` starting in Chrome 146.
+- **Opt out of Local Network Access restrictions (Chrome 142-152)**: Use the [`LocalNetworkAccessRestrictionsTemporaryOptOut` ↗︎](https://chromeenterprise.google/policies/#LocalNetworkAccessRestrictionsTemporaryOptOut) Chrome Enterprise policy to completely opt out of Local Network Access restrictions. This is a temporary policy and will be removed after Chrome 152.
 - **Disable the Chrome feature flag**: Go to `chrome://flags` and set the **Local Network Access Checks** flag to *Disabled*. This approach is suitable for individual users but not for enterprise-wide deployment.
 
 Was this helpful?

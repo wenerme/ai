@@ -26,7 +26,7 @@ Note
 
 The image is published on the GitHub Container Registry (`ghcr.io`), not Docker Hub.
 
-A complete example is available in [`docker-compose.example.yaml` ↗](https://github.com/cloudflare/gokeyless/blob/master/docker-compose.example.yaml) in the gokeyless repository.
+A complete example is available in [`docker-compose.example.yaml` ↗︎](https://github.com/cloudflare/gokeyless/blob/master/docker-compose.example.yaml) in the gokeyless repository.
 
 ## Environment variables
 

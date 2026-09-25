@@ -30,10 +30,10 @@ Workers build cache will cache the global cache directories of the following pac
 
 | Package Manager | Directories cached |
 | --- | --- |
-| [npm ↗](https://www.npmjs.com/) | `.npm` |
-| [yarn ↗](https://yarnpkg.com/) | `.cache/yarn` |
-| [pnpm ↗](https://pnpm.io/) | `.pnpm-store`, `.local/share/pnpm/store` |
-| [bun ↗](https://bun.sh/) | `.bun/install/cache` |
+| [npm ↗︎](https://www.npmjs.com/) | `.npm` |
+| [yarn ↗︎](https://yarnpkg.com/) | `.cache/yarn` |
+| [pnpm ↗︎](https://pnpm.io/) | `.pnpm-store`, `.local/share/pnpm/store` |
+| [bun ↗︎](https://bun.sh/) | `.bun/install/cache` |
 
 If you configure pnpm to use a different store directory, Workers Builds does not cache it.
 
@@ -68,7 +68,7 @@ The following limits are imposed for build caching:
 
 To enable build caching:
 
-1. Navigate to [Workers & Pages Overview ↗](https://dash.cloudflare.com) on the Dashboard.
+1. Navigate to [Workers & Pages Overview ↗︎](https://dash.cloudflare.com) on the Dashboard.
 2. Find your Workers project.
 3. Go to **Settings** > **Build** > **Build cache**.
 4. Select **Enable** to turn on build caching.
@@ -77,7 +77,7 @@ To enable build caching:
 
 The build cache can be cleared for a project when needed, such as when debugging build issues. To clear the build cache:
 
-1. Navigate to [Workers & Pages Overview ↗](https://dash.cloudflare.com) on the Dashboard.
+1. Navigate to [Workers & Pages Overview ↗︎](https://dash.cloudflare.com) on the Dashboard.
 2. Find your Workers project.
 3. Go to **Settings** > **Build** > **Build cache**.
 4. Select **Clear Cache** to clear the build cache.

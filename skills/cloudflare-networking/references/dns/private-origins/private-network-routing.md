@@ -36,11 +36,11 @@ The following private address ranges are automatically detected:
 
 | Range | Description |
 | --- | --- |
-| `10.0.0.0/8` | Private ([RFC 1918 ↗](https://www.rfc-editor.org/rfc/rfc1918.html)) |
-| `172.16.0.0/12` | Private ([RFC 1918 ↗](https://www.rfc-editor.org/rfc/rfc1918.html)) |
-| `192.168.0.0/16` | Private ([RFC 1918 ↗](https://www.rfc-editor.org/rfc/rfc1918.html)) |
-| `fc00::/7` | Private ([RFC 4193 ↗](https://www.rfc-editor.org/rfc/rfc4193.html)) |
-| `100.64.0.0/10` | CGNAT ([RFC 6598 ↗](https://www.rfc-editor.org/rfc/rfc6598.html)) |
+| `10.0.0.0/8` | Private ([RFC 1918 ↗︎](https://www.rfc-editor.org/rfc/rfc1918.html)) |
+| `172.16.0.0/12` | Private ([RFC 1918 ↗︎](https://www.rfc-editor.org/rfc/rfc1918.html)) |
+| `192.168.0.0/16` | Private ([RFC 1918 ↗︎](https://www.rfc-editor.org/rfc/rfc1918.html)) |
+| `fc00::/7` | Private ([RFC 4193 ↗︎](https://www.rfc-editor.org/rfc/rfc4193.html)) |
+| `100.64.0.0/10` | CGNAT ([RFC 6598 ↗︎](https://www.rfc-editor.org/rfc/rfc6598.html)) |
 
 When you use an IP address from one of these ranges, the **Use private network routing** toggle turns on automatically. You can also turn it on manually for public IP addresses that are only reachable through your tunnel.
 

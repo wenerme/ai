@@ -32,7 +32,7 @@ It is not sufficient to only remove the client-side widget from the page, as an 
 
 ## Implementation
 
-This tutorial will modify the existing [Turnstile demo ↗](https://github.com/cloudflare/turnstile-demo-workers/blob/main/src/) to conditionally remove the existing `script` and widget container elements.
+This tutorial will modify the existing [Turnstile demo ↗︎](https://github.com/cloudflare/turnstile-demo-workers/blob/main/src/) to conditionally remove the existing `script` and widget container elements.
 
 *src/index.mjsdiff*
 

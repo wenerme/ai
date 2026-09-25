@@ -276,7 +276,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               Automatically selects the most detailed summary supported by the model.
 
-        - `service_tier: "auto" or "default" or "flex" or 2 more`
+        - `service_tier: "auto" or "default" or "flex" or 3 more`
 
           The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -289,6 +289,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
           - `"priority"`
 
           - `"fast"`
+
+          - `"ultrafast"`
 
         - `text: AgentText`
 

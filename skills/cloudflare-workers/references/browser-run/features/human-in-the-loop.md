@@ -54,7 +54,7 @@ Refer to [Example: manual detection](#example-manual-detection) for a complete c
 
 ## Cloudflare CDP commands
 
-Browser Run extends the standard [Chrome DevTools Protocol (CDP) ↗](https://chromedevtools.github.io/devtools-protocol/) with Cloudflare-specific commands under the `Cloudflare.*` namespace. These commands are only available when connected to a Browser Run session and provide capabilities that do not exist in the standard CDP specification, such as requesting human intervention, generating [Live View](https://developers.cloudflare.com/browser-run/features/live-view/) URLs, and tracking handoff state.
+Browser Run extends the standard [Chrome DevTools Protocol (CDP) ↗︎](https://chromedevtools.github.io/devtools-protocol/) with Cloudflare-specific commands under the `Cloudflare.*` namespace. These commands are only available when connected to a Browser Run session and provide capabilities that do not exist in the standard CDP specification, such as requesting human intervention, generating [Live View](https://developers.cloudflare.com/browser-run/features/live-view/) URLs, and tracking handoff state.
 
 You send these commands through a CDP session the same way you would send any standard CDP command. For full parameter and return type details, refer to the [protocol reference](https://developers.cloudflare.com/api/resources/browser_rendering/subresources/devtools/subresources/browser/methods/protocol/).
 

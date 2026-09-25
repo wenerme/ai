@@ -32,7 +32,7 @@ When your requests exceed the allowed rate, you will encounter rate limiting. Th
 
 To set the default rate limiting configuration in the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **AI** > **AI Gateway**.
 3. Go to **Settings**.
 4. Enable **Rate-limiting**.

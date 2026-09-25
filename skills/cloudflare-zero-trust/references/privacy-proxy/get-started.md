@@ -24,7 +24,7 @@ Privacy Proxy is a managed service. Before you can connect, Cloudflare will prov
 - **Pre-shared key (PSK)**: A secret key for proof-of-concept authentication.
 - **Egress IP ranges**: The IP addresses that destination servers will see for proxied traffic.
 
-[Contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to request access and receive your configuration details.
+[Contact us ↗︎](https://www.cloudflare.com/lp/privacy-edge/) to request access and receive your configuration details.
 
 ---
 
@@ -110,7 +110,7 @@ curl -v \
   https://cloudflare.com/cdn-cgi/trace
 ```
 
-The `sec-ch-geohash` header provides a [geohash ↗](https://en.wikipedia.org/wiki/Geohash) that the proxy uses to select an appropriate egress IP. The format is `<geohash>-<country_code>`.
+The `sec-ch-geohash` header provides a [geohash ↗︎](https://en.wikipedia.org/wiki/Geohash) that the proxy uses to select an appropriate egress IP. The format is `<geohash>-<country_code>`.
 
 The response should show a `loc` value corresponding to the geohash region.
 

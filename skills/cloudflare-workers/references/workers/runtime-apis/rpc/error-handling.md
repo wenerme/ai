@@ -16,7 +16,7 @@ Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 ## Exceptions
 
-An error thrown by an RPC method, or used to reject the method's returned Promise, propagates to the caller as a new error object. With enhanced error serialization, Workers preserves the effective `name` and `message` and serializable own properties, including non-enumerable properties such as [`cause` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause).
+An error thrown by an RPC method, or used to reject the method's returned Promise, propagates to the caller as a new error object. With enhanced error serialization, Workers preserves the effective `name` and `message` and serializable own properties, including non-enumerable properties such as [`cause` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/cause).
 
 [Enhanced error serialization](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#enhanced-error-serialization) uses the `enhanced_error_serialization` compatibility flag. It is on by default for compatibility dates on or after `2026-04-21`. For earlier compatibility dates, add the flag to both the RPC provider and consumer. A Worker can opt out with `legacy_error_serialization`. Without enhanced error serialization, RPC uses legacy error reconstruction and does not preserve custom own properties.
 

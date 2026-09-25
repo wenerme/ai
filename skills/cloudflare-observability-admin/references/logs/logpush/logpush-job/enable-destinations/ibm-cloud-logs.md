@@ -30,7 +30,7 @@ Cloudflare Logpush supports pushing logs directly to IBM Cloud Logs via dashboar
 5. Enter the following destination information:
 
 - **HTTP Source Address** - For example, `ibmcl://<INSTANCE_ID>.ingress.<REGION>.logs.cloud.ibm.com/logs/v1/singles`.
-- **IBM API Key** - For more information refer to the [IBM Cloud Logs documentation ↗](https://cloud.ibm.com/docs/cloud-logs).
+- **IBM API Key** - For more information refer to the [IBM Cloud Logs documentation ↗︎](https://cloud.ibm.com/docs/cloud-logs).
 
 When you are done entering the destination details, select **Continue**.
 
@@ -67,7 +67,7 @@ To create a job, make a `POST` request to the Logpush jobs endpoint with the fol
   - batch\_prefix and batch\_suffix
   - record\_prefix and record\_suffix
   - record\_delimiter
-- **destination\_conf** - A log destination consisting of Instance ID, Region and [IBM API Key ↗](https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey) in the string format below.
+- **destination\_conf** - A log destination consisting of Instance ID, Region and [IBM API Key ↗︎](https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey) in the string format below.
 
 `ibmcl://<INSTANCE_ID>.ingress.<REGION>.logs.cloud.ibm.com/logs/v1/singles?ibm_api_key=<IBM_API_KEY>`
 

@@ -18,9 +18,9 @@ Brand Protection allows you to proactively identify and mitigate domain imperson
 
 Common threats include:
 
-- [Typosquatting ↗](https://en.wikipedia.org/wiki/Typosquatting): For example, typing `cloudfalre.com` instead of `cloudflare.com`.
+- [Typosquatting ↗︎](https://en.wikipedia.org/wiki/Typosquatting): For example, typing `cloudfalre.com` instead of `cloudflare.com`.
 - Concatenation of services ( `cloudflare-service.com`) often registered by attackers to trick unsuspecting victims into submitting private information such as passwords.
-- [Homoglyph attacks ↗](https://en.wikipedia.org/wiki/IDN_homograph_attack) that use lookalike characters to trick unsuspecting victims.
+- [Homoglyph attacks ↗︎](https://en.wikipedia.org/wiki/IDN_homograph_attack) that use lookalike characters to trick unsuspecting victims.
 
 User permission
 
@@ -87,7 +87,7 @@ To investigate a string query:
 
 Submit abuse report
 
-You can only submit an abuse report if your domain is with [Cloudflare Registrar ↗](https://www.cloudflare.com/products/registrar/), or if the IP used by the domain is hosted by Cloudflare.
+You can only submit an abuse report if your domain is with [Cloudflare Registrar ↗︎](https://www.cloudflare.com/products/registrar/), or if the IP used by the domain is hosted by Cloudflare.
 
 To submit abuse reports directly from the dashboard:
 
@@ -133,7 +133,7 @@ Cloudflare does not represent you and cannot provide you with legal advice. Only
 
 ## Brand Protection API
 
-The [Brand Protection API](https://developers.cloudflare.com/api/resources/brand_protection/) allows for programmatic management and integration with your [SOC ↗](https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-a-security-operations-center-soc/) or [SIEM ↗](https://www.cloudflare.com/en-gb/learning/security/what-is-siem/). Using the Brand Protection API, you can:
+The [Brand Protection API](https://developers.cloudflare.com/api/resources/brand_protection/) allows for programmatic management and integration with your [SOC ↗︎](https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-a-security-operations-center-soc/) or [SIEM ↗︎](https://www.cloudflare.com/en-gb/learning/security/what-is-siem/). Using the Brand Protection API, you can:
 
 - Manage queries: Create, edit, or delete string and logo queries.
 - Data retrieval: Read and download matches for automated ingestion.

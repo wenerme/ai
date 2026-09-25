@@ -14,19 +14,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jan 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial will teach you how to read and write to KV directly from Rust using [workers-rs ↗](https://github.com/cloudflare/workers-rs).
+This tutorial will teach you how to read and write to KV directly from Rust using [workers-rs ↗︎](https://github.com/cloudflare/workers-rs).
 
 ## Before you start
 
-All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 ## Prerequisites
 
 To complete this tutorial, you will need:
 
-- [Git ↗](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+- [Git ↗︎](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 - [Wrangler](https://developers.cloudflare.com/workers/wrangler/) CLI.
-- The [Rust ↗](https://www.rust-lang.org/tools/install) toolchain.
+- The [Rust ↗︎](https://www.rust-lang.org/tools/install) toolchain.
 - And `cargo-generate` sub-command by running:
 
 ```sh
@@ -78,7 +78,7 @@ With this configured, you can access the KV namespace with the binding `"cities"
 
 For this app, you will create two routes: A `POST` route to receive and store the city in KV, and a `GET` route to retrieve the city of a given country. For example, a `POST` request to `/France` with a body of `{"city": "Paris"}` should create an entry of Paris as a city in France. A `GET` request to `/France` should retrieve from KV and respond with Paris.
 
-Install [Serde ↗](https://serde.rs/) as a project dependency to handle JSON `cargo add serde`. Then create an app router and a struct for `Country` in `src/lib.rs`:
+Install [Serde ↗︎](https://serde.rs/) as a project dependency to handle JSON `cargo add serde`. Then create an app router and a struct for `Country` in `src/lib.rs`:
 
 ```rust
 use serde::{Deserialize, Serialize};

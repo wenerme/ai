@@ -38,7 +38,7 @@ If the visitor passes the challenge, the original request continues to the desti
 
 ### Managed Challenges
 
-Managed Challenges are where Cloudflare dynamically chooses the appropriate type of challenge served to the visitor based on the characteristics of a request from the signals indicated by their browser. This helps avoid [CAPTCHAs ↗](https://www.cloudflare.com/learning/bots/how-captchas-work/), which also reduces the lifetimes of human time spent solving CAPTCHAs across the Internet.
+Managed Challenges are where Cloudflare dynamically chooses the appropriate type of challenge served to the visitor based on the characteristics of a request from the signals indicated by their browser. This helps avoid [CAPTCHAs ↗︎](https://www.cloudflare.com/learning/bots/how-captchas-work/), which also reduces the lifetimes of human time spent solving CAPTCHAs across the Internet.
 
 Most human visitors are automatically verified and the Challenge Page will display **Successful**. However, if Cloudflare detects non-human attributes from the visitor's browser, they may be required to interact with the challenge to solve it.
 
@@ -52,7 +52,7 @@ Using Cloudflare Challenges along with Rules features may cause challenge loops.
 
 Interactive Challenge Pages require a visitor to interact with the challenge to pass.
 
-Cloudflare always recommends using a Managed Challenge. For more information, refer to the [Cloudflare blog post ↗](https://blog.cloudflare.com/end-cloudflare-captcha/).
+Cloudflare always recommends using a Managed Challenge. For more information, refer to the [Cloudflare blog post ↗︎](https://blog.cloudflare.com/end-cloudflare-captcha/).
 
 ## Compatibility limitations
 

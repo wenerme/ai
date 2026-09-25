@@ -32,7 +32,7 @@ The template sends notifications for:
 
 ![Example Slack notifications for Workers Builds events](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1700,height=1088,format=webp/_astro/builds-notifications-slack.rcRiU95L.png)
 
-You can customize the Worker to format messages for your webhook provider. For setup instructions, refer to the [template README ↗](https://github.com/cloudflare/templates/tree/main/workers-builds-notifications-template#readme).
+You can customize the Worker to format messages for your webhook provider. For setup instructions, refer to the [template README ↗︎](https://github.com/cloudflare/templates/tree/main/workers-builds-notifications-template#readme).
 
 ## Available Workers Builds events
 

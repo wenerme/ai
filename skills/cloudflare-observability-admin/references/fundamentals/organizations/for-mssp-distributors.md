@@ -109,7 +109,7 @@ MSSP/Distributor Organizations cannot be self-serve created by customers. To get
 1. Contact your **Cloudflare account team** to request an MSSP or Distributor Organization.
 2. Cloudflare will create your Organization and assign the initial Organization Super Administrator.
 3. The initial Organization Super Administrator must have [two-factor authentication (2FA)](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/) or [single sign-on (SSO)](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/) enabled on their Cloudflare user account.
-4. Once created, the Organization Super Administrator can begin managing the Organization from the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+4. Once created, the Organization Super Administrator can begin managing the Organization from the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 
 Note
 
@@ -240,7 +240,7 @@ You can manage Organizations programmatically using the [Cloudflare Organization
 
 ### Terraform
 
-You can manage Organizations using the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/organization).
+You can manage Organizations using the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/organization).
 
 Note
 

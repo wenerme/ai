@@ -18,7 +18,7 @@ RealtimeKit usage is charged according to the pricing model below:
 
 Note
 
-To estimate your RealtimeKit costs, refer to the [RealtimeKit pricing calculator ↗](https://realtime.cloudflare.com/#pricing-calculator).
+To estimate your RealtimeKit costs, refer to the [RealtimeKit pricing calculator ↗︎](https://realtime.cloudflare.com/#pricing-calculator).
 
 | Feature | Price |
 | --- | --- |

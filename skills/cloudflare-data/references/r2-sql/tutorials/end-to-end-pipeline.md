@@ -27,13 +27,13 @@ This tutorial demonstrates how to:
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 2. Install a [Node.js version supported by Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/#install-wrangler).
-3. Install [Python 3.8+ ↗](https://python.org) for the data generation script.
+3. Install [Python 3.8+ ↗︎](https://python.org) for the data generation script.
 
 Node.js version manager
 
-Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions.
+Use a Node version manager like [Volta ↗︎](https://volta.sh/) or [nvm ↗︎](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions.
 
 ## 1. Set up authentication
 

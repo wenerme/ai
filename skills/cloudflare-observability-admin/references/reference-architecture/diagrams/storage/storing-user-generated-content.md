@@ -92,7 +92,7 @@ This architecture ensures that content is stored, processed, and delivered **fas
 - [Use R2 from Workers](https://developers.cloudflare.com/r2/api/workers/workers-api-usage/)
 - [Migrating Data to R2](https://developers.cloudflare.com/r2/data-migration/)
 - [Event notifications for storage reference architecture](https://developers.cloudflare.com/reference-architecture/diagrams/storage/event-notifications-for-storage/)
-- [Why choose Cloudflare R2 vs Amazon S3 ↗](https://www.cloudflare.com/pg-cloudflare-r2-vs-aws-s3/)
+- [Why choose Cloudflare R2 vs Amazon S3 ↗︎](https://www.cloudflare.com/pg-cloudflare-r2-vs-aws-s3/)
 
 Was this helpful?
 

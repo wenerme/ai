@@ -53,7 +53,7 @@ Only allow traffic with specific (and secret) HTTP headers.
 - **Process**:
   1. Use <a href="https://developers.cloudflare.com/rules/transform/request-header-modification/">Transform rules</a> or <a href="https://developers.cloudflare.com/workers/examples/alter-headers/">Workers</a> to add an HTTP Auth Header.
   2. Configure your origin server to restrict access based on the <a href="https://developers.cloudflare.com/workers/examples/auth-with-headers/">HTTP Auth Header</a> (or perform <a href="https://developers.cloudflare.com/workers/examples/basic-auth/">HTTP Basic Authentication</a>).
-  3. Configure your origin server to restrict access based on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Host">HTTP Host Header ↗</a>. Specifically, only allow requests which contain expected HTTP Host Header values, and reject all other requests.
+  3. Configure your origin server to restrict access based on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Host">HTTP Host Header ↗︎</a>. Specifically, only allow requests which contain expected HTTP Host Header values, and reject all other requests.
 
 </details>
 

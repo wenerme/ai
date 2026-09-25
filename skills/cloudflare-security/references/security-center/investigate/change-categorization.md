@@ -35,7 +35,7 @@ To request a categorization change via the Cloudflare dashboard:
 
 Requesting a security category change will trigger a deeper investigation by Cloudflare to confirm that the submission is valid. Requesting a content category change also requires Cloudflare validation, but the turnaround time for these submissions is usually shorter as it requires less investigation.
 
-Your category change requests will be revised by the Cloudflare team depending on the type of change. If your requests have been reviewed and applied by the Cloudflare team, the new categories will be visible in the Cloudflare dashboard in **Security Center** > **Investigate**, as well as in [Cloudflare Radar ↗](https://radar.cloudflare.com/).
+Your category change requests will be revised by the Cloudflare team depending on the type of change. If your requests have been reviewed and applied by the Cloudflare team, the new categories will be visible in the Cloudflare dashboard in **Security Center** > **Investigate**, as well as in [Cloudflare Radar ↗︎](https://radar.cloudflare.com/).
 
 Caution
 
@@ -43,7 +43,7 @@ Cloudflare does not guarantee the category change will be approved.
 
 ## Via Cloudflare Radar
 
-To request recategorization via Cloudflare Radar, submit feedback in [Radar Domain Categorization ↗](https://radar.cloudflare.com/domains/feedback).
+To request recategorization via Cloudflare Radar, submit feedback in [Radar Domain Categorization ↗︎](https://radar.cloudflare.com/domains/feedback).
 
 ## Via the API
 

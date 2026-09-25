@@ -16,9 +16,9 @@ Connect Hyperdrive to a Nile Postgres database instance.
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/nile/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example shows you how to connect Hyperdrive to a [Nile ↗](https://thenile.dev) PostgreSQL database instance.
+This example shows you how to connect Hyperdrive to a [Nile ↗︎](https://thenile.dev) PostgreSQL database instance.
 
-Nile is PostgreSQL re-engineered for multi-tenant applications. Nile's virtual tenant databases provide you with isolation, placement, insight, and other features for your tenant's data and embedding. Refer to [Nile documentation ↗](https://www.thenile.dev/docs/getting-started/whatisnile) to learn more.
+Nile is PostgreSQL re-engineered for multi-tenant applications. Nile's virtual tenant databases provide you with isolation, placement, insight, and other features for your tenant's data and embedding. Refer to [Nile documentation ↗︎](https://www.thenile.dev/docs/getting-started/whatisnile) to learn more.
 
 ## 1. Allow Hyperdrive access
 
@@ -28,7 +28,7 @@ You can connect Cloudflare Hyperdrive to any Nile database in your workspace usi
 
 To get a connection string from Nile console:
 
-1. Log in to [Nile console ↗](https://console.thenile.dev), then select a database.
+1. Log in to [Nile console ↗︎](https://console.thenile.dev), then select a database.
 2. On the left hand menu, click **Settings** (the bottom-most icon) and then select **Connection**.
 3. Select the PostgreSQL logo to show the connection string.
 4. Select "Generate credentials" to generate new credentials.
@@ -83,7 +83,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -102,7 +102,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -171,7 +171,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -184,7 +184,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

@@ -38,7 +38,7 @@ These settings apply during the indexing step, before your data is embedded and 
 
 ## Choosing chunk size and overlap
 
-Chunking affects both how your content is retrieved and how much context is passed into the generation model. Try out this external [chunk visualizer tool ↗](https://huggingface.co/spaces/m-ric/chunk_visualizer) to help understand how different chunk settings could look.
+Chunking affects both how your content is retrieved and how much context is passed into the generation model. Try out this external [chunk visualizer tool ↗︎](https://huggingface.co/spaces/m-ric/chunk_visualizer) to help understand how different chunk settings could look.
 
 ### Additional considerations:
 

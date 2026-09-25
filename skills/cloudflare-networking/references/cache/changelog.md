@@ -48,7 +48,7 @@ For configuration details and mode behavior, refer to [Origin Range Requests in 
 
 **Cache multiple versions of a URL with Vary**
 
-Your origin can serve different responses for the same URL — different languages based on `Accept-Language`, or different formats based on `Accept` — by returning a [`Vary` ↗](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) response header. Cloudflare's cache now honors that header directly in [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), so the same URL can hold multiple cached versions and each request is matched to the right one. Content that previously had to bypass cache to stay correct can now be cached, following standard [HTTP caching behavior ↗](https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with).
+Your origin can serve different responses for the same URL — different languages based on `Accept-Language`, or different formats based on `Accept` — by returning a [`Vary` ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) response header. Cloudflare's cache now honors that header directly in [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), so the same URL can hold multiple cached versions and each request is matched to the right one. Content that previously had to bypass cache to stay correct can now be cached, following standard [HTTP caching behavior ↗︎](https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with).
 
 #### What changed
 
@@ -75,7 +75,7 @@ Vary in Cache Rules is available on all plans (Free, Pro, Business, and Enterpri
 
 #### Get started
 
-Configure Vary in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** > **Cache Rules**, or through the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). To learn how Vary affects cache keys and how each action works, refer to [Vary](https://developers.cloudflare.com/cache/concepts/vary/) and the [Cache Rules Vary setting](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary).
+Configure Vary in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** > **Cache Rules**, or through the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). To learn how Vary affects cache keys and how each action works, refer to [Vary](https://developers.cloudflare.com/cache/concepts/vary/) and the [Cache Rules Vary setting](https://developers.cloudflare.com/cache/how-to/cache-rules/settings/#vary).
 
 ## 2026-05-26
 
@@ -114,7 +114,7 @@ In both cases, the decision to apply browser cache TTL depends on the underlying
 
 **Pingora now powers Cloudflare's cache**
 
-Cloudflare's cache now runs on a new proxy built on [Pingora ↗](https://github.com/cloudflare/pingora), the Rust-based framework that already serves a significant portion of Cloudflare's network traffic. The new proxy is faster, more memory-safe, and designed to evolve our cache architecture. It delivers immediate performance improvements and enables new caching capabilities.
+Cloudflare's cache now runs on a new proxy built on [Pingora ↗︎](https://github.com/cloudflare/pingora), the Rust-based framework that already serves a significant portion of Cloudflare's network traffic. The new proxy is faster, more memory-safe, and designed to evolve our cache architecture. It delivers immediate performance improvements and enables new caching capabilities.
 
 #### What this brings
 
@@ -132,16 +132,16 @@ Cloudflare's cache now runs on a new proxy built on [Pingora ↗](https://github
 
 The new architecture introduces the following behavioral changes to improve RFC compliance and correctness:
 
-- **`Vary: *` results in cache bypass**: According to [RFC 9110 Section 12.5.5 ↗](https://httpwg.org/specs/rfc9110.html#field.vary), a `Vary` header value of `*` indicates the response varies on factors beyond request headers and must not be served from cache. Cloudflare now bypasses cache for these responses instead of storing them.
+- **`Vary: *` results in cache bypass**: According to [RFC 9110 Section 12.5.5 ↗︎](https://httpwg.org/specs/rfc9110.html#field.vary), a `Vary` header value of `*` indicates the response varies on factors beyond request headers and must not be served from cache. Cloudflare now bypasses cache for these responses instead of storing them.
 - **`Set-Cookie` stripped on MISS and EXPIRED**: For cacheable assets, `Set-Cookie` is now stripped on MISS and EXPIRED responses, not only on HITs.
 - **Floating-point TTL values**: Floating-point time-to-live values (for example, `max-age=1.5`) are rounded down to the nearest integer instead of being rejected as invalid.
 
 #### What's next
 
-A deeper look at the new cache proxy is coming soon to the [Cloudflare blog ↗](https://blog.cloudflare.com/). For background on the underlying framework, read:
+A deeper look at the new cache proxy is coming soon to the [Cloudflare blog ↗︎](https://blog.cloudflare.com/). For background on the underlying framework, read:
 
-- [Open sourcing Pingora: our Rust framework for building programmable network services ↗](https://blog.cloudflare.com/pingora-open-source/)
-- [How we built Pingora, the proxy that connects Cloudflare to the Internet ↗](https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/)
+- [Open sourcing Pingora: our Rust framework for building programmable network services ↗︎](https://blog.cloudflare.com/pingora-open-source/)
+- [How we built Pingora, the proxy that connects Cloudflare to the Internet ↗︎](https://blog.cloudflare.com/how-we-built-pingora-the-proxy-that-connects-cloudflare-to-the-internet/)
 
 ## 2026-04-27
 
@@ -164,7 +164,7 @@ Cache Response Rules are now fully integrated with Version Management. You can c
 
 #### Get started
 
-Configure Cache Response Rules in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** > **Cache Rules**, or via the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). For more details, refer to the [Cache Response Rules documentation](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) and the [Version Management documentation](https://developers.cloudflare.com/version-management/).
+Configure Cache Response Rules in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** > **Cache Rules**, or via the [Rulesets API](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). For more details, refer to the [Cache Response Rules documentation](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) and the [Version Management documentation](https://developers.cloudflare.com/version-management/).
 
 ## 2026-04-17
 
@@ -212,7 +212,7 @@ Cache Rules previously only operated on request attributes. Cache Response Rules
 
 #### Get started
 
-Configure Cache Response Rules in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** > **Cache Rules**, or via the [Rulesets API ↗](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). For more details, refer to the [Cache Rules documentation ↗](https://developers.cloudflare.com/cache/how-to/cache-response-rules/).
+Configure Cache Response Rules in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) under **Caching** > **Cache Rules**, or via the [Rulesets API ↗︎](https://developers.cloudflare.com/ruleset-engine/rulesets-api/). For more details, refer to the [Cache Rules documentation ↗︎](https://developers.cloudflare.com/cache/how-to/cache-response-rules/).
 
 ## 2026-02-26
 
@@ -405,7 +405,7 @@ You can now access all Cloudflare cache purge methods — no matter which plan y
 4. [Purge by URL (single-file purge)](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-single-file/): Precisely targets individual URLs.
 5. [Purge by Tag](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/): Uses Cache-Tag response headers to invalidate grouped assets, offering flexibility for complex cache management scenarios.
 
-Want to learn how each purge method works, when to use them, or what limits apply to your plan? Dive into our [purge cache documentation](https://developers.cloudflare.com/cache/how-to/purge-cache/) and [API reference ↗](https://developers.cloudflare.com/api/resources/cache/methods/purge/) for all the details.
+Want to learn how each purge method works, when to use them, or what limits apply to your plan? Dive into our [purge cache documentation](https://developers.cloudflare.com/cache/how-to/purge-cache/) and [API reference ↗︎](https://developers.cloudflare.com/api/resources/cache/methods/purge/) for all the details.
 
 ## 2025-02-12
 
@@ -432,7 +432,7 @@ HTTP/2 multiplexing allows multiple requests to be sent over a single TCP connec
 
 #### Get started
 
-Enterprise customers can configure HTTP/2 multiplexing settings in the [Cloudflare Dashboard ↗](https://dash.cloudflare.com/) or through our [API](https://developers.cloudflare.com/api/).
+Enterprise customers can configure HTTP/2 multiplexing settings in the [Cloudflare Dashboard ↗︎](https://dash.cloudflare.com/) or through our [API](https://developers.cloudflare.com/api/).
 
 Important consideration
 
@@ -447,7 +447,7 @@ You can now implement our **child safety tooling**, the **[CSAM Scanning Tool](h
 
 **How It Works**
 
-When enabled, the tool automatically [hashes images for enabled websites as they enter the Cloudflare cache ↗](https://blog.cloudflare.com/the-csam-scanning-tool/). These hashes are then checked against a database of **known abusive images**.
+When enabled, the tool automatically [hashes images for enabled websites as they enter the Cloudflare cache ↗︎](https://blog.cloudflare.com/the-csam-scanning-tool/). These hashes are then checked against a database of **known abusive images**.
 
 - **Potential match detected?**
   - The **content URL is blocked**, and
@@ -455,7 +455,7 @@ When enabled, the tool automatically [hashes images for enabled websites as they
 
 **Updated Service-Specific Terms**
 
-We have also made updates to our **[Service-Specific Terms ↗](https://www.cloudflare.com/service-specific-terms-application-services/#csam-scanning-tool-terms)** to reflect these changes.
+We have also made updates to our **[Service-Specific Terms ↗︎](https://www.cloudflare.com/service-specific-terms-application-services/#csam-scanning-tool-terms)** to reflect these changes.
 
 ## 2025-01-08
 
@@ -618,7 +618,7 @@ You can now create optimized cache rules instantly with **one-click templates**,
 
 #### Get started
 
-To get started, go to [**Rules > Templates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) in the dashboard. For more information, refer to the [Cache Rules documentation](https://developers.cloudflare.com/cache/how-to/cache-rules/).
+To get started, go to [**Rules > Templates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/caching/cache-rules) in the dashboard. For more information, refer to the [Cache Rules documentation](https://developers.cloudflare.com/cache/how-to/cache-rules/).
 
 ## 2024-07-19
 

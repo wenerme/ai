@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/tutorials/add-a-react-form-with-formspree/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Almost every React website needs a form to collect user data. [Formspree ↗](https://formspree.io/) is a back-end service that handles form processing and storage, allowing developers to include forms on their website without writing server-side code or functions.
+Almost every React website needs a form to collect user data. [Formspree ↗︎](https://formspree.io/) is a back-end service that handles form processing and storage, allowing developers to include forms on their website without writing server-side code or functions.
 
 In this tutorial, you will create a `<form>` component using React and add it to a single page application built with `create-react-app`. Though you are using `create-react-app` (CRA), the concepts will apply to any React framework including Next.js, Gatsby, and more. You will use Formspree to collect the submitted data and send out email notifications when new submissions arrive, without requiring any server-side coding.
 
@@ -22,7 +22,7 @@ You will deploy your site to Cloudflare Pages. Refer to the [Get started guide](
 
 ## Setup
 
-To begin, create a new React project on your local machine with `create-react-app`. Then create a [new GitHub repository ↗](https://repo.new/), and attach the GitHub location as a remote destination:
+To begin, create a new React project on your local machine with `create-react-app`. Then create a [new GitHub repository ↗︎](https://repo.new/), and attach the GitHub location as a remote destination:
 
 ```sh
 # create new project with create-react-app
@@ -52,7 +52,7 @@ project-root/
    └─ ...
 ```
 
-Next, you will build the form component using a helper library from Formspree, [`@formspree/react` ↗](https://github.com/formspree/formspree-react). This library contains a `useForm` hook to simplify the process of handling form submission events and managing form state.
+Next, you will build the form component using a helper library from Formspree, [`@formspree/react` ↗︎](https://github.com/formspree/formspree-react). This library contains a `useForm` hook to simplify the process of handling form submission events and managing form state.
 
 Install it with:
 
@@ -113,11 +113,11 @@ Currently, the form contains a placeholder `YOUR_FORM_ID`. You replace this with
 
 The `useForm` hook returns a `state` object and a `handleSubmit` function which you pass to the `onSubmit` form attribute. Combined, these provide a way to submit the form data via AJAX and update form state depending on the response received.
 
-For clarity, this form does not include any styling, but in the GitHub project ([https://github.com/formspree/formspree-example-cloudflare-react ↗](https://github.com/formspree/formspree-example-cloudflare-react)) you can review an example of how to apply styles to the form.
+For clarity, this form does not include any styling, but in the GitHub project ([https://github.com/formspree/formspree-example-cloudflare-react ↗︎](https://github.com/formspree/formspree-example-cloudflare-react)) you can review an example of how to apply styles to the form.
 
 Note
 
-`ValidationError` components are helpers that display error messages for field errors, or general form errors (if no `field` attribute is provided). For more information on validation, refer to the [Formspree React documentation ↗](https://help.formspree.io/hc/en-us/articles/360055613373-The-Formspree-React-library#validation).
+`ValidationError` components are helpers that display error messages for field errors, or general form errors (if no `field` attribute is provided). For more information on validation, refer to the [Formspree React documentation ↗︎](https://help.formspree.io/hc/en-us/articles/360055613373-The-Formspree-React-library#validation).
 
 To add this form to your website, import the component:
 
@@ -169,13 +169,13 @@ Now you have a single-page application containing a Contact Us form with several
 
 GitHub repository
 
-The source code for this example is [available on GitHub ↗](https://github.com/formspree/formspree-example-cloudflare-react). It is a live Pages application with a [live demo ↗](https://formspree-example-cloudflare-react.pages.dev/) available, too.
+The source code for this example is [available on GitHub ↗︎](https://github.com/formspree/formspree-example-cloudflare-react). It is a live Pages application with a [live demo ↗︎](https://formspree-example-cloudflare-react.pages.dev/) available, too.
 
 ## The Formspree back end
 
 The React form is complete, however, when the user submits this form, they will get a `Form not found` error. To fix this, create a new Formspree form, and copy its unique ID into the form's `useForm` invocation.
 
-To create a Formspree form, sign up for [an account on Formspree ↗](https://formspree.io/register). Then create a new form with the **+ New form** button. Name your new form `Contact-us form` and update the recipient email to an email where you wish to receive your form submissions. Finally, select **Create Form**.
+To create a Formspree form, sign up for [an account on Formspree ↗︎](https://formspree.io/register). Then create a new form with the **+ New form** button. Name your new form `Contact-us form` and update the recipient email to an email where you wish to receive your form submissions. Finally, select **Create Form**.
 
 ![Creating a Formspree form](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=500,height=479,format=webp/_astro/new-form-dialog.0SL1Ns7t.png)
 
@@ -191,15 +191,15 @@ const [state, handleSubmit] = useForm("mqldaqwx");
 /* replace the random-like string above with your own form's ID */
 ```
 
-Now when you submit your form, you should be shown a Thank You message. The form data will be submitted to your account on [Formspree.io ↗](https://formspree.io/).
+Now when you submit your form, you should be shown a Thank You message. The form data will be submitted to your account on [Formspree.io ↗︎](https://formspree.io/).
 
-From here you can adjust your form processing logic to update the [notification email address ↗](https://help.formspree.io/hc/en-us/articles/115008379348-Changing-a-form-email-address), or add plugins like [Google Sheets ↗](https://help.formspree.io/hc/en-us/articles/360036563573-Use-Google-Sheets-to-send-your-submissions-to-a-spreadsheet), [Slack ↗](https://help.formspree.io/hc/en-us/articles/360045648933-Send-Slack-notifications), and more.
+From here you can adjust your form processing logic to update the [notification email address ↗︎](https://help.formspree.io/hc/en-us/articles/115008379348-Changing-a-form-email-address), or add plugins like [Google Sheets ↗︎](https://help.formspree.io/hc/en-us/articles/360036563573-Use-Google-Sheets-to-send-your-submissions-to-a-spreadsheet), [Slack ↗︎](https://help.formspree.io/hc/en-us/articles/360045648933-Send-Slack-notifications), and more.
 
 For more help setting up Formspree, refer to the following resources:
 
-- For general help with Formspree, refer to the [Formspree help site ↗](https://help.formspree.io/hc/en-us).
-- For more help creating forms in React, refer to the [formspree-react documentation ↗](https://help.formspree.io/hc/en-us/articles/360055613373-The-Formspree-React-library)
-- For tips on integrating Formspree with popular platforms like Next.js, Gatsby and Eleventy, refer to the [Formspree guides ↗](https://formspree.io/guides).
+- For general help with Formspree, refer to the [Formspree help site ↗︎](https://help.formspree.io/hc/en-us).
+- For more help creating forms in React, refer to the [formspree-react documentation ↗︎](https://help.formspree.io/hc/en-us/articles/360055613373-The-Formspree-React-library)
+- For tips on integrating Formspree with popular platforms like Next.js, Gatsby and Eleventy, refer to the [Formspree guides ↗︎](https://formspree.io/guides).
 
 ## Deployment
 
@@ -232,7 +232,7 @@ After selecting **Save and Deploy**, your Pages project will begin its first dep
 
 Sometimes it is helpful to set up two forms, one for development, and one for production. That way you can develop and test your form without corrupting your production dataset, or sending test notifications to clients.
 
-To set up production and development forms first create a second form in Formspree. Name this form Contact Us Testing, and note the form's [`hashid` ↗](https://help.formspree.io/hc/en-us/articles/360015130174-Getting-your-form-s-hashid-).
+To set up production and development forms first create a second form in Formspree. Name this form Contact Us Testing, and note the form's [`hashid` ↗︎](https://help.formspree.io/hc/en-us/articles/360015130174-Getting-your-form-s-hashid-).
 
 Then change the `useForm` hook in your `ContactForm.js` file so that it is initialized with an environment variable, rather than a string:
 
@@ -252,7 +252,7 @@ Create React App uses the prefix `REACT_APP_` to designate environment variables
 
 In this tutorial, you built and deployed a website using Cloudflare Pages and Formspree to handle form submissions. You created a React application with a form that communicates with Formspree to process and store submission requests and send notifications.
 
-If you would like to review the full source code for this application, you can find it on [GitHub ↗](https://github.com/formspree/formspree-example-cloudflare-react).
+If you would like to review the full source code for this application, you can find it on [GitHub ↗︎](https://github.com/formspree/formspree-example-cloudflare-react).
 
 ## Related resources
 

@@ -28,13 +28,13 @@ The speed of loading web content, from the user’s perspective, is dependent on
 
 With Enhanced HTTP/2 Prioritization, Cloudflare overrides the default browser behavior to optimize the order of resource delivery, independent of the browser. The greatest improvements will be experienced by visitors using Safari and Edge browsers.
 
-For more details, refer to [the introductory blog post ↗](https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web/).
+For more details, refer to [the introductory blog post ↗︎](https://blog.cloudflare.com/better-http-2-prioritization-for-a-faster-web/).
 
 ## Enable Enhanced HTTP/2 Prioritization
 
 To enable **Enhanced HTTP/2 Prioritization** in the Cloudflare dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Select your account and zone.
 3. Go to **Speed** > **Settings**.
 4. Go to **Protocol Optimization**.

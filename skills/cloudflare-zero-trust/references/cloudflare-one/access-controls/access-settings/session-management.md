@@ -48,7 +48,7 @@ The global session duration determines how often Cloudflare Access prompts the u
 
 To set the global session duration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**.
 2. Under **Set your global session duration**, select **Edit**,
 3. Select the desired timeout duration from the dropdown menu.
 4. Select **Save**.
@@ -63,7 +63,7 @@ By default, the policy session duration is equal to the [application session dur
 
 To set the policy session duration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Choose a policy and select **Configure**.
 3. Select a **Session Duration** from the dropdown menu.
 4. Save the policy.
@@ -76,7 +76,7 @@ The application session duration is the default [policy session duration](#polic
 
 To set the application session duration:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Choose an application and select **Configure**.
 3. Select a **Session Duration** from the dropdown menu.
 4. Save the application.
@@ -101,7 +101,7 @@ By default, failed Cloudflare One Client authentication requests return a `302` 
 
 To enable this behavior:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**.
 2. Under **Cloudflare One Client authentication**, ensure that **Enable authentication using the Cloudflare One Client session** is turned on.
 3. Turn on **Return 401 response for non-browser traffic**.
 
@@ -159,7 +159,7 @@ Access provides two options for revoking user sessions: per-application and per-
 
 To immediately terminate all active sessions for a specific application:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the application for which you would like to revoke active sessions and select **Configure**.
 3. Select **Revoke existing tokens**.
 
@@ -172,7 +172,7 @@ Access can immediately revoke a single user session across all applications in y
 If you want to permanently revoke a user's access:
 
 1. Disable their account in your identity provider so that they cannot authenticate.
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Users**.
+2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Users**.
 3. Select the checkbox next to the user you want to revoke.
 4. Select **Action** > **Revoke**.
 

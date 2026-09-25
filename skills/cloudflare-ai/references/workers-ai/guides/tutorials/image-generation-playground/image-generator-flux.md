@@ -18,7 +18,7 @@ The new flux models on Workers AI are our most powerful text-to-image AI models 
 
 There are many businesses being built on top of AI image generation models. Using Workers AI, you can get access to the best models in the industry without having to worry about inference, ops, or deployment. We provide the API for AI image generation, and in a couple of seconds get an image back.
 
-Refer to the AI Image Playground [GitHub repository ↗](https://github.com/kristianfreeman/workers-ai-image-playground) to follow along locally.
+Refer to the AI Image Playground [GitHub repository ↗︎](https://github.com/kristianfreeman/workers-ai-image-playground) to follow along locally.
 
 <details>
 

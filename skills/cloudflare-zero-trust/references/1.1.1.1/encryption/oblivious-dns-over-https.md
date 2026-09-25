@@ -18,7 +18,7 @@ With standard [DNS over HTTPS (DoH)](https://developers.cloudflare.com/1.1.1.1/e
 
 Caution
 
-ODoH is defined in [RFC 9230 ↗](https://www.rfc-editor.org/rfc/rfc9230.html). This RFC is experimental and is not endorsed by the IETF.
+ODoH is defined in [RFC 9230 ↗︎](https://www.rfc-editor.org/rfc/rfc9230.html). This RFC is experimental and is not endorsed by the IETF.
 
 ## How ODoH works
 
@@ -35,19 +35,19 @@ Because the query is encrypted before it reaches the proxy, and the target never
 
 This means that, as long as the proxy and the target do not collude, no single entity can have access to both the DNS messages and the client IP address at the same time. Clients are in complete control of proxy and target selection, so you can choose a proxy and target operated by different organizations to reduce collusion risk.
 
-Clients encrypt their query for the target using Hybrid Public Key Encryption ([HPKE ↗](https://blog.cloudflare.com/hybrid-public-key-encryption/)), a standard for encrypting messages to a recipient using their public key. A target's public key is obtained via DNS, where it is bundled into an HTTPS resource record and protected by DNSSEC.
+Clients encrypt their query for the target using Hybrid Public Key Encryption ([HPKE ↗︎](https://blog.cloudflare.com/hybrid-public-key-encryption/)), a standard for encrypting messages to a recipient using their public key. A target's public key is obtained via DNS, where it is bundled into an HTTPS resource record and protected by DNSSEC.
 
 ## Cloudflare and third-party products
 
 Cloudflare 1.1.1.1 supports ODoH by acting as a target that can be reached at `odoh.cloudflare-dns.com`.
 
-To make ODoH queries you can use open source clients such as [dnscrypt-proxy ↗](https://github.com/DNSCrypt/dnscrypt-proxy).
+To make ODoH queries you can use open source clients such as [dnscrypt-proxy ↗︎](https://github.com/DNSCrypt/dnscrypt-proxy).
 
-[iCloud Private Relay ↗](https://support.apple.com/102602) uses similar privacy-separation principles and uses [Cloudflare as one of their partners ↗](https://blog.cloudflare.com/icloud-private-relay/).
+[iCloud Private Relay ↗︎](https://support.apple.com/102602) uses similar privacy-separation principles and uses [Cloudflare as one of their partners ↗︎](https://blog.cloudflare.com/icloud-private-relay/).
 
 ## Related resources
 
-- [HPKE: Standardizing public-key encryption ↗](https://blog.cloudflare.com/hybrid-public-key-encryption/) blog post
+- [HPKE: Standardizing public-key encryption ↗︎](https://blog.cloudflare.com/hybrid-public-key-encryption/) blog post
 - [Privacy Gateway](https://developers.cloudflare.com/privacy-gateway/)
 
 Was this helpful?

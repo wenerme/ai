@@ -22,7 +22,7 @@ Email security allows you to use popular, regular, and advanced screening criter
 
 To screen through your email traffic:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **Investigation**, then **Run new screen**.
 4. Choose between **Popular**, **Regular**, and **Advanced** screen methods. Refer to the explanation below to learn what each method does.
@@ -87,7 +87,7 @@ Moving messages allows you to move messages to a specific folder. You can move u
 
 To move messages:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security**, and select **Investigation**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Email security**, and select **Investigation**.
 2. On the Investigation page, select all the messages you want to move.
 3. Select the **Action** dropdown, then select **Move**.
 4. Select among one of the following folders:
@@ -106,7 +106,7 @@ Each detection has an Email Detection Fingerprint (EDF) hash that Email security
 
 To find similar detection results:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security**, and select **Investigation**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Email security**, and select **Investigation**.
 2. On the Investigation page, under **Your matching messages**, search for the **Similar emails** column.
 3. Select the number of similar emails. Selecting the number will show you a list of similar emails.
 
@@ -116,7 +116,7 @@ With Email security, you can export messages to a CSV file.
 
 To export messages:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security**, and select **Investigation**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Email security**, and select **Investigation**.
 2. On the Investigation page, under **Your matching messages**, select **Export to CSV**.
 3. Select **Export messages** on the pop-up message. You can export up to 500 messages from the dashboard. To export up to 1,000 matching messages, use the [API](https://developers.cloudflare.com/api/resources/email_security/subresources/investigate/methods/get/).
 
@@ -128,7 +128,7 @@ Email security allows you to review the status and actions of each email.
 
 To view status and actions for each email:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security**, and select **Investigation**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Email security**, and select **Investigation**.
 2. On the Investigation page, select the three dots.
 3. Selecting the three dots will show you the following options:
 
@@ -158,11 +158,11 @@ Email security shows you the following email detail information:
 Email security displays the following details:
 
 1. **Threat type**: Threat type of the email, for example, [credential harvester](https://developers.cloudflare.com/cloudflare-one/email-security/reference/how-es-detects-phish/), and [IP-based spam](https://developers.cloudflare.com/cloudflare-one/email-security/reference/how-es-detects-phish/).
-2. **Validation**: Email validation methods [SPF ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/), [DKIM ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/), [DMARC ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/). The dashboard will display Pass if SPF, DKIM and DMARC checks have passed.
+2. **Validation**: Email validation methods [SPF ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/), [DKIM ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/), [DMARC ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-dmarc-record/). The dashboard will display Pass if SPF, DKIM and DMARC checks have passed.
 3. **Sender details**: Information include:
    - IP address
    - Registered domain
-   - Autonomous sys number: This number identifies your [autonomous system (AS) ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/).
+   - Autonomous sys number: This number identifies your [autonomous system (AS) ↗︎](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/).
    - Autonomous sys name: This name identifies your autonomous system (AS).
    - Country
 4. **Links identified**: A list of malicious links identified by Email security. Refer to [Open links](#open-links) to open links in Security Center, Browser Isolation or an external tool of your choice.
@@ -187,7 +187,7 @@ Browser Isolation eliminates any risk of your device being compromised by openin
 
 To open links in Security Center:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Email security** > **Investigation**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Email security** > **Investigation**.
 2. Locate the message you want to open links for, select the three dots, then select **View details**.
 3. Under **Details**, go to **Links identified**.
 4. Locate the link you want to open, and select **Open in Security Center**.
@@ -197,7 +197,7 @@ To open links in Security Center:
 
 To open links in Browser Isolation:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Email security** > **Investigation**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Email security** > **Investigation**.
 2. Locate the message you want to open links for, select the three dots, then select **View details**.
 3. Under **Details**, go to **Links identified**.
 4. Locate the link you want to open, and select **Open in Browser Isolation**.
@@ -213,7 +213,7 @@ If you purchased Gateway and [Browser Isolation](https://developers.cloudflare.c
 
 To open and investigate a link in an external tool:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Email security** > **Investigation**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Email security** > **Investigation**.
 2. Locate the message you want to open links for, select the three dots, then select **View details**.
 3. Under **Details**, go to **Links identified**.
 4. Locate the link you want to open, and select **Copy URL**.
@@ -225,7 +225,7 @@ You may encounter a `400 Bad Request` error after turning Clientless Web Isolati
 
 If you encounter this error:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Settings** > **Resources**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Settings** > **Resources**.
 2. Select **Generate certificate**.
 3. Choose the **Expiration** (5 years is recommended), then select **Generate certificate**. Your certificate is now generated, and the dashboard will display its Deployment Status as INACTIVE.
 4. Select the three dots, and then select **Activate** to activate your certificate.

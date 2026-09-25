@@ -24,7 +24,7 @@ A website owner blocked your request based on your client's web browser.
 
 ### Resolution
 
-Notify the website owner of the blocking. If you cannot determine how to contact the website owner, lookup contact information for the domain via the [Whois database ↗](https://lookup.icann.org/). Site owners can [turn off Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/#disable-browser-integrity-check) in the Security **Settings** page.
+Notify the website owner of the blocking. If you cannot determine how to contact the website owner, lookup contact information for the domain via the [Whois database ↗︎](https://lookup.icann.org/). Site owners can [turn off Browser Integrity Check](https://developers.cloudflare.com/waf/tools/browser-integrity-check/#disable-browser-integrity-check) in the Security **Settings** page.
 
 Note
 

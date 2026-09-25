@@ -24,7 +24,7 @@ Client-side `cloudflared` can be used in conjunction with [the Cloudflare One Cl
 2. In the Cloudflare dashboard, go to **Networking** > **Tunnels** and select your tunnel. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 3. On the **Routes** tab, select **Add route**, then select **Published application**.
 4. Choose a domain from the drop-down menu and specify any subdomain (for example, `rdp.example.com`).
-5. For **Service**, select *RDP* and enter the [RDP listening port ↗](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/change-listening-port) of your server (for example, `localhost:3389`). It will likely be port `3389`.
+5. For **Service**, select *RDP* and enter the [RDP listening port ↗︎](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/clients/change-listening-port) of your server (for example, `localhost:3389`). It will likely be port `3389`.
 6. Select **Add route**.
 
 ## 2. (Recommended) Create an Access application

@@ -28,8 +28,8 @@ You can set up External Evaluation rules using any API service, but to get start
 ### Prerequisites
 
 - [Workers account](https://developers.cloudflare.com/workers/get-started/guide/)
-- Install [npm ↗](https://docs.npmjs.com/getting-started)
-- Install [Node.js ↗](https://nodejs.org/en/)
+- Install [npm ↗︎](https://docs.npmjs.com/getting-started)
+- Install [Node.js ↗︎](https://nodejs.org/en/)
 - Application protected by Access
 
 ### 1. Create a new Worker
@@ -73,7 +73,7 @@ You can set up External Evaluation rules using any API service, but to get start
   "name": "my-worker",
   "workers_dev": true,
   // Set this to today's date
-  "compatibility_date": "2026-09-22",
+  "compatibility_date": "2026-09-25",
   "main": "index.js",
   "kv_namespaces": [
     {
@@ -93,7 +93,7 @@ You can set up External Evaluation rules using any API service, but to get start
 name = "my-worker"
 workers_dev = true
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "index.js"
 
 [[kv_namespaces]]
@@ -111,7 +111,7 @@ DEBUG = false
 
 Note
 
-- Sample code is available in our [GitHub repository ↗](https://github.com/cloudflare/workers-access-external-auth-example).
+- Sample code is available in our [GitHub repository ↗︎](https://github.com/cloudflare/workers-access-external-auth-example).
 - To view a list of identity-based data fields, log in to your Access application and append `/cdn-cgi/access/get-identity` to the URL. For example, if `www.example.com` is behind Access, visit `https://www.example.com/cdn-cgi/access/get-identity`.
 
 2. Deploy the Worker to Cloudflare's global network.
@@ -137,7 +137,7 @@ Other key formats (such as DSA) are not supported at this time.
 
 ### 4. Create an External Evaluation rule
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Policies**.
 2. Edit an existing policy or select **Add a policy**.
 3. Add the following rule to your policy:
 
@@ -181,7 +181,7 @@ To debug your External Evaluation rule:
 5. Log in to your Access application.
 
    The session logs should show an incoming and outgoing JWT. The incoming JWT was sent by Access to the Worker API, while the outgoing JWT was sent by the Worker back to Access.
-6. To decode the contents of a JWT, you can copy the token into [jwt.io ↗](https://jwt.io/).
+6. To decode the contents of a JWT, you can copy the token into [jwt.io ↗︎](https://jwt.io/).
 
    The incoming JWT should contain the user's identity data. The outgoing JWT should look similar to:
 

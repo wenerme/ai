@@ -67,7 +67,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "zone_level_http_ddos_config" {
@@ -182,7 +182,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "account_level_network_ddos_config" {
@@ -273,7 +273,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "zone_level_http_ddos_config" {

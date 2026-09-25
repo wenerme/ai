@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Terraform ships as a single binary file. The examples below include installation information for popular operating systems.
 
-For official instructions on installing Terraform, refer to [Install Terraform ↗](https://developer.hashicorp.com/terraform/tutorials/certification-associate-tutorials/install-cli).
+For official instructions on installing Terraform, refer to [Install Terraform ↗︎](https://developer.hashicorp.com/terraform/tutorials/certification-associate-tutorials/install-cli).
 
 Caution
 
@@ -66,12 +66,12 @@ Terraform v1.4.5
 
 ## Windows
 
-1. Download the 32 or 64-bit executable from the [Download Terraform ↗](https://developer.hashicorp.com/terraform/downloads) page.
+1. Download the 32 or 64-bit executable from the [Download Terraform ↗︎](https://developer.hashicorp.com/terraform/downloads) page.
 2. Unzip and place `terraform.exe` somewhere in your path.
 
 ## Other
 
-For additional installers, refer to the [Download Terraform ↗](https://developer.hashicorp.com/terraform/downloads) page.
+For additional installers, refer to the [Download Terraform ↗︎](https://developer.hashicorp.com/terraform/downloads) page.
 
 Was this helpful?
 

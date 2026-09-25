@@ -64,7 +64,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "zone_custom_firewall" {
@@ -130,7 +130,7 @@ All of the following <a href="https://developers.cloudflare.com/fundamentals/api
 
 </details>
 
-Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "account_firewall_custom_ruleset" {
@@ -187,7 +187,7 @@ All of the following <a href="https://developers.cloudflare.com/fundamentals/api
 
 </details>
 
-Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "account_firewall_custom_entrypoint" {

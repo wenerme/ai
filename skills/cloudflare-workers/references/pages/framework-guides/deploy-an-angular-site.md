@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-angular-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Angular ↗](https://angular.io/) is an incredibly popular framework for building reactive and powerful front-end applications.
+[Angular ↗︎](https://angular.io/) is an incredibly popular framework for building reactive and powerful front-end applications.
 
 In this guide, you will create a new Angular application and deploy it using Cloudflare Pages.
 
 ## Create a new project using the `create-cloudflare` CLI (C3)
 
-Use the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Angular's official setup tool, and provide the option to deploy instantly.
+Use the [`create-cloudflare` ↗︎](https://www.npmjs.com/package/create-cloudflare) CLI (C3) to set up a new project. C3 will create a new project directory, initiate Angular's official setup tool, and provide the option to deploy instantly.
 
 To use `create-cloudflare` to create a new Angular project, run the following command:
 
@@ -52,11 +52,11 @@ Git integration
 
 Currently, you cannot add Git integration to existing Pages applications. If you have already deployed your application, you need to create a new Pages application in order to add Git integration to it.
 
-Setup requires a basic understanding of [Git ↗](https://git-scm.com/). If you are new to Git, refer to GitHub's [summarized Git handbook ↗](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
+Setup requires a basic understanding of [Git ↗︎](https://git-scm.com/). If you are new to Git, refer to GitHub's [summarized Git handbook ↗︎](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
 
 ### Create a GitHub repository
 
-Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
+Create a new GitHub repository by visiting [repo.new ↗︎](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
 
 

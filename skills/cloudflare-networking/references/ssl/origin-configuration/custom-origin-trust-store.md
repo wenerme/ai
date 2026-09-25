@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/custom-origin-trust-store/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-By default, Cloudflare's global network maintains [a list of publicly trusted certificate authorities ↗](https://github.com/cloudflare/cfssl_trust). This means that when using [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/), Cloudflare will only trust origin server certificates issued by a CA included in this trust store.
+By default, Cloudflare's global network maintains [a list of publicly trusted certificate authorities ↗︎](https://github.com/cloudflare/cfssl_trust). This means that when using [Full (strict) encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/full-strict/), Cloudflare will only trust origin server certificates issued by a CA included in this trust store.
 
 Custom Origin Trust Store allows you to upload certificate authorities (CAs) that Cloudflare will use to authenticate connections to your origin server. Use this feature to override the default trust store with your preferred CA or CAs.
 

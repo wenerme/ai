@@ -20,7 +20,7 @@ A remotely-managed tunnel only requires a token to run. Anyone with the token ca
 
 To get the token for a remotely-managed tunnel:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select your tunnel.
 3. Select **Add a replica**.
 4. Copy the `cloudflared` installation command into a text editor (do not run the command). The token is the `eyJ...` string.
@@ -53,7 +53,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cfd_tunnel/$TUNN
 
 Rotate tokens regularly to reduce the risk of compromise. For tunnels with multiple [replicas](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability), rotate outside working hours and update replicas in batches.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select your tunnel.
 3. Select **Rotate token**. After rotating the token, `cloudflared` cannot establish new connections with the old token. Existing connectors remain active until restarted.
 4. Select **Add replica** and copy the new `cloudflared` installation command.

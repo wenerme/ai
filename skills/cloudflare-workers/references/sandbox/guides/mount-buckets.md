@@ -22,7 +22,7 @@ Mounting a bucket at `/workspace` or a subpath under it can be confusing in app 
 
 S3-compatible providers
 
-The SDK works with any S3-compatible object storage provider. Examples include Cloudflare R2, Amazon S3, Google Cloud Storage, Backblaze B2, MinIO, and [many others ↗](https://github.com/s3fs-fuse/s3fs-fuse/wiki/Non-Amazon-S3). The SDK automatically detects and optimizes for R2, S3, and GCS.
+The SDK works with any S3-compatible object storage provider. Examples include Cloudflare R2, Amazon S3, Google Cloud Storage, Backblaze B2, MinIO, and [many others ↗︎](https://github.com/s3fs-fuse/s3fs-fuse/wiki/Non-Amazon-S3). The SDK automatically detects and optimizes for R2, S3, and GCS.
 
 ## Production prerequisites for R2 binding mounts
 
@@ -183,7 +183,7 @@ When you mount with explicit credentials, s3fs writes those credentials to a pas
 
 Set `credentialProxy: true` to keep credentials out of the container entirely. Instead of passing real credentials into the container, the Durable Object intercepts all outbound S3 requests at the network layer, re-signs them with the real credentials, and forwards them upstream. The container only ever holds dummy credentials that are useless outside the proxy.
 
-This works with [AWS SigV4 ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) signing for S3-compatible endpoints (including R2) and HMAC signing for Google Cloud Storage. It is recommended to set `credentialProxy: true` for all endpoint mounts. The option defaults to `false` for backwards compatibility and will become the default in a future version of the Sandbox SDK.
+This works with [AWS SigV4 ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html) signing for S3-compatible endpoints (including R2) and HMAC signing for Google Cloud Storage. It is recommended to set `credentialProxy: true` for all endpoint mounts. The option defaults to `false` for backwards compatibility and will become the default in a future version of the Sandbox SDK.
 
 ```js
 await sandbox.mountBucket("my-bucket", "/data", {
@@ -487,7 +487,7 @@ await sandbox.mountBucket('my-bucket', '/data', {
 });
 ```
 
-For provider-specific configuration, see the [s3fs-fuse wiki ↗](https://github.com/s3fs-fuse/s3fs-fuse/wiki/Non-Amazon-S3) for supported providers and recommended flags.
+For provider-specific configuration, see the [s3fs-fuse wiki ↗︎](https://github.com/s3fs-fuse/s3fs-fuse/wiki/Non-Amazon-S3) for supported providers and recommended flags.
 
 ## Troubleshooting
 

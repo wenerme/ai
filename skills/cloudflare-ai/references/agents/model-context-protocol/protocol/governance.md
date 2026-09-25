@@ -30,7 +30,7 @@ Cloudflare Access logs MCP server requests and tool executions made through the 
 
 ## Remote MCP servers
 
-To maintain a modern security posture, Cloudflare recommends the use of [remote MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) over local installations. Running MCP servers locally introduces risks similar to unmanaged [shadow IT ↗](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), making it difficult to audit data flow or verify the integrity of the server code. Remote MCP servers give administrators visibility into what servers are being used, along with the ability to control who access them and what tools are authorized for employee use.
+To maintain a modern security posture, Cloudflare recommends the use of [remote MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) over local installations. Running MCP servers locally introduces risks similar to unmanaged [shadow IT ↗︎](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), making it difficult to audit data flow or verify the integrity of the server code. Remote MCP servers give administrators visibility into what servers are being used, along with the ability to control who access them and what tools are authorized for employee use.
 
 You can [build your remote MCP servers](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) directly on Cloudflare Workers. When both your [MCP server portal](#mcp-server-portals) and remote MCP servers run on Cloudflare's network, requests stay on the same infrastructure, minimizing latency and maximizing performance.
 

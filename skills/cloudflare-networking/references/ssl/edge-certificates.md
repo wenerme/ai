@@ -43,7 +43,7 @@ A cipher suite is a set of encryption algorithms that a visitor's browser and th
 
 With [cipher suites customization](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/), you can set different cipher suites per hostname. For example, you could allow broader compatibility on `www.example.com` for legacy devices while enforcing stricter [compliance standards](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/) on `shop.example.com`.
 
-Custom cipher suites apply to any edge certificate serving that hostname. To use this feature, you must [purchase the Advanced Certificate Manager add-on ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/acm/). Refer to [Customize cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) for setup instructions.
+Custom cipher suites apply to any edge certificate serving that hostname. To use this feature, you must [purchase the Advanced Certificate Manager add-on ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/acm/). Refer to [Customize cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/) for setup instructions.
 
 ### Automate domain control validation (DCV)
 

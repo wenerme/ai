@@ -26,7 +26,7 @@ Note
 
 This example Worker makes use of the [Node.js Buffer API](https://developers.cloudflare.com/workers/runtime-apis/nodejs/buffer/), which is available as part of the Workers runtime [Node.js compatibility mode](https://developers.cloudflare.com/workers/runtime-apis/nodejs/). To run this Worker, you will need to [enable the `nodejs_compat` compatibility flag](https://developers.cloudflare.com/workers/runtime-apis/nodejs/#get-started).
 
-You can both verify and generate signed requests from within a Worker using the [Web Crypto APIs ↗](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/subtle).
+You can both verify and generate signed requests from within a Worker using the [Web Crypto APIs ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Crypto/subtle).
 
 The following Worker will:
 

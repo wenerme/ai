@@ -452,7 +452,7 @@ new_sqlite_classes = [ "WebSocketHibernationServer" ]
 
 ### Related resources
 
-- [Durable Objects: Edge Chat Demo with Hibernation ↗](https://github.com/cloudflare/workers-chat-demo/).
+- [Durable Objects: Edge Chat Demo with Hibernation ↗︎](https://github.com/cloudflare/workers-chat-demo/).
 
 Was this helpful?
 

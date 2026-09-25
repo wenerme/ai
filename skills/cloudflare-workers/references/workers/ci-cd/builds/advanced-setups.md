@@ -18,24 +18,24 @@ Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 A monorepo is a single repository that contains multiple applications. This setup can be useful for a few reasons:
 
-- **Simplified dependency management**: Manage dependencies across all your workers and shared packages from a single place using tools like [pnpm workspaces ↗](https://pnpm.io/workspaces) and [syncpack ↗](https://syncpack.dev/).
+- **Simplified dependency management**: Manage dependencies across all your workers and shared packages from a single place using tools like [pnpm workspaces ↗︎](https://pnpm.io/workspaces) and [syncpack ↗︎](https://syncpack.dev/).
 - **Code sharing and reuse**: Easily create and share common logic, types, and utilities between workers by creating shared packages.
 - **Atomic commits**: Changes affecting multiple workers or shared libraries can be committed together, making the history easier to understand and reducing the risk of inconsistencies.
-- **Consistent tooling**: Apply the same build, test, linting, and formatting configurations (e.g., via [Turborepo ↗](https://turborepo.com) for task orchestration and shared configs in `packages/`) across all projects, ensuring consistent tooling and code quality across Workers.
+- **Consistent tooling**: Apply the same build, test, linting, and formatting configurations (e.g., via [Turborepo ↗︎](https://turborepo.com) for task orchestration and shared configs in `packages/`) across all projects, ensuring consistent tooling and code quality across Workers.
 - **Easier refactoring**: Refactoring code that spans multiple Workers or shared packages is significantly easier within a single repository.
 
 #### Example Workers monorepos:
 
-- [cloudflare/mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare)
-- [jahands/workers-monorepo-template ↗](https://github.com/jahands/workers-monorepo-template)
-- [cloudflare/templates ↗](https://github.com/cloudflare/templates)
-- [cloudflare/workers-sdk ↗](https://github.com/cloudflare/workers-sdk)
+- [cloudflare/mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare)
+- [jahands/workers-monorepo-template ↗︎](https://github.com/jahands/workers-monorepo-template)
+- [cloudflare/templates ↗︎](https://github.com/cloudflare/templates)
+- [cloudflare/workers-sdk ↗︎](https://github.com/cloudflare/workers-sdk)
 
 ### Getting Started
 
 To set up a monorepo workflow:
 
-1. Find the Workers associated with your project in the [Workers & Pages Dashboard ↗](https://dash.cloudflare.com).
+1. Find the Workers associated with your project in the [Workers & Pages Dashboard ↗︎](https://dash.cloudflare.com).
 2. Connect your monorepo to each Worker in the repository.
 3. Set the root directory for each Worker to specify the location of its `wrangler.jsonc` and where build and deploy commands should run.
 4. Optionally, configure unique build and deploy commands for each Worker.
@@ -47,7 +47,7 @@ When a new commit is made to the monorepo, a new build and deploy will trigger f
 
 In the example `ecommerce-monorepo`, a Workers project should be created for `product-service`, `order-service`, and `notification-service`.
 
-A Git connection to `ecommerce-monorepo` should be added in all of the Workers projects. If you are using a monorepo tool, such as [Turborepo ↗](https://turbo.build/), you can configure a different deploy command for each Worker, for example, `turbo deploy -F product-service`.
+A Git connection to `ecommerce-monorepo` should be added in all of the Workers projects. If you are using a monorepo tool, such as [Turborepo ↗︎](https://turbo.build/), you can configure a different deploy command for each Worker, for example, `turbo deploy -F product-service`.
 
 Set the root directory of each Worker to where its Wrangler configuration file is located. For example, for `product-service`, the root directory should be `/workers/product-service/`. Optionally, you can add [build watch paths](https://developers.cloudflare.com/workers/ci-cd/builds/build-watch-paths/) to optimize your builds.
 

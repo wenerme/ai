@@ -44,7 +44,7 @@ An example of a platform where users can deploy code at scale. Each snippet beco
 
 Build an [AI vibe coding platform](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/) where users describe what they want and AI generates and deploys working applications. Best for: AI-powered app builders, code generation tools, or internal platforms that empower teams to build applications & prototypes.
 
-[VibeSDK ↗](https://github.com/cloudflare/vibesdk) handles AI code generation, code execution in secure sandboxes, live previews, and deployment at scale.
+[VibeSDK ↗︎](https://github.com/cloudflare/vibesdk) handles AI code generation, code execution in secure sandboxes, live previews, and deployment at scale.
 
 [View demo](https://build.cloudflare.dev/) [View on GitHub](https://github.com/cloudflare/vibesdk)
 

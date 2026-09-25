@@ -27,11 +27,11 @@ You can map a named location in Microsoft Entra ID to a location associated with
 Make sure you have:
 
 - In Cloudflare, a Zero Trust Enterprise plan with [dedicated egress IPs](https://developers.cloudflare.com/cloudflare-one/traffic-policies/egress-policies/dedicated-egress-ips/)
-- In Microsoft 365, an organization managed with [Microsoft Entra ID ↗](https://learn.microsoft.com/en-us/entra/identity/)
+- In Microsoft 365, an organization managed with [Microsoft Entra ID ↗︎](https://learn.microsoft.com/en-us/entra/identity/)
 
 ## Create an egress policy in Cloudflare Gateway
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Traffic policies** > **Egress policies**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Traffic policies** > **Egress policies**.
 2. Select **Add a policy**.
 3. Name your policy, then add conditions to check users are configured in Microsoft Entra ID. For example, you can check for [identity conditions](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/):
 
@@ -53,7 +53,7 @@ Make sure you have:
 
 ## Create a named IP range location in Microsoft Entra ID
 
-1. Log in to the [Microsoft Azure portal ↗](https://aka.ms/azureportal).
+1. Log in to the [Microsoft Azure portal ↗︎](https://aka.ms/azureportal).
 2. In the sidebar, select **Microsoft Entra ID**.
 3. Go to **Security** > **Named locations**.
 4. Select **IP ranges location**.

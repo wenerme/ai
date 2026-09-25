@@ -53,7 +53,7 @@ For detailed instructions on creating a PAC file, refer to [Enable Gateway proxy
 
 - Avoid complex logic and nested conditions, as they might slow down processing time.
 - Place frequently accessed URLs and conditions at the top for faster processing.
-- Test your PAC file logic on multiple devices before deployment with tools such as an [online proxy PAC file tester ↗](https://thorsen.pm/proxyforurl).
+- Test your PAC file logic on multiple devices before deployment with tools such as an [online proxy PAC file tester ↗︎](https://thorsen.pm/proxyforurl).
 - When users download a PAC file from a central location, the download must complete within 30 seconds or most browsers will time out.
 - Requests must complete with an HTTP response code `200`.
 - Requests must have an uncompressed body smaller than 1 MB (megabyte).

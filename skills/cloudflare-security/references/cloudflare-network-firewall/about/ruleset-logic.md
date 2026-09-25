@@ -35,7 +35,7 @@ For best practices when configuring your security policy, refer to [Best practic
 
 Cloudflare-sourced traffic is also subject to the Cloudflare Network Firewall rules you configure. If you block all ICMP traffic, you will also block Cloudflare's [endpoint health checks](https://developers.cloudflare.com/magic-transit/reference/tunnel-health-checks/#endpoint-health-checks). When blocking ICMP traffic, ensure your rules first allow ICMP sourced from Cloudflare public IPs to your prefix endpoint IPs before applying a block ICMP rule.
 
-For a list of Cloudflare's public IPs, refer to [IP Ranges ↗](https://www.cloudflare.com/ips/).
+For a list of Cloudflare's public IPs, refer to [IP Ranges ↗︎](https://www.cloudflare.com/ips/).
 
 ## Cloudflare Network Firewall phases
 

@@ -46,7 +46,7 @@ compatibility_flags = [ "formdata_parser_supports_files" ]
 
 #### Via the Cloudflare Dashboard
 
-Compatibility flags can be updated in the Workers settings on the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+Compatibility flags can be updated in the Workers settings on the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 
 #### Via the Cloudflare API
 
@@ -161,9 +161,9 @@ When enabled, passing unsupported TLS options (e.g. `checkServerIdentity`) to `t
 | **Flag to enable** | `python_process_pth_files` |
 | **Flag to disable** | `disable_python_process_pth_files` |
 
-When the `python_process_pth_files` flag is set, Python Workers process `.pth` files in the `python_modules/` directory during startup by calling [`site.addsitedir()` ↗](https://docs.python.org/3/library/site.html#site.addsitedir) on it. This lets packages extend `sys.path` declaratively, for example to add subdirectories or register import hooks. Without this flag, `.pth` files in `python_modules/` are ignored.
+When the `python_process_pth_files` flag is set, Python Workers process `.pth` files in the `python_modules/` directory during startup by calling [`site.addsitedir()` ↗︎](https://docs.python.org/3/library/site.html#site.addsitedir) on it. This lets packages extend `sys.path` declaratively, for example to add subdirectories or register import hooks. Without this flag, `.pth` files in `python_modules/` are ignored.
 
-This flag also moves the top-level entropy context managers required by some packages out of the runtime and into [workers-py ↗](https://github.com/cloudflare/workers-py).
+This flag also moves the top-level entropy context managers required by some packages out of the runtime and into [workers-py ↗︎](https://github.com/cloudflare/workers-py).
 
 You must use `workers-py` version `1.1.3` or later when this flag is set.
 
@@ -176,7 +176,7 @@ You must use `workers-py` version `1.1.3` or later when this flag is set.
 
 When `diagnostics_channel_has_subscribers_getter` is enabled, `Channel.hasSubscribers` and `TracingChannel.hasSubscribers` from `node:diagnostics_channel` become read-only getter properties that evaluate directly to a boolean, matching Node.js behavior.
 
-Previously, `hasSubscribers` was registered as a method, requiring users to call `ch.hasSubscribers()` with parentheses. With this flag enabled, `ch.hasSubscribers` returns a boolean without a function call, consistent with the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/diagnostics_channel.html#channelhassubscribers).
+Previously, `hasSubscribers` was registered as a method, requiring users to call `ch.hasSubscribers()` with parentheses. With this flag enabled, `ch.hasSubscribers` returns a boolean without a function call, consistent with the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/diagnostics_channel.html#channelhassubscribers).
 
 This flag requires [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) to be enabled.
 
@@ -238,7 +238,7 @@ When unset, the container shares the PID namespace with the virtual machine (VM)
 | **Flag to enable** | `encoder_stream_spec_compliant_backpressure` |
 | **Flag to disable** | `no_encoder_stream_spec_compliant_backpressure` |
 
-When `encoder_stream_spec_compliant_backpressure` is enabled, `TextEncoderStream` and `TextDecoderStream` use a readable-side high water mark of 0, as specified by the [WHATWG Encoding Standard ↗](https://encoding.spec.whatwg.org/).
+When `encoder_stream_spec_compliant_backpressure` is enabled, `TextEncoderStream` and `TextDecoderStream` use a readable-side high water mark of 0, as specified by the [WHATWG Encoding Standard ↗︎](https://encoding.spec.whatwg.org/).
 
 With a high water mark of 0, the readable side starts with backpressure applied, so writes correctly block until a reader pulls. Previously, the high water mark defaulted to 1, which caused `pull()` to fire at startup, clearing backpressure before any write occurred.
 
@@ -249,7 +249,7 @@ With a high water mark of 0, the readable side starts with backpressure applied,
 | **Flag to enable** | `writable_stream_spec_compliant_writer` |
 | **Flag to disable** | `no_writable_stream_spec_compliant_writer` |
 
-When `writable_stream_spec_compliant_writer` is enabled, several `WritableStream` spec compliance issues around writer lock and release behavior are fixed to match the [WHATWG Streams Standard ↗](https://streams.spec.whatwg.org/).
+When `writable_stream_spec_compliant_writer` is enabled, several `WritableStream` spec compliance issues around writer lock and release behavior are fixed to match the [WHATWG Streams Standard ↗︎](https://streams.spec.whatwg.org/).
 
 ### Enable global Performance classes
 
@@ -275,7 +275,7 @@ The `enable_nodejs_child_process_module` flag enables the `node:child_process` m
 
 This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/child_process.html) for more details about the `node:child_process` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/child_process.html) for more details about the `node:child_process` API.
 
 ### Enable `node:perf_hooks` module
 
@@ -288,7 +288,7 @@ The `enable_nodejs_perf_hooks_module` flag enables the `node:perf_hooks` module 
 
 This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/perf_hooks.html) for more details about the `node:perf_hooks` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/perf_hooks.html) for more details about the `node:perf_hooks` API.
 
 ### Enable `node:readline` module
 
@@ -301,7 +301,7 @@ The `enable_nodejs_readline_module` flag enables the `node:readline` module stub
 
 This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/readline.html) for more details about the `node:readline` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/readline.html) for more details about the `node:readline` API.
 
 ### Enable `node:repl` module
 
@@ -314,7 +314,7 @@ The `enable_nodejs_repl_module` flag enables the `node:repl` module stub in Work
 
 This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/repl.html) for more details about the `node:repl` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/repl.html) for more details about the `node:repl` API.
 
 ### Enable `node:tty` module
 
@@ -327,7 +327,7 @@ The `enable_nodejs_tty_module` flag enables the `node:tty` module stub in Worker
 
 This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/tty.html) for more details about the `node:tty` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/tty.html) for more details about the `node:tty` API.
 
 ### Enable `node:v8` module
 
@@ -340,7 +340,7 @@ The `enable_nodejs_v8_module` flag enables the `node:v8` module stub in Workers.
 
 This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/v8.html) for more details about the `node:v8` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/v8.html) for more details about the `node:v8` API.
 
 ### Enable `node:worker_threads` module
 
@@ -353,7 +353,7 @@ The `enable_nodejs_worker_threads_module` flag enables the `node:worker_threads`
 
 This flag is automatically enabled for Workers using a compatibility date of 2026-03-17 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/worker_threads.html) for more details about the `node:worker_threads` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/worker_threads.html) for more details about the `node:worker_threads` API.
 
 ### WebSocket standard binary type
 
@@ -362,7 +362,7 @@ See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/worker_th
 | **Flag to enable** | `websocket_standard_binary_type` |
 | **Flag to disable** | `no_websocket_standard_binary_type` |
 
-This flag controls the default value of the [`binaryType`](https://developers.cloudflare.com/workers/runtime-apis/websockets/#binarytype) property on `WebSocket`, which in turn controls how binary frames are delivered to the `message` event. With the flag active, `binaryType` defaults to `"blob"` and binary frames arrive as [`Blob` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Blob) objects, matching the [WebSocket specification ↗](https://websockets.spec.whatwg.org/) and standard browser behavior. Without the flag, `binaryType` defaults to `"arraybuffer"` and binary frames arrive as [`ArrayBuffer` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer), matching the runtime's historical behavior.
+This flag controls the default value of the [`binaryType`](https://developers.cloudflare.com/workers/runtime-apis/websockets/#binarytype) property on `WebSocket`, which in turn controls how binary frames are delivered to the `message` event. With the flag active, `binaryType` defaults to `"blob"` and binary frames arrive as [`Blob` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Blob) objects, matching the [WebSocket specification ↗︎](https://websockets.spec.whatwg.org/) and standard browser behavior. Without the flag, `binaryType` defaults to `"arraybuffer"` and binary frames arrive as [`ArrayBuffer` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer), matching the runtime's historical behavior.
 
 The `binaryType` property itself is available on every `WebSocket` regardless of the flag. Assigning a value overrides the default for that specific WebSocket:
 
@@ -401,7 +401,7 @@ When `queue_expose_error_codes` is enabled, [Queue](https://developers.cloudflar
 | **Flag to enable** | `web_socket_auto_reply_to_close` |
 | **Flag to disable** | `web_socket_manual_reply_to_close` |
 
-When a server sends a WebSocket Close frame, the Workers runtime now automatically sends a reciprocal Close frame and transitions `readyState` to `CLOSED` before firing the `close` event. This matches the [WebSocket spec ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close_event) and browser behavior.
+When a server sends a WebSocket Close frame, the Workers runtime now automatically sends a reciprocal Close frame and transitions `readyState` to `CLOSED` before firing the `close` event. This matches the [WebSocket spec ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close_event) and browser behavior.
 
 Previously, receiving a server-initiated Close frame left the WebSocket in `CLOSING` and required the application to call `close()` itself. With this flag active, you no longer need to call `close()` in your `close` event handler. The runtime handles the close handshake automatically.
 
@@ -483,7 +483,7 @@ Previously, unhandled rejection processing could fire prematurely before all mic
 | **Flag to enable** | `websocket_close_reason_byte_limit` |
 | **Flag to disable** | `no_websocket_close_reason_byte_limit` |
 
-When `websocket_close_reason_byte_limit` is enabled, `WebSocket.close()` throws a `SyntaxError` `DOMException` if the `reason` string exceeds 123 bytes when UTF-8 encoded, as required by the [WHATWG WebSocket spec ↗](https://websockets.spec.whatwg.org/) and [RFC 6455 Section 5.5 ↗](https://www.rfc-editor.org/rfc/rfc6455#section-5.5).
+When `websocket_close_reason_byte_limit` is enabled, `WebSocket.close()` throws a `SyntaxError` `DOMException` if the `reason` string exceeds 123 bytes when UTF-8 encoded, as required by the [WHATWG WebSocket spec ↗︎](https://websockets.spec.whatwg.org/) and [RFC 6455 Section 5.5 ↗︎](https://www.rfc-editor.org/rfc/rfc6455#section-5.5).
 
 Previously, Workers allowed arbitrarily long close reasons without validation.
 
@@ -503,7 +503,7 @@ With the `delete_all_deletes_alarm` flag set, calling `deleteAll()` on a Durable
 | **Flag to enable** | `text_decoder_replace_surrogates` |
 | **Flag to disable** | `disable_text_decoder_replace_surrogates` |
 
-When `text_decoder_replace_surrogates` is enabled, the UTF-16le `TextDecoder` will replace lone surrogates with U+FFFD (the Unicode replacement character) as required by the [Encoding Standard ↗](https://encoding.spec.whatwg.org/). Previously, lone surrogates were passed through unchanged, producing non-well-formed strings.
+When `text_decoder_replace_surrogates` is enabled, the UTF-16le `TextDecoder` will replace lone surrogates with U+FFFD (the Unicode replacement character) as required by the [Encoding Standard ↗︎](https://encoding.spec.whatwg.org/). Previously, lone surrogates were passed through unchanged, producing non-well-formed strings.
 
 ### Support iterables as fetch Request/Response body
 
@@ -529,7 +529,7 @@ When `enable_nodejs_global_timers` is enabled, `setTimeout`, `setInterval`, `cle
 
 This flag requires [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) to be enabled and is automatically enabled for Workers using a compatibility date of 2026-02-10 or later when `nodejs_compat` is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/timers.html) for more details about the timer APIs.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/timers.html) for more details about the timer APIs.
 
 ### Enable `node:dgram` module
 
@@ -542,7 +542,7 @@ The `enable_nodejs_dgram_module` flag enables the `node:dgram` module stub in Wo
 
 This flag is automatically enabled for Workers using a compatibility date of 2026-01-29 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/dgram.html) for more details about the `node:dgram` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/dgram.html) for more details about the `node:dgram` API.
 
 ### Enable `node:inspector` module
 
@@ -555,7 +555,7 @@ The `enable_nodejs_inspector_module` flag enables the `node:inspector` module st
 
 This flag is automatically enabled for Workers using a compatibility date of 2026-01-29 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/inspector.html) for more details about the `node:inspector` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/inspector.html) for more details about the `node:inspector` API.
 
 ### Enable `node:sqlite` module
 
@@ -568,7 +568,7 @@ The `enable_nodejs_sqlite_module` flag enables the `node:sqlite` module stub in 
 
 This flag is automatically enabled for Workers using a compatibility date of 2026-01-29 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/sqlite.html) for more details about the `node:sqlite` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/sqlite.html) for more details about the `node:sqlite` API.
 
 ### Enable `node:_stream_wrap` module
 
@@ -601,7 +601,7 @@ Previously, `require()` always returned the module namespace object (an object l
 | **Flag to enable** | `rpc_params_dup_stubs` |
 | **Flag to disable** | `rpc_params_transfer_stubs` |
 
-Changes the ownership semantics of RPC stubs embedded in the parameters of an RPC call, fixing compatibility issues with [Cap'n Web ↗](https://github.com/cloudflare/capnweb).
+Changes the ownership semantics of RPC stubs embedded in the parameters of an RPC call, fixing compatibility issues with [Cap'n Web ↗︎](https://github.com/cloudflare/capnweb).
 
 When the [Workers RPC system](https://developers.cloudflare.com/workers/runtime-apis/rpc/) was first introduced, RPC stubs that were embedded in the params or return value of some other call had their ownership transferred. That is, the original stub was implicitly disposed, with a duplicate stub being delivered to the destination.
 
@@ -644,7 +644,7 @@ The `enable_nodejs_cluster_module` flag enables the `node:cluster` module stub i
 
 This flag is automatically enabled for Workers using a compatibility date of 2025-12-04 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/cluster.html) for more details about the `node:cluster` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/cluster.html) for more details about the `node:cluster` API.
 
 ### Enable `node:domain` module
 
@@ -657,7 +657,7 @@ The `enable_nodejs_domain_module` flag enables the `node:domain` module stub in 
 
 This flag is automatically enabled for Workers using a compatibility date of 2025-12-04 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/domain.html) for more details about the `node:domain` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/domain.html) for more details about the `node:domain` API.
 
 ### Enable `node:punycode` module
 
@@ -670,7 +670,7 @@ The `enable_nodejs_punycode_module` flag enables the `node:punycode` module in W
 
 This flag is automatically enabled for Workers using a compatibility date of 2025-12-04 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/punycode.html) for more details about the `node:punycode` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/punycode.html) for more details about the `node:punycode` API.
 
 ### Enable `node:trace_events` module
 
@@ -683,7 +683,7 @@ The `enable_nodejs_trace_events_module` flag enables the `node:trace_events` mod
 
 This flag is automatically enabled for Workers using a compatibility date of 2025-12-04 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/tracing.html) for more details about the `node:trace_events` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/tracing.html) for more details about the `node:trace_events` API.
 
 ### Enable `node:wasi` module
 
@@ -696,7 +696,7 @@ The `enable_nodejs_wasi_module` flag enables the `node:wasi` module stub in Work
 
 This flag is automatically enabled for Workers using a compatibility date of 2025-12-04 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/wasi.html) for more details about the `node:wasi` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/wasi.html) for more details about the `node:wasi` API.
 
 ### Enable fast JSG struct optimization
 
@@ -758,7 +758,7 @@ The `enable_nodejs_vm_module` flag enables the `node:vm` module stub in Workers.
 
 This flag is automatically enabled for Workers using a compatibility date of 2025-10-01 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/vm.html) for more details about the `node:vm` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/vm.html) for more details about the `node:vm` API.
 
 ### Enable `node:console` module
 
@@ -771,7 +771,7 @@ The `enable_nodejs_console_module` flag enables the `node:console` module in Wor
 
 This flag is automatically enabled for Workers using a compatibility date of 2025-09-21 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/console.html) for more details about the `node:console` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/console.html) for more details about the `node:console` API.
 
 ### Enable workflow entrypoint validation
 
@@ -793,7 +793,7 @@ The `enable_nodejs_fs_module` flag enables the `node:fs` module in Workers.
 
 This flag is automatically enabled for Workers using a compatibility date of 2025-09-15 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/fs.html) for more details about the `node:fs` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/fs.html) for more details about the `node:fs` API.
 
 ### Enable `node:os` module
 
@@ -806,7 +806,7 @@ The `enable_nodejs_os_module` flag enables the `node:os` module in Workers.
 
 This flag is automatically enabled for Workers using a compatibility date of 2025-09-15 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/os.html) for more details about the `node:os` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/os.html) for more details about the `node:os` API.
 
 ### Enable `process` v2 implementation
 
@@ -842,7 +842,7 @@ This flag must be used in combination with the `enable_nodejs_http_modules` flag
 
 This flag is automatically enabled for Workers using a compatibility date of 2025-09-01 or later when `nodejs_compat` is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/http.html) for more details about the Node.js HTTP APIs.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/http.html) for more details about the Node.js HTTP APIs.
 
 ### Enable `node:http2` module
 
@@ -855,7 +855,7 @@ The `enable_nodejs_http2_module` flag enables the `node:http2` module stubs in W
 
 This flag is automatically enabled for Workers using a compatibility date of 2025-09-01 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/http2.html) for more details about the `node:http2` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/http2.html) for more details about the `node:http2` API.
 
 ### Remove end-of-life Node.js APIs
 
@@ -888,7 +888,7 @@ This flag is automatically enabled when the `remove_nodejs_compat_eol_v24` flag 
 | **Flag to enable** | `strip_authorization_on_cross_origin_redirect` |
 | **Flag to disable** | `retain_authorization_on_cross_origin_redirect` |
 
-When `strip_authorization_on_cross_origin_redirect` is enabled, the `Authorization` header is automatically removed when following a redirect to a different origin. This behavior is required by the current [Fetch API specification ↗](https://fetch.spec.whatwg.org/).
+When `strip_authorization_on_cross_origin_redirect` is enabled, the `Authorization` header is automatically removed when following a redirect to a different origin. This behavior is required by the current [Fetch API specification ↗︎](https://fetch.spec.whatwg.org/).
 
 This requirement was added to the Fetch spec in 2022, after Cloudflare Workers originally implemented its fetch handling. Workers did not originally implement this requirement, so the new behavior is gated behind a compatibility flag.
 
@@ -914,7 +914,7 @@ This enables compatibility with Node.js libraries and existing code that use the
 - Request and response objects with standard Node.js APIs
 - Support for standard HTTP methods, headers, and options
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/http.html) for more details about the Node.js APIs.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/http.html) for more details about the Node.js APIs.
 
 ### Expose global MessageChannel and MessagePort
 
@@ -1037,7 +1037,7 @@ When the `disallow_eval_during_startup` flag is set, using `eval()` or `new Func
 | --- | --- |
 | **Flag to disable** | `disable_request_signal` |
 
-When you use the `enable_request_signal` compatibility flag, you can attach an event listener to [`Request`](https://developers.cloudflare.com/workers/runtime-apis/request/) objects, using the [`signal` property ↗](https://developer.mozilla.org/en-US/docs/Web/API/Request/signal). This allows you to perform tasks when the request to your Worker is canceled by the client.
+When you use the `enable_request_signal` compatibility flag, you can attach an event listener to [`Request`](https://developers.cloudflare.com/workers/runtime-apis/request/) objects, using the [`signal` property ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Request/signal). This allows you to perform tasks when the request to your Worker is canceled by the client.
 
 ### Cache API request `cf` overrides cache rules
 
@@ -1078,7 +1078,7 @@ There is no default enabled date for this flag.
 | **Flag to enable** | `enable_weak_ref` |
 | **Flag to disable** | `disable_weak_ref` |
 
-Enables the use of [`FinalizationRegistry` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/FinalizationRegistry) and [`WeakRef` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakRef) built-ins.
+Enables the use of [`FinalizationRegistry` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/FinalizationRegistry) and [`WeakRef` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakRef) built-ins.
 
 - `FinalizationRegistry` allows you to register a cleanup callback that runs after an object has been garbage-collected.
 - `WeakRef` creates a weak reference to an object, allowing it to be garbage-collected if no other strong references exist.
@@ -1104,7 +1104,7 @@ The the `no_request_signal_passthrough` flag is set, the `AbortSignal` of the in
 | **Flag to enable** | `urlpattern_standard` |
 | **Flag to disable** | `urlpattern_original` |
 
-The original `URLPattern` implementation was not fully compliant with the [WHATWG URLPattern Standard ↗](https://urlpattern.spec.whatwg.org/), leading to a number of issues reported by users.
+The original `URLPattern` implementation was not fully compliant with the [WHATWG URLPattern Standard ↗︎](https://urlpattern.spec.whatwg.org/), leading to a number of issues reported by users.
 
 With `urlpattern_standard` enabled, Workers uses a spec-compliant URLPattern implementation. This is a breaking change from the original behavior, so it is gated behind a compatibility flag.
 
@@ -1287,7 +1287,7 @@ The `nodejs_zlib` flag enables the `node:zlib` module in Workers.
 
 This flag is automatically enabled for Workers using a compatibility date of 2024-09-23 or later when [`nodejs_compat`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/) is enabled.
 
-See the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/zlib.html) for more details about the `node:zlib` API.
+See the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/zlib.html) for more details about the `node:zlib` API.
 
 ### Allow specifying a custom port when making a subrequest with the fetch() API
 
@@ -1330,7 +1330,7 @@ With `internal_writable_stream_abort_clears_queue` enabled, the queue is cleared
 | **Flag to enable** | `blob_standard_mime_type` |
 | **Flag to disable** | `blob_legacy_mime_type` |
 
-When calling `response.blob.type()`, the MIME type will now be properly extracted from `content-type` headers, per the [WHATWG spec ↗](https://fetch.spec.whatwg.org/#concept-header-extract-mime-type).
+When calling `response.blob.type()`, the MIME type will now be properly extracted from `content-type` headers, per the [WHATWG spec ↗︎](https://fetch.spec.whatwg.org/#concept-header-extract-mime-type).
 
 ### Use standard URL parsing in `fetch()`
 
@@ -1339,7 +1339,7 @@ When calling `response.blob.type()`, the MIME type will now be properly extracte
 | **Flag to enable** | `fetch_standard_url` |
 | **Flag to disable** | `fetch_legacy_url` |
 
-The `fetch_standard_url` flag makes `fetch()` use [WHATWG URL Standard ↗](https://url.spec.whatwg.org/) parsing rules. The original implementation would throw `TypeError: Fetch API cannot load` errors with some URLs where standard parsing does not, for instance with the inclusion of whitespace before the URL. URL errors will now be thrown immediately upon calling `new Request()` with an improper URL. Previously, URL errors were thrown only once `fetch()` was called.
+The `fetch_standard_url` flag makes `fetch()` use [WHATWG URL Standard ↗︎](https://url.spec.whatwg.org/) parsing rules. The original implementation would throw `TypeError: Fetch API cannot load` errors with some URLs where standard parsing does not, for instance with the inclusion of whitespace before the URL. URL errors will now be thrown immediately upon calling `new Request()` with an improper URL. Previously, URL errors were thrown only once `fetch()` was called.
 
 ### Returning empty Uint8Array on final BYOB read
 
@@ -1374,7 +1374,7 @@ if (result.done) {
 | **Flag to enable** | `brotli_content_encoding` |
 | **Flag to disable** | `no_brotli_content_encoding` |
 
-When the `brotli_content_encoding` compatibility flag is enabled, Workers supports the `br` content encoding and can request and respond with data encoded using the [Brotli ↗](https://developer.mozilla.org/en-US/docs/Glossary/Brotli_compression) compression algorithm. This reduces the amount of data that needs to be fetched and can be used to pass through the original compressed data to the client. See the Fetch API [documentation](https://developers.cloudflare.com/workers/runtime-apis/fetch/#how-the-accept-encoding-header-is-handled) for details.
+When the `brotli_content_encoding` compatibility flag is enabled, Workers supports the `br` content encoding and can request and respond with data encoded using the [Brotli ↗︎](https://developer.mozilla.org/en-US/docs/Glossary/Brotli_compression) compression algorithm. This reduces the amount of data that needs to be fetched and can be used to pass through the original compressed data to the client. See the Fetch API [documentation](https://developers.cloudflare.com/workers/runtime-apis/fetch/#how-the-accept-encoding-header-is-handled) for details.
 
 ### Durable Object stubs and Service Bindings support RPC
 
@@ -1445,7 +1445,7 @@ Suppresses the global `importScripts()` function. This method was included in th
 | --- | --- |
 | **Flag to disable** | `no_nodejs_als` |
 
-Enables the availability of the Node.js [AsyncLocalStorage ↗](https://nodejs.org/api/async_hooks.html#async_hooks_class_asynclocalstorage) API in Workers.
+Enables the availability of the Node.js [AsyncLocalStorage ↗︎](https://nodejs.org/api/async_hooks.html#async_hooks_class_asynclocalstorage) API in Workers.
 
 ### Python Workers
 
@@ -1483,7 +1483,7 @@ The Workers runtime did not support WebSocket compression when the initial WebSo
 
 If the flag is present, the Workers runtime is capable of using WebSocket Compression on both inbound and outbound WebSocket connections.
 
-Like browsers, calling `new WebSocket(url)` in a Worker will automatically set the `Sec-WebSocket-Extensions: permessage-deflate` header. If you are using the non-standard `fetch()` API to obtain a WebSocket, you can include the `Sec-WebSocket-Extensions` header with value `permessage-deflate` and include any of the compression parameters defined in [RFC-7692 ↗](https://datatracker.ietf.org/doc/html/rfc7692#section-7).
+Like browsers, calling `new WebSocket(url)` in a Worker will automatically set the `Sec-WebSocket-Extensions: permessage-deflate` header. If you are using the non-standard `fetch()` API to obtain a WebSocket, you can include the `Sec-WebSocket-Extensions` header with value `permessage-deflate` and include any of the compression parameters defined in [RFC-7692 ↗︎](https://datatracker.ietf.org/doc/html/rfc7692#section-7).
 
 ### Strict crypto error checking
 
@@ -1537,7 +1537,7 @@ With the flag disabled, Cloudflare will include a default Bot Management object,
 | **Flag to enable** | `urlsearchparams_delete_has_value_arg` |
 | **Flag to disable** | `no_urlsearchparams_delete_has_value_arg` |
 
-The WHATWG introduced additional optional arguments to the `URLSearchParams` object [`delete()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/delete) and [`has()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/has) methods that allow for more precise control over the removal of query parameters. Because the arguments are optional and change the behavior of the methods when present there is a risk of breaking existing code. If your compatibility date is set to July 1, 2023 or after, this compatibility flag will be enabled by default.
+The WHATWG introduced additional optional arguments to the `URLSearchParams` object [`delete()` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/delete) and [`has()` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/has) methods that allow for more precise control over the removal of query parameters. Because the arguments are optional and change the behavior of the methods when present there is a risk of breaking existing code. If your compatibility date is set to July 1, 2023 or after, this compatibility flag will be enabled by default.
 
 For an example of how this change could break existing code, consider code that uses the `Array` `forEach()` method to iterate through a number of parameters to delete:
 
@@ -1582,7 +1582,7 @@ Previously, when using Workers for Platforms' [dynamic dispatch API](https://dev
 | **Flag to enable** | `http_headers_getsetcookie` |
 | **Flag to disable** | `no_http_headers_getsetcookie` |
 
-Adds the [`getSetCookie()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers/getSetCookie) method to the [Headers ↗](https://developer.mozilla.org/en-US/docs/Web/API/Headers) API in Workers.
+Adds the [`getSetCookie()` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Headers/getSetCookie) method to the [Headers ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Headers) API in Workers.
 
 ```js
 const response = await fetch("https://example.com");
@@ -1613,28 +1613,28 @@ The following stubs are enabled automatically only when `nodejs_compat` is enabl
 
 | Stub module | Enabled with `nodejs_compat` on or after | Enable flag | Disable flag |
 | --- | --- | --- | --- |
-| [`node:http2` ↗](https://nodejs.org/docs/latest/api/http2.html) | `2025-09-01` | `enable_nodejs_http2_module` | `disable_nodejs_http2_module` |
-| [`node:vm` ↗](https://nodejs.org/docs/latest/api/vm.html) | `2025-10-01` | `enable_nodejs_vm_module` | `disable_nodejs_vm_module` |
-| [`node:cluster` ↗](https://nodejs.org/docs/latest/api/cluster.html) | `2025-12-04` | `enable_nodejs_cluster_module` | `disable_nodejs_cluster_module` |
-| [`node:domain` ↗](https://nodejs.org/docs/latest/api/domain.html) | `2025-12-04` | `enable_nodejs_domain_module` | `disable_nodejs_domain_module` |
-| [`node:trace_events` ↗](https://nodejs.org/docs/latest/api/tracing.html) | `2025-12-04` | `enable_nodejs_trace_events_module` | `disable_nodejs_trace_events_module` |
-| [`node:wasi` ↗](https://nodejs.org/docs/latest/api/wasi.html) | `2025-12-04` | `enable_nodejs_wasi_module` | `disable_nodejs_wasi_module` |
+| [`node:http2` ↗︎](https://nodejs.org/docs/latest/api/http2.html) | `2025-09-01` | `enable_nodejs_http2_module` | `disable_nodejs_http2_module` |
+| [`node:vm` ↗︎](https://nodejs.org/docs/latest/api/vm.html) | `2025-10-01` | `enable_nodejs_vm_module` | `disable_nodejs_vm_module` |
+| [`node:cluster` ↗︎](https://nodejs.org/docs/latest/api/cluster.html) | `2025-12-04` | `enable_nodejs_cluster_module` | `disable_nodejs_cluster_module` |
+| [`node:domain` ↗︎](https://nodejs.org/docs/latest/api/domain.html) | `2025-12-04` | `enable_nodejs_domain_module` | `disable_nodejs_domain_module` |
+| [`node:trace_events` ↗︎](https://nodejs.org/docs/latest/api/tracing.html) | `2025-12-04` | `enable_nodejs_trace_events_module` | `disable_nodejs_trace_events_module` |
+| [`node:wasi` ↗︎](https://nodejs.org/docs/latest/api/wasi.html) | `2025-12-04` | `enable_nodejs_wasi_module` | `disable_nodejs_wasi_module` |
 | `node:_stream_wrap` | `2026-01-29` | `enable_nodejs_stream_wrap_module` | `disable_nodejs_stream_wrap_module` |
-| [`node:dgram` ↗](https://nodejs.org/docs/latest/api/dgram.html) | `2026-01-29` | `enable_nodejs_dgram_module` | `disable_nodejs_dgram_module` |
-| [`node:inspector` ↗](https://nodejs.org/docs/latest/api/inspector.html) | `2026-01-29` | `enable_nodejs_inspector_module` | `disable_nodejs_inspector_module` |
-| [`node:sqlite` ↗](https://nodejs.org/docs/latest/api/sqlite.html) | `2026-01-29` | `enable_nodejs_sqlite_module` | `disable_nodejs_sqlite_module` |
-| [`node:child_process` ↗](https://nodejs.org/docs/latest/api/child_process.html) | `2026-03-17` | `enable_nodejs_child_process_module` | `disable_nodejs_child_process_module` |
-| [`node:readline` ↗](https://nodejs.org/docs/latest/api/readline.html) | `2026-03-17` | `enable_nodejs_readline_module` | `disable_nodejs_readline_module` |
-| [`node:repl` ↗](https://nodejs.org/docs/latest/api/repl.html) | `2026-03-17` | `enable_nodejs_repl_module` | `disable_nodejs_repl_module` |
-| [`node:tty` ↗](https://nodejs.org/docs/latest/api/tty.html) | `2026-03-17` | `enable_nodejs_tty_module` | `disable_nodejs_tty_module` |
-| [`node:v8` ↗](https://nodejs.org/docs/latest/api/v8.html) | `2026-03-17` | `enable_nodejs_v8_module` | `disable_nodejs_v8_module` |
-| [`node:worker_threads` ↗](https://nodejs.org/docs/latest/api/worker_threads.html) | `2026-03-17` | `enable_nodejs_worker_threads_module` | `disable_nodejs_worker_threads_module` |
+| [`node:dgram` ↗︎](https://nodejs.org/docs/latest/api/dgram.html) | `2026-01-29` | `enable_nodejs_dgram_module` | `disable_nodejs_dgram_module` |
+| [`node:inspector` ↗︎](https://nodejs.org/docs/latest/api/inspector.html) | `2026-01-29` | `enable_nodejs_inspector_module` | `disable_nodejs_inspector_module` |
+| [`node:sqlite` ↗︎](https://nodejs.org/docs/latest/api/sqlite.html) | `2026-01-29` | `enable_nodejs_sqlite_module` | `disable_nodejs_sqlite_module` |
+| [`node:child_process` ↗︎](https://nodejs.org/docs/latest/api/child_process.html) | `2026-03-17` | `enable_nodejs_child_process_module` | `disable_nodejs_child_process_module` |
+| [`node:readline` ↗︎](https://nodejs.org/docs/latest/api/readline.html) | `2026-03-17` | `enable_nodejs_readline_module` | `disable_nodejs_readline_module` |
+| [`node:repl` ↗︎](https://nodejs.org/docs/latest/api/repl.html) | `2026-03-17` | `enable_nodejs_repl_module` | `disable_nodejs_repl_module` |
+| [`node:tty` ↗︎](https://nodejs.org/docs/latest/api/tty.html) | `2026-03-17` | `enable_nodejs_tty_module` | `disable_nodejs_tty_module` |
+| [`node:v8` ↗︎](https://nodejs.org/docs/latest/api/v8.html) | `2026-03-17` | `enable_nodejs_v8_module` | `disable_nodejs_v8_module` |
+| [`node:worker_threads` ↗︎](https://nodejs.org/docs/latest/api/worker_threads.html) | `2026-03-17` | `enable_nodejs_worker_threads_module` | `disable_nodejs_worker_threads_module` |
 
 When enabling `nodejs_compat`, we recommend using the latest version of [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/), and the latest compatibility date, in order to maximize compatibility. Some older versions of Wrangler inject additional polyfills that are no longer necessary when your Worker uses a more recent compatibility date, because they are provided by the Workers runtime.
 
 For compatibility dates of `2026-08-04` or later, `nodejs_compat` and `nodejs_compat_v2` are not used because the compatibility date enables the same behavior. Existing projects do not need to remove these flags when updating their compatibility date. To turn off Node.js compatibility completely, remove the positive flags if present. Then add both `no_nodejs_compat` and `no_nodejs_compat_v2`.
 
-If you see errors using a particular npm package on Workers, you should first try updating your compatibility date and use the latest version of [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) or the [Cloudflare Vite Plugin](https://developers.cloudflare.com/workers/vite-plugin/). If you still encounter issues, please report them by [opening a GitHub issue ↗](https://github.com/cloudflare/workers-sdk/issues/new?template=bug-template.yaml).
+If you see errors using a particular npm package on Workers, you should first try updating your compatibility date and use the latest version of [Wrangler CLI](https://developers.cloudflare.com/workers/wrangler/) or the [Cloudflare Vite Plugin](https://developers.cloudflare.com/workers/vite-plugin/). If you still encounter issues, please report them by [opening a GitHub issue ↗︎](https://github.com/cloudflare/workers-sdk/issues/new?template=bug-template.yaml).
 
 ### Streams Constructors
 
@@ -1679,7 +1679,7 @@ The `capture_async_api_throws` compatibility flag will ensure that, in conformit
 | **Flag to enable** | `url_standard` |
 | **Flag to disable** | `url_original` |
 
-The original implementation of the [`URL` ↗](https://developer.mozilla.org/en-US/docs/Web/API/URL) API in Workers was not fully compliant with the [WHATWG URL Standard ↗](https://url.spec.whatwg.org/), differing in several ways, including:
+The original implementation of the [`URL` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/URL) API in Workers was not fully compliant with the [WHATWG URL Standard ↗︎](https://url.spec.whatwg.org/), differing in several ways, including:
 
 - The original implementation collapsed sequences of multiple slashes into a single slash:
 
@@ -1688,7 +1688,7 @@ The original implementation of the [`URL` ↗](https://developer.mozilla.org/en-
 - The original implementation would percent-encode or percent-decode certain content differently:
 
   `new URL("https://example.com/a%40b?c d%20e?f").toString() === "https://example.com/a@b?c+d+e%3Ff"`
-- The original implementation lacked more recently implemented `URL` features, like [`URL.canParse()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse_static).
+- The original implementation lacked more recently implemented `URL` features, like [`URL.canParse()` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/URL/canParse_static).
 
 Set the compatibility date of your Worker to a date after `2022-10-31` or enable the `url_standard` compatibility flag to opt-in the fully spec compliant `URL` API implementation.
 
@@ -1829,7 +1829,7 @@ The more recently added extension method `readAtLeast()` will always detach the 
 | **Flag to enable** | `formdata_parser_supports_files` |
 | **Flag to disable** | `formdata_parser_converts_files_to_strings` |
 
-[The `FormData` API ↗](https://developer.mozilla.org/en-US/docs/Web/API/FormData) is used to parse data (especially HTTP request bodies) in `multipart/form-data` format.
+[The `FormData` API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/FormData) is used to parse data (especially HTTP request bodies) in `multipart/form-data` format.
 
 Originally, the Workers runtime's implementation of the `FormData` API incorrectly converted uploaded files to strings. Therefore, `formData.get("filename")` would return a string containing the file contents instead of a `File` object. This change fixes the problem, causing files to be represented using `File` as specified in the standard.
 
@@ -1842,7 +1842,7 @@ The HTML5 standard defines a fixed set of elements as void elements, meaning the
 
 HTML5 does not recognize XML self-closing tag syntax. For example, `<script src="foo.js" />` does not specify a script element with no body. A `</script>` ending tag is still required. The `/>` syntax simply is not recognized by HTML5 at all and it is treated the same as `>`. However, many developers still like to use this syntax, as a holdover from XHTML, a standard which failed to gain traction in the early 2000's.
 
-`<esi:include>` and `<esi:comment>` are two tags that are not part of the HTML5 standard, but are instead used as part of [Edge Side Includes ↗](https://en.wikipedia.org/wiki/Edge_Side_Includes), a technology for server-side HTML modification. These tags are not expected to contain any body and are commonly written with XML self-closing syntax.
+`<esi:include>` and `<esi:comment>` are two tags that are not part of the HTML5 standard, but are instead used as part of [Edge Side Includes ↗︎](https://en.wikipedia.org/wiki/Edge_Side_Includes), a technology for server-side HTML modification. These tags are not expected to contain any body and are commonly written with XML self-closing syntax.
 
 `HTMLRewriter` was designed to parse standard HTML5, not ESI. However, it would be useful to be able to implement some parts of ESI using `HTMLRewriter`. To that end, this compatibility flag causes `HTMLRewriter` to treat `<esi:include>` and `<esi:comment>` as void tags, so that they can be parsed and handled properly.
 
@@ -1892,7 +1892,7 @@ The HTML5 standard defines a fixed set of elements as void elements, meaning the
 
 HTML5 does not recognize XML self-closing tag syntax. For example, `<script src="foo.js" />` does not specify a script element with no body. A `</script>` ending tag is still required. The `/>` syntax simply is not recognized by HTML5 at all and it is treated the same as `>`. However, many developers still like to use this syntax, as a holdover from XHTML, a standard which failed to gain traction in the early 2000's.
 
-`<esi:include>` and `<esi:comment>` are two tags that are not part of the HTML5 standard, but are instead used as part of [Edge Side Includes ↗](https://en.wikipedia.org/wiki/Edge_Side_Includes), a technology for server-side HTML modification. These tags are not expected to contain any body and are commonly written with XML self-closing syntax.
+`<esi:include>` and `<esi:comment>` are two tags that are not part of the HTML5 standard, but are instead used as part of [Edge Side Includes ↗︎](https://en.wikipedia.org/wiki/Edge_Side_Includes), a technology for server-side HTML modification. These tags are not expected to contain any body and are commonly written with XML self-closing syntax.
 
 `HTMLRewriter` was designed to parse standard HTML5, not ESI. However, it would be useful to be able to implement some parts of ESI using `HTMLRewriter`. To that end, this compatibility flag causes `HTMLRewriter` to treat `<esi:include>` and `<esi:comment>` as void tags, so that they can be parsed and handled properly.
 

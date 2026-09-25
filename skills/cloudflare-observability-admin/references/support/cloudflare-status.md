@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/cloudflare-status/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare provides updates on the status of our services and network on the [Cloudflare Status page ↗](https://www.cloudflarestatus.com/), which you should check if you notice unexpected behavior with Cloudflare.
+Cloudflare provides updates on the status of our services and network on the [Cloudflare Status page ↗︎](https://www.cloudflarestatus.com/), which you should check if you notice unexpected behavior with Cloudflare.
 
 Beyond looking at the page itself, there are programmatic ways to consume this information.
 
@@ -26,7 +26,7 @@ There are two ways to be notified about Cloudflare incidents and maintenance.
 
 The status page has its own notification system, delivered independently of Cloudflare infrastructure, so these notifications fire even if Cloudflare itself is down. You can subscribe by email, webhook, Slack, Discord, or Google Chat.
 
-For more information, refer to [status page notifications ↗](https://www.cloudflarestatus.com/docs/notifications).
+For more information, refer to [status page notifications ↗︎](https://www.cloudflarestatus.com/docs/notifications).
 
 ### Cloudflare Notifications
 
@@ -38,11 +38,11 @@ A separate **Maintenance Notification** covers planned maintenance. For more inf
 
 ## Check location status
 
-The [locations view ↗](https://www.cloudflarestatus.com/locations) lists the status of each Cloudflare data center as **Operational**, **Re-routed**, or **Partially Re-routed**. A location that has been removed from the network for planned or unplanned maintenance is listed as **Re-routed**.
+The [locations view ↗︎](https://www.cloudflarestatus.com/locations) lists the status of each Cloudflare data center as **Operational**, **Re-routed**, or **Partially Re-routed**. A location that has been removed from the network for planned or unplanned maintenance is listed as **Re-routed**.
 
 ## Use the API
 
-Cloudflare also provides status information through the [Cloudflare Status API ↗](https://www.cloudflarestatus.com/api).
+Cloudflare also provides status information through the [Cloudflare Status API ↗︎](https://www.cloudflarestatus.com/api).
 
 Incidents and maintenance are published as separate feeds, each available in RSS and Atom:
 

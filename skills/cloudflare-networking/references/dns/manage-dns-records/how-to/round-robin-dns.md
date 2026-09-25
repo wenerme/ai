@@ -16,7 +16,7 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To randomly distribute traffic across multiple servers, set up multiple DNS `A` or `AAAA` records for the same hostname.
 
-Use this setup for simple, [round-robin load balancing ↗](https://www.cloudflare.com/learning/dns/glossary/round-robin-dns/). If you need more fine-grained control over traffic distribution — including automatic failover, intelligent routing, and more — set up our [add-on load balancing service](https://developers.cloudflare.com/load-balancing/).
+Use this setup for simple, [round-robin load balancing ↗︎](https://www.cloudflare.com/learning/dns/glossary/round-robin-dns/). If you need more fine-grained control over traffic distribution — including automatic failover, intelligent routing, and more — set up our [add-on load balancing service](https://developers.cloudflare.com/load-balancing/).
 
 ## Example scenario
 

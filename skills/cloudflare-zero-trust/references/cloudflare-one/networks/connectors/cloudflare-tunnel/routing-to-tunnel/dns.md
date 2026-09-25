@@ -22,7 +22,7 @@ The `cfargotunnel.com` subdomain only proxies traffic for DNS records in the sam
 
 To create a DNS record for a Cloudflare Tunnel:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **DNS Records** for your domain. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **DNS Records** for your domain. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. Enter the following values:
    - **Type**: *CNAME*
@@ -50,7 +50,7 @@ You can also create multiple DNS records pointing to the same tunnel subdomain. 
 
 ## Cloudflare settings
 
-Published applications inherit the Cloudflare settings for their hostname, including [cache rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), [WAF rules](https://developers.cloudflare.com/waf/), and other [Rules](https://developers.cloudflare.com/rules/) configurations. You can change these settings for each hostname in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+Published applications inherit the Cloudflare settings for their hostname, including [cache rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), [WAF rules](https://developers.cloudflare.com/waf/), and other [Rules](https://developers.cloudflare.com/rules/) configurations. You can change these settings for each hostname in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 
 If you use a load balancer, settings are applied to the load balancer hostname instead.
 

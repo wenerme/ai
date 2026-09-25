@@ -38,7 +38,7 @@ Refer to [DNS wireformat](https://developers.cloudflare.com/1.1.1.1/encryption/d
 
 Each DNS query maps to exactly one HTTP request. To send multiple queries concurrently, use HTTP/2 or HTTP/3, which supports multiplexing multiple requests over a single connection.
 
-HTTP/2 is the minimum recommended version of HTTP for use with DoH. This is not specific to 1.1.1.1, but rather how DoH operates per [RFC 8484 ↗](https://datatracker.ietf.org/doc/html/rfc8484#section-5.2).
+HTTP/2 is the minimum recommended version of HTTP for use with DoH. This is not specific to 1.1.1.1, but rather how DoH operates per [RFC 8484 ↗︎](https://datatracker.ietf.org/doc/html/rfc8484#section-5.2).
 
 Example request:
 

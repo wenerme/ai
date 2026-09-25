@@ -43,7 +43,7 @@ Verifying connectivity ensures that traffic from your device is actually flowing
 
 To verify your device is connected to Cloudflare One:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. Under **Log traffic activity**, enable activity logging for all Network logs. This tells Cloudflare to record network-level traffic so you can confirm your device appears in the logs.
 3. On your Cloudflare One Client device, open a browser and visit any website. This generates traffic that should appear in the logs.
 4. Determine the **Source IP** for your device (the public-facing address Cloudflare sees for your connection):
@@ -56,7 +56,7 @@ To verify your device is connected to Cloudflare One:
 2. Go to **Settings** (gear icon) **Preferences** > **General**.
 3. Note the **Public IP**. This is the same address that will appear as the Source IP in your network logs.
 
-5. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs** > **Network logs**. Before building network policies, make sure you see network logs from the Source IP assigned to your device.
+5. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs** > **Network logs**. Before building network policies, make sure you see network logs from the Source IP assigned to your device.
 
 If no logs appear after a few minutes, check two things: first, verify that the [Gateway proxy is turned on](https://developers.cloudflare.com/cloudflare-one/traffic-policies/proxy/#turn-on-the-gateway-proxy). Second, confirm that the device is enrolled in your Zero Trust organization by checking the Cloudflare One Client connection status.
 
@@ -66,7 +66,7 @@ A network policy has two parts: a matcher that selects which traffic to act on (
 
 To create a new network policy:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **Network** tab, select **Add a network policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow or block.

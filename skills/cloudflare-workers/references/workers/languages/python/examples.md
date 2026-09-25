@@ -251,7 +251,7 @@ Refer to the [Hyperdrive from Python Workers](https://developers.cloudflare.com/
 
 ## More Examples
 
-Or you can clone [the examples repository ↗](https://github.com/cloudflare/python-workers-examples) to explore even more examples:
+Or you can clone [the examples repository ↗︎](https://github.com/cloudflare/python-workers-examples) to explore even more examples:
 
 ```bash
 git clone https://github.com/cloudflare/python-workers-examples

@@ -22,7 +22,7 @@ You may either use DLP profiles predefined by Cloudflare, or create your own cus
 
 ### Configure a predefined profile
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Choose a [predefined profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/) and select **Edit**.
 3. Enable one or more **Detection entries** according to your preferences.
 4. Select **Save profile**.
@@ -31,7 +31,7 @@ Most predefined profiles match when any enabled detection entry matches. The **P
 
 ### Build a custom profile
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Select **Create profile**.
 3. Enter a name and optional description for the profile.
 4. Add detection entries to the profile.<details><summary>
@@ -108,7 +108,7 @@ Rust regular expressions
 
 Cloudflare implements regular expressions with Rust. Make sure you account for this difference when writing expressions or using regular expression builders and generative AI.
 
-To validate your regex, use [Rustexp ↗](https://rustexp.lpil.uk/).
+To validate your regex, use [Rustexp ↗︎](https://rustexp.lpil.uk/).
 
 For example, you can use a custom expression to detect when your users share product SKUs in the format `CF1234-56789`:
 

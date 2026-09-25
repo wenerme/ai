@@ -234,7 +234,7 @@ To grant or revoke access on an existing subscription, call `PUT /apps/{appId}/s
 
 Set `canReply: false` to revoke access. Update the new subscriber with `canReply: true` to transfer access. Check every result before changing the application's displayed controller state.
 
-The existing negotiated channel carries replies after access is granted. Refer to [Pocket Radio's operator ownership ↗](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/ARCHITECTURE.md#authorization) and [cloud-gaming control ownership](https://developers.cloudflare.com/realtime/sfu/examples/cloud-gaming/#control-ownership) for application examples.
+The existing negotiated channel carries replies after access is granted. Refer to [Pocket Radio's operator ownership ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/ARCHITECTURE.md#authorization) and [cloud-gaming control ownership](https://developers.cloudflare.com/realtime/sfu/examples/cloud-gaming/#control-ownership) for application examples.
 
 ### Combine acknowledgment and replies
 
@@ -262,9 +262,9 @@ Your application supplies media framing, compatible decoders, playback timing, s
 
 ## Learn with an example
 
-Run the [DataChannel example ↗](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels) to establish two endpoints, open the readiness gate, send a publisher message and subscriber reply, and compare unordered updates.
+Run the [DataChannel example ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels) to establish two endpoints, open the readiness gate, send a publisher message and subscriber reply, and compare unordered updates.
 
-The example keeps the SFU App Secret on a local Node.js server. It is an experimental localhost exercise, with no public application authentication or room membership. Follow its [API and lifecycle guide ↗](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels#api-and-lifecycle) to inspect negotiation and teardown.
+The example keeps the SFU App Secret on a local Node.js server. It is an experimental localhost exercise, with no public application authentication or room membership. Follow its [API and lifecycle guide ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels#api-and-lifecycle) to inspect negotiation and teardown.
 
 Was this helpful?
 

@@ -27,7 +27,7 @@ This guide will walk you through exporting OpenTelemetry-compliant traces and lo
 
 Before you begin, ensure you have:
 
-- An active [Axiom account ↗](https://app.axiom.co/register) (free tier available)
+- An active [Axiom account ↗︎](https://app.axiom.co/register) (free tier available)
 - A deployed Worker that you want to monitor
 - An Axiom dataset to send data to
 
@@ -35,7 +35,7 @@ Before you begin, ensure you have:
 
 If you don't already have a dataset to send data to:
 
-1. Log in to your [Axiom account ↗](https://app.axiom.co/)
+1. Log in to your [Axiom account ↗︎](https://app.axiom.co/)
 2. Navigate to **Datasets** in the left sidebar
 3. Click **New Dataset**
 4. Enter a name (e.g. `cloudflare-workers-otel`)
@@ -68,7 +68,7 @@ Axiom provides separate OTLP endpoints for traces and logs:
 
 ### Configure trace or logs destination
 
-1. Navigate to your Cloudflare account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
+1. Navigate to your Cloudflare account's [Workers Observability ↗︎](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
 2. Click **Add destination**
 3. Configure your trace destination:
    - **Destination Name**: `axiom-traces` (or any descriptive name)

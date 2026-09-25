@@ -36,7 +36,7 @@ An invoice appears after you change a plan, add a domain, or turn on an add-on s
 
 The invoice data corresponds to the date your Cloudflare account changed. You are charged immediately for the plan, additional domain, or add-on service. An invoice is available in the Cloudflare dashboard within 24 hours of the account change.
 
-Billing periods are 30 days. Payments for all recurring monthly costs are processed on the last day of the billing period. Invoices are generated the same day and will appear in the **Billing** section of the [Cloudflare dashboard ↗](https://dash.cloudflare.com) within 24 hours.
+Billing periods are 30 days. Payments for all recurring monthly costs are processed on the last day of the billing period. Invoices are generated the same day and will appear in the **Billing** section of the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) within 24 hours.
 
 ## Cloudflare invoice without company name
 
@@ -56,7 +56,7 @@ The invoice amount does not match the amount shown in the Cloudflare dashboard.
 
 ### Cause
 
-If your Cloudflare payment is past due and you order additional services, the past due amount is added to your invoice. This may cause inconsistencies between the invoice and what you see in the [Cloudflare dashboard ↗](https://dash.cloudflare.com). After the account is current, the amounts in the Cloudflare dashboard update.
+If your Cloudflare payment is past due and you order additional services, the past due amount is added to your invoice. This may cause inconsistencies between the invoice and what you see in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com). After the account is current, the amounts in the Cloudflare dashboard update.
 
 Note
 

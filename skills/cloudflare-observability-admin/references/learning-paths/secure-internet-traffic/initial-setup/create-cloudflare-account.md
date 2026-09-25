@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To create a new Cloudflare account:
 
-1. [Sign up ↗](https://dash.cloudflare.com/sign-up) on the Cloudflare dashboard.
+1. [Sign up ↗︎](https://dash.cloudflare.com/sign-up) on the Cloudflare dashboard.
 2. To secure your account, enable [two-factor authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/).
 3. If you have a Cloudflare contact (Enterprise only), ask them to set up your account as a multi-user organization. Account members will need:
    - [**Access** permissions](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) to read or edit applications and Access policies.

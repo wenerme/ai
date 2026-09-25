@@ -22,7 +22,7 @@ Rclone is a command-line tool which manages files on cloud storage. You can use 
 
 ## Configure rclone
 
-With [`rclone` ↗](https://rclone.org/install/) installed, you may run [`rclone config` ↗](https://rclone.org/s3/) to configure a new S3 storage provider. You will be prompted with a series of questions for the new provider details.
+With [`rclone` ↗︎](https://rclone.org/install/) installed, you may run [`rclone config` ↗︎](https://rclone.org/s3/) to configure a new S3 storage provider. You will be prompted with a series of questions for the new provider details.
 
 Recommendation
 
@@ -42,7 +42,7 @@ This will create a `rclone` configuration file, which you can then modify with t
 
 Note
 
-Ensure you are running `rclone` v1.59 or greater ([rclone downloads ↗](https://beta.rclone.org/)). Versions prior to v1.59 may return `HTTP 401: Unauthorized` errors, as earlier versions of `rclone` do not strictly align to the S3 specification in all cases.
+Ensure you are running `rclone` v1.59 or greater ([rclone downloads ↗︎](https://beta.rclone.org/)). Versions prior to v1.59 may return `HTTP 401: Unauthorized` errors, as earlier versions of `rclone` do not strictly align to the S3 specification in all cases.
 
 ### Edit an existing rclone configuration
 
@@ -74,7 +74,7 @@ You may then use the new `rclone` provider for any of your normal workflows.
 
 ## List buckets & objects
 
-The [rclone tree ↗](https://rclone.org/commands/rclone_tree/) command can be used to list the contents of the remote, in this case Cloudflare R2.
+The [rclone tree ↗︎](https://rclone.org/commands/rclone_tree/) command can be used to list the contents of the remote, in this case Cloudflare R2.
 
 ```sh
 rclone tree r2:
@@ -93,7 +93,7 @@ rclone tree r2:my-bucket-name
 
 ## Upload and retrieve objects
 
-The [rclone copy ↗](https://rclone.org/commands/rclone_copy/) command can be used to upload objects to an R2 bucket and vice versa - this allows you to upload files up to the 5 TB maximum object size that R2 supports.
+The [rclone copy ↗︎](https://rclone.org/commands/rclone_copy/) command can be used to upload objects to an R2 bucket and vice versa - this allows you to upload files up to the 5 TB maximum object size that R2 supports.
 
 ```sh
 # Upload dog.txt to the user-uploads bucket
@@ -121,7 +121,7 @@ rclone copy long-video.mp4 r2:user-uploads/ --s3-upload-cutoff=100M --s3-chunk-s
 
 ## Generate presigned URLs
 
-You can also generate presigned links which allow you to share public access to a file temporarily using the [rclone link ↗](https://rclone.org/commands/rclone_link/) command.
+You can also generate presigned links which allow you to share public access to a file temporarily using the [rclone link ↗︎](https://rclone.org/commands/rclone_link/) command.
 
 ```sh
 # You can pass the --expire flag to determine how long the presigned link is valid. The --unlink flag isn't supported by R2.

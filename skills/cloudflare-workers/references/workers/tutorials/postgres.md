@@ -20,14 +20,14 @@ In this tutorial, you will learn how to create a Cloudflare Workers application 
 
 To continue:
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
-2. Install [`npm` ↗](https://docs.npmjs.com/getting-started).
-3. Install [`Node.js` ↗](https://nodejs.org/en/). Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
+2. Install [`npm` ↗︎](https://docs.npmjs.com/getting-started).
+3. Install [`Node.js` ↗︎](https://nodejs.org/en/). Use a Node version manager like [Volta ↗︎](https://volta.sh/) or [nvm ↗︎](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
 4. Make sure you have access to a PostgreSQL database.
 
 ## 1. Create a Worker application
 
-First, use the [`create-cloudflare` CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) to create a new Worker application. To do this, open a terminal window and run the following command:
+First, use the [`create-cloudflare` CLI ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) to create a new Worker application. To do this, open a terminal window and run the following command:
 
 npmyarnpnpm
 
@@ -43,7 +43,7 @@ yarn create cloudflare postgres-tutorial
 pnpm create cloudflare@latest postgres-tutorial
 ```
 
-This will prompt you to install the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) package and lead you through a setup wizard.
+This will prompt you to install the [`create-cloudflare` ↗︎](https://www.npmjs.com/package/create-cloudflare) package and lead you through a setup wizard.
 
 For setup, select the following options:
 
@@ -403,7 +403,7 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 	"name": "hyperdrive-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -422,7 +422,7 @@ This command outputs the Hyperdrive configuration `id` that will be used for you
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -464,7 +464,7 @@ Your Worker application is now live and accessible at `<YOUR_WORKER>.<YOUR_SUBDO
 
 To build more with databases and Workers, refer to [Tutorials](https://developers.cloudflare.com/workers/tutorials) and explore the [Databases documentation](https://developers.cloudflare.com/workers/databases).
 
-If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗](https://discord.cloudflare.com) to connect with fellow developers and the Cloudflare team.
+If you have any questions, need assistance, or would like to share your project, join the Cloudflare Developer community on [Discord ↗︎](https://discord.cloudflare.com) to connect with fellow developers and the Cloudflare team.
 
 Was this helpful?
 

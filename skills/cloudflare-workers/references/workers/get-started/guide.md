@@ -20,8 +20,8 @@ This guide will instruct you through setting up and deploying your first Worker.
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -31,13 +31,13 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
 ## 1. Create a new Worker project
 
-Open a terminal window and run C3 to create your Worker project. [C3 (`create-cloudflare-cli`) ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
+Open a terminal window and run C3 to create your Worker project. [C3 (`create-cloudflare-cli`) ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
 
 npmyarnpnpm
 
@@ -80,8 +80,8 @@ In your project directory, C3 will have generated the following:
 - <code>wrangler.jsonc</code>: Your <a href="https://developers.cloudflare.com/workers/wrangler/configuration/#sample-wrangler-configuration">Wrangler</a> configuration file.
 - <code>index.js</code> (in <code>/src</code>): A minimal <code>'Hello World!'</code> Worker written in <a href="https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/">ES module</a> syntax.
 - <code>package.json</code>: A minimal Node dependencies configuration file.
-- <code>package-lock.json</code>: Refer to <a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json"><code>npm</code> documentation on <code>package-lock.json</code> ↗</a>.
-- <code>node_modules</code>: Refer to <a href="https://docs.npmjs.com/cli/v7/configuring-npm/folders#node-modules"><code>npm</code> documentation <code>node_modules</code> ↗</a>.
+- <code>package-lock.json</code>: Refer to <a href="https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json"><code>npm</code> documentation on <code>package-lock.json</code> ↗︎</a>.
+- <code>node_modules</code>: Refer to <a href="https://docs.npmjs.com/cli/v7/configuring-npm/folders#node-modules"><code>npm</code> documentation <code>node_modules</code> ↗︎</a>.
 
 </details>
 
@@ -130,7 +130,7 @@ npx wrangler dev
 
 If you have never used Wrangler before, it will open your web browser so you can login to your Cloudflare account.
 
-Go to [http://localhost:8787 ↗](http://localhost:8787) to view your Worker.
+Go to [http://localhost:8787 ↗︎](http://localhost:8787) to view your Worker.
 
 <details>
 
@@ -180,7 +180,7 @@ export default {
 };
 ```
 
-<code>export default</code> is JavaScript syntax required for defining <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#default_exports_versus_named_exports">JavaScript modules ↗</a>. Your Worker has to have a default export of an object, with properties corresponding to the events your Worker should handle.
+<code>export default</code> is JavaScript syntax required for defining <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#default_exports_versus_named_exports">JavaScript modules ↗︎</a>. Your Worker has to have a default export of an object, with properties corresponding to the events your Worker should handle.
 
 *index.jsjs*
 
@@ -269,7 +269,7 @@ If you see <a href="https://developers.cloudflare.com/support/troubleshooting/ht
 To do more:
 
 - Push your project to a GitHub or GitLab repository then [connect to builds](https://developers.cloudflare.com/workers/ci-cd/builds/#get-started) to enable automatic builds and deployments.
-- Visit the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) for simpler editing.
+- Visit the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) for simpler editing.
 - Review our [Examples](https://developers.cloudflare.com/workers/examples/) and [Tutorials](https://developers.cloudflare.com/workers/tutorials/) for inspiration.
 - Set up [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to allow your Worker to interact with other resources and unlock new functionality.
 - Learn how to [test and debug](https://developers.cloudflare.com/workers/testing/) your Workers.

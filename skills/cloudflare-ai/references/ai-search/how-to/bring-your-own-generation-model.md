@@ -22,8 +22,8 @@ AI Search supports [bringing your own models natively](https://developers.cloudf
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -33,18 +33,18 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
 You also need:
 
 - An AI Search instance that already contains indexed content. To create one and add content, refer to [Get started](https://developers.cloudflare.com/ai-search/get-started/).
-- An [OpenAI API key ↗](https://platform.openai.com/api-keys).
+- An [OpenAI API key ↗︎](https://platform.openai.com/api-keys).
 
 ## 1. Create a Worker project
 
-Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
+Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
 
 Create a new project named `byo-model` by running:
 
@@ -78,7 +78,7 @@ cd byo-model
 
 ## 2. Install the AI SDK and OpenAI provider
 
-Install the [AI SDK ↗](https://sdk.vercel.ai/) and its OpenAI provider:
+Install the [AI SDK ↗︎](https://sdk.vercel.ai/) and its OpenAI provider:
 
 npmyarnpnpmbun
 

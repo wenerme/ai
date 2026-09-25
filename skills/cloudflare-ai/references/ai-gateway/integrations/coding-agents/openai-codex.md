@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[OpenAI Codex ↗](https://developers.openai.com/codex/) is a coding agent you run in your terminal. It supports [custom model providers ↗](https://developers.openai.com/codex/config-advanced#custom-model-providers) defined in `config.toml`. This configuration adds a provider that points at AI Gateway's [OpenAI endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/), so Codex sends its requests through AI Gateway. AI Gateway authenticates the model provider for you through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so you pass a Cloudflare API token instead of an OpenAI API key. If your gateway is protected by Cloudflare Access, refer to [Use with Cloudflare Access](#use-with-cloudflare-access).
+[OpenAI Codex ↗︎](https://developers.openai.com/codex/) is a coding agent you run in your terminal. It supports [custom model providers ↗︎](https://developers.openai.com/codex/config-advanced#custom-model-providers) defined in `config.toml`. This configuration adds a provider that points at AI Gateway's [OpenAI endpoint](https://developers.cloudflare.com/ai-gateway/usage/providers/openai/), so Codex sends its requests through AI Gateway. AI Gateway authenticates the model provider for you through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so you pass a Cloudflare API token instead of an OpenAI API key. If your gateway is protected by Cloudflare Access, refer to [Use with Cloudflare Access](#use-with-cloudflare-access).
 
 Note
 
@@ -28,9 +28,9 @@ Before you start, you need:
 - An AI Gateway. You can use your account's `default` gateway or [create a gateway](https://developers.cloudflare.com/ai-gateway/get-started/) and use its slug.
 - A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `AI Gateway` permission.
 - [Credits loaded](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#load-credits) on your account for third-party models.
-- [Codex ↗](https://developers.openai.com/codex/cli/) installed and updated to the latest version.
+- [Codex ↗︎](https://developers.openai.com/codex/cli/) installed and updated to the latest version.
 
-1. Create a Codex [profile ↗](https://developers.openai.com/codex/config-advanced#profiles) file at `~/.codex/cloudflare-aig.config.toml`. The profile defines a custom model provider that points at your gateway's OpenAI endpoint and reads your Cloudflare API token from an environment variable.
+1. Create a Codex [profile ↗︎](https://developers.openai.com/codex/config-advanced#profiles) file at `~/.codex/cloudflare-aig.config.toml`. The profile defines a custom model provider that points at your gateway's OpenAI endpoint and reads your Cloudflare API token from an environment variable.
 
    Replace `<ACCOUNT_ID>` and `<GATEWAY_ID>` with your values. You can use `default` for the gateway to route through your account's default gateway, or change it to another gateway slug.
 

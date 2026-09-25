@@ -34,7 +34,7 @@ export default {
 };
 ```
 
-View a full example in the [Container class repository ↗](https://github.com/cloudflare/containers/tree/main/examples/websocket).
+View a full example in the [Container class repository ↗︎](https://github.com/cloudflare/containers/tree/main/examples/websocket).
 
 Was this helpful?
 

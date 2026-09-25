@@ -59,7 +59,7 @@ Caution
 
 A HAR file can include sensitive details such as passwords, payment information, and private keys.
 
-Remove sensitive information using a [HAR Sanitizer ↗](https://har-sanitizer.pages.dev/).
+Remove sensitive information using a [HAR Sanitizer ↗︎](https://har-sanitizer.pages.dev/).
 
 For security reasons Cloudflare support cannot open compressed files such as ZIP, GZIP, TAR, etc.
 
@@ -127,13 +127,13 @@ As of Chrome 130, this exports a sanitized HAR with redacted cookies and persona
 
 ![How to save HAR content. ](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=702,height=384,format=webp/_astro/step_3.D5uw6wSa.png)
 
-9. Attach the HAR file to your support ticket alongside a screen recording from the affected Samsung device. Instructions on how to do this from Samsung devices can be found in [Samsung's documentation here ↗](https://www.samsung.com/au/support/mobile-devices/screen-recorder/).
+9. Attach the HAR file to your support ticket alongside a screen recording from the affected Samsung device. Instructions on how to do this from Samsung devices can be found in [Samsung's documentation here ↗︎](https://www.samsung.com/au/support/mobile-devices/screen-recorder/).
 
 ---
 
 **For iPhone:**
 
-Refer to [Okta ↗](https://support.okta.com/help/s/article/How-to-generate-a-HAR-capture-on-an-iOS-device?language=en_US) or [Apple's ↗](https://developer.apple.com/library/archive/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html#//apple_ref/doc/uid/TP40007874-CH2-SW1) support article on how to generate a HAR file from an iOS device. Attach the HAR file to your support ticket alongside a screen recording from the affected iOS device. Apple devices now have [built-in screen recording functionality ↗](https://support.apple.com/en-us/HT207935).
+Refer to [Okta ↗︎](https://support.okta.com/help/s/article/How-to-generate-a-HAR-capture-on-an-iOS-device?language=en_US) or [Apple's ↗︎](https://developer.apple.com/library/archive/documentation/AppleApplications/Conceptual/Safari_Developer_Guide/GettingStarted/GettingStarted.html#//apple_ref/doc/uid/TP40007874-CH2-SW1) support article on how to generate a HAR file from an iOS device. Attach the HAR file to your support ticket alongside a screen recording from the affected iOS device. Apple devices now have [built-in screen recording functionality ↗︎](https://support.apple.com/en-us/HT207935).
 
 ### Export Console Log
 
@@ -141,7 +141,7 @@ When to use
 
 Use a console log when you experience **JavaScript errors, CORS issues, or when requests are blocked or cancelled by the browser**. This captures browser-side errors that may not appear in a HAR file.
 
-In certain situations when request is not issued or cancelled by the browser (for example, due to [CORS ↗](https://developer.mozilla.org/en-US/docs/Glossary/CORS)), we need to get JS console log output, in addition to the HAR file, to identify the root cause.
+In certain situations when request is not issued or cancelled by the browser (for example, due to [CORS ↗︎](https://developer.mozilla.org/en-US/docs/Glossary/CORS)), we need to get JS console log output, in addition to the HAR file, to identify the root cause.
 
 #### In Chrome
 
@@ -183,7 +183,7 @@ When to use
 
 Use a NetLog dump when you experience **protocol-level errors** such as `ERR_QUIC_PROTOCOL_ERROR` or `ERR_HTTP2_PROTOCOL_ERROR`. This provides detailed network-level debugging information that goes beyond what a HAR file captures.
 
-In some cases, in order to further troubleshoot issues related to protocols (errors such as `ERR_QUIC_PROTOCOL_ERROR`, `ERR_HTTP2_PROTOCOL_ERROR`, etc..) our Support team may ask you to provide a [NetLog dump ↗](https://www.chromium.org/for-testers/providing-network-details/).
+In some cases, in order to further troubleshoot issues related to protocols (errors such as `ERR_QUIC_PROTOCOL_ERROR`, `ERR_HTTP2_PROTOCOL_ERROR`, etc..) our Support team may ask you to provide a [NetLog dump ↗︎](https://www.chromium.org/for-testers/providing-network-details/).
 
 Caution
 
@@ -212,7 +212,7 @@ When to use
 
 Use this when you need to **determine which Cloudflare Point of Presence (PoP) is serving your requests**. This is helpful when troubleshooting regional issues or verifying traffic routing.
 
-[A map of our data centers ↗](https://www.cloudflare.com/network-map) is listed on the [status page locations view ↗](https://www.cloudflarestatus.com/locations), sorted by continent. The three-letter code in the data center name is the [IATA code ↗](http://en.wikipedia.org/wiki/IATA_airport_code) of the nearest major international airport. Determine the Cloudflare data center serving requests for your browser by visiting: ```http://``_www.example.com_``/cdn-cgi/trace.```
+[A map of our data centers ↗︎](https://www.cloudflare.com/network-map) is listed on the [status page locations view ↗︎](https://www.cloudflarestatus.com/locations), sorted by continent. The three-letter code in the data center name is the [IATA code ↗︎](http://en.wikipedia.org/wiki/IATA_airport_code) of the nearest major international airport. Determine the Cloudflare data center serving requests for your browser by visiting: ```http://``_www.example.com_``/cdn-cgi/trace.```
 
 Replace `www.example.com` with your domain and hostname. Note the `colo` field from the output.
 
@@ -222,7 +222,7 @@ When to use
 
 Use curl when you need to **test HTTP requests without browser interference**, measure performance metrics, check HTTP headers, or determine if an issue originates from Cloudflare or your origin server.
 
-[curl ↗](https://curl.se/) is a command line tool for sending HTTP/HTTPS requests and is useful for troubleshooting:
+[curl ↗︎](https://curl.se/) is a command line tool for sending HTTP/HTTPS requests and is useful for troubleshooting:
 
 - HTTP/HTTPS Performance
 - HTTP Error Responses
@@ -245,7 +245,7 @@ This example curl command returns output detailing the HTTP response and request
 
 Note
 
-Review the [curl command options ↗](https://curl.se/docs/manpage.html) for additional functionality.
+Review the [curl command options ↗︎](https://curl.se/docs/manpage.html) for additional functionality.
 
 View the sections below for tips on troubleshooting HTTP errors, performance, caching, and SSL/TLS certificates:
 
@@ -263,7 +263,7 @@ If you have multiple origin web servers, test each one to ensure there are no re
 
 #### Performance
 
-curl measures latency or performance degradation for HTTP/HTTPS requests via the [`-w` or `--write-out` curl option ↗](https://curl.haxx.se/docs/manpage.html#-w). The example curl below measures several performance vectors in the request transaction such as duration of the TLS handshake, DNS lookup, redirects, transfers, etc:
+curl measures latency or performance degradation for HTTP/HTTPS requests via the [`-w` or `--write-out` curl option ↗︎](https://curl.haxx.se/docs/manpage.html#-w). The example curl below measures several performance vectors in the request transaction such as duration of the TLS handshake, DNS lookup, redirects, transfers, etc:
 
 ```bash
 curl -svo /dev/null https://example.com/ -w "\nContent Type: %{content_type} \
@@ -285,7 +285,7 @@ curl -svo /dev/null https://example.com/ -w "\nContent Type: %{content_type} \
 \nEffective URL: %{url_effective}\n" 2>&1
 ```
 
-[Explanation of this timing output ↗](https://blog.cloudflare.com/a-question-of-timing/) is found on the Cloudflare blog.
+[Explanation of this timing output ↗︎](https://blog.cloudflare.com/a-question-of-timing/) is found on the Cloudflare blog.
 
 Note
 
@@ -327,7 +327,7 @@ curl -svo /dev/null https://www.example.com --connect-to ::203.0.113.34 2>&1 | e
 
 #### Testing TLS Versions
 
-If troubleshooting browser support or confirming what TLS versions are supported, curl allows you to test a specific TLS version by adding the [--tlsv1.X ↗](https://curl.se/docs/manpage.html#--tlsv10) and [--tls-max ↗](https://curl.se/docs/manpage.html#--tls-max) options to your curl:
+If troubleshooting browser support or confirming what TLS versions are supported, curl allows you to test a specific TLS version by adding the [--tlsv1.X ↗︎](https://curl.se/docs/manpage.html#--tlsv10) and [--tls-max ↗︎](https://curl.se/docs/manpage.html#--tls-max) options to your curl:
 
 - `--tlsv1.0 --tls-max 1.0`
 - `--tlsv1.1 --tls-max 1.1`
@@ -441,7 +441,7 @@ When to use
 
 Use MTR when you need **more detailed network diagnostics than traceroute provides**. MTR combines traceroute and ping to show real-time latency and packet loss at each hop, making it easier to identify intermittent network issues.
 
-My Traceroute (MTR) is a [tool ↗](https://www.cloudflare.com/learning/network-layer/what-is-mtr/) that combines traceroute and ping to measure a network path's health, which is another common method for testing network connectivity and speed. In addition to the hops along the network path, MTR shows constantly updating information about the latency and packet loss along the route to the destination. This helps in troubleshooting network issues by allowing you to see what's happening along the path in real-time.
+My Traceroute (MTR) is a [tool ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-mtr/) that combines traceroute and ping to measure a network path's health, which is another common method for testing network connectivity and speed. In addition to the hops along the network path, MTR shows constantly updating information about the latency and packet loss along the route to the destination. This helps in troubleshooting network issues by allowing you to see what's happening along the path in real-time.
 
 MTR works by discovering the network path in a similar manner to traceroute, and then regularly sending packets to continue collecting information to provide an updated view into the network’s health and speed.
 
@@ -449,7 +449,7 @@ Like traceroute, MTR can use ICMP or UDP for outgoing packets but relies on ICMP
 
 Note
 
-For MacOS users, MTR can be installed through [homebrew ↗](https://formulae.brew.sh/formula/mtr). For Windows users, see [WinMTR ↗](https://github.com/White-Tiger/WinMTR/releases).
+For MacOS users, MTR can be installed through [homebrew ↗︎](https://formulae.brew.sh/formula/mtr). For Windows users, see [WinMTR ↗︎](https://github.com/White-Tiger/WinMTR/releases).
 
 #### How do I use MTR to generate network path report?
 
@@ -473,7 +473,7 @@ with TCP port
 mtr -P <tcp port> -T <destination ip>
 ```
 
-Please refer to this documentation, which explains more about analysing MTR: [How to read MTR ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-mtr/).
+Please refer to this documentation, which explains more about analysing MTR: [How to read MTR ↗︎](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-mtr/).
 
 ### Run Packet Captures
 
@@ -491,10 +491,10 @@ Caution
 
 Please be aware, if you transmit any sensitive information while a packet capture is running, it will be recorded.
 
-Cloudflare suggests [Wireshark ↗](https://www.wireshark.org/download.html) for running packet captures. For instructions on how to use the *tcpdump* command line, refer to [this ↗](https://www.wireshark.org/docs/wsug_html_chunked/AppToolstcpdump.html) article.
+Cloudflare suggests [Wireshark ↗︎](https://www.wireshark.org/download.html) for running packet captures. For instructions on how to use the *tcpdump* command line, refer to [this ↗︎](https://www.wireshark.org/docs/wsug_html_chunked/AppToolstcpdump.html) article.
 
 1. Close all programs/browser tabs that could be sending data in the background to avoid having to use a lot of display filters later.
-2. Create your Wireshark capture filter (refer to [this ↗](https://wiki.wireshark.org/CaptureFilters) article for more information).
+2. Create your Wireshark capture filter (refer to [this ↗︎](https://wiki.wireshark.org/CaptureFilters) article for more information).
 3. Select the appropriate interface (e.g. Wi-Fi: en0). If you're not sure which interface to use, Wireshark provides an I/O graph of each interface to give you a hint.
 4. Click the blue shark fin icon in the top left-hand corner to start your packet capture.
 5. Reproduce the issue while running capture.
@@ -507,8 +507,8 @@ Cloudflare suggests [Wireshark ↗](https://www.wireshark.org/download.html) for
 
 - [Contacting Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/)
 - [Cloudflare HTTP 5XX errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-5xx-errors/)
-- [Diagnosing network issues with MTR and traceroute ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-mtr/)
-- [cURL command line tool ↗](https://curl.haxx.se/)
+- [Diagnosing network issues with MTR and traceroute ↗︎](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-mtr/)
+- [cURL command line tool ↗︎](https://curl.haxx.se/)
 
 Was this helpful?
 

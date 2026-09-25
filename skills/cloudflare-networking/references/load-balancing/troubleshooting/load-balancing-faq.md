@@ -20,7 +20,7 @@ For more detailed information about Load Balancing — including how-to guides, 
 
 Note
 
-Are you trying to turn on Load Balancing? [Enable Load Balancing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing).
+Are you trying to turn on Load Balancing? [Enable Load Balancing ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing).
 
 ---
 

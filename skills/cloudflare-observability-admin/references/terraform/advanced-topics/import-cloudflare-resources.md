@@ -16,16 +16,16 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 An important point to understand about Terraform is that it can only manage configuration it created or was explicitly told about after the fact. The reason for this limitation is that Terraform expects to be authoritative for the resources it manages. It relies on two types of files to understand what resources it controls and what state they are in. Terraform determines when and how to make changes from the following:
 
-- A [configuration file ↗](https://developer.hashicorp.com/terraform/language) (ending in `.tf`) that defines the configuration of resources for Terraform to manage. This is what you worked with in the tutorial steps.
-- A local [state file ↗](https://developer.hashicorp.com/terraform/language/state) that maps the resource names defined in your configuration file — for example, `cloudflare_load_balancer.www-lb` — to the resources that exist in Cloudflare.
+- A [configuration file ↗︎](https://developer.hashicorp.com/terraform/language) (ending in `.tf`) that defines the configuration of resources for Terraform to manage. This is what you worked with in the tutorial steps.
+- A local [state file ↗︎](https://developer.hashicorp.com/terraform/language/state) that maps the resource names defined in your configuration file — for example, `cloudflare_load_balancer.www-lb` — to the resources that exist in Cloudflare.
 
-When Terraform makes calls to Cloudflare's API to create new resources as explained in the [tutorial](https://developers.cloudflare.com/terraform/tutorial/), it persists those IDs to a state file. By default, Terraform uses the `terraform.tfstate` file in your directory, but this can also be a [remote location ↗](https://developer.hashicorp.com/terraform/language/state/remote). These IDs are later looked up and refreshed when you call `terraform plan` and `terraform apply`.
+When Terraform makes calls to Cloudflare's API to create new resources as explained in the [tutorial](https://developers.cloudflare.com/terraform/tutorial/), it persists those IDs to a state file. By default, Terraform uses the `terraform.tfstate` file in your directory, but this can also be a [remote location ↗︎](https://developer.hashicorp.com/terraform/language/state/remote). These IDs are later looked up and refreshed when you call `terraform plan` and `terraform apply`.
 
 If you configured Cloudflare through other means, for example, by logging in to the Cloudflare dashboard or making `curl` calls to `api.cloudflare.com`, Terraform does not yet have these resource IDs in the state file. To manage this preexisting configuration, you will need to first reproduce the configuration in your config file and then import resources individually by providing their IDs and resource names.
 
 ## `cf-terraforming`
 
-[`cf-terraforming` ↗](https://github.com/cloudflare/cf-terraforming) helps existing Cloudflare customers get started with Terraform. Currently, `cf-terraforming` helps to generate the Terraform config state by fetching all the resources of a specified type from the account and/or zone of your choosing.
+[`cf-terraforming` ↗︎](https://github.com/cloudflare/cf-terraforming) helps existing Cloudflare customers get started with Terraform. Currently, `cf-terraforming` helps to generate the Terraform config state by fetching all the resources of a specified type from the account and/or zone of your choosing.
 
 ### Installation
 
@@ -38,7 +38,7 @@ brew tap cloudflare/cloudflare
 brew install cloudflare/cloudflare/cf-terraforming
 ```
 
-If you are using a different OS, [download the latest release ↗](https://github.com/cloudflare/cf-terraforming/releases) from the `cf-terraforming` GitHub repository.
+If you are using a different OS, [download the latest release ↗︎](https://github.com/cloudflare/cf-terraforming/releases) from the `cf-terraforming` GitHub repository.
 
 To view the help file, run `cf-terraforming` or `cf-terraforming -h`.
 
@@ -52,7 +52,7 @@ To use `cf-terraforming`, specify the items below:
 4. The account and/or zone to pull resources from - `--account`/ `--zone` or `-a`/ `-z`.
 5. The Cloudflare resources to generate config.
 
-The list of supported resources is available in the [Terraform README ↗](https://github.com/cloudflare/cf-terraforming#supported-resources).
+The list of supported resources is available in the [Terraform README ↗︎](https://github.com/cloudflare/cf-terraforming#supported-resources).
 
 ## Import existing Cloudflare resources
 

@@ -80,7 +80,7 @@ compatibility_flags = [
 
 ## get
 
-An implementation of the Node.js [`http.get` ↗](https://nodejs.org/docs/latest/api/http.html#httpgetoptions-callback) method.
+An implementation of the Node.js [`http.get` ↗︎](https://nodejs.org/docs/latest/api/http.html#httpgetoptions-callback) method.
 
 The `get` method performs a GET request to the specified URL and invokes the callback with the response. It's a convenience method that simplifies making HTTP GET requests without manually configuring request options.
 
@@ -108,15 +108,15 @@ export default {
 };
 ```
 
-The implementation of `get` in Workers is a wrapper around the global [`fetch` API ↗](https://developers.cloudflare.com/workers/runtime-apis/fetch/) and is therefore subject to the same [limits ↗](https://developers.cloudflare.com/workers/platform/limits/).
+The implementation of `get` in Workers is a wrapper around the global [`fetch` API ↗︎](https://developers.cloudflare.com/workers/runtime-apis/fetch/) and is therefore subject to the same [limits ↗︎](https://developers.cloudflare.com/workers/platform/limits/).
 
 As shown in the example above, it is necessary to arrange for requests to be correctly awaited in the `fetch` handler using a promise or the fetch may be canceled prematurely when the handler returns.
 
 ## request
 
-An implementation of the Node.js [\`http.request' ↗](https://nodejs.org/docs/latest/api/http.html#httprequesturl-options-callback) method.
+An implementation of the Node.js [\`http.request' ↗︎](https://nodejs.org/docs/latest/api/http.html#httprequesturl-options-callback) method.
 
-The `request` method creates an HTTP request with customizable options like method, headers, and body. It provides full control over the request configuration and returns a Node.js [stream.Writable ↗](https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/) for sending request data.
+The `request` method creates an HTTP request with customizable options like method, headers, and body. It provides full control over the request configuration and returns a Node.js [stream.Writable ↗︎](https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/) for sending request data.
 
 Because `request` is a wrapper around `fetch(...)`, it may be used only within an exported fetch or similar handler. Outside of such a handler, attempts to use `request` will throw an error.
 
@@ -162,9 +162,9 @@ The following options passed to the `request` (and `get`) method are not support
 
 ## OutgoingMessage
 
-The [`OutgoingMessage` ↗](https://nodejs.org/docs/latest/api/http.html#class-httpoutgoingmessage) class represents an HTTP response that is sent to the client. It provides methods for writing response headers and body, as well as for ending the response. `OutgoingMessage` extends from the Node.js [`stream.Writable` stream class ↗](https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/).
+The [`OutgoingMessage` ↗︎](https://nodejs.org/docs/latest/api/http.html#class-httpoutgoingmessage) class represents an HTTP response that is sent to the client. It provides methods for writing response headers and body, as well as for ending the response. `OutgoingMessage` extends from the Node.js [`stream.Writable` stream class ↗︎](https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/).
 
-The `OutgoingMessage` class is a base class for outgoing HTTP messages (both requests and responses). It provides methods for writing headers and body data, as well as for ending the message. `OutgoingMessage` extends from the [`Writable` stream class ↗](https://nodejs.org/docs/latest/api/stream.html#class-streamwritable).
+The `OutgoingMessage` class is a base class for outgoing HTTP messages (both requests and responses). It provides methods for writing headers and body data, as well as for ending the message. `OutgoingMessage` extends from the [`Writable` stream class ↗︎](https://nodejs.org/docs/latest/api/stream.html#class-streamwritable).
 
 Both `ClientRequest` and `ServerResponse` both extend from and inherit from `OutgoingMessage`.
 
@@ -222,7 +222,7 @@ The following differences exist between the Workers implementation and Node.js:
 
 ## Agent
 
-A partial implementation of the Node.js [\`http.Agent' ↗](https://nodejs.org/docs/latest/api/http.html#class-httpagent) class.
+A partial implementation of the Node.js [\`http.Agent' ↗︎](https://nodejs.org/docs/latest/api/http.html#class-httpagent) class.
 
 An `Agent` manages HTTP connection reuse by maintaining request queues per host/port. In the workers environment, however, such low-level management of the network connection, ports, etc, is not relevant because it is handled by the Cloudflare infrastructure instead. Accordingly, the implementation of `Agent` in Workers is a stub implementation that does not support connection pooling or keep-alive.
 
@@ -236,7 +236,7 @@ strictEqual(agent.protocol, "http:");
 
 ## createServer
 
-An implementation of the Node.js [`http.createServer` ↗](https://nodejs.org/docs/latest/api/http.html#httpcreateserveroptions-requestlistener) method.
+An implementation of the Node.js [`http.createServer` ↗︎](https://nodejs.org/docs/latest/api/http.html#httpcreateserveroptions-requestlistener) method.
 
 The `createServer` method creates an HTTP server instance that can handle incoming requests.
 
@@ -303,11 +303,11 @@ This approach gives you full control over the fetch handler while still leveragi
 
 Note
 
-Failing to call `close()` on an HTTP server may result in the server persisting until the worker is destroyed. In most cases, this is not an issue since servers typically live for the lifetime of the worker. However, if you need to create multiple servers during a worker's lifetime or want explicit lifecycle control (such as in test scenarios), call `close()` when you're done with the server, or use [explicit resource management ↗](https://v8.dev/features/explicit-resource-management).
+Failing to call `close()` on an HTTP server may result in the server persisting until the worker is destroyed. In most cases, this is not an issue since servers typically live for the lifetime of the worker. However, if you need to create multiple servers during a worker's lifetime or want explicit lifecycle control (such as in test scenarios), call `close()` when you're done with the server, or use [explicit resource management ↗︎](https://v8.dev/features/explicit-resource-management).
 
 ## Server
 
-An implementation of the Node.js [`http.Server` ↗](https://nodejs.org/docs/latest/api/http.html#class-httpserver) class.
+An implementation of the Node.js [`http.Server` ↗︎](https://nodejs.org/docs/latest/api/http.html#class-httpserver) class.
 
 The `Server` class represents an HTTP server and provides methods for handling incoming requests. It extends the Node.js `EventEmitter` class and can be used to create custom server implementations.
 
@@ -329,12 +329,12 @@ export default httpServerHandler({ port: 8080 });
 The following differences exist between the Workers implementation and Node.js:
 
 - Connection management methods such as `closeAllConnections()` and `closeIdleConnections()` are not implemented
-- Only `listen()` variants with a port number or no parameters are supported: `listen()`, `listen(0, callback)`, `listen(callback)`, etc. For reference, see the [Node.js documentation ↗](https://nodejs.org/docs/latest/api/net.html#serverlisten).
+- Only `listen()` variants with a port number or no parameters are supported: `listen()`, `listen(0, callback)`, `listen(callback)`, etc. For reference, see the [Node.js documentation ↗︎](https://nodejs.org/docs/latest/api/net.html#serverlisten).
 - The following server options are not supported: `maxHeaderSize`, `insecureHTTPParser`, `keepAliveTimeout`, `connectionsCheckingInterval`
 
 ## ServerResponse
 
-An implementation of the Node.js [`http.ServerResponse` ↗](https://nodejs.org/docs/latest/api/http.html#class-httpserverresponse) class.
+An implementation of the Node.js [`http.ServerResponse` ↗︎](https://nodejs.org/docs/latest/api/http.html#class-httpserverresponse) class.
 
 The `ServerResponse` class represents the server-side response object that is passed to request handlers. It provides methods for writing response headers and body data, and extends the Node.js `Writable` stream class.
 

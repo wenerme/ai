@@ -18,9 +18,9 @@ Turnstile supports `auto` (default), which uses the visitor's browser language i
 
 Note
 
-To request Turnstile support for a language not listed below, you can fill out [this form ↗](https://forms.gle/L8njBeRFCsZAjJ2f7).
+To request Turnstile support for a language not listed below, you can fill out [this form ↗︎](https://forms.gle/L8njBeRFCsZAjJ2f7).
 
-You can also submit feedback on a translation error via [this form ↗](https://forms.gle/Cdz4YTRoagGpVwd7A).
+You can also submit feedback on a translation error via [this form ↗︎](https://forms.gle/Cdz4YTRoagGpVwd7A).
 
 | Language | Language code<br>(4 letters) | Language code<br>(2 letters) |
 | --- | --- | --- |

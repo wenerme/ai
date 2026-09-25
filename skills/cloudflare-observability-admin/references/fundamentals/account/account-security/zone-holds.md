@@ -36,7 +36,7 @@ When you enable a zone hold, no one else can [add your zone](https://developers.
 
 To enable a zone hold:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Select your account and zone.
 3. On the zone homepage, go to **Quick Actions**.
 4. For **Zone Hold**, switch the toggle to **On**.
@@ -49,7 +49,7 @@ You may want to temporarily release a zone hold to allow another team to [regist
 
 To release a zone hold:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Select your account and zone.
 3. On the zone homepage, go to **Quick Actions**.
 4. For **Zone Hold**, switch the toggle to **Off**.

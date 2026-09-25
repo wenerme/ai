@@ -18,9 +18,9 @@ Pay per crawl beta
 
 Pay per crawl is currently in closed beta.
 
-To find out how to join the beta program, reach out to us at [Pay per crawl signup ↗](https://www.cloudflare.com/paypercrawl-signup/), or contact your account executive if you are an existing Enterprise customer.
+To find out how to join the beta program, reach out to us at [Pay per crawl signup ↗︎](https://www.cloudflare.com/paypercrawl-signup/), or contact your account executive if you are an existing Enterprise customer.
 
-To learn more about pay per crawl, refer to Cloudflare blog: [Introducing pay per crawl: enabling content owners to charge AI crawlers for access ↗](https://blog.cloudflare.com/introducing-pay-per-crawl/).
+To learn more about pay per crawl, refer to Cloudflare blog: [Introducing pay per crawl: enabling content owners to charge AI crawlers for access ↗︎](https://blog.cloudflare.com/introducing-pay-per-crawl/).
 
 AI crawlers often consume vast amounts of web content. Some provide mutual benefit to content owners by indexing content for search engines, but others engage in activities such as content scraping without permission.
 

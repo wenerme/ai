@@ -18,7 +18,7 @@ Total TLS allows Cloudflare to issue individual certificates for your proxied ho
 
 Caution
 
-Total TLS certificates follow the Common Name (CN) restriction of 64 characters ([RFC 5280 ↗](https://www.rfc-editor.org/rfc/rfc5280.html)). If you have a hostname that exceeds this length, you can create an [Advanced Certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/#create-a-certificate) via API to cover it.
+Total TLS certificates follow the Common Name (CN) restriction of 64 characters ([RFC 5280 ↗︎](https://www.rfc-editor.org/rfc/rfc5280.html)). If you have a hostname that exceeds this length, you can create an [Advanced Certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/#create-a-certificate) via API to cover it.
 
 When issued, these certificates will have a type of **Advanced - Total TLS**, and their default validity period is 90 days.
 

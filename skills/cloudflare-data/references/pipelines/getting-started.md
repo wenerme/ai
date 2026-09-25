@@ -17,14 +17,14 @@ Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers
 This guide will instruct you through:
 
 - Creating an [API token](https://developers.cloudflare.com/r2/api/tokens/) needed for pipelines to authenticate with your data catalog.
-- Creating your first pipeline with a simple ecommerce schema that writes to an [Apache Iceberg ↗](https://iceberg.apache.org/) table managed by R2 Data Catalog.
+- Creating your first pipeline with a simple ecommerce schema that writes to an [Apache Iceberg ↗︎](https://iceberg.apache.org/) table managed by R2 Data Catalog.
 - Sending sample ecommerce data via HTTP endpoint.
 - Validating data in your bucket and querying it with R2 SQL.
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -34,7 +34,7 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 

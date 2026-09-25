@@ -254,7 +254,7 @@ new_sqlite_classes = [ "Counter" ]
 ### Related resources
 
 - [Workers RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/)
-- [Durable Objects: Easy, Fast, Correct — Choose three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+- [Durable Objects: Easy, Fast, Correct — Choose three ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 Was this helpful?
 

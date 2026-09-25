@@ -16,14 +16,14 @@ Example of how to use Queues to handle rate limits of external APIs.
 
 Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/tutorials/handle-rate-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial explains how to use Queues to handle rate limits of external APIs by building an application that sends email notifications using [Resend ↗](https://www.resend.com/). However, you can use this pattern to handle rate limits of any external API.
+This tutorial explains how to use Queues to handle rate limits of external APIs by building an application that sends email notifications using [Resend ↗︎](https://www.resend.com/). However, you can use this pattern to handle rate limits of any external API.
 
-Resend is a service that allows you to send emails from your application via an API. Resend has a default [rate limit ↗](https://resend.com/docs/api-reference/introduction#rate-limit) of two requests per second. You will use Queues to handle the rate limit of Resend.
+Resend is a service that allows you to send emails from your application via an API. Resend has a default [rate limit ↗︎](https://resend.com/docs/api-reference/introduction#rate-limit) of two requests per second. You will use Queues to handle the rate limit of Resend.
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -33,16 +33,16 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
-4. Sign up for [Resend ↗](https://resend.com/) and generate an API key by following the guide on the [Resend documentation ↗](https://resend.com/docs/dashboard/api-keys/introduction).
+4. Sign up for [Resend ↗︎](https://resend.com/) and generate an API key by following the guide on the [Resend documentation ↗︎](https://resend.com/docs/dashboard/api-keys/introduction).
 5. Additionally, you will need access to Cloudflare Queues.
 
 Queues is included in the monthly subscription cost of your Workers Paid plan, and charges based on operations against your queues. A limited version of Queues is also available on the Workers Free plan. Refer to [Pricing](https://developers.cloudflare.com/queues/platform/pricing/) for more details.
 
-Before you can use Queues, you must enable it via [the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/queues). You need a Workers Paid plan to enable Queues.
+Before you can use Queues, you must enable it via [the Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/queues). You need a Workers Paid plan to enable Queues.
 
 To enable Queues:
 
@@ -51,7 +51,7 @@ To enable Queues:
 
 ## 1. Create a new Workers application
 
-To get started, create a Worker application using the [`create-cloudflare` CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare). Open a terminal window and run the following command:
+To get started, create a Worker application using the [`create-cloudflare` CLI ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare). Open a terminal window and run the following command:
 
 npmyarnpnpm
 
@@ -143,7 +143,7 @@ Your final Wrangler file should look similar to the example below.
 	"name": "resend-rate-limit-queue",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -171,7 +171,7 @@ Your final Wrangler file should look similar to the example below.
 name = "resend-rate-limit-queue"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[queues.producers]]
@@ -314,7 +314,7 @@ interface Env {
 }
 ```
 
-Lastly, install the [`resend` package ↗](https://www.npmjs.com/package/resend) using the following command:
+Lastly, install the [`resend` package ↗︎](https://www.npmjs.com/package/resend) using the following command:
 
 npmyarnpnpmbun
 
@@ -496,13 +496,13 @@ To test your Worker, you could use the following cURL request. Replace `<YOUR_WO
 curl -X POST -d "delivered@resend.dev" <YOUR_WORKER_URL>
 ```
 
-Refer to the [GitHub repository ↗](https://github.com/harshil1712/queues-rate-limit) for the complete code for this tutorial. If you are using [Hono ↗](https://hono.dev/), you can refer to the [Hono example ↗](https://github.com/harshil1712/resend-rate-limit-demo).
+Refer to the [GitHub repository ↗︎](https://github.com/harshil1712/queues-rate-limit) for the complete code for this tutorial. If you are using [Hono ↗︎](https://hono.dev/), you can refer to the [Hono example ↗︎](https://github.com/harshil1712/resend-rate-limit-demo).
 
 ## Related resources
 
 - [How Queues works](https://developers.cloudflare.com/queues/reference/how-queues-works/)
 - [Queues Batching and Retries](https://developers.cloudflare.com/queues/configuration/batching-retries/)
-- [Resend ↗](https://resend.com/docs/)
+- [Resend ↗︎](https://resend.com/docs/)
 
 Was this helpful?
 

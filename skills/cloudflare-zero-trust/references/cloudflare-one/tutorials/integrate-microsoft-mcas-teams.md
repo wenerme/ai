@@ -24,7 +24,7 @@ Microsoft provides an MCAS API endpoint to allow queries to see which applicatio
 
 ## Basic configuration
 
-In your Microsoft account, you first need to create an API token and URL endpoint to use to query the URLs blocked by MCAS. Follow the guide for [Managing API tokens for Microsoft Cloud App Security ↗](https://learn.microsoft.com/defender-cloud-apps/api-authentication) to generate a new API token and a custom API URL for the API endpoint.
+In your Microsoft account, you first need to create an API token and URL endpoint to use to query the URLs blocked by MCAS. Follow the guide for [Managing API tokens for Microsoft Cloud App Security ↗︎](https://learn.microsoft.com/defender-cloud-apps/api-authentication) to generate a new API token and a custom API URL for the API endpoint.
 
 ## Using the API to query banned applications
 
@@ -69,7 +69,7 @@ curl -v "https://<MCAS API URL>/api/discovery_block_scripts/?format=120&type=all
 
 ## Adding a hostname list in Cloudflare One
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Reusable components** > **Lists**
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Reusable components** > **Lists**
 2. Select **Upload CSV**. Even though the hostname list is not in CSV format, it will work with no issues.
 3. Add a name for the list, specify *Hostnames* as the list type, and give it a description.
 4. Drag and drop your MCAS output file created via the API call, or you can select **Select a file**.

@@ -1526,8 +1526,8 @@
   },
   "grafana-pathfinder-app/administrators-reference.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/administrators-reference.md",
-    "size": 10689,
-    "updatedAt": "2026-09-17T15:02:01.507Z"
+    "size": 14444,
+    "updatedAt": "2026-09-25T15:21:23.397Z"
   },
   "grafana-pathfinder-app/architecture.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/architecture.md",
@@ -1558,6 +1558,226 @@
     "url": "https://grafana.com/docs/plugins/grafana-pathfinder-app/latest/upgrade-notes.md",
     "size": 15287,
     "updatedAt": "2026-09-23T04:43:25.730Z"
+  },
+  "grafana-prometheusalerting-app/alerting-rules.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules.md",
+    "size": 435,
+    "updatedAt": "2026-09-25T15:21:24.840Z"
+  },
+  "grafana-prometheusalerting-app/alerting-rules/create-alert-rule.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/create-alert-rule.md",
+    "size": 489,
+    "updatedAt": "2026-09-25T15:21:25.038Z"
+  },
+  "grafana-prometheusalerting-app/alerting-rules/create-recording-rule.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/create-recording-rule.md",
+    "size": 501,
+    "updatedAt": "2026-09-25T15:21:25.241Z"
+  },
+  "grafana-prometheusalerting-app/alerting-rules/manage-rule-groups.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/manage-rule-groups.md",
+    "size": 492,
+    "updatedAt": "2026-09-25T15:21:25.459Z"
+  },
+  "grafana-prometheusalerting-app/alerting-rules/template-annotations-and-labels.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels.md",
+    "size": 531,
+    "updatedAt": "2026-09-25T15:21:25.661Z"
+  },
+  "grafana-prometheusalerting-app/configure-notifications.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications.md",
+    "size": 462,
+    "updatedAt": "2026-09-25T15:21:25.865Z"
+  },
+  "grafana-prometheusalerting-app/configure-notifications/configure-routes.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes.md",
+    "size": 513,
+    "updatedAt": "2026-09-25T15:21:26.074Z"
+  },
+  "grafana-prometheusalerting-app/configure-notifications/create-receiver.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-receiver.md",
+    "size": 510,
+    "updatedAt": "2026-09-25T15:21:26.276Z"
+  },
+  "grafana-prometheusalerting-app/configure-notifications/create-silence.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-silence.md",
+    "size": 507,
+    "updatedAt": "2026-09-25T15:21:26.473Z"
+  },
+  "grafana-prometheusalerting-app/configure-notifications/inhibition-rules.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules.md",
+    "size": 513,
+    "updatedAt": "2026-09-25T15:21:26.675Z"
+  },
+  "grafana-prometheusalerting-app/configure-notifications/template-notifications.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications.md",
+    "size": 531,
+    "updatedAt": "2026-09-25T15:21:26.884Z"
+  },
+  "grafana-prometheusalerting-app/configure-notifications/template-notifications/examples.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/examples.md",
+    "size": 558,
+    "updatedAt": "2026-09-25T15:21:27.087Z"
+  },
+  "grafana-prometheusalerting-app/configure-notifications/template-notifications/language.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/language.md",
+    "size": 558,
+    "updatedAt": "2026-09-25T15:21:27.282Z"
+  },
+  "grafana-prometheusalerting-app/configure-notifications/template-notifications/manage-notification-templates.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/manage-notification-templates.md",
+    "size": 621,
+    "updatedAt": "2026-09-25T15:21:27.478Z"
+  },
+  "grafana-prometheusalerting-app/configure-notifications/template-notifications/reference.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/reference.md",
+    "size": 561,
+    "updatedAt": "2026-09-25T15:21:27.680Z"
+  },
+  "grafana-prometheusalerting-app/configure-notifications/time-intervals.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/time-intervals.md",
+    "size": 507,
+    "updatedAt": "2026-09-25T15:21:27.882Z"
+  },
+  "grafana-prometheusalerting-app/examples.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples.md",
+    "size": 417,
+    "updatedAt": "2026-09-25T15:21:28.078Z"
+  },
+  "grafana-prometheusalerting-app/examples/high-cardinality-alerts.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples/high-cardinality-alerts.md",
+    "size": 489,
+    "updatedAt": "2026-09-25T15:21:28.281Z"
+  },
+  "grafana-prometheusalerting-app/examples/multi-dimensional-alerts.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples/multi-dimensional-alerts.md",
+    "size": 492,
+    "updatedAt": "2026-09-25T15:21:28.484Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals.md",
+    "size": 429,
+    "updatedAt": "2026-09-25T15:21:28.679Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals/alert-rule-evaluation.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation.md",
+    "size": 495,
+    "updatedAt": "2026-09-25T15:21:28.889Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals/alert-rule-evaluation/alert-rule-state-and-health.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/alert-rule-state-and-health.md",
+    "size": 579,
+    "updatedAt": "2026-09-25T15:21:29.092Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals/alert-rule-evaluation/rule-groups.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/rule-groups.md",
+    "size": 531,
+    "updatedAt": "2026-09-25T15:21:29.294Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals/alert-rules.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules.md",
+    "size": 465,
+    "updatedAt": "2026-09-25T15:21:29.490Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals/alert-rules/labels-and-annotations.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/labels-and-annotations.md",
+    "size": 534,
+    "updatedAt": "2026-09-25T15:21:29.685Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals/alert-rules/queries-conditions.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/queries-conditions.md",
+    "size": 522,
+    "updatedAt": "2026-09-25T15:21:29.888Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals/notifications.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications.md",
+    "size": 471,
+    "updatedAt": "2026-09-25T15:21:30.091Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals/notifications/group-alert-notifications.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/group-alert-notifications.md",
+    "size": 549,
+    "updatedAt": "2026-09-25T15:21:30.300Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals/notifications/receivers.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/receivers.md",
+    "size": 501,
+    "updatedAt": "2026-09-25T15:21:30.511Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals/notifications/routing-tree.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/notifications/routing-tree.md",
+    "size": 510,
+    "updatedAt": "2026-09-25T15:21:30.719Z"
+  },
+  "grafana-prometheusalerting-app/fundamentals/templates.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/templates.md",
+    "size": 459,
+    "updatedAt": "2026-09-25T15:21:30.921Z"
+  },
+  "grafana-prometheusalerting-app/guides.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/guides.md",
+    "size": 411,
+    "updatedAt": "2026-09-25T15:21:31.117Z"
+  },
+  "grafana-prometheusalerting-app/guides/best-practices.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/guides/best-practices.md",
+    "size": 456,
+    "updatedAt": "2026-09-25T15:21:31.320Z"
+  },
+  "grafana-prometheusalerting-app/guides/troubleshooting.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/guides/troubleshooting.md",
+    "size": 459,
+    "updatedAt": "2026-09-25T15:21:31.522Z"
+  },
+  "grafana-prometheusalerting-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest.md",
+    "size": 402,
+    "updatedAt": "2026-09-25T15:21:31.717Z"
+  },
+  "grafana-prometheusalerting-app/monitor-status.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status.md",
+    "size": 435,
+    "updatedAt": "2026-09-25T15:21:31.926Z"
+  },
+  "grafana-prometheusalerting-app/monitor-status/alerts-page.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/alerts-page.md",
+    "size": 471,
+    "updatedAt": "2026-09-25T15:21:32.129Z"
+  },
+  "grafana-prometheusalerting-app/monitor-status/view-active-notifications.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications.md",
+    "size": 513,
+    "updatedAt": "2026-09-25T15:21:32.324Z"
+  },
+  "grafana-prometheusalerting-app/monitor-status/view-alert-rules.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-alert-rules.md",
+    "size": 486,
+    "updatedAt": "2026-09-25T15:21:32.532Z"
+  },
+  "grafana-prometheusalerting-app/monitor-status/view-alert-state.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-alert-state.md",
+    "size": 486,
+    "updatedAt": "2026-09-25T15:21:32.736Z"
+  },
+  "grafana-prometheusalerting-app/set-up.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up.md",
+    "size": 411,
+    "updatedAt": "2026-09-25T15:21:32.945Z"
+  },
+  "grafana-prometheusalerting-app/set-up/configure-data-sources.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources.md",
+    "size": 480,
+    "updatedAt": "2026-09-25T15:21:33.148Z"
+  },
+  "grafana-prometheusalerting-app/set-up/configure-rbac.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-rbac.md",
+    "size": 456,
+    "updatedAt": "2026-09-25T15:21:33.350Z"
+  },
+  "grafana-prometheusalerting-app/set-up/install-plugin.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/install-plugin.md",
+    "size": 456,
+    "updatedAt": "2026-09-25T15:21:33.551Z"
   },
   "grafana-pyroscope-app/access.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/access.md",
@@ -1661,38 +1881,38 @@
   },
   "grafana-salesforce-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/alerting.md",
-    "size": 7499,
-    "updatedAt": "2026-06-25T05:43:05.498Z"
+    "size": 9516,
+    "updatedAt": "2026-09-25T15:21:37.079Z"
   },
   "grafana-salesforce-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/annotations.md",
-    "size": 4980,
-    "updatedAt": "2026-06-25T05:43:05.858Z"
+    "size": 6127,
+    "updatedAt": "2026-09-25T15:21:37.245Z"
   },
   "grafana-salesforce-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/configure.md",
-    "size": 15053,
-    "updatedAt": "2026-06-25T05:43:06.274Z"
+    "size": 16504,
+    "updatedAt": "2026-09-25T15:21:37.399Z"
   },
   "grafana-salesforce-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest.md",
-    "size": 3029,
-    "updatedAt": "2026-06-25T05:43:06.632Z"
+    "size": 3257,
+    "updatedAt": "2026-09-25T15:21:37.565Z"
   },
   "grafana-salesforce-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/query-editor.md",
-    "size": 5742,
-    "updatedAt": "2026-06-25T05:43:06.997Z"
+    "size": 9105,
+    "updatedAt": "2026-09-25T15:21:37.724Z"
   },
   "grafana-salesforce-datasource/template-variables.md": {
     "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/template-variables.md",
-    "size": 4206,
-    "updatedAt": "2026-06-25T05:43:07.358Z"
+    "size": 4565,
+    "updatedAt": "2026-09-25T15:21:37.889Z"
   },
   "grafana-salesforce-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-salesforce-datasource/latest/troubleshooting.md",
-    "size": 13961,
-    "updatedAt": "2026-06-25T05:43:07.728Z"
+    "size": 24750,
+    "updatedAt": "2026-09-25T15:21:38.046Z"
   },
   "grafana-saphana-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-saphana-datasource/latest/alerting.md",
@@ -2286,8 +2506,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 9419,
-    "updatedAt": "2026-09-22T04:47:43.048Z"
+    "size": 9564,
+    "updatedAt": "2026-09-25T15:21:58.941Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

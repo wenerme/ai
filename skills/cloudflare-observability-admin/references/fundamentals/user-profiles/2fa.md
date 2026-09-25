@@ -24,7 +24,7 @@ Super Administrators can turn on **2FA Enforcement** to require all members to e
 
 To enable two-factor authentication for your Cloudflare login:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login).
 2. Under the **My Profile** dropdown, select **My Profile**.
 3. Select **Authentication**. 
 4. Select **Add** next to [Mobile App Authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-totp-mobile-application-authentication) or [Security Key Authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-security-key-authentication-for-two-factor-cloudflare-login), or **Enable** next to [Email Authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/#configure-email-two-factor-authentication).
@@ -39,7 +39,7 @@ Caution
 
 Security keys only work with browsers that support the WebAuthn protocol.
 
-A security key provides phishing-resistant multifactor authentication to your Cloudflare account using a built-in authenticator (Apple Touch ID, Android fingerprint, or Windows Hello) or an external hardware key (like [YubiKey ↗](https://www.yubico.com/works-with-yubikey/catalog/cloudflare/)) that connects to your computer through USB-A, USB-C, NFC, or Bluetooth.
+A security key provides phishing-resistant multifactor authentication to your Cloudflare account using a built-in authenticator (Apple Touch ID, Android fingerprint, or Windows Hello) or an external hardware key (like [YubiKey ↗︎](https://www.yubico.com/works-with-yubikey/catalog/cloudflare/)) that connects to your computer through USB-A, USB-C, NFC, or Bluetooth.
 
 Cloudflare recommends configuring multiple security keys. With multiple keys, you can still use 2FA if the primary key is unavailable or if you are working on a different device.
 
@@ -157,12 +157,12 @@ If you are not the Super Administrator of an organization with **2FA Enforcement
 
 If you lose access to a mobile device, security key, or authentication code, you can solve these issues by using a backup code or retrieving a backup code from your preferred authentication app.
 
-Refer to Google's documentation to [transfer Google Authenticator codes from one Android device to another ↗](https://support.google.com/accounts/answer/1066447?co=GENIE.Platform%3DAndroid&hl=en&oco=0).
+Refer to Google's documentation to [transfer Google Authenticator codes from one Android device to another ↗︎](https://support.google.com/accounts/answer/1066447?co=GENIE.Platform%3DAndroid&hl=en&oco=0).
 
 When setting up 2FA, you should have saved your backup codes in a secure location. To restore lost access using a Cloudflare backup code:
 
 1. Retrieve the backup code from where you stored it.
-2. Go to the [Cloudflare login page ↗](https://dash.cloudflare.com/login), enter your username and password and select **Log in**. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+2. Go to the [Cloudflare login page ↗︎](https://dash.cloudflare.com/login), enter your username and password and select **Log in**. [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 3. You should see a page titled **Two-Factor Authentication**
    - If it has a text box, enter one of your backup codes and select **Log in**.
    - If instead you see "Insert your security key and touch it", cancel any prompts from your browser that appear and select **try another authentication method or backup code**. Proceed to enter one of your backup codes and select **Log in**.
@@ -173,8 +173,8 @@ Once you use a backup code, it becomes invalid.
 
 ## Related resources
 
-- [Google Authentication documentation ↗](https://support.google.com/accounts/answer/1066447?hl=en&ref_topic=2954345&co=GENIE.Platform%3DiOS&oco=0)
-- [YubiKey documentation ↗](https://www.yubico.com/works-with-yubikey/catalog/cloudflare/)
+- [Google Authentication documentation ↗︎](https://support.google.com/accounts/answer/1066447?hl=en&ref_topic=2954345&co=GENIE.Platform%3DiOS&oco=0)
+- [YubiKey documentation ↗︎](https://www.yubico.com/works-with-yubikey/catalog/cloudflare/)
 - [Set up multi-user accounts on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-members/)
 - [Account recovery](https://developers.cloudflare.com/fundamentals/user-profiles/account-recovery/)
 

@@ -18,7 +18,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 The 405 Method Not Allowed status code indicates that the origin server recognizes the requested resource but does not support the HTTP method used in the request.
 
-For more details, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+For more details, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 

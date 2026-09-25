@@ -26,7 +26,7 @@ Argo Smart Routing detects real-time network issues and routes your web traffic 
 
 This results in faster loading times, increased reliability, and reduced costs. These benefits are most apparent for users farthest from your origin server.
 
-Learn more about the [benefits of Argo Smart Routing ↗](https://www.cloudflare.com/application-services/products/argo-smart-routing/).
+Learn more about the [benefits of Argo Smart Routing ↗︎](https://www.cloudflare.com/application-services/products/argo-smart-routing/).
 
 Note
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/reference/browser-close-reasons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A browser session may close for a variety of reasons, including normal completion, inactivity, connection errors, or errors in the headless browser instance. As a best practice, wrap `puppeteer.connect` or `puppeteer.launch` in a [`try...catch` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) statement to handle unexpected closures gracefully.
+A browser session may close for a variety of reasons, including normal completion, inactivity, connection errors, or errors in the headless browser instance. As a best practice, wrap `puppeteer.connect` or `puppeteer.launch` in a [`try...catch` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) statement to handle unexpected closures gracefully.
 
 To find the reason that a browser closed:
 

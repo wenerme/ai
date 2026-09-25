@@ -24,7 +24,7 @@ Network Analytics requires the following:
 - Cloudflare Magic Transit or Spectrum.
 - Cloudflare WAN.
 
-For a technical deep-dive into Network Analytics, refer to our [blog post ↗](https://blog.cloudflare.com/building-network-analytics-v2/).
+For a technical deep-dive into Network Analytics, refer to our [blog post ↗︎](https://blog.cloudflare.com/building-network-analytics-v2/).
 
 ## Remarks
 

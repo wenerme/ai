@@ -47,7 +47,7 @@ Using the above example, if `POST /api/v1/transferFunds` must legitimately alway
 
 You should also consider applying other API Shield protections to these endpoints ([rate limiting suggestions](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/), [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/), and [mTLS](https://developers.cloudflare.com/api-shield/security/mtls/)).
 
-For more information, refer to the [blog post ↗](https://blog.cloudflare.com/api-sequence-analytics).
+For more information, refer to the [blog post ↗︎](https://blog.cloudflare.com/api-sequence-analytics).
 
 ### Repeated sequences
 
@@ -55,7 +55,7 @@ Real-world API usage shows many successively repeated operations. To facilitate 
 
 ## Availability
 
-Sequence Analytics is available for all API Shield customers. Pro, Business, and Enterprise customers who have not purchased API Shield can get started by [enabling the API Shield trial ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/api-shield) in the Cloudflare dashboard or contacting your account manager.
+Sequence Analytics is available for all API Shield customers. Pro, Business, and Enterprise customers who have not purchased API Shield can get started by [enabling the API Shield trial ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/security/api-shield) in the Cloudflare dashboard or contacting your account manager.
 
 ## Limitations
 

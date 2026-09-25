@@ -36,11 +36,11 @@ This reference architecture is designed for IT, web hosting, and network profess
 
 To build a stronger baseline understanding of Cloudflare and its load balancing solution, we recommend the following resources:
 
-- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
+- What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗︎](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
 
-- Solution Brief: [Cloudflare Private Network Load Balancing ↗](https://cf-assets.www.cloudflare.com/slt3lc6tev37/4mn2dtdw7TvSwCUJw8mMf5/f1fa6269f4468c432560b2c9f5ebd38a/Cloudflare_Local_Traffic_Manager_Solution_Brief.pdf) (5 minute read)
-- Solution Brief: [Cloudflare GTM Load Balancing ↗](https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OWUduF4YBKYADj3zREAX6/5241a81a3fc4ff1db7c9bade14991b23/Cloudflare_Global_Traffic_Manager__GTM__Solution_Brief.pdf) (5 minute read)
-- Blog: [Elevate load balancing with Private IPs and Cloudflare Tunnels: a secure path to efficient traffic distribution ↗](https://blog.cloudflare.com/elevate-load-balancing-with-private-ips-and-cloudflare-tunnels-a-secure-path-to-efficient-traffic-distribution/) (13 minutes)
+- Solution Brief: [Cloudflare Private Network Load Balancing ↗︎](https://cf-assets.www.cloudflare.com/slt3lc6tev37/4mn2dtdw7TvSwCUJw8mMf5/f1fa6269f4468c432560b2c9f5ebd38a/Cloudflare_Local_Traffic_Manager_Solution_Brief.pdf) (5 minute read)
+- Solution Brief: [Cloudflare GTM Load Balancing ↗︎](https://cf-assets.www.cloudflare.com/slt3lc6tev37/5OWUduF4YBKYADj3zREAX6/5241a81a3fc4ff1db7c9bade14991b23/Cloudflare_Global_Traffic_Manager__GTM__Solution_Brief.pdf) (5 minute read)
+- Blog: [Elevate load balancing with Private IPs and Cloudflare Tunnels: a secure path to efficient traffic distribution ↗︎](https://blog.cloudflare.com/elevate-load-balancing-with-private-ips-and-cloudflare-tunnels-a-secure-path-to-efficient-traffic-distribution/) (13 minutes)
 
 Those who read this reference architecture will learn:
 
@@ -63,11 +63,11 @@ Steering is a load balancer’s main function — the process of handling, sendi
 
 #### Layer 7
 
-[Layer 7 ↗](https://www.cloudflare.com/learning/ddos/what-is-layer-7/) of the [OSI model ↗](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/), also known as the application layer, is where protocols such as SSH, FTP, NTP, SMTP, and HTTP(S) reside. When this document refers to layer 7 or layer 7 load balancers, it means HTTP(S)-based services. The Cloudflare layer 7 stack allows Cloudflare to apply services like DDoS protection, Bot Management, WAF, CDN, Load Balancing, and more to a customer's website to improve performance, availability, and security.
+[Layer 7 ↗︎](https://www.cloudflare.com/learning/ddos/what-is-layer-7/) of the [OSI model ↗︎](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/), also known as the application layer, is where protocols such as SSH, FTP, NTP, SMTP, and HTTP(S) reside. When this document refers to layer 7 or layer 7 load balancers, it means HTTP(S)-based services. The Cloudflare layer 7 stack allows Cloudflare to apply services like DDoS protection, Bot Management, WAF, CDN, Load Balancing, and more to a customer's website to improve performance, availability, and security.
 
 #### Layer 4
 
-Layer 4 of the [OSI model ↗](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) — also called the transport layer — is responsible for end-to-end communication between two devices. Network services that operate at layer 4 can support a much broader set of services and protocols. Cloudflare’s public layer 4 load balancers are enabled by a product called Spectrum, which works as a layer 4 reverse proxy. In addition to offering load balancing, Spectrum provides protection from [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) and can conceal the endpoint IP addresses.
+Layer 4 of the [OSI model ↗︎](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/) — also called the transport layer — is responsible for end-to-end communication between two devices. Network services that operate at layer 4 can support a much broader set of services and protocols. Cloudflare’s public layer 4 load balancers are enabled by a product called Spectrum, which works as a layer 4 reverse proxy. In addition to offering load balancing, Spectrum provides protection from [DDoS attacks ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) and can conceal the endpoint IP addresses.
 
 #### SSL/TLS Offloading
 
@@ -193,7 +193,7 @@ Figure 6, above, shows other Cloudflare services are also running in each of the
 
 *Figure 7: Some of the processes a HTTP request passes through in the Cloudflare layer 7 stack*
 
-Cloudflare also has a [network optimization service ↗](https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed/) that is constantly running at all data centers to ensure that Cloudflare provides the best path between Cloudflare data centers and also track all the available paths to endpoints. This allows Cloudflare to ensure that endpoints can always be reached and reroute traffic to alternate Cloudflare data centers, if necessary, to reach an endpoint. After the load balancer has made a decision on which endpoint to steer the traffic, the traffic is then forwarded to Cloudflare’s network optimization service to determine the best path to reach the destination. The path can be affected by a feature called Argo Smart Routing which, when enabled, uses timed TCP connections to find the Cloudflare data center with the fastest RTT to the endpoint. Figure 8 shows how Argo Smart Routing can help improve connection time to endpoints.
+Cloudflare also has a [network optimization service ↗︎](https://blog.cloudflare.com/orpheus-saves-internet-requests-while-maintaining-speed/) that is constantly running at all data centers to ensure that Cloudflare provides the best path between Cloudflare data centers and also track all the available paths to endpoints. This allows Cloudflare to ensure that endpoints can always be reached and reroute traffic to alternate Cloudflare data centers, if necessary, to reach an endpoint. After the load balancer has made a decision on which endpoint to steer the traffic, the traffic is then forwarded to Cloudflare’s network optimization service to determine the best path to reach the destination. The path can be affected by a feature called Argo Smart Routing which, when enabled, uses timed TCP connections to find the Cloudflare data center with the fastest RTT to the endpoint. Figure 8 shows how Argo Smart Routing can help improve connection time to endpoints.
 
 ![Argo Smart Routing finds the fastest path between requester and endpoint](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1177,height=427,format=svg/_astro/lb-ref-arch-8.DxPypMMy.svg "Figure 8: Argo Smart Routing reduces latency to endpoints")
 
@@ -347,7 +347,7 @@ Proximity steering is a traffic steering algorithm available to enterprise plan 
 
 Cloudflare determines the requester’s physical location using the following methods, in this order:
 
-1. [EDNS Client Subnet ↗](https://developers.google.com/speed/public-dns/docs/ecs) information, if provided in the DNS request
+1. [EDNS Client Subnet ↗︎](https://developers.google.com/speed/public-dns/docs/ecs) information, if provided in the DNS request
 2. Geolocation information of the resolver used to reach Cloudflare
 3. GPS location of the Cloudflare data center handling the request
 
@@ -678,7 +678,7 @@ Please note that DNS-only load balancers have a few limitations compared to prox
 
 For more information on additional steering methods, please refer to the [Steering](#steering) section.
 
-There are also client and resolver DNS cache considerations when using DNS-only load balancers. The cache life is determined by the DNS server answering the request. The [Time-to-Live (TTL) ↗](https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl/) value tells a DNS requester how long the response is valid before the client should send a new DNS request to see if the destination has changed. The TTL is calculated in seconds, so — for example — a TTL value of 3600 equates to a TTL of one hour. However, standard DNS TTL values are usually either 12 or 24 hours or 43200 and 86400 respectively.
+There are also client and resolver DNS cache considerations when using DNS-only load balancers. The cache life is determined by the DNS server answering the request. The [Time-to-Live (TTL) ↗︎](https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl/) value tells a DNS requester how long the response is valid before the client should send a new DNS request to see if the destination has changed. The TTL is calculated in seconds, so — for example — a TTL value of 3600 equates to a TTL of one hour. However, standard DNS TTL values are usually either 12 or 24 hours or 43200 and 86400 respectively.
 
 The TTL of a DNS-only load balancer is set to 30 (seconds). This ensures that as endpoint health changes or endpoints are added or deleted, the DNS-only load balancer is queried more often to provide the most accurate list of available endpoints possible.
 
@@ -700,7 +700,7 @@ Given the breadth of services and protocols this represents, the treatment provi
 
 *Figure 28: Spectrum Layer 4 load balancers support both TCP and UDP protocols*
 
-Cloudflare layer 4 Spectrum load balancers are publicly accessible. Access to these load balancing resources can be managed using a Spectrum configuration called *IP Access Rules,* which can be defined as part of a WAF configuration, but are limited to rules created with the “allow” or “block” action for specific IP addresses, subnets, countries, or [Border Gateway Protocol (BGP) ↗](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/) Autonomous System Numbers (ASNs).
+Cloudflare layer 4 Spectrum load balancers are publicly accessible. Access to these load balancing resources can be managed using a Spectrum configuration called *IP Access Rules,* which can be defined as part of a WAF configuration, but are limited to rules created with the “allow” or “block” action for specific IP addresses, subnets, countries, or [Border Gateway Protocol (BGP) ↗︎](https://www.cloudflare.com/learning/security/glossary/what-is-bgp/) Autonomous System Numbers (ASNs).
 
 In addition to being public, Spectrum load balancers are always proxied. The proxy setting shown earlier (Figures 24 and 25) will be ignored when Spectrum is configured as the ingress path for the load balancer. All traffic destined for Spectrum-based load balancers will always pass through the Cloudflare edge.
 
@@ -818,7 +818,7 @@ All Cloudflare Load Balancer deployment models come with inherent protections. T
   - [DDoS protection](https://developers.cloudflare.com/ddos-protection/managed-rulesets/http/) to protect against attacks
   - WAF with [Cloudflare managed ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/cloudflare-managed-ruleset/) and [OWASP ruleset](https://developers.cloudflare.com/waf/managed-rules/reference/owasp-core-ruleset/) to block known vulnerabilities and exploits
 - DNS-only load balancer (Public)
-  - [DNS DDoS protection ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) to ensure a DNS-only load balancer is always available
+  - [DNS DDoS protection ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) to ensure a DNS-only load balancer is always available
 - Spectrum layer 4 load balancer (Public)
   - [DDoS Protection](https://developers.cloudflare.com/spectrum/about/ddos-for-spectrum/) to protect against layer 4 attacks
 

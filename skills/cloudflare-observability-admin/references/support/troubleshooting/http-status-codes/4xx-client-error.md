@@ -34,7 +34,7 @@ For a complete description of this error refer to the [Error 401](https://develo
 
 ## 402 Payment Required
 
-The `402 Payment Required` status code is reserved for future use and is not yet implemented according to the standards outlined in [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+The `402 Payment Required` status code is reserved for future use and is not yet implemented according to the standards outlined in [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ## 403 Forbidden
 

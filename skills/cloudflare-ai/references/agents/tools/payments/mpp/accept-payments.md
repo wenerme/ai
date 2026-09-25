@@ -16,7 +16,7 @@ Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Use Cloudflare Workers to accept Machine Payments Protocol (MPP) payments. Choose an integration based on the service you want to protect:
 
-- [`mpp-proxy` ↗](https://github.com/cloudflare/mpp-proxy) — Charge for HTTP content without changing your origin code. Refer to [Charge for HTTP content](https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/).
+- [`mpp-proxy` ↗︎](https://github.com/cloudflare/mpp-proxy) — Charge for HTTP content without changing your origin code. Refer to [Charge for HTTP content](https://developers.cloudflare.com/agents/tools/payments/mpp-charge-for-http-content/).
 - **Worker route** — Add `mppx` payment middleware to a Worker application.
 - **MCP tool** — Require payment before an MCP tool returns its result.
 
@@ -24,7 +24,7 @@ Use Cloudflare Workers to accept Machine Payments Protocol (MPP) payments. Choos
 
 Create a [Cloudflare account](https://developers.cloudflare.com/fundamentals/account/create-account/). You also need a payment recipient and an MPP secret key.
 
-The examples use a stablecoin payment method on testnet. For other methods, refer to [MPP payment methods ↗](https://mpp.dev/payment-methods/).
+The examples use a stablecoin payment method on testnet. For other methods, refer to [MPP payment methods ↗︎](https://mpp.dev/payment-methods/).
 
 ## Charge for a Worker route
 
@@ -181,7 +181,7 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
      "name": "mpp-server",
      "main": "src/index.ts",
      // Set this to today's date
-     "compatibility_date": "2026-09-22",
+     "compatibility_date": "2026-09-25",
      "compatibility_flags": [
        "nodejs_compat"
      ],
@@ -208,7 +208,7 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
    name = "mpp-server"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = ["nodejs_compat"]
 
    [[durable_objects.bindings]]
@@ -347,7 +347,7 @@ Add the MPP transport to an [`McpAgent`](https://developers.cloudflare.com/agent
 
    An unpaid `premium_search` call returns an MPP Challenge. A paid retry returns the tool result and an MPP Receipt in `_meta`.
 
-To test both payment flows from a Cloudflare Agent, refer to [Pay from the Agents SDK](https://developers.cloudflare.com/agents/tools/payments/mpp/pay-from-agents-sdk/). For production billing patterns, refer to [MPP payment intents ↗](https://mpp.dev/intents/).
+To test both payment flows from a Cloudflare Agent, refer to [Pay from the Agents SDK](https://developers.cloudflare.com/agents/tools/payments/mpp/pay-from-agents-sdk/). For production billing patterns, refer to [MPP payment intents ↗︎](https://mpp.dev/intents/).
 
 Was this helpful?
 

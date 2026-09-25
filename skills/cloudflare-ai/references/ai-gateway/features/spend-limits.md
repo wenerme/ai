@@ -77,7 +77,7 @@ If your gateway is protected by [Cloudflare Access](https://developers.cloudflar
 
 To set a per-user budget:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **AI** > **AI Gateway** and select your gateway.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **AI** > **AI Gateway** and select your gateway.
 2. Go to **Settings** > **Spend limits** and add a rule.
 3. Under **Limit by metadata**, select **Add metadata dimension** and enter `cf.user_id` as the key.
 4. Set the dimension to **Split by value**.

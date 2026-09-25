@@ -16,7 +16,7 @@ Last updated May 1, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 The Child Sexual Abuse Material (CSAM) Scanning Tool allows website owners to proactively identify and take action on CSAM located on their website. By enabling this tool, Cloudflare will compare content served for your website through the Cloudflare cache to known lists of CSAM. These lists are provided to Cloudflare by leading child safety advocacy groups such as the National Center for Missing and Exploited Children (NCMEC).
 
-Remember, by enabling the Service, you agree to the  [Service-Specific Terms ↗](https://www.cloudflare.com/service-specific-terms-application-services/#csam-scanning-tool-terms) for the CSAM Scanning Tool. You agree to use this tool solely for the purposes of preventing the spread of CSAM.
+Remember, by enabling the Service, you agree to the  [Service-Specific Terms ↗︎](https://www.cloudflare.com/service-specific-terms-application-services/#csam-scanning-tool-terms) for the CSAM Scanning Tool. You agree to use this tool solely for the purposes of preventing the spread of CSAM.
 
 ---
 
@@ -30,7 +30,7 @@ Because knowingly distributing or viewing CSAM is illegal, the owner of the webs
 
 To enable the tool:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 2. Select your account and zone.
 3. Go to **Caching** > **Configuration**.
 4. For **CSAM Scanning Tool**, select **Configure**.
@@ -80,13 +80,13 @@ These actions are available to users with the following roles:
 
 ## Additional Resources
 
-[CSAM Scanning Tool Supplemental Terms ↗](https://www.cloudflare.com/supplemental-terms/)
+[CSAM Scanning Tool Supplemental Terms ↗︎](https://www.cloudflare.com/supplemental-terms/)
 
-[National Center for Missing and Exploited Children (NCMEC) ↗](https://www.missingkids.org/)
+[National Center for Missing and Exploited Children (NCMEC) ↗︎](https://www.missingkids.org/)
 
-[NCMEC CyberTipline ↗](https://www.missingkids.org/gethelpnow/cybertipline)
+[NCMEC CyberTipline ↗︎](https://www.missingkids.org/gethelpnow/cybertipline)
 
-[INHOPE ↗](https://www.inhope.org/)
+[INHOPE ↗︎](https://www.inhope.org/)
 
 Was this helpful?
 

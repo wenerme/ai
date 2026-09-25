@@ -22,7 +22,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>DNS only mode</li><li>Traffic only mode</li><li>Local proxy mode</li></ul> | All plans |
 
@@ -45,7 +45,7 @@ With Cloudflare Zero Trust, you can use an on-premise Active Directory (or simil
 
 ## 1. Create a service token
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Service credentials** > **Service Tokens**.
 2. Select **Create Service Token**.
 3. Name the service token. The name allows you to easily identify events related to the token in the logs and to revoke the token individually.
 4. Choose a **Service Token Duration**. This sets the expiration date for the token.
@@ -102,9 +102,9 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
    This is the only time Cloudflare Access will display the Client Secret. If you lose the Client Secret, you must generate a new service token.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Service Tokens Write`
-2. Configure the [`cloudflare_zero_trust_access_service_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource:
+2. Configure the [`cloudflare_zero_trust_access_service_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_service_token) resource:
 
    ```tf
    resource "cloudflare_zero_trust_access_service_token" "example_service_token" {

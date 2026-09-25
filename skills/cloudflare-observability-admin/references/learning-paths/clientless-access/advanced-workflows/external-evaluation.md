@@ -26,7 +26,7 @@ The External Evaluation rule requires two values: an API endpoint to call and a 
 
 For detailed setup instructions, refer to [External Evaluation rules](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/external-evaluation/).
 
-Example code for the API is available in our [open-source repository ↗](https://github.com/cloudflare/workers-access-external-auth-example).
+Example code for the API is available in our [open-source repository ↗︎](https://github.com/cloudflare/workers-access-external-auth-example).
 
 Was this helpful?
 

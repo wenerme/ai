@@ -47,9 +47,9 @@ Cloudflare recommends using only reserved IP addresses or domain names for place
 
 For more information on reserved IP addresses or top level domains, please refer to these RFCs:
 
-- [RFC 5737 ↗](https://datatracker.ietf.org/doc/html/rfc5737)
-- [RFC 3849 ↗](https://datatracker.ietf.org/doc/html/rfc3849)
-- [RFC 2606 ↗](https://datatracker.ietf.org/doc/html/rfc2606)
+- [RFC 5737 ↗︎](https://datatracker.ietf.org/doc/html/rfc5737)
+- [RFC 3849 ↗︎](https://datatracker.ietf.org/doc/html/rfc3849)
+- [RFC 2606 ↗︎](https://datatracker.ietf.org/doc/html/rfc2606)
 
 ### Priority order matters
 

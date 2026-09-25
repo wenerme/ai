@@ -24,7 +24,7 @@ For example, if the email address was entered incorrectly or is a non-working em
 
 To change the email address associated with your Cloudflare account:
 
-1. Go to your [Profile ↗](https://dash.cloudflare.com/?to=/:account/profile).
+1. Go to your [Profile ↗︎](https://dash.cloudflare.com/?to=/:account/profile).
 2. Select your account.
 3. In the Email Address panel, select **Change Email Address**.
 4. In the dialog, enter your new email address in **New email** and **Confirm email**.
@@ -43,7 +43,7 @@ If your administrator has [enabled Single sign-on (SSO)](https://developers.clou
 
 To change your Cloudflare password:
 
-1. Go to your [Profile ↗](https://dash.cloudflare.com/?to=/:account/profile).
+1. Go to your [Profile ↗︎](https://dash.cloudflare.com/?to=/:account/profile).
 2. Select your account.
 3. Select **Authentication**.
 4. On **Password**, select **Change Password**.
@@ -59,7 +59,7 @@ If you are an Enterprise customer and forgot the email address associated with y
 
 If you forget the email address associated with your application:
 
-1. Go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select **Forgot your email?**.
+1. Go to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login) and select **Forgot your email?**.
 2. Enter your domain name.
 3. Cloudflare will send an email to the email address associated with your domain name. If you do not receive an email within 20 minutes, check your spam folder. The message will be sent from `no-reply@cloudflare.com` or `noreply@notify.cloudflare.com`.
 
@@ -69,7 +69,7 @@ You must be logged out of the Cloudflare dashboard to view the **Forgot your pas
 
 If you forget the password associated with your email address:
 
-1. Go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select **Forgot your password?**.
+1. Go to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login) and select **Forgot your password?**.
 2. Enter your email address.
 3. Cloudflare will send an email with instructions to reset your password. If you do not receive an email within 20 minutes, check your spam folder. The message will be sent from `no-reply@cloudflare.com` or `noreply@notify.cloudflare.com`.
 

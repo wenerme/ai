@@ -22,7 +22,7 @@ By default, D1 will automatically create your primary database instance in a loc
 
 ## Restrict database to a jurisdiction
 
-Jurisdictions are used to create D1 databases that only run and store data within a region to help comply with data locality regulations such as the [GDPR ↗](https://gdpr-info.eu/) or [FedRAMP ↗](https://blog.cloudflare.com/cloudflare-achieves-fedramp-authorization/).
+Jurisdictions are used to create D1 databases that only run and store data within a region to help comply with data locality regulations such as the [GDPR ↗︎](https://gdpr-info.eu/) or [FedRAMP ↗︎](https://blog.cloudflare.com/cloudflare-achieves-fedramp-authorization/).
 
 Workers may still access the database constrained to a jurisdiction from anywhere in the world. The jurisdiction constraint only controls where the database itself runs and persists data. Consider using [Regional Services](https://developers.cloudflare.com/data-localization/regional-services/) to control the regions from which Cloudflare responds to requests.
 
@@ -72,7 +72,7 @@ You may want to explicitly provide a location hint in cases where the majority o
 Provide a location hint when creating a D1 database when:
 
 - Using [`wrangler d1`](https://developers.cloudflare.com/workers/wrangler/commands/d1/) to create a database.
-- Creating a database [via the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/d1).
+- Creating a database [via the Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/d1).
 
 Caution
 

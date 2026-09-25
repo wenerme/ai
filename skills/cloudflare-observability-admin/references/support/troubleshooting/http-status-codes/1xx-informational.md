@@ -25,7 +25,7 @@ Cloudflare forwards all 1xx responses from origin servers but does not generate 
 
 ## 100 Continue
 
-The 100 Continue status indicates that the server has received the request headers and is ready for the client to send the request body. For more information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+The 100 Continue status indicates that the server has received the request headers and is ready for the client to send the request body. For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 
@@ -39,7 +39,7 @@ Cloudflare uses Keep-Alive connections to maintain persistent communication betw
 
 ## 101 Switching Protocols
 
-The 101 Switching Protocols status code indicates that the origin server accepts the client's request to switch protocols. For more information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231).
+The 101 Switching Protocols status code indicates that the origin server accepts the client's request to switch protocols. For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
 
 ### Common use cases
 
@@ -47,11 +47,11 @@ The 101 Switching Protocols status code indicates that the server has accepted t
 
 ### Cloudflare-specific information
 
-Cloudflare supports WebSocket connections, which often involve the 101 Switching Protocols status code. The protocol switch allows clients to establish a WebSocket connection for real-time, bidirectional communication. For information about Cloudflare's Websockets, refer to [Cloudflare Now Supports Websockets ↗](https://blog.cloudflare.com/cloudflare-now-supports-websockets/).
+Cloudflare supports WebSocket connections, which often involve the 101 Switching Protocols status code. The protocol switch allows clients to establish a WebSocket connection for real-time, bidirectional communication. For information about Cloudflare's Websockets, refer to [Cloudflare Now Supports Websockets ↗︎](https://blog.cloudflare.com/cloudflare-now-supports-websockets/).
 
 ## 102 Processing
 
-102 Processing status code indicates that the server has received the request and is currently processing it, but the final response is not yet ready. This status code is only applicable to HTTP/1.1 and higher. For more information, refer to [RFC 2518 ↗](https://tools.ietf.org/html/rfc2518).
+102 Processing status code indicates that the server has received the request and is currently processing it, but the final response is not yet ready. This status code is only applicable to HTTP/1.1 and higher. For more information, refer to [RFC 2518 ↗︎](https://tools.ietf.org/html/rfc2518).
 
 ### Common use cases
 

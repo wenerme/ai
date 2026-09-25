@@ -31,7 +31,7 @@ pkcs11-tool --module <module path> --pin <pin> \
     --list-token-slots --login --list-objects
 ```
 
-You now have all the information you need to use your PKCS#11 token with the Keyless server, by adding to the `private_key_stores` section in the configuration file. You can specify the key pairs that you want Keyless to have access to in the [configuration file using the PKCS#11 URI ↗](https://tools.ietf.org/html/rfc7512) format.
+You now have all the information you need to use your PKCS#11 token with the Keyless server, by adding to the `private_key_stores` section in the configuration file. You can specify the key pairs that you want Keyless to have access to in the [configuration file using the PKCS#11 URI ↗︎](https://tools.ietf.org/html/rfc7512) format.
 
 ## PKCS#11 URI
 
@@ -65,7 +65,7 @@ private_key_stores:
 
 ## Limitations
 
-For now, only one PKCS#11 module can be used at a time, so if you have keys on multiple HSMs, we recommend [using p11-glue to consolidate access through one module ↗](https://p11-glue.github.io/p11-glue/).
+For now, only one PKCS#11 module can be used at a time, so if you have keys on multiple HSMs, we recommend [using p11-glue to consolidate access through one module ↗︎](https://p11-glue.github.io/p11-glue/).
 
 Was this helpful?
 

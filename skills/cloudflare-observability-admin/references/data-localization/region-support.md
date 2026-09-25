@@ -67,7 +67,7 @@ Support by product and region is summarized in the following table. In the **Cus
 | Germany | ✅ <sup>[1](#user-content-fn-1)</sup> | ✅ | Can use EU metadata boundary. |
 | Hong Kong | ✘ | ✅ | ✘ |
 | India | ✅ <sup>[1](#user-content-fn-1)</sup> | ✅ | ✘ |
-| [IRAP ↗](https://www.cloudflare.com/cloudflare-for-government/australia/irap/) Protected | ✘ | ✅ | ✘ |
+| [IRAP ↗︎](https://www.cloudflare.com/cloudflare-for-government/australia/irap/) Protected | ✘ | ✅ | ✘ |
 | ISO 27001 Certified European Union | ✘ | ✅ | Can use EU metadata boundary. |
 | Italy | ✘ | ✅ | Can use EU metadata boundary. |
 | Japan | ✅ <sup>[1](#user-content-fn-1)</sup> | ✅ | ✘ |
@@ -97,8 +97,8 @@ Refer to the table below for the complete list of available regions and their de
 | Austria | Cloudflare will only use data centers that are physically located within Austria to decrypt and service HTTPS traffic. |
 | Brazil | Cloudflare will only use data centers that are physically located within Brazil to decrypt and service HTTPS traffic. |
 | Canada | Cloudflare will only use data centers that are physically located within Canada to decrypt and service HTTPS traffic. |
-| Cloudflare Green Energy | Cloudflare will only use data centers that are committed to powering their operations with [renewable energy ↗](https://www.cloudflare.com/impact/). |
-| European Union | Cloudflare will only use data centers that are physically located within the European Union. For more details, refer to the [list of European Union countries ↗](https://european-union.europa.eu/principles-countries-history/country-profiles_en). |
+| Cloudflare Green Energy | Cloudflare will only use data centers that are committed to powering their operations with [renewable energy ↗︎](https://www.cloudflare.com/impact/). |
+| European Union | Cloudflare will only use data centers that are physically located within the European Union. For more details, refer to the [list of European Union countries ↗︎](https://european-union.europa.eu/principles-countries-history/country-profiles_en). |
 | Exclusive of Hong Kong and Macau | Cloudflare will only use data centers that are NOT physically located within Hong Kong and Macau to decrypt and service HTTPS traffic. |
 | Exclusive of Russia and Belarus | Cloudflare will only use data centers that are NOT physically located within Russia and Belarus to decrypt and service HTTPS traffic. |
 | FedRAMP Moderate Compliant (Domestic) | Cloudflare will only use data centers that are FedRAMP Moderate certified and located within the United States. |
@@ -107,11 +107,11 @@ Refer to the table below for the complete list of available regions and their de
 | Germany | Cloudflare will only use data centers that are physically located within Germany to decrypt and service HTTPS traffic. |
 | Hong Kong | Cloudflare will only use data centers that are physically located within Hong Kong to decrypt and service HTTPS traffic. |
 | India | Cloudflare will only use data centers that are physically located within India to decrypt and service HTTPS traffic. |
-| ISO 27001 Certified European Union | Cloudflare will only use data centers that are physically located within the [European Union ↗](https://european-union.europa.eu/principles-countries-history/country-profiles_en) and that adhere to the ISO 27001 certification. |
+| ISO 27001 Certified European Union | Cloudflare will only use data centers that are physically located within the [European Union ↗︎](https://european-union.europa.eu/principles-countries-history/country-profiles_en) and that adhere to the ISO 27001 certification. |
 | IRAP Protected | Cloudflare will only use data centers that are IRAP protected, including certified locations outside Australia. |
 | Italy | Cloudflare will only use data centers that are physically located within Italy to decrypt and service HTTPS traffic. |
 | Japan | Cloudflare will only use data centers that are physically located within Japan to decrypt and service HTTPS traffic. |
-| NATO | Cloudflare will only use data centers that are physically located within North Atlantic Treaty Organization (NATO) countries. For more details, refer to the [list of NATO countries ↗](https://www.nato.int/nato-welcome/). |
+| NATO | Cloudflare will only use data centers that are physically located within North Atlantic Treaty Organization (NATO) countries. For more details, refer to the [list of NATO countries ↗︎](https://www.nato.int/nato-welcome/). |
 | Netherlands | Cloudflare will only use data centers that are physically located within the Netherlands to decrypt and service HTTPS traffic. |
 | Russia | Cloudflare will only use data centers that are physically located within Russia to decrypt and service HTTPS traffic. |
 | Saudi Arabia | Cloudflare will only use data centers that are physically located within Saudi Arabia to decrypt and service HTTPS traffic. |

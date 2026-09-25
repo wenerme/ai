@@ -30,7 +30,7 @@ You can configure storage configs for RealtimeKit Recordings in the following wa
 
 You can specify storage configuration details using RealtimeKit Dashboard for all meetings.
 
-1. In the Cloudflare [RealtimeKit Dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit), go to Recordings tab.
+1. In the Cloudflare [RealtimeKit Dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/realtime/kit), go to Recordings tab.
 2. Click **Setup Storage**.
 3. Specify the details for your cloud provider. We support transferring recordings to Cloudflare R2, AWS S3, Azure, DigitalOcean, and Google Cloud Storage (GCS) buckets.
 
@@ -97,7 +97,7 @@ To transfer recordings to the AWS S3 bucket, set the following fields in the `st
 To transfer recordings to the Azure Blob Storage, set the following fields in the `storage_config` parameter:
 
 - Type: Specify `azure`.
-- Access key: Enter your azure connection string. For more information on how to get the access key, see [View account access key ↗](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal#view-account-access-keys).
+- Access key: Enter your azure connection string. For more information on how to get the access key, see [View account access key ↗︎](https://learn.microsoft.com/en-us/azure/storage/common/storage-account-keys-manage?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&bc=%2Fazure%2Fstorage%2Fblobs%2Fbreadcrumb%2Ftoc.json&tabs=azure-portal#view-account-access-keys).
 - Bucket: Enter the name of your container. The container should be in the same storage account as the connection string.
 - (Optional) Path: Specify the path to a sub-folder where recordings should be transferred. If this parameter is not passed, recordings will be transferred to the root folder of the container.
 - Secret: Set to a blank string "".
@@ -108,11 +108,11 @@ To transfer recordings to the Azure Blob Storage, set the following fields in th
 To transfer recordings to the DigitalOcean Spaces, set the following fields in the `storage_config` parameter:
 
 - Type: Specify `digitalocean`.
-- Access key: Enter your digital ocean access key. For more information, see [Create DigitalOcean Space and API Key ↗](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key).
+- Access key: Enter your digital ocean access key. For more information, see [Create DigitalOcean Space and API Key ↗︎](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key).
 - Bucket: Enter the name of your Spaces bucket.
 - (Optional) Path: Specify the path to a sub-folder where recordings should be transferred. If this parameter is not passed, recordings will be transferred to the root folder of the container.
 - Secret: Enter your Spaces secret.
-- Region: Specify the region where your Spaces bucket is hosted, for example, `SGP1`. For more information, see [Region Availability Matrix ↗](https://docs.digitalocean.com/products/platform/availability-matrix/).
+- Region: Specify the region where your Spaces bucket is hosted, for example, `SGP1`. For more information, see [Region Availability Matrix ↗︎](https://docs.digitalocean.com/products/platform/availability-matrix/).
 
 ### Google Cloud Storage (GCS)
 
@@ -121,8 +121,8 @@ To transfer recordings to GCS, set the following fields in the `storage_config` 
 - Type: Specify `gcs`.
 - Bucket: Enter the name of your Cloud Storage bucket.
 - (Optional) Path: Specify the path to a sub-folder where recordings should be transferred. If this parameter is not passed, recordings will be transferred to the root folder of the container.
-- Secret: Enter your service account credentials. For more information, see [service account credentials ↗](https://developers.google.com/workspace/guides/create-credentials#service-account).
-- Region: Specify the region where your Cloud Storage bucket is hosted, for example, `US multi-region`. For more information, see [Bucket locations ↗](https://cloud.google.com/storage/docs/locations).
+- Secret: Enter your service account credentials. For more information, see [service account credentials ↗︎](https://developers.google.com/workspace/guides/create-credentials#service-account).
+- Region: Specify the region where your Cloud Storage bucket is hosted, for example, `US multi-region`. For more information, see [Bucket locations ↗︎](https://cloud.google.com/storage/docs/locations).
 
 ## Update the Recording File Name
 

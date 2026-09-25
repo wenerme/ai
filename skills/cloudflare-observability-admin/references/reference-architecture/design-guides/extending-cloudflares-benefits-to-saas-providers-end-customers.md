@@ -16,7 +16,7 @@ Last updated Mar 13, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Introduction
 
-A key aspect of developing a Software-as-a-service (SaaS) application is ensuring its security against the wide array of potential attacks it faces on the Internet. Cloudflare's network and security services can be used to protect your customers using your SaaS application, off-loading the risk to a vendor with experience in [protecting applications ↗](https://radar.cloudflare.com/reports/ddos).
+A key aspect of developing a Software-as-a-service (SaaS) application is ensuring its security against the wide array of potential attacks it faces on the Internet. Cloudflare's network and security services can be used to protect your customers using your SaaS application, off-loading the risk to a vendor with experience in [protecting applications ↗︎](https://radar.cloudflare.com/reports/ddos).
 
 This design guide illustrates how providers, building and hosting their own product/application offering, can leverage Cloudflare to extend the security, performance, and compliance benefits of Cloudflare's network to their end-customers.
 
@@ -146,13 +146,13 @@ By leveraging Cloudflare's infrastructure, SaaS providers can deliver secure, re
 
 Several Cloudflare customers are currently using the Cloudflare for SaaS solution (formerly known as SSL for SaaS). Notable public use cases include:
 
-- [Shopify ↗](https://www.cloudflare.com/case-studies/shopify/)
-- [Porsche Informatik ↗](https://www.cloudflare.com/case-studies/porsche-informatik/)
-- [Divio ↗](https://www.cloudflare.com/case-studies/divio/)
-- [mogenius ↗](https://www.cloudflare.com/case-studies/mogenius/)
-- [Quickbutik ↗](https://www.cloudflare.com/case-studies/quickbutik/)
+- [Shopify ↗︎](https://www.cloudflare.com/case-studies/shopify/)
+- [Porsche Informatik ↗︎](https://www.cloudflare.com/case-studies/porsche-informatik/)
+- [Divio ↗︎](https://www.cloudflare.com/case-studies/divio/)
+- [mogenius ↗︎](https://www.cloudflare.com/case-studies/mogenius/)
+- [Quickbutik ↗︎](https://www.cloudflare.com/case-studies/quickbutik/)
 
-Additionally, when migrating to Cloudflare for SaaS, it is crucial to have a runbook and clear public documentation to communicate relevant details to your end-customers. Excellent public examples of this are the [Salesforce CDN ↗](https://help.salesforce.com/s/articleView?id=sf.community_builder_cdn.htm&type=5) and [Shopify ↗](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains) documentation.
+Additionally, when migrating to Cloudflare for SaaS, it is crucial to have a runbook and clear public documentation to communicate relevant details to your end-customers. Excellent public examples of this are the [Salesforce CDN ↗︎](https://help.salesforce.com/s/articleView?id=sf.community_builder_cdn.htm&type=5) and [Shopify ↗︎](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains) documentation.
 
 Was this helpful?
 

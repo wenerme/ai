@@ -20,7 +20,7 @@ This error indicates that direct access to a Cloudflare IP address is not allowe
 
 ### Common cause
 
-A client or browser directly accesses a [Cloudflare IP address ↗](https://www.cloudflare.com/ips).
+A client or browser directly accesses a [Cloudflare IP address ↗︎](https://www.cloudflare.com/ips).
 
 ### Resolution
 

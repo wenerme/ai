@@ -43,11 +43,11 @@ To configure your browser to send traffic to Gateway:
    4. In **Choose provider**, choose *Custom*.
    5. In the field, enter <code>https://&lt;YOUR_DOH_SUBDOMAIN&gt;.cloudflare-gateway.com/dns-query</code>.
 
-   Firefox is now configured to use your DoH endpoint. For more information on configuring DoH settings in Firefox, refer to <a href="https://support.mozilla.org/kb/dns-over-https">Mozilla's documentation ↗</a>.
+   Firefox is now configured to use your DoH endpoint. For more information on configuring DoH settings in Firefox, refer to <a href="https://support.mozilla.org/kb/dns-over-https">Mozilla's documentation ↗︎</a>.
 
    Note
 
-   If you want to enforce DNS policies through the Cloudflare One Client instead of over DoH, you can disable DoH for your organization by blocking the <a href="https://support.mozilla.org/kb/canary-domain-use-application-dnsnet">Firefox DoH canary domain ↗</a>.</details>
+   If you want to enforce DNS policies through the Cloudflare One Client instead of over DoH, you can disable DoH for your organization by blocking the <a href="https://support.mozilla.org/kb/canary-domain-use-application-dnsnet">Firefox DoH canary domain ↗︎</a>.</details>
 
 <details><summary>
 
@@ -58,7 +58,7 @@ To configure your browser to send traffic to Gateway:
    3. Select **With Custom**.
    4. In the **Enter custom provider** field, enter <code>https://&lt;YOUR_DOH_SUBDOMAIN&gt;.cloudflare-gateway.com/dns-query</code>.
 
-   Read more about <a href="https://www.chromium.org/developers/dns-over-https">enabling DNS over HTTPS ↗</a> on Chrome.</details>
+   Read more about <a href="https://www.chromium.org/developers/dns-over-https">enabling DNS over HTTPS ↗︎</a> on Chrome.</details>
 
 <details><summary>
 

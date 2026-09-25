@@ -20,13 +20,13 @@ This guide will instruct you through setting up Microsoft 365 with Email securit
 
 To use Email security, you will need to have:
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up)
 - A [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization)
 - A domain to protect
 
 ## Enable Email security via the dashboard
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/) and select **Email security**..
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/) and select **Email security**..
 2. Select **Overview**. Select one of the following options depending on your use case:
 
 - If you have not purchased Email security, select **Contact sales**.
@@ -69,7 +69,7 @@ Your domains are now connected successfully.
 
 To connect new domains:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), select **Email security**.
 2. Select **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Select **Add a domain**.
 4. Select a method for connecting your mail environment to Email security:
@@ -83,7 +83,7 @@ To connect new domains:
 
 If you want to prevent Cloudflare from scanning a domain:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), select **Email security**.
 2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. On the **Domain management** page, select the domain you do not want to be scanned.
 4. Select the three dots > **Stop scanning**.
@@ -92,7 +92,7 @@ If you want to prevent Cloudflare from scanning a domain:
 
 To view the integration for each connected domain:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), select **Email security**.
 2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Select a domain.
 4. Select the three dots > **View integration**.
@@ -103,7 +103,7 @@ Once you have set up Email security to scan through your inbox, Email security w
 
 To verify that the deployment has been successful and that your emails are being scanned:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), select **Email security**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), select **Email security**.
 2. Go to **Settings** > **Domain management** > **Domains**, then select **View**.
 3. Under **Your domains**, locate your domain, and verify that **Status** (which describes the state of the configuration) displays **Active**.
 

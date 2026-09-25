@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-To optimize your website or web application, Cloudflare provides [DNS ↗](https://www.cloudflare.com/learning/dns/what-is-dns/) and [CDN ↗](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) services, so we can [reverse proxy ↗](https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/) the web traffic to and from your domain.
+To optimize your website or web application, Cloudflare provides [DNS ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/) and [CDN ↗︎](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) services, so we can [reverse proxy ↗︎](https://www.cloudflare.com/learning/cdn/glossary/reverse-proxy/) the web traffic to and from your domain.
 
 ## DNS explained
 
@@ -22,7 +22,7 @@ The Domain Name System (DNS) acts as the Internet's phonebook, translating domai
 
 The IP address is like a home address of where a website lives, and the domain name is the human-readable name.
 
-A DNS query is like asking for directions to a place, and the DNS records are the source-of-truth for what exists where. DNS records live in authoritative [DNS servers ↗](https://www.cloudflare.com/learning/dns/dns-server-types/) and provide information about a domain, such as the [IP addresses ↗](https://www.cloudflare.com/learning/dns/glossary/what-is-my-ip-address/) of the servers that host the web content and services on that domain. With this information, Internet browsers know where to find a website or app, so they can render it for visitors using [HTTP ↗](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/).
+A DNS query is like asking for directions to a place, and the DNS records are the source-of-truth for what exists where. DNS records live in authoritative [DNS servers ↗︎](https://www.cloudflare.com/learning/dns/dns-server-types/) and provide information about a domain, such as the [IP addresses ↗︎](https://www.cloudflare.com/learning/dns/glossary/what-is-my-ip-address/) of the servers that host the web content and services on that domain. With this information, Internet browsers know where to find a website or app, so they can render it for visitors using [HTTP ↗︎](https://www.cloudflare.com/learning/ddos/glossary/hypertext-transfer-protocol-http/).
 
 ## Cloudflare as a DNS provider
 
@@ -34,7 +34,7 @@ Cloudflare only becomes the primary authoritative DNS provider when you use the 
 
 If your [domain's status](https://developers.cloudflare.com/dns/zone-setups/reference/domain-status/) is active and the queried DNS record is set to `proxied`, Cloudflare responds with an [anycast IP address](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/), instead of the origin IP address defined in your DNS table.
 
-Your domain status is active when your [nameservers are updated](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to point to Cloudflare and have been authenticated. The [proxy status](https://developers.cloudflare.com/dns/proxy-status/) defines how Cloudflare treats queries for specific DNS records. The [anycast IP address](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/) is used to distribute traffic amongst Cloudflare's network, which protects your website or app from [DDoS ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) and other attacks, while optimizing site speed.
+Your domain status is active when your [nameservers are updated](https://developers.cloudflare.com/dns/nameservers/update-nameservers/) to point to Cloudflare and have been authenticated. The [proxy status](https://developers.cloudflare.com/dns/proxy-status/) defines how Cloudflare treats queries for specific DNS records. The [anycast IP address](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/) is used to distribute traffic amongst Cloudflare's network, which protects your website or app from [DDoS ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) and other attacks, while optimizing site speed.
 
 ## Cloudflare as a reverse proxy
 

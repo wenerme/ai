@@ -91,7 +91,7 @@ SFU App Secrets stay on the Worker. The firmware receives its device credential,
 
 ## Follow the firmware integration
 
-The [firmware/SFU walkthrough ↗](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/firmware/docs/sfu.md) explains the protocol sequence and identifies the code responsible for each step:
+The [firmware/SFU walkthrough ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/firmware/docs/sfu.md) explains the protocol sequence and identifies the code responsible for each step:
 
 1. Create and configure the firmware's WebRTC peer.
 2. Exchange a session description through the application backend.
@@ -104,7 +104,7 @@ Keep one owner for the WebRTC peer and its SDP state. Adapt hardware I/O and med
 
 ## Run Pocket Radio
 
-The example targets the ESP32-S3-DevKitC-1 N32R16V, with 32 MiB flash, 16 MiB PSRAM, and the documented LED pin. To build it, you need a Linux x86\_64 toolchain, Node.js 24, Python, Rust, and ESP-IDF. The board requires outbound IPv4 UDP and HTTPS. Refer to the [complete prerequisites ↗](https://github.com/cloudflare/realtime-examples/tree/main/esp32-radio#set-up) for exact tool versions and hardware requirements.
+The example targets the ESP32-S3-DevKitC-1 N32R16V, with 32 MiB flash, 16 MiB PSRAM, and the documented LED pin. To build it, you need a Linux x86\_64 toolchain, Node.js 24, Python, Rust, and ESP-IDF. The board requires outbound IPv4 UDP and HTTPS. Refer to the [complete prerequisites ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/esp32-radio#set-up) for exact tool versions and hardware requirements.
 
 1. **Prepare the checkout.** Run:
 
@@ -116,8 +116,8 @@ The example targets the ESP32-S3-DevKitC-1 N32R16V, with 32 MiB flash, 16 MiB PS
    ```
 
 
-2. **Configure and deploy the backend.** [Create an SFU app](https://developers.cloudflare.com/realtime/sfu/get-started/#create-your-first-app). Follow the example's [setup procedure ↗](https://github.com/cloudflare/realtime-examples/tree/main/esp32-radio#set-up) to provision credentials, configure your hostname and account, and deploy the Worker. Keep `.credential.env` private.
-3. **Prepare the device.** Follow [Back up and flash ↗](https://github.com/cloudflare/realtime-examples/tree/main/esp32-radio#back-up-and-flash). Use audio you have permission to distribute. Back up the board before replacing its software. Flashing resets the device.
+2. **Configure and deploy the backend.** [Create an SFU app](https://developers.cloudflare.com/realtime/sfu/get-started/#create-your-first-app). Follow the example's [setup procedure ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/esp32-radio#set-up) to provision credentials, configure your hostname and account, and deploy the Worker. Keep `.credential.env` private.
+3. **Prepare the device.** Follow [Back up and flash ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/esp32-radio#back-up-and-flash). Use audio you have permission to distribute. Back up the board before replacing its software. Flashing resets the device.
 4. **Listen and control.** Open the Worker URL, sign in with the configured viewer password, and select **Start listening**. Open another listener tab. Both tabs should receive audio, spectrum, and telemetry.
 
    In one tab, select **Take control**, then change the LED or pause playback. The other tab keeps listening. Select **Release control** before transferring control to another listener.
@@ -128,7 +128,7 @@ Browsers rejoin manually after a board restart or terminal connection failure. W
 
 The example allows eight listeners per board and one controller. The application sets the eight-listener cap. It does not define the SFU subscriber limit.
 
-To stop, release control and disconnect listeners, then power off the board. Keep the backend available for as long as required cleanup remains pending. The example's [operations guide ↗](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/PRODUCTION.md#stop-and-clean-up) explains publisher replacement, state expiry, and resource cleanup before removing the Worker or SFU app.
+To stop, release control and disconnect listeners, then power off the board. Keep the backend available for as long as required cleanup remains pending. The example's [operations guide ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/PRODUCTION.md#stop-and-clean-up) explains publisher replacement, state expiry, and resource cleanup before removing the Worker or SFU app.
 
 ## Adapt to other devices
 
@@ -154,7 +154,7 @@ For a related implementation with a native video publisher, the [cloud-gaming ex
 
 ## Inspect the implementation
 
-Inspect the [architecture guide ↗](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/ARCHITECTURE.md) for authentication, controller ownership, and reconnect behavior.
+Inspect the [architecture guide ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/ARCHITECTURE.md) for authentication, controller ownership, and reconnect behavior.
 
 ## Try another example
 

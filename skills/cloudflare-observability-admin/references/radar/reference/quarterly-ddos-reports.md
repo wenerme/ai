@@ -18,7 +18,7 @@ Quarterly DDoS threat reports provide a comprehensive overview of DDoS attack in
 
 Thanks to our vast network, Cloudflare provides insights on the evolving threat landscape, including variations in attack sizes, techniques, top source countries, top targeted countries and targeted industries. Each report presents a global outlook, dives into significant attacks and campaigns, and explores shifts in DDoS tactics, offering a blend of data analysis and insights to better understand the cyber threat environment.
 
-Find the latest quarterly DDoS threat reports in the [**Reports** ↗](https://radar.cloudflare.com/reports) section of Cloudflare Radar.
+Find the latest quarterly DDoS threat reports in the [**Reports** ↗︎](https://radar.cloudflare.com/reports) section of Cloudflare Radar.
 
 ---
 
@@ -60,7 +60,7 @@ For source, target, and industry insights, Cloudflare may calculate a "Rank" for
 
 To calculate the attack size, duration, attack vectors, and emerging threats, Cloudflare buckets attacks and then provides the share of each bucket out of the total amount for each dimension.
 
-However, in the **Network layer attack distribution** graph of the [**Security & Attacks** ↗](https://radar.cloudflare.com/security-and-attacks) Radar page these trends are calculated by number of bytes instead. Since attacks may vary greatly in number of bytes from one another, this could lead to trends differing between the quarterly reports and the graph displayed in Cloudflare Radar.
+However, in the **Network layer attack distribution** graph of the [**Security & Attacks** ↗︎](https://radar.cloudflare.com/security-and-attacks) Radar page these trends are calculated by number of bytes instead. Since attacks may vary greatly in number of bytes from one another, this could lead to trends differing between the quarterly reports and the graph displayed in Cloudflare Radar.
 
 ---
 

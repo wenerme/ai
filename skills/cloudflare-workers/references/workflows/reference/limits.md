@@ -45,7 +45,7 @@ Workflows cannot be deployed to Workers for Platforms namespaces, as Workflows d
 
 Need a higher limit?
 
-To request an adjustment to a limit, complete the [Limit Increase Request Form ↗](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
+To request an adjustment to a limit, complete the [Limit Increase Request Form ↗︎](https://forms.gle/eX6pXvit1wBv77Yw5). If the limit can be increased, Cloudflare will contact you with next steps.
 
 In JavaScript Workflows, if you need to persist large binary output from a step, return a `ReadableStream<Uint8Array>`. Streamed outputs still count toward the per-instance storage limit, so store very large or long-lived artifacts in external storage such as [R2](https://developers.cloudflare.com/r2/) and return a reference when appropriate.
 

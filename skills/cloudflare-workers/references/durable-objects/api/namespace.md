@@ -197,11 +197,11 @@ const euStub = subnamespace.getByName("foo");
 
 #### Return values
 
-- A `DurableObjectNamespace` scoped to a particular regulatory or geographic jurisdiction. Additional geographic jurisdictions are continuously evaluated, so share requests in the [Durable Objects Discord channel ↗](https://discord.com/channels/595317990191398933/773219443911819284).
+- A `DurableObjectNamespace` scoped to a particular regulatory or geographic jurisdiction. Additional geographic jurisdictions are continuously evaluated, so share requests in the [Durable Objects Discord channel ↗︎](https://discord.com/channels/595317990191398933/773219443911819284).
 
 ## Related resources
 
-- [Durable Objects: Easy, Fast, Correct – Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+- [Durable Objects: Easy, Fast, Correct – Choose Three ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 Was this helpful?
 

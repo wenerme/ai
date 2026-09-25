@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/manage-dns-records/how-to/set-up-google-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-To use your domain with [Google Workspace ↗](https://workspace.google.com/), you must add specific DNS records in Cloudflare. This page explains how to add records for:
+To use your domain with [Google Workspace ↗︎](https://workspace.google.com/), you must add specific DNS records in Cloudflare. This page explains how to add records for:
 
 - [Domain ownership verification](#verify-domain-ownership)
 - [Gmail delivery (MX records)](#add-mx-records)
@@ -32,14 +32,14 @@ MX and TXT records in Cloudflare are always DNS-only — the proxy option is not
 
 Google must confirm you control your domain before activating Google Workspace services for it.
 
-1. In [Google Admin console ↗](https://admin.google.com), start the domain setup wizard and copy the TXT verification value Google provides. It looks similar to:
+1. In [Google Admin console ↗︎](https://admin.google.com), start the domain setup wizard and copy the TXT verification value Google provides. It looks similar to:
 
    ```txt
    google-site-verification=abc123XYZ
    ```
 
 
-2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select your account and domain, then go to **DNS** > **Records**.
+2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), select your account and domain, then go to **DNS** > **Records**.
 3. Select **Add record** and enter:
    - **Type**: `TXT`
    - **Name**: `@` (the root of your domain)
@@ -60,7 +60,7 @@ Google says the domain is already in use
 
 If Google displays a **"Domain already in use"** error, the domain was previously connected to a different Google Workspace account and was not fully released. This is a Google-side state, not a DNS issue in Cloudflare.
 
-To resolve it, contact the administrator of the previous Google Workspace account and ask them to remove the domain from that account. If you cannot reach them, contact <a href="https://support.google.com/a/answer/6009548">Google Workspace support ↗</a> to submit a domain claim.
+To resolve it, contact the administrator of the previous Google Workspace account and ask them to remove the domain from that account. If you cannot reach them, contact <a href="https://support.google.com/a/answer/6009548">Google Workspace support ↗︎</a> to submit a domain claim.
 
 </details>
 
@@ -72,9 +72,9 @@ TXT record is not visible in external DNS tools
 
 </summary>
 
-If external tools such as <a href="https://dnschecker.org">DNSChecker.org ↗</a> do not show your TXT record:
+If external tools such as <a href="https://dnschecker.org">DNSChecker.org ↗︎</a> do not show your TXT record:
 
-- Wait a few minutes for propagation. Use a tool such as <a href="https://dnschecker.org">DNSChecker.org ↗</a> to verify the record is resolving globally.
+- Wait a few minutes for propagation. Use a tool such as <a href="https://dnschecker.org">DNSChecker.org ↗︎</a> to verify the record is resolving globally.
 - Confirm the record **Name** is <code>@</code>, not <code>www</code> or another value.
 - Wait a few minutes for propagation, then recheck.
 
@@ -131,7 +131,7 @@ Your domain must have exactly one SPF record. Multiple TXT records beginning wit
 
 DKIM adds a cryptographic signature to outbound messages so recipients can confirm the messages were not altered in transit.
 
-1. In [Google Admin console ↗](https://admin.google.com), go to **Apps** > **Google Workspace** > **Gmail** > **Authenticate email**.
+1. In [Google Admin console ↗︎](https://admin.google.com), go to **Apps** > **Google Workspace** > **Gmail** > **Authenticate email**.
 2. Select your domain and choose **Generate new record**. Select a **2048-bit** key length for stronger security.
 3. Copy the TXT record value Google displays. It starts with `v=DKIM1; k=rsa; p=...`.
 4. In Cloudflare **DNS** > **Records**, add a record:

@@ -20,7 +20,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 The `TextEncoder` takes a stream of code points as input and emits a stream of bytes. Encoding types passed to the constructor are ignored and a UTF-8 `TextEncoder` is created.
 
-[`TextEncoder()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/TextEncoder) returns a newly constructed `TextEncoder` that generates a byte stream with UTF-8 encoding. `TextEncoder` takes no parameters and throws no exceptions.
+[`TextEncoder()` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder/TextEncoder) returns a newly constructed `TextEncoder` that generates a byte stream with UTF-8 encoding. `TextEncoder` takes no parameters and throws no exceptions.
 
 ### Constructor
 
@@ -46,7 +46,7 @@ let encoder = new TextEncoder();
 
 The `TextDecoder` interface represents a UTF-8 decoder. Decoders take a stream of bytes as input and emit a stream of code points.
 
-[`TextDecoder()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/TextDecoder) returns a newly constructed `TextDecoder` that generates a code-point stream.
+[`TextDecoder()` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/TextDecoder) returns a newly constructed `TextDecoder` that generates a code-point stream.
 
 ### Constructor
 
@@ -66,7 +66,7 @@ let decoder = new TextDecoder();
 ### Methods
 
 - `decode()` : DOMString
-  - Decodes using the method specified in the `TextDecoder` object. Learn more at [MDN’s `TextDecoder` documentation ↗](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode).
+  - Decodes using the method specified in the `TextDecoder` object. Learn more at [MDN’s `TextDecoder` documentation ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder/decode).
 
 Was this helpful?
 

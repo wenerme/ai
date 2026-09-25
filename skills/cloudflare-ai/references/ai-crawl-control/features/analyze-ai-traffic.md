@@ -18,7 +18,7 @@ AI Crawl Control metrics provide you with insight on how AI crawlers are interac
 
 To view AI Crawl Control metrics:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **AI Crawl Control**. [Go to **AI Crawl Control** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 
 You can find meaningful information across the **Overview**, **Crawlers**, and **Metrics** tabs.

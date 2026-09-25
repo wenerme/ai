@@ -85,7 +85,7 @@ Your Worker Loader needs two [bindings](https://developers.cloudflare.com/worker
   "name": "my-worker-loader",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-09-22",
+  "compatibility_date": "2026-09-25",
   "worker_loaders": [
     {
       "binding": "LOADER"
@@ -105,7 +105,7 @@ Your Worker Loader needs two [bindings](https://developers.cloudflare.com/worker
 name = "my-worker-loader"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[worker_loaders]]
 binding = "LOADER"
@@ -288,7 +288,7 @@ curl "http://localhost:8787/api/status?instanceId=YOUR_INSTANCE_ID"
 
 ## Related resources
 
-- [`@cloudflare/dynamic-workflows` on GitHub ↗](https://github.com/cloudflare/dynamic-workflows)
+- [`@cloudflare/dynamic-workflows` on GitHub ↗︎](https://github.com/cloudflare/dynamic-workflows)
 - [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/)
 - [Trigger Workflows](https://developers.cloudflare.com/workflows/build/trigger-workflows/)
 - [Events and parameters](https://developers.cloudflare.com/workflows/build/events-and-parameters/)

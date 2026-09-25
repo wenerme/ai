@@ -16,11 +16,11 @@ Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Programmable Flow Protection is a DDoS protection system that protects against DDoS attacks over custom or standardized Layer 7 UDP-based protocols, such as gaming protocols, financial services protocols, VoIP, telecom, and streaming. In terms of topology, it supports both asymmetric and symmetric configurations, but it will only inspect ingress traffic.
 
-Programmable Flow Protection is currently in closed beta and available as an add-on for the [Magic Transit](https://developers.cloudflare.com/magic-transit/) ([BYOIP](https://developers.cloudflare.com/byoip/) or Cloudflare-leased IPs) service only. If you would like to enable the system, contact your account team or fill out this [form ↗](https://www.cloudflare.com/lp/programmableddosprotection/).
+Programmable Flow Protection is currently in closed beta and available as an add-on for the [Magic Transit](https://developers.cloudflare.com/magic-transit/) ([BYOIP](https://developers.cloudflare.com/byoip/) or Cloudflare-leased IPs) service only. If you would like to enable the system, contact your account team or fill out this [form ↗︎](https://www.cloudflare.com/lp/programmableddosprotection/).
 
 ## How it works
 
-The Programmable Flow Protection system allows you to write and run your own packet-layer stateful program in C across Cloudflare's global anycast network as extended Berkeley Packet Filter (eBPF) programs running in the user space. An [eBPF program ↗](https://docs.kernel.org/bpf/) is a packet filter system that allows a developer to write performant custom networking logic.
+The Programmable Flow Protection system allows you to write and run your own packet-layer stateful program in C across Cloudflare's global anycast network as extended Berkeley Packet Filter (eBPF) programs running in the user space. An [eBPF program ↗︎](https://docs.kernel.org/bpf/) is a packet filter system that allows a developer to write performant custom networking logic.
 
 Programmable Flow Protection inspects and parses your UDP-based application's protocols (deep packet inspection) and determines the outcome of the packets based on your program. Using your custom program's logic, you can permit authorized users while actively blocking attacks.
 
@@ -46,7 +46,7 @@ The Programmable Flow Protection system supports the [Data Localization suite](h
 
 Beta functionality limitations
 
-For more information on beta services, refer to section 2.6 in the [Enterprise Terms of Service ↗](https://www.cloudflare.com/enterpriseterms/).
+For more information on beta services, refer to section 2.6 in the [Enterprise Terms of Service ↗︎](https://www.cloudflare.com/enterpriseterms/).
 
 ### Write a basic program
 
@@ -781,7 +781,7 @@ A helper function is a function provided by the Cloudflare runtime that a custom
 
 Helper functions are crucial because the BPF Instruction Set Architecture (ISA) only supports certain system calls. For safety purposes, Cloudflare will only compile a BPF object file with a predetermined list of known libraries that a program developer cannot modify.
 
-Helper function definitions and verifier wrapper sources are available on [GitHub ↗](https://github.com/cloudflare/pfp-tools/tree/main/pfp-headers/include).
+Helper function definitions and verifier wrapper sources are available on [GitHub ↗︎](https://github.com/cloudflare/pfp-tools/tree/main/pfp-headers/include).
 
 Note
 
@@ -1302,7 +1302,7 @@ struct cf_ebpf_parsed_headers {
 
 #### `iphdr`
 
-IPv4 header structure. Source: [Linux kernel ↗](https://github.com/torvalds/linux/blob/a7423e6ea2f8f6f453de79213c26f7a36c86d9a2/include/uapi/linux/ip.h#L87).
+IPv4 header structure. Source: [Linux kernel ↗︎](https://github.com/torvalds/linux/blob/a7423e6ea2f8f6f453de79213c26f7a36c86d9a2/include/uapi/linux/ip.h#L87).
 
 ```c
 struct iphdr {
@@ -1327,7 +1327,7 @@ struct iphdr {
 
 #### `ipv6hdr`
 
-IPv6 header structure. Source: [Linux kernel ↗](https://github.com/torvalds/linux/blob/a7423e6ea2f8f6f453de79213c26f7a36c86d9a2/include/uapi/linux/ipv6.h#L118).
+IPv6 header structure. Source: [Linux kernel ↗︎](https://github.com/torvalds/linux/blob/a7423e6ea2f8f6f453de79213c26f7a36c86d9a2/include/uapi/linux/ipv6.h#L118).
 
 ```c
 struct ipv6hdr {
@@ -1349,7 +1349,7 @@ struct ipv6hdr {
 
 #### `udphdr`
 
-UDP header structure. Source: [Linux kernel ↗](https://github.com/torvalds/linux/blob/a7423e6ea2f8f6f453de79213c26f7a36c86d9a2/include/uapi/linux/udp.h#L23).
+UDP header structure. Source: [Linux kernel ↗︎](https://github.com/torvalds/linux/blob/a7423e6ea2f8f6f453de79213c26f7a36c86d9a2/include/uapi/linux/udp.h#L23).
 
 ```c
 struct udphdr {

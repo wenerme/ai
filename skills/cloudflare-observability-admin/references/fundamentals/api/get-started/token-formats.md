@@ -30,7 +30,7 @@ The prefixed format and checksum allow credential scanning tools to detect leake
 
 ### GitHub Secret Scanning
 
-Cloudflare participates in [GitHub's Secret Scanning program ↗](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning). GitHub scans every commit for Cloudflare API credentials in both public and private repositories.
+Cloudflare participates in [GitHub's Secret Scanning program ↗︎](https://docs.github.com/en/code-security/secret-scanning/introduction/about-secret-scanning). GitHub scans every commit for Cloudflare API credentials in both public and private repositories.
 
 - **Public repositories** — When GitHub detects a leaked Cloudflare token, it verifies the token using the checksum and sends Cloudflare a webhook. Cloudflare automatically revokes the token and notifies you by email so you can generate a replacement.
 - **Private repositories** — GitHub notifies you about any leaked Cloudflare tokens so you can rotate them.

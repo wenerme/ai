@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/make-api-requests/dns-wireformat/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare respects DNS wireformat as defined in [RFC 1035 ↗](https://www.rfc-editor.org/rfc/rfc1035.html).
+Cloudflare respects DNS wireformat as defined in [RFC 1035 ↗︎](https://www.rfc-editor.org/rfc/rfc1035.html).
 
 To send queries using DNS wireformat, set the header `accept: application/dns-message`, or `content-type: application/dns-message` if using `POST` to indicate the media type of the query.
 

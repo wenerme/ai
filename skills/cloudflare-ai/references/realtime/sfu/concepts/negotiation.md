@@ -106,9 +106,9 @@ A timed-out API request may still finish. Closing known tracks does not cancel i
 
 ## Learn with an example
 
-The [video-room negotiation queues ↗](https://github.com/cloudflare/realtime-examples/blob/main/video-room/ARCHITECTURE.md#sdp-serialization) hold a session operation open across the browser answer. The [DataChannel example ↗](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels#api-and-lifecycle) demonstrates transport setup and teardown through a local Node.js backend.
+The [video-room negotiation queues ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/video-room/ARCHITECTURE.md#sdp-serialization) hold a session operation open across the browser answer. The [DataChannel example ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels#api-and-lifecycle) demonstrates transport setup and teardown through a local Node.js backend.
 
-For a native endpoint, follow the [embedded firmware/SFU walkthrough ↗](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/firmware/docs/sfu.md).
+For a native endpoint, follow the [embedded firmware/SFU walkthrough ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/firmware/docs/sfu.md).
 
 Was this helpful?
 

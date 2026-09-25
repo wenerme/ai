@@ -129,7 +129,7 @@ The `Blocked` status is terminal — the custom hostname will not retry validati
 
 ## Hostnames over 64 characters
 
-The Common Name (CN) restriction establishes a limit of 64 characters ([RFC 5280 ↗](https://www.rfc-editor.org/rfc/rfc5280.html)). If you have a hostname that exceeds this length, you may find the following error:
+The Common Name (CN) restriction establishes a limit of 64 characters ([RFC 5280 ↗︎](https://www.rfc-editor.org/rfc/rfc5280.html)). If you have a hostname that exceeds this length, you may find the following error:
 
 ```txt
 Since no host is 64 characters or fewer, Cloudflare Branding is required. Please check your input and try again. (1469)

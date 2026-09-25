@@ -18,7 +18,7 @@ This document provides an overview of the precedence structure for managing reco
 
 - [Start recording a meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/recordings/methods/start_recordings/)
 - [Create a meeting API](https://developers.cloudflare.com/api/resources/realtime_kit/subresources/meetings/methods/create/)
-- Specified via [Cloudflare RealtimeKit Dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit)
+- Specified via [Cloudflare RealtimeKit Dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/realtime/kit)
 
 ## Understand Recording Configuration Precedence
 

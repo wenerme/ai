@@ -16,13 +16,13 @@ Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Introduction
 
-Over the past few years, the traditional approach of installing and maintaining hardware for remote access to private company networks is no longer secure or cost effective. Due to an increase in [vulnerabilities ↗](https://www.networkworld.com/article/2114694/new-vpn-risk-report-finds-nearly-half-of-enterprises-attacked-via-vpn-vulnerabilities.html) found in on-premises VPN products, security and IT teams are looking for solutions that don't require teams to monitor for and respond to [CVE alerts ↗](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=vpn). These same systems also limit the user's bandwidth because they route all user Internet traffic through a single infrastructure which results in a poor user experience. IT teams are recognizing the cost and effort to install and maintain their own hardware can be offset with more modern, and more secure cloud hosted services. User expectations for application performance are exposing limitations in bandwidth constrained, self hosted VPN solutions. In summary, running your own VPN is expensive, high risk and doesn't deliver a great user experience.
+Over the past few years, the traditional approach of installing and maintaining hardware for remote access to private company networks is no longer secure or cost effective. Due to an increase in [vulnerabilities ↗︎](https://www.networkworld.com/article/2114694/new-vpn-risk-report-finds-nearly-half-of-enterprises-attacked-via-vpn-vulnerabilities.html) found in on-premises VPN products, security and IT teams are looking for solutions that don't require teams to monitor for and respond to [CVE alerts ↗︎](https://cve.mitre.org/cgi-bin/cvekey.cgi?keyword=vpn). These same systems also limit the user's bandwidth because they route all user Internet traffic through a single infrastructure which results in a poor user experience. IT teams are recognizing the cost and effort to install and maintain their own hardware can be offset with more modern, and more secure cloud hosted services. User expectations for application performance are exposing limitations in bandwidth constrained, self hosted VPN solutions. In summary, running your own VPN is expensive, high risk and doesn't deliver a great user experience.
 
 ![Diagram showing suboptimal traffic paths for traffic to Internet resources.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=721,height=680,format=svg/_astro/traditional-vpn.BpH8a1pr.svg "Figure 1: A traditional VPN deployment, where all user traffic destined for the Internet must route through the company hosted and managed VPN service.")
 
 *Figure 1: A traditional VPN deployment, where all user traffic destined for the Internet must route through the company hosted and managed VPN service.*
 
-As such, many organizations are looking to move to a [zero trust ↗](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) security posture using [Zero Trust Network Access ↗](https://www.cloudflare.com/learning/access-management/what-is-ztna/) (ZTNA) services as part of a [Secure Access Service Edge ↗](https://www.cloudflare.com/learning/access-management/what-is-sase/) (SASE) architecture to provide remote access to private resources. With all the critical software running as a cloud service, organizations are relieved of the duty of keeping servers and software up to date. Cloud platforms are also architected for massive scale which significantly increases available bandwidth for end users, therefore improving their experience.
+As such, many organizations are looking to move to a [zero trust ↗︎](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/) security posture using [Zero Trust Network Access ↗︎](https://www.cloudflare.com/learning/access-management/what-is-ztna/) (ZTNA) services as part of a [Secure Access Service Edge ↗︎](https://www.cloudflare.com/learning/access-management/what-is-sase/) (SASE) architecture to provide remote access to private resources. With all the critical software running as a cloud service, organizations are relieved of the duty of keeping servers and software up to date. Cloud platforms are also architected for massive scale which significantly increases available bandwidth for end users, therefore improving their experience.
 
 ![Diagram showing traffic paths directly flowing to Internet resources.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1004,height=556,format=svg/_astro/sase-remote-access.CybpgS2A.svg "Figure 2: SASE platforms do not degrade user Internet access experience, and provide fast, secure global access to self hosted hosted resources.")
 
@@ -54,8 +54,8 @@ The solution this guide describes requires you have a contract with Cloudflare t
 
 To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-1. What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (five-minute read) or [video ↗](https://www.youtube.com/watch?v=XHvmX3FhTwU) (two minutes)
-2. Blog: [What is SASE? | Secure access service edge | Cloudflare ↗](https://www.cloudflare.com/learning/access-management/what-is-sase/) (14-minute read)
+1. What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (five-minute read) or [video ↗︎](https://www.youtube.com/watch?v=XHvmX3FhTwU) (two minutes)
+2. Blog: [What is SASE? | Secure access service edge | Cloudflare ↗︎](https://www.cloudflare.com/learning/access-management/what-is-sase/) (14-minute read)
 3. Reference architecture: [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/) (three-hour read)
 
 ## Benefits of a SASE platform
@@ -97,7 +97,7 @@ In situations where existing remote access hardware is vulnerable and there is a
 
 This approach allows network and security teams to get up-and-running quickly, while gaining experience in modern zero trust deployments to allow for remote access to internal applications. The added visibility into network traffic will also enable teams to gain insight into application usage, and plan for a successful and secure zero trust migration.
 
-This guide will describe the following phases at a high level, if you need help with specific details related to your environment please [contact Cloudflare ↗](https://www.cloudflare.com/products/zero-trust/plans/enterprise/).
+This guide will describe the following phases at a high level, if you need help with specific details related to your environment please [contact Cloudflare ↗︎](https://www.cloudflare.com/products/zero-trust/plans/enterprise/).
 
 - Phase 1: Quickly replace existing traditional/vulnerable VPN hardware with cloud-based remote access while gaining insight into application traffic.
 - Phase 2: Scaling up and offloading traditional IPsec tunnels.
@@ -116,7 +116,7 @@ During this first phase, network connectivity will be created between user devic
 - On employee devices install the Cloudflare [device agent](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/). This replaces the use of existing VPN client software.
 - Using existing network hardware in the data center, create IPsec tunnels to Cloudflare which are managed using Cloudflare WAN service.
 
-Both employee devices and data center networks will connect to their closest Cloudflare server. This is thanks to [Cloudflare's anycast architecture ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/), and ensures the most optimal path for user traffic without any effort by employees or IT support staff. Users no longer need to make a choice to which VPN service region to connect to, as Cloudflare will always ensure they connect to the closest and most responsive service for the best access performance to their private applications.
+Both employee devices and data center networks will connect to their closest Cloudflare server. This is thanks to [Cloudflare's anycast architecture ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/), and ensures the most optimal path for user traffic without any effort by employees or IT support staff. Users no longer need to make a choice to which VPN service region to connect to, as Cloudflare will always ensure they connect to the closest and most responsive service for the best access performance to their private applications.
 
 ### Connecting networks to Cloudflare
 
@@ -136,7 +136,7 @@ Now that we've connected your networks to Cloudflare, we need to get traffic fro
 
 Use [device profiles](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) to apply different device agent configurations to different users – or the same users in different locations using [Managed networks](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/managed-networks/). For companies which don't route Internet traffic via their VPN server, device profiles allow you to [configure the device agent to exclude Internet traffic](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) from the Cloudflare tunnel and connect directly to the Internet. Note that this guide does heavily recommend sending Internet bound traffic via Cloudflare where you have greater control over the security of that traffic. But you can selectively bypass Cloudflare for bandwidth heavy traffic such as video conference calls.
 
-Traffic from employees using the device agent destined for internal resources will have a source IP in the 100.96.0.0/12 IP range. This is a range from the [RFC 6598 Carrier-grade NAT space ↗](https://datatracker.ietf.org/doc/html/rfc6598) which should be added as a route in the data center regions to allow for traffic to flow back to these users. See for more information the [Cloudflare WAN with WARP integration](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/) documentation.
+Traffic from employees using the device agent destined for internal resources will have a source IP in the 100.96.0.0/12 IP range. This is a range from the [RFC 6598 Carrier-grade NAT space ↗︎](https://datatracker.ietf.org/doc/html/rfc6598) which should be added as a route in the data center regions to allow for traffic to flow back to these users. See for more information the [Cloudflare WAN with WARP integration](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/) documentation.
 
 ### Deploying software connectors for DNS
 
@@ -172,7 +172,7 @@ A tunnel exposing a route to the internal DNS server is needed. `cloudflared` sh
 As steps are taken in this first phase and the first users will start accessing applications, the need for proper monitoring and logging will become apparent. Having visibility into the traffic flowing through Cloudflare will help with:
 
 - Operational activities such as troubleshooting by your support staff.
-- Monitoring for potential threats by a SOC, possibly using a security information and event management ([SIEM ↗](https://www.cloudflare.com/learning/security/what-is-siem/)) service.
+- Monitoring for potential threats by a SOC, possibly using a security information and event management ([SIEM ↗︎](https://www.cloudflare.com/learning/security/what-is-siem/)) service.
 - Visibility into application traffic to see where potential security and performance improvements can be made (see also phase 2).
 
 Cloudflare provides visibility at different levels, available through the dashboard or exported using [Logpush](https://developers.cloudflare.com/logs/logpush/). For traffic flowing over Cloudflare WAN IPsec tunnels, [Network Analytics](https://developers.cloudflare.com/analytics/network-analytics/) can be found in the dashboard and through the [GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/). This will show sampled statistics of the traffic and can be used for trend and traffic flow analysis.

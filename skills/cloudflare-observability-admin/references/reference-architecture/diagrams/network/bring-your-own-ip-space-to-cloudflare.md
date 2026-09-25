@@ -24,7 +24,7 @@ For example, partners or other B2B relationships may use the public IP space own
 
 ## BYOIP scenario one - Cloudflare proxy services
 
-The default behavior when a DNS query is made to a Cloudflare proxied hostname will be to return one of Cloudflare's [default anycast IP addresses ↗](https://www.cloudflare.com/ips/). The traffic is then accelerated, protected, and, if not served by Cloudflare cache, sent to the customer's origin server.
+The default behavior when a DNS query is made to a Cloudflare proxied hostname will be to return one of Cloudflare's [default anycast IP addresses ↗︎](https://www.cloudflare.com/ips/). The traffic is then accelerated, protected, and, if not served by Cloudflare cache, sent to the customer's origin server.
 
 In the diagram below, instead of the default behavior, traffic will proxy through Cloudflare's application services platform but DNS queries will return an IP address that is owned by the customer while also benefiting from Cloudflare's anycast network.
 

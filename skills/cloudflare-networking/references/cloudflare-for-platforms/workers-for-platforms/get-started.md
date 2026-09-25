@@ -18,7 +18,7 @@ Get started with Workers for Platforms by deploying a starter kit to your accoun
 
 ## Deploy a platform
 
-Deploy the [Platform Starter Kit ↗](https://github.com/cloudflare/templates/tree/main/worker-publisher-template) to your Cloudflare account. This creates a complete Workers for Platforms setup with one click.
+Deploy the [Platform Starter Kit ↗︎](https://github.com/cloudflare/templates/tree/main/worker-publisher-template) to your Cloudflare account. This creates a complete Workers for Platforms setup with one click.
 
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/worker-publisher-template)
 
@@ -89,7 +89,7 @@ Now that you understand how the components work together, customize the template
 
 Build an [AI vibe coding platform](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/) where users describe what they want and AI generates and deploys applications.
 
-With [VibeSDK ↗](https://github.com/cloudflare/vibesdk), Cloudflare's open source vibe coding platform, you can get started with an example that handles AI code generation, code execution in secure sandboxes, live previews, and deployment at scale.
+With [VibeSDK ↗︎](https://github.com/cloudflare/vibesdk), Cloudflare's open source vibe coding platform, you can get started with an example that handles AI code generation, code execution in secure sandboxes, live previews, and deployment at scale.
 
 [View demo](https://build.cloudflare.dev) [View on GitHub](https://github.com/cloudflare/vibesdk)
 

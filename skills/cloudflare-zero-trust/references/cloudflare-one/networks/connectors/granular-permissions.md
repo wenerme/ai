@@ -31,7 +31,7 @@ For any API request on a specific Tunnel or Mesh node, access is granted if the 
 
 Granular permissions are assigned through the standard [member management](https://developers.cloudflare.com/fundamentals/manage-members/manage/) flow.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Manage Account** > **Members** and select **Invite Members**, or open an existing member to edit their permissions.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Manage Account** > **Members** and select **Invite Members**, or open an existing member to edit their permissions.
 2. Add a permission policy and choose a [resource-scoped role](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) that targets Tunnels or Mesh nodes.
 3. In the **Scope** section, choose **Specific resources**.
 4. Set **Resource type** to one of:

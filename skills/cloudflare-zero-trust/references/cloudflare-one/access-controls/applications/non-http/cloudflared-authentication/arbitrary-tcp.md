@@ -22,7 +22,7 @@ Cloudflare Access provides a mechanism for end users to authenticate with their 
 - A site active on Cloudflare
 - The `cloudflared` daemon installed on the host and client machines
 
-> Cloudflare Access requires you to first [add a site ↗](https://dash.cloudflare.com/sign-up) to Cloudflare. You can use any site you have registered; the site does not need to be the same one you use for customer traffic and it does not need to match sites in your internal DNS.
+> Cloudflare Access requires you to first [add a site ↗︎](https://dash.cloudflare.com/sign-up) to Cloudflare. You can use any site you have registered; the site does not need to be the same one you use for customer traffic and it does not need to match sites in your internal DNS.
 >
 > Adding the site to Cloudflare requires changing your domain's authoritative DNS to point to Cloudflare's nameservers. Once configured, all requests to that hostname will be sent to Cloudflare's network first, where Access policies can be applied.
 
@@ -30,7 +30,7 @@ Cloudflare Access provides a mechanism for end users to authenticate with their 
 
 ### 1. Install the Cloudflare daemon on the host machine
 
-The Cloudflare daemon, `cloudflared`, will maintain a secure, persistent, outbound-only connection from the machine to Cloudflare. Arbitrary TCP traffic will be proxied over this connection using [Cloudflare Tunnel ↗](https://www.cloudflare.com/products/tunnel/).
+The Cloudflare daemon, `cloudflared`, will maintain a secure, persistent, outbound-only connection from the machine to Cloudflare. Arbitrary TCP traffic will be proxied over this connection using [Cloudflare Tunnel ↗︎](https://www.cloudflare.com/products/tunnel/).
 
 Follow [these instructions](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/downloads/) to download and install `cloudflared` on the machine hosting the resource.
 

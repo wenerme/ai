@@ -26,8 +26,8 @@ Workers VPC is currently in beta. Features and APIs may change before general av
 
 Before you begin, ensure you have completed the following:
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -37,7 +37,7 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
@@ -83,7 +83,7 @@ cd workers-vpc-app
 
 A Cloudflare Tunnel creates a secure connection from your private network to Cloudflare. This tunnel will allow Workers to securely access your private resources. You can create the tunnel on a virtual machine or container in your external cloud, or even on your local desktop for the sake of this tutorial.
 
-1. Navigate to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc/tunnels) and select the **Tunnels** tab.
+1. Navigate to the [Workers VPC dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/vpc/tunnels) and select the **Tunnels** tab.
 2. Select **Create** to create a new tunnel.
 3. Enter a name for your tunnel (for example, `workers-vpc-tunnel`) and select **Save tunnel**.
 4. Choose your operating system and architecture. The dashboard will provide specific installation instructions for your environment.
@@ -105,7 +105,7 @@ For comprehensive tunnel configuration, monitoring, and management, refer to the
 
 Now that your tunnel is running, create a VPC Service that Workers can use to access your internal resources:
 
-1. Navigate to the [Workers VPC dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/vpc) and select the **VPC Services** tab.
+1. Navigate to the [Workers VPC dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/vpc) and select the **VPC Services** tab.
 2. Select **Create** to create a new VPC Service.
 3. Enter a **Service name** for your VPC Service (for example, `my-private-api`).
 4. Select your tunnel from the **Tunnel** dropdown, or select **Create Tunnel** if you need to create a new one.
@@ -166,7 +166,7 @@ Add the VPC Service binding to your Wrangler configuration file:
 	"name": "workers-vpc-app",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"vpc_services": [
 		{
 			"binding": "VPC_SERVICE",
@@ -181,7 +181,7 @@ Add the VPC Service binding to your Wrangler configuration file:
 name = "workers-vpc-app"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[vpc_services]]
 binding = "VPC_SERVICE"

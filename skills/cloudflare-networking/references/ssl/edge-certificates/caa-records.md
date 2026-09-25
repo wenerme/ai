@@ -22,7 +22,7 @@ For additional security, set up [Certificate Transparency Monitoring](https://de
 
 Note
 
-For more technical details about CAA records, refer to the [introductory blog post ↗](https://blog.cloudflare.com/caa-of-the-wild/).
+For more technical details about CAA records, refer to the [introductory blog post ↗︎](https://blog.cloudflare.com/caa-of-the-wild/).
 
 ## Who should create CAA records?
 

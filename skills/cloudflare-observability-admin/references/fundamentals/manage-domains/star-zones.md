@@ -20,7 +20,7 @@ For quick access to commonly configured domains (also known as "zones"), star up
 
 To star a domain:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Select your account and domain.
 3. On the website **Overview**, select **Star**.
 
@@ -30,7 +30,7 @@ To star a domain:
 
 To view only starred domains in your account:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Select your account.
 3. On the account **Home**, select **Starred**.
 

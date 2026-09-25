@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/vite-plugin/reference/vite-environments/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [Vite Environment API ↗](https://vite.dev/guide/api-environment), released in Vite 6, is the key feature that enables the Cloudflare Vite plugin to integrate Vite directly with the Workers runtime. It is not necessary to understand all the intricacies of the Environment API as an end user, but it is useful to have a high-level understanding.
+The [Vite Environment API ↗︎](https://vite.dev/guide/api-environment), released in Vite 6, is the key feature that enables the Cloudflare Vite plugin to integrate Vite directly with the Workers runtime. It is not necessary to understand all the intricacies of the Environment API as an end user, but it is useful to have a high-level understanding.
 
 ## Default behavior
 
@@ -35,7 +35,7 @@ In the following example we have a Worker named `my-worker` that is associated w
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"main": "./src/index.ts"
 }
 ```
@@ -44,7 +44,7 @@ In the following example we have a Worker named `my-worker` that is associated w
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "./src/index.ts"
 ```
 
@@ -66,13 +66,13 @@ export default defineConfig({
 });
 ```
 
-For more information about Vite's configuration options, see [Configuring Vite ↗](https://vite.dev/config/).
+For more information about Vite's configuration options, see [Configuring Vite ↗︎](https://vite.dev/config/).
 
 The default behavior of using the Worker name as the environment name is appropriate when you have a standalone Worker, such as an API that is accessed from your front-end application, or an [auxiliary Worker](https://developers.cloudflare.com/workers/vite-plugin/reference/api/#interface-pluginconfig) that is accessed via service bindings.
 
 ## Full-stack frameworks
 
-If you are using the Cloudflare Vite plugin with [TanStack Start ↗](https://tanstack.com/start/) or [React Router v8 ↗](https://reactrouter.com/), then your Worker is used for server-side rendering and tightly integrated with the framework. To support this, you should assign it to the `ssr` environment by setting `viteEnvironment.name` in the plugin config.
+If you are using the Cloudflare Vite plugin with [TanStack Start ↗︎](https://tanstack.com/start/) or [React Router v8 ↗︎](https://reactrouter.com/), then your Worker is used for server-side rendering and tightly integrated with the framework. To support this, you should assign it to the `ssr` environment by setting `viteEnvironment.name` in the plugin config.
 
 *vite.config.tsts*
 

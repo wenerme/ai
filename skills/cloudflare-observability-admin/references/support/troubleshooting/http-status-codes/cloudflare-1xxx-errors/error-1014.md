@@ -22,7 +22,7 @@ This error indicates that a CNAME record between domains in different Cloudflare
 
 Common causes include:
 
-- A DNS CNAME record points between domains in different Cloudflare accounts. Cloudflare permits CNAME records within a domain ( `www.example.com` CNAME to `api.example.com`), across zones within the same user account ( `www.example.com` CNAME to `www.example.net`), or when using [Cloudflare for SaaS ↗](https://www.cloudflare.com/saas/).
+- A DNS CNAME record points between domains in different Cloudflare accounts. Cloudflare permits CNAME records within a domain ( `www.example.com` CNAME to `api.example.com`), across zones within the same user account ( `www.example.com` CNAME to `www.example.net`), or when using [Cloudflare for SaaS ↗︎](https://www.cloudflare.com/saas/).
 - A custom domain is connected to an R2 bucket, and its active zone has a [zone hold](https://developers.cloudflare.com/fundamentals/account/account-security/zone-holds/) or is banned.
 - A custom domain is used to [create an MCP portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/#create-a-portal), and its active zone has a zone hold or is banned.
 

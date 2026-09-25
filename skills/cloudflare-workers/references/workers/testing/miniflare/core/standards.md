@@ -24,7 +24,7 @@ Last updated Jan 28, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Mocking Outbound `fetch` Requests
 
-When using the API, Miniflare allows you to substitute custom `Response`s for `fetch()` calls using `undici`'s [`MockAgent` API ↗](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin). This is useful for testing Workers that make HTTP requests to other services. To enable `fetch` mocking, create a [`MockAgent` ↗](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin) using the `createFetchMock()` function, then set this using the `fetchMock` option.
+When using the API, Miniflare allows you to substitute custom `Response`s for `fetch()` calls using `undici`'s [`MockAgent` API ↗︎](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin). This is useful for testing Workers that make HTTP requests to other services. To enable `fetch` mocking, create a [`MockAgent` ↗︎](https://undici.nodejs.org/#/docs/api/MockAgent?id=mockagentgetorigin) using the `createFetchMock()` function, then set this using the `fetchMock` option.
 
 ```js
 import { Miniflare, createFetchMock } from "miniflare";

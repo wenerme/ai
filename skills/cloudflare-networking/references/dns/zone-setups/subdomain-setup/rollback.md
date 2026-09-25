@@ -29,7 +29,7 @@ This process may incur in downtime, as it is not possible to add address records
 
 1. (Optional) In the parent zone, migrate over any settings - [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/), [Rules](https://developers.cloudflare.com/rules/), [Workers](https://developers.cloudflare.com/workers/), and more - that might be needed for the child domain.
 2. (Optional) If necessary, [order an advanced SSL certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) that covers the child domain and any deeper subdomains.
-3. In the parent zone, go to the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page.
+3. In the parent zone, go to the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page.
 4. Delete one of the `NS` records defined for the child domain.
 5. Edit the remaining `NS` record to create the subdomain address record.
 6. [Import](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/#import-records) the records you had obtained [before you began](#before-you-begin).

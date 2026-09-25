@@ -55,7 +55,7 @@ sec-ch-geohash: <geohash>-<country_code>
 
 | Parameter | Description |
 | --- | --- |
-| `<geohash>` | A [geohash ↗](https://en.wikipedia.org/wiki/Geohash) string (typically 4-8 characters) |
+| `<geohash>` | A [geohash ↗︎](https://en.wikipedia.org/wiki/Geohash) string (typically 4-8 characters) |
 | `<country_code>` | ISO 3166-1 alpha-2 country code |
 
 *Examplehttp*

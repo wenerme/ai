@@ -28,7 +28,7 @@ If your DNS records are hosted by Cloudflare (or any other provider, except for 
 
 By changing your MX records, Email security will be positioned between your incoming emails and Microsoft 0365 or Gmail.
 
-Email security becomes a hop in the [SMTP ↗](https://www.cloudflare.com/en-gb/learning/email-security/what-is-smtp/) processing chain and physically interacts with incoming email messages. Based on your policies, various messages are blocked before reaching the inbox.
+Email security becomes a hop in the [SMTP ↗︎](https://www.cloudflare.com/en-gb/learning/email-security/what-is-smtp/) processing chain and physically interacts with incoming email messages. Based on your policies, various messages are blocked before reaching the inbox.
 
 When you choose an inline deployment, you get the following benefits:
 

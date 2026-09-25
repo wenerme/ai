@@ -28,11 +28,11 @@ This reference architecture is designed for IT or security professionals with so
 
 To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
+- What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗︎](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
 
-- Solution Brief: [Cloudflare One ↗](https://cfl.re/SASE-SSE-platform-brief) (3 minute read)
-- Whitepaper: [Reference Architecture for Internet-Native Transformation ↗](https://cfl.re/internet-native-transformation-wp) (10 minute read)
-- Blog: [Zero Trust, SASE, and SSE: foundational concepts for your next-generation network ↗](https://blog.cloudflare.com/zero-trust-sase-and-sse-foundational-concepts-for-your-next-generation-network/) (14 minute read)
+- Solution Brief: [Cloudflare One ↗︎](https://cfl.re/SASE-SSE-platform-brief) (3 minute read)
+- Whitepaper: [Reference Architecture for Internet-Native Transformation ↗︎](https://cfl.re/internet-native-transformation-wp) (10 minute read)
+- Blog: [Zero Trust, SASE, and SSE: foundational concepts for your next-generation network ↗︎](https://blog.cloudflare.com/zero-trust-sase-and-sse-foundational-concepts-for-your-next-generation-network/) (14 minute read)
 
 Those who read this reference architecture will learn:
 
@@ -40,17 +40,17 @@ Those who read this reference architecture will learn:
 
 This document is also accompanied by a reference architecture with a more indepth look at [Cloudflare and SASE](https://developers.cloudflare.com/reference-architecture/architectures/sase/).
 
-While this document examines Cloudflare at a technical level, it does not offer fine detail about every product in the platform. Visit the [developer documentation ↗](https://developers.cloudflare.com/) for further information specific to a product area or use case.
+While this document examines Cloudflare at a technical level, it does not offer fine detail about every product in the platform. Visit the [developer documentation ↗︎](https://developers.cloudflare.com/) for further information specific to a product area or use case.
 
 ## Integration of Cloudflare with Microsoft
 
-Cloudflare's [Zero Trust Network Access ↗](https://www.cloudflare.com/zero-trust/products/access/) (ZTNA) provides a faster and safer alternative to traditional VPNs. It replaces on-premises VPN infrastructure and protects any application, regardless of whether it is hosted in an on-premises network, public cloud, or as Software as a Service (SaaS). By integrating with Microsoft Intune and Microsoft Entra ID (formerly Azure Active Directory), Cloudflare's ZTNA service enables organizations to enforce default-deny, Zero Trust rules and provide conditional access to internal resources based on user identity and device posture.
+Cloudflare's [Zero Trust Network Access ↗︎](https://www.cloudflare.com/zero-trust/products/access/) (ZTNA) provides a faster and safer alternative to traditional VPNs. It replaces on-premises VPN infrastructure and protects any application, regardless of whether it is hosted in an on-premises network, public cloud, or as Software as a Service (SaaS). By integrating with Microsoft Intune and Microsoft Entra ID (formerly Azure Active Directory), Cloudflare's ZTNA service enables organizations to enforce default-deny, Zero Trust rules and provide conditional access to internal resources based on user identity and device posture.
 
 Microsoft and Cloudflare can be integrated in the following ways.
 
-- Using Microsoft [Entra ID ↗](https://learn.microsoft.com/en-us/entra/fundamentals/whatis) for authentication to all Cloudflare protected resources
-- Leveraging Microsoft [Intune ↗](https://learn.microsoft.com/en-us/mem/intune/fundamentals/what-is-intune) device posture in Cloudflare policies to ensure only managed, trusted devices have access to protected resources
-- Using Cloudflare [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) to inspect your [Microsoft 365 ↗](https://www.microsoft.com/en-us/microsoft-365/what-is-microsoft-365) tenants and alert on security findings for incorrectly configured accounts and shared files containing sensitive data
+- Using Microsoft [Entra ID ↗︎](https://learn.microsoft.com/en-us/entra/fundamentals/whatis) for authentication to all Cloudflare protected resources
+- Leveraging Microsoft [Intune ↗︎](https://learn.microsoft.com/en-us/mem/intune/fundamentals/what-is-intune) device posture in Cloudflare policies to ensure only managed, trusted devices have access to protected resources
+- Using Cloudflare [CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) to inspect your [Microsoft 365 ↗︎](https://www.microsoft.com/en-us/microsoft-365/what-is-microsoft-365) tenants and alert on security findings for incorrectly configured accounts and shared files containing sensitive data
 - Using Cloudflare's [Secure Web Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) to control access to Microsoft SaaS applications such as Outlook, OneDrive and Teams
 - Using Cloudflare's [Email security](https://developers.cloudflare.com/email-security/) service to increase protection of email from phishing attacks and business email compromise.
 
@@ -116,7 +116,7 @@ By leveraging Cloudflare and its integrations with Microsoft, organizations can 
 
 ## Related resources
 
-- [Overview of Microsoft and Cloudflare partnership ↗](https://www.cloudflare.com/partners/technology-partners/microsoft/)
+- [Overview of Microsoft and Cloudflare partnership ↗︎](https://www.cloudflare.com/partners/technology-partners/microsoft/)
 - [Set up Microsoft Entra ID (formerly Azure Active Directory) as an identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/entra-id/#set-up-entra-id-as-an-identity-provider)
 
 Was this helpful?

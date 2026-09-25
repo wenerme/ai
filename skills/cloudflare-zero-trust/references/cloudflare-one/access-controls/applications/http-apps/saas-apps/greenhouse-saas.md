@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/greenhouse-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [Greenhouse Recruiting ↗](https://support.greenhouse.io/hc/en-us/articles/360040753811-Configure-single-sign-on-SSO-for-Greenhouse-Recruiting) as a SAML application in Cloudflare One.
+This guide covers how to configure [Greenhouse Recruiting ↗︎](https://support.greenhouse.io/hc/en-us/articles/360040753811-Configure-single-sign-on-SSO-for-Greenhouse-Recruiting) as a SAML application in Cloudflare One.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ This guide covers how to configure [Greenhouse Recruiting ↗](https://support.g
 
 ## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application** > **SaaS application**.
 3. For **Application**, enter `Greenhouse` and select the corresponding textbox that appears.
 4. For the authentication protocol, select **SAML**.

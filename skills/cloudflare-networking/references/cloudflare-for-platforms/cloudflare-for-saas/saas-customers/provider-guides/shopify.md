@@ -52,7 +52,7 @@ This setting forces a redirect on all requests, including the `/.well-known/acme
 
 Instead, create a [redirect rule](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/) to enforce HTTPS while excluding the validation path mentioned above (use a [wildcard pattern](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#wildcard-matching) like `/.well-known/acme-challenge/*`).
 
-For questions about Shopify setup, refer to their [support guide ↗](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-manual).
+For questions about Shopify setup, refer to their [support guide ↗︎](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-manual).
 
 ## Product compatibility
 
@@ -80,7 +80,7 @@ Cloudflare will consult Shopify if there are technical issues that Cloudflare ca
 
 ### DNS CAA records
 
-For details about CAA records refer to the [Shopify documentation ↗](https://help.shopify.com/manual/domains/add-a-domain/connecting-domains/considerations).
+For details about CAA records refer to the [Shopify documentation ↗︎](https://help.shopify.com/manual/domains/add-a-domain/connecting-domains/considerations).
 
 Was this helpful?
 

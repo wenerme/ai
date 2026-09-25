@@ -63,7 +63,7 @@ If you purchased or renewed multiple domains through [Cloudflare Registrar](http
 
 After you check the items above, retry your transaction in the Cloudflare dashboard. If the failed payment was for a renewal, Cloudflare retries automatically five times over five days. Retrying manually in the dashboard gives you instant feedback.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
 2. Go to **Manage Account** > **Billing**. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
 3. Go to **Invoices and documents**.
 4. Select **Pay now** next to your invoice. You can also open the invoice PDF and select the payment link.

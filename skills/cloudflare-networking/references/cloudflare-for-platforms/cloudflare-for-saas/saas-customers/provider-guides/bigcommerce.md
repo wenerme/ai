@@ -38,7 +38,7 @@ To enable O2O on your account, [create](https://developers.cloudflare.com/dns/ma
 
 Note
 
-For more details about a BigCommerce setup, refer to their [support guide ↗](https://support.bigcommerce.com/s/article/Cloudflare-for-Performance-and-Security?language=en_US#orange-to-orange).
+For more details about a BigCommerce setup, refer to their [support guide ↗︎](https://support.bigcommerce.com/s/article/Cloudflare-for-Performance-and-Security?language=en_US#orange-to-orange).
 
 If you cannot activate your domain using [proxied DNS records](https://developers.cloudflare.com/dns/proxy-status/), reach out to your account team.
 

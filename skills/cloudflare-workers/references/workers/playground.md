@@ -18,7 +18,7 @@ Browser support
 
 The Cloudflare Workers Playground is currently only supported in Firefox and Chrome desktop browsers. In Safari, it will show a `PreviewRequestFailed` error message.
 
-The quickest way to experiment with Cloudflare Workers is in the [Playground ↗](https://workers.cloudflare.com/playground). It does not require any setup or authentication. The Playground is a sandbox which gives you an instant way to preview and test a Worker directly in the browser.
+The quickest way to experiment with Cloudflare Workers is in the [Playground ↗︎](https://workers.cloudflare.com/playground). It does not require any setup or authentication. The Playground is a sandbox which gives you an instant way to preview and test a Worker directly in the browser.
 
 The Playground uses the same editor as the authenticated experience. The Playground provides the ability to [share](#share) the code you write as well as [deploy](#deploy) it instantly to Cloudflare's global network. This way, you can try new things out and deploy them when you are ready.
 
@@ -60,7 +60,7 @@ Refer to the [Fetch handler documentation](https://developers.cloudflare.com/wor
 
 ## Use the Playground
 
-As you edit the default code, the Worker will auto-update such that the preview on the right shows your Worker running just as it would in a browser. If your Worker uses URL paths, you can enter those in the input field on the right to navigate to them. The Playground provides type-checking via JSDoc comments and [`workers-types` ↗](https://www.npmjs.com/package/@cloudflare/workers-types). The Playground also provides pretty error pages in the event of application errors.
+As you edit the default code, the Worker will auto-update such that the preview on the right shows your Worker running just as it would in a browser. If your Worker uses URL paths, you can enter those in the input field on the right to navigate to them. The Playground provides type-checking via JSDoc comments and [`workers-types` ↗︎](https://www.npmjs.com/package/@cloudflare/workers-types). The Playground also provides pretty error pages in the event of application errors.
 
 To test a raw HTTP request (for example, to test a `POST` request), go to the **HTTP** tab and select **Send**. You can add and edit headers via this panel, as well as edit the body of a request.
 

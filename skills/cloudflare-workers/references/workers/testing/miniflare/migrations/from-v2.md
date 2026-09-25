@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/miniflare/migrations/from-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Miniflare v3 now uses [`workerd` ↗](https://github.com/cloudflare/workerd), the open-source Cloudflare Workers runtime. This is the same runtime that's deployed on Cloudflare's network, giving bug-for-bug compatibility and practically eliminating behavior mismatches. Refer to the [Miniflare v3 ↗](https://blog.cloudflare.com/miniflare-and-workerd/) and [Wrangler v3 announcements ↗](https://blog.cloudflare.com/wrangler3/) for more information.
+Miniflare v3 now uses [`workerd` ↗︎](https://github.com/cloudflare/workerd), the open-source Cloudflare Workers runtime. This is the same runtime that's deployed on Cloudflare's network, giving bug-for-bug compatibility and practically eliminating behavior mismatches. Refer to the [Miniflare v3 ↗︎](https://blog.cloudflare.com/miniflare-and-workerd/) and [Wrangler v3 announcements ↗︎](https://blog.cloudflare.com/wrangler3/) for more information.
 
 ## CLI Changes
 
@@ -24,7 +24,7 @@ Miniflare v3 no longer includes a standalone CLI. To get the same functionality,
 $ npx wrangler@3 dev
 ```
 
-If there are features from the Miniflare CLI you would like to see in Wrangler, please open an issue on [GitHub ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
+If there are features from the Miniflare CLI you would like to see in Wrangler, please open an issue on [GitHub ↗︎](https://github.com/cloudflare/workers-sdk/issues/new/choose).
 
 ## API Changes
 
@@ -60,15 +60,15 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
 - `packagePath`
   - Miniflare no longer loads script paths from `package.json` files. Use the `scriptPath` option to specify your script instead.
 - `watch`
-  - Miniflare's API is primarily intended for testing use cases, where file watching isn't usually required. This option was here to enable Miniflare's CLI which has now been removed. If you need to watch files, consider using a separate file watcher like [`fs.watch()` ↗](https://nodejs.org/api/fs.html#fswatchfilename-options-listener) or [`chokidar` ↗](https://github.com/paulmillr/chokidar), and calling `setOptions()` with your original configuration on change.
+  - Miniflare's API is primarily intended for testing use cases, where file watching isn't usually required. This option was here to enable Miniflare's CLI which has now been removed. If you need to watch files, consider using a separate file watcher like [`fs.watch()` ↗︎](https://nodejs.org/api/fs.html#fswatchfilename-options-listener) or [`chokidar` ↗︎](https://github.com/paulmillr/chokidar), and calling `setOptions()` with your original configuration on change.
 - `logUnhandledRejections`
-  - Unhandled rejections can be handled in Workers with [`addEventListener("unhandledrejection")` ↗](https://community.cloudflare.com/t/2021-10-21-workers-runtime-release-notes/318571).
+  - Unhandled rejections can be handled in Workers with [`addEventListener("unhandledrejection")` ↗︎](https://community.cloudflare.com/t/2021-10-21-workers-runtime-release-notes/318571).
 - `globals`
-  - Injecting arbitrary globals is not supported by [`workerd` ↗](https://github.com/cloudflare/workerd). If you're using a service worker, `bindings` will be injected as globals, but these must be JSON-serialisable.
+  - Injecting arbitrary globals is not supported by [`workerd` ↗︎](https://github.com/cloudflare/workerd). If you're using a service worker, `bindings` will be injected as globals, but these must be JSON-serialisable.
 - `https/httpsKey(Path)/httpsCert(Path)/httpsPfx(Path)/httpsPassphrase`
   - Miniflare does not support starting HTTPS servers yet. These options may be added back in a future release.
 - `crons`
-  - [`workerd` ↗](https://github.com/cloudflare/workerd) does not support triggering scheduled events yet. This option may be added back in a future release.
+  - [`workerd` ↗︎](https://github.com/cloudflare/workerd) does not support triggering scheduled events yet. This option may be added back in a future release.
 - `mounts`
   - Miniflare no longer has the concept of parent and child Workers. Instead, all Workers can be defined at the same level, using the new `workers` option. Here's an example that uses a service binding to increment a value in a shared KV namespace:
 
@@ -141,7 +141,7 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
 - `durableObjectAlarms`
   - Miniflare now always enables Durable Object alarms.
 - `globalAsyncIO/globalTimers/globalRandom`
-  - [`workerd` ↗](https://github.com/cloudflare/workerd) cannot support these options without fundamental changes.
+  - [`workerd` ↗︎](https://github.com/cloudflare/workerd) cannot support these options without fundamental changes.
 - `actualTime`
   - Miniflare now always returns the current time.
 - `inaccurateCpu`
@@ -157,17 +157,17 @@ We have tried to keep Miniflare v3's API close to Miniflare v2 where possible, b
 - `reload()`
   - Call `setOptions()` with the original configuration object to reload Miniflare.
 - `createServer()/startServer()`
-  - Miniflare now always starts a [`workerd` ↗](https://github.com/cloudflare/workerd) server listening on the configured `host` and `port`, so these methods are redundant.
+  - Miniflare now always starts a [`workerd` ↗︎](https://github.com/cloudflare/workerd) server listening on the configured `host` and `port`, so these methods are redundant.
 - `dispatchScheduled()/startScheduled()`
   - The functionality of `dispatchScheduled` can now be done via `getWorker()`. For more information read the [scheduled events documentation](https://developers.cloudflare.com/workers/testing/miniflare/core/scheduled#dispatching-events).
 - `dispatchQueue()`
   - Use the `queue()` method on [service bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings) or [queue producer bindings](https://developers.cloudflare.com/queues/configuration/configure-queues/#producer-worker-configuration) instead.
 - `getGlobalScope()/getBindings()/getModuleExports()`
-  - These methods returned objects from inside the Workers sandbox. Since Miniflare now uses [`workerd` ↗](https://github.com/cloudflare/workerd), which runs in a different process, these methods can no longer be supported.
+  - These methods returned objects from inside the Workers sandbox. Since Miniflare now uses [`workerd` ↗︎](https://github.com/cloudflare/workerd), which runs in a different process, these methods can no longer be supported.
 - `addEventListener()`/ `removeEventListener()`
   - Miniflare no longer emits `reload` events. As Miniflare no longer watches files, reloads are only triggered by initialisation or `setOptions()` calls. In these cases, it's possible to wait for the reload with either `await mf.ready` or `await mf.setOptions()` respectively.
 - `Response#waitUntil()`
-  - [`workerd` ↗](https://github.com/cloudflare/workerd) does not support waiting for all `waitUntil()`ed promises yet.
+  - [`workerd` ↗︎](https://github.com/cloudflare/workerd) does not support waiting for all `waitUntil()`ed promises yet.
 
 ### Removed Packages
 

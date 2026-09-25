@@ -164,7 +164,7 @@ Wrangler also supports running multiple Workers at once with one command. To try
 
 Caution
 
-Support for running multiple Workers at once with one Wrangler command is experimental, and subject to change as we work on the experience. If you run into bugs or have any feedback, [open an issue on the workers-sdk repository ↗](https://github.com/cloudflare/workers-sdk/issues/new)
+Support for running multiple Workers at once with one Wrangler command is experimental, and subject to change as we work on the experience. If you run into bugs or have any feedback, [open an issue on the workers-sdk repository ↗︎](https://github.com/cloudflare/workers-sdk/issues/new)
 
 ## Deployment
 

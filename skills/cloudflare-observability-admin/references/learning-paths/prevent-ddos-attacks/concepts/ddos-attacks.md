@@ -40,7 +40,7 @@ DDoS attacks can be devastating for businesses and organizations that rely on th
 
 ## Additional resources
 
-For more resources on DDoS attacks and how they work, refer to our [Learning Center ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
+For more resources on DDoS attacks and how they work, refer to our [Learning Center ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
 
 Was this helpful?
 

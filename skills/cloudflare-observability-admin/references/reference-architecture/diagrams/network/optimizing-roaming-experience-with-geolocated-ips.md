@@ -16,7 +16,7 @@ Last updated Feb 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Introduction
 
-A private [Access Point Name ↗](https://en.wikipedia.org/wiki/Access_Point_Name) (APN) enables devices, like connected vehicles, connected containers, healthcare devices or drones, to be connected while roaming across different countries. The device connects with a SIM or eSIM card to a dedicated network, and as the device moves to a new country, it automatically selects the appropriate private APN for the local provider.
+A private [Access Point Name ↗︎](https://en.wikipedia.org/wiki/Access_Point_Name) (APN) enables devices, like connected vehicles, connected containers, healthcare devices or drones, to be connected while roaming across different countries. The device connects with a SIM or eSIM card to a dedicated network, and as the device moves to a new country, it automatically selects the appropriate private APN for the local provider.
 
 APN traffic, typically managed by a third party provider such as a telecommunications company, is routed through specific regional Internet breakouts to get access to the Internet. This architecture can create challenges in regards to the localization of that traffic. For example, a device roaming in France might have traffic exit to the Internet from a UK-based Internet breakout. Therefore web sites and other Internet services will treat the device as if it is in the UK and deliver content in the wrong language or apply regional restrictions.
 
@@ -69,7 +69,7 @@ This diagram is intended for network engineers, IT architects, and decision-make
 
 - [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/)
 - [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
-- [Cloudflare servers don't own IPs anymore ↗](https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore/)
+- [Cloudflare servers don't own IPs anymore ↗︎](https://blog.cloudflare.com/cloudflare-servers-dont-own-ips-anymore/)
 
 Was this helpful?
 

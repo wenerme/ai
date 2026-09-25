@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Create, deploy, and manage Cloudflare resources in various programming languages.
 
-Provision and manage Cloudflare using infrastructure as code through [Pulumi ↗](https://www.pulumi.com/). With the [Pulumi Cloudflare package ↗](https://www.pulumi.com/registry/packages/cloudflare/), you can build, deploy, and manage Cloudflare resources using standard programming languages (TypeScript, JavaScript, Python, .NET, Java, Go, and YAML). You can define the desired state for your infrastructure in code and leverage language features like loops, functions, classes, and package management.
+Provision and manage Cloudflare using infrastructure as code through [Pulumi ↗︎](https://www.pulumi.com/). With the [Pulumi Cloudflare package ↗︎](https://www.pulumi.com/registry/packages/cloudflare/), you can build, deploy, and manage Cloudflare resources using standard programming languages (TypeScript, JavaScript, Python, .NET, Java, Go, and YAML). You can define the desired state for your infrastructure in code and leverage language features like loops, functions, classes, and package management.
 
 ---
 
@@ -24,13 +24,13 @@ Provision and manage Cloudflare using infrastructure as code through [Pulumi ↗
 
 [Open Source](https://www.pulumi.com/blog/pulumi-hearts-opensource/)
 
-[Pulumi ↗](https://github.com/pulumi/pulumi) is open source and uses the Apache 2.0 license.
+[Pulumi ↗︎](https://github.com/pulumi/pulumi) is open source and uses the Apache 2.0 license.
 
 View open source commitment
 
 [Multiple languages and SDKs](https://www.pulumi.com/docs/languages-sdks/)
 
-Use TypeScript, JavaScript, Python, Go, .Net, Java, or YAML to write Pulumi programs. Each language is as capable as the other and supports the entire [Pulumi Registry ↗](https://www.pulumi.com/registry/).
+Use TypeScript, JavaScript, Python, Go, .Net, Java, or YAML to write Pulumi programs. Each language is as capable as the other and supports the entire [Pulumi Registry ↗︎](https://www.pulumi.com/registry/).
 
 Use Multiple languages and SDKs
 

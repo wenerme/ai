@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/examples/isomorphic-git/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use [isomorphic-git ↗](https://isomorphic-git.org/) to run Git operations on Artifacts repos directly from a Cloudflare Worker.
+Use [isomorphic-git ↗︎](https://isomorphic-git.org/) to run Git operations on Artifacts repos directly from a Cloudflare Worker.
 
 The Artifacts binding creates and manages repos, but it cannot read or write files inside them — for that, you need Git. Since Workers do not have a git binary or a local filesystem, `isomorphic-git` fills that gap. It provides Git operations like init, commit, and push as JavaScript function calls, using an in-memory filesystem in place of a real disk.
 

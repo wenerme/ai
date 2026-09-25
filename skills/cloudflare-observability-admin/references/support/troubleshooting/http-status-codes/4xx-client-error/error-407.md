@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## 407 Authentication Required
 
-The `407 Proxy Authentication Required` status code indicates that the client did not provide the necessary authentication credentials to access the requested resource through a proxy server. For more details, refer to [RFC 7235 ↗](https://tools.ietf.org/html/rfc7235).
+The `407 Proxy Authentication Required` status code indicates that the client did not provide the necessary authentication credentials to access the requested resource through a proxy server. For more details, refer to [RFC 7235 ↗︎](https://tools.ietf.org/html/rfc7235).
 
 ### Common use cases
 

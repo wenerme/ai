@@ -111,7 +111,7 @@ class Counter(DurableObject):
     return value
 ```
 
-JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 ## SQL API
 
@@ -164,15 +164,15 @@ class MyDurableObject(DurableObject):
 
 - SQL API methods accessed with `ctx.storage.sql` are only allowed on [Durable Object classes with SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) and will return an error if called on Durable Object classes with a KV-storage backend.
 - When writing data, every row update of an index counts as an additional row. However, indexes may be beneficial for read-heavy use cases. Refer to [Index for SQLite Durable Objects](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#indexes-in-sqlite).
-- Writing data to [SQLite virtual tables ↗](https://www.sqlite.org/vtab.html) also counts towards rows written.
+- Writing data to [SQLite virtual tables ↗︎](https://www.sqlite.org/vtab.html) also counts towards rows written.
 
 Durable Objects support a subset of SQLite extensions for added functionality, including:
 
-- [FTS5 module ↗](https://www.sqlite.org/fts5.html) for full-text search (including `fts5vocab`).
-- [JSON extension ↗](https://www.sqlite.org/json1.html) for JSON functions and operators.
-- [Math functions ↗](https://sqlite.org/lang_mathfunc.html).
+- [FTS5 module ↗︎](https://www.sqlite.org/fts5.html) for full-text search (including `fts5vocab`).
+- [JSON extension ↗︎](https://www.sqlite.org/json1.html) for JSON functions and operators.
+- [Math functions ↗︎](https://sqlite.org/lang_mathfunc.html).
 
-Refer to the [source code ↗](https://github.com/cloudflare/workerd/blob/4c42a4a9d3390c88e9bd977091c9d3395a6cd665/src/workerd/util/sqlite.c%2B%2B#L269) for the full list of supported functions.
+Refer to the [source code ↗︎](https://github.com/cloudflare/workerd/blob/4c42a4a9d3390c88e9bd977091c9d3395a6cd665/src/workerd/util/sqlite.c%2B%2B#L269) for the full list of supported functions.
 
 ### `exec`
 
@@ -187,7 +187,7 @@ Refer to the [source code ↗](https://github.com/cloudflare/workerd/blob/4c42a4
 
 #### Returns
 
-A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `SqlStorageCursor` is a JavaScript [Iterable ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol), which supports iteration using `for (let row of cursor)`. `SqlStorageCursor` is also a JavaScript [Iterator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol), which supports iteration using `cursor.next()`.
+A cursor (`SqlStorageCursor`) to iterate over query row results as objects. `SqlStorageCursor` is a JavaScript [Iterable ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol), which supports iteration using `for (let row of cursor)`. `SqlStorageCursor` is also a JavaScript [Iterator ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol), which supports iteration using `cursor.next()`.
 
 Consume cursors synchronously
 
@@ -213,7 +213,7 @@ const rows = cursor.toArray();
 `SqlStorageCursor` supports the following methods:
 
 - `next()`
-  - Returns an object representing the next value of the cursor. The returned object has `done` and `value` properties adhering to the JavaScript [Iterator ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol). `done` is set to `false` when a next value is present, and `value` is set to the next row object in the query result. `done` is set to `true` when the entire cursor is consumed, and no `value` is set.
+  - Returns an object representing the next value of the cursor. The returned object has `done` and `value` properties adhering to the JavaScript [Iterator ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterator_protocol). `done` is set to `false` when a next value is present, and `value` is set to the next row object in the query result. `done` is set to `true` when the entire cursor is consumed, and no `value` is set.
 - `toArray()`
   - Iterates through remaining cursor value(s) and returns an array of returned row objects.
 - `one()`
@@ -446,7 +446,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 ### `put`
 
 - ``ctx.storage.kv.put(key `string`, value `any`)``: `void`
-  - Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
+  - Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
 
     For the size of keys and values refer to [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
 
@@ -459,7 +459,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 - ``ctx.storage.kv.list(options `Object` optional)``: `Iterable<string, any>`
   - Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
-  - The type of each returned value in the [`Iterable` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol) will be whatever was previously written for the corresponding key.
+  - The type of each returned value in the [`Iterable` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol) will be whatever was previously written for the corresponding key.
   - Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
 
 #### Supported options
@@ -485,7 +485,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 - ``ctx.storage.get(key `string`, options `Object` optional)``: `Promise<any>`
   - Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
 - ``ctx.storage.get(keys `Array<string>`, options `Object` optional)``: `Promise<Map<string, any>>`
-  - Retrieves the values associated with each of the provided keys. The type of each returned value in the [`Map` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key. Results in the `Map` will be sorted in increasing order of their UTF-8 encodings, with any requested keys that do not exist being omitted. Supports up to 128 keys at a time.
+  - Retrieves the values associated with each of the provided keys. The type of each returned value in the [`Map` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key. Results in the `Map` will be sorted in increasing order of their UTF-8 encodings, with any requested keys that do not exist being omitted. Supports up to 128 keys at a time.
 
 #### Supported options
 
@@ -497,7 +497,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 ### put
 
 - ``put(key `string`, value `any`, options `Object` optional)``: `Promise`
-  - Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
+  - Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
 
     The size of keys and values have different limits depending on the Durable Object storage backend you are using. Refer to either:
     - [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
@@ -508,7 +508,7 @@ ctx.storage.onNextSessionRestoreBookmark(bookmark)
 
 - ``put(entries `Object`, options `Object` optional)``: `Promise`
   - Takes an Object and stores each of its keys and values to storage.
-  - Each value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
+  - Each value can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
   - Supports up to 128 key-value pairs at a time. The size of keys and values have different limits depending on the flavor of Durable Object you are using. Refer to either:
     - [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
     - [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits)
@@ -545,7 +545,7 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 - ``list(options `Object` optional)``: `Promise<Map<string, any>>`
   - Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
-  - The type of each returned value in the [`Map` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key.
+  - The type of each returned value in the [`Map` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key.
   - Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
 
 #### Supported options
@@ -637,8 +637,8 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ## Related resources
 
-- [Durable Objects: Easy, Fast, Correct Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/)
-- [Zero-latency SQLite storage in every Durable Object blog ↗](https://blog.cloudflare.com/sqlite-in-durable-objects/)
+- [Durable Objects: Easy, Fast, Correct Choose Three ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/)
+- [Zero-latency SQLite storage in every Durable Object blog ↗︎](https://blog.cloudflare.com/sqlite-in-durable-objects/)
 - [WebSockets API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/)
 
 Was this helpful?

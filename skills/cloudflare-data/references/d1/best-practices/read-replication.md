@@ -114,7 +114,7 @@ export default {
 
 ![D1 read replication concept](https://developers.cloudflare.com/images/d1/d1-read-replication-concept.png)
 
-When using D1 without read replication, D1 routes all queries (both read and write) to a specific database instance in [one location in the world](https://developers.cloudflare.com/d1/configuration/data-location/), known as the primary database instance . D1 request latency is dependent on the physical proximity of a user to the primary database instance. Users located further away from the primary database instance experience longer request latency due to [network round-trip time ↗](https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt/).
+When using D1 without read replication, D1 routes all queries (both read and write) to a specific database instance in [one location in the world](https://developers.cloudflare.com/d1/configuration/data-location/), known as the primary database instance . D1 request latency is dependent on the physical proximity of a user to the primary database instance. Users located further away from the primary database instance experience longer request latency due to [network round-trip time ↗︎](https://www.cloudflare.com/learning/cdn/glossary/round-trip-time-rtt/).
 
 When using read replication, D1 creates multiple asynchronously replicated copies of the primary database instance, which only serve read requests, called read replicas . D1 creates the read replicas in [multiple regions](https://developers.cloudflare.com/d1/best-practices/read-replication/#read-replica-locations) throughout the world across Cloudflare's network.
 
@@ -346,7 +346,7 @@ There are some known limitations for D1 read replication.
 
 ### Replica lag and consistency model
 
-To account for replica lag, it is important to consider the consistency model for D1. A consistency model is a logical framework that governs how a database system serves user queries (how the data is updated and accessed) when there are multiple database instances. Different models can be useful in different use cases. Most database systems provide [read committed ↗](https://jepsen.io/consistency/models/read-committed), [snapshot isolation ↗](https://jepsen.io/consistency/models/snapshot-isolation), or [serializable ↗](https://jepsen.io/consistency/models/serializable) consistency models, depending on their configuration.
+To account for replica lag, it is important to consider the consistency model for D1. A consistency model is a logical framework that governs how a database system serves user queries (how the data is updated and accessed) when there are multiple database instances. Different models can be useful in different use cases. Most database systems provide [read committed ↗︎](https://jepsen.io/consistency/models/read-committed), [snapshot isolation ↗︎](https://jepsen.io/consistency/models/snapshot-isolation), or [serializable ↗︎](https://jepsen.io/consistency/models/serializable) consistency models, depending on their configuration.
 
 #### Without a consistency model framework
 
@@ -375,7 +375,7 @@ In the diagram, the returned bookmark is bookmark 104, which is different from t
 
 #### Sessions API provides sequential consistency
 
-D1 read replication offers [sequential consistency ↗](https://jepsen.io/consistency/models/sequential). D1 creates a global order of all operations which have taken place on the database, and can identify the latest version of the database that a query has seen, using [bookmarks](https://developers.cloudflare.com/d1/reference/time-travel/#bookmarks). It then serves the query with a database instance that is at least as up-to-date as the bookmark passed along with the query to execute.
+D1 read replication offers [sequential consistency ↗︎](https://jepsen.io/consistency/models/sequential). D1 creates a global order of all operations which have taken place on the database, and can identify the latest version of the database that a query has seen, using [bookmarks](https://developers.cloudflare.com/d1/reference/time-travel/#bookmarks). It then serves the query with a database instance that is at least as up-to-date as the bookmark passed along with the query to execute.
 
 Sequential consistency has properties such as:
 
@@ -388,10 +388,10 @@ Sequential consistency has properties such as:
 
 You may wish to refer to the following resources:
 
-- Blog: [Sequential consistency without borders: How D1 implements global read replication ↗](https://blog.cloudflare.com/d1-read-replication-beta/)
-- Blog: [Building D1: a Global Database ↗](https://blog.cloudflare.com/building-d1-a-global-database/)
+- Blog: [Sequential consistency without borders: How D1 implements global read replication ↗︎](https://blog.cloudflare.com/d1-read-replication-beta/)
+- Blog: [Building D1: a Global Database ↗︎](https://blog.cloudflare.com/building-d1-a-global-database/)
 - [D1 Sessions API documentation](https://developers.cloudflare.com/d1/worker-api/d1-database#withsession)
-- [Starter code for D1 Sessions API demo ↗](https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template)
+- [Starter code for D1 Sessions API demo ↗︎](https://github.com/cloudflare/templates/tree/main/d1-starter-sessions-api-template)
 - [E-commerce store read replication tutorial](https://developers.cloudflare.com/d1/tutorials/using-read-replication-for-e-com)
 
 Was this helpful?

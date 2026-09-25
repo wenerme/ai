@@ -18,13 +18,13 @@ AWS IAM Identity Center provides SSO identity management for users who interact 
 
 ## Prerequisites
 
-- Admin access to an IAM Identity Center [organization instance ↗](https://docs.aws.amazon.com/singlesignon/latest/userguide/identity-center-instances.html)
+- Admin access to an IAM Identity Center [organization instance ↗︎](https://docs.aws.amazon.com/singlesignon/latest/userguide/identity-center-instances.html)
 
 ## Set up AWS IAM as a SAML provider
 
 To set up SAML with AWS IAM as your identity provider:
 
-1. Open your [IAM Identity Center console ↗](https://console.aws.amazon.com/singlesignon) and go to **Applications**.
+1. Open your [IAM Identity Center console ↗︎](https://console.aws.amazon.com/singlesignon) and go to **Applications**.
 2. Select the **Customer managed** tab.
 3. Select **Add application**.
 4. Select **I have an application I want to set up**.
@@ -39,7 +39,7 @@ To set up SAML with AWS IAM as your identity provider:
 https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
 ```
 
-You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 
 11. Select **Submit**.
 12. Next, select the **Actions** dropdown menu and select *Edit attribute mappings*.
@@ -57,7 +57,7 @@ You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloud
 
 15. Select **Save changes**.
 16. Under **Assign users and groups**, add individuals and/or groups that should be allowed to login to Cloudflare One.
-17. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+17. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 18. Under **Your identity providers**, select **Add new identity provider**.
 19. Select **SAML**.
 20. Enter a **Name** for the IdP integration (for example, `AWS`).

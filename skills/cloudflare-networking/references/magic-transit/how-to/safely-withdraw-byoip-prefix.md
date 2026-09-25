@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ### Mitigating stuck BGP routes
 
-When you prepare to remove traffic for a [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/) prefix from the Cloudflare edge, a direct BGP withdrawal action carries the risk of a stuck BGP route. This state occurs when a route becomes stuck in the Internet's [Default-Free Zone (DFZ) ↗](https://en.wikipedia.org/wiki/Default-free_zone). Core routers that missed the withdrawal announcement continue forwarding traffic to a now-inactive next-hop (what is known as a blackhole). You can read more about this in our blog post [BGP zombies and excessive path hunting ↗](https://blog.cloudflare.com/going-bgp-zombie-hunting).
+When you prepare to remove traffic for a [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/) prefix from the Cloudflare edge, a direct BGP withdrawal action carries the risk of a stuck BGP route. This state occurs when a route becomes stuck in the Internet's [Default-Free Zone (DFZ) ↗︎](https://en.wikipedia.org/wiki/Default-free_zone). Core routers that missed the withdrawal announcement continue forwarding traffic to a now-inactive next-hop (what is known as a blackhole). You can read more about this in our blog post [BGP zombies and excessive path hunting ↗︎](https://blog.cloudflare.com/going-bgp-zombie-hunting).
 
 This risk is especially evident in the use case where the global routing table relies on more-specific to less-specific prefix routing fallback. Since this fallback mechanism is highly prone to route instability, Cloudflare recommends a multi-step draining process.
 

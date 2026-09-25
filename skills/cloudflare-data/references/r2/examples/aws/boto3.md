@@ -18,7 +18,7 @@ You must [generate an Access Key](https://developers.cloudflare.com/r2/api/token
 
 
 
-Configure [`boto3` ↗](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) to use your R2 endpoint:
+Configure [`boto3` ↗︎](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) to use your R2 endpoint:
 
 ```python
 import boto3
@@ -32,7 +32,7 @@ s3 = boto3.client(
 )
 ```
 
-You can omit `aws_access_key_id` and `aws_secret_access_key` if you set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` [environment variables ↗](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-environment-variables).
+You can omit `aws_access_key_id` and `aws_secret_access_key` if you set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` [environment variables ↗︎](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-environment-variables).
 
 Common operations using the client:
 
@@ -53,7 +53,7 @@ s3.delete_object(Bucket="my-bucket", Key="dog.png")
 
 ## Optimizing upload performance
 
-For large objects (multi-GB files such as training data or video), `upload_fileobj` can become a throughput bottleneck. Its internal thread pool is limited by Python's [GIL ↗](https://en.wikipedia.org/wiki/Global_interpreter_lock), and increasing `max_concurrency` via `TransferConfig` gives diminishing returns beyond \~10 threads.
+For large objects (multi-GB files such as training data or video), `upload_fileobj` can become a throughput bottleneck. Its internal thread pool is limited by Python's [GIL ↗︎](https://en.wikipedia.org/wiki/Global_interpreter_lock), and increasing `max_concurrency` via `TransferConfig` gives diminishing returns beyond \~10 threads.
 
 Use the low-level multipart API with `ThreadPoolExecutor` instead:
 
@@ -167,7 +167,7 @@ curl -X PUT "https://<ACCOUNT_ID>.r2.cloudflarestorage.com/my-bucket/dog.png?X-A
 When generating presigned URLs for uploads, you can limit abuse and misuse by:
 
 1. **Restricting Content-Type**: Specify the allowed content type in the presigned URL parameters. The upload will fail if the client sends a different `Content-Type` header.
-2. **Configuring CORS**: Set up [CORS rules](https://developers.cloudflare.com/r2/buckets/cors/#add-cors-policies-from-the-dashboard) on your bucket to control which origins can upload files. Configure CORS via the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/overview) by adding a JSON policy to your bucket settings:
+2. **Configuring CORS**: Set up [CORS rules](https://developers.cloudflare.com/r2/buckets/cors/#add-cors-policies-from-the-dashboard) on your bucket to control which origins can upload files. Configure CORS via the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/r2/overview) by adding a JSON policy to your bucket settings:
 
 ```json
 [

@@ -24,11 +24,11 @@ The Cloudflare WAF managed rule WP0007 protects the `xmlrpc.php` file on all C
 
 For more information about why this was originally implemented, take a look at our blog post on the subject:
 
-[https://blog.cloudflare.com/our-waf-is-keeping-wordpress-jetpack-on-track/ ↗](https://blog.cloudflare.com/our-waf-is-keeping-wordpress-jetpack-on-track/)
+[https://blog.cloudflare.com/our-waf-is-keeping-wordpress-jetpack-on-track/ ↗︎](https://blog.cloudflare.com/our-waf-is-keeping-wordpress-jetpack-on-track/)
 
 ### Additional WAF managed rules that can impact Jetpack
 
-There is a specific rule in [Web Application Firewall (WAF) ↗](https://www.cloudflare.com/waf/) managed rules that if enabled will block Jetpack’s servers from administering your settings. The WAF managed rule “WP0002 - Block WordPress XML-RPC” rule is disabled by default, but when enabled it completely disables access to the `xmlrpc.php` file. As such, we only recommend enabling this rule as an emergency measure if your `xmlrpc.php` endpoint is being attacked.
+There is a specific rule in [Web Application Firewall (WAF) ↗︎](https://www.cloudflare.com/waf/) managed rules that if enabled will block Jetpack’s servers from administering your settings. The WAF managed rule “WP0002 - Block WordPress XML-RPC” rule is disabled by default, but when enabled it completely disables access to the `xmlrpc.php` file. As such, we only recommend enabling this rule as an emergency measure if your `xmlrpc.php` endpoint is being attacked.
 
 For further guidance, please contact our Support team.
 

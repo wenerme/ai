@@ -185,7 +185,7 @@ export default {
 
 Specifying props dynamically is permitted in this case because the caller is the same Worker, and thus can be presumed to be trusted to specify any props. The ability to customize props is particularly useful when the resulting binding is to be passed to another Worker over RPC or used in the `env` of a [dynamically-loaded worker](https://developers.cloudflare.com/workers/runtime-apis/bindings/worker-loader/).
 
-Note that `props` values specified in this way are allowed to contain any "persistently" serializable type. This includes all basic [structured cloneable data types ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm). It also includes Service Bindings themselves: you can place a Service Binding into the `props` of another Service Binding.
+Note that `props` values specified in this way are allowed to contain any "persistently" serializable type. This includes all basic [structured cloneable data types ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm). It also includes Service Bindings themselves: you can place a Service Binding into the `props` of another Service Binding.
 
 ### TypeScript types for `ctx.exports` and `ctx.props`
 
@@ -278,7 +278,7 @@ For a Worker that proxies requests to an origin, avoid relying on the runtime fa
 
 This protects against uncaught code exceptions. It does not mitigate failures such as exceeding CPU or memory limits.
 
-The `passThroughOnException` method allows a Worker to [fail open ↗](https://community.microfocus.com/cyberres/b/sws-22/posts/security-fundamentals-part-1-fail-open-vs-fail-closed), and pass a request through to an origin server when a Worker throws an unhandled exception. This can be useful when using Workers as a layer in front of an existing service, allowing the service behind the Worker to handle any unexpected error cases that arise in your Worker.
+The `passThroughOnException` method allows a Worker to [fail open ↗︎](https://community.microfocus.com/cyberres/b/sws-22/posts/security-fundamentals-part-1-fail-open-vs-fail-closed), and pass a request through to an origin server when a Worker throws an unhandled exception. This can be useful when using Workers as a layer in front of an existing service, allowing the service behind the Worker to handle any unexpected error cases that arise in your Worker.
 
 ```js
 export default {

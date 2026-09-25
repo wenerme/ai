@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/get-started/python/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide walks you through creating an AI Search instance, uploading content, and querying it from a Python application using the [Cloudflare Python SDK ↗](https://github.com/cloudflare/cloudflare-python).
+This guide walks you through creating an AI Search instance, uploading content, and querying it from a Python application using the [Cloudflare Python SDK ↗︎](https://github.com/cloudflare/cloudflare-python).
 
 ## Prerequisites
 
-- [Python ↗](https://www.python.org/downloads/) 3.8 or later.
+- [Python ↗︎](https://www.python.org/downloads/) 3.8 or later.
 - Your [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
 This guide uses the `default` [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/), which exists automatically on every account. To group instances into your own namespace, create one with `client.aisearch.namespaces.create()`.

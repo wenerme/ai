@@ -58,7 +58,7 @@ Refer to the [Load Balancing documentation](https://developers.cloudflare.com/lo
 
 ### Optional Cloudflare settings
 
-The application will default to the Cloudflare settings for the load balancer hostname, including [Rules](https://developers.cloudflare.com/rules/), [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) and [WAF rules](https://developers.cloudflare.com/waf/). You can change the settings for your hostname in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+The application will default to the Cloudflare settings for the load balancer hostname, including [Rules](https://developers.cloudflare.com/rules/), [Cache Rules](https://developers.cloudflare.com/cache/how-to/cache-rules/) and [WAF rules](https://developers.cloudflare.com/waf/). You can change the settings for your hostname in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 
 ## Common architectures
 
@@ -209,7 +209,7 @@ The load balancer does not distinguish between [replicas](https://developers.clo
 
 If you notice traffic imbalances across endpoints in different locations, you may need to adjust your load balancer configuration.
 
-Cloudflare uses [Anycast routing ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) to direct end user requests to the nearest data center. `cloudflared` prefers to serve requests using connections in the same data center, which can affect how traffic is distributed across endpoints.
+Cloudflare uses [Anycast routing ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) to direct end user requests to the nearest data center. `cloudflared` prefers to serve requests using connections in the same data center, which can affect how traffic is distributed across endpoints.
 
 If you run [`cloudflared` replicas](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/) on the same tunnel UUID, consider switching to separate tunnels for more granular control over [traffic steering](https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/).
 

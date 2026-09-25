@@ -22,7 +22,7 @@ This allows you to write to a Queue from any service or programming language tha
 
 ## Prerequisites
 
-- A [queue created](https://developers.cloudflare.com/queues/get-started/#3-create-a-queue) via the [Cloudflare dashboard ↗](https://dash.cloudflare.com) or the [wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+- A [queue created](https://developers.cloudflare.com/queues/get-started/#3-create-a-queue) via the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) or the [wrangler CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 - A Cloudflare API token with the `Queues Edit` permission.
 
 ### 1. Send a test message
@@ -42,7 +42,7 @@ This will issue a HTTP POST request, and if successful, return a HTTP 200 with a
 
 - If you receive a HTTP 403, this is because your API token is invalid or does not have the `Queues Edit` permission.
 
-For full documentation about the HTTP Push API, refer to the [Cloudflare API documentation ↗](https://developers.cloudflare.com/api/resources/queues/subresources/messages/).
+For full documentation about the HTTP Push API, refer to the [Cloudflare API documentation ↗︎](https://developers.cloudflare.com/api/resources/queues/subresources/messages/).
 
 Was this helpful?
 

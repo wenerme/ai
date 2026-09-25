@@ -18,11 +18,11 @@ Internet traffic is made up of people, services, and agents requesting online re
 
 Both public and private resources can be connected to the Cloudflare network to ensure only good actors can access what they are supposed to be able to access with high performance.
 
-For example, you may not always want the direct traffic because it can come from malicious sources, like hackers, or in the form of [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/ddos-attack-tools/how-to-ddos/). Additionally, depending on the location where the request originated, you want to ensure the traffic is [routed through the most efficient and fastest path](https://developers.cloudflare.com/argo-smart-routing/).
+For example, you may not always want the direct traffic because it can come from malicious sources, like hackers, or in the form of [DDoS attacks ↗︎](https://www.cloudflare.com/learning/ddos/ddos-attack-tools/how-to-ddos/). Additionally, depending on the location where the request originated, you want to ensure the traffic is [routed through the most efficient and fastest path](https://developers.cloudflare.com/argo-smart-routing/).
 
 ## Cloudflare's network
 
-[Cloudflare's global network ↗](https://www.cloudflare.com/network/), coupled with [Anycast ↗](https://www.cloudflare.com/learning/dns/what-is-anycast-dns/) IP addressing, ensures that requests are handled by a Cloudflare server that is as close to the source as possible.
+[Cloudflare's global network ↗︎](https://www.cloudflare.com/network/), coupled with [Anycast ↗︎](https://www.cloudflare.com/learning/dns/what-is-anycast-dns/) IP addressing, ensures that requests are handled by a Cloudflare server that is as close to the source as possible.
 
 If you want to protect your traffic and ensure it travels efficiently, you need to configure Cloudflare to be in front of whatever you are trying to protect, such as your application, service, or server. How you put your resources behind Cloudflare's network will depend on the type of traffic and how you want to control it.
 
@@ -49,7 +49,7 @@ With these options, any request from a user device can access internal private a
 
 Refer to the list below for products you can use to on-ramp traffic to Cloudflare.
 
-- [Anycast routing ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) uses Anycast IP addressing to route traffic to the nearest Cloudflare data center. Selective routing allows an Anycast network to be resilient in the face of high traffic volume, network congestion, and [ DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
+- [Anycast routing ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/) uses Anycast IP addressing to route traffic to the nearest Cloudflare data center. Selective routing allows an Anycast network to be resilient in the face of high traffic volume, network congestion, and [ DDoS attacks ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
 - [DNS-based](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-dns-provider) traffic resolves domains onboarded to [Cloudflare's CDN](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/). Cloudflare's DNS directs traffic to Cloudflare's global network of servers instead of a website's origin server.
 - [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/) connects your resources to Cloudflare without a publicly routable IP address so that your origins can serve traffic through Cloudflare without being vulnerable to attacks that bypass Cloudflare.
 - [Magic Transit](https://developers.cloudflare.com/magic-transit/about/) offers DDoS protection, traffic acceleration, and more for on-premise, cloud-hosted, and hybrid networks by accepting IP packets destined for your network, processing them, and outputting the packets to your origin infrastructure.

@@ -117,7 +117,7 @@ In the case of interconnects provisioned by third parties, you may need to reque
 
 **Check for maintenance:**
 
-1. Review [Cloudflare Status ↗](https://www.cloudflarestatus.com/) for scheduled maintenance affecting your CNI location.
+1. Review [Cloudflare Status ↗︎](https://www.cloudflarestatus.com/) for scheduled maintenance affecting your CNI location.
 2. Some maintenance events may temporarily affect CNI connectivity even when marked as non-disruptive.
 
 Refer to [Network Interconnect](https://developers.cloudflare.com/network-interconnect/) for CNI configuration and setup information.
@@ -213,7 +213,7 @@ show bgp ipv4 unicast neighbors <YOUR_NEIGHBOR_IP> advertised-routes
 - [Network Interconnect](https://developers.cloudflare.com/network-interconnect/): CNI setup and BGP peering
 - [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/tunnel-health/): Tunnel-specific diagnostic steps
 - [Network Analytics](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/analytics/network-analytics/): Traffic analysis and monitoring
-- [Cloudflare Status ↗](https://www.cloudflarestatus.com/): Maintenance and incident notifications
+- [Cloudflare Status ↗︎](https://www.cloudflarestatus.com/): Maintenance and incident notifications
 
 ---
 

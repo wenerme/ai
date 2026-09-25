@@ -16,9 +16,9 @@ Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Cloudflare Web Analytics automatically tracks user interactions on Single Page Applications (SPAs) via one of the following three methods, depending on which is supported:
 
-1. Using the [Soft Navigations API ↗](https://developer.chrome.com/docs/web-platform/soft-navigations)
-2. Listening on `navigate` events via the [Navigation API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API)
-3. By patching the [History API ↗](https://developer.mozilla.org/en-US/docs/Web/API/History_API)'s `pushState` function and listening to the `onpopstate` event
+1. Using the [Soft Navigations API ↗︎](https://developer.chrome.com/docs/web-platform/soft-navigations)
+2. Listening on `navigate` events via the [Navigation API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Navigation_API)
+3. By patching the [History API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/History_API)'s `pushState` function and listening to the `onpopstate` event
 
 ## Disable SPA measurement
 

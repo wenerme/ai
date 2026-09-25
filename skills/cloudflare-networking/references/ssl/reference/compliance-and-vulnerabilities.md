@@ -20,7 +20,7 @@ This guide walks through the Cloudflare configuration steps required for PCI DSS
 
 ## Cloudflare's PCI DSS certification
 
-Cloudflare is certified as a **Level 1 PCI DSS Service Provider** — the highest certification level. You can obtain Cloudflare's current Attestation of Compliance (AOC) from the [Cloudflare Trust Hub ↗](https://www.cloudflare.com/trust-hub/compliance-resources/pci-dss/).
+Cloudflare is certified as a **Level 1 PCI DSS Service Provider** — the highest certification level. You can obtain Cloudflare's current Attestation of Compliance (AOC) from the [Cloudflare Trust Hub ↗︎](https://www.cloudflare.com/trust-hub/compliance-resources/pci-dss/).
 
 Note
 
@@ -112,8 +112,8 @@ After applying all settings, confirm that non-compliant connections are rejected
 
 Online TLS scanners give you an external view of your configuration — the same perspective a PCI ASV scan sees. Two commonly used options are:
 
-- [SSL Labs Server Test ↗](https://www.ssllabs.com/ssltest/) — enter your domain and review the report. Check that TLS 1.0 and TLS 1.1 are rejected, TLS 1.2 or higher is supported, and no weak or deprecated cipher suites are negotiated.
-- [SSL Shopper SSL Checker ↗](https://www.sslshopper.com/ssl-checker.html) — validates your certificate chain and TLS configuration from an external vantage point.
+- [SSL Labs Server Test ↗︎](https://www.ssllabs.com/ssltest/) — enter your domain and review the report. Check that TLS 1.0 and TLS 1.1 are rejected, TLS 1.2 or higher is supported, and no weak or deprecated cipher suites are negotiated.
+- [SSL Shopper SSL Checker ↗︎](https://www.sslshopper.com/ssl-checker.html) — validates your certificate chain and TLS configuration from an external vantage point.
 
 Note
 
@@ -198,7 +198,7 @@ Some ASV tools report a **TCP Source Port Pass Firewall** finding against Cloudf
 
 If your QSA or scanning tool flags this finding, provide:
 
-- Cloudflare's current [Attestation of Compliance (AOC) ↗](https://www.cloudflare.com/trust-hub/compliance-resources/pci-dss/)
+- Cloudflare's current [Attestation of Compliance (AOC) ↗︎](https://www.cloudflare.com/trust-hub/compliance-resources/pci-dss/)
 - Documentation that your domain is proxied through Cloudflare as a PCI DSS Level 1 Service Provider
 
 Your QSA can treat this as a compensating control or documented exception based on Cloudflare's shared responsibility boundary.

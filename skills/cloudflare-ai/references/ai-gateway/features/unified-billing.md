@@ -67,7 +67,7 @@ The `cf-aig-byok-alias` header selects a non-default alias only on [direct provi
 
 Turn on **Require provider credentials** to prevent Unified Billing fallback for third-party providers. Third-party provider requests must use credentials supplied with the request or stored on the gateway. Requests without applicable credentials return an HTTP `400` response instead of using Cloudflare-managed credentials.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **AI** > **AI Gateway**. [Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **AI** > **AI Gateway**. [Go to **AI Gateway** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway)
 2. Select your gateway.
 3. Go to **Settings** and turn on **Require provider credentials**.
 4. Confirm the change.

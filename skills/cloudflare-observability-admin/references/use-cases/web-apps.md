@@ -56,15 +56,15 @@ Add interactivity to static content:
 
 ### Create a new application
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
-- [Node.js ↗](https://nodejs.org/) (version 16.17.0 or later) installed on your machine.
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
+- [Node.js ↗︎](https://nodejs.org/) (version 16.17.0 or later) installed on your machine.
 - [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed. Wrangler is the CLI for creating, testing, and deploying Workers projects.
 
 ### Use an existing application
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 - A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) with DNS records proxied through Cloudflare. This is required for security features (SSL/TLS, Application security), caching, and performance optimizations.
-- [Node.js ↗](https://nodejs.org/) (version 16.17.0 or later) and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) if you plan to add Workers-based functionality to your existing application.
+- [Node.js ↗︎](https://nodejs.org/) (version 16.17.0 or later) and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) if you plan to add Workers-based functionality to your existing application.
 
 ---
 

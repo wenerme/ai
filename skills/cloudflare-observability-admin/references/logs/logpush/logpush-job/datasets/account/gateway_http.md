@@ -218,7 +218,19 @@ Version name for the HTTP request.
 
 Type: `bool`
 
-If the requested was isolated with Cloudflare Browser Isolation or not.
+Whether the HTTP request originated from an isolated browser.
+
+## Offramp
+
+Type: `string`
+
+Traffic destination type.
+
+## Onramp
+
+Type: `string`
+
+Traffic source type.
 
 ## PackageInfo
 

@@ -98,7 +98,7 @@ Sequences are ranked by precedence score, which measures how likely specific API
 
 [Sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/) allows you to enforce request patterns for authenticated clients communicating with your API. Use Sequence Analytics to identify the sequences your API clients follow, then apply API Shield protections (rate limiting, Schema validation, JWT validation, and mTLS) to the endpoints in your high-scoring sequences. Verify the expected endpoint order with your development team.
 
-For more information, refer to [Detecting API abuse automatically using sequence analysis ↗](https://blog.cloudflare.com/api-sequence-analytics) blog post.
+For more information, refer to [Detecting API abuse automatically using sequence analysis ↗︎](https://blog.cloudflare.com/api-sequence-analytics) blog post.
 
 ## Additional configuration
 
@@ -112,7 +112,7 @@ If your origin uses GraphQL, you may consider setting limits on GraphQL query si
 
 [GraphQL malicious query protection](https://developers.cloudflare.com/api-shield/security/graphql-protection/api/) scans GraphQL traffic for queries with excessive nesting or size that could overload your origin and result in a denial of service. You can create rules that set maximum query depth and size to block these queries before they reach your origin.
 
-For more information, refer to the [blog post ↗](https://blog.cloudflare.com/protecting-graphql-apis-from-malicious-queries/).
+For more information, refer to the [blog post ↗︎](https://blog.cloudflare.com/protecting-graphql-apis-from-malicious-queries/).
 
 ### Mutual TLS (mTLS) authentication
 

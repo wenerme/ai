@@ -20,7 +20,7 @@ The descriptions below detail the fields available for `dns_firewall_logs`.
 
 Type: `int`
 
-Integer value of the response code Cloudflare presents to the client. Response code follows [IANA parameters ↗](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6).
+Integer value of the response code Cloudflare presents to the client. Response code follows [IANA parameters ↗︎](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6).
 
 ## ClusterID
 
@@ -80,7 +80,7 @@ Indicates if the query from the client was made via TCP (if false, then UDP).
 
 Type: `int`
 
-Integer value of query type. For more information refer to [Query type ↗](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4).
+Integer value of query type. For more information refer to [Query type ↗︎](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4).
 
 ## ResponseCached
 
@@ -122,7 +122,7 @@ IP of the upstream nameserver (IPv4 or IPv6).
 
 Type: `int`
 
-Integer value of the response code from the upstream nameserver. Response code follows [IANA parameters ↗](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6)
+Integer value of the response code from the upstream nameserver. Response code follows [IANA parameters ↗︎](https://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6)
 
 ## UpstreamResponseTimeMs
 

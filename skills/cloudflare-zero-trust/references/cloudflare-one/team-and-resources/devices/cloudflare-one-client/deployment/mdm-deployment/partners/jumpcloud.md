@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Windows
 
-1. Log in to the [JumpCloud Admin Portal ↗](https://console.jumpcloud.com).
+1. Log in to the [JumpCloud Admin Portal ↗︎](https://console.jumpcloud.com).
 2. Go to **Device Management** > **Software Management**.
 3. Select the **Windows** tab, then select **(+)**.![Configuring the Cloudflare One Client in the JumpCloud Windows tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2154,height=1562,format=webp/_astro/jumpcloud.COKUk56X.png)*Note: Labels in this image may reflect a previous product name.*
 4. In the **Software Name** field, enter a unique display name.
@@ -37,7 +37,7 @@ After deploying the Cloudflare One Client, you can check its connection progress
 
 ## macOS
 
-1. Log in to the [JumpCloud Admin Portal ↗](https://console.jumpcloud.com).
+1. Log in to the [JumpCloud Admin Portal ↗︎](https://console.jumpcloud.com).
 2. Go to **Device Management** > **Software Management**.
 3. Select the **Apple** tab, then select **(+)**.![Configuring the Cloudflare One Client in the JumpCloud Apple tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1780,height=1286,format=webp/_astro/jumpcloud-mac.B_6biy3e.png)*Note: Labels in this image may reflect a previous product name.*
 4. In the **Software Description** field, enter a unique display name.

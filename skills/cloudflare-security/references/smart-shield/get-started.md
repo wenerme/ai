@@ -23,7 +23,7 @@ Smart Shield reduces the load on your origin server and improves content deliver
 
 ## Steps
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **Speed** > **Smart Shield**.
 3. (Optional) Explore the different [available packages](#packages-and-availability).
 4. Select **Get started for free** or choose a different package and select **Continue** to proceed to the guided onboarding flow.
@@ -74,7 +74,7 @@ Adds network path optimization on top of the base package. Use when visitors are
 
 ### Smart Shield Advanced
 
-Smart Shield Advanced is not currently available for Free, Pro, and Business customers. If you are interested in Smart Shield Advanced features such as [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) and [Cache Reserve](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/), contact our [Enterprise Sales team ↗](https://www.cloudflare.com/resource/contact-enterprise-sales/).
+Smart Shield Advanced is not currently available for Free, Pro, and Business customers. If you are interested in Smart Shield Advanced features such as [Regional Tiered Cache](https://developers.cloudflare.com/smart-shield/configuration/regional-tiered-cache/) and [Cache Reserve](https://developers.cloudflare.com/smart-shield/configuration/cache-reserve/), contact our [Enterprise Sales team ↗︎](https://www.cloudflare.com/resource/contact-enterprise-sales/).
 
 ## Further reading
 

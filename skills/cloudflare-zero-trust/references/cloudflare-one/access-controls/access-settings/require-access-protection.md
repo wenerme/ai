@@ -24,7 +24,7 @@ Caution
 
 Turning on Access protection blocks traffic to any hostname that does not have an Access application. Before turning on this setting, verify that all publicly accessible hostnames have an [Access application with an Allow or Bypass policy](#allow-traffic-to-a-hostname).
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and go to **Zero Trust** > **Access controls** > **Access settings**.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and go to **Zero Trust** > **Access controls** > **Access settings**.
 2. Turn on **Block traffic to all domains in this account**. You will see a dialog confirming you understand the scope of this change. Select **Confirm**.
 
    Traffic to all hostnames in the account is now blocked unless an Access application exists for the hostname.

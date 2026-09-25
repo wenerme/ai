@@ -156,7 +156,7 @@ const result = await env.AI.toMarkdown({
 - `name` `string`
   - Name of the document to convert.
 - `blob` `Blob`
-  - A new [Blob ↗](https://developer.mozilla.org/en-US/docs/Web/API/Blob/Blob) object with the document content.
+  - A new [Blob ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Blob/Blob) object with the document content.
 
 #### `ConversionResult` definition
 
@@ -167,7 +167,7 @@ const result = await env.AI.toMarkdown({
 - `format` `'markdown' | 'text' | 'error'`
   - The format of this `ConversionResult` object. Equals `text` when you set the [`output.format`](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/conversion-options/#output) option to `text`.
 - `mimetype` `string`
-  - The detected [mime type ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types/Common_types) of the document.
+  - The detected [mime type ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types/Common_types) of the document.
 - `tokens` `number`
   - The estimated number of tokens of the converted document. Not present if `format` is equal to `error`.
 - `data` `string`
@@ -214,7 +214,7 @@ const formats = await env.AI.toMarkdown().supported();
 - `extension` `string`
   - Extension of files in this format.
 - `mimeType` `string`
-  - The [mime type ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types/Common_types) of files of this format
+  - The [mime type ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/MIME_types/Common_types) of files of this format
 
 Was this helpful?
 

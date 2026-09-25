@@ -48,7 +48,7 @@ The other factor is the Waiting Room state, which is maintained at the local dat
 
 The Waiting Room state is updated with global information every few seconds. We have a pipeline set up in Cloudflare [Durable Objects](https://developers.cloudflare.com/durable-objects/) that ensures changes in traffic get propagated around the world. This architecture ensures that we do not introduce additional latency, as well as that we are making decisions with as near-time accuracy as possible.
 
-For even more details about the architecture and why we made these decisions, refer to our [deep-dive technical blog ↗](https://blog.cloudflare.com/how-waiting-room-queues).
+For even more details about the architecture and why we made these decisions, refer to our [deep-dive technical blog ↗︎](https://blog.cloudflare.com/how-waiting-room-queues).
 
 Was this helpful?
 

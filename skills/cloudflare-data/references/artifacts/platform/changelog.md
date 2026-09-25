@@ -63,9 +63,9 @@ You can open a repo to view its files and copy its Git remote URL.
 
 You can also provision tokens directly from the dashboard to scope Git access to a single repo, with read tokens for clone, fetch, and pull workflows, or write tokens when a client needs to push changes.
 
-To get started, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select **Storage & databases** > **Artifacts**.
+To get started, go to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select **Storage & databases** > **Artifacts**.
 
-If you are enrolled in the Artifacts beta, you can use the dashboard to set up Artifacts. If you would like to join the beta, complete the [request form ↗](https://forms.gle/DwBoPRa3CWQ8ajFp7).
+If you are enrolled in the Artifacts beta, you can use the dashboard to set up Artifacts. If you would like to join the beta, complete the [request form ↗︎](https://forms.gle/DwBoPRa3CWQ8ajFp7).
 
 ## 2026-05-18
 
@@ -93,7 +93,7 @@ To get started, refer to the [Wrangler Artifacts commands documentation](https:/
 
 [Artifacts](https://developers.cloudflare.com/artifacts/) is now in private beta. Artifacts is Git-compatible storage built for scale: create tens of millions of repos, fork from any remote, and hand off a URL to any Git client. It provides a versioned filesystem for storing and exchanging file trees across Workers, the REST API, and any Git client, running locally or within an agent.
 
-You can [read the announcement blog ↗](https://blog.cloudflare.com/artifacts-git-for-agents-beta/) to learn more about what Artifacts does, how it works, and how to create repositories for your agents to use.
+You can [read the announcement blog ↗︎](https://blog.cloudflare.com/artifacts-git-for-agents-beta/) to learn more about what Artifacts does, how it works, and how to create repositories for your agents to use.
 
 Artifacts has three API surfaces:
 

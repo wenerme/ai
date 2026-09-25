@@ -25,9 +25,9 @@ Use import and export to have more control over your DNS records and make proces
 
 ### Format your zone file
 
-Create a [BIND zone file ↗](https://en.wikipedia.org/wiki/Zone_file) for your domain. If you need help, use a [third-party tool ↗](https://pgl.yoyo.org/as/bind-zone-file-creator.php).
+Create a [BIND zone file ↗︎](https://en.wikipedia.org/wiki/Zone_file) for your domain. If you need help, use a [third-party tool ↗︎](https://pgl.yoyo.org/as/bind-zone-file-creator.php).
 
-If you are using certain record types — for example, `CNAME`, `DNAME`, `MX`, `NS`, `PTR`, or `SRV` records — make sure that the **content** of those records contains fully qualified domain names ending in a trailing period (as in `example.com.`). For more details, refer to [RFC 1035 ↗](https://www.rfc-editor.org/rfc/rfc1035#section-5.1) or this [post on Stack Exchange ↗](https://superuser.com/questions/348282/fqdn-format-in-bind-zone#348284).
+If you are using certain record types — for example, `CNAME`, `DNAME`, `MX`, `NS`, `PTR`, or `SRV` records — make sure that the **content** of those records contains fully qualified domain names ending in a trailing period (as in `example.com.`). For more details, refer to [RFC 1035 ↗︎](https://www.rfc-editor.org/rfc/rfc1035#section-5.1) or this [post on Stack Exchange ↗︎](https://superuser.com/questions/348282/fqdn-format-in-bind-zone#348284).
 
 ### Import zone file to Cloudflare
 
@@ -104,7 +104,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/export" \
 
 ## DNS record attributes
 
-When exporting or importing a zone file, Cloudflare formats [comments and tags](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/) using the following structure, appending the attributes as inline comment using the `;` character after each record in accordance with [RFC 1035 section 5 ↗](https://datatracker.ietf.org/doc/html/rfc1035#section-5-1):
+When exporting or importing a zone file, Cloudflare formats [comments and tags](https://developers.cloudflare.com/dns/manage-dns-records/reference/record-attributes/) using the following structure, appending the attributes as inline comment using the `;` character after each record in accordance with [RFC 1035 section 5 ↗︎](https://datatracker.ietf.org/doc/html/rfc1035#section-5-1):
 
 | Combination | Description |
 | --- | --- |
@@ -160,7 +160,7 @@ If you are on a paid zone and want to use [Per-record CNAME flattening](https://
 
 ## DNS zone file directives
 
-A DNS zone file can be constructed using directives in addition to resource records (RRs). Directives start with `$` and are standardized - `$ORIGIN` and `$INCLUDE` are defined in [RFC 1035 ↗](https://www.rfc-editor.org/rfc/rfc1035#section-5.1), and `$TTL` is defined in [RFC 2308 ↗](https://www.rfc-editor.org/rfc/rfc2308). Additionally, BIND provides the [non-standard ↗](https://bind9.readthedocs.io/en/latest/chapter3.html#bind-primary-file-extension-the-generate-directive) `$GENERATE` directive.
+A DNS zone file can be constructed using directives in addition to resource records (RRs). Directives start with `$` and are standardized - `$ORIGIN` and `$INCLUDE` are defined in [RFC 1035 ↗︎](https://www.rfc-editor.org/rfc/rfc1035#section-5.1), and `$TTL` is defined in [RFC 2308 ↗︎](https://www.rfc-editor.org/rfc/rfc2308). Additionally, BIND provides the [non-standard ↗︎](https://bind9.readthedocs.io/en/latest/chapter3.html#bind-primary-file-extension-the-generate-directive) `$GENERATE` directive.
 
 Cloudflare supports `$ORIGIN`, `$TTL`, and `$GENERATE` directives.
 

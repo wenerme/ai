@@ -24,7 +24,7 @@ This version of the integration is aimed at workflows that require interaction w
 
 *Figure 1: Ingesting Google BigQuery Data into Workers AI (user-based)*
 
-1. A user makes a request to a [Worker ↗](https://workers.cloudflare.com/) endpoint. (Which can optionally incorporate [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) in front of it to authenticate users).
+1. A user makes a request to a [Worker ↗︎](https://workers.cloudflare.com/) endpoint. (Which can optionally incorporate [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) in front of it to authenticate users).
 2. Worker fetches [securely stored](https://developers.cloudflare.com/workers/configuration/secrets/) Google Cloud Platform service account information such as service key and generates a JSON Web Token to issue an authenticated API request to BigQuery.
 3. Worker receives the data from BigQuery and [transforms it into a format](https://developers.cloudflare.com/workers-ai/guides/tutorials/using-bigquery-with-workers-ai/#6-format-results-from-the-query) that will make it easier to iterate when interacting with Workers AI.
 4. Using its [native integration](https://developers.cloudflare.com/workers-ai/configuration/bindings/) with Workers AI, the Worker forwards the data from BigQuery which is then run against one of Cloudflare's hosted AI models.
@@ -58,8 +58,8 @@ For periodic or longer workflows, you may opt for a batch approach. This diagram
 - [Workers: Secrets](https://developers.cloudflare.com/workers/configuration/secrets/)
 - [Workers: Cron Triggers](https://developers.cloudflare.com/workers/runtime-apis/handlers/scheduled/)
 - [Email Routing](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/)
-- [Create a GCP service account ↗](https://cloud.google.com/iam/docs/service-accounts-create#iam-service-accounts-create-console)
-- [Create a GCP service account key ↗](https://cloud.google.com/iam/docs/keys-create-delete#iam-service-account-keys-create-console)
+- [Create a GCP service account ↗︎](https://cloud.google.com/iam/docs/service-accounts-create#iam-service-accounts-create-console)
+- [Create a GCP service account key ↗︎](https://cloud.google.com/iam/docs/keys-create-delete#iam-service-account-keys-create-console)
 - [Retrieval Augmented Generation (RAG) Reference Architecture](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-rag/)
 - [Vectorize](https://developers.cloudflare.com/vectorize/)
 - [Workers KV](https://developers.cloudflare.com/kv/)

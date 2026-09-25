@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/grafana-saas-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [Grafana ↗](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/generic-oauth/) as an OIDC application in Cloudflare One.
+This guide covers how to configure [Grafana ↗︎](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/generic-oauth/) as an OIDC application in Cloudflare One.
 
 ## Prerequisites
 
@@ -23,11 +23,11 @@ This guide covers how to configure [Grafana ↗](https://grafana.com/docs/grafan
 
 Note
 
-You can also configure OIDC SSO for Grafana using a [configuration file ↗](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/generic-oauth/#configure-generic-oauth-authentication-client-using-the-grafana-configuration-file) instead of using Grafana's user interface (UI), as documented in this guide.
+You can also configure OIDC SSO for Grafana using a [configuration file ↗︎](https://grafana.com/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/generic-oauth/#configure-generic-oauth-authentication-client-using-the-grafana-configuration-file) instead of using Grafana's user interface (UI), as documented in this guide.
 
 ## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **SaaS application**.
 4. For **Application**, select *Grafana*.
@@ -35,7 +35,7 @@ You can also configure OIDC SSO for Grafana using a [configuration file ↗](htt
 6. Select **Add application**.
 7. In **Scopes**, select the attributes that you want Access to send in the ID token.
 8. In **Redirect URLs**, enter `https://<your-grafana-domain>/login/generic_oauth`.
-9. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
+9. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
 10. Copy the **Client secret**, **Client ID**, **Token endpoint**, and **Authorization endpoint**.
 11. Configure [Access policies](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) for the application.
 12. (Optional) In **Experience settings**, configure [App Launcher settings](https://developers.cloudflare.com/cloudflare-one/access-controls/access-settings/app-launcher/) by turning on **Enable App in App Launcher** and, in **App Launcher URL**, entering `https://<your-grafana-domain>/login`.

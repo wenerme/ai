@@ -20,7 +20,7 @@ You must add both `python_workflows` and `python_workers` compatibility flags to
 
 Also, Python Workflows requires `compatibility_date = "2025-08-01"`, or later, to be set in your Wrangler config file.
 
-The Python Workers platform leverages [FFI ↗](https://en.wikipedia.org/wiki/Foreign_function_interface) to access bindings to Cloudflare resources. Refer to the [bindings](https://developers.cloudflare.com/workers/languages/python/ffi/#using-bindings-from-python-workers) documentation for more information.
+The Python Workers platform leverages [FFI ↗︎](https://en.wikipedia.org/wiki/Foreign_function_interface) to access bindings to Cloudflare resources. Refer to the [bindings](https://developers.cloudflare.com/workers/languages/python/ffi/#using-bindings-from-python-workers) documentation for more information.
 
 From the configuration perspective, enabling Python Workflows requires adding the `python_workflows` compatibility flag to your Wrangler configuration file.
 
@@ -30,7 +30,7 @@ From the configuration perspective, enabling Python Workflows requires adding th
 	"name": "workflows-starter",
 	"main": "src/index.py",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["python_workflows", "python_workers"],
 	"workflows": [
 		{
@@ -50,7 +50,7 @@ From the configuration perspective, enabling Python Workflows requires adding th
 name = "workflows-starter"
 main = "src/index.py"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "python_workflows", "python_workers" ]
 
 [[workflows]]

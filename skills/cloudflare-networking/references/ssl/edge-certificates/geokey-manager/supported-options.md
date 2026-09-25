@@ -45,7 +45,7 @@ Examples of supported countries are Japan, Canada, India, and Australia.
 
 For customers with both Geo Key Manager v1 and v2, you can use the `geo_restrictions` parameter to only choose Cloudflare's highest security data centers.
 
-The following aspects are unique to our highest security data centers, but the baseline security requirements for all data centers are also detailed in [our blog ↗](https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/).
+The following aspects are unique to our highest security data centers, but the baseline security requirements for all data centers are also detailed in [our blog ↗︎](https://blog.cloudflare.com/introducing-cloudflare-geo-key-manager/).
 
 ### Pre-scheduled and biometric controlled facility access
 

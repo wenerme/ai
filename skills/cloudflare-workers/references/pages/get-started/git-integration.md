@@ -22,7 +22,7 @@ If you deploy using the Git integration, you cannot switch to [Direct Upload](ht
 
 ## Connect your Git provider to Pages
 
-Pages offers support for [GitHub ↗](https://github.com/) and [GitLab ↗](https://gitlab.com/). To create your first Pages project:
+Pages offers support for [GitHub ↗︎](https://github.com/) and [GitLab ↗︎](https://gitlab.com/). To create your first Pages project:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select **Create application** > **Pages** > **Connect to Git**.

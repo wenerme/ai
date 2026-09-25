@@ -40,7 +40,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       - `"max"`
 
-  - `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
     Omit to keep the current tier. Null resets it to auto.
 
@@ -63,6 +63,10 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
     - `"fast"`
 
       Uses the fast service tier.
+
+    - `"ultrafast"`
+
+      Uses the ultrafast service tier.
 
 - `metadata: optional map[string] or null`
 
@@ -148,7 +152,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
           Automatically selects the most detailed summary supported by the model.
 
-    - `service_tier: "auto" or "default" or "flex" or 2 more`
+    - `service_tier: "auto" or "default" or "flex" or 3 more`
 
       The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -161,6 +165,8 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `text: AgentText`
 

@@ -28,7 +28,7 @@ You do not need to be a Google Cloud Platform user to integrate Google Workspace
 
 ### 1. Configure Google Workspace
 
-1. Log in to the Google Cloud Platform [console ↗](https://console.cloud.google.com/). This is separate from your Google Workspace console.
+1. Log in to the Google Cloud Platform [console ↗︎](https://console.cloud.google.com/). This is separate from your Google Workspace console.
 2. A Google Cloud project is required to enable Google Workspace APIs. If you do not already have a Google Cloud project, go to **IAM & Admin** > **Create Project**. Name the project and select **Create**.
 3. Go to **APIs & Services** and select **Enable APIs and Services**. The API Library will load.
 4. In the API Library, search for `admin` and select **Admin SDK API**.
@@ -50,7 +50,7 @@ You do not need to be a Google Cloud Platform user to integrate Google Workspace
     https://<your-team-name>.cloudflareaccess.com
     ```
 
-    You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+    You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 12. Under **Authorized redirect URIs**, in the **URIs** field, enter the following URL:
 
     ```txt
@@ -59,16 +59,16 @@ You do not need to be a Google Cloud Platform user to integrate Google Workspace
 
 
 13. After creating the OAuth client, select the OAuth client that you just created. Google will present the **OAuth Client ID** value and **Client secret** value. The client secret field functions like a password and should not be shared. Copy both the **OAuth Client ID** value and **Client secret** value.
-14. On your [Google Admin console ↗](https://admin.google.com), go to **Security** > **Access and data control** > **API controls**.
+14. On your [Google Admin console ↗︎](https://admin.google.com), go to **Security** > **Access and data control** > **API controls**.
 15. In **API Controls**, select **Settings**.
 16. Select **Internal apps** and check the box next to **Trust internal apps** to enable this option. The **Trust internal apps** setting is disabled by default and must be enabled for Cloudflare Access to work correctly.![Location to trust internal apps in the Google Cloud Platform console.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2346,height=1110,format=webp/_astro/trust-internal-apps.BFE-UHaC.png)
 
 ### 2. Add Google Workspace to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Select **Add new identity provider** and select **Google Workspace**.
 3. Input the Client ID (**App ID** in the Cloudflare dashboard) and Client Secret fields generated previously. Additionally, enter the domain of your Google Workspace account.
-4. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
+4. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
 5. (Optional) Under **Optional configurations**, enter [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) that you wish to add to your user's identity.
 6. Select **Save**. To complete setup, you must visit the generated link. If you are not the Google Workspace administrator, share the link with the administrator.
 7. The generated link will prompt you to log in to your Google admin account and to authorize Cloudflare Access to view group information. After allowing permissions, you will see a success page from Cloudflare Access.
@@ -81,7 +81,7 @@ The SCIM provisioning integration with Google Workspace is not currently support
 
 \`Failed to fetch group information from the identity provider\` error
 
-To test successfully, you must [finish setup ↗](https://community.cloudflare.com/t/google-workspace-failed-to-fetch-group-information-from-the-identity-provider/313361/2). Testing before finishing setup will result in a [`Failed to fetch user/group information from the identity provider` error](https://developers.cloudflare.com/cloudflare-one/access-controls/troubleshooting/#identity-provider-usergroup-info-error).
+To test successfully, you must [finish setup ↗︎](https://community.cloudflare.com/t/google-workspace-failed-to-fetch-group-information-from-the-identity-provider/313361/2). Testing before finishing setup will result in a [`Failed to fetch user/group information from the identity provider` error](https://developers.cloudflare.com/cloudflare-one/access-controls/troubleshooting/#identity-provider-usergroup-info-error).
 
 ## Example API Configuration
 

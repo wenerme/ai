@@ -18,7 +18,7 @@ Common questions about Cloudflare Wallet handles.
 
 ## Where can I reserve a Cloudflare Wallet handle?
 
-Cloudflare Wallet handles can be reserved at [cloudflare.pay ↗](https://cloudflare.pay/).
+Cloudflare Wallet handles can be reserved at [cloudflare.pay ↗︎](https://cloudflare.pay/).
 
 ## How much does it cost to reserve a Cloudflare Wallet handle?
 
@@ -38,7 +38,7 @@ Handles are allocated first come, first served, and Cloudflare does not currentl
 
 ## Where can I report trademark infringements, abuse or spam?
 
-Submit abuse reports to Cloudflare via [abuse.cloudflare.com ↗](https://abuse.cloudflare.com/).
+Submit abuse reports to Cloudflare via [abuse.cloudflare.com ↗︎](https://abuse.cloudflare.com/).
 
 Was this helpful?
 

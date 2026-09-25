@@ -28,7 +28,7 @@ TerminalCloudExtension
 
 1. **Install GitHub Copilot**
 
-   Install the GitHub Copilot extension in VS Code from the [Visual Studio Marketplace ↗](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot). For JetBrains IDEs, Visual Studio, or Xcode, see the [Install the Copilot extension ↗](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-extension) guide.
+   Install the GitHub Copilot extension in VS Code from the [Visual Studio Marketplace ↗︎](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot). For JetBrains IDEs, Visual Studio, or Xcode, see the [Install the Copilot extension ↗︎](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-extension) guide.
 2. **Install Cloudflare Skills**
 
    ```bash
@@ -38,7 +38,7 @@ TerminalCloudExtension
 
 3. **Configure Cloudflare MCP servers**
 
-   For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-config.json` for user-level configuration or `.mcp.json` or `.github/mcp.json` for project-level configuration. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗](https://github.com/cloudflare/mcp).
+   For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-config.json` for user-level configuration or `.mcp.json` or `.github/mcp.json` for project-level configuration. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗︎](https://github.com/cloudflare/mcp).
 
    ```json
    {
@@ -60,7 +60,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+   Add mTLS authentication and schema validation to protect my API endpoints.
    ```
 
 
@@ -109,7 +109,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 - Code mode APIcode modeBroad access to the full Cloudflare API via code execution, with minimal token overheadhttps://mcp.cloudflare.com/mcp
 - Code Mode servercode modeBest when you want broad access across Cloudflare's APIs through code executionhttps://mcp.cloudflare.com/mcp
 - AI Gateway serverSearch your logs, get details about the prompts and responseshttps://ai-gateway.mcp.cloudflare.com/mcp
-- Audit Logs serverQuery audit logs and generate reports for reviewhttps://auditlogs.mcp.cloudflare.com/mcp
 - AutoRAG serverSearch and query account AutoRAG instanceshttps://autorag.mcp.cloudflare.com/mcp
 - Browser Run serverFetch web pages, convert them to markdown and take screenshotshttps://browser.mcp.cloudflare.com/mcp
 - Cloudflare Blog serverSearch and read posts from the Cloudflare Bloghttps://blog.mcp.cloudflare.com/mcp
@@ -166,23 +165,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Tips
@@ -199,7 +198,7 @@ Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and
 
 </summary>
 
-Yes. GitHub Copilot added Agent Skills support for VS Code agent mode, the Copilot CLI, and the cloud agent. Run <code>npx skills add https://github.com/cloudflare/skills</code> to install them. Refer to the <a href="https://docs.github.com/en/copilot/concepts/agents/about-agent-skills">About agent skills ↗</a> guide for details on where Copilot looks for Skills.
+Yes. GitHub Copilot added Agent Skills support for VS Code agent mode, the Copilot CLI, and the cloud agent. Run <code>npx skills add https://github.com/cloudflare/skills</code> to install them. Refer to the <a href="https://docs.github.com/en/copilot/concepts/agents/about-agent-skills">About agent skills ↗︎</a> guide for details on where Copilot looks for Skills.
 
 </details>
 
@@ -241,7 +240,7 @@ Yes, via Wrangler in the VS Code terminal, or via a GitHub Actions workflow that
 
 </summary>
 
-Skills only work in VS Code agent mode, the Copilot CLI, and the cloud agent — not with inline completion or plain chat. Switch Copilot Chat to agent mode. If Skills are still not discovered, refer to <a href="https://docs.github.com/en/copilot/concepts/agents/about-agent-skills">About agent skills ↗</a> for the paths Copilot checks.
+Skills only work in VS Code agent mode, the Copilot CLI, and the cloud agent — not with inline completion or plain chat. Switch Copilot Chat to agent mode. If Skills are still not discovered, refer to <a href="https://docs.github.com/en/copilot/concepts/agents/about-agent-skills">About agent skills ↗︎</a> for the paths Copilot checks.
 
 </details>
 

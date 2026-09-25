@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/time-services/roughtime/recipes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-There are various ways you can use Roughtime to keep your clock in sync. These recipes use [Cloudflare's Go package ↗](https://github.com/cloudflare/roughtime), which is based on Google's [Go client ↗](https://roughtime.googlesource.com/roughtime/+/master/go/client/).
+There are various ways you can use Roughtime to keep your clock in sync. These recipes use [Cloudflare's Go package ↗︎](https://github.com/cloudflare/roughtime), which is based on Google's [Go client ↗︎](https://roughtime.googlesource.com/roughtime/+/master/go/client/).
 
-The protocol is also implemented in [C++ ↗](https://roughtime.googlesource.com/roughtime/+/master), [Rust ↗](https://github.com/int08h/roughenough), and [Java ↗](https://github.com/int08h/nearenough).
+The protocol is also implemented in [C++ ↗︎](https://roughtime.googlesource.com/roughtime/+/master), [Rust ↗︎](https://github.com/int08h/roughenough), and [Java ↗︎](https://github.com/int08h/nearenough).
 
 ## Client configuration
 
@@ -42,11 +42,11 @@ The client configuration consists of a list of named Roughtime servers formatted
 
 It includes each server's *root public key*. When the server starts, it generates an *online* public/secret key pair. The root secret key is used to create a *delegation* for the online public key and the online secret key is used to sign the response.
 
-The delegation serves the same function as a traditional [X.509 certificate ↗](https://en.wikipedia.org/wiki/X.509) on the web. The client first uses the root public key to verify the delegation, then uses the online public key to verify the response.
+The delegation serves the same function as a traditional [X.509 certificate ↗︎](https://en.wikipedia.org/wiki/X.509) on the web. The client first uses the root public key to verify the delegation, then uses the online public key to verify the response.
 
 Because the response is *auditable*, the protocol makes each client accountable to provide accurate time.
 
-The configuration also encodes the type of signature algorithm used by the server (currently only [Ed25519 ↗](https://en.wikipedia.org/wiki/EdDSA) is supported). Lastly, the configuration contains a list of addresses where the service can be reached and which transport protocol to use to reach them (currently only UDP is supported).
+The configuration also encodes the type of signature algorithm used by the server (currently only [Ed25519 ↗︎](https://en.wikipedia.org/wiki/EdDSA) is supported). Lastly, the configuration contains a list of addresses where the service can be reached and which transport protocol to use to reach them (currently only UDP is supported).
 
 ## TLS
 
@@ -76,7 +76,7 @@ This sends a request to the server and verifies the response. The variable `rt` 
 
 If the last parameter is provided, then it's used generate the nonce for the request (more on this later).
 
-The `crypto/tls` package allows the user to [specify a callback ↗](https://golang.org/pkg/crypto/tls/#Config) for the current time to use when validating certificates, session tickets, etc. You can compute this callback as follows:
+The `crypto/tls` package allows the user to [specify a callback ↗︎](https://golang.org/pkg/crypto/tls/#Config) for the current time to use when validating certificates, session tickets, etc. You can compute this callback as follows:
 
 ```go
 t1, radius := rt.Now()
@@ -88,7 +88,7 @@ now := func() time.Time {
 
 The variable `t1` is the time reported by the server and `radius` is the server's uncertainty radius.
 
-For a full working example, check out our [GitHub ↗](https://github.com/cloudflare/roughtime/blob/master/recipes/tls.go).
+For a full working example, check out our [GitHub ↗︎](https://github.com/cloudflare/roughtime/blob/master/recipes/tls.go).
 
 ## Desktop alerts
 
@@ -108,7 +108,7 @@ if skew > 10*time.Second {
 }
 ```
 
-For a full working example, check out our [GitHub ↗](https://github.com/cloudflare/roughtime/tree/master/recipes/alerter.go) (tested on Ubuntu 18.04). You would run this program as a cron job to periodically check that your clock is in sync.
+For a full working example, check out our [GitHub ↗︎](https://github.com/cloudflare/roughtime/tree/master/recipes/alerter.go) (tested on Ubuntu 18.04). You would run this program as a cron job to periodically check that your clock is in sync.
 
 ## Using multiple sources
 
@@ -132,7 +132,7 @@ This rejects responses whose uncertainty radii exceed 10 seconds. An error will 
 
 ### Auditing Your Sources
 
-Function `roughtime.Do()` chains together valid responses, generating each nonce using the server's response in the last successful query. As we discuss in more detail in the [blog ↗](https://blog.cloudflare.com/roughtime/), linking queries together in this manner results in cryptographic proof that the queries were made in order. To verify that the results have this property, you can do the following:
+Function `roughtime.Do()` chains together valid responses, generating each nonce using the server's response in the last successful query. As we discuss in more detail in the [blog ↗︎](https://blog.cloudflare.com/roughtime/), linking queries together in this manner results in cryptographic proof that the queries were made in order. To verify that the results have this property, you can do the following:
 
 ```go
 chain := roughtime.NewChain(results)

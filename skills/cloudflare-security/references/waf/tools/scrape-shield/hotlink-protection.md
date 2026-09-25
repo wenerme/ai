@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/tools/scrape-shield/hotlink-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Hotlink Protection prevents your images from being used by other sites, which can reduce the bandwidth consumed by your [origin server ↗](https://www.cloudflare.com/learning/cdn/glossary/origin-server/).
+Hotlink Protection prevents your images from being used by other sites, which can reduce the bandwidth consumed by your [origin server ↗︎](https://www.cloudflare.com/learning/cdn/glossary/origin-server/).
 
 The supported file extensions are `gif`, `ico`, `jpg`, `jpeg`, and `png`.
 

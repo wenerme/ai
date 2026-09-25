@@ -28,7 +28,7 @@ Any updates to the threat feeds will trigger new checks for previously detected 
 
 ## Malicious script detection
 
-Cloudflare analyzes the JavaScript code of the scripts loaded by your website visitors. This analysis uses machine learning, including an LLM powered by Workers AI, to reduce the false positive rate and focus on highlighting true positives such as [Magecart-type attacks ↗](https://sansec.io/what-is-magecart), where injected code skims payment card data from checkout forms.
+Cloudflare analyzes the JavaScript code of the scripts loaded by your website visitors. This analysis uses machine learning, including an LLM powered by Workers AI, to reduce the false positive rate and focus on highlighting true positives such as [Magecart-type attacks ↗︎](https://sansec.io/what-is-magecart), where injected code skims payment card data from checkout forms.
 
 Note
 

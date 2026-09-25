@@ -112,7 +112,7 @@ You will need to provide the token contained in the file when creating a job.
 
 Note
 
-When using Sumo Logic, you may find it helpful to have [Live Tail ↗](https://help.sumologic.com/05Search/Live-Tail/About-Live-Tail) open to see the challenge file as soon as it is uploaded.
+When using Sumo Logic, you may find it helpful to have [Live Tail ↗︎](https://help.sumologic.com/05Search/Live-Tail/About-Live-Tail) open to see the challenge file as soon as it is uploaded.
 
 ## Destination
 
@@ -163,10 +163,10 @@ This approach is useful when you want your logs grouped by day.
 
 For more information on the value for your cloud storage provider, consult the following conventions:
 
-- [AWS S3 CLI ↗](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html) (S3Uri path argument type)
-- [Google Cloud Storage CLI ↗](https://cloud.google.com/storage/docs/gsutil) (Syntax for accessing resources)
-- [Microsoft Azure Shared Access Signature ↗](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
-- [Sumo Logic HTTP Source ↗](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source)
+- [AWS S3 CLI ↗︎](https://docs.aws.amazon.com/cli/latest/reference/s3/index.html) (S3Uri path argument type)
+- [Google Cloud Storage CLI ↗︎](https://cloud.google.com/storage/docs/gsutil) (Syntax for accessing resources)
+- [Microsoft Azure Shared Access Signature ↗︎](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
+- [Sumo Logic HTTP Source ↗︎](https://help.sumologic.com/03Send-Data/Sources/02Sources-for-Hosted-Collectors/HTTP-Source)
 
 To check if a destination is already in use:
 

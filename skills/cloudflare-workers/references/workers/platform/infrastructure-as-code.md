@@ -16,7 +16,7 @@ Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 While [Wrangler](https://developers.cloudflare.com/workers/wrangler/configuration) makes it easy to upload and manage Workers, there are times when you need a more programmatic approach. This could involve using Infrastructure as Code (IaC) tools or interacting directly with the [Workers API](https://developers.cloudflare.com/api/resources/workers/). Examples include build and deploy scripts, CI/CD pipelines, custom developer tools, and automated testing.
 
-To make this easier, Cloudflare provides SDK libraries for popular languages such as [cloudflare-typescript ↗](https://github.com/cloudflare/cloudflare-typescript) and [cloudflare-python ↗](https://github.com/cloudflare/cloudflare-python). For IaC, you can use tools like HashiCorp's Terraform and the [Cloudflare Terraform Provider](https://developers.cloudflare.com/terraform) to manage Workers resources.
+To make this easier, Cloudflare provides SDK libraries for popular languages such as [cloudflare-typescript ↗︎](https://github.com/cloudflare/cloudflare-typescript) and [cloudflare-python ↗︎](https://github.com/cloudflare/cloudflare-python). For IaC, you can use tools like HashiCorp's Terraform and the [Cloudflare Terraform Provider](https://developers.cloudflare.com/terraform) to manage Workers resources.
 
 Below are examples of deploying a Worker using different tools and languages, along with important considerations for managing Workers with IaC.
 
@@ -24,7 +24,7 @@ All of these examples need an [account ID](https://developers.cloudflare.com/fun
 
 ## Workers Bundling
 
-None of the examples below do [Workers Bundling](https://developers.cloudflare.com/workers/wrangler/bundling). This is usually done with Wrangler or a tool like [esbuild ↗](https://esbuild.github.io).
+None of the examples below do [Workers Bundling](https://developers.cloudflare.com/workers/wrangler/bundling). This is usually done with Wrangler or a tool like [esbuild ↗︎](https://esbuild.github.io).
 
 Generally, you'd run this bundling step before applying your Terraform plan or using the API for script upload:
 
@@ -36,7 +36,7 @@ When using Wrangler for building and a different method for uploading, make sure
 
 ## Terraform
 
-In this example, you need a local file named `my-script.mjs` with script content similar to the below examples. Learn more about the [Cloudflare Terraform Provider](https://developers.cloudflare.com/terraform/), and refer to the [Workers script resource example ↗](https://github.com/cloudflare/terraform-provider-cloudflare/blob/main/examples/resources/cloudflare_workers_script/resource.tf) for all available resource settings.
+In this example, you need a local file named `my-script.mjs` with script content similar to the below examples. Learn more about the [Cloudflare Terraform Provider](https://developers.cloudflare.com/terraform/), and refer to the [Workers script resource example ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare/blob/main/examples/resources/cloudflare_workers_script/resource.tf) for all available resource settings.
 
 ```tf
 variable "account_id" {
@@ -384,7 +384,7 @@ resource "cloudflare_worker_version" "my_worker_version" {
 
 ## Cloudflare API Libraries
 
-This example uses the [cloudflare-typescript ↗](https://github.com/cloudflare/cloudflare-typescript) SDK which provides convenient access to the Cloudflare REST API from server-side JavaScript or TypeScript.
+This example uses the [cloudflare-typescript ↗︎](https://github.com/cloudflare/cloudflare-typescript) SDK which provides convenient access to the Cloudflare REST API from server-side JavaScript or TypeScript.
 
 ```js
 #!/usr/bin/env -S npm run tsn -T
@@ -706,7 +706,7 @@ main();
 
 ## Cloudflare REST API
 
-Open a terminal or create a shell script to upload a Worker and manage versions and deployments with curl. Workers scripts are JavaScript [ES Modules ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), but we also support [Python Workers](https://developers.cloudflare.com/workers/languages/python/) and [Rust Workers](https://developers.cloudflare.com/workers/languages/rust/).
+Open a terminal or create a shell script to upload a Worker and manage versions and deployments with curl. Workers scripts are JavaScript [ES Modules ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules), but we also support [Python Workers](https://developers.cloudflare.com/workers/languages/python/) and [Rust Workers](https://developers.cloudflare.com/workers/languages/rust/).
 
 Warning
 
@@ -877,7 +877,7 @@ echo "\nDeployment ID: $deployment_id\n"
 
 ### multipart/form-data upload API
 
-This API uses [multipart/form-data ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) to upload a Worker and will implicitly create a version and deployment. The above API is recommended for direct management of versions and deployments.
+This API uses [multipart/form-data ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Methods/POST) to upload a Worker and will implicitly create a version and deployment. The above API is recommended for direct management of versions and deployments.
 
 ```bash
 account_id="replace_me"

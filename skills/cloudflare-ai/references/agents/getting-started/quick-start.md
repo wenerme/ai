@@ -75,7 +75,7 @@ export default defineConfig({
 });
 ```
 
-Open [http://localhost:5173 ↗](http://localhost:5173) to see your agent in action.
+Open [http://localhost:5173 ↗︎](http://localhost:5173) to see your agent in action.
 
 ## Your first agent
 
@@ -173,7 +173,7 @@ Update `wrangler.jsonc` to register the agent:
 	"name": "my-agent",
 	"main": "src/server.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 	"durable_objects": {
 		"bindings": [
@@ -196,7 +196,7 @@ Update `wrangler.jsonc` to register the agent:
 name = "my-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -661,7 +661,7 @@ If your dev server fails with `SyntaxError: Invalid or unexpected token`, set `"
 
 Caution
 
-Do not set `"experimentalDecorators": true` in your `tsconfig.json`. The Agents SDK uses [TC39 standard decorators ↗](https://github.com/tc39/proposal-decorators), not TypeScript legacy decorators. Enabling `experimentalDecorators` applies an incompatible transform that silently breaks `@callable()` at runtime.
+Do not set `"experimentalDecorators": true` in your `tsconfig.json`. The Agents SDK uses [TC39 standard decorators ↗︎](https://github.com/tc39/proposal-decorators), not TypeScript legacy decorators. Enabling `experimentalDecorators` applies an incompatible transform that silently breaks `@callable()` at runtime.
 
 ## Next steps
 

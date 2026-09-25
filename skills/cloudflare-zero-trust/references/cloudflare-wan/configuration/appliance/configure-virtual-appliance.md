@@ -61,9 +61,9 @@ Before you can install Cloudflare One Virtual Appliance, you need an Enterprise 
 - One vSwitch port group or VLAN with access to the Internet (for example, through a WAN)
 - One or more vSwitch port group or VLAN that will be the internal LAN
 
-For details on installing ESXi and configuring a virtual machine, refer to [VMware's documentation ↗](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.esxi.install.doc/GUID-B2F01BF5-078A-4C7E-B505-5DFFED0B8C38.html).
+For details on installing ESXi and configuring a virtual machine, refer to [VMware's documentation ↗︎](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.esxi.install.doc/GUID-B2F01BF5-078A-4C7E-B505-5DFFED0B8C38.html).
 
-For details on installing Virtual environment and configuring a virtual machine, refer to [Proxmox documentation ↗](https://www.proxmox.com/en/products/proxmox-virtual-environment/get-started).
+For details on installing Virtual environment and configuring a virtual machine, refer to [Proxmox documentation ↗︎](https://www.proxmox.com/en/products/proxmox-virtual-environment/get-started).
 
 ---
 
@@ -104,7 +104,7 @@ Select the appropriate tab to configure Cloudflare One Virtual Appliance on VMwa
 
 **1. Obtain the VMware image**
 
-Download the Cloudflare One Virtual Appliance OVA image from [https://assets.magic-wan-connector.cloudflare.com/stable/mconn.ova ↗](https://assets.magic-wan-connector.cloudflare.com/stable/mconn.ova). You can also download it from the dashboard when you register a virtual appliance, in the **Add an appliance** > **Virtual appliance** step. The OVA image includes the files required to install and configure the virtual machine (VM) for Cloudflare One Virtual Appliance with the appropriate settings. For details, refer to [VMware VMs documentation ↗](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-AE61948B-C2EE-436E-BAFB-3C7209088552.html).
+Download the Cloudflare One Virtual Appliance OVA image from [https://assets.magic-wan-connector.cloudflare.com/stable/mconn.ova ↗︎](https://assets.magic-wan-connector.cloudflare.com/stable/mconn.ova). You can also download it from the dashboard when you register a virtual appliance, in the **Add an appliance** > **Virtual appliance** step. The OVA image includes the files required to install and configure the virtual machine (VM) for Cloudflare One Virtual Appliance with the appropriate settings. For details, refer to [VMware VMs documentation ↗︎](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-AE61948B-C2EE-436E-BAFB-3C7209088552.html).
 
 This image can be deployed multiple times to create several instances of a Cloudflare One Virtual Appliance, in different locations or on the same ESXi host.
 
@@ -121,7 +121,7 @@ The following instructions assume you already have VMware ESXi hypervisor instal
 
 VLAN tagging
 
-Cloudflare One Virtual Appliance supports creating subinterfaces through the use of [802.1Q VLAN tagging ↗](https://en.wikipedia.org/wiki/IEEE_802.1Q).
+Cloudflare One Virtual Appliance supports creating subinterfaces through the use of [802.1Q VLAN tagging ↗︎](https://en.wikipedia.org/wiki/IEEE_802.1Q).
 
 Use VLAN ID `0` when:
 
@@ -130,7 +130,7 @@ Use VLAN ID `0` when:
 
 You can also configure subinterfaces on the Cloudflare One Virtual Appliance by associating the network interface with a Port Group or Distributed Port Group trunk and specifying a VLAN ID in addition to the port associated with the network interface (VLAN ID `1`-`4094`).
 
-Refer to [VMware's documentation ↗](https://kb.vmware.com/s/article/1003825) for more information.
+Refer to [VMware's documentation ↗︎](https://kb.vmware.com/s/article/1003825) for more information.
 
 2. Extract the files in the OVA image you downloaded. For example:
 
@@ -200,7 +200,7 @@ The script applies default settings and configures the virtual machine for Cloud
 
 VLAN tagging
 
-Cloudflare One Virtual Appliance supports creating subinterfaces through the use of [802.1Q VLAN tagging ↗](https://en.wikipedia.org/wiki/IEEE_802.1Q).
+Cloudflare One Virtual Appliance supports creating subinterfaces through the use of [802.1Q VLAN tagging ↗︎](https://en.wikipedia.org/wiki/IEEE_802.1Q).
 
 Use VLAN ID `0` when:
 
@@ -209,7 +209,7 @@ Use VLAN ID `0` when:
 
 You can also configure subinterfaces on the Cloudflare One Virtual Appliance by associating the network interface with a Port Group or Distributed Port Group trunk and specifying a VLAN ID in addition to the port associated with the network interface (VLAN ID `1`-`4094`).
 
-Refer to [Proxmox documentation ↗](https://www.proxmox.com/en/products/proxmox-virtual-environment/get-started) for more information.
+Refer to [Proxmox documentation ↗︎](https://www.proxmox.com/en/products/proxmox-virtual-environment/get-started) for more information.
 
 7. Make sure the hardware settings match the minimum requirements for running Cloudflare One Virtual Appliance. Make changes to the RAM and CPU if needed.
 8. Continue setup in your [Cloudflare dashboard](#set-up-cloudflare-dashboard).
@@ -278,7 +278,7 @@ To create a profile:
 
 When you have more than one anycast IP configured in your account (set up during your Cloudflare WAN (formerly Magic WAN) onboarding), Cloudflare One Virtual Appliance will automatically create at most two tunnels per WAN port. This improves reliability and performance, and requires no additional configuration on your part.
 
-1. In **WAN configuration**, select **Create**. You can create one or more [wide area networks (WANs) ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-wan/). Configuring multiple WANs will create multiple IPsec tunnels (one IPsec tunnel per WAN port). This allows Cloudflare One Virtual Appliance to load balance traffic over WANs of equal priority. It also allows Cloudflare One Virtual Appliance to failover between circuits according to their [health](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/). Refer to [WAN settings](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#wan-settings) for more details. Note
+1. In **WAN configuration**, select **Create**. You can create one or more [wide area networks (WANs) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-wan/). Configuring multiple WANs will create multiple IPsec tunnels (one IPsec tunnel per WAN port). This allows Cloudflare One Virtual Appliance to load balance traffic over WANs of equal priority. It also allows Cloudflare One Virtual Appliance to failover between circuits according to their [health](https://developers.cloudflare.com/cloudflare-wan/reference/tunnel-health-checks/). Refer to [WAN settings](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/reference/#wan-settings) for more details. Note
 
    This is not the same as a high availability (HA) configuration. HA configurations need two Cloudflare One Virtual Appliance devices to work. For details, refer to [About high availability configurations](#about-high-availability-configurations).
 2. In **Interface name**, enter a descriptive name for your WAN.

@@ -22,7 +22,7 @@ When an ISP blocks your website, you should expect that:
 - You may see a drop in traffic in your [Cloudflare Analytics](https://developers.cloudflare.com/analytics/).
 - As these actions are taken at the ISP level, Cloudflare does not have the ability to restore Internet connectivity for impacted users.
 
-Enterprise users can lease [static IPs](https://developers.cloudflare.com/byoip/concepts/static-ips/) or get their own IPs advertised using [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/). For more information, contact the [Cloudflare Sales team ↗](https://www.cloudflare.com/plans/enterprise/contact/).
+Enterprise users can lease [static IPs](https://developers.cloudflare.com/byoip/concepts/static-ips/) or get their own IPs advertised using [Bring Your Own IP (BYOIP)](https://developers.cloudflare.com/byoip/). For more information, contact the [Cloudflare Sales team ↗︎](https://www.cloudflare.com/plans/enterprise/contact/).
 
 It is important to note that an ISP-level block is distinct from other types of website blocking. For example, website owners may enforce certain restrictions (based upon IP, ASN, country, or other factors such as rate limiting) that will return [`1XXX` errors](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/cloudflare-1xxx-errors/) in the HTML body of the response. Website owners configure these blocks, so issues need to be addressed directly with the website owner. For more information on website blocking, refer to the [Web Application Firewall FAQ](https://developers.cloudflare.com/waf/troubleshooting/faq/#why-have-i-been-blocked).
 

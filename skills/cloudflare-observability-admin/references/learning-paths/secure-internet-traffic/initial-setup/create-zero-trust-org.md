@@ -20,24 +20,24 @@ To start using Zero Trust features, create a Zero Trust organization in your Clo
 
 To create a Zero Trust organization:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select **Zero Trust**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), select **Zero Trust**.
 2. On the onboarding screen, choose a team name. The team name is a unique, internal identifier for your Zero Trust organization. Users will enter this team name when they enroll their device manually, and it will be the subdomain for your App Launcher (as relevant). Your business name is the typical entry.
 
-   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) by going to **Zero Trust** > **Settings**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) by going to **Zero Trust** > **Settings**.
 3. Complete your onboarding by selecting a subscription plan and entering your payment details. If you chose the **Zero Trust Free plan**, this step is still needed but you will not be charged.
 
 When you create your organization, Cloudflare automatically adds the [Cloudflare identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/cloudflare/) as your default login method, so your users can sign in with their Cloudflare account credentials right away. You can add a [one-time PIN](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) or connect a [third-party identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/) at any time.
 
 ## (Optional) Manage Zero Trust in Terraform
 
-You can use the [Cloudflare Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest) to manage your Zero Trust organization alongside your other IT infrastructure. To get started with Terraform, refer to our [Terraform tutorial series](https://developers.cloudflare.com/terraform/tutorial/).
+You can use the [Cloudflare Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest) to manage your Zero Trust organization alongside your other IT infrastructure. To get started with Terraform, refer to our [Terraform tutorial series](https://developers.cloudflare.com/terraform/tutorial/).
 
 To add Zero Trust to your Terraform configuration:
 
 1. [Sign up for Zero Trust](#sign-up-for-zero-trust) on the Cloudflare dashboard.
-2. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+2. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Organizations, Identity Providers, and Groups Write`
-3. Add the [`cloudflare_zero_trust_organization` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_organization) resource:
+3. Add the [`cloudflare_zero_trust_organization` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_organization) resource:
 
    ```terraform
    resource "cloudflare_zero_trust_organization" "<your-team-name>" {
@@ -47,7 +47,7 @@ To add Zero Trust to your Terraform configuration:
    }
    ```
 
-   Replace `<your-team-name>` with the Zero Trust organization name selected during [onboarding](#sign-up-for-zero-trust). You can also view your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** > **Settings** > **Team name and domain**.
+   Replace `<your-team-name>` with the Zero Trust organization name selected during [onboarding](#sign-up-for-zero-trust). You can also view your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) under **Zero Trust** > **Settings** > **Team name and domain**.
 
 You can now update Zero Trust organization settings using Terraform.
 

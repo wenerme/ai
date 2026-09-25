@@ -46,7 +46,7 @@ AI Security for Apps is built into the Cloudflare [Web Application Firewall (WAF
 ## More resources
 
 - [AI Gateway](https://developers.cloudflare.com/ai-gateway/) — Monitor, control, and cache requests to LLM providers.
-- [What are the OWASP Top 10 risks for LLMs? ↗](https://www.cloudflare.com/learning/ai/owasp-top-10-risks-for-llms/) — Background on the most common security risks for LLM-powered applications.
+- [What are the OWASP Top 10 risks for LLMs? ↗︎](https://www.cloudflare.com/learning/ai/owasp-top-10-risks-for-llms/) — Background on the most common security risks for LLM-powered applications.
 
 Was this helpful?
 

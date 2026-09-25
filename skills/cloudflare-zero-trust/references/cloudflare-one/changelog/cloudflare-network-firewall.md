@@ -83,7 +83,7 @@ The Network Services menu structure in Cloudflare's dashboard has been updated t
 
 Your existing configurations will remain the same, and you will have access to all of the same features and functionality.
 
-The changes visible in your dashboard may vary based on the products you use. Overall, changes relate to [Magic Transit ↗](https://developers.cloudflare.com/magic-transit/), [Magic WAN ↗](https://developers.cloudflare.com/magic-wan/), and [Magic Firewall ↗](https://developers.cloudflare.com/cloudflare-network-firewall/).
+The changes visible in your dashboard may vary based on the products you use. Overall, changes relate to [Magic Transit ↗︎](https://developers.cloudflare.com/magic-transit/), [Magic WAN ↗︎](https://developers.cloudflare.com/magic-wan/), and [Magic Firewall ↗︎](https://developers.cloudflare.com/cloudflare-network-firewall/).
 
 **Summary of changes:**
 
@@ -97,7 +97,7 @@ The changes visible in your dashboard may vary based on the products you use. Ov
 - You can manage your Sites from **Insights > Network health.**
 - You can find Magic Network Monitoring under **Insights > Network flow**.
 
-If you would like to provide feedback, complete [this form ↗](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI] Upcoming Network Services Dashboard Navigation Update**.
+If you would like to provide feedback, complete [this form ↗︎](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI] Upcoming Network Services Dashboard Navigation Update**.
 
 Preview: ![Networking Navigation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3000,height=1052,format=webp/_astro/networking-overview-and-navigation.CeMgEFaZ.png)
 
@@ -108,7 +108,7 @@ Preview: ![Networking Navigation](https://developers.cloudflare.com/cdn-cgi/imag
 
 Magic Firewall now supports a new managed list of Cloudflare IP ranges. This list is available as an option when creating a Magic Firewall policy based on IP source/destination addresses. When selecting "is in list" or "is not in list", the option "**Cloudflare IP Ranges**" will appear in the dropdown menu.
 
-This list is based on the IPs listed in the Cloudflare [IP ranges ↗](https://www.cloudflare.com/en-gb/ips/). Updates to this managed list are applied automatically.
+This list is based on the IPs listed in the Cloudflare [IP ranges ↗︎](https://www.cloudflare.com/en-gb/ips/). Updates to this managed list are applied automatically.
 
 ![Cloudflare IPs Managed List](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1102,height=677,format=webp/_astro/cloudflare-ips.DetyOndL.png)
 
@@ -121,7 +121,7 @@ Note: IP Lists require a Cloudflare Advanced Network Firewall subscription. For 
 
 The Magic Firewall dashboard now allows you to search custom rules using the rule name and/or ID.
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
 2. Go to **Analytics & Logs** > **Network Analytics**.
 3. Select **Magic Firewall**.
 4. Add a filter for **Rule ID**.

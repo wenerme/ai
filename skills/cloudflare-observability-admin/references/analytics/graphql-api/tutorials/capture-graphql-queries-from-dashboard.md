@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/tutorials/capture-graphql-queries-from-dashboard/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Using [Chrome DevTools ↗](https://developer.chrome.com/docs/devtools), you can capture the queries running behind the Cloudflare Dashboard analytics. In this example, we will focus on the Network Analytics dataset, but the same process can be applied to any other analytics available in your dashboard.
+Using [Chrome DevTools ↗︎](https://developer.chrome.com/docs/devtools), you can capture the queries running behind the Cloudflare Dashboard analytics. In this example, we will focus on the Network Analytics dataset, but the same process can be applied to any other analytics available in your dashboard.
 
 1. In the Cloudflare dashboard, go to the **Network Analytics** page or any other analytics dashboard you are interested in seeing the GraphQL queries in. [Go to **Network analytics** ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/analytics/network-analytics/transport-analytics)
 
 ![Analytics tab](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2322,height=1090,format=webp/_astro/analytics-tab.sJIMwybT.png)
 
-2. Open the [Chrome Developer Tools ↗](https://developer.chrome.com/docs/devtools) and select **Inspect**.
+2. Open the [Chrome Developer Tools ↗︎](https://developer.chrome.com/docs/devtools) and select **Inspect**.
 
 ![Chrome developer tools](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1470,height=960,format=webp/_astro/chrome-developer-tools.D4a36rnA.png)
 

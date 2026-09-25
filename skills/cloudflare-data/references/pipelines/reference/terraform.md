@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pipelines/reference/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example shows how to configure [Pipelines](https://developers.cloudflare.com/pipelines/) and [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/) with Terraform using the [Cloudflare provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (v5.19.0+).
+This example shows how to configure [Pipelines](https://developers.cloudflare.com/pipelines/) and [R2 Data Catalog](https://developers.cloudflare.com/r2-data-catalog/) with Terraform using the [Cloudflare provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) (v5.19.0+).
 
-The configuration creates a complete data pipeline: an R2 bucket with the data catalog enabled, a scoped API token for the sink, and the stream, sink, and pipeline resources that ingest JSON data into an [Apache Iceberg ↗](https://iceberg.apache.org/) table.
+The configuration creates a complete data pipeline: an R2 bucket with the data catalog enabled, a scoped API token for the sink, and the stream, sink, and pipeline resources that ingest JSON data into an [Apache Iceberg ↗︎](https://iceberg.apache.org/) table.
 
 ## Prerequisites
 
-- [Terraform CLI ↗](https://developer.hashicorp.com/terraform/downloads) `>= 1.0`
+- [Terraform CLI ↗︎](https://developer.hashicorp.com/terraform/downloads) `>= 1.0`
 - A Cloudflare account with R2 and Pipelines enabled
 - An API token scoped to your account with the following permissions:
   - **Pipelines** - Edit
@@ -36,16 +36,16 @@ This example uses the following Cloudflare Terraform resources:
 
 | Resource | Description |
 | --- | --- |
-| [`cloudflare_r2_bucket` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/r2_bucket) | Creates an R2 bucket to store pipeline data |
-| [`cloudflare_r2_data_catalog` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/r2_data_catalog) | Enables the R2 Data Catalog on a bucket |
-| [`cloudflare_pipeline_stream` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline_stream) | Creates a stream that receives events via HTTP or Worker bindings |
-| [`cloudflare_pipeline_sink` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline_sink) | Creates a sink that writes data to R2 Data Catalog or R2 |
-| [`cloudflare_pipeline` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline) | Creates a pipeline with SQL that connects a stream to a sink |
-| [`cloudflare_account_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_token) | Creates a scoped API token for sink authentication |
+| [`cloudflare_r2_bucket` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/r2_bucket) | Creates an R2 bucket to store pipeline data |
+| [`cloudflare_r2_data_catalog` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/r2_data_catalog) | Enables the R2 Data Catalog on a bucket |
+| [`cloudflare_pipeline_stream` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline_stream) | Creates a stream that receives events via HTTP or Worker bindings |
+| [`cloudflare_pipeline_sink` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline_sink) | Creates a sink that writes data to R2 Data Catalog or R2 |
+| [`cloudflare_pipeline` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/pipeline) | Creates a pipeline with SQL that connects a stream to a sink |
+| [`cloudflare_account_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/account_token) | Creates a scoped API token for sink authentication |
 
 ## End-to-end example
 
-With [`terraform` ↗](https://developer.hashicorp.com/terraform/downloads) installed, create a directory and the following files.
+With [`terraform` ↗︎](https://developer.hashicorp.com/terraform/downloads) installed, create a directory and the following files.
 
 ### 1. Define variables and provider
 

@@ -30,9 +30,9 @@ Follow these steps to configure Logpush support for Zaraz:
 
 ### 2. Enable Logpush from Zaraz settings
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com), go to **Delivery & Performance** > **Web tag management** > **Tag setup** > select your domain > **Settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com), go to **Delivery & Performance** > **Web tag management** > **Tag setup** > select your domain > **Settings**.
 
-   Alternatively, navigate directly to [Zaraz settings ↗](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz/:zone/tools-config/tools)
+   Alternatively, navigate directly to [Zaraz settings ↗︎](https://dash.cloudflare.com/?to=/:account/tag-management/zaraz/:zone/tools-config/tools)
 2. Enable **Export Zaraz Logs**.
 
 Note

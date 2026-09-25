@@ -32,8 +32,8 @@ To create your first Worker using the Cloudflare dashboard:
 
 #### Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -43,13 +43,13 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
 #### Create and deploy your first Worker
 
-[C3 (create-cloudflare-cli) ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare. In addition to speed, it leverages officially developed templates for Workers and framework-specific setup guides to ensure each new application that you set up follows Cloudflare and any third-party best practices for deployment on the Cloudflare network.
+[C3 (create-cloudflare-cli) ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare. In addition to speed, it leverages officially developed templates for Workers and framework-specific setup guides to ensure each new application that you set up follows Cloudflare and any third-party best practices for deployment on the Cloudflare network.
 
 To create your Worker project, run:
 
@@ -67,7 +67,7 @@ yarn create cloudflare first-worker
 pnpm create cloudflare@latest first-worker
 ```
 
-This will prompt you to install the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) package, and lead you through setup.
+This will prompt you to install the [`create-cloudflare` ↗︎](https://www.npmjs.com/package/create-cloudflare) package, and lead you through setup.
 
 For setup, select the following options:
 
@@ -89,8 +89,8 @@ In your Worker project directory, C3 has generated the following:
 1. `wrangler.jsonc`: Your [Wrangler](https://developers.cloudflare.com/workers/wrangler/configuration/#sample-wrangler-configuration) configuration file.
 2. `index.js` (in `/src`): A minimal `'Hello World!'` Worker written in [ES module](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) syntax.
 3. `package.json`: A minimal Node dependencies configuration file.
-4. `package-lock.json`: Refer to [`npm` documentation on `package-lock.json` ↗](https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json).
-5. `node_modules`: Refer to [`npm` documentation `node_modules` ↗](https://docs.npmjs.com/cli/v7/configuring-npm/folders#node-modules).
+4. `package-lock.json`: Refer to [`npm` documentation on `package-lock.json` ↗︎](https://docs.npmjs.com/cli/v9/configuring-npm/package-lock-json).
+5. `node_modules`: Refer to [`npm` documentation `node_modules` ↗︎](https://docs.npmjs.com/cli/v7/configuring-npm/folders#node-modules).
 
 To continue building your Worker, open the `index.js` file to write your code. Refer to [Examples](https://developers.cloudflare.com/workers/examples/) to use ready-made code you can experiment with.
 

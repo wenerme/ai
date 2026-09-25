@@ -45,7 +45,7 @@ You may not be seeing metrics on Cloudflare Analytics for the following reasons:
 
 - You only recently signed up for Cloudflare. Metrics are delayed 24 hours for domains on a free Cloudflare plan.
 - If you signed up directly with Cloudflare, your nameservers might not be pointing to Cloudflare at your registrar just yet. Registrars can take 24-72 hours to update their nameservers. Metrics will not start gathering until we detect the nameservers pointing to Cloudflare.
-- If you signed up through a Cloudflare [hosting partner option ↗](https://www.cloudflare.com/partners/), something might not be configured correctly. Contact the hosting partner for support.
+- If you signed up through a Cloudflare [hosting partner option ↗︎](https://www.cloudflare.com/partners/), something might not be configured correctly. Contact the hosting partner for support.
 - Some browser extensions designed to block ads may prevent analytics from loading. To address this issue, disable the ad block extension or allow `cloudflare.com` on it.
 
 Note

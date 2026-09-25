@@ -18,7 +18,7 @@ Common questions about Cloudflare Email Service.
 
 ## Limits and usage
 
-Sending limits exist to prevent abuse and spam and to ensure high deliverability for all users. If you need higher limits, you can request a limit increase by contacting support or reaching out in the [Cloudflare Developers Discord ↗](https://discord.cloudflare.com). If you exceed your limits, emails may be queued or rejected, and you will receive error responses with rate limit information.
+Sending limits exist to prevent abuse and spam and to ensure high deliverability for all users. If you need higher limits, you can request a limit increase by contacting support or reaching out in the [Cloudflare Developers Discord ↗︎](https://discord.cloudflare.com). If you exceed your limits, emails may be queued or rejected, and you will receive error responses with rate limit information.
 
 ### What is sender reputation?
 

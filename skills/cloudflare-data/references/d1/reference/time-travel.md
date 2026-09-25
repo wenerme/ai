@@ -24,7 +24,7 @@ By not having to rely on scheduled backups and/or manually initiated backups, yo
 
 Support for Time Travel
 
-Databases using D1's [new storage subsystem ↗](https://blog.cloudflare.com/d1-turning-it-up-to-11/) can use Time Travel. Time Travel replaces the [snapshot-based backups](https://developers.cloudflare.com/d1/reference/backups/) used for legacy alpha databases.
+Databases using D1's [new storage subsystem ↗︎](https://blog.cloudflare.com/d1-turning-it-up-to-11/) can use Time Travel. Time Travel replaces the [snapshot-based backups](https://developers.cloudflare.com/d1/reference/backups/) used for legacy alpha databases.
 
 To understand which storage subsystem your database uses, run `wrangler d1 info YOUR_DATABASE` and inspect the `version` field in the output. Databases with `version: production` support the new Time Travel API. Databases with `version: alpha` only support the older, snapshot-based backup API.
 
@@ -35,7 +35,7 @@ Time Travel leverages D1's concept of a bookmark to restore to a point in time.
 - Bookmarks older than 30 days are invalid and cannot be used as a restore point.
 - Restoring a database to a specific bookmark does not remove or delete older bookmarks. For example, if you restore to a bookmark representing the state of your database 10 minutes ago, and determine that you needed to restore to an earlier point in time, you can still do so.
 - Bookmarks are lexicographically sortable. Sorting orders a list of bookmarks from oldest-to-newest.
-- Bookmarks can be derived from a [Unix timestamp ↗](https://en.wikipedia.org/wiki/Unix_time) (seconds since Jan 1st, 1970), and conversion between a specific timestamp and a bookmark is deterministic (stable).
+- Bookmarks can be derived from a [Unix timestamp ↗︎](https://en.wikipedia.org/wiki/Unix_time) (seconds since Jan 1st, 1970), and conversion between a specific timestamp and a bookmark is deterministic (stable).
 
 Bookmarks are also leveraged by [Sessions API](https://developers.cloudflare.com/d1/best-practices/read-replication/#use-sessions-api) to ensure sequential consistency within a Session.
 
@@ -43,8 +43,8 @@ Bookmarks are also leveraged by [Sessions API](https://developers.cloudflare.com
 
 Time Travel supports two timestamp formats:
 
-- [Unix timestamps ↗](https://developer.mozilla.org/en-US/docs/Glossary/Unix_time), which correspond to seconds since January 1st, 1970 at midnight. This is always in UTC.
-- The [JavaScript date-time string format ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format), which is a simplified version of the ISO-8601 timestamp format. An valid date-time string for the July 27, 2023 at 11:18AM in Americas/New\_York (EST) would look like `2023-07-27T11:18:53.000-04:00`.
+- [Unix timestamps ↗︎](https://developer.mozilla.org/en-US/docs/Glossary/Unix_time), which correspond to seconds since January 1st, 1970 at midnight. This is always in UTC.
+- The [JavaScript date-time string format ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#date_time_string_format), which is a simplified version of the ISO-8601 timestamp format. An valid date-time string for the July 27, 2023 at 11:18AM in Americas/New\_York (EST) would look like `2023-07-27T11:18:53.000-04:00`.
 
 ## Requirements
 

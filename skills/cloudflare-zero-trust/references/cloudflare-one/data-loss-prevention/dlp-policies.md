@@ -36,7 +36,7 @@ A DLP profile defines the sensitive data patterns you want to detect — for exa
 
 DLP Profiles may be used alongside other Cloudflare One rules in a [Gateway HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/). To start logging or blocking traffic, create a policy for DLP:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. Select **HTTP**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**. Select **HTTP**.
 2. Select **Add a policy**.
 3. Build an [HTTP policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/) using the [DLP Profile](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/#dlp-profile) selector. For example, the following policy blocks users from uploading sensitive data to any location other than an approved corporate application. It combines three conditions: the request content matches a DLP profile, the HTTP method is `POST`, and the destination is not an approved application:
 
@@ -53,7 +53,7 @@ Gateway now applies the configured action when traffic matches the complete HTTP
 
 You can test your DLP policy on any device connected to your [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/). To perform a basic test:
 
-1. Go to [dlptest.com ↗](http://dlptest.com/http-post/).
+1. Go to [dlptest.com ↗︎](http://dlptest.com/http-post/).
 2. Enter a text message or upload a file containing the sensitive data.
 3. Select **Submit** to send the request.
 
@@ -65,7 +65,7 @@ If the request is not blocked as expected, use [Test scan](https://developers.cl
 
 ## 4. View DLP logs
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs** > **HTTP request logs**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights** > **Logs** > **HTTP request logs**.
 2. Select **Filter**.
 3. Choose an item under one of the following filters:
    - **DLP Profiles** shows the requests which matched a specific DLP profile.
@@ -81,7 +81,7 @@ If DLP flags a request that does not actually contain sensitive data (a false po
 2. Select **Report DLP false positive** under **DLP details**.
 3. The information to be sent to Cloudflare will appear. To confirm your report, select **Send report**.
 
-Cloudflare will not respond directly to your report, but reporting false positives helps us improve our products. If you require technical assistance, reach out to [support ↗](https://dash.cloudflare.com/?to=/:account/support).
+Cloudflare will not respond directly to your report, but reporting false positives helps us improve our products. If you require technical assistance, reach out to [support ↗︎](https://dash.cloudflare.com/?to=/:account/support).
 
 Was this helpful?
 

@@ -52,7 +52,7 @@ The following guide assumes you have already created a site and configured your 
 
 Follow these steps to create a new LAN policy to segment your network. Only the fields marked **required** are mandatory.
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Cloudflare One Appliance you want to configure > **Edit**.
 4. Go to **Network Configuration** > **LAN configuration**.
@@ -190,7 +190,7 @@ The new policy will ensure that traffic between the specified LANs flows locally
 
 ## Edit a policy
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Cloudflare One Appliance you want to configure > **Edit**.
 4. Go to **Network Configuration** > **LAN configuration**.
@@ -289,7 +289,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/sites/$SIT
 
 ## Delete a policy
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Select the Cloudflare One Appliance you want to configure > **Edit**.
 4. Go to **Network Configuration** > **LAN configuration**.

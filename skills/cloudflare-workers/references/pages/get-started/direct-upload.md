@@ -48,7 +48,7 @@ Below is the supported file types for each Direct Upload options:
 
 ### Set up Wrangler
 
-To begin, install [`npm` ↗](https://docs.npmjs.com/getting-started). Then [install Wrangler, the Developer Platform CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+To begin, install [`npm` ↗︎](https://docs.npmjs.com/getting-started). Then [install Wrangler, the Developer Platform CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 #### Create your project
 

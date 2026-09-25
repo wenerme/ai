@@ -18,7 +18,7 @@ Follow this tutorial to migrate an existing DNS zone to Cloudflare without havin
 
 Caution
 
-This procedure involves cross-importing the [zone signing keys (ZSKs) ↗](https://www.cloudflare.com/learning/dns/dns-records/dnskey-ds-records/) from one provider to the other. To learn more about this, consider this article [about multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/) or refer to [RFC 8901 ↗](https://www.rfc-editor.org/rfc/rfc8901.html).
+This procedure involves cross-importing the [zone signing keys (ZSKs) ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dnskey-ds-records/) from one provider to the other. To learn more about this, consider this article [about multi-signer DNSSEC](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/about/) or refer to [RFC 8901 ↗︎](https://www.rfc-editor.org/rfc/rfc8901.html).
 
 This is an advanced procedure and assume some familiarity with [DNS concepts](https://developers.cloudflare.com/dns/concepts/), [API operations](https://developers.cloudflare.com/fundamentals/api/), and basic setup steps. Assumed knowledge that is not detailed in this tutorial can be referenced through the linked content in each of the steps.
 
@@ -34,7 +34,7 @@ The provider you are migrating from must allow you to add DNSKEY records on the 
 2. [Review the records found by the automatic scan](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) or [import your zone file](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/).
 
    To import the zone file using the API, refer to the [Import DNS Records endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/import/).
-3. On the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, select **Enable DNSSEC**. Or use the following [API request](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/).
+3. On the [**DNS Settings** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, select **Enable DNSSEC**. Or use the following [API request](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/).
 
 <details>
 
@@ -61,7 +61,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
 	}'
 ```
 
-4. On the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, enable **Multi-signer DNSSEC**. Or use the following [API request](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/).
+4. On the [**DNS Settings** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, enable **Multi-signer DNSSEC**. Or use the following [API request](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/edit/).
 
 <details>
 
@@ -90,7 +90,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
 
 ## 2. Cross-import ZSKs
 
-1. Add the [ZSK ↗](https://www.cloudflare.com/learning/dns/dns-records/dnskey-ds-records/) of your previous provider to Cloudflare by creating a DNSKEY record on your zone.
+1. Add the [ZSK ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dnskey-ds-records/) of your previous provider to Cloudflare by creating a DNSKEY record on your zone.
 
 You can do this [on the dashboard](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records) or through the [Create DNS Record endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/records/methods/create/), as in the following example.
 
@@ -147,7 +147,7 @@ dig <ZONE_NAME> dnskey @<CLOUDFLARE_NAMESERVER> +noall +answer | grep 256
 
 Note
 
-You can check if both providers are responding with both ZSKs by running one `dig` command for each, as in the following example. You can also use [Dig Web Interface ↗](https://www.digwebinterface.com/?type=DNSKEY).
+You can check if both providers are responding with both ZSKs by running one `dig` command for each, as in the following example. You can also use [Dig Web Interface ↗︎](https://www.digwebinterface.com/?type=DNSKEY).
 
 ```sh
 dig <ZONE_NAME> dnskey @<PREVIOUS_PROVIDER_NAMESERVER> +noall +answer
@@ -188,8 +188,8 @@ multisigner.info.    3600    IN    DNSKEY    256 3 13 pxEU<bla_bla_bla>0xOg==
 
 ## 3. Set up registrar
 
-1. Add Cloudflare DS record to your registrar. You can see your Cloudflare DS record on the [**DNS Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, under **DS Record**.
-2. Add Cloudflare assigned nameservers to your registrar. You can see your Cloudflare nameservers on the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page
+1. Add Cloudflare DS record to your registrar. You can see your Cloudflare DS record on the [**DNS Settings** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/settings) page, under **DS Record**.
+2. Add Cloudflare assigned nameservers to your registrar. You can see your Cloudflare nameservers on the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page
 
 At this point your zone is in a [multi-signer DNSSEC setup](https://developers.cloudflare.com/dns/dnssec/multi-signer-dnssec/).
 
@@ -197,11 +197,11 @@ At this point your zone is in a [multi-signer DNSSEC setup](https://developers.c
 
 1. Remove your previous provider's DS record from your registrar.
 2. Remove your previous provider's nameservers from your registrar.
-3. After waiting at least one and a half times the [TTL ↗](https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl/) of your previous provider DS record, you can remove the DNSKEY record (containing your previous provider ZSK) that you added to your Cloudflare zone in [step 2](#2-cross-import-zsks).
+3. After waiting at least one and a half times the [TTL ↗︎](https://www.cloudflare.com/learning/cdn/glossary/time-to-live-ttl/) of your previous provider DS record, you can remove the DNSKEY record (containing your previous provider ZSK) that you added to your Cloudflare zone in [step 2](#2-cross-import-zsks).
 
 Note
 
-You can find out the TTL of your previous provider DS record by running a `dig` command, as in the following example, or by using this [Dig Web Interface link ↗](https://www.digwebinterface.com/?type=DS).
+You can find out the TTL of your previous provider DS record by running a `dig` command, as in the following example, or by using this [Dig Web Interface link ↗︎](https://www.digwebinterface.com/?type=DS).
 
 ```sh
 dig multisigner.info ds +noall +answer

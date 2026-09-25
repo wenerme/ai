@@ -28,14 +28,14 @@ This guide will walk you through configuring your Cloudflare Worker application 
 
 Before you begin, ensure you have:
 
-- An active [PostHog account ↗](https://app.posthog.com/signup) (free tier available)
+- An active [PostHog account ↗︎](https://app.posthog.com/signup) (free tier available)
 - A deployed Worker that you want to monitor
 - Your PostHog project API key
 
 ## Step 1: Get your PostHog project API key
 
-1. Log in to your [PostHog account ↗](https://app.posthog.com/)
-2. Navigate to the [**Project settings** ↗](https://app.posthog.com/settings/project)
+1. Log in to your [PostHog account ↗︎](https://app.posthog.com/)
+2. Navigate to the [**Project settings** ↗︎](https://app.posthog.com/settings/project)
 3. Find your **Project API key** in the project details section
 4. Copy the API key - this is the same key used for capturing events and exceptions
 
@@ -60,7 +60,7 @@ Cloudflare Workers Observability only supports exporting **logs** to PostHog at 
 
 Now you'll create a destination in the Cloudflare dashboard that points to PostHog.
 
-1. Navigate to your Cloudflare account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
+1. Navigate to your Cloudflare account's [Workers Observability ↗︎](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section
 2. Click **Add destination**
 3. Configure your logs destination:
    - **Destination Name**: `posthog-logs` (or any descriptive name)
@@ -105,7 +105,7 @@ It may take a few minutes after deployment for logs to appear in PostHog.
 
 Once your Worker is deployed and receiving traffic:
 
-1. Log in to your [PostHog account ↗](https://app.posthog.com/)
+1. Log in to your [PostHog account ↗︎](https://app.posthog.com/)
 2. Navigate to the **Logs** section in the left sidebar
 3. Your Worker logs will appear with severity levels, timestamps, and attributes
 
@@ -165,9 +165,9 @@ If you see authentication errors in your destination status:
 
 ## Related resources
 
-- [PostHog Logs documentation ↗](https://posthog.com/docs/logs)
-- [PostHog Getting Started with Logs ↗](https://posthog.com/docs/logs/start-here)
-- [OpenTelemetry Logs specification ↗](https://opentelemetry.io/docs/specs/otel/logs/)
+- [PostHog Logs documentation ↗︎](https://posthog.com/docs/logs)
+- [PostHog Getting Started with Logs ↗︎](https://posthog.com/docs/logs/start-here)
+- [OpenTelemetry Logs specification ↗︎](https://opentelemetry.io/docs/specs/otel/logs/)
 
 Was this helpful?
 

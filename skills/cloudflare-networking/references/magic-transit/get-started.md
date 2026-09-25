@@ -18,7 +18,7 @@ Before you can begin using Magic Transit, complete the following onboarding step
 
 ## Scope your configuration
 
-Magic Transit is not a self-serve product. Start by [engaging with our team ↗](https://www.cloudflare.com/network-services/products/magic-transit/) to assess your needs and implementation timeline. During this assessment, Cloudflare reviews specific requirements such as your prefix count and how fast you can go through the necessary steps to implement Magic Transit on your network.
+Magic Transit is not a self-serve product. Start by [engaging with our team ↗︎](https://www.cloudflare.com/network-services/products/magic-transit/) to assess your needs and implementation timeline. During this assessment, Cloudflare reviews specific requirements such as your prefix count and how fast you can go through the necessary steps to implement Magic Transit on your network.
 
 ## IPs
 
@@ -104,15 +104,15 @@ If you are using a [Cloudflare IP](#ips), you do not need to verify your IRR ent
 
 ### Optional: RPKI check for prefix validation
 
-You can also use the Resource Public Key Infrastructure (RPKI) as an additional option to validate your prefixes. RPKI is a [security framework method ↗](https://blog.cloudflare.com/rpki/) that associates a route with an autonomous system. It uses cryptography to validate the information before being passed to the routers.
+You can also use the Resource Public Key Infrastructure (RPKI) as an additional option to validate your prefixes. RPKI is a [security framework method ↗︎](https://blog.cloudflare.com/rpki/) that associates a route with an autonomous system. It uses cryptography to validate the information before being passed to the routers.
 
 If you operate a network (ISP, cloud provider, enterprise, and others), using RPKI ensures that routers correctly recognize your IP prefixes. This prevents service disruptions and protects your brand's reputation. Without RPKI, attackers could announce your IP space, misdirect your traffic, and potentially harm your business.
 
-To check your prefixes, you can use [Cloudflare's RPKI Portal ↗](https://rpki.cloudflare.com/?view=validator).
+To check your prefixes, you can use [Cloudflare's RPKI Portal ↗︎](https://rpki.cloudflare.com/?view=validator).
 
 ## Set maximum segment size
 
-Before enabling Magic Transit, you must make sure that you set up the maximum segment size on your network. Cloudflare Magic Transit uses tunnels to deliver [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) from our global network to your data centers. Cloudflare encapsulates these packets adding new headers. You must account for the space consumed by these headers when configuring the maximum transmission unit (MTU) and maximum segment size (MSS) values for your network.
+Before enabling Magic Transit, you must make sure that you set up the maximum segment size on your network. Cloudflare Magic Transit uses tunnels to deliver [packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) from our global network to your data centers. Cloudflare encapsulates these packets adding new headers. You must account for the space consumed by these headers when configuring the maximum transmission unit (MTU) and maximum segment size (MSS) values for your network.
 
 ### MSS clamping recommendations
 
@@ -129,7 +129,7 @@ The MSS value depends on how your network is set up.
 
 #### IPsec tunnels
 
-For IPsec tunnels, the value you need to specify depends on how your network is set up. The MSS clamping value is lower than for GRE tunnels because the physical interface sees IPsec-encrypted [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/), not TCP packets, and MSS clamping does not apply to those.
+For IPsec tunnels, the value you need to specify depends on how your network is set up. The MSS clamping value is lower than for GRE tunnels because the physical interface sees IPsec-encrypted [packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/), not TCP packets, and MSS clamping does not apply to those.
 
 - **Magic Transit ingress-only traffic (DSR):**
   - **On your edge router transit ports**: Set the TCP MSS clamp to 1,436 bytes maximum.
@@ -146,7 +146,7 @@ Refer to [Maximum transmission unit and maximum segment size](https://developers
 
 #### Clear Do not fragment (DF)
 
-If you are unable to set the MSS on your physical interfaces to a value lower than 1500 bytes, you can clear the `do not fragment` bit in the IP header. When this option is enabled, Cloudflare fragments [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) greater than 1500 bytes, and the packets are reassembled on your infrastructure after decapsulation. In most environments, enabling this option does not have a significant impact on traffic throughput.
+If you are unable to set the MSS on your physical interfaces to a value lower than 1500 bytes, you can clear the `do not fragment` bit in the IP header. When this option is enabled, Cloudflare fragments [packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) greater than 1500 bytes, and the packets are reassembled on your infrastructure after decapsulation. In most environments, enabling this option does not have a significant impact on traffic throughput.
 
 To enable this option for your network, contact your account team.
 
@@ -160,8 +160,8 @@ The following table lists several commonly used router vendors with links to MSS
 
 | Router device | URL |
 | --- | --- |
-| Cisco | [TCP IP Adjust MSS ↗](https://www.cisco.com/en/US/docs/ios-xml/ios/ipapp/command/ip_tcp_adjust-mss_through_ip_wccp_web-cache_accelerated.html#GUID-68044D35-A53E-42C1-A7AB-9236333DA8C4) |
-| Juniper | [TCP MSS - Edit System ↗](https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/tcp-mss-edit-system.html) |
+| Cisco | [TCP IP Adjust MSS ↗︎](https://www.cisco.com/en/US/docs/ios-xml/ios/ipapp/command/ip_tcp_adjust-mss_through_ip_wccp_web-cache_accelerated.html#GUID-68044D35-A53E-42C1-A7AB-9236333DA8C4) |
+| Juniper | [TCP MSS - Edit System ↗︎](https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/tcp-mss-edit-system.html) |
 
 ## Configure tunnels
 
@@ -191,7 +191,7 @@ If you are using a Cloudflare IP, you do not need to advertise your prefixes.
 
 Caution
 
-You must [put the appropriate MSS clamps](#set-maximum-segment-size) in place before [routing ↗](https://www.cloudflare.com/learning/network-layer/what-is-routing/) changes are made. Failure to apply an MSS clamp can result in dropped packets and hard-to-debug connectivity issues.
+You must [put the appropriate MSS clamps](#set-maximum-segment-size) in place before [routing ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-routing/) changes are made. Failure to apply an MSS clamp can result in dropped packets and hard-to-debug connectivity issues.
 
 Also, when using [Cloudflare Network Interconnect](https://developers.cloudflare.com/magic-transit/network-interconnect/) with Magic Transit you must set the following MSS clamp sizes to accommodate additional overhead:
 

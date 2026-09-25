@@ -24,7 +24,7 @@ To construct a Network Firewall GraphQL query for an object, you will need a Clo
 
 ### Obtain your Cloudflare Account ID
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account.
 2. The URL in your browser's address bar should show `https://dash.cloudflare.com/` followed by a hex string. The hex string is your Cloudflare Account ID.
 
 ### Obtain the rule ID for a firewall rule

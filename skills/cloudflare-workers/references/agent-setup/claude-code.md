@@ -28,7 +28,7 @@ TerminalStandaloneCloudExtension
 
 1. **Install Claude Code**
 
-   Install the Claude Code CLI. For Windows, Homebrew, WinGet, or npm, see the [Claude Code setup guide ↗](https://docs.anthropic.com/en/docs/claude-code/setup).
+   Install the Claude Code CLI. For Windows, Homebrew, WinGet, or npm, see the [Claude Code setup guide ↗︎](https://docs.anthropic.com/en/docs/claude-code/setup).
 
    ```bash
    curl -fsSL https://claude.ai/install.sh | bash
@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+   Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
    ```
 
 
@@ -108,7 +108,6 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 - Code mode APIcode modeBroad access to the full Cloudflare API via code execution, with minimal token overheadhttps://mcp.cloudflare.com/mcp
 - Code Mode servercode modeBest when you want broad access across Cloudflare's APIs through code executionhttps://mcp.cloudflare.com/mcp
 - AI Gateway serverSearch your logs, get details about the prompts and responseshttps://ai-gateway.mcp.cloudflare.com/mcp
-- Audit Logs serverQuery audit logs and generate reports for reviewhttps://auditlogs.mcp.cloudflare.com/mcp
 - AutoRAG serverSearch and query account AutoRAG instanceshttps://autorag.mcp.cloudflare.com/mcp
 - Browser Run serverFetch web pages, convert them to markdown and take screenshotshttps://browser.mcp.cloudflare.com/mcp
 - Cloudflare Blog serverSearch and read posts from the Cloudflare Bloghttps://blog.mcp.cloudflare.com/mcp
@@ -165,23 +164,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Tips
@@ -234,7 +233,7 @@ Yes. Run Claude Code from your existing project directory where <code>wrangler.j
 
 </summary>
 
-Code Mode is how the Cloudflare API MCP server fits all 2,500+ API endpoints into \~1,000 tokens. Instead of exposing every endpoint as a separate tool, it exposes two — <code>search()</code> and <code>execute()</code> — and Claude writes JavaScript to call them. <a href="https://blog.cloudflare.com/code-mode-mcp/">Learn more about Code Mode ↗</a>.
+Code Mode is how the Cloudflare API MCP server fits all 2,500+ API endpoints into \~1,000 tokens. Instead of exposing every endpoint as a separate tool, it exposes two — <code>search()</code> and <code>execute()</code> — and Claude writes JavaScript to call them. <a href="https://blog.cloudflare.com/code-mode-mcp/">Learn more about Code Mode ↗︎</a>.
 
 </details>
 

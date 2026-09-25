@@ -16,7 +16,7 @@ Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 You can run both your container and your Worker locally by simply running [`npx wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev) (or `vite dev` for Vite projects using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/)) in your project's directory.
 
-To develop Container-enabled Workers locally, you will need to first ensure that a Docker compatible CLI tool and Engine are installed. For instance, you could use [Docker Desktop ↗](https://docs.docker.com/desktop/) or [Colima ↗](https://github.com/abiosoft/colima).
+To develop Container-enabled Workers locally, you will need to first ensure that a Docker compatible CLI tool and Engine are installed. For instance, you could use [Docker Desktop ↗︎](https://docs.docker.com/desktop/) or [Colima ↗︎](https://github.com/abiosoft/colima).
 
 When you start a dev session, your container image will be built or downloaded. If your [Wrangler configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) sets the `image` attribute to a local path, the image will be built using the local Dockerfile. If the `image` attribute is set to an image reference, the image will be pulled from the referenced registry, such as the Cloudflare Registry, Docker Hub, Amazon ECR, or Google Artifact Registry.
 

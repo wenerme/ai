@@ -324,12 +324,12 @@ For Cloudflare Workers backends, the agent writes the canonical fetch call direc
 
 ### Related
 
-- [`cloudflare/skills` ↗](https://github.com/cloudflare/skills): skills bundle, includes `turnstile-spin/`
+- [`cloudflare/skills` ↗︎](https://github.com/cloudflare/skills): skills bundle, includes `turnstile-spin/`
 - [Turnstile server-side validation](https://developers.cloudflare.com/turnstile/get-started/server-side-validation/)
 - [Test site keys and secrets](https://developers.cloudflare.com/turnstile/troubleshooting/testing/)
 - [Pages Plugin for Turnstile](https://developers.cloudflare.com/pages/functions/plugins/turnstile/)
 - [Workers secrets](https://developers.cloudflare.com/workers/configuration/secrets/)
-- [Cloudflare Radar bot traffic ↗](https://radar.cloudflare.com/traffic/bot-classes)
+- [Cloudflare Radar bot traffic ↗︎](https://radar.cloudflare.com/traffic/bot-classes)
 - [Cloudflare Docs for Agents](https://developers.cloudflare.com/docs-for-agents/)
 
 Was this helpful?

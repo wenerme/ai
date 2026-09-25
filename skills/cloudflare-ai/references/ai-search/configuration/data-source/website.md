@@ -82,7 +82,7 @@ You can choose how pages are parsed during crawling:
 
 ## Allow AI Search through WAF
 
-If you have Security rules configured to block bot activity on your own site, you can add a rule to allowlist the AI Search bot. Refer to [AI Search in the Cloudflare Radar bot directory ↗](https://radar.cloudflare.com/bots/directory/cloudflare-ai-search) for its verified identity and user agent.
+If you have Security rules configured to block bot activity on your own site, you can add a rule to allowlist the AI Search bot. Refer to [AI Search in the Cloudflare Radar bot directory ↗︎](https://radar.cloudflare.com/bots/directory/cloudflare-ai-search) for its verified identity and user agent.
 
 1. In the Cloudflare dashboard, go to the **Security rules** page. [Go to **Security rules** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/security-rules)
 2. To create a new empty rule, select **Create rule** > **Custom rules**.

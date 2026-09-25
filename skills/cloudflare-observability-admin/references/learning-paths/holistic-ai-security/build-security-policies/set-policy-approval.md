@@ -18,7 +18,7 @@ If you use specific AI tools within your organization, you may want to create po
 
 ## Create a Gateway policy for monitoring and evaluating all AI tool usage
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow for AI at your organization.
@@ -41,7 +41,7 @@ Cloudflare Workers are an easy method to stand up custom user coaching pages. Th
 
 ## Redirect users towards approved AI tools
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow for AI at your organization.
@@ -65,7 +65,7 @@ For more information, refer to [Configure policy block behavior](https://develop
 
 You can build policies that enable Prompt Capture for AI applications in specific, complex scenarios. This gives you the flexibility to apply advanced functionality to certain applications, tool types, or user groups, such as contractors or new employees, especially if they pose a higher risk for using unsanctioned applications due to lack of awareness or training.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow for AI at your organization.
@@ -83,11 +83,11 @@ You can build policies that enable Prompt Capture for AI applications in specifi
 
 ## Configure Gateway to use ChatGPT workspace header
 
-If your organization uses [ChatGPT Business ↗](https://chatgpt.com/business/), you can configure a Gateway policy to enforce the use of your organization's workspace ID, ensuring all traffic to ChatGPT is correctly associated with your account. This will implement Gateway [tenant control](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/), which lets you manage how users interact with specific applications.
+If your organization uses [ChatGPT Business ↗︎](https://chatgpt.com/business/), you can configure a Gateway policy to enforce the use of your organization's workspace ID, ensuring all traffic to ChatGPT is correctly associated with your account. This will implement Gateway [tenant control](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/tenant-control/), which lets you manage how users interact with specific applications.
 
 To create this policy, you will add a custom HTTP header to your Gateway policy. This header, `Chatgpt-Allowed-Workspace-Id`, ensures that only requests with your organization's unique workspace ID are permitted.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies**.
 2. In the **HTTP** tab, select **Add a policy**.
 3. Name the policy.
 4. Under **Traffic**, build a logical expression that defines the traffic you want to allow.
@@ -103,7 +103,7 @@ To create this policy, you will add a custom HTTP header to your Gateway policy.
    - **Custom header value**: Your organization's workspace ID
 9. Select **Create policy**.
 
-For more information, refer to the [OpenAI documentation ↗](https://help.openai.com/articles/8798594-what-is-a-workspace-how-do-i-access-my-chatgpt-business-workspace).
+For more information, refer to the [OpenAI documentation ↗︎](https://help.openai.com/articles/8798594-what-is-a-workspace-how-do-i-access-my-chatgpt-business-workspace).
 
 ## Order your policies for specific inspection and enforcement
 

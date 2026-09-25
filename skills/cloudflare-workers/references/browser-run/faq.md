@@ -16,7 +16,7 @@ Last updated Jul 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Below you will find answers to our most commonly asked questions about Browser Run (formerly Browser Rendering).
 
-For pricing questions, visit the [pricing FAQ](https://developers.cloudflare.com/browser-run/pricing/#pricing-faq). For usage limits questions, visit the [limits FAQ](https://developers.cloudflare.com/browser-run/limits/#faq). If you cannot find the answer you are looking for, join us on [Discord ↗](https://discord.cloudflare.com).
+For pricing questions, visit the [pricing FAQ](https://developers.cloudflare.com/browser-run/pricing/#pricing-faq). For usage limits questions, visit the [limits FAQ](https://developers.cloudflare.com/browser-run/limits/#faq). If you cannot find the answer you are looking for, join us on [Discord ↗︎](https://discord.cloudflare.com).
 
 ---
 
@@ -187,9 +187,9 @@ Yes. If your webpage or PDF requires a font that is not pre-installed, you can l
 If you are hitting concurrency [limits](https://developers.cloudflare.com/browser-run/limits/#workers-paid), or want to optimize concurrent browser usage, here are a few tips:
 
 - Optimize with tabs or shared browsers: Instead of launching a new browser for each task, consider opening multiple tabs or running multiple actions within the same browser instance.
-- [Reuse sessions](https://developers.cloudflare.com/browser-run/features/reuse-sessions/): You can optimize your setup and decrease startup time by reusing sessions instead of launching a new browser every time. If you are concerned about maintaining test isolation (for example, for tests that depend on a clean environment), we recommend using [incognito browser contexts ↗](https://pptr.dev/api/puppeteer.browser.createbrowsercontext), which isolate cookies and cache with other sessions.
+- [Reuse sessions](https://developers.cloudflare.com/browser-run/features/reuse-sessions/): You can optimize your setup and decrease startup time by reusing sessions instead of launching a new browser every time. If you are concerned about maintaining test isolation (for example, for tests that depend on a clean environment), we recommend using [incognito browser contexts ↗︎](https://pptr.dev/api/puppeteer.browser.createbrowsercontext), which isolate cookies and cache with other sessions.
 
-If you are still running into concurrency limits you can [request a higher limit ↗](https://forms.gle/CdueDKvb26mTaepa9).
+If you are still running into concurrency limits you can [request a higher limit ↗︎](https://forms.gle/CdueDKvb26mTaepa9).
 
 ---
 

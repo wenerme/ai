@@ -22,7 +22,7 @@ Cloudflare One Multi-Cloud Networking (formerly Magic Cloud Networking) (beta) s
 
 Multi-Cloud Networking allows you to connect, accelerate, and manage your virtual private clouds securely through Cloudflare. Grow your multi-cloud network architecture in a consistent and scalable manner, centered on Cloudflare's connectivity cloud services.
 
-Multi-Cloud Networking is currently in closed beta. If you would like to be among the first customers to try it out, [fill out this form ↗](https://www.cloudflare.com/lp/cloud-networking/).
+Multi-Cloud Networking is currently in closed beta. If you would like to be among the first customers to try it out, [fill out this form ↗︎](https://www.cloudflare.com/lp/cloud-networking/).
 
 Learn how to [get started](https://developers.cloudflare.com/multi-cloud-networking/get-started/).
 

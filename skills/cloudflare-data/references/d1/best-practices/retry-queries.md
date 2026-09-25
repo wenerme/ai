@@ -22,9 +22,9 @@ D1 automatically retries read-only queries up to two more times when it encounte
 
 ## Example of retrying queries
 
-Consider the following example of a `shouldRetry(...)` function, taken from the [D1 read replication starter template ↗](https://github.com/cloudflare/templates/blob/main/d1-starter-sessions-api-template/src/index.ts#L108).
+Consider the following example of a `shouldRetry(...)` function, taken from the [D1 read replication starter template ↗︎](https://github.com/cloudflare/templates/blob/main/d1-starter-sessions-api-template/src/index.ts#L108).
 
-You should make sure your retries apply an exponential backoff with jitter strategy for more successful retries. You can use libraries abstracting that already like [`@cloudflare/actors` ↗](https://github.com/cloudflare/actors), or [copy the retry logic ↗](https://github.com/cloudflare/actors/blob/9ba112503132ddf6b5cef37ff145e7a2dd5ffbfc/packages/core/src/retries.ts#L18) in your own code directly.
+You should make sure your retries apply an exponential backoff with jitter strategy for more successful retries. You can use libraries abstracting that already like [`@cloudflare/actors` ↗︎](https://github.com/cloudflare/actors), or [copy the retry logic ↗︎](https://github.com/cloudflare/actors/blob/9ba112503132ddf6b5cef37ff145e7a2dd5ffbfc/packages/core/src/retries.ts#L18) in your own code directly.
 
 ```ts
 import { tryWhile } from "@cloudflare/actors";

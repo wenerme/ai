@@ -197,7 +197,7 @@ Using modules also increases the difficulty of debugging or reproducing issues a
 
 Caution
 
-This advice also applies to [Terraform dynamic blocks ↗](https://www.terraform.io/language/expressions/dynamic-blocks) that allow you to do logic in your HCL. Since these dynamic blocks are always evaluated, you can get yourself into situations where you have logic bugs in your configuration (and making the end result unreproducible).
+This advice also applies to [Terraform dynamic blocks ↗︎](https://www.terraform.io/language/expressions/dynamic-blocks) that allow you to do logic in your HCL. Since these dynamic blocks are always evaluated, you can get yourself into situations where you have logic bugs in your configuration (and making the end result unreproducible).
 
 ## Migrate resources into Terraform
 
@@ -219,9 +219,9 @@ To minimize drift, use Terraform and a CI/CD pipeline that runs across both doma
 
 We do not recommend storing Cloudflare credentials as plaintext.
 
-Locally, you can use a third-party tool like [cf-vault ↗](https://github.com/jacobbednarz/cf-vault/) to store your Cloudflare credentials.
+Locally, you can use a third-party tool like [cf-vault ↗︎](https://github.com/jacobbednarz/cf-vault/) to store your Cloudflare credentials.
 
-For CI pipelines, use an internal or secret storage tool (such as [Vault ↗](https://www.hashicorp.com/products/vault/secrets-management)).
+For CI pipelines, use an internal or secret storage tool (such as [Vault ↗︎](https://www.hashicorp.com/products/vault/secrets-management)).
 
 Was this helpful?
 

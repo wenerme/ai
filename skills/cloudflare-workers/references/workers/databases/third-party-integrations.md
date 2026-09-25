@@ -24,7 +24,7 @@ If your Worker is connecting to a regional database, you can reduce your query l
 
 ## Database credentials
 
-When you rotate or update database credentials, you must update the corresponding [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) in your Worker. Use the [`wrangler secret put`](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) command to update secrets securely or update the secret directly in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/services/view/:worker/production/settings).
+When you rotate or update database credentials, you must update the corresponding [secrets](https://developers.cloudflare.com/workers/configuration/secrets/) in your Worker. Use the [`wrangler secret put`](https://developers.cloudflare.com/workers/wrangler/commands/general/#secret) command to update secrets securely or update the secret directly in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/services/view/:worker/production/settings).
 
 ## Database limits
 

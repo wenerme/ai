@@ -136,7 +136,7 @@ We recommend creating a new Logpush job for the Audit Logs v2 dataset.
 
 Timelines for General Availability (GA) of Audit Logs v2 and the retirement of Audit Logs v1 will be shared in upcoming updates.
 
-For more details on Audit Logs v2, refer to the [Audit Logs documentation ↗](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
+For more details on Audit Logs v2, refer to the [Audit Logs documentation ↗︎](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
 
 ## 2025-07-29
 
@@ -160,14 +160,14 @@ To try the new user interface, go to **Manage Account > Audit Logs**. The previo
 
 ![Audit Logs v2 new UI](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1300,height=686,format=webp/_astro/Audit_logs_v2_filters.Bacd1IHg.png)
 
-For more details on Audit Logs v2, see the [Audit Logs documentation ↗](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
+For more details on Audit Logs v2, see the [Audit Logs documentation ↗︎](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/).
 
 **Known issues**
 
 - A small number of audit logs may currently be unavailable in Audit Logs v2. In some cases, certain fields such as actor information may be missing in certain audit logs. We are actively working to improve coverage and completeness for General Availability.
 - Export to CSV is not supported in the new UI.
 
-We are actively refining the Audit Logs v2 experience and welcome your feedback. You can share overall feedback by clicking the thumbs up or thumbs down icons at the top of the page, or provide feedback on specific audit log entries using the thumbs icons next to each audit log line or by filling out our [feedback form ↗](https://docs.google.com/forms/d/e/1FAIpQLSfXGkJpOG1jUPEh-flJy9B13icmcdBhveFwe-X0EzQjJQnQfQ/viewform?usp=sharing).
+We are actively refining the Audit Logs v2 experience and welcome your feedback. You can share overall feedback by clicking the thumbs up or thumbs down icons at the top of the page, or provide feedback on specific audit log entries using the thumbs icons next to each audit log line or by filling out our [feedback form ↗︎](https://docs.google.com/forms/d/e/1FAIpQLSfXGkJpOG1jUPEh-flJy9B13icmcdBhveFwe-X0EzQjJQnQfQ/viewform?usp=sharing).
 
 ## 2025-03-27
 
@@ -184,7 +184,7 @@ Use the following API endpoint to retrieve audit logs:
 GET https://api.cloudflare.com/client/v4/accounts/<account_id>/logs/audit?since=<date>&before=<date>
 ```
 
-You can access detailed documentation for audit logs (version 2) Beta API release [here ↗](https://developers.cloudflare.com/api/resources/accounts/subresources/logs/subresources/audit/methods/list/).
+You can access detailed documentation for audit logs (version 2) Beta API release [here ↗︎](https://developers.cloudflare.com/api/resources/accounts/subresources/logs/subresources/audit/methods/list/).
 
 **Key Improvements in the Beta Release:**
 
@@ -201,7 +201,7 @@ You can access detailed documentation for audit logs (version 2) Beta API releas
 - UI is unavailable in this Beta release.
 - System-level logs and User-Activity logs are not included.
 
-Support for these features is coming as part of the GA release later this year. For more details, including a sample audit log, check out our blog post: [Introducing Automatic Audit Logs ↗](https://blog.cloudflare.com/introducing-automatic-audit-logs/)
+Support for these features is coming as part of the GA release later this year. For more details, including a sample audit log, check out our blog post: [Introducing Automatic Audit Logs ↗︎](https://blog.cloudflare.com/introducing-automatic-audit-logs/)
 
 Was this helpful?
 

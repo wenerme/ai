@@ -20,7 +20,7 @@ You must have a Cloudforce One subscription to access Cloudforce One on the dash
 
 Cloudforce One is Cloudflare's Threat Intelligence Platform (TIP). It collects and correlates threat data from Cloudflare telemetry, then surfaces that data as visualizations, automated rules, and analyst-reviewed intelligence.
 
-Security Operations Center ([SOC ↗](https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-a-security-operations-center-soc/)) teams use Cloudforce One to investigate threats, track adversaries, and take action — such as pushing firewall rules or exporting indicators.
+Security Operations Center ([SOC ↗︎](https://www.cloudflare.com/en-gb/learning/security/glossary/what-is-a-security-operations-center-soc/)) teams use Cloudforce One to investigate threats, track adversaries, and take action — such as pushing firewall rules or exporting indicators.
 
 ## Access Cloudforce One
 
@@ -54,7 +54,7 @@ You can also access threat events via the [API](https://developers.cloudflare.co
 Cloudforce One customers have access to the following datasets:
 
 - Advanced Persistent Threats (APTs) — the default dataset
-- [DDoS ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) attacks
+- [DDoS ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/) attacks
 - Cybercrime
 - Compromised devices
 - Residential proxies
@@ -80,7 +80,7 @@ Search across global datasets for specific indicators, including:
 
 - **Saved views** — Save custom filters for recurring threat event investigations.
 - **Automated rules** — Generate security rules from threat data and push them to your Cloudflare [WAF](https://developers.cloudflare.com/waf/) or firewall.
-- **[STIX2 ↗](https://www.cloudflare.com/en-gb/learning/security/what-is-stix-and-taxii/) exports** — Export threat intelligence in STIX2 format for integration with third-party [SIEM ↗](https://www.cloudflare.com/en-gb/learning/security/what-is-siem/) (Security Information and Event Management) or SOAR (Security Orchestration, Automation, and Response) platforms.
+- **[STIX2 ↗︎](https://www.cloudflare.com/en-gb/learning/security/what-is-stix-and-taxii/) exports** — Export threat intelligence in STIX2 format for integration with third-party [SIEM ↗︎](https://www.cloudflare.com/en-gb/learning/security/what-is-siem/) (Security Information and Event Management) or SOAR (Security Orchestration, Automation, and Response) platforms.
 
 ## Use Cloudy to analyze threat events
 
@@ -112,14 +112,14 @@ List of RFI types
 
 The following request types are available when you submit a Request for Information:
 
-- **Binary Analysis - IOCs**: Conduct high-level malware analysis to produce <a href="https://www.cloudflare.com/en-gb/learning/security/what-are-indicators-of-compromise/">indicators of compromise (IOCs) ↗</a> such as a callback domain (a domain the malware communicates with) or IP address.
-- **Binary Analysis - Report**: A detailed analysis of a malware sample. The report includes an attribution assessment (identifying the likely threat actor) and extracts the configuration of the sample for further analysis. Use this type when you are investigating an incident or developing detection logic in an Endpoint Detection and Response (<a href="https://en.wikipedia.org/wiki/Endpoint_detection_and_response">EDR ↗</a>) tool or network sensor.
-- **DDoS Attack**: Confirm whether a <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/">DDoS attack ↗</a> is occurring against a specific website. The response includes any available indicators and potential attribution.
+- **Binary Analysis - IOCs**: Conduct high-level malware analysis to produce <a href="https://www.cloudflare.com/en-gb/learning/security/what-are-indicators-of-compromise/">indicators of compromise (IOCs) ↗︎</a> such as a callback domain (a domain the malware communicates with) or IP address.
+- **Binary Analysis - Report**: A detailed analysis of a malware sample. The report includes an attribution assessment (identifying the likely threat actor) and extracts the configuration of the sample for further analysis. Use this type when you are investigating an incident or developing detection logic in an Endpoint Detection and Response (<a href="https://en.wikipedia.org/wiki/Endpoint_detection_and_response">EDR ↗︎</a>) tool or network sensor.
+- **DDoS Attack**: Confirm whether a <a href="https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/">DDoS attack ↗︎</a> is occurring against a specific website. The response includes any available indicators and potential attribution.
 - **Indicator Analysis - IOCs**: Conduct DNS lookups, origin pivots, and account pivots to provide indicators such as DNS resolutions, origin IPs, and subdomains. Analysis can include account registration patterns and victimology (identifying who was targeted).
-- **Indicator Analysis - Report**: A detailed analysis of indicators written in a formal, structured format. In addition to listing <a href="https://www.cloudflare.com/en-gb/learning/security/what-are-indicators-of-compromise/">IOCs ↗</a>, the report explains how IOCs function within the attack chain and links them to specific campaigns, threat actors, and their TTPs (Tactics, Techniques, and Procedures).
+- **Indicator Analysis - Report**: A detailed analysis of indicators written in a formal, structured format. In addition to listing <a href="https://www.cloudflare.com/en-gb/learning/security/what-are-indicators-of-compromise/">IOCs ↗︎</a>, the report explains how IOCs function within the attack chain and links them to specific campaigns, threat actors, and their TTPs (Tactics, Techniques, and Procedures).
 - **Passive DNS Resolution**: Search the historical pairing of an IP address to the domain it resolved to during a specified time period.
 - **Strategic Threat Research**: Analysis of broader, long-term trends across threat actors and industries. This type is supplemented by open-source intelligence and is intended to inform management and planning rather than to produce immediately actionable indicators.
-- **Threat Detection Signature - IOCs**: Develop a detection rule — such as a <a href="https://virustotal.github.io/yara/">YARA ↗</a> rule — that identifies a sample, behavior, or network observable (for example, an IP address, domain, file hash, or HTTP request attribute).
+- **Threat Detection Signature - IOCs**: Develop a detection rule — such as a <a href="https://virustotal.github.io/yara/">YARA ↗︎</a> rule — that identifies a sample, behavior, or network observable (for example, an IP address, domain, file hash, or HTTP request attribute).
 - **Threat Detection Signature - Report**: A detailed analysis that investigates a threat detection alert. Use this type when you need to prioritize your response effort or attribute activity to a threat actor.
 - **Traffic Analysis - IOCs**: Review HTTP telemetry for the IOCs in question. The response provides relevant, sanitized traffic that can include the victim country and, in some cases, victim Autonomous System Numbers (ASNs). This also identifies malicious files, payloads, and unusual file paths or request patterns.
 - **Traffic Analysis - Report**: Analysis of HTTP telemetry to identify patterns, anomalies, and indicators of malicious behavior. The report provides context for observed network behaviors and maps them to known TTPs of specific threat groups.
@@ -152,7 +152,7 @@ To download an attachment, select **Download** on the attachment.
 
 Use Cloudforce One to improve your security posture or recover from a past incident.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com), go to **Application security** > **Incident Response**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com), go to **Application security** > **Incident Response**.
 2. **Choose service**: Select one of the services.
 3. **Provide request details**:
 

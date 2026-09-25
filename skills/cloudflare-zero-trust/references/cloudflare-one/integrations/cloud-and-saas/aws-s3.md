@@ -29,7 +29,7 @@ For the AWS S3 integration to function, Cloudflare CASB requires the following a
 - `s3:GetObject`
 - `s3:ListBucket`
 
-These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission scope, refer to the [AWS S3 Permissions documentation ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-policy-actions.html).
+These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission scope, refer to the [AWS S3 Permissions documentation ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-policy-actions.html).
 
 ## Compute account
 
@@ -39,7 +39,7 @@ You can connect an AWS compute account to your CASB integration to perform [Data
 
 To connect a compute account to your AWS integration:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Integrations**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Integrations**.
 2. Find and select your AWS integration.
 3. Select **Open connection instructions**.
 4. Follow the instructions provided to connect a new compute account.
@@ -51,7 +51,7 @@ You can only connect one computer account to an integration. To remove a compute
 
 Once your AWS compute account has successfully connected to your CASB integration, you can configure where and how to scan for sensitive data:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), go to **Integrations** > **Cloud & SaaS integrations**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Integrations** > **Cloud & SaaS integrations**.
 2. Find and select your AWS integration.
 3. Select **Create new configuration**.
 4. In **Resources**, choose the buckets you want to scan. Select **Continue**.

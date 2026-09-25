@@ -32,7 +32,7 @@ The key value always starts with `v1.0-`.
 
 To retrieve your Origin CA keys:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com). [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com). [Go to **Account home** ↗](https://dash.cloudflare.com/?to=/:account/home)
 2. Go to **User Profile** > **API Tokens**.
 3. In the **API Keys** section, select `Origin CA Key`.
 

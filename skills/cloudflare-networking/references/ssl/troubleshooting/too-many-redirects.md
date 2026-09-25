@@ -185,7 +185,7 @@ To solve this issue, review your various [redirect rules](https://developers.clo
 
 Note
 
-To reduce the potential for redirect loops and [mixed content errors](https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/), Cloudflare recommends WordPress users to install the [Cloudflare WordPress plugin ↗](https://wordpress.org/plugins/cloudflare/) at their origin web server and enable the *Automatic HTTPS rewrites* option within the plugin.
+To reduce the potential for redirect loops and [mixed content errors](https://developers.cloudflare.com/ssl/troubleshooting/mixed-content-errors/), Cloudflare recommends WordPress users to install the [Cloudflare WordPress plugin ↗︎](https://wordpress.org/plugins/cloudflare/) at their origin web server and enable the *Automatic HTTPS rewrites* option within the plugin.
 
 Was this helpful?
 

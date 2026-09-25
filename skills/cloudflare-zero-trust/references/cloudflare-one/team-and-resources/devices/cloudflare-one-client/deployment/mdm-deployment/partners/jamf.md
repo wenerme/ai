@@ -20,14 +20,14 @@ This guide covers how to deploy the Cloudflare One Client (formerly WARP) using 
 
 ### Prerequisites
 
-- A [Jamf Pro account ↗](https://www.jamf.com/products/jamf-pro/)
+- A [Jamf Pro account ↗︎](https://www.jamf.com/products/jamf-pro/)
 - A Cloudflare account that has a [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization)
 - macOS devices enrolled in Jamf
 
 ### 1. Upload the Cloudflare One Client package
 
 1. [Download](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/#macos) the `Cloudflare_WARP.pkg` file.
-2. Log in to your [Jamf ↗](https://www.jamf.com/) account.
+2. Log in to your [Jamf ↗︎](https://www.jamf.com/) account.
 3. Go to **\*Settings** (gear icon).
 4. Select **Computer Management** > **Packages** > **New**.
 5. Upload the `Cloudflare_WARP_<VERSION>.pkg` file.
@@ -57,7 +57,7 @@ Every time a new Cloudflare One Client version is released, you must repeat this
    1. [Create a `plist` file](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/#plist-file) with your desired deployment parameters.
    2. Upload your `plist` file to Jamf and select **Save**.
 6. (Recommended) Advanced security features require deploying a [user-side certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/) so that devices can establish trust with Cloudflare when their traffic is inspected. To deploy a user-side certificate using Jamf:
-   1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), [generate and activate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/#generate-a-cloudflare-root-certificate) a Cloudflare root certificate.
+   1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), [generate and activate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/#generate-a-cloudflare-root-certificate) a Cloudflare root certificate.
    2. [Download the Cloudflare root certificate](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#download-a-cloudflare-root-certificate) in `.pem` format.
    3. [Convert](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/user-side-certificates/manual-deployment/#convert-the-certificate) the certificate to `.cer` format.
    4. In your Jamf configuration profile, scroll down the **Options** list and select **Certificate** > **Configure**.
@@ -81,11 +81,11 @@ Create an [XML file](https://developers.cloudflare.com/cloudflare-one/team-and-r
 
 ### Configure Jamf for iOS
 
-1. Log in to your [Jamf ↗](https://www.jamf.com/) account.
+1. Log in to your [Jamf ↗︎](https://www.jamf.com/) account.
 2. Go to **Devices** > **Mobile Device Apps** > **+ New**.
 3. Select *App store app or apps purchased in volume* and select **Next**.
 4. In the search box, enter `Cloudflare One Agent`. Select **Next**.
-5. In the row for *Cloudflare One Agent by Cloudflare Inc.*, select **Add**. To verify that it is the correct application, view it in the [App Store ↗](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492).
+5. In the row for *Cloudflare One Agent by Cloudflare Inc.*, select **Add**. To verify that it is the correct application, view it in the [App Store ↗︎](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492).
 6. Go to **Scope** and specify the devices in your organization that will receive the application.
 7. Go to **App Configuration** and copy/paste your XML file.
 8. Select **Save**.
@@ -102,7 +102,7 @@ Per-app VPN is supported on Cloudflare One Agent version `1.8` or greater for iO
 
 Before proceeding with per-app VPN configuration, you must make sure [Auto connect](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect) is disabled in Zero Trust. To disable Auto connect:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Select your device profile and select **Edit**.
 3. Turn off **Auto Connect**.
 

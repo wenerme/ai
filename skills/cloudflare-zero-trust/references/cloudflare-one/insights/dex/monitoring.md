@@ -24,7 +24,7 @@ A fleet is a collection of user devices. All devices in a fleet have the Cloudfl
 
 To view fleet status:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Review the information under **Live analytics**.
 
 ### View metrics
@@ -35,7 +35,7 @@ To view analytics on a per-device level, go to [Device monitoring](https://devel
 
 ### Available metrics
 
-- **Devices connected by colo**: Number of devices connected to a given [Cloudflare data center ↗](https://www.cloudflarestatus.com/).
+- **Devices connected by colo**: Number of devices connected to a given [Cloudflare data center ↗︎](https://www.cloudflarestatus.com/).
 - **Connectivity status**: Percentage of devices in a given Cloudflare One Client state.
 
   | Status | Description |
@@ -59,7 +59,7 @@ Review network and device performance for a device enrolled in your fleet.
 
 To view a device's network and device performance metrics:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Team & Resources** > **Devices** > **Your devices**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Team & Resources** > **Devices** > **Your devices**.
 2. Select a device > **View details**.
 3. Select the **DEX** tab.
 4. In **Device Monitoring**, scroll down to **Network performance** and **Device Performance**.
@@ -73,7 +73,7 @@ To view a device's network and device performance metrics:
 
 #### Device performance metrics
 
-- **Battery percentage and cycles**: Displays battery percentage and [battery cycles ↗](https://support.apple.com/en-us/102888) over time. Use this metric to debug potential performance issues possibly related to battery health or power-saving measures that trigger at low-battery levels.
+- **Battery percentage and cycles**: Displays battery percentage and [battery cycles ↗︎](https://support.apple.com/en-us/102888) over time. Use this metric to debug potential performance issues possibly related to battery health or power-saving measures that trigger at low-battery levels.
 - **CPU usage**: CPU utilization over time. Use this metric to debug slow system performance due to high CPU usage.
 - **Memory utilization**: Memory utilization over time. Use this metric to debug performance issues related to an overtaxed memory.
 - **Disk I/O**: Displays number of disk read/write operations over time. Use this metric to debug performance errors due to heavy disk operations.

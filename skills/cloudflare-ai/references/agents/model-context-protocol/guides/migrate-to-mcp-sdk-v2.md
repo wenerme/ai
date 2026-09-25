@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/migrate-to-mcp-sdk-v2/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers the [MCP SDK v2 ↗](https://github.com/modelcontextprotocol/typescript-sdk) upgrade in Agents SDK v0.20.0. It explains how to move servers to `@modelcontextprotocol/server`, use a temporary legacy lane only when sessionful features require it, and update MCP clients.
+This guide covers the [MCP SDK v2 ↗︎](https://github.com/modelcontextprotocol/typescript-sdk) upgrade in Agents SDK v0.20.0. It explains how to move servers to `@modelcontextprotocol/server`, use a temporary legacy lane only when sessionful features require it, and update MCP clients.
 
 ## Choose a server path
 
@@ -119,7 +119,7 @@ For an SDK v1 endpoint that does not use `McpAgent`, use `createLegacyMcpHandler
 
 The stateless `createMcpHandler` accepts a factory. The factory returns `McpServer` or `Server` from `@modelcontextprotocol/server`.
 
-1. Follow the upstream [TypeScript SDK v2 migration guide ↗](https://github.com/modelcontextprotocol/typescript-sdk/blob/main/docs/migration/upgrade-to-v2.md) for server registration changes.
+1. Follow the upstream [TypeScript SDK v2 migration guide ↗︎](https://github.com/modelcontextprotocol/typescript-sdk/blob/main/docs/migration/upgrade-to-v2.md) for server registration changes.
 2. Import the server from `@modelcontextprotocol/server`.
 3. Move server construction and registration into a factory.
 4. Keep the Worker object default export. Inside its `fetch()` method, pass the factory to `createMcpHandler` and invoke the returned callable as before. Use the handler's `fetch(request, options?)` method only for lower-level request integration.
@@ -386,7 +386,7 @@ Tools, prompts, and resources on the stateless path can return `input_required` 
 
 Each retry contains responses for the immediately preceding input round, not every earlier response. The client also echoes the latest opaque `requestState`. Seal trusted intermediate values needed by later rounds into integrity-protected `requestState`; do not expect `inputResponses` to accumulate across rounds.
 
-Refer to the [stateless elicitation example ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation-mrtr) for a two-round tool flow.
+Refer to the [stateless elicitation example ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-elicitation-mrtr) for a two-round tool flow.
 
 ```js
 export class MyAgent extends Agent {

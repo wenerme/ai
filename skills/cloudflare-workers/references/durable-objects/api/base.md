@@ -56,7 +56,7 @@ class MyDurableObject(DurableObject):
 
 ### `fetch`
 
-- ``fetch(request `Request`)`` : `Response` | `Promise<Response>`- Takes an HTTP [Request ↗](https://developers.cloudflare.com/workers/runtime-apis/request/) and returns an HTTP [Response ↗](https://developers.cloudflare.com/workers/runtime-apis/response/). This method allows the Durable Object to emulate an HTTP server where a Worker with a binding to that object is the client. - This method can be `async`.
+- ``fetch(request `Request`)`` : `Response` | `Promise<Response>`- Takes an HTTP [Request ↗︎](https://developers.cloudflare.com/workers/runtime-apis/request/) and returns an HTTP [Response ↗︎](https://developers.cloudflare.com/workers/runtime-apis/response/). This method allows the Durable Object to emulate an HTTP server where a Worker with a binding to that object is the client. - This method can be `async`.
   - Durable Objects support [RPC calls](https://developers.cloudflare.com/durable-objects/best-practices/create-durable-object-stubs-and-send-requests/) as of compatibility date [2024-04-03](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#durable-object-stubs-and-service-bindings-support-rpc). RPC methods are preferred over `fetch()` when your application does not follow HTTP request/response flow.
 
 #### Parameters
@@ -159,12 +159,12 @@ class MyDurableObject(DurableObject):
 
 ### `webSocketMessage`
 
-- ``webSocketMessage(ws `WebSocket`, message `string | ArrayBuffer`)`` : `void` | `Promise<void>`- Called by the system when an accepted WebSocket receives a message. - This method is not called for WebSocket control frames. The system will respond to an incoming [WebSocket protocol ping ↗](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2) automatically without interrupting hibernation.
+- ``webSocketMessage(ws `WebSocket`, message `string | ArrayBuffer`)`` : `void` | `Promise<void>`- Called by the system when an accepted WebSocket receives a message. - This method is not called for WebSocket control frames. The system will respond to an incoming [WebSocket protocol ping ↗︎](https://www.rfc-editor.org/rfc/rfc6455#section-5.5.2) automatically without interrupting hibernation.
   - This method can be `async`.
 
 #### Parameters
 
-- `ws` `WebSocket` - the [WebSocket ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) that received the message. Use this reference to send responses or access serialized attachments.
+- `ws` `WebSocket` - the [WebSocket ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) that received the message. Use this reference to send responses or access serialized attachments.
 - `message` `string | ArrayBuffer` - the message data. Text messages arrive as `string`, binary messages as `ArrayBuffer`.
 
 #### Return values
@@ -217,8 +217,8 @@ class MyDurableObject(DurableObject):
 
 #### Parameters
 
-- `ws` `WebSocket` - the [WebSocket ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) that was closed.
-- `code` `number` - the [WebSocket close code ↗](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent/code) sent by the peer (e.g., `1000` for normal closure, `1001` for going away).
+- `ws` `WebSocket` - the [WebSocket ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) that was closed.
+- `code` `number` - the [WebSocket close code ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent/code) sent by the peer (e.g., `1000` for normal closure, `1001` for going away).
 - `reason` `string` - a string indicating why the connection was closed. May be empty.
 - `wasClean` `boolean` - `true` if the connection closed cleanly with a proper closing handshake, `false` otherwise.
 
@@ -267,7 +267,7 @@ class MyDurableObject(DurableObject):
 
 #### Parameters
 
-- `ws` `WebSocket` - the [WebSocket ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) that encountered an error.
+- `ws` `WebSocket` - the [WebSocket ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket) that encountered an error.
 - `error` `unknown` - the error that occurred. May be an `Error` object or another type depending on the error source.
 
 #### Return values

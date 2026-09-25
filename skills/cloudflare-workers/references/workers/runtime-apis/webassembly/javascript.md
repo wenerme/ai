@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/webassembly/javascript/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Wasm can be used from within a Worker written in JavaScript or TypeScript by importing a Wasm module, and instantiating an instance of this module using [`WebAssembly.instantiate()` ↗](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/instantiate). This can be used to accelerate computationally intensive operations which do not involve significant I/O.
+Wasm can be used from within a Worker written in JavaScript or TypeScript by importing a Wasm module, and instantiating an instance of this module using [`WebAssembly.instantiate()` ↗︎](https://developer.mozilla.org/en-US/docs/WebAssembly/JavaScript_interface/instantiate). This can be used to accelerate computationally intensive operations which do not involve significant I/O.
 
 This guide demonstrates the basics of Wasm and JavaScript interoperability.
 
@@ -44,7 +44,7 @@ Review the following example module (`;;` denotes a comment):
 )
 ```
 
-Using [`wat2wasm` ↗](https://github.com/WebAssembly/wabt), convert the WAT format to WebAssembly Binary Format:
+Using [`wat2wasm` ↗︎](https://github.com/WebAssembly/wabt), convert the WAT format to WebAssembly Binary Format:
 
 ```sh
 wat2wasm src/simple.wat -o src/simple.wasm
@@ -90,7 +90,7 @@ When invoked, this Worker should log `Hello from JavaScript: 42` and return `Suc
 
 ## Next steps
 
-In practice, you will likely compile a language of your choice (such as Rust) to WebAssembly binaries. Many languages provide a `bindgen` to simplify the interaction between JavaScript and Wasm. These tools may integrate with your JavaScript bundler, and provide an API other than the WebAssembly API for initializing and invoking your Wasm module. As an example, refer to the [Rust `wasm-bindgen` documentation ↗](https://wasm-bindgen.github.io/wasm-bindgen/examples/without-a-bundler.html).
+In practice, you will likely compile a language of your choice (such as Rust) to WebAssembly binaries. Many languages provide a `bindgen` to simplify the interaction between JavaScript and Wasm. These tools may integrate with your JavaScript bundler, and provide an API other than the WebAssembly API for initializing and invoking your Wasm module. As an example, refer to the [Rust `wasm-bindgen` documentation ↗︎](https://wasm-bindgen.github.io/wasm-bindgen/examples/without-a-bundler.html).
 
 Alternatively, to write your entire Worker in Rust, Workers provides many of the same [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis) and [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) when using the `workers-rs` crate. For more information, refer to the [Workers Rust guide](https://developers.cloudflare.com/workers/languages/rust/).
 

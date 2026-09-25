@@ -28,14 +28,14 @@ You will provision resources that qualify under free tier offerings for both Pul
 
 Ensure you have:
 
-- A Cloudflare account. [Sign up for a Cloudflare account ↗](https://www.cloudflare.com/sign-up).
-- A Pulumi Cloud account. [Sign up for a Pulumi Cloud ↗](https://app.pulumi.com/signup).
-- The [Pulumi ESC CLI ↗](https://www.pulumi.com/docs/install/esc/) installed.
+- A Cloudflare account. [Sign up for a Cloudflare account ↗︎](https://www.cloudflare.com/sign-up).
+- A Pulumi Cloud account. [Sign up for a Pulumi Cloud ↗︎](https://app.pulumi.com/signup).
+- The [Pulumi ESC CLI ↗︎](https://www.pulumi.com/docs/install/esc/) installed.
 - A Wrangler project. To create one, follow the [Create a New Worker project step](https://developers.cloudflare.com/workers/get-started/guide/#1-create-a-new-worker-project).
 
 ## 1. Set up a new Environment
 
-A [Pulumi ESC Environment ↗](https://www.pulumi.com/docs/esc/environments/), or Environment, is a YAML file containing configurations and secrets for your application and infrastructure. These can be accessed in several ways, including shell commands. All ESC Environments reside in your Pulumi Cloud account.
+A [Pulumi ESC Environment ↗︎](https://www.pulumi.com/docs/esc/environments/), or Environment, is a YAML file containing configurations and secrets for your application and infrastructure. These can be accessed in several ways, including shell commands. All ESC Environments reside in your Pulumi Cloud account.
 
 ### a. Log in to Pulumi Cloud
 
@@ -168,7 +168,7 @@ As `.dev.vars` files may often contain secrets, they should not be committed to 
 
 ## Next steps
 
-You have configured Pulumi ESC Environments to load secrets for Wrangler commands, enhancing security during development with Wrangler. The externalized secrets are now reusable across Workers. [Learn more about Pulumi ESC features and integrations ↗](https://www.pulumi.com/docs/esc/) or follow the [Deploy a Worker with Pulumi](https://developers.cloudflare.com/pulumi/tutorial/hello-world/) tutorial.
+You have configured Pulumi ESC Environments to load secrets for Wrangler commands, enhancing security during development with Wrangler. The externalized secrets are now reusable across Workers. [Learn more about Pulumi ESC features and integrations ↗︎](https://www.pulumi.com/docs/esc/) or follow the [Deploy a Worker with Pulumi](https://developers.cloudflare.com/pulumi/tutorial/hello-world/) tutorial.
 
 Was this helpful?
 

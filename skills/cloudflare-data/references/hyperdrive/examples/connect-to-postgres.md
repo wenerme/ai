@@ -22,7 +22,7 @@ Note
 
 New to Hyperdrive? Refer to the [Get started guide](https://developers.cloudflare.com/hyperdrive/get-started/) to learn how to set up your first Hyperdrive.
 
-To create a Hyperdrive that connects to an existing PostgreSQL database, use the [wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) CLI or the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive).
+To create a Hyperdrive that connects to an existing PostgreSQL database, use the [wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) CLI or the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive).
 
 When using wrangler, replace the placeholder value provided to `--connection-string` with the connection string for your database:
 
@@ -40,7 +40,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -53,7 +53,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -70,11 +70,11 @@ Hyperdrive uses Workers [TCP socket support](https://developers.cloudflare.com/w
 
 | Driver | Documentation | Minimum Version Required | Notes |
 | --- | --- | --- | --- |
-| node-postgres - `pg` (recommended) | [node-postgres - `pg` documentation ↗](https://node-postgres.com/) | `pg@8.13.0` | `8.11.4` introduced a bug with URL parsing and will not work. `8.11.5` fixes this. Requires `compatibility_flags = ["nodejs_compat"]` and `compatibility_date = "2024-09-23"` - refer to [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs). Requires wrangler `3.78.7` or later. |
-| Postgres.js | [Postgres.js documentation ↗](https://github.com/porsager/postgres) | `postgres@3.4.4` | Supported in both Workers & Pages. |
-| Drizzle | [Drizzle documentation ↗](https://orm.drizzle.team/) | `0.26.2`^ | |
-| Kysely | [Kysely documentation ↗](https://kysely.dev/) | `0.26.3`^ | |
-| [rust-postgres ↗](https://github.com/sfackler/rust-postgres) | [rust-postgres documentation ↗](https://docs.rs/postgres/latest/postgres/) | `v0.19.8` | Use the [`query_typed` ↗](https://docs.rs/postgres/latest/postgres/struct.Client.html#method.query_typed) method for best performance. |
+| node-postgres - `pg` (recommended) | [node-postgres - `pg` documentation ↗︎](https://node-postgres.com/) | `pg@8.13.0` | `8.11.4` introduced a bug with URL parsing and will not work. `8.11.5` fixes this. Requires `compatibility_flags = ["nodejs_compat"]` and `compatibility_date = "2024-09-23"` - refer to [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs). Requires wrangler `3.78.7` or later. |
+| Postgres.js | [Postgres.js documentation ↗︎](https://github.com/porsager/postgres) | `postgres@3.4.4` | Supported in both Workers & Pages. |
+| Drizzle | [Drizzle documentation ↗︎](https://orm.drizzle.team/) | `0.26.2`^ | |
+| Kysely | [Kysely documentation ↗︎](https://kysely.dev/) | `0.26.3`^ | |
+| [rust-postgres ↗︎](https://github.com/sfackler/rust-postgres) | [rust-postgres documentation ↗︎](https://docs.rs/postgres/latest/postgres/) | `v0.19.8` | Use the [`query_typed` ↗︎](https://docs.rs/postgres/latest/postgres/struct.Client.html#method.query_typed) method for best performance. |
 
 ^ *The marked libraries use `node-postgres` as a dependency.*
 
@@ -82,7 +82,7 @@ Other drivers and ORMs not listed may also be supported: this list is not exhaus
 
 Recommended driver
 
-[Node-postgres ↗](https://node-postgres.com/) (`pg`) is the recommended driver for connecting to your Postgres database from JavaScript or TypeScript Workers. It has the best compatibility with Hyperdrive's caching and is commonly available with popular ORM libraries. [Postgres.js ↗](https://github.com/porsager/postgres) is also supported.
+[Node-postgres ↗︎](https://node-postgres.com/) (`pg`) is the recommended driver for connecting to your Postgres database from JavaScript or TypeScript Workers. It has the best compatibility with Hyperdrive's caching and is commonly available with popular ORM libraries. [Postgres.js ↗︎](https://github.com/porsager/postgres) is also supported.
 
 ### Database drivers and Node.js compatibility
 
@@ -169,7 +169,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -182,7 +182,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -229,7 +229,7 @@ export default {
 
 ### Postgres.js
 
-Install [Postgres.js ↗](https://github.com/porsager/postgres):
+Install [Postgres.js ↗︎](https://github.com/porsager/postgres):
 
 npmyarnpnpmbun
 
@@ -262,7 +262,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -275,7 +275,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

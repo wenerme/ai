@@ -31,7 +31,7 @@ This integration covers the following Google Workspace products:
 ## Integration prerequisites
 
 - A Google Workspace account with a Business Starter, Business Standard, Business Plus or Enterprise plan
-- A Google Workspace user with [Super Admin privileges ↗](https://support.google.com/a/answer/2405986) and [Owner permissions ↗](https://cloud.google.com/iam/docs/understanding-roles) in the Google Cloud Platform (GCP) project used
+- A Google Workspace user with [Super Admin privileges ↗︎](https://support.google.com/a/answer/2405986) and [Owner permissions ↗︎](https://cloud.google.com/iam/docs/understanding-roles) in the Google Cloud Platform (GCP) project used
 
 ## Integration permissions
 
@@ -45,7 +45,7 @@ For the Google Workspace integration to function, Cloudflare CASB requires the f
 - `https://www.googleapis.com/auth/drive.readonly`
 - `https://www.googleapis.com/auth/gmail.settings.basic`
 
-These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [Google Workspace Admin SDK Directory API ↗](https://developers.google.com/admin-sdk/directory/v1/guides/authorizing).
+These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [Google Workspace Admin SDK Directory API ↗︎](https://developers.google.com/admin-sdk/directory/v1/guides/authorizing).
 
 ## Security findings
 

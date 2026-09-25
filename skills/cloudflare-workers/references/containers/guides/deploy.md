@@ -16,7 +16,7 @@ Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Deploy from your machine
 
-1. If `image` in your Wrangler config is a path to a Dockerfile, start [Docker ↗](https://www.docker.com/) or another Docker-compatible engine. Specify the Dockerfile itself, not its directory. If `image` is a registry reference (Cloudflare Registry, Docker Hub, Amazon ECR, or Google Artifact Registry), you do not need Docker at deploy time. Refer to [Image management](https://developers.cloudflare.com/containers/guides/image-management/).
+1. If `image` in your Wrangler config is a path to a Dockerfile, start [Docker ↗︎](https://www.docker.com/) or another Docker-compatible engine. Specify the Dockerfile itself, not its directory. If `image` is a registry reference (Cloudflare Registry, Docker Hub, Amazon ECR, or Google Artifact Registry), you do not need Docker at deploy time. Refer to [Image management](https://developers.cloudflare.com/containers/guides/image-management/).
 2. From your project directory, run:npmyarnpnpm
 
    ```

@@ -307,8 +307,8 @@ This reference architecture demonstrates how these solutions work together to ad
 ## Resources
 
 - [Cloudflare One - CrowdStrike](https://developers.cloudflare.com/cloudflare-one/integrations/service-providers/crowdstrike/)
-- [CrowdStrike Marketplace - Cloudflare ↗](https://marketplace.crowdstrike.com/partners/cloudflare/)
-- [CrowdStrike Falcon Fusion SOAR with Cloudflare SASE ↗](https://blog.cloudflare.com/integrating-crowdstrike-falcon-fusion-soar-with-cloudflares-sase-platform/)
+- [CrowdStrike Marketplace - Cloudflare ↗︎](https://marketplace.crowdstrike.com/partners/cloudflare/)
+- [CrowdStrike Falcon Fusion SOAR with Cloudflare SASE ↗︎](https://blog.cloudflare.com/integrating-crowdstrike-falcon-fusion-soar-with-cloudflares-sase-platform/)
 
 Was this helpful?
 

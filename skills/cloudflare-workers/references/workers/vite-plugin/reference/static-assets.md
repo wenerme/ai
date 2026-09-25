@@ -22,8 +22,8 @@ The Vite plugin does not require that you provide the `assets` field in order to
 
 - There is an `index.html` file in the root of your project
 - `build.rollupOptions.input` or `environments.client.build.rollupOptions.input` is specified in your Vite config
-- You have a non-empty [`public` directory ↗](https://vite.dev/guide/assets#the-public-directory)
-- Your Worker [imports assets as URLs ↗](https://vite.dev/guide/assets#importing-asset-as-url)
+- You have a non-empty [`public` directory ↗︎](https://vite.dev/guide/assets#the-public-directory)
+- Your Worker [imports assets as URLs ↗︎](https://vite.dev/guide/assets#importing-asset-as-url)
 
 On running `vite build`, an output `wrangler.json` configuration file is generated as part of the build output. The `assets.directory` field in this file is automatically populated with the path to your `client` build output. It is therefore not necessary to provide the `assets.directory` field in your input Worker configuration.
 
@@ -50,9 +50,9 @@ not_found_handling = "single-page-application"
 
 ## Features
 
-The Vite plugin ensures that all of Vite's [static asset handling ↗](https://vite.dev/guide/assets) features are supported in your Worker as well as in your frontend. These include importing assets as URLs, importing as strings and importing from the `public` directory as well as inlining assets.
+The Vite plugin ensures that all of Vite's [static asset handling ↗︎](https://vite.dev/guide/assets) features are supported in your Worker as well as in your frontend. These include importing assets as URLs, importing as strings and importing from the `public` directory as well as inlining assets.
 
-Assets [imported as URLs ↗](https://vite.dev/guide/assets#importing-asset-as-url) can be fetched via the [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/#binding). As the binding's `fetch` method requires a full URL, we recommend using the request URL as the `base`. This is demonstrated in the following example:
+Assets [imported as URLs ↗︎](https://vite.dev/guide/assets#importing-asset-as-url) can be fetched via the [assets binding](https://developers.cloudflare.com/workers/static-assets/binding/#binding). As the binding's `fetch` method requires a full URL, we recommend using the request URL as the `base`. This is demonstrated in the following example:
 
 ```ts
 import myImage from "./my-image.png";
@@ -72,7 +72,7 @@ If you are developing a multi-Worker application, assets can only be accessed on
 
 ## Headers and redirects
 
-Custom [headers](https://developers.cloudflare.com/workers/static-assets/headers/) and [redirects](https://developers.cloudflare.com/workers/static-assets/redirects/) are supported at build, preview and deploy time by adding `_headers` and `_redirects` files to your [`public` directory ↗](https://vite.dev/guide/assets#the-public-directory). The paths in these files should reflect the structure of your client build output. For example, generated assets are typically located in an [assets subdirectory ↗](https://vite.dev/config/build-options#build-assetsdir).
+Custom [headers](https://developers.cloudflare.com/workers/static-assets/headers/) and [redirects](https://developers.cloudflare.com/workers/static-assets/redirects/) are supported at build, preview and deploy time by adding `_headers` and `_redirects` files to your [`public` directory ↗︎](https://vite.dev/guide/assets#the-public-directory). The paths in these files should reflect the structure of your client build output. For example, generated assets are typically located in an [assets subdirectory ↗︎](https://vite.dev/config/build-options#build-assetsdir).
 
 Was this helpful?
 

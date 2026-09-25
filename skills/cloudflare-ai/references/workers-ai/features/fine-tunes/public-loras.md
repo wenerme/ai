@@ -14,19 +14,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/features/fine-tunes/public-loras/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare offers a few public LoRA adapters that can immediately be used for fine-tuned inference. You can try them out immediately via our [playground ↗](https://playground.ai.cloudflare.com).
+Cloudflare offers a few public LoRA adapters that can immediately be used for fine-tuned inference. You can try them out immediately via our [playground ↗︎](https://playground.ai.cloudflare.com).
 
 Public LoRAs will have the name `cf-public-x`, and the prefix will be reserved for Cloudflare.
 
 Note
 
-Have more LoRAs you would like to see? Let us know on [Discord ↗](https://discord.cloudflare.com).
+Have more LoRAs you would like to see? Let us know on [Discord ↗︎](https://discord.cloudflare.com).
 
 | Name | Description | Compatible with |
 | --- | --- | --- |
-| [cf-public-magicoder ↗](https://huggingface.co/predibase/magicoder) | Coding tasks in multiple languages | `@cf/mistral/mistral-7b-instruct-v0.1` <br> `@hf/mistral/mistral-7b-instruct-v0.2` |
-| [cf-public-jigsaw-classification ↗](https://huggingface.co/predibase/jigsaw) | Toxic comment classification | `@cf/mistral/mistral-7b-instruct-v0.1` <br> `@hf/mistral/mistral-7b-instruct-v0.2` |
-| [cf-public-cnn-summarization ↗](https://huggingface.co/predibase/cnn) | Article summarization | `@cf/mistral/mistral-7b-instruct-v0.1` <br> `@hf/mistral/mistral-7b-instruct-v0.2` |
+| [cf-public-magicoder ↗︎](https://huggingface.co/predibase/magicoder) | Coding tasks in multiple languages | `@cf/mistral/mistral-7b-instruct-v0.1` <br> `@hf/mistral/mistral-7b-instruct-v0.2` |
+| [cf-public-jigsaw-classification ↗︎](https://huggingface.co/predibase/jigsaw) | Toxic comment classification | `@cf/mistral/mistral-7b-instruct-v0.1` <br> `@hf/mistral/mistral-7b-instruct-v0.2` |
+| [cf-public-cnn-summarization ↗︎](https://huggingface.co/predibase/cnn) | Article summarization | `@cf/mistral/mistral-7b-instruct-v0.1` <br> `@hf/mistral/mistral-7b-instruct-v0.2` |
 
 You can also list these public LoRAs with an API call:
 

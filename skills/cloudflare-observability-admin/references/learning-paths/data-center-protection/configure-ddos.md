@@ -54,7 +54,7 @@ Notes
 
 ### Advanced TCP Protection
 
-Cloudflare's Advanced TCP Protection, powered by [`flowtrackd` ↗](https://blog.cloudflare.com/announcing-flowtrackd/), is a stateful TCP inspection engine used to detect and mitigate sophisticated out-of-state TCP attacks such as randomized and spoofed ACK floods or SYN and SYN-ACK floods.
+Cloudflare's Advanced TCP Protection, powered by [`flowtrackd` ↗︎](https://blog.cloudflare.com/announcing-flowtrackd/), is a stateful TCP inspection engine used to detect and mitigate sophisticated out-of-state TCP attacks such as randomized and spoofed ACK floods or SYN and SYN-ACK floods.
 
 Note
 
@@ -68,7 +68,7 @@ Magic Transit customers can also enable the Advanced DDoS systems when the prefi
 
 ### Advanced DNS Protection
 
-Cloudflare's Advanced DNS Protection, powered by [`flowtrackd` ↗](https://blog.cloudflare.com/announcing-flowtrackd/), provides stateful protection against DNS-based DDoS attacks, specifically sophisticated and fully randomized DNS attacks such as [random prefix attacks](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/).
+Cloudflare's Advanced DNS Protection, powered by [`flowtrackd` ↗︎](https://blog.cloudflare.com/announcing-flowtrackd/), provides stateful protection against DNS-based DDoS attacks, specifically sophisticated and fully randomized DNS attacks such as [random prefix attacks](https://developers.cloudflare.com/dns/dns-firewall/random-prefix-attacks/about/).
 
 Note
 

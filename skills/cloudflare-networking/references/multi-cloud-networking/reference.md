@@ -55,8 +55,8 @@ When using Multi-Cloud Networking (beta) to automatically create on-ramps to you
 - Cloudflare will reserve a public Internet routable IP address from GCP.
 - Cloudflare will create a VPN Gateway and two VPN Tunnels in the region you specify.
 - Cloudflare will create routes for each prefix in your [Cloudflare WAN Address Space](https://developers.cloudflare.com/multi-cloud-networking/cloud-on-ramps/#cloudflare-wan-address-space) within your VPC pointing to the VPN Tunnels.
-- Cloudflare will add routes in Cloudflare WAN for all subnet CIDR prefixes in your VPC. This includes all regions within the VPC. Traffic bound for a region other than the VPN Gateway's region will be subject to GCP's [Inter-region Pricing ↗](https://cloud.google.com/vpc/network-pricing#inter-region-data-transfer).
-- Traffic sent to and from your VM instances through the VPN Tunnels is still subject to VPC firewall rules, and may [require further configuration ↗](https://cloud.google.com/network-connectivity/docs/vpn/how-to/configuring-firewall-rules#firewall_rules).
+- Cloudflare will add routes in Cloudflare WAN for all subnet CIDR prefixes in your VPC. This includes all regions within the VPC. Traffic bound for a region other than the VPN Gateway's region will be subject to GCP's [Inter-region Pricing ↗︎](https://cloud.google.com/vpc/network-pricing#inter-region-data-transfer).
+- Traffic sent to and from your VM instances through the VPN Tunnels is still subject to VPC firewall rules, and may [require further configuration ↗︎](https://cloud.google.com/network-connectivity/docs/vpn/how-to/configuring-firewall-rules#firewall_rules).
 
 ## Supported resources
 

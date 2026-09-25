@@ -36,7 +36,7 @@ For why production restore uses an overlay, refer to [Directory backups](https:/
    	"name": "my-sandbox-worker",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-24",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": ["nodejs_compat"],
    	"containers": [
    		{
@@ -75,7 +75,7 @@ For why production restore uses an overlay, refer to [Directory backups](https:/
    name = "my-sandbox-worker"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-24"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[containers]]
@@ -107,7 +107,7 @@ For why production restore uses an overlay, refer to [Directory backups](https:/
    npx wrangler secret put R2_SECRET_ACCESS_KEY
    ```
 
-   Create the token in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **R2** > **Overview** > **Manage R2 API Tokens**. Grant **Object Read & Write** on the backup bucket.
+   Create the token in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) under **R2** > **Overview** > **Manage R2 API Tokens**. Grant **Object Read & Write** on the backup bucket.
 
 Note
 

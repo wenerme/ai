@@ -92,7 +92,7 @@ Note
 
 If the parameter `ns_set` is omitted, the default set `1` will be assigned.
 
-2. Add the account custom nameservers and IP addresses to your domain's registrar as glue (A and AAAA) records ([RFC 1912 ↗](https://www.rfc-editor.org/rfc/rfc1912.html)).
+2. Add the account custom nameservers and IP addresses to your domain's registrar as glue (A and AAAA) records ([RFC 1912 ↗︎](https://www.rfc-editor.org/rfc/rfc1912.html)).
 3. If the domain or domains that are used for the tenant custom nameservers do not exist within the same account, you must create the `A/AAAA` records on the configured nameserver names (for example, `ns1.example.com`) at the authoritative DNS provider.
 
 | Type | Name | Content |

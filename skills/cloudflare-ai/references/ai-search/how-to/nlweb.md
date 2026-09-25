@@ -22,7 +22,7 @@ This is a public preview ideal for experimentation. If you're interested in runn
 
 ## What is NLWeb
 
-[NLWeb ↗](https://github.com/nlweb-ai/NLWeb) is an open project developed by Microsoft that defines a standard protocol for natural language queries on websites. Its goal is to make every website as accessible and interactive as a conversational AI app, so both people and AI agents can reliably query site content. It does this by exposing two key endpoints:
+[NLWeb ↗︎](https://github.com/nlweb-ai/NLWeb) is an open project developed by Microsoft that defines a standard protocol for natural language queries on websites. Its goal is to make every website as accessible and interactive as a conversational AI app, so both people and AI agents can reliably query site content. It does this by exposing two key endpoints:
 
 - `/ask`: Conversational endpoint for user queries
 - `/mcp`: Structured Model Context Protocol (MCP) endpoint for AI agents
@@ -31,7 +31,7 @@ This is a public preview ideal for experimentation. If you're interested in runn
 
 You can deploy NLWeb on your website directly through the AI Search dashboard:
 
-1. Log in to your [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+1. Log in to your [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 2. Go to **AI** > **AI Search**. [Go to **AI Search** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-search)
 3. Select **Create AI Search**.
 4. Select **Website** as a data source.
@@ -47,7 +47,7 @@ Choosing the NLWeb Website option extends a normal AI Search by tailoring it for
 
 - **Website as a data source:** Uses [Website](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) as data source option to crawl and ingest pages with the Rendered Sites option.
 - **Defaults for content-heavy websites:** Applies tuned embedding and retrieval configurations ideal for publishing and content‑rich websites.
-- **NLWeb Worker deployment:** Automatically spins up a Cloudflare Worker from the [NLWeb Worker template ↗](https://github.com/cloudflare/templates).
+- **NLWeb Worker deployment:** Automatically spins up a Cloudflare Worker from the [NLWeb Worker template ↗︎](https://github.com/cloudflare/templates).
 
 ## What the Worker includes
 

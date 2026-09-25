@@ -18,7 +18,7 @@ Workers Analytics Engine is optimized for powering time series analytics that ca
 
 ## Grafana plugin setup
 
-We recommend the use of the [Altinity plugin for Clickhouse ↗](https://grafana.com/grafana/plugins/vertamedia-clickhouse-datasource/) for querying Workers Analytics Engine from Grafana.
+We recommend the use of the [Altinity plugin for Clickhouse ↗︎](https://grafana.com/grafana/plugins/vertamedia-clickhouse-datasource/) for querying Workers Analytics Engine from Grafana.
 
 Configure the plugin as follows:
 

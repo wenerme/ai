@@ -45,7 +45,7 @@ Docker or a Docker-compatible CLI tool must be running for Wrangler to build and
 
 ## Use pre-built container images
 
-Containers support images from the Cloudflare managed registry at `registry.cloudflare.com`, [Docker Hub ↗](https://hub.docker.com/), [Amazon ECR ↗](https://aws.amazon.com/ecr/), and [Google Artifact Registry ↗](https://cloud.google.com/artifact-registry).
+Containers support images from the Cloudflare managed registry at `registry.cloudflare.com`, [Docker Hub ↗︎](https://hub.docker.com/), [Amazon ECR ↗︎](https://aws.amazon.com/ecr/), and [Google Artifact Registry ↗︎](https://cloud.google.com/artifact-registry).
 
 Note
 
@@ -102,7 +102,7 @@ Configure Docker Hub in Wrangler using these values:
 
 To create a Docker Hub personal access token:
 
-1. Sign in to [Docker Home ↗](https://app.docker.com/).
+1. Sign in to [Docker Home ↗︎](https://app.docker.com/).
 2. Go to **Account settings** > **Personal access tokens**.
 3. Select **Generate new token**.
 4. Give the token **Read** access, then copy the token value.
@@ -226,7 +226,7 @@ Only `*-docker.pkg.dev` hosts are supported. Container Registry hosts such as `g
 
 To generate the required credentials, create a service account with the **Artifact Registry Reader** role and download its JSON key:
 
-1. In the [Google Cloud console ↗](https://console.cloud.google.com), go to **IAM & Admin** > **Service Accounts**.
+1. In the [Google Cloud console ↗︎](https://console.cloud.google.com), go to **IAM & Admin** > **Service Accounts**.
 2. Select **Create service account**, then enter a name, ID, and optional description.
 3. Grant the service account the **Artifact Registry Reader** role, then select **Done**.
 4. Select the service account, then open the **Keys** tab.

@@ -24,7 +24,7 @@ Note
 
 Creating or updating an account owned token requires Super Administrator permission on the account
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Go to **Manage Account** > **Account API Tokens**.
 3. Select **Create Token** and fill in the token name, permissions, and the optional expiration date for the token.
 4. Select **Continue to summary** and review the details.
@@ -32,7 +32,7 @@ Creating or updating an account owned token requires Super Administrator permiss
 
 Alternatively, you can create a token using the [account API token creation API](https://developers.cloudflare.com/api/resources/accounts/subresources/tokens/methods/create/).
 
-Refer to the [blog post ↗](https://blog.cloudflare.com/account-owned-tokens-automated-actions-zaraz/) for more information.
+Refer to the [blog post ↗︎](https://blog.cloudflare.com/account-owned-tokens-automated-actions-zaraz/) for more information.
 
 ## Compatibility matrix
 

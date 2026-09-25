@@ -44,7 +44,7 @@ msiexec /i "Cloudflare_WARP_<VERSION>.msi" /qn ORGANIZATION="your-team-name" SUP
 
 #### Supported properties
 
-The Cloudflare One Client MSI installer supports the following [public properties ↗](https://learn.microsoft.com/en-us/windows/win32/msi/public-properties):
+The Cloudflare One Client MSI installer supports the following [public properties ↗︎](https://learn.microsoft.com/en-us/windows/win32/msi/public-properties):
 
 - `ORGANIZATION`
 - `GATEWAY_UNIQUE_ID`
@@ -103,7 +103,7 @@ By default the Cloudflare One Client will use the user's default browser to perf
 
 To use an embedded browser:
 
-1. Download and install WebView2 by following the [Microsoft instructions ↗](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section).
+1. Download and install WebView2 by following the [Microsoft instructions ↗︎](https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section).
 2. Add a registry key with the following command:
 
    ```txt
@@ -118,7 +118,7 @@ The Cloudflare One Client for macOS allows for an automated install via tools li
 
 Caution
 
-Do not deploy the Cloudflare One Client via [Intune's line-of-business (LOB) deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/lob-apps-macos). This deployment type is not supported. Use [Intune's `.pkg` deployment method ↗](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg) instead to successfully install the Cloudflare One Client on macOS.
+Do not deploy the Cloudflare One Client via [Intune's line-of-business (LOB) deployment method ↗︎](https://learn.microsoft.com/en-us/intune/intune-service/apps/lob-apps-macos). This deployment type is not supported. Use [Intune's `.pkg` deployment method ↗︎](https://learn.microsoft.com/en-us/intune/intune-service/apps/macos-unmanaged-pkg) instead to successfully install the Cloudflare One Client on macOS.
 
 If you do not wish to use a management tool, you can manually place an `mdm.xml` file in `/Library/Application Support/Cloudflare`.
 
@@ -169,9 +169,9 @@ To learn how to automate Cloudflare One Client deployment on headless servers, r
 
 Migrate from 1.1.1.1
 
-The legacy iOS client, [1.1.1.1: Faster Internet ↗](https://apps.apple.com/us/app/1-1-1-1-faster-internet/id1423538627), has been replaced by the Cloudflare One Agent. Learn more in our [migration guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/cloudflare-one-agent-migration/).
+The legacy iOS client, [1.1.1.1: Faster Internet ↗︎](https://apps.apple.com/us/app/1-1-1-1-faster-internet/id1423538627), has been replaced by the Cloudflare One Agent. Learn more in our [migration guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/cloudflare-one-agent-migration/).
 
-The Cloudflare One Client for iOS, known in the App Store as [Cloudflare One Agent ↗](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492), allows for an automated install via tools like Jamf, Intune, or SimpleMDM.
+The Cloudflare One Client for iOS, known in the App Store as [Cloudflare One Agent ↗︎](https://apps.apple.com/us/app/cloudflare-one-agent/id6443476492), allows for an automated install via tools like Jamf, Intune, or SimpleMDM.
 
 To proceed with the installation, here is an example of the XML code you will need:
 
@@ -196,9 +196,9 @@ Refer to [deployment parameters](https://developers.cloudflare.com/cloudflare-on
 
 Migrate from 1.1.1.1
 
-The legacy Android client, [1.1.1.1 + WARP: Safer Internet ↗](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone), has been replaced by the Cloudflare One Agent. Learn more in our [migration guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/cloudflare-one-agent-migration/).
+The legacy Android client, [1.1.1.1 + WARP: Safer Internet ↗︎](https://play.google.com/store/apps/details?id=com.cloudflare.onedotonedotonedotone), has been replaced by the Cloudflare One Agent. Learn more in our [migration guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/cloudflare-one-agent-migration/).
 
-The Cloudflare One Client for Android, known in the Google Play store as [Cloudflare One Agent ↗](https://play.google.com/store/apps/details?id=com.cloudflare.cloudflareoneagent), allows for an automated install via tools like Intune, Google Endpoint Manager, and others.
+The Cloudflare One Client for Android, known in the Google Play store as [Cloudflare One Agent ↗︎](https://play.google.com/store/apps/details?id=com.cloudflare.cloudflareoneagent), allows for an automated install via tools like Intune, Google Endpoint Manager, and others.
 
 To proceed with the installation, here is an example of the XML code you will need:
 

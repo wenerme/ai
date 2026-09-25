@@ -52,7 +52,7 @@ Use separate adapter instances for bidirectional audio. Video ingest over the We
 
 ## Learn with an example
 
-The [AI audio guide](https://developers.cloudflare.com/realtime/sfu/examples/ai-audio/) shows speech generation and transcription through separate adapter paths. For video, the [WebRTC-to-JPEG example ↗](https://github.com/cloudflare/realtime-examples/tree/main/video-to-jpeg) receives frames in a Durable Object and distributes them to viewers.
+The [AI audio guide](https://developers.cloudflare.com/realtime/sfu/examples/ai-audio/) shows speech generation and transcription through separate adapter paths. For video, the [WebRTC-to-JPEG example ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/video-to-jpeg) receives frames in a Durable Object and distributes them to viewers.
 
 Both examples are experimental and require application authentication and authorization before public use. Their repository guides describe setup and integration limitations.
 

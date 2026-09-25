@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/google-cloud-hsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial uses [Google Cloud HSM ↗](https://cloud.google.com/kms/docs/hsm) — a FIPS 140-2 Level 3 certified implementation.
+This tutorial uses [Google Cloud HSM ↗︎](https://cloud.google.com/kms/docs/hsm) — a FIPS 140-2 Level 3 certified implementation.
 
 ---
 
@@ -22,17 +22,17 @@ This tutorial uses [Google Cloud HSM ↗](https://cloud.google.com/kms/docs/hsm)
 
 Make sure that you have:
 
-- Set up your [Google Cloud project ↗](https://cloud.google.com/kms/docs/quickstart#before-you-begin)
+- Set up your [Google Cloud project ↗︎](https://cloud.google.com/kms/docs/quickstart#before-you-begin)
 
 ---
 
 ## 1. Create a key ring
 
-To set up the Google Cloud HSM, [create a key ring ↗](https://cloud.google.com/kms/docs/hsm#kms-create-key-hsm-web) and indicate its location.
+To set up the Google Cloud HSM, [create a key ring ↗︎](https://cloud.google.com/kms/docs/hsm#kms-create-key-hsm-web) and indicate its location.
 
 Note:
 
-Only [certain locations ↗](https://cloud.google.com/kms/docs/locations#hsm-regions) support Google Cloud HSM.
+Only [certain locations ↗︎](https://cloud.google.com/kms/docs/locations#hsm-regions) support Google Cloud HSM.
 
 ---
 
@@ -50,11 +50,11 @@ Create a key, including the following information:
 
 ## 3. Import the private key
 
-After creating a key ring and key, [import the private key ↗](https://cloud.google.com/kms/docs/importing-a-key).
+After creating a key ring and key, [import the private key ↗︎](https://cloud.google.com/kms/docs/importing-a-key).
 
 Note:
 
-You need to [convert your key ↗](https://cloud.google.com/kms/docs/formatting-keys-for-import#formatting_asymmetric_keys) from a PEM to DER format.
+You need to [convert your key ↗︎](https://cloud.google.com/kms/docs/formatting-keys-for-import#formatting_asymmetric_keys) from a PEM to DER format.
 
 ---
 

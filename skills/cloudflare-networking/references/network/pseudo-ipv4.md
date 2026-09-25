@@ -30,7 +30,7 @@ To allow IPv6-only clients to connect to IPv4-only origin web servers, keep [IPv
 
 Some older origin server analytics and fraud detection software expect IP addresses in an IPv4 format and do not support IPv6 addresses.
 
-**Pseudo IPv4** uses the [Class E IPv4 address space ↗](https://tools.ietf.org/html/rfc1112#section-4) to provide as many unique IPv4 addresses corresponding to IPv6 addresses as possible.
+**Pseudo IPv4** uses the [Class E IPv4 address space ↗︎](https://tools.ietf.org/html/rfc1112#section-4) to provide as many unique IPv4 addresses corresponding to IPv6 addresses as possible.
 
 - Example Class E IPv4 address: `240.16.0.1`
 - Example IPv6 address: `2400:cb00:f00d:dead:beef:1111:2222:3333`

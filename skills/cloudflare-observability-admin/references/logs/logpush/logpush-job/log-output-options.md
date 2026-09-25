@@ -56,7 +56,7 @@ When you update a Logpush job via `PUT /accounts/{account_id}/logpush/jobs/{job_
 
 By default Logpush outputs each record as a single line of JSON (also known as `ndjson`).
 
-With **output\_options** you can switch to CSV or single JSON object, further customize prefixes, suffixes, delimiters, or provide your own record template (in a stripped-down version of Go [text/template ↗](https://pkg.go.dev/text/template) syntax).
+With **output\_options** you can switch to CSV or single JSON object, further customize prefixes, suffixes, delimiters, or provide your own record template (in a stripped-down version of Go [text/template ↗︎](https://pkg.go.dev/text/template) syntax).
 
 The **output\_options** object has the following settings:
 

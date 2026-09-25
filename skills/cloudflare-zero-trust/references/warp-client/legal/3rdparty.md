@@ -94,7 +94,7 @@ Copyright 2014 Ilija Tovilo
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-[http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0)
+[http://www.apache.org/licenses/LICENSE-2.0 ↗︎](http://www.apache.org/licenses/LICENSE-2.0)
 
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 
@@ -130,7 +130,7 @@ Overview of licenses:
 All license text:
 
 - ### BSD Zero Clause License #### Used by:
-  - [managed ↗](https://github.com/m-labs/rust-managed.git)
+  - [managed ↗︎](https://github.com/m-labs/rust-managed.git)
 
   Copyright (C) 2017 [whitequark@whitequark.org](mailto:whitequark@whitequark.org)
 
@@ -138,7 +138,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 - ### BSD Zero Clause License #### Used by:
-  - [smoltcp ↗](https://github.com/smoltcp-rs/smoltcp.git)
+  - [smoltcp ↗︎](https://github.com/smoltcp-rs/smoltcp.git)
 
   Copyright (C) 2016 [whitequark@whitequark.org](mailto:whitequark@whitequark.org)
 
@@ -146,132 +146,132 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 - ### Apache License 2.0 #### Used by:
-  - [addr ↗](https://github.com/addr-rs/addr)
-  - [addr2line ↗](https://github.com/gimli-rs/addr2line)
-  - [anyhow ↗](https://github.com/dtolnay/anyhow)
-  - [arc-swap ↗](https://github.com/vorner/arc-swap)
-  - [async-trait ↗](https://github.com/dtolnay/async-trait)
-  - [autocfg ↗](https://github.com/cuviper/autocfg)
-  - [backoff ↗](https://github.com/ihrwein/backoff)
-  - [backtrace ↗](https://github.com/rust-lang/backtrace-rs)
-  - [base64 ↗](https://github.com/marshallpierce/rust-base64)
-  - [bitflags ↗](https://github.com/bitflags/bitflags)
-  - [bumpalo ↗](https://github.com/fitzgen/bumpalo)
-  - [bzip2 ↗](https://github.com/alexcrichton/bzip2-rs)
-  - [bzip2-sys ↗](https://github.com/alexcrichton/bzip2-rs)
-  - [cache-padded ↗](https://github.com/stjepang/cache-padded)
-  - [cc ↗](https://github.com/alexcrichton/cc-rs)
-  - [cfg-if ↗](https://github.com/alexcrichton/cfg-if)
-  - [concurrent-queue ↗](https://github.com/stjepang/concurrent-queue)
-  - [core-foundation ↗](https://github.com/servo/core-foundation-rs)
-  - [core-foundation ↗](https://github.com/servo/core-foundation-rs)
-  - [core-foundation ↗](https://github.com/servo/core-foundation-rs)
-  - [core-foundation-sys ↗](https://github.com/servo/core-foundation-rs)
-  - [core-foundation-sys ↗](https://github.com/servo/core-foundation-rs)
-  - [core-foundation-sys ↗](https://github.com/servo/core-foundation-rs)
-  - [crossbeam-channel ↗](https://github.com/crossbeam-rs/crossbeam)
-  - [crossbeam-queue ↗](https://github.com/crossbeam-rs/crossbeam)
-  - [crossbeam-utils ↗](https://github.com/crossbeam-rs/crossbeam)
-  - [ct-logs ↗](https://github.com/ctz/ct-logs)
-  - [either ↗](https://github.com/bluss/either)
-  - [errno ↗](https://github.com/lambda-fairy/rust-errno)
-  - [error-chain ↗](https://github.com/rust-lang-nursery/error-chain)
-  - [event-listener ↗](https://github.com/stjepang/event-listener)
-  - [flate2 ↗](https://github.com/rust-lang/flate2-rs)
-  - [fnv ↗](https://github.com/servo/rust-fnv)
-  - [form\_urlencoded ↗](https://github.com/servo/rust-url)
-  - [gcc ↗](https://github.com/alexcrichton/gcc-rs)
-  - [getopts ↗](https://github.com/rust-lang/getopts)
-  - [gimli ↗](https://github.com/gimli-rs/gimli)
-  - [hashbrown ↗](https://github.com/rust-lang/hashbrown)
-  - [heck ↗](https://github.com/withoutboats/heck)
-  - [hermit-abi ↗](https://github.com/hermitcore/libhermit-rs)
-  - [httparse ↗](https://github.com/seanmonstar/httparse)
-  - [hyper-rustls ↗](https://github.com/ctz/hyper-rustls)
-  - [idna ↗](https://github.com/servo/rust-url/)
-  - [indexmap ↗](https://github.com/bluss/indexmap)
-  - [itoa ↗](https://github.com/dtolnay/itoa)
-  - [jni ↗](https://github.com/jni-rs/jni-rs)
-  - [js-sys ↗](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/js-sys)
-  - [lazy\_static ↗](https://github.com/rust-lang-nursery/lazy-static.rs)
-  - [libc ↗](https://github.com/rust-lang/libc)
-  - [lock\_api ↗](https://github.com/Amanieu/parking_lot)
-  - [match\_cfg ↗](https://github.com/gnzlbg/match_cfg)
-  - [mime ↗](https://github.com/hyperium/mime)
-  - [miow ↗](https://github.com/yoshuawuyts/miow)
-  - [num ↗](https://github.com/rust-num/num)
-  - [num ↗](https://github.com/rust-num/num)
-  - [num-bigint ↗](https://github.com/rust-num/num-bigint)
-  - [num-complex ↗](https://github.com/rust-num/num-complex)
-  - [num-complex ↗](https://github.com/rust-num/num-complex)
-  - [num-integer ↗](https://github.com/rust-num/num-integer)
-  - [num-iter ↗](https://github.com/rust-num/num-iter)
-  - [num-rational ↗](https://github.com/rust-num/num-rational)
-  - [num-rational ↗](https://github.com/rust-num/num-rational)
-  - [num-traits ↗](https://github.com/rust-num/num-traits)
-  - [num\_cpus ↗](https://github.com/seanmonstar/num_cpus)
-  - [object ↗](https://github.com/gimli-rs/object)
-  - [once\_cell ↗](https://github.com/matklad/once_cell)
-  - [openssl-probe ↗](https://github.com/alexcrichton/openssl-probe)
-  - [parking\_lot ↗](https://github.com/Amanieu/parking_lot)
-  - [parking\_lot\_core ↗](https://github.com/Amanieu/parking_lot)
-  - [paste ↗](https://github.com/dtolnay/paste)
-  - [percent-encoding ↗](https://github.com/servo/rust-url/)
-  - [pfctl ↗](https://github.com/mullvad/pfctl-rs)
-  - [pkg-config ↗](https://github.com/rust-lang/pkg-config-rs)
-  - [proc-macro-hack ↗](https://github.com/dtolnay/proc-macro-hack)
-  - [proc-macro-nested ↗](https://github.com/dtolnay/proc-macro-hack)
-  - [proc-macro2 ↗](https://github.com/alexcrichton/proc-macro2)
-  - [quote ↗](https://github.com/dtolnay/quote)
-  - [regex ↗](https://github.com/rust-lang/regex)
-  - [regex-syntax ↗](https://github.com/rust-lang/regex)
-  - [reqwest ↗](https://github.com/seanmonstar/reqwest)
-  - [rustc-demangle ↗](https://github.com/alexcrichton/rustc-demangle)
-  - [rustls-native-certs ↗](https://github.com/ctz/rustls-native-certs)
-  - [rustversion ↗](https://github.com/dtolnay/rustversion)
-  - [scopeguard ↗](https://github.com/bluss/scopeguard)
-  - [sct ↗](https://github.com/ctz/sct.rs)
-  - [secret-service ↗](https://github.com/hwchen/secret-service-rs.git)
-  - [semver ↗](https://github.com/dtolnay/semver)
-  - [serde ↗](https://github.com/serde-rs/serde)
-  - [serde\_derive ↗](https://github.com/serde-rs/serde)
-  - [serde\_json ↗](https://github.com/serde-rs/json)
-  - [serde\_repr ↗](https://github.com/dtolnay/serde-repr)
-  - [signal-hook-registry ↗](https://github.com/vorner/signal-hook)
-  - [size\_format ↗](https://github.com/aticu/size_format)
-  - [slog ↗](https://github.com/slog-rs/slog)
-  - [slog-async ↗](https://github.com/slog-rs/async)
-  - [slog-scope ↗](https://github.com/slog-rs/scope)
-  - [slog-stdlog ↗](https://github.com/slog-rs/stdlog)
-  - [slog-term ↗](https://github.com/slog-rs/term)
-  - [smallvec ↗](https://github.com/servo/rust-smallvec)
-  - [socket2 ↗](https://github.com/alexcrichton/socket2-rs)
-  - [socket2 ↗](https://github.com/rust-lang/socket2)
-  - [syn ↗](https://github.com/dtolnay/syn)
-  - [tempfile ↗](https://github.com/Stebalien/tempfile)
-  - [term ↗](https://github.com/Stebalien/term)
-  - [thiserror ↗](https://github.com/dtolnay/thiserror)
-  - [thiserror-impl ↗](https://github.com/dtolnay/thiserror)
-  - [thread\_local ↗](https://github.com/Amanieu/thread_local-rs)
-  - [time ↗](https://github.com/time-rs/time)
-  - [toml ↗](https://github.com/alexcrichton/toml-rs)
-  - [tungstenite ↗](https://github.com/snapview/tungstenite-rs)
-  - [unicode-bidi ↗](https://github.com/servo/unicode-bidi)
-  - [unicode-normalization ↗](https://github.com/unicode-rs/unicode-normalization)
-  - [unicode-segmentation ↗](https://github.com/unicode-rs/unicode-segmentation)
-  - [unicode-width ↗](https://github.com/unicode-rs/unicode-width)
-  - [unicode-xid ↗](https://github.com/unicode-rs/unicode-xid)
-  - [url ↗](https://github.com/servo/rust-url)
-  - [version\_check ↗](https://github.com/SergioBenitez/version_check)
-  - [wasi ↗](https://github.com/bytecodealliance/wasi)
-  - [wasi ↗](https://github.com/bytecodealliance/wasi)
-  - [wasm-bindgen ↗](https://github.com/rustwasm/wasm-bindgen)
-  - [wasm-bindgen-backend ↗](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/backend)
-  - [wasm-bindgen-futures ↗](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/futures)
-  - [wasm-bindgen-macro ↗](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/macro)
-  - [wasm-bindgen-macro-support ↗](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/macro-support)
-  - [wasm-bindgen-shared ↗](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/shared)
-  - [web-sys ↗](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/web-sys)
+  - [addr ↗︎](https://github.com/addr-rs/addr)
+  - [addr2line ↗︎](https://github.com/gimli-rs/addr2line)
+  - [anyhow ↗︎](https://github.com/dtolnay/anyhow)
+  - [arc-swap ↗︎](https://github.com/vorner/arc-swap)
+  - [async-trait ↗︎](https://github.com/dtolnay/async-trait)
+  - [autocfg ↗︎](https://github.com/cuviper/autocfg)
+  - [backoff ↗︎](https://github.com/ihrwein/backoff)
+  - [backtrace ↗︎](https://github.com/rust-lang/backtrace-rs)
+  - [base64 ↗︎](https://github.com/marshallpierce/rust-base64)
+  - [bitflags ↗︎](https://github.com/bitflags/bitflags)
+  - [bumpalo ↗︎](https://github.com/fitzgen/bumpalo)
+  - [bzip2 ↗︎](https://github.com/alexcrichton/bzip2-rs)
+  - [bzip2-sys ↗︎](https://github.com/alexcrichton/bzip2-rs)
+  - [cache-padded ↗︎](https://github.com/stjepang/cache-padded)
+  - [cc ↗︎](https://github.com/alexcrichton/cc-rs)
+  - [cfg-if ↗︎](https://github.com/alexcrichton/cfg-if)
+  - [concurrent-queue ↗︎](https://github.com/stjepang/concurrent-queue)
+  - [core-foundation ↗︎](https://github.com/servo/core-foundation-rs)
+  - [core-foundation ↗︎](https://github.com/servo/core-foundation-rs)
+  - [core-foundation ↗︎](https://github.com/servo/core-foundation-rs)
+  - [core-foundation-sys ↗︎](https://github.com/servo/core-foundation-rs)
+  - [core-foundation-sys ↗︎](https://github.com/servo/core-foundation-rs)
+  - [core-foundation-sys ↗︎](https://github.com/servo/core-foundation-rs)
+  - [crossbeam-channel ↗︎](https://github.com/crossbeam-rs/crossbeam)
+  - [crossbeam-queue ↗︎](https://github.com/crossbeam-rs/crossbeam)
+  - [crossbeam-utils ↗︎](https://github.com/crossbeam-rs/crossbeam)
+  - [ct-logs ↗︎](https://github.com/ctz/ct-logs)
+  - [either ↗︎](https://github.com/bluss/either)
+  - [errno ↗︎](https://github.com/lambda-fairy/rust-errno)
+  - [error-chain ↗︎](https://github.com/rust-lang-nursery/error-chain)
+  - [event-listener ↗︎](https://github.com/stjepang/event-listener)
+  - [flate2 ↗︎](https://github.com/rust-lang/flate2-rs)
+  - [fnv ↗︎](https://github.com/servo/rust-fnv)
+  - [form\_urlencoded ↗︎](https://github.com/servo/rust-url)
+  - [gcc ↗︎](https://github.com/alexcrichton/gcc-rs)
+  - [getopts ↗︎](https://github.com/rust-lang/getopts)
+  - [gimli ↗︎](https://github.com/gimli-rs/gimli)
+  - [hashbrown ↗︎](https://github.com/rust-lang/hashbrown)
+  - [heck ↗︎](https://github.com/withoutboats/heck)
+  - [hermit-abi ↗︎](https://github.com/hermitcore/libhermit-rs)
+  - [httparse ↗︎](https://github.com/seanmonstar/httparse)
+  - [hyper-rustls ↗︎](https://github.com/ctz/hyper-rustls)
+  - [idna ↗︎](https://github.com/servo/rust-url/)
+  - [indexmap ↗︎](https://github.com/bluss/indexmap)
+  - [itoa ↗︎](https://github.com/dtolnay/itoa)
+  - [jni ↗︎](https://github.com/jni-rs/jni-rs)
+  - [js-sys ↗︎](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/js-sys)
+  - [lazy\_static ↗︎](https://github.com/rust-lang-nursery/lazy-static.rs)
+  - [libc ↗︎](https://github.com/rust-lang/libc)
+  - [lock\_api ↗︎](https://github.com/Amanieu/parking_lot)
+  - [match\_cfg ↗︎](https://github.com/gnzlbg/match_cfg)
+  - [mime ↗︎](https://github.com/hyperium/mime)
+  - [miow ↗︎](https://github.com/yoshuawuyts/miow)
+  - [num ↗︎](https://github.com/rust-num/num)
+  - [num ↗︎](https://github.com/rust-num/num)
+  - [num-bigint ↗︎](https://github.com/rust-num/num-bigint)
+  - [num-complex ↗︎](https://github.com/rust-num/num-complex)
+  - [num-complex ↗︎](https://github.com/rust-num/num-complex)
+  - [num-integer ↗︎](https://github.com/rust-num/num-integer)
+  - [num-iter ↗︎](https://github.com/rust-num/num-iter)
+  - [num-rational ↗︎](https://github.com/rust-num/num-rational)
+  - [num-rational ↗︎](https://github.com/rust-num/num-rational)
+  - [num-traits ↗︎](https://github.com/rust-num/num-traits)
+  - [num\_cpus ↗︎](https://github.com/seanmonstar/num_cpus)
+  - [object ↗︎](https://github.com/gimli-rs/object)
+  - [once\_cell ↗︎](https://github.com/matklad/once_cell)
+  - [openssl-probe ↗︎](https://github.com/alexcrichton/openssl-probe)
+  - [parking\_lot ↗︎](https://github.com/Amanieu/parking_lot)
+  - [parking\_lot\_core ↗︎](https://github.com/Amanieu/parking_lot)
+  - [paste ↗︎](https://github.com/dtolnay/paste)
+  - [percent-encoding ↗︎](https://github.com/servo/rust-url/)
+  - [pfctl ↗︎](https://github.com/mullvad/pfctl-rs)
+  - [pkg-config ↗︎](https://github.com/rust-lang/pkg-config-rs)
+  - [proc-macro-hack ↗︎](https://github.com/dtolnay/proc-macro-hack)
+  - [proc-macro-nested ↗︎](https://github.com/dtolnay/proc-macro-hack)
+  - [proc-macro2 ↗︎](https://github.com/alexcrichton/proc-macro2)
+  - [quote ↗︎](https://github.com/dtolnay/quote)
+  - [regex ↗︎](https://github.com/rust-lang/regex)
+  - [regex-syntax ↗︎](https://github.com/rust-lang/regex)
+  - [reqwest ↗︎](https://github.com/seanmonstar/reqwest)
+  - [rustc-demangle ↗︎](https://github.com/alexcrichton/rustc-demangle)
+  - [rustls-native-certs ↗︎](https://github.com/ctz/rustls-native-certs)
+  - [rustversion ↗︎](https://github.com/dtolnay/rustversion)
+  - [scopeguard ↗︎](https://github.com/bluss/scopeguard)
+  - [sct ↗︎](https://github.com/ctz/sct.rs)
+  - [secret-service ↗︎](https://github.com/hwchen/secret-service-rs.git)
+  - [semver ↗︎](https://github.com/dtolnay/semver)
+  - [serde ↗︎](https://github.com/serde-rs/serde)
+  - [serde\_derive ↗︎](https://github.com/serde-rs/serde)
+  - [serde\_json ↗︎](https://github.com/serde-rs/json)
+  - [serde\_repr ↗︎](https://github.com/dtolnay/serde-repr)
+  - [signal-hook-registry ↗︎](https://github.com/vorner/signal-hook)
+  - [size\_format ↗︎](https://github.com/aticu/size_format)
+  - [slog ↗︎](https://github.com/slog-rs/slog)
+  - [slog-async ↗︎](https://github.com/slog-rs/async)
+  - [slog-scope ↗︎](https://github.com/slog-rs/scope)
+  - [slog-stdlog ↗︎](https://github.com/slog-rs/stdlog)
+  - [slog-term ↗︎](https://github.com/slog-rs/term)
+  - [smallvec ↗︎](https://github.com/servo/rust-smallvec)
+  - [socket2 ↗︎](https://github.com/alexcrichton/socket2-rs)
+  - [socket2 ↗︎](https://github.com/rust-lang/socket2)
+  - [syn ↗︎](https://github.com/dtolnay/syn)
+  - [tempfile ↗︎](https://github.com/Stebalien/tempfile)
+  - [term ↗︎](https://github.com/Stebalien/term)
+  - [thiserror ↗︎](https://github.com/dtolnay/thiserror)
+  - [thiserror-impl ↗︎](https://github.com/dtolnay/thiserror)
+  - [thread\_local ↗︎](https://github.com/Amanieu/thread_local-rs)
+  - [time ↗︎](https://github.com/time-rs/time)
+  - [toml ↗︎](https://github.com/alexcrichton/toml-rs)
+  - [tungstenite ↗︎](https://github.com/snapview/tungstenite-rs)
+  - [unicode-bidi ↗︎](https://github.com/servo/unicode-bidi)
+  - [unicode-normalization ↗︎](https://github.com/unicode-rs/unicode-normalization)
+  - [unicode-segmentation ↗︎](https://github.com/unicode-rs/unicode-segmentation)
+  - [unicode-width ↗︎](https://github.com/unicode-rs/unicode-width)
+  - [unicode-xid ↗︎](https://github.com/unicode-rs/unicode-xid)
+  - [url ↗︎](https://github.com/servo/rust-url)
+  - [version\_check ↗︎](https://github.com/SergioBenitez/version_check)
+  - [wasi ↗︎](https://github.com/bytecodealliance/wasi)
+  - [wasi ↗︎](https://github.com/bytecodealliance/wasi)
+  - [wasm-bindgen ↗︎](https://github.com/rustwasm/wasm-bindgen)
+  - [wasm-bindgen-backend ↗︎](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/backend)
+  - [wasm-bindgen-futures ↗︎](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/futures)
+  - [wasm-bindgen-macro ↗︎](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/macro)
+  - [wasm-bindgen-macro-support ↗︎](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/macro-support)
+  - [wasm-bindgen-shared ↗︎](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/shared)
+  - [web-sys ↗︎](https://github.com/rustwasm/wasm-bindgen/tree/master/crates/web-sys)
 
     ```plaintext
                           Apache License
@@ -336,7 +336,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [adler ↗](https://github.com/jonas-schievink/adler.git)
+  - [adler ↗︎](https://github.com/jonas-schievink/adler.git)
 
     ```plaintext
                           Apache License
@@ -401,29 +401,29 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [aes ↗](https://github.com/RustCrypto/block-ciphers)
-  - [aes-soft ↗](https://github.com/RustCrypto/block-ciphers)
-  - [aesni ↗](https://github.com/RustCrypto/block-ciphers)
-  - [block-buffer ↗](https://github.com/RustCrypto/utils)
-  - [block-buffer ↗](https://github.com/RustCrypto/utils)
-  - [block-modes ↗](https://github.com/RustCrypto/block-ciphers)
-  - [block-padding ↗](https://github.com/RustCrypto/utils)
-  - [block-padding ↗](https://github.com/RustCrypto/utils)
-  - [byte-tools ↗](https://github.com/RustCrypto/utils)
-  - [cipher ↗](https://github.com/RustCrypto/traits)
-  - [cpufeatures ↗](https://github.com/RustCrypto/utils)
-  - [crypto-mac ↗](https://github.com/RustCrypto/traits)
-  - [crypto-mac ↗](https://github.com/RustCrypto/traits)
-  - [digest ↗](https://github.com/RustCrypto/traits)
-  - [digest ↗](https://github.com/RustCrypto/traits)
-  - [fake-simd ↗](https://github.com/RustCrypto/utils)
-  - [hmac ↗](https://github.com/RustCrypto/MACs)
-  - [hmac ↗](https://github.com/RustCrypto/MACs)
-  - [opaque-debug ↗](https://github.com/RustCrypto/utils)
-  - [opaque-debug ↗](https://github.com/RustCrypto/utils)
-  - [sha-1 ↗](https://github.com/RustCrypto/hashes)
-  - [sha2 ↗](https://github.com/RustCrypto/hashes)
-  - [sha2 ↗](https://github.com/RustCrypto/hashes)
+  - [aes ↗︎](https://github.com/RustCrypto/block-ciphers)
+  - [aes-soft ↗︎](https://github.com/RustCrypto/block-ciphers)
+  - [aesni ↗︎](https://github.com/RustCrypto/block-ciphers)
+  - [block-buffer ↗︎](https://github.com/RustCrypto/utils)
+  - [block-buffer ↗︎](https://github.com/RustCrypto/utils)
+  - [block-modes ↗︎](https://github.com/RustCrypto/block-ciphers)
+  - [block-padding ↗︎](https://github.com/RustCrypto/utils)
+  - [block-padding ↗︎](https://github.com/RustCrypto/utils)
+  - [byte-tools ↗︎](https://github.com/RustCrypto/utils)
+  - [cipher ↗︎](https://github.com/RustCrypto/traits)
+  - [cpufeatures ↗︎](https://github.com/RustCrypto/utils)
+  - [crypto-mac ↗︎](https://github.com/RustCrypto/traits)
+  - [crypto-mac ↗︎](https://github.com/RustCrypto/traits)
+  - [digest ↗︎](https://github.com/RustCrypto/traits)
+  - [digest ↗︎](https://github.com/RustCrypto/traits)
+  - [fake-simd ↗︎](https://github.com/RustCrypto/utils)
+  - [hmac ↗︎](https://github.com/RustCrypto/MACs)
+  - [hmac ↗︎](https://github.com/RustCrypto/MACs)
+  - [opaque-debug ↗︎](https://github.com/RustCrypto/utils)
+  - [opaque-debug ↗︎](https://github.com/RustCrypto/utils)
+  - [sha-1 ↗︎](https://github.com/RustCrypto/hashes)
+  - [sha2 ↗︎](https://github.com/RustCrypto/hashes)
+  - [sha2 ↗︎](https://github.com/RustCrypto/hashes)
 
     ```plaintext
                           Apache License
@@ -482,13 +482,13 @@ All license text:
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-  [http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0)
+  [http://www.apache.org/licenses/LICENSE-2.0 ↗︎](http://www.apache.org/licenses/LICENSE-2.0)
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [ascii ↗](https://github.com/tomprogrammer/rust-ascii)
+  - [ascii ↗︎](https://github.com/tomprogrammer/rust-ascii)
 
-  Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗](http://www.apache.org/licenses/)
+  Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗︎](http://www.apache.org/licenses/)
 
   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   1. Definitions.
@@ -556,11 +556,11 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [async-channel ↗](https://github.com/smol-rs/async-channel)
-  - [ipconfig ↗](https://github.com/liranringel/ipconfig)
-  - [log ↗](https://github.com/rust-lang/log)
-  - [safemem ↗](https://github.com/abonander/safemem)
-  - [uuid ↗](https://github.com/uuid-rs/uuid)
+  - [async-channel ↗︎](https://github.com/smol-rs/async-channel)
+  - [ipconfig ↗︎](https://github.com/liranringel/ipconfig)
+  - [log ↗︎](https://github.com/rust-lang/log)
+  - [safemem ↗︎](https://github.com/abonander/safemem)
+  - [uuid ↗︎](https://github.com/uuid-rs/uuid)
 
     ```plaintext
                           Apache License
@@ -625,23 +625,23 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [cesu8 ↗](https://github.com/emk/cesu8-rs)
-  - [ident\_case ↗](https://github.com/TedDriggs/ident_case)
-  - [ioctl-sys ↗](https://github.com/jmesmon/ioctl)
-  - [psl ↗](https://github.com/addr-rs/psl)
-  - [psl-types ↗](https://github.com/addr-rs/psl-types)
-  - [rustls ↗](https://github.com/ctz/rustls)
-  - [security-framework ↗](https://github.com/kornelski/rust-security-framework)
-  - [security-framework ↗](https://github.com/kornelski/rust-security-framework)
-  - [security-framework-sys ↗](https://github.com/kornelski/rust-security-framework)
-  - [security-framework-sys ↗](https://github.com/kornelski/rust-security-framework)
-  - [system-configuration ↗](https://github.com/mullvad/system-configuration-rs)
-  - [system-configuration-sys ↗](https://github.com/mullvad/system-configuration-rs)
-  - [tinyvec\_macros ↗](https://github.com/Soveu/tinyvec_macros)
-  - [winapi-i686-pc-windows-gnu ↗](https://github.com/retep998/winapi-rs)
-  - [winapi-x86\_64-pc-windows-gnu ↗](https://github.com/retep998/winapi-rs)
+  - [cesu8 ↗︎](https://github.com/emk/cesu8-rs)
+  - [ident\_case ↗︎](https://github.com/TedDriggs/ident_case)
+  - [ioctl-sys ↗︎](https://github.com/jmesmon/ioctl)
+  - [psl ↗︎](https://github.com/addr-rs/psl)
+  - [psl-types ↗︎](https://github.com/addr-rs/psl-types)
+  - [rustls ↗︎](https://github.com/ctz/rustls)
+  - [security-framework ↗︎](https://github.com/kornelski/rust-security-framework)
+  - [security-framework ↗︎](https://github.com/kornelski/rust-security-framework)
+  - [security-framework-sys ↗︎](https://github.com/kornelski/rust-security-framework)
+  - [security-framework-sys ↗︎](https://github.com/kornelski/rust-security-framework)
+  - [system-configuration ↗︎](https://github.com/mullvad/system-configuration-rs)
+  - [system-configuration-sys ↗︎](https://github.com/mullvad/system-configuration-rs)
+  - [tinyvec\_macros ↗︎](https://github.com/Soveu/tinyvec_macros)
+  - [winapi-i686-pc-windows-gnu ↗︎](https://github.com/retep998/winapi-rs)
+  - [winapi-x86\_64-pc-windows-gnu ↗︎](https://github.com/retep998/winapi-rs)
 
-  Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗](http://www.apache.org/licenses/)
+  Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗︎](http://www.apache.org/licenses/)
 
   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   1. Definitions.
@@ -694,17 +694,17 @@ All license text:
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-  [http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0)
+  [http://www.apache.org/licenses/LICENSE-2.0 ↗︎](http://www.apache.org/licenses/LICENSE-2.0)
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [chrono ↗](https://github.com/chronotope/chrono)
+  - [chrono ↗︎](https://github.com/chronotope/chrono)
 
   Rust-chrono is dual-licensed under The MIT License \[1] and Apache 2.0 License \[2]. Copyright (c) 2014--2017, Kang Seonghoon and contributors.
 
   Nota Bene: This is same as the Rust Project's own license.
 
-  \[1]: [http://opensource.org/licenses/MIT ↗](http://opensource.org/licenses/MIT), which is reproduced below:
+  \[1]: [http://opensource.org/licenses/MIT ↗︎](http://opensource.org/licenses/MIT), which is reproduced below:
 
   ```plaintext
   The MIT License (MIT)
@@ -730,7 +730,7 @@ All license text:
   THE SOFTWARE.
   ```
 
-  \[2]: [http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0), which is reproduced below:
+  \[2]: [http://www.apache.org/licenses/LICENSE-2.0 ↗︎](http://www.apache.org/licenses/LICENSE-2.0), which is reproduced below:
 
   ```plaintext
                                 Apache License
@@ -938,20 +938,20 @@ All license text:
 
 
 - ### Apache License 2.0 #### Used by:
-  - [crc32fast ↗](https://github.com/srijs/rust-crc32fast)
-  - [derive\_builder ↗](https://github.com/colin-kiegel/rust-derive-builder)
-  - [derive\_builder\_core ↗](https://github.com/colin-kiegel/rust-derive-builder)
-  - [enum-as-inner ↗](https://github.com/bluejekyll/enum-as-inner)
-  - [hex ↗](https://github.com/KokaKiwi/rust-hex)
-  - [jni-sys ↗](https://github.com/sfackler/rust-jni-sys)
-  - [log-panics ↗](https://github.com/sfackler/rust-log-panics)
-  - [quick-error ↗](http://github.com/tailhook/quick-error)
-  - [resolv-conf ↗](http://github.com/tailhook/resolv-conf)
-  - [trust-dns-https ↗](https://github.com/bluejekyll/trust-dns)
-  - [trust-dns-proto ↗](https://github.com/bluejekyll/trust-dns)
-  - [trust-dns-resolver ↗](https://github.com/bluejekyll/trust-dns)
-  - [trust-dns-rustls ↗](https://github.com/bluejekyll/trust-dns)
-  - [unreachable ↗](https://github.com/reem/rust-unreachable.git)
+  - [crc32fast ↗︎](https://github.com/srijs/rust-crc32fast)
+  - [derive\_builder ↗︎](https://github.com/colin-kiegel/rust-derive-builder)
+  - [derive\_builder\_core ↗︎](https://github.com/colin-kiegel/rust-derive-builder)
+  - [enum-as-inner ↗︎](https://github.com/bluejekyll/enum-as-inner)
+  - [hex ↗︎](https://github.com/KokaKiwi/rust-hex)
+  - [jni-sys ↗︎](https://github.com/sfackler/rust-jni-sys)
+  - [log-panics ↗︎](https://github.com/sfackler/rust-log-panics)
+  - [quick-error ↗︎](http://github.com/tailhook/quick-error)
+  - [resolv-conf ↗︎](http://github.com/tailhook/resolv-conf)
+  - [trust-dns-https ↗︎](https://github.com/bluejekyll/trust-dns)
+  - [trust-dns-proto ↗︎](https://github.com/bluejekyll/trust-dns)
+  - [trust-dns-resolver ↗︎](https://github.com/bluejekyll/trust-dns)
+  - [trust-dns-rustls ↗︎](https://github.com/bluejekyll/trust-dns)
+  - [unreachable ↗︎](https://github.com/reem/rust-unreachable.git)
 
     ```plaintext
                              Apache License
@@ -1025,9 +1025,9 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [dbus ↗](https://github.com/diwic/dbus-rs)
+  - [dbus ↗︎](https://github.com/diwic/dbus-rs)
 
-  Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗](http://www.apache.org/licenses/)
+  Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗︎](http://www.apache.org/licenses/)
 
   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   1. Definitions.
@@ -1095,10 +1095,10 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [dbus ↗](https://github.com/diwic/dbus-rs)
-  - [libdbus-sys ↗](https://github.com/diwic/dbus-rs)
+  - [dbus ↗︎](https://github.com/diwic/dbus-rs)
+  - [libdbus-sys ↗︎](https://github.com/diwic/dbus-rs)
 
-  Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗](http://www.apache.org/licenses/)
+  Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗︎](http://www.apache.org/licenses/)
 
   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   1. Definitions.
@@ -1166,7 +1166,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [deadqueue ↗](https://github.com/bikeshedder/deadqueue)
+  - [deadqueue ↗︎](https://github.com/bikeshedder/deadqueue)
 
     ```plaintext
                              Apache License
@@ -1240,9 +1240,9 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [diff ↗](https://github.com/utkarshkukreti/diff.rs)
-  - [ipnetwork ↗](https://github.com/achanda/ipnetwork)
-  - [winapi ↗](https://github.com/retep998/winapi-rs)
+  - [diff ↗︎](https://github.com/utkarshkukreti/diff.rs)
+  - [ipnetwork ↗︎](https://github.com/achanda/ipnetwork)
+  - [winapi ↗︎](https://github.com/retep998/winapi-rs)
 
     ```plaintext
                              Apache License
@@ -1316,10 +1316,10 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [dirs ↗](https://github.com/soc/dirs-rs)
-  - [dirs-next ↗](https://github.com/xdg-rs/dirs)
-  - [dirs-sys ↗](https://github.com/dirs-dev/dirs-sys-rs)
-  - [dirs-sys-next ↗](https://github.com/xdg-rs/dirs/tree/master/dirs-sys)
+  - [dirs ↗︎](https://github.com/soc/dirs-rs)
+  - [dirs-next ↗︎](https://github.com/xdg-rs/dirs)
+  - [dirs-sys ↗︎](https://github.com/dirs-dev/dirs-sys-rs)
+  - [dirs-sys-next ↗︎](https://github.com/xdg-rs/dirs/tree/master/dirs-sys)
 
     ```plaintext
                           Apache License
@@ -1368,8 +1368,8 @@ All license text:
   8. Limitation of Liability. In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall any Contributor be liable to You for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising as a result of this License or out of the use or inability to use the Work (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if such Contributor has been advised of the possibility of such damages.
   9. Accepting Warranty or Additional Liability. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.
 - ### Apache License 2.0 #### Used by:
-  - [encoding\_rs ↗](https://github.com/hsivonen/encoding_rs)
-  - [line-wrap ↗](https://bitbucket.org/marshallpierce/line-wrap-rs/src)
+  - [encoding\_rs ↗︎](https://github.com/hsivonen/encoding_rs)
+  - [line-wrap ↗︎](https://bitbucket.org/marshallpierce/line-wrap-rs/src)
 
     ```plaintext
                              Apache License
@@ -1443,7 +1443,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [err-derive ↗](https://gitlab.com/torkleyy/err-derive)
+  - [err-derive ↗︎](https://gitlab.com/torkleyy/err-derive)
 
     ```plaintext
                              Apache License
@@ -1517,15 +1517,15 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [futures ↗](https://github.com/rust-lang/futures-rs)
-  - [futures-channel ↗](https://github.com/rust-lang/futures-rs)
-  - [futures-core ↗](https://github.com/rust-lang/futures-rs)
-  - [futures-executor ↗](https://github.com/rust-lang/futures-rs)
-  - [futures-io ↗](https://github.com/rust-lang/futures-rs)
-  - [futures-macro ↗](https://github.com/rust-lang/futures-rs)
-  - [futures-sink ↗](https://github.com/rust-lang/futures-rs)
-  - [futures-task ↗](https://github.com/rust-lang/futures-rs)
-  - [futures-util ↗](https://github.com/rust-lang/futures-rs)
+  - [futures ↗︎](https://github.com/rust-lang/futures-rs)
+  - [futures-channel ↗︎](https://github.com/rust-lang/futures-rs)
+  - [futures-core ↗︎](https://github.com/rust-lang/futures-rs)
+  - [futures-executor ↗︎](https://github.com/rust-lang/futures-rs)
+  - [futures-io ↗︎](https://github.com/rust-lang/futures-rs)
+  - [futures-macro ↗︎](https://github.com/rust-lang/futures-rs)
+  - [futures-sink ↗︎](https://github.com/rust-lang/futures-rs)
+  - [futures-task ↗︎](https://github.com/rust-lang/futures-rs)
+  - [futures-util ↗︎](https://github.com/rust-lang/futures-rs)
 
     ```plaintext
                           Apache License
@@ -1590,16 +1590,16 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [getrandom ↗](https://github.com/rust-random/getrandom)
-  - [getrandom ↗](https://github.com/rust-random/getrandom)
-  - [rand ↗](https://github.com/rust-random/rand)
-  - [rand ↗](https://github.com/rust-random/rand)
-  - [rand\_chacha ↗](https://github.com/rust-random/rand)
-  - [rand\_chacha ↗](https://github.com/rust-random/rand)
-  - [rand\_core ↗](https://github.com/rust-random/rand)
-  - [rand\_core ↗](https://github.com/rust-random/rand)
-  - [rand\_hc ↗](https://github.com/rust-random/rand)
-  - [rand\_hc ↗](https://github.com/rust-random/rand)
+  - [getrandom ↗︎](https://github.com/rust-random/getrandom)
+  - [getrandom ↗︎](https://github.com/rust-random/getrandom)
+  - [rand ↗︎](https://github.com/rust-random/rand)
+  - [rand ↗︎](https://github.com/rust-random/rand)
+  - [rand\_chacha ↗︎](https://github.com/rust-random/rand)
+  - [rand\_chacha ↗︎](https://github.com/rust-random/rand)
+  - [rand\_core ↗︎](https://github.com/rust-random/rand)
+  - [rand\_core ↗︎](https://github.com/rust-random/rand)
+  - [rand\_hc ↗︎](https://github.com/rust-random/rand)
+  - [rand\_hc ↗︎](https://github.com/rust-random/rand)
 
     ```plaintext
                           Apache License
@@ -1664,7 +1664,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [hkdf ↗](https://github.com/RustCrypto/KDFs/)
+  - [hkdf ↗︎](https://github.com/RustCrypto/KDFs/)
 
     ```plaintext
                           Apache License
@@ -1723,11 +1723,11 @@ All license text:
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-  [http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0)
+  [http://www.apache.org/licenses/LICENSE-2.0 ↗︎](http://www.apache.org/licenses/LICENSE-2.0)
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [http ↗](https://github.com/hyperium/http)
+  - [http ↗︎](https://github.com/hyperium/http)
 
     ```plaintext
                           Apache License
@@ -1792,9 +1792,9 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [httpdate ↗](https://github.com/pyfisch/httpdate)
+  - [httpdate ↗︎](https://github.com/pyfisch/httpdate)
 
-  Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗](http://www.apache.org/licenses/)
+  Apache License Version 2.0, January 2004 [http://www.apache.org/licenses/ ↗︎](http://www.apache.org/licenses/)
 
   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
   1. Definitions.
@@ -1847,11 +1847,11 @@ All license text:
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-  [http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0)
+  [http://www.apache.org/licenses/LICENSE-2.0 ↗︎](http://www.apache.org/licenses/LICENSE-2.0)
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [io-kit-sys ↗](https://github.com/jtakakura/io-kit-rs)
+  - [io-kit-sys ↗︎](https://github.com/jtakakura/io-kit-rs)
 
     ```plaintext
                              Apache License
@@ -1925,7 +1925,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [ipnet ↗](https://github.com/krisprice/ipnet)
+  - [ipnet ↗︎](https://github.com/krisprice/ipnet)
 
     ```plaintext
                              Apache License
@@ -1999,7 +1999,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [keyring ↗](https://github.com/hwchen/keyring-rs.git)
+  - [keyring ↗︎](https://github.com/hwchen/keyring-rs.git)
 
     ```plaintext
                           Apache License
@@ -2064,10 +2064,10 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [linked-hash-map ↗](https://github.com/contain-rs/linked-hash-map)
-  - [lru-cache ↗](https://github.com/contain-rs/lru-cache)
-  - [process\_path ↗](https://github.com/wesleywiser/process_path)
-  - [vec\_map ↗](https://github.com/contain-rs/vec-map)
+  - [linked-hash-map ↗︎](https://github.com/contain-rs/linked-hash-map)
+  - [lru-cache ↗︎](https://github.com/contain-rs/lru-cache)
+  - [process\_path ↗︎](https://github.com/wesleywiser/process_path)
+  - [vec\_map ↗︎](https://github.com/contain-rs/vec-map)
 
     ```plaintext
                           Apache License
@@ -2132,10 +2132,10 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [miniz\_oxide ↗](https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide)
-  - [pin-project ↗](https://github.com/taiki-e/pin-project)
-  - [pin-project-internal ↗](https://github.com/taiki-e/pin-project)
-  - [pin-project-lite ↗](https://github.com/taiki-e/pin-project-lite)
+  - [miniz\_oxide ↗︎](https://github.com/Frommi/miniz_oxide/tree/master/miniz_oxide)
+  - [pin-project ↗︎](https://github.com/taiki-e/pin-project)
+  - [pin-project-internal ↗︎](https://github.com/taiki-e/pin-project)
+  - [pin-project-lite ↗︎](https://github.com/taiki-e/pin-project-lite)
 
     ```plaintext
                              Apache License
@@ -2186,7 +2186,7 @@ All license text:
 
   END OF TERMS AND CONDITIONS
 - ### Apache License 2.0 #### Used by:
-  - [ntapi ↗](https://github.com/MSxDOS/ntapi)
+  - [ntapi ↗︎](https://github.com/MSxDOS/ntapi)
 
     ```plaintext
                              Apache License
@@ -2260,7 +2260,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [pin-utils ↗](https://github.com/rust-lang-nursery/pin-utils)
+  - [pin-utils ↗︎](https://github.com/rust-lang-nursery/pin-utils)
 
     ```plaintext
                           Apache License
@@ -2325,7 +2325,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [ppv-lite86 ↗](https://github.com/cryptocorrosion/cryptocorrosion)
+  - [ppv-lite86 ↗︎](https://github.com/cryptocorrosion/cryptocorrosion)
 
     ```plaintext
                           Apache License
@@ -2384,11 +2384,11 @@ All license text:
 
   Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
-  [http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0)
+  [http://www.apache.org/licenses/LICENSE-2.0 ↗︎](http://www.apache.org/licenses/LICENSE-2.0)
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [proc-macro-error ↗](https://gitlab.com/CreepySkeleton/proc-macro-error)
+  - [proc-macro-error ↗︎](https://gitlab.com/CreepySkeleton/proc-macro-error)
 
     ```plaintext
                           Apache License
@@ -2453,7 +2453,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [proc-macro-error-attr ↗](https://gitlab.com/CreepySkeleton/proc-macro-error)
+  - [proc-macro-error-attr ↗︎](https://gitlab.com/CreepySkeleton/proc-macro-error)
 
     ```plaintext
                           Apache License
@@ -2518,7 +2518,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [remove\_dir\_all ↗](https://github.com/XAMPPRocky/remove_dir_all.git)
+  - [remove\_dir\_all ↗︎](https://github.com/XAMPPRocky/remove_dir_all.git)
 
     ```plaintext
                           Apache License
@@ -2579,7 +2579,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [rolling-file ↗](https://github.com/Axcient/rolling-file-rs)
+  - [rolling-file ↗︎](https://github.com/Axcient/rolling-file-rs)
 
   rolling-file is dual-licensed under The MIT License \[1] and Apache 2.0 License \[2].
 
@@ -2587,7 +2587,7 @@ All license text:
 
   This is same as the Rust Project's own license.
 
-  \[1]: [http://opensource.org/licenses/MIT ↗](http://opensource.org/licenses/MIT), which is reproduced below:
+  \[1]: [http://opensource.org/licenses/MIT ↗︎](http://opensource.org/licenses/MIT), which is reproduced below:
 
   ```plaintext
   The MIT License (MIT)
@@ -2613,7 +2613,7 @@ All license text:
   THE SOFTWARE.
   ```
 
-  \[2]: [http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0), which is reproduced below:
+  \[2]: [http://www.apache.org/licenses/LICENSE-2.0 ↗︎](http://www.apache.org/licenses/LICENSE-2.0), which is reproduced below:
 
   ```plaintext
                                 Apache License
@@ -2821,7 +2821,7 @@ All license text:
 
 
 - ### Apache License 2.0 #### Used by:
-  - [ryu ↗](https://github.com/dtolnay/ryu)
+  - [ryu ↗︎](https://github.com/dtolnay/ryu)
 
     ```plaintext
                              Apache License
@@ -2895,8 +2895,8 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [serde\_urlencoded ↗](https://github.com/nox/serde_urlencoded)
-  - [utf-8 ↗](https://github.com/SimonSapin/rust-utf8)
+  - [serde\_urlencoded ↗︎](https://github.com/nox/serde_urlencoded)
+  - [utf-8 ↗︎](https://github.com/SimonSapin/rust-utf8)
 
     ```plaintext
                           Apache License
@@ -2947,7 +2947,7 @@ All license text:
 
   END OF TERMS AND CONDITIONS
 - ### Apache License 2.0 #### Used by:
-  - [tinyvec ↗](https://github.com/Lokathor/tinyvec)
+  - [tinyvec ↗︎](https://github.com/Lokathor/tinyvec)
 
     ```plaintext
                              Apache License
@@ -3021,7 +3021,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [tokio-rustls ↗](https://github.com/tokio-rs/tls)
+  - [tokio-rustls ↗︎](https://github.com/tokio-rs/tls)
 
     ```plaintext
                           Apache License
@@ -3086,7 +3086,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [typenum ↗](https://github.com/paholg/typenum)
+  - [typenum ↗︎](https://github.com/paholg/typenum)
 
     ```plaintext
                           Apache License
@@ -3151,7 +3151,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [webbrowser ↗](https://github.com/amodm/webbrowser-rs)
+  - [webbrowser ↗︎](https://github.com/amodm/webbrowser-rs)
 
   Copyright (c) 2015 Amod Malviya
 
@@ -3214,7 +3214,7 @@ All license text:
 
   END OF TERMS AND CONDITIONS
 - ### Apache License 2.0 #### Used by:
-  - [widestring ↗](https://github.com/starkat99/widestring-rs.git)
+  - [widestring ↗︎](https://github.com/starkat99/widestring-rs.git)
 
     ```plaintext
                           Apache License
@@ -3279,7 +3279,7 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [windows-service ↗](https://github.com/mullvad/windows-service-rs)
+  - [windows-service ↗︎](https://github.com/mullvad/windows-service-rs)
 
     ```plaintext
                           Apache License
@@ -3344,11 +3344,11 @@ All license text:
 
   Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
 - ### Apache License 2.0 #### Used by:
-  - [winlog ↗](https://gitlab.com/arbitrix/winlog)
+  - [winlog ↗︎](https://gitlab.com/arbitrix/winlog)
 
   This software is licensed under either of
-  - Apache License, Version 2.0 ([http://www.apache.org/licenses/LICENSE-2.0 ↗](http://www.apache.org/licenses/LICENSE-2.0))
-  - MIT license ([http://opensource.org/licenses/MIT ↗](http://opensource.org/licenses/MIT))
+  - Apache License, Version 2.0 ([http://www.apache.org/licenses/LICENSE-2.0 ↗︎](http://www.apache.org/licenses/LICENSE-2.0))
+  - MIT license ([http://opensource.org/licenses/MIT ↗︎](http://opensource.org/licenses/MIT))
 
   at your option.
 
@@ -3434,7 +3434,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### BSD 2-Clause "Simplified" License #### Used by:
-  - [ip\_network ↗](https://github.com/JakubOnderka/ip_network)
+  - [ip\_network ↗︎](https://github.com/JakubOnderka/ip_network)
 
   Copyright (c) 2017, Jakub Onderka
 
@@ -3444,7 +3444,7 @@ All license text:
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 - ### BSD 2-Clause "Simplified" License #### Used by:
-  - [ip\_network\_table ↗](https://github.com/JakubOnderka/ip_network_table)
+  - [ip\_network\_table ↗︎](https://github.com/JakubOnderka/ip_network_table)
 
   Copyright (c) 2018, Jakub Onderka
 
@@ -3454,8 +3454,8 @@ All license text:
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 - ### BSD 2-Clause "Simplified" License #### Used by:
-  - [mach ↗](https://github.com/fitzgen/mach)
-  - [mach ↗](https://github.com/fitzgen/mach)
+  - [mach ↗︎](https://github.com/fitzgen/mach)
+  - [mach ↗︎](https://github.com/fitzgen/mach)
 
   Copyright (c) 2015, Nick Fitzgerald All rights reserved.
 
@@ -3465,8 +3465,8 @@ All license text:
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 - ### BSD 3-Clause "New" or "Revised" License #### Used by:
-  - [app-center ↗](https://github.com/vkrasnov/appcenter-rs)
-  - [codesign-verify ↗](https://github.com/vkrasnov/codesign-verify-rs)
+  - [app-center ↗︎](https://github.com/vkrasnov/appcenter-rs)
+  - [codesign-verify ↗︎](https://github.com/vkrasnov/codesign-verify-rs)
 
   BSD 3-Clause License
 
@@ -3479,7 +3479,7 @@ All license text:
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 - ### BSD 3-Clause "New" or "Revised" License #### Used by:
-  - [boringtun ↗](https://github.com/cloudflare/boringtun)
+  - [boringtun ↗︎](https://github.com/cloudflare/boringtun)
 
   Copyright (c) 2019 Cloudflare, Inc. All rights reserved.
 
@@ -3493,7 +3493,7 @@ All license text:
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 - ### BSD 3-Clause "New" or "Revised" License #### Used by:
-  - [etherparse ↗](https://github.com/JulianSchmid/etherparse)
+  - [etherparse ↗︎](https://github.com/JulianSchmid/etherparse)
 
   BSD 3-Clause License
 
@@ -3509,7 +3509,7 @@ All license text:
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 - ### BSD 3-Clause "New" or "Revised" License #### Used by:
-  - [instant ↗](https://github.com/sebcrozet/instant)
+  - [instant ↗︎](https://github.com/sebcrozet/instant)
 
   Copyright (c) 2019, Sébastien Crozet All rights reserved.
 
@@ -3520,7 +3520,7 @@ All license text:
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 - ### BSD 3-Clause "New" or "Revised" License #### Used by:
-  - [nel ↗](https://crates.io/crates/nel/0.1.4)
+  - [nel ↗︎](https://crates.io/crates/nel/0.1.4)
 
   Copyright 2021 Cloudflare, Inc. All rights reserved.
 
@@ -3531,7 +3531,7 @@ All license text:
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 - ### BSD 3-Clause "New" or "Revised" License #### Used by:
-  - [subtle ↗](https://github.com/dalek-cryptography/subtle)
+  - [subtle ↗︎](https://github.com/dalek-cryptography/subtle)
 
   Copyright (c) 2016-2017 Isis Agora Lovecruft, Henry de Valence. All rights reserved.
 
@@ -3542,11 +3542,11 @@ All license text:
 
   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 - ### BSD 3-Clause "New" or "Revised" License #### Used by:
-  - [webpki ↗](https://github.com/briansmith/webpki)
+  - [webpki ↗︎](https://github.com/briansmith/webpki)
 
   // Copyright 2015 The Chromium Authors. All rights reserved. // // Redistribution and use in source and binary forms, with or without // modification, are permitted provided that the following conditions are // met: // // \* Redistributions of source code must retain the above copyright // notice, this list of conditions and the following disclaimer. // \* Redistributions in binary form must reproduce the above // copyright notice, this list of conditions and the following disclaimer // in the documentation and/or other materials provided with the // distribution. // \* Neither the name of Google Inc. nor the names of its // contributors may be used to endorse or promote products derived from // this software without specific prior written permission. // // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS // "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT // LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR // A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT // OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, // SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT // LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, // DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY // THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 - ### ISC License #### Used by:
-  - [ring ↗](https://github.com/briansmith/ring)
+  - [ring ↗︎](https://github.com/briansmith/ring)
 
   // Copyright 2017 Brian Smith. // // Permission to use, copy, modify, and/or distribute this software for any // purpose with or without fee is hereby granted, provided that the above // copyright notice and this permission notice appear in all copies. // // THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHORS DISCLAIM ALL WARRANTIES // WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF // MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY // SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES // WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION // OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN // CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
@@ -3556,11 +3556,11 @@ All license text:
 
   pub mod montgomery;
 - ### ISC License #### Used by:
-  - [untrusted ↗](https://github.com/briansmith/untrusted)
+  - [untrusted ↗︎](https://github.com/briansmith/untrusted)
 
   // Copyright 2015-2016 Brian Smith. // // Permission to use, copy, modify, and/or distribute this software for any // purpose with or without fee is hereby granted, provided that the above // copyright notice and this permission notice appear in all copies. // // THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHORS DISCLAIM ALL WARRANTIES // WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF // MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR // ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES // WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 - ### ISC License #### Used by:
-  - [webpki ↗](https://github.com/briansmith/webpki)
+  - [webpki ↗︎](https://github.com/briansmith/webpki)
 
   Except as otherwise noted, this project is licensed under the following (ISC-style) terms:
 
@@ -3572,11 +3572,11 @@ All license text:
 
   The files under third-party/chromium are licensed as described in third-party/chromium/LICENSE.
 - ### MIT License #### Used by:
-  - [aho-corasick ↗](https://github.com/BurntSushi/aho-corasick)
-  - [byteorder ↗](https://github.com/BurntSushi/byteorder)
-  - [memchr ↗](https://github.com/BurntSushi/memchr)
-  - [regex-automata ↗](https://github.com/BurntSushi/regex-automata)
-  - [walkdir ↗](https://github.com/BurntSushi/walkdir)
+  - [aho-corasick ↗︎](https://github.com/BurntSushi/aho-corasick)
+  - [byteorder ↗︎](https://github.com/BurntSushi/byteorder)
+  - [memchr ↗︎](https://github.com/BurntSushi/memchr)
+  - [regex-automata ↗︎](https://github.com/BurntSushi/regex-automata)
+  - [walkdir ↗︎](https://github.com/BurntSushi/walkdir)
 
   The MIT License (MIT)
 
@@ -3588,7 +3588,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [ansi\_term ↗](https://crates.io/crates/ansi_term)
+  - [ansi\_term ↗︎](https://crates.io/crates/ansi_term)
 
   The MIT License (MIT)
 
@@ -3600,7 +3600,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [ansi\_term ↗](https://github.com/ogham/rust-ansi-term)
+  - [ansi\_term ↗︎](https://github.com/ogham/rust-ansi-term)
 
   The MIT License (MIT)
 
@@ -3612,7 +3612,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [atty ↗](https://github.com/softprops/atty)
+  - [atty ↗︎](https://github.com/softprops/atty)
 
   Copyright (c) 2015-2019 Doug Tangren
 
@@ -3622,7 +3622,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [bytes ↗](https://github.com/tokio-rs/bytes)
+  - [bytes ↗︎](https://github.com/tokio-rs/bytes)
 
   Copyright (c) 2018 Carl Lerche
 
@@ -3632,7 +3632,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [clap ↗](https://github.com/clap-rs/clap)
+  - [clap ↗︎](https://github.com/clap-rs/clap)
 
   The MIT License (MIT)
 
@@ -3644,7 +3644,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [combine ↗](https://github.com/Marwes/combine)
+  - [combine ↗︎](https://github.com/Marwes/combine)
 
   The MIT License (MIT)
 
@@ -3656,9 +3656,9 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [darling ↗](https://github.com/TedDriggs/darling)
-  - [darling\_core ↗](https://github.com/TedDriggs/darling)
-  - [darling\_macro ↗](https://github.com/TedDriggs/darling)
+  - [darling ↗︎](https://github.com/TedDriggs/darling)
+  - [darling\_core ↗︎](https://github.com/TedDriggs/darling)
+  - [darling\_macro ↗︎](https://github.com/TedDriggs/darling)
 
   MIT License
 
@@ -3670,7 +3670,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [data-encoding ↗](https://github.com/ia0/data-encoding)
+  - [data-encoding ↗︎](https://github.com/ia0/data-encoding)
 
   The MIT License (MIT)
 
@@ -3682,13 +3682,13 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [dispatch ↗](http://github.com/SSheldon/rust-dispatch)
-  - [netlink-packet-core ↗](https://github.com/little-dude/netlink)
-  - [netlink-packet-route ↗](https://github.com/little-dude/netlink)
-  - [netlink-packet-utils ↗](https://github.com/little-dude/netlink)
-  - [netlink-sys ↗](https://github.com/little-dude/netlink)
-  - [tokio-macros ↗](https://github.com/tokio-rs/tokio)
-  - [void ↗](https://github.com/reem/rust-void.git)
+  - [dispatch ↗︎](http://github.com/SSheldon/rust-dispatch)
+  - [netlink-packet-core ↗︎](https://github.com/little-dude/netlink)
+  - [netlink-packet-route ↗︎](https://github.com/little-dude/netlink)
+  - [netlink-packet-utils ↗︎](https://github.com/little-dude/netlink)
+  - [netlink-sys ↗︎](https://github.com/little-dude/netlink)
+  - [tokio-macros ↗︎](https://github.com/tokio-rs/tokio)
+  - [void ↗︎](https://github.com/reem/rust-void.git)
 
   MIT License
 
@@ -3698,7 +3698,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [doc-comment ↗](https://github.com/GuillaumeGomez/doc-comment)
+  - [doc-comment ↗︎](https://github.com/GuillaumeGomez/doc-comment)
 
   MIT License
 
@@ -3710,7 +3710,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [errno-dragonfly ↗](https://github.com/mneumann/errno-dragonfly-rs)
+  - [errno-dragonfly ↗︎](https://github.com/mneumann/errno-dragonfly-rs)
 
   MIT License
 
@@ -3722,7 +3722,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [generic-array ↗](https://github.com/fizyk20/generic-array.git)
+  - [generic-array ↗︎](https://github.com/fizyk20/generic-array.git)
 
   The MIT License (MIT)
 
@@ -3734,7 +3734,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [generic-array ↗](https://github.com/fizyk20/generic-array.git)
+  - [generic-array ↗︎](https://github.com/fizyk20/generic-array.git)
 
   The MIT License (MIT)
 
@@ -3746,7 +3746,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [h2 ↗](https://github.com/hyperium/h2)
+  - [h2 ↗︎](https://github.com/hyperium/h2)
 
   Copyright (c) 2017 h2 authors
 
@@ -3756,7 +3756,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [hostname ↗](https://github.com/svartalf/hostname)
+  - [hostname ↗︎](https://github.com/svartalf/hostname)
 
   MIT License
 
@@ -3768,7 +3768,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [http-body ↗](https://github.com/hyperium/http-body)
+  - [http-body ↗︎](https://github.com/hyperium/http-body)
 
   Copyright (c) 2019 Hyper Contributors
 
@@ -3778,7 +3778,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [hyper ↗](https://github.com/hyperium/hyper)
+  - [hyper ↗︎](https://github.com/hyperium/hyper)
 
   Copyright (c) 2014-2021 Sean McArthur
 
@@ -3788,7 +3788,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [ip\_network\_table-deps-treebitmap ↗](https://github.com/JakubOnderka/treebitmap)
+  - [ip\_network\_table-deps-treebitmap ↗︎](https://github.com/JakubOnderka/treebitmap)
 
   Copyright (c) 2016 Hroi Sigurdsson
 
@@ -3798,7 +3798,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [iprange ↗](https://github.com/sticnarf/iprange-rs)
+  - [iprange ↗︎](https://github.com/sticnarf/iprange-rs)
 
   MIT License
 
@@ -3810,7 +3810,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [libproc ↗](https://github.com/andrewdavidmackenzie/libproc-rs)
+  - [libproc ↗︎](https://github.com/andrewdavidmackenzie/libproc-rs)
 
   The MIT License
 
@@ -3822,7 +3822,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [matchers ↗](https://github.com/hawkw/matchers)
+  - [matchers ↗︎](https://github.com/hawkw/matchers)
 
   Copyright (c) 2019 Eliza Weisman
 
@@ -3832,7 +3832,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [matches ↗](https://github.com/SimonSapin/rust-std-candidates)
+  - [matches ↗︎](https://github.com/SimonSapin/rust-std-candidates)
 
   Copyright (c) 2014-2016 Simon Sapin
 
@@ -3842,7 +3842,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [memoffset ↗](https://github.com/Gilnaa/memoffset)
+  - [memoffset ↗︎](https://github.com/Gilnaa/memoffset)
 
   Copyright (c) 2017 Gilad Naaman
 
@@ -3852,7 +3852,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [mio ↗](https://github.com/tokio-rs/mio)
+  - [mio ↗︎](https://github.com/tokio-rs/mio)
 
   Copyright (c) 2014 Carl Lerche and other MIO contributors
 
@@ -3862,7 +3862,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [nix ↗](https://github.com/nix-rust/nix)
+  - [nix ↗︎](https://github.com/nix-rust/nix)
 
   The MIT License (MIT)
 
@@ -3874,7 +3874,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [plist ↗](https://github.com/ebarnard/rust-plist/)
+  - [plist ↗︎](https://github.com/ebarnard/rust-plist/)
 
   Copyright (c) 2015 Edward Barnard
 
@@ -3884,7 +3884,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [powershell\_script ↗](https://github.com/cfsamson/powershell-script)
+  - [powershell\_script ↗︎](https://github.com/cfsamson/powershell-script)
 
   The MIT License (MIT)
 
@@ -3896,7 +3896,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [redox\_syscall ↗](https://gitlab.redox-os.org/redox-os/syscall)
+  - [redox\_syscall ↗︎](https://gitlab.redox-os.org/redox-os/syscall)
 
   Copyright (c) 2017 Redox OS Developers
 
@@ -3908,7 +3908,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [redox\_users ↗](https://gitlab.redox-os.org/redox-os/users)
+  - [redox\_users ↗︎](https://gitlab.redox-os.org/redox-os/users)
 
   The MIT License (MIT)
 
@@ -3920,11 +3920,11 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [ring ↗](https://github.com/briansmith/ring)
+  - [ring ↗︎](https://github.com/briansmith/ring)
 
   The MIT License (MIT)
 
-  Copyright (c) 2015-2016 the fiat-crypto authors (see [https://github.com/mit-plv/fiat-crypto/blob/master/AUTHORS ↗](https://github.com/mit-plv/fiat-crypto/blob/master/AUTHORS) ).
+  Copyright (c) 2015-2016 the fiat-crypto authors (see [https://github.com/mit-plv/fiat-crypto/blob/master/AUTHORS ↗︎](https://github.com/mit-plv/fiat-crypto/blob/master/AUTHORS) ).
 
   Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -3932,8 +3932,8 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [same-file ↗](https://github.com/BurntSushi/same-file)
-  - [winapi-util ↗](https://github.com/BurntSushi/winapi-util)
+  - [same-file ↗︎](https://github.com/BurntSushi/same-file)
+  - [winapi-util ↗︎](https://github.com/BurntSushi/winapi-util)
 
   The MIT License (MIT)
 
@@ -3945,7 +3945,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [schannel ↗](https://github.com/steffengy/schannel-rs)
+  - [schannel ↗︎](https://github.com/steffengy/schannel-rs)
 
   Copyright (c) 2015 steffengy
 
@@ -3955,7 +3955,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [serde-xml-rs ↗](https://github.com/RReverser/serde-xml-rs)
+  - [serde-xml-rs ↗︎](https://github.com/RReverser/serde-xml-rs)
 
   MIT License
 
@@ -3967,7 +3967,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [sharded-slab ↗](https://github.com/hawkw/sharded-slab)
+  - [sharded-slab ↗︎](https://github.com/hawkw/sharded-slab)
 
   Copyright (c) 2019 Eliza Weisman
 
@@ -3977,7 +3977,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [slab ↗](https://github.com/tokio-rs/slab)
+  - [slab ↗︎](https://github.com/tokio-rs/slab)
 
   Copyright (c) 2019 Carl Lerche
 
@@ -3987,7 +3987,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [smbios-lib ↗](https://github.com/jrgerber/smbios-lib)
+  - [smbios-lib ↗︎](https://github.com/jrgerber/smbios-lib)
 
   MIT License
 
@@ -3999,8 +3999,8 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [spin ↗](https://github.com/mvdnes/spin-rs.git)
-  - [zip ↗](https://github.com/zip-rs/zip.git)
+  - [spin ↗︎](https://github.com/mvdnes/spin-rs.git)
+  - [zip ↗︎](https://github.com/zip-rs/zip.git)
 
   The MIT License (MIT)
 
@@ -4012,8 +4012,8 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [strsim ↗](https://github.com/dguo/strsim-rs)
-  - [strsim ↗](https://github.com/dguo/strsim-rs)
+  - [strsim ↗︎](https://github.com/dguo/strsim-rs)
+  - [strsim ↗︎](https://github.com/dguo/strsim-rs)
 
   The MIT License (MIT)
 
@@ -4025,7 +4025,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [synstructure ↗](https://github.com/mystor/synstructure)
+  - [synstructure ↗︎](https://github.com/mystor/synstructure)
 
   Copyright 2016 Nika Layzell
 
@@ -4035,7 +4035,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [sys-info ↗](https://github.com/FillZpp/sys-info-rs)
+  - [sys-info ↗︎](https://github.com/FillZpp/sys-info-rs)
 
   The MIT License (MIT)
 
@@ -4047,7 +4047,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [sysinfo ↗](https://github.com/GuillaumeGomez/sysinfo)
+  - [sysinfo ↗︎](https://github.com/GuillaumeGomez/sysinfo)
 
   The MIT License (MIT)
 
@@ -4059,7 +4059,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [take\_mut ↗](https://github.com/Sgeo/take_mut)
+  - [take\_mut ↗︎](https://github.com/Sgeo/take_mut)
 
   The MIT License (MIT)
 
@@ -4071,7 +4071,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [textwrap ↗](https://github.com/mgeisler/textwrap)
+  - [textwrap ↗︎](https://github.com/mgeisler/textwrap)
 
   MIT License
 
@@ -4083,8 +4083,8 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [tokio ↗](https://github.com/tokio-rs/tokio)
-  - [tokio-util ↗](https://github.com/tokio-rs/tokio)
+  - [tokio ↗︎](https://github.com/tokio-rs/tokio)
+  - [tokio-util ↗︎](https://github.com/tokio-rs/tokio)
 
   Copyright (c) 2021 Tokio Contributors
 
@@ -4094,7 +4094,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [tokio-tungstenite ↗](https://github.com/snapview/tokio-tungstenite)
+  - [tokio-tungstenite ↗︎](https://github.com/snapview/tokio-tungstenite)
 
   Copyright (c) 2017 Daniel Abramov Copyright (c) 2017 Alexey Galakhov
 
@@ -4104,7 +4104,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [totp-lite ↗](https://github.com/fosskers/totp-lite)
+  - [totp-lite ↗︎](https://github.com/fosskers/totp-lite)
 
   MIT License
 
@@ -4116,7 +4116,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [tower-service ↗](https://github.com/tower-rs/tower)
+  - [tower-service ↗︎](https://github.com/tower-rs/tower)
 
   Copyright (c) 2019 Tower Contributors
 
@@ -4126,13 +4126,13 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [tracing ↗](https://github.com/tokio-rs/tracing)
-  - [tracing-appender ↗](https://github.com/tokio-rs/tracing)
-  - [tracing-attributes ↗](https://github.com/tokio-rs/tracing)
-  - [tracing-core ↗](https://github.com/tokio-rs/tracing)
-  - [tracing-log ↗](https://github.com/tokio-rs/tracing)
-  - [tracing-serde ↗](https://github.com/tokio-rs/tracing)
-  - [tracing-subscriber ↗](https://github.com/tokio-rs/tracing)
+  - [tracing ↗︎](https://github.com/tokio-rs/tracing)
+  - [tracing-appender ↗︎](https://github.com/tokio-rs/tracing)
+  - [tracing-attributes ↗︎](https://github.com/tokio-rs/tracing)
+  - [tracing-core ↗︎](https://github.com/tokio-rs/tracing)
+  - [tracing-log ↗︎](https://github.com/tokio-rs/tracing)
+  - [tracing-serde ↗︎](https://github.com/tokio-rs/tracing)
+  - [tracing-subscriber ↗︎](https://github.com/tokio-rs/tracing)
 
   Copyright (c) 2019 Tokio Contributors
 
@@ -4142,7 +4142,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [try-lock ↗](https://github.com/seanmonstar/try-lock)
+  - [try-lock ↗︎](https://github.com/seanmonstar/try-lock)
 
   Copyright (c) 2018 Sean McArthur Copyright (c) 2016 Alex Crichton
 
@@ -4152,7 +4152,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [want ↗](https://github.com/seanmonstar/want)
+  - [want ↗︎](https://github.com/seanmonstar/want)
 
   Copyright (c) 2018-2019 Sean McArthur
 
@@ -4162,9 +4162,9 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [winreg ↗](https://github.com/gentoo90/winreg-rs)
-  - [winreg ↗](https://github.com/gentoo90/winreg-rs)
-  - [winreg ↗](https://github.com/gentoo90/winreg-rs)
+  - [winreg ↗︎](https://github.com/gentoo90/winreg-rs)
+  - [winreg ↗︎](https://github.com/gentoo90/winreg-rs)
+  - [winreg ↗︎](https://github.com/gentoo90/winreg-rs)
 
   Copyright (c) 2015 Igor Shaula
 
@@ -4174,7 +4174,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [winres ↗](https://github.com/mxre/winres)
+  - [winres ↗︎](https://github.com/mxre/winres)
 
   Copyright 2016 Max Resch
 
@@ -4184,7 +4184,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### MIT License #### Used by:
-  - [xml-rs ↗](https://github.com/netvl/xml-rs)
+  - [xml-rs ↗︎](https://github.com/netvl/xml-rs)
 
   The MIT License (MIT)
 
@@ -4196,7 +4196,7 @@ All license text:
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 - ### Mozilla Public License 2.0 #### Used by:
-  - [cbindgen ↗](https://github.com/eqrion/cbindgen/)
+  - [cbindgen ↗︎](https://github.com/eqrion/cbindgen/)
   1. Definitions
 
   ---
@@ -4362,13 +4362,13 @@ All license text:
 
   10.4. Distributing Source Code Form that is Incompatible With Secondary Licenses
 
-  If You choose to distribute Source Code Form that is Incompatible With Secondary Licenses under the terms of this version of the License, the notice described in Exhibit B of this License must be attached. ## Exhibit A - Source Code Form License Notice This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at [http://mozilla.org/MPL/2.0/ ↗](http://mozilla.org/MPL/2.0/).
+  If You choose to distribute Source Code Form that is Incompatible With Secondary Licenses under the terms of this version of the License, the notice described in Exhibit B of this License must be attached. ## Exhibit A - Source Code Form License Notice This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at [http://mozilla.org/MPL/2.0/ ↗︎](http://mozilla.org/MPL/2.0/).
 
   If it is not possible or desirable to put the notice in a particular file, then You may include the notice in a location (such as a LICENSE file in a relevant directory) where a recipient would be likely to look for such a notice.
 
   You may add additional accurate notices of copyright ownership. ## Exhibit B - "Incompatible With Secondary Licenses" Notice This Source Code Form is "Incompatible With Secondary Licenses", as defined by the Mozilla Public License, v. 2.0.
 - ### Mozilla Public License 2.0 #### Used by:
-  - [webpki-roots ↗](https://github.com/ctz/webpki-roots)
+  - [webpki-roots ↗︎](https://github.com/ctz/webpki-roots)
 
   Mozilla Public License Version 2.0
   1. Definitions
@@ -4500,9 +4500,9 @@ All license text:
 
 
 - ### OpenSSL License #### Used by:
-  - [ring ↗](https://github.com/briansmith/ring)
+  - [ring ↗︎](https://github.com/briansmith/ring)
 
-  /\* Copyright (C) 1995-1998 Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)) \* All rights reserved. \* \* This package is an SSL implementation written \* by Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)). \* The implementation was written so as to conform with Netscapes SSL. \* \* This library is free for commercial and non-commercial use as long as \* the following conditions are aheared to. The following conditions \* apply to all code found in this distribution, be it the RC4, RSA, \* lhash, DES, etc., code; not just the SSL code. The SSL documentation \* included with this distribution is covered by the same copyright terms \* except that the holder is Tim Hudson ([tjh@cryptsoft.com](mailto:tjh@cryptsoft.com)). \* \* Copyright remains Eric Young's, and as such any Copyright notices in \* the code are not to be removed. \* If this package is used in a product, Eric Young should be given attribution \* as the author of the parts of the library used. \* This can be in the form of a textual message at program startup or \* in documentation (online or textual) provided with the package. \* \* Redistribution and use in source and binary forms, with or without \* modification, are permitted provided that the following conditions \* are met: \* 1. Redistributions of source code must retain the copyright \* notice, this list of conditions and the following disclaimer. \* 2. Redistributions in binary form must reproduce the above copyright \* notice, this list of conditions and the following disclaimer in the \* documentation and/or other materials provided with the distribution. \* 3. All advertising materials mentioning features or use of this software \* must display the following acknowledgement: \* "This product includes cryptographic software written by \* Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com))" \* The word 'cryptographic' can be left out if the rouines from the library \* being used are not cryptographic related :-). \* 4. If you include any Windows specific code (or a derivative thereof) from \* the apps directory (application code) you must include an acknowledgement: \* "This product includes software written by Tim Hudson ([tjh@cryptsoft.com](mailto:tjh@cryptsoft.com))" \* \* THIS SOFTWARE IS PROVIDED BY ERIC YOUNG \`\`AS IS'' AND \* ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE \* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE \* ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE \* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL \* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS \* OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) \* HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT \* LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY \* OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF \* SUCH DAMAGE. \* \* The licence and distribution terms for any publically available version or \* derivative of this code cannot be changed. i.e. this code cannot simply be \* copied and put under another distribution licence \* \[including the GNU Public Licence.] \*/ /\* ==================================================================== \* Copyright (c) 1998-2006 The OpenSSL Project. All rights reserved. \* \* Redistribution and use in source and binary forms, with or without \* modification, are permitted provided that the following conditions \* are met: \* \* 1. Redistributions of source code must retain the above copyright \* notice, this list of conditions and the following disclaimer. \* \* 2. Redistributions in binary form must reproduce the above copyright \* notice, this list of conditions and the following disclaimer in \* the documentation and/or other materials provided with the \* distribution. \* \* 3. All advertising materials mentioning features or use of this \* software must display the following acknowledgment: \* "This product includes software developed by the OpenSSL Project \* for use in the OpenSSL Toolkit. ([http://www.openssl.org/ ↗](http://www.openssl.org/))" \* \* 4. The names "OpenSSL Toolkit" and "OpenSSL Project" must not be used to \* endorse or promote products derived from this software without \* prior written permission. For written permission, please contact \* [openssl-core@openssl.org](mailto:openssl-core@openssl.org). \* \* 5. Products derived from this software may not be called "OpenSSL" \* nor may "OpenSSL" appear in their names without prior written \* permission of the OpenSSL Project. \* \* 6. Redistributions of any form whatsoever must retain the following \* acknowledgment: \* "This product includes software developed by the OpenSSL Project \* for use in the OpenSSL Toolkit ([http://www.openssl.org/ ↗](http://www.openssl.org/))" \* \* THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT \`\`AS IS'' AND ANY \* EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE \* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR \* PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE OpenSSL PROJECT OR \* ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, \* SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT \* NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; \* LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) \* HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, \* STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) \* ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED \* OF THE POSSIBILITY OF SUCH DAMAGE. \* ==================================================================== \* \* This product includes cryptographic software written by Eric Young \* ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)). This product includes software written by Tim \* Hudson ([tjh@cryptsoft.com](mailto:tjh@cryptsoft.com)). \*/
+  /\* Copyright (C) 1995-1998 Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)) \* All rights reserved. \* \* This package is an SSL implementation written \* by Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)). \* The implementation was written so as to conform with Netscapes SSL. \* \* This library is free for commercial and non-commercial use as long as \* the following conditions are aheared to. The following conditions \* apply to all code found in this distribution, be it the RC4, RSA, \* lhash, DES, etc., code; not just the SSL code. The SSL documentation \* included with this distribution is covered by the same copyright terms \* except that the holder is Tim Hudson ([tjh@cryptsoft.com](mailto:tjh@cryptsoft.com)). \* \* Copyright remains Eric Young's, and as such any Copyright notices in \* the code are not to be removed. \* If this package is used in a product, Eric Young should be given attribution \* as the author of the parts of the library used. \* This can be in the form of a textual message at program startup or \* in documentation (online or textual) provided with the package. \* \* Redistribution and use in source and binary forms, with or without \* modification, are permitted provided that the following conditions \* are met: \* 1. Redistributions of source code must retain the copyright \* notice, this list of conditions and the following disclaimer. \* 2. Redistributions in binary form must reproduce the above copyright \* notice, this list of conditions and the following disclaimer in the \* documentation and/or other materials provided with the distribution. \* 3. All advertising materials mentioning features or use of this software \* must display the following acknowledgement: \* "This product includes cryptographic software written by \* Eric Young ([eay@cryptsoft.com](mailto:eay@cryptsoft.com))" \* The word 'cryptographic' can be left out if the rouines from the library \* being used are not cryptographic related :-). \* 4. If you include any Windows specific code (or a derivative thereof) from \* the apps directory (application code) you must include an acknowledgement: \* "This product includes software written by Tim Hudson ([tjh@cryptsoft.com](mailto:tjh@cryptsoft.com))" \* \* THIS SOFTWARE IS PROVIDED BY ERIC YOUNG \`\`AS IS'' AND \* ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE \* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE \* ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE \* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL \* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS \* OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) \* HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT \* LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY \* OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF \* SUCH DAMAGE. \* \* The licence and distribution terms for any publically available version or \* derivative of this code cannot be changed. i.e. this code cannot simply be \* copied and put under another distribution licence \* \[including the GNU Public Licence.] \*/ /\* ==================================================================== \* Copyright (c) 1998-2006 The OpenSSL Project. All rights reserved. \* \* Redistribution and use in source and binary forms, with or without \* modification, are permitted provided that the following conditions \* are met: \* \* 1. Redistributions of source code must retain the above copyright \* notice, this list of conditions and the following disclaimer. \* \* 2. Redistributions in binary form must reproduce the above copyright \* notice, this list of conditions and the following disclaimer in \* the documentation and/or other materials provided with the \* distribution. \* \* 3. All advertising materials mentioning features or use of this \* software must display the following acknowledgment: \* "This product includes software developed by the OpenSSL Project \* for use in the OpenSSL Toolkit. ([http://www.openssl.org/ ↗︎](http://www.openssl.org/))" \* \* 4. The names "OpenSSL Toolkit" and "OpenSSL Project" must not be used to \* endorse or promote products derived from this software without \* prior written permission. For written permission, please contact \* [openssl-core@openssl.org](mailto:openssl-core@openssl.org). \* \* 5. Products derived from this software may not be called "OpenSSL" \* nor may "OpenSSL" appear in their names without prior written \* permission of the OpenSSL Project. \* \* 6. Redistributions of any form whatsoever must retain the following \* acknowledgment: \* "This product includes software developed by the OpenSSL Project \* for use in the OpenSSL Toolkit ([http://www.openssl.org/ ↗︎](http://www.openssl.org/))" \* \* THIS SOFTWARE IS PROVIDED BY THE OpenSSL PROJECT \`\`AS IS'' AND ANY \* EXPRESSED OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE \* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR \* PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE OpenSSL PROJECT OR \* ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, \* SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT \* NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; \* LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) \* HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, \* STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) \* ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED \* OF THE POSSIBILITY OF SUCH DAMAGE. \* ==================================================================== \* \* This product includes cryptographic software written by Eric Young \* ([eay@cryptsoft.com](mailto:eay@cryptsoft.com)). This product includes software written by Tim \* Hudson ([tjh@cryptsoft.com](mailto:tjh@cryptsoft.com)). \*/
 
 Was this helpful?
 

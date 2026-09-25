@@ -40,7 +40,7 @@ pnpm add -D miniflare@latest
 bun add -d miniflare@latest
 ```
 
-The rest of this guide demonstrates concepts with the [`node:test` ↗](https://nodejs.org/api/test.html) testing framework, but any testing framework can be used.
+The rest of this guide demonstrates concepts with the [`node:test` ↗︎](https://nodejs.org/api/test.html) testing framework, but any testing framework can be used.
 
 Miniflare is a low-level API that exposes a large variety of configuration options for running your Worker. In most cases, your tests will only need a subset of the available options, but you can refer to the [full API reference](https://developers.cloudflare.com/workers/testing/miniflare/get-started/#reference) to explore what is possible with Miniflare.
 
@@ -108,7 +108,7 @@ What runtime are tests running in?
 
 </summary>
 
-When using the <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/">Vitest integration</a>, your entire test suite runs in <a href="https://github.com/cloudflare/workerd"><code>workerd</code> ↗</a>, which is why it is possible to unit test individual functions. By contrast, when using a different testing framework to run tests via Miniflare, only your Worker itself is running in <a href="https://github.com/cloudflare/workerd"><code>workerd</code> ↗</a> — your test files run in Node.js. This means that importing functions from your Worker into your test files might exhibit different behaviour than you'd see at runtime if the functions rely on <code>workerd</code>-specific behaviour.
+When using the <a href="https://developers.cloudflare.com/workers/testing/vitest-integration/">Vitest integration</a>, your entire test suite runs in <a href="https://github.com/cloudflare/workerd"><code>workerd</code> ↗︎</a>, which is why it is possible to unit test individual functions. By contrast, when using a different testing framework to run tests via Miniflare, only your Worker itself is running in <a href="https://github.com/cloudflare/workerd"><code>workerd</code> ↗︎</a> — your test files run in Node.js. This means that importing functions from your Worker into your test files might exhibit different behaviour than you'd see at runtime if the functions rely on <code>workerd</code>-specific behaviour.
 
 </details>
 

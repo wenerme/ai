@@ -32,7 +32,7 @@ These configurations were tested on FITELnet F220 and F70 series with the follow
    - **Tunnel name**: `FITEL-tunnel-1`
    - **Interface address**: Enter `10.0.0.1/31` for your first tunnel.
    - **Customer endpoint**: This setting is not required unless your router is using an IKE ID of [type `ID_IPV4_ADDR`](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/).
-   - **Cloudflare endpoint**: One of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+   - **Cloudflare endpoint**: One of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
    - **Pre-shared key**: Create a pre-shared key for your first tunnel.
 3. For the second IPsec tunnel, make the same changes as you did for the first tunnel, and ensure these additional settings are defined:
    - **Tunnel name**: `FITEL-tunnel-2`

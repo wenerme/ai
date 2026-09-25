@@ -28,7 +28,7 @@ Data classes can also assign labels to matched content. This lets you connect ra
 
 ## Create a data class
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Data classification** > **Data classes**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Data classification** > **Data classes**.
 2. Select **Create data class**.
 3. Enter a name and optional description.
 4. Build the detection rules for the data class.
@@ -63,7 +63,7 @@ When content matches the data class, Cloudflare applies those labels to the matc
 
 After you create a data class, you can add it to a custom DLP profile.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Create or edit a custom DLP profile.
 3. In **Data classes**, select **Add data classes**.
 4. Choose the data classes you want to include, then select **Confirm**.

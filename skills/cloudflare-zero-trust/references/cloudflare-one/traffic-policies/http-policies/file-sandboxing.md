@@ -57,7 +57,7 @@ flowchart TD
 
 To begin quarantining downloaded files, turn on file sandboxing:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. In **Policy settings**, turn on **Open previously unseen files in a sandbox environment**.
 3. (Optional) To block requests containing [non-scannable files](#non-scannable-files), select **Block requests for files that cannot be scanned**.
 
@@ -65,9 +65,9 @@ You can now create [Quarantine HTTP policies](https://developers.cloudflare.com/
 
 ## Create test policy
 
-To test if file sandboxing is working, you can create a Quarantine policy that matches the [Cloudflare Sandbox Test ↗](https://sandbox.cloudflaredemos.com/):
+To test if file sandboxing is working, you can create a Quarantine policy that matches the [Cloudflare Sandbox Test ↗︎](https://sandbox.cloudflaredemos.com/):
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **HTTP**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **HTTP**.
 2. Select **Add a policy**.
 3. Add the following expression:
 
@@ -75,7 +75,7 @@ To test if file sandboxing is working, you can create a Quarantine policy that m
    | --- | --- | --- | --- |
    | Host | is | `sandbox.cloudflaredemos.com` | Quarantine |
 4. In **Sandbox file types**, select *ZIP Archive (zip)*.
-5. From a device [connected to your Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/), open a browser and go to the [Cloudflare Sandbox Test ↗](https://sandbox.cloudflaredemos.com/).
+5. From a device [connected to your Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/), open a browser and go to the [Cloudflare Sandbox Test ↗︎](https://sandbox.cloudflaredemos.com/).
 6. Select **Download Test File**.
 
 Gateway will quarantine and scan the file, display an interstitial status page in the browser, then release the file for download.

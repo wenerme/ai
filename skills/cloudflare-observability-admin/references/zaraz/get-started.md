@@ -53,7 +53,7 @@ Users and companies have developed plugins that make using Zaraz easier on speci
 
 ### WooCommerce
 
-- [Beetle Tracking ↗](https://beetle-tracking.com/) - Integrate Zaraz with your WordPress WooCommerce website to track e-commerce events with zero configuration. Beetle Tracking also supports consent management and other advanced features.
+- [Beetle Tracking ↗︎](https://beetle-tracking.com/) - Integrate Zaraz with your WordPress WooCommerce website to track e-commerce events with zero configuration. Beetle Tracking also supports consent management and other advanced features.
 
 ## Footnotes
 

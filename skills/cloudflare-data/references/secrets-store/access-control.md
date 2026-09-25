@@ -61,7 +61,7 @@ Refer to the list below for default role definitions.
 
 Deploying Workers from CI/CD
 
-If you use Wrangler in a CI/CD pipeline (for example, [`wrangler-action` ↗](https://github.com/cloudflare/wrangler-action) in GitHub Actions) to deploy a Worker that has a [Secrets Store binding](https://developers.cloudflare.com/secrets-store/integrations/workers/), the API token used by the pipeline must have **Account Secrets Store Edit** permission. A token with only **Read** will fail at deploy time with an authorization error such as `failed to fetch secrets store binding due to authorization error - check deploy permissions and secret scopes`.
+If you use Wrangler in a CI/CD pipeline (for example, [`wrangler-action` ↗︎](https://github.com/cloudflare/wrangler-action) in GitHub Actions) to deploy a Worker that has a [Secrets Store binding](https://developers.cloudflare.com/secrets-store/integrations/workers/), the API token used by the pipeline must have **Account Secrets Store Edit** permission. A token with only **Read** will fail at deploy time with an authorization error such as `failed to fetch secrets store binding due to authorization error - check deploy permissions and secret scopes`.
 
 ## Secret scopes
 

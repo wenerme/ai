@@ -33,7 +33,7 @@ To assist with this process, we provide you with a comprehensive mapping between
 
 Cloudflare Page Rules has several fundamental limitations, such as triggering solely based on URL patterns and being limited to 125 rules per zone for performance reasons. These rules are also complex to debug when multiple page rules apply to the same incoming request.
 
-In 2022, we announced in our blog post [The future of Page Rules ↗](https://blog.cloudflare.com/future-of-page-rules) that Page Rules would be replaced with a suite of dedicated products, each built to be best-of-breed and put more power into the hands of our users. The new Rules products — [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/), [Compression Rules](https://developers.cloudflare.com/rules/compression-rules/), [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/), [Redirects](https://developers.cloudflare.com/rules/url-forwarding/), and [Transform Rules](https://developers.cloudflare.com/rules/transform/) — are now generally available (GA) and have already been adopted by tens of thousands of Cloudflare customers.
+In 2022, we announced in our blog post [The future of Page Rules ↗︎](https://blog.cloudflare.com/future-of-page-rules) that Page Rules would be replaced with a suite of dedicated products, each built to be best-of-breed and put more power into the hands of our users. The new Rules products — [Configuration Rules](https://developers.cloudflare.com/rules/configuration-rules/), [Compression Rules](https://developers.cloudflare.com/rules/compression-rules/), [Origin Rules](https://developers.cloudflare.com/rules/origin-rules/), [Redirects](https://developers.cloudflare.com/rules/url-forwarding/), and [Transform Rules](https://developers.cloudflare.com/rules/transform/) — are now generally available (GA) and have already been adopted by tens of thousands of Cloudflare customers.
 
 Improvements in modern Rules features include:
 
@@ -1113,7 +1113,7 @@ All other Page Rules settings will be migrated during 2025.
 
 ## More resources
 
-If you have feedback to share, refer to our [Community thread ↗](https://community.cloudflare.com/t/important-page-rules-deprecation/656021).
+If you have feedback to share, refer to our [Community thread ↗︎](https://community.cloudflare.com/t/important-page-rules-deprecation/656021).
 
 Was this helpful?
 

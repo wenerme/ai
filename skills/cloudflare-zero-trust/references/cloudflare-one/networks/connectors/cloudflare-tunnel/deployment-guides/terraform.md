@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/deployment-guides/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Terraform ↗](https://www.terraform.io/) is an infrastructure as code software tool that allows you to deploy services from different providers using a standardized configuration syntax. When creating a Terraform configuration file, you define the final state of the configuration rather than the step-by-step procedure. This allows you to easily deploy, modify, and manage your Tunnels alongside your other infrastructure.
+[Terraform ↗︎](https://www.terraform.io/) is an infrastructure as code software tool that allows you to deploy services from different providers using a standardized configuration syntax. When creating a Terraform configuration file, you define the final state of the configuration rather than the step-by-step procedure. This allows you to easily deploy, modify, and manage your Tunnels alongside your other infrastructure.
 
 In this guide, you will use Terraform to deploy:
 
@@ -30,17 +30,17 @@ If your server is behind a restrictive firewall, verify it can reach Cloudflare 
 
 To complete the following procedure, you will need:
 
-- [A Google Cloud Project ↗](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project)
+- [A Google Cloud Project ↗︎](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project)
 - [A zone on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
 - Enabled [one-time PIN login](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) or integrated an [identity provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/)
 
 ## 1. Install Terraform
 
-Refer to the [Terraform installation guide ↗](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) for your operating system.
+Refer to the [Terraform installation guide ↗︎](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) for your operating system.
 
 ## 2. Install the gcloud CLI
 
-1. [Install the gcloud CLI ↗](https://cloud.google.com/sdk/docs/install) so that Terraform can interact with your GCP account.
+1. [Install the gcloud CLI ↗︎](https://cloud.google.com/sdk/docs/install) so that Terraform can interact with your GCP account.
 2. Authenticate with the CLI by running:
 
    ```sh
@@ -172,7 +172,7 @@ To prevent accidentally exposing sensitive credentials, do not save `terraform.t
 
 ### Configure Terraform providers
 
-You will need to declare the [providers ↗](https://registry.terraform.io/browse/providers) used to provision the infrastructure.
+You will need to declare the [providers ↗︎](https://registry.terraform.io/browse/providers) used to provision the infrastructure.
 
 1. In your configuration directory, create a `.tf` file:
 
@@ -401,7 +401,7 @@ The following configuration will modify settings in your Cloudflare account.
 
 
 
-To learn more about these resources, refer to the [Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+To learn more about these resources, refer to the [Cloudflare provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 ### Configure GCP resources
 
@@ -570,7 +570,7 @@ To deploy the configuration files:
 
 
 
-It may take several minutes for the GCP instance and tunnel to come online. You can view your new tunnel in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Networking** > **Tunnels**, and your Access application and policy under **Zero Trust** > **Access controls** > **Applications**. The new DNS records are available on the [**DNS Records** page](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
+It may take several minutes for the GCP instance and tunnel to come online. You can view your new tunnel in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) under **Networking** > **Tunnels**, and your Access application and policy under **Zero Trust** > **Access controls** > **Applications**. The new DNS records are available on the [**DNS Records** page](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/).
 
 Remove Terraform resources
 
@@ -585,7 +585,7 @@ If you need to roll back the configuration, run `terraform destroy` to delete ev
    You will see the Access login page if you have not recently logged in.
 4. Log in with your Cloudflare email.
 
-   You should see the [HTTPBin ↗](https://httpbin.org/) homepage.
+   You should see the [HTTPBin ↗︎](https://httpbin.org/) homepage.
 
 Was this helpful?
 

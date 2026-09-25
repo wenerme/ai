@@ -130,7 +130,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
 The above example:
 
 - Calls `waitForEvent` with a `type` of `stripe-webhook` - the corresponding `sendEvent` call would thus be `await instance.sendEvent({type: "stripe-webhook", payload: webhookPayload})`.
-- Uses a TypeScript [type parameter ↗](https://www.typescriptlang.org/docs/handbook/2/generics.html) to type the return value of `step.waitForEvent` as our `IncomingStripeWebhook`.
+- Uses a TypeScript [type parameter ↗︎](https://www.typescriptlang.org/docs/handbook/2/generics.html) to type the return value of `step.waitForEvent` as our `IncomingStripeWebhook`.
 - Continues on with the rest of the Workflow.
 
 The default timeout for a `waitForEvent` call is 24 hours, which can be changed by passing `{ timeout: WorkflowTimeoutDuration }` as the second argument to your `waitForEvent` call.
@@ -274,7 +274,7 @@ export class MyWorkflow extends WorkflowEntrypoint<Env> {
 }
 ```
 
-You can optionally type these events by defining your own type and passing it as a [type parameter ↗](https://www.typescriptlang.org/docs/handbook/2/generics.html#working-with-generic-type-variables) to the `WorkflowEvent`:
+You can optionally type these events by defining your own type and passing it as a [type parameter ↗︎](https://www.typescriptlang.org/docs/handbook/2/generics.html#working-with-generic-type-variables) to the `WorkflowEvent`:
 
 ```ts
 // Define a type that conforms to the events your Workflow instance is
@@ -311,7 +311,7 @@ export class MyWorkflow extends WorkflowEntrypoint {
 
 Caution
 
-Providing a type parameter does *not* validate that the incoming event matches your type definition. In TypeScript, properties (fields) that do not exist or conform to the type you provided will be dropped. If you need to validate incoming events, we recommend a library such as [zod ↗](https://zod.dev/) or your own validator logic.
+Providing a type parameter does *not* validate that the incoming event matches your type definition. In TypeScript, properties (fields) that do not exist or conform to the type you provided will be dropped. If you need to validate incoming events, we recommend a library such as [zod ↗︎](https://zod.dev/) or your own validator logic.
 
 You can also provide a type parameter to the `Workflows` type when creating (triggering) a Workflow instance using the `create` method of the [Workers API](https://developers.cloudflare.com/workflows/build/workers-api/#workflow). Note that this does *not* propagate type information into the Workflow itself, as TypeScript types are a build-time construct.
 

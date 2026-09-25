@@ -74,7 +74,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Automatically selects the most detailed summary supported by the model.
 
-- `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+- `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
   The service tier used for model requests. Defaults to `auto`.
 
@@ -97,6 +97,10 @@ Creates a reusable agent without storing credentials. See [agent configuration](
   - `"fast"`
 
     Uses the fast service tier.
+
+  - `"ultrafast"`
+
+    Uses the ultrafast service tier.
 
 - `text: optional AgentTextParam or null`
 
@@ -436,7 +440,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: "auto" or "default" or "flex" or 2 more`
+  - `service_tier: "auto" or "default" or "flex" or 3 more`
 
     The resolved service-tier policy used for model requests.
 
@@ -449,6 +453,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `text: AgentText`
 
@@ -908,7 +914,7 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: "auto" or "default" or "flex" or 2 more`
+  - `service_tier: "auto" or "default" or "flex" or 3 more`
 
     The resolved service-tier policy used for model requests.
 
@@ -921,6 +927,8 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `text: AgentText`
 
@@ -1335,7 +1343,7 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: "auto" or "default" or "flex" or 2 more`
+  - `service_tier: "auto" or "default" or "flex" or 3 more`
 
     The resolved service-tier policy used for model requests.
 
@@ -1348,6 +1356,8 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `text: AgentText`
 
@@ -1718,7 +1728,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
       Automatically selects the most detailed summary supported by the model.
 
-- `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+- `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
   The service tier used for model requests.
 
@@ -1741,6 +1751,10 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
   - `"fast"`
 
     Uses the fast service tier.
+
+  - `"ultrafast"`
+
+    Uses the ultrafast service tier.
 
 - `text: optional AgentTextParam or null`
 
@@ -2080,7 +2094,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: "auto" or "default" or "flex" or 2 more`
+  - `service_tier: "auto" or "default" or "flex" or 3 more`
 
     The resolved service-tier policy used for model requests.
 
@@ -2093,6 +2107,8 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `text: AgentText`
 
@@ -2474,7 +2490,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: "auto" or "default" or "flex" or 2 more`
+  - `service_tier: "auto" or "default" or "flex" or 3 more`
 
     The resolved service-tier policy used for model requests.
 
@@ -2487,6 +2503,8 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `text: AgentText`
 
@@ -4200,7 +4218,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           Automatically selects the most detailed summary supported by the model.
 
-    - `service_tier: "auto" or "default" or "flex" or 2 more`
+    - `service_tier: "auto" or "default" or "flex" or 3 more`
 
       The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -4213,6 +4231,8 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `text: AgentText`
 
@@ -4930,7 +4950,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             Automatically selects the most detailed summary supported by the model.
 
-      - `service_tier: "auto" or "default" or "flex" or 2 more`
+      - `service_tier: "auto" or "default" or "flex" or 3 more`
 
         The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -4943,6 +4963,8 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `"priority"`
 
         - `"fast"`
+
+        - `"ultrafast"`
 
       - `text: AgentText`
 
@@ -6304,7 +6326,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
               Automatically selects the most detailed summary supported by the model.
 
-        - `service_tier: "auto" or "default" or "flex" or 2 more`
+        - `service_tier: "auto" or "default" or "flex" or 3 more`
 
           The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -6317,6 +6339,8 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
           - `"priority"`
 
           - `"fast"`
+
+          - `"ultrafast"`
 
         - `text: AgentText`
 
@@ -8722,7 +8746,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             Automatically selects the most detailed summary supported by the model.
 
-      - `service_tier: "auto" or "default" or "flex" or 2 more`
+      - `service_tier: "auto" or "default" or "flex" or 3 more`
 
         The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -8735,6 +8759,8 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `"priority"`
 
         - `"fast"`
+
+        - `"ultrafast"`
 
       - `text: AgentText`
 
@@ -9390,7 +9416,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             Automatically selects the most detailed summary supported by the model.
 
-      - `service_tier: "auto" or "default" or "flex" or 2 more`
+      - `service_tier: "auto" or "default" or "flex" or 3 more`
 
         The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -9403,6 +9429,8 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `"priority"`
 
         - `"fast"`
+
+        - `"ultrafast"`
 
       - `text: AgentText`
 
@@ -10058,7 +10086,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             Automatically selects the most detailed summary supported by the model.
 
-      - `service_tier: "auto" or "default" or "flex" or 2 more`
+      - `service_tier: "auto" or "default" or "flex" or 3 more`
 
         The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -10071,6 +10099,8 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `"priority"`
 
         - `"fast"`
+
+        - `"ultrafast"`
 
       - `text: AgentText`
 
@@ -11748,7 +11778,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             Automatically selects the most detailed summary supported by the model.
 
-      - `service_tier: "auto" or "default" or "flex" or 2 more`
+      - `service_tier: "auto" or "default" or "flex" or 3 more`
 
         The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -11761,6 +11791,8 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `"priority"`
 
         - `"fast"`
+
+        - `"ultrafast"`
 
       - `text: AgentText`
 
@@ -20405,7 +20437,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
     The service tier used for model requests.
 
@@ -20428,6 +20460,10 @@ Creates a managed agent session, optionally submits initial input, and returns t
     - `"fast"`
 
       Uses the fast service tier.
+
+    - `"ultrafast"`
+
+      Uses the ultrafast service tier.
 
   - `text: optional AgentTextParam or null`
 
@@ -20837,7 +20873,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           Automatically selects the most detailed summary supported by the model.
 
-    - `service_tier: "auto" or "default" or "flex" or 2 more`
+    - `service_tier: "auto" or "default" or "flex" or 3 more`
 
       The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -20850,6 +20886,8 @@ Creates a managed agent session, optionally submits initial input, and returns t
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `text: AgentText`
 
@@ -21660,7 +21698,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           Automatically selects the most detailed summary supported by the model.
 
-    - `service_tier: "auto" or "default" or "flex" or 2 more`
+    - `service_tier: "auto" or "default" or "flex" or 3 more`
 
       The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -21673,6 +21711,8 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `text: AgentText`
 
@@ -22432,7 +22472,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
           Automatically selects the most detailed summary supported by the model.
 
-    - `service_tier: "auto" or "default" or "flex" or 2 more`
+    - `service_tier: "auto" or "default" or "flex" or 3 more`
 
       The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -22445,6 +22485,8 @@ Retrieves the current state of a managed agent session. See [managing sessions](
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `text: AgentText`
 
@@ -23130,7 +23172,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       - `"max"`
 
-  - `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
     Omit to keep the current tier. Null resets it to auto.
 
@@ -23153,6 +23195,10 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
     - `"fast"`
 
       Uses the fast service tier.
+
+    - `"ultrafast"`
+
+      Uses the ultrafast service tier.
 
 - `metadata: optional map[string] or null`
 
@@ -23238,7 +23284,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
           Automatically selects the most detailed summary supported by the model.
 
-    - `service_tier: "auto" or "default" or "flex" or 2 more`
+    - `service_tier: "auto" or "default" or "flex" or 3 more`
 
       The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -23251,6 +23297,8 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
       - `"priority"`
 
       - `"fast"`
+
+      - `"ultrafast"`
 
     - `text: AgentText`
 
@@ -24667,7 +24715,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               Automatically selects the most detailed summary supported by the model.
 
-        - `service_tier: "auto" or "default" or "flex" or 2 more`
+        - `service_tier: "auto" or "default" or "flex" or 3 more`
 
           The effective service-tier policy for model requests. Defaults to `auto`.
 
@@ -24680,6 +24728,8 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
           - `"priority"`
 
           - `"fast"`
+
+          - `"ultrafast"`
 
         - `text: AgentText`
 

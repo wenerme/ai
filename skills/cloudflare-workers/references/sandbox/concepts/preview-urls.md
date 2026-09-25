@@ -16,7 +16,7 @@ Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 # Quick deployment
 
-For quick preview deployments we recommend using [Cloudflare Tunnel ↗](https://developers.cloudflare.com/tunnel/) to generate preview URLs to your web services. These work across local development, workers.dev and production usage.
+For quick preview deployments we recommend using [Cloudflare Tunnel ↗︎](https://developers.cloudflare.com/tunnel/) to generate preview URLs to your web services. These work across local development, workers.dev and production usage.
 
 ```ts
 await sandbox.startProcess("python -m http.server 8000");

@@ -16,11 +16,11 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Cloudflare Workers allows you to build serverless applications or augment existing ones by writing code that is deployed instantly across the globe. To understand the significance of Workers technology, we begin by understanding the environment in which it was developed.
 
-Workers is a serverless computing provider. [Serverless computing ↗](https://www.cloudflare.com/learning/serverless/what-is-serverless/) refers to a cloud computing model where providers, like Cloudflare, manage servers on behalf of users, allowing developers and businesses to focus entirely on writing and deploying application logic.
+Workers is a serverless computing provider. [Serverless computing ↗︎](https://www.cloudflare.com/learning/serverless/what-is-serverless/) refers to a cloud computing model where providers, like Cloudflare, manage servers on behalf of users, allowing developers and businesses to focus entirely on writing and deploying application logic.
 
 ## Cloud computing
 
-[Cloud computing ↗](https://www.cloudflare.com/learning/cloud/what-is-the-cloud/) is defined as hosting computing resources (such as virtual machines, storage, databases, and networking services) on third-party servers. Cloud computing service providers include Amazon Web Services, Microsoft Azure, Google Cloud Platform, and Cloudflare.
+[Cloud computing ↗︎](https://www.cloudflare.com/learning/cloud/what-is-the-cloud/) is defined as hosting computing resources (such as virtual machines, storage, databases, and networking services) on third-party servers. Cloud computing service providers include Amazon Web Services, Microsoft Azure, Google Cloud Platform, and Cloudflare.
 
 ### Serverless computing
 

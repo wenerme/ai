@@ -18,9 +18,9 @@ Cloudflare offers language software development kits (SDKs) as well as `curl` ex
 
 Cloudflare currently offers the following SDKs:
 
-- [Go ↗](https://github.com/cloudflare/cloudflare-go)
-- [TypeScript ↗](https://github.com/cloudflare/cloudflare-typescript)
-- [Python ↗](https://github.com/cloudflare/cloudflare-python)
+- [Go ↗︎](https://github.com/cloudflare/cloudflare-go)
+- [TypeScript ↗︎](https://github.com/cloudflare/cloudflare-typescript)
+- [Python ↗︎](https://github.com/cloudflare/cloudflare-python)
 
 ## When to use cURL vs SDK
 

@@ -186,7 +186,7 @@ curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-
   -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
 
-The record's `status` field contains the HTTP status code returned by the origin server, and `html` contains the response body. This is useful for understanding site owners' intent when they block crawlers — for example, sites using [AI Crawl Control ↗](https://blog.cloudflare.com/ai-crawl-control) may return a custom status code and message.
+The record's `status` field contains the HTTP status code returned by the origin server, and `html` contains the response body. This is useful for understanding site owners' intent when they block crawlers — for example, sites using [AI Crawl Control ↗︎](https://blog.cloudflare.com/ai-crawl-control) may return a custom status code and message.
 
 ## Cancel a crawl job
 
@@ -219,8 +219,8 @@ When `render` is `true` (the default), crawl jobs also support all standard Brow
 | `options.includeSubdomains` | Boolean | If true, follows links to subdomains of the starting URL (default is false). |
 | `options.includePatterns` | Array of strings | Only visits URLs that match one of these wildcard patterns. Use `*` to match any characters except `/`, or `**` to match any characters including `/`. |
 | `options.excludePatterns` | Array of strings | Does not visit URLs that match any of these wildcard patterns. Use `*` to match any characters except `/`, or `**` to match any characters including `/`. |
-| `crawlPurposes` | Array of strings | Declares the intended use of crawled content for [Content Signals ↗](https://contentsignals.org/) enforcement. Allowed values: `search`, `ai-input`, `ai-train`. Default is `["search", "ai-input", "ai-train"]`. If a target site's `robots.txt` includes a `Content-Signal` directive that sets any of your declared purposes to `no`, the crawl request will be rejected with a `400` error. Refer to [Content Signals](#content-signals) for details. |
-| `contentUse` | String | Declares the intended content use level for the `use` [Content Signals ↗](https://contentsignals.org/) directive. Allowed values, from least to most permissive: `reference`, `full`. Default is `full`. If a target site sets a `use` directive more restrictive than your declared level, the crawl request will be rejected with a `400` error. Refer to [Content Signals](#content-signals) for details. |
+| `crawlPurposes` | Array of strings | Declares the intended use of crawled content for [Content Signals ↗︎](https://contentsignals.org/) enforcement. Allowed values: `search`, `ai-input`, `ai-train`. Default is `["search", "ai-input", "ai-train"]`. If a target site's `robots.txt` includes a `Content-Signal` directive that sets any of your declared purposes to `no`, the crawl request will be rejected with a `400` error. Refer to [Content Signals](#content-signals) for details. |
+| `contentUse` | String | Declares the intended content use level for the `use` [Content Signals ↗︎](https://contentsignals.org/) directive. Allowed values, from least to most permissive: `reference`, `full`. Default is `full`. If a target site sets a `use` directive more restrictive than your declared level, the crawl request will be rejected with a `400` error. Refer to [Content Signals](#content-signals) for details. |
 
 ### Pattern behavior
 
@@ -472,7 +472,7 @@ For a full list of default User-Agent strings, refer to [Automatic request heade
 
 ### Content Signals
 
-The `/crawl` endpoint respects [Content Signals ↗](https://contentsignals.org/) directives found in a target site's `robots.txt` file. Content Signals are a way for site owners to express preferences about how their content can be used by automated systems. For more background, refer to [Giving users choice with Cloudflare's new Content Signals Policy ↗](https://blog.cloudflare.com/content-signals-policy/).
+The `/crawl` endpoint respects [Content Signals ↗︎](https://contentsignals.org/) directives found in a target site's `robots.txt` file. Content Signals are a way for site owners to express preferences about how their content can be used by automated systems. For more background, refer to [Giving users choice with Cloudflare's new Content Signals Policy ↗︎](https://blog.cloudflare.com/content-signals-policy/).
 
 A site owner can include a `Content-Signal` directive in their `robots.txt` to allow or disallow specific categories of use:
 

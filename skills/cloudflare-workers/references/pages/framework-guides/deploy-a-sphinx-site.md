@@ -14,15 +14,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Sphinx ↗](https://www.sphinx-doc.org/) is a tool that makes it easy to create documentation and was originally made for the publication of Python documentation. It is well known for its simplicity and ease of use.
+[Sphinx ↗︎](https://www.sphinx-doc.org/) is a tool that makes it easy to create documentation and was originally made for the publication of Python documentation. It is well known for its simplicity and ease of use.
 
 In this guide, you will create a new Sphinx project and deploy it using Cloudflare Pages.
 
 ## Prerequisites
 
 - Python 3 - Sphinx is based on Python, therefore you must have Python installed
-- [pip ↗](https://pypi.org/project/pip/) - The PyPA recommended tool for installing Python packages
-- [pipenv ↗](https://pipenv.pypa.io/en/latest/) - automatically creates and manages a virtualenv for your projects
+- [pip ↗︎](https://pypi.org/project/pip/) - The PyPA recommended tool for installing Python packages
+- [pipenv ↗︎](https://pipenv.pypa.io/en/latest/) - automatically creates and manages a virtualenv for your projects
 
 Note
 
@@ -30,22 +30,22 @@ If you are already running a version of Python 3.7, ensure that Python version 3
 
 The latest version of Python 3.7 is 3.7.11:
 
-[Python 3.7.11 ↗](https://www.python.org/downloads/release/python-3711/)
+[Python 3.7.11 ↗︎](https://www.python.org/downloads/release/python-3711/)
 
 ### Installing Python
 
 Refer to the official Python documentation for installation guidance:
 
-- [Windows ↗](https://www.python.org/downloads/windows/)
-- [Linux/UNIX ↗](https://www.python.org/downloads/source/)
-- [macOS ↗](https://www.python.org/downloads/macos/)
-- [Other ↗](https://www.python.org/download/other/)
+- [Windows ↗︎](https://www.python.org/downloads/windows/)
+- [Linux/UNIX ↗︎](https://www.python.org/downloads/source/)
+- [macOS ↗︎](https://www.python.org/downloads/macos/)
+- [Other ↗︎](https://www.python.org/download/other/)
 
 ### Installing Pipenv
 
 If you already had an earlier version of Python installed before installing version 3.7, other global packages you may have installed could interfere with the following steps to install Pipenv, or your other Python projects which depend on global packages.
 
-[Pipenv ↗](https://pipenv.pypa.io/en/latest/) is a Python-based package manager that makes managing virtual environments simple. This guide will not require you to have prior experience with or knowledge of Pipenv to complete your Sphinx site deployment. Cloudflare Pages natively supports the use of Pipenv and, by default, has the latest version installed.
+[Pipenv ↗︎](https://pipenv.pypa.io/en/latest/) is a Python-based package manager that makes managing virtual environments simple. This guide will not require you to have prior experience with or knowledge of Pipenv to complete your Sphinx site deployment. Cloudflare Pages natively supports the use of Pipenv and, by default, has the latest version installed.
 
 The quickest way to install Pipenv is by running the command:
 
@@ -190,15 +190,15 @@ my-wonderful-new-sphinx-project
 |--make.bat
 ```
 
-You now have everything you need to start deploying your site to Cloudflare Pages. For learning how to create documentation with Sphinx, refer to the official [Sphinx documentation ↗](https://www.sphinx-doc.org/en/master/usage/quickstart.html).
+You now have everything you need to start deploying your site to Cloudflare Pages. For learning how to create documentation with Sphinx, refer to the official [Sphinx documentation ↗︎](https://www.sphinx-doc.org/en/master/usage/quickstart.html).
 
 ## Before you continue
 
-All of the framework guides assume you already have a fundamental understanding of [Git ↗](https://git-scm.com/). If you are new to Git, refer to this [summarized Git handbook ↗](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
+All of the framework guides assume you already have a fundamental understanding of [Git ↗︎](https://git-scm.com/). If you are new to Git, refer to this [summarized Git handbook ↗︎](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
 
-If you clone with SSH, you must [generate SSH keys ↗](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) on each computer you use to push or pull from GitHub.
+If you clone with SSH, you must [generate SSH keys ↗︎](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) on each computer you use to push or pull from GitHub.
 
-Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/git-handbook/) and [Git documentation ↗](https://git-scm.com/book/en/v2) for more information.
+Refer to the [GitHub documentation ↗︎](https://guides.github.com/introduction/git-handbook/) and [Git documentation ↗︎](https://git-scm.com/book/en/v2) for more information.
 
 ## Creating a GitHub repository
 
@@ -218,7 +218,7 @@ Warning: Permanently added 'github.com,140.82.113.4' (RSA) to the list of known 
 Hi yourgithubusername! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
-Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After your repository is set up, push your application to GitHub by running the following commands in your terminal:
+Create a new GitHub repository by visiting [repo.new ↗︎](https://repo.new). After your repository is set up, push your application to GitHub by running the following commands in your terminal:
 
 ```sh
 git init

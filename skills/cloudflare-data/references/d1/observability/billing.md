@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 D1 exposes analytics to track billing metrics (rows read, rows written, and total storage) across all databases in your account.
 
-The metrics displayed in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) are sourced from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically](https://developers.cloudflare.com/d1/observability/metrics-analytics/#query-via-the-graphql-api) via GraphQL or HTTP client.
+The metrics displayed in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) are sourced from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically](https://developers.cloudflare.com/d1/observability/metrics-analytics/#query-via-the-graphql-api) via GraphQL or HTTP client.
 
 ## View metrics in the dashboard
 
@@ -31,7 +31,7 @@ Note that billable usage history is stored for a maximum of 30 days.
 
 ## Billing Notifications
 
-Usage-based billing notifications are available within the [Cloudflare dashboard ↗](https://dash.cloudflare.com) for users looking to monitor their total account usage.
+Usage-based billing notifications are available within the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) for users looking to monitor their total account usage.
 
 Notifications on the following metrics are available:
 

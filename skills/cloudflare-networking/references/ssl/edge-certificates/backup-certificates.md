@@ -20,7 +20,7 @@ Backup certificates are wrapped with a different private key and issued from a d
 
 These backup certificates are not normally deployed, but they will be deployed automatically by Cloudflare in the event of a certificate revocation or key compromise.
 
-For additional details, refer to the [introductory blog post ↗](https://blog.cloudflare.com/introducing-backup-certificates/).
+For additional details, refer to the [introductory blog post ↗︎](https://blog.cloudflare.com/introducing-backup-certificates/).
 
 ## Availability
 

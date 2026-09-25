@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/keyless-ssl/hardware-security-modules/azure-managed-hsm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial uses [Microsoft Azure’s Managed HSM ↗](https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/) — a FIPS 140-2 Level 3 certified implementation — to deploy a VM with the Keyless SSL daemon.
+This tutorial uses [Microsoft Azure’s Managed HSM ↗︎](https://azure.microsoft.com/en-us/updates/akv-managed-hsm-public-preview/) — a FIPS 140-2 Level 3 certified implementation — to deploy a VM with the Keyless SSL daemon.
 
 ---
 
@@ -22,7 +22,7 @@ This tutorial uses [Microsoft Azure’s Managed HSM ↗](https://azure.microsoft
 
 Make sure you have:
 
-- Followed Microsoft's [tutorial ↗](https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli) for provisioning and activating the managed HSM
+- Followed Microsoft's [tutorial ↗︎](https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli) for provisioning and activating the managed HSM
 - Set up a VM for your key server
 
 ---
@@ -62,8 +62,8 @@ brew install azure-cli
 
    Note
 
-   For a list of supported regions, see the [Microsoft documentation ↗](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=key-vault).
-2. [Create, provision, and activate ↗](https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli) the HSM.
+   For a list of supported regions, see the [Microsoft documentation ↗︎](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=key-vault).
+2. [Create, provision, and activate ↗︎](https://docs.microsoft.com/en-us/azure/key-vault/managed-hsm/quick-create-cli) the HSM.
 3. Add your private key to the `keyvault`, which returns the URI you need for **Step 4**:
 
    ```plaintext
@@ -80,7 +80,7 @@ brew install azure-cli
       ```
 
 
-5. In the `gokeyless` YAML file, add the URI from **Step 2** under `private_key_stores`. See our [README ↗](https://github.com/cloudflare/gokeyless/blob/master/README.md) for an example.
+5. In the `gokeyless` YAML file, add the URI from **Step 2** under `private_key_stores`. See our [README ↗︎](https://github.com/cloudflare/gokeyless/blob/master/README.md) for an example.
 
 ## 5. Restart gokeyless
 

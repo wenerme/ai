@@ -27,7 +27,7 @@ You can connect Hyperdrive to any existing Fly database by:
 3. Deploying the configuration
 4. Obtain the connection string, which is used to connect the database to Hyperdrive.
 
-1. Run the following command to [allocate a public IP address ↗](https://fly.io/docs/postgres/connecting/connecting-external/#allocate-an-ip-address).
+1. Run the following command to [allocate a public IP address ↗︎](https://fly.io/docs/postgres/connecting/connecting-external/#allocate-an-ip-address).
 
    ```txt
    fly ips allocate-v6 --app <pg-app-name>
@@ -35,8 +35,8 @@ You can connect Hyperdrive to any existing Fly database by:
 
    Note
 
-   Cloudflare recommends using IPv6, but some Internet service providers may not support IPv6. In this case, [you can allocate an IPv4 address ↗](https://fly.io/docs/postgres/connecting/connecting-with-flyctl/).
-2. [Configure an external service ↗](https://fly.io/docs/postgres/connecting/connecting-external/#configure-an-external-service) by modifying the contents of your `fly.toml` file. Run the following command to download the `fly.toml` file.
+   Cloudflare recommends using IPv6, but some Internet service providers may not support IPv6. In this case, [you can allocate an IPv4 address ↗︎](https://fly.io/docs/postgres/connecting/connecting-with-flyctl/).
+2. [Configure an external service ↗︎](https://fly.io/docs/postgres/connecting/connecting-external/#configure-an-external-service) by modifying the contents of your `fly.toml` file. Run the following command to download the `fly.toml` file.
 
    ```txt
    fly config save --app <pg-app-name>
@@ -55,8 +55,8 @@ You can connect Hyperdrive to any existing Fly database by:
    ```
 
 
-3. [Deploy the new configuration ↗](https://fly.io/docs/postgres/connecting/connecting-external/#deploy-with-the-new-configuration).
-4. [Obtain the connection string ↗](https://fly.io/docs/postgres/connecting/connecting-external/#adapting-the-connection-string), which is in the form of:
+3. [Deploy the new configuration ↗︎](https://fly.io/docs/postgres/connecting/connecting-external/#deploy-with-the-new-configuration).
+4. [Obtain the connection string ↗︎](https://fly.io/docs/postgres/connecting/connecting-external/#adapting-the-connection-string), which is in the form of:
 
    ```txt
    postgres://{username}:{password}@{public-hostname}:{port}/{database}?options
@@ -105,7 +105,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -124,7 +124,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -193,7 +193,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -206,7 +206,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

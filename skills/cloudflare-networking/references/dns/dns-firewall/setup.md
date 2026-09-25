@@ -32,7 +32,7 @@ Prior to setting up DNS Firewall, you need:
    - **IP Addresses**: The upstream IPv4 and/or IPv6 addresses of your authoritative nameservers.
    - **Minimum Cache TTL**: Recommended setting of **30 seconds**.
    - **Maximum Cache TTL**: Recommended setting of **4 hours**. Larger values increase the cache hit ratio, but also increase the time required for DNS changes to propagate.
-   - **ANY queries**: Recommended setting is **Off** because these are often used as part of DDoS attacks. Also refer to this [blog post ↗](https://blog.cloudflare.com/rfc8482-saying-goodbye-to-any/).
+   - **ANY queries**: Recommended setting is **Off** because these are often used as part of DDoS attacks. Also refer to this [blog post ↗︎](https://blog.cloudflare.com/rfc8482-saying-goodbye-to-any/).
 4. Optionally, configure any of the [additional options](#additional-options) available on the same form.
 5. Select **Continue**.
 6. On the following screen, save the values for **Your new DNS Firewall IP Addresses**.
@@ -59,7 +59,7 @@ Confirm that your nameservers are functioning correctly by running a `dig` comma
 
 ### Update security policies
 
-Configure security policy in your DNS servers and Firewall to allow only [Cloudflare IPs ↗](https://cloudflare.com/ips) and TCP/UDP port 53.
+Configure security policy in your DNS servers and Firewall to allow only [Cloudflare IPs ↗︎](https://cloudflare.com/ips) and TCP/UDP port 53.
 
 ## Additional options
 

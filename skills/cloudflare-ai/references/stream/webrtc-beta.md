@@ -61,7 +61,7 @@ Retrieve the WHIP endpoint URL:
 
 For a complete, no-dependency example of going live from a browser, see the [First WebRTC broadcast in the browser](https://developers.cloudflare.com/stream/examples/browser-based-webrtc/) tutorial.
 
-You can also use this URL with any client that supports the [WebRTC-HTTP Ingestion Protocol (WHIP) ↗](https://www.ietf.org/archive/id/draft-ietf-wish-whip-16.html). See [supported WHIP clients](#supported-whip-and-whep-clients) for a list of clients we have tested and confirmed compatibility with Cloudflare Stream.
+You can also use this URL with any client that supports the [WebRTC-HTTP Ingestion Protocol (WHIP) ↗︎](https://www.ietf.org/archive/id/draft-ietf-wish-whip-16.html). See [supported WHIP clients](#supported-whip-and-whep-clients) for a list of clients we have tested and confirmed compatibility with Cloudflare Stream.
 
 ### Broadcasting from other software (OBS, FFmpeg)
 
@@ -117,7 +117,7 @@ While the creator is actively streaming, viewers can watch the broadcast in thei
 
 For a complete, no-dependency example of playing WebRTC in a browser, see the [First WebRTC broadcast in the browser](https://developers.cloudflare.com/stream/examples/browser-based-webrtc/) tutorial.
 
-This URL can also be used with any client that supports the [WebRTC-HTTP Egress Protocol (WHEP) ↗](https://www.ietf.org/archive/id/draft-murillo-whep-01.html). See [supported WHEP clients](#supported-whip-and-whep-clients) for a list of clients we have tested and confirmed compatibility with Cloudflare Stream.
+This URL can also be used with any client that supports the [WebRTC-HTTP Egress Protocol (WHEP) ↗︎](https://www.ietf.org/archive/id/draft-murillo-whep-01.html). See [supported WHEP clients](#supported-whip-and-whep-clients) for a list of clients we have tested and confirmed compatibility with Cloudflare Stream.
 
 ## Debugging WebRTC
 
@@ -133,38 +133,38 @@ You can write your own broadcast and publishing apps using the browser's native 
 
 Dedicated applications:
 
-- [OBS (Open Broadcaster Software) ↗](https://obsproject.com) version 31.0 or higher (desktop streaming app)
-- [Larix Broadcaster ↗](https://softvelum.com/larix/) (mobile app)
-- [FFmpeg ↗](https://www.ffmpeg.org/) version 8.1 or higher (cross-platform command-line application)
+- [OBS (Open Broadcaster Software) ↗︎](https://obsproject.com) version 31.0 or higher (desktop streaming app)
+- [Larix Broadcaster ↗︎](https://softvelum.com/larix/) (mobile app)
+- [FFmpeg ↗︎](https://www.ffmpeg.org/) version 8.1 or higher (cross-platform command-line application)
 
 Development libraries:
 
-- [whip-whep ↗](https://www.npmjs.com/package/whip-whep) (JavaScript, the reference implementation from a WHIP specification author)
-- [@eyevinn/whip-web-client ↗](https://www.npmjs.com/package/@eyevinn/whip-web-client) (TypeScript)
+- [whip-whep ↗︎](https://www.npmjs.com/package/whip-whep) (JavaScript, the reference implementation from a WHIP specification author)
+- [@eyevinn/whip-web-client ↗︎](https://www.npmjs.com/package/@eyevinn/whip-web-client) (TypeScript)
 
 ### WHEP for Playback
 
 - Stream's built-in player
-- [whip-whep ↗](https://www.npmjs.com/package/whip-whep) (JavaScript, the reference implementation from a WHEP specification author)
-- [@eyevinn/webrtc-player ↗](https://www.npmjs.com/package/@eyevinn/webrtc-player) (TypeScript)
-- [react-native-whip-whep ↗](https://www.npmjs.com/package/react-native-whip-whep) (React Native)
+- [whip-whep ↗︎](https://www.npmjs.com/package/whip-whep) (JavaScript, the reference implementation from a WHEP specification author)
+- [@eyevinn/webrtc-player ↗︎](https://www.npmjs.com/package/@eyevinn/webrtc-player) (TypeScript)
+- [react-native-whip-whep ↗︎](https://www.npmjs.com/package/react-native-whip-whep) (React Native)
 
 ## Using WebRTC in native apps
 
-If you are building a native app, the browser example from the [First WebRTC broadcast in the browser](https://developers.cloudflare.com/stream/examples/browser-based-webrtc/) tutorial can run within a [WkWebView (iOS) ↗](https://developer.apple.com/documentation/webkit/wkwebview), [WebView (Android) ↗](https://developer.android.com/reference/android/webkit/WebView) or using [react-native-webrtc ↗](https://github.com/react-native-webrtc/react-native-webrtc/blob/master/Documentation/BasicUsage.md). If you need to use WebRTC without a webview, you can use Google's Java and Objective-C native [implementations of WebRTC APIs ↗](https://webrtc.googlesource.com/src/+/refs/heads/main/sdk).
+If you are building a native app, the browser example from the [First WebRTC broadcast in the browser](https://developers.cloudflare.com/stream/examples/browser-based-webrtc/) tutorial can run within a [WkWebView (iOS) ↗︎](https://developer.apple.com/documentation/webkit/wkwebview), [WebView (Android) ↗︎](https://developer.android.com/reference/android/webkit/WebView) or using [react-native-webrtc ↗︎](https://github.com/react-native-webrtc/react-native-webrtc/blob/master/Documentation/BasicUsage.md). If you need to use WebRTC without a webview, you can use Google's Java and Objective-C native [implementations of WebRTC APIs ↗︎](https://webrtc.googlesource.com/src/+/refs/heads/main/sdk).
 
 ## Supported broadcast codecs
 
-- [VP9 ↗](https://developers.google.com/media/vp9)
-- [VP8 ↗](https://en.wikipedia.org/wiki/VP8)
-- [h264 ↗](https://en.wikipedia.org/wiki/Advanced_Video_Coding) (Constrained Baseline Profile Level 3.1, referred to as `42e01f` in the SDP offer's `profile-level-id` parameter.)
+- [VP9 ↗︎](https://developers.google.com/media/vp9)
+- [VP8 ↗︎](https://en.wikipedia.org/wiki/VP8)
+- [h264 ↗︎](https://en.wikipedia.org/wiki/Advanced_Video_Coding) (Constrained Baseline Profile Level 3.1, referred to as `42e01f` in the SDP offer's `profile-level-id` parameter.)
 
 ## Conformance with WHIP and WHEP specifications
 
-Cloudflare Stream supports the [WHIP ↗](https://www.ietf.org/archive/id/draft-ietf-wish-whip-16.html) and [WHEP ↗](https://www.ietf.org/archive/id/draft-murillo-whep-01.html) specifications, including:
+Cloudflare Stream supports the [WHIP ↗︎](https://www.ietf.org/archive/id/draft-ietf-wish-whip-16.html) and [WHEP ↗︎](https://www.ietf.org/archive/id/draft-murillo-whep-01.html) specifications, including:
 
-- [Trickle ICE ↗](https://datatracker.ietf.org/doc/rfc8838/)
-- [Server and client offer modes ↗](https://www.ietf.org/archive/id/draft-murillo-whep-01.html#section-3) for WHEP
+- [Trickle ICE ↗︎](https://datatracker.ietf.org/doc/rfc8838/)
+- [Server and client offer modes ↗︎](https://www.ietf.org/archive/id/draft-murillo-whep-01.html#section-3) for WHEP
 
 You can find the specific version of WHIP and WHEP being used in the `protocol-version` header in WHIP and WHEP API responses. The value of this header references the IETF draft slug for each protocol. Currently, Stream uses `draft-ietf-wish-whip-06` (expected to be the final WHIP draft revision) and `draft-murillo-whep-01` (the most current WHEP draft).
 

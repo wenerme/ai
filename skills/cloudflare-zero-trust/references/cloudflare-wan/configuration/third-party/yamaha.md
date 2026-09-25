@@ -27,7 +27,7 @@ These configurations were tested on the Yamaha RTX840 and RTX1300 series with th
 
 You need to add IPsec tunnels and static routes to your Cloudflare account via the Cloudflare dashboard.
 
-Before proceeding, ensure that you have the anycast IPs assigned to your account. You can find them in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+Before proceeding, ensure that you have the anycast IPs assigned to your account. You can find them in the Cloudflare dashboard under **Address Space** > [**Leased IPs** ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 ### IPsec tunnels
 

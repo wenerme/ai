@@ -706,7 +706,7 @@ You do not need to specify an array type (`User[]` or `Array<User>`), as `this.s
 
 Note
 
-Providing a type parameter does not validate that the result matches your type definition. If you need to validate incoming events, we recommend a library such as [zod ↗](https://zod.dev/) or your own validator logic.
+Providing a type parameter does not validate that the result matches your type definition. If you need to validate incoming events, we recommend a library such as [zod ↗︎](https://zod.dev/) or your own validator logic.
 
 The SQL API exposed to an Agent is similar to the one [within Durable Objects](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/#sql-api). You can use the same SQL queries with the Agent's database. Create tables and query data, just as you would with Durable Objects or [D1](https://developers.cloudflare.com/d1/).
 

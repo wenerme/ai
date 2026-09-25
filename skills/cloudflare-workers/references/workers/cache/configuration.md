@@ -19,7 +19,7 @@ Workers Caching is configured per Worker, in your Wrangler configuration file. W
 This is **your Worker's cache** — configured through your Worker's code and Wrangler file. Your Worker controls its cache entirely through:
 
 - The `cache.enabled` flag in your Wrangler configuration, which turns caching on or off. You can override it [per entrypoint](#per-entrypoint-caching) and control [cross-version behavior](#cross-version-caching).
-- The `Cache-Control` (and `cdn-cache-control`, `cloudflare-cdn-cache-control`) headers your Worker sets on its responses, per [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111).
+- The `Cache-Control` (and `cdn-cache-control`, `cloudflare-cdn-cache-control`) headers your Worker sets on its responses, per [RFC 9111 ↗︎](https://www.rfc-editor.org/rfc/rfc9111).
 - The optional `Cache-Tag` response header for bulk purging, and [`ctx.cache.purge()`](https://developers.cloudflare.com/workers/cache/purge/) for programmatic invalidation.
 
 That is the entire configuration surface.
@@ -37,7 +37,7 @@ Add a `cache` block to your Wrangler configuration:
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"cache": {
 		"enabled": true,
 	},
@@ -48,7 +48,7 @@ Add a `cache` block to your Wrangler configuration:
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [cache]
 enabled = true
@@ -67,7 +67,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"cache": {
 		"enabled": false,
 	},
@@ -78,7 +78,7 @@ To turn caching off, set `cache.enabled` to `false` (or remove the `cache` block
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [cache]
 enabled = false
@@ -99,7 +99,7 @@ Requires Wrangler 4.107.0 or above.
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"cache": {
 		"enabled": true,
 	},
@@ -116,7 +116,7 @@ Requires Wrangler 4.107.0 or above.
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [cache]
 enabled = true
@@ -170,7 +170,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"cache": {
 		"enabled": true,
 		"cross_version_cache": true,
@@ -182,7 +182,7 @@ If you want to maximize cache hit rate and are willing to accept slower rollouts
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [cache]
 enabled = true
@@ -202,7 +202,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"cache": {
 		"enabled": false,
 	},
@@ -220,7 +220,7 @@ The `cache` block can be set at the top level and overridden per [environment](h
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [cache]
 enabled = false
@@ -235,7 +235,7 @@ With caching enabled, your Worker is the origin for Cloudflare's cache. Standard
 
 Responses with no \`Cache-Control\` header are still cached
 
-If your Worker returns a response with **no** `Cache-Control` header (and no `Expires` header), Cloudflare applies [RFC 9111 heuristic freshness ↗](https://www.rfc-editor.org/rfc/rfc9111#name-calculating-heuristic-fresh) with the per-status default TTLs in the following table. Responses whose status is not in the table are not cached by default.
+If your Worker returns a response with **no** `Cache-Control` header (and no `Expires` header), Cloudflare applies [RFC 9111 heuristic freshness ↗︎](https://www.rfc-editor.org/rfc/rfc9111#name-calculating-heuristic-fresh) with the per-status default TTLs in the following table. Responses whose status is not in the table are not cached by default.
 
 | Status code | Description | Default TTL |
 | --- | --- | --- |
@@ -258,7 +258,7 @@ If you set `Cache-Control` (or `Expires`) on the response, these defaults do not
 
 Cache Deception Armor
 
-When a response falls back to heuristic freshness (no `Cache-Control` set), Workers Caching also runs [Cache Deception Armor](https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/) to defend against [cache deception attacks ↗](https://owasp.org/www-community/attacks/Cache_Poisoning).
+When a response falls back to heuristic freshness (no `Cache-Control` set), Workers Caching also runs [Cache Deception Armor](https://developers.cloudflare.com/cache/cache-security/cache-deception-armor/) to defend against [cache deception attacks ↗︎](https://owasp.org/www-community/attacks/Cache_Poisoning).
 
 Cache Deception Armor only inspects responses whose `Content-Type` starts with `text/` or `application/` — the high-risk types for accidentally caching generated, user-specific content under a static-looking URL. For those responses, if the request URI has a file extension that maps to a known MIME type (for example, `.css` → `text/css`) and the actual `Content-Type` does not match, the response is not cached and `Cf-Cache-Status` is `BYPASS`. For example, a Worker that serves `/style.css` with `Content-Type: text/html` will hit this.
 
@@ -362,7 +362,7 @@ export default {
 
 \`s-maxage\`, \`must-revalidate\`, and \`proxy-revalidate\` disable \`stale-while-revalidate\`
 
-If your response includes any of `s-maxage`, `must-revalidate`, or `proxy-revalidate`, the stale-serving behavior is disabled and Cloudflare will block on a fresh revalidation when the response expires. The same is true for `stale-if-error`. This follows [RFC 9111 §4.2.4 ↗](https://www.rfc-editor.org/rfc/rfc9111#section-4.2.4): those three directives forbid serving stale content.
+If your response includes any of `s-maxage`, `must-revalidate`, or `proxy-revalidate`, the stale-serving behavior is disabled and Cloudflare will block on a fresh revalidation when the response expires. The same is true for `stale-if-error`. This follows [RFC 9111 §4.2.4 ↗︎](https://www.rfc-editor.org/rfc/rfc9111#section-4.2.4): those three directives forbid serving stale content.
 
 When you want `stale-while-revalidate` to take effect at the edge, use `max-age` for the freshness window — not `s-maxage`. If you need a longer edge TTL than browsers should honor while still using `stale-while-revalidate`, use [`cdn-cache-control`](#header-precedence) for the edge directive.
 
@@ -389,7 +389,7 @@ Note
 
 If you do not set `stale-if-error` explicitly, **and your response does not carry `s-maxage`, `must-revalidate`, or `proxy-revalidate`**, Cloudflare's default behavior is to serve stale responses on Worker error indefinitely (as long as the cached entry has not been purged). This is helpful for resilience but can mask real failures from your monitoring. If you want Worker errors to surface to clients quickly, set `stale-if-error=0`.
 
-If your response **does** carry `s-maxage`, `must-revalidate`, or `proxy-revalidate`, `stale-if-error` is disabled regardless of the directive's value or the default. Worker errors flow through to clients immediately. This follows [RFC 9111 §4.2.4 ↗](https://www.rfc-editor.org/rfc/rfc9111#section-4.2.4) and applies to `stale-while-revalidate` as well.
+If your response **does** carry `s-maxage`, `must-revalidate`, or `proxy-revalidate`, `stale-if-error` is disabled regardless of the directive's value or the default. Worker errors flow through to clients immediately. This follows [RFC 9111 §4.2.4 ↗︎](https://www.rfc-editor.org/rfc/rfc9111#section-4.2.4) and applies to `stale-while-revalidate` as well.
 
 ### Header precedence
 
@@ -521,7 +521,7 @@ Invalid tags (over-length, containing spaces, or containing non-ASCII characters
 Workers Caching inherits Cloudflare's standard [cache bypass rules](https://developers.cloudflare.com/cache/concepts/cache-responses/#bypass). The most common triggers:
 
 - The response includes a `Set-Cookie` header (unless `Cache-Control` includes `private="set-cookie"` or `no-cache="set-cookie"`, in which case the `Set-Cookie` is stripped from the cached copy).
-- The request includes an `Authorization` header. The response is only stored if `Cache-Control` includes `public`, `must-revalidate`, or `s-maxage`, per [RFC 9111 §3.5 ↗](https://www.rfc-editor.org/rfc/rfc9111#name-storing-responses-to-authen).
+- The request includes an `Authorization` header. The response is only stored if `Cache-Control` includes `public`, `must-revalidate`, or `s-maxage`, per [RFC 9111 §3.5 ↗︎](https://www.rfc-editor.org/rfc/rfc9111#name-storing-responses-to-authen).
 - The response `Cache-Control` header includes `private` or `no-store`.
 
 When any of these apply, `Cf-Cache-Status` is `BYPASS` and your Worker runs on every request.
@@ -555,7 +555,7 @@ If your Worker returns a `206` response of its own — for example, because you 
 
 ### `Vary`
 
-When your Worker returns a `Vary` response header, Cloudflare stores a separate cached variant per distinct combination of the listed request header values, and only returns a variant whose stored values match the incoming request. This implements [RFC 9110 ↗](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) and the cache-key calculation in [RFC 9111 ↗](https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with). For an introduction with example code, refer to [Content negotiation with `Vary`](https://developers.cloudflare.com/workers/cache/#content-negotiation-with-vary).
+When your Worker returns a `Vary` response header, Cloudflare stores a separate cached variant per distinct combination of the listed request header values, and only returns a variant whose stored values match the incoming request. This implements [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#name-vary) and the cache-key calculation in [RFC 9111 ↗︎](https://www.rfc-editor.org/rfc/rfc9111.html#name-calculating-cache-keys-with). For an introduction with example code, refer to [Content negotiation with `Vary`](https://developers.cloudflare.com/workers/cache/#content-negotiation-with-vary).
 
 How `Vary` is processed for Workers Caching:
 

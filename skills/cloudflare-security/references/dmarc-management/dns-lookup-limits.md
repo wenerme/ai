@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dmarc-management/dns-lookup-limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-An [SPF record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/) lists which servers are authorized to send email for your domain. SPF records can reference other domains and services (for example, using `include:` or `mx` mechanisms), and each such reference requires a separate DNS lookup to verify. The [SPF specification (RFC 7208) ↗](https://www.rfc-editor.org/rfc/rfc7208.html) limits the total number of these lookups to 10 per SPF check. If your SPF record exceeds this limit, receiving mail servers may treat the SPF check as a permanent error and reject or flag your emails.
+An [SPF record ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-spf-record/) lists which servers are authorized to send email for your domain. SPF records can reference other domains and services (for example, using `include:` or `mx` mechanisms), and each such reference requires a separate DNS lookup to verify. The [SPF specification (RFC 7208) ↗︎](https://www.rfc-editor.org/rfc/rfc7208.html) limits the total number of these lookups to 10 per SPF check. If your SPF record exceeds this limit, receiving mail servers may treat the SPF check as a permanent error and reject or flag your emails.
 
 To check if your SPF records are compliant with the SPF specification:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **Email** > **DMARC Management**.
 3. In **Email record overview**, select **View records**.
 4. Find your SPF record, and select the three dots next to it > **Edit**.

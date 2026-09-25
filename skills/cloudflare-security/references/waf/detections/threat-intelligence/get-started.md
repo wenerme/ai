@@ -47,7 +47,7 @@ For more examples, refer to [Example rules](https://developers.cloudflare.com/wa
 
 If you prefer to write expressions directly, you can create a rule from the dashboard or the API.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login) and select your account and domain.
 2. Go to **Security** > **Security rules**.
 3. Select **Create rule** > **Custom rules**.
 4. Enter a rule name.
@@ -61,7 +61,7 @@ If you prefer to write expressions directly, you can create a rule from the dash
 6. Set the action to *Log* to validate matches before enforcing.
 7. Select **Deploy**.
 
-Threat intelligence fields work with the [Cloudflare API](https://developers.cloudflare.com/api/resources/rulesets/) and the [Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs). To create a custom rule via the API, refer to [Create a custom rule via API](https://developers.cloudflare.com/waf/custom-rules/create-api/).
+Threat intelligence fields work with the [Cloudflare API](https://developers.cloudflare.com/api/resources/rulesets/) and the [Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs). To create a custom rule via the API, refer to [Create a custom rule via API](https://developers.cloudflare.com/waf/custom-rules/create-api/).
 
 Use the following expression to match IP addresses associated with DDoS activity targeting France:
 

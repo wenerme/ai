@@ -20,7 +20,7 @@ Partner CNI and Cloud CNI
 
 Partner CNI availability depends on the locations offered through each connectivity partner's marketplace. This page does not yet list Cloud CNI locations.
 
-For public peering and best-effort interconnection at additional locations, refer to [Cloudflare on PeeringDB ↗](https://www.peeringdb.com/net/4224).
+For public peering and best-effort interconnection at additional locations, refer to [Cloudflare on PeeringDB ↗︎](https://www.peeringdb.com/net/4224).
 
 ## Available locations
 

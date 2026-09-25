@@ -47,7 +47,7 @@ graph LR
 
 To deploy a replica for a remotely-managed tunnel:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. Select your tunnel.
 3. Select **Add a replica**.
 4. Select the operating system of the host where you want to deploy a replica.
@@ -113,7 +113,7 @@ FedRAMP High IPs
 
 </summary>
 
-When deploying <code>cloudflared</code> in a <a href="https://www.cloudflare.com/cloudflare-for-government/">FedRAMP High ↗</a> environment, <code>cloudflared</code> automatically routes to FedRAMP data centers based on the <a href="https://developers.cloudflare.com/tunnel/reference/tunnel-tokens/">tunnel token</a>. Ensure your firewall allows outbound connections to these FedRAMP-specific destinations on port <code>7844</code> (TCP/UDP).
+When deploying <code>cloudflared</code> in a <a href="https://www.cloudflare.com/cloudflare-for-government/">FedRAMP High ↗︎</a> environment, <code>cloudflared</code> automatically routes to FedRAMP data centers based on the <a href="https://developers.cloudflare.com/tunnel/reference/tunnel-tokens/">tunnel token</a>. Ensure your firewall allows outbound connections to these FedRAMP-specific destinations on port <code>7844</code> (TCP/UDP).
 
 #### <code>fed-region1.v2.argotunnel.com</code>
 

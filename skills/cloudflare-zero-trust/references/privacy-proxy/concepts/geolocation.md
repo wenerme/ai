@@ -33,7 +33,7 @@ Privacy Proxy uses geohashes to preserve location without revealing precise coor
 
 ### Geohash encoding
 
-A [geohash ↗](https://en.wikipedia.org/wiki/Geohash) is a compact representation of latitude and longitude. Geohashes use a hierarchical encoding where longer strings represent more precise locations:
+A [geohash ↗︎](https://en.wikipedia.org/wiki/Geohash) is a compact representation of latitude and longitude. Geohashes use a hierarchical encoding where longer strings represent more precise locations:
 
 | Geohash length | Approximate area |
 | --- | --- |
@@ -98,7 +98,7 @@ The geohash is cryptographically protected to prevent clients from spoofing thei
 
 ## Related resources
 
-- [Geo-egress: Improving WARP user experience on a larger network ↗](https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network/) - How Cloudflare implements geolocation-aware egress.
+- [Geo-egress: Improving WARP user experience on a larger network ↗︎](https://blog.cloudflare.com/geoexit-improving-warp-user-experience-larger-network/) - How Cloudflare implements geolocation-aware egress.
 
 Was this helpful?
 

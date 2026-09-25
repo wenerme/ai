@@ -20,7 +20,7 @@ A virtual private network (VPN) is an Internet security service that allows user
 
 Ordinarily, most Internet traffic is unencrypted and very public. When a user creates an Internet connection, such as visiting a website in a browser, the user’s device will connect to their Internet Service Provider (ISP). The ISP will then connect to the Internet to find the appropriate web server to communicate with to fetch the request website.
 
-Information about the user is exposed in every step of the website request. Since the user’s IP address is exposed throughout the process, the ISP and any other intermediary can keep logs of the user’s browsing habits. Additionally, the data flowing between the user’s device and the web server is unencrypted; this creates opportunities for malicious actors to spy on the data or perpetrate attacks on the user, such as an [on-path attack ↗](https://www.cloudflare.com/learning/security/threats/on-path-attack/).
+Information about the user is exposed in every step of the website request. Since the user’s IP address is exposed throughout the process, the ISP and any other intermediary can keep logs of the user’s browsing habits. Additionally, the data flowing between the user’s device and the web server is unencrypted; this creates opportunities for malicious actors to spy on the data or perpetrate attacks on the user, such as an [on-path attack ↗︎](https://www.cloudflare.com/learning/security/threats/on-path-attack/).
 
 ## How a VPN works
 

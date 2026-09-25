@@ -20,10 +20,10 @@ When it comes to reports of abuse on websites that use our services, our ability
 
 ## Resources
 
-- [Read abuse policy ↗](https://www.cloudflare.com/trust-hub/abuse-approach/)
+- [Read abuse policy ↗︎](https://www.cloudflare.com/trust-hub/abuse-approach/)
 - [Review complaint types](https://developers.cloudflare.com/fundamentals/reference/report-abuse/complaint-types/)
 - [Providing specific URLs](https://developers.cloudflare.com/fundamentals/reference/report-abuse/provide-specific-urls/)
-- [Submit abuse report ↗](https://www.cloudflare.com/abuse/form)
+- [Submit abuse report ↗︎](https://www.cloudflare.com/abuse/form)
 
 Was this helpful?
 

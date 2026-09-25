@@ -38,13 +38,13 @@ Your primary DNS provider should allow traffic from the IP address and port spec
 
 It should also have updated [Access Control Lists (ACLs)](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/#cloudflare-as-secondary) to prevent zone transfers from being blocked.
 
-We strongly recommend configuring [DNS NOTIFY ↗](https://datatracker.ietf.org/doc/html/rfc1996) at your primary DNS provider to ensure your secondary zone on Cloudflare is updated with the most recent changes as quickly as possible. In order to do so, set up [Cloudflare NOTIFY IPs](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/#notify-ips) at your primary DNS provider.
+We strongly recommend configuring [DNS NOTIFY ↗︎](https://datatracker.ietf.org/doc/html/rfc1996) at your primary DNS provider to ensure your secondary zone on Cloudflare is updated with the most recent changes as quickly as possible. In order to do so, set up [Cloudflare NOTIFY IPs](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/access-control-lists/cloudflare-ip-addresses/#notify-ips) at your primary DNS provider.
 
 You will also need the following information from your Primary DNS provider:
 
 - **Primary IP address**: The IP address that Cloudflare sends zone transfer requests to (via AXFR or IXFR).
 - **Zone transfer type**: Will zone transfers be full (AXFR) or incremental (IXFR)?
-- **TSIG name** (optional): A descriptive name of the TSIG following domain name syntax ([RFC 8945 section 4.2 ↗](https://datatracker.ietf.org/doc/html/rfc8945#section-4.2)). Note
+- **TSIG name** (optional): A descriptive name of the TSIG following domain name syntax ([RFC 8945 section 4.2 ↗︎](https://datatracker.ietf.org/doc/html/rfc8945#section-4.2)). Note
 
   The TSIG names configured at your primary and secondary DNS providers have to be exactly the same. Any differences in TSIG names will cause zone transfers to fail.
 - **TSIG secret** (optional): The secret string used to authenticate zone transfers.
@@ -78,7 +78,7 @@ To create a TSIG using the dashboard:
 2. Go to **DNS Settings**.
 3. Under **DNS Zone Transfers**, for **TSIG**, select **Create**.
 4. Enter the following information:
-   - **TSIG name**: The name of the TSIG object using domain name syntax (more details in [RFC 8945 section 4.2 ↗](https://datatracker.ietf.org/doc/html/rfc8945#section-4.2)).
+   - **TSIG name**: The name of the TSIG object using domain name syntax (more details in [RFC 8945 section 4.2 ↗︎](https://datatracker.ietf.org/doc/html/rfc8945#section-4.2)).
    - **Secret (optional)**: Get a shared secret to add to your third-party nameservers. If left blank, this field generates a random secret.
    - **Algorithm**: Choose a TSIG signing algorithm.
 5. Select **Create**.
@@ -105,7 +105,7 @@ To create a peer DNS server using the API, send a [POST request](https://develop
 
 To create a secondary zone using the dashboard:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login) and select your account.
 2. Select **Onboard a domain**.
 3. Enter your zone name and choose **Secondary DNS** (if this option is not available, contact your account team).
 4. Select **Continue**.

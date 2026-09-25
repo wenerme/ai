@@ -161,7 +161,7 @@ To send or receive traffic from a container running within Docker-in-Docker, use
 
 This allows you to connect to the container, but it means each inner container has access to your outer container's network stack. Ensure you understand the security implications of this setup before proceeding.
 
-For a complete working example, see the [Docker-in-Docker Containers example ↗](https://github.com/th0m/containers-dind).
+For a complete working example, see the [Docker-in-Docker Containers example ↗︎](https://github.com/th0m/containers-dind).
 
 ## How do I allow or disallow egress from my container?
 

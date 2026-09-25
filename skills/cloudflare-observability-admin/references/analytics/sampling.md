@@ -14,17 +14,17 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/sampling/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Sampling ↗](<https://en.wikipedia.org/wiki/Sampling_(statistics)>) is a technique used in analytics to analyze a subset of data rather than processing every individual data point. In Cloudflare Analytics, sampling ensures efficient performance and scalability while maintaining high accuracy and reliability. This document provides a comprehensive overview of how sampling works, why it is used, and its impact on analytics across different Cloudflare tools.
+[Sampling ↗︎](<https://en.wikipedia.org/wiki/Sampling_(statistics)>) is a technique used in analytics to analyze a subset of data rather than processing every individual data point. In Cloudflare Analytics, sampling ensures efficient performance and scalability while maintaining high accuracy and reliability. This document provides a comprehensive overview of how sampling works, why it is used, and its impact on analytics across different Cloudflare tools.
 
 ## How sampling works
 
-We use a sampling method called [Adaptive Bit Rate (ABR) ↗](https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/) to ensure that queries complete quickly, even when working with large datasets. ABR dynamically adjusts the level of detail in the data retrieved based on query complexity and duration. This approach ensures fairness by preventing large or complex queries from consuming a disproportionate amount of computing resources, which could otherwise slow down or block smaller queries. By distributing resources more equitably, ABR allows the system to maintain consistent performance for all users, regardless of the dataset size.
+We use a sampling method called [Adaptive Bit Rate (ABR) ↗︎](https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/) to ensure that queries complete quickly, even when working with large datasets. ABR dynamically adjusts the level of detail in the data retrieved based on query complexity and duration. This approach ensures fairness by preventing large or complex queries from consuming a disproportionate amount of computing resources, which could otherwise slow down or block smaller queries. By distributing resources more equitably, ABR allows the system to maintain consistent performance for all users, regardless of the dataset size.
 
 To make this possible, data is stored at multiple resolutions (100%, 10%, 1%), each representing different sampling percentages. When a query is run, ABR selects the best resolution based on the query's complexity and number of rows to retrieve. By dynamically adjusting the data resolution, ABR optimizes performance and prevents delays. This sets it apart from systems that struggle with timeouts, errors, or high costs when dealing with large datasets.
 
 ## Why sampling is applied
 
-Cloudflare's data pipeline handles [over 700 million events per second ↗](https://blog.cloudflare.com/how-we-make-sense-of-too-much-data) (and growing) across its global network. Processing and storing all this data in real-time would be prohibitively expensive and time-consuming. By leveraging carefully designed sampling methods, Cloudflare Analytics delivers accurate and actionable data, balancing precision with performance.
+Cloudflare's data pipeline handles [over 700 million events per second ↗︎](https://blog.cloudflare.com/how-we-make-sense-of-too-much-data) (and growing) across its global network. Processing and storing all this data in real-time would be prohibitively expensive and time-consuming. By leveraging carefully designed sampling methods, Cloudflare Analytics delivers accurate and actionable data, balancing precision with performance.
 
 Sampling enables:
 

@@ -16,7 +16,7 @@ Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Using DevTools
 
-When running your Worker locally using the [Wrangler CLI ↗](https://developers.cloudflare.com/workers/wrangler/) (`wrangler dev`) or using [Vite ↗](https://vite.dev/) with the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/), you automatically have access to [Cloudflare's implementation ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/chrome-devtools-patches) of [Chrome DevTools ↗](https://developer.chrome.com/docs/devtools/overview).
+When running your Worker locally using the [Wrangler CLI ↗︎](https://developers.cloudflare.com/workers/wrangler/) (`wrangler dev`) or using [Vite ↗︎](https://vite.dev/) with the [Cloudflare Vite plugin ↗︎](https://developers.cloudflare.com/workers/vite-plugin/), you automatically have access to [Cloudflare's implementation ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/chrome-devtools-patches) of [Chrome DevTools ↗︎](https://developer.chrome.com/docs/devtools/overview).
 
 You can use Chrome DevTools to:
 
@@ -39,7 +39,7 @@ You can use Chrome DevTools to:
 
 ### Dashboard editor & playground
 
-Both the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and the [Worker's Playground ↗](https://workers.cloudflare.com/playground) include DevTools in the UI.
+Both the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and the [Worker's Playground ↗︎](https://workers.cloudflare.com/playground) include DevTools in the UI.
 
 ## Related resources
 

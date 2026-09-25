@@ -46,11 +46,11 @@ dig +short www.example.com
 Resolve-DnsName -Name www.example.com | Select-Object -ExpandProperty IPAddress
 ```
 
-The returned IP addresses should be [Cloudflare IPs ↗](https://www.cloudflare.com/ips/). If they point directly to your origin server, your DNS records are not proxied.
+The returned IP addresses should be [Cloudflare IPs ↗︎](https://www.cloudflare.com/ips/). If they point directly to your origin server, your DNS records are not proxied.
 
 To fix this:
 
-1. Go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns).
+1. Go to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns).
 2. Find the DNS record for the slow hostname.
 3. Ensure the **Proxy status** is set to **Proxied** (orange cloud icon).
 
@@ -223,9 +223,9 @@ The curl timing breakdown shows the following:
 
 To test from different geographic locations, use online tools like:
 
-- [KeyCDN Tools ↗](https://tools.keycdn.com/performance)
-- [Uptrends ↗](https://www.uptrends.com/tools/website-speed-test)
-- [Dotcom-Tools ↗](https://www.dotcom-tools.com/website-speed-test)
+- [KeyCDN Tools ↗︎](https://tools.keycdn.com/performance)
+- [Uptrends ↗︎](https://www.uptrends.com/tools/website-speed-test)
+- [Dotcom-Tools ↗︎](https://www.dotcom-tools.com/website-speed-test)
 
 ---
 
@@ -308,7 +308,7 @@ If curl shows high TCP Connect or TLS Handshake times, the issue may be network-
 
 ### Test your Internet connection
 
-Visit [speed.cloudflare.com ↗](https://speed.cloudflare.com) to test:
+Visit [speed.cloudflare.com ↗︎](https://speed.cloudflare.com) to test:
 
 - Download and upload speeds
 - Latency (ping)
@@ -325,7 +325,7 @@ MTR combines traceroute and ping to show latency and packet loss at each network
 mtr -rw www.example.com
 ```
 
-Download [WinMTR ↗](https://github.com/White-Tiger/WinMTR/releases) and run it with your domain as the target.
+Download [WinMTR ↗︎](https://github.com/White-Tiger/WinMTR/releases) and run it with your domain as the target.
 
 Look for:
 
@@ -333,11 +333,11 @@ Look for:
 - **Packet loss** (indicates network congestion or issues)
 - **Timeouts** (may indicate firewalls or routing issues)
 
-For more details, refer to [How to read MTR ↗](https://www.cloudflare.com/learning/network-layer/what-is-mtr/).
+For more details, refer to [How to read MTR ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-mtr/).
 
 ### Run MTR from your origin to Cloudflare
 
-If you have access to your origin server, run MTR from the origin to a [Cloudflare IP address ↗](https://www.cloudflare.com/ips/) to test the network path between your origin and Cloudflare.
+If you have access to your origin server, run MTR from the origin to a [Cloudflare IP address ↗︎](https://www.cloudflare.com/ips/) to test the network path between your origin and Cloudflare.
 
 ```bash
 mtr -rw 104.16.132.229
@@ -363,13 +363,13 @@ curl https://www.example.com/cdn-cgi/trace
 Invoke-RestMethod -Uri "https://www.example.com/cdn-cgi/trace"
 ```
 
-The `colo` field shows the three-letter airport code of the serving data center (for example, `colo=SJC` for San Jose). You can find the full list of Cloudflare data centers and their codes on the [Cloudflare status page ↗](https://www.cloudflarestatus.com/).
+The `colo` field shows the three-letter airport code of the serving data center (for example, `colo=SJC` for San Jose). You can find the full list of Cloudflare data centers and their codes on the [Cloudflare status page ↗︎](https://www.cloudflarestatus.com/).
 
 ### Why routing matters
 
 When a request reaches Cloudflare:
 
-1. The request is routed to a nearby Cloudflare data center based on anycast [routing ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/).
+1. The request is routed to a nearby Cloudflare data center based on anycast [routing ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/).
 2. If the content is cached, it is served immediately.
 3. If not cached, Cloudflare fetches from your origin server.
 
@@ -411,7 +411,7 @@ Argo Smart Routing is part of [Smart Shield](https://developers.cloudflare.com/s
 
 To enable Argo Smart Routing:
 
-1. Go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/smart-shield).
+1. Go to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/smart-shield).
 2. Follow the [Smart Shield setup guide](https://developers.cloudflare.com/smart-shield/get-started/) to enable the feature.
 
 Argo is particularly effective when:

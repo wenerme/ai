@@ -27,8 +27,8 @@ To detect data loss prevention and posture findings, your organization must have
 
 ## Integration prerequisites
 
-- An Anthropic [Enterprise or Platform organization ↗](https://www.anthropic.com/pricing#team-&-enterprise)
-- [Organization-level admin (or equivalent) privileges in Anthropic ↗](https://support.anthropic.com/articles/10186004-api-console-roles-and-permissions) to view organization metadata and manage API keys
+- An Anthropic [Enterprise or Platform organization ↗︎](https://www.anthropic.com/pricing#team-&-enterprise)
+- [Organization-level admin (or equivalent) privileges in Anthropic ↗︎](https://support.anthropic.com/articles/10186004-api-console-roles-and-permissions) to view organization metadata and manage API keys
 
 ## Integration permissions
 

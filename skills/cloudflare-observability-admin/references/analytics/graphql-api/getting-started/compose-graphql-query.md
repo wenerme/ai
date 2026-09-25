@@ -16,7 +16,7 @@ Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Many clients might need help using [the semantics](https://developers.cloudflare.com/analytics/graphql-api/getting-started/querying-basics/) of GraphQL and exploring the possibilities of Cloudflare GraphQL API.
 
-This page details how to use a [GraphiQL client ↗](https://github.com/graphql/graphiql/tree/main/packages/graphiql#readme) to compose and execute a GraphQL query.
+This page details how to use a [GraphiQL client ↗︎](https://github.com/graphql/graphiql/tree/main/packages/graphiql#readme) to compose and execute a GraphQL query.
 
 ## Prerequisites
 

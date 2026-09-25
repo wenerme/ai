@@ -24,8 +24,8 @@ You can use Puppeteer to request all images on a page, save the colors used on a
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -35,13 +35,13 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
 ## 1. Create new Workers application
 
-To get started, create a Worker application using the [`create-cloudflare` CLI ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare). Open a terminal window and run the following command:
+To get started, create a Worker application using the [`create-cloudflare` CLI ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare). Open a terminal window and run the following command:
 
 npmyarnpnpm
 
@@ -152,7 +152,7 @@ id = "<GENERATED_NAMESPACE_ID>"
 
 Now, you need to set up your Worker for Browser Run.
 
-In your current directory, install Cloudflare's [fork of Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and also [robots-parser ↗](https://www.npmjs.com/package/robots-parser):
+In your current directory, install Cloudflare's [fork of Puppeteer](https://developers.cloudflare.com/browser-run/puppeteer/) and also [robots-parser ↗︎](https://www.npmjs.com/package/robots-parser):
 
 npmyarnpnpmbun
 
@@ -273,7 +273,7 @@ Your final Wrangler file should look similar to the one below.
 	"name": "web-crawler",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["nodejs_compat"],
 	"kv_namespaces": [
 		{
@@ -310,7 +310,7 @@ Your final Wrangler file should look similar to the one below.
 name = "web-crawler"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[kv_namespaces]]
@@ -716,14 +716,14 @@ curl <YOUR_WORKER_URL> \
   -d 'https://developers.cloudflare.com/queues/tutorials/web-crawler-with-browser-run/'
 ```
 
-Refer to the [GitHub repository for the complete tutorial ↗](https://github.com/cloudflare/queues-web-crawler), including a front end deployed with Pages to submit URLs and view crawler results.
+Refer to the [GitHub repository for the complete tutorial ↗︎](https://github.com/cloudflare/queues-web-crawler), including a front end deployed with Pages to submit URLs and view crawler results.
 
 ## Related resources
 
 - [How Queues works](https://developers.cloudflare.com/queues/reference/how-queues-works/)
 - [Queues Batching and Retries](https://developers.cloudflare.com/queues/configuration/batching-retries/)
 - [Browser Run](https://developers.cloudflare.com/browser-run/)
-- [Puppeteer Examples ↗](https://github.com/puppeteer/puppeteer/tree/main/examples)
+- [Puppeteer Examples ↗︎](https://github.com/puppeteer/puppeteer/tree/main/examples)
 
 Was this helpful?
 

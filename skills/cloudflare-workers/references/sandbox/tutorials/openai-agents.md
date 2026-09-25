@@ -18,7 +18,7 @@ Sandbox SDK 1.0 preview
 
 This tutorial uses the supported stable bridge template and HTTP API. The 1.0 preview covers the Worker SDK on `@next`; bridge deployments stay on the [stable bridge](https://developers.cloudflare.com/sandbox/bridge/).
 
-The [OpenAI Agents SDK ↗](https://openai.github.io/openai-agents-python/) is a lightweight Python framework for building multi-agent workflows. A Cloudflare Sandbox integration is provided out of the box and ensures that the SDK includes a first-class Cloudflare backend that gives your agents isolated containers for running code, installing packages, and managing files.
+The [OpenAI Agents SDK ↗︎](https://openai.github.io/openai-agents-python/) is a lightweight Python framework for building multi-agent workflows. A Cloudflare Sandbox integration is provided out of the box and ensures that the SDK includes a first-class Cloudflare backend that gives your agents isolated containers for running code, installing packages, and managing files.
 
 In this tutorial, you will deploy a sandbox bridge Worker and build a Python agent that accepts a coding task, executes it inside a Cloudflare Sandbox, and copies the output files to your local machine.
 
@@ -26,9 +26,9 @@ In this tutorial, you will deploy a sandbox bridge Worker and build a Python age
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) with the Containers / Sandbox beta enabled.
-2. Install [Python 3.12+ ↗](https://www.python.org/) and [uv ↗](https://docs.astral.sh/uv/).
-3. Obtain an [OpenAI API key ↗](https://platform.openai.com/api-keys).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages) with the Containers / Sandbox beta enabled.
+2. Install [Python 3.12+ ↗︎](https://www.python.org/) and [uv ↗︎](https://docs.astral.sh/uv/).
+3. Obtain an [OpenAI API key ↗︎](https://platform.openai.com/api-keys).
 
 ## 1. Deploy the sandbox bridge
 
@@ -52,7 +52,7 @@ Manual deployment
 
 If you prefer to deploy step by step:
 
-1. Install <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Node.js ↗</a> and <a href="https://www.docker.com/">Docker ↗</a>.
+1. Install <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Node.js ↗︎</a> and <a href="https://www.docker.com/">Docker ↗︎</a>.
 2. Scaffold the bridge project:
 
    ```sh
@@ -264,8 +264,8 @@ The Cloudflare Sandbox provides more capabilities you can integrate into your ag
 
 ## Next steps
 
-- [Workspace chat example ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge/examples/workspace-chat) — A full-stack chat application with a file browser sidebar, built with the OpenAI Agents SDK and Cloudflare Sandbox.
-- [OpenAI Agents SDK documentation ↗](https://openai.github.io/openai-agents-python/) — Learn about multi-agent handoffs, guardrails, tracing, and more.
+- [Workspace chat example ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge/examples/workspace-chat) — A full-stack chat application with a file browser sidebar, built with the OpenAI Agents SDK and Cloudflare Sandbox.
+- [OpenAI Agents SDK documentation ↗︎](https://openai.github.io/openai-agents-python/) — Learn about multi-agent handoffs, guardrails, tracing, and more.
 - [Sandbox bridge](https://developers.cloudflare.com/sandbox/bridge/) — Overview of the bridge Worker, usage examples, and configuration.
 - [HTTP API reference](https://developers.cloudflare.com/sandbox/bridge/http-api/) — Complete route reference for the bridge API.
 - [Sandbox tutorials](https://developers.cloudflare.com/sandbox/tutorials/) — More tutorials covering code execution, data analysis, and CI/CD pipelines.

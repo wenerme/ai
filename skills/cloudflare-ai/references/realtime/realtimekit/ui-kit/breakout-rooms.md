@@ -20,9 +20,9 @@ If you prefer to learn by seeing examples, please check out the respective examp
 
 #### Web Examples
 
-- [Web Components ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/html-examples/examples/default-meeting-ui)
-- [React ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/default-meeting-ui)
-- [Angular ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/angular-examples/examples/default-meeting-ui)
+- [Web Components ↗︎](https://github.com/cloudflare/realtimekit-web-examples/tree/main/html-examples/examples/default-meeting-ui)
+- [React ↗︎](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/default-meeting-ui)
+- [Angular ↗︎](https://github.com/cloudflare/realtimekit-web-examples/tree/main/angular-examples/examples/default-meeting-ui)
 
 Note
 

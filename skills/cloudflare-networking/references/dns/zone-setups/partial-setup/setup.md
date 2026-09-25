@@ -43,7 +43,7 @@ Make sure your zone is on the Business or Enterprise plan. If you have Free or P
 
 1. On the **Overview** page, select **Convert to CNAME DNS Setup**.
 2. Select **Convert** to confirm.
-3. Save the information from the **Verification TXT Record**. If you lose the information, you can also access it on the [**DNS Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, under **Verification TXT Record**.
+3. Save the information from the **Verification TXT Record**. If you lose the information, you can also access it on the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page, under **Verification TXT Record**.
 4. Make sure that you have all the DNS records (A, AAAA, or CNAME) for subdomains that you want to proxy through Cloudflare.
 
 If you are adding a zone for the first time via API you can add it directly with a `type` of `partial`, without converting it.
@@ -102,7 +102,7 @@ Note
 
 If your authoritative DNS provider automatically appends DNS record `name` fields with your domain, make sure to only insert `cloudflare-verify` as the record name. Otherwise, it may result in an incorrect record name, such as `cloudflare-verify.example.com.example.com`.
 
-After creating the record, you can use this [Dig Web Interface link ↗](https://digwebinterface.com/?type=TXT&ns=auth&nameservers=) to search (`dig`) for `cloudflare-verify.<YOUR DOMAIN>` and validate if it is working.
+After creating the record, you can use this [Dig Web Interface link ↗︎](https://digwebinterface.com/?type=TXT&ns=auth&nameservers=) to search (`dig`) for `cloudflare-verify.<YOUR DOMAIN>` and validate if it is working.
 
 The verification record must remain in place for as long as your domain is active on a CNAME setup on Cloudflare.
 
@@ -110,7 +110,7 @@ If your organization has multiple Cloudflare accounts, also consider using zone 
 
 Note
 
-If your zone stays in **Pending Nameserver Update** status after adding the verification TXT record, confirm your authoritative DNS provider serves the record (for example, with `dig TXT cloudflare-verify.<YOUR_DOMAIN>` or a web-based tool such as [digwebinterface.com ↗](https://www.digwebinterface.com/) or [whatsmydns.net ↗](https://www.whatsmydns.net/)). For the full activation troubleshooting flow, refer to [Zone stuck in Pending Nameserver Update](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/).
+If your zone stays in **Pending Nameserver Update** status after adding the verification TXT record, confirm your authoritative DNS provider serves the record (for example, with `dig TXT cloudflare-verify.<YOUR_DOMAIN>` or a web-based tool such as [digwebinterface.com ↗︎](https://www.digwebinterface.com/) or [whatsmydns.net ↗︎](https://www.whatsmydns.net/)). For the full activation troubleshooting flow, refer to [Zone stuck in Pending Nameserver Update](https://developers.cloudflare.com/dns/zone-setups/troubleshooting/pending-nameservers/).
 
 ## 3. Add DNS records
 

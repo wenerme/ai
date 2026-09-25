@@ -36,8 +36,8 @@ Learn more about the [databases that Hyperdrive supports](https://developers.clo
 
 Before you begin, ensure you have completed the following:
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Use a Node version manager like [nvm ↗](https://github.com/nvm-sh/nvm) or [Volta ↗](https://volta.sh/) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm). Use a Node version manager like [nvm ↗︎](https://github.com/nvm-sh/nvm) or [Volta ↗︎](https://volta.sh/) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
 3. Have a publicly accessible PostgreSQL or MySQL (or compatible) database. *If your database is in a private network*, refer to [Connect to a private database using Workers VPC](https://developers.cloudflare.com/hyperdrive/configuration/connect-to-private-database-vpc/).
 
 ## 1. Log in
@@ -205,7 +205,7 @@ id = "<YOUR_DATABASE_ID>"
 Specifically:
 
 - The value (string) you set for the `binding` (binding name) will be used to reference this database in your Worker. In this tutorial, name your binding `HYPERDRIVE`.
-- The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
+- The binding must be [a valid JavaScript variable name ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "hyperdrive"` or `binding = "productionDB"` would both be valid names for the binding.
 - Your binding is available in your Worker at `env.<BINDING_NAME>`.
 
 If you wish to use a local database during development, you can add a `localConnectionString` to your Hyperdrive configuration with the connection string of your database:
@@ -239,7 +239,7 @@ Once you have created a Hyperdrive configuration and bound it to your Worker, yo
 
 ### Install a database driver
 
-To connect to your database, you will need a database driver which allows you to authenticate and query your database. For this tutorial, you will use [node-postgres (pg) ↗](https://node-postgres.com/), one of the most widely used PostgreSQL drivers.
+To connect to your database, you will need a database driver which allows you to authenticate and query your database. For this tutorial, you will use [node-postgres (pg) ↗︎](https://node-postgres.com/), one of the most widely used PostgreSQL drivers.
 
 To install `pg`, ensure you are in the `hyperdrive-tutorial` directory. Open your terminal and run the following command:
 
@@ -291,7 +291,7 @@ bun add -d @types/pg
 
 With the driver installed, you can now create a Worker script that queries your database.
 
-To connect to your database, you will need a database driver which allows you to authenticate and query your database. For this tutorial, you will use [mysql2 ↗](https://github.com/sidorares/node-mysql2), one of the most widely used MySQL drivers.
+To connect to your database, you will need a database driver which allows you to authenticate and query your database. For this tutorial, you will use [mysql2 ↗︎](https://github.com/sidorares/node-mysql2), one of the most widely used MySQL drivers.
 
 To install `mysql2`, ensure you are in the `hyperdrive-tutorial` directory. Open your terminal and run the following command:
 
@@ -513,7 +513,7 @@ If your Worker makes only one query per request, placement does not improve end-
 - How to [configure query caching](https://developers.cloudflare.com/hyperdrive/concepts/query-caching/).
 - [Troubleshooting common issues](https://developers.cloudflare.com/hyperdrive/observability/troubleshooting/) when connecting a database to Hyperdrive.
 
-If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com).
+If you have any feature requests or notice any bugs, share your feedback directly with the Cloudflare team by joining the [Cloudflare Developers community on Discord ↗︎](https://discord.cloudflare.com).
 
 Was this helpful?
 

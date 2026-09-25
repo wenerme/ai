@@ -18,7 +18,7 @@ A load balancer distributes traffic among pools according to [pool health](https
 
 Note
 
-For an overview of how the Cloudflare Load Balancing solution works, refer to [Load Balancing components](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/). For more background information on what load balancers are, refer to the Cloudflare [Learning Center ↗](https://www.cloudflare.com/learning/performance/what-is-load-balancing/).
+For an overview of how the Cloudflare Load Balancing solution works, refer to [Load Balancing components](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/). For more background information on what load balancers are, refer to the Cloudflare [Learning Center ↗︎](https://www.cloudflare.com/learning/performance/what-is-load-balancing/).
 
 ---
 

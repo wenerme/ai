@@ -14,14 +14,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/usage/providers/vertex/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Google Vertex AI ↗](https://cloud.google.com/vertex-ai) enables developers to easily build and deploy enterprise ready generative AI experiences.
+[Google Vertex AI ↗︎](https://cloud.google.com/vertex-ai) enables developers to easily build and deploy enterprise ready generative AI experiences.
 
 Below is a quick guide on how to set your Google Cloud Account:
 
 1. Google Cloud Platform (GCP) Account
-   - Sign up for a [GCP account ↗](https://cloud.google.com/vertex-ai). New users may be eligible for credits (valid for 90 days).
+   - Sign up for a [GCP account ↗︎](https://cloud.google.com/vertex-ai). New users may be eligible for credits (valid for 90 days).
 2. Enable the Vertex AI API
-   - Go to [Enable Vertex AI API ↗](https://console.cloud.google.com/marketplace/product/google/aiplatform.googleapis.com) and activate the API for your project.
+   - Go to [Enable Vertex AI API ↗︎](https://console.cloud.google.com/marketplace/product/google/aiplatform.googleapis.com) and activate the API for your project.
 3. Apply for access to desired models.
 
 ## Endpoint
@@ -55,7 +55,7 @@ Use a specific regional endpoint like `us-central1` or `us-east4` rather than `g
 
 ## Authenticating with Vertex AI
 
-Authenticating with Vertex AI normally requires generating short-term credentials using the [Google Cloud SDKs ↗](https://cloud.google.com/vertex-ai/docs/authentication) with a complicated setup, but AI Gateway simplifies this for you with multiple options.
+Authenticating with Vertex AI normally requires generating short-term credentials using the [Google Cloud SDKs ↗︎](https://cloud.google.com/vertex-ai/docs/authentication) with a complicated setup, but AI Gateway simplifies this for you with multiple options.
 
 ### Authentication methods comparison
 
@@ -73,7 +73,7 @@ Do not confuse the headers
 
 The recommended approach is to store your Google service account credentials using AI Gateway's [Bring Your Own Keys (BYOK)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) feature. This keeps your credentials secure and out of your application code.
 
-1. [Create a service account key ↗](https://cloud.google.com/iam/docs/keys-create-delete) in the Google Cloud Console. Ensure that the service account has the required permissions for the Vertex AI endpoints and models you plan to use.
+1. [Create a service account key ↗︎](https://cloud.google.com/iam/docs/keys-create-delete) in the Google Cloud Console. Ensure that the service account has the required permissions for the Vertex AI endpoints and models you plan to use.
 2. In the Cloudflare dashboard, go to **AI** > **AI Gateway** > your gateway > **Provider Keys**.
 3. Select **Add API Key** and choose **Google Vertex AI** as the provider.
 4. Paste your service account JSON and select your region from the dropdown. AI Gateway automatically applies this selected region to your stored credentials, so you do not need to manually add a `region` field to the JSON.
@@ -103,13 +103,13 @@ curl "https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/google-vert
 
 You can pass a Google service account JSON directly in the `Authorization` header on each request with a base64-encoded version of the JSON. This option is useful for testing or when you cannot use BYOK.
 
-[Create a service account key ↗](https://cloud.google.com/iam/docs/keys-create-delete) in the Google Cloud Console. Ensure that the service account has the required permissions for the Vertex AI endpoints and models you plan to use.
+[Create a service account key ↗︎](https://cloud.google.com/iam/docs/keys-create-delete) in the Google Cloud Console. Ensure that the service account has the required permissions for the Vertex AI endpoints and models you plan to use.
 
 AI Gateway uses your service account JSON to generate short-term access tokens which are cached and used for consecutive requests, and are automatically refreshed when they expire.
 
 Note
 
-When passing the service account JSON directly in the header (not using BYOK), you must include an additional key called `region` in the JSON with the GCP region code (for example, `us-central1`) you intend to use for your [Vertex AI endpoint ↗](https://cloud.google.com/vertex-ai/docs/reference/rest#service-endpoint).
+When passing the service account JSON directly in the header (not using BYOK), you must include an additional key called `region` in the JSON with the GCP region code (for example, `us-central1`) you intend to use for your [Vertex AI endpoint ↗︎](https://cloud.google.com/vertex-ai/docs/reference/rest#service-endpoint).
 
 #### Example service account JSON structure
 

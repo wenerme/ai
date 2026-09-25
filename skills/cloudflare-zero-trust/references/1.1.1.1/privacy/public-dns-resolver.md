@@ -18,7 +18,7 @@ Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 ## Cloudflare's commitment to privacy: 1.1.1.1 Public DNS Resolver
 
-The 1.1.1.1 public DNS resolver is governed by our [Privacy Policy ↗](https://www.cloudflare.com/privacypolicy/). This document provides additional details on our collection, use, and disclosure of the information collected from the 1.1.1.1 public DNS resolver.
+The 1.1.1.1 public DNS resolver is governed by our [Privacy Policy ↗︎](https://www.cloudflare.com/privacypolicy/). This document provides additional details on our collection, use, and disclosure of the information collected from the 1.1.1.1 public DNS resolver.
 
 ---
 
@@ -38,11 +38,11 @@ The 1.1.1.1 public DNS resolver was designed for privacy first. Cloudflare commi
 
 Cloudflare has taken technical steps to ensure that we cannot retain our user's information.
 
-We have also retained one of the top four accounting firms to audit our practices and publish a public report confirming we are doing what we said we would. The report is available on the [Certifications and compliance resources ↗](https://www.cloudflare.com/trust-hub/compliance-resources/) page.
+We have also retained one of the top four accounting firms to audit our practices and publish a public report confirming we are doing what we said we would. The report is available on the [Certifications and compliance resources ↗︎](https://www.cloudflare.com/trust-hub/compliance-resources/) page.
 
 ## Limited data sharing with APNIC
 
-Cloudflare has partnered with [APNIC Labs ↗](https://labs.apnic.net/?p=1127), the regional Internet registry for the Asia-Pacific region, which provided the 1.1.1.1 IP address for use as a public DNS resolver. As part of its mission to ensure a global, open, and secure Internet, APNIC conducts research about the functioning and governance of the Internet, which it publishes at [www.apnic.net ↗](http://www.apnic.net).
+Cloudflare has partnered with [APNIC Labs ↗︎](https://labs.apnic.net/?p=1127), the regional Internet registry for the Asia-Pacific region, which provided the 1.1.1.1 IP address for use as a public DNS resolver. As part of its mission to ensure a global, open, and secure Internet, APNIC conducts research about the functioning and governance of the Internet, which it publishes at [www.apnic.net ↗︎](http://www.apnic.net).
 
 Cloudflare has agreed to provide APNIC with access to some of the anonymized data that Cloudflare collects through the Cloudflare Public DNS Resolver. APNIC can access query names, query types, resolver location, and other metadata via a Cloudflare API. This allows APNIC to study topics like the volume of DDoS attacks on the Internet and adoption of IPv6.
 

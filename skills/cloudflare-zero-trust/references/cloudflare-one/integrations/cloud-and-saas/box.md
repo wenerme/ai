@@ -27,7 +27,7 @@ For the Box integration to function, Cloudflare CASB requires the following Box 
 
 - `Read all files and folders stored in Box`
 
-These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about the permission, refer to the [Box Scopes documentation ↗](https://developer.box.com/guides/api-calls/permissions-and-errors/scopes/#read-all-files-and-folders).
+These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about the permission, refer to the [Box Scopes documentation ↗︎](https://developer.box.com/guides/api-calls/permissions-and-errors/scopes/#read-all-files-and-folders).
 
 ## Security findings
 

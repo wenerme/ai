@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/streams/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [Streams API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) is a web standard API that allows JavaScript to programmatically access and process streams of data.
+The [Streams API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) is a web standard API that allows JavaScript to programmatically access and process streams of data.
 
 - [ReadableStream](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/)
 - [ReadableStream BYOBReader](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestreambyobreader/)
@@ -29,7 +29,7 @@ Workers do not need to prepare an entire response body before returning a `Respo
 
 Note
 
-By default, Cloudflare Workers is capable of streaming responses using the [Streams APIs ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API). To maintain the streaming behavior, you should only modify the response body using the methods in the Streams APIs.
+By default, Cloudflare Workers is capable of streaming responses using the [Streams APIs ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API). To maintain the streaming behavior, you should only modify the response body using the methods in the Streams APIs.
 
 If your Worker only forwards subrequest responses to the client verbatim without reading their body text, then its body handling is already optimal and you do not have to use these APIs.
 
@@ -166,8 +166,8 @@ The Streams API is only available inside of the [Request context](https://develo
 ## Related resources
 
 - [Stream large JSON](https://developers.cloudflare.com/workers/examples/streaming-json/) - Parse and transform large JSON request and response bodies
-- [MDN's Streams API documentation ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)
-- [Streams API spec ↗](https://streams.spec.whatwg.org/)
+- [MDN's Streams API documentation ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API)
+- [Streams API spec ↗︎](https://streams.spec.whatwg.org/)
 - Write your Worker code in [ES modules syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/) for an optimized experience.
 
 Was this helpful?

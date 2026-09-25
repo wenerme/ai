@@ -20,14 +20,14 @@ Submitting messages allows you to choose the disposition of your messages if the
 
 To submit a message for review:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security** and select **Investigation**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Email security** and select **Investigation**.
 2. On the **Investigation** page, under **Your matching messages**, select the message you want to reclassify.
 3. Select the three dots, then select **Submit for review**.
 4. Under **New disposition**, select among the following:
    - **Malicious**: Traffic invoked multiple phishing verdict triggers, met thresholds for bad behavior, and is associated with active campaigns.
    - **Spoof**: Traffic associated with phishing campaigns that is either non-compliant with your email authentication policies (SPF, DKIM, DMARC) or has mismatching Envelope From and `Header From` values.
    - **Spam**: Traffic associated with non-malicious, commercial campaigns.
-   - **Bulk**: Traffic associated with [Graymail ↗](https://en.wikipedia.org/wiki/Graymail_%28email%29), that falls in between the definitions of `SPAM` and `SUSPICIOUS`. For example, a marketing email that intentionally obscures its unsubscribe link.
+   - **Bulk**: Traffic associated with [Graymail ↗︎](https://en.wikipedia.org/wiki/Graymail_%28email%29), that falls in between the definitions of `SPAM` and `SUSPICIOUS`. For example, a marketing email that intentionally obscures its unsubscribe link.
    - **Clean**: Traffic not associated with any phishing campaigns.
 5. Select **Save**.
 
@@ -53,7 +53,7 @@ Once you have submitted your messages, you can access those on **Submissions**.
 
 To view submissions:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security** > **Submissions**.
 3. Choose from the following submission types:
    - [**Team submissions**](https://developers.cloudflare.com/cloudflare-one/email-security/submissions/team-submissions/): View emails your security team submitted for submissions.

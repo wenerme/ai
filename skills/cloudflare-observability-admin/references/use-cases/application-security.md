@@ -53,7 +53,7 @@ Protect visitors from threats that execute in the browser:
 
 ## Prerequisites
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 - A domain [added to Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/). All solutions in this use case require your domain's DNS records to be proxied through Cloudflare so that traffic passes through Cloudflare's network before reaching your origin.
 
 ---

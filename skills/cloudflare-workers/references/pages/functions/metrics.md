@@ -34,7 +34,7 @@ There are three metrics that can help you understand the health of your Function
 
 In **Functions metrics**, you can see historical request counts broken down into total requests, successful requests and errored requests. Information on subrequests is available by selecting **Subrequests**.
 
-- **Total**: All incoming requests registered by a Function. Requests blocked by [Web Application Firewall (WAF) ↗](https://www.cloudflare.com/waf/) or other security features will not count.
+- **Total**: All incoming requests registered by a Function. Requests blocked by [Web Application Firewall (WAF) ↗︎](https://www.cloudflare.com/waf/) or other security features will not count.
 - **Success**: Requests that returned a `Success` or `Client Disconnected` [invocation status](#invocation-statuses).
 - **Errors**: Requests that returned a `Script Threw Exception`, `Exceeded Resources`, or `Internal Error` [invocation status](#invocation-statuses)
 - **Subrequests**: Requests triggered by calling `fetch` from within a Function. When your Function fetches a static asset, it will count as a subrequest. A subrequest that throws an uncaught error will not be counted.
@@ -54,13 +54,13 @@ Function invocation statuses indicate whether a Function executed successfully o
 | Internal error^2 | Workers runtime encountered an error |  | internalError |
 
 1. The Exceeded Resources status may appear when the Worker exceeds a [runtime limit](https://developers.cloudflare.com/workers/platform/limits/#request-and-response-limits). The most common cause is excessive CPU time, but is also caused by a script exceeding startup time or free tier limits.
-2. The Internal Error status may appear when the Workers runtime fails to process a request due to an internal failure in our system. These errors are not caused by any issue with the Function code nor any resource limit. While requests with Internal Error status are rare, some may appear during normal operation. These requests are not counted towards usage for billing purposes. If you notice an elevated rate of requests with Internal Error status, review [www.cloudflarestatus.com ↗](http://www.cloudflarestatus.com).
+2. The Internal Error status may appear when the Workers runtime fails to process a request due to an internal failure in our system. These errors are not caused by any issue with the Function code nor any resource limit. While requests with Internal Error status are rare, some may appear during normal operation. These requests are not counted towards usage for billing purposes. If you notice an elevated rate of requests with Internal Error status, review [www.cloudflarestatus.com ↗︎](http://www.cloudflarestatus.com).
 
 To further investigate exceptions, refer to [Debugging and Logging](https://developers.cloudflare.com/pages/functions/debugging-and-logging)
 
 ### CPU time per execution
 
-The CPU Time per execution chart shows historical CPU time data broken down into relevant quantiles using [reservoir sampling ↗](https://en.wikipedia.org/wiki/Reservoir_sampling). Learn more about [interpreting quantiles ↗](https://www.statisticshowto.com/quantile-definition-find-easy-steps/).
+The CPU Time per execution chart shows historical CPU time data broken down into relevant quantiles using [reservoir sampling ↗︎](https://en.wikipedia.org/wiki/Reservoir_sampling). Learn more about [interpreting quantiles ↗︎](https://www.statisticshowto.com/quantile-definition-find-easy-steps/).
 
 In some cases, higher quantiles may appear to exceed [CPU time limits](https://developers.cloudflare.com/workers/platform/limits/#cpu-time) without generating invocation errors because of a mechanism in the Workers runtime that allows rollover CPU time for requests below the CPU limit.
 

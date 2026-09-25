@@ -85,7 +85,7 @@ By default, `nslookup` queries your system's configured resolver, which may retu
 nslookup -type=ns -debug example.com a.gtld-servers.net
 ```
 
-For other TLDs, refer to [IANA's root zone database ↗](https://www.iana.org/domains/root/db) to find the authoritative nameservers for your TLD.
+For other TLDs, refer to [IANA's root zone database ↗︎](https://www.iana.org/domains/root/db) to find the authoritative nameservers for your TLD.
 
 If the output shows nameservers other than the ones assigned to your Cloudflare zone, the delegation is not yet correct.
 
@@ -93,8 +93,8 @@ If the output shows nameservers other than the ones assigned to your Cloudflare 
 
 If you do not have `dig` or `nslookup` locally, use a public lookup tool:
 
-- [digwebinterface.com ↗](https://www.digwebinterface.com/) - enable the **Trace** option to follow the delegation from the root zone down, which is the equivalent of `dig +trace`.
-- [whatsmydns.net ↗](https://www.whatsmydns.net/) - useful to see the `NS` record as observed from resolvers in multiple regions.
+- [digwebinterface.com ↗︎](https://www.digwebinterface.com/) - enable the **Trace** option to follow the delegation from the root zone down, which is the equivalent of `dig +trace`.
+- [whatsmydns.net ↗︎](https://www.whatsmydns.net/) - useful to see the `NS` record as observed from resolvers in multiple regions.
 
 Query the `NS` record for your domain. The result must match the nameservers assigned in your Cloudflare dashboard.
 

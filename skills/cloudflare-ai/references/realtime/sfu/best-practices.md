@@ -58,7 +58,7 @@ Use [observability](https://developers.cloudflare.com/realtime/sfu/observability
 
 ## Learn with an example
 
-The [video-room production guide ↗](https://github.com/cloudflare/realtime-examples/blob/main/video-room/PRODUCTION.md) explains identity and room authorization. The [cloud-gaming architecture ↗](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/ARCHITECTURE.md) shows controller generations and input release. [Pocket Radio's architecture ↗](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/ARCHITECTURE.md) explains device credentials, listener membership, and controller leases.
+The [video-room production guide ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/video-room/PRODUCTION.md) explains identity and room authorization. The [cloud-gaming architecture ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/ARCHITECTURE.md) shows controller generations and input release. [Pocket Radio's architecture ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/esp32-radio/ARCHITECTURE.md) explains device credentials, listener membership, and controller leases.
 
 Was this helpful?
 

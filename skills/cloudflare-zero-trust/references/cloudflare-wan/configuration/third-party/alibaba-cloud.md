@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/alibaba-cloud/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial shows you how to connect Alibaba Cloud infrastructure to Cloudflare WAN (formerly Magic WAN) through IPsec tunnels. For more information regarding Alibaba Cloud technology, refer to [Alibaba's documentation ↗](https://www.alibabacloud.com/help/en/vpn-gateway).
+This tutorial shows you how to connect Alibaba Cloud infrastructure to Cloudflare WAN (formerly Magic WAN) through IPsec tunnels. For more information regarding Alibaba Cloud technology, refer to [Alibaba's documentation ↗︎](https://www.alibabacloud.com/help/en/vpn-gateway).
 
 ## Alibaba Cloud
 
@@ -48,7 +48,7 @@ This tutorial shows you how to connect Alibaba Cloud infrastructure to Cloudflar
 ### 3. Create IPsec connections
 
 1. Go to **VPC** > **Customer Gateways** > **Create Customer Gateway**.
-2. Create a customer gateway with one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). This typically starts with `162.xx.xx.xx`.
+2. Create a customer gateway with one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). This typically starts with `162.xx.xx.xx`.
 3. Now, go to **VPC** > **IPsec Connections** > **Create IPsec Connection**.
 4. Create an IPsec connection with the following settings:
    1. **Name**: give it a descriptive name, like `CF-Magic-WAN-IPsec`.

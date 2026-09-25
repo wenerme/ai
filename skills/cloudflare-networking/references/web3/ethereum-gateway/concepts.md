@@ -21,7 +21,7 @@ As you get started with Cloudflare's Ethereum Gateway, you may want to read thro
 
 Note
 
-For help with additional concepts, refer to the [Ethereum documentation ↗](https://ethereum.org/).
+For help with additional concepts, refer to the [Ethereum documentation ↗︎](https://ethereum.org/).
 
 Was this helpful?
 

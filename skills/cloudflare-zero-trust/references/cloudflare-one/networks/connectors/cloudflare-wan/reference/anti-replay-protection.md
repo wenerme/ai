@@ -20,7 +20,7 @@ Refer to [Add tunnels](https://developers.cloudflare.com/cloudflare-one/networks
 
 ## Replay attacks
 
-Replay attacks occur when a malicious actor intercepts and records a [packet ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/), and later sends the recorded packet to the target network again with an intent that benefits the attacker.
+Replay attacks occur when a malicious actor intercepts and records a [packet ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/), and later sends the recorded packet to the target network again with an intent that benefits the attacker.
 
 ### Example
 

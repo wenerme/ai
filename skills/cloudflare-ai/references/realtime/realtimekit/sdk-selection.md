@@ -16,7 +16,7 @@ Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Note
 
-If you have not already, we recommend trying out our [demo app ↗](https://examples.realtime.cloudflare.com/meeting?demo=Default) to get a feel for what RealtimeKit can do.
+If you have not already, we recommend trying out our [demo app ↗︎](https://examples.realtime.cloudflare.com/meeting?demo=Default) to get a feel for what RealtimeKit can do.
 
 ### Offerings
 
@@ -36,12 +36,12 @@ RealtimeKit support all the popular frameworks for web and mobile platforms. Ple
 
 | Framework/Library | Core SDK | UI Kit |
 | --- | --- | --- |
-| Web-Components (HTML, Vue, Svelte) | [@cloudflare/realtimekit ↗](https://www.npmjs.com/package/@cloudflare/realtimekit) | [@cloudflare/realtimekit-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-ui) |
-| React | [@cloudflare/realtimekit-react ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react) | [@cloudflare/realtimekit-react-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui) |
-| Angular | [@cloudflare/realtimekit ↗](https://www.npmjs.com/package/@cloudflare/realtimekit) | [@cloudflare/realtimekit-angular-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui) |
-| Android | [com.cloudflare.realtimekit:core ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core) | [com.cloudflare.realtimekit:ui-android ↗](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/ui-android) |
-| iOS | [RealtimeKit ↗](https://github.com/dyte-in/RealtimeKitCoreiOS) | [RealtimeKitUI ↗](https://github.com/dyte-in/RealtimeKitUI) |
-| React Native | [@cloudflare/realtimekit-react-native ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native) | [@cloudflare/realtimekit-react-native-ui ↗](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui) |
+| Web-Components (HTML, Vue, Svelte) | [@cloudflare/realtimekit ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit) | [@cloudflare/realtimekit-ui ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-ui) |
+| React | [@cloudflare/realtimekit-react ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-react) | [@cloudflare/realtimekit-react-ui ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-react-ui) |
+| Angular | [@cloudflare/realtimekit ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit) | [@cloudflare/realtimekit-angular-ui ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-angular-ui) |
+| Android | [com.cloudflare.realtimekit:core ↗︎](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/core) | [com.cloudflare.realtimekit:ui-android ↗︎](https://central.sonatype.com/artifact/com.cloudflare.realtimekit/ui-android) |
+| iOS | [RealtimeKit ↗︎](https://github.com/dyte-in/RealtimeKitCoreiOS) | [RealtimeKitUI ↗︎](https://github.com/dyte-in/RealtimeKitUI) |
+| React Native | [@cloudflare/realtimekit-react-native ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native) | [@cloudflare/realtimekit-react-native-ui ↗︎](https://www.npmjs.com/package/@cloudflare/realtimekit-react-native-ui) |
 
 ### Technical comparison
 
@@ -62,7 +62,7 @@ Here is a comprehensive guide to help you choose the right option for your proje
 
 Note
 
-If you are building with our Core SDK only, you can reference our [open source repos ↗](https://github.com/orgs/cloudflare/repositories?q=realtimekit) for implementation examples to speed up your development.
+If you are building with our Core SDK only, you can reference our [open source repos ↗︎](https://github.com/orgs/cloudflare/repositories?q=realtimekit) for implementation examples to speed up your development.
 
 Was this helpful?
 

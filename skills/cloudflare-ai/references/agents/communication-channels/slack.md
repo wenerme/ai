@@ -25,7 +25,7 @@ Use Slack when you want an agent to:
 
 ## How it works
 
-Slack sends events to your Worker through the [Slack Events API ↗](https://api.slack.com/apis/events-api). Your Worker verifies each request, identifies the installed workspace, and routes the event to an agent instance.
+Slack sends events to your Worker through the [Slack Events API ↗︎](https://api.slack.com/apis/events-api). Your Worker verifies each request, identifies the installed workspace, and routes the event to an agent instance.
 
 Common Slack events include:
 

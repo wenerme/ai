@@ -80,7 +80,7 @@ For a public HTTPS hostname, **Full (strict)** is compatible with this configura
 
 For a remotely-managed tunnel, update the route and its origin parameters in the dashboard:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**, then select your tunnel. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Networking** > **Tunnels**, then select your tunnel. [Go to **Tunnels** ↗](https://dash.cloudflare.com/?to=/:account/tunnels)
 2. On **Routes**, select **Edit route** for `app.example.com`.
 3. In **Service URL**, enter `https://localhost:443` when the origin serves HTTPS. Use `http://127.0.0.1:80` only when the service speaks HTTP and does not redirect to HTTPS.
 4. Expand **Additional application settings**. Under **TLS**, set **Origin Server Name** to `app.example.com` when the certificate covers that hostname.
@@ -96,7 +96,7 @@ The zone SSL/TLS mode is separate from the Tunnel route. It does not select the 
 
 To review or change the zone mode:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **SSL/TLS** > **Overview**. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **SSL/TLS** > **Overview**. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. On **SSL/TLS Overview**, select **Configure**.
 3. Under **Encryption mode**, review the selected option. If **Automatic SSL/TLS (recommended)** is selected, leave it in place while troubleshooting this Tunnel route. Automatic mode does not change the route's **Service URL**.
 4. To use a specific mode, select **Full (Strict)**, then select **Save**. This zone setting does not replace certificate validation by `cloudflared`.

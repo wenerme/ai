@@ -18,11 +18,11 @@ Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 When developing a Worker locally using Wrangler or Vite, you can debug via breakpoints in your Worker. Breakpoints provide the ability to review what is happening at a given point in the execution of your Worker. Breakpoint functionality exists in both DevTools and VS Code.
 
-For more information on breakpoint debugging via Chrome's DevTools, refer to [Chrome's article on breakpoints ↗](https://developer.chrome.com/docs/devtools/javascript/breakpoints/).
+For more information on breakpoint debugging via Chrome's DevTools, refer to [Chrome's article on breakpoints ↗︎](https://developer.chrome.com/docs/devtools/javascript/breakpoints/).
 
 ### VSCode debug terminals
 
-Using VSCode's built-in [JavaScript Debug Terminals ↗](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_javascript-debug-terminal), all you have to do is open a JS debug terminal (`Cmd + Shift + P` and then type `javascript debug`) and run `wrangler dev` (or `vite dev`) from within the debug terminal. VSCode will automatically connect to your running Worker (even if you're running multiple Workers at once!) and start a debugging session.
+Using VSCode's built-in [JavaScript Debug Terminals ↗︎](https://code.visualstudio.com/docs/nodejs/nodejs-debugging#_javascript-debug-terminal), all you have to do is open a JS debug terminal (`Cmd + Shift + P` and then type `javascript debug`) and run `wrangler dev` (or `vite dev`) from within the debug terminal. VSCode will automatically connect to your running Worker (even if you're running multiple Workers at once!) and start a debugging session.
 
 ### Setup VS Code to use breakpoints with `launch.json` files
 
@@ -70,11 +70,11 @@ If you are debugging using `--remote`, you cannot use code minification as the d
 
 Note
 
-The `.vscode/launch.json` file only applies to a single workspace. If you prefer, you can add the above launch configuration to your User Settings (per the [official VS Code documentation ↗](https://code.visualstudio.com/docs/editor/debugging#_global-launch-configuration)) to have it available for all your workspaces.
+The `.vscode/launch.json` file only applies to a single workspace. If you prefer, you can add the above launch configuration to your User Settings (per the [official VS Code documentation ↗︎](https://code.visualstudio.com/docs/editor/debugging#_global-launch-configuration)) to have it available for all your workspaces.
 
 ## Related resources
 
-- [Local Development](https://developers.cloudflare.com/workers/local-development/) - Develop your Workers and connected resources locally via Wrangler and [`workerd` ↗](https://github.com/cloudflare/workerd), for a fast, accurate feedback loop.
+- [Local Development](https://developers.cloudflare.com/workers/local-development/) - Develop your Workers and connected resources locally via Wrangler and [`workerd` ↗︎](https://github.com/cloudflare/workerd), for a fast, accurate feedback loop.
 
 Was this helpful?
 

@@ -18,7 +18,7 @@ Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 The `416 Range Not Satisfiable` status code indicates that the server cannot fulfill the byte range specified in the request's `Range` header.
 
-For more details, refer to [RFC 9110 ↗](https://www.rfc-editor.org/rfc/rfc9110.html#name-416-range-not-satisfiable).
+For more details, refer to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110.html#name-416-range-not-satisfiable).
 
 ### Common use cases
 

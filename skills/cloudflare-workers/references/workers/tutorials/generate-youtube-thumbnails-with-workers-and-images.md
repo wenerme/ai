@@ -20,7 +20,7 @@ This tutorial will help you understand how to work with [Images](https://develop
 
 ## Before you start
 
-All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 To follow this tutorial, make sure you have Node, Cargo, and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed on your machine.
 
@@ -90,11 +90,11 @@ Now that you have uploaded your image, you will use it as the background image f
 
 ## Create a Worker to transform text to image
 
-After uploading your image, create a Worker that will enable you to transform text to image. This image can be used as an overlay on the background image you uploaded. Use the [rustwasm-worker-template ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-rust).
+After uploading your image, create a Worker that will enable you to transform text to image. This image can be used as an overlay on the background image you uploaded. Use the [rustwasm-worker-template ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-rust).
 
 You will need the following before you begin:
 
-- A recent version of [Rust ↗](https://rustup.rs/).
+- A recent version of [Rust ↗︎](https://rustup.rs/).
 - Access to the `cargo-generate` subcommand:
 
   ```sh
@@ -130,7 +130,7 @@ pub async fn main(req: Request, env: Env, _ctx: worker::Context) -> Result<Respo
 }
 ```
 
-2. Update the `Cargo.toml` file in your `worker-to-text` project directory to use [text-to-png ↗](https://github.com/RookAndPawn/text-to-png), a Rust package for rendering text to PNG. Add the package as a dependency by running:
+2. Update the `Cargo.toml` file in your `worker-to-text` project directory to use [text-to-png ↗︎](https://github.com/RookAndPawn/text-to-png), a Rust package for rendering text to PNG. Add the package as a dependency by running:
 
 ```sh
 cargo add text-to-png@0.2.0
@@ -276,7 +276,7 @@ async fn handle_slash(text: String) -> Result<Response> {
 }
 ```
 
-The final `lib.rs` file should look as follows. Find the full code as an example repository on [GitHub ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/examples/worker-to-text).
+The final `lib.rs` file should look as follows. Find the full code as an example repository on [GitHub ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/templates/examples/worker-to-text).
 
 ```rs
 use text_to_png::{TextPng, TextRenderer};

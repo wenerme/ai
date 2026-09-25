@@ -40,9 +40,9 @@ When creating or modifying an instance in the AWS console:
 
 Caution
 
-You must ensure that the [VPC security group ↗](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) associated with your database allows public IPv4 access to your database port.
+You must ensure that the [VPC security group ↗︎](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html) associated with your database allows public IPv4 access to your database port.
 
-Refer to AWS' [database server rules ↗](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html#sg-rules-db-server) for details on how to configure rules specific to your RDS database.
+Refer to AWS' [database server rules ↗︎](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/security-group-rules-reference.html#sg-rules-db-server) for details on how to configure rules specific to your RDS database.
 
 ### Retrieve the database endpoint (Aurora)
 
@@ -92,7 +92,7 @@ CREATE USER 'hyperdrive_user'@'%' IDENTIFIED WITH caching_sha2_password BY 'suff
 GRANT hyperdrive to 'hyperdrive_user'@'%';
 ```
 
-Refer to AWS' [documentation on user roles in MySQL ↗](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.CommonDBATasks.privilege-model.html) for more details.
+Refer to AWS' [documentation on user roles in MySQL ↗︎](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.MySQL.CommonDBATasks.privilege-model.html) for more details.
 
 With a database user, password, database endpoint (hostname and port), and database name, you can now set up Hyperdrive.
 
@@ -134,7 +134,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 	"name": "hyperdrive-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -153,7 +153,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -163,7 +163,7 @@ id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 
 ## 3. Use Hyperdrive from your Worker
 
-Install the [mysql2 ↗](https://github.com/sidorares/node-mysql2) driver:
+Install the [mysql2 ↗︎](https://github.com/sidorares/node-mysql2) driver:
 
 npmyarnpnpmbun
 
@@ -196,7 +196,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -209,7 +209,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

@@ -18,7 +18,7 @@ Because of how a waiting room [tracks visitor progress](#background), you need t
 
 ## Background
 
-The [`SameSite` attribute of a cookie ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie#samesitesamesite-value) specifies whether that cookie can be shared with other domains that load on the same page (ad banners, iFrames). By default, browsers do not send cookies on cross-site subrequests to prevent attackers from stealing or manipulating information present in your cookies.
+The [`SameSite` attribute of a cookie ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Set-Cookie#samesitesamesite-value) specifies whether that cookie can be shared with other domains that load on the same page (ad banners, iFrames). By default, browsers do not send cookies on cross-site subrequests to prevent attackers from stealing or manipulating information present in your cookies.
 
 However, this behavior can prevent a waiting room from queueing a user properly if that waiting room is embedded in an iFrame. The waiting room depends on the [`__cfwaitingroom` cookie](https://developers.cloudflare.com/waiting-room/reference/waiting-room-cookie/) to track a user in the queue. But, since the browser blocks the cookie from reaching the waiting room by default, an active and queueing waiting room cannot queue the user and will never let them access the application.
 
@@ -138,7 +138,7 @@ Response
 
 ## Limitations
 
-Major web browsers have introduced restrictions on third-party cookies, which happen to be the same type of cookies used by waiting rooms within iframes. Waiting Room uses [Cookies Having Independent Partitioned State (CHIPS) ↗](https://developer.mozilla.org/en-US/docs/Web/Privacy/Privacy_sandbox/Partitioned_cookies) to work around these restrictions, but there are some drawbacks:
+Major web browsers have introduced restrictions on third-party cookies, which happen to be the same type of cookies used by waiting rooms within iframes. Waiting Room uses [Cookies Having Independent Partitioned State (CHIPS) ↗︎](https://developer.mozilla.org/en-US/docs/Web/Privacy/Privacy_sandbox/Partitioned_cookies) to work around these restrictions, but there are some drawbacks:
 
 - A user viewing the waiting room both within an iframe and outside the iframe will be treated as two separate users, with each instance potentially exiting the queue at different times and counting separately in analytics.
 - For a waiting room to be embedded in an iframe, both the embedded page and the embedding page must be accessed over HTTPS.

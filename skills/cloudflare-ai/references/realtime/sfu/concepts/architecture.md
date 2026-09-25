@@ -99,7 +99,7 @@ After publication, your application distributes the publisher's session ID and t
 
 The [video room](https://developers.cloudflare.com/realtime/sfu/examples/video-room/) uses a Worker and one Durable Object per room for membership and track discovery. [Pocket Radio](https://developers.cloudflare.com/realtime/sfu/examples/embedded-devices/) applies the same separation to a device, browser listeners, and an exclusive controller.
 
-Explore the [SFU network visualization ↗](https://realtime-sfu.dev-demos.workers.dev) for an illustration of endpoint connections and media routing.
+Explore the [SFU network visualization ↗︎](https://realtime-sfu.dev-demos.workers.dev) for an illustration of endpoint connections and media routing.
 
 Was this helpful?
 

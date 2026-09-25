@@ -20,7 +20,7 @@ Warning
 
 The [DNS analytics API](https://developers.cloudflare.com/api/resources/dns/subresources/analytics/subresources/reports/methods/get/), along with the following [API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/), will be deprecated soon.
 
-To access the new analytics dashboard, go to [**DNS Analytics** ↗](https://dash.cloudflare.com//?to=/:account/:zone/dns/analytics). Refer to [Analytics and logs](https://developers.cloudflare.com/dns/additional-options/analytics/) for details.
+To access the new analytics dashboard, go to [**DNS Analytics** ↗︎](https://dash.cloudflare.com//?to=/:account/:zone/dns/analytics). Refer to [Analytics and logs](https://developers.cloudflare.com/dns/additional-options/analytics/) for details.
 
 ## Metrics
 
@@ -47,8 +47,8 @@ In API requests, dimensions are set in the `dimensions` parameter. If you need t
 | Dimension | Name | Example | Notes |
 | --- | --- | --- | --- |
 | queryName | Query Name | `example.com` | |
-| queryType | Query Type | `AAAA` | [Types defined by IANA ↗](http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4). Unknown types are empty. |
-| responseCode | Response Code | `NOERROR` | [Response codes defined by IANA ↗](http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6). Always uppercase. |
+| queryType | Query Type | `AAAA` | [Types defined by IANA ↗︎](http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-4). Unknown types are empty. |
+| responseCode | Response Code | `NOERROR` | [Response codes defined by IANA ↗︎](http://www.iana.org/assignments/dns-parameters/dns-parameters.xhtml#dns-parameters-6). Always uppercase. |
 | responseCached | Response Cached | `Cached` | Either `Cached` or `Uncached`. |
 | coloName | Colo Name | `SJC` | PoP code. |
 | origin | Origin | `2001:db8::1` | Origin used to resolve the query. Empty if N/A or if the query was answered from cache. |
@@ -87,7 +87,7 @@ Combine filters using `OR` and `AND` boolean logic:
 
   Note
 
-  Note that the semicolon is a reserved character in URLs ([RFC 1738 ↗](https://www.rfc-editor.org/rfc/rfc1738)) and should be percent-encoded as `%3B`.
+  Note that the semicolon is a reserved character in URLs ([RFC 1738 ↗︎](https://www.rfc-editor.org/rfc/rfc1738)) and should be percent-encoded as `%3B`.
 
 <details>
 

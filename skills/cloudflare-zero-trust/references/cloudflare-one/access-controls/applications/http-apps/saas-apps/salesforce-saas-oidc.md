@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/salesforce-saas-oidc/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [Salesforce ↗](https://help.salesforce.com/s/articleView?id=sf.sso_provider_openid_connect.htm&type=5) as an OpenID Connect (OIDC) application in Cloudflare One.
+This guide covers how to configure [Salesforce ↗︎](https://help.salesforce.com/s/articleView?id=sf.sso_provider_openid_connect.htm&type=5) as an OpenID Connect (OIDC) application in Cloudflare One.
 
 ## Prerequisites
 
@@ -23,14 +23,14 @@ This guide covers how to configure [Salesforce ↗](https://help.salesforce.com/
 
 ## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application** > **SaaS application**.
 3. For **Application**, select *Salesforce*.
 4. For the authentication protocol, select **OIDC**.
 5. Select **Add application**.
 6. In **Scopes**, select the attributes that you want Access to send in the ID token.
 7. In **Redirect URLs**, enter the callback URL obtained from Salesforce ( `https://<your-domain>.my.salesforce.com/services/authcallback/<URL Suffix>`). Refer to [Add a SSO provider to Salesforce](#2-add-a-sso-provider-to-salesforce) for instructions on obtaining this value.
-8. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
+8. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
 9. Copy the following values:
    - **Client ID**
    - **Client Secret**

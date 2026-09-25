@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/ech/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-ECH stands for [Encrypted Client Hello ↗](https://datatracker.ietf.org/doc/draft-ietf-tls-esni/16/). It is a protocol extension in the context of Transport Layer Security (TLS). ECH encrypts part of the handshake and masks the Server Name Indication (SNI) that is used to negotiate a TLS session. This means that whenever a user visits a website on Cloudflare that has ECH enabled, intermediaries will be able to see that you are visiting a website on Cloudflare, but they will not be able to determine which one.
+ECH stands for [Encrypted Client Hello ↗︎](https://datatracker.ietf.org/doc/draft-ietf-tls-esni/16/). It is a protocol extension in the context of Transport Layer Security (TLS). ECH encrypts part of the handshake and masks the Server Name Indication (SNI) that is used to negotiate a TLS session. This means that whenever a user visits a website on Cloudflare that has ECH enabled, intermediaries will be able to see that you are visiting a website on Cloudflare, but they will not be able to determine which one.
 
 ## What ECH does
 
@@ -22,7 +22,7 @@ ECH limits access to information that a particular user is visiting your website
 
 ## How ECH works
 
-In a typical [TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/), the client sends a ClientHello message to the server to initiate the TLS session. This message contains important information, including the list of supported cryptographic algorithms, TLS version, and the requested server name (the domain name of the website the client wants to connect to). The server name is indicated through Server Name Indication (SNI).
+In a typical [TLS handshake ↗︎](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/), the client sends a ClientHello message to the server to initiate the TLS session. This message contains important information, including the list of supported cryptographic algorithms, TLS version, and the requested server name (the domain name of the website the client wants to connect to). The server name is indicated through Server Name Indication (SNI).
 
 With ECH, the ClientHello message part is split into two separate messages: an inner part and an outer part. The outer part contains the non-sensitive information such as which ciphers to use and the TLS version and an "outer ClientHello". The inner part is encrypted and contains an "inner ClientHello".
 
@@ -48,7 +48,7 @@ A(User visits <code>example.com</code>)
 
 
 
-For more details about ECH protocol technology, refer to our [introductory blog ↗](https://blog.cloudflare.com/encrypted-client-hello/).
+For more details about ECH protocol technology, refer to our [introductory blog ↗︎](https://blog.cloudflare.com/encrypted-client-hello/).
 
 ## Enable ECH
 
@@ -65,7 +65,7 @@ However, for settings wherein DNS-based filtering is not applicable, there are t
 
 The most reliable way is via the local or recursive DNS resolver itself, by dropping ECH configurations from HTTPS resource records returned to clients, or, preferably, by returning a “no error no answer” or NXDOMAIN response to HTTPS queries. This prevents clients from obtaining the necessary information to use ECH. Note that modifying HTTPS resource records may cause failures for clients that perform DNSSEC validation, so dropping HTTPS responses may be the preferred approach. This will prevent browsers, such as Chrome from using ECH.
 
-The second way to disable ECH is via a network canary domain. In particular, your network’s DNS resolver can return a “no error no answer” or an NXDOMAIN response to queries made to the `use-application-dns.net` [canary domain ↗](https://support.mozilla.org/en-US/kb/canary-domain-use-application-dnsnet). This will prevent browsers, such as Firefox from using ECH. For more information, see Firefox's [frequently asked questions page ↗](https://support.mozilla.org/en-US/kb/faq-encrypted-client-hello#w_how-will-ech-interact-with-dohs-opt-outs) for Encrypted Client Hello.
+The second way to disable ECH is via a network canary domain. In particular, your network’s DNS resolver can return a “no error no answer” or an NXDOMAIN response to queries made to the `use-application-dns.net` [canary domain ↗︎](https://support.mozilla.org/en-US/kb/canary-domain-use-application-dnsnet). This will prevent browsers, such as Firefox from using ECH. For more information, see Firefox's [frequently asked questions page ↗︎](https://support.mozilla.org/en-US/kb/faq-encrypted-client-hello#w_how-will-ech-interact-with-dohs-opt-outs) for Encrypted Client Hello.
 
 Was this helpful?
 

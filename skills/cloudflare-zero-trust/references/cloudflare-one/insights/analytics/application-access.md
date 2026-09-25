@@ -20,7 +20,7 @@ The Application Access Report is powered by [Access authentication logs](https:/
 
 To view the Application Access Report dashboard:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Insights**.
 2. Go to **Dashboards**.
 3. Select **Application Access Report**.
 

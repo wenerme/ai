@@ -39,7 +39,7 @@ Use this tool to:
 
 ## Run a test scan
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Test scan**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Test scan**.
 2. Under **Input method**, select the type of content you want to test:
    - **Text**: Enter or paste content into **Content to scan**.
    - **File**: Select or drag a file into the upload area. Files can be up to 10 MB. To test several files at once, upload a `.zip` archive. Each file inside the archive is scanned and reported separately.

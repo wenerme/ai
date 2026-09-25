@@ -18,7 +18,7 @@ Last updated Jul 1, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 ### New defaults on September 15, 2026
 
-On September 15, 2026, Cloudflare will set updated defaults for new domains: bots classified as Training or as Agent will be blocked on pages that display ads, and Search will remain allowed. Mixed-purpose crawlers that combine Search and Training will also be blocked by all configurations to block AI training, including the legacy "Block AI bots" option. Before September 15, all customers can [opt out of these new defaults ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings).
+On September 15, 2026, Cloudflare will set updated defaults for new domains: bots classified as Training or as Agent will be blocked on pages that display ads, and Search will remain allowed. Mixed-purpose crawlers that combine Search and Training will also be blocked by all configurations to block AI training, including the legacy "Block AI bots" option. Before September 15, all customers can [opt out of these new defaults ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/security/settings).
 
 All Cloudflare customers can choose to block AI bots and agents based on their behavior. Cloudflare offers presets for the most common AI behaviors to give customers the option to treat different AI use cases distinctly:
 

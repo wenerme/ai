@@ -14,23 +14,23 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/reference/how-workers-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Though Cloudflare Workers behave similarly to [JavaScript ↗](https://www.cloudflare.com/learning/serverless/serverless-javascript/) in the browser or in Node.js, there are a few differences in how you have to think about your code. Under the hood, the Workers runtime uses the [V8 engine ↗](https://www.cloudflare.com/learning/serverless/glossary/what-is-chrome-v8/) — the same engine used by Chromium and Node.js. The Workers runtime also implements many of the standard [APIs](https://developers.cloudflare.com/workers/runtime-apis/) available in most modern browsers.
+Though Cloudflare Workers behave similarly to [JavaScript ↗︎](https://www.cloudflare.com/learning/serverless/serverless-javascript/) in the browser or in Node.js, there are a few differences in how you have to think about your code. Under the hood, the Workers runtime uses the [V8 engine ↗︎](https://www.cloudflare.com/learning/serverless/glossary/what-is-chrome-v8/) — the same engine used by Chromium and Node.js. The Workers runtime also implements many of the standard [APIs](https://developers.cloudflare.com/workers/runtime-apis/) available in most modern browsers.
 
-The differences between JavaScript written for the browser or Node.js happen at runtime. Rather than running on an individual's machine (for example, [a browser application or on a centralized server ↗](https://www.cloudflare.com/learning/serverless/glossary/client-side-vs-server-side/)), Workers functions run on [Cloudflare's global network ↗](https://www.cloudflare.com/network) - a growing global network of thousands of machines distributed across hundreds of locations.
+The differences between JavaScript written for the browser or Node.js happen at runtime. Rather than running on an individual's machine (for example, [a browser application or on a centralized server ↗︎](https://www.cloudflare.com/learning/serverless/glossary/client-side-vs-server-side/)), Workers functions run on [Cloudflare's global network ↗︎](https://www.cloudflare.com/network) - a growing global network of thousands of machines distributed across hundreds of locations.
 
 Each of these machines hosts an instance of the Workers runtime, and each of those runtimes is capable of running thousands of user-defined applications. This guide will review some of those differences.
 
-For more information, refer to the [Cloud Computing without Containers blog post ↗](https://blog.cloudflare.com/cloud-computing-without-containers).
+For more information, refer to the [Cloud Computing without Containers blog post ↗︎](https://blog.cloudflare.com/cloud-computing-without-containers).
 
 The three largest differences are: Isolates, Compute per Request, and Distributed Execution.
 
 ## Isolates
 
-[V8 ↗](https://v8.dev) orchestrates isolates: lightweight contexts that provide your code with variables it can access and a safe environment to be executed within. You could even consider an isolate a sandbox for your function to run in.
+[V8 ↗︎](https://v8.dev) orchestrates isolates: lightweight contexts that provide your code with variables it can access and a safe environment to be executed within. You could even consider an isolate a sandbox for your function to run in.
 
 A single instance of the runtime can run hundreds or thousands of isolates, seamlessly switching between them. Each isolate's memory is completely isolated, so each piece of code is protected from other untrusted or user-written code on the runtime. Isolates are also designed to start very quickly. Instead of creating a virtual machine for each function, an isolate is created within an existing environment. This model eliminates the cold starts of the virtual machine model.
 
-Unlike other serverless providers which use [containerized processes ↗](https://www.cloudflare.com/learning/serverless/serverless-vs-containers/) each running an instance of a language runtime, Workers pays the overhead of a JavaScript runtime once on the start of a container. Workers processes are able to run essentially limitless scripts with almost no individual overhead. Any given isolate can start around a hundred times faster than a Node process on a container or virtual machine. Notably, on startup isolates consume an order of magnitude less memory.
+Unlike other serverless providers which use [containerized processes ↗︎](https://www.cloudflare.com/learning/serverless/serverless-vs-containers/) each running an instance of a language runtime, Workers pays the overhead of a JavaScript runtime once on the start of a container. Workers processes are able to run essentially limitless scripts with almost no individual overhead. Any given isolate can start around a hundred times faster than a Node process on a container or virtual machine. Notably, on startup isolates consume an order of magnitude less memory.
 
 Traditional architecture
 

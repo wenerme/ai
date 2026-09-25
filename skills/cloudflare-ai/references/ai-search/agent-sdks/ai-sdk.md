@@ -14,14 +14,14 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [Vercel AI SDK ↗](https://sdk.vercel.ai/) is a TypeScript toolkit for building applications with large language models. The [`ai-search-provider` ↗](https://www.npmjs.com/package/ai-search-provider) package connects AI Search to the AI SDK, so you can generate responses grounded in your indexed content, retrieve chunks, and manage documents from the same API.
+The [Vercel AI SDK ↗︎](https://sdk.vercel.ai/) is a TypeScript toolkit for building applications with large language models. The [`ai-search-provider` ↗︎](https://www.npmjs.com/package/ai-search-provider) package connects AI Search to the AI SDK, so you can generate responses grounded in your indexed content, retrieve chunks, and manage documents from the same API.
 
 This guide builds a Worker that creates an AI Search instance, uploads and indexes a document, and then queries it with the AI SDK.
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -31,13 +31,13 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
 ## 1. Create a Worker project
 
-Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
+Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
 
 Create a new project named `ai-search-ai-sdk` by running:
 
@@ -341,7 +341,7 @@ return result.toUIMessageStreamResponse({ sendSources: true });
 
 ### Search as a tool
 
-With `chat()`, AI Search searches your instance on every request. To let the model decide when to search instead, expose `instance.search()` as an AI SDK [tool ↗](https://sdk.vercel.ai/docs/foundations/tools) and pass it to a model that supports function calling, such as a [Workers AI](https://developers.cloudflare.com/workers-ai/) model. This is the pattern to use in an agent, where the model chooses between searching and other tools.
+With `chat()`, AI Search searches your instance on every request. To let the model decide when to search instead, expose `instance.search()` as an AI SDK [tool ↗︎](https://sdk.vercel.ai/docs/foundations/tools) and pass it to a model that supports function calling, such as a [Workers AI](https://developers.cloudflare.com/workers-ai/) model. This is the pattern to use in an agent, where the model chooses between searching and other tools.
 
 Install the Workers AI provider and Zod. Use version 3 of `workers-ai-provider`: the latest version 4 requires AI SDK v7, but `ai-search-provider` requires v6, so npm fails to install them together.
 

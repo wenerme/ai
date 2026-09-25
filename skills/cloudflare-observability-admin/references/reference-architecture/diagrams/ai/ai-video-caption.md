@@ -35,7 +35,7 @@ The process begins with capturing the audio from the video source, which is then
 
 ## Related resources
 
-- [Community project: automatic captioning demo ↗](https://auto-caption.pages.dev/)
+- [Community project: automatic captioning demo ↗︎](https://auto-caption.pages.dev/)
 - [Workers AI: Automatic speech recognition (ARS) model](https://developers.cloudflare.com/workers-ai/models/)
 - [R2: Object storage for all your data](https://developers.cloudflare.com/r2/)
 

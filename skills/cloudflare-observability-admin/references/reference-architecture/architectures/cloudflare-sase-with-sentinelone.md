@@ -16,7 +16,7 @@ Last updated Mar 18, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Introduction
 
-The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution that combines endpoint protection with [Zero Trust Network Access ↗](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/). This integration enables organizations to make access decisions based on device security posture, ensuring that only healthy and compliant devices can access protected resources. This reference architecture describes how organizations can implement and leverage this integration to enhance their security posture. The integration can assist in advancing an organization's or agency's Zero Trust Architecture Maturity Model, with the goal of one's organization eventually achieving Advanced or Optimal across all [CISA's 5 Pillars of Zero Trust. ↗](https://www.cisa.gov/sites/default/files/2023-04/CISA_Zero_Trust_Maturity_Model_Version_2_508c.pdf)
+The integration between Cloudflare One and SentinelOne provides organizations with a comprehensive security solution that combines endpoint protection with [Zero Trust Network Access ↗︎](https://www.cloudflare.com/learning/security/glossary/what-is-zero-trust/). This integration enables organizations to make access decisions based on device security posture, ensuring that only healthy and compliant devices can access protected resources. This reference architecture describes how organizations can implement and leverage this integration to enhance their security posture. The integration can assist in advancing an organization's or agency's Zero Trust Architecture Maturity Model, with the goal of one's organization eventually achieving Advanced or Optimal across all [CISA's 5 Pillars of Zero Trust. ↗︎](https://www.cisa.gov/sites/default/files/2023-04/CISA_Zero_Trust_Maturity_Model_Version_2_508c.pdf)
 
 ## Who is this document for and what will you learn?
 
@@ -98,7 +98,7 @@ Infection Status monitoring ensures that compromised devices cannot access sensi
 
 ### User risk detection
 
-SentinelOne provides [endpoint detection and response (EDR) ↗](https://www.sentinelone.com/cybersecurity-101/endpoint-security/what-is-endpoint-detection-and-response-edr/) signals that help determine user risk scores. This allows organizations to identify and manage users who may present security risks, enabling proactive security measures before incidents occur.
+SentinelOne provides [endpoint detection and response (EDR) ↗︎](https://www.sentinelone.com/cybersecurity-101/endpoint-security/what-is-endpoint-detection-and-response-edr/) signals that help determine user risk scores. This allows organizations to identify and manage users who may present security risks, enabling proactive security measures before incidents occur.
 
 ## Core architecture
 
@@ -180,7 +180,7 @@ The integration between Cloudflare One and SentinelOne provides organizations wi
 
 ## Related resources
 
-- [Overview of SentinelOne and Cloudflare partnership ↗](https://www.cloudflare.com/partners/technology-partners/sentinelone/)
+- [Overview of SentinelOne and Cloudflare partnership ↗︎](https://www.cloudflare.com/partners/technology-partners/sentinelone/)
 
 Was this helpful?
 

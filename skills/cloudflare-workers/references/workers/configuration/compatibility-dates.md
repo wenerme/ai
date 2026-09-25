@@ -48,7 +48,7 @@ compatibility_date = "2022-04-05"
 
 When a Worker is created through the Cloudflare Dashboard, the compatibility date is automatically set to the current date.
 
-The compatibility date can be updated in the Workers settings on the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+The compatibility date can be updated in the Workers settings on the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 
 #### Via the Cloudflare API
 

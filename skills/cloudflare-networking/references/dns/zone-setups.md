@@ -18,7 +18,7 @@ When using Cloudflare DNS, you have a few options for your DNS zone setup:
 
 - [Primary setup (Full)](https://developers.cloudflare.com/dns/zone-setups/full-setup/) (most common): Use Cloudflare as your primary DNS provider and manage your DNS records on Cloudflare.
 - [CNAME setup (Partial)](https://developers.cloudflare.com/dns/zone-setups/partial-setup/): Keep your primary DNS provider and only use Cloudflare's reverse proxy for individual subdomains.
-- [Zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/): Use Cloudflare and another DNS provider together across your entire zone to increase availability and fault tolerance. DNS records will be transferred between providers using [AXFR ↗](https://datatracker.ietf.org/doc/html/rfc5936) or [IXFR ↗](https://datatracker.ietf.org/doc/html/rfc1995).
+- [Zone transfers](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/): Use Cloudflare and another DNS provider together across your entire zone to increase availability and fault tolerance. DNS records will be transferred between providers using [AXFR ↗︎](https://datatracker.ietf.org/doc/html/rfc5936) or [IXFR ↗︎](https://datatracker.ietf.org/doc/html/rfc1995).
 - [Subdomain setup](https://developers.cloudflare.com/dns/zone-setups/subdomain-setup/): With your apex domain ( `example.com`) on a CNAME setup (partial) or primary setup (full), independently manage the settings for a delegated subdomain ( `blog.example.com`) within a separate zone and, potentially, a separate account.
 
   When configuring a subdomain setup, its availability will depend on both the parent zone setup and the setup used for the child zone. A child zone holds DNS management for a delegated subdomain.
@@ -57,7 +57,7 @@ If you have a paid plan, make sure not to use pending zones for production traff
 
 ## Common use cases and availability
 
-If you are unsure of which setup to use, consider the questions below for an overview of common use cases and their correspondence to each setup and [different pricing plans ↗](https://www.cloudflare.com/plans/#overview).
+If you are unsure of which setup to use, consider the questions below for an overview of common use cases and their correspondence to each setup and [different pricing plans ↗︎](https://www.cloudflare.com/plans/#overview).
 
 <details>
 

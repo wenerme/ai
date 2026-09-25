@@ -51,7 +51,7 @@ Stop phishing, malware, and spoofing before they reach the inbox:
 
 ## Prerequisites
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 - A [Cloudflare One organization](https://developers.cloudflare.com/cloudflare-one/setup/) created in the Cloudflare dashboard. Access, Gateway (Secure Web Gateway), Data Loss Prevention (DLP), Cloud Access Security Broker (CASB), Browser Isolation, and Device Posture all operate within Cloudflare One.
 
 ---

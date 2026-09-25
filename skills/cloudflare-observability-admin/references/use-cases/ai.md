@@ -54,15 +54,15 @@ Deploy low-latency AI features directly at the edge:
 
 ### Create a new application
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
-- [Node.js ↗](https://nodejs.org/) (version 16.17.0 or later) installed on your machine.
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
+- [Node.js ↗︎](https://nodejs.org/) (version 16.17.0 or later) installed on your machine.
 - [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed. Wrangler is the command-line interface (CLI) for deploying Workers and managing bindings.
 
 ### Use an existing application
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 - [AI Gateway](https://developers.cloudflare.com/ai-gateway/) does not require a domain added to Cloudflare. You can place it in front of any existing AI provider (OpenAI, Anthropic, and others) by updating your API endpoint to route through AI Gateway.
-- If you plan to add Workers AI inference or Vectorize to an existing application, you also need [Node.js ↗](https://nodejs.org/) (version 16.17.0 or later) and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed.
+- If you plan to add Workers AI inference or Vectorize to an existing application, you also need [Node.js ↗︎](https://nodejs.org/) (version 16.17.0 or later) and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) installed.
 
 ---
 

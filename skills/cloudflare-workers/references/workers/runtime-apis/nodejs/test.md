@@ -32,9 +32,9 @@ console.log(fn.mock.callCount());  // Records how many times it was called
 console.log(fn.mock.calls[0].arguments);  // Records the arguments that were passed each call
 ```
 
-The full `MockTracker` API is documented in the [Node.js documentation for `MockTracker` ↗](https://nodejs.org/docs/latest/api/test.html#class-mocktracker).
+The full `MockTracker` API is documented in the [Node.js documentation for `MockTracker` ↗︎](https://nodejs.org/docs/latest/api/test.html#class-mocktracker).
 
-The Workers implementation of `MockTracker` currently does not include an implementation of the [Node.js mock timers API ↗](https://nodejs.org/docs/latest/api/test.html#class-mocktimers).
+The Workers implementation of `MockTracker` currently does not include an implementation of the [Node.js mock timers API ↗︎](https://nodejs.org/docs/latest/api/test.html#class-mocktimers).
 
 Was this helpful?
 

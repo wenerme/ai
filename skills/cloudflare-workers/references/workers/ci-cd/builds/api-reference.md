@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide shows you how to use the [Workers Builds REST API](https://developers.cloudflare.com/api/resources/workers_builds/) to programmatically trigger builds, manage triggers, and monitor build status. The examples use `curl` commands that you can run directly in your terminal or adapt to your preferred programming language. Some examples pipe output through [`jq` ↗](https://jqlang.org/) to filter JSON responses — install it if you do not have it already.
+This guide shows you how to use the [Workers Builds REST API](https://developers.cloudflare.com/api/resources/workers_builds/) to programmatically trigger builds, manage triggers, and monitor build status. The examples use `curl` commands that you can run directly in your terminal or adapt to your preferred programming language. Some examples pipe output through [`jq` ↗︎](https://jqlang.org/) to filter JSON responses — install it if you do not have it already.
 
 ## Before you start
 
@@ -22,7 +22,7 @@ This guide shows you how to use the [Workers Builds REST API](https://developers
 
 To use the Builds API, you need an API token to authenticate your requests. The Builds API requires a **user-scoped** API token. Account-scoped tokens are not supported and will return "Invalid token" errors.
 
-Create your token at [dash.cloudflare.com/profile/api-tokens ↗](https://dash.cloudflare.com/profile/api-tokens) with the following permissions:
+Create your token at [dash.cloudflare.com/profile/api-tokens ↗︎](https://dash.cloudflare.com/profile/api-tokens) with the following permissions:
 
 | Permission | Access level | Why you need it |
 | --- | --- | --- |
@@ -306,7 +306,7 @@ This example walks through the complete process of connecting a GitHub repositor
 
 Before using the API, you must first install the Cloudflare GitHub App through the dashboard:
 
-1. Go to **Workers & Pages** in the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Go to **Workers & Pages** in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Select any Worker and go to **Settings** > **Builds** > **Connect**.
 3. Select **GitHub** and authorize the Cloudflare GitHub App for your account or organization.
 
@@ -358,7 +358,7 @@ curl -s "https://api.cloudflare.com/client/v4/accounts/{account_id}/workers/scri
 
 A build token authorizes the build system to deploy your Worker. To get your build token UUID:
 
-1. Go to your Worker in the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+1. Go to your Worker in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 2. Navigate to **Settings** > **Builds** > **API token**.
 3. Select an existing build token or create a new one.
 

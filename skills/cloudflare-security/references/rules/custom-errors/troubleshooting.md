@@ -47,7 +47,7 @@ Your custom error page cannot be blank and the combined size of all page assets 
 
 ## General troubleshooting advice
 
-If you encounter errors while attempting to preview or publish your custom error page, use an [HTML validator ↗](https://validator.w3.org/) to ensure that your code resolves properly.
+If you encounter errors while attempting to preview or publish your custom error page, use an [HTML validator ↗︎](https://validator.w3.org/) to ensure that your code resolves properly.
 
 ## More resources
 

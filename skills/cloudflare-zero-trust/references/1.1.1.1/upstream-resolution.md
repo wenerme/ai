@@ -22,7 +22,7 @@ When resolving a multi-level domain name like `foo.bar.example.com`, 1.1.1.1 doe
 
 ## Root zone
 
-1.1.1.1 uses [locally hosted copies of the root zone file ↗](https://blog.cloudflare.com/f-root/) instead of querying remote root servers for every lookup. The root zone file contains the addresses of all top-level domain (TLD) servers. By hosting it locally, 1.1.1.1 avoids a network round trip to root servers, which reduces latency, improves privacy, and decreases load on the global DNS root server system.
+1.1.1.1 uses [locally hosted copies of the root zone file ↗︎](https://blog.cloudflare.com/f-root/) instead of querying remote root servers for every lookup. The root zone file contains the addresses of all top-level domain (TLD) servers. By hosting it locally, 1.1.1.1 avoids a network round trip to root servers, which reduces latency, improves privacy, and decreases load on the global DNS root server system.
 
 ## Nameserver selection
 
@@ -30,7 +30,7 @@ Most domains have multiple authoritative nameservers for redundancy. When 1.1.1.
 
 If the selected nameserver does not respond in time or returns an error, 1.1.1.1 retries against a different nameserver for the same zone. Refer to [Retry behavior](#retry-behavior) for details.
 
-A small percentage of queries are also sent to alternative nameservers so that performance measurements stay current. This allows a previously slow server to be re-evaluated if its performance improves. For more background on the system that powers this selection, refer to the [BigPineapple architecture blog post ↗](https://blog.cloudflare.com/big-pineapple-intro/).
+A small percentage of queries are also sent to alternative nameservers so that performance measurements stay current. This allows a previously slow server to be re-evaluated if its performance improves. For more background on the system that powers this selection, refer to the [BigPineapple architecture blog post ↗︎](https://blog.cloudflare.com/big-pineapple-intro/).
 
 ## Retry behavior
 

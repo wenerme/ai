@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and [Turso ↗](https://chiselstrike.com/), an edge-hosted distributed database based on libSQL. By using Workers and Turso, you can create applications that are close to your end users without having to maintain or operate infrastructure in tens or hundreds of regions.
+This tutorial will guide you on how to build globally distributed applications with Cloudflare Workers, and [Turso ↗︎](https://chiselstrike.com/), an edge-hosted distributed database based on libSQL. By using Workers and Turso, you can create applications that are close to your end users without having to maintain or operate infrastructure in tens or hundreds of regions.
 
 Note
 
@@ -26,7 +26,7 @@ Before continuing with this tutorial, you should have:
 
 - Successfully [created up your first Cloudflare Worker](https://developers.cloudflare.com/workers/get-started/guide/) and/or have deployed a Cloudflare Worker before.
 - Installed [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), a command-line tool for building Cloudflare Workers.
-- A [GitHub account ↗](https://github.com/), required for authenticating to Turso.
+- A [GitHub account ↗︎](https://github.com/), required for authenticating to Turso.
 - A basic familiarity with installing and using command-line interface (CLI) applications.
 
 ## Install the Turso CLI
@@ -365,7 +365,7 @@ Debugger attached.
 
 The localhost address — the one with `127.0.0.1` in it — is a web-server running locally on your machine.
 
-Connect to it and validate your Worker returns the email address you inserted when you created your `example_users` table by visiting the `/users` route in your browser: [http://127.0.0.1:8787/users ↗](http://127.0.0.1:8787/users).
+Connect to it and validate your Worker returns the email address you inserted when you created your `example_users` table by visiting the `/users` route in your browser: [http://127.0.0.1:8787/users ↗︎](http://127.0.0.1:8787/users).
 
 You should see JSON similar to the following containing the data from the `example_users` table:
 
@@ -386,9 +386,9 @@ If you see an error instead of a list of users, double check that:
 
 Both of these need to be present and match the variable names in your Worker's code.
 
-Test the `/add-users` route and pass it an email address to insert: [http://127.0.0.1:8787/add-user?email=test@test.com ↗](http://127.0.0.1:8787/add-user?email=test@test.com.)
+Test the `/add-users` route and pass it an email address to insert: [http://127.0.0.1:8787/add-user?email=test@test.com ↗︎](http://127.0.0.1:8787/add-user?email=test@test.com.)
 
-You should see the text `“Added”`. If you load the first URL with the `/users` route again ([http://127.0.0.1:8787/users ↗](http://127.0.0.1:8787/users)), it will show the newly added row. You can repeat this as many times as you like. Note that due to its design, your application will not stop you from adding duplicate email addresses.
+You should see the text `“Added”`. If you load the first URL with the `/users` route again ([http://127.0.0.1:8787/users ↗︎](http://127.0.0.1:8787/users)), it will show the newly added row. You can repeat this as many times as you like. Note that due to its design, your application will not stop you from adding duplicate email addresses.
 
 Quit Wrangler by typing `q` into the shell where it was started.
 
@@ -425,10 +425,10 @@ To clean up the resources you created as part of this tutorial:
 
 ## Related resources
 
-- Find the [complete project source code on GitHub ↗](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-turso-ts/).
+- Find the [complete project source code on GitHub ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/templates/worker-turso-ts/).
 - Understand how to [debug your Cloudflare Worker](https://developers.cloudflare.com/workers/observability/).
-- Join the [Cloudflare Developer Discord ↗](https://discord.cloudflare.com).
-- Join the [ChiselStrike (Turso) Discord ↗](https://discord.com/invite/4B5D7hYwub).
+- Join the [Cloudflare Developer Discord ↗︎](https://discord.cloudflare.com).
+- Join the [ChiselStrike (Turso) Discord ↗︎](https://discord.com/invite/4B5D7hYwub).
 
 Was this helpful?
 

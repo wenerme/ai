@@ -136,7 +136,7 @@ A pattern to match all requests looks like this:
 *example.com/*
 ```
 
-While they look similar to a [regex ↗](https://en.wikipedia.org/wiki/Regular_expression) pattern, route patterns follow specific rules:
+While they look similar to a [regex ↗︎](https://en.wikipedia.org/wiki/Regular_expression) pattern, route patterns follow specific rules:
 
 - The only supported operator is the wildcard ( `*`), which matches zero or more of any character.
 - Route patterns may not contain infix wildcards or query parameters. For example, neither `example.com/*.jpg` nor `example.com/?foo=*` are valid route patterns.
@@ -210,7 +210,7 @@ All domains and subdomains must have a [DNS record](https://developers.cloudflar
 
 Caution
 
-If you have previously used the Cloudflare dashboard to add an `AAAA` record for `myname` to `example.com`, pointing to `100::` (the [reserved IPv6 discard prefix ↗](https://tools.ietf.org/html/rfc6666)), Cloudflare recommends creating a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) pointing to your Worker instead.
+If you have previously used the Cloudflare dashboard to add an `AAAA` record for `myname` to `example.com`, pointing to `100::` (the [reserved IPv6 discard prefix ↗︎](https://tools.ietf.org/html/rfc6666)), Cloudflare recommends creating a [Custom Domain](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) pointing to your Worker instead.
 
 Was this helpful?
 

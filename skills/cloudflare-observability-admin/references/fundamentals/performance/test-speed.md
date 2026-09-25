@@ -22,7 +22,7 @@ Cloudflare offers several tools to test the speed of your website, as well as th
 
 ### Using Cloudflare
 
-Once your domain is [active on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/), you can run speed tests within the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/speed).
+Once your domain is [active on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/), you can run speed tests within the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/speed).
 
 This speed test will provide information about critical loading times, performance with and without [Cloudflare's proxy](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/), and recommended optimizations.
 
@@ -32,11 +32,11 @@ If you experience any issues, make sure you are not blocking specific [user agen
 
 If your domain is not yet active on Cloudflare or you want to measure the before and after improvements of using Cloudflare, Cloudflare recommends using the following third-party tools:
 
-- [PageGym ↗](https://pagegym.com/)
-- [GTmetrix ↗](https://gtmetrix.com/)
-- [DebugBear ↗](https://www.debugbear.com/test/website-speed)
-- [Lighthouse ↗](https://developer.chrome.com/docs/lighthouse/)
-- [WebPageTest ↗](https://www.webpagetest.org/)
+- [PageGym ↗︎](https://pagegym.com/)
+- [GTmetrix ↗︎](https://gtmetrix.com/)
+- [DebugBear ↗︎](https://www.debugbear.com/test/website-speed)
+- [Lighthouse ↗︎](https://developer.chrome.com/docs/lighthouse/)
+- [WebPageTest ↗︎](https://www.webpagetest.org/)
 
 If you use these third-party tools, you should do the following to test website speed:
 
@@ -52,13 +52,13 @@ Based on the results of these speed tests, you may want to explore other ways to
 
 Note
 
-Cloudflare does not consider Time to First Byte (TTFB) the most important measure of page load speed. If you are concerned about a slower TTFB while using Cloudflare, refer to our blog post about [Cloudflare and TTFB ↗](http://blog.cloudflare.com/ttfb-time-to-first-byte-considered-meaningles/).
+Cloudflare does not consider Time to First Byte (TTFB) the most important measure of page load speed. If you are concerned about a slower TTFB while using Cloudflare, refer to our blog post about [Cloudflare and TTFB ↗︎](http://blog.cloudflare.com/ttfb-time-to-first-byte-considered-meaningles/).
 
 ---
 
 ## Test Internet speed
 
-To test the speed of your home network connection (download, update, packet loss, ping measurements, and more), visit [speed.cloudflare.com ↗](https://speed.cloudflare.com).
+To test the speed of your home network connection (download, update, packet loss, ping measurements, and more), visit [speed.cloudflare.com ↗︎](https://speed.cloudflare.com).
 
 ## Footnotes
 

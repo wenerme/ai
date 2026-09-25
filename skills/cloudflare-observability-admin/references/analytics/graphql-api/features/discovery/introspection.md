@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Cloudflare GraphQL API has a dynamic schema and exposes more than 70 datasets across zone and account scopes. We constantly expand the list and replace existing ones with more capable alternatives.
 
-To tackle the schema question, GraphQL provides an [introspection ↗](https://graphql.org/learn/introspection/) mechanism. It is part of the GraphQL specification and allows you to explore the graph of the datasets and fields.
+To tackle the schema question, GraphQL provides an [introspection ↗︎](https://graphql.org/learn/introspection/) mechanism. It is part of the GraphQL specification and allows you to explore the graph of the datasets and fields.
 
 The introspection results provide an overview of ALL available nodes and fields, their descriptions and deprecation status.
 

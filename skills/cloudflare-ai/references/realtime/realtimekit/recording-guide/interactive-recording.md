@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/interactive-recording/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-RealtimeKit's interactive recording feature allows you to add timed metadata to your video stream. Timed metadata serves as cue points for clients to display information and trigger time-aligned actions. The metadata is available to clients in the form of [ID3 ↗](https://en.wikipedia.org/wiki/ID3) tags on the playback timeline.
+RealtimeKit's interactive recording feature allows you to add timed metadata to your video stream. Timed metadata serves as cue points for clients to display information and trigger time-aligned actions. The metadata is available to clients in the form of [ID3 ↗︎](https://en.wikipedia.org/wiki/ID3) tags on the playback timeline.
 
 ## What is interactive recording?
 
@@ -34,7 +34,7 @@ To add interactivity to your RealtimeKit recording, perform the following steps:
 
 This parameter enables you to add timed metadata to your recordings, which is made available to clients in HLS format via ID3 tags. The output files are packaged as a tar file.
 
-2. In [RealtimeKitClient ↗](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient), call the `broadcastMessage` method with the parameters, `ID3` (as a string) and `yourData` (the data you want to send as timed metadata) on the [participants ↗](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient#module_RealtimeKitClient+participants) object.
+2. In [RealtimeKitClient ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient), call the `broadcastMessage` method with the parameters, `ID3` (as a string) and `yourData` (the data you want to send as timed metadata) on the [participants ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient#module_RealtimeKitClient+participants) object.
 
 ```ts
 meeting.participants.broadcastMessage(“ID3Data”, yourData);
@@ -60,7 +60,7 @@ If you do not pass this parameter, the ID3 metadata stream will automatically be
 
 It's also important to note that the length of each segment depends on the frames of the video. Therefore, each segment may not have the same length, although it is typically close to the specified segment length when the recording was started. By default, the segment length is set to 10 seconds.
 
-5. You can play the stream using the [`hls.js` ↗](https://github.com/video-dev/hls.js/).
+5. You can play the stream using the [`hls.js` ↗︎](https://github.com/video-dev/hls.js/).
 
 ```js
 const onFragChanged = (_) => {

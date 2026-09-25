@@ -98,7 +98,7 @@ export default app;
 
 External dependencies
 
-This example requires the npm package [`cookie` ↗](https://www.npmjs.com/package/cookie) to be installed in your JavaScript project.
+This example requires the npm package [`cookie` ↗︎](https://www.npmjs.com/package/cookie) to be installed in your JavaScript project.
 
 The Hono example uses the built-in cookie utilities provided by Hono, so no external dependencies are needed for that implementation.
 

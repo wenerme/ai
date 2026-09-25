@@ -76,7 +76,7 @@ You will need to provide the token contained in this file when creating a job in
 
 Note
 
-When using Sumo Logic, you may find it helpful to have [Live Tail ↗](https://help.sumologic.com/05Search/Live-Tail/About-Live-Tail) open to see the challenge file as soon as it is uploaded.
+When using Sumo Logic, you may find it helpful to have [Live Tail ↗︎](https://help.sumologic.com/05Search/Live-Tail/About-Live-Tail) open to see the challenge file as soon as it is uploaded.
 
 ## Step 2 - Create a job
 
@@ -131,7 +131,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/logpush/jobs" \
   - Typically includes the desired fields and timestamp format.
   - Set the timestamp format to `RFC 3339` ( `"timestamp_format": "rfc3339"`) for:
     - Google BigQuery usage.
-    - Automated timestamp parsing within Sumo Logic; refer to [timestamps from Sumo Logic ↗](https://help.sumologic.com/03Send-Data/Sources/04Reference-Information-for-Sources/Timestamps%2C-Time-Zones%2C-Time-Ranges%2C-and-Date-Formats) for details.
+    - Automated timestamp parsing within Sumo Logic; refer to [timestamps from Sumo Logic ↗︎](https://help.sumologic.com/03Send-Data/Sources/04Reference-Information-for-Sources/Timestamps%2C-Time-Zones%2C-Time-Ranges%2C-and-Date-Formats) for details.
 - **ownership\_challenge** - Challenge token required to prove destination ownership.
 - **kind** (optional) - Used to differentiate between Logpush and Edge Log Delivery jobs. Refer to [Kind](https://developers.cloudflare.com/logs/logpush/logpush-job/api-configuration/#kind) for details.
 - **filter** (optional) - Refer to [Filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/) for details.

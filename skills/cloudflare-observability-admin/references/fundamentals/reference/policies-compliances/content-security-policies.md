@@ -21,7 +21,7 @@ A **Content Security Policy (CSP)** is an added layer of security that helps det
 - Embedding malicious resources
 - Malicious iframes (clickjacking)
 
-To learn more about configuring a CSP in general, refer to the [Mozilla documentation ↗](https://developer.mozilla.org/docs/web/http/csp).
+To learn more about configuring a CSP in general, refer to the [Mozilla documentation ↗︎](https://developer.mozilla.org/docs/web/http/csp).
 
 ## Using a CSP with Cloudflare
 
@@ -29,7 +29,7 @@ Cloudflare's [CDN](https://developers.cloudflare.com/cache/) is compatible with 
 
 Cloudflare does not:
 
-- Modify CSP headers from the origin web server (except when using Zaraz, to ensure the [Zaraz script is always running ↗](https://blog.cloudflare.com/cloudflare-zaraz-supports-csp/)).
+- Modify CSP headers from the origin web server (except when using Zaraz, to ensure the [Zaraz script is always running ↗︎](https://blog.cloudflare.com/cloudflare-zaraz-supports-csp/)).
 - Require changes to acceptable sources for first or third-party content.
 - Modify URLs (besides adding the [`/cdn-cgi/` endpoint](https://developers.cloudflare.com/fundamentals/reference/cdn-cgi-endpoint/) and [Cloudflare Fonts](https://developers.cloudflare.com/speed/optimization/content/fonts/) that rewrites Google Fonts urls).
 - Interfere with locations specified in your CSP.
@@ -50,7 +50,7 @@ To use certain Cloudflare features, however, you may need to update the headers 
 | [Web Analytics](https://developers.cloudflare.com/web-analytics/) | `script-src static.cloudflareinsights.com; connect-src cloudflareinsights.com` |
 | [Bot products](https://developers.cloudflare.com/bots/) | Refer to [JavaScript detections and CSPs](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/#if-you-have-a-content-security-policy-csp). |
 | [Client-side security](https://developers.cloudflare.com/client-side-security/) (formerly Page Shield) | Refer to [CSP header format](https://developers.cloudflare.com/client-side-security/reference/csp-header/). |
-| [Zaraz](https://developers.cloudflare.com/zaraz/) | No updates required ([details ↗](https://blog.cloudflare.com/cloudflare-zaraz-supports-csp/)). |
+| [Zaraz](https://developers.cloudflare.com/zaraz/) | No updates required ([details ↗︎](https://blog.cloudflare.com/cloudflare-zaraz-supports-csp/)). |
 | [Turnstile](https://developers.cloudflare.com/turnstile/) | Refer to [Turnstile CSP](https://developers.cloudflare.com/turnstile/reference/content-security-policy/). |
 
 Was this helpful?

@@ -20,7 +20,7 @@ This guide helps you build business continuity strategies for the Cloudflare One
 
 The Cloudflare One Client operates on Cloudflare's globally distributed network with 300+ points of presence (PoPs) worldwide. Anycast routing automatically directs client connections to the nearest healthy PoP without manual intervention. The client maintains locally cached policies and continues enforcing security controls even when unable to reach Cloudflare's management systems.
 
-For detailed architecture information, refer to the [Cloudflare One Client documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and the [Cloudflare Network and Service Resilience Whitepaper ↗](https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ad0dpR3YyqxMlikPfbBgn/020b7450909f03ccf3c7dcfb0e99fc2e/Resilience_Whitepaper.pdf).
+For detailed architecture information, refer to the [Cloudflare One Client documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) and the [Cloudflare Network and Service Resilience Whitepaper ↗︎](https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ad0dpR3YyqxMlikPfbBgn/020b7450909f03ccf3c7dcfb0e99fc2e/Resilience_Whitepaper.pdf).
 
 ## Fail-open vs. fail-closed decisions
 
@@ -121,15 +121,15 @@ When you disconnect the Cloudflare One Client, the following controls are affect
 | Resource | Link |
 | --- | --- |
 | Product documentation | [Cloudflare One Client documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/) |
-| API reference | [Zero Trust Devices Settings API ↗](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/settings/) |
+| API reference | [Zero Trust Devices Settings API ↗︎](https://developers.cloudflare.com/api/resources/zero_trust/subresources/devices/subresources/settings/) |
 | Global Disconnection | [Global Disconnection settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-the-cloudflare-one-client-on-all-devices) |
 | External Emergency Disconnect | [External Emergency Disconnect documentation](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/emergency-disconnect/#set-up-external-emergency-disconnect) |
 | Admin Override Codes | [Admin Override Codes](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#allow-admin-override-codes) |
 | MDM deployment | [MDM Deployment Guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/) |
-| Terraform provider | [Cloudflare Terraform Provider – Zero Trust Devices ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) |
-| Status page | [cloudflarestatus.com ↗](https://www.cloudflarestatus.com/) |
+| Terraform provider | [Cloudflare Terraform Provider – Zero Trust Devices ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_device_settings) |
+| Status page | [cloudflarestatus.com ↗︎](https://www.cloudflarestatus.com/) |
 | Troubleshooting | [Client Troubleshooting Guide](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/) |
-| Resilience Whitepaper | [Cloudflare Network and Service Resilience Whitepaper ↗](https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ad0dpR3YyqxMlikPfbBgn/020b7450909f03ccf3c7dcfb0e99fc2e/Resilience_Whitepaper.pdf) |
+| Resilience Whitepaper | [Cloudflare Network and Service Resilience Whitepaper ↗︎](https://cf-assets.www.cloudflare.com/slt3lc6tev37/7ad0dpR3YyqxMlikPfbBgn/020b7450909f03ccf3c7dcfb0e99fc2e/Resilience_Whitepaper.pdf) |
 
 Was this helpful?
 

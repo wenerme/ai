@@ -24,14 +24,14 @@ Cloudflare One allows you to build Zero Trust rules based on device UUIDs suppli
 
 You will need to use a [managed deployment tool](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/) to assign UUIDs. It is not possible to assign them manually.
 
-1. Generate a unique identifier for each corporate device. For best practices on choosing UUIDs, refer to the [Android documentation ↗](https://developer.android.com/training/articles/user-data-ids#best-practices-android-identifiers).
+1. Generate a unique identifier for each corporate device. For best practices on choosing UUIDs, refer to the [Android documentation ↗︎](https://developer.android.com/training/articles/user-data-ids#best-practices-android-identifiers).
 2. Enter the UUIDs into your MDM configuration file using the [`unique_client_id` key](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/parameters/#unique_client_id).
 
 ## 2. Create a list of UUIDs
 
 To create rules based on device UUIDs, you first need to create a [Gateway List](https://developers.cloudflare.com/cloudflare-one/reusable-components/lists/) of UUIDs.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Lists**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Lists**.
 2. Select **Create manual list** or **Upload CSV**. For larger teams, we recommend uploading a CSV or using Cloudflare's [API endpoint](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/lists/methods/list/).
 3. Give your list a descriptive name, as this name will appear when configuring your policies.
 4. Set **List Type** to *Device IDs*.
@@ -44,7 +44,7 @@ Hyphens are automatically stripped from UUIDs. For example, the posture check wi
 
 ## 3. Enable the posture check
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks**.
 2. Go to **Cloudflare One Client checks** and select **Add a check**.
 3. Select **Unique Client ID**.
 4. You will be prompted for the following information:

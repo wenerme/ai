@@ -27,16 +27,16 @@ This guide will walk you through exporting OpenTelemetry-compliant traces and lo
 
 Before you begin, ensure you have:
 
-- Are signed up for a [Sentry account ↗](https://sentry.io/signup/) (free tier available)
+- Are signed up for a [Sentry account ↗︎](https://sentry.io/signup/) (free tier available)
 - A deployed Worker that you want to monitor
 
 ## Step 1: Create a Sentry project
 
 If you don't already have a Sentry project to send data to, you'll need to create one to start sending Cloudflare Workers application telemetry to Sentry.
 
-1. Log in to your [Sentry account ↗](https://sentry.io/)
+1. Log in to your [Sentry account ↗︎](https://sentry.io/)
 2. Navigate to the Insights > Projects in the navigation sidebar, which will open a list of your projects.
-3. Click [**New Project** ↗](https://sentry.io/orgredirect/organizations/:orgslug/insights/projects/new/)
+3. Click [**New Project** ↗︎](https://sentry.io/orgredirect/organizations/:orgslug/insights/projects/new/)
 4. Fill out the project creation form and click **Create Project** to complete the process.
 
 ## Step 2: Get your Sentry OTLP endpoints
@@ -48,17 +48,17 @@ Sentry provides separate OTLP endpoints for traces and logs which you can use to
 
 You can find your OTLP endpoints in the your project settings.
 
-1. Go to the [Settings > Projects ↗](https://sentry.io/orgredirect/organizations/:orgslug/settings/projects/) page in Sentry.
+1. Go to the [Settings > Projects ↗︎](https://sentry.io/orgredirect/organizations/:orgslug/settings/projects/) page in Sentry.
 2. Select your project from the list and click on the project name to open the project settings.
 3. Go to the "Client Keys (DSN)" sub-page for this project under the "SDK Setup" heading.
 
 There you'll find your Sentry project's OTLP logs and OTLP traces endpoints, as well as authentication headers for the endpoints. Make sure to copy the endpoints and authentication headers.
 
-For more details on how to use Sentry's OTLP endpoints, refer to [Sentry's OTLP documentation ↗](https://docs.sentry.io/concepts/otlp/).
+For more details on how to use Sentry's OTLP endpoints, refer to [Sentry's OTLP documentation ↗︎](https://docs.sentry.io/concepts/otlp/).
 
 ## Step 3: Set up destination in the Cloudflare dashboard
 
-To set up a destination in the Cloudflare dashboard, navigate to your Cloudflare account's [Workers Observability ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section. Then click **Add destination** and configure either a traces or logs destination.
+To set up a destination in the Cloudflare dashboard, navigate to your Cloudflare account's [Workers Observability ↗︎](https://dash.cloudflare.com/?to=/:account/workers-and-pages/observability/pipelines) section. Then click **Add destination** and configure either a traces or logs destination.
 
 ### Traces Destination
 

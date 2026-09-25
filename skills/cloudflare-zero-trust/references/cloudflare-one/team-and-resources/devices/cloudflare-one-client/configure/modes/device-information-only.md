@@ -66,7 +66,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/devices/policy/certifi
 
 ## 2. Configure the Cloudflare One Client
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Devices** > **Device profiles** > **General profiles**.
 2. Choose a [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) and select **Edit**.
 3. For **Service mode**, select **Posture only mode**.
 4. Select **Save profile**.
@@ -99,7 +99,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/devices/policy/certifi
 
    The client certificate name should match the **Device ID** in your Cloudflare One Client **Preferences**.
 2. To verify the client certificate in your Cloudflare account:
-   1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select the zone for which you enabled client certificates.
+   1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), select the zone for which you enabled client certificates.
    2. Go to **SSL/TLS** > **Client Certificates**.
 
    The certificate name is the WARP enrollment **Device ID**. ![Example client certificate in the Cloudflare dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2066,height=486,format=webp/_astro/device-information-only-cert.CBHcWmIc.png)
@@ -108,7 +108,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/devices/policy/certifi
 
 To block traffic from devices that do not have a valid client certificate:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **SSL/TLS** > **Client Certificates**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **SSL/TLS** > **Client Certificates**.
 2. Under **Hosts**, select **Edit** and enter the hostname of your Access application (for example, `app.mycompany.com`). This enables mTLS authentication for the application.
 3. Select **Create mTLS rule**.
 4. Create a WAF custom rule that checks all requests to your application for a valid client certificate:

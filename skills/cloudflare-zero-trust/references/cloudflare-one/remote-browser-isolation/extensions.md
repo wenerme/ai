@@ -48,11 +48,11 @@ Remote browser extensions are automatically reinstalled across isolated sessions
 
 ### Modify remote browser user agent
 
-[User-Agent Switcher for Chrome ↗](https://chromewebstore.google.com/detail/user-agent-switcher-for-c/djflhoibgkdhkhhcedjiklpkjnoahfmg) enables controlling the User Agent sent from the remote browser to an isolated website.
+[User-Agent Switcher for Chrome ↗︎](https://chromewebstore.google.com/detail/user-agent-switcher-for-c/djflhoibgkdhkhhcedjiklpkjnoahfmg) enables controlling the User Agent sent from the remote browser to an isolated website.
 
 ### Control remote browser request headers
 
-[ModHeader ↗](https://chromewebstore.google.com/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) enables controlling arbitrary request headers sent from the remote browser to an isolated website.
+[ModHeader ↗︎](https://chromewebstore.google.com/detail/modheader/idgpnmonknjnojddfkpgkljpfnnfcklj) enables controlling arbitrary request headers sent from the remote browser to an isolated website.
 
 Was this helpful?
 

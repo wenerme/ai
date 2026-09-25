@@ -52,7 +52,7 @@ All tutorials assume you have:
 
 - Completed the [Get Started guide](https://developers.cloudflare.com/sandbox/get-started/)
 - Basic familiarity with [Workers](https://developers.cloudflare.com/workers/)
-- [Docker ↗](https://www.docker.com/) installed and running
+- [Docker ↗︎](https://www.docker.com/) installed and running
 
 ## Related resources
 

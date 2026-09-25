@@ -20,7 +20,7 @@ When a user-initiated action triggers additional automated behavior, correspondi
 
 When an action occurs, it is streamed through Cloudflare's audit logging pipeline and stored. This ensures consistent visibility into activity across all products.
 
-For more detailed information about how the user-initiated actions are logged automatically, refer to the [Cloudflare Blog ↗](https://blog.cloudflare.com/introducing-automatic-audit-logs/).
+For more detailed information about how the user-initiated actions are logged automatically, refer to the [Cloudflare Blog ↗︎](https://blog.cloudflare.com/introducing-automatic-audit-logs/).
 
 Note
 
@@ -104,7 +104,7 @@ GET https://api.cloudflare.com/client/v4/accounts/1234567890abcdef/logs/audit?si
 }
 ```
 
-For more information refer to the [API documentation ↗](<https://developers.cloudflare.com/api/resources/accounts/subresources/logs/subresources/audit/methods/list/#(params)%20default%20%3E%20(param)%20since%20%3E%20(schema)>).
+For more information refer to the [API documentation ↗︎](<https://developers.cloudflare.com/api/resources/accounts/subresources/logs/subresources/audit/methods/list/#(params)%20default%20%3E%20(param)%20since%20%3E%20(schema)>).
 
 ### Dashboard
 

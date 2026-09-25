@@ -143,7 +143,7 @@ The Network Services menu structure in Cloudflare's dashboard has been updated t
 
 Your existing configurations will remain the same, and you will have access to all of the same features and functionality.
 
-The changes visible in your dashboard may vary based on the products you use. Overall, changes relate to [Magic Transit ↗](https://developers.cloudflare.com/magic-transit/), [Magic WAN ↗](https://developers.cloudflare.com/magic-wan/), and [Magic Firewall ↗](https://developers.cloudflare.com/cloudflare-network-firewall/).
+The changes visible in your dashboard may vary based on the products you use. Overall, changes relate to [Magic Transit ↗︎](https://developers.cloudflare.com/magic-transit/), [Magic WAN ↗︎](https://developers.cloudflare.com/magic-wan/), and [Magic Firewall ↗︎](https://developers.cloudflare.com/cloudflare-network-firewall/).
 
 **Summary of changes:**
 
@@ -157,7 +157,7 @@ The changes visible in your dashboard may vary based on the products you use. Ov
 - You can manage your Sites from **Insights > Network health.**
 - You can find Magic Network Monitoring under **Insights > Network flow**.
 
-If you would like to provide feedback, complete [this form ↗](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI] Upcoming Network Services Dashboard Navigation Update**.
+If you would like to provide feedback, complete [this form ↗︎](https://forms.gle/htWyjRsTjw1usdis5). You can also find these details in the January 7, 2026 email titled **\[FYI] Upcoming Network Services Dashboard Navigation Update**.
 
 Preview: ![Networking Navigation](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3000,height=1052,format=webp/_astro/networking-overview-and-navigation.CeMgEFaZ.png)
 

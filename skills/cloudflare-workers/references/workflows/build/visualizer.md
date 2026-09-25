@@ -20,7 +20,7 @@ The diagram illustrates your sequenced & parallel steps, conditionals, loops, an
 
 ![Example diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1927,height=1530,format=webp/_astro/2026-02-03-workflows-diagram.BfQAnWL3.png)
 
-Workflow diagrams are currently in beta for all Typescript and Javascript Workers. View your Workflows in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/workflows) to see their diagrams.
+Workflow diagrams are currently in beta for all Typescript and Javascript Workers. View your Workflows in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/workflows) to see their diagrams.
 
 Caution
 

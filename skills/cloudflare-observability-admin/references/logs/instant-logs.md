@@ -118,7 +118,7 @@ The response will include a new field called **destination\_conf**. The value of
 
 ### 2. Connect to WebSocket
 
-Using a CLI utility like [Websocat ↗](https://github.com/vi/websocat), you can connect to the WebSocket and start immediately receiving logs.
+Using a CLI utility like [Websocat ↗︎](https://github.com/vi/websocat), you can connect to the WebSocket and start immediately receiving logs.
 
 ```bash
 websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/<SESSION_ID>
@@ -130,7 +130,7 @@ Once connected to the websocket, you will receive messages of line-delimited JSO
 
 ### Angle Grinder
 
-Now that you have a connection to Cloudflare's websocket and are receiving logs from Cloudflare's global network, you can start slicing and dicing the logs. A handy tool for this is [Angle Grinder ↗](https://github.com/rcoh/angle-grinder). Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country you can sum the number of events by the `ClientCountry` field.
+Now that you have a connection to Cloudflare's websocket and are receiving logs from Cloudflare's global network, you can start slicing and dicing the logs. A handy tool for this is [Angle Grinder ↗︎](https://github.com/rcoh/angle-grinder). Angle Grinder lets you apply filtering, transformations and aggregations on stdin with first class JSON support. For example, to get the number of visitors from each country you can sum the number of events by the `ClientCountry` field.
 
 ```bash
 websocat wss://logs.cloudflare.com/instant-logs/ws/sessions/<SESSION_ID> | agrind '* | json | sum(sampleInterval) by ClientCountry'
@@ -167,7 +167,7 @@ If either of these limits are reached, the logs stream will automatically stop.
 
 ## Connect with us
 
-If you have any feature requests or notice any bugs, share your feedback directly with us by joining the [Cloudflare Developers community on Discord ↗](https://discord.cloudflare.com).
+If you have any feature requests or notice any bugs, share your feedback directly with us by joining the [Cloudflare Developers community on Discord ↗︎](https://discord.cloudflare.com).
 
 Was this helpful?
 

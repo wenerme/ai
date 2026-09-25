@@ -26,10 +26,10 @@ Refer to [Custom Errors](https://developers.cloudflare.com/rules/custom-errors/)
 
 If the suggested resolutions for each error do not resolve the issue, contact [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 
-- Only the website owner can contact Cloudflare for technical support. You can find a domain's contact details via the [Whoisdatabase ↗](https://lookup.icann.org/).
+- Only the website owner can contact Cloudflare for technical support. You can find a domain's contact details via the [Whoisdatabase ↗︎](https://lookup.icann.org/).
 - Pro, Business and Enterprise plan users have access to email support.
 - Business and Enterprise users can also access chat support.
-- For additional support options, refer to the [Cloudflare plans ↗](https://www.cloudflare.com/plans/).
+- For additional support options, refer to the [Cloudflare plans ↗︎](https://www.cloudflare.com/plans/).
 
 ## Error 1000: DNS points to prohibited IP
 

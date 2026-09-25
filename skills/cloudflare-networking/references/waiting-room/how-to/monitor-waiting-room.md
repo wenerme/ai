@@ -143,7 +143,7 @@ Because of this design, the configured traffic limits of a waiting room are targ
 
 Waiting Room also continuously monitors the rate of users entering throughout each minute, and not just at the end of the minute. Therefore, if at the beginning of your minute, a large fraction of your set `new_users_per_minute` value already joined, we may start queueing users, even if the overall `new_users_per_minute` value that is reached for that minute is not hit.
 
-To help prevent a waiting room from active queueing, increase the values for `new_users_per_minute` and/or `total_active_users`. For more information about how Waiting Room makes queueing decisions, review our [blogpost ↗](https://blog.cloudflare.com/how-waiting-room-queues).
+To help prevent a waiting room from active queueing, increase the values for `new_users_per_minute` and/or `total_active_users`. For more information about how Waiting Room makes queueing decisions, review our [blogpost ↗︎](https://blog.cloudflare.com/how-waiting-room-queues).
 
 Note
 

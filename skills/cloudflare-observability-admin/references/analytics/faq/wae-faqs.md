@@ -52,7 +52,7 @@ Sampled data is highly reliable, particularly when a carefully selected index is
 
 Admittedly, it is difficult at present to prove that the results returned by ABR queries are within a certain error bound. As a rule of thumb, it is good to check the number of rows read by using count() — think of this like the count of pixels in your image. A higher number of rows read will result in more accurate results. (The flipside is that the `_sample_interval` field does not tell you very much about whether your results are accurate). If you are extrapolating from only one or two rows, it is unlikely you have a representative result; if you are extrapolating from thousands of rows, it is very likely that your results are quite accurate.
 
-In the near future, we plan to expose the [margin of error ↗](https://en.wikipedia.org/wiki/Margin_of_error) along with query results so that you can see precisely how accurate your results are.
+In the near future, we plan to expose the [margin of error ↗︎](https://en.wikipedia.org/wiki/Margin_of_error) along with query results so that you can see precisely how accurate your results are.
 
 ### How are bursts handled?
 

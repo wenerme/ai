@@ -46,7 +46,7 @@ If you have just added a domain and have not configured its plan yet, the domain
 
 ## Remove a domain activated in Cloudflare
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your domain. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/)
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your domain. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/)
 2. On the domain **Overview** page, find **Advanced Actions** and then select **Remove from Cloudflare**.
 
    Note

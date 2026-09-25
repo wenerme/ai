@@ -54,7 +54,7 @@ Supported operating systems:
 
 To run a speed test from a device:
 
-1. In [Zero Trust ↗](https://dash.cloudflare.com/one), go to **Insights** > **Digital experience** > **Diagnostics**.
+1. In [Zero Trust ↗︎](https://dash.cloudflare.com/one), go to **Insights** > **Digital experience** > **Diagnostics**.
 2. Select **Run diagnostics**.
 3. Search for a device by user email, device name, or device ID.
 4. Select the device, then select **Device speed test**.

@@ -35,7 +35,7 @@ Multiple attributes can be used together, added one after each other like this:
 
   To disable video autoplay, the `autoplay` attribute needs to be removed altogether as this attribute. Setting `autoplay="false"` will not work; the video will autoplay if the attribute is there in the `<stream>` tag.
 
-In addition, some browsers now prevent videos with audio from playing automatically. You may add the `mute` attribute to allow your videos to autoplay. For more information, see [new video policies for iOS ↗](https://webkit.org/blog/6784/new-video-policies-for-ios/). :::
+In addition, some browsers now prevent videos with audio from playing automatically. You may add the `mute` attribute to allow your videos to autoplay. For more information, see [new video policies for iOS ↗︎](https://webkit.org/blog/6784/new-video-policies-for-ios/). :::
 
 - `controls` boolean
   - Shows the default video controls such as buttons for play/pause, volume controls. You may choose to build buttons and controls that work with the player. [See an example.](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/)
@@ -92,7 +92,7 @@ In addition, some browsers now prevent videos with audio from playing automatica
 
 ### Standard video element events
 
-Stream supports most of the [standardized media element events ↗](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events).
+Stream supports most of the [standardized media element events ↗︎](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Media_events).
 
 - `abort`
   - Sent when playback is aborted; for example, if the media is playing and is restarted from the beginning, this event is sent.

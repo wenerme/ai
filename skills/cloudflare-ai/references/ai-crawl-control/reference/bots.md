@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-crawl-control/reference/bots/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A selection of crawlers from major AI operators. For an up-to-date list of verified bots, see the [Cloudflare Radar Bots Directory ↗](https://radar.cloudflare.com/bots/directory).
+A selection of crawlers from major AI operators. For an up-to-date list of verified bots, see the [Cloudflare Radar Bots Directory ↗︎](https://radar.cloudflare.com/bots/directory).
 
 | Crawler | Operator | Category | Detection IDs | User Agent |
 | --- | --- | --- | --- | --- |
@@ -64,7 +64,7 @@ When visitors arrive at your site from an AI platform, the referrer indicates wh
 
 - [Analyze AI traffic](https://developers.cloudflare.com/ai-crawl-control/features/analyze-ai-traffic/) — View crawler activity in the dashboard
 - [GraphQL API reference](https://developers.cloudflare.com/ai-crawl-control/reference/graphql-api/) — Query crawler analytics
-- [Cloudflare Radar Bots Directory ↗](https://radar.cloudflare.com/bots/directory) — Up-to-date list of verified bots
+- [Cloudflare Radar Bots Directory ↗︎](https://radar.cloudflare.com/bots/directory) — Up-to-date list of verified bots
 
 Was this helpful?
 

@@ -40,7 +40,7 @@ Tunnel ownership is bound to the Cloudflare account for which the `cert.pem` fil
 
 Your account certificate (`cert.pem`) contains an API token which authorizes `cloudflared` to manage tunnels in your Cloudflare account. To revoke the account certificate, delete the API token associated with your tunnel:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **My Profile** > **API Tokens**.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **My Profile** > **API Tokens**.
 2. Find the **Cloudflare Tunnel API Token** or **Argo Tunnel API Token** for your zone and account.
 3. Select the three dots > **Delete**.
 

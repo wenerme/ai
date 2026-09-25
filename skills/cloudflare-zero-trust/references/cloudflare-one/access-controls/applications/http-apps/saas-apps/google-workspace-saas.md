@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/google-workspace-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [Google Workspace ↗](https://support.google.com/a/topic/7579248?ref_topic=7556686&sjid=14539485562330725560-NA) as a SAML application in Cloudflare One.
+This guide covers how to configure [Google Workspace ↗︎](https://support.google.com/a/topic/7579248?ref_topic=7556686&sjid=14539485562330725560-NA) as a SAML application in Cloudflare One.
 
 Note
 
@@ -27,12 +27,12 @@ The integration of Access as a single sign-on provider for your Google Workspace
 
 ## 1. Create an application in Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **SaaS application**.
 4. Fill in the following information:
    - **Application**: *Google*.
-   - **Entity ID**: Use the value provided to you by Google when [configuring your SAML SSO provider ↗](https://saml-doc.okta.com/SAML_Docs/How-to-Enable-SAML-2.0-in-Google-Apps.html).
+   - **Entity ID**: Use the value provided to you by Google when [configuring your SAML SSO provider ↗︎](https://saml-doc.okta.com/SAML_Docs/How-to-Enable-SAML-2.0-in-Google-Apps.html).
    - **Assertion Consumer Service URL**: `https://www.google.com/a/<your_domain.com>/acs`, where `<your_domain.com>` is your Google Workspace domain.
    - **Name ID Format**: *Email*.
 
@@ -60,7 +60,7 @@ When you put your Google Workspace behind Access, users will not be able to log 
 
 ## 3. Create an SSO provider in Google Workspace
 
-1. Log in to your [Google Admin console ↗](https://admin.google.com/).
+1. Log in to your [Google Admin console ↗︎](https://admin.google.com/).
 2. Go to **Security** > **Authentication** > **SSO with third party IdP**.
 3. Select **Third-party SSO profile for your organization**.
 4. Enable **Set up SSO with third-party identity provider**.
@@ -72,7 +72,7 @@ When you put your Google Workspace behind Access, users will not be able to log 
 
 ## 4. Test the integration
 
-1. In your [Google Admin console ↗](https://admin.google.com/), go to **Apps** > **Google Workspace** > **Gmail** > **Setup**.
+1. In your [Google Admin console ↗︎](https://admin.google.com/), go to **Apps** > **Google Workspace** > **Gmail** > **Setup**.
 2. Copy your Gmail **Web address**.
 3. Open an incognito browser window and go to your Gmail web address (for example, `https://mail.google.com/a/<your_domain.com>`).
 

@@ -16,9 +16,9 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Network operators, including Internet Service Providers (ISPs), device manufacturers, public Wi-Fi networks, municipal broadband providers, and security scanning services can use [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/setup/) in place of operating their own recursive DNS infrastructure — DNS servers that resolve queries on behalf of clients by querying authoritative nameservers across the internet.
 
-Cloudflare also partners with ISPs and network equipment providers to make [1.1.1.1 for Families](https://developers.cloudflare.com/1.1.1.1/setup/#1111-for-families) available within their offerings. Refer to our [blog post ↗](https://blog.cloudflare.com/safer-resolver/) for details.
+Cloudflare also partners with ISPs and network equipment providers to make [1.1.1.1 for Families](https://developers.cloudflare.com/1.1.1.1/setup/#1111-for-families) available within their offerings. Refer to our [blog post ↗︎](https://blog.cloudflare.com/safer-resolver/) for details.
 
-Using 1.1.1.1 can improve performance for end-users due to Cloudflare's extensive [global network ↗](https://www.cloudflare.com/network/), as well as provide higher overall cache hit rates (the percentage of DNS queries answered from cache rather than requiring a new upstream lookup) due to our regional caches.
+Using 1.1.1.1 can improve performance for end-users due to Cloudflare's extensive [global network ↗︎](https://www.cloudflare.com/network/), as well as provide higher overall cache hit rates (the percentage of DNS queries answered from cache rather than requiring a new upstream lookup) due to our regional caches.
 
 The 1.1.1.1 resolver was designed with a privacy-first approach. Refer to our [data and privacy policies](https://developers.cloudflare.com/1.1.1.1/privacy/public-dns-resolver/) for what is logged and retained by 1.1.1.1.
 
@@ -36,9 +36,9 @@ Where possible, we recommend using encrypted transports (DNS over HTTPS or TLS) 
 
 Note
 
-[Cloudflare Zero Trust ↗](https://www.cloudflare.com/products/zero-trust/) supports customizable [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), analytics, additional built-in filtering categories, and custom rate limiting capabilities.
+[Cloudflare Zero Trust ↗︎](https://www.cloudflare.com/products/zero-trust/) supports customizable [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), analytics, additional built-in filtering categories, and custom rate limiting capabilities.
 
-If you require additional controls over our public 1.1.1.1 resolver, [contact us ↗](https://www.cloudflare.com/products/zero-trust/).
+If you require additional controls over our public 1.1.1.1 resolver, [contact us ↗︎](https://www.cloudflare.com/products/zero-trust/).
 
 The publicly available endpoints for 1.1.1.1 are detailed in the following table. Each resolver variant serves a different filtering level: the unfiltered resolver performs standard DNS resolution with no content blocking, the Malware variant blocks queries to domains associated with malware and phishing, and the Adult Content + Malware variant blocks adult content in addition to malware and phishing.
 
@@ -61,7 +61,7 @@ Best practices include:
 
 ## Help
 
-If you are a network operator and still have outstanding questions, contact `resolver@cloudflare.com` with your use case, so it can be discussed further. Make sure to visit [1.1.1.1/help ↗](https://one.one.one.one/help) from within your network and share the resulting report when contacting Cloudflare.
+If you are a network operator and still have outstanding questions, contact `resolver@cloudflare.com` with your use case, so it can be discussed further. Make sure to visit [1.1.1.1/help ↗︎](https://one.one.one.one/help) from within your network and share the resulting report when contacting Cloudflare.
 
 Was this helpful?
 

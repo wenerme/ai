@@ -14,15 +14,15 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/jumpcloud-saml/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[JumpCloud ↗](https://jumpcloud.com/#platform) provides SSO identity management. Cloudflare Access integrates with JumpCloud as a SAML identity provider.
+[JumpCloud ↗︎](https://jumpcloud.com/#platform) provides SSO identity management. Cloudflare Access integrates with JumpCloud as a SAML identity provider.
 
-The following steps are specific to setting up JumpCloud with Cloudflare Access. For more information on configuring JumpCloud SSO application, refer to the [JumpCloud documentation ↗](https://jumpcloud.com/support/integrate-with-cloudflare).
+The following steps are specific to setting up JumpCloud with Cloudflare Access. For more information on configuring JumpCloud SSO application, refer to the [JumpCloud documentation ↗︎](https://jumpcloud.com/support/integrate-with-cloudflare).
 
 ## Set up Jumpcloud as a SAML provider
 
 ### 1. Create an SSO application in JumpCloud
 
-1. In the [JumpCloud Admin Portal ↗](https://console.jumpcloud.com/#/home), go to **SSO Applications**.
+1. In the [JumpCloud Admin Portal ↗︎](https://console.jumpcloud.com/#/home), go to **SSO Applications**.
 2. Select **Add New Application**.
 3. In the search bar, enter `Cloudflare` and select the **Cloudflare Access** application.
 4. Select **Next**.
@@ -36,7 +36,7 @@ The following steps are specific to setting up JumpCloud with Cloudflare Access.
       https://<your-team-name>.cloudflareaccess.com/
       ```
 
-      You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+      You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
    2. Set both **SP Entity ID** and **ACS URL** to the following callback URL:
 
       ```txt
@@ -46,12 +46,12 @@ The following steps are specific to setting up JumpCloud with Cloudflare Access.
 
    3. (Optional) Configure SAML attributes that you want to send to Cloudflare Access.
    4. Scroll up to **JumpCloud Metadata** and select **Export Metadata**. Save this XML file for use in a [later step](#2-add-jumpcloud-to-zero-trust).
-9. In the **User Groups** tab, [assign user groups ↗](https://jumpcloud.com/support/get-started-applications-saml-sso#managing-employee-access-to-applications) to this application.
+9. In the **User Groups** tab, [assign user groups ↗︎](https://jumpcloud.com/support/get-started-applications-saml-sso#managing-employee-access-to-applications) to this application.
 10. Select **Save**.
 
 ### 2. Add JumpCloud to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **SAML**.
 4. Upload your JumpCloud XML metadata file.
@@ -73,7 +73,7 @@ Gateway evaluates identity-based policies against the [User Registry identity](h
 
 ### 1. Enable SCIM in Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Find the JumpCloud integration and select **Edit**.
 3. Turn on **Enable SCIM**.
 4. (Optional) Configure the following settings:
@@ -92,7 +92,7 @@ The SCIM secret never expires, but you can manually regenerate the secret at any
 
 ### 2. Configure SCIM in JumpCloud
 
-1. In the [JumpCloud Admin Portal ↗](https://console.jumpcloud.com/#/home), go to **SSO Applications**.
+1. In the [JumpCloud Admin Portal ↗︎](https://console.jumpcloud.com/#/home), go to **SSO Applications**.
 2. Select the Cloudflare application that was created when you [Set up JumpCloud as a SAML provider](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/jumpcloud-saml/#set-up-jumpcloud-as-a-saml-provider).
 3. Select the **SSO** tab.
 4. To provision user groups, select **Include group attribute** and enter `groups`. The group attribute name has to exactly match `groups` or else it will be sent as a SAML attribute.

@@ -26,15 +26,15 @@ classDef highlight fill:#F6821F,color:white
 
 To begin using pay per crawl, set up your Cloudflare account.
 
-Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up).
+Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up).
 
 Pay per crawl beta
 
 Pay per crawl is currently in closed beta.
 
-To find out how to join the beta program, reach out to us at [Pay per crawl signup ↗](https://www.cloudflare.com/paypercrawl-signup/), or contact your account executive if you are an existing Enterprise customer.
+To find out how to join the beta program, reach out to us at [Pay per crawl signup ↗︎](https://www.cloudflare.com/paypercrawl-signup/), or contact your account executive if you are an existing Enterprise customer.
 
-To learn more about pay per crawl, refer to Cloudflare blog: [Introducing pay per crawl: enabling content owners to charge AI crawlers for access ↗](https://blog.cloudflare.com/introducing-pay-per-crawl/).
+To learn more about pay per crawl, refer to Cloudflare blog: [Introducing pay per crawl: enabling content owners to charge AI crawlers for access ↗︎](https://blog.cloudflare.com/introducing-pay-per-crawl/).
 
 Was this helpful?
 

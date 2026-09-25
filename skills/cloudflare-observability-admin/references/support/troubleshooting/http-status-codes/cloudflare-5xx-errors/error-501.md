@@ -25,7 +25,7 @@ Cloudflare Workers returns a `501` error when a request uses an HTTP method that
 
 ### Resolution
 
-- Update the client to use a valid, standard [HTTP request method ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
+- Update the client to use a valid, standard [HTTP request method ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods).
 
 Was this helpful?
 

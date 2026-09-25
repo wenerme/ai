@@ -75,7 +75,7 @@ accDescr: Diagram of CNAME flattening process when there is a request for a doma
 
 ## Aspects to consider
 
-- If the CNAME record is proxied in Cloudflare, the answer is made up of multiple [Cloudflare IPs ↗](https://www.cloudflare.com/ips/) and its Time to Live (TTL) is set to `300`.
+- If the CNAME record is proxied in Cloudflare, the answer is made up of multiple [Cloudflare IPs ↗︎](https://www.cloudflare.com/ips/) and its Time to Live (TTL) is set to `300`.
 - If the CNAME record in Cloudflare is not proxied, the flattened answer consists of the IP address from the external DNS provider and its TTL corresponds to the lower value between the external record and the Cloudflare CNAME record.
 
 Was this helpful?

@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Note
 
-Only available for [Cloudflare Partners ↗](https://www.cloudflare.com/partners/) on Enterprise plans. To gain access, contact your account team.
+Only available for [Cloudflare Partners ↗︎](https://www.cloudflare.com/partners/) on Enterprise plans. To gain access, contact your account team.
 
 Gateway supports the [Cloudflare Tenant API](https://developers.cloudflare.com/tenant/), which allows Cloudflare-partnered managed service providers (MSPs) to set up and manage Cloudflare accounts and services for their customers. With the Tenant API, MSPs can create Zero Trust deployments with global Gateway policy control. Policies can be customized or overridden at a group or individual account level.
 
@@ -24,7 +24,7 @@ Caution
 
 The Tenant API platform only supports [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/). To apply HTTP, network, and resolver policies, use [Cloudflare Organizations](https://developers.cloudflare.com/cloudflare-one/traffic-policies/tiered-policies/organizations/) instead.
 
-For more information, refer to the [Cloudflare Zero Trust for managed service providers ↗](https://blog.cloudflare.com/gateway-managed-service-provider/) blog post.
+For more information, refer to the [Cloudflare Zero Trust for managed service providers ↗︎](https://blog.cloudflare.com/gateway-managed-service-provider/) blog post.
 
 ## Get started
 

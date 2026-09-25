@@ -92,7 +92,7 @@ Create a [Cloudflare Agents project](https://developers.cloudflare.com/agents/ge
 
 Note
 
-For production Agents, use a scoped access key. Apply spending limits and recipient restrictions. For more information, refer to [Manage Agent spend ↗](https://mpp.dev/guides/managing-agent-spend).
+For production Agents, use a scoped access key. Apply spending limits and recipient restrictions. For more information, refer to [Manage Agent spend ↗︎](https://mpp.dev/guides/managing-agent-spend).
 
 ## Pay an HTTP service
 
@@ -266,7 +266,7 @@ By default, both clients pay compatible Challenges automatically. Use `onChallen
 
 ## Pay x402 services
 
-The `mppx` HTTP client also recognizes x402 Challenges. Configure an x402-compatible EVM method next to the MPP method. The service does not need changes. For configuration, refer to [Use MPP with x402 ↗](https://mpp.dev/guides/use-mpp-with-x402).
+The `mppx` HTTP client also recognizes x402 Challenges. Configure an x402-compatible EVM method next to the MPP method. The service does not need changes. For configuration, refer to [Use MPP with x402 ↗︎](https://mpp.dev/guides/use-mpp-with-x402).
 
 To accept payments, refer to [Accept payments with MPP](https://developers.cloudflare.com/agents/tools/payments/mpp/accept-payments/). For MCP connection options, refer to the [MCP client API](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/).
 

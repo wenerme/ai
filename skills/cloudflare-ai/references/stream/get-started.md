@@ -208,7 +208,7 @@ See the full Stream [REST API and SDK reference](https://developers.cloudflare.c
 
 ### Step 2: Copy the RTMPS URL and key, and use them with your live streaming application.
 
-We recommend using [Open Broadcaster Software (OBS) ↗](https://obsproject.com/) to get started.
+We recommend using [Open Broadcaster Software (OBS) ↗︎](https://obsproject.com/) to get started.
 
 ### Step 3: Play the live stream in your website or app
 
@@ -238,7 +238,7 @@ The embed code above can also be found on the **Stream** page of the Cloudflare 
 
 ## Accessibility considerations
 
-To make your video content more accessible, include [captions](https://developers.cloudflare.com/stream/edit-videos/adding-captions/) and [high-quality audio recording ↗](https://www.w3.org/WAI/media/av/av-content/).
+To make your video content more accessible, include [captions](https://developers.cloudflare.com/stream/edit-videos/adding-captions/) and [high-quality audio recording ↗︎](https://www.w3.org/WAI/media/av/av-content/).
 
 Was this helpful?
 

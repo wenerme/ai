@@ -41,7 +41,7 @@ For details about updating an active waiting room, refer to [Best practices](htt
 
 ### Edit a waiting room
 
-[Replace ↗](https://api.cloudflare.com#waiting-room-update-waiting-room) a configured waiting room by appending the following endpoint to the Cloudflare API base URL.
+[Replace ↗︎](https://api.cloudflare.com#waiting-room-update-waiting-room) a configured waiting room by appending the following endpoint to the Cloudflare API base URL.
 
 <details>
 
@@ -71,7 +71,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/waiting_rooms/$WAITING
 	}'
 ```
 
-[Update ↗](https://api.cloudflare.com#waiting-room-patch-waiting-room) a configured waiting room by appending the following endpoint to the Cloudflare API base URL.
+[Update ↗︎](https://api.cloudflare.com#waiting-room-patch-waiting-room) a configured waiting room by appending the following endpoint to the Cloudflare API base URL.
 
 <details>
 
@@ -105,7 +105,7 @@ You only need to include the fields you want to update in the payload of the PAT
 
 ### Delete a waiting room
 
-Delete a waiting room by appending the following endpoint in the [Waiting Room API ↗](https://api.cloudflare.com#waiting-room-delete-waiting-room) to the Cloudflare API base URL.
+Delete a waiting room by appending the following endpoint in the [Waiting Room API ↗︎](https://api.cloudflare.com#waiting-room-delete-waiting-room) to the Cloudflare API base URL.
 
 <details>
 

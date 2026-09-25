@@ -31,7 +31,7 @@ To enable Logpush to BigQuery:
    3. Select Key type **JSON**.
    4. Click **Create**.
    5. Save the Application Credentials JSON file. You will need to use this when setting up a new Logpush job.
-5. In BigQuery, create a dataset and table. Refer to [instructions from BigQuery ↗](https://cloud.google.com/bigquery/docs/tables). For example, using `schema.json` and `bq` command:
+5. In BigQuery, create a dataset and table. Refer to [instructions from BigQuery ↗︎](https://cloud.google.com/bigquery/docs/tables). For example, using `schema.json` and `bq` command:
 
 ```bash
 gcloud auth activate-service-account --key-file=${KEY_FILE}
@@ -182,7 +182,7 @@ Refer to [Manage Logpush with cURL](https://developers.cloudflare.com/logs/logpu
 
 ## Limitations
 
-Note the following default quota and limits, as described in the [BigQuery documentation ↗](https://docs.cloud.google.com/bigquery/quotas#streaming_inserts).
+Note the following default quota and limits, as described in the [BigQuery documentation ↗︎](https://docs.cloud.google.com/bigquery/quotas#streaming_inserts).
 
 The following limits apply to BigQuery streaming inserts:
 
@@ -200,7 +200,7 @@ BigQuery supports loading up to 1,500 jobs per table per day (including failures
 
 Logpush delivers batches of logs as soon as possible, which means you could receive more than one batch of files per minute. Ensure your BigQuery job is configured to ingest files on a given time interval, like every minute, as opposed to when files are received. Ingesting files into BigQuery as each Logpush file is received could exhaust your BigQuery quota quickly.
 
-For a community-supported example of how to set up a schedule job load with BigQuery, refer to [Cloudflare + Google Cloud | Integrations repository ↗](https://github.com/cloudflare/cloudflare-gcp/tree/master/logpush-to-bigquery). Note that this repository is provided on a best-effort basis and is not maintained routinely.
+For a community-supported example of how to set up a schedule job load with BigQuery, refer to [Cloudflare + Google Cloud | Integrations repository ↗︎](https://github.com/cloudflare/cloudflare-gcp/tree/master/logpush-to-bigquery). Note that this repository is provided on a best-effort basis and is not maintained routinely.
 
 Was this helpful?
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/configuration/firewall-and-networking-configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Hyperdrive uses the [Cloudflare IP address ranges ↗](https://www.cloudflare.com/ips/) to connect to your database. If you decide to restrict the IP addresses that can access your database with firewall rules, the IP address ranges listed in this reference need to be allow-listed in your database's firewall and networking configurations.
+Hyperdrive uses the [Cloudflare IP address ranges ↗︎](https://www.cloudflare.com/ips/) to connect to your database. If you decide to restrict the IP addresses that can access your database with firewall rules, the IP address ranges listed in this reference need to be allow-listed in your database's firewall and networking configurations.
 
 You can connect to your database from Hyperdrive using any of the 3 following networking configurations:
 

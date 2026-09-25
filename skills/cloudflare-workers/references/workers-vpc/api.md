@@ -56,7 +56,7 @@ VPC binding fetch requests must use absolute URLs including the protocol (`http`
 
 ### Return value
 
-Returns a `Promise<Response>` that resolves to a [standard Fetch API Response object ↗](https://developer.mozilla.org/en-US/docs/Web/API/Response).
+Returns a `Promise<Response>` that resolves to a [standard Fetch API Response object ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Response).
 
 ### Examples
 

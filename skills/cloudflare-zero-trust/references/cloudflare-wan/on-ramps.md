@@ -24,7 +24,7 @@ Additional compatible on-ramps include:
 - [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-tunnel/): Cloudflare WAN can be used together with Cloudflare Tunnel for easy access between your networks and applications.
 - [WARP](https://developers.cloudflare.com/cloudflare-wan/zero-trust/cloudflare-one-client/): Protect corporate devices by securely and privately sending traffic from those devices to Cloudflare's global network, where Cloudflare Gateway can apply advanced web filtering.
 - [Multi-Cloud Networking](https://developers.cloudflare.com/cloudflare-wan/configuration/multi-cloud-networking/): Automatically create on-ramps from your cloud networks to Cloudflare WAN.
-- [Network on-ramp partnerships ↗](https://www.cloudflare.com/network-onramp-partners/): Refer to our [third-party integration tutorials](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/) for guidance on configuring the most asked for third-party products.
+- [Network on-ramp partnerships ↗︎](https://www.cloudflare.com/network-onramp-partners/): Refer to our [third-party integration tutorials](https://developers.cloudflare.com/cloudflare-wan/configuration/third-party/) for guidance on configuring the most asked for third-party products.
 
 Was this helpful?
 

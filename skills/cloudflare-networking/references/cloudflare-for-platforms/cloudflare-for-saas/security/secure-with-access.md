@@ -24,7 +24,7 @@ Cloudflare Access provides visibility and control over who has access to your [c
 
 ## Setup
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), select your SaaS provider account and go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), select your SaaS provider account and go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **Self-hosted and private**.
 4. Select **Add public hostname**.

@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
-Refer to the [Shaka Player documentation ↗](https://github.com/shaka-project/shaka-player) for more information.
+Refer to the [Shaka Player documentation ↗︎](https://github.com/shaka-project/shaka-player) for more information.
 
 Was this helpful?
 

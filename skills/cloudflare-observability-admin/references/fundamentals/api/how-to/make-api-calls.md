@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Once you [create your API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/), all API requests are authorized in the same way. Cloudflare uses the [RFC standard ↗](https://tools.ietf.org/html/rfc6750#section-2.1) `Authorization: Bearer <API_TOKEN>` interface. An example request is shown below.
+Once you [create your API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/), all API requests are authorized in the same way. Cloudflare uses the [RFC standard ↗︎](https://tools.ietf.org/html/rfc6750#section-2.1) `Authorization: Bearer <API_TOKEN>` interface. An example request is shown below.
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID" \
@@ -25,7 +25,7 @@ Never send or store your API token secret in plaintext. Also be sure not to chec
 
 Consider defining [environment variables](#environment-variables) for the zone or account ID, as well as for authentication credentials (for example, the API token).
 
-To format JSON output for readability in the command line, you can use a tool like `jq`, a command-line JSON processor. For more information on obtaining and installing `jq`, refer to [Download jq ↗](https://stedolan.github.io/jq/download/).
+To format JSON output for readability in the command line, you can use a tool like `jq`, a command-line JSON processor. For more information on obtaining and installing `jq`, refer to [Download jq ↗︎](https://stedolan.github.io/jq/download/).
 
 The following example will format the curl JSON output using `jq`:
 
@@ -42,7 +42,7 @@ For specific guidance on making API calls, refer to the following resources:
 
 - The product's [Developer Docs section](https://developers.cloudflare.com/directory/) for how-to guides.
 - [API schema docs](https://developers.cloudflare.com/api/) for request and response payloads for each endpoint.
-- The first-party libraries for [Go ↗](https://github.com/cloudflare/cloudflare-go), [TypeScript ↗](https://github.com/cloudflare/cloudflare-typescript), [Python ↗](https://github.com/cloudflare/cloudflare-python), or [HashiCorp's Terraform ↗](https://github.com/cloudflare/terraform-provider-cloudflare).
+- The first-party libraries for [Go ↗︎](https://github.com/cloudflare/cloudflare-go), [TypeScript ↗︎](https://github.com/cloudflare/cloudflare-typescript), [Python ↗︎](https://github.com/cloudflare/cloudflare-python), or [HashiCorp's Terraform ↗︎](https://github.com/cloudflare/terraform-provider-cloudflare).
 
 ## Query parameters
 
@@ -84,7 +84,7 @@ The available options will be listed at the end of the `result_info` of all endp
 
 ## Making API calls on Windows
 
-Recent versions of Windows 10 and 11 [already include the curl tool ↗](https://curl.se/windows/microsoft.html) used in the developer documentation's API examples. If you are using a different Windows version, refer to [Windows downloads ↗](https://curl.se/windows/) in the curl website for more information on obtaining and installing this tool.
+Recent versions of Windows 10 and 11 [already include the curl tool ↗︎](https://curl.se/windows/microsoft.html) used in the developer documentation's API examples. If you are using a different Windows version, refer to [Windows downloads ↗︎](https://curl.se/windows/) in the curl website for more information on obtaining and installing this tool.
 
 ### Using a Command Prompt window
 
@@ -112,7 +112,7 @@ C:\>curl --request PATCH ^
 
 Note
 
-Cloudflare recommends that you use the most recent stable or preview version of PowerShell. For more information, refer to [Installing PowerShell on Windows ↗](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows).
+Cloudflare recommends that you use the most recent stable or preview version of PowerShell. For more information, refer to [Installing PowerShell on Windows ↗︎](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows).
 
 PowerShell has specific cmdlets (`Invoke-RestMethod` and `ConvertFrom-Json`) for making REST API calls and handling JSON responses. The syntax for these cmdlets is different from the curl examples provided in the developer documentation.
 
@@ -177,7 +177,7 @@ Invoke-RestMethod -URI "https://api.cloudflare.com/client/v4/zones/$Env:ZONE_ID/
 
 ConvertFrom-Json handling of DateTime values
 
-The `ConvertTo-Json` cmdlet tries to convert strings formatted as timestamps to DateTime values, according to the exact format in the string. For details on this behavior, refer to the notes in the [ConvertFrom-Json ↗](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/convertfrom-json#notes) documentation.
+The `ConvertTo-Json` cmdlet tries to convert strings formatted as timestamps to DateTime values, according to the exact format in the string. For details on this behavior, refer to the notes in the [ConvertFrom-Json ↗︎](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/convertfrom-json#notes) documentation.
 
 You can also use the curl tool in PowerShell. However, in PowerShell `curl` is an alias to the `Invoke-WebRequest` cmdlet, which supports a different syntax from the usual curl tool. To use curl, enter `curl.exe` instead.
 

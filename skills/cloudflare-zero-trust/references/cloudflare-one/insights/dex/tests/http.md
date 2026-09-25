@@ -22,7 +22,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -45,7 +45,7 @@ HTTP tests run periodically from devices that have the [Cloudflare One Client](h
 
 To set up an HTTP test for an application:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Insights** > **Digital experience**.
 2. Select the **Tests** tab.
 3. Select **Add a Test**.
 4. Fill in the following fields:
@@ -63,10 +63,10 @@ An HTTP test measures the following data:
 
 | Data | Description |
 | --- | --- |
-| Resource fetch time | Total time of all steps of the request, measured from [`startTime` to `responseEnd` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Resource_timing). |
+| Resource fetch time | Total time of all steps of the request, measured from [`startTime` to `responseEnd` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Performance_API/Resource_timing). |
 | Server response time | Round-trip time for the device to receive a response from the target. |
 | DNS response time | Round-trip time for the DNS query to resolve. |
-| HTTP status codes | [Status code ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status) returned by the target. |
+| HTTP status codes | [Status code ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status) returned by the target. |
 
 Use these metrics together to identify where in the connection a problem occurs. For example, a high DNS response time with a normal server response time points to a DNS resolution issue rather than a problem with the target server.
 

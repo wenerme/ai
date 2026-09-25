@@ -32,7 +32,7 @@ The [Microsoft Sentinel](https://developers.cloudflare.com/analytics/analytics-i
 
 4. In **Select a destination**, choose **Microsoft Azure**.
 5. Enter or select the following destination details:
-   - **SAS URL** - a pre-signed URL that grants access to Azure Storage resources. Refer to [Azure storage documentation ↗](https://learn.microsoft.com/en-us/azure/storage/storage-explorer/vs-azure-tools-storage-manage-with-storage-explorer?tabs=macos#shared-access-signature-sas-url) for more information on generating a SAS URL using Azure Storage Explorer. The service must be set to Blob-only ( `ss=b`), and the resource type must be set to Object-only ( `srt=o`).
+   - **SAS URL** - a pre-signed URL that grants access to Azure Storage resources. Refer to [Azure storage documentation ↗︎](https://learn.microsoft.com/en-us/azure/storage/storage-explorer/vs-azure-tools-storage-manage-with-storage-explorer?tabs=macos#shared-access-signature-sas-url) for more information on generating a SAS URL using Azure Storage Explorer. The service must be set to Blob-only ( `ss=b`), and the resource type must be set to Object-only ( `srt=o`).
    - **Path** - bucket location within the storage container
    - **Organize logs into daily subfolders** (recommended)
 
@@ -59,8 +59,8 @@ Ensure **Log Share** permissions are enabled, before attempting to read or confi
 
 To enable Logpush to Azure:
 
-1. Create a Blob Storage container. Refer to [instructions from Azure ↗](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal).
-2. Create a [shared access signature (SAS) ↗](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview) to secure and restrict access to your blob storage container. Use [Storage Explorer ↗](https://learn.microsoft.com/en-us/azure/storage/storage-explorer/vs-azure-tools-storage-manage-with-storage-explorer) to navigate to your container and right click to create a signature. Set the signature to expire at least five years from now and only provide write permission.
+1. Create a Blob Storage container. Refer to [instructions from Azure ↗︎](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal).
+2. Create a [shared access signature (SAS) ↗︎](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview) to secure and restrict access to your blob storage container. Use [Storage Explorer ↗︎](https://learn.microsoft.com/en-us/azure/storage/storage-explorer/vs-azure-tools-storage-manage-with-storage-explorer) to navigate to your container and right click to create a signature. Set the signature to expire at least five years from now and only provide write permission.
 3. Provide the SAS URL when prompted by the Logpush API or UI.
 
 Note
@@ -79,7 +79,7 @@ If the SAS token uses different settings, you will receive the following error:
 signedResourceTypes must be Object only (srt=o)
 ```
 
-To resolve this error, regenerate your SAS token using [Storage Explorer ↗](https://learn.microsoft.com/en-us/azure/storage/storage-explorer/vs-azure-tools-storage-manage-with-storage-explorer) with the correct permissions:
+To resolve this error, regenerate your SAS token using [Storage Explorer ↗︎](https://learn.microsoft.com/en-us/azure/storage/storage-explorer/vs-azure-tools-storage-manage-with-storage-explorer) with the correct permissions:
 
 - Service: Blob-only ( `ss=b`)
 - Resource type: Object-only ( `srt=o`)

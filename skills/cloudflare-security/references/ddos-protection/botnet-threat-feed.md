@@ -18,7 +18,7 @@ The Cloudflare DDoS Botnet Threat Feed is a threat intelligence feed for service
 
 Each offense is a mitigated HTTP request from the specific IP address. For example, if an IP has 3,000 offenses, it means that Cloudflare has mitigated 3,000 HTTP requests from that IP.
 
-A service provider can only get information about IP addresses associated with their autonomous system numbers (ASNs). The affiliation of a service provider with their ASNs will be checked against [PeeringDB ↗](https://www.peeringdb.com/), a reliable and globally recognized interconnection database.
+A service provider can only get information about IP addresses associated with their autonomous system numbers (ASNs). The affiliation of a service provider with their ASNs will be checked against [PeeringDB ↗︎](https://www.peeringdb.com/), a reliable and globally recognized interconnection database.
 
 To ensure the feed's accuracy, Cloudflare will only include IP addresses that have participated in multiple HTTP DDoS attacks and have triggered high-confidence rules.
 
@@ -32,7 +32,7 @@ For more details, refer to [How DDoS protection works](https://developers.cloudf
 
 ## Availability
 
-The Cloudflare DDoS Botnet Threat Feed is available for free to service providers. For more information, refer to the [Terms of Use ↗](https://www.cloudflare.com/en-gb/service-specific-terms-application-services/#ddos-botnet-threat-feed).
+The Cloudflare DDoS Botnet Threat Feed is available for free to service providers. For more information, refer to the [Terms of Use ↗︎](https://www.cloudflare.com/en-gb/service-specific-terms-application-services/#ddos-botnet-threat-feed).
 
 ---
 

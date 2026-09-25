@@ -20,7 +20,7 @@ Cloudflare R2 Storage allows developers to store large amounts of unstructured d
 
 You need a Cloudflare account with an R2 subscription. If you do not have one:
 
-1. Go to the [Cloudflare Dashboard ↗](https://dash.cloudflare.com/).
+1. Go to the [Cloudflare Dashboard ↗︎](https://dash.cloudflare.com/).
 2. Select **Storage & databases > R2 > Overview**
 3. Complete the checkout flow to add an R2 subscription to your account.
 
@@ -37,7 +37,7 @@ R2 supports multiple access methods, so you can choose the one that fits your us
 | [Workers API](https://developers.cloudflare.com/r2/get-started/workers-api/) | You are building an application on Cloudflare Workers that needs to read or write from R2 |
 | [S3](https://developers.cloudflare.com/r2/get-started/s3/) | You want to use S3-compatible SDKs to interact with R2 in your existing applications |
 | [CLI tools](https://developers.cloudflare.com/r2/get-started/cli/) | You want to upload, download, or manage objects from your terminal |
-| [Dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/overview) | You want to quickly view and manage buckets and objects in the browser |
+| [Dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/r2/overview) | You want to quickly view and manage buckets and objects in the browser |
 
 ## Next steps
 

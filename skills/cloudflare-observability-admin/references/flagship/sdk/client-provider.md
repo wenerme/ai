@@ -29,7 +29,7 @@ We do not recommend using the client provider in public-facing apps right now. I
 **Fetch behavior:**
 
 - **On initialization** — all flags in `prefetchFlags` are fetched in parallel and stored in an in-memory cache. The provider transitions to `READY` once all fetches complete (individual failures are non-fatal).
-- **On context change** — the cache is invalidated and all flags are re-fetched for the new context. This is required by the [static context paradigm ↗](https://openfeature.dev/specification/glossary/#static-context-paradigm) used by the OpenFeature web SDK, where context is set globally and providers are expected to re-evaluate when it changes.
+- **On context change** — the cache is invalidated and all flags are re-fetched for the new context. This is required by the [static context paradigm ↗︎](https://openfeature.dev/specification/glossary/#static-context-paradigm) used by the OpenFeature web SDK, where context is set globally and providers are expected to re-evaluate when it changes.
 - **At resolution time** — evaluations are served synchronously from the cache. No network request is made during `getBooleanValue`, `getStringValue`, etc.
 
 ## Setup

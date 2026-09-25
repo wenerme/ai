@@ -51,9 +51,9 @@ Currently, the concept of a DDoS attack event only exists for the [Network-layer
 
 ## How does Cloudflare protect against "low and slow" DDoS attacks?
 
-A [low and slow DDoS attack ↗](https://www.cloudflare.com/learning/ddos/ddos-low-and-slow-attack/) is most commonly a non-volumetric attack. The attacker will send a low volume of HTTP requests, and do so slowly. This type of attack aims to be less detectable and slowly exhausts resources.
+A [low and slow DDoS attack ↗︎](https://www.cloudflare.com/learning/ddos/ddos-low-and-slow-attack/) is most commonly a non-volumetric attack. The attacker will send a low volume of HTTP requests, and do so slowly. This type of attack aims to be less detectable and slowly exhausts resources.
 
-[Slowloris ↗](https://www.cloudflare.com/learning/ddos/ddos-attack-tools/slowloris/) is a type of low and slow attack where the attacker establishes [TCP connections](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/) to the target server, often using HTTP or HTTPS protocols.
+[Slowloris ↗︎](https://www.cloudflare.com/learning/ddos/ddos-attack-tools/slowloris/) is a type of low and slow attack where the attacker establishes [TCP connections](https://developers.cloudflare.com/fundamentals/reference/tcp-connections/) to the target server, often using HTTP or HTTPS protocols.
 
 In the case of a Slowloris attack, the attacker sends incomplete HTTP header lines, thus never completing the HTTP request. The server waits for the complete request, holding the connection open. The attacker periodically sends additional HTTP header fields or partial lines to keep the connection alive. This can be achieved by sending partial HTTP headers, or using the `content-length` header to declare a message body size larger than what is actually sent.
 
@@ -71,7 +71,7 @@ Unlike conventional DDoS attacks that overwhelm servers with a high volume of re
 
 RUDY specifically targets the application layer (Layer 7) of web servers by exploiting the way web forms handle data submission. The attack works by injecting one byte of information into an application `POST` field at a time, then waiting. This process causes application threads to await the completion of the form submission indefinitely, effectively exhausting the server's resources and preventing it from processing legitimate requests​​​​.
 
-Refer to the [learning center ↗](https://www.cloudflare.com/learning/ddos/ddos-attack-tools/r-u-dead-yet-rudy/) for more information on RUDY attacks.
+Refer to the [learning center ↗︎](https://www.cloudflare.com/learning/ddos/ddos-attack-tools/r-u-dead-yet-rudy/) for more information on RUDY attacks.
 
 ---
 
@@ -89,11 +89,11 @@ Yes. Using our anycast network, along with Traffic Manager, Unimog, and Plurimog
 
 ## Where can I see latest DDoS trends?
 
-Cloudflare publishes quarterly DDoS reports and coverage of significant DDoS attacks. The publications are available on our [blog website ↗](https://blog.cloudflare.com/tag/ddos-reports/) and as interactive reports on the [Cloudflare Radar Reports website ↗](https://radar.cloudflare.com/reports?q=DDoS).
+Cloudflare publishes quarterly DDoS reports and coverage of significant DDoS attacks. The publications are available on our [blog website ↗︎](https://blog.cloudflare.com/tag/ddos-reports/) and as interactive reports on the [Cloudflare Radar Reports website ↗︎](https://radar.cloudflare.com/reports?q=DDoS).
 
 Learn more about the [methodologies](https://developers.cloudflare.com/radar/reference/quarterly-ddos-reports/) behind these reports.
 
-You can also view [Cloudflare Radar ↗](https://radar.cloudflare.com/) for near real-time insights and trends.
+You can also view [Cloudflare Radar ↗︎](https://radar.cloudflare.com/) for near real-time insights and trends.
 
 ---
 
@@ -127,7 +127,7 @@ The use of expression fields is subject to [availability](https://developers.clo
 
 ## Does Cloudflare charge for DDoS attack traffic?
 
-No. Since 2017, Cloudflare offers [free, unmetered, and unlimited DDoS protection ↗](https://blog.cloudflare.com/unmetered-mitigation/). There is no limit to the number of DDoS attacks, their duration, or their size. Cloudflare's billing systems automatically exclude DDoS attack traffic from your usage.
+No. Since 2017, Cloudflare offers [free, unmetered, and unlimited DDoS protection ↗︎](https://blog.cloudflare.com/unmetered-mitigation/). There is no limit to the number of DDoS attacks, their duration, or their size. Cloudflare's billing systems automatically exclude DDoS attack traffic from your usage.
 
 ---
 
@@ -153,7 +153,7 @@ Anycast allows multiple servers (PoPs) to share the same IP address, and the Bor
 
 #### Process
 
-When one PoP is overwhelmed due to a local DDoS flood or as a result of limited capacity, BGP route propagation can be adjusted to shift traffic away from that PoP. Cloudflare can also withdraw BGP announcements from specific peers or upstreams to force traffic to reroute through better-equipped PoPs. Because DDoS traffic originates from multiple geographic regions, Anycast and traffic engineering distributes the attack across [Cloudflare's full capacity Anycast network ↗](https://www.cloudflare.com/network/) to reduce the burden on a single PoP.
+When one PoP is overwhelmed due to a local DDoS flood or as a result of limited capacity, BGP route propagation can be adjusted to shift traffic away from that PoP. Cloudflare can also withdraw BGP announcements from specific peers or upstreams to force traffic to reroute through better-equipped PoPs. Because DDoS traffic originates from multiple geographic regions, Anycast and traffic engineering distributes the attack across [Cloudflare's full capacity Anycast network ↗︎](https://www.cloudflare.com/network/) to reduce the burden on a single PoP.
 
 ### Intelligent Traffic Engineering
 

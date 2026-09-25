@@ -28,7 +28,7 @@ The maximum length of a rule expression is 4,096 characters.
 
 ## Create a firewall rule
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and website.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and website.
 2. Go to **Security** > **WAF** > **Firewall rules**.
 3. Select **Create a firewall rule**.
 4. In the **Create firewall rule** page that displays, use the **Rule name** input to supply a descriptive name.

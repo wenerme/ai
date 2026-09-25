@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/stagehand/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Stagehand ↗](https://www.stagehand.dev/) is an open-source, AI-powered browser automation library. Stagehand lets you combine code with natural-language instructions powered by AI, eliminating the need to dictate exact steps or specify selectors. With Stagehand, your agents are more resilient to website changes and easier to maintain, helping you build more reliably and flexibly.
+[Stagehand ↗︎](https://www.stagehand.dev/) is an open-source, AI-powered browser automation library. Stagehand lets you combine code with natural-language instructions powered by AI, eliminating the need to dictate exact steps or specify selectors. With Stagehand, your agents are more resilient to website changes and easier to maintain, helping you build more reliably and flexibly.
 
 This guide shows you how to deploy a [Worker](https://developers.cloudflare.com/workers/) that uses Stagehand, Browser Run, and [Workers AI](https://developers.cloudflare.com/workers-ai/) to automate a web task.
 
@@ -24,7 +24,7 @@ Browser Run currently supports `@browserbasehq/stagehand` `v2.5.x` only. Stageha
 
 ## Use Stagehand in a Worker with Workers AI
 
-In this example, you will use Stagehand to search for a movie on this [example movie directory ↗](https://demo.playwright.dev/movies), extract its details (title, year, rating, duration, and genre), and return the information along with a screenshot of the webpage.
+In this example, you will use Stagehand to search for a movie on this [example movie directory ↗︎](https://demo.playwright.dev/movies), extract its details (title, year, rating, duration, and genre), and return the information along with a screenshot of the webpage.
 
 <details>
 
@@ -74,7 +74,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"main": "src/index.ts",
 	"compatibility_flags": ["nodejs_compat"],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"observability": {
 		"enabled": true
 	},
@@ -92,7 +92,7 @@ name = "stagehand-example"
 main = "src/index.ts"
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [observability]
 enabled = true
@@ -104,7 +104,7 @@ binding = "BROWSER"
 binding = "AI"
 ```
 
-If you are using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/), you need to include the following [alias ↗](https://vite.dev/config/shared-options.html#resolve-alias) in `vite.config.ts`:
+If you are using the [Cloudflare Vite plugin ↗︎](https://developers.cloudflare.com/workers/vite-plugin/), you need to include the following [alias ↗︎](https://vite.dev/config/shared-options.html#resolve-alias) in `vite.config.ts`:
 
 ```ts
 export default defineConfig({
@@ -117,7 +117,7 @@ export default defineConfig({
 });
 ```
 
-If you are not using the Cloudflare Vite plugin, you need to include the following [module alias ↗](https://developers.cloudflare.com/workers/wrangler/configuration/#module-aliasing) to the wrangler configuration:
+If you are not using the Cloudflare Vite plugin, you need to include the following [module alias ↗︎](https://developers.cloudflare.com/workers/wrangler/configuration/#module-aliasing) to the wrangler configuration:
 
 ```jsonc
 {
@@ -130,7 +130,7 @@ If you are not using the Cloudflare Vite plugin, you need to include the followi
 
 ### 3. Write the Worker code
 
-Copy [workersAIClient.ts ↗](https://github.com/cloudflare/playwright/blob/main/packages/playwright-cloudflare/examples/stagehand/src/worker/workersAIClient.ts) to your project.
+Copy [workersAIClient.ts ↗︎](https://github.com/cloudflare/playwright/blob/main/packages/playwright-cloudflare/examples/stagehand/src/worker/workersAIClient.ts) to your project.
 
 Then, in your Worker code, import the `workersAIClient.ts` file and use it to configure a new `Stagehand` instance:
 
@@ -188,7 +188,7 @@ export default {
 
 Note
 
-The snippet above requires [Zod v3 ↗](https://v3.zod.dev/) and is currently not compatible with Zod v4.
+The snippet above requires [Zod v3 ↗︎](https://v3.zod.dev/) and is currently not compatible with Zod v4.
 
 Ensure your `package.json` has the following dependencies:
 
@@ -247,9 +247,9 @@ const stagehand = new Stagehand({
 
 ## Use a third-party model
 
-If you want to use a model outside of Workers AI, you can configure Stagehand to use models from supported [third-party providers ↗](https://docs.stagehand.dev/configuration/models#supported-providers), including OpenAI and Anthropic, by providing your own credentials.
+If you want to use a model outside of Workers AI, you can configure Stagehand to use models from supported [third-party providers ↗︎](https://docs.stagehand.dev/configuration/models#supported-providers), including OpenAI and Anthropic, by providing your own credentials.
 
-In this example, you will configure Stagehand to use [OpenAI ↗](https://openai.com/). You will need an OpenAI API key. Cloudflare recommends storing your API key as a [secret](https://developers.cloudflare.com/workers/configuration/secrets/).
+In this example, you will configure Stagehand to use [OpenAI ↗︎](https://openai.com/). You will need an OpenAI API key. Cloudflare recommends storing your API key as a [secret](https://developers.cloudflare.com/workers/configuration/secrets/).
 
 ```bash
 npx wrangler secret put OPENAI_API_KEY
@@ -296,7 +296,7 @@ If you are using an authenticated AI Gateway, follow the instructions in [AI Gat
 
 ## Stagehand API
 
-For the full list of Stagehand methods and capabilities, refer to the official [Stagehand API documentation ↗](https://docs.stagehand.dev/first-steps/introduction).
+For the full list of Stagehand methods and capabilities, refer to the official [Stagehand API documentation ↗︎](https://docs.stagehand.dev/first-steps/introduction).
 
 Was this helpful?
 

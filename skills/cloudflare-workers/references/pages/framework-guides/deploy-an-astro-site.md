@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Astro ↗](https://astro.build) is an all-in-one web framework for building fast, content-focused websites. By default, Astro builds websites that have zero JavaScript runtime code.
+[Astro ↗︎](https://astro.build) is an all-in-one web framework for building fast, content-focused websites. By default, Astro builds websites that have zero JavaScript runtime code.
 
-Refer to the [Astro Docs ↗](https://docs.astro.build/) to learn more about Astro or for assistance with an Astro project.
+Refer to the [Astro Docs ↗︎](https://docs.astro.build/) to learn more about Astro or for assistance with an Astro project.
 
 In this guide, you will create a new Astro application and deploy it using Cloudflare Pages.
 
@@ -49,13 +49,13 @@ Astro will ask:
 
 ### Astro configuration
 
-You can deploy an Astro Server-side Rendered (SSR) site to Cloudflare Pages using the [`@astrojs/cloudflare` adapter ↗](https://github.com/withastro/adapters/tree/main/packages/cloudflare#readme). SSR sites render on Pages Functions and allow for dynamic functionality and customizations.
+You can deploy an Astro Server-side Rendered (SSR) site to Cloudflare Pages using the [`@astrojs/cloudflare` adapter ↗︎](https://github.com/withastro/adapters/tree/main/packages/cloudflare#readme). SSR sites render on Pages Functions and allow for dynamic functionality and customizations.
 
 Note
 
-If using [`create-cloudflare` (C3) ↗](https://www.npmjs.com/package/create-cloudflare), you can bypass adding an adapter as C3 automatically installs any necessary adapters and configures them when creating your project.
+If using [`create-cloudflare` (C3) ↗︎](https://www.npmjs.com/package/create-cloudflare), you can bypass adding an adapter as C3 automatically installs any necessary adapters and configures them when creating your project.
 
-Add the [`@astrojs/cloudflare` adapter ↗](https://github.com/withastro/adapters/tree/main/packages/cloudflare#readme) to your project's `package.json` by running:
+Add the [`@astrojs/cloudflare` adapter ↗︎](https://github.com/withastro/adapters/tree/main/packages/cloudflare#readme) to your project's `package.json` by running:
 
 ```sh
 npm run astro add cloudflare
@@ -63,15 +63,15 @@ npm run astro add cloudflare
 
 ## Before you continue
 
-All of the framework guides assume you already have a fundamental understanding of [Git ↗](https://git-scm.com/). If you are new to Git, refer to this [summarized Git handbook ↗](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
+All of the framework guides assume you already have a fundamental understanding of [Git ↗︎](https://git-scm.com/). If you are new to Git, refer to this [summarized Git handbook ↗︎](https://guides.github.com/introduction/git-handbook/) on how to set up Git on your local machine.
 
-If you clone with SSH, you must [generate SSH keys ↗](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) on each computer you use to push or pull from GitHub.
+If you clone with SSH, you must [generate SSH keys ↗︎](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) on each computer you use to push or pull from GitHub.
 
-Refer to the [GitHub documentation ↗](https://guides.github.com/introduction/git-handbook/) and [Git documentation ↗](https://git-scm.com/book/en/v2) for more information.
+Refer to the [GitHub documentation ↗︎](https://guides.github.com/introduction/git-handbook/) and [Git documentation ↗︎](https://git-scm.com/book/en/v2) for more information.
 
 ## Create a GitHub repository
 
-Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
+Create a new GitHub repository by visiting [repo.new ↗︎](https://repo.new). After creating a new repository, go to your newly created project directory to prepare and push your local application to GitHub by running the following commands in your terminal:
 
 ```sh
 git init
@@ -86,7 +86,7 @@ git push -u origin main
 
 ### Deploy via the `create-cloudflare` CLI (C3)
 
-If you use [`create-cloudflare`(C3) ↗](https://www.npmjs.com/package/create-cloudflare) to create your new Astro project, C3 will install all dependencies needed for your project and prompt you to deploy your project via the CLI. If you deploy, your site will be live and you will be provided with a deployment URL.
+If you use [`create-cloudflare`(C3) ↗︎](https://www.npmjs.com/package/create-cloudflare) to create your new Astro project, C3 will install all dependencies needed for your project and prompt you to deploy your project via the CLI. If you deploy, your site will be live and you will be provided with a deployment URL.
 
 ### Deploy via the Cloudflare dashboard
 
@@ -138,9 +138,9 @@ export default defineConfig({
 
 ## Use bindings in your Astro application
 
-A [binding](https://developers.cloudflare.com/pages/functions/bindings/) allows your application to interact with Cloudflare developer products, such as [KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [Durable Object](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), and [D1 ↗](https://blog.cloudflare.com/introducing-d1/).
+A [binding](https://developers.cloudflare.com/pages/functions/bindings/) allows your application to interact with Cloudflare developer products, such as [KV](https://developers.cloudflare.com/kv/concepts/how-kv-works/), [Durable Object](https://developers.cloudflare.com/durable-objects/), [R2](https://developers.cloudflare.com/r2/), and [D1 ↗︎](https://blog.cloudflare.com/introducing-d1/).
 
-Use bindings in Astro components and API routes by using `context.locals` from [Astro Middleware ↗](https://docs.astro.build/en/guides/middleware/) to access the Cloudflare runtime which amongst other fields contains the Cloudflare's environment and consecutively any bindings set for your application.
+Use bindings in Astro components and API routes by using `context.locals` from [Astro Middleware ↗︎](https://docs.astro.build/en/guides/middleware/) to access the Cloudflare runtime which amongst other fields contains the Cloudflare's environment and consecutively any bindings set for your application.
 
 Refer to the following example of how to access a KV namespace with TypeScript.
 
@@ -185,7 +185,7 @@ const value = await myKV.get("key");
 <div>{value}</div>
 ```
 
-To learn more about the Astro Cloudflare runtime, refer to the [Access to the Cloudflare runtime ↗](https://docs.astro.build/en/guides/integrations-guide/cloudflare/#access-to-the-cloudflare-runtime) in the Astro documentation.
+To learn more about the Astro Cloudflare runtime, refer to the [Access to the Cloudflare runtime ↗︎](https://docs.astro.build/en/guides/integrations-guide/cloudflare/#access-to-the-cloudflare-runtime) in the Astro documentation.
 
 ## Learn more
 

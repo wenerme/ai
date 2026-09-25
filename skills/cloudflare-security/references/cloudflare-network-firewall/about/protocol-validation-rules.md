@@ -18,7 +18,7 @@ Unified Routing availability
 
 SIP rules are beta for accounts using Unified Routing. Review feature availability for [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#check-feature-availability-before-upgrading) and [Magic Transit](https://developers.cloudflare.com/magic-transit/reference/traffic-steering/#check-feature-availability-before-upgrading).
 
-Cloudflare Network Firewall (formerly Magic Firewall) supports [Session Initiation Protocol (SIP) ↗](https://datatracker.ietf.org/doc/html/rfc2543) to inspect traffic validity and enforce a positive security model.
+Cloudflare Network Firewall (formerly Magic Firewall) supports [Session Initiation Protocol (SIP) ↗︎](https://datatracker.ietf.org/doc/html/rfc2543) to inspect traffic validity and enforce a positive security model.
 
 You can use the `sip` field when creating a rule to determine if packets are valid SIP Layer 7 (L7) protocol. Refer to [Cloudflare Network Firewall fields](https://developers.cloudflare.com/cloudflare-network-firewall/reference/network-firewall-fields/), specifically the `sip` field, for more information on this topic.
 

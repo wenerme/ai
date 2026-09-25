@@ -38,7 +38,7 @@ Example uses of such compositions of AI models can be employed to generation vis
 
 ## Related resources
 
-- [Community project: content-based asset creation demo ↗](https://auto-asset.pages.dev/)
+- [Community project: content-based asset creation demo ↗︎](https://auto-asset.pages.dev/)
 - [Workers AI: Text generation models](https://developers.cloudflare.com/workers-ai/models/)
 - [Workers AI: Text-to-image models](https://developers.cloudflare.com/workers-ai/models/)
 - [Workers AI: llamaguard-7b-awq](https://developers.cloudflare.com/workers-ai/models/llamaguard-7b-awq/)

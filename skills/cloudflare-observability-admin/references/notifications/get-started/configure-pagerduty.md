@@ -16,13 +16,13 @@ Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Note
 
-This feature is only available if your account has at least one zone on a Business or higher plan. For more information, refer to our [plans ↗](https://www.cloudflare.com/plans/).
+This feature is only available if your account has at least one zone on a Business or higher plan. For more information, refer to our [plans ↗︎](https://www.cloudflare.com/plans/).
 
 Cloudflare’s Notification service supports routing notifications to PagerDuty. By sending notifications to PagerDuty you can leverage the same service definitions and escalation paths that you would for other third-party services that you connect to PagerDuty.
 
 When a configuration that you have previously set up triggers a notification for PagerDuty, Cloudflare will send the notification to PagerDuty on your behalf. All of the PagerDuty services configured for the notification will receive the notification. PagerDuty will follow the service’s configuration to handle the notification appropriately. Actions like de-duping and rate limiting depend on the notification type.
 
-To use PagerDuty as a connected service, you must [sign up for a PagerDuty account ↗](https://www.pagerduty.com/sign-up/).
+To use PagerDuty as a connected service, you must [sign up for a PagerDuty account ↗︎](https://www.pagerduty.com/sign-up/).
 
 Note
 
@@ -33,7 +33,7 @@ According to PagerDuty, you will need an account with the following permissions 
 1. In the Cloudflare dashboard, go to the **Notifications** page. [Go to **Notifications** ↗](https://dash.cloudflare.com/?to=/:account/notifications)
 2. Go to **Destinations**.
 3. In the **Connected notification services** card, select **Connect**.
-4. Log in to your [PagerDuty account ↗](https://www.pagerduty.com/) to connect it to your Cloudflare account.
+4. Log in to your [PagerDuty account ↗︎](https://www.pagerduty.com/) to connect it to your Cloudflare account.
 5. Choose the services you want to use and select **Connect**.
 6. The browser will navigate back to your Cloudflare dashboard. Select **Continue**.
 
@@ -51,7 +51,7 @@ If other delivery destinations were selected, then those notifications will stil
 2. Go to **Destinations**.
 3. In the **Connected notification services** card, select **View** on the PagerDuty service you want to disconnect.
 4. Select **Disconnect** > **Confirm**.
-5. Log in to your [PagerDuty account ↗](https://www.pagerduty.com/) and make the required changes.
+5. Log in to your [PagerDuty account ↗︎](https://www.pagerduty.com/) and make the required changes.
 6. [Reconnect PagerDuty to Cloudflare](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/).
 
 Was this helpful?

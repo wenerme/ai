@@ -26,11 +26,11 @@ You can connect Hyperdrive to any existing Xata PostgreSQL database with the con
 
 To retrieve your connection string from the Xata dashboard:
 
-1. Go to the [**Xata dashboard** ↗](https://xata.io/).
+1. Go to the [**Xata dashboard** ↗︎](https://xata.io/).
 2. Select the database you want to connect to.
 3. Copy the `PostgreSQL` connection string.
 
-Refer to the full [Xata documentation ↗](https://xata.io/documentation).
+Refer to the full [Xata documentation ↗︎](https://xata.io/documentation).
 
 ## 2. Create a database configuration
 
@@ -73,7 +73,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -92,7 +92,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -161,7 +161,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -174,7 +174,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

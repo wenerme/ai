@@ -26,11 +26,11 @@ This document is specific to security for AI-powered applications. For a deeper 
 
 To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
-- Ebook: [How Cloudflare strengthens security everywhere you do business ↗](https://cf-assets.www.cloudflare.com/slt3lc6tev37/is7XGR7xZ8CqW0l9EyHZR/1b4311823f602f72036385a66fb96e8c/Everywhere_Security-Cloudflare-strengthens-security-everywhere-you_do-business.pdf) (10 minute read)
+- What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗︎](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
+- Ebook: [How Cloudflare strengthens security everywhere you do business ↗︎](https://cf-assets.www.cloudflare.com/slt3lc6tev37/is7XGR7xZ8CqW0l9EyHZR/1b4311823f602f72036385a66fb96e8c/Everywhere_Security-Cloudflare-strengthens-security-everywhere-you_do-business.pdf) (10 minute read)
 - For an understanding of Cloudflare's underlying security architecture and base services, refer to the [Cloudflare Security Architecture](https://developers.cloudflare.com/reference-architecture/architectures/security/)
-- [AI Security for Apps product web page ↗](https://cfl.re/4b24QX5)
-- For a video walkthrough of AI Security for Apps and a demo, refer to [Cloudflare AI Security Suite: Protect AI-powered apps with AI Security for Apps ↗](https://www.youtube.com/watch?v=LoGaySHVGu8) (16 minutes)
+- [AI Security for Apps product web page ↗︎](https://cfl.re/4b24QX5)
+- For a video walkthrough of AI Security for Apps and a demo, refer to [Cloudflare AI Security Suite: Protect AI-powered apps with AI Security for Apps ↗︎](https://www.youtube.com/watch?v=LoGaySHVGu8) (16 minutes)
 
 ## Introduction
 
@@ -62,7 +62,7 @@ There are three main functions AI Security for Apps provides: LLM Discovery, vis
 
 *Figure 3: Cloudflare AI Security for Apps protects applications and agents powered by LLMs*
 
-Since [Cloudflare also runs AI inference across its network ↗](https://workers.cloudflare.com/product/workers-ai/?gclsrc=aw.ds&&utm_source=google&utm_medium=cpc&utm_campaign=20580233211&utm_term=_go_cmp-20580233211_adg-181172125365_ad-779014290669_dsa-2446653702475_dev-c_ext-_prd-_sig-CjwKCAiAkvDMBhBMEiwAnUA9BRoKAZhWFo6H4P4iU80p_vHyyPDRqQaJrRWh7FxiFsVdHUHXBJmPqRoCHZUQAvD_BwE&utm_content=779014290669&gad_source=1&gad_campaignid=20580233211&gbraid=0AAAAADnzVeSdzBJRQWgS-2NmB9h2ySOaj&gclid=CjwKCAiAkvDMBhBMEiwAnUA9BRoKAZhWFo6H4P4iU80p_vHyyPDRqQaJrRWh7FxiFsVdHUHXBJmPqRoCHZUQAvD_BwE) and can reach about 95% of the world's population within approximately 50 ms, having a AI security deployed so close to the model and the end user allows Cloudflare to identify attacks early and protect both end users and customer models from abuses and attacks.
+Since [Cloudflare also runs AI inference across its network ↗︎](https://workers.cloudflare.com/product/workers-ai/?gclsrc=aw.ds&&utm_source=google&utm_medium=cpc&utm_campaign=20580233211&utm_term=_go_cmp-20580233211_adg-181172125365_ad-779014290669_dsa-2446653702475_dev-c_ext-_prd-_sig-CjwKCAiAkvDMBhBMEiwAnUA9BRoKAZhWFo6H4P4iU80p_vHyyPDRqQaJrRWh7FxiFsVdHUHXBJmPqRoCHZUQAvD_BwE&utm_content=779014290669&gad_source=1&gad_campaignid=20580233211&gbraid=0AAAAADnzVeSdzBJRQWgS-2NmB9h2ySOaj&gclid=CjwKCAiAkvDMBhBMEiwAnUA9BRoKAZhWFo6H4P4iU80p_vHyyPDRqQaJrRWh7FxiFsVdHUHXBJmPqRoCHZUQAvD_BwE) and can reach about 95% of the world's population within approximately 50 ms, having a AI security deployed so close to the model and the end user allows Cloudflare to identify attacks early and protect both end users and customer models from abuses and attacks.
 
 ![Request flow diagram showing how Cloudflare AI Security for Apps protects applications from AI security threats](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1998,height=378,format=webp/_astro/fig04-ai-security-inline.D6ZT9o0K.png "Figure 4: Cloudflare AI Security for Apps sits inline to protect applications from AI security threats")
 
@@ -102,7 +102,7 @@ This has several benefits:
 
 ## AI Security for Apps Architecture
 
-AI Security for Apps architecture provides security without sacrificing performance. [All AI threat detections run in parallel leveraging LLM models specific to the threat being detected ↗](https://blog.cloudflare.com/block-unsafe-llm-prompts-with-firewall-for-ai/); this architecture allows for adding additional AI detections without a significant impact on latency since all the detections are being done in parallel instead of sequentially. [Cloudflare leverages its own AI Inference as a service, Workers AI, for this capability ↗](https://www.cloudflare.com/developer-platform/products/workers-ai/) ensuring maximum performance and security.
+AI Security for Apps architecture provides security without sacrificing performance. [All AI threat detections run in parallel leveraging LLM models specific to the threat being detected ↗︎](https://blog.cloudflare.com/block-unsafe-llm-prompts-with-firewall-for-ai/); this architecture allows for adding additional AI detections without a significant impact on latency since all the detections are being done in parallel instead of sequentially. [Cloudflare leverages its own AI Inference as a service, Workers AI, for this capability ↗︎](https://www.cloudflare.com/developer-platform/products/workers-ai/) ensuring maximum performance and security.
 
 Cloudflare's reverse proxy architecture leveraging anycast, inline security approach, and parallel processing via AI-specific threat models all lead to maximum performance compared to other solutions which rely on leveraging 3rd party components or are architected around AI security wrappers and hairpinning solutions.
 
@@ -117,7 +117,7 @@ Cloudflare conducts heuristic checks to identify LLM traffic and respective endp
 - LLM-specific heuristics are used
 - Known false positives (from analysis of millions of requests) are filtered out.
 
-For example, LLM endpoints mostly need more than 1 second to respond, while the majority of other endpoints take less than 1 second. We know that [80% of LLM endpoints have an effective bitrate operating at slower than 4 KB/s ↗](https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/).
+For example, LLM endpoints mostly need more than 1 second to respond, while the majority of other endpoints take less than 1 second. We know that [80% of LLM endpoints have an effective bitrate operating at slower than 4 KB/s ↗︎](https://blog.cloudflare.com/take-control-of-public-ai-application-security-with-cloudflare-firewall-for-ai/).
 
 Based on the traffic data across Cloudflare's global network, we know there are other traffic patterns that can also operate at this bitrate, and we filter these false positives out. Ex: 1) GraphQL endpoints, 2) device heartbeat or health check, 3) generators (for QR codes, one time passwords, invoices, etc.)
 
@@ -139,13 +139,13 @@ The below diagram highlights the overall LLM discovery and AI threat mitigation.
 
 ### LLM Prompt Detection
 
-Cloudflare looks for specific patterns and via analysis detects and extracts LLM prompts within the body of incoming requests. Detection runs on incoming traffic. Currently, the detection only handles requests with a JSON content type (`application/json`). Cloudflare will populate the existing [Security for AI Apps fields ↗](https://cfl.re/435SvOO) based on the scan results. Respectively, you can see these results in the **Security Analytics** dashboard by filtering on the `cf-llm` managed endpoint label and reviewing the detection results on your traffic.
+Cloudflare looks for specific patterns and via analysis detects and extracts LLM prompts within the body of incoming requests. Detection runs on incoming traffic. Currently, the detection only handles requests with a JSON content type (`application/json`). Cloudflare will populate the existing [Security for AI Apps fields ↗︎](https://cfl.re/435SvOO) based on the scan results. Respectively, you can see these results in the **Security Analytics** dashboard by filtering on the `cf-llm` managed endpoint label and reviewing the detection results on your traffic.
 
 Additionally, the respective populated fields can be used in security rule expressions (custom rules and rate limiting rules) to protect your application against AI-specific threats like PII exposure.
 
 ## AI Security Threat Detections with AI Security for Apps
 
-AI Security for Apps currently provides detections and mitigation for critical AI security threats. The threats AI Security for Apps helps mitigate for map to the following risks in the [OWASP Top 10 for LLM Applications ↗](https://genai.owasp.org/llm-top-10/) as shown in the table below.
+AI Security for Apps currently provides detections and mitigation for critical AI security threats. The threats AI Security for Apps helps mitigate for map to the following risks in the [OWASP Top 10 for LLM Applications ↗︎](https://genai.owasp.org/llm-top-10/) as shown in the table below.
 
 ![Top 3 LLM risks and how AI Security for Apps helps mitigate them](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2034,height=500,format=webp/_astro/fig11-top-llm-risks.BgqEOq3q.png "Figure 11: AI Security for Apps helps mitigate top LLM risks")
 
@@ -231,11 +231,11 @@ AI Security for Apps complements WAF providing the same operational model and ca
 
 ## Related Resources
 
-- [Cloudflare AI Security for Apps Product Page ↗](https://cfl.re/4b24QX5)
-- [Cloudflare Blog: AI Security for Apps ↗](https://cfl.re/ai-sec-apps-blog-ga)
-- [Cloudflare Developer Docs: AI Security for Apps ↗](https://cfl.re/435SvOO)
-- [Self-guided Product Tour: AI Security for Apps ↗](https://cfl.re/49T8nXg)
-- [Video: Cloudflare AI Security Suite: Protect AI-powered apps with AI Security for Apps ↗](https://www.youtube.com/watch?v=LoGaySHVGu8)
+- [Cloudflare AI Security for Apps Product Page ↗︎](https://cfl.re/4b24QX5)
+- [Cloudflare Blog: AI Security for Apps ↗︎](https://cfl.re/ai-sec-apps-blog-ga)
+- [Cloudflare Developer Docs: AI Security for Apps ↗︎](https://cfl.re/435SvOO)
+- [Self-guided Product Tour: AI Security for Apps ↗︎](https://cfl.re/49T8nXg)
+- [Video: Cloudflare AI Security Suite: Protect AI-powered apps with AI Security for Apps ↗︎](https://www.youtube.com/watch?v=LoGaySHVGu8)
 
 Was this helpful?
 

@@ -91,7 +91,7 @@ The response in both cases will be a JSON blob of the form:
 
 ## Write to the network
 
-Currently, the Ethereum Gateway allows you to write to the network using the `eth_sendRawTransaction` RPC method. This creates a new message call transaction or a contract creation for signed transactions. The transactions are signed using a secret key corresponding to your own [Ethereum wallet ↗](https://www.ethereum.org/use/#_3-what-is-a-wallet-and-which-one-should-i-use).
+Currently, the Ethereum Gateway allows you to write to the network using the `eth_sendRawTransaction` RPC method. This creates a new message call transaction or a contract creation for signed transactions. The transactions are signed using a secret key corresponding to your own [Ethereum wallet ↗︎](https://www.ethereum.org/use/#_3-what-is-a-wallet-and-which-one-should-i-use).
 
 Once you have a wallet set up and a method of signing your own transactions, you can write that transaction to the Ethereum network via the [Cloudflare Ethereum Gateway](https://developers.cloudflare.com/web3/ethereum-gateway/reference/supported-api-methods/). Signed transactions use hexadecimal strings of the form:
 

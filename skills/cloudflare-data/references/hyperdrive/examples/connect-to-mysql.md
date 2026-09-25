@@ -22,7 +22,7 @@ Note
 
 New to Hyperdrive? Refer to the [Get started guide](https://developers.cloudflare.com/hyperdrive/get-started/) to learn how to set up your first Hyperdrive.
 
-To create a Hyperdrive that connects to an existing MySQL database, use the [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) CLI or the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive).
+To create a Hyperdrive that connects to an existing MySQL database, use the [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) CLI or the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/hyperdrive).
 
 When using Wrangler, replace the placeholder value provided to `--connection-string` with the connection string for your database:
 
@@ -40,7 +40,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -53,7 +53,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -70,10 +70,10 @@ Hyperdrive uses Workers [TCP socket support](https://developers.cloudflare.com/w
 
 | Driver | Documentation | Minimum Version Required | Notes |
 | --- | --- | --- | --- |
-| mysql2 (**recommended**) | [mysql2 documentation ↗](https://github.com/sidorares/node-mysql2) | `mysql2@3.13.0` | Supported in both Workers & Pages. Using the Promise API is recommended. |
-| mysql | [mysql documentation ↗](https://github.com/mysqljs/mysql) | `mysql@2.18.0` | Requires `compatibility_flags = ["nodejs_compat"]` and `compatibility_date = "2024-09-23"` - refer to [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs). Requires wrangler `3.78.7` or later. |
-| Drizzle | [Drizzle documentation ↗](https://orm.drizzle.team/) | Requires `mysql2@3.13.0` | |
-| Kysely | [Kysely documentation ↗](https://kysely.dev/) | Requires `mysql2@3.13.0` | |
+| mysql2 (**recommended**) | [mysql2 documentation ↗︎](https://github.com/sidorares/node-mysql2) | `mysql2@3.13.0` | Supported in both Workers & Pages. Using the Promise API is recommended. |
+| mysql | [mysql documentation ↗︎](https://github.com/mysqljs/mysql) | `mysql@2.18.0` | Requires `compatibility_flags = ["nodejs_compat"]` and `compatibility_date = "2024-09-23"` - refer to [Node.js compatibility](https://developers.cloudflare.com/workers/runtime-apis/nodejs). Requires wrangler `3.78.7` or later. |
+| Drizzle | [Drizzle documentation ↗︎](https://orm.drizzle.team/) | Requires `mysql2@3.13.0` | |
+| Kysely | [Kysely documentation ↗︎](https://kysely.dev/) | Requires `mysql2@3.13.0` | |
 
 ^ *The marked libraries can use either mysql or mysql2 as a dependency.*
 
@@ -125,9 +125,9 @@ The following examples show you how to:
 
 ### `mysql2`
 
-The following Workers code shows you how to use [mysql2 ↗](https://github.com/sidorares/node-mysql2) with Hyperdrive using the Promise API.
+The following Workers code shows you how to use [mysql2 ↗︎](https://github.com/sidorares/node-mysql2) with Hyperdrive using the Promise API.
 
-Install the [mysql2 ↗](https://github.com/sidorares/node-mysql2) driver:
+Install the [mysql2 ↗︎](https://github.com/sidorares/node-mysql2) driver:
 
 npmyarnpnpmbun
 
@@ -160,7 +160,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -173,7 +173,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -224,9 +224,9 @@ The minimum version of `mysql2` required for Hyperdrive is `3.13.0`.
 
 ### `mysql`
 
-The following Workers code shows you how to use [mysql ↗](https://github.com/mysqljs/mysql) with Hyperdrive.
+The following Workers code shows you how to use [mysql ↗︎](https://github.com/mysqljs/mysql) with Hyperdrive.
 
-Install the [mysql ↗](https://github.com/mysqljs/mysql) driver:
+Install the [mysql ↗︎](https://github.com/mysqljs/mysql) driver:
 
 npmyarnpnpmbun
 
@@ -255,7 +255,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -268,7 +268,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

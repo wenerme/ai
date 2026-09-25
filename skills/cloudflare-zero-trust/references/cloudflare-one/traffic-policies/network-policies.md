@@ -36,7 +36,7 @@ Terraform provider v4 precedence limitation
 
 To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint.
 
-To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
+To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
 
 ## Actions
 
@@ -171,7 +171,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/plans/zero-trust-services/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/plans/zero-trust-services/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | Enterprise |
 
@@ -218,7 +218,7 @@ Policy context fields
 
 </details>
 
-Ensure that your operating system allows notifications for the Cloudflare One Client. Your device may not display notifications if focus, do not disturb, or screen sharing settings are turned on. To turn on client notifications on macOS devices running DisplayLink software, you may have to allow system notifications when mirroring your display. For more information, refer to the [macOS documentation ↗](https://support.apple.com/guide/mac-help/change-notifications-settings-mh40583/mac).
+Ensure that your operating system allows notifications for the Cloudflare One Client. Your device may not display notifications if focus, do not disturb, or screen sharing settings are turned on. To turn on client notifications on macOS devices running DisplayLink software, you may have to allow system notifications when mirroring your display. For more information, refer to the [macOS documentation ↗︎](https://support.apple.com/guide/mac-help/change-notifications-settings-mh40583/mac).
 
 ### Network Override
 
@@ -341,7 +341,7 @@ The continent where the request is destined. Geolocation is determined from the 
 
 ### Destination Country
 
-The country that the request is destined for. Geolocation is determined from the target IP address. To specify a country, enter its [ISO 3166-1 Alpha 2 code ↗](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
+The country that the request is destined for. Geolocation is determined from the target IP address. To specify a country, enter its [ISO 3166-1 Alpha 2 code ↗︎](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
 | UI name | API example |
 | --- | --- |
@@ -453,7 +453,7 @@ Geolocation is determined from the device's public IP address (typically assigne
 
 The country of the user making the request.
 
-Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a country, enter its [ISO 3166-1 Alpha-2 code ↗](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
+Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a country, enter its [ISO 3166-1 Alpha-2 code ↗︎](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
 | UI name | API example |
 | --- | --- |
@@ -553,7 +553,7 @@ In the **Value** field, you can input a single value when using an equality comp
 
 ### Regular expressions
 
-Regular expressions are evaluated using Rust. The Rust implementation is slightly different than regex libraries used elsewhere. For more information, refer to our guide for [Wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/#wildcards). To evaluate if your regex matches, you can use [Rustexp ↗](https://rustexp.lpil.uk/).
+Regular expressions are evaluated using Rust. The Rust implementation is slightly different than regex libraries used elsewhere. For more information, refer to our guide for [Wildcards](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/app-paths/#wildcards). To evaluate if your regex matches, you can use [Rustexp ↗︎](https://rustexp.lpil.uk/).
 
 If you want to match multiple values, you can use the pipe symbol (`|`) as an OR operator. You do not need to use an escape character (`\`) before the pipe symbol. For example, the following expression evaluates to true when the SNI host matches either `.*whispersystems.org` or `.*signal.org`:
 

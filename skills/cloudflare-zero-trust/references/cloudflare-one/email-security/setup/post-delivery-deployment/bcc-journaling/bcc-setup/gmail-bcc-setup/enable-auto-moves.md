@@ -16,7 +16,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 If you do not have an integration:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Email security**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Email security**.
 2. Go to **Settings** > **Domain management** > **Domains** > select **View**.
 3. Locate your domain, select the three dots > Select **Associate an integration**.
 4. Select **Connect an integration**. You will then be redirected to the **Add an integration** page.

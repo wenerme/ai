@@ -44,7 +44,7 @@ In summary, five steps have to succeed after Cloudflare requests a CA to issue o
 
 ### DCV tokens
 
-DCV tokens are generated and controlled by the CA and not by Cloudflare. You can find further technical specification of how they work in [RFC 8555 ↗](https://www.rfc-editor.org/rfc/rfc8555#section-7.1.5).
+DCV tokens are generated and controlled by the CA and not by Cloudflare. You can find further technical specification of how they work in [RFC 8555 ↗︎](https://www.rfc-editor.org/rfc/rfc8555#section-7.1.5).
 
 - As mentioned in [Step 5](#steps-in-the-process), DCV tokens will change upon verification failures. For example, if a DCV check fails because of a DNSSEC issue, the certificate order is no longer valid and Cloudflare must start a new certificate request. Since tokens cannot be reused, a new token is required.
 - DCV tokens also have [validity periods](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/validation-backoff-schedule/). If you are handling the DCV process manually, it is recommended that you place the tokens as soon as the certificate is up for renewal. Otherwise, the tokens may expire and new tokens will be required.

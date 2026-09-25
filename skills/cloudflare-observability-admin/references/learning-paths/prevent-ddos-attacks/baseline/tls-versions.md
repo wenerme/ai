@@ -23,7 +23,7 @@ When you use an SSL/TLS certificate issued by Cloudflare<sup>[1](#user-content-f
 
 ## Additional resources
 
-For more details on this vulnerability, refer to [Secure Server- and Client-Initiated SSL Renegotiation ↗](https://crashtest-security.com/secure-client-initiated-ssl-renegotiation/).
+For more details on this vulnerability, refer to [Secure Server- and Client-Initiated SSL Renegotiation ↗︎](https://crashtest-security.com/secure-client-initiated-ssl-renegotiation/).
 
 ## Footnotes
 

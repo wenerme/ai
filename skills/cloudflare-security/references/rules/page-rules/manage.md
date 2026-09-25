@@ -44,7 +44,7 @@ You may also want to review the documentation on [wildcard matching](https://dev
 Notes
 
 - Page Rules require a [proxied DNS record](https://developers.cloudflare.com/dns/proxy-status/) to work. Page Rules will not apply to subdomains that do not exist in DNS or are not being directed to Cloudflare.
-- Cloudflare does not support non-ASCII characters — such as punycode/unicode domain — in Page Rules. Instead, you could URL-encode the string using [Punycode converter ↗](https://www.punycoder.com/).
+- Cloudflare does not support non-ASCII characters — such as punycode/unicode domain — in Page Rules. Instead, you could URL-encode the string using [Punycode converter ↗︎](https://www.punycoder.com/).
 
 ## Edit a page rule
 

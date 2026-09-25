@@ -46,7 +46,7 @@ Creating a new resource in response to a POST request. For example, creating a n
 
 Cloudflare forwards 201 responses without modification.
 
-For further information, refer to [RFC 7231 ↗](https://tools.ietf.org/html/rfc7231#section-7.2) for more details about validator headers, like **ETag** and **Last-Modified** in a 201 response.
+For further information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231#section-7.2) for more details about validator headers, like **ETag** and **Last-Modified** in a 201 response.
 
 ## 203 Non-authoritative information
 
@@ -97,7 +97,7 @@ A 206 response includes either:
 - Partial payload that contains a `Content-Range` header specifying the requested range and the data provided in the response.
 - Multipart payload that omits the `Content-Range` header at the top level but includes `Content-Type` and `Content-Range` headers for each part of the multipart response body.
 
-For more details, refer to [Section 4.1 of RFC 7233 ↗](https://tools.ietf.org/html/rfc7233#page-10).
+For more details, refer to [Section 4.1 of RFC 7233 ↗︎](https://tools.ietf.org/html/rfc7233#page-10).
 
 ### Cloudflare-specific information
 

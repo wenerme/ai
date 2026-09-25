@@ -156,7 +156,7 @@ To delete a ruleset, refer to [Delete a rule in a ruleset](https://developers.cl
 
 You can also use the dashboard to enable managed rulesets:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
 2. Select **Managed rulesets**. This is where the dashboard lists all your managed rules.
 3. To enable a rule, turn **Status** on.
 
@@ -164,7 +164,7 @@ You can also use the dashboard to enable managed rulesets:
 
 To edit a rule:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
 2. Select **Managed rulesets**. This is where the dashboard lists all your managed rules.
 3. Select the three dots > **Edit**.
 4. Make the necessary changes, then select **Save**.
@@ -173,7 +173,7 @@ To edit a rule:
 
 To view basic information about your rules:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and go to **Networking** > **Firewall policies**.
 2. Select **Managed rulesets**. This is where the dashboard lists all your managed rules.
 3. Locate your managed rule, select the three dots > **View**.
 

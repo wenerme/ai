@@ -106,7 +106,7 @@ class Counter(DurableObject):
     return value
 ```
 
-JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
+JavaScript is a single-threaded and event-driven programming language. This means that JavaScript runtimes, by default, allow requests to interleave with each other which can lead to concurrency bugs. The Durable Objects runtime uses a combination of input gates and output gates to avoid this type of concurrency bug when performing storage operations. Learn more in our [blog post ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/).
 
 ## Asynchronous KV API
 
@@ -117,7 +117,7 @@ KV-backed Durable Objects provide KV API methods which are asynchronous.
 - ``ctx.storage.get(key `string`, options `Object` optional)``: `Promise<any>`
   - Retrieves the value associated with the given key. The type of the returned value will be whatever was previously written for the key, or undefined if the key does not exist.
 - ``ctx.storage.get(keys `Array<string>`, options `Object` optional)``: `Promise<Map<string, any>>`
-  - Retrieves the values associated with each of the provided keys. The type of each returned value in the [`Map` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key. Results in the `Map` will be sorted in increasing order of their UTF-8 encodings, with any requested keys that do not exist being omitted. Supports up to 128 keys at a time.
+  - Retrieves the values associated with each of the provided keys. The type of each returned value in the [`Map` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key. Results in the `Map` will be sorted in increasing order of their UTF-8 encodings, with any requested keys that do not exist being omitted. Supports up to 128 keys at a time.
 
 #### Supported options
 
@@ -129,7 +129,7 @@ KV-backed Durable Objects provide KV API methods which are asynchronous.
 ### put
 
 - ``put(key `string`, value `any`, options `Object` optional)``: `Promise`
-  - Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
+  - Stores the value and associates it with the given key. The value can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
 
     The size of keys and values have different limits depending on the Durable Object storage backend you are using. Refer to either:
     - [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
@@ -140,7 +140,7 @@ KV-backed Durable Objects provide KV API methods which are asynchronous.
 
 - ``put(entries `Object`, options `Object` optional)``: `Promise`
   - Takes an Object and stores each of its keys and values to storage.
-  - Each value can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
+  - Each value can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm), which is true of most types.
   - Supports up to 128 key-value pairs at a time. The size of keys and values have different limits depending on the flavor of Durable Object you are using. Refer to either:
     - [SQLite-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#sqlite-backed-durable-objects-general-limits)
     - [KV-backed Durable Object limits](https://developers.cloudflare.com/durable-objects/platform/limits/#key-value-backed-durable-objects-general-limits)
@@ -177,7 +177,7 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 - ``list(options `Object` optional)``: `Promise<Map<string, any>>`
   - Returns all keys and values associated with the current Durable Object in ascending sorted order based on the keys' UTF-8 encodings.
-  - The type of each returned value in the [`Map` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key.
+  - The type of each returned value in the [`Map` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) will be whatever was previously written for the corresponding key.
   - Be aware of how much data may be stored in your Durable Object before calling this version of `list` without options because all the data will be loaded into the Durable Object's memory, potentially hitting its [limit](https://developers.cloudflare.com/durable-objects/platform/limits/). If that is a concern, pass options to `list` as documented below.
 
 #### Supported options
@@ -263,8 +263,8 @@ The `put()` method returns a `Promise`, but most applications can discard this p
 
 ## Related resources
 
-- [Durable Objects: Easy, Fast, Correct Choose Three ↗](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/)
-- [Zero-latency SQLite storage in every Durable Object blog ↗](https://blog.cloudflare.com/sqlite-in-durable-objects/)
+- [Durable Objects: Easy, Fast, Correct Choose Three ↗︎](https://blog.cloudflare.com/durable-objects-easy-fast-correct-choose-three/)
+- [Zero-latency SQLite storage in every Durable Object blog ↗︎](https://blog.cloudflare.com/sqlite-in-durable-objects/)
 - [WebSockets API](https://developers.cloudflare.com/durable-objects/best-practices/websockets/)
 
 Was this helpful?

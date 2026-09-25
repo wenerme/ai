@@ -78,7 +78,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | All plans |
 
@@ -99,7 +99,7 @@ Devices must be actively connected to the Internet for remote captures to run.
 
 To capture data from a remote device:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
 2. Select up to 10 devices that you want to run a capture on. Devices must be [registered](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/) in your Zero Trust organization.
 3. Configure the types of captures to run.
    - **Packet captures (PCAP)**: Performs packet captures for traffic outside of the WARP tunnel (default network interface) and traffic inside of the WARP tunnel ([virtual interface](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/client-architecture/#ip-traffic)).
@@ -112,7 +112,7 @@ DEX will now send capture requests to the configured devices. If the Cloudflare 
 
 #### Download remote captures
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
 2. Find a successful capture.
 3. Select the three-dot menu and select **Download**.
 
@@ -124,7 +124,7 @@ The diagnostics analyzer highlights what Cloudflare determines to be the most im
 
 To access the diagnostics analyzer:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **DEX** > **Remote captures**.
 2. Locate an existing `warp-diag` log from the list or select **Run diagnostics** to generate a new `warp-diag` log.
 3. Select the three dots for the `warp-diag` log that you want to analyze, then select **View Device Diag**.
 
@@ -259,8 +259,8 @@ This enables a few more logging features:
   - Device API endpoint hostname
   - Tunnel edge connection IPs
 - On Windows, if you are an administrator:
-  - [`netsh` trace ↗](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netsh-trace) with the `Microsoft-Windows-TCPIP` provider
-  - [WFP capture ↗](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netsh-wfp)
+  - [`netsh` trace ↗︎](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netsh-trace) with the `Microsoft-Windows-TCPIP` provider
+  - [WFP capture ↗︎](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netsh-wfp)
 
 If extra debug logging is enabled, the command `warp-cli debug extra reconnect` forces the tunnel connection to restart. This can be useful for collecting log information if the tunnel connection fails.
 
@@ -286,7 +286,7 @@ Linux log behavior
 
 On Linux, the WARP daemon logs are written to the system logs by the `warp-svc` service.
 
-If you need to adjust the maximum log level or filter what gets logged, you can configure the WARP `systemd` unit file using the [`LogLevelMax=` option ↗](https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#LogLevelMax=).
+If you need to adjust the maximum log level or filter what gets logged, you can configure the WARP `systemd` unit file using the [`LogLevelMax=` option ↗︎](https://www.freedesktop.org/software/systemd/man/latest/systemd.exec.html#LogLevelMax=).
 
 The Cloudflare One Client does not provide an official method to configure logging levels during the installation process.
 

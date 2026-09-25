@@ -22,7 +22,7 @@ For newly created Zero Trust organizations, Cloudflare adds this identity provid
 
 ## Set up Cloudflare as an identity provider
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **Cloudflare**.
 4. (Optional) Enable **Restrict to account members** if you want to limit authentication to users who are members of your Cloudflare account. When disabled, any user with a Cloudflare account can authenticate.

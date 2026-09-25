@@ -20,7 +20,7 @@ The following examples show how to generate R2 [temporary credentials](https://d
 
 - A parent [R2 API token](https://developers.cloudflare.com/r2/api/tokens/) with at least the permissions you plan to delegate. Never ship parent credentials to a client.
 - Your Cloudflare [account ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
-- An S3 client that supports session tokens. The examples below use [aws4fetch ↗](https://www.npmjs.com/package/aws4fetch).
+- An S3 client that supports session tokens. The examples below use [aws4fetch ↗︎](https://www.npmjs.com/package/aws4fetch).
 
 ## Generate via the Temporary Credentials API
 
@@ -56,7 +56,7 @@ The response wraps the credentials in a `result` object:
 
 ## Generate locally (client-side signing)
 
-This example uses [`jose` ↗](https://www.npmjs.com/package/jose) to sign the JWT and [`aws4fetch` ↗](https://www.npmjs.com/package/aws4fetch) to issue signed requests.
+This example uses [`jose` ↗︎](https://www.npmjs.com/package/jose) to sign the JWT and [`aws4fetch` ↗︎](https://www.npmjs.com/package/aws4fetch) to issue signed requests.
 
 npmyarnpnpmbun
 

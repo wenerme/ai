@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/react-router/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-**Start from CLI**: Scaffold a full-stack app with [React Router v8 ↗](https://reactrouter.com/) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for lightning-fast development.
+**Start from CLI**: Scaffold a full-stack app with [React Router v8 ↗︎](https://reactrouter.com/) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) for lightning-fast development.
 
 npmyarnpnpm
 
@@ -36,7 +36,7 @@ pnpm create cloudflare@latest my-react-router-app --framework=react-router
 
 Note
 
-SPA mode and prerendering are not currently supported when using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/). If you wish to use React Router in an SPA then we recommend starting with the [React template](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/) and using React Router [as a library ↗](https://reactrouter.com/start/data/installation).
+SPA mode and prerendering are not currently supported when using the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/). If you wish to use React Router in an SPA then we recommend starting with the [React template](https://developers.cloudflare.com/workers/framework-guides/web-apps/react/) and using React Router [as a library ↗︎](https://reactrouter.com/start/data/installation).
 
 Already have a React Router project?
 
@@ -84,7 +84,7 @@ Wrangler handles configuration automatically
 
 ## What is React Router?
 
-[React Router v8 ↗](https://reactrouter.com/) is a full-stack React framework for building web applications. It combines with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) to provide a first-class experience for developing, building and deploying your apps on Cloudflare.
+[React Router v8 ↗︎](https://reactrouter.com/) is a full-stack React framework for building web applications. It combines with the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) to provide a first-class experience for developing, building and deploying your apps on Cloudflare.
 
 ## Creating a full-stack React Router app
 
@@ -120,10 +120,10 @@ Below is a simplified file tree of the project.
      - vite.config.ts
      - wrangler.jsonc
 
-   <code>react-router.config.ts</code> is your <a href="https://reactrouter.com/api/framework-conventions/react-router.config.ts">React Router config file ↗</a>. In this file:
+   <code>react-router.config.ts</code> is your <a href="https://reactrouter.com/api/framework-conventions/react-router.config.ts">React Router config file ↗︎</a>. In this file:
    - <code>ssr</code> is set to <code>true</code>, meaning that your application will use server-side rendering.
 
-   <code>vite.config.ts</code> is your <a href="https://vite.dev/config/">Vite config file ↗</a>. The React Router and Cloudflare plugins are included in the <code>plugins</code> array. The <a href="https://developers.cloudflare.com/workers/vite-plugin/">Cloudflare Vite plugin</a> runs your server code in the Workers runtime, ensuring your local development environment is as close to production as possible.
+   <code>vite.config.ts</code> is your <a href="https://vite.dev/config/">Vite config file ↗︎</a>. The React Router and Cloudflare plugins are included in the <code>plugins</code> array. The <a href="https://developers.cloudflare.com/workers/vite-plugin/">Cloudflare Vite plugin</a> runs your server code in the Workers runtime, ensuring your local development environment is as close to production as possible.
 
    <code>wrangler.jsonc</code> is your <a href="https://developers.cloudflare.com/workers/wrangler/configuration/">Worker config file</a>. In this file:
    - <code>main</code> points to <code>./workers/app.ts</code>. This is the entry file for your Worker. The default export includes a <a href="https://developers.cloudflare.com/workers/runtime-apis/fetch/"><code>fetch</code> handler</a>, which delegates the request to React Router.

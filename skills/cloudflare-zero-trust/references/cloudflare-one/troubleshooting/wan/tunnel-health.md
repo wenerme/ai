@@ -52,13 +52,13 @@ If you are experiencing tunnel health issues, check these items first:
 3. **MTU settings**: Verify MTU is set correctly (typically `1476` for GRE, `1400`- `1450` for IPsec).
 4. **IPsec parameters**: Confirm your cryptographic parameters match [Cloudflare's supported configuration](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-configuration-parameters).
 5. **Health check direction**: Cloudflare WAN defaults to *Bidirectional*.
-6. **Cloudflare Network Firewall rules (less common)**: Ensure ICMP traffic from [Cloudflare IP addresses ↗](https://cloudflare.com/ips/) is allowed.
+6. **Cloudflare Network Firewall rules (less common)**: Ensure ICMP traffic from [Cloudflare IP addresses ↗︎](https://cloudflare.com/ips/) is allowed.
 
 ---
 
 ## Tunnel health states
 
-The [Network health ↗](https://dash.cloudflare.com/?to=/:account/networking-insights/health) page in the Cloudflare dashboard displays three tunnel health states:
+The [Network health ↗︎](https://dash.cloudflare.com/?to=/:account/networking-insights/health) page in the Cloudflare dashboard displays three tunnel health states:
 
 | State | Dashboard display | Technical threshold |
 | --- | --- | --- |
@@ -197,7 +197,7 @@ Add an allow rule for ICMP traffic from Cloudflare IP addresses *before* any blo
 | --- | --- |
 | **Action** | Allow |
 | **Protocol** | ICMP |
-| **Source** | [Cloudflare IP ranges ↗](https://cloudflare.com/ips/) |
+| **Source** | [Cloudflare IP ranges ↗︎](https://cloudflare.com/ips/) |
 
 3. Position this rule *before* any rules that block ICMP traffic.
 
@@ -449,7 +449,7 @@ If you have worked through this guide and still experience tunnel health issues,
 - **Router logs** covering the time period of the issue
 - **Traceroute** results from your network to Cloudflare endpoints
 - **Screenshots** of the tunnel health dashboard
-- **Distributed traceroutes** using tools like [ping.pe ↗](https://ping.pe) to test reachability from multiple global locations
+- **Distributed traceroutes** using tools like [ping.pe ↗︎](https://ping.pe) to test reachability from multiple global locations
 
 ### Router diagnostic commands
 

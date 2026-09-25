@@ -48,7 +48,7 @@ compatibility_flags = ["nodejs_compat", "enable_nodejs_http_modules", "enable_no
 
 ## get
 
-An implementation of the Node.js [\`https.get' ↗](https://nodejs.org/docs/latest/api/https.html#httpsgetoptions-callback) method.
+An implementation of the Node.js [\`https.get' ↗︎](https://nodejs.org/docs/latest/api/https.html#httpsgetoptions-callback) method.
 
 The `get` method performs a GET request to the specified URL and invokes the callback with the response. This is a convenience method that simplifies making HTTPS GET requests without manually configuring request options.
 
@@ -76,15 +76,15 @@ export default {
 };
 ```
 
-The implementation of `get` in Workers is a wrapper around the global [`fetch` API ↗](https://developers.cloudflare.com/workers/runtime-apis/fetch/) and is therefore subject to the same [limits ↗](https://developers.cloudflare.com/workers/platform/limits/).
+The implementation of `get` in Workers is a wrapper around the global [`fetch` API ↗︎](https://developers.cloudflare.com/workers/runtime-apis/fetch/) and is therefore subject to the same [limits ↗︎](https://developers.cloudflare.com/workers/platform/limits/).
 
 As shown in the example above, it is necessary to arrange for requests to be correctly awaited in the `fetch` handler using a promise or the fetch may be canceled prematurely when the handler returns.
 
 ## request
 
-An implementation of the Node.js [\`https.request' ↗](https://nodejs.org/docs/latest/api/https.html#httpsrequestoptions-callback) method.
+An implementation of the Node.js [\`https.request' ↗︎](https://nodejs.org/docs/latest/api/https.html#httpsrequestoptions-callback) method.
 
-The `request` method creates an HTTPS request with customizable options like method, headers, and body. It provides full control over the request configuration and returns a Node.js [stream.Writable ↗](https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/) for sending request data.
+The `request` method creates an HTTPS request with customizable options like method, headers, and body. It provides full control over the request configuration and returns a Node.js [stream.Writable ↗︎](https://developers.cloudflare.com/workers/runtime-apis/nodejs/streams/) for sending request data.
 
 Because `get` is a wrapper around `fetch(...)`, it may be used only within an exported fetch or similar handler. Outside of such a handler, attempts to use `get` will throw an error.
 
@@ -130,7 +130,7 @@ The following additional options are not supported: `ca`, `cert`, `ciphers`, `cl
 
 ## createServer
 
-An implementation of the Node.js [`https.createServer` ↗](https://nodejs.org/docs/latest/api/https.html#httpscreateserveroptions-requestlistener) method.
+An implementation of the Node.js [`https.createServer` ↗︎](https://nodejs.org/docs/latest/api/https.html#httpscreateserveroptions-requestlistener) method.
 
 The `createServer` method creates an HTTPS server instance that can handle incoming secure requests. It's a convenience function that creates a new `Server` instance and optionally sets up a request listener callback.
 
@@ -164,13 +164,13 @@ await using server = createServer((req, res) => {
 
 ## Agent
 
-An implementation of the Node.js [`https.Agent` ↗](https://nodejs.org/docs/latest/api/https.html#class-httpsagent) class.
+An implementation of the Node.js [`https.Agent` ↗︎](https://nodejs.org/docs/latest/api/https.html#class-httpsagent) class.
 
-An [Agent ↗](https://nodejs.org/docs/latest/api/https.html#class-httpsagent) manages HTTPS connection reuse by maintaining request queues per host/port. In the Workers environment, however, such low-level management of the network connection, ports, etc, is not relevant because it is handled by the Cloudflare infrastructure instead. Accordingly, the implementation of `Agent` in Workers is a stub implementation that does not support connection pooling or keep-alive.
+An [Agent ↗︎](https://nodejs.org/docs/latest/api/https.html#class-httpsagent) manages HTTPS connection reuse by maintaining request queues per host/port. In the Workers environment, however, such low-level management of the network connection, ports, etc, is not relevant because it is handled by the Cloudflare infrastructure instead. Accordingly, the implementation of `Agent` in Workers is a stub implementation that does not support connection pooling or keep-alive.
 
 ## Server
 
-An implementation of the Node.js [`https.Server` ↗](https://nodejs.org/docs/latest/api/https.html#class-httpsserver) class.
+An implementation of the Node.js [`https.Server` ↗︎](https://nodejs.org/docs/latest/api/https.html#class-httpsserver) class.
 
 In Node.js, the `https.Server` class represents an HTTPS server and provides methods for handling incoming secure requests. In Workers, handling of secure requests is provided by the Cloudflare infrastructure so there really is not much difference between using `https.Server` or `http.Server`. The workers runtime provides an implementation for completeness but most workers should probably just use [`http.Server`](https://developers.cloudflare.com/workers/runtime-apis/nodejs/http#server).
 

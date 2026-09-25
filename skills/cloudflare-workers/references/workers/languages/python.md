@@ -16,7 +16,7 @@ Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Cloudflare Workers provides a first-class Python experience, including support for:
 
-- Easy to install and fast-booting [Packages](https://developers.cloudflare.com/workers/languages/python/packages), including [FastAPI ↗](https://fastapi.tiangolo.com/), [Langchain ↗](https://pypi.org/project/langchain/), [Pydantic ↗](https://docs.pydantic.dev/latest/) and more.
+- Easy to install and fast-booting [Packages](https://developers.cloudflare.com/workers/languages/python/packages), including [FastAPI ↗︎](https://fastapi.tiangolo.com/), [Langchain ↗︎](https://pypi.org/project/langchain/), [Pydantic ↗︎](https://docs.pydantic.dev/latest/) and more.
 - A robust [foreign function interface (FFI)](https://developers.cloudflare.com/workers/languages/python/ffi) that lets you use JavaScript objects and functions directly from Python — including all [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/)
 - An ecosystem of services on the Workers Platform accessible via [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/), including:
   - State storage and databases like [KV](https://developers.cloudflare.com/kv), [D1](https://developers.cloudflare.com/d1), [Durable Objects](https://developers.cloudflare.com/durable-objects/)
@@ -45,13 +45,13 @@ Note
 
 You must add the `python_workers` compatibility flag to your Worker.
 
-We'd love your feedback. Join the #python-workers channel in the [Cloudflare Developers Discord ↗](https://discord.cloudflare.com/) and let us know what you'd like to see next.
+We'd love your feedback. Join the #python-workers channel in the [Cloudflare Developers Discord ↗︎](https://discord.cloudflare.com/) and let us know what you'd like to see next.
 
 ### The `pywrangler` CLI tool
 
-To run a Python Worker locally, install packages, and deploy it to Cloudflare, you use [pywrangler ↗](https://github.com/cloudflare/workers-py), the CLI for Python Workers.
+To run a Python Worker locally, install packages, and deploy it to Cloudflare, you use [pywrangler ↗︎](https://github.com/cloudflare/workers-py), the CLI for Python Workers.
 
-To set it up, first, ensure [uv ↗](https://docs.astral.sh/uv/#installation) and [Node ↗](https://nodejs.org/en) are installed.
+To set it up, first, ensure [uv ↗︎](https://docs.astral.sh/uv/#installation) and [Node ↗︎](https://nodejs.org/en) are installed.
 
 Then set up your development environment:
 

@@ -18,9 +18,9 @@ Last updated Jul 13, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Markdown has quickly become the lingua franca for agents and AI systems as a whole. The format’s explicit structure makes it ideal for AI processing, ultimately resulting in better results while minimizing token waste.
 
-Cloudflare's network supports real-time content conversion at the source, for enabled zones using [content negotiation ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation) headers. When AI systems request pages from any website that uses Cloudflare and has Markdown for Agents enabled, they can express the preference for `text/markdown` in the request and our network will automatically and efficiently convert the HTML to Markdown, when possible, on the fly.
+Cloudflare's network supports real-time content conversion at the source, for enabled zones using [content negotiation ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Content_negotiation) headers. When AI systems request pages from any website that uses Cloudflare and has Markdown for Agents enabled, they can express the preference for `text/markdown` in the request and our network will automatically and efficiently convert the HTML to Markdown, when possible, on the fly.
 
-Read the [announcement ↗](https://blog.cloudflare.com/markdown-for-agents/) in our blog for more information.
+Read the [announcement ↗︎](https://blog.cloudflare.com/markdown-for-agents/) in our blog for more information.
 
 ## How to use
 
@@ -108,7 +108,7 @@ Note that we include token count headers with the converted response. `x-markdow
 
 ### Content Signals Policy
 
-[Content Signals ↗](https://contentsignals.org/) is a framework that allows anyone to express their preferences for how their content can be used after it has been accessed.
+[Content Signals ↗︎](https://contentsignals.org/) is a framework that allows anyone to express their preferences for how their content can be used after it has been accessed.
 
 If your origin already sets a `content-signal` header, Markdown for Agents preserves that value on the converted response — your origin's policy is authoritative. This lets you define custom Content Signal policies by setting the `content-signal` header at your origin.
 
@@ -152,7 +152,7 @@ image: https://example.com/cover.png
 
 ### JSON-LD
 
-[JSON-LD ↗](https://json-ld.org/) is a structured-data format used by search engines and AI systems to interpret a page's semantic content. Markdown for Agents preserves any `<script type="application/ld+json">` blocks from the source HTML by appending them at the end of the converted Markdown inside a single fenced `json` code block.
+[JSON-LD ↗︎](https://json-ld.org/) is a structured-data format used by search engines and AI systems to interpret a page's semantic content. Markdown for Agents preserves any `<script type="application/ld+json">` blocks from the source HTML by appending them at the end of the converted Markdown inside a single fenced `json` code block.
 
 If the source HTML contains multiple JSON-LD scripts, all of them are concatenated within the same code block, each on its own line.
 
@@ -177,16 +177,16 @@ Example output:
 
 To enable Markdown for Agents for your zone in the dashboard:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account (you need a Pro or Business plan).
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account (you need a Pro or Business plan).
 2. Select the zone you want to configure.
-3. Visit the [AI Crawl Control ↗](https://dash.cloudflare.com/?to=/:account/:zone/ai) section.
+3. Visit the [AI Crawl Control ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ai) section.
 4. Enable **Markdown for Agents**.
 
 ### Enable for specific subdomains or paths
 
 To enable Markdown for Agents for specific subdomains or paths instead of your entire zone, create a [configuration rule](https://developers.cloudflare.com/rules/configuration-rules/):
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Select the zone you want to configure.
 3. Go to **Rules** > **Overview** and select **Create rule** > **Configuration Rules**.
 4. Under **When incoming requests match**, build an expression to match your subdomain (for example, `http.host eq "docs.example.com"`) or path.
@@ -238,7 +238,7 @@ If you are using [Cloudflare for SaaS](https://developers.cloudflare.com/cloudfl
 
 To enable Markdown for Agents for all custom hostnames on your SaaS zone:
 
-1. Log into the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log into the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Select your SaaS zone.
 3. Look for **Quick Actions**.
 4. Toggle the **Markdown for Agents** button to enable.
@@ -292,7 +292,7 @@ Markdown for Agents is available to Pro, Business and Enterprise plans, and SSL 
 
 ## Try it with Cloudflare
 
-We have enabled this feature in our [Developer Documentation ↗](https://developers.cloudflare.com/) and our [Blog ↗](https://blog.cloudflare.com/), inviting all AI crawlers and agents to consume our content using markdown instead of HTML.
+We have enabled this feature in our [Developer Documentation ↗︎](https://developers.cloudflare.com/) and our [Blog ↗︎](https://blog.cloudflare.com/), inviting all AI crawlers and agents to consume our content using markdown instead of HTML.
 
 ```bash
 curl https://blog.cloudflare.com/markdown-for-agents/ \

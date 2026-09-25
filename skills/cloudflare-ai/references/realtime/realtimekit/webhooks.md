@@ -124,7 +124,7 @@ curl --request POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/r
   }'
 ```
 
-You can also manage webhooks from the [RealtimeKit dashboard ↗](https://dash.cloudflare.com/?to=/:account/realtime/kit).
+You can also manage webhooks from the [RealtimeKit dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/realtime/kit).
 
 ## Webhook headers
 

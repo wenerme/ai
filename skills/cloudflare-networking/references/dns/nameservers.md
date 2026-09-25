@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/nameservers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Nameservers are DNS servers that answer DNS queries about the domains they are authoritative for. When a visitor types your domain into a browser, the [DNS resolution process ↗](https://www.cloudflare.com/learning/dns/what-is-dns/) passes through several server types and eventually reaches the authoritative nameservers for the final answer.
+Nameservers are DNS servers that answer DNS queries about the domains they are authoritative for. When a visitor types your domain into a browser, the [DNS resolution process ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/) passes through several server types and eventually reaches the authoritative nameservers for the final answer.
 
 In the context of Cloudflare DNS, nameservers refer to authoritative nameservers — the servers that hold the definitive DNS records for your domain and provide the final response in DNS resolution. When a nameserver is authoritative for `example.com`, DNS resolvers will consider responses from this nameserver when a user tries to access `example.com`.
 
@@ -38,7 +38,7 @@ Unless your account has a specific [DNS zone defaults](https://developers.cloudf
 
 Standard nameservers are hosted on `ns.cloudflare.com` and follow the pattern `<proper_name>.ns.cloudflare.com`.
 
-To know the reason behind these nameserver names, refer to [our blog ↗](https://blog.cloudflare.com/whats-the-story-behind-the-names-of-cloudflares-name-servers/).
+To know the reason behind these nameserver names, refer to [our blog ↗︎](https://blog.cloudflare.com/whats-the-story-behind-the-names-of-cloudflares-name-servers/).
 
 ### Advanced nameservers
 

@@ -28,7 +28,7 @@ Stream only supports the SRT caller mode, which is responsible for broadcasting 
 
 [Go to **Live inputs** ↗](https://dash.cloudflare.com/?to=/:account/stream/inputs) ![Create live input field from dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1554,height=862,format=webp/_astro/create-live-input-from-stream-dashboard.BPPM6pVj.png)
 
-**Step 2:** Copy the RTMPS URL and key, and use them with your live streaming application. We recommend using [Open Broadcaster Software (OBS) ↗](https://obsproject.com/) to get started.
+**Step 2:** Copy the RTMPS URL and key, and use them with your live streaming application. We recommend using [Open Broadcaster Software (OBS) ↗︎](https://obsproject.com/) to get started.
 
 ![Example of RTMPS URL field](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1340,height=444,format=webp/_astro/copy-rtmps-url-from-stream-dashboard.BV1iePso.png)
 
@@ -180,7 +180,7 @@ If you are experiencing buffering, freezing, experiencing latency, or having oth
 ### Recommendations
 
 - Your creators should use an appropriate bitrate for their live streams, typically well under 12Mbps (12000Kbps). High motion, high frame rate content typically should use a higher bitrate, while low motion content like slide presentations should use a lower bitrate.
-- Your creators should use a [GOP duration ↗](https://en.wikipedia.org/wiki/Group_of_pictures) (keyframe interval) of between 2 to 8 seconds. The default in most encoding software and hardware, including Open Broadcaster Software (OBS), is within this range. Setting a lower GOP duration will reduce latency for viewers, while also reducing encoding efficiency. Setting a higher GOP duration will improve encoding efficiency, while increasing latency for viewers. This is a tradeoff inherent to video encoding, and not a limitation of Cloudflare Stream.
+- Your creators should use a [GOP duration ↗︎](https://en.wikipedia.org/wiki/Group_of_pictures) (keyframe interval) of between 2 to 8 seconds. The default in most encoding software and hardware, including Open Broadcaster Software (OBS), is within this range. Setting a lower GOP duration will reduce latency for viewers, while also reducing encoding efficiency. Setting a higher GOP duration will improve encoding efficiency, while increasing latency for viewers. This is a tradeoff inherent to video encoding, and not a limitation of Cloudflare Stream.
 - When possible, select CBR (constant bitrate) instead of VBR (variable bitrate) as CBR helps to ensure a stable streaming experience while preventing buffering and interruptions.
 
 #### Low-Latency HLS broadcast recommendations Beta
@@ -192,7 +192,7 @@ If you are experiencing buffering, freezing, experiencing latency, or having oth
 
 ### Requirements
 
-- Closed GOPs are required. This means that if there are any B frames in the video, they should always refer to frames within the same GOP. This setting is the default in most encoding software and hardware, including [OBS Studio ↗](https://obsproject.com/).
+- Closed GOPs are required. This means that if there are any B frames in the video, they should always refer to frames within the same GOP. This setting is the default in most encoding software and hardware, including [OBS Studio ↗︎](https://obsproject.com/).
 - Stream Live only supports H.264 video and AAC audio codecs as inputs. This requirement does not apply to inputs that are relayed to Stream Connect outputs. Stream Live supports ADTS but does not presently support LATM.
 - Clients must be configured to reconnect when a disconnection occurs. Stream Live is designed to handle reconnection gracefully by continuing the live stream.
 

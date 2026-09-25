@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/graylog/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial explains how to analyze [Cloudflare Logs ↗](https://www.cloudflare.com/products/cloudflare-logs/) using [Graylog ↗](https://github.com/Graylog2/graylog-s3-lambda/blob/master/content-packs/cloudflare/cloudflare-logpush-content-pack.json).
+This tutorial explains how to analyze [Cloudflare Logs ↗︎](https://www.cloudflare.com/products/cloudflare-logs/) using [Graylog ↗︎](https://github.com/Graylog2/graylog-s3-lambda/blob/master/content-packs/cloudflare/cloudflare-logpush-content-pack.json).
 
 ## Overview
 
@@ -37,7 +37,7 @@ Cloudflare logs are HTTP/HTTPS request logs in JSON format and are gathered from
 Before getting Cloudflare logs into Graylog:
 
 1. Configure Cloudflare [Logpush](https://developers.cloudflare.com/logs/logpush/) to push logs with all desired fields to an AWS S3 bucket of your choice.
-2. Download the latest [Graylog Integration for Cloudflare ↗](https://github.com/Graylog2/graylog-s3-lambda/blob/master/content-packs/cloudflare/cloudflare-logpush-content-pack.json).
+2. Download the latest [Graylog Integration for Cloudflare ↗︎](https://github.com/Graylog2/graylog-s3-lambda/blob/master/content-packs/cloudflare/cloudflare-logpush-content-pack.json).
 3. Decompress the zip file.
 
 Once decompressed, the integration package includes:
@@ -83,13 +83,13 @@ Once decompressed, the integration package includes:
    - **GRAYLOG\_HOST** *(required)* - hostname or IP address of the Graylog host or cluster load balancer.
    - **GRAYLOG\_PORT** *(optional - defaults to 12201)* - The Graylog service port.
    - **CONNECT\_TIMEOUT** *(optional - defaults to 10000)* - The number of milliseconds to wait for the connection to be established.
-   - **LOG\_LEVEL** *(optional - defaults to INFO)* - The level of detail to include in the CloudWatch logs generated from the Lambda function. Supported values are *OFF*, *ERROR*, *WARN*, *INFO*, *DEBUG*, *TRACE*, and *ALL*. Increase the logging level to help with troubleshooting. See [Defining Custom Log Levels in Code ↗](https://logging.apache.org/log4j/2.0/manual/customloglevels.html) for more information.
+   - **LOG\_LEVEL** *(optional - defaults to INFO)* - The level of detail to include in the CloudWatch logs generated from the Lambda function. Supported values are *OFF*, *ERROR*, *WARN*, *INFO*, *DEBUG*, *TRACE*, and *ALL*. Increase the logging level to help with troubleshooting. See [Defining Custom Log Levels in Code ↗︎](https://logging.apache.org/log4j/2.0/manual/customloglevels.html) for more information.
    - **CLOUDFLARE\_LOGPUSH\_MESSAGE\_FIELDS** *(optional - defaults to all)* - The fields to parse from the message. Specify as a comma-separated list of field names.
    - **CLOUDFLARE\_LOGPUSH\_MESSAGE\_SUMMARY\_FIELDS** *(optional - defaults to ClientRequestHost, ClientRequestPath, OriginIP, ClientSrcPort, EdgeServerIP, EdgeResponseBytes)* - The fields to include in the message summary that appears above the parsed fields at the top of each message in Graylog. Specify as a comma-separated list of field names. ![List of required Graylog environment variables](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1048,height=287,format=webp/_astro/graylog-environment-variables.Db3fSAfE.png)
 
-     **Note:** More configuration variables are available to fine-tune the function configuration in the Graylog Lambda S3 [README ↗](https://github.com/Graylog2/graylog-s3-lambda/blob/master/README.md#step-2-specify-configuration) file.
+     **Note:** More configuration variables are available to fine-tune the function configuration in the Graylog Lambda S3 [README ↗︎](https://github.com/Graylog2/graylog-s3-lambda/blob/master/README.md#step-2-specify-configuration) file.
 6. Create an AWS S3 Trigger for the Lambda function so that the function can process each Cloudflare log field that is written. Specify the same S3 bucket from [Task 1](#task-1---preparation) and choose the *All object create events* option. Any other desired file filters can be applied here. ![Add trigger dialog with an example AWS S3 Trigger](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=602,height=469,format=webp/_astro/aws-s3-add-trigger.CKwYBqmZ.png)
-7. If your Graylog cluster is located within a VPC, you will need to [configure your Lambda function to access resources in a VPC ↗](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html). You may also need to create a [VPC endpoint for the AWS S3 service ↗](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html#create-vpc-endpoint). This allows the Lambda function to access S3 directly when running in a VPC.
+7. If your Graylog cluster is located within a VPC, you will need to [configure your Lambda function to access resources in a VPC ↗︎](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html). You may also need to create a [VPC endpoint for the AWS S3 service ↗︎](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html#create-vpc-endpoint). This allows the Lambda function to access S3 directly when running in a VPC.
 
 Note
 
@@ -103,8 +103,8 @@ The following components install with the content pack:
 
 - Cloudflare dashboards ([Task 4](#task-4---view-the-cloudflare-dashboards)).
 - A Cloudflare GELF (TCP) input that allows Graylog to receive Cloudflare logs.
-- A Cloudflare message [stream ↗](https://docs.graylog.org/en/3.1/pages/streams.html).
-- [Pipeline ↗](https://docs.graylog.org/en/3.1/pages/pipelines/pipelines.html) rules that help to process and parse Cloudflare log fields.
+- A Cloudflare message [stream ↗︎](https://docs.graylog.org/en/3.1/pages/streams.html).
+- [Pipeline ↗︎](https://docs.graylog.org/en/3.1/pages/pipelines/pipelines.html) rules that help to process and parse Cloudflare log fields.
 
 To import the content pack:
 
@@ -112,15 +112,15 @@ To import the content pack:
 2. In Graylog, go to **System** > **Content Packs** and click **Upload** in the top right. Once uploaded, the Cloudflare Logpush content pack will appear in the list of uploaded content packs. ![Uploading Graylog content packs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1179,height=198,format=webp/_astro/graylog-content-packs.D1kZ2lWL.png)
 3. Click **Install**. ![Installing Graylog content packs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1177,height=278,format=webp/_astro/graylog-content-packs-uploaded.DEaypq4Q.png)
 4. In the **Install** dialog, enter an optional install comment, and verify that the correct values are entered for all configuration parameters.
-   - A path is required for the MaxMind™️ database, available at [https://dev.maxmind.com/geoip/ ↗](https://dev.maxmind.com/geoip/).
+   - A path is required for the MaxMind™️ database, available at [https://dev.maxmind.com/geoip/ ↗︎](https://dev.maxmind.com/geoip/).
    - A path is also required for the *Threat Lookup* CSV file, extracted in [Task 1](#task-1---preparation).![Adding an install comment and configuring parameters in Install Dialog screen](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=910,height=602,format=webp/_astro/graylog-content-pack-install.B5_Hmivu.png)
 5. Once installed, your Graylog cluster will be ready to receive Cloudflare logs from the Lambda function.
 
-Refer to the Graylog Lambda S3 [README ↗](https://github.com/Graylog2/graylog-s3-lambda/blob/master/README.md) for additional information and troubleshooting tips.
+Refer to the Graylog Lambda S3 [README ↗︎](https://github.com/Graylog2/graylog-s3-lambda/blob/master/README.md) for additional information and troubleshooting tips.
 
 ## Task 4 - View the Cloudflare Dashboards
 
-You can view your dashboard in the [Graylog Cloudflare integration page ↗](https://go.graylog.com/cloudflare). The dashboards include:
+You can view your dashboard in the [Graylog Cloudflare integration page ↗︎](https://go.graylog.com/cloudflare). The dashboards include:
 
 ### Cloudflare - Snapshot
 

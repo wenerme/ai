@@ -25,22 +25,22 @@ This guide will show you how to build and deploy an AI-powered Slack bot on Clou
 
 Your Slack Agent will be a multi-tenant application, meaning a single deployment can serve multiple Slack workspaces. Each workspace gets its own isolated agent instance with dedicated storage, powered by the [Agents SDK](https://developers.cloudflare.com/agents/).
 
-You can view the full code for this example [here ↗](https://github.com/cloudflare/awesome-agents/tree/69963298b359ddd66331e8b3b378bb9ae666629f/agents/slack).
+You can view the full code for this example [here ↗︎](https://github.com/cloudflare/awesome-agents/tree/69963298b359ddd66331e8b3b378bb9ae666629f/agents/slack).
 
 ## Prerequisites
 
 Before you begin, you will need:
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
-- [Node.js ↗](https://nodejs.org/) installed (v18 or later)
-- A [Slack workspace ↗](https://slack.com/create) where you have permission to install apps
-- An [OpenAI API key ↗](https://platform.openai.com/api-keys) (or another LLM provider)
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up)
+- [Node.js ↗︎](https://nodejs.org/) installed (v18 or later)
+- A [Slack workspace ↗︎](https://slack.com/create) where you have permission to install apps
+- An [OpenAI API key ↗︎](https://platform.openai.com/api-keys) (or another LLM provider)
 
 ## 1. Create a Slack App
 
 First, create a new Slack App that your agent will use to interact with Slack:
 
-1. Go to [api.slack.com/apps ↗](https://api.slack.com/apps) and select **Create New App**.
+1. Go to [api.slack.com/apps ↗︎](https://api.slack.com/apps) and select **Create New App**.
 2. Select **From scratch**.
 3. Give your app a name (for example, "My AI Assistant") and select your workspace.
 4. Select **Create App**.
@@ -138,7 +138,7 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 	"name": "my-slack-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -167,7 +167,7 @@ The `OPENAI_BASE_URL` is optional but recommended. Using [Cloudflare AI Gateway]
 name = "my-slack-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[durable_objects.bindings]]
@@ -182,7 +182,7 @@ new_classes = [ "MyAgent" ]
 
 ## 4. Create your Slack Agent
 
-1. First, create the base `SlackAgent` class at `src/slack.ts`. This class handles OAuth, request verification, and event routing. You can view the [full implementation on GitHub ↗](https://github.com/cloudflare/awesome-agents/blob/69963298b359ddd66331e8b3b378bb9ae666629f/agents/slack/src/slack.ts).
+1. First, create the base `SlackAgent` class at `src/slack.ts`. This class handles OAuth, request verification, and event routing. You can view the [full implementation on GitHub ↗︎](https://github.com/cloudflare/awesome-agents/blob/69963298b359ddd66331e8b3b378bb9ae666629f/agents/slack/src/slack.ts).
 2. Now create your agent implementation at `src/index.ts`:
 
 ```ts
@@ -376,7 +376,7 @@ Go back to your Slack App settings:
 Now that your agent is deployed, you can share it with others:
 
 - **Single workspace**: Install it via `https://my-slack-agent.your-account.workers.dev/install`.
-- **Public distribution**: Submit your app to the [Slack App Directory ↗](https://api.slack.com/start/distributing).
+- **Public distribution**: Submit your app to the [Slack App Directory ↗︎](https://api.slack.com/start/distributing).
 
 Each workspace that installs your app will get its own isolated agent instance with dedicated storage.
 
@@ -475,7 +475,7 @@ export class MyAgent extends SlackAgent {
 
 ## Next steps
 
-- Add [Slack Interactive Components ↗](https://api.slack.com/interactivity) (buttons, modals)
+- Add [Slack Interactive Components ↗︎](https://api.slack.com/interactivity) (buttons, modals)
 - Connect your Agent to an [MCP server](https://developers.cloudflare.com/agents/model-context-protocol/apis/client-api/)
 - Add rate limiting to prevent abuse
 - Implement conversation state management

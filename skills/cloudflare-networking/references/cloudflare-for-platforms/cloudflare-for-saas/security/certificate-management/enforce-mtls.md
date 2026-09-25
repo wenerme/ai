@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/security/certificate-management/enforce-mtls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Mutual TLS (mTLS) ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) adds an extra layer of protection to application connections by validating certificates on the server and the client. When building a SaaS application, you may want to enforce mTLS to protect sensitive endpoints related to payment processing, database updates, and more.
+[Mutual TLS (mTLS) ↗︎](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) adds an extra layer of protection to application connections by validating certificates on the server and the client. When building a SaaS application, you may want to enforce mTLS to protect sensitive endpoints related to payment processing, database updates, and more.
 
 [Minimum TLS Version](#minimum-tls-version) only allows HTTPS connections from visitors that support the selected TLS protocol version or newer. Cloudflare recommends TLS 1.2 to comply with the Payment Card Industry (PCI) Security Standards Council. As a SaaS provider, you can control the Minimum TLS version for your zone as a whole, as well as for individual custom hostnames.
 
-[Cipher suites](#cipher-suites) are a combination of ciphers used to negotiate security settings during the [SSL/TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). As a SaaS provider, you can specify configurations for cipher suites on your zone as a whole and cipher suites on individual custom hostnames via the API.
+[Cipher suites](#cipher-suites) are a combination of ciphers used to negotiate security settings during the [SSL/TLS handshake ↗︎](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/). As a SaaS provider, you can specify configurations for cipher suites on your zone as a whole and cipher suites on individual custom hostnames via the API.
 
 Caution
 
@@ -28,7 +28,7 @@ However, if you want to update the Minimum TLS settings for all wildcard hostnam
 
 ## Enable mTLS
 
-Once you have [added a custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/), you can enable mTLS by using Cloudflare Access. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** and [add mTLS authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/) with a few clicks.
+Once you have [added a custom hostname](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/start/getting-started/), you can enable mTLS by using Cloudflare Access. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** and [add mTLS authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/mutual-tls-authentication/) with a few clicks.
 
 Note
 
@@ -44,7 +44,7 @@ While TLS 1.3 is the most recent and secure version, it is not supported by some
 
 ### Scope
 
-Minimum TLS version exists both as a [zone-level setting](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/) (on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page under **Minimum TLS Version**) and as a custom hostname setting. What this implies is:
+Minimum TLS version exists both as a [zone-level setting](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/minimum-tls/) (on the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page under **Minimum TLS Version**) and as a custom hostname setting. What this implies is:
 
 - For custom hostnames created via API, it is possible not to explicitly define a value for `min_tls_version`. When that is the case, whatever value is defined as your zone's minimum TLS version will be applied. To confirm whether a given custom hostname has a specific minimum TLS version set, use the following API call.
 

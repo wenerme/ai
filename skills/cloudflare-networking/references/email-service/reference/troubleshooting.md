@@ -79,7 +79,7 @@ Expected result should include:
 
 Email Service automatically generates DKIM keys for your domain, but the DNS records must be properly configured. Email Sending and Email Routing use separate DKIM selectors:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Compute** > **Email Service**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Compute** > **Email Service**.
 2. Select your domain.
 3. Check the **Settings** page for the appropriate service:
    - **Email Sending**: Go to **Email Sending** > **Settings** to find the sending DKIM record ( `cf-bounce._domainkey`).
@@ -271,7 +271,7 @@ If you continue to experience authentication issues:
 
 1. Check the [Email Service analytics](https://developers.cloudflare.com/email-service/observability/metrics-analytics/) for delivery metrics
 2. Review bounce messages for specific error codes
-3. Contact [Cloudflare Support ↗](https://dash.cloudflare.com/?to=/:account/support) with:
+3. Contact [Cloudflare Support ↗︎](https://dash.cloudflare.com/?to=/:account/support) with:
    - Domain name
    - Example email headers
    - Specific error messages

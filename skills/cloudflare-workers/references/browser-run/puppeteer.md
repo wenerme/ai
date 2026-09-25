@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/puppeteer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Puppeteer ↗](https://pptr.dev/) is one of the most popular libraries that abstract the lower-level DevTools protocol from developers and provides a high-level API that you can use to easily instrument Chrome/Chromium and automate browsing sessions. Puppeteer is used for tasks like creating screenshots, crawling pages, and testing web applications.
+[Puppeteer ↗︎](https://pptr.dev/) is one of the most popular libraries that abstract the lower-level DevTools protocol from developers and provides a high-level API that you can use to easily instrument Chrome/Chromium and automate browsing sessions. Puppeteer is used for tasks like creating screenshots, crawling pages, and testing web applications.
 
-Puppeteer typically connects to a local Chrome or Chromium browser using the DevTools port. Refer to the [Puppeteer API documentation on the `Puppeteer.connect()` method ↗](https://pptr.dev/api/puppeteer.puppeteer.connect) for more information.
+Puppeteer typically connects to a local Chrome or Chromium browser using the DevTools port. Refer to the [Puppeteer API documentation on the `Puppeteer.connect()` method ↗︎](https://pptr.dev/api/puppeteer.puppeteer.connect) for more information.
 
-The Workers team forked a version of Puppeteer and patched it to connect to the Workers Browser Run API instead. After connecting, the developers can then use the full [Puppeteer API ↗](https://github.com/cloudflare/puppeteer/blob/main/docs/api/index.md) as they would on a standard setup.
+The Workers team forked a version of Puppeteer and patched it to connect to the Workers Browser Run API instead. After connecting, the developers can then use the full [Puppeteer API ↗︎](https://github.com/cloudflare/puppeteer/blob/main/docs/api/index.md) as they would on a standard setup.
 
-Our version is open sourced and can be found in [Cloudflare's fork of Puppeteer ↗](https://github.com/cloudflare/puppeteer). The npm can be installed from [npmjs ↗](https://www.npmjs.com/) as [@cloudflare/puppeteer ↗](https://www.npmjs.com/package/@cloudflare/puppeteer):
+Our version is open sourced and can be found in [Cloudflare's fork of Puppeteer ↗︎](https://github.com/cloudflare/puppeteer). The npm can be installed from [npmjs ↗︎](https://www.npmjs.com/) as [@cloudflare/puppeteer ↗︎](https://www.npmjs.com/package/@cloudflare/puppeteer):
 
 npmyarnpnpmbun
 
@@ -42,7 +42,7 @@ bun add -d @cloudflare/puppeteer
 
 Note
 
-The current version is [`@cloudflare/puppeteer` v1.1.0 ↗](https://github.com/cloudflare/puppeteer/releases/tag/v1.1.0), based on [Puppeteer v22.13.1 ↗](https://pptr.dev/chromium-support).
+The current version is [`@cloudflare/puppeteer` v1.1.0 ↗︎](https://github.com/cloudflare/puppeteer/releases/tag/v1.1.0), based on [Puppeteer v22.13.1 ↗︎](https://pptr.dev/chromium-support).
 
 ## Use Puppeteer in a Worker
 
@@ -82,7 +82,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-This script [launches ↗](https://pptr.dev/api/puppeteer.puppeteernode.launch) the `env.MYBROWSER` browser, opens a [new page ↗](https://pptr.dev/api/puppeteer.browser.newpage), [goes to ↗](https://pptr.dev/api/puppeteer.page.goto) [https://example.com/ ↗](https://example.com/), gets the page load [metrics ↗](https://pptr.dev/api/puppeteer.page.metrics), [closes ↗](https://pptr.dev/api/puppeteer.browser.close) the browser and prints metrics in JSON.
+This script [launches ↗︎](https://pptr.dev/api/puppeteer.puppeteernode.launch) the `env.MYBROWSER` browser, opens a [new page ↗︎](https://pptr.dev/api/puppeteer.browser.newpage), [goes to ↗︎](https://pptr.dev/api/puppeteer.page.goto) [https://example.com/ ↗︎](https://example.com/), gets the page load [metrics ↗︎](https://pptr.dev/api/puppeteer.page.metrics), [closes ↗︎](https://pptr.dev/api/puppeteer.browser.close) the browser and prints metrics in JSON.
 
 ### Keep Alive
 
@@ -226,7 +226,7 @@ You should also be able to access this information in the dashboard, albeit with
 
 ## Puppeteer API
 
-The full Puppeteer API can be found in the [Cloudflare's fork of Puppeteer ↗](https://github.com/cloudflare/puppeteer/blob/main/docs/api/index.md).
+The full Puppeteer API can be found in the [Cloudflare's fork of Puppeteer ↗︎](https://github.com/cloudflare/puppeteer/blob/main/docs/api/index.md).
 
 Was this helpful?
 

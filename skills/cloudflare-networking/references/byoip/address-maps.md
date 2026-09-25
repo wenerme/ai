@@ -30,7 +30,7 @@ Both IPv4 and IPv6 addresses are supported.
 
 For zones using [Cloudflare's authoritative DNS](https://developers.cloudflare.com/dns/), Cloudflare typically responds to DNS queries for proxied hostnames with [anycast IPs](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/). However, if you [customize the IPs Cloudflare uses](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/#customize-cloudflare-ip-addresses) and use Address Maps, Cloudflare will respond with the IP address(es) on the address map.
 
-Address maps do not change [how Cloudflare reaches the configured origin](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy). The IP addresses defined on your zone's [DNS Records ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) continue to instruct Cloudflare how to reach the origin.
+Address maps do not change [how Cloudflare reaches the configured origin](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/#cloudflare-as-a-reverse-proxy). The IP addresses defined on your zone's [DNS Records ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) continue to instruct Cloudflare how to reach the origin.
 
 Caution
 

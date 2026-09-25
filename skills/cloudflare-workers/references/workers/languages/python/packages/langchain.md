@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/langchain/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[LangChain ↗](https://www.langchain.com/) is the most popular framework for building AI applications powered by large language models (LLMs).
+[LangChain ↗︎](https://www.langchain.com/) is the most popular framework for building AI applications powered by large language models (LLMs).
 
 LangChain publishes multiple Python packages. The following are provided by the Workers runtime:
 
-- [`langchain` ↗](https://pypi.org/project/langchain/) (version `0.1.8`)
-- [`langchain-core` ↗](https://pypi.org/project/langchain-core/) (version `0.1.25`)
-- [`langchain-openai` ↗](https://pypi.org/project/langchain-openai/) (version `0.0.6`)
+- [`langchain` ↗︎](https://pypi.org/project/langchain/) (version `0.1.8`)
+- [`langchain-core` ↗︎](https://pypi.org/project/langchain-core/) (version `0.1.25`)
+- [`langchain-openai` ↗︎](https://pypi.org/project/langchain-openai/) (version `0.0.6`)
 
 ## Get Started
 

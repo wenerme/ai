@@ -16,7 +16,7 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Load balancing is an add-on for your account, meaning your account needs a [billing profile](https://developers.cloudflare.com/billing/get-started/create-billing-profile/).
 
-To enable [Load Balancing ↗](https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing):
+To enable [Load Balancing ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/traffic/load-balancing):
 
 1. In the Cloudflare dashboard, go to the **Load Balancing** page. [Go to **Load Balancing** ↗](https://dash.cloudflare.com/?to=/:account/load-balancing)
 2. Select **Enable Load Balancing** in the **Status** column.

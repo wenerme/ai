@@ -26,11 +26,11 @@ Your application can be made up of multiple Workers that work together and deliv
 
 ## Runtime
 
-The [Workers runtime ↗](https://blog.cloudflare.com/workerd-open-source-workers-runtime) is designed to be JavaScript-standards compliant and web-interoperable. The Workers runtime uses the V8 engine — the same engine used by Chromium and Node.js, and has an open-source version, [`workerd` ↗](https://github.com/cloudflare/workerd).
+The [Workers runtime ↗︎](https://blog.cloudflare.com/workerd-open-source-workers-runtime) is designed to be JavaScript-standards compliant and web-interoperable. The Workers runtime uses the V8 engine — the same engine used by Chromium and Node.js, and has an open-source version, [`workerd` ↗︎](https://github.com/cloudflare/workerd).
 
 ## Execution
 
-The Cloudflare Workers runtime runs in every data center of [Cloudflare's global network ↗](https://www.cloudflare.com/network/). Every Worker run within its own isolate. Isolate architecture is what makes Workers efficient.
+The Cloudflare Workers runtime runs in every data center of [Cloudflare's global network ↗︎](https://www.cloudflare.com/network/). Every Worker run within its own isolate. Isolate architecture is what makes Workers efficient.
 
 ### Isolates
 
@@ -38,7 +38,7 @@ Workers uses [isolates](https://developers.cloudflare.com/workers/reference/how-
 
 A single instance of the runtime can run hundreds or thousands of isolates, seamlessly switching between them. Each isolate's memory is completely isolated, so each piece of code is protected from other untrusted or user-written code on the runtime. Isolates are also designed to start very quickly. Instead of creating a virtual machine for each function, an isolate is created within an existing environment. This model eliminates the cold starts of the virtual machine model.
 
-Unlike other serverless providers which use [containerized processes ↗](https://www.cloudflare.com/learning/serverless/serverless-vs-containers/) each running an instance of a language runtime, Workers pays the overhead of a JavaScript runtime once on the start of a container. Workers processes are able to run essentially limitless scripts with almost no individual overhead. Any given isolate can start around a hundred times faster than a Node process on a container or virtual machine. Notably, on startup isolates consume an order of magnitude less memory.
+Unlike other serverless providers which use [containerized processes ↗︎](https://www.cloudflare.com/learning/serverless/serverless-vs-containers/) each running an instance of a language runtime, Workers pays the overhead of a JavaScript runtime once on the start of a container. Workers processes are able to run essentially limitless scripts with almost no individual overhead. Any given isolate can start around a hundred times faster than a Node process on a container or virtual machine. Notably, on startup isolates consume an order of magnitude less memory.
 
 Scheduling and routing
 
@@ -174,17 +174,17 @@ In the next module, you build and deploy your first Worker to the Cloudflare glo
 
 ## Related resources
 
-- [Cloud computing without containers ↗](https://blog.cloudflare.com/cloud-computing-without-containers) - A blog post detailing the containers versus isolates difference in the context of Cloudflare.
+- [Cloud computing without containers ↗︎](https://blog.cloudflare.com/cloud-computing-without-containers) - A blog post detailing the containers versus isolates difference in the context of Cloudflare.
 - [How Workers works](https://developers.cloudflare.com/workers/reference/how-workers-works/) - Learn the difference between the Workers runtime versus traditional browsers and Node.js.
 - [How the cache works](https://developers.cloudflare.com/workers/reference/how-the-cache-works/) - Learn how Workers interacts with the Cloudflare cache.
 
 ## Feedback
 
-To improve this learning path or report any missing or incorrect information, [file an issue on GitHub ↗](https://github.com/cloudflare/cloudflare-docs/issues/new/choose).
+To improve this learning path or report any missing or incorrect information, [file an issue on GitHub ↗︎](https://github.com/cloudflare/cloudflare-docs/issues/new/choose).
 
 ## Community
 
-Connect with the [Cloudflare Developer Platform community on Discord ↗](https://discord.cloudflare.com) to ask questions, share what you are building, and discuss the platform with other developers.
+Connect with the [Cloudflare Developer Platform community on Discord ↗︎](https://discord.cloudflare.com) to ask questions, share what you are building, and discuss the platform with other developers.
 
 Was this helpful?
 

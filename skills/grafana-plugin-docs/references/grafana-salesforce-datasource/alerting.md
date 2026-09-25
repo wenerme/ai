@@ -120,9 +120,9 @@ This example alerts when there are overdue tasks:
 4. Set evaluation to run every 15 minutes.
 5. Save the rule.
 
-## Example: Lead conversion rate alert
+## Example: Converted lead count alert
 
-This example alerts when lead conversion falls below an acceptable rate. First, create a query that returns the count of converted leads:
+This example alerts when the number of converted leads drops below an acceptable level. The query returns the count of leads converted this week:
 
 1. Create a new alert rule.
 2. Configure the query:
@@ -140,6 +140,51 @@ This example alerts when lead conversion falls below an acceptable rate. First, 
    - **Threshold**: Is below 10
 4. Set evaluation to run daily.
 5. Save the rule.
+
+## Example: Average deal size alert
+
+This example alerts when the average value of open opportunities in the current quarter falls below a target:
+
+1. Create a new alert rule.
+2. Configure the query:
+
+   soql [Copy code to clipboard] Copy
+
+   ```soql
+   SELECT AVG(Amount) FROM Opportunity
+   WHERE IsClosed = false
+     AND CloseDate = THIS_QUARTER
+   ```
+3. Add expressions:
+
+   - **Reduce**: Last value
+   - **Threshold**: Is below 25000
+4. Set evaluation to run every hour.
+5. Save the rule.
+
+## Example: Rolling time window alert
+
+This example uses the `$__timeFrom` and `$__timeTo` macros to alert on cases created within the alert query’s time range, so the window follows the evaluation period instead of a fixed date:
+
+1. Create a new alert rule.
+2. Configure the query:
+
+   soql [Copy code to clipboard] Copy
+
+   ```soql
+   SELECT COUNT() FROM Case
+   WHERE CreatedDate >= $__timeFrom
+     AND CreatedDate <= $__timeTo
+   ```
+3. Set the alert query time range to the window you want to monitor, such as `now-1h` to `now`.
+4. Add expressions:
+
+   - **Reduce**: Last value
+   - **Threshold**: Is above 100
+5. Set evaluation to run every 5 minutes.
+6. Save the rule.
+
+For more information about the available macros, refer to [Salesforce query editor](/docs/plugins/grafana-salesforce-datasource/latest/query-editor/#macros).
 
 ## Best practices
 
@@ -166,6 +211,10 @@ SOQL provides [date literals](https://developer.salesforce.com/docs/atlas.en-us.
 - `THIS_MONTH`, `LAST_MONTH`, `NEXT_MONTH`
 - `THIS_QUARTER`, `LAST_QUARTER`, `NEXT_QUARTER`
 - `THIS_YEAR`, `LAST_YEAR`, `NEXT_YEAR`
+
+### Use time macros for rolling windows
+
+The Salesforce data source supports the `$__timeFrom` and `$__timeTo` macros, which resolve to the start and end of the alert query’s time range. Use them when you want the alert to evaluate a rolling window that follows the evaluation period, rather than a fixed date literal. The `$__quarterStart` and `$__quarterEnd` macros resolve to the fiscal quarter derived from your Salesforce fiscal year settings. For more information, refer to [Salesforce query editor](/docs/plugins/grafana-salesforce-datasource/latest/query-editor/#macros).
 
 ### Handle no data conditions
 
@@ -195,7 +244,7 @@ Common issues include:
 
 - **Alert not firing**: Ensure your query returns numeric data using aggregate functions.
 - **Evaluation errors**: Check that your SOQL syntax is valid and the query executes successfully in Explore.
-- **Timeouts**: Simplify complex queries or increase the timeout setting in the data source configuration.
+- **Timeouts**: The data source doesn’t expose a query timeout setting, so reduce the amount of data the query returns. Add selective `WHERE` filters or return an aggregate value instead of many rows.
 
 ## Additional resources
 

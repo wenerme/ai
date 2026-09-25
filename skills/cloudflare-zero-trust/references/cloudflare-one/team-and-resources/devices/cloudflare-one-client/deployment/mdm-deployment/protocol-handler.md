@@ -58,7 +58,7 @@ You can configure your browser to automatically launch the Cloudflare One Client
 
 ### Chromium-based browsers
 
-Chromium-based browsers such as Google Chrome and Microsoft Edge have a policy setting called [AutoLaunchProtocolsFromOrigins ↗](https://learn.microsoft.com/en-us/DeployEdge/microsoft-edge-policies#autolaunchprotocolsfromorigins). This setting takes in two parameters: a protocol for the browser to launch and the origins that are allowed to launch it. For the browser to launch the Cloudflare One Client, you need to set the protocol to `com.cloudflare.warp` and the origin to your Cloudflare Zero Trust team domain (`https://<your-team-name>.cloudflareaccess.com`).
+Chromium-based browsers such as Google Chrome and Microsoft Edge have a policy setting called [AutoLaunchProtocolsFromOrigins ↗︎](https://learn.microsoft.com/en-us/DeployEdge/microsoft-edge-policies#autolaunchprotocolsfromorigins). This setting takes in two parameters: a protocol for the browser to launch and the origins that are allowed to launch it. For the browser to launch the Cloudflare One Client, you need to set the protocol to `com.cloudflare.warp` and the origin to your Cloudflare Zero Trust team domain (`https://<your-team-name>.cloudflareaccess.com`).
 
 On Windows, you can configure `AutoLaunchProtocolsFromOrigins` by adding a new registry key.
 
@@ -100,7 +100,7 @@ On macOS, you can configure `AutoLaunchProtocolsFromOrigins` by deploying a prop
    ```
 
    Be sure to replace `<your-team-name>` with your actual Zero Trust team name.
-3. Some MDMs require converting the `.plist` to a `.mobileconfig` before pushing it to a device. You can use a [file converter ↗](https://github.com/timsutton/mcxToProfile) or modify the following example `com.google.Chrome.mobileconfig`:
+3. Some MDMs require converting the `.plist` to a `.mobileconfig` before pushing it to a device. You can use a [file converter ↗︎](https://github.com/timsutton/mcxToProfile) or modify the following example `com.google.Chrome.mobileconfig`:
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
@@ -173,7 +173,7 @@ On macOS, you can configure `AutoLaunchProtocolsFromOrigins` by deploying a prop
 4. Upload the `.plist` or `.mobileconfig` file to your preferred MDM.
 5. Deploy the configuration profile to your devices.
 
-For more information on configuring browser policies on macOS, refer to the [Google Chrome ↗](https://support.google.com/chrome/a/answer/9020077?hl=en&ref_topic=7650028&sjid=15337530832025656704-NA) or [Microsoft Edge ↗](https://learn.microsoft.com/en-us/deployedge/configure-microsoft-edge-on-mac) documentation.
+For more information on configuring browser policies on macOS, refer to the [Google Chrome ↗︎](https://support.google.com/chrome/a/answer/9020077?hl=en&ref_topic=7650028&sjid=15337530832025656704-NA) or [Microsoft Edge ↗︎](https://learn.microsoft.com/en-us/deployedge/configure-microsoft-edge-on-mac) documentation.
 
 Was this helpful?
 

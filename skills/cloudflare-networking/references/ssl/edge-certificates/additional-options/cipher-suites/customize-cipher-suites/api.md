@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/customize-cipher-suites/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cipher suites are a combination of ciphers used to negotiate security settings during the [SSL/TLS handshake ↗](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/) (and therefore separate from the [SSL/TLS protocol](https://developers.cloudflare.com/ssl/reference/protocols/)).
+Cipher suites are a combination of ciphers used to negotiate security settings during the [SSL/TLS handshake ↗︎](https://www.cloudflare.com/learning/ssl/what-happens-in-a-tls-handshake/) (and therefore separate from the [SSL/TLS protocol](https://developers.cloudflare.com/ssl/reference/protocols/)).
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ Note that:
 - Updating the cipher suites will result in certificates being redeployed.
 - Cipher suites are used in combination with other [SSL/TLS settings](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/#related-ssltls-settings).
 - You cannot set specific TLS 1.3 ciphers. Instead, you can [enable TLS 1.3](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/tls-13/#enable-tls-13) for your entire zone and Cloudflare will use all applicable [TLS 1.3 cipher suites](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/).
-- Each cipher suite also supports a specific algorithm (RSA or ECDSA) so you should consider the algorithms in use by your edge certificates when making your ciphers selection. You can find this information under each certificate listed on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page.
+- Each cipher suite also supports a specific algorithm (RSA or ECDSA) so you should consider the algorithms in use by your edge certificates when making your ciphers selection. You can find this information under each certificate listed on the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page.
 - It is not possible to configure minimum TLS version nor cipher suites for [Cloudflare Pages](https://developers.cloudflare.com/pages/) hostnames.
 - If you use Windows you might need to adjust the `curl` syntax, refer to [Making API calls on Windows](https://developers.cloudflare.com/fundamentals/api/how-to/make-api-calls/#making-api-calls-on-windows) for further guidance.
 
@@ -42,8 +42,8 @@ If setting up a per-hostname cipher suite customization, make sure that the host
 1. Decide which cipher suites you want to specify and which ones you want to disable (meaning they will not be included in your selection).
 
    Below you will find samples covering the recommended ciphers [by security level](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/recommendations/) and [compliance standards](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/compliance-status/), but you can also refer to the [full list](https://developers.cloudflare.com/ssl/edge-certificates/additional-options/cipher-suites/supported-cipher-suites/) of supported ciphers and customize your choice.
-2. Log in to the Cloudflare dashboard and get your Global API Key in  [**My Profile** > **API Tokens** ↗](https://dash.cloudflare.com/?to=/:account/profile/api-tokens/).
-3. Get the Zone ID from the [Overview page ↗](https://dash.cloudflare.com/?to=/:account/:zone/) of the domain you want to specify cipher suites for.
+2. Log in to the Cloudflare dashboard and get your Global API Key in  [**My Profile** > **API Tokens** ↗︎](https://dash.cloudflare.com/?to=/:account/profile/api-tokens/).
+3. Get the Zone ID from the [Overview page ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/) of the domain you want to specify cipher suites for.
 4. Make an API call to either the [Edit zone setting](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) endpoint or the [Edit TLS setting for hostname](https://developers.cloudflare.com/api/resources/hostnames/subresources/settings/subresources/tls/methods/update/) endpoint, specifying `ciphers` in the URL. List your array of chosen cipher suites in the `value` field.
 
 <details>

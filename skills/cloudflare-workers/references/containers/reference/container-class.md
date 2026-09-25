@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/reference/container-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [`Container` class ↗](https://github.com/cloudflare/containers) from [`@cloudflare/containers` ↗](https://www.npmjs.com/package/@cloudflare/containers) is the most common way to interact with container instances from a Worker.
+The [`Container` class ↗︎](https://github.com/cloudflare/containers) from [`@cloudflare/containers` ↗︎](https://www.npmjs.com/package/@cloudflare/containers) is the most common way to interact with container instances from a Worker.
 
 **`Container` extends [`DurableObject`](https://developers.cloudflare.com/durable-objects/api/base/).** The Durable Object manages routing, persistent state, and lifecycle hooks, while the container process runs your image inside a Linux VM. Because your subclass is a Durable Object, you have access to the full Durable Object API — including [`this.ctx.storage`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) for persistent SQLite-backed storage and [`this.ctx.id`](https://developers.cloudflare.com/durable-objects/api/id/) for the unique instance identifier. Use Durable Object storage to persist state that should survive container restarts, such as configuration, user data, or task results.
 
@@ -868,7 +868,7 @@ schedule<T>(when: Date | number, callback: string, payload?: T): Promise<Schedul
 - `time` - Unix timestamp in seconds when the task will run.
 - `delayInSeconds` - Delay in seconds when `type` is `'delayed'`.
 
-Do not override [`alarm()` ↗](https://developers.cloudflare.com/durable-objects/api/alarms/) directly. The `Container` class uses the alarm handler to manage the container lifecycle, so use [`schedule()`](#schedule) instead.
+Do not override [`alarm()` ↗︎](https://developers.cloudflare.com/durable-objects/api/alarms/) directly. The `Container` class uses the alarm handler to manage the container lifecycle, so use [`schedule()`](#schedule) instead.
 
 The following example schedules a recurring health report starting at container startup:
 

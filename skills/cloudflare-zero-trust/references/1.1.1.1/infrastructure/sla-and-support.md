@@ -16,7 +16,7 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 As you use 1.1.1.1 in your infrastructure or service, note that dedicated technical support is limited.
 
-You are subject to the [Cloudflare Website and Online Services Terms of Use ↗](https://www.cloudflare.com/website-terms/) and no service level agreements (SLAs) are provided.
+You are subject to the [Cloudflare Website and Online Services Terms of Use ↗︎](https://www.cloudflare.com/website-terms/) and no service level agreements (SLAs) are provided.
 
 If you need SLAs and dedicated support, consider using [Cloudflare Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) instead. Gateway adds policy-based DNS filtering and management.
 

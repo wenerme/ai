@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/infrastructure/extended-dns-error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Extended DNS Error Codes ↗](https://www.rfc-editor.org/rfc/rfc8914.html) (defined in RFC 8914) is a method to return additional information about the cause of DNS errors. When a DNS query fails, the standard response code (such as `SERVFAIL`) often does not explain *why* it failed. Extended DNS Error Codes solve this by attaching a more specific error code and descriptive text to the response, so you can identify the exact cause without guesswork.
+[Extended DNS Error Codes ↗︎](https://www.rfc-editor.org/rfc/rfc8914.html) (defined in RFC 8914) is a method to return additional information about the cause of DNS errors. When a DNS query fails, the standard response code (such as `SERVFAIL`) often does not explain *why* it failed. Extended DNS Error Codes solve this by attaching a more specific error code and descriptive text to the response, so you can identify the exact cause without guesswork.
 
 1.1.1.1 supports Extended DNS Error Codes. Below is a list of error codes 1.1.1.1 returns, what they mean, and steps you may want to take to resolve the issue. Many of these errors relate to DNSSEC (DNS Security Extensions) — the set of protocols that add cryptographic signatures to DNS records to prevent tampering. Extended DNS Error Codes appear automatically in the `OPT PSEUDOSECTION` of a `dig` response when the server includes them, for example:
 

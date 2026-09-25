@@ -18,7 +18,7 @@ Amazon Cognito provides SSO identity management for end users of web and mobile 
 
 ## Prerequisites
 
-- An Amazon Cognito [user pool ↗](https://docs.aws.amazon.com/cognito/latest/developerguide/tutorial-create-user-pool.html)
+- An Amazon Cognito [user pool ↗︎](https://docs.aws.amazon.com/cognito/latest/developerguide/tutorial-create-user-pool.html)
 
 ## Set up Amazon Cognito (OIDC)
 
@@ -37,8 +37,8 @@ To retrieve those values:
 1. Log in to your Amazon Cognito admin portal.
 2. Go to **User pools** and select your user pool.
 3. Select the **App integration** tab.
-4. Under **Domain**, copy your user pool domain or [configure a new domain ↗](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html).
-5. Make note of the following [Amazon Cognito OIDC endpoints ↗](https://docs.aws.amazon.com/cognito/latest/developerguide/federation-endpoints.html):
+4. Under **Domain**, copy your user pool domain or [configure a new domain ↗︎](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-assign-domain.html).
+5. Make note of the following [Amazon Cognito OIDC endpoints ↗︎](https://docs.aws.amazon.com/cognito/latest/developerguide/federation-endpoints.html):
    - **Auth URL**: `https://<your user pool domain>/oauth2/authorize`
    - **Token URL**: `https://<your user pool domain>/oauth2/token`
    - **Certificate (key) URL**: `https://cognito-idp.<region>.amazonaws.com/<your user pool ID>/.well-known/jwks.json` (This is the **Token signing key URL** shown in **User pool overview**.)
@@ -53,7 +53,7 @@ To retrieve those values:
        https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
        ```
 
-       You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+       You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
     2. Select **Identity providers** to use with this app client. At minimum, enable **Cognito user pool** as a provider.
     3. For **OAuth 2.0 grant types**, select **Authorization code grant**.
     4. For **OpenID Connect scopes**, select **OpenID**, **Email**, and **Profile**.
@@ -63,11 +63,11 @@ To retrieve those values:
 
 ### 2. Add Amazon Cognito as an identity provider
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **OpenID Connect**.
 4. Name your identity provider and fill in the required fields with the information obtained from Amazon Cognito.
-5. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
+5. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/) if the protocol is supported by your IdP. PKCE will be performed on all login attempts.
 6. (Optional) Under **Optional configurations**, enter [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims) that you wish to add to users' identity.
 7. Select **Save**.
 

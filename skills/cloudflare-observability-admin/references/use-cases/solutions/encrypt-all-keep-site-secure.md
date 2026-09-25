@@ -74,7 +74,7 @@ For details about working with certificates programmatically, refer to [API call
 
 Note
 
-If you do not see your server listed, search the [DigiCert documentation ↗](https://www.digicert.com/search-results) or contact your hosting provider.
+If you do not see your server listed, search the [DigiCert documentation ↗︎](https://www.digicert.com/search-results) or contact your hosting provider.
 
 ### Set your encryption mode to Full (strict)
 
@@ -108,7 +108,7 @@ If only some parts of your application can support HTTPS traffic, do not turn on
 
 1. In the Cloudflare dashboard, go to the **SSL/TLS Overview** page. [Go to **Overview** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls)
 2. Make sure that your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) is not set to **Off**. When the encryption mode is Off, the Always Use HTTPS option is not visible in the dashboard.
-3. Go to the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page.
+3. Go to the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page.
 4. Turn on **Always Use HTTPS**.
 
 1. Make sure that your [SSL/TLS encryption mode](https://developers.cloudflare.com/ssl/origin-configuration/ssl-modes/) is not set to **Off**.
@@ -174,7 +174,7 @@ Before turning on HSTS, confirm these prerequisites:
 5. Configure the HSTS settings:
    - **Max Age Header**: Choose a duration (start with 6 months, increase to 12 months after confirming stability).
    - **Apply HSTS policy to subdomains (includeSubDomains)**: Turn on if all your subdomains support HTTPS. Subdomains without HTTPS become inaccessible when this is enabled.
-   - **Preload**: Turn on only after setting Max Age Header to 12 months. Preload inclusion prevents downgrade attacks on the first visit. Submit your domain at [hstspreload.org ↗](https://hstspreload.org) after turning on preload.
+   - **Preload**: Turn on only after setting Max Age Header to 12 months. Preload inclusion prevents downgrade attacks on the first visit. Submit your domain at [hstspreload.org ↗︎](https://hstspreload.org) after turning on preload.
    - **No-Sniff Header**: Sends the `X-Content-Type-Options: nosniff` header. Turn on to prevent browsers from MIME-type sniffing.
 6. Select **Save**.
 
@@ -233,7 +233,7 @@ The SSL/TLS Recommender is deprecated in favor of Automatic SSL/TLS. If you prev
 
 ### Test with external tools
 
-Use [SSL Labs Server Test ↗](https://www.ssllabs.com/ssltest/) to verify your HTTPS configuration from outside the Cloudflare network. Enter your domain and review the report. An A or A+ grade indicates that your TLS configuration, certificate chain, and protocol support meet current security standards.
+Use [SSL Labs Server Test ↗︎](https://www.ssllabs.com/ssltest/) to verify your HTTPS configuration from outside the Cloudflare network. Enter your domain and review the report. An A or A+ grade indicates that your TLS configuration, certificate chain, and protocol support meet current security standards.
 
 To test supported TLS versions, attempt a request to your website or application while specifying a TLS version.
 

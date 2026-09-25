@@ -63,7 +63,7 @@ The next step involves configuring a site-to-site IPsec VPN connection on your S
 4. In the **Encryption** group, make sure you have the following settings:
    - **Authentication type**: **Preshared key**
 5. In **Gateway settings**, make sure you have the following settings:
-   - **Gateway address**: Enter one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+   - **Gateway address**: Enter one of the Cloudflare anycast IP addresses assigned to your account, available in [Leased IPs ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
    - **Local ID type**: Add the [IKE ID](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#supported-ike-id-formats) provided by Cloudflare.
 
 ![Configure an IPsec tunnel.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1628,height=1532,format=webp/_astro/2-ipsec-tunnel.EuRwmMGh.png)
@@ -129,7 +129,7 @@ Start by configuring a GRE tunnel between SFOS and the Cloudflare anycast IP add
    system gre tunnel add name <NAME_OF_YOUR_GRE_TUNNEL> local-gw <WAN_PORT> remote-gw <REMOTE_GATEWAY_IP_ADDRESS> local-ip <LOCAL_IP_ADDRESS> remote-ip <REMOTE_IP_ADDRESS>
    ```
 
-   ![Access the CLI to configure a GRE tunnel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1452,height=218,format=webp/_astro/1-gre-connection.BwxtP6sM.png) For more details, refer to the [Sophos Firewall knowledge base ↗](https://support.sophos.com/support/s/article/KB-000035813?language=en_US).
+   ![Access the CLI to configure a GRE tunnel](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1452,height=218,format=webp/_astro/1-gre-connection.BwxtP6sM.png) For more details, refer to the [Sophos Firewall knowledge base ↗︎](https://support.sophos.com/support/s/article/KB-000035813?language=en_US).
 
 ### 2. Add a GRE or SD-WAN route to redirect traffic through the GRE tunnel
 

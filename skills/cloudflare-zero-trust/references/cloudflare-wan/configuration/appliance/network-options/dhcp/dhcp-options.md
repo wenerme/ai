@@ -104,7 +104,7 @@ Each option is defined by three fields:
 
 ### Restricted option codes
 
-- Options `0` and `255` are reserved by [RFC 2132 ↗](https://www.rfc-editor.org/rfc/rfc2132) and cannot be configured.
+- Options `0` and `255` are reserved by [RFC 2132 ↗︎](https://www.rfc-editor.org/rfc/rfc2132) and cannot be configured.
 - Options `3`, `6`, and `51` are managed by the Cloudflare One Appliance and cannot be configured, since they conflict with connector-managed configuration (default gateway, DNS servers, and lease time).
 - Each option code can only be used once per LAN. Duplicate option codes are rejected.
 
@@ -122,7 +122,7 @@ The most frequently used network boot options are:
 | 209 | `text` | PXELINUX configuration filename or path, loaded through TFTP. |
 | 210 | `text` | PXELINUX TFTP path prefix, prepended to option 209. |
 
-For a complete list of standard DHCP option codes, refer to the [IANA BOOTP/DHCP parameters registry ↗](https://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml).
+For a complete list of standard DHCP option codes, refer to the [IANA BOOTP/DHCP parameters registry ↗︎](https://www.iana.org/assignments/bootp-dhcp-parameters/bootp-dhcp-parameters.xhtml).
 
 ## Validation and apply behavior
 

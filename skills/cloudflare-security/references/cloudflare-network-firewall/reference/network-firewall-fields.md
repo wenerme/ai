@@ -50,7 +50,7 @@ The raw ICMP packet as a list of bytes. It should be used in conjunction with th
 
 `icmp.type` `Number`
 
-The [ICMP type ↗](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#header_type). Only applies to ICMP packets.
+The [ICMP type ↗︎](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#header_type). Only applies to ICMP packets.
 
 Example value: `8`
 
@@ -60,7 +60,7 @@ Example value: `8`
 
 `icmp.code` `Number`
 
-The [ICMP code ↗](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#header_code). Only applies to ICMP packets.
+The [ICMP code ↗︎](https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#header_code). Only applies to ICMP packets.
 
 Example value: `2`
 
@@ -88,11 +88,11 @@ Example value: `192.0.2.2`
 
 `ip.dst.country` `String`
 
-Represents the 2-letter country code associated with the server IP address in [ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search/code/) format.
+Represents the 2-letter country code associated with the server IP address in [ISO 3166-1 Alpha 2 ↗︎](https://www.iso.org/obp/ui/#search/code/) format.
 
 Example value: `GB`
 
-For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) on Wikipedia.
+For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗︎](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) on Wikipedia.
 
 ---
 
@@ -100,11 +100,11 @@ For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alph
 
 `ip.src.country` `String`
 
-Represents the 2-letter country code associated with the client IP address in [ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search/code/) format.
+Represents the 2-letter country code associated with the client IP address in [ISO 3166-1 Alpha 2 ↗︎](https://www.iso.org/obp/ui/#search/code/) format.
 
 Example value: `GB`
 
-For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) on Wikipedia.
+For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗︎](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) on Wikipedia.
 
 For Cloudflare Network Firewall, the `ip.geoip.country` field (which is deprecated) will match on either source or destination address. The `ip.geoip.country` field is still available for new and existing rules, but you should use the `ip.src.country` and/or `ip.dst.country` fields instead.
 
@@ -134,7 +134,7 @@ Example value: `60`
 
 `ip.opt.type` `Number`
 
-The first byte of [IP options field ↗](https://en.wikipedia.org/wiki/IPv4#Options), if the options field is set.
+The first byte of [IP options field ↗︎](https://en.wikipedia.org/wiki/IPv4#Options), if the options field is set.
 
 Example value: `25`
 
@@ -162,11 +162,11 @@ The source address of the IP Packet.
 
 `ip.src.country` `String`
 
-Represents the 2-letter country code associated with the client IP address in [ISO 3166-1 Alpha 2 ↗](https://www.iso.org/obp/ui/#search/code/) format.
+Represents the 2-letter country code associated with the client IP address in [ISO 3166-1 Alpha 2 ↗︎](https://www.iso.org/obp/ui/#search/code/) format.
 
 Example value: `GB`
 
-For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) on Wikipedia.
+For more information on the ISO 3166-1 Alpha 2 format, refer to [ISO 3166-1 Alpha 2 ↗︎](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) on Wikipedia.
 
 ---
 
@@ -184,7 +184,7 @@ Example values: `54`
 
 `sip` `Boolean`
 
-Determines if packets are valid L7 protocol [SIP ↗](https://datatracker.ietf.org/doc/html/rfc2543). Requires UDP packets to operate.
+Determines if packets are valid L7 protocol [SIP ↗︎](https://datatracker.ietf.org/doc/html/rfc2543). Requires UDP packets to operate.
 
 Use a guard clause as shown below to ensure the packet is UDP (wirefilter):
 

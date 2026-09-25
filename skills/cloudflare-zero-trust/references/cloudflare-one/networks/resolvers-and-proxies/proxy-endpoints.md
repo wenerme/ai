@@ -96,7 +96,7 @@ Authorization endpoint
 
 To add an <a href="#authorization-endpoint">authorization endpoint</a>:
 
-1. In <a href="https://one.dash.cloudflare.com/">Cloudflare One ↗</a>, go to **Networks** &gt; **Resolvers &amp; Proxies**, then go to **Proxy endpoints**.
+1. In <a href="https://one.dash.cloudflare.com/">Cloudflare One ↗︎</a>, go to **Networks** &gt; **Resolvers &amp; Proxies**, then go to **Proxy endpoints**.
 2. In **Proxy endpoints**, select **Add an endpoint**.
 3. Choose **Add an authorization endpoint**.
 4. Name your endpoint.
@@ -117,7 +117,7 @@ Source IP endpoint
 
 To add a <a href="#source-ip-endpoint">source IP endpoint</a>:
 
-1. In <a href="https://one.dash.cloudflare.com/">Cloudflare One ↗</a>, go to **Networks** &gt; **Resolvers &amp; Proxies**, then go to **Proxy endpoints**.
+1. In <a href="https://one.dash.cloudflare.com/">Cloudflare One ↗︎</a>, go to **Networks** &gt; **Resolvers &amp; Proxies**, then go to **Proxy endpoints**.
 2. In **Proxy endpoints**, select **Add an endpoint**.
 3. Choose **Add a source IP endpoint**.
 4. Name your endpoint.
@@ -293,7 +293,7 @@ When you create a PAC file in Cloudflare One, Cloudflare will host it in a publi
 
 To create a hosted PAC file:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies**.
 2. Select **Proxy endpoints**.
 3. [Create a proxy endpoint](#1-create-a-proxy-endpoint) or select an existing one, then select **Edit**.
 4. Select **Add PAC files**.
@@ -410,7 +410,7 @@ You may need to configure your organization's firewall to allow your users to co
 
 To get the domain of a proxy endpoint:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies** > **Proxy endpoints**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies** > **Proxy endpoints**.
 2. Choose the proxy endpoint. Select **Edit**.
 3. In **Proxy Endpoint**, copy the domain.
 
@@ -510,7 +510,7 @@ You can modify proxy endpoint settings after creation.
 
 ### Edit authorization endpoint
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies** > **Proxy endpoints**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies** > **Proxy endpoints**.
 2. Locate your authorization endpoint (indicated by **Authorization** under **Type**).
 3. Select the three dots, then select **Configure**.
 4. Choose what to edit:
@@ -521,7 +521,7 @@ You can modify proxy endpoint settings after creation.
 
 ### Edit source IP endpoint
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies** > **Proxy endpoints**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Networks** > **Resolvers & Proxies** > **Proxy endpoints**.
 2. Locate your source IP endpoint (indicated by **Source IP** under **Type**).
 3. Select the three dots, then select **Configure**.
 4. Update the endpoint name or modify the allowed source IP addresses.
@@ -585,7 +585,7 @@ Each type of proxy endpoint supports the following features:
 | **[HTTP3](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/http3/)** | — | — |
 | **[Identity-based policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/identity-selectors/)** | — | ✅ |
 | **mTLS authentication** | — | — |
-| **[Happy Eyeballs ↗](https://datatracker.ietf.org/doc/html/rfc6555)** | — | — |
+| **[Happy Eyeballs ↗︎](https://datatracker.ietf.org/doc/html/rfc6555)** | — | — |
 | **Browser HTTPS auto-upgrade** | —<sup>[3](#user-content-fn-3)</sup> | —<sup>[3](#user-content-fn-3)</sup> |
 
 ### Session duration

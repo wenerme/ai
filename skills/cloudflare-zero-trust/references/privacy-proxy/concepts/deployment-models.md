@@ -44,7 +44,7 @@ Single-hop deployment works well when:
 
 #### Example: Microsoft Edge Secure Network
 
-[Microsoft Edge Secure Network ↗](https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network/) uses single-hop deployment. The Edge browser connects directly to Cloudflare's Privacy Proxy, which handles authentication via Privacy Pass and proxies traffic to destination servers. Users get protection from network observers and destination servers without needing to configure additional infrastructure.
+[Microsoft Edge Secure Network ↗︎](https://blog.cloudflare.com/cloudflare-now-powering-microsoft-edge-secure-network/) uses single-hop deployment. The Edge browser connects directly to Cloudflare's Privacy Proxy, which handles authentication via Privacy Pass and proxies traffic to destination servers. Users get protection from network observers and destination servers without needing to configure additional infrastructure.
 
 ---
 
@@ -90,7 +90,7 @@ Double-hop deployment works well when:
 
 #### Example: iCloud Private Relay
 
-[iCloud Private Relay ↗](https://blog.cloudflare.com/icloud-private-relay/) uses double-hop deployment. Apple operates the first-hop proxy, which authenticates users with their Apple ID and encrypts the destination. Cloudflare operates the second-hop proxy, which decrypts the destination and connects to the server. Apple knows who the user is but not where they browse. Cloudflare knows the destinations but not who is browsing.
+[iCloud Private Relay ↗︎](https://blog.cloudflare.com/icloud-private-relay/) uses double-hop deployment. Apple operates the first-hop proxy, which authenticates users with their Apple ID and encrypts the destination. Cloudflare operates the second-hop proxy, which decrypts the destination and connects to the server. Apple knows who the user is but not where they browse. Cloudflare knows the destinations but not who is browsing.
 
 ---
 
@@ -122,7 +122,7 @@ If your threat model requires that no single party sees both user identity and b
 
 Double-hop requires you to operate and maintain a proxy. If you prefer a fully managed solution, use single-hop.
 
-[Contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to discuss which deployment model fits your use case.
+[Contact us ↗︎](https://www.cloudflare.com/lp/privacy-edge/) to discuss which deployment model fits your use case.
 
 Was this helpful?
 

@@ -48,9 +48,9 @@ If you prefer to deploy step by step, scaffold the project and deploy manually.
 
 **Prerequisites:**
 
-- A <a href="https://dash.cloudflare.com/sign-up/workers-and-pages">Cloudflare account ↗</a> with the Containers / Sandbox beta enabled.
-- <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Node.js ↗</a> and npm.
-- <a href="https://www.docker.com/">Docker ↗</a> running locally — <code>wrangler deploy</code> builds a container image from the bridge <code>Dockerfile</code>.
+- A <a href="https://dash.cloudflare.com/sign-up/workers-and-pages">Cloudflare account ↗︎</a> with the Containers / Sandbox beta enabled.
+- <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Node.js ↗︎</a> and npm.
+- <a href="https://www.docker.com/">Docker ↗︎</a> running locally — <code>wrangler deploy</code> builds a container image from the bridge <code>Dockerfile</code>.
 
 **Steps:**
 
@@ -95,7 +95,7 @@ If you prefer to deploy step by step, scaffold the project and deploy manually.
 
 ### Container image
 
-The bridge `Dockerfile` extends the [`cloudflare/sandbox` ↗](https://hub.docker.com/r/cloudflare/sandbox) base image and pre-installs common agent tooling:
+The bridge `Dockerfile` extends the [`cloudflare/sandbox` ↗︎](https://hub.docker.com/r/cloudflare/sandbox) base image and pre-installs common agent tooling:
 
 - **Languages**: Python 3.13, Node.js, Bun
 - **Tools**: git, ripgrep, curl, wget, jq, tar, sed, gawk, procps
@@ -285,15 +285,15 @@ The bulk of the bridge logic is in the `@cloudflare/sandbox` package. To pull in
 
 
 
-Check the [sandbox-sdk releases ↗](https://github.com/cloudflare/sandbox-sdk/releases) for changes to the `Dockerfile` or bridge configuration that may require manual updates.
+Check the [sandbox-sdk releases ↗︎](https://github.com/cloudflare/sandbox-sdk/releases) for changes to the `Dockerfile` or bridge configuration that may require manual updates.
 
 ## Source code and examples
 
 The bridge source code and examples are available on GitHub:
 
-- [Bridge source ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge) — Worker, Dockerfile, deploy script, and OpenAPI schema.
-- [Workspace chat example ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge/examples/workspace-chat) — Full-stack chat application with a file browser sidebar.
-- [Basic example ↗](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge/examples/basic) — One-shot Python coding agent using the OpenAI Agents SDK.
+- [Bridge source ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge) — Worker, Dockerfile, deploy script, and OpenAPI schema.
+- [Workspace chat example ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge/examples/workspace-chat) — Full-stack chat application with a file browser sidebar.
+- [Basic example ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/bridge/examples/basic) — One-shot Python coding agent using the OpenAI Agents SDK.
 
 ## Related resources
 

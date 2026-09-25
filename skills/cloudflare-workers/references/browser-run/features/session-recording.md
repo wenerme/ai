@@ -16,7 +16,7 @@ Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Beta
 
-When browser automation fails or behaves unexpectedly, it can be difficult to understand what happened. Session recording captures DOM changes, mouse and keyboard events, and page navigation as structured JSON events — not a video — so it is lightweight and easy to inspect. Recordings are powered by [rrweb ↗](https://github.com/rrweb-io/rrweb) and are opt-in per session.
+When browser automation fails or behaves unexpectedly, it can be difficult to understand what happened. Session recording captures DOM changes, mouse and keyboard events, and page navigation as structured JSON events — not a video — so it is lightweight and easy to inspect. Recordings are powered by [rrweb ↗︎](https://github.com/rrweb-io/rrweb) and are opt-in per session.
 
 ## Enable session recording
 
@@ -141,7 +141,7 @@ A successful response looks similar to the following:
 
 After a recorded session closes, the recording may still be finalizing. The endpoint can briefly return `404` during this period. Callers can retry the request until finalization completes.
 
-The event arrays are available under `result.events`. The keys in `result.events` (such as `target-1`, `target-2`) are [CDP targets ↗](https://chromedevtools.github.io/devtools-protocol/tot/Target/). In the context of session recording, each target typically corresponds to a browser tab. A session that opened multiple tabs will have one target per tab, and each target's value is an independent rrweb event array for that tab.
+The event arrays are available under `result.events`. The keys in `result.events` (such as `target-1`, `target-2`) are [CDP targets ↗︎](https://chromedevtools.github.io/devtools-protocol/tot/Target/). In the context of session recording, each target typically corresponds to a browser tab. A session that opened multiple tabs will have one target per tab, and each target's value is an independent rrweb event array for that tab.
 
 ## Retrieve network activity via API
 
@@ -154,7 +154,7 @@ curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-run/rec
 
 The response is a JSON array containing the recorded requests for that target, including available request and response headers, payloads, status codes, timing information, and transfer sizes.
 
-To retrieve the network activity as an [HTTP Archive (HAR) 1.2 ↗](https://w3c.github.io/web-performance/specs/HAR/Overview.html) document, set `format=har`:
+To retrieve the network activity as an [HTTP Archive (HAR) 1.2 ↗︎](https://w3c.github.io/web-performance/specs/HAR/Overview.html) document, set `format=har`:
 
 ```bash
 curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-run/recording/<SESSION_ID>/network?target=<TARGET_ID>&format=har' \
@@ -163,7 +163,7 @@ curl 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser-run/rec
 
 ## Replay a recording
 
-Each value in `result.events` is a standard rrweb event array and can be passed directly to [`rrweb-player` ↗](https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player) to self-host a replay UI with a timeline scrubber and playback controls.
+Each value in `result.events` is a standard rrweb event array and can be passed directly to [`rrweb-player` ↗︎](https://github.com/rrweb-io/rrweb/tree/master/packages/rrweb-player) to self-host a replay UI with a timeline scrubber and playback controls.
 
 Tabs replay independently — to replay a multi-tab session, render one player per target, or build a UI that lets the user switch between targets (similar to the tab selector in the dashboard recording viewer).
 
@@ -177,7 +177,7 @@ Tabs replay independently — to replay a multi-tab session, render one player p
 
 ## rrweb limitations
 
-Session recording uses [rrweb ↗](https://github.com/rrweb-io/rrweb), which records DOM state and events rather than pixels. This approach is lightweight but has the following limitations:
+Session recording uses [rrweb ↗︎](https://github.com/rrweb-io/rrweb), which records DOM state and events rather than pixels. This approach is lightweight but has the following limitations:
 
 - **Canvas elements** — The content of `<canvas>` elements is not captured. The element itself appears in the recording as a blank placeholder.
 - **Cross-origin iframes** — Content inside cross-origin `<iframe>` elements is not recorded. Same-origin iframes are recorded normally.

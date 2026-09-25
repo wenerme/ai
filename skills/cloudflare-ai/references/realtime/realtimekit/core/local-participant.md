@@ -511,7 +511,7 @@ Declare the following permission in your app's AndroidManifest.xml to use screen
 <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
 ```
 
-Adding this permission requires extra steps on Google Play Console. Refer to [Google's documentation ↗](https://support.google.com/googleplay/android-developer/answer/13392821?hl=en#declare) for more information.
+Adding this permission requires extra steps on Google Play Console. Refer to [Google's documentation ↗︎](https://support.google.com/googleplay/android-developer/answer/13392821?hl=en#declare) for more information.
 
 ```swift
 // Enable screen share

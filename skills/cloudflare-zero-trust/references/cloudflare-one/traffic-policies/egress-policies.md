@@ -24,13 +24,13 @@ Many third-party services (for example, a bank or partner API) only allow connec
 
 Egress policies control which dedicated egress IP is used for a given connection. You can match traffic on attributes such as user identity, source or destination IP address, and geolocation. Traffic that does not match an egress policy defaults to the most performant dedicated egress IP.
 
-Cloudflare does not publish Cloudflare One Client egress IP ranges. Cloudflare One Client egress IPs are not listed at [Cloudflare's IP Ranges ↗](https://cloudflare.com/ips). To obtain a dedicated Cloudflare One Client egress IP, contact your account team.
+Cloudflare does not publish Cloudflare One Client egress IP ranges. Cloudflare One Client egress IPs are not listed at [Cloudflare's IP Ranges ↗︎](https://cloudflare.com/ips). To obtain a dedicated Cloudflare One Client egress IP, contact your account team.
 
 Terraform provider v4 precedence limitation
 
 To avoid conflicts, version 4 of the Terraform Cloudflare provider applies a hash calculation to policy precedence. For example, a precedence of `1000` may become `1000901`. This can cause errors when reordering policies. To avoid this issue, manually set the precedence of policies created with Terraform using the [Update a Zero Trust Gateway rule](https://developers.cloudflare.com/api/resources/zero_trust/subresources/gateway/subresources/rules/methods/update/) endpoint.
 
-To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
+To ensure your precedence is set correctly, Cloudflare recommends [upgrading your Terraform provider to version 5 ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-5-upgrade).
 
 ## Load balancing
 
@@ -137,7 +137,7 @@ The continent where the request is destined. Geolocation is determined from the 
 
 ### Destination Country
 
-The country that the request is destined for. Geolocation is determined from the target IP address. To specify a country, enter its [ISO 3166-1 Alpha 2 code ↗](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
+The country that the request is destined for. Geolocation is determined from the target IP address. To specify a country, enter its [ISO 3166-1 Alpha 2 code ↗︎](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
 | UI name | API example |
 | --- | --- |
@@ -237,7 +237,7 @@ Geolocation is determined from the device's public IP address (typically assigne
 
 The country of the user making the request.
 
-Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a country, enter its [ISO 3166-1 Alpha-2 code ↗](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
+Geolocation is determined from the device's public IP address (typically assigned by the user's ISP). To specify a country, enter its [ISO 3166-1 Alpha-2 code ↗︎](https://www.iso.org/obp/ui/#search/code/) in the **Value** field.
 
 | UI name | API example |
 | --- | --- |
@@ -311,7 +311,7 @@ Comparison operators are the way Gateway matches traffic to a selector. When you
 
 You can input a single value or use regular expressions to specify a range of values.
 
-Gateway uses Rust to evaluate regular expressions. The Rust implementation is slightly different than regex libraries used elsewhere. To evaluate if your regex matches, you can use [Rustexp ↗](https://rustexp.lpil.uk/).
+Gateway uses Rust to evaluate regular expressions. The Rust implementation is slightly different than regex libraries used elsewhere. To evaluate if your regex matches, you can use [Rustexp ↗︎](https://rustexp.lpil.uk/).
 
 ## Logical operators
 

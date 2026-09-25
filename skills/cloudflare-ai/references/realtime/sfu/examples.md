@@ -40,15 +40,15 @@ The [video-room quickstart](https://developers.cloudflare.com/realtime/sfu/get-s
 
 | Example | What to try |
 | --- | --- |
-| [DataChannels ↗](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels) | Establish two endpoints, acknowledge readiness, send replies, and compare delivery settings |
-| [WebRTC video to JPEG ↗](https://github.com/cloudflare/realtime-examples/tree/main/video-to-jpeg) | Send a camera track through an adapter and receive JPEG frames over WebSocket |
-| [SFU network visualization ↗](https://realtime-sfu.dev-demos.workers.dev) | Explore an illustration of endpoint connections and media routing |
+| [DataChannels ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/echo-datachannels) | Establish two endpoints, acknowledge readiness, send replies, and compare delivery settings |
+| [WebRTC video to JPEG ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/video-to-jpeg) | Send a camera track through an adapter and receive JPEG frames over WebSocket |
+| [SFU network visualization ↗︎](https://realtime-sfu.dev-demos.workers.dev) | Explore an illustration of endpoint connections and media routing |
 
 The DataChannel example is intended for localhost. The JPEG example requires application authentication and authorization before public use.
 
 ## Source and status
 
-Browse the [Realtime examples repository ↗](https://github.com/cloudflare/realtime-examples) for complete source, component guides, and declared checks. The catalog distinguishes maintained, experimental, and legacy examples. Legacy entries are historical or educational references with documented limitations.
+Browse the [Realtime examples repository ↗︎](https://github.com/cloudflare/realtime-examples) for complete source, component guides, and declared checks. The catalog distinguishes maintained, experimental, and legacy examples. Legacy entries are historical or educational references with documented limitations.
 
 Was this helpful?
 

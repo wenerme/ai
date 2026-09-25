@@ -52,7 +52,7 @@ BotBase classifies each tracked bot by its behavior — what the bot may do on y
 
 ## Radar's public-facing BotBase
 
-Every bot tracked in BotBase, along with select metadata, is available publicly in [Cloudflare Radar's bots and agents directory ↗](https://radar.cloudflare.com/bots/directory).
+Every bot tracked in BotBase, along with select metadata, is available publicly in [Cloudflare Radar's bots and agents directory ↗︎](https://radar.cloudflare.com/bots/directory).
 
 Was this helpful?
 

@@ -109,7 +109,7 @@ For custom and restricted headers, selected values use case-sensitive substring 
 
 To check for the presence of a header without including its actual value, use the **Check presence of** option.
 
-Currently, you can only exclude the `Origin` header. The `Origin` header is always included unless explicitly excluded. Including the [Origin header ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin) in the Cache Key is important to enforce [CORS ↗](https://developer.mozilla.org/en-US/docs/Glossary/CORS).
+Currently, you can only exclude the `Origin` header. The `Origin` header is always included unless explicitly excluded. Including the [Origin header ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin) in the Cache Key is important to enforce [CORS ↗︎](https://developer.mozilla.org/en-US/docs/Glossary/CORS).
 
 Additionally, you cannot include the following headers:
 

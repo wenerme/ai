@@ -84,7 +84,7 @@ This allows you to route requests using products such as [Redirect Rules](https:
 
 Note
 
-The address `192.0.2.0` comes from an IPv4 range reserved for documentation ([RFC 5737 ↗](https://www.rfc-editor.org/rfc/rfc5737)), and `100::` comes from the IPv6 discard prefix `0100::/64` ([RFC 6666 ↗](https://www.rfc-editor.org/rfc/rfc6666)). Neither address is expected to route to a real server on properly configured networks, which makes them safe to use as placeholder values. Because the DNS record is proxied, Cloudflare intercepts the request before it reaches the origin address.
+The address `192.0.2.0` comes from an IPv4 range reserved for documentation ([RFC 5737 ↗︎](https://www.rfc-editor.org/rfc/rfc5737)), and `100::` comes from the IPv6 discard prefix `0100::/64` ([RFC 6666 ↗︎](https://www.rfc-editor.org/rfc/rfc6666)). Neither address is expected to route to a real server on properly configured networks, which makes them safe to use as placeholder values. Because the DNS record is proxied, Cloudflare intercepts the request before it reaches the origin address.
 
 ---
 

@@ -107,7 +107,7 @@ Configures settings related to caching on the origin response. The following par
 
 Note
 
-If `strip_etags` or `strip_last_modified` is `true` after all matching rules are applied, [Smart Edge Revalidation ↗](https://blog.cloudflare.com/introducing-smart-edge-revalidation/) is disabled for the origin response.
+If `strip_etags` or `strip_last_modified` is `true` after all matching rules are applied, [Smart Edge Revalidation ↗︎](https://blog.cloudflare.com/introducing-smart-edge-revalidation/) is disabled for the origin response.
 
 <details>
 

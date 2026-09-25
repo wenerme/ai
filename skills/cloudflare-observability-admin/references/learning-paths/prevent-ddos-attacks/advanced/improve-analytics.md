@@ -34,7 +34,7 @@ This data can help when looking at long-term DDoS attack trends or when you need
 
 For more detailed analytics about potential bot attacks, Enterprise customers can also purchase [Bot Management](https://developers.cloudflare.com/bots/get-started/bot-management/).
 
-For a full tour of Bot Analytics, see [our blog post ↗](https://blog.cloudflare.com/introducing-bot-analytics/). At a high level, the tool includes:
+For a full tour of Bot Analytics, see [our blog post ↗︎](https://blog.cloudflare.com/introducing-bot-analytics/). At a high level, the tool includes:
 
 - **Requests by bot score**: View your total domain traffic and segment it vertically by traffic type. Keep an eye on *automated* and *likely automated* traffic.
 - **Bot score distribution**: View the number of requests assigned a bot score 1 through 99.

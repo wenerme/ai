@@ -16,7 +16,7 @@ Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To view the destination addresses of user and team submissions:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **Settings** > **Submission addresses** > **View**.
 

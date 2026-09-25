@@ -39,13 +39,13 @@ Speed Brain works under the following conditions:
 
 The overall goal of Speed Brain is to try to download a webpage to the browser before a user navigates to it.
 
-Cloudflare leverages the [Speculation Rules API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API) to improve web page performance by instructing the browser to consider prefetching future navigations. Speed Brain does not improve page load time for the first page that is visited on a website, but it can improve it for subsequent web pages that are navigated to on the same site.
+Cloudflare leverages the [Speculation Rules API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API) to improve web page performance by instructing the browser to consider prefetching future navigations. Speed Brain does not improve page load time for the first page that is visited on a website, but it can improve it for subsequent web pages that are navigated to on the same site.
 
-By prefetching pages that the browser considers likely to be navigated to, Speed Brain can enhance key metrics like [Largest Content Paint ↗](https://web.dev/articles/lcp) (LCP), [Time to First Byte ↗](https://web.dev/articles/ttfb) (TTFB) and overall page load time.
+By prefetching pages that the browser considers likely to be navigated to, Speed Brain can enhance key metrics like [Largest Content Paint ↗︎](https://web.dev/articles/lcp) (LCP), [Time to First Byte ↗︎](https://web.dev/articles/ttfb) (TTFB) and overall page load time.
 
 ## How Speed Brain works
 
-When Cloudflare's Speed Brain feature is enabled, an HTTP header called `Speculation-Rules` is added to web page responses. The value for this header is a URL that hosts an opinionated Speculation-Rules configuration. This configuration instructs the browser to consider prefetching any future navigations with a `conservative` [eagerness ↗](https://developer.chrome.com/docs/web-platform/prerender-pages#eagerness).
+When Cloudflare's Speed Brain feature is enabled, an HTTP header called `Speculation-Rules` is added to web page responses. The value for this header is a URL that hosts an opinionated Speculation-Rules configuration. This configuration instructs the browser to consider prefetching any future navigations with a `conservative` [eagerness ↗︎](https://developer.chrome.com/docs/web-platform/prerender-pages#eagerness).
 
 The configuration looks like this:
 
@@ -69,7 +69,7 @@ This configuration instructs the browser to initiate prefetch requests for futur
 
 To test that Speed Brain is enabled, you can check that your HTTP response headers for your web pages include the `Speculation-Rules` header. However, note that during the beta phase of Speed Brain, this behavior might not be 100% consistent.
 
-To test whether your browser is making prefetch requests, open the **Network** tab in Chrome DevTools. Then, mouse-down on a link on a webpage with Speed Brain enabled. This action should initiate a prefetch request, which will be  visible in the **Network** tab. However, note that there are several reasons why the browser might choose not to initiate a prefetch. Refer to the [Chrome Limits guide ↗](https://developer.chrome.com/docs/web-platform/prerender-pages#chrome-limits) for more details. For more general information about debugging Speculation-Rules, refer to the [Chrome Speculation Debugging guide ↗](https://developer.chrome.com/docs/devtools/application/debugging-speculation-rules).
+To test whether your browser is making prefetch requests, open the **Network** tab in Chrome DevTools. Then, mouse-down on a link on a webpage with Speed Brain enabled. This action should initiate a prefetch request, which will be  visible in the **Network** tab. However, note that there are several reasons why the browser might choose not to initiate a prefetch. Refer to the [Chrome Limits guide ↗︎](https://developer.chrome.com/docs/web-platform/prerender-pages#chrome-limits) for more details. For more general information about debugging Speculation-Rules, refer to the [Chrome Speculation Debugging guide ↗︎](https://developer.chrome.com/docs/devtools/application/debugging-speculation-rules).
 
 ## RUM integration
 
@@ -116,15 +116,15 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/speed_brain" 
 
 To disable Speed Brain, set `value:` to `"off"`.
 
-You can also configure Speed Brain using Terraform. For more details, refer to the `cloudflare_zone_settings_override` resource in the [Terraform documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+You can also configure Speed Brain using Terraform. For more details, refer to the `cloudflare_zone_settings_override` resource in the [Terraform documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 ## Caveats
 
-- Since prefetch responses are not guaranteed to be rendered by the browser, Speed Brain includes two safeguards to minimize the risk of [unsafe prefetching ↗](https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API#unsafe_prefetching):
+- Since prefetch responses are not guaranteed to be rendered by the browser, Speed Brain includes two safeguards to minimize the risk of [unsafe prefetching ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API#unsafe_prefetching):
   - Speed Brain will not prefetch on routes that run Workers. Without this safeguard, prefetch requests could inadvertently run Worker logic that assumes the incoming request is a normal (that is, not a prefetch) request. An example of this could be an incrementing page view counter running in a Worker. A page view counter should not increment if the page is not actually rendered in the browser.
   - Prefetch requests will never reach origin servers. Prefetch requests only serve content that is stored in Cloudflare’s Cache. If the content is not in Cache, the prefetch request will not continue to origin servers. Without this safeguard, origin server state could be modified despite the prefetch response not being rendered in the browser. An example of this could be a prefetch `GET` request to a sign-out URL inadvertently triggering a sign-out action on the server.
 - If origin server responses include the `Speculation-Rules` header, it will not be overridden.
-- Speed Brain will not work with restrictive [Content Security Policy ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/script-src) configurations using `strict-dynamic` or `nonce-{hash}` attributes.
+- Speed Brain will not work with restrictive [Content Security Policy ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/script-src) configurations using `strict-dynamic` or `nonce-{hash}` attributes.
 - Currently, Speed Brain is not compatible with websites that use or rely on `pages.dev`.
 
 Was this helpful?

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/api/s3/presigned-urls/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Presigned URLs are an [S3 concept ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) for granting temporary access to objects without exposing your API credentials. A presigned URL includes signature parameters in the URL itself, authorizing anyone with the URL to perform a specific operation (like `GetObject` or `PutObject`) on a specific object until the URL expires.
+Presigned URLs are an [S3 concept ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html) for granting temporary access to objects without exposing your API credentials. A presigned URL includes signature parameters in the URL itself, authorizing anyone with the URL to perform a specific operation (like `GetObject` or `PutObject`) on a specific object until the URL expires.
 
 They are ideal for granting temporary access to specific objects, such as allowing users to upload files directly to R2 or providing time-limited download links.
 

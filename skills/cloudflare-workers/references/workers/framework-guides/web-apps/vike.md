@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/vike/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can deploy your [Vike ↗](https://vike.dev) app to Cloudflare using the Vike extension [`vike-photon` ↗](https://vike.dev/vike-photon).
+You can deploy your [Vike ↗︎](https://vike.dev) app to Cloudflare using the Vike extension [`vike-photon` ↗︎](https://vike.dev/vike-photon).
 
 All app types (SSR/SPA/SSG) are supported.
 
@@ -64,11 +64,11 @@ Wrangler handles configuration automatically
 
 ## What is Vike?
 
-[Vike ↗](https://vike.dev) is a Next.js/Nuxt alternative for advanced applications, powered by a modular architecture for unprecedented flexibility and stability.
+[Vike ↗︎](https://vike.dev) is a Next.js/Nuxt alternative for advanced applications, powered by a modular architecture for unprecedented flexibility and stability.
 
 ## New app
 
-Use [vike.dev/new ↗](https://vike.dev/new) to scaffold a new Vike app that uses `vike-photon` with `@photonjs/cloudflare`.
+Use [vike.dev/new ↗︎](https://vike.dev/new) to scaffold a new Vike app that uses `vike-photon` with `@photonjs/cloudflare`.
 
 ## Add to existing app
 
@@ -144,7 +144,7 @@ Use [vike.dev/new ↗](https://vike.dev/new) to scaffold a new Vike app that use
    ```
 
 
-5. **(Optional)** By default, Photon uses a built-in server that supports basic features like SSR. If you need additional server functionalities (e.g. [file uploads ↗](https://hono.dev/examples/file-upload) or [API routes ↗](https://vike.dev/api-routes)), then [create your own server ↗](https://vike.dev/vike-photon#server).
+5. **(Optional)** By default, Photon uses a built-in server that supports basic features like SSR. If you need additional server functionalities (e.g. [file uploads ↗︎](https://hono.dev/examples/file-upload) or [API routes ↗︎](https://vike.dev/api-routes)), then [create your own server ↗︎](https://vike.dev/vike-photon#server).
 
 ## Cloudflare APIs (bindings)
 
@@ -175,7 +175,7 @@ env.LOG_LEVEL
 > pnpm create vike@latest --react --hono --drizzle --cloudflare
 > ```
 >
-> Or go to [vike.dev/new ↗](https://vike.dev/new) and select `Cloudflare` with an ORM.
+> Or go to [vike.dev/new ↗︎](https://vike.dev/new) and select `Cloudflare` with an ORM.
 
 ## TypeScript
 
@@ -217,7 +217,7 @@ See also: [Cloudflare Workers > TypeScript](https://developers.cloudflare.com/wo
 
 ## See also
 
-- [Vike Docs > Cloudflare ↗](https://vike.dev/cloudflare)
+- [Vike Docs > Cloudflare ↗︎](https://vike.dev/cloudflare)
 
 Was this helpful?
 

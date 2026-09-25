@@ -21,7 +21,7 @@ This guide shows how to write a basic integration test for a Worker with `create
 You need:
 
 - A Worker project with a [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)
-- A Node.js test runner such as [Vitest ↗](https://vitest.dev/)
+- A Node.js test runner such as [Vitest ↗︎](https://vitest.dev/)
 - `wrangler` installed as a development dependency
 
 ## Create a test harness

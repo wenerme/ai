@@ -144,7 +144,7 @@ lookup_json_string(cf.hostname.metadata, "security_tag") eq "low"
 - Define fallback behaviour in the non-presence of metadata
 - Define fallback behaviour if a key or value in the metadata are unknown
 
-General guidance is to follow [Google's JSON Style guide ↗](https://google.github.io/styleguide/jsoncstyleguide.xml) where appropriate.
+General guidance is to follow [Google's JSON Style guide ↗︎](https://google.github.io/styleguide/jsoncstyleguide.xml) where appropriate.
 
 ---
 

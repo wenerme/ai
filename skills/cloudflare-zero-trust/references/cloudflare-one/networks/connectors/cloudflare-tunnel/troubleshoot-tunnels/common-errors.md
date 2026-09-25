@@ -37,7 +37,7 @@ If you see this error when installing a remotely-managed tunnel, ensure that no 
 
 ## I see `An A, AAAA, or CNAME record with that host already exists`.
 
-If you are unable to save your tunnel's public hostname, choose a different hostname or delete the existing DNS record. [Check the DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) for your domain from the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+If you are unable to save your tunnel's public hostname, choose a different hostname or delete the existing DNS record. [Check the DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) for your domain from the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 
 ## Tunnel credentials file does not exist or is not a file.
 
@@ -78,7 +78,7 @@ The `--origin-ca-pool` and `--no-tls-verify` command-line flags apply only when 
 
 A `1033` error indicates your tunnel is not connected to Cloudflare's network because Cloudflare's network cannot find a healthy `cloudflared` instance to receive the traffic.
 
-First, review whether your tunnel is listed as `Active` in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) by going to **Networking** > **Tunnels** or run `cloudflared tunnel list`. If the tunnel is not `Active`, review the following and take the action necessary for your tunnel status:
+First, review whether your tunnel is listed as `Active` in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) by going to **Networking** > **Tunnels** or run `cloudflared tunnel list`. If the tunnel is not `Active`, review the following and take the action necessary for your tunnel status:
 
 | Status | Meaning | Recommended Action |
 | --- | --- | --- |
@@ -200,7 +200,7 @@ If your [Cloudflare Tunnel logs](https://developers.cloudflare.com/cloudflare-on
 
 ## I see `failed to sufficiently increase receive buffer size` in my cloudflared logs.
 
-This buffer size increase is reported by the [quic-go library ↗](https://github.com/quic-go/quic-go) leveraged by [cloudflared ↗](https://github.com/cloudflare/cloudflared). You can learn more about the log message in the [quic-go repository ↗](https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes). This log message is generally not impactful and can be safely ignored when troubleshooting. However, if you have deployed `cloudflared` within a unique, high-bandwidth environment then buffer size can be manually overridden for testing purposes.
+This buffer size increase is reported by the [quic-go library ↗︎](https://github.com/quic-go/quic-go) leveraged by [cloudflared ↗︎](https://github.com/cloudflare/cloudflared). You can learn more about the log message in the [quic-go repository ↗︎](https://github.com/quic-go/quic-go/wiki/UDP-Buffer-Sizes). This log message is generally not impactful and can be safely ignored when troubleshooting. However, if you have deployed `cloudflared` within a unique, high-bandwidth environment then buffer size can be manually overridden for testing purposes.
 
 To set the maximum receive buffer size on Linux:
 

@@ -24,13 +24,13 @@ Detection entries in integration profiles are managed by the third-party platfor
 
 ## Microsoft Purview Information Protection (MIP) sensitivity labels
 
-Microsoft provides [Purview Information Protection sensitivity labels ↗](https://learn.microsoft.com/en-us/purview/sensitivity-labels) to classify and protect sensitive data.
+Microsoft provides [Purview Information Protection sensitivity labels ↗︎](https://learn.microsoft.com/en-us/purview/sensitivity-labels) to classify and protect sensitive data.
 
 Caution
 
-DLP does not filter or log [MIP sublabels ↗](https://learn.microsoft.com/purview/sensitivity-labels#sublabels-that-use-parent-labels-or-label-groups). Only top-level sensitivity labels will be detected, filtered, and logged.
+DLP does not filter or log [MIP sublabels ↗︎](https://learn.microsoft.com/purview/sensitivity-labels#sublabels-that-use-parent-labels-or-label-groups). Only top-level sensitivity labels will be detected, filtered, and logged.
 
-To ensure DLP will detect and filter all sensitive data, use only [MIP top-level labels ↗](https://learn.microsoft.com/purview/sensitivity-labels#top-level-labels).
+To ensure DLP will detect and filter all sensitive data, use only [MIP top-level labels ↗︎](https://learn.microsoft.com/purview/sensitivity-labels#top-level-labels).
 
 ### Setup
 

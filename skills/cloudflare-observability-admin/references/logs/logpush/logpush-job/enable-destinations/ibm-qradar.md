@@ -175,10 +175,10 @@ Cloudflare checks the accessibility of the IP address, port, and validates the c
 
 When you use the Amazon S3 REST API protocol, IBM QRadar collects Cloudflare Log events from an Amazon S3 bucket. To use this option, you need to:
 
-1. Create an [Amazon S3 bucket ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html) to store your Cloudflare Logs. Make a note of the bucket name and the AWS access key ID and secret access key with sufficient permissions to write to the bucket.
+1. Create an [Amazon S3 bucket ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/creating-bucket.html) to store your Cloudflare Logs. Make a note of the bucket name and the AWS access key ID and secret access key with sufficient permissions to write to the bucket.
 2. [Enable a Logpush to Amazon S3](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/).
 3. In the AWS Management Console, go to the Amazon S3 service. Create a bucket endpoint to allow Cloudflare to send logs directly to the S3 bucket.
-4. Follow the steps in [Integrate Cloudflare Logs with QRadar by using the Amazon AWS S3 REST API protocol ↗](https://www.ibm.com/docs/en/dsm?topic=configuration-cloudflare-logs).
+4. Follow the steps in [Integrate Cloudflare Logs with QRadar by using the Amazon AWS S3 REST API protocol ↗︎](https://www.ibm.com/docs/en/dsm?topic=configuration-cloudflare-logs).
 5. Test the configuration by generating some logs in Cloudflare and ensuring that they are delivered to the S3 bucket and subsequently forwarded to QRadar.
 
 Was this helpful?

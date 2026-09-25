@@ -27,8 +27,8 @@ In a multi-tenant application, each tenant must only ever see their own data. AI
 
 Both approaches use a Cloudflare Worker. Create the project first, then follow the option you chose.
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -38,13 +38,13 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
 ## Create a Worker project
 
-Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
+Create a new Worker project using the `create-cloudflare` CLI (C3). [C3 ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
 
 Create a new project named `tenant-search` by running:
 
@@ -92,7 +92,7 @@ namespace: tenants
 
 Note
 
-AI Search limits the number of [instances per account](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#limits). If you have more tenants than that limit, or run into any other AI Search limit, reach out through the [Limit Increase Request Form ↗](https://forms.gle/wnizxrEUW33Y15CT8) and we can help.
+AI Search limits the number of [instances per account](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#limits). If you have more tenants than that limit, or run into any other AI Search limit, reach out through the [Limit Increase Request Form ↗︎](https://forms.gle/wnizxrEUW33Y15CT8) and we can help.
 
 Add the namespace binding to your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/):
 

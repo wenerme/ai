@@ -18,7 +18,7 @@ The following limits apply to users of the Cloudflare Web3 Gateways.
 
 Note
 
-For more pricing details, refer to the [Web3 product page ↗](https://www.cloudflare.com/application-services/products/web3/).
+For more pricing details, refer to the [Web3 product page ↗︎](https://www.cloudflare.com/application-services/products/web3/).
 
 ## IPFS Gateway
 

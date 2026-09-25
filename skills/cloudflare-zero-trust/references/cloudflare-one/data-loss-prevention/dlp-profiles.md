@@ -30,7 +30,7 @@ To decide which data types to focus on, use [Passive Detection](https://develope
 
 ## Configure a predefined profile
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Choose a [predefined profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/) and select **Edit**.
 3. Enable one or more **Detection entries** according to your preferences.
 4. Select **Save profile**.
@@ -41,7 +41,7 @@ You can now use this profile in a [DLP policy](https://developers.cloudflare.com
 
 ## Build a custom profile
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Select **Create profile**.
 3. Enter a name and optional description for the profile.
 4. Add detection entries to the profile.<details><summary>

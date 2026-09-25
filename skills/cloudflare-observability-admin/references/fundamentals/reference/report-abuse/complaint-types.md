@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/reference/report-abuse/complaint-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use Cloudflare's [online abuse form ↗](https://abuse.cloudflare.com/) to report different types of abuse.
+Use Cloudflare's [online abuse form ↗︎](https://abuse.cloudflare.com/) to report different types of abuse.
 
 ---
 
 ## DMCA complaints
 
-Valid [Digital Millennium Copyright Act (DMCA) ↗](https://www.copyright.gov/dmca/) complaints must provide all of the following details:
+Valid [Digital Millennium Copyright Act (DMCA) ↗︎](https://www.copyright.gov/dmca/) complaints must provide all of the following details:
 
 - A physical or electronic signature (typing your full name is valid) of the copyright owner or a person authorized to act on their behalf.
 - Identification of the infringed copyright (for example, a link to your original work or clear description of the materials allegedly infringed upon).
@@ -46,7 +46,7 @@ After Cloudflare confirms existence of the phishing page, Cloudflare provides a 
 
 Cloudflare only acknowledges abuse reports from trademark holders or their legally authorized representatives.
 
-For more details about what information is required, refer to [our abuse form ↗](https://abuse.cloudflare.com/).
+For more details about what information is required, refer to [our abuse form ↗︎](https://abuse.cloudflare.com/).
 
 ---
 
@@ -54,7 +54,7 @@ For more details about what information is required, refer to [our abuse form �
 
 Legitimate reports of malware URLs are blocked from loading via Cloudflare.
 
-For more details about what information is required, refer to [our abuse form ↗](https://abuse.cloudflare.com/).
+For more details about what information is required, refer to [our abuse form ↗︎](https://abuse.cloudflare.com/).
 
 ---
 
@@ -62,9 +62,9 @@ For more details about what information is required, refer to [our abuse form �
 
 Cloudflare promptly responds to all valid reports of child exploitation material. When Cloudflare is made aware of a website solely dedicated to the sharing or promotion of child exploitation material, the offending website is immediately removed from our network without notice.
 
-For an expedited review, report child exploitation material via our [abuse form ↗](https://abuse.cloudflare.com/).
+For an expedited review, report child exploitation material via our [abuse form ↗︎](https://abuse.cloudflare.com/).
 
-Our Trust & Safety team files a complaint with the [National Center for Missing and Exploited Children ↗](http://www.missingkids.com/gethelpnow#onlinechildexploitation) but suggest that you also file a complaint.
+Our Trust & Safety team files a complaint with the [National Center for Missing and Exploited Children ↗︎](http://www.missingkids.com/gethelpnow#onlinechildexploitation) but suggest that you also file a complaint.
 
 Was this helpful?
 

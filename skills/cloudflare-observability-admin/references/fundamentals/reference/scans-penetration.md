@@ -64,7 +64,7 @@ For guidelines on required notification and necessary information, refer to [Sim
 ## Additional resources
 
 - Customers can download the latest Penetration Test Report of Cloudflare via the [dashboard](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/compliance-docs/).
-- For information about Cloudflare's Public Bug Bounty program, visit [HackerOne ↗](https://hackerone.com/cloudflare).
+- For information about Cloudflare's Public Bug Bounty program, visit [HackerOne ↗︎](https://hackerone.com/cloudflare).
 
 Was this helpful?
 

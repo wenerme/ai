@@ -20,8 +20,8 @@ Build a Worker that takes a repository URL and a task description and uses Sandb
 
 ## Prerequisites
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
-2. Install [`Node.js` ↗](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+2. Install [`Node.js` ↗︎](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 <details>
 
@@ -31,14 +31,14 @@ Node.js version manager
 
 </summary>
 
-Use a Node version manager like <a href="https://volta.sh/">Volta ↗</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
+Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or <a href="https://github.com/nvm-sh/nvm">nvm ↗︎</a> to avoid permission issues and change Node.js versions. <a href="https://developers.cloudflare.com/workers/wrangler/install-and-update/">Wrangler</a>, discussed later in this guide, requires a Node version of <code>16.17.0</code> or later.
 
 </details>
 
 You'll also need:
 
-- An [Anthropic API key ↗](https://console.anthropic.com/) for Claude Code
-- [Docker ↗](https://www.docker.com/) running locally
+- An [Anthropic API key ↗︎](https://console.anthropic.com/) for Claude Code
+- [Docker ↗︎](https://www.docker.com/) running locally
 
 ## 1. Create your project
 
@@ -70,7 +70,7 @@ Create a `.dev.vars` file in your project root for local development:
 echo "ANTHROPIC_API_KEY=your_api_key_here" > .dev.vars
 ```
 
-Replace `your_api_key_here` with your actual API key from the [Anthropic Console ↗](https://console.anthropic.com/).
+Replace `your_api_key_here` with your actual API key from the [Anthropic Console ↗︎](https://console.anthropic.com/).
 
 Note
 
@@ -121,7 +121,7 @@ Then set your Anthropic API key as a production secret:
 npx wrangler secret put ANTHROPIC_API_KEY
 ```
 
-Paste your API key from the [Anthropic Console ↗](https://console.anthropic.com/) when prompted.
+Paste your API key from the [Anthropic Console ↗︎](https://console.anthropic.com/) when prompted.
 
 Caution
 
@@ -145,7 +145,7 @@ You created an API that:
 
 ## Related resources
 
-- [Anthropic Claude documentation ↗](https://docs.anthropic.com/)
+- [Anthropic Claude documentation ↗︎](https://docs.anthropic.com/)
 - [Workers AI](https://developers.cloudflare.com/workers-ai/) - Use Cloudflare's built-in models
 
 Was this helpful?

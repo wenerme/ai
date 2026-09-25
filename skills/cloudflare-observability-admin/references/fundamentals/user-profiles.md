@@ -16,7 +16,7 @@ Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Each user has a profile that contains several settings, such as [Communication preferences](https://developers.cloudflare.com/fundamentals/user-profiles/customize-account/#notifications) and [Language preferences](https://developers.cloudflare.com/fundamentals/user-profiles/customize-account/#language).
 
-To access your profile, select the user icon and then **My Profile** from any page within the [Cloudflare dashboard ↗](https://dash.cloudflare.com).
+To access your profile, select the user icon and then **My Profile** from any page within the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com).
 
 Was this helpful?
 

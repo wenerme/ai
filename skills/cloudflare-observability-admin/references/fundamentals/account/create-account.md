@@ -16,7 +16,7 @@ Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To create your first Cloudflare account:
 
-1. Go to the [Sign up page ↗](https://dash.cloudflare.com/sign-up).
+1. Go to the [Sign up page ↗︎](https://dash.cloudflare.com/sign-up).
 2. Enter your **Email** and **Password**.
 3. Select **Create Account**.
 
@@ -36,7 +36,7 @@ The following requirements apply to Free account creation:
 
 ### Create an account in the dashboard
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **Accounts**. [Go to **Accounts** ↗](https://dash.cloudflare.com/)
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **Accounts**. [Go to **Accounts** ↗](https://dash.cloudflare.com/)
 2. Select **Create Account**.
 3. Enter an account name.
 4. Select **Create Account**.
@@ -111,7 +111,7 @@ Once you [set up an account](https://developers.cloudflare.com/fundamentals/acco
 
 ## Interact with Cloudflare
 
-If you prefer working without code, you can manage your account and domain settings through the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login).
+If you prefer working without code, you can manage your account and domain settings through the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login).
 
 Note
 
@@ -122,10 +122,10 @@ For those who prefer to interact with Cloudflare programmatically, you can use s
 | Resource | Docs | Description |
 | --- | --- | --- |
 | [Cloudflare API](https://developers.cloudflare.com/fundamentals/api/) | [API docs](https://developers.cloudflare.com/api/) | RESTful API based on HTTPS requests and JSON responses. |
-| [Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) | [Terraform docs](https://developers.cloudflare.com/terraform/) | Configure Cloudflare using HashiCorp's Infrastructure as Code tool, Terraform. |
-| [cloudflare-go ↗](https://github.com/cloudflare/cloudflare-go) | [README ↗](https://github.com/cloudflare/cloudflare-go#readme) | The official Go library for the Cloudflare API. |
-| [cloudflare-typescript ↗](https://github.com/cloudflare/cloudflare-typescript) | [README ↗](https://github.com/cloudflare/cloudflare-typescript#readme) | The official TypeScript library for the Cloudflare API. |
-| [cloudflare-python ↗](https://github.com/cloudflare/cloudflare-python) | [README ↗](https://github.com/cloudflare/cloudflare-python#readme) | The official Python library for the Cloudflare API. |
+| [Terraform ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) | [Terraform docs](https://developers.cloudflare.com/terraform/) | Configure Cloudflare using HashiCorp's Infrastructure as Code tool, Terraform. |
+| [cloudflare-go ↗︎](https://github.com/cloudflare/cloudflare-go) | [README ↗︎](https://github.com/cloudflare/cloudflare-go#readme) | The official Go library for the Cloudflare API. |
+| [cloudflare-typescript ↗︎](https://github.com/cloudflare/cloudflare-typescript) | [README ↗︎](https://github.com/cloudflare/cloudflare-typescript#readme) | The official TypeScript library for the Cloudflare API. |
+| [cloudflare-python ↗︎](https://github.com/cloudflare/cloudflare-python) | [README ↗︎](https://github.com/cloudflare/cloudflare-python#readme) | The official Python library for the Cloudflare API. |
 
 Was this helpful?
 

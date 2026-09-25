@@ -16,7 +16,7 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Introduction
 
-Every day, users of the Internet enjoy the benefits of performance and reliability provided by [content delivery networks ↗](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) (CDNs). CDNs have become a must-have to combat latency and a requirement for any major company delivering content to users on the Internet. While providing performance and reliability for customers, CDNs also enable companies to further secure their applications and cut costs. This document discusses the traditional challenges customers face with web applications, how the Cloudflare CDN resolves these challenges, and CDN architecture and design.
+Every day, users of the Internet enjoy the benefits of performance and reliability provided by [content delivery networks ↗︎](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) (CDNs). CDNs have become a must-have to combat latency and a requirement for any major company delivering content to users on the Internet. While providing performance and reliability for customers, CDNs also enable companies to further secure their applications and cut costs. This document discusses the traditional challenges customers face with web applications, how the Cloudflare CDN resolves these challenges, and CDN architecture and design.
 
 ### Who is this document for and what will you learn?
 
@@ -24,10 +24,10 @@ This reference architecture is designed for IT or network professionals with som
 
 To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
+- What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗︎](https://youtu.be/XHvmX3FhTwU?feature=shared) (2 minutes)
 
-- What is a CDN? | [Website ↗](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) (5 minute read)
-- Analyst Report: [Cloudflare named Leader in 2024 GigaOm Radar for Content Delivery Networks ↗](https://www.cloudflare.com/lp/gigaom-radar-cdn/) (20 minute read)
+- What is a CDN? | [Website ↗︎](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/) (5 minute read)
+- Analyst Report: [Cloudflare named Leader in 2024 GigaOm Radar for Content Delivery Networks ↗︎](https://www.cloudflare.com/lp/gigaom-radar-cdn/) (20 minute read)
 
 Those who read this reference architecture will learn:
 
@@ -133,7 +133,7 @@ In the above diagram, there are a few important key points to understand about t
 - An important differentiator is that Cloudflare utilizes one global network and runs every service on every server in every Cloudflare data center, thus providing end users the closest proximity to Cloudflare’s services, with the highest scale, resiliency, and performance.
 - Cloudflare is a reverse proxy, meaning it receives requests from clients and proxies the requests back to the customer’s origin servers. Thus, every request traverses through Cloudflare’s network before reaching the customer’s network. Since Cloudflare has hardened and protected its infrastructure at the edge (ingress), all customers are consequently also protected from infrastructure-level and volumetric DDoS attacks. Requests and traffic must go through the protected Cloudflare network before reaching the customer’s origin server.
 - The Cloudflare CDN leverages the Cloudflare global anycast network. Thus the incoming request is routed to and answered by the node closest to the user.
-- The inherent benefits of anycast are decreased latency, network resiliency, higher availability, and increased security due to larger surface area for absorbing both legitimate traffic loads and DDoS attacks. Cloudflare’s global anycast network spans [hundreds of cities worldwide ↗](https://www.cloudflare.com/network/), reaching 95% of the world’s Internet-connected population within 50 milliseconds while providing over 405 Tbps network capacity and DDoS protection capability.
+- The inherent benefits of anycast are decreased latency, network resiliency, higher availability, and increased security due to larger surface area for absorbing both legitimate traffic loads and DDoS attacks. Cloudflare’s global anycast network spans [hundreds of cities worldwide ↗︎](https://www.cloudflare.com/network/), reaching 95% of the world’s Internet-connected population within 50 milliseconds while providing over 405 Tbps network capacity and DDoS protection capability.
 - Edge nodes within the Cloudflare network cache content from the origin server and are able to respond to requests via a cached copy. Cloudflare also provides [DNS](https://developers.cloudflare.com/dns/), [DDoS protection](https://developers.cloudflare.com/ddos-protection/), [WAF](https://developers.cloudflare.com/waf/), and other performance, reliability, and security services using the same edge architecture.
 - [Argo](https://developers.cloudflare.com/argo-smart-routing/) uses optimized routing and caching technology across the Cloudflare network to deliver responses to users more quickly, reliably, and securely. Argo includes Smart Routing and [Tiered Cache](https://developers.cloudflare.com/cache/how-to/tiered-cache/). Cloudflare leverages Argo to provide an enhanced CDN solution.
 

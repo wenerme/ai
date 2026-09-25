@@ -18,8 +18,8 @@ In this tutorial, you will build a blog application using Nuxt.js and Sanity.io 
 
 ## Prerequisites
 
-- A recent version of [npm ↗](https://docs.npmjs.com/getting-started) on your computer
-- A [Sanity.io ↗](https://www.sanity.io) account
+- A recent version of [npm ↗︎](https://docs.npmjs.com/getting-started) on your computer
+- A [Sanity.io ↗︎](https://www.sanity.io) account
 
 ## Creating a new Sanity project
 
@@ -109,7 +109,7 @@ pnpm sanity deploy
 
 Once you have deployed your Sanity studio:
 
-1. Go into Sanity's management panel ([manage.sanity.io ↗](https://manage.sanity.io)).
+1. Go into Sanity's management panel ([manage.sanity.io ↗︎](https://manage.sanity.io)).
 2. Find your project.
 3. Select **API**.
 4. Add `http://localhost:3000` as an allowed CORS origin for your project.
@@ -180,7 +180,7 @@ pnpm add @nuxtjs/sanity @sanity/client
 bun add @nuxtjs/sanity @sanity/client
 ```
 
-To configure the plugin in your Nuxt.js application, you will need to provide some configuration details. The easiest way to do this is to copy the `sanity.json` folder from your studio into your application directory (though there are other methods, too: [refer to the `@nuxt/sanity` documentation ↗](https://sanity.nuxtjs.org/getting-started/quick-start/).
+To configure the plugin in your Nuxt.js application, you will need to provide some configuration details. The easiest way to do this is to copy the `sanity.json` folder from your studio into your application directory (though there are other methods, too: [refer to the `@nuxt/sanity` documentation ↗︎](https://sanity.nuxtjs.org/getting-started/quick-start/).
 
 *Adding sanity.jsonsh*
 
@@ -200,7 +200,7 @@ Finally, add `@nuxtjs/sanity` as a **build module** in your Nuxt configuration:
 
 ### Setting up components
 
-With Sanity configured in your application, you can begin using it to render your blog. You will now set up a few pages to pull data from your Sanity API and render it. Note that if you are not familiar with Nuxt, it is recommended that you review the [Nuxt guide ↗](https://nuxtjs.org/guide), which will teach you some fundamentals concepts around building applications with Nuxt.
+With Sanity configured in your application, you can begin using it to render your blog. You will now set up a few pages to pull data from your Sanity API and render it. Note that if you are not familiar with Nuxt, it is recommended that you review the [Nuxt guide ↗︎](https://nuxtjs.org/guide), which will teach you some fundamentals concepts around building applications with Nuxt.
 
 ### Setting up the index page
 
@@ -336,7 +336,7 @@ When visiting, for example, `/hello-world`, Nuxt will take the incoming slug `he
 
 ### Rendering content for a blog post
 
-You have rendered the `post` title for our blog, but you are still missing the content of the blog post itself. To render this, import the [`sanity-blocks-vue-component` ↗](https://github.com/rdunk/sanity-blocks-vue-component) package, which takes Sanity's [Portable Text ↗](https://www.sanity.io/docs/presenting-block-text) format and renders it as a Vue component.
+You have rendered the `post` title for our blog, but you are still missing the content of the blog post itself. To render this, import the [`sanity-blocks-vue-component` ↗︎](https://github.com/rdunk/sanity-blocks-vue-component) package, which takes Sanity's [Portable Text ↗︎](https://www.sanity.io/docs/presenting-block-text) format and renders it as a Vue component.
 
 First, install the npm package:
 
@@ -378,7 +378,7 @@ In your Nuxt configuration, `nuxt.config.js`, import that file as part of the `p
 }
 ```
 
-In `pages/_slug.vue`, you can now use the `<block-content>` component to render your content. This takes the format of a custom HTML component, and takes three arguments: `:blocks`, which indicates what to render (in our case, `child`), `v-for`, which accepts an iterator of where to get `child` from (in our case, `post.body`), and `:key`, which helps Vue [keep track of state rendering ↗](https://vuejs.org/v2/guide/list.html#Maintaining-State) by providing a unique value for each post: that is, the `_id` value.
+In `pages/_slug.vue`, you can now use the `<block-content>` component to render your content. This takes the format of a custom HTML component, and takes three arguments: `:blocks`, which indicates what to render (in our case, `child`), `v-for`, which accepts an iterator of where to get `child` from (in our case, `post.body`), and `:key`, which helps Vue [keep track of state rendering ↗︎](https://vuejs.org/v2/guide/list.html#Maintaining-State) by providing a unique value for each post: that is, the `_id` value.
 
 *pages/\_slug.vuehtml*
 
@@ -482,13 +482,13 @@ In `pages/index.vue`, you can use the `block-content` component to render a summ
 There are many other things inside of your blog schema that you can add to your project. As an exercise, consider one of the following to continue developing your understanding of how to build with a headless CMS:
 
 - Create `pages/authors.vue`, and render a list of authors (similar to `pages/index.vue`, but for objects with `_type == "author"`)
-- Read the Sanity docs on [using references in GROQ ↗](https://www.sanity.io/docs/how-queries-work#references-and-joins-db43dfd18d7d), and use it to render author information in a blog post page
+- Read the Sanity docs on [using references in GROQ ↗︎](https://www.sanity.io/docs/how-queries-work#references-and-joins-db43dfd18d7d), and use it to render author information in a blog post page
 
 ## Publishing with Cloudflare Pages
 
 Publishing your project with Cloudflare Pages is a two-step process: first, push your project to GitHub, and then in the Cloudflare Pages dashboard, set up a new project based on that GitHub repository. Pages will deploy a new version of your site each time you publish, and will even set up preview deployments whenever you open a new pull request.
 
-To push your project to GitHub, [create a new repository ↗](https://repo.new), and follow the instructions to push your local Git repository to GitHub.
+To push your project to GitHub, [create a new repository ↗︎](https://repo.new), and follow the instructions to push your local Git repository to GitHub.
 
 After you have pushed your project to GitHub, deploy your site to Pages:
 
@@ -509,8 +509,8 @@ Now, when you make a change to your Sanity.io dataset, Sanity will make a reques
 
 By completing this guide, you have successfully deployed your own blog, powered by Nuxt, Sanity.io, and Cloudflare Pages. You can find the source code for both codebases on GitHub:
 
-- Blog front end: [https://github.com/signalnerve/nuxt-sanity-blog ↗](https://github.com/signalnerve/nuxt-sanity-blog)
-- Sanity dataset: [https://github.com/signalnerve/sanity-blog-schema ↗](https://github.com/signalnerve/sanity-blog-schema)
+- Blog front end: [https://github.com/signalnerve/nuxt-sanity-blog ↗︎](https://github.com/signalnerve/nuxt-sanity-blog)
+- Sanity dataset: [https://github.com/signalnerve/sanity-blog-schema ↗︎](https://github.com/signalnerve/sanity-blog-schema)
 
 If you enjoyed this tutorial, you may be interested in learning how you can use Cloudflare Workers, our powerful serverless function platform, to augment your existing site. Refer to the [Build an API for your front end using Pages Functions tutorial](https://developers.cloudflare.com/pages/tutorials/build-an-api-with-pages-functions/) to learn more.
 

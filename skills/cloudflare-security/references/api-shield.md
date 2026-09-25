@@ -24,7 +24,7 @@ Enterprise customers can preview this product as a [non-contract service](https:
 
 ## Why care about API security?
 
-APIs have become the [backbone of popular web services ↗](https://blog.postman.com/intro-to-apis-history-of-apis/), helping the Internet become more accessible and useful.
+APIs have become the [backbone of popular web services ↗︎](https://blog.postman.com/intro-to-apis-history-of-apis/), helping the Internet become more accessible and useful.
 
 As APIs have become more prevalent, however, so have their problems:
 

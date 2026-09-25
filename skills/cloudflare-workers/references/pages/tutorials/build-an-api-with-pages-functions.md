@@ -44,7 +44,7 @@ npm run dev
 
 To set up your React project:
 
-1. Install the [React Router ↗](https://reactrouter.com/en/main/start/tutorial) in the root of your `blog-frontend` directory.
+1. Install the [React Router ↗︎](https://reactrouter.com/en/main/start/tutorial) in the root of your `blog-frontend` directory.
 
 npmyarnpnpmbun
 
@@ -254,7 +254,7 @@ To deploy via the Cloudflare dashboard, you will need to create a new Git reposi
 
 #### Create a new repository
 
-Create a new GitHub repository by visiting [repo.new ↗](https://repo.new). After creating a new repository, prepare and push your local application to GitHub by running the following commands in your terminal:
+Create a new GitHub repository by visiting [repo.new ↗︎](https://repo.new). After creating a new repository, prepare and push your local application to GitHub by running the following commands in your terminal:
 
 ```sh
 git init

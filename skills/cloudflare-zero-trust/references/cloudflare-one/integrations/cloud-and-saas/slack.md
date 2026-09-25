@@ -20,7 +20,7 @@ The Slack integration detects a variety of data loss prevention, account misconf
 
 - A Slack user account
 - Membership in a Slack Workspace (Free, Pro, Business+, or Enterprise Grid)
-- If you are not the Workspace Owner and the `Require App Approval` setting is enabled for the Workspace, [request permission ↗](https://slack.com/help/articles/202035138-Add-apps-to-your-Slack-workspace) to install apps.
+- If you are not the Workspace Owner and the `Require App Approval` setting is enabled for the Workspace, [request permission ↗︎](https://slack.com/help/articles/202035138-Add-apps-to-your-Slack-workspace) to install apps.
 
 ## Integration permissions
 
@@ -31,7 +31,7 @@ For the Slack integration to function, Cloudflare CASB requires the following Sl
 - `groups:read`
 - `users:read`
 
-These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [Slack Permission scopes reference ↗](https://api.slack.com/scopes).
+These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [Slack Permission scopes reference ↗︎](https://api.slack.com/scopes).
 
 ## Security findings
 

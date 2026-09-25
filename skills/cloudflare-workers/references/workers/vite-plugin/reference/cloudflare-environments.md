@@ -21,7 +21,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"main": "./src/index.ts",
 	"vars": {
 		"MY_VAR": "Top-level var"
@@ -45,7 +45,7 @@ A Worker config file may contain configuration for multiple [Cloudflare environm
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "./src/index.ts"
 
 [vars]
@@ -97,7 +97,7 @@ Note
 
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
-These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
+These files should be formatted using the [dotenv ↗︎](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
 
 *.dev.vars / .envbash*
 
@@ -130,14 +130,14 @@ It is possible to control how `.env` files are loaded in local development by se
 
 ## Combining Cloudflare environments and Vite modes
 
-You may wish to combine the concepts of [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/) and [Vite modes ↗](https://vite.dev/guide/env-and-mode.html#modes). With this approach, the Vite mode can be used to select the Cloudflare environment and a single method can be used to determine environment specific configuration and code. Consider again the previous example:
+You may wish to combine the concepts of [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/) and [Vite modes ↗︎](https://vite.dev/guide/env-and-mode.html#modes). With this approach, the Vite mode can be used to select the Cloudflare environment and a single method can be used to determine environment specific configuration and code. Consider again the previous example:
 
 ```jsonc
 {
 	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "my-worker",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"main": "./src/index.ts",
 	"vars": {
 		"MY_VAR": "Top-level var"
@@ -161,7 +161,7 @@ You may wish to combine the concepts of [Cloudflare environments](https://develo
 "$schema" = "./node_modules/wrangler/config-schema.json"
 name = "my-worker"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 main = "./src/index.ts"
 
 [vars]
@@ -190,7 +190,7 @@ CLOUDFLARE_ENV=production
 
 By default, `vite build` uses the 'production' Vite mode. Vite will therefore load the `.env.production` file to get the environment variables that are used in the build. Since the `.env.production` file contains `CLOUDFLARE_ENV=production`, the Cloudflare Vite plugin will select the 'production' Cloudflare environment. The value of `MY_VAR` will therefore be `'Production var'`. If you run `vite build --mode staging` then the 'staging' Vite mode will be used and the 'staging' Cloudflare environment will be selected. The value of `MY_VAR` will therefore be `'Staging var'`.
 
-For more information about using `.env` files with Vite, see the [relevant documentation ↗](https://vite.dev/guide/env-and-mode#env-files).
+For more information about using `.env` files with Vite, see the [relevant documentation ↗︎](https://vite.dev/guide/env-and-mode#env-files).
 
 Was this helpful?
 

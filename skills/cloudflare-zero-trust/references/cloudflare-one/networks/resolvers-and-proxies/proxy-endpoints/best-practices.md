@@ -43,7 +43,7 @@ function FindProxyForURL(url, host) {
 }
 ```
 
-You can [customize the PAC file ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_PAC_file) and host it somewhere your browser can access.
+You can [customize the PAC file ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Proxy_servers_and_tunneling/Proxy_Auto-Configuration_PAC_file) and host it somewhere your browser can access.
 
 ### Formatting considerations
 
@@ -279,7 +279,7 @@ Chromium-based browsers (Chrome, Edge, Brave)
 2. Select **Start Logging to Disk**.
 3. Go to the website you want to test with the affected browser.
 4. Select **Stop Logging**.
-5. Open the downloaded file with <a href="https://netlog-viewer.appspot.com/">netlog-viewer ↗</a>.
+5. Open the downloaded file with <a href="https://netlog-viewer.appspot.com/">netlog-viewer ↗︎</a>.
 6. Search for your domain to see proxy resolution decisions.
 
 </details>

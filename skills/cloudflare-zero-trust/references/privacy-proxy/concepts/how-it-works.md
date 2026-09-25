@@ -43,7 +43,7 @@ Throughout this process, the proxy learns the destination but not the content. T
 
 ## MASQUE protocols
 
-[MASQUE ↗](https://datatracker.ietf.org/wg/masque/about/) (Multiplexed Application Substrate over QUIC Encryption) defines methods for proxying traffic over HTTP. Privacy Proxy supports two MASQUE methods:
+[MASQUE ↗︎](https://datatracker.ietf.org/wg/masque/about/) (Multiplexed Application Substrate over QUIC Encryption) defines methods for proxying traffic over HTTP. Privacy Proxy supports two MASQUE methods:
 
 | Method | Transport | Use case |
 | --- | --- | --- |
@@ -54,7 +54,7 @@ Both methods create encrypted tunnels where the proxy forwards traffic without i
 
 Privacy Proxy accepts connections over HTTP/2 (TLS over TCP) and HTTP/3 (QUIC), selecting the appropriate protocol based on client capabilities.
 
-For a technical deep dive into how these protocols work, refer to our [blog post ↗](https://blog.cloudflare.com/a-primer-on-proxies/).
+For a technical deep dive into how these protocols work, refer to our [blog post ↗︎](https://blog.cloudflare.com/a-primer-on-proxies/).
 
 ## Privacy separation
 
@@ -70,9 +70,9 @@ The proxy authenticates users to verify they have permission to use the service,
 
 ## Related resources
 
-- [A Primer on Proxies ↗](https://blog.cloudflare.com/a-primer-on-proxies/) - Technical deep dive into HTTP CONNECT and MASQUE protocols.
-- [MASQUE Working Group ↗](https://datatracker.ietf.org/wg/masque/about/) - IETF working group developing proxy protocol standards.
-- [RFC 9298 ↗](https://datatracker.ietf.org/doc/html/rfc9298) - CONNECT-UDP specification for proxying UDP over HTTP.
+- [A Primer on Proxies ↗︎](https://blog.cloudflare.com/a-primer-on-proxies/) - Technical deep dive into HTTP CONNECT and MASQUE protocols.
+- [MASQUE Working Group ↗︎](https://datatracker.ietf.org/wg/masque/about/) - IETF working group developing proxy protocol standards.
+- [RFC 9298 ↗︎](https://datatracker.ietf.org/doc/html/rfc9298) - CONNECT-UDP specification for proxying UDP over HTTP.
 
 Was this helpful?
 

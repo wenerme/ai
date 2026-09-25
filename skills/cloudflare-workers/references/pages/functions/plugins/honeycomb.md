@@ -65,7 +65,7 @@ export const onRequest = honeycombPlugin({
 });
 ```
 
-This Plugin is based on the `@cloudflare/workers-honeycomb-logger` and accepts the same [configuration options ↗](https://github.com/cloudflare/workers-honeycomb-logger#config).
+This Plugin is based on the `@cloudflare/workers-honeycomb-logger` and accepts the same [configuration options ↗︎](https://github.com/cloudflare/workers-honeycomb-logger#config).
 
 Ensure that you enable the option to **Automatically unpack nested JSON** and set the **Maximum unpacking depth** to **5** in your Honeycomb dataset settings.
 
@@ -78,7 +78,7 @@ Ensure that you enable the option to **Automatically unpack nested JSON** and se
 - `data.honeycomb.tracer.log` which takes a single argument, a `String`.
 - `data.honeycomb.tracer.addData` which takes a single argument, an object of arbitrary data.
 
-More information about these methods can be seen on [`@cloudflare/workers-honeycomb-logger`'s documentation ↗](https://github.com/cloudflare/workers-honeycomb-logger#adding-logs-and-other-data).
+More information about these methods can be seen on [`@cloudflare/workers-honeycomb-logger`'s documentation ↗︎](https://github.com/cloudflare/workers-honeycomb-logger#adding-logs-and-other-data).
 
 For example, if you wanted to use the `addData` method to attach user information:
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗](https://community.cloudflare.com/) to explore more resources.
+Below you will find answers to our most commonly asked questions. If you cannot find the answer you are looking for, refer to the [community page ↗︎](https://community.cloudflare.com/) to explore more resources.
 
 ## What is 1.1.1.1?
 
@@ -26,13 +26,13 @@ Your device is usually configured to use a DNS resolver chosen by your ISP (such
 
 ## How can I check if my computer / smartphone / tablet is connected to 1.1.1.1?
 
-Visit [1.1.1.1/help ↗](https://one.one.one.one/help) to make sure your system is connected to 1.1.1.1 and that it is working.
+Visit [1.1.1.1/help ↗︎](https://one.one.one.one/help) to make sure your system is connected to 1.1.1.1 and that it is working.
 
 ## What do DNS resolvers do?
 
 DNS resolvers are like address books for the Internet. They translate domain names into IP addresses so that your browser knows which server to contact. A resolver does this by working backwards from the top of the domain name hierarchy.
 
-Every resolver knows how to find the invisible `.` at the end of domain names (for example, `cloudflare.com.`). There are [hundreds of root servers ↗](http://www.root-servers.org/) all over the world that host the `.` file. Resolvers come preconfigured with the [IP addresses of those root servers ↗](http://www.internic.net/domain/named.root). Cloudflare itself hosts [that file ↗](http://www.internic.net/domain/root.zone) on all of its servers around the world through a [partnership with ISC ↗](https://blog.cloudflare.com/f-root/).
+Every resolver knows how to find the invisible `.` at the end of domain names (for example, `cloudflare.com.`). There are [hundreds of root servers ↗︎](http://www.root-servers.org/) all over the world that host the `.` file. Resolvers come preconfigured with the [IP addresses of those root servers ↗︎](http://www.internic.net/domain/named.root). Cloudflare itself hosts [that file ↗︎](http://www.internic.net/domain/root.zone) on all of its servers around the world through a [partnership with ISC ↗︎](https://blog.cloudflare.com/f-root/).
 
 The resolver asks one of the root servers where to find the next link in the chain — the top-level domain (TLD), which is the domain ending like `.com` or `.org`. The root servers return the address of the TLD server responsible for that ending.
 
@@ -40,11 +40,11 @@ The resolver then asks the TLD server where to find the specific domain. For exa
 
 Once the resolver has the final IP address, it returns the answer to the device that asked.
 
-This whole system is called the [Domain Name System (DNS) ↗](https://www.cloudflare.com/learning/dns/what-is-dns/). It includes the servers that host domain records (called [authoritative DNS servers ↗](https://www.cloudflare.com/learning/dns/dns-server-types/)) and the servers that look up those records on behalf of users (DNS resolvers).
+This whole system is called the [Domain Name System (DNS) ↗︎](https://www.cloudflare.com/learning/dns/what-is-dns/). It includes the servers that host domain records (called [authoritative DNS servers ↗︎](https://www.cloudflare.com/learning/dns/dns-server-types/)) and the servers that look up those records on behalf of users (DNS resolvers).
 
 ## Does 1.1.1.1 support ANY?
 
-No. Cloudflare [stopped supporting the ANY query type ↗](https://blog.cloudflare.com/deprecating-dns-any-meta-query-type/) in 2015. The `ANY` query asks a DNS server to return all record types for a domain at once. In practice, `ANY` is more often used to amplify denial-of-service attacks than for legitimate purposes. When 1.1.1.1 receives an `ANY` query, it responds with `NOTIMPL` (not implemented).
+No. Cloudflare [stopped supporting the ANY query type ↗︎](https://blog.cloudflare.com/deprecating-dns-any-meta-query-type/) in 2015. The `ANY` query asks a DNS server to return all record types for a domain at once. In practice, `ANY` is more often used to amplify denial-of-service attacks than for legitimate purposes. When 1.1.1.1 receives an `ANY` query, it responds with `NOTIMPL` (not implemented).
 
 ## How does 1.1.1.1 work with DNSSEC?
 
@@ -62,11 +62,11 @@ Yes. 1.1.1.1 has full IPv6 support. Refer to [IP addresses](https://developers.c
 
 ## What is Purge Cache?
 
-1.1.1.1's Purge Cache tool allows you to refresh 1.1.1.1's DNS cache for domain names. To refresh the cache for a domain name, visit the [Purge Cache page ↗](https://one.one.one.one/purge-cache/).
+1.1.1.1's Purge Cache tool allows you to refresh 1.1.1.1's DNS cache for domain names. To refresh the cache for a domain name, visit the [Purge Cache page ↗︎](https://one.one.one.one/purge-cache/).
 
 ## Can IPs used by 1.1.1.1 be allowlisted?
 
-Authoritative DNS providers may want to allowlist the IP addresses that 1.1.1.1 uses when querying upstream nameservers. The full list of Cloudflare IP addresses is available at [https://www.cloudflare.com/ips/ ↗](https://www.cloudflare.com/ips/).
+Authoritative DNS providers may want to allowlist the IP addresses that 1.1.1.1 uses when querying upstream nameservers. The full list of Cloudflare IP addresses is available at [https://www.cloudflare.com/ips/ ↗︎](https://www.cloudflare.com/ips/).
 
 Was this helpful?
 

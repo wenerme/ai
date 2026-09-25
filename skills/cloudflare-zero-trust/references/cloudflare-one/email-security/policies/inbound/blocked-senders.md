@@ -26,7 +26,7 @@ Sometimes, the same email, IP address or domain always sends malicious emails to
 
 To configure blocked senders:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **Policies & rules**, then go to **Inbound** > **Blocked senders**.
 4. On the **Blocked senders** page, select **Add a sender**.

@@ -18,7 +18,7 @@ The **Directives** tab in AI Crawl Control provides insights into how AI crawler
 
 To access directives insights:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **AI Crawl Control**. [Go to **AI Crawl Control** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ai)
 3. Go to the **Directives** tab.
 
@@ -48,14 +48,14 @@ The **Robots.txt availability** table shows the historical request frequency and
 | Path | The specific hostname's `robots.txt` file being requested. Paths are listed from the most requested to the least. |
 | Requests | The total number of requests made to this path. Requests are broken down into:<br>- **Successful:** HTTP status codes below 400 (including **200 OK** and redirects).<br>- **Unsuccessful:** HTTP status codes of 400 or above. |
 | Status | The HTTP status code from pinging the `robots.txt` file. |
-| Content Signals | An indicator showing whether the `robots.txt` file contains [Content Signals ↗](https://contentsignals.org/), directives for usage in AI training, search, or AI input. |
+| Content Signals | An indicator showing whether the `robots.txt` file contains [Content Signals ↗︎](https://contentsignals.org/), directives for usage in AI training, search, or AI input. |
 
 From this table, you can take the following actions:
 
 - Monitor for a high number of unsuccessful requests, which suggests that crawlers are having trouble accessing your `robots.txt` file.
   - If the **Status** is `404 Not Found`, create a `robots.txt` file to provide clear directives.
   - If the file exists, check for upstream WAF rules or other security settings that may be blocking access.
-- If the **Content Signals** column indicates that signals are missing, add them to your `robots.txt` file. You can do this by following the [Content Signals ↗](https://contentsignals.org/) instructions or by enabling [Managed `robots.txt`](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/) to have Cloudflare manage them for you.
+- If the **Content Signals** column indicates that signals are missing, add them to your `robots.txt` file. You can do this by following the [Content Signals ↗︎](https://contentsignals.org/) instructions or by enabling [Managed `robots.txt`](https://developers.cloudflare.com/bots/additional-configurations/managed-robots-txt/) to have Cloudflare manage them for you.
 
 ## Track robots.txt violations
 
@@ -88,7 +88,7 @@ The **Agent Readiness** card helps you assess how well your site is configured f
 - **Markdown for Agents**: Whether your site supports content negotiation for AI-optimized content delivery
 - **Content Signals Policy**: Whether your site signals content usage preferences to AI crawlers
 
-The scan is powered by [isitagentready.com ↗](https://isitagentready.com). Results include recommendations for improving your site's compatibility with AI agents and crawlers.
+The scan is powered by [isitagentready.com ↗︎](https://isitagentready.com). Results include recommendations for improving your site's compatibility with AI agents and crawlers.
 
 ## Related resources
 

@@ -14,12 +14,12 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/cors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cross-Origin Resource Sharing ([CORS ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)) is a mechanism that uses HTTP headers to grant a web application running on one origin permission to reach selected resources in a different origin. The web application executes a cross-origin HTTP request when it requests a resource that has a different origin from its own, including domain, protocol, or port.
+Cross-Origin Resource Sharing ([CORS ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS)) is a mechanism that uses HTTP headers to grant a web application running on one origin permission to reach selected resources in a different origin. The web application executes a cross-origin HTTP request when it requests a resource that has a different origin from its own, including domain, protocol, or port.
 
 For a CORS request to reach a site protected by Access, the request must include a valid `CF-Authorization` cookie. This may require additional configuration depending on the type of request:
 
-- [Simple requests ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests) are sent directly to the origin, without triggering a preflight request. For configuration instructions, refer to [Allow simple requests](#allow-simple-requests).
-- [Preflighted requests ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#preflighted_requests) cause the browser to send an OPTIONS request before sending the actual request. The OPTIONS request checks which methods and headers are allowed by the origin. For configuration instructions, refer to [Allow preflighted requests](#allow-preflighted-requests).
+- [Simple requests ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#simple_requests) are sent directly to the origin, without triggering a preflight request. For configuration instructions, refer to [Allow simple requests](#allow-simple-requests).
+- [Preflighted requests ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#preflighted_requests) cause the browser to send an OPTIONS request before sending the actual request. The OPTIONS request checks which methods and headers are allowed by the origin. For configuration instructions, refer to [Allow preflighted requests](#allow-preflighted-requests).
 
 Important
 
@@ -53,7 +53,7 @@ There are three ways you can resolve this error:
 
 You can configure Cloudflare to send OPTIONS requests directly to your origin server. To bypass Access for OPTIONS requests:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the origin that will be receiving OPTIONS requests and select **Configure**.
 3. Go to **Advanced settings** > **Cross-Origin Resource Sharing (CORS) settings**.
 4. Turn on **Bypass options requests to origin**. This will remove all existing CORS settings for this application.
@@ -66,10 +66,10 @@ You can configure Cloudflare to respond to the OPTIONS request on your behalf. T
 
 To configure how Cloudflare responds to preflight requests:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Locate the origin that will be receiving OPTIONS requests and select **Configure**.
 3. Go to **Advanced settings** > **Cross-Origin Resource Sharing (CORS) settings**.
-4. Configure these [CORS settings ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#the_http_response_headers) to match the response headers sent by your origin.
+4. Configure these [CORS settings ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#the_http_response_headers) to match the response headers sent by your origin.
 
    For example, if you have configured `api.mysite.com`to return the following headers:
 
@@ -129,7 +129,7 @@ Follow [these instructions](https://developers.cloudflare.com/cloudflare-one/acc
 
 ### 2. Add a Service Auth policy
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Find your `api.mysite.com` application and select **Configure**.
 3. Select the **Policies** tab.
 4. Add the following policy:
@@ -156,7 +156,7 @@ yarn create cloudflare authentication-worker
 pnpm create cloudflare@latest authentication-worker
 ```
 
-This will prompt you to install the [`create-cloudflare` ↗](https://www.npmjs.com/package/create-cloudflare) package and lead you through setup.
+This will prompt you to install the [`create-cloudflare` ↗︎](https://www.npmjs.com/package/create-cloudflare) package and lead you through setup.
 
 For setup, select the following options:
 
@@ -223,7 +223,7 @@ npx wrangler deploy
 
 ### 4. Configure the Worker
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select your newly created Worker.
 3. In the **Triggers** tab, go to **Routes** and add `example.com/api/*`. The Worker is placed on a subpath of `example.com` to avoid making a cross-origin request.
 4. In the **Settings** tab, select **Variables**.
@@ -247,7 +247,7 @@ In general, we recommend the following steps when troubleshooting CORS issues:
 
 1. Capture a HAR file with the issue described, as well as the JS console log output recorded simultaneously. This is because the HAR file alone will not give full visibility on the reason behind cross-origin issues.
 2. Ensure that the application has set `credentials: 'same-origin'` in all fetch or XHR requests.
-3. If you are using the [cross-origin setting ↗](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) on script tags, these must be set to "use-credentials".
+3. If you are using the [cross-origin setting ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) on script tags, these must be set to "use-credentials".
 
 CORS is failing on the same domain
 

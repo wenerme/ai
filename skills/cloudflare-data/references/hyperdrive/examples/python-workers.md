@@ -24,16 +24,16 @@ Hyperdrive in Python Workers uses [TCP socket support](https://developers.cloudf
 
 | Driver | Documentation |
 | --- | --- |
-| `asyncpg` (recommended) | [asyncpg documentation ↗](https://magicstack.github.io/asyncpg/current/) |
-| `pg8000` | [pg8000 documentation ↗](https://codeberg.org/tlocke/pg8000) |
-| `psycopg` | [psycopg documentation ↗](https://www.psycopg.org/psycopg3/docs/index.html) |
+| `asyncpg` (recommended) | [asyncpg documentation ↗︎](https://magicstack.github.io/asyncpg/current/) |
+| `pg8000` | [pg8000 documentation ↗︎](https://codeberg.org/tlocke/pg8000) |
+| `psycopg` | [psycopg documentation ↗︎](https://www.psycopg.org/psycopg3/docs/index.html) |
 
 ### MySQL
 
 | Driver | Documentation |
 | --- | --- |
-| `aiomysql` (recommended) | [aiomysql documentation ↗](https://aiomysql.readthedocs.io/en/latest/) |
-| `pymysql` | [pymysql documentation ↗](https://pymysql.readthedocs.io/) |
+| `aiomysql` (recommended) | [aiomysql documentation ↗︎](https://aiomysql.readthedocs.io/en/latest/) |
+| `pymysql` | [pymysql documentation ↗︎](https://pymysql.readthedocs.io/) |
 
 ## Connect to your database
 
@@ -47,7 +47,7 @@ Before you begin, [create a Python Worker](https://developers.cloudflare.com/wor
      "name": "python-hyperdrive",
      "main": "src/main.py",
      // Set this to today's date
-     "compatibility_date": "2026-09-22",
+     "compatibility_date": "2026-09-25",
      "compatibility_flags": [
        "python_workers"
      ],
@@ -64,7 +64,7 @@ Before you begin, [create a Python Worker](https://developers.cloudflare.com/wor
    name = "python-hyperdrive"
    main = "src/main.py"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = ["python_workers"]
 
    [[hyperdrive]]

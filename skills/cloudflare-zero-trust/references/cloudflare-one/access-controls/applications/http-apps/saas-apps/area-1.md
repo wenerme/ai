@@ -18,7 +18,7 @@ Access to Area 1
 
 Beginning October 1, 2025, access and support for Email Security (formerly Area 1) will only be available through the Cloudflare dashboard. Your Email Security protection will not change, but you will no longer be able to access the Area 1 dashboard or send support requests to `@area1security.com` email addresses. For help accessing the Cloudflare dashboard, reach out to [successteam@cloudflare.com](mailto:successteam@cloudflare.com).
 
-[Cloudflare Area 1 ↗](https://www.cloudflare.com/products/zero-trust/email-security/) is an email security platform that protects your organization's inbox from phishing, spam, and other malicious messages. This guide covers how to configure Area 1 as a SAML application in Cloudflare One.
+[Cloudflare Area 1 ↗︎](https://www.cloudflare.com/products/zero-trust/email-security/) is an email security platform that protects your organization's inbox from phishing, spam, and other malicious messages. This guide covers how to configure Area 1 as a SAML application in Cloudflare One.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ Beginning October 1, 2025, access and support for Email Security (formerly Area 
 
 ## 1. Add Area 1 to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application**.
 3. Select **SaaS application**.
 4. In the **Application** field, enter `Area 1` and select **Area 1**. (Area 1 is not currently listed in the default drop-down menu.)
@@ -45,7 +45,7 @@ Beginning October 1, 2025, access and support for Email Security (formerly Area 
 
 Finally, you will need to configure Area 1 to allow users to log in through Cloudflare Access.
 
-1. In your [Area 1 portal ↗](https://horizon.area1security.com/), go to **Settings** > **SSO**.
+1. In your [Area 1 portal ↗︎](https://horizon.area1security.com/), go to **Settings** > **SSO**.
 2. Turn on **Single Sign On**.
 3. (Optional) To require users to sign in through Access, set **SSO Enforcement** to *All*. When SSO is enforced, users will no longer be able to sign in with their Area 1 credentials.
 4. In **SAML SSO Domain**, enter `<your-team-name>.cloudflareaccess.com`.

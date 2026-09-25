@@ -40,7 +40,7 @@ Configure sandbox behavior with options like `keepAlive` for long-running proces
 
 - [Get Started guide](https://developers.cloudflare.com/sandbox/get-started/) - Initial setup walkthrough
 - [Wrangler documentation](https://developers.cloudflare.com/workers/wrangler/) - Complete Wrangler reference
-- [Docker documentation ↗](https://docs.docker.com/engine/reference/builder/) - Dockerfile syntax
+- [Docker documentation ↗︎](https://docs.docker.com/engine/reference/builder/) - Dockerfile syntax
 - [Security model](https://developers.cloudflare.com/sandbox/concepts/security/) - Understanding environment isolation
 
 Was this helpful?

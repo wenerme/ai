@@ -23,7 +23,7 @@ You can have more than one Cloudflare One Appliance in one profile if you initia
 
 ## Remove a profile
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Profiles**.
 3. Find the profile that you want to edit > select the three dots next to it > **Delete**.
 
@@ -31,7 +31,7 @@ You can have more than one Cloudflare One Appliance in one profile if you initia
 
 To remove a Cloudflare One Appliance from your account:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Appliances**.
 3. Find the Cloudflare One Appliance that you want to delete > select the three dots next to it > **Delete**.
 

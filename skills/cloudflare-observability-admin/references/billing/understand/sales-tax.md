@@ -20,7 +20,7 @@ To avoid unwanted charges, ensure your billing address and payment method are ac
 
 Note
 
-Cloudflare customers in a sponsorship program (i.e. [Project Athenian ↗](https://www.cloudflare.com/athenian/), [Project Galileo ↗](https://www.cloudflare.com/galileo/), [Cloudflare for Campaigns ↗](https://www.cloudflare.com/campaigns/)) are not charged sales tax.
+Cloudflare customers in a sponsorship program (i.e. [Project Athenian ↗︎](https://www.cloudflare.com/athenian/), [Project Galileo ↗︎](https://www.cloudflare.com/galileo/), [Cloudflare for Campaigns ↗︎](https://www.cloudflare.com/campaigns/)) are not charged sales tax.
 
 ## US State sales tax
 

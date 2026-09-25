@@ -108,7 +108,7 @@ mDNSResponder
 
 Below is a non-exhaustive list of third-party software that are known to cause <code>mDNSResponder</code> to bind to port <code>53</code>. Rather than try to stop <code>mDNSResponder</code>, you should either configure the third-party software so that they no longer use port <code>53</code>, or temporarily disable them before connecting the Cloudflare One Client.
 
-- **Docker**: <a href="https://github.com/docker/for-mac/issues/7008#issuecomment-1746653802">Turn off kernel networking for UDP ↗</a> in Docker. Alternatively, uncheck **Start Docker Desktop when you sign in to your computer** under <a href="https://docs.docker.com/desktop/settings-and-maintenance/settings/#general">**Settings** &gt; **General** ↗</a>. Disabling the automatic startup process will prevent Docker from binding to port <code>53</code> before the Cloudflare One Client.
+- **Docker**: <a href="https://github.com/docker/for-mac/issues/7008#issuecomment-1746653802">Turn off kernel networking for UDP ↗︎</a> in Docker. Alternatively, uncheck **Start Docker Desktop when you sign in to your computer** under <a href="https://docs.docker.com/desktop/settings-and-maintenance/settings/#general">**Settings** &gt; **General** ↗︎</a>. Disabling the automatic startup process will prevent Docker from binding to port <code>53</code> before the Cloudflare One Client.
 - **Internet Sharing feature**: To disable Internet Sharing:
   1. On macOS, go to **System Settings** &gt; **General** &gt; **Sharing**.
   2. Turn off **Internet Sharing**.
@@ -116,7 +116,7 @@ Below is a non-exhaustive list of third-party software that are known to cause <
   1. Stop/quit all VMs.
   2. Connect the Cloudflare One Client.
   3. Start the VMs again.
-- **Apple Container**: <a href="https://github.com/apple/container">Apple Container ↗</a> will also bind <code>mDNSResponder</code> to port <code>53</code> if started before the Cloudflare One Client (or while the Client is stopped).
+- **Apple Container**: <a href="https://github.com/apple/container">Apple Container ↗︎</a> will also bind <code>mDNSResponder</code> to port <code>53</code> if started before the Cloudflare One Client (or while the Client is stopped).
   1. On macOS, run this in the terminal to temporarily stop the container system: <code>container system stop</code>
   2. Cloudflare One Client DNS mode should now start with no errors.
   3. You can then restart the container system (<code>container system start</code>) and pass explicit DNS flags when running containers.
@@ -138,7 +138,7 @@ The Cloudflare One Client could not read the system DNS configuration, most like
 
 ### Resolution
 
-On macOS and Linux, validate that `/etc/resolv.conf` is [formatted correctly ↗](https://man7.org/linux/man-pages/man5/resolv.conf.5.html) and check for [invalid characters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/common-issues/#maclinux-the-devices-etcresolvconf-file-has-an-invalid-character).
+On macOS and Linux, validate that `/etc/resolv.conf` is [formatted correctly ↗︎](https://man7.org/linux/man-pages/man5/resolv.conf.5.html) and check for [invalid characters](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/troubleshooting/common-issues/#maclinux-the-devices-etcresolvconf-file-has-an-invalid-character).
 
 On Windows, validate that the registry entry `HKLM\System\CurrentControlSet\Services\TCPIP\Parameters\SearchList` contains only valid search domains. Examples of invalid entries include IP addresses and domains that start with a period (such as `.local`).
 

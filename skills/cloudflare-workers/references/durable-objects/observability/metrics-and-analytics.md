@@ -16,7 +16,7 @@ Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Durable Objects expose analytics for Durable Object namespace-level and request-level metrics.
 
-The metrics displayed in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) charts are queried from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically via GraphQL](#query-via-the-graphql-api) or HTTP client.
+The metrics displayed in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) charts are queried from Cloudflare's [GraphQL Analytics API](https://developers.cloudflare.com/analytics/graphql-api/). You can access the metrics [programmatically via GraphQL](#query-via-the-graphql-api) or HTTP client.
 
 Durable Object namespace
 
@@ -140,7 +140,7 @@ Refer to the [Querying Workers Metrics with GraphQL](https://developers.cloudfla
 
 ## Additional resources
 
-- For instructions on setting up a Grafana dashboard to query Cloudflare's GraphQL Analytics API, refer to [Grafana Dashboard starter for Durable Object metrics ↗](https://github.com/TimoWilhelm/grafana-do-dashboard).
+- For instructions on setting up a Grafana dashboard to query Cloudflare's GraphQL Analytics API, refer to [Grafana Dashboard starter for Durable Object metrics ↗︎](https://github.com/TimoWilhelm/grafana-do-dashboard).
 
 ## FAQs
 

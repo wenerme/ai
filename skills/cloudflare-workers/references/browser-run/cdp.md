@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/cdp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The `/devtools` endpoints provide session management capabilities that follow the [Chrome DevTools Protocol (CDP) ↗](https://chromedevtools.github.io/devtools-protocol/). These endpoints allow you to create persistent browser sessions, manage multiple tabs, and interact with browsers using CDP commands. This is useful for advanced automation, debugging, and remote browser control.
+The `/devtools` endpoints provide session management capabilities that follow the [Chrome DevTools Protocol (CDP) ↗︎](https://chromedevtools.github.io/devtools-protocol/). These endpoints allow you to create persistent browser sessions, manage multiple tabs, and interact with browsers using CDP commands. This is useful for advanced automation, debugging, and remote browser control.
 
 CDP endpoints can be accessed from any environment that supports WebSocket connections, including local development machines, external servers, and CI/CD pipelines. This means you can connect to Browser Run from Node.js scripts, Puppeteer, Playwright, or any CDP-compatible client.
 
@@ -40,11 +40,11 @@ Once you acquire a browser session, you can interact with it in two ways:
 
 ### CDP over WebSocket
 
-Connect to the WebSocket endpoint `/devtools/browser` to acquire a session and send [CDP commands ↗](https://chromedevtools.github.io/devtools-protocol/) directly over the connection. This is the standard way to use CDP and works with any CDP client, including [Puppeteer](https://developers.cloudflare.com/browser-run/cdp/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/cdp/playwright/), and [MCP clients](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/).
+Connect to the WebSocket endpoint `/devtools/browser` to acquire a session and send [CDP commands ↗︎](https://chromedevtools.github.io/devtools-protocol/) directly over the connection. This is the standard way to use CDP and works with any CDP client, including [Puppeteer](https://developers.cloudflare.com/browser-run/cdp/puppeteer/), [Playwright](https://developers.cloudflare.com/browser-run/cdp/playwright/), and [MCP clients](https://developers.cloudflare.com/browser-run/cdp/mcp-clients/).
 
 ### HTTP API
 
-HTTP endpoints are also available to manage the browser lifecycle without using WebSockets. These follow the standard [CDP HTTP endpoints ↗](https://chromedevtools.github.io/devtools-protocol/#endpoints):
+HTTP endpoints are also available to manage the browser lifecycle without using WebSockets. These follow the standard [CDP HTTP endpoints ↗︎](https://chromedevtools.github.io/devtools-protocol/#endpoints):
 
 1. **Create session** — `POST /devtools/browser`
 2. **List tabs** — `GET /devtools/browser/{session_id}/json/list`

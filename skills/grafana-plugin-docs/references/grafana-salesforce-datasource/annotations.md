@@ -33,23 +33,25 @@ To create an annotation using Salesforce data:
    - **Enabled**: Toggle on to display the annotation.
    - **Color**: Choose a color for the annotation markers.
 5. Write a SOQL query that returns your event data.
-6. Click **Save dashboard**.
+6. In the field mapping section, confirm or adjust which returned fields map to **Time**, **Time end**, **Title**, **Text**, and **Tags**.
+7. Click **Save dashboard**.
 
 ## Query format for annotations
 
-Your SOQL query should return fields that Grafana can use for annotations. The following field names are recognized:
+The Salesforce data source uses the standard Grafana annotation support. When you add an annotation query, Grafana runs your SOQL query as a normal query and then maps the returned fields to annotation properties. Grafana recognizes the following fields by name:
 
 Expand table
 
-| Field     | Description                                    |
-|-----------|------------------------------------------------|
-| `time`    | The timestamp for the annotation (required)    |
-| `timeEnd` | End timestamp for range annotations (optional) |
-| `title`   | Short title displayed on hover                 |
-| `text`    | Detailed description displayed on hover        |
-| `tags`    | Comma-separated tags for filtering             |
+| Field     | Description                                                                                                                         |
+|-----------|-------------------------------------------------------------------------------------------------------------------------------------|
+| `time`    | Start timestamp for the annotation. Required. If no field is named `time`, Grafana uses the first time field in the results.        |
+| `timeEnd` | End timestamp. When this field is present, the annotation is treated as a range. Optional.                                          |
+| `title`   | Short title displayed on hover. Optional.                                                                                           |
+| `text`    | Detailed description displayed on hover. If no field is named `text`, Grafana uses the first string field in the results. Optional. |
+| `tags`    | Tags for filtering. The value is split on commas. Optional.                                                                         |
+| `id`      | Unique identifier for the annotation. Optional.                                                                                     |
 
-Alias your SOQL fields to match these names for proper annotation display.
+Alias your SOQL fields to these names for automatic mapping. You can also map any returned field to an annotation property explicitly in the annotation query editor, so aliasing isn’t required.
 
 ## Example: Opportunity close dates
 

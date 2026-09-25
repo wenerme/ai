@@ -22,7 +22,7 @@ With Email security, you can enable logs to send detection data to an endpoint o
 
 To monitor your inbox:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Under **Email security**, select **Monitoring**.
 
@@ -52,11 +52,11 @@ Disposition evaluation displays the following dispositions:
   - **Recommendation**: Block.
 - **Spam**: Traffic associated with non-malicious, commercial campaigns.
   - **Recommendation**: Route to existing Spam quarantine folder.
-- **Bulk**: Traffic often associated with newsletters or marketing campaigns. Refer to [Graymail ↗](https://en.wikipedia.org/wiki/Graymail_%28email%29) for more details.
+- **Bulk**: Traffic often associated with newsletters or marketing campaigns. Refer to [Graymail ↗︎](https://en.wikipedia.org/wiki/Graymail_%28email%29) for more details.
   - **Recommendation**: Monitor or tag.
 - **Suspicious**: Traffic associated with phishing campaigns (and is under further analysis by our automated systems).
   - **Recommendation**: Research these messages internally to evaluate legitimacy.
-- **Spoof**: Traffic associated with phishing campaigns that is either non-compliant with your email authentication policies ([SPF ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/), [DKIM ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/), [DMARC ↗](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/)) or has mismatching `Envelope From` and `Header From` values.
+- **Spoof**: Traffic associated with phishing campaigns that is either non-compliant with your email authentication policies ([SPF ↗︎](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-spf-record/), [DKIM ↗︎](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dkim-record/), [DMARC ↗︎](https://www.cloudflare.com/en-gb/learning/dns/dns-records/dns-dmarc-record/)) or has mismatching `Envelope From` and `Header From` values.
   - **Recommendation**: Block after investigating (can be triggered by third-party mail services).
 
 ## Detection details

@@ -52,7 +52,7 @@ Regular expressions and emails to add as Accept sender
 
 </summary>
 
-Below you can find a list of known services you can add when configuring an Accept sender. We recommend you use <a href="https://regexr.com/">RegExr Validation ↗</a> to validate your regular expressions.
+Below you can find a list of known services you can add when configuring an Accept sender. We recommend you use <a href="https://regexr.com/">RegExr Validation ↗︎</a> to validate your regular expressions.
 
 - Google
 
@@ -191,7 +191,7 @@ Below you can find a list of known services you can add when configuring an Acce
 
 To configure allow policies:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **Policies & rules**, then go to **Inbound** > **Allow policies**.
 4. On the **Allow policies** page, select **Add a policy**.

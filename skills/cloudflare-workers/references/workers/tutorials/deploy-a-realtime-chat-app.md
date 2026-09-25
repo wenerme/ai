@@ -20,11 +20,11 @@ This chat application uses a Durable Object to control each chat room. Users con
 
 ## Before you start
 
-All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+All of the tutorials assume you have already completed the [Get started guide](https://developers.cloudflare.com/workers/get-started/guide/), which gets you set up with a Cloudflare Workers account, [C3 ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare), and [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 ## Clone the chat application repository
 
-Open your terminal and clone the [workers-chat-demo ↗](https://github.com/cloudflare/workers-chat-demo) repository:
+Open your terminal and clone the [workers-chat-demo ↗︎](https://github.com/cloudflare/workers-chat-demo) repository:
 
 ```sh
 git clone https://github.com/cloudflare/workers-chat-demo.git

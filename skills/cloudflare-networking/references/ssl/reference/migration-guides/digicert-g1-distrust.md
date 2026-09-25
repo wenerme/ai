@@ -26,7 +26,7 @@ The primary root being distrusted is **DigiCert Global Root CA**. The distrust a
 
 DigiCert Global Root G2 and G3 remain fully trusted. Certificates that chain to G2 are unaffected.
 
-Refer to [DigiCert's root and intermediate CA certificate updates ↗](https://knowledge.digicert.com/general-information/digicert-root-and-intermediate-ca-certificate-updates-2023) for the full list of affected roots.
+Refer to [DigiCert's root and intermediate CA certificate updates ↗︎](https://knowledge.digicert.com/general-information/digicert-root-and-intermediate-ca-certificate-updates-2023) for the full list of affected roots.
 
 ## DigiCert's recommendation
 
@@ -42,7 +42,7 @@ Since Cloudflare does not use DigiCert roots, you can avoid this dependency enti
 
 ## More resources
 
-- [DigiCert root and intermediate CA certificate updates ↗](https://knowledge.digicert.com/general-information/digicert-root-and-intermediate-ca-certificate-updates-2023)
+- [DigiCert root and intermediate CA certificate updates ↗︎](https://knowledge.digicert.com/general-information/digicert-root-and-intermediate-ca-certificate-updates-2023)
 - [Custom certificates](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/)
 - [Certificate bundling methodologies](https://developers.cloudflare.com/ssl/edge-certificates/custom-certificates/bundling-methodologies/)
 

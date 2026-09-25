@@ -20,7 +20,7 @@ If you are migrating from MPLS or a traditional WAN, refer to [WAN transformatio
 
 ## Before you begin
 
-Cloudflare WAN is an Enterprise-only product. [Contact Cloudflare ↗](https://www.cloudflare.com/magic-wan/) to acquire Cloudflare WAN. If you plan on using Cloudflare One Appliance to automatically onboard your locations to Cloudflare, you will need to purchase Cloudflare WAN first.
+Cloudflare WAN is an Enterprise-only product. [Contact Cloudflare ↗︎](https://www.cloudflare.com/magic-wan/) to acquire Cloudflare WAN. If you plan on using Cloudflare One Appliance to automatically onboard your locations to Cloudflare, you will need to purchase Cloudflare WAN first.
 
 ## Set up method
 
@@ -47,7 +47,7 @@ The list of prerequisites below is only for customers planning to connect manual
 
 ### Use compatible tunnel endpoint routers
 
-Cloudflare WAN relies on [GRE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/) and [IPsec tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#ipsec-tunnels) to transmit [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) from Cloudflare's global network to your origin network. To ensure compatibility with Cloudflare WAN, the routers at your tunnel endpoints must:
+Cloudflare WAN relies on [GRE](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/) and [IPsec tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/#ipsec-tunnels) to transmit [packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) from Cloudflare's global network to your origin network. To ensure compatibility with Cloudflare WAN, the routers at your tunnel endpoints must:
 
 - Allow configuration of at least one tunnel per Internet service provider (ISP).
 - Support maximum segment size (MSS) clamping.
@@ -55,7 +55,7 @@ Cloudflare WAN relies on [GRE](https://developers.cloudflare.com/cloudflare-one/
 
 ### Set maximum segment size
 
-Before enabling Cloudflare WAN, you must make sure that you set up the maximum segment size on your network. Cloudflare Cloudflare WAN uses tunnels to deliver [packets ↗](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) from our global network to your data centers. Cloudflare encapsulates these packets adding new headers. You must account for the space consumed by these headers when configuring the maximum transmission unit (MTU) and maximum segment size (MSS) values for your network.
+Before enabling Cloudflare WAN, you must make sure that you set up the maximum segment size on your network. Cloudflare Cloudflare WAN uses tunnels to deliver [packets ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-a-packet/) from our global network to your data centers. Cloudflare encapsulates these packets adding new headers. You must account for the space consumed by these headers when configuring the maximum transmission unit (MTU) and maximum segment size (MSS) values for your network.
 
 #### MSS clamping recommendations
 
@@ -85,8 +85,8 @@ The following table lists several commonly used router vendors with links to MSS
 
 | Router device | URL |
 | --- | --- |
-| Cisco | [TCP IP Adjust MSS ↗](https://www.cisco.com/en/US/docs/ios-xml/ios/ipapp/command/ip_tcp_adjust-mss_through_ip_wccp_web-cache_accelerated.html#GUID-68044D35-A53E-42C1-A7AB-9236333DA8C4) |
-| Juniper | [TCP MSS - Edit System ↗](https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/tcp-mss-edit-system.html) |
+| Cisco | [TCP IP Adjust MSS ↗︎](https://www.cisco.com/en/US/docs/ios-xml/ios/ipapp/command/ip_tcp_adjust-mss_through_ip_wccp_web-cache_accelerated.html#GUID-68044D35-A53E-42C1-A7AB-9236333DA8C4) |
+| Juniper | [TCP MSS - Edit System ↗︎](https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/tcp-mss-edit-system.html) |
 
 Was this helpful?
 

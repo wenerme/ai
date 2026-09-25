@@ -132,7 +132,7 @@ To add Cron Triggers in the Cloudflare dashboard:
 
 ## Supported cron expressions
 
-Cloudflare supports cron expressions with five fields, along with most [Quartz scheduler ↗](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html#introduction)-like cron syntax extensions:
+Cloudflare supports cron expressions with five fields, along with most [Quartz scheduler ↗︎](http://www.quartz-scheduler.org/documentation/quartz-2.3.0/tutorials/crontrigger.html#introduction)-like cron syntax extensions:
 
 | Field | Values | Characters |
 | --- | --- | --- |
@@ -169,7 +169,7 @@ Some common time intervals that may be useful for setting up your Cron Trigger:
 
 ## Test Cron Triggers locally
 
-Test Cron Triggers using Wrangler with [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), or using the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/). This exposes a `/cdn-cgi/local/scheduled` route, which can be used to test using an HTTP request. If you are using the Cloudflare Vite Plugin, ensure that you use the correct vite port for the following commands (Vite defaults to 5173).
+Test Cron Triggers using Wrangler with [`wrangler dev`](https://developers.cloudflare.com/workers/wrangler/commands/general/#dev), or using the [Cloudflare Vite plugin ↗︎](https://developers.cloudflare.com/workers/vite-plugin/). This exposes a `/cdn-cgi/local/scheduled` route, which can be used to test using an HTTP request. If you are using the Cloudflare Vite Plugin, ensure that you use the correct vite port for the following commands (Vite defaults to 5173).
 
 ```sh
 curl "http://localhost:8787/cdn-cgi/local/scheduled"

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/analytics-integrations/prometheus/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This tutorial explains how to export Cloudflare metrics to [Prometheus ↗](https://prometheus.io/) using the [Cloudflare Prometheus Exporter ↗](https://github.com/cloudflare/cloudflare-prometheus-exporter), an open-source tool built on Cloudflare Workers with Durable Objects.
+This tutorial explains how to export Cloudflare metrics to [Prometheus ↗︎](https://prometheus.io/) using the [Cloudflare Prometheus Exporter ↗︎](https://github.com/cloudflare/cloudflare-prometheus-exporter), an open-source tool built on Cloudflare Workers with Durable Objects.
 
 ## Overview
 
@@ -60,7 +60,7 @@ bun run deploy
 
 Create a Cloudflare API token with the following permissions:
 
-[Create token with pre-filled permissions ↗](https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=%5B%7B%22key%22%3A%22analytics%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22account_analytics%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22workers_scripts%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22ssl_and_certificates%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22firewall_services%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22load_balancers%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22account_logs%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22magic_transit%22%2C%22type%22%3A%22read%22%7D%5D&name=Cloudflare%20Prometheus%20Exporter)
+[Create token with pre-filled permissions ↗︎](https://dash.cloudflare.com/profile/api-tokens?permissionGroupKeys=%5B%7B%22key%22%3A%22analytics%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22account_analytics%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22workers_scripts%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22ssl_and_certificates%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22firewall_services%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22load_balancers%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22account_logs%22%2C%22type%22%3A%22read%22%7D%2C%7B%22key%22%3A%22magic_transit%22%2C%22type%22%3A%22read%22%7D%5D&name=Cloudflare%20Prometheus%20Exporter)
 
 | Permission | Access | Required |
 | --- | --- | --- |
@@ -122,7 +122,7 @@ Set environment variables in `wrangler.jsonc` or via `wrangler secret put`:
 | `BASIC_AUTH_USER` | - | Username for Basic Auth (secret) |
 | `BASIC_AUTH_PASSWORD` | - | Password for Basic Auth (secret) |
 
-For a full list of configuration options, refer to the [exporter README ↗](https://github.com/cloudflare/cloudflare-prometheus-exporter#configuration).
+For a full list of configuration options, refer to the [exporter README ↗︎](https://github.com/cloudflare/cloudflare-prometheus-exporter#configuration).
 
 ## Endpoints
 
@@ -156,7 +156,7 @@ The exporter provides 90+ metrics across the following categories:
 - **Stream** - Video playback counts, time viewed, live input metrics.
 - **Hostname metrics** - Per-hostname request counts, latency averages, and percentiles (requires `HOST_METRICS_ALLOWLIST`).
 
-For a complete list of metrics with types and labels, refer to the [exporter README ↗](https://github.com/cloudflare/cloudflare-prometheus-exporter#available-metrics).
+For a complete list of metrics with types and labels, refer to the [exporter README ↗︎](https://github.com/cloudflare/cloudflare-prometheus-exporter#available-metrics).
 
 ## Free tier zone limitations
 

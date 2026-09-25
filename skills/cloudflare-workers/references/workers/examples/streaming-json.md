@@ -18,7 +18,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Use the [Streams API](https://developers.cloudflare.com/workers/runtime-apis/streams/) to process JSON payloads that would exceed a Worker's 128 MB memory limit if fully buffered. Streaming allows you to parse and transform JSON data incrementally as it arrives. This is faster than buffering the entire payload into memory, as your Worker can start processing data incrementally, and allows your Worker to handle multi-gigabyte payloads or files within its memory limits.
 
-The [`@streamparser/json-whatwg` ↗](https://www.npmjs.com/package/@streamparser/json-whatwg) library provides a streaming JSON parser compatible with the Web Streams API.
+The [`@streamparser/json-whatwg` ↗︎](https://www.npmjs.com/package/@streamparser/json-whatwg) library provides a streaming JSON parser compatible with the Web Streams API.
 
 Install the dependency:
 
@@ -196,7 +196,7 @@ export default {
 
 - [Streams API](https://developers.cloudflare.com/workers/runtime-apis/streams/) - Learn more about streaming in Workers
 - [TransformStream](https://developers.cloudflare.com/workers/runtime-apis/streams/transformstream/) - Create custom stream transformations
-- [@streamparser/json-whatwg ↗](https://www.npmjs.com/package/@streamparser/json-whatwg) - Streaming JSON parser documentation
+- [@streamparser/json-whatwg ↗︎](https://www.npmjs.com/package/@streamparser/json-whatwg) - Streaming JSON parser documentation
 
 Was this helpful?
 

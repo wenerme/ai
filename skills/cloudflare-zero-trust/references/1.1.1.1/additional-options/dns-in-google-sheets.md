@@ -18,7 +18,7 @@ Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 This tutorial creates a custom Google Sheets function that queries Cloudflare's 1.1.1.1 DNS resolver using DNS over HTTPS (DoH) — a protocol that encrypts DNS lookups over HTTPS. Once set up, you can type a formula like `=NSLookup("A", "example.com")` in any cell to retrieve DNS records without leaving your spreadsheet. This is useful for bulk domain audits, migration planning, or monitoring DNS changes across many domains at once.
 
-To get started, open your Google Sheet and create a [custom function in Google Apps Script ↗](https://developers.google.com/apps-script/guides/sheets/functions) with the following code:
+To get started, open your Google Sheet and create a [custom function in Google Apps Script ↗︎](https://developers.google.com/apps-script/guides/sheets/functions) with the following code:
 
 ```js
 function NSLookup(type, domain, useCache = false, minCacheTTL = 30) {

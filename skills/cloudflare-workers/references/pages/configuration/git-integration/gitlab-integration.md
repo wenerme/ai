@@ -32,7 +32,7 @@ Without any configuration required, you can choose to skip a deployment on an ad
 
 ### Check runs and preview URLs
 
-If you have one or multiple projects connected to a repository (i.e. a [monorepo](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#monorepos)), you can check on the status of each build within GitLab via [GitLab commit status ↗](https://docs.gitlab.com/ee/user/project/merge_requests/status_checks.html).
+If you have one or multiple projects connected to a repository (i.e. a [monorepo](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/#monorepos)), you can check on the status of each build within GitLab via [GitLab commit status ↗︎](https://docs.gitlab.com/ee/user/project/merge_requests/status_checks.html).
 
 You can see the statuses by selecting the status icon next to a commit or by going to **Build** > **Pipelines** within your GitLab repository. In the example below, you can select the green check mark to see the results of the check run.
 
@@ -56,7 +56,7 @@ When you authorize Cloudflare Pages to access your GitLab account, you automatic
 
 ### Remove access
 
-You can remove Cloudflare Workers' access to your GitLab account by navigating to [Authorized Applications page ↗](https://gitlab.com/-/profile/applications) on GitLab. Find the applications called Cloudflare Workers and select the **Revoke** button to revoke access.
+You can remove Cloudflare Workers' access to your GitLab account by navigating to [Authorized Applications page ↗︎](https://gitlab.com/-/profile/applications) on GitLab. Find the applications called Cloudflare Workers and select the **Revoke** button to revoke access.
 
 Note that the GitLab application Cloudflare Workers is shared between Workers and Pages projects, and removing access to GitLab will disable new builds for Workers and Pages, though your previous deployments will continue to be hosted by Cloudflare Pages.
 
@@ -64,7 +64,7 @@ Note that the GitLab application Cloudflare Workers is shared between Workers an
 
 When encountering Git integration related issues, one potential troubleshooting step is attempting to uninstall and reinstall the GitHub or GitLab application associated with the Cloudflare Pages installation.
 
-1. Go to your application settings page on GitLab located here: [https://gitlab.com/-/profile/applications ↗](https://gitlab.com/-/profile/applications)
+1. Go to your application settings page on GitLab located here: [https://gitlab.com/-/profile/applications ↗︎](https://gitlab.com/-/profile/applications)
 2. Select the **Revoke** button on your Cloudflare Pages installation if it exists.
 3. Go back to the **Workers & Pages** overview page at `https://dash.cloudflare.com/[YOUR_ACCOUNT_ID]/workers-and-pages`. Select **Create application** > **Pages** > **Connect to Git**.
 4. Select the **GitLab** tab at the top, select the **+ Add account** button, select the GitLab account you want to add, and then select **Authorize** on the modal titled "Authorize Cloudflare Pages to use your account?".

@@ -18,7 +18,7 @@ The [Internet Routing Registry (IRR)](http://www.irr.net/index.html) is a global
 
 IRR entries serve as a public record of which networks are authorized to announce specific IP prefixes. When Cloudflare advertises your IP prefixes on your behalf, other networks check IRR records to verify that Cloudflare has permission to do so. Without accurate IRR entries, your traffic may not be properly routed on the Internet.
 
-The IRR consists of many individual [routing registries ↗](http://www.irr.net/docs/list.html), some managed by regional entities such as the American Registry for Internet Numbers (ARIN) and the Regional Internet Registry for Europe, Middle East and Central Asia (RIPE). Each routing registry contains IRR entries that provide information about IP prefixes and the [autonomous systems ↗](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) authorized to announce them.
+The IRR consists of many individual [routing registries ↗︎](http://www.irr.net/docs/list.html), some managed by regional entities such as the American Registry for Internet Numbers (ARIN) and the Regional Internet Registry for Europe, Middle East and Central Asia (RIPE). Each routing registry contains IRR entries that provide information about IP prefixes and the [autonomous systems ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-an-autonomous-system/) authorized to announce them.
 
 To announce your IP prefixes through Cloudflare, you must have accurate IRR entries for your prefixes and autonomous system numbers (ASNs).
 

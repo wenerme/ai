@@ -20,7 +20,7 @@ Cloudflare One allows your team to connect to your applications using their GitH
 
 To configure GitHub access in both GitHub and Cloudflare One:
 
-1. Log in to [GitHub ↗](https://github.com/).
+1. Log in to [GitHub ↗︎](https://github.com/).
 2. Go to your account > **Settings** > **Developer Settings**.
 3. In **Developer Settings**, select **OAuth Apps** and select **New OAuth app**.
 4. On the **Register a new OAuth application** page, enter an **Application name**. Your users will see this application name on the login page.
@@ -30,7 +30,7 @@ To configure GitHub access in both GitHub and Cloudflare One:
    https://<your-team-name>.cloudflareaccess.com
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 6. In the GitHub **Authorization callback URL** field, enter the following URL:
 
    ```txt
@@ -41,7 +41,7 @@ To configure GitHub access in both GitHub and Cloudflare One:
 7. Select **Register application**.
 8. Make note of the **Client ID**.
 9. Select **Generate a new client secret** and copy the client secret to a safe place.
-10. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+10. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 11. Select **Add new identity provider** and select **GitHub**.
 12. In **App ID**, enter the **Client ID** obtained from GitHub (refer to step 8).
 13. In **Client secret**, enter the **Client secret** obtained from GitHub (refer to step 9).
@@ -51,7 +51,7 @@ To configure GitHub access in both GitHub and Cloudflare One:
     - Email addresses (read-only)
 16. Select **Authorize**.
 
-To test that your connection is working, go to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) > **Zero Trust** > **Integrations** > **Identity providers** and select **Test** next to your GitHub login method. If you have GitHub two-factor authentication enabled, you will need to first login to GitHub directly and return to Access.
+To test that your connection is working, go to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) > **Zero Trust** > **Integrations** > **Identity providers** and select **Test** next to your GitHub login method. If you have GitHub two-factor authentication enabled, you will need to first login to GitHub directly and return to Access.
 
 Troubleshooting organization policies
 

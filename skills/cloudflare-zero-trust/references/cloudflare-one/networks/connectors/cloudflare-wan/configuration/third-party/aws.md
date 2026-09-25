@@ -18,9 +18,9 @@ This tutorial provides information and examples of how to configure IPsec VPN be
 
 ## Prerequisites
 
-You need to have an AWS transit gateway created in your AWS account. This is needed to route traffic between your AWS virtual private cloud (VPC) and Cloudflare WAN. Refer to the [AWS documentation ↗](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-getting-started.html) to learn more about creating a transit gateway.
+You need to have an AWS transit gateway created in your AWS account. This is needed to route traffic between your AWS virtual private cloud (VPC) and Cloudflare WAN. Refer to the [AWS documentation ↗︎](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-getting-started.html) to learn more about creating a transit gateway.
 
-Additionally, you also need to configure the necessary route table entries for the virtual machine (VM) in your VPC, as well as the route table entries for the transit gateway. Otherwise, connectivity between your VM and another VM routed through Cloudflare WAN will not work. Refer to the [AWS documentation ↗](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) to learn more about routing tables.
+Additionally, you also need to configure the necessary route table entries for the virtual machine (VM) in your VPC, as well as the route table entries for the transit gateway. Otherwise, connectivity between your VM and another VM routed through Cloudflare WAN will not work. Refer to the [AWS documentation ↗︎](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html) to learn more about routing tables.
 
 ## AWS
 
@@ -63,7 +63,7 @@ Additionally, you also need to configure the necessary route table entries for t
 
 Note
 
-ECMP over two VPN tunnels is not supported with a static routing configuration. You will need to configure dynamic routing for the VPN between the transit gateway and the customer gateway device. Refer to [AWS documentation ↗](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) for more information.
+ECMP over two VPN tunnels is not supported with a static routing configuration. You will need to configure dynamic routing for the VPN between the transit gateway and the customer gateway device. Refer to [AWS documentation ↗︎](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-transit-gateways.html) for more information.
 
 ## Cloudflare WAN
 

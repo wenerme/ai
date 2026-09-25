@@ -50,7 +50,7 @@ graph LR
 The components in the diagram include:
 
 - **cloudflared**: Each data center is connected to Cloudflare with its own Cloudflare Tunnel. `cloudflared` installs on one or [more](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/configure-tunnels/tunnel-availability/#cloudflared-replicas) host machines in the network.
-- **Private load balancer IP**: End users connect to the application using the load balancer's IP address. This can either be a Cloudflare-assigned IP in `100.112.0.0/16` or a custom `/32` IP in an [RFC 1918 range ↗](https://datatracker.ietf.org/doc/html/rfc1918).
+- **Private load balancer IP**: End users connect to the application using the load balancer's IP address. This can either be a Cloudflare-assigned IP in `100.112.0.0/16` or a custom `/32` IP in an [RFC 1918 range ↗︎](https://datatracker.ietf.org/doc/html/rfc1918).
 - **Load balancer pool**: The load balancer is configured with one [pool](https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-components/#pools) per tunnel.
 - **Load balancer endpoint**: A pool contains one or more endpoints, where each endpoint is a server behind `cloudflared` that is running the application. If your servers have overlapping IPs, you can assign a distinct [virtual network (VNET)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/tunnel-virtual-networks/) per tunnel so that Load Balancer can deterministically route requests to the correct endpoint.
 
@@ -121,7 +121,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/load_balancers/p
 3. Select **Private Load Balancer**.
 4. On the next step you can choose to associate this load balancer with either:
    - A Cloudflare-assigned IP from the `100.112.0.0/16` range
-   - A custom `/32` IP in an [RFC 1918 range ↗](https://datatracker.ietf.org/doc/html/rfc1918)
+   - A custom `/32` IP in an [RFC 1918 range ↗︎](https://datatracker.ietf.org/doc/html/rfc1918)
 5. Add a descriptive name to identify your load balancer.
 6. Proceed through the setup.
 
@@ -131,7 +131,7 @@ After completing the setup, you will be redirected to the Load Balancing dashboa
 
 In order for Cloudflare One Clients to connect to your load balancer, the load balancer's IP address must route through the WARP tunnel in your [Split Tunnel settings](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/).
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Device profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Team & Resources** > **Device profiles**.
 2. Find the [device profile](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-profiles/) you would like to modify and select **Edit**.
 3. Under **Split Tunnels**, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include**.
 4. Select **Manage**. Depending on the mode:
@@ -146,7 +146,7 @@ Cloudflare One Client traffic can now reach your private load balancer. For exam
 
 If you want your load balancer and its endpoints to be transparently accessible to users via a hostname, you can create a Gateway DNS [Override policy](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/#override) that maps the hostname to the load balancer's IP address. This ensures that traffic destined for the hostname resolves to the correct IP.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **DNS**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Firewall policies** > **DNS**.
 2. Select **Add a policy**.
 3. In **Traffic**, create an expression where the **Selector** equals `Host`, the **Operator** equals `is`, and **Value** is the hostname you wish to associate with your load balancer. For example,
 

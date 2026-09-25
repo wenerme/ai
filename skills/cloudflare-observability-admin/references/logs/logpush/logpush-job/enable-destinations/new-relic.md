@@ -33,7 +33,7 @@ Cloudflare Logpush supports pushing logs directly to New Relic via the Cloudflar
 
 - `"https://log-api.eu.newrelic.com/log/v1?Api-Key=<NR_LICENSE_KEY>&format=cloudflare"`
 
-Use the region that matches the one that has been set on your New Relic account. The **License key** field can be found on the New Relic dashboard. It can be retrieved by following [these steps ↗](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#manage-license-key).
+Use the region that matches the one that has been set on your New Relic account. The **License key** field can be found on the New Relic dashboard. It can be retrieved by following [these steps ↗︎](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#manage-license-key).
 
 When you are done entering the destination details, select **Continue**.
 
@@ -64,7 +64,7 @@ To create a job, make a `POST` request to the Logpush jobs endpoint with the fol
   To query Cloudflare logs, New Relic requires fields to be sent as a UNIX timestamp.
 - **destination\_conf** - A log destination consisting of an endpoint URL, a license key and a format in the string format below.
   - **\<NR\_ENDPOINT\_URL>**: The New Relic HTTP logs intake endpoint, which is `https://log-api.newrelic.com/log/v1` for US or `https://log-api.eu.newrelic.com/log/v1` for the EU, depending on the region that has been set on your New Relic account.
-  - **\<NR\_LICENSE\_KEY>**: This key can be found on the New Relic dashboard and it can be retrieved by following [these steps ↗](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#manage-license-key).
+  - **\<NR\_LICENSE\_KEY>**: This key can be found on the New Relic dashboard and it can be retrieved by following [these steps ↗︎](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/#manage-license-key).
   - **format**: The format is `cloudflare`.
 
     US: `"https://log-api.newrelic.com/log/v1?Api-Key=<NR_LICENSE_KEY>&format=cloudflare"`

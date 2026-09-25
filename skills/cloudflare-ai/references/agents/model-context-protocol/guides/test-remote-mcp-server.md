@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Remote, authorized connections are an evolving part of the [Model Context Protocol (MCP) specification ↗](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization). Not all MCP clients support remote connections yet.
+Remote, authorized connections are an evolving part of the [Model Context Protocol (MCP) specification ↗︎](https://modelcontextprotocol.io/specification/2025-06-18/basic/authorization). Not all MCP clients support remote connections yet.
 
 This guide will show you options for how to start using your remote MCP server with MCP clients that support remote connections. If you haven't yet created and deployed a remote MCP server, you should follow the [Build a Remote MCP Server](https://developers.cloudflare.com/agents/model-context-protocol/guides/remote-mcp-server/) guide first.
 
 ## The Model Context Protocol (MCP) inspector
 
-The [`@modelcontextprotocol/inspector` package ↗](https://github.com/modelcontextprotocol/inspector) is a visual testing tool for MCP servers.
+The [`@modelcontextprotocol/inspector` package ↗︎](https://github.com/modelcontextprotocol/inspector) is a visual testing tool for MCP servers.
 
 1. Open a terminal and run the following command:
 
@@ -48,11 +48,11 @@ You should see the **List tools** button, which will list the tools that your MC
 
 ## Connect your remote MCP server to Cloudflare Workers AI Playground
 
-Visit the [Workers AI Playground ↗](https://playground.ai.cloudflare.com/), enter your MCP server URL, and click "Connect". Once authenticated (if required), you should see your tools listed and they will be available to the AI model in the chat.
+Visit the [Workers AI Playground ↗︎](https://playground.ai.cloudflare.com/), enter your MCP server URL, and click "Connect". Once authenticated (if required), you should see your tools listed and they will be available to the AI model in the chat.
 
 ## Connect your remote MCP server to Claude Desktop via a local proxy
 
-You can use the [`mcp-remote` local proxy ↗](https://www.npmjs.com/package/mcp-remote) to connect Claude Desktop to your remote MCP server. This lets you test what an interaction with your remote MCP server will be like with a real-world MCP client.
+You can use the [`mcp-remote` local proxy ↗︎](https://www.npmjs.com/package/mcp-remote) to connect Claude Desktop to your remote MCP server. This lets you test what an interaction with your remote MCP server will be like with a real-world MCP client.
 
 1. Open Claude Desktop and navigate to Settings -> Developer -> Edit Config. This opens the configuration file that controls which MCP servers Claude can access.
 2. Replace the content with a configuration like this:
@@ -74,7 +74,7 @@ Once authenticated, you'll be able to see your tools by clicking the tools icon 
 
 ## Connect your remote MCP server to Cursor
 
-Connect [Cursor ↗](https://cursor.com/docs/context/mcp) to your remote MCP server by editing the project's `.cursor/mcp.json` file or a global `~/.cursor/mcp.json` file and adding the following configuration:
+Connect [Cursor ↗︎](https://cursor.com/docs/context/mcp) to your remote MCP server by editing the project's `.cursor/mcp.json` file or a global `~/.cursor/mcp.json` file and adding the following configuration:
 
 ```json
 {
@@ -88,7 +88,7 @@ Connect [Cursor ↗](https://cursor.com/docs/context/mcp) to your remote MCP ser
 
 ## Connect your remote MCP server to Windsurf
 
-You can connect your remote MCP server to [Windsurf ↗](https://docs.windsurf.com) by editing the [`mcp_config.json` file ↗](https://docs.windsurf.com/windsurf/cascade/mcp), and adding the following configuration:
+You can connect your remote MCP server to [Windsurf ↗︎](https://docs.windsurf.com) by editing the [`mcp_config.json` file ↗︎](https://docs.windsurf.com/windsurf/cascade/mcp), and adding the following configuration:
 
 ```json
 {

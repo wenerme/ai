@@ -144,8 +144,8 @@ self.env.NAMESPACE.get(key, options)
   - The value for the requested KV pair. The response type will depend on the `type` parameter provided for the `get()` command as follows:
   - `text`: A `string` (default).
   - `json`: An object decoded from a JSON string.
-  - `arrayBuffer`: An [`ArrayBuffer` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) instance.
-  - `stream`: A [`ReadableStream` ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
+  - `arrayBuffer`: An [`ArrayBuffer` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) instance.
+  - `stream`: A [`ReadableStream` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
 
 #### Request multiple keys with `get(keys: string[])`
 
@@ -225,8 +225,8 @@ Metadata is a serializable value you append to each KV entry.
   - An object containing the value and the metadata for the requested KV pair. The type of the value attribute will depend on the `type` parameter provided for the `getWithMetadata()` command as follows:
     - `text`: A `string` (default).
     - `json`: An object decoded from a JSON string.
-    - `arrayBuffer`: An [`ArrayBuffer` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) instance.
-    - `stream`: A [`ReadableStream` ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
+    - `arrayBuffer`: An [`ArrayBuffer` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer) instance.
+    - `stream`: A [`ReadableStream` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream).
 
 If there is no metadata associated with the requested key-value pair, `null` will be returned for metadata.
 
@@ -287,11 +287,11 @@ Defining the length of time in seconds is useful for reducing cold read latency 
 
 Hot and cold read
 
-A hot read means that the data is cached on Cloudflare's edge network using the [CDN ↗](https://developers.cloudflare.com/cache/), whether it is in a local cache or a regional cache. A cold read means that the data is not cached, so the data must be fetched from the central stores. Both existing key-value pairs and non-existent key-value pairs (also known as negative lookups) are cached at the edge.
+A hot read means that the data is cached on Cloudflare's edge network using the [CDN ↗︎](https://developers.cloudflare.com/cache/), whether it is in a local cache or a regional cache. A cold read means that the data is not cached, so the data must be fetched from the central stores. Both existing key-value pairs and non-existent key-value pairs (also known as negative lookups) are cached at the edge.
 
 `cacheTtl` is not recommended if your data is updated often and you need to see updates shortly after they are written, because writes that happen from other global network locations will not be visible until the cached value expires.
 
-The `cacheTtl` parameter must be an integer greater than or equal to `30`. `60` is the default. The maximum value for `cacheTtl` is [`Number.MAX_SAFE_INTEGER` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER).
+The `cacheTtl` parameter must be an integer greater than or equal to `30`. `60` is the default. The maximum value for `cacheTtl` is [`Number.MAX_SAFE_INTEGER` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER).
 
 Once a key has been read with a given `cacheTtl` in a region, it will remain cached in that region until the end of the `cacheTtl` or eviction. This affects regional and central tiers of KV's built-in caching layers. When writing to Workers KV, the regions in the regional and central caching layers internal to KV will get revalidated with the newly written result.
 

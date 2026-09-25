@@ -39,7 +39,7 @@ The API endpoints for creating, reading, updating, or deleting custom providers 
 
 To create an API token:
 
-1. Go to the [Cloudflare dashboard API tokens page ↗](https://dash.cloudflare.com/?to=:account/api-tokens)
+1. Go to the [Cloudflare dashboard API tokens page ↗︎](https://dash.cloudflare.com/?to=:account/api-tokens)
 2. Click **Create Token**
 3. Select **Custom Token** and add the following permissions:
    - `AI Gateway - Edit`
@@ -116,8 +116,8 @@ A default SVG logo is automatically generated for each custom provider. The logo
 
 To create a new custom provider using the dashboard:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
+2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗︎](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
 3. Select **Add Custom Provider**.
 4. Enter the following information:
    - **Provider Name**: Display name for your provider
@@ -194,8 +194,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-gateway/custo
 
 To view all your custom providers:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
+2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗︎](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
 3. You will see a list of all your custom providers with their names, slugs, base URLs, and status.
 
 ## Get a specific custom provider
@@ -297,8 +297,8 @@ Updates to custom providers automatically invalidate any cached entries related 
 
 To update an existing custom provider:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
+2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗︎](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
 3. Find the custom provider you want to update and select **Edit**.
 4. Update the fields you want to change (name, slug, base URL, etc.).
 5. Select **Save** to apply your changes.
@@ -335,8 +335,8 @@ Deleting a custom provider will immediately stop all requests routed through it.
 
 To delete a custom provider:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and select your account.
-2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and select your account.
+2. Go to [**Compute & AI** > **AI Gateway** > **Custom Providers** ↗︎](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway/custom-providers).
 3. Find the custom provider you want to delete and select **Delete**.
 4. Confirm the deletion when prompted.
 

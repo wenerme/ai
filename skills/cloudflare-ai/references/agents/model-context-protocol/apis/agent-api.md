@@ -141,7 +141,7 @@ This is the simplest way to deploy an MCP server — about 15 lines of code. The
 
 ### With OAuth authentication
 
-When using the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider), pass your MCP server to `apiHandlers`:
+When using the [OAuth Provider Library ↗︎](https://github.com/cloudflare/workers-oauth-provider), pass your MCP server to `apiHandlers`:
 
 ```js
 import { OAuthProvider } from "@cloudflare/workers-oauth-provider";
@@ -240,7 +240,7 @@ Refer to [MCP Transport](https://developers.cloudflare.com/agents/model-context-
 
 ## Authentication and authorization
 
-The McpAgent class provides seamless integration with the [OAuth Provider Library ↗](https://github.com/cloudflare/workers-oauth-provider) for [authentication and authorization](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/).
+The McpAgent class provides seamless integration with the [OAuth Provider Library ↗︎](https://github.com/cloudflare/workers-oauth-provider) for [authentication and authorization](https://developers.cloudflare.com/agents/model-context-protocol/protocol/authorization/).
 
 When a user authenticates to your MCP server, their identity information and tokens are made available through the `props` parameter, allowing you to:
 
@@ -365,7 +365,7 @@ export class MyMCP extends McpAgent<Env, State, {}> {
 
 ## Elicitation on legacy servers
 
-[MCP elicitation ↗](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation) lets a server request user input while handling another request, such as a tool call. The legacy path defines two modes:
+[MCP elicitation ↗︎](https://modelcontextprotocol.io/specification/2025-11-25/client/elicitation) lets a server request user input while handling another request, such as a tool call. The legacy path defines two modes:
 
 - **Form mode** collects structured, non-sensitive data through the client.
 - **URL mode** sends the user to an out-of-band interaction, such as third-party authorization or payment.

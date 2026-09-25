@@ -33,7 +33,7 @@ By default, IPv6 compatibility is turned on for your domain and will apply to al
 
 Note
 
-If you have signed up for Cloudflare through a [Cloudflare hosting partner ↗](http://www.cloudflare.com/hosting-partners) or by use [partial setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), IPv6 compatibility does not apply to your apex domain.
+If you have signed up for Cloudflare through a [Cloudflare hosting partner ↗︎](http://www.cloudflare.com/hosting-partners) or by use [partial setup](https://developers.cloudflare.com/dns/zone-setups/partial-setup/), IPv6 compatibility does not apply to your apex domain.
 
 ## Disable IPv6 compatibility
 

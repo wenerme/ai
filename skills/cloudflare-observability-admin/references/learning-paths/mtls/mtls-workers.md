@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Note
 
-Cloudflare Workers runs after the Cloudflare WAF and Cloudflare Access. Review the [Traffic Sequence ↗](https://blog.cloudflare.com/traffic-sequence-which-product-runs-first/) visible on the Cloudflare dashboard.
+Cloudflare Workers runs after the Cloudflare WAF and Cloudflare Access. Review the [Traffic Sequence ↗︎](https://blog.cloudflare.com/traffic-sequence-which-product-runs-first/) visible on the Cloudflare dashboard.
 
 [mTLS for Workers](https://developers.cloudflare.com/workers/runtime-apis/bindings/mtls/) can be used for requests made to services that are [not proxied](https://developers.cloudflare.com/dns/proxy-status/#dns-only-records) on Cloudflare, or alternatively used to gain visibility into certificate details and optionally add your own programmatic logic for further checks or actions.
 

@@ -18,7 +18,7 @@ Note
 
 To use RPC, [define a compatibility date](https://developers.cloudflare.com/workers/configuration/compatibility-dates) of `2024-04-03` or higher, or include `rpc` in your [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#nodejs-compatibility-flag).
 
-Workers provide a built-in, JavaScript-native [RPC (Remote Procedure Call) ↗](https://en.wikipedia.org/wiki/Remote_procedure_call) system, allowing you to:
+Workers provide a built-in, JavaScript-native [RPC (Remote Procedure Call) ↗︎](https://en.wikipedia.org/wiki/Remote_procedure_call) system, allowing you to:
 
 - Define public methods on your Worker that can be called by other Workers on the same Cloudflare account, via [Service Bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc)
 - Define public methods on [Durable Objects](https://developers.cloudflare.com/durable-objects) that can be called by other workers on the same Cloudflare account that declare a binding to it.
@@ -149,7 +149,7 @@ Note that RPC calls do not actually return `Promise`s, but they return a type th
 
 ## Structured cloneable types, and more
 
-Nearly all types that are [Structured Cloneable ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types) can be used as a parameter or return value of an RPC method. This includes, most basic "value" types in JavaScript, including objects, arrays, strings and numbers.
+Nearly all types that are [Structured Cloneable ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types) can be used as a parameter or return value of an RPC method. This includes, most basic "value" types in JavaScript, including objects, arrays, strings and numbers.
 
 As an exception to Structured Clone, application-defined classes (or objects with custom prototypes) cannot be passed over RPC, except as described below.
 
@@ -306,7 +306,7 @@ Refer to [Explicit Resource Management](https://developers.cloudflare.com/worker
 
 How is this possible? The system is not serializing the function itself. When the function returned by `CounterService` is called, it runs within `CounterService` — even if it is called by another Worker.
 
-Under the hood, the caller is not really calling the function itself directly, but calling what is called a "stub". A "stub" is a [Proxy ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) object that allows the client to call the remote service as if it were local, running in the same Worker. Behind the scenes, it calls back to the Worker that implements `CounterService` and asks it to execute the function closure that had been returned earlier.
+Under the hood, the caller is not really calling the function itself directly, but calling what is called a "stub". A "stub" is a [Proxy ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy) object that allows the client to call the remote service as if it were local, running in the same Worker. Behind the scenes, it calls back to the Worker that implements `CounterService` and asks it to execute the function closure that had been returned earlier.
 
 ### Send functions as parameters of RPC methods
 
@@ -532,7 +532,7 @@ await promise_for_counter.increment()
 
 In this code, `getCounter()` returns a promise for a counter. Normally, the only thing you would do with a promise is `await` it. However, Workers RPC promises are special: they also allow you to initiate speculative calls on the future result of the promise. These calls are sent to the server immediately, without waiting for the initial call to complete. Thus, multiple chained calls can be completed in a single round trip.
 
-How does this work? The promise returned by an RPC is not a real JavaScript `Promise`. Instead, it is a custom ["Thenable" ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables). It has a `.then()` method like `Promise`, which allows it to be used in all the places where you'd use a normal `Promise`. For instance, you can `await` it. But, in addition to that, an RPC promise also acts like a stub. Calling any method name on the promise forms a speculative call on the promise's eventual result. This is known as "promise pipelining".
+How does this work? The promise returned by an RPC is not a real JavaScript `Promise`. Instead, it is a custom ["Thenable" ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise#thenables). It has a `.then()` method like `Promise`, which allows it to be used in all the places where you'd use a normal `Promise`. For instance, you can `await` it. But, in addition to that, an RPC promise also acts like a stub. Calling any method name on the promise forms a speculative call on the promise's eventual result. This is known as "promise pipelining".
 
 This works when calling properties of objects returned by RPC methods as well. For example:
 
@@ -612,9 +612,9 @@ If the initial RPC ends up throwing an exception, then any pipelined calls will 
 
 You can send and receive [`ReadableStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/readablestream/), [`WritableStream`](https://developers.cloudflare.com/workers/runtime-apis/streams/writablestream/), [`Request`](https://developers.cloudflare.com/workers/runtime-apis/request/), and [`Response`](https://developers.cloudflare.com/workers/runtime-apis/response/) using RPC methods. When doing so, bytes in the body are automatically streamed with appropriate flow control. This allows you to send messages over RPC which are larger than [the typical 32 MiB limit](#limitations).
 
-Only [byte-oriented streams ↗](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Using_readable_byte_streams) (streams with an underlying byte source of `type: "bytes"`) are supported.
+Only [byte-oriented streams ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API/Using_readable_byte_streams) (streams with an underlying byte source of `type: "bytes"`) are supported.
 
-In all cases, ownership of the stream is transferred to the recipient. The sender can no longer read/write the stream after sending it. If the sender wishes to keep its own copy, it can use the [`tee()` method of `ReadableStream` ↗](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee) or the [`clone()` method of `Request` or `Response` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Response/clone). Keep in mind that doing this may force the system to buffer bytes and lose the benefits of flow control.
+In all cases, ownership of the stream is transferred to the recipient. The sender can no longer read/write the stream after sending it. If the sender wishes to keep its own copy, it can use the [`tee()` method of `ReadableStream` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream/tee) or the [`clone()` method of `Request` or `Response` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Response/clone). Keep in mind that doing this may force the system to buffer bytes and lose the benefits of flow control.
 
 ## Forwarding RPC stubs
 

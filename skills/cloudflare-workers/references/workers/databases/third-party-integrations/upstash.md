@@ -14,16 +14,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/databases/third-party-integrations/upstash/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Upstash ↗](https://upstash.com/) is a serverless database with Redis\* and Kafka API. Upstash also offers QStash, a task queue/scheduler designed for the serverless.
+[Upstash ↗︎](https://upstash.com/) is a serverless database with Redis\* and Kafka API. Upstash also offers QStash, a task queue/scheduler designed for the serverless.
 
 ## Upstash for Redis
 
 To set up an integration with Upstash:
 
-1. You need an existing Upstash database to connect to. [Create an Upstash database ↗](https://docs.upstash.com/redis#create-a-database) or [load data from an existing database to Upstash ↗](https://docs.upstash.com/redis/howto/connectclient).
+1. You need an existing Upstash database to connect to. [Create an Upstash database ↗︎](https://docs.upstash.com/redis#create-a-database) or [load data from an existing database to Upstash ↗︎](https://docs.upstash.com/redis/howto/connectclient).
 2. Insert some data to your Upstash database. You can add data to your Upstash database in two ways:
    - Use the CLI directly from your Upstash console.
-   - Alternatively, install [redis-cli ↗](https://redis.io/docs/getting-started/installation/) locally and run the following commands.
+   - Alternatively, install [redis-cli ↗︎](https://redis.io/docs/getting-started/installation/) locally and run the following commands.
 
    ```sh
    set GB "Ey up?"
@@ -52,7 +52,7 @@ To set up an integration with Upstash:
 
 3. Configure the Upstash Redis credentials in your Worker:
 
-   You need to add your Upstash Redis database URL and token as secrets to your Worker. Get these from your [Upstash Console ↗](https://console.upstash.com) under your database details, then add them as secrets using Wrangler:
+   You need to add your Upstash Redis database URL and token as secrets to your Worker. Get these from your [Upstash Console ↗︎](https://console.upstash.com) under your database details, then add them as secrets using Wrangler:
 
    ```sh
    # Add the Upstash Redis URL as a secret
@@ -110,18 +110,18 @@ To set up an integration with Upstash:
 
    `Redis.fromEnv(env)` automatically picks up the default `url` and `token` names created in the integration.
 
-   If you have renamed the secrets, you must declare them explicitly like in the [Upstash basic example ↗](https://docs.upstash.com/redis/sdks/redis-ts/getstarted#basic-usage).
+   If you have renamed the secrets, you must declare them explicitly like in the [Upstash basic example ↗︎](https://docs.upstash.com/redis/sdks/redis-ts/getstarted#basic-usage).
 
-To learn more about Upstash, refer to the [Upstash documentation ↗](https://docs.upstash.com/redis).
+To learn more about Upstash, refer to the [Upstash documentation ↗︎](https://docs.upstash.com/redis).
 
 ## Upstash QStash
 
 To set up an integration with Upstash QStash:
 
-1. Configure the [publicly available HTTP endpoint ↗](https://docs.upstash.com/qstash#1-public-api) that you want to send your messages to.
+1. Configure the [publicly available HTTP endpoint ↗︎](https://docs.upstash.com/qstash#1-public-api) that you want to send your messages to.
 2. Configure the Upstash QStash credentials in your Worker:
 
-   You need to add your Upstash QStash token as a secret to your Worker. Get your token from your [Upstash Console ↗](https://console.upstash.com) under QStash settings, then add it as a secret using Wrangler:
+   You need to add your Upstash QStash token as a secret to your Worker. Get your token from your [Upstash Console ↗︎](https://console.upstash.com) under QStash settings, then add it as a secret using Wrangler:
 
    ```sh
    # Add the QStash token as a secret
@@ -149,7 +149,7 @@ To set up an integration with Upstash QStash:
    ```
 
 
-4. Refer to the [Upstash documentation on how to receive webhooks from QStash in your Cloudflare Worker ↗](https://docs.upstash.com/qstash/quickstarts/cloudflare-workers#3-use-qstash-in-your-handler).
+4. Refer to the [Upstash documentation on how to receive webhooks from QStash in your Cloudflare Worker ↗︎](https://docs.upstash.com/qstash/quickstarts/cloudflare-workers#3-use-qstash-in-your-handler).
 
 \* Redis is a trademark of Redis Ltd. Any rights therein are reserved to Redis Ltd. Any use by Upstash is for referential purposes only and does not indicate any sponsorship, endorsement or affiliation between Redis and Upstash.
 

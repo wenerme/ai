@@ -16,7 +16,7 @@ Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To set up and use the hardware version of Cloudflare One Appliance (formerly Magic WAN Connector), you first need to register it with your account. This is not applicable to Virtual Cloudflare One Appliance.
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances**, and select **Register an appliance**.
 3. In **Appliance details** > **Serial number**, insert the serial number for your device. You can optionally add notes about the Cloudflare One Appliance you are adding to the dashboard.
 4. (Optional) Select **Add** under **Serial number** to add multiple Cloudflare One Appliances at once to your account.

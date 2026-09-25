@@ -133,7 +133,7 @@ https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/secrets_store/stores/$
 
 Caution
 
-Before deleting a secret, make sure it is not deployed in your [Workers applications ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages/) or [AI gateways ↗](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway).
+Before deleting a secret, make sure it is not deployed in your [Workers applications ↗︎](https://dash.cloudflare.com/?to=/:account/workers-and-pages/) or [AI gateways ↗︎](https://dash.cloudflare.com/?to=/:account/ai/ai-gateway).
 
 1. In the Cloudflare dashboard, go to the **Secrets Store** page. [Go to **Secrets Store** ↗](https://dash.cloudflare.com/?to=/:account/secrets-store)
 2. Search for the secret you would like to delete within the existing secrets list.

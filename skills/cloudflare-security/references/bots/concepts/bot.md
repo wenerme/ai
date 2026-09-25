@@ -20,7 +20,7 @@ Bots can be used for good (chatbots, search engine crawlers) or for evil (invent
 
 More information
 
-For more background, refer to [What is a bot? ↗](https://www.cloudflare.com/learning/bots/what-is-a-bot/).
+For more background, refer to [What is a bot? ↗︎](https://www.cloudflare.com/learning/bots/what-is-a-bot/).
 
 ## AI bots
 

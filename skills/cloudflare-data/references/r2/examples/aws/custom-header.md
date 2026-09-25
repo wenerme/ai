@@ -49,7 +49,7 @@ print(response)
 
 ### Set a header for all requests with `aws-sdk-js-v3`
 
-`aws-sdk-js-v3` allows the customization of request behavior through the use of its [middleware stack ↗](https://aws.amazon.com/blogs/developer/middleware-stack-modular-aws-sdk-js/). This example adds a middleware to the client which adds a header to every `PutObject` request being made.
+`aws-sdk-js-v3` allows the customization of request behavior through the use of its [middleware stack ↗︎](https://aws.amazon.com/blogs/developer/middleware-stack-modular-aws-sdk-js/). This example adds a middleware to the client which adds a header to every `PutObject` request being made.
 
 ```ts
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";

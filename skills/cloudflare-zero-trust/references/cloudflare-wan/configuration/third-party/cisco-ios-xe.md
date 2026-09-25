@@ -55,7 +55,7 @@ This guide covers everything required to deploy this architecture, including Vir
 
 ## Supported platforms
 
-Support for ML-KEM is available on [Cisco 8000 Series Secure Routers ↗](https://www.cisco.com/site/us/en/products/networking/sdwan-routers/8000-secure-routers/index.html).
+Support for ML-KEM is available on [Cisco 8000 Series Secure Routers ↗︎](https://www.cisco.com/site/us/en/products/networking/sdwan-routers/8000-secure-routers/index.html).
 
 ## Cloudflare WAN and Cisco IOS XE configuration settings
 
@@ -631,12 +631,12 @@ To validate failover, administratively shut one tunnel interface or block ICMP a
 
 ## References
 
-- [Release Notes for Cisco 8000 Series Secure Routers, Release 26.1.x ↗](https://www.cisco.com/c/en/us/td/docs/routers/secure-routers/cisco-8000-series-secure-routers-release-26-1-x.html)
-- [Understanding Quantum-Safe Encryption on Cisco IOS XE Platforms ↗](https://learningnetwork.cisco.com/s/article/understanding-quantum-safe-encryption-on-cisco-ios-xe-platforms)
-- [Configuring Quantum-Safe Encryption Using Postquantum Keys - Cisco IOS XE 17.x ↗](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m-sec-cfg-quantum-encryption-ppk.html)
-- [Security and VPN Configuration Guide - Cisco IOS XE 17.x ↗](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn.html)
-- [IPsec Virtual Tunnel Interfaces - Cisco IOS XE 17.x ↗](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m_sec-ipsec-virt-tunnl-0.html)
-- [Configuring Security for VPNs with IPsec - Cisco IOS XE 17.x ↗](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m_sec-cfg-vpn-ipsec-0.html)
+- [Release Notes for Cisco 8000 Series Secure Routers, Release 26.1.x ↗︎](https://www.cisco.com/c/en/us/td/docs/routers/secure-routers/cisco-8000-series-secure-routers-release-26-1-x.html)
+- [Understanding Quantum-Safe Encryption on Cisco IOS XE Platforms ↗︎](https://learningnetwork.cisco.com/s/article/understanding-quantum-safe-encryption-on-cisco-ios-xe-platforms)
+- [Configuring Quantum-Safe Encryption Using Postquantum Keys - Cisco IOS XE 17.x ↗︎](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m-sec-cfg-quantum-encryption-ppk.html)
+- [Security and VPN Configuration Guide - Cisco IOS XE 17.x ↗︎](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn.html)
+- [IPsec Virtual Tunnel Interfaces - Cisco IOS XE 17.x ↗︎](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m_sec-ipsec-virt-tunnl-0.html)
+- [Configuring Security for VPNs with IPsec - Cisco IOS XE 17.x ↗︎](https://www.cisco.com/c/en/us/td/docs/routers/ios/config/17-x/sec-vpn/b-security-vpn/m_sec-cfg-vpn-ipsec-0.html)
 
 Was this helpful?
 

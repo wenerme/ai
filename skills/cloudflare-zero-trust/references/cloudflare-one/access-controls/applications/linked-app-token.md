@@ -42,7 +42,7 @@ accTitle: Self-hosted to self-hosted linked app token flow
 
 Create a policy on Application B (the downstream application that will receive forwarded requests):
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select Application B and select **Edit**.
 3. Go to the **Policies** tab and select **Create new policy**.
 4. Set the policy **Action** to *Service Auth*.
@@ -138,7 +138,7 @@ When Access receives the request to Application B, it will:
 
 ## SaaS to self-hosted
 
-In this example an [Access for SaaS application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/) (for example, an MCP server that implements [OAuth ↗](https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization)) needs to make requests to a self-hosted Access application. The SaaS app obtains an OAuth access token from Cloudflare Access and sends it to the self-hosted application in the `Authorization: Bearer` header.
+In this example an [Access for SaaS application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/) (for example, an MCP server that implements [OAuth ↗︎](https://modelcontextprotocol.io/specification/2025-03-26/basic/authorization)) needs to make requests to a self-hosted Access application. The SaaS app obtains an OAuth access token from Cloudflare Access and sends it to the self-hosted application in the `Authorization: Bearer` header.
 
 ```
 flowchart LR
@@ -158,7 +158,7 @@ accTitle: SaaS to self-hosted linked app token flow
 
 Create a policy on the self-hosted application (Application B):
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select the self-hosted app (Application B) and select **Edit**.
 3. Go to the **Policies** tab and select **Create new policy**.
 4. Set the policy **Action** to *Service Auth*.

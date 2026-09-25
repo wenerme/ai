@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Build live applications where people, AI systems, and devices communicate in real time over [Cloudflare's global network ↗](https://www.cloudflare.com/network/).
+Build live applications where people, AI systems, and devices communicate in real time over [Cloudflare's global network ↗︎](https://www.cloudflare.com/network/).
 
 ![](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=799,format=webp/_astro/global-web-rtc-network.vo5ylKmC.png)![](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1400,height=799,format=webp/_astro/global-web-rtc-network-dark.DktEEERJ.png)
 
@@ -42,7 +42,7 @@ Exchange chat, sensor updates, and control events between WebRTC endpoints.
 
 ### Should I use RealtimeKit or Realtime SFU?
 
-If you are new to [WebRTC ↗](https://www.cloudflare.com/learning/video-streaming/how-webrtc-works/) and want to add audio or video meetings to your app, use [RealtimeKit](https://developers.cloudflare.com/realtime/realtimekit/). It includes [web and mobile SDKs](https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/) with [prebuilt UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/). Cloudflare handles signaling and media routing, and you can add managed [recording](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/) or [transcription](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/).
+If you are new to [WebRTC ↗︎](https://www.cloudflare.com/learning/video-streaming/how-webrtc-works/) and want to add audio or video meetings to your app, use [RealtimeKit](https://developers.cloudflare.com/realtime/realtimekit/). It includes [web and mobile SDKs](https://developers.cloudflare.com/realtime/realtimekit/sdk-selection/) with [prebuilt UI](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/). Cloudflare handles signaling and media routing, and you can add managed [recording](https://developers.cloudflare.com/realtime/realtimekit/recording-guide/) or [transcription](https://developers.cloudflare.com/realtime/realtimekit/ai/transcription/).
 
 If you have WebRTC experience and need control over [what each endpoint publishes or receives](https://developers.cloudflare.com/realtime/sfu/concepts/sessions-tracks/), use [Realtime SFU](https://developers.cloudflare.com/realtime/sfu/). Your application handles [signaling, permissions, session state, and track discovery](https://developers.cloudflare.com/realtime/sfu/concepts/architecture/). Cloudflare runs the SFU and forwards media to subscribers.
 
@@ -52,7 +52,7 @@ A [TURN server](https://developers.cloudflare.com/realtime/turn/what-is-turn/) r
 
 RealtimeKit configures [Cloudflare TURN](https://developers.cloudflare.com/realtime/turn/) for you. Realtime SFU includes access to the same service. You can also use Cloudflare TURN with your own SFU or peer-to-peer application by [generating TURN credentials](https://developers.cloudflare.com/realtime/turn/generate-credentials/).
 
-Cloudflare TURN uses [Anycast ↗](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/), so you do not have to deploy regional TURN servers or load balancers.
+Cloudflare TURN uses [Anycast ↗︎](https://www.cloudflare.com/learning/cdn/glossary/anycast-network/), so you do not have to deploy regional TURN servers or load balancers.
 
 ### For webinars, should I use RealtimeKit or Stream Live?
 

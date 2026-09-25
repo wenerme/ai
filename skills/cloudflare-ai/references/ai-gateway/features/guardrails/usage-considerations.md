@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/guardrails/usage-considerations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Guardrails currently uses [Llama Guard 3 8B ↗](https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations/) on [Workers AI](https://developers.cloudflare.com/workers-ai/) to perform content evaluations. The underlying model may be updated in the future, and we will reflect those changes within Guardrails.
+Guardrails currently uses [Llama Guard 3 8B ↗︎](https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations/) on [Workers AI](https://developers.cloudflare.com/workers-ai/) to perform content evaluations. The underlying model may be updated in the future, and we will reflect those changes within Guardrails.
 
 Since Guardrails runs on Workers AI, enabling it incurs usage on Workers AI. You can monitor usage through the Workers AI Dashboard.
 
@@ -22,7 +22,7 @@ Since Guardrails runs on Workers AI, enabling it incurs usage on Workers AI. You
 
 Guardrails evaluate content against the following hazard categories. Each category is identified by a code that appears in your Guardrail configuration and in AI Gateway Logs. You can independently set each category to **Flag**, **Ignore**, or **Block** for prompts and responses.
 
-Guardrails evaluate categories `S1` through `S13`, a subset of the [Llama Guard 3 ↗ ↗](https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations/) hazard categories, using the [`@cf/meta/llama-guard-3-8b`](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/) model on Workers AI. The Llama Guard 3 category `S14` (Code interpreter abuse) is not evaluated by Guardrails. Category `P1` is prompt injection, evaluated separately by the `@cf/meta/prompt-guard-2-86m` model.
+Guardrails evaluate categories `S1` through `S13`, a subset of the [Llama Guard 3 ↗ ↗︎](https://ai.meta.com/research/publications/llama-guard-llm-based-input-output-safeguard-for-human-ai-conversations/) hazard categories, using the [`@cf/meta/llama-guard-3-8b`](https://developers.cloudflare.com/workers-ai/models/llama-guard-3-8b/) model on Workers AI. The Llama Guard 3 category `S14` (Code interpreter abuse) is not evaluated by Guardrails. Category `P1` is prompt injection, evaluated separately by the `@cf/meta/prompt-guard-2-86m` model.
 
 These codes also appear in the `guardrails` property of the AI Gateway REST API, where you configure each category's action programmatically. See the [`create`](https://developers.cloudflare.com/api/resources/ai_gateway/methods/create/) and [`update`](https://developers.cloudflare.com/api/resources/ai_gateway/methods/update/) methods.
 

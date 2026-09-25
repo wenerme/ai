@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-data/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Whether you are using Wrangler or the [Cloudflare Vite plugin ↗](https://developers.cloudflare.com/workers/vite-plugin/), your workflow for **accessing** data during local development remains the same. However, you can only [populate local resources with data](https://developers.cloudflare.com/workers/local-development/local-data/#populating-local-resources-with-data) via the Wrangler CLI.
+Whether you are using Wrangler or the [Cloudflare Vite plugin ↗︎](https://developers.cloudflare.com/workers/vite-plugin/), your workflow for **accessing** data during local development remains the same. However, you can only [populate local resources with data](https://developers.cloudflare.com/workers/local-development/local-data/#populating-local-resources-with-data) via the Wrangler CLI.
 
 ### How it works
 
-When you run either `wrangler dev` or [`vite` ↗](https://vite.dev/guide/cli#dev-server), [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/) automatically creates **local versions** of your resources (like [KV](https://developers.cloudflare.com/kv), [D1](https://developers.cloudflare.com/d1/), or [R2](https://developers.cloudflare.com/r2)). This means you **don’t** need to manually set up separate local instances for each service. However, newly created local resources **won’t** contain any data — you'll need to use Wrangler commands with the `--local` flag to populate them. Changes made to local resources won’t affect production data.
+When you run either `wrangler dev` or [`vite` ↗︎](https://vite.dev/guide/cli#dev-server), [Miniflare](https://developers.cloudflare.com/workers/testing/miniflare/) automatically creates **local versions** of your resources (like [KV](https://developers.cloudflare.com/kv), [D1](https://developers.cloudflare.com/d1/), or [R2](https://developers.cloudflare.com/r2)). This means you **don’t** need to manually set up separate local instances for each service. However, newly created local resources **won’t** contain any data — you'll need to use Wrangler commands with the `--local` flag to populate them. Changes made to local resources won’t affect production data.
 
 ## Populating local resources with data
 

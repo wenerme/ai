@@ -16,7 +16,7 @@ Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Vectorize is now Generally Available
 
-To report bugs or give feedback, go to the [#vectorize Discord channel ↗](https://discord.cloudflare.com). If you are having issues with Wrangler, report issues in the [Wrangler GitHub repository ↗](https://github.com/cloudflare/workers-sdk/issues/new/choose).
+To report bugs or give feedback, go to the [#vectorize Discord channel ↗︎](https://discord.cloudflare.com). If you are having issues with Wrangler, report issues in the [Wrangler GitHub repository ↗︎](https://github.com/cloudflare/workers-sdk/issues/new/choose).
 
 Vectorize is Cloudflare's vector database. Vector databases allow you to use machine learning (ML) models to perform semantic search, recommendation, classification and anomaly detection tasks, as well as provide context to LLMs (Large Language Models).
 
@@ -34,9 +34,9 @@ Vectorize is available to all users on the [Workers Free or Paid plans](https://
 
 To continue, you will need:
 
-1. Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
-2. Install [`npm` ↗](https://docs.npmjs.com/getting-started).
-3. Install [`Node.js` ↗](https://nodejs.org/en/). Use a Node version manager like [Volta ↗](https://volta.sh/) or [nvm ↗](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
+1. Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages) if you have not already.
+2. Install [`npm` ↗︎](https://docs.npmjs.com/getting-started).
+3. Install [`Node.js` ↗︎](https://nodejs.org/en/). Use a Node version manager like [Volta ↗︎](https://volta.sh/) or [nvm ↗︎](https://github.com/nvm-sh/nvm) to avoid permission issues and change Node.js versions. [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) requires a Node version of `16.17.0` or later.
 
 ## 1. Create a Worker
 
@@ -155,7 +155,7 @@ index_name = "tutorial-index"
 Specifically:
 
 - The value (string) you set for `<BINDING_NAME>` will be used to reference this database in your Worker. In this tutorial, name your binding `VECTORIZE`.
-- The binding must be [a valid JavaScript variable name ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_INDEX"` or `binding = "PROD_SEARCH_INDEX"` would both be valid names for the binding.
+- The binding must be [a valid JavaScript variable name ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#variables). For example, `binding = "MY_INDEX"` or `binding = "PROD_SEARCH_INDEX"` would both be valid names for the binding.
 - Your binding is available in your Worker at `env.<BINDING_NAME>` and the Vectorize [client API](https://developers.cloudflare.com/vectorize/reference/client-api/) is exposed on this binding for use within your Workers application.
 
 ## 4. \[Optional] Create metadata indexes
@@ -535,8 +535,8 @@ By finishing this tutorial, you have successfully created and queried your first
 - [Build an end-to-end vector search application](https://developers.cloudflare.com/vectorize/get-started/embeddings/) using Workers AI and Vectorize.
 - Learn more about [how vector databases work](https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/).
 - Read [examples](https://developers.cloudflare.com/vectorize/reference/client-api/) on how to use the Vectorize API from Cloudflare Workers.
-- [Euclidean Distance vs Cosine Similarity ↗](https://www.baeldung.com/cs/euclidean-distance-vs-cosine-similarity).
-- [Dot product ↗](https://en.wikipedia.org/wiki/Dot_product).
+- [Euclidean Distance vs Cosine Similarity ↗︎](https://www.baeldung.com/cs/euclidean-distance-vs-cosine-similarity).
+- [Dot product ↗︎](https://en.wikipedia.org/wiki/Dot_product).
 
 Was this helpful?
 

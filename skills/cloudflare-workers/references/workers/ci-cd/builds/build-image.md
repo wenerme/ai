@@ -108,7 +108,7 @@ Preinstalled software (languages and tools) will be updated before reaching end-
 
 **How you'll be notified (for changes requiring notice):**
 
-- [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/)
+- [Cloudflare Changelog ↗︎](https://developers.cloudflare.com/changelog/)
 - Dashboard notifications for projects that will receive the update
 - Email notifications to project owners
 
@@ -118,7 +118,7 @@ To maintain a specific version and avoid automatic updates, [override the defaul
 
 To avoid unexpected build failures:
 
-- **Monitor announcements** via the [Cloudflare Changelog ↗](https://developers.cloudflare.com/changelog/), dashboard notifications, and email
+- **Monitor announcements** via the [Cloudflare Changelog ↗︎](https://developers.cloudflare.com/changelog/), dashboard notifications, and email
 - **Pin specific versions** of critical preinstalled software by [overriding default versions](https://developers.cloudflare.com/workers/ci-cd/builds/build-image/#overriding-default-versions)
 
 Was this helpful?

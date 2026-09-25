@@ -22,9 +22,9 @@ Refer to [WARP client](https://developers.cloudflare.com/warp-client/) for guida
 
 ## DNSCrypt-Proxy
 
-[DNSCrypt-Proxy ↗](https://dnscrypt.info) 2.0+ supports DoH out of the box. It supports both 1.1.1.1 and other services. It also includes more advanced features, such as load balancing and local filtering.
+[DNSCrypt-Proxy ↗︎](https://dnscrypt.info) 2.0+ supports DoH out of the box. It supports both 1.1.1.1 and other services. It also includes more advanced features, such as load balancing and local filtering.
 
-1. [Install DNSCrypt-Proxy ↗](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/installation).
+1. [Install DNSCrypt-Proxy ↗︎](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/installation).
 2. Verify that `dnscrypt-proxy` is installed and the version is 2.0 or later:
 
    ```sh
@@ -36,7 +36,7 @@ Refer to [WARP client](https://developers.cloudflare.com/warp-client/) for guida
    ```
 
 
-3. Set up the configuration file using the [official instructions ↗](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/installation#setting-up-dnscrypt-proxy), and add `cloudflare` and `cloudflare-ipv6` to the server list in `dnscrypt-proxy.toml`:
+3. Set up the configuration file using the [official instructions ↗︎](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/installation#setting-up-dnscrypt-proxy), and add `cloudflare` and `cloudflare-ipv6` to the server list in `dnscrypt-proxy.toml`:
 
    ```toml
    server_names = ['cloudflare', 'cloudflare-ipv6']
@@ -60,7 +60,7 @@ Refer to [WARP client](https://developers.cloudflare.com/warp-client/) for guida
    ```
 
 
-5. Register it as a system service so that it starts automatically when your device boots. Follow the [DNSCrypt-Proxy installation instructions ↗](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/installation).
+5. Register it as a system service so that it starts automatically when your device boots. Follow the [DNSCrypt-Proxy installation instructions ↗︎](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/installation).
 
 Was this helpful?
 

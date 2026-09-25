@@ -93,7 +93,7 @@ Adversary tracking is now available in the Cloudflare Dashbboard and ready to be
 - Click on the **Threat Actor** name in the Threat Events table to open their full identity profile and review their aliases and attack stats.
 - Navigate to **Cloudflare Dashboard > Application Security > Threat Intelligence** to explore the new **Threat Actors** tab. Here, you can browse a card-based directory of all established entities tracked by Cloudforce One.
 
-Learn more in the [Cloudforce One documentation ↗](https://developers.cloudflare.com/security-center/cloudforce-one/#identify-the-adversary).
+Learn more in the [Cloudforce One documentation ↗︎](https://developers.cloudflare.com/security-center/cloudforce-one/#identify-the-adversary).
 
 ## 2026-05-29
 
@@ -131,9 +131,9 @@ This update provides material value by breaking down readiness into six actionab
 You can view these scores for any scanned URL directly in the dashboard or via our API.
 
 - **Dashboard:** Go to **Protect & Connect > Application Security > Investigate**. After running a scan, select the **Agent Readiness** tab in the report.
-- **API:** Use the [URL Scanner API ↗](https://developers.cloudflare.com/radar/investigate/url-scanner/) to programmatically retrieve these scores for your infrastructure.
+- **API:** Use the [URL Scanner API ↗︎](https://developers.cloudflare.com/radar/investigate/url-scanner/) to programmatically retrieve these scores for your infrastructure.
 
-To learn more about the methodology behind these scores, refer to the [blogpost ↗](https://blog.cloudflare.com/agent-readiness/).
+To learn more about the methodology behind these scores, refer to the [blogpost ↗︎](https://blog.cloudflare.com/agent-readiness/).
 
 ## 2026-05-07
 
@@ -149,14 +149,14 @@ These quality-of-life updates focus on data portability and dashboard performanc
 - The new **CSV export** allows you to move RFI data into external tools for custom reporting, internal auditing, or cross-referencing with other security projects without manual data entry
 - With **adjustable page density**, you can now choose to load more records at once (10, 25 or 50) to scan through history faster
 
-Cloudforce One subscribers can find these new options in [Cloudflare Dashboard > Application Security > Threat Intelligence > Requests for Information ↗](https://dash.cloudflare.com/?to=/:account/application-security/threat-intelligence/requests).
+Cloudforce One subscribers can find these new options in [Cloudflare Dashboard > Application Security > Threat Intelligence > Requests for Information ↗︎](https://dash.cloudflare.com/?to=/:account/application-security/threat-intelligence/requests).
 
 ## 2026-05-06
 
 
 **TAXII support added to Threat Events API**
 
-The Cloudforce One Threat Events API now supports [**TAXII** ↗](https://www.cloudflare.com/en-gb/learning/security/what-is-stix-and-taxii/) as an output format, enabling standardized, automated sharing of cyber threat intelligence with your existing security stack.
+The Cloudforce One Threat Events API now supports [**TAXII** ↗︎](https://www.cloudflare.com/en-gb/learning/security/what-is-stix-and-taxii/) as an output format, enabling standardized, automated sharing of cyber threat intelligence with your existing security stack.
 
 #### Why this matters
 
@@ -170,7 +170,7 @@ When calling the Threat Events API, you can now specify `taxii` in the `format` 
 
 `GET /accounts/{account_id}/cloudforce_one/threat_events?format=taxii`
 
-You can find the updated documentation in the [Cloudflare API Reference ↗](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list#%28resource%29%20cloudforce_one.threat_events%20%3E%20%28method%29%20list%20%3E%20%28params%29%20default%20%3E%20%28param%29%20format%20%3E%20%28schema%29).
+You can find the updated documentation in the [Cloudflare API Reference ↗︎](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list#%28resource%29%20cloudforce_one.threat_events%20%3E%20%28method%29%20list%20%3E%20%28params%29%20default%20%3E%20%28param%29%20format%20%3E%20%28schema%29).
 
 ## 2026-04-27
 
@@ -231,7 +231,7 @@ We are introducing **Logo Match Preview**, bringing the same pre-save visibility
 - Adjust your similarity score (from 75% to 100%) and watch the results refresh in real-time to find the balance between broad detection and noise reduction
 - Review the specific logos triggered by your current settings to ensure your query is capturing the right level of brand infringement
 
-If you are ready to test your brand assets, go to the [Brand Protection dashboard ↗](https://developers.cloudflare.com/security-center/brand-protection/) to try the new preview tool.
+If you are ready to test your brand assets, go to the [Brand Protection dashboard ↗︎](https://developers.cloudflare.com/security-center/brand-protection/) to try the new preview tool.
 
 ## 2026-03-06
 
@@ -268,7 +268,7 @@ Threat intelligence is most effective when it is personalized. Previously, analy
 - Analysts can now jump straight into "Known Ransomware Infrastructure" or "Retail Sector Targets" views with a single click, eliminating repetitive setup tasks
 - Teams can ensure everyone is looking at the same data subsets by using standardized saved views, reducing the risk of missing critical patterns due to inconsistent filtering.
 
-Cloudforce One subscribers can start saving their custom views now in [Application Security > Threat Intelligence > Threat Events ↗](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/threat-events).
+Cloudforce One subscribers can start saving their custom views now in [Application Security > Threat Intelligence > Threat Events ↗︎](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/threat-events).
 
 ## 2026-02-19
 
@@ -289,7 +289,7 @@ What's new:
 
 - **Enhanced Filtering**: Use these visual tools to filter and drill down into specific attack vectors directly from the charts.
 
-Cloudforce One subscribers can explore these new views now in [Application Security > Threat Intelligence > Threat Events ↗](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/threat-events).
+Cloudforce One subscribers can explore these new views now in [Application Security > Threat Intelligence > Threat Events ↗︎](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/threat-events).
 
 ## 2026-02-12
 
@@ -325,7 +325,7 @@ This new field is available in both the Cloudflare dashboard and via the API. In
 - Easily map Cloudflare-tracked actors to the naming conventions used by other vendors without manual cross-referencing.
 - Quickly identify if a detected threat actor matches a group your team is already monitoring via other intelligence feeds.
 
-For more information on how to access this data, refer to the [Threat Events API documentation ↗](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/).
+For more information on how to access this data, refer to the [Threat Events API documentation ↗︎](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/).
 
 ## 2026-01-14
 
@@ -344,7 +344,7 @@ We have expanded the reporting capabilities of the Cloudflare URL Scanner. In ad
 - **PDF Export Button:** A new download option is available in the URL Scanner results page within the Cloudflare dashboard
 - **Unified Documentation:** Access all scan details—from high-level summaries to specific security flags—in one offline-friendly file
 
-To get started with the URL Scanner and explore our reporting capabilities, visit the [URL Scanner API documentation ↗](https://developers.cloudflare.com/api/resources/url_scanner/).
+To get started with the URL Scanner and explore our reporting capabilities, visit the [URL Scanner API documentation ↗︎](https://developers.cloudflare.com/api/resources/url_scanner/).
 
 ---
 
@@ -362,7 +362,7 @@ By adopting this industry-standard format, you can now integrate Cloudflare's th
 - Eliminate the need for custom parsers, as STIX2 allows for "out of the box" ingestion into major **Threat Intel Platforms (TIPs)**, **SIEMs**, and **SOAR** tools.
 - STIX2 provides a standardized way to represent relationships between indicators, sightings, and threat actors, giving your analysts a clearer picture of the threat landscape.
 
-For technical details on how to query events using this format, please refer to our [Threat Events API Documentation ↗](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list/).
+For technical details on how to query events using this format, please refer to our [Threat Events API Documentation ↗︎](https://developers.cloudflare.com/api/resources/cloudforce_one/subresources/threat_events/methods/list/).
 
 ---
 
@@ -399,7 +399,7 @@ What’s new:
 - Users can see the remaining tokens allocated to their account for the quarter.
 - Users can only select the Routine priority for the `Strategic Threat Research` request type.
 
-Cloudforce One subscribers can try it now in [Application Security > Threat Intelligence > Requests for Information ↗](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/requests).
+Cloudforce One subscribers can try it now in [Application Security > Threat Intelligence > Requests for Information ↗︎](https://dash.cloudflare.com/?to=/:account/security-center/threat-intelligence/requests).
 
 ## 2025-10-17
 

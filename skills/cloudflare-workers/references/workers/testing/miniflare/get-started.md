@@ -85,7 +85,7 @@ const mf = new Miniflare({
 
 ### Watching, Reloading and Disposing
 
-Miniflare's API is primarily intended for testing use cases, where file watching isn't usually required. If you need to watch files, consider using a separate file watcher like [fs.watch() ↗](https://nodejs.org/api/fs.html#fswatchfilename-options-listener) or [chokidar ↗](https://github.com/paulmillr/chokidar), and calling setOptions() with your original configuration on change.
+Miniflare's API is primarily intended for testing use cases, where file watching isn't usually required. If you need to watch files, consider using a separate file watcher like [fs.watch() ↗︎](https://nodejs.org/api/fs.html#fswatchfilename-options-listener) or [chokidar ↗︎](https://github.com/paulmillr/chokidar), and calling setOptions() with your original configuration on change.
 
 To cleanup and stop listening for requests, you should `dispose()` your instances:
 
@@ -240,7 +240,7 @@ The explicit `cf` option in the Miniflare API takes precedence over both environ
 
 ### HTTPS Server
 
-To start an HTTPS server instead, set the `https` option. To use the [default shared self-signed certificate ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare/src/http/cert.ts), set `https` to `true`:
+To start an HTTPS server instead, set the `https` option. To use the [default shared self-signed certificate ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare/src/http/cert.ts), set `https` to `true`:
 
 ```js
 const mf = new Miniflare({

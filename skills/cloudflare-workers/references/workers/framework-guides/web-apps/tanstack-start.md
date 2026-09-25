@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/framework-guides/web-apps/tanstack-start/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[TanStack Start ↗](https://tanstack.com/start) is a full-stack framework for building web applications with server-side rendering, streaming, server functions, and bundling.
+[TanStack Start ↗︎](https://tanstack.com/start) is a full-stack framework for building web applications with server-side rendering, streaming, server functions, and bundling.
 
 Already have a TanStack Start project?
 
@@ -165,7 +165,7 @@ If you have an existing TanStack Start application, configure it to run on Cloud
    	"$schema": "node_modules/wrangler/config-schema.json",
    	"name": "<YOUR_PROJECT_NAME>",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": ["nodejs_compat"],
    	"main": "@tanstack/react-start/server-entry",
    	"observability": {
@@ -178,7 +178,7 @@ If you have an existing TanStack Start application, configure it to run on Cloud
    "$schema" = "node_modules/wrangler/config-schema.json"
    name = "<YOUR_PROJECT_NAME>"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
    main = "@tanstack/react-start/server-entry"
 
@@ -651,7 +651,7 @@ export default defineConfig({
 });
 ```
 
-For more options, refer to [TanStack Start static prerendering ↗](https://tanstack.com/start/latest/docs/framework/react/guide/static-prerendering).
+For more options, refer to [TanStack Start static prerendering ↗︎](https://tanstack.com/start/latest/docs/framework/react/guide/static-prerendering).
 
 Note
 

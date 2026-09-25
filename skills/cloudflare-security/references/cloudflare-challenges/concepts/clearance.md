@@ -92,7 +92,7 @@ All widgets have pre-clearance mode set to `false` and the security clearance is
 
 For Enterprise customers eligible to enable widgets without any pre-configured hostnames, Cloudflare recommends issuing pre-clearance cookies on widgets where at least one hostname is specified and is the same as the zone that you want to integrate with Turnstile.
 
-Refer to the [blog post ↗](https://blog.cloudflare.com/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests) for more details on how pre-clearance works with WAF.
+Refer to the [blog post ↗︎](https://blog.cloudflare.com/integrating-turnstile-with-the-cloudflare-waf-to-challenge-fetch-requests) for more details on how pre-clearance works with WAF.
 
 ### Pre-clearance level options
 

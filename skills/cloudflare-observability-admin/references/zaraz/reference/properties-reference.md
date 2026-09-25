@@ -75,8 +75,8 @@ Cloudflare Zaraz offers properties that you can use when configuring the product
 | *Continent* | Returns the continent of the incoming request. For example, `EU` |
 | *Country* code | Returns the country code of the incoming request. For example, `PT`. |
 | *EU* country | Returns a `1` if the country of the incoming request is in the European Union, and a `0` if it is not. |
-| *Region* | Returns the [ISO 3166-2 ↗](https://en.wikipedia.org/wiki/ISO_3166-2) name for the first level region associated with the IP address of the incoming request. For example, `Lisbon`. |
-| *Region* code | Returns the [ISO 3166-2 ↗](https://en.wikipedia.org/wiki/ISO_3166-2) region code associated with the IP address of the incoming request. For example, `11`. |
+| *Region* | Returns the [ISO 3166-2 ↗︎](https://en.wikipedia.org/wiki/ISO_3166-2) name for the first level region associated with the IP address of the incoming request. For example, `Lisbon`. |
+| *Region* code | Returns the [ISO 3166-2 ↗︎](https://en.wikipedia.org/wiki/ISO_3166-2) region code associated with the IP address of the incoming request. For example, `11`. |
 | *Timezone* | Returns the timezone of the incoming request. For example, `Europe/Lisbon`. |
 
 ## Miscellaneous

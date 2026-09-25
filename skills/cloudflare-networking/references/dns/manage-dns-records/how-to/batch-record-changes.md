@@ -18,7 +18,7 @@ Cloudflare allows you to apply several changes to your zone records in just one 
 
 Propagation through the Cloudflare network
 
-Although Cloudflare will execute the batched operations in a single [database transaction ↗](https://en.wikipedia.org/wiki/Database_transaction), Cloudflare's distributed KV store must treat each record change as a single key-value pair. This means that the propagation of changes is not atomic. Refer to our [blog post ↗](https://blog.cloudflare.com/batched-dns-changes/) for details.
+Although Cloudflare will execute the batched operations in a single [database transaction ↗︎](https://en.wikipedia.org/wiki/Database_transaction), Cloudflare's distributed KV store must treat each record change as a single key-value pair. This means that the propagation of changes is not atomic. Refer to our [blog post ↗︎](https://blog.cloudflare.com/batched-dns-changes/) for details.
 
 ## Availability and limits
 
@@ -93,7 +93,7 @@ Within each of these four lists, each individual action is executed following th
 
 Propagation through the Cloudflare network
 
-Although Cloudflare will execute the batched operations in a single [database transaction ↗](https://en.wikipedia.org/wiki/Database_transaction), Cloudflare's distributed KV store must treat each record change as a single key-value pair. This means that the propagation of changes is not atomic. Refer to our [blog post ↗](https://blog.cloudflare.com/batched-dns-changes/) for details.
+Although Cloudflare will execute the batched operations in a single [database transaction ↗︎](https://en.wikipedia.org/wiki/Database_transaction), Cloudflare's distributed KV store must treat each record change as a single key-value pair. This means that the propagation of changes is not atomic. Refer to our [blog post ↗︎](https://blog.cloudflare.com/batched-dns-changes/) for details.
 
 For each operation that you list in the `/batch` request body, consider the required information and how unspecified fields will behave:
 

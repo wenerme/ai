@@ -27,7 +27,7 @@ In this course, you will:
 
 
 
-Find [the video on YouTube ↗](https://youtu.be/H7Qe96fqg1M?si=GVkdGLrmb1faiHma) and explore other Cloudflare Workers tutorials.
+Find [the video on YouTube ↗︎](https://youtu.be/H7Qe96fqg1M?si=GVkdGLrmb1faiHma) and explore other Cloudflare Workers tutorials.
 
 In the next section, you will learn about the Cloudflare Developer Platform.
 

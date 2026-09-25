@@ -134,7 +134,7 @@ resource "cloudflare_zero_trust_gateway_policy" "block_content_categories" {
 
 ## Block a dynamic list of categories
 
-You can add a list of category IDs to the [EDNS (Extension Mechanisms for DNS) ↗](https://datatracker.ietf.org/doc/html/rfc6891) header of a request sent to Gateway as a JSON object using OPT code `65050`. EDNS allows extra metadata to be attached to a DNS query beyond the standard fields. For example:
+You can add a list of category IDs to the [EDNS (Extension Mechanisms for DNS) ↗︎](https://datatracker.ietf.org/doc/html/rfc6891) header of a request sent to Gateway as a JSON object using OPT code `65050`. EDNS allows extra metadata to be attached to a DNS query beyond the standard fields. For example:
 
 ```json
 {
@@ -227,7 +227,7 @@ resource "cloudflare_zero_trust_gateway_policy" "block_unauthorized_apps" {
 
 ## Block banned countries
 
-You can implement policies to block websites hosted in countries categorized as high risk. The designation of such countries may result from your organization's requirements or through regulations including [EAR (Export Administration Regulations) ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries), [OFAC (Office of Foreign Assets Control) ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries), and [ITAR (International Traffic in Arms Regulations) ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries). This policy blocks DNS queries that resolve to IP addresses geolocated in the countries you specify.
+You can implement policies to block websites hosted in countries categorized as high risk. The designation of such countries may result from your organization's requirements or through regulations including [EAR (Export Administration Regulations) ↗︎](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries), [OFAC (Office of Foreign Assets Control) ↗︎](https://orpa.princeton.edu/export-controls/sanctioned-countries), and [ITAR (International Traffic in Arms Regulations) ↗︎](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries). This policy blocks DNS queries that resolve to IP addresses geolocated in the countries you specify.
 
 | Selector | Operator | Value | Action |
 | --- | --- | --- | --- |
@@ -254,7 +254,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ## Block top-level domains
 
-Blocking [frequently misused ↗](https://www.spamhaus.org/statistics/tlds/) top-level domains (TLDs) — the last segment of a domain name, such as `.com` or `.ru` — can reduce security risks, especially when there is no discernible advantage to be gained from allowing access. Similarly, restricting access to specific country-level TLDs may be necessary to comply with regulations like [ITAR ↗](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries) or [OFAC ↗](https://orpa.princeton.edu/export-controls/sanctioned-countries).
+Blocking [frequently misused ↗︎](https://www.spamhaus.org/statistics/tlds/) top-level domains (TLDs) — the last segment of a domain name, such as `.com` or `.ru` — can reduce security risks, especially when there is no discernible advantage to be gained from allowing access. Similarly, restricting access to specific country-level TLDs may be necessary to comply with regulations like [ITAR ↗︎](https://www.tradecompliance.pitt.edu/embargoed-and-sanctioned-countries) or [OFAC ↗︎](https://orpa.princeton.edu/export-controls/sanctioned-countries).
 
 | Selector | Operator | Value | Logic | Action |
 | --- | --- | --- | --- | --- |
@@ -283,7 +283,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ## Block phishing attacks
 
-To protect against [sophisticated phishing attacks ↗](https://blog.cloudflare.com/2022-07-sms-phishing-attacks/), you could prevent users from accessing phishing domains that are specifically targeting your organization. The following policy blocks specific keywords associated with an organization or its authentication services (such as *okta*, *2fa*, *cloudflare* or *sso*), while still allowing access to official corporate domains.
+To protect against [sophisticated phishing attacks ↗︎](https://blog.cloudflare.com/2022-07-sms-phishing-attacks/), you could prevent users from accessing phishing domains that are specifically targeting your organization. The following policy blocks specific keywords associated with an organization or its authentication services (such as *okta*, *2fa*, *cloudflare* or *sso*), while still allowing access to official corporate domains.
 
 | Selector | Operator | Value | Logic | Action |
 | --- | --- | --- | --- | --- |
@@ -313,7 +313,7 @@ To get the UUIDs of your lists, use the [List Zero Trust lists](https://develope
 
 ## Block online tracking
 
-To safeguard user privacy, some organizations will block tracking domains such as `dig.whatsapp.com` as well as other tracking domains embedded at the OS level. This policy is implemented by creating a custom blocklist. Refer to [this repository ↗](https://github.com/nextdns/native-tracking-domains/tree/28991a0d5b2ab6d35588a74af82162ea7caff420/domains) for a list of widespread tracking domains that you can add to your blocklist.
+To safeguard user privacy, some organizations will block tracking domains such as `dig.whatsapp.com` as well as other tracking domains embedded at the OS level. This policy is implemented by creating a custom blocklist. Refer to [this repository ↗︎](https://github.com/nextdns/native-tracking-domains/tree/28991a0d5b2ab6d35588a74af82162ea7caff420/domains) for a list of widespread tracking domains that you can add to your blocklist.
 
 | Selector | Operator | Value | Action |
 | --- | --- | --- | --- |
@@ -371,7 +371,7 @@ To get the UUIDs of your lists, use the [List Zero Trust lists](https://develope
 
 ## Turn on CIPA filter
 
-The CIPA (Children's Internet Protection Act) Filter is a collection of subcategories that encompass a wide range of topics that could be harmful or inappropriate for minors. It is used as a part of [Project Cybersafe Schools](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/) to block access to unwanted or harmful online content. Upon creating this policy, your organization will have minimum [CIPA compliance ↗](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act).
+The CIPA (Children's Internet Protection Act) Filter is a collection of subcategories that encompass a wide range of topics that could be harmful or inappropriate for minors. It is used as a part of [Project Cybersafe Schools](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cybersafe/) to block access to unwanted or harmful online content. Upon creating this policy, your organization will have minimum [CIPA compliance ↗︎](https://www.fcc.gov/consumers/guides/childrens-internet-protection-act).
 
 | Selector | Operator | Value | Action |
 | --- | --- | --- | --- |

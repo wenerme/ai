@@ -18,7 +18,7 @@ This tutorial provides information on how to connect Cloudflare WAN (formerly Ma
 
 ## Prerequisites
 
-You will need to have an existing Resource group, Virtual Network, and Virtual Machine created in your Azure account. Refer to [Microsoft's documentation ↗](https://learn.microsoft.com/en-us/azure/virtual-network/) to learn more on how to create these.
+You will need to have an existing Resource group, Virtual Network, and Virtual Machine created in your Azure account. Refer to [Microsoft's documentation ↗︎](https://learn.microsoft.com/en-us/azure/virtual-network/) to learn more on how to create these.
 
 ## Configure Azure Virtual Network Gateway
 
@@ -67,7 +67,7 @@ The time it takes for Azure to fully provision the Virtual Network Gateway depen
 2. Make sure you have the following settings:
    1. **Interface address**: As the Azure Local Network Gateway will only permit specifying the lower IP address in a `/31` subnet, add the upper IP address within the `/31` subnet. You will configure the corresponding `/32` address in Azure in a later step (refer to [Configure Local Network Gateway for IPsec tunnel health checks](#2-configure-local-network-gateway-for-ipsec-tunnel-health-checks)). Refer to [Tunnel endpoints](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/) for more details.
    2. **Customer endpoint**: The Public IP associated with your Azure Virtual Network Gateway. For example, `40.xxx.xxx.xxx`.
-   3. **Cloudflare endpoint**: Use one of the Cloudflare anycast addresses assigned to your account, available in [Leased IPs ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). This will also be the IP address corresponding to the Local Network Gateway in Azure. For example, `162.xxx.xxx.xxx`.
+   3. **Cloudflare endpoint**: Use one of the Cloudflare anycast addresses assigned to your account, available in [Leased IPs ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space). This will also be the IP address corresponding to the Local Network Gateway in Azure. For example, `162.xxx.xxx.xxx`.
    4. **Health check rate**: Leave the default option (Medium) selected.
    5. **Health check type**: Leave the default option (Reply) selected.
    6. **Health check direction**: Leave default option (Bidirectional) selected.
@@ -110,7 +110,7 @@ Tunnel health checks make use of ICMP probes sent from the Cloudflare side of th
 1. **Cloudflare Dashboard:** In your IPsec tunnel configuration as the address of the virtual tunnel interface (VTI) (so that Cloudflare knows what address to send probes from). Cloudflare requires this address in Classless Inter-Domain Routing (CIDR) notation with a `/31` netmask.
 2. **Azure Portal:** In your VPN site's address space (so that Azure routes probe responses back over the tunnel). Azure requires this address in CIDR notation with a `/32` netmask.
 
-Cloudflare recommends customers select a unique `/31` subnet ([RFC 1918 - Address Allocation for Private Internets ↗](https://datatracker.ietf.org/doc/html/rfc1918)) for each IPsec tunnel which is treated as a Point-to-Point Link and provides the ideal addressing scheme to satisfy both requirements.
+Cloudflare recommends customers select a unique `/31` subnet ([RFC 1918 - Address Allocation for Private Internets ↗︎](https://datatracker.ietf.org/doc/html/rfc1918)) for each IPsec tunnel which is treated as a Point-to-Point Link and provides the ideal addressing scheme to satisfy both requirements.
 
 Example:
 
@@ -124,7 +124,7 @@ It is important to ensure the subnet selected for the Interface Address does not
 
 Note
 
-Refer to RFC 3021 for more information on using 31-bit prefixes on [IPv4 Point-to-Point Links ↗](https://datatracker.ietf.org/doc/html/rfc3021).
+Refer to RFC 3021 for more information on using 31-bit prefixes on [IPv4 Point-to-Point Links ↗︎](https://datatracker.ietf.org/doc/html/rfc3021).
 
 To configure the Address Space for the Local Network Gateway to support Tunnel Health Checks:
 

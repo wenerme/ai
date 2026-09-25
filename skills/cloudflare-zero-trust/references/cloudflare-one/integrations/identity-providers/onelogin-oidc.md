@@ -30,7 +30,7 @@ OneLogin provides SSO identity management. Cloudflare Access supports OneLogin a
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 6. Select **Save**.
 7. Go to **Access** and choose the **Roles** that can access this application. Select **Save**.
 8. Go to **SSO** and select **Show client secret**.
@@ -38,7 +38,7 @@ OneLogin provides SSO identity management. Cloudflare Access supports OneLogin a
 
 ### 2. Add OneLogin to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Under **Your identity providers**, select **Add new identity provider**.
 3. Select **OneLogin**.
 4. Fill in the following information:

@@ -22,8 +22,8 @@ A Content Delivery Network (CDN) like Cloudflare relies on cache keys to compare
 
 To deepen your understanding of the risks and vulnerabilities associated with cache poisoning, consult the following resources:
 
-- [Practical Web Cache Poisoning ↗](https://portswigger.net/blog/practical-web-cache-poisoning)
-- [How Cloudflare protects customers from cache poisoning ↗](https://blog.cloudflare.com/cache-poisoning-protection/)
+- [Practical Web Cache Poisoning ↗︎](https://portswigger.net/blog/practical-web-cache-poisoning)
+- [How Cloudflare protects customers from cache poisoning ↗︎](https://blog.cloudflare.com/cache-poisoning-protection/)
 
 ## Only cache files that are truly static
 
@@ -47,9 +47,9 @@ Cloudflare caches contents of GET request bodies, but they are not included in t
 
 To keep informed about Internet security threats, Cloudflare recommends that you monitor web security advisories on a regular basis. Some of the more popular advisories include:
 
-- [Drupal Security Advisories ↗](https://www.drupal.org/security)
-- [Symfony Security Advisories ↗](https://symfony.com/blog/category/security-advisories)
-- [Laminas Security Advisories ↗](https://getlaminas.org/security/advisories)
+- [Drupal Security Advisories ↗︎](https://www.drupal.org/security)
+- [Symfony Security Advisories ↗︎](https://symfony.com/blog/category/security-advisories)
+- [Laminas Security Advisories ↗︎](https://getlaminas.org/security/advisories)
 
 Was this helpful?
 

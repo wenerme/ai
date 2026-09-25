@@ -20,7 +20,7 @@ When an error code is marked with `*`, the remaining digits can vary and are for
 
 | Error Code | Description | Retry | Troubleshooting |
 | --- | --- | --- | --- |
-| `110100` | Invalid sitekey | No | Verify the sitekey in [Cloudflare dashboard ↗](https://dash.cloudflare.com/). |
+| `110100` | Invalid sitekey | No | Verify the sitekey in [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/). |
 | `110110` | Sitekey not found | No | Check sitekey spelling and dashboard configuration. |
 | `110200` | Domain not authorized | No | Add current domain in Hostname Management. |
 | `110600` | Challenge timed out | Yes | The visitor's clock may be wrong, or the challenge took too long. |
@@ -28,8 +28,8 @@ When an error code is marked with `*`, the remaining digits can vary and are for
 | `200100` | Clock or cache problem | No | The visitor's clock is wrong or the challenge was cached by an intermediary. |
 | `200500` | Iframe load error | Yes | The Turnstile iframe could not load. Check if `challenges.cloudflare.com` is blocked. |
 | `300*` | Generic challenge failure | Yes | Bot behavior detected. Refer to [troubleshooting](#troubleshooting). |
-| `400020` | Invalid sitekey | No | Verify the sitekey in [Cloudflare dashboard ↗](https://dash.cloudflare.com/). |
-| `400070` | Sitekey disabled | No | The sitekey is disabled. Check the [Cloudflare dashboard ↗](https://dash.cloudflare.com/). |
+| `400020` | Invalid sitekey | No | Verify the sitekey in [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/). |
+| `400070` | Sitekey disabled | No | The sitekey is disabled. Check the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/). |
 | `600*` | Generic challenge failure | Yes | Bot behavior detected. Refer to [troubleshooting](#troubleshooting). |
 
 ---
@@ -41,7 +41,7 @@ You can troubleshoot these error codes using the following recommendations:
 1. Verify your browser compatibility.
    - Turnstile supports all major browsers, except Internet Explorer.
    - Ensure your browser is up to date. For more information, refer to our [Supported browsers](https://developers.cloudflare.com/cloudflare-challenges/reference/supported-browsers/).
-   - Run a test on the [compatibility checking tool ↗](https://debug.challenges.cloudflare.com/).
+   - Run a test on the [compatibility checking tool ↗︎](https://debug.challenges.cloudflare.com/).
 2. Disable your browser extensions.
    - Some browser extensions, such as ad blockers, may block the scripts Turnstile needs to operate.
    - Temporarily disable all extensions and reload the page.

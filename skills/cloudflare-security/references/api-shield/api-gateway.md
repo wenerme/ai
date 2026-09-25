@@ -16,7 +16,7 @@ Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Cloudflare API Shield provides API security, management tools, and integration with the Cloudflare Developer Platform for building new APIs.
 
-- **Security**: Protect APIs with JWT validation, mutual TLS (mTLS) authentication, schema validation, and defenses against the [OWASP Top 10 API Security risks ↗](https://owasp.org/www-project-api-security/).
+- **Security**: Protect APIs with JWT validation, mutual TLS (mTLS) authentication, schema validation, and defenses against the [OWASP Top 10 API Security risks ↗︎](https://owasp.org/www-project-api-security/).
 - **Management and monitoring**: Use endpoint management, analytics, and routing tools to streamline API operations. Monitor risks with Posture Management and gain visibility through Security Analytics.
 - **Development**: Build and deploy APIs using the Cloudflare Developer Platform with its serverless infrastructure and developer tools.
 
@@ -35,7 +35,7 @@ Cloudflare API Shield provides API security, management tools, and integration w
 
 ### Build APIs with Cloudflare’s Developer Platform
 
-The [Cloudflare Developer Platform ↗](https://www.cloudflare.com/developer-platform/) offers a serverless execution environment, allowing you to build and deploy new APIs without the need to manage infrastructure. Its benefits include:
+The [Cloudflare Developer Platform ↗︎](https://www.cloudflare.com/developer-platform/) offers a serverless execution environment, allowing you to build and deploy new APIs without the need to manage infrastructure. Its benefits include:
 
 - **Global scalability**: Deploy APIs across Cloudflare's global network for low latency and high availability.
 - **Integrated services**: Use storage, databases, and AI tools alongside your APIs.

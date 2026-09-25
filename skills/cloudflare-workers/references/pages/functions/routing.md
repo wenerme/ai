@@ -127,7 +127,7 @@ On a purely static project, Pages offers unlimited free requests. However, once 
 
 Note
 
-Some frameworks (such as [Remix](https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site/), [SvelteKit](https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/)) will also automatically generate a `_routes.json` file. However, if your preferred framework does not, create an issue on their framework repository with a link to this page or let us know on [Discord ↗](https://discord.cloudflare.com). Refer to the [Framework guide](https://developers.cloudflare.com/pages/framework-guides/) for more information on full-stack frameworks.
+Some frameworks (such as [Remix](https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site/), [SvelteKit](https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/)) will also automatically generate a `_routes.json` file. However, if your preferred framework does not, create an issue on their framework repository with a link to this page or let us know on [Discord ↗︎](https://discord.cloudflare.com). Refer to the [Framework guide](https://developers.cloudflare.com/pages/framework-guides/) for more information on full-stack frameworks.
 
 ### Create a `_routes.json` file
 

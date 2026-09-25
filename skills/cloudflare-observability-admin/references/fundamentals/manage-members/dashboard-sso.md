@@ -152,7 +152,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/{account_id}/sso_connectors/
 
 Before enabling SSO for your domain, verify that your identity provider is configured correctly:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Find your IdP and select **Test**.
 3. Confirm that the test returns a successful authentication result.
 
@@ -186,13 +186,13 @@ Configure an identity provider (IdP)-initiated single sign-on (SSO) session usin
 
 #### Prerequisites
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications** > select your **SSO App**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications** > select your **SSO App**.
 2. Select **Configure** to access the application settings.
 3. In the **Basic Information** section, copy the **SSO Endpoint URL** and **Access Entity ID or Issuer**. You will need these values for your IdP setup.
 
 #### Configure Okta as the IdP
 
-1. Log in to your [Okta Admin Dashboard ↗](https://login.okta.com/) and go to **Applications** > **Applications**.
+1. Log in to your [Okta Admin Dashboard ↗︎](https://login.okta.com/) and go to **Applications** > **Applications**.
 2. Select **Create App Integration** to start a new SAML integration to handle the IdP-initiated SSO flow. Note that this is a second, distinct Cloudflare-Okta integration, created separately from the [IdP integration with Zero Trust](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 3. In the pop-up, select **SAML 2.0** and select **Next**.
 4. Enter a name for the app and select **Next**.
@@ -207,7 +207,7 @@ Configure an identity provider (IdP)-initiated single sign-on (SSO) session usin
 
 If you use only one IdP (for example, Okta) for Cloudflare SSO and want users to skip the identity provider selection prompt:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications** > select your **SSO App**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications** > select your **SSO App**.
 2. Go to **Authentication**.
 3. Disable **Accept all available identity providers** and ensure only Okta is selected as the login method.
 4. Enable **Apply instant authentication** to allow users to skip identity provider selection.
@@ -242,7 +242,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
    ```
 
 
-2. [Get](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/list/) the `id` of the `dash_sso` Access application. You can use [`jq` ↗](https://jqlang.github.io/jq/download/) to quickly find the correct application:
+2. [Get](https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/applications/methods/list/) the `id` of the `dash_sso` Access application. You can use [`jq` ↗︎](https://jqlang.github.io/jq/download/) to quickly find the correct application:
 
    *cURL commandbash*
 
@@ -430,7 +430,7 @@ Cloudflare does not allow you to change your team name while a SSO connector is 
 
 
 
-4. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Custom pages**.
+4. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Custom pages**.
 5. Under **Team domain**, select **Edit** to enter the new team name. Select **Save**.
 6. In your identity provider, update your Cloudflare integration with the new team name. For example, if you are using a SAML IdP, you will need to update the Single Sign-on URL and Entity ID to `https://<new-team-name>.cloudflareaccess.com/cdn-cgi/access/callback`.
 7. Recreate any deleted SSO connectors using the steps in [Register your domain with Cloudflare for SSO](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/#2-register-your-domain-with-cloudflare-for-sso).

@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/typescript/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-TypeScript is a first-class language on Cloudflare Workers. All APIs provided in Workers are fully typed, and type definitions are generated directly from [workerd ↗](https://github.com/cloudflare/workerd), the open-source Workers runtime.
+TypeScript is a first-class language on Cloudflare Workers. All APIs provided in Workers are fully typed, and type definitions are generated directly from [workerd ↗︎](https://github.com/cloudflare/workerd), the open-source Workers runtime.
 
-We recommend you generate types for your Worker by running [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types). Cloudflare also publishes type definitions to [GitHub ↗](https://github.com/cloudflare/workers-types) and [npm ↗](https://www.npmjs.com/package/@cloudflare/workers-types) (`npm install -D @cloudflare/workers-types`).
+We recommend you generate types for your Worker by running [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/general/#types). Cloudflare also publishes type definitions to [GitHub ↗︎](https://github.com/cloudflare/workers-types) and [npm ↗︎](https://www.npmjs.com/package/@cloudflare/workers-types) (`npm install -D @cloudflare/workers-types`).
 
 Version 5 and later
 
@@ -24,7 +24,7 @@ Version 5 and later
 
 ### Generate types that match your Worker's configuration
 
-Cloudflare continuously improves [workerd ↗](https://github.com/cloudflare/workerd), the open-source Workers runtime. Changes in workerd can introduce JavaScript API changes, thus changing the respective TypeScript types.
+Cloudflare continuously improves [workerd ↗︎](https://github.com/cloudflare/workerd), the open-source Workers runtime. Changes in workerd can introduce JavaScript API changes, thus changing the respective TypeScript types.
 
 This means the correct types for your Worker depend on:
 
@@ -33,7 +33,7 @@ This means the correct types for your Worker depend on:
 3. Your Worker's bindings, which are defined in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration).
 4. Any [module rules](https://developers.cloudflare.com/workers/wrangler/configuration/#bundling) you have specified in your Wrangler configuration file under `rules`.
 
-For example, the runtime will only allow you to use the [`AsyncLocalStorage` ↗](https://nodejs.org/api/async_context.html#class-asynclocalstorage) class if you have `compatibility_flags = ["nodejs_als"]` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This should be reflected in the type definitions.
+For example, the runtime will only allow you to use the [`AsyncLocalStorage` ↗︎](https://nodejs.org/api/async_context.html#class-asynclocalstorage) class if you have `compatibility_flags = ["nodejs_als"]` in your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/). This should be reflected in the type definitions.
 
 To ensure that your type definitions always match your Worker's configuration, you can dynamically generate types by running:
 
@@ -69,7 +69,7 @@ To ensure that your types are always up-to-date, make sure to run `wrangler type
 
 ### Migrating from `@cloudflare/workers-types` to `wrangler types`
 
-We recommend you use `wrangler types` to generate runtime types, rather than using the `@cloudflare/workers-types` package, as it generates types based on your Worker's [compatibility date ↗](https://github.com/cloudflare/workerd/tree/main/npm/workers-types#compatibility-dates) and `compatibility flags`, ensuring that types match the exact runtime APIs made available to your Worker.
+We recommend you use `wrangler types` to generate runtime types, rather than using the `@cloudflare/workers-types` package, as it generates types based on your Worker's [compatibility date ↗︎](https://github.com/cloudflare/workerd/tree/main/npm/workers-types#compatibility-dates) and `compatibility flags`, ensuring that types match the exact runtime APIs made available to your Worker.
 
 Note
 
@@ -224,8 +224,8 @@ This fails the CI job if the committed types file is out-of-date, prompting deve
 
 ### Resources
 
-- [TypeScript template ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare/templates/hello-world/ts)
-- [@cloudflare/workers-types ↗](https://github.com/cloudflare/workers-types)
+- [TypeScript template ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare/templates/hello-world/ts)
+- [@cloudflare/workers-types ↗︎](https://github.com/cloudflare/workers-types)
 - [Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/)
 - [TypeScript Examples](https://developers.cloudflare.com/workers/examples/?languages=TypeScript)
 

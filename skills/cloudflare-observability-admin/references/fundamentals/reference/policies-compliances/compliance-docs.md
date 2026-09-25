@@ -18,7 +18,7 @@ Super Administrators can access common compliance documentation, such as PCI, SO
 
 To access compliance documentation:
 
-1. Visit [Compliance Documents ↗](https://dash.cloudflare.com/?to=/:account/compliance-docs) and select your account where you are a **Super Administrator**.
+1. Visit [Compliance Documents ↗︎](https://dash.cloudflare.com/?to=/:account/compliance-docs) and select your account where you are a **Super Administrator**.
 2. If you have not accessed this page before, read the confidentiality statement and select **I Agree**.
 3. Choose the document you need and select **Download**.
 
@@ -28,7 +28,7 @@ For confidentiality purposes, only **Super Administrators** for an account can a
 
 ## Public data protection and compliance documentation
 
-Information and documents about Cloudflare's privacy & data protection are available at the Cloudflare [Trust Hub ↗](https://www.cloudflare.com/trust-hub/).
+Information and documents about Cloudflare's privacy & data protection are available at the Cloudflare [Trust Hub ↗︎](https://www.cloudflare.com/trust-hub/).
 
 ## Tax documentation
 
@@ -36,7 +36,7 @@ Super Administrators, Billing Administrators, and Administrators can access tax 
 
 To access tax documentation:
 
-1. Visit [Tax Documents ↗](https://dash.cloudflare.com/?to=/:account/tax-docs) and select your account where you are a **Super Administrator**, **Billing Administrator** or **Administrator**.
+1. Visit [Tax Documents ↗︎](https://dash.cloudflare.com/?to=/:account/tax-docs) and select your account where you are a **Super Administrator**, **Billing Administrator** or **Administrator**.
 2. Choose the document you need and select **Download**.
 
 Was this helpful?

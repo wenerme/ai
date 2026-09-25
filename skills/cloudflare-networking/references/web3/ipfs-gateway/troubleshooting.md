@@ -24,7 +24,7 @@ Since Cloudflare currently only supports restricted gateways - and not [universa
 
 ### Check Cloudflare's status
 
-It is worth checking for recent incidents on Cloudflare's [status dashboard ↗](https://www.cloudflarestatus.com/) that may have affected our gateway, but the best place to get up-to-date information about issues facing IPFS is the [IPFS Discussion Forum ↗](https://discuss.ipfs.io/).
+It is worth checking for recent incidents on Cloudflare's [status dashboard ↗︎](https://www.cloudflarestatus.com/) that may have affected our gateway, but the best place to get up-to-date information about issues facing IPFS is the [IPFS Discussion Forum ↗︎](https://discuss.ipfs.io/).
 
 ## Generic IPFS
 

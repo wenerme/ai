@@ -28,7 +28,7 @@ All Web Frameworks (Web Components, React, Angular) share the same error codes.
 
 - **Error message**: Failed to initialize
 - **Possible reason**: RealtimeKitClient is not getting initialized.
-- **Possible solution**: Verify if you initialized the RealtimeKitClient correctly `await RealtimeKitClient.init({ ... })`. See [RealtimeKitClient ↗](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient). If you continue to experience issues, please reach out to Cloudflare support.
+- **Possible solution**: Verify if you initialized the RealtimeKitClient correctly `await RealtimeKitClient.init({ ... })`. See [RealtimeKitClient ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RealtimeKitClient). If you continue to experience issues, please reach out to Cloudflare support.
 
 #### Error code: 0002
 
@@ -68,13 +68,13 @@ await meeting.leave();
 
 - **Error message**: HTTP Network Error
 - **Possible reason**: Either internet issues are present or the API requests are failing due to a faulty auth token among other cases
-- **Possible solution**: Ensure that the internet connection is proper. Speed test can be performed at [fast.com ↗](https://fast.com/). Make sure that the meeting is active and the token has not expired.
+- **Possible solution**: Ensure that the internet connection is proper. Speed test can be performed at [fast.com ↗︎](https://fast.com/). Make sure that the meeting is active and the token has not expired.
 
 #### Error code: 0012
 
 - **Error message**: Websocket Network Error
 - **Possible reason**: Either internet issues are present or the Websocket connection failed due to a faulty auth token among other cases
-- **Possible solution**: Ensure that the internet connection is proper. Speed test can be performed at [fast.com ↗](https://fast.com/). Make sure that the meeting is active and the token has not expired.
+- **Possible solution**: Ensure that the internet connection is proper. Speed test can be performed at [fast.com ↗︎](https://fast.com/). Make sure that the meeting is active and the token has not expired.
 
 #### Error code: 0013
 
@@ -156,7 +156,7 @@ await meeting.leave();
 
 - **Error message**: Invalid message body
 - **Possible reason**: The message body does not conform to the expected format.
-- **Possible solution**: The `Message` type is not defined correctly. See [Chat ↗](https://docs.realtime.cloudflare.com/web-core/chat/introduction).
+- **Possible solution**: The `Message` type is not defined correctly. See [Chat ↗︎](https://docs.realtime.cloudflare.com/web-core/chat/introduction).
 
 #### Error code: 0503
 

@@ -44,7 +44,7 @@ The same applies to the OpenAI-compatible endpoint. For example, `https://ai.exa
 
 To add a custom domain:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **AI** > **AI Gateway**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **AI** > **AI Gateway**.
 2. Select the gateway you want to configure.
 3. Go to the **Domains** tab.
 4. Select **Add Domain** and enter the hostname you want to use. Optionally, choose a subdomain.

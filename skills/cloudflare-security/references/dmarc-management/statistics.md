@@ -16,7 +16,7 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 DMARC Management (beta) allows you to review whether emails sent on your behalf passed or failed DMARC, SPF, and DKIM authentication checks.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **Email** > **DMARC Management**.
 3. The graph shows the volume of emails over a selected time period. Use the dropdown to select a period of up to 30 days.
 4. Moving your mouse through the graph gives you details for a particular day. Select **View reports** for a list of DMARC reports by date.
@@ -28,7 +28,7 @@ The Top 10 sources section shows you details about the top sources sending email
 
 You also have access to information about all third parties, and can drill down for further details on each of them:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and domain.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and domain.
 2. Go to **Email** > **DMARC Management**.
 3. Select **View all**.
 4. The next page shows you a list of all sources sending email on your behalf. You can filter this list by time period.

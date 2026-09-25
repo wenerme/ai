@@ -31,7 +31,7 @@ The dashboard **Routes** page shows the routes for all of your connectors — in
 
 The following IPv4 address ranges are allowed in the Cloudflare Virtual Network routing table:
 
-- [RFC 1918 ↗](https://datatracker.ietf.org/doc/html/rfc1918) address space, specifically `10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`.
+- [RFC 1918 ↗︎](https://datatracker.ietf.org/doc/html/rfc1918) address space, specifically `10.0.0.0/8`, `172.16.0.0/12`, and `192.168.0.0/16`.
 
 When using Cloudflare WAN and Cloudflare Tunnel together, consider the IP ranges utilized in the static routes of Cloudflare Tunnel when selecting static routes for Cloudflare WAN. For more information, refer to [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/zero-trust/cloudflare-tunnel/).
 
@@ -39,7 +39,7 @@ For prefixes outside RFC 1918, contact your Cloudflare customer service manager.
 
 ### Create a static route
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Routes** > **WAN Routes**, and select **Create** to add a new route.
 3. Enter a descriptive name for your route in **Description**.
 4. In **Prefix**, enter your range of IP addresses. For example, `10.10.10.100/24`.
@@ -366,7 +366,7 @@ If you are setting up BGP over IPsec or GRE tunnels you cannot change this value
 
 To set this ASN:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Routes** > **WAN configuration**.
 3. In **Border Gateway Protocol (BGP) configuration**, select **Edit** and enter your ASN.
 4. Select **Save**.
@@ -395,7 +395,7 @@ Note
 
 BGP over CNI is in closed beta and is not currently available to new customers. If you are interested in BGP peering over CNI, contact your account team.
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Routes** > **WAN configuration**.
 3. In **Border Gateway Protocol (BGP) configuration**, select **Edit ASN** and enter your ASN.
 4. Go to **Networks** > **Connectors** > **Interconnects**.
@@ -412,7 +412,7 @@ BGP over CNI is in closed beta and is not currently available to new customers. 
 
 #### Set up BGP for IPsec/GRE tunnels
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Routes** > **WAN configuration**.
 3. In **Border Gateway Protocol (BGP) configuration**, select **Edit ASN** and enter your ASN.
 4. Go to **Networks** > **Connectors** > **Cloudflare WAN**.

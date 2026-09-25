@@ -22,7 +22,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/teams-pricing/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | All modes | All plans |
 
@@ -128,7 +128,7 @@ Note
 
 Requires [multi-user mode](#enable-multi-user-mode).
 
-[Fast user switching ↗](https://learn.microsoft.com/windows/win32/shell/fast-user-switching) is a Windows feature that allows users to switch accounts without logging out. With fast user switching, multiple users may be logged in to the device and generating network traffic. The Cloudflare One Client will attribute all traffic to the user who has the [interactive windows station ↗](http://techcommunity.microsoft.com/blog/askperf/sessions-desktops-and-windows-stations/372473). For example, if user A is logged in and fast user switches to user B, traffic from both accounts will appear to come from user B. This is because user B is now actively using the Windows desktop GUI. Now assume that user B logs out and there is no [pre-login registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/); the Cloudflare One Client will continue to attribute traffic to user B until user A logs back in to the Windows desktop.
+[Fast user switching ↗︎](https://learn.microsoft.com/windows/win32/shell/fast-user-switching) is a Windows feature that allows users to switch accounts without logging out. With fast user switching, multiple users may be logged in to the device and generating network traffic. The Cloudflare One Client will attribute all traffic to the user who has the [interactive windows station ↗︎](http://techcommunity.microsoft.com/blog/askperf/sessions-desktops-and-windows-stations/372473). For example, if user A is logged in and fast user switches to user B, traffic from both accounts will appear to come from user B. This is because user B is now actively using the Windows desktop GUI. Now assume that user B logs out and there is no [pre-login registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/); the Cloudflare One Client will continue to attribute traffic to user B until user A logs back in to the Windows desktop.
 
 To accurately attribute network traffic to specific users, Cloudflare recommends disabling fast user switching or at the very least configuring a [pre-login registration](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/windows-prelogin/).
 

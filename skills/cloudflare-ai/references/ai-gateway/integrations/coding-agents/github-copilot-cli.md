@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/github-copilot-cli/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[GitHub Copilot CLI ↗](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli) supports bring-your-own-key (BYOK) model providers configured through environment variables. Route it through AI Gateway's [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), an OpenAI-compatible `/chat/completions` endpoint authenticated with a Cloudflare API token. Third-party models are billed through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so no provider API keys are needed in your environment. Alternatively, you can store your own provider API keys in AI Gateway with [BYOK (Store Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) and use the same Cloudflare API token to authenticate — AI Gateway resolves the stored key on each request.
+[GitHub Copilot CLI ↗︎](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli) supports bring-your-own-key (BYOK) model providers configured through environment variables. Route it through AI Gateway's [REST API](https://developers.cloudflare.com/ai-gateway/usage/rest-api/), an OpenAI-compatible `/chat/completions` endpoint authenticated with a Cloudflare API token. Third-party models are billed through [Unified Billing](https://developers.cloudflare.com/ai-gateway/features/unified-billing/), so no provider API keys are needed in your environment. Alternatively, you can store your own provider API keys in AI Gateway with [BYOK (Store Keys)](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/) and use the same Cloudflare API token to authenticate — AI Gateway resolves the stored key on each request.
 
 Unlike [Claude Code](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/), GitHub Copilot CLI authenticates the model provider with a single `Authorization` header and cannot send custom request headers. This is why the configuration uses the REST API — it accepts a Cloudflare API token in the standard `Authorization` header — rather than the gateway token and `cf-aig-authorization` header flow used for Claude Code. Because Copilot CLI cannot set the `cf-aig-gateway-id` header either, requests route through your account's [default gateway](https://developers.cloudflare.com/ai-gateway/usage/rest-api/#specify-a-gateway).
 
@@ -22,7 +22,7 @@ Unlike [Claude Code](https://developers.cloudflare.com/ai-gateway/integrations/c
 
 Before you start, you need:
 
-- GitHub Copilot CLI installed. To install it, refer to [Installing GitHub Copilot CLI ↗](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli).
+- GitHub Copilot CLI installed. To install it, refer to [Installing GitHub Copilot CLI ↗︎](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli).
 - A [Cloudflare API token](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) with `AI Gateway` permission.
 - [Credits loaded](https://developers.cloudflare.com/ai-gateway/features/unified-billing/#load-credits) on your account for third-party models.
 - A model that supports tool calling and streaming. For best results, use a model with a context window of at least 128k tokens.

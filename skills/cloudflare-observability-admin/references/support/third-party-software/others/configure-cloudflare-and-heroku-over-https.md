@@ -24,7 +24,7 @@ This article describes how to configure Heroku with Cloudflare to serve your tra
 
 ## Step 1 - Add a custom domain to your Heroku app
 
-Follow Heroku's instructions:  [Custom Domain Names for Apps ↗](https://devcenter.heroku.com/articles/custom-domains).
+Follow Heroku's instructions:  [Custom Domain Names for Apps ↗︎](https://devcenter.heroku.com/articles/custom-domains).
 
 ---
 
@@ -88,7 +88,7 @@ You can repeat the above cURL command for any of the subdomains that you have co
 
 ### Step 4a - Enable SSL
 
-Cloudflare provides a SANs wildcard certificate with all paid plans, and a SNI wildcard certificate with the Free plan. Full details on SSL  [can be found here ↗](https://www.cloudflare.com/ssl).
+Cloudflare provides a SANs wildcard certificate with all paid plans, and a SNI wildcard certificate with the Free plan. Full details on SSL  [can be found here ↗︎](https://www.cloudflare.com/ssl).
 
 If you don't know what this means, navigate to the **Overview** tab of the **SSL/TLS** app in your Cloudflare dashboard. Select *Flexible* mode to serve your site over HTTPS to all public visitors.
 

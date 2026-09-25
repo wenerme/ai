@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To create a new Cloudflare account:
 
-1. [Sign up ↗](https://dash.cloudflare.com/sign-up) on the Cloudflare dashboard.
+1. [Sign up ↗︎](https://dash.cloudflare.com/sign-up) on the Cloudflare dashboard.
 2. To secure your account, enable [two-factor authentication](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/).
 3. After your account is accepted into the Cybersafe Schools program, you can to reach out to your Cloudflare contact and ask them to set up your account as a multi-user organization. This will allow you to define [role based access](https://developers.cloudflare.com/fundamentals/manage-members/roles/) controls. For this project, account members will need:
    - [**Gateway** permissions](https://developers.cloudflare.com/cloudflare-one/roles-permissions/) to read or edit DNS policies.

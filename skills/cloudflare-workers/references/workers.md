@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A serverless platform for building, deploying, and scaling apps across [Cloudflare's global network ↗](https://www.cloudflare.com/network/) with a single command — no infrastructure to manage, no complex configuration
+A serverless platform for building, deploying, and scaling apps across [Cloudflare's global network ↗︎](https://www.cloudflare.com/network/) with a single command — no infrastructure to manage, no complex configuration
 
 With Cloudflare Workers, you can expect to:
 
@@ -114,7 +114,7 @@ Streamlined image infrastructure from a single API.
 
 ---
 
-Want to connect with the Workers community? [Join our Discord ↗](https://discord.cloudflare.com)
+Want to connect with the Workers community? [Join our Discord ↗︎](https://discord.cloudflare.com)
 
 Was this helpful?
 

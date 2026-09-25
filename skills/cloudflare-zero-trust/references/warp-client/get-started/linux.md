@@ -20,14 +20,14 @@ This documentation is for the consumer version of WARP (1.1.1.1 with WARP). If y
 
 You have two ways of installing WARP on Linux, depending on the distro you are using:
 
-- Find the latest WARP client in the [package repository ↗](https://pkg.cloudflareclient.com/).
+- Find the latest WARP client in the [package repository ↗︎](https://pkg.cloudflareclient.com/).
 - Install the `cloudflare-warp` package that suits your distro:
   - **apt-based OS** (like Ubuntu): `sudo apt install cloudflare-warp`.
   - **yum-based OS** (like CentOS or RHEL): `sudo yum install cloudflare-warp`.
 
 Note
 
-If you get an error message when trying to install via the terminal, download the package that suits your distro from the [package repository ↗](https://pkg.cloudflareclient.com/).
+If you get an error message when trying to install via the terminal, download the package that suits your distro from the [package repository ↗︎](https://pkg.cloudflareclient.com/).
 
 ## Using WARP
 
@@ -59,7 +59,7 @@ Note
 
 The protocol values are case-sensitive.
 
-For information on WireGuard versus MASQUE, refer to our [blog post ↗](https://blog.cloudflare.com/zero-trust-warp-with-a-masque).
+For information on WireGuard versus MASQUE, refer to our [blog post ↗︎](https://blog.cloudflare.com/zero-trust-warp-with-a-masque).
 
 ### Using 1.1.1.1 for Families
 

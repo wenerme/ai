@@ -40,7 +40,7 @@ To generate and use your own CSR, you can run a command like the following:
 openssl req -new -newkey rsa:2048 -nodes -keyout client1.key -out client1.csr -subj '/C=GB/ST=London/L=London/O=Organization/CN=CommonName'
 ```
 
-Or use a script like this one from [GitHub ↗](https://github.com/erfianugrah/rootcatest/blob/main/fullgenerator.py).
+Or use a script like this one from [GitHub ↗︎](https://github.com/erfianugrah/rootcatest/blob/main/fullgenerator.py).
 
 Do not forget to copy the values shown when creating the certificate as they become unavailable after creation.
 
@@ -50,9 +50,9 @@ In order for a client to utilize the Client Certificate you created, it must be 
 
 We generally recommended using one Client Certificate per device. Configuring your system to actually use the Public and Private Certificates is especially important.
 
-An example is to [add both certificates to the Keychain ↗](https://support.apple.com/en-gb/guide/keychain-access/kyca2431/mac) on a MacBook laptop.
+An example is to [add both certificates to the Keychain ↗︎](https://support.apple.com/en-gb/guide/keychain-access/kyca2431/mac) on a MacBook laptop.
 
-Another example is to generate a [PKCS12 (P12) certificate ↗](https://en.wikipedia.org/wiki/PKCS_12) file and then [add it to your browser ↗](https://www.ibm.com/docs/en/engineering-lifecycle-management-suite/lifecycle-management/7.0.2?topic=dashboards-importing-certificates-configuring-browsers):
+Another example is to generate a [PKCS12 (P12) certificate ↗︎](https://en.wikipedia.org/wiki/PKCS_12) file and then [add it to your browser ↗︎](https://www.ibm.com/docs/en/engineering-lifecycle-management-suite/lifecycle-management/7.0.2?topic=dashboards-importing-certificates-configuring-browsers):
 
 ```sh
 openssl pkcs12 -export -out certificate.p12 -inkey private-cert.pem -in cert.pem

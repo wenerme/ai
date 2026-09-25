@@ -80,7 +80,7 @@ export default defineConfig({
 });
 ```
 
-For a full list of available Miniflare options, refer to the [Miniflare `WorkersOptions` API documentation ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions).
+For a full list of available Miniflare options, refer to the [Miniflare `WorkersOptions` API documentation ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions).
 
 For a full list of available configuration options, refer to [Configuration](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/).
 
@@ -248,7 +248,7 @@ describe("Hello World worker", () => {
 });
 ```
 
-When using `exports.default.fetch()` for integration tests, your Worker code runs in the same context as the test runner. This means you can use global mocks to control your Worker, but also means your Worker uses the subtly different module resolution behavior provided by Vite. Usually this is not a problem, but to run your Worker in a fresh environment that is as close to production as possible, you can use an auxiliary Worker. Refer to [this example ↗](https://github.com/cloudflare/workers-sdk/blob/main/fixtures/vitest-plugin-examples/basics-integration-auxiliary/vitest.config.ts) for how to set up integration tests using auxiliary Workers. However, using auxiliary Workers comes with [limitations](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#workerspooloptions) that you should be aware of.
+When using `exports.default.fetch()` for integration tests, your Worker code runs in the same context as the test runner. This means you can use global mocks to control your Worker, but also means your Worker uses the subtly different module resolution behavior provided by Vite. Usually this is not a problem, but to run your Worker in a fresh environment that is as close to production as possible, you can use an auxiliary Worker. Refer to [this example ↗︎](https://github.com/cloudflare/workers-sdk/blob/main/fixtures/vitest-plugin-examples/basics-integration-auxiliary/vitest.config.ts) for how to set up integration tests using auxiliary Workers. However, using auxiliary Workers comes with [limitations](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#workerspooloptions) that you should be aware of.
 
 ## Related resources
 

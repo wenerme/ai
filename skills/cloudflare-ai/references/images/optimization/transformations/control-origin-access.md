@@ -151,11 +151,11 @@ When using this code, the following headers are passed through to the origin, an
 
 For more information, refer to:
 
-- [AWS docs ↗](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
-- [Azure docs ↗](https://docs.microsoft.com/en-us/rest/api/storageservices/List-Containers2#request-headers)
-- [Google Cloud docs ↗](https://cloud.google.com/storage/docs/aws-simple-migration)
+- [AWS docs ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
+- [Azure docs ↗︎](https://docs.microsoft.com/en-us/rest/api/storageservices/List-Containers2#request-headers)
+- [Google Cloud docs ↗︎](https://cloud.google.com/storage/docs/aws-simple-migration)
 - [Cloudflare Zero Trust docs](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/)
-- [SecureAuth docs ↗](https://docs.secureauth.com/2104/en/authentication-api-guide.html)
+- [SecureAuth docs ↗︎](https://docs.secureauth.com/2104/en/authentication-api-guide.html)
 
 Was this helpful?
 

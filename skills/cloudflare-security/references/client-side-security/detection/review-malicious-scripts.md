@@ -35,7 +35,7 @@ To review the scripts considered malicious:
 
    Note
 
-   The **Hash** value shown in the script details for each script version is an internal identifier. This differs from the file content hash defined by [Subresource Integrity (SRI) ↗](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) that is required to be used in [content security rules](https://developers.cloudflare.com/client-side-security/rules/).
+   The **Hash** value shown in the script details for each script version is an internal identifier. This differs from the file content hash defined by [Subresource Integrity (SRI) ↗︎](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) that is required to be used in [content security rules](https://developers.cloudflare.com/client-side-security/rules/).
 
    For more information, refer to [Malicious script and connection detection](https://developers.cloudflare.com/client-side-security/how-it-works/malicious-script-detection/).
 5. Based on the displayed information, and with the help of the [last seen/first seen fields in the script details](https://developers.cloudflare.com/client-side-security/detection/monitor-connections-scripts/#view-details), review and update the pages where the malicious script was detected.

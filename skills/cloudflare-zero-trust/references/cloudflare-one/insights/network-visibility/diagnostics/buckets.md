@@ -22,7 +22,7 @@ You can configure an Amazon S3 or Google Cloud Platform bucket to use as a targe
 
 Learn how to set up a bucket for use with full packet captures.
 
-1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** > **Diagnostics**.
+1. In the [Cloudflare One ↗︎](https://one.dash.cloudflare.com) dashboard, go to **Network visibility** > **Diagnostics**.
 2. Select the **Buckets** tab > **Add a bucket**.
 3. Select a bucket service and select **Next**.
 4. Enter the information related to your bucket for your service provider.
@@ -125,7 +125,7 @@ The bucket status displays one of the following options:
 
 View a list of all buckets configured on your account.
 
-1. In the [Cloudflare One ↗](https://one.dash.cloudflare.com) dashboard, go to ***Insights** > *Network visibility** > **Diagnostics**.
+1. In the [Cloudflare One ↗︎](https://one.dash.cloudflare.com) dashboard, go to ***Insights** > *Network visibility** > **Diagnostics**.
 2. Select the **Buckets** tab.
 
 The list of buckets associated with your account displays.

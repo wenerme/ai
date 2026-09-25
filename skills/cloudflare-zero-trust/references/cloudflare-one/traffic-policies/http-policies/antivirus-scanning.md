@@ -22,7 +22,7 @@ In addition to AV scanning, Gateway can quarantine previously unseen files into 
 
 To turn on AV scanning:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Traffic policies** > **Traffic settings**.
 2. In **Policy settings**, turn on **Scan files for malware**.
 3. Choose whether to scan files for malicious payloads during uploads, downloads, or both. You can also block requests containing [non-scannable files](#non-scannable-files).
 4. (Optional) Turn on **Display AV block notification for Cloudflare One Client** to send [block notifications](#cloudflare-one-client-block-notifications) to users connected to Gateway with the Cloudflare One Client when AV inspection blocks a file.
@@ -39,7 +39,7 @@ Feature availability
 
 </summary>
 
-| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/plans/zero-trust-services/">Zero Trust plans ↗</a> |
+| <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/">Client modes</a> | <a href="https://www.cloudflare.com/plans/zero-trust-services/">Zero Trust plans ↗︎</a> |
 | --- | --- |
 | <ul><li>Traffic and DNS mode</li><li>Traffic only mode</li></ul> | Enterprise |
 
@@ -86,7 +86,7 @@ Policy context fields
 
 </details>
 
-Ensure that your operating system allows notifications for the Cloudflare One Client. Your device may not display notifications if focus, do not disturb, or screen sharing settings are turned on. To turn on client notifications on macOS devices running DisplayLink software, you may have to allow system notifications when mirroring your display. For more information, refer to the [macOS documentation ↗](https://support.apple.com/guide/mac-help/change-notifications-settings-mh40583/mac).
+Ensure that your operating system allows notifications for the Cloudflare One Client. Your device may not display notifications if focus, do not disturb, or screen sharing settings are turned on. To turn on client notifications on macOS devices running DisplayLink software, you may have to allow system notifications when mirroring your display. For more information, refer to the [macOS documentation ↗︎](https://support.apple.com/guide/mac-help/change-notifications-settings-mh40583/mac).
 
 ## File scan criteria
 

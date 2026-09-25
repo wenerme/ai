@@ -45,7 +45,7 @@ For mixed content errors, the browser refuses to load the resources over an inse
 
 ![Screenshot of mixed content errors displayed in a browser console.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1500,height=94,format=webp/_astro/hc-import-mixed_content_error.C3G5mm9r.png)
 
-Information on using the browser’s debug tools to locate these issues are found in the documentation for  [Chrome ↗](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/fixing-mixed-content) and  [Firefox ↗](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content). Alternatively, you can view your page source and find specific references of *http://* for paths to other resources.
+Information on using the browser’s debug tools to locate these issues are found in the documentation for  [Chrome ↗︎](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/fixing-mixed-content) and  [Firefox ↗︎](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content). Alternatively, you can view your page source and find specific references of *http://* for paths to other resources.
 
 ---
 
@@ -60,15 +60,15 @@ There are two methods to resolve mixed content errors.
 
 ### WordPress users
 
-Cloudflare recommends WordPress users to install the [Cloudflare WordPress plugin ↗](https://wordpress.org/plugins/cloudflare/) and enable the *Automatic HTTPS rewrites* option within the plugin.
+Cloudflare recommends WordPress users to install the [Cloudflare WordPress plugin ↗︎](https://wordpress.org/plugins/cloudflare/) and enable the *Automatic HTTPS rewrites* option within the plugin.
 
 ---
 
 ## Related resources
 
-- [Debugging mixed content in Chrome ↗](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/fixing-mixed-content)
-- [Debugging mixed content in Firefox ↗](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content)
-- [Community Tip - Fixing mixed content errors ↗](https://community.cloudflare.com/t/community-tip-fixing-mixed-content-errors/42476)
+- [Debugging mixed content in Chrome ↗︎](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/fixing-mixed-content)
+- [Debugging mixed content in Firefox ↗︎](https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content)
+- [Community Tip - Fixing mixed content errors ↗︎](https://community.cloudflare.com/t/community-tip-fixing-mixed-content-errors/42476)
 
 Was this helpful?
 

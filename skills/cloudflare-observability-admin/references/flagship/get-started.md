@@ -20,7 +20,7 @@ In this guide, you will create a feature flag in Flagship and evaluate it inside
 
 In this example, you will create a boolean flag called `new-checkout` that controls whether users see a new checkout experience.
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **Compute** > **Flagship**.
 3. Select **Create app**. Give the app a name that matches your project or service (for example, `checkout-service`).
 4. Inside the app, select **Create flag**.
@@ -48,7 +48,7 @@ binding = "FLAGS"
 app_id = "<APP_ID>"
 ```
 
-Replace `<APP_ID>` with the app ID shown in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/flagship). The `binding` field sets the name you use to access Flagship in your Worker code. In this example, the binding is available as `env.FLAGS`.
+Replace `<APP_ID>` with the app ID shown in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/flagship). The `binding` field sets the name you use to access Flagship in your Worker code. In this example, the binding is available as `env.FLAGS`.
 
 After updating the Wrangler configuration, run `npx wrangler types` to generate TypeScript types for the binding.
 
@@ -118,7 +118,7 @@ Change the flag value or targeting rules in the dashboard and observe the update
 
 ## (Optional) Use the OpenFeature SDK
 
-If you prefer the [OpenFeature ↗](https://openfeature.dev/) standard interface, or if you are running outside of a Cloudflare Worker, you can use the [`@cloudflare/flagship` ↗](https://www.npmjs.com/package/@cloudflare/flagship) SDK instead of the binding.
+If you prefer the [OpenFeature ↗︎](https://openfeature.dev/) standard interface, or if you are running outside of a Cloudflare Worker, you can use the [`@cloudflare/flagship` ↗︎](https://www.npmjs.com/package/@cloudflare/flagship) SDK instead of the binding.
 
 Install the SDK:
 

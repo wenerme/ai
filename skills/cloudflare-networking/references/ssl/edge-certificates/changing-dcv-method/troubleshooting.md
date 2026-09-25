@@ -71,7 +71,7 @@ The errors below refer to situations that have to be addressed at the authoritat
 
 Consider the following when troubleshooting:
 
-- [DNSSEC ↗](https://www.cloudflare.com/learning/dns/dns-security/) must be configured correctly. You can use [DNSViz ↗](https://dnsviz.net/) to understand and troubleshoot the deployment of DNSSEC.
+- [DNSSEC ↗︎](https://www.cloudflare.com/learning/dns/dns-security/) must be configured correctly. You can use [DNSViz ↗︎](https://dnsviz.net/) to understand and troubleshoot the deployment of DNSSEC.
 - The HTTP verification process is done preferably over **IPv6**, so if any AAAA record exists and does not point to the same dual-stack location as the A record, the validation will fail.
 - If an [NS record](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#ns) is present for the hostname or its parent, DNS resolution will be managed externally by the DNS provider defined in the NS target. In this case, you must either add the DCV TXT record at the external DNS provider, or remove the NS record at Cloudflare.
 
@@ -101,7 +101,7 @@ Selecting a different CA is only available with [Advanced Certificate Manager](h
 
 ### Rate limiting
 
-As mentioned in [Certificate authorities](https://developers.cloudflare.com/ssl/reference/certificate-authorities/), specific CAs may have their own limitations. If you use Let’s Encrypt and receive the error below, it means you hit the [duplicate certificate limit ↗](https://letsencrypt.org/docs/duplicate-certificate-limit/) imposed by Let's Encrypt.
+As mentioned in [Certificate authorities](https://developers.cloudflare.com/ssl/reference/certificate-authorities/), specific CAs may have their own limitations. If you use Let’s Encrypt and receive the error below, it means you hit the [duplicate certificate limit ↗︎](https://letsencrypt.org/docs/duplicate-certificate-limit/) imposed by Let's Encrypt.
 
 `The authority has rate limited these domains. Please wait for the rate limit to expire or try another authority.`
 
@@ -113,8 +113,8 @@ When you see `The authority has rate limited these domains. Please wait for the 
 
 Rate limit windows vary by CA:
 
-- **Let's Encrypt**: 7 days for most rate limits (refer to [Let's Encrypt rate limits ↗](https://letsencrypt.org/docs/rate-limits/))
-- **Google Trust Services**: Varies by limit type (refer to [Google Trust Services documentation ↗](https://pki.goog/faq/))
+- **Let's Encrypt**: 7 days for most rate limits (refer to [Let's Encrypt rate limits ↗︎](https://letsencrypt.org/docs/rate-limits/))
+- **Google Trust Services**: Varies by limit type (refer to [Google Trust Services documentation ↗︎](https://pki.goog/faq/))
 
 **Resolution**: Wait for the rate limit window to expire, or select a different CA.
 
@@ -131,15 +131,15 @@ Certificate authorities perform domain validation from multiple geographic locat
 - `Certificate authority encountered a multiple perspective CAA check error, please ensure your DNS is configured to allow CAA queries from all geographic perspectives`
 - `Certificate authority was unable to verify domain ownership from multiple geographic locations (MPIC failure). Please ensure your DNS records are reachable from all geographic perspectives and try again.`
 
-**Resolution**: Ensure your DNS records (including CAA records) are consistently resolvable from all geographic locations. You can investigate resolution errors using the [ping.pe tool ↗](https://dig.ping.pe/). For example, for a [Google Trust Services](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#google-trust-services) certificate, check: `<hostname>:CAA:8.8.8.8`.
+**Resolution**: Ensure your DNS records (including CAA records) are consistently resolvable from all geographic locations. You can investigate resolution errors using the [ping.pe tool ↗︎](https://dig.ping.pe/). For example, for a [Google Trust Services](https://developers.cloudflare.com/ssl/reference/certificate-authorities/#google-trust-services) certificate, check: `<hostname>:CAA:8.8.8.8`.
 
-Read more from certificate authority documentation: [SSL.com ↗](https://www.ssl.com/blogs/multi-perspective-issuance-corroboration-mpic-arrives/), [Let's Encrypt ↗](https://letsencrypt.org/2020/02/19/multi-perspective-validation), and [Google Trust Services ↗](https://pki.goog/faq/#faq-mpic).
+Read more from certificate authority documentation: [SSL.com ↗︎](https://www.ssl.com/blogs/multi-perspective-issuance-corroboration-mpic-arrives/), [Let's Encrypt ↗︎](https://letsencrypt.org/2020/02/19/multi-perspective-validation), and [Google Trust Services ↗︎](https://pki.goog/faq/#faq-mpic).
 
 ### DNS lookup errors
 
 The error `the Certificate Authority had trouble performing a DNS lookup` indicates that the CA could not resolve your domain's DNS records. Common causes include SERVFAIL responses, NXDOMAIN, or DNSSEC validation failures.
 
-**Resolution**: Verify that your DNS records are correctly configured and resolvable. Use tools like [DNSViz ↗](https://dnsviz.net/) to check for DNSSEC issues, and ensure your authoritative nameservers are responding correctly.
+**Resolution**: Verify that your DNS records are correctly configured and resolvable. Use tools like [DNSViz ↗︎](https://dnsviz.net/) to check for DNSSEC issues, and ensure your authoritative nameservers are responding correctly.
 
 ### Rejected identifier
 

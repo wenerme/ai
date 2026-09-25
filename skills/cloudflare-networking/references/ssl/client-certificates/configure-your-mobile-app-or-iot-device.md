@@ -153,7 +153,7 @@ You can [create a client certificate in the Cloudflare dashboard](https://develo
 
 However, since most developers working at scale generate their own private keys and certificate signing requests via API, this example uses the Cloudflare API to create client certificates.
 
-To create a bootstrap certificate for the iOS application and the IoT device, this example uses [Cloudflare’s public key infrastructure toolkit, CFSSL ↗](https://github.com/cloudflare/cfssl):
+To create a bootstrap certificate for the iOS application and the IoT device, this example uses [Cloudflare’s public key infrastructure toolkit, CFSSL ↗︎](https://github.com/cloudflare/cfssl):
 
 ```bash
 # Generate a private key and CSR for the iOS device.

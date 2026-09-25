@@ -18,7 +18,7 @@ Connect a remote device to a private network so your users can securely access i
 
 To explore other connection scenarios, refer to [Replace your VPN](https://developers.cloudflare.com/cloudflare-one/setup/replace-vpn/).
 
-This guide follows the same steps as the **Get Started** onboarding wizard in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com).
+This guide follows the same steps as the **Get Started** onboarding wizard in the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com).
 
 ## How it works
 
@@ -36,7 +36,7 @@ The [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/tea
 
 Cloudflare Tunnel establishes an outbound connection between your resources and Cloudflare. This is how new devices can reach your private network. You can install Tunnel on any Windows, Mac, or Linux device currently in your private network.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), select the **Get Started** tab.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), select the **Get Started** tab.
 2. For **Replace my client-based or site-to-site VPN**, select **Get started**.
 3. For **Device to network**, select **Continue**.
 4. On the **Connect a remote device to a private network** screen, select **Continue**.
@@ -111,7 +111,7 @@ After verifying your connection, consider securing your private network with pol
 
 - **Set up Gateway policies**: By default, all enrolled devices can reach your entire private network. Gateway policies let you scan, filter, and log traffic between your devices and your private network. For more information, refer to [DNS policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/), [Network policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/network-policies/), and [HTTP policies](https://developers.cloudflare.com/cloudflare-one/traffic-policies/http-policies/).
 - **Create an Access application**: Restrict access to specific applications or hostnames on your private network with identity-based rules. For more information, refer to [Secure a private IP or hostname](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/self-hosted-private-app/).
-- **Explore more with Zero Trust**: Review your tunnel, policies, and connected devices in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com).
+- **Explore more with Zero Trust**: Review your tunnel, policies, and connected devices in the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com).
 
 For in-depth guidance on policy design and device posture checks, refer to the [Replace your VPN learning path](https://developers.cloudflare.com/learning-paths/replace-vpn/concepts/).
 

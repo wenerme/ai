@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-ai/guides/tutorials/explore-workers-ai-models-using-a-jupyter-notebook/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-A handy way to explore all of the models available on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗](https://jupyter.org/).
+A handy way to explore all of the models available on [Workers AI](https://developers.cloudflare.com/workers-ai) is to use a [Jupyter Notebook ↗︎](https://jupyter.org/).
 
 You can [download the Workers AI notebook](https://developers.cloudflare.com/workers-ai-notebooks/cloudflare-workers-ai.ipynb) or view the embedded notebook below.
 
-Or you can run this on [Google Colab ↗](https://colab.research.google.com/github/craigsdennis/notebooks-cloudflare-workers-ai/blob/main/cloudflare-workers-ai.ipynb)
+Or you can run this on [Google Colab ↗︎](https://colab.research.google.com/github/craigsdennis/notebooks-cloudflare-workers-ai/blob/main/cloudflare-workers-ai.ipynb)
 
 ---
 
@@ -26,7 +26,7 @@ Or you can run this on [Google Colab ↗](https://colab.research.google.com/gith
 
 [Workers AI](https://developers.cloudflare.com/workers-ai) allows you to run machine learning models, on the Cloudflare network, from your own code – whether that be from Workers, Pages, or anywhere via REST API.
 
-This notebook will explore the Workers AI REST API using the [official Python SDK ↗](https://github.com/cloudflare/cloudflare-python).
+This notebook will explore the Workers AI REST API using the [official Python SDK ↗︎](https://github.com/cloudflare/cloudflare-python).
 
 ```python
 import os
@@ -44,7 +44,7 @@ import requests
 
 ### Configuring your environment
 
-To use the API you'll need your [Cloudflare Account ID ↗](https://dash.cloudflare.com). Head to AI > Workers AI page and press the "Use REST API". This page will let you create a new API Token and copy your Account ID.
+To use the API you'll need your [Cloudflare Account ID ↗︎](https://dash.cloudflare.com). Head to AI > Workers AI page and press the "Use REST API". This page will let you create a new API Token and copy your Account ID.
 
 If you want to add these values to your environment variables, you can **create a new file** named `.env` and this notebook will read those values.
 

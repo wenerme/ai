@@ -136,7 +136,7 @@ When using lists, it is also much easier to adopt a "catch all rule" that runs l
 
 ### Using automations
 
-The WAF configuration can be managed [via API calls](https://developers.cloudflare.com/api/) and [Terraform ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs). This is particularly useful when you want to scale the approach to many more zones and FQDNs, and to avoid repetitive and manual tasks in the Dashboard.
+The WAF configuration can be managed [via API calls](https://developers.cloudflare.com/api/) and [Terraform ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs). This is particularly useful when you want to scale the approach to many more zones and FQDNs, and to avoid repetitive and manual tasks in the Dashboard.
 
 For example, a default Terraform configuration file could be created to define Rulesets and Lists and then maintained and applied as needed without needing to make changes in the Cloudflare Dashboard.
 

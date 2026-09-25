@@ -82,7 +82,7 @@ Note that if you are writing messages to a queue faster than you can process the
 
 Note
 
-Ensure you are using the latest version of [wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/). Support for configuring the maximum concurrency of a queue consumer is only supported in wrangler [`2.13.0` ↗](https://github.com/cloudflare/workers-sdk/releases/tag/wrangler%402.13.0) or greater.
+Ensure you are using the latest version of [wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/). Support for configuring the maximum concurrency of a queue consumer is only supported in wrangler [`2.13.0` ↗︎](https://github.com/cloudflare/workers-sdk/releases/tag/wrangler%402.13.0) or greater.
 
 To set a fixed maximum number of concurrent consumer invocations for a given queue, configure a `max_concurrency` in your Wrangler file:
 

@@ -118,7 +118,7 @@ if (RealtimeKitVideoBackgroundTransformer.isSupported()) {
 
 Image CORS requirements
 
-Image URLs must allow CORS to avoid tainting the canvas. You can find CORS-enabled images on [Unsplash ↗](https://unsplash.com/) and [Imgur ↗](https://imgur.com).
+Image URLs must allow CORS to avoid tainting the canvas. You can find CORS-enabled images on [Unsplash ↗︎](https://unsplash.com/) and [Imgur ↗︎](https://imgur.com).
 
 ## Advanced configuration
 
@@ -242,7 +242,7 @@ function App() {
 
 Image CORS requirements
 
-Image URLs must allow CORS to avoid tainting the canvas. You can find CORS-enabled images on [Unsplash ↗](https://unsplash.com/) and [Imgur ↗](https://imgur.com).
+Image URLs must allow CORS to avoid tainting the canvas. You can find CORS-enabled images on [Unsplash ↗︎](https://unsplash.com/) and [Imgur ↗︎](https://imgur.com).
 
 ## Advanced configuration
 
@@ -366,7 +366,7 @@ In your component template:
 
 Image CORS requirements
 
-Image URLs must allow CORS to avoid tainting the canvas. You can find CORS-enabled images on [Unsplash ↗](https://unsplash.com/) and [Imgur ↗](https://imgur.com).
+Image URLs must allow CORS to avoid tainting the canvas. You can find CORS-enabled images on [Unsplash ↗︎](https://unsplash.com/) and [Imgur ↗︎](https://imgur.com).
 
 ## Advanced configuration
 

@@ -43,7 +43,7 @@ The following APIs are exported from the `@cloudflare/vitest-plugin` package.
 
 ### `cloudflareTest(options)`
 
-A Vite plugin that configures Vitest to use the Workers integration with the correct module resolution settings, and provides type checking for [CloudflareTestOptions](#cloudflaretestoptions). Add this to the `plugins` array in your Vitest config alongside [`defineConfig()` ↗](https://vitest.dev/config/file.html) from Vitest.
+A Vite plugin that configures Vitest to use the Workers integration with the correct module resolution settings, and provides type checking for [CloudflareTestOptions](#cloudflaretestoptions). Add this to the `plugins` array in your Vitest config alongside [`defineConfig()` ↗︎](https://vitest.dev/config/file.html) from Vitest.
 
 It also accepts an optionally-`async` function returning `options`.
 
@@ -88,7 +88,7 @@ export default defineConfig({
 
 ### `readD1Migrations(migrationsPath)`
 
-Exported from `@cloudflare/vitest-plugin/config`. Reads all [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored at `migrationsPath` and returns them ordered by migration number. Each migration will have its contents split into an array of individual SQL queries. Call the [`applyD1Migrations()`](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#d1) function inside a test or [setup file ↗](https://vitest.dev/config/#setupfiles) to apply migrations. Refer to the [D1 recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/d1) for an example project using migrations.
+Exported from `@cloudflare/vitest-plugin/config`. Reads all [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored at `migrationsPath` and returns them ordered by migration number. Each migration will have its contents split into an array of individual SQL queries. Call the [`applyD1Migrations()`](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#d1) function inside a test or [setup file ↗︎](https://vitest.dev/config/#setupfiles) to apply migrations. Refer to the [D1 recipe ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/d1) for an example project using migrations.
 
 ```ts
 import path from "node:path";
@@ -122,9 +122,9 @@ Options passed directly to `cloudflareTest()`.
 - `main`: string optional
   - Entry point to Worker run in the same isolate/context as tests. This option is required to use Durable Objects without an explicit `scriptName` if classes are defined in the same Worker. This file goes through Vite transforms and can be TypeScript. Note that `import module from "<path-to-main>"` inside tests gives exactly the same `module` instance as is used internally for `exports` and Durable Object bindings. If `wrangler.configPath` is defined and this option is not, it will be read from the `main` field in that configuration file.
 - `miniflare`: `SourcelessWorkerOptions & { workers?: WorkerOptions\[]; }` optional
-  - Use this to provide configuration information that is typically stored within the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), such as [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/), [compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/), and [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/). The `WorkerOptions` interface is defined [here ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions). Use the `main` option above to configure the entry point, instead of the Miniflare `script`, `scriptPath`, or `modules` options.
+  - Use this to provide configuration information that is typically stored within the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/), such as [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/), [compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/), and [compatibility flags](https://developers.cloudflare.com/workers/configuration/compatibility-flags/). The `WorkerOptions` interface is defined [here ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions). Use the `main` option above to configure the entry point, instead of the Miniflare `script`, `scriptPath`, or `modules` options.
     - If no `compatibility_date` is provided, then the test will use the latest locally available date.
-  - If your project makes use of multiple Workers, you can configure auxiliary Workers that run in the same `workerd` process as your tests and can be bound to. Auxiliary Workers are configured using the `workers` array, containing regular Miniflare [`WorkerOptions` ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions) objects. Note that unlike the `main` Worker, auxiliary Workers:
+  - If your project makes use of multiple Workers, you can configure auxiliary Workers that run in the same `workerd` process as your tests and can be bound to. Auxiliary Workers are configured using the `workers` array, containing regular Miniflare [`WorkerOptions` ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions) objects. Note that unlike the `main` Worker, auxiliary Workers:
     - Cannot have TypeScript entrypoints. You must compile auxiliary Workers to JavaScript first. You can use the [`wrangler deploy --dry-run --outdir dist`](https://developers.cloudflare.com/workers/wrangler/commands/general/#deploy) command for this.
     - Use regular Workers module resolution semantics. Refer to the [Isolation and concurrency](https://developers.cloudflare.com/workers/testing/vitest-integration/isolation-and-concurrency/#modules) page for more information.
     - Cannot access the [`cloudflare:test`](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/) module.
@@ -137,7 +137,7 @@ Options passed directly to `cloudflareTest()`.
 
 ## Dynamic configuration with `inject`
 
-You can pass an `async` function to `cloudflareTest()` that receives an `inject` function. This allows you to define `miniflare` configuration based on injected values from [`globalSetup` ↗](https://vitest.dev/config/#globalsetup) scripts. Use this if you have a value in your configuration that is dynamically generated and only known at runtime of your tests. For example, a global setup script might start an upstream server on a random port. This port could be `provide()`d and then `inject()`ed in the configuration for an external service binding or [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). Refer to the [Hyperdrive recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/hyperdrive) for an example project using this provide/inject approach.
+You can pass an `async` function to `cloudflareTest()` that receives an `inject` function. This allows you to define `miniflare` configuration based on injected values from [`globalSetup` ↗︎](https://vitest.dev/config/#globalsetup) scripts. Use this if you have a value in your configuration that is dynamically generated and only known at runtime of your tests. For example, a global setup script might start an upstream server on a random port. This port could be `provide()`d and then `inject()`ed in the configuration for an external service binding or [Hyperdrive](https://developers.cloudflare.com/hyperdrive/). Refer to the [Hyperdrive recipe ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/hyperdrive) for an example project using this provide/inject approach.
 
 <details>
 
@@ -189,7 +189,7 @@ export default defineConfig({
 
 ## `SourcelessWorkerOptions`
 
-Sourceless `WorkerOptions` type without `script`, `scriptPath`, or `modules` properties. Refer to the Miniflare [`WorkerOptions` ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions) type for more details.
+Sourceless `WorkerOptions` type without `script`, `scriptPath`, or `modules` properties. Refer to the Miniflare [`WorkerOptions` ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/miniflare#interface-workeroptions) type for more details.
 
 ```ts
 type SourcelessWorkerOptions = Omit<

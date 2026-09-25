@@ -314,7 +314,7 @@ Note
 
 A no-op compaction cannot rescue an over-budget turn, so recovery is only as effective as your compaction configuration. For tool-heavy histories, configure a `tokenCounter` on `compactAfter()` (refer to [Sessions](https://developers.cloudflare.com/agents/runtime/lifecycle/sessions/#auto-compaction)).
 
-For a runnable demo against a real Workers AI model, refer to the [`context-overflow-recovery` example ↗](https://github.com/cloudflare/agents/tree/main/examples/context-overflow-recovery).
+For a runnable demo against a real Workers AI model, refer to the [`context-overflow-recovery` example ↗︎](https://github.com/cloudflare/agents/tree/main/examples/context-overflow-recovery).
 
 ## Stability detection
 

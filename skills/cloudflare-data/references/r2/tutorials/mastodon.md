@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/tutorials/mastodon/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Mastodon ↗](https://joinmastodon.org/) is a popular [fediverse ↗](https://en.wikipedia.org/wiki/Fediverse) software. This guide will explain how to configure R2 to be the object storage for a self hosted Mastodon instance, for either [a new instance](#set-up-a-new-instance) or [an existing instance](#migrate-to-r2).
+[Mastodon ↗︎](https://joinmastodon.org/) is a popular [fediverse ↗︎](https://en.wikipedia.org/wiki/Fediverse) software. This guide will explain how to configure R2 to be the object storage for a self hosted Mastodon instance, for either [a new instance](#set-up-a-new-instance) or [an existing instance](#migrate-to-r2).
 
 ## Set up a new instance
 
-You can set up a self hosted Mastodon instance in multiple ways. Refer to the [official documentation ↗](https://docs.joinmastodon.org/) for more details. When you reach the [Configuring your environment ↗](https://docs.joinmastodon.org/admin/config/#files) step in the Mastodon documentation after installation, refer to the procedures below for the next steps.
+You can set up a self hosted Mastodon instance in multiple ways. Refer to the [official documentation ↗︎](https://docs.joinmastodon.org/) for more details. When you reach the [Configuring your environment ↗︎](https://docs.joinmastodon.org/admin/config/#files) step in the Mastodon documentation after installation, refer to the procedures below for the next steps.
 
 ### 1. Determine the hostname to access files
 
@@ -42,7 +42,7 @@ If you move from R2 to another S3 compatible service later on, you can continue 
 
 ### 3. Configure R2 for Mastodon
 
-While configuring your Mastodon instance based on the official [configuration file ↗](https://github.com/mastodon/mastodon/blob/main/.env.production.sample), replace the **File storage** section with the following details.
+While configuring your Mastodon instance based on the official [configuration file ↗︎](https://github.com/mastodon/mastodon/blob/main/.env.production.sample), replace the **File storage** section with the following details.
 
 ```plaintext
 S3_ENABLED=true
@@ -67,7 +67,7 @@ If you already have an instance running, you can migrate the media files to R2 a
 
 ### 1. Set up an R2 bucket and start file migration
 
-1. (Optional) To minimize the number of migrated files, you can use the [Mastodon admin CLI ↗](https://docs.joinmastodon.org/admin/tootctl/#media) to clean up unused files.
+1. (Optional) To minimize the number of migrated files, you can use the [Mastodon admin CLI ↗︎](https://docs.joinmastodon.org/admin/tootctl/#media) to clean up unused files.
 2. Set up an R2 bucket ready for file migration by following steps 1 and 2 from [Setting up a new instance](#set-up-a-new-instance) section above.
 3. Migrate all the media files to R2. Refer to the [examples](https://developers.cloudflare.com/r2/examples/) provided to connect various providers together. If you currently host these media files locally, you can use [`rclone`](https://developers.cloudflare.com/r2/examples/rclone/) to upload these local files to R2.
 

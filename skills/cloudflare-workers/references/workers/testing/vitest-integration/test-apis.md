@@ -265,7 +265,7 @@ The Workers Vitest integration provides runtime helpers for writing tests. Some 
 ### D1
 
 - `applyD1Migrations(db:D1Database, migrations:D1Migration[], migrationTableName?:string)`: Promise\<void>
-  - Applies all un-applied [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored in the `migrations` array to database `db`, recording migrations state in the `migrationsTableName` table. `migrationsTableName` defaults to `d1_migrations`. Call the [`readD1Migrations()`](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#readd1migrationsmigrationspath) function from the `@cloudflare/vitest-plugin/config` package inside Node.js to get the `migrations` array. Refer to the [D1 recipe ↗](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/d1) for an example project using migrations.
+  - Applies all un-applied [D1 migrations](https://developers.cloudflare.com/d1/reference/migrations/) stored in the `migrations` array to database `db`, recording migrations state in the `migrationsTableName` table. `migrationsTableName` defaults to `d1_migrations`. Call the [`readD1Migrations()`](https://developers.cloudflare.com/workers/testing/vitest-integration/configuration/#readd1migrationsmigrationspath) function from the `@cloudflare/vitest-plugin/config` package inside Node.js to get the `migrations` array. Refer to the [D1 recipe ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/fixtures/vitest-plugin-examples/d1) for an example project using migrations.
 
 ### Workflows
 

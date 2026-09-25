@@ -70,7 +70,7 @@ This outputs the final URL after following all redirects. Use that URL for your 
 
 A single-file purge performed through your Cloudflare dashboard does not clear objects that contain any of the following:
 
-- [Origin header ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin)
+- [Origin header ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Origin)
 - Any of these request headers:
   - `X-Forwarded-Host`
   - `X-Host`

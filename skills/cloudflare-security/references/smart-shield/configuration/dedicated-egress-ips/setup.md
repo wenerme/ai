@@ -123,7 +123,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/settings/aegis" \
 
 ## Check your IPs
 
-You can find your leased dedicated IPs for CDN egress on the dashboard under [**Address space** > **Leased IPs** ↗](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
+You can find your leased dedicated IPs for CDN egress on the dashboard under [**Address space** > **Leased IPs** ↗︎](https://dash.cloudflare.com/?to=/:account/ip-addresses/address-space).
 
 If you are using BYOIP, refer to **BYOIP prefixes** instead.
 

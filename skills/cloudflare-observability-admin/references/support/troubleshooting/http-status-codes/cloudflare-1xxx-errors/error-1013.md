@@ -29,7 +29,7 @@ Error `1013` is commonly caused by the following:
 - Your local browser setting the incorrect SNI host header, or
 - A network proxying SSL traffic caused a mismatch between SNI and the Host header of the request.
 
-Test for an SNI mismatch via an online tool, such as [SSL Shopper ↗](https://www.sslshopper.com/ssl-checker.html).
+Test for an SNI mismatch via an online tool, such as [SSL Shopper ↗︎](https://www.sslshopper.com/ssl-checker.html).
 
 Provide Cloudflare Support the following information:
 

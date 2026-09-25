@@ -36,7 +36,7 @@ For the Salesforce (FedRAMP) integration to function, Cloudflare CASB requires t
 - `Perform requests at any time (refresh_token, offline_access)`
 - `Access unique user identifiers (openid)`
 
-These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [Salesforce OAuth Tokens and Scopes documentation ↗](https://help.salesforce.com/s/articleView?id=sf.remoteaccess_oauth_tokens_scopes.htm).
+These permissions follow the principle of least privilege to ensure that only the minimum required access is granted. To learn more about each permission, refer to the [Salesforce OAuth Tokens and Scopes documentation ↗︎](https://help.salesforce.com/s/articleView?id=sf.remoteaccess_oauth_tokens_scopes.htm).
 
 ## Security findings
 

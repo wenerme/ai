@@ -30,7 +30,7 @@ Before you configure a PAC file on your device, make sure you have:
 
 Configure your operating system to use the PAC file. This applies the proxy to all browsers that use system proxy settings (Chrome, Edge, Brave).
 
-For more information, refer to [Use a proxy server in Windows ↗](https://support.microsoft.com/windows/use-a-proxy-server-in-windows-03096c53-0554-4ffe-b6ab-8b1deee8dae1).
+For more information, refer to [Use a proxy server in Windows ↗︎](https://support.microsoft.com/windows/use-a-proxy-server-in-windows-03096c53-0554-4ffe-b6ab-8b1deee8dae1).
 
 1. Open the **Settings** app and select **Network & internet** > **Proxy**.
 2. Next to **Use setup script**, select **Set up**.
@@ -42,7 +42,7 @@ Note
 
 On Windows 10, the **Use setup script** toggle and script address field are on the same page under **Automatic proxy setup**. On Windows 11, you must select **Set up** to open the **Edit setup script** dialog.
 
-For more information, refer to [Change proxy settings on Mac ↗](https://support.apple.com/guide/mac-help/mchlp2591/mac).
+For more information, refer to [Change proxy settings on Mac ↗︎](https://support.apple.com/guide/mac-help/mchlp2591/mac).
 
 1. Open the Apple menu and select **System Settings**.
 2. Select **Network** in the sidebar.
@@ -109,7 +109,7 @@ On stock Android (Pixel) and most Android devices:
 5. In the **PAC URL** field, enter your PAC file URL.
 6. Tap **Save**.
 
-For more information, refer to [Manage advanced network settings on your Android phone ↗](https://support.google.com/android/answer/9654714).
+For more information, refer to [Manage advanced network settings on your Android phone ↗︎](https://support.google.com/android/answer/9654714).
 
 Note
 
@@ -164,7 +164,7 @@ You can deploy the PAC file URL through Group Policy by configuring the Internet
 
 Use the Settings Catalog to deploy proxy auto-configuration:
 
-1. In the [Microsoft Intune admin center ↗](https://intune.microsoft.com/), create a new **Configuration profile**.
+1. In the [Microsoft Intune admin center ↗︎](https://intune.microsoft.com/), create a new **Configuration profile**.
 2. Select **Settings catalog** as the profile type.
 3. Search for **Proxy** and configure the auto-config URL setting for your target platform (Windows or macOS).
 4. Assign the profile to your device groups.
@@ -177,26 +177,26 @@ Deploy a configuration profile with the proxy payload:
 2. Add a **Global HTTP Proxy** or **Network** payload.
 3. Set the proxy type to **Auto** and enter your PAC file URL.
 
-For detailed payload settings, refer to the [Network Proxy Configuration settings ↗](https://support.apple.com/guide/deployment/network-proxy-configuration-settings-depb27492e34/web) in the Apple Platform Deployment guide.
+For detailed payload settings, refer to the [Network Proxy Configuration settings ↗︎](https://support.apple.com/guide/deployment/network-proxy-configuration-settings-depb27492e34/web) in the Apple Platform Deployment guide.
 
 ### Google Admin console (ChromeOS)
 
 For managed ChromeOS devices and Chrome browsers:
 
-1. In the [Google Admin console ↗](https://admin.google.com/), go to **Devices** > **Networks**.
+1. In the [Google Admin console ↗︎](https://admin.google.com/), go to **Devices** > **Networks**.
 2. Select the organizational unit for your managed devices.
 3. Add or edit a network configuration (Wi-Fi or Ethernet).
 4. Under **Proxy settings**, select **Automatic proxy configuration**.
 5. Enter your PAC file URL.
 6. Select **Save**.
 
-For more information, refer to [Set up networks for managed devices ↗](https://support.google.com/chrome/a/answer/2634553).
+For more information, refer to [Set up networks for managed devices ↗︎](https://support.google.com/chrome/a/answer/2634553).
 
 ### Chrome Browser Cloud Management
 
 To deploy proxy settings to managed Chrome browsers on any operating system:
 
-1. In the [Google Admin console ↗](https://admin.google.com/), go to **Devices** > **Chrome** > **Settings**.
+1. In the [Google Admin console ↗︎](https://admin.google.com/), go to **Devices** > **Chrome** > **Settings**.
 2. Select the organizational unit for your managed browsers.
 3. Search for **Proxy** and configure the **Proxy mode** to **Use a .pac proxy auto-config file**.
 4. Enter your PAC file URL.

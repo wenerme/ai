@@ -168,10 +168,10 @@ Cloudflare will continue to support `rust` and `webpack` project types, but reco
 - `zone_id` inherited optional
   - This is the ID of the zone or domain you want to run your Worker on. It can also be specified through the `CF_ZONE_ID` environment variable. This key is optional if you are using only a `*.workers.dev` subdomain.
 - `workers_dev` inherited optional
-  - This is a boolean flag that specifies if your Worker will be deployed to your [`*.workers.dev` ↗](https://workers.dev) subdomain. If omitted, it defaults to false.
+  - This is a boolean flag that specifies if your Worker will be deployed to your [`*.workers.dev` ↗︎](https://workers.dev) subdomain. If omitted, it defaults to false.
 - `route` not inherited optional
   - A route, specified by URL pattern, on your zone that you would like to run your Worker on.
-    `route = "http://example.com/*"`. A `route` OR `routes` key is only required if you are not using a [`*.workers.dev` ↗](https://workers.dev) subdomain.
+    `route = "http://example.com/*"`. A `route` OR `routes` key is only required if you are not using a [`*.workers.dev` ↗︎](https://workers.dev) subdomain.
 - `routes` not inherited optional
   - A list of routes you would like to use your Worker on. These follow exactly the same rules a `route`, but you can specify a list of them.
     `routes = ["http://example.com/hello", "http://example.com/goodbye"]`. A `route` OR `routes` key is only required if you are not using a `*.workers.dev` subdomain.
@@ -188,7 +188,7 @@ Cloudflare will continue to support `rust` and `webpack` project types, but reco
 - `triggers` inherited optional
   - Configures cron triggers for running a Worker on a schedule.
 - `usage_model` inherited optional
-  - Specifies the [Usage Model](https://developers.cloudflare.com/workers/platform/pricing/#workers) for your Worker. There are two options - [`bundled`](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits) and [`unbound`](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits). For newly created Workers, if the Usage Model is omitted it will be set to the [default Usage Model set on the account ↗](https://dash.cloudflare.com/?account=workers/default-usage-model). For existing Workers, if the Usage Model is omitted, it will be set to the Usage Model configured in the dashboard for that Worker.
+  - Specifies the [Usage Model](https://developers.cloudflare.com/workers/platform/pricing/#workers) for your Worker. There are two options - [`bundled`](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits) and [`unbound`](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits). For newly created Workers, if the Usage Model is omitted it will be set to the [default Usage Model set on the account ↗︎](https://dash.cloudflare.com/?account=workers/default-usage-model). For existing Workers, if the Usage Model is omitted, it will be set to the Usage Model configured in the dashboard for that Worker.
 - `build` top level optional
   - Configures a custom build step to be run by Wrangler when building your Worker. Refer to the [custom builds documentation](#build) for more details.
 
@@ -333,7 +333,7 @@ Note
 
 Creating your KV namespaces can be handled using Wrangler’s [KV Commands](https://developers.cloudflare.com/workers/wrangler/migration/v1-to-v2/wrangler-legacy/commands/#kv).
 
-You can also define your `kv_namespaces` using an [alternative TOML syntax ↗](https://github.com/toml-lang/toml/blob/master/toml.md#user-content-table).
+You can also define your `kv_namespaces` using an [alternative TOML syntax ↗︎](https://github.com/toml-lang/toml/blob/master/toml.md#user-content-table).
 
 ### site
 
@@ -365,7 +365,7 @@ entry-point = "workers-site"
 - `exclude` optional
   - A list of `.gitignore`-style patterns that match files or directories in your `bucket` that should be excluded from uploads. Example: `exclude = ["ignore_dir"]`
 
-You can also define your `site` using an [alternative TOML syntax ↗](https://github.com/toml-lang/toml/blob/master/toml.md#user-content-inline-table).
+You can also define your `site` using an [alternative TOML syntax ↗︎](https://github.com/toml-lang/toml/blob/master/toml.md#user-content-inline-table).
 
 #### Storage Limits
 
@@ -435,7 +435,7 @@ Wrangler will always ignore:
 
 #### More about include/exclude patterns
 
-Refer to the [gitignore documentation ↗](https://git-scm.com/docs/gitignore) to learn more about the standard matching patterns.
+Refer to the [gitignore documentation ↗︎](https://git-scm.com/docs/gitignore) to learn more about the standard matching patterns.
 
 #### Customizing your Sites Build
 
@@ -466,7 +466,7 @@ crons = [ "0 0 * JAN-JUN FRI", "0 0 LW JUL-DEC *" ]
 ```
 
 - `crons` optional
-  - A set of [cron expressions ↗](https://crontab.guru/), where each expression is a separate schedule to run the Worker on.
+  - A set of [cron expressions ↗︎](https://crontab.guru/), where each expression is a separate schedule to run the Worker on.
 
 ### dev
 
@@ -627,7 +627,7 @@ command = "npm install && npm run build"
 
 Note
 
-If your project is written using CommonJS modules, you will need to re-export your handlers and Durable Object classes using an ES module shim. Refer to the [modules-webpack-commonjs ↗](https://github.com/cloudflare/modules-webpack-commonjs) template as an example.
+If your project is written using CommonJS modules, you will need to re-export your handlers and Durable Object classes using an ES module shim. Refer to the [modules-webpack-commonjs ↗︎](https://github.com/cloudflare/modules-webpack-commonjs) template as an example.
 
 - `rules` optional
   - An ordered list of rules that define which modules to import, and what type to import them as. You will need to specify rules to use Text, Data, and CompiledWasm modules, or when you wish to have a `.js` file be treated as an `ESModule` instead of `CommonJS`.
@@ -679,7 +679,7 @@ main = "./worker.mjs"
 - `type` required
   - The module type, see the table below for acceptable options:
 - `globs` required
-  - UNIX-style [glob rules ↗](https://docs.rs/globset/0.4.6/globset/#syntax) that are used to determine the module type to use for a given file in `dir`. Globs are matched against the module's relative path from `build.upload.dir` without the `./` prefix. Rules are evaluated in order, starting at the top.
+  - UNIX-style [glob rules ↗︎](https://docs.rs/globset/0.4.6/globset/#syntax) that are used to determine the module type to use for a given file in `dir`. Globs are matched against the module's relative path from `build.upload.dir` without the `./` prefix. Rules are evaluated in order, starting at the top.
 - `fallthrough` optional
   - This option allows further rules for this module type to be considered if set to true. If not specified or set to false, further rules for this module type will be ignored.
 

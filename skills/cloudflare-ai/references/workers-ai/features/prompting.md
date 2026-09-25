@@ -34,7 +34,7 @@ Typically, the role can be one of three options:
 - **user** - User messages are where you actually query the AI by providing a question or a conversation.
 - **assistant** - Assistant messages hint to the AI about the desired output format. Not all models support this role.
 
-OpenAI has a [good explanation ↗](https://platform.openai.com/docs/guides/text-generation#messages-and-roles) of how they use these roles with their GPT models. Even though chat templates are flexible, other text generation models tend to follow the same conventions.
+OpenAI has a [good explanation ↗︎](https://platform.openai.com/docs/guides/text-generation#messages-and-roles) of how they use these roles with their GPT models. Even though chat templates are flexible, other text generation models tend to follow the same conventions.
 
 Here's an input example of a scoped prompt using system and user roles:
 
@@ -74,7 +74,7 @@ You can use unscoped prompts to send a single question to the model without worr
 }
 ```
 
-You can also use unscoped prompts to construct the model chat template manually. In this case, you can use the raw parameter. Here's an input example of a [Mistral ↗](https://docs.mistral.ai/models/#chat-template) chat template prompt:
+You can also use unscoped prompts to construct the model chat template manually. In this case, you can use the raw parameter. Here's an input example of a [Mistral ↗︎](https://docs.mistral.ai/models/#chat-template) chat template prompt:
 
 ```js
 {

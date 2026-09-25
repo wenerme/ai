@@ -39,7 +39,7 @@ Each schema contains one or more ordered levels. In custom DLP profiles, selecti
 
 When creating a sensitivity schema, you can either create a custom schema from scratch or start from a template.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Data classification** > **Labels**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Data classification** > **Labels**.
 2. Select **Create labels**.
 3. In **Sensitivity schema**, choose one of the following:
    - **Create a custom schema** to define the schema from scratch
@@ -58,7 +58,7 @@ A data tag group contains related tags you can use to describe content beyond it
 
 When creating a data tag group, you can either create a custom group from scratch or start from a template.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Data classification** > **Labels**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Data classification** > **Labels**.
 2. Select **Create labels**.
 3. In **Data tag group**, choose one of the following:
    - **Create a custom group** to define the group from scratch
@@ -82,7 +82,7 @@ You can start from a template in either of the following ways:
 
 ### Build from a template from the Templates tab
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Data classification** > **Templates**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Data classification** > **Templates**.
 2. Select a template to review its details.
 3. Select **Build with template**.
 4. Review and customize the resulting sensitivity schema or data tag group.

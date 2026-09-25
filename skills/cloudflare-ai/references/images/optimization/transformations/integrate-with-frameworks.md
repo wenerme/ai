@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Next.js
 
-Image transformations can be used automatically with the Next.js [`<Image />` component ↗](https://nextjs.org/docs/api-reference/next/image).
+Image transformations can be used automatically with the Next.js [`<Image />` component ↗︎](https://nextjs.org/docs/api-reference/next/image).
 
 To use image transformations, define a global image loader or multiple custom loaders for each `<Image />` component.
 
@@ -26,7 +26,7 @@ Image transformations will be responsible for caching and serving an optimal for
 
 ### Global Loader
 
-To use Images with **all** your app's images, define a global [loaderFile ↗](https://nextjs.org/docs/pages/api-reference/components/image#loaderfile) for your app.
+To use Images with **all** your app's images, define a global [loaderFile ↗︎](https://nextjs.org/docs/pages/api-reference/components/image#loaderfile) for your app.
 
 Add the following settings to the **next.config.js** file located at the root of your Next.js application.
 

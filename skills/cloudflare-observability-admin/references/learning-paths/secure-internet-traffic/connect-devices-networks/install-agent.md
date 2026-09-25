@@ -63,7 +63,7 @@ To enroll your device using the client GUI:
    6. Complete the authentication steps required by your organization.
    7. After authenticating, select **Install VPN Profile**.
    8. In the **Connection request** popup window, select **OK**.
-   9. If you did not enable <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect">auto-connect ↗</a>, manually turn on the switch to **Connected**.</details>
+   9. If you did not enable <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#auto-connect">auto-connect ↗︎</a>, manually turn on the switch to **Connected**.</details>
 
 The Cloudflare One Client should show as **Connected**. The device is now connected to your organization and secured with Cloudflare Zero Trust.
 

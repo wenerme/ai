@@ -18,7 +18,7 @@ Cloudflare Queues is integrated with [Cloudflare Workers](https://developers.clo
 
 A Worker that can send messages to a Queue is a producer Worker, while a Worker that can receive messages from a Queue is a consumer Worker. It is possible for the same Worker to be a producer and consumer, if desired.
 
-In the future, we expect to support other APIs, such as HTTP endpoints to send or receive messages. To report bugs or request features, go to the [Cloudflare Community Forums ↗](https://community.cloudflare.com/c/developers/workers/40). To give feedback, go to the [`#queues` ↗](https://discord.cloudflare.com) Discord channel.
+In the future, we expect to support other APIs, such as HTTP endpoints to send or receive messages. To report bugs or request features, go to the [Cloudflare Community Forums ↗︎](https://community.cloudflare.com/c/developers/workers/40). To give feedback, go to the [`#queues` ↗︎](https://discord.cloudflare.com) Discord channel.
 
 ## Producer
 
@@ -119,11 +119,11 @@ interface Queue<Body = unknown> {
 ```
 
 - `send(body: unknown, options?: {contentType?: QueuesContentType })` `Promise<QueueSendResult>`
-  - Sends a message to the Queue. The body can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types), as long as its size is less than 128 KB.
+  - Sends a message to the Queue. The body can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types), as long as its size is less than 128 KB.
   - When the promise resolves, the message is confirmed to be written to disk.
   - Returns a [QueueSendResult](#queuesendresult) containing realtime metrics about the queue.
 - `sendBatch(messages: Iterable<MessageSendRequest<unknown>>, options?: QueueSendBatchOptions)` `Promise<QueueSendBatchResult>`
-  - Sends a batch of messages to the Queue. Each item in the provided [Iterable ↗](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html) must be supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types). A batch can contain up to 100 messages, though items are limited to 128 KB each, and the total size of the array cannot exceed 256 KB.
+  - Sends a batch of messages to the Queue. Each item in the provided [Iterable ↗︎](https://www.typescriptlang.org/docs/handbook/iterators-and-generators.html) must be supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types). A batch can contain up to 100 messages, though items are limited to 128 KB each, and the total size of the array cannot exceed 256 KB.
   - The optional `options` parameter can be used to apply settings (such as `delaySeconds`) to all messages in the batch. See [QueueSendBatchOptions](#queuesendbatchoptions).
   - When the promise resolves, the messages are confirmed to be written to disk.
 - `metrics()` `Promise<QueueMetrics>`
@@ -143,7 +143,7 @@ interface MessageSendRequest<Body = unknown> {
 
 - `body` `unknown`
   - The body of the message.
-  - The body can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types), as long as its size is less than 128 KB.
+  - The body can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types), as long as its size is less than 128 KB.
 - `contentType` `QueueContentType`
   - The explicit content type of a message so it can be previewed correctly with the [List messages from the dashboard](https://developers.cloudflare.com/queues/examples/list-messages-from-dash/) feature. Optional argument.
   - See [QueuesContentType](#queuescontenttype) for possible values.
@@ -180,10 +180,10 @@ A union type containing valid message content types.
 type QueuesContentType = "text" | "bytes" | "json" | "v8";
 ```
 
-- Use `"json"` to send a JavaScript object that can be JSON-serialized. This content type can be previewed from the [Cloudflare dashboard ↗](https://dash.cloudflare.com). The `json` content type is the default.
+- Use `"json"` to send a JavaScript object that can be JSON-serialized. This content type can be previewed from the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com). The `json` content type is the default.
 - Use `"text"` to send a `String`. This content type can be previewed with the [List messages from the dashboard](https://developers.cloudflare.com/queues/examples/list-messages-from-dash/) feature.
-- Use `"bytes"` to send an `ArrayBuffer`. This content type cannot be previewed from the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and will display as Base64-encoded.
-- Use `"v8"` to send a JavaScript object that cannot be JSON-serialized but is supported by [structured clone ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types) (for example `Date` and `Map`). This content type cannot be previewed from the [Cloudflare dashboard ↗](https://dash.cloudflare.com) and will display as Base64-encoded.
+- Use `"bytes"` to send an `ArrayBuffer`. This content type cannot be previewed from the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and will display as Base64-encoded.
+- Use `"v8"` to send a JavaScript object that cannot be JSON-serialized but is supported by [structured clone ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types) (for example `Date` and `Map`). This content type cannot be previewed from the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) and will display as Base64-encoded.
 
 Note
 
@@ -316,7 +316,7 @@ addEventListener('queue', (event) => {
 });
 ```
 
-In service worker syntax, `event` provides the same fields and methods as `MessageBatch`, as defined below, in addition to [`waitUntil()` ↗](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil).
+In service worker syntax, `event` provides the same fields and methods as `MessageBatch`, as defined below, in addition to [`waitUntil()` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil).
 
 Note
 
@@ -366,7 +366,7 @@ interface Message<Body = unknown> {
   - A timestamp when the message was sent.
 - `body` `unknown`
   - The body of the message.
-  - The body can be any type supported by the [structured clone algorithm ↗](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types), as long as its size is less than 128 KB.
+  - The body can be any type supported by the [structured clone algorithm ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Structured_clone_algorithm#supported_types), as long as its size is less than 128 KB.
 - `attempts` `number`
   - The number of times the consumer has attempted to process this message. Starts at 1.
 - `ack()` `void`

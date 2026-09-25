@@ -56,7 +56,7 @@ Before getting started, you will need:
 
 #### Set up Wrangler
 
-To begin, install [`npm` ↗](https://docs.npmjs.com/getting-started). Then [install Wrangler, the Developer Platform CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
+To begin, install [`npm` ↗︎](https://docs.npmjs.com/getting-started). Then [install Wrangler, the Developer Platform CLI](https://developers.cloudflare.com/workers/wrangler/install-and-update/).
 
 #### Enable Sippy on your R2 bucket
 

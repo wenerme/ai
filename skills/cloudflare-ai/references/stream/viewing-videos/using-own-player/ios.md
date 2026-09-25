@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/viewing-videos/using-own-player/ios/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-You can stream both on-demand and live video to native iOS, tvOS and macOS apps using [AVPlayer ↗](https://developer.apple.com/documentation/avfoundation/avplayer).
+You can stream both on-demand and live video to native iOS, tvOS and macOS apps using [AVPlayer ↗︎](https://developer.apple.com/documentation/avfoundation/avplayer).
 
 Note
 

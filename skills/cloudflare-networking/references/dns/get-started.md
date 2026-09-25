@@ -25,7 +25,7 @@ Make sure to [review your DNS records](https://developers.cloudflare.com/dns/zon
 Once the setup is completed:
 
 - You [manage DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) through the Cloudflare dashboard or API. This is how you control which resources are available on the apex domain ( `example.com`) or specific subdomains ( `blog.example.com`) of your website, as well as control other configurations.
-- Cloudflare [responds to all DNS queries](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) for your hostnames and your DNS records are propagated across the [Cloudflare global network ↗](https://www.cloudflare.com/network/), speeding up your domain.
+- Cloudflare [responds to all DNS queries](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) for your hostnames and your DNS records are propagated across the [Cloudflare global network ↗︎](https://www.cloudflare.com/network/), speeding up your domain.
 
 ## Resources
 
@@ -33,7 +33,7 @@ The following links introduce important concepts and will guide you through acti
 
 - [DNS records](https://developers.cloudflare.com/dns/manage-dns-records/): DNS records contain information about your domain and are used to make your website or application available to visitors and other web services.
 - [Nameservers](https://developers.cloudflare.com/dns/nameservers/): In the context of Cloudflare DNS, nameservers refer to authoritative nameservers. When a nameserver is authoritative for `example.com`, it means that DNS resolvers will consider responses from this nameserver when a user tries to access `example.com`.
-- [Proxy status](https://developers.cloudflare.com/dns/proxy-status/): Proxy status affects how Cloudflare treats incoming HTTP/S requests to A, AAAA, and CNAME records. When a record is proxied, Cloudflare responds with [anycast IPs](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/), which speeds up and protects HTTP/S traffic with our [cache](https://developers.cloudflare.com/cache/)/ [CDN ↗](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/), [DDoS protection](https://developers.cloudflare.com/ddos-protection/), [WAF](https://developers.cloudflare.com/waf/), and [more](https://developers.cloudflare.com/directory/?product-group=Application+performance%2CApplication+security).
+- [Proxy status](https://developers.cloudflare.com/dns/proxy-status/): Proxy status affects how Cloudflare treats incoming HTTP/S requests to A, AAAA, and CNAME records. When a record is proxied, Cloudflare responds with [anycast IPs](https://developers.cloudflare.com/fundamentals/concepts/cloudflare-ip-addresses/), which speeds up and protects HTTP/S traffic with our [cache](https://developers.cloudflare.com/cache/)/ [CDN ↗︎](https://www.cloudflare.com/learning/cdn/what-is-a-cdn/), [DDoS protection](https://developers.cloudflare.com/ddos-protection/), [WAF](https://developers.cloudflare.com/waf/), and [more](https://developers.cloudflare.com/directory/?product-group=Application+performance%2CApplication+security).
 
 ## Further reading
 

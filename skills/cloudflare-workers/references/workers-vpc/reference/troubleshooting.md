@@ -72,7 +72,7 @@ These errors indicate an issue within Cloudflare's infrastructure that is not ca
 
 | Error code | Description | Recommended fix |
 | --- | --- | --- |
-| `proxy_internal_error` | An internal error occurred within the Cloudflare proxy. | This is not caused by your configuration. If this error persists, contact [Cloudflare support ↗](https://support.cloudflare.com). |
+| `proxy_internal_error` | An internal error occurred within the Cloudflare proxy. | This is not caused by your configuration. If this error persists, contact [Cloudflare support ↗︎](https://support.cloudflare.com). |
 
 ## Tunnel errors
 

@@ -43,13 +43,13 @@ Follow [these instructions](https://developers.cloudflare.com/cloudflare-one/int
 
 ## Configure Okta for U2F
 
-An Okta administrator in your organization must first [enable U2F support ↗](https://help.okta.com/en/prod/Content/Topics/Security/MFA.htm) in your Okta account **and** [configure users ↗](https://help.okta.com/en/prod/Content/Topics/Security/healthinsight/required-factors.htm) to be prompted for it. This is a global setting; if your account has already configured U2F, you do not need to do anything unique to use it with Cloudflare Access.
+An Okta administrator in your organization must first [enable U2F support ↗︎](https://help.okta.com/en/prod/Content/Topics/Security/MFA.htm) in your Okta account **and** [configure users ↗︎](https://help.okta.com/en/prod/Content/Topics/Security/healthinsight/required-factors.htm) to be prompted for it. This is a global setting; if your account has already configured U2F, you do not need to do anything unique to use it with Cloudflare Access.
 
 ## Test U2F in Access
 
 You can begin building U2F policies by testing your Okta integration.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**.
 2. In **Manage your App Launcher**, select **Manage**.
 3. Choose **Login methods**.
 4. Choose the row for Okta and select **Test**.

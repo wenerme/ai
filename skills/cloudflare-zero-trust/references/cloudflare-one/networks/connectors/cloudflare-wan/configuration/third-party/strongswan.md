@@ -40,7 +40,7 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/magic/ipsec_tunnels/{
 
 ## 2. Configure strongSwan
 
-1. [Install strongSwan ↗](https://docs.strongswan.org/docs/5.9/install/install.html). For example, open the console and run:
+1. [Install strongSwan ↗︎](https://docs.strongswan.org/docs/5.9/install/install.html). For example, open the console and run:
 
 ```sh
 sudo apt-get install strongswan -y
@@ -141,7 +141,7 @@ echo "executed"
 
 Create Policy-Based Routing (PBR) to redirect returning traffic through the IPsec tunnel. Without it, the ICMP replies to the health probes sent by Cloudflare will be returned through the Internet, instead of the same IPsec tunnel.
 
-This tutorial uses [iproute2 ↗](https://en.wikipedia.org/wiki/Iproute2) to route IP packets from `172.64.240.252` to the tunnel interface.
+This tutorial uses [iproute2 ↗︎](https://en.wikipedia.org/wiki/Iproute2) to route IP packets from `172.64.240.252` to the tunnel interface.
 
 1. Open `/etc/iproute2/`.
 2. Edit the `rt_tables` file to add a routing table number and name. In this example, use `viatunicmp` as the name and `200` as the number for the routing table.

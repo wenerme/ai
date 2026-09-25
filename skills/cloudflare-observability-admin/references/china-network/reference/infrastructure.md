@@ -16,7 +16,7 @@ Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## China data centers
 
-For up-to-date information, refer to the [Cloudflare China Network ↗](https://www.cloudflare.com/china-network/) page.
+For up-to-date information, refer to the [Cloudflare China Network ↗︎](https://www.cloudflare.com/china-network/) page.
 
 ### Network IP addresses
 

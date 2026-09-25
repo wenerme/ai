@@ -22,7 +22,7 @@ As you get started with Cloudflare's IPFS Gateway, you may want to read through 
 
 Note
 
-For help with additional concepts, refer to the [IPFS documentation ↗](https://docs.ipfs.tech/concepts/).
+For help with additional concepts, refer to the [IPFS documentation ↗︎](https://docs.ipfs.tech/concepts/).
 
 Was this helpful?
 

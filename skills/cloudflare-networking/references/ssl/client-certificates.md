@@ -34,8 +34,8 @@ Cloudflare validates client certificates against CAs set at the account level. B
 
 The account-level CAs can be:
 
-- The Cloudflare-managed CA: This is the default option. Certificates and hostname associations are listed on the **Cloudflare-issued** tab of the [Client Certificates dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates/).
-- [BYOCA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/) certificates: Available on Enterprise accounts. Certificates and hostname associations are listed on the **BYOCA** tab of the [Client Certificates dashboard ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates/).
+- The Cloudflare-managed CA: This is the default option. Certificates and hostname associations are listed on the **Cloudflare-issued** tab of the [Client Certificates dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates/).
+- [BYOCA](https://developers.cloudflare.com/ssl/client-certificates/byo-ca/) certificates: Available on Enterprise accounts. Certificates and hostname associations are listed on the **BYOCA** tab of the [Client Certificates dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/client-certificates/).
 
 Cloudflare then stores the validation result in a field called [`cf.tls_client_auth.cert_verified`](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/reference/cf.tls_client_auth.cert_verified/):
 

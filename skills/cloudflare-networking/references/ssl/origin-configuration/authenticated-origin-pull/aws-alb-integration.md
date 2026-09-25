@@ -14,13 +14,13 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/aws-alb-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide will walk you through how to set up [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) authenticated origin pulls to securely connect to an AWS Application Load Balancer using [mutual TLS verify ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html).
+This guide will walk you through how to set up [per-hostname](https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull/set-up/per-hostname/) authenticated origin pulls to securely connect to an AWS Application Load Balancer using [mutual TLS verify ↗︎](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html).
 
 ## Before you begin
 
-- You should already have your AWS account and [EC2 ↗](https://docs.aws.amazon.com/ec2/?icmpid=docs_homepage_featuredsvcs) configured.
+- You should already have your AWS account and [EC2 ↗︎](https://docs.aws.amazon.com/ec2/?icmpid=docs_homepage_featuredsvcs) configured.
 - Note that this tutorial uses command-line interface (CLI) to generate a custom certificate, and [API calls](https://developers.cloudflare.com/fundamentals/api/get-started/) to configure Cloudflare Authenticated Origin Pulls.
-- For the most up-to-date documentation on how to set up AWS, refer to the [AWS documentation ↗](https://docs.aws.amazon.com/).
+- For the most up-to-date documentation on how to set up AWS, refer to the [AWS documentation ↗︎](https://docs.aws.amazon.com/).
 
 ## 1. Generate a custom certificate
 
@@ -56,20 +56,20 @@ basicConstraints=CA:FALSE
 
 ## 2. Configure AWS Application Load Balancer
 
-1. Upload the `rootca.cert` to an [S3 bucket ↗](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html).
-2. [Create a trust store ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html#create-trust-store) at your EC2 console, indicating the **S3 URI** where you uploaded the certificate.
-3. Create an EC2 instance and install an HTTPD daemon. Choose an [instance type ↗](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) according to your needs - it can be a minimal instance eligible to [AWS Free Tier ↗](https://aws.amazon.com/free/). This tutorial was based on an example using t2.micro and [Amazon Linux 2023 ↗](https://docs.aws.amazon.com/linux/al2023/ug/what-is-amazon-linux.html).
+1. Upload the `rootca.cert` to an [S3 bucket ↗︎](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html).
+2. [Create a trust store ↗︎](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html#create-trust-store) at your EC2 console, indicating the **S3 URI** where you uploaded the certificate.
+3. Create an EC2 instance and install an HTTPD daemon. Choose an [instance type ↗︎](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html) according to your needs - it can be a minimal instance eligible to [AWS Free Tier ↗︎](https://aws.amazon.com/free/). This tutorial was based on an example using t2.micro and [Amazon Linux 2023 ↗︎](https://docs.aws.amazon.com/linux/al2023/ug/what-is-amazon-linux.html).
 
 ```bash
 sudo yum install -y httpd
 sudo systemctl start httpd
 ```
 
-4. Create a [target group ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html#configure-target-group) for your Application Load Balancer.
+4. Create a [target group ↗︎](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html#configure-target-group) for your Application Load Balancer.
    - Choose **Instances** as target type.
    - Specify port `HTTP/80`.
-5. After you finish configuring the target group, confirm that the target group is [healthy ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html).
-6. [Configure a load balancer and a listener ↗](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html#configure-load-balancer).
+5. After you finish configuring the target group, confirm that the target group is [healthy ↗︎](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/target-group-health-checks.html).
+6. [Configure a load balancer and a listener ↗︎](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html#configure-load-balancer).
    - Choose the **Internet-facing** scheme.
    - Switch the listener to port `443` so that the **mTLS** option is available, and select the target group created in previous steps.
    - For **Default SSL/TLS server certificate**, choose **Import certificate** > **Import to ACM**, and add the certificate private key and body.

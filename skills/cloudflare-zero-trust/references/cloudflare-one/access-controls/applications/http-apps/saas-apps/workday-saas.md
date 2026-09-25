@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/workday-saas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide covers how to configure [Workday ↗](https://doc.workday.com/admin-guide/en-us/authentication-and-security/authentication/saml/dan1370796470811.html?toc=1.5.1) as a SAML application in Cloudflare One.
+This guide covers how to configure [Workday ↗︎](https://doc.workday.com/admin-guide/en-us/authentication-and-security/authentication/saml/dan1370796470811.html?toc=1.5.1) as a SAML application in Cloudflare One.
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ This guide covers how to configure [Workday ↗](https://doc.workday.com/admin-g
 
 ## 1. Add a SaaS application to Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Select **Create new application** > **SaaS application**.
 3. For **Application**, enter `Workday` and select the corresponding textbox that appears.
 4. For the authentication protocol, select **SAML**.
@@ -68,14 +68,14 @@ Note
 
 If you encounter a situation where one or more users get locked out of Workday, the user can use this backup URL provided by Workday to sign in with their username and password: `https://<your-workday-url>/login.flex?redirect=n`.
 
-1. In Workday, create an [authentication rule ↗](https://doc.workday.com/admin-guide/en-us/authentication-and-security/authentication/authentication-policies/dan1370796466772.html).
+1. In Workday, create an [authentication rule ↗︎](https://doc.workday.com/admin-guide/en-us/authentication-and-security/authentication/authentication-policies/dan1370796466772.html).
 2. Under **Authentication Conditions**, add conditions that will apply only to your test user.
 3. Under **Allowed Authentication Types**, select **Specific**, then **SAML**.
 4. Select **Done**.
 5. Complete the following step:
    - **If you have enabled SP-initiated login**: Open an incognito browser window, go to your Workday URL, and enter your test user's email. You will be redirected to the Cloudflare Access login screen and prompted to sign in with your identity provider.
    - **If you have not enabled SP-initiated login**: Go to your App Launcher at `https://<cloudflare-team-name>.cloudflareaccess.com`. Select the **Workday** tile. You will be redirected to the Cloudflare Access login screen and prompted to sign in with your identity provider.
-6. Once login is successful, you can configure your security settings further, such as adding [user groups ↗](https://doc.workday.com/admin-guide/en-us/authentication-and-security/configurable-security/security-groups/user-based-security-groups/dan1370796695367.html?toc=2.2.12.0) or [authentication rules ↗](https://doc.workday.com/admin-guide/en-us/authentication-and-security/authentication/authentication-policies/dan1370796466772.html) to configure different login rules for different groups of users.
+6. Once login is successful, you can configure your security settings further, such as adding [user groups ↗︎](https://doc.workday.com/admin-guide/en-us/authentication-and-security/configurable-security/security-groups/user-based-security-groups/dan1370796695367.html?toc=2.2.12.0) or [authentication rules ↗︎](https://doc.workday.com/admin-guide/en-us/authentication-and-security/authentication/authentication-policies/dan1370796466772.html) to configure different login rules for different groups of users.
 
 Was this helpful?
 

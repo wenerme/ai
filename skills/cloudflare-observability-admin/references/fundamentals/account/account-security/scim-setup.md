@@ -25,7 +25,7 @@ This section covers SCIM provisioning for the Cloudflare dashboard. If you need 
 Once the SCIM provisioning is enabled:
 
 - A Cloudflare account can receive user group provisioning from the identity provider.
-- Members of each user group can be assigned one or more [policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/). Each policy defines one or more [roles ↗](https://developers.cloudflare.com/fundamentals/manage-members/roles/) applied to all group members thereof.
+- Members of each user group can be assigned one or more [policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/). Each policy defines one or more [roles ↗︎](https://developers.cloudflare.com/fundamentals/manage-members/roles/) applied to all group members thereof.
 - Members can belong to multiple user groups, and each group can also be configured with different policies.
 - Policies provisioned via SCIM can coexist with policies configured via the [traditional setup](https://developers.cloudflare.com/fundamentals/manage-members/manage/#edit-member-permissions).
 

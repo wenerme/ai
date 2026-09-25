@@ -49,8 +49,8 @@ However, not all browser versions support TLS 1.2 and above. Depending on your p
 ## Related resources
 
 - [PCI compliance and vulnerabilities mitigation](https://developers.cloudflare.com/ssl/reference/compliance-and-vulnerabilities/)
-- [Transport Layer Security ↗](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/)
-- [PCI Security Standards Council ↗](https://www.pcisecuritystandards.org/)
+- [Transport Layer Security ↗︎](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/)
+- [PCI Security Standards Council ↗︎](https://www.pcisecuritystandards.org/)
 
 Was this helpful?
 

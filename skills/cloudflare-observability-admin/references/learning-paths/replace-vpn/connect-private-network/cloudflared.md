@@ -30,9 +30,9 @@ To connect your private network:
 9. In the **CIDR** tab, enter the CIDR of your private network (for example, `10.0.0.0/8`).
 10. Select **Save tunnel**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Cloudflare Tunnel Write`
-2. Create a tunnel using the [`cloudflare_zero_trust_tunnel_cloudflare` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_cloudflared) resource.
+2. Create a tunnel using the [`cloudflare_zero_trust_tunnel_cloudflare` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_cloudflared) resource.
 
    ```tf
    resource "cloudflare_zero_trust_tunnel_cloudflared" "example_tunnel" {
@@ -43,7 +43,7 @@ To connect your private network:
    ```
 
 
-3. Route the CIDR of your private network through the tunnel using the [`cloudflare_zero_trust_tunnel_cloudflared_route` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_cloudflared_route) resource:
+3. Route the CIDR of your private network through the tunnel using the [`cloudflare_zero_trust_tunnel_cloudflared_route` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_tunnel_cloudflared_route) resource:
 
    ```tf
    resource "cloudflare_zero_trust_tunnel_cloudflared_route" "example_tunnel_route" {
@@ -108,7 +108,7 @@ Alternatively, pass `data.cloudflare_zero_trust_tunnel_cloudflared_token.tunnel_
    </details>
 
 5. Install `cloudflared` on a host machine in your private network and run the tunnel:
-   1. [Download and install ↗](https://pkg.cloudflare.com/index.html) `cloudflared`.
+   1. [Download and install ↗︎](https://pkg.cloudflare.com/index.html) `cloudflared`.
    2. Run the following command:
 
       ```sh

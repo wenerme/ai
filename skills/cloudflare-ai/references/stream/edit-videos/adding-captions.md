@@ -20,9 +20,9 @@ Adding captions and subtitles to your video library.
 
 There are two ways to add captions to a video: generating via AI or uploading a caption file.
 
-To create or modify a caption on a video a [Cloudflare API Token ↗](https://www.cloudflare.com/a/account/my-account) is required.
+To create or modify a caption on a video a [Cloudflare API Token ↗︎](https://www.cloudflare.com/a/account/my-account) is required.
 
-The `<LANGUAGE_TAG>` must adhere to the [BCP 47 format ↗](http://www.unicode.org/reports/tr35/#Unicode_Language_and_Locale_Identifiers). For convenience, many common language codes are provided [at the bottom of this document](#most-common-language-codes). If the language you are adding is not included in the table, you can find the value through the [The IANA registry ↗](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry), which maintains a list of language codes. To find the value to send, search for the language. Below is an example value from IANA when we look for the value to send for a Turkish subtitle:
+The `<LANGUAGE_TAG>` must adhere to the [BCP 47 format ↗︎](http://www.unicode.org/reports/tr35/#Unicode_Language_and_Locale_Identifiers). For convenience, many common language codes are provided [at the bottom of this document](#most-common-language-codes). If the language you are adding is not included in the table, you can find the value through the [The IANA registry ↗︎](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry), which maintains a list of language codes. To find the value to send, search for the language. Below is an example value from IANA when we look for the value to send for a Turkish subtitle:
 
 ```bash
 %%
@@ -370,7 +370,7 @@ If there is an entry in `errors` response field, the caption has not been delete
 ## Limitations
 
 - A video must be uploaded before a caption can be attached to it. In the following example URLs, the video's ID is referenced as `media_id`.
-- Stream only supports [WebVTT ↗](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) formatted caption files. If you have a differently formatted caption file, use [a tool to convert your file to WebVTT ↗](https://subtitletools.com/convert-to-vtt-online) prior to uploading it.
+- Stream only supports [WebVTT ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API) formatted caption files. If you have a differently formatted caption file, use [a tool to convert your file to WebVTT ↗︎](https://subtitletools.com/convert-to-vtt-online) prior to uploading it.
 - Videos may include several language captions, but each language must be unique. For example, a video may have English, French, and German captions associated with it, but it cannot have two French captions.
 - Each caption file is limited to 10 MB in size. [Contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if you need to upload a larger file.
 

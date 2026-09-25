@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Spectrum provides security and acceleration for any [TCP ↗](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/) or [UDP ↗](https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/) based application.
+Spectrum provides security and acceleration for any [TCP ↗︎](https://www.cloudflare.com/learning/ddos/glossary/tcp-ip/) or [UDP ↗︎](https://www.cloudflare.com/learning/ddos/glossary/user-datagram-protocol-udp/) based application.
 
 Available on Paid plans
 
-Spectrum allows you to route MQTT, email, file transfer, version control, games, and more over TCP or UDP through Cloudflare to mask the origin and protect it from [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
+Spectrum allows you to route MQTT, email, file transfer, version control, games, and more over TCP or UDP through Cloudflare to mask the origin and protect it from [DDoS attacks ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
 
 Note
 

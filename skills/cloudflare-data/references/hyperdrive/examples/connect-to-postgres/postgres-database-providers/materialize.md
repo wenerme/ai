@@ -16,7 +16,7 @@ Connect Hyperdrive to a Materialize streaming database.
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-database-providers/materialize/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This example shows you how to connect Hyperdrive to a [Materialize ↗](https://materialize.com/) database. Materialize is a Postgres-compatible streaming database that can automatically compute real-time results against your streaming data sources.
+This example shows you how to connect Hyperdrive to a [Materialize ↗︎](https://materialize.com/) database. Materialize is a Postgres-compatible streaming database that can automatically compute real-time results against your streaming data sources.
 
 ## 1. Allow Hyperdrive access
 
@@ -26,11 +26,11 @@ To allow Hyperdrive to connect to your database, you will need to ensure that Hy
 
 Note
 
-Read the Materialize [Quickstart guide ↗](https://materialize.com/docs/get-started/quickstart/) to set up your first database. The steps below assume you have an existing Materialize database ready to go.
+Read the Materialize [Quickstart guide ↗︎](https://materialize.com/docs/get-started/quickstart/) to set up your first database. The steps below assume you have an existing Materialize database ready to go.
 
 You will need to create a new application user and password for Hyperdrive to connect with:
 
-1. Log in to the [Materialize Console ↗](https://console.materialize.com/).
+1. Log in to the [Materialize Console ↗︎](https://console.materialize.com/).
 2. Under the **App Passwords** section, select **Manage app passwords**.
 3. Select **New app password** and enter a name, for example, `hyperdrive-user`.
 4. Select **Create Password**.
@@ -85,7 +85,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -104,7 +104,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -173,7 +173,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -186,7 +186,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

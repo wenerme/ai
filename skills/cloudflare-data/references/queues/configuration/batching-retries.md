@@ -371,7 +371,7 @@ You can apply a backoff algorithm to increasingly delay messages based on the cu
 
 Each message delivered to a consumer includes an `attempts` property that tracks the number of delivery attempts made.
 
-For example, to generate an [exponential backoff ↗](https://en.wikipedia.org/wiki/Exponential_backoff) for a message, you can create a helper function that calculates this for you:
+For example, to generate an [exponential backoff ↗︎](https://en.wikipedia.org/wiki/Exponential_backoff) for a message, you can create a helper function that calculates this for you:
 
 *index.jsjs*
 

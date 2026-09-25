@@ -30,7 +30,7 @@ Proxying is on by default when you onboard a domain via the dashboard.
 
 When you set a DNS record to **Proxied** — shown as an orange cloud icon in the dashboard, also known as "orange-clouded" — Cloudflare can:
 
-- Protect your origin server (the server hosting your website or application) from [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
+- Protect your origin server (the server hosting your website or application) from [DDoS attacks ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/).
 - [Optimize, cache, and protect](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/) all requests to your application.
 - Apply your Cloudflare product configurations (such as [WAF](https://developers.cloudflare.com/waf/) rules, [caching](https://developers.cloudflare.com/cache/), and [redirect rules](https://developers.cloudflare.com/rules/url-forwarding/)) to incoming traffic.
 
@@ -131,7 +131,7 @@ CNAME to a different Cloudflare account is prohibited and will result in a <a hr
 
 With [CNAME flattening](https://developers.cloudflare.com/dns/cname-flattening/), Cloudflare follows the CNAME chain to find the final IP address, helping DNS queries resolve faster. Proxied [CNAME records](https://developers.cloudflare.com/dns/manage-dns-records/reference/dns-record-types/#cname) are flattened by default, as they return Cloudflare anycast IPs.
 
-In some cases, Cloudflare will show a warning message or [prevent](https://developers.cloudflare.com/dns/proxy-status/limitations/#proxy-eligibility) you from proxying a CNAME record. This happens to avoid misconfigurations and is generally related to other CDN providers or to specific records used for [DKIM ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/) (email authentication) validation.
+In some cases, Cloudflare will show a warning message or [prevent](https://developers.cloudflare.com/dns/proxy-status/limitations/#proxy-eligibility) you from proxying a CNAME record. This happens to avoid misconfigurations and is generally related to other CDN providers or to specific records used for [DKIM ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-dkim-record/) (email authentication) validation.
 
 Note
 
@@ -159,7 +159,7 @@ Cloudflare enforces a default [Proxy Read Timeout](https://developers.cloudflare
 
 When an A, AAAA, or CNAME record is **DNS-only** — shown as a gray cloud icon in the dashboard, also known as "gray-clouded" — DNS queries for these will resolve to the record's actual origin IP address, as described in the [example](#example).
 
-**DNS-only** is only recommended for records that do not serve web traffic, such as records used for email routing or third-party domain verification. For records that serve web traffic, **DNS-only** means your origin IP addresses are visible to anyone who queries the record, potentially exposing your server to bad actors and [DDoS attacks ↗](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/). Cloudflare also cannot [optimize, cache, and protect](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) those requests or provide HTTP/HTTPS analytics on them.
+**DNS-only** is only recommended for records that do not serve web traffic, such as records used for email routing or third-party domain verification. For records that serve web traffic, **DNS-only** means your origin IP addresses are visible to anyone who queries the record, potentially exposing your server to bad actors and [DDoS attacks ↗︎](https://www.cloudflare.com/learning/ddos/what-is-a-ddos-attack/). Cloudflare also cannot [optimize, cache, and protect](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/) those requests or provide HTTP/HTTPS analytics on them.
 
 Note
 

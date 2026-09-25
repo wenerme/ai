@@ -16,7 +16,7 @@ Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 In **Basic information**, you can change the name and description of your Cloudflare One Appliance (formerly Magic WAN Connector).
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/), and go to **Networks**.
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), and go to **Networks**.
 2. Go to **Connectors** > **Appliances** > **Appliances**.
 3. Find the Cloudflare One Appliance that you want to edit > select the three dots next to it > **Edit**.
 4. In **Basic information** make the necessary changes.

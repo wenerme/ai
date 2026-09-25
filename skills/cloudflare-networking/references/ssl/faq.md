@@ -56,7 +56,7 @@ If you are on a Business or Enterprise plan, you can [upload a certificate](http
 
 ### I am missing the CAs that Cloudflare uses in my trust store. What should I do?
 
-You can use [CFSSL trust store ↗](https://github.com/cloudflare/cfssl_trust), which includes all of the CAs that are used by Cloudflare managed certificates.
+You can use [CFSSL trust store ↗︎](https://github.com/cloudflare/cfssl_trust), which includes all of the CAs that are used by Cloudflare managed certificates.
 
 ---
 
@@ -72,7 +72,7 @@ For more details, refer to [Add CAA records](https://developers.cloudflare.com/s
 
 ### How does Cloudflare evaluate CAA records?
 
-CAA records are evaluated by a CA, not by Cloudflare. For details, refer to [RFC 8659 ↗](https://www.rfc-editor.org/rfc/rfc8659.html#name-relevant-resource-record-se).
+CAA records are evaluated by a CA, not by Cloudflare. For details, refer to [RFC 8659 ↗︎](https://www.rfc-editor.org/rfc/rfc8659.html#name-relevant-resource-record-se).
 
 Setting a CAA record to specify one or more particular CAs does not affect which CA Cloudflare uses to issue universal or advanced certificates for your domain. If you wish, you can specify CAs associated with Cloudflare certificates when [ordering an advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/).
 

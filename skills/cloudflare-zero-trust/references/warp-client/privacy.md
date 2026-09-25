@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/warp-client/privacy/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The WARP Client application uses a VPN profile and/or service that enables us to intercept and secure your DNS queries and to transmit data from your device through the Cloudflare network, depending on the services you have enabled. We only collect limited DNS query and traffic data (excluding payload) that is sent to our network when you have the app enabled on your device. All information is handled in accordance with our [Privacy Policy ↗](https://www.cloudflare.com/application/privacypolicy/).
+The WARP Client application uses a VPN profile and/or service that enables us to intercept and secure your DNS queries and to transmit data from your device through the Cloudflare network, depending on the services you have enabled. We only collect limited DNS query and traffic data (excluding payload) that is sent to our network when you have the app enabled on your device. All information is handled in accordance with our [Privacy Policy ↗︎](https://www.cloudflare.com/application/privacypolicy/).
 
 ## What does Cloudflare do with your data?
 

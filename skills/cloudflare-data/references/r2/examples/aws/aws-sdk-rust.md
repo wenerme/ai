@@ -18,7 +18,7 @@ You must [generate an Access Key](https://developers.cloudflare.com/r2/api/token
 
 
 
-This example uses the [aws-sdk-s3 ↗](https://crates.io/crates/aws-sdk-s3) crate from the [AWS SDK for Rust ↗](https://github.com/awslabs/aws-sdk-rust). You must pass in the R2 configuration credentials when instantiating your `S3` client:
+This example uses the [aws-sdk-s3 ↗︎](https://crates.io/crates/aws-sdk-s3) crate from the [AWS SDK for Rust ↗︎](https://github.com/awslabs/aws-sdk-rust). You must pass in the R2 configuration credentials when instantiating your `S3` client:
 
 ## Basic Usage
 

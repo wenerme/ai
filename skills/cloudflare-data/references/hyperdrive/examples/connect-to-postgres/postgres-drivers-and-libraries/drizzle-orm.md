@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/drizzle-orm/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Drizzle ORM ↗](https://orm.drizzle.team/) is a lightweight TypeScript ORM with a focus on type safety. This example demonstrates how to use Drizzle ORM with PostgreSQL via Cloudflare Hyperdrive in a Workers application.
+[Drizzle ORM ↗︎](https://orm.drizzle.team/) is a lightweight TypeScript ORM with a focus on type safety. This example demonstrates how to use Drizzle ORM with PostgreSQL via Cloudflare Hyperdrive in a Workers application.
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## 1. Install Drizzle
 
-Install the Drizzle ORM and its dependencies such as the [node-postgres ↗](https://node-postgres.com/) (`pg`) driver:
+Install the Drizzle ORM and its dependencies such as the [node-postgres ↗︎](https://node-postgres.com/) (`pg`) driver:
 
 ```sh
 npm i drizzle-orm pg dotenv
@@ -40,7 +40,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -53,7 +53,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -129,7 +129,7 @@ export default {
 
 Note
 
-You may use [node-postgres ↗](https://orm.drizzle.team/docs/get-started-postgresql#node-postgres) or [Postgres.js ↗](https://orm.drizzle.team/docs/get-started-postgresql#postgresjs) when using Drizzle ORM. Both are supported and compatible.
+You may use [node-postgres ↗︎](https://orm.drizzle.team/docs/get-started-postgresql#node-postgres) or [Postgres.js ↗︎](https://orm.drizzle.team/docs/get-started-postgresql#postgresjs) when using Drizzle ORM. Both are supported and compatible.
 
 ### 2.3. Configure Drizzle-Kit for migrations (optional)
 
@@ -139,7 +139,7 @@ You need to set up the tables in your database so that Drizzle ORM can make quer
 
 If you have already set it up (for example, if another user has applied the schema to your database), or if you are starting to use Drizzle ORM and the schema matches what already exists in your database, then you do not need to run the migration.
 
-You can generate and run SQL migrations on your database based on your schema using Drizzle Kit CLI. Refer to [Drizzle ORM docs ↗](https://orm.drizzle.team/docs/get-started/postgresql-new) for additional guidance.
+You can generate and run SQL migrations on your database based on your schema using Drizzle Kit CLI. Refer to [Drizzle ORM docs ↗︎](https://orm.drizzle.team/docs/get-started/postgresql-new) for additional guidance.
 
 1. Create a `.env` file the root folder of your project, and add your database connection string. The Drizzle Kit CLI will use this connection string to create and apply the migrations.
 

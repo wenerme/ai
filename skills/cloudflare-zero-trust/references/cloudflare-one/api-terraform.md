@@ -17,7 +17,7 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 You can manage your Cloudflare Zero Trust configuration using the API or Terraform. For more information, refer to the following links:
 
 - [API reference](https://developers.cloudflare.com/api/)
-- [Terraform provider reference ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs)
+- [Terraform provider reference ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs)
 - [Terraform how-to documentation](https://developers.cloudflare.com/terraform/)
 
 Detailed API and Terraform examples for Cloudflare Zero Trust are available in our [implementation guides](https://developers.cloudflare.com/cloudflare-one/implementation-guides/) and throughout the Cloudflare Zero Trust documentation.
@@ -28,7 +28,7 @@ Super Administrators can lock all settings as read-only in the Cloudflare One da
 
 To enable read-only mode:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Settings** > **Admin controls**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Settings** > **Admin controls**.
 2. Enable **Set dashboard to read-only**.
 
 All users, regardless of [user permissions](https://developers.cloudflare.com/cloudflare-one/roles-permissions/), will be prevented from making configuration changes through the UI.

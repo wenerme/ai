@@ -84,7 +84,7 @@ Cloudflare SSL/TLS encrypts your web traffic to prevent data theft and other tam
 
 The following customers have access to Cloudflare Waiting Room:
 
-- Those qualified under [Project Fair Shot ↗](https://www.cloudflare.com/fair-shot/)
+- Those qualified under [Project Fair Shot ↗︎](https://www.cloudflare.com/fair-shot/)
 - Customers on a Business or Enterprise plan
 
 Access to certain features depends on a customer's [plan type](https://developers.cloudflare.com/waiting-room/plans/).

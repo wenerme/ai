@@ -16,7 +16,7 @@ Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Cloudflare does not support [HTTP public key pinning (HPKP)](https://developers.cloudflare.com/ssl/reference/certificate-pinning/) for universal, advanced, or custom hostname certificates.
 
-Cloudflare regularly rotates the edge certificates provisioned for your domain. If HPKP was enabled, your domain would go offline each time a certificate rotates because the new certificate would not match the pinned key. Additionally, [industry experts ↗](https://scotthelme.co.uk/im-giving-up-on-hpkp/) discourage using HPKP. For a detailed overview, refer to the Cloudflare blog post on [why certificate pinning is outdated ↗](https://blog.cloudflare.com/why-certificate-pinning-is-outdated/).
+Cloudflare regularly rotates the edge certificates provisioned for your domain. If HPKP was enabled, your domain would go offline each time a certificate rotates because the new certificate would not match the pinned key. Additionally, [industry experts ↗︎](https://scotthelme.co.uk/im-giving-up-on-hpkp/) discourage using HPKP. For a detailed overview, refer to the Cloudflare blog post on [why certificate pinning is outdated ↗︎](https://blog.cloudflare.com/why-certificate-pinning-is-outdated/).
 
 ## Recommended alternative
 

@@ -106,7 +106,7 @@ To receive Bot alerts, you must [configure a notification](https://developers.cl
 
 ## Alert logic
 
-The Bot Detection Alert notifies you when Cloudflare detects an abnormal spike to your zone where the [Z-score ↗](https://blog.cloudflare.com/introducing-thresholds-in-security-event-alerting-a-z-score-love-story/) exceeds 3.5 and bot requests exceed 200 per 5 minutes (bot score below 30). A Z-score measures how far a value deviates from the average, so a Z-score above 3.5 indicates a statistically unusual traffic spike.
+The Bot Detection Alert notifies you when Cloudflare detects an abnormal spike to your zone where the [Z-score ↗︎](https://blog.cloudflare.com/introducing-thresholds-in-security-event-alerting-a-z-score-love-story/) exceeds 3.5 and bot requests exceed 200 per 5 minutes (bot score below 30). A Z-score measures how far a value deviates from the average, so a Z-score above 3.5 indicates a statistically unusual traffic spike.
 
 The Z-score is calculated using a six-hour baseline window and a five-minute observation window.
 

@@ -59,7 +59,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/custom_hostnames" \
 To apply WAF to your custom hostname, you need to create an association between your customer's domain and the WAF configuration that you would like to attach to it. Cloudflare's product, [custom metadata](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/domain-support/custom-metadata/) allows you to do this via the API.
 
 1. [Locate your zone ID](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/), available in the Cloudflare dashboard.
-2. Locate your Authentication Key on the [**API Tokens** ↗](https://dash.cloudflare.com/?to=/:account/profile/api-tokens) page, under **Global API Key**.
+2. Locate your Authentication Key on the [**API Tokens** ↗︎](https://dash.cloudflare.com/?to=/:account/profile/api-tokens) page, under **Global API Key**.
 3. Locate your custom hostname ID by making a `GET` call in the API:
 
 <details>

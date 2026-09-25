@@ -57,7 +57,7 @@ Note
 
 Cloudflare Radar attempts to provide trends and insights into general Internet usage, using the traffic that goes through Cloudflare infrastructure. As such, Cloudflare Radar only provides data on traffic coming from end-users, unless otherwise specified (for example, origin fetches are excluded).
 
-The previous example returns all traffic from bots and humans. However, you can access just the traffic classified as coming from humans (the default in [Cloudflare Radar ↗](https://radar.cloudflare.com)) by adding `botClass=LIKELY_HUMAN`. You can also access traffic coming only from bots with `botClass=LIKELY_AUTOMATED` (refer to [bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes) for more information). For example:
+The previous example returns all traffic from bots and humans. However, you can access just the traffic classified as coming from humans (the default in [Cloudflare Radar ↗︎](https://radar.cloudflare.com)) by adding `botClass=LIKELY_HUMAN`. You can also access traffic coming only from bots with `botClass=LIKELY_AUTOMATED` (refer to [bot classes](https://developers.cloudflare.com/radar/concepts/bot-classes) for more information). For example:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/radar/http/summary/device_type?dateRange=7d&botClass=LIKELY_AUTOMATED&format=json" \
@@ -76,7 +76,7 @@ When present, `meta.confidenceInfo.level` will also provide an indication of how
 
 ## Use Python
 
-[Python ↗](https://www.python.org/) has become one of the standard languages in data analysis. Here is a quick example on how to chart the same data using [Requests ↗](https://pypi.org/project/requests/) and [Pandas ↗](https://pandas.pydata.org/) libraries. Here, we are using `format=csv` in the parameters to make it easier for Pandas to import.
+[Python ↗︎](https://www.python.org/) has become one of the standard languages in data analysis. Here is a quick example on how to chart the same data using [Requests ↗︎](https://pypi.org/project/requests/) and [Pandas ↗︎](https://pandas.pydata.org/) libraries. Here, we are using `format=csv` in the parameters to make it easier for Pandas to import.
 
 ```python
 import io
@@ -94,7 +94,7 @@ df.plot(kind="bar", stacked=True)
 
 ### Notebooks
 
-A [notebook ↗](https://jupyter.org/) is a web-based interactive computing application, where text, code, and code outputs, like charts, can be combined into a single document. Refer to Radar's companion [colaboratory notebook ↗](https://colab.research.google.com/github/cloudflare/radar-notebooks/blob/main/notebooks/example.ipynb) for more examples on how the API can be used in your own projects.
+A [notebook ↗︎](https://jupyter.org/) is a web-based interactive computing application, where text, code, and code outputs, like charts, can be combined into a single document. Refer to Radar's companion [colaboratory notebook ↗︎](https://colab.research.google.com/github/cloudflare/radar-notebooks/blob/main/notebooks/example.ipynb) for more examples on how the API can be used in your own projects.
 
 ## Next steps
 

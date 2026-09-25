@@ -558,7 +558,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/rules" \
 
 ## Filter WebSocket traffic
 
-Gateway does not inspect or log [WebSocket ↗](https://datatracker.ietf.org/doc/html/rfc6455) traffic. Instead, Gateway will only log the HTTP details used to make the WebSocket connection, as well as [network session information](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/). To filter your WebSocket traffic, create a policy with the `101` HTTP response code.
+Gateway does not inspect or log [WebSocket ↗︎](https://datatracker.ietf.org/doc/html/rfc6455) traffic. Instead, Gateway will only log the HTTP details used to make the WebSocket connection, as well as [network session information](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/). To filter your WebSocket traffic, create a policy with the `101` HTTP response code.
 
 | Selector | Operator | Value | Action |
 | --- | --- | --- | --- |

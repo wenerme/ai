@@ -32,7 +32,7 @@ Additionally, you can configure Okta to use risk information from Cloudflare One
 
 Active Directory limitation
 
-The Okta App Catalog template does not support synchronizing [Active Directory groups ↗](https://help.okta.com/en-us/Content/Topics/Directory/ad-agent-import-groups.htm). If you would like to build policies using AD groups, use the Okta [OIDC app integration](#set-up-okta-as-an-oidc-provider-custom-app-integration) or [SAML app integration](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta-saml/).
+The Okta App Catalog template does not support synchronizing [Active Directory groups ↗︎](https://help.okta.com/en-us/Content/Topics/Directory/ad-agent-import-groups.htm). If you would like to build policies using AD groups, use the Okta [OIDC app integration](#set-up-okta-as-an-oidc-provider-custom-app-integration) or [SAML app integration](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/okta-saml/).
 
 To set up the Okta integration using the Okta Integration Network (OIN) App Catalog:
 
@@ -48,7 +48,7 @@ To set up the Okta integration using the Okta Integration Network (OIN) App Cata
    <your-team-name>
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 8. In the **Sign On** tab, copy the **Client ID** and **Client secret** and paste these into `App ID` and `Client secret`.
 9. Copy your Okta Account URL (without the `-admin` value) and copy it into the Cloudflare Okta setup field.
 
@@ -64,7 +64,7 @@ To set up the Okta integration using the Okta Integration Network (OIN) App Cata
    https://<your-team-name>.cloudflareaccess.com/cdn-cgi/access/callback
    ```
 
-   You can find your team name in the [Cloudflare dashboard ↗](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
+   You can find your team name in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com) under **Settings** > **Team name and domain** > **Team name**.
 6. Choose the desired **Assignment** option and select **Save**.
 7. From the application view, go to the **Sign On** tab.
 8. Scroll down to **Token claims** and select **Show legacy configuration** > **Edit**.![Configuring the Groups claim filter in Okta](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=737,height=658,format=webp/_astro/okta-2.DrNQXWIc.png)
@@ -72,29 +72,29 @@ To set up the Okta integration using the Okta Integration Network (OIN) App Cata
 
 Token claim expressions
 
-- Groups managed outside of Okta (for example, Microsoft Entra ID or Google groups) may require different regex values. For more information, refer to the Okta documentation on [Groups Claims ↗](https://support.okta.com/help/s/article/Why-isnt-my-Groups-claim-returning-Active-Directory-groups) and [OpenID Connect Claims ↗](https://support.okta.com/help/s/article/Can-we-retrieve-both-Active-Directory-and-Okta-groups-in-OpenID-Connect-claims).
-- To configure more complex expressions, refer to Okta's [token claims documentation ↗](https://help.okta.com/okta_help.htm?type=oie&locale=en&id=federated-claims-overview).
+- Groups managed outside of Okta (for example, Microsoft Entra ID or Google groups) may require different regex values. For more information, refer to the Okta documentation on [Groups Claims ↗︎](https://support.okta.com/help/s/article/Why-isnt-my-Groups-claim-returning-Active-Directory-groups) and [OpenID Connect Claims ↗︎](https://support.okta.com/help/s/article/Can-we-retrieve-both-Active-Directory-and-Okta-groups-in-OpenID-Connect-claims).
+- To configure more complex expressions, refer to Okta's [token claims documentation ↗︎](https://help.okta.com/okta_help.htm?type=oie&locale=en&id=federated-claims-overview).
 
 10. In the **General** tab, copy the **Client ID** and **Client secret**.![Finding your Client credentials in Okta](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=763,height=672,format=webp/_astro/okta-3.BzGr0OXt.png)
 
-11. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+11. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 12. Under **Your identity providers**, select **Add new identity provider**. Select **Okta** as your identity provider.
 13. Fill in the following information:
     - **Name**: Name your identity provider.
     - **App ID**: Enter your Okta client ID.
     - **Client secret**: Enter your Okta client secret.
-    - **Okta account URL**: Enter your [Okta domain ↗](https://developer.okta.com/docs/guides/find-your-domain/main/), for example `https://my-company.okta.com`.
-14. (Optional) Create an Okta API token and enter it in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** > **Integrations** > **Identity providers** (the token can be read-only). Use an API token if your Okta tenant has more than 100 groups. When the user's OIDC token contains no groups or reaches Okta's 100-group limit, Cloudflare uses this token during authentication to fetch the user's complete group membership. This setting is specific to Okta and is not part of SCIM. The API token does not add groups to the Access policy builder; the group options in the policy builder come from groups provisioned through [SCIM](#synchronize-users-and-groups).
+    - **Okta account URL**: Enter your [Okta domain ↗︎](https://developer.okta.com/docs/guides/find-your-domain/main/), for example `https://my-company.okta.com`.
+14. (Optional) Create an Okta API token and enter it in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) under **Zero Trust** > **Integrations** > **Identity providers** (the token can be read-only). Use an API token if your Okta tenant has more than 100 groups. When the user's OIDC token contains no groups or reaches Okta's 100-group limit, Cloudflare uses this token during authentication to fetch the user's complete group membership. This setting is specific to Okta and is not part of SCIM. The API token does not add groups to the Access policy builder; the group options in the policy builder come from groups provisioned through [SCIM](#synchronize-users-and-groups).
 
 Note
 
 The API token field appears blank after you save the identity provider configuration. This is expected. Secret values are omitted from API responses, but the token is stored.
 
 15. (Optional) To configure [custom OIDC claims](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/generic-oidc/#custom-oidc-claims):
-    1. In Okta, create a [custom authorization server ↗](https://developer.okta.com/docs/guides/customize-authz-server/main/) and ensure that the `groups` scope is enabled.
-    2. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), enter the **Authorization Server ID** obtained from Okta.
+    1. In Okta, create a [custom authorization server ↗︎](https://developer.okta.com/docs/guides/customize-authz-server/main/) and ensure that the `groups` scope is enabled.
+    2. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), enter the **Authorization Server ID** obtained from Okta.
     3. Under **Optional configurations**, enter the claims that you wish to add to your users' identity.
-16. (Optional) Enable [Proof of Key Exchange (PKCE) ↗](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
+16. (Optional) Enable [Proof of Key Exchange (PKCE) ↗︎](https://www.oauth.com/oauth2-servers/pkce/). PKCE will be performed on all login attempts.
 17. Select **Save**.
 
 To [test](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/#test-idps-in-cloudflare-one) that your connection is working, select **Test**.
@@ -118,7 +118,7 @@ If you would like to only maintain one Okta app instance, Okta does support SAML
 
 ### 1. Enable SCIM in Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. Find the Okta integration and select **Edit**.
 3. Turn on **Enable SCIM**.
 4. (Optional) Configure the following settings:
@@ -194,8 +194,8 @@ New users must first [register the Cloudflare One Client](https://developers.clo
 If you see the error `Failed to fetch user/group information from the identity`, double-check your Okta configuration:
 
 - If your Okta tenant has more than 100 groups, include an Okta API token in the identity provider configuration. When the user's OIDC token contains no groups or reaches Okta's 100-group limit, Cloudflare uses the API token during authentication to fetch the user's complete group membership. This setting is specific to Okta and is not part of SCIM. The API token does not populate group options in the Access policy builder; those come from groups provisioned through SCIM.
-- If Okta returns more than 100 groups in a user's OIDC token, Okta may omit some group memberships from the token. This is an Okta token claim limitation, not a Cloudflare limit. If a required group is omitted, Cloudflare cannot evaluate policies that depend on that group. To avoid this, narrow the Okta groups claim filter so that only groups used in Cloudflare policies are included. For more information, refer to [Okta's group functions and dynamic allowlists documentation ↗](https://support.okta.com/help/s/article/limitations-of-group-functions-dynamic-allowlists?language=en_US).
-- The request may be blocked by the [ThreatInsights feature ↗](https://help.okta.com/en/prod/Content/Topics/Security/threat-insight/ti-index.htm) within Okta.
+- If Okta returns more than 100 groups in a user's OIDC token, Okta may omit some group memberships from the token. This is an Okta token claim limitation, not a Cloudflare limit. If a required group is omitted, Cloudflare cannot evaluate policies that depend on that group. To avoid this, narrow the Okta groups claim filter so that only groups used in Cloudflare policies are included. For more information, refer to [Okta's group functions and dynamic allowlists documentation ↗︎](https://support.okta.com/help/s/article/limitations-of-group-functions-dynamic-allowlists?language=en_US).
+- The request may be blocked by the [ThreatInsights feature ↗︎](https://help.okta.com/en/prod/Content/Topics/Security/threat-insight/ti-index.htm) within Okta.
 
 ### Okta Groups selector is empty or missing groups in the policy builder
 

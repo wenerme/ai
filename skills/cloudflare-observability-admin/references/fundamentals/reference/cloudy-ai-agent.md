@@ -40,7 +40,7 @@ No. Your Cloudflare configuration is used in the purpose-built prompt that enabl
 
 Cloudy does not share your Cloudflare configuration with other customers. Your configuration is also not used for LLM model training.
 
-Cloudy brings the same enterprise-grade security as the rest of Cloudflare's offerings. You can learn more about Cloudflare's approach to responsible AI in the [Trust Hub ↗](https://www.cloudflare.com/trust-hub/responsible-ai/).
+Cloudy brings the same enterprise-grade security as the rest of Cloudflare's offerings. You can learn more about Cloudflare's approach to responsible AI in the [Trust Hub ↗︎](https://www.cloudflare.com/trust-hub/responsible-ai/).
 
 ## Can I opt out of Cloudy?
 
@@ -50,7 +50,7 @@ However, Cloudy is an entirely optional tool that you can choose not to use. By 
 
 To opt out of the chat interface, do the following:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and select your account.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and select your account.
 2. Go to **Manage Account** > **Configurations**.
 3. Turn off the **Cloudy features** setting.
 

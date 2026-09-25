@@ -30,7 +30,7 @@ If you only want the request header for the visitor's country, you can enable **
 
 To enable **IP Geolocation** in the dashboard:
 
-1. Log in to your [Cloudflare account ↗](https://dash.cloudflare.com) and go to a specific domain.
+1. Log in to your [Cloudflare account ↗︎](https://dash.cloudflare.com) and go to a specific domain.
 2. Go to **Network**.
 3. For **IP Geolocation**, switch the toggle to **On**.
 
@@ -60,7 +60,7 @@ Here is what you can expect regarding data accuracy and updates:
 
 ## Report an incorrect IP location
 
-If you find an IP address with a location that you believe is incorrect, fill in the [data correction form ↗](https://www.cloudflare.com/lp/ip-corrections/) with the relevant IP address range(s) along with the correct information as applicable (country, state/province, city name, and ZIP code).
+If you find an IP address with a location that you believe is incorrect, fill in the [data correction form ↗︎](https://www.cloudflare.com/lp/ip-corrections/) with the relevant IP address range(s) along with the correct information as applicable (country, state/province, city name, and ZIP code).
 
 If the data is confirmed, Cloudflare will make the necessary changes, generally within a few business days.
 

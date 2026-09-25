@@ -14,16 +14,16 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2-data-catalog/config-examples/spark-scala/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Below is an example of how you can build an [Apache Spark ↗](https://spark.apache.org/) application (with Scala) which connects to R2 Data Catalog. This application is built to run locally, but it can be adapted to run on a cluster.
+Below is an example of how you can build an [Apache Spark ↗︎](https://spark.apache.org/) application (with Scala) which connects to R2 Data Catalog. This application is built to run locally, but it can be adapted to run on a cluster.
 
 ## Prerequisites
 
-- Sign up for a [Cloudflare account ↗](https://dash.cloudflare.com/sign-up/workers-and-pages).
+- Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
 - [Create an R2 bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/) and [enable the data catalog](https://developers.cloudflare.com/r2-data-catalog/manage-catalogs/#enable-r2-data-catalog-on-a-bucket).
 - [Create an R2 API token](https://developers.cloudflare.com/r2/api/tokens/) with both [R2 and data catalog permissions](https://developers.cloudflare.com/r2/api/tokens/#permissions).
 - Install Java 17, Spark 3.5.3, and SBT 1.10.11
   - Note: The specific versions of tools are critical for getting things to work in this example.
-  - Tip: [“SDKMAN” ↗](https://sdkman.io/) is a convenient package manager for installing SDKs.
+  - Tip: [“SDKMAN” ↗︎](https://sdkman.io/) is a convenient package manager for installing SDKs.
 
 ## Example usage
 
@@ -76,7 +76,7 @@ object R2DataCatalogDemo {
 }
 ```
 
-For building this application and managing dependencies, we will use [sbt (“simple build tool”) ↗](https://www.scala-sbt.org/). The following is an example `build.sbt` file to place at the root of your project. It is configured to produce a "fat JAR", bundling all required dependencies.
+For building this application and managing dependencies, we will use [sbt (“simple build tool”) ↗︎](https://www.scala-sbt.org/). The following is an example `build.sbt` file to place at the root of your project. It is configured to produce a "fat JAR", bundling all required dependencies.
 
 ```java
 name := "R2DataCatalogDemo"
@@ -112,7 +112,7 @@ assembly / assemblyMergeStrategy := {
 Compile / javacOptions ++= Seq("--release", "17")
 ```
 
-To enable the [sbt-assembly plugin ↗](https://github.com/sbt/sbt-assembly?tab=readme-ov-file) (used to build fat JARs), add the following to a new file at `project/assembly.sbt`:
+To enable the [sbt-assembly plugin ↗︎](https://github.com/sbt/sbt-assembly?tab=readme-ov-file) (used to build fat JARs), add the following to a new file at `project/assembly.sbt`:
 
 ```plaintext
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "1.2.0")

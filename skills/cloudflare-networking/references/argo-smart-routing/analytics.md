@@ -16,7 +16,7 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Cloudflare provides analytics to show the performance benefits of Argo Smart Routing.
 
-You can access Argo analytics for your domain in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) at **Analytics** > **Performance**. For information on all analytics in the dashboard, refer to [Analytics](https://developers.cloudflare.com/analytics/).
+You can access Argo analytics for your domain in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) at **Analytics** > **Performance**. For information on all analytics in the dashboard, refer to [Analytics](https://developers.cloudflare.com/analytics/).
 
 ## How it works
 

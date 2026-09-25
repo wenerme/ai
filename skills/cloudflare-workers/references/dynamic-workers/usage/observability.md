@@ -135,7 +135,7 @@ const response = await worker.getEntrypoint().fetch(request);
 const logs = await logWaiter.getLogs(1000);
 ```
 
-For a full working implementation, refer to the [Dynamic Workers Playground example ↗](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground).
+For a full working implementation, refer to the [Dynamic Workers Playground example ↗︎](https://github.com/cloudflare/agents/tree/main/examples/dynamic-workers-playground).
 
 Was this helpful?
 

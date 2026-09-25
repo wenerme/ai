@@ -14,10 +14,10 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jul 27, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/model-context-protocol/protocol/transport/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Model Context Protocol (MCP) specification defines two standard [transport mechanisms ↗](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports) for communication between clients and servers:
+The Model Context Protocol (MCP) specification defines two standard [transport mechanisms ↗︎](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports) for communication between clients and servers:
 
 1. **stdio** — Communication over standard in and standard out, designed for local MCP connections.
-2. **Streamable HTTP** — The standard transport method for remote MCP connections, [introduced ↗](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http) in March 2025. It uses a single HTTP endpoint for bidirectional messaging.
+2. **Streamable HTTP** — The standard transport method for remote MCP connections, [introduced ↗︎](https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http) in March 2025. It uses a single HTTP endpoint for bidirectional messaging.
 
 Note
 
@@ -37,7 +37,7 @@ You can use the "Deploy to Cloudflare" button to create a remote MCP server.
 
 #### Remote MCP server (without authentication)
 
-Create an MCP server using `createMcpHandler`. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker).
+Create an MCP server using `createMcpHandler`. View the [complete example on GitHub ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker).
 
 ```js
 import { createMcpHandler } from "agents/mcp/server";
@@ -109,7 +109,7 @@ export default {
 
 #### MCP server with authentication
 
-If your MCP server implements authentication & authorization using the [Workers OAuth Provider ↗](https://github.com/cloudflare/workers-oauth-provider) library, use `createMcpHandler` with the `apiRoute` and `apiHandler` properties. View the [complete example on GitHub ↗](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker-authenticated).
+If your MCP server implements authentication & authorization using the [Workers OAuth Provider ↗︎](https://github.com/cloudflare/workers-oauth-provider) library, use `createMcpHandler` with the `apiRoute` and `apiHandler` properties. View the [complete example on GitHub ↗︎](https://github.com/cloudflare/agents/tree/main/examples/mcp-worker-authenticated).
 
 ```js
 export default new OAuthProvider({
@@ -460,7 +460,7 @@ Refer to [Migrate to MCP SDK v2](https://developers.cloudflare.com/agents/model-
 
 ### Testing with MCP clients
 
-You can test your MCP server using an MCP client that supports remote connections, or use [`mcp-remote` ↗](https://www.npmjs.com/package/mcp-remote), an adapter that lets MCP clients that only support local connections work with remote MCP servers.
+You can test your MCP server using an MCP client that supports remote connections, or use [`mcp-remote` ↗︎](https://www.npmjs.com/package/mcp-remote), an adapter that lets MCP clients that only support local connections work with remote MCP servers.
 
 Follow [this guide](https://developers.cloudflare.com/agents/model-context-protocol/guides/test-remote-mcp-server/) for instructions on how to connect to your remote MCP server to Claude Desktop, Cursor, Windsurf, and other MCP clients.
 

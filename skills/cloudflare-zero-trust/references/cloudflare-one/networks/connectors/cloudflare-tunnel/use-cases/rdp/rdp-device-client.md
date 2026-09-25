@@ -20,7 +20,7 @@ This example walks through how to set up an RDP server on a Google Cloud Platfor
 
 ## 1. Set up an RDP server in GCP
 
-1. In your [Google Cloud Console ↗](https://console.cloud.google.com/), [create a new project ↗](https://developers.google.com/workspace/guides/create-project).
+1. In your [Google Cloud Console ↗︎](https://console.cloud.google.com/), [create a new project ↗︎](https://developers.google.com/workspace/guides/create-project).
 2. Go to **Compute Engine** > **VM instances**.
 3. Select **Create instance**.
 4. Name your VM instance, for example `windows-rdp-server`.
@@ -39,7 +39,7 @@ You can use any RDP client to access and configure the RDP server.
 
 To access the server through Microsoft Remote Desktop:
 
-1. Download and install [Microsoft Remote Desktop ↗](https://apps.microsoft.com/store/detail/microsoft-remote-desktop/9WZDNCRFJ3PS).
+1. Download and install [Microsoft Remote Desktop ↗︎](https://apps.microsoft.com/store/detail/microsoft-remote-desktop/9WZDNCRFJ3PS).
 2. Once downloaded, open Microsoft Remote Desktop and select **Add a PC**.
 3. For **PC name**, enter the public IP address of your RDP server. In GCP, this is the **External IP** of the VM instance.
 4. For **User account**, select **Add User Account** and enter your auto-generated password and username.
@@ -51,7 +51,7 @@ You can now remotely access the RDP server using its public IP. The next steps w
 
 Note
 
-By default, Internet Explorer will be installed and configured in [Enhanced Security mode ↗](https://learn.microsoft.com/troubleshoot/developer/browsers/security-privacy/enhanced-security-configuration-faq#internet-explorer-enhanced-security-configuration). If the browser is slow or unable to load, you can turn off Enhanced Security and install an alternate browser such as Google Chrome.
+By default, Internet Explorer will be installed and configured in [Enhanced Security mode ↗︎](https://learn.microsoft.com/troubleshoot/developer/browsers/security-privacy/enhanced-security-configuration-faq#internet-explorer-enhanced-security-configuration). If the browser is slow or unable to load, you can turn off Enhanced Security and install an alternate browser such as Google Chrome.
 
 ## 3. Connect the server to Cloudflare
 
@@ -71,7 +71,7 @@ To connect your devices to Cloudflare:
 
 ## 5. Route private network IPs through the Cloudflare One Client
 
-By default, WARP excludes traffic bound for [RFC 1918 space ↗](https://datatracker.ietf.org/doc/html/rfc1918), which are IP addresses typically used in private networks and not reachable from the Internet. In order for the Cloudflare One Client to send traffic to your private network, you must configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that the IP/CIDR of your private network routes through the Cloudflare One Client.
+By default, WARP excludes traffic bound for [RFC 1918 space ↗︎](https://datatracker.ietf.org/doc/html/rfc1918), which are IP addresses typically used in private networks and not reachable from the Internet. In order for the Cloudflare One Client to send traffic to your private network, you must configure [Split Tunnels](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/) so that the IP/CIDR of your private network routes through the Cloudflare One Client.
 
 1. First, check whether your [Split Tunnels mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/split-tunnels/#change-split-tunnels-mode) is set to **Exclude** or **Include** mode.
 2. Edit your Split Tunnel routes depending on the mode:

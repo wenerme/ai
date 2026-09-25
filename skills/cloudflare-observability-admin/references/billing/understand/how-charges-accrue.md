@@ -20,7 +20,7 @@ Understanding this flow helps you predict costs, identify optimization opportuni
 
 Note
 
-Pricing can change. This page describes the billing dimensions and free-tier allowances for each product, but links to each product's pricing page for current rates. For a full plan comparison, refer to the [Cloudflare plans page ↗](https://www.cloudflare.com/plans/).
+Pricing can change. This page describes the billing dimensions and free-tier allowances for each product, but links to each product's pricing page for current rates. For a full plan comparison, refer to the [Cloudflare plans page ↗︎](https://www.cloudflare.com/plans/).
 
 ## A request through a Pro zone
 

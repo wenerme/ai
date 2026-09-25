@@ -19,7 +19,7 @@ Prerequisite
 Before you begin, [find your zone and account IDs](https://developers.cloudflare.com/fundamentals/account/find-account-and-zone-ids/).
 
 1. Determine if you want a user token or an [Account API token](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/). Use Account API tokens if you prefer service tokens that are not associated with users and your [desired API endpoints are compatible](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/#compatibility-matrix).
-2. From the [Cloudflare dashboard ↗](https://dash.cloudflare.com/profile/api-tokens/), go to **My Profile** > **API Tokens** for user tokens. For Account Tokens, go to **Manage Account** > **API Tokens**.
+2. From the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/profile/api-tokens/), go to **My Profile** > **API Tokens** for user tokens. For Account Tokens, go to **Manage Account** > **API Tokens**.
 3. Select **Create Token**.
 4. Select a template from the available [API token templates](https://developers.cloudflare.com/fundamentals/api/reference/template/) or create a custom token. The following example uses the **Edit zone DNS** template.
 5. Add or edit the token name to describe why or how the token is used. Templates are prefilled with a token name and permissions.![Token template overview screen](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1677,height=1328,format=webp/_astro/template-customize.Bt5BDoKm.png)

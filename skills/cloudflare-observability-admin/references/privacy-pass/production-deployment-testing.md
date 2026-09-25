@@ -18,7 +18,7 @@ This guide covers obtaining a token from your Cloudflare-operated deployment. By
 
 Privacy Pass is not a self-serve product at the moment: a production deployment is a managed engagement with Cloudflare. If you just want to see Privacy Pass work without any setup, refer to [Getting started](https://developers.cloudflare.com/privacy-pass/getting-started/).
 
-[Contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to request access and receive your issuer configuration.
+[Contact us ↗︎](https://www.cloudflare.com/lp/privacy-edge/) to request access and receive your issuer configuration.
 
 ---
 
@@ -32,16 +32,16 @@ Privacy Pass is not a self-serve product at the moment: a production deployment 
 
 **What you operate or need in place:**
 
-- A working **Attester**, the service that verifies your claim and, once the Client is verified, proxies the blinded token request to the Issuer. In Cloudflare Issuer deployments, the Client never contacts the Issuer directly. Generally, you operate the Attester to keep roles separate, but Cloudflare can help build it. Refer to [cloudflare/privacypass-attester ↗](https://github.com/cloudflare/privacypass-attester) for an implementation for Cloudflare Workers.
+- A working **Attester**, the service that verifies your claim and, once the Client is verified, proxies the blinded token request to the Issuer. In Cloudflare Issuer deployments, the Client never contacts the Issuer directly. Generally, you operate the Attester to keep roles separate, but Cloudflare can help build it. Refer to [cloudflare/privacypass-attester ↗︎](https://github.com/cloudflare/privacypass-attester) for an implementation for Cloudflare Workers.
 - The **Origin** (the web service, application, or website a Client is trying to access) configured to verify tokens against the issuer's public key (or Cloudflare redemption at the edge).
 - The **mTLS client certificate** your Attester uses to authenticate to the issuer.
 - The **client library** for running the issuance protocol. Library options include TypeScript, Go, and Rust.
 
 Implement the Client with the Privacy Pass library for your stack:
 
-- **TypeScript** — [@cloudflare/privacypass-ts ↗](https://github.com/cloudflare/privacypass-ts)
-- **Go** — [cloudflare/pat-go ↗](https://github.com/cloudflare/pat-go) (reference implementation, intended for experimental and interop use)
-- **Rust** — [raphaelrobert/privacypass ↗](https://github.com/raphaelrobert/privacypass) (not independently audited)
+- **TypeScript** — [@cloudflare/privacypass-ts ↗︎](https://github.com/cloudflare/privacypass-ts)
+- **Go** — [cloudflare/pat-go ↗︎](https://github.com/cloudflare/pat-go) (reference implementation, intended for experimental and interop use)
+- **Rust** — [raphaelrobert/privacypass ↗︎](https://github.com/raphaelrobert/privacypass) (not independently audited)
 
 ---
 
@@ -131,7 +131,7 @@ Two signals confirm issuance and redemption are working end to end:
 - The directory endpoint returns the issuer's `token-keys`.
 - A redeemed token verifies against the issuer's public key, and the Origin returns `200 OK`.
 
-To check that the directory endpoint is reachable, you can use the [Privacy Pass demo tool ↗](https://privacypass-demo.cloudflare.app/) to fetch the issuer's directory.
+To check that the directory endpoint is reachable, you can use the [Privacy Pass demo tool ↗︎](https://privacypass-demo.cloudflare.app/) to fetch the issuer's directory.
 
 Note
 
@@ -143,8 +143,8 @@ Against a production issuer, use the demo tool only as a directory reachability 
 
 - [Privacy Pass Protocol](https://developers.cloudflare.com/privacy-pass/concepts/privacy-pass-protocol/) — the four roles, the issuance and redemption flow, and the blinded signatures that produce tokens.
 - [Deployment Models](https://developers.cloudflare.com/privacy-pass/concepts/deployment-models/) — who operates each role and the deployment models.
-- [cloudflare/privacypass-attester ↗](https://github.com/cloudflare/privacypass-attester) — reference attester implementation (Turnstile attestation, proxies token requests to an issuer).
-- [cloudflare/privacypass-issuer ↗](https://github.com/cloudflare/privacypass-issuer) — reference issuer implementation (Workers, key rotation).
+- [cloudflare/privacypass-attester ↗︎](https://github.com/cloudflare/privacypass-attester) — reference attester implementation (Turnstile attestation, proxies token requests to an issuer).
+- [cloudflare/privacypass-issuer ↗︎](https://github.com/cloudflare/privacypass-issuer) — reference issuer implementation (Workers, key rotation).
 
 Was this helpful?
 

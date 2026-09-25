@@ -25,11 +25,11 @@ If you run your own OAuth server behind an Access application and rely on your o
 ## Prerequisites
 
 - A [self-hosted Access application](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/self-hosted-public-app/), [MCP server application](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/secure-mcp-servers/), or [MCP server portal](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/)
-- An OAuth client that supports [RFC 8707 ↗](https://datatracker.ietf.org/doc/html/rfc8707)
+- An OAuth client that supports [RFC 8707 ↗︎](https://datatracker.ietf.org/doc/html/rfc8707)
 
 ## Enable managed OAuth on a self-hosted application
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Find the application you want to configure, then select the three dots on the right > **Edit**.
 3. Go to the **Advanced settings** tab and turn on **Managed OAuth**.
 4. (Optional) Configure [Managed OAuth settings](#managed-oauth-settings).
@@ -86,7 +86,7 @@ Managed OAuth is available on [MCP server applications](https://developers.cloud
 
 Do not enable Managed OAuth for third-party MCP server code that already handles its own OAuth flow and cannot validate Access JWTs.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Applications**.
 2. Find the MCP server application you want to configure, then select the three dots on the right > **Edit**.
 3. Go to the **Advanced settings** tab and turn on **Managed OAuth**.
 4. (Optional) Configure [Managed OAuth settings](#managed-oauth-settings).
@@ -141,7 +141,7 @@ To test, open an MCP client and connect to the protected MCP server. The client 
 
 Managed OAuth is available on [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) and is the mechanism that allows MCP clients to authenticate users through the portal without a browser cookie flow.
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **AI controls**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **AI controls**.
 2. Find the portal you want to configure, then select the three dots on the right > **Edit**.
 3. Go to the **Advanced settings** tab, turn on **Managed OAuth**.
 4. (Optional) Configure [Managed OAuth settings](#managed-oauth-settings).
@@ -289,7 +289,7 @@ The authorization flow proceeds as follows:
    https://<your-app-domain>/.well-known/oauth-authorization-server
    ```
 
-   This endpoint conforms to [RFC 8414 ↗](https://datatracker.ietf.org/doc/html/rfc8414) and [RFC 9728 ↗](https://datatracker.ietf.org/doc/html/rfc9728) and returns the authorization and token endpoint URLs for the application.
+   This endpoint conforms to [RFC 8414 ↗︎](https://datatracker.ietf.org/doc/html/rfc8414) and [RFC 9728 ↗︎](https://datatracker.ietf.org/doc/html/rfc9728) and returns the authorization and token endpoint URLs for the application.
 2. The client initiates an authorization code flow. It opens the user's browser to the Access authorization endpoint, where the user logs in to their IdP as usual.
 3. Access issues an OAuth access token to the client. The client uses this token in subsequent requests to the protected application.
 

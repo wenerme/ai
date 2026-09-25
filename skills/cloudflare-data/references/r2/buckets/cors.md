@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/cors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Cross-Origin Resource Sharing (CORS) ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a standardized method that prevents domain X from accessing the resources of domain Y. It does so by using special headers in HTTP responses from domain Y, that allow your browser to verify that domain Y permits domain X to access these resources.
+[Cross-Origin Resource Sharing (CORS) ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) is a standardized method that prevents domain X from accessing the resources of domain Y. It does so by using special headers in HTTP responses from domain Y, that allow your browser to verify that domain Y permits domain X to access these resources.
 
 While CORS can help protect your data from malicious websites, CORS is also used to interact with objects in your bucket and configure policies on your bucket.
 
@@ -70,7 +70,7 @@ The following example allows browser-based uploads from `https://example.com` wi
 
 ## Use CORS with a custom domain
 
-[Custom domains](https://developers.cloudflare.com/r2/buckets/public-buckets/#custom-domains) connected to an R2 bucket with a CORS policy automatically return CORS response headers for [cross-origin requests ↗](https://fetch.spec.whatwg.org/#http-cors-protocol).
+[Custom domains](https://developers.cloudflare.com/r2/buckets/public-buckets/#custom-domains) connected to an R2 bucket with a CORS policy automatically return CORS response headers for [cross-origin requests ↗︎](https://fetch.spec.whatwg.org/#http-cors-protocol).
 
 Cross-origin requests must include a valid `Origin` request header, for example, `Origin: https://example.com`. If you are testing directly or using a command-line tool such as `curl`, you will not see CORS `Access-Control-*` response headers unless the `Origin` request header is included in the request.
 
@@ -131,7 +131,7 @@ The following fields in an R2 CORS policy map to HTTP response headers. These re
 | `AllowedOrigins` | Specifies the value for the `Access-Control-Allow-Origin` header R2 sets when requesting objects in a bucket from a browser. | If a website at `www.test.com` needs to access resources (e.g. fonts, scripts) on a [custom domain](https://developers.cloudflare.com/r2/buckets/public-buckets/#custom-domains) of `static.example.com`, you would set `https://www.test.com` as an `AllowedOrigin`. |
 | `AllowedMethods` | Specifies the value for the `Access-Control-Allow-Methods` header R2 sets when requesting objects in a bucket from a browser. | `GET`, `POST`, `PUT` |
 | `AllowedHeaders` | Specifies the value for the `Access-Control-Allow-Headers` header R2 sets when requesting objects in this bucket from a browser.Cross-origin requests that include custom headers (e.g. `x-user-id`) should specify these headers as `AllowedHeaders`. | `x-requested-by`, `User-Agent` |
-| `ExposeHeaders` | Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the [safelisted response headers ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Expose-Headers#examples), such as `Content-Encoding` or `cf-cache-status`, you must specify it here. | `Content-Encoding`, `cf-cache-status`, `Date` |
+| `ExposeHeaders` | Specifies the headers that can be exposed back, and accessed by, the JavaScript making the cross-origin request. If you need to access headers beyond the [safelisted response headers ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Access-Control-Expose-Headers#examples), such as `Content-Encoding` or `cf-cache-status`, you must specify it here. | `Content-Encoding`, `cf-cache-status`, `Date` |
 | `MaxAgeSeconds` | Specifies the amount of time (in seconds) browsers are allowed to cache CORS preflight responses. Browsers may limit this to 2 hours or less, even if the maximum value (86400) is specified. | `3600` |
 
 ## Example
@@ -160,7 +160,7 @@ Also note that CORS rule propagation can, in rare cases, take up to 30 seconds.
 ## Common Issues
 
 - Only a cross-origin request includes CORS response headers. R2 identifies these requests by an `Origin` HTTP request header. The header value must match an origin in your policy's `AllowedOrigins` field. Requests without an `Origin` header do not return CORS response headers.
-- The `AllowedOrigins` values in your CORS policy must be either `*` or a valid pattern based on an [HTTP Origin header value ↗](https://fetch.spec.whatwg.org/#origin-header). A valid `Origin` header does *not* include a path component and must only contain a `scheme://host[:port]` (where port is optional).
+- The `AllowedOrigins` values in your CORS policy must be either `*` or a valid pattern based on an [HTTP Origin header value ↗︎](https://fetch.spec.whatwg.org/#origin-header). A valid `Origin` header does *not* include a path component and must only contain a `scheme://host[:port]` (where port is optional).
   - Use `*` to allow requests from any origin.
   - An origin pattern can contain at most one `*` wildcard. The wildcard can span periods. For example, `https://*.example.com` matches both `https://api.example.com` and `https://a.b.example.com`, but not `https://example.com`.
   - Origin values without a wildcard must match the request's `Origin` header exactly.

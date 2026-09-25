@@ -36,7 +36,7 @@ After **enabling SSL** you must also ensure that users are redirected to the H
 
 ![Create a page rule to ensure your Wordpress website is correctly loaded over HTTP/2](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1670,height=984,format=webp/_astro/hc-import-screen_shot_2016_09_30_at_15_34_14.DNIz1oVk.png)
 
-Cloudflare's **WordPress plugin** allows you to push necessary assets to your users using HTTP/2 Server Push, dramatically reducing the amount of roundtrips required to load CSS and JavaScript. Refer to  [How do I enable HTTP/2 Server Push in WordPress ↗](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/how-do-i-enable-http2-server-push-in-wordpress/) for a tutorial on setting it up.
+Cloudflare's **WordPress plugin** allows you to push necessary assets to your users using HTTP/2 Server Push, dramatically reducing the amount of roundtrips required to load CSS and JavaScript. Refer to  [How do I enable HTTP/2 Server Push in WordPress ↗︎](https://developers.cloudflare.com/support/third-party-software/content-management-system-cms/how-do-i-enable-http2-server-push-in-wordpress/) for a tutorial on setting it up.
 
 ### Minify Assets
 

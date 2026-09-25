@@ -39,7 +39,7 @@ You may either use DLP profiles predefined by Cloudflare, or create your own cus
 
 ### Configure a predefined profile
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Choose a [predefined profile](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/dlp-profiles/predefined-profiles/) and select **Edit**.
 3. Enable one or more **Detection entries** according to your preferences.
 4. Select **Save profile**.
@@ -50,7 +50,7 @@ Your DLP profile is now ready to use with CASB.
 
 ### Build a custom profile
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Data loss prevention** > **Profiles**.
 2. Select **Create profile**.
 3. Enter a name and optional description for the profile.
 4. Add detection entries to the profile.<details><summary>
@@ -91,7 +91,7 @@ For more information, refer to [Configure a DLP profile](https://developers.clou
 
 ### Add a new integration
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Cloud & SaaS**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Cloud & SaaS**.
 2. Select **Add integration** and choose a [supported integration](#supported-integrations).
 3. During the setup process, you are prompted to select DLP profiles for the integration.
 4. Select **Save integration**.
@@ -100,7 +100,7 @@ CASB will scan every publicly accessible file in the integration for text that m
 
 ### Modify an existing integration
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Cloud & SaaS**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Cloud & SaaS**.
 2. Choose a [supported integration](#supported-integrations) and select **Configure**.
 3. Under **DLP profiles**, select the profiles that you want the integration to scan for.
 4. Select **Save integration**.

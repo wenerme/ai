@@ -18,17 +18,17 @@ Last updated Jul 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 The Workers RPC system is intended to allow safe communications between Workers that do not trust each other. The system does not allow either side of an RPC session to access arbitrary objects on the other side, much less invoke arbitrary code. Instead, each side can only invoke the objects and functions for which they have explicitly received stubs via previous calls.
 
-This security model is commonly known as Object Capabilities, or Capability-Based Security. Workers RPC is built on [Cap'n Proto RPC ↗](https://capnproto.org/rpc.html), which in turn is based on CapTP, the object transport protocol used by the [distributed programming language E ↗](https://www.crockford.com/ec/etut.html).
+This security model is commonly known as Object Capabilities, or Capability-Based Security. Workers RPC is built on [Cap'n Proto RPC ↗︎](https://capnproto.org/rpc.html), which in turn is based on CapTP, the object transport protocol used by the [distributed programming language E ↗︎](https://www.crockford.com/ec/etut.html).
 
 ## Visibility of Methods and Properties
 
 ### Private properties
 
-[Private properties ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties) of classes are not directly exposed over RPC.
+[Private properties ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties) of classes are not directly exposed over RPC.
 
 ### Arrow functions
 
-Arrow function expressions are not exposed over RPC because they are defined on class instances, not on the class prototype. They [should not be used as class methods ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#cannot_be_used_as_methods) of `WorkerEntrypoint` classes.
+Arrow function expressions are not exposed over RPC because they are defined on class instances, not on the class prototype. They [should not be used as class methods ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#cannot_be_used_as_methods) of `WorkerEntrypoint` classes.
 
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
@@ -70,7 +70,7 @@ class Foo extends RpcTarget {
 }
 ```
 
-This behavior is intentional — it is intended to protect you from accidentally exposing private class internals. Generally, instance properties should be declared private, [by prefixing them with `#` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties). However, private properties are a relatively new feature of JavaScript, and are not yet widely used in the ecosystem.
+This behavior is intentional — it is intended to protect you from accidentally exposing private class internals. Generally, instance properties should be declared private, [by prefixing them with `#` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties). However, private properties are a relatively new feature of JavaScript, and are not yet widely used in the ecosystem.
 
 Since the RPC interface between two of your Workers may be a security boundary, we need to be extra-careful, so instance properties are always private when communicating between Workers using RPC, whether or not they have the `#` prefix. You can always declare an explicit getter at the class level if you wish to expose the property, as shown above.
 

@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/netflows/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[NetFlows ↗](https://en.wikipedia.org/wiki/NetFlow) shows network traffic data from end users collected from Cloudflare's edge routers. NetFlows' data also feeds the [Internet traffic change ↗](https://radar.cloudflare.com/) chart.
+[NetFlows ↗︎](https://en.wikipedia.org/wiki/NetFlow) shows network traffic data from end users collected from Cloudflare's edge routers. NetFlows' data also feeds the [Internet traffic change ↗︎](https://radar.cloudflare.com/) chart.
 
-NetFlows includes all types of traffic from Cloudflare's routers, not just traffic to websites served by Cloudflare's [CDN ↗](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/).
+NetFlows includes all types of traffic from Cloudflare's routers, not just traffic to websites served by Cloudflare's [CDN ↗︎](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/).
 
 ## List of endpoints
 
@@ -30,7 +30,7 @@ NetFlow products
 
 `HTTP` traffic only includes web traffic to Cloudflare's zones, while `ALL` also includes traffic to all other services, like [Spectrum](https://developers.cloudflare.com/spectrum/), [Magic Transit](https://developers.cloudflare.com/magic-transit/), [1.1.1.1](https://developers.cloudflare.com/1.1.1.1/), and others.
 
-In the following example, we will examine both `ALL` and `HTTP` traffic in two [autonomous systems ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/). First, we will examine [AS3243 ↗](https://radar.cloudflare.com/as3243), a Portuguese local Internet Service Provider (ISP). The parameters for all traffic are `name=AS3243_all&product=ALL&dateRange=1d&asn=3243`, and for just the HTTP traffic are `name=AS3243_http&product=HTTP&dateRange=1d&asn=3243`):
+In the following example, we will examine both `ALL` and `HTTP` traffic in two [autonomous systems ↗︎](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/). First, we will examine [AS3243 ↗︎](https://radar.cloudflare.com/as3243), a Portuguese local Internet Service Provider (ISP). The parameters for all traffic are `name=AS3243_all&product=ALL&dateRange=1d&asn=3243`, and for just the HTTP traffic are `name=AS3243_http&product=HTTP&dateRange=1d&asn=3243`):
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=meo_all&product=ALL&dateRange=1d&asn=3243&name=meo_http&product=HTTP&dateRange=1d&asn=3243&format=json&aggInterval=1h" \
@@ -56,9 +56,9 @@ This is the abbreviated response:
 }
 ```
 
-`HTTP` traffic values are similar to `ALL` traffic values. This means that most traffic Cloudflare receives from this AS is traffic to websites served by Cloudflare's [CDN ↗](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/) product.
+`HTTP` traffic values are similar to `ALL` traffic values. This means that most traffic Cloudflare receives from this AS is traffic to websites served by Cloudflare's [CDN ↗︎](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/) product.
 
-In this other example, we will examine [AS174 ↗](https://radar.cloudflare.com/as174), another autonomous system that is not an ISP:
+In this other example, we will examine [AS174 ↗︎](https://radar.cloudflare.com/as174), another autonomous system that is not an ISP:
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/radar/netflows/timeseries?name=AS174_all&product=ALL&dateRange=1d&asn=174&name=AS174_http&product=HTTP&dateRange=1d&asn=174&format=json&aggInterval=1h" \

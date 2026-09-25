@@ -33,7 +33,7 @@ Then, you would create a corresponding [IP address resolution record](https://de
 3. Select `A`, `AAAA`, or `CNAME` as the record **Type**, according to your needs:
    - To point to an IPv4 address, select `A`, use your subdomain ( `blog`) for the record **Name**, and insert the IPv4 address in the respective field.
    - To point to an IPv6 address, select `AAAA`, use your subdomain ( `blog`) for the record **Name**, and insert the IPv6 address in the respective field.
-   - To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (such as `your-site.host.example.com`), select `CNAME`, use your subdomain ( `blog`) for the record **Name**, and insert the fully qualified domain name in the **Target** field.
+   - To point to a [fully qualified domain name (FQDN) ↗︎](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (such as `your-site.host.example.com`), select `CNAME`, use your subdomain ( `blog`) for the record **Name**, and insert the fully qualified domain name in the **Target** field.
 4. Specify the [**Proxy status**](https://developers.cloudflare.com/dns/proxy-status/) and [**TTL**](https://developers.cloudflare.com/dns/manage-dns-records/reference/ttl/) according to your needs.
 5. Select **Save** to confirm.
 
@@ -43,7 +43,7 @@ For field definitions, refer to the [API documentation](https://developers.cloud
 
 - To point to an IPv4 address, select **A Record**, use your subdomain ( `blog`) for the field `name`, and use the IPv4 address for the field `content`.
 - To point to an IPv6 address, select **AAAA Record**, use your subdomain ( `blog`) for the field `name`, and use the IPv6 address for the field `content`.
-- To point to a [fully qualified domain name (FQDN) ↗](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (such as `your-site.host.example.com`), select **CNAME Record**, use your subdomain ( `blog`) for the field `name`, and use the fully qualified domain name for the field `content`.
+- To point to a [fully qualified domain name (FQDN) ↗︎](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (such as `your-site.host.example.com`), select **CNAME Record**, use your subdomain ( `blog`) for the field `name`, and use the fully qualified domain name for the field `content`.
 
 ## Subdomain redirects
 

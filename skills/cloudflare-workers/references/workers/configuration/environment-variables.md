@@ -207,7 +207,7 @@ Note
 
 Choose to use either `.dev.vars` or `.env` but not both. If you define a `.dev.vars` file, then values in `.env` files will not be included in the `env` object during local development.
 
-These files should be formatted using the [dotenv ↗](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
+These files should be formatted using the [dotenv ↗︎](https://hexdocs.pm/dotenvy/dotenv-file-format.html) syntax. For example:
 
 *.dev.vars / .envbash*
 

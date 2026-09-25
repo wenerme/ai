@@ -39,7 +39,7 @@ You should use Delegated DCV when all of the following conditions are true:
 
 ### Aspects to keep in mind
 
-As explained in the [announcement blog post ↗](https://blog.cloudflare.com/introducing-dcv-delegation/), currently, you can only delegate DCV to one provider at a time. This means:
+As explained in the [announcement blog post ↗︎](https://blog.cloudflare.com/introducing-dcv-delegation/), currently, you can only delegate DCV to one provider at a time. This means:
 
 - If you also issue publicly trusted certificates for the same hostname for your [origin server](https://developers.cloudflare.com/ssl/concepts/#origin-certificate), this will no longer be possible. You can use [Cloudflare origin CA certificates](https://developers.cloudflare.com/ssl/origin-configuration/origin-ca/) instead.
 - If your zone is using multiple CDN providers, you might want to use an alternative [method](https://developers.cloudflare.com/ssl/edge-certificates/changing-dcv-method/methods/). This is because, once the DCV delegation is configured for Cloudflare, only Cloudflare will be able to perform DCV on your behalf, blocking your external CDN providers from doing the same.
@@ -49,7 +49,7 @@ As explained in the [announcement blog post ↗](https://blog.cloudflare.com/int
 To set up Delegated DCV:
 
 1. Order an [advanced certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/) for your zone, choosing `TXT` as the **Certificate validation method**.
-2. On the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page, go to **DCV Delegation for Partial Zones**.
+2. On the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page, go to **DCV Delegation for Partial Zones**.
 3. Copy the Cloudflare validation URL.
 4. At your authoritative DNS provider, create `CNAME` record(s) considering the following:
 

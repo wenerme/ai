@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/guides/terraform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Terraform ↗](https://www.terraform.io/) is an infrastructure as code tool that lets you define and manage your tunnels alongside other infrastructure. This guide deploys:
+[Terraform ↗︎](https://www.terraform.io/) is an infrastructure as code tool that lets you define and manage your tunnels alongside other infrastructure. This guide deploys:
 
 - A GCP virtual machine that runs a web server
 - A Cloudflare Tunnel that makes the server available over the Internet
@@ -22,16 +22,16 @@ Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 ## Prerequisites
 
-- [A Google Cloud Project ↗](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project)
+- [A Google Cloud Project ↗︎](https://cloud.google.com/resource-manager/docs/creating-managing-projects#creating_a_project)
 - [A zone on Cloudflare](https://developers.cloudflare.com/fundamentals/manage-domains/add-site/)
 
 ## 1. Install Terraform
 
-Refer to the [Terraform installation guide ↗](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) for your operating system.
+Refer to the [Terraform installation guide ↗︎](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) for your operating system.
 
 ## 2. Install the gcloud CLI
 
-1. [Install the gcloud CLI ↗](https://cloud.google.com/sdk/docs/install) so that Terraform can interact with your GCP account.
+1. [Install the gcloud CLI ↗︎](https://cloud.google.com/sdk/docs/install) so that Terraform can interact with your GCP account.
 2. Authenticate with the CLI by running:
 
    ```sh
@@ -163,7 +163,7 @@ To prevent accidentally exposing sensitive credentials, do not save `terraform.t
 
 ### Configure Terraform providers
 
-You will need to declare the [providers ↗](https://registry.terraform.io/browse/providers) used to provision the infrastructure.
+You will need to declare the [providers ↗︎](https://registry.terraform.io/browse/providers) used to provision the infrastructure.
 
 1. In your configuration directory, create a `.tf` file:
 
@@ -392,7 +392,7 @@ The following configuration will modify settings in your Cloudflare account.
 
 
 
-To learn more about these resources, refer to the [Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+To learn more about these resources, refer to the [Cloudflare provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 ### Configure GCP resources
 
@@ -561,7 +561,7 @@ To deploy the configuration files:
 
 
 
-It may take several minutes for the GCP instance and tunnel to come online. You can view your new tunnel in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Networking** > **Tunnels**.
+It may take several minutes for the GCP instance and tunnel to come online. You can view your new tunnel in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) under **Networking** > **Tunnels**.
 
 Remove Terraform resources
 
@@ -569,7 +569,7 @@ If you need to roll back the configuration, run `terraform destroy` to delete ev
 
 ## 7. Test the connection
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Networking** > **Tunnels** and verify that your tunnel is **Active**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Networking** > **Tunnels** and verify that your tunnel is **Active**.
 2. (Optional) If you configured Access, go to **Security** > **Access** > **Applications** and verify that your Cloudflare email is allowed by the Access policy.
 3. From any device, open a browser and go to `http_app.<CLOUDFLARE_ZONE>` (for example, `http_app.example.com`).
 

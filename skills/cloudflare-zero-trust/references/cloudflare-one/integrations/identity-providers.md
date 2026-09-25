@@ -20,7 +20,7 @@ When you create a new Zero Trust organization, Cloudflare automatically configur
 
 You can also send a [one-time PIN (OTP)](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/one-time-pin/) to approved email addresses. No configuration needed — simply add a user's email address to an [Access policy](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/) and to the group that allows your team to reach the application. You can configure OTP and an identity provider at the same time to let users choose their own authentication method.
 
-Adding an identity provider as a login method requires configuration both in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Zero Trust** > **Integrations** > **Identity providers** and with the identity provider itself. Consult our IdP-specific documentation to learn more about what you need to set up.
+Adding an identity provider as a login method requires configuration both in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) under **Zero Trust** > **Integrations** > **Identity providers** and with the identity provider itself. Consult our IdP-specific documentation to learn more about what you need to set up.
 
 Note
 
@@ -28,7 +28,7 @@ Cloudflare One supports social identity providers that do not require administra
 
 ## Set up IdPs in Cloudflare One
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Identity providers**.
 2. In the **Your identity providers** card, select **Add new identity provider**.
 3. Select the identity provider you want to add.
 
@@ -38,9 +38,9 @@ Cloudflare One supports social identity providers that do not require administra
    Each identity provider will have different required fields for you to fill in. Step-by-step instructions are shown in the dashboard side panel. Alternatively, refer to the [IdP-specific documentation](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 5. Once you have filled in the necessary fields, select **Save**.
 
-1. Add the following permission to your [`cloudflare_api_token` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
    - `Access: Organizations, Identity Providers, and Groups Write`
-2. Add an identity provider to Cloudflare One using the [`cloudflare_zero_trust_access_identity_provider` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource. For example, to add a Microsoft Entra ID integration:
+2. Add an identity provider to Cloudflare One using the [`cloudflare_zero_trust_access_identity_provider` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_access_identity_provider) resource. For example, to add a Microsoft Entra ID integration:
 
    ```tf
    resource "cloudflare_zero_trust_access_identity_provider" "microsoft_entra_id" {
@@ -81,7 +81,7 @@ If your provider is not connected, another window will open in your browser. Alo
 
 ## Use The API
 
-We recommend that you use our dashboard to configure your identity providers. However, if you would like to use the [Cloudflare API ↗](https://api.cloudflare.com/), each of the identity provider topics covered here include an example API configuration snippet as well.
+We recommend that you use our dashboard to configure your identity providers. However, if you would like to use the [Cloudflare API ↗︎](https://api.cloudflare.com/), each of the identity provider topics covered here include an example API configuration snippet as well.
 
 Was this helpful?
 

@@ -26,17 +26,17 @@ All objects stored in D1, including metadata, live databases, and inactive datab
 
 Encryption keys are managed by Cloudflare and securely stored in the same key management systems we use for managing encrypted data across Cloudflare internally.
 
-Objects are encrypted using [AES-256 ↗](https://www.cloudflare.com/learning/ssl/what-is-encryption/), a widely tested, highly performant and industry-standard encryption algorithm. D1 uses GCM (Galois/Counter Mode) as its preferred mode.
+Objects are encrypted using [AES-256 ↗︎](https://www.cloudflare.com/learning/ssl/what-is-encryption/), a widely tested, highly performant and industry-standard encryption algorithm. D1 uses GCM (Galois/Counter Mode) as its preferred mode.
 
 ## Encryption in Transit
 
-Data transfer between a Cloudflare Worker, and/or between nodes within the Cloudflare network and D1 is secured using the same [Transport Layer Security ↗](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/) (TLS/SSL).
+Data transfer between a Cloudflare Worker, and/or between nodes within the Cloudflare network and D1 is secured using the same [Transport Layer Security ↗︎](https://www.cloudflare.com/learning/ssl/transport-layer-security-tls/) (TLS/SSL).
 
 API access via the HTTP API or using the [wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/) command-line interface is also over TLS/SSL (HTTPS).
 
 ## Compliance
 
-To learn more about Cloudflare's adherence to industry-standard security compliance certifications, visit the Cloudflare [Trust Hub ↗](https://www.cloudflare.com/trust-hub/compliance-resources/).
+To learn more about Cloudflare's adherence to industry-standard security compliance certifications, visit the Cloudflare [Trust Hub ↗︎](https://www.cloudflare.com/trust-hub/compliance-resources/).
 
 Was this helpful?
 

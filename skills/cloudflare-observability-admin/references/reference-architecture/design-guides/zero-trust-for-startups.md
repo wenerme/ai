@@ -52,8 +52,8 @@ A few things explicitly not covered in this document:
 
 To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (five-minute read) or [video ↗](https://www.youtube.com/watch?v=XHvmX3FhTwU) (two minutes)
-- Blog: [Zero Trust, SASE, and SSE: foundational concepts for your next-generation network ↗](https://blog.cloudflare.com/zero-trust-sase-and-sse-foundational-concepts-for-your-next-generation-network/) (14-minute read)
+- What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (five-minute read) or [video ↗︎](https://www.youtube.com/watch?v=XHvmX3FhTwU) (two minutes)
+- Blog: [Zero Trust, SASE, and SSE: foundational concepts for your next-generation network ↗︎](https://blog.cloudflare.com/zero-trust-sase-and-sse-foundational-concepts-for-your-next-generation-network/) (14-minute read)
 - Reference architecture: [Evolving to a SASE architecture with Cloudflare](https://developers.cloudflare.com/reference-architecture/architectures/sase/) (three-hour read)
 
 ## Getting started — Foundational decisions
@@ -109,7 +109,7 @@ Goal-setting is also an important exercise for prioritization. If you know that 
 
 Identity is at the core of every Zero Trust strategy. Ultimately, most customer goals revolve around using a central source of identity to authenticate, validate, and log all actions taken by a user, spanning both 'owned' (hosted, private network) applications and SaaS applications. Identity (through an SSO provider, for example) can then be used to layer additional security controls like multi-factor authentication, or phishing-resistant authentication.
 
-One of the most important things you can do early is to coach users to become accustomed to using multi-factor authentication. Phishing-resistant MFA options like physical keys, local authenticators, and biometric authentication have been credited by Cloudflare as a major factor in [stopping the attempted breach ↗](https://blog.cloudflare.com/2022-07-sms-phishing-attacks) that affected Twilio and other SaaS companies in 2022.
+One of the most important things you can do early is to coach users to become accustomed to using multi-factor authentication. Phishing-resistant MFA options like physical keys, local authenticators, and biometric authentication have been credited by Cloudflare as a major factor in [stopping the attempted breach ↗︎](https://blog.cloudflare.com/2022-07-sms-phishing-attacks) that affected Twilio and other SaaS companies in 2022.
 
 In the context of getting started with Zero Trust, the type of identity provider that you decide to use (Google Workspace and Microsoft Entra Identity being the most common) is less important than your implementation strategy. As long as you have a directory that is secure, allows for phishing-resistant authentication methods, and is designated as your source of truth, you have the necessary components to integrate with a Zero Trust vendor like Cloudflare and deliver continuous interrogation of that identity-as-security posture for all of your corporate tools.
 
@@ -254,7 +254,7 @@ For Cloudflare users, this offers a number of advantages: it helps streamline au
 
 We recommend using our Cloudflare Access product for remote access to your internal services (by way of our Cloudflare Tunnel software in your network). With Cloudflare Access, you can [consume the JWT](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/validating-json/) created by Cloudflare Access or use [Access for SaaS](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/saas-apps/) to act as a SAML or OAUTH proxy for your private, self-hosted applications (which have SSO integrations pre-built into them).
 
-In a lot of cases, you may even use both products for application access. For example, if you're self-hosting [Sentry ↗](https://sentry.io/) — which is not currently available on the public Internet — follow these steps:
+In a lot of cases, you may even use both products for application access. For example, if you're self-hosting [Sentry ↗︎](https://sentry.io/) — which is not currently available on the public Internet — follow these steps:
 
 1. Set up a public hostname with Cloudflare Access (which your users would navigate to Sentry on).
 2. Install a Cloudflare Tunnel with an associated **Published application** to point to your local Sentry service.
@@ -336,7 +336,7 @@ A defined secure endpoint, with clear measurability is significantly better for 
 
 As you think about how you want to manage the usage of BYOD (and how you want to ensure your corporate data is being accessed securely), you just have to make a determination about what constitutes your secure endpoint strategy. Then, consider how you should interrogate requests to sensitive resources to ensure that they are compliant with this strategy. For instance, think about the steps users will need to take in order to access Workday (or another PII-heavy system). Before granting access, you may want to send their traffic through your secure web gateway and apply data loss prevention policies. Now ask yourself, what other steps do you need to take in order to enforce these requirements?
 
-Within this discussion, we are thinking about Internet security (e.g. secure web gateways, DNS filtering, traffic proxying, and so on) as a set of advanced security signals from which you can apply more accurate, granular Zero Trust policies for your sensitive resources. It's also a good practice to get started withDNS filtering as soon as possible, since deploying software and proxying traffic from your endpoints will only become a more complex process as your business and security needs grow. As you start to think about other advanced security controls, like HTTP filtering and data loss prevention, we recommend reading [Getting Started with TLS Decryption ↗](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/) to get a sense of the decisions to be made before decrypting traffic.
+Within this discussion, we are thinking about Internet security (e.g. secure web gateways, DNS filtering, traffic proxying, and so on) as a set of advanced security signals from which you can apply more accurate, granular Zero Trust policies for your sensitive resources. It's also a good practice to get started withDNS filtering as soon as possible, since deploying software and proxying traffic from your endpoints will only become a more complex process as your business and security needs grow. As you start to think about other advanced security controls, like HTTP filtering and data loss prevention, we recommend reading [Getting Started with TLS Decryption ↗︎](https://developers.cloudflare.com/learning-paths/secure-internet-traffic/build-http-policies/tls-inspection/) to get a sense of the decisions to be made before decrypting traffic.
 
 ### Where does Cloudflare fit in?
 
@@ -404,15 +404,15 @@ As you continue to evaluate vendor partners for Zero Trust or general security i
 
 ### Where does Cloudflare fit in?
 
-Cloudflare is very passionate about Zero Trust security in the context of DevSecOps. We build API-first as a primary ethos for all our products, and make all relevant API endpoints available to customers on the first day of feature availability, along with our extensive [documentation ↗](https://developers.cloudflare.com/api/).
+Cloudflare is very passionate about Zero Trust security in the context of DevSecOps. We build API-first as a primary ethos for all our products, and make all relevant API endpoints available to customers on the first day of feature availability, along with our extensive [documentation ↗︎](https://developers.cloudflare.com/api/).
 
-Separately, many of our customers manage their Cloudflare Zero Trust deployment without ever touching our dashboard; instead, they use Terraform or similar tools for their entire management plane. If this is the case for you, we have a comprehensive and complete [Terraform provider ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) to enable you to accomplish Zero Trust as Code.
+Separately, many of our customers manage their Cloudflare Zero Trust deployment without ever touching our dashboard; instead, they use Terraform or similar tools for their entire management plane. If this is the case for you, we have a comprehensive and complete [Terraform provider ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs) to enable you to accomplish Zero Trust as Code.
 
 ## Summary
 
 In conclusion, making a few deliberate choices today about how your company approaches the basics of security and authentication will benefit your startup for years to come. The decisions you make now lay the foundation for a modern security infrastructure that will scale smoothly as your business grows. However you move forward, a few well-informed moves will ensure that your startup is built on sustainable, scalable Zero Trust security principles.
 
-If you would like to discuss your Zero Trust requirements in greater detail and connect with one of our architects, visit [https://www.cloudflare.com/cloudflare-one/ ↗](https://www.cloudflare.com/cloudflare-one/) and request a consultation.
+If you would like to discuss your Zero Trust requirements in greater detail and connect with one of our architects, visit [https://www.cloudflare.com/cloudflare-one/ ↗︎](https://www.cloudflare.com/cloudflare-one/) and request a consultation.
 
 Was this helpful?
 

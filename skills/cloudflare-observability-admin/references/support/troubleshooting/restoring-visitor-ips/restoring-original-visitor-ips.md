@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-When your [website traffic is routed through the Cloudflare network](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/), we act as a reverse proxy. This allows Cloudflare to speed up page load time by routing packets more efficiently and caching static resources (images, JavaScript, CSS, etc.). As a result, when responding to requests and logging them, your origin server returns a [Cloudflare IP address ↗](https://www.cloudflare.com/ips/).
+When your [website traffic is routed through the Cloudflare network](https://developers.cloudflare.com/fundamentals/concepts/how-cloudflare-works/), we act as a reverse proxy. This allows Cloudflare to speed up page load time by routing packets more efficiently and caching static resources (images, JavaScript, CSS, etc.). As a result, when responding to requests and logging them, your origin server returns a [Cloudflare IP address ↗︎](https://www.cloudflare.com/ips/).
 
 For example, if you install applications that depend on the incoming IP address of the original visitor, a Cloudflare IP address is logged by default. The original visitor IP address appears in an appended HTTP header called [`CF-Connecting-IP`](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-connecting-ip). By following our [web server instructions](#web-server-instructions), you can log the original visitor IP address at your origin server. If this HTTP header is not available when requests reach your origin server, check your [Transform Rules](https://developers.cloudflare.com/rules/transform/) and [Managed Transforms](https://developers.cloudflare.com/rules/transform/managed-transforms/) configuration.
 
@@ -28,7 +28,7 @@ The diagram below illustrates the different ways that IP addresses are handled w
 
 Caution
 
-Cloudflare no longer updates and supports *mod\_cloudflare*, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [*mod\_remoteip* ↗](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) for customers using Apache web servers. Customers who are interested in building the *mod\_cloudflare* package can [download the codebase ↗](https://github.com/cloudflare/mod_cloudflare) from GitHub.
+Cloudflare no longer updates and supports *mod\_cloudflare*, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [*mod\_remoteip* ↗︎](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) for customers using Apache web servers. Customers who are interested in building the *mod\_cloudflare* package can [download the codebase ↗︎](https://github.com/cloudflare/mod_cloudflare) from GitHub.
 
 ---
 
@@ -69,7 +69,7 @@ you would update *LogFormat* to the following:
 LogFormat "%a %l %u %t \"%r\" %>s %O \"%{Referer}i\" \"%{User-Agent}i\"" combined
 ```
 
-4. Define trusted proxy addresses by creating  `/etc/apache2/conf-available/remoteip.conf` by entering the following code and  [Cloudflare IPs ↗](https://www.cloudflare.com/ips/):
+4. Define trusted proxy addresses by creating  `/etc/apache2/conf-available/remoteip.conf` by entering the following code and  [Cloudflare IPs ↗︎](https://www.cloudflare.com/ips/):
 
 ```plaintext
 RemoteIPHeader CF-Connecting-IP
@@ -108,7 +108,7 @@ sudo systemctl restart apache2
 
 Note
 
-For more information on *mod\_remoteip*, refer to the [Apache documentation ↗](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html "Apache Module mod_remoteip").
+For more information on *mod\_remoteip*, refer to the [Apache documentation ↗︎](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html "Apache Module mod_remoteip").
 
 ---
 
@@ -116,7 +116,7 @@ For more information on *mod\_remoteip*, refer to the [Apache documentation ↗]
 
 Caution
 
-Cloudflare no longer updates and supports *mod\_cloudflare*, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [*mod\_remoteip* ↗](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) for customers using Apache web servers. Customers who are interested in building the *mod\_cloudflare* package can [download the codebase ↗](https://github.com/cloudflare/mod_cloudflare) from GitHub.
+Cloudflare no longer updates and supports *mod\_cloudflare*, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [*mod\_remoteip* ↗︎](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) for customers using Apache web servers. Customers who are interested in building the *mod\_cloudflare* package can [download the codebase ↗︎](https://github.com/cloudflare/mod_cloudflare) from GitHub.
 
 ### Installing
 
@@ -124,7 +124,7 @@ There are two methods for installing mod\_cloudflare: by downloading the Apache 
 
 #### Downloading packets or scripts from GitHub
 
-If you are using an Apache web server, you can download mod\_cloudflare from [GitHub ↗](https://github.com/cloudflare/mod_cloudflare).
+If you are using an Apache web server, you can download mod\_cloudflare from [GitHub ↗︎](https://github.com/cloudflare/mod_cloudflare).
 
 #### Adding code to your origin web server
 
@@ -156,7 +156,7 @@ delete this file to remove *mod\_cloudflare*, then restart Apache.
 
 #### Nginx
 
-*mod\_cloudflare* is not needed for Nginx. Use the [`ngx_http_realip_module` NGINX module ↗](http://nginx.org/en/docs/http/ngx_http_realip_module.html) and the configuration parameters described in the [Web server instructions ↗](https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/#web-server-instructions) instead.
+*mod\_cloudflare* is not needed for Nginx. Use the [`ngx_http_realip_module` NGINX module ↗︎](http://nginx.org/en/docs/http/ngx_http_realip_module.html) and the configuration parameters described in the [Web server instructions ↗︎](https://developers.cloudflare.com/support/troubleshooting/restoring-visitor-ips/restoring-original-visitor-ips/#web-server-instructions) instead.
 
 ---
 
@@ -168,7 +168,7 @@ Refer below for instructions on how to configure your web server to log origina
 
 Caution
 
-Cloudflare no longer updates and supports *mod\_cloudflare*, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [*mod\_remoteip* ↗](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) for customers using Apache web servers. Customers who are interested in building the *mod\_cloudflare* package can [download the codebase ↗](https://github.com/cloudflare/mod_cloudflare) from GitHub.
+Cloudflare no longer updates and supports *mod\_cloudflare*, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [*mod\_remoteip* ↗︎](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) for customers using Apache web servers. Customers who are interested in building the *mod\_cloudflare* package can [download the codebase ↗︎](https://github.com/cloudflare/mod_cloudflare) from GitHub.
 
 1. Make sure the following is installed:
    - Red Hat/Fedora `sudo yum install httpd-devel libtool git`
@@ -192,7 +192,7 @@ DenyAllButCloudFlare
 
 ### Nginx
 
-Use the [`ngx_http_realip_module` Nginx module ↗](http://nginx.org/en/docs/http/ngx_http_realip_module.html) and the following configuration parameters:
+Use the [`ngx_http_realip_module` Nginx module ↗︎](http://nginx.org/en/docs/http/ngx_http_realip_module.html) and the following configuration parameters:
 
 ```plaintext
 #example IP address
@@ -204,19 +204,19 @@ real_ip_header CF-Connecting-IP;
 #real_ip_header X-Forwarded-For;
 ```
 
-That list of prefixes needs to be updated regularly, and we publish the full list in  [Cloudflare IP addresses ↗](https://www.cloudflare.com/ips).
+That list of prefixes needs to be updated regularly, and we publish the full list in  [Cloudflare IP addresses ↗︎](https://www.cloudflare.com/ips).
 
 Note
 
 To Include the original visitor IP in your logs, add the variables $http\_cf\_connecting\_ip and $http\_x\_forwarded\_for in the log\_format directive.
 
-Also refer to:  [Cloudflare and NGINX ↗](https://danielmiessler.com/blog/getting-real-ip-addresses-using-cloudflare-nginx-and-varnish/).
+Also refer to:  [Cloudflare and NGINX ↗︎](https://danielmiessler.com/blog/getting-real-ip-addresses-using-cloudflare-nginx-and-varnish/).
 
 ### EasyApache and cPanel
 
 Caution
 
-Cloudflare no longer updates and supports *mod\_cloudflare*, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [*mod\_remoteip* ↗](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) for customers using Apache web servers. Customers who are interested in building the *mod\_cloudflare* package can [download the codebase ↗](https://github.com/cloudflare/mod_cloudflare) from GitHub.
+Cloudflare no longer updates and supports *mod\_cloudflare*, starting with versions **Debian 9** and **Ubuntu 18.04 LTS** of the Linux operating system. We now recommend [*mod\_remoteip* ↗︎](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) for customers using Apache web servers. Customers who are interested in building the *mod\_cloudflare* package can [download the codebase ↗︎](https://github.com/cloudflare/mod_cloudflare) from GitHub.
 
 1. Run the following script to install mod\_cloudflare as part of EasyApache: `bash <(curl -s https://raw.githubusercontent.com/cloudflare/mod_cloudflare/master/EasyApache/installer.sh)`
 2. Upon installing, you will need to recompile your Apache with the new mod\_cloudflare plugin.
@@ -253,11 +253,11 @@ If your origin connects to the Internet with IPv6, **$HTTP\["remoteip"]**, which
 
 #### For IIS 7 - 8:
 
-Follow the directions in the [Microsoft Community ↗](https://techcommunity.microsoft.com/t5/iis-support-blog/how-to-use-x-forwarded-for-header-to-log-actual-client-ip/ba-p/873115).
+Follow the directions in the [Microsoft Community ↗︎](https://techcommunity.microsoft.com/t5/iis-support-blog/how-to-use-x-forwarded-for-header-to-log-actual-client-ip/ba-p/873115).
 
 #### For IIS 8.5 - 10:
 
-From IIS 8.5 onwards, custom logging is a built-in option. Refer to [IIS Enhanced Logging ↗](http://www.iis.net/learn/get-started/whats-new-in-iis-85/enhanced-logging-for-iis85).
+From IIS 8.5 onwards, custom logging is a built-in option. Refer to [IIS Enhanced Logging ↗︎](http://www.iis.net/learn/get-started/whats-new-in-iis-85/enhanced-logging-for-iis85).
 
 1. In IIS Manager, double click on **Logging** in the *Actions* menu of the site you are working on.
 2. After this launches, select **W3C** as the format and then click **Select Fields** next to the format drop-down in the *Log File* sub-section.
@@ -282,9 +282,9 @@ Which would result in your logs looking like this:
 
 ### Magento
 
-Refer to this third-party tutorial on restoring original visitor IP with  [Magento and Cloudflare ↗](https://tall-paul.co.uk/2012/03/02/magento-show-remote-ip-when-using-cloudflare/).
+Refer to this third-party tutorial on restoring original visitor IP with  [Magento and Cloudflare ↗︎](https://tall-paul.co.uk/2012/03/02/magento-show-remote-ip-when-using-cloudflare/).
 
-Similarly, Cloudflare did not write this  [Magento extension ↗](https://marketplace.magento.com/), but some of our customers have found it helpful.
+Similarly, Cloudflare did not write this  [Magento extension ↗︎](https://marketplace.magento.com/), but some of our customers have found it helpful.
 
 As this plugin was created by an outside party, we can't provide technical support for issues related to the plugin.
 
@@ -304,9 +304,9 @@ If your network environment means requests are handled through a proxy (such as 
 
 ### PHPBB
 
-If you are using an Apache server, then we would recommend installing [mod\_remoteip ↗](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) to restore the visitor IP back to your logs.
+If you are using an Apache server, then we would recommend installing [mod\_remoteip ↗︎](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) to restore the visitor IP back to your logs.
 
-If you do not have access to your server to install a mod, then you may be able to [modify the core ↗](https://www.phpbb.com/community/viewtopic.php?p=13936406#p13936406).
+If you do not have access to your server to install a mod, then you may be able to [modify the core ↗︎](https://www.phpbb.com/community/viewtopic.php?p=13936406#p13936406).
 
 ### MyBB forums
 
@@ -314,7 +314,7 @@ More recent versions of MyBB include a Scrutinize User's IP address option.
 
 `Admin CP > Configuration > Server and Optimization Options > Scrutinize User's IP address? > Yes`
 
-Alternatively, you may install the  [Cloudflare management plugin ↗](https://mods.mybb.com/view/antoligy-mybb-cloudflare-management-plugin) available for MyBB 1.6.
+Alternatively, you may install the  [Cloudflare management plugin ↗︎](https://mods.mybb.com/view/antoligy-mybb-cloudflare-management-plugin) available for MyBB 1.6.
 
 #### MyBB 1.6.0, 1.6.1, 1.6.2, or 1.6.3
 
@@ -325,7 +325,7 @@ Alternatively, you may install the  [Cloudflare management plugin ↗](https://
 
 ### Vanilla forums
 
-A member of the Vanilla team has written a  [Cloudflare plugin for Vanilla ↗](https://open.vanillaforums.com/addon/cloudflaresupport-plugin) to restore original visitor IP to the log files for self-hosted sites.
+A member of the Vanilla team has written a  [Cloudflare plugin for Vanilla ↗︎](https://open.vanillaforums.com/addon/cloudflaresupport-plugin) to restore original visitor IP to the log files for self-hosted sites.
 
 As this plugin was created by an outside party, we can't provide technical support for issues related to the plugin.MediaWiki
 
@@ -340,7 +340,7 @@ As this plugin was created by an outside party, we can't provide technical suppo
 
 ### XenForo
 
-A XenForo user has created a  [plugin for Cloudflare ↗](https://xenforo.com/community/resources/solidmean-cloudflare-detect.1595/).
+A XenForo user has created a  [plugin for Cloudflare ↗︎](https://xenforo.com/community/resources/solidmean-cloudflare-detect.1595/).
 
 As this plugin was created by an outside party, we can't provide technical support for issues related to the plugin.
 
@@ -350,7 +350,7 @@ As this plugin was created by an outside party, we can't provide technical suppo
 
 ### PunBB
 
-An outside party has created a  [module for Cloudflare and PunBB ↗](http://punbb.informer.com/forums/post/147539/#p147539) that will restore original visitor IP.
+An outside party has created a  [module for Cloudflare and PunBB ↗︎](http://punbb.informer.com/forums/post/147539/#p147539) that will restore original visitor IP.
 
 As this plugin was created by an outside party, we can't provide technical support for issues related to the plugin.Cherokee server
 
@@ -358,7 +358,7 @@ As this plugin was created by an outside party, we can't provide technical suppo
 2. Navigate to the **Cherokee Administration interface** in your web browser.
 3. Select the **Virtual Server** for the domain that is being serviced by Cloudflare.
 4. On the *Logging* tab for your selected **Virtual Server**, enable Accept Forwarded IPs.
-5. In the *Accept from Hosts* box, enter  [Cloudflare's IP addresses ↗](https://www.cloudflare.com/ips/).
+5. In the *Accept from Hosts* box, enter  [Cloudflare's IP addresses ↗︎](https://www.cloudflare.com/ips/).
 
 ### Livezilla
 
@@ -375,7 +375,7 @@ To restore visitor IP to DataLife Engine:
 
 ### TYPO3
 
-An outside developer has created a  [Cloudflare extension for TYPO3 ↗](https://extensions.typo3.org/extension/cloudflare/) that will restore original visitor IP to your logs. The extension will also give the ability to clear your Cloudflare cache.
+An outside developer has created a  [Cloudflare extension for TYPO3 ↗︎](https://extensions.typo3.org/extension/cloudflare/) that will restore original visitor IP to your logs. The extension will also give the ability to clear your Cloudflare cache.
 
 As this plugin was created by an outside party, we can't provide technical support for issues related to the plugin.
 
@@ -383,17 +383,17 @@ As this plugin was created by an outside party, we can't provide technical suppo
 
 If you use the hosting control panel VestaCP, you have both Nginx and Apache running on your server. Requests are proxied through Nginx before going to Apache.
 
-Because of this Nginx proxy, you actually need to follow the instructions to configure Nginx to return the real visitor IP address.  [mod\_remoteip ↗](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) for Apache is not needed unless you disable the Nginx server for some requests. Adding  [mod\_remoteip ↗](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) to Apache will not conflict with the Nginx server configuration.
+Because of this Nginx proxy, you actually need to follow the instructions to configure Nginx to return the real visitor IP address.  [mod\_remoteip ↗︎](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) for Apache is not needed unless you disable the Nginx server for some requests. Adding  [mod\_remoteip ↗︎](https://httpd.apache.org/docs/2.4/mod/mod_remoteip.html) to Apache will not conflict with the Nginx server configuration.
 
 ### node.js
 
-An outside developer has created a module to restore visitor IP called  [node\_cloudflare. ↗](https://github.com/keverw/node_CloudFlare)
+An outside developer has created a module to restore visitor IP called  [node\_cloudflare. ↗︎](https://github.com/keverw/node_CloudFlare)
 
 ### HAProxy
 
 In order to extract the original client IP in the X\_FORWARDED\_FOR header, you need to use the following configuration in HAProxy:
 
-1. Create a text file `CF_ips.lst` containing all IP ranges from [https://www.cloudflare.com/en-gb/ips/ ↗](https://www.cloudflare.com/en-gb/ips/)
+1. Create a text file `CF_ips.lst` containing all IP ranges from [https://www.cloudflare.com/en-gb/ips/ ↗︎](https://www.cloudflare.com/en-gb/ips/)
 2. Ensure to disable `option forwardfor` in HAProxy
 
 HAProxy config:
@@ -406,7 +406,7 @@ http-request set-header X-Forwarded-For %[req.hdr(CF-Connecting-IP)] if from_cf 
 
 ### Envoy Gateway
 
-To extract the original client IP for your Envoy Gateway, set a [Client Traffic Policy ↗](https://gateway.envoyproxy.io/latest/tasks/traffic/client-traffic-policy/#configure-client-ip-detection) to look for the custom [`CF-Connecting-IP` header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-connecting-ip).
+To extract the original client IP for your Envoy Gateway, set a [Client Traffic Policy ↗︎](https://gateway.envoyproxy.io/latest/tasks/traffic/client-traffic-policy/#configure-client-ip-detection) to look for the custom [`CF-Connecting-IP` header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-connecting-ip).
 
 *Truncated Client Traffic Policy exampletxt*
 
@@ -417,13 +417,13 @@ clientIPDetection:
         failClosed: true
 ```
 
-For more details, refer to [Custom header original IP detection extension ↗](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/http/original_ip_detection/custom_header/v3/custom_header.proto).
+For more details, refer to [Custom header original IP detection extension ↗︎](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/http/original_ip_detection/custom_header/v3/custom_header.proto).
 
 ### Caddy
 
-If you are running an application behind [Caddy ↗](https://caddyserver.com/) that relies on the `X-Forwarded-For` header, you can configure Caddy to override the header with Cloudflare's [CF-Connecting-IP header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-connecting-ip).
+If you are running an application behind [Caddy ↗︎](https://caddyserver.com/) that relies on the `X-Forwarded-For` header, you can configure Caddy to override the header with Cloudflare's [CF-Connecting-IP header](https://developers.cloudflare.com/fundamentals/reference/http-headers/#cf-connecting-ip).
 
-It is advised that you also only accept traffic from [Cloudflare's IP addresses ↗](https://www.cloudflare.com/ips/); otherwise, the header could be spoofed. That's why, in the second example, we handle this as part of the Caddy configuration. Alternatively, you can handle this at the firewall level, which is usually easier to automate. If you already have a firewall or other measure in place to ensure this, your Caddyfile could look like this:
+It is advised that you also only accept traffic from [Cloudflare's IP addresses ↗︎](https://www.cloudflare.com/ips/); otherwise, the header could be spoofed. That's why, in the second example, we handle this as part of the Caddy configuration. Alternatively, you can handle this at the firewall level, which is usually easier to automate. If you already have a firewall or other measure in place to ensure this, your Caddyfile could look like this:
 
 *Caddyfiletxt*
 
@@ -436,7 +436,7 @@ https://example.com {
 }
 ```
 
-If you want Caddy to handle only accepting traffic from [Cloudflare's IP addresses ↗](https://www.cloudflare.com/ips/), you can use a configuration like this one:
+If you want Caddy to handle only accepting traffic from [Cloudflare's IP addresses ↗︎](https://www.cloudflare.com/ips/), you can use a configuration like this one:
 
 *Caddyfiletxt*
 

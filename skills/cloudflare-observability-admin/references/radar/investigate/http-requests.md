@@ -14,19 +14,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/http-requests/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-While in [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows/) we can inspect bytes and packets reaching Cloudflare's edge routers, in HTTP requests we are a layer above in the [OSI model ↗](https://en.wikipedia.org/wiki/OSI_model). HTTP requests examines complete HTTP requests from end users that reach websites served by Cloudflare's [CDN ↗](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/).
+While in [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows/) we can inspect bytes and packets reaching Cloudflare's edge routers, in HTTP requests we are a layer above in the [OSI model ↗︎](https://en.wikipedia.org/wiki/OSI_model). HTTP requests examines complete HTTP requests from end users that reach websites served by Cloudflare's [CDN ↗︎](https://www.cloudflare.com/en-gb/learning/cdn/what-is-a-cdn/).
 
 Note
 
 HTTP traffic includes both HTTP and HTTPS traffic coming from end users.
 
-Most of the charts in the [Adoption and Usage ↗](https://radar.cloudflare.com/adoption-and-usage) section on Radar come from this data source.
+Most of the charts in the [Adoption and Usage ↗︎](https://radar.cloudflare.com/adoption-and-usage) section on Radar come from this data source.
 
 These endpoints can be broadly split into:
 
 - `timeseries`: A time series of a group of metrics. For example, when looking at IP version, displays an IPv4 time series and an IPv6 time series.
 - `summary`: Displays a summary of a group of metrics over the specified time range. For example, IPv4 traffic percentage out of the total HTTP traffic during that time period.
-- `top`: A list of the top locations or [Autonomous Systems ↗](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/) (ASes) ranked by adoption of a specific metric. For example, top locations by mobile device traffic (like which locations have a higher percentage of mobile traffic out of the total traffic for that location).
+- `top`: A list of the top locations or [Autonomous Systems ↗︎](https://www.cloudflare.com/en-gb/learning/network-layer/what-is-an-autonomous-system/) (ASes) ranked by adoption of a specific metric. For example, top locations by mobile device traffic (like which locations have a higher percentage of mobile traffic out of the total traffic for that location).
 
 ## List of endpoints
 
@@ -75,7 +75,7 @@ Mobile devices tend to be considerably more present when examining human generat
 
 Note
 
-Note that device classification comes from the [User-agent ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent) header. Ultimately, this classification depends on the user agent(s) that bots use.
+Note that device classification comes from the [User-agent ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/User-Agent) header. Ultimately, this classification depends on the user agent(s) that bots use.
 
 For more information refer to [Get device types time series](https://developers.cloudflare.com/api/resources/radar/subresources/http/subresources/timeseries_groups/methods/device_type/).
 
@@ -145,13 +145,13 @@ Bots tend to use more IPv4 addresses.
 
 It is also interesting to know how your ISP fares in IPv6 adoption. If you know your ISP’s autonomous system number (ASN), you can use the `asn` parameter to query for this information. Refer to the [API reference](https://developers.cloudflare.com/api/resources/radar/subresources/http/subresources/summary/methods/ip_version/) for other parameters.
 
-If you do not know your ISP’s ASN, you can use [Radar ↗](https://radar.cloudflare.com/ip) to find what it is.
+If you do not know your ISP’s ASN, you can use [Radar ↗︎](https://radar.cloudflare.com/ip) to find what it is.
 
 ### Top
 
 #### Example: top locations by IPv6 traffic
 
-In the following example, we will find which locations had a higher adoption of [IPv6 ↗](https://en.wikipedia.org/wiki/IPv6) in the last 28 days.
+In the following example, we will find which locations had a higher adoption of [IPv6 ↗︎](https://en.wikipedia.org/wiki/IPv6) in the last 28 days.
 
 ```bash
 curl "https://api.cloudflare.com/client/v4/radar/http/top/locations/ip_version/IPv6?name=ipv6&botClass=LIKELY_HUMAN&dateRange=28d&format=json&limit=5" \

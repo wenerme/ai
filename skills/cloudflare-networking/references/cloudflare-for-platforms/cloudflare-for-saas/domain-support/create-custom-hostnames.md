@@ -58,7 +58,7 @@ The primary certificate uses a `P-256` key, is `SHA-2/ECDSA` signed, and will be
 
 ## Hostnames over 64 characters
 
-The Common Name (CN) restriction establishes a limit of 64 characters ([RFC 5280 ↗](https://www.rfc-editor.org/rfc/rfc5280.html)). If you have a hostname that exceeds this length, you can set `cloudflare_branding` to `true` when creating your custom hostnames [via API](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/create/).
+The Common Name (CN) restriction establishes a limit of 64 characters ([RFC 5280 ↗︎](https://www.rfc-editor.org/rfc/rfc5280.html)). If you have a hostname that exceeds this length, you can set `cloudflare_branding` to `true` when creating your custom hostnames [via API](https://developers.cloudflare.com/api/resources/custom_hostnames/methods/create/).
 
 ```txt
 "ssl": {

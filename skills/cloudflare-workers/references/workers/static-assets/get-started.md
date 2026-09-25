@@ -32,7 +32,7 @@ This guide will instruct you through setting up and deploying a static site on W
 
 ### 1. Create a new Worker project using the CLI
 
-[C3 (`create-cloudflare-cli`) ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare. Open a terminal window and run C3 to create your Worker project:
+[C3 (`create-cloudflare-cli`) ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare. Open a terminal window and run C3 to create your Worker project:
 
 npmyarnpnpm
 
@@ -92,7 +92,7 @@ When building a full-stack application, you can use any [Workers bindings](https
 
 ### 1. Create a new Worker project
 
-[C3 (`create-cloudflare-cli`) ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
+[C3 (`create-cloudflare-cli`) ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/create-cloudflare) is a command-line tool designed to help you set up and deploy new applications to Cloudflare.
 
 Open a terminal window and run C3 to create your Worker project:
 

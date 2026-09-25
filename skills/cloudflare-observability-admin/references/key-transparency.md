@@ -16,7 +16,7 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Secure the distribution of public keys in your end-to-end encrypted (E2EE) messaging systems
 
-Cloudflare's Key Transparency Auditor aims to secure the distribution of public keys for end-to-end encrypted (E2EE) messaging systems like [WhatsApp ↗](https://engineering.fb.com/2023/04/13/security/whatsapp-key-transparency/). It achieves this by building a verifiable append-only data structure called a Log, similar to [Certificate Transparency ↗](https://developer.mozilla.org/en-US/docs/Web/Security/Certificate_Transparency).
+Cloudflare's Key Transparency Auditor aims to secure the distribution of public keys for end-to-end encrypted (E2EE) messaging systems like [WhatsApp ↗︎](https://engineering.fb.com/2023/04/13/security/whatsapp-key-transparency/). It achieves this by building a verifiable append-only data structure called a Log, similar to [Certificate Transparency ↗︎](https://developer.mozilla.org/en-US/docs/Web/Security/Certificate_Transparency).
 
 Cloudflare acts as an auditor of Key Transparency Logs to ensure the transparency of end-to-end encrypted messaging public keys. Cloudflare provides an API for anyone to monitor the verification work we perform, and verify the state of its associated Logs locally.
 
@@ -28,7 +28,7 @@ Certificate Transparency (CT) Monitoring is an opt-in feature in public beta tha
 
 [Privacy Gateway](https://developers.cloudflare.com/privacy-gateway/)
 
-Privacy Gateway is a managed service deployed on Cloudflare's global network that implements part of the [Oblivious HTTP (OHTTP) IETF ↗](https://www.ietf.org/archive/id/draft-thomson-http-oblivious-01.html) standard. The goal of Privacy Gateway and Oblivious HTTP is to hide the client's IP address when interacting with an application backend.
+Privacy Gateway is a managed service deployed on Cloudflare's global network that implements part of the [Oblivious HTTP (OHTTP) IETF ↗︎](https://www.ietf.org/archive/id/draft-thomson-http-oblivious-01.html) standard. The goal of Privacy Gateway and Oblivious HTTP is to hide the client's IP address when interacting with an application backend.
 
 Was this helpful?
 

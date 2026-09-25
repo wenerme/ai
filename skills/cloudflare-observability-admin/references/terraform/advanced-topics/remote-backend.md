@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/terraform/advanced-topics/remote-backend/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Cloudflare R2](https://developers.cloudflare.com/r2/) and [Terraform remote backends ↗](https://developer.hashicorp.com/terraform/language/settings/backends/remote) can interact with each other to provide a seamless experience for Terraform state management.
+[Cloudflare R2](https://developers.cloudflare.com/r2/) and [Terraform remote backends ↗︎](https://developer.hashicorp.com/terraform/language/settings/backends/remote) can interact with each other to provide a seamless experience for Terraform state management.
 
 Cloudflare R2 is an object storage service that provides a highly available, scalable, and secure way to store and serve static assets, such as images, videos, and static websites. R2 has [S3 API compatibility](https://developers.cloudflare.com/r2/api/s3/api/) making it easy to integrate with existing cloud infrastructure and applications.
 
@@ -22,7 +22,7 @@ Cloudflare R2 is an object storage service that provides a highly available, sca
 
 ### Create R2 bucket
 
-Using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), [API](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/methods/create/), or [Account View Dashboard ↗](https://dash.cloudflare.com/?to=/:account/r2/new) create an [R2 Bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/).
+Using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), [API](https://developers.cloudflare.com/api/resources/r2/subresources/buckets/methods/create/), or [Account View Dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/r2/new) create an [R2 Bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/).
 
 ```sh
 wrangler r2 bucket create <YOUR_BUCKET_NAME>
@@ -45,7 +45,7 @@ Next you will need to create a [bucket scoped R2 API token](https://developers.c
 
 1. In **Account Home**, select **R2**.
 2. Under **Account details**, select **Manage R2 API tokens**.
-3. Select [**Create API token** ↗](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
+3. Select [**Create API token** ↗︎](https://dash.cloudflare.com/?to=/:account/r2/api-tokens).
 4. Select the **R2 Token** text to edit your API token name.
 5. Under **Permissions**, select the **Object Read and Write** permissions, then scope your token to your `<YOUR_BUCKET_NAME>` bucket.
 6. Select **Create API Token**.
@@ -54,7 +54,7 @@ After your token has been successfully created, review your **Secret Access Key*
 
 ## Define R2 backend
 
-Update your [`cloudflare.tf`](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/) file to include a [backend ↗](https://developer.hashicorp.com/terraform/language/backend) for the `<YOUR_BUCKET_NAME>` bucket you created above.
+Update your [`cloudflare.tf`](https://developers.cloudflare.com/terraform/tutorial/initialize-terraform/) file to include a [backend ↗︎](https://developer.hashicorp.com/terraform/language/backend) for the `<YOUR_BUCKET_NAME>` bucket you created above.
 
 Note
 
@@ -91,7 +91,7 @@ variable "account_id" { default = "<YOUR_ACCOUNT_ID>" }
 
 ## Migrate state file to R2 backend
 
-After updating your `cloudflare.tf` file you can issue the `terraform init -reconfigure` command to migrate from a local state to [remote state ↗](https://developer.hashicorp.com/terraform/language/state/remote).
+After updating your `cloudflare.tf` file you can issue the `terraform init -reconfigure` command to migrate from a local state to [remote state ↗︎](https://developer.hashicorp.com/terraform/language/state/remote).
 
 Was this helpful?
 

@@ -252,7 +252,7 @@ WebSocket adapter usage is tracked in Realtime billing. Egress to WebSocket endp
 
 ## Learn with an example
 
-Follow the [AI audio guide](https://developers.cloudflare.com/realtime/sfu/examples/ai-audio/) for separate speech-generation and microphone-transcription paths. The [WebRTC-to-JPEG example ↗](https://github.com/cloudflare/realtime-examples/tree/main/video-to-jpeg) demonstrates a video publication delivered to a Worker as JPEG frames.
+Follow the [AI audio guide](https://developers.cloudflare.com/realtime/sfu/examples/ai-audio/) for separate speech-generation and microphone-transcription paths. The [WebRTC-to-JPEG example ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/video-to-jpeg) demonstrates a video publication delivered to a Worker as JPEG frames.
 
 These examples require application authentication and authorization before public use. Their repository guides describe setup, lifecycle behavior, and limitations.
 

@@ -32,10 +32,10 @@ Pages will cache the global cache directories of the following package managers:
 
 | Package Manager | Directories cached |
 | --- | --- |
-| [npm ↗](https://www.npmjs.com/) | `.npm` |
-| [yarn ↗](https://yarnpkg.com/) | `.cache/yarn` |
-| [pnpm ↗](https://pnpm.io/) | `.pnpm-store` |
-| [bun ↗](https://bun.sh/) | `.bun/install/cache` |
+| [npm ↗︎](https://www.npmjs.com/) | `.npm` |
+| [yarn ↗︎](https://yarnpkg.com/) | `.cache/yarn` |
+| [pnpm ↗︎](https://pnpm.io/) | `.pnpm-store` |
+| [bun ↗︎](https://bun.sh/) | `.bun/install/cache` |
 
 ### Frameworks
 

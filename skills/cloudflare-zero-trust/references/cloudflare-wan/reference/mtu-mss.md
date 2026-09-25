@@ -18,9 +18,9 @@ Because Cloudflare WAN wraps your traffic in additional headers (encapsulation),
 
 ## MTU and MSS
 
-The [maximum transmission unit (MTU) ↗](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) is a measurement representing the largest data packet that a network-connected device will accept. The MTU almost always applies to Layer 3 of the Open Systems Interconnection (OSI) model in networking and includes the entire packet, including all headers (Transmission Control Protocol (TCP), Internet Protocol (IP), etc.) and the data (payload) itself. For example, packets must not exceed 1,500 bytes to route through the Internet.
+The [maximum transmission unit (MTU) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-mtu/) is a measurement representing the largest data packet that a network-connected device will accept. The MTU almost always applies to Layer 3 of the Open Systems Interconnection (OSI) model in networking and includes the entire packet, including all headers (Transmission Control Protocol (TCP), Internet Protocol (IP), etc.) and the data (payload) itself. For example, packets must not exceed 1,500 bytes to route through the Internet.
 
-The [maximum segment size (MSS) ↗](https://www.cloudflare.com/learning/network-layer/what-is-mss/) refers to the amount of data that you can send in a single TCP datagram packet. You determine this value by subtracting the size of the IP and TCP headers from the MTU, which instructs the router how large the payload can be. It applies to Layer 4 of the OSI model in networking.
+The [maximum segment size (MSS) ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-mss/) refers to the amount of data that you can send in a single TCP datagram packet. You determine this value by subtracting the size of the IP and TCP headers from the MTU, which instructs the router how large the payload can be. It applies to Layer 4 of the OSI model in networking.
 
 One common misconception about MSS/MTU is that setting these values negatively impacts performance. While there is a slight performance penalty, it is worse not to configure these values to account for the specificities of your network.
 
@@ -46,7 +46,7 @@ Consider a UDP datagram of size 3,000 bytes (8 bytes for the UDP header + 2,992 
 
 ![A diagram showing a UDP datagram and its various components.](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=592,height=334,format=webp/_astro/udp-datagram.CfIb9Urm.png)
 
-Suppose that the UDP datagram has source port `389` and is destined for a Cloudflare WAN customer IP address. Suppose also that the Cloudflare WAN customer has a firewall rule in place that drops UDP traffic with source port `389`, a common [Connectionless Lightweight Directory Access Protocol (CLDAP) ↗](https://blog.cloudflare.com/reflections-on-reflections) reflection attack vector.
+Suppose that the UDP datagram has source port `389` and is destined for a Cloudflare WAN customer IP address. Suppose also that the Cloudflare WAN customer has a firewall rule in place that drops UDP traffic with source port `389`, a common [Connectionless Lightweight Directory Access Protocol (CLDAP) ↗︎](https://blog.cloudflare.com/reflections-on-reflections) reflection attack vector.
 
 The three preceding packet fragments will arrive at Cloudflare, but only the first fragment contains a UDP header with source port information. The second and third fragments contain UDP data but do not have UDP header information.
 

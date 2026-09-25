@@ -79,9 +79,9 @@ To run the complete issuance and redemption flow on your own machine — no Clou
 
 ## Related resources
 
-- [RFC 9576: Privacy Pass Architecture ↗](https://datatracker.ietf.org/doc/rfc9576/)
-- [RFC 9577: The Privacy Pass HTTP Authentication Scheme ↗](https://datatracker.ietf.org/doc/rfc9577/)
-- [RFC 9578: Privacy Pass Issuance Protocols ↗](https://datatracker.ietf.org/doc/rfc9578/)
+- [RFC 9576: Privacy Pass Architecture ↗︎](https://datatracker.ietf.org/doc/rfc9576/)
+- [RFC 9577: The Privacy Pass HTTP Authentication Scheme ↗︎](https://datatracker.ietf.org/doc/rfc9577/)
+- [RFC 9578: Privacy Pass Issuance Protocols ↗︎](https://datatracker.ietf.org/doc/rfc9578/)
 
 Was this helpful?
 

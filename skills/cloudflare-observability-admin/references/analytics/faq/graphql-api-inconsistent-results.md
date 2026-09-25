@@ -122,7 +122,7 @@ A higher `sampleSize` indicates more reliable results.
 - [GraphQL API Sampling](https://developers.cloudflare.com/analytics/graphql-api/sampling/)
 - [Confidence Intervals](https://developers.cloudflare.com/analytics/graphql-api/features/confidence-intervals/)
 - [GraphQL API Limits](https://developers.cloudflare.com/analytics/graphql-api/limits/)
-- [Adaptive Bit Rate blog post ↗](https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/)
+- [Adaptive Bit Rate blog post ↗︎](https://blog.cloudflare.com/explaining-cloudflares-abr-analytics/)
 
 Was this helpful?
 

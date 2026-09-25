@@ -36,7 +36,7 @@ Isolate identity providers for applications
 
 Existing cookies and sessions from non-isolated browsing are not sent to the remote browser. Websites that implement single sign-on using third-party cookies will also need to be isolated.
 
-For example, if `example.com` authenticates using Google Workspace, you will also need to isolate the top level [Google Workspace URLs ↗](https://support.google.com/a/answer/9012184).
+For example, if `example.com` authenticates using Google Workspace, you will also need to isolate the top level [Google Workspace URLs ↗︎](https://support.google.com/a/answer/9012184).
 
 ## Do Not Isolate
 
@@ -48,7 +48,7 @@ You can choose to disable isolation for certain destinations or categories. The 
 
 ## Policy settings
 
-When you isolate a website, you can also restrict what users do on that site. The following optional settings appear in the Gateway HTTP policy builder when you select the *Isolate* action. Configure these settings to [prevent data loss ↗](https://blog.cloudflare.com/data-protection-browser/) when users interact with untrusted websites in the remote browser — for example, to stop a user from copying confidential data out of an isolated internal application.
+When you isolate a website, you can also restrict what users do on that site. The following optional settings appear in the Gateway HTTP policy builder when you select the *Isolate* action. Configure these settings to [prevent data loss ↗︎](https://blog.cloudflare.com/data-protection-browser/) when users interact with untrusted websites in the remote browser — for example, to stop a user from copying confidential data out of an isolated internal application.
 
 ### Copy (from remote to client)
 

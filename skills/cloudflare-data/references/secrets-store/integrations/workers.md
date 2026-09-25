@@ -42,7 +42,7 @@ You may also add account secrets directly from the Workers settings on the dashb
 
 Use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-secret) `secrets-store secret create`.
 
-To use the following example, replace the store ID and secret name by your actual data. You can find and copy the store ID from the [Secrets Store tab ↗](https://dash.cloudflare.com/?to=/:account/secrets-store/) on the dashboard or use `wrangler secrets-store store list`.
+To use the following example, replace the store ID and secret name by your actual data. You can find and copy the store ID from the [Secrets Store tab ↗︎](https://dash.cloudflare.com/?to=/:account/secrets-store/) on the dashboard or use `wrangler secrets-store store list`.
 
 Note that a secret name cannot contain spaces.
 
@@ -64,7 +64,7 @@ npx wrangler secrets-store secret create <STORE_ID> --name MY_SECRET_NAME --scop
 4. (Optional) Select **Add additional secret** to create more than one secret at a time.
 5. Select **Save** to confirm.
 
-You can find and copy the store ID from the [Secrets Store tab ↗](https://dash.cloudflare.com/?to=/:account/secrets-store/) on the dashboard or use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-store). Also, make sure your secret `name` does not contain spaces.
+You can find and copy the store ID from the [Secrets Store tab ↗︎](https://dash.cloudflare.com/?to=/:account/secrets-store/) on the dashboard or use the [Wrangler command](https://developers.cloudflare.com/workers/wrangler/commands/secrets-store/#secrets-store-store). Also, make sure your secret `name` does not contain spaces.
 
 Refer to [Secrets Store API](https://developers.cloudflare.com/api/resources/secrets_store/) for the full API documentation.
 

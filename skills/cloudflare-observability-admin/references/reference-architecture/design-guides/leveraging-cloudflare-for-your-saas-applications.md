@@ -16,7 +16,7 @@ Last updated Mar 4, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 ## Introduction
 
-When building a SaaS application, it is common to create unique hostnames for each customer account (or tenant), for example `app.customer.com`. It is important to ensure that all communication to this application hostname is done using SSL/TLS and therefore a certificate must be created for your customer's hostname on your application. Certificate management is hard, and often application architects and developers would use a [multi-domain certificate ↗](https://www.cloudflare.com/learning/ssl/types-of-ssl-certificates/) (MDC), so they can buy and add just one certificate that has hundreds of domains listed. However, this does not scale well when your application reaches thousands and millions of customers.
+When building a SaaS application, it is common to create unique hostnames for each customer account (or tenant), for example `app.customer.com`. It is important to ensure that all communication to this application hostname is done using SSL/TLS and therefore a certificate must be created for your customer's hostname on your application. Certificate management is hard, and often application architects and developers would use a [multi-domain certificate ↗︎](https://www.cloudflare.com/learning/ssl/types-of-ssl-certificates/) (MDC), so they can buy and add just one certificate that has hundreds of domains listed. However, this does not scale well when your application reaches thousands and millions of customers.
 
 Also, a customer of your application might wish to have their main website domain hosted directly on your application. So that, for example, `www.customer.com` is actually delivering content directly from your SaaS application.
 
@@ -36,7 +36,7 @@ This reference architecture is designed for SaaS application owners, engineers, 
 
 To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://www.youtube.com/watch?v=XHvmX3FhTwU) (2 minutes)
+- What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗︎](https://www.youtube.com/watch?v=XHvmX3FhTwU) (2 minutes)
 - [Cloudflare Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/) - We will discuss integrations with the ruleset engine. Familiarity with that feature will be helpful.
 - [Cloudflare Workers](https://developers.cloudflare.com/workers/) - We will also discuss integrations with Cloudflare Workers, our serverless application platform. A basic familiarity with this platform will be helpful.
 

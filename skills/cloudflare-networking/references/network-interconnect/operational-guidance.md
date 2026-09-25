@@ -26,7 +26,7 @@ Your CNI deployment must tolerate an unplanned outage on any single circuit at a
 
 ## Troubleshooting
 
-When facing connectivity problems, your first action should be to check for broader service disruptions. Visit [Cloudflare Status ↗](https://www.cloudflarestatus.com/) to see if any scheduled maintenance or active incidents are impacting services. This helps determine if the issue originates outside your network. Refer to [Monitoring and alerts](https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/).
+When facing connectivity problems, your first action should be to check for broader service disruptions. Visit [Cloudflare Status ↗︎](https://www.cloudflarestatus.com/) to see if any scheduled maintenance or active incidents are impacting services. This helps determine if the issue originates outside your network. Refer to [Monitoring and alerts](https://developers.cloudflare.com/network-interconnect/monitoring-and-alerts/).
 
 If no system-wide problems are reported, gather the following information before submitting a support case. Providing comprehensive details facilitates a faster resolution:
 

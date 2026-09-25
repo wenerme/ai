@@ -38,20 +38,20 @@ Minimize token usage while improving the accuracy of your agent's responses.
 
 ### Agent skills
 
-[Agent skills ↗](https://agentskills.io/home) are structured, task-specific instructions that AI tools load on demand — for example, a skill might teach your agent how to deploy a Cloudflare Worker or configure a WAF (Web Application Firewall) rule. Skills give your agent Cloudflare-specific instructions it would not otherwise have. Cloudflare publishes skills covering Workers, storage, AI, networking, security, and more in the [Cloudflare Skills repository ↗](https://github.com/cloudflare/skills).
+[Agent skills ↗︎](https://agentskills.io/home) are structured, task-specific instructions that AI tools load on demand — for example, a skill might teach your agent how to deploy a Cloudflare Worker or configure a WAF (Web Application Firewall) rule. Skills give your agent Cloudflare-specific instructions it would not otherwise have. Cloudflare publishes skills covering Workers, storage, AI, networking, security, and more in the [Cloudflare Skills repository ↗︎](https://github.com/cloudflare/skills).
 
 Each agent has its own installation method for skills. Refer to [Agent setup](#set-up-your-agent) for installation instructions.
 
 ### Model Context Protocol (MCP)
 
-The [Model Context Protocol ↗](https://modelcontextprotocol.io/) (MCP) is an open standard that defines how AI tools connect to external tools, data, and services. An MCP server is an application that exposes specific capabilities. When you connect one to your agent, the agent can use those capabilities as part of its workflow (for example, searching documentation, creating DNS records, or deploying Workers).
+The [Model Context Protocol ↗︎](https://modelcontextprotocol.io/) (MCP) is an open standard that defines how AI tools connect to external tools, data, and services. An MCP server is an application that exposes specific capabilities. When you connect one to your agent, the agent can use those capabilities as part of its workflow (for example, searching documentation, creating DNS records, or deploying Workers).
 
 Cloudflare runs managed remote MCP servers that give your agent the ability to search documentation, call the Cloudflare API, and query logs and analytics while it works.
 
 There are two approaches:
 
 - **[Cloudflare API MCP server](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/)**: A Code Mode server that covers the entire Cloudflare API (over 2,500 endpoints). Use this when your agent needs broad access across multiple Cloudflare products.
-- **Domain-specific servers**: Focused servers for documentation, observability, DNS analytics, and more. Use these when your agent only needs access to a specific area. The full catalog is in the [cloudflare/mcp-server-cloudflare ↗](https://github.com/cloudflare/mcp-server-cloudflare) repository.
+- **Domain-specific servers**: Focused servers for documentation, observability, DNS analytics, and more. Use these when your agent only needs access to a specific area. The full catalog is in the [cloudflare/mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare) repository.
 
 Each agent's [Agent setup](#set-up-your-agent) guide includes MCP server installation as part of its Quick start. For the full list of available MCP servers, refer to [MCP servers for Cloudflare](https://developers.cloudflare.com/agents/model-context-protocol/cloudflare/servers-for-cloudflare/).
 
@@ -107,7 +107,7 @@ The response includes `x-markdown-tokens` and `x-original-tokens` headers with e
 
 ### Site-wide endpoints
 
-These endpoints follow the [llms.txt standard ↗](https://llmstxt.org/) and provide documentation content in Markdown format:
+These endpoints follow the [llms.txt standard ↗︎](https://llmstxt.org/) and provide documentation content in Markdown format:
 
 | Endpoint | Description |
 | --- | --- |
@@ -127,13 +127,13 @@ Replace `/workers/` with any product path. For the full list of available produc
 
 ## OpenAPI specification
 
-An [OpenAPI specification ↗](https://www.openapis.org/) is a machine-readable description of an API — it lists every available endpoint, the parameters each one accepts, and the responses it returns. When you add this to your AI tool's context, the tool can generate API calls to Cloudflare services without you having to look up the documentation manually.
+An [OpenAPI specification ↗︎](https://www.openapis.org/) is a machine-readable description of an API — it lists every available endpoint, the parameters each one accepts, and the responses it returns. When you add this to your AI tool's context, the tool can generate API calls to Cloudflare services without you having to look up the documentation manually.
 
 The full Cloudflare API OpenAPI specification is available for AI coding tools, API clients, and code generators:
 
 | Endpoint | Description |
 | --- | --- |
-| [`cloudflare/api-schemas` ↗](https://github.com/cloudflare/api-schemas) | Full Cloudflare API OpenAPI specification (JSON) |
+| [`cloudflare/api-schemas` ↗︎](https://github.com/cloudflare/api-schemas) | Full Cloudflare API OpenAPI specification (JSON) |
 
 For the full API reference, refer to the [Cloudflare API documentation](https://developers.cloudflare.com/api/).
 

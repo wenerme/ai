@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-proxy/reference/metrics/opentelemetry/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Privacy Proxy exports telemetry data using the [OpenTelemetry Protocol (OTLP) ↗](https://opentelemetry.io/docs/specs/otlp/). You can configure an endpoint to receive this data and forward it to your observability platform.
+Privacy Proxy exports telemetry data using the [OpenTelemetry Protocol (OTLP) ↗︎](https://opentelemetry.io/docs/specs/otlp/). You can configure an endpoint to receive this data and forward it to your observability platform.
 
 ---
 
@@ -105,7 +105,7 @@ sum(rate(privacy_proxy_requests_by_status{status=~"5.."}[5m])) / sum(rate(privac
 
 ## Related resources
 
-- [OpenTelemetry documentation ↗](https://opentelemetry.io/docs/) — Learn more about OpenTelemetry concepts and configuration.
+- [OpenTelemetry documentation ↗︎](https://opentelemetry.io/docs/) — Learn more about OpenTelemetry concepts and configuration.
 - [GraphQL Analytics API](https://developers.cloudflare.com/privacy-proxy/reference/metrics/graphql/) — Query metrics programmatically via Cloudflare's GraphQL API.
 
 Was this helpful?

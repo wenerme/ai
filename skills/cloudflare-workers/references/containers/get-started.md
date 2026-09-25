@@ -22,9 +22,9 @@ This example Worker should give you a sense for simple Container use, and provid
 
 ### Ensure Docker is running locally
 
-In this guide, we will build and push a container image alongside your Worker code. By default, this process uses [Docker ↗](https://www.docker.com/) to do so.
+In this guide, we will build and push a container image alongside your Worker code. By default, this process uses [Docker ↗︎](https://www.docker.com/) to do so.
 
-You must have Docker running locally when you run `wrangler deploy`. For most people, the best way to install Docker is to follow the [docs for installing Docker Desktop ↗](https://docs.docker.com/desktop/). Other tools like [Colima ↗](https://github.com/abiosoft/colima) may also work.
+You must have Docker running locally when you run `wrangler deploy`. For most people, the best way to install Docker is to follow the [docs for installing Docker Desktop ↗︎](https://docs.docker.com/desktop/). Other tools like [Colima ↗︎](https://github.com/abiosoft/colima) may also work.
 
 You can check that Docker is running properly by running the `docker info` command in your terminal. If Docker is running, the command will succeed. If Docker is not running, the `docker info` command will hang or return an error including the message "Cannot connect to the Docker daemon".
 
@@ -62,7 +62,7 @@ yarn wrangler deploy
 pnpm wrangler deploy
 ```
 
-On deploy, Wrangler uploads your Worker, builds and pushes the container image with Docker, and updates container instances on Cloudflare's network. The first build and push usually take the longest. Later deploys [reuse cached image layers ↗](https://docs.docker.com/build/cache/).
+On deploy, Wrangler uploads your Worker, builds and pushes the container image with Docker, and updates container instances on Cloudflare's network. The first build and push usually take the longest. Later deploys [reuse cached image layers ↗︎](https://docs.docker.com/build/cache/).
 
 Note
 
@@ -109,7 +109,7 @@ Open the URL for your Worker. It should look like `https://hello-containers.<YOU
 - Requests to `/container/1` or `/container/2` route to specific containers. Each path after `/container/` maps to a unique container.
 - Requests to `/lb` load-balance across three containers chosen at random.
 
-Read the response body to confirm which instance handled the request. If the Worker responds but container routes still error, wait for provisioning, then check [Containers ↗](https://dash.cloudflare.com/?to=/:account/workers/containers) logs in the dashboard.
+Read the response body to confirm which instance handled the request. If the Worker responds but container routes still error, wait for provisioning, then check [Containers ↗︎](https://dash.cloudflare.com/?to=/:account/workers/containers) logs in the dashboard.
 
 ## Understanding the Code
 
@@ -190,7 +190,7 @@ After deploying the example code, to deploy a different image, you can replace t
 
 #### Container Configuration
 
-First note `MyContainer` which extends the [`Container` ↗](https://github.com/cloudflare/containers) class:
+First note `MyContainer` which extends the [`Container` ↗︎](https://github.com/cloudflare/containers) class:
 
 ```js
 export class MyContainer extends Container {
@@ -264,7 +264,7 @@ It randomly selects one of a fixed number of instances for each request.
 
 ## View Containers in your Dashboard
 
-The [Containers Dashboard ↗](https://dash.cloudflare.com/?to=/:account/workers/containers) shows you helpful information about your Containers, including:
+The [Containers Dashboard ↗︎](https://dash.cloudflare.com/?to=/:account/workers/containers) shows you helpful information about your Containers, including:
 
 - Status and Health
 - Metrics

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/validation-and-key-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Refer to the sections below for an overview of some technical concepts and how they apply to Cloudflare DNSSEC. For broader content on DNSSEC, refer to [How DNSSEC works ↗](https://www.cloudflare.com/dns/dnssec/how-dnssec-works/).
+Refer to the sections below for an overview of some technical concepts and how they apply to Cloudflare DNSSEC. For broader content on DNSSEC, refer to [How DNSSEC works ↗︎](https://www.cloudflare.com/dns/dnssec/how-dnssec-works/).
 
 ## Chain of trust
 
@@ -41,7 +41,7 @@ When you enable DNSSEC, Cloudflare automatically publishes **CDS** (Child Delega
 | **CDS** | High-level instruction | A hashed version of the public key (same data as a DS record) |
 | **CDNSKEY** | Public key instruction | The full public Key Signing Key (KSK) for the parent to generate its own DS record |
 
-Registrars that support [RFC 8078 ↗](https://www.rfc-editor.org/rfc/rfc8078.html) periodically scan your domain for these records and automatically update the DS record at the registry level. This eliminates manual DS record management and ensures seamless key rollovers.
+Registrars that support [RFC 8078 ↗︎](https://www.rfc-editor.org/rfc/rfc8078.html) periodically scan your domain for these records and automatically update the DS record at the registry level. This eliminates manual DS record management and ensures seamless key rollovers.
 
 Note
 

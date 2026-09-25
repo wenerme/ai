@@ -106,7 +106,7 @@ If the recording is deleted, the storage use will be released.
 
 **I want to store and deliver millions of minutes a month. Do you have volume pricing?**
 
-Yes, contact our [Sales Team ↗](https://www.cloudflare.com/plans/enterprise/contact/).
+Yes, contact our [Sales Team ↗︎](https://www.cloudflare.com/plans/enterprise/contact/).
 
 ## Pricing for Media Transformations
 

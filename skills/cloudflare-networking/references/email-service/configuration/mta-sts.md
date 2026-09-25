@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/mta-sts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-MTA Strict Transport Security ([MTA-STS ↗](https://datatracker.ietf.org/doc/html/rfc8461)) was introduced by email service providers including Microsoft, Google and Yahoo as a solution to protect against downgrade and man-in-the-middle attacks in SMTP sessions, as well as solving the lack of security-first communication standards in email.
+MTA Strict Transport Security ([MTA-STS ↗︎](https://datatracker.ietf.org/doc/html/rfc8461)) was introduced by email service providers including Microsoft, Google and Yahoo as a solution to protect against downgrade and man-in-the-middle attacks in SMTP sessions, as well as solving the lack of security-first communication standards in email.
 
 Suppose that `example.com` is your domain and uses Email Service. Here is how you can enable MTA-STS for it.
 
@@ -59,7 +59,7 @@ To do this you need to deploy a Worker that allows email clients to pull Cloudfl
    max_age: 86400
    ``` This says that you domain `example.com` enforces MTA-STS. Capable email clients will only deliver email to this domain over a secure connection to the specified MX servers. If no secure connection can be established the email will not be delivered. Test before enforcing
 
-   A misconfigured policy in `enforce` mode causes legitimate inbound mail to be rejected. When rolling out MTA-STS on an existing domain, start with `mode: testing` and monitor [TLS-RPT ↗](https://datatracker.ietf.org/doc/html/rfc8460) reports for a few weeks before switching to `enforce`.
+   A misconfigured policy in `enforce` mode causes legitimate inbound mail to be rejected. When rolling out MTA-STS on an existing domain, start with `mode: testing` and monitor [TLS-RPT ↗︎](https://datatracker.ietf.org/doc/html/rfc8460) reports for a few weeks before switching to `enforce`.
 
 Email Service also supports MTA-STS upstream, which greatly improves security when forwarding your emails to service providers like Gmail, Microsoft, and others.
 

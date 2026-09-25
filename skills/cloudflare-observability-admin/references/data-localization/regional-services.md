@@ -16,7 +16,7 @@ Last updated Jul 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Regional Services gives you the ability to accommodate regional restrictions by choosing which subset of data centers decrypt and service HTTPS traffic.
 
-Regional Services receives and processes traffic within designated regions for customers who need to meet regional compliance requirements or have preferences for maintaining regional control over their data. Examples of use cases include accommodating regional restrictions like [GDPR ↗](https://www.cloudflare.com/trust-hub/gdpr/) (General Data Protection Regulation), or fulfilling contractual agreements with customers that include geographic restrictions on data flows or data processing.
+Regional Services receives and processes traffic within designated regions for customers who need to meet regional compliance requirements or have preferences for maintaining regional control over their data. Examples of use cases include accommodating regional restrictions like [GDPR ↗︎](https://www.cloudflare.com/trust-hub/gdpr/) (General Data Protection Regulation), or fulfilling contractual agreements with customers that include geographic restrictions on data flows or data processing.
 
 With Regional Services, TLS termination — the point at which encrypted HTTPS traffic is decrypted so Cloudflare can inspect and apply your security rules — only occurs inside the configured region. For example, if a hostname is configured to regionalize to the European Union (EU), any HTTPS request from the United States (US) will be forwarded in encrypted form to an EU data center before being decrypted.
 

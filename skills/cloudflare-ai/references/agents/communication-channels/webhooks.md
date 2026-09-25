@@ -975,13 +975,13 @@ const secret = this.env.GITHUB_WEBHOOK_SECRET;
 
 | Provider | Documentation |
 | --- | --- |
-| GitHub | [Webhook events and payloads ↗](https://docs.github.com/en/webhooks) |
-| Stripe | [Webhook signatures ↗](https://stripe.com/docs/webhooks/signatures) |
-| Twilio | [Validate webhook requests ↗](https://www.twilio.com/docs/usage/webhooks/webhooks-security) |
-| Slack | [Verifying requests ↗](https://api.slack.com/authentication/verifying-requests-from-slack) |
-| Shopify | [Webhook verification ↗](https://shopify.dev/docs/apps/webhooks/configuration/https#step-5-verify-the-webhook) |
-| SendGrid | [Event webhook ↗](https://docs.sendgrid.com/for-developers/tracking-events/getting-started-event-webhook) |
-| Linear | [Webhooks ↗](https://developers.linear.app/docs/graphql/webhooks) |
+| GitHub | [Webhook events and payloads ↗︎](https://docs.github.com/en/webhooks) |
+| Stripe | [Webhook signatures ↗︎](https://stripe.com/docs/webhooks/signatures) |
+| Twilio | [Validate webhook requests ↗︎](https://www.twilio.com/docs/usage/webhooks/webhooks-security) |
+| Slack | [Verifying requests ↗︎](https://api.slack.com/authentication/verifying-requests-from-slack) |
+| Shopify | [Webhook verification ↗︎](https://shopify.dev/docs/apps/webhooks/configuration/https#step-5-verify-the-webhook) |
+| SendGrid | [Event webhook ↗︎](https://docs.sendgrid.com/for-developers/tracking-events/getting-started-event-webhook) |
+| Linear | [Webhooks ↗︎](https://developers.linear.app/docs/graphql/webhooks) |
 
 ## Next steps
 

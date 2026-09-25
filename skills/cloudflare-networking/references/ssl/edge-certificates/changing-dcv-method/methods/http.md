@@ -68,7 +68,7 @@ For example, if you create a new custom hostname for <code>site.example.com</cod
 
 To check whether your certificates have been validated and reissued:
 
-- **Dashboard**: Find the certificate(s) on the [**Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page and make sure that the **Status** is **Active**.
+- **Dashboard**: Find the certificate(s) on the [**Edge Certificates** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates) page and make sure that the **Status** is **Active**.
 - **API**: Send a [`GET`](https://developers.cloudflare.com/api/resources/ssl/subresources/certificate_packs/methods/list/) request and confirm that your certificate(s) have `"status": "active"`.
 
 ## Renewal

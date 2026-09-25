@@ -14,11 +14,11 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/fastapi/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[FastAPI ↗](https://fastapi.tiangolo.com/) is supported in Python Workers.
+[FastAPI ↗︎](https://fastapi.tiangolo.com/) is supported in Python Workers.
 
-FastAPI applications use a protocol called the [Asynchronous Server Gateway Interface (ASGI) ↗](https://asgi.readthedocs.io/en/latest/). This means that FastAPI never reads from or writes to a socket itself. An ASGI application expects to be hooked up to an ASGI server, typically [uvicorn ↗](https://uvicorn.dev/). The ASGI server handles all of the raw sockets on the application’s behalf.
+FastAPI applications use a protocol called the [Asynchronous Server Gateway Interface (ASGI) ↗︎](https://asgi.readthedocs.io/en/latest/). This means that FastAPI never reads from or writes to a socket itself. An ASGI application expects to be hooked up to an ASGI server, typically [uvicorn ↗︎](https://uvicorn.dev/). The ASGI server handles all of the raw sockets on the application’s behalf.
 
-The Python Workers provide [an ASGI server ↗](https://github.com/cloudflare/workers-py/blob/main/packages/runtime-sdk/src/workers/asgi.py) that you can use directly in your Python Worker, which lets you use FastAPI in Python Workers.
+The Python Workers provide [an ASGI server ↗︎](https://github.com/cloudflare/workers-py/blob/main/packages/runtime-sdk/src/workers/asgi.py) that you can use directly in your Python Worker, which lets you use FastAPI in Python Workers.
 
 ## Quick Start
 
@@ -47,7 +47,7 @@ Default = asgi.entrypoint(app)
 	"name": "my-fastapi-app",
 	"main": "src/main.py",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["python_workers"],
 }
 ```
@@ -57,7 +57,7 @@ Default = asgi.entrypoint(app)
 name = "my-fastapi-app"
 main = "src/main.py"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "python_workers" ]
 ```
 
@@ -103,7 +103,7 @@ uv run pywrangler dev
 
 You can serve any static frontend alongside your FastAPI backend by using [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/).
 
-This is equivalent to FastAPI's native [`app.frontend()` ↗](https://fastapi.tiangolo.com/tutorial/frontend/) method, which serves a static build directory as low-priority routes so that API path operations are checked first. The difference is where the files live: `app.frontend()` reads files from the local filesystem, while on Workers the static assets are served from Cloudflare's globally distributed asset store through the `ASSETS` binding. This means your frontend files are not bundled inside the Worker itself, keeping the bundle small.
+This is equivalent to FastAPI's native [`app.frontend()` ↗︎](https://fastapi.tiangolo.com/tutorial/frontend/) method, which serves a static build directory as low-priority routes so that API path operations are checked first. The difference is where the files live: `app.frontend()` reads files from the local filesystem, while on Workers the static assets are served from Cloudflare's globally distributed asset store through the `ASSETS` binding. This means your frontend files are not bundled inside the Worker itself, keeping the bundle small.
 
 Place your frontend build output (for example, HTML, CSS, and JavaScript files) in a directory such as `./public/`. Then configure your Wrangler file with an `assets` block that includes a `binding` and sets `run_worker_first` to `true`. This ensures every request reaches your FastAPI Worker first, so your API routes take priority over static files.
 
@@ -114,7 +114,7 @@ Add a catch-all route at the end of your FastAPI app that proxies unmatched requ
 	"name": "my-fastapi-app",
 	"main": "src/worker.py",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": ["python_workers"],
 	"assets": {
 		"directory": "./public/",
@@ -128,7 +128,7 @@ Add a catch-all route at the end of your FastAPI app that proxies unmatched requ
 name = "my-fastapi-app"
 main = "src/worker.py"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "python_workers" ]
 
 [assets]

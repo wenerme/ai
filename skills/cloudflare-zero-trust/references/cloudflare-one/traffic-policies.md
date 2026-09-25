@@ -32,9 +32,9 @@ Traditional network security relied on hardware firewalls at the perimeter of a 
 
 Without an SWG, organizations lose visibility into what websites and applications users access, what threats reach user devices, and what data leaves the organization. An SWG restores that visibility and control by inspecting traffic in the cloud, close to users, rather than forcing all traffic through a central data center.
 
-Cloudflare Gateway is Cloudflare's SWG, built into the [Cloudflare One ↗](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/) SASE platform. It inspects and filters traffic at the DNS, network (Layer 4), and HTTP (Layer 7) layers.
+Cloudflare Gateway is Cloudflare's SWG, built into the [Cloudflare One ↗︎](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/) SASE platform. It inspects and filters traffic at the DNS, network (Layer 4), and HTTP (Layer 7) layers.
 
-For more information on how SWGs work, refer to the [Cloudflare Learning Center ↗](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/).
+For more information on how SWGs work, refer to the [Cloudflare Learning Center ↗︎](https://www.cloudflare.com/learning/access-management/what-is-a-secure-web-gateway/).
 
 ## Traffic policy types
 
@@ -76,7 +76,7 @@ DNS policies
 
 **<a href="https://developers.cloudflare.com/cloudflare-one/traffic-policies/dns-policies/">DNS policies</a>** check every DNS query your users make. When a query matches a policy rule, Gateway can block the domain from resolving — the site never loads because the domain name is never translated to an IP address.
 
-DNS policies act at the earliest stage of a connection, before any content is fetched. This makes them the fastest policy type to deploy and the broadest in scope. For more information on <a href="https://www.cloudflare.com/learning/access-management/what-is-dns-filtering/">DNS filtering ↗</a>, refer to the Cloudflare Learning Center.
+DNS policies act at the earliest stage of a connection, before any content is fetched. This makes them the fastest policy type to deploy and the broadest in scope. For more information on <a href="https://www.cloudflare.com/learning/access-management/what-is-dns-filtering/">DNS filtering ↗︎</a>, refer to the Cloudflare Learning Center.
 
 Use DNS policies to block malicious domains, restrict content categories, or prevent entire sites from loading. For full threat protection, pair DNS policies with HTTP policies — DNS blocks known bad domains, while HTTP catches threats hidden in allowed traffic.
 

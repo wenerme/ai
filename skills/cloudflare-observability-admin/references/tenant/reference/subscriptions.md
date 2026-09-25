@@ -16,7 +16,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 When [provisioning services for an account](https://developers.cloudflare.com/tenant/how-to/manage-subscriptions/), you need to include certain values with each API call to specify a particular service.
 
-The subscriptions available to you will vary depending on your current partner program ([Agency Partner Program ↗](https://www.cloudflare.com/cloudflare-partners-self-serve-program-closed-beta/) or [Enterprise Resellers and MSP Program ↗](https://portal.cloudflarepartners.com)).
+The subscriptions available to you will vary depending on your current partner program ([Agency Partner Program ↗︎](https://www.cloudflare.com/cloudflare-partners-self-serve-program-closed-beta/) or [Enterprise Resellers and MSP Program ↗︎](https://portal.cloudflarepartners.com)).
 
 The following values are samples and not exhaustive. For the complete list of subscription values available to you, make an API call to the [zone subscriptions](https://developers.cloudflare.com/api/resources/zones/subresources/rate_plans/methods/get/) or [account subscriptions](https://developers.cloudflare.com/api/resources/accounts/subresources/subscriptions/methods/get/) endpoints.
 

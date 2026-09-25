@@ -20,7 +20,7 @@ This example demonstrates how to use the `waitForEvent()` API in Cloudflare Work
 
 Note
 
-The example on this page includes only a subset of the full implementation. For the complete codebase and deployment instructions, please refer to the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent).
+The example on this page includes only a subset of the full implementation. For the complete codebase and deployment instructions, please refer to the [GitHub repository ↗︎](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent).
 
 ## Overview of the Workflow
 
@@ -37,13 +37,13 @@ This pattern is useful in scenarios where certain operations should not proceed 
 
 This example includes a Next.js frontend application that facilitates the image upload and approval process. The frontend provides an interface for uploading images, reviewing them, and approving or rejecting them. Upon image upload, the application triggers the Cloudflare Workflow, which then manages the subsequent steps, including waiting for user approval and performing AI-based image tagging upon approval.
 
-Refer to the `/nextjs-workflow-frontend` folder in the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent) for the complete frontend implementation and deployment details.
+Refer to the `/nextjs-workflow-frontend` folder in the [GitHub repository ↗︎](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent) for the complete frontend implementation and deployment details.
 
 ## Workflow index.ts
 
 The `index.ts` file defines the core logic of the Cloudflare Workflow responsible for handling image uploads, awaiting human approval, and performing AI-based image tagging upon approval. It extends the `WorkflowEntrypoint` class and implements the `run()` method.
 
-For the complete implementation of the `index.ts` file, please refer to the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/blob/main/workflows/waitForEvent/workflow/src/index.ts).
+For the complete implementation of the `index.ts` file, please refer to the [GitHub repository ↗︎](https://github.com/cloudflare/docs-examples/blob/main/workflows/waitForEvent/workflow/src/index.ts).
 
 ```js
 export class MyWorkflow extends WorkflowEntrypoint {
@@ -146,7 +146,7 @@ The Workflow configuration is defined in the `wrangler.jsonc` file. This file in
 	"name": "workflows-waitforevent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"observability": {
 		"enabled": true,
 		"head_sampling_rate": 1,
@@ -182,7 +182,7 @@ The Workflow configuration is defined in the `wrangler.jsonc` file. This file in
 name = "workflows-waitforevent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [observability]
 enabled = true
@@ -206,7 +206,7 @@ database_name = "workflows-demo-d1"
 database_id = "66e4fbe9-06ac-4548-abba-2dc42088e13a"
 ```
 
-For access to the codebase, deployment instructions, and reference architecture, please visit the [GitHub repository ↗](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent). This resource provides all the necessary tools and information to effectively implement the Workflow and Next.js frontend application.
+For access to the codebase, deployment instructions, and reference architecture, please visit the [GitHub repository ↗︎](https://github.com/cloudflare/docs-examples/tree/main/workflows/waitForEvent). This resource provides all the necessary tools and information to effectively implement the Workflow and Next.js frontend application.
 
 Was this helpful?
 

@@ -268,11 +268,11 @@ The SDK auto-generates shade variations from each base color. Brand shades run 3
 
 ## Design Tokens
 
-UI Kit uses [design tokens ↗](https://css-tricks.com/what-are-design-tokens/) for its design system.
+UI Kit uses [design tokens ↗︎](https://css-tricks.com/what-are-design-tokens/) for its design system.
 
 Design tokens are the design related values which are used to maintain a design system, which provides flexibility in customizing the overall design of a system with values such as: typography, spacing, colors etc.
 
-These design tokens are stored and shared among components with the help of [CSS variables ↗](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties).
+These design tokens are stored and shared among components with the help of [CSS variables ↗︎](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties).
 
 The token system covers colors, borders, typography, and spacing. The table below shows the default values across all mobile platforms.
 

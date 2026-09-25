@@ -14,19 +14,19 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/email-security/setup/post-delivery-deployment/bcc-journaling/bcc-setup/gmail-bcc-setup/enable-gmail-integration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-This guide describes the process for enabling Email security with Google Workspace. It requires setting up a [service account ↗](https://docs.cloud.google.com/iam/docs/service-account-overview) and a JSON key in Google Cloud Platform (GCP), followed by configuring domain-wide delegation in the Google Workspace Admin Console to authorize the integration.
+This guide describes the process for enabling Email security with Google Workspace. It requires setting up a [service account ↗︎](https://docs.cloud.google.com/iam/docs/service-account-overview) and a JSON key in Google Cloud Platform (GCP), followed by configuring domain-wide delegation in the Google Workspace Admin Console to authorize the integration.
 
 ## Prerequisites
 
 To use Email security, you will need to have:
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up)
 - A [Zero Trust organization](https://developers.cloudflare.com/cloudflare-one/setup/#2-create-a-zero-trust-organization)
 - A domain to protect
 
 ## Enable Gmail BCC integration:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Select **Email security**.
 3. Select **Overview**. Select one of the following options:
 
@@ -44,8 +44,8 @@ To use Email security, you will need to have:
 ### 1. Create a Service Account in your GCP Project
 
 1. Once you have named your integration, select **Next**.
-2. On the [Google Cloud Console ↗](https://console.cloud.google.com/welcome/new), go to the sidebar, select **APIs & Services**, then select **Credentials**.
-3. Select **CREATE CREDENTIALS** > **Service account**. Refer to [Service accounts overview ↗](https://docs.cloud.google.com/iam/docs/service-account-overview) to learn more about service accounts.
+2. On the [Google Cloud Console ↗︎](https://console.cloud.google.com/welcome/new), go to the sidebar, select **APIs & Services**, then select **Credentials**.
+3. Select **CREATE CREDENTIALS** > **Service account**. Refer to [Service accounts overview ↗︎](https://docs.cloud.google.com/iam/docs/service-account-overview) to learn more about service accounts.
 4. Fill in the details to create a service account:
    - **Service account name**: Enter `Cloudflare Google Integration`.
    - **Service account ID**: Enter `cloudflare-google-integration`.
@@ -54,7 +54,7 @@ To use Email security, you will need to have:
 
 ### 2. Create a JSON Key for your Service Account
 
-On the [Google Cloud Console ↗](https://console.cloud.google.com/welcome/new):
+On the [Google Cloud Console ↗︎](https://console.cloud.google.com/welcome/new):
 
 1. On the sidebar, select **IAM & Admin** > **Service Accounts**.
 2. Locate your email, select the three dots, then select **Manage keys**.
@@ -63,21 +63,21 @@ On the [Google Cloud Console ↗](https://console.cloud.google.com/welcome/new):
 
 Note
 
-If service account key creation is disabled, follow [Google's troubleshooting steps ↗](https://docs.cloud.google.com/iam/docs/troubleshoot-org-policies#sa-key-creation-policy).
+If service account key creation is disabled, follow [Google's troubleshooting steps ↗︎](https://docs.cloud.google.com/iam/docs/troubleshoot-org-policies#sa-key-creation-policy).
 
 ### 3. Upload JSON Key
 
-On the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com/), upload the `.json` file downloaded on step 3.
+On the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com/), upload the `.json` file downloaded on step 3.
 
 ### 4. Enable Necessary Google Workspace APIs in GCP
 
 Enable the following APIs on the Google Cloud Console:
 
-- [Google Calendar API ↗](https://console.cloud.google.com/apis/library/calendar-json.googleapis.com?project=winter-surf-439414-h1)
-- [Google Drive API ↗](https://console.cloud.google.com/apis/library/drive.googleapis.com?project=winter-surf-439414-h1)
-- [Google Admin SDK API ↗](https://console.cloud.google.com/apis/library/admin.googleapis.com?project=winter-surf-439414-h1)
-- [Gmail API ↗](https://console.cloud.google.com/apis/library/gmail.googleapis.com?project=winter-surf-439414-h1)
-- [Google Service Usage API ↗](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com?project=winter-surf-439414-h1)
+- [Google Calendar API ↗︎](https://console.cloud.google.com/apis/library/calendar-json.googleapis.com?project=winter-surf-439414-h1)
+- [Google Drive API ↗︎](https://console.cloud.google.com/apis/library/drive.googleapis.com?project=winter-surf-439414-h1)
+- [Google Admin SDK API ↗︎](https://console.cloud.google.com/apis/library/admin.googleapis.com?project=winter-surf-439414-h1)
+- [Gmail API ↗︎](https://console.cloud.google.com/apis/library/gmail.googleapis.com?project=winter-surf-439414-h1)
+- [Google Service Usage API ↗︎](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com?project=winter-surf-439414-h1)
 
 ### 5. Log in to Google Workspace Admin Console
 
@@ -88,7 +88,7 @@ Log in to Google Workspace Admin Console: Enter your password and log in to the 
 1. Copy the **Client ID** and **Scopes** displayed on the Cloudflare One dashboard.
 2. On Google Admin, go to **Security** > **Access and data control** > **API controls**.
 3. Select **MANAGE DOMAIN WIDE DELEGATION** > **Add new**.
-4. Use the Client ID and copy the scopes to create a new API client. Refer to [Delegate domain-wide authority to your service account ↗](https://cloud.google.com/chronicle/docs/soar/marketplace-integrations/google-alert-center?_gl=1*skktsb*_ga*MTMxODg5NDExMy4xNzI5NjA1MzYy*_ga_WH2QY8WWF5*MTcyOTc3MDg2Ny40LjEuMTcyOTc3MDg5OC4yOS4wLjA.#delegate_domain-wide_authority_to_your_service_account). Then, select **Next**.
+4. Use the Client ID and copy the scopes to create a new API client. Refer to [Delegate domain-wide authority to your service account ↗︎](https://cloud.google.com/chronicle/docs/soar/marketplace-integrations/google-alert-center?_gl=1*skktsb*_ga*MTMxODg5NDExMy4xNzI5NjA1MzYy*_ga_WH2QY8WWF5*MTcyOTc3MDg2Ny40LjEuMTcyOTc3MDg5OC4yOS4wLjA.#delegate_domain-wide_authority_to_your_service_account). Then, select **Next**.
 
 ### 7. Confirm Workspace Administrator Email
 
@@ -104,7 +104,7 @@ Enter the email associated with the Google Workspace Administrator account. Your
 
 To verify that the integration has been successful:
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com/), go to **Integrations**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com/), go to **Integrations**.
 2. Under **Your integrations**, locate your integration, and ensure that the integration displays **CASB+EMAIL** under **Type**.
 
 Note

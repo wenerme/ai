@@ -18,7 +18,7 @@ Connect a self-hosted web application to Cloudflare so authorized users can acce
 
 To explore other access scenarios, refer to [Secure private apps](https://developers.cloudflare.com/cloudflare-one/setup/secure-private-apps/).
 
-This guide follows the same steps as the **Get Started** experience in the [Cloudflare One dashboard ↗](https://one.dash.cloudflare.com).
+This guide follows the same steps as the **Get Started** experience in the [Cloudflare One dashboard ↗︎](https://one.dash.cloudflare.com).
 
 ## How it works
 
@@ -37,7 +37,7 @@ This guide follows the same steps as the **Get Started** experience in the [Clou
 
 In this step, you describe the internal application you want to make available through Cloudflare.
 
-1. In [Cloudflare One ↗](https://one.dash.cloudflare.com), select the **Get Started** tab.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), select the **Get Started** tab.
 2. For **Set up secure access to private apps from any browser**, select **Get started**.
 3. For **Connect a private web application**, select **Continue**.
 4. On the **Connect and access private web applications** screen, select **Continue**.
@@ -92,7 +92,7 @@ The dashboard confirms that your application is available and protected behind C
   2. On the Access login screen, enter one of the email addresses you added to your Access policy.
   3. Select **Send me a code**.
   4. Enter the code from your email and select **Sign in**.
-- **Explore more**: Review your applications and policies under **Zero Trust** > **Access controls**, and your tunnels in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) under **Networking** > **Tunnels**.
+- **Explore more**: Review your applications and policies under **Zero Trust** > **Access controls**, and your tunnels in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) under **Networking** > **Tunnels**.
 - **Configure an identity provider**: Replace email one-time PINs with your organization's identity provider for a seamless login experience. For more information, refer to [Identity providers](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/).
 
 For in-depth guidance on clientless access, refer to the [Clientless access learning path](https://developers.cloudflare.com/learning-paths/clientless-access/concepts/what-is-clientless-access/).

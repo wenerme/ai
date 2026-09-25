@@ -56,13 +56,13 @@ Cloudflare also labels every Verified bot or agent by how it is operated.
 | **Direct** | Operated by a single, narrow operator — usually on the operator's own infrastructure. Only that operator can send requests that present as this bot. |
 | **Intermediary** | An agentic service that a wide range of end users can operate. The operator runs the software, but each action is initiated by a different end user. |
 
-Because an **intermediary** acts on behalf of many different end users, the operator and the end user are not the same party. This introduces **transitive trust**: you may trust the intermediary operator, but not necessarily every end user driving it. Cloudflare is experimenting with forwarding information about the end user (using the `Forwarded` header defined in [RFC 7239 ↗](https://www.rfc-editor.org/info/rfc7239)) so that website owners can apply their preferences to the party ultimately responsible for a request.
+Because an **intermediary** acts on behalf of many different end users, the operator and the end user are not the same party. This introduces **transitive trust**: you may trust the intermediary operator, but not necessarily every end user driving it. Cloudflare is experimenting with forwarding information about the end user (using the `Forwarded` header defined in [RFC 7239 ↗︎](https://www.rfc-editor.org/info/rfc7239)) so that website owners can apply their preferences to the party ultimately responsible for a request.
 
 ## Becoming a Verified bot
 
-You can request for your bot or agent to be added to Cloudflare's bots and agents directory by filling out an [online application ↗](https://dash.cloudflare.com/?to=/:account/configurations/verified-bots) in the Cloudflare dashboard.
+You can request for your bot or agent to be added to Cloudflare's bots and agents directory by filling out an [online application ↗︎](https://dash.cloudflare.com/?to=/:account/configurations/verified-bots) in the Cloudflare dashboard.
 
-Once Cloudflare approves a Verified bot, it should appear in [BotBase](https://developers.cloudflare.com/bots/botbase/), shared through [Cloudflare Radar's bots and agents directory ↗](https://radar.cloudflare.com/verified-bots).
+Once Cloudflare approves a Verified bot, it should appear in [BotBase](https://developers.cloudflare.com/bots/botbase/), shared through [Cloudflare Radar's bots and agents directory ↗︎](https://radar.cloudflare.com/verified-bots).
 
 The bot must be Verified using one of the following validation methods:
 

@@ -22,7 +22,7 @@ Domain registrars can take up to 24 hours to process the nameserver updates. You
 
 ## Lookup domain name registration
 
-1. Visit [WHOIS ↗](https://lookup.icann.org/) to look up your domain name registration.
+1. Visit [WHOIS ↗︎](https://lookup.icann.org/) to look up your domain name registration.
 2. In the text field, enter your domain name without `https://www.` and select **Lookup**.
 3. From **Domain Information**, make note of the nameserver information that displays. You will update those nameservers to point to Cloudflare.
 

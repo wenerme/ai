@@ -30,11 +30,11 @@ Alternatively, you can connect to your databases over in your private network us
 
 ### Cloud Console
 
-When creating the instance or when editing an existing instance in the [Google Cloud Console ↗](https://console.cloud.google.com/sql/instances):
+When creating the instance or when editing an existing instance in the [Google Cloud Console ↗︎](https://console.cloud.google.com/sql/instances):
 
 To allow Hyperdrive to reach your instance:
 
-1. In the [Cloud Console ↗](https://console.cloud.google.com/sql/instances), select the instance you want Hyperdrive to connect to.
+1. In the [Cloud Console ↗︎](https://console.cloud.google.com/sql/instances), select the instance you want Hyperdrive to connect to.
 2. Expand **Connections** > **Networking** > ensure **Public IP** is enabled > **Add a Network** and input `0.0.0.0/0`.
 3. Select **Done** > **Save** to persist your changes.
 4. Select **Overview** from the sidebar and note down the **Public IP address** of your instance.
@@ -50,7 +50,7 @@ With the username, password, public IP address and (optional) database name (def
 
 ### gcloud CLI
 
-The [gcloud CLI ↗](https://cloud.google.com/sdk/docs/install) allows you to create a new user and enable Hyperdrive to connect to your database.
+The [gcloud CLI ↗︎](https://cloud.google.com/sdk/docs/install) allows you to create a new user and enable Hyperdrive to connect to your database.
 
 Use `gcloud sql` to create a new user (for example, `hyperdrive-user`) with a strong password:
 
@@ -58,7 +58,7 @@ Use `gcloud sql` to create a new user (for example, `hyperdrive-user`) with a st
 gcloud sql users create hyperdrive-user --instance=YOUR_INSTANCE_NAME --password=SUFFICIENTLY_LONG_PASSWORD
 ```
 
-Run the following command to enable [Internet access ↗](https://cloud.google.com/sql/docs/postgres/configure-ip) to your database instance:
+Run the following command to enable [Internet access ↗︎](https://cloud.google.com/sql/docs/postgres/configure-ip) to your database instance:
 
 ```sh
 # If you have any existing authorized networks, ensure you provide those as a comma separated list.
@@ -66,7 +66,7 @@ Run the following command to enable [Internet access ↗](https://cloud.google.c
 gcloud sql instances patch YOUR_INSTANCE_NAME --authorized-networks="0.0.0.0/0"
 ```
 
-Refer to [Google Cloud's documentation ↗](https://cloud.google.com/sql/docs/postgres/create-manage-users) for additional configuration options.
+Refer to [Google Cloud's documentation ↗︎](https://cloud.google.com/sql/docs/postgres/create-manage-users) for additional configuration options.
 
 ## 2. Create a database configuration
 
@@ -109,7 +109,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    	"name": "hyperdrive-example",
    	"main": "src/index.ts",
    	// Set this to today's date
-   	"compatibility_date": "2026-09-22",
+   	"compatibility_date": "2026-09-25",
    	"compatibility_flags": [
    		"nodejs_compat"
    	],
@@ -128,7 +128,7 @@ To create a Hyperdrive configuration with the [Wrangler CLI](https://developers.
    name = "hyperdrive-example"
    main = "src/index.ts"
    # Set this to today's date
-   compatibility_date = "2026-09-22"
+   compatibility_date = "2026-09-25"
    compatibility_flags = [ "nodejs_compat" ]
 
    [[hyperdrive]]
@@ -197,7 +197,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -210,7 +210,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

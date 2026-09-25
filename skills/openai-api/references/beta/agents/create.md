@@ -72,7 +72,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Automatically selects the most detailed summary supported by the model.
 
-- `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
+- `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
 
   The service tier used for model requests. Defaults to `auto`.
 
@@ -95,6 +95,10 @@ Creates a reusable agent without storing credentials. See [agent configuration](
   - `"fast"`
 
     Uses the fast service tier.
+
+  - `"ultrafast"`
+
+    Uses the ultrafast service tier.
 
 - `text: optional AgentTextParam or null`
 
@@ -434,7 +438,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: "auto" or "default" or "flex" or 2 more`
+  - `service_tier: "auto" or "default" or "flex" or 3 more`
 
     The resolved service-tier policy used for model requests.
 
@@ -447,6 +451,8 @@ Creates a reusable agent without storing credentials. See [agent configuration](
     - `"priority"`
 
     - `"fast"`
+
+    - `"ultrafast"`
 
   - `text: AgentText`
 

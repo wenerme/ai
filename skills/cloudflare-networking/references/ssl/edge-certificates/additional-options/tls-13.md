@@ -37,7 +37,7 @@ To enable TLS 1.3 in the dashboard:
 1. In the Cloudflare dashboard, go to the **Edge Certificates** page. [Go to **Edge Certificates** ↗](https://dash.cloudflare.com/?to=/:account/:zone/ssl-tls/edge-certificates)
 2. For **TLS 1.3**, switch the toggle to **On**.
 
-To adjust your TLS 1.3 settings with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `tls_1_3` as the setting name in the URI path, and set the `value` parameter to your desired setting (`"on"`, `"zrt"` or `"off"`). `zrt` refers to [Zero Round Trip Time Resumption (0-RTT) ↗](https://blog.cloudflare.com/introducing-0-rtt/).
+To adjust your TLS 1.3 settings with the API, send a [`PATCH`](https://developers.cloudflare.com/api/resources/zones/subresources/settings/methods/edit/) request with `tls_1_3` as the setting name in the URI path, and set the `value` parameter to your desired setting (`"on"`, `"zrt"` or `"off"`). `zrt` refers to [Zero Round Trip Time Resumption (0-RTT) ↗︎](https://blog.cloudflare.com/introducing-0-rtt/).
 
 ### Troubleshooting
 
@@ -48,7 +48,7 @@ Since TLS 1.3 implementations are relatively new, some failures may occur. If yo
 - Client diagnostic information
 - Packet captures
 
-Chrome users should submit a [net-internals trace ↗](https://dev.chromium.org/for-testers/providing-network-details) to Google. Firefox users should [report bugs to Mozilla ↗](https://bugzilla.mozilla.org/home).
+Chrome users should submit a [net-internals trace ↗︎](https://dev.chromium.org/for-testers/providing-network-details) to Google. Firefox users should [report bugs to Mozilla ↗︎](https://bugzilla.mozilla.org/home).
 
 ## Limitations
 

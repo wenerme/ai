@@ -109,7 +109,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 2. In your AWS Firehose stream configuration, set the `HTTP Headers - X-Amz-Firehose-Access-Key` to the authorization token generated in the previous step.
 3. Send your AWS Firehose VPC flow log stream towards `https://aws-flow-logs.cloudflare.com/`.
-4. Select all of the AWS VPC flow log data fields that you want to send to Cloudflare. You should select the highest number AWS VPC flow log version that supports all the fields you want to export to Cloudflare (refer to [AWS flow log documentation ↗](https://docs.aws.amazon.com/vpc/latest/userguide/flow-log-records.html) for more information). For example, if you need a version 8 field like `reject-reason`, you must export all fields from versions 1 through 8. Cloudflare supports all seven templates for AWS VPC Flow logs.
+4. Select all of the AWS VPC flow log data fields that you want to send to Cloudflare. You should select the highest number AWS VPC flow log version that supports all the fields you want to export to Cloudflare (refer to [AWS flow log documentation ↗︎](https://docs.aws.amazon.com/vpc/latest/userguide/flow-log-records.html) for more information). For example, if you need a version 8 field like `reject-reason`, you must export all fields from versions 1 through 8. Cloudflare supports all seven templates for AWS VPC Flow logs.
 
 ### 3. Verify your cloud traffic via analytics
 

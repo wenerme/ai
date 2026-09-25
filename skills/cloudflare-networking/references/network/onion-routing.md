@@ -29,9 +29,9 @@ Onion Routing helps improve Tor browsing as follows:
 - Tor users no longer access your site via exit nodes, which can sometimes be compromised, and may snoop on user traffic.
 - Human Tor users and bots can be distinguished by our Onion services, such that interactive challenges are only served to malicious bot traffic.
 
-[Tor Browser ↗](https://tb-manual.torproject.org/about/) users receive an [alt-svc header ↗](https://httpwg.org/specs/rfc7838.html#alt-svc) as part of the response to the first request to your website. The browser then creates a Tor Circuit to access this website using the `.onion` TLD service provided by this header.
+[Tor Browser ↗︎](https://tb-manual.torproject.org/about/) users receive an [alt-svc header ↗︎](https://httpwg.org/specs/rfc7838.html#alt-svc) as part of the response to the first request to your website. The browser then creates a Tor Circuit to access this website using the `.onion` TLD service provided by this header.
 
-You should note that the visible domain in the user interface remains unchanged, as the host header and the SNI are preserved. However, the underlying connection changes to be routed through Tor, as the [UI denotes on the left of the address bar ↗](https://tb-manual.torproject.org/managing-identities/#managing-identities) with a Tor Circuit. Cloudflare does not provide a certificate for the `.onion` domain provided as part of alt-svc flow, which therefore cannot be accessed via HTTPS.
+You should note that the visible domain in the user interface remains unchanged, as the host header and the SNI are preserved. However, the underlying connection changes to be routed through Tor, as the [UI denotes on the left of the address bar ↗︎](https://tb-manual.torproject.org/managing-identities/#managing-identities) with a Tor Circuit. Cloudflare does not provide a certificate for the `.onion` domain provided as part of alt-svc flow, which therefore cannot be accessed via HTTPS.
 
 ## Enable Onion Routing
 

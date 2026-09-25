@@ -14,9 +14,9 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/radar/investigate/outages/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[Cloudflare Radar Outage Center (CROC) ↗](https://radar.cloudflare.com/outage-center) provides data on outages occurring around the world.
+[Cloudflare Radar Outage Center (CROC) ↗︎](https://radar.cloudflare.com/outage-center) provides data on outages occurring around the world.
 
-Refer the [blog post ↗](https://blog.cloudflare.com/announcing-cloudflare-radar-outage-center/) for more information but, in short, Radar provides the following information:
+Refer the [blog post ↗︎](https://blog.cloudflare.com/announcing-cloudflare-radar-outage-center/) for more information but, in short, Radar provides the following information:
 
 - **Location**: Where was the outage?
 - **ASN**: What autonomous system experienced a disruption in connectivity?
@@ -80,7 +80,7 @@ curl "https://api.cloudflare.com/client/v4/radar/annotations/outages?limit=5&off
 
 Refer to the [API reference](https://developers.cloudflare.com/api/resources/radar/subresources/annotations/subresources/outages/methods/get/) for more information regarding this endpoint.
 
-Having data on a given outage allows you to examine its impact through both [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows/) (like in the [Tonga outage](https://developers.cloudflare.com/radar/get-started/making-comparisons/#use-specific-timestamps) and [others ↗](https://blog.cloudflare.com/q3-2022-internet-disruption-summary/)) and [HTTP](https://developers.cloudflare.com/radar/investigate/http-requests/) data (for example, did the outage affect more mobile than desktop traffic?).
+Having data on a given outage allows you to examine its impact through both [NetFlows](https://developers.cloudflare.com/radar/investigate/netflows/) (like in the [Tonga outage](https://developers.cloudflare.com/radar/get-started/making-comparisons/#use-specific-timestamps) and [others ↗︎](https://blog.cloudflare.com/q3-2022-internet-disruption-summary/)) and [HTTP](https://developers.cloudflare.com/radar/investigate/http-requests/) data (for example, did the outage affect more mobile than desktop traffic?).
 
 Was this helpful?
 

@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/databases/third-party-integrations/planetscale/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-[PlanetScale ↗](https://planetscale.com/) is a database platform that provides MySQL-compatible and PostgreSQL databases, making them more scalable, easier and safer to manage.
+[PlanetScale ↗︎](https://planetscale.com/) is a database platform that provides MySQL-compatible and PostgreSQL databases, making them more scalable, easier and safer to manage.
 
 Note
 
@@ -30,7 +30,7 @@ You can connect Hyperdrive to any existing PlanetScale MySQL-compatible database
 
 ### PlanetScale Dashboard
 
-1. Go to the [**PlanetScale dashboard** ↗](https://app.planetscale.com/) and select the database you wish to connect to.
+1. Go to the [**PlanetScale dashboard** ↗︎](https://app.planetscale.com/) and select the database you wish to connect to.
 2. Click **Connect**. Enter `hyperdrive-user` as the password name (or your preferred name) and configure the permissions as desired. Select **Create password**. Note the username and password as they will not be displayed again.
 3. Select **Other** as your language or framework. Note down the database host, database name, database username, and password. You will need these to create a database configuration in Hyperdrive.
 
@@ -89,7 +89,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 	"name": "hyperdrive-example",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"compatibility_flags": [
 		"nodejs_compat"
 	],
@@ -108,7 +108,7 @@ This command outputs a binding for the [Wrangler configuration file](https://dev
 name = "hyperdrive-example"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 compatibility_flags = [ "nodejs_compat" ]
 
 [[hyperdrive]]
@@ -118,7 +118,7 @@ id = "<ID OF THE CREATED HYPERDRIVE CONFIGURATION>"
 
 ## 3. Use Hyperdrive from your Worker
 
-Install the [mysql2 ↗](https://github.com/sidorares/node-mysql2) driver:
+Install the [mysql2 ↗︎](https://github.com/sidorares/node-mysql2) driver:
 
 npmyarnpnpmbun
 
@@ -151,7 +151,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-22",
+	"compatibility_date": "2026-09-25",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -164,7 +164,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-22"
+compatibility_date = "2026-09-25"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -215,7 +215,7 @@ The minimum version of `mysql2` required for Hyperdrive is `3.13.0`.
 
 Note
 
-When connecting to a PlanetScale database with Hyperdrive, you should use a driver like [node-postgres (pg)](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/node-postgres/) or [Postgres.js](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/postgres-js/) to connect directly to the underlying database instead of the [PlanetScale serverless driver ↗](https://planetscale.com/docs/tutorials/planetscale-serverless-driver). Hyperdrive is optimized for database access for Workers and will perform global connection pooling and fast query routing by connecting directly to your database.
+When connecting to a PlanetScale database with Hyperdrive, you should use a driver like [node-postgres (pg)](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/node-postgres/) or [Postgres.js](https://developers.cloudflare.com/hyperdrive/examples/connect-to-postgres/postgres-drivers-and-libraries/postgres-js/) to connect directly to the underlying database instead of the [PlanetScale serverless driver ↗︎](https://planetscale.com/docs/tutorials/planetscale-serverless-driver). Hyperdrive is optimized for database access for Workers and will perform global connection pooling and fast query routing by connecting directly to your database.
 
 ## Next steps
 
@@ -227,8 +227,8 @@ When connecting to a PlanetScale database with Hyperdrive, you should use a driv
 
 To set up an integration with PlanetScale:
 
-1. You need to have an existing PlanetScale database to connect to. [Create a PlanetScale database ↗](https://planetscale.com/docs/tutorials/planetscale-quick-start-guide#create-a-database) or [import an existing database to PlanetScale ↗](https://planetscale.com/docs/imports/database-imports#overview).
-2. From the [PlanetScale web console ↗](https://planetscale.com/docs/concepts/web-console#get-started), create a `products` table with the following query:
+1. You need to have an existing PlanetScale database to connect to. [Create a PlanetScale database ↗︎](https://planetscale.com/docs/tutorials/planetscale-quick-start-guide#create-a-database) or [import an existing database to PlanetScale ↗︎](https://planetscale.com/docs/imports/database-imports#overview).
+2. From the [PlanetScale web console ↗︎](https://planetscale.com/docs/concepts/web-console#get-started), create a `products` table with the following query:
 
    ```sql
    CREATE TABLE products (
@@ -251,7 +251,7 @@ To set up an integration with PlanetScale:
 
 4. Configure the PlanetScale database credentials in your Worker:
 
-   You need to add your PlanetScale database credentials as secrets to your Worker. Get your connection details from the [PlanetScale Dashboard ↗](https://app.planetscale.com) by creating a connection string, then add them as secrets using Wrangler:
+   You need to add your PlanetScale database credentials as secrets to your Worker. Get your connection details from the [PlanetScale Dashboard ↗︎](https://app.planetscale.com) by creating a connection string, then add them as secrets using Wrangler:
 
    ```sh
    # Add the database host as a secret
@@ -319,7 +319,7 @@ To set up an integration with PlanetScale:
 
 
 
-To learn more about PlanetScale, refer to [PlanetScale's official documentation ↗](https://docs.planetscale.com/).
+To learn more about PlanetScale, refer to [PlanetScale's official documentation ↗︎](https://docs.planetscale.com/).
 
 Was this helpful?
 

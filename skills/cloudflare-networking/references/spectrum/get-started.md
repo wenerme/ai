@@ -38,7 +38,7 @@ Add your application via Dashboard
 4. Under **Domain**, enter the domain that will use Spectrum.
 5. Under **Edge Port**, enter the port Cloudflare should use for your application.
 6. Under **Origin**, enter your application's origin IP and port.
-7. If your application requires the client IP and supports <a href="https://www.haproxy.com/blog/haproxy/proxy-protocol/">Proxy Protocol ↗</a>, enable **Proxy Protocols**. Proxy Protocol is a method for a proxy like Cloudflare to send the client IP to the origin application.
+7. If your application requires the client IP and supports <a href="https://www.haproxy.com/blog/haproxy/proxy-protocol/">Proxy Protocol ↗︎</a>, enable **Proxy Protocols**. Proxy Protocol is a method for a proxy like Cloudflare to send the client IP to the origin application.
 8. Select **Add**.
 
 </details>
@@ -130,7 +130,7 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/apps" \
 
 ## Create a Spectrum application using a CNAME record
 
-To create a Spectrum application using a CNAME record, you will need to create a [CNAME record ↗](https://www.cloudflare.com/learning/dns/dns-records/dns-cname-record/) on your Cloudflare hosted zone that points to your origin's hostname. This is required to resolve to your hostname origin. Refer to [Create DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records), for more information. When using a CNAME as an origin, note that Cloudflare needs to be authoritative for that zone. When using the API, the `origin_dns` field takes as input the CNAME record.
+To create a Spectrum application using a CNAME record, you will need to create a [CNAME record ↗︎](https://www.cloudflare.com/learning/dns/dns-records/dns-cname-record/) on your Cloudflare hosted zone that points to your origin's hostname. This is required to resolve to your hostname origin. Refer to [Create DNS records](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/#create-dns-records), for more information. When using a CNAME as an origin, note that Cloudflare needs to be authoritative for that zone. When using the API, the `origin_dns` field takes as input the CNAME record.
 
 <details>
 
@@ -448,7 +448,7 @@ Set <code>origin_direct</code> to the private IP of your origin and <code>virtua
 
 You can now proxy traffic through Cloudflare without additional configuration. As you run traffic through Cloudflare, you will see the last minute of traffic from **Spectrum** in the dashboard.
 
-If you have any feedback, please [let us know ↗](https://community.cloudflare.com/c/website-application-performance/spectrum/48).
+If you have any feedback, please [let us know ↗︎](https://community.cloudflare.com/c/website-application-performance/spectrum/48).
 
 Was this helpful?
 

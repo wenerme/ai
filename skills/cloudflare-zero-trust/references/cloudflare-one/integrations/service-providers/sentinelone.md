@@ -44,7 +44,7 @@ To retrieve those values:
 
 ### 2. Add SentinelOne as a service provider
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Service providers**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Integrations** > **Service providers**.
 2. Select **Add new**.
 3. Select **SentinelOne**.
 4. Enter any name for the provider. This name will be used throughout the dashboard to reference this connection.
@@ -56,7 +56,7 @@ To retrieve those values:
 
 ### 3. Configure the posture check
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks** > **Service provider checks**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Reusable components** > **Posture checks** > **Service provider checks**.
 2. Select **Add a check**.
 3. Select the SentinelOne provider.
 4. Enter any name for the posture check.
@@ -76,7 +76,7 @@ Device posture data is gathered from the SentinelOne Management APIs. For more i
 | Active Threats | Number of active threats on the device |
 | Is Active | Whether the SentinelOne Agent is active |
 | Network status | Whether the SentinelOne Agent is connected to the SentinelOne service |
-| Operational State | The [operational state ↗](https://community.sentinelone.com/s/login/?ec=302&startURL=%2Fs%2Farticle%2F000005285) of the SentinelOne Agent. |
+| Operational State | The [operational state ↗︎](https://community.sentinelone.com/s/login/?ec=302&startURL=%2Fs%2Farticle%2F000005285) of the SentinelOne Agent. |
 
 ### Detect user risk behavior
 

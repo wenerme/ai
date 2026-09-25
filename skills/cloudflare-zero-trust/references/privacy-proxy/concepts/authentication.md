@@ -58,7 +58,7 @@ Use PSK only for testing. For production deployments, use [Privacy Pass tokens](
 
 ## Privacy Pass tokens
 
-[Privacy Pass ↗](https://datatracker.ietf.org/wg/privacypass/about/) is a protocol that allows clients to authenticate without revealing their identity. Tokens are cryptographically unlinkable, meaning the proxy cannot correlate different requests from the same user.
+[Privacy Pass ↗︎](https://datatracker.ietf.org/wg/privacypass/about/) is a protocol that allows clients to authenticate without revealing their identity. Tokens are cryptographically unlinkable, meaning the proxy cannot correlate different requests from the same user.
 
 ### How it works
 
@@ -140,13 +140,13 @@ For production deployments using Privacy Pass:
 2. Configure attestation to define how clients prove their identity before receiving tokens.
 3. Distribute issuer configuration. Clients need the issuer's public key and endpoint to request tokens.
 
-[Contact us ↗](https://www.cloudflare.com/lp/privacy-edge/) to configure Privacy Pass for your deployment.
+[Contact us ↗︎](https://www.cloudflare.com/lp/privacy-edge/) to configure Privacy Pass for your deployment.
 
 ---
 
 ## Mutual TLS (mTLS)
 
-[Mutual TLS (mTLS) authentication ↗](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) ensures that traffic is both secure and trusted in both directions. The client presents a certificate to the proxy, and the proxy validates it before allowing the connection.
+[Mutual TLS (mTLS) authentication ↗︎](https://www.cloudflare.com/learning/access-management/what-is-mutual-tls/) ensures that traffic is both secure and trusted in both directions. The client presents a certificate to the proxy, and the proxy validates it before allowing the connection.
 
 ### How it works
 
@@ -183,8 +183,8 @@ Proxy B authenticates itself to Proxy A using TLS. Depending on your configurati
 
 ## Related resources
 
-- [Privacy Pass Working Group ↗](https://datatracker.ietf.org/wg/privacypass/about/) - IETF working group developing the Privacy Pass protocol.
-- [Supporting the latest version of the Privacy Pass protocol ↗](https://blog.cloudflare.com/supporting-the-latest-version-of-the-privacy-pass-protocol/) - Cloudflare blog post on Privacy Pass implementation.
+- [Privacy Pass Working Group ↗︎](https://datatracker.ietf.org/wg/privacypass/about/) - IETF working group developing the Privacy Pass protocol.
+- [Supporting the latest version of the Privacy Pass protocol ↗︎](https://blog.cloudflare.com/supporting-the-latest-version-of-the-privacy-pass-protocol/) - Cloudflare blog post on Privacy Pass implementation.
 
 Was this helpful?
 

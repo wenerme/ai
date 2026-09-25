@@ -22,7 +22,7 @@ The fastest way to start filtering DNS queries from a location is by changing th
 
 To add a DNS location to Gateway:
 
-1. In the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), go to **Zero Trust** > **Networks** > **Resolvers & Proxies** > **DNS locations**.
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Networks** > **Resolvers & Proxies** > **DNS locations**.
 2. Select **Add a location**.
 3. Choose a name for your DNS location.
 4. Choose at least one [DNS endpoint](https://developers.cloudflare.com/cloudflare-one/networks/resolvers-and-proxies/dns/locations/#dns-endpoints) to resolve your organization's DNS queries.
@@ -102,9 +102,9 @@ To avoid this issue, use the [Cloudflare One Client](https://developers.cloudfla
 
 ### Third-party filtering
 
-Gateway will not properly filter traffic sent through third-party VPNs or other Internet filtering software, such as [iCloud Private Relay ↗](https://support.apple.com/102602) or [Google Chrome IP Protection ↗](https://github.com/GoogleChrome/ip-protection#ip-protection). To ensure your DNS policies apply to your traffic, Cloudflare recommends turning off software that may interfere with Gateway.
+Gateway will not properly filter traffic sent through third-party VPNs or other Internet filtering software, such as [iCloud Private Relay ↗︎](https://support.apple.com/102602) or [Google Chrome IP Protection ↗︎](https://github.com/GoogleChrome/ip-protection#ip-protection). To ensure your DNS policies apply to your traffic, Cloudflare recommends turning off software that may interfere with Gateway.
 
-To turn off iCloud Private Relay, refer to the Apple user guides for [macOS ↗](https://support.apple.com/guide/mac-help/use-icloud-private-relay-mchlecadabe0/) or [iOS ↗](https://support.apple.com/guide/iphone/protect-web-browsing-icloud-private-relay-iph499d287c2/).
+To turn off iCloud Private Relay, refer to the Apple user guides for [macOS ↗︎](https://support.apple.com/guide/mac-help/use-icloud-private-relay-mchlecadabe0/) or [iOS ↗︎](https://support.apple.com/guide/iphone/protect-web-browsing-icloud-private-relay-iph499d287c2/).
 
 Was this helpful?
 

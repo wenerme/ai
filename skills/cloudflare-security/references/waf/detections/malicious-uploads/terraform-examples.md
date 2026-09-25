@@ -16,7 +16,7 @@ Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 The following Terraform configuration examples address common scenarios for managing, configuring, and using WAF content scanning.
 
-For more information, refer to the [Terraform Cloudflare provider documentation ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
+For more information, refer to the [Terraform Cloudflare provider documentation ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs).
 
 If you are using the Cloudflare API, refer to [Common API calls](https://developers.cloudflare.com/waf/detections/malicious-uploads/api-calls/).
 
@@ -64,7 +64,7 @@ At least one of the following <a href="https://developers.cloudflare.com/fundame
 
 </details>
 
-Configure the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
+Configure the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resource:
 
 ```tf
 resource "cloudflare_ruleset" "zone_custom_firewall_malicious_uploads" {

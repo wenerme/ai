@@ -42,7 +42,7 @@ This table outlines the Firewall Rules features and entitlements available with 
 - To start building your own firewall rules, refer to one of the following pages:
   - [Manage firewall rules in the dashboard](https://developers.cloudflare.com/firewall/cf-dashboard/create-edit-delete-rules/)
   - [Manage firewall rules via the APIs](https://developers.cloudflare.com/firewall/api/)
-- You can also manage firewall rules through Terraform. For more information, refer to [Getting Started with Terraform ↗](https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1/).
+- You can also manage firewall rules through Terraform. For more information, refer to [Getting Started with Terraform ↗︎](https://blog.cloudflare.com/getting-started-with-terraform-and-cloudflare-part-1/).
 
 ## Related resources
 

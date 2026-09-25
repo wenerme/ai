@@ -30,7 +30,7 @@ For more details, refer to [Connect client devices](https://developers.cloudflar
 
 ## Prerequisites
 
-- A [Cloudflare account ↗](https://dash.cloudflare.com/sign-up)
+- A [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up)
 - Two Linux, Windows, macOS, Android, or iOS devices you want to connect together.
 
 ## Step 1: Enroll your first device

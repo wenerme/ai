@@ -42,7 +42,7 @@ For complete response and origin requirements, refer to [Range request behavior]
 
 ## Request collapsing
 
-When multiple requests arrive simultaneously at a single Cloudflare data center for the same asset that is not in cache (a cache miss), Cloudflare uses a cache lock to avoid sending duplicate requests to your origin. Only the first request is forwarded to the origin to fetch the asset. The remaining requests wait for the first request to complete, after which the response is [streamed ↗](https://blog.cloudflare.com/introducing-concurrent-streaming-acceleration/) to all waiting requests.
+When multiple requests arrive simultaneously at a single Cloudflare data center for the same asset that is not in cache (a cache miss), Cloudflare uses a cache lock to avoid sending duplicate requests to your origin. Only the first request is forwarded to the origin to fetch the asset. The remaining requests wait for the first request to complete, after which the response is [streamed ↗︎](https://blog.cloudflare.com/introducing-concurrent-streaming-acceleration/) to all waiting requests.
 
 The cache lock ensures that Cloudflare only sends one request at a time to the origin for a given asset from a single location in Cloudflare's network, preventing the origin from receiving excessive traffic.
 

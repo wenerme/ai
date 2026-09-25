@@ -18,7 +18,7 @@ Use Workers Static Assets Instead
 
 You should use [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/) to host full-stack applications instead of Workers Sites. It has been deprecated in Wrangler v4, and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) does not support Workers Sites. Do not use Workers Sites for new projects.
 
-Workers Sites require [Wrangler ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler) — make sure to use the [latest version](https://developers.cloudflare.com/workers/wrangler/install-and-update/#update-wrangler).
+Workers Sites require [Wrangler ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/wrangler) — make sure to use the [latest version](https://developers.cloudflare.com/workers/wrangler/install-and-update/#update-wrangler).
 
 If you have a pre-existing Worker project, you can use Workers Sites to serve static assets to the Worker.
 
@@ -101,7 +101,7 @@ async function handleEvent(event) {
 }
 ```
 
-For more information on the configurable options of `getAssetFromKV()` refer to [kv-asset-handler docs ↗](https://github.com/cloudflare/workers-sdk/tree/main/packages/kv-asset-handler).
+For more information on the configurable options of `getAssetFromKV()` refer to [kv-asset-handler docs ↗︎](https://github.com/cloudflare/workers-sdk/tree/main/packages/kv-asset-handler).
 
 5. Run `wrangler deploy` or `npx wrangler deploy` as you would normally with your Worker project. Wrangler will automatically upload the assets found in the configured directory.
 

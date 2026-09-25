@@ -18,7 +18,7 @@ You must [generate an Access Key](https://developers.cloudflare.com/r2/api/token
 
 
 
-This example uses the [aws-sdk-kotlin ↗](https://github.com/aws/aws-sdk-kotlin). You must pass in the R2 configuration credentials when instantiating your `S3` client:
+This example uses the [aws-sdk-kotlin ↗︎](https://github.com/aws/aws-sdk-kotlin). You must pass in the R2 configuration credentials when instantiating your `S3` client:
 
 ## Basic Usage
 

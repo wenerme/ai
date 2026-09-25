@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dnssec/enable-nsec3/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-As explained in [our blog ↗](https://blog.cloudflare.com/black-lies/), Cloudflare's implementation of negative answers with NSEC is protected against zone walking<sup>[1](#user-content-fn-1)</sup>. This implementation, also referred to as Compact Denial of Existence ([RFC 9824 ↗](https://www.rfc-editor.org/rfc/rfc9824.html)), removes the need for NSEC3 and is significantly more efficient.
+As explained in [our blog ↗︎](https://blog.cloudflare.com/black-lies/), Cloudflare's implementation of negative answers with NSEC is protected against zone walking<sup>[1](#user-content-fn-1)</sup>. This implementation, also referred to as Compact Denial of Existence ([RFC 9824 ↗︎](https://www.rfc-editor.org/rfc/rfc9824.html)), removes the need for NSEC3 and is significantly more efficient.
 
 However, if you must use NSEC3 for compliance reasons, you can enable it as explained below.
 

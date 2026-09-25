@@ -473,7 +473,7 @@ Note
 
 **Render approval cards from `pendingExecutions()`, not the transcript.** The `pending` array in the paused tool output is a *truncated preview* — args are bounded (\~2 KB each) so they do not blow up model context, but the full args (up to 1 MB) are what actually execute on approve. A human approving a gated call must see the authoritative args, so fetch them via `pendingExecutions(executionId)` before enabling the Approve button.
 
-For a working approval card, refer to the [`assistant` example ↗](https://github.com/cloudflare/agents/tree/main/examples/assistant).
+For a working approval card, refer to the [`assistant` example ↗︎](https://github.com/cloudflare/agents/tree/main/examples/assistant).
 
 ### The runtime handle
 

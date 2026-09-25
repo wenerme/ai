@@ -36,7 +36,7 @@ This message appears when the account or domain involved has an outstanding unpa
 As a reference, the full error messages you may see are:
 
 - "Due to a Billing related issue, the zone cannot be upgraded at this time. Please visit the Billing section to ensure there is no outstanding balance."
-- "Refer to [https://cfl.re/3VUQyyL ↗](https://cfl.re/3VUQyyL) for assistance. For security reasons, there is a problem with your billing profile."
+- "Refer to [https://cfl.re/3VUQyyL ↗︎](https://cfl.re/3VUQyyL) for assistance. For security reasons, there is a problem with your billing profile."
 
 ## Verify the fix
 

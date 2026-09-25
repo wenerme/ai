@@ -26,7 +26,7 @@ Before creating a site, ensure you have set up at least one on-ramp. Then, follo
 
 ## Add a site
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Go to **Insights** > **Network visibility**.
 3. In **Network overview**, select **Add site**.
 4. Add a name and description for your new site. Optionally, you can also add the geographical coordinates for your site in **Latitude** and **Longitude**. If you add geographical coordinates, your site's location will appear in the map once created.
@@ -95,7 +95,7 @@ Cloudflare WAN site data
 
 To start using network overview:
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Go to **Insights** > **Network visibility**.
 
 You will have access to an overview map with all your active sites, and any alerts for sites that are unhealthy or have no status available to them.
@@ -141,7 +141,7 @@ Select one of your sites to have access to a more detailed view of its traffic, 
 
 ### Add or remove on-ramps
 
-1. Log in to [Cloudflare One ↗](https://one.dash.cloudflare.com/).
+1. Log in to [Cloudflare One ↗︎](https://one.dash.cloudflare.com/).
 2. Go to **Insights** > **Network visibility**.
 3. In **Network overview** > **Traffic overview**, find your site > select the three dots in front of it > **Edit**.
 4. Select **On-ramps**.

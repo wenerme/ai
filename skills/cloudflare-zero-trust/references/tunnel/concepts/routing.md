@@ -31,7 +31,7 @@ When you add a route through the dashboard, Cloudflare automatically creates a D
 
 Note
 
-Public hostname routes proxy traffic through Cloudflare. On Free, Pro, and Business plans, the [service-specific terms ↗](https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-free-pro-or-business) require you to use a specific paid service to serve video and other large files.
+Public hostname routes proxy traffic through Cloudflare. On Free, Pro, and Business plans, the [service-specific terms ↗︎](https://www.cloudflare.com/service-specific-terms-application-services/#content-delivery-network-free-pro-or-business) require you to use a specific paid service to serve video and other large files.
 
 Refer to [Delivering videos with Cloudflare](https://developers.cloudflare.com/fundamentals/reference/policies-compliances/delivering-videos-with-cloudflare/) for more information. To transfer large files privately, use a [private network route](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/) instead.
 
@@ -55,7 +55,7 @@ The table below lists the service types you can route to a public hostname. Non-
 
 ## IPv6 service addresses
 
-When the service value is an IPv6 literal, wrap the address in square brackets as defined by [RFC 3986 ↗](https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2). The brackets are required so that the `:` characters in the address are not confused with the port separator.
+When the service value is an IPv6 literal, wrap the address in square brackets as defined by [RFC 3986 ↗︎](https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.2). The brackets are required so that the `:` characters in the address are not confused with the port separator.
 
 | Service type | Example `service` value |
 | --- | --- |
@@ -77,7 +77,7 @@ The `cfargotunnel.com` subdomain only proxies traffic for DNS records in the sam
 
 To create a DNS record for a Cloudflare Tunnel:
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/) and go to **DNS Records** for your domain. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/) and go to **DNS Records** for your domain. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
 2. Select **Add record**.
 3. Enter the following values:
    - **Type**: *CNAME*
@@ -207,7 +207,7 @@ Local connection preference
 
 If you notice traffic imbalances across endpoints in different locations, you may need to adjust your load balancer configuration.
 
-Cloudflare uses <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network/">Anycast routing ↗</a> to direct end user requests to the nearest data center. <code>cloudflared</code> prefers to serve requests using connections in the same data center, which can affect how traffic is distributed across endpoints.
+Cloudflare uses <a href="https://www.cloudflare.com/learning/cdn/glossary/anycast-network/">Anycast routing ↗︎</a> to direct end user requests to the nearest data center. <code>cloudflared</code> prefers to serve requests using connections in the same data center, which can affect how traffic is distributed across endpoints.
 
 If you run <a href="https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability"><code>cloudflared</code> replicas</a> on the same tunnel UUID, consider switching to separate tunnels for more granular control over <a href="https://developers.cloudflare.com/load-balancing/understand-basics/traffic-steering/">traffic steering</a>.
 
@@ -215,7 +215,7 @@ If you run <a href="https://developers.cloudflare.com/tunnel/configuration/#repl
 
 ## Cloudflare settings
 
-Published applications inherit the Cloudflare settings for their hostname, including [cache rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), [WAF rules](https://developers.cloudflare.com/waf/), and other [Rules](https://developers.cloudflare.com/rules/) configurations. You can change these settings for each hostname in the [Cloudflare dashboard ↗](https://dash.cloudflare.com/).
+Published applications inherit the Cloudflare settings for their hostname, including [cache rules](https://developers.cloudflare.com/cache/how-to/cache-rules/), [WAF rules](https://developers.cloudflare.com/waf/), and other [Rules](https://developers.cloudflare.com/rules/) configurations. You can change these settings for each hostname in the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/).
 
 If you use a load balancer, settings are applied to the load balancer hostname instead.
 

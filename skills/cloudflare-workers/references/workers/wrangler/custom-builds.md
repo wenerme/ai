@@ -18,7 +18,7 @@ Custom builds are a way for you to customize how your code is compiled, before b
 
 Note
 
-Wrangler runs [esbuild ↗](https://esbuild.github.io/) by default as part of the `dev` and `deploy` commands, and bundles your Worker project into a single Worker script. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/).
+Wrangler runs [esbuild ↗︎](https://esbuild.github.io/) by default as part of the `dev` and `deploy` commands, and bundles your Worker project into a single Worker script. Refer to [Bundling](https://developers.cloudflare.com/workers/wrangler/bundling/).
 
 ## Configure custom builds
 

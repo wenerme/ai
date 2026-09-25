@@ -54,7 +54,7 @@ The SDK ecosystem follows semantic versioning, which defines versions as follows
 
 Caution
 
-As Cloudflare has recently swapped to [automatically generating our libraries using OpenAPI ↗](https://blog.cloudflare.com/lessons-from-building-an-automated-sdk-pipeline), we have relaxed the strict versioning requirements on the libraries (Terraform is not changing). Minor releases *may* contain breaking changes in the forms of method, structure, or type renames as the service owners stabilize their schemas and iterate on usability improvements.
+As Cloudflare has recently swapped to [automatically generating our libraries using OpenAPI ↗︎](https://blog.cloudflare.com/lessons-from-building-an-automated-sdk-pipeline), we have relaxed the strict versioning requirements on the libraries (Terraform is not changing). Minor releases *may* contain breaking changes in the forms of method, structure, or type renames as the service owners stabilize their schemas and iterate on usability improvements.
 
 If this is not suitable for your use case, pin to a known good version or use the previous major version of the library.
 
@@ -68,7 +68,7 @@ Alongside the automatic migration approach, we provide documentation on the chan
 
 ## Related resources
 
-- [Semantic versioning definitions ↗](https://semver.org/)
+- [Semantic versioning definitions ↗︎](https://semver.org/)
 - [Cloudflare's Terraform documentation](https://developers.cloudflare.com/terraform/)
 
 Was this helpful?

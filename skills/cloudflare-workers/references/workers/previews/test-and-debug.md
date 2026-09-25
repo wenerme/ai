@@ -131,7 +131,7 @@ Useful fields include `scriptName` (Worker name), `previewSlug` (Preview name), 
 
 Per-Preview metrics are also visible in the dashboard under the Preview's **Metrics** tab.
 
-You can also query Preview observability data using the [Workers Observability MCP server ↗](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability).
+You can also query Preview observability data using the [Workers Observability MCP server ↗︎](https://github.com/cloudflare/mcp-server-cloudflare/tree/main/apps/workers-observability).
 
 ## Browser evidence
 

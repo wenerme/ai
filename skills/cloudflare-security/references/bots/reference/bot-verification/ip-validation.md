@@ -18,7 +18,7 @@ The IP validation method aims to identify all of the IP addresses that a bot may
 
 Cloudflare can achieve this in two ways:
 
-- **Using IP list provided by the bot owner**: The bot owner can host a public list of IP ranges (for example, [Googlebot's list ↗](https://developers.google.com/static/search/apis/ipranges/googlebot.json)). Cloudflare fetches and uses this list directly for validation.
+- **Using IP list provided by the bot owner**: The bot owner can host a public list of IP ranges (for example, [Googlebot's list ↗︎](https://developers.google.com/static/search/apis/ipranges/googlebot.json)). Cloudflare fetches and uses this list directly for validation.
 - **Using Domain-based reverse DNS**: The bot owner can provide a domain (or set of domains) that their bot requests originate from. Cloudflare collects the IP addresses observed in the requests with the bot's user agent, and performs reverse DNS lookups. If the reverse DNS of an IP resolves to one of the provided domains, Cloudflare considers it valid and stores it.
 
 ## Public IP List

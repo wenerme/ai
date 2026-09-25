@@ -39,7 +39,7 @@ The new version of WAF Managed Rules provides the following benefits over the pr
   - Deploy the Cloudflare OWASP Core Ruleset on all traffic that does not contain `/api/*` in the path.
   - Disable Managed Rulesets across my account for traffic coming from my IP.
 
-For more information on the benefits of WAF Managed Rules, refer to our [blog post ↗](https://blog.cloudflare.com/new-cloudflare-waf/).
+For more information on the benefits of WAF Managed Rules, refer to our [blog post ↗︎](https://blog.cloudflare.com/new-cloudflare-waf/).
 
 ---
 
@@ -120,13 +120,13 @@ To work with WAF Managed Rules you must use the [Rulesets API](https://developer
 
 Once the upgrade is complete, the following Terraform resources for configuring WAF managed rules **will stop working**:
 
-- [`cloudflare_waf_package` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/3.35.0/docs/resources/waf_package)
-- [`cloudflare_waf_group` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/3.35.0/docs/resources/waf_group)
-- [`cloudflare_waf_rule` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/3.35.0/docs/resources/waf_rule)
+- [`cloudflare_waf_package` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/3.35.0/docs/resources/waf_package)
+- [`cloudflare_waf_group` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/3.35.0/docs/resources/waf_group)
+- [`cloudflare_waf_rule` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/3.35.0/docs/resources/waf_rule)
 
-These resources were only supported in the Terraform Cloudflare provider up to version 3.35. Version 4.x [no longer supports these resources ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-4-upgrade#resources-1).
+These resources were only supported in the Terraform Cloudflare provider up to version 3.35. Version 4.x [no longer supports these resources ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/guides/version-4-upgrade#resources-1).
 
-To manage the configuration of the new WAF Managed Rules using Terraform, you must use [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resources.
+To manage the configuration of the new WAF Managed Rules using Terraform, you must use [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) resources.
 
 ---
 
@@ -166,7 +166,7 @@ You can start the WAF upgrade in the Cloudflare dashboard or via API.
 
 ### Using the dashboard
 
-1. Log in to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/), and select your account and zone.
+1. Log in to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), and select your account and zone.
 2. A) If you are using the old dashboard:
    - Go to **Security** > **WAF** > **Managed rules** tab.
 
@@ -415,11 +415,11 @@ For more information, refer to the following resources:
 
 ### Configuring the new WAF Managed Rules using Terraform
 
-Instead of using the previous resources for managing WAF packages, rule groups, and rules, you must now use the [`cloudflare_ruleset` ↗](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) Terraform resource to configure WAF Managed Rules. For configuration examples, refer to [WAF Managed Rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/).
+Instead of using the previous resources for managing WAF packages, rule groups, and rules, you must now use the [`cloudflare_ruleset` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/ruleset) Terraform resource to configure WAF Managed Rules. For configuration examples, refer to [WAF Managed Rules configuration using Terraform](https://developers.cloudflare.com/terraform/additional-configurations/waf-managed-rulesets/).
 
 #### Replace your configuration using `cf-terraforming`
 
-You can use the [`cf-terraforming` ↗](https://github.com/cloudflare/cf-terraforming) tool to generate the Terraform configuration for your new WAF Managed Rules configuration after you upgrade. Then, import the new resources to Terraform state.
+You can use the [`cf-terraforming` ↗︎](https://github.com/cloudflare/cf-terraforming) tool to generate the Terraform configuration for your new WAF Managed Rules configuration after you upgrade. Then, import the new resources to Terraform state.
 
 The recommended steps for replacing your old WAF managed rules configuration in Terraform with a new ruleset-based configuration for the new WAF Managed Rules are the following:
 
@@ -542,7 +542,7 @@ The recommended steps for replacing your old WAF managed rules configuration in 
 For details on importing Cloudflare resources to Terraform and using the `cf-terraforming` tool, refer to the following resources:
 
 - [Import Cloudflare resources](https://developers.cloudflare.com/terraform/advanced-topics/import-cloudflare-resources/)
-- [`cf-terraforming` GitHub repository ↗](https://github.com/cloudflare/cf-terraforming)
+- [`cf-terraforming` GitHub repository ↗︎](https://github.com/cloudflare/cf-terraforming)
 
 ---
 

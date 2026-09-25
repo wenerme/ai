@@ -43,7 +43,7 @@ Valid options for the `options` object include:
 - `encodeBody` string
   - Workers have to compress data according to the `content-encoding` header when transmitting, to serve data that is already compressed, this property has to be set to `"manual"`, otherwise the default is `"automatic"`.
 - `headers` Headers | ByteString
-  - Any headers to add to your response that are contained within a [`Headers`](https://developers.cloudflare.com/workers/runtime-apis/request/#parameters) object or object literal of [`ByteString` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) key-value pairs.
+  - Any headers to add to your response that are contained within a [`Headers`](https://developers.cloudflare.com/workers/runtime-apis/request/#parameters) object or object literal of [`ByteString` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) key-value pairs.
 - `status` int
   - The status code for the response, such as `200`.
 - `statusText` string
@@ -85,16 +85,16 @@ Valid options for the `options` object include:
 
 ### Additional instance methods
 
-`Response` implements the [`Body` ↗](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#body) mixin of the [Fetch API ↗](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), and therefore `Response` instances additionally have the following methods available:
+`Response` implements the [`Body` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#body) mixin of the [Fetch API ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), and therefore `Response` instances additionally have the following methods available:
 
 - `arrayBuffer()` : Promise\<ArrayBuffer>
-  - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with an [`ArrayBuffer` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer).
+  - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with an [`ArrayBuffer` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer).
 - `formData()` : Promise\<FormData>
-  - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with a [`FormData` ↗](https://developer.mozilla.org/en-US/docs/Web/API/FormData) object.
+  - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with a [`FormData` ↗︎](https://developer.mozilla.org/en-US/docs/Web/API/FormData) object.
 - `json()` : Promise\<JSON>
-  - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with the result of parsing the body text as [`JSON` ↗](https://developer.mozilla.org/en-US/docs/Web/).
+  - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with the result of parsing the body text as [`JSON` ↗︎](https://developer.mozilla.org/en-US/docs/Web/).
 - `text()` : Promise\<USVString>
-  - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with a [`USVString` ↗](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) (text).
+  - Takes a [`Response`](#response) stream, reads it to completion, and returns a promise that resolves with a [`USVString` ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) (text).
 
 ### Set the `Content-Length` header
 

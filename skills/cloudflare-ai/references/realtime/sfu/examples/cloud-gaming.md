@@ -127,7 +127,7 @@ A Worker authenticates browser requests and holds the SFU credentials. A Durable
 
    Use **Send Esc** for the game menu. The browser's Escape action releases pointer lock. Select **Release control** to allow another tab to take control.
 
-For deployment, follow the example's [deployment instructions ↗](https://github.com/cloudflare/realtime-examples/tree/main/cloud-gaming#deploy). They install the SFU values as Worker secrets and configure the Access team domain and audience. Protect the hostname with the matching Access policy before inviting viewers.
+For deployment, follow the example's [deployment instructions ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/cloud-gaming#deploy). They install the SFU values as Worker secrets and configure the Access team domain and audience. Protect the hostname with the matching Access policy before inviting viewers.
 
 ## Choose delivery settings for input
 
@@ -146,11 +146,11 @@ Viewers initially subscribe with `canReply: false` and acknowledge channel readi
 
 The application identifies each controller selection with a generation. The browser sends input only after the publisher confirms its viewer and generation. The application releases held input when control changes, pointer lock is lost, or the run ends.
 
-`canReply` restricts the SFU return path. The backend still authenticates and authorizes the operator. Refer to [reply access](https://developers.cloudflare.com/realtime/sfu/features/datachannels/#return-to-publisher-canreply) and the example's [architecture ↗](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/ARCHITECTURE.md).
+`canReply` restricts the SFU return path. The backend still authenticates and authorizes the operator. Refer to [reply access](https://developers.cloudflare.com/realtime/sfu/features/datachannels/#return-to-publisher-canreply) and the example's [architecture ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/ARCHITECTURE.md).
 
 ## Stop and clean up
 
-Select **Stop game** and wait for **Offline** before deleting a deployment. The application stops the Container and closes known SFU tracks and DataChannels. Follow the [cleanup instructions ↗](https://github.com/cloudflare/realtime-examples/tree/main/cloud-gaming#clean-up) to remove the Worker and Access application.
+Select **Stop game** and wait for **Offline** before deleting a deployment. The application stops the Container and closes known SFU tracks and DataChannels. Follow the [cleanup instructions ↗︎](https://github.com/cloudflare/realtime-examples/tree/main/cloud-gaming#clean-up) to remove the Worker and Access application.
 
 A failed media pipeline ends the run; transparent publisher restart is not implemented.
 
@@ -158,15 +158,15 @@ A failed media pipeline ends the run; transparent publisher restart is not imple
 
 The example implements one fixed game slot and one controller. Admission limits, rate limiting, and Access policy provisioning are deployment responsibilities.
 
-For a shared CAD viewer or simulation, replace Freedoom and adapt application startup, capture, and input handling. Preserve viewer authorization, controller ownership, and cleanup. Add the file ownership and save/export behavior your application needs. Refer to [production integration ↗](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/PRODUCTION.md) for the application policies and controls to add.
+For a shared CAD viewer or simulation, replace Freedoom and adapt application startup, capture, and input handling. Preserve viewer authorization, controller ownership, and cleanup. Add the file ownership and save/export behavior your application needs. Refer to [production integration ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/PRODUCTION.md) for the application policies and controls to add.
 
 ## Inspect the implementation
 
-Inspect the example's [input channel definitions ↗](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/src/shared/input-channels.ts) to compare reliable controls with transient pointer movement.
+Inspect the example's [input channel definitions ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/src/shared/input-channels.ts) to compare reliable controls with transient pointer movement.
 
 ## Troubleshooting
 
-Use the [troubleshooting guide ↗](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/TROUBLESHOOTING.md) to diagnose Container startup, media, and control failures.
+Use the [troubleshooting guide ↗︎](https://github.com/cloudflare/realtime-examples/blob/main/cloud-gaming/TROUBLESHOOTING.md) to diagnose Container startup, media, and control failures.
 
 ## Try another example
 

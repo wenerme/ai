@@ -18,7 +18,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 The `412 Precondition Failed` status code indicates that the server denies the request because the resource does not meet the conditions specified by the client.
 
-For more details, refer to [RFC 7232 ↗](https://tools.ietf.org/html/rfc7232).
+For more details, refer to [RFC 7232 ↗︎](https://tools.ietf.org/html/rfc7232).
 
 ### Common use cases
 

@@ -26,14 +26,14 @@ However, providing guest Wi-Fi also introduces risks. Malicious users could expl
 
 *Figure 1: Guest networks are often directly connected to the Internet with little security.*
 
-While it may be unlikely that your organization could face criminal charges, your organization could become part of lengthy investigations, potentially resulting in legal expenses and reputation damage. In this guide, you will learn how Cloudflare can help minimize risk, provide visibility into guest Internet activity and [better secure your guest wireless network ↗](https://www.cloudflare.com/zero-trust/solutions/secure-guest-wifi/).
+While it may be unlikely that your organization could face criminal charges, your organization could become part of lengthy investigations, potentially resulting in legal expenses and reputation damage. In this guide, you will learn how Cloudflare can help minimize risk, provide visibility into guest Internet activity and [better secure your guest wireless network ↗︎](https://www.cloudflare.com/zero-trust/solutions/secure-guest-wifi/).
 
 ### Who is this document for and what will you learn?
 
 This reference architecture is designed for IT or security professionals who are looking at Cloudflare to help secure their guest wireless networks. To build a stronger baseline understanding of Cloudflare, we recommend the following resources:
 
-- What is Cloudflare? | [Website ↗](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗](https://www.youtube.com/watch?v=XHvmX3FhTwU) (2 minutes)
-- Cloudflare Zero Trust | [https://www.cloudflare.com/zero-trust/ ↗](https://www.cloudflare.com/zero-trust/)
+- What is Cloudflare? | [Website ↗︎](https://www.cloudflare.com/what-is-cloudflare/) (5 minute read) or [video ↗︎](https://www.youtube.com/watch?v=XHvmX3FhTwU) (2 minutes)
+- Cloudflare Zero Trust | [https://www.cloudflare.com/zero-trust/ ↗︎](https://www.cloudflare.com/zero-trust/)
 - SASE Architecture with Cloudflare | [/reference-architecture/architectures/sase/](https://developers.cloudflare.com/reference-architecture/architectures/sase/)
 
 This reference architecture guide will help readers understand:
@@ -48,7 +48,7 @@ This reference architecture guide will help readers understand:
 
 ### Gateway DNS
 
-Cloudflare offers an enhanced, protected DNS resolver service for Zero Trust customers. This service utilizes Anycast, a routing technology that enables multiple servers or data centers to share the same IP address. When a request is sent to an Anycast IP address, routers use the Border Gateway Protocol (BGP) to direct the request to the nearest server. As a result, DNS queries are always routed to the closest Cloudflare data center based on your location. With data centers in over 330 cities, Cloudflare operates one of the [largest global networks ↗](https://www.cloudflare.com/network/). This service can also strengthen your organization's security by enabling the creation of policies to filter DNS resolutions for potentially malicious, questionable, or inappropriate destinations. This guide explains how to enable this service and configure your environment to secure guest wireless networks, reducing risks to your organization.
+Cloudflare offers an enhanced, protected DNS resolver service for Zero Trust customers. This service utilizes Anycast, a routing technology that enables multiple servers or data centers to share the same IP address. When a request is sent to an Anycast IP address, routers use the Border Gateway Protocol (BGP) to direct the request to the nearest server. As a result, DNS queries are always routed to the closest Cloudflare data center based on your location. With data centers in over 330 cities, Cloudflare operates one of the [largest global networks ↗︎](https://www.cloudflare.com/network/). This service can also strengthen your organization's security by enabling the creation of policies to filter DNS resolutions for potentially malicious, questionable, or inappropriate destinations. This guide explains how to enable this service and configure your environment to secure guest wireless networks, reducing risks to your organization.
 
 ### DNS locations
 
@@ -76,7 +76,7 @@ Some companies go beyond using consumer or semi professional grade, all in one w
 
 ### Segment internal and guest networks
 
-A common approach to separating internal and guest networks involves the use of distinct SSIDs. The internal corporate SSID and the guest wireless SSID can be linked to separate VLANs (Virtual Local Area Networks) or [Dot1q tags ↗](https://en.wikipedia.org/wiki/IEEE_802.1Q), providing virtual segmentation between the networks.
+A common approach to separating internal and guest networks involves the use of distinct SSIDs. The internal corporate SSID and the guest wireless SSID can be linked to separate VLANs (Virtual Local Area Networks) or [Dot1q tags ↗︎](https://en.wikipedia.org/wiki/IEEE_802.1Q), providing virtual segmentation between the networks.
 
 In this configuration:
 
@@ -183,7 +183,7 @@ For these reasons you should also consider applying security in layers and add n
 
 *Figure 4: This diagram shows how to connect guest networks to Cloudflare and the high level traffic flow to reach Internet resources.*
 
-To provide network level filtering, Cloudflare must be in the traffic path for more than just the DNS request. This is achieved by routing Internet-bound traffic over an [IPsec ↗](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/) tunnel to Cloudflare. Cloudflare's [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) service allows third-party devices to establish IPsec or GRE tunnels to the Cloudflare network. It is also possible to just deploy our [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/), a pre-configured lightweight network appliance that automatically creates the tunnel back to Cloudflare and can be managed remotely. Once traffic reaches Cloudflare multiple security controls can be overlaid such as:
+To provide network level filtering, Cloudflare must be in the traffic path for more than just the DNS request. This is achieved by routing Internet-bound traffic over an [IPsec ↗︎](https://www.cloudflare.com/learning/network-layer/what-is-ipsec/) tunnel to Cloudflare. Cloudflare's [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) (formerly Magic WAN) service allows third-party devices to establish IPsec or GRE tunnels to the Cloudflare network. It is also possible to just deploy our [Cloudflare One Appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/), a pre-configured lightweight network appliance that automatically creates the tunnel back to Cloudflare and can be managed remotely. Once traffic reaches Cloudflare multiple security controls can be overlaid such as:
 
 - Cloud based network firewall ([Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/))
 - Secure web gateway ([Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/))

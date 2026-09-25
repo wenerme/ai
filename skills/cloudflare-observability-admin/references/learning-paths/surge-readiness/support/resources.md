@@ -16,10 +16,10 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 | Support type | Resource |
 | --- | --- |
-| Self-serve questions | [https://support.cloudflare.com ↗](https://support.cloudflare.com) <br> [https://developers.cloudflare.com/fundamentals ↗](https://developers.cloudflare.com/fundamentals) |
+| Self-serve questions | [https://support.cloudflare.com ↗︎](https://support.cloudflare.com) <br> [https://developers.cloudflare.com/fundamentals ↗︎](https://developers.cloudflare.com/fundamentals) |
 | Strategic guidance and best practices (proactive) | Reach out to your dedicated account team |
-| Non-critical production issues (reactive) | - [Support portal ↗](https://dash.cloudflare.com/?to=/:account/support) <br> - Dashboard chat |
-| Critical issues such as attacks (reactive) | - Call the 24/7 Emergency Support line - [www.cloudflare.com/ecp/support ↗](http://www.cloudflare.com/ecp/support) (global lines) |
+| Non-critical production issues (reactive) | - [Support portal ↗︎](https://dash.cloudflare.com/?to=/:account/support) <br> - Dashboard chat |
+| Critical issues such as attacks (reactive) | - Call the 24/7 Emergency Support line - [www.cloudflare.com/ecp/support ↗︎](http://www.cloudflare.com/ecp/support) (global lines) |
 
 Note
 
@@ -30,12 +30,12 @@ For security reasons, Cloudflare Support only assists individuals whose email ad
 - For help with an issue, refer to [guidance for submitting support tickets](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
 - Reference our [Support Docs](https://developers.cloudflare.com/support/), including [Priority definitions](https://developers.cloudflare.com/support/contacting-cloudflare-support/#priority-definitions).
 - Learn the basic countermeasures to [prevent an ongoing DDoS attack](https://developers.cloudflare.com/ddos-protection/best-practices/proactive-defense/).
-- Let [Cloudflare's Security Operations Center-as-a-Service (SOC) ↗](https://www.cloudflare.com/soc-as-a-service/) monitor your environment for volumetric security threats and potential operational disruptions, perform analysis to identify attack vectors, and help you implement countermeasures to mitigate future incidents.
-- If a customer has purchased Technical Account Management Service, utilize the [Technical Account Management Service ↗](https://www.cloudflare.com/technical-account-management-service/) which operates as an extension of your team, as the Cloudflare support expert who knows your tech stack, unique infrastructure, and Cloudflare portfolio requirements.
-- Learn [what's new ↗](https://www.cloudflare.com/whats-new/) and subscribe to product release email summaries.
-- Read the [Cloudflare blog ↗](https://blog.cloudflare.com/) for the latest announcements from Cloudflare.
-- Refer to the [Cloudflare Community ↗](https://community.cloudflare.com/) to seek advice and share insights about using Cloudflare with other Cloudflare users.
-- [Maximize Revenue and Minimize Risk in Peak Season webinar ↗](https://www.google.com/url?q=https://cloudflare.ondemand.goldcast.io/on-demand/28262595-9ddf-4e26-91bf-241117f4b5fe&sa=D&source=docs&ust=1758134183832896&usg=AOvVaw3-v4hp23nSzNj0s6j-xxyc)
+- Let [Cloudflare's Security Operations Center-as-a-Service (SOC) ↗︎](https://www.cloudflare.com/soc-as-a-service/) monitor your environment for volumetric security threats and potential operational disruptions, perform analysis to identify attack vectors, and help you implement countermeasures to mitigate future incidents.
+- If a customer has purchased Technical Account Management Service, utilize the [Technical Account Management Service ↗︎](https://www.cloudflare.com/technical-account-management-service/) which operates as an extension of your team, as the Cloudflare support expert who knows your tech stack, unique infrastructure, and Cloudflare portfolio requirements.
+- Learn [what's new ↗︎](https://www.cloudflare.com/whats-new/) and subscribe to product release email summaries.
+- Read the [Cloudflare blog ↗︎](https://blog.cloudflare.com/) for the latest announcements from Cloudflare.
+- Refer to the [Cloudflare Community ↗︎](https://community.cloudflare.com/) to seek advice and share insights about using Cloudflare with other Cloudflare users.
+- [Maximize Revenue and Minimize Risk in Peak Season webinar ↗︎](https://www.google.com/url?q=https://cloudflare.ondemand.goldcast.io/on-demand/28262595-9ddf-4e26-91bf-241117f4b5fe&sa=D&source=docs&ust=1758134183832896&usg=AOvVaw3-v4hp23nSzNj0s6j-xxyc)
 
 Was this helpful?
 

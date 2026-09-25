@@ -60,9 +60,9 @@ An incoming request which matches multiple rules' URL patterns will inherit all 
 | --- | --- |
 | `https://custom.domain/secure/page` | `X-Frame-Options: DENY` <br> `X-Content-Type-Options: nosniff` <br> `Referrer-Policy: no-referrer` |
 | `https://custom.domain/static/image.jpg` | `Access-Control-Allow-Origin: *` <br> `X-Robots-Tag: nosnippet` |
-| `[https://myproject.pages.dev/home ↗](https://myproject.pages.dev/home)` | `X-Robots-Tag: noindex` |
-| `[https://myproject.pages.dev/secure/page ↗](https://myproject.pages.dev/secure/page)` | `X-Frame-Options: DENY` <br> `X-Content-Type-Options: nosniff` <br> `Referrer-Policy: no-referrer` <br> `X-Robots-Tag: noindex` |
-| `[https://myproject.pages.dev/static/styles.css ↗](https://myproject.pages.dev/static/styles.css)` | `Access-Control-Allow-Origin: *` <br> `X-Robots-Tag: nosnippet, noindex` |
+| `[https://myproject.pages.dev/home ↗︎](https://myproject.pages.dev/home)` | `X-Robots-Tag: noindex` |
+| `[https://myproject.pages.dev/secure/page ↗︎](https://myproject.pages.dev/secure/page)` | `X-Frame-Options: DENY` <br> `X-Content-Type-Options: nosniff` <br> `Referrer-Policy: no-referrer` <br> `X-Robots-Tag: noindex` |
+| `[https://myproject.pages.dev/static/styles.css ↗︎](https://myproject.pages.dev/static/styles.css)` | `Access-Control-Allow-Origin: *` <br> `X-Robots-Tag: nosnippet, noindex` |
 
 You may define up to 100 header rules. Each line in the `_headers` file has a 2,000 character limit. The entire line, including spacing, header name, and value, counts towards this limit.
 
@@ -121,7 +121,7 @@ https://:project.pages.dev/*
 
 ##### Prevent your workers.dev URLs showing in search results
 
-[Google ↗](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives) and other search engines often support the `X-Robots-Tag` header to instruct its crawlers how your website should be indexed.
+[Google ↗︎](https://developers.google.com/search/docs/advanced/robots/robots_meta_tag#directives) and other search engines often support the `X-Robots-Tag` header to instruct its crawlers how your website should be indexed.
 
 For example, to prevent your `*.pages.dev` and `*.*.pages.dev` URLs from being indexed, add the following to your `_headers` file:
 
@@ -148,15 +148,15 @@ Caution
 
 If you are server-side rendering (SSR) or using Pages Functions to generate responses in any other way and wish to attach security headers, the headers should be sent from the Pages Functions' `Response` instead of using a `_headers` file. For example, if you have an API endpoint and want to allow cross-origin requests, you should ensure that your Worker code attaches CORS headers to its responses, including to `OPTIONS` requests.
 
-You can prevent click-jacking by informing browsers not to embed your application inside another (for example, with an `<iframe>`) with a [`X-Frame-Options` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options) header.
+You can prevent click-jacking by informing browsers not to embed your application inside another (for example, with an `<iframe>`) with a [`X-Frame-Options` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options) header.
 
-[`X-Content-Type-Options: nosniff` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Content-Type-Options) prevents browsers from interpreting a response as any other content-type than what is defined with the `Content-Type` header.
+[`X-Content-Type-Options: nosniff` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Content-Type-Options) prevents browsers from interpreting a response as any other content-type than what is defined with the `Content-Type` header.
 
-[`Referrer-Policy` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referrer-Policy) allows you to customize how much information visitors give about where they are coming from when they navigate away from your page.
+[`Referrer-Policy` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referrer-Policy) allows you to customize how much information visitors give about where they are coming from when they navigate away from your page.
 
-Browser features can be disabled to varying degrees with the [`Permissions-Policy` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy) header (recently renamed from `Feature-Policy`).
+Browser features can be disabled to varying degrees with the [`Permissions-Policy` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy) header (recently renamed from `Feature-Policy`).
 
-If you need fine-grained control over your application's content, the [`Content-Security-Policy` ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy) header allows you to configure a number of security settings, including similar controls to the `X-Frame-Options` header.
+If you need fine-grained control over your application's content, the [`Content-Security-Policy` ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy) header allows you to configure a number of security settings, including similar controls to the `X-Frame-Options` header.
 
 ```txt
 /app/*

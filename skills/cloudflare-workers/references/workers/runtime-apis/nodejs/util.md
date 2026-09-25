@@ -58,7 +58,7 @@ callbackifiedFoo(args, (err, value) => {
 
 `callbackify` and `promisify` make it easy to handle all of the challenges that come with bridging between callbacks and promises.
 
-Refer to the [Node.js documentation for `callbackify` ↗](https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal) and [Node.js documentation for `promisify` ↗](https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal) for more information.
+Refer to the [Node.js documentation for `callbackify` ↗︎](https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilcallbackifyoriginal) and [Node.js documentation for `promisify` ↗︎](https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utilpromisifyoriginal) for more information.
 
 ## util.types
 
@@ -85,11 +85,11 @@ Caution
 
 The Workers implementation currently does not provide implementations of the `util.types.isExternal()`, `util.types.isProxy()`, `util.types.isKeyObject()`, or `util.type.isWebAssemblyCompiledModule()` APIs.
 
-For more about `util.types`, refer to the [Node.js documentation for `util.types` ↗](https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes).
+For more about `util.types`, refer to the [Node.js documentation for `util.types` ↗︎](https://nodejs.org/dist/latest-v19.x/docs/api/util.html#utiltypes).
 
 ## util.MIMEType
 
-`util.MIMEType` provides convenience methods that allow you to more easily work with and manipulate [MIME types ↗](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types). For example:
+`util.MIMEType` provides convenience methods that allow you to more easily work with and manipulate [MIME types ↗︎](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types). For example:
 
 ```js
 import { MIMEType } from "node:util";
@@ -109,7 +109,7 @@ console.log(String(myMIME));
 // Prints: application/javascript;key=value
 ```
 
-For more about `util.MIMEType`, refer to the [Node.js documentation for `util.MIMEType` ↗](https://nodejs.org/api/util.html#class-utilmimetype).
+For more about `util.MIMEType`, refer to the [Node.js documentation for `util.MIMEType` ↗︎](https://nodejs.org/api/util.html#class-utilmimetype).
 
 Was this helpful?
 

@@ -97,7 +97,7 @@ const handleReportBugClick = () => {
 };
 ```
 
-For a complete example, refer to the [custom UI example ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/create-your-own-ui) and the [custom header component ↗](https://github.com/cloudflare/realtimekit-web-examples/blob/main/react-examples/examples/create-your-own-ui/src/components/meeting-header.tsx).
+For a complete example, refer to the [custom UI example ↗︎](https://github.com/cloudflare/realtimekit-web-examples/tree/main/react-examples/examples/create-your-own-ui) and the [custom header component ↗︎](https://github.com/cloudflare/realtimekit-web-examples/blob/main/react-examples/examples/create-your-own-ui/src/components/meeting-header.tsx).
 
 RealtimeKit UI provides the [`rtk-header`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-header) component for a default header.
 
@@ -141,7 +141,7 @@ document.querySelector("#report-bug-button").addEventListener("click", () => {
 });
 ```
 
-For a complete example, refer to the [custom UI example ↗](https://github.com/cloudflare/realtimekit-web-examples/tree/main/html-examples/examples/create-your-own-ui) and the [custom header component ↗](https://github.com/cloudflare/realtimekit-web-examples/blob/main/html-examples/examples/create-your-own-ui/components/meeting-header.js).
+For a complete example, refer to the [custom UI example ↗︎](https://github.com/cloudflare/realtimekit-web-examples/tree/main/html-examples/examples/create-your-own-ui) and the [custom header component ↗︎](https://github.com/cloudflare/realtimekit-web-examples/blob/main/html-examples/examples/create-your-own-ui/components/meeting-header.js).
 
 RealtimeKit UI provides the [`rtk-header`](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/component-library/#rtk-header) component for a default header.
 

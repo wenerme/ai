@@ -16,7 +16,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 To access an overview of your account, the total number of emails processed, a breakdown of types of threads detected, and other useful information:
 
-1. Log in to [Zero Trust. ↗](https://one.dash.cloudflare.com/)
+1. Log in to [Zero Trust. ↗︎](https://one.dash.cloudflare.com/)
 2. Select **Email security**.
 
 Under **Email security**, select **Monitoring**.

@@ -20,7 +20,7 @@ Business and Enterprise customers without Bot Management can use **Bot Analytics
 
 ### Access
 
-You can access Bot Analytics by going to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and selecting your account and domain.
+You can access Bot Analytics by going to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login), and selecting your account and domain.
 
 Go to **Security** > **Analytics** > **Bot analysis**.
 
@@ -28,7 +28,7 @@ Go to **Security** > **Analytics** > **Bot analysis**.
 
 ### Features
 
-For a full tour of Bot Analytics, see [our blog post ↗](https://blog.cloudflare.com/introducing-bot-analytics/). At a high level, the tool includes:
+For a full tour of Bot Analytics, see [our blog post ↗︎](https://blog.cloudflare.com/introducing-bot-analytics/). At a high level, the tool includes:
 
 - **Requests by traffic type**: View your total domain traffic segmented vertically by traffic type. Keep an eye on *automated* and *likely automated* traffic.
 - **Requests by detection source**: Identify the most common detection engines used to score your traffic. Hover over a tooltip to learn more about each engine.
@@ -54,7 +54,7 @@ Enterprise customers with Bot Management can use **Bot Analytics** to dynamicall
 
 ### Access
 
-You can access Bot Analytics by going to the [Cloudflare dashboard ↗](https://dash.cloudflare.com/login), and selecting your account and domain.
+You can access Bot Analytics by going to the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/login), and selecting your account and domain.
 
 Go to **Security** > **Analytics** > **Bot analysis**.
 
@@ -62,7 +62,7 @@ Go to **Security** > **Analytics** > **Bot analysis**.
 
 ### Features
 
-For a full tour of Bot Analytics, see [our blog post ↗](https://blog.cloudflare.com/introducing-bot-analytics/). At a high level, the tool includes:
+For a full tour of Bot Analytics, see [our blog post ↗︎](https://blog.cloudflare.com/introducing-bot-analytics/). At a high level, the tool includes:
 
 - **Requests by bot score**: View your total domain traffic and segment it vertically by traffic type. Keep an eye on *automated* and *likely automated* traffic.
 - **Bot score distribution**: View the number of requests assigned a bot score 1 through 99.

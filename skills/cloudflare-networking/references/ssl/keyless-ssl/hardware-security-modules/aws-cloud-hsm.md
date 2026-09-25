@@ -16,7 +16,7 @@ Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 Note
 
-This example imports an existing key pair, but you may prefer to [generate your key on the HSM ↗](https://docs.aws.amazon.com/cloudhsm/latest/userguide/manage-keys.html).
+This example imports an existing key pair, but you may prefer to [generate your key on the HSM ↗︎](https://docs.aws.amazon.com/cloudhsm/latest/userguide/manage-keys.html).
 
 ---
 
@@ -24,8 +24,8 @@ This example imports an existing key pair, but you may prefer to [generate your 
 
 Make sure you have:
 
-- Provisioned an [AWS CloudHSM cluster ↗](https://docs.aws.amazon.com/cloudhsm/latest/userguide/getting-started.html) .
-- Installed the [appropriate software library for PKCS#11 ↗](https://docs.aws.amazon.com/cloudhsm/latest/userguide/pkcs11-library-install.html).
+- Provisioned an [AWS CloudHSM cluster ↗︎](https://docs.aws.amazon.com/cloudhsm/latest/userguide/getting-started.html) .
+- Installed the [appropriate software library for PKCS#11 ↗︎](https://docs.aws.amazon.com/cloudhsm/latest/userguide/pkcs11-library-install.html).
 
 ---
 
@@ -37,7 +37,7 @@ Before importing the public key, extract it from the certificate provided by you
 keyserver$ openssl x509 -pubkey -noout -in certificate.pem > pubkey.pem
 ```
 
-Log in to the CloudHSM using a previously created [crypto user ↗](https://docs.aws.amazon.com/cloudhsm/latest/userguide/hsm-users.html#crypto-user) (CU) account and generate a key encryption key that will be used to import your private key.
+Log in to the CloudHSM using a previously created [crypto user ↗︎](https://docs.aws.amazon.com/cloudhsm/latest/userguide/hsm-users.html#crypto-user) (CU) account and generate a key encryption key that will be used to import your private key.
 
 ```txt
 keyserver$ /opt/cloudhsm/bin/key_mgmt_util

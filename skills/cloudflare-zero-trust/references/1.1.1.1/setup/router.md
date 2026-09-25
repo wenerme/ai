@@ -95,11 +95,11 @@ Configuring 1.1.1.1 on your router applies the DNS setting to every device on yo
 
 ## Use DNS over TLS on OpenWrt
 
-If your router runs OpenWrt, you can encrypt DNS traffic using DNS over TLS. For setup instructions, refer to [Adding DNS-Over-TLS support to OpenWrt (LEDE) with Unbound ↗](https://blog.cloudflare.com/dns-over-tls-for-openwrt/).
+If your router runs OpenWrt, you can encrypt DNS traffic using DNS over TLS. For setup instructions, refer to [Adding DNS-Over-TLS support to OpenWrt (LEDE) with Unbound ↗︎](https://blog.cloudflare.com/dns-over-tls-for-openwrt/).
 
 ## FRITZ!Box
 
-Starting with [FRITZ!OS 7.20 ↗](https://en.avm.de/press/press-releases/2020/07/fritzos-720-more-performance-convenience-security/), DNS over TLS is supported. Refer to [Configuring different DNS servers in the FRITZ!Box ↗](https://en.avm.de/service/knowledge-base/dok/FRITZ-Box-7590/165_Configuring-different-DNS-servers-in-the-FRITZ-Box/).
+Starting with [FRITZ!OS 7.20 ↗︎](https://en.avm.de/press/press-releases/2020/07/fritzos-720-more-performance-convenience-security/), DNS over TLS is supported. Refer to [Configuring different DNS servers in the FRITZ!Box ↗︎](https://en.avm.de/service/knowledge-base/dok/FRITZ-Box-7590/165_Configuring-different-DNS-servers-in-the-FRITZ-Box/).
 
 Was this helpful?
 

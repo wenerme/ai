@@ -16,7 +16,7 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Page load time summary gives you an overview of how long your web page takes to load, broken down by area. To access Page load time:
 
-1. Go to [Web Analytics ↗](https://dash.cloudflare.com/?to=/:account/web-analytics) from your account home page, and choose a website.
+1. Go to [Web Analytics ↗︎](https://dash.cloudflare.com/?to=/:account/web-analytics) from your account home page, and choose a website.
 2. Select **Page load time**.
 
 ## Components
