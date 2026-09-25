@@ -33,8 +33,8 @@ Servers use this status code to prevent excessive API requests from overloading 
 | Client API per user/account token | 1200/5 minutes |
 | Client API per IP | 200/second |
 | GraphQL | Varies by query cost. Max 320/5 min |
-| User API token quota | 50 |
-| Account API token quota | 500 |
+| User API tokens per user | 50 |
+| Account API tokens per account | 500 |
 
 Note
 

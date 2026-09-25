@@ -224,11 +224,13 @@ This example saves the default WAV output audio (`audio/wav`) from the model dir
             { "voice": "Kore" }
           ]
         }
-      }'
+      }' | jq -r '[.steps[] | select(.type=="model_output") | .content[] | select(.type=="audio")] | last | .data' | base64 --decode > out.wav
 
-You can retrieve generated audio data by using the `interaction.output_audio`
-property, which returns the last generated audio block. For details on
-convenience properties, see the
+In the Python and JavaScript SDKs, you can retrieve generated audio data by
+using the `interaction.output_audio` convenience property, which returns the
+last generated audio block (in raw REST JSON responses, the base64-encoded audio
+is stored in `steps[].content[].data`). For details on convenience properties,
+see the
 [Interactions overview](https://ai.google.dev/gemini-api/docs/interactions-overview#convenience-properties).
 
 ## Multi-speaker TTS
@@ -968,9 +970,9 @@ returned (`OR`), while distinct filter parameters combine with `AND`:
 
 The TTS models detect the input language automatically.
 [Gemini 3.8 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts)
-(`gemini-3.8-flash-tts`) supports **130 languages** , and
+(`gemini-3.8-flash-tts`) supports **over 130 languages** , and
 [Gemini 3.8 Flash-Lite TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-lite-tts)
-(`gemini-3.8-flash-lite-tts`) supports **101 languages**:
+(`gemini-3.8-flash-lite-tts`) supports **over 100 languages**:
 
 | Language | Gemini 3.8 Flash TTS | Gemini 3.8 Flash-Lite TTS |
 |---|---|---|
@@ -1103,7 +1105,9 @@ The TTS models detect the input language automatically.
 | Thai | ✔️ | --- |
 | Tigrinya | ✔️ | --- |
 | Tosk Albanian | ✔️ | --- |
+| Turkish | ✔️ | ✔️ |
 | Uyghur | ✔️ | --- |
+| Vietnamese | ✔️ | ✔️ |
 
 ## Supported models
 
@@ -1240,7 +1244,7 @@ When building real-time conversational voice agents or multi-turn applications:
 ## Limitations
 
 - TTS models accept text-only inputs and generate audio-only outputs.
-- Single-request multi-speaker generation (`multiSpeakerVoiceConfig` / multi-speaker `speakers`) supports up to 2 speakers using prebuilt voices. To combine custom designed (`voice_...`) or replicated (`voicekey_...`) voices in multi-character dialogue, synthesize each speaker's turn individually and concatenate the 24kHz PCM audio frames.
+- Single-request multi-speaker generation (`speech_config.speakers`) supports up to 2 speakers using prebuilt voices. To combine custom designed (`voice_...`) or replicated (`voice_...` / `voicekey_...`) voices in multi-character dialogue, synthesize each speaker's turn individually. Because unary requests return `audio/wav` with a 44-byte RIFF header by default, request raw PCM (`{"type": "audio", "mime_type": "audio/l16"}`) or strip the WAV header from each turn before concatenating the 24kHz PCM audio frames.
 - **Custom voice storage limits and TTL:**
   - **Stateful voices (`store=True`, prompted or replicated):** Maximum of **200 voices per project** with a **1-year TTL** (time-to-live).
   - **Stateless voice keys (`store=False`, `voicekey_...`):** **7-day TTL** (time-to-live).

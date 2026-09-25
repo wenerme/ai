@@ -11,3 +11,7 @@ keywords: Ultralytics, YOLO, Base Predictor, image inference, video inference, m
     This page is sourced from [https://github.com/ultralytics/ultralytics/blob/main/ultralytics/engine/predictor.py](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/engine/predictor.py). Have an improvement or example to add? Open a [Pull Request](https://docs.ultralytics.com/help/contributing) — thank you! 🙏
 
 ## ::: ultralytics.engine.predictor.BasePredictor
+
+<hr>
+
+## ::: ultralytics.engine.predictor._prefetch

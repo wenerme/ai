@@ -48,7 +48,7 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-live-translate-prev
 Legacy Live API preview model. We recommend updating to Gemini 3.8 Live.
 New](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) [### Gemini 3.1 Flash TTS
 Legacy TTS preview model. We recommend updating to Gemini 3.8 Flash TTS or Gemini 3.8 Flash-Lite TTS.
-New](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) [### Gemini Omni Flash
+Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) [### Gemini Omni Flash
 Fast video generation, editing, keyframe interpolation, and extension with native audio.
 New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
@@ -116,8 +116,10 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 |---|---|---|
 | [Gemini 3.8 Live](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live) | The default option for most low-latency voice agent experiences and real-time dialogue without reasoning delays. | ``` gemini-3.8-live ``` |
 | [Gemini 3.8 Live Extended Thinking](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-live-extended-thinking) | Our high-reasoning audio-to-audio model, recommended when higher background reasoning is required during live interactions. | ``` gemini-3.8-live-extended-thinking ``` |
+| [Gemini 3.8 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-tts) | Flagship creative text-to-speech model for studio-grade voice fidelity, expressive acting, and regional dialects across 130 languages. | ``` gemini-3.8-flash-tts ``` |
+| [Gemini 3.8 Flash-Lite TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash-lite-tts) | Fast, cost-efficient text-to-speech model built for high-throughput production workloads across 101 languages. | ``` gemini-3.8-flash-lite-tts ``` |
 | [Gemini 3.1 Flash Live](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-live-preview) | Legacy audio-to-audio preview model. We recommend updating to Gemini 3.8 Live. | ``` gemini-3.1-flash-live-preview ``` |
-| [Gemini 3.1 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) | Powerful, low-latency speech generation, with natural outputs, steerable prompts, and new expressive audio tags for precise narration control. | ``` gemini-3.1-flash-tts-preview ``` |
+| [Gemini 3.1 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-tts-preview) | Legacy text-to-speech preview model. We recommend updating to Gemini 3.8 Flash TTS or Gemini 3.8 Flash-Lite TTS. | ``` gemini-3.1-flash-tts-preview ``` |
 | [Gemini 3.5 Transcribe](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-transcribe) | Low-latency speech-to-text model with utterance-based language detection, speaker diarization, word-level timestamps, and custom vocabulary biasing. | ``` gemini-3.5-transcribe gemini-3.5-transcribe-live ``` |
 | [Gemini 2.5 Flash Live](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-native-audio-preview-12-2025) | Our flagship Live API model for low-latency, bidirectional voice and video agents with native audio reasoning. | ``` gemini-2.5-flash-native-audio-preview-12-2025 ``` |
 | [Gemini 2.5 Flash TTS](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-preview-tts) | Fast and controllable text-to-speech for low-latency, cost-efficient applications and real-time assistants. | ``` gemini-2.5-flash-preview-tts ``` |
@@ -156,7 +158,7 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 | [Computer Use](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025) | A specialized model that can "see" a digital screen and perform UI actions like clicking, typing, and navigating to automate complex browser tasks. | ``` gemini-2.5-computer-use-preview-10-2025 ``` |
 | [Gemini Deep Research](https://ai.google.dev/gemini-api/docs/models/deep-research-preview-04-2026) | An agentic model that autonomously plans and executes multi-step research across hundreds of sources to produce cited, interactive reports. | ``` deep-research-preview-04-2026 ``` |
 | [Gemini Deep Research Max](https://ai.google.dev/gemini-api/docs/models/deep-research-max-preview-04-2026) | Maximum comprehensiveness for automated context gathering and synthesis across hundreds of sources. | ``` deep-research-max-preview-04-2026 ``` |
-| [Antigravity Agent](https://ai.google.dev/gemini-api/docs/models/antigravity-preview-05-2026) | A general-purpose managed agent that autonomously plans, reasons, runs code, manages files, and browses the web inside a secure, isolated Linux sandbox. | ``` antigravity-preview-05-2026 ``` |
+| [Antigravity Agent](https://ai.google.dev/gemini-api/docs/models/antigravity-preview-09-2026) | A general-purpose managed agent that autonomously plans, reasons, runs code, manages files, and browses the web inside a secure, isolated Linux sandbox. | ``` antigravity-preview-09-2026 ``` |
 
 ## Specialized task models
 

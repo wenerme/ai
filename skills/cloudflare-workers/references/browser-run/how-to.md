@@ -20,6 +20,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [Deploy a Browser Run Worker with Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/)
 - [Generate OG images for Astro sites](https://developers.cloudflare.com/browser-run/how-to/og-images-astro/)
 - [Pre-render pages for crawlers](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/)
+- [Extract a brand kit from any website](https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/)
 
 Was this helpful?
 

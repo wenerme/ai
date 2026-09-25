@@ -16,7 +16,7 @@ Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 226 modelsClear filters
+We found 229 modelsClear filters
 
 ## Compare models
 
@@ -223,6 +223,16 @@ Compare
 [![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-opus-5</h3>
 
 AnthropicText Generation Claude Opus 5 is Anthropic's model for complex agentic coding and enterprise work, delivering intelligence close to Claude Fable 5 at half the price. It uses adaptive thinking to calibrate reasoning per task and supports a one million token context window at standard pricing. Unlike Fable 5, Opus 5 has no data retention requirements for general access. - Third-party](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5/)
+
+- Context: 1M tokens
+- Maximum output: 128K tokens
+- Pricing listed
+
+Compare
+
+[![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-opus-5.5</h3>
+
+AnthropicText Generation Claude Opus 5.5 is Anthropic's model for long-running agentic coding and knowledge work. It combines a one million token context window with adaptive thinking that is always on, a 128K token maximum output, and a medium default effort level. - Third-party](https://developers.cloudflare.com/ai/models/anthropic/claude-opus-5.5/)
 
 - Context: 1M tokens
 - Maximum output: 128K tokens
@@ -968,6 +978,26 @@ OpenAIText Generation GPT-6 Astra is OpenAI's most capable model, built for comp
 
 Compare
 
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6-luna</h3>
+
+OpenAIText Generation GPT-6 Luna is OpenAI's most efficient GPT-6 model, built for focused, high-volume tasks. - Third-party](https://developers.cloudflare.com/ai/models/openai/gpt-6-luna/)
+
+- Context: 1.1M tokens
+- Maximum output: 128K tokens
+- Pricing listed
+
+Compare
+
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6-sol</h3>
+
+OpenAIText Generation GPT-6 Sol is OpenAI's mid-tier GPT-6 model, built to power complex coding and agentic workflows. - Third-party](https://developers.cloudflare.com/ai/models/openai/gpt-6-sol/)
+
+- Context: 1.1M tokens
+- Maximum output: 128K tokens
+- Pricing listed
+
+Compare
+
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-image-1.5</h3>
 
 OpenAIText-to-Image OpenAI's image generation model that creates and edits images from text prompts, supporting multiple quality levels and output sizes. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/openai/gpt-image-1.5/)
@@ -1246,14 +1276,6 @@ RunwayMLText-to-Video RunwayML's video generation model supporting both text-to-
 
 Compare
 
-[s<h3>union-alpha</h3>
-
-stealthText Generation Union Alpha is a multimodal model designed for research, coding, and agentic workflows. It delivers frontier-level performance across diverse general-purpose tasks. - Third-party](https://developers.cloudflare.com/ai/models/stealth/union-alpha/)
-
-- Pricing listed
-
-Compare
-
 [t<h3>inkling</h3>
 
 thinkingmachinesText Generation Inkling is Thinking Machines' open-weights hybrid reasoning model, built on a mixture-of-experts architecture. It reasons by default, exposing its chain-of-thought as leading thinking content blocks, with reasoning effort tunable via a Tinker-specific output\_config.effort parameter. Available through Tinker's beta Anthropic Messages-compatible endpoint alongside tool use, streaming, and multi-turn conversations. Currently intended for low-traffic testing and internal use rather than high-throughput production deployments; prompt caching, citations, and audio input are not supported through this endpoint. - Third-party](https://developers.cloudflare.com/ai/models/thinkingmachines/inkling/)
@@ -1274,7 +1296,7 @@ Compare
 
 [t<h3>jev</h3>
 
-typesafeText Generation Jev is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence. - Third-party](https://developers.cloudflare.com/ai/models/typesafe/jev/)
+typesafeText Generation Jev is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/typesafe/jev/)
 
 - Context: 32K tokens
 - Pricing listed
@@ -1283,7 +1305,7 @@ Compare
 
 [u<h3>pareto</h3>
 
-unbiasedText Generation Pareto is Unbiased's blended AI model. It engages multiple language models in parallel for each request, synthesizes one answer, and supports text and vision inputs through a single API response. - Third-party](https://developers.cloudflare.com/ai/models/unbiased/pareto/)
+unbiasedText Generation Pareto is Unbiased's blended AI model. It engages multiple language models in parallel for each request, synthesizes one answer, and supports text and vision inputs through a single API response. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/unbiased/pareto/)
 
 - Pricing listed
 
@@ -1353,6 +1375,15 @@ Compare
 [![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)<h3>grok-4.6</h3>
 
 xAIText Generation xAI's Grok 4.6, a flagship reasoning model for coding, agentic tasks, and visual work. Accepts text and image inputs, and supports function calling and structured outputs. - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-4.6/)
+
+- Context: 500K tokens
+- Pricing listed
+
+Compare
+
+[![xAI logo](https://developers.cloudflare.com/_astro/xai.2Y8IhZGx.svg)<h3>grok-4.7</h3>
+
+xAIText Generation xAI's Grok 4.7, a frontier reasoning model for coding, agentic tasks, and knowledge work. Accepts text and image inputs, and supports function calling, structured outputs, and configurable reasoning effort (low, medium, high, xhigh). - Third-party - Zero data retention](https://developers.cloudflare.com/ai/models/xai/grok-4.7/)
 
 - Context: 500K tokens
 - Pricing listed

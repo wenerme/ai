@@ -21,6 +21,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `unbiased/pareto`
 
 - Third-party
+- Zero data retention
 
 Pareto is Unbiased's blended AI model. It engages multiple language models in parallel for each request, synthesizes one answer, and supports text and vision inputs through a single API response.
 
@@ -28,6 +29,7 @@ Pareto is Unbiased's blended AI model. It engages multiple language models in pa
 | --- | --- |
 | Terms and License | [link ↗](https://unbiased.ai/terms/) |
 | More information | [link ↗](https://unbiased.ai/model-card/) |
+| Zero data retention | Yes |
 | Request formats | Chat Completions |
 | Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/unbiased/pareto) |
 

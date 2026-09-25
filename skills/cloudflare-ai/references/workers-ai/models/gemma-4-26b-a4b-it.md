@@ -205,10 +205,6 @@ presence\_penalty
 
 <code>number | null</code>Penalizes new tokens based on whether they appear in the text so far.
 
-reasoning\_effort
-
-<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
-
 ▶chat\_template\_kwargs{}
 
 <code>object</code>
@@ -372,10 +368,6 @@ parallel\_tool\_calls
 presence\_penalty
 
 <code>number | null</code>Penalizes new tokens based on whether they appear in the text so far.
-
-reasoning\_effort
-
-<code>string | null</code>enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
 
 ▶chat\_template\_kwargs{}
 

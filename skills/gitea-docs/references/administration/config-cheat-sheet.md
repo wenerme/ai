@@ -1691,18 +1691,9 @@ PROXY_HOSTS = *.github.com
 - `SCOPED_WORKFLOW_DIRS`: **.gitea/scoped_workflows**: Comma-separated list of directories holding [scoped workflows](usage/actions/scoped-workflows.md) (workflows defined in a central source repository that run on other repositories). Must not overlap with `WORKFLOW_DIRS`. Leave empty so no directory is scanned for scoped workflows; none are found or run.
 - `MAX_RERUN_ATTEMPTS`: **50**: Maximum number of attempts a single workflow run can have (initial run + reruns). Defaults value is 50. Set any positive value that fits your workflow needs.
 
-`DEFAULT_ACTIONS_URL` indicates where the Gitea Actions runners should find the actions with relative path.
-For example, `uses: actions/checkout@v4` means `https://github.com/actions/checkout@v4` since the value of `DEFAULT_ACTIONS_URL` is `github`.
-And it can be changed to `self` to make it `root_url_of_your_gitea/actions/checkout@v4`.
-
-Please note that using `self` is not recommended for most cases, as it could make names globally ambiguous.
-Additionally, it requires you to mirror all the actions you need to your Gitea instance, which may not be worth it.
-Therefore, please use `self` only if you understand what you are doing.
-
-In earlier versions (`<= 1.19`), `DEFAULT_ACTIONS_URL` could be set to any custom URLs like `https://gitea.com` or `http://your-git-server,https://gitea.com`, and the default value was `https://gitea.com`.
-However, later updates removed those options, and now the only options are `github` and `self`, with the default value being `github`.
-However, if you want to use actions from other git server, you can use a complete URL in `uses` field, it's supported by Gitea (but not GitHub).
-Like `uses: https://gitea.com/actions/checkout@v4` or `uses: http://your-git-server/actions/checkout@v4`.
+`DEFAULT_ACTIONS_URL` sets where runners download actions without a host.
+With `github`, `uses: actions/checkout@v4` resolves to `https://github.com/actions/checkout@v4`, with `self` to `<ROOT_URL>/actions/checkout@v4`.
+`self` requires mirroring every action you use to your instance, so prefer naming the host per action instead: `uses: self:owner/repo@ref` for your instance, or a full URL like `uses: https://gitea.com/actions/checkout@v4` for any other host.
 
 ## Other (`other`)
 

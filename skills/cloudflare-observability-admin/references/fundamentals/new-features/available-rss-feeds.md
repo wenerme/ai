@@ -177,6 +177,7 @@ Included products
 
 </summary>
 
+- <a href="https://developers.cloudflare.com/agent-lee/">Agent Lee</a><a href="https://developers.cloudflare.com/changelog/rss/agent-lee.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/agents/">Agents</a><a href="https://developers.cloudflare.com/changelog/rss/agents.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/ai-gateway/">AI Gateway</a><a href="https://developers.cloudflare.com/changelog/rss/ai-gateway.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/ai-search/">AI Search</a><a href="https://developers.cloudflare.com/changelog/rss/ai-search.xml">Subscribe to RSS</a>

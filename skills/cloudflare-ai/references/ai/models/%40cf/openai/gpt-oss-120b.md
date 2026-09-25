@@ -31,7 +31,7 @@ OpenAI’s open-weight models designed for powerful reasoning, agentic tasks, an
 | --- | --- |
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 128,000 tokens |
 | Function calling [↗](https://developers.cloudflare.com/workers-ai/function-calling/) | Yes |
-| Reasoning | Yes |
+| Reasoning | `low``medium` (default)`high` |
 | Batch | Yes |
 | Unit Pricing | $0.35 per M input tokens, $0.75 per M output tokens |
 

@@ -102,9 +102,8 @@ Already-shutdown models are indicated with gray backgrounds.
 |---|---|---|---|
 | `gemini-3.5-transcribe` | August 2026 | No shutdown date announced |   |
 | Preview models ||||
-| `gemini-3.1-flash-tts-preview` | April 13, 2026 | No shutdown date announced |   |
-| `gemini-2.5-flash-preview-tts` | May 20, 2025 | No shutdown date announced | `gemini-3.1-flash-tts-preview` |
-| `gemini-2.5-pro-preview-tts` | May 20, 2025 | No shutdown date announced | `gemini-3.1-flash-tts-preview` |
+| `gemini-2.5-flash-preview-tts` | May 20, 2025 | No shutdown date announced | `gemini-3.8-flash-tts` or `gemini-3.8-flash-lite-tts` |
+| `gemini-2.5-pro-preview-tts` | May 20, 2025 | No shutdown date announced | `gemini-3.8-flash-tts` or `gemini-3.8-flash-lite-tts` |
 
 ## Embedding models
 

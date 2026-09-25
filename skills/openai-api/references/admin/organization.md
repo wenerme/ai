@@ -5509,6 +5509,46 @@ curl -X POST https://api.openai.com/v1/organization/external_storage \
 }
 ```
 
+### Google Cloud Storage
+
+```http
+curl -X POST https://api.openai.com/v1/organization/external_storage \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "project_id": "proj_gcp123",
+    "provider": {
+      "type": "gcp",
+      "bucket": "customer-gcp-retention",
+      "workload_identity_project_number": "123456789012",
+      "workload_identity_pool_id": "customer-pool",
+      "workload_identity_provider_id": "customer-provider"
+    }
+  }'
+```
+
+#### Response
+
+```json
+{
+  "object": "organization.external_storage",
+  "id": "extstorage_gcp123",
+  "project_id": "proj_gcp123",
+  "provider": {
+    "type": "gcp",
+    "bucket": "customer-gcp-retention",
+    "workload_identity_project_number": "123456789012",
+    "workload_identity_pool_id": "customer-pool",
+    "workload_identity_provider_id": "customer-provider",
+    "region": "us-central1",
+    "audience": "proj_gcp123"
+  },
+  "geography": "US",
+  "status": "pending",
+  "created_at": 1711471400
+}
+```
+
 ## Delete an external storage configuration
 
 **delete** `/organization/external_storage/{external_storage_id}`
@@ -5759,10 +5799,27 @@ curl "https://api.openai.com/v1/organization/external_storage?limit=20&order=des
       "geography": "US",
       "status": "validated",
       "created_at": 1711471500
+    },
+    {
+      "object": "organization.external_storage",
+      "id": "extstorage_gcp123",
+      "project_id": "proj_gcp123",
+      "provider": {
+        "type": "gcp",
+        "bucket": "customer-gcp-retention",
+        "workload_identity_project_number": "123456789012",
+        "workload_identity_pool_id": "customer-pool",
+        "workload_identity_provider_id": "customer-provider",
+        "region": "us-central1",
+        "audience": "proj_gcp123"
+      },
+      "geography": "US",
+      "status": "validated",
+      "created_at": 1711471400
     }
   ],
   "first_id": "extstorage_abc123",
-  "last_id": "extstorage_azure123",
+  "last_id": "extstorage_gcp123",
   "has_more": false
 }
 ```

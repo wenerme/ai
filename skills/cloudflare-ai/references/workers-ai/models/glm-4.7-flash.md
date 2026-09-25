@@ -188,10 +188,6 @@ presence\_penalty
 
 `number | null`Penalizes new tokens based on whether they appear in the text so far.
 
-reasoning\_effort
-
-`string | null`enum: low, medium, highConstrains effort on reasoning for reasoning models (o1, o3-mini, etc.).
-
 ▶chat\_template\_kwargs{}
 
 `object`

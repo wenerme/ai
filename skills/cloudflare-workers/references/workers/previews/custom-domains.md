@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Custom domains
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/previews/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/previews/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Preview URLs can use a custom domain, `workers.dev`, or both. Enable at least one host to get a Preview URL.
 
@@ -105,9 +105,13 @@ If `preview_urls` is omitted, Wrangler does not change an existing Preview URL s
 1. In the Cloudflare dashboard, go to **Workers & Pages** and select your Worker. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. On the **Domains** tab, under **Worker URL**, turn on **Preview**.![Domains tab showing workers.dev Preview URLs enabled with no custom domains configured](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2876,height=1488,format=webp/_astro/emptydomain.C1zwEW1b.png)
 
-## Protect with Cloudflare Access
+## Protect Preview content
 
-Use [Cloudflare Access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/) to require sign-in for custom domain and `workers.dev` Preview URLs.
+To restrict access to custom domain and `workers.dev` Preview URLs, use [Cloudflare Access](https://developers.cloudflare.com/workers/configuration/cloudflare-access/). This prevents unauthenticated users and crawlers from viewing your Preview.
+
+To keep a Preview public while discouraging search engine indexing, add an `X-Robots-Tag: noindex` response header. Cloudflare adds this header automatically to `workers.dev` Preview URLs, but not to custom domain Preview URLs.
+
+For static assets, add the header through a [`_headers` file](https://developers.cloudflare.com/workers/static-assets/headers/). For Worker-generated responses, add it directly in your Worker code.
 
 Was this helpful?
 
@@ -118,5 +122,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/previews/custom-domains/#page","headline":"Custom domains","description":"Serve Preview URLs from custom domains and protect them with Cloudflare Access.","url":"https://developers.cloudflare.com/workers/previews/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/previews/custom-domains/#page","headline":"Custom domains","description":"Serve Preview URLs from custom domains and protect them with Cloudflare Access.","url":"https://developers.cloudflare.com/workers/previews/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

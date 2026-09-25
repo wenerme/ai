@@ -21,6 +21,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 `typesafe/jev`
 
 - Third-party
+- Zero data retention
 
 Jev is TypeSafe's structured evaluation model. It evaluates one state against typed Noul, Choice, and Score questions and returns calibrated answers with probabilities and confidence.
 
@@ -29,6 +30,7 @@ Jev is TypeSafe's structured evaluation model. It evaluates one state against ty
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 32,000 tokens |
 | Terms and License | [link ↗](https://docs.typesafe.ai/legal.md) |
 | More information | [link ↗](https://docs.typesafe.ai/models.md) |
+| Zero data retention | Yes |
 | Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/typesafe/jev) |
 
 ## Usage

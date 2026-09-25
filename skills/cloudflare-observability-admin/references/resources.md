@@ -412,6 +412,8 @@ Products
 
 [**Activate the Cloudflare WordPress plugin** The easiest way to begin using APO is directly from Cloudflare's WordPress plugin. Before you can use APO, you must first install and activate the plugin and then activate APO.](https://developers.cloudflare.com/automatic-platform-optimization/get-started/activate-cf-wp-plugin/)
 
+[**Extract a brand kit from any website** Use Browser Run and Puppeteer to read a site's real computed styles, colors, fonts, and logo, then return a structured brand kit from a Worker.](https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/)
+
 [**Generate OG images for Astro sites** Use Browser Run to automatically generate Open Graph social preview images for your Astro site pages.](https://developers.cloudflare.com/browser-run/how-to/og-images-astro/)
 
 [**Pre-render pages for crawlers** Use Browser Run to render JavaScript-heavy pages and return crawler-ready HTML from a Worker.](https://developers.cloudflare.com/browser-run/how-to/pre-render-pages/)
