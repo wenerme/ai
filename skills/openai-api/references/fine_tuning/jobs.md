@@ -2782,7 +2782,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
       "hyperparameters": {
         "batch_size": "auto",
         "learning_rate_multiplier": "auto",
-        "n_epochs": "auto",
+        "n_epochs": "auto"
       }
     }
   },
@@ -2967,7 +2967,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
       "hyperparameters": {
         "batch_size": "auto",
         "learning_rate_multiplier": "auto",
-        "n_epochs": "auto",
+        "n_epochs": "auto"
       }
     }
   },
@@ -3019,7 +3019,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
       "type": "wandb",
       "wandb": {
         "project": "my-wandb-project",
-        "entity": None,
+        "entity": null,
         "run_id": "ftjob-abc123"
       }
     }
@@ -3030,7 +3030,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
       "hyperparameters": {
         "batch_size": "auto",
         "learning_rate_multiplier": "auto",
-        "n_epochs": "auto",
+        "n_epochs": "auto"
       }
     }
   },

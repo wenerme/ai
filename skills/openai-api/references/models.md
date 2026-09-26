@@ -149,7 +149,7 @@ curl https://api.openai.com/v1/models \
       "created": 1686935002,
       "owned_by": "openai",
       "shutdown_date": "2026-10-23"
-    },
+    }
   ]
 }
 ```
@@ -214,7 +214,7 @@ curl https://api.openai.com/v1/models/$MODEL \
 ### Example
 
 ```http
-curl https://api.openai.com/v1/models/gpt-5.6-sol \
+curl https://api.openai.com/v1/models/gpt-6-astra \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
@@ -222,7 +222,7 @@ curl https://api.openai.com/v1/models/gpt-5.6-sol \
 
 ```json
 {
-  "id": "gpt-5.6-sol",
+  "id": "gpt-6-astra",
   "object": "model",
   "created": 1686935002,
   "owned_by": "openai",

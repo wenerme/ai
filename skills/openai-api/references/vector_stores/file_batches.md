@@ -122,7 +122,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files_batches/vsfb_abc123
     "completed": 3,
     "failed": 0,
     "cancelled": 0,
-    "total": 15,
+    "total": 15
   }
 }
 ```
@@ -345,7 +345,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/file_batches \
     "completed": 1,
     "failed": 0,
     "cancelled": 0,
-    "total": 0,
+    "total": 0
   }
 }
 ```
@@ -705,7 +705,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/file_batches/vsfb_abc123 
     "completed": 1,
     "failed": 0,
     "cancelled": 0,
-    "total": 0,
+    "total": 0
   }
 }
 ```

@@ -740,7 +740,23 @@ curl https://api.openai.com/v1/evals \
   "created_at": 0,
   "data_source_config": {
     "schema": {
-      "foo": "bar"
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "label"
+          ]
+        }
+      },
+      "required": [
+        "item"
+      ]
     },
     "type": "custom"
   },
@@ -839,6 +855,7 @@ curl https://api.openai.com/v1/evals \
         "item",
         "sample"
       ]
+    }
   },
   "testing_criteria": [
     {
@@ -1358,7 +1375,23 @@ curl https://api.openai.com/v1/evals \
       "created_at": 0,
       "data_source_config": {
         "schema": {
-          "foo": "bar"
+          "type": "object",
+          "properties": {
+            "item": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "label"
+              ]
+            }
+          },
+          "required": [
+            "item"
+          ]
         },
         "type": "custom"
       },
@@ -1857,7 +1890,23 @@ curl https://api.openai.com/v1/evals/$EVAL_ID \
   "created_at": 0,
   "data_source_config": {
     "schema": {
-      "foo": "bar"
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "label"
+          ]
+        }
+      },
+      "required": [
+        "item"
+      ]
     },
     "type": "custom"
   },
@@ -1941,7 +1990,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
   ],
   "name": "External Data Eval",
   "created_at": 1739314509,
-  "metadata": {},
+  "metadata": {}
 }
 ```
 
@@ -2338,7 +2387,23 @@ curl https://api.openai.com/v1/evals/$EVAL_ID \
   "created_at": 0,
   "data_source_config": {
     "schema": {
-      "foo": "bar"
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "label"
+          ]
+        }
+      },
+      "required": [
+        "item"
+      ]
     },
     "type": "custom"
   },
@@ -2423,7 +2488,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a \
   ],
   "name": "Updated Eval",
   "created_at": 1739314509,
-  "metadata": {"description": "Updated description"},
+  "metadata": {"description": "Updated description"}
 }
 ```
 

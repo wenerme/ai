@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+   Use Workers for Platforms to let my customers deploy their own code in isolated environments.
    ```
 
 
@@ -164,11 +164,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```
+
+```txt
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
@@ -176,11 +180,7 @@ Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
-```
-
-```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Tips
@@ -283,7 +283,9 @@ OpenAI coding agent available as a terminal CLI and desktop app. It reads and wr
 
 AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.View guide](https://developers.cloudflare.com/agent-setup/cursor/) [![](https://developers.cloudflare.com/icons/agents/copilot/light.svg)![](https://developers.cloudflare.com/icons/agents/copilot/dark.svg) GitHub<h3>GitHub Copilot</h3>Editor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.View guide](https://developers.cloudflare.com/agent-setup/github-copilot/) [![](https://developers.cloudflare.com/icons/agents/opencode/light.svg)![](https://developers.cloudflare.com/icons/agents/opencode/dark.svg) Anomaly<h3>OpenCode</h3>
 
-Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.View guide](https://developers.cloudflare.com/agent-setup/opencode/) [![](https://developers.cloudflare.com/icons/agents/devin/light.svg)![](https://developers.cloudflare.com/icons/agents/devin/dark.svg) Cognition<h3>Devin</h3>
+Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.View guide](https://developers.cloudflare.com/agent-setup/opencode/) [![](https://developers.cloudflare.com/icons/agents/vibe/light.svg)![](https://developers.cloudflare.com/icons/agents/vibe/dark.svg) Mistral AI<h3>Vibe</h3>
+
+Coding agent for terminal, IDE, and cloud workflows that reads files, runs commands, writes code, and opens pull requests. Made by Mistral AI.View guide](https://developers.cloudflare.com/agent-setup/vibe/) [![](https://developers.cloudflare.com/icons/agents/devin/light.svg)![](https://developers.cloudflare.com/icons/agents/devin/dark.svg) Cognition<h3>Devin</h3>
 
 A full IDE with an agent manager built in — the command center for managing all your agents in one place. Made by Cognition.View guide](https://developers.cloudflare.com/agent-setup/devin/) [![](https://developers.cloudflare.com/icons/agents/visual-studio-code/light.svg)![](https://developers.cloudflare.com/icons/agents/visual-studio-code/dark.svg) Microsoft<h3>Visual Studio Code</h3>Free, open-source code editor with native Model Context Protocol (MCP) client support and Copilot Chat integration. Made by Microsoft.View guide](https://developers.cloudflare.com/agent-setup/visual-studio-code/) [![](https://developers.cloudflare.com/icons/agents/command-code/light.svg)![](https://developers.cloudflare.com/icons/agents/command-code/dark.svg) Command Code<h3>Command Code</h3>Command Code is one of the most used coding agents for open models. It automatically learns your coding taste and self-improves as you work.View guide](https://developers.cloudflare.com/agent-setup/command-code/) [![](https://developers.cloudflare.com/icons/agents/bionic/light.svg)![](https://developers.cloudflare.com/icons/agents/bionic/dark.svg) LM Studio<h3>Bionic</h3>
 

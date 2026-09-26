@@ -167,7 +167,7 @@ curl https://api.openai.com/v1/files \
   "created_at": 1677610602,
   "expires_at": 1677614202,
   "filename": "mydata.jsonl",
-  "purpose": "fine-tune",
+  "purpose": "fine-tune"
 }
 ```
 
@@ -380,7 +380,7 @@ curl https://api.openai.com/v1/files \
       "created_at": 1613677385,
       "expires_at": 1677614202,
       "filename": "salesOverview.pdf",
-      "purpose": "assistants",
+      "purpose": "assistants"
     },
     {
       "id": "file-abc456",
@@ -389,7 +389,7 @@ curl https://api.openai.com/v1/files \
       "created_at": 1613779121,
       "expires_at": 1677614202,
       "filename": "puppy.jsonl",
-      "purpose": "fine-tune",
+      "purpose": "fine-tune"
     }
   ],
   "first_id": "file-abc123",
@@ -514,7 +514,7 @@ curl https://api.openai.com/v1/files/file-abc123 \
   "created_at": 1677610602,
   "expires_at": 1677614202,
   "filename": "mydata.jsonl",
-  "purpose": "fine-tune",
+  "purpose": "fine-tune"
 }
 ```
 

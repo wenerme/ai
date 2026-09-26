@@ -126,8 +126,8 @@ curl https://api.openai.com/v1/organization/certificates/activate \
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
-  ],
+    }
+  ]
 }
 ```
 
@@ -380,8 +380,8 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
-  ],
+    }
+  ]
 }
 ```
 
@@ -566,7 +566,7 @@ curl https://api.openai.com/v1/organization/certificates \
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
+    }
   ],
   "first_id": "cert_abc",
   "last_id": "cert_abc",

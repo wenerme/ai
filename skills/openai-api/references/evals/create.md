@@ -738,7 +738,23 @@ curl https://api.openai.com/v1/evals \
   "created_at": 0,
   "data_source_config": {
     "schema": {
-      "foo": "bar"
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "label"
+          ]
+        }
+      },
+      "required": [
+        "item"
+      ]
     },
     "type": "custom"
   },
@@ -837,6 +853,7 @@ curl https://api.openai.com/v1/evals \
         "item",
         "sample"
       ]
+    }
   },
   "testing_criteria": [
     {

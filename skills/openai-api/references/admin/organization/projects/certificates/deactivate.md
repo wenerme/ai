@@ -127,7 +127,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/deact
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
-  ],
+    }
+  ]
 }
 ```

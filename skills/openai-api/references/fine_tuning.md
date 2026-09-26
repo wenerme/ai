@@ -2627,7 +2627,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
       "id": "cp_enQCFmOTGj3syEpYVhBRLTSy",
       "created_at": 1721764800,
       "project_id": "proj_iqGMw1llN8IrBb6SvvY5A1oF"
-    },
+    }
   ],
   "first_id": "cp_zc4Q7MP6XxulcVzj4MZdwsAB",
   "last_id": "cp_enQCFmOTGj3syEpYVhBRLTSy",
@@ -2751,7 +2751,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
       "id": "cp_enQCFmOTGj3syEpYVhBRLTSy",
       "created_at": 1721764800,
       "project_id": "proj_iqGMw1llN8IrBb6SvvY5A1oF"
-    },
+    }
   ],
   "first_id": "cp_zc4Q7MP6XxulcVzj4MZdwsAB",
   "last_id": "cp_enQCFmOTGj3syEpYVhBRLTSy",
@@ -5645,7 +5645,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
       "hyperparameters": {
         "batch_size": "auto",
         "learning_rate_multiplier": "auto",
-        "n_epochs": "auto",
+        "n_epochs": "auto"
       }
     }
   },
@@ -5830,7 +5830,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
       "hyperparameters": {
         "batch_size": "auto",
         "learning_rate_multiplier": "auto",
-        "n_epochs": "auto",
+        "n_epochs": "auto"
       }
     }
   },
@@ -5882,7 +5882,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
       "type": "wandb",
       "wandb": {
         "project": "my-wandb-project",
-        "entity": None,
+        "entity": null,
         "run_id": "ftjob-abc123"
       }
     }
@@ -5893,7 +5893,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
       "hyperparameters": {
         "batch_size": "auto",
         "learning_rate_multiplier": "auto",
-        "n_epochs": "auto",
+        "n_epochs": "auto"
       }
     }
   },

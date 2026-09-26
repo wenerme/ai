@@ -1,6 +1,6 @@
 ---
-description: Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.
-title: OpenCode + Cloudflare
+description: Coding agent for terminal, IDE, and cloud workflows that reads files, runs commands, writes code, and opens pull requests. Made by Mistral AI.
+title: Vibe + Cloudflare
 image: https://developers.cloudflare.com/og-docs.png
 ---
 
@@ -12,68 +12,129 @@ image: https://developers.cloudflare.com/og-docs.png
 
 [All agents](https://developers.cloudflare.com/agent-setup/)
 
-![](https://developers.cloudflare.com/icons/agents/opencode/light.svg)![](https://developers.cloudflare.com/icons/agents/opencode/dark.svg)
+![](https://developers.cloudflare.com/icons/agents/vibe/light.svg)![](https://developers.cloudflare.com/icons/agents/vibe/dark.svg)
 
-Anomaly
+Mistral AI
 
-# OpenCode + Cloudflare
+# Vibe + Cloudflare
 
-Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.
+Coding agent for terminal, IDE, and cloud workflows that reads files, runs commands, writes code, and opens pull requests. Made by Mistral AI.
 
-TerminalStandaloneExtensionOpen Source
+IDETerminalStandaloneCloudExtensionOpen Source
 
-[Cloudflare Skills](https://github.com/cloudflare/skills)· [Cloudflare Code Mode API MCP](https://github.com/cloudflare/mcp)· [Cloudflare Domain Specific MCPs](https://github.com/cloudflare/mcp-server-cloudflare)· [OpenCode Docs](https://opencode.ai/docs)
+[Cloudflare Skills](https://github.com/cloudflare/skills)· [Cloudflare Code Mode API MCP](https://github.com/cloudflare/mcp)· [Cloudflare Domain Specific MCPs](https://github.com/cloudflare/mcp-server-cloudflare)· [CLI](https://docs.mistral.ai/vibe/code/cli/install-setup)· [Vibe Docs](https://docs.mistral.ai/vibe/code/overview)
 
 ## Quick start
 
-1. **Install OpenCode**
+1. **Install Vibe**
 
-   Install OpenCode. For npm, Homebrew, Bun, Scoop, or Windows options, see the [OpenCode install guide ↗︎](https://opencode.ai/docs/).
-
-   ```bash
-   curl -fsSL https://opencode.ai/install | bash
-   ```
-
-
-2. **Install Cloudflare Skills**
+   Install the Vibe command-line interface (CLI) on macOS or Linux. For other installation methods, refer to the [Vibe installation guide ↗︎](https://docs.mistral.ai/vibe/code/cli/install-setup).
 
    ```bash
-   npx skills add https://github.com/cloudflare/skills
+   curl -LsSf https://mistral.ai/vibe/install.sh | bash
    ```
 
 
-3. **Add Cloudflare MCP servers**
+2. **Set up Vibe**
 
-   Add MCP servers to `.opencode.jsonc`. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗︎](https://github.com/cloudflare/mcp).
-
-   ```json
-   {
-     "mcp": {
-       "cloudflare": { "type": "remote", "url": "https://mcp.cloudflare.com/mcp", "enabled": true },
-       "cloudflare-docs": { "type": "remote", "url": "https://docs.mcp.cloudflare.com/mcp", "enabled": true },
-       "cloudflare-bindings": { "type": "remote", "url": "https://bindings.mcp.cloudflare.com/mcp", "enabled": true },
-       "cloudflare-builds": { "type": "remote", "url": "https://builds.mcp.cloudflare.com/mcp", "enabled": true },
-       "cloudflare-observability": { "type": "remote", "url": "https://observability.mcp.cloudflare.com/mcp", "enabled": true }
-     }
-   }
-   ```
-
-
-4. **Launch OpenCode**
-
-   Start OpenCode from the root of your project, where `wrangler.jsonc` lives (if it already exists).
+   Complete the setup flow. Sign in with your Mistral account or enter an API key.
 
    ```bash
-   opencode
+   vibe --setup
    ```
 
 
-5. **Try a prompt**
+3. **Install Cloudflare Skills**
+
+   From your project root, install Cloudflare Skills for the current project. Vibe discovers project Skills from `.agents/skills/`.npmyarnpnpm
+
+   ```
+   npx skills add cloudflare/skills --skill '*' --yes
+   ```
+
+   ```
+   yarn dlx skills add cloudflare/skills --skill '*' --yes
+   ```
+
+   ```
+   pnpx skills add cloudflare/skills --skill '*' --yes
+   ```
+
+
+4. **Add Cloudflare MCP servers**
+
+   Add the Cloudflare Model Context Protocol (MCP) servers to `~/.vibe/config.toml`. Back up an existing file and preserve unrelated settings. Update entries that already exist instead of adding duplicates.
+
+   The Cloudflare docs server is public. The other servers in this configuration require OAuth:
+
+   ```toml
+   [[mcp_servers]]
+   name = "cloudflare"
+   transport = "streamable-http"
+   url = "https://mcp.cloudflare.com/mcp"
+
+   [mcp_servers.auth]
+   type = "oauth"
+   scopes = []
+
+   [[mcp_servers]]
+   name = "cloudflare-docs"
+   transport = "streamable-http"
+   url = "https://docs.mcp.cloudflare.com/mcp"
+
+   [[mcp_servers]]
+   name = "cloudflare-bindings"
+   transport = "streamable-http"
+   url = "https://bindings.mcp.cloudflare.com/mcp"
+
+   [mcp_servers.auth]
+   type = "oauth"
+   scopes = []
+
+   [[mcp_servers]]
+   name = "cloudflare-builds"
+   transport = "streamable-http"
+   url = "https://builds.mcp.cloudflare.com/mcp"
+
+   [mcp_servers.auth]
+   type = "oauth"
+   scopes = []
+
+   [[mcp_servers]]
+   name = "cloudflare-observability"
+   transport = "streamable-http"
+   url = "https://observability.mcp.cloudflare.com/mcp"
+
+   [mcp_servers.auth]
+   type = "oauth"
+   scopes = []
+   ```
+
+   For source and configuration details, refer to [cloudflare/mcp ↗︎](https://github.com/cloudflare/mcp) and [cloudflare/mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare).
+5. **Launch and authorize Vibe**
+
+   Start Vibe from your project root. For an existing project, use the directory that contains `wrangler.jsonc`.
+
+   ```bash
+   vibe
+   ```
+
+   If Vibe is already running, enter `/reload` instead. Then enter `/mcp status` to check each server. Authorize the four servers that access your Cloudflare account:
+
+   ```txt
+   /mcp login cloudflare
+   /mcp login cloudflare-bindings
+   /mcp login cloudflare-builds
+   /mcp login cloudflare-observability
+   ```
+
+   Complete each OAuth flow in your browser.
+6. **Try a prompt**
 
    For example:
 
    ```txt
-   Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+   Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
    ```
 
 
@@ -178,70 +239,70 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Tips
 
-- The Cloudflare API MCP server uses Code Mode — OpenCode writes JavaScript to reach any of 2,500+ endpoints in \~1,000 tokens.
-- OpenCode supports 75+ LLMs — you can use Cloudflare Workers AI as the model provider for a fully Cloudflare-native workflow.
-- Use OpenCode's plan agent (Tab key) to break down complex Workers projects before coding — pair it with `/cloudflare:build-agent` or `/cloudflare:build-mcp` slash commands.
+- The Cloudflare API MCP server uses Code Mode — Vibe writes JavaScript against a typed API to reach any of 2,500+ endpoints in \~1,000 tokens.
+- Store project instructions in `AGENTS.md`. Vibe loads instructions from the project root and relevant subdirectories.
+- Start Vibe with `vibe --agent plan` to inspect a project without modifying it.
 
 ## FAQ
 
 <details>
 
-<summary>Should I use Skills, the MCP server, Wrangler CLI, or all of them?
+<summary>Should I use Skills, MCP servers, Wrangler CLI, or all three?
 
 </summary>
 
-All three. Skills provide persistent Cloudflare expertise so OpenCode knows when to reach for Durable Objects vs KV, how to structure a Workers project, and when to call CLI vs API. The Cloudflare API MCP server handles platform operations (DNS, WAF, Zero Trust, R2 buckets). Wrangler handles local dev, deploys, and Workers-specific commands. The bundled <code>wrangler</code> Skill teaches OpenCode which to use.
+Use all three. Skills provide Cloudflare implementation guidance. MCP servers provide current documentation and authenticated API tools. Wrangler handles local development, deployments, and Workers-specific commands.
 
 </details>
 
 <details>
 
-<summary>How do I connect OpenCode to Cloudflare?
+<summary>How do I give Vibe access to my Cloudflare account?
 
 </summary>
 
-The first time OpenCode calls a Cloudflare tool, you will be redirected to authorize via OAuth and choose permissions.
+Run <code>/mcp login &lt;name&gt;</code> for each server configured with OAuth, then complete the authorization flow in your browser. The <code>cloudflare-docs</code> server is public and does not require authentication.
 
 </details>
 
 <details>
 
-<summary>Can I use Workers AI as the model provider in OpenCode?
+<summary>Can I use another model provider with Vibe?
 
 </summary>
 
-Yes. OpenCode supports 75+ model providers, including Cloudflare Workers AI. Configure your model in <code>.opencode.jsonc</code>.
+Yes. Vibe supports Mistral-hosted models, compatible API providers, and local models. Configure models and providers in <code>~/.vibe/config.toml</code>.
 
 </details>
 
 <details>
 
-<summary>Is OpenCode open source?
+<summary>Is Vibe open source?
 
 </summary>
 
-Yes. OpenCode is fully open source and available at <a href="https://github.com/anomalyco/opencode">github.com/anomalyco/opencode</a>.
+Yes. The Vibe CLI is available under the Apache 2.0 license in the <a href="https://github.com/mistralai/mistral-vibe">mistralai/mistral-vibe ↗︎</a> repository.
 
 </details>
 
@@ -249,11 +310,31 @@ Yes. OpenCode is fully open source and available at <a href="https://github.com/
 
 <details>
 
-<summary>MCP server connection fails
+<summary>MCP server not connecting
 
 </summary>
 
-Verify the MCP configuration in <code>.opencode.jsonc</code> uses <code>"type": "remote"</code> with the correct URL. Run <code>opencode mcp list</code> to check connected servers.
+Confirm that the entries in <code>~/.vibe/config.toml</code> match the quick start. Enter <code>/reload</code>, then enter <code>/mcp status</code>. If a server reports <code>needs_auth</code>, enter <code>/mcp login &lt;name&gt;</code>.
+
+</details>
+
+<details>
+
+<summary>MCP server authentication fails
+
+</summary>
+
+Enter <code>/mcp logout &lt;name&gt;</code>, then enter <code>/mcp login &lt;name&gt;</code>. Complete the new authorization flow in your browser.
+
+</details>
+
+<details>
+
+<summary>Cloudflare Skills are not available
+
+</summary>
+
+Enter <code>/reload</code> to reload Vibe configuration and Skills. If the Skills still do not load, confirm that the installer wrote them to the project <code>.agents/skills/</code> directory.
 
 </details>
 
@@ -263,7 +344,7 @@ Verify the MCP configuration in <code>.opencode.jsonc</code> uses <code>"type": 
 
 </summary>
 
-Enable the <a href="https://github.com/cloudflare/mcp-server-cloudflare">Cloudflare docs MCP server</a> so the agent can fetch current documentation at runtime. If you prefer not to use the MCP server, point the agent directly at <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of every product, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
+Enter <code>/mcp status</code> and confirm that <code>cloudflare-docs</code> is connected. Alternatively, point Vibe to <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of all products. Use <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
 
 </details>
 
@@ -279,9 +360,9 @@ Cloudflare is not just a deploy target for agents, it is a full stack for buildi
 
 OpenAI coding agent available as a terminal CLI and desktop app. It reads and writes files, runs commands, and browses the web in a sandbox.View guide](https://developers.cloudflare.com/agent-setup/codex/) [![](https://developers.cloudflare.com/icons/agents/cursor/light.svg)![](https://developers.cloudflare.com/icons/agents/cursor/dark.svg) Cursor<h3>Cursor</h3>
 
-AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.View guide](https://developers.cloudflare.com/agent-setup/cursor/) [![](https://developers.cloudflare.com/icons/agents/copilot/light.svg)![](https://developers.cloudflare.com/icons/agents/copilot/dark.svg) GitHub<h3>GitHub Copilot</h3>Editor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.View guide](https://developers.cloudflare.com/agent-setup/github-copilot/) [![](https://developers.cloudflare.com/icons/agents/vibe/light.svg)![](https://developers.cloudflare.com/icons/agents/vibe/dark.svg) Mistral AI<h3>Vibe</h3>
+AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.View guide](https://developers.cloudflare.com/agent-setup/cursor/) [![](https://developers.cloudflare.com/icons/agents/copilot/light.svg)![](https://developers.cloudflare.com/icons/agents/copilot/dark.svg) GitHub<h3>GitHub Copilot</h3>Editor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.View guide](https://developers.cloudflare.com/agent-setup/github-copilot/) [![](https://developers.cloudflare.com/icons/agents/opencode/light.svg)![](https://developers.cloudflare.com/icons/agents/opencode/dark.svg) Anomaly<h3>OpenCode</h3>
 
-Coding agent for terminal, IDE, and cloud workflows that reads files, runs commands, writes code, and opens pull requests. Made by Mistral AI.View guide](https://developers.cloudflare.com/agent-setup/vibe/) [![](https://developers.cloudflare.com/icons/agents/devin/light.svg)![](https://developers.cloudflare.com/icons/agents/devin/dark.svg) Cognition<h3>Devin</h3>
+Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.View guide](https://developers.cloudflare.com/agent-setup/opencode/) [![](https://developers.cloudflare.com/icons/agents/devin/light.svg)![](https://developers.cloudflare.com/icons/agents/devin/dark.svg) Cognition<h3>Devin</h3>
 
 A full IDE with an agent manager built in — the command center for managing all your agents in one place. Made by Cognition.View guide](https://developers.cloudflare.com/agent-setup/devin/) [![](https://developers.cloudflare.com/icons/agents/visual-studio-code/light.svg)![](https://developers.cloudflare.com/icons/agents/visual-studio-code/dark.svg) Microsoft<h3>Visual Studio Code</h3>Free, open-source code editor with native Model Context Protocol (MCP) client support and Copilot Chat integration. Made by Microsoft.View guide](https://developers.cloudflare.com/agent-setup/visual-studio-code/) [![](https://developers.cloudflare.com/icons/agents/command-code/light.svg)![](https://developers.cloudflare.com/icons/agents/command-code/dark.svg) Command Code<h3>Command Code</h3>Command Code is one of the most used coding agents for open models. It automatically learns your coding taste and self-improves as you work.View guide](https://developers.cloudflare.com/agent-setup/command-code/) [![](https://developers.cloudflare.com/icons/agents/bionic/light.svg)![](https://developers.cloudflare.com/icons/agents/bionic/dark.svg) LM Studio<h3>Bionic</h3>
 
@@ -292,5 +373,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/opencode/#page","headline":"OpenCode + Cloudflare","description":"Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.","url":"https://developers.cloudflare.com/agent-setup/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/vibe/#page","headline":"Vibe + Cloudflare","description":"Coding agent for terminal, IDE, and cloud workflows that reads files, runs commands, writes code, and opens pull requests. Made by Mistral AI.","url":"https://developers.cloudflare.com/agent-setup/vibe/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

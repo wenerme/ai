@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Add a cron trigger to my Worker that processes a job queue every hour.
+   Set up rate limiting and WAF rules to block abuse on my public API.
    ```
 
 
@@ -174,11 +174,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
-```
-
-```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
@@ -186,11 +182,15 @@ Build an AI chat agent using the Cloudflare Agents SDK with persistent conversat
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ## Tips
@@ -329,7 +329,9 @@ OpenAI coding agent available as a terminal CLI and desktop app. It reads and wr
 
 AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.View guide](https://developers.cloudflare.com/agent-setup/cursor/) [![](https://developers.cloudflare.com/icons/agents/copilot/light.svg)![](https://developers.cloudflare.com/icons/agents/copilot/dark.svg) GitHub<h3>GitHub Copilot</h3>Editor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.View guide](https://developers.cloudflare.com/agent-setup/github-copilot/) [![](https://developers.cloudflare.com/icons/agents/opencode/light.svg)![](https://developers.cloudflare.com/icons/agents/opencode/dark.svg) Anomaly<h3>OpenCode</h3>
 
-Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.View guide](https://developers.cloudflare.com/agent-setup/opencode/) [![](https://developers.cloudflare.com/icons/agents/devin/light.svg)![](https://developers.cloudflare.com/icons/agents/devin/dark.svg) Cognition<h3>Devin</h3>
+Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.View guide](https://developers.cloudflare.com/agent-setup/opencode/) [![](https://developers.cloudflare.com/icons/agents/vibe/light.svg)![](https://developers.cloudflare.com/icons/agents/vibe/dark.svg) Mistral AI<h3>Vibe</h3>
+
+Coding agent for terminal, IDE, and cloud workflows that reads files, runs commands, writes code, and opens pull requests. Made by Mistral AI.View guide](https://developers.cloudflare.com/agent-setup/vibe/) [![](https://developers.cloudflare.com/icons/agents/devin/light.svg)![](https://developers.cloudflare.com/icons/agents/devin/dark.svg) Cognition<h3>Devin</h3>
 
 A full IDE with an agent manager built in — the command center for managing all your agents in one place. Made by Cognition.View guide](https://developers.cloudflare.com/agent-setup/devin/) [![](https://developers.cloudflare.com/icons/agents/visual-studio-code/light.svg)![](https://developers.cloudflare.com/icons/agents/visual-studio-code/dark.svg) Microsoft<h3>Visual Studio Code</h3>Free, open-source code editor with native Model Context Protocol (MCP) client support and Copilot Chat integration. Made by Microsoft.View guide](https://developers.cloudflare.com/agent-setup/visual-studio-code/) [![](https://developers.cloudflare.com/icons/agents/bionic/light.svg)![](https://developers.cloudflare.com/icons/agents/bionic/dark.svg) LM Studio<h3>Bionic</h3>
 
