@@ -30,7 +30,7 @@ xAI's video generation model. Generates, edits, and extends videos from text and
 | Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
 | More information | [link ↗](https://docs.x.ai/developers/models/grok-imagine-video) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-video) |
+| Pricing | <ul><li>Default (per second)$0.05</li><li>@480p (per second)$0.05</li><li>@720p (per second)$0.07</li></ul> |
 
 ## Usage
 

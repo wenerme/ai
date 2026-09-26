@@ -31,7 +31,7 @@ Tip
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-image-try-on) |
+| Pricing | <ul><li>Per image$0.015</li><li>Per input image$0.008</li></ul> |
 
 ## Usage
 

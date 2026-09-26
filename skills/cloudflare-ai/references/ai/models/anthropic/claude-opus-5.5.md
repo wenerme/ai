@@ -30,7 +30,7 @@ Claude Opus 5.5 is Anthropic's model for long-running agentic coding and knowled
 | Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information | [link ↗](https://platform.claude.com/docs/en/models/opus-5-5/overview) |
 | Request formats | Anthropic Messages |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-5.5) |
+| Pricing | <ul><li>Input (per 1M tokens)$4.00</li><li>Output (per 1M tokens)$20.00</li><li>Cached input (per 1M tokens)$0.20</li><li>Cache creation (per 1M tokens)$5.00</li></ul> |
 
 ## Usage
 

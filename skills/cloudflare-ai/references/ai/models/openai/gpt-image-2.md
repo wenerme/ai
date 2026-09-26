@@ -30,7 +30,7 @@ OpenAI's next-generation image model that creates and edits images from text pro
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-2) |
+| Pricing | <ul><li>Cached input image (per 1M tokens)$2.00</li><li>Cached input (per 1M tokens)$1.25</li><li>Input image (per 1M tokens)$8.00</li><li>Input (per 1M tokens)$5.00</li><li>Output image (per 1M tokens)$30.00</li><li>Output (per 1M tokens)$10.00</li></ul> |
 
 ## Usage
 

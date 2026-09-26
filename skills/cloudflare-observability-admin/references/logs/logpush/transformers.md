@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Transformers
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/transformers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/transformers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Beta
 
@@ -41,6 +41,23 @@ Before you begin, you need:
 ## Access Transformers
 
 You can create, preview, attach, and manage transformers through the Cloudflare dashboard or the API.
+
+### Existing Logpush filters
+
+Each Logpush job can have either a transformer or [filters](https://developers.cloudflare.com/logs/logpush/logpush-job/filters/), but not both. When you attach a transformer to a filtered job in the Cloudflare dashboard, Transformer Studio converts the existing filter to an equivalent SQL predicate.
+
+Copy the predicate into the transformer's `WHERE` clause to preserve the filtering behavior. When you confirm the attachment, Transformer Studio removes the job filter and attaches the transformer.
+
+The API does not convert Logpush filters to SQL. To migrate a filtered job through the API, convert the filter to an equivalent SQL predicate and add it to the transformer's `WHERE` clause. Then clear `filter` and set `transformer_id` in the same Logpush job update request:
+
+```json
+{
+  "filter": "",
+  "transformer_id": 42
+}
+```
+
+If you set `transformer_id` without clearing the existing filter, the API returns a `400` response.
 
 ### Transformer Studio (UI)
 
@@ -309,6 +326,7 @@ Delivered record:
 | `413` | (request entity too large) | The SQL query exceeds 250 KB. Shorten the query. |
 | `400` | `transformer N not found for this account` | The transformer ID does not exist, or belongs to a different account. |
 | `400` | `transformer N dataset "X" does not match job dataset "Y"` | The transformer's `FROM` table does not match the job's dataset. |
+| `400` | `a job cannot have both a filter and a transformer configured; use one or the other` | Clear the job's `filter` in the same request that sets `transformer_id`. |
 
 ### Runtime failures
 
@@ -339,5 +357,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/transformers/#page","headline":"Transformers","description":"Advanced filtering, reshaping, redacting, and computing on Logpush records with SQL before they leave Cloudflare.","url":"https://developers.cloudflare.com/logs/logpush/transformers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/transformers/#page","headline":"Transformers","description":"Advanced filtering, reshaping, redacting, and computing on Logpush records with SQL before they leave Cloudflare.","url":"https://developers.cloudflare.com/logs/logpush/transformers/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

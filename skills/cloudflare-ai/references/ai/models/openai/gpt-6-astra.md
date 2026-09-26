@@ -30,7 +30,7 @@ GPT-6 Astra is OpenAI's most capable model, built for complex reasoning, coding,
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://developers.openai.com/api/docs/models/gpt-6-astra) |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-6-astra) |
+| Pricing | <ul><li>Long-context threshold (input tokens)$272,000.00</li><li>Short-context input (per 1M)$10.00</li><li>Short-context cached input (per 1M)$1.00</li><li>Short-context cache write (per 1M)$12.00</li><li>Short-context output (per 1M)$50.00</li><li>Long-context input (per 1M)$20.00</li><li>Long-context cached input (per 1M)$2.00</li><li>Long-context cache write (per 1M)$25.00</li><li>Long-context output (per 1M)$75.00</li></ul> |
 
 ## Usage
 

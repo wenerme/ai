@@ -29,7 +29,7 @@ DeepSeek V4 Pro is a high-capability reasoning model from DeepSeek, served via F
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 131,072 tokens |
 | More information | [link ↗](https://api-docs.deepseek.com) |
 | Request formats | Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/deepseek/deepseek-v4-pro) |
+| Pricing | <ul><li>Input (per 1M tokens)$1.74</li><li>Output (per 1M tokens)$3.48</li><li>Cached input (per 1M tokens)$0.145</li></ul> |
 
 ## Usage
 

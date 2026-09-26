@@ -30,7 +30,7 @@ xAI's higher-fidelity text-to-image model optimized for sharper details, more ac
 | Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
 | More information | [link ↗](https://docs.x.ai/developers/models/grok-imagine-image-quality) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-image-quality) |
+| Pricing | <ul><li>Per image$0.05</li><li>Per input image$0.01</li></ul> |
 
 ## Usage
 

@@ -30,7 +30,7 @@ xAI's Grok text-to-speech model. Generates high-fidelity spoken audio in 5 expre
 | Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
 | More information | [link ↗](https://docs.x.ai/developers/model-capabilities/audio/text-to-speech) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-tts) |
+| Pricing | <ul><li>Per character$0.000015</li></ul> |
 
 ## Usage
 

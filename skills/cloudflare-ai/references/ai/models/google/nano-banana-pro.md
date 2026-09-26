@@ -30,7 +30,7 @@ Google's higher-quality image generation model with improved detail and prompt a
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
 | More information | [link ↗](https://deepmind.google/technologies/imagen/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-pro) |
+| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Output (per 1M tokens)$120.00</li></ul> |
 
 ## Usage
 

@@ -30,7 +30,7 @@ Highest-quality text-to-speech with under 200ms latency, emotion control, and 15
 | Terms and License | [link ↗](https://inworld.ai/terms) |
 | More information | [link ↗](https://inworld.ai/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-max) |
+| Pricing | <ul><li>Per character$0.000035</li></ul> |
 
 ## Usage
 

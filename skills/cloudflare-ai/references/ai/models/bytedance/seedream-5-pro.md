@@ -27,7 +27,7 @@ Seedream 5 Pro is ByteDance's high-quality image generation and editing model wi
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://ark.ap-southeast.bytepluses.com/api/v3/images/generations) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-5-pro) |
+| Pricing | <ul><li>Per image$0.045</li><li>Per input image$0.03</li><li>Default (per second)$0.045</li></ul> |
 
 ## Usage
 

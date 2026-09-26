@@ -27,7 +27,7 @@ Seedream 4.0 is ByteDance's image creation model that combines text-to-image gen
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://seed.bytedance.com/en/seedream4_0) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-4.0) |
+| Pricing | <ul><li>Per image$0.03</li></ul> |
 
 ## Usage
 

@@ -28,7 +28,7 @@ AssemblyAI's Universal-3.5 Pro speech recognition model for fast, high-accuracy 
 | --- | --- |
 | Terms and License | [link ↗](https://www.assemblyai.com/legal/terms-of-service) |
 | More information | [link ↗](https://www.assemblyai.com/docs/getting-started/universal-3-5-pro) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/assemblyai/universal-3.5-pro) |
+| Pricing | <ul><li>Per audio minute$0.0035</li><li>Per minute (speaker diarization)$0.0003</li><li>Per minute (key terms)$0.00083</li><li>Per minute (medical)$0.0025</li></ul> |
 
 ## Usage
 

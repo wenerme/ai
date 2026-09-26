@@ -32,7 +32,7 @@ GPT-4.1 Nano is OpenAI’s smallest and cheapest GPT-4.1 variant, optimized for 
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1-nano) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.10</li><li>Output (per 1M tokens)$0.40</li><li>Cached input (per 1M tokens)$0.025</li></ul> |
 
 ## Usage
 

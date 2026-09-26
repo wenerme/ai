@@ -32,7 +32,7 @@ GPT-5.4 is OpenAI's flagship model with strong coding, reasoning, and multimodal
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4) |
+| Pricing | <ul><li>Input (per 1M tokens)$2.50</li><li>Output (per 1M tokens)$15.00</li><li>Cached input (per 1M tokens)$0.25</li></ul> |
 
 ## Usage
 

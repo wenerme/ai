@@ -32,7 +32,7 @@ Fast, affordable version of GPT-4.1 with a million-token context window.
 | More information | [link ↗](https://openai.com/index/gpt-4-1/) |
 | Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1-mini) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.40</li><li>Output (per 1M tokens)$1.60</li><li>Cached input (per 1M tokens)$0.10</li></ul> |
 
 ## Usage
 

@@ -28,7 +28,7 @@ Alibaba's Wan 3.0 text-to-video model. Generates cinematic videos from text prom
 | --- | --- |
 | Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
 | More information | [link ↗](https://www.alibabacloud.com/help/en/model-studio/models) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-3.0) |
+| Pricing | <ul><li>Default (per second)$0.05</li><li>@480p (per second)$0.05</li><li>@720p (per second)$0.10</li><li>@1080p (per second)$0.20</li></ul> |
 
 ## Usage
 

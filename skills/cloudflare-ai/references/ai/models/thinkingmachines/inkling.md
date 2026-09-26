@@ -29,7 +29,7 @@ Inkling is Thinking Machines' open-weights hybrid reasoning model, built on a mi
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 64,000 tokens |
 | More information | [link ↗](https://huggingface.co/thinkingmachines/Inkling) |
 | Request formats | Anthropic Messages |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/thinkingmachines/inkling) |
+| Pricing | <ul><li>Input (per 1M tokens)$1.87</li><li>Output (per 1M tokens)$4.68</li><li>Cached input (per 1M tokens)$0.374</li><li>Cache creation (per 1M tokens)$1.87</li></ul> |
 
 ## Usage
 

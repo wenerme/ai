@@ -32,7 +32,7 @@ Claude Opus 4.8 is Anthropic's most capable generally available model, with a st
 | More information | [link ↗](https://www.anthropic.com/claude/opus) |
 | Zero data retention | Yes |
 | Request formats | Anthropic Messages |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-opus-4.8) |
+| Pricing | <ul><li>Input (per 1M tokens)$5.00</li><li>Output (per 1M tokens)$25.00</li><li>Cached input (per 1M tokens)$0.50</li><li>Cache creation (per 1M tokens)$6.25</li></ul> |
 
 ## Usage
 

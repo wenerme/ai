@@ -30,7 +30,7 @@ Inworld's most powerful and expressive text-to-speech model. Builds on TTS 1.5 w
 | Terms and License | [link ↗](https://inworld.ai/terms) |
 | More information | [link ↗](https://docs.inworld.ai/tts/realtime-tts-2-preview) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-2) |
+| Pricing | <ul><li>Per character$0.000025</li></ul> |
 
 ## Usage
 

@@ -30,7 +30,7 @@ Google's fast image generation model producing high-quality images from text pro
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
 | More information | [link ↗](https://deepmind.google/technologies/imagen/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.30</li><li>Output (per 1M tokens)$30.00</li><li>Cached input (per 1M tokens)$0.03</li><li>Cache creation (per 1M tokens)$0.083333</li></ul> |
 
 ## Usage
 

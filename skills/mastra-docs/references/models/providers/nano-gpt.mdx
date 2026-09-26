@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 593 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 595 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -4612,6 +4612,18 @@ for await (const chunk of stream) {
     "outputCost": 1.5
   },
   {
+    "model": "nano-gpt/perceptron/perceptron-mk1.5",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 36864,
+    "maxOutput": 8192,
+    "inputCost": 0.15,
+    "outputCost": 1.5
+  },
+  {
     "model": "nano-gpt/phi-4-mini-instruct",
     "imageInput": false,
     "audioInput": false,
@@ -6134,6 +6146,18 @@ for await (const chunk of stream) {
     "maxOutput": 262144,
     "inputCost": 0.4,
     "outputCost": 3
+  },
+  {
+    "model": "nano-gpt/TEE/qwen3.8-27b-uncensored",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 262144,
+    "inputCost": 0.3,
+    "outputCost": 1.5
   },
   {
     "model": "nano-gpt/tencent/hy3",

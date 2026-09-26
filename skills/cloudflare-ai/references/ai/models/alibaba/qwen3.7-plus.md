@@ -29,7 +29,7 @@ Alibaba's Qwen 3.7 Plus is the cost-effective member of the Qwen3.7 series, pair
 | Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
 | More information | [link ↗](https://www.qwencloud.com/models/qwen3.7-plus) |
 | Request formats | Chat Completions, Responses |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.7-plus) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.32</li><li>Output (per 1M tokens)$1.28</li><li>Cached input (per 1M tokens)$0.064</li></ul> |
 
 ## Usage
 

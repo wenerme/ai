@@ -32,7 +32,7 @@ Google's lightest and most cost-efficient Gemini 2.5 model for high-throughput t
 | More information | [link ↗](https://deepmind.google/technologies/gemini/) |
 | Zero data retention | Yes |
 | Request formats | Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-2.5-flash-lite) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.10</li><li>Output (per 1M tokens)$0.40</li><li>Cached input (per 1M tokens)$0.01</li></ul> |
 
 ## Usage
 

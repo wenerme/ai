@@ -30,7 +30,7 @@ A faster version of Veo 3.1 optimized for lower latency while maintaining high-q
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
 | More information | [link ↗](https://deepmind.google/technologies/veo/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/veo-3.1-fast) |
+| Pricing | <ul><li>Default (per second)$0.08</li><li>@720p (per second)$0.08</li><li>@1080p (per second)$0.10</li><li>@4k (per second)$0.25</li><li>@720p w/ audio (per second)$0.10</li><li>@1080p w/ audio (per second)$0.12</li><li>@4k w/ audio (per second)$0.30</li></ul> |
 
 ## Usage
 

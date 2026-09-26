@@ -30,7 +30,7 @@ GPT-6 Sol is OpenAI's mid-tier GPT-6 model, built to power complex coding and ag
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://developers.openai.com/api/docs/models/gpt-6-sol) |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-6-sol) |
+| Pricing | <ul><li>Short-context input (per 1M)$2.00</li><li>Short-context cached input (per 1M)$0.20</li><li>Short-context cache write (per 1M)$2.50</li><li>Short-context output (per 1M)$10.00</li><li>Long-context input (per 1M)$4.00</li><li>Long-context cached input (per 1M)$0.40</li><li>Long-context cache write (per 1M)$5.00</li><li>Long-context output (per 1M)$15.00</li></ul> |
 
 ## Usage
 

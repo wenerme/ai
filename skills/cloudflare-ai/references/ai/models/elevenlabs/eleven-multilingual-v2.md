@@ -28,7 +28,7 @@ ElevenLabs' multilingual text-to-speech model for generating natural speech acro
 | --- | --- |
 | Terms and License | [link ↗](https://elevenlabs.io/terms) |
 | More information | [link ↗](https://elevenlabs.io/docs/api-reference/text-to-speech/convert) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/elevenlabs/eleven-multilingual-v2) |
+| Pricing | <ul><li>Per character$0.0001</li><li>Default (per second)$0.0001</li></ul> |
 
 ## Usage
 

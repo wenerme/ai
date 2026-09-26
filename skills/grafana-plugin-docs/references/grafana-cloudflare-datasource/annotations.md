@@ -23,6 +23,10 @@ Expand table
 |------------------------------------|------------------------------------------------------------------------------------|
 | **Internet outages and anomalies** | Displays Cloudflare Radar outage and anomaly events as annotations on your graphs. |
 
+> Note
+>
+> Radar annotation queries don’t require any special API token permissions, because Cloudflare Radar APIs are publicly accessible.
+
 ## Add an annotation query
 
 To add a Cloudflare annotation query to your dashboard:
@@ -31,7 +35,7 @@ To add a Cloudflare annotation query to your dashboard:
 2. Select **Annotations** from the left menu.
 3. Click **Add annotation query**.
 4. In the **Data source** field, select your Cloudflare data source.
-5. Set **Action** to `radar-annotations-outages`.
+5. Set **Action** to `Internet outages and anomalies`.
 6. Configure the optional filters:
 
 Expand table
@@ -54,17 +58,39 @@ The Internet outages and anomalies query returns events with start and end times
 
 Each annotation includes details about the outage, such as the affected location, ASN, and event type.
 
-## Example: Monitor outages in a specific country
+## Examples
+
+### Example: Monitor outages in a specific country
 
 To display verified Internet outages for the United States:
 
 1. Add an annotation query as described above.
-2. Set **Action** to `radar-annotations-outages`.
+2. Set **Action** to `Internet outages and anomalies`.
 3. In **Location**, enter `US`.
 4. In **Status**, select `VERIFIED`.
 5. Set **Limit** to `10`.
 
 The dashboard displays annotation markers for the 10 most recent verified outages affecting the United States.
+
+### Example: Monitor outages for a specific network
+
+To display Internet outages that affect a specific network by its ASN:
+
+1. Add an annotation query as described above.
+2. Set **Action** to `Internet outages and anomalies`.
+3. In **ASN**, enter the network’s ASN, for example `13335`.
+4. Leave **Status** empty to include both verified and unverified events.
+5. Set **Limit** to `10`.
+
+The dashboard displays annotation markers for outages affecting the specified network.
+
+## Considerations for annotations
+
+Keep the following in mind when you use Cloudflare annotations:
+
+- **Time range:** The query automatically filters events to the dashboard time range through the `${__timeFrom}` and `${__timeTo}` variables. Widen the time range if you don’t see the events you expect.
+- **Data latency:** Cloudflare Radar outage data can lag behind real time, so recent events might not appear immediately.
+- **Result limit:** The **Limit** field defaults to `5`. Increase it to display more events on the dashboard.
 
 ## Related documentation
 

@@ -16,6 +16,17 @@ Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/api-shield.xml)
 
+## 2026-08-27
+
+
+**Increased limits for JWT validation configurations**
+
+API Shield [JSON Web Token validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/) now supports 32 token configurations per zone by default. Each token configuration can contain up to 16 keys.
+
+These increased limits support more JWT configurations and provide additional capacity for key rotation.
+
+Refer to [Configure JWT validation via the API](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/) for configuration details.
+
 ## 2026-08-25
 
 

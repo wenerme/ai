@@ -1,5 +1,5 @@
 ---
-description: Manage account-wide Email Sending suppression entries.
+description: Manage Email Sending suppression entries for your whole account or for one sending domain.
 title: Manage suppressions
 image: https://developers.cloudflare.com/og-docs.png
 ---
@@ -12,37 +12,38 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Manage suppressions
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/suppressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/configuration/suppressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Manage recipients that Email Service must not contact. For suppression triggers and expiration rules, refer to [Suppression lists](https://developers.cloudflare.com/email-service/concepts/suppressions/).
+Manage recipients that Email Service must not contact. For suppression scope, triggers, and expiration rules, refer to [Suppression lists](https://developers.cloudflare.com/email-service/concepts/suppressions/).
 
-The dashboard and API are account-scoped. Entries apply to every sending domain and subdomain in the account.
+Each suppression has a scope. An `account` suppression applies to every sending domain and subdomain in the account. A `sending_domain` suppression applies to one sending domain only. For details, refer to [Suppression scope](https://developers.cloudflare.com/email-service/concepts/suppressions/#suppression-scope).
 
 ## View suppressions
 
 1. In the Cloudflare dashboard, go to **Compute** > **Email Service** > **Email Sending**. [Go to **Email Sending** ↗](https://dash.cloudflare.com/?to=/:account/email-service/sending)
 2. Select **Suppressions**.
 
-The table displays each recipient, reason, creation time, and expiration. **Never** means the entry has no scheduled expiration.
+The table displays each recipient, reason, scope, creation time, and expiration. **Never** means the entry has no scheduled expiration.
 
 ## Add a suppression
 
 1. In **Suppressions**, enter the recipient email address.
 2. Select an expiration preset, a custom future time, or **Never**.
-3. Select **Add**.
+3. In **Scope**, select **Account** or **Sending domain**. For **Sending domain**, select one of your sending domains or enter a domain.
+4. Select **Add**.
 
-Entries created in the dashboard have the `manual` reason. They apply to every sending domain in the account.
+Entries created in the dashboard have the `manual` reason. You cannot change the scope of an existing entry. To change it, delete the entry and add a new one.
 
 ## Import suppressions
 
 You can paste addresses or upload `.csv`, `.json`, or `.txt` files. Supported file contents are:
 
-- `.csv` or `.txt`: Put one entry on each line as `<EMAIL_ADDRESS>` or `<EMAIL_ADDRESS>,<EXPIRATION_TIMESTAMP>`. Use an [RFC 3339 ↗︎](https://datatracker.ietf.org/doc/html/rfc3339) timestamp and omit the header row.
-- `.json`: Use an array of address strings or objects. Each object requires `email` and can include an RFC 3339 `expires_at` timestamp.
+- `.csv` or `.txt`: Put one entry on each line as `<EMAIL_ADDRESS>`, `<EMAIL_ADDRESS>,<EXPIRATION_TIMESTAMP>`, or `<EMAIL_ADDRESS>,<EXPIRATION_TIMESTAMP>,<SCOPE>`. Use an [RFC 3339 ↗︎](https://datatracker.ietf.org/doc/html/rfc3339) timestamp and omit the header row. `<SCOPE>` is `account` or a sending domain.
+- `.json`: Use an array of address strings or objects. Each object requires `email` and can include an RFC 3339 `expires_at` timestamp and a `scope`. `scope` is `account`, a sending domain, or a scope object such as `{ "type": "sending_domain", "value": "mail.myappexample.com" }`.
 
 1. In **Suppressions**, select **Import**.
 2. Upload a supported file or paste the addresses.
-3. Choose a default expiration for entries that omit one.
+3. In **Defaults**, choose an expiration and a scope for entries that do not set their own.
 4. Select **Import**. Larger imports run in batches, so keep the dialog open until every batch finishes.
 
 ## Remove a suppression
@@ -57,13 +58,65 @@ The [account Email Sending suppression management REST API](https://developers.c
 
 API clients must use `read_only` to determine whether an entry is mutable. Do not infer mutability from the `reason` value.
 
+Every entry in an API response includes a `scope` object:
+
+```json
+{ "type": "account" }
+```
+
+```json
+{ "type": "sending_domain", "value": "mail.myappexample.com" }
+```
+
+### Add a suppression for one sending domain
+
+To add an entry for one sending domain, include `scope` in the request body. If you omit `scope`, the API creates an `account` entry.
+
+```bash
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/email/sending/suppressions \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "email": "user@example.net",
+    "scope": { "type": "sending_domain", "value": "mail.myappexample.com" }
+  }'
+```
+
+The API lowercases `value` and removes trailing dots. The value can contain letters, digits, `.`, `-`, and `_`, up to 253 characters. For an internationalized domain, use its ASCII (`xn--`) form. Other values return `400` with the `invalid_scope_value` error code.
+
+The API does not check that your account sends from the domain. An entry for a domain that you do not send from never blocks mail.
+
+Bulk imports accept the same optional `scope` on each item. The API removes duplicate items that have the same address and scope.
+
+### List suppressions by scope
+
+The list returns `sending_domain` entries first, then `account` entries. Entries are sorted newest first within each scope. To list one scope only, use these query parameters:
+
+| Parameter | Description |
+| --- | --- |
+| `scope_type` | `account` or `sending_domain`. |
+| `scope_value` | One sending domain. Requires `scope_type=sending_domain`. |
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/email/sending/suppressions?scope_type=sending_domain&scope_value=mail.myappexample.com" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+A `scope_value` without `scope_type=sending_domain` returns `400` with the `scope_value_requires_type` error code.
+
+To find every suppression for one address, use the `email` parameter. The results can include one `account` suppression and one `sending_domain` suppression for each sending domain.
+
+### Change the scope of an entry
+
+You cannot change the scope of an existing entry. A `PATCH` request that includes `scope` returns `400` with the `scope_immutable` error code. To change the scope, delete the entry and create a new one.
+
 Caution
 
 Deleting a hard-bounce or complaint suppression permits delivery attempts to an address that already failed or reported your mail as spam. Verify the recipient before deleting the entry.
 
 ## Limits
 
-Each account can have one active entry per address. For page size, import, and rate limits, refer to [Suppression list limits](https://developers.cloudflare.com/email-service/platform/limits/#suppression-list-limits).
+Each address can have one active `account` suppression and one active `sending_domain` suppression for each sending domain. For page size, import, and rate limits, refer to [Suppression list limits](https://developers.cloudflare.com/email-service/platform/limits/#suppression-list-limits).
 
 Was this helpful?
 
@@ -74,5 +127,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/suppressions/#page","headline":"Manage suppressions","description":"Manage account-wide Email Sending suppression entries.","url":"https://developers.cloudflare.com/email-service/configuration/suppressions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/configuration/suppressions/#page","headline":"Manage suppressions","description":"Manage Email Sending suppression entries for your whole account or for one sending domain.","url":"https://developers.cloudflare.com/email-service/configuration/suppressions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -31,7 +31,7 @@ Pareto is Unbiased's blended AI model. It engages multiple language models in pa
 | More information | [link ↗](https://unbiased.ai/model-card/) |
 | Zero data retention | Yes |
 | Request formats | Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/unbiased/pareto) |
+| Pricing | <ul><li>Input (per 1M tokens)$2.50</li><li>Output (per 1M tokens)$7.50</li><li>Cached input (per 1M tokens)$0.25</li></ul> |
 
 ## Usage
 
@@ -70,7 +70,7 @@ Paris
 {
   "id": "chatcmpl-mu5ww8tss0mj6ofw",
   "object": "chat.completion",
-  "model": "union-alpha",
+  "model": "unbiased/pareto",
   "choices": [
     {
       "index": 0,
@@ -146,7 +146,7 @@ An API (Application Programming Interface) is a set of rules that lets one softw
 {
   "id": "chatcmpl-mu5wwcpm6hxi7lsb",
   "object": "chat.completion",
-  "model": "union-alpha",
+  "model": "unbiased/pareto",
   "choices": [
     {
       "index": 0,
@@ -226,7 +226,7 @@ console.log(reverseString("Hello")); // "olleH"
 {
   "id": "chatcmpl-mu5wwj1mqcjfe7xb",
   "object": "chat.completion",
-  "model": "union-alpha",
+  "model": "unbiased/pareto",
   "choices": [
     {
       "index": 0,
@@ -314,7 +314,7 @@ For a weekend trip, **prioritize location over extra amenities**—less time in 
 {
   "id": "chatcmpl-mu5wwqlruoazrxij",
   "object": "chat.completion",
-  "model": "union-alpha",
+  "model": "unbiased/pareto",
   "choices": [
     {
       "index": 0,
@@ -388,7 +388,7 @@ And let its little light rekindle dream.
 {
   "id": "chatcmpl-mu5wx6hq2jpgslxe",
   "object": "chat.completion",
-  "model": "union-alpha",
+  "model": "unbiased/pareto",
   "choices": [
     {
       "index": 0,

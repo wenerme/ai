@@ -30,7 +30,7 @@ Claude Sonnet 5 is Anthropic's most agentic Sonnet model yet, built for coding, 
 | Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information | [link ↗](https://www.anthropic.com/claude/sonnet) |
 | Request formats | Anthropic Messages |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-5) |
+| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Output (per 1M tokens)$10.00</li><li>Cached input (per 1M tokens)$0.20</li><li>Cache creation (per 1M tokens)$2.50</li></ul> |
 
 ## Usage
 

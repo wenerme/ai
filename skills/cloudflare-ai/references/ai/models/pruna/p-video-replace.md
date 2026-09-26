@@ -27,7 +27,7 @@ Pruna's P-Video-Replace takes a source video and one or more identity reference 
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video-replace) |
+| Pricing | <ul><li>Default (per second)$0.03</li><li>@720p (per second)$0.03</li><li>@1080p (per second)$0.06</li></ul> |
 
 ## Usage
 

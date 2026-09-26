@@ -32,7 +32,7 @@ OpenAI's flagship GPT model for complex tasks with a million-token context windo
 | More information | [link ↗](https://openai.com/index/gpt-4-1/) |
 | Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4.1) |
+| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Output (per 1M tokens)$8.00</li><li>Cached input (per 1M tokens)$0.50</li></ul> |
 
 ## Usage
 

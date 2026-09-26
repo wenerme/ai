@@ -30,7 +30,7 @@ Vidu Q3 Turbo is a faster version of Vidu Q3 optimized for lower latency video g
 | Terms and License | [link ↗](https://www.vidu.com/terms) |
 | More information | [link ↗](https://www.vidu.com/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/vidu/q3-turbo) |
+| Pricing | <ul><li>Default (per second)$0.06</li><li>@540p (per second)$0.04</li><li>@720p (per second)$0.06</li><li>@1080p (per second)$0.07</li></ul> |
 
 ## Usage
 

@@ -27,7 +27,7 @@ Pruna's P-Image is an ultra-fast text-to-image model with automatic prompt enhan
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-image) |
+| Pricing | <ul><li>Per image$0.005</li></ul> |
 
 ## Usage
 

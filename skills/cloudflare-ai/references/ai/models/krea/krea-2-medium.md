@@ -28,7 +28,7 @@ Smaller, faster, more cost-efficient. Extensive post-training makes outputs espe
 | --- | --- |
 | Terms and License | [link ↗](https://www.krea.ai/terms) |
 | More information | [link ↗](https://docs.krea.ai/api-reference/krea/krea-2-medium) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/krea/krea-2-medium) |
+| Pricing | <ul><li>Default (per second)$0.03</li><li>Per image$0.03</li></ul> |
 
 ## Usage
 

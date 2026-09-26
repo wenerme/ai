@@ -28,7 +28,7 @@ ElevenLabs' latest text-to-speech model for highly expressive, natural speech ge
 | --- | --- |
 | Terms and License | [link ↗](https://elevenlabs.io/terms) |
 | More information | [link ↗](https://elevenlabs.io/docs/api-reference/text-to-speech/convert) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/elevenlabs/eleven-v3) |
+| Pricing | <ul><li>Per character$0.0001</li><li>Default (per second)$0.0001</li></ul> |
 
 ## Usage
 

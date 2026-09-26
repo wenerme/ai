@@ -32,7 +32,7 @@ GPT-4o Mini is the lightweight, low-cost variant of GPT-4o, well suited to high-
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o-mini) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.075</li><li>Output (per 1M tokens)$0.30</li><li>Cached input (per 1M tokens)$0.0375</li></ul> |
 
 ## Usage
 

@@ -31,7 +31,7 @@ Alibaba's Qwen 3.5 is a 397B-parameter mixture-of-experts model with 17B active 
 | More information | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen) |
 | Zero data retention | Yes |
 | Request formats | Chat Completions, Responses |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.5-397b-a17b) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.60</li><li>Output (per 1M tokens)$3.60</li></ul> |
 
 ## Usage
 

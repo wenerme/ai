@@ -28,7 +28,7 @@ A fast multimodal video generation model supporting text-to-video and image-to-v
 | --- | --- |
 | Terms and License | [link ↗](https://platform.minimax.io/docs/guides/terms-of-service.md) |
 | More information | [link ↗](https://platform.minimax.io/docs/guides/video-generation.md) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/h3-max) |
+| Pricing | <ul><li>Default (per second)$0.05</li><li>@480p (per second)$0.05</li><li>@768p (per second)$0.08</li></ul> |
 
 ## Usage
 

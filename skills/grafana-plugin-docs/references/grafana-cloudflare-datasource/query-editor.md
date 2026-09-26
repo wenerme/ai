@@ -42,6 +42,8 @@ To create a query, select the **Action** (query type) from the drop-down. Each a
 
 Some actions have mandatory parameters displayed next to the action selector. Optional parameters are available in the **Optional parameters** section.
 
+You can use dashboard template variables in query fields with the `${variable_name}` syntax. For more information, refer to [Cloudflare template variables](/docs/plugins/grafana-cloudflare-datasource/latest/template-variables/).
+
 ## Account queries
 
 Accounts are a fundamental entity in Cloudflare. For more information, refer to the [Cloudflare accounts documentation](https://developers.cloudflare.com/fundamentals/setup/accounts-and-zones/#accounts).
@@ -52,9 +54,9 @@ Lists all accounts you have ownership or verified access to.
 
 Expand table
 
-| Field      | Description |
-|------------|-------------|
-| **Action** | `accounts`  |
+| Field      | Description     |
+|------------|-----------------|
+| **Action** | `List accounts` |
 
 For API details, refer to [List accounts](https://developers.cloudflare.com/api/operations/accounts-list-accounts).
 
@@ -66,7 +68,7 @@ Expand table
 
 | Field          | Description                    |
 |----------------|--------------------------------|
-| **Action**     | `account`                      |
+| **Action**     | `Account details`              |
 | **Account ID** | Select the Cloudflare account. |
 
 For API details, refer to [Account details](https://developers.cloudflare.com/api/operations/accounts-account-details).
@@ -83,7 +85,7 @@ Expand table
 
 | Field            | Description                                                                                           |
 |------------------|-------------------------------------------------------------------------------------------------------|
-| **Action**       | `zones`                                                                                               |
+| **Action**       | `List zones`                                                                                          |
 | **Account name** | (Optional) Filter zones by account name. Supports filter operators like `contains:`.                  |
 | **Domain name**  | (Optional) Filter zones by domain name. Supports filter operators like `starts_with:`.                |
 | **Status**       | (Optional) Filter by zone status: `initializing`, `pending`, `active`, or `moved`. Default: `active`. |
@@ -100,14 +102,14 @@ Retrieves a list of summarized aggregate metrics over a given time period.
 
 Expand table
 
-| Field          | Description                                                                       |
-|----------------|-----------------------------------------------------------------------------------|
-| **Action**     | `zones-dns-analytics-report`                                                      |
-| **Zone ID**    | Select the Cloudflare zone.                                                       |
-| **Metrics**    | Select one or more metrics to retrieve (for example, Query Count, Response Time). |
-| **Dimensions** | Select dimensions to group results by (for example, Query Type, Response Code).   |
-| **Sort**       | (Visible when dimensions are selected) Sort order for the results.                |
-| **Limit**      | Maximum number of results to return. Default: `100000`.                           |
+| Field          | Description                                                                               |
+|----------------|-------------------------------------------------------------------------------------------|
+| **Action**     | `DNS analytics report`                                                                    |
+| **Zone ID**    | Select the Cloudflare zone.                                                               |
+| **Metrics**    | Select one or more metrics to retrieve (for example, Query Count, Average response time). |
+| **Dimensions** | Select dimensions to group results by (for example, Query Type, Response Code).           |
+| **Sort**       | (Visible when dimensions are selected) Sort order for the results.                        |
+| **Limit**      | Maximum number of results to return. Default: `100000`.                                   |
 
 > Note
 >
@@ -123,7 +125,7 @@ Expand table
 
 | Field          | Description                                                        |
 |----------------|--------------------------------------------------------------------|
-| **Action**     | `zones-dns-analytics-report-bytime`                                |
+| **Action**     | `DNS analytics by time`                                            |
 | **Zone ID**    | Select the Cloudflare zone.                                        |
 | **Metrics**    | Select one or more metrics to retrieve.                            |
 | **Dimensions** | Select dimensions to group results by.                             |
@@ -134,6 +136,42 @@ Expand table
 > The plugin automatically passes the Grafana dashboard time range to the `since` and `until` API parameters.
 
 For API details, refer to [DNS analytics by time](https://developers.cloudflare.com/api/operations/dns-analytics-by-time).
+
+### Available metrics and dimensions
+
+Both DNS Analytics queries support the same set of metrics and dimensions.
+
+The following metrics are available:
+
+Expand table
+
+| Metric                            | Description                               |
+|-----------------------------------|-------------------------------------------|
+| **Query Count**                   | Total number of DNS queries.              |
+| **Uncached query count**          | Number of queries not served from cache.  |
+| **Stale query count**             | Number of queries served with stale data. |
+| **Average response time**         | Mean response time.                       |
+| **Median response time**          | 50th percentile response time.            |
+| **90th percentile response time** | 90th percentile response time.            |
+| **99th percentile response time** | 99th percentile response time.            |
+
+The following dimensions are available to group results:
+
+Expand table
+
+| Dimension                | Description                                             |
+|--------------------------|---------------------------------------------------------|
+| **Query Name**           | The queried domain name.                                |
+| **Query Type**           | The DNS record type, such as `A`, `AAAA`, or `TXT`.     |
+| **Response Code**        | The DNS response code, such as `NOERROR` or `NXDOMAIN`. |
+| **Response Cached**      | Whether the response was served from cache.             |
+| **Colo Name**            | The Cloudflare data center that served the query.       |
+| **Origin**               | The origin of the query.                                |
+| **Day Of Week**          | The day of the week the query occurred.                 |
+| **TCP**                  | Whether the query used TCP.                             |
+| **IP Version**           | The IP protocol version, IPv4 or IPv6.                  |
+| **Query Size Bucket**    | The query size range.                                   |
+| **Response Size Bucket** | The response size range.                                |
 
 ## Radar queries
 
@@ -147,7 +185,6 @@ Expand table
 |-------------------------------------------|--------------------------------------------------------|
 | **Get datasets**                          | List available Radar datasets.                         |
 | **Bot class summary/time series**         | Traffic distribution between bot and human traffic.    |
-| **User agents time series**               | Traffic distribution by top user agents.               |
 | **User agent families time series**       | Traffic distribution by browser family.                |
 | **Device type summary/time series**       | Traffic distribution by device type (mobile, desktop). |
 | **HTTP protocols summary/time series**    | Traffic distribution by HTTP protocol.                 |
@@ -248,19 +285,19 @@ The following examples demonstrate common query configurations.
 To visualize DNS query volume trends for a zone:
 
 1. Select the Cloudflare data source.
-2. Set **Action** to `zones-dns-analytics-report-bytime`.
+2. Set **Action** to `DNS analytics by time`.
 3. Select your zone from the **Zone ID** drop-down.
 4. In **Metrics**, select `Query Count`.
 5. Leave **Dimensions** empty to see total query count, or select `Response Code` to break down by response type.
 
-This query returns time series data suitable for a Time series or Graph panel.
+This query returns time series data suitable for a Time series panel.
 
 ### Example: Analyze DNS queries by type and response code
 
 To create a table showing DNS query distribution:
 
 1. Select the Cloudflare data source.
-2. Set **Action** to `zones-dns-analytics-report`.
+2. Set **Action** to `DNS analytics report`.
 3. Select your zone from the **Zone ID** drop-down.
 4. In **Metrics**, select `Query Count`.
 5. In **Dimensions**, select `Query Type` and `Response Code`.
@@ -273,16 +310,16 @@ This query returns tabular data suitable for a Table panel.
 To visualize how traffic is distributed across operating systems:
 
 1. Select the Cloudflare data source.
-2. Set **Action** to `radar-http-timeseries-groups-os`.
+2. Set **Action** to `Get operating systems timeseries`.
 
-The query automatically uses the dashboard time range and returns time series data showing percentage distribution by OS (Windows, macOS, Android, iOS, etc.).
+The query automatically uses the dashboard time range and returns time series data showing percentage distribution by operating system, for example Windows, macOS, Android, and iOS.
 
 ### Example: Monitor Internet outages in a region
 
 To track Internet outages and anomalies in a specific country:
 
 1. Select the Cloudflare data source.
-2. Set **Action** to `radar-annotations-outages`.
+2. Set **Action** to `Internet outages and anomalies`.
 3. In **Location**, enter the country code (for example, `US` for United States).
 4. In **Status**, select `VERIFIED` to show only confirmed outages.
 5. Set **Limit** to `10` to show the 10 most recent events.
@@ -299,9 +336,9 @@ Track DNS query performance to ensure your domains are responding quickly and re
 
 **Dashboard setup:**
 
-1. **Query volume panel** — Use `zones-dns-analytics-report-bytime` with `Query Count` metric to track request volume over time.
-2. **Response time panel** — Use `zones-dns-analytics-report-bytime` with `Response Time P50` and `Response Time P99` metrics to monitor latency.
-3. **Error rate panel** — Use `zones-dns-analytics-report` with `Query Count` metric and `Response Code` dimension to identify failed queries (SERVFAIL, NXDOMAIN).
+1. **Query volume panel**: Use the `DNS analytics by time` query with the `Query Count` metric to track request volume over time.
+2. **Response time panel**: Use the `DNS analytics by time` query with the `Median response time` and `99th percentile response time` metrics to monitor latency.
+3. **Error rate panel**: Use the `DNS analytics report` query with the `Query Count` metric and `Response Code` dimension to identify failed queries, such as SERVFAIL and NXDOMAIN.
 
 **Alerting:** Set up alerts on response time percentiles or error rates to catch issues early.
 
@@ -311,9 +348,9 @@ When you notice unusual traffic patterns, use these queries to investigate.
 
 **Investigation workflow:**
 
-1. **Identify the timeframe** — Use `zones-dns-analytics-report-bytime` to pinpoint when anomalies occurred.
-2. **Break down by dimension** — Add dimensions like `Query Type`, `Response Code`, or `Query Name` to identify patterns.
-3. **Compare with Radar data** — Use `radar-annotations-outages` to check if the anomaly correlates with known Internet outages.
+1. **Identify the timeframe**: Use the `DNS analytics by time` query to pinpoint when anomalies occurred.
+2. **Break down by dimension**: Add dimensions like `Query Type`, `Response Code`, or `Query Name` to identify patterns.
+3. **Compare with Radar data**: Use the `Internet outages and anomalies` query to check if the anomaly correlates with known Internet outages.
 
 ### Track global Internet trends
 
@@ -321,10 +358,10 @@ Use Cloudflare Radar data to understand broader Internet patterns that may affec
 
 **Dashboard setup:**
 
-1. **Device distribution** — Use `radar-http-summary-device-type` to see mobile vs. desktop traffic trends.
-2. **Browser trends** — Use `radar-http-timeseries-groups-browser-family` to track browser adoption over time.
-3. **Protocol adoption** — Use `radar-http-timeseries-groups-http-version` to monitor HTTP/2 and HTTP/3 adoption.
-4. **Outage overlay** — Add `radar-annotations-outages` as an annotation to correlate traffic changes with outages.
+1. **Device distribution**: Use the `Get device type summary` query to see mobile compared to desktop traffic trends.
+2. **Browser trends**: Use the `Get user agent families timeseries` query to track browser adoption over time.
+3. **Protocol adoption**: Use the `Get HTTP versions timeseries` query to monitor HTTP/2 and HTTP/3 adoption.
+4. **Outage overlay**: Add the `Internet outages and anomalies` query as an annotation to correlate traffic changes with outages.
 
 ### Security monitoring
 
@@ -334,10 +371,19 @@ Monitor for potential security issues using DNS analytics patterns.
 
 Expand table
 
-| Pattern                                 | Query configuration                                                | Potential issue                             |
-|-----------------------------------------|--------------------------------------------------------------------|---------------------------------------------|
-| Spike in NXDOMAIN responses             | `zones-dns-analytics-report-bytime` with `Response Code` dimension | DNS enumeration attack or misconfiguration  |
-| Unusual query types                     | `zones-dns-analytics-report` with `Query Type` dimension           | Potential DNS tunneling (TXT, NULL queries) |
-| High query volume from specific sources | `zones-dns-analytics-report` with source dimensions                | DDoS or abuse                               |
+| Pattern                                 | Query configuration                                    | Potential issue                             |
+|-----------------------------------------|--------------------------------------------------------|---------------------------------------------|
+| Spike in NXDOMAIN responses             | `DNS analytics by time` with `Response Code` dimension | DNS enumeration attack or misconfiguration  |
+| Unusual query types                     | `DNS analytics report` with `Query Type` dimension     | Potential DNS tunneling (TXT, NULL queries) |
+| High query volume from specific sources | `DNS analytics report` with source dimensions          | DDoS or abuse                               |
 
 **Alerting:** Create alerts for sudden increases in error responses or unusual query type distributions.
+
+## Considerations
+
+Keep the following in mind when you build Cloudflare queries:
+
+- **Time range:** DNS Analytics queries and most Radar queries automatically use the dashboard time range through the `${__timeFrom}` and `${__timeTo}` variables. List queries such as **List zones** and **List accounts** aren’t time-bound and return the same results regardless of the selected range.
+- **Result format:** Time series queries, such as **DNS analytics by time** and the Radar time series queries, suit Time series panels. Report and list queries, such as **DNS analytics report** and **List zones**, return tabular data suited to Table panels.
+- **Result limits:** The **DNS analytics report** query defaults its **Limit** to `100000`. Lower it for large zones to reduce the response size. The **Internet outages and anomalies** query defaults its **Limit** to `5`.
+- **API rate limits:** Frequent dashboard refreshes across many panels can reach Cloudflare API rate limits. If you see rate-limit errors, refer to [Troubleshooting](/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/).

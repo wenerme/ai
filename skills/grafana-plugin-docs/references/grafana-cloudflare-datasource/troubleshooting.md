@@ -9,6 +9,44 @@ description: "Troubleshooting guide for the Cloudflare data source in Grafana."
 
 This document provides solutions to common issues you might encounter when configuring or using the Cloudflare data source. For configuration instructions, refer to [Configure the Cloudflare data source](/docs/plugins/grafana-cloudflare-datasource/latest/configure/).
 
+## Installation and access issues
+
+These issues occur before you can configure the data source, usually because of the Enterprise plugin entitlement.
+
+### Can’t find or install the Cloudflare plugin
+
+**Symptoms:**
+
+- The Cloudflare data source doesn’t appear in the plugin catalog.
+- You can’t add the Cloudflare data source in **Connections** &gt; **Add new connection**.
+
+**Cause:**
+
+The Cloudflare data source is a Grafana Enterprise plugin. It requires the appropriate entitlement on Grafana Cloud (Free, Pro, or Advanced tier) or an activated Grafana Enterprise license.
+
+**Solutions:**
+
+1. Confirm your plan tier includes Enterprise plugins. The Cloudflare data source is available on Grafana Cloud Free, Pro, and Advanced tiers and on Grafana Enterprise.
+2. Verify that the Enterprise plugins entitlement is enabled for your account or stack.
+3. On self-managed Grafana Enterprise, make sure the plugin is installed and your license is active. Refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+4. If you believe you’re entitled to the plugin but it still doesn’t appear, contact your Grafana account team or [Grafana Support](/profile/org#support).
+
+### Configuration page fails to load or errors on save
+
+**Symptoms:**
+
+- The Cloudflare data source configuration page doesn’t load.
+- **Save &amp; test** returns an error that isn’t related to your token or permissions.
+
+**Cause:**
+
+A backend provisioning or entitlement issue is preventing the plugin from running.
+
+**Solutions:**
+
+1. First confirm the plugin entitlement is in place. Refer to [Can’t find or install the Cloudflare plugin](#cant-find-or-install-the-cloudflare-plugin).
+2. If you’re entitled and the configuration page still fails to load or save, contact [Grafana Support](/profile/org#support). A backend fix might be required.
+
 ## Authentication errors
 
 These errors occur when credentials are invalid, missing, or don’t have the required permissions.
@@ -37,11 +75,11 @@ These errors occur when credentials are invalid, missing, or don’t have the re
 
 Expand table
 
-| Cause               | Solution                                                                                                                            |
-|---------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Invalid token       | Verify the token is correct in the [Cloudflare dashboard](https://dash.cloudflare.com/profile/api-tokens). Regenerate if necessary. |
-| Expired token       | Create a new token and update the data source configuration.                                                                        |
-| Account-owned token | The plugin only supports user tokens. Create a user token instead.                                                                  |
+| Cause               | Solution                                                                                                                                                                                                                      |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Invalid token       | Verify the token is correct in the [Cloudflare dashboard](https://dash.cloudflare.com/profile/api-tokens). Regenerate if necessary.                                                                                           |
+| Expired token       | Create a new token and update the data source configuration.                                                                                                                                                                  |
+| Token type mismatch | If you’re using an account-owned token, set **Token type** to **Account-owned token** and make sure the **Account ID** matches the token’s account. If you’re using a user token, set **Token type** to **User-owned token**. |
 
 ### “Access denied” or “Authorization failed”
 
@@ -60,6 +98,10 @@ Expand table
    - **Account &gt; Account Settings &gt; Read** for account queries
    - **Zone &gt; Zone &gt; Read** for zone queries
    - **Zone &gt; Analytics &gt; Read** for DNS analytics queries
+   - **Zone &gt; Load Balancers &gt; Read** for load balancer queries
+   - **Account &gt; API Tokens &gt; Read** for token queries
+
+If only the zone or account drop-downs are empty, refer to [Zone or account drop-downs are empty](#zone-or-account-drop-downs-are-empty).
 
 ## Connection errors
 
@@ -131,6 +173,8 @@ Expand table
 3. Check that the token scope includes the zones/accounts you expect to see.
 4. Test the token directly with the Cloudflare API to verify access.
 
+If queries also fail with permission errors, refer to [“Access denied” or “Authorization failed”](#access-denied-or-authorization-failed).
+
 ## Radar query issues
 
 ### Radar queries return no data
@@ -176,7 +220,7 @@ To capture detailed error information for troubleshooting:
    level = debug
    ```
 2. Review logs in `/var/log/grafana/grafana.log` (or your configured log location).
-3. Look for entries containing “cloudflare” for plugin-specific logs.
+3. Look for entries containing `cloudflare` for plugin-specific logs.
 4. Reset the log level to `info` after troubleshooting to avoid excessive log volume.
 
 ## Get additional help

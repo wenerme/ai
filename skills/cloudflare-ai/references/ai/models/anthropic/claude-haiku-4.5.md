@@ -32,7 +32,7 @@ Claude Haiku 4.5 delivers similar levels of coding performance at one-third the 
 | More information | [link ↗](https://www.anthropic.com/claude/haiku) |
 | Zero data retention | Yes |
 | Request formats | Anthropic Messages |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-haiku-4.5) |
+| Pricing | <ul><li>Input (per 1M tokens)$1.00</li><li>Output (per 1M tokens)$5.00</li><li>Cached input (per 1M tokens)$0.10</li><li>Cache creation (per 1M tokens)$1.25</li></ul> |
 
 ## Usage
 

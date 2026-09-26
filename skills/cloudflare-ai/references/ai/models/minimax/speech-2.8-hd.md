@@ -30,7 +30,7 @@ MiniMax Speech 2.8 HD focuses on studio-grade audio generation with emotion cont
 | Terms and License | [link ↗](https://www.minimaxi.com/terms) |
 | More information | [link ↗](https://www.minimaxi.com/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-hd) |
+| Pricing | <ul><li>Per character$0.0001</li></ul> |
 
 ## Usage
 

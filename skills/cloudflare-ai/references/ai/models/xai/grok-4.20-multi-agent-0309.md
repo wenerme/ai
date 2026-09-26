@@ -32,7 +32,7 @@ xAI's Grok 4.20 multi-agent model with a 2M-token context window. Multiple agent
 | More information | [link ↗](https://x.ai/) |
 | Zero data retention | Yes |
 | Request formats | Responses |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-multi-agent-0309) |
+| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Output (per 1M tokens)$6.00</li><li>Cached input (per 1M tokens)$0.20</li></ul> |
 
 ## Usage
 

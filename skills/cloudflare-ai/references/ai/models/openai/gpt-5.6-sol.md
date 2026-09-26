@@ -34,7 +34,7 @@ GPT-5.6 Sol is 50% off through Sept 18
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://openai.com/) |
 | Request formats | Responses |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.6-sol) |
+| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Output (per 1M tokens)$10.00</li><li>Cached input (per 1M tokens)$0.25</li><li>Cache creation (per 1M tokens)$3.125</li></ul> |
 
 ## Usage
 

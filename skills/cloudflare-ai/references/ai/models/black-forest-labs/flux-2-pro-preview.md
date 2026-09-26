@@ -28,7 +28,7 @@ FLUX.2 \[pro] Preview is Black Forest Labs' recommended default for production i
 | --- | --- |
 | Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
 | More information | [link ↗](https://blackforestlabs.ai/) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-2-pro-preview) |
+| Pricing | <ul><li>First output megapixel$0.03</li><li>Per additional output megapixel$0.015</li><li>Per input megapixel$0.015</li></ul> |
 
 ## Usage
 

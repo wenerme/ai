@@ -102,6 +102,10 @@ keywords: Ultralytics, YOLO, utility functions, version checks, requirements, im
 
 <hr>
 
+## ::: ultralytics.utils.checks.check_data_portable
+
+<hr>
+
 ## ::: ultralytics.utils.checks.check_is_path_safe
 
 <hr>

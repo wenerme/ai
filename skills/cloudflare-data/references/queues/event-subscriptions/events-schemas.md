@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Events & schemas
 
-Last updated Jul 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page provides a comprehensive reference of available event sources and their corresponding events with schemas for [event subscriptions](https://developers.cloudflare.com/queues/event-subscriptions/). All events include common metadata fields and follow a consistent structure.
 
@@ -356,6 +356,133 @@ Triggered when a repo-scoped token is revoked. Includes the token ID.
     "eventSchemaVersion": 1,
     "eventTimestamp": "2026-05-20T16:58:14.548Z"
   }
+}
+```
+
+### Browser Run
+
+[Browser Run crawl](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/) events are account-level. A subscription receives events for all crawl jobs in your account and does not require a source-specific selector.
+
+#### Subscribe to events
+
+##### Dashboard
+
+Follow the [subscription creation procedure](https://developers.cloudflare.com/queues/event-subscriptions/manage-event-subscriptions/#create-subscription) and select **Browser Run** as the source.
+
+##### Wrangler
+
+To subscribe with Wrangler, run the following command:
+
+npmyarnpnpm
+
+```
+npx wrangler queues subscription create <QUEUE_NAME> --source browserRun --events crawl.started,crawl.updated,crawl.finished
+```
+
+```
+yarn wrangler queues subscription create <QUEUE_NAME> --source browserRun --events crawl.started,crawl.updated,crawl.finished
+```
+
+```
+pnpm wrangler queues subscription create <QUEUE_NAME> --source browserRun --events crawl.started,crawl.updated,crawl.finished
+```
+
+#### `crawl.started`
+
+Triggered when a crawl job starts.
+
+**Example:**
+
+```json
+{
+	"type": "cf.browserRun.crawl.started",
+	"source": {
+		"type": "browserRun"
+	},
+	"payload": {
+		"jobId": "crawl-job-1234",
+		"createdAt": "2026-09-23T14:00:00.000Z",
+		"crawlConfig": {
+			"url": "https://example.com",
+			"limit": 100,
+			"depth": 2,
+			"render": true,
+			"formats": ["markdown", "html"],
+			"source": "all"
+		}
+	},
+	"metadata": {
+		"accountId": "00000000000000000000000000000000",
+		"eventSubscriptionId": "11111111111111111111111111111111",
+		"eventSchemaVersion": 1,
+		"eventTimestamp": "2026-09-23T14:00:00.000Z"
+	}
+}
+```
+
+#### `crawl.updated`
+
+Triggered when a crawled URL changes status.
+
+**Example:**
+
+```json
+{
+	"type": "cf.browserRun.crawl.updated",
+	"source": {
+		"type": "browserRun"
+	},
+	"payload": {
+		"jobId": "crawl-job-1234",
+		"url": "https://example.com/docs/",
+		"crawlStatus": "completed",
+		"httpStatus": 200
+	},
+	"metadata": {
+		"accountId": "00000000000000000000000000000000",
+		"eventSubscriptionId": "11111111111111111111111111111111",
+		"eventSchemaVersion": 1,
+		"eventTimestamp": "2026-09-23T14:02:00.000Z"
+	}
+}
+```
+
+#### `crawl.finished`
+
+Triggered when a crawl job finishes.
+
+**Example:**
+
+```json
+{
+	"type": "cf.browserRun.crawl.finished",
+	"source": {
+		"type": "browserRun"
+	},
+	"payload": {
+		"jobId": "crawl-job-1234",
+		"jobStatus": "completed",
+		"createdAt": "2026-09-23T14:00:00.000Z",
+		"finishedAt": "2026-09-23T14:05:00.000Z",
+		"total": 3,
+		"completed": 2,
+		"errored": 1,
+		"skipped": 0,
+		"crawlConfig": {
+			"url": "https://example.com",
+			"limit": 100,
+			"depth": 2,
+			"render": true,
+			"formats": ["markdown", "html"],
+			"source": "all"
+		}
+	},
+	"metadata": {
+		"accountId": "00000000000000000000000000000000",
+		"eventSubscriptionId": "11111111111111111111111111111111",
+		"eventSchemaVersion": 1,
+		"eventTimestamp": "2026-09-23T14:05:00.000Z"
+	}
 }
 ```
 
@@ -1373,5 +1500,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/#page","headline":"Events & schemas","description":"Reference of available event sources and their schemas for Queues event subscriptions.","url":"https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/#page","headline":"Events & schemas","description":"Reference of available event sources and their schemas for Queues event subscriptions.","url":"https://developers.cloudflare.com/queues/event-subscriptions/events-schemas/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

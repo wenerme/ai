@@ -32,7 +32,7 @@ GPT-5.4 pro uses OpenAI's Responses API with built-in tools, improved reasoning,
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
 | Request formats | Responses |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-pro) |
+| Pricing | <ul><li>Input (per 1M tokens)$30.00</li><li>Output (per 1M tokens)$180.00</li></ul> |
 
 ## Usage
 

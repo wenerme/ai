@@ -15,13 +15,13 @@ The Cloudflare data source allows you to query and visualize data from Cloudflar
 
 > Note
 >
-> The Cloudflare data source is an Enterprise plugin. It’s available with Grafana Cloud (Free, Pro, and Advanced tiers) and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
+> The Cloudflare data source is an Enterprise plugin. It’s available with Grafana Cloud (Free, Pro, and Advanced tiers) and Grafana Enterprise. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins). If you can’t find or install the plugin, refer to [Installation and access issues](/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#installation-and-access-issues).
 
 ## Requirements
 
 To use this data source, you need:
 
-- A Cloudflare account with an API token (user tokens only; account-owned tokens aren’t supported)
+- A Cloudflare account with an API token (either a user-owned token or an account-owned token)
 - A [Grafana Cloud](/pricing/) account or an [activated Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/)
 
 ## Version compatibility
@@ -36,12 +36,13 @@ Expand table
 
 Expand table
 
-| Feature          | Supported |
-|------------------|-----------|
-| DNS Analytics    | Yes       |
-| Cloudflare Radar | Yes       |
-| Alerting         | Yes       |
-| Annotations      | Yes       |
+| Feature            | Supported |
+|--------------------|-----------|
+| DNS Analytics      | Yes       |
+| Cloudflare Radar   | Yes       |
+| Alerting           | Yes       |
+| Annotations        | Yes       |
+| Template variables | Yes       |
 
 ## Get started
 
@@ -49,6 +50,7 @@ The following documents help you set up and use the Cloudflare data source:
 
 - [Configure the Cloudflare data source](/docs/plugins/grafana-cloudflare-datasource/latest/configure/)
 - [Cloudflare query editor](/docs/plugins/grafana-cloudflare-datasource/latest/query-editor/)
+- [Cloudflare template variables](/docs/plugins/grafana-cloudflare-datasource/latest/template-variables/)
 - [Troubleshooting](/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/)
 
 ## Additional features
@@ -57,6 +59,7 @@ After configuring the data source, you can:
 
 - Create [annotations](/docs/plugins/grafana-cloudflare-datasource/latest/annotations/) to mark events on your graphs
 - Set up [alerting](/docs/plugins/grafana-cloudflare-datasource/latest/alerting/) to get notified about Cloudflare data
+- Build dynamic, reusable dashboards with [template variables](/docs/plugins/grafana-cloudflare-datasource/latest/template-variables/)
 - Use [Explore](/docs/grafana/latest/explore/) to query data without building a dashboard
 - Add [Transformations](/docs/grafana/latest/panels-visualizations/query-transform-data/transform-data/) to manipulate query results
 

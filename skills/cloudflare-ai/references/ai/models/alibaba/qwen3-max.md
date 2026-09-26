@@ -31,7 +31,7 @@ Alibaba's Qwen 3 Max is a large language model with strong coding, reasoning, an
 | More information | [link ↗](https://www.alibabacloud.com/en/solutions/generative-ai/qwen) |
 | Zero data retention | Yes |
 | Request formats | Chat Completions, Responses |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3-max) |
+| Pricing | <ul><li>Input (per 1M tokens)$1.20</li><li>Output (per 1M tokens)$6.00</li></ul> |
 
 ## Usage
 

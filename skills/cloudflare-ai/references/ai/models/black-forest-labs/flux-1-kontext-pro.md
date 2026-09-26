@@ -28,7 +28,7 @@ FLUX.1 Kontext \[pro] creates and edits images from text prompts with strong cha
 | --- | --- |
 | Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
 | More information | [link ↗](https://docs.bfl.ml/api-reference/models/edit-or-create-an-image-with-flux1-kontext-[pro]) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-1-kontext-pro) |
+| Pricing | <ul><li>Per image$0.04</li></ul> |
 
 ## Usage
 

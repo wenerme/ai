@@ -30,7 +30,7 @@ OpenAI's text-to-speech model optimized for real-time use with low latency.
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://platform.openai.com/docs/guides/text-to-speech) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1) |
+| Pricing | <ul><li>Per character$0.000015</li></ul> |
 
 ## Usage
 

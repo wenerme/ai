@@ -30,7 +30,7 @@ MiniMax Speech 2.8 Turbo turns text into natural, expressive speech with voice c
 | Terms and License | [link ↗](https://www.minimaxi.com/terms) |
 | More information | [link ↗](https://www.minimaxi.com/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/speech-2.8-turbo) |
+| Pricing | <ul><li>Per character$0.00006</li></ul> |
 
 ## Usage
 

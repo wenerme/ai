@@ -32,7 +32,7 @@ Google's most intelligent Gemini model with improved reasoning, a medium thinkin
 | More information | [link ↗](https://deepmind.google/technologies/gemini/) |
 | Zero data retention | Yes |
 | Request formats | Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-pro) |
+| Pricing | <ul><li>Input <=200k (per 1M)$2.00</li><li>Cached input <=200k (per 1M)$0.20</li><li>Output <=200k (per 1M)$12.00</li><li>Input >200k (per 1M)$4.00</li><li>Cached input >200k (per 1M)$0.40</li><li>Output >200k (per 1M)$18.00</li></ul> |
 
 ## Usage
 

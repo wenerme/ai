@@ -30,7 +30,7 @@ Recraft V4.1 generates art-directed images tuned for high aesthetics, with stron
 | Terms and License | [link ↗](https://www.recraft.ai/terms) |
 | More information | [link ↗](https://www.recraft.ai/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-1) |
+| Pricing | <ul><li>Per image$0.04</li></ul> |
 
 ## Usage
 

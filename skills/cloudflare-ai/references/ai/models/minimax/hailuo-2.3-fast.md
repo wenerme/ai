@@ -30,7 +30,7 @@ A lower-latency version of Hailuo 2.3 that preserves core motion quality, visual
 | Terms and License | [link ↗](https://hailuoai.com/terms) |
 | More information | [link ↗](https://hailuoai.com/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3-fast) |
+| Pricing | <ul><li>Default (per second)$0.032</li><li>6s @768p$0.19</li><li>10s @768p$0.32</li><li>6s @1080p$0.33</li></ul> |
 
 ## Usage
 
