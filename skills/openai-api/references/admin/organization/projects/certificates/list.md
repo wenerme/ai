@@ -126,7 +126,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
+    }
   ],
   "first_id": "cert_abc",
   "last_id": "cert_abc",

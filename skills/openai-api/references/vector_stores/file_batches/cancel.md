@@ -120,7 +120,7 @@ curl https://api.openai.com/v1/vector_stores/vs_abc123/files_batches/vsfb_abc123
     "completed": 3,
     "failed": 0,
     "cancelled": 0,
-    "total": 15,
+    "total": 15
   }
 }
 ```

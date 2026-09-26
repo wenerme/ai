@@ -2147,7 +2147,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
             },
             "project.archived": {
                 "id": "proj_abc"
-            },
+            }
         },
         {
             "id": "audit_log-yyy__20240101",
@@ -2180,7 +2180,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
                 "data": {
                     "scopes": ["resource_2.operation_2"]
                 }
-            },
+            }
         }
     ],
     "first_id": "audit_log-xxx__20240101",

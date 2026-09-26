@@ -292,7 +292,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
       "id": "cp_enQCFmOTGj3syEpYVhBRLTSy",
       "created_at": 1721764800,
       "project_id": "proj_iqGMw1llN8IrBb6SvvY5A1oF"
-    },
+    }
   ],
   "first_id": "cp_zc4Q7MP6XxulcVzj4MZdwsAB",
   "last_id": "cp_enQCFmOTGj3syEpYVhBRLTSy",
@@ -416,7 +416,7 @@ curl https://api.openai.com/v1/fine_tuning/checkpoints/ft:gpt-4o-mini-2024-07-18
       "id": "cp_enQCFmOTGj3syEpYVhBRLTSy",
       "created_at": 1721764800,
       "project_id": "proj_iqGMw1llN8IrBb6SvvY5A1oF"
-    },
+    }
   ],
   "first_id": "cp_zc4Q7MP6XxulcVzj4MZdwsAB",
   "last_id": "cp_enQCFmOTGj3syEpYVhBRLTSy",

@@ -124,7 +124,7 @@ curl https://api.openai.com/v1/organization/certificates/activate \
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
-  ],
+    }
+  ]
 }
 ```

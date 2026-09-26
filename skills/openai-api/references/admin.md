@@ -2690,7 +2690,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
             },
             "project.archived": {
                 "id": "proj_abc"
-            },
+            }
         },
         {
             "id": "audit_log-yyy__20240101",
@@ -2723,7 +2723,7 @@ curl https://api.openai.com/v1/organization/audit_logs \
                 "data": {
                     "scopes": ["resource_2.operation_2"]
                 }
-            },
+            }
         }
     ],
     "first_id": "audit_log-xxx__20240101",
@@ -4226,8 +4226,8 @@ curl https://api.openai.com/v1/organization/certificates/activate \
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
-  ],
+    }
+  ]
 }
 ```
 
@@ -4480,8 +4480,8 @@ curl https://api.openai.com/v1/organization/certificates/deactivate \
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
-  ],
+    }
+  ]
 }
 ```
 
@@ -4666,7 +4666,7 @@ curl https://api.openai.com/v1/organization/certificates \
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
+    }
   ],
   "first_id": "cert_abc",
   "last_id": "cert_abc",
@@ -10021,8 +10021,8 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/activ
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
-  ],
+    }
+  ]
 }
 ```
 
@@ -10155,8 +10155,8 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates/deact
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
-  ],
+    }
+  ]
 }
 ```
 
@@ -10288,7 +10288,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc/certificates \
         "valid_at": 12345667,
         "expires_at": 12345678
       }
-    },
+    }
   ],
   "first_id": "cert_abc",
   "last_id": "cert_abc",
