@@ -32,7 +32,7 @@ GPT-5 Mini is the lightweight, low-cost variant of GPT-5, well suited to high-vo
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5-mini) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.25</li><li>Output (per 1M tokens)$2.00</li><li>Cached input (per 1M tokens)$0.025</li></ul> |
 
 ## Usage
 

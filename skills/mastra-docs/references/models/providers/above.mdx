@@ -5,7 +5,7 @@ description: "Browse above.dev model IDs, capabilities, context windows, and pri
 
 # [above.dev logo]above.dev
 
-Access 9 above.dev models through Mastra's model router. Authentication is handled automatically using the `ABOVE_API_KEY` environment variable.
+Access 10 above.dev models through Mastra's model router. Authentication is handled automatically using the `ABOVE_API_KEY` environment variable.
 
 Learn more in the [above.dev documentation](https://above.dev/docs).
 
@@ -40,18 +40,6 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
-    "model": "above/deepseek-v4-flash",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 1000000,
-    "maxOutput": 384000,
-    "inputCost": 0.165,
-    "outputCost": 0.66
-  },
-  {
     "model": "above/deepseek-v4-pro",
     "imageInput": false,
     "audioInput": false,
@@ -62,6 +50,18 @@ for await (const chunk of stream) {
     "maxOutput": 384000,
     "inputCost": 0.726,
     "outputCost": 2.178
+  },
+  {
+    "model": "above/deepseek-v4.1-flash",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 384000,
+    "inputCost": 0.165,
+    "outputCost": 0.66
   },
   {
     "model": "above/glm-5.2",

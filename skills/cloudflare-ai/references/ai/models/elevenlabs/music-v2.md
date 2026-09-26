@@ -28,7 +28,7 @@ ElevenLabs Music v2 composes songs and instrumental tracks from a prompt or deta
 | --- | --- |
 | Terms and License | [link ↗](https://elevenlabs.io/terms) |
 | More information | [link ↗](https://elevenlabs.io/docs/api-reference/music/compose) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/elevenlabs/music-v2) |
+| Pricing | <ul><li>output audio seconds$0.0025</li><li>Default (per second)$0.0025</li></ul> |
 
 ## Usage
 

@@ -27,7 +27,7 @@ Pruna's P-Image-Upscale increases image resolution using AI, targeting 1-128 meg
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-image-upscale) |
+| Pricing | <ul><li>Per image (1-4 MP)$0.005</li><li>Per image (5-8 MP)$0.01</li><li>Per image (9-16 MP)$0.02</li><li>Per image (17-32 MP)$0.04</li><li>Per image (33-64 MP)$0.06</li><li>Per image (65-128 MP)$0.12</li></ul> |
 
 ## Usage
 

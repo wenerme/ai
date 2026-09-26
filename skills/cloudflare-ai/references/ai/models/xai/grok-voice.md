@@ -30,7 +30,7 @@ xAI's real-time voice conversation model with low-latency audio input and output
 | Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
 | More information | [link ↗](https://docs.x.ai/developers/rest-api-reference/inference/voice) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-voice) |
+| Pricing | <ul><li>total audio minutes$0.05</li><li>input text messages$0.004</li></ul> |
 
 ## Usage
 

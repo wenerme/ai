@@ -30,7 +30,7 @@ Generate detailed, production-ready SVG vector graphics from text prompts with f
 | Terms and License | [link ↗](https://www.recraft.ai/terms) |
 | More information | [link ↗](https://www.recraft.ai/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv4-pro-vector) |
+| Pricing | <ul><li>Per image$0.30</li></ul> |
 
 ## Usage
 

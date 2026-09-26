@@ -27,7 +27,7 @@ Lightricks LTX-2.5 Fast is a fast video generation model for text-to-video and i
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://docs.ltx.io/api-documentation/api-reference/video-generation/text-to-video) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/lightricks/ltx-2-5-fast) |
+| Pricing | <ul><li>Default (per second)$0.09</li><li>@720p (per second)$0.09</li><li>@1080p (per second)$0.15</li><li>@2k (per second)$0.19</li><li>@4k (per second)$0.37</li></ul> |
 
 ## Usage
 

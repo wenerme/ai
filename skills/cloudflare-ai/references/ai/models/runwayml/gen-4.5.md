@@ -28,7 +28,7 @@ RunwayML's video generation model supporting both text-to-video and image-to-vid
 | --- | --- |
 | Terms and License | [link ↗](https://runwayml.com/terms-of-use) |
 | More information | [link ↗](https://runwayml.com/) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/runwayml/gen-4.5) |
+| Pricing | <ul><li>Default (per second)$0.12</li></ul> |
 
 ## Usage
 

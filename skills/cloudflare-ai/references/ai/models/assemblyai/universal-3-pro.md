@@ -30,7 +30,7 @@ AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcri
 | Terms and License | [link ↗](https://www.assemblyai.com/legal/terms-of-service) |
 | More information | [link ↗](https://www.assemblyai.com/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/assemblyai/universal-3-pro) |
+| Pricing | <ul><li>Per audio minute$0.0035</li></ul> |
 
 ## Usage
 

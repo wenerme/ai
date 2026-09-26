@@ -29,7 +29,7 @@ Alibaba's Qwen 3.7 Max is the largest and most capable model in the Qwen3.7 seri
 | Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
 | More information | [link ↗](https://www.qwencloud.com/models/qwen3.7-max) |
 | Request formats | Chat Completions, Responses |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/qwen3.7-max) |
+| Pricing | <ul><li>Input (per 1M tokens)$1.25</li><li>Output (per 1M tokens)$3.75</li><li>Cached input (per 1M tokens)$0.25</li></ul> |
 
 ## Usage
 

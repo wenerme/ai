@@ -568,6 +568,7 @@ the amount of reasoning effort based on the complexity of the request. You can c
 | gemini-2.5-pro | On | low, medium, high |
 | gemini-2.5-flash | On | low, medium, high |
 | gemini-2.5-flash-lite | Off | low, medium, high |
+| gemini-robotics-er-2-preview | On (high) | minimal, low, medium, high |
 
 ### Python
 

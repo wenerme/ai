@@ -28,7 +28,7 @@ xAI's Grok Imagine Image 2.0 is a precise image generation and editing model for
 | --- | --- |
 | Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
 | More information | [link ↗](https://docs.x.ai/developers/model-capabilities/images/generation) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-image-2.0) |
+| Pricing | <ul><li>Per image$0.04</li><li>Per input image$0.01</li></ul> |
 
 ## Usage
 

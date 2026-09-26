@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error codes
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -29,6 +29,7 @@ When an error code is marked with `*`, the remaining digits can vary and are for
 | `200500` | Iframe load error | Yes | The Turnstile iframe could not load. Check if `challenges.cloudflare.com` is blocked. |
 | `300*` | Generic challenge failure | Yes | Bot behavior detected. Refer to [troubleshooting](#troubleshooting). |
 | `400020` | Invalid sitekey | No | Verify the sitekey in [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/). |
+| `400021` | Sitekey domain mismatch | No | Sitekey region does not match domain in the [Turnstile script tag](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#implementation). |
 | `400070` | Sitekey disabled | No | The sitekey is disabled. Check the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/). |
 | `600*` | Generic challenge failure | Yes | Bot behavior detected. Refer to [troubleshooting](#troubleshooting). |
 
@@ -71,5 +72,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/#page","headline":"Error codes","description":"Error codes returned by Turnstile widgets and their meanings.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/#page","headline":"Error codes","description":"Error codes returned by Turnstile widgets and their meanings.","url":"https://developers.cloudflare.com/turnstile/troubleshooting/client-side-errors/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Debugging"]}
 ```

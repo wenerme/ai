@@ -27,7 +27,7 @@ Pruna's P-Image-Edit edits and composes 1-5 reference images with text instructi
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-image-edit) |
+| Pricing | <ul><li>Per image$0.01</li></ul> |
 
 ## Usage
 

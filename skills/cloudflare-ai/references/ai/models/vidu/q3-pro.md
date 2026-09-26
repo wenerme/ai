@@ -30,7 +30,7 @@ Vidu Q3 Pro is a high-quality video generation model supporting text-to-video, i
 | Terms and License | [link ↗](https://www.vidu.com/terms) |
 | More information | [link ↗](https://www.vidu.com/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/vidu/q3-pro) |
+| Pricing | <ul><li>Default (per second)$0.125</li><li>@540p (per second)$0.05</li><li>@720p (per second)$0.125</li><li>@1080p (per second)$0.15</li></ul> |
 
 ## Usage
 

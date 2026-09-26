@@ -27,7 +27,7 @@ Seedream 5 Lite is a lighter, faster version of the Seedream 5 family with multi
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://seed.bytedance.com/en/seedream5_0_lite) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-5-lite) |
+| Pricing | <ul><li>Per image$0.035</li></ul> |
 
 ## Usage
 

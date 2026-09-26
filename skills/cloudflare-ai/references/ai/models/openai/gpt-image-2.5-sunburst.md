@@ -28,7 +28,7 @@ OpenAI's most capable image generation and editing model. It accepts text and im
 | --- | --- |
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://developers.openai.com/api/docs/models/gpt-image-2.5-sunburst) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-image-2.5-sunburst) |
+| Pricing | <ul><li>Cached input image (per 1M tokens)$3.00</li><li>Cached input (per 1M tokens)$1.25</li><li>Input image (per 1M tokens)$8.00</li><li>Input (per 1M tokens)$5.00</li><li>Output image (per 1M tokens)$30.00</li></ul> |
 
 ## Usage
 

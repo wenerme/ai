@@ -394,9 +394,10 @@ A group result also includes the owning project path of each merge request, for 
 | `after`             | string  | No       | Cursor for forward pagination. |
 | `first`             | integer | No       | Number of merge requests to return for forward pagination. Default is 20, maximum is 100. |
 
-To retrieve a single merge request in full detail, use `get_merge_request`. Its diffs, commits, and
-notes are available from `get_merge_request_diffs`, `get_merge_request_commits`, and
-`get_merge_request_notes`. For full-text search across resource types, use `search`.
+To retrieve a single merge request in full detail, use `get_merge_request`. To get its commits, use
+`get_merge_request` with `include: ["commits"]`. Its diffs and notes are available from
+`get_merge_request_diffs` and `get_merge_request_notes`. For full-text search across resource
+types, use `search`.
 
 Example:
 
@@ -407,6 +408,10 @@ List my open merge requests in gitlab-org/gitlab
 ## `get_merge_request_commits`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203055) in GitLab 18.4.
+- [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/622712) in GitLab 19.5. Superseded by [`get_merge_request`](#get_merge_request) with `include: ["commits"]`.
+
+Superseded by [`get_merge_request`](#get_merge_request) with `include: ["commits"]`. This tool no
+longer appears in `tools/list` but remains callable while callers migrate.
 
 Retrieves the list of commits in a specific GitLab merge request.
 
@@ -445,6 +450,10 @@ What files were changed in merge request 25 in the gitlab project?
 ## `get_merge_request_pipelines`
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/203055) in GitLab 18.4.
+- [Unlisted](https://gitlab.com/gitlab-org/gitlab/-/work_items/622712) in GitLab 19.5. Superseded by [`get_merge_request`](#get_merge_request) with `include: ["pipelines"]`.
+
+Superseded by [`get_merge_request`](#get_merge_request) with `include: ["pipelines"]`. This tool no
+longer appears in `tools/list` but remains callable while callers migrate.
 
 Retrieves the pipelines for a specific GitLab merge request.
 

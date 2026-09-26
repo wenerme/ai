@@ -28,7 +28,7 @@ More than 2x the size of Medium, with softer post-training. Outputs are rawer, m
 | --- | --- |
 | Terms and License | [link ↗](https://www.krea.ai/terms) |
 | More information | [link ↗](https://docs.krea.ai/api-reference/krea/krea-2-large) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/krea/krea-2-large) |
+| Pricing | <ul><li>Default (per second)$0.06</li><li>Per image$0.06</li></ul> |
 
 ## Usage
 

@@ -28,7 +28,7 @@ FLUX.2 \[flex] is Black Forest Labs' fine-grained control variant of FLUX.2 — 
 | --- | --- |
 | Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
 | More information | [link ↗](https://blackforestlabs.ai/) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-2-flex) |
+| Pricing | <ul><li>First output megapixel$0.05</li><li>Per additional output megapixel$0.05</li><li>Per input megapixel$0.05</li></ul> |
 
 ## Usage
 

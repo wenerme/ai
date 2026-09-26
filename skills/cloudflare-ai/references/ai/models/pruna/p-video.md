@@ -27,7 +27,7 @@ Pruna's P-Video is a premium video generation model supporting text-to-video, im
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video) |
+| Pricing | <ul><li>Default (per second)$0.02</li><li>@720p (per second)$0.02</li><li>@1080p (per second)$0.04</li><li>@720p draft (per second)$0.005</li><li>@1080p draft (per second)$0.01</li></ul> |
 
 ## Usage
 

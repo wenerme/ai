@@ -30,7 +30,7 @@ Gemini 3.5 Flash is Google's fast multimodal model with frontier intelligence, s
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
 | More information | [link ↗](https://deepmind.google/technologies/gemini/) |
 | Request formats | Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.5-flash) |
+| Pricing | <ul><li>Input <=200k (per 1M)$1.50</li><li>Cached input <=200k (per 1M)$0.15</li><li>Output <=200k (per 1M)$9.00</li><li>Input >200k (per 1M)$1.50</li><li>Cached input >200k (per 1M)$0.15</li><li>Output >200k (per 1M)$9.00</li></ul> |
 
 ## Usage
 

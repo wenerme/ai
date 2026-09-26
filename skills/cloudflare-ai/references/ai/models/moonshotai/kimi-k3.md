@@ -29,7 +29,7 @@ Kimi K3 is Moonshot's flagship 2.8 trillion-parameter model, built on Kimi Delta
 | Context Window [ ↗](https://developers.cloudflare.com/workers-ai/platform/glossary/) | 1,048,576 tokens |
 | More information | [link ↗](https://platform.kimi.ai/docs/guide/kimi-k3-quickstart) |
 | Request formats | Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/moonshotai/kimi-k3) |
+| Pricing | <ul><li>Input (per 1M tokens)$3.00</li><li>Output (per 1M tokens)$15.00</li><li>Cached input (per 1M tokens)$0.30</li></ul> |
 
 ## Usage
 

@@ -30,7 +30,7 @@ Alibaba's Wan 2.6 text-to-image model generating images from text prompts with o
 | Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
 | More information | [link ↗](https://wan.video/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-2.6-image) |
+| Pricing | <ul><li>Per image$0.03</li></ul> |
 
 ## Usage
 

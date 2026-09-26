@@ -30,7 +30,7 @@ Gemini 3.5 Flash-Lite is a low-latency, cost-effective multimodal model optimize
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
 | More information | [link ↗](https://deepmind.google/technologies/gemini/) |
 | Request formats | Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.5-flash-lite) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.30</li><li>Output (per 1M tokens)$2.50</li><li>Cached input (per 1M tokens)$0.03</li><li>Cache creation (per 1M tokens)$0.03</li></ul> |
 
 ## Usage
 

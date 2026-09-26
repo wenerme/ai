@@ -28,7 +28,7 @@ FLUX.2 \[max] is Black Forest Labs' highest-quality image model — top editing 
 | --- | --- |
 | Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
 | More information | [link ↗](https://blackforestlabs.ai/) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-2-max) |
+| Pricing | <ul><li>First output megapixel$0.07</li><li>Per additional output megapixel$0.03</li><li>Per input megapixel$0.03</li></ul> |
 
 ## Usage
 

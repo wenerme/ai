@@ -25,7 +25,7 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 | Model Info | |
 | --- | --- |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.1-flash-tts) |
+| Pricing | <ul><li>Input audio (per 1M tokens)$3.00</li><li>Input text (per 1M tokens)$0.75</li><li>Output audio (per 1M tokens)$12.00</li><li>Output text (per 1M tokens)$4.50</li></ul> |
 
 ## Usage
 

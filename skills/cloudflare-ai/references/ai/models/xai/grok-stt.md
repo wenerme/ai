@@ -30,7 +30,7 @@ xAI's Grok speech-to-text model. Transcribes audio files into text across 25 lan
 | Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
 | More information | [link ↗](https://docs.x.ai/developers/model-capabilities/audio/speech-to-text) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-stt) |
+| Pricing | <ul><li>Per audio minute$0.001667</li><li>input audio minutes streaming$0.003334</li></ul> |
 
 ## Usage
 

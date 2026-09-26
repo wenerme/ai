@@ -27,7 +27,7 @@ Faster variant of ByteDance's Seedance 2.0 video model. Trades some quality for 
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://seed.bytedance.com/en/seedance) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedance-2.0-fast) |
+| Pricing | <ul><li>Default (per second)$0.12</li><li>@480p video input (per second)$0.132</li><li>@720p video input (per second)$0.286</li><li>@480p non-video input (per second)$0.06</li><li>@720p non-video input (per second)$0.12</li></ul> |
 
 ## Usage
 

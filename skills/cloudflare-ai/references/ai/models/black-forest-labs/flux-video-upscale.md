@@ -28,7 +28,7 @@ FLUX Video Upscale increases video resolution with a precise mode for source-fai
 | --- | --- |
 | Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
 | More information | [link ↗](https://docs.bfl.ml/flux_tools/flux_video_upscale) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-video-upscale) |
+| Pricing | <ul><li>Precise (per megapixel-second)$0.07</li><li>Creative (per megapixel-second)$0.10</li></ul> |
 
 ## Usage
 

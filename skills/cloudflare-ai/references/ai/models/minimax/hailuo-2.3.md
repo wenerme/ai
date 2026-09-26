@@ -30,7 +30,7 @@ A high-fidelity video generation model optimized for realistic human motion, cin
 | Terms and License | [link ↗](https://hailuoai.com/terms) |
 | More information | [link ↗](https://hailuoai.com/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/hailuo-2.3) |
+| Pricing | <ul><li>Default (per second)$0.047</li><li>6s @768p$0.28</li><li>10s @768p$0.56</li><li>6s @1080p$0.49</li></ul> |
 
 ## Usage
 

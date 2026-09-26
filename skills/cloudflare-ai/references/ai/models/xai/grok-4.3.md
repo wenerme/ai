@@ -32,7 +32,7 @@ xAI's Grok 4.3 model with a 1M-token context window and strong agentic tool call
 | More information | [link ↗](https://docs.x.ai/docs/models/grok-4.3) |
 | Zero data retention | Yes |
 | Request formats | Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.3) |
+| Pricing | <ul><li>Input (per 1M tokens)$1.25</li><li>Output (per 1M tokens)$2.50</li><li>Cached input (per 1M tokens)$0.20</li></ul> |
 
 ## Usage
 

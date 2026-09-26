@@ -28,7 +28,7 @@ FLUX 3 Video is Black Forest Labs' video generation model. It generates video fr
 | --- | --- |
 | Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
 | More information | [link ↗](https://blackforestlabs.ai/) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-3-video) |
+| Pricing | <ul><li>hd$0.17</li><li>fhd$0.29</li><li>v2v hd$0.41</li><li>v2v fhd$0.53</li><li>hd draft$0.06</li><li>v2v hd draft$0.12</li></ul> |
 
 ## Usage
 

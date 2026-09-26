@@ -16,8 +16,6 @@ To ensure secure usage, Gemini API will move from standard keys to auth keys:
 
 - **Auth keys default**: Starting May 28, 2026, all new API keys created in Google AI Studio are automatically created as auth keys.
 - **Unrestricted keys rejected** : The Gemini API rejects requests from **unrestricted standard keys**. Standard API keys that have explicit restrictions applied continue to work. This restriction prevents the unauthorized use of keys that might be shared publicly or linked to other services.
-- **On September 2026** : the Gemini API will reject requests from **standard
-  keys** . You must [migrate to auth keys](https://ai.google.dev/gemini-api/docs/api-key#migrate-to-auth-key) before this date to avoid service interruption. Make sure to migrate to auth keys before September 2026.
 
 > [!NOTE]
 > **Note:** Requests authenticated by authorization keys are not recorded in Google Cloud service account usage metrics.

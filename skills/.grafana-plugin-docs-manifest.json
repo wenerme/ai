@@ -486,33 +486,38 @@
   },
   "grafana-cloudflare-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/alerting.md",
-    "size": 3983,
-    "updatedAt": "2026-06-25T05:41:46.699Z"
+    "size": 6022,
+    "updatedAt": "2026-09-26T04:49:50.376Z"
   },
   "grafana-cloudflare-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/annotations.md",
-    "size": 3092,
-    "updatedAt": "2026-06-25T05:41:47.058Z"
+    "size": 4270,
+    "updatedAt": "2026-09-26T04:49:50.536Z"
   },
   "grafana-cloudflare-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/configure.md",
-    "size": 7205,
-    "updatedAt": "2026-09-09T04:35:12.655Z"
+    "size": 8469,
+    "updatedAt": "2026-09-26T04:49:50.689Z"
   },
   "grafana-cloudflare-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest.md",
-    "size": 3239,
-    "updatedAt": "2026-06-25T05:41:47.785Z"
+    "size": 3707,
+    "updatedAt": "2026-09-26T04:49:50.835Z"
   },
   "grafana-cloudflare-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/query-editor.md",
-    "size": 16720,
-    "updatedAt": "2026-06-25T05:41:48.160Z"
+    "size": 20138,
+    "updatedAt": "2026-09-26T04:49:50.993Z"
+  },
+  "grafana-cloudflare-datasource/template-variables.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/template-variables.md",
+    "size": 8134,
+    "updatedAt": "2026-09-26T04:49:51.149Z"
   },
   "grafana-cloudflare-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting.md",
-    "size": 7169,
-    "updatedAt": "2026-06-25T05:41:48.530Z"
+    "size": 9923,
+    "updatedAt": "2026-09-26T04:49:51.300Z"
   },
   "grafana-cockroachdb-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-cockroachdb-datasource/latest/alerting.md",

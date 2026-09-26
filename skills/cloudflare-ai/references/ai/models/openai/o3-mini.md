@@ -32,7 +32,7 @@ o3-mini is the lightweight, low-cost reasoning variant of o3, well suited to qui
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/o3-mini) |
+| Pricing | <ul><li>Input (per 1M tokens)$1.10</li><li>Output (per 1M tokens)$4.40</li><li>Cached input (per 1M tokens)$0.55</li></ul> |
 
 ## Usage
 

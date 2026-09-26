@@ -30,7 +30,7 @@ Recraft V3 is the previous-generation text-to-image model from Recraft, well-sui
 | Terms and License | [link ↗](https://www.recraft.ai/terms) |
 | More information | [link ↗](https://www.recraft.ai/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/recraft/recraftv3) |
+| Pricing | <ul><li>Per image$0.04</li></ul> |
 
 ## Usage
 

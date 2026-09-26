@@ -30,7 +30,7 @@ xAI's Grok Imagine image model. Generates and edits images from text and referen
 | Terms and License | [link ↗](https://x.ai/legal/terms-of-service) |
 | More information | [link ↗](https://docs.x.ai/developers/models/grok-imagine-image) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-imagine-image) |
+| Pricing | <ul><li>Per image$0.02</li><li>Per input image$0.002</li></ul> |
 
 ## Usage
 

@@ -32,7 +32,7 @@ Gemini 3 Flash is Google's fast multimodal model with frontier intelligence, sup
 | More information | [link ↗](https://deepmind.google/technologies/gemini/) |
 | Zero data retention | Yes |
 | Request formats | Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3-flash) |
+| Pricing | <ul><li>Input <=200k (per 1M)$0.50</li><li>Cached input <=200k (per 1M)$0.05</li><li>Output <=200k (per 1M)$3.00</li><li>Input >200k (per 1M)$0.50</li><li>Cached input >200k (per 1M)$0.05</li><li>Output >200k (per 1M)$3.00</li></ul> |
 
 ## Usage
 

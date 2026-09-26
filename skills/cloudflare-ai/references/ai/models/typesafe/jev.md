@@ -31,7 +31,7 @@ Jev is TypeSafe's structured evaluation model. It evaluates one state against ty
 | Terms and License | [link ↗](https://docs.typesafe.ai/legal.md) |
 | More information | [link ↗](https://docs.typesafe.ai/models.md) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/typesafe/jev) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.042</li><li>Output (per 1M tokens)$0.00</li><li>Cached input (per 1M tokens)$0.00</li></ul> |
 
 ## Usage
 

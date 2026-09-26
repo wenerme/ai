@@ -32,7 +32,7 @@ Claude Sonnet 4.5 is the best coding model to date, with significant improvement
 | More information | [link ↗](https://www.anthropic.com/claude/sonnet) |
 | Zero data retention | Yes |
 | Request formats | Anthropic Messages |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-sonnet-4.5) |
+| Pricing | <ul><li>Input (per 1M tokens)$3.00</li><li>Output (per 1M tokens)$15.00</li><li>Cached input (per 1M tokens)$0.30</li><li>Cache creation (per 1M tokens)$3.75</li></ul> |
 
 ## Usage
 

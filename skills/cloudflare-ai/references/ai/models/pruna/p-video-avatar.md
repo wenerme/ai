@@ -27,7 +27,7 @@ Pruna's P-Video-Avatar generates talking-head videos from a single portrait imag
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video-avatar) |
+| Pricing | <ul><li>Default (per second)$0.025</li><li>@720p (per second)$0.025</li><li>@1080p (per second)$0.045</li></ul> |
 
 ## Usage
 

@@ -28,7 +28,7 @@ RunwayML's video editing model. Edit one frame to update your whole video, make 
 | --- | --- |
 | Terms and License | [link ↗](https://runwayml.com/terms-of-use) |
 | More information | [link ↗](https://runwayml.com/) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/runwayml/aleph-2) |
+| Pricing | <ul><li>Default (per second)$0.336</li></ul> |
 
 ## Usage
 

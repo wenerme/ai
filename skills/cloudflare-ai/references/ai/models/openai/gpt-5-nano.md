@@ -32,7 +32,7 @@ GPT-5 Nano is OpenAI’s smallest GPT-5 variant, optimized for low latency and c
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5-nano) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.05</li><li>Output (per 1M tokens)$0.40</li><li>Cached input (per 1M tokens)$0.005</li></ul> |
 
 ## Usage
 

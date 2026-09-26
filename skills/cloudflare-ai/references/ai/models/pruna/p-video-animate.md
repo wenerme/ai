@@ -27,7 +27,7 @@ Pruna's P-Video-Animate takes a source video and a subject reference image, then
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://docs.api.pruna.ai/guides/quickstart) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/pruna/p-video-animate) |
+| Pricing | <ul><li>Default (per second)$0.03</li><li>@720p (per second)$0.03</li><li>@1080p (per second)$0.06</li></ul> |
 
 ## Usage
 

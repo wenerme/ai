@@ -30,7 +30,7 @@ GPT-6 Luna is OpenAI's most efficient GPT-6 model, built for focused, high-volum
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://developers.openai.com/api/docs/models/gpt-6-luna) |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-6-luna) |
+| Pricing | <ul><li>Short-context input (per 1M)$0.10</li><li>Short-context cached input (per 1M)$0.01</li><li>Short-context cache write (per 1M)$0.125</li><li>Short-context output (per 1M)$0.50</li><li>Long-context input (per 1M)$0.20</li><li>Long-context cached input (per 1M)$0.02</li><li>Long-context cache write (per 1M)$0.25</li><li>Long-context output (per 1M)$0.75</li></ul> |
 
 ## Usage
 

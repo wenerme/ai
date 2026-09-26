@@ -27,7 +27,7 @@ Seedream 4.5 builds on 4.0 with multi-reference image support, batch generation,
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://seed.bytedance.com/en/seedream4_5) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedream-4.5) |
+| Pricing | <ul><li>Per image$0.04</li></ul> |
 
 ## Usage
 

@@ -27,7 +27,7 @@ ByteDance's next-generation video model with a unified multimodal architecture. 
 | Model Info | |
 | --- | --- |
 | More information | [link ↗](https://seed.bytedance.com/en/seedance2_0) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/bytedance/seedance-2.0) |
+| Pricing | <ul><li>Default (per second)$0.15</li><li>@480p video input (per second)$0.172</li><li>@720p video input (per second)$0.372</li><li>@1080p video input (per second)$0.914</li><li>@4k video input (per second)$1.866</li><li>@480p non-video input (per second)$0.07</li><li>@720p non-video input (per second)$0.15</li><li>@1080p non-video input (per second)$0.37</li><li>@4k non-video input (per second)$0.78</li></ul> |
 
 ## Usage
 

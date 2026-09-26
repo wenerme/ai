@@ -74,8 +74,8 @@
   "google-ai-docs/thinking.md": {
     "url": "https://ai.google.dev/gemini-api/docs/thinking",
     "skill": "google-ai-docs",
-    "size": 34011,
-    "updatedAt": "2026-09-24T04:35:04.135Z"
+    "size": 34085,
+    "updatedAt": "2026-09-26T04:48:28.603Z"
   },
   "google-ai-docs/text-generation.md": {
     "url": "https://ai.google.dev/gemini-api/docs/text-generation",
@@ -200,14 +200,14 @@
   "google-ai-api/interactions-api.md": {
     "url": "https://ai.google.dev/api/interactions-api",
     "skill": "google-ai-api",
-    "size": 137523,
-    "updatedAt": "2026-09-25T04:44:52.815Z"
+    "size": 125836,
+    "updatedAt": "2026-09-26T04:48:40.377Z"
   },
   "google-ai-docs/api-key.md": {
     "url": "https://ai.google.dev/gemini-api/docs/api-key",
     "skill": "google-ai-docs",
-    "size": 14168,
-    "updatedAt": "2026-09-24T04:35:17.749Z"
+    "size": 13875,
+    "updatedAt": "2026-09-26T04:48:40.821Z"
   },
   "google-ai-docs/model-tuning.md": {
     "url": "https://ai.google.dev/gemini-api/docs/model-tuning",

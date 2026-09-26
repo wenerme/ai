@@ -30,7 +30,7 @@ Alibaba's HappyHorse 1.0 text-to-video model. Generates videos from a text promp
 | Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
 | More information | [link ↗](https://modelstudio.console.alibabacloud.com/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/hh1-t2v) |
+| Pricing | <ul><li>Default (per second)$0.28</li><li>@720p (per second)$0.14</li><li>@1080p (per second)$0.28</li></ul> |
 
 ## Usage
 

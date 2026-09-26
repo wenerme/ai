@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 Suppression lists prevent Email Service from sending to recipients who should not receive mail. Cloudflare adds entries after eligible bounces and spam complaints. You can also add entries manually.
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/suppressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/email-service/concepts/suppressions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 An Email Sending suppression list contains recipients that Email Service does not contact. Suppressions protect your sender reputation and help prevent sending unwanted mail.
 
@@ -24,9 +24,20 @@ To add or remove entries, refer to [Manage suppressions](https://developers.clou
 
 ## Suppression scope
 
-Suppressions are account-scoped. Once an email address is on the suppression list, Email Service suppresses sends to that address from every domain in your account.
+Each suppression has a scope. The scope controls which sending domains the suppression applies to:
 
-If you need separate suppression lists for different use cases, consider using separate Cloudflare accounts.
+| Scope | Applies to |
+| --- | --- |
+| `account` | Every sending domain and subdomain in your account |
+| `sending_domain` | One sending domain, such as `mail.myappexample.com` |
+
+The sending domain of a message is the domain of its sender address. This is the `from` address for the [REST API](https://developers.cloudflare.com/email-service/api/send-emails/rest-api/) and [Workers binding](https://developers.cloudflare.com/email-service/api/send-emails/workers-api/), and the envelope `MAIL FROM` address for [SMTP](https://developers.cloudflare.com/email-service/api/send-emails/smtp/).
+
+A `sending_domain` suppression matches only its exact domain. A suppression for `myappexample.com` does not block mail from `mail.myappexample.com`, and a suppression for `mail.myappexample.com` does not block mail from `myappexample.com`.
+
+Email Service suppresses a recipient if the address has an `account` suppression, or a `sending_domain` suppression for the sending domain of the message.
+
+Bounce and complaint suppressions use the `sending_domain` scope, with the sending domain of the message that bounced or received the complaint. A complaint creates an `account` suppression when Cloudflare cannot identify the sending domain of the original message.
 
 ## Suppression rules
 
@@ -49,6 +60,8 @@ You cannot update or delete an entry when `read_only` is `true`. To investigate 
 Manual suppressions allow you to add application-level decisions that Email Service cannot observe. For example, if a user manually unsubscribes from emails in your app, you can add their email to your Email Service suppression list.
 
 You select the expiration when creating the entry. An entry without an expiration remains active until you delete it.
+
+You also select the scope. Manual suppressions use the `account` scope by default. Email Service does not check that your account sends from a `sending_domain` value. A suppression for a domain that you do not send from never blocks mail.
 
 ### Spam complaints
 
@@ -89,6 +102,7 @@ Suppressed recipients do not count toward your [monthly quota](https://developer
 ## Best practices
 
 - Add manual suppressions for unsubscribes.
+- Use the `account` scope when a recipient must not receive mail from any of your domains. Use the `sending_domain` scope when the decision applies to one subdomain only.
 - Require recipients to opt in again through your application.
 - Verify addresses before deleting suppressions.
 - Investigate patterns across repeated bounces.
@@ -111,5 +125,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/concepts/suppressions/#page","headline":"Suppression lists","description":"Understand suppression scope, triggers, expiration, and enforcement.","url":"https://developers.cloudflare.com/email-service/concepts/suppressions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/email-service/concepts/suppressions/#page","headline":"Suppression lists","description":"Understand suppression scope, triggers, expiration, and enforcement.","url":"https://developers.cloudflare.com/email-service/concepts/suppressions/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

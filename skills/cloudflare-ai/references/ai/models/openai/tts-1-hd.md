@@ -30,7 +30,7 @@ OpenAI's high-definition text-to-speech model producing higher quality audio out
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://platform.openai.com/docs/guides/text-to-speech) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/tts-1-hd) |
+| Pricing | <ul><li>Per character$0.00003</li></ul> |
 
 ## Usage
 

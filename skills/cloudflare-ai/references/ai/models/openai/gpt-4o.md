@@ -32,7 +32,7 @@ GPT-4o is OpenAI’s multimodal flagship, accepting text and images and respondi
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o) |
+| Pricing | <ul><li>Input (per 1M tokens)$1.25</li><li>Output (per 1M tokens)$5.00</li><li>Cached input (per 1M tokens)$0.625</li></ul> |
 
 ## Usage
 

@@ -31,7 +31,7 @@ Google's fastest Gemini image generation model for rapid image creation and iter
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
 | More information | [link ↗](https://deepmind.google/technologies/imagen/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/nano-banana-2-lite) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.25</li><li>Output (per 1M tokens)$30.00</li></ul> |
 
 ## Usage
 

@@ -28,7 +28,7 @@ FLUX.1 Kontext \[max] is Black Forest Labs' highest-quality Kontext model for te
 | --- | --- |
 | Terms and License | [link ↗](https://blackforestlabs.ai/terms-of-service/) |
 | More information | [link ↗](https://docs.bfl.ml/api-reference/models/edit-or-create-an-image-with-flux1-kontext-[max]) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/black-forest-labs/flux-1-kontext-max) |
+| Pricing | <ul><li>Per image$0.08</li></ul> |
 
 ## Usage
 

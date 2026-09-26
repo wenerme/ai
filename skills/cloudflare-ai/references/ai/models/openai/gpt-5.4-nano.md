@@ -32,7 +32,7 @@ GPT-5.4 nano is OpenAI's smallest and fastest model, optimized for edge and low-
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
 | Request formats | Responses, Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-5.4-nano) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.20</li><li>Output (per 1M tokens)$1.25</li><li>Cached input (per 1M tokens)$0.02</li></ul> |
 
 ## Usage
 

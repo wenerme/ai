@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 394 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 392 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -94,10 +94,10 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1048576,
-    "maxOutput": 943718,
-    "inputCost": 0.04,
-    "outputCost": 0.49
+    "contextWindow": 1040000,
+    "maxOutput": 384000,
+    "inputCost": 0.035,
+    "outputCost": 0.29
   },
   {
     "model": "kilo/~deepseek/deepseek-pro-latest",
@@ -108,8 +108,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 0.2528,
-    "outputCost": 2.88
+    "inputCost": 0.25,
+    "outputCost": 3.5
   },
   {
     "model": "kilo/~deepseek/deepseek-v4-flash-latest",
@@ -120,7 +120,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 0.03,
+    "inputCost": 0.022,
     "outputCost": 0.32
   },
   {
@@ -156,7 +156,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 0.8845,
+    "inputCost": 1.2,
     "outputCost": 10.5346
   },
   {
@@ -1426,7 +1426,7 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 131072,
+    "contextWindow": 262144,
     "maxOutput": 32768,
     "inputCost": 0.075,
     "outputCost": 0.22
@@ -2188,30 +2188,6 @@ for await (const chunk of stream) {
     "outputCost": 1.9
   },
   {
-    "model": "kilo/nex-agi/nex-n2.5-mini:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 235929,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
-    "model": "kilo/nex-agi/nex-n2.5-pro:free",
-    "imageInput": true,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 262144,
-    "maxOutput": 235929,
-    "inputCost": null,
-    "outputCost": null
-  },
-  {
     "model": "kilo/nousresearch/hermes-3-llama-3.1-405b",
     "imageInput": false,
     "audioInput": false,
@@ -2351,7 +2327,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 131072,
+    "maxOutput": 235929,
     "inputCost": 0.065,
     "outputCost": 0.18
   },
@@ -3184,6 +3160,18 @@ for await (const chunk of stream) {
     "outputCost": 1.5
   },
   {
+    "model": "kilo/perceptron/perceptron-mk1.5",
+    "imageInput": true,
+    "audioInput": true,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 36864,
+    "maxOutput": 8192,
+    "inputCost": 0.15,
+    "outputCost": 1.5
+  },
+  {
     "model": "kilo/perplexity/sonar",
     "imageInput": true,
     "audioInput": false,
@@ -3779,7 +3767,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 262140,
+    "maxOutput": 81920,
     "inputCost": 0.45,
     "outputCost": 2.7
   },
@@ -4248,8 +4236,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 128000,
-    "inputCost": 0.13,
-    "outputCost": 0.53
+    "inputCost": 0.0825,
+    "outputCost": 0.33
   },
   {
     "model": "kilo/tencent/hy3-preview",
@@ -4694,18 +4682,6 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.4,
     "outputCost": 4.4
-  },
-  {
-    "model": "kilo/z-ai/glm-5.2:free",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": false,
-    "reasoning": true,
-    "contextWindow": 32768,
-    "maxOutput": 29491,
-    "inputCost": null,
-    "outputCost": null
   },
   {
     "model": "kilo/z-ai/glm-5.3",

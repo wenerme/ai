@@ -32,7 +32,7 @@ xAI's Grok 4.20 reasoning model. Uses extended thinking to work through complex 
 | More information | [link ↗](https://x.ai/) |
 | Zero data retention | Yes |
 | Request formats | Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/xai/grok-4.20-0309-reasoning) |
+| Pricing | <ul><li>Input (per 1M tokens)$2.00</li><li>Output (per 1M tokens)$6.00</li><li>Cached input (per 1M tokens)$0.20</li></ul> |
 
 ## Usage
 

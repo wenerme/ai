@@ -30,7 +30,7 @@ Claude Fable 5 is Anthropic's most capable widely released model, built for the 
 | Terms and License | [link ↗](https://www.anthropic.com/legal/commercial-terms) |
 | More information | [link ↗](https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5) |
 | Request formats | Anthropic Messages |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/anthropic/claude-fable-5) |
+| Pricing | <ul><li>Input (per 1M tokens)$10.00</li><li>Output (per 1M tokens)$50.00</li><li>Cached input (per 1M tokens)$1.00</li><li>Cache creation (per 1M tokens)$12.50</li></ul> |
 
 ## Usage
 

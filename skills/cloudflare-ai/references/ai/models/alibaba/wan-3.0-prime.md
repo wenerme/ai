@@ -28,7 +28,7 @@ Alibaba's Wan 3.0 Prime text-to-video model. Generates cinematic videos from tex
 | --- | --- |
 | Terms and License | [link ↗](https://www.alibabacloud.com/help/en/legal) |
 | More information | [link ↗](https://www.alibabacloud.com/help/en/model-studio/models) |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/alibaba/wan-3.0-prime) |
+| Pricing | <ul><li>Default (per second)$0.068</li><li>@480p (per second)$0.068</li><li>@720p (per second)$0.14</li><li>@1080p (per second)$0.28</li></ul> |
 
 ## Usage
 

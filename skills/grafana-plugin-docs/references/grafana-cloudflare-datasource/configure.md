@@ -13,9 +13,9 @@ This document explains how to configure the Cloudflare data source in Grafana.
 
 Before you configure the data source, ensure you have:
 
-- **Cloudflare data source plugin installed:** For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins)
+- **Cloudflare data source plugin installed:** For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins). If you can’t find or install the plugin, refer to [Installation and access issues](/docs/plugins/grafana-cloudflare-datasource/latest/troubleshooting/#installation-and-access-issues)
 - **Grafana permissions:** Organization administrator role
-- **Cloudflare API token:** A user token or an account-owned token with the required permissions (see [Required permissions](#required-permissions))
+- **Cloudflare API token:** A user token or an account-owned token with the required permissions (refer to [Required permissions](#required-permissions))
 
 ## Required permissions
 
@@ -28,6 +28,8 @@ Expand table
 | **Account** | Account Settings | Read   | All accounts (or specific) | Account queries       |
 | **Zone**    | Zone             | Read   | All zones (or specific)    | Zone queries          |
 | **Zone**    | Analytics        | Read   | All zones (or specific)    | DNS Analytics queries |
+| **Zone**    | Load Balancers   | Read   | All zones (or specific)    | Load Balancer queries |
+| **Account** | API Tokens       | Read   | All accounts (or specific) | Token queries         |
 
 > Note
 >
@@ -48,7 +50,7 @@ To create an API token in Cloudflare:
 1. Go to the [Cloudflare API Tokens page](https://dash.cloudflare.com/profile/api-tokens).
 2. Click **Create Token**.
 3. Select **Create Custom Token**.
-4. Add the required permissions (see [Required permissions](#required-permissions)).
+4. Add the required permissions (refer to [Required permissions](#required-permissions)).
 5. Click **Continue to summary**, then **Create Token**.
 6. Copy the token and paste it into the **Token** field in Grafana.
 
@@ -57,7 +59,7 @@ For detailed instructions, refer to the [Cloudflare documentation](https://devel
 The Cloudflare data source supports both token types:
 
 - **User tokens** are verified against your Cloudflare user profile. No additional configuration is needed.
-- **Account-owned tokens** (`cfat_` prefix) are scoped to a Cloudflare account rather than a user, and are verified against that account. If you use an account-owned token, set **Token type** to **Account-owned token** in the data source configuration and enter the matching **Account ID** (see [Configure settings](#configure-settings)).
+- **Account-owned tokens** (`cfat_` prefix) are scoped to a Cloudflare account rather than a user, and are verified against that account. If you use an account-owned token, set **Token type** to **Account-owned token** in the data source configuration and enter the matching **Account ID** (refer to [Configure settings](#configure-settings)).
 
 ## Add the data source
 
@@ -90,6 +92,16 @@ Expand table
 |-----------|---------------------------------------------------------------------------|
 | **Token** | Your Cloudflare API token. Either a user token or an account-owned token. |
 
+## Private data source connect (PDC) and Cloudflare
+
+> Note
+>
+> Private data source connect is available only in Grafana Cloud. It isn’t available in self-managed Grafana.
+
+Use private data source connect (PDC) to connect to and query data within a secure network without opening that network to inbound traffic from Grafana Cloud. Refer to [Private data source connect](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) for more information on how PDC works and [Configure Grafana private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/#configure-grafana-private-data-source-connect-pdc) for steps on setting up a PDC connection.
+
+- **Private data source connect:** Click in the box to set the default PDC connection from the drop-down menu or create a new connection.
+
 ## Verify the connection
 
 Click **Save &amp; test** to verify the connection. Grafana verifies a user token against your Cloudflare user profile, and an account-owned token against the account matching the **Account ID** you provided under **Token type: Account-owned token**. A success message confirms that Grafana can connect to Cloudflare.
@@ -113,7 +125,7 @@ datasources:
       cloudflare.token: <YOUR_CLOUDFLARE_API_TOKEN>
 ```
 
-Replace `<YOUR_CLOUDFLARE_API_TOKEN>` with your Cloudflare API token. Provisioning bypasses the config editor UI, so `variables.token_type` and `variables.account_id` only matter as backend values here — omit both, or set `token_type` to `user`, when using a user token; set `token_type` to `account` and `account_id` to your Cloudflare account ID when using an account-owned token.
+Replace `<YOUR_CLOUDFLARE_API_TOKEN>` with your Cloudflare API token. Provisioning bypasses the configuration editor UI, so `variables.token_type` and `variables.account_id` only matter as backend values here. Omit both, or set `token_type` to `user`, when using a user token. Set `token_type` to `account` and `account_id` to your Cloudflare account ID when using an account-owned token.
 
 ### Provision with Terraform
 

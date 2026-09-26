@@ -30,7 +30,7 @@ MiniMax's music generation model that creates full-length songs with vocals from
 | Terms and License | [link ↗](https://www.minimaxi.com/terms) |
 | More information | [link ↗](https://www.minimaxi.com/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/minimax/music-2.6) |
+| Pricing | <ul><li>Per track$0.15</li><li>Per lyrics generation$0.01</li></ul> |
 
 ## Usage
 

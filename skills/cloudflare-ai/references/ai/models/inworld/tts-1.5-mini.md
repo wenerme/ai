@@ -30,7 +30,7 @@ Ultra-fast, cost-efficient text-to-speech with approximately 120ms latency and 1
 | Terms and License | [link ↗](https://inworld.ai/terms) |
 | More information | [link ↗](https://inworld.ai/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/inworld/tts-1.5-mini) |
+| Pricing | <ul><li>Per character$0.000015</li></ul> |
 
 ## Usage
 

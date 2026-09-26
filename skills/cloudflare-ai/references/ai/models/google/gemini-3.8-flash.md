@@ -30,7 +30,7 @@ Our most intelligent Flash model, engineered for long-horizon software engineeri
 | Terms and License | [link ↗](https://ai.google.dev/gemini-api/terms) |
 | More information | [link ↗](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash) |
 | Request formats | Chat Completions |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/google/gemini-3.8-flash) |
+| Pricing | <ul><li>Input (per 1M tokens)$0.75</li><li>Cached input (per 1M tokens)$0.075</li><li>Output (per 1M tokens)$3.75</li><li>Default (per second)$0.75</li></ul> |
 
 ## Usage
 

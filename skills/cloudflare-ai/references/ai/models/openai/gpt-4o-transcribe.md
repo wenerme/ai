@@ -30,7 +30,7 @@ A speech-to-text model that uses GPT-4o to transcribe audio with improved word e
 | Terms and License | [link ↗](https://openai.com/policies/) |
 | More information | [link ↗](https://openai.com/) |
 | Zero data retention | Yes |
-| Pricing | [View pricing in the Cloudflare dashboard ↗](https://dash.cloudflare.com/?to=/:account/ai/models/openai/gpt-4o-transcribe) |
+| Pricing | <ul><li>Per audio minute$0.006</li></ul> |
 
 ## Usage
 

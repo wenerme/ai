@@ -3378,6 +3378,7 @@ Fields:
 | <a id="mutation-aicatalogitemconsumercreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-aicatalogitemconsumercreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-aicatalogitemconsumercreate-itemconsumer"></a>`itemConsumer` | [`AiCatalogItemConsumer`](#aicatalogitemconsumer) | Item configuration created. |
+| <a id="mutation-aicatalogitemconsumercreate-warnings"></a>`warnings` | [`[String!]!`](#string) | Non-fatal problems encountered while configuring the item. The configuration was still created. |
 
 ### `Mutation.aiCatalogItemConsumerDelete`
 
@@ -68907,6 +68908,7 @@ Licensed features that can be checked for availability on a namespace or project
 | <a id="licensedfeature-generate_description"></a>`GENERATE_DESCRIPTION` | Generate description feature. |
 | <a id="licensedfeature-generate_test_file"></a>`GENERATE_TEST_FILE` | Generate test file feature. |
 | <a id="licensedfeature-generic_alert_fingerprinting"></a>`GENERIC_ALERT_FINGERPRINTING` | Generic alert fingerprinting feature. |
+| <a id="licensedfeature-github_continuous_sync"></a>`GITHUB_CONTINUOUS_SYNC` | Github continuous sync feature. |
 | <a id="licensedfeature-github_integration"></a>`GITHUB_INTEGRATION` | Github integration feature. |
 | <a id="licensedfeature-git_two_factor_enforcement"></a>`GIT_TWO_FACTOR_ENFORCEMENT` | Git two factor enforcement feature. |
 | <a id="licensedfeature-glab_ask_git_command"></a>`GLAB_ASK_GIT_COMMAND` | Glab ask git command feature. |
