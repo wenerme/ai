@@ -60,7 +60,7 @@ Creates reusable environment configuration without returning confidential setup 
 
 - `network: optional object { access, allowed_domains }  or null`
 
-  Network access policy for the environment. Defaults to disabled for GA requests and enabled for alpha/beta requests.
+  Network access policy for the environment. Defaults to disabled for GA requests and enabled for beta requests.
 
   - `access: "enabled" or "disabled" or "restricted"`
 

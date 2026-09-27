@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # /json - Capture structured data using AI
 
-Last updated Jul 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `/json` endpoint extracts structured data from a webpage. You can specify the expected output using either a `prompt` or a `response_format` parameter which accepts a JSON schema. The endpoint returns the extracted data in JSON format.
 
@@ -30,7 +30,7 @@ For more information, refer to [Quick Actions: Before you begin](https://develop
 ## Endpoint
 
 ```txt
-https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/json
+https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/json
 ```
 
 ## Required fields
@@ -58,7 +58,7 @@ And at least one of:
 This example captures webpage data by providing both a prompt and a JSON schema. The prompt guides the extraction process, while the JSON schema defines the expected structure of the output.
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/json' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/json' \
   -H 'authorization: Bearer <apiToken>' \
   -H 'content-type: application/json' \
   -d '{
@@ -201,7 +201,7 @@ export default {
 In this example, only a prompt is provided. The endpoint will use the prompt to extract the data, but the response will not be structured according to a JSON schema. This is useful for simple extractions where you do not need a specific format.
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/json' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/json' \
   -H 'authorization: Bearer <apiToken>' \
   -H 'content-type: application/json' \
   -d '{
@@ -230,7 +230,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-
 In this case, you supply a JSON schema via the `response_format` parameter. The schema defines the structure of the extracted data.
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/json' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/json' \
   -H 'authorization: Bearer <apiToken>' \
   -H 'content-type: application/json' \
   -d '{
@@ -349,7 +349,7 @@ Browser Run can use a custom model for which you supply credentials. List the mo
 This example uses the `custom_ai` parameter to instruct Browser Run to use a Anthropic's Claude Sonnet 4 model. The prompt asks the model to extract the main `<h1>` and `<h2>` headings from the target URL and return them in a structured JSON object.
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/json' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/json' \
   -H 'authorization: Bearer <apiToken>' \
   -H 'content-type: application/json' \
   -d '{
@@ -462,5 +462,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#page","headline":"/json - Capture structured data using AI","description":"Extract structured JSON data from webpages using AI with the Browser Run /json endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-07-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/#page","headline":"/json - Capture structured data using AI","description":"Extract structured JSON data from webpages using AI with the Browser Run /json endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON"]}
 ```

@@ -84,7 +84,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `network: optional object { access, allowed_domains }  or null`
 
-      Network access policy for the environment. Defaults to disabled for GA requests and enabled for alpha/beta requests.
+      Network access policy for the environment. Defaults to disabled for GA requests and enabled for beta requests.
 
       - `access: "enabled" or "disabled" or "restricted"`
 

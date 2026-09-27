@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Set up rate limiting and WAF rules to block abuse on my public API.
+   Add a cron trigger to my Worker that processes a job queue every hour.
    ```
 
 
@@ -174,7 +174,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
@@ -182,15 +182,15 @@ Build an AI chat agent using the Cloudflare Agents SDK with persistent conversat
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Tips

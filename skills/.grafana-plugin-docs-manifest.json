@@ -1761,28 +1761,28 @@
   },
   "grafana-prometheusalerting-app/monitor-status/view-alert-state.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-alert-state.md",
-    "size": 486,
-    "updatedAt": "2026-09-25T15:21:32.736Z"
+    "size": 2904,
+    "updatedAt": "2026-09-27T05:12:01.086Z"
   },
   "grafana-prometheusalerting-app/set-up.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up.md",
-    "size": 411,
-    "updatedAt": "2026-09-25T15:21:32.945Z"
+    "size": 1303,
+    "updatedAt": "2026-09-27T05:12:01.242Z"
   },
   "grafana-prometheusalerting-app/set-up/configure-data-sources.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources.md",
-    "size": 480,
-    "updatedAt": "2026-09-25T15:21:33.148Z"
+    "size": 4225,
+    "updatedAt": "2026-09-27T05:12:01.384Z"
   },
   "grafana-prometheusalerting-app/set-up/configure-rbac.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-rbac.md",
-    "size": 456,
-    "updatedAt": "2026-09-25T15:21:33.350Z"
+    "size": 4415,
+    "updatedAt": "2026-09-27T05:12:01.531Z"
   },
   "grafana-prometheusalerting-app/set-up/install-plugin.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/install-plugin.md",
-    "size": 456,
-    "updatedAt": "2026-09-25T15:21:33.551Z"
+    "size": 2419,
+    "updatedAt": "2026-09-27T05:12:01.683Z"
   },
   "grafana-pyroscope-app/access.md": {
     "url": "https://grafana.com/docs/plugins/grafana-pyroscope-app/latest/access.md",

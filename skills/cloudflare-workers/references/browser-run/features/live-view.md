@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Live View
 
-Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/live-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/live-view/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Live View lets you see and interact with a remote Browser Run session in real time. This is useful for debugging automation scripts, monitoring what a browser is doing, or manually stepping in when a task requires human intervention (see [Human in the Loop](https://developers.cloudflare.com/browser-run/features/human-in-the-loop/)).
 
@@ -67,7 +67,7 @@ The API examples in the following sections assume `$ACCOUNT_ID` is set and `$CLO
 1. Create a browser session with `targets=true` to include its current page targets and generated Live View URLs in the response:
 
 ```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/browser?keep_alive=600000&targets=true" \
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-run/devtools/browser?keep_alive=600000&targets=true" \
 	--request POST \
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
 ```
@@ -86,7 +86,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-renderin
 			"webSocketDebuggerUrl": "wss://live.browser.run/api/devtools/browser/1909cef7-.../page/8E598E99...?jwt=..."
 		}
 	],
-	"webSocketDebuggerUrl": "wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/devtools/browser/1909cef7-..."
+	"webSocketDebuggerUrl": "wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/devtools/browser/1909cef7-..."
 }
 ```
 
@@ -101,7 +101,7 @@ If you have a running session and want to connect to it:
 1. List your active sessions and copy the ID of the session you want to view:
 
    ```bash
-   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/session" \
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-run/devtools/session" \
    	--request GET \
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
@@ -110,7 +110,7 @@ If you have a running session and want to connect to it:
 2. Using the session ID, list the targets in that session:
 
    ```bash
-   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/browser/$SESSION_ID/json/list" \
+   curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-run/devtools/browser/$SESSION_ID/json/list" \
    	--request GET \
    	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
    ```
@@ -162,7 +162,7 @@ A read-only Live View guardrail applies only to the generated connection. Other 
 Use the [Live View endpoint](https://developers.cloudflare.com/api/resources/browser_rendering/subresources/devtools/subresources/browser/subresources/live_view/methods/create/) to generate a URL:
 
 ```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/browser/$SESSION_ID/live_view" \
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-run/devtools/browser/$SESSION_ID/live_view" \
 	--request POST \
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
@@ -176,7 +176,7 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-renderin
 To block viewer interaction, set `guardrails` to `{ "mode": "readonly" }`:
 
 ```bash
-curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/devtools/browser/$SESSION_ID/live_view" \
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-run/devtools/browser/$SESSION_ID/live_view" \
 	--request POST \
 	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
 	--json '{
@@ -236,5 +236,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/live-view/#page","headline":"Live View","description":"Watch and control active Browser Run sessions from the dashboard, a generated Live View URL, or Chrome DevTools.","url":"https://developers.cloudflare.com/browser-run/features/live-view/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/live-view/#page","headline":"Live View","description":"Watch and control active Browser Run sessions from the dashboard, a generated Live View URL, or Chrome DevTools.","url":"https://developers.cloudflare.com/browser-run/features/live-view/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
