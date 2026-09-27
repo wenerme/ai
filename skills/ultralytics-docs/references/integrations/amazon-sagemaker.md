@@ -118,7 +118,7 @@ After creating the AWS CloudFormation Stack, the next step is to deploy YOLO26.
     ```python
     import json
 
-    def output_fn(prediction_output):
+    def output_fn(prediction_output, content_type):
         """Formats model outputs as JSON string, extracting attributes like boxes, masks, keypoints."""
         print("Executing output_fn from inference.py ...")
         infer = {}
@@ -230,7 +230,7 @@ Yes, you can customize the inference logic for YOLO26 on Amazon SageMaker:
     ```python
     import json
 
-    def output_fn(prediction_output):
+    def output_fn(prediction_output, content_type):
         """Formats model outputs as JSON string, extracting attributes like boxes, masks, keypoints."""
         infer = {}
         for result in prediction_output:

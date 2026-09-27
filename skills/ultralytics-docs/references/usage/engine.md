@@ -28,7 +28,7 @@ Both the Ultralytics YOLO command-line and Python interfaces are high-level abst
 The `BaseTrainer` class provides a generic training routine adaptable for various tasks. Customize it by overriding specific functions or operations while adhering to the required formats. For example, integrate your own custom model and dataloader by overriding these functions:
 
 - `get_model(cfg, weights)`: Builds the model to be trained.
-- `get_dataloader()`: Builds the dataloader.
+- `get_dataloader(dataset_path, batch_size, rank, mode)`: Builds the dataloader.
 
 For more details and source code, see the [`BaseTrainer` Reference](../reference/engine/trainer.md).
 
@@ -59,7 +59,7 @@ trainer = CustomTrainer(overrides={...})
 trainer.train()
 ```
 
-Further customize the trainer by modifying the [loss function](https://www.ultralytics.com/glossary/loss-function) or adding a [callback](callbacks.md) to upload the model to Google Drive every 10 [epochs](https://www.ultralytics.com/glossary/epoch). Here's an example:
+Further customize the trainer by modifying the [loss function](https://www.ultralytics.com/glossary/loss-function) or adding a [callback](callbacks.md) that runs at the end of every [epoch](https://www.ultralytics.com/glossary/epoch), for example to log or upload the latest weights. Here's an example:
 
 ```python
 from ultralytics.models.yolo.detect import DetectionTrainer
@@ -67,14 +67,14 @@ from ultralytics.nn.tasks import DetectionModel
 
 class MyCustomModel(DetectionModel):
     def init_criterion(self):
-        """Initializes the loss function and adds a callback for uploading the model to Google Drive every 10 epochs."""
+        """Initializes a custom loss function for the model."""
 
 class CustomTrainer(DetectionTrainer):
     def get_model(self, cfg=None, weights=None, verbose=True):
         """Returns a customized detection model instance configured with specified config and weights."""
         return MyCustomModel(...)
 
-# Callback to upload model weights
+# Callback to log model weights
 def log_model(trainer):
     """Logs the path of the last model weight used by the trainer."""
     last_weight_path = trainer.last
@@ -138,7 +138,7 @@ For further customization, such as changing the [loss function](https://www.ultr
 The `BaseTrainer` serves as the foundation for training routines, customizable for various tasks by overriding its generic methods. Key components include:
 
 - `get_model(cfg, weights)`: Builds the model to be trained.
-- `get_dataloader()`: Builds the dataloader.
+- `get_dataloader(dataset_path, batch_size, rank, mode)`: Builds the dataloader.
 - `preprocess_batch()`: Handles batch preprocessing before model forward pass.
 - `set_model_attributes()`: Sets model attributes based on dataset information.
 - `get_validator()`: Returns a validator for model evaluation.
@@ -152,7 +152,7 @@ Add callbacks to monitor and modify the training process in `DetectionTrainer`. 
 ```python
 from ultralytics.models.yolo.detect import DetectionTrainer
 
-# Callback to upload model weights
+# Callback to log model weights
 def log_model(trainer):
     """Logs the path of the last model weight used by the trainer."""
     last_weight_path = trainer.last
