@@ -338,7 +338,7 @@ def callback(data):
     image = rospy.wait_for_message("/camera/color/image_raw", Image)
     image = ros_numpy.numpify(image)
     depth = ros_numpy.numpify(data)
-    result = segmentation_model(image)
+    result = segmentation_model(image, retina_masks=True)  # masks at the original image resolution
 
     all_objects = []
     for index, cls in enumerate(result[0].boxes.cls):
@@ -383,7 +383,7 @@ while True:
         image = rospy.wait_for_message("/camera/color/image_raw", Image)
         image = ros_numpy.numpify(image)
         depth = ros_numpy.numpify(data)
-        result = segmentation_model(image)
+        result = segmentation_model(image, retina_masks=True)  # masks at the original image resolution
 
         all_objects = []
         for index, cls in enumerate(result[0].boxes.cls):
@@ -487,7 +487,7 @@ import open3d as o3d
 
 ros_cloud = rospy.wait_for_message("/camera/depth/points", PointCloud2)
 xyz, rgb = pointcloud2_to_array(ros_cloud)
-result = segmentation_model(rgb)
+result = segmentation_model(rgb, retina_masks=True)  # masks at the original image resolution
 
 if not len(result[0].boxes.cls):
     print("No objects detected")
@@ -546,7 +546,7 @@ for index, class_id in enumerate(classes):
 
     ros_cloud = rospy.wait_for_message("/camera/depth/points", PointCloud2)
     xyz, rgb = pointcloud2_to_array(ros_cloud)
-    result = segmentation_model(rgb)
+    result = segmentation_model(rgb, retina_masks=True)  # masks at the original image resolution
 
     if not len(result[0].boxes.cls):
         print("No objects detected")
@@ -661,7 +661,7 @@ def pointcloud2_to_array(pointcloud2):
 
 ros_cloud = rospy.wait_for_message("/camera/depth/points", PointCloud2)
 xyz, rgb = pointcloud2_to_array(ros_cloud)
-result = segmentation_model(rgb)
+result = segmentation_model(rgb, retina_masks=True)  # masks at the original image resolution
 
 if not len(result[0].boxes.cls):
     print("No objects detected")

@@ -37,7 +37,7 @@ YOLO26 Classify models pretrained on the [ImageNet](https://github.com/ultralyti
 {% include "macros/yolo-cls-perf.md" %}
 
 - **acc** values are model accuracies on the [ImageNet](https://www.image-net.org/) dataset validation set. Reproduce with `yolo classify val data=path/to/ImageNet device=0`
-- **Speed** averaged over ImageNet val images using an [Amazon EC2 P4d](https://aws.amazon.com/ec2/instance-types/p4/) instance. Reproduce with `yolo classify val data=path/to/ImageNet batch=1 device=0|cpu`
+- **Speed** averaged over ImageNet val images with ONNX on CPU and TensorRT10 on an NVIDIA T4 GPU. Reproduce with `yolo classify val data=path/to/ImageNet batch=1 device=0|cpu`
 - **Params** and **FLOPs** values are for the fused model after `model.fuse()`, which merges Conv and BatchNorm layers. Pretrained checkpoints retain the full training architecture and may show higher counts.
 
 See the [unreleased YOLO27 preview](../models/yolo27.md#performance-metrics) for preliminary classification speed and model sizes.
@@ -97,9 +97,9 @@ from ultralytics.models.yolo.classify import ClassificationTrainer, Classificati
 class CustomizedDataset(ClassificationDataset):
     """A customized dataset class for image classification with enhanced data augmentation transforms."""
 
-    def __init__(self, root: str, args, augment: bool = False, prefix: str = ""):
+    def __init__(self, root: str, args, augment: bool = False, prefix: str = "", names=None):
         """Initialize a customized classification dataset with enhanced data augmentation transforms."""
-        super().__init__(root, args, augment, prefix)
+        super().__init__(root, args, augment, prefix, names)
 
         # Add your custom training transforms here
         train_transforms = T.Compose(
@@ -130,14 +130,20 @@ class CustomizedTrainer(ClassificationTrainer):
 
     def build_dataset(self, img_path: str, mode: str = "train", batch=None):
         """Build a customized dataset for classification training and the validation during training."""
-        return CustomizedDataset(root=img_path, args=self.args, augment=mode == "train", prefix=mode)
+        return CustomizedDataset(
+            root=img_path,
+            args=self.args,
+            augment=mode == "train",
+            prefix="train" if mode == "train" else self.args.split,
+            names=self.data["names"],
+        )
 
 class CustomizedValidator(ClassificationValidator):
     """A customized validator class for YOLO classification models with enhanced dataset handling."""
 
     def build_dataset(self, img_path: str):
         """Build a customized dataset for classification standalone validation (no augmentation)."""
-        return CustomizedDataset(root=img_path, args=self.args, augment=False, prefix=self.args.split)
+        return CustomizedDataset(root=img_path, args=self.args, augment=False, prefix=self.args.split, names=self.names)
 
 model = YOLO("yolo26n-cls.pt")
 model.train(data="imagenet", trainer=CustomizedTrainer, epochs=10, imgsz=224, batch=64)

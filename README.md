@@ -1438,7 +1438,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 61 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1642 | 10 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 83 | 1.4 MiB |
-| [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 147 KiB |
+| [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 148 KiB |
 | [duckdb-dev](./skills/duckdb-dev/SKILL.md) | 29 | 134 KiB |
 | [duckdb-docs](./skills/duckdb-docs/SKILL.md) | 103 | 445 KiB |
 | [duckdb-extensions](./skills/duckdb-extensions/SKILL.md) | 59 | 501 KiB |
