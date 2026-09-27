@@ -134,7 +134,7 @@ IDETerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+   Set up WAF rules to block SQL injection and XSS attacks on my application.
    ```
 
 
@@ -239,23 +239,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Check my Workers deployment logs for errors and suggest fixes.
+```
+
+```txt
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+```
+
+```txt
 Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
-```
-
-```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Tips

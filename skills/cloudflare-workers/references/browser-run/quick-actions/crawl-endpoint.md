@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # /crawl - Crawl web content
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `/crawl` endpoint scrapes content from a starting URL and follows links across the site, up to a configurable depth or page limit. Responses can be returned as HTML, Markdown, or JSON.
 
@@ -21,7 +21,7 @@ The `/crawl` endpoint is available via the REST API. [Create a custom API Token]
 ## Endpoint
 
 ```txt
-https://api.cloudflare.com/client/v4/accounts/<account_id>/browser-rendering/crawl
+https://api.cloudflare.com/client/v4/accounts/<account_id>/browser-run/crawl
 ```
 
 ## Required fields
@@ -53,7 +53,7 @@ Users on the Workers Free plan are subject to additional crawl-specific restrict
 Send a `POST` request with a `url` to start a crawl job. The API responds immediately with a job `id` you will use to retrieve results. Refer to [optional parameters](https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#optional-parameters) for additional customization options.
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl' \
   -H 'Authorization: Bearer <apiToken>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -75,7 +75,7 @@ Example response:
 To check the status or request the results of your crawl job, use the job `id` you received:
 
 ```bash
-curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e' \
+curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e' \
   -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
 
@@ -111,7 +111,7 @@ async function waitForCrawl(accountId, jobId, apiToken) {
 
 	for (let i = 0; i < maxAttempts; i++) {
 		const response = await fetch(
-			`https://api.cloudflare.com/client/v4/accounts/${accountId}/browser-rendering/crawl/${jobId}?limit=1`,
+			`https://api.cloudflare.com/client/v4/accounts/${accountId}/browser-run/crawl/${jobId}?limit=1`,
 			{
 				headers: {
 					Authorization: `Bearer ${apiToken}`,
@@ -142,7 +142,7 @@ Once the job reaches a terminal status, fetch the full results without the `limi
 Example with query parameters:
 
 ```bash
-curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e?cursor=10&limit=10&status=completed' \
+curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e?cursor=10&limit=10&status=completed' \
   -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
 
@@ -194,7 +194,7 @@ This information is only available in the crawl results (step 2) — the [initia
 To view only errored records, filter by `status=errored`:
 
 ```bash
-curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/{job_id}?status=errored' \
+curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl/{job_id}?status=errored' \
   -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
 
@@ -205,7 +205,7 @@ The record's `status` field contains the HTTP status code returned by the origin
 To cancel a crawl job that is currently in progress, use the job `id` you received:
 
 ```bash
-curl -X DELETE 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e' \
+curl -X DELETE 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl/c7f8s2d9-a8e7-4b6e-8e4d-3d4a1b2c3f4e' \
   -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
 
@@ -247,7 +247,7 @@ When `render` is `true` (the default), crawl jobs also support all standard Brow
 The `skipped` status applies to URLs that the crawler discovered and evaluated individually, but then chose not to fetch because they were excluded by your crawl configuration, such as `includeExternalLinks`, `includeSubdomains`, or `includePatterns`/`excludePatterns`. To view these URLs, query the crawl job results with `status=skipped`.
 
 ```bash
-curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl/{job_id}?status=skipped' \
+curl -X GET 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl/{job_id}?status=skipped' \
   -H 'Authorization: Bearer YOUR_API_TOKEN'
 ```
 
@@ -264,7 +264,7 @@ Crawls that use `render: true` use a headless browser and are billed under typic
 ### Example with all optional parameters
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl' \
   -H 'Authorization: Bearer <apiToken>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -302,7 +302,7 @@ Visit the [Browser Run API reference](https://developers.cloudflare.com/api/reso
 Crawl only documentation pages and exclude specific sections:
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl' \
   -H 'Authorization: Bearer <apiToken>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -327,7 +327,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 Extract structured product data using the `json` format. This leverages [Workers AI](https://developers.cloudflare.com/workers-ai/) by default. Refer to the [`/json` endpoint](https://developers.cloudflare.com/browser-run/quick-actions/json-endpoint/) to learn more.
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl' \
   -H 'Authorization: Bearer <apiToken>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -363,7 +363,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 Fetch static HTML without rendering for faster crawling of static sites:
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl' \
   -H 'Authorization: Bearer <apiToken>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -379,7 +379,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 Crawl pages behind HTTP authentication or with custom headers:
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl' \
   -H 'Authorization: Bearer <apiToken>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -395,7 +395,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 You can also use cookies or custom headers for token-based authentication:
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl' \
   -H 'Authorization: Bearer <apiToken>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -412,7 +412,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 Crawl single-page applications that load content dynamically:
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl' \
   -H 'Authorization: Bearer <apiToken>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -435,7 +435,7 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser
 Speed up crawling by blocking images and media. `rejectResourceTypes` is only available when `render` is `true` (the default).
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl' \
   -H 'Authorization: Bearer <apiToken>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -535,7 +535,7 @@ This means:
 To crawl a site that disallows AI training but allows search, set `crawlPurposes` to only the purposes you need:
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl' \
   -H 'Authorization: Bearer <apiToken>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -562,7 +562,7 @@ A crawl is rejected when your declared `contentUse` level is more permissive tha
 To crawl a site that sets `use=reference`, set `contentUse` to `reference`:
 
 ```bash
-curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-rendering/crawl' \
+curl -X POST 'https://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/crawl' \
   -H 'Authorization: Bearer <apiToken>' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -635,5 +635,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#page","headline":"/crawl - Crawl web content","description":"Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.","url":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/#page","headline":"/crawl - Crawl web content","description":"Scrape and follow links across a website using the Browser Run /crawl endpoint, with configurable depth and output formats.","url":"https://developers.cloudflare.com/browser-run/quick-actions/crawl-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Add mTLS authentication and schema validation to protect my API endpoints.
+   Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
    ```
 
 
@@ -153,23 +153,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Tips

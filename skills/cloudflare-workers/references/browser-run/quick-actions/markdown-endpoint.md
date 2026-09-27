@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # /markdown - Extract Markdown from a webpage
 
-Last updated May 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `/markdown` endpoint retrieves a webpage's content and converts it into Markdown format. You can specify a URL and optional parameters to refine the extraction process.
 
@@ -26,7 +26,7 @@ For more information, refer to [Quick Actions: Before you begin](https://develop
 ## Endpoint
 
 ```txt
-https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/markdown
+https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/markdown
 ```
 
 ## Required fields
@@ -49,7 +49,7 @@ You must provide either `url` or `html`:
 This example fetches the Markdown representation of a webpage.
 
 ```bash
-curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/markdown' \
+curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/markdown' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer <apiToken>' \
   -d '{
@@ -98,7 +98,7 @@ export default {
 Instead of fetching the content by specifying the URL, you can provide raw HTML content directly.
 
 ```bash
-curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/markdown' \
+curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/markdown' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer <apiToken>' \
   -d '{
@@ -124,7 +124,7 @@ Visit the [Browser Run API reference](https://developers.cloudflare.com/api/reso
 You can refine the Markdown extraction by using the `rejectRequestPattern` parameter. In this example, requests matching the given regex pattern (such as CSS files) are excluded.
 
 ```bash
-curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-rendering/markdown' \
+curl -X 'POST' 'https://api.cloudflare.com/client/v4/accounts/<accountId>/browser-run/markdown' \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer <apiToken>' \
   -d '{
@@ -183,5 +183,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/#page","headline":"/markdown - Extract Markdown from a webpage","description":"Convert webpage content to Markdown format using the Browser Run /markdown endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/#page","headline":"/markdown - Extract Markdown from a webpage","description":"Convert webpage content to Markdown format using the Browser Run /markdown endpoint.","url":"https://developers.cloudflare.com/browser-run/quick-actions/markdown-endpoint/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

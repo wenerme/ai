@@ -6944,7 +6944,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         A customer-safe error. Non-null only for a failed turn.
 
-        - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+        - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
           A stable, machine-readable failure category.
 
@@ -6967,6 +6967,10 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
           - `"rate_limit_exceeded"`
 
             The request exceeds the available rate limit.
+
+          - `"flex_unavailable"`
+
+            Flex processing is temporarily unavailable.
 
           - `"server_overloaded"`
 
@@ -12680,7 +12684,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       A customer-safe error. Non-null only for a failed turn.
 
-      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
         A stable, machine-readable failure category.
 
@@ -12703,6 +12707,10 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `"rate_limit_exceeded"`
 
           The request exceeds the available rate limit.
+
+        - `"flex_unavailable"`
+
+          Flex processing is temporarily unavailable.
 
         - `"server_overloaded"`
 
@@ -12890,7 +12898,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       A customer-safe error. Non-null only for a failed turn.
 
-      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
         A stable, machine-readable failure category.
 
@@ -12913,6 +12921,10 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `"rate_limit_exceeded"`
 
           The request exceeds the available rate limit.
+
+        - `"flex_unavailable"`
+
+          Flex processing is temporarily unavailable.
 
         - `"server_overloaded"`
 
@@ -13200,7 +13212,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       A customer-safe error. Non-null only for a failed turn.
 
-      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
         A stable, machine-readable failure category.
 
@@ -13223,6 +13235,10 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `"rate_limit_exceeded"`
 
           The request exceeds the available rate limit.
+
+        - `"flex_unavailable"`
+
+          Flex processing is temporarily unavailable.
 
         - `"server_overloaded"`
 
@@ -13406,7 +13422,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       A customer-safe error. Non-null only for a failed turn.
 
-      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
         A stable, machine-readable failure category.
 
@@ -13429,6 +13445,10 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `"rate_limit_exceeded"`
 
           The request exceeds the available rate limit.
+
+        - `"flex_unavailable"`
+
+          Flex processing is temporarily unavailable.
 
         - `"server_overloaded"`
 
@@ -13616,7 +13636,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       A customer-safe error. Non-null only for a failed turn.
 
-      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
         A stable, machine-readable failure category.
 
@@ -13639,6 +13659,10 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `"rate_limit_exceeded"`
 
           The request exceeds the available rate limit.
+
+        - `"flex_unavailable"`
+
+          Flex processing is temporarily unavailable.
 
         - `"server_overloaded"`
 
@@ -16312,7 +16336,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
     - `network: optional object { access, allowed_domains }  or null`
 
-      Network access policy for the environment. Defaults to disabled for GA requests and enabled for alpha/beta requests.
+      Network access policy for the environment. Defaults to disabled for GA requests and enabled for beta requests.
 
       - `access: "enabled" or "disabled" or "restricted"`
 
@@ -17562,7 +17586,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
   A customer-safe error describing why a session request failed.
 
-  - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+  - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
     A stable, machine-readable failure category.
 
@@ -17585,6 +17609,10 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
     - `"rate_limit_exceeded"`
 
       The request exceeds the available rate limit.
+
+    - `"flex_unavailable"`
+
+      Flex processing is temporarily unavailable.
 
     - `"server_overloaded"`
 
@@ -18570,7 +18598,7 @@ Creates reusable environment configuration without returning confidential setup 
 
 - `network: optional object { access, allowed_domains }  or null`
 
-  Network access policy for the environment. Defaults to disabled for GA requests and enabled for alpha/beta requests.
+  Network access policy for the environment. Defaults to disabled for GA requests and enabled for beta requests.
 
   - `access: "enabled" or "disabled" or "restricted"`
 
@@ -19577,7 +19605,7 @@ Updates reusable environment configuration without returning confidential values
 
 - `network: optional object { access, allowed_domains }  or null`
 
-  Network access available after setup completes. Omit to preserve the current policy, or pass `null` to reset to disabled for GA requests or enabled for alpha/beta requests.
+  Network access available after setup completes. Omit to preserve the current policy, or pass `null` to reset to disabled for GA requests or enabled for beta requests.
 
   - `access: "enabled" or "disabled" or "restricted"`
 
@@ -20223,7 +20251,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `network: optional object { access, allowed_domains }  or null`
 
-      Network access policy for the environment. Defaults to disabled for GA requests and enabled for alpha/beta requests.
+      Network access policy for the environment. Defaults to disabled for GA requests and enabled for beta requests.
 
       - `access: "enabled" or "disabled" or "restricted"`
 
@@ -25333,7 +25361,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         A customer-safe error. Non-null only for a failed turn.
 
-        - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+        - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
           A stable, machine-readable failure category.
 
@@ -25356,6 +25384,10 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
           - `"rate_limit_exceeded"`
 
             The request exceeds the available rate limit.
+
+          - `"flex_unavailable"`
+
+            Flex processing is temporarily unavailable.
 
           - `"server_overloaded"`
 
@@ -28995,7 +29027,7 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
       A stable, machine-readable failure category.
 
@@ -29018,6 +29050,10 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
       - `"rate_limit_exceeded"`
 
         The request exceeds the available rate limit.
+
+      - `"flex_unavailable"`
+
+        Flex processing is temporarily unavailable.
 
       - `"server_overloaded"`
 
@@ -29258,7 +29294,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
       A stable, machine-readable failure category.
 
@@ -29281,6 +29317,10 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
       - `"rate_limit_exceeded"`
 
         The request exceeds the available rate limit.
+
+      - `"flex_unavailable"`
+
+        Flex processing is temporarily unavailable.
 
       - `"server_overloaded"`
 
@@ -30312,7 +30352,7 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
       A stable, machine-readable failure category.
 
@@ -30335,6 +30375,10 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
       - `"rate_limit_exceeded"`
 
         The request exceeds the available rate limit.
+
+      - `"flex_unavailable"`
+
+        Flex processing is temporarily unavailable.
 
       - `"server_overloaded"`
 
@@ -30573,7 +30617,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
       A stable, machine-readable failure category.
 
@@ -30596,6 +30640,10 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
       - `"rate_limit_exceeded"`
 
         The request exceeds the available rate limit.
+
+      - `"flex_unavailable"`
+
+        Flex processing is temporarily unavailable.
 
       - `"server_overloaded"`
 
@@ -30798,7 +30846,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 15 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
 
       A stable, machine-readable failure category.
 
@@ -30821,6 +30869,10 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
       - `"rate_limit_exceeded"`
 
         The request exceeds the available rate limit.
+
+      - `"flex_unavailable"`
+
+        Flex processing is temporarily unavailable.
 
       - `"server_overloaded"`
 

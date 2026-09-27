@@ -1,12 +1,63 @@
 ---
-title: "grafana-prometheusalerting-app/set-up/configure-rbac.md unavailable"
+title: "Configure access control | Grafana Plugins documentation"
+description: "Control who can view and edit rules, silences, and Alertmanager configuration in the Prometheus Alerting plugin using the Grafana RBAC permissions for external alerting resources."
 ---
 
-# grafana-prometheusalerting-app/set-up/configure-rbac.md unavailable
+> For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-Grafana listed this plugin documentation page, but it could not be fetched while building this skill.
+# Configure access control
 
-- Source: https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-rbac.md
-- Fetch result: 429
+Access is enforced through Grafana role-based access control (RBAC), using the same external alerting permissions that Grafana Alerting uses for data source-managed resources. The plugin defines no permissions of its own, so a user who can already manage external rules and Alertmanager configuration in Grafana can do the same here.
 
-Re-run `just update-grafana-plugin-docs` later to refresh this page.
+## Permissions
+
+Expand table
+
+| Permission                           | Grants                                                                  |
+|--------------------------------------|-------------------------------------------------------------------------|
+| `alert.rules.external:read`          | Viewing alerting and recording rules                                    |
+| `alert.rules.external:write`         | Creating, editing, cloning, and deleting rules and rule groups          |
+| `alert.instances.external:read`      | Viewing alerts and silences                                             |
+| `alert.instances.external:write`     | Creating, editing, recreating, and expiring silences                    |
+| `alert.notifications.external:read`  | Viewing routes, receivers, templates, time intervals, and inhibit rules |
+| `alert.notifications.external:write` | Editing routes, receivers, templates, time intervals, and inhibit rules |
+
+## How permissions map to pages
+
+Read permission controls whether a page is reachable at all. Write permission controls whether the create and edit actions on that page are offered.
+
+Expand table
+
+| Page           | Needs to view                       | Needs to change                       |
+|----------------|-------------------------------------|---------------------------------------|
+| Rules          | `alert.rules.external:read`         | `alert.rules.external:write`          |
+| Alerts         | `alert.instances.external:read`     | Not applicable, the page is read-only |
+| Silences       | `alert.instances.external:read`     | `alert.instances.external:write`      |
+| Routes         | `alert.notifications.external:read` | `alert.notifications.external:write`  |
+| Receivers      | `alert.notifications.external:read` | `alert.notifications.external:write`  |
+| Templates      | `alert.notifications.external:read` | `alert.notifications.external:write`  |
+| Time intervals | `alert.notifications.external:read` | `alert.notifications.external:write`  |
+| Inhibit Rules  | `alert.notifications.external:read` | `alert.notifications.external:write`  |
+
+Pages a user can’t read are hidden from the plugin navigation rather than shown and then refused. Someone with only `alert.rules.external:read` sees a plugin containing rule pages and nothing else.
+
+## Two reasons an action can be unavailable
+
+An action can be missing for two quite different reasons, and it’s worth telling them apart before granting anyone more access:
+
+- **Insufficient permissions.** The user’s role doesn’t include the required permission. Granting the permission fixes it.
+- **Not supported.** The data source itself can’t do it, most commonly a vanilla Prometheus rules source with no writable ruler API. No amount of permission changes this; refer to [Configure data sources](/docs/plugins/grafana-prometheusalerting-app/latest/set-up/configure-data-sources/).
+
+## Assign permissions
+
+These permissions are included in the built-in Grafana alerting roles. To grant them individually, create a custom role and assign it to a user, team, or service account.
+
+For the full procedure, refer to [Manage RBAC roles](/docs/grafana/latest/administration/roles-and-permissions/access-control/manage-rbac-roles/).
+
+> Note
+>
+> Custom roles require Grafana Enterprise or Grafana Cloud. On Grafana OSS, use the built-in roles.
+
+## Enabling the plugin is separate
+
+Installing and enabling the app requires the Grafana **Admin** role, which is independent of the permissions above. Enabling it once makes the plugin available to everyone; what each person can then do is decided by the permissions in this table.
