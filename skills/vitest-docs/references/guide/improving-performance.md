@@ -36,6 +36,7 @@ This greatly increases test times, which might not be desirable for projects tha
 ```bash [CLI]
 vitest --no-isolate
 ```
+
 ```ts [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 
@@ -80,6 +81,7 @@ For some projects, it might also be desirable to disable parallelism to improve 
 ```bash [CLI]
 vitest --no-file-parallelism
 ```
+
 ```ts [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 
@@ -96,11 +98,11 @@ DOM environments are expensive to create: `jsdom` costs roughly 200-500ms per im
 
 Three configurations reduce this cost:
 
-| configuration | environment created | isolation | trade-off |
-|---|---|---|---|
-| `pool: 'forks'`/`'threads'` + `isolate: true` (default) | once per file | fresh process/thread and environment per file | safest, slowest |
-| `pool: 'vmThreads'` | once per worker | fresh VM context and `window` per file | test code runs in a VM realm: cross-realm `instanceof` edge cases with externalized packages, and memory is not reclaimed as reliably (see [`vmMemoryLimit`](/config/vmmemorylimit)) |
-| `isolate: false` | once per worker | none - files in the same worker share the environment and module state | tests must not depend on a clean `window` or module state; run `vitest doctor` to check |
+| configuration                                           | environment created | isolation                                                              | trade-off                                                                                                                                                                            |
+| ------------------------------------------------------- | ------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `pool: 'forks'`/`'threads'` + `isolate: true` (default) | once per file       | fresh process/thread and environment per file                          | safest, slowest                                                                                                                                                                      |
+| `pool: 'vmThreads'`                                     | once per worker     | fresh VM context and `window` per file                                 | test code runs in a VM realm: cross-realm `instanceof` edge cases with externalized packages, and memory is not reclaimed as reliably (see [`vmMemoryLimit`](/config/vmmemorylimit)) |
+| `isolate: false`                                        | once per worker     | none - files in the same worker share the environment and module state | tests must not depend on a clean `window` or module state; run `vitest doctor` to check                                                                                              |
 
 ```ts [vitest.config.js]
 import { defineConfig } from 'vitest/config'
@@ -154,6 +156,7 @@ You can try to improve test run time by switching `pool` option in configuration
 ```bash [CLI]
 vitest --pool=threads
 ```
+
 ```ts [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 

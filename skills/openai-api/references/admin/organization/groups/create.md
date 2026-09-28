@@ -82,6 +82,7 @@ curl -X POST https://api.openai.com/v1/organization/groups \
     "id": "group_01J1F8ABCDXYZ",
     "name": "Support Team",
     "created_at": 1711471533,
+    "group_type": "group",
     "is_scim_managed": false
 }
 ```

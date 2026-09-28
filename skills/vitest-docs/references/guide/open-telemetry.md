@@ -38,6 +38,7 @@ const sdk = new NodeSDK({
 sdk.start()
 export default sdk
 ```
+
 ```js [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 
@@ -103,6 +104,7 @@ const provider = new WebTracerProvider({
 provider.register()
 export default provider
 ```
+
 ```js [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 

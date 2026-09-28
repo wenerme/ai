@@ -80,7 +80,7 @@ If these logs contain files that should not be loaded when your test is run, you
 You can also use [Vitest UI](/guide/ui) to debug slowness caused by barrel file.
 The example below shows how importing files without barrel file reduces amount of transformed files by ~85%.
 
-``` [File tree]
+```[File tree]
 ├── src
 │   └── utils
 │       ├── currency.ts
@@ -94,6 +94,7 @@ The example below shows how importing files without barrel file reduces amount o
 │   └── formatters.test.ts
 └── vitest.config.ts
 ```
+
 ```ts [example.test.ts]
 import { expect, test } from 'vitest'
 import { formatter } from '../src/utils' // [!code --]

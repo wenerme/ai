@@ -79,7 +79,7 @@ Since the proposal for model cards by Mitchell et al. in 2018, model cards have 
 Since 2018, new platforms and mediums for hosting and sharing model cards have also emerged. For example, particularly relevant to this project, Hugging Face hosts model cards on the Hugging Face Hub as README files in the repositories associated with ML models. As a result, model cards figure as a prominent form of documentation for users of models on the Hugging Face Hub. As part of our analysis of model cards, we developed and proposed model cards for several dozen ML models on the Hugging Face Hub, using the Hub’s Pull Request (PR) and Discussion features to gather feedback on model cards, verify information included in model cards, and publish model cards for models on the Hugging Face Hub. At the time of writing of this guide book, all of Hugging Face’s models on the Hugging Face Hub have an associated model card on the Hub[^8].
 
 The high number of models uploaded to the Hugging Face Hub (101,041 models at the point of writing), enabled us to explore the content within model cards on the hub:
-We began by analysing language model, model cards, in order to identify patterns (e.g repeated sections and subsections, with the aim of answering initial questions such as:
+We began by analysing language model, model cards, in order to identify patterns (e.g. repeated sections and subsections, with the aim of answering initial questions such as:
 
 1) How many of these models have model cards?
 
@@ -96,10 +96,10 @@ With a continued focus on large language models, ordered by most downloaded and 
 While some headings within model cards may differ between models, we grouped components/the theme of each section within each model cards and then mapped them to section headings that were the most recurring (mostly found in the top 200 downloaded models and with the aid/guidance of the Bloom model card)
 
 > [!TIP]
-> [Checkout the User Studies](./model-cards-user-studies)
+> Checkout the [User Studies](./model-cards-user-studies)
 
 > [!TIP]
-> [See Appendix](./model-card-appendix)
+> See [Appendix](./model-card-appendix)
 
 [^1]: For each tool, descriptions are excerpted from the linked paper listed in the second column.
 

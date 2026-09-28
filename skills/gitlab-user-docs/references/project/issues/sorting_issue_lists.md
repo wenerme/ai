@@ -7,6 +7,7 @@ Sort issue lists by due date, priority, popularity, milestone, health status, or
 
 You can sort a list of issues several ways.
 The available sorting options can change based on the context of the list.
+To change how a list is sorted, see [sort work items](../../work_items/_index.md#sort-work-items).
 
 ## Sorting by blocking issues
 

@@ -49,6 +49,31 @@ This error can happen when NodeJS's `fetch` is used with [`pool: 'threads'`](/co
 
 The default [`pool: 'forks'`](/config/pool#forks) does not have this issue. If you've explicitly set `pool: 'threads'`, switching back to `'forks'` or using [`'vmForks'`](/config/pool#vmforks) will resolve it.
 
+## Project Working Directory Does Not Change
+
+In a [multi-project run](/guide/projects), `process.cwd()` in project config files and tests returns the directory where Vitest was started by default. A project's [`root`](/config/root) controls where Vitest looks for its files, but it does not change the process working directory. Vite plugins can read the project root from the resolved Vite config's `root` property.
+
+If your tests need `process.cwd()` to point to the project directory, use the [`forks` pool](/config/pool#forks) and a project-specific [`setupFiles`](/config/setupfiles) file:
+
+```ts [packages/lib1/vitest.config.ts]
+import { defineProject } from 'vitest/config'
+
+export default defineProject({
+  test: {
+    pool: 'forks',
+    setupFiles: ['./setup.chdir.ts'],
+  },
+})
+```
+
+```ts [packages/lib1/setup.chdir.ts]
+import { fileURLToPath } from 'node:url'
+
+process.chdir(fileURLToPath(new URL('.', import.meta.url)))
+```
+
+This changes the working directory in the test worker, after config loading. The [`threads` pool](/config/pool#threads) cannot use `process.chdir()`.
+
 ## Custom package conditions are not resolved
 
 If you are using custom conditions in your `package.json` [exports](https://nodejs.org/api/packages.html#package-entry-points) or [subpath imports](https://nodejs.org/api/packages.html#subpath-imports), you may find that Vitest does not respect these conditions by default.
@@ -88,6 +113,7 @@ export default defineConfig({
 
 > **tip**: Why `ssr.resolve.conditions` and not `resolve.conditions`?
 Vitest follows Vite's configuration convention:
+
 - [`resolve.conditions`](https://vite.dev/config/shared-options#resolve-conditions) applies to Vite's `client` environment, which corresponds to Vitest's browser mode, jsdom, happy-dom, or custom environments with `viteEnvironment: 'client'`.
 - [`ssr.resolve.conditions`](https://vite.dev/config/ssr-options#ssr-resolve-conditions) applies to Vite's `ssr` environment, which corresponds to Vitest's node environment or custom environments with `viteEnvironment: 'ssr'`.
 
@@ -115,6 +141,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```bash [CLI]
 vitest --pool=forks
 ```
@@ -133,6 +160,7 @@ Set the time zone before workers start. Use the shell, the config file, or [`glo
 ```bash [CLI]
 TZ=Asia/Tokyo vitest
 ```
+
 ```ts [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 
@@ -140,6 +168,7 @@ process.env.TZ = 'Asia/Tokyo'
 
 export default defineConfig({})
 ```
+
 ```ts [globalSetup.js]
 export default function () {
   process.env.TZ = 'Asia/Tokyo'

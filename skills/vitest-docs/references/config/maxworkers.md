@@ -27,6 +27,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```bash [CLI]
 vitest --maxWorkers=4
 ```
@@ -42,6 +43,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```bash [CLI]
 vitest --maxWorkers=50%
 ```

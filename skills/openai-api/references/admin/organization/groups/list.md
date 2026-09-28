@@ -111,6 +111,7 @@ curl https://api.openai.com/v1/organization/groups?limit=20&order=asc \
             "id": "group_01J1F8ABCDXYZ",
             "name": "Support Team",
             "created_at": 1711471533,
+            "group_type": "group",
             "is_scim_managed": false
         }
     ],

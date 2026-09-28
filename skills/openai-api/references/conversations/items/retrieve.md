@@ -1380,7 +1380,7 @@ Get a single item from a conversation with the given IDs.
 
             Combine multiple filters using `and` or `or`.
 
-            - `filters: array of ComparisonFilter or unknown`
+            - `filters: array of ComparisonFilter or CompoundFilter`
 
               Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -1388,7 +1388,9 @@ Get a single item from a conversation with the given IDs.
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-              - `unknown`
+              - `CompoundFilter object { filters, type }`
+
+                Combine multiple filters using `and` or `or`.
 
             - `type: "and" or "or"`
 

@@ -133,6 +133,7 @@ export function question() {
   return 'Unknown Question'
 }
 ```
+
 > **Note**: that `vi.spyOn` will only spy on calls that were done after it spied on the method. So, if the function is executed at the top level during an import or it was called before the spying, `vi.spyOn` will not be able to report on it.
 
 To automatically mock any module before it is imported, you can call `vi.mock` with a path:
@@ -286,6 +287,7 @@ vi.mock(import('./answer.js'))
 
 console.log(answer)
 ```
+
 ```ts [example.transformed.js]
 vi.mock('./answer.js')
 
@@ -318,6 +320,7 @@ export function answer() {
   return 42
 }
 ```
+
 ```ts [answer.transformed.js]
 function answer() {
   return 42

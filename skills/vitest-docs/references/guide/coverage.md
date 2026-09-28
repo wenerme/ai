@@ -31,6 +31,7 @@ Or if you prefer to install them manually:
 ```bash [v8]
 npm i -D @vitest/coverage-v8
 ```
+
 ```bash [istanbul]
 npm i -D @vitest/coverage-istanbul
 ```
@@ -140,6 +141,7 @@ To test with coverage enabled, you can pass the `--coverage` flag in CLI or set 
   }
 }
 ```
+
 ```ts [vitest.config.ts]
 import { defineConfig } from 'vitest/config'
 
@@ -170,6 +172,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```sh [Covered Files]
 ├── src
 │   ├── components
@@ -203,6 +206,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```sh [Covered Files]
 ├── src
 │   ├── components
@@ -271,6 +275,7 @@ export default class CustomReporter extends ReportBase {
   }
 }
 ```
+
 ```js [custom-reporter.cjs]
 const { ReportBase } = require('@vitest/istanbul-lib-report')
 

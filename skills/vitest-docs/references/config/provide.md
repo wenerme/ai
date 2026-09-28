@@ -19,6 +19,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```ts [api.test.js]
 import { expect, inject, test } from 'vitest'
 

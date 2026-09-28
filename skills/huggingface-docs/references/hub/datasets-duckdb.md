@@ -42,7 +42,7 @@ hf://datasets/{my-username}/{my-dataset}/{path_to_file}
 
 - **my-username**, the user or organization of the dataset, e.g. `ibm`
 - **my-dataset**, the dataset name, e.g: `duorc`
-- **path_to_parquet_file**, the parquet file path which supports glob patterns, e.g `**/*.parquet`, to query all parquet files
+- **path_to_parquet_file**, the parquet file path which supports glob patterns, e.g. `**/*.parquet`, to query all parquet files
 
 > [!TIP]
 > You can query auto-converted Parquet files using the @~parquet branch, which corresponds to the `refs/convert/parquet` revision. For more details, refer to the documentation at https://huggingface.co/docs/datasets-server/en/parquet#conversion-to-parquet.

@@ -1795,7 +1795,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or object { filters, type }  or null`
+          - `filters: optional object { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -1852,76 +1852,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                   - `number`
 
-            - `CompoundFilter object { filters, type }`
+            - `BetaCompoundFilter = unknown`
 
               Combine multiple filters using `and` or `or`.
-
-              - `filters: array of object { key, type, value }  or unknown`
-
-                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                - `ComparisonFilter object { key, type, value }`
-
-                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
-
-                - `unknown`
-
-              - `type: "and" or "or"`
-
-                Type of operation: `and` or `or`.
-
-                - `"and"`
-
-                - `"or"`
 
           - `max_num_results: optional number`
 
@@ -3043,7 +2976,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or object { filters, type }  or null`
+          - `filters: optional object { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -3100,76 +3033,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                   - `number`
 
-            - `CompoundFilter object { filters, type }`
+            - `BetaCompoundFilter = unknown`
 
               Combine multiple filters using `and` or `or`.
-
-              - `filters: array of object { key, type, value }  or unknown`
-
-                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                - `ComparisonFilter object { key, type, value }`
-
-                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
-
-                - `unknown`
-
-              - `type: "and" or "or"`
-
-                Type of operation: `and` or `or`.
-
-                - `"and"`
-
-                - `"or"`
 
           - `max_num_results: optional number`
 
@@ -6161,7 +6027,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or object { filters, type }  or null`
+          - `filters: optional object { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -6218,76 +6084,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                   - `number`
 
-            - `CompoundFilter object { filters, type }`
+            - `BetaCompoundFilter = unknown`
 
               Combine multiple filters using `and` or `or`.
-
-              - `filters: array of object { key, type, value }  or unknown`
-
-                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                - `ComparisonFilter object { key, type, value }`
-
-                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
-
-                - `unknown`
-
-              - `type: "and" or "or"`
-
-                Type of operation: `and` or `or`.
-
-                - `"and"`
-
-                - `"or"`
 
           - `max_num_results: optional number`
 
@@ -7405,7 +7204,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or object { filters, type }  or null`
+          - `filters: optional object { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -7462,76 +7261,9 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                   - `number`
 
-            - `CompoundFilter object { filters, type }`
+            - `BetaCompoundFilter = unknown`
 
               Combine multiple filters using `and` or `or`.
-
-              - `filters: array of object { key, type, value }  or unknown`
-
-                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                - `ComparisonFilter object { key, type, value }`
-
-                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
-
-                - `unknown`
-
-              - `type: "and" or "or"`
-
-                Type of operation: `and` or `or`.
-
-                - `"and"`
-
-                - `"or"`
 
           - `max_num_results: optional number`
 

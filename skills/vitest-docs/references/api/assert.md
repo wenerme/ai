@@ -16,6 +16,7 @@ if (import.meta.vitest) {
   })
 }
 ```
+
 ```ts [Direct call]
 if (import.meta.vitest) {
   const { test, assert } = import.meta.vitest // [!code --]
@@ -417,7 +418,7 @@ test('assert.isDefined', () => {
 
 - **Type:** `<T>(value: T, message?: string) => void`
 - **Alias:** `isCallable`
-Asserts that `value` is a function.
+  Asserts that `value` is a function.
 
 ```ts
 import { assert, test } from 'vitest'

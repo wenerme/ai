@@ -1,7 +1,7 @@
 ---
 description: Best practices for managing dynamic IP prefix advertisement.
 title: Best practices
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/best-practices/og.png?v=796d1adb35b6ab66
 ---
 
 [Skip to content](#main-content)
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Best practices
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/best-practices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Prerequisites
 
@@ -46,6 +46,10 @@ Enablement takes approximately five to seven minutes.
 Disablement takes approximately 15 minutes.
 
 ## Configure dynamic advertisement
+
+Rate limit
+
+After you change a prefix's advertisement status, wait at least 15 minutes before changing it again. Requests made during this interval return a `429` response with error code `1004` (`rate_limit_exceeded`).
 
 ### Via the Cloudflare dashboard
 
@@ -81,5 +85,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/best-practices/#page","headline":"Best practices","description":"Best practices for managing dynamic IP prefix advertisement.","url":"https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/best-practices/#page","headline":"Best practices","description":"Best practices for managing dynamic IP prefix advertisement.","url":"https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/best-practices/","inLanguage":"en","image":"https://developers.cloudflare.com/byoip/concepts/dynamic-advertisement/best-practices/og.png?v=796d1adb35b6ab66","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

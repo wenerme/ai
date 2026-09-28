@@ -1341,7 +1341,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               Combine multiple filters using `and` or `or`.
 
-              - `filters: array of ComparisonFilter or unknown`
+              - `filters: array of ComparisonFilter or CompoundFilter`
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -1349,7 +1349,9 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                - `unknown`
+                - `CompoundFilter object { filters, type }`
+
+                  Combine multiple filters using `and` or `or`.
 
               - `type: "and" or "or"`
 

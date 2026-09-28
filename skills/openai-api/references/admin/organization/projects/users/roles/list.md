@@ -176,7 +176,13 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles \
                 "name": "Ada Lovelace",
                 "email": "ada@example.com"
             },
-            "metadata": {}
+            "metadata": {},
+            "assignment_sources": [
+                {
+                    "principal_id": "user_abc123",
+                    "principal_type": "user"
+                }
+            ]
         }
     ],
     "has_more": false,

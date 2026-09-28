@@ -40,6 +40,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```js [object]
 import { defineConfig } from 'vitest/config'
 

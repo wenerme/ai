@@ -38,6 +38,7 @@ Module id relative to the project. This is the same as `task.name` in the deprec
 This is a Vite's [`DevEnvironment`](https://vite.dev/guide/api-environment) that transforms all files inside of the test module.
 
 > **details**: History
+
 - `v4.0.15`: added as experimental
 
 ## state

@@ -1,7 +1,7 @@
 ---
 description: The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.
 title: Context (ctx)
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/workers/runtime-apis/context/og.png?v=5118201fe7d8da21
 ---
 
 [Skip to content](#main-content)
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Context (ctx)
 
-Last updated Sep 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/context/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/context/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Context API provides methods to manage the lifecycle of your Worker or Durable Object.
 
@@ -109,6 +109,7 @@ To use `ctx.exports`, you must use [the `enable_ctx_exports` compatibility flag]
 
 - For each top-level export that `extends WorkerEntrypoint` (or simply implements a fetch handler), `ctx.exports` automatically contains a [Service Binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings).
 - For each top-level export that `extends DurableObject` (and which has been configured with storage via a [migration](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/)), `ctx.exports` automatically contains a [Durable Object namespace binding](https://developers.cloudflare.com/durable-objects/api/namespace/).
+- For each top-level export that `extends WorkflowEntrypoint` (and which has been declared as a Workflow in the [`exports`](https://developers.cloudflare.com/workers/wrangler/configuration/#workflow-exports) field of your Wrangler configuration), `ctx.exports` automatically contains a [Workflow binding](https://developers.cloudflare.com/workflows/build/workers-api/#workflow). Refer to [Call a Workflow through `ctx.exports`](https://developers.cloudflare.com/workflows/build/workers-api/#call-a-workflow-through-ctxexports).
 
 For example:
 
@@ -304,5 +305,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/context/#page","headline":"Context (ctx)","description":"The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.","url":"https://developers.cloudflare.com/workers/runtime-apis/context/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/context/#page","headline":"Context (ctx)","description":"The Context API in Cloudflare Workers, including props, exports, waitUntil and passThroughOnException.","url":"https://developers.cloudflare.com/workers/runtime-apis/context/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/context/og.png?v=5118201fe7d8da21","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

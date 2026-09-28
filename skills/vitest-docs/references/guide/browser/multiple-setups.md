@@ -63,6 +63,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```ts [example.test.ts]
 import { expect, inject, test } from 'vitest'
 import { globalSetupModifier } from './example.js'
@@ -98,6 +99,7 @@ export default defineConfig({
   }
 })
 ```
+
 ```ts{3,7,9} [custom]
 export default defineConfig({
   test: {

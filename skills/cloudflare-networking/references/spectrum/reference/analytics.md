@@ -1,7 +1,7 @@
 ---
 description: Metrics tracked for every Spectrum connection, including bytes and connection duration.
 title: Analytics
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/spectrum/reference/analytics/og.png?v=68cc04c4ed747195
 ---
 
 [Skip to content](#main-content)
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Analytics
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/spectrum/reference/analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare measures the following metrics for every connection.
 
@@ -71,8 +71,8 @@ Combine filters using `OR` and `AND` boolean logic:
 - DIMENSIONS can be used to break down the data by given attributes
 - FILTERS used to filter rows by one or more dimensions (see Filters section below)
 - SORT is the sort order for the result set; sort fields must be included in METRICS or DIMENSIONS
-- TO\_TS is that end of time interval to query, defaults to current time
-- FROM\_TS is that start of time interval to query, defaults to TO\_TS - 6 hours
+- TO\_TS is the end of time interval to query, defaults to current time
+- FROM\_TS is the start of time interval to query, defaults to TO\_TS - 6 hours
 - STEP is used to select time series resolution when using endpoint:
 - auto or omitted - selects time step most appropriate to time interval
   - year
@@ -117,5 +117,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/analytics/#page","headline":"Analytics","description":"Metrics tracked for every Spectrum connection, including bytes and connection duration.","url":"https://developers.cloudflare.com/spectrum/reference/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/spectrum/reference/analytics/#page","headline":"Analytics","description":"Metrics tracked for every Spectrum connection, including bytes and connection duration.","url":"https://developers.cloudflare.com/spectrum/reference/analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/spectrum/reference/analytics/og.png?v=68cc04c4ed747195","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Analytics"]}
 ```

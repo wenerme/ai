@@ -348,6 +348,7 @@ export default defineConfig({
 ```
 
 Example of a JUnit XML report:
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites name="vitest tests" tests="2" failures="1" errors="0" time="0.503">
@@ -366,18 +367,19 @@ AssertionError: expected 5 to be 4 // Object.is equality
 
 The output XML contains nested `testsuites` → `testsuite` → `testcase` tags. You can customize the reporter's behaviour with the following options:
 
-| Option | Description | Default |
-|---|---|---|
-| `suiteName` | `name` attribute of `<testsuites>` | `"vitest tests"` |
-| `suiteNameTemplate` | Template for the `name` attribute of `<testsuite>`. Accepts a string with placeholders or a function. | Relative file path |
-| `classnameTemplate` | Template for the `classname` attribute of `<testcase>`. Accepts a string with placeholders or a function. | Relative file path |
-| `titleTemplate` | Template for the `name` attribute of `<testcase>`. Accepts a string with placeholders or a function. | Full test title with ancestor hierarchy |
-| `ancestorSeparator` | Separator used when joining ancestor describe block names in the `{classname}` placeholder and in the default test title. | `" > "` |
-| `addFileAttribute` | Add a `file` attribute to each `<testcase>`. | `false` |
-| `includeConsoleOutput` | Include `<system-out>` / `<system-err>` console output. | `true` |
-| `stackTrace` | Include stack traces in `<failure>` elements. | `true` |
+| Option                 | Description                                                                                                               | Default                                 |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- |
+| `suiteName`            | `name` attribute of `<testsuites>`                                                                                        | `"vitest tests"`                        |
+| `suiteNameTemplate`    | Template for the `name` attribute of `<testsuite>`. Accepts a string with placeholders or a function.                     | Relative file path                      |
+| `classnameTemplate`    | Template for the `classname` attribute of `<testcase>`. Accepts a string with placeholders or a function.                 | Relative file path                      |
+| `titleTemplate`        | Template for the `name` attribute of `<testcase>`. Accepts a string with placeholders or a function.                      | Full test title with ancestor hierarchy |
+| `ancestorSeparator`    | Separator used when joining ancestor describe block names in the `{classname}` placeholder and in the default test title. | `" > "`                                 |
+| `addFileAttribute`     | Add a `file` attribute to each `<testcase>`.                                                                              | `false`                                 |
+| `includeConsoleOutput` | Include `<system-out>` / `<system-err>` console output.                                                                   | `true`                                  |
+| `stackTrace`           | Include stack traces in `<failure>` elements.                                                                             | `true`                                  |
 
 The following placeholders are available for `suiteNameTemplate`:
+
 - `{title}` – name of the first top-level `describe` block; falls back to the file basename when there is no top-level `describe`
 - `{filename}` – relative file path from the root (e.g. `src/foo.test.ts`)
 - `{filepath}` – absolute file path
@@ -385,6 +387,7 @@ The following placeholders are available for `suiteNameTemplate`:
 - `{displayName}` – Vitest project name
 
 The following placeholders are available for `classnameTemplate` and `titleTemplate`:
+
 - `{classname}` – ancestor `describe` block names joined by `ancestorSeparator` (e.g. `outer > inner`)
 - `{title}` – leaf test title (the string passed to `it`/`test`)
 - `{suitename}` – top-level `describe` block name, empty string when the test has no enclosing `describe`
@@ -547,6 +550,7 @@ export default defineConfig({
 ```
 
 Example of a TAP report:
+
 ```bash
 TAP version 13
 1..1
@@ -585,6 +589,7 @@ export default defineConfig({
 ```
 
 Example of a TAP flat report:
+
 ```bash
 TAP version 13
 1..2

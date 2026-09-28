@@ -4,15 +4,25 @@
 
 Deletes a model response with the given ID.
 
-### Path Parameters
-
-- `response_id: string`
-
 ### Header Parameters
 
 - `"openai-beta": optional array of "responses_multi_agent=v1"`
 
   - `"responses_multi_agent=v1"`
+
+### Path Parameters
+
+- `response_id: string`
+
+### Returns
+
+- `id: string`
+
+- `deleted: boolean`
+
+- `object: "response.deleted"`
+
+  - `"response.deleted"`
 
 ### Example
 
@@ -20,6 +30,16 @@ Deletes a model response with the given ID.
 curl https://api.openai.com/v1/responses/$RESPONSE_ID \
     -X DELETE \
     -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "id": "id",
+  "deleted": true,
+  "object": "response.deleted"
+}
 ```
 
 ### Example
@@ -34,8 +54,8 @@ curl -X DELETE https://api.openai.com/v1/responses/resp_123 \
 
 ```json
 {
-  "id": "resp_6786a1bec27481909a17d673315b29f6",
-  "object": "response",
+  "id": "resp_123",
+  "object": "response.deleted",
   "deleted": true
 }
 ```

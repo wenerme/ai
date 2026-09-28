@@ -129,6 +129,7 @@ Vitest supports both [happy-dom](https://github.com/capricorn86/happy-dom) or [j
 ```bash [happy-dom]
 $ npm i -D happy-dom
 ```
+
 ```bash [jsdom]
 $ npm i -D jsdom
 ```
@@ -279,6 +280,7 @@ process.on('uncaughtException', () => {
   // your own handler
 })
 ```
+
 ```ts [setup.browser.js]
 // in the browser
 window.addEventListener('error', () => {

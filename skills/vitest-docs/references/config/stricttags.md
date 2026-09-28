@@ -19,6 +19,7 @@ test('renders a form', { tags: ['fortnend'] }, () => {
   // ...
 })
 ```
+
 ```js [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 

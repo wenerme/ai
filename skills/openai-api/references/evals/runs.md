@@ -1076,7 +1076,7 @@ Cancel an ongoing evaluation run.
 
               Combine multiple filters using `and` or `or`.
 
-              - `filters: array of ComparisonFilter or unknown`
+              - `filters: array of ComparisonFilter or CompoundFilter`
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -1084,7 +1084,9 @@ Cancel an ongoing evaluation run.
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                - `unknown`
+                - `CompoundFilter object { filters, type }`
+
+                  Combine multiple filters using `and` or `or`.
 
               - `type: "and" or "or"`
 
@@ -3479,7 +3481,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               Combine multiple filters using `and` or `or`.
 
-              - `filters: array of ComparisonFilter or unknown`
+              - `filters: array of ComparisonFilter or CompoundFilter`
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -3487,7 +3489,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                - `unknown`
+                - `CompoundFilter object { filters, type }`
+
+                  Combine multiple filters using `and` or `or`.
 
               - `type: "and" or "or"`
 
@@ -5556,7 +5560,7 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
               Combine multiple filters using `and` or `or`.
 
-              - `filters: array of ComparisonFilter or unknown`
+              - `filters: array of ComparisonFilter or CompoundFilter`
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -5564,7 +5568,9 @@ Kicks off a new run for a given evaluation, specifying the data source, and what
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                - `unknown`
+                - `CompoundFilter object { filters, type }`
+
+                  Combine multiple filters using `and` or `or`.
 
               - `type: "and" or "or"`
 
@@ -7992,7 +7998,7 @@ Get a list of runs for an evaluation.
 
                 Combine multiple filters using `and` or `or`.
 
-                - `filters: array of ComparisonFilter or unknown`
+                - `filters: array of ComparisonFilter or CompoundFilter`
 
                   Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -8000,7 +8006,9 @@ Get a list of runs for an evaluation.
 
                     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                  - `unknown`
+                  - `CompoundFilter object { filters, type }`
+
+                    Combine multiple filters using `and` or `or`.
 
                 - `type: "and" or "or"`
 
@@ -10365,7 +10373,7 @@ Get an evaluation run by ID.
 
               Combine multiple filters using `and` or `or`.
 
-              - `filters: array of ComparisonFilter or unknown`
+              - `filters: array of ComparisonFilter or CompoundFilter`
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -10373,7 +10381,9 @@ Get an evaluation run by ID.
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                - `unknown`
+                - `CompoundFilter object { filters, type }`
+
+                  Combine multiple filters using `and` or `or`.
 
               - `type: "and" or "or"`
 
@@ -13391,7 +13401,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                 Combine multiple filters using `and` or `or`.
 
-                - `filters: array of ComparisonFilter or unknown`
+                - `filters: array of ComparisonFilter or CompoundFilter`
 
                   Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -13399,7 +13409,9 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                  - `unknown`
+                  - `CompoundFilter object { filters, type }`
+
+                    Combine multiple filters using `and` or `or`.
 
                 - `type: "and" or "or"`
 
@@ -15570,7 +15582,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                 Combine multiple filters using `and` or `or`.
 
-                - `filters: array of ComparisonFilter or unknown`
+                - `filters: array of ComparisonFilter or CompoundFilter`
 
                   Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -15578,7 +15590,9 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                  - `unknown`
+                  - `CompoundFilter object { filters, type }`
+
+                    Combine multiple filters using `and` or `or`.
 
                 - `type: "and" or "or"`
 
@@ -17759,7 +17773,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                 Combine multiple filters using `and` or `or`.
 
-                - `filters: array of ComparisonFilter or unknown`
+                - `filters: array of ComparisonFilter or CompoundFilter`
 
                   Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -17767,7 +17781,9 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                  - `unknown`
+                  - `CompoundFilter object { filters, type }`
+
+                    Combine multiple filters using `and` or `or`.
 
                 - `type: "and" or "or"`
 
@@ -19938,7 +19954,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                 Combine multiple filters using `and` or `or`.
 
-                - `filters: array of ComparisonFilter or unknown`
+                - `filters: array of ComparisonFilter or CompoundFilter`
 
                   Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -19946,7 +19962,9 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
                     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                  - `unknown`
+                  - `CompoundFilter object { filters, type }`
+
+                    Combine multiple filters using `and` or `or`.
 
                 - `type: "and" or "or"`
 

@@ -118,6 +118,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys/key_abc \
   "name": "Main Admin Key",
   "redacted_value": "sk-admin...xyz",
   "created_at": 1711471533,
+  "expires_at": null,
   "last_used_at": 1711471534,
   "owner": {
     "type": "user",

@@ -391,7 +391,13 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
                 "name": "Ada Lovelace",
                 "email": "ada@example.com"
             },
-            "metadata": {}
+            "metadata": {},
+            "assignment_sources": [
+                {
+                    "principal_id": "group_01J1F8ABCDXYZ",
+                    "principal_type": "group"
+                }
+            ]
         }
     ],
     "has_more": false,

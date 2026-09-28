@@ -70,41 +70,40 @@ These errors occur when credentials are invalid, missing, or don’t have the re
 1. Verify the **Default Region** field is set in the data source configuration.
 2. If using provisioning, confirm `defaultRegion` is set in `jsonData`.
 
-### “unsupported auth type”
+### “auth method not allowed”
 
 **Symptoms:**
 
-- Save &amp; test fails with “unsupported auth type” followed by the auth type name (for example, “unsupported auth type default”).
-- This commonly occurs when selecting **AWS SDK Default**, **Assume Role**, or **EC2 IAM Role** from the **Authentication Provider** drop-down.
+- Save &amp; test fails with an error like “trying to use non-allowed auth method” followed by the auth type name.
+- Save &amp; test fails with “trying to use assume role but it is disabled in grafana config”.
 
 **Possible causes and solutions:**
 
 Expand table
 
-| Cause                        | Solution                                                                                                                                     |
-|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| AWS SDK Default selected     | The DynamoDB data source doesn’t support AWS SDK Default authentication. Select **Access &amp; secret key** or **Credentials file** instead. |
-| Assume Role selected         | The DynamoDB data source doesn’t support Assume Role. Select a supported authentication method.                                              |
-| Grafana Assume Role selected | The DynamoDB data source doesn’t support Grafana Assume Role. Select a supported authentication method.                                      |
-| EC2 IAM Role selected        | The DynamoDB data source doesn’t support EC2 IAM Role authentication. Select a supported authentication method.                              |
+| Cause                                                                         | Solution                                                                                                                                                                             |
+|-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| The selected authentication method isn’t in the Grafana instance’s allow-list | Ask your Grafana administrator to add the method to `allowed_auth_providers` under the `[aws]` section of `grafana.ini`, or select a different method.                               |
+| Assume role is used but disabled instance-wide                                | Ask your Grafana administrator to set `assume_role_enabled = true` under the `[aws]` section of `grafana.ini`, or remove the **Assume Role ARN** from the data source configuration. |
 
-The DynamoDB data source only supports two authentication methods: **Access &amp; secret key** and **Credentials file**. All other authentication types shown in the drop-down are provided by the shared AWS connection component but aren’t implemented by this plugin.
+These settings are controlled by the Grafana administrator at the instance level and apply to all AWS data sources, not just DynamoDB.
 
 ### Cross-account access
 
 **Symptoms:**
 
 - Queries fail when trying to access DynamoDB tables in a different AWS account.
-- Users expect Assume Role to work for cross-account access.
 
 **Solutions:**
 
-The DynamoDB data source doesn’t support Assume Role or IRSA (IAM Roles for Service Accounts), which are typically used for cross-account access. As a workaround:
+Use **Assume role** to access DynamoDB tables in a different AWS account:
 
-1. Create an IAM user in the target account with `dynamodb:PartiQLSelect` permissions on the required tables.
-2. Generate access keys for that IAM user.
-3. Configure the data source using **Access &amp; secret key** authentication with those credentials.
-4. If your organization requires role-based access, consider setting up a proxy service that assumes the role and forwards requests to DynamoDB.
+1. In the target account, create an IAM role with `dynamodb:PartiQLSelect` permissions on the required tables and a trust policy that allows your Grafana account/role to assume it.
+2. In the data source configuration, set up a base authentication method (for example, access keys or EC2 IAM role) that’s allowed to assume the target role.
+3. Enter the target role’s ARN in **Assume Role ARN**, and an **External ID** if the trust policy requires one.
+4. Confirm with your Grafana administrator that `assume_role_enabled` is set to `true` in `grafana.ini`.
+
+If Assume Role isn’t available in your environment, refer to [“auth method not allowed”](#auth-method-not-allowed).
 
 ### “Access denied” or “Authorization failed”
 

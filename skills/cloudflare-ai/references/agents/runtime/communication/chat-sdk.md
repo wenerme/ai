@@ -1,7 +1,7 @@
 ---
 description: Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.
 title: Chat SDK
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/og.png?v=7e291d11e5d502b8
 ---
 
 [Skip to content](#main-content)
@@ -108,7 +108,7 @@ Add the parent Agent to your Durable Object migration:
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   // Set this to today's date
-  "compatibility_date": "2026-09-25",
+  "compatibility_date": "2026-09-28",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -133,7 +133,7 @@ Add the parent Agent to your Durable Object migration:
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-09-25"
+compatibility_date = "2026-09-28"
 compatibility_flags = ["nodejs_compat"]
 
 [[durable_objects.bindings]]
@@ -304,5 +304,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/#page","headline":"Chat SDK","description":"Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.","url":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/#page","headline":"Chat SDK","description":"Integrate Chat SDK with Agents, including durable state for subscriptions, locks, queues, and message history.","url":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/communication/chat-sdk/og.png?v=7e291d11e5d502b8","dateModified":"2026-06-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

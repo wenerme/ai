@@ -69,7 +69,7 @@ In the application overview, click on "Single sign-on", then "Go to application"
 </div>
 
 In the OIDC app overview, you will find a copiable field named "Application (client) ID".
-Copy that ID to your clipboard and paste it into the "Client ID" field on Huggingface.
+Copy that ID to your clipboard and paste it into the "Client ID" field on Hugging Face.
 
 <div class="flex justify-center">
 

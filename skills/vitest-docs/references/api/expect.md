@@ -560,9 +560,9 @@ To test if something was thrown, use [`toThrow`](#tothrow) assertion.
 
 Differences from [`.toEqual`](#toequal):
 
--  Keys with `undefined` properties are checked. e.g. `{a: undefined, b: 2}` does not match `{b: 2}` when using `.toStrictEqual`.
--  Array sparseness is checked. e.g. `[, 1]` does not match `[undefined, 1]` when using `.toStrictEqual`.
--  Object types are checked to be equal. e.g. A class instance with fields `a` and `b` will not equal a literal object with fields `a` and `b`.
+- Keys with `undefined` properties are checked. e.g. `{a: undefined, b: 2}` does not match `{b: 2}` when using `.toStrictEqual`.
+- Array sparseness is checked. e.g. `[, 1]` does not match `[undefined, 1]` when using `.toStrictEqual`.
+- Object types are checked to be equal. e.g. A class instance with fields `a` and `b` will not equal a literal object with fields `a` and `b`.
 
 ```ts
 import { expect, test } from 'vitest'
@@ -783,6 +783,7 @@ You can provide an optional argument to test that a specific error is thrown:
 > **tip**: You must wrap the code in a function, otherwise the error will not be caught, and test will fail.
 
 This does not apply for async calls as [rejects](#rejects) correctly unwraps the promise:
+
 ```ts
 test('expect rejects toThrow', async ({ expect }) => {
   const promise = Promise.reject(new Error('Test'))
@@ -1888,6 +1889,7 @@ test('all assertions are called', async () => {
   await doAsync(callback1, callback2)
 })
 ```
+
 > **warning**: When using `assertions` with async concurrent tests, `expect` from the local [Test Context](/guide/test-context) must be used to ensure the right test is detected.
 
 ## expect.hasAssertions

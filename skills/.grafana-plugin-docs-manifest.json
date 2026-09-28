@@ -691,8 +691,8 @@
   },
   "grafana-dynamodb-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/configure.md",
-    "size": 9369,
-    "updatedAt": "2026-06-30T02:11:07.322Z"
+    "size": 13011,
+    "updatedAt": "2026-09-28T18:20:08.170Z"
   },
   "grafana-dynamodb-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest.md",
@@ -711,8 +711,8 @@
   },
   "grafana-dynamodb-datasource/troubleshooting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting.md",
-    "size": 19066,
-    "updatedAt": "2026-06-30T02:11:07.925Z"
+    "size": 18998,
+    "updatedAt": "2026-09-28T18:20:08.971Z"
   },
   "grafana-dynatrace-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-dynatrace-datasource/latest/alerting.md",

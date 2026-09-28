@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 598 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 600 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -2558,6 +2558,18 @@ for await (const chunk of stream) {
     "maxOutput": 3686,
     "inputCost": 0.1003,
     "outputCost": 0.1003
+  },
+  {
+    "model": "nano-gpt/heabsy/cyberheabsy",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 1.5,
+    "outputCost": 4.5
   },
   {
     "model": "nano-gpt/hermes-high",
@@ -6724,8 +6736,20 @@ for await (const chunk of stream) {
     "outputCost": 0.28
   },
   {
+    "model": "nano-gpt/xiaomi/mimo-v2.6-flash-abliterated",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 65536,
+    "inputCost": 0.5,
+    "outputCost": 1.5
+  },
+  {
     "model": "nano-gpt/xiaomi/mimo-v2.6-flash-uncensored",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -6737,7 +6761,7 @@ for await (const chunk of stream) {
   },
   {
     "model": "nano-gpt/xiaomi/mimo-v2.6-flash-uncensored:thinking",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,

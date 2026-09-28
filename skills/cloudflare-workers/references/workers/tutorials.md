@@ -1,7 +1,7 @@
 ---
 description: Step-by-step Workers tutorials and video guides to help you build projects on Cloudflare.
 title: Tutorials
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/workers/tutorials/og.png?v=5dfc402ec1d8cac0
 ---
 
 [Skip to content](#main-content)
@@ -39,7 +39,7 @@ View tutorials to help you get started with Workers.
 | [OpenAI GPT function calling with JavaScript and Cloudflare Workers](https://developers.cloudflare.com/workers/tutorials/openai-function-calls-workers/) | 3 years ago | Beginner |
 | [Handle form submissions with Airtable](https://developers.cloudflare.com/workers/tutorials/handle-form-submissions-with-airtable/) | 3 years ago | Beginner |
 | [Connect to and query your Turso database using Workers](https://developers.cloudflare.com/workers/tutorials/connect-to-turso-using-workers/) | 3 years ago | Beginner |
-| [Generate YouTube thumbnails with Workers and Cloudflare Image Resizing](https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/) | 3 years ago | Intermediate |
+| [Generate YouTube thumbnails with Workers and Cloudflare Image Resizing](https://developers.cloudflare.com/workers/tutorials/generate-youtube-thumbnails-with-workers-and-images/) | 4 years ago | Intermediate |
 
 Was this helpful?
 
@@ -50,5 +50,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/tutorials/#page","headline":"Tutorials","description":"Step-by-step Workers tutorials and video guides to help you build projects on Cloudflare.","url":"https://developers.cloudflare.com/workers/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/tutorials/#page","headline":"Tutorials","description":"Step-by-step Workers tutorials and video guides to help you build projects on Cloudflare.","url":"https://developers.cloudflare.com/workers/tutorials/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/tutorials/og.png?v=5dfc402ec1d8cac0","dateModified":"2026-05-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

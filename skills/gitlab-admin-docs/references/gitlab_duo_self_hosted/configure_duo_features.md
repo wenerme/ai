@@ -41,7 +41,7 @@ To configure access between your GitLab instance and your local AI Gateway:
 
 ### Configure timeout for the AI Gateway
 
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/567878) in GitLab 18.7 for Self-Managed.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/567878) in GitLab 18.7 for GitLab Self-Managed.
 - [Available on GitLab Dedicated](https://gitlab.com/gitlab-org/gitlab/-/issues/603860) in GitLab 19.2.
 
 To conserve resources and prevent long-running queries, configure the timeout for GitLab requests to the AI Gateway when waiting for model responses.

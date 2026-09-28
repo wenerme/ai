@@ -23,6 +23,7 @@ module.exports = fs
 const { fs } = require('memfs')
 module.exports = fs.promises
 ```
+
 ```ts [read-hello-world.js]
 import { readFileSync } from 'node:fs'
 

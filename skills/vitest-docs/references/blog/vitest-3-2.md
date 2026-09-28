@@ -73,6 +73,7 @@ The `worker` fixture is initiated once per worker, but note that by default Vite
 You can now set a custom [color](/config/name) when using `projects`:
 
 > **details**: Config Example
+
 ```ts{6-9,14-17}
 export default defineConfig({
   test: {
@@ -317,6 +318,6 @@ Tests in these projects will run in this order:
  1. flaky |> runs after slow and fast alone
 ```
 
-----
+---
 
 The complete list of changes is at the [Vitest 3.2 Changelog](https://github.com/vitest-dev/vitest/releases/tag/v3.2.0).

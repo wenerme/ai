@@ -30,6 +30,7 @@ fn.length // == 1
 fn.mockImplementation(() => {})
 fn.length // == 1
 ```
+
 ```ts [vi.spyOn]
 const example = {
   fn(arg1, arg2) {

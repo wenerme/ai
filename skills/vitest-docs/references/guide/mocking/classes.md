@@ -90,6 +90,7 @@ function feed(dog: Dog) {
   // ...
 }
 ```
+
 ```ts [tests/dog.test.ts]
 import { expect, test, vi } from 'vitest'
 import { feed } from '../src/feed.js'

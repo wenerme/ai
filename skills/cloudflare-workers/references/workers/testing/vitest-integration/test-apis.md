@@ -1,7 +1,7 @@
 ---
 description: Runtime helpers for writing tests, exported from `cloudflare:workers` and `cloudflare:test`.
 title: Test APIs
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/og.png?v=75594a5cce1aa029
 ---
 
 [Skip to content](#main-content)
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Test APIs
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Workers Vitest integration provides runtime helpers for writing tests. Some helpers are exported from the `cloudflare:workers` module, and others from the `cloudflare:test` module. Both modules are provided by the `@cloudflare/vitest-plugin` package, but can only be imported from test files that execute in the Workers runtime.
 
@@ -440,6 +440,57 @@ Available in `@cloudflare/vitest-plugin` version **1.0.0** and later.
 
     When targeting a step, use its `name`. If multiple steps share the same name, use the optional `index` property (1-based, defaults to `1`) to specify the occurrence.
 
+#### Introspect Workflows declared in `exports`
+
+Note
+
+Requires `@cloudflare/vitest-plugin` 1.3.0 or above.
+
+`introspectWorkflow()` and `introspectWorkflowInstance()` need a Workflow binding from `env`. They throw an error if you pass a Workflow from [`ctx.exports`](https://developers.cloudflare.com/workflows/build/workers-api/#call-a-workflow-through-ctxexports).
+
+To introspect a Workflow declared in the [`exports`](https://developers.cloudflare.com/workers/wrangler/configuration/#workflow-exports) field of your Wrangler configuration, add a test-only binding to it in the `miniflare.workflows` option:
+
+*vitest.config.tsts*
+
+```ts
+import { cloudflareTest } from "@cloudflare/vitest-plugin";
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+	plugins: [
+		cloudflareTest({
+			wrangler: {
+				configPath: "./wrangler.jsonc",
+			},
+			miniflare: {
+				// Test-only binding to the Workflow declared in `exports`
+				workflows: {
+					MY_WORKFLOW: { name: "my-workflow", className: "MyWorkflow" },
+				},
+			},
+		}),
+	],
+});
+```
+
+The introspector also captures instances that your Worker creates through `ctx.exports`:
+
+```ts
+import { env, exports } from "cloudflare:workers";
+import { introspectWorkflow } from "cloudflare:test";
+
+it("introspects instances created through ctx.exports", async () => {
+	await using introspector = await introspectWorkflow(env.MY_WORKFLOW);
+
+	// The Worker creates an instance through `ctx.exports.MyWorkflow`
+	await exports.default.fetch("https://example.com/");
+
+	const instances = await introspector.get();
+	expect(instances).toHaveLength(1);
+	await instances[0].waitForStatus("complete");
+});
+```
+
 Was this helpful?
 
 YesNo
@@ -449,5 +500,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#page","headline":"Test APIs","description":"Runtime helpers for writing tests, exported from cloudflare:workers and cloudflare:test.","url":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/og.png?v=75594a5cce1aa029","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

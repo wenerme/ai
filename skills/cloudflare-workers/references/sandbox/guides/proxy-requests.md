@@ -1,7 +1,7 @@
 ---
 description: This outdated Sandbox SDK guide now points to the current guide for controlling sandbox outbound traffic.
 title: Proxy requests to external APIs (outdated)
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/sandbox/guides/proxy-requests/og.png?v=2b90a633dcd8bb2e
 ---
 
 [Skip to content](#main-content)

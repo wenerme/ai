@@ -1339,7 +1339,7 @@ Create items in a conversation with the given ID.
 
             Combine multiple filters using `and` or `or`.
 
-            - `filters: array of ComparisonFilter or unknown`
+            - `filters: array of ComparisonFilter or CompoundFilter`
 
               Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -1347,7 +1347,9 @@ Create items in a conversation with the given ID.
 
                 A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-              - `unknown`
+              - `CompoundFilter object { filters, type }`
+
+                Combine multiple filters using `and` or `or`.
 
             - `type: "and" or "or"`
 
@@ -5688,7 +5690,7 @@ Create items in a conversation with the given ID.
 
               Combine multiple filters using `and` or `or`.
 
-              - `filters: array of ComparisonFilter or unknown`
+              - `filters: array of ComparisonFilter or CompoundFilter`
 
                 Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -5696,7 +5698,9 @@ Create items in a conversation with the given ID.
 
                   A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                - `unknown`
+                - `CompoundFilter object { filters, type }`
+
+                  Combine multiple filters using `and` or `or`.
 
               - `type: "and" or "or"`
 
@@ -8599,15 +8603,7 @@ Create items in a conversation with the given ID.
 curl https://api.openai.com/v1/conversations/$CONVERSATION_ID/items \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
-    -d '{
-          "items": [
-            {
-              "content": "string",
-              "role": "user",
-              "type": "message"
-            }
-          ]
-        }'
+    -d '{}'
 ```
 
 #### Response

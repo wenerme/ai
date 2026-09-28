@@ -19,7 +19,7 @@ Before configuring the data source, ensure you have:
 
 - **Grafana permissions:** Organization administrator role.
 - **A [Grafana Cloud Pro or Advanced](/pricing/) plan** or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/).
-- **AWS credentials:** An IAM user with an access key and secret key, or a shared credentials file configured on the Grafana server.
+- **AWS credentials:** An IAM user with an access key and secret key, a shared credentials file configured on the Grafana server, an EC2 instance role, or an IAM role to assume.
 - **DynamoDB permissions:** The IAM identity must have `dynamodb:PartiQLSelect` permission on the tables you want to query. For write operations, additional PartiQL permissions may be needed.
 
 ## Key concepts
@@ -35,6 +35,8 @@ Expand table
 | **Session token**           | A temporary credential used with temporary security credentials from AWS STS.                                                              |
 | **Shared credentials file** | A local file (`~/.aws/credentials`) that stores AWS credential profiles, allowing applications to authenticate without hardcoding secrets. |
 | **Default region**          | The AWS region where your DynamoDB tables are located (for example, `us-east-1`).                                                          |
+| **Assume role**             | A temporary set of IAM credentials obtained by assuming an IAM role, commonly used for cross-account access.                               |
+| **External ID**             | An optional value used with Assume Role to protect against the confused deputy problem when a third party assumes a role on your behalf.   |
 
 ## Add the data source
 
@@ -61,11 +63,13 @@ Expand table
 
 ## Authentication
 
-The DynamoDB data source supports two authentication methods. Choose the method that fits your deployment.
+The DynamoDB data source supports the standard AWS authentication methods provided by the shared AWS connection component. Choose the method that fits your deployment.
 
 > Note
 >
-> The DynamoDB data source doesn’t support Assume Role, Grafana Assume Role, AWS SDK Default, or EC2 IAM Role authentication. If you select an unsupported type, refer to [Troubleshooting unsupported auth type](/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#unsupported-auth-type).
+> Some authentication methods, and the ability to assume a role, may be restricted by your Grafana administrator through the `allowed_auth_providers` and `assume_role_enabled` settings in `grafana.ini`. If a method you expect to see is missing or returns an error, ask your Grafana administrator to check these settings. Refer to [Troubleshooting authentication method not allowed](/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#auth-method-not-allowed).
+
+For more information about authentication options and configuration, refer to [AWS authentication](/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/).
 
 ### Access keys
 
@@ -102,6 +106,54 @@ To configure credentials file authentication:
 1. Select **Credentials file** from the **Authentication Provider** drop-down.
 2. Enter the **Credentials Profile Name** if you use a non-default profile.
 3. Select your **Default Region**.
+
+### EC2 IAM role
+
+Use the IAM role attached to the EC2 instance (or the IAM Role for Service Accounts, IRSA, in Kubernetes) that Grafana is running on. No credentials are entered in the data source configuration.
+
+To configure EC2 IAM role authentication:
+
+1. Select **EC2 IAM Role** from the **Authentication Provider** drop-down.
+2. Select your **Default Region**.
+
+### AWS SDK Default
+
+Use the default AWS SDK credential chain, which checks environment variables, shared configuration files, and container/instance metadata, in that order.
+
+To configure AWS SDK Default authentication:
+
+1. Select **AWS SDK Default** from the **Authentication Provider** drop-down.
+2. Select your **Default Region**.
+
+### Grafana Assume Role
+
+Available only in Grafana Cloud. Use temporary credentials managed by Grafana to assume an IAM role on your behalf.
+
+To configure Grafana Assume Role authentication:
+
+1. Select **Grafana Assume Role** from the **Authentication Provider** drop-down.
+2. Select your **Default Region**.
+
+### Assume role
+
+You can layer an assumed IAM role on top of any of the authentication methods described above (except Grafana Assume Role, which manages its own role). This is commonly used for cross-account access to DynamoDB tables.
+
+Expand table
+
+| Setting             | Description                                                                                           |
+|---------------------|-------------------------------------------------------------------------------------------------------|
+| **Assume Role ARN** | The ARN of the IAM role to assume, for example `arn:aws:iam::123456789012:role/my-role`.              |
+| **External ID**     | Optional. An external ID to include in the assume-role request, required by some role trust policies. |
+
+To configure an assumed role:
+
+1. Configure one of the base authentication methods above.
+2. Enter the **Assume Role ARN**.
+3. Optionally, enter an **External ID** if required by the role’s trust policy.
+
+> Note
+>
+> To assume a role, your Grafana administrator must set `assume_role_enabled` to true in the \[aws] section of `grafana.ini`. If assume role is disabled, Save &amp; test fails. Refer to [Authentication method not allowed](/docs/plugins/grafana-dynamodb-datasource/latest/troubleshooting/#auth-method-not-allowed).
 
 ## Verify the connection
 
@@ -181,6 +233,29 @@ datasources:
       defaultRegion: us-west-2
       profile: <PROFILE_NAME>
       isV2: true
+```
+
+### Assume role provisioning
+
+Add `assumeRoleARN` (and optionally `externalId`) to `jsonData` on top of any base authentication method. For example, with access keys:
+
+YAML [Copy code to clipboard] Copy
+
+```yaml
+apiVersion: 1
+
+datasources:
+  - name: DynamoDB
+    type: grafana-dynamodb-datasource
+    jsonData:
+      authType: keys
+      defaultRegion: us-west-2
+      assumeRoleARN: <ROLE_ARN>
+      externalId: <EXTERNAL_ID>
+      isV2: true
+    secureJsonData:
+      accessKey: <ACCESS_KEY_ID>
+      secretKey: <SECRET_ACCESS_KEY>
 ```
 
 ## Provision with Terraform

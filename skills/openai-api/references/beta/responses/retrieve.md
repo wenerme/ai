@@ -1750,7 +1750,7 @@ Retrieves a model response with the given ID.
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or object { filters, type }  or null`
+            - `filters: optional object { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -1807,76 +1807,9 @@ Retrieves a model response with the given ID.
 
                     - `number`
 
-              - `CompoundFilter object { filters, type }`
+              - `BetaCompoundFilter = unknown`
 
                 Combine multiple filters using `and` or `or`.
-
-                - `filters: array of object { key, type, value }  or unknown`
-
-                  Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                  - `ComparisonFilter object { key, type, value }`
-
-                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                    - `key: string`
-
-                      The key to compare against the value.
-
-                    - `type: "eq" or "ne" or "gt" or 5 more`
-
-                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                      - `eq`: equals
-                      - `ne`: not equal
-                      - `gt`: greater than
-                      - `gte`: greater than or equal
-                      - `lt`: less than
-                      - `lte`: less than or equal
-                      - `in`: in
-                      - `nin`: not in
-
-                      - `"eq"`
-
-                      - `"ne"`
-
-                      - `"gt"`
-
-                      - `"gte"`
-
-                      - `"lt"`
-
-                      - `"lte"`
-
-                      - `"in"`
-
-                      - `"nin"`
-
-                    - `value: string or number or boolean or array of string or number`
-
-                      The value to compare against the attribute key; supports string, number, or boolean types.
-
-                      - `string`
-
-                      - `number`
-
-                      - `boolean`
-
-                      - `array of string or number`
-
-                        - `string`
-
-                        - `number`
-
-                  - `unknown`
-
-                - `type: "and" or "or"`
-
-                  Type of operation: `and` or `or`.
-
-                  - `"and"`
-
-                  - `"or"`
 
             - `max_num_results: optional number`
 
@@ -2998,7 +2931,7 @@ Retrieves a model response with the given ID.
 
               The IDs of the vector stores to search.
 
-            - `filters: optional object { key, type, value }  or object { filters, type }  or null`
+            - `filters: optional object { key, type, value }  or unknown or null`
 
               A filter to apply.
 
@@ -3055,76 +2988,9 @@ Retrieves a model response with the given ID.
 
                     - `number`
 
-              - `CompoundFilter object { filters, type }`
+              - `BetaCompoundFilter = unknown`
 
                 Combine multiple filters using `and` or `or`.
-
-                - `filters: array of object { key, type, value }  or unknown`
-
-                  Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                  - `ComparisonFilter object { key, type, value }`
-
-                    A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                    - `key: string`
-
-                      The key to compare against the value.
-
-                    - `type: "eq" or "ne" or "gt" or 5 more`
-
-                      Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                      - `eq`: equals
-                      - `ne`: not equal
-                      - `gt`: greater than
-                      - `gte`: greater than or equal
-                      - `lt`: less than
-                      - `lte`: less than or equal
-                      - `in`: in
-                      - `nin`: not in
-
-                      - `"eq"`
-
-                      - `"ne"`
-
-                      - `"gt"`
-
-                      - `"gte"`
-
-                      - `"lt"`
-
-                      - `"lte"`
-
-                      - `"in"`
-
-                      - `"nin"`
-
-                    - `value: string or number or boolean or array of string or number`
-
-                      The value to compare against the attribute key; supports string, number, or boolean types.
-
-                      - `string`
-
-                      - `number`
-
-                      - `boolean`
-
-                      - `array of string or number`
-
-                        - `string`
-
-                        - `number`
-
-                  - `unknown`
-
-                - `type: "and" or "or"`
-
-                  Type of operation: `and` or `or`.
-
-                  - `"and"`
-
-                  - `"or"`
 
             - `max_num_results: optional number`
 
@@ -6515,7 +6381,7 @@ Retrieves a model response with the given ID.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or object { filters, type }  or null`
+          - `filters: optional object { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -6572,76 +6438,9 @@ Retrieves a model response with the given ID.
 
                   - `number`
 
-            - `CompoundFilter object { filters, type }`
+            - `BetaCompoundFilter = unknown`
 
               Combine multiple filters using `and` or `or`.
-
-              - `filters: array of object { key, type, value }  or unknown`
-
-                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                - `ComparisonFilter object { key, type, value }`
-
-                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
-
-                - `unknown`
-
-              - `type: "and" or "or"`
-
-                Type of operation: `and` or `or`.
-
-                - `"and"`
-
-                - `"or"`
 
           - `max_num_results: optional number`
 
@@ -7609,7 +7408,7 @@ Retrieves a model response with the given ID.
 
             The IDs of the vector stores to search.
 
-          - `filters: optional object { key, type, value }  or object { filters, type }  or null`
+          - `filters: optional object { key, type, value }  or unknown or null`
 
             A filter to apply.
 
@@ -7666,76 +7465,9 @@ Retrieves a model response with the given ID.
 
                   - `number`
 
-            - `CompoundFilter object { filters, type }`
+            - `BetaCompoundFilter = unknown`
 
               Combine multiple filters using `and` or `or`.
-
-              - `filters: array of object { key, type, value }  or unknown`
-
-                Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-                - `ComparisonFilter object { key, type, value }`
-
-                  A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-                  - `key: string`
-
-                    The key to compare against the value.
-
-                  - `type: "eq" or "ne" or "gt" or 5 more`
-
-                    Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                    - `eq`: equals
-                    - `ne`: not equal
-                    - `gt`: greater than
-                    - `gte`: greater than or equal
-                    - `lt`: less than
-                    - `lte`: less than or equal
-                    - `in`: in
-                    - `nin`: not in
-
-                    - `"eq"`
-
-                    - `"ne"`
-
-                    - `"gt"`
-
-                    - `"gte"`
-
-                    - `"lt"`
-
-                    - `"lte"`
-
-                    - `"in"`
-
-                    - `"nin"`
-
-                  - `value: string or number or boolean or array of string or number`
-
-                    The value to compare against the attribute key; supports string, number, or boolean types.
-
-                    - `string`
-
-                    - `number`
-
-                    - `boolean`
-
-                    - `array of string or number`
-
-                      - `string`
-
-                      - `number`
-
-                - `unknown`
-
-              - `type: "and" or "or"`
-
-                Type of operation: `and` or `or`.
-
-                - `"and"`
-
-                - `"or"`
 
           - `max_num_results: optional number`
 
@@ -9892,7 +9624,7 @@ Retrieves a model response with the given ID.
 
         The IDs of the vector stores to search.
 
-      - `filters: optional object { key, type, value }  or object { filters, type }  or null`
+      - `filters: optional object { key, type, value }  or unknown or null`
 
         A filter to apply.
 
@@ -9949,76 +9681,9 @@ Retrieves a model response with the given ID.
 
               - `number`
 
-        - `CompoundFilter object { filters, type }`
+        - `BetaCompoundFilter = unknown`
 
           Combine multiple filters using `and` or `or`.
-
-          - `filters: array of object { key, type, value }  or unknown`
-
-            Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
-
-            - `ComparisonFilter object { key, type, value }`
-
-              A filter used to compare a specified attribute key to a given value using a defined comparison operation.
-
-              - `key: string`
-
-                The key to compare against the value.
-
-              - `type: "eq" or "ne" or "gt" or 5 more`
-
-                Specifies the comparison operator: `eq`, `ne`, `gt`, `gte`, `lt`, `lte`, `in`, `nin`.
-
-                - `eq`: equals
-                - `ne`: not equal
-                - `gt`: greater than
-                - `gte`: greater than or equal
-                - `lt`: less than
-                - `lte`: less than or equal
-                - `in`: in
-                - `nin`: not in
-
-                - `"eq"`
-
-                - `"ne"`
-
-                - `"gt"`
-
-                - `"gte"`
-
-                - `"lt"`
-
-                - `"lte"`
-
-                - `"in"`
-
-                - `"nin"`
-
-              - `value: string or number or boolean or array of string or number`
-
-                The value to compare against the attribute key; supports string, number, or boolean types.
-
-                - `string`
-
-                - `number`
-
-                - `boolean`
-
-                - `array of string or number`
-
-                  - `string`
-
-                  - `number`
-
-            - `unknown`
-
-          - `type: "and" or "or"`
-
-            Type of operation: `and` or `or`.
-
-            - `"and"`
-
-            - `"or"`
 
       - `max_num_results: optional number`
 
@@ -11434,7 +11099,7 @@ Retrieves a model response with the given ID.
 
     - `"disabled"`
 
-  - `usage: optional BetaResponseUsage`
+  - `usage: optional BetaResponseUsage or null`
 
     Represents token usage details including input tokens, output tokens,
     a breakdown of output tokens, and the total tokens used.
@@ -11472,7 +11137,7 @@ Retrieves a model response with the given ID.
 
       The total number of tokens used.
 
-  - `user: optional string`
+  - `user: optional string or null`
 
     This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
     A stable identifier for your end-users.

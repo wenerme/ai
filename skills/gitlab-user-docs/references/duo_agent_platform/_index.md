@@ -63,7 +63,7 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 | [External agents](agents/external.md)  Securely connect third-party integrations and tools to extend Agent Platform capabilities. | No |  Yes  | Yes |
 | [Planner Agent](agents/foundational_agents/planner.md)  Plan, prioritize, and track work. | Yes | Yes  | Yes |
 | [Data Analyst Agent](agents/foundational_agents/data_analyst.md)  Analyze data and generate insights from your development metrics and project data. | Yes | Yes  | Yes |
-| [Developer Flow](flows/foundational_flows/developer.md)  Convert issues into merge requests. | Yes | Yes  | Yes |
+| [Developer Flow](../project/merge_requests/developer.md)  Convert issues into merge requests. | Yes | Yes  | Yes |
 | [Code Review Flow](flows/foundational_flows/code_review/_index.md)  Automate code review tasks and enforce coding standards across your team. | Yes | Yes  | Yes |
 | [Convert to GitLab CI/CD Flow](flows/foundational_flows/convert_to_gitlab_ci.md)  Convert legacy CI/CD pipelines to the GitLab CI/CD format. | Yes | Yes  | Yes |
 | [Fix CI/CD Pipeline Flow](flows/foundational_flows/fix_pipeline.md)  Diagnose and automatically fix failing CI/CD pipelines. | Yes | Yes  | Yes |
@@ -95,7 +95,7 @@ These features are in beta and their usage consumes GitLab Credits.
 These features are either beta or experimental and do not consume GitLab Credits.
 
 For [users on the Free](../../subscriptions/gitlab_credits.md#for-the-free-tier) tier, these beta and experimental features do not consume credits,
-but you require credits in your Monthly Commitment Pool to access them.
+but you require credits in your monthly commitment pool to access them.
 
 > [!warning]
 > When a feature becomes generally available, usage of the feature starts to consume GitLab Credits on all GitLab versions and on all offerings.

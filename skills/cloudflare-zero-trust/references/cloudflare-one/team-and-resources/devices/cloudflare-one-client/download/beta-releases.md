@@ -1,7 +1,7 @@
 ---
 description: Reference information for Download Cloudflare One Client beta releases in Zero Trust.
 title: Download Cloudflare One Client beta releases
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/og.png?v=05cb0cdec47e868c
 ---
 
 [Skip to content](#main-content)
@@ -24,8 +24,9 @@ Cloudflare tests new Cloudflare One Client features and improvements in an unsta
 | --- | --- |
 | **Processor** | AMD64 / x86-64 or ARM64 / AArch64 |
 | **.NET Framework version** | 4.7.2 or later |
-| **HD space** | 184 MB |
-| **Memory** | 3 MB |
+| **vCPU** | 3 minimum, 4 recommended |
+| **RAM** | 4 GB minimum, 8 GB recommended |
+| **Disk space** | 250 MiB minimum, 500 MiB recommended |
 | **Network interface type** | Wi-Fi or LAN |
 | **MTU** | 1381 bytes recommended <sup>[1](#user-content-fn-1)</sup> |
 
@@ -367,10 +368,13 @@ This release contains minor fixes, improvements, and new features including Path
 | **OS version** | Sequoia 15.1+ (15.0.x is not supported), Tahoe 26.0+, Golden Gate 27.0+ |
 | --- | --- |
 | **Processor** | Intel or M series |
-| **HD space** | 75 MB |
-| **Memory** | 35 MB |
+| **CPU cores** | 3 minimum, 4 recommended |
+| **RAM** | 8 GB minimum |
+| **Disk space** | 1 GiB minimum |
 | **Network interface type** | Wi-Fi or LAN |
 | **MTU** | 1381 bytes recommended <sup>[1](#user-content-fn-1)</sup> |
+
+All supported Mac models meet the CPU and RAM requirements, so only disk space may be a constraint.
 
 ## Footnotes
 
@@ -693,5 +697,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/#page","headline":"Download Cloudflare One Client beta releases","description":"Reference information for Download Cloudflare One Client beta releases in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/#page","headline":"Download Cloudflare One Client beta releases","description":"Reference information for Download Cloudflare One Client beta releases in Zero Trust.","url":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/og.png?v=05cb0cdec47e868c","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

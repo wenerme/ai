@@ -176,7 +176,13 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
                 "name": "Ada Lovelace",
                 "email": "ada@example.com"
             },
-            "metadata": {}
+            "metadata": {},
+            "assignment_sources": [
+                {
+                    "principal_id": "group_01J1F8ABCDXYZ",
+                    "principal_type": "group"
+                }
+            ]
         }
     ],
     "has_more": false,

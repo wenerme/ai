@@ -1,7 +1,7 @@
 ---
 description: Use Browser Run and Puppeteer to read a site's real computed styles, colors, fonts, and logo, then return a structured brand kit from a Worker.
 title: Extract a brand kit from any website
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/og.png?v=caff3fbc452d084f
 ---
 
 [Skip to content](#main-content)
@@ -110,7 +110,7 @@ Add a Browser Run binding, the KV namespace, and the [Node.js compatibility flag
   "name": "brand-kit",
   "main": "src/index.ts",
   // Set this to today's date
-  "compatibility_date": "2026-09-25",
+  "compatibility_date": "2026-09-28",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -130,7 +130,7 @@ Add a Browser Run binding, the KV namespace, and the [Node.js compatibility flag
 name = "brand-kit"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-25"
+compatibility_date = "2026-09-28"
 compatibility_flags = ["nodejs_compat"]
 
 # Browser Run binding — driven by Puppeteer.
@@ -738,5 +738,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/#page","headline":"Extract a brand kit from any website","description":"Use Browser Run and Puppeteer to read a site's real computed styles, colors, fonts, and logo, then return a structured brand kit from a Worker.","url":"https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/#page","headline":"Extract a brand kit from any website","description":"Use Browser Run and Puppeteer to read a site's real computed styles, colors, fonts, and logo, then return a structured brand kit from a Worker.","url":"https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/how-to/extract-brand-kit/og.png?v=caff3fbc452d084f","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

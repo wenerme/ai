@@ -147,9 +147,10 @@ curl https://api.openai.com/v1/embeddings \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
-    "input": "The food was delicious and the waiter...",
-    "model": "text-embedding-ada-002",
-    "encoding_format": "float"
+    "input": "Hello world",
+    "model": "text-embedding-3-small",
+    "encoding_format": "float",
+    "dimensions": 3
   }'
 ```
 
@@ -162,18 +163,17 @@ curl https://api.openai.com/v1/embeddings \
     {
       "object": "embedding",
       "embedding": [
-        0.0023064255,
-        -0.009327292,
-        .... (1536 floats total for ada-002)
-        -0.0028842222,
+        0.26726124,
+        0.53452248,
+        0.80178373
       ],
       "index": 0
     }
   ],
-  "model": "text-embedding-ada-002",
+  "model": "text-embedding-3-small",
   "usage": {
-    "prompt_tokens": 8,
-    "total_tokens": 8
+    "prompt_tokens": 2,
+    "total_tokens": 2
   }
 }
 ```

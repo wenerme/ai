@@ -30,6 +30,7 @@ test('hello world', async ({ annotate }) => {
 Depending on your reporter, you will see these annotations differently.
 
 ## Built-in Reporters
+
 ### default
 
 The `default` reporter prints annotations only if the test has failed:
