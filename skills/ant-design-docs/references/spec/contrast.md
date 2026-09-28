@@ -11,7 +11,7 @@ title: 对比
 
 ---
 
-## 主次关系对比
+## 主次关系对比 {#major-minor-contrast}
 
 <ImagePreview>
 [正确示例]
@@ -30,7 +30,7 @@ title: 对比
 
 ---
 
-## 总分关系对比
+## 总分关系对比 {#contrast-of-whole-and-part}
 
 <ImagePreview>
 [总分关系示例 1]
@@ -44,7 +44,7 @@ title: 对比
 
 ---
 
-## 状态关系对比
+## 状态关系对比 {#contrast-of-the-state-relation}
 
 <ImagePreview>
 [静态对比示例]

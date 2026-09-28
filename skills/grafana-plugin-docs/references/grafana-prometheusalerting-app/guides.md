@@ -1,12 +1,11 @@
 ---
-title: "grafana-prometheusalerting-app/guides.md unavailable"
+title: "Guides | Grafana Plugins documentation"
+description: "Best practices for keeping a data source-managed alerting setup maintainable, and troubleshooting for the problems you're most likely to hit with the Prometheus Alerting plugin."
 ---
 
-# grafana-prometheusalerting-app/guides.md unavailable
+> For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-Grafana listed this plugin documentation page, but it could not be fetched while building this skill.
+# Guides
 
-- Source: https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/guides.md
-- Fetch result: 429
-
-Re-run `just update-grafana-plugin-docs` later to refresh this page.
+- [Best practices](/docs/plugins/grafana-prometheusalerting-app/latest/guides/best-practices/): keeping an alerting setup maintainable.
+- [Troubleshooting](/docs/plugins/grafana-prometheusalerting-app/latest/guides/troubleshooting/): diagnosing common problems.

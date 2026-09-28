@@ -9,7 +9,7 @@ title: 重复
 
 ---
 
-## 重复元素
+## 重复元素 {#repetitive-elements}
 
 <ImagePreview>
 [线框重复示例]

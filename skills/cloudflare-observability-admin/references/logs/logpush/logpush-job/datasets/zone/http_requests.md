@@ -570,6 +570,12 @@ Type: `int`
 
 Time taken to complete TLS handshake with origin. This will be 0 if an origin connection is reused.
 
+## OriginTLSKeyExchangeGroup
+
+Type: `string`
+
+TLS key exchange group between Cloudflare and the origin (for example, 'X25519MLKEM768'). 'UNK' means that the group could not be determined or that Cloudflare did not connect to the origin (for example, a cache hit). 'NONE' means either RSA key exchange was used or TLS was not used.
+
 ## ParentRayID
 
 Type: `string`

@@ -32616,9 +32616,10 @@ Updates credential metadata or rotates its write-only secret. See [vaults](/api/
 
 ```http
 curl https://api.openai.com/v1/vaults/$VAULT_ID/credentials/$CREDENTIAL_ID \
-    -X POST \
+    -H 'Content-Type: application/json' \
     -H 'OpenAI-Beta: agents=v1' \
-    -H "Authorization: Bearer $OPENAI_API_KEY"
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{}'
 ```
 
 #### Response

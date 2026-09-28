@@ -4470,6 +4470,7 @@ Arguments:
 | <a id="mutation-artifactregistryrepositorycreate-kind"></a>`kind` | [`ArtifactRegistryRepositoryKind`](#artifactregistryrepositorykind) | How the repository sources its artifacts. Defaults to hosted in Artifact Registry. |
 | <a id="mutation-artifactregistryrepositorycreate-name"></a>`name` | [`String!`](#string) | Name of the repository, unique within the organization. |
 | <a id="mutation-artifactregistryrepositorycreate-settings"></a>`settings`  | [`ArtifactRegistryRemoteSettingsInput`](#artifactregistryremotesettingsinput) | Introduced in GitLab 19.4. Status: Experiment. Upstream configuration. Required on a remote repository create, rejected on any other kind. |
+| <a id="mutation-artifactregistryrepositorycreate-upstreamrepositoryids"></a>`upstreamRepositoryIds`  | [`[ID!]`](#id) | Introduced in GitLab 19.5. Status: Experiment. Upstream repositories of a virtual repository, as Artifact Registry repository IDs in resolution order. On update, replaces the whole upstream list, and an empty list removes every upstream. Rejected on any other kind. Maximum is 1000 IDs per request. Artifact Registry sets a lower limit on how many upstreams a repository can have. |
 | <a id="mutation-artifactregistryrepositorycreate-visibility"></a>`visibility` | [`ArtifactRegistryRepositoryVisibility`](#artifactregistryrepositoryvisibility) | Who can read the repository. |
 
 Fields:
@@ -4478,6 +4479,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mutation-artifactregistryrepositorycreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactregistryrepositorycreate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryrepositorycreate-refusedupstreamrepositoryid"></a>`refusedUpstreamRepositoryId`  | [`ID`](#id) | Introduced in GitLab 19.5. Status: Experiment. Artifact Registry ID of the first upstream list entry that Artifact Registry refused. Null unless an entry was refused. |
 | <a id="mutation-artifactregistryrepositorycreate-repository"></a>`repository` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | Repository created. Null when the creation was not applied. |
 
 ### `Mutation.artifactRegistryRepositoryDelete`
@@ -4547,6 +4549,7 @@ Arguments:
 | <a id="mutation-artifactregistryrepositoryupdate-description"></a>`description` | [`String`](#string) | Human-readable description of the repository. |
 | <a id="mutation-artifactregistryrepositoryupdate-name"></a>`name` | [`String!`](#string) | Name of the repository to update, unique within the organization. Cannot be changed. |
 | <a id="mutation-artifactregistryrepositoryupdate-settings"></a>`settings`  | [`ArtifactRegistryRemoteSettingsInput`](#artifactregistryremotesettingsinput) | Introduced in GitLab 19.4. Status: Experiment. Upstream configuration. Required on a remote repository create, rejected on any other kind. |
+| <a id="mutation-artifactregistryrepositoryupdate-upstreamrepositoryids"></a>`upstreamRepositoryIds`  | [`[ID!]`](#id) | Introduced in GitLab 19.5. Status: Experiment. Upstream repositories of a virtual repository, as Artifact Registry repository IDs in resolution order. On update, replaces the whole upstream list, and an empty list removes every upstream. Rejected on any other kind. Maximum is 1000 IDs per request. Artifact Registry sets a lower limit on how many upstreams a repository can have. |
 | <a id="mutation-artifactregistryrepositoryupdate-visibility"></a>`visibility` | [`ArtifactRegistryRepositoryVisibility`](#artifactregistryrepositoryvisibility) | Who can read the repository. |
 
 Fields:
@@ -4555,6 +4558,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mutation-artifactregistryrepositoryupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactregistryrepositoryupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
+| <a id="mutation-artifactregistryrepositoryupdate-refusedupstreamrepositoryid"></a>`refusedUpstreamRepositoryId`  | [`ID`](#id) | Introduced in GitLab 19.5. Status: Experiment. Artifact Registry ID of the first upstream list entry that Artifact Registry refused. Null unless an entry was refused. |
 | <a id="mutation-artifactregistryrepositoryupdate-repository"></a>`repository` | [`ArtifactRegistryRepository`](#artifactregistryrepository) | Repository updated. Null when the update was not applied. |
 
 ### `Mutation.artifactRegistryRoleBulkGrant`
@@ -45202,7 +45206,7 @@ Fields:
 | <a id="group-plan"></a>`plan`  | [`NamespacePlan`](#namespaceplan) | Introduced in GitLab 18.2. Status: Experiment. Subscription plan associated with the namespace. |
 | <a id="group-policystore"></a>`policyStore`  | [`PolicyStore`](#policystore) | Introduced in GitLab 19.4. Status: Experiment. Policy store catalogs. Returns `null` when the policy store experiment is not active for the group. |
 | <a id="group-projectcreationlevel"></a>`projectCreationLevel` | [`String`](#string) | Permission level required to create projects in the group. |
-| <a id="group-projectstatistics"></a>`projectStatistics`  | [`NamespaceProjectStatistics`](#namespaceprojectstatistics) | Introduced in GitLab 18.2. Status: Experiment. Statistics of the projects in the group. Only available from [Query.groups](#querygroups). |
+| <a id="group-projectstatistics"></a>`projectStatistics`  | [`NamespaceProjectStatistics`](#namespaceprojectstatistics) | Introduced in GitLab 18.2. Status: Experiment. Statistics of the projects in the group. Only available from `Query.groups`. |
 | <a id="group-projectscount"></a>`projectsCount` | [`Int!`](#int) | Count of direct projects in the group. |
 | <a id="group-recentissueboards"></a>`recentIssueBoards` | [`BoardConnection`](#boardconnection) | List of recently visited boards of the group. Maximum size is 4. (see [Connections](#connections)) |
 | <a id="group-repositorysizeexcessprojectcount"></a>`repositorySizeExcessProjectCount` | [`Int`](#int) | Number of projects in the root namespace where the repository size exceeds the limit. This only applies to namespaces under Project limit enforcement. |

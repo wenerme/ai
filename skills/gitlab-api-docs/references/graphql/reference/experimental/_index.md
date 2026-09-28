@@ -10,6 +10,7 @@ interactively using the [GraphiQL explorer](../../getting_started.md#graphiql).
 
 ## Reference
 
+- [Objects](objects.md)
 - [Enums](enums.md)
 - [Scalars](scalars.md)
 - [Input types](input_objects.md)

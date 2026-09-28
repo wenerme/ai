@@ -245,7 +245,7 @@ Returns a list of input items for a given response.
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -4555,7 +4555,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 

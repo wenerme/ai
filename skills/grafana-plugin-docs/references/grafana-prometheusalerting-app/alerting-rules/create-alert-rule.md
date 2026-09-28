@@ -1,12 +1,70 @@
 ---
-title: "grafana-prometheusalerting-app/alerting-rules/create-alert-rule.md unavailable"
+title: "Create an alert rule | Grafana Plugins documentation"
+description: "Create a data source-managed alerting rule from the Rules page in the Prometheus Alerting plugin, check the expression before saving, and learn what each field in the editor controls."
 ---
 
-# grafana-prometheusalerting-app/alerting-rules/create-alert-rule.md unavailable
+> For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-Grafana listed this plugin documentation page, but it could not be fetched while building this skill.
+# Create an alert rule
 
-- Source: https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/create-alert-rule.md
-- Fetch result: 429
+An alerting rule watches an expression and produces alerts when it returns results.
 
-Re-run `just update-grafana-plugin-docs` later to refresh this page.
+## Before you begin
+
+- Make sure you have the `alert.rules.external:write` permission.
+- Make sure the data source you’re writing to supports a ruler API.
+
+## Create the rule
+
+01. Click **Rules** in the plugin navigation.
+02. Click **New alert rule**.
+03. Under **Define alert rule**, enter a **Name**. This becomes the alert’s `alertname` label, so make it descriptive and stable. Renaming it later creates what Alertmanager treats as a different alert.
+04. Select the **Data source** to write the rule to. The query editor can’t load until you’ve chosen one.
+05. Write the **Expression**. Write it so that it returns nothing when everything is healthy, and returns one series per problem otherwise. Refer to [Queries and conditions](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rules/queries-conditions/).
+06. Set the **Pending period**, which is how long the condition has to hold before the alert fires. Select **None** to fire on the first matching evaluation.
+07. Optionally set **Keep firing for**, which is how long the alert keeps firing after the condition stops being met. Leave it empty to resolve as soon as the condition clears. It takes a duration like `5m`, or a compound one like `1h30m`.
+08. Choose a **Namespace** and **Group**. Both pickers search existing values as you type and let you create a new one if nothing matches.
+09. Add **Labels** for routing. Click **Add labels** to open the label editor.
+10. Add **Annotations** describing what happened and what to do about it. Click **Add custom annotation** for keys beyond the standard ones.
+11. Click **Save**.
+
+Names, namespaces, and groups are each limited to 255 characters, and all are required.
+
+## Check the expression before saving
+
+The editor includes a **Query Preview**. Click **Run query** to execute the expression against the data source and see what comes back, paged if there are many series.
+
+This is the single most useful step in the form. The preview tells you how many alert instances the rule will produce right now. No rows means the rule fires nothing, and a hundred rows means a hundred alerts. It’s much easier to notice a missing aggregation here than after the rule is live.
+
+## After saving
+
+Rules take a few seconds to reach the ruler. The plugin shows that the rule is being propagated and refreshes on its own when it lands, so an empty-looking rule immediately after saving is expected.
+
+Once it appears, check its health on the rule detail page. A rule showing **error** health isn’t watching anything. Refer to [Alert rule state and health](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/alert-rule-state-and-health/).
+
+## Other actions on a rule
+
+From the rule list and detail pages:
+
+Expand table
+
+| Action                    | What it does                                              |
+|---------------------------|-----------------------------------------------------------|
+| **Edit**                  | Change the rule in place                                  |
+| **Duplicate**             | Create a copy to edit as a new rule                       |
+| **Export**                | Download the rule definition, or copy it to the clipboard |
+| **Copy link**             | Copy a direct URL to the rule                             |
+| **Silence notifications** | Create a silence pre-filled with this rule’s matchers     |
+| **Delete**                | Remove the rule from its group                            |
+
+**Duplicate** and **Edit** are only available for rules on data sources with a ruler API. The plugin says so rather than failing when you try.
+
+**Export** works everywhere, including read-only Prometheus sources, which makes it a practical way to copy a rule out of Prometheus and into Mimir.
+
+## Delete a rule
+
+1. Open the rule.
+2. Click **Delete**.
+3. Confirm. The dialog box names the rule, its group, and its namespace, since names alone are easy to confuse.
+
+Deletion can’t be undone. As with creation, the plugin waits for the change to propagate before showing the updated list.

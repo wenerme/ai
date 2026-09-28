@@ -7,15 +7,15 @@ title: 结果页
 
 结果页是用一个页面反馈操作结果，是反馈模式中最强的一种。
 
-## 何时使用
+## 何时使用 {#when-to-use}
 
 当完成一个流程操作后，需给予用户明确的结果反馈时，例如分步表单的最后一步。 当有大量的信息需要在结果页展示时。
 
-## 设计目标
+## 设计目标 {#design-goals}
 
 向用户传达任务完成结果，引导用户进行下一步操作，通过有效的反馈建立起用户对系统的信任。
 
-## 设计原则
+## 设计原则 {#design-principles}
 
 <div class="design-inline-cards">
   <div>
@@ -41,7 +41,7 @@ title: 结果页
   </div>
 </div>
 
-## 设计建议
+## 设计建议 {#design-suggestions}
 
 <ImagePreview>
 [正确示范]
@@ -74,9 +74,9 @@ title: 结果页
 
 若结果状态为成功时，可在主按钮上告知用户几秒后自动跳转。
 
-## 如何设计
+## 如何设计 {#how-to-design}
 
-### 基础布局
+### 基础布局 {#basic-layout}
 
 <ImagePreview>
 
@@ -92,7 +92,7 @@ title: 结果页
 
 4. 补充信息（可选）：在通知结果的同时，有补充信息需要反馈给用户；营销模块。
 
-#### 模板 - 基础结果页
+#### 模板 - 基础结果页 {#template---basic-result-page}
 
 <ImagePreview>
 
@@ -100,7 +100,7 @@ title: 结果页
 
 显示结果状态并引导用户进行下一步操作。
 
-#### 模板 - 复杂结果页
+#### 模板 - 复杂结果页 {#template---complex-result-page}
 
 <ImagePreview>
 
@@ -108,23 +108,23 @@ title: 结果页
 
 除结果状态和引导操作等基础信息外，同时展示相关推荐、流程进度、错误详情等信息。
 
-#### 补充信息类型
+#### 补充信息类型 {#additional-information-types}
 
 <ImagePreview>
 
 </ImagePreview>
 
-## 延伸阅读
+## 延伸阅读 {#further-reading}
 
-### 会用到哪些全局规则
+### 会用到哪些全局规则 {#relevant-global-rules}
 
 - [反馈](/docs/spec/research-message-and-feedback)
 
-### 会用到哪些模块或组件
+### 会用到哪些模块或组件 {#relevant-modules-or-components}
 
 - [表单页](/components/form/)
 
-### 外部参考文章
+### 外部参考文章 {#external-reference-articles}
 
 - [Fiori 消息反馈类组件规则](https://experience.sap.com/fiori-design-web/message-box/)
 - [阿里云结果页设计](https://xconsole.aliyun-inc.com/scenes/resultpage)
