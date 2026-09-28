@@ -30,9 +30,11 @@ For a simpler and quicker way to get started with mocking, you can check the Che
 I want to…
 
 ### Mock exported variables
+
 ```js [example.js]
 export const getter = 'variable'
 ```
+
 ```ts [example.test.ts]
 import * as exports from './example.js'
 
@@ -49,6 +51,7 @@ vi.spyOn(exports, 'getter', 'get').mockReturnValue('mocked')
 ```ts [example.js]
 export function method() {}
 ```
+
 ```ts
 import { method } from './example.js'
 
@@ -58,6 +61,7 @@ vi.mock('./example.js', () => ({
 ```
 
 2. Example with `vi.spyOn`:
+
 ```ts
 import * as exports from './example.js'
 
@@ -69,9 +73,11 @@ vi.spyOn(exports, 'method').mockImplementation(() => {})
 ### Mock an exported class implementation
 
 1. Example with a fake `class`:
+
 ```ts [example.js]
 export class SomeClass {}
 ```
+
 ```ts
 import { SomeClass } from './example.js'
 

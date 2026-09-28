@@ -1,9 +1,9 @@
 # Developer Flow
 
-- Tier: [Free](../../../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
+- Tier: [Free](../../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Introduced as [a beta](../../../../policy/development_stages_support.md) in GitLab 18.3 [with a feature flag](../../../../administration/feature_flags/_index.md) named `duo_workflow_in_ci`. Disabled by default, but can be enabled for the instance or a user.
+- Introduced as [a beta](../../../policy/development_stages_support.md) in GitLab 18.3 [with a feature flag](../../../administration/feature_flags/_index.md) named `duo_workflow_in_ci`. Disabled by default, but can be enabled for the instance or a user.
 - Renamed from `Issue to MR` to the `Developer Flow` with a flag named `duo_developer_button` in GitLab 18.6. Disabled by default, but can be enabled for the instance or a user. Feature flag `duo_workflow` must also be enabled, but it is enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8.
 - Feature flags `duo_workflow_in_ci`, `duo_developer_button`, and `duo_workflow` removed in GitLab 18.9.
@@ -21,11 +21,11 @@ You can use the Developer Flow to:
 
 ## Prerequisites
 
-- Meet the [prerequisites for the GitLab Duo Agent Platform](../../_index.md#prerequisites).
-- Turn on **Allow foundational flows** and **Developer** [for the top-level group](_index.md#turn-foundational-flows-on-or-off).
+- Meet the [prerequisites for the GitLab Duo Agent Platform](../../duo_agent_platform/_index.md#prerequisites).
+- Turn on **Allow foundational flows** and **Developer** [for the top-level group](../../duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
 - Have the Developer, Maintainer, or Owner role for the project.
-- [Configure push rules to allow a service account](../../troubleshooting.md#configure-push-rules-to-allow-a-service-account).
-- [Configure your own runners](../execution/_index.md#configure-runners-to-execute-flows) or turn on [GitLab hosted runners](../../../../ci/runners/hosted_runners/_index.md) for your project.
+- [Configure push rules to allow a service account](../../duo_agent_platform/troubleshooting.md#configure-push-rules-to-allow-a-service-account).
+- [Configure your own runners](../../duo_agent_platform/flows/execution/_index.md#configure-runners-to-execute-flows) or turn on [GitLab hosted runners](../../../ci/runners/hosted_runners/_index.md) for your project.
 
 To ensure the best results, before you use the Developer Flow for the first time,
 [set up your project](#set-up-your-project). Configure the `AGENTS.md` and `agent-config.yml`
@@ -38,23 +38,23 @@ To help the Developer Flow produce better results, you should configure your pro
 - Add an `AGENTS.md` file: Document your project conventions, such as test commands,
   linting rules, commit format, and coding patterns. The Developer Flow uses this file
   for context when working in your repository.
-  For more information, see [AGENTS.md customization files](../../customize/agents_md.md).
+  For more information, see [AGENTS.md customization files](../../duo_agent_platform/customize/agents_md.md).
 - Configure the execution environment: If your project requires specific tooling
   (for example, Go, Python, or Node.js), configure the agent environment with an `agent-config.yml` file.
   Without this, the Developer Flow cannot install dependencies or run tests, and is more likely
   to produce changes that don't build or pass. With a properly configured environment, the
   Developer Flow can run tests and verify its own changes before committing.
-  For more information, see [Configure flow execution](../execution/_index.md).
+  For more information, see [Configure flow execution](../../duo_agent_platform/flows/execution/_index.md).
 - Choose a model: The Developer Flow uses the GitLab default model, tuned for a balance of
   cost and performance. For focused tasks, a faster model reduces iteration time; for complex,
   multi-step tasks, a more capable model reduces the risk of an incomplete plan.
-  For more information, see [GitLab Duo AI models](../../model_selection.md).
+  For more information, see [GitLab Duo AI models](../../duo_agent_platform/model_selection.md).
 
 ## Use the flow
 
 Prerequisites:
 
-- The event types **Mention** and **Assign** are [configured](../../triggers/_index.md) in the trigger for the Developer Flow.
+- The event types **Mention** and **Assign** are [configured](../../duo_agent_platform/triggers/_index.md) in the trigger for the Developer Flow.
 
 ### Mention Duo Developer in a discussion
 
@@ -96,7 +96,7 @@ To create a merge request from an issue:
 
 ### Use the flow in Agentic Chat
 
-- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
+- [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
 - Generally available in GitLab 19.5. Feature flag `agentic_foundational_flow_tool` removed.
 
 You can use the Developer Flow in a GitLab Duo Agentic Chat conversation to

@@ -3992,6 +3992,8 @@ build_job:
 
 #### `needs:pipeline:job`
 
+- `optional` option [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/349538) in GitLab 19.5.
+
 A [child pipeline](../pipelines/downstream_pipelines.md#parent-child-pipelines) can download artifacts from a
 successfully finished job. The job can be in its parent pipeline or another child pipeline in the same hierarchy.
 
@@ -4001,6 +4003,8 @@ successfully finished job. The job can be in its parent pipeline or another chil
 
 - `needs:pipeline`: A pipeline ID. Must be a pipeline present in the same parent-child pipeline hierarchy.
 - `job`: The job to download artifacts from.
+- `optional`: Use with [`needs:optional`](#needsoptional) to need a job that sometimes
+  does not exist in the parent pipeline.
 
 **Example of `needs:pipeline:job`**:
 
@@ -4060,6 +4064,8 @@ the `use-artifact` job only executes when `create-artifact` has successfully fin
 
 To need a job that sometimes does not exist in the pipeline, add `optional: true`
 to the `needs` configuration. If not defined, `optional: false` is the default.
+You can use `optional: true` with [`needs:pipeline:job`](#needspipelinejob) to need
+a job that sometimes does not exist in a parent or another child pipeline.
 
 Jobs that use [`rules`](#rules), [`only`, or `except`](deprecated_keywords.md#only--except) and that are added with [`include`](#include)
 might not always be added to a pipeline. GitLab checks the `needs` relationships before starting a pipeline:
@@ -6670,6 +6676,9 @@ Use `trigger:include` to declare that a job is a "trigger job" which starts a
 
 - The path to the child pipeline's configuration file.
 
+Support for CI/CD variables in the path is limited, see
+[Variable in a `trigger:include` path is empty or has an unexpected value](../pipelines/downstream_pipelines_troubleshooting.md#variable-in-a-triggerinclude-path-is-empty-or-has-an-unexpected-value). Consider using [inputs](../inputs/_index.md) instead.
+
 **Example of `trigger:include`**:
 
 ```yaml
@@ -6894,6 +6903,9 @@ child3:
 - CI/CD variables forwarded to downstream pipelines with `trigger:forward` are [pipeline variables](../variables/_index.md#cicd-variable-precedence),
   which have high precedence. If a variable with the same name is defined in the downstream pipeline,
   that variable is usually overwritten by the forwarded variable.
+- `forward:yaml_variables` also affects CI/CD variables in a [`trigger:include`](#triggerinclude) path.
+  For more information, see
+  [Variable in a `trigger:include` path is empty or has an unexpected value](../pipelines/downstream_pipelines_troubleshooting.md#variable-in-a-triggerinclude-path-is-empty-or-has-an-unexpected-value).
 
 ---
 

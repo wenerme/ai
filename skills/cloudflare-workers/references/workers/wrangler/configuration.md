@@ -1,7 +1,7 @@
 ---
 description: Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.
 title: Configuration
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd
 ---
 
 [Skip to content](#main-content)
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Configuration
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler optionally uses a configuration file to customize the development and deployment setup for a Worker.
 
@@ -39,7 +39,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-25",
+	"compatibility_date": "2026-09-28",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -74,7 +74,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-25"
+compatibility_date = "2026-09-28"
 workers_dev = false
 
 [route]
@@ -221,7 +221,8 @@ The `main` key is optional for assets-only Workers.
 - `assets` `Assets` optional
   - Configures static assets that will be served. Refer to [Assets](https://developers.cloudflare.com/workers/static-assets/binding/) for more details.
 - `exports` `object` optional
-  - Declares the Durable Object classes this Worker exports and their lifecycle state ( `created`, `deleted`, `renamed`, `transferred`, `expecting-transfer`). Refer to [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/). Mutually exclusive with `migrations`.
+  - Declares the Durable Object classes this Worker exports and their lifecycle state ( `created`, `deleted`, `renamed`, `transferred`, `expecting-transfer`). Refer to [Durable Object class exports](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/). Durable Object entries are mutually exclusive with `migrations`.
+  - Declares the Workflows this Worker defines. Refer to [Workflow exports](#workflow-exports).
 - `migrations` `object` optional
   - Legacy imperative configuration that maps a Durable Object from a class name to a runtime state. For new Workers, prefer [`exports`](https://developers.cloudflare.com/durable-objects/reference/durable-objects-migrations/). Refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/).
 - `placement` `object` optional
@@ -714,7 +715,7 @@ storage = "sqlite"
 
 Note
 
-`migrations` is the legacy imperative configuration for managing Durable Object class lifecycle. For new Workers, prefer the declarative [`exports`](#exports) field. `migrations` and `exports` are mutually exclusive.
+`migrations` is the legacy imperative configuration for managing Durable Object class lifecycle. For new Workers, prefer the declarative [`exports`](#exports) field. `migrations` and Durable Object entries in `exports` are mutually exclusive.
 
 When making changes to your Durable Object classes on a Worker that uses the legacy `migrations` array, you must perform a migration. Refer to [Durable Object class migrations (legacy)](https://developers.cloudflare.com/durable-objects/reference/durable-object-class-migrations-legacy/).
 
@@ -1357,6 +1358,60 @@ binding = "<BINDING_NAME>"
 name = "<WORKFLOW_NAME>"
 class_name = "<CLASS_NAME>"
 ```
+
+#### Workflow exports
+
+Note
+
+Requires Wrangler 4.139.0 or above.
+
+The `exports` field declares the Workflows this Worker defines, without a binding. Refer to [Declare Workflows in `exports`](https://developers.cloudflare.com/workflows/build/workers-api/#declare-workflows-in-exports).
+
+Each Workflow entry in `exports` is keyed by the name of a class that extends `WorkflowEntrypoint`. The fields on each entry are:
+
+- `type` `string` required
+  - For Workflow entries, set this to `"workflow"`.
+- `name` `string` required
+  - The name of the Workflow. Two entries in `exports` cannot use the same name.
+- `limits` `object` optional
+  - `steps` `number` optional — The maximum number of steps a Workflow instance can run. Refer to [Workflow step limits](https://developers.cloudflare.com/workflows/build/workers-api/#workflow-step-limits).
+- `schedules` `string | string[]` optional
+  - One or more cron schedules that create new instances of this Workflow automatically. Refer to [Schedule a Workflow directly](https://developers.cloudflare.com/workflows/build/trigger-workflows/#schedule-a-workflow-directly).
+- `default_retention` `object` optional
+  - How long to retain the state of instances of this Workflow after they finish. Accepts the same `success_retention` and `error_retention` fields as the [`workflows` binding](#workflows).
+
+A Workflow can be declared both as a `workflows` binding and as an export. Both declarations must use the same class, and cannot set the same field to different values.
+
+A `workflows` binding to a Workflow in another Worker cannot use the same `name` as a Workflow export in this Worker. Workflow names are unique per account.
+
+Example:
+
+```jsonc
+{
+	"exports": {
+		"MyWorkflow": {
+			"type": "workflow",
+			"name": "my-workflow",
+			"limits": {
+				"steps": 25000,
+			},
+			"schedules": ["0 * * * *"],
+		},
+	},
+}
+```
+
+```toml
+[exports.MyWorkflow]
+type = "workflow"
+name = "my-workflow"
+schedules = [ "0 * * * *" ]
+
+  [exports.MyWorkflow.limits]
+  steps = 25_000
+```
+
+The Worker calls each Workflow declared in `exports` through [`ctx.exports`](https://developers.cloudflare.com/workflows/build/workers-api/#call-a-workflow-through-ctxexports), keyed by class name.
 
 ## Assets
 
@@ -2095,5 +2150,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

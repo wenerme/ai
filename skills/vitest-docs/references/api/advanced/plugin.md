@@ -22,6 +22,7 @@ export function plugin(): Vite.Plugin {
   }
 }
 ```
+
 ```ts [vite and vitest]
 /// <reference types="vitest/config" />
 

@@ -189,6 +189,7 @@ vi.doMock('./increment.js') // this will be called _after_ the import statement
 
 import { increment } from './increment.js'
 ```
+
 ```ts [increment.js]
 export function increment(number) {
   return number + 1
@@ -808,16 +809,16 @@ expect(spy(2)).toBe('two')
 
 Available `then*` methods:
 
-| Method | Description |
-|--------|-------------|
-| `thenReturn(value, options?)` | Returns `value`. |
-| `thenReturnOnce(value)` | Returns `value` once, then falls back. |
-| `thenThrow(error, options?)` | Throws `error`. |
-| `thenThrowOnce(error)` | Throws `error` once, then falls back. |
+| Method                         | Description                                |
+| ------------------------------ | ------------------------------------------ |
+| `thenReturn(value, options?)`  | Returns `value`.                           |
+| `thenReturnOnce(value)`        | Returns `value` once, then falls back.     |
+| `thenThrow(error, options?)`   | Throws `error`.                            |
+| `thenThrowOnce(error)`         | Throws `error` once, then falls back.      |
 | `thenResolve(value, options?)` | Returns a resolved `Promise` with `value`. |
-| `thenResolveOnce(value)` | Resolves once, then falls back. |
-| `thenReject(error, options?)` | Returns a rejected `Promise` with `error`. |
-| `thenRejectOnce(error)` | Rejects once, then falls back. |
+| `thenResolveOnce(value)`       | Resolves once, then falls back.            |
+| `thenReject(error, options?)`  | Returns a rejected `Promise` with `error`. |
+| `thenRejectOnce(error)`        | Rejects once, then falls back.             |
 
 The optional `times` option limits how many times a behavior applies before being exhausted. Behaviors registered for the same arguments are consumed last-in-first-out: the most recently registered behavior is tried first, and once exhausted, earlier ones act as fallbacks.
 

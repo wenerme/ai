@@ -3991,7 +3991,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs \
 ### Example
 
 ```http
-curl https://api.openai.com/v1/fine_tuning/jobs?limit=2&metadata[key]=value \
+curl "https://api.openai.com/v1/fine_tuning/jobs?limit=2&metadata[key]=value" \
   -H "Authorization: Bearer $OPENAI_API_KEY"
 ```
 
@@ -4012,13 +4012,31 @@ curl https://api.openai.com/v1/fine_tuning/jobs?limit=2&metadata[key]=value \
       "status": "queued",
       "validation_file": null,
       "training_file": "file-abc123",
+      "error": null,
+      "finished_at": null,
+      "trained_tokens": null,
+      "seed": 42,
+      "hyperparameters": {
+        "batch_size": "auto",
+        "learning_rate_multiplier": "auto",
+        "n_epochs": "auto"
+      },
+      "method": {
+        "type": "supervised",
+        "supervised": {
+          "hyperparameters": {
+            "batch_size": "auto",
+            "learning_rate_multiplier": "auto",
+            "n_epochs": "auto"
+          }
+        }
+      },
       "metadata": {
         "key": "value"
       }
-    },
-    { ... },
-    { ... }
-  ], "has_more": true
+    }
+  ],
+  "has_more": false
 }
 ```
 

@@ -57,6 +57,7 @@ export default defineConfig({
   }, // [!code ++]
 })
 ```
+
 ```js [rolldown.config.js]
 import { defineConfig } from 'rolldown/config'
 
@@ -68,6 +69,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```js [rollup.config.js]
 import replace from '@rollup/plugin-replace' // [!code ++]
 
@@ -80,6 +82,7 @@ export default {
   // other options
 }
 ```
+
 ```js [build.config.js]
 import { defineBuildConfig } from 'unbuild'
 
@@ -90,6 +93,7 @@ export default defineBuildConfig({
   // other options
 })
 ```
+
 ```js [webpack.config.js]
 const webpack = require('webpack')
 

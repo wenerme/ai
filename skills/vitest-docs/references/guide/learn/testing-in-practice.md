@@ -54,7 +54,7 @@ test('rounds to two decimal places', () => {
 })
 ```
 
-Notice what these tests *don't* do. They don't check which internal `Intl.NumberFormat` options were passed, or whether an intermediate variable was set. They only check the output.
+Notice what these tests _don't_ do. They don't check which internal `Intl.NumberFormat` options were passed, or whether an intermediate variable was set. They only check the output.
 
 > **tip**: A good rule of thumb: if someone refactors the internals but the output stays the same, should the test break? If it would, you're probably testing implementation details rather than behavior.
 
@@ -152,7 +152,7 @@ You don't need to test every possible input. Focus on the boundaries (0, 150, 15
 
 ### Property-Based Testing
 
-For functions with a wide range of valid inputs, manually choosing edge cases can only go so far. **Property-based testing** is a technique where you describe the *properties* that should hold for any input, and the testing framework generates hundreds of random inputs to try to find one that breaks.
+For functions with a wide range of valid inputs, manually choosing edge cases can only go so far. **Property-based testing** is a technique where you describe the _properties_ that should hold for any input, and the testing framework generates hundreds of random inputs to try to find one that breaks.
 
 For example, you might say "for any valid age string, `parseAge` should return a non-negative integer" and let the tool find the counterexample. [fast-check](https://fast-check.dev/) is a popular property-based testing library that integrates well with Vitest. It's an advanced technique, but worth knowing about as your testing needs grow.
 
@@ -172,7 +172,7 @@ If your code depends on the current date, a random number, or a UUID generator, 
 
 ### What Not to Mock
 
-Don't mock the thing you're testing. If you're testing a `UserService`, don't mock the `UserService`. Mock its *dependencies* (the database, the email sender) and let the service itself run for real.
+Don't mock the thing you're testing. If you're testing a `UserService`, don't mock the `UserService`. Mock its _dependencies_ (the database, the email sender) and let the service itself run for real.
 
 Also, prefer real implementations when they're fast and reliable. If a dependency is a simple in-memory data structure or a pure function, there's no reason to mock it. The closer your tests are to real usage, the more confidence they give you.
 
@@ -422,7 +422,7 @@ Each `describe` block focuses on one method. Each test verifies one specific beh
 > **tip**: Notice that we create a fresh `createTodoList()` in every test. This keeps tests independent, which means they can run in any order without affecting each other. If you find yourself repeating the same setup in every test, that's a good candidate for [`beforeEach`](/api/hooks#beforeeach) or a [`test.extend`](/guide/test-context#extend-test-context) fixture.
 
 > **details**: What about `nextId`?
-The `nextId` counter at the top of the module is shared across all calls to `createTodoList()`, including across tests. This means IDs aren't predictable: one test might get IDs 1 and 2, while another gets 3 and 4 depending on execution order. This works fine here because the tests only check *relative* uniqueness (`first.id !== second.id`), not specific ID values. If a test asserted `expect(todo.id).toBe(1)`, it would break depending on which tests ran before it. When you have shared module-level state like this, make sure your tests don't depend on its specific value.
+The `nextId` counter at the top of the module is shared across all calls to `createTodoList()`, including across tests. This means IDs aren't predictable: one test might get IDs 1 and 2, while another gets 3 and 4 depending on execution order. This works fine here because the tests only check _relative_ uniqueness (`first.id !== second.id`), not specific ID values. If a test asserted `expect(todo.id).toBe(1)`, it would break depending on which tests ran before it. When you have shared module-level state like this, make sure your tests don't depend on its specific value.
 
 ---
 

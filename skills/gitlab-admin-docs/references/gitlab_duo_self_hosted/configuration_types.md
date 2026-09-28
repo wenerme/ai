@@ -13,7 +13,7 @@ Learn about different AI gateway configurations and the authentication process f
 - Changed to include Premium in GitLab 18.0.
 - [Enabled on GitLab Dedicated for Government](https://gitlab.com/gitlab-org/gitlab/-/issues/569874) in GitLab 18.5.
 
-There are two AI Gateway configuration options for self-managed customers:
+There are two AI Gateway configuration options for GitLab Self-Managed customers:
 
 - **GitLab.com AI Gateway**: This is the default configuration for GitLab Self-Managed customers. Use the GitLab-managed AI Gateway with external large language model (LLM) providers selected by GitLab (for example, Google Vertex or Anthropic).
 - **Self-hosted AI Gateway**: Deploy and manage your own AI Gateway and language models in your infrastructure, without depending on GitLab-provided external language providers.

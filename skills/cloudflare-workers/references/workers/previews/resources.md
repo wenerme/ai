@@ -1,7 +1,7 @@
 ---
 description: Understand which Preview resources are shared, which are isolated, and which invocation types have limitations.
 title: Resources and isolation
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/workers/previews/resources/og.png?v=a51699232e855b7d
 ---
 
 [Skip to content](#main-content)
@@ -62,7 +62,7 @@ With [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/cont
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-09-25",
+	"compatibility_date": "2026-09-28",
 	"migrations": [
 		{ "tag": "v1", "new_classes": ["Counter"] }
 	],
@@ -72,7 +72,7 @@ With [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/cont
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-09-25"
+compatibility_date = "2026-09-28"
 previews = { }
 
 [[migrations]]
@@ -152,7 +152,7 @@ Declare the SQLite-backed Durable Object migration and the container configurati
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-09-25",
+	"compatibility_date": "2026-09-28",
 	"migrations": [
 		{ "tag": "v1", "new_sqlite_classes": ["MyContainer"] }
 	],
@@ -179,7 +179,7 @@ Declare the SQLite-backed Durable Object migration and the container configurati
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-09-25"
+compatibility_date = "2026-09-28"
 
 [[migrations]]
 tag = "v1"
@@ -214,7 +214,7 @@ return container.fetch(request);
 ```jsonc
 {
 	// Set this to today's date
-	"compatibility_date": "2026-09-25",
+	"compatibility_date": "2026-09-28",
 	"migrations": [
 		{ "tag": "v1", "new_sqlite_classes": ["MyContainer"] }
 	],
@@ -251,7 +251,7 @@ return container.fetch(request);
 
 ```toml
 # Set this to today's date
-compatibility_date = "2026-09-25"
+compatibility_date = "2026-09-28"
 
 [[migrations]]
 tag = "v1"
@@ -448,5 +448,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/previews/resources/#page","headline":"Resources and isolation","description":"Understand which Preview resources are shared, which are isolated, and which invocation types have limitations.","url":"https://developers.cloudflare.com/workers/previews/resources/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/previews/resources/#page","headline":"Resources and isolation","description":"Understand which Preview resources are shared, which are isolated, and which invocation types have limitations.","url":"https://developers.cloudflare.com/workers/previews/resources/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/previews/resources/og.png?v=a51699232e855b7d","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

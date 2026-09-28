@@ -9907,7 +9907,7 @@ Fields:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Creates a policy in the policy store for an organization.
+Creates a policy in the policy store for an organization or group.
 
 Input type: `GovernPolicyCreateInput`
 
@@ -9918,10 +9918,11 @@ Arguments:
 | <a id="mutation-governpolicycreate-actions"></a>`actions` | [`[JSON!]`](#json) | Actions the policy takes. No more than 1000 actions. |
 | <a id="mutation-governpolicycreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-governpolicycreate-description"></a>`description` | [`String`](#string) | Description of the policy. |
+| <a id="mutation-governpolicycreate-grouppath"></a>`groupPath` | [`ID`](#id) | Full path of the top-level group whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
 | <a id="mutation-governpolicycreate-lifecyclestate"></a>`lifecycleState` | [`String`](#string) | Lifecycle state of the policy. |
 | <a id="mutation-governpolicycreate-mode"></a>`mode` | [`String`](#string) | Enforcement mode of the policy. |
 | <a id="mutation-governpolicycreate-name"></a>`name` | [`String!`](#string) | Name of the policy. |
-| <a id="mutation-governpolicycreate-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID!`](#organizationsorganizationid) | Global ID of the organization to create the policy in. |
+| <a id="mutation-governpolicycreate-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID`](#organizationsorganizationid) | Global ID of the organization whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
 | <a id="mutation-governpolicycreate-policyscope"></a>`policyScope` | [`JSON`](#json) | Authored scope of the policy. Mutually exclusive with scopeRego. |
 | <a id="mutation-governpolicycreate-rules"></a>`rules` | [`[JSON!]!`](#json) | Rules of the policy, at least one. No more than 1000 rules. |
 | <a id="mutation-governpolicycreate-scoperego"></a>`scopeRego` | [`String`](#string) | Rego expression scoping the policy. Mutually exclusive with policyScope. |
@@ -9940,7 +9941,7 @@ Fields:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Deletes a policy from the policy store for an organization.
+Deletes a policy from the policy store for an organization or group.
 
 Input type: `GovernPolicyDeleteInput`
 
@@ -9949,8 +9950,9 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mutation-governpolicydelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-governpolicydelete-grouppath"></a>`groupPath` | [`ID`](#id) | Full path of the top-level group whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
 | <a id="mutation-governpolicydelete-id"></a>`id` | [`Int!`](#int) | ID of the policy to delete. |
-| <a id="mutation-governpolicydelete-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID!`](#organizationsorganizationid) | Global ID of the organization the policy belongs to. |
+| <a id="mutation-governpolicydelete-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID`](#organizationsorganizationid) | Global ID of the organization whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
 
 Fields:
 
@@ -9964,7 +9966,7 @@ Fields:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Updates a policy in the policy store for an organization. Only the supplied fields are changed; omitted fields keep their current values, while an explicit null clears a nullable field.
+Updates a policy in the policy store for an organization or group. Only the supplied fields are changed; omitted fields keep their current values, while an explicit null clears a nullable field.
 
 Input type: `GovernPolicyUpdateInput`
 
@@ -9975,10 +9977,11 @@ Arguments:
 | <a id="mutation-governpolicyupdate-actions"></a>`actions` | [`[JSON!]`](#json) | Actions the policy takes. No more than 1000 actions. |
 | <a id="mutation-governpolicyupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-governpolicyupdate-description"></a>`description` | [`String`](#string) | Description of the policy. |
+| <a id="mutation-governpolicyupdate-grouppath"></a>`groupPath` | [`ID`](#id) | Full path of the top-level group whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
 | <a id="mutation-governpolicyupdate-lifecyclestate"></a>`lifecycleState` | [`String`](#string) | Lifecycle state of the policy. |
 | <a id="mutation-governpolicyupdate-mode"></a>`mode` | [`String`](#string) | Enforcement mode of the policy. |
 | <a id="mutation-governpolicyupdate-name"></a>`name` | [`String`](#string) | Name of the policy. |
-| <a id="mutation-governpolicyupdate-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID!`](#organizationsorganizationid) | Global ID of the organization the policy belongs to. |
+| <a id="mutation-governpolicyupdate-organizationid"></a>`organizationId` | [`OrganizationsOrganizationID`](#organizationsorganizationid) | Global ID of the organization whose policy store to use. Exactly one of `organizationId` or `groupPath` is required. |
 | <a id="mutation-governpolicyupdate-policyid"></a>`policyId` | [`Int!`](#int) | ID of the policy. |
 | <a id="mutation-governpolicyupdate-policyscope"></a>`policyScope` | [`JSON`](#json) | Authored scope of the policy. Mutually exclusive with scopeRego. |
 | <a id="mutation-governpolicyupdate-rules"></a>`rules` | [`[JSON!]`](#json) | Rules of the policy, at least one when supplied. No more than 1000 rules. |
@@ -33418,10 +33421,10 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="aichatquestioncategory-contextual"></a>`contextual` | [`Boolean!`](#boolean) | Whether the questions are about the resource on the current page. At most one category is contextual, and it is returned first. |
-| <a id="aichatquestioncategory-key"></a>`key` | [`String!`](#string) | Stable identifier of the category. The type of the current page for contextual categories, for example `merge_request` or `blob`, and the topic for static ones, for example `security`. |
+| <a id="aichatquestioncategory-contextual"></a>`contextual` | [`Boolean!`](#boolean) | Indicates whether the questions are about the resource on the current page. At most one category is contextual, and the agent category, when present, is returned before it. |
+| <a id="aichatquestioncategory-key"></a>`key` | [`String!`](#string) | Stable identifier of the category. `agent` for the agent category, the current page type for contextual categories, for example `merge_request` or `blob`, and the topic for static ones, for example `security`. |
 | <a id="aichatquestioncategory-questions"></a>`questions` | [`[String!]!`](#string) | Suggested questions in the category. |
-| <a id="aichatquestioncategory-title"></a>`title` | [`String!`](#string) | Display title of the category, for example the reference of the current resource. |
+| <a id="aichatquestioncategory-title"></a>`title` | [`String!`](#string) | Display title of the category, for example the name of the selected agent or the reference of the current resource. |
 
 ### `AiConversationsThread`
 
@@ -35167,6 +35170,7 @@ Fields:
 | <a id="artifactregistryupstreamrepositorysummary-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. ID of the upstream repository in Artifact Registry. |
 | <a id="artifactregistryupstreamrepositorysummary-kind"></a>`kind`  | [`ArtifactRegistryUpstreamRepositoryKind`](#artifactregistryupstreamrepositorykind) | Introduced in GitLab 19.5. Status: Experiment. How the upstream repository sources its artifacts. Artifact Registry returns `hosted` or `remote` by contract; a value outside those resolves `null` alongside a top-level error rather than a badge. |
 | <a id="artifactregistryupstreamrepositorysummary-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.5. Status: Experiment. Name of the upstream repository. |
+| <a id="artifactregistryupstreamrepositorysummary-userpermissions"></a>`userPermissions`  | [`ArtifactRegistryRepositoryPermissions!`](#artifactregistryrepositorypermissions) | Introduced in GitLab 19.5. Status: Experiment. Permissions Artifact Registry grants the current user on the upstream repository. Advisory, because Artifact Registry authorizes every request on its own. Every permission is `false` when Artifact Registry returned no verdicts. `upstreamRepositories` returns `null` when the `artifact_registry_ui` feature flag is disabled, so this block is not reached. |
 
 ### `ArtifactRegistryVersion`
 
@@ -42130,6 +42134,7 @@ Fields:
 | <a id="duoworkflow-aicatalogitemversionid"></a>`aiCatalogItemVersionId`  | [`AiCatalogItemVersionID`](#aicatalogitemversionid) | Introduced in GitLab 18.4. Status: Experiment. ID of the AI catalog item version that triggered the workflow. |
 | <a id="duoworkflow-allexecutorlogsurls"></a>`allExecutorLogsUrls` | [`[String!]`](#string) | List of all the executor logs for the workflow. |
 | <a id="duoworkflow-allowagenttorequestuser"></a>`allowAgentToRequestUser` | [`Boolean`](#boolean) | Allow the agent to request user input. |
+| <a id="duoworkflow-allowclientinjectedmcptools"></a>`allowClientInjectedMcpTools`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates MCP tools supplied by the client skip the tool call approval gate. Toggled by the `dap_allow_client_injected_mcp_tools` feature flag; returns `false` when it is disabled. |
 | <a id="duoworkflow-archived"></a>`archived` | [`Boolean`](#boolean) | Archived due to retention policy. |
 | <a id="duoworkflow-auditevents"></a>`auditEvents`  | [`AiAuditEventConnection`](#aiauditeventconnection) | Introduced in GitLab 19.0. Status: Experiment. Audit events recorded for the session. Requires `read_agent_artifacts` on the workflow's project or namespace. Returns no events when the `agent_artifacts_page` feature flag is disabled. |
 | <a id="duoworkflow-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the session was created. |

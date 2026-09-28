@@ -122,6 +122,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc123/groups?limit=20
             "project_id": "proj_abc123",
             "group_id": "group_01J1F8ABCDXYZ",
             "group_name": "Support Team",
+            "group_type": "group",
             "created_at": 1711471533
         }
     ],

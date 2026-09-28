@@ -18,12 +18,15 @@ For easier setup, you can use `vitest init browser` command to install required 
 ```bash [npm]
 npx vitest init browser
 ```
+
 ```bash [yarn]
 yarn exec vitest init browser
 ```
+
 ```bash [pnpm]
 pnpx vitest init browser
 ```
+
 ```bash [bun]
 bunx vitest init browser
 ```
@@ -37,12 +40,15 @@ If you want to just preview how your tests look, you can use the `preview` provi
 ```bash [npm]
 npm install -D vitest @vitest/browser-preview
 ```
+
 ```bash [yarn]
 yarn add -D vitest vite @vitest/browser-preview
 ```
+
 ```bash [pnpm]
 pnpm add -D vitest @vitest/browser-preview
 ```
+
 ```bash [bun]
 bun add -D vitest @vitest/browser-preview
 ```
@@ -56,12 +62,15 @@ If you don't already use one of these tools, we recommend starting with Playwrig
 ```bash [npm]
 npm install -D vitest @vitest/browser-playwright
 ```
+
 ```bash [yarn]
 yarn add -D vitest vite @vitest/browser-playwright
 ```
+
 ```bash [pnpm]
 pnpm add -D vitest @vitest/browser-playwright
 ```
+
 ```bash [bun]
 bun add -D vitest @vitest/browser-playwright
 ```
@@ -71,12 +80,15 @@ bun add -D vitest @vitest/browser-playwright
 ```bash [npm]
 npm install -D vitest @vitest/browser-webdriverio
 ```
+
 ```bash [yarn]
 yarn add -D vitest vite @vitest/browser-webdriverio
 ```
+
 ```bash [pnpm]
 pnpm add -D vitest @vitest/browser-webdriverio
 ```
+
 ```bash [bun]
 bun add -D vitest @vitest/browser-webdriverio
 ```
@@ -125,6 +137,7 @@ export default defineConfig({
   }
 })
 ```
+
 ```ts [vue]
 import { defineConfig } from 'vitest/config'
 import { playwright } from '@vitest/browser-playwright'
@@ -143,6 +156,7 @@ export default defineConfig({
   }
 })
 ```
+
 ```ts [svelte]
 import { defineConfig } from 'vitest/config'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
@@ -161,6 +175,7 @@ export default defineConfig({
   }
 })
 ```
+
 ```ts [solid]
 import { defineConfig } from 'vitest/config'
 import solidPlugin from 'vite-plugin-solid'
@@ -179,6 +194,7 @@ export default defineConfig({
   }
 })
 ```
+
 ```ts [marko]
 import { defineConfig } from 'vitest/config'
 import marko from '@marko/vite'
@@ -197,6 +213,7 @@ export default defineConfig({
   }
 })
 ```
+
 ```ts [qwik]
 import { defineConfig } from 'vitest/config'
 import { qwikVite } from '@builder.io/qwik/optimizer'
@@ -422,6 +439,7 @@ test('properly handles v-model', async () => {
   await expect.element(screen.getByText('Hi, my name is Bob')).toBeInTheDocument()
 })
 ```
+
 ```ts [svelte]
 import { render } from 'vitest-browser-svelte'
 import { expect, test } from 'vitest'
@@ -438,6 +456,7 @@ test('greeting appears on click', async () => {
   await expect.element(greeting).toBeInTheDocument()
 })
 ```
+
 ```tsx [react]
 import { render } from 'vitest-browser-react'
 import Fetch from './fetch'
@@ -455,6 +474,7 @@ test('loads and displays greeting', async () => {
   await expect.element(screen.getByRole('button')).toBeDisabled()
 })
 ```
+
 ```ts [lit]
 import { render } from 'vitest-browser-lit'
 import { html } from 'lit'
@@ -470,6 +490,7 @@ test('greeting appears on click', async () => {
   await expect.element(greeting).toBeInTheDocument()
 })
 ```
+
 ```tsx [preact]
 import { render } from 'vitest-browser-preact'
 import { createElement } from 'preact'
@@ -485,6 +506,7 @@ test('greeting appears on click', async () => {
   await expect.element(greeting).toBeInTheDocument()
 })
 ```
+
 ```tsx [qwik]
 import { render } from 'vitest-browser-qwik'
 import Greeting from './greeting'
@@ -538,6 +560,7 @@ it('uses params', async () => {
   await expect.screen(screen.getByText('Id: 1234')).toBeInTheDocument()
 })
 ```
+
 ```ts [marko]
 // based on @testing-library/marko API
 // https://testing-library.com/docs/marko-testing-library/api
@@ -595,6 +618,7 @@ export function changeMode(newMode) {
   MODE = newMode
 }
 ```
+
 ```js [module.test.ts]
 import { expect } from 'vitest'
 import { changeMode, MODE } from './module.js'

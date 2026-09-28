@@ -443,6 +443,7 @@ function onFilterWatchedSpecification(
   fn: (specification: TestSpecification) => boolean
 ): void
 ```
+
 Register a handler that will be called when a file is changed. This callback should return `true` or `false`, indicating whether the test file needs to be rerun.
 
 With this method, you can hook into the default watcher logic to delay or discard tests that the user doesn't want to keep track of at the moment:
@@ -575,6 +576,7 @@ export function experimental_getSourceModuleDiagnostic(
 ```
 
 > **details**: Types
+
 ```ts
 export interface ModuleDefinitionLocation {
   line: number

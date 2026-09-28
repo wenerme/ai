@@ -21,6 +21,7 @@ vitest.projects.map(p => p.name) === [
   'custom'
 ]
 ```
+
 ```ts [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 
@@ -125,6 +126,7 @@ const project = vitest.projects.find(p => p.name === 'custom')
 project.provide('key', 'value')
 await vitest.start()
 ```
+
 ```ts [test.spec.js]
 import { inject } from 'vitest'
 const value = inject('key')

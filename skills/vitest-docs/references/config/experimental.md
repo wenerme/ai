@@ -52,6 +52,7 @@ const sdk = new NodeSDK({
 sdk.start()
 export default sdk
 ```
+
 ```js [vitest.config.js]
 import { defineConfig } from 'vitest/config'
 

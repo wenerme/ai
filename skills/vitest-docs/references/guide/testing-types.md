@@ -47,7 +47,7 @@ When types don't match, `.toEqualTypeOf` and `.toExtend` use a special helper ty
 expectTypeOf({ a: 1 }).toEqualTypeOf<{ a: string }>()
 ```
 
-Is an assertion that will fail, since `{a: 1}` has type `{a: number}` and not `{a: string}`.  The error message in this case will read something like this:
+Is an assertion that will fail, since `{a: 1}` has type `{a: number}` and not `{a: string}`. The error message in this case will read something like this:
 
 ```
 test/test.ts:999:999 - error TS2344: Type '{ a: string; }' does not satisfy the constraint '{ a: \\"Expected: string, Actual: number\\"; }'.
@@ -106,7 +106,7 @@ assertType<number>(answer)
 assertType<string>(answer)
 ```
 
-> **tip**: When using `@ts-expect-error` syntax, you might want to make sure that you didn't make a typo. You can do that by including your type files in [`test.include`](/config/include) config option, so Vitest will also actually *run* these tests and fail with `ReferenceError`.
+> **tip**: When using `@ts-expect-error` syntax, you might want to make sure that you didn't make a typo. You can do that by including your type files in [`test.include`](/config/include) config option, so Vitest will also actually _run_ these tests and fail with `ReferenceError`.
 
 This will pass, because it expects an error, but the word “answer” has a typo, so it's a false positive error:
 
@@ -132,12 +132,15 @@ Now you can run typecheck:
 ```bash [npm]
 npm run test
 ```
+
 ```bash [yarn]
 yarn test
 ```
+
 ```bash [pnpm]
 pnpm run test
 ```
+
 ```bash [bun]
 bun test
 ```

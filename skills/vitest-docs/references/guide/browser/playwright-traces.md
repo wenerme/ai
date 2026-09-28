@@ -16,6 +16,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```bash [CLI]
 vitest --browser.trace=on
 ```

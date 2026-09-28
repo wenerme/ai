@@ -5,7 +5,7 @@ description: "Browse CoralBricks model IDs, capabilities, context windows, and p
 
 # [CoralBricks logo]CoralBricks
 
-Access 4 CoralBricks models through Mastra's model router. Authentication is handled automatically using the `CORAL_API_KEY` environment variable.
+Access 3 CoralBricks models through Mastra's model router. Authentication is handled automatically using the `CORAL_API_KEY` environment variable.
 
 Learn more in the [CoralBricks documentation](https://www.coralbricks.ai/docs).
 
@@ -41,7 +41,7 @@ for await (const chunk of stream) {
   models={[
   {
     "model": "coralbricks/deepseek-v4.1-flash-fast-fp4",
-    "imageInput": false,
+    "imageInput": true,
     "audioInput": false,
     "videoInput": false,
     "toolUsage": true,
@@ -74,18 +74,6 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 1.12,
     "outputCost": 4.4
-  },
-  {
-    "model": "coralbricks/gpt-oss-120b",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": true,
-    "contextWindow": 131072,
-    "maxOutput": 32768,
-    "inputCost": 0.12,
-    "outputCost": 0.6
   }
 ]}
 />
@@ -120,7 +108,7 @@ const agent = new Agent({
   model: ({ requestContext }) => {
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
-      ? "coralbricks/gpt-oss-120b"
+      ? "coralbricks/glm-5.3-fp4"
       : "coralbricks/deepseek-v4.1-flash-fast-fp4";
   }
 });

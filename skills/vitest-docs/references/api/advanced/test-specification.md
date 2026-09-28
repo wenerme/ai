@@ -58,6 +58,7 @@ const specification = project.createSpecification(
   [3, 8, 9],
 )
 ```
+
 ```ts:line-numbers{3,8,9} [example.test.js]
 import { test, describe } from 'vitest'
 

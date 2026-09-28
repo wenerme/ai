@@ -843,7 +843,7 @@ function query(): Element | null
 
 This method returns a single element matching the locator's selector or `null` if no element is found.
 
-If multiple elements match the selector, this method will throw an error.  Use [`.elements()`](#elements) when you need all matching DOM Elements or [`.all()`](#all) if you need an array of locators matching the selector.
+If multiple elements match the selector, this method will throw an error. Use [`.elements()`](#elements) when you need all matching DOM Elements or [`.all()`](#all) if you need an array of locators matching the selector.
 
 > **danger**: This is an escape hatch for external APIs that do not support locators. Prefer using locator methods instead.
 

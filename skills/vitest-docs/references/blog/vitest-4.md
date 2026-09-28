@@ -84,6 +84,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```ts [webdriverio]
 import { defineConfig } from 'vitest/config'
 import { webdriverio } from '@vitest/browser-webdriverio' // [!code ++]
@@ -110,6 +111,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```ts [preview]
 import { defineConfig } from 'vitest/config'
 import { preview } from '@vitest/browser-preview' // [!code ++]

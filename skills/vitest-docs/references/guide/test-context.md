@@ -589,11 +589,11 @@ When running tests in `vmThreads` or `vmForks`, `scope: 'worker'` works the same
 
 Fixtures can only access other fixtures from the same or higher (longer-lived) scopes:
 
-| Fixture Scope | Can Access |
-|---------------|------------|
-| `worker` | Only other worker fixtures |
-| `file` | Worker + file fixtures |
-| `test` | Worker + file + test fixtures + [test context](#built-in-test-context) |
+| Fixture Scope | Can Access                                                             |
+| ------------- | ---------------------------------------------------------------------- |
+| `worker`      | Only other worker fixtures                                             |
+| `file`        | Worker + file fixtures                                                 |
+| `test`        | Worker + file + test fixtures + [test context](#built-in-test-context) |
 
 ```ts
 const test = baseTest
@@ -664,6 +664,7 @@ test('works correctly', ({ url }) => {
   // url is "/empty" in "project-empty"
 })
 ```
+
 ```ts [vitest.config.ts]
 import { defineConfig } from 'vitest/config'
 

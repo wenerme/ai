@@ -1503,7 +1503,7 @@ Retrieves a model response with the given ID.
 
                 Combine multiple filters using `and` or `or`.
 
-                - `filters: array of ComparisonFilter or unknown`
+                - `filters: array of ComparisonFilter or CompoundFilter`
 
                   Array of filters to combine. Items can be `ComparisonFilter` or `CompoundFilter`.
 
@@ -1511,7 +1511,9 @@ Retrieves a model response with the given ID.
 
                     A filter used to compare a specified attribute key to a given value using a defined comparison operation.
 
-                  - `unknown`
+                  - `CompoundFilter object { filters, type }`
+
+                    Combine multiple filters using `and` or `or`.
 
                 - `type: "and" or "or"`
 
@@ -9668,7 +9670,7 @@ Retrieves a model response with the given ID.
 
     - `"disabled"`
 
-  - `usage: optional ResponseUsage`
+  - `usage: optional ResponseUsage or null`
 
     Represents token usage details including input tokens, output tokens,
     a breakdown of output tokens, and the total tokens used.
@@ -9706,7 +9708,7 @@ Retrieves a model response with the given ID.
 
       The total number of tokens used.
 
-  - `user: optional string`
+  - `user: optional string or null`
 
     This field is being replaced by `safety_identifier` and `prompt_cache_key`. Use `prompt_cache_key` instead to maintain caching optimizations.
     A stable identifier for your end-users.

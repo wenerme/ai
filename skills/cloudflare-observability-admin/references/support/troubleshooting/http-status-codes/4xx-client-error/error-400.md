@@ -1,7 +1,7 @@
 ---
 description: Troubleshoot HTTP 400 error responses.
 title: Error 400
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-400/og.png?v=d8b9d37f20816304
 ---
 
 [Skip to content](#main-content)
@@ -12,20 +12,20 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Error 400
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-400/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-400/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## 400 Bad Request
 
 This error indicates that the client sent a request to the server that could not be understood or processed due to issues with the request itself.
 
-For more information, refer to [RFC 7231 ↗︎](https://tools.ietf.org/html/rfc7231).
+For more information, refer to [RFC 9110 ↗︎](https://www.rfc-editor.org/rfc/rfc9110#section-15.5.1).
 
 ### Common use cases
 
 A `400 Bad Request` error occurs due to client-side issues, such as malformed request syntax, invalid request content, message framing problems, or deceptive request routing. For example:
 
 - If the request contains a special character that is not properly [URL Encoded (or percent-encoded) ↗︎](https://en.wikipedia.org/wiki/Percent-encoding), an `HTTP Error 400` will be returned.
-- If the request contains both `Content Length` and `Transfer Encoding` chunked, these two framing methods contradict each other. `Content Length` declares a fixed size body, while chunked encoding declares a streamed body with no known size. [RFC 7230 section 3.3.3 ↗︎](https://datatracker.ietf.org/doc/html/rfc7230#section-3.3.3) states that when `Transfer Encoding` is present, the `Content Length` header must be ignored and a request that includes both is considered malformed. This creates ambiguity in body framing and can enable request smuggling if different systems parse the boundary differently. Cloudflare follows the RFC and an `HTTP Error 400` will be returned.
+- If the request contains both `Content Length` and `Transfer Encoding` chunked, these two framing methods contradict each other. `Content Length` declares a fixed size body, while chunked encoding declares a streamed body with no known size. [RFC 9112 section 6.3 ↗︎](https://www.rfc-editor.org/rfc/rfc9112#section-6.3) states that when `Transfer Encoding` is present, the `Content Length` header must be ignored and a request that includes both is considered malformed. This creates ambiguity in body framing and can enable request smuggling if different systems parse the boundary differently. Cloudflare follows the RFC and an `HTTP Error 400` will be returned.
 
 ### Cloudflare-specific information
 
@@ -40,5 +40,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-400/#page","headline":"Error 400","description":"Troubleshoot HTTP 400 error responses.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-400/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-400/#page","headline":"Error 400","description":"Troubleshoot HTTP 400 error responses.","url":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-400/","inLanguage":"en","image":"https://developers.cloudflare.com/support/troubleshooting/http-status-codes/4xx-client-error/error-400/og.png?v=d8b9d37f20816304","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

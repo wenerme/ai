@@ -56,7 +56,7 @@ Returns the Upload object with status `cancelled`.
 
   - `file: optional FileObject or null`
 
-    The `File` object represents a document that has been uploaded to OpenAI.
+    The ready File object after the Upload is completed.
 
     - `id: string`
 
@@ -250,7 +250,7 @@ Returns the Upload object with status `completed`, including an additional `file
 
   - `file: optional FileObject or null`
 
-    The `File` object represents a document that has been uploaded to OpenAI.
+    The ready File object after the Upload is completed.
 
     - `id: string`
 
@@ -383,9 +383,9 @@ curl https://api.openai.com/v1/uploads/upload_abc123/complete
     "object": "file",
     "bytes": 2147483648,
     "created_at": 1719186911,
-    "expires_at": 1719127296,
     "filename": "training_examples.jsonl",
-    "purpose": "fine-tune"
+    "purpose": "fine-tune",
+    "status": "processed"
   }
 }
 ```
@@ -504,7 +504,7 @@ Returns the Upload object with status `pending`.
 
   - `file: optional FileObject or null`
 
-    The `File` object represents a document that has been uploaded to OpenAI.
+    The ready File object after the Upload is completed.
 
     - `id: string`
 
@@ -690,7 +690,7 @@ curl https://api.openai.com/v1/uploads \
 
   - `file: optional FileObject or null`
 
-    The `File` object represents a document that has been uploaded to OpenAI.
+    The ready File object after the Upload is completed.
 
     - `id: string`
 

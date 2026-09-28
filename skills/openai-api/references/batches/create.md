@@ -111,11 +111,11 @@ Creates and executes a batch from an uploaded file of requests
 
     - `"cancelled"`
 
-  - `cancelled_at: optional number`
+  - `cancelled_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch was cancelled.
 
-  - `cancelling_at: optional number`
+  - `cancelling_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch started cancelling.
 
@@ -127,7 +127,7 @@ Creates and executes a batch from an uploaded file of requests
 
     The ID of the file containing the outputs of requests with errors.
 
-  - `errors: optional object { data, object }`
+  - `errors: optional object { data, object }  or null`
 
     - `data: optional array of BatchError`
 
@@ -151,7 +151,7 @@ Creates and executes a batch from an uploaded file of requests
 
       The object type, which is always `list`.
 
-  - `expired_at: optional number`
+  - `expired_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch expired.
 
@@ -159,7 +159,7 @@ Creates and executes a batch from an uploaded file of requests
 
     The Unix timestamp (in seconds) for when the batch will expire.
 
-  - `failed_at: optional number`
+  - `failed_at: optional number or null`
 
     The Unix timestamp (in seconds) for when the batch failed.
 

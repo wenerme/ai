@@ -1,7 +1,7 @@
 ---
 description: Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.
 title: Workers API
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=083f42c7b743cf63
 ---
 
 [Skip to content](#main-content)
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Workers API
 
-Last updated Sep 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/workers-api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide details the Workflows API within Cloudflare Workers, including methods, types, and usage examples.
 
@@ -414,6 +414,145 @@ Note
 
 `default_retention` cannot be combined with `script_name`. If you bind to a Workflow defined in another Worker, set `default_retention` on the Worker that defines the Workflow.
 
+## Declare Workflows in `exports`
+
+Note
+
+Requires Wrangler 4.139.0 or above.
+
+You can declare the Workflows a Worker defines in the `exports` field of your Wrangler configuration, instead of in a `workflows` binding:
+
+- The Worker that declares the Workflow calls it through [`ctx.exports`](#call-a-workflow-through-ctxexports).
+- Other Workers call the Workflow through a [cross-script binding](#cross-script-calls). Set `script_name` to the Worker that declares the export, and `class_name` to the key of the export.
+
+Key each entry by the name of the class that extends `WorkflowEntrypoint`. Set `type` to `"workflow"` and `name` to the name of the Workflow:
+
+```jsonc
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "billing-worker",
+	"main": "src/index.ts",
+	// Set this to today's date
+	"compatibility_date": "2026-09-28",
+	"exports": {
+		"MyWorkflow": {
+			"type": "workflow",
+			"name": "billing-workflow",
+			"schedules": ["0 * * * *"],
+		},
+	},
+}
+```
+
+```toml
+"$schema" = "./node_modules/wrangler/config-schema.json"
+name = "billing-worker"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-09-28"
+
+[exports.MyWorkflow]
+type = "workflow"
+name = "billing-workflow"
+schedules = [ "0 * * * *" ]
+```
+
+A `workflow` export accepts the same settings as a `workflows` binding: `limits`, `schedules`, and `default_retention`. When you run `wrangler deploy`, Wrangler creates or updates the Workflow with these settings. Refer to [Workflow exports](https://developers.cloudflare.com/workers/wrangler/configuration/#workflow-exports) for the full list of fields.
+
+You can declare the same Workflow as both a binding and an export. Both declarations must use the same class. They cannot set the same setting to different values.
+
+A `workflows` binding to a Workflow in another Worker cannot use the same `name` as a Workflow export in this Worker. Workflow names are unique per account.
+
+### Call a Workflow through `ctx.exports`
+
+Note
+
+Local development requires one of the following, depending on your tooling:
+
+- Wrangler 4.142.0 or above
+- `@cloudflare/vite-plugin` 1.61.0 or above
+- `@cloudflare/vitest-plugin` 1.3.0 or above
+
+Each Workflow declared in `exports` is available on [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/context/#exports), keyed by class name. It has the same API as a [Workflow binding](#workflow), so the Worker does not need a `workflows` binding to call it.
+
+The following Worker creates an instance of `MyWorkflow` through `ctx.exports`, and gets the status of an existing instance:
+
+*src/index.jsjs*
+
+```js
+import {
+	WorkflowEntrypoint,
+	WorkflowEvent,
+	WorkflowStep,
+} from "cloudflare:workers";
+
+export class MyWorkflow extends WorkflowEntrypoint {
+	async run(event, step) {
+		return await step.do("greet", async () => `Hello, ${event.payload.name}!`);
+	}
+}
+
+export default {
+	async fetch(request, env, ctx) {
+		const id = new URL(request.url).searchParams.get("id");
+
+		// Get the status of an existing instance
+		if (id !== null) {
+			const instance = await ctx.exports.MyWorkflow.get(id);
+			return Response.json(await instance.status());
+		}
+
+		// Create a new instance
+		const instance = await ctx.exports.MyWorkflow.create({
+			params: { name: "World" },
+		});
+		return Response.json({ id: instance.id });
+	},
+};
+```
+
+*src/index.tsts*
+
+```ts
+import {
+	WorkflowEntrypoint,
+	WorkflowEvent,
+	WorkflowStep,
+} from "cloudflare:workers";
+
+type Params = { name: string };
+
+export class MyWorkflow extends WorkflowEntrypoint<Env, Params> {
+	async run(event: WorkflowEvent<Params>, step: WorkflowStep) {
+		return await step.do("greet", async () => `Hello, ${event.payload.name}!`);
+	}
+}
+
+export default {
+	async fetch(request, env, ctx): Promise<Response> {
+		const id = new URL(request.url).searchParams.get("id");
+
+		// Get the status of an existing instance
+		if (id !== null) {
+			const instance = await ctx.exports.MyWorkflow.get(id);
+			return Response.json(await instance.status());
+		}
+
+		// Create a new instance
+		const instance = await ctx.exports.MyWorkflow.create({
+			params: { name: "World" },
+		});
+		return Response.json({ id: instance.id });
+	},
+} satisfies ExportedHandler<Env>;
+```
+
+If you use TypeScript, run [`wrangler types`](https://developers.cloudflare.com/workers/wrangler/commands/workers/#types) to type `ctx.exports.MyWorkflow` as `Workflow<Params>`. This requires Wrangler 4.142.0 or above.
+
+A `workflows` binding and a `workflow` export with the same `name` share their instances. This includes instances created before you declared the Workflow in `exports`, so you can move a Workflow from a binding to an export without losing its instances.
+
+To test a Workflow declared in `exports` with the Vitest integration, refer to [Introspect Workflows declared in `exports`](https://developers.cloudflare.com/workers/testing/vitest-integration/test-apis/#introspect-workflows-declared-in-exports).
+
 ## NonRetryableError
 
 - ``throw new NonRetryableError(message: `string`, name `string` optional)``: `NonRetryableError`
@@ -434,7 +573,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 	"name": "workflows-starter",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-25",
+	"compatibility_date": "2026-09-28",
 	"workflows": [
 		{
 			// name of your workflow
@@ -453,7 +592,7 @@ For example, to bind to a Workflow called `workflows-starter` and to make it ava
 name = "workflows-starter"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-25"
+compatibility_date = "2026-09-28"
 
 [[workflows]]
 name = "workflows-starter"
@@ -479,7 +618,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 	"name": "web-api-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-25",
+	"compatibility_date": "2026-09-28",
 	"workflows": [
 		{
 			// name of your workflow
@@ -501,7 +640,7 @@ For example, if your Workflow is defined in a Worker script named `billing-worke
 name = "web-api-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-25"
+compatibility_date = "2026-09-28"
 
 [[workflows]]
 name = "billing-workflow"
@@ -1059,5 +1198,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/workers-api/#page","headline":"Workers API","description":"Reference for the Workflows Workers API, including WorkflowEntrypoint, step methods, and instance management.","url":"https://developers.cloudflare.com/workflows/build/workers-api/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/workers-api/og.png?v=083f42c7b743cf63","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,7 +1,7 @@
 ---
 description: Develop and test Cloudflare Workflows locally using Wrangler's emulated runtime.
 title: Local Development
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/workflows/build/local-development/og.png?v=168744ed4679b9f1
 ---
 
 [Skip to content](#main-content)
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Local Development
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workflows/build/local-development/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workflows support local development using [Wrangler](https://developers.cloudflare.com/workers/wrangler/install-and-update/), the command-line interface for Workers. Wrangler runs an emulated version of Workflows compared to the one that Cloudflare runs globally.
 
@@ -65,6 +65,8 @@ The `--local` flag for `wrangler workflows` commands requires Wrangler version `
 
 While a `wrangler dev` session is running, you can use all [`wrangler workflows` commands](https://developers.cloudflare.com/workers/wrangler/commands/workflows/) with the `--local` flag to interact with your local Workflow instances.
 
+The `--local` flag also works with Workflows declared only in the [`exports`](https://developers.cloudflare.com/workflows/build/workers-api/#declare-workflows-in-exports) field of your Wrangler configuration, without a `workflows` binding. This requires Wrangler 4.142.0 or above.
+
 For example, to list your local Workflows:
 
 ```sh
@@ -101,6 +103,8 @@ With Local Explorer you can:
 
 Local Explorer requires Wrangler version `4.82.1` or later, or [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/) version `1.32.0` or later.
 
+Local Explorer also lists Workflows declared only in `exports`, with Wrangler version `4.142.0` or later, or Cloudflare Vite plugin version `1.61.0` or later.
+
 ## Known Issues
 
 Workflows are not supported as [remote bindings](https://developers.cloudflare.com/workers/local-development/#remote-bindings) or when using `npx wrangler dev --remote`.
@@ -114,5 +118,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/local-development/#page","headline":"Local Development","description":"Develop and test Cloudflare Workflows locally using Wrangler's emulated runtime.","url":"https://developers.cloudflare.com/workflows/build/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workflows/build/local-development/#page","headline":"Local Development","description":"Develop and test Cloudflare Workflows locally using Wrangler's emulated runtime.","url":"https://developers.cloudflare.com/workflows/build/local-development/","inLanguage":"en","image":"https://developers.cloudflare.com/workflows/build/local-development/og.png?v=168744ed4679b9f1","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

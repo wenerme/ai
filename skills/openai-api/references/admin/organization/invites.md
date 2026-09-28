@@ -396,7 +396,8 @@ curl https://api.openai.com/v1/organization/invites?after=invite-abc&limit=20 \
       "status": "accepted",
       "created_at": 1711471533,
       "expires_at": 1711471533,
-      "accepted_at": 1711471533
+      "accepted_at": 1711471533,
+      "projects": []
     }
   ],
   "first_id": "invite-abc",
@@ -528,7 +529,8 @@ curl https://api.openai.com/v1/organization/invites/invite-abc \
     "status": "accepted",
     "created_at": 1711471533,
     "expires_at": 1711471533,
-    "accepted_at": 1711471533
+    "accepted_at": 1711471533,
+    "projects": []
 }
 ```
 

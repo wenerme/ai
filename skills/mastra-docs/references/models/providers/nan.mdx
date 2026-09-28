@@ -5,7 +5,7 @@ description: "Browse NaN model IDs, capabilities, and context windows. Learn how
 
 # [NaN logo]NaN
 
-Access 7 NaN models through Mastra's model router. Authentication is handled automatically using the `NAN_API_KEY` environment variable.
+Access 8 NaN models through Mastra's model router. Authentication is handled automatically using the `NAN_API_KEY` environment variable.
 
 Learn more in the [NaN documentation](https://nan.builders/docs/models).
 
@@ -88,7 +88,7 @@ for await (const chunk of stream) {
     "outputCost": null
   },
   {
-    "model": "nan/mimo-v2.5",
+    "model": "nan/mimo-v2.6-flash",
     "imageInput": true,
     "audioInput": true,
     "videoInput": false,
@@ -96,6 +96,18 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
+    "model": "nan/qwen-image-2.1",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 8192,
+    "maxOutput": null,
     "inputCost": null,
     "outputCost": null
   },

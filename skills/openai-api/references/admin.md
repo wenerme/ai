@@ -441,6 +441,7 @@ curl https://api.openai.com/v1/organization/admin_api_keys/key_abc \
   "name": "Main Admin Key",
   "redacted_value": "sk-admin...xyz",
   "created_at": 1711471533,
+  "expires_at": null,
   "last_used_at": 1711471534,
   "owner": {
     "type": "user",
@@ -6355,6 +6356,7 @@ curl -X POST https://api.openai.com/v1/organization/groups \
     "id": "group_01J1F8ABCDXYZ",
     "name": "Support Team",
     "created_at": 1711471533,
+    "group_type": "group",
     "is_scim_managed": false
 }
 ```
@@ -6534,6 +6536,7 @@ curl https://api.openai.com/v1/organization/groups?limit=20&order=asc \
             "id": "group_01J1F8ABCDXYZ",
             "name": "Support Team",
             "created_at": 1711471533,
+            "group_type": "group",
             "is_scim_managed": false
         }
     ],
@@ -7166,7 +7169,13 @@ curl https://api.openai.com/v1/organization/groups/group_01J1F8ABCDXYZ/roles \
                 "name": "Ada Lovelace",
                 "email": "ada@example.com"
             },
-            "metadata": {}
+            "metadata": {},
+            "assignment_sources": [
+                {
+                    "principal_id": "group_01J1F8ABCDXYZ",
+                    "principal_type": "group"
+                }
+            ]
         }
     ],
     "has_more": false,
@@ -8325,7 +8334,8 @@ curl https://api.openai.com/v1/organization/invites?after=invite-abc&limit=20 \
       "status": "accepted",
       "created_at": 1711471533,
       "expires_at": 1711471533,
-      "accepted_at": 1711471533
+      "accepted_at": 1711471533,
+      "projects": []
     }
   ],
   "first_id": "invite-abc",
@@ -8457,7 +8467,8 @@ curl https://api.openai.com/v1/organization/invites/invite-abc \
     "status": "accepted",
     "created_at": 1711471533,
     "expires_at": 1711471533,
-    "accepted_at": 1711471533
+    "accepted_at": 1711471533,
+    "projects": []
 }
 ```
 
@@ -10714,6 +10725,7 @@ curl -X POST https://api.openai.com/v1/organization/projects/proj_abc123/groups 
     "project_id": "proj_abc123",
     "group_id": "group_01J1F8ABCDXYZ",
     "group_name": "Support Team",
+    "group_type": "group",
     "created_at": 1711471533
 }
 ```
@@ -10900,6 +10912,7 @@ curl https://api.openai.com/v1/organization/projects/proj_abc123/groups?limit=20
             "project_id": "proj_abc123",
             "group_id": "group_01J1F8ABCDXYZ",
             "group_name": "Support Team",
+            "group_type": "group",
             "created_at": 1711471533
         }
     ],
@@ -11460,7 +11473,13 @@ curl https://api.openai.com/v1/projects/proj_abc123/groups/group_01J1F8ABCDXYZ/r
                 "name": "Ada Lovelace",
                 "email": "ada@example.com"
             },
-            "metadata": {}
+            "metadata": {},
+            "assignment_sources": [
+                {
+                    "principal_id": "group_01J1F8ABCDXYZ",
+                    "principal_type": "group"
+                }
+            ]
         }
     ],
     "has_more": false,
@@ -16184,7 +16203,13 @@ curl https://api.openai.com/v1/projects/proj_abc123/users/user_abc123/roles \
                 "name": "Ada Lovelace",
                 "email": "ada@example.com"
             },
-            "metadata": {}
+            "metadata": {},
+            "assignment_sources": [
+                {
+                    "principal_id": "user_abc123",
+                    "principal_type": "user"
+                }
+            ]
         }
     ],
     "has_more": false,
@@ -31006,7 +31031,13 @@ curl https://api.openai.com/v1/organization/users/user_abc123/roles \
                 "name": "Ada Lovelace",
                 "email": "ada@example.com"
             },
-            "metadata": {}
+            "metadata": {},
+            "assignment_sources": [
+                {
+                    "principal_id": "user_abc123",
+                    "principal_type": "user"
+                }
+            ]
         }
     ],
     "has_more": false,

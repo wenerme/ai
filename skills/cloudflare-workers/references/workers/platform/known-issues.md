@@ -1,7 +1,7 @@
 ---
 description: Known issues and bugs to be aware of when using Workers.
 title: Known issues
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/workers/platform/known-issues/og.png?v=a1b1f93e8b0c7037
 ---
 
 [Skip to content](#main-content)
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/og-docs.png
 
 # Known issues
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/known-issues/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Below are some known bugs and issues to be aware of when using Cloudflare Workers.
 
@@ -88,7 +88,7 @@ After adding `sub2.example.com` to Cloudflare DNS
 
 ## Fetch to IP addresses
 
-For Workers subrequests, requests can only be made to URLs, not to IP addresses directly. To overcome this limitation [add a A or AAAA name record to your zone ↗︎](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) and then fetch that resource.
+For Workers subrequests, requests can only be made to URLs, not to IP addresses directly. To overcome this limitation [add an A or AAAA record to your zone](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-dns-records/) and then fetch that resource.
 
 For example, in the zone `example.com` create a record of type `A` with the name `server` and value `192.0.2.1`, and then use:
 
@@ -111,5 +111,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/known-issues/#page","headline":"Known issues","description":"Known issues and bugs to be aware of when using Workers.","url":"https://developers.cloudflare.com/workers/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/known-issues/#page","headline":"Known issues","description":"Known issues and bugs to be aware of when using Workers.","url":"https://developers.cloudflare.com/workers/platform/known-issues/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/known-issues/og.png?v=a1b1f93e8b0c7037","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

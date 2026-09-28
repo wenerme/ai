@@ -64,6 +64,7 @@ export default defineConfig({
   }
 })
 ```
+
 ```bash [CLI]
 vitest --reporter=github-actions --reporter=junit
 ```

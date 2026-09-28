@@ -216,6 +216,7 @@ test('basic snippet', async () => {
   await expect.element(child).toBeInTheDocument()
 })
 ```
+
 ```svelte [basic-snippet.svelte]
 <script>
   let { children } = $props()
@@ -225,6 +226,7 @@ test('basic snippet', async () => {
   {@render children?.()}
 </h1>
 ```
+
 ```svelte [basic-snippet.test.svelte]
 <script>
   import Subject from './basic-snippet.svelte'
@@ -257,6 +259,7 @@ test('renders greeting in message snippet', async () => {
   await expect.element(message).toHaveTextContent('Hello, Alice!')
 })
 ```
+
 ```svelte [complex-snippet.svelte]
 <script>
   let { name, message } = $props()

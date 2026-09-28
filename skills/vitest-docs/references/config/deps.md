@@ -35,7 +35,7 @@ This options also inherits your `optimizeDeps` configuration (for web Vitest wil
 
 Enable dependency optimization.
 
-## deps.client  {#deps-client}
+## deps.client {#deps-client}
 
 - **Type:** `{ transformAssets?, ... }`
 

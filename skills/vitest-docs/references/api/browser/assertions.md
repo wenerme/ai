@@ -1190,6 +1190,7 @@ await expect.element(getByTestId('button')).toMatchScreenshot('fancy-button', {
     },
   })
   ```
+
   :::
 
 - `screenshotOptions: object`

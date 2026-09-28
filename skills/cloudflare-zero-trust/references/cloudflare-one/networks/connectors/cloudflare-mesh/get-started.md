@@ -1,7 +1,7 @@
 ---
 description: Set up Cloudflare Mesh and connect your first server, laptop, or phone to your private network.
 title: Get started
-image: https://developers.cloudflare.com/og-docs.png
+image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/og.png?v=a03497584ce80063
 ---
 
 [Skip to content](#main-content)
@@ -28,8 +28,10 @@ Set up Cloudflare Mesh so your devices and servers can reach each other by priva
   | **OS version** | RHEL 9 <sup><a href="#user-content-fn-1">1</a></sup>, RHEL 10, Debian 12, Debian 13, Fedora 43, Fedora 44, Ubuntu 22.04 LTS, Ubuntu 24.04 LTS, Ubuntu 26.04 LTS |
   | --- | --- |
   | **Processor** | AMD64 / x86-64 or ARM64 / AArch64 |
-  | **HD space** | 75 MB |
-  | **Memory** | 35 MB |
+  | **vCPU** | 3 minimum, 4 recommended |
+  | **RAM without a desktop** | 1 GB minimum, 2 GB recommended (for example, Ubuntu Server) |
+  | **RAM with a desktop** | 4 GB minimum, 8 GB recommended (for example, Ubuntu GNOME) |
+  | **Disk space** | 250 MiB minimum, 500 MiB recommended |
   | **Network interface type** | Wi-Fi or LAN |
   | **MTU** | 1381 bytes recommended <sup><a href="#user-content-fn-2">2</a></sup> | ## Footnotes<a href="#footnote-label"></a>
   1. On RHEL 9 and later, enable the <a href="https://docs.fedoraproject.org/en-US/epel/">Extra Packages for Enterprise Linux (EPEL) ↗︎</a> repository (<code>sudo dnf install epel-release</code>) before installing <code>cloudflare-warp</code>. EPEL provides dependencies required by the client UI. <a href="#user-content-fnref-1">↩</a>
@@ -278,5 +280,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/#page","headline":"Get started","description":"Set up Cloudflare Mesh and connect your first server, laptop, or phone to your private network.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/og-docs.png","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/#page","headline":"Get started","description":"Set up Cloudflare Mesh and connect your first server, laptop, or phone to your private network.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-mesh/get-started/og.png?v=a03497584ce80063","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Private networks"]}
 ```

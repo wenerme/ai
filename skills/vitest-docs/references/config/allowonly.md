@@ -23,6 +23,7 @@ export default defineConfig({
   },
 })
 ```
+
 ```bash [CLI]
 vitest --allowOnly
 ```

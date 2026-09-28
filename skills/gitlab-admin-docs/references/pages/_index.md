@@ -69,13 +69,11 @@ Before configuring Pages for wildcard domains, you must:
    | GitLab domain        | Pages domain        | Does it work? |
    | -------------------- | ------------------- | ------------- |
    | `example.com`        | `example.io`        | Yes   |
-   | `example.com`        | `pages.example.com` | No <sup>1</sup> |
+   | `example.com`        | `pages.example.com` | No[^pages-domain-cookies] |
    | `gitlab.example.com` | `pages.example.com` | Yes   |
 
-   **Footnotes**:
-
-   1. If the Pages domain is a subdomain of your GitLab instance domain,
-      all deployed Pages sites can access GitLab session cookies.
+   [^pages-domain-cookies]: If the Pages domain is a subdomain of your GitLab instance domain,
+       all deployed Pages sites can access GitLab session cookies.
 
 1. Configure a wildcard DNS record.
 1. Optional. Have a wildcard certificate for that domain if you decide to
@@ -97,13 +95,8 @@ Before configuring Pages for single-domain sites, you must:
    | GitLab domain        | Pages domain        | Supported |
    | -------------------- | ------------------- | --------- |
    | `example.com`        | `example.io`        | Yes |
-   | `example.com`        | `pages.example.com` | No <sup>1</sup> |
+   | `example.com`        | `pages.example.com` | No[^pages-domain-cookies] |
    | `gitlab.example.com` | `pages.example.com` | Yes |
-
-   **Footnotes**:
-
-   1. If the Pages domain is a subdomain of your GitLab instance domain,
-      all deployed Pages sites can access GitLab session cookies.
 
 1. Configure a DNS record.
 1. Optional. If you decide to serve Pages under HTTPS, have a TLS certificate for that domain.

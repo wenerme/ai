@@ -100,7 +100,6 @@ The reporter has three different types:
 - A single reporter: `{ reporter: 'html' }`
 - Multiple reporters without options: `{ reporter: ['html', 'json'] }`
 - A single or multiple reporters with reporter options:
-  
   ```ts
   {
     reporter: [
@@ -338,7 +337,6 @@ Each glob pattern can set its own `perFile` (`boolean | object`), checked exactl
 > **tip**: NOTE
 Vitest counts all files, including those covered by glob-patterns, into the global coverage thresholds.
 This is different from Jest behavior.
-
 ```ts
 {
   coverage: {
