@@ -1,12 +1,49 @@
 ---
-title: "grafana-prometheusalerting-app/monitor-status/view-active-notifications.md unavailable"
+title: "View active notifications | Grafana Plugins documentation"
+description: "Confirm which receiver an alert was routed to and find out why a notification was suppressed, using the Alerts page to see what Alertmanager decided rather than what you configured."
 ---
 
-# grafana-prometheusalerting-app/monitor-status/view-active-notifications.md unavailable
+> For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-Grafana listed this plugin documentation page, but it could not be fetched while building this skill.
+# View active notifications
 
-- Source: https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/view-active-notifications.md
-- Fetch result: 429
+The **Alerts** page is also the tool for answering routing and suppression questions, because it shows what Alertmanager decided rather than what you configured.
 
-Re-run `just update-grafana-plugin-docs` later to refresh this page.
+## Confirm where an alert was routed
+
+The **Receiver** column shows the receiver each alert group was sent to.
+
+Use it after any change to the routing tree. Reading a tree and predicting which route matches is error-prone—sibling ordering and inherited settings both catch people out—while this column reports what actually happened. Refer to [Configure routes](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/configure-routes/).
+
+You can also filter by receiver, which answers the opposite question: what is this receiver currently being sent?
+
+## Find out why a notification wasn’t sent
+
+Alerts in the **Suppressed** state are firing but not notifying. Open the alert to see which mechanism applied:
+
+Expand table
+
+| The drawer shows           | Meaning                         | Where to fix it                                                                                                             |
+|----------------------------|---------------------------------|-----------------------------------------------------------------------------------------------------------------------------|
+| Silenced by a silence      | A silence matches this alert    | [Create a silence](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/create-silence/)             |
+| Inhibited by an inhibition | Another alert is suppressing it | [Configure inhibition rules](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/inhibition-rules/) |
+| Muted by a time interval   | A route is muted right now      | [Configure time intervals](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/time-intervals/)     |
+
+The drawer names the specific silence, inhibition, or interval, so you can go and change the right one rather than guessing.
+
+## A routing checklist
+
+When an alert fired but nobody heard about it, work through it in this order:
+
+1. **Is the alert on the Alerts page at all?** If not, the ruler isn’t reaching this Alertmanager, or you’re looking at the wrong one in the picker.
+2. **Is it suppressed?** The drawer names the cause.
+3. **Which receiver did it go to?** If it’s not the one you expected, the routing tree matched a different branch.
+4. **Is the receiver configured correctly?** Routing can be right while the integration itself fails: a stale Slack webhook, a rotated PagerDuty key.
+
+The first three are answered on this page. The fourth is the one it can’t tell you about, since Alertmanager considers its job done once it has attempted delivery.
+
+## Alerts that resolve
+
+An alert disappears from the page once it stops firing and its grouping timers lapse. There’s no history here. This page is a live view of what Alertmanager holds right now.
+
+For history, use the notification system on the receiving end, or query the alert metrics in your monitoring backend.

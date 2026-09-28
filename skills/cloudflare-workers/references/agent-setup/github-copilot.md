@@ -60,7 +60,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+   Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
    ```
 
 
@@ -165,11 +165,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
-```
-
-```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
@@ -177,11 +173,15 @@ Build a multi-tenant SaaS backend where each customer gets an isolated D1 databa
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Add a cron trigger to my Worker that processes a job queue every hour.
+```
+
+```txt
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ## Tips

@@ -493,7 +493,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -5433,7 +5433,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 

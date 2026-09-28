@@ -9,7 +9,7 @@ title: 亲密性
 
 ---
 
-## 纵向间距关系
+## 纵向间距关系 {#the-relation-of-vertical-spacing}
 
 <ImagePreview>
   [纵向间距示例]
@@ -27,7 +27,7 @@ title: 亲密性
 
 ---
 
-## 横向间距关系
+## 横向间距关系 {#horizontal-spacing-relationship}
 
 <ImagePreview>
   [组合排布示例]

@@ -11,7 +11,7 @@ title: 对齐
 
 ---
 
-## 文案类对齐
+## 文案类对齐 {#text-alignment}
 
 <ImagePreview>
 [推荐示例]
@@ -22,7 +22,7 @@ title: 对齐
 
 ---
 
-## 表单类对齐
+## 表单类对齐 {#form-alignment}
 
 <ImagePreview>
 [冒号对齐示例]
@@ -32,7 +32,7 @@ title: 对齐
 
 ---
 
-## 数字类对齐
+## 数字类对齐 {#numbers-alignment}
 
 <ImagePreview>
 [正确示例]

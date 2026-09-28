@@ -392,7 +392,7 @@ the `background` parameter set to `true` can be cancelled.
 
                 - `index: number`
 
-                  The index of the file in the list of files.
+                  The index in the output text at which to insert the file citation.
 
                 - `type: "file_citation"`
 
@@ -10411,7 +10411,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -14612,7 +14612,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -19248,7 +19248,7 @@ as input for the model's response.
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -25401,7 +25401,7 @@ as input for the model's response.
 
                 - `index: number`
 
-                  The index of the file in the list of files.
+                  The index in the output text at which to insert the file citation.
 
                 - `type: "file_citation"`
 
@@ -36129,7 +36129,7 @@ Retrieves a model response with the given ID.
 
                 - `index: number`
 
-                  The index of the file in the list of files.
+                  The index in the output text at which to insert the file citation.
 
                 - `type: "file_citation"`
 
@@ -45758,7 +45758,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -51201,7 +51201,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `index: number`
 
-                  The index of the file in the list of files.
+                  The index in the output text at which to insert the file citation.
 
                 - `type: "file_citation"`
 
@@ -61089,7 +61089,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `index: number`
 
-                    The index of the file in the list of files.
+                    The index in the output text at which to insert the file citation.
 
                   - `type: "file_citation"`
 
@@ -70550,7 +70550,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `index: number`
 
-          The index of the file in the list of files.
+          The index in the output text at which to insert the file citation.
 
         - `type: "file_citation"`
 
@@ -70730,7 +70730,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `index: number`
 
-            The index of the file in the list of files.
+            The index in the output text at which to insert the file citation.
 
           - `type: "file_citation"`
 
@@ -70920,7 +70920,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `index: number`
 
-            The index of the file in the list of files.
+            The index in the output text at which to insert the file citation.
 
           - `type: "file_citation"`
 
@@ -71462,7 +71462,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `index: number`
 
-                    The index of the file in the list of files.
+                    The index in the output text at which to insert the file citation.
 
                   - `type: "file_citation"`
 
@@ -81308,7 +81308,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `index: number`
 
-                    The index of the file in the list of files.
+                    The index in the output text at which to insert the file citation.
 
                   - `type: "file_citation"`
 
@@ -91381,7 +91381,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `index: number`
 
-                    The index of the file in the list of files.
+                    The index in the output text at which to insert the file citation.
 
                   - `type: "file_citation"`
 
@@ -101090,7 +101090,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `index: number`
 
-                    The index of the file in the list of files.
+                    The index in the output text at which to insert the file citation.
 
                   - `type: "file_citation"`
 
@@ -111292,7 +111292,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `index: number`
 
-              The index of the file in the list of files.
+              The index in the output text at which to insert the file citation.
 
             - `type: "file_citation"`
 
@@ -115416,7 +115416,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -119551,7 +119551,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -123678,7 +123678,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
           - `index: number`
 
-            The index of the file in the list of files.
+            The index in the output text at which to insert the file citation.
 
           - `type: "file_citation"`
 
@@ -123873,7 +123873,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `index: number`
 
-        The index of the file in the list of files.
+        The index in the output text at which to insert the file citation.
 
       - `type: "file_citation"`
 
@@ -124005,7 +124005,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `index: number`
 
-        The index of the file in the list of files.
+        The index in the output text at which to insert the file citation.
 
       - `type: "file_citation"`
 
@@ -124632,7 +124632,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `index: number`
 
-                    The index of the file in the list of files.
+                    The index in the output text at which to insert the file citation.
 
                   - `type: "file_citation"`
 
@@ -136253,7 +136253,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     - `index: number`
 
-                      The index of the file in the list of files.
+                      The index in the output text at which to insert the file citation.
 
                     - `type: "file_citation"`
 
@@ -146962,7 +146962,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `index: number`
 
-          The index of the file in the list of files.
+          The index in the output text at which to insert the file citation.
 
         - `type: "file_citation"`
 
@@ -147815,7 +147815,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `index: number`
 
-                    The index of the file in the list of files.
+                    The index in the output text at which to insert the file citation.
 
                   - `type: "file_citation"`
 
@@ -155457,7 +155457,7 @@ Returns a list of input items for a given response.
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -159767,7 +159767,7 @@ curl https://api.openai.com/v1/responses/resp_abc123/input_items \
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -164090,7 +164090,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 

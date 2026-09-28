@@ -58,7 +58,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+   Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
    ```
 
 
@@ -170,7 +170,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
@@ -178,7 +178,7 @@ Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt

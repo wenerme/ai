@@ -53,7 +53,7 @@ IDETerminalStandaloneExtensionOpen Source
    Open Copilot Chat (**Ctrl+Shift+I** / **Cmd+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Check my Workers deployment logs for errors and suggest fixes.
+   Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
    ```
 
 
@@ -160,15 +160,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
@@ -176,7 +172,11 @@ Set up a Waiting Room to handle flash sale traffic spikes without dropping reque
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ## Tips

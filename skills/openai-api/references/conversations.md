@@ -245,7 +245,7 @@ Create a conversation.
 
             - `index: number`
 
-              The index of the file in the list of files.
+              The index in the output text at which to insert the file citation.
 
             - `type: "file_citation"`
 
@@ -4755,7 +4755,7 @@ curl https://api.openai.com/v1/conversations/conv_123 \
 
           - `index: number`
 
-            The index of the file in the list of files.
+            The index in the output text at which to insert the file citation.
 
           - `type: "file_citation"`
 
@@ -5379,7 +5379,7 @@ Create items in a conversation with the given ID.
 
             - `index: number`
 
-              The index of the file in the list of files.
+              The index in the output text at which to insert the file citation.
 
             - `type: "file_citation"`
 
@@ -9514,7 +9514,7 @@ Create items in a conversation with the given ID.
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -14005,7 +14005,7 @@ List all items for a conversation with the given ID.
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 
@@ -18357,7 +18357,7 @@ Get a single item from a conversation with the given IDs.
 
             - `index: number`
 
-              The index of the file in the list of files.
+              The index in the output text at which to insert the file citation.
 
             - `type: "file_citation"`
 
@@ -22642,7 +22642,7 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
             - `index: number`
 
-              The index of the file in the list of files.
+              The index in the output text at which to insert the file citation.
 
             - `type: "file_citation"`
 
@@ -26880,7 +26880,7 @@ curl https://api.openai.com/v1/conversations/conv_123/items/msg_abc \
 
               - `index: number`
 
-                The index of the file in the list of files.
+                The index in the output text at which to insert the file citation.
 
               - `type: "file_citation"`
 

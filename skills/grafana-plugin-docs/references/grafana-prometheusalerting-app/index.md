@@ -1,12 +1,43 @@
 ---
-title: "grafana-prometheusalerting-app/index.md unavailable"
+title: "Prometheus Alerting | Grafana Plugins documentation"
+description: "Prometheus Alerting is a Grafana app plugin for managing data source-managed alert rules and Alertmanager configuration across Prometheus, Mimir, Cortex, and Loki without leaving Grafana."
 ---
 
-# grafana-prometheusalerting-app/index.md unavailable
+> For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-Grafana listed this plugin documentation page, but it could not be fetched while building this skill.
+# Prometheus Alerting
 
-- Source: https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest.md
-- Fetch result: 429
+Prometheus Alerting is a Grafana app plugin for managing alert rules and Alertmanager configuration across Prometheus, Mimir, Cortex, and Loki data sources, all from within Grafana.
 
-Re-run `just update-grafana-plugin-docs` later to refresh this page.
+It brings the native Prometheus and Alertmanager alerting experience into Grafana, so you can manage external alerting stacks without leaving the Grafana UI.
+
+> Note
+>
+> This plugin works with data source-managed alert rules and Alertmanager resources only. It doesn’t manage Grafana-managed alert rules or the built-in Grafana Alertmanager. For those, refer to [Grafana Alerting](/docs/grafana/latest/alerting/).
+
+## Requirements
+
+To use the Prometheus Alerting plugin, you need:
+
+- Grafana 13.1.0 or later (OSS, Enterprise, or Cloud).
+- A Prometheus, Mimir, Cortex, or Loki data source, to manage alert rules.
+- An Alertmanager data source, to manage routing, receivers, silences, and the rest of the Alertmanager configuration.
+
+You don’t need both. Rule management works without an Alertmanager, and the Alertmanager pages work without a rules source.
+
+## Explore
+
+- [Introduction](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/): how data source-managed rules and Alertmanager fit together.
+- [Set up](/docs/plugins/grafana-prometheusalerting-app/latest/set-up/): install the plugin, connect data sources, and configure access.
+- [Configure alert rules](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/): write alerting and recording rules.
+- [Configure notifications](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/): routes, receivers, templates, silences, time intervals, and inhibition rules.
+- [Monitor alerts](/docs/plugins/grafana-prometheusalerting-app/latest/monitor-status/): see what’s firing and why.
+- [Guides](/docs/plugins/grafana-prometheusalerting-app/latest/guides/): best practices and troubleshooting.
+- [Examples](/docs/plugins/grafana-prometheusalerting-app/latest/examples/): worked examples of common alerting patterns.
+
+## Related resources
+
+- [Prometheus alerting rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/)
+- [Alertmanager configuration](https://prometheus.io/docs/alerting/latest/configuration/)
+- [Grafana community forum](https://community.grafana.com/)
+- [Report issues on GitHub](https://github.com/grafana/prometheus-alerting/issues)

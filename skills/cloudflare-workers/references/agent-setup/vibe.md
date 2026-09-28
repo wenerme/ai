@@ -134,7 +134,7 @@ IDETerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
    ```
 
 
@@ -239,23 +239,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
 Add mTLS authentication and schema validation to protect my API endpoints.
+```
+
+```txt
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+```
+
+```txt
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ## Tips

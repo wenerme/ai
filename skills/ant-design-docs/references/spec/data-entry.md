@@ -12,11 +12,11 @@ title: 数据录入
 
 ---
 
-## 文本录入
+## 文本录入 {#text-input-entry}
 
 输入框为用户提供了编辑文本的控件，是录入数据最基础和常见的方式。
 
-### 文本框（Input）
+### 文本框（Input） {#input}
 
 <ImagePreview>
 
@@ -26,7 +26,7 @@ title: 数据录入
 
 > 注：可以对一些文本（如数字和网址）运用特别的样式。详见 [输入框（Input）](/components/input)。
 
-### 文本域（Textarea）
+### 文本域（Textarea） {#textarea}
 
 <ImagePreview>
 
@@ -34,7 +34,7 @@ title: 数据录入
 
 录入长篇幅的单一的文本使用多行的文本区域。
 
-### 提示与帮助
+### 提示与帮助 {#tips-and-helps}
 
 <ImagePreview>
 [基本样式]
@@ -52,7 +52,7 @@ title: 数据录入
 
 </ImagePreview>
 
-### 搜索（Search）
+### 搜索（Search） {#search}
 
 <ImagePreview>
 
@@ -62,11 +62,11 @@ title: 数据录入
 
 ---
 
-## 选择录入
+## 选择录入 {#selection-entry}
 
 让用户在一个预定的范围中进行选择。
 
-#### 单选框（Radio Button）
+#### 单选框（Radio Button） {#radio-button}
 
 <ImagePreview>
 
@@ -76,7 +76,7 @@ title: 数据录入
 
 > 注：单选框（Radio Button）一定多于 2 个，一般少于 5 个。
 
-### 复选框（Checkbox）
+### 复选框（Checkbox） {#checkbox}
 
 <ImagePreview>
 
@@ -89,7 +89,7 @@ title: 数据录入
 > 1. 复选框（Checkbox）一般用于状态标记，需要和提交操作配合；
 > 2. 单个复选框可以表示两种状态之间的切换。
 
-### 开关（Switch）
+### 开关（Switch） {#switch}
 
 <ImagePreview>
 
@@ -104,7 +104,7 @@ title: 数据录入
 
 > 注：当用户切换「开关」按钮将直接触发状态改变。
 
-### 选择列表（Dropdown）
+### 选择列表（Dropdown） {#dropdown}
 
 <ImagePreview>
 
@@ -117,7 +117,7 @@ title: 数据录入
 > 1. 当选项多于 5 项时使用；
 > 2. 列表选项按照逻辑排序，并尽量让内容显示完整。
 
-### 滑块选择（Slider）
+### 滑块选择（Slider） {#slider}
 
 <ImagePreview>
 
@@ -131,7 +131,7 @@ title: 数据录入
 
 > 注：在不要求精准数值的场景下用户使用「连续滑块」可得到更灵活便捷的操作；在用户需要精确数值时，可与「数字输入框」搭配使用。
 
-### 穿梭框（Transfer）
+### 穿梭框（Transfer） {#transfer}
 
 <ImagePreview>
 
@@ -139,7 +139,7 @@ title: 数据录入
 
 穿梭框用直观的方式在两栏中移动元素，完成选择行为。
 
-### 日期选择器（DatePicker）
+### 日期选择器（DatePicker） {#datepicker}
 
 <ImagePreview>
 
@@ -149,11 +149,11 @@ title: 数据录入
 
 ---
 
-## 文件上传（Upload）
+## 文件上传（Upload） {#upload}
 
 上传是将本地的相应信息(包含本地和云储存)通过网页或者上传工具发布到远程服务器上的过程。
 
-### 简单点击上传
+### 简单点击上传 {#upload-by-simple-clicks}
 
 <ImagePreview>
 
@@ -161,7 +161,7 @@ title: 数据录入
 
 一般用于单个上传且不需要预览效果的文件上传，点击按钮弹出文件选择框。
 
-### 显示缩略图上传
+### 显示缩略图上传 {#upload-by-displaying-thumbnails}
 
 <ImagePreview>
 
@@ -169,7 +169,7 @@ title: 数据录入
 
 一般用于图片文件上传，用户可以上传图片并在列表中显示缩略图。当上传照片数到达限制后，上传按钮消失。
 
-### 拖拽上传
+### 拖拽上传 {#upload-by-drag-and-drop}
 
 <ImagePreview>
 

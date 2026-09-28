@@ -12,7 +12,7 @@ title: 数据展示
 
 ---
 
-## 表格（Table）
+## 表格（Table） {#table}
 
 <ImagePreview>
 
@@ -25,7 +25,7 @@ title: 数据展示
 > 1. 表格中的时间、状态、操作栏需保持词语完整不过行。
 > 2. 当单元格数据为空时，可使用 `-` 来表示暂无数据。
 
-## 折叠面板（Collapse）
+## 折叠面板（Collapse） {#collapse}
 
 <ImagePreview>
 
@@ -39,7 +39,7 @@ title: 数据展示
 
 ---
 
-## 卡片（Card）
+## 卡片（Card） {#card}
 
 <ImagePreview>
 
@@ -54,7 +54,7 @@ title: 数据展示
 
 ---
 
-## 走马灯（Carousel）
+## 走马灯（Carousel） {#carousel}
 
 <ImagePreview>
 
@@ -69,7 +69,7 @@ title: 数据展示
 
 ---
 
-## 树形控件（Tree）
+## 树形控件（Tree） {#tree}
 
 <ImagePreview>
 
@@ -81,7 +81,7 @@ title: 数据展示
 
 ---
 
-## 时间轴（Timeline）
+## 时间轴（Timeline） {#timeline}
 
 <ImagePreview>
 

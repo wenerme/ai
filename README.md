@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 49623 files, 546 MiB total
+> 125 skills, 49625 files, 548 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1404,7 +1404,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [ai-sdk](./skills/ai-sdk/SKILL.md) | 1 | 5.7 KiB |
 | [aliyun-cli-docs](./skills/aliyun-cli-docs/SKILL.md) | 27 | 183 KiB |
 | [alpine-aports-docs](./skills/alpine-aports-docs/SKILL.md) | 7 | 41 KiB |
-| [ant-design-docs](./skills/ant-design-docs/SKILL.md) | 105 | 587 KiB |
+| [ant-design-docs](./skills/ant-design-docs/SKILL.md) | 105 | 603 KiB |
 | [anthropic-agent-sdk](./skills/anthropic-agent-sdk/SKILL.md) | 30 | 614 KiB |
 | [anthropic-api](./skills/anthropic-api/SKILL.md) | 532 | 31 MiB |
 | [anthropic-docs](./skills/anthropic-docs/SKILL.md) | 287 | 9.5 MiB |
@@ -1452,19 +1452,19 @@ Use when implementing React state management with Zustand, including context-sco
 | [gemini-enterprise-agent-platform-docs](./skills/gemini-enterprise-agent-platform-docs/SKILL.md) | 427 | 5.9 MiB |
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 103 | 557 KiB |
 | [gitea-docs](./skills/gitea-docs/SKILL.md) | 99 | 694 KiB |
-| [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 367 | 4.6 MiB |
-| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 255 | 15 MiB |
+| [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 368 | 4.6 MiB |
+| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 256 | 18 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 175 | 2.0 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 917 | 8.5 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
 | [glab-docs](./skills/glab-docs/SKILL.md) | 318 | 545 KiB |
-| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 718 KiB |
+| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 729 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 102 | 3.1 MiB |
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 638 | 6.5 MiB |
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 731 | 5.0 MiB |
 | [hono-docs](./skills/hono-docs/SKILL.md) | 88 | 362 KiB |
 | [huggingface-docs](./skills/huggingface-docs/SKILL.md) | 365 | 2.1 MiB |
-| [humanizer](./skills/humanizer/SKILL.md) | 1 | 28 KiB |
+| [humanizer](./skills/humanizer/SKILL.md) | 1 | 32 KiB |
 | [image-prompt-guide](./skills/image-prompt-guide/SKILL.md) | 9 | 323 KiB |
 | [immich-docs](./skills/immich-docs/SKILL.md) | 78 | 490 KiB |
 | [justfile-docs](./skills/justfile-docs/SKILL.md) | 113 | 166 KiB |

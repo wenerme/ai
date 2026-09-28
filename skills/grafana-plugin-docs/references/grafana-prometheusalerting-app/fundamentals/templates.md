@@ -1,12 +1,56 @@
 ---
-title: "grafana-prometheusalerting-app/fundamentals/templates.md unavailable"
+title: "Templates | Grafana Plugins documentation"
+description: "Learn where templating applies in a data source-managed setup, from rule annotations rendered by the ruler per alert instance to notification templates rendered by Alertmanager per notification."
 ---
 
-# grafana-prometheusalerting-app/fundamentals/templates.md unavailable
+> For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-Grafana listed this plugin documentation page, but it could not be fetched while building this skill.
+# Templates
 
-- Source: https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/templates.md
-- Fetch result: 429
+Templating shows up in two places in a data source-managed setup. They look alike—both use Go template syntax—but they’re evaluated by different systems at different times, and the data available to each is different.
 
-Re-run `just update-grafana-plugin-docs` later to refresh this page.
+## The two contexts
+
+Expand table
+
+|                | Rule annotations and labels     | Notification templates                             |
+|----------------|---------------------------------|----------------------------------------------------|
+| Evaluated by   | The ruler                       | Alertmanager                                       |
+| Evaluated when | Every rule evaluation           | Every notification sent                            |
+| Scope          | One alert instance              | A whole group of alerts                            |
+| Key variables  | `$labels`, `$value`             | `.Alerts`, `.GroupLabels`, `.CommonLabels`         |
+| Configured in  | The rule, on the **Rules** page | The Alertmanager config, on the **Templates** page |
+
+## Rule annotations and labels
+
+The ruler renders these when it evaluates the rule, so the result is baked into the alert before Alertmanager ever sees it. The template has access to exactly one alert instance: its labels and its value.
+
+Go [Copy code to clipboard] Copy
+
+```go
+{{ $labels.instance }} is using {{ $value | printf "%.1f" }}% of its disk.
+```
+
+Because this runs on every evaluation, keep it cheap and simple. Refer to [Template annotations and labels](/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels/).
+
+## Notification templates
+
+Alertmanager renders these when it sends a notification, which happens after grouping. The template therefore sees a *group* of alerts, not one, and its job is to format that group into a message.
+
+Go [Copy code to clipboard] Copy
+
+```go
+{{ define "slack.summary" }}
+{{ .Alerts | len }} alert(s) firing for {{ .GroupLabels.alertname }}
+{{ range .Alerts }}- {{ .Annotations.summary }}
+{{ end }}{{ end }}
+```
+
+Notice that this template reads `.Annotations.summary`, the output of the rule-level template from the previous step. The two stack: the ruler produces per-alert text, and Alertmanager assembles those into a message. Refer to [Notification templates](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/).
+
+## Which one do you want?
+
+- To change what a single alert says about itself, edit the rule’s annotations.
+- To change how a batch of alerts is laid out in Slack or email, edit a notification template.
+
+A common mistake is reaching for a notification template to add information the alert never carried. If the data isn’t in the alert’s labels or annotations, no notification template can recover it. It has to be added at the rule.
