@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/tunnel/configuration/og.png?v=14e1af8a3
 
 # Configuration
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page covers the most common configuration options for `cloudflared` tunnels, including high availability, firewall rules, and runtime parameters.
 
@@ -20,7 +20,7 @@ This page covers the most common configuration options for `cloudflared` tunnels
 
 When you run a tunnel, `cloudflared` establishes four outbound-only, [post-quantum encrypted](https://developers.cloudflare.com/ssl/post-quantum-cryptography/) connections to at least two distinct Cloudflare data centers. If any connection, server, or data center goes offline, your resources remain available.
 
-A replica is an additional `cloudflared` instance that points to the same tunnel. Each replica creates four new connections, providing additional ingress points to your origin. You can run up to 25 replicas (100 connections) per tunnel. Traffic routes to the geographically closest replica.
+A replica is an additional `cloudflared` instance that points to the same tunnel. Each replica creates four new connections, providing additional ingress points to your origin. You can run up to 25 replicas (100 connections) per tunnel. Traffic routes to the geographically closest replica. To see which replica received a specific session, refer to [Network session logs](https://developers.cloudflare.com/tunnel/observability/#network-session-logs).
 
 ```
 graph LR
@@ -228,5 +228,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/configuration/#page","headline":"Configuration","description":"Configure tunnel ingress rules, origins, and protocol settings.","url":"https://developers.cloudflare.com/tunnel/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/configuration/og.png?v=14e1af8a35a5d43c","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum","QUIC"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/configuration/#page","headline":"Configuration","description":"Configure tunnel ingress rules, origins, and protocol settings.","url":"https://developers.cloudflare.com/tunnel/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/configuration/og.png?v=14e1af8a35a5d43c","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Post-quantum","QUIC"]}
 ```

@@ -1,6 +1,6 @@
 # Set up GitLab Duo with Amazon Q
 
-Set up and manage GitLab Duo with Amazon Q on a Self-Managed instance using AWS integration.
+Set up and manage GitLab Duo with Amazon Q on a GitLab Self-Managed instance using AWS integration.
 
 - Tier: Ultimate
 - Add-on: GitLab Duo with Amazon Q

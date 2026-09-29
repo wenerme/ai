@@ -1666,8 +1666,8 @@
   },
   "grafana-prometheusalerting-app/fundamentals/alert-rule-evaluation.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation.md",
-    "size": 495,
-    "updatedAt": "2026-09-25T15:21:28.889Z"
+    "size": 991,
+    "updatedAt": "2026-09-29T16:40:25.397Z"
   },
   "grafana-prometheusalerting-app/fundamentals/alert-rule-evaluation/alert-rule-state-and-health.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/alert-rule-state-and-health.md",

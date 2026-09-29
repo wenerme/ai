@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/billing/manage/invoices/og.png?v=a2206b
 
 # Invoices
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/invoices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/manage/invoices/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You will receive an invoice in the **Billing** section of your Cloudflare account when you:
 
@@ -32,8 +32,8 @@ Enterprise customers receive invoices directly from the Cloudflare accounting te
 To receive invoice emails when you add or remove subscriptions from your account:
 
 1. In the Cloudflare dashboard, go to the **Billing** page. [Go to **Billing** ↗](https://dash.cloudflare.com/?to=/:account/billing)
-2. Select **Invoices and documents**.
-3. From **Billing email preferences**, turn on invoice emails.
+2. Select **Subscriptions**.
+3. From the **Billing Email** card, turn on invoice emails.
 
 After you turn on invoice emails, you will receive invoices via email:
 
@@ -74,5 +74,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/billing/manage/invoices/#page","headline":"Invoices","description":"View, download, and manage Cloudflare invoices.","url":"https://developers.cloudflare.com/billing/manage/invoices/","inLanguage":"en","image":"https://developers.cloudflare.com/billing/manage/invoices/og.png?v=a2206bc0e60aac04","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/billing/manage/invoices/#page","headline":"Invoices","description":"View, download, and manage Cloudflare invoices.","url":"https://developers.cloudflare.com/billing/manage/invoices/","inLanguage":"en","image":"https://developers.cloudflare.com/billing/manage/invoices/og.png?v=a2206bc0e60aac04","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

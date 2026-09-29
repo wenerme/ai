@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/api-shield/get-started/og.png?v=35fb7f6
 
 # Get started with API Shield
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 API Shield protects your APIs by discovering endpoints, validating request schemas, and detecting abuse patterns. This guide walks through the initial setup from configuring session identifiers to enabling advanced protections.
 
@@ -22,13 +22,15 @@ While not strictly required, it is recommended that you configure your session i
 
 If you are unsure of the session identifiers that your API uses, consult with your development team.
 
-Session identifiers should uniquely identify API clients. A common session identifier for API traffic is the `Authorization` header. When a [JSON Web Token (JWT)](https://developers.cloudflare.com/api-shield/security/jwt-validation/) is used by the API for client authentication, its value may change over time. You can use a claim value inside the JWT such as `sub` or `email` as a session ID to uniquely identify the session over time.
+Session identifiers should uniquely identify API clients. A common session identifier for API traffic is the `Authorization` header. When a [JSON Web Token (JWT)](https://developers.cloudflare.com/api-shield/security/jwt-validation/) is used by the API for client authentication, its value may change over time. You can use a claim value inside the JWT such as `sub` or `email` as a session identifier to uniquely identify the session over time.
 
-If your API uses the `Authorization` header on more than 1% of successful requests to your zone, Cloudflare will automatically set it as the API Shield session identifier.
+If no session identifiers are configured and the `Authorization` header appears on more than 1% of eligible sampled client requests with `2xx` responses, Cloudflare automatically configures that header as the API Shield session identifier. Cloudflare does not overwrite an existing session identifier configuration.
 
-You must have specific entitlements to configure session identifiers or cookies as a form of identifiers, such as an Enterprise subscription, for features such as [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/), [Sequence Mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/) or [rate limiting recommendations](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/), and to see results in [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/) and [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/).
+An API Shield subscription or eligible API Shield trial is required to configure session identifiers, including cookie-based identifiers. Configured identifiers can provide optional evidence for [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/), and are used by [Sequence Mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/), [rate limiting recommendations](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/), [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/), and [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/).
 
 ### To set up session identifiers
+
+You can configure up to 10 session identifiers.
 
 1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
 2. Filter by **API abuse**.
@@ -40,11 +42,13 @@ You must have specific entitlements to configure session identifiers or cookies 
 
    The session identifier cookie must comply with RFC 6265. Otherwise, it will be rejected.
 
-   If you are using a JWT claim, choose the [Token Configuration](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#token-configurations) that will verify the JWT. Token Configurations are required to use JWT claims as session identifiers. Refer to [JWT Validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/) for more information.
+   If you are using a JWT claim, choose the [Token Configuration](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#token-configurations) that will verify the JWT, then specify the claim using a supported [RFC 9535 JSONPath ↗︎](https://www.rfc-editor.org/rfc/rfc9535.html) expression. Token Configurations are required to use JWT claims as session identifiers. Refer to [JWT Validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/) for more information.
 6. Enter the name of the session identifier.
 7. Select **Save**.
 
-After setting up session identifiers and allowing some time for Cloudflare to learn your traffic patterns, you can view your per endpoint and per session rate limiting recommendations, as well as enforce per endpoint and per session rate limits by creating new rules. Session identifiers will allow you to view API Discovery results from session ID-based discovery and session traffic patterns in Sequence Analytics.
+API Shield generates rate limiting recommendations for eligible saved operations. Recommendations require API Shield access, a configured session identifier that matches operation traffic, sufficient data, and completed processing. After these requirements are met, you can view per-operation and per-session recommendations and create rate limiting rules.
+
+Discovery can use configured session identifiers as one signal when identifying API traffic. Session identifiers also support session traffic analysis in [Sequence Analytics](https://developers.cloudflare.com/api-shield/security/sequence-analytics/).
 
 ## Create a Schema Profile
 
@@ -78,17 +82,17 @@ For the complete workflow and traffic thresholds, refer to [Get started with App
 
 [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) allow you to define rate limits for requests matching an expression, and choose the action to perform when those rate limits are reached.
 
-API Shield generates rate limit recommendations for each endpoint based on your session identifiers. These recommendations are scoped per endpoint and per session rather than applied across your entire site or based on IP address.
+API Shield generates rate limit recommendations for eligible saved operations. Recommendations require API Shield access, a configured session identifier that matches operation traffic, sufficient data, and completed processing. These recommendations are scoped per operation and per session rather than applied across your entire site or based on IP address.
 
 Per-session rate limits track traffic from individual visitors during their session to a specific endpoint. This reduces false positives from broadly scoped rules while still limiting abusive traffic.
 
 ## Export a learned schema
 
-Learned schemas include the hostname, all endpoints by host, method, and path, and detected path variables (for example, `/users/{id}`). They can also include detected query parameters and their format. You can optionally include rate limit threshold recommendations.
+A learned-schema export is a point-in-time OpenAPI snapshot for a selected hostname. It includes learned operations by method and path and detected path variables (for example, `/users/{id}`). It can also include detected query parameters, their formats, and rate limit recommendations.
 
 You can export your learned schemas in the [Cloudflare dashboard](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#export-a-schema) or via the [API](https://developers.cloudflare.com/api/resources/api_gateway/subresources/schemas/methods/list/).
 
-Exporting creates an OpenAPI `v3.0.0` file. To use a fixed profile, upload that file through [Schema Validation](https://developers.cloudflare.com/api-shield/security/schema-validation/).
+The export uses OpenAPI `v3.0.0`. To use a fixed profile, upload that file through [Schema Validation](https://developers.cloudflare.com/api-shield/security/schema-validation/).
 
 ## View and configure Sequence Analytics
 
@@ -129,5 +133,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/get-started/#page","headline":"Get started with API Shield","description":"Set up API Shield to identify and address API security best practices.","url":"https://developers.cloudflare.com/api-shield/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/get-started/og.png?v=35fb7f680c1d55f0","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/get-started/#page","headline":"Get started with API Shield","description":"Set up API Shield to identify and address API security best practices.","url":"https://developers.cloudflare.com/api-shield/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/get-started/og.png?v=35fb7f680c1d55f0","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

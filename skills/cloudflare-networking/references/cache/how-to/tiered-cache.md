@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/cache/how-to/tiered-cache/og.png?v=0384
 
 # Tiered Cache
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/tiered-cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/tiered-cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Tiered Cache uses the size of the Cloudflare network to reduce requests to customer origins by dramatically increasing cache hit ratios. With data centers around the world, Cloudflare caches content very close to end users. However, if a piece of content is not in cache, the Cloudflare edge data centers must contact the origin server to receive the cacheable content.
 
-Tiered Cache works by dividing Cloudflare’s data centers into a hierarchy of lower-tiers and upper-tiers. If content is not cached in lower-tier data centers (generally the ones closest to a visitor), the lower-tier must ask an upper-tier to see if it has the content. If the upper-tier does not have the content, only the upper-tier can ask the origin for content. This practice improves bandwidth efficiency by limiting the number of data centers that can ask the origin for content, which reduces origin load and makes websites more cost-effective to operate.
+Tiered Cache works by dividing Cloudflare's data centers into a hierarchy of lower-tiers and upper-tiers. If content is not cached in lower-tier data centers (generally the ones closest to a visitor), the lower-tier must ask an upper-tier to see if it has the content. If the upper-tier does not have the content, only the upper-tier can ask the origin for content. This practice improves bandwidth efficiency by limiting the number of data centers that can ask the origin for content, which reduces origin load and makes websites more cost-effective to operate.
 
 Additionally, Tiered Cache concentrates connections to origin servers so they come from a small number of data centers rather than the full set of network locations. This results in fewer open connections using server resources.
 
@@ -24,7 +24,7 @@ To enable Tiered Cache, refer to [Enable Tiered Cache](https://developers.cloudf
 
 ## Tiered Cache Topology
 
-Cloudflare allows you to select your cache topology so that you have control over how your origin connects to Cloudflare’s data centers. This will help ensure higher cache hit ratios, fewer origin connections, and a reduction of Internet latency. Below you can find details about the options we have available.
+Cloudflare allows you to select your cache topology so that you have control over how your origin connects to Cloudflare's data centers. This helps ensure higher cache hit ratios, fewer origin connections, and a reduction in Internet latency.
 
 ### Smart Tiered Cache
 
@@ -48,7 +48,15 @@ You need to be careful when updating your origin IPs/DNS records while Smart Tie
 
 ### Generic Global Tiered Cache
 
-Generic Global topology allows for all of Cloudflare’s global data centers to serve as a network of upper-tiers. This topology may help reduce the long tail latencies for far-away visitors.
+Generic Global Tiered Cache organizes Cloudflare's network into regional upper-tier pools. Cloudflare designs these pools to balance geographic scope, proximity to visitor-serving locations, and the distribution of suitably provisioned cache capacity. Each pool contains a set of eligible data centers that can serve as upper tiers.
+
+For requests that use Tiered Cache, Generic Global uses a consistent hash of the cache key to select an upper-tier data center from the relevant regional pool. This normally directs requests with the same cache key in a region to the same upper-tier cache, reducing duplicate cache fills and improving cache efficiency.
+
+Cloudflare updates the candidate pool as data-center availability, capacity, and network topology evolve. When the candidate pool changes, some cache keys may be reassigned.
+
+Unlike Smart Tiered Cache, Generic Global does not use latency measurements between a particular origin and candidate upper-tier data centers to make this selection. Instead, it emphasizes regional locality and shared-cache efficiency. Smart Tiered Cache can use origin-specific performance and latency data to select upper tiers when that data is available.
+
+To confirm whether a request used Tiered Cache, refer to the `CacheTieredFill` field in your [http\_requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/zone/http_requests/#cachetieredfill) logs.
 
 ### Regional Tiered Cache
 
@@ -65,6 +73,12 @@ This can help improve performance for **Smart** and **Custom Tiered Cache** topo
 ### Custom Tiered Cache
 
 Custom Tiered cache allows Enterprise customers to work with their account team to set a custom topology that fits your specific needs, for instance you have close upper tiers or you have a unique traffic pattern. If you want a custom topology, please engage your account team.
+
+## Tiered Cache and cache eligibility
+
+Tiered Cache applies only to requests eligible for cache at request time. Origin-response cacheability is evaluated later, so an eligible request can be routed through an upper tier before Cloudflare treats the origin response as uncacheable. For details and request-time bypass options, refer to [Investigate uncached responses](https://developers.cloudflare.com/cache/troubleshooting/investigating-uncached-responses/).
+
+For intermittent slowness that only affects requests routed through an upper tier, refer to [Investigate latency on tiered requests](https://developers.cloudflare.com/cache/troubleshooting/investigating-tiered-cache-latency/).
 
 ## Availability
 
@@ -88,10 +102,10 @@ You can enable Tiered Cache in the dashboard or via API.
 
 1. In the Cloudflare dashboard, go to the **Tiered Cache** page. [Go to **Tiered Cache** ↗](https://dash.cloudflare.com/?to=/:account/:zone/caching/tiered-cache)
 2. From **Tiered Cache**, toggle the button to **enabled**.
-3. In **Tiered Cache Topology**, you can control how your origin connects to Cloudflare’s data centers. You can select:
+3. In **Tiered Cache Topology**, you can control how your origin connects to Cloudflare's data centers. You can select:
    - **Upper Tier Cache** - You have the option to choose between Smart or Generic Global Tiered Cache Topology.
    - **Middle Tier Cache** - If you have selected Smart or Custom Tiered Cache Topology, you can now enable Regional Tiered Cache.
-   - **Custom Tiered Cache** - Allows you to work with Cloudflare’s support team to set a custom topology that fits your specific needs.
+   - **Custom Tiered Cache** - Allows you to work with Cloudflare's support team to set a custom topology that fits your specific needs.
    - **Disable Tiered Cache**.
 
 ![Tiered Cache Topology dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1188,height=870,format=webp/_astro/tiered_cache_topology.sy3gfwwc.png)
@@ -243,5 +257,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/tiered-cache/#page","headline":"Tiered Cache","description":"Reduce origin requests with tiered cache topology.","url":"https://developers.cloudflare.com/cache/how-to/tiered-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/how-to/tiered-cache/og.png?v=0384248586d2b2cd","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/tiered-cache/#page","headline":"Tiered Cache","description":"Reduce origin requests with tiered cache topology.","url":"https://developers.cloudflare.com/cache/how-to/tiered-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/how-to/tiered-cache/og.png?v=0384248586d2b2cd","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["REST API","Logging"]}
 ```

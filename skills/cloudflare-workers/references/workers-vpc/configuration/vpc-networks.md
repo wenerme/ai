@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/
 
 # VPC Networks
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 VPC Networks allow your Workers to access any service in your private network without pre-registering individual hosts or ports. You can bind to a specific [Cloudflare Tunnel](https://developers.cloudflare.com/workers-vpc/configuration/tunnel/) to reach any service behind that tunnel, or bind to [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) to reach any Mesh node, client device, subnet route or hostname route announced through Cloudflare Tunnel or Mesh, or destination reachable through a [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/) on-ramp (GRE, IPsec, or CNI).
 
@@ -144,6 +144,16 @@ Note
 
 `connect()` over VPC Networks currently supports plaintext TCP only.
 
+## Logs
+
+Traffic sent through a VPC Network binding appears in [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#network-logs) with **Workers VPC** as the **Traffic Source**.
+
+[Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/) also record which Worker started each session. Workers VPC sessions report `OnrampType` as `WORKERS_VPC`, `SourceName` as the Worker name, and `SourceID` as the Worker's stable identifier. Use these fields to audit which Worker reached a private service, or to debug a failed connection.
+
+Note
+
+`SourceName` and `SourceID` are only populated for Workers deployed after [the release of Worker attribution in Network Session Logs](https://developers.cloudflare.com/changelog/post/2026-09-29-mesh-workers-vpc-network-logs/). Redeploy existing Workers to include them. No code changes are required.
+
 ## VPC Networks vs VPC Services
 
 VPC Networks and [VPC Services](https://developers.cloudflare.com/workers-vpc/configuration/vpc-services/) both connect Workers to private infrastructure, but they make different trade-offs.
@@ -178,5 +188,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/og.png?v=5276f4b158e0621f","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/#page","headline":"VPC Networks","description":"Bind Workers to an entire Cloudflare Tunnel or Cloudflare Mesh without pre-registering hosts.","url":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/workers-vpc/configuration/vpc-networks/og.png?v=5276f4b158e0621f","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

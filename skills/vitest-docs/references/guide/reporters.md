@@ -793,7 +793,7 @@ export default defineConfig({
 })
 ```
 
-Blob reporter output doesn't include file-based [attachments](/api/advanced/artifacts.html#testattachment).
+Blob reporter output doesn't include file-based [attachments](/api/advanced/artifacts#testattachment).
 Make sure to merge [`attachmentsDir`](/config/attachmentsdir) separately alongside blob reports on CI when using this feature.
 
 > **tip**: Both `--reporter=blob` and `--merge-reports` do not work in watch mode.

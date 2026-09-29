@@ -1,12 +1,15 @@
 ---
-title: "grafana-prometheusalerting-app/fundamentals/alert-rule-evaluation.md unavailable"
+title: "Alert rule evaluation | Grafana Plugins documentation"
+description: "Learn how the Prometheus Alerting plugin evaluates rule groups on a schedule, how the evaluation interval interacts with the pending period, and how an alert moves between states."
 ---
 
-# grafana-prometheusalerting-app/fundamentals/alert-rule-evaluation.md unavailable
+> For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-Grafana listed this plugin documentation page, but it could not be fetched while building this skill.
+# Alert rule evaluation
 
-- Source: https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation.md
-- Fetch result: 429
+Rules don’t run individually. They run as part of a group, on that group’s schedule, and the timing of that schedule affects how quickly alerts fire and how reliable they are.
 
-Re-run `just update-grafana-plugin-docs` later to refresh this page.
+## In this section
+
+- [Rule groups and evaluation](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/rule-groups/): when rules run and in what order.
+- [Alert rule state and health](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/alert-rule-evaluation/alert-rule-state-and-health/): what the plugin is telling you about a rule.

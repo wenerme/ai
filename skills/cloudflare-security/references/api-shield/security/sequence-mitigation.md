@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/api-shield/security/sequence-mitigation
 
 # Sequence mitigation
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sequence mitigation allows you to enforce request patterns for authenticated clients communicating with your API.
 
@@ -45,7 +45,7 @@ Sequence rules built via the Cloudflare dashboard using API Shield rules utilize
 
 Note
 
-Contact your account team if the default lookback window is not sufficient for you.
+Contact Cloudflare Support if the default lookback window is not sufficient for you.
 
 If you want to add multiple endpoints, ignore the lookback window, and configure time-based constraints, refer to [Sequence mitigation custom rules](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/).
 
@@ -59,7 +59,7 @@ For example, if there was an authorization bug that allowed users to iterate thr
 
 ### Endpoint Management
 
-To track requests to API endpoints, they must be added to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/). Add your endpoints to endpoint management via [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/), [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), or [manually](https://developers.cloudflare.com/api-shield/management-and-monitoring/#add-endpoints-manually) through the Cloudflare dashboard.
+To track requests to API endpoints, they must be added to [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/). Add your endpoints to endpoint management via [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/), [Schema validation](https://developers.cloudflare.com/api-shield/security/schema-validation/), or [manually](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#add-endpoints-manually) through the Cloudflare dashboard.
 
 ### Session Identifiers
 
@@ -67,7 +67,7 @@ API Shield uses your configured session identifier to track sessions. You must c
 
 ### Request limitations
 
-By default, API Shield stores the current and previous nine requested endpoints by each individual API user identified through the session identifier. Contact your account team if the default lookback window is not sufficient for you.
+By default, API Shield stores the current and previous nine requested endpoints by each individual API user identified through the session identifier. Contact Cloudflare Support if the default lookback window is not sufficient for you.
 
 Sequence mitigation further de-duplicates requests to the same endpoint while building the sequence.
 
@@ -98,5 +98,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/#page","headline":"Sequence mitigation","description":"Enforce expected API request patterns to detect and block malicious sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/og.png?v=7b13f42fd0529a94","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/#page","headline":"Sequence mitigation","description":"Enforce expected API request patterns to detect and block malicious sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/og.png?v=7b13f42fd0529a94","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

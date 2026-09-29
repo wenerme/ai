@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/api-shield/management-and-monitoring/en
 
 # Endpoint Management
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Available on all plans
 
-Endpoint Management content uses the current [Web Assets](https://developers.cloudflare.com/security/web-assets/) dashboard. Go to **Web Assets** > **Operations** to manage API endpoints.
+Endpoint Management uses the [Web Assets](https://developers.cloudflare.com/security/web-assets/) dashboard. Go to **Web Assets** > **Operations** to manage API endpoints.
 
 An operation is Cloudflare's term for an endpoint identified by HTTP method, hostname pattern, and path pattern. Web Assets continuously discovers operations, and you can add them manually.
 
@@ -133,7 +133,7 @@ You can view detailed metrics from the last 24 hours or seven days.
 
 ## Using the Cloudflare API
 
-You can manage operations through the Cloudflare API. For more information, refer to the [operations API documentation](https://developers.cloudflare.com/api/resources/api_gateway/subresources/discovery/subresources/operations/methods/list/).
+You can manage saved operations through the Cloudflare API. For more information, refer to the [operations API documentation](https://developers.cloudflare.com/api/resources/api_gateway/subresources/operations/methods/list/).
 
 ## Sensitive Data Detection
 
@@ -143,7 +143,7 @@ API Shield alerts you to sensitive data in responses from full operations. Your 
 
 Sensitive Data Detection is available to Enterprise customers on our Advanced application security plan.
 
-After you turn on Sensitive Data Detection, API Shield queries WAF events from the last seven days. Web Assets marks operations that have matched sensitive responses.
+After you turn on Sensitive Data Detection, API Shield applies the `cf-risk-sensitive` label to operations whose responses matched the Sensitive Data Detection ruleset during the past week.
 
 Open the operation details to review the detected sensitive data types. Select **Explore Events** to view matched events in Security Events.
 
@@ -169,5 +169,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#page","headline":"Endpoint Management","description":"Manage API operations through the Web Assets dashboard.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/og.png?v=c356a5f151d9e5fe","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#page","headline":"Endpoint Management","description":"Manage API operations through the Web Assets dashboard.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/og.png?v=c356a5f151d9e5fe","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/api-shield/management-and-monitoring/ap
 
 # API Routing
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 API Shield Routing allows you to expose a single external API that routes requests to different back-end services, even when those services use different paths or hostnames than your zone.
 
@@ -22,12 +22,12 @@ The term **Source Endpoint** refers to the endpoint managed by API Shield in End
 
 ## Process
 
-You must add Source Endpoints to Endpoint Management through established methods, including [uploading a schema](https://developers.cloudflare.com/api-shield/security/schema-validation/#add-validation-by-uploading-a-schema), via [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/), or by [adding manually](https://developers.cloudflare.com/api-shield/management-and-monitoring/#add-endpoints-manually), before creating a route.
+You must add Source Endpoints to Endpoint Management through established methods, including [uploading a schema](https://developers.cloudflare.com/api-shield/security/schema-validation/#add-validation-by-uploading-a-schema), via [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/), or by [adding manually](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#add-endpoints-manually), before creating a route.
 
 To create a route, you will need the operation ID of the Source Endpoint. To find the operation ID in the dashboard:
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. Filter the endpoints to find your **Source Endpoint**.
+2. In the **Operations** tab, filter the operations to find your **Source Endpoint**.
 3. Expand the row for your Source Endpoint and note the **operation ID** field.
 4. Select the copy icon to copy the operation ID to your clipboard.
 
@@ -36,7 +36,7 @@ Once your Source Endpoints are added to Endpoint Management, use the following s
 ### Create a route
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. In **Endpoints**, select an existing endpoint and expand its details.
+2. In the operations list, select an existing endpoint and expand its details.
 3. Under **Routing**, select **Create route**.
 4. Enter the target URL or IP address to route your endpoint to.
 5. Select **Deploy route**.
@@ -47,15 +47,11 @@ You can reorder path variables if they are present. For example, you can route `
 
 You can also edit or delete a route by selecting **Edit route** on an existing route.
 
-### Test a route
+### Verify a route
 
 After sending a request to your Source Endpoint, you should see the contents of the back-end service as if you called the Target Endpoint directly.
 
 If API Shield returns unexpected results, check your Source Endpoint host, method, and path and [verify the Route](https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/#verify-a-route) to ensure the Target Endpoint value is correct.
-
-Note
-
-You may need to wait up to five minutes for Route changes to synchronize across the Cloudflare network.
 
 ## Availability
 
@@ -78,5 +74,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/#page","headline":"API Routing","description":"Route API requests to different back-end services using API Shield Routing.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/og.png?v=2b93b8249ae8d0f5","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/#page","headline":"API Routing","description":"Route API requests to different back-end services using API Shield Routing.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/management-and-monitoring/api-routing/og.png?v=2b93b8249ae8d0f5","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

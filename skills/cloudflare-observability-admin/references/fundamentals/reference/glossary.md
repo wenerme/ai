@@ -348,7 +348,7 @@ Review the definitions for terms used across Cloudflare's documentation.
 | service Worker | Refers to a Worker written in [service worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) [syntax](https://developers.cloudflare.com/workers/reference/migrate-to-module-workers/). | Workers |
 | session | An event generated when a user logs in to an Access application. | Cloudflare One |
 | session | A session encapsulates all the queries from one logical session for your application. For example, a session may correspond to all queries coming from a particular web browser session. | D1 |
-| session identifier | A session identifier is a unique identifier that a website assigns to identify a specific user for the duration of their visit. | API Shield |
+| session identifier | A session identifier is a configured value that API Shield uses to associate requests with a session or client. | API Shield |
 | Set-Cookie | Set-Cookie is an HTTP header used by web servers to send a cookie to a user's browser during an HTTP response, enabling the server to store information on the client side, often used for session management and user preferences. | Waiting Room |
 | sFlow | An industry standard packet sampling protocol to monitor network devices. | Network Flow |
 | SFTP (Secure File Transfer Protocol) | A secure file transfer protocol that uses the Secure Socket Shell (SSH) protocol for encryption and authentication. | Spectrum |

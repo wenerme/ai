@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/billing/understand/how-billing-works/og
 
 # How Cloudflare billing works
 
-Last updated May 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/how-billing-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/billing/understand/how-billing-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare billing has a few moving parts. This page explains the full billing lifecycle, the different types of charges on your account, and how to read a typical invoice.
 
@@ -153,10 +153,10 @@ The bottom of the invoice shows:
 
 The Cloudflare dashboard organizes billing information across four tabs under **Manage Account** > **Billing**:
 
-- **Invoices and documents** — view, download, and pay invoices. Configure your billing email preference and set up billable usage notifications.
+- **Invoices and documents** — view, download, and pay invoices.
 - **Billable Usage** — track daily usage-based costs across all products for the current or previous billing period.
 - **Payment** — manage your primary and additional payment methods, billing address, and tax-exempt status.
-- **Subscriptions** — view all active subscriptions with their renewal dates, pricing, and invoice status. Cancel or modify subscriptions from this tab.
+- **Subscriptions** — view active subscriptions (renewal dates, pricing, invoice status) and cancel or modify them. Invoice email preferences are on the **Billing Email** card.
 
 ### Billable usage dashboard
 
@@ -204,5 +204,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/how-billing-works/#page","headline":"How Cloudflare billing works","description":"Billing lifecycle, charge types, and invoice details.","url":"https://developers.cloudflare.com/billing/understand/how-billing-works/","inLanguage":"en","image":"https://developers.cloudflare.com/billing/understand/how-billing-works/og.png?v=c5521b881740d47e","dateModified":"2026-05-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/billing/understand/how-billing-works/#page","headline":"How Cloudflare billing works","description":"Billing lifecycle, charge types, and invoice details.","url":"https://developers.cloudflare.com/billing/understand/how-billing-works/","inLanguage":"en","image":"https://developers.cloudflare.com/billing/understand/how-billing-works/og.png?v=c5521b881740d47e","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

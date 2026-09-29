@@ -19,6 +19,7 @@ The following topics are useful for troubleshooting Cache issues.
 - [Investigate uncached responses](https://developers.cloudflare.com/cache/troubleshooting/investigating-uncached-responses/)
 - [Dynamic content and login issues](https://developers.cloudflare.com/cache/troubleshooting/dynamic-content-and-login-issues/)
 - [Issues with MP4 videos on iOS and Safari](https://developers.cloudflare.com/cache/troubleshooting/mp4-videos-on-ios-and-safari/)
+- [Investigate latency on tiered requests](https://developers.cloudflare.com/cache/troubleshooting/investigating-tiered-cache-latency/)
 - [Bot Management cookie causes cache bypass in O2O setups](https://developers.cloudflare.com/cache/troubleshooting/bot-management-o2o-cache-bypass/)
 - [edgeResponseBytes and cacheResponseBytes discrepancy](https://developers.cloudflare.com/cache/troubleshooting/edge-vs-cache-response-bytes/)
 - [Always Online](https://developers.cloudflare.com/cache/troubleshooting/always-online/)

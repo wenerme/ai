@@ -209,7 +209,9 @@ Replace `<MESH-IP>` with the Mesh IP shown on the Mesh overview page. Replace po
 
 ## Logs
 
-Traffic from Mesh nodes appears in [Gateway activity logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/) with the identity `warp_connector@<your-team-name>.cloudflareaccess.com`. Client device traffic appears in Gateway activity logs under the enrolled user's identity.
+Mesh traffic appears in [Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#network-logs) with **Mesh** as the **Traffic Source** when a Mesh node sends it, and as the **Traffic Destination** when it is routed to a Mesh node. Client device traffic appears under the enrolled user's identity.
+
+For session-level detail, use [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/). Mesh sessions report `OnrampType` or `Offramp` as `MESH`, and `DestinationReplicaID` identifies which replica of a [highly available](https://developers.cloudflare.com/mesh/features/high-availability/) node served the session.
 
 ## Required account settings
 

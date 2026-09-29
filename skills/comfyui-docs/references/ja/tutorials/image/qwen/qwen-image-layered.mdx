@@ -1,10 +1,10 @@
 ---
 title: "Qwen-Image-Layered ComfyUI ワークフロー例"
 description: "Qwen-Image-Layered は、画像を複数の RGBA レイヤーに分解できるモデルであり、レイヤー分解を通じて本質的な編集可能性を実現します。"
-translationSourceHash: bf1b0da5
+translationSourceHash: 0f254c67
 translationFrom: tutorials/image/qwen/qwen-image-layered.mdx
 translationBlockHashes:
-  "_intro": 19900234
+  "_intro": 9e032d88
   "Qwen-Image-Layered workflow": 309e8412
   "Model links": 053c337d
   "FP8 version": 6bffdd17
@@ -27,13 +27,28 @@ translationBlockHashes:
 
 ## Qwen-Image-Layered ワークフロー
 
-<a className="prose" target='_blank' href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/image_qwen_image_layered.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold', marginRight: '10px'}}>
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>JSON ワークフローファイルをダウンロード</p>
-</a>
+### Qwen-Image-Layered 分解 {#image_qwen_image_layered}
 
-<a className="prose"  target='_blank'  href="https://cloud.comfy.org/?template=image_qwen_image_layered&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-    <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>ComfyUI Cloud で実行</p>
-</a>
+画像を編集可能な RGBA レイヤーに分解し、色変更、置き換え、サイズ変更、位置変更のワークフローに利用できます。
+
+[Qwen-Image-Layered ワークフロープレビュー]
+
+  
+    JSON ワークフローファイルをダウンロード
+  
+  
+    セットアップ不要で ComfyUI をオンライン実行
+  
+
+**入力素材**
+
+このファイルを `LoadImage` ノード **74** にアップロードします：
+
+  
+    `LoadImage` ノード 74 · `coastal_smiling_woman.png`
+  
+
+![coastal_smiling_woman.png](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/input/coastal_smiling_woman.png)
 
 ## モデルのダウンロード先
 

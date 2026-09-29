@@ -73,7 +73,7 @@ export default {
 
 ### `vitest bench`
 
-Run only [benchmark](/guide/features.html#benchmarking) tests, which compare performance results.
+Run only [benchmark](/guide/features#benchmarking) tests, which compare performance results.
 
 ### `vitest init`
 

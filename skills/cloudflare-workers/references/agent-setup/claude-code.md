@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
    ```
 
 
@@ -164,23 +164,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ## Tips

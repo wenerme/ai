@@ -29,7 +29,7 @@ Support includes [gRPC ↗︎](https://grpc.io/docs/what-is-grpc/introduction/)-
 5. In **Choose action**, select `Block`.
 6. Select **Deploy** to make the rule active.
 
-Once you have deployed your mTLS rule, any requests without a [valid client certificate](https://developers.cloudflare.com/ssl/client-certificates/) will be blocked.
+Once you have deployed your mTLS rule, requests without a [valid client certificate](https://developers.cloudflare.com/ssl/client-certificates/) are blocked only when they match the hostname and URI path conditions configured in the rule.
 
 Was this helpful?
 

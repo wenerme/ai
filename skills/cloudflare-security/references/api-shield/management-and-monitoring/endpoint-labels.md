@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/api-shield/management-and-monitoring/en
 
 # Endpoint labeling service
 
-Last updated Aug 19, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-API Shield's labeling service will help you organize your endpoints and address vulnerabilities in your API. The labeling service comes with managed and user-defined labels.
+API Shield's labeling service helps you organize your endpoints and address vulnerabilities in your API. The labeling service includes managed and user-defined labels.
 
-Managed labels help you organize endpoints by use case. Managed labels will also automatically identify endpoints with informative or security risks, alerting you on endpoints that need attention.
+Managed labels help you organize endpoints by use case. Cloudflare automatically applies selected managed labels based on observed endpoint use cases and risks that may need attention.
 
-User-defined labels can also be added to endpoints in API Shield by creating a label and adding it to an individual endpoint or multiple endpoints. User-defined labels will be useful for organizing your endpoints by owner, version, or type.
+You can also create user-defined labels and add them to individual or multiple endpoints. User-defined labels are useful for organizing your endpoints by owner, version, or type.
 
 You can filter your endpoints based on the labels.
 
@@ -26,7 +26,9 @@ You can filter your endpoints based on the labels.
 
 ### Managed labels
 
-Use managed labels to identify endpoints by use case. Cloudflare may automatically apply these labels in a future release.
+Use managed labels to identify endpoints by use case. Cloudflare automatically applies selected managed labels, and you can also apply managed labels manually.
+
+`cf-api-endpoint`: Add this label to endpoints that serve machine-readable data or facilitate programmatic interaction.
 
 `cf-log-in`: Add this label to endpoints that accept user credentials. You may have multiple endpoints if you accept username, password, and multi-factor authentication (MFA) across multiple endpoints or requests.
 
@@ -66,29 +68,29 @@ Note
 
 ### Risk labels
 
-Cloudflare automatically runs risk scans every 24 hours on your saved endpoints. API Shield applies these labels when a scan finds security risks on your endpoints. A corresponding Security Center Insight is also raised when risks are found.
+Cloudflare automatically scans your saved endpoints for risks approximately once a day. API Shield applies these labels when a scan finds security risks on your endpoints. A corresponding Security Center Insight is also raised when risks are found.
 
-`cf-risk-missing-auth`: Automatically added when all successful requests lack a session identifier. Refer to [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/#process) for more information.
+`cf-risk-missing-auth`: Automatically added when all successful requests lack a configured session identifier. Refer to [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/#process) for more information.
 
-`cf-risk-mixed-auth`: Automatically added when some successful requests contain a session identifier and some successful requests lack a session identifier. Refer to [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/#process) for more information.
+`cf-risk-mixed-auth`: Automatically added when some successful requests contain a configured session identifier and some successful requests lack one. Refer to [Authentication Posture](https://developers.cloudflare.com/api-shield/security/authentication-posture/#process) for more information.
 
 `cf-risk-sensitive`: Automatically added to endpoints when HTTP responses match the WAF's [Sensitive Data Detection](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/#sensitive-data-detection) ruleset.
 
-`cf-risk-error-anomaly`: Automatically added when an endpoint experiences a recent increase in response errors over the last 24 hours.
+`cf-risk-errors-anomaly`: Automatically added when an endpoint experiences a recent increase in response errors over the last 24 hours.
 
 `cf-risk-latency-anomaly`: Automatically added when an endpoint experiences a recent increase in response latency over the last 24 hours.
 
 `cf-risk-size-anomaly`: Automatically added when an endpoint experiences a spike in response body size over the last 24 hours.
 
-`cf-risk-bola-enumeration`: Automatically added when an endpoint experiences successful responses with drastic differences in the number of unique elements requested by different user sessions.
+`cf-risk-bola-enumeration`: Automatically added when some sessions request unusually many distinct combinations of path parameter values for an endpoint compared with other sessions.
 
-`cf-risk-bola-pollution`: Automatically added when an endpoint experiences successful responses where parameters are found in multiple places in the request, as opposed to what is expected from the API's schema.
+`cf-risk-bola-pollution`: Automatically added when Cloudflare detects an unusual pattern of requests that send different values for the same parameter in its schema-defined location and an unexpected request location. Only requests whose responses have status codes below `400` contribute.
 
 `cf-risk-zombie`: Automatically added when a saved endpoint has not received traffic in 32 days.
 
 Note
 
-Cloudflare will only add authentication labels to endpoints with successful response codes. Refer to the below table for more details.
+Cloudflare applies authentication labels based only on requests with successful response codes. Refer to the following table for more details.
 
 #### Recommended action
 
@@ -98,7 +100,7 @@ How you address risks to your endpoints will depend on its label(s). The followi
 
    View the endpoints labeled as risks and identify if they have been labeled for other risks.
 
-   For example, endpoints labeled `cf-risk-sensitive` and `cf-risk-missing-auth` or `cf-risk-mixed-auth` may contain sensitive data that is available to unauthenticated users. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets) Go to the details pages for endpoints labeled as `cf-risk-missing-auth` or `cf-risk-mixed-auth`, and check for recent changes in the authenticated traffic profile in the last 24 hours and seven days.
+   For example, endpoints labeled `cf-risk-sensitive` and `cf-risk-missing-auth` or `cf-risk-mixed-auth` may return sensitive data in successful responses that lack a configured session identifier. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets) Go to the details pages for endpoints labeled as `cf-risk-missing-auth` or `cf-risk-mixed-auth`, and check for recent changes in configured session identifier presence in the last 24 hours and seven days.
 2. Review traffic to these labeled endpoints in Security Analytics.
 
    Check for unexpected traffic sources and note any irregular traffic patterns.
@@ -171,7 +173,7 @@ You can export per-request Web Assets data to your storage or SIEM system of cho
 Alternatively, you can create a user-defined label via **Security** > **Web Assets**.
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. Go to the **Endpoints** tab.
+2. Go to the **Operations** tab.
 3. Choose the endpoint that you want to label.
 4. Select **Edit endpoint labels**.
 5. Under **User**, select **Create user label**.
@@ -180,8 +182,8 @@ Alternatively, you can create a user-defined label via **Security** > **Web Asse
 
 ## Apply a label to an individual endpoint
 
-1. In the Cloudflare dashboard, go to the **Web assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. In the **Endpoints** tab, choose the endpoint that you want to label.
+1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+2. In the **Operations** tab, choose the endpoint that you want to label.
 3. Select **Edit endpoint labels**.
 4. Add the label(s) that you want to use for the endpoint from the list of managed and user-defined labels.
 5. Select **Save labels**.
@@ -197,7 +199,7 @@ Alternatively, you can create a user-defined label via **Security** > **Web Asse
 
 ## Availability
 
-Endpoint labeling is available to all customers.
+User-defined endpoint labels are available to all customers. Managed endpoint labels require an API Shield subscription.
 
 Was this helpful?
 
@@ -208,5 +210,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#page","headline":"Endpoint labeling service","description":"Organize API endpoints and address vulnerabilities with managed and custom labels.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/og.png?v=2a70dbad887ad007","dateModified":"2026-08-19","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/#page","headline":"Endpoint labeling service","description":"Organize API endpoints and address vulnerabilities with managed and custom labels.","url":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-labels/og.png?v=2a70dbad887ad007","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 ```

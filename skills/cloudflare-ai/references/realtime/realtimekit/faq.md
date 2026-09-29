@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2
 
 # FAQ
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ### API token
 
@@ -29,6 +29,39 @@ To use RealtimeKit APIs, you must have a <a href="https://dash.cloudflare.com">C
 Follow the <a href="https://developers.cloudflare.com/fundamentals/api/get-started/create-token/">Create API token guide</a> to create a token from the <a href="https://dash.cloudflare.com/profile/api-tokens">Cloudflare dashboard ↗︎</a>. When configuring permissions, select **Realtime** &gt; **Realtime Admin**. Configure additional <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">access policies and restrictions</a> for your use case.
 
 Cloudflare API tokens authenticate requests to Cloudflare APIs. Use these tokens only in your backend. Never expose an API token to your frontend or share it with an end user.
+
+</details>
+
+### APIs
+
+<details>
+
+<summary>
+
+Why does the peer report endpoint return a 404 error for every participant ID?
+
+</summary>
+
+The peer report endpoint requires a <code>peer_id</code>, not a <code>participant_id</code>. RealtimeKit creates a peer when a participant joins a meeting. Each time the participant rejoins or reloads the page, RealtimeKit creates a new peer with a new unique peer ID.
+
+To retrieve the peer report data:
+
+1. Call the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/sessions/methods/get_session_participant_details/">Get session participant details</a> endpoint with <code>include_peer_events=true</code>:
+
+   ```txt
+   /accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/participants/{participant_id}?include_peer_events=true
+   ```
+
+   The <code>peer_events</code> field in the response contains every peer ID associated with the participant.
+2. Call the <a href="https://developers.cloudflare.com/api/resources/realtime_kit/subresources/sessions/methods/get_participant_data_from_peer_id/">Get participant data from peer ID</a> endpoint with a <code>peer_id</code> from <code>peer_events</code>:
+
+   ```txt
+   /accounts/{account_id}/realtime/kit/{app_id}/sessions/peer-report/{peer_id}
+   ```
+
+   This endpoint returns call statistics for that peer.
+
+Passing a <code>participant_id</code> to the peer report endpoint returns a <code>404</code> response with <code>No peer event exists for id &lt;given-id&gt;</code>.
 
 </details>
 
@@ -535,5 +568,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2d2ed91c9b96","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/faq/#page","headline":"FAQ","description":"Frequently asked questions about RealtimeKit meetings, recordings, and SDK usage.","url":"https://developers.cloudflare.com/realtime/realtimekit/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/faq/og.png?v=786a2d2ed91c9b96","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
