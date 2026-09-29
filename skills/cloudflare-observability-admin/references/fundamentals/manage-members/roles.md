@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/manage-members/roles/og.pn
 
 # Roles
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/roles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/manage-members/roles/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Whenever you [add a new member](https://developers.cloudflare.com/fundamentals/manage-members/manage/) to your account, you can assign policies to those users and make use of the available roles. Roles can only ever be assigned to their given scope and multiple roles can be assigned to a given policy.
 
@@ -23,11 +23,12 @@ Account-scoped roles apply across an entire Cloudflare account, and through all 
 | Role | Description |
 | --- | --- |
 | Administrator | Can access the full account and edit subscriptions. Cannot manage members nor billing profile. |
-| Super Administrator - All Privileges | Can edit any Cloudflare setting, make purchases, update billing, manage members, and create account-owned API tokens. Super Administrators can revoke the access of other Super Administrators. |
+| Super Administrator - All Privileges | Can edit any Cloudflare setting, make purchases, update billing, manage members, create account-owned API tokens, and manage all account-owned API tokens. Super Administrators can revoke the access of other Super Administrators. |
 | Administrator Read Only | Can access the full account in read-only mode. |
 | Analytics | Can read Analytics. |
 | API Gateway | Grants full access to [API Gateway (including API Shield)](https://developers.cloudflare.com/api-shield/) for all domains in an account. |
 | API Gateway Read | Grants read access to [API Gateway (including API Shield)](https://developers.cloudflare.com/api-shield/) for all domains in an account. |
+| API Token Provisioning | Can create [account API tokens](https://developers.cloudflare.com/fundamentals/api/get-started/account-owned-tokens/). |
 | Application Security Reports Read | Can read Application Security Reports. |
 | Audit Logs Viewer | Can view [Audit Logs](https://developers.cloudflare.com/fundamentals/account/account-security/review-audit-logs/). |
 | Bot Management (Account-Wide) | Can edit [Bot Management](https://developers.cloudflare.com/bots/plans/bm-subscription/) (including [Super Bot Fight Mode](https://developers.cloudflare.com/bots/get-started/super-bot-fight-mode/)) configurations for all domains in account. |
@@ -152,5 +153,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/roles/#page","headline":"Roles","description":"Review the account-scoped, domain-scoped, and resource-scoped roles available for Cloudflare account members.","url":"https://developers.cloudflare.com/fundamentals/manage-members/roles/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/manage-members/roles/og.png?v=adf9a7f8fdfd1e4a","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/manage-members/roles/#page","headline":"Roles","description":"Review the account-scoped, domain-scoped, and resource-scoped roles available for Cloudflare account members.","url":"https://developers.cloudflare.com/fundamentals/manage-members/roles/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/manage-members/roles/og.png?v=adf9a7f8fdfd1e4a","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -64,7 +64,7 @@ app.onError((err, c) => {
 
 ## fire()
 
-> **warning**: **`app.fire()` is deprecated**. Use `fire()` from `hono/service-worker` instead. See the [Service Worker documentation](/docs/getting-started/service-worker) for details.
+> **warning**: **`app.fire()` is deprecated**. Use `fire()` from `@hono/service-worker` instead. See the [Service Worker documentation](/docs/getting-started/service-worker) for details.
 
 `app.fire()` automatically adds a global `fetch` event listener.
 

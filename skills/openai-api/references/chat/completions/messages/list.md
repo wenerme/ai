@@ -36,74 +36,59 @@ returned.
 
   - `id: string`
 
-    The identifier of the chat message.
+  - `content: string or null`
 
-  - `content_parts: optional array of ChatCompletionContentPartText or ChatCompletionContentPartImage or null`
+  - `content_parts: array of object { type, file, image_url, 2 more }  or null`
 
-    If a content parts array was provided, this is an array of `text` and `image_url` parts.
-    Otherwise, null.
+    - `type: "text" or "image_url" or "input_audio" or "file"`
 
-    - `ChatCompletionContentPartText object { text, type, prompt_cache_breakpoint }`
+      - `"text"`
 
-      Learn about [text inputs](/api/docs/guides/text).
+      - `"image_url"`
 
-      - `text: string`
+      - `"input_audio"`
 
-        The text content.
+      - `"file"`
 
-      - `type: "text"`
+    - `file: optional object { file_data, file_id, filename }  or null`
 
-        The type of the content part.
+      - `file_data: optional string or null`
 
-        - `"text"`
+      - `file_id: optional string or null`
 
-      - `prompt_cache_breakpoint: optional object { mode }`
+      - `filename: optional string or null`
 
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
+    - `image_url: optional object { url, detail }  or null`
 
-        - `mode: "explicit"`
+      - `url: string`
 
-          The breakpoint mode. Always `explicit`.
+      - `detail: optional string or null`
 
-          - `"explicit"`
+    - `input_audio: optional object { data, format }  or null`
 
-    - `ChatCompletionContentPartImage object { image_url, type, prompt_cache_breakpoint }`
+      - `data: string`
 
-      Learn about [image inputs](/api/docs/guides/images-vision).
+      - `format: string`
 
-      - `image_url: object { url, detail }`
+    - `text: optional string or null`
 
-        - `url: string`
+  - `role: "user" or "assistant" or "tool" or 3 more`
 
-          Either a URL of the image or the base64 encoded image data.
+    - `"user"`
 
-        - `detail: optional "auto" or "low" or "high"`
+    - `"assistant"`
 
-          Specifies the detail level of the image. Learn more in the [Vision guide](/api/docs/guides/images-vision#choose-an-image-detail-level).
+    - `"tool"`
 
-          - `"auto"`
+    - `"system"`
 
-          - `"low"`
+    - `"function"`
 
-          - `"high"`
+    - `"developer"`
 
-      - `type: "image_url"`
+  - `name: optional string or null`
 
-        The type of the content part.
-
-        - `"image_url"`
-
-      - `prompt_cache_breakpoint: optional object { mode }`
-
-        Marks the exact end of a reusable prompt prefix. The breakpoint inherits its TTL from the request's `prompt_cache_options.ttl`; the boundary is not rounded to a token block.
-
-        - `mode: "explicit"`
-
-          The breakpoint mode. Always `explicit`.
-
-          - `"explicit"`
-
-- `first_id: string`
+- `first_id: string or null`
 
   The identifier of the first chat message in the data array.
 
@@ -111,7 +96,7 @@ returned.
 
   Indicates whether there are more chat messages available.
 
-- `last_id: string`
+- `last_id: string or null`
 
   The identifier of the last chat message in the data array.
 
@@ -134,50 +119,29 @@ curl https://api.openai.com/v1/chat/completions/$COMPLETION_ID/messages \
 {
   "data": [
     {
-      "content": "content",
-      "refusal": "refusal",
-      "role": "assistant",
-      "annotations": [
-        {
-          "type": "url_citation",
-          "url_citation": {
-            "end_index": 0,
-            "start_index": 0,
-            "title": "title",
-            "url": "https://example.com"
-          }
-        }
-      ],
-      "audio": {
-        "id": "id",
-        "data": "data",
-        "expires_at": 0,
-        "transcript": "transcript"
-      },
-      "function_call": {
-        "arguments": "arguments",
-        "name": "name"
-      },
-      "tool_calls": [
-        {
-          "id": "id",
-          "function": {
-            "arguments": "arguments",
-            "name": "name"
-          },
-          "type": "function"
-        }
-      ],
       "id": "id",
+      "content": "content",
       "content_parts": [
         {
-          "text": "text",
           "type": "text",
-          "prompt_cache_breakpoint": {
-            "mode": "explicit"
-          }
+          "file": {
+            "file_data": "file_data",
+            "file_id": "file_id",
+            "filename": "filename"
+          },
+          "image_url": {
+            "url": "url",
+            "detail": "detail"
+          },
+          "input_audio": {
+            "data": "data",
+            "format": "format"
+          },
+          "text": "text"
         }
-      ]
+      ],
+      "role": "user",
+      "name": "name"
     }
   ],
   "first_id": "first_id",

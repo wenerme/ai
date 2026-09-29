@@ -23,6 +23,32 @@ Packages and input files are prepared before setup commands run. A nonzero setup
 exit status prevents the agent from starting. Use a setup command to check required
 dependencies or files. Templates save configuration, not a running workspace.
 
+### Choose a container size
+
+Set `environment.container_size` when creating a session to choose the CPU and
+memory available to your sandbox. Defaults to `medium`.
+
+| Size     | vCPU | Memory |
+| -------- | ---- | ------ |
+| `small`  | 1    | 1 GB   |
+| `medium` | 2    | 4 GB   |
+| `large`  | 4    | 16 GB  |
+
+For example, include this environment in your
+`POST /v1/agents/sessions` request to select `small`:
+
+```json
+{
+  "environment": {
+    "type": "openai_hosted",
+    "container_size": "small"
+  }
+}
+```
+
+The returned session reports the selected size in `environment.container_size`.
+This setting applies only to OpenAI-hosted sandboxes.
+
 ### Control network access
 
 | `network.access` | Behavior                                                                         |

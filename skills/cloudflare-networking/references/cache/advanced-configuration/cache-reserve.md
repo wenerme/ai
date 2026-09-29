@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cache/advanced-configuration/cache-rese
 
 # Cache Reserve
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Smart Shield
 
@@ -58,9 +58,15 @@ Not all assets are eligible for Cache Reserve. To be admitted into Cache Reserve
 
 ## Purge behavior
 
-To remove all data from Cache Reserve, refer to [Cache Reserve clear button](#cache-reserve-clear-button).
+[Purge](https://developers.cloudflare.com/cache/how-to/purge-cache/) forces a cache miss for matching Cache Reserve content, regardless of purge type. On the next request, your origin must deliver the content in full, and Cloudflare writes it to Cache Reserve again.
 
-Note that [Purge Everything](https://developers.cloudflare.com/cache/how-to/purge-cache/) performs a soft purge on Cache Reserve and does not update metadata set by [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/) (such as cache tags). To refresh that metadata, purge the individual asset or wait for it to fully expire.
+Purging by URL deletes the content from Cache Reserve. Purging by tag, hostname, prefix, or everything does not delete it right away. Matching content continues to incur storage costs until a later request replaces it or its retention period ends.
+
+[Invalidation](https://developers.cloudflare.com/cache/guides/invalidate-cache/) keeps matching content in Cache Reserve and marks it as stale. If your origin responds with `304 Not Modified`, Cloudflare reuses the stored content instead of fetching it again. Updating the stored content after the `304` response is a Class A operation.
+
+To refresh metadata set by [Cache Response Rules](https://developers.cloudflare.com/cache/how-to/cache-response-rules/), such as cache tags, purge the affected content. A `304 Not Modified` response to an invalidated request does not refresh this metadata.
+
+To remove all data from Cache Reserve, refer to [Cache Reserve clear button](#cache-reserve-clear-button).
 
 ## Limits
 
@@ -121,17 +127,15 @@ Class A operations are performed based on cache misses from Cloudflare’s CDN. 
 
 Class B operations are performed when data needs to be fetched from Cache Reserve to respond to a miss in the edge cache.
 
-#### Purge
+#### Purge and invalidation
 
-Asset purges are free operations.
+Purge requests are free operations. Invalidation requests can result in Class A operations.
 
-Cache Reserve will be instantly purged along with edge cache when you send a purge by URL request. Refer to [cache configurations](https://developers.cloudflare.com/cache/how-to/purge-cache/) for details.
+[Purging](https://developers.cloudflare.com/cache/how-to/purge-cache/) content forces a cache miss in both Cache Reserve and the edge cache, regardless of purge type. The next request for that content is fetched from your origin and written to Cache Reserve again, which is a Class A operation.
 
-Other purge methods, such as purge by tag, host, prefix, or purge everything will force an attempt to [revalidate](https://developers.cloudflare.com/cache/concepts/cache-responses/#revalidated) on the subsequent request for the Cache Reserve asset. Note that assets purged this way will still incur storage costs until their retention TTL expires.
+Purging by URL deletes content from Cache Reserve. Purging by tag, hostname, prefix, or everything does not delete it right away. Matching content stays stored and continues to incur storage costs until a later request replaces it or its retention period ends.
 
-Note
-
-Note this differs from the standard CDN's purge by tag, host, or prefix features which force a cache miss, requiring the origin to deliver the asset in full.
+[Invalidating](https://developers.cloudflare.com/cache/guides/invalidate-cache/) content keeps it in Cache Reserve and marks it for revalidation. If your origin responds with `304 Not Modified`, Cloudflare reuses the stored content instead of fetching it from your origin. Updating the stored content after the `304` response is a Class A operation. Invalidating by URL also updates the stored content when you send the request, which is a Class A operation. Invalidated content remains stored and continues to incur storage costs.
 
 ## Cache Reserve billing examples
 
@@ -296,5 +300,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#page","headline":"Cache Reserve","description":"Persist cached content in R2 storage to eliminate cache evictions.","url":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/og.png?v=70fed5b99bd7359c","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/#page","headline":"Cache Reserve","description":"Persist cached content in R2 storage to eliminate cache evictions.","url":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/og.png?v=70fed5b99bd7359c","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -58,7 +58,7 @@ IDETerminalStandaloneCloudExtension
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+   Set up a KV namespace for edge-cached session storage in my Worker.
    ```
 
 
@@ -163,23 +163,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
 Add a cron trigger to my Worker that processes a job queue every hour.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ## Tips

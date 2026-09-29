@@ -1,7 +1,7 @@
 ---
-description: API reference for the Container interface and utility functions
-title: Container Interface
-image: https://developers.cloudflare.com/containers/reference/container-class/og.png?v=46eca51d68e51903
+description: API reference for the Container class and its built-in lifecycle helpers.
+title: Container class
+image: https://developers.cloudflare.com/containers/api/container-class/og.png?v=26c6ffaa28be5042
 ---
 
 [Skip to content](#main-content)
@@ -10,11 +10,13 @@ image: https://developers.cloudflare.com/containers/reference/container-class/og
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Container Interface
+# Container class
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/reference/container-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/api/container-class/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The [`Container` class ↗︎](https://github.com/cloudflare/containers) from [`@cloudflare/containers` ↗︎](https://www.npmjs.com/package/@cloudflare/containers) is the most common way to interact with container instances from a Worker.
+The [`Container` class ↗︎](https://github.com/cloudflare/containers) from [`@cloudflare/containers` ↗︎](https://www.npmjs.com/package/@cloudflare/containers) provides lifecycle helpers for container instances. For direct lifecycle control, use the [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/).
+
+To move an existing application to direct control, refer to [Migrate to the Durable Object Container API](https://developers.cloudflare.com/containers/guides/migrate-to-durable-object-container-api/).
 
 **`Container` extends [`DurableObject`](https://developers.cloudflare.com/durable-objects/api/base/).** The Durable Object manages routing, persistent state, and lifecycle hooks, while the container process runs your image inside a Linux VM. Because your subclass is a Durable Object, you have access to the full Durable Object API — including [`this.ctx.storage`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) for persistent SQLite-backed storage and [`this.ctx.id`](https://developers.cloudflare.com/durable-objects/api/id/) for the unique instance identifier. Use Durable Object storage to persist state that should survive container restarts, such as configuration, user data, or task results.
 
@@ -135,7 +137,7 @@ Configure these as class fields on your subclass. They apply to every instance o
 - **`sleepAfter`** ( `string | number`, default: `"10m"`) — how long to keep the container alive without activity before shutting it down. Accepts a number of seconds or a duration string such as `"30s"`, `"5m"`, or `"1h"`. Activity resets the timer — see [`renewActivityTimeout()`](#renewactivitytimeout) for manual resets.
 - **`envVars`** ( `Record<string, string>`, default: `{}`) — environment variables passed to the container on every start. For per-instance variables, pass `envVars` through [`startAndWaitForPorts()`](#startandwaitforports) instead.
 - **`entrypoint`** ( `string[]`, optional) — overrides the image's default entrypoint. Useful when you want to run a different command without rebuilding the image, such as a dev server or a one-off task.
-- **`enableInternet`** ( `boolean`, default: `true`) — controls whether the container can make outbound HTTP requests. Set to `false` for sandboxed environments where you want to intercept or block all outbound traffic. For more information, refer to [Handle outbound traffic](https://developers.cloudflare.com/containers/guides/outbound-traffic/).
+- **`enableInternet`** ( `boolean`, default: `true`) — controls whether the container can make outbound HTTP requests. Set to `false` for sandboxed environments where you want to intercept or block all outbound traffic. For more information, refer to [Handle outbound traffic](https://developers.cloudflare.com/containers/configuration/outbound-traffic/).
 - **`pingEndpoint`** ( `string`, default: `"ping"`) — the host and path the class uses to health-check the container during startup. Most users do not need to change this.
 
 ## Lifecycle hooks
@@ -978,7 +980,7 @@ export default {
 };
 ```
 
-For more information, refer to [Handle outbound traffic](https://developers.cloudflare.com/containers/guides/outbound-traffic/).
+For more information, refer to [Handle outbound traffic](https://developers.cloudflare.com/containers/configuration/outbound-traffic/).
 
 ## Utility functions
 
@@ -1112,5 +1114,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/reference/container-class/#page","headline":"Container Interface","description":"API reference for the Container interface and utility functions","url":"https://developers.cloudflare.com/containers/reference/container-class/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/reference/container-class/og.png?v=46eca51d68e51903","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/api/container-class/#page","headline":"Container class","description":"API reference for the Container class and its built-in lifecycle helpers.","url":"https://developers.cloudflare.com/containers/api/container-class/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/api/container-class/og.png?v=26c6ffaa28be5042","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -490,6 +490,6 @@ Set `environment` alongside `agent` when creating a session. It determines where
 
 Choose `none`, `openai_hosted`, or `self_hosted`. [Architecture](https://developers.openai.com/api/docs/guides/agents-api/architecture) explains when to use each option and who manages the environment.
 
-For an OpenAI-hosted environment, configure the packages, initial files, and network access the task needs. You can reuse an environment template across sessions. For a self-hosted environment, prepare your compute and [connect an executor](https://developers.openai.com/api/docs/guides/agents-api/environments/self-hosted).
+For an OpenAI-hosted environment, [choose a container size](https://developers.openai.com/api/docs/guides/agents-api/environments/openai-hosted#choose-a-container-size) and configure the packages, initial files, and network access the task needs. You can reuse an environment template across sessions. For a self-hosted environment, prepare your compute and [connect an executor](https://developers.openai.com/api/docs/guides/agents-api/environments/self-hosted).
 
 See the [Create session reference](https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/methods/create) for environment fields and [Plugins](https://developers.openai.com/api/docs/guides/agents-api/tools/plugins) for skills, plugins, and templates. See [Session artifacts](https://developers.openai.com/api/docs/guides/agents-api/environments/files) for files you want to keep after execution.

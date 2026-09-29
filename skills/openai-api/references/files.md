@@ -152,9 +152,9 @@ curl https://api.openai.com/v1/files \
 curl https://api.openai.com/v1/files \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -F purpose="fine-tune" \
-  -F file="@mydata.jsonl"
-  -F expires_after[anchor]="created_at"
-  -F expires_after[seconds]=2592000
+  -F file="@mydata.jsonl" \
+  -F 'expires_after[anchor]=created_at' \
+  -F 'expires_after[seconds]=2592000'
 ```
 
 #### Response
@@ -165,9 +165,10 @@ curl https://api.openai.com/v1/files \
   "object": "file",
   "bytes": 120000,
   "created_at": 1677610602,
-  "expires_at": 1677614202,
+  "expires_at": 1680202602,
   "filename": "mydata.jsonl",
-  "purpose": "fine-tune"
+  "purpose": "fine-tune",
+  "status": "processed"
 }
 ```
 
@@ -380,7 +381,8 @@ curl https://api.openai.com/v1/files \
       "created_at": 1613677385,
       "expires_at": 1677614202,
       "filename": "salesOverview.pdf",
-      "purpose": "assistants"
+      "purpose": "assistants",
+      "status": "processed"
     },
     {
       "id": "file-abc456",
@@ -389,7 +391,8 @@ curl https://api.openai.com/v1/files \
       "created_at": 1613779121,
       "expires_at": 1677614202,
       "filename": "puppy.jsonl",
-      "purpose": "fine-tune"
+      "purpose": "fine-tune",
+      "status": "processed"
     }
   ],
   "first_id": "file-abc123",
@@ -512,9 +515,10 @@ curl https://api.openai.com/v1/files/file-abc123 \
   "object": "file",
   "bytes": 120000,
   "created_at": 1677610602,
-  "expires_at": 1677614202,
+  "expires_at": 1680202602,
   "filename": "mydata.jsonl",
-  "purpose": "fine-tune"
+  "purpose": "fine-tune",
+  "status": "processed"
 }
 ```
 

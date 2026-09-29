@@ -2496,7 +2496,8 @@ curl https://api.openai.com/v1/chat/completions \
               }
             ]
           }
-        ]
+        ],
+        "refusal": null
       },
       "finish_reason": "stop"
     }
@@ -2510,8 +2511,7 @@ curl https://api.openai.com/v1/chat/completions \
       "accepted_prediction_tokens": 0,
       "rejected_prediction_tokens": 0
     }
-  },
-  "system_fingerprint": null
+  }
 }
 ```
 

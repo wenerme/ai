@@ -10341,7 +10341,7 @@
 
               The format of the input audio.
 
-            - `noise_reduction: optional object { type }`
+            - `noise_reduction: optional object { type }  or null`
 
               Configuration for input audio noise reduction. This can be set to `null` to turn off.
               Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
@@ -10355,11 +10355,11 @@
 
                 - `"far_field"`
 
-            - `transcription: optional object { language, languages, model, prompt }`
+            - `transcription: optional object { language, languages, model, prompt }  or null`
 
               Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
-              - `language: optional string`
+              - `language: optional string or null`
 
                 The language of the input audio.
 
@@ -10549,7 +10549,7 @@
 
           Expiration timestamp for the session, in seconds since epoch.
 
-        - `include: optional array of "item.input_audio_transcription.logprobs"`
+        - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
           Additional fields to include in server outputs.
 
@@ -11124,7 +11124,7 @@
 
               The PCM audio format. Only a 24kHz sample rate is supported.
 
-            - `noise_reduction: optional object { type }`
+            - `noise_reduction: optional object { type }  or null`
 
               Configuration for input audio noise reduction.
 
@@ -11132,11 +11132,11 @@
 
                 Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-            - `transcription: optional object { language, languages, model, prompt }`
+            - `transcription: optional object { language, languages, model, prompt }  or null`
 
               Configuration of the transcription model.
 
-              - `language: optional string`
+              - `language: optional string or null`
 
                 The language of the input audio.
 
@@ -11205,7 +11205,7 @@
 
           Expiration timestamp for the session, in seconds since epoch.
 
-        - `include: optional array of "item.input_audio_transcription.logprobs"`
+        - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
           Additional fields to include in server outputs.
 
@@ -11680,7 +11680,7 @@
 
     Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
-    - `language: optional string`
+    - `language: optional string or null`
 
       The language of the input audio.
 
@@ -19300,7 +19300,7 @@
 
                 - `"audio/pcma"`
 
-          - `noise_reduction: optional object { type }`
+          - `noise_reduction: optional object { type }  or null`
 
             Configuration for input audio noise reduction. This can be set to `null` to turn off.
             Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
@@ -19314,11 +19314,11 @@
 
               - `"far_field"`
 
-          - `transcription: optional object { language, languages, model, prompt }`
+          - `transcription: optional object { language, languages, model, prompt }  or null`
 
             Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
-            - `language: optional string`
+            - `language: optional string or null`
 
               The language of the input audio.
 
@@ -19508,7 +19508,7 @@
 
         Expiration timestamp for the session, in seconds since epoch.
 
-      - `include: optional array of "item.input_audio_transcription.logprobs"`
+      - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
         Additional fields to include in server outputs.
 
@@ -20083,7 +20083,7 @@
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
-          - `noise_reduction: optional object { type }`
+          - `noise_reduction: optional object { type }  or null`
 
             Configuration for input audio noise reduction.
 
@@ -20091,11 +20091,11 @@
 
               Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-          - `transcription: optional object { language, languages, model, prompt }`
+          - `transcription: optional object { language, languages, model, prompt }  or null`
 
             Configuration of the transcription model.
 
-            - `language: optional string`
+            - `language: optional string or null`
 
               The language of the input audio.
 
@@ -20164,7 +20164,7 @@
 
         Expiration timestamp for the session, in seconds since epoch.
 
-      - `include: optional array of "item.input_audio_transcription.logprobs"`
+      - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
         Additional fields to include in server outputs.
 
@@ -21267,7 +21267,7 @@
 
                 - `"audio/pcma"`
 
-          - `noise_reduction: optional object { type }`
+          - `noise_reduction: optional object { type }  or null`
 
             Configuration for input audio noise reduction. This can be set to `null` to turn off.
             Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
@@ -21281,11 +21281,11 @@
 
               - `"far_field"`
 
-          - `transcription: optional object { language, languages, model, prompt }`
+          - `transcription: optional object { language, languages, model, prompt }  or null`
 
             Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
-            - `language: optional string`
+            - `language: optional string or null`
 
               The language of the input audio.
 
@@ -21475,7 +21475,7 @@
 
         Expiration timestamp for the session, in seconds since epoch.
 
-      - `include: optional array of "item.input_audio_transcription.logprobs"`
+      - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
         Additional fields to include in server outputs.
 
@@ -22050,7 +22050,7 @@
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
-          - `noise_reduction: optional object { type }`
+          - `noise_reduction: optional object { type }  or null`
 
             Configuration for input audio noise reduction.
 
@@ -22058,11 +22058,11 @@
 
               Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-          - `transcription: optional object { language, languages, model, prompt }`
+          - `transcription: optional object { language, languages, model, prompt }  or null`
 
             Configuration of the transcription model.
 
-            - `language: optional string`
+            - `language: optional string or null`
 
               The language of the input audio.
 
@@ -22131,7 +22131,7 @@
 
         Expiration timestamp for the session, in seconds since epoch.
 
-      - `include: optional array of "item.input_audio_transcription.logprobs"`
+      - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
         Additional fields to include in server outputs.
 
@@ -22336,7 +22336,7 @@
 
       Configuration of the transcription model.
 
-      - `language: optional string`
+      - `language: optional string or null`
 
         The language of the input audio.
 
@@ -24538,7 +24538,7 @@ Returns the created client secret and the effective session object. The client s
 
               - `"audio/pcma"`
 
-        - `noise_reduction: optional object { type }`
+        - `noise_reduction: optional object { type }  or null`
 
           Configuration for input audio noise reduction. This can be set to `null` to turn off.
           Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
@@ -24552,11 +24552,11 @@ Returns the created client secret and the effective session object. The client s
 
             - `"far_field"`
 
-        - `transcription: optional object { language, languages, model, prompt }`
+        - `transcription: optional object { language, languages, model, prompt }  or null`
 
           Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
-          - `language: optional string`
+          - `language: optional string or null`
 
             The language of the input audio.
 
@@ -24746,7 +24746,7 @@ Returns the created client secret and the effective session object. The client s
 
       Expiration timestamp for the session, in seconds since epoch.
 
-    - `include: optional array of "item.input_audio_transcription.logprobs"`
+    - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
       Additional fields to include in server outputs.
 
@@ -25321,7 +25321,7 @@ Returns the created client secret and the effective session object. The client s
 
           The PCM audio format. Only a 24kHz sample rate is supported.
 
-        - `noise_reduction: optional object { type }`
+        - `noise_reduction: optional object { type }  or null`
 
           Configuration for input audio noise reduction.
 
@@ -25329,11 +25329,11 @@ Returns the created client secret and the effective session object. The client s
 
             Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-        - `transcription: optional object { language, languages, model, prompt }`
+        - `transcription: optional object { language, languages, model, prompt }  or null`
 
           Configuration of the transcription model.
 
-          - `language: optional string`
+          - `language: optional string or null`
 
             The language of the input audio.
 
@@ -25402,7 +25402,7 @@ Returns the created client secret and the effective session object. The client s
 
       Expiration timestamp for the session, in seconds since epoch.
 
-    - `include: optional array of "item.input_audio_transcription.logprobs"`
+    - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
       Additional fields to include in server outputs.
 
@@ -25653,7 +25653,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
                 - `"audio/pcma"`
 
-          - `noise_reduction: optional object { type }`
+          - `noise_reduction: optional object { type }  or null`
 
             Configuration for input audio noise reduction. This can be set to `null` to turn off.
             Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
@@ -25667,11 +25667,11 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               - `"far_field"`
 
-          - `transcription: optional object { language, languages, model, prompt }`
+          - `transcription: optional object { language, languages, model, prompt }  or null`
 
             Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
-            - `language: optional string`
+            - `language: optional string or null`
 
               The language of the input audio.
 
@@ -25861,7 +25861,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         Expiration timestamp for the session, in seconds since epoch.
 
-      - `include: optional array of "item.input_audio_transcription.logprobs"`
+      - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
         Additional fields to include in server outputs.
 
@@ -26436,7 +26436,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             The PCM audio format. Only a 24kHz sample rate is supported.
 
-          - `noise_reduction: optional object { type }`
+          - `noise_reduction: optional object { type }  or null`
 
             Configuration for input audio noise reduction.
 
@@ -26444,11 +26444,11 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
               Type of noise reduction. `near_field` is for close-talking microphones such as headphones, `far_field` is for far-field microphones such as laptop or conference room microphones.
 
-          - `transcription: optional object { language, languages, model, prompt }`
+          - `transcription: optional object { language, languages, model, prompt }  or null`
 
             Configuration of the transcription model.
 
-            - `language: optional string`
+            - `language: optional string or null`
 
               The language of the input audio.
 
@@ -26517,7 +26517,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
         Expiration timestamp for the session, in seconds since epoch.
 
-      - `include: optional array of "item.input_audio_transcription.logprobs"`
+      - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
         Additional fields to include in server outputs.
 
@@ -26597,7 +26597,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `"audio/pcma"`
 
-      - `noise_reduction: optional object { type }`
+      - `noise_reduction: optional object { type }  or null`
 
         Configuration for input audio noise reduction. This can be set to `null` to turn off.
         Noise reduction filters audio added to the input audio buffer before it is sent to VAD and the model.
@@ -26611,11 +26611,11 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           - `"far_field"`
 
-      - `transcription: optional object { language, languages, model, prompt }`
+      - `transcription: optional object { language, languages, model, prompt }  or null`
 
         Configuration for input audio transcription, defaults to off and can be set to `null` to turn off once on. Input audio transcription is not native to the model, since the model consumes audio directly. Transcription runs asynchronously through [the /audio/transcriptions endpoint](/api/reference/resources/audio/subresources/transcriptions/methods/create) and should be treated as guidance of input audio content rather than precisely what the model heard. The client can optionally set the language and prompt for transcription, these offer additional guidance to the transcription service.
 
-        - `language: optional string`
+        - `language: optional string or null`
 
           The language of the input audio.
 
@@ -26805,7 +26805,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
     Expiration timestamp for the session, in seconds since epoch.
 
-  - `include: optional array of "item.input_audio_transcription.logprobs"`
+  - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
     Additional fields to include in server outputs.
 
@@ -27418,7 +27418,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
             - `"audio/pcma"`
 
-      - `noise_reduction: optional object { type }`
+      - `noise_reduction: optional object { type }  or null`
 
         Configuration for input audio noise reduction.
 
@@ -27430,11 +27430,11 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
           - `"far_field"`
 
-      - `transcription: optional object { language, languages, model, prompt }`
+      - `transcription: optional object { language, languages, model, prompt }  or null`
 
         Configuration of the transcription model.
 
-        - `language: optional string`
+        - `language: optional string or null`
 
           The language of the input audio.
 
@@ -27503,7 +27503,7 @@ curl -X POST https://api.openai.com/v1/realtime/client_secrets \
 
     Expiration timestamp for the session, in seconds since epoch.
 
-  - `include: optional array of "item.input_audio_transcription.logprobs"`
+  - `include: optional array of "item.input_audio_transcription.logprobs" or null`
 
     Additional fields to include in server outputs.
 
@@ -27982,7 +27982,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
           - `"audio/pcma"`
 
-    - `noise_reduction: optional object { type }`
+    - `noise_reduction: optional object { type }  or null`
 
       Configuration for input audio noise reduction.
 
@@ -27998,7 +27998,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
       Configuration for input audio transcription.
 
-      - `language: optional string`
+      - `language: optional string or null`
 
         The language of the input audio.
 
@@ -28036,7 +28036,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The prompt configured for input audio transcription, when present.
 
-    - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
+    - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }  or null`
 
       Configuration for turn detection.
 
@@ -28203,7 +28203,7 @@ Returns the created Realtime session object, plus an ephemeral key.
       The name of the workflow to attach to this trace. This is used to
       name the trace in the traces dashboard.
 
-- `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
+- `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }  or null`
 
   Configuration for turn detection. Can be set to `null` to turn off. Server
   VAD means that the model will detect the start and end of speech based on
@@ -28412,7 +28412,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
             - `"audio/pcma"`
 
-      - `noise_reduction: optional object { type }`
+      - `noise_reduction: optional object { type }  or null`
 
         Configuration for input audio noise reduction.
 
@@ -28428,7 +28428,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
         Configuration for input audio transcription.
 
-        - `language: optional string`
+        - `language: optional string or null`
 
           The language of the input audio.
 
@@ -28466,7 +28466,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
           The prompt configured for input audio transcription, when present.
 
-      - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
+      - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }  or null`
 
         Configuration for turn detection.
 
@@ -28633,7 +28633,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
         The name of the workflow to attach to this trace. This is used to
         name the trace in the traces dashboard.
 
-  - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
+  - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }  or null`
 
     Configuration for turn detection. Can be set to `null` to turn off. Server
     VAD means that the model will detect the start and end of speech based on
@@ -28832,7 +28832,7 @@ Returns the created Realtime transcription session object, plus an ephemeral key
 
   Configuration of the transcription model.
 
-  - `language: optional string`
+  - `language: optional string or null`
 
     The language of the input audio.
 
@@ -29012,7 +29012,7 @@ curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
 
     Configuration of the transcription model.
 
-    - `language: optional string`
+    - `language: optional string or null`
 
       The language of the input audio.
 

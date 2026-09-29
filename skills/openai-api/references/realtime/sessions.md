@@ -440,7 +440,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
           - `"audio/pcma"`
 
-    - `noise_reduction: optional object { type }`
+    - `noise_reduction: optional object { type }  or null`
 
       Configuration for input audio noise reduction.
 
@@ -456,7 +456,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
       Configuration for input audio transcription.
 
-      - `language: optional string`
+      - `language: optional string or null`
 
         The language of the input audio.
 
@@ -494,7 +494,7 @@ Returns the created Realtime session object, plus an ephemeral key.
 
         The prompt configured for input audio transcription, when present.
 
-    - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
+    - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }  or null`
 
       Configuration for turn detection.
 
@@ -661,7 +661,7 @@ Returns the created Realtime session object, plus an ephemeral key.
       The name of the workflow to attach to this trace. This is used to
       name the trace in the traces dashboard.
 
-- `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
+- `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }  or null`
 
   Configuration for turn detection. Can be set to `null` to turn off. Server
   VAD means that the model will detect the start and end of speech based on
@@ -870,7 +870,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
             - `"audio/pcma"`
 
-      - `noise_reduction: optional object { type }`
+      - `noise_reduction: optional object { type }  or null`
 
         Configuration for input audio noise reduction.
 
@@ -886,7 +886,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
         Configuration for input audio transcription.
 
-        - `language: optional string`
+        - `language: optional string or null`
 
           The language of the input audio.
 
@@ -924,7 +924,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
 
           The prompt configured for input audio transcription, when present.
 
-      - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
+      - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }  or null`
 
         Configuration for turn detection.
 
@@ -1091,7 +1091,7 @@ curl -X POST https://api.openai.com/v1/realtime/sessions \
         The name of the workflow to attach to this trace. This is used to
         name the trace in the traces dashboard.
 
-  - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }`
+  - `turn_detection: optional object { prefix_padding_ms, silence_duration_ms, threshold, type }  or null`
 
     Configuration for turn detection. Can be set to `null` to turn off. Server
     VAD means that the model will detect the start and end of speech based on

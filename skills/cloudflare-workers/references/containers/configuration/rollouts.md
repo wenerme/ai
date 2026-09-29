@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/configuration/rollouts/og.pn
 
 # Rollouts
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/rollouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/rollouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## How rollouts work
 
@@ -57,7 +57,7 @@ When the rollout selects a container instance to update:
 2. **Signal stop.** The platform sends `SIGTERM` to the main process in the container so it can stop accepting new work and finish in-flight work. Handle `SIGTERM` in your image if that process needs cleanup before exit.
 3. **Drain.** The process has up to 15 minutes to exit after `SIGTERM`.
 4. **Force stop if needed.** If the process is still running after 15 minutes, the platform sends `SIGKILL`.
-5. **After exit.** The Container class [`onStop`](https://developers.cloudflare.com/containers/reference/container-class/#onstop) hook can run in the Worker once the container process has exited.
+5. **After exit.** The Container class [`onStop`](https://developers.cloudflare.com/containers/api/container-class/#onstop) hook can run in the Worker once the container process has exited.
 6. **Start a new container instance** with the target image. Disk is [ephemeral](https://developers.cloudflare.com/containers/faq/#is-disk-persistent-what-happens-to-my-disk-when-my-container-sleeps) unless you store data outside the container filesystem.
 
 Each selected container instance follows this sequence on its own schedule. The fleet does not restart in a single moment.
@@ -183,7 +183,7 @@ new_sqlite_classes = [ "MyContainer" ]
 - [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/)
 - [Lifecycle of a Container](https://developers.cloudflare.com/containers/concepts/architecture/)
 - [Image management](https://developers.cloudflare.com/containers/guides/image-management/)
-- [Containers configuration](https://developers.cloudflare.com/workers/wrangler/configuration/#containers)
+- [Wrangler configuration](https://developers.cloudflare.com/containers/configuration/wrangler/)
 
 Was this helpful?
 
@@ -194,5 +194,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/rollouts/#page","headline":"Rollouts","description":"How container instances update after a deploy, including step percentages, grace periods, and rollout modes.","url":"https://developers.cloudflare.com/containers/configuration/rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/rollouts/og.png?v=3d0c4ea5b7db40b1","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/rollouts/#page","headline":"Rollouts","description":"How container instances update after a deploy, including step percentages, grace periods, and rollout modes.","url":"https://developers.cloudflare.com/containers/configuration/rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/rollouts/og.png?v=3d0c4ea5b7db40b1","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

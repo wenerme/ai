@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cache/how-to/purge-cache/og.png?v=088df
 
 # Purge cache
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/purge-cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare's Instant Purge ensures that updates to your content are reflected immediately. Multiple options are available for purging content, with single-file cache purging (purge by URL) being the recommended method. However, the following additional options are also available:
 
@@ -26,6 +26,8 @@ Cloudflare's Instant Purge ensures that updates to your content are reflected im
 - [Purge zone versions via API](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-zone-versions/)
 
 To purge cached content using the Cloudflare API, refer to [Purge Cached Content](https://developers.cloudflare.com/api/resources/cache/methods/purge/).
+
+To mark content as stale instead of removing it, [invalidate cached content](https://developers.cloudflare.com/cache/guides/invalidate-cache/). Cloudflare revalidates invalidated content on the next request and reuses content that has not changed.
 
 Note
 
@@ -42,9 +44,11 @@ If versioning is active on your zone and multiple environments are configured, y
 | Availability | Yes | Yes | Yes | Yes |
 | Purge options | URL, Hostname, Tag, Prefix, and Purge Everything | URL, Hostname, Tag, Prefix, and Purge Everything | URL, Hostname, Tag, Prefix, and Purge Everything | URL, Hostname, Tag, Prefix, and Purge Everything |
 
+Invalidation requests count toward the same limits as purge requests. For details, refer to [Invalidation limits](https://developers.cloudflare.com/cache/guides/invalidate-cache/#limits).
+
 ### Hostname, tag, prefix URL, and purge everything limits
 
-The current purge limits are applied per **account**:
+The following limits apply per **account** to purge and invalidation requests:
 
 |  | Free | Pro | Business | Enterprise |
 | --- | --- | --- | --- | --- |
@@ -56,7 +60,7 @@ If your account includes zones with different Cloudflare plans, the above limits
 
 ### Single-file purge limits
 
-The current purge limits are applied per **account**:
+The following limits apply per **account** to purge and invalidation requests:
 
 |  | Free | Pro | Business | Enterprise |
 | --- | --- | --- | --- | --- |
@@ -86,5 +90,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/purge-cache/#page","headline":"Purge cache","description":"Remove cached content from Cloudflare edge servers.","url":"https://developers.cloudflare.com/cache/how-to/purge-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/how-to/purge-cache/og.png?v=088dfe63afdf569b","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/purge-cache/#page","headline":"Purge cache","description":"Remove cached content from Cloudflare edge servers.","url":"https://developers.cloudflare.com/cache/how-to/purge-cache/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/how-to/purge-cache/og.png?v=088dfe63afdf569b","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
