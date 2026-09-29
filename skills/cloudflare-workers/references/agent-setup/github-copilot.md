@@ -60,7 +60,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+   Set up rate limiting and WAF rules to block abuse on my public API.
    ```
 
 
@@ -165,7 +165,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
@@ -173,15 +173,15 @@ Set up custom domains with automatic SSL for my SaaS customers using SSL for Saa
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
-```
-
-```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
 Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips

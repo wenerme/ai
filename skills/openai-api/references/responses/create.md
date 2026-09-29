@@ -911,7 +911,7 @@ as input for the model's response.
 
         - `"incomplete"`
 
-    - `WebSearchCall object { id, action, status, type }`
+    - `WebSearchCall object { id, status, type, action }`
 
       The results of a web search tool call. See the
       [web search guide](/api/docs/guides/tools-web-search) for more information.
@@ -920,7 +920,27 @@ as input for the model's response.
 
         The unique ID of the web search tool call.
 
-      - `action: object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
+
+        The status of the web search tool call.
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"failed"`
+
+        - `"incomplete"`
+
+      - `type: "web_search_call"`
+
+        The type of the web search tool call. Always `web_search_call`.
+
+        - `"web_search_call"`
+
+      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -988,26 +1008,6 @@ as input for the model's response.
           - `url: string`
 
             The URL of the page searched for the pattern.
-
-      - `status: "in_progress" or "searching" or "completed" or 2 more`
-
-        The status of the web search tool call.
-
-        - `"in_progress"`
-
-        - `"searching"`
-
-        - `"completed"`
-
-        - `"failed"`
-
-        - `"incomplete"`
-
-      - `type: "web_search_call"`
-
-        The type of the web search tool call. Always `web_search_call`.
-
-        - `"web_search_call"`
 
     - `FunctionCall object { arguments, call_id, name, 6 more }`
 
@@ -7066,7 +7066,7 @@ as input for the model's response.
 
           - `"incomplete"`
 
-      - `WebSearchCall object { id, action, status, type }`
+      - `WebSearchCall object { id, status, type, action }`
 
         The results of a web search tool call. See the
         [web search guide](/api/docs/guides/tools-web-search) for more information.
@@ -7075,7 +7075,27 @@ as input for the model's response.
 
           The unique ID of the web search tool call.
 
-        - `action: object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
+
+          The status of the web search tool call.
+
+          - `"in_progress"`
+
+          - `"searching"`
+
+          - `"completed"`
+
+          - `"failed"`
+
+          - `"incomplete"`
+
+        - `type: "web_search_call"`
+
+          The type of the web search tool call. Always `web_search_call`.
+
+          - `"web_search_call"`
+
+        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -7143,26 +7163,6 @@ as input for the model's response.
             - `url: string`
 
               The URL of the page searched for the pattern.
-
-        - `status: "in_progress" or "searching" or "completed" or 2 more`
-
-          The status of the web search tool call.
-
-          - `"in_progress"`
-
-          - `"searching"`
-
-          - `"completed"`
-
-          - `"failed"`
-
-          - `"incomplete"`
-
-        - `type: "web_search_call"`
-
-          The type of the web search tool call. Always `web_search_call`.
-
-          - `"web_search_call"`
 
       - `FunctionCall object { arguments, call_id, name, 6 more }`
 
@@ -11048,7 +11048,7 @@ as input for the model's response.
 
         The namespace of the tool that produced the output.
 
-    - `WebSearchCall object { id, action, status, type }`
+    - `WebSearchCall object { id, status, type, action }`
 
       The results of a web search tool call. See the
       [web search guide](/api/docs/guides/tools-web-search) for more information.
@@ -11057,7 +11057,27 @@ as input for the model's response.
 
         The unique ID of the web search tool call.
 
-      - `action: object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
+
+        The status of the web search tool call.
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"failed"`
+
+        - `"incomplete"`
+
+      - `type: "web_search_call"`
+
+        The type of the web search tool call. Always `web_search_call`.
+
+        - `"web_search_call"`
+
+      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -11125,26 +11145,6 @@ as input for the model's response.
           - `url: string`
 
             The URL of the page searched for the pattern.
-
-      - `status: "in_progress" or "searching" or "completed" or 2 more`
-
-        The status of the web search tool call.
-
-        - `"in_progress"`
-
-        - `"searching"`
-
-        - `"completed"`
-
-        - `"failed"`
-
-        - `"incomplete"`
-
-      - `type: "web_search_call"`
-
-        The type of the web search tool call. Always `web_search_call`.
-
-        - `"web_search_call"`
 
     - `ComputerCall object { id, call_id, pending_safety_checks, 4 more }`
 
@@ -15791,102 +15791,68 @@ curl https://api.openai.com/v1/responses \
 
 ```json
 {
-  "id": "id",
-  "access_programs": {
-    "cyber": "standard"
-  },
-  "created_at": 0,
-  "error": {
-    "code": "server_error",
-    "message": "message",
-    "misalignment": {
-      "detailed_explanation": "detailed_explanation",
-      "error_type": "potentially_unintended_data_transfer",
-      "steer": {
-        "message": "message"
-      }
-    }
-  },
-  "incomplete_details": {
-    "reason": "max_output_tokens"
-  },
-  "instructions": "string",
-  "metadata": {
-    "foo": "string"
-  },
-  "model": "gpt-6-astra",
+  "id": "resp_67ccd3a9da748190baa7f1570fe91ac604becb25c45c1d41",
   "object": "response",
+  "access_programs": null,
+  "created_at": 1741476777,
+  "status": "completed",
+  "completed_at": 1741476778,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "max_output_tokens": null,
+  "model": "gpt-6-astra",
   "output": [
     {
-      "id": "id",
+      "type": "message",
+      "id": "msg_67ccd3acc8d48190a77525dc6de64b4104becb25c45c1d41",
+      "status": "completed",
+      "role": "assistant",
       "content": [
         {
-          "annotations": [
-            {
-              "file_id": "file_id",
-              "filename": "filename",
-              "index": 0,
-              "type": "file_citation"
-            }
-          ],
-          "logprobs": [
-            {
-              "token": "token",
-              "bytes": [
-                0
-              ],
-              "logprob": 0,
-              "top_logprobs": [
-                {
-                  "token": "token",
-                  "bytes": [
-                    0
-                  ],
-                  "logprob": 0
-                }
-              ]
-            }
-          ],
-          "text": "text",
-          "type": "output_text"
+          "type": "output_text",
+          "text": "The image depicts a scenic landscape with a wooden boardwalk or pathway leading through lush, green grass under a blue sky with some clouds. The setting suggests a peaceful natural area, possibly a park or nature reserve. There are trees and shrubs in the background.",
+          "annotations": [],
+          "logprobs": []
         }
-      ],
-      "role": "assistant",
-      "status": "in_progress",
-      "type": "message",
-      "phase": "commentary"
+      ]
     }
   ],
   "parallel_tool_calls": true,
+  "previous_response_id": null,
+  "reasoning": {
+    "effort": null,
+    "summary": null,
+    "context": null
+  },
+  "store": true,
   "temperature": 1,
-  "tool_choice": "none",
-  "tools": [
-    {
-      "name": "name",
-      "parameters": {
-        "foo": "bar"
-      },
-      "strict": true,
-      "type": "function",
-      "allowed_callers": [
-        "direct"
-      ],
-      "async": true,
-      "defer_loading": true,
-      "description": "description",
-      "output_schema": {
-        "foo": "bar"
-      }
+  "text": {
+    "format": {
+      "type": "text"
     }
-  ],
+  },
+  "tool_choice": "auto",
+  "tools": [],
   "top_p": 1,
-  "background": true,
-  "completed_at": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 328,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    },
+    "output_tokens": 52,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 380
+  },
+  "user": null,
+  "metadata": {},
   "conversation": {
     "id": "id"
   },
-  "max_output_tokens": 0,
-  "max_tool_calls": 0,
   "moderation": {
     "input": {
       "categories": {
@@ -15922,58 +15888,18 @@ curl https://api.openai.com/v1/responses \
     }
   },
   "output_text": "output_text",
-  "previous_response_id": "previous_response_id",
-  "prompt": {
-    "id": "id",
-    "variables": {
-      "foo": "string"
-    },
-    "version": "version"
-  },
   "prompt_cache_diagnostics": {
     "cache_missed_tokens": 0,
     "reason": "model_changed",
     "type": "cache_miss",
     "comparison_reusable_tokens": 0
   },
-  "prompt_cache_key": "prompt-cache-key-1234",
   "prompt_cache_options": {
     "mode": "implicit",
     "ttl": "30m",
     "comparison_response_id": "comparison_response_id"
   },
-  "prompt_cache_retention": "in_memory",
-  "reasoning": {
-    "context": "auto",
-    "effort": "none",
-    "generate_summary": "auto",
-    "mode": "standard",
-    "summary": "auto"
-  },
-  "safety_identifier": "safety-identifier-1234",
-  "service_tier": "auto",
-  "status": "completed",
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "low"
-  },
-  "top_logprobs": 0,
-  "truncation": "auto",
-  "usage": {
-    "input_tokens": 0,
-    "input_tokens_details": {
-      "cache_write_tokens": 0,
-      "cached_tokens": 0
-    },
-    "output_tokens": 0,
-    "output_tokens_details": {
-      "reasoning_tokens": 0
-    },
-    "total_tokens": 0
-  },
-  "user": "user-1234"
+  "service_tier": "auto"
 }
 ```
 
@@ -16170,7 +16096,8 @@ curl https://api.openai.com/v1/responses \
               "file_id": "file-4wDz5b167pAf72nx1h9eiN",
               "filename": "dragons.pdf"
             }
-          ]
+          ],
+          "logprobs": []
         }
       ]
     }
@@ -16331,7 +16258,11 @@ curl https://api.openai.com/v1/responses \
     "output_tokens_details": {
       "reasoning_tokens": 0
     },
-    "total_tokens": 314
+    "total_tokens": 314,
+    "input_tokens_details": {
+      "cached_tokens": 0,
+      "cache_write_tokens": 0
+    }
   },
   "user": null,
   "metadata": {}
@@ -16386,7 +16317,8 @@ curl https://api.openai.com/v1/responses \
         {
           "type": "output_text",
           "text": "The image depicts a scenic landscape with a wooden boardwalk or pathway leading through lush, green grass under a blue sky with some clouds. The setting suggests a peaceful natural area, possibly a park or nature reserve. There are trees and shrubs in the background.",
-          "annotations": []
+          "annotations": [],
+          "logprobs": []
         }
       ]
     }
@@ -16465,7 +16397,8 @@ curl https://api.openai.com/v1/responses \
         {
           "type": "output_text",
           "text": "The classic tongue twister...",
-          "annotations": []
+          "annotations": [],
+          "logprobs": []
         }
       ]
     }
@@ -16589,7 +16522,8 @@ curl https://api.openai.com/v1/responses \
         {
           "type": "output_text",
           "text": "In a peaceful grove beneath a silver moon, a unicorn named Lumina discovered a hidden pool that reflected the stars. As she dipped her horn into the water, the pool began to shimmer, revealing a pathway to a magical realm of endless night skies. Filled with wonder, Lumina whispered a wish for all who dream to find their own hidden magic, and as she glanced back, her hoofprints sparkled like stardust.",
-          "annotations": []
+          "annotations": [],
+          "logprobs": []
         }
       ]
     }
@@ -16693,7 +16627,8 @@ curl https://api.openai.com/v1/responses \
               "url": "https://.../?utm_source=chatgpt.com",
               "title": "..."
             }
-          ]
+          ],
+          "logprobs": []
         }
       ]
     }

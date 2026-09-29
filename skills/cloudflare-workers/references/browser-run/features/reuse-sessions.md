@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/features/reuse-sessions/og.
 
 # Reuse sessions
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/reuse-sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/features/reuse-sessions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, each Browser Sessions request launches a new browser instance. Reusing sessions eliminates cold-start time and improves performance by reconnecting to an existing browser instead of launching a new one.
 
@@ -20,8 +20,8 @@ This feature applies to Browser Sessions ([Puppeteer](https://developers.cloudfl
 
 There are two approaches to reusing sessions:
 
-- **Disconnect and reconnect** (covered in this page): Use `browser.disconnect()` instead of `browser.close()` to keep the browser alive, then reconnect to it on the next request. Best for stateless workloads where any available browser session will do.
-- **[Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/)**: Persist a long-running browser inside a Durable Object for stateful session management. Best when you need to maintain state across requests or route specific users to specific browser instances.
+- **Shared browser session** (covered in this page): Connect multiple clients to a running browser. Create a separate browser context for each request to isolate cookies and storage.
+- **[Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/)**: Persist a browser for stateful session management. Use this approach to route users to specific sessions or coordinate conflicting operations.
 
 ## 1. Create a Worker project
 
@@ -73,6 +73,10 @@ pnpm add -D @cloudflare/puppeteer
 bun add -d @cloudflare/puppeteer
 ```
 
+Note
+
+Concurrent connections require `@cloudflare/puppeteer` version 1.1.0 or later. For Playwright, they require `@cloudflare/playwright` version 1.3.0 or later. Older versions use the legacy single-connection workflow.
+
 ## 3. Configure the [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/)
 
 Note
@@ -85,7 +89,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 	"name": "browser-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-09-29",
 	"compatibility_flags": ["nodejs_compat"],
 	"browser": {
 		"binding": "MYBROWSER",
@@ -98,7 +102,7 @@ Your Worker configuration must include the `nodejs_compat` compatibility flag an
 name = "browser-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-09-29"
 compatibility_flags = [ "nodejs_compat" ]
 
 [browser]
@@ -107,12 +111,18 @@ binding = "MYBROWSER"
 
 ## 4. Code
 
-The script below starts by fetching the current running sessions. If there are any that do not already have a worker connection, it picks a random session ID and attempts to connect (`puppeteer.connect(..)`) to it. If that fails or there were no running sessions to start with, it launches a new browser session (`puppeteer.launch(..)`). Then, it goes to the website and fetches the dom. Once that is done, it disconnects (`browser.disconnect()`), making the connection available to other workers.
+The script lists active browser sessions and starts with one selected at random. Multiple clients can connect to the same session concurrently. Each `puppeteer.connect()` call creates an independent Chrome DevTools Protocol (CDP) connection.
 
-Take into account that if the browser is idle, i.e. does not get any command, for more than the current [limit](https://developers.cloudflare.com/browser-run/limits/), it will close automatically, so you must have enough requests per minute to keep it alive.
+Each request creates a browser context to isolate its pages, cookies, and storage. When the request finishes, the script closes the context. It then calls `browser.disconnect()` to close its CDP connection without terminating the shared browser.
+
+A listed session might expire before the connection completes or have no remaining capacity. The script tries the other sessions before launching a new one.
+
+If the browser receives no commands for longer than the idle [limit](https://developers.cloudflare.com/browser-run/limits/), it closes automatically. Send enough requests to keep it alive.
 
 ```js
 import puppeteer from "@cloudflare/puppeteer";
+
+const MAX_CONCURRENT_CONTEXTS = 4; // adjust according to average workload
 
 export default {
 	async fetch(request, env) {
@@ -120,69 +130,93 @@ export default {
 		let reqUrl = url.searchParams.get("url") || "https://example.com";
 		reqUrl = new URL(reqUrl).toString(); // normalize
 
-		// Pick random session from open sessions
-		let sessionId = await this.getRandomSession(env.MYBROWSER);
-		let browser, launched;
-		if (sessionId) {
+		// Start with a random active session, then try the remaining sessions
+		const sessionIds = await this.getSessionIds(env.MYBROWSER);
+		let browser;
+		let launched = false;
+		for (const sessionId of sessionIds) {
 			try {
-				browser = await puppeteer.connect(env.MYBROWSER, sessionId);
+				const candidate = await puppeteer.connect(env.MYBROWSER, sessionId);
+				try {
+					if (await this.hasCapacity(candidate)) {
+						browser = candidate;
+						break;
+					}
+				} finally {
+					if (candidate !== browser) {
+						await candidate.disconnect();
+					}
+				}
 			} catch (e) {
-				// another worker may have connected first
+				// The session may have closed after it was listed
 				console.log(`Failed to connect to ${sessionId}. Error ${e}`);
 			}
 		}
 		if (!browser) {
-			// No open sessions, launch new session
+			// No active session was available, so launch a new session
 			browser = await puppeteer.launch(env.MYBROWSER);
 			launched = true;
 		}
 
-		sessionId = browser.sessionId(); // get current session id
+		const sessionId = browser.sessionId();
+		const context = await browser.createBrowserContext();
 
-		// Do your work here
-		const page = await browser.newPage();
-		const response = await page.goto(reqUrl);
-		const html = await response.text();
+		try {
+			const page = await context.newPage();
+			const response = await page.goto(reqUrl);
+			const html = await response.text();
 
-		// All work done, so free connection (IMPORTANT!)
-		browser.disconnect();
-
-		return new Response(
-			`${launched ? "Launched" : "Connected to"} ${sessionId} \n-----\n` + html,
-			{
-				headers: {
-					"content-type": "text/plain",
+			return new Response(
+				`${launched ? "Launched" : "Connected to"} ${sessionId} \n-----\n` +
+					html,
+				{
+					headers: {
+						"content-type": "text/plain",
+					},
 				},
-			},
-		);
+			);
+		} finally {
+			await context.close();
+			await browser.disconnect();
+		}
 	},
 
-	// Pick random free session
-	// Other custom logic could be used instead
-	async getRandomSession(endpoint) {
+	async hasCapacity(browser) {
+		const client = await browser.target().createCDPSession();
+		try {
+			const { browserContextIds } = await client.send(
+				"Target.getBrowserContexts",
+			);
+			return browserContextIds.length < MAX_CONCURRENT_CONTEXTS;
+		} finally {
+			await client.detach();
+		}
+	},
+
+	async getSessionIds(endpoint) {
 		const sessions = await puppeteer.sessions(endpoint);
 		console.log(`Sessions: ${JSON.stringify(sessions)}`);
-		const sessionsIds = sessions
-			.filter((v) => {
-				return !v.connectionId; // remove sessions with workers connected to them
-			})
-			.map((v) => {
-				return v.sessionId;
-			});
-		if (sessionsIds.length === 0) {
-			return;
+		if (sessions.length === 0) {
+			return [];
 		}
 
-		const sessionId =
-			sessionsIds[Math.floor(Math.random() * sessionsIds.length)];
-
-		return sessionId;
+		const startIndex = Math.floor(Math.random() * sessions.length);
+		return [
+			...sessions.slice(startIndex),
+			...sessions.slice(0, startIndex),
+		].map((session) => session.sessionId);
 	},
 };
 ```
 
 ```ts
-import puppeteer from "@cloudflare/puppeteer";
+import puppeteer, {
+	type ActiveSession,
+	type Browser,
+	type BrowserWorker,
+} from "@cloudflare/puppeteer";
+
+const MAX_CONCURRENT_CONTEXTS = 4; // adjust according to average workload
 
 interface Env {
 	MYBROWSER: Fetcher;
@@ -194,69 +228,88 @@ export default {
 		let reqUrl = url.searchParams.get("url") || "https://example.com";
 		reqUrl = new URL(reqUrl).toString(); // normalize
 
-		// Pick random session from open sessions
-		let sessionId = await this.getRandomSession(env.MYBROWSER);
-		let browser, launched;
-		if (sessionId) {
+		// Start with a random active session, then try the remaining sessions
+		const sessionIds = await this.getSessionIds(env.MYBROWSER);
+		let browser;
+		let launched = false;
+		for (const sessionId of sessionIds) {
 			try {
-				browser = await puppeteer.connect(env.MYBROWSER, sessionId);
+				const candidate = await puppeteer.connect(env.MYBROWSER, sessionId);
+				try {
+					if (await this.hasCapacity(candidate)) {
+						browser = candidate;
+						break;
+					}
+				} finally {
+					if (candidate !== browser) {
+						await candidate.disconnect();
+					}
+				}
 			} catch (e) {
-				// another worker may have connected first
+				// The session may have closed after it was listed
 				console.log(`Failed to connect to ${sessionId}. Error ${e}`);
 			}
 		}
 		if (!browser) {
-			// No open sessions, launch new session
+			// No active session was available, so launch a new session
 			browser = await puppeteer.launch(env.MYBROWSER);
 			launched = true;
 		}
 
-		sessionId = browser.sessionId(); // get current session id
+		const sessionId = browser.sessionId();
+		const context = await browser.createBrowserContext();
 
-		// Do your work here
-		const page = await browser.newPage();
-		const response = await page.goto(reqUrl);
-		const html = await response!.text();
+		try {
+			const page = await context.newPage();
+			const response = await page.goto(reqUrl);
+			const html = await response!.text();
 
-		// All work done, so free connection (IMPORTANT!)
-		browser.disconnect();
-
-		return new Response(
-			`${launched ? "Launched" : "Connected to"} ${sessionId} \n-----\n` + html,
-			{
-				headers: {
-					"content-type": "text/plain",
+			return new Response(
+				`${launched ? "Launched" : "Connected to"} ${sessionId} \n-----\n` +
+					html,
+				{
+					headers: {
+						"content-type": "text/plain",
+					},
 				},
-			},
-		);
+			);
+		} finally {
+			await context.close();
+			await browser.disconnect();
+		}
 	},
 
-	// Pick random free session
-	// Other custom logic could be used instead
-	async getRandomSession(endpoint: puppeteer.BrowserWorker): Promise<string> {
-		const sessions: puppeteer.ActiveSession[] =
-			await puppeteer.sessions(endpoint);
+	async hasCapacity(browser: Browser): Promise<boolean> {
+		const client = await browser.target().createCDPSession();
+		try {
+			const { browserContextIds } = await client.send(
+				"Target.getBrowserContexts",
+			);
+			return browserContextIds.length < MAX_CONCURRENT_CONTEXTS;
+		} finally {
+			await client.detach();
+		}
+	},
+
+	async getSessionIds(endpoint: BrowserWorker): Promise<string[]> {
+		const sessions: ActiveSession[] = await puppeteer.sessions(endpoint);
 		console.log(`Sessions: ${JSON.stringify(sessions)}`);
-		const sessionsIds = sessions
-			.filter((v) => {
-				return !v.connectionId; // remove sessions with workers connected to them
-			})
-			.map((v) => {
-				return v.sessionId;
-			});
-		if (sessionsIds.length === 0) {
-			return;
+		if (sessions.length === 0) {
+			return [];
 		}
 
-		const sessionId =
-			sessionsIds[Math.floor(Math.random() * sessionsIds.length)];
-
-		return sessionId!;
+		const startIndex = Math.floor(Math.random() * sessions.length);
+		return [
+			...sessions.slice(startIndex),
+			...sessions.slice(0, startIndex),
+		].map((session) => session.sessionId);
 	},
 };
 ```
 
-Besides `puppeteer.sessions()`, we have added other methods to facilitate [Session Management](https://developers.cloudflare.com/browser-run/puppeteer/#session-management).
+Do not call `browser.close()` when other clients share the session. This method terminates the browser and disconnects every client. Browser contexts isolate request state, but they do not coordinate browser-wide operations.
+
+Besides `puppeteer.sessions()`, Puppeteer provides other [session management methods](https://developers.cloudflare.com/browser-run/puppeteer/#session-management).
 
 ## 5. Test
 
@@ -289,5 +342,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/#page","headline":"Reuse sessions","description":"Improve Browser Run performance by reconnecting to existing browser sessions instead of launching new instances.","url":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/og.png?v=bfde937836ca8543","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/#page","headline":"Reuse sessions","description":"Improve Browser Run performance by reconnecting to existing browser sessions instead of launching new instances.","url":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/features/reuse-sessions/og.png?v=bfde937836ca8543","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1,15 +1,15 @@
 ---
 title: "ComfyUIでのWan 3.0ビデオ生成"
 description: "ComfyUIでパートナーノードを介してWan 3.0を使用し、同期オーディオ付きのテキストから動画、画像から動画、参照から動画を生成する方法を学びます。"
-translationSourceHash: 37f00c8e
+translationSourceHash: b193f64a
 translationFrom: tutorials/partner-nodes/wan/wan3-0.mdx
 translationBlockHashes:
   "_intro": 5ee98260
   "What Wan 3.0 is good at": e488e725
-  "Example outputs": 8300119c
-  "Wan 3.0 text-to-video workflow": 40b03a82
-  "Wan 3.0 image-to-video workflow": c227bdd8
-  "Wan 3.0 reference-to-video workflow": a71b1ae7
+  "Example outputs": af884885
+  "Wan 3.0 text-to-video workflow": c872fec1
+  "Wan 3.0 image-to-video workflow": 1c6f644a
+  "Wan 3.0 reference-to-video workflow": 056ab25f
   "Get started": 13c81fa0
   "FAQs": 617a293e
 ---
@@ -30,21 +30,21 @@ Wan 3.0 は Alibaba の最新ビデオ生成モデルで、パートナーノー
 
 プロンプトのみからのテキストから動画への生成。デフォルトで同期されたオーディオが含まれます：
 
-<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_wan3_0_t2v.mp4"></video>
+![Wan 3.0 テキストから動画の出力例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_wan3_0_t2v-1.webp)
 
 1枚の画像をアニメーション化して完全なクリップにする、画像から動画への生成：
 
-<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_wan3_0_i2v.mp4"></video>
+![Wan 3.0 画像から動画の出力例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_wan3_0_i2v-1.webp)
 
 参照画像からプロダクトとキャラクターの一貫性を保つ、参照から動画への生成：
 
-<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_wan3_0_r2v.mp4"></video>
+![Wan 3.0 参照から動画の出力例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_wan3_0_r2v-1.webp)
 
 ## Wan 3.0 テキストから動画へのワークフロー
 
 テキストプロンプトのみからビデオを生成します。デフォルトで同期オーディオが含まれます。
 
-<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_wan3_0_t2v.mp4"></video>
+![Wan 3.0 テキストから動画の出力例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_wan3_0_t2v-1.webp)
 
   
     Comfy Cloudで開く
@@ -64,7 +64,7 @@ Wan 3.0 は Alibaba の最新ビデオ生成モデルで、パートナーノー
 
 1枚の画像をビデオにアニメートします。出力が遷移していく最終フレームを、オプションで指定できます。
 
-<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_wan3_0_i2v.mp4"></video>
+![Wan 3.0 画像から動画の出力例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_wan3_0_i2v-1.webp)
 
   
     Comfy Cloud で開く
@@ -91,7 +91,7 @@ Wan 3.0 は Alibaba の最新ビデオ生成モデルで、パートナーノー
 
 参照画像、参照ビデオ、参照オーディオを条件としてビデオを生成します。各参照には、プロンプト内のタグを通じてジョブが割り当てられます。
 
-<video controls className="w-full aspect-video" src="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/output/api_wan3_0_r2v.mp4"></video>
+![Wan 3.0 参照から動画の出力例](https://raw.githubusercontent.com/Comfy-Org/workflow_templates/main/templates/api_wan3_0_r2v-1.webp)
 
   
     Comfy Cloud で開く

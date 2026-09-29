@@ -838,7 +838,7 @@ Create items in a conversation with the given ID.
 
       - `"incomplete"`
 
-  - `WebSearchCall object { id, action, status, type }`
+  - `WebSearchCall object { id, status, type, action }`
 
     The results of a web search tool call. See the
     [web search guide](/api/docs/guides/tools-web-search) for more information.
@@ -847,7 +847,27 @@ Create items in a conversation with the given ID.
 
       The unique ID of the web search tool call.
 
-    - `action: object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+    - `status: "in_progress" or "searching" or "completed" or 2 more`
+
+      The status of the web search tool call.
+
+      - `"in_progress"`
+
+      - `"searching"`
+
+      - `"completed"`
+
+      - `"failed"`
+
+      - `"incomplete"`
+
+    - `type: "web_search_call"`
+
+      The type of the web search tool call. Always `web_search_call`.
+
+      - `"web_search_call"`
+
+    - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
 
       An object describing the specific action taken in this web search call.
       Includes details on how the model used the web (search, open_page, find_in_page).
@@ -915,26 +935,6 @@ Create items in a conversation with the given ID.
         - `url: string`
 
           The URL of the page searched for the pattern.
-
-    - `status: "in_progress" or "searching" or "completed" or 2 more`
-
-      The status of the web search tool call.
-
-      - `"in_progress"`
-
-      - `"searching"`
-
-      - `"completed"`
-
-      - `"failed"`
-
-      - `"incomplete"`
-
-    - `type: "web_search_call"`
-
-      The type of the web search tool call. Always `web_search_call`.
-
-      - `"web_search_call"`
 
   - `FunctionCall object { arguments, call_id, name, 6 more }`
 
@@ -4952,7 +4952,7 @@ Create items in a conversation with the given ID.
 
           The text that was retrieved from the file.
 
-    - `WebSearchCall object { id, action, status, type }`
+    - `WebSearchCall object { id, status, type, action }`
 
       The results of a web search tool call. See the
       [web search guide](/api/docs/guides/tools-web-search) for more information.
@@ -4961,7 +4961,27 @@ Create items in a conversation with the given ID.
 
         The unique ID of the web search tool call.
 
-      - `action: object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+      - `status: "in_progress" or "searching" or "completed" or 2 more`
+
+        The status of the web search tool call.
+
+        - `"in_progress"`
+
+        - `"searching"`
+
+        - `"completed"`
+
+        - `"failed"`
+
+        - `"incomplete"`
+
+      - `type: "web_search_call"`
+
+        The type of the web search tool call. Always `web_search_call`.
+
+        - `"web_search_call"`
+
+      - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
 
         An object describing the specific action taken in this web search call.
         Includes details on how the model used the web (search, open_page, find_in_page).
@@ -5029,26 +5049,6 @@ Create items in a conversation with the given ID.
           - `url: string`
 
             The URL of the page searched for the pattern.
-
-      - `status: "in_progress" or "searching" or "completed" or 2 more`
-
-        The status of the web search tool call.
-
-        - `"in_progress"`
-
-        - `"searching"`
-
-        - `"completed"`
-
-        - `"failed"`
-
-        - `"incomplete"`
-
-      - `type: "web_search_call"`
-
-        The type of the web search tool call. Always `web_search_call`.
-
-        - `"web_search_call"`
 
     - `ImageGenerationCall object { id, result, status, 7 more }`
 

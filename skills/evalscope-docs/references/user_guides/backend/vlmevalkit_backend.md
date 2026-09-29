@@ -72,7 +72,7 @@ The currently supported datasets include:
 | Video-MME                                                         |                                                              |
 
 ````{note}
-For detailed information about the datasets, refer to the [VLMEvalKit Supported Multimodal Benchmark List](https://swift.readthedocs.io/en/latest/LLM/Supported-models-datasets.html). 
+For detailed information about the datasets, refer to the [VLMEvalKit Supported Multimodal Benchmark List](https://swift.readthedocs.io/en/latest/Instruction/Supported-models-and-datasets.html). 
 
 You can view the dataset name list using the following code:
 ```python
@@ -295,7 +295,7 @@ task_cfg_dict = TaskConfig(
   - `use_subtitle`: Boolean, whether to use subtitles for video datasets, default is `False`.
 
 ### (Optional) Deploy Judge Model
-Deploy a local language model as a judge / choice extractor, also using ms-swift to deploy the model service. For details, refer to: [ms-swift LLM Deployment Guide](https://swift.readthedocs.io/zh-cn/latest/LLM/VLLM%E6%8E%A8%E7%90%86%E5%8A%A0%E9%80%9F%E4%B8%8E%E9%83%A8%E7%BD%B2.html).
+Deploy a local language model as a judge / choice extractor, also using ms-swift to deploy the model service. For details, refer to: [ms-swift LLM Deployment Guide](https://swift.readthedocs.io/zh-cn/latest/Instruction/Inference-and-deployment.html).
 ````{note}
 When no judge model is deployed, post-processing + exact matching will be used for judging; and **the judge model environment variables must be configured to correctly call the model**.
 ````

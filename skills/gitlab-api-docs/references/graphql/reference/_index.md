@@ -3366,6 +3366,7 @@ Arguments:
 | <a id="mutation-aicatalogitemconsumercreate-itemid"></a>`itemId` | [`AiCatalogItemID!`](#aicatalogitemid) | Item to configure. |
 | <a id="mutation-aicatalogitemconsumercreate-parentitemconsumerid"></a>`parentItemConsumerId` | [`AiCatalogItemConsumerID`](#aicatalogitemconsumerid) | Parent item consumer belonging to the top-level group. |
 | <a id="mutation-aicatalogitemconsumercreate-pinnedversion"></a>`pinnedVersion` | [`AiCatalogPinnedVersion`](#aicatalogpinnedversion) | Version to pin the item to, in the format `n.n.n`. Must be a released version. Defaults to the latest released version. Ignored when enabling within the item's managing project, which always tracks the latest released version. |
+| <a id="mutation-aicatalogitemconsumercreate-replaceexistingdirectconfigurations"></a>`replaceExistingDirectConfigurations` | [`Boolean`](#boolean) | Confirm replacement of a group configuration, and any project configurations, for this item when inheritance is turned on. Required when the item is already configured for the group. |
 | <a id="mutation-aicatalogitemconsumercreate-target"></a>`target` | [`ItemConsumerTargetInput!`](#itemconsumertargetinput) | Target project or top-level group in which the catalog item is configured. |
 | <a id="mutation-aicatalogitemconsumercreate-triggerconditions"></a>`triggerConditions`  | [`AiCatalogTriggerConditionsInput`](#aicatalogtriggerconditionsinput) | Introduced in GitLab 19.3. Status: Experiment. Filter conditions for the auto-created AI Catalog triggers, keyed by event type. |
 | <a id="mutation-aicatalogitemconsumercreate-triggerfilter"></a>`triggerFilter`  | [`JSON`](#json) | Deprecated in GitLab 19.3. Use `triggerConditions`. |
@@ -42410,6 +42411,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="duoworkflowpermissions-deleteduoworkflow"></a>`deleteDuoWorkflow` | [`Boolean!`](#boolean) | If `true`, the user can perform `delete_duo_workflow` on this resource. |
 | <a id="duoworkflowpermissions-readduoworkflow"></a>`readDuoWorkflow` | [`Boolean!`](#boolean) | If `true`, the user can perform `read_duo_workflow` on this resource. |
+| <a id="duoworkflowpermissions-restartduoworkflow"></a>`restartDuoWorkflow` | [`Boolean!`](#boolean) | If `true`, the user can perform `restart_duo_workflow` on this resource. |
 | <a id="duoworkflowpermissions-resumeduoworkflow"></a>`resumeDuoWorkflow` | [`Boolean!`](#boolean) | If `true`, the user can perform `resume_duo_workflow` on this resource. |
 | <a id="duoworkflowpermissions-updateduoworkflow"></a>`updateDuoWorkflow` | [`Boolean!`](#boolean) | If `true`, the user can perform `update_duo_workflow` on this resource. |
 
@@ -49355,7 +49357,7 @@ Fields:
 | <a id="mergerequest-resourcelabelevents"></a>`resourceLabelEvents` | [`MergeRequestResourceLabelEventConnection`](#mergerequestresourcelabeleventconnection) | Label events of the merge request. (see [Connections](#connections)) |
 | <a id="mergerequest-retargeted"></a>`retargeted` | [`Boolean`](#boolean) | Indicates if merge request was retargeted. |
 | <a id="mergerequest-reviewers"></a>`reviewers` | [`MergeRequestReviewerConnection`](#mergerequestreviewerconnection) | Users from whom a review has been requested. (see [Connections](#connections)) |
-| <a id="mergerequest-riskassessment"></a>`riskAssessment`  | [`MergeRequestRiskAssessment`](#mergerequestriskassessment) | Introduced in GitLab 19.4. Status: Experiment. Risk classification for the merge request. Ultimate only. |
+| <a id="mergerequest-riskassessment"></a>`riskAssessment`  | [`MergeRequestRiskAssessment`](#mergerequestriskassessment) | Introduced in GitLab 19.4. Status: Experiment. Risk assessment for the merge request. Ultimate only. |
 | <a id="mergerequest-securityautofix"></a>`securityAutoFix`  | [`Boolean`](#boolean) | Deprecated in GitLab 16.11. Security Auto Fix experiment feature was removed. It was always hidden behind `security_auto_fix` feature flag. |
 | <a id="mergerequest-securityreportsuptodateontargetbranch"></a>`securityReportsUpToDateOnTargetBranch` | [`Boolean!`](#boolean) | Indicates if the target branch security reports are out of date. |
 | <a id="mergerequest-shouldberebased"></a>`shouldBeRebased` | [`Boolean!`](#boolean) | Indicates if the merge request will be rebased. |
@@ -51605,24 +51607,24 @@ Arguments:
 
 ### `MergeRequestRiskAssessment`
 
-Risk classification for a merge request.
+Risk assessment for a merge request.
 
 Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="mergerequestriskassessment-assessedat"></a>`assessedAt` | [`Time`](#time) | When the classification completed. |
+| <a id="mergerequestriskassessment-assessedat"></a>`assessedAt` | [`Time`](#time) | When the assessment completed. |
 | <a id="mergerequestriskassessment-confidence"></a>`confidence` | [`Int`](#int) | Confidence in the score, from 0 to 100. Derived from how much of the change could be measured and whether the signals agreed. |
 | <a id="mergerequestriskassessment-confidencetier"></a>`confidenceTier` | [`MergeRequestRiskConfidenceTier`](#mergerequestriskconfidencetier) | Tier derived from the confidence score. |
 | <a id="mergerequestriskassessment-contributingsignals"></a>`contributingSignals` | [`[MergeRequestRiskContributingSignal!]!`](#mergerequestriskcontributingsignal) | What each signal contributed to the score. |
 | <a id="mergerequestriskassessment-domaintags"></a>`domainTags` | [`[String!]!`](#string) | Risk domains the change touches, used to route specialist review. |
-| <a id="mergerequestriskassessment-duoworkflowid"></a>`duoWorkflowId` | [`Int`](#int) | ID of the Duo workflow session that produced the classification. |
+| <a id="mergerequestriskassessment-duoworkflowid"></a>`duoWorkflowId` | [`Int`](#int) | ID of the Duo workflow session that produced the assessment. |
 | <a id="mergerequestriskassessment-missingsignals"></a>`missingSignals` | [`[MergeRequestRiskMissingSignal!]!`](#mergerequestriskmissingsignal) | Signals that could not be measured, which is why confidence may be low. |
 | <a id="mergerequestriskassessment-rationale"></a>`rationale` | [`String`](#string) | Plain-language explanation of the assessment. |
 | <a id="mergerequestriskassessment-risk"></a>`risk` | [`Int`](#int) | Risk score from 0 to 100. |
 | <a id="mergerequestriskassessment-risktier"></a>`riskTier` | [`MergeRequestRiskTier`](#mergerequestrisktier) | Tier derived from the risk score. |
-| <a id="mergerequestriskassessment-stale"></a>`stale` | [`Boolean!`](#boolean) | Whether the merge request has changed since it was classified. Classification runs once, so this is a notice rather than a trigger to re-run. |
-| <a id="mergerequestriskassessment-status"></a>`status` | [`MergeRequestRiskAssessmentStatus!`](#mergerequestriskassessmentstatus) | Status of the classification. |
+| <a id="mergerequestriskassessment-stale"></a>`stale` | [`Boolean!`](#boolean) | Whether the merge request has changed since it was assessed. Assessment runs once, so this is a notice rather than a trigger to re-run. |
+| <a id="mergerequestriskassessment-status"></a>`status` | [`MergeRequestRiskAssessmentStatus!`](#mergerequestriskassessmentstatus) | Status of the assessment. |
 
 ### `MergeRequestRiskContributingSignal`
 
@@ -69350,14 +69352,14 @@ State of a review of a GitLab merge request.
 
 ### `MergeRequestRiskAssessmentStatus`
 
-Status of a merge request risk classification.
+Status of a merge request risk assessment.
 
 | Value | Description |
 | ----- | ----------- |
-| <a id="mergerequestriskassessmentstatus-complete"></a>`COMPLETE` | Classification has completed. |
-| <a id="mergerequestriskassessmentstatus-failed"></a>`FAILED` | Classification could not be completed. |
-| <a id="mergerequestriskassessmentstatus-pending"></a>`PENDING` | Waiting to be classified. |
-| <a id="mergerequestriskassessmentstatus-queued"></a>`QUEUED` | Queued for (re)classification. |
+| <a id="mergerequestriskassessmentstatus-complete"></a>`COMPLETE` | Assessment has completed. |
+| <a id="mergerequestriskassessmentstatus-failed"></a>`FAILED` | Assessment could not be completed. |
+| <a id="mergerequestriskassessmentstatus-pending"></a>`PENDING` | Waiting to be assessed. |
+| <a id="mergerequestriskassessmentstatus-queued"></a>`QUEUED` | Queued for (re)assessment. |
 
 ### `MergeRequestRiskConfidenceTier`
 
@@ -76782,6 +76784,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="negatedboardissueinput-assigneeusername"></a>`assigneeUsername` | [`[String]`](#string) | Filter by assignee username. |
 | <a id="negatedboardissueinput-authorusername"></a>`authorUsername` | [`String`](#string) | Filter by author username. |
+| <a id="negatedboardissueinput-authorusernames"></a>`authorUsernames` | [`[String!]`](#string) | Filter by author usernames (maximum is 100 usernames). |
 | <a id="negatedboardissueinput-customfield"></a>`customField`  | [`[WorkItemWidgetCustomFieldFilterInputType!]`](#workitemwidgetcustomfieldfilterinputtype) | Introduced in GitLab 18.4. Status: Experiment. Filter by negated custom fields. |
 | <a id="negatedboardissueinput-epicid"></a>`epicId`  | [`EpicID`](#epicid) | Deprecated in GitLab 17.5. This will be replaced by WorkItem hierarchyWidget. |
 | <a id="negatedboardissueinput-healthstatusfilter"></a>`healthStatusFilter` | [`HealthStatus`](#healthstatus) | Health status not applied to the issue. Includes issues where health status is not set. |
@@ -76814,6 +76817,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="negatedepicboardissueinput-authorusername"></a>`authorUsername` | [`String`](#string) | Filter by author username. |
+| <a id="negatedepicboardissueinput-authorusernames"></a>`authorUsernames` | [`[String!]`](#string) | Filter by author usernames (maximum is 100 usernames). |
 | <a id="negatedepicboardissueinput-customfield"></a>`customField`  | [`[WorkItemWidgetCustomFieldFilterInputType!]`](#workitemwidgetcustomfieldfilterinputtype) | Introduced in GitLab 18.4. Status: Experiment. Filter by negated custom fields. |
 | <a id="negatedepicboardissueinput-labelname"></a>`labelName` | [`[String]`](#string) | Filter by label name. |
 | <a id="negatedepicboardissueinput-myreactionemoji"></a>`myReactionEmoji` | [`String`](#string) | Filter by reaction emoji applied by the current user. Wildcard values "NONE" and "ANY" are supported. |

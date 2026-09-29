@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+   Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
    ```
 
 
@@ -174,23 +174,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Set up WAF rules to block SQL injection and XSS attacks on my application.
+```
+
+```txt
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+```
+
+```txt
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+```
+
+```txt
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+```
+
+```txt
 Build an image upload and transformation service using R2 and Cloudflare Images.
-```
-
-```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
-```
-
-```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
-```
-
-```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
-Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

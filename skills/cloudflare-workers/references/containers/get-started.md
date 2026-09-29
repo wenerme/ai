@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/containers/get-started/og.png?v=82557fc
 
 # Get started
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In this guide, you will deploy a Worker that can make requests to one or more Containers in response to end-user requests. In this example, each container runs a small webserver written in Go.
 
 This example Worker should give you a sense for simple Container use, and provide a starting point for more complex use cases.
+
+This guide uses the `Container` class and its built-in lifecycle helpers. You can also manage containers directly through `ctx.container`. To compare both options, refer to [Containers APIs](https://developers.cloudflare.com/containers/api/).
 
 ## Prerequisites
 
@@ -117,7 +119,7 @@ Now that you've deployed your first container, let's explain what is happening i
 
 ### Configuration
 
-Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wrangler/configuration/) defines the configuration for both your Worker and your container:
+Your [Wrangler configuration file](https://developers.cloudflare.com/containers/configuration/wrangler/) defines the configuration for both your Worker and your container:
 
 ```jsonc
 {
@@ -136,12 +138,12 @@ Your [Wrangler configuration file](https://developers.cloudflare.com/workers/wra
 			},
 		],
 	},
-	"migrations": [
-		{
-			"tag": "v1",
-			"new_sqlite_classes": ["MyContainer"],
+	"exports": {
+		"MyContainer": {
+			"type": "durable-object",
+			"storage": "sqlite",
 		},
-	],
+	},
 }
 ```
 
@@ -155,9 +157,9 @@ image = "./Dockerfile"
 name = "MY_CONTAINER"
 class_name = "MyContainer"
 
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "MyContainer" ]
+[exports.MyContainer]
+type = "durable-object"
+storage = "sqlite"
 ```
 
 Important points about this config:
@@ -165,7 +167,7 @@ Important points about this config:
 - `image` points to a Dockerfile, to a directory containing a Dockerfile, or to a fully qualified image reference such as `registry.cloudflare.com/<YOUR_ACCOUNT_ID>/<IMAGE>:<TAG>`.
 - `class_name` must be a [Durable Object class name](https://developers.cloudflare.com/durable-objects/api/base/).
 - `max_instances` declares the maximum number of simultaneously running container instances that will run.
-- The Durable Object must use [`new_sqlite_classes`](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage/#create-sqlite-backed-durable-object-class) not `new_classes`.
+- The `exports` entry declares the Durable Object class with SQLite storage. Existing applications that use the legacy `migrations` array can continue to use it, but `exports` and `migrations` cannot be combined.
 
 ### The Container Image
 
@@ -223,7 +225,7 @@ This defines basic configuration for the container:
 
 The `Container` class itself extends [`DurableObject`](https://developers.cloudflare.com/durable-objects/), so your subclass has access to the full Durable Object API. The Durable Object handles routing, lifecycle, and persistent state, while the container process runs your image inside a Linux VM. This means you can use [`this.ctx.storage`](https://developers.cloudflare.com/durable-objects/api/sqlite-storage-api/) to persist data that survives container restarts and resides close to the container itself.
 
-Refer to the [Container class reference](https://developers.cloudflare.com/containers/reference/container-class/) and the [low-level Durable Object container API](https://developers.cloudflare.com/durable-objects/api/container/) for more details.
+For all properties and methods, refer to the [Container class API](https://developers.cloudflare.com/containers/api/container-class/).
 
 #### Routing to Containers
 
@@ -290,5 +292,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/get-started/#page","headline":"Get started","description":"Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.","url":"https://developers.cloudflare.com/containers/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/get-started/og.png?v=82557fc11168d06b","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/get-started/#page","headline":"Get started","description":"Deploy your first Container on Cloudflare by building an image, configuring a Worker, and routing requests to container instances.","url":"https://developers.cloudflare.com/containers/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/get-started/og.png?v=82557fc11168d06b","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

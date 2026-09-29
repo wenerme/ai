@@ -168,7 +168,7 @@ Returns the created Realtime transcription session object, plus an ephemeral key
 
   Configuration of the transcription model.
 
-  - `language: optional string`
+  - `language: optional string or null`
 
     The language of the input audio.
 

@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Set up a KV namespace for edge-cached session storage in my Worker.
+   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
    ```
 
 
@@ -164,23 +164,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
 Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
-```
-
-```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Tips

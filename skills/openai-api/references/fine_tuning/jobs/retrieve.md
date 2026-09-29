@@ -24,21 +24,27 @@ Get info about a fine-tuning job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job was created.
 
-  - `error: object { code, message, param }  or null`
+  - `error: object { code, message, param }  or unknown or null`
 
     For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
 
-    - `code: string`
+    - `object { code, message, param }`
 
-      A machine-readable error code.
+      For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure.
 
-    - `message: string`
+      - `code: string`
 
-      A human-readable error message.
+        A machine-readable error code.
 
-    - `param: string or null`
+      - `message: string`
 
-      The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific.
+        A human-readable error message.
+
+      - `param: string or null`
+
+        The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific.
+
+    - `unknown`
 
   - `fine_tuned_model: string or null`
 
@@ -48,7 +54,65 @@ Get info about a fine-tuning job.
 
     The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running.
 
-  - `hyperparameters: object { batch_size, learning_rate_multiplier, n_epochs }`
+  - `model: string`
+
+    The base model that is being fine-tuned.
+
+  - `object: "fine_tuning.job"`
+
+    The object type, which is always "fine_tuning.job".
+
+    - `"fine_tuning.job"`
+
+  - `organization_id: string`
+
+    The organization that owns the fine-tuning job.
+
+  - `result_files: array of string`
+
+    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/api/reference/resources/files/methods/content).
+
+  - `seed: number or null`
+
+    The seed used for the fine-tuning job.
+
+  - `status: "validating_files" or "queued" or "running" or 5 more`
+
+    The current status of the fine-tuning job, which can be `validating_files`, `queued`, `running`, `pausing`, `paused`, `succeeded`, `failed`, or `cancelled`.
+
+    - `"validating_files"`
+
+    - `"queued"`
+
+    - `"running"`
+
+    - `"succeeded"`
+
+    - `"failed"`
+
+    - `"cancelled"`
+
+    - `"pausing"`
+
+    - `"paused"`
+
+  - `trained_tokens: number or null`
+
+    The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
+
+  - `training_file: string`
+
+    The file ID used for training. You can retrieve the training data with the [Files API](/api/reference/resources/files/methods/content).
+
+  - `validation_file: string or null`
+
+    The file ID used for validation. You can retrieve the validation results with the [Files API](/api/reference/resources/files/methods/content).
+
+  - `estimated_finish: optional number or null`
+
+    The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
+
+  - `hyperparameters: optional object { batch_size, learning_rate_multiplier, n_epochs }  or null`
 
     The hyperparameters used for the fine-tuning job. This value will only be returned when running `supervised` jobs.
 
@@ -84,60 +148,6 @@ Get info about a fine-tuning job.
         - `"auto"`
 
       - `number`
-
-  - `model: string`
-
-    The base model that is being fine-tuned.
-
-  - `object: "fine_tuning.job"`
-
-    The object type, which is always "fine_tuning.job".
-
-    - `"fine_tuning.job"`
-
-  - `organization_id: string`
-
-    The organization that owns the fine-tuning job.
-
-  - `result_files: array of string`
-
-    The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/api/reference/resources/files/methods/content).
-
-  - `seed: number`
-
-    The seed used for the fine-tuning job.
-
-  - `status: "validating_files" or "queued" or "running" or 3 more`
-
-    The current status of the fine-tuning job, which can be either `validating_files`, `queued`, `running`, `succeeded`, `failed`, or `cancelled`.
-
-    - `"validating_files"`
-
-    - `"queued"`
-
-    - `"running"`
-
-    - `"succeeded"`
-
-    - `"failed"`
-
-    - `"cancelled"`
-
-  - `trained_tokens: number or null`
-
-    The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running.
-
-  - `training_file: string`
-
-    The file ID used for training. You can retrieve the training data with the [Files API](/api/reference/resources/files/methods/content).
-
-  - `validation_file: string or null`
-
-    The file ID used for validation. You can retrieve the validation results with the [Files API](/api/reference/resources/files/methods/content).
-
-  - `estimated_finish: optional number or null`
-
-    The Unix timestamp (in seconds) for when the fine-tuning job is estimated to finish. The value will be null if the fine-tuning job is not running.
 
   - `integrations: optional array of FineTuningJobWandbIntegrationObject or null`
 
@@ -182,7 +192,7 @@ Get info about a fine-tuning job.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `method: optional object { type, dpo, reinforcement, supervised }`
+  - `method: optional object { type, dpo, reinforcement, supervised }  or null`
 
     The method used for fine-tuning.
 
@@ -858,11 +868,6 @@ curl https://api.openai.com/v1/fine_tuning/jobs/$FINE_TUNING_JOB_ID \
   },
   "fine_tuned_model": "fine_tuned_model",
   "finished_at": 0,
-  "hyperparameters": {
-    "batch_size": "auto",
-    "learning_rate_multiplier": "auto",
-    "n_epochs": "auto"
-  },
   "model": "model",
   "object": "fine_tuning.job",
   "organization_id": "organization_id",
@@ -875,6 +880,11 @@ curl https://api.openai.com/v1/fine_tuning/jobs/$FINE_TUNING_JOB_ID \
   "training_file": "training_file",
   "validation_file": "validation_file",
   "estimated_finish": 0,
+  "hyperparameters": {
+    "batch_size": "auto",
+    "learning_rate_multiplier": "auto",
+    "n_epochs": "auto"
+  },
   "integrations": [
     {
       "type": "wandb",
@@ -949,15 +959,15 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
   "fine_tuned_model": "ft:davinci-002:my-org:custom_suffix:7q8mpxmy",
   "organization_id": "org-123",
   "result_files": [
-      "file-abc123"
+    "file-abc123"
   ],
   "status": "succeeded",
   "validation_file": null,
   "training_file": "file-abc123",
   "hyperparameters": {
-      "n_epochs": 4,
-      "batch_size": 1,
-      "learning_rate_multiplier": 1.0
+    "n_epochs": 4,
+    "batch_size": 1,
+    "learning_rate_multiplier": 1.0
   },
   "trained_tokens": 5768,
   "integrations": [],
@@ -972,6 +982,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
         "learning_rate_multiplier": 1.0
       }
     }
-  }
+  },
+  "error": {}
 }
 ```

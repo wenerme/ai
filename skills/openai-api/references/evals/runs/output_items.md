@@ -103,7 +103,7 @@ Get a list of output items for an evaluation run.
 
     A sample containing the input and output of the evaluation run.
 
-    - `error: EvalAPIError`
+    - `error: EvalAPIError or null`
 
       An object representing an error response from the Eval API.
 
@@ -339,7 +339,7 @@ curl https://api.openai.com/v1/evals/egroup_67abd54d9b0081909a86353f6fb9317a/run
           }
         ],
         "finish_reason": "stop",
-        "model": "gpt-5.6-sol",
+        "model": "gpt-6-astra",
         "usage": {
           "total_tokens": 325,
           "completion_tokens": 2,
@@ -434,7 +434,7 @@ Get an evaluation run output item by ID.
 
   A sample containing the input and output of the evaluation run.
 
-  - `error: EvalAPIError`
+  - `error: EvalAPIError or null`
 
     An object representing an error response from the Eval API.
 
@@ -641,7 +641,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
       }
     ],
     "finish_reason": "stop",
-    "model": "gpt-5.6-sol",
+    "model": "gpt-6-astra",
     "usage": {
       "total_tokens": 325,
       "completion_tokens": 2,
@@ -723,7 +723,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     A sample containing the input and output of the evaluation run.
 
-    - `error: EvalAPIError`
+    - `error: EvalAPIError or null`
 
       An object representing an error response from the Eval API.
 
@@ -871,7 +871,7 @@ curl https://api.openai.com/v1/evals/eval_67abd54d9b0081909a86353f6fb9317a/runs/
 
     A sample containing the input and output of the evaluation run.
 
-    - `error: EvalAPIError`
+    - `error: EvalAPIError or null`
 
       An object representing an error response from the Eval API.
 

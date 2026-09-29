@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/puppeteer/og.png?v=f7742f9c
 
 # Puppeteer
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/puppeteer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/puppeteer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Puppeteer ↗︎](https://pptr.dev/) is one of the most popular libraries that abstract the lower-level DevTools protocol from developers and provides a high-level API that you can use to easily instrument Chrome/Chromium and automate browsing sessions. Puppeteer is used for tasks like creating screenshots, crawling pages, and testing web applications.
 
@@ -162,8 +162,6 @@ In order to facilitate browser session management, we've added new methods to `p
 ```json
 [
 	{
-		"connectionId": "2a2246fa-e234-4dc1-8433-87e6cee80145",
-		"connectionStartTime": 1711621704607,
 		"sessionId": "478f4d7d-e943-40f6-a414-837d3736a1dc",
 		"startTime": 1711621703708
 	},
@@ -173,8 +171,6 @@ In order to facilitate browser session management, we've added new methods to `p
 	}
 ]
 ```
-
-Notice that the session `478f4d7d-e943-40f6-a414-837d3736a1dc` has an active worker connection (`connectionId=2a2246fa-e234-4dc1-8433-87e6cee80145`), while session `565e05fb-4d2a-402b-869b-5b65b1381db7` is free. While a connection is active, no other workers may connect to that session.
 
 ### List recent sessions
 
@@ -237,5 +233,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/puppeteer/#page","headline":"Puppeteer","description":"Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/puppeteer/og.png?v=f7742f9cfe173f38","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/puppeteer/#page","headline":"Puppeteer","description":"Learn how to use Puppeteer with Cloudflare Workers for browser automation. Access Puppeteer API, manage sessions, and optimize Browser Run.","url":"https://developers.cloudflare.com/browser-run/puppeteer/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/puppeteer/og.png?v=f7742f9cfe173f38","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

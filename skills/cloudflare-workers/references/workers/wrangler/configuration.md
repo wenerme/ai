@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v
 
 # Configuration
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler optionally uses a configuration file to customize the development and deployment setup for a Worker.
 
@@ -39,7 +39,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-09-29",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -74,7 +74,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-09-29"
 workers_dev = false
 
 [route]
@@ -1489,7 +1489,7 @@ The following options are available:
 - `image` `string` required
   - The image to use for the container. This can either be a local path to a `Dockerfile`, in which case `wrangler deploy` will build and push the image, or it can be an image reference. Supported registries are the Cloudflare Registry, Docker Hub, Amazon ECR, and Google Artifact Registry. For more information, refer to [Image Management](https://developers.cloudflare.com/containers/guides/image-management/).
 - `class_name` `string` required
-  - The corresponding Durable Object class name. This will make this Durable Object a container-enabled Durable Object and allow each instance to control a container. See [Durable Object Container Methods](https://developers.cloudflare.com/durable-objects/api/container/) for details.
+  - The corresponding Durable Object class name. This will make this Durable Object a container-enabled Durable Object and allow each instance to control a container. Refer to the [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/) for details.
 - `instance_type` `string` optional
   - The instance type of the container. This determines the amount of memory, CPU, and disk given to the container instance. The current options are `"lite"`, `"basic"`, `"standard-1"`, `"standard-2"`, `"standard-3"`, and `"standard-4"`. The default is `"lite"`. For more information, see the [instance types documentation](https://developers.cloudflare.com/containers/platform/limits/#instance-types).
   - To specify a custom instance type, see [here](#custom-instance-types).
@@ -2150,5 +2150,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -1247,7 +1247,7 @@
 
           - `"incomplete"`
 
-      - `WebSearchCall object { id, action, status, type }`
+      - `WebSearchCall object { id, status, type, action }`
 
         The results of a web search tool call. See the
         [web search guide](/api/docs/guides/tools-web-search) for more information.
@@ -1256,7 +1256,27 @@
 
           The unique ID of the web search tool call.
 
-        - `action: object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
+        - `status: "in_progress" or "searching" or "completed" or 2 more`
+
+          The status of the web search tool call.
+
+          - `"in_progress"`
+
+          - `"searching"`
+
+          - `"completed"`
+
+          - `"failed"`
+
+          - `"incomplete"`
+
+        - `type: "web_search_call"`
+
+          The type of the web search tool call. Always `web_search_call`.
+
+          - `"web_search_call"`
+
+        - `action: optional object { type, queries, query, sources }  or object { type, url }  or object { pattern, type, url }`
 
           An object describing the specific action taken in this web search call.
           Includes details on how the model used the web (search, open_page, find_in_page).
@@ -1324,26 +1344,6 @@
             - `url: string`
 
               The URL of the page searched for the pattern.
-
-        - `status: "in_progress" or "searching" or "completed" or 2 more`
-
-          The status of the web search tool call.
-
-          - `"in_progress"`
-
-          - `"searching"`
-
-          - `"completed"`
-
-          - `"failed"`
-
-          - `"incomplete"`
-
-        - `type: "web_search_call"`
-
-          The type of the web search tool call. Always `web_search_call`.
-
-          - `"web_search_call"`
 
       - `FunctionCall object { arguments, call_id, name, 6 more }`
 
@@ -5790,9 +5790,9 @@
 
       - `"transport.dtmf.received"`
 
-  - `TransportDtmfSend object { event, event_id, type }`
+  - `TransportDtmfSend object { event, event_id, type, client_event_id }`
 
-    A SIP DTMF keypress successfully sent by the hosted tool. Delivered only to sideband observers; this is not a client command.
+    A SIP DTMF keypress successfully sent to the SIP trunk. Delivered only to sideband observers; this is not a client command.
 
     - `event: string`
 
@@ -5801,6 +5801,10 @@
     - `type: "transport.dtmf.send"`
 
       - `"transport.dtmf.send"`
+
+    - `client_event_id: optional string`
+
+      The event_id of the client command, when supplied.
 
   - `TransportRinging object { event_id, session_id, type }`
 

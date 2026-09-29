@@ -1,7 +1,7 @@
 ---
 description: Intercept and handle outbound HTTP from containers using Workers.
 title: Handle outbound traffic
-image: https://developers.cloudflare.com/containers/guides/outbound-traffic/og.png?v=2e06fa362fbb8548
+image: https://developers.cloudflare.com/containers/configuration/outbound-traffic/og.png?v=2e06fa362fbb8548
 ---
 
 [Skip to content](#main-content)
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/guides/outbound-traffic/og.p
 
 # Handle outbound traffic
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/outbound-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/outbound-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Outbound handlers let you intercept and modify HTTP traffic from a container with trusted code.
 
@@ -343,7 +343,7 @@ Requests are evaluated in this order:
 5. Instance-level handlers set with `setOutboundHandler()` are checked before the class-level `outbound` handler.
 6. If no handler matches, the request can still egress to the public internet when it matched `allowedHosts` or `enableInternet = true`. Otherwise, it is denied.
 
-## Low-level API
+## Direct API
 
 To configure outbound interception directly on `ctx.container`, use `interceptOutboundHttp` for a specific hostname glob, IP, or CIDR range, or `interceptAllOutboundHttp` for all traffic. Both accept a `WorkerEntrypoint`.
 
@@ -399,7 +399,7 @@ The `Container` class calls these methods automatically when you use the functio
 - [Connect to Workers bindings](https://developers.cloudflare.com/containers/configuration/workers-connections/) — Access KV, R2, Durable Objects, and other bindings from a container
 - [Control outbound traffic (Sandboxes)](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/) — Sandbox SDK API for outbound handlers
 - [Environment variables and secrets](https://developers.cloudflare.com/containers/configuration/environment-variables/) — Configure secrets and environment variables
-- [Durable Object interface](https://developers.cloudflare.com/durable-objects/api/container/) — Full `ctx.container` API reference
+- [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/) — Full `ctx.container` API reference
 
 Was this helpful?
 
@@ -410,5 +410,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/outbound-traffic/#page","headline":"Handle outbound traffic","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/guides/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/outbound-traffic/og.png?v=2e06fa362fbb8548","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/#page","headline":"Handle outbound traffic","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/og.png?v=2e06fa362fbb8548","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

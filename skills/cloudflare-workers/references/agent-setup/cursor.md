@@ -43,7 +43,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+   Set up rate limiting and WAF rules to block abuse on my public API.
    ```
 
 
@@ -148,23 +148,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
 Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
+```
+
+```txt
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Tips

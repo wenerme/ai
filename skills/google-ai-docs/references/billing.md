@@ -17,11 +17,12 @@ New accounts begin on the Free Tier, which allows access to
 [certain models](https://ai.google.dev/gemini-api/docs/pricing) in the Gemini API and AI Studio,
 up to the models' free tier [rate limits](https://aistudio.google.com/rate-limit).
 
-To deploy your applications directly from Build mode, you can use the
-**Google Cloud Starter Tier** . This tier lets you publish up to 2 full stack
+To deploy your applications directly from Build mode, eligible accounts can use
+the **Google Cloud Starter Tier** . This tier lets you publish up to 2 full-stack
 applications without setting up a Google Cloud project or billing account.
-See [Deploying from Google AI Studio](https://ai.google.dev/gemini-api/docs/aistudio-deploying) for
-details and refer to the [Google Cloud Starter Tier documentation](https://docs.cloud.google.com/docs/starter-tier) for more information.
+See [Deploying from Google AI Studio](https://ai.google.dev/gemini-api/docs/aistudio-deploying#starter-tier-eligibility) for
+eligibility details and refer to the [Google Cloud Starter Tier
+documentation](https://docs.cloud.google.com/docs/starter-tier) for more information.
 
 To access higher rate limits, use advanced models, and ensure your prompts and
 responses are **not** used to improve Google products^\*^, you can
