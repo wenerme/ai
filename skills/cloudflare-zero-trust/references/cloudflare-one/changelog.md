@@ -16,6 +16,115 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one.xml)
 
+## 2026-09-29
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+
+**Cloudflare One Client for Windows (version 2026.8.2028.1)**
+
+A new Beta release for the Windows Cloudflare One Client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This beta release includes the following changes and improvements:
+
+- Fixed an issue that could briefly block traffic to split tunnel excluded resources while the client was connecting or reconnecting.
+- Improved reauthentication reliability and fixed an issue where a reauthentication could force a new registration.
+- Improved client reaction to the current network lowering its MTU.
+- Added support for routing non-RFC 1918 local IPv4 networks through the WARP tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
+- Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
+- Improved API reliability by retrying requests dropped when reusing pooled connections.
+- The client no longer requires the Windows WLAN AutoConfig service to be running.
+- Implemented a service recovery mechanism backed by Windows scheduler task to start WARP service on system unlock if not already started.
+- Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
+- Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
+- Fixed the client continuing to report 'No network' after a successful manual disconnect.
+- Fixed Digital Experience Monitoring (DEX) HTTP tests failing TLS validation on Windows.
+- Fixed the client UI crashing at startup when it could not write to the Windows registry.
+- Fixed latency spikes and traffic interruptions during TPM-backed API authentication when hardware-backed registration is enabled.
+- Fixed trailing whitespace in BIOS serial numbers causing serial-number and client-certificate device posture checks to fail.
+- Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
+- Fixed a startup crash when date formatting data for the system locale had not yet loaded.
+
+**Known issues**
+
+- None
+
+## 2026-09-29
+
+[Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
+
+
+**Cloudflare One Client for macOS (version 2026.8.2028.1)**
+
+A new Beta release for the macOS Cloudflare One Client is now available on the [beta releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/beta-releases/).
+
+This beta release includes the following changes and improvements:
+
+- Fixed an issue that could briefly block traffic to split tunnel excluded resources while the client was connecting or reconnecting.
+- Improved reauthentication reliability and fixed an issue where a reauthentication could force a new registration.
+- Improved client reaction to the current network lowering its MTU.
+- Added support for routing non-RFC 1918 local IPv4 networks through the WARP tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
+- Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
+- Improved API reliability by retrying requests dropped when reusing pooled connections.
+- Fixed Extra Logging failing to capture packets across all interfaces.
+- Fixed an issue that could prevent remote diagnostics from completing.
+- Fixed DNS connectivity checks failing on IPv6-only networks.
+- Fixed the client service exiting when its route-monitoring socket was closed after sleep or wake.
+- Fixed DNS enforcement checks making the client service unresponsive on systems with large routing tables.
+- Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
+- Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
+- Fixed the client continuing to report 'No network' after a successful manual disconnect.
+- Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
+- Fixed a startup crash when date formatting data for the system locale had not yet loaded.
+
+**Known issues**
+
+- None
+
+## 2026-09-29
+
+[Cloudflare Mesh](https://developers.cloudflare.com/mesh/) [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) [Cloudflare One](https://developers.cloudflare.com/cloudflare-one/) [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/) [Workers VPC](https://developers.cloudflare.com/workers-vpc/)
+
+
+**Identify Mesh, Workers VPC, and Cloudflare Tunnel replicas in network logs**
+
+You can now tell a person on a laptop apart from a Mesh node or an AI agent running on Workers, without matching on connector email addresses or Mesh IP ranges — and see exactly which Cloudflare Tunnel and `cloudflared` replica received each session.
+
+[Gateway network logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/gateway-logs/#network-logs) and [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/) now identify two new kinds of traffic:
+
+- **Mesh** — Traffic sent from or delivered to a [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) node. Previously, Mesh nodes were logged the same way as devices running the [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), because Mesh nodes run the client in headless mode.
+- **Workers VPC** — Traffic sent by a Worker through a [Workers VPC](https://developers.cloudflare.com/workers-vpc/) binding. Previously, Workers VPC sessions were not recorded in Network Session Logs.
+
+![Viewing Mesh and Workers VPC traffic in Gateway network logs](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1439,height=796,format=webp/_astro/2026-09-28-mesh-workers-vpc-network-logs.iGvLKYk7.gif)
+
+#### Gateway network logs
+
+To view these values in the dashboard, go to **Zero Trust** > **Insights & Logs** > **Logs** > **Network logs**, select **Columns**, and turn on **Traffic Source** and **Traffic Destination**. Both values also appear under **Network query details** when you open a log entry.
+
+#### Network Session Logs
+
+The `zero_trust_network_sessions` dataset, available through [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/), includes the following fields:
+
+| Field | Description |
+| --- | --- |
+| `OnrampType` | How the session entered Cloudflare One. Values: `CF1_CLIENT`, `MESH`, `WORKERS_VPC`, `MAGIC`, `OTHER`. |
+| `Offramp` | Where the session was routed. Sessions routed to a Mesh node report `MESH`. |
+| `SourceName` | Name of the Worker that started the session. Only populated for Workers VPC sessions. |
+| `SourceID` | Stable identifier of the Worker that started the session. Only populated for Workers VPC sessions. |
+| `DestinationReplicaID` | The replica that served the session, such as a specific replica of a Mesh node or a `cloudflared` replica of a Cloudflare Tunnel. |
+
+For example, `OnrampType = 'WORKERS_VPC' AND Offramp = 'MESH'` returns every session where a Worker reached a service behind a Mesh node, and `SourceName` tells you which Worker it was.
+
+Redeploy your Workers
+
+`SourceName` and `SourceID` are only populated for Workers deployed after 29 September 2026. To include them for an existing Worker, redeploy it — for example, with `npx wrangler deploy`. No code changes are required.
+
+#### See which tunnel and replica received a session
+
+With `DestinationReplicaID`, you can now confirm which [Cloudflare Tunnel](https://developers.cloudflare.com/tunnel/) and which `cloudflared` replica received traffic for a specific session. Combine it with the existing `DestinationTunnelID` field to trace a session to an exact tunnel replica — or Mesh node replica — when you run multiple replicas for high availability. The replica ID matches the **Connector ID** shown in the dashboard, so you can [stream that replica's logs](https://developers.cloudflare.com/tunnel/observability/#remote-log-streaming) with `cloudflared tail --connector-id`.
+
+Sessions logged before this change are not backfilled. For all available fields, refer to [Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/).
+
 ## 2026-09-25
 
 [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) [Magic Transit](https://developers.cloudflare.com/magic-transit/) [Cloudflare WAN](https://developers.cloudflare.com/cloudflare-wan/)
@@ -153,8 +262,6 @@ This beta release includes the following changes and improvements:
 
 - None
 
-For Zero Trust documentation, see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/ For Consumer documentation, see: https://developers.cloudflare.com/warp-client/
-
 ## 2026-09-21
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -187,8 +294,6 @@ This beta release includes the following changes and improvements:
 **Known issues**
 
 - None
-
-For Zero Trust documentation, see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/ For Consumer documentation, see: https://developers.cloudflare.com/warp-client/
 
 ## 2026-09-18
 
@@ -298,9 +403,6 @@ This beta release includes the following changes and improvements:
 
 - None
 
-For Zero Trust documentation, see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/
- For Consumer documentation, see: https://developers.cloudflare.com/warp-client/
-
 ## 2026-09-09
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -330,9 +432,6 @@ This beta release includes the following changes and improvements:
 **Known issues**
 
 - None
-
-For Zero Trust documentation, see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/
- For Consumer documentation, see: https://developers.cloudflare.com/warp-client/
 
 ## 2026-09-09
 
@@ -625,9 +724,6 @@ This release introduces multiple features from our previous beta release into st
 
 - If a user upgrades to version 2026.7.1343.0, downgrades to an earlier version, re-registers, and then upgrades back to 2026.7.1343.0, the client might fail to connect or switch organizations. To resolve this issue, run `warp-cli registration delete` or `warp-cli registration delete-all`.
 
-For Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/
- For Consumer documentation please see: https://developers.cloudflare.com/warp-client/
-
 ## 2026-08-19
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -655,9 +751,6 @@ This release introduces multiple features from our previous beta release into st
 
 - None
 
-For Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/
- For Consumer documentation please see: https://developers.cloudflare.com/warp-client/
-
 ## 2026-08-19
 
 [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/)
@@ -684,9 +777,6 @@ This release introduces multiple features from our previous beta release into st
 **Known issues**
 
 - When in DNS Only mode, the client may send DNS queries for names that are configured for Local Domain Fallback to the encrypted DNS server instead of falling back to the system configuration. Local Domain Fallback works as expected in other client modes.
-
-For Zero Trust documentation please see: https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/
- For Consumer documentation please see: https://developers.cloudflare.com/warp-client/
 
 ## 2026-08-19
 

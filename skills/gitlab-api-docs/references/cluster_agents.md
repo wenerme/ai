@@ -44,7 +44,7 @@ The response is a list of agents with the following fields:
 Example request:
 
 ```shell
-curl \
+curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/20/cluster_agents"
 ```
@@ -128,7 +128,7 @@ The response is a single agent with the following fields:
 Example request:
 
 ```shell
-curl \
+curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/20/cluster_agents/1"
 ```
@@ -281,7 +281,7 @@ The response is a list of tokens with the following fields:
 Example request:
 
 ```shell
-curl \
+curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/20/cluster_agents/5/tokens"
 ```
@@ -352,7 +352,7 @@ The response is a single token with the following fields:
 Example request:
 
 ```shell
-curl \
+curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/20/cluster_agents/5/token/1"
 ```
@@ -508,7 +508,7 @@ The response is a list of URL configurations with the following fields:
 Example request:
 
 ```shell
-curl \
+curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/20/cluster_agents/5/url_configurations"
 ```
@@ -564,7 +564,7 @@ The response is a single URL configuration with the following fields:
 Example request:
 
 ```shell
-curl \
+curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/projects/20/cluster_agents/5/url_configurations/1"
 ```
@@ -689,5 +689,7 @@ Supported attributes:
 Example request:
 
 ```shell
-curl --request DELETE --header "PRIVATE-TOKEN: <your_access_token>" "https://gitlab.example.com/api/v4/projects/20/cluster_agents/5/url_configurations/1
+curl --request DELETE \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
+  --url "https://gitlab.example.com/api/v4/projects/20/cluster_agents/5/url_configurations/1
 ```

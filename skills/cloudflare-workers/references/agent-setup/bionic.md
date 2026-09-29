@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Add a cron trigger to my Worker that processes a job queue every hour.
+   Set up WAF rules to block SQL injection and XSS attacks on my application.
    ```
 
 
@@ -153,23 +153,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
-```
-
-```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
-```
-
-```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
-```
-
-```txt
 Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
+```
+
+```txt
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+```
+
+```txt
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Tips

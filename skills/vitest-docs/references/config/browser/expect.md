@@ -9,7 +9,7 @@ title: browser.expect | Config
 ## browser.expect.toMatchScreenshot
 
 Default options for the
-[`toMatchScreenshot` assertion](/api/browser/assertions.html#tomatchscreenshot).
+[`toMatchScreenshot` assertion](/api/browser/assertions#tomatchscreenshot).
 These options will be applied to all screenshot assertions.
 
 > **tip**: Setting global defaults for screenshot assertions helps maintain consistency

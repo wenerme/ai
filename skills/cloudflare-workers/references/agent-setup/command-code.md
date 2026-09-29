@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+   Use Workers for Platforms to let my customers deploy their own code in isolated environments.
    ```
 
 
@@ -174,23 +174,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

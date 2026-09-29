@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cache/how-to/cache-keys/og.png?v=5261d8
 
 # Cache keys
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cache/how-to/cache-keys/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A Cache Key is an identifier that Cloudflare uses for a file in our cache, and the Cache Key Template defines the identifier for a given HTTP request.
 
@@ -152,6 +152,10 @@ User feature fields add features about the end-user (client) into the Cache Key.
 - `geo` includes the client’s country, derived from the IP address
 - `lang` includes the first language code contained in the `Accept-Language` header sent by the client
 
+Note
+
+APO's **Cache by device type** setting and the **Cache by device type** option in Cache Rules use the same mechanism to add device type to the cache key. Cache Rules lets you configure this manually without APO. Refer to [cache by device type in APO](https://developers.cloudflare.com/automatic-platform-optimization/reference/cache-device-type/) for details.
+
 ## Availability
 
 Cache keys options availability varies according to your plan.
@@ -185,5 +189,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-keys/#page","headline":"Cache keys","description":"Customize cache keys to control how Cloudflare stores cached resources.","url":"https://developers.cloudflare.com/cache/how-to/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/how-to/cache-keys/og.png?v=5261d880844a85dc","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CORS","Geolocation","Headers","Cookies"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cache/how-to/cache-keys/#page","headline":"Cache keys","description":"Customize cache keys to control how Cloudflare stores cached resources.","url":"https://developers.cloudflare.com/cache/how-to/cache-keys/","inLanguage":"en","image":"https://developers.cloudflare.com/cache/how-to/cache-keys/og.png?v=5261d880844a85dc","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["CORS","Geolocation","Headers","Cookies"]}
 ```

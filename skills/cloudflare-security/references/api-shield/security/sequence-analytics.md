@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/api-shield/security/sequence-analytics/
 
 # Sequence Analytics
 
-Last updated Jun 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Sequence Analytics tracks the order of API endpoint requests over time, allowing you to discover how users interact with your API. Sequence Analytics groups and highlights important user journeys (sequences) across your API. You can enforce preferred sequences using [Sequence mitigation](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/).
 
@@ -51,7 +51,7 @@ For more information, refer to the [blog post ↗︎](https://blog.cloudflare.co
 
 ### Repeated sequences
 
-Real-world API usage shows many successively repeated operations. To facilitate exploration, Sequence Analytics collapses successively repeated operations into one.
+To facilitate exploration, Sequence Analytics collapses successive requests to the same operation into one when no other operation occurs between them.
 
 ## Availability
 
@@ -72,5 +72,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/#page","headline":"Sequence Analytics","description":"Track the order of API requests over time to discover user journeys and sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/og.png?v=32323ccfad681d76","dateModified":"2026-06-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/#page","headline":"Sequence Analytics","description":"Track the order of API requests over time to discover user journeys and sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/sequence-analytics/og.png?v=32323ccfad681d76","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

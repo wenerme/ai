@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/api-shield/security/graphql-protection/
 
 # Configure GraphQL malicious query protection via the API
 
-Last updated May 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/graphql-protection/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/graphql-protection/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the [Cloudflare GraphQL API](https://developers.cloudflare.com/analytics/graphql-api/getting-started/) to gather data about your GraphQL API’s current usage and configure Cloudflare’s GraphQL malicious query protection to log or block malicious queries.
 
@@ -167,7 +167,7 @@ For example, you can deploy the following rule via the API or the dashboard to b
 
 Note
 
-You are not able to configure which endpoints the GraphQL parsing runs on. Requests are parsed if they are targeting a path ending in `/graphql`.
+You are not able to configure which endpoints the GraphQL parsing runs on. Requests are parsed if they target a path with the case-sensitive `/graphql` suffix.
 
 Was this helpful?
 
@@ -178,5 +178,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/#page","headline":"Configure GraphQL malicious query protection via the API","description":"Use the GraphQL API to configure query size and depth limits for your API.","url":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/og.png?v=5fe3f58bb103ab4d","dateModified":"2026-05-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/#page","headline":"Configure GraphQL malicious query protection via the API","description":"Use the GraphQL API to configure query size and depth limits for your API.","url":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/graphql-protection/api/og.png?v=5fe3f58bb103ab4d","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["GraphQL"]}
 ```

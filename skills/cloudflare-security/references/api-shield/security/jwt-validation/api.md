@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/api-shield/security/jwt-validation/api/
 
 # Configure JWT validation via the API
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use the Cloudflare API to configure [JWT validation](https://developers.cloudflare.com/api-shield/security/jwt-validation/). A token configuration defines how Cloudflare finds and validates JWTs. You then use a WAF custom rule or a token validation rule to [act on the results](#act-on-validation-results).
 
@@ -22,7 +22,7 @@ A token configuration defines the JSON Web Key Set (JWKS) used to validate JSON 
 
 Note
 
-A zone may have up to 32 token configurations by default. Each token configuration can contain up to 16 keys.
+Each zone supports up to 32 token configurations by default, with up to 16 keys per configuration. Contact your account team if you need a different allocation.
 
 Token configurations require the following information:
 
@@ -40,7 +40,9 @@ Each item must be a Ruleset Engine expression that resolves to a string.
 
 Currently supported fields are `http.request.headers` and `http.request.cookies`.
 
-You can set up to four token sources. If a request has more than one of these fields set, only one will be used. Leading `Bearer:` strings in request tokens are automatically ignored.
+You can set up to four token sources. The sources use `OR` logic: a valid token from any one source is sufficient. This supports clients using different token locations, including during a migration. If a request contains values in multiple configured sources, Cloudflare evaluates them one at a time and stops after the first valid token. Cloudflare does not combine token values or require multiple sources to be valid.
+
+A source can contain an unprefixed JWT. It can also use the exact `Bearer` prefix, with a capital `B`, no colon, and one space after `Bearer`.
 
 Refer to the [Ruleset Engine documentation](https://developers.cloudflare.com/ruleset-engine/rules-language/fields) for details on working with Ruleset Engine fields.
 
@@ -50,21 +52,21 @@ API Shield supports asymmetric RSA and elliptic curve keys and symmetric hash-ba
 
 | Key type | Supported algorithms | Requirements |
 | --- | --- | --- |
-| RSA | `RS256`, `RS384`, `RS512`, `PS256`, `PS384`, and `PS512` | RSA keys must be at least 2,048 bits. |
+| RSA | `RS256`, `RS384`, `RS512`, `PS256`, `PS384`, and `PS512` | RSA keys must be 2,048, 3,072, or 4,096 bits. |
 | EC | `ES256` and `ES384` | Use curve `P-256` with `ES256` and curve `P-384` with `ES384`. |
 | HMAC | `HS256`, `HS384`, and `HS512` | Use a symmetric secret of at least 32, 48, or 64 bytes, respectively. |
 
-Each JWK must have an `alg` and a `kid`. The JWT header must contain matching `alg` and `kid` values so API Shield can select the correct key.
+Provide an `alg` value for every JWK. Each JWK must also have a `kid`. The effective algorithm and key ID must match the `alg` and `kid` values in the JWT header.
 
-Provide an `alg` value for every JWK. The effective algorithm, whether provided or defaulted, must match the `alg` value in the JWT header. HMAC keys must always specify `alg`.
-
-For compatibility with identity providers that omit `alg`, API Shield defaults an RSA key without `alg` to `RS256`. RSA key size does not identify which signing algorithm an identity provider uses. Specify `alg` explicitly if the identity provider uses another supported algorithm.
+For compatibility with identity providers that omit `alg`, API Shield defaults RSA keys to `RS256`, P-256 EC keys to `ES256`, and P-384 EC keys to `ES384`. Because an RSA key does not identify its signing algorithm, specify `alg` explicitly if the identity provider uses another supported RSA algorithm. HMAC keys must always specify `alg`.
 
 For an HMAC key, set `kty` to `oct`. Set `k` to the raw symmetric credential encoded with unpadded Base64url. The decoded credential must meet the minimum length for its algorithm.
 
 Caution
 
-Anyone with an HMAC credential can sign and validate JWTs. Treat the credential as a secret and do not expose it in source code or logs. Cloudflare never stores symmetric credentials in plaintext. API responses do not include the credential.
+For new JWT deployments, Cloudflare recommends asymmetric, public-key algorithms such as RSA or elliptic curve algorithms. API Shield then needs only the public verification key, while the issuer retains the private signing key.
+
+HMAC uses a shared credential. Anyone with that credential can sign and validate JWTs. Treat it as a secret and do not expose it in source code or logs. Cloudflare never stores symmetric credentials in plaintext. API responses do not include the credential.
 
 Cloudflare will remove any fields that are unnecessary from each key and will drop keys that we do not support.
 
@@ -272,7 +274,7 @@ Refer to [Apply a rule to operations](#apply-a-rule-to-operations) for more info
 
 A token validation rule's expression defines a security policy that a request must meet.
 
-For example, the expression `is_jwt_valid("51231d16-01f1-48e3-93f8-91c99e81288e") or is_jwt_valid("51231d16-01f1-48e3-93f8-91c99e81288e")` will trigger if an incoming request does not have at least one valid authentication token.
+For example, the expression `is_jwt_valid("51231d16-01f1-48e3-93f8-91c99e81288e") or is_jwt_valid("fddfc39e-3686-4683-ab23-bf917da6bb43")` will trigger if an incoming request does not have at least one valid authentication token.
 
 These expressions are similar to [expressions used in Ruleset Engine](https://developers.cloudflare.com/ruleset-engine/rules-language/), with a few key differences:
 
@@ -308,7 +310,7 @@ It can be combined with a `block` action in the token validation rule to block r
 
 The `is_jwt_valid("51231d16-01f1-48e3-93f8-91c99e81288e") or is_jwt_valid("fddfc39e-3686-4683-ab23-bf917da6bb43")` expressions will trigger an action if a request does not have at least one valid token.
 
-This can occur if you need to split JWKs into multiple token configurations.
+This can occur when your API accepts tokens from two different identity providers.
 
 #### Require a valid token but ignore requests without a token
 
@@ -338,8 +340,8 @@ For example, the following selector will apply a rule to all operations in `v1.e
 	"exclude": [
 		{
 			"operation_ids": [
-				"f9c5615e-fe15-48ce-bec6-cfc1946f1bec", // POST v1.example.com/login
-				"56828eae-035a-4396-ba07-51c66d680a04" // POST v2.example.com/login
+				"f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+				"56828eae-035a-4396-ba07-51c66d680a04"
 			]
 		}
 	]
@@ -348,13 +350,15 @@ For example, the following selector will apply a rule to all operations in `v1.e
 
 Operations can be included at a host level and ignored on a per-operation basis.
 
-You can use the `POST /zones/{zone_id}/token_validation/rules/preview` endpoint to see the operations covered by this rule:
+You can use the `POST /zones/{zone_id}/token_validation/rules/preview` endpoint to see the operations covered by this rule.
+
+Use the `page` and `per_page` query parameters to paginate operations. They default to page `1` and `20` operations per page. Each response includes one page in `result.operations` and pagination metadata in `result_info`.
 
 *Example using cURLbash*
 
 ```bash
-curl --request PUT \
-'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/preview' \
+curl --request POST \
+'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/preview?page=1&per_page=20' \
 --header 'Content-Type: application/json' \
 --data '{
     "include": [
@@ -368,15 +372,15 @@ curl --request PUT \
     "exclude": [
         {
             "operation_ids": [
-                "f9c5615e-fe15-48ce-bec6-cfc1946f1bec", // POST v1.example.com/login
-                "56828eae-035a-4396-ba07-51c66d680a04"  // POST v2.example.com/login
+                "f9c5615e-fe15-48ce-bec6-cfc1946f1bec",
+                "56828eae-035a-4396-ba07-51c66d680a04"
             ]
         }
     ]
 }'
 ```
 
-The response will include all operations on a zone with an additional `state` field.
+The response includes one page of operations on a zone with an additional `state` field.
 
 The `state` field can be `ignored`, `excluded`, or `included`. Included operations will match the hostname selectors you specified. Excluded operations will match the operation IDs you specified in the selector. Ignored operations are those that do not match anything specified in the selector.
 
@@ -451,7 +455,7 @@ The `state` field can be `ignored`, `excluded`, or `included`. Included operatio
 		"available_hosts": [
 			"example.com",
 			"v1.example.com",
-			"v1.example.com",
+			"v2.example.com",
 			"v3.example.com"
 		]
 	},
@@ -461,26 +465,26 @@ The `state` field can be `ignored`, `excluded`, or `included`. Included operatio
 	"result_info": {
 		"page": 1,
 		"per_page": 20,
-		"count": 20,
-		"total_count": 1631
+		"count": 7,
+		"total_count": 7
 	}
 }
 ```
 
-Operations with a `included` state will be covered by the token validation rule. The response also shows the hostnames of included operations in `result.selected_hosts` and shows all hostnames used by all zone operations in `result.available_hosts`.
+Operations with an `included` state will be covered by the token validation rule. The response also shows the hostnames of included operations in `result.selected_hosts` and shows all hostnames used by all zone operations in `result.available_hosts`.
 
 You can also send an empty object in the request body:
 
 *Example using cURLbash*
 
 ```bash
-curl --request PUT \
+curl --request POST \
 'https://api.cloudflare.com/client/v4/zones/{zone_id}/token_validation/rules/preview' \
 --header 'Content-Type: application/json' \
 --data '{ }'
 ```
 
-The response will show all zone operations and all possible hosts, which you can use to build your own selector.
+The response shows one page of zone operations and all possible hosts, which you can use to build your own selector.
 
 ## Token validation rule JSON object
 
@@ -613,7 +617,7 @@ Cloudflare will remove any fields that are unnecessary from each key and will dr
 
 It is highly recommended to validate the output of the API call to check that the resulting keys appear as intended.
 
-Credential updates use the same algorithm compatibility behavior as configuration creation. The response includes normalized credentials and a message for each defaulted algorithm.
+Credential updates use the same algorithm defaulting behavior as configuration creation. The response includes normalized credentials in `result` and one message for each defaulted algorithm.
 
 Use `PUT` to replace the complete key set. Every symmetric key in a `PUT` request must include `k`. Keys omitted from the request are removed.
 
@@ -806,5 +810,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#page","headline":"Configure JWT validation via the API","description":"Configure JWT validation and act on its results using the Cloudflare API.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/og.png?v=2a0c992fe482f981","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/#page","headline":"Configure JWT validation via the API","description":"Configure JWT validation and act on its results using the Cloudflare API.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/jwt-validation/api/og.png?v=2a0c992fe482f981","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/tunnel/observability/og.png?v=b6362e17d
 
 # Observability
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/tunnel/observability/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Tunnel exposes logs, metrics, and diagnostic tools to help you monitor tunnel health and resolve issues.
 
@@ -191,6 +191,19 @@ To stream tunnel logs from the dashboard:
 If you are running multiple `cloudflared` instances for the same tunnel (also known as [replicas](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability)), logs from all connected replicas are streamed automatically and grouped by hostname, making it easy to identify which host machine produced each log entry.
 
 To filter the stream to specific replicas, select the **Filter** icon and expand the **Replicas** section. You can also filter by **Log Level** and **Event Type**.
+
+### Network session logs
+
+[Zero Trust Network Session Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/zero_trust_network_sessions/) record each private network session that Cloudflare routes to a tunnel. Sessions routed to a Cloudflare Tunnel report `Offramp` as `TUNNEL`. Two fields show exactly where a session was sent:
+
+| Field | Description |
+| --- | --- |
+| `DestinationTunnelID` | The tunnel that received the session. |
+| `DestinationReplicaID` | The `cloudflared` replica that received the session. This value matches the replica's **Connector ID** in the dashboard. |
+
+If you run multiple [replicas](https://developers.cloudflare.com/tunnel/configuration/#replicas-and-high-availability), use these fields to confirm which tunnel and which replica received traffic for a specific session. To investigate that replica further, [stream its logs](#remote-log-streaming) with `cloudflared tail --connector-id <DESTINATION_REPLICA_ID> <TUNNEL_ID>`.
+
+Network Session Logs are available through [Logpush](https://developers.cloudflare.com/cloudflare-one/insights/logs/logpush/).
 
 ## Metrics
 
@@ -479,5 +492,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/observability/#page","headline":"Observability","description":"Monitor tunnel health, connectors, and connection status.","url":"https://developers.cloudflare.com/tunnel/observability/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/observability/og.png?v=b6362e17db073593","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/tunnel/observability/#page","headline":"Observability","description":"Monitor tunnel health, connectors, and connection status.","url":"https://developers.cloudflare.com/tunnel/observability/","inLanguage":"en","image":"https://developers.cloudflare.com/tunnel/observability/og.png?v=b6362e17db073593","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

@@ -12,25 +12,25 @@ image: https://developers.cloudflare.com/api-shield/security/sequence-mitigation
 
 # Configure sequence mitigation via the API
 
-Last updated Apr 15, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/api/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Configuring sequence mitigation via the API consists of building a rule object by choosing the sequence and setting the type of rule and its action.
+To configure sequence mitigation via the API, choose a sequence, rule kind, and action. The following example shows a rule returned by the API. In responses, `position` is a one-indexed integer:
 
-*Example of a rule objectjson*
+*Example response rule objectjson*
 
 ```json
 {
-    "id": "d4909253-390f-4956-89fd-92a5b0cd86d8",
-    "title": "<RULE_TITLE>",
-    "kind": "allow",
-    "action": "block",
-    "sequence": [
-     "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
-     "b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"
-    ],
-    "priority": 0,
-    "last_updated": "2023-07-24T12:06:51.796286Z",
-    "created_at": "2023-07-24T12:06:51.796286Z"
+	"id": "d4909253-390f-4956-89fd-92a5b0cd86d8",
+	"title": "<RULE_TITLE>",
+	"kind": "allow",
+	"action": "block",
+	"sequence": [
+		"0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
+		"b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"
+	],
+	"position": 1,
+	"last_updated": "2023-07-24T12:06:51.796286Z",
+	"created_at": "2023-07-24T12:06:51.796286Z"
 }
 ```
 
@@ -46,12 +46,12 @@ Otherwise, the request to endpoint `b704ab4d-5be0-46e0-9875-b2b3d1ab42f9` is blo
 | `title` | A string that helps to identify the rule. | A value between 1 and 50 characters | `"Allow checkout sequence"` |
 | `kind` | Defines the semantics of this rule. Block rules have a negative security model and allow to explicitly deny a sequence. Allow rules have a positive security model and deny everything but the configured sequence. | `block`, `allow` | `"block"` |
 | `action` | What firewall action should we do when the rule matches. | `block`,`log` | `"log"` |
-| `sequence` | Denotes the operations (from Endpoint Management) that make up the sequence for this rule. We currently only support sequences of length two. The first operation will be the starting endpoint and the second operation will be the ending endpoint. | An array with two valid operation IDs from Endpoint Management | `["0d9bf70c-92e1-4bb3-9411-34a3bcc59003", "b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"]` |
-| `priority` | Denotes the precedence of this rule in relation to all other rules. Rules with a higher priority value are evaluated before those with a lower value. If two rules have the same priority, they are evaluated in the order in which they were added. | A valid integer | `10` |
+| `sequence` | Denotes the operations (from Endpoint Management) that make up the sequence for this rule. We currently only support sequences of length two. Both operations must use the same hostname. The first operation is the starting endpoint, and the second operation is the ending endpoint. | An array with two valid operation IDs from Endpoint Management | `["0d9bf70c-92e1-4bb3-9411-34a3bcc59003", "b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"]` |
+| `position` | Denotes the one-indexed position of this rule among all sequence rules. Rules are evaluated from top to bottom, so rules with lower position values are evaluated first. Responses return an integer. `POST` and `PATCH` requests set the position with `{"index": N}`. | A positive integer | `1` |
 | `last_updated` | When this rule was last changed. | A date string | `2023-05-02T12:06:51.796286Z` |
 | `created_at` | When this rule was created. | A date string | `2023-05-02T12:06:51.796286Z` |
 
-You can find an endpoint's operation ID by exporting the schema in [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/#export-a-schema) or via the [API](https://developers.cloudflare.com/api/resources/api_gateway/subresources/operations/methods/list/).
+You can find an endpoint's operation ID by exporting the schema in [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/endpoint-management/schema-learning/#export-a-schema) or via the [API](https://developers.cloudflare.com/api/resources/api_gateway/subresources/operations/methods/list/).
 
 ### List sequence rules
 
@@ -67,7 +67,7 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/seqrules"
 
 Use the `POST` command to create a single rule.
 
-This adds a single rule to all existing rules. Priority can be used to place the rule between, before, or after another rule.
+This adds a single rule to all existing rules. If you omit `position`, the API appends the rule. To insert it at a specific position, set the one-indexed request field to `{"index": N}`. Existing rules at and after that position move back.
 
 The response will reflect the rule that has been written with its ID. In case something is not right with the rule, an appropriate error message with a `json` path pointing towards the issue will be provided.
 
@@ -84,7 +84,9 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/seqrules/
     "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
     "b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"
   ],
-  "priority": 0
+  "position": {
+    "index": 1
+  }
 }'
 ```
 
@@ -93,6 +95,8 @@ curl "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gateway/seqrules/
 Use the `PUT` command to set up new rules in bulk.
 
 This will overwrite any existing rules and replace them with the rules specified in the body. Setting an empty array for the rules removes all rules.
+
+The order of objects in the `rules` array sets their order, starting at position `1`. Do not include `position` in individual bulk rule objects.
 
 The response will reflect the rules that have been written with their IDs in case something is not right with the rules, an appropriate error message with a `json` path pointing towards the issue will be provided.
 
@@ -110,8 +114,7 @@ curl --request PUT "https://api.cloudflare.com/client/v4/zones/{zone_id}/api_gat
       "sequence": [
         "0d9bf70c-92e1-4bb3-9411-34a3bcc59003",
         "b704ab4d-5be0-46e0-9875-b2b3d1ab42f9"
-      ],
-      "priority": 0
+      ]
     }
   ]
 }'
@@ -136,5 +139,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/api/#page","headline":"Configure sequence mitigation via the API","description":"Build and configure sequence mitigation rules using the Cloudflare API.","url":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/api/og.png?v=0ee1fd9dfb8f0f70","dateModified":"2026-04-15","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/api/#page","headline":"Configure sequence mitigation via the API","description":"Build and configure sequence mitigation rules using the Cloudflare API.","url":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/api/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/api/og.png?v=0ee1fd9dfb8f0f70","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

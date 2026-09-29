@@ -1,7 +1,7 @@
 ---
-description: Map out and understand your API attack surface with API Discovery.
-title: API Discovery
-image: https://developers.cloudflare.com/api-shield/security/api-discovery/og.png?v=92ba30e9cd45ca36
+description: Map out and understand your API attack surface with Discovery.
+title: Discovery
+image: https://developers.cloudflare.com/api-shield/security/api-discovery/og.png?v=aa24516174af0538
 ---
 
 [Skip to content](#main-content)
@@ -10,34 +10,34 @@ image: https://developers.cloudflare.com/api-shield/security/api-discovery/og.pn
 > Fetch the complete documentation index at: https://developers.cloudflare.com/api-shield/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# API Discovery
+# Discovery
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/api-discovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/api-discovery/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Most development teams struggle to keep track of their APIs. Cloudflare API Discovery helps you map out and understand your API attack surface — the full set of endpoints that could be targeted by attackers.
+Most development teams struggle to keep track of their APIs. Cloudflare Discovery helps you map out and understand your API attack surface — the full set of endpoints that could be targeted by attackers.
 
 ## Process
 
-Cloudflare produces a map of API endpoints by grouping similar request paths together (path normalization).
+Cloudflare produces a map of API endpoints by applying heuristic path normalization to qualifying sampled traffic. The heuristics group requests by path structure and variable-like segment patterns.
 
 For example, you might have thousands of APIs, but a lot of the calls look similar, such as:
 
 - `api.example.com/profile/238`
 - `api.example.com/profile/392`
 
-Both paths serve a similar purpose — retrieving user profiles — but they are not identical. To simplify your endpoints, these examples might both map to `api.example.com/profile/*`.
+Discovery might group both paths as `api.example.com/profile/{var1}`. Generated `{varN}` placeholders identify variable-like segments. They do not assign semantic names.
 
-API Discovery runs this process across all your traffic, generating a simple map of endpoints that might look like:
+The resulting endpoint map might look like:
 
-```plaintext
-/api/login/{customer_identifier}
+```txt
+/api/login/{var1}
 /api/auth
-/api/account/{customer_identifier}
+/api/account/{var1}
 /api/password_reset
 /api/logout
 ```
 
-Similarly, if you have multiple subdomains that share the same set of endpoints, Cloudflare consolidates subdomains:
+Cloudflare can also consolidate common normalized operations across compatible subdomains. Operations unique to one hostname can remain on that hostname.
 
 ```txt
 us-api.example.com/api/v1/users/{var1}
@@ -46,44 +46,46 @@ fr-api.example.com/api/v1/users/{var1}
 jp-api.example.com/api/v1/users/{var1}
 ```
 
-Cloudflare consolidates these to `{hostVar1}.example.com/api/v1/users/{var1}`.
+Cloudflare may consolidate these common operations to `{hostVar1}.example.com/api/v1/users/{var1}`.
 
 For more technical details, refer to the [blog post ↗︎](https://blog.cloudflare.com/ml-api-discovery-and-schema-learning/).
 
 ### Discovered operations
 
-Web Assets adds discovered API endpoints to the operation inventory as candidate operations. Candidate operations provide context for matching, logging, detections, and rules before you manually review them.
+Discovery results can appear as candidate or shadow operations. Candidate operations are matched at the edge. Shadow operations are not.
 
-You do not need to promote every discovered operation. Promote an operation to move it to the `full` state and start profile learning. Full operations support persisted API profiles, risk findings, and protections that require a known API endpoint.
+When a request matches a published candidate, the match can provide operation context for logs, rules, analytics, and applicable detections. You do not need to save every discovered operation.
 
-To promote a discovered operation:
+You do not need to save every discovered operation. Save an operation to move it to the `full` state. Full operations support persisted API profiles, risk findings, and protections that require a known API endpoint.
+
+To save a discovered operation:
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
 2. Go to the **Operations** tab.
 3. Open the row actions for a candidate or shadow operation.
 4. Select **Learn profile**.
 
-Cloudflare moves the operation to the `full` state. The row action then changes to **Profile learned**. For more information, refer to [Promote an operation](https://developers.cloudflare.com/security/web-assets/manage-operations/#promote-an-operation).
+Cloudflare moves the operation to the `full` state. The row action then displays **Learning profile**, which does not indicate that learning is complete. For more information, refer to [Start profile learning](https://developers.cloudflare.com/security/web-assets/manage-operations/#start-profile-learning).
 
-### Machine learning-based discovery
+### Discovering operations
 
-Your API endpoints are discovered with both session identifier-based discovery and machine learning-based discovery.
+Discovery uses multiple signals, including machine learning and configured session identifiers, to identify API traffic. Configuring a session identifier is optional.
 
-To access machine learning-based discovery:
+To review Discovery results:
 
 1. In the Cloudflare dashboard, go to the **Web Assets** page. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
-2. Go to the **Discovery** tab.
-3. Filter the source results by `Session Identifier` or `Machine Learning` to view results from each discovery method.
+2. Go to the **Operations** tab.
+3. Select the **Discovered** quick filter, which applies the **Candidate** and **Shadow** state filters. You can also select both states manually.
 
-If all of your zone's API traffic contains the session identifier that you have configured, both sources may deliver the same results due to similarities between their underlying methodology. Machine learning-based discovery can identify API traffic regardless of whether your API uses a session identifier.
-
-You can direct any feedback about your API Discovery results to your account team.
+You can direct any feedback about your Discovery results to your account team.
 
 ## Requirements
 
-API Discovery requires an active API Shield subscription at both the account and zone level. If your subscription is active at the account level but not assigned to the zone, Discovery will not run for that zone.
+Discovery requires an active API Shield subscription at both the account and zone level. If your subscription is active at the account level but not assigned to the zone, Discovery will not run for that zone.
 
-For an endpoint to appear in Discovery results, every request must meet the following conditions:
+Discovery analyzes sampled proxied traffic. Eligible requests use supported HTTP methods, use paths outside `/cdn-cgi`, and contain qualifying Discovery signals.
+
+For an endpoint to appear in Discovery results, qualifying sampled traffic must meet the following conditions:
 
 - The request must return a `2xx` response code from the Cloudflare edge.
 - The request must not originate directly from a Cloudflare Worker. Traffic sent through the Cloudflare traffic simulator or other Worker-based test harnesses will not be counted toward Discovery thresholds.
@@ -93,7 +95,7 @@ For more information, refer to [Discovery requirements](https://developers.cloud
 
 ## Availability
 
-API Discovery is only available for Enterprise customers. If you are an Enterprise customer interested in this product, contact your account team.
+Discovery requires the paid API Shield add-on, which is available to Enterprise customers. Contact your account team for more information.
 
 Was this helpful?
 
@@ -104,5 +106,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/api-discovery/#page","headline":"API Discovery","description":"Map out and understand your API attack surface with API Discovery.","url":"https://developers.cloudflare.com/api-shield/security/api-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/api-discovery/og.png?v=92ba30e9cd45ca36","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/api-discovery/#page","headline":"Discovery","description":"Map out and understand your API attack surface with Discovery.","url":"https://developers.cloudflare.com/api-shield/security/api-discovery/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/api-discovery/og.png?v=aa24516174af0538","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

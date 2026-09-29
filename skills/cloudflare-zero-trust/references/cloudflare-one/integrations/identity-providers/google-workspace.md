@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/identity-pr
 
 # Google Workspace
 
-Last updated Apr 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -105,6 +105,28 @@ If you deleted the OAuth client (or the OAuth client expired) in Google, you wil
 
 To fix this issue, complete steps 6 through 12 in the [Google](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google/#set-up-google-as-an-identity-provider) guide and steps 9 through 15 in the [Google Workspace](https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google/#set-up-google-as-an-identity-provider) guide.
 
+### Redirect loop when protecting Google apps with Access
+
+Using Google Workspace as your identity provider while also protecting a Google-hosted application with an Access policy creates a circular redirect loop: Access sends users to Google to authenticate, but Google itself requires Access authentication first.
+
+If you need to protect a Google-hosted application and use Google Workspace as your IdP for other applications, configure a second identity provider (for example, Okta or Microsoft Entra ID) specifically for the Access application protecting that Google-hosted app. Keep Google Workspace as the IdP for your other applications.
+
+### Group membership not reflected in Access policies
+
+Google Workspace group membership changes do not immediately propagate to Cloudflare Access. There are two delays to be aware of:
+
+Google Workspace can take up to 24 hours to reflect group changes via the Admin SDK API. In addition, Cloudflare caches identity information for the duration of a user's active session, so a user who was added to or removed from a group will not see the policy change until their session expires or they re-authenticate.
+
+To force an immediate update for a specific user, go to **Zero Trust** > **Team & Resources** > **Users**, select the user, choose **Action** > **Revoke**, and confirm. This invalidates the user's Access session token and forces re-authentication with refreshed group membership.
+
+### Use multiple Google Workspace domains in Access policies
+
+If your organization has a primary Google Workspace domain and one or more secondary domains (for example, `example.com` and `example.co.uk`), all users authenticate through the same Google Workspace organization. You do not need to add separate identity providers for each domain.
+
+When building Access policies, you can target users across all domains by using group membership selectors rather than email domain selectors. Alternatively, use the **Emails ending in** selector with each domain as a separate policy rule connected with **OR** logic.
+
+If you have multiple distinct Google Workspace organizations (not just multiple domains within one organization), you must add each organization as a separate Google Workspace identity provider in Cloudflare Zero Trust.
+
 Was this helpful?
 
 YesNo
@@ -114,5 +136,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/#page","headline":"Google Workspace","description":"Google Workspace in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/og.png?v=ab050920c01ce9cb","dateModified":"2026-04-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/#page","headline":"Google Workspace","description":"Google Workspace in Zero Trust integrations.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/identity-providers/google-workspace/og.png?v=ab050920c01ce9cb","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Google"]}
 ```

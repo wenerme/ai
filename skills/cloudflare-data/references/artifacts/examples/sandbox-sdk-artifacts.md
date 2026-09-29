@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifact
 
 # Sandbox SDK + Artifacts
 
-Last updated Apr 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This example uses the `git-repo-per-sandbox` Sandbox SDK template and highlights the Artifacts-specific pieces.
 
-Start from the template with `create cloudflare`, as shown in [Run Claude Code on a Sandbox](https://developers.cloudflare.com/sandbox/tutorials/claude-code/#1-create-your-project). Then adapt the Artifacts flow with the focused snippets below.
+Start from the template with `create cloudflare`, as shown in [Create your project](#create-your-project). Then adapt the Artifacts flow with the snippets in steps 1 to 3.
 
 - Creates or reuses a sandbox by ID.
 - Creates or reuses an Artifacts repo with the same ID.
@@ -27,15 +27,15 @@ Start from the template with `create cloudflare`, as shown in [Run Claude Code o
 npmyarnpnpm
 
 ```
-npm create cloudflare@latest -- repo-per-sandbox --template=cloudflare/sandbox-sdk/examples/git-repo-per-sandbox
+npm create cloudflare@latest -- repo-per-sandbox --template=cloudflare/sandbox-sdk/examples/git-repo-per-sandbox#v0
 ```
 
 ```
-yarn create cloudflare repo-per-sandbox --template=cloudflare/sandbox-sdk/examples/git-repo-per-sandbox
+yarn create cloudflare repo-per-sandbox --template=cloudflare/sandbox-sdk/examples/git-repo-per-sandbox#v0
 ```
 
 ```
-pnpm create cloudflare@latest repo-per-sandbox --template=cloudflare/sandbox-sdk/examples/git-repo-per-sandbox
+pnpm create cloudflare@latest repo-per-sandbox --template=cloudflare/sandbox-sdk/examples/git-repo-per-sandbox#v0
 ```
 
 ```sh
@@ -159,5 +159,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/#page","headline":"Sandbox SDK + Artifacts","description":"Connect a sandbox to an Artifacts repo.","url":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/og.png?v=85fb0fd15abeaf49","dateModified":"2026-04-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/#page","headline":"Sandbox SDK + Artifacts","description":"Connect a sandbox to an Artifacts repo.","url":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/","inLanguage":"en","image":"https://developers.cloudflare.com/artifacts/examples/sandbox-sdk-artifacts/og.png?v=85fb0fd15abeaf49","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

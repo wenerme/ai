@@ -627,7 +627,7 @@ Returns module's diagnostic. If [`testModule`](/api/advanced/test-module) is not
 function createReport(scope: string): Report
 ```
 
-Creates a report that is limited to the given scope. `Report` follows Vitest's rules around [Storing artifacts on file system](/guide/advanced/reporters.html#storing-artifacts-on-file-system).
+Creates a report that is limited to the given scope. `Report` follows Vitest's rules around [Storing artifacts on file system](/guide/advanced/reporters#storing-artifacts-on-file-system).
 
 `Report` provides collection of utilities for writing test results, temporary files and other artifacts on the file system. It's especially intended for third party integrations like custom reporters.
 

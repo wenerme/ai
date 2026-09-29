@@ -5,6 +5,7 @@
 
 - [Introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/592423) in GitLab 19.4.
 - `daily` and fixed-day `granularity` values for `created` [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/528) in GitLab 19.5.
+- `!=` and `not in` operators on the `flowType` and `user` filters [introduced](https://gitlab.com/gitlab-org/glql/-/merge_requests/537) in GitLab 19.5.
 
 This data source provides aggregated metrics about GitLab Duo Agent Platform
 session usage across your project or group.
@@ -30,8 +31,8 @@ Use these fields in the `query` parameter to filter your results.
 | Field                   | Name (and alias)                                | Operators                 |
 | ----------------------- | ----------------------------------------------- | ------------------------- |
 | [Created](#created)     | `created` (`opened`, `openedAt`, `createdAt`)   | `=`, `>`, `<`, `>=`, `<=` |
-| [Flow type](#flow-type) | `flowType`                                      | `=`, `in`                 |
-| [User](#user)           | `user`                                          | `=`, `in`                 |
+| [Flow type](#flow-type) | `flowType`                                      | `=`, `!=`, `in`, `not in` |
+| [User](#user)           | `user`                                          | `=`, `!=`, `in`, `not in` |
 
 ### Created
 
@@ -56,7 +57,7 @@ Use range operators to define a time window.
 **Allowed value types**:
 
 - `String`
-- `List` (use `in` operator for multiple values)
+- `List` (use `in` or `not in` operator for multiple values)
 
 ### User
 
@@ -65,7 +66,7 @@ Use range operators to define a time window.
 **Allowed value types**:
 
 - `Number` (user ID)
-- `List` (use `in` operator for multiple user IDs)
+- `List` (use `in` or `not in` operator for multiple user IDs)
 
 > [!note]
 > Support for username filtering is being tracked in [issue 599750](https://gitlab.com/gitlab-org/gitlab/-/work_items/599750).

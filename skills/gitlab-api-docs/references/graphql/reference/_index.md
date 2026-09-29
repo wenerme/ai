@@ -33621,6 +33621,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="aigovernancemetrics-agents"></a>`agents` | [`AiGovernanceKpi`](#aigovernancekpi) | Distinct AI agent instances with sessions in the timeframe. Chat conversations are not counted. |
+| <a id="aigovernancemetrics-sessiondistribution"></a>`sessionDistribution`  | [`[AiGovernanceSessionDistribution!]`](#aigovernancesessiondistribution) | Introduced in GitLab 19.5. Status: Experiment. Sessions in the timeframe grouped by flow type for GitLab Duo sessions and by agent type for external sessions, ordered by session count. Returns the top 10. Missing names are reported as `unknown`. Returns null when the `ai_governance_dashboard_charts` feature flag is disabled. |
 | <a id="aigovernancemetrics-sessions"></a>`sessions` | [`AiGovernanceKpi`](#aigovernancekpi) | AI sessions in the timeframe, including Duo Chat conversations. |
 
 #### Fields with arguments
@@ -33671,6 +33672,17 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="aigovernanceprojectactivity-project"></a>`project` | [`Project`](#project) | Project the sessions ran in. Resolves to null when the current user cannot read the project. |
 | <a id="aigovernanceprojectactivity-sessioncount"></a>`sessionCount` | [`Int`](#int) | Number of AI sessions in the project in the selected timeframe. |
+
+### `AiGovernanceSessionDistribution`
+
+Number of AI sessions for one flow type or agent type.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aigovernancesessiondistribution-count"></a>`count` | [`Int!`](#int) | Number of sessions in the timeframe. |
+| <a id="aigovernancesessiondistribution-name"></a>`name` | [`String!`](#string) | Flow type for GitLab Duo sessions, agent type for external sessions. |
 
 ### `AiGovernanceUserActivity`
 
@@ -33868,6 +33880,7 @@ Fields:
 | <a id="aimodelselectionofferedmodel-modelprovider"></a>`modelProvider`  | [`String`](#string) | Introduced in GitLab 18.6. Status: Experiment. Provider for the model, e.g "OpenAI". |
 | <a id="aimodelselectionofferedmodel-name"></a>`name` | [`String!`](#string) | Humanized name for the offered model, e.g "Chat GPT 4o". |
 | <a id="aimodelselectionofferedmodel-ref"></a>`ref` | [`String!`](#string) | Identifier for the offered model. |
+| <a id="aimodelselectionofferedmodel-requirespaidcredits"></a>`requiresPaidCredits`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Whether GitLab Credits must be purchased before the current user can use this model. |
 
 ### `AiNamespaceSettings`
 
@@ -55073,7 +55086,7 @@ Fields:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Policies stored in the policy store for the organization or group, paginated forward only. Page with `pageInfo.endCursor` and keep `first` the same between requests; the `ids` argument cannot be combined with pagination arguments. Returns `null` when the current user cannot read the policies of the container.
+Policies stored in the policy store for the organization or group. Only `first` and `after` are supported; page with `pageInfo.endCursor`. Cursor offsets are capped at 100000, so policies past that window cannot be paged. The `ids` argument cannot be combined with pagination arguments. Returns `null` when the current user cannot read the policies of the container.
 
 Returns [`GovernPolicyConnection`](#governpolicyconnection).
 
@@ -55093,7 +55106,7 @@ Arguments:
 - Introduced in GitLab 19.4.
 - Status: Experiment.
 
-Recorded evaluations of the policies stored in the policy store for the organization, newest first. Returns `null` for groups and when the current user cannot read the policies of the organization.
+Recorded evaluations of the policies stored in the policy store for the organization or group, newest first. For a group, only evaluations of the group's own policies are returned. Returns `null` when the current user cannot read the policies of the container.
 
 Returns [`GovernPolicyEvaluationConnection`](#governpolicyevaluationconnection).
 

@@ -12,9 +12,9 @@ image: https://developers.cloudflare.com/api-shield/security/volumetric-abuse-de
 
 # Volumetric Abuse Detection
 
-Last updated Aug 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Volumetric Abuse Detection generates per-endpoint, per-session rate limit recommendations that adjust automatically as your traffic patterns change.
+Cloudflare Volumetric Abuse Detection generates adaptive, per-session rate limit recommendations for individual operations as traffic patterns change.
 
 Cloudflare looks for endpoint abuse based on user traffic to individual endpoints.
 
@@ -28,37 +28,33 @@ Volumetric Abuse Detection rate limits are a way to prevent blatant volumetric a
 
 ## Process
 
-Volumetric Abuse Detection analyzes your API's individual session traffic statistics to recommend per-endpoint, per-session rate limits.
+Volumetric Abuse Detection groups requests into 10-minute periods for each session. It uses the distribution of these request volumes to recommend one per-session threshold for each eligible operation.
 
-To access your endpoints, go to **Security** > **Web Assets** > **Endpoints**.
+To access the operations list, go to **Security** > **Web Assets** > **Operations**.
 
 Recommendations will continue to update if your traffic pattern changes.
 
 ### Requirements
 
-Volumetric Abuse Detection generates rate limit thresholds only after collecting enough traffic data to produce reliable recommendations. If recommendations are missing for a discovered endpoint, the traffic likely failed to meet the necessary criteria.
+Volumetric Abuse Detection requires sufficient eligible traffic during the seven-day analysis window to produce a reliable recommendation. If a recommendation is unavailable for an operation, it might not have enough eligible traffic.
 
-Thresholds are suggested only for endpoints that satisfy all of the following requirements within the last seven days (or since initial discovery):
+A [session identifier](https://developers.cloudflare.com/api-shield/get-started/#to-set-up-session-identifiers), such as an authorization token available as a request header or cookie, must be configured so Cloudflare can perform per-session analysis.
 
-- The endpoint must receive sufficient valid traffic (traffic that meets the [API Discovery](https://developers.cloudflare.com/api-shield/security/api-discovery/#requirements) criteria). Intermittent or erratic traffic may prevent suggestions.
-- The endpoint must be accessed by at least 50 distinct sessions in any 24-hour period during the last seven days.
-- [Session identifiers](https://developers.cloudflare.com/api-shield/get-started/#to-set-up-session-identifiers), such as an authorization token available as a request header or cookie, must be configured to allow Cloudflare to accurately detect individual sessions and perform the required per-session rate analysis.
-
-After adding a session identifier, allow 24 hours for rate limit recommendations to appear on endpoints in the Cloudflare dashboard.
+After adding or changing a session identifier, allow at least 24 hours for recommendations to appear. Recommendations may take longer or remain unavailable if Cloudflare cannot collect enough eligible traffic or calculate a threshold.
 
 ### Rate limiting recommendation calculation
 
-Select an endpoint row in **Endpoints** to view its rate limit recommendation. The detail view shows the overall recommended value and percentile-based values (p50, p90, p99).
+Select an operation row in the operations list to view its rate limit recommendation. The detail view shows the suggested threshold as the overall recommendation, percentile-based values (p50, p90, p99), and a confidence classification calculated by the dashboard.
 
 Percentile values
 
-Percentile values describe what portion of your traffic falls below a threshold. For example, if your p90 value is `83`, then 90% of your sessions had maximum request rates less than 83 requests per 10 minutes.
+Percentile values describe the distribution of request counts across observed per-session, 10-minute buckets. For example, a p90 value of `83` means that approximately 90% of these buckets contained 83 or fewer requests.
 
-Cloudflare recalculates the recommended value throughout the day based on requests from the last 24 hours. The recommendation may not change if your traffic profile remains consistent.
+Cloudflare calculates each recommendation from requests in the previous seven days. The recommendation may not change if your traffic profile remains consistent.
 
 Cloudflare recommends using the overall rate limit recommendation rather than a single percentile value. The overall recommendation accounts for variation across all your API sessions. Choosing a single percentile value may cause false positives due to a high number of outliers.
 
-In **Endpoints**, you can review the confidence level for each recommendation and how many unique sessions were observed over the last seven days. In general, endpoints with fewer unique sessions and high variability of user behavior will have lower confidence scores.
+In the operations list, you can review the dashboard confidence classification for each recommendation.
 
 Implementing low confidence rate limits can still be helpful to prevent API abuse. If the confidence level is low, start your rate limit rule in `log` mode and observe violations for false positives before switching to `block`.
 
@@ -97,38 +93,33 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/operations
 
 ## Special cases
 
-### Rate limit by user (JWT claim)
+### Rate limit by JWT claim
 
-You can rate limit requests based on any claim inside of a JSON Web Token (JWT), such as:
+Rate Limiting can use string claims from a valid JSON Web Token (JWT) as rate-limit characteristics. This includes registered claims, such as `sub`, and custom claims.
 
-- Registered claims like `aud` or `sub`
-- Custom claims like `userEmail`, including nested custom claims like `user.email`
+For nested claims, pass each object key separately to [`lookup_json_string()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup_json_string). For example, use `"user", "email"` to access `user.email`.
 
-Rate limiting based on JWT claim values will only work on valid JSON Web Tokens. If you do not block invalid JSON Web Tokens on your path, the [JWT claims will all be counted and possibly blocked](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#missing-field-versus-empty-value) if high traffic is detected in the Point of Presence (PoP).
+Only valid JWTs populate JWT claim fields. If a rule also matches requests without the selected claim, those requests use a separate missing-value counter. Refer to [Missing field versus empty value](https://developers.cloudflare.com/waf/rate-limiting-rules/parameters/#missing-field-versus-empty-value).
 
-You must also count the JWT claim that uniquely identifies the user. If you select a claim that is the same for many of your users, their rate limits will all be counted together.
+For per-user limits, select a claim that uniquely identifies the user, such as `sub` when it is unique within your application. Requests with the same characteristic value share a rate-limit counter.
 
 ### Rate limit by user tier
 
-If you offer multiple tiers on your website or application and you want to enforce rate limiting based on the tiers, such as:
+To apply different per-user limits by tier, create one rate limiting rule for each tier. Match the tier claim in the rule expression and use a separate user identifier claim as the rate-limit characteristic.
 
-- If `"aud": "free-tier"`, rate limit to five requests per minute.
-- If `"aud": "premium-tier"`, rate limit to 50 requests per minute.
-
-You can follow the rate limiting rule example below:
+For example, a free-tier rule can use:
 
 *Example rule expressiontxt*
 
 ```txt
-(http.request.method eq "GET" and
-http.host eq "<YOUR_DOMAIN>" and
-http.request.uri.path matches "</EXAMPLE_PATH>" and
-lookup_json_string(http.request.jwt.claims["<JWT_TOKEN_CONFIGURATION_ID>"][0], "aud") eq "free-tier"
+lookup_json_string(http.request.jwt.claims["<JWT_TOKEN_CONFIGURATION_ID>"][0], "tier") eq "free"
 ```
+
+Use `sub` as the rate-limit characteristic and set the limit to five requests per minute. Create another rule that matches `"tier" eq "premium"` and applies the appropriate premium-tier limit.
 
 ## Limitations
 
-API Shield will always calculate recommendations when session identifiers are configured. To enable session-based rate limits, [subscribe to Advanced Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability).
+A configured session identifier alone does not guarantee a recommendation. Cloudflare must also have sufficient eligible traffic and successfully calculate a threshold. To enable session-based rate limits, [subscribe to Advanced Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/#availability).
 
 ## Availability
 
@@ -143,5 +134,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/#page","headline":"Volumetric Abuse Detection","description":"Set up adaptive, per-session rate limiting for API endpoints with Volumetric Abuse Detection.","url":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/og.png?v=894010f6b76bafbd","dateModified":"2026-08-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/#page","headline":"Volumetric Abuse Detection","description":"Set up adaptive, per-session rate limiting for API endpoints with Volumetric Abuse Detection.","url":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/volumetric-abuse-detection/og.png?v=894010f6b76bafbd","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

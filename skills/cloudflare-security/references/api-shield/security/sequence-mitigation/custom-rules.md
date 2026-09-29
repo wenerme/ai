@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/api-shield/security/sequence-mitigation
 
 # Sequence mitigation custom rules
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 API Shield sequence custom rules use the configured API Shield session identifier to track the order of requests a user has made and the time between requests, and makes them available via [Cloudflare Rules](https://developers.cloudflare.com/rules). This allows you to write rules that match valid or invalid sequences.
 
@@ -20,7 +20,7 @@ These rules are similar to [cookie sequence rules](https://developers.cloudflare
 
 - They require [session identifiers](https://developers.cloudflare.com/api-shield/get-started/#session-identifiers) to be set in API Shield.
 - Because they require session identifiers, they can only be used on traffic that can be clearly attributed to individual users through session identifiers (authenticated traffic).
-- Because Cloudflare stores the user state in memory and not in a cookie, a session's sequence lifetime is limited to 10 minutes.
+- The sequence has a 10-minute inactivity window. Each tracked request refreshes this window.
 - You must set up at least one [API sequence rule](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/manage-sequence-rules/) to activate the sequence system.
 
 Rules built using these custom rules are similar to the sequence rules that can be configured [via the API or the Cloudflare dashboard](https://developers.cloudflare.com/api-shield/security/sequence-mitigation/) as they make use of the same underlying technology. However, these custom rules allow for greater flexibility by using free-form logic on top of the recorded sequence and providing access to the full response options that rulesets offers.
@@ -87,7 +87,9 @@ cf.sequence.previous_ops[0] == "bbbbbbbb" and
 cf.sequence.previous_ops[1] == "aaaaaaaa"
 ```
 
-The visitor must request endpoint `aaaaaaaa` before endpoint `bbbbbbbb`, but endpoint `aaaaaaaa` can be anywhere in the previous 10 requests:
+By default, sequence fields include the current operation and the previous nine operations. Contact Cloudflare Support if you need a different lookback window.
+
+The visitor must request endpoint `aaaaaaaa` before endpoint `bbbbbbbb`, but endpoint `aaaaaaaa` can be anywhere in the previous nine operations:
 
 ```txt
 cf.sequence.current_op eq "bbbbbbbb" and
@@ -112,5 +114,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/#page","headline":"Sequence mitigation custom rules","description":"Write custom rules that match valid or invalid API request sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/og.png?v=f445226227fcd9a2","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/#page","headline":"Sequence mitigation custom rules","description":"Write custom rules that match valid or invalid API request sequences.","url":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/sequence-mitigation/custom-rules/og.png?v=f445226227fcd9a2","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
