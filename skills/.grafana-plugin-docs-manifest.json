@@ -1989,6 +1989,31 @@
     "size": 13733,
     "updatedAt": "2026-06-26T18:54:12.898Z"
   },
+  "grafana-servicecenter-app/create-a-service.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/create-a-service.md",
+    "size": 3653,
+    "updatedAt": "2026-09-30T16:35:49.622Z"
+  },
+  "grafana-servicecenter-app/escalate-to-irm.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/escalate-to-irm.md",
+    "size": 4486,
+    "updatedAt": "2026-09-30T16:35:49.770Z"
+  },
+  "grafana-servicecenter-app/index.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest.md",
+    "size": 2373,
+    "updatedAt": "2026-09-30T16:35:49.919Z"
+  },
+  "grafana-servicecenter-app/overview.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/overview.md",
+    "size": 4552,
+    "updatedAt": "2026-09-30T16:35:50.075Z"
+  },
+  "grafana-servicecenter-app/provision-with-terraform.md": {
+    "url": "https://grafana.com/docs/plugins/grafana-servicecenter-app/latest/provision-with-terraform.md",
+    "size": 7948,
+    "updatedAt": "2026-09-30T16:35:50.223Z"
+  },
   "grafana-servicenow-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-servicenow-datasource/latest/alerting.md",
     "size": 7703,
@@ -2511,8 +2536,8 @@
   },
   "index.md": {
     "url": "https://grafana.com/docs/plugins.md",
-    "size": 9564,
-    "updatedAt": "2026-09-25T15:21:58.941Z"
+    "size": 9708,
+    "updatedAt": "2026-09-30T16:36:05.898Z"
   },
   "marcusolsson-calendar-panel/basic-config.md": {
     "url": "https://grafana.com/docs/plugins/marcusolsson-calendar-panel/latest/basic-config.md",

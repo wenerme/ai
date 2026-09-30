@@ -19,7 +19,6 @@ Cloudflare recommends creating a [remotely-managed tunnel](https://developers.cl
 The following pages cover alternative tunnel workflows that are intended for specific scenarios such as local development, testing, or legacy configurations.
 
 - [Locally-managed tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/local-management/)
-- [Quick Tunnels](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/)
 
 Was this helpful?
 

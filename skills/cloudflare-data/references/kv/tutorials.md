@@ -18,6 +18,8 @@ View tutorials to help you get started with KV.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
+| [Use Workers KV directly from Rust](https://developers.cloudflare.com/workers/tutorials/workers-kv-from-rust/) | 2 years ago | Intermediate |
+| [Build a todo list Jamstack application](https://developers.cloudflare.com/workers/tutorials/build-a-jamstack-app/) | 2 years ago | Beginner |
 
 Was this helpful?
 

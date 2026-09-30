@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/stream/examples/test-webhooks-locally/o
 
 Test Cloudflare Stream webhook notifications locally using a Cloudflare Worker and Cloudflare Tunnel.
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/test-webhooks-locally/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/examples/test-webhooks-locally/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Stream cannot send [webhook notifications](https://developers.cloudflare.com/stream/manage-video-library/using-webhooks/) to `localhost` or local IP addresses. To test webhooks during local development, you need a publicly accessible URL that forwards requests to your local machine.
 
@@ -24,7 +24,7 @@ This example covers webhooks for on-demand (VOD) videos only. Live stream webhoo
 
 This example shows how to:
 
-1. Start a [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/) to get a public URL for your local environment.
+1. Start a [Quick Tunnel](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/) to get a public URL for your local environment.
 2. Register that URL as your webhook endpoint, which returns the signing secret.
 3. Create a Cloudflare Worker that receives Stream webhook events and verifies their signatures.
 
@@ -44,7 +44,7 @@ npm create cloudflare@latest stream-webhook-handler
 
 ## 2. Start a Cloudflare Tunnel
 
-Before registering a webhook URL, you need a public URL that points to your local machine. In a terminal, start a [quick tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/do-more-with-tunnels/trycloudflare/) that forwards to the default Wrangler dev server port (`8787`):
+Before registering a webhook URL, you need a public URL that points to your local machine. In a terminal, start a [Quick Tunnel](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/) that forwards to the default Wrangler dev server port (`8787`):
 
 ```sh
 npx cloudflared tunnel --url http://localhost:8787
@@ -301,5 +301,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/examples/test-webhooks-locally/#page","headline":"Test webhooks locally","description":"Test Cloudflare Stream webhook notifications locally using a Cloudflare Worker and Cloudflare Tunnel.","url":"https://developers.cloudflare.com/stream/examples/test-webhooks-locally/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/examples/test-webhooks-locally/og.png?v=3d0f86710fd73845","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/examples/test-webhooks-locally/#page","headline":"Test webhooks locally","description":"Test Cloudflare Stream webhook notifications locally using a Cloudflare Worker and Cloudflare Tunnel.","url":"https://developers.cloudflare.com/stream/examples/test-webhooks-locally/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/examples/test-webhooks-locally/og.png?v=3d0f86710fd73845","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript"]}
 ```

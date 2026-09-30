@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/cdp/og.png?v=475bc76d869390
 
 # Chrome DevTools Protocol (CDP)
 
-Last updated Sep 11, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/cdp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/cdp/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The `/devtools` endpoints provide session management capabilities that follow the [Chrome DevTools Protocol (CDP) ↗︎](https://chromedevtools.github.io/devtools-protocol/). These endpoints allow you to create persistent browser sessions, manage multiple tabs, and interact with browsers using CDP commands. This is useful for advanced automation, debugging, and remote browser control.
 
@@ -52,7 +52,91 @@ HTTP endpoints are also available to manage the browser lifecycle without using 
 4. **Close tab** — `DELETE /devtools/browser/{session_id}/json/close/{target_id}`
 5. **Close session** — `DELETE /devtools/browser/{session_id}`
 
-Check the [API reference](https://developers.cloudflare.com/api/resources/browser_rendering/) for the full list of endpoints.
+Check the [API reference](https://developers.cloudflare.com/api/resources/browser_rendering/) for the HTTP endpoints. The WebSocket endpoints and their parameters are documented in [WebSocket endpoints](#websocket-endpoints).
+
+## WebSocket endpoints
+
+Browser Run provides three WebSocket endpoints. Each endpoint requires an API token in the `Authorization: Bearer <API_TOKEN>` header.
+
+### Acquire and connect to a browser
+
+Use this endpoint to acquire a browser session and connect to it:
+
+```txt
+wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/devtools/browser
+```
+
+Path parameters:
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_id` | `string` | Yes | Cloudflare account ID. |
+
+Query parameters:
+
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `keep_alive` | `number` | No | `60000` | Session lifetime in milliseconds. The value must be between `10000` and `1200000`, inclusive. |
+| `lab` | `boolean` | No | `false` | Uses Browser Run's experimental pool when set to `true`. These browser instances enable experimental Chrome features for testing before they reach stable Chrome. |
+| `recording` | `boolean` | No | `false` | Records the browser session when set to `true`. |
+| `browser` | `string` | No | — | Selects the browser backend. The accepted value is `kitesurf`. Do not combine it with `keep_alive`, `lab`, or `recording`. |
+
+Optional headers:
+
+| Header | Description |
+| --- | --- |
+| `cf-brapi-guardrails` | Base64url-encoded session guardrails. The JSON object can contain `allowedDomains` and `allowedDomainSets`. Refer to [Guardrails](https://developers.cloudflare.com/browser-run/features/guardrails/). |
+
+### Connect to an existing browser
+
+Use this endpoint to connect to an existing browser session:
+
+```txt
+wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/devtools/browser/{session_id}
+```
+
+Path parameters:
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_id` | `string` | Yes | Cloudflare account ID. |
+| `session_id` | `string` | Yes | Browser session ID. |
+
+Query parameters:
+
+| Parameter | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `keep_alive` | `number` | No | `60000` | Only applies when acquiring a session. The value must be between `10000` and `1200000`. |
+| `lab` | `boolean` | No | `false` | Only applies when acquiring a session. Uses Browser Run's experimental pool when set to `true`. These browser instances enable experimental Chrome features for testing before they reach stable Chrome. |
+| `recording` | `boolean` | No | `false` | Only applies when acquiring a session. Records the browser session when set to `true`. |
+
+Optional headers:
+
+| Header | Description |
+| --- | --- |
+| `cf-brapi-guardrails` | Base64url-encoded connection guardrails. Use `{"mode":"readonly"}` before encoding to restrict the connection to read-only CDP methods. |
+
+### Connect to a page
+
+Use this endpoint to connect to a specific target or page:
+
+```txt
+wss://api.cloudflare.com/client/v4/accounts/{account_id}/browser-run/devtools/browser/{session_id}/page/{target_id}
+```
+
+Path parameters:
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| `account_id` | `string` | Yes | Cloudflare account ID. |
+| `session_id` | `string` | Yes | Browser session ID. |
+| `target_id` | `string` | Yes | Chrome DevTools Protocol target ID. |
+
+Optional headers:
+
+| Header | Description |
+| --- | --- |
+| `cf-brapi-guardrails` | Base64url-encoded connection guardrails. Use `{"mode":"readonly"}` before encoding to restrict the connection to read-only CDP methods. |
 
 ## Troubleshooting
 
@@ -67,5 +151,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/#page","headline":"Chrome DevTools Protocol (CDP)","description":"Create persistent browser sessions, manage tabs, and interact with browsers using Chrome DevTools Protocol (CDP) commands via the /devtools endpoints.","url":"https://developers.cloudflare.com/browser-run/cdp/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/cdp/og.png?v=475bc76d86939067","dateModified":"2026-09-11","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/cdp/#page","headline":"Chrome DevTools Protocol (CDP)","description":"Create persistent browser sessions, manage tabs, and interact with browsers using Chrome DevTools Protocol (CDP) commands via the /devtools endpoints.","url":"https://developers.cloudflare.com/browser-run/cdp/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/cdp/og.png?v=475bc76d86939067","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

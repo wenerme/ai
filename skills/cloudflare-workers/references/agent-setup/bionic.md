@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+   Create a Logpush job to stream Workers analytics to my data warehouse.
    ```
 
 
@@ -153,23 +153,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
-```
-
-```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
 Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ## Tips

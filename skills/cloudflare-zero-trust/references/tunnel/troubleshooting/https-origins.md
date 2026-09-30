@@ -138,7 +138,9 @@ cloudflared tunnel ingress validate
 
 Run these checks from the public Internet and from the same host as `cloudflared`:
 
-1. **Check the public hostname and DNS.** In the Cloudflare dashboard, go to **DNS** > **Records** for `example.com`. Confirm that `app.example.com` is a `CNAME` pointing to `<TUNNEL_ID>.cfargotunnel.com`. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) Inspect the exact hostname from a terminal:
+1. **Check the public hostname and DNS.** In the Cloudflare dashboard, go to **DNS** > **Records** for `example.com`. Confirm that `app.example.com` is a `CNAME` pointing to `<TUNNEL_ID>.cfargotunnel.com`. [Go to **Records** ↗](https://dash.cloudflare.com/?to=/:account/:zone/dns/records)
+
+   Inspect the exact hostname from a terminal:
 
    ```sh
    dig CNAME app.example.com +short

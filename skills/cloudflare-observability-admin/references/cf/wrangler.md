@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cf/wrangler/og.png?v=ddbb6038a85893fe
 
 # cf for Wrangler users
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cf/wrangler/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you build with [Wrangler](https://developers.cloudflare.com/workers/wrangler/), most of what you know carries over to `cf`. This page explains what changes, how to use `cf` next to an existing Wrangler project, and when to migrate the project itself.
 
@@ -31,7 +31,7 @@ The main differences between the two tools are:
 | Project configuration | `wrangler.jsonc` or `wrangler.toml` | `cloudflare.config.ts`, written in TypeScript |
 | Environments | `env` blocks selected with `--env` | Modes selected with `--mode` |
 | Build | Wrangler's bundler | Wrangler's bundler or the Cloudflare Vite plugin |
-| Deployable artifact | Internal to Wrangler | [Build Output](https://developers.cloudflare.com/cf/projects/build-output/) in `.cloudflare/output/v0/` |
+| Deployable artifact | Internal to Wrangler | Build Output in `.cloudflare/output/v0/` |
 | Output | Tables for many commands, with `--json` on some | JSON for most API commands |
 | Resource identifiers | Names for many resources | The IDs that the Cloudflare API expects |
 | Local and remote data | Some commands default to local data | Remote. `--local` works only for supported KV, D1, and R2 commands |
@@ -117,5 +117,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/wrangler/#page","headline":"cf for Wrangler users","description":"Learn what stays the same and what changes when you move from Wrangler to cf, and decide when to migrate a project.","url":"https://developers.cloudflare.com/cf/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/wrangler/og.png?v=ddbb6038a85893fe","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cf/wrangler/#page","headline":"cf for Wrangler users","description":"Learn what stays the same and what changes when you move from Wrangler to cf, and decide when to migrate a project.","url":"https://developers.cloudflare.com/cf/wrangler/","inLanguage":"en","image":"https://developers.cloudflare.com/cf/wrangler/og.png?v=ddbb6038a85893fe","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

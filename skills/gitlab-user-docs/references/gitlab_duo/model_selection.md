@@ -20,25 +20,25 @@ The following table lists the default model for each GitLab Duo feature.
 | Feature | Model |
 |---------|---------------|
 | **Code Suggestions** | |
-| Code Generation | Claude Sonnet 4.6 Vertex |
+| Code Generation | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
 | Code Completion | Codestral 25.08 Fireworks |
 | **GitLab Duo Chat** | |
-| General Chat | Claude Sonnet 4.6 Vertex |
-| Code Explanation | Claude Sonnet 4.6 Vertex |
-| Test Generation | Claude Sonnet 4.6 Vertex |
-| Refactor Code | Claude Sonnet 4.6 Vertex |
-| Fix Code | Claude Sonnet 4.6 Vertex |
-| Root Cause Analysis | Claude Sonnet 4.6 Vertex |
+| General Chat | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| Code Explanation | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| Test Generation | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| Refactor Code | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| Fix Code | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| Root Cause Analysis | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
 | **GitLab Duo for merge requests** | |
-| Merge Commit Message Generation | Claude Sonnet 4.6 Vertex|
-| Merge Request Summary | Claude Sonnet 4.6 Vertex |
-| Code Review Summary | Claude Sonnet 4.6 Vertex |
-| Non-Agentic Code Review | Claude Sonnet 4.5 Vertex |
+| Merge Commit Message Generation | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| Merge Request Summary | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| Code Review Summary | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| Non-Agentic Code Review | Claude Sonnet 4.5 Gemini Enterprise Agent Platform |
 | **Other GitLab Duo features** | |
-| Vulnerability Explanation | Claude Sonnet 4.6 Vertex |
-| Vulnerability Resolution | Claude Sonnet 4.6 Vertex |
-| Discussion Summary | Claude Sonnet 4.6 Vertex |
-| GitLab Duo for CLI | Claude Sonnet 4.6 Vertex |
+| Vulnerability Explanation | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| Vulnerability Resolution | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| Discussion Summary | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
+| GitLab Duo for CLI | Claude Sonnet 4.6 Gemini Enterprise Agent Platform |
 
 ## Supported models
 
@@ -53,8 +53,8 @@ The following tables list the models you can select for each feature.
 | Claude Sonnet 4.5 | Yes | Yes |
 | Codestral 25.01 Fireworks | No | Yes |
 | Codestral 25.08 Fireworks | No | Yes |
-| Codestral 25.08 Vertex | No | Yes |
-| Gemini 2.5 Flash Vertex | Yes | No |
+| Codestral 25.08 Gemini Enterprise Agent Platform | No | Yes |
+| Gemini 2.5 Flash Gemini Enterprise Agent Platform | Yes | No |
 
 ### GitLab Duo Non-Agentic Chat
 
@@ -63,18 +63,18 @@ The following tables list the models you can select for each feature.
 | Claude Haiku 4.5 | Yes | No | | | No | |
 | Claude Sonnet 3 | No | | | No | | Yes |
 | Claude Sonnet 4.5 | Yes | Yes | Yes | Yes | Yes | Yes |
-| Claude Sonnet 4.5 Vertex | Yes | Yes | Yes | Yes | Yes |  |
+| Claude Sonnet 4.5 Gemini Enterprise Agent Platform | Yes | Yes | Yes | Yes | Yes |  |
 | Claude Sonnet 4.6 | Yes | Yes | Yes | Yes | Yes | Yes |
-| Claude Sonnet 4.6 Vertex | Yes | Yes | Yes | Yes | Yes |  |
+| Claude Sonnet 4.6 Gemini Enterprise Agent Platform | Yes | Yes | Yes | Yes | Yes |  |
 
 ### GitLab Duo for merge requests
 
 | Model | Merge Commit Message Generation | Merge Request Summary | Code Review Summary | Non-Agentic Code Review |
 |------------|--------------------------------|------------------------|---------------------|-------------|
 | Claude Sonnet 4.5 | Yes | Yes | Yes | Yes |
-| Claude Sonnet 4.5 Vertex | No | No | No | Yes |
+| Claude Sonnet 4.5 Gemini Enterprise Agent Platform | No | No | No | Yes |
 | Claude Sonnet 4.6 | No | No | No | Yes |
-| Claude Sonnet 4.6 Vertex | No | No | No | Yes |
+| Claude Sonnet 4.6 Gemini Enterprise Agent Platform | No | No | No | Yes |
 
 ### Other GitLab Duo features
 
@@ -82,9 +82,9 @@ The following tables list the models you can select for each feature.
 |------------|----------------------------|--------------------------|-------------------|---------------------|
 | Claude Haiku 4.5 | No | | Yes | No |
 | Claude Sonnet 4.5 | Yes | Yes | Yes | Yes |
-| Claude Sonnet 4.5 Vertex | Yes |  |  | Yes |
+| Claude Sonnet 4.5 Gemini Enterprise Agent Platform | Yes |  |  | Yes |
 | Claude Sonnet 4.6 | Yes | Yes | Yes | Yes |
-| Claude Sonnet 4.6 Vertex | Yes |  |  | Yes |
+| Claude Sonnet 4.6 Gemini Enterprise Agent Platform | Yes |  |  | Yes |
 
 ## Select a model for a feature
 

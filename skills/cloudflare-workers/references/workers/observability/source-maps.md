@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/observability/source-maps/og.pn
 
 # Source maps and stack traces
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/source-maps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/source-maps/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Stack traces ↗︎](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error/stack) help with debugging your code when your application encounters an unhandled exception. Stack traces show you the specific functions that were called, in what order, from which line and file, and with what arguments.
 
@@ -44,7 +44,9 @@ Miniflare can also [output source maps ↗︎](https://miniflare.dev/developing/
 
 ​​ When your Worker throws an uncaught exception, we fetch the source map and use it to map the stack trace of the exception back to lines of your Worker’s original source code.
 
-You can then view the stack trace when streaming [real-time logs](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/) or in [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/).
+You can then view the source-mapped stack trace when streaming [real-time logs](https://developers.cloudflare.com/workers/observability/logs/real-time-logs/) or in [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/).
+
+[Workers Issues](https://developers.cloudflare.com/workers/observability/issues/) groups production failures and displays captured stack traces when available.
 
 Note
 
@@ -97,5 +99,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/source-maps/#page","headline":"Source maps and stack traces","description":"Adding source maps and generating stack traces for Workers.","url":"https://developers.cloudflare.com/workers/observability/source-maps/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/source-maps/og.png?v=85876e94290d3ccd","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/source-maps/#page","headline":"Source maps and stack traces","description":"Adding source maps and generating stack traces for Workers.","url":"https://developers.cloudflare.com/workers/observability/source-maps/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/source-maps/og.png?v=85876e94290d3ccd","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

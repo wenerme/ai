@@ -437,6 +437,28 @@ enabled = true
 head_sampling_rate = 0.1
 ```
 
+### Issues
+
+Requires Wrangler 4.134.0 or later.
+
+Set `observability.issues.enabled` to `true` to detect and group production failures for a Worker. Set it to `false` and deploy the Worker to stop detecting new failures. Refer to [Workers Issues](https://developers.cloudflare.com/workers/observability/issues/) for supported signals, retention, and behavior.
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "observability": {
+    "issues": {
+      "enabled": true
+    }
+  }
+}
+```
+
+```toml
+[observability.issues]
+enabled = true
+```
+
 ## Custom builds
 
 Note

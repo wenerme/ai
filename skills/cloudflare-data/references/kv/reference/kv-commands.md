@@ -48,6 +48,7 @@ pnpm wrangler kv namespace create <NAMESPACE>
 
   The name of the new namespace
 - `--preview` `boolean` Interact with a preview namespace
+- `--jurisdiction` `string` The jurisdiction where the new namespace will be created (e.g. "us", "eu", "fedramp")
 - `--use-remote` `boolean` Use a remote binding when adding the newly created resource to your config
 - `--update-config` `boolean` Automatically update your config file with the newly added resource
 - `--binding` `string` The binding name of this resource in your Worker

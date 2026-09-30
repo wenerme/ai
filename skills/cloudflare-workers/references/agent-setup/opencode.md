@@ -73,7 +73,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+   Build an image upload and transformation service using R2 and Cloudflare Images.
    ```
 
 
@@ -178,23 +178,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
-```
-
-```txt
 Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
 Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Check my Workers deployment logs for errors and suggest fixes.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Tips

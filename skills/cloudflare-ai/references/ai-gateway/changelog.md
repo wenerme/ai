@@ -16,6 +16,37 @@ Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/ai-gateway.xml)
 
+## 2026-09-30
+
+
+**Pay for AI inference with Machine Payments**
+
+AI Gateway now supports Machine Payments in beta. With Machine Payments, clients can use the x402 protocol to pay for eligible inference requests directly from a stablecoin wallet instead of maintaining a prepaid credit balance.
+
+Machine Payments is available for the `/ai/run` endpoint with select open models. To request x402 payment, authenticate with a Cloudflare API token and include the Cloudflare-specific `Payment-Method: x402` header:
+
+```bash
+curl -iX POST "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/ai/run" \
+  --header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+  --header "Payment-Method: x402" \
+  --header "Content-Type: application/json" \
+  --data '{
+    "model": "z-ai/glm-4.7-flash",
+    "input": {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is Cloudflare?"
+        }
+      ]
+    }
+  }'
+```
+
+An x402-compatible client handles the payment challenge, signs an authorization from the client's wallet, and retries the request. Machine Payments currently requires customers to be based in the United States and have a credit card on file.
+
+For prerequisites, eligible models, and transaction details, refer to [Machine Payments (x402)](https://developers.cloudflare.com/ai-gateway/features/machine-payments/).
+
 ## 2026-09-29
 
 
@@ -27,7 +58,7 @@ On the analysis side, User Insights groups conversations by task, tracks convers
 
 ![User Insights task and model analysis grouped by task categories](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1434,height=606,format=webp/_astro/user-insights-task-analysis.CS2pm7wg.png)
 
-The Potential Savings view highlights requests that may work with faster or less expensive models without compromising output quality.
+The Potential Savings view highlights requests that may work with faster or less expensive models without compromising output quality. These are the same signals that Cloudflare's [Auto Router](https://developers.cloudflare.com/ai-gateway/features/auto-router/) uses to select a model based on task and cost.
 
 ![Potential Savings view comparing tasks and suggested models](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1506,height=669,format=webp/_astro/user-insights-potential-savings.C7j_Gjcn.png)
 

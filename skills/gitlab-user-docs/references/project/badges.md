@@ -232,7 +232,7 @@ Pipeline, coverage, release, and custom badges can be rendered in different styl
   https://gitlab.example.com/<namespace>/<project>/badges/<branch>/coverage.svg?style=flat
   ```
 
-  [A badge rendered in the flat style.]
+  [Coverage badge showing 95.00% coverage.]
 
 - Flat square:
 
@@ -240,7 +240,7 @@ Pipeline, coverage, release, and custom badges can be rendered in different styl
   https://gitlab.example.com/<namespace>/<project>/badges/<branch>/coverage.svg?style=flat-square
   ```
 
-  [A badge rendered in the flat square style.]
+  [Coverage badge showing 95.00% coverage in a flat square style.]
 
 #### Key text
 
@@ -252,7 +252,7 @@ Customize the badge key text by adding the `key_text=custom_text` parameter to t
 https://gitlab.example.com/gitlab-org/gitlab/badges/main/coverage.svg?job=karma&key_text=Frontend+Coverage&key_width=130
 ```
 
-[A badge rendered with custom text and adjusted width.]
+[Frontend Coverage badge showing 95.00% coverage.]
 
 #### Key width
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-gateway/features/og.png?v=a314f5db45
 
 # Features
 
-Last updated Jun 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway provides a comprehensive set of features to help you build, deploy, and manage AI applications with confidence. From performance optimization to security and observability, these features work together to create a robust AI infrastructure.
 
@@ -58,6 +58,19 @@ Control application scaling and protect against abuse with flexible rate limitin
 - Multiple rate limiting techniques available
 
 Use Rate Limiting
+
+[Auto Router](https://developers.cloudflare.com/ai-gateway/features/auto-router/)
+
+Automatically route each request to the most cost-effective model that can handle the task while maintaining response quality.
+
+**Key benefits:**
+
+- Content-aware model selection
+- Cost optimization across models
+- Automatic fallback when a model is unavailable
+- Session affinity to support caching
+
+Use Auto Router
 
 [Dynamic Routing](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/)
 
@@ -192,7 +205,7 @@ Use Custom Costs
 
 | Use Case | Recommended Features |
 | --- | --- |
-| **Cost Optimization** | Caching, Spend Limits, Rate Limiting, Custom Costs |
+| **Cost Optimization** | Caching, Auto Router, Spend Limits, Rate Limiting, Custom Costs |
 | **High Availability** | Fallbacks using Dynamic Routing |
 | **Security & Compliance** | Guardrails, DLP, Authentication, BYOK, Logging |
 | **Performance Monitoring** | Analytics, Logging, Custom Metadata |
@@ -217,5 +230,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/#page","headline":"Features","description":"Explore AI Gateway features including caching, rate limiting, guardrails, dynamic routing, and data loss prevention.","url":"https://developers.cloudflare.com/ai-gateway/features/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/og.png?v=a314f5db4519c9a8","dateModified":"2026-06-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-gateway/features/#page","headline":"Features","description":"Explore AI Gateway features including caching, rate limiting, guardrails, dynamic routing, and data loss prevention.","url":"https://developers.cloudflare.com/ai-gateway/features/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/og.png?v=a314f5db4519c9a8","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
