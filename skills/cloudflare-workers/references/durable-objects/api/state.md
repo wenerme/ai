@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/api/state/og.png?v=0898
 
 # Durable Object State
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/state/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/api/state/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Description
 
@@ -71,11 +71,9 @@ Contains loopback bindings to the Worker's own top-level exports. This has exact
 
 `waitUntil` is available on `DurableObjectState` for API compatibility with [Workers Runtime APIs](https://developers.cloudflare.com/workers/runtime-apis/context/#waituntil).
 
-\`waitUntil\` has no effect in Durable Objects
+\`waitUntil\` can prevent eviction
 
-Unlike in Workers, `waitUntil` has no effect in Durable Objects. It does not extend the lifetime of a Durable Object or affect when a request or RPC completes.
-
-Durable Objects automatically remain active as long as there is ongoing work or pending I/O, so `waitUntil` is not needed. Refer to [Lifecycle of a Durable Object](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/) for more information.
+A promise passed to `waitUntil` prevents eviction until it settles or for up to 15 minutes, whichever comes first. This lets work continue after the client disconnects. It does not affect when a request or RPC completes. For more information, refer to [Lifecycle of a Durable Object](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/).
 
 #### Parameters
 
@@ -343,5 +341,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/state/#page","headline":"Durable Object State","description":"API reference for DurableObjectState, which controls concurrency, WebSocket attachment, and storage access.","url":"https://developers.cloudflare.com/durable-objects/api/state/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/api/state/og.png?v=08986017b147c983","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/api/state/#page","headline":"Durable Object State","description":"API reference for DurableObjectState, which controls concurrency, WebSocket attachment, and storage access.","url":"https://developers.cloudflare.com/durable-objects/api/state/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/api/state/og.png?v=08986017b147c983","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

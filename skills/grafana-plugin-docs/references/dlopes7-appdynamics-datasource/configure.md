@@ -17,6 +17,7 @@ Before you can configure the AppDynamics data source, ensure you have the follow
 - The AppDynamics data source plugin installed. For installation instructions, refer to [Install Grafana Enterprise plugins](/docs/grafana/latest/administration/plugin-management/#install-grafana-enterprise-plugins).
 - An [AppDynamics](https://www.appdynamics.com/) account.
 - A user or API client with `view` access to **Account**, **Applications**, **Databases**, and **Analytics** in AppDynamics.
+- To use Analytics queries, an [Analytics Events API key](https://help.splunk.com/en/appdynamics-saas/analytics/26.8.0/analytics/deploy-analytics-with-the-analytics-agent/analytics-and-data-security) with both the **Manage Schema** and **Query Custom Events** permissions under **Custom Analytics Events**. The **Query Custom Events** permission is required to run Analytics queries. The **Manage Schema** permission is required because Grafana calls the `/events/schema` endpoint during the connection test and query editor autocomplete, so without it the connection test fails.
 - Any free or paid [Grafana Cloud](/pricing/) plan or an [activated Grafana Enterprise license](/docs/grafana/latest/administration/enterprise-licensing/).
 
 ### Security considerations
@@ -26,7 +27,7 @@ Keep the following security best practices in mind when configuring the AppDynam
 - **Least privilege:** Create a dedicated read-only role in AppDynamics (for example, `grafana_readonly`) with only `view` permissions. Don’t reuse administrator accounts or roles that grant write access.
 - **Credential storage:** Grafana encrypts sensitive values such as passwords, client secrets, and API keys using `secureJsonData`. Don’t store credentials in plaintext configuration files or version control.
 - **API client authentication:** When possible, use API client authentication instead of basic authentication. API client secrets can be rotated independently without changing user passwords.
-- **Analytics API keys:** The Analytics API key is stored and transmitted separately from your Metrics credentials. Generate a dedicated key with the minimum required [Analytics permissions](https://docs.appdynamics.com/appd/24.x/latest/en/analytics/deploy-analytics-with-the-analytics-agent/analytics-and-data-security/manage-api-keys).
+- **Analytics API keys:** The Analytics API key is stored and transmitted separately from your Metrics credentials. Generate a dedicated key with the minimum required [Analytics permissions](https://help.splunk.com/en/appdynamics-saas/analytics/26.8.0/analytics/deploy-analytics-with-the-analytics-agent/analytics-and-data-security).
 - **TLS verification:** Keep **Skip TLS Verify** disabled in production environments to ensure encrypted and authenticated connections to your AppDynamics controller.
 - **Network access:** Ensure your Grafana server can reach the AppDynamics controller over HTTPS (port 443). For private networks, use [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) or the [Secure Socks Proxy](#secure-socks-proxy) instead of exposing your controller to the public internet.
 
@@ -117,7 +118,7 @@ The Analytics Events API uses a separate endpoint and authentication from the Me
   - `https://syd-ana-api.saas.appdynamics.com` (Sydney region)
   - For on-premises controllers, an endpoint based on your controller host is auto-detected.
 - **Global Account Name** - The global account name, as shown on the **License** page in the AppDynamics Controller UI under **Settings** &gt; **License** &gt; **Account**.
-- **Analytics API Key** - An API key with the required [Analytics permissions](https://docs.appdynamics.com/appd/24.x/latest/en/analytics/deploy-analytics-with-the-analytics-agent/analytics-and-data-security/manage-api-keys).
+- **Analytics API Key** - An [Analytics Events API key](https://help.splunk.com/en/appdynamics-saas/analytics/26.8.0/analytics/deploy-analytics-with-the-analytics-agent/analytics-and-data-security). Under **Custom Analytics Events**, the key must have both the **Manage Schema** permission, which is required for the connection test and query editor autocomplete (both call the `/events/schema` endpoint), and the **Query Custom Events** permission, which is required to run Analytics queries. You can’t change an API key’s permissions after you create it.
 
 ### Optional settings
 

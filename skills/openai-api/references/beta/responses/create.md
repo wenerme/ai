@@ -5054,14 +5054,14 @@ as input for the model's response.
   Keys are strings with a maximum length of 64 characters. Values are strings
   with a maximum length of 512 characters.
 
-- `model: optional "gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 105 more or string`
+- `model: optional "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 106 more or string`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI
   offers a wide range of models with different capabilities, performance
   characteristics, and price points. Refer to the [model guide](/api/docs/models)
   to browse and compare available models.
 
-  - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 105 more`
+  - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 106 more`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
@@ -5069,6 +5069,8 @@ as input for the model's response.
     to browse and compare available models.
 
     - `"gpt-6-astra"`
+
+    - `"gpt-6.1-sol"`
 
     - `"gpt-6-sol"`
 
@@ -11947,14 +11949,14 @@ as input for the model's response.
     Keys are strings with a maximum length of 64 characters. Values are strings
     with a maximum length of 512 characters.
 
-  - `model: "gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 105 more or string`
+  - `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 106 more or string`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI
     offers a wide range of models with different capabilities, performance
     characteristics, and price points. Refer to the [model guide](/api/docs/models)
     to browse and compare available models.
 
-    - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 105 more`
+    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 106 more`
 
       Model ID used to generate the response, like `gpt-6-astra`. OpenAI
       offers a wide range of models with different capabilities, performance
@@ -11962,6 +11964,8 @@ as input for the model's response.
       to browse and compare available models.
 
       - `"gpt-6-astra"`
+
+      - `"gpt-6.1-sol"`
 
       - `"gpt-6-sol"`
 

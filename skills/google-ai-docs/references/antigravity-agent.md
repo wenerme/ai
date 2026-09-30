@@ -74,7 +74,7 @@ It is built with Gemini 3.8 Flash and uses the same harness as the Antigravity I
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:       interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:       interactions.NewInteractionsInput("Read Hacker News, summarize the top 10 stories, and save the results as a PDF."),
                 Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
             }),
@@ -213,7 +213,7 @@ To limit the agent to specific tools, pass only the ones you need:
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:       interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:       interactions.NewInteractionsInput("Search for the latest AI research papers on reasoning and summarize them."),
                 Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
                 Tools: []interactions.Tool{
@@ -363,7 +363,7 @@ The Antigravity agent supports multimodal inputs. Currently, only `text` and `im
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent: interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent: interactions.AgentOption("antigravity-preview-09-2026"),
                 Input: interactions.NewInteractionsInput([]interactions.Content{
                     interactions.NewContent(interactions.TextContent{
                         Text: "Analyze this chart and summarize the trends.",
@@ -699,7 +699,7 @@ The following example demonstrates a 2-turn interaction. The agent first request
         // 2. Call the agent with the custom tool (Turn 1)
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:       interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:       interactions.NewInteractionsInput("What is the weather in Tokyo?"),
                 Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
                 Tools: []interactions.Tool{
@@ -744,7 +744,7 @@ The following example demonstrates a 2-turn interaction. The agent first request
 
                 followupRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
                     Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                        Agent:                 interactions.AgentOption("antigravity-preview-05-2026"),
+                        Agent:                 interactions.AgentOption("antigravity-preview-09-2026"),
                         PreviousInteractionID: interaction.ID,
                         Environment:           genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(*interaction.EnvironmentID)),
                         Input: interactions.NewInteractionsInput([]interactions.Step{
@@ -926,7 +926,7 @@ When registering an MCP server, you must specify the following fields in the `to
         // Register a remote HTTP MCP server
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:       interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:       interactions.NewInteractionsInput("What is the weather in Tokyo?"),
                 Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
                 Tools: []interactions.Tool{
@@ -1053,7 +1053,7 @@ You can configure the underlying Gemini model using `agent_config` to optimize f
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:       interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:       interactions.NewInteractionsInput("Summarize the key differences between functional and object-oriented programming."),
                 Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
                 AgentConfig: genai.Ptr(interactions.NewCreateAgentInteractionAgentConfig(interactions.AntigravityAgentConfig{
@@ -1222,7 +1222,7 @@ Agent tasks that involve multi-step reasoning, code execution, or file operation
         // 1. Start the interaction in the background
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:       interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:       interactions.NewInteractionsInput("Run a complex analysis on the repository."),
                 Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
                 Background:  genai.Ptr(true),
@@ -1472,7 +1472,7 @@ When a background interaction involves stateful tools (like code execution in a 
         // First turn: run a task in the background
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:       interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:       interactions.NewInteractionsInput("Clone https://github.com/google/generative-ai-python and run its tests."),
                 Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
                 Background:  genai.Ptr(true),
@@ -1497,7 +1497,7 @@ When a background interaction involves stateful tools (like code execution in a 
         // Second turn: continue in the same environment
         followupRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:                 interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:                 interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:                 interactions.NewInteractionsInput("Fix any failing tests and re-run them."),
                 PreviousInteractionID: interaction.ID,
                 Environment:           genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(*interaction.EnvironmentID)),
@@ -1661,7 +1661,6 @@ Because a trigger runs unattended on a schedule, reference a stored [credential]
     import com.google.genai.gaos.models.interactions.Network;
     import com.google.genai.gaos.models.interactions.Transform;
     import com.google.genai.gaos.models.shared.Security;
-    import com.google.genai.gaos.models.triggers.Interaction;
     import com.google.genai.gaos.models.triggers.Trigger;
     import com.google.genai.gaos.models.triggers.TriggerCreateParams;
     import java.util.List;
@@ -1699,7 +1698,7 @@ Because a trigger runs unattended on a schedule, reference a stored [credential]
         .schedule("0 9 * * *")
         .timeZone("America/Argentina/Buenos_Aires")
         .displayName("issue-solver")
-        .interaction(Interaction.of(interactionTemplate))
+        .interaction(interactionTemplate)
         .build();
 
     Trigger trigger = client.triggers().create(params).trigger().get();
@@ -1747,7 +1746,7 @@ Because a trigger runs unattended on a schedule, reference a stored [credential]
         }
 
         interactionTemplate := interactions.CreateAgentInteraction{
-            Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+            Agent:       interactions.AgentOption("antigravity-preview-09-2026"),
             Input:       interactions.NewInteractionsInput("Review open PRs in my-org/my-app for new comments and address feedback. Close issues whose PRs were merged. Then check for new issues labeled 'accepted', skip any already tracked in /workspace/solved-issues/, fix the rest, and open a PR for each. Save reports to /workspace/solved-issues/."),
             Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(env)),
         }
@@ -1757,7 +1756,7 @@ Because a trigger runs unattended on a schedule, reference a stored [credential]
                 Schedule:    "0 9 * * *",
                 TimeZone:    "America/Argentina/Buenos_Aires",
                 DisplayName: genai.Ptr("issue-solver"),
-                Interaction: triggers.NewInteraction(interactionTemplate),
+                Interaction: interactionTemplate,
             },
         })
         if err != nil {
@@ -2431,7 +2430,7 @@ Set the budget on the interaction request in `agent_config` alongside `agent` an
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent: interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent: interactions.AgentOption("antigravity-preview-09-2026"),
                 Input: interactions.NewInteractionsInput("Analyze the dataset in /workspace/data.csv and generate a summary report."),
                 AgentConfig: genai.Ptr(interactions.NewCreateAgentInteractionAgentConfig(interactions.AntigravityAgentConfig{
                     MaxTotalTokens: genai.Ptr(int64(50000)),
@@ -2568,7 +2567,7 @@ are preserved. Send a new interaction referencing the original interaction `id` 
         // Continue from where the agent stopped
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:                 interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:                 interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:                 interactions.NewInteractionsInput("continue"),
                 PreviousInteractionID: genai.Ptr(interactionID),
                 Environment:           genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(environmentID)),

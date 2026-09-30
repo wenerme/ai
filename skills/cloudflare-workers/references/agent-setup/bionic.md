@@ -31,7 +31,7 @@ StandaloneCloud
    Download and install Bionic from the [LM Studio Bionic website ↗︎](https://lmstudio.ai/).
 2. **Create a Code Project**
 
-   In Bionic, create a **Code Project**, then select the local directory that contains your Cloudflare project. If your project has a `wrangler.jsonc` file, select the directory that contains it.
+   In Bionic, create a **Code Project**, then select the local directory that contains your Cloudflare project. If your project has a `wrangler.jsonc` or `cloudflare.config.ts` file, select the directory that contains it.
 3. **Add the Cloudflare MCP server**
 
    In Bionic, add Cloudflare as a remote Model Context Protocol (MCP) server using the following URL:
@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
    ```
 
 
@@ -124,9 +124,9 @@ Local dev, deploys, and Workers-specific commands.
 
 Use <a href="https://developers.cloudflare.com/workers/wrangler/">Wrangler</a> for local development, deploys, and product-specific commands like <code>wrangler d1 migrations apply</code> or <code>wrangler tail</code>. The bundled **wrangler** Skill teaches the agent when to reach for it.
 
-What’s next
+Cloudflare CLI (beta)
 
-The unified <code>cf</code> CLI is in technical preview — a next-generation CLI that covers every Cloudflare product with consistent verbs and ergonomic output for agents. Try it with <code>npx cf</code>. <a href="https://blog.cloudflare.com/cf-cli-local-explorer/">Read the announcement →</a>
+The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, covers the public Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, then follow <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -153,23 +153,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ## Tips
@@ -182,11 +182,21 @@ Set up AI Gateway to route requests across OpenAI and Workers AI with automatic 
 
 <details>
 
-<summary>Should I use the MCP server, Wrangler CLI, or both?
+<summary>Should I use the MCP server, a CLI, or both?
 
 </summary>
 
-Use both. The Cloudflare API MCP server handles Cloudflare account operations, such as DNS, WAF, R2, and Zero Trust. Wrangler handles local development, deployments, and migrations. In a Code Project, Bionic can run local shell commands, including Wrangler commands.
+Use both. The Cloudflare API MCP server handles Cloudflare account operations, such as DNS, WAF, R2, and Zero Trust. Wrangler handles local development, deployments, and migrations. In a Code Project, Bionic can run local shell commands, including Wrangler and <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a> (<code>cf</code>) commands.
+
+</details>
+
+<details>
+
+<summary>Can Bionic use the Cloudflare CLI?
+
+</summary>
+
+Yes. The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, is in beta and covers the whole Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, sign in with <code>cf auth login</code>, and tell Bionic to prefer it in your project instructions. Refer to <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -206,7 +216,7 @@ Add <code><a href="https://mcp.cloudflare.com/mcp">https://mcp.cloudflare.com/mc
 
 </summary>
 
-Yes. Create a Code Project from the existing project directory where <code>wrangler.jsonc</code> is located. You can then ask Bionic to run the deployment command for that project.
+Yes. Create a Code Project from the existing project directory where <code>wrangler.jsonc</code> or <code>cloudflare.config.ts</code> is located. You can then ask Bionic to run the deployment command for that project.
 
 </details>
 
@@ -277,5 +287,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/bionic/#page","headline":"LM Studio Bionic + Cloudflare","description":"Use LM Studio Bionic with Cloudflare projects, local codebases, and local or cloud-hosted open-source models.","url":"https://developers.cloudflare.com/agent-setup/bionic/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/bionic/og.png?v=ce6de8942f385c9a","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/bionic/#page","headline":"LM Studio Bionic + Cloudflare","description":"Use LM Studio Bionic with Cloudflare projects, local codebases, and local or cloud-hosted open-source models.","url":"https://developers.cloudflare.com/agent-setup/bionic/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/bionic/og.png?v=ce6de8942f385c9a","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

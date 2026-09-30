@@ -346,6 +346,20 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
         - `"web_search"`
 
+    - `ComputerUse object { include_screenshots, type }`
+
+      Browser use in an OpenAI-hosted session.
+
+      - `include_screenshots: boolean`
+
+        Whether computer tool outputs include screenshots.
+
+      - `type: "computer_use"`
+
+        The type of the object. Always `computer_use`.
+
+        - `"computer_use"`
+
   - `updated_at: number`
 
     The Unix timestamp, in seconds, when the agent was last updated.

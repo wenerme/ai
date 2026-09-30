@@ -5,7 +5,7 @@ description: "Browse Ofox model IDs, capabilities, context windows, and pricing.
 
 # [Ofox logo]Ofox
 
-Access 149 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
+Access 150 Ofox models through Mastra's model router. Authentication is handled automatically using the `OFOX_API_KEY` environment variable.
 
 Learn more in the [Ofox documentation](https://ofox.ai/docs).
 
@@ -173,6 +173,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "ofox/anthropic/claude-sonnet-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "ofox/anthropic/claude-sonnet-5.5",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

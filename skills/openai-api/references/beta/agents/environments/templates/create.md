@@ -10,6 +10,14 @@ Creates reusable environment configuration without returning confidential setup 
 
   Directories that contain capabilities exposed to the agent. Defaults to an empty list.
 
+- `desktop: optional object { enabled }  or null`
+
+  Desktop provisioning. Omission or null inherits the template setting, or defaults to disabled.
+
+  - `enabled: boolean`
+
+    Whether to provision the desktop and its browser proxy.
+
 - `env: optional map[string] or null`
 
   Environment variables made available to the agent.
@@ -58,7 +66,7 @@ Creates reusable environment configuration without returning confidential setup 
 
   An optional human-readable display name for the template.
 
-- `network: optional object { access, allowed_domains }  or null`
+- `network: optional object { access, allowed_domains, blocked_domains }  or null`
 
   Network access policy for the environment. Defaults to disabled for GA requests and enabled for beta requests.
 
@@ -76,11 +84,15 @@ Creates reusable environment configuration without returning confidential setup 
 
     - `"restricted"`
 
-      Allows access only to configured domains.
+      Applies the configured domain restrictions.
 
   - `allowed_domains: optional array of string or null`
 
     Domains the environment may access when network access is restricted.
+
+  - `blocked_domains: optional array of string or null`
+
+    Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
 
 - `packages: optional object { npm, python, system }  or null`
 
@@ -196,7 +208,7 @@ Creates reusable environment configuration without returning confidential setup 
 
 ### Returns
 
-- `EnvironmentTemplate object { id, capability_directories, created_at, 8 more }`
+- `EnvironmentTemplate object { id, capability_directories, created_at, 9 more }`
 
   Reusable configuration that provisions a fresh OpenAI-hosted environment for each session.
 
@@ -211,6 +223,14 @@ Creates reusable environment configuration without returning confidential setup 
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the template was created.
+
+  - `desktop: object { enabled }`
+
+    Desktop configuration for each OpenAI-hosted environment.
+
+    - `enabled: boolean`
+
+      Whether the environment provisions a desktop and browser proxy.
 
   - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
 
@@ -274,7 +294,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       - `"restricted"`
 
-        Allows access only to configured domains.
+        Applies the configured domain restrictions.
 
     - `allowed_domains: array of string`
 
@@ -382,6 +402,9 @@ curl https://api.openai.com/v1/agents/environments/templates \
     "string"
   ],
   "created_at": 0,
+  "desktop": {
+    "enabled": true
+  },
   "files": [
     {
       "file_id": "file_id",

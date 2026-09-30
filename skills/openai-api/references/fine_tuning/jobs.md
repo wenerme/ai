@@ -603,9 +603,7 @@ Immediately cancel a fine-tune job.
 
             A formula to calculate the output based on grader results.
 
-          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+          - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
             - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -1506,9 +1504,7 @@ Response includes details of the enqueued job including job status and the name 
 
           A formula to calculate the output based on grader results.
 
-        - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-          A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+        - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
           - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -2368,9 +2364,7 @@ Response includes details of the enqueued job including job status and the name 
 
             A formula to calculate the output based on grader results.
 
-          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+          - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
             - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -3693,9 +3687,7 @@ List your organization's fine-tuning jobs
 
             A formula to calculate the output based on grader results.
 
-          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+          - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
             - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -4146,7 +4138,7 @@ Get status updates for a fine-tuning job.
 
     - `"fine_tuning.job.event"`
 
-  - `data: optional unknown`
+  - `data: optional unknown or null`
 
     The data associated with the event.
 
@@ -4830,9 +4822,7 @@ Pause a fine-tune job.
 
             A formula to calculate the output based on grader results.
 
-          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+          - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
             - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -5814,9 +5804,7 @@ Resume a fine-tune job.
 
             A formula to calculate the output based on grader results.
 
-          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+          - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
             - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -6800,9 +6788,7 @@ Get info about a fine-tuning job.
 
             A formula to calculate the output based on grader results.
 
-          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+          - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
             - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -7779,9 +7765,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
             A formula to calculate the output based on grader results.
 
-          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+          - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
             - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -8058,7 +8042,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
     - `"fine_tuning.job.event"`
 
-  - `data: optional unknown`
+  - `data: optional unknown or null`
 
     The data associated with the event.
 

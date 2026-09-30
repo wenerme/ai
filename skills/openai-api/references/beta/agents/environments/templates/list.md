@@ -44,6 +44,14 @@ Lists reusable environment templates without returning confidential values. See 
 
     The Unix timestamp, in seconds, when the template was created.
 
+  - `desktop: object { enabled }`
+
+    Desktop configuration for each OpenAI-hosted environment.
+
+    - `enabled: boolean`
+
+      Whether the environment provisions a desktop and browser proxy.
+
   - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
@@ -106,7 +114,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       - `"restricted"`
 
-        Allows access only to configured domains.
+        Applies the configured domain restrictions.
 
     - `allowed_domains: array of string`
 
@@ -233,6 +241,9 @@ curl https://api.openai.com/v1/agents/environments/templates \
         "string"
       ],
       "created_at": 0,
+      "desktop": {
+        "enabled": true
+      },
       "files": [
         {
           "file_id": "file_id",

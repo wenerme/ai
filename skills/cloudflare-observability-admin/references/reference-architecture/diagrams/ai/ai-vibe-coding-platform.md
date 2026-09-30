@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-v
 
 # AI Vibe Coding Platform
 
-Last updated Jul 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -61,7 +61,12 @@ If you’re building an AI code generator and want it to be more knowledgeable a
 
 ## Development environment for executing AI-generated code
 
-Both [Sandboxes](https://developers.cloudflare.com/sandbox/) and [Containers](https://developers.cloudflare.com/containers/) provide secure, isolated environments for executing untrusted AI-generated code. They offer:
+[Sandboxes](https://developers.cloudflare.com/sandbox/) run untrusted AI-generated code in one of two environments:
+
+- Linux sandboxes run on [Containers](https://developers.cloudflare.com/containers/). Each one has a shell, a filesystem, and processes, for code that installs packages, builds a project, or runs a development server.
+- [Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/) run generated JavaScript, Python, or WebAssembly in a new Worker that can reach only the APIs you grant.
+
+For how to choose, refer to [Choose a sandbox environment](https://developers.cloudflare.com/sandbox/concepts/). Linux sandboxes offer:
 
 - **Strong isolation and sandboxing controls** to prevent malicious or buggy code from affecting other instances
 - **Fast startup times** to enable rapid iteration cycles with real-time feedback
@@ -69,9 +74,9 @@ Both [Sandboxes](https://developers.cloudflare.com/sandbox/) and [Containers](ht
 - **Preview URLs** to allow users to test applications during development
 - **Global edge deployment** on Cloudflare's network for low-latency execution worldwide
 
-**Sandboxes provide a fully-managed solution** that works out-of-the-box, with [pre-built APIs](https://developers.cloudflare.com/sandbox/api/) for code execution, output formatting, and developer tools, making them ideal for most AI code execution use cases.
+Each user gets their own sandbox. A code generation Worker sends code updates to it, and a Worker serves the application that runs in each sandbox on a preview URL:
 
-![Figure 3: Vibe Code Development - Sandbox SDK](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=3350,height=2304,format=svg/_astro/ai-platform-sandbox.DziHb_r3.svg)
+![Figure 3: Vibe code development in a sandbox](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=967,height=665,format=svg/_astro/ai-platform-sandbox.D2apUd35.svg)
 
 **Containers offer complete runtime control** through custom Docker images, allowing you to run any language or framework with up to 4GB RAM and dedicated vCPU and are best when you need custom runtimes or resource-intensive workloads.
 
@@ -109,5 +114,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/#page","headline":"AI Vibe Coding Platform","description":"Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/og.png?v=ea3717cba5ef7981","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/#page","headline":"AI Vibe Coding Platform","description":"Cloudflare's low-latency, fully serverless compute platform, Workers offers powerful capabilities to enable A/B testing using a server-side implementation.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/og.png?v=ea3717cba5ef7981","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

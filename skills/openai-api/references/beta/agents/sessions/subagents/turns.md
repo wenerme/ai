@@ -924,6 +924,166 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
 
       - `"mcp_call"`
 
+  - `ComputerUseCall object { id, output, status, 3 more }`
+
+    One execution of the platform-provided computer-use capability.
+
+    - `id: string`
+
+      The ID of the activity item.
+
+    - `output: object { image_url, type }  or null`
+
+      The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+      - `image_url: string`
+
+        The complete JPEG image as a base64 data URL.
+
+      - `type: "computer_screenshot"`
+
+        The content type. Always `computer_screenshot`.
+
+        - `"computer_screenshot"`
+
+    - `status: AgentFunctionCallStatus`
+
+      The execution status of the activity.
+
+    - `title: string or null`
+
+      A model-generated description of the activity, when available.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_call"`
+
+      The item type. Always `computer_use_call`.
+
+      - `"computer_use_call"`
+
+  - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+    A credential-free history record of the emitted login request.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request: object { credential_origin, fields, options, 2 more }`
+
+      A registered form awaiting the application's response.
+
+      - `credential_origin: string or null`
+
+        The registered form or frame origin where values will be entered.
+
+      - `fields: array of object { id, label, required, type }`
+
+        Controls to render. All submitted values are sensitive.
+
+        - `id: string`
+
+          The field ID to submit as field_id in a fields entry.
+
+        - `label: string`
+
+          The label to display beside the control.
+
+        - `required: boolean`
+
+          Whether this control requires a nonempty value.
+
+        - `type: string`
+
+          The rendering type, such as email, password, or text.
+
+      - `options: array of object { id, field_ids, label }`
+
+        Sign-in methods. Empty for a plain form.
+
+        - `id: string`
+
+          The option ID to submit as selected_option.
+
+        - `field_ids: array of string`
+
+          IDs from the registered fields that this method accepts.
+
+        - `label: string`
+
+          The method label to display.
+
+      - `reason: string or null`
+
+        Why the agent needs the user to sign in.
+
+      - `type: "browser_authentication"`
+
+        The type of the object. Always `browser_authentication`.
+
+        - `"browser_authentication"`
+
+    - `request_id: string`
+
+    - `turn_id: string`
+
+    - `type: "computer_use_approval_request"`
+
+      The item type. Always computer_use_approval_request.
+
+      - `"computer_use_approval_request"`
+
+  - `ComputerUseApprovalRequestResult object { id, request_id, response, 2 more }`
+
+    A credential-free record of an admitted response, not proof of completion.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request_id: string`
+
+      The registered request answered by this item.
+
+    - `response: object { action, selected_option, type }  or object { action, type }`
+
+      The admitted response, without submitted credential values.
+
+      - `Submit object { action, selected_option, type }`
+
+        - `action: "submit"`
+
+          - `"submit"`
+
+        - `selected_option: string or null`
+
+          The chosen sign-in method, or null when no options were offered.
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+      - `Cancel object { action, type }`
+
+        - `action: "cancel"`
+
+          - `"cancel"`
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_approval_request_result"`
+
+      - `"computer_use_approval_request_result"`
+
   - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 
     A web search call produced by the agent.

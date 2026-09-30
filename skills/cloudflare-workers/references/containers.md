@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/og.png?v=9068707d88e89d36
 
 # Containers
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Enhance your Workers with serverless containers
 
@@ -28,62 +28,195 @@ With Containers you can run:
 - Applications and libraries that require a full filesystem, specific runtime, or Linux-like environment
 - Existing applications and tools that have been distributed as container images
 
-Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write JavaScript:
+Container instances are spun up on-demand and controlled by code you write in your [Worker](https://developers.cloudflare.com/workers). Instead of chaining together API calls or writing Kubernetes operators, you just write TypeScript or JavaScript.
+
+*src/index.jsjs*
 
 ```js
-import { Container, getContainer } from "@cloudflare/containers";
+import { DurableObject } from "cloudflare:workers";
+import { rewriteRequestForContainer, startAndWaitForPort } from "./utils";
 
-export class MyContainer extends Container {
-	defaultPort = 4000; // Port the container is listening on
-	sleepAfter = "10m"; // Stop the instance if requests not sent for 10 minutes
+export class MyContainer extends DurableObject {
+	async fetch(request) {
+		const container = this.ctx.container;
+		await startAndWaitForPort(container, {
+			port: 4000,
+			inactivityTimeout: 10 * 60 * 1000,
+		});
+
+		const forwarded = rewriteRequestForContainer(request);
+		const response = await container.getTcpPort(4000).fetch(forwarded);
+		return response;
+	}
 }
 
 export default {
 	async fetch(request, env) {
+		const containerRequest = request.clone();
 		const { "session-id": sessionId } = await request.json();
-		// Get the container instance for the given session ID
-		const containerInstance = getContainer(env.MY_CONTAINER, sessionId);
-		// Pass the request to the container instance on its default port
-		return containerInstance.fetch(request);
+		return env.MY_CONTAINER.getByName(sessionId).fetch(containerRequest);
 	},
 };
+```
+
+*src/index.tsts*
+
+```ts
+import { DurableObject } from "cloudflare:workers";
+import { rewriteRequestForContainer, startAndWaitForPort } from "./utils";
+
+interface Env {
+	MY_CONTAINER: DurableObjectNamespace<MyContainer>;
+}
+
+export class MyContainer extends DurableObject<Env> {
+	async fetch(request: Request): Promise<Response> {
+		const container = this.ctx.container!;
+		await startAndWaitForPort(container, {
+			port: 4000,
+			inactivityTimeout: 10 * 60 * 1000,
+		});
+
+		const forwarded = rewriteRequestForContainer(request);
+		const response = await container.getTcpPort(4000).fetch(forwarded);
+		return response;
+	}
+}
+
+export default {
+	async fetch(request: Request, env: Env): Promise<Response> {
+		const containerRequest = request.clone();
+		const { "session-id": sessionId } = await request.json<{
+			"session-id": string;
+		}>();
+		return env.MY_CONTAINER.getByName(sessionId).fetch(containerRequest);
+	},
+};
+```
+
+*src/utils.jsjs*
+
+```js
+export function rewriteRequestForContainer(request) {
+	const url = new URL(request.url);
+	url.protocol = "http:";
+	url.host = "container";
+	const forwarded = new Request(url, request);
+	forwarded.headers.delete("host");
+	return forwarded;
+}
+
+export async function startAndWaitForPort(container, options) {
+	await container.setInactivityTimeout(options.inactivityTimeout);
+	if (!container.running) {
+		container.start();
+	}
+
+	// start() returns before the container is ready, so poll its health endpoint.
+	const port = container.getTcpPort(options.port);
+	let lastError;
+	for (let attempt = 0; attempt < 100; attempt++) {
+		try {
+			const response = await port.fetch("http://container/health");
+			if (!response.ok) {
+				throw new Error(`Health check returned ${response.status}`);
+			}
+			return;
+		} catch (error) {
+			lastError = error;
+			await scheduler.wait(200);
+		}
+	}
+	throw new Error(`Container did not become ready on port ${options.port}`, {
+		cause: lastError,
+	});
+}
+```
+
+*src/utils.tsts*
+
+```ts
+interface ReadinessOptions {
+	port: number;
+	inactivityTimeout: number;
+}
+
+type ContainerInstance = NonNullable<DurableObjectState["container"]>;
+
+export function rewriteRequestForContainer(request: Request): Request {
+	const url = new URL(request.url);
+	url.protocol = "http:";
+	url.host = "container";
+	const forwarded = new Request(url, request);
+	forwarded.headers.delete("host");
+	return forwarded;
+}
+
+export async function startAndWaitForPort(
+	container: ContainerInstance,
+	options: ReadinessOptions,
+): Promise<void> {
+	await container.setInactivityTimeout(options.inactivityTimeout);
+	if (!container.running) {
+		container.start();
+	}
+
+	// start() returns before the container is ready, so poll its health endpoint.
+	const port = container.getTcpPort(options.port);
+	let lastError: unknown;
+	for (let attempt = 0; attempt < 100; attempt++) {
+		try {
+			const response = await port.fetch("http://container/health");
+			if (!response.ok) {
+				throw new Error(`Health check returned ${response.status}`);
+			}
+			return;
+		} catch (error) {
+			lastError = error;
+			await scheduler.wait(200);
+		}
+	}
+	throw new Error(`Container did not become ready on port ${options.port}`, {
+		cause: lastError,
+	});
+}
 ```
 
 ```jsonc
 {
 	"name": "container-starter",
-	"main": "src/index.js",
+	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-29",
+	"compatibility_date": "2026-09-30",
 	"containers": [
 		{
 			"class_name": "MyContainer",
 			"image": "./Dockerfile",
-			"max_instances": 5
-		}
+			"max_instances": 5,
+		},
 	],
 	"durable_objects": {
 		"bindings": [
 			{
 				"class_name": "MyContainer",
-				"name": "MY_CONTAINER"
-			}
-		]
+				"name": "MY_CONTAINER",
+			},
+		],
 	},
-	"migrations": [
-		{
-			"new_sqlite_classes": ["MyContainer"],
-			"tag": "v1"
-		}
-	]
+	"exports": {
+		"MyContainer": {
+			"type": "durable-object",
+			"storage": "sqlite",
+		},
+	},
 }
 ```
 
 ```toml
 name = "container-starter"
-main = "src/index.js"
+main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-29"
+compatibility_date = "2026-09-30"
 
 [[containers]]
 class_name = "MyContainer"
@@ -94,9 +227,9 @@ max_instances = 5
 class_name = "MyContainer"
 name = "MY_CONTAINER"
 
-[[migrations]]
-new_sqlite_classes = [ "MyContainer" ]
-tag = "v1"
+[exports.MyContainer]
+type = "durable-object"
+storage = "sqlite"
 ```
 
 [Get started](https://developers.cloudflare.com/containers/get-started/) [Containers dashboard](https://dash.cloudflare.com/?to=/:account/workers/containers)
@@ -132,6 +265,10 @@ Deploy Containers
 ---
 
 ## More resources
+
+### [Scheduling policies](https://developers.cloudflare.com/containers/configuration/scheduling-policy/)
+
+Choose whether image and instance configuration is managed centrally or from Durable Object code.
 
 ### [Rollouts](https://developers.cloudflare.com/containers/configuration/rollouts/)
 
@@ -174,5 +311,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/#page","headline":"Containers","description":"Run serverless containers alongside Workers to handle resource-intensive workloads, custom runtimes, and existing container images on Cloudflare.","url":"https://developers.cloudflare.com/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/og.png?v=9068707d88e89d36","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/containers/#page","headline":"Containers","description":"Run serverless containers alongside Workers to handle resource-intensive workloads, custom runtimes, and existing container images on Cloudflare.","url":"https://developers.cloudflare.com/containers/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/og.png?v=9068707d88e89d36","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

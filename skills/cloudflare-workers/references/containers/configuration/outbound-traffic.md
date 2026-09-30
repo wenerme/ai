@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/configuration/outbound-traff
 
 # Handle outbound traffic
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/outbound-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/outbound-traffic/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Outbound handlers let you intercept and modify HTTP traffic from a container with trusted code.
 
@@ -36,7 +36,7 @@ export class MyContainer extends Container {
 }
 ```
 
-When `enableInternet` is `false`, only traffic you explicitly allow later on this page through `allowedHosts` or outbound handlers can leave the container. Only ports `80`, `443`, and DNS are available, and DNS queries use Cloudflare's DNS servers.
+When `enableInternet` is `false`, only traffic that `allowedHosts` or an outbound handler allows can leave the container. Only ports `80` and `443` are available. Your outbound configuration decides which DNS lookups resolve. For more information, refer to [Non-HTTP traffic](#non-http-traffic).
 
 Note
 
@@ -67,6 +67,10 @@ export class MyContainer extends Container {
 }
 ```
 
+Caution
+
+`deniedHosts` applies to HTTP on port `80`. With `interceptHttps = true`, it also applies to HTTPS on port `443`. While `enableInternet` is `true`, connections to other ports bypass `deniedHosts`. To block a destination on every port, set `enableInternet = false` and allow only what the container needs.
+
 You can also disable internet access by default, but allow specific hosts and IPs:
 
 ```js
@@ -89,7 +93,7 @@ export class MyContainer extends Container {
 
 Outbound handlers are programmable egress proxies that run on the same machine as the container. They have access to all Workers bindings.
 
-Use `outbound` to intercept all HTTP and HTTPS traffic:
+Use `outbound` to intercept HTTP requests on port `80` and HTTPS requests on port `443`:
 
 ```js
 import { Container, ContainerProxy } from "@cloudflare/containers";
@@ -288,7 +292,12 @@ HTTP communication to the outbound handler is encrypted by the networking stack.
 
 Outbound handlers only intercept HTTP and HTTPS traffic. Traffic on ports other than `80` and `443` is never routed through `outbound` or `outboundByHost`.
 
-If you set `enableInternet = false`, that traffic is denied. DNS queries are the one exception, but they only go to Cloudflare's DNS servers. That prevents using arbitrary DNS destinations for data exfiltration.
+If you set `enableInternet = false`, that traffic is denied. DNS lookups never reach a public resolver, so DNS cannot carry data out of the container. The container network answers lookups only for hostnames that your outbound configuration covers. Each answer is a placeholder address that routes the request to your Worker. The properties you set decide which hostnames resolve:
+
+- With `allowedHosts`, `deniedHosts`, or `outbound` set, every hostname resolves, and your Worker allows or blocks each request.
+- With only `outboundByHost` set, only its hostnames resolve.
+
+Other lookups time out. For the exact rules, refer to [`interceptOutboundHttp`](https://developers.cloudflare.com/containers/api/durable-object-container/#interceptoutboundhttp).
 
 ## Change policies at runtime
 
@@ -345,7 +354,7 @@ Requests are evaluated in this order:
 
 ## Direct API
 
-To configure outbound interception directly on `ctx.container`, use `interceptOutboundHttp` for a specific hostname glob, IP, or CIDR range, or `interceptAllOutboundHttp` for all traffic. Both accept a `WorkerEntrypoint`.
+To configure outbound interception directly on `ctx.container`, use `interceptOutboundHttp` for a specific hostname glob, IP, or CIDR range, or `interceptAllOutboundHttp` for all HTTP on port `80`. Both accept a `WorkerEntrypoint`.
 
 ```js
 import { WorkerEntrypoint } from "cloudflare:workers";
@@ -384,7 +393,7 @@ For HTTPS, `interceptOutboundHttps` works the same way as `interceptOutboundHttp
 // Intercept a specific hostname
 this.ctx.container.interceptOutboundHttps("foo.com", worker);
 
-// Intercept all traffic
+// Intercept HTTPS to every hostname
 this.ctx.container.interceptOutboundHttps("*", worker);
 ```
 
@@ -410,5 +419,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/#page","headline":"Handle outbound traffic","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/og.png?v=2e06fa362fbb8548","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/#page","headline":"Handle outbound traffic","description":"Intercept and handle outbound HTTP from containers using Workers.","url":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/outbound-traffic/og.png?v=2e06fa362fbb8548","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

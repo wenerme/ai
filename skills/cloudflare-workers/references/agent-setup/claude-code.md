@@ -37,7 +37,7 @@ TerminalStandaloneCloudExtension
 
 2. **Launch Claude Code in your project**
 
-   Start Claude Code from the root of your project, where `wrangler.jsonc` lives (if it already exists).
+   Start Claude Code from the root of your project, where `wrangler.jsonc` or `cloudflare.config.ts` lives (if either exists).
 
    ```bash
    claude
@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
    ```
 
 
@@ -135,9 +135,9 @@ Local dev, deploys, and Workers-specific commands.
 
 Use <a href="https://developers.cloudflare.com/workers/wrangler/">Wrangler</a> for local development, deploys, and product-specific commands like <code>wrangler d1 migrations apply</code> or <code>wrangler tail</code>. The bundled **wrangler** Skill teaches the agent when to reach for it.
 
-What’s next
+Cloudflare CLI (beta)
 
-The unified <code>cf</code> CLI is in technical preview — a next-generation CLI that covers every Cloudflare product with consistent verbs and ergonomic output for agents. Try it with <code>npx cf</code>. <a href="https://blog.cloudflare.com/cf-cli-local-explorer/">Read the announcement →</a>
+The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, covers the public Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, then follow <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -164,23 +164,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ## Tips
@@ -188,7 +188,7 @@ Add a D1 database to my Worker and create a users table with full CRUD endpoints
 - The Skills plugin includes a wrangler Skill — Claude knows when to reach for `npx wrangler deploy`, `wrangler d1 migrations apply`, and other CLI commands automatically.
 - Try the `/cloudflare:build-agent` slash command to scaffold a complete Agents SDK project, or `/cloudflare:build-mcp` for a remote MCP server.
 - The Cloudflare API MCP server uses Code Mode — Claude writes JavaScript against a TypeScript API to hit any of 2,500+ endpoints in \~1,000 tokens.
-- Claude Code works best from the root of your Workers project where `wrangler.jsonc` lives — this is what the agent uses to understand your bindings.
+- Claude Code works best from the root of your Workers project where `wrangler.jsonc` or `cloudflare.config.ts` lives — this is what the agent uses to understand your bindings.
 - Use `claude mcp list` to verify Cloudflare servers are connected. For CI/CD, skip OAuth by passing a Cloudflare API token as a bearer token instead.
 
 ### [Cloudflare MCP server repository](https://github.com/cloudflare/mcp-server-cloudflare)
@@ -199,11 +199,21 @@ Installing additional MCP servers, and when to use Code Mode versus traditional 
 
 <details>
 
-<summary>Should I use Skills, the MCP server, Wrangler CLI, or all of them?
+<summary>Should I use Skills, the MCP server, a CLI, or all of them?
 
 </summary>
 
-All three — and the Skills plugin configures them together. Skills give Claude persistent Cloudflare knowledge (when to use Durable Objects vs KV, what a good Workers project layout looks like). The Cloudflare API MCP server handles platform operations (DNS, WAF, R2 buckets, Zero Trust). Wrangler runs local dev and Workers-specific commands. The <code>wrangler</code> Skill teaches Claude when to reach for which.
+All three — and the Skills plugin configures them together. Skills give Claude persistent Cloudflare knowledge (when to use Durable Objects vs KV, what a good Workers project layout looks like). The Cloudflare API MCP server handles platform operations (DNS, WAF, R2 buckets, Zero Trust). Wrangler runs local dev and Workers-specific commands. The <code>wrangler</code> Skill teaches Claude when to reach for which. For tasks across the whole Cloudflare API, Claude can also use the <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>.
+
+</details>
+
+<details>
+
+<summary>Can Claude Code use the Cloudflare CLI?
+
+</summary>
+
+Yes. The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, is in beta and covers the whole Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, sign in with <code>cf auth login</code>, and tell Claude Code to prefer it in <code>CLAUDE.md</code>. Refer to <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -223,7 +233,7 @@ The first time Claude calls a Cloudflare tool, you will be redirected to authori
 
 </summary>
 
-Yes. Run Claude Code from your existing project directory where <code>wrangler.jsonc</code> is located, and it will understand your project configuration and deploy accordingly.
+Yes. Run Claude Code from your existing project directory where <code>wrangler.jsonc</code> or <code>cloudflare.config.ts</code> is located, and it will understand your project configuration and deploy accordingly.
 
 </details>
 
@@ -296,5 +306,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/claude-code/#page","headline":"Claude Code + Cloudflare","description":"Terminal-based coding agent that understands your codebase, runs commands, edits files, and manages git. Made by Anthropic.","url":"https://developers.cloudflare.com/agent-setup/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/claude-code/og.png?v=3464f7dc38d715c9","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/claude-code/#page","headline":"Claude Code + Cloudflare","description":"Terminal-based coding agent that understands your codebase, runs commands, edits files, and manages git. Made by Anthropic.","url":"https://developers.cloudflare.com/agent-setup/claude-code/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/claude-code/og.png?v=3464f7dc38d715c9","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

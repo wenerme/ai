@@ -1,0 +1,607 @@
+---
+description: Create preview URLs and expose ports for web services with the Sandbox SDK 0.x.
+title: Expose services
+image: https://developers.cloudflare.com/sandbox/sdk/guides/expose-services/og.png?v=be6c05fa066c6b60
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Expose services
+
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/guides/expose-services/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Note
+
+This page documents Sandbox SDK 0.x for existing applications. For new applications, refer to [Preview a web application](https://developers.cloudflare.com/sandbox/previews/). To move an existing application to `@cloudflare/sandbox` 1.0, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).
+
+Production requires custom domain
+
+Preview URLs require a custom domain with wildcard DNS routing in production. See [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/sdk/guides/preview-urls-custom-domain/) for setup instructions.
+
+Prefer \`sandbox.tunnels\` for public URLs
+
+[`sandbox.tunnels`](https://developers.cloudflare.com/sandbox/sdk/api/tunnels/) is the recommended option for most public-URL use cases, including production. Quick tunnels give you a zero-config `*.trycloudflare.com` URL; named tunnels bind a stable `<name>.<your-zone>` hostname. Follow this guide when you specifically want the Worker itself to front the request (for example, to inject authentication or rewrite responses).
+
+This guide shows you how to expose services running in your sandbox to the internet via preview URLs.
+
+## When to expose ports
+
+Expose ports when you need to:
+
+- **Test web applications** - Preview frontend or backend apps
+- **Share demos** - Give others access to running applications
+- **Develop APIs** - Test endpoints from external tools
+- **Debug services** - Access internal services for troubleshooting
+- **Build dev environments** - Create shareable development workspaces
+
+## Basic port exposure
+
+The typical workflow is: start service → wait for ready → expose port → handle requests with `proxyToSandbox`.
+
+```js
+import { getSandbox, proxyToSandbox } from "@cloudflare/sandbox";
+
+export { Sandbox } from "@cloudflare/sandbox";
+
+export default {
+	async fetch(request, env) {
+		// Proxy requests to exposed ports first
+		const proxyResponse = await proxyToSandbox(request, env);
+		if (proxyResponse) return proxyResponse;
+
+		// Extract hostname from request
+		const { hostname } = new URL(request.url);
+		const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+
+		// 1. Start a web server
+		await sandbox.startProcess("python -m http.server 8000");
+
+		// 2. Wait for service to start
+		await new Promise((resolve) => setTimeout(resolve, 2000));
+
+		// 3. Expose the port
+		const exposed = await sandbox.exposePort(8000, { hostname });
+
+		// 4. Preview URL is now available (public by default)
+		console.log("Server accessible at:", exposed.url);
+		// Production: https://8000-abc123.yourdomain.com
+		// Local dev: http://localhost:8787/...
+
+		return Response.json({ url: exposed.url });
+	},
+};
+```
+
+```plaintext
+import { getSandbox, proxyToSandbox } from '@cloudflare/sandbox';
+
+export { Sandbox } from '@cloudflare/sandbox';
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    // Proxy requests to exposed ports first
+    const proxyResponse = await proxyToSandbox(request, env);
+    if (proxyResponse) return proxyResponse;
+
+    // Extract hostname from request
+    const { hostname } = new URL(request.url);
+    const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
+
+    // 1. Start a web server
+    await sandbox.startProcess('python -m http.server 8000');
+
+    // 2. Wait for service to start
+    await new Promise(resolve => setTimeout(resolve, 2000));
+
+    // 3. Expose the port
+    const exposed = await sandbox.exposePort(8000, { hostname });
+
+    // 4. Preview URL is now available (public by default)
+    console.log('Server accessible at:', exposed.url);
+    // Production: https://8000-abc123.yourdomain.com
+    // Local dev: http://localhost:8787/...
+
+    return Response.json({ url: exposed.url });
+  }
+};
+```
+
+Caution
+
+**Preview URLs are public by default.** Anyone with the URL can access your service. Add authentication if needed.
+
+Local development requirement
+
+When using `wrangler dev`, you must add `EXPOSE` directives to your Dockerfile for each port you plan to expose. Without this, you'll see "Connection refused: container port not found". See [Local development](#local-development) section below for setup details.
+
+Uppercase sandbox IDs don't work with preview URLs
+
+Preview URLs extract the sandbox ID from the hostname, which is always lowercase (e.g., `8000-myproject-123.yourdomain.com`). If you created your sandbox with an uppercase ID like `"MyProject-123"`, the URL routes to `"myproject-123"` (a different Durable Object), making your sandbox unreachable.
+
+To fix this, use `normalizeId: true` when creating sandboxes for port exposure:
+
+```ts
+const sandbox = getSandbox(env.Sandbox, 'MyProject-123', { normalizeId: true });
+```
+
+This lowercases the ID during creation so it matches preview URL routing. Without this, `exposePort()` throws an error.
+
+**Best practice**: Use lowercase IDs from the start (`'my-project-123'`).
+
+See [Sandbox options](https://developers.cloudflare.com/sandbox/sdk/configuration/sandbox-options/#normalizeid) for details.
+
+## Stable URLs with custom tokens
+
+For production deployments or when sharing URLs with users, use custom tokens to maintain consistent preview URLs across container restarts:
+
+```js
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+// Without custom token - URL changes on restart
+const exposed = await sandbox.exposePort(8080, { hostname });
+// https://8080-sandbox-id-random16chars12.yourdomain.com
+
+// With custom token - URL stays the same across restarts
+const stable = await sandbox.exposePort(8080, {
+	hostname,
+	token: "api-v1",
+});
+// https://8080-sandbox-id-api-v1.yourdomain.com
+// Same URL after container restart ✓
+
+return Response.json({
+	"Temporary URL (changes on restart)": exposed.url,
+	"Stable URL (consistent)": stable.url,
+});
+```
+
+```plaintext
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+// Without custom token - URL changes on restart
+const exposed = await sandbox.exposePort(8080, { hostname });
+// https://8080-sandbox-id-random16chars12.yourdomain.com
+
+// With custom token - URL stays the same across restarts
+const stable = await sandbox.exposePort(8080, {
+  hostname,
+  token: 'api-v1'
+});
+// https://8080-sandbox-id-api-v1.yourdomain.com
+// Same URL after container restart ✓
+
+return Response.json({
+  'Temporary URL (changes on restart)': exposed.url,
+  'Stable URL (consistent)': stable.url
+});
+```
+
+**Token requirements:**
+
+- 1-16 characters long
+- Lowercase letters (a-z), numbers (0-9), hyphens (-), and underscores (\_) only
+- Must be unique within each sandbox
+
+**Use cases:**
+
+- Production APIs with stable endpoints
+- Sharing demo URLs with external users
+- Integration testing with predictable URLs
+- Documentation with consistent examples
+
+## Name your exposed ports
+
+When exposing multiple ports, use names to stay organized:
+
+```js
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+// Start and expose API server with stable token
+await sandbox.startProcess("node api.js", { env: { PORT: "8080" } });
+await new Promise((resolve) => setTimeout(resolve, 2000));
+const api = await sandbox.exposePort(8080, {
+	hostname,
+	name: "api",
+	token: "api-prod",
+});
+
+// Start and expose frontend with stable token
+await sandbox.startProcess("npm run dev", { env: { PORT: "5173" } });
+await new Promise((resolve) => setTimeout(resolve, 2000));
+const frontend = await sandbox.exposePort(5173, {
+	hostname,
+	name: "frontend",
+	token: "web-app",
+});
+
+console.log("Services:");
+console.log("- API:", api.url);
+console.log("- Frontend:", frontend.url);
+```
+
+```plaintext
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+// Start and expose API server with stable token
+await sandbox.startProcess('node api.js', { env: { PORT: '8080' } });
+await new Promise(resolve => setTimeout(resolve, 2000));
+const api = await sandbox.exposePort(8080, {
+  hostname,
+  name: 'api',
+  token: 'api-prod'
+});
+
+// Start and expose frontend with stable token
+await sandbox.startProcess('npm run dev', { env: { PORT: '5173' } });
+await new Promise(resolve => setTimeout(resolve, 2000));
+const frontend = await sandbox.exposePort(5173, {
+  hostname,
+  name: 'frontend',
+  token: 'web-app'
+});
+
+console.log('Services:');
+console.log('- API:', api.url);
+console.log('- Frontend:', frontend.url);
+```
+
+## Wait for service readiness
+
+Always verify a service is ready before exposing. Use a simple delay for most cases:
+
+```js
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+// Start service
+await sandbox.startProcess("npm run dev", { env: { PORT: "8080" } });
+
+// Wait 2-3 seconds
+await new Promise((resolve) => setTimeout(resolve, 2000));
+
+// Now expose
+await sandbox.exposePort(8080, { hostname });
+```
+
+```plaintext
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+// Start service
+await sandbox.startProcess('npm run dev', { env: { PORT: '8080' } });
+
+// Wait 2-3 seconds
+await new Promise(resolve => setTimeout(resolve, 2000));
+
+// Now expose
+await sandbox.exposePort(8080, { hostname });
+```
+
+For critical services, poll the health endpoint:
+
+```js
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+await sandbox.startProcess("node api-server.js", { env: { PORT: "8080" } });
+
+// Wait for health check
+for (let i = 0; i < 10; i++) {
+	await new Promise((resolve) => setTimeout(resolve, 1000));
+
+	const check = await sandbox.exec(
+		'curl -f http://localhost:8080/health || echo "not ready"',
+	);
+	if (check.stdout.includes("ok")) {
+		break;
+	}
+}
+
+await sandbox.exposePort(8080, { hostname });
+```
+
+```plaintext
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+await sandbox.startProcess('node api-server.js', { env: { PORT: '8080' } });
+
+// Wait for health check
+for (let i = 0; i < 10; i++) {
+  await new Promise(resolve => setTimeout(resolve, 1000));
+
+  const check = await sandbox.exec('curl -f http://localhost:8080/health || echo "not ready"');
+  if (check.stdout.includes('ok')) {
+    break;
+  }
+}
+
+await sandbox.exposePort(8080, { hostname });
+```
+
+## Multiple services
+
+Expose multiple ports for full-stack applications:
+
+```js
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+// Start backend
+await sandbox.startProcess("node api/server.js", {
+	env: { PORT: "8080" },
+});
+await new Promise((resolve) => setTimeout(resolve, 2000));
+
+// Start frontend
+await sandbox.startProcess("npm run dev", {
+	cwd: "/workspace/frontend",
+	env: { PORT: "5173", API_URL: "http://localhost:8080" },
+});
+await new Promise((resolve) => setTimeout(resolve, 3000));
+
+// Expose both
+const api = await sandbox.exposePort(8080, { hostname, name: "api" });
+const frontend = await sandbox.exposePort(5173, { hostname, name: "frontend" });
+
+return Response.json({
+	api: api.url,
+	frontend: frontend.url,
+});
+```
+
+```plaintext
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+// Start backend
+await sandbox.startProcess('node api/server.js', {
+  env: { PORT: '8080' }
+});
+await new Promise(resolve => setTimeout(resolve, 2000));
+
+// Start frontend
+await sandbox.startProcess('npm run dev', {
+  cwd: '/workspace/frontend',
+  env: { PORT: '5173', API_URL: 'http://localhost:8080' }
+});
+await new Promise(resolve => setTimeout(resolve, 3000));
+
+// Expose both
+const api = await sandbox.exposePort(8080, { hostname, name: 'api' });
+const frontend = await sandbox.exposePort(5173, { hostname, name: 'frontend' });
+
+return Response.json({
+  api: api.url,
+  frontend: frontend.url
+});
+```
+
+## Manage exposed ports
+
+### List currently exposed ports
+
+```js
+const { ports, count } = await sandbox.getExposedPorts();
+
+console.log(`${count} ports currently exposed:`);
+
+for (const port of ports) {
+	console.log(`  Port ${port.port}: ${port.url}`);
+	if (port.name) {
+		console.log(`    Name: ${port.name}`);
+	}
+}
+```
+
+```plaintext
+const { ports, count } = await sandbox.getExposedPorts();
+
+console.log(`${count} ports currently exposed:`);
+
+for (const port of ports) {
+  console.log(`  Port ${port.port}: ${port.url}`);
+  if (port.name) {
+    console.log(`    Name: ${port.name}`);
+  }
+}
+```
+
+### Unexpose ports
+
+```js
+// Unexpose a single port
+await sandbox.unexposePort(8000);
+
+// Unexpose multiple ports
+for (const port of [3000, 5173, 8080]) {
+	await sandbox.unexposePort(port);
+}
+```
+
+```plaintext
+// Unexpose a single port
+await sandbox.unexposePort(8000);
+
+// Unexpose multiple ports
+for (const port of [3000, 5173, 8080]) {
+  await sandbox.unexposePort(port);
+}
+```
+
+## Best practices
+
+- **Wait for readiness** - Don't expose ports immediately after starting processes
+- **Use named ports** - Easier to track when exposing multiple ports
+- **Clean up** - Unexpose ports when done to prevent abandoned URLs
+- **Add authentication** - Preview URLs are public; protect sensitive services
+
+## Local development
+
+When developing locally with `wrangler dev`, you must expose ports in your Dockerfile:
+
+*Dockerfiledockerfile*
+
+```dockerfile
+FROM docker.io/cloudflare/sandbox:0.3.3
+
+# Expose ports you plan to use
+EXPOSE 8000
+EXPOSE 8080
+EXPOSE 5173
+```
+
+Update `wrangler.jsonc` to use your Dockerfile:
+
+*wrangler.jsoncjsonc*
+
+```jsonc
+{
+  "containers": [
+    {
+      "class_name": "Sandbox",
+      "image": "./Dockerfile"
+    }
+  ]
+}
+```
+
+In production, all ports are available and controlled programmatically via `exposePort()` / `unexposePort()`.
+
+## Troubleshooting
+
+### Port 3000 is reserved
+
+Port 3000 is used by the internal Bun server and cannot be exposed:
+
+```js
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+// ❌ This will fail
+await sandbox.exposePort(3000, { hostname }); // Error: Port 3000 is reserved
+
+// ✅ Use a different port
+await sandbox.startProcess("node server.js", { env: { PORT: "8080" } });
+await sandbox.exposePort(8080, { hostname });
+```
+
+```plaintext
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+// ❌ This will fail
+await sandbox.exposePort(3000, { hostname });  // Error: Port 3000 is reserved
+
+// ✅ Use a different port
+await sandbox.startProcess('node server.js', { env: { PORT: '8080' } });
+await sandbox.exposePort(8080, { hostname });
+```
+
+### Port not ready
+
+Wait for the service to start before exposing:
+
+```js
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+await sandbox.startProcess("npm run dev");
+await new Promise((resolve) => setTimeout(resolve, 3000));
+await sandbox.exposePort(8080, { hostname });
+```
+
+```plaintext
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+await sandbox.startProcess('npm run dev');
+await new Promise(resolve => setTimeout(resolve, 3000));
+await sandbox.exposePort(8080, { hostname });
+```
+
+### Port already exposed
+
+Check before exposing to avoid errors:
+
+```js
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+const { ports } = await sandbox.getExposedPorts();
+if (!ports.some((p) => p.port === 8080)) {
+	await sandbox.exposePort(8080, { hostname });
+}
+```
+
+```plaintext
+// Extract hostname from request
+const { hostname } = new URL(request.url);
+
+const { ports } = await sandbox.getExposedPorts();
+if (!ports.some(p => p.port === 8080)) {
+  await sandbox.exposePort(8080, { hostname });
+}
+```
+
+### Uppercase sandbox ID error
+
+**Error**: `Preview URLs require lowercase sandbox IDs`
+
+**Cause**: You created a sandbox with uppercase characters (e.g., `"MyProject-123"`) but preview URLs always use lowercase in routing, causing a mismatch.
+
+**Solution**:
+
+```js
+// Create sandbox with normalization
+const sandbox = getSandbox(env.Sandbox, "MyProject-123", { normalizeId: true });
+await sandbox.exposePort(8080, { hostname });
+```
+
+```plaintext
+// Create sandbox with normalization
+const sandbox = getSandbox(env.Sandbox, 'MyProject-123', { normalizeId: true });
+await sandbox.exposePort(8080, { hostname });
+```
+
+This creates the Durable Object with ID `"myproject-123"`, matching the preview URL routing.
+
+See [Sandbox options - normalizeId](https://developers.cloudflare.com/sandbox/sdk/configuration/sandbox-options/#normalizeid) for details.
+
+## Preview URL Format
+
+**Production**: `https://{port}-{sandbox-id}-{token}.yourdomain.com`
+
+- Auto-generated token: `https://8080-abc123-random16chars12.yourdomain.com`
+- Custom token: `https://8080-abc123-my-api-v1.yourdomain.com`
+
+**Local development**: `http://localhost:8787/...`
+
+**Note**: Port 3000 is reserved for the internal Bun server and cannot be exposed.
+
+## Related resources
+
+- [Ports API reference](https://developers.cloudflare.com/sandbox/sdk/api/ports/) - Complete port exposure API
+- [Background processes guide](https://developers.cloudflare.com/sandbox/sdk/guides/background-processes/) - Managing services
+- [Execute commands guide](https://developers.cloudflare.com/sandbox/sdk/guides/execute-commands/) - Starting services
+- [Tunnels API reference](https://developers.cloudflare.com/sandbox/sdk/api/tunnels/) - Recommended alternative for most public-URL use cases (quick or named tunnels)
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/guides/expose-services/#page","headline":"Expose services","description":"Create preview URLs and expose ports for web services with the Sandbox SDK 0.x.","url":"https://developers.cloudflare.com/sandbox/sdk/guides/expose-services/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/guides/expose-services/og.png?v=be6c05fa066c6b60","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

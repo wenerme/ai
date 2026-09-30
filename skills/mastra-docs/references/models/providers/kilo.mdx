@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 392 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 394 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -107,9 +107,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 943718,
-    "inputCost": 0.096,
-    "outputCost": 1.9584
+    "maxOutput": 393216,
+    "inputCost": 0.15,
+    "outputCost": 3.5
   },
   {
     "model": "kilo/~deepseek/deepseek-v4-flash-latest",
@@ -157,7 +157,7 @@ for await (const chunk of stream) {
     "contextWindow": 1048576,
     "maxOutput": 943718,
     "inputCost": 0.4,
-    "outputCost": 10
+    "outputCost": 9
   },
   {
     "model": "kilo/~openai/gpt-astra-latest",
@@ -252,7 +252,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.19,
+    "inputCost": 0.12,
     "outputCost": 4
   },
   {
@@ -2932,6 +2932,30 @@ for await (const chunk of stream) {
     "outputCost": 10
   },
   {
+    "model": "kilo/openai/gpt-6.1-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "kilo/openai/gpt-6.1-sol-pro",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
     "model": "kilo/openai/gpt-audio",
     "imageInput": false,
     "audioInput": true,
@@ -3671,7 +3695,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 235929,
+    "maxOutput": 65536,
     "inputCost": 0.26,
     "outputCost": 2.08
   },
@@ -4236,8 +4260,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 128000,
-    "inputCost": 0.13,
-    "outputCost": 0.53
+    "inputCost": 0.0825,
+    "outputCost": 0.33
   },
   {
     "model": "kilo/tencent/hy3-preview",
@@ -4525,7 +4549,7 @@ for await (const chunk of stream) {
     "contextWindow": 1048576,
     "maxOutput": 131072,
     "inputCost": 0.08,
-    "outputCost": 1.28
+    "outputCost": 0.28
   },
   {
     "model": "kilo/xiaomi/mimo-v2.6-pro",

@@ -18,22 +18,9 @@ translationBlockHashes:
   "Next steps": 8765dc11
 ---
 
-  Comfy API のデプロイはベータ版です。[platform.comfy.org](https://platform.comfy.org) からサインアップしてアクセスをリクエストしてください。
-
 Comfy API では、ComfyUI ワークフローを、オンデマンドの GPU キャパシティを備えたマネージド型のオートスケーリングエンドポイントとしてデプロイできます。**Build** は、ローカルインストールから取り込んだモデル、カスタムノード、設定で構成される、バージョン管理された ComfyUI 環境の定義です。Build and Deploy CLI は、Build 定義をプロジェクト内に保持し、その定義からリリースを作成し、トラフィックを受け付ける準備ができたらリリースをデプロイします。
 
-  
-    ローカルの ComfyUI インストールから Build 定義を作成します。
-  
-  
-    Build からイミュータブルな Linux/NVIDIA リリースを切り出します。
-  
-  
-    リリースに URL とマネージド GPU キャパシティを割り当てます。
-  
-  
-    アクティブなデプロイメントに API 形式のワークフローを送信します。
-  
+  エージェントから始めるか、別の方法で環境やワークフローを用意します。
 
 ## クイックスタート
 
@@ -276,7 +263,14 @@ comfy deploy events --deployment dep_123456
 
 ## 次のステップ
 
-- [Comfy SDK](/ja/development/api-development/sdks)
-- [Comfy API v2 の概要](/ja/api-reference/v2/overview)
-- [ワークフロー API フォーマット](/ja/development/api-development/workflow-api-format)
-- [Comfy CLI リファレンス](/ja/comfy-cli/reference)
+  
+    Python または TypeScript アプリからワークフローを送信し、入力、進捗、出力を処理します。
+  
+  
+    HTTP API を直接呼び出す場合や、リクエストとレスポンス形式を確認する場合に使います。
+  
+  
+    API リクエスト用の workflow JSON を準備し、入出力を確認します。
+  
+  
+    ターミナルから Build、リリース、デプロイ、workflow のコマンドを自動化します。

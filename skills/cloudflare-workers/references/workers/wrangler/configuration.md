@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v
 
 # Configuration
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler optionally uses a configuration file to customize the development and deployment setup for a Worker.
 
@@ -39,7 +39,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-09-29",
+	"compatibility_date": "2026-09-30",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -74,7 +74,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-09-29"
+compatibility_date = "2026-09-30"
 workers_dev = false
 
 [route]
@@ -176,7 +176,7 @@ The `main` key is optional for assets-only Workers.
 - `compatibility_flags` `string[]` optional
   - A list of flags that enable features from upcoming features of the Workers runtime, usually used together with `compatibility_date`. Refer to [compatibility dates](https://developers.cloudflare.com/workers/configuration/compatibility-dates/).
 - `workers_dev` `boolean` optional
-  - Enables use of `*.workers.dev` subdomain to deploy your Worker. If you have a Worker that is only for `scheduled` events, you can set this to `false`. Defaults to `true`. Refer to [types of routes](#types-of-routes).
+  - Enables use of `*.workers.dev` subdomain to deploy your Worker. If you have a Worker that is only for `scheduled` events, you can set this to `false`. Defaults to `true` when the configuration has no `route` or `routes`, and `false` otherwise. Refer to [types of routes](#types-of-routes).
 - `preview_urls` `boolean` optional
   - Enables Version URLs and `workers.dev` Preview URLs. If omitted, Wrangler does not change an existing setting. If no setting exists, its initial value depends on `workers_dev`. Refer to [Version URLs](https://developers.cloudflare.com/workers/versions-and-deployments/version-urls/) and [Previews](https://developers.cloudflare.com/workers/previews/).
 - `route` `Route` optional
@@ -376,7 +376,7 @@ route = "example.com/*"
 Cloudflare Workers accounts come with a `workers.dev` subdomain that is configurable in the Cloudflare dashboard.
 
 - `workers_dev` `boolean` optional
-  - Whether the Worker runs on a custom `workers.dev` account subdomain. Defaults to `true`.
+  - Whether the Worker runs on a custom `workers.dev` account subdomain. Defaults to `true` when the configuration has no `route` or `routes`, and `false` otherwise. To keep the `workers.dev` URL alongside routes, set `workers_dev` to `true`. For more information, refer to [`workers.dev`](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/).
 
 ```jsonc
 {
@@ -665,6 +665,8 @@ Each entry in `exports` is keyed by Durable Object class name. The fields on eac
   - Required when `state` is `"transferred"`. The name of the target Worker that will receive the namespace.
 - `transfer_from` `string` conditional
   - Required when `state` is `"expecting-transfer"`. The name of the source Worker the namespace is being transferred from.
+- `container` `string` optional
+  - Attaches a [Container](#containers) to this Durable Object. Must match the `name` of an entry in the top-level `containers` array, and requires `storage` to be `"sqlite"`. Only allowed when `state` is `"created"` or `"expecting-transfer"`. Use this instead of setting `class_name` on the Container entry.
 
 Example:
 
@@ -1480,25 +1482,35 @@ run_worker_first = [ "/api/*", "!/api/docs/*" ]
 
 You can define [Containers](https://developers.cloudflare.com/containers) to run alongside your Worker using the `containers` field.
 
+Each Container application has a [scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/) that determines whether image and instance configuration is managed centrally or supplied by Durable Object code at runtime. The policy is immutable after the application is created.
+
 Note
 
-You must also define a Durable Object to communicate with your Container via Workers. This Durable Object's class name must match the `class_name` value in container configuration.
+Each Container application must link to a Durable Object defined in the same Worker. Set `class_name` on the Container entry, or set `name` and reference that name from [`exports.<Class>.container`](#exports). Configure exactly one of these linkage directions.
+
+### `default` scheduling policy
+
+The `default` policy stores the image and instance configuration on the Container application and manages deployments as rollouts. It is used when `scheduling_policy` is omitted or set to `"default"`.
 
 The following options are available:
 
+- `scheduling_policy` `string` optional
+  - Set to `"default"`, or omit this field.
 - `image` `string` required
   - The image to use for the container. This can either be a local path to a `Dockerfile`, in which case `wrangler deploy` will build and push the image, or it can be an image reference. Supported registries are the Cloudflare Registry, Docker Hub, Amazon ECR, and Google Artifact Registry. For more information, refer to [Image Management](https://developers.cloudflare.com/containers/guides/image-management/).
-- `class_name` `string` required
+- `class_name` `string` conditional
   - The corresponding Durable Object class name. This will make this Durable Object a container-enabled Durable Object and allow each instance to control a container. Refer to the [Durable Object Container API](https://developers.cloudflare.com/containers/api/durable-object-container/) for details.
-- `instance_type` `string` optional
-  - The instance type of the container. This determines the amount of memory, CPU, and disk given to the container instance. The current options are `"lite"`, `"basic"`, `"standard-1"`, `"standard-2"`, `"standard-3"`, and `"standard-4"`. The default is `"lite"`. For more information, see the [instance types documentation](https://developers.cloudflare.com/containers/platform/limits/#instance-types).
-  - To specify a custom instance type, see [here](#custom-instance-types).
-- `max_instances` `string` optional
-  - The maximum number of concurrent container instances you want to run at any given moment. Stopped containers do not count towards this - you may have more container instances than this number overall, but only this many actively running containers at once. If a request to start a container will exceed this limit, that request will error.
+  - Omit this field when the Container is linked by `name` from `exports.<Class>.container`.
+- `name` `string` conditional
+  - The name of your container. Used as an identifier. This will default to a combination of your Worker name, the class name, and your environment.
+  - Required when `class_name` is omitted so that `exports.<Class>.container` can reference the Container.
+- `instance_type` `string | object` optional
+  - The instance type determines the amount of memory, CPU, and disk given to the container instance. Supported values are `"lite"`, `"basic"`, `"standard-1"`, `"standard-2"`, `"standard-3"`, and `"standard-4"`. The default is `"lite"`. For more information, refer to [Limits and Instance Types](https://developers.cloudflare.com/containers/platform/limits/#instance-types).
+  - To specify a custom instance type, refer to [Custom instance types](#custom-instance-types).
+- `max_instances` `number` optional
+  - The maximum number of concurrent container instances. Stopped containers do not count towards this - you may have more container instances than this number overall, but only this many actively running containers at once. If a request to start a container will exceed this limit, that request will error.
   - Defaults to 20.
   - This value is only enforced when running in production on Cloudflare's network. This limit does not apply during local development, so you may run more instances than specified.
-- `name` `string` optional
-  - The name of your container. Used as an identifier. This will default to a combination of your Worker name, the class name, and your environment.
 - `image_build_context` `string` optional
   - The build context of the application, by default it is the directory of `image`.
 - `image_vars` `Record<string, string>` optional
@@ -1507,9 +1519,13 @@ The following options are available:
   - During a [rollout](https://developers.cloudflare.com/containers/configuration/rollouts/), minimum seconds a container instance must already have been connected to its Durable Object before it may be replaced. Defaults to `0`. Still applies with `--containers-rollout=immediate`.
 - `rollout_step_percentage` `number | number[]` optional
   - Percentage of container instances to update at each [rollout](https://developers.cloudflare.com/containers/configuration/rollouts/) step. A single number uses that step size ( `5`, `10`, `20`, `25`, `50`, or `100`). An array must contain ascending integer values from `10` through `100`, end in `100`, contain at most 10 entries, and contain no more entries than `max_instances`; its values are cumulative. Defaults to `100` if `max_instances` is omitted or less than `2`; otherwise defaults to `[10, 100]`. Override for one deploy with `--containers-rollout=immediate` (single 100% step; does not override grace period).
+- `observability` `object` optional
+  - Overrides the root Worker observability configuration for this Container application.
+- `unsafe.configuration.experimental_flags` `string[]` optional
+  - Experimental application flags.
 - `ssh` `object` optional
   - Configuration for SSH through Wrangler. Refer to [SSH](#ssh).
-- `wrangler_ssh` `object` optional deprecated, use \`ssh\`
+- `wrangler_ssh` `object` optional; deprecated, use \`ssh\`
   - Deprecated alias for `ssh`. Still supported for backward compatibility.
 - `authorized_keys` `object[]` optional
   - Public keys that should be added to the Container's `authorized_keys` file.
@@ -1525,6 +1541,7 @@ The following options are available:
 	"containers": [
 		{
 			"class_name": "MyContainer",
+			"scheduling_policy": "default", // Optional, defaults to "default". Cannot be changed after the application is created.
 			"image": "./Dockerfile",
 			"max_instances": 10,
 			"instance_type": "basic", // Optional, defaults to "lite"
@@ -1545,18 +1562,19 @@ The following options are available:
 			},
 		],
 	},
-	"migrations": [
-		{
-			"tag": "v1",
-			"new_sqlite_classes": ["MyContainer"],
+	"exports": {
+		"MyContainer": {
+			"type": "durable-object",
+			"storage": "sqlite",
 		},
-	],
+	},
 }
 ```
 
 ```toml
 [[containers]]
 class_name = "MyContainer"
+scheduling_policy = "default"
 image = "./Dockerfile"
 max_instances = 10
 instance_type = "basic"
@@ -1572,12 +1590,108 @@ instance_type = "basic"
 name = "MY_CONTAINER"
 class_name = "MyContainer"
 
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "MyContainer" ]
+[exports.MyContainer]
+type = "durable-object"
+storage = "sqlite"
 ```
 
-### Custom Instance Types
+### `durable_object` scheduling policy
+
+The `durable_object` policy is in beta. It lets each Durable Object supply its Container image or snapshot and instance size to `ctx.container.start()`. Set `scheduling_policy` to `"durable_object"` explicitly. The linked Durable Object must use SQLite storage.
+
+A `durable_object` entry accepts only the following options. Wrangler rejects every other Container application field for this policy, including `image`, `instance_type`, `max_instances`, rollout settings, and placement constraints.
+
+- `scheduling_policy` `string` required
+  - Must be set to `"durable_object"`.
+- `images` `Record<string, object>` optional
+  - Named images that Durable Object code can access through `ctx.container.images`. A configuration can contain up to 100 named images, and each name must contain 1-128 characters.
+  - Each named image must set exactly one of `dockerfile` or `image`.
+- `images.<name>.dockerfile` `string` conditional
+  - Path to a local Dockerfile. `wrangler deploy` builds and pushes the image.
+- `images.<name>.build_context` `string` optional
+  - Build context, relative to the Wrangler configuration file. Defaults to the directory of `dockerfile`. Only valid with `dockerfile`. Equivalent to `image_build_context` in the `default` policy.
+- `images.<name>.build_vars` `Record<string, string>` optional
+  - Build-time variables, equivalent to `image_vars` in the `default` policy. Only valid with `dockerfile`.
+- `images.<name>.image` `string` conditional
+  - A digest-pinned image reference in the Cloudflare Registry.
+- `class_name` `string` conditional
+  - The corresponding Durable Object class name.
+  - Omit this field when the Container is linked by `name` from `exports.<Class>.container`.
+- `name` `string` conditional
+  - The name of the Container application. Defaults to a combination of your Worker name and the class name.
+  - Required when `class_name` is omitted so that `exports.<Class>.container` can reference the Container.
+- `observability` `object` optional
+  - Set either `observability.enabled` or `observability.logs.enabled` to enable or disable application-wide Container logs.
+  - Instance targeting with `target_instance_count` or `target_instance_percentage` is not supported. If you omit `observability`, Wrangler preserves the application's existing setting instead of inheriting the root Worker setting.
+- `unsafe.configuration.experimental_flags` `string[]` optional
+  - Experimental application flags. This is the only `unsafe` setting accepted with the `durable_object` policy.
+- `ssh` `object` optional
+  - Configuration for SSH through Wrangler. Refer to [SSH](#ssh). The deprecated `wrangler_ssh` alias is not accepted with the `durable_object` policy.
+- `authorized_keys` `object[]` optional
+  - Public keys that should be added to the Container's `authorized_keys` file. Refer to [Authorized keys](#authorized-keys).
+
+Name one or more images and select one from Durable Object code when the Container starts:
+
+```jsonc
+{
+	"containers": [
+		{
+			"class_name": "AgentComputer",
+			"scheduling_policy": "durable_object",
+			"images": {
+				"base": {
+					"dockerfile": "./container/Dockerfile",
+					"build_context": ".",
+					"build_vars": {
+						"APP_ENV": "production",
+					},
+				},
+			},
+		},
+	],
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "AGENT_COMPUTER",
+				"class_name": "AgentComputer",
+			},
+		],
+	},
+	"exports": {
+		"AgentComputer": {
+			"type": "durable-object",
+			"storage": "sqlite",
+		},
+	},
+}
+```
+
+```toml
+[[containers]]
+class_name = "AgentComputer"
+scheduling_policy = "durable_object"
+
+[containers.images.base]
+dockerfile = "./container/Dockerfile"
+build_context = "."
+
+  [containers.images.base.build_vars]
+  APP_ENV = "production"
+
+[[durable_objects.bindings]]
+name = "AGENT_COMPUTER"
+class_name = "AgentComputer"
+
+[exports.AgentComputer]
+type = "durable-object"
+storage = "sqlite"
+```
+
+Configure the startup image or snapshot and instance size in `ctx.container.start()`. Refer to [Scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/) for a code example.
+
+### Custom instance types
+
+In Wrangler configuration, custom instance types apply only to the `default` scheduling policy. With the `durable_object` policy, pass a custom instance object to `ctx.container.start()` instead. Refer to [Scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/).
 
 In place of the [named instance types](https://developers.cloudflare.com/containers/platform/limits/#instance-types), you can set a custom instance type by individually configuring vCPU, memory, and disk. See the [limits documentation](https://developers.cloudflare.com/containers/platform/limits/#custom-instance-types) for constraints on custom instance types.
 
@@ -1597,7 +1711,7 @@ The following options are available:
 			"image": "./Dockerfile",
 			"instance_type": {
 				"vcpu": 1,
-				"memory_mib": 1024,
+				"memory_mib": 3072,
 				"disk_mb": 4000,
 			},
 		},
@@ -1611,13 +1725,13 @@ image = "./Dockerfile"
 
   [containers.instance_type]
   vcpu = 1
-  memory_mib = 1_024
+  memory_mib = 3_072
   disk_mb = 4_000
 ```
 
 ### SSH
 
-Configuration for SSH access to a Container instance through Wrangler. For a guide on connecting to Containers via SSH, refer to [SSH](https://developers.cloudflare.com/containers/guides/ssh/).
+Configuration for SSH access to a Container instance through Wrangler. SSH configuration applies to both the `default` and `durable_object` scheduling policies. For a guide on connecting to Containers via SSH, refer to [SSH](https://developers.cloudflare.com/containers/guides/ssh/).
 
 The following options are available:
 
@@ -2150,5 +2264,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai/related-products/og.png?v=e2eabf2d33
 
 # Related products
 
-Last updated Sep 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/related-products/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/related-products/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Workers AI](https://developers.cloudflare.com/workers-ai/)
 
@@ -50,9 +50,9 @@ An AI-powered assistant that helps you navigate, configure, and manage Cloudflar
 
 Spin up isolated Workers on demand to execute code.
 
-[Sandbox SDK](https://developers.cloudflare.com/sandbox-sdk/)
+[Sandboxes](https://developers.cloudflare.com/sandbox/)
 
-Build secure, isolated code execution environments.
+Run untrusted or generated code in isolated Workers or Linux virtual machines.
 
 Was this helpful?
 
@@ -63,5 +63,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai/related-products/#page","headline":"Related products","description":"Explore Cloudflare products that complement AI, including Workers AI, AI Gateway, Vectorize, and more.","url":"https://developers.cloudflare.com/ai/related-products/","inLanguage":"en","image":"https://developers.cloudflare.com/ai/related-products/og.png?v=e2eabf2d333ed6f6","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai/related-products/#page","headline":"Related products","description":"Explore Cloudflare products that complement AI, including Workers AI, AI Gateway, Vectorize, and more.","url":"https://developers.cloudflare.com/ai/related-products/","inLanguage":"en","image":"https://developers.cloudflare.com/ai/related-products/og.png?v=e2eabf2d333ed6f6","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

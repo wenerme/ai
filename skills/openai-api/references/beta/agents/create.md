@@ -352,6 +352,20 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         Searches the live web.
 
+  - `ComputerUse object { type, include_screenshots }`
+
+    Browser use in an OpenAI-hosted session.
+
+    - `type: "computer_use"`
+
+      The type of the object. Always `computer_use`.
+
+      - `"computer_use"`
+
+    - `include_screenshots: optional boolean`
+
+      Whether computer tool outputs include screenshots. Defaults to `false`.
+
 ### Returns
 
 - `Agent object { id, created_at, instructions, 10 more }`
@@ -689,6 +703,20 @@ Creates a reusable agent without storing credentials. See [agent configuration](
         The type of the object. Always `web_search`.
 
         - `"web_search"`
+
+    - `ComputerUse object { include_screenshots, type }`
+
+      Browser use in an OpenAI-hosted session.
+
+      - `include_screenshots: boolean`
+
+        Whether computer tool outputs include screenshots.
+
+      - `type: "computer_use"`
+
+        The type of the object. Always `computer_use`.
+
+        - `"computer_use"`
 
   - `updated_at: number`
 

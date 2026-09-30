@@ -13,7 +13,7 @@
 
 For more information, see [scopes](_index.md#scopes).
 
-## Query fields
+## Query filters
 
 Use these fields in the `query` parameter to filter your results.
 

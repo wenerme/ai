@@ -36,6 +36,7 @@ This table lists the default model for each feature in the Agent Platform.
 - Claude Sonnet 4.5 as a supported model for Code Review Flow [deprecated](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6483) on August 10, 2026 and [removed](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6621) on August 25, 2026.
 - GLM 5.3, Kimi K3, and MiniMax M3 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/6930) as supported models for GitLab Duo Agentic Chat and all other agents on September 16, 2026.
 - GPT-6 Sol and GPT-6 Luna [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7062) as supported models for GitLab Duo Agentic Chat and all other agents on September 22, 2026.
+- Claude Sonnet 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7129) as a supported model for GitLab Duo Agentic Chat and all other agents on September 28, 2026.
 
 This table lists the models you can select for features
 in the Agent Platform.
@@ -47,6 +48,7 @@ in the Agent Platform.
 | Claude Sonnet 4.5           | Yes             | No      | Yes          | Yes      |
 | Claude Sonnet 4.6           | Yes             | Yes      | Yes          | Yes      |
 | Claude Sonnet 5             | Yes             | Yes      | No           | Yes      |
+| Claude Sonnet 5.5           | Yes             | No       | No           | Yes      |
 | Claude Haiku 4.5            | Yes             | No       | No           | Yes      |
 | Claude Opus 4.5             | Yes             | No       | No           | Yes      |
 | Claude Opus 4.6             | Yes             | No       | No           | Yes      |

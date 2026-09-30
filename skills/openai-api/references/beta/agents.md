@@ -354,6 +354,20 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
         Searches the live web.
 
+  - `ComputerUse object { type, include_screenshots }`
+
+    Browser use in an OpenAI-hosted session.
+
+    - `type: "computer_use"`
+
+      The type of the object. Always `computer_use`.
+
+      - `"computer_use"`
+
+    - `include_screenshots: optional boolean`
+
+      Whether computer tool outputs include screenshots. Defaults to `false`.
+
 ### Returns
 
 - `Agent object { id, created_at, instructions, 10 more }`
@@ -691,6 +705,20 @@ Creates a reusable agent without storing credentials. See [agent configuration](
         The type of the object. Always `web_search`.
 
         - `"web_search"`
+
+    - `ComputerUse object { include_screenshots, type }`
+
+      Browser use in an OpenAI-hosted session.
+
+      - `include_screenshots: boolean`
+
+        Whether computer tool outputs include screenshots.
+
+      - `type: "computer_use"`
+
+        The type of the object. Always `computer_use`.
+
+        - `"computer_use"`
 
   - `updated_at: number`
 
@@ -1166,6 +1194,20 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
         - `"web_search"`
 
+    - `ComputerUse object { include_screenshots, type }`
+
+      Browser use in an OpenAI-hosted session.
+
+      - `include_screenshots: boolean`
+
+        Whether computer tool outputs include screenshots.
+
+      - `type: "computer_use"`
+
+        The type of the object. Always `computer_use`.
+
+        - `"computer_use"`
+
   - `updated_at: number`
 
     The Unix timestamp, in seconds, when the agent was last updated.
@@ -1595,6 +1637,20 @@ Retrieves a reusable agent by ID. See [agent configuration](/api/docs/guides/age
 
         - `"web_search"`
 
+    - `ComputerUse object { include_screenshots, type }`
+
+      Browser use in an OpenAI-hosted session.
+
+      - `include_screenshots: boolean`
+
+        Whether computer tool outputs include screenshots.
+
+      - `type: "computer_use"`
+
+        The type of the object. Always `computer_use`.
+
+        - `"computer_use"`
+
   - `updated_at: number`
 
     The Unix timestamp, in seconds, when the agent was last updated.
@@ -2008,6 +2064,20 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
         Searches the live web.
 
+  - `ComputerUse object { type, include_screenshots }`
+
+    Browser use in an OpenAI-hosted session.
+
+    - `type: "computer_use"`
+
+      The type of the object. Always `computer_use`.
+
+      - `"computer_use"`
+
+    - `include_screenshots: optional boolean`
+
+      Whether computer tool outputs include screenshots. Defaults to `false`.
+
 ### Returns
 
 - `Agent object { id, created_at, instructions, 10 more }`
@@ -2345,6 +2415,20 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
         The type of the object. Always `web_search`.
 
         - `"web_search"`
+
+    - `ComputerUse object { include_screenshots, type }`
+
+      Browser use in an OpenAI-hosted session.
+
+      - `include_screenshots: boolean`
+
+        Whether computer tool outputs include screenshots.
+
+      - `type: "computer_use"`
+
+        The type of the object. Always `computer_use`.
+
+        - `"computer_use"`
 
   - `updated_at: number`
 
@@ -2742,9 +2826,87 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         - `"web_search"`
 
+    - `ComputerUse object { include_screenshots, type }`
+
+      Browser use in an OpenAI-hosted session.
+
+      - `include_screenshots: boolean`
+
+        Whether computer tool outputs include screenshots.
+
+      - `type: "computer_use"`
+
+        The type of the object. Always `computer_use`.
+
+        - `"computer_use"`
+
   - `updated_at: number`
 
     The Unix timestamp, in seconds, when the agent was last updated.
+
+### Agent Browser Authentication Cancel Param
+
+- `AgentBrowserAuthenticationCancelParam object { action, type }`
+
+  - `action: "cancel"`
+
+    - `"cancel"`
+
+  - `type: "browser_authentication"`
+
+    - `"browser_authentication"`
+
+### Agent Browser Authentication Submit Param
+
+- `AgentBrowserAuthenticationSubmitParam object { action, fields, type, selected_option }`
+
+  - `action: "submit"`
+
+    - `"submit"`
+
+  - `fields: array of object { field_id, value }`
+
+    Values for up to six active fields in the required action. The submitted field-value mapping and selected option must fit within 120 KiB of JSON.
+
+    - `field_id: string`
+
+      The field ID from the required action.
+
+    - `value: string`
+
+      The value to enter into the registered control.
+
+  - `type: "browser_authentication"`
+
+    - `"browser_authentication"`
+
+  - `selected_option: optional string or null`
+
+    The chosen method. Required when the required action contains options.
+
+### Agent Browser Origin Access Param
+
+- `AgentBrowserOriginAccessParam object { decision, type }`
+
+  - `decision: "approve" or "deny" or "cancel"`
+
+    Whether to allow, deny, or cancel the requested origin access.
+
+    - `"approve"`
+
+      Allow the browser to access this origin.
+
+    - `"deny"`
+
+      Deny access to this origin.
+
+    - `"cancel"`
+
+      Dismiss this request without approving access.
+
+  - `type: "browser_origin_access"`
+
+    - `"browser_origin_access"`
 
 ### Agent Close Subagent Call Item
 
@@ -3294,7 +3456,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
 ### Agent Output Item
 
-- `AgentOutputItem = AgentSessionAssistantMessage or AgentReasoningItem or AgentFunctionCallItem or 9 more`
+- `AgentOutputItem = AgentSessionAssistantMessage or AgentReasoningItem or AgentFunctionCallItem or 11 more`
 
   An output item produced by an agent.
 
@@ -3491,6 +3653,118 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
       The item type. Always `mcp_call`.
 
       - `"mcp_call"`
+
+  - `ComputerUseCall object { id, output, status, 3 more }`
+
+    One execution of the platform-provided computer-use capability.
+
+    - `id: string`
+
+      The ID of the activity item.
+
+    - `output: object { image_url, type }  or null`
+
+      The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+      - `image_url: string`
+
+        The complete JPEG image as a base64 data URL.
+
+      - `type: "computer_screenshot"`
+
+        The content type. Always `computer_screenshot`.
+
+        - `"computer_screenshot"`
+
+    - `status: AgentFunctionCallStatus`
+
+      The execution status of the activity.
+
+    - `title: string or null`
+
+      A model-generated description of the activity, when available.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_call"`
+
+      The item type. Always `computer_use_call`.
+
+      - `"computer_use_call"`
+
+  - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+    A credential-free history record of the emitted login request.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request: object { credential_origin, fields, options, 2 more }`
+
+      A registered form awaiting the application's response.
+
+      - `credential_origin: string or null`
+
+        The registered form or frame origin where values will be entered.
+
+      - `fields: array of object { id, label, required, type }`
+
+        Controls to render. All submitted values are sensitive.
+
+        - `id: string`
+
+          The field ID to submit as field_id in a fields entry.
+
+        - `label: string`
+
+          The label to display beside the control.
+
+        - `required: boolean`
+
+          Whether this control requires a nonempty value.
+
+        - `type: string`
+
+          The rendering type, such as email, password, or text.
+
+      - `options: array of object { id, field_ids, label }`
+
+        Sign-in methods. Empty for a plain form.
+
+        - `id: string`
+
+          The option ID to submit as selected_option.
+
+        - `field_ids: array of string`
+
+          IDs from the registered fields that this method accepts.
+
+        - `label: string`
+
+          The method label to display.
+
+      - `reason: string or null`
+
+        Why the agent needs the user to sign in.
+
+      - `type: "browser_authentication"`
+
+        The type of the object. Always `browser_authentication`.
+
+        - `"browser_authentication"`
+
+    - `request_id: string`
+
+    - `turn_id: string`
+
+    - `type: "computer_use_approval_request"`
+
+      The item type. Always computer_use_approval_request.
+
+      - `"computer_use_approval_request"`
 
   - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 
@@ -4456,6 +4730,20 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"web_search"`
 
+      - `ComputerUse object { include_screenshots, type }`
+
+        Browser use in an OpenAI-hosted session.
+
+        - `include_screenshots: boolean`
+
+          Whether computer tool outputs include screenshots.
+
+        - `type: "computer_use"`
+
+          The type of the object. Always `computer_use`.
+
+          - `"computer_use"`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the session was created.
@@ -4474,7 +4762,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         - `"none"`
 
-    - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+    - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
       An environment hosted by OpenAI.
 
@@ -4485,6 +4773,14 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
       - `capability_directories: array of string`
 
         Directories that contain capabilities exposed to the agent.
+
+      - `desktop: object { enabled }`
+
+        The effective desktop configuration.
+
+        - `enabled: boolean`
+
+          Whether the environment provisions a desktop and browser proxy.
 
       - `files: array of HostedEnvironmentFile`
 
@@ -4556,7 +4852,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"restricted"`
 
-            Allows access only to configured domains.
+            Applies the configured domain restrictions.
 
         - `allowed_domains: array of string`
 
@@ -4650,6 +4946,16 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         - `"openai_hosted"`
 
+      - `container_size: optional "small" or "medium" or "large" or null`
+
+        The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+        - `"small"`
+
+        - `"medium"`
+
+        - `"large"`
+
     - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
       An environment hosted by the application.
@@ -4694,9 +5000,103 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
     - `"agent.session"`
 
-  - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
     Actions that must be completed before the session can continue.
+
+    - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+      Respond to a computer-use request.
+
+      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+        The information needed to render the request.
+
+        - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+          A registered form awaiting the application's response.
+
+          - `credential_origin: string or null`
+
+            The registered form or frame origin where values will be entered.
+
+          - `fields: array of object { id, label, required, type }`
+
+            Controls to render. All submitted values are sensitive.
+
+            - `id: string`
+
+              The field ID to submit as field_id in a fields entry.
+
+            - `label: string`
+
+              The label to display beside the control.
+
+            - `required: boolean`
+
+              Whether this control requires a nonempty value.
+
+            - `type: string`
+
+              The rendering type, such as email, password, or text.
+
+          - `options: array of object { id, field_ids, label }`
+
+            Sign-in methods. Empty for a plain form.
+
+            - `id: string`
+
+              The option ID to submit as selected_option.
+
+            - `field_ids: array of string`
+
+              IDs from the registered fields that this method accepts.
+
+            - `label: string`
+
+              The method label to display.
+
+          - `reason: string or null`
+
+            Why the agent needs the user to sign in.
+
+          - `type: "browser_authentication"`
+
+            The type of the object. Always `browser_authentication`.
+
+            - `"browser_authentication"`
+
+        - `BrowserOriginAccess object { origin, reason, type }`
+
+          A browser origin awaiting the application's approval decision.
+
+          - `origin: string`
+
+            The origin the browser needs permission to access.
+
+          - `reason: string or null`
+
+            The browser's explanation for this request, or null when unavailable.
+
+          - `type: "browser_origin_access"`
+
+            The type of the object. Always `browser_origin_access`.
+
+            - `"browser_origin_access"`
+
+      - `request_id: string`
+
+        The registered request ID to echo when responding.
+
+      - `turn_id: string`
+
+        The turn that requested approval.
+
+      - `type: "computer_use_approval_request"`
+
+        The type of the object. Always `computer_use_approval_request`.
+
+        - `"computer_use_approval_request"`
 
     - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -5188,6 +5588,20 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"web_search"`
 
+        - `ComputerUse object { include_screenshots, type }`
+
+          Browser use in an OpenAI-hosted session.
+
+          - `include_screenshots: boolean`
+
+            Whether computer tool outputs include screenshots.
+
+          - `type: "computer_use"`
+
+            The type of the object. Always `computer_use`.
+
+            - `"computer_use"`
+
     - `created_at: number`
 
       The Unix timestamp, in seconds, when the session was created.
@@ -5206,7 +5620,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"none"`
 
-      - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+      - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
         An environment hosted by OpenAI.
 
@@ -5217,6 +5631,14 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `capability_directories: array of string`
 
           Directories that contain capabilities exposed to the agent.
+
+        - `desktop: object { enabled }`
+
+          The effective desktop configuration.
+
+          - `enabled: boolean`
+
+            Whether the environment provisions a desktop and browser proxy.
 
         - `files: array of HostedEnvironmentFile`
 
@@ -5288,7 +5710,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"restricted"`
 
-              Allows access only to configured domains.
+              Applies the configured domain restrictions.
 
           - `allowed_domains: array of string`
 
@@ -5382,6 +5804,16 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"openai_hosted"`
 
+        - `container_size: optional "small" or "medium" or "large" or null`
+
+          The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+          - `"small"`
+
+          - `"medium"`
+
+          - `"large"`
+
       - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
         An environment hosted by the application.
@@ -5426,9 +5858,103 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
       Actions that must be completed before the session can continue.
+
+      - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+        Respond to a computer-use request.
+
+        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+          The information needed to render the request.
+
+          - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+            A registered form awaiting the application's response.
+
+            - `credential_origin: string or null`
+
+              The registered form or frame origin where values will be entered.
+
+            - `fields: array of object { id, label, required, type }`
+
+              Controls to render. All submitted values are sensitive.
+
+              - `id: string`
+
+                The field ID to submit as field_id in a fields entry.
+
+              - `label: string`
+
+                The label to display beside the control.
+
+              - `required: boolean`
+
+                Whether this control requires a nonempty value.
+
+              - `type: string`
+
+                The rendering type, such as email, password, or text.
+
+            - `options: array of object { id, field_ids, label }`
+
+              Sign-in methods. Empty for a plain form.
+
+              - `id: string`
+
+                The option ID to submit as selected_option.
+
+              - `field_ids: array of string`
+
+                IDs from the registered fields that this method accepts.
+
+              - `label: string`
+
+                The method label to display.
+
+            - `reason: string or null`
+
+              Why the agent needs the user to sign in.
+
+            - `type: "browser_authentication"`
+
+              The type of the object. Always `browser_authentication`.
+
+              - `"browser_authentication"`
+
+          - `BrowserOriginAccess object { origin, reason, type }`
+
+            A browser origin awaiting the application's approval decision.
+
+            - `origin: string`
+
+              The origin the browser needs permission to access.
+
+            - `reason: string or null`
+
+              The browser's explanation for this request, or null when unavailable.
+
+            - `type: "browser_origin_access"`
+
+              The type of the object. Always `browser_origin_access`.
+
+              - `"browser_origin_access"`
+
+        - `request_id: string`
+
+          The registered request ID to echo when responding.
+
+        - `turn_id: string`
+
+          The turn that requested approval.
+
+        - `type: "computer_use_approval_request"`
+
+          The type of the object. Always `computer_use_approval_request`.
+
+          - `"computer_use_approval_request"`
 
       - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -6564,6 +7090,20 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
               - `"web_search"`
 
+          - `ComputerUse object { include_screenshots, type }`
+
+            Browser use in an OpenAI-hosted session.
+
+            - `include_screenshots: boolean`
+
+              Whether computer tool outputs include screenshots.
+
+            - `type: "computer_use"`
+
+              The type of the object. Always `computer_use`.
+
+              - `"computer_use"`
+
       - `created_at: number`
 
         The Unix timestamp, in seconds, when the session was created.
@@ -6582,7 +7122,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"none"`
 
-        - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+        - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
           An environment hosted by OpenAI.
 
@@ -6593,6 +7133,14 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
           - `capability_directories: array of string`
 
             Directories that contain capabilities exposed to the agent.
+
+          - `desktop: object { enabled }`
+
+            The effective desktop configuration.
+
+            - `enabled: boolean`
+
+              Whether the environment provisions a desktop and browser proxy.
 
           - `files: array of HostedEnvironmentFile`
 
@@ -6664,7 +7212,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
               - `"restricted"`
 
-                Allows access only to configured domains.
+                Applies the configured domain restrictions.
 
             - `allowed_domains: array of string`
 
@@ -6758,6 +7306,16 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"openai_hosted"`
 
+          - `container_size: optional "small" or "medium" or "large" or null`
+
+            The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+            - `"small"`
+
+            - `"medium"`
+
+            - `"large"`
+
         - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
           An environment hosted by the application.
@@ -6802,9 +7360,103 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         - `"agent.session"`
 
-      - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+      - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
         Actions that must be completed before the session can continue.
+
+        - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+          Respond to a computer-use request.
+
+          - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+            The information needed to render the request.
+
+            - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+              A registered form awaiting the application's response.
+
+              - `credential_origin: string or null`
+
+                The registered form or frame origin where values will be entered.
+
+              - `fields: array of object { id, label, required, type }`
+
+                Controls to render. All submitted values are sensitive.
+
+                - `id: string`
+
+                  The field ID to submit as field_id in a fields entry.
+
+                - `label: string`
+
+                  The label to display beside the control.
+
+                - `required: boolean`
+
+                  Whether this control requires a nonempty value.
+
+                - `type: string`
+
+                  The rendering type, such as email, password, or text.
+
+              - `options: array of object { id, field_ids, label }`
+
+                Sign-in methods. Empty for a plain form.
+
+                - `id: string`
+
+                  The option ID to submit as selected_option.
+
+                - `field_ids: array of string`
+
+                  IDs from the registered fields that this method accepts.
+
+                - `label: string`
+
+                  The method label to display.
+
+              - `reason: string or null`
+
+                Why the agent needs the user to sign in.
+
+              - `type: "browser_authentication"`
+
+                The type of the object. Always `browser_authentication`.
+
+                - `"browser_authentication"`
+
+            - `BrowserOriginAccess object { origin, reason, type }`
+
+              A browser origin awaiting the application's approval decision.
+
+              - `origin: string`
+
+                The origin the browser needs permission to access.
+
+              - `reason: string or null`
+
+                The browser's explanation for this request, or null when unavailable.
+
+              - `type: "browser_origin_access"`
+
+                The type of the object. Always `browser_origin_access`.
+
+                - `"browser_origin_access"`
+
+          - `request_id: string`
+
+            The registered request ID to echo when responding.
+
+          - `turn_id: string`
+
+            The turn that requested approval.
+
+          - `type: "computer_use_approval_request"`
+
+            The type of the object. Always `computer_use_approval_request`.
+
+            - `"computer_use_approval_request"`
 
         - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -7568,6 +8220,166 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"mcp_call"`
 
+      - `ComputerUseCall object { id, output, status, 3 more }`
+
+        One execution of the platform-provided computer-use capability.
+
+        - `id: string`
+
+          The ID of the activity item.
+
+        - `output: object { image_url, type }  or null`
+
+          The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+          - `image_url: string`
+
+            The complete JPEG image as a base64 data URL.
+
+          - `type: "computer_screenshot"`
+
+            The content type. Always `computer_screenshot`.
+
+            - `"computer_screenshot"`
+
+        - `status: AgentFunctionCallStatus`
+
+          The execution status of the activity.
+
+        - `title: string or null`
+
+          A model-generated description of the activity, when available.
+
+        - `turn_id: string`
+
+          The ID of the turn that contains this item.
+
+        - `type: "computer_use_call"`
+
+          The item type. Always `computer_use_call`.
+
+          - `"computer_use_call"`
+
+      - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+        A credential-free history record of the emitted login request.
+
+        - `id: string`
+
+          The stable history item ID.
+
+        - `request: object { credential_origin, fields, options, 2 more }`
+
+          A registered form awaiting the application's response.
+
+          - `credential_origin: string or null`
+
+            The registered form or frame origin where values will be entered.
+
+          - `fields: array of object { id, label, required, type }`
+
+            Controls to render. All submitted values are sensitive.
+
+            - `id: string`
+
+              The field ID to submit as field_id in a fields entry.
+
+            - `label: string`
+
+              The label to display beside the control.
+
+            - `required: boolean`
+
+              Whether this control requires a nonempty value.
+
+            - `type: string`
+
+              The rendering type, such as email, password, or text.
+
+          - `options: array of object { id, field_ids, label }`
+
+            Sign-in methods. Empty for a plain form.
+
+            - `id: string`
+
+              The option ID to submit as selected_option.
+
+            - `field_ids: array of string`
+
+              IDs from the registered fields that this method accepts.
+
+            - `label: string`
+
+              The method label to display.
+
+          - `reason: string or null`
+
+            Why the agent needs the user to sign in.
+
+          - `type: "browser_authentication"`
+
+            The type of the object. Always `browser_authentication`.
+
+            - `"browser_authentication"`
+
+        - `request_id: string`
+
+        - `turn_id: string`
+
+        - `type: "computer_use_approval_request"`
+
+          The item type. Always computer_use_approval_request.
+
+          - `"computer_use_approval_request"`
+
+      - `ComputerUseApprovalRequestResult object { id, request_id, response, 2 more }`
+
+        A credential-free record of an admitted response, not proof of completion.
+
+        - `id: string`
+
+          The stable history item ID.
+
+        - `request_id: string`
+
+          The registered request answered by this item.
+
+        - `response: object { action, selected_option, type }  or object { action, type }`
+
+          The admitted response, without submitted credential values.
+
+          - `Submit object { action, selected_option, type }`
+
+            - `action: "submit"`
+
+              - `"submit"`
+
+            - `selected_option: string or null`
+
+              The chosen sign-in method, or null when no options were offered.
+
+            - `type: "browser_authentication"`
+
+              - `"browser_authentication"`
+
+          - `Cancel object { action, type }`
+
+            - `action: "cancel"`
+
+              - `"cancel"`
+
+            - `type: "browser_authentication"`
+
+              - `"browser_authentication"`
+
+        - `turn_id: string`
+
+          The ID of the turn that contains this item.
+
+        - `type: "computer_use_approval_request_result"`
+
+          - `"computer_use_approval_request_result"`
+
       - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 
         A web search call produced by the agent.
@@ -8294,6 +9106,118 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         A call to a tool on an MCP server.
 
+      - `ComputerUseCall object { id, output, status, 3 more }`
+
+        One execution of the platform-provided computer-use capability.
+
+        - `id: string`
+
+          The ID of the activity item.
+
+        - `output: object { image_url, type }  or null`
+
+          The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+          - `image_url: string`
+
+            The complete JPEG image as a base64 data URL.
+
+          - `type: "computer_screenshot"`
+
+            The content type. Always `computer_screenshot`.
+
+            - `"computer_screenshot"`
+
+        - `status: AgentFunctionCallStatus`
+
+          The execution status of the activity.
+
+        - `title: string or null`
+
+          A model-generated description of the activity, when available.
+
+        - `turn_id: string`
+
+          The ID of the turn that contains this item.
+
+        - `type: "computer_use_call"`
+
+          The item type. Always `computer_use_call`.
+
+          - `"computer_use_call"`
+
+      - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+        A credential-free history record of the emitted login request.
+
+        - `id: string`
+
+          The stable history item ID.
+
+        - `request: object { credential_origin, fields, options, 2 more }`
+
+          A registered form awaiting the application's response.
+
+          - `credential_origin: string or null`
+
+            The registered form or frame origin where values will be entered.
+
+          - `fields: array of object { id, label, required, type }`
+
+            Controls to render. All submitted values are sensitive.
+
+            - `id: string`
+
+              The field ID to submit as field_id in a fields entry.
+
+            - `label: string`
+
+              The label to display beside the control.
+
+            - `required: boolean`
+
+              Whether this control requires a nonempty value.
+
+            - `type: string`
+
+              The rendering type, such as email, password, or text.
+
+          - `options: array of object { id, field_ids, label }`
+
+            Sign-in methods. Empty for a plain form.
+
+            - `id: string`
+
+              The option ID to submit as selected_option.
+
+            - `field_ids: array of string`
+
+              IDs from the registered fields that this method accepts.
+
+            - `label: string`
+
+              The method label to display.
+
+          - `reason: string or null`
+
+            Why the agent needs the user to sign in.
+
+          - `type: "browser_authentication"`
+
+            The type of the object. Always `browser_authentication`.
+
+            - `"browser_authentication"`
+
+        - `request_id: string`
+
+        - `turn_id: string`
+
+        - `type: "computer_use_approval_request"`
+
+          The item type. Always computer_use_approval_request.
+
+          - `"computer_use_approval_request"`
+
       - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 
         A web search call produced by the agent.
@@ -8988,6 +9912,20 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"web_search"`
 
+        - `ComputerUse object { include_screenshots, type }`
+
+          Browser use in an OpenAI-hosted session.
+
+          - `include_screenshots: boolean`
+
+            Whether computer tool outputs include screenshots.
+
+          - `type: "computer_use"`
+
+            The type of the object. Always `computer_use`.
+
+            - `"computer_use"`
+
     - `created_at: number`
 
       The Unix timestamp, in seconds, when the session was created.
@@ -9006,7 +9944,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"none"`
 
-      - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+      - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
         An environment hosted by OpenAI.
 
@@ -9017,6 +9955,14 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `capability_directories: array of string`
 
           Directories that contain capabilities exposed to the agent.
+
+        - `desktop: object { enabled }`
+
+          The effective desktop configuration.
+
+          - `enabled: boolean`
+
+            Whether the environment provisions a desktop and browser proxy.
 
         - `files: array of HostedEnvironmentFile`
 
@@ -9088,7 +10034,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"restricted"`
 
-              Allows access only to configured domains.
+              Applies the configured domain restrictions.
 
           - `allowed_domains: array of string`
 
@@ -9182,6 +10128,16 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"openai_hosted"`
 
+        - `container_size: optional "small" or "medium" or "large" or null`
+
+          The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+          - `"small"`
+
+          - `"medium"`
+
+          - `"large"`
+
       - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
         An environment hosted by the application.
@@ -9226,9 +10182,103 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
       Actions that must be completed before the session can continue.
+
+      - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+        Respond to a computer-use request.
+
+        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+          The information needed to render the request.
+
+          - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+            A registered form awaiting the application's response.
+
+            - `credential_origin: string or null`
+
+              The registered form or frame origin where values will be entered.
+
+            - `fields: array of object { id, label, required, type }`
+
+              Controls to render. All submitted values are sensitive.
+
+              - `id: string`
+
+                The field ID to submit as field_id in a fields entry.
+
+              - `label: string`
+
+                The label to display beside the control.
+
+              - `required: boolean`
+
+                Whether this control requires a nonempty value.
+
+              - `type: string`
+
+                The rendering type, such as email, password, or text.
+
+            - `options: array of object { id, field_ids, label }`
+
+              Sign-in methods. Empty for a plain form.
+
+              - `id: string`
+
+                The option ID to submit as selected_option.
+
+              - `field_ids: array of string`
+
+                IDs from the registered fields that this method accepts.
+
+              - `label: string`
+
+                The method label to display.
+
+            - `reason: string or null`
+
+              Why the agent needs the user to sign in.
+
+            - `type: "browser_authentication"`
+
+              The type of the object. Always `browser_authentication`.
+
+              - `"browser_authentication"`
+
+          - `BrowserOriginAccess object { origin, reason, type }`
+
+            A browser origin awaiting the application's approval decision.
+
+            - `origin: string`
+
+              The origin the browser needs permission to access.
+
+            - `reason: string or null`
+
+              The browser's explanation for this request, or null when unavailable.
+
+            - `type: "browser_origin_access"`
+
+              The type of the object. Always `browser_origin_access`.
+
+              - `"browser_origin_access"`
+
+        - `request_id: string`
+
+          The registered request ID to echo when responding.
+
+        - `turn_id: string`
+
+          The turn that requested approval.
+
+        - `type: "computer_use_approval_request"`
+
+          The type of the object. Always `computer_use_approval_request`.
+
+          - `"computer_use_approval_request"`
 
       - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -9658,6 +10708,20 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"web_search"`
 
+        - `ComputerUse object { include_screenshots, type }`
+
+          Browser use in an OpenAI-hosted session.
+
+          - `include_screenshots: boolean`
+
+            Whether computer tool outputs include screenshots.
+
+          - `type: "computer_use"`
+
+            The type of the object. Always `computer_use`.
+
+            - `"computer_use"`
+
     - `created_at: number`
 
       The Unix timestamp, in seconds, when the session was created.
@@ -9676,7 +10740,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"none"`
 
-      - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+      - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
         An environment hosted by OpenAI.
 
@@ -9687,6 +10751,14 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `capability_directories: array of string`
 
           Directories that contain capabilities exposed to the agent.
+
+        - `desktop: object { enabled }`
+
+          The effective desktop configuration.
+
+          - `enabled: boolean`
+
+            Whether the environment provisions a desktop and browser proxy.
 
         - `files: array of HostedEnvironmentFile`
 
@@ -9758,7 +10830,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"restricted"`
 
-              Allows access only to configured domains.
+              Applies the configured domain restrictions.
 
           - `allowed_domains: array of string`
 
@@ -9852,6 +10924,16 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"openai_hosted"`
 
+        - `container_size: optional "small" or "medium" or "large" or null`
+
+          The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+          - `"small"`
+
+          - `"medium"`
+
+          - `"large"`
+
       - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
         An environment hosted by the application.
@@ -9896,9 +10978,103 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
       Actions that must be completed before the session can continue.
+
+      - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+        Respond to a computer-use request.
+
+        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+          The information needed to render the request.
+
+          - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+            A registered form awaiting the application's response.
+
+            - `credential_origin: string or null`
+
+              The registered form or frame origin where values will be entered.
+
+            - `fields: array of object { id, label, required, type }`
+
+              Controls to render. All submitted values are sensitive.
+
+              - `id: string`
+
+                The field ID to submit as field_id in a fields entry.
+
+              - `label: string`
+
+                The label to display beside the control.
+
+              - `required: boolean`
+
+                Whether this control requires a nonempty value.
+
+              - `type: string`
+
+                The rendering type, such as email, password, or text.
+
+            - `options: array of object { id, field_ids, label }`
+
+              Sign-in methods. Empty for a plain form.
+
+              - `id: string`
+
+                The option ID to submit as selected_option.
+
+              - `field_ids: array of string`
+
+                IDs from the registered fields that this method accepts.
+
+              - `label: string`
+
+                The method label to display.
+
+            - `reason: string or null`
+
+              Why the agent needs the user to sign in.
+
+            - `type: "browser_authentication"`
+
+              The type of the object. Always `browser_authentication`.
+
+              - `"browser_authentication"`
+
+          - `BrowserOriginAccess object { origin, reason, type }`
+
+            A browser origin awaiting the application's approval decision.
+
+            - `origin: string`
+
+              The origin the browser needs permission to access.
+
+            - `reason: string or null`
+
+              The browser's explanation for this request, or null when unavailable.
+
+            - `type: "browser_origin_access"`
+
+              The type of the object. Always `browser_origin_access`.
+
+              - `"browser_origin_access"`
+
+        - `request_id: string`
+
+          The registered request ID to echo when responding.
+
+        - `turn_id: string`
+
+          The turn that requested approval.
+
+        - `type: "computer_use_approval_request"`
+
+          The type of the object. Always `computer_use_approval_request`.
+
+          - `"computer_use_approval_request"`
 
       - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -10328,6 +11504,20 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"web_search"`
 
+        - `ComputerUse object { include_screenshots, type }`
+
+          Browser use in an OpenAI-hosted session.
+
+          - `include_screenshots: boolean`
+
+            Whether computer tool outputs include screenshots.
+
+          - `type: "computer_use"`
+
+            The type of the object. Always `computer_use`.
+
+            - `"computer_use"`
+
     - `created_at: number`
 
       The Unix timestamp, in seconds, when the session was created.
@@ -10346,7 +11536,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"none"`
 
-      - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+      - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
         An environment hosted by OpenAI.
 
@@ -10357,6 +11547,14 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `capability_directories: array of string`
 
           Directories that contain capabilities exposed to the agent.
+
+        - `desktop: object { enabled }`
+
+          The effective desktop configuration.
+
+          - `enabled: boolean`
+
+            Whether the environment provisions a desktop and browser proxy.
 
         - `files: array of HostedEnvironmentFile`
 
@@ -10428,7 +11626,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"restricted"`
 
-              Allows access only to configured domains.
+              Applies the configured domain restrictions.
 
           - `allowed_domains: array of string`
 
@@ -10522,6 +11720,16 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"openai_hosted"`
 
+        - `container_size: optional "small" or "medium" or "large" or null`
+
+          The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+          - `"small"`
+
+          - `"medium"`
+
+          - `"large"`
+
       - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
         An environment hosted by the application.
@@ -10566,9 +11774,103 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
       Actions that must be completed before the session can continue.
+
+      - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+        Respond to a computer-use request.
+
+        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+          The information needed to render the request.
+
+          - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+            A registered form awaiting the application's response.
+
+            - `credential_origin: string or null`
+
+              The registered form or frame origin where values will be entered.
+
+            - `fields: array of object { id, label, required, type }`
+
+              Controls to render. All submitted values are sensitive.
+
+              - `id: string`
+
+                The field ID to submit as field_id in a fields entry.
+
+              - `label: string`
+
+                The label to display beside the control.
+
+              - `required: boolean`
+
+                Whether this control requires a nonempty value.
+
+              - `type: string`
+
+                The rendering type, such as email, password, or text.
+
+            - `options: array of object { id, field_ids, label }`
+
+              Sign-in methods. Empty for a plain form.
+
+              - `id: string`
+
+                The option ID to submit as selected_option.
+
+              - `field_ids: array of string`
+
+                IDs from the registered fields that this method accepts.
+
+              - `label: string`
+
+                The method label to display.
+
+            - `reason: string or null`
+
+              Why the agent needs the user to sign in.
+
+            - `type: "browser_authentication"`
+
+              The type of the object. Always `browser_authentication`.
+
+              - `"browser_authentication"`
+
+          - `BrowserOriginAccess object { origin, reason, type }`
+
+            A browser origin awaiting the application's approval decision.
+
+            - `origin: string`
+
+              The origin the browser needs permission to access.
+
+            - `reason: string or null`
+
+              The browser's explanation for this request, or null when unavailable.
+
+            - `type: "browser_origin_access"`
+
+              The type of the object. Always `browser_origin_access`.
+
+              - `"browser_origin_access"`
+
+        - `request_id: string`
+
+          The registered request ID to echo when responding.
+
+        - `turn_id: string`
+
+          The turn that requested approval.
+
+        - `type: "computer_use_approval_request"`
+
+          The type of the object. Always `computer_use_approval_request`.
+
+          - `"computer_use_approval_request"`
 
       - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -10724,9 +12026,85 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
 ### Agent Session Input Param
 
-- `AgentSessionInputParam = object { input, type }  or object { type }  or object { call_id, success, turn_id, 3 more }`
+- `AgentSessionInputParam = object { request_id, response, type }  or object { input, type }  or object { type }  or object { call_id, success, turn_id, 3 more }`
 
   Input submitted to an existing session.
+
+  - `AgentSessionInputComputerUseApprovalRequestResult object { request_id, response, type }`
+
+    Responds to a pending Computer Use approval request.
+
+    - `request_id: string`
+
+      The registered request ID from the required action.
+
+    - `response: AgentBrowserAuthenticationSubmitParam or AgentBrowserAuthenticationCancelParam or AgentBrowserOriginAccessParam`
+
+      The response for this request type.
+
+      - `AgentBrowserAuthenticationSubmitParam object { action, fields, type, selected_option }`
+
+        - `action: "submit"`
+
+          - `"submit"`
+
+        - `fields: array of object { field_id, value }`
+
+          Values for up to six active fields in the required action. The submitted field-value mapping and selected option must fit within 120 KiB of JSON.
+
+          - `field_id: string`
+
+            The field ID from the required action.
+
+          - `value: string`
+
+            The value to enter into the registered control.
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+        - `selected_option: optional string or null`
+
+          The chosen method. Required when the required action contains options.
+
+      - `AgentBrowserAuthenticationCancelParam object { action, type }`
+
+        - `action: "cancel"`
+
+          - `"cancel"`
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+      - `AgentBrowserOriginAccessParam object { decision, type }`
+
+        - `decision: "approve" or "deny" or "cancel"`
+
+          Whether to allow, deny, or cancel the requested origin access.
+
+          - `"approve"`
+
+            Allow the browser to access this origin.
+
+          - `"deny"`
+
+            Deny access to this origin.
+
+          - `"cancel"`
+
+            Dismiss this request without approving access.
+
+        - `type: "browser_origin_access"`
+
+          - `"browser_origin_access"`
+
+    - `type: "agent.session.input.computer_use_approval_request_result"`
+
+      The type of the object. Always `agent.session.input.computer_use_approval_request_result`.
+
+      - `"agent.session.input.computer_use_approval_request_result"`
 
   - `AgentSessionInputMessage object { input, type }`
 
@@ -10840,7 +12218,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
 ### Agent Session Item
 
-- `AgentSessionItem = AgentSessionMessage or AgentReasoningItem or AgentFunctionCallItem or 11 more`
+- `AgentSessionItem = AgentSessionMessage or AgentReasoningItem or AgentFunctionCallItem or 14 more`
 
   An item associated with a session turn.
 
@@ -11195,6 +12573,166 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
       The item type. Always `mcp_call`.
 
       - `"mcp_call"`
+
+  - `ComputerUseCall object { id, output, status, 3 more }`
+
+    One execution of the platform-provided computer-use capability.
+
+    - `id: string`
+
+      The ID of the activity item.
+
+    - `output: object { image_url, type }  or null`
+
+      The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+      - `image_url: string`
+
+        The complete JPEG image as a base64 data URL.
+
+      - `type: "computer_screenshot"`
+
+        The content type. Always `computer_screenshot`.
+
+        - `"computer_screenshot"`
+
+    - `status: AgentFunctionCallStatus`
+
+      The execution status of the activity.
+
+    - `title: string or null`
+
+      A model-generated description of the activity, when available.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_call"`
+
+      The item type. Always `computer_use_call`.
+
+      - `"computer_use_call"`
+
+  - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+    A credential-free history record of the emitted login request.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request: object { credential_origin, fields, options, 2 more }`
+
+      A registered form awaiting the application's response.
+
+      - `credential_origin: string or null`
+
+        The registered form or frame origin where values will be entered.
+
+      - `fields: array of object { id, label, required, type }`
+
+        Controls to render. All submitted values are sensitive.
+
+        - `id: string`
+
+          The field ID to submit as field_id in a fields entry.
+
+        - `label: string`
+
+          The label to display beside the control.
+
+        - `required: boolean`
+
+          Whether this control requires a nonempty value.
+
+        - `type: string`
+
+          The rendering type, such as email, password, or text.
+
+      - `options: array of object { id, field_ids, label }`
+
+        Sign-in methods. Empty for a plain form.
+
+        - `id: string`
+
+          The option ID to submit as selected_option.
+
+        - `field_ids: array of string`
+
+          IDs from the registered fields that this method accepts.
+
+        - `label: string`
+
+          The method label to display.
+
+      - `reason: string or null`
+
+        Why the agent needs the user to sign in.
+
+      - `type: "browser_authentication"`
+
+        The type of the object. Always `browser_authentication`.
+
+        - `"browser_authentication"`
+
+    - `request_id: string`
+
+    - `turn_id: string`
+
+    - `type: "computer_use_approval_request"`
+
+      The item type. Always computer_use_approval_request.
+
+      - `"computer_use_approval_request"`
+
+  - `ComputerUseApprovalRequestResult object { id, request_id, response, 2 more }`
+
+    A credential-free record of an admitted response, not proof of completion.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request_id: string`
+
+      The registered request answered by this item.
+
+    - `response: object { action, selected_option, type }  or object { action, type }`
+
+      The admitted response, without submitted credential values.
+
+      - `Submit object { action, selected_option, type }`
+
+        - `action: "submit"`
+
+          - `"submit"`
+
+        - `selected_option: string or null`
+
+          The chosen sign-in method, or null when no options were offered.
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+      - `Cancel object { action, type }`
+
+        - `action: "cancel"`
+
+          - `"cancel"`
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_approval_request_result"`
+
+      - `"computer_use_approval_request_result"`
 
   - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 
@@ -12020,6 +13558,20 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"web_search"`
 
+        - `ComputerUse object { include_screenshots, type }`
+
+          Browser use in an OpenAI-hosted session.
+
+          - `include_screenshots: boolean`
+
+            Whether computer tool outputs include screenshots.
+
+          - `type: "computer_use"`
+
+            The type of the object. Always `computer_use`.
+
+            - `"computer_use"`
+
     - `created_at: number`
 
       The Unix timestamp, in seconds, when the session was created.
@@ -12038,7 +13590,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"none"`
 
-      - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+      - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
         An environment hosted by OpenAI.
 
@@ -12049,6 +13601,14 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         - `capability_directories: array of string`
 
           Directories that contain capabilities exposed to the agent.
+
+        - `desktop: object { enabled }`
+
+          The effective desktop configuration.
+
+          - `enabled: boolean`
+
+            Whether the environment provisions a desktop and browser proxy.
 
         - `files: array of HostedEnvironmentFile`
 
@@ -12120,7 +13680,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
             - `"restricted"`
 
-              Allows access only to configured domains.
+              Applies the configured domain restrictions.
 
           - `allowed_domains: array of string`
 
@@ -12214,6 +13774,16 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"openai_hosted"`
 
+        - `container_size: optional "small" or "medium" or "large" or null`
+
+          The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+          - `"small"`
+
+          - `"medium"`
+
+          - `"large"`
+
       - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
         An environment hosted by the application.
@@ -12258,9 +13828,103 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       - `"agent.session"`
 
-    - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+    - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
       Actions that must be completed before the session can continue.
+
+      - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+        Respond to a computer-use request.
+
+        - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+          The information needed to render the request.
+
+          - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+            A registered form awaiting the application's response.
+
+            - `credential_origin: string or null`
+
+              The registered form or frame origin where values will be entered.
+
+            - `fields: array of object { id, label, required, type }`
+
+              Controls to render. All submitted values are sensitive.
+
+              - `id: string`
+
+                The field ID to submit as field_id in a fields entry.
+
+              - `label: string`
+
+                The label to display beside the control.
+
+              - `required: boolean`
+
+                Whether this control requires a nonempty value.
+
+              - `type: string`
+
+                The rendering type, such as email, password, or text.
+
+            - `options: array of object { id, field_ids, label }`
+
+              Sign-in methods. Empty for a plain form.
+
+              - `id: string`
+
+                The option ID to submit as selected_option.
+
+              - `field_ids: array of string`
+
+                IDs from the registered fields that this method accepts.
+
+              - `label: string`
+
+                The method label to display.
+
+            - `reason: string or null`
+
+              Why the agent needs the user to sign in.
+
+            - `type: "browser_authentication"`
+
+              The type of the object. Always `browser_authentication`.
+
+              - `"browser_authentication"`
+
+          - `BrowserOriginAccess object { origin, reason, type }`
+
+            A browser origin awaiting the application's approval decision.
+
+            - `origin: string`
+
+              The origin the browser needs permission to access.
+
+            - `reason: string or null`
+
+              The browser's explanation for this request, or null when unavailable.
+
+            - `type: "browser_origin_access"`
+
+              The type of the object. Always `browser_origin_access`.
+
+              - `"browser_origin_access"`
+
+        - `request_id: string`
+
+          The registered request ID to echo when responding.
+
+        - `turn_id: string`
+
+          The turn that requested approval.
+
+        - `type: "computer_use_approval_request"`
+
+          The type of the object. Always `computer_use_approval_request`.
+
+          - `"computer_use_approval_request"`
 
       - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -14174,6 +15838,166 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         - `"mcp_call"`
 
+    - `ComputerUseCall object { id, output, status, 3 more }`
+
+      One execution of the platform-provided computer-use capability.
+
+      - `id: string`
+
+        The ID of the activity item.
+
+      - `output: object { image_url, type }  or null`
+
+        The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+        - `image_url: string`
+
+          The complete JPEG image as a base64 data URL.
+
+        - `type: "computer_screenshot"`
+
+          The content type. Always `computer_screenshot`.
+
+          - `"computer_screenshot"`
+
+      - `status: AgentFunctionCallStatus`
+
+        The execution status of the activity.
+
+      - `title: string or null`
+
+        A model-generated description of the activity, when available.
+
+      - `turn_id: string`
+
+        The ID of the turn that contains this item.
+
+      - `type: "computer_use_call"`
+
+        The item type. Always `computer_use_call`.
+
+        - `"computer_use_call"`
+
+    - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+      A credential-free history record of the emitted login request.
+
+      - `id: string`
+
+        The stable history item ID.
+
+      - `request: object { credential_origin, fields, options, 2 more }`
+
+        A registered form awaiting the application's response.
+
+        - `credential_origin: string or null`
+
+          The registered form or frame origin where values will be entered.
+
+        - `fields: array of object { id, label, required, type }`
+
+          Controls to render. All submitted values are sensitive.
+
+          - `id: string`
+
+            The field ID to submit as field_id in a fields entry.
+
+          - `label: string`
+
+            The label to display beside the control.
+
+          - `required: boolean`
+
+            Whether this control requires a nonempty value.
+
+          - `type: string`
+
+            The rendering type, such as email, password, or text.
+
+        - `options: array of object { id, field_ids, label }`
+
+          Sign-in methods. Empty for a plain form.
+
+          - `id: string`
+
+            The option ID to submit as selected_option.
+
+          - `field_ids: array of string`
+
+            IDs from the registered fields that this method accepts.
+
+          - `label: string`
+
+            The method label to display.
+
+        - `reason: string or null`
+
+          Why the agent needs the user to sign in.
+
+        - `type: "browser_authentication"`
+
+          The type of the object. Always `browser_authentication`.
+
+          - `"browser_authentication"`
+
+      - `request_id: string`
+
+      - `turn_id: string`
+
+      - `type: "computer_use_approval_request"`
+
+        The item type. Always computer_use_approval_request.
+
+        - `"computer_use_approval_request"`
+
+    - `ComputerUseApprovalRequestResult object { id, request_id, response, 2 more }`
+
+      A credential-free record of an admitted response, not proof of completion.
+
+      - `id: string`
+
+        The stable history item ID.
+
+      - `request_id: string`
+
+        The registered request answered by this item.
+
+      - `response: object { action, selected_option, type }  or object { action, type }`
+
+        The admitted response, without submitted credential values.
+
+        - `Submit object { action, selected_option, type }`
+
+          - `action: "submit"`
+
+            - `"submit"`
+
+          - `selected_option: string or null`
+
+            The chosen sign-in method, or null when no options were offered.
+
+          - `type: "browser_authentication"`
+
+            - `"browser_authentication"`
+
+        - `Cancel object { action, type }`
+
+          - `action: "cancel"`
+
+            - `"cancel"`
+
+          - `type: "browser_authentication"`
+
+            - `"browser_authentication"`
+
+      - `turn_id: string`
+
+        The ID of the turn that contains this item.
+
+      - `type: "computer_use_approval_request_result"`
+
+        - `"computer_use_approval_request_result"`
+
     - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 
       A web search call produced by the agent.
@@ -14747,6 +16571,118 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
         The item type. Always `mcp_call`.
 
         - `"mcp_call"`
+
+    - `ComputerUseCall object { id, output, status, 3 more }`
+
+      One execution of the platform-provided computer-use capability.
+
+      - `id: string`
+
+        The ID of the activity item.
+
+      - `output: object { image_url, type }  or null`
+
+        The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+        - `image_url: string`
+
+          The complete JPEG image as a base64 data URL.
+
+        - `type: "computer_screenshot"`
+
+          The content type. Always `computer_screenshot`.
+
+          - `"computer_screenshot"`
+
+      - `status: AgentFunctionCallStatus`
+
+        The execution status of the activity.
+
+      - `title: string or null`
+
+        A model-generated description of the activity, when available.
+
+      - `turn_id: string`
+
+        The ID of the turn that contains this item.
+
+      - `type: "computer_use_call"`
+
+        The item type. Always `computer_use_call`.
+
+        - `"computer_use_call"`
+
+    - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+      A credential-free history record of the emitted login request.
+
+      - `id: string`
+
+        The stable history item ID.
+
+      - `request: object { credential_origin, fields, options, 2 more }`
+
+        A registered form awaiting the application's response.
+
+        - `credential_origin: string or null`
+
+          The registered form or frame origin where values will be entered.
+
+        - `fields: array of object { id, label, required, type }`
+
+          Controls to render. All submitted values are sensitive.
+
+          - `id: string`
+
+            The field ID to submit as field_id in a fields entry.
+
+          - `label: string`
+
+            The label to display beside the control.
+
+          - `required: boolean`
+
+            Whether this control requires a nonempty value.
+
+          - `type: string`
+
+            The rendering type, such as email, password, or text.
+
+        - `options: array of object { id, field_ids, label }`
+
+          Sign-in methods. Empty for a plain form.
+
+          - `id: string`
+
+            The option ID to submit as selected_option.
+
+          - `field_ids: array of string`
+
+            IDs from the registered fields that this method accepts.
+
+          - `label: string`
+
+            The method label to display.
+
+        - `reason: string or null`
+
+          Why the agent needs the user to sign in.
+
+        - `type: "browser_authentication"`
+
+          The type of the object. Always `browser_authentication`.
+
+          - `"browser_authentication"`
+
+      - `request_id: string`
+
+      - `turn_id: string`
+
+      - `type: "computer_use_approval_request"`
+
+        The item type. Always computer_use_approval_request.
+
+        - `"computer_use_approval_request"`
 
     - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 
@@ -15494,7 +17430,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
 ### Agent Tool
 
-- `AgentTool = object { defer_loading, description, name, 2 more }  or object { enabled, type }  or object { allowed_tools, connection_origin, credential_id, 5 more }  or object { allowed_domains, context_size, location, 2 more }`
+- `AgentTool = object { defer_loading, description, name, 2 more }  or object { enabled, type }  or object { allowed_tools, connection_origin, credential_id, 5 more }  or 2 more`
 
   A tool available to the agent.
 
@@ -15674,9 +17610,23 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       - `"web_search"`
 
+  - `ComputerUse object { include_screenshots, type }`
+
+    Browser use in an OpenAI-hosted session.
+
+    - `include_screenshots: boolean`
+
+      Whether computer tool outputs include screenshots.
+
+    - `type: "computer_use"`
+
+      The type of the object. Always `computer_use`.
+
+      - `"computer_use"`
+
 ### Agent Tool Param
 
-- `AgentToolParam = object { description, name, parameters, 2 more }  or object { type }  or object { type, enabled }  or 2 more`
+- `AgentToolParam = object { description, name, parameters, 2 more }  or object { type }  or object { type, enabled }  or 3 more`
 
   A tool available to the agent.
 
@@ -15888,6 +17838,20 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         Searches the live web.
 
+  - `ComputerUse object { type, include_screenshots }`
+
+    Browser use in an OpenAI-hosted session.
+
+    - `type: "computer_use"`
+
+      The type of the object. Always `computer_use`.
+
+      - `"computer_use"`
+
+    - `include_screenshots: optional boolean`
+
+      Whether computer tool outputs include screenshots. Defaults to `false`.
+
 ### Agent Wait For Subagents Call Item
 
 - `AgentWaitForSubagentsCallItem object { id, recipient_agent_ids, sender_agent_id, 3 more }`
@@ -16040,7 +18004,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
 ### Environment
 
-- `Environment = object { type }  or object { id, capability_directories, files, 5 more }  or object { id, capability_directories, remote_url, 2 more }`
+- `Environment = object { type }  or object { id, capability_directories, desktop, 7 more }  or object { id, capability_directories, remote_url, 2 more }`
 
   The execution environment for a session.
 
@@ -16054,7 +18018,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       - `"none"`
 
-  - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+  - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
     An environment hosted by OpenAI.
 
@@ -16065,6 +18029,14 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
     - `capability_directories: array of string`
 
       Directories that contain capabilities exposed to the agent.
+
+    - `desktop: object { enabled }`
+
+      The effective desktop configuration.
+
+      - `enabled: boolean`
+
+        Whether the environment provisions a desktop and browser proxy.
 
     - `files: array of HostedEnvironmentFile`
 
@@ -16136,7 +18108,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         - `"restricted"`
 
-          Allows access only to configured domains.
+          Applies the configured domain restrictions.
 
       - `allowed_domains: array of string`
 
@@ -16230,6 +18202,16 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       - `"openai_hosted"`
 
+    - `container_size: optional "small" or "medium" or "large" or null`
+
+      The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+      - `"small"`
+
+      - `"medium"`
+
+      - `"large"`
+
   - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
     An environment hosted by the application.
@@ -16258,7 +18240,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
 ### Environment Param
 
-- `EnvironmentParam = object { type }  or object { type, capability_directories, env, 7 more }  or object { type, workspace_directory, capability_directories }`
+- `EnvironmentParam = object { type }  or object { type, capability_directories, container_size, 9 more }  or object { type, workspace_directory, capability_directories }`
 
   The execution environment and optional reusable template for a session.
 
@@ -16272,7 +18254,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       - `"none"`
 
-  - `OpenAIHosted object { type, capability_directories, env, 7 more }`
+  - `OpenAIHosted object { type, capability_directories, container_size, 9 more }`
 
     An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
@@ -16285,6 +18267,24 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
     - `capability_directories: optional array of string or null`
 
       Directories that contain capabilities exposed to the agent. Defaults to an empty list.
+
+    - `container_size: optional "small" or "medium" or "large"`
+
+      The hosted container size. Omission selects the medium tier.
+
+      - `"small"`
+
+      - `"medium"`
+
+      - `"large"`
+
+    - `desktop: optional object { enabled }  or null`
+
+      Desktop provisioning. Omission or null inherits the template setting, or defaults to disabled.
+
+      - `enabled: boolean`
+
+        Whether to provision the desktop and its browser proxy.
 
     - `env: optional map[string] or null`
 
@@ -16334,7 +18334,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
           - `"inline"`
 
-    - `network: optional object { access, allowed_domains }  or null`
+    - `network: optional object { access, allowed_domains, blocked_domains }  or null`
 
       Network access policy for the environment. Defaults to disabled for GA requests and enabled for beta requests.
 
@@ -16352,11 +18352,15 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
         - `"restricted"`
 
-          Allows access only to configured domains.
+          Applies the configured domain restrictions.
 
       - `allowed_domains: optional array of string or null`
 
         Domains the environment may access when network access is restricted.
+
+      - `blocked_domains: optional array of string or null`
+
+        Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
 
     - `packages: optional object { npm, python, system }  or null`
 
@@ -17058,7 +19062,7 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
 ### Persisted Agent Tool
 
-- `PersistedAgentTool = object { defer_loading, description, name, 2 more }  or object { type }  or object { enabled, type }  or 2 more`
+- `PersistedAgentTool = object { defer_loading, description, name, 2 more }  or object { type }  or object { enabled, type }  or 3 more`
 
   A credential-free tool available to a reusable agent.
 
@@ -17252,9 +19256,23 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
 
       - `"web_search"`
 
+  - `ComputerUse object { include_screenshots, type }`
+
+    Browser use in an OpenAI-hosted session.
+
+    - `include_screenshots: boolean`
+
+      Whether computer tool outputs include screenshots.
+
+    - `type: "computer_use"`
+
+      The type of the object. Always `computer_use`.
+
+      - `"computer_use"`
+
 ### Persisted Agent Tool Param
 
-- `PersistedAgentToolParam = object { description, name, parameters, 2 more }  or object { type }  or object { type, enabled }  or 2 more`
+- `PersistedAgentToolParam = object { description, name, parameters, 2 more }  or object { type }  or object { type, enabled }  or 3 more`
 
   A tool that can be stored on a reusable agent without session credentials.
 
@@ -17457,6 +19475,20 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
       - `"live"`
 
         Searches the live web.
+
+  - `ComputerUse object { type, include_screenshots }`
+
+    Browser use in an OpenAI-hosted session.
+
+    - `type: "computer_use"`
+
+      The type of the object. Always `computer_use`.
+
+      - `"computer_use"`
+
+    - `include_screenshots: optional boolean`
+
+      Whether computer tool outputs include screenshots. Defaults to `false`.
 
 ### Persisted Mcp Transport
 
@@ -18548,6 +20580,14 @@ Creates reusable environment configuration without returning confidential setup 
 
   Directories that contain capabilities exposed to the agent. Defaults to an empty list.
 
+- `desktop: optional object { enabled }  or null`
+
+  Desktop provisioning. Omission or null inherits the template setting, or defaults to disabled.
+
+  - `enabled: boolean`
+
+    Whether to provision the desktop and its browser proxy.
+
 - `env: optional map[string] or null`
 
   Environment variables made available to the agent.
@@ -18596,7 +20636,7 @@ Creates reusable environment configuration without returning confidential setup 
 
   An optional human-readable display name for the template.
 
-- `network: optional object { access, allowed_domains }  or null`
+- `network: optional object { access, allowed_domains, blocked_domains }  or null`
 
   Network access policy for the environment. Defaults to disabled for GA requests and enabled for beta requests.
 
@@ -18614,11 +20654,15 @@ Creates reusable environment configuration without returning confidential setup 
 
     - `"restricted"`
 
-      Allows access only to configured domains.
+      Applies the configured domain restrictions.
 
   - `allowed_domains: optional array of string or null`
 
     Domains the environment may access when network access is restricted.
+
+  - `blocked_domains: optional array of string or null`
+
+    Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
 
 - `packages: optional object { npm, python, system }  or null`
 
@@ -18734,7 +20778,7 @@ Creates reusable environment configuration without returning confidential setup 
 
 ### Returns
 
-- `EnvironmentTemplate object { id, capability_directories, created_at, 8 more }`
+- `EnvironmentTemplate object { id, capability_directories, created_at, 9 more }`
 
   Reusable configuration that provisions a fresh OpenAI-hosted environment for each session.
 
@@ -18749,6 +20793,14 @@ Creates reusable environment configuration without returning confidential setup 
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the template was created.
+
+  - `desktop: object { enabled }`
+
+    Desktop configuration for each OpenAI-hosted environment.
+
+    - `enabled: boolean`
+
+      Whether the environment provisions a desktop and browser proxy.
 
   - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
 
@@ -18812,7 +20864,7 @@ Creates reusable environment configuration without returning confidential setup 
 
       - `"restricted"`
 
-        Allows access only to configured domains.
+        Applies the configured domain restrictions.
 
     - `allowed_domains: array of string`
 
@@ -18920,6 +20972,9 @@ curl https://api.openai.com/v1/agents/environments/templates \
     "string"
   ],
   "created_at": 0,
+  "desktop": {
+    "enabled": true
+  },
   "files": [
     {
       "file_id": "file_id",
@@ -19059,6 +21114,14 @@ Lists reusable environment templates without returning confidential values. See 
 
     The Unix timestamp, in seconds, when the template was created.
 
+  - `desktop: object { enabled }`
+
+    Desktop configuration for each OpenAI-hosted environment.
+
+    - `enabled: boolean`
+
+      Whether the environment provisions a desktop and browser proxy.
+
   - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
 
     Safe file metadata, excluding contents and session-scoped file IDs.
@@ -19121,7 +21184,7 @@ Lists reusable environment templates without returning confidential values. See 
 
       - `"restricted"`
 
-        Allows access only to configured domains.
+        Applies the configured domain restrictions.
 
     - `allowed_domains: array of string`
 
@@ -19248,6 +21311,9 @@ curl https://api.openai.com/v1/agents/environments/templates \
         "string"
       ],
       "created_at": 0,
+      "desktop": {
+        "enabled": true
+      },
       "files": [
         {
           "file_id": "file_id",
@@ -19310,7 +21376,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
 ### Returns
 
-- `EnvironmentTemplate object { id, capability_directories, created_at, 8 more }`
+- `EnvironmentTemplate object { id, capability_directories, created_at, 9 more }`
 
   Reusable configuration that provisions a fresh OpenAI-hosted environment for each session.
 
@@ -19325,6 +21391,14 @@ Retrieves reusable environment configuration without returning confidential valu
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the template was created.
+
+  - `desktop: object { enabled }`
+
+    Desktop configuration for each OpenAI-hosted environment.
+
+    - `enabled: boolean`
+
+      Whether the environment provisions a desktop and browser proxy.
 
   - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
 
@@ -19388,7 +21462,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       - `"restricted"`
 
-        Allows access only to configured domains.
+        Applies the configured domain restrictions.
 
     - `allowed_domains: array of string`
 
@@ -19495,6 +21569,9 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
     "string"
   ],
   "created_at": 0,
+  "desktop": {
+    "enabled": true
+  },
   "files": [
     {
       "file_id": "file_id",
@@ -19555,6 +21632,14 @@ Updates reusable environment configuration without returning confidential values
 
   Directories that expose capabilities to the agent.
 
+- `desktop: optional object { enabled }  or null`
+
+  Replacement desktop configuration, or null to disable the desktop.
+
+  - `enabled: boolean`
+
+    Whether to provision the desktop and its browser proxy.
+
 - `env: optional map[string] or null`
 
   Replacement confidential environment values.
@@ -19603,7 +21688,7 @@ Updates reusable environment configuration without returning confidential values
 
   A replacement human-readable display name, or `null` to clear the name.
 
-- `network: optional object { access, allowed_domains }  or null`
+- `network: optional object { access, allowed_domains, blocked_domains }  or null`
 
   Network access available after setup completes. Omit to preserve the current policy, or pass `null` to reset to disabled for GA requests or enabled for beta requests.
 
@@ -19621,11 +21706,15 @@ Updates reusable environment configuration without returning confidential values
 
     - `"restricted"`
 
-      Allows access only to configured domains.
+      Applies the configured domain restrictions.
 
   - `allowed_domains: optional array of string or null`
 
     Domains the environment may access when network access is restricted.
+
+  - `blocked_domains: optional array of string or null`
+
+    Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
 
 - `packages: optional object { npm, python, system }  or null`
 
@@ -19741,7 +21830,7 @@ Updates reusable environment configuration without returning confidential values
 
 ### Returns
 
-- `EnvironmentTemplate object { id, capability_directories, created_at, 8 more }`
+- `EnvironmentTemplate object { id, capability_directories, created_at, 9 more }`
 
   Reusable configuration that provisions a fresh OpenAI-hosted environment for each session.
 
@@ -19756,6 +21845,14 @@ Updates reusable environment configuration without returning confidential values
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the template was created.
+
+  - `desktop: object { enabled }`
+
+    Desktop configuration for each OpenAI-hosted environment.
+
+    - `enabled: boolean`
+
+      Whether the environment provisions a desktop and browser proxy.
 
   - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
 
@@ -19819,7 +21916,7 @@ Updates reusable environment configuration without returning confidential values
 
       - `"restricted"`
 
-        Allows access only to configured domains.
+        Applies the configured domain restrictions.
 
     - `allowed_domains: array of string`
 
@@ -19927,6 +22024,9 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
     "string"
   ],
   "created_at": 0,
+  "desktop": {
+    "enabled": true
+  },
   "files": [
     {
       "file_id": "file_id",
@@ -19975,7 +22075,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
 ### Environment Template
 
-- `EnvironmentTemplate object { id, capability_directories, created_at, 8 more }`
+- `EnvironmentTemplate object { id, capability_directories, created_at, 9 more }`
 
   Reusable configuration that provisions a fresh OpenAI-hosted environment for each session.
 
@@ -19990,6 +22090,14 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the template was created.
+
+  - `desktop: object { enabled }`
+
+    Desktop configuration for each OpenAI-hosted environment.
+
+    - `enabled: boolean`
+
+      Whether the environment provisions a desktop and browser proxy.
 
   - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
 
@@ -20053,7 +22161,7 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
 
       - `"restricted"`
 
-        Allows access only to configured domains.
+        Applies the configured domain restrictions.
 
     - `allowed_domains: array of string`
 
@@ -20187,7 +22295,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `"none"`
 
-  - `OpenAIHosted object { type, capability_directories, env, 7 more }`
+  - `OpenAIHosted object { type, capability_directories, container_size, 9 more }`
 
     An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
@@ -20200,6 +22308,24 @@ Creates a managed agent session, optionally submits initial input, and returns t
     - `capability_directories: optional array of string or null`
 
       Directories that contain capabilities exposed to the agent. Defaults to an empty list.
+
+    - `container_size: optional "small" or "medium" or "large"`
+
+      The hosted container size. Omission selects the medium tier.
+
+      - `"small"`
+
+      - `"medium"`
+
+      - `"large"`
+
+    - `desktop: optional object { enabled }  or null`
+
+      Desktop provisioning. Omission or null inherits the template setting, or defaults to disabled.
+
+      - `enabled: boolean`
+
+        Whether to provision the desktop and its browser proxy.
 
     - `env: optional map[string] or null`
 
@@ -20249,7 +22375,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           - `"inline"`
 
-    - `network: optional object { access, allowed_domains }  or null`
+    - `network: optional object { access, allowed_domains, blocked_domains }  or null`
 
       Network access policy for the environment. Defaults to disabled for GA requests and enabled for beta requests.
 
@@ -20267,11 +22393,15 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         - `"restricted"`
 
-          Allows access only to configured domains.
+          Applies the configured domain restrictions.
 
       - `allowed_domains: optional array of string or null`
 
         Domains the environment may access when network access is restricted.
+
+      - `blocked_domains: optional array of string or null`
+
+        Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
 
     - `packages: optional object { npm, python, system }  or null`
 
@@ -20753,6 +22883,20 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           Searches the live web.
 
+    - `ComputerUse object { type, include_screenshots }`
+
+      Browser use in an OpenAI-hosted session.
+
+      - `type: "computer_use"`
+
+        The type of the object. Always `computer_use`.
+
+        - `"computer_use"`
+
+      - `include_screenshots: optional boolean`
+
+        Whether computer tool outputs include screenshots. Defaults to `false`.
+
 - `agent_id: optional string`
 
   The ID of a saved reusable agent. Omit `agent` to use its configuration unchanged.
@@ -21139,6 +23283,20 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           - `"web_search"`
 
+      - `ComputerUse object { include_screenshots, type }`
+
+        Browser use in an OpenAI-hosted session.
+
+        - `include_screenshots: boolean`
+
+          Whether computer tool outputs include screenshots.
+
+        - `type: "computer_use"`
+
+          The type of the object. Always `computer_use`.
+
+          - `"computer_use"`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the session was created.
@@ -21157,7 +23315,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         - `"none"`
 
-    - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+    - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
       An environment hosted by OpenAI.
 
@@ -21168,6 +23326,14 @@ Creates a managed agent session, optionally submits initial input, and returns t
       - `capability_directories: array of string`
 
         Directories that contain capabilities exposed to the agent.
+
+      - `desktop: object { enabled }`
+
+        The effective desktop configuration.
+
+        - `enabled: boolean`
+
+          Whether the environment provisions a desktop and browser proxy.
 
       - `files: array of HostedEnvironmentFile`
 
@@ -21239,7 +23405,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           - `"restricted"`
 
-            Allows access only to configured domains.
+            Applies the configured domain restrictions.
 
         - `allowed_domains: array of string`
 
@@ -21333,6 +23499,16 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         - `"openai_hosted"`
 
+      - `container_size: optional "small" or "medium" or "large" or null`
+
+        The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+        - `"small"`
+
+        - `"medium"`
+
+        - `"large"`
+
     - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
       An environment hosted by the application.
@@ -21377,9 +23553,103 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `"agent.session"`
 
-  - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
     Actions that must be completed before the session can continue.
+
+    - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+      Respond to a computer-use request.
+
+      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+        The information needed to render the request.
+
+        - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+          A registered form awaiting the application's response.
+
+          - `credential_origin: string or null`
+
+            The registered form or frame origin where values will be entered.
+
+          - `fields: array of object { id, label, required, type }`
+
+            Controls to render. All submitted values are sensitive.
+
+            - `id: string`
+
+              The field ID to submit as field_id in a fields entry.
+
+            - `label: string`
+
+              The label to display beside the control.
+
+            - `required: boolean`
+
+              Whether this control requires a nonempty value.
+
+            - `type: string`
+
+              The rendering type, such as email, password, or text.
+
+          - `options: array of object { id, field_ids, label }`
+
+            Sign-in methods. Empty for a plain form.
+
+            - `id: string`
+
+              The option ID to submit as selected_option.
+
+            - `field_ids: array of string`
+
+              IDs from the registered fields that this method accepts.
+
+            - `label: string`
+
+              The method label to display.
+
+          - `reason: string or null`
+
+            Why the agent needs the user to sign in.
+
+          - `type: "browser_authentication"`
+
+            The type of the object. Always `browser_authentication`.
+
+            - `"browser_authentication"`
+
+        - `BrowserOriginAccess object { origin, reason, type }`
+
+          A browser origin awaiting the application's approval decision.
+
+          - `origin: string`
+
+            The origin the browser needs permission to access.
+
+          - `reason: string or null`
+
+            The browser's explanation for this request, or null when unavailable.
+
+          - `type: "browser_origin_access"`
+
+            The type of the object. Always `browser_origin_access`.
+
+            - `"browser_origin_access"`
+
+      - `request_id: string`
+
+        The registered request ID to echo when responding.
+
+      - `turn_id: string`
+
+        The turn that requested approval.
+
+      - `type: "computer_use_approval_request"`
+
+        The type of the object. Always `computer_use_approval_request`.
+
+        - `"computer_use_approval_request"`
 
     - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -21540,11 +23810,31 @@ curl https://api.openai.com/v1/agents/sessions \
   "object": "agent.session",
   "required_actions": [
     {
-      "arguments": {},
-      "call_id": "call_id",
-      "name": "name",
+      "request": {
+        "credential_origin": "credential_origin",
+        "fields": [
+          {
+            "id": "id",
+            "label": "label",
+            "required": true,
+            "type": "type"
+          }
+        ],
+        "options": [
+          {
+            "id": "id",
+            "field_ids": [
+              "string"
+            ],
+            "label": "label"
+          }
+        ],
+        "reason": "reason",
+        "type": "browser_authentication"
+      },
+      "request_id": "request_id",
       "turn_id": "turn_id",
-      "type": "function_call"
+      "type": "computer_use_approval_request"
     }
   ],
   "status": "idle",
@@ -21964,6 +24254,20 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           - `"web_search"`
 
+      - `ComputerUse object { include_screenshots, type }`
+
+        Browser use in an OpenAI-hosted session.
+
+        - `include_screenshots: boolean`
+
+          Whether computer tool outputs include screenshots.
+
+        - `type: "computer_use"`
+
+          The type of the object. Always `computer_use`.
+
+          - `"computer_use"`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the session was created.
@@ -21982,7 +24286,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         - `"none"`
 
-    - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+    - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
       An environment hosted by OpenAI.
 
@@ -21993,6 +24297,14 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
       - `capability_directories: array of string`
 
         Directories that contain capabilities exposed to the agent.
+
+      - `desktop: object { enabled }`
+
+        The effective desktop configuration.
+
+        - `enabled: boolean`
+
+          Whether the environment provisions a desktop and browser proxy.
 
       - `files: array of HostedEnvironmentFile`
 
@@ -22064,7 +24376,7 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
           - `"restricted"`
 
-            Allows access only to configured domains.
+            Applies the configured domain restrictions.
 
         - `allowed_domains: array of string`
 
@@ -22158,6 +24470,16 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
         - `"openai_hosted"`
 
+      - `container_size: optional "small" or "medium" or "large" or null`
+
+        The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+        - `"small"`
+
+        - `"medium"`
+
+        - `"large"`
+
     - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
       An environment hosted by the application.
@@ -22202,9 +24524,103 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     - `"agent.session"`
 
-  - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
     Actions that must be completed before the session can continue.
+
+    - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+      Respond to a computer-use request.
+
+      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+        The information needed to render the request.
+
+        - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+          A registered form awaiting the application's response.
+
+          - `credential_origin: string or null`
+
+            The registered form or frame origin where values will be entered.
+
+          - `fields: array of object { id, label, required, type }`
+
+            Controls to render. All submitted values are sensitive.
+
+            - `id: string`
+
+              The field ID to submit as field_id in a fields entry.
+
+            - `label: string`
+
+              The label to display beside the control.
+
+            - `required: boolean`
+
+              Whether this control requires a nonempty value.
+
+            - `type: string`
+
+              The rendering type, such as email, password, or text.
+
+          - `options: array of object { id, field_ids, label }`
+
+            Sign-in methods. Empty for a plain form.
+
+            - `id: string`
+
+              The option ID to submit as selected_option.
+
+            - `field_ids: array of string`
+
+              IDs from the registered fields that this method accepts.
+
+            - `label: string`
+
+              The method label to display.
+
+          - `reason: string or null`
+
+            Why the agent needs the user to sign in.
+
+          - `type: "browser_authentication"`
+
+            The type of the object. Always `browser_authentication`.
+
+            - `"browser_authentication"`
+
+        - `BrowserOriginAccess object { origin, reason, type }`
+
+          A browser origin awaiting the application's approval decision.
+
+          - `origin: string`
+
+            The origin the browser needs permission to access.
+
+          - `reason: string or null`
+
+            The browser's explanation for this request, or null when unavailable.
+
+          - `type: "browser_origin_access"`
+
+            The type of the object. Always `browser_origin_access`.
+
+            - `"browser_origin_access"`
+
+      - `request_id: string`
+
+        The registered request ID to echo when responding.
+
+      - `turn_id: string`
+
+        The turn that requested approval.
+
+      - `type: "computer_use_approval_request"`
+
+        The type of the object. Always `computer_use_approval_request`.
+
+        - `"computer_use_approval_request"`
 
     - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -22379,11 +24795,31 @@ curl https://api.openai.com/v1/agents/sessions \
       "object": "agent.session",
       "required_actions": [
         {
-          "arguments": {},
-          "call_id": "call_id",
-          "name": "name",
+          "request": {
+            "credential_origin": "credential_origin",
+            "fields": [
+              {
+                "id": "id",
+                "label": "label",
+                "required": true,
+                "type": "type"
+              }
+            ],
+            "options": [
+              {
+                "id": "id",
+                "field_ids": [
+                  "string"
+                ],
+                "label": "label"
+              }
+            ],
+            "reason": "reason",
+            "type": "browser_authentication"
+          },
+          "request_id": "request_id",
           "turn_id": "turn_id",
-          "type": "function_call"
+          "type": "computer_use_approval_request"
         }
       ],
       "status": "idle",
@@ -22738,6 +25174,20 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
           - `"web_search"`
 
+      - `ComputerUse object { include_screenshots, type }`
+
+        Browser use in an OpenAI-hosted session.
+
+        - `include_screenshots: boolean`
+
+          Whether computer tool outputs include screenshots.
+
+        - `type: "computer_use"`
+
+          The type of the object. Always `computer_use`.
+
+          - `"computer_use"`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the session was created.
@@ -22756,7 +25206,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         - `"none"`
 
-    - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+    - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
       An environment hosted by OpenAI.
 
@@ -22767,6 +25217,14 @@ Retrieves the current state of a managed agent session. See [managing sessions](
       - `capability_directories: array of string`
 
         Directories that contain capabilities exposed to the agent.
+
+      - `desktop: object { enabled }`
+
+        The effective desktop configuration.
+
+        - `enabled: boolean`
+
+          Whether the environment provisions a desktop and browser proxy.
 
       - `files: array of HostedEnvironmentFile`
 
@@ -22838,7 +25296,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
           - `"restricted"`
 
-            Allows access only to configured domains.
+            Applies the configured domain restrictions.
 
         - `allowed_domains: array of string`
 
@@ -22932,6 +25390,16 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
         - `"openai_hosted"`
 
+      - `container_size: optional "small" or "medium" or "large" or null`
+
+        The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+        - `"small"`
+
+        - `"medium"`
+
+        - `"large"`
+
     - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
       An environment hosted by the application.
@@ -22976,9 +25444,103 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
     - `"agent.session"`
 
-  - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
     Actions that must be completed before the session can continue.
+
+    - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+      Respond to a computer-use request.
+
+      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+        The information needed to render the request.
+
+        - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+          A registered form awaiting the application's response.
+
+          - `credential_origin: string or null`
+
+            The registered form or frame origin where values will be entered.
+
+          - `fields: array of object { id, label, required, type }`
+
+            Controls to render. All submitted values are sensitive.
+
+            - `id: string`
+
+              The field ID to submit as field_id in a fields entry.
+
+            - `label: string`
+
+              The label to display beside the control.
+
+            - `required: boolean`
+
+              Whether this control requires a nonempty value.
+
+            - `type: string`
+
+              The rendering type, such as email, password, or text.
+
+          - `options: array of object { id, field_ids, label }`
+
+            Sign-in methods. Empty for a plain form.
+
+            - `id: string`
+
+              The option ID to submit as selected_option.
+
+            - `field_ids: array of string`
+
+              IDs from the registered fields that this method accepts.
+
+            - `label: string`
+
+              The method label to display.
+
+          - `reason: string or null`
+
+            Why the agent needs the user to sign in.
+
+          - `type: "browser_authentication"`
+
+            The type of the object. Always `browser_authentication`.
+
+            - `"browser_authentication"`
+
+        - `BrowserOriginAccess object { origin, reason, type }`
+
+          A browser origin awaiting the application's approval decision.
+
+          - `origin: string`
+
+            The origin the browser needs permission to access.
+
+          - `reason: string or null`
+
+            The browser's explanation for this request, or null when unavailable.
+
+          - `type: "browser_origin_access"`
+
+            The type of the object. Always `browser_origin_access`.
+
+            - `"browser_origin_access"`
+
+      - `request_id: string`
+
+        The registered request ID to echo when responding.
+
+      - `turn_id: string`
+
+        The turn that requested approval.
+
+      - `type: "computer_use_approval_request"`
+
+        The type of the object. Always `computer_use_approval_request`.
+
+        - `"computer_use_approval_request"`
 
     - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -23133,11 +25695,31 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   "object": "agent.session",
   "required_actions": [
     {
-      "arguments": {},
-      "call_id": "call_id",
-      "name": "name",
+      "request": {
+        "credential_origin": "credential_origin",
+        "fields": [
+          {
+            "id": "id",
+            "label": "label",
+            "required": true,
+            "type": "type"
+          }
+        ],
+        "options": [
+          {
+            "id": "id",
+            "field_ids": [
+              "string"
+            ],
+            "label": "label"
+          }
+        ],
+        "reason": "reason",
+        "type": "browser_authentication"
+      },
+      "request_id": "request_id",
       "turn_id": "turn_id",
-      "type": "function_call"
+      "type": "computer_use_approval_request"
     }
   ],
   "status": "idle",
@@ -23550,6 +26132,20 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
           - `"web_search"`
 
+      - `ComputerUse object { include_screenshots, type }`
+
+        Browser use in an OpenAI-hosted session.
+
+        - `include_screenshots: boolean`
+
+          Whether computer tool outputs include screenshots.
+
+        - `type: "computer_use"`
+
+          The type of the object. Always `computer_use`.
+
+          - `"computer_use"`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the session was created.
@@ -23568,7 +26164,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
         - `"none"`
 
-    - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+    - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
       An environment hosted by OpenAI.
 
@@ -23579,6 +26175,14 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
       - `capability_directories: array of string`
 
         Directories that contain capabilities exposed to the agent.
+
+      - `desktop: object { enabled }`
+
+        The effective desktop configuration.
+
+        - `enabled: boolean`
+
+          Whether the environment provisions a desktop and browser proxy.
 
       - `files: array of HostedEnvironmentFile`
 
@@ -23650,7 +26254,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
           - `"restricted"`
 
-            Allows access only to configured domains.
+            Applies the configured domain restrictions.
 
         - `allowed_domains: array of string`
 
@@ -23744,6 +26348,16 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
         - `"openai_hosted"`
 
+      - `container_size: optional "small" or "medium" or "large" or null`
+
+        The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+        - `"small"`
+
+        - `"medium"`
+
+        - `"large"`
+
     - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
       An environment hosted by the application.
@@ -23788,9 +26402,103 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
     - `"agent.session"`
 
-  - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
     Actions that must be completed before the session can continue.
+
+    - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+      Respond to a computer-use request.
+
+      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+        The information needed to render the request.
+
+        - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+          A registered form awaiting the application's response.
+
+          - `credential_origin: string or null`
+
+            The registered form or frame origin where values will be entered.
+
+          - `fields: array of object { id, label, required, type }`
+
+            Controls to render. All submitted values are sensitive.
+
+            - `id: string`
+
+              The field ID to submit as field_id in a fields entry.
+
+            - `label: string`
+
+              The label to display beside the control.
+
+            - `required: boolean`
+
+              Whether this control requires a nonempty value.
+
+            - `type: string`
+
+              The rendering type, such as email, password, or text.
+
+          - `options: array of object { id, field_ids, label }`
+
+            Sign-in methods. Empty for a plain form.
+
+            - `id: string`
+
+              The option ID to submit as selected_option.
+
+            - `field_ids: array of string`
+
+              IDs from the registered fields that this method accepts.
+
+            - `label: string`
+
+              The method label to display.
+
+          - `reason: string or null`
+
+            Why the agent needs the user to sign in.
+
+          - `type: "browser_authentication"`
+
+            The type of the object. Always `browser_authentication`.
+
+            - `"browser_authentication"`
+
+        - `BrowserOriginAccess object { origin, reason, type }`
+
+          A browser origin awaiting the application's approval decision.
+
+          - `origin: string`
+
+            The origin the browser needs permission to access.
+
+          - `reason: string or null`
+
+            The browser's explanation for this request, or null when unavailable.
+
+          - `type: "browser_origin_access"`
+
+            The type of the object. Always `browser_origin_access`.
+
+            - `"browser_origin_access"`
+
+      - `request_id: string`
+
+        The registered request ID to echo when responding.
+
+      - `turn_id: string`
+
+        The turn that requested approval.
+
+      - `type: "computer_use_approval_request"`
+
+        The type of the object. Always `computer_use_approval_request`.
+
+        - `"computer_use_approval_request"`
 
     - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -23946,11 +26654,31 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   "object": "agent.session",
   "required_actions": [
     {
-      "arguments": {},
-      "call_id": "call_id",
-      "name": "name",
+      "request": {
+        "credential_origin": "credential_origin",
+        "fields": [
+          {
+            "id": "id",
+            "label": "label",
+            "required": true,
+            "type": "type"
+          }
+        ],
+        "options": [
+          {
+            "id": "id",
+            "field_ids": [
+              "string"
+            ],
+            "label": "label"
+          }
+        ],
+        "reason": "reason",
+        "type": "browser_authentication"
+      },
+      "request_id": "request_id",
       "turn_id": "turn_id",
-      "type": "function_call"
+      "type": "computer_use_approval_request"
     }
   ],
   "status": "idle",
@@ -24312,7 +27040,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/artifacts/$ARTIFACT_I
 
 **post** `/agents/sessions/{session_id}/events`
 
-Submits message, cancellation, or tool-result events to a managed agent session. Cancellation can recover a still-open turn whose backend execution has ended by marking it cancelled and abandoning unpublished outputs. Saved results, published files, and existing terminal outcomes are preserved. HTTP 202 confirms acceptance, not durable completion. See [session events](/api/docs/guides/agents-api/sessions/events).
+Submits message, cancellation, tool-result, or computer-use approval-response events to a managed agent session. Cancellation can recover a still-open turn whose backend execution has ended by marking it cancelled and abandoning unpublished outputs. Saved results, published files, and existing terminal outcomes are preserved. HTTP 202 confirms acceptance, not durable completion. See [session events](/api/docs/guides/agents-api/sessions/events).
 
 ### Header Parameters
 
@@ -24327,6 +27055,82 @@ Submits message, cancellation, or tool-result events to a managed agent session.
 - `events: array of AgentSessionInputParam`
 
   The input events to submit to the session.
+
+  - `AgentSessionInputComputerUseApprovalRequestResult object { request_id, response, type }`
+
+    Responds to a pending Computer Use approval request.
+
+    - `request_id: string`
+
+      The registered request ID from the required action.
+
+    - `response: AgentBrowserAuthenticationSubmitParam or AgentBrowserAuthenticationCancelParam or AgentBrowserOriginAccessParam`
+
+      The response for this request type.
+
+      - `AgentBrowserAuthenticationSubmitParam object { action, fields, type, selected_option }`
+
+        - `action: "submit"`
+
+          - `"submit"`
+
+        - `fields: array of object { field_id, value }`
+
+          Values for up to six active fields in the required action. The submitted field-value mapping and selected option must fit within 120 KiB of JSON.
+
+          - `field_id: string`
+
+            The field ID from the required action.
+
+          - `value: string`
+
+            The value to enter into the registered control.
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+        - `selected_option: optional string or null`
+
+          The chosen method. Required when the required action contains options.
+
+      - `AgentBrowserAuthenticationCancelParam object { action, type }`
+
+        - `action: "cancel"`
+
+          - `"cancel"`
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+      - `AgentBrowserOriginAccessParam object { decision, type }`
+
+        - `decision: "approve" or "deny" or "cancel"`
+
+          Whether to allow, deny, or cancel the requested origin access.
+
+          - `"approve"`
+
+            Allow the browser to access this origin.
+
+          - `"deny"`
+
+            Deny access to this origin.
+
+          - `"cancel"`
+
+            Dismiss this request without approving access.
+
+        - `type: "browser_origin_access"`
+
+          - `"browser_origin_access"`
+
+    - `type: "agent.session.input.computer_use_approval_request_result"`
+
+      The type of the object. Always `agent.session.input.computer_use_approval_request_result`.
+
+      - `"agent.session.input.computer_use_approval_request_result"`
 
   - `AgentSessionInputMessage object { input, type }`
 
@@ -24448,18 +27252,18 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/events \
     -d '{
           "events": [
             {
-              "input": [
-                {
-                  "content": [
-                    {
-                      "text": "text",
-                      "type": "input_text"
-                    }
-                  ],
-                  "role": "user"
-                }
-              ],
-              "type": "agent.session.input.message"
+              "request_id": "request_id",
+              "response": {
+                "action": "submit",
+                "fields": [
+                  {
+                    "field_id": "field_id",
+                    "value": "value"
+                  }
+                ],
+                "type": "browser_authentication"
+              },
+              "type": "agent.session.input.computer_use_approval_request_result"
             }
           ]
         }'
@@ -24981,6 +27785,20 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               - `"web_search"`
 
+          - `ComputerUse object { include_screenshots, type }`
+
+            Browser use in an OpenAI-hosted session.
+
+            - `include_screenshots: boolean`
+
+              Whether computer tool outputs include screenshots.
+
+            - `type: "computer_use"`
+
+              The type of the object. Always `computer_use`.
+
+              - `"computer_use"`
+
       - `created_at: number`
 
         The Unix timestamp, in seconds, when the session was created.
@@ -24999,7 +27817,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             - `"none"`
 
-        - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+        - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
           An environment hosted by OpenAI.
 
@@ -25010,6 +27828,14 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
           - `capability_directories: array of string`
 
             Directories that contain capabilities exposed to the agent.
+
+          - `desktop: object { enabled }`
+
+            The effective desktop configuration.
+
+            - `enabled: boolean`
+
+              Whether the environment provisions a desktop and browser proxy.
 
           - `files: array of HostedEnvironmentFile`
 
@@ -25081,7 +27907,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
               - `"restricted"`
 
-                Allows access only to configured domains.
+                Applies the configured domain restrictions.
 
             - `allowed_domains: array of string`
 
@@ -25175,6 +28001,16 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
             - `"openai_hosted"`
 
+          - `container_size: optional "small" or "medium" or "large" or null`
+
+            The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+            - `"small"`
+
+            - `"medium"`
+
+            - `"large"`
+
         - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
           An environment hosted by the application.
@@ -25219,9 +28055,103 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         - `"agent.session"`
 
-      - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+      - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
         Actions that must be completed before the session can continue.
+
+        - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+          Respond to a computer-use request.
+
+          - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+            The information needed to render the request.
+
+            - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+              A registered form awaiting the application's response.
+
+              - `credential_origin: string or null`
+
+                The registered form or frame origin where values will be entered.
+
+              - `fields: array of object { id, label, required, type }`
+
+                Controls to render. All submitted values are sensitive.
+
+                - `id: string`
+
+                  The field ID to submit as field_id in a fields entry.
+
+                - `label: string`
+
+                  The label to display beside the control.
+
+                - `required: boolean`
+
+                  Whether this control requires a nonempty value.
+
+                - `type: string`
+
+                  The rendering type, such as email, password, or text.
+
+              - `options: array of object { id, field_ids, label }`
+
+                Sign-in methods. Empty for a plain form.
+
+                - `id: string`
+
+                  The option ID to submit as selected_option.
+
+                - `field_ids: array of string`
+
+                  IDs from the registered fields that this method accepts.
+
+                - `label: string`
+
+                  The method label to display.
+
+              - `reason: string or null`
+
+                Why the agent needs the user to sign in.
+
+              - `type: "browser_authentication"`
+
+                The type of the object. Always `browser_authentication`.
+
+                - `"browser_authentication"`
+
+            - `BrowserOriginAccess object { origin, reason, type }`
+
+              A browser origin awaiting the application's approval decision.
+
+              - `origin: string`
+
+                The origin the browser needs permission to access.
+
+              - `reason: string or null`
+
+                The browser's explanation for this request, or null when unavailable.
+
+              - `type: "browser_origin_access"`
+
+                The type of the object. Always `browser_origin_access`.
+
+                - `"browser_origin_access"`
+
+          - `request_id: string`
+
+            The registered request ID to echo when responding.
+
+          - `turn_id: string`
+
+            The turn that requested approval.
+
+          - `type: "computer_use_approval_request"`
+
+            The type of the object. Always `computer_use_approval_request`.
+
+            - `"computer_use_approval_request"`
 
         - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -25985,6 +28915,166 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
           - `"mcp_call"`
 
+      - `ComputerUseCall object { id, output, status, 3 more }`
+
+        One execution of the platform-provided computer-use capability.
+
+        - `id: string`
+
+          The ID of the activity item.
+
+        - `output: object { image_url, type }  or null`
+
+          The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+          - `image_url: string`
+
+            The complete JPEG image as a base64 data URL.
+
+          - `type: "computer_screenshot"`
+
+            The content type. Always `computer_screenshot`.
+
+            - `"computer_screenshot"`
+
+        - `status: AgentFunctionCallStatus`
+
+          The execution status of the activity.
+
+        - `title: string or null`
+
+          A model-generated description of the activity, when available.
+
+        - `turn_id: string`
+
+          The ID of the turn that contains this item.
+
+        - `type: "computer_use_call"`
+
+          The item type. Always `computer_use_call`.
+
+          - `"computer_use_call"`
+
+      - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+        A credential-free history record of the emitted login request.
+
+        - `id: string`
+
+          The stable history item ID.
+
+        - `request: object { credential_origin, fields, options, 2 more }`
+
+          A registered form awaiting the application's response.
+
+          - `credential_origin: string or null`
+
+            The registered form or frame origin where values will be entered.
+
+          - `fields: array of object { id, label, required, type }`
+
+            Controls to render. All submitted values are sensitive.
+
+            - `id: string`
+
+              The field ID to submit as field_id in a fields entry.
+
+            - `label: string`
+
+              The label to display beside the control.
+
+            - `required: boolean`
+
+              Whether this control requires a nonempty value.
+
+            - `type: string`
+
+              The rendering type, such as email, password, or text.
+
+          - `options: array of object { id, field_ids, label }`
+
+            Sign-in methods. Empty for a plain form.
+
+            - `id: string`
+
+              The option ID to submit as selected_option.
+
+            - `field_ids: array of string`
+
+              IDs from the registered fields that this method accepts.
+
+            - `label: string`
+
+              The method label to display.
+
+          - `reason: string or null`
+
+            Why the agent needs the user to sign in.
+
+          - `type: "browser_authentication"`
+
+            The type of the object. Always `browser_authentication`.
+
+            - `"browser_authentication"`
+
+        - `request_id: string`
+
+        - `turn_id: string`
+
+        - `type: "computer_use_approval_request"`
+
+          The item type. Always computer_use_approval_request.
+
+          - `"computer_use_approval_request"`
+
+      - `ComputerUseApprovalRequestResult object { id, request_id, response, 2 more }`
+
+        A credential-free record of an admitted response, not proof of completion.
+
+        - `id: string`
+
+          The stable history item ID.
+
+        - `request_id: string`
+
+          The registered request answered by this item.
+
+        - `response: object { action, selected_option, type }  or object { action, type }`
+
+          The admitted response, without submitted credential values.
+
+          - `Submit object { action, selected_option, type }`
+
+            - `action: "submit"`
+
+              - `"submit"`
+
+            - `selected_option: string or null`
+
+              The chosen sign-in method, or null when no options were offered.
+
+            - `type: "browser_authentication"`
+
+              - `"browser_authentication"`
+
+          - `Cancel object { action, type }`
+
+            - `action: "cancel"`
+
+              - `"cancel"`
+
+            - `type: "browser_authentication"`
+
+              - `"browser_authentication"`
+
+        - `turn_id: string`
+
+          The ID of the turn that contains this item.
+
+        - `type: "computer_use_approval_request_result"`
+
+          - `"computer_use_approval_request_result"`
+
       - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 
         A web search call produced by the agent.
@@ -26710,6 +29800,118 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       - `AgentMcpCallItem object { id, arguments, error, 6 more }`
 
         A call to a tool on an MCP server.
+
+      - `ComputerUseCall object { id, output, status, 3 more }`
+
+        One execution of the platform-provided computer-use capability.
+
+        - `id: string`
+
+          The ID of the activity item.
+
+        - `output: object { image_url, type }  or null`
+
+          The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+          - `image_url: string`
+
+            The complete JPEG image as a base64 data URL.
+
+          - `type: "computer_screenshot"`
+
+            The content type. Always `computer_screenshot`.
+
+            - `"computer_screenshot"`
+
+        - `status: AgentFunctionCallStatus`
+
+          The execution status of the activity.
+
+        - `title: string or null`
+
+          A model-generated description of the activity, when available.
+
+        - `turn_id: string`
+
+          The ID of the turn that contains this item.
+
+        - `type: "computer_use_call"`
+
+          The item type. Always `computer_use_call`.
+
+          - `"computer_use_call"`
+
+      - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+        A credential-free history record of the emitted login request.
+
+        - `id: string`
+
+          The stable history item ID.
+
+        - `request: object { credential_origin, fields, options, 2 more }`
+
+          A registered form awaiting the application's response.
+
+          - `credential_origin: string or null`
+
+            The registered form or frame origin where values will be entered.
+
+          - `fields: array of object { id, label, required, type }`
+
+            Controls to render. All submitted values are sensitive.
+
+            - `id: string`
+
+              The field ID to submit as field_id in a fields entry.
+
+            - `label: string`
+
+              The label to display beside the control.
+
+            - `required: boolean`
+
+              Whether this control requires a nonempty value.
+
+            - `type: string`
+
+              The rendering type, such as email, password, or text.
+
+          - `options: array of object { id, field_ids, label }`
+
+            Sign-in methods. Empty for a plain form.
+
+            - `id: string`
+
+              The option ID to submit as selected_option.
+
+            - `field_ids: array of string`
+
+              IDs from the registered fields that this method accepts.
+
+            - `label: string`
+
+              The method label to display.
+
+          - `reason: string or null`
+
+            Why the agent needs the user to sign in.
+
+          - `type: "browser_authentication"`
+
+            The type of the object. Always `browser_authentication`.
+
+            - `"browser_authentication"`
+
+        - `request_id: string`
+
+        - `turn_id: string`
+
+        - `type: "computer_use_approval_request"`
+
+          The item type. Always computer_use_approval_request.
+
+          - `"computer_use_approval_request"`
 
       - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 
@@ -27478,6 +30680,166 @@ Lists items produced by the session's root agent, including its interactions wit
       The item type. Always `mcp_call`.
 
       - `"mcp_call"`
+
+  - `ComputerUseCall object { id, output, status, 3 more }`
+
+    One execution of the platform-provided computer-use capability.
+
+    - `id: string`
+
+      The ID of the activity item.
+
+    - `output: object { image_url, type }  or null`
+
+      The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+      - `image_url: string`
+
+        The complete JPEG image as a base64 data URL.
+
+      - `type: "computer_screenshot"`
+
+        The content type. Always `computer_screenshot`.
+
+        - `"computer_screenshot"`
+
+    - `status: AgentFunctionCallStatus`
+
+      The execution status of the activity.
+
+    - `title: string or null`
+
+      A model-generated description of the activity, when available.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_call"`
+
+      The item type. Always `computer_use_call`.
+
+      - `"computer_use_call"`
+
+  - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+    A credential-free history record of the emitted login request.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request: object { credential_origin, fields, options, 2 more }`
+
+      A registered form awaiting the application's response.
+
+      - `credential_origin: string or null`
+
+        The registered form or frame origin where values will be entered.
+
+      - `fields: array of object { id, label, required, type }`
+
+        Controls to render. All submitted values are sensitive.
+
+        - `id: string`
+
+          The field ID to submit as field_id in a fields entry.
+
+        - `label: string`
+
+          The label to display beside the control.
+
+        - `required: boolean`
+
+          Whether this control requires a nonempty value.
+
+        - `type: string`
+
+          The rendering type, such as email, password, or text.
+
+      - `options: array of object { id, field_ids, label }`
+
+        Sign-in methods. Empty for a plain form.
+
+        - `id: string`
+
+          The option ID to submit as selected_option.
+
+        - `field_ids: array of string`
+
+          IDs from the registered fields that this method accepts.
+
+        - `label: string`
+
+          The method label to display.
+
+      - `reason: string or null`
+
+        Why the agent needs the user to sign in.
+
+      - `type: "browser_authentication"`
+
+        The type of the object. Always `browser_authentication`.
+
+        - `"browser_authentication"`
+
+    - `request_id: string`
+
+    - `turn_id: string`
+
+    - `type: "computer_use_approval_request"`
+
+      The item type. Always computer_use_approval_request.
+
+      - `"computer_use_approval_request"`
+
+  - `ComputerUseApprovalRequestResult object { id, request_id, response, 2 more }`
+
+    A credential-free record of an admitted response, not proof of completion.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request_id: string`
+
+      The registered request answered by this item.
+
+    - `response: object { action, selected_option, type }  or object { action, type }`
+
+      The admitted response, without submitted credential values.
+
+      - `Submit object { action, selected_option, type }`
+
+        - `action: "submit"`
+
+          - `"submit"`
+
+        - `selected_option: string or null`
+
+          The chosen sign-in method, or null when no options were offered.
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+      - `Cancel object { action, type }`
+
+        - `action: "cancel"`
+
+          - `"cancel"`
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_approval_request_result"`
+
+      - `"computer_use_approval_request_result"`
 
   - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 
@@ -28563,6 +31925,166 @@ Lists this subagent's own items across all of its turns. See [subagent workflows
       The item type. Always `mcp_call`.
 
       - `"mcp_call"`
+
+  - `ComputerUseCall object { id, output, status, 3 more }`
+
+    One execution of the platform-provided computer-use capability.
+
+    - `id: string`
+
+      The ID of the activity item.
+
+    - `output: object { image_url, type }  or null`
+
+      The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+      - `image_url: string`
+
+        The complete JPEG image as a base64 data URL.
+
+      - `type: "computer_screenshot"`
+
+        The content type. Always `computer_screenshot`.
+
+        - `"computer_screenshot"`
+
+    - `status: AgentFunctionCallStatus`
+
+      The execution status of the activity.
+
+    - `title: string or null`
+
+      A model-generated description of the activity, when available.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_call"`
+
+      The item type. Always `computer_use_call`.
+
+      - `"computer_use_call"`
+
+  - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+    A credential-free history record of the emitted login request.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request: object { credential_origin, fields, options, 2 more }`
+
+      A registered form awaiting the application's response.
+
+      - `credential_origin: string or null`
+
+        The registered form or frame origin where values will be entered.
+
+      - `fields: array of object { id, label, required, type }`
+
+        Controls to render. All submitted values are sensitive.
+
+        - `id: string`
+
+          The field ID to submit as field_id in a fields entry.
+
+        - `label: string`
+
+          The label to display beside the control.
+
+        - `required: boolean`
+
+          Whether this control requires a nonempty value.
+
+        - `type: string`
+
+          The rendering type, such as email, password, or text.
+
+      - `options: array of object { id, field_ids, label }`
+
+        Sign-in methods. Empty for a plain form.
+
+        - `id: string`
+
+          The option ID to submit as selected_option.
+
+        - `field_ids: array of string`
+
+          IDs from the registered fields that this method accepts.
+
+        - `label: string`
+
+          The method label to display.
+
+      - `reason: string or null`
+
+        Why the agent needs the user to sign in.
+
+      - `type: "browser_authentication"`
+
+        The type of the object. Always `browser_authentication`.
+
+        - `"browser_authentication"`
+
+    - `request_id: string`
+
+    - `turn_id: string`
+
+    - `type: "computer_use_approval_request"`
+
+      The item type. Always computer_use_approval_request.
+
+      - `"computer_use_approval_request"`
+
+  - `ComputerUseApprovalRequestResult object { id, request_id, response, 2 more }`
+
+    A credential-free record of an admitted response, not proof of completion.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request_id: string`
+
+      The registered request answered by this item.
+
+    - `response: object { action, selected_option, type }  or object { action, type }`
+
+      The admitted response, without submitted credential values.
+
+      - `Submit object { action, selected_option, type }`
+
+        - `action: "submit"`
+
+          - `"submit"`
+
+        - `selected_option: string or null`
+
+          The chosen sign-in method, or null when no options were offered.
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+      - `Cancel object { action, type }`
+
+        - `action: "cancel"`
+
+          - `"cancel"`
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_approval_request_result"`
+
+      - `"computer_use_approval_request_result"`
 
   - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 
@@ -29890,6 +33412,166 @@ Lists items belonging to one turn of this subagent. See [subagent workflows](/ap
       The item type. Always `mcp_call`.
 
       - `"mcp_call"`
+
+  - `ComputerUseCall object { id, output, status, 3 more }`
+
+    One execution of the platform-provided computer-use capability.
+
+    - `id: string`
+
+      The ID of the activity item.
+
+    - `output: object { image_url, type }  or null`
+
+      The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+      - `image_url: string`
+
+        The complete JPEG image as a base64 data URL.
+
+      - `type: "computer_screenshot"`
+
+        The content type. Always `computer_screenshot`.
+
+        - `"computer_screenshot"`
+
+    - `status: AgentFunctionCallStatus`
+
+      The execution status of the activity.
+
+    - `title: string or null`
+
+      A model-generated description of the activity, when available.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_call"`
+
+      The item type. Always `computer_use_call`.
+
+      - `"computer_use_call"`
+
+  - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+    A credential-free history record of the emitted login request.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request: object { credential_origin, fields, options, 2 more }`
+
+      A registered form awaiting the application's response.
+
+      - `credential_origin: string or null`
+
+        The registered form or frame origin where values will be entered.
+
+      - `fields: array of object { id, label, required, type }`
+
+        Controls to render. All submitted values are sensitive.
+
+        - `id: string`
+
+          The field ID to submit as field_id in a fields entry.
+
+        - `label: string`
+
+          The label to display beside the control.
+
+        - `required: boolean`
+
+          Whether this control requires a nonempty value.
+
+        - `type: string`
+
+          The rendering type, such as email, password, or text.
+
+      - `options: array of object { id, field_ids, label }`
+
+        Sign-in methods. Empty for a plain form.
+
+        - `id: string`
+
+          The option ID to submit as selected_option.
+
+        - `field_ids: array of string`
+
+          IDs from the registered fields that this method accepts.
+
+        - `label: string`
+
+          The method label to display.
+
+      - `reason: string or null`
+
+        Why the agent needs the user to sign in.
+
+      - `type: "browser_authentication"`
+
+        The type of the object. Always `browser_authentication`.
+
+        - `"browser_authentication"`
+
+    - `request_id: string`
+
+    - `turn_id: string`
+
+    - `type: "computer_use_approval_request"`
+
+      The item type. Always computer_use_approval_request.
+
+      - `"computer_use_approval_request"`
+
+  - `ComputerUseApprovalRequestResult object { id, request_id, response, 2 more }`
+
+    A credential-free record of an admitted response, not proof of completion.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request_id: string`
+
+      The registered request answered by this item.
+
+    - `response: object { action, selected_option, type }  or object { action, type }`
+
+      The admitted response, without submitted credential values.
+
+      - `Submit object { action, selected_option, type }`
+
+        - `action: "submit"`
+
+          - `"submit"`
+
+        - `selected_option: string or null`
+
+          The chosen sign-in method, or null when no options were offered.
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+      - `Cancel object { action, type }`
+
+        - `action: "cancel"`
+
+          - `"cancel"`
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_approval_request_result"`
+
+      - `"computer_use_approval_request_result"`
 
   - `AgentWebSearchCallItem object { id, action, status, 2 more }`
 

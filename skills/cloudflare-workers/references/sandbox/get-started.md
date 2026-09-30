@@ -1,7 +1,7 @@
 ---
-description: Create your first Sandbox SDK Worker to execute Python code in isolated containers.
-title: Getting started
-image: https://developers.cloudflare.com/sandbox/get-started/og.png?v=4e4d5a66038cd765
+description: POST a command to your Worker and read stdout from Linux.
+title: Run a Linux command
+image: https://developers.cloudflare.com/sandbox/get-started/og.png?v=af1e982b53ac49c7
 ---
 
 [Skip to content](#main-content)
@@ -10,23 +10,11 @@ image: https://developers.cloudflare.com/sandbox/get-started/og.png?v=4e4d5a6603
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Getting started
+# Run a Linux command
 
-Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Build your first application with Sandbox SDK - a secure code execution environment. In this guide, you'll create a Worker that can execute Python code and work with files in isolated containers.
-
-Coming soon: Sandbox SDK 1.0
-
-This guide uses today's stable `@cloudflare/sandbox` package.
-
-For **new projects**, we recommend the [1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/) on `@cloudflare/sandbox@next` so you start on the APIs that become Sandbox SDK 1.0. Refer to [Get started with the 1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/get-started/).
-
-Coding agents: install [Cloudflare Skills ↗︎](https://github.com/cloudflare/skills) ([Agent setup](https://developers.cloudflare.com/agent-setup/)). Use **`sandbox-stable`** with this guide; use **`sandbox-next`** for `@next`; use **`sandbox-migrate-to-next`** when porting.
-
-What you're building
-
-A simple API that can safely execute Python code and perform file operations in isolated sandbox environments.
+You will POST `uname -a` to a Worker and read stdout that contains `Linux`.
 
 ## Prerequisites
 
@@ -45,219 +33,227 @@ Use a Node version manager like <a href="https://volta.sh/">Volta ↗︎</a> or 
 
 </details>
 
-### Ensure Docker is running locally
+## Run a command in Linux
 
-Sandbox SDK uses [Docker ↗︎](https://www.docker.com/) to build container images alongside your Worker.
+1. Create a Worker project:npmyarnpnpm
 
-You must have Docker running locally when you run `wrangler deploy`. For most people, the best way to install Docker is to follow the [docs for installing Docker Desktop ↗︎](https://docs.docker.com/desktop/). Other tools like [Colima ↗︎](https://github.com/abiosoft/colima) may also work.
+   ```
+   npm create cloudflare@latest -- sandbox-linux --category=hello-world --type=hello-world --lang=ts --no-deploy --no-git --no-agents
+   ```
 
-You can check that Docker is running properly by running the `docker info` command in your terminal. If Docker is running, the command will succeed. If Docker is not running, the `docker info` command will hang or return an error including the message "Cannot connect to the Docker daemon".
+   ```
+   yarn create cloudflare sandbox-linux --category=hello-world --type=hello-world --lang=ts --no-deploy --no-git --no-agents
+   ```
 
-## 1. Create a new project
+   ```
+   pnpm create cloudflare@latest sandbox-linux --category=hello-world --type=hello-world --lang=ts --no-deploy --no-git --no-agents
+   ```
 
-Create a new Sandbox SDK project:
 
-npmyarnpnpm
+2. Change into the project directory:
 
-```
-npm create cloudflare@latest -- my-sandbox --template=cloudflare/sandbox-sdk/examples/minimal
-```
+   ```sh
+   cd sandbox-linux
+   ```
 
-```
-yarn create cloudflare my-sandbox --template=cloudflare/sandbox-sdk/examples/minimal
-```
 
-```
-pnpm create cloudflare@latest my-sandbox --template=cloudflare/sandbox-sdk/examples/minimal
-```
+3. Replace `wrangler.jsonc` so a Durable Object can start a container:
 
-This creates a `my-sandbox` directory with everything you need:
+   ```jsonc
+   {
+   	"$schema": "node_modules/wrangler/config-schema.json",
+   	"name": "sandbox-linux",
+   	"main": "src/index.ts",
+   	// Set this to today's date
+   	"compatibility_date": "2026-09-30",
+   	"observability": {
+   		"enabled": true,
+   	},
+   	"upload_source_maps": true,
+   	"containers": [
+   		{
+   			"class_name": "MyContainer",
+   			"scheduling_policy": "durable_object",
+   		},
+   	],
+   	"durable_objects": {
+   		"bindings": [
+   			{
+   				"class_name": "MyContainer",
+   				"name": "MY_CONTAINER",
+   			},
+   		],
+   	},
+   	"exports": {
+   		"MyContainer": {
+   			"type": "durable-object",
+   			"storage": "sqlite",
+   		},
+   	},
+   }
+   ```
 
-- `src/index.ts` - Worker with sandbox integration
-- `wrangler.jsonc` - Configuration for Workers and Containers
-- `Dockerfile` - Container environment definition
+   ```toml
+   "$schema" = "node_modules/wrangler/config-schema.json"
+   name = "sandbox-linux"
+   main = "src/index.ts"
+   # Set this to today's date
+   compatibility_date = "2026-09-30"
+   upload_source_maps = true
 
-```sh
-cd my-sandbox
-```
+   [observability]
+   enabled = true
 
-## 2. Explore the template
+   [[containers]]
+   class_name = "MyContainer"
+   scheduling_policy = "durable_object"
 
-The template provides a minimal Worker that demonstrates core sandbox capabilities:
+   [[durable_objects.bindings]]
+   class_name = "MyContainer"
+   name = "MY_CONTAINER"
 
-```typescript
-import { getSandbox, proxyToSandbox, type Sandbox } from "@cloudflare/sandbox";
+   [exports.MyContainer]
+   type = "durable-object"
+   storage = "sqlite"
+   ```
 
-export { Sandbox } from "@cloudflare/sandbox";
 
-type Env = {
-	Sandbox: DurableObjectNamespace<Sandbox>;
-};
+4. Replace `src/index.ts`. The Worker reads `argv` from the JSON body and runs it in Linux:
 
-export default {
-	async fetch(request: Request, env: Env): Promise<Response> {
-		const url = new URL(request.url);
+   *src/index.jsjs*
 
-		// Get or create a sandbox instance. For user-facing apps,
-		// derive this ID from the authenticated user.
-		const sandbox = getSandbox(env.Sandbox, "my-sandbox");
 
-		// Execute Python code
-		if (url.pathname === "/run") {
-			const result = await sandbox.exec('python3 -c "print(2 + 2)"');
-			return Response.json({
-				output: result.stdout,
-				error: result.stderr,
-				exitCode: result.exitCode,
-				success: result.success,
-			});
-		}
 
-		// Work with files
-		if (url.pathname === "/file") {
-			await sandbox.writeFile("/workspace/hello.txt", "Hello, Sandbox!");
-			const file = await sandbox.readFile("/workspace/hello.txt");
-			return Response.json({
-				content: file.content,
-			});
-		}
+   ```js
+   import { DurableObject } from "cloudflare:workers";
 
-		return new Response("Try /run or /file");
-	},
-};
-```
+   export class MyContainer extends DurableObject {
+   	async exec(argv) {
+   		const container = this.ctx.container;
+   		if (!container) {
+   			throw new Error("The container binding is not configured");
+   		}
 
-**Key concepts**:
+   		if (!container.running) {
+   			container.start({
+   				// Debian Trixie with Node.js 24
+   				image: "cloudflare/debian-trixie",
+   				// Keep the instance running so it can accept commands
+   				entrypoint: ["sleep", "infinity"],
+   				// Block commands in the sandbox from reaching the Internet
+   				enableInternet: false,
+   			});
+   		}
 
-- `getSandbox()` - Gets or creates a sandbox instance by ID. Use a stable ID to reconnect to the same sandbox. In user-facing apps, scope IDs to a single user.
-- `sandbox.exec()` - Execute shell commands in the sandbox and capture stdout, stderr, and exit codes.
-- `sandbox.writeFile()` / `readFile()` - Write and read files in the sandbox filesystem.
+   		const process = await container.exec(argv);
+   		const output = await process.output();
+   		return {
+   			stdout: new TextDecoder().decode(output.stdout),
+   			exitCode: output.exitCode,
+   		};
+   	}
+   }
 
-## 3. Test locally
+   export default {
+   	async fetch(request, env) {
+   		const { argv } = await request.json();
+   		const sandbox = env.MY_CONTAINER.getByName("sandbox");
+   		return Response.json(await sandbox.exec(argv));
+   	},
+   };
+   ```
 
-Start the development server:
+   *src/index.tsts*
 
-```sh
-npm run dev
-# If you expect to have multiple sandbox instances, you can increase `max_instances`.
-```
 
-Note
 
-First run builds the Docker container (2-3 minutes). Subsequent runs are much faster due to caching.
+   ```ts
+   import { DurableObject } from "cloudflare:workers";
 
-Test the endpoints:
+   export class MyContainer extends DurableObject<Env> {
+   	async exec(argv: string[]) {
+   		const container = this.ctx.container;
+   		if (!container) {
+   			throw new Error("The container binding is not configured");
+   		}
 
-```sh
-# Execute Python code
-curl http://localhost:8787/run
+   		if (!container.running) {
+   			container.start({
+   				// Debian Trixie with Node.js 24
+   				image: "cloudflare/debian-trixie",
+   				// Keep the instance running so it can accept commands
+   				entrypoint: ["sleep", "infinity"],
+   				// Block commands in the sandbox from reaching the Internet
+   				enableInternet: false,
+   			});
+   		}
 
-# File operations
-curl http://localhost:8787/file
-```
+   		const process = await container.exec(argv);
+   		const output = await process.output();
+   		return {
+   			stdout: new TextDecoder().decode(output.stdout),
+   			exitCode: output.exitCode,
+   		};
+   	}
+   }
 
-You should see JSON responses with the command output and file contents.
+   export default {
+   	async fetch(request: Request, env: Env): Promise<Response> {
+   		const { argv } = (await request.json()) as { argv: string[] };
+   		const sandbox = env.MY_CONTAINER.getByName("sandbox");
+   		return Response.json(await sandbox.exec(argv));
+   	},
+   };
+   ```
 
-## 4. Deploy to production
 
-Deploy your Worker and container:
+5. Generate types for the binding. Wrangler reads the `MyContainer` class from `src/index.ts` to type `env.MY_CONTAINER`:npmyarnpnpm
 
-```sh
-npx wrangler deploy
-```
+   ```
+   npx wrangler types
+   ```
 
-This will:
+   ```
+   yarn wrangler types
+   ```
 
-1. Build your container image using Docker
-2. Push it to Cloudflare's Container Registry
-3. Deploy your Worker globally
+   ```
+   pnpm wrangler types
+   ```
 
-Wait for provisioning
 
-After the first deployment, wait several minutes before you expect sandbox requests to succeed. The Worker deploys immediately, but the container image still has to provision.
+6. Run `wrangler dev`:npmyarnpnpm
 
-Check deployment status:
+   ```
+   npx wrangler dev
+   ```
 
-```sh
-npx wrangler containers list
-```
+   ```
+   yarn wrangler dev
+   ```
 
-## 5. Test your deployment
+   ```
+   pnpm wrangler dev
+   ```
 
-Visit your Worker URL (shown in deploy output):
+   `wrangler dev` runs the instance in [Docker ↗︎](https://www.docker.com/) on your machine, so Docker must be running. Running `cloudflare/debian-trixie` locally needs Wrangler 4.141.0 or later.
+7. POST a command to the URL Wrangler prints. The default is `http://localhost:8787`:
 
-```sh
-# Replace with your actual URL
-curl https://my-sandbox.YOUR_SUBDOMAIN.workers.dev/run
-```
+   ```sh
+   curl http://localhost:8787 --request POST --json '{"argv":["uname","-a"]}'
+   ```
 
-Your sandbox is now deployed and can execute code in isolated containers.
 
-## Understanding the configuration
 
-Your `wrangler.jsonc` connects three pieces together:
-
-```jsonc
-{
-	"containers": [
-		{
-			"class_name": "Sandbox",
-			"image": "./Dockerfile",
-			"instance_type": "lite",
-			"max_instances": 1,
-		},
-	],
-	"durable_objects": {
-		"bindings": [
-			{
-				"class_name": "Sandbox",
-				"name": "Sandbox",
-			},
-		],
-	},
-	"migrations": [
-		{
-			"new_sqlite_classes": ["Sandbox"],
-			"tag": "v1",
-		},
-	],
-}
-```
-
-```toml
-[[containers]]
-class_name = "Sandbox"
-image = "./Dockerfile"
-instance_type = "lite"
-max_instances = 1
-
-[[durable_objects.bindings]]
-class_name = "Sandbox"
-name = "Sandbox"
-
-[[migrations]]
-new_sqlite_classes = [ "Sandbox" ]
-tag = "v1"
-```
-
-- **containers** - Defines the [container image, instance type, and resource limits](https://developers.cloudflare.com/workers/wrangler/configuration/#containers) for your sandbox environment. If you expect to have multiple sandbox instances, you can increase `max_instances`.
-- **durable\_objects** - You need not be familiar with [Durable Objects](https://developers.cloudflare.com/durable-objects) to use Sandbox SDK, but if you'd like, you can [learn more about Cloudflare Containers and Durable Objects](https://developers.cloudflare.com/containers/get-started/#each-container-is-backed-by-its-own-durable-object). This configuration creates a [binding](https://developers.cloudflare.com/workers/runtime-apis/bindings#what-is-a-binding) that makes the `Sandbox` Durable Object accessible in your Worker code.
-- **migrations** - Registers the `Sandbox` class, implemented by the Sandbox SDK, with [SQLite storage backend](https://developers.cloudflare.com/durable-objects/best-practices/access-durable-objects-storage) (required once)
-
-For detailed configuration options including environment variables, secrets, and custom images, see the [Wrangler configuration reference](https://developers.cloudflare.com/sandbox/configuration/wrangler/).
+The JSON body includes `"exitCode":0`. `stdout` contains `Linux`. The Worker started a Linux VM and ran the command you sent.
 
 ## Next steps
 
-Now that you have a working sandbox, explore more capabilities:
-
-- [Code interpreter with Workers AI](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/) - Build an AI-powered code execution system
-- [Execute commands](https://developers.cloudflare.com/sandbox/guides/execute-commands/) - Run shell commands and stream output
-- [Manage files](https://developers.cloudflare.com/sandbox/guides/manage-files/) - Work with files and directories
-- [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/) - Deploy and keep package and image aligned
-- [Expose services](https://developers.cloudflare.com/sandbox/guides/expose-services/) - Get public URLs for services running in your sandbox
-- [Quick tunnels](https://developers.cloudflare.com/sandbox/api/tunnels/) - Zero-config `*.trycloudflare.com` URLs for development and `.workers.dev` deployments
-- [Configure preview URLs on a custom domain](https://developers.cloudflare.com/sandbox/guides/preview-urls-custom-domain/) - Wildcard DNS and TLS for `exposePort()`
-- [API reference](https://developers.cloudflare.com/sandbox/api/) - Complete API documentation
+- Run another process in the instance. Refer to [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec).
+- Deploy your Worker. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/). A deploy does not replace a running instance. Refer to [Sandbox lifetime](https://developers.cloudflare.com/sandbox/concepts/lifetime/#deploys-keep-instances-running).
+- Run JavaScript. Refer to [Run JavaScript](https://developers.cloudflare.com/sandbox/get-started/dynamic-workers/).
+- Use the [Durable Object container API](https://developers.cloudflare.com/containers/api/durable-object-container/) for `start()` and `exec()`.
+- Start a project from the [minimal sandbox template ↗︎](https://github.com/cloudflare/sandbox-sdk/tree/main/examples/minimal). It adds a `Dockerfile`, a sandbox for each name in the URL, and file reads and writes with `@cloudflare/sandbox`.
 
 Was this helpful?
 
@@ -268,5 +264,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/get-started/#page","headline":"Getting started","description":"Create your first Sandbox SDK Worker to execute Python code in isolated containers.","url":"https://developers.cloudflare.com/sandbox/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/get-started/og.png?v=4e4d5a66038cd765","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/get-started/#page","headline":"Run a Linux command","description":"POST a command to your Worker and read stdout from Linux.","url":"https://developers.cloudflare.com/sandbox/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/get-started/og.png?v=af1e982b53ac49c7","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

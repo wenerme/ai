@@ -61,7 +61,7 @@ TerminalStandaloneExtensionOpen Source
 
 4. **Launch OpenCode**
 
-   Start OpenCode from the root of your project, where `wrangler.jsonc` lives (if it already exists).
+   Start OpenCode from the root of your project, where `wrangler.jsonc` or `cloudflare.config.ts` lives (if either exists).
 
    ```bash
    opencode
@@ -73,7 +73,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
    ```
 
 
@@ -149,9 +149,9 @@ Local dev, deploys, and Workers-specific commands.
 
 Use <a href="https://developers.cloudflare.com/workers/wrangler/">Wrangler</a> for local development, deploys, and product-specific commands like <code>wrangler d1 migrations apply</code> or <code>wrangler tail</code>. The bundled **wrangler** Skill teaches the agent when to reach for it.
 
-What’s next
+Cloudflare CLI (beta)
 
-The unified <code>cf</code> CLI is in technical preview — a next-generation CLI that covers every Cloudflare product with consistent verbs and ergonomic output for agents. Try it with <code>npx cf</code>. <a href="https://blog.cloudflare.com/cf-cli-local-explorer/">Read the announcement →</a>
+The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, covers the public Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, then follow <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -178,23 +178,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips
@@ -207,11 +207,21 @@ Configure Zero Trust access policies to protect my internal staging environment.
 
 <details>
 
-<summary>Should I use Skills, the MCP server, Wrangler CLI, or all of them?
+<summary>Should I use Skills, the MCP server, a CLI, or all of them?
 
 </summary>
 
-All three. Skills provide persistent Cloudflare expertise so OpenCode knows when to reach for Durable Objects vs KV, how to structure a Workers project, and when to call CLI vs API. The Cloudflare API MCP server handles platform operations (DNS, WAF, Zero Trust, R2 buckets). Wrangler handles local dev, deploys, and Workers-specific commands. The bundled <code>wrangler</code> Skill teaches OpenCode which to use.
+All three. Skills provide persistent Cloudflare expertise so OpenCode knows when to reach for Durable Objects vs KV, how to structure a Workers project, and when to call CLI vs API. The Cloudflare API MCP server handles platform operations (DNS, WAF, Zero Trust, R2 buckets). Wrangler handles local dev, deploys, and Workers-specific commands. The bundled <code>wrangler</code> Skill teaches OpenCode which to use. For tasks across the whole Cloudflare API, OpenCode can also use the <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>.
+
+</details>
+
+<details>
+
+<summary>Can OpenCode use the Cloudflare CLI?
+
+</summary>
+
+Yes. The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, is in beta and covers the whole Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, sign in with <code>cf auth login</code>, and tell OpenCode to prefer it in <code>AGENTS.md</code>. Refer to <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -292,5 +302,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/opencode/#page","headline":"OpenCode + Cloudflare","description":"Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.","url":"https://developers.cloudflare.com/agent-setup/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/opencode/og.png?v=c6d479b47c893580","dateModified":"2026-04-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/opencode/#page","headline":"OpenCode + Cloudflare","description":"Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.","url":"https://developers.cloudflare.com/agent-setup/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/opencode/og.png?v=c6d479b47c893580","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

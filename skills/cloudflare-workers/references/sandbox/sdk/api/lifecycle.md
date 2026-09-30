@@ -1,0 +1,199 @@
+---
+description: Create, configure, and manage Sandbox SDK 0.x container instances and their resources.
+title: Lifecycle
+image: https://developers.cloudflare.com/sandbox/sdk/api/lifecycle/og.png?v=0bdf7d3cb4b28bfd
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Lifecycle
+
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/api/lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Note
+
+This page documents Sandbox SDK 0.x for existing applications. For new applications, refer to [Sandboxes](https://developers.cloudflare.com/sandbox/). To move an existing application to `@cloudflare/sandbox` 1.0, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).
+
+Create and manage sandbox containers. Get sandbox instances, configure options, and clean up resources.
+
+## Methods
+
+### `getSandbox()`
+
+Get or create a sandbox instance by ID.
+
+```ts
+const sandbox = getSandbox(
+  binding: DurableObjectNamespace<Sandbox>,
+  sandboxId: string,
+  options?: SandboxOptions
+): Sandbox
+```
+
+**Parameters**:
+
+- `binding` - The Durable Object namespace binding from your Worker environment
+- `sandboxId` - Unique identifier for this sandbox. The same ID always returns the same sandbox instance. In user-facing apps, scope IDs to a single user.
+- `options` (optional) - See [SandboxOptions](https://developers.cloudflare.com/sandbox/sdk/configuration/sandbox-options/) for all available options:
+  - `enableDefaultSession` - Use the default session for operations without an explicit `sessionId`. Set to `false` to evaluate each call in isolation (default: `true`)
+  - `sleepAfter` - Duration of inactivity before automatic sleep (default: `"10m"`)
+  - `keepAlive` - Prevent automatic sleep entirely. Persists across hibernation (default: `false`)
+  - `containerTimeouts` - Configure container startup timeouts
+  - `normalizeId` - Lowercase sandbox IDs for preview URL compatibility (default: `false`)
+
+**Returns**: `Sandbox` instance
+
+Note
+
+The container starts lazily on first operation. Calling `getSandbox()` returns immediately—the container only spins up when you execute a command, write a file, or perform other operations. See [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/sdk/concepts/sandboxes/) for details.
+
+Implicit execution mode
+
+By default, sandbox methods that do not specify a `sessionId` run in the sandbox's default session and preserve shell state between calls. It is recommended to set `enableDefaultSession` to `false` to ensure operations run in isolation. The `createSession()` API exists when sessions are required. Default sessions will be removed in a future version of the Sandbox SDK.
+
+```js
+import { getSandbox } from "@cloudflare/sandbox";
+
+export default {
+	async fetch(request, env) {
+		const sandbox = getSandbox(env.Sandbox, "user-123");
+		const result = await sandbox.exec("python script.py");
+		return Response.json(result);
+	},
+};
+```
+
+```plaintext
+import { getSandbox } from '@cloudflare/sandbox';
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const sandbox = getSandbox(env.Sandbox, 'user-123');
+    const result = await sandbox.exec('python script.py');
+    return Response.json(result);
+  }
+};
+```
+
+Caution
+
+When using `keepAlive: true`, you **must** call `destroy()` when finished to prevent containers running indefinitely.
+
+---
+
+### `setKeepAlive()`
+
+Enable or disable keepAlive mode dynamically after sandbox creation.
+
+```ts
+await sandbox.setKeepAlive(keepAlive: boolean): Promise<void>
+```
+
+**Parameters**:
+
+- `keepAlive` - `true` to prevent automatic sleep, `false` to allow normal sleep behavior
+
+When enabled, the sandbox automatically sends heartbeat pings every 30 seconds to prevent container eviction. When disabled, the sandbox returns to normal sleep behavior based on the `sleepAfter` configuration.
+
+```js
+const sandbox = getSandbox(env.Sandbox, "user-123");
+
+// Enable keepAlive for a long-running process
+await sandbox.setKeepAlive(true);
+await sandbox.startProcess("python long_running_analysis.py");
+
+// Later, disable keepAlive when done
+await sandbox.setKeepAlive(false);
+```
+
+```plaintext
+const sandbox = getSandbox(env.Sandbox, 'user-123');
+
+// Enable keepAlive for a long-running process
+await sandbox.setKeepAlive(true);
+await sandbox.startProcess('python long_running_analysis.py');
+
+// Later, disable keepAlive when done
+await sandbox.setKeepAlive(false);
+```
+
+Heartbeat mechanism
+
+When keepAlive is enabled, the sandbox automatically sends lightweight ping requests to the container every 30 seconds to prevent eviction. This happens transparently without affecting your application code.
+
+Resource management
+
+Containers with `keepAlive: true` will not automatically timeout. Always disable keepAlive or call `destroy()` when done to prevent containers running indefinitely.
+
+---
+
+### `destroy()`
+
+Destroy the sandbox container and free up resources.
+
+```ts
+await sandbox.destroy(): Promise<void>
+```
+
+Immediately terminates the container and permanently deletes all state:
+
+- All files in `/workspace`, `/tmp`, and `/home`
+- All running processes
+- All sessions (including the default session)
+- Network connections and exposed ports
+
+```js
+async function executeCode(code) {
+	const sandbox = getSandbox(env.Sandbox, `temp-${Date.now()}`);
+
+	try {
+		await sandbox.writeFile("/tmp/code.py", code);
+		const result = await sandbox.exec("python /tmp/code.py");
+		return result.stdout;
+	} finally {
+		await sandbox.destroy();
+	}
+}
+```
+
+```plaintext
+async function executeCode(code: string): Promise<string> {
+  const sandbox = getSandbox(env.Sandbox, `temp-${Date.now()}`);
+
+  try {
+    await sandbox.writeFile('/tmp/code.py', code);
+    const result = await sandbox.exec('python /tmp/code.py');
+    return result.stdout;
+  } finally {
+    await sandbox.destroy();
+  }
+}
+```
+
+Note
+
+Containers automatically sleep after 10 minutes of inactivity but still count toward account limits. Use `destroy()` to immediately free up resources.
+
+---
+
+## Related resources
+
+- [Sandbox lifecycle concept](https://developers.cloudflare.com/sandbox/sdk/concepts/sandboxes/) - Understanding container lifecycle and state
+- [Sandbox options configuration](https://developers.cloudflare.com/sandbox/sdk/configuration/sandbox-options/) - Configure `keepAlive` and other options
+- [Sessions API](https://developers.cloudflare.com/sandbox/sdk/api/sessions/) - Create execution contexts within a sandbox
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/api/lifecycle/#page","headline":"Lifecycle","description":"Create, configure, and manage Sandbox SDK 0.x container instances and their resources.","url":"https://developers.cloudflare.com/sandbox/sdk/api/lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/api/lifecycle/og.png?v=0bdf7d3cb4b28bfd","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

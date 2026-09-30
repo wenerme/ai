@@ -118,6 +118,9 @@ Next, we need to add bindings to access our secrets, KV values, and environment 
 ```jsonc
 {
 	"name": "my-container-worker",
+	"observability": {
+		"enabled": true
+	},
 	"vars": {
 		"ENV_VAR": "my-env-var"
 	},
@@ -140,6 +143,9 @@ Next, we need to add bindings to access our secrets, KV values, and environment 
 
 ```toml
 name = "my-container-worker"
+
+[observability]
+enabled = true
 
 [vars]
 ENV_VAR = "my-env-var"

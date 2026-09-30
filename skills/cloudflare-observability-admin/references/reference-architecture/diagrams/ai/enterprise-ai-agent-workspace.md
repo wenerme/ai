@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/reference-architecture/diagrams/ai/ente
 
 # Enterprise AI agent workspace
 
-Last updated Jul 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Introduction
 
@@ -20,7 +20,7 @@ An enterprise AI agent workspace gives employees a persistent environment for co
 
 Employees use a workspace to produce documents, presentations, spreadsheets, research, workflows, source code, and apps. These outputs outlive the conversation. An employee can review, share, export, or keep improving them with AI.
 
-The architecture uses [Cloudflare Workers](https://developers.cloudflare.com/workers/) and the [Agents SDK](https://developers.cloudflare.com/agents/) for orchestration, [Durable Objects](https://developers.cloudflare.com/durable-objects/) for state, [AI Gateway](https://developers.cloudflare.com/ai-gateway/) for model governance, and [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) for enterprise tools. [Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/), [Sandbox SDK](https://developers.cloudflare.com/sandbox/) containers, and [Browser Run](https://developers.cloudflare.com/browser-run/) handle work that needs more than model inference.
+The architecture uses [Cloudflare Workers](https://developers.cloudflare.com/workers/) and the [Agents SDK](https://developers.cloudflare.com/agents/) for orchestration, [Durable Objects](https://developers.cloudflare.com/durable-objects/) for state, [AI Gateway](https://developers.cloudflare.com/ai-gateway/) for model governance, and [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/) for enterprise tools. [Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/), [Sandbox SDK](https://developers.cloudflare.com/sandbox/sdk/) containers, and [Browser Run](https://developers.cloudflare.com/browser-run/) handle work that needs more than model inference.
 
 Unlike an [enterprise vibe coding platform](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/), the result is not always a deployed application. Source code and apps are two output types among documents, data, analysis, and repeatable workflows.
 
@@ -45,7 +45,7 @@ Each workspace maps to one Durable Object running the Agents SDK. This object is
 
 A separate per-user Durable Object stores profile settings, the workspace registry, integrations, and grants. One user owns many independently stateful workspaces.
 
-The workspace coordinates resources but does not store everything. The workspace picks an execution environment per task: Dynamic Workers for bounded [Code Mode](https://developers.cloudflare.com/agents/model-context-protocol/), Sandbox SDK containers for a full shell and build environment, and Browser Run for isolated browser sessions. Large files and reusable outputs live in a versioned file service, and sharing grants are kept separate from the output bytes so access can be granted or revoked without moving the file. Sandbox backups and shared organizational context use [R2](https://developers.cloudflare.com/r2/). Usage and lifecycle events use [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) or an external system.
+The workspace coordinates resources but does not store everything. The workspace picks an execution environment per task: Dynamic Workers for bounded [Code Mode](https://developers.cloudflare.com/agents/model-context-protocol/), [Linux sandboxes](https://developers.cloudflare.com/sandbox/) for a full shell and build environment, and Browser Run for isolated browser sessions. Large files and reusable outputs live in a versioned file service, and sharing grants are kept separate from the output bytes so access can be granted or revoked without moving the file. Sandbox backups and shared organizational context use [R2](https://developers.cloudflare.com/r2/). Usage and lifecycle events use [Workers Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) or an external system.
 
 | Scope | Cloudflare primitive | Responsibility | Lifetime |
 | --- | --- | --- | --- |
@@ -53,7 +53,7 @@ The workspace coordinates resources but does not store everything. The workspace
 | User | Durable Object | Profile, workspace registry, integrations, grants, and activity | Durable |
 | Workspace | Agents SDK and Durable Object | Agent state, event queue, and turn orchestration | Durable |
 | Code Mode execution | Dynamic Worker | Bounded code and tool composition | Ephemeral |
-| Active development environment | Sandbox SDK container | Shell, builds, previews, and coding sessions | Created on demand |
+| Active development environment | Linux sandbox (Containers) | Shell, builds, previews, and coding sessions | Created on demand |
 | Browser session | Browser Run | Web navigation, interaction, screenshots, and PDF rendering | Session scoped |
 | User files | Versioned file service | Files, saved outputs, and revisions | Durable |
 | Skills and context library | Read-only object store (R2) | Curated skills, reference context, and commands | Published centrally |
@@ -80,7 +80,7 @@ Treat model output, tool output, and generated code as untrusted. Apply controls
 - **Identity:** Use Access for browser sessions and MCP portal connections. Verify asynchronous channels before routing their events to a workspace.
 - **Authorization:** Check user ownership before resolving a workspace, opening a terminal, reading an output, or serving a preview.
 - **Tool access:** Use MCP server portal policies, tool allowlists, OAuth, grants, and consent for sensitive operations.
-- **Code isolation:** Run bounded code in Dynamic Workers and full development workloads in Sandbox SDK containers.
+- **Code isolation:** Run bounded code in Dynamic Workers and full development workloads in Linux sandboxes.
 - **Credential isolation:** Keep model and tool credentials in platform services. Never expose them to generated code or model context.
 - **Curated inputs:** Publish skills and context to a read-only, versioned store. A workspace cannot mutate the shared library.
 - **Auditability:** Record model usage, tool calls, consent decisions, output sharing, and execution lifecycle events.
@@ -91,7 +91,7 @@ Treat model output, tool output, and generated code as untrusted. Apply controls
 - [AI Gateway](https://developers.cloudflare.com/ai-gateway/)
 - [MCP server portals](https://developers.cloudflare.com/cloudflare-one/access-controls/ai-controls/mcp-portals/)
 - [Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/)
-- [Sandbox SDK](https://developers.cloudflare.com/sandbox/)
+- [Sandboxes](https://developers.cloudflare.com/sandbox/)
 - [Browser Run](https://developers.cloudflare.com/browser-run/)
 - [AI Vibe Coding Platform](https://developers.cloudflare.com/reference-architecture/diagrams/ai/ai-vibe-coding-platform/)
 - [Enterprise AI Vibe Coding Platform](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/)
@@ -105,5 +105,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/#page","headline":"Enterprise AI agent workspace","description":"Reference architecture for building governed, stateful enterprise AI agent workspaces on Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/og.png?v=33f6fc12693502e6","dateModified":"2026-07-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/#page","headline":"Enterprise AI agent workspace","description":"Reference architecture for building governed, stateful enterprise AI agent workspaces on Cloudflare.","url":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/","inLanguage":"en","image":"https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-agent-workspace/og.png?v=33f6fc12693502e6","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

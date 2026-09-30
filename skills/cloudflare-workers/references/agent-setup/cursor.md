@@ -43,7 +43,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+   Build a serverless AI inference endpoint on Workers AI with streaming responses.
    ```
 
 
@@ -119,9 +119,9 @@ Local dev, deploys, and Workers-specific commands.
 
 Use <a href="https://developers.cloudflare.com/workers/wrangler/">Wrangler</a> for local development, deploys, and product-specific commands like <code>wrangler d1 migrations apply</code> or <code>wrangler tail</code>. The bundled **wrangler** Skill teaches the agent when to reach for it.
 
-What’s next
+Cloudflare CLI (beta)
 
-The unified <code>cf</code> CLI is in technical preview — a next-generation CLI that covers every Cloudflare product with consistent verbs and ergonomic output for agents. Try it with <code>npx cf</code>. <a href="https://blog.cloudflare.com/cf-cli-local-explorer/">Read the announcement →</a>
+The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, covers the public Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, then follow <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -148,29 +148,29 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips
 
 - The Cloudflare API MCP server uses Code Mode — Cursor writes JavaScript against a typed API to reach any of 2,500+ endpoints in \~1,000 tokens.
-- Add `@wrangler.jsonc` to your Composer prompts so Cursor sees your current bindings when generating or modifying code.
+- Add `@wrangler.jsonc` or `@cloudflare.config.ts` to your Composer prompts so Cursor sees your current bindings when generating or modifying code.
 
 ### [Cloudflare MCP server repository](https://github.com/cloudflare/mcp-server-cloudflare)
 
@@ -180,11 +180,21 @@ Available MCP servers, and when to use Code Mode versus traditional MCP servers.
 
 <details>
 
-<summary>Should I use Skills, the MCP server, Wrangler CLI, or all of them?
+<summary>Should I use Skills, the MCP server, a CLI, or all of them?
 
 </summary>
 
-All three work together. Skills give Cursor persistent Cloudflare knowledge loaded into every Composer prompt. The Cloudflare API MCP server handles platform operations (DNS, WAF, R2 buckets, Zero Trust). Wrangler runs local dev and Workers-specific commands. The bundled <code>wrangler</code> Skill teaches Cursor when to reach for which.
+All three work together. Skills give Cursor persistent Cloudflare knowledge loaded into every Composer prompt. The Cloudflare API MCP server handles platform operations (DNS, WAF, R2 buckets, Zero Trust). Wrangler runs local dev and Workers-specific commands. The bundled <code>wrangler</code> Skill teaches Cursor when to reach for which. For tasks across the whole Cloudflare API, Cursor can also use the <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>.
+
+</details>
+
+<details>
+
+<summary>Can Cursor use the Cloudflare CLI?
+
+</summary>
+
+Yes. The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, is in beta and covers the whole Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, sign in with <code>cf auth login</code>, and tell Cursor to prefer it in your project rules or <code>AGENTS.md</code>. Refer to <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -206,7 +216,7 @@ Install the Skills plugin (from the Cursor Marketplace, or Settings &gt; Rules
 
 </summary>
 
-Yes. Ask Composer to deploy your project. Cursor runs Wrangler commands in the integrated terminal and can also call the API MCP server for managed deploys and resource creation.
+Yes. Ask Composer to deploy your project. Cursor runs <code>wrangler deploy</code> or <code>cf deploy</code> in the integrated terminal, depending on how the project is configured, and can also call the API MCP server for managed deploys and resource creation.
 
 </details>
 
@@ -238,7 +248,7 @@ Enable the <a href="https://github.com/cloudflare/mcp-server-cloudflare">Cloudfl
 
 </summary>
 
-Add the Cloudflare docs MCP server and Workers documentation to your project context. Use @-mentions to reference <code>wrangler.jsonc</code>.
+Add the Cloudflare docs MCP server and Workers documentation to your project context. Use @-mentions to reference <code>wrangler.jsonc</code> or <code>cloudflare.config.ts</code>.
 
 </details>
 
@@ -267,5 +277,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/cursor/#page","headline":"Cursor + Cloudflare","description":"AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.","url":"https://developers.cloudflare.com/agent-setup/cursor/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/cursor/og.png?v=cd111722160e6c8a","dateModified":"2026-07-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/cursor/#page","headline":"Cursor + Cloudflare","description":"AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.","url":"https://developers.cloudflare.com/agent-setup/cursor/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/cursor/og.png?v=cd111722160e6c8a","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

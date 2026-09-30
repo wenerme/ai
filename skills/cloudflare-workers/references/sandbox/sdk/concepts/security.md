@@ -1,0 +1,239 @@
+---
+description: Sandbox SDK 0.x uses VM-level isolation, input validation, and network controls to run untrusted code safely.
+title: Security model
+image: https://developers.cloudflare.com/sandbox/sdk/concepts/security/og.png?v=d159f91c3f5a4956
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Security model
+
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/concepts/security/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Note
+
+This page documents Sandbox SDK 0.x for existing applications. For new applications, refer to [Sandbox security](https://developers.cloudflare.com/sandbox/concepts/security/). To move an existing application to `@cloudflare/sandbox` 1.0, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).
+
+The Sandbox SDK is built on [Containers](https://developers.cloudflare.com/containers/), which run each sandbox in its own VM for strong isolation.
+
+## Container isolation
+
+Each sandbox runs in a separate VM, providing complete isolation:
+
+- **Filesystem isolation** - Sandboxes cannot access other sandboxes' files
+- **Process isolation** - Processes in one sandbox cannot see or affect others
+- **Network isolation** - Sandboxes have separate network stacks
+- **Resource limits** - CPU, memory, and disk quotas are enforced per sandbox
+
+For complete security details about the underlying container platform, see [Containers architecture](https://developers.cloudflare.com/containers/concepts/architecture/).
+
+## Within a sandbox
+
+All code within a single sandbox shares resources:
+
+- **Filesystem** - All processes see the same files
+- **Processes** - All sessions can see all processes
+- **Network** - Processes can communicate via localhost
+
+For complete isolation, use separate sandboxes per user:
+
+```typescript
+// Good - Each user in separate sandbox
+const userSandbox = getSandbox(env.Sandbox, `user-${userId}`);
+
+// Bad - Users sharing one sandbox
+const shared = getSandbox(env.Sandbox, 'shared');
+// Users can read each other's files!
+```
+
+## Input validation
+
+### Command injection
+
+Always validate user input before using it in commands:
+
+```typescript
+// Dangerous - user input directly in command
+const filename = userInput;
+await sandbox.exec(`cat ${filename}`);
+// User could input: "file.txt; rm -rf /"
+
+// Safe - validate input
+const filename = userInput.replace(/[^a-zA-Z0-9._-]/g, '');
+await sandbox.exec(`cat ${filename}`);
+
+// Better - use file API
+await sandbox.writeFile('/tmp/input', userInput);
+await sandbox.exec('cat /tmp/input');
+```
+
+## Authentication
+
+### Sandbox access
+
+Sandbox IDs provide basic access control but aren't cryptographically secure. Add application-level authentication:
+
+```typescript
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const userId = await authenticate(request);
+    if (!userId) {
+      return new Response('Unauthorized', { status: 401 });
+    }
+
+    // User can only access their sandbox
+    const sandbox = getSandbox(env.Sandbox, userId);
+    return Response.json({ authorized: true });
+  }
+};
+```
+
+### Preview URLs
+
+Preview URLs include randomly generated tokens. Anyone with the URL can access the service.
+
+To revoke access, unexpose the port:
+
+```typescript
+await sandbox.unexposePort(8080);
+```
+
+### Quick tunnel URLs
+
+Quick tunnels (`sandbox.tunnels.get(port)`) return a `*.trycloudflare.com` URL with a random hostname assigned by Cloudflare — there is no separate access token. The hostname itself is the access control: anyone who knows the URL can reach the service. To revoke access, destroy the tunnel:
+
+```typescript
+await sandbox.tunnels.destroy(8080);
+```
+
+URLs do not survive a container restart, so a restart effectively rotates the hostname. As with preview URLs, add application-level authentication for any sensitive service. See the [Tunnels API](https://developers.cloudflare.com/sandbox/sdk/api/tunnels/) for details.
+
+```python
+from flask import Flask, request, abort
+import os
+
+app = Flask(__name__)
+
+def check_auth():
+    token = request.headers.get('Authorization')
+    if token != f"Bearer {os.environ['AUTH_TOKEN']}":
+        abort(401)
+
+@app.route('/api/data')
+def get_data():
+    check_auth()
+    return {'data': 'protected'}
+```
+
+## Secrets management
+
+Use environment variables, not hardcoded secrets, for values the sandbox process must consume directly:
+
+```typescript
+// Bad - hardcoded in file
+await sandbox.writeFile('/workspace/config.js', `
+  const API_KEY = 'sk_live_abc123';
+`);
+
+// Good - use environment variables for values the sandbox process needs
+await sandbox.startProcess('node app.js', {
+  env: {
+    API_KEY: env.API_KEY,  // From Worker environment binding
+  }
+});
+```
+
+For external API credentials that the sandbox does not need to read directly, keep the credential in the Worker and inject it with an outbound handler.
+
+Clean up temporary sensitive data:
+
+```typescript
+try {
+  await sandbox.writeFile('/tmp/sensitive.txt', secretData);
+  await sandbox.exec('python process.py /tmp/sensitive.txt');
+} finally {
+  await sandbox.deleteFile('/tmp/sensitive.txt');
+}
+```
+
+## Handle outbound traffic
+
+Passing external API credentials directly to a sandbox — via environment variables or files — means the sandbox process holds a live credential that any code running inside it can read. Outbound handlers remove that exposure by keeping credentials in the Worker and injecting them into outbound requests.
+
+The flow works as follows:
+
+```txt
+Sandbox request → Outbound handler (injects real credentials) → External API
+```
+
+The sandbox never sees the real credential. Rotate the secret in your Worker's environment and every request uses the updated value.
+
+This pattern is useful when accessing GitHub for private repository operations, AI services, or object storage where you want to keep credentials out of the container entirely. For implementation details, refer to [Handle outbound traffic](https://developers.cloudflare.com/sandbox/sdk/guides/outbound-traffic/).
+
+## What the SDK protects against
+
+- Sandbox-to-sandbox access (VM isolation)
+- Resource exhaustion (enforced quotas)
+- Container escapes (VM-based isolation)
+
+## What you must implement
+
+- Authentication and authorization
+- Input validation and sanitization
+- Rate limiting
+- Application-level security (SQL injection, XSS, etc.)
+
+## Best practices
+
+**Use separate sandboxes for isolation**:
+
+```typescript
+const sandbox = getSandbox(env.Sandbox, `user-${userId}`);
+```
+
+**Validate all inputs**:
+
+```typescript
+const safe = input.replace(/[^a-zA-Z0-9._-]/g, '');
+await sandbox.exec(`command ${safe}`);
+```
+
+**Use environment variables for secrets**:
+
+```typescript
+await sandbox.startProcess('node app.js', {
+  env: { API_KEY: env.API_KEY }
+});
+```
+
+**Clean up temporary resources**:
+
+```typescript
+try {
+  const sandbox = getSandbox(env.Sandbox, sessionId);
+  await sandbox.exec('npm test');
+} finally {
+  await sandbox.destroy();
+}
+```
+
+## Related resources
+
+- [Containers architecture](https://developers.cloudflare.com/containers/concepts/architecture/) - Underlying platform security
+- [Sandbox lifecycle](https://developers.cloudflare.com/sandbox/sdk/concepts/sandboxes/) - Resource management
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/concepts/security/#page","headline":"Security model","description":"Sandbox SDK 0.x uses VM-level isolation, input validation, and network controls to run untrusted code safely.","url":"https://developers.cloudflare.com/sandbox/sdk/concepts/security/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/concepts/security/og.png?v=d159f91c3f5a4956","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

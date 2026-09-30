@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/guides/execute-commands/og.p
 
 # Execute commands
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/execute-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/guides/execute-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `exec()` to start another process inside a running [Container](https://developers.cloudflare.com/containers/api/container-class/). The examples call `this.ctx.container.exec()` inside a class extending `Container` from `@cloudflare/containers`.
 
@@ -247,7 +247,7 @@ Close the writer to send end-of-file (EOF). If you omit `stdin`, `exec()` closes
 
 ### Pass an RPC stream to standard input
 
-RPC methods can accept byte-oriented `ReadableStream` values whose underlying source uses `type: "bytes"`. A `Request` body meets this requirement. You can pass the received stream directly to `exec()` without buffering the entire stream in the Durable Object. For more information, refer to [Streams over RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/#readablestream-writeablestream-request-and-response).
+RPC methods can accept byte-oriented `ReadableStream` values whose underlying source uses `type: "bytes"`. A `Request` body meets this requirement. You can pass the received stream directly to `exec()` without buffering the entire stream in the Durable Object. For more information, refer to [Streams over RPC](https://developers.cloudflare.com/workers/runtime-apis/rpc/#readablestream-writablestream-request-and-response).
 
 ```js
 import { Container, getContainer } from "@cloudflare/containers";
@@ -364,7 +364,7 @@ export class MyContainer extends Container {
 
 ## Set the process context
 
-Use `cwd`, `env`, and `user` to set the process context. The process inherits the Container environment set by `envVars`. Per-execution `env` values add variables or override matching keys.
+Use `cwd`, `env`, and `user` to set the process context. The process receives only the variables in `env`, plus `PATH`. It does not inherit other variables from `envVars` or the image. `PATH` comes from `envVars`, or from the image when `envVars` does not set it. To give a command a value from `envVars`, pass it in `env` as well.
 
 This example uses `sh` because it needs expansion and redirection. It also captures standard output and standard error separately.
 
@@ -372,11 +372,6 @@ This example uses `sh` because it needs expansion and redirection. It also captu
 import { Container } from "@cloudflare/containers";
 
 export class MyContainer extends Container {
-	envVars = {
-		BASE_VALUE: "inherited",
-		MODE: "default",
-	};
-
 	async inspectWorkspace() {
 		if (!this.ctx.container.running) {
 			await this.start();
@@ -386,7 +381,7 @@ export class MyContainer extends Container {
 			[
 				"sh",
 				"-c",
-				'printf "%s:%s:%s:%s" "$PWD" "$BASE_VALUE" "$MODE" "$EXTRA_VALUE"; printf "diagnostic" >&2',
+				'printf "%s:%s:%s" "$PWD" "$MODE" "$EXTRA_VALUE"; printf "diagnostic" >&2',
 			],
 			{
 				cwd: "/workspace",
@@ -411,11 +406,6 @@ export class MyContainer extends Container {
 import { Container } from "@cloudflare/containers";
 
 export class MyContainer extends Container {
-	envVars = {
-		BASE_VALUE: "inherited",
-		MODE: "default",
-	};
-
 	async inspectWorkspace() {
 		if (!this.ctx.container.running) {
 			await this.start();
@@ -425,7 +415,7 @@ export class MyContainer extends Container {
 			[
 				"sh",
 				"-c",
-				'printf "%s:%s:%s:%s" "$PWD" "$BASE_VALUE" "$MODE" "$EXTRA_VALUE"; printf "diagnostic" >&2',
+				'printf "%s:%s:%s" "$PWD" "$MODE" "$EXTRA_VALUE"; printf "diagnostic" >&2',
 			],
 			{
 				cwd: "/workspace",
@@ -446,7 +436,7 @@ export class MyContainer extends Container {
 }
 ```
 
-The `user` option sets the user name or numeric user ID (UID) for the process. The Container runtime resolves user names from the container image.
+The `user` option sets the numeric Linux user and group IDs for the process, as `uid:gid`. When omitted, the process runs as the image user. Before you rely on `user` to restrict a process, refer to [`exec()`](https://developers.cloudflare.com/containers/api/durable-object-container/#exec).
 
 ## Combine standard error
 
@@ -506,7 +496,7 @@ export class MyContainer extends Container {
 }
 ```
 
-The merged stream does not guarantee ordering between source streams. In this mode, `process.stderr` is `null`, and `output.stderr` is an empty `ArrayBuffer`. This example assumes Bash exists in the image.
+The merged stream does not guarantee ordering between source streams. In this mode, `process.stderr` is `undefined`, and `output.stderr` is an empty `ArrayBuffer`. This example assumes Bash exists in the image.
 
 ## Handle nonzero exits
 
@@ -750,6 +740,44 @@ export class MyContainer extends Container {
 
 Calling `kill()` without an argument queues a `SIGTERM`, signal `15`. You can pass another signal when the process requires it. A process can handle or ignore a signal, so this is not a hard execution deadline. Observe completion through `exitCode`, and do not infer a specific exit code from a signal.
 
+### Stop the processes a command starts
+
+`kill()` signals only the process that `exec()` started. Processes that this process starts, such as the commands in a `bash -c` script, keep running after `exitCode` resolves. `output()` waits until they exit.
+
+To stop a command together with the processes it starts, run it under GNU coreutils `timeout`. The image must include `timeout`.
+
+```js
+const process = await this.ctx.container.exec([
+	"timeout",
+	"--kill-after=5",
+	"30",
+	"bash",
+	"-c",
+	"npm test",
+]);
+const output = await process.output();
+
+// 124 when the command times out, or 137 if timeout also sends SIGKILL.
+console.log(output.exitCode);
+```
+
+```ts
+const process = await this.ctx.container.exec([
+	"timeout",
+	"--kill-after=5",
+	"30",
+	"bash",
+	"-c",
+	"npm test",
+]);
+const output = await process.output();
+
+// 124 when the command times out, or 137 if timeout also sends SIGKILL.
+console.log(output.exitCode);
+```
+
+After 30 seconds, `timeout` sends `SIGTERM` to its process group. The group includes every process the command starts, unless a process moves to its own group, for example with `setsid`. With `--kill-after=5`, `timeout` sends `SIGKILL` to the group five seconds later if the command is still running.
+
 ## Coordinate operations
 
 Place `exec()` calls in the Durable Object that controls the Container. The Durable Object can coordinate process state and Container lifecycle.
@@ -831,5 +859,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/execute-commands/#page","headline":"Execute commands","description":"Run additional processes inside an active Container.","url":"https://developers.cloudflare.com/containers/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/execute-commands/og.png?v=1357ed940a06bbcf","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/guides/execute-commands/#page","headline":"Execute commands","description":"Run additional processes inside an active Container.","url":"https://developers.cloudflare.com/containers/guides/execute-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/guides/execute-commands/og.png?v=1357ed940a06bbcf","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

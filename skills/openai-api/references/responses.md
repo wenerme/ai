@@ -4479,9 +4479,11 @@ the `background` parameter set to `true` can be cancelled.
 
     - `string`
 
-    - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
       - `"gpt-6-astra"`
+
+      - `"gpt-6.1-sol"`
 
       - `"gpt-6-sol"`
 
@@ -9869,15 +9871,17 @@ Learn when and how to compact long-running conversations in the [conversation st
 
 ### Body Parameters
 
-- `model: "gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 105 more or string or null`
+- `model: "gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 106 more or string or null`
 
   Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
-  - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 105 more`
+  - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 106 more`
 
     Model ID used to generate the response, like `gpt-6-astra`. OpenAI offers a wide range of models with different capabilities, performance characteristics, and price points. Refer to the [model guide](/api/docs/models) to browse and compare available models.
 
     - `"gpt-6-astra"`
+
+    - `"gpt-6.1-sol"`
 
     - `"gpt-6-sol"`
 
@@ -23284,9 +23288,11 @@ as input for the model's response.
 
   - `string`
 
-  - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+  - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
     - `"gpt-6-astra"`
+
+    - `"gpt-6.1-sol"`
 
     - `"gpt-6-sol"`
 
@@ -29423,9 +29429,11 @@ as input for the model's response.
 
     - `string`
 
-    - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
       - `"gpt-6-astra"`
+
+      - `"gpt-6.1-sol"`
 
       - `"gpt-6-sol"`
 
@@ -40097,9 +40105,11 @@ Retrieves a model response with the given ID.
 
     - `string`
 
-    - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
       - `"gpt-6-astra"`
+
+      - `"gpt-6.1-sol"`
 
       - `"gpt-6-sol"`
 
@@ -55100,9 +55110,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
     - `string`
 
-    - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+    - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
       - `"gpt-6-astra"`
+
+      - `"gpt-6.1-sol"`
 
       - `"gpt-6-sol"`
 
@@ -64990,9 +65002,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
         - `"gpt-6-astra"`
+
+        - `"gpt-6.1-sol"`
 
         - `"gpt-6-sol"`
 
@@ -75365,9 +75379,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
         - `"gpt-6-astra"`
+
+        - `"gpt-6.1-sol"`
 
         - `"gpt-6-sol"`
 
@@ -85225,9 +85241,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
         - `"gpt-6-astra"`
+
+        - `"gpt-6.1-sol"`
 
         - `"gpt-6-sol"`
 
@@ -95300,9 +95318,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
         - `"gpt-6-astra"`
+
+        - `"gpt-6.1-sol"`
 
         - `"gpt-6-sol"`
 
@@ -105011,9 +105031,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
         - `"gpt-6-astra"`
+
+        - `"gpt-6.1-sol"`
 
         - `"gpt-6-sol"`
 
@@ -128561,9 +128583,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
         - `"gpt-6-astra"`
+
+        - `"gpt-6.1-sol"`
 
         - `"gpt-6-sol"`
 
@@ -140184,9 +140208,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
         - `string`
 
-        - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+        - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
           - `"gpt-6-astra"`
+
+          - `"gpt-6.1-sol"`
 
           - `"gpt-6-sol"`
 
@@ -151764,9 +151790,11 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
       - `string`
 
-      - `"gpt-6-astra" or "gpt-6-sol" or "gpt-6-luna" or 85 more`
+      - `"gpt-6-astra" or "gpt-6.1-sol" or "gpt-6-sol" or 86 more`
 
         - `"gpt-6-astra"`
+
+        - `"gpt-6.1-sol"`
 
         - `"gpt-6-sol"`
 

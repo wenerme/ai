@@ -50,7 +50,7 @@ Authentication errors occur when there are issues with your credentials, permiss
 
 ### “The credentials are incorrect” or “Unauthorized (401)”
 
-The full error from the plugin is: `The credentials are incorrect. Check that the API key, or username and password, are correct.`
+The full error from the plugin is: `The credentials are incorrect. Check that the API key, or username and password, are correct.` The error is prefixed with `Metrics` or `Analytics` to indicate which API failed.
 
 **Possible causes:**
 
@@ -59,12 +59,15 @@ The full error from the plugin is: `The credentials are incorrect. Check that th
 - Wrong client name or domain
 - Insufficient permissions
 
+  - For an `Analytics` error, the Analytics API key is missing the **Manage Schema** permission. The connection test calls the `/events/schema` endpoint, which requires this permission.
+
 **Solutions:**
 
 1. Verify the credentials match what is configured in the AppDynamics Administration settings.
 2. For API client authentication, verify the **Client Name** matches the API client name in AppDynamics, and the **Client Domain** matches your company name from the controller URL.
 3. Regenerate the client secret in the AppDynamics Controller UI if needed and update the data source configuration.
 4. Ensure the user or API client role has `view` access to **Account**, **Applications**, **Databases**, and **Analytics**.
+5. For an `Analytics` error, verify the Analytics API key has both the **Manage Schema** and **Query Custom Events** permissions under **Custom Analytics Events**. Because API key permissions can’t be changed after creation, create a new key with both permissions if either is missing.
 
 ### “Token has expired”
 
