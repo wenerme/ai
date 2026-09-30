@@ -353,9 +353,7 @@ Run a grader.
 
       A formula to calculate the output based on grader results.
 
-    - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-      A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+    - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
       - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -538,7 +536,15 @@ Run a grader.
 
   - `scores: map[unknown]`
 
-  - `token_usage: number or null`
+  - `token_usage: object { prompt_tokens, total_tokens, cached_tokens, completion_tokens }  or null`
+
+    - `prompt_tokens: number`
+
+    - `total_tokens: number`
+
+    - `cached_tokens: optional number or null`
+
+    - `completion_tokens: optional number or null`
 
   - `type: string`
 
@@ -593,7 +599,12 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/run \
     "scores": {
       "foo": "bar"
     },
-    "token_usage": 0,
+    "token_usage": {
+      "prompt_tokens": 0,
+      "total_tokens": 0,
+      "cached_tokens": 0,
+      "completion_tokens": 0
+    },
     "type": "type"
   },
   "model_grader_token_usage_per_model": {
@@ -1122,9 +1133,7 @@ Validate a grader.
 
       A formula to calculate the output based on grader results.
 
-    - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-      A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+    - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
       - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -1600,9 +1609,7 @@ Validate a grader.
 
       A formula to calculate the output based on grader results.
 
-    - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-      A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+    - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
       - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -1839,7 +1846,15 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
     - `scores: map[unknown]`
 
-    - `token_usage: number or null`
+    - `token_usage: object { prompt_tokens, total_tokens, cached_tokens, completion_tokens }  or null`
+
+      - `prompt_tokens: number`
+
+      - `total_tokens: number`
+
+      - `cached_tokens: optional number or null`
+
+      - `completion_tokens: optional number or null`
 
     - `type: string`
 
@@ -2198,9 +2213,7 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
         A formula to calculate the output based on grader results.
 
-      - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-        A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+      - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
         - `StringCheckGrader object { input, name, operation, 2 more }`
 

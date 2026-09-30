@@ -1,7 +1,7 @@
 ---
-description: Build secure, isolated code execution environments powered by Cloudflare Workers and Containers.
-title: Sandbox SDK
-image: https://developers.cloudflare.com/sandbox/og.png?v=6c4fca92bb15a5ad
+description: Execute untrusted or generated code in Linux virtual machines or isolated Workers.
+title: Sandboxes on Cloudflare
+image: https://developers.cloudflare.com/sandbox/og.png?v=a45996aa42e663ad
 ---
 
 [Skip to content](#main-content)
@@ -10,324 +10,137 @@ image: https://developers.cloudflare.com/sandbox/og.png?v=6c4fca92bb15a5ad
 > Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Sandbox SDK
+# Sandboxes on Cloudflare
 
-Last updated Aug 13, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Build secure, isolated code execution environments
+Start a sandbox and run untrusted or generated code
 
 Available on Workers Paid plan
 
-Sandbox SDK 1.0 preview
+A sandbox is an isolated place to run code. The code cannot directly read the memory or data of your application. Your Worker decides which application APIs and data the code receives, and whether the code can reach the public Internet.
 
-These pages document the current stable `@cloudflare/sandbox` package. The next major release is **Sandbox SDK 1.0**, available as a preview on `@cloudflare/sandbox@next`.
+You can use a sandbox for agent-written code, user-uploaded applications, data analysis, development previews, build pipelines, or any other work that should not share a process with your application.
 
-We recommend starting new projects on the preview, and migrating existing apps when you can, so you are ready when 1.0 becomes the stable release. Refer to the [1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/) section for install, concepts, API reference, and migration.
+Cloudflare provides two sandbox environments. Both are accessible through a [Worker](https://developers.cloudflare.com/workers/), the application that already handles your traffic.
 
-The Sandbox SDK enables you to run untrusted code securely in isolated environments. Built on [Containers](https://developers.cloudflare.com/containers/), Sandbox SDK provides a simple API for executing commands, managing files, running background processes, and exposing services — all from your [Workers](https://developers.cloudflare.com/workers/) applications.
-
-Sandboxes are ideal for building AI agents that need to execute code, interactive development environments, data analysis platforms, CI/CD systems, and any application that needs secure code execution at the edge. Each sandbox runs in its own isolated container with a full Linux environment, providing strong security boundaries while maintaining performance.
-
-With Sandbox, you can execute Python scripts, run Node.js applications, analyze data, compile code, and perform complex computations — all with a simple TypeScript API and no infrastructure to manage.
-
-```typescript
-import { getSandbox } from '@cloudflare/sandbox';
-
-export { Sandbox } from '@cloudflare/sandbox';
-
-export default {
-	async fetch(request: Request, env: Env): Promise<Response> {
-		const sandbox = getSandbox(env.Sandbox, 'user-123');
-
-		// Execute a command and get the result
-		const result = await sandbox.exec('python --version');
-
-		return Response.json({
-			output: result.stdout,
-			exitCode: result.exitCode,
-			success: result.success
-		});
-	}
-};
-```
-
-```typescript
-import { getSandbox } from '@cloudflare/sandbox';
-
-export { Sandbox } from '@cloudflare/sandbox';
-
-export default {
-	async fetch(request: Request, env: Env): Promise<Response> {
-		const sandbox = getSandbox(env.Sandbox, 'user-123');
-
-		// Create a Python execution context
-		const ctx = await sandbox.createCodeContext({ language: 'python' });
-
-		// Execute Python code with automatic result capture
-		const result = await sandbox.runCode(`
-import pandas as pd
-data = {'product': ['A', 'B', 'C'], 'sales': [100, 200, 150]}
-df = pd.DataFrame(data)
-df['sales'].sum()  # Last expression is automatically returned
-	`, { context: ctx });
-
-			return Response.json({
-				result: result.results?.[0]?.text,
-				logs: result.logs
-			});
-		}
-	};
-```
-
-```typescript
-import { getSandbox } from '@cloudflare/sandbox';
-
-export { Sandbox } from '@cloudflare/sandbox';
-
-export default {
-	async fetch(request: Request, env: Env): Promise<Response> {
-		const sandbox = getSandbox(env.Sandbox, 'user-123');
-
-		// Create a project structure
-		await sandbox.mkdir('/workspace/project/src', { recursive: true });
-
-		// Write files
-		await sandbox.writeFile(
-			'/workspace/project/package.json',
-			JSON.stringify({ name: 'my-app', version: '1.0.0' })
-		);
-
-		// Read a file back
-		const content = await sandbox.readFile('/workspace/project/package.json');
-
-		return Response.json({ content });
-	}
-};
-```
-
-```typescript
-import { getSandbox } from '@cloudflare/sandbox';
-
-export { Sandbox } from '@cloudflare/sandbox';
-
-export default {
-	async fetch(request: Request, env: Env): Promise<Response> {
-		const sandbox = getSandbox(env.Sandbox, 'user-123');
-
-		// Watch for file changes in real-time
-		const watcher = await sandbox.watch('/workspace/src', {
-			include: ['*.js', '*.ts'],
-			onEvent: (event) => {
-				console.log(`${event.type}: ${event.path}`);
-				if (event.type === 'modify') {
-					// Trigger rebuild or hot reload
-					console.log('Code changed, recompiling...');
-				}
-			},
-			onError: (error) => {
-				console.error('Watch error:', error);
-			}
-		});
-
-		// Stop watching when done
-		setTimeout(() => watcher.stop(), 60000);
-
-		return Response.json({ message: 'File watcher started' });
-	}
-};
-```
-
-```typescript
-import { getSandbox } from '@cloudflare/sandbox';
-
-export { Sandbox } from '@cloudflare/sandbox';
-
-export default {
-	async fetch(request: Request, env: Env): Promise<Response> {
-		const url = new URL(request.url);
-
-		// Terminal WebSocket connection
-		if (url.pathname === '/ws/terminal') {
-			const sandbox = getSandbox(env.Sandbox, 'user-123');
-			return sandbox.terminal(request, { cols: 80, rows: 24 });
-		}
-
-		return Response.json({ message: 'Terminal endpoint' });
-	}
-};
-```
-
-Connect browser terminals directly to sandbox shells via WebSocket. Learn more: [Browser terminals](https://developers.cloudflare.com/sandbox/guides/browser-terminals/).
-
-```typescript
-import { getSandbox } from '@cloudflare/sandbox';
-
-export { Sandbox } from '@cloudflare/sandbox';
-
-export default {
-	async fetch(request: Request, env: Env): Promise<Response> {
-		// Connect to WebSocket services in sandbox
-		if (request.headers.get('Upgrade')?.toLowerCase() === 'websocket') {
-			const sandbox = getSandbox(env.Sandbox, 'user-123');
-			return await sandbox.wsConnect(request, 8080);
-		}
-
-		return Response.json({ message: 'WebSocket endpoint' });
-	}
-};
-```
-
-Connect to WebSocket servers running in sandboxes. Learn more: [WebSocket Connections](https://developers.cloudflare.com/sandbox/guides/websocket-connections/).
-
-[Get started](https://developers.cloudflare.com/sandbox/get-started/) [API Reference](https://developers.cloudflare.com/sandbox/api/)
+If your application uses `@cloudflare/sandbox` 0.x, refer to [Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/), or move it to the current version with [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).
 
 ---
 
-## Features
+## Containers
 
-[Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/)
+[Containers](https://developers.cloudflare.com/containers/) run an image you provide. The instance is a full Linux environment, so you can run any language and keep processes running. Your Worker starts the instance and sends it work. HTTP from the Internet reaches the instance only through your Worker.
 
-Deploy your Worker and keep the npm package and container image on the same release line.
+Each instance is a microVM with its own kernel and network, so no other workload shares it.
 
-Deploy a Sandbox app
+A sandbox container uses the [Durable Object scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-durable-object-scheduling-policy), which is in public beta.
 
-[Execute commands securely](https://developers.cloudflare.com/sandbox/guides/execute-commands/)
+A Durable Object in your Worker starts the instance from an image and runs a command in it:
 
-Run shell commands, Python scripts, Node.js applications, and more with streaming output support and automatic timeout handling.
+```ts
+container.start({
+	image: "cloudflare/debian-trixie",
+	entrypoint: ["sleep", "infinity"],
+	enableInternet: false,
+});
+const process = await container.exec(["uname", "-a"]);
+const output = await process.output();
+```
 
-Learn about command execution
-
-[Manage files and processes](https://developers.cloudflare.com/sandbox/guides/manage-files/)
-
-Read, write, and manipulate files in the sandbox filesystem. Run background processes, monitor output, and manage long-running operations.
-
-Learn about file operations
-
-[Expose services with preview URLs](https://developers.cloudflare.com/sandbox/guides/expose-services/)
-
-Expose HTTP services running in your sandbox with automatically generated preview URLs, perfect for interactive development environments and application hosting.
-
-Learn about preview URLs
-
-[Execute code directly](https://developers.cloudflare.com/sandbox/guides/code-execution/)
-
-Execute Python and JavaScript code with rich outputs including charts, tables, and images. Maintain persistent state between executions for AI-generated code and interactive workflows.
-
-Learn about code execution
-
-[Build interactive terminals](https://developers.cloudflare.com/sandbox/guides/browser-terminals/)
-
-Create browser-based terminal interfaces that connect directly to sandbox shells via WebSocket. Build collaborative terminals, interactive development environments, and real-time shell access with automatic reconnection.
-
-Learn about terminal UIs
-
-[Persistent storage with object storage](https://developers.cloudflare.com/sandbox/guides/mount-buckets/)
-
-Mount S3-compatible object storage (R2, S3, GCS, and more) as local filesystems. Access buckets using standard file operations with data that persists across sandbox lifecycles. Production deployment required.
-
-Learn about bucket mounting
-
-[Watch files for real-time changes](https://developers.cloudflare.com/sandbox/guides/file-watching/)
-
-Monitor files and directories for changes using native filesystem events. Perfect for building hot reloading development servers, build automation systems, and configuration monitoring tools.
-
-Learn about file watching
-
-[Handle outbound traffic](https://developers.cloudflare.com/sandbox/guides/outbound-traffic/)
-
-Block, allow, and intercept outbound HTTP from sandboxes. Keep credentials in your Worker by injecting authorization headers in outbound handlers.
-
-Learn about outbound traffic
+[Run a Linux command](https://developers.cloudflare.com/sandbox/get-started/) [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/)
 
 ---
 
-## Use Cases
+## Dynamic Workers
 
-Build powerful applications with Sandbox:
+[Dynamic Workers](https://developers.cloudflare.com/dynamic-workers/) create a new Worker at runtime. The untrusted code can be JavaScript, Python, or WebAssembly. Compile TypeScript to JavaScript before loading it.
 
-### AI Code Execution
+The Workers runtime runs each Dynamic Worker apart from your Worker and from other Dynamic Workers. A Dynamic Worker reaches your application only through the methods and data you pass to it.
 
-Execute code generated by Large Language Models safely and reliably. Native integration with [Workers AI](https://developers.cloudflare.com/workers-ai/) models like GPT-OSS enables function calling with sandbox execution. Perfect for AI agents, code assistants, and autonomous systems that need to run untrusted code.
+Your Worker loads the untrusted module as a new Worker, blocks its outbound requests, and calls it:
 
-### Data Analysis & Notebooks
+```ts
+const sandbox = env.LOADER.load({
+	compatibilityDate: "$today",
+	mainModule: "code.js",
+	modules: { "code.js": untrustedModule },
+	globalOutbound: null,
+});
+const entrypoint = sandbox.getEntrypoint<CodeEntrypoint>("Code");
+const result = await entrypoint.evaluate();
+```
 
-Create interactive data analysis environments with pandas, NumPy, and Matplotlib. Generate charts, tables, and visualizations with automatic rich output formatting.
+[Run JavaScript](https://developers.cloudflare.com/sandbox/get-started/dynamic-workers/) [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/)
 
-### Interactive Development Environments
+---
 
-Build cloud IDEs, coding playgrounds, and collaborative development tools with full Linux environments and preview URLs.
+## Concepts
 
-### CI/CD & Build Systems
+### [Choose a sandbox environment](https://developers.cloudflare.com/sandbox/concepts/)
 
-Run tests, compile code, and execute build pipelines in isolated environments with parallel execution and streaming logs.
+Decide whether a job needs Linux or only calls methods that your Worker provides.
+
+### [Sandbox lifetime](https://developers.cloudflare.com/sandbox/concepts/lifetime/)
+
+Understand what keeps a Linux sandbox running, what stops it, and which files a snapshot brings back.
+
+### [Sandbox security](https://developers.cloudflare.com/sandbox/concepts/security/)
+
+Decide what each sandbox holds, because its code can use everything you place inside it.
+
+## Guides
+
+### [Run commands](https://developers.cloudflare.com/sandbox/commands/)
+
+Run Python code and tests, stream output, keep processes running, and open a terminal.
+
+### [Work with files](https://developers.cloudflare.com/sandbox/files/)
+
+Move files, keep a workspace between instances, and mount an R2 bucket.
+
+### [Preview applications](https://developers.cloudflare.com/sandbox/previews/)
+
+From your browser, open a web server that runs in a sandbox.
+
+### [Credentials and network](https://developers.cloudflare.com/sandbox/network/)
+
+Keep credentials in your Worker, and decide which services a sandbox reaches.
+
+### [Manage sandboxes](https://developers.cloudflare.com/sandbox/manage/)
+
+List a user's sandboxes, and record when and why each one stops.
+
+### [Coding agents](https://developers.cloudflare.com/sandbox/coding-agents/)
+
+Run coding agents such as Claude Code, Codex, and Devin in a sandbox that belongs to one task.
 
 ---
 
 ## Related products
 
-[Containers](https://developers.cloudflare.com/containers/)
+[Workers](https://developers.cloudflare.com/workers/)
 
-Serverless container runtime that powers Sandbox, enabling you to run any containerized workload on the edge.
-
-[Workers AI](https://developers.cloudflare.com/workers-ai/)
-
-Run machine learning models and LLMs on the network. Combine with Sandbox for secure AI code execution workflows.
+The serverless platform these sandbox environments run on.
 
 [Durable Objects](https://developers.cloudflare.com/durable-objects/)
 
-Stateful coordination layer that enables Sandbox to maintain persistent environments with strong consistency.
+Identity and coordination for an attached container.
+
+[Workers AI](https://developers.cloudflare.com/workers-ai/)
+
+Run models on Cloudflare, then execute the code they generate in a sandbox.
 
 ---
 
 ## More resources
 
-## Coding agents
-
-Install [Cloudflare Skills ↗︎](https://github.com/cloudflare/skills) for your agent ([Agent setup](https://developers.cloudflare.com/agent-setup/)). Use **`sandbox-stable`** with the main docs on this site while you are on the current stable package. Use **`sandbox-next`** for `@cloudflare/sandbox@next` (recommended for new projects). When you are ready to port an existing app, use **`sandbox-migrate-to-next`**.
-
-### [Tutorials](https://developers.cloudflare.com/sandbox/tutorials/)
-
-Explore complete examples including AI code execution, data analysis, and interactive environments.
-
-### [Deploy a Sandbox application](https://developers.cloudflare.com/sandbox/guides/deploy/)
-
-Deploy and keep package and image aligned.
-
-### [How-to Guides](https://developers.cloudflare.com/sandbox/guides/)
-
-Learn how to solve specific problems and implement features with the Sandbox SDK.
-
-### [1.0 preview](https://developers.cloudflare.com/sandbox/1-0-preview/)
-
-Install `@cloudflare/sandbox@next` and prepare for the Sandbox SDK 1.0 release.
-
-### [API reference](https://developers.cloudflare.com/sandbox/api/)
-
-Explore the complete API documentation for the Sandbox SDK.
-
-### [Concepts](https://developers.cloudflare.com/sandbox/concepts/)
-
-Learn about the key concepts and architecture of the Sandbox SDK.
-
-### [Configuration](https://developers.cloudflare.com/sandbox/configuration/)
-
-Learn about the configuration options for the Sandbox SDK.
-
-### [GitHub Repository](https://github.com/cloudflare/sandbox-sdk)
-
-View the SDK source code, report issues, and contribute to the project.
-
-### [Pricing](https://developers.cloudflare.com/sandbox/platform/pricing/)
-
-Understand Sandbox pricing based on the underlying Containers platform.
-
-### [Limits](https://developers.cloudflare.com/sandbox/platform/limits/)
-
-Learn about resource limits, quotas, and best practices for working within them.
-
-### [Discord Community](https://discord.cloudflare.com)
-
-Connect with the community on Discord. Ask questions, share what you're building, and get help from other developers.
+| Topic | Links |
+| --- | --- |
+| Deploy and debug | [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/), [Local development](https://developers.cloudflare.com/containers/guides/local-dev/), [Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) |
+| Reference | [`@cloudflare/sandbox`](https://developers.cloudflare.com/sandbox/reference/), [Durable Object container API](https://developers.cloudflare.com/containers/api/durable-object-container/), [Dynamic Workers API](https://developers.cloudflare.com/dynamic-workers/api-reference/) |
+| Pricing and limits | [Containers pricing](https://developers.cloudflare.com/containers/platform/pricing/), [Container limits](https://developers.cloudflare.com/containers/platform/limits/), [Dynamic Workers pricing](https://developers.cloudflare.com/dynamic-workers/pricing/) |
+| Related | [Code Mode](https://developers.cloudflare.com/agents/tools/codemode/), [Workers security model](https://developers.cloudflare.com/workers/reference/security-model/) |
 
 Was this helpful?
 
@@ -338,5 +151,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/#page","headline":"Sandbox SDK","description":"Build secure, isolated code execution environments powered by Cloudflare Workers and Containers.","url":"https://developers.cloudflare.com/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/og.png?v=6c4fca92bb15a5ad","dateModified":"2026-08-13","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/#page","headline":"Sandboxes on Cloudflare","description":"Execute untrusted or generated code in Linux virtual machines or isolated Workers.","url":"https://developers.cloudflare.com/sandbox/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/og.png?v=a45996aa42e663ad","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

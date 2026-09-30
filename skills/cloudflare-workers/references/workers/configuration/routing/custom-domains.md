@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/configuration/routing/custom-do
 
 # Custom Domains
 
-Last updated Aug 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -170,6 +170,8 @@ export default {
 
 Creating a Custom Domain will also generate an [Advanced Certificate](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/) on your target zone for your target hostname.
 
+This includes multi-level subdomains such as `realms.app.example.com`. [Universal SSL](https://developers.cloudflare.com/ssl/edge-certificates/universal-ssl/) covers the apex and one level of subdomain only, so Universal SSL does not cover a hostname at the second level or deeper. The certificate generated for the Custom Domain covers it instead, and no separate Advanced Certificate Manager subscription is required.
+
 These certificates are generated with default settings. To override these settings, delete the generated certificate and create your own certificate in the Cloudflare dashboard. Refer to [Manage advanced certificates](https://developers.cloudflare.com/ssl/edge-certificates/advanced-certificate-manager/manage-certificates/) for instructions.
 
 Caution
@@ -244,5 +246,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#page","headline":"Custom Domains","description":"Connect a Cloudflare Worker to a domain or subdomain with automatic DNS and certificate management.","url":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/og.png?v=e0a6245914b36406","dateModified":"2026-08-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/#page","headline":"Custom Domains","description":"Connect a Cloudflare Worker to a domain or subdomain with automatic DNS and certificate management.","url":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/configuration/routing/custom-domains/og.png?v=e0a6245914b36406","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

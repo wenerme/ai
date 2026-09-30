@@ -151,7 +151,7 @@ puts result
 ```
 
 
-See the [Agents API reference](https://developers.openai.com/api/reference/resources/beta/subresources/agents) for configuration fields and accepted values. See [Functions](https://developers.openai.com/api/docs/guides/agents-api/tools/functions) and [MCP connections](https://developers.openai.com/api/docs/guides/agents-api/tools/mcp) for tool setup, and [Multi-agent](https://developers.openai.com/api/docs/guides/agents-api/multi-agent) for delegation.
+See the [Agents API reference](https://developers.openai.com/api/reference/resources/beta/subresources/agents) for configuration fields and values. For setup, see [Functions](https://developers.openai.com/api/docs/guides/agents-api/tools/functions), [Computer use](https://developers.openai.com/api/docs/guides/agents-api/tools/computer-use), [MCP connections](https://developers.openai.com/api/docs/guides/agents-api/tools/mcp), or [Multi-agent delegation](https://developers.openai.com/api/docs/guides/agents-api/multi-agent).
 
 ## Reuse an agent across sessions
 

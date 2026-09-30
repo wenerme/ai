@@ -53,7 +53,7 @@ IDETerminalStandaloneExtensionOpen Source
    Open Copilot Chat (**Ctrl+Shift+I** / **Cmd+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
    ```
 
 
@@ -131,9 +131,9 @@ Local dev, deploys, and Workers-specific commands.
 
 Use <a href="https://developers.cloudflare.com/workers/wrangler/">Wrangler</a> for local development, deploys, and product-specific commands like <code>wrangler d1 migrations apply</code> or <code>wrangler tail</code>. The bundled **wrangler** Skill teaches the agent when to reach for it.
 
-What’s next
+Cloudflare CLI (beta)
 
-The unified <code>cf</code> CLI is in technical preview — a next-generation CLI that covers every Cloudflare product with consistent verbs and ergonomic output for agents. Try it with <code>npx cf</code>. <a href="https://blog.cloudflare.com/cf-cli-local-explorer/">Read the announcement →</a>
+The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, covers the public Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, then follow <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -160,11 +160,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
@@ -172,11 +172,11 @@ Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ## Tips

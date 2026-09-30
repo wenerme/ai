@@ -534,9 +534,7 @@ Response includes details of the enqueued job including job status and the name 
 
           A formula to calculate the output based on grader results.
 
-        - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-          A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+        - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
           - `StringCheckGrader object { input, name, operation, 2 more }`
 
@@ -1396,9 +1394,7 @@ Response includes details of the enqueued job including job status and the name 
 
             A formula to calculate the output based on grader results.
 
-          - `graders: StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more`
-
-            A StringCheckGrader object that performs a string comparison between input and reference using a specified operation.
+          - `graders: map[StringCheckGrader or TextSimilarityGrader or PythonGrader or 2 more]`
 
             - `StringCheckGrader object { input, name, operation, 2 more }`
 

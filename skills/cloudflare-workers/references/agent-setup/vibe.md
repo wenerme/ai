@@ -134,7 +134,7 @@ IDETerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+   Check my Workers deployment logs for errors and suggest fixes.
    ```
 
 
@@ -210,9 +210,9 @@ Local dev, deploys, and Workers-specific commands.
 
 Use <a href="https://developers.cloudflare.com/workers/wrangler/">Wrangler</a> for local development, deploys, and product-specific commands like <code>wrangler d1 migrations apply</code> or <code>wrangler tail</code>. The bundled **wrangler** Skill teaches the agent when to reach for it.
 
-What’s next
+Cloudflare CLI (beta)
 
-The unified <code>cf</code> CLI is in technical preview — a next-generation CLI that covers every Cloudflare product with consistent verbs and ergonomic output for agents. Try it with <code>npx cf</code>. <a href="https://blog.cloudflare.com/cf-cli-local-explorer/">Read the announcement →</a>
+The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, covers the public Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, then follow <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -239,23 +239,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ## Tips

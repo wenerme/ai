@@ -72,6 +72,8 @@ Try a different search term, or clear your filters.
 
 [**Client-side security** Provide client-side protection for your website visitors](https://developers.cloudflare.com/client-side-security/)
 
+[**Cloudflare CLI** Manage Cloudflare resources from one command-line interface](https://developers.cloudflare.com/cf/)
+
 [**Cloudflare for Platforms** Build your own multi-tenant platform using Cloudflare as infrastructure](https://developers.cloudflare.com/cloudflare-for-platforms/)
 
 [C**Cloudflare for SaaS** Extend Cloudflare's security and performance to your customers](https://developers.cloudflare.com/cloudflare-for-platforms/cloudflare-for-saas/)
@@ -226,7 +228,7 @@ Try a different search term, or clear your filters.
 
 [**Ruleset Engine** Create rulesets and rules for different Cloudflare products](https://developers.cloudflare.com/ruleset-engine/)
 
-[**Sandbox SDK** Build secure, isolated code execution environments](https://developers.cloudflare.com/sandbox/)
+[**Sandboxes** Isolated execution on Cloudflare using Containers and Dynamic Workers](https://developers.cloudflare.com/sandbox/)
 
 [**Secrets Store** Encrypt and store sensitive information as secrets that are securely reusable across an account](https://developers.cloudflare.com/secrets-store/)
 

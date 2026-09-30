@@ -20,7 +20,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
       - `"none"`
 
-  - `OpenAIHosted object { type, capability_directories, env, 7 more }`
+  - `OpenAIHosted object { type, capability_directories, container_size, 9 more }`
 
     An existing OpenAI-hosted environment or new inline/template-based hosted configuration.
 
@@ -33,6 +33,24 @@ Creates a managed agent session, optionally submits initial input, and returns t
     - `capability_directories: optional array of string or null`
 
       Directories that contain capabilities exposed to the agent. Defaults to an empty list.
+
+    - `container_size: optional "small" or "medium" or "large"`
+
+      The hosted container size. Omission selects the medium tier.
+
+      - `"small"`
+
+      - `"medium"`
+
+      - `"large"`
+
+    - `desktop: optional object { enabled }  or null`
+
+      Desktop provisioning. Omission or null inherits the template setting, or defaults to disabled.
+
+      - `enabled: boolean`
+
+        Whether to provision the desktop and its browser proxy.
 
     - `env: optional map[string] or null`
 
@@ -82,7 +100,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           - `"inline"`
 
-    - `network: optional object { access, allowed_domains }  or null`
+    - `network: optional object { access, allowed_domains, blocked_domains }  or null`
 
       Network access policy for the environment. Defaults to disabled for GA requests and enabled for beta requests.
 
@@ -100,11 +118,15 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         - `"restricted"`
 
-          Allows access only to configured domains.
+          Applies the configured domain restrictions.
 
       - `allowed_domains: optional array of string or null`
 
         Domains the environment may access when network access is restricted.
+
+      - `blocked_domains: optional array of string or null`
+
+        Domains blocked for both executor and browser when access is restricted. A nonempty list requires `access: restricted` and cannot be combined with nonempty `allowed_domains`. Wildcard domains are not supported.
 
     - `packages: optional object { npm, python, system }  or null`
 
@@ -586,6 +608,20 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           Searches the live web.
 
+    - `ComputerUse object { type, include_screenshots }`
+
+      Browser use in an OpenAI-hosted session.
+
+      - `type: "computer_use"`
+
+        The type of the object. Always `computer_use`.
+
+        - `"computer_use"`
+
+      - `include_screenshots: optional boolean`
+
+        Whether computer tool outputs include screenshots. Defaults to `false`.
+
 - `agent_id: optional string`
 
   The ID of a saved reusable agent. Omit `agent` to use its configuration unchanged.
@@ -972,6 +1008,20 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           - `"web_search"`
 
+      - `ComputerUse object { include_screenshots, type }`
+
+        Browser use in an OpenAI-hosted session.
+
+        - `include_screenshots: boolean`
+
+          Whether computer tool outputs include screenshots.
+
+        - `type: "computer_use"`
+
+          The type of the object. Always `computer_use`.
+
+          - `"computer_use"`
+
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the session was created.
@@ -990,7 +1040,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         - `"none"`
 
-    - `OpenAIHosted object { id, capability_directories, files, 5 more }`
+    - `OpenAIHosted object { id, capability_directories, desktop, 7 more }`
 
       An environment hosted by OpenAI.
 
@@ -1001,6 +1051,14 @@ Creates a managed agent session, optionally submits initial input, and returns t
       - `capability_directories: array of string`
 
         Directories that contain capabilities exposed to the agent.
+
+      - `desktop: object { enabled }`
+
+        The effective desktop configuration.
+
+        - `enabled: boolean`
+
+          Whether the environment provisions a desktop and browser proxy.
 
       - `files: array of HostedEnvironmentFile`
 
@@ -1072,7 +1130,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
           - `"restricted"`
 
-            Allows access only to configured domains.
+            Applies the configured domain restrictions.
 
         - `allowed_domains: array of string`
 
@@ -1166,6 +1224,16 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         - `"openai_hosted"`
 
+      - `container_size: optional "small" or "medium" or "large" or null`
+
+        The effective CPU and memory tier, or null when unknown or outside the public tiers.
+
+        - `"small"`
+
+        - `"medium"`
+
+        - `"large"`
+
     - `SelfHosted object { id, capability_directories, remote_url, 2 more }`
 
       An environment hosted by the application.
@@ -1210,9 +1278,103 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     - `"agent.session"`
 
-  - `required_actions: array of object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
+  - `required_actions: array of object { request, request_id, turn_id, type }  or object { arguments, call_id, name, 2 more }  or object { environment_id, type }`
 
     Actions that must be completed before the session can continue.
+
+    - `ComputerUseApprovalRequest object { request, request_id, turn_id, type }`
+
+      Respond to a computer-use request.
+
+      - `request: object { credential_origin, fields, options, 2 more }  or object { origin, reason, type }`
+
+        The information needed to render the request.
+
+        - `BrowserAuthentication object { credential_origin, fields, options, 2 more }`
+
+          A registered form awaiting the application's response.
+
+          - `credential_origin: string or null`
+
+            The registered form or frame origin where values will be entered.
+
+          - `fields: array of object { id, label, required, type }`
+
+            Controls to render. All submitted values are sensitive.
+
+            - `id: string`
+
+              The field ID to submit as field_id in a fields entry.
+
+            - `label: string`
+
+              The label to display beside the control.
+
+            - `required: boolean`
+
+              Whether this control requires a nonempty value.
+
+            - `type: string`
+
+              The rendering type, such as email, password, or text.
+
+          - `options: array of object { id, field_ids, label }`
+
+            Sign-in methods. Empty for a plain form.
+
+            - `id: string`
+
+              The option ID to submit as selected_option.
+
+            - `field_ids: array of string`
+
+              IDs from the registered fields that this method accepts.
+
+            - `label: string`
+
+              The method label to display.
+
+          - `reason: string or null`
+
+            Why the agent needs the user to sign in.
+
+          - `type: "browser_authentication"`
+
+            The type of the object. Always `browser_authentication`.
+
+            - `"browser_authentication"`
+
+        - `BrowserOriginAccess object { origin, reason, type }`
+
+          A browser origin awaiting the application's approval decision.
+
+          - `origin: string`
+
+            The origin the browser needs permission to access.
+
+          - `reason: string or null`
+
+            The browser's explanation for this request, or null when unavailable.
+
+          - `type: "browser_origin_access"`
+
+            The type of the object. Always `browser_origin_access`.
+
+            - `"browser_origin_access"`
+
+      - `request_id: string`
+
+        The registered request ID to echo when responding.
+
+      - `turn_id: string`
+
+        The turn that requested approval.
+
+      - `type: "computer_use_approval_request"`
+
+        The type of the object. Always `computer_use_approval_request`.
+
+        - `"computer_use_approval_request"`
 
     - `FunctionCall object { arguments, call_id, name, 2 more }`
 
@@ -1373,11 +1535,31 @@ curl https://api.openai.com/v1/agents/sessions \
   "object": "agent.session",
   "required_actions": [
     {
-      "arguments": {},
-      "call_id": "call_id",
-      "name": "name",
+      "request": {
+        "credential_origin": "credential_origin",
+        "fields": [
+          {
+            "id": "id",
+            "label": "label",
+            "required": true,
+            "type": "type"
+          }
+        ],
+        "options": [
+          {
+            "id": "id",
+            "field_ids": [
+              "string"
+            ],
+            "label": "label"
+          }
+        ],
+        "reason": "reason",
+        "type": "browser_authentication"
+      },
+      "request_id": "request_id",
       "turn_id": "turn_id",
-      "type": "function_call"
+      "type": "computer_use_approval_request"
     }
   ],
   "status": "idle",

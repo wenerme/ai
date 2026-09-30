@@ -5,7 +5,7 @@ description: "Browse OpenAI model IDs, capabilities, context windows, and pricin
 
 # [OpenAI logo]OpenAI
 
-Access 52 OpenAI models through Mastra's model router. Authentication is handled automatically using the `OPENAI_API_KEY` environment variable.
+Access 53 OpenAI models through Mastra's model router. Authentication is handled automatically using the `OPENAI_API_KEY` environment variable.
 
 Learn more in the [OpenAI documentation](https://platform.openai.com/docs/models).
 
@@ -375,6 +375,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "openai/gpt-6-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "openai/gpt-6.1-sol",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

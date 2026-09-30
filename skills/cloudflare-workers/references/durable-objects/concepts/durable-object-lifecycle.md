@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/durable-objects/concepts/durable-object
 
 # Lifecycle of a Durable Object
 
-Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This section describes the lifecycle of a [Durable Object](https://developers.cloudflare.com/durable-objects/concepts/what-are-durable-objects/).
 
@@ -49,10 +49,9 @@ Once all incoming requests or events have been processed, the Durable Object rem
 Hibernation can only occur if **all** of the conditions below are true:
 
 - No `setTimeout`/ `setInterval` scheduled callbacks are set, since there would be no way to recreate the callback after hibernating.
-- No in-progress awaited `fetch()` exists, since it is considered to be waiting for I/O.
+- No I/O operation or promise passed to `this.ctx.waitUntil()` remains unfinished, and no outbound connection remains open.
 - No WebSocket standard API is used.
 - No request/event is still being processed, because hibernating would mean losing track of the async function which is eventually supposed to return a response to that request.
-- No active outbound TCP socket ( `connect()`) or outbound WebSocket connection exists.
 
 After 10 seconds of no incoming request or event, and all the above conditions satisfied, the Durable Object will transition into the **hibernated** state.
 
@@ -66,15 +65,13 @@ In case of an incoming request or event while in the **hibernated** state, the `
 
 While in the **idle, in-memory, non-hibernateable** state, after 70-140 seconds of inactivity (no incoming requests or events), the Durable Object will be evicted entirely from memory and potentially from the Cloudflare host and transition to the **inactive** state.
 
-Outbound connections keep Durable Objects alive
+Pending operations prevent eviction
 
-Active outbound connections created via [`connect()`](https://developers.cloudflare.com/workers/runtime-apis/tcp-sockets/) (TCP) or an outbound WebSocket prevent the Durable Object from being evicted. Eviction is deferred until both conditions are met: all outbound connections have closed, **and** the standard 70-140 second inactivity window has elapsed with no incoming requests or events.
+Pending I/O and open outbound connections prevent a Durable Object from being evicted. Examples include service binding requests, Durable Object remote procedure call (RPC) calls, outbound `fetch()` requests, [`this.ctx.container.monitor()`](https://developers.cloudflare.com/containers/api/durable-object-container/#monitor), promises passed to `this.ctx.waitUntil()`, and pending `setTimeout()` and `setInterval()` timers. TCP sockets and outbound WebSockets also prevent eviction.
 
-While kept alive by an outbound connection, the Durable Object remains in memory in the **idle, in-memory, non-hibernateable** state and continues to [incur duration charges](https://developers.cloudflare.com/durable-objects/platform/pricing/#when-does-a-durable-object-incur-duration-charges).
+Each operation prevents eviction until it completes or for up to 15 minutes from when it starts, whichever comes first. Operations started together do not combine their windows. Starting another operation later can extend the Durable Object's time in memory. The limit applies to each operation, not to the total time in memory.
 
-Each outbound connection keeps the Durable Object alive for a maximum of 15 minutes. After 15 minutes, the connection stops preventing eviction (the connection itself continues operating), and the [standard eviction rules](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/#durable-object-lifecycle-state-transitions) resume.
-
-This applies to outbound TCP sockets and outbound WebSockets (including a `fetch()` request upgraded to a WebSocket via `Upgrade: websocket`). It does not apply to plain `fetch()` subrequests. Those never keep the Durable Object alive, even while the response body is still streaming.
+While an operation prevents eviction, the Durable Object continues to [incur duration charges](https://developers.cloudflare.com/durable-objects/platform/pricing/#when-does-a-durable-object-incur-duration-charges). When no operation prevents eviction, the [standard eviction rules](#durable-object-lifecycle-state-transitions) resume.
 
 Objects in the **hibernated** state keep their Websocket clients connected, and the runtime decides if and when to transition the object to the **inactive** state (for example deciding to move the object to a different host) thus restarting the lifecycle.
 
@@ -139,5 +136,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/#page","headline":"Lifecycle of a Durable Object","description":"Understand how a Durable Object is created, activated, handles requests, and is eventually evicted.","url":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/og.png?v=5f19b4ca07f8994f","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/#page","headline":"Lifecycle of a Durable Object","description":"Understand how a Durable Object is created, activated, handles requests, and is eventually evicted.","url":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/","inLanguage":"en","image":"https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/og.png?v=5f19b4ca07f8994f","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

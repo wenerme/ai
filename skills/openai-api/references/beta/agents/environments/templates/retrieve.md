@@ -10,7 +10,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
 ### Returns
 
-- `EnvironmentTemplate object { id, capability_directories, created_at, 8 more }`
+- `EnvironmentTemplate object { id, capability_directories, created_at, 9 more }`
 
   Reusable configuration that provisions a fresh OpenAI-hosted environment for each session.
 
@@ -25,6 +25,14 @@ Retrieves reusable environment configuration without returning confidential valu
   - `created_at: number`
 
     The Unix timestamp, in seconds, when the template was created.
+
+  - `desktop: object { enabled }`
+
+    Desktop configuration for each OpenAI-hosted environment.
+
+    - `enabled: boolean`
+
+      Whether the environment provisions a desktop and browser proxy.
 
   - `files: array of object { file_id, path, type }  or object { path, size_bytes, type }`
 
@@ -88,7 +96,7 @@ Retrieves reusable environment configuration without returning confidential valu
 
       - `"restricted"`
 
-        Allows access only to configured domains.
+        Applies the configured domain restrictions.
 
     - `allowed_domains: array of string`
 
@@ -195,6 +203,9 @@ curl https://api.openai.com/v1/agents/environments/templates/$ENVIRONMENT_TEMPLA
     "string"
   ],
   "created_at": 0,
+  "desktop": {
+    "enabled": true
+  },
   "files": [
     {
       "file_id": "file_id",

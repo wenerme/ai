@@ -1,0 +1,302 @@
+---
+description: Connect browser-based terminals to Sandbox SDK 0.x shells using xterm.js or raw WebSockets.
+title: Browser terminals
+image: https://developers.cloudflare.com/sandbox/sdk/guides/browser-terminals/og.png?v=ab0e05afadf877f5
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Browser terminals
+
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/sdk/guides/browser-terminals/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Note
+
+This page documents Sandbox SDK 0.x for existing applications. For new applications, refer to [Open a terminal in the browser](https://developers.cloudflare.com/sandbox/commands/open-a-terminal-in-the-browser/). To move an existing application to `@cloudflare/sandbox` 1.0, refer to [Migrate from Sandbox SDK 0.x](https://developers.cloudflare.com/sandbox/sdk/migrate/).
+
+This guide shows you how to connect a browser-based terminal to a sandbox shell. You can use the `SandboxAddon` with xterm.js, or connect directly over WebSockets.
+
+## Prerequisites
+
+You need an existing Cloudflare Worker with a sandbox binding. Refer to [Getting started](https://developers.cloudflare.com/sandbox/sdk/get-started/) if you do not have one.
+
+Install the terminal dependencies in your frontend project:
+
+npmyarnpnpmbun
+
+```
+npm install @xterm/xterm @xterm/addon-fit @cloudflare/sandbox
+```
+
+```
+yarn install @xterm/xterm @xterm/addon-fit @cloudflare/sandbox
+```
+
+```
+pnpm install @xterm/xterm @xterm/addon-fit @cloudflare/sandbox
+```
+
+```
+bun install @xterm/xterm @xterm/addon-fit @cloudflare/sandbox
+```
+
+If you are not using xterm.js, you only need `@cloudflare/sandbox` for types.
+
+## Handle WebSocket upgrades in the Worker
+
+Add a route that proxies WebSocket connections to the sandbox terminal. The example below supports both the default session and named sessions via a query parameter:
+
+```js
+import { getSandbox } from "@cloudflare/sandbox";
+
+export { Sandbox } from "@cloudflare/sandbox";
+
+export default {
+	async fetch(request, env) {
+		const url = new URL(request.url);
+
+		if (
+			url.pathname === "/ws/terminal" &&
+			request.headers.get("Upgrade") === "websocket"
+		) {
+			const sandbox = getSandbox(env.Sandbox, "my-sandbox");
+			const sessionId = url.searchParams.get("session");
+
+			if (sessionId) {
+				const session = await sandbox.getSession(sessionId);
+				return await session.terminal(request);
+			}
+
+			return await sandbox.terminal(request, { cols: 80, rows: 24 });
+		}
+
+		return new Response("Not found", { status: 404 });
+	},
+};
+```
+
+```ts
+import { getSandbox } from '@cloudflare/sandbox';
+
+export { Sandbox } from '@cloudflare/sandbox';
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const url = new URL(request.url);
+
+    if (url.pathname === '/ws/terminal' && request.headers.get('Upgrade') === 'websocket') {
+      const sandbox = getSandbox(env.Sandbox, 'my-sandbox');
+      const sessionId = url.searchParams.get('session');
+
+      if (sessionId) {
+        const session = await sandbox.getSession(sessionId);
+        return await session.terminal(request);
+      }
+
+      return await sandbox.terminal(request, { cols: 80, rows: 24 });
+    }
+
+    return new Response('Not found', { status: 404 });
+  }
+};
+```
+
+## Connect with xterm.js and SandboxAddon
+
+Create the terminal in your browser code and attach the `SandboxAddon`. The addon manages the WebSocket connection, automatic reconnection, and resize forwarding.
+
+```js
+import { Terminal } from "@xterm/xterm";
+import { FitAddon } from "@xterm/addon-fit";
+import { SandboxAddon } from "@cloudflare/sandbox/xterm";
+import "@xterm/xterm/css/xterm.css";
+
+const terminal = new Terminal({ cursorBlink: true });
+const fitAddon = new FitAddon();
+terminal.loadAddon(fitAddon);
+
+const addon = new SandboxAddon({
+	getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {
+		const params = new URLSearchParams({ id: sandboxId });
+		if (sessionId) params.set("session", sessionId);
+		return `${origin}/ws/terminal?${params}`;
+	},
+	onStateChange: (state, error) => {
+		console.log(`Terminal ${state}`, error ?? "");
+	},
+});
+
+terminal.loadAddon(addon);
+terminal.open(document.getElementById("terminal"));
+fitAddon.fit();
+
+// Connect to the default session
+addon.connect({ sandboxId: "my-sandbox" });
+
+// Or connect to a specific session
+// addon.connect({ sandboxId: 'my-sandbox', sessionId: 'development' });
+
+window.addEventListener("resize", () => fitAddon.fit());
+```
+
+```ts
+import { Terminal } from '@xterm/xterm';
+import { FitAddon } from '@xterm/addon-fit';
+import { SandboxAddon } from '@cloudflare/sandbox/xterm';
+import '@xterm/xterm/css/xterm.css';
+
+const terminal = new Terminal({ cursorBlink: true });
+const fitAddon = new FitAddon();
+terminal.loadAddon(fitAddon);
+
+const addon = new SandboxAddon({
+  getWebSocketUrl: ({ sandboxId, sessionId, origin }) => {
+    const params = new URLSearchParams({ id: sandboxId });
+    if (sessionId) params.set('session', sessionId);
+    return `${origin}/ws/terminal?${params}`;
+  },
+  onStateChange: (state, error) => {
+    console.log(`Terminal ${state}`, error ?? '');
+  }
+});
+
+terminal.loadAddon(addon);
+terminal.open(document.getElementById('terminal'));
+fitAddon.fit();
+
+// Connect to the default session
+addon.connect({ sandboxId: 'my-sandbox' });
+
+// Or connect to a specific session
+// addon.connect({ sandboxId: 'my-sandbox', sessionId: 'development' });
+
+window.addEventListener('resize', () => fitAddon.fit());
+```
+
+For the full addon API, refer to the [Terminal API reference](https://developers.cloudflare.com/sandbox/sdk/api/terminal/).
+
+## Connect without xterm.js
+
+If you are building a custom terminal UI or running in an environment without xterm.js, connect directly over WebSockets. The protocol uses binary frames for terminal data and JSON text frames for control messages.
+
+```js
+const ws = new WebSocket("wss://example.com/ws/terminal?id=my-sandbox");
+ws.binaryType = "arraybuffer";
+
+const decoder = new TextDecoder();
+const encoder = new TextEncoder();
+
+ws.addEventListener("message", (event) => {
+	if (event.data instanceof ArrayBuffer) {
+		// Terminal output (binary) — includes ANSI escape sequences
+		const text = decoder.decode(event.data);
+		appendToDisplay(text);
+		return;
+	}
+
+	// Control message (JSON text)
+	const msg = JSON.parse(event.data);
+
+	switch (msg.type) {
+		case "ready":
+			// Terminal is accepting input — send initial resize
+			ws.send(JSON.stringify({ type: "resize", cols: 80, rows: 24 }));
+			break;
+
+		case "exit":
+			console.log(`Shell exited: code ${msg.code}`);
+			break;
+
+		case "error":
+			console.error("Terminal error:", msg.message);
+			break;
+	}
+});
+
+// Send keystrokes as binary
+function sendInput(text) {
+	if (ws.readyState === WebSocket.OPEN) {
+		ws.send(encoder.encode(text));
+	}
+}
+```
+
+```ts
+const ws = new WebSocket('wss://example.com/ws/terminal?id=my-sandbox');
+ws.binaryType = 'arraybuffer';
+
+const decoder = new TextDecoder();
+const encoder = new TextEncoder();
+
+ws.addEventListener('message', (event) => {
+  if (event.data instanceof ArrayBuffer) {
+    // Terminal output (binary) — includes ANSI escape sequences
+    const text = decoder.decode(event.data);
+    appendToDisplay(text);
+    return;
+  }
+
+  // Control message (JSON text)
+  const msg = JSON.parse(event.data);
+
+  switch (msg.type) {
+    case 'ready':
+      // Terminal is accepting input — send initial resize
+      ws.send(JSON.stringify({ type: 'resize', cols: 80, rows: 24 }));
+      break;
+
+    case 'exit':
+      console.log(`Shell exited: code ${msg.code}`);
+      break;
+
+    case 'error':
+      console.error('Terminal error:', msg.message);
+      break;
+  }
+});
+
+// Send keystrokes as binary
+function sendInput(text: string): void {
+  if (ws.readyState === WebSocket.OPEN) {
+    ws.send(encoder.encode(text));
+  }
+}
+```
+
+Key protocol details:
+
+- Set `binaryType` to `arraybuffer` before connecting.
+- Buffered output from a previous connection arrives as binary frames before the `ready` message.
+- Send keystrokes as binary (UTF-8). Send control messages ( `resize`) as JSON text.
+- The PTY stays alive when a client disconnects. Reconnecting replays buffered output.
+
+For the full protocol specification, refer to the [WebSocket protocol section](https://developers.cloudflare.com/sandbox/sdk/api/terminal/#websocket-protocol) in the API reference.
+
+## Best practices
+
+- **Always use FitAddon** — Without it, terminal dimensions do not match the container and text wraps incorrectly.
+- **Handle resize events** — Call `fitAddon.fit()` on window resize so the terminal and PTY stay in sync.
+- **Clean up on unmount** — Call `addon.disconnect()` when removing the terminal from the page.
+- **Scope terminals to a user sandbox** — Use sessions for multiple terminal contexts in the same workspace. Use separate sandboxes for separate users.
+
+## Related resources
+
+- [Terminal API reference](https://developers.cloudflare.com/sandbox/sdk/api/terminal/) — Method signatures, addon API, and WebSocket protocol
+- [Terminal connections](https://developers.cloudflare.com/sandbox/sdk/concepts/terminal/) — How terminal connections work
+- [Session management](https://developers.cloudflare.com/sandbox/sdk/concepts/sessions/) — How sessions work
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/sandbox/sdk/guides/browser-terminals/#page","headline":"Browser terminals","description":"Connect browser-based terminals to Sandbox SDK 0.x shells using xterm.js or raw WebSockets.","url":"https://developers.cloudflare.com/sandbox/sdk/guides/browser-terminals/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/sdk/guides/browser-terminals/og.png?v=ab0e05afadf877f5","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

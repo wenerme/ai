@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-challenges/challenge-types/j
 
 # JavaScript Detections
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 JavaScript Detections is a type of challenge separate from Cloudflare’s Challenge Pages or Turnstile. JavaScript Detections helps Cloudflare's [bot solutions](https://developers.cloudflare.com/bots/) identify automated requests.
 
@@ -101,6 +101,19 @@ Caution
 
 It is not recommended to combine both approaches (zone-wide toggle and the manual injection). If you want to selectively deploy JavaScript Detections only on certain pages, disable JavaScript Detections via the Cloudflare dashboard and use the JavaScript Detections API exclusively.
 
+### Control API results
+
+For Enterprise Bot Management zones, **JavaScript Detections for API traffic** controls whether Cloudflare uses results created through the JavaScript Detections API. This setting is separate from **JavaScript Detections**, which controls zone-wide script injection.
+
+1. In the Cloudflare dashboard, go to the **Security Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+2. Filter by **Bot traffic**.
+3. Go to **Bot management**.
+4. Turn **JavaScript Detections for API traffic** on or off.
+
+You can also set `jsd_api_results_enabled` with the [Bot Management API](https://developers.cloudflare.com/api/resources/bot_management/).
+
+When this setting is off, the API script can still execute and return `success` to the callback. Cloudflare does not consume the JavaScript Detections result for bot scoring or detections.
+
 The following script must be added to every page that you wish to have JavaScript Detections enabled:
 
 ```html
@@ -125,7 +138,7 @@ Note
 
 Note
 
-When JavaScript Detections is invoked via the API rather than the zone-wide toggle, the result may appear as **Unknown** in Bot Analytics. This is a known limitation. The underlying signal is still factored into bot scoring.
+When JavaScript Detections is invoked via the API rather than the zone-wide toggle, the result may appear as **Unknown** in Bot Analytics. This is a known limitation. When **JavaScript Detections for API traffic** is on, the underlying signal is still factored into bot scoring.
 
 ## Considerations
 
@@ -178,5 +191,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/#page","headline":"JavaScript Detections","description":"Client-side JavaScript challenges that run on every request to identify automated traffic.","url":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/og.png?v=be19eed936053d4e","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","CSP"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/#page","headline":"JavaScript Detections","description":"Client-side JavaScript challenges that run on every request to identify automated traffic.","url":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-challenges/challenge-types/javascript-detections/og.png?v=be19eed936053d4e","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JavaScript","CSP"]}
 ```

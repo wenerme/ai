@@ -5,7 +5,7 @@ description: "Browse Scaleway model IDs, capabilities, context windows, and pric
 
 # [Scaleway logo]Scaleway
 
-Access 15 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
+Access 16 Scaleway models through Mastra's model router. Authentication is handled automatically using the `SCALEWAY_API_KEY` environment variable.
 
 Learn more in the [Scaleway documentation](https://www.scaleway.com/en/docs/generative-apis/).
 
@@ -59,7 +59,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 256000,
-    "maxOutput": 16384,
+    "maxOutput": 32768,
     "inputCost": 0.468,
     "outputCost": 0.936
   },
@@ -206,6 +206,18 @@ for await (const chunk of stream) {
     "maxOutput": 16384,
     "inputCost": 0.25,
     "outputCost": 1.5
+  },
+  {
+    "model": "scaleway/qwen3.8-27b",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": true,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.684,
+    "outputCost": 3.762
   },
   {
     "model": "scaleway/whisper-large-v3",

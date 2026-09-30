@@ -12,11 +12,15 @@ Design guideLearning pathReference architectureReference architecture diagramSol
 
 Products
 
-1.1.1.1AccessAgentsAI GatewayAI SearchAnalyticsAPI documentationAPI ShieldArgo Smart RoutingAutomatic Platform OptimizationBotsBrowser IsolationBrowser RunBYOIPCacheCASBChina NetworkClient-side securityCloudflare for PlatformsCloudflare for SaaSCloudflare FundamentalsCloudflare ImagesCloudflare Network FirewallCloudflare OneCloudflare One ClientCloudflare TunnelCloudflare Tunnel for SASECloudflare WANContainersD1Data Localization SuiteData Loss PreventionDDoS ProtectionDigital Experience MonitoringDNSDNS FirewallDurable ObjectsEmail securityGatewayHyperdriveKVLeaked credentials detectionLoad BalancingLogsMagic TransitNetwork FlowNetwork InterconnectOrigin RulesPagesPipelinesPulumiQueuesR2R2 Data CatalogR2 SQLRate limitingRealtimeReference ArchitectureRulesSandbox SDKSecrets StoreSecuritySecurity CenterSecurity OverviewSmart ShieldSpectrumSpeedSSL/TLSStreamTerraformTransform RulesTurnstileUse casesVectorizeVersion ManagementWAFWaiting RoomWorkersWorkers AIWorkers for PlatformsWorkflowsZaraz
+1.1.1.1AccessAgentsAI GatewayAI SearchAnalyticsAPI documentationAPI ShieldArgo Smart RoutingAutomatic Platform OptimizationBotsBrowser IsolationBrowser RunBYOIPCacheCASBChina NetworkClient-side securityCloudflare for PlatformsCloudflare for SaaSCloudflare FundamentalsCloudflare ImagesCloudflare Network FirewallCloudflare OneCloudflare One ClientCloudflare TunnelCloudflare Tunnel for SASECloudflare WANContainersD1Data Localization SuiteData Loss PreventionDDoS ProtectionDigital Experience MonitoringDNSDNS FirewallDurable ObjectsDynamic WorkersEmail securityGatewayHyperdriveKVLeaked credentials detectionLoad BalancingLogsMagic TransitNetwork FlowNetwork InterconnectOrigin RulesPagesPipelinesPulumiQueuesR2R2 Data CatalogR2 SQLRate limitingRealtimeReference ArchitectureRulesSandboxesSecrets StoreSecuritySecurity CenterSecurity OverviewSmart ShieldSpectrumSpeedSSL/TLSStreamTerraformTransform RulesTurnstileUse casesVectorizeVersion ManagementWAFWaiting RoomWorkersWorkers AIWorkers for PlatformsWorkflowsZaraz
+
+[**Build a coding agent runner** Build a Worker that clones a GitHub repository into a Linux sandbox, runs Claude Code on a task in the background, and returns its changes as a diff.](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/)
+
+[**Build an AI code interpreter** Let a Workers AI model write JavaScript and run it in a Dynamic Worker sandbox.](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/)
 
 [**Tutorial - React SPA with an API** Create a React SPA with an API Worker using the Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/tutorial/)
 
-[**Build an AI coding agent with OpenAI Agents SDK** Use the OpenAI Agents SDK with Cloudflare Sandbox to build a Python agent that writes, tests, and delivers code in an isolated environment.](https://developers.cloudflare.com/sandbox/tutorials/openai-agents/)
+[**Build an AI coding agent with OpenAI Agents SDK (Sandbox SDK 0.x)** Use the OpenAI Agents SDK with the Sandbox SDK 0.x to build a Python agent that writes, tests, and delivers code in an isolated environment.](https://developers.cloudflare.com/sandbox/sdk/tutorials/openai-agents/)
 
 [**Detect MCP traffic in Gateway logs** Scan Gateway logs for unauthorized MCP traffic.](https://developers.cloudflare.com/cloudflare-one/tutorials/detect-mcp-traffic-gateway-logs/)
 
@@ -28,7 +32,7 @@ Products
 
 [**CrowdStrike and Cloudflare - A unified security ecosystem for automated, risk-based protection** This reference architecture outlines how Cloudflare and CrowdStrike solutions integrate to create a unified security ecosystem that combines endpoint protection with zero trust network access, threat intelligence sharing, and automated remediation workflows. Organizations can leverage this integration to implement risk-based access policies, improve threat detection, and orchestrate security responses across both platforms.](https://developers.cloudflare.com/reference-architecture/architectures/cloudflare-sase-with-crowdstrike/)
 
-[**Code interpreter with Workers AI** Build a code interpreter using Workers AI GPT-OSS model with the official workers-ai-provider package.](https://developers.cloudflare.com/sandbox/tutorials/workers-ai-code-interpreter/)
+[**Code interpreter with Workers AI (Sandbox SDK 0.x)** Build a Sandbox SDK 0.x code interpreter using the Workers AI GPT-OSS model and the workers-ai-provider package.](https://developers.cloudflare.com/sandbox/sdk/tutorials/workers-ai-code-interpreter/)
 
 [**Add multiple sites via automation** To add multiple sites to Cloudflare at once and more efficiently, you can do so via the Cloudflare API.](https://developers.cloudflare.com/fundamentals/manage-domains/add-multiple-sites-automation/)
 
@@ -46,23 +50,21 @@ Products
 
 [**Implement regional private DNS servers with Gateway resolver policies** Configure Gateway resolver policies to route DNS queries to region-specific private DNS servers, enabling geo-steering for internal resources across multiple locations.](https://developers.cloudflare.com/cloudflare-one/tutorials/regional-private-dns-resolver-policies/)
 
-[**Data persistence with R2** Mount R2 buckets as local filesystem paths to persist data across sandbox lifecycles.](https://developers.cloudflare.com/sandbox/tutorials/persistent-storage/)
+[**Data persistence with R2 (Sandbox SDK 0.x)** Mount R2 buckets as local filesystem paths with the Sandbox SDK 0.x to persist data across sandbox lifecycles.](https://developers.cloudflare.com/sandbox/sdk/tutorials/persistent-storage/)
 
 [**Build an Interactive ChatGPT App** Build and deploy an interactive ChatGPT App on Cloudflare Workers with real-time multiplayer state using MCP.](https://developers.cloudflare.com/workers/demos/chatgpt-app/)
 
 [**Connect to an MCP server** Create a Cloudflare Agent that connects to an external MCP server and uses its tools.](https://developers.cloudflare.com/agents/model-context-protocol/guides/connect-mcp-client/)
 
-[**Run Claude Code on a Sandbox** Use Claude Code to implement a task in your GitHub repository.](https://developers.cloudflare.com/sandbox/tutorials/claude-code/)
-
 [**Deploy an Express.js application on Cloudflare Workers** Learn how to deploy an Express.js application on Cloudflare Workers.](https://developers.cloudflare.com/workers/tutorials/deploy-an-express-app/)
 
-[**Build an AI code executor** Use Claude to generate Python code from natural language and execute it securely in sandboxes.](https://developers.cloudflare.com/sandbox/tutorials/ai-code-executor/)
+[**Build an AI code executor (Sandbox SDK 0.x)** Use Claude to generate Python code from natural language and run it in Sandbox SDK 0.x sandboxes.](https://developers.cloudflare.com/sandbox/sdk/tutorials/ai-code-executor/)
 
-[**Analyze data with AI** Upload CSV files, generate analysis code with Claude, and return visualizations.](https://developers.cloudflare.com/sandbox/tutorials/analyze-data-with-ai/)
+[**Analyze data with AI (Sandbox SDK 0.x)** Upload CSV files, generate analysis code with Claude, and return visualizations with the Sandbox SDK 0.x.](https://developers.cloudflare.com/sandbox/sdk/tutorials/analyze-data-with-ai/)
 
-[**Automated testing pipeline** Build a testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.](https://developers.cloudflare.com/sandbox/tutorials/automated-testing-pipeline/)
+[**Automated testing pipeline (Sandbox SDK 0.x)** Build a Sandbox SDK 0.x testing pipeline that clones Git repositories, installs dependencies, runs tests, and reports results.](https://developers.cloudflare.com/sandbox/sdk/tutorials/automated-testing-pipeline/)
 
-[**Build a code review bot** Clone repositories, analyze code with Claude, and post review comments to GitHub PRs.](https://developers.cloudflare.com/sandbox/tutorials/code-review-bot/)
+[**Build a code review bot (Sandbox SDK 0.x)** Clone repositories, analyze code with Claude, and post review comments to GitHub pull requests with the Sandbox SDK 0.x.](https://developers.cloudflare.com/sandbox/sdk/tutorials/code-review-bot/)
 
 [**Deploy the Cloudflare One Client on headless Linux machines** This tutorial explains how to deploy the Cloudflare One Client on headless Linux devices using a service token and an installation script.](https://developers.cloudflare.com/cloudflare-one/tutorials/deploy-client-headless-linux/)
 
@@ -475,14 +477,6 @@ Products
 [**Enterprise AI Vibe Coding Platform** Reference architecture for building a governed enterprise AI vibe coding platform on Cloudflare.](https://developers.cloudflare.com/reference-architecture/diagrams/ai/enterprise-ai-vibe-coding-platform/)
 
 [**When to use Snippets vs Workers** This guide helps you determine when to use Snippets or Workers on Cloudflare's global network.](https://developers.cloudflare.com/rules/snippets/when-to-use/)
-
-[**Set up Claude Managed Agents** Run Claude Managed Agents on self-managed Cloudflare environments.](https://developers.cloudflare.com/sandbox/tutorials/claude-managed-agents/)
-
-[**Run Cursor Cloud Agents on Cloudflare via self-hosted machines** Deploy Cursor self-hosted machines that run each assigned session in an isolated Cloudflare container.](https://developers.cloudflare.com/sandbox/tutorials/cursor-cloud-agents/)
-
-[**Run Devin Outposts on Cloudflare** Deploy a Devin Outpost that runs each Devin session in an isolated Cloudflare container.](https://developers.cloudflare.com/sandbox/tutorials/devin-outposts/)
-
-[**Run Codex with Cloudflare Containers using the OpenAI Agents API** Deploy a Cloudflare execution environment that can be used by Codex via the OpenAI Agents API.](https://developers.cloudflare.com/sandbox/tutorials/openai-agents-api/)
 
 [**Workers integration** Cloudflare Secrets Store is a secure, centralized location in which account-level secrets are stored and managed. The secrets are securely encrypted and stored across all Cloudflare data centers.](https://developers.cloudflare.com/secrets-store/integrations/workers/)
 

@@ -12,7 +12,11 @@ image: https://developers.cloudflare.com/containers/configuration/rollouts/og.pn
 
 # Rollouts
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/rollouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/configuration/rollouts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Note
+
+Rollouts apply to Container applications that use the [`default` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/). Durable Object-managed Container instances do not participate in application-wide rollouts; application code selects their image when it calls `ctx.container.start()`.
 
 ## How rollouts work
 
@@ -152,12 +156,12 @@ Use none when the deploy should not publish a new image or start a container ins
 			},
 		],
 	},
-	"migrations": [
-		{
-			"tag": "v1",
-			"new_sqlite_classes": ["MyContainer"],
+	"exports": {
+		"MyContainer": {
+			"type": "durable-object",
+			"storage": "sqlite",
 		},
-	],
+	},
 }
 ```
 
@@ -173,9 +177,9 @@ rollout_step_percentage = [ 10, 100 ]
 name = "MY_CONTAINER"
 class_name = "MyContainer"
 
-[[migrations]]
-tag = "v1"
-new_sqlite_classes = [ "MyContainer" ]
+[exports.MyContainer]
+type = "durable-object"
+storage = "sqlite"
 ```
 
 ## Related
@@ -194,5 +198,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/rollouts/#page","headline":"Rollouts","description":"How container instances update after a deploy, including step percentages, grace periods, and rollout modes.","url":"https://developers.cloudflare.com/containers/configuration/rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/rollouts/og.png?v=3d0c4ea5b7db40b1","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/configuration/rollouts/#page","headline":"Rollouts","description":"How container instances update after a deploy, including step percentages, grace periods, and rollout modes.","url":"https://developers.cloudflare.com/containers/configuration/rollouts/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/configuration/rollouts/og.png?v=3d0c4ea5b7db40b1","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

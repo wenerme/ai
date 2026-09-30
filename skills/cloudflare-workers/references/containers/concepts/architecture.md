@@ -12,13 +12,17 @@ image: https://developers.cloudflare.com/containers/concepts/architecture/og.png
 
 # Lifecycle of a Container
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/concepts/architecture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/concepts/architecture/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Deployment
 
-After you deploy an application with a Container, your image is uploaded to [Cloudflare's Registry](https://developers.cloudflare.com/containers/guides/image-management/) and distributed globally to Cloudflare's Network. Cloudflare will pre-schedule instances and pre-fetch images across the globe to ensure quick start times when scaling up the number of concurrent container instances.
+How images and running Container instances update depends on the [scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/) for the application.
 
-Worker code goes live on deploy. Container instances update with a [rollout](https://developers.cloudflare.com/containers/configuration/rollouts/). Refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/).
+With the `durable_object` policy, Wrangler prepares the named images for the application. Durable Object code can access their immutable references and selects an image and instance size when it calls `ctx.container.start()`. When an image reference changes, the Durable Object code decides whether to stop the running Container and start it with the new image or let it continue with the previous image. This application-controlled restart is how you roll out image changes with the `durable_object` policy. These instances do not participate in application-wide image rollouts.
+
+With the `default` policy, Wrangler uploads or resolves the application image. Cloudflare distributes that image across its network and prepares capacity for new instances. Changes to the image or instance type use a [rollout](https://developers.cloudflare.com/containers/configuration/rollouts/).
+
+Worker code goes live on deploy before any application-wide Container rollout finishes. Refer to [Deploy Containers](https://developers.cloudflare.com/containers/guides/deploy/).
 
 ## Container instance lifecycle
 
@@ -66,7 +70,7 @@ From the Worker, a request passes through a Durable Object instance. You can ext
 
 ### Starting a Container
 
-When a Durable Object instance requests to start a new container instance, the **nearest location with a pre-fetched image** is selected.
+When a Durable Object requests a new Container instance, Cloudflare selects eligible capacity with the required image available. The `durable_object` policy uses the `image` and `instance` options supplied to `ctx.container.start()`. The `default` policy uses the application image and instance type from Wrangler configuration.
 
 Note
 
@@ -74,7 +78,7 @@ Durable Objects and their associated Container instances are not guaranteed to r
 
 Container placement is optimized for request routing and startup speed, so a Container may start in a different location than its Durable Object.
 
-Starting additional container instances will use other locations with pre-fetched images, and Cloudflare will automatically begin prepping additional machines behind the scenes for additional scaling and quick cold starts. Because there are a finite number of pre-warmed locations, some container instances may be started in locations that are farther away from the end-user. This is done to ensure that the container instance starts quickly. You are only charged for actively running instances and not for any unused pre-warmed images.
+Starting additional Container instances can use other locations where the image is available. Cloudflare prepares additional capacity as demand grows. Because prepared capacity is finite, some Container instances may start in locations farther from the end user. You are only charged for actively running instances, not for prepared images that are not running.
 
 #### Cold starts
 
@@ -90,7 +94,9 @@ However, once that container instance stops and restarts, future requests could 
 
 ### Container runtime
 
-Each container instance runs inside its own VM, which provides strong isolation from other workloads running on Cloudflare's network. Containers should be built for the `linux/amd64` architecture, and should stay within [size limits](https://developers.cloudflare.com/containers/platform/limits/).
+Each container instance runs in a Firecracker microVM with its own kernel and network. No other workload on the Cloudflare network shares that kernel. Your image runs as a Linux container inside the VM.
+
+Containers should be built for the `linux/amd64` architecture, and should stay within [size limits](https://developers.cloudflare.com/containers/platform/limits/).
 
 [Logging](https://developers.cloudflare.com/containers/faq/#how-do-container-logs-work), metrics collection, and [networking](https://developers.cloudflare.com/containers/faq/#how-do-i-allow-or-disallow-egress-from-my-container) are automatically set up on each container, as configured by the developer.
 
@@ -121,11 +127,11 @@ The [`Container` class](https://developers.cloudflare.com/containers/api/contain
 
 Refer to the [status hooks example](https://developers.cloudflare.com/containers/examples/status-hooks/) for a full implementation.
 
-#### Persistent disk
+#### Use snapshots
 
-All disk is ephemeral. When a Container instance goes to sleep, the next time it is started, it will have a fresh disk as defined by its container image.
+All disk is ephemeral by default. When a Container instance goes to sleep, the next time it starts, it uses a fresh disk from the container image.
 
-Snapshots are coming soon, which allow the user to quickly persist and restore the disk from an entire container or a directory.
+If you need point-in-time filesystem state, Container applications that use the [`durable_object` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-durable-object-scheduling-policy) can create and restore a snapshot. Snapshots are immutable, so later file changes require a new snapshot. For more information, refer to [Snapshots](https://developers.cloudflare.com/containers/guides/snapshots/).
 
 You can also use [FUSE](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/) to persist disk to R2 or other object storage backends. Though you should not expect native SSD-like performance while using FUSE.
 
@@ -148,5 +154,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/concepts/architecture/#page","headline":"Lifecycle of a Container","description":"Understand how a Container is deployed, started, routed, and shut down across Cloudflare's network.","url":"https://developers.cloudflare.com/containers/concepts/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/concepts/architecture/og.png?v=9fb00333f140e961","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/concepts/architecture/#page","headline":"Lifecycle of a Container","description":"Understand how a Container is deployed, started, routed, and shut down across Cloudflare's network.","url":"https://developers.cloudflare.com/containers/concepts/architecture/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/concepts/architecture/og.png?v=9fb00333f140e961","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

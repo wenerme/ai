@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/faq/og.png?v=54d27de1bf2e71b
 
 # Frequently Asked Questions
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## How do Container logs work?
 
@@ -90,9 +90,9 @@ Refer to [image management](https://developers.cloudflare.com/containers/guides/
 
 ## Is disk persistent? What happens to my disk when my container sleeps?
 
-All disk is ephemeral. When a Container instance goes to sleep, the next time it is started, it will have a fresh disk as defined by its container image.
+All disk is ephemeral by default. When a Container instance goes to sleep, the next time it starts, it uses a fresh disk from the container image.
 
-Snapshots are coming soon, which allow the user to quickly persist and restore the disk from an entire container or a directory.
+If you need point-in-time filesystem state, Container applications that use the [`durable_object` scheduling policy](https://developers.cloudflare.com/containers/configuration/scheduling-policy/#use-the-durable-object-scheduling-policy) can create and restore a snapshot. Snapshots are immutable, so later file changes require a new snapshot. For more information, refer to [Snapshots](https://developers.cloudflare.com/containers/guides/snapshots/).
 
 You can also use [FUSE](https://developers.cloudflare.com/containers/examples/r2-fuse-mount/) to persist disk to R2 or other object storage backends. Though you should not expect native SSD-like performance while using FUSE.
 
@@ -126,18 +126,20 @@ For implementation details, refer to [Environment variables and secrets](https:/
 
 ## Can I run Docker inside a container (Docker-in-Docker)?
 
-Yes. Use the `docker:dind-rootless` base image since Containers run without root privileges.
-
-You must disable iptables when starting the Docker daemon because Containers do not support iptables manipulation:
+Yes. Use the `docker:dind` image, and start the Docker daemon with iptables and IP forwarding turned off:
 
 *Dockerfiledockerfile*
 
 ```dockerfile
-FROM docker:dind-rootless
+FROM docker:dind
 
-# Start dockerd with iptables disabled, then run your app
-ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false & exec /path/to/your-app"]
+# Start dockerd with iptables and IP forwarding turned off, then run your app
+ENTRYPOINT ["sh", "-c", "dockerd-entrypoint.sh dockerd --iptables=false --ip6tables=false --ip-forward=false & exec /path/to/your-app"]
 ```
+
+This Dockerfile works with both [scheduling policies](https://developers.cloudflare.com/containers/configuration/scheduling-policy/). Containers that use the `durable_object` policy cannot turn on IP forwarding. In those containers, the Docker daemon exits on startup unless you pass `--ip-forward=false`.
+
+Run the Docker daemon as `root`. Rootless Docker does not start in Containers.
 
 If your application needs to wait for dockerd to become ready before using Docker, use an entrypoint script instead of the inline command above:
 
@@ -159,11 +161,11 @@ Working with disabled iptables
 
 Cloudflare Containers do not support iptables manipulation. The `--iptables=false` and `--ip6tables=false` flags prevent Docker from attempting to configure network rules, which would otherwise fail.
 
-To send or receive traffic from a container running within Docker-in-Docker, use the `--network=host` flag when running Docker commands.
+To send or receive traffic from a container running within Docker-in-Docker, use the `--network=host` flag with `docker run`. A `docker build` step that uses the network, such as a package install, also needs `docker build --network=host`.
 
 This allows you to connect to the container, but it means each inner container has access to your outer container's network stack. Ensure you understand the security implications of this setup before proceeding.
 
-For a complete working example, see the [Docker-in-Docker Containers example ↗︎](https://github.com/th0m/containers-dind).
+For a complete working example, refer to the [Docker-in-Docker Containers example ↗︎](https://github.com/th0m/containers-dind). The example uses the `default` scheduling policy. To run it with `scheduling_policy: "durable_object"`, add `--ip-forward=false` to its `dockerd` flags.
 
 ## How do I allow or disallow egress from my container?
 
@@ -178,5 +180,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/faq/#page","headline":"Frequently Asked Questions","description":"Answers to common questions about Containers, including logging, scaling, cold starts, disk persistence, and rollouts.","url":"https://developers.cloudflare.com/containers/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/faq/og.png?v=54d27de1bf2e71bb","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/faq/#page","headline":"Frequently Asked Questions","description":"Answers to common questions about Containers, including logging, scaling, cold starts, disk persistence, and rollouts.","url":"https://developers.cloudflare.com/containers/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/faq/og.png?v=54d27de1bf2e71bb","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

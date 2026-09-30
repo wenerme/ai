@@ -60,7 +60,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+   Create a Logpush job to stream Workers analytics to my data warehouse.
    ```
 
 
@@ -136,9 +136,9 @@ Local dev, deploys, and Workers-specific commands.
 
 Use <a href="https://developers.cloudflare.com/workers/wrangler/">Wrangler</a> for local development, deploys, and product-specific commands like <code>wrangler d1 migrations apply</code> or <code>wrangler tail</code>. The bundled **wrangler** Skill teaches the agent when to reach for it.
 
-What’s next
+Cloudflare CLI (beta)
 
-The unified <code>cf</code> CLI is in technical preview — a next-generation CLI that covers every Cloudflare product with consistent verbs and ergonomic output for agents. Try it with <code>npx cf</code>. <a href="https://blog.cloudflare.com/cf-cli-local-explorer/">Read the announcement →</a>
+The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, covers the public Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, then follow <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -165,23 +165,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+```
+
+```txt
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+```
+
+```txt
 Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
-```
-
-```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
-```
-
-```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Tips
@@ -204,11 +204,21 @@ Yes. GitHub Copilot added Agent Skills support for VS Code agent mode, the Copil
 
 <details>
 
-<summary>Should I use Skills, the MCP server, Wrangler CLI, or all of them?
+<summary>Should I use Skills, the MCP server, a CLI, or all of them?
 
 </summary>
 
-All three. Skills load Cloudflare expertise into every agent-mode session. The Cloudflare API MCP server handles platform operations (DNS, WAF, Zero Trust, R2 buckets). Wrangler runs local dev and deploys in the VS Code terminal. The bundled <code>wrangler</code> Skill teaches Copilot when to reach for which.
+All three. Skills load Cloudflare expertise into every agent-mode session. The Cloudflare API MCP server handles platform operations (DNS, WAF, Zero Trust, R2 buckets). Wrangler runs local dev and deploys in the VS Code terminal. The bundled <code>wrangler</code> Skill teaches Copilot when to reach for which. For tasks across the whole Cloudflare API, Copilot can also use the <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>.
+
+</details>
+
+<details>
+
+<summary>Can Copilot use the Cloudflare CLI?
+
+</summary>
+
+Yes. The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, is in beta and covers the whole Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, sign in with <code>cf auth login</code>, and tell Copilot to prefer it in <code>.github/copilot-instructions.md</code> or <code>AGENTS.md</code>. Refer to <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -228,7 +238,7 @@ It's complementary. Use custom instructions for simple repository-wide conventio
 
 </summary>
 
-Yes, via Wrangler in the VS Code terminal, or via a GitHub Actions workflow that Copilot can generate for you.
+Yes, via Wrangler or <code>cf</code> in the VS Code terminal, or via a GitHub Actions workflow that Copilot can generate for you.
 
 </details>
 
@@ -291,5 +301,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/github-copilot/#page","headline":"GitHub Copilot + Cloudflare","description":"Editor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.","url":"https://developers.cloudflare.com/agent-setup/github-copilot/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/github-copilot/og.png?v=6162f1c14230bc21","dateModified":"2026-07-27","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/github-copilot/#page","headline":"GitHub Copilot + Cloudflare","description":"Editor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.","url":"https://developers.cloudflare.com/agent-setup/github-copilot/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/github-copilot/og.png?v=6162f1c14230bc21","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

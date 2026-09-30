@@ -50,7 +50,7 @@ Get status updates for a fine-tuning job.
 
     - `"fine_tuning.job.event"`
 
-  - `data: optional unknown`
+  - `data: optional unknown or null`
 
     The data associated with the event.
 

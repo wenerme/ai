@@ -22,6 +22,12 @@ Connect brings the Cloudflare community together once a year to learn, collabora
 
 ## Powerful primitives, seamlessly integrated
 
+Select your preferred CLI
+
+WranglerCF
+
+Changes examples on this page to use the selected CLI.
+
 ComputeAIStorage & DatabasesMedia
 
 ### Deploy with one command
@@ -40,6 +46,8 @@ Run AI inference globally with one API call, build agents, and search across you
 
 `npx wrangler ai models`
 
+`cf ai run @cf/meta/llama-3.1-8b-instruct --help`
+
 [Browse available models](https://developers.cloudflare.com/workers-ai/models/)
 
 [Workers AI](https://developers.cloudflare.com/workers-ai/)· [AI Gateway](https://developers.cloudflare.com/ai-gateway/)· [AI Search](https://developers.cloudflare.com/ai-search/)· [Agents](https://developers.cloudflare.com/agents/)· [Vectorize](https://developers.cloudflare.com/vectorize/)· [Browser Run](https://developers.cloudflare.com/browser-run/)
@@ -49,6 +57,8 @@ Run AI inference globally with one API call, build agents, and search across you
 Serverless SQL, globally distributed key-value, and global database acceleration — query directly from Workers with no connection management.
 
 `npx wrangler d1 create my-database`
+
+`cf d1 --help`
 
 [Get started with D1](https://developers.cloudflare.com/d1/get-started/)
 
@@ -80,7 +90,7 @@ The latest features and improvements shipping across Cloudflare.
 
 [View Changelog](https://developers.cloudflare.com/changelog/)
 
-[Sep 29, 2026Cloudflare One Client<h3>Cloudflare One Client for Windows (version 2026.8.2028.1)</h3>Cloudflare One Client for Windows (version 2026.8.2028.1)Read update](https://developers.cloudflare.com/changelog/post/2026-09-29-warp-windows-beta/) [Sep 29Cloudflare One Client<h3>Cloudflare One Client for macOS (version 2026.8.2028.1)</h3>Cloudflare One Client for macOS (version 2026.8.2028.1)Read more](https://developers.cloudflare.com/changelog/post/2026-09-29-warp-macos-beta/) [Sep 29Browser Run<h3>Connect multiple clients to one Browser Run session</h3>Browser Run sessions now accept concurrent connections, so multiple Workers can share one browser.Read more](https://developers.cloudflare.com/changelog/post/2026-09-29-concurrent-session-connections/) [Sep 29Cloudflare Mesh<h3>Identify Mesh, Workers VPC, and Cloudflare Tunnel replicas in network logs</h3>Network logs now identify Cloudflare Mesh and Workers VPC traffic, show which Worker started each Workers VPC session, and show which Cloudflare Tunnel and cloudflared replica received each session.Read more](https://developers.cloudflare.com/changelog/post/2026-09-29-mesh-workers-vpc-network-logs/) [Sep 28Browser Run<h3>Browser Run adds WebMCP to Kitesurf and moves to document.modelContext</h3>WebMCP now works in Kitesurf sessions, uses the document.modelContext API, and can be tested in the Chrome DevTools WebMCP panel.Read more](https://developers.cloudflare.com/changelog/post/2026-09-28-webmcp-api/) [Sep 28Cache / CDN<h3>Invalidate cached content instead of purging it</h3>Mark cached content as stale so Cloudflare revalidates it with your origin and reuses content that has not changed.Read more](https://developers.cloudflare.com/changelog/post/2026-09-28-cache-invalidation/) [Sep 28Cache / CDN<h3>Purge now forces a cache miss for Cache Reserve content</h3>Purging by tag, hostname, prefix, or everything now forces a cache miss for Cache Reserve content instead of revalidating it. To keep revalidating content, use invalidation.Read more](https://developers.cloudflare.com/changelog/post/2026-09-28-cache-reserve-purge-behavior/) [Sep 27Workflows<h3>Call Workflows declared in \`exports\` through \`ctx.exports\`</h3>Workflows declared in the \`exports\` field of your Wrangler configuration are available on \`ctx.exports\`, including in local development.Read more](https://developers.cloudflare.com/changelog/post/2026-09-27-workflow-ctx-exports/)
+[Sep 30, 2026Containers<h3>New scheduling policy for Containers to configure image and instance from Durable Objects</h3>The durable\_object scheduling policy gives each Durable Object control of Container configuration.Read update](https://developers.cloudflare.com/changelog/post/2026-09-30-durable-object-scheduling-policy/) [Sep 30Containers<h3>Snapshot and restore Container filesystem</h3>Persist point-in-time container filesystem with snapshot APIs in public beta.Read more](https://developers.cloudflare.com/changelog/post/2026-09-30-snapshots/) [Sep 29Cloudflare One Client<h3>Cloudflare One Client for Windows (version 2026.8.2028.1)</h3>Cloudflare One Client for Windows (version 2026.8.2028.1)Read more](https://developers.cloudflare.com/changelog/post/2026-09-29-warp-windows-beta/) [Sep 29Cloudflare One Client<h3>Cloudflare One Client for macOS (version 2026.8.2028.1)</h3>Cloudflare One Client for macOS (version 2026.8.2028.1)Read more](https://developers.cloudflare.com/changelog/post/2026-09-29-warp-macos-beta/) [Sep 29AI Gateway<h3>Identify model overuse and potential savings with User Insights</h3>Understand which tasks drive AI usage, where models may exceed task needs, and where faster or less expensive models may work.Read more](https://developers.cloudflare.com/changelog/post/2026-09-29-user-insights-task-analysis/) [Sep 29Browser Run<h3>Connect multiple clients to one Browser Run session</h3>Browser Run sessions now accept concurrent connections, so multiple Workers can share one browser.Read more](https://developers.cloudflare.com/changelog/post/2026-09-29-concurrent-session-connections/) [Sep 29Containers<h3>Custom Container instance types no longer have a disk to memory ratio limit</h3>Allocate up to 20 GB of disk to any custom Container instance type, independent of its memory.Read more](https://developers.cloudflare.com/changelog/post/2026-09-29-remove-disk-to-memory-ratio/) [Sep 29Cloudflare Mesh<h3>Identify Mesh, Workers VPC, and Cloudflare Tunnel replicas in network logs</h3>Network logs now identify Cloudflare Mesh and Workers VPC traffic, show which Worker started each Workers VPC session, and show which Cloudflare Tunnel and cloudflared replica received each session.Read more](https://developers.cloudflare.com/changelog/post/2026-09-29-mesh-workers-vpc-network-logs/)
 
 ## Security that scales
 

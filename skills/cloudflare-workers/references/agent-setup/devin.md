@@ -58,7 +58,7 @@ IDETerminalStandaloneCloudExtension
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Add mTLS authentication and schema validation to protect my API endpoints.
+   Set up WAF rules to block SQL injection and XSS attacks on my application.
    ```
 
 
@@ -134,9 +134,9 @@ Local dev, deploys, and Workers-specific commands.
 
 Use <a href="https://developers.cloudflare.com/workers/wrangler/">Wrangler</a> for local development, deploys, and product-specific commands like <code>wrangler d1 migrations apply</code> or <code>wrangler tail</code>. The bundled **wrangler** Skill teaches the agent when to reach for it.
 
-What’s next
+Cloudflare CLI (beta)
 
-The unified <code>cf</code> CLI is in technical preview — a next-generation CLI that covers every Cloudflare product with consistent verbs and ergonomic output for agents. Try it with <code>npx cf</code>. <a href="https://blog.cloudflare.com/cf-cli-local-explorer/">Read the announcement →</a>
+The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, covers the public Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, then follow <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -163,29 +163,29 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
-```
-
-```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
-```
-
-```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
-```
-
-```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
 Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
+```txt
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+```
+
+```txt
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
+```
+
 ## Tips
 
 - The Cloudflare API MCP server uses Code Mode — Cascade writes JavaScript to reach any of 2,500+ endpoints in \~1,000 tokens.
-- Use `@`-mention to include your `wrangler.jsonc` in Cascade prompts — Cascade uses this to understand your current bindings when generating code.
+- Use `@`-mention to include your `wrangler.jsonc` or `cloudflare.config.ts` in Cascade prompts — Cascade uses this to understand your current bindings when generating code.
 - Add the observability MCP server to let Cascade automatically check Workers logs and debug deployments without leaving the IDE.
 
 ## FAQ
@@ -202,11 +202,21 @@ Yes. Devin Desktop supports Agent Skills in Cascade. Install the Cloudflare Skil
 
 <details>
 
-<summary>Should I use Skills, the MCP server, Wrangler CLI, or all of them?
+<summary>Should I use Skills, the MCP server, a CLI, or all of them?
 
 </summary>
 
-All three complement each other. Cloudflare Skills teach Cascade the patterns and conventions for Workers development. The Cloudflare API MCP server handles platform operations (DNS, WAF, Zero Trust, R2 buckets). Wrangler in Devin Desktop's integrated terminal covers local dev and deploys. Cascade coordinates between them naturally.
+All three complement each other. Cloudflare Skills teach Cascade the patterns and conventions for Workers development. The Cloudflare API MCP server handles platform operations (DNS, WAF, Zero Trust, R2 buckets). Wrangler in Devin Desktop's integrated terminal covers local dev and deploys. For tasks across the whole Cloudflare API, Cascade can also use the <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>. Cascade coordinates between them naturally.
+
+</details>
+
+<details>
+
+<summary>Can Cascade use the Cloudflare CLI?
+
+</summary>
+
+Yes. The <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a>, <code>cf</code>, is in beta and covers the whole Cloudflare API and prints JSON output. Install it with <code>npm install -g cf</code>, sign in with <code>cf auth login</code>, and tell Cascade to prefer it in your Devin Desktop rules or <code>AGENTS.md</code>. Refer to <a href="https://developers.cloudflare.com/cf/agents/">Use cf with AI agents</a>.
 
 </details>
 
@@ -216,7 +226,7 @@ All three complement each other. Cloudflare Skills teach Cascade the patterns an
 
 </summary>
 
-Yes. Cascade can run <code>npx wrangler deploy</code> in the integrated terminal, and with the MCP server configured it can also call the Cloudflare API directly for managed deploys and resource creation.
+Yes. Cascade can run <code>npx wrangler deploy</code>, or <code>cf deploy</code> in projects that use <code>cloudflare.config.ts</code>, in the integrated terminal, and with the MCP server configured it can also call the Cloudflare API directly for managed deploys and resource creation.
 
 </details>
 
@@ -267,5 +277,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/devin/#page","headline":"Devin + Cloudflare","description":"A full IDE with an agent manager built in — the command center for managing all your agents in one place. Made by Cognition.","url":"https://developers.cloudflare.com/agent-setup/devin/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/devin/og.png?v=561c22db409a0d78","dateModified":"2026-09-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/devin/#page","headline":"Devin + Cloudflare","description":"A full IDE with an agent manager built in — the command center for managing all your agents in one place. Made by Cognition.","url":"https://developers.cloudflare.com/agent-setup/devin/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/devin/og.png?v=561c22db409a0d78","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

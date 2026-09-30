@@ -1,0 +1,32 @@
+---
+description: List the sandboxes that belong to a user, and record when and why each one stops.
+title: Manage sandboxes
+image: https://developers.cloudflare.com/sandbox/manage/og.png?v=a318273d37327390
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/sandbox/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Manage sandboxes
+
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/sandbox/manage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Your Worker reaches each sandbox by name. The runtime does not record which names belong to which user, and it does not wake a Durable Object when its container stops. To list a user's sandboxes or act when a sandbox stops, your Worker keeps its own records.
+
+- [List a user's sandboxes](https://developers.cloudflare.com/sandbox/manage/list-sandboxes/): Record each user's sandboxes in a Durable Object, and report which ones are running.
+- [Run code when a sandbox stops](https://developers.cloudflare.com/sandbox/manage/run-code-when-a-sandbox-stops/): Record when and why a sandbox stops, including stops that happen while no requests arrive.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/sandbox/manage/#page","headline":"Manage sandboxes","description":"List the sandboxes that belong to a user, and record when and why each one stops.","url":"https://developers.cloudflare.com/sandbox/manage/","inLanguage":"en","image":"https://developers.cloudflare.com/sandbox/manage/og.png?v=a318273d37327390","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

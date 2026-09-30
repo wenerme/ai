@@ -7,6 +7,9 @@ and command-line tools. OpenAI provisions and connects it; your application supp
 the task and retrieves the results. Choose a [self-hosted sandbox](https://developers.openai.com/api/docs/guides/agents-api/environments/self-hosted)
 when you need your own image, compute, or private network.
 
+For tasks that interact with websites through a browser, see
+[Computer use](https://developers.openai.com/api/docs/guides/agents-api/tools/computer-use).
+
 ## Configure the sandbox
 
 Set `environment.type` to `openai_hosted` and add only the settings your workload
