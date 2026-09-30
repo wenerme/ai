@@ -30,7 +30,9 @@ The example is experimental. Local development uses an identity mechanism restri
 
 ## Run the video room
 
-1. **Create your SFU app.** In the Cloudflare dashboard, select your account and go to **Realtime** > **Serverless SFU**. [Go to **Serverless SFU** ↗](https://dash.cloudflare.com/?to=/:account/realtime/sfu) Create an app and save its **App ID** and **App Secret**. You can also [create the app through the API](https://developers.cloudflare.com/api/resources/calls/subresources/sfu/methods/create/). Use separate apps for environments that need isolation.
+1. **Create your SFU app.** In the Cloudflare dashboard, select your account and go to **Realtime** > **Serverless SFU**. [Go to **Serverless SFU** ↗](https://dash.cloudflare.com/?to=/:account/realtime/sfu)
+
+   Create an app and save its **App ID** and **App Secret**. You can also [create the app through the API](https://developers.cloudflare.com/api/resources/calls/subresources/sfu/methods/create/). Use separate apps for environments that need isolation.
 2. **Clone the example.** In a terminal, run:
 
    ```sh

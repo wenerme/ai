@@ -20,7 +20,7 @@ version is @minNodeVersion@ and the latest LTS version is recommended.
 
 > **note**: Go version @minGoVersion@ or higher is required. However, it is recommended to
 obtain the same version as our continuous integration, see the advice given in
-[Hacking on Gitea](development/hacking-on-gitea.md)
+[Hacking on Gitea](https://github.com/go-gitea/gitea/blob/main/docs/build-setup.md)
 
 ## Download
 
@@ -69,7 +69,7 @@ To build from source, the following programs must be present on the system:
 
 - `go` @minGoVersion@ or higher, see [here](https://go.dev/dl/)
 - `node` @minNodeVersion@ or higher with `npm`, see [here](https://nodejs.org/en/download/)
-- `make`, see [here](development/hacking-on-gitea.md#installing-make)
+- `make`, see [here](https://github.com/go-gitea/gitea/blob/main/docs/build-setup.md#make)
 
 Various [make tasks](https://github.com/go-gitea/gitea/blob/main/Makefile)
 are provided to keep the build process as simple as possible.

@@ -396,7 +396,7 @@ The following configuration set `Content-Type: application/vnd.android.package-a
   If it is set to `(DOER_USERNAME)`, it will use current signed-in user's username.
   This option is only for some advanced users who have configured their SSH reverse-proxy and need to use different usernames for git SSH clone.
   Most users should just leave it blank and/or modify the `BUILTIN_SSH_SERVER_USER`.
-- `SSH_DOMAIN`: **`{DOMAIN}`**: Domain name of this server, used for displayed clone URL.
+- `SSH_DOMAIN`: **_empty_**: Domain name to be exposed in clone URL, defaults to the domain part of ROOT_URL
 - `SSH_PORT`: **22**: SSH port displayed in clone URL. If you need a different "SSH clone port" from the real "SSH listen port", set the SSH_LISTEN_PORT separately.
 - `SSH_LISTEN_HOST`: **0.0.0.0**: Listen address for the built-in SSH server.
 - `SSH_LISTEN_PORT`: **`{SSH_PORT}`**: Port for the built-in SSH server.
@@ -639,14 +639,24 @@ And the following unique queues:
 - `SUCCESSFUL_TOKENS_CACHE_SIZE`: **20**: Cache successful token hashes. API tokens are stored in the DB as pbkdf2 hashes however, this means that there is a potentially significant hashing load when there are multiple API operations. This cache will store the successfully hashed tokens in a LRU cache as a balance between performance and security.
 - `DISABLE_QUERY_AUTH_TOKEN`: **false**: Reject API tokens sent in URL query string (Accept Header-based API tokens only). This setting will default to `true` in Gitea 1.23 and be deprecated in Gitea 1.24.
 - `TWO_FACTOR_AUTH`: **_empty_**: set to enforced to enforce two factor authentication. Only available in Gitea 1.24 and later.
-- `ALLOWED_HOST_LIST`: **external**: Webhook and oauth2 clients can only call allowed hosts for security reasons. Comma separated list.
+- `EGRESS_MODE`: **lax**: Egress mode toggles between strictness of outgoing requests:
+  - `lax` requires addresses to be allowed only if they are in private ranges, it allows all public ones
+  - `strict` requires an explicit allow of all addresses
+- `ALLOWED_HOST_LIST`: **_empty_**: Webhook and oauth2 clients can only call allowed hosts for security reasons. Comma separated list, eg: `192.168.1.0/24:3000`, `[2001:db8::/32]:9090`, `*.mydomain.com:[80|443]`
   - Built-in networks:
     - `loopback`: 127.0.0.0/8 for IPv4 and ::1/128 for IPv6, localhost is included.
-    - `private`: RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) and RFC 4193 (FC00::/7). Also called LAN/Intranet.
-    - `external`: A valid non-private unicast IP, you can access all hosts on public internet.
-    - `*`: All hosts are allowed.
-  - CIDR list: `1.2.3.0/8` for IPv4 and `2001:db8::/32` for IPv6
-  - Wildcard hosts: `*.mydomain.com`, `192.168.100.*`
+    - `private`: RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16), RFC 4193 (FC00::/7) and RFC 6598 CGNAT (100.64.0.0/10). Also called LAN/Intranet.
+  - CIDR list: `1.2.3.0/8`, `2001:db8::/32`, and with a port `[2001:db8::/32]:9090` (IPv6 addresses and CIDRs need brackets when a port is given)
+  - Host matching: `example.com` matches the host and any subdomain, dot-anchored so `notexample.com` never matches. `*.example.com` and `.example.com` match only subdomains, the apex itself is excluded. IDN names must be given as punycode.
+  - All addresses can have ports specified. Accepted port specs:
+    - a single port: `192.168.1.0/24:3000`
+    - a range, both bounds inclusive: `*.mydomain.com:3000-3010`
+    - a bracketed set of ports and ranges, `|` separated: `*.mydomain.com:[80|443|3000-3010]`
+    - all ports: `*.mydomain.com:*`
+  - A portless entry covers all ports in `lax` mode, only 80 and 443 in `strict` mode
+  - Port specs apply only where the list is consulted: in `lax` mode that is private, loopback and CGNAT targets alone, public targets are allowed on every port whatever the list says. In `strict` mode every target is checked, so ports restrict public hosts too.
+  - Reserved addresses like link-local and cloud metadata are denied
+  - This list is enforced on direct connections only. When an HTTP proxy is configured, restricting the proxied target is the proxy server's responsibility.
 
 ## Audit (`audit`)
 
@@ -698,7 +708,7 @@ And the following unique queues:
    Requires `Mailer` to be enabled.
 - `REGISTER_MANUAL_CONFIRM`: **false**: Enable this to manually confirm new registrations.
    Requires `REGISTER_EMAIL_CONFIRM` to be disabled.
-- `DISABLE_REGISTRATION`: **false**: Disable registration, after which only admin can create
+- `DISABLE_REGISTRATION`: **true**: Disable registration, after which only admin can create
    accounts for users.
 - `REQUIRE_EXTERNAL_REGISTRATION_PASSWORD`: **false**: Enable this to force externally created
    accounts (via GitHub, OpenID Connect, etc) to create a password.
@@ -757,7 +767,7 @@ And the following unique queues:
 - `DEFAULT_ALLOW_ONLY_CONTRIBUTORS_TO_TRACK_TIME`: **true**: Only allow users with write permissions to track time.
 - `EMAIL_DOMAIN_ALLOWLIST`: **_empty_**: If non-empty, comma separated list of domain names that can only be used to register on this instance, wildcard is supported.
 - `EMAIL_DOMAIN_BLOCKLIST`: **_empty_**: If non-empty, comma separated list of domain names that cannot be used to register on this instance, wildcard is supported.
-- `SHOW_REGISTRATION_BUTTON`: **! DISABLE\_REGISTRATION**: Show Registration Button
+- `SHOW_REGISTRATION_BUTTON`: **false**: Show Registration button, defaults to true only if both DISABLE_REGISTRATION and ALLOW_ONLY_EXTERNAL_REGISTRATION are false
 - `SHOW_MILESTONES_DASHBOARD_PAGE`: **true** Enable this to show the milestones dashboard page - a view of all the user's milestones
 - `AUTO_WATCH_NEW_REPOS`: **true**: Enable this to let all organisation users watch new repos when they are created
 - `AUTO_WATCH_ON_CHANGES`: **false**: Enable this to make users watch a repository after their first commit to it
@@ -767,8 +777,7 @@ And the following unique queues:
 - `DEFAULT_ORG_MEMBER_VISIBLE`: **false** True will make the membership of the users visible when added to the organisation.
 - `ALLOW_ONLY_INTERNAL_REGISTRATION`: **false** Set to true to force registration only via Gitea.
 - `ALLOW_ONLY_EXTERNAL_REGISTRATION`: **false** Set to true to force registration only using third-party services.
-- `NO_REPLY_ADDRESS`: **noreply.DOMAIN** Value for the domain part of the user's email address in the Git log if user has set KeepEmailPrivate to true. DOMAIN resolves to the value in server.DOMAIN.
-  The user's email will be replaced with a concatenation of the user name in lower case, "@" and NO_REPLY_ADDRESS.
+- `NO_REPLY_ADDRESS`: **_empty_**: Value for the domain part of the user's email address in the git log if user has set KeepEmailPrivate to true. The user's email will be replaced with a concatenation of the user name in lower case, "@" and NO_REPLY_ADDRESS. Default value is "noreply." + the domain part of ROOT_URL
 - `USER_DELETE_WITH_COMMENTS_MAX_TIME`: **0** Minimum amount of time a user must exist before comments are kept when the user is deleted.
 - `VALID_SITE_URL_SCHEMES`: **http, https**: Valid site url schemes for user profiles
 
@@ -801,8 +810,10 @@ Define allowed algorithms and their minimum key length (use -1 to disable a type
 - `DELIVER_TIMEOUT`: **5**: Delivery timeout (sec) for shooting webhooks.
 - `SKIP_TLS_VERIFY`: **false**: Allow insecure certification.
 - `PAGING_NUM`: **10**: Number of webhook history events that are shown in one page.
-- `PROXY_URL`: **_empty_**: Proxy server URL, support http://, https//, socks://, blank will follow environment http_proxy/https_proxy. If not given, will use global proxy setting.
+- `PROXY_URL`: **_empty_**: Proxy server URL, support http://, https://, socks5://, blank will follow environment http_proxy/https_proxy. If not given, will use global proxy setting.
 - `PROXY_HOSTS`: **_empty_`**: Comma separated list of host names requiring proxy. Glob patterns (*) are accepted; use ** to match all hosts. If not given, will use global proxy setting.
+
+When a proxy is configured, Gitea does not enforce `[security]` `ALLOWED_HOST_LIST` on the proxied target, the proxy server is expected to restrict it.
 
 ## Mailer (`mailer`)
 
@@ -891,7 +902,7 @@ In-Reply-To =
 
 ## Session (`session`)
 
-- `PROVIDER`: **memory**: Session engine provider \[memory, file, redis, db, mysql, couchbase, memcache, postgres\]. Setting `db` will reuse the configuration in `[database]`
+- `PROVIDER`: **file**: Session engine provider \[memory, file, redis, db, mysql, couchbase, memcache, postgres\]. Setting `db` will reuse the configuration in `[database]`
 - `PROVIDER_CONFIG`: **data/sessions**: For file, the root path; for db, empty (database config will be used); for others, the connection string. Relative paths will be made absolute against _`AppWorkPath`_. For the `redis` provider, if left empty it falls back to [redis/CONN_STR](#redis-redis) when that is set.
 - `COOKIE_SECURE`:**_empty_**: `true` or `false`. Enable this to force using HTTPS for all session access. If not set, it defaults to `true` if the ROOT_URL is an HTTPS URL.
 - `COOKIE_NAME`: **i\_like\_gitea**: The name of the cookie used for the session ID.
@@ -1417,10 +1428,12 @@ in this mapping or the filetype using heuristics.
 
 - `MAX_ATTEMPTS`: **3**: Max attempts per http/https request on migrations.
 - `RETRY_BACKOFF`: **3**: Backoff time per http/https request retry (seconds)
-- `ALLOWED_DOMAINS`: **_empty_**: Domains allowlist for migrating repositories, default is blank. It means external hosts will be allowed. Multiple domains could be separated by commas. Wildcard is supported: `github.com, *.github.com`.
-- `BLOCKED_DOMAINS`: **_empty_**: Domains blocklist for migrating repositories, default is blank. Multiple domains could be separated by commas. When `ALLOWED_DOMAINS` is not blank, this option has a higher priority to deny domains. Wildcard is supported.
-- `ALLOW_LOCALNETWORKS`: **false**: Allow private addresses defined by RFC 1918, RFC 1122, RFC 4632 and RFC 4291. If a domain is allowed by `ALLOWED_DOMAINS`, this option will be ignored.
+- `EGRESS_MODE`: **lax**: Mode toggles between strictness of scanning outgoing requests, same format as `EGRESS_MODE` in [`security`](#security-security).
+- `ALLOWED_HOST_LIST`: **_empty_**: Hosts migrations and mirrors may call, same format as `ALLOWED_HOST_LIST` in [`security`](#security-security). Private and loopback addresses need a builtin or CIDR entry. When unset, the deprecated `ALLOWED_DOMAINS` entries apply on every port with `strict` as the default mode, and the deprecated `ALLOW_LOCALNETWORKS` adds `private, loopback`.
+- `BLOCKED_HOST_LIST`: **_empty_**: Hosts migrations and mirrors may never call, portless entries cover all ports.
 - `SKIP_TLS_VERIFY`: **false**: Allow skip tls verify
+
+These lists are enforced on direct connections only. When a proxy is configured (`[proxy]`, `[git.config]` `http.proxy` or the environment), restricting the proxied target is the proxy server's responsibility.
 
 ## Federation (`federation`)
 
@@ -1656,14 +1669,16 @@ is `data/repo-archive` and the default of `MINIO_BASE_PATH` is `repo-archive/`.
 ## Proxy (`proxy`)
 
 - `PROXY_ENABLED`: **false**: Enable the proxy if true, all requests to external via HTTP will be affected, if false, no proxy will be used even environment http_proxy/https_proxy
-- `PROXY_URL`: **_empty_**: Proxy server URL, support http://, https//, socks://, blank will follow environment http_proxy/https_proxy
+- `PROXY_URL`: **_empty_**: Proxy server URL, support http://, https://, socks5://, blank will follow environment http_proxy/https_proxy
 - `PROXY_HOSTS`: **_empty_**: Comma separated list of host names requiring proxy. Glob patterns (*) are accepted; use ** to match all hosts.
+
+When a proxy is configured, Gitea does not enforce the egress lists (`[security]`, `[migrations]`) on the proxied target, the proxy server is expected to restrict it.
 
 i.e.
 
 ```ini
 PROXY_ENABLED = true
-PROXY_URL = socks://127.0.0.1:1080
+PROXY_URL = socks5://127.0.0.1:1080
 PROXY_HOSTS = *.github.com
 ```
 
@@ -1682,6 +1697,7 @@ PROXY_HOSTS = *.github.com
 - `ARTIFACT_RETENTION_DAYS`: **90**: Days to keep artifacts. Old artifacts will be deleted after this period. 0 means keep forever.
   Changes only apply to newly uploaded artifacts, existing ones keep the expiry stored when they were uploaded.
   Artifacts could have their own retention periods by setting the `retention-days` option in `actions/upload-artifact` step.
+- `ARTIFACT_PREVIEW_MAX_SIZE`: **10485760**: Maximum total artifact size in bytes that can be browsed or previewed in the web UI. Set to `0` to disable artifact previews or `-1` for no limit. Individual files are also limited by [`MAX_DISPLAY_FILE_SIZE`](#ui-ui).
 - `RUN_RETENTION_DAYS`: **400**: Days to keep completed runs. Old runs and everything under them will be deleted after this period. 0 means keep forever.
 - `ZOMBIE_TASK_TIMEOUT`: **10m**: Timeout to stop the task which have running status, but haven't been updated for a long time
 - `ENDLESS_TASK_TIMEOUT`: **3h**: Timeout to stop the tasks which have running status and continuous updates, but don't end for a long time

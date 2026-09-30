@@ -149,6 +149,7 @@ Included products
 - <a href="https://developers.cloudflare.com/fundamentals/api/reference/sdks/">Go SDK</a><a href="https://developers.cloudflare.com/changelog/rss/go-sdk.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/log-explorer/">Log Explorer</a><a href="https://developers.cloudflare.com/changelog/rss/log-explorer.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/logs/">Logs</a><a href="https://developers.cloudflare.com/changelog/rss/logs.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/monetization-gateway/">Monetization Gateway</a><a href="https://developers.cloudflare.com/changelog/rss/monetization-gateway.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/fundamentals/organizations/">Organizations</a><a href="https://developers.cloudflare.com/changelog/rss/organizations.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/registrar/">Registrar</a><a href="https://developers.cloudflare.com/changelog/rss/registrar.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/resource-tagging/">Resource Tagging</a><a href="https://developers.cloudflare.com/changelog/rss/resource-tagging.xml">Subscribe to RSS</a>

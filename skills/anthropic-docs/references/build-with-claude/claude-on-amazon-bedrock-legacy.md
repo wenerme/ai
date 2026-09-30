@@ -54,20 +54,20 @@ Anthropic's [client SDKs](https://platform.claude.com/docs/en/cli-sdks-libraries
   <Tab title="Java">
     <CodeGroup>
       ```groovy Gradle
-      implementation("com.anthropic:anthropic-java:2.65.0")
-      implementation("com.anthropic:anthropic-java-bedrock:2.65.0")
+      implementation("com.anthropic:anthropic-java:2.66.0")
+      implementation("com.anthropic:anthropic-java-bedrock:2.66.0")
       ```
 
       ```xml Maven
       <dependency>
           <groupId>com.anthropic</groupId>
           <artifactId>anthropic-java</artifactId>
-          <version>2.65.0</version>
+          <version>2.66.0</version>
       </dependency>
       <dependency>
           <groupId>com.anthropic</groupId>
           <artifactId>anthropic-java-bedrock</artifactId>
-          <version>2.65.0</version>
+          <version>2.66.0</version>
       </dependency>
       ```
 
@@ -533,14 +533,14 @@ See the [client SDKs](https://platform.claude.com/docs/en/cli-sdks-libraries/ove
 
 You can authenticate with Bedrock using bearer tokens instead of AWS credentials. This is useful in corporate environments where teams need access to Bedrock without managing AWS credentials, IAM roles, or account-level permissions.
 
-The simplest approach is to set the `AWS_BEARER_TOKEN_BEDROCK` environment variable, which each SDK detects automatically when resolving credentials from the environment.
+The simplest approach is to set the `AWS_BEARER_TOKEN_BEDROCK` environment variable, which the SDK detects automatically when resolving credentials from the environment.
 
 To provide a token programmatically:
 
 <Tabs>
   <Tab title="cURL">
     <Note>
-      This section shows how to configure a bearer token in an SDK client. The SDKs also read the token from the `AWS_BEARER_TOKEN_BEDROCK` environment variable. To make direct HTTP requests with a bearer token, see the [Amazon Bedrock documentation](https://docs.aws.amazon.com/bedrock/).
+      This section shows how to configure a bearer token in an SDK client, which also reads the token from the `AWS_BEARER_TOKEN_BEDROCK` environment variable. To make direct HTTP requests with a bearer token, see the [Amazon Bedrock documentation](https://docs.aws.amazon.com/bedrock/).
     </Note>
   </Tab>
 

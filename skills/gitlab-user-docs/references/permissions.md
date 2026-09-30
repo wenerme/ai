@@ -140,16 +140,17 @@ Group permissions for [Application Security](application_security/secure_your_ap
 
 Group permissions for [GitLab Secrets Manager](../ci/secrets/secrets_manager/_index.md):
 
-| Action                                          | Guest | Planner | Reporter | Security Manager | Developer | Maintainer | Owner |
-|-------------------------------------------------|:-----:|:-------:|:--------:|:----------------:|:---------:|:----------:|:-----:|
-| Enable GitLab Secrets Manager[^com-top-level]      |       |         |          |                  |           |            |   ✓   |
-| Manage permissions for secrets                  |       |         |          |                  |           |            |   ✓   |
-| Read secret metadata                            |       |         |          |                  |           |            |   ✓   |
-| Create, update, and delete secrets[^owners-grant-action] |       |         |          |                  |           |            |   ✓   |
-| Read secret value[^secret-values]                  |       |         |          |                  |           |            |       |
+| Action                                                           | Guest | Planner | Reporter | Security Manager | Developer | Maintainer | Owner |
+|------------------------------------------------------------------|:-----:|:-------:|:--------:|:----------------:|:---------:|:----------:|:-----:|
+| Enable GitLab Secrets Manager[^com-top-level]                    |       |         |          |                  |           |            |   ✓   |
+| Manage permissions for secrets                                   |       |         |          |                  |           |            |   ✓   |
+| Read secret metadata                                             |       |         |          |                  |           |            |   ✓   |
+| Create, update, and delete secrets[^owners-grant-action]         |       |         |          |                  |           |            |   ✓   |
+| Create secrets (without update permission)[^owners-grant-action] |       |         |          |                  |           |            |   ✓   |
+| Read secret value[^secret-values]                                |       |         |          |                  |           |            |       |
 
-[^com-top-level]: On GitLab.com, only a top level group Owner can enable Secrets Manager for subgroups and projects. On self-managed, an administrator must enable it for the instance.
-[^owners-grant-action]: Owners can grant this action to other roles, specific users, groups, or custom roles. See [Manage secrets permissions](../ci/secrets/secrets_manager/_index.md#manage-secrets-permissions).
+[^com-top-level]: On GitLab.com, only a top-level group Owner can enable Secrets Manager for subgroups and projects. On GitLab Self-Managed, an administrator must enable it for the instance.
+[^owners-grant-action]: Owners can grant these actions to other roles, specific users, groups, or custom roles. See [Manage secrets permissions](../ci/secrets/secrets_manager/_index.md#manage-secrets-permissions).
 [^secret-values]: No role can read a secret's value. CI/CD jobs read values through job authentication. Other workloads read values through the [Secrets Manager API](../ci/secrets/secrets_manager/non_cicd_access.md), and only if they have been granted the read value permission for that secret.
 
 ### Group CI/CD
@@ -431,16 +432,17 @@ Project permissions for [application security](application_security/secure_your_
 
 Project permissions for [GitLab Secrets Manager](../ci/secrets/secrets_manager/_index.md):
 
-| Action                                          | Guest | Planner | Reporter | Security Manager | Developer | Maintainer | Owner |
-|-------------------------------------------------|:-----:|:-------:|:--------:|:----------------:|:---------:|:----------:|:-----:|
-| View Secrets Manager user permissions           |       |         |          |                  |           |     ✓      |   ✓   |
-| Manage permissions for secrets                  |       |         |          |                  |           |            |   ✓   |
-| Read secrets metadata[^users-owner-role], [^users-maintainer-role] |       |         |          |                  |           |     ✓      |   ✓   |
-| Create and update secrets[^users-owner-role], [^users-maintainer-role] |   |         |          |                  |           |     ✓      |   ✓   |
-| Delete secrets[^users-owner-role]                     |       |         |          |                  |           |            |   ✓   |
-| Read secret value[^project-secrets-secret-values]                  |       |         |          |                  |           |            |       |
+| Action                                                                 | Guest | Planner | Reporter | Security Manager | Developer | Maintainer | Owner |
+|------------------------------------------------------------------------|:-----:|:-------:|:--------:|:----------------:|:---------:|:----------:|:-----:|
+| View Secrets Manager user permissions                                  |       |         |          |                  |           | ✓          |   ✓   |
+| Manage permissions for secrets                                         |       |         |          |                  |           |            |   ✓   |
+| Read secrets metadata[^users-owner-role], [^users-maintainer-role]     |       |         |          |                  |           | ✓          |   ✓   |
+| Create and update secrets[^users-owner-role], [^users-maintainer-role] |       |         |          |                  |           | ✓          |   ✓   |
+| Create secrets (without update permission)[^users-owner-role]          |       |         |          |                  |           |            |   ✓   |
+| Delete secrets[^users-owner-role]                                      |       |         |          |                  |           |            |   ✓   |
+| Read secret value[^project-secrets-secret-values]                      |       |         |          |                  |           |            |       |
 
-[^users-owner-role]: Users with the Owner role can grant this action to other roles, specific users, groups, or custom roles. See [Manage secrets permissions](../ci/secrets/secrets_manager/_index.md#manage-secrets-permissions).
+[^users-owner-role]: Users with the Owner role can grant these actions to other roles, specific users, groups, or custom roles. See [Manage secrets permissions](../ci/secrets/secrets_manager/_index.md#manage-secrets-permissions).
 [^users-maintainer-role]: Users with the Maintainer role have this permission by default for secrets managers enabled in GitLab 19.4 and later. Users with the Owner role can remove or change the default permissions for the Maintainer role.
 [^project-secrets-secret-values]: No role can read a secret's value. CI/CD jobs read values through job authentication. Other workloads read values through the [Secrets Manager API](../ci/secrets/secrets_manager/non_cicd_access.md), and only if they have been granted the read value permission for that secret.
 
@@ -588,7 +590,7 @@ Project permissions for [merge requests](project/merge_requests/_index.md):
 | Action                                                                                    | Guest | Planner | Reporter | Security Manager | Developer | Maintainer | Owner |
 | ----------------------------------------------------------------------------------------- | :---: | :-----: | :------: | :--------------: | :-------: | :--------: | :---: |
 | [View](project/merge_requests/_index.md#view-merge-requests) a merge request[^project-merge-guest-role-limited] |   ✓   |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
-| [Search](search/_index.md) merge requests and comments[^project-merge-guest-role-limited], [^users-planner-role]           |   ✓   |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
+| [Search](search/_index.md) merge requests and comments[^project-merge-guest-role-limited]           |   ✓   |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | [Approve](project/merge_requests/approvals/_index.md) merge requests[^approval-planner-reporter]         |       |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | Add internal note                                                                         |       |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | Comment and add suggestions                                                               |       |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
@@ -604,9 +606,6 @@ Project permissions for [merge requests](project/merge_requests/_index.md):
     must be given explicit access (at least the **Reporter** role) even if the project is internal. Users
     with the Guest role on GitLab.com are only able to perform this action on public projects because
     internal visibility is not available.
-[^users-planner-role]: In private projects, comments on merge
-    requests are not returned in advanced search results for users with the Planner role.
-    For more information, see [epic 17674](https://gitlab.com/groups/gitlab-org/-/work_items/17674).
 [^approval-planner-reporter]: Approval from Planner and Reporter roles is available only if
     [enabled for the project](project/merge_requests/approvals/rules.md#enable-approval-permissions-for-additional-users).
 [^external-contributions]: In projects that accept contributions from external members, users can create, edit, and close their
@@ -703,7 +702,7 @@ Project permissions for [issues](project/issues/_index.md):
 | [Search](search/_index.md) issues and comments                                    |   ✓   |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | Create issues                                                                     |   ✓   |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | View [confidential issues](project/issues/confidential_issues.md)                 |       |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
-| [Search](search/_index.md) confidential issues and comments[^project-planning-users-planner-role]          |       |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
+| [Search](search/_index.md) confidential issues and comments          |       |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | Edit issues, including metadata and item locking[^metadata-includes-labels] |       |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | Resolve threads on issues[^project-planning-resolve-threads] |       |         |          |                  |     ✓     |     ✓      |   ✓   |
 | Add internal notes                                                                |       |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
@@ -732,8 +731,6 @@ Project permissions for [issues](project/issues/_index.md):
 [^guest-users-archive]: Guest users can archive and reopen issues that they authored or are assigned to.
 [^guest-authored-items]: Guest users can modify the title and description that they authored or are assigned to.
 [^project-planning-users-who-don]: Users who don't have the Planner or Owner role can only delete the issues they authored.
-[^project-planning-users-planner-role]: Users with the Planner role can not use advanced search for comments on confidential issues.
-    For more information, see [epic 17674](https://gitlab.com/groups/gitlab-org/-/work_items/17674).
 [^project-planning-resolve-threads]: Users can resolve threads they started and threads on issues they authored.
 
 Project permissions for [tasks](tasks.md):
@@ -791,7 +788,7 @@ Project permissions for [repository](project/repository/_index.md) features incl
 | --------------------------------------------------------------------- | :---: | :-----: | :------: | :--------------: | :-------: | :--------: | :---: |
 | View project code[^project-repositories-guest-role-limited]                                        |   ✓   |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | [Search](search/_index.md) project code[^project-repositories-guest-role-limited], [^project-repositories-users-planner-role]                  |   ✓   |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
-| [Search](search/_index.md) commits and comments[^project-repositories-guest-role-limited], [^project-repositories-users-planner-role]          |   ✓   |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
+| [Search](search/_index.md) commits and comments[^project-repositories-guest-role-limited]          |   ✓   |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | Pull project code[^branch-protected-depends]                                        |   ✓   |    ✓    |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | View commit status                                                    |       |         |    ✓     |        ✓         |     ✓     |     ✓      |   ✓   |
 | Create commit status[^project-repositories-guest-role-limited-2]                                     |       |         |          |                  |     ✓     |     ✓      |   ✓   |
@@ -819,7 +816,7 @@ Project permissions for [repository](project/repository/_index.md) features incl
     or GitLab Dedicated) or group owner (on GitLab.com) gives those users permission. The administrator
     or group owner can create a [custom role](custom_roles/_index.md) through the API or UI and assign
     that role to the users. In GitLab 18.7 and later, users with the Planner role can view private repository content.
-[^project-repositories-users-planner-role]: Users with the Planner role cannot use exact code search, advanced search for code, or advanced search for comments on commits in private projects. For more information, see [epic &17674](https://gitlab.com/groups/gitlab-org/-/work_items/17674).
+[^project-repositories-users-planner-role]: Users with the Planner role cannot use exact code search or advanced search for code in private projects. For more information, see [epic &17674](https://gitlab.com/groups/gitlab-org/-/work_items/17674).
 [^branch-protected-depends]: If the [branch is protected](project/repository/branches/protected.md), this depends on the
     access given to Developers and Maintainers.
 [^project-repositories-guest-role-limited-2]: On GitLab Self-Managed, users with the Guest role are able to perform this action only on public

@@ -21,7 +21,9 @@ By default, all DNS requests on the user device are resolved by Cloudflare's [pu
 To resolve private DNS queries:
 
 1. [Connect your private network](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/get-started/) with Cloudflare Tunnel.
-2. Under **Networking** > **Routes**, verify that the IP address of your internal DNS resolver is included in the tunnel. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes) Note
+2. Under **Networking** > **Routes**, verify that the IP address of your internal DNS resolver is included in the tunnel. [Go to **Routes** ↗](https://dash.cloudflare.com/?to=/:account/magic-networks/routes)
+
+   Note
 
    Ensure that **Split Tunnels** are configured to [include traffic to private IPs and hostnames](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/private-net/cloudflared/connect-cidr/#3-route-private-network-ips-through-the-cloudflare-one-client).
 3. Route specific DNS queries to your internal DNS resolver using one of the following options:

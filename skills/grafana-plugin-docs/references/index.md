@@ -61,6 +61,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [Install and upgrade the Azure Data Explorer data source plugin](/docs/plugins/grafana-azure-data-explorer-datasource/latest/install/ "Install and upgrade the Azure Data Explorer data source plugin")
 - [Interactive learning](/docs/plugins/grafana-pathfinder-app/latest/ "Interactive learning")
 - [Introduction to Prometheus Alerting](/docs/plugins/grafana-prometheusalerting-app/latest/fundamentals/ "Introduction to Prometheus Alerting")
+- [Introduction to the Service Center view](/docs/plugins/grafana-servicecenter-app/latest/overview/ "Introduction to the Service Center view")
 - [Investigations App](/docs/plugins/grafana-investigations-app/latest/ "Investigations App")
 - [Jenkins data source for Grafana](/docs/plugins/grafana-jenkins-datasource/latest/ "Jenkins data source for Grafana")
 - [Jira data source](/docs/plugins/grafana-jira-datasource/latest/ "Jira data source")

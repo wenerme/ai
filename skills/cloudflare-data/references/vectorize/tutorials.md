@@ -18,6 +18,7 @@ View tutorials to help you get started with Vectorize.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
+| [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/) | 2 years ago | Beginner |
 
 Was this helpful?
 

@@ -4278,7 +4278,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mutation-artifactregistryactivate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-artifactregistryactivate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
-| <a id="mutation-artifactregistryactivate-registry"></a>`registry`  | [`ArtifactRegistry`](#artifactregistry) | Introduced in GitLab 19.4. Status: Experiment. Registry provisioned. Null when the request was refused. |
+| <a id="mutation-artifactregistryactivate-registry"></a>`registry`  | [`ArtifactRegistry`](#artifactregistry) | Introduced in GitLab 19.4. Status: Experiment. The organization's registry: the one just provisioned, or the existing one when the organization is already activated. Null on every other refusal. |
 
 ### `Mutation.artifactRegistryArtifactDelete`
 
@@ -70564,6 +70564,7 @@ Actions that can be performed on secrets.
 
 | Value | Description |
 | ----- | ----------- |
+| <a id="secretsmanagementaction-create"></a>`CREATE` | Create secrets without updating existing ones. |
 | <a id="secretsmanagementaction-delete"></a>`DELETE` | Delete secrets. |
 | <a id="secretsmanagementaction-read"></a>`READ` | Read secrets. |
 | <a id="secretsmanagementaction-read_value"></a>`READ_VALUE` | Read secret values. |
@@ -71228,6 +71229,7 @@ Name of the feature that the callout is for.
 | <a id="usergroupcalloutfeaturename-namespace_storage_limit_alert_warning_threshold"></a>`NAMESPACE_STORAGE_LIMIT_ALERT_WARNING_THRESHOLD` | Callout feature name for namespace_storage_limit_alert_warning_threshold. |
 | <a id="usergroupcalloutfeaturename-namespace_storage_pre_enforcement_banner"></a>`NAMESPACE_STORAGE_PRE_ENFORCEMENT_BANNER` | Callout feature name for namespace_storage_pre_enforcement_banner. |
 | <a id="usergroupcalloutfeaturename-namespace_user_cap_reached_alert"></a>`NAMESPACE_USER_CAP_REACHED_ALERT` | Callout feature name for namespace_user_cap_reached_alert. |
+| <a id="usergroupcalloutfeaturename-organizations_available_alert"></a>`ORGANIZATIONS_AVAILABLE_ALERT` | Callout feature name for organizations_available_alert. |
 | <a id="usergroupcalloutfeaturename-overage_seat_count_threshold"></a>`OVERAGE_SEAT_COUNT_THRESHOLD` | Callout feature name for overage_seat_count_threshold. |
 | <a id="usergroupcalloutfeaturename-preview_usage_quota_free_plan_alert"></a>`PREVIEW_USAGE_QUOTA_FREE_PLAN_ALERT` | Callout feature name for preview_usage_quota_free_plan_alert. |
 | <a id="usergroupcalloutfeaturename-preview_user_over_limit_free_plan_alert"></a>`PREVIEW_USER_OVER_LIMIT_FREE_PLAN_ALERT` | Callout feature name for preview_user_over_limit_free_plan_alert. |

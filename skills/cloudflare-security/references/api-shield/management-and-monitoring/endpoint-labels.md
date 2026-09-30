@@ -100,7 +100,9 @@ How you address risks to your endpoints will depend on its label(s). The followi
 
    View the endpoints labeled as risks and identify if they have been labeled for other risks.
 
-   For example, endpoints labeled `cf-risk-sensitive` and `cf-risk-missing-auth` or `cf-risk-mixed-auth` may return sensitive data in successful responses that lack a configured session identifier. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets) Go to the details pages for endpoints labeled as `cf-risk-missing-auth` or `cf-risk-mixed-auth`, and check for recent changes in configured session identifier presence in the last 24 hours and seven days.
+   For example, endpoints labeled `cf-risk-sensitive` and `cf-risk-missing-auth` or `cf-risk-mixed-auth` may return sensitive data in successful responses that lack a configured session identifier. [Go to **Web assets** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/web-assets)
+
+   Go to the details pages for endpoints labeled as `cf-risk-missing-auth` or `cf-risk-mixed-auth`, and check for recent changes in configured session identifier presence in the last 24 hours and seven days.
 2. Review traffic to these labeled endpoints in Security Analytics.
 
    Check for unexpected traffic sources and note any irregular traffic patterns.

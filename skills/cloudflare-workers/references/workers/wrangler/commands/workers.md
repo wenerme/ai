@@ -1303,6 +1303,7 @@ yarn wrangler versions deploy [VERSION-SPECS]
 pnpm wrangler versions deploy [VERSION-SPECS]
 ```
 
+- `--durable-objects-code-update-mode` `string` How to update Durable Object code: immediate, or deferred followed by a maximum delay (for example, deferred 30s)
 - `--name` `string` Name of the worker
 - `--version-id` `string` Worker Version ID(s) to deploy
 - `--percentage` `number` Percentage of traffic to split between Worker Version(s) (0-100)

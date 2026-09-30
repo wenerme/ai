@@ -134,7 +134,7 @@ IDETerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Check my Workers deployment logs for errors and suggest fixes.
+   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
    ```
 
 
@@ -239,11 +239,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
@@ -251,11 +251,11 @@ Build an AI chat agent using the Cloudflare Agents SDK with persistent conversat
 ```
 
 ```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ## Tips

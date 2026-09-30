@@ -74,7 +74,9 @@ You can manage custom topics from two places in the dashboard:
 
 Both methods will update the same underlying topic list. Changes made in one are immediately reflected in the other.
 
-1. In the Cloudflare dashboard, go to the Security **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings) Alternatively, go to the [custom rules creation page](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/), select the **LLM Custom topic** field, and select **Manage custom topics** to open the sidebar.
+1. In the Cloudflare dashboard, go to the Security **Settings** page. [Go to **Settings** ↗](https://dash.cloudflare.com/?to=/:account/:zone/security/settings)
+
+   Alternatively, go to the [custom rules creation page](https://developers.cloudflare.com/waf/custom-rules/create-dashboard/), select the **LLM Custom topic** field, and select **Manage custom topics** to open the sidebar.
 2. Add a topic by providing:
    - **Label**: A short, hyphenated identifier (for example, `competitors`).
    - **Topic Description**: A descriptive English phrase the model uses for classification (for example, `seeking info on competitors`).

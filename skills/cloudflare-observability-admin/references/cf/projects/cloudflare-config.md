@@ -16,9 +16,9 @@ Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 `cloudflare.config.ts` is the typed configuration file for a Workers project. Its default export can define a Worker, Container applications, and account settings. Because the file is a TypeScript module, it can use imports, functions, environment variables, and asynchronous values.
 
-Beta
+Open beta
 
-`cf` is in beta. Commands, configuration, and Build Output can change before the stable release.
+Programmatic configuration with `cloudflare.config.ts` is in open beta. The configuration format can change before the stable release.
 
 Loading `cloudflare.config.ts` requires Node.js 22.18 or later. Bun is not supported: when `cf` runs on Bun, loading the file fails with `cloudflare.config.ts loading is not supported on Bun`. Most `cf` commands load the nearest `cloudflare.config.ts`, including commands that only call the Cloudflare API, so this is the practical minimum for any `cf` command you run inside the project.
 
