@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/troubleshooting/api-error-cod
 
 # API error codes
 
-Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When a request to the AI Search API or a public endpoint fails, it returns one of the errors documented on this page.
 
@@ -52,11 +52,12 @@ These errors can occur across most AI Search API paths.
 | Code | Message | HTTP status | Details | Recommended action |
 | --- | --- | --- | --- | --- |
 | 10000 | `Authentication error` | 401 | Authentication failed. | Check your [API token](https://developers.cloudflare.com/ai-search/get-started/api/#1-create-an-api-token) and AI Search permissions. |
-| 7001 | `Internal Error` | 500 | An internal error occurred. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
+| 7001 | `internal_error` | 500 | An internal error occurred. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
 | 7002 | `ai_search_not_found` | 404 | The requested instance does not exist. | Check the instance name and namespace. |
 | 7017 | `unable_to_connect_to_ai_search` | 503 | AI Search could not connect to an internal service. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
 | 7063 | `namespace_not_found` | 404 | The requested namespace does not exist. | Check the [namespace](https://developers.cloudflare.com/ai-search/concepts/namespaces/) name. |
-| 7068 | `Internal Error` | 500 | An internal invariant failed. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
+| 7068 | `internal_invariant_violated` | 500 | An internal invariant failed. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
+| 7115 | `ai_search_models_unavailable` | 503 | AI Search models are temporarily unavailable. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
 
 ## Instances
 
@@ -83,6 +84,11 @@ These errors can occur when you create, read, update, delete, or get stats for A
 | 7047 | `invalid_url_location` | 400 | A website data source URL location is invalid. | Check the [website data source](https://developers.cloudflare.com/ai-search/configuration/data-source/website/) URL. |
 | 7050 | `fail_while_provisioning_managed_resources` | 500 | AI Search could not create managed resources for an instance. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if provisioning continues to fail. |
 | 7052 | `type_and_source_are_required_for_non_managed_instances` | 400 | A non-managed instance is missing a `type` or `source`. | Provide the required [data source](https://developers.cloudflare.com/ai-search/configuration/data-source/) fields. |
+| 7101 | `discover_requires_a_verified_zone_on_this_account` | 400 | A discover crawl requires a verified zone on this account. | Use a website in a verified zone on the account, or use the `sitemap` parse type. |
+| 7102 | `include_external_links_not_allowed` | 400 | Discover crawls cannot follow links outside the verified zone. | Turn off `include_external_links`, or use the `sitemap` parse type. |
+| 7103 | `sitemap_requires_owned_zone` | 400 | The requested sitemap crawl configuration requires an owned zone. | Use a website in a verified zone on the account. |
+| 7104 | `instance_status_modified_concurrently_please_retry` | 409 | Another request changed the instance status concurrently. | Retry the request. |
+| 7111 | `source_is_not_a_valid_url_or_existing_r2_bucket` | 400 | AI Search could not infer a source type from the supplied source. | Provide an HTTP or HTTPS URL, or the name of an existing R2 bucket on the account. |
 
 ## Custom domains
 
@@ -95,8 +101,6 @@ These errors can occur when you add, change, or remove a [custom domain](https:/
 | 7092 | `custom_domain_provisioning_failed` | 502 | Cloudflare could not provision a certificate for the hostname. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
 | 7093 | `custom_domains_require_an_active_public_endpoint` | 400 | The instance or namespace has no active public endpoint. | Enable the [public endpoint](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/) before adding a custom domain. |
 | 7096 | `disabling_the_default_domain_requires_at_least_one_custom_domain` | 400 | `default_domain_enabled` was set to `false` without a custom domain. | Add a [custom domain](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/custom-domains/) in the same request, or leave the default hostname enabled. |
-
-Code `7096` is also returned as `ai_gateway_credential_not_found` when a request calls a [model provider](#models-and-ai-gateway) with no stored credential. Use the `message` field to tell the two apart.
 
 ## Namespaces
 
@@ -142,6 +146,10 @@ These errors can occur when you upload, list, read, download, delete, sync, filt
 | 7059 | `content_download_not_available_for_external_source_items` | 400 | The original content is not available for an item from an external source. | Download the file from the original [data source](https://developers.cloudflare.com/ai-search/configuration/data-source/). |
 | 7060 | `unsupported_file_type` | 400 | AI Search could not determine a supported content type. | Upload a [supported file type](https://developers.cloudflare.com/ai-search/configuration/data-source/#supported-file-types). |
 | 7072 | `filename_exceeds_maximum_length` | 400 | The filename or item key is longer than 128 characters. | Use a filename or item key that is 128 characters or fewer. |
+| 7095 | `item_write_rate_limited` | 429 | The item could not be written because storage temporarily rate limited the request. | Retry with backoff. |
+| 7100 | `full_page_content_unavailable` | 403 | Full page downloads are unavailable for discover-crawled content. | Use search results or item chunks to retrieve cited excerpts. |
+| 7113 | `client_disconnected_during_upload` | 499 | The client disconnected before the upload completed. | Reconnect and upload the file again. |
+| 7114 | `ai_search_instance_overloaded` | 429 | The instance is temporarily overloaded. | Retry after the `Retry-After` delay. |
 
 ## Jobs
 
@@ -173,6 +181,7 @@ These errors can occur when you run instance search, cross-instance search, publ
 | 7073 | `all_search_methods_failed` | 500 | All retrieval methods failed. | Retry the request. Check [indexing error codes](https://developers.cloudflare.com/ai-search/troubleshooting/indexing-error-codes/) and instance configuration. |
 | 7080 | `vectorize_filter_not_serializable` | 400 | A filter cannot be sent to Vectorize. | Use JSON-serializable filter values. |
 | 7089 | `image_query_requires_vector_index` | 400 | An image query requires vector indexing. | Turn on [vector search](https://developers.cloudflare.com/ai-search/configuration/indexing/vector-search/) for the instance and reindex your content, or use an instance that already has vector search enabled. |
+| 7105 | `metadata_filter_unknown_field` | 400 | The metadata filter references a field that is not indexed. | Use a system metadata field or a configured [custom metadata field](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/). |
 
 ### Chat
 
@@ -209,15 +218,14 @@ These errors can occur when a search or chat request calls Workers AI, AI Gatewa
 | 2017 | `Response blocked due to security configurations` | 424 | AI Gateway Guardrails blocked the response. | Review [AI Gateway Guardrails](https://developers.cloudflare.com/ai-gateway/features/guardrails/set-up-guardrail/) response settings and the retrieved content. |
 | 7011 | `workers_ai_fail_to_return_a_valid_response` | 500 | Workers AI returned an invalid response. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
 | 7019 | `workers_ai_error` | 400 | Workers AI returned an error for the request. | Check the [model](https://developers.cloudflare.com/ai-search/configuration/models/), input, and AI Search options. |
+| 7094 | `workers_ai_free_allocation_exceeded` | 402 | The managed Workers AI allocation for AI Search was exceeded. | Retry later. If the error persists, [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/). |
 | 7030 | `workers_ai_timeout` | 400 | Workers AI timed out. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
 | 7031 | `ai_gateway_timeout` | 400 | AI Gateway timed out. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
 | 7033 | `ai_gateway_exception` | 502 | AI Gateway or the upstream model returned an error. | Retry the request. Check [AI Gateway](https://developers.cloudflare.com/ai-gateway/) and provider configuration. |
 | 7077 | `ai_gateway_authentication_error` | 401 | AI Gateway or the upstream provider rejected authentication. | Check provider credentials in [AI Gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). |
 | 7078 | `ai_gateway_billing_error` | 402 | The upstream provider reported a billing issue. | Check provider billing status in [AI Gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). |
 | 7079 | `ai_gateway_context_window_exceeded` | 413 | The request exceeds the model context window. | Reduce message history, retrieved context, or [result count](https://developers.cloudflare.com/ai-search/configuration/retrieval/result-controls/#maximum-number-of-results). |
-| 7096 | `ai_gateway_credential_not_found` | 400 | No stored credential was found for the upstream provider. | Add the provider key in [AI Gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). |
-
-Code `7096` is also returned when [disabling the default hostname](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/custom-domains/#turn-off-the-default-hostname) without a custom domain. Use the `message` field to tell the two apart.
+| 7117 | `ai_gateway_credential_not_found` | 400 | No stored credential was found for the upstream provider. | Add the provider key in [AI Gateway](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/). |
 
 ## Public endpoints
 
@@ -243,6 +251,7 @@ These errors can occur when public search, public chat completions, Model Contex
 | 60016 | `method not allowed; this MCP endpoint only accepts POST` | 405 | The MCP endpoint received a non-`POST` request. | Send [MCP](https://developers.cloudflare.com/ai-search/api/search/mcp/) requests with `POST`. |
 | 60017 | `asset fetch failed` | 503 | The public endpoint could not fetch a UI snippet asset. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
 | 60018 | `default domain disabled` | 404 | The request reached the default hostname while the endpoint serves a custom domain only. | Send the request to the [custom domain](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/custom-domains/), or re-enable the [default hostname](https://developers.cloudflare.com/ai-search/configuration/retrieval/public-endpoint/custom-domains/#turn-off-the-default-hostname). |
+| 60019 | `method not allowed; this endpoint only accepts POST` | 405 | The public `/search` or `/chat/completions` endpoint received a non-`POST` request. | Send the request with `POST`. The response includes `Allow: POST`. |
 | 60100 | `internal error` | 500 | The public endpoint returned an unexpected error. | Retry the request. Check [Cloudflare Status ↗︎](https://www.cloudflarestatus.com) and [contact support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) if the error persists. |
 
 ## Troubleshoot API errors
@@ -260,5 +269,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/#page","headline":"API error codes","description":"Troubleshoot API and public endpoint errors.","url":"https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/og.png?v=23b29a999fd50392","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/#page","headline":"API error codes","description":"Troubleshoot API and public endpoint errors.","url":"https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/troubleshooting/api-error-codes/og.png?v=23b29a999fd50392","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

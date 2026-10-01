@@ -1,0 +1,248 @@
+---
+description: Create, configure, and manage streams for data ingestion
+title: Manage streams
+image: https://developers.cloudflare.com/basin-pipelines/streams/manage-streams/og.png?v=9ed87095f659b805
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/basin-pipelines/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Manage streams
+
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/streams/manage-streams/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Learn how to:
+
+- Create and configure streams for data ingestion
+- View and update stream settings
+- Delete streams when no longer needed
+
+## Create a stream
+
+Streams are made available to pipelines as SQL tables using the stream name (for example, `SELECT * FROM my_stream`).
+
+### Dashboard
+
+1. In the Cloudflare dashboard, go to the **Basin Pipelines** page. [Go to **Pipelines** ↗](https://dash.cloudflare.com/?to=/:account/pipelines/overview)
+2. Select **Create Pipeline** to launch the pipeline creation wizard.
+3. Complete the wizard to create your stream along with the associated sink and pipeline.
+
+### Wrangler CLI
+
+To create a stream, run the `basin pipelines streams create` command:
+
+npmyarnpnpm
+
+```
+npx wrangler basin pipelines streams create <STREAM_NAME>
+```
+
+```
+yarn wrangler basin pipelines streams create <STREAM_NAME>
+```
+
+```
+pnpm wrangler basin pipelines streams create <STREAM_NAME>
+```
+
+Alternatively, to use the interactive setup wizard that helps you configure a stream, sink, and pipeline, run the `basin pipelines setup` command:
+
+npmyarnpnpm
+
+```
+npx wrangler basin pipelines setup
+```
+
+```
+yarn wrangler basin pipelines setup
+```
+
+```
+pnpm wrangler basin pipelines setup
+```
+
+### Schema configuration
+
+Streams support two approaches for handling data:
+
+- **Structured streams**: Define a schema with specific fields and data types. Events are validated against the schema.
+- **Unstructured streams**: Accept any valid JSON without validation. These streams have a single `value` column containing the JSON data.
+
+To create a structured stream, provide a schema file:
+
+npmyarnpnpm
+
+```
+npx wrangler basin pipelines streams create my-stream --schema-file schema.json
+```
+
+```
+yarn wrangler basin pipelines streams create my-stream --schema-file schema.json
+```
+
+```
+pnpm wrangler basin pipelines streams create my-stream --schema-file schema.json
+```
+
+Example schema file:
+
+```json
+{
+	"fields": [
+		{
+			"name": "user_id",
+			"type": "string",
+			"required": true
+		},
+		{
+			"name": "amount",
+			"type": "float64",
+			"required": false
+		},
+		{
+			"name": "tags",
+			"type": "list",
+			"required": false,
+			"items": {
+				"type": "string"
+			}
+		},
+		{
+			"name": "metadata",
+			"type": "struct",
+			"required": false,
+			"fields": [
+				{
+					"name": "source",
+					"type": "string",
+					"required": false
+				},
+				{
+					"name": "priority",
+					"type": "int32",
+					"required": false
+				}
+			]
+		}
+	]
+}
+```
+
+**Supported data types:**
+
+- `string` - Text values
+- `int32`, `int64` - Integer numbers
+- `float32`, `float64` - Floating-point numbers
+- `bool` - Boolean true/false
+- `timestamp` - RFC 3339 timestamps, or numeric values parsed as Unix seconds, milliseconds, or microseconds (depending on unit)
+- `json` - JSON objects
+- `binary` - Binary data (base64-encoded)
+- `list` - Arrays of values
+- `struct` - Nested objects with defined fields
+
+Note
+
+Events that do not match the defined schema are accepted during ingestion but will be dropped during processing. To monitor dropped events and understand why they were dropped, query the [user error metrics](https://developers.cloudflare.com/basin-pipelines/observability/metrics/#user-error-metrics) via GraphQL. Schema modifications are not supported after stream creation.
+
+## View stream configuration
+
+### Dashboard
+
+1. In the Cloudflare dashboard, go to **Basin Pipelines** > **Streams**.
+2. Select a stream to view its associated configuration.
+
+### Wrangler CLI
+
+To view a specific stream, run the `basin pipelines streams get` command with either the stream ID or stream name:
+
+npmyarnpnpm
+
+```
+npx wrangler basin pipelines streams get <STREAM_NAME_OR_ID>
+```
+
+```
+yarn wrangler basin pipelines streams get <STREAM_NAME_OR_ID>
+```
+
+```
+pnpm wrangler basin pipelines streams get <STREAM_NAME_OR_ID>
+```
+
+To list all streams in your account, run the `basin pipelines streams list` command:
+
+npmyarnpnpm
+
+```
+npx wrangler basin pipelines streams list
+```
+
+```
+yarn wrangler basin pipelines streams list
+```
+
+```
+pnpm wrangler basin pipelines streams list
+```
+
+## Update HTTP ingest settings
+
+You can update certain HTTP ingest settings after stream creation. Schema modifications are not supported once a stream is created.
+
+### Dashboard
+
+1. In the Cloudflare dashboard, go to **Basin Pipelines** > **Streams**.
+2. Select the stream you want to update.
+3. In the **Settings** tab, go to **HTTP Ingest**.
+4. To turn on or turn off HTTP ingestion, select **Enable** or **Disable**.
+5. To update authentication and CORS settings, select **Edit** and modify.
+6. Save your changes.
+
+Note
+
+For details on configuring authentication tokens and making authenticated requests, refer to [Writing to streams](https://developers.cloudflare.com/basin-pipelines/streams/writing-to-streams/).
+
+## Delete a stream
+
+### Dashboard
+
+1. In the Cloudflare dashboard, go to **Basin Pipelines** > **Streams**.
+2. Select the stream you want to delete.
+3. In the **Settings** tab, go to **General**, and select **Delete**.
+
+### Wrangler CLI
+
+To delete a stream, run the `basin pipelines streams delete` command:
+
+npmyarnpnpm
+
+```
+npx wrangler basin pipelines streams delete <STREAM_ID>
+```
+
+```
+yarn wrangler basin pipelines streams delete <STREAM_ID>
+```
+
+```
+pnpm wrangler basin pipelines streams delete <STREAM_ID>
+```
+
+Caution
+
+Deleting a stream will permanently remove all buffered events that have not been processed and will delete any dependent pipelines. Ensure all data has been delivered to your sink before deletion.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-pipelines/streams/manage-streams/#page","headline":"Manage streams","description":"Create, configure, and manage streams for data ingestion","url":"https://developers.cloudflare.com/basin-pipelines/streams/manage-streams/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-pipelines/streams/manage-streams/og.png?v=9ed87095f659b805","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

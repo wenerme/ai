@@ -233,379 +233,155 @@ Global flags
 
 </details>
 
-### `r2 bucket catalog enable`
+## Basin Catalog
 
-Enable the data catalog on an R2 bucket
-
-npmyarnpnpm
-
-```
-npx wrangler r2 bucket catalog enable <BUCKET>
-```
-
-```
-yarn wrangler r2 bucket catalog enable <BUCKET>
-```
-
-```
-pnpm wrangler r2 bucket catalog enable <BUCKET>
-```
-
-- `<BUCKET>` `string` required
-
-  The name of the bucket to enable
-
-<details>
-
-<summary>
-
-Global flags
-
-</summary>
-
-- <code>--v</code><code>boolean</code> alias: --version
-
-  Show version number
-- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
-- <code>--config</code><code>string</code> alias: --c
-
-  Path to Wrangler configuration file
-- <code>--env</code><code>string</code> alias: --e
-
-  Environment to use for operations, and for selecting .env and .dev.vars files
-- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--install-skills</code><code>boolean</code> default: false
-
-  Install Cloudflare skills for detected AI coding agents before running the command
-- <code>--profile</code><code>string</code>Use a specific auth profile
-
-</details>
-
-### `r2 bucket catalog disable`
-
-Disable the data catalog for an R2 bucket
+Enable Basin Catalog on a bucket:
 
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog disable <BUCKET>
+npx wrangler basin catalog enable <BUCKET_NAME>
 ```
 
 ```
-yarn wrangler r2 bucket catalog disable <BUCKET>
+yarn wrangler basin catalog enable <BUCKET_NAME>
 ```
 
 ```
-pnpm wrangler r2 bucket catalog disable <BUCKET>
+pnpm wrangler basin catalog enable <BUCKET_NAME>
 ```
 
-- `<BUCKET>` `string` required
-
-  The name of the bucket to disable the data catalog for
-
-<details>
-
-<summary>
-
-Global flags
-
-</summary>
-
-- <code>--v</code><code>boolean</code> alias: --version
-
-  Show version number
-- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
-- <code>--config</code><code>string</code> alias: --c
-
-  Path to Wrangler configuration file
-- <code>--env</code><code>string</code> alias: --e
-
-  Environment to use for operations, and for selecting .env and .dev.vars files
-- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--install-skills</code><code>boolean</code> default: false
-
-  Install Cloudflare skills for detected AI coding agents before running the command
-- <code>--profile</code><code>string</code>Use a specific auth profile
-
-</details>
-
-### `r2 bucket catalog get`
-
-Get the status of the data catalog for an R2 bucket
+Disable Basin Catalog on a bucket:
 
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog get <BUCKET>
+npx wrangler basin catalog disable <BUCKET_NAME>
 ```
 
 ```
-yarn wrangler r2 bucket catalog get <BUCKET>
+yarn wrangler basin catalog disable <BUCKET_NAME>
 ```
 
 ```
-pnpm wrangler r2 bucket catalog get <BUCKET>
+pnpm wrangler basin catalog disable <BUCKET_NAME>
 ```
 
-- `<BUCKET>` `string` required
-
-  The name of the R2 bucket whose data catalog status to retrieve
-
-<details>
-
-<summary>
-
-Global flags
-
-</summary>
-
-- <code>--v</code><code>boolean</code> alias: --version
-
-  Show version number
-- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
-- <code>--config</code><code>string</code> alias: --c
-
-  Path to Wrangler configuration file
-- <code>--env</code><code>string</code> alias: --e
-
-  Environment to use for operations, and for selecting .env and .dev.vars files
-- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--install-skills</code><code>boolean</code> default: false
-
-  Install Cloudflare skills for detected AI coding agents before running the command
-- <code>--profile</code><code>string</code>Use a specific auth profile
-
-</details>
-
-### `r2 bucket catalog compaction enable`
-
-Enable automatic file compaction for your R2 data catalog or a specific table
+Get the Basin Catalog status for a bucket:
 
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog compaction enable <BUCKET> [NAMESPACE] [TABLE]
+npx wrangler basin catalog get <BUCKET_NAME>
 ```
 
 ```
-yarn wrangler r2 bucket catalog compaction enable <BUCKET> [NAMESPACE] [TABLE]
+yarn wrangler basin catalog get <BUCKET_NAME>
 ```
 
 ```
-pnpm wrangler r2 bucket catalog compaction enable <BUCKET> [NAMESPACE] [TABLE]
+pnpm wrangler basin catalog get <BUCKET_NAME>
 ```
 
-- `<BUCKET>` `string` required
+### `basin catalog compaction enable`
 
-  The name of the bucket which contains the catalog
-- `[NAMESPACE]` `string` The namespace containing the table (optional, for table-level compaction)
-- `[TABLE]` `string` The name of the table (optional, for table-level compaction)
-- `--target-size` `number` default: 128
-
-  The target size for compacted files in MB (allowed values: 64, 128, 256, 512)
-- `--token` `string` A cloudflare api token with access to R2 and R2 Data Catalog (required for catalog-level compaction settings only)
-
-<details>
-
-<summary>
-
-Global flags
-
-</summary>
-
-- <code>--v</code><code>boolean</code> alias: --version
-
-  Show version number
-- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
-- <code>--config</code><code>string</code> alias: --c
-
-  Path to Wrangler configuration file
-- <code>--env</code><code>string</code> alias: --e
-
-  Environment to use for operations, and for selecting .env and .dev.vars files
-- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--install-skills</code><code>boolean</code> default: false
-
-  Install Cloudflare skills for detected AI coding agents before running the command
-- <code>--profile</code><code>string</code>Use a specific auth profile
-
-</details>
-
-Examples:
-
-```bash
-# Enable catalog-level compaction (requires token)
-npx wrangler r2 bucket catalog compaction enable my-bucket --token <TOKEN>
-
-# Enable table-level compaction
-npx wrangler r2 bucket catalog compaction enable my-bucket my-namespace my-table --target-size 256
-```
-
-### `r2 bucket catalog compaction disable`
-
-Disable automatic file compaction for your R2 data catalog or a specific table
+Enable catalog-level compaction with a service token:
 
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog compaction disable <BUCKET> [NAMESPACE] [TABLE]
+npx wrangler basin catalog compaction enable my-bucket --token <TOKEN>
 ```
 
 ```
-yarn wrangler r2 bucket catalog compaction disable <BUCKET> [NAMESPACE] [TABLE]
+yarn wrangler basin catalog compaction enable my-bucket --token <TOKEN>
 ```
 
 ```
-pnpm wrangler r2 bucket catalog compaction disable <BUCKET> [NAMESPACE] [TABLE]
+pnpm wrangler basin catalog compaction enable my-bucket --token <TOKEN>
 ```
 
-- `<BUCKET>` `string` required
-
-  The name of the bucket which contains the catalog
-- `[NAMESPACE]` `string` The namespace containing the table (optional, for table-level compaction)
-- `[TABLE]` `string` The name of the table (optional, for table-level compaction)
-
-<details>
-
-<summary>
-
-Global flags
-
-</summary>
-
-- <code>--v</code><code>boolean</code> alias: --version
-
-  Show version number
-- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
-- <code>--config</code><code>string</code> alias: --c
-
-  Path to Wrangler configuration file
-- <code>--env</code><code>string</code> alias: --e
-
-  Environment to use for operations, and for selecting .env and .dev.vars files
-- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--install-skills</code><code>boolean</code> default: false
-
-  Install Cloudflare skills for detected AI coding agents before running the command
-- <code>--profile</code><code>string</code>Use a specific auth profile
-
-</details>
-
-Examples:
-
-```bash
-# Disable catalog-level compaction
-npx wrangler r2 bucket catalog compaction disable my-bucket
-
-# Disable table-level compaction
-npx wrangler r2 bucket catalog compaction disable my-bucket my-namespace my-table
-```
-
-### `r2 bucket catalog snapshot-expiration enable`
-
-Enable automatic snapshot expiration for your R2 data catalog or a specific table
+Enable table-level compaction:
 
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog snapshot-expiration enable <BUCKET> [NAMESPACE] [TABLE]
+npx wrangler basin catalog compaction enable my-bucket my-namespace my-table --target-size 256
 ```
 
 ```
-yarn wrangler r2 bucket catalog snapshot-expiration enable <BUCKET> [NAMESPACE] [TABLE]
+yarn wrangler basin catalog compaction enable my-bucket my-namespace my-table --target-size 256
 ```
 
 ```
-pnpm wrangler r2 bucket catalog snapshot-expiration enable <BUCKET> [NAMESPACE] [TABLE]
+pnpm wrangler basin catalog compaction enable my-bucket my-namespace my-table --target-size 256
 ```
 
-- `<BUCKET>` `string` required
+### `basin catalog compaction disable`
 
-  The name of the bucket which contains the catalog
-- `[NAMESPACE]` `string` The namespace containing the table (optional, for table-level snapshot expiration)
-- `[TABLE]` `string` The name of the table (optional, for table-level snapshot expiration)
-- `--older-than-days` `number` Delete snapshots older than this many days, defaults to 30
-- `--retain-last` `number` The minimum number of snapshots to retain, defaults to 5
-- `--token` `string` A cloudflare api token with access to R2 and R2 Data Catalog (required for catalog-level snapshot expiration settings only)
-
-<details>
-
-<summary>
-
-Global flags
-
-</summary>
-
-- <code>--v</code><code>boolean</code> alias: --version
-
-  Show version number
-- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
-- <code>--config</code><code>string</code> alias: --c
-
-  Path to Wrangler configuration file
-- <code>--env</code><code>string</code> alias: --e
-
-  Environment to use for operations, and for selecting .env and .dev.vars files
-- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--install-skills</code><code>boolean</code> default: false
-
-  Install Cloudflare skills for detected AI coding agents before running the command
-- <code>--profile</code><code>string</code>Use a specific auth profile
-
-</details>
-
-### `r2 bucket catalog snapshot-expiration disable`
-
-Disable automatic snapshot expiration for your R2 data catalog or a specific table
+Disable catalog-level compaction:
 
 npmyarnpnpm
 
 ```
-npx wrangler r2 bucket catalog snapshot-expiration disable <BUCKET> [NAMESPACE] [TABLE]
+npx wrangler basin catalog compaction disable my-bucket
 ```
 
 ```
-yarn wrangler r2 bucket catalog snapshot-expiration disable <BUCKET> [NAMESPACE] [TABLE]
+yarn wrangler basin catalog compaction disable my-bucket
 ```
 
 ```
-pnpm wrangler r2 bucket catalog snapshot-expiration disable <BUCKET> [NAMESPACE] [TABLE]
+pnpm wrangler basin catalog compaction disable my-bucket
 ```
 
-- `<BUCKET>` `string` required
+Disable table-level compaction:
 
-  The name of the bucket which contains the catalog
-- `[NAMESPACE]` `string` The namespace containing the table (optional, for table-level snapshot expiration)
-- `[TABLE]` `string` The name of the table (optional, for table-level snapshot expiration)
-- `--force` `boolean` default: false
+npmyarnpnpm
 
-  Skip confirmation prompt
+```
+npx wrangler basin catalog compaction disable my-bucket my-namespace my-table
+```
 
-<details>
+```
+yarn wrangler basin catalog compaction disable my-bucket my-namespace my-table
+```
 
-<summary>
+```
+pnpm wrangler basin catalog compaction disable my-bucket my-namespace my-table
+```
 
-Global flags
+Enable snapshot expiration:
 
-</summary>
+npmyarnpnpm
 
-- <code>--v</code><code>boolean</code> alias: --version
+```
+npx wrangler basin catalog snapshot-expiration enable <BUCKET_NAME>
+```
 
-  Show version number
-- <code>--cwd</code><code>string</code>Run as if Wrangler was started in the specified directory instead of the current working directory
-- <code>--config</code><code>string</code> alias: --c
+```
+yarn wrangler basin catalog snapshot-expiration enable <BUCKET_NAME>
+```
 
-  Path to Wrangler configuration file
-- <code>--env</code><code>string</code> alias: --e
+```
+pnpm wrangler basin catalog snapshot-expiration enable <BUCKET_NAME>
+```
 
-  Environment to use for operations, and for selecting .env and .dev.vars files
-- <code>--env-file</code><code>string</code>Path to an .env file to load - can be specified multiple times - values from earlier files are overridden by values in later files
-- <code>--install-skills</code><code>boolean</code> default: false
+Disable snapshot expiration:
 
-  Install Cloudflare skills for detected AI coding agents before running the command
-- <code>--profile</code><code>string</code>Use a specific auth profile
+npmyarnpnpm
 
-</details>
+```
+npx wrangler basin catalog snapshot-expiration disable <BUCKET_NAME>
+```
+
+```
+yarn wrangler basin catalog snapshot-expiration disable <BUCKET_NAME>
+```
+
+```
+pnpm wrangler basin catalog snapshot-expiration disable <BUCKET_NAME>
+```
 
 ### `r2 bucket cors set`
 

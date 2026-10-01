@@ -183,6 +183,10 @@ Included products
 - <a href="https://developers.cloudflare.com/ai-gateway/">AI Gateway</a><a href="https://developers.cloudflare.com/changelog/rss/ai-gateway.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/ai-search/">AI Search</a><a href="https://developers.cloudflare.com/changelog/rss/ai-search.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/artifacts/">Artifacts</a><a href="https://developers.cloudflare.com/changelog/rss/artifacts.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/basin/">Basin</a><a href="https://developers.cloudflare.com/changelog/rss/basin.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/basin-catalog/">Basin Catalog</a><a href="https://developers.cloudflare.com/changelog/rss/basin-catalog.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/basin-pipelines/">Basin Pipelines</a><a href="https://developers.cloudflare.com/changelog/rss/basin-pipelines.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/basin-sql/">Basin SQL</a><a href="https://developers.cloudflare.com/changelog/rss/basin-sql.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/browser-run/">Browser Run</a><a href="https://developers.cloudflare.com/changelog/rss/browser-run.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/cf/">Cloudflare CLI</a><a href="https://developers.cloudflare.com/changelog/rss/cf.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/containers/">Containers</a><a href="https://developers.cloudflare.com/changelog/rss/containers.xml">Subscribe to RSS</a>
@@ -194,12 +198,9 @@ Included products
 - <a href="https://developers.cloudflare.com/images/">Cloudflare Images</a><a href="https://developers.cloudflare.com/changelog/rss/images.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/kv/">KV</a><a href="https://developers.cloudflare.com/changelog/rss/kv.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/pages/">Pages</a><a href="https://developers.cloudflare.com/changelog/rss/pages.xml">Subscribe to RSS</a>
-- <a href="https://developers.cloudflare.com/pipelines/">Pipelines</a><a href="https://developers.cloudflare.com/changelog/rss/pipelines.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/privacy-proxy/">Privacy Proxy</a><a href="https://developers.cloudflare.com/changelog/rss/privacy-proxy.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/queues/">Queues</a><a href="https://developers.cloudflare.com/changelog/rss/queues.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/r2/">R2</a><a href="https://developers.cloudflare.com/changelog/rss/r2.xml">Subscribe to RSS</a>
-- <a href="https://developers.cloudflare.com/r2-data-catalog/">R2 Data Catalog</a><a href="https://developers.cloudflare.com/changelog/rss/r2-data-catalog.xml">Subscribe to RSS</a>
-- <a href="https://developers.cloudflare.com/r2-sql/">R2 SQL</a><a href="https://developers.cloudflare.com/changelog/rss/r2-sql.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/realtime/">Realtime</a><a href="https://developers.cloudflare.com/changelog/rss/realtime.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/sandbox/">Sandboxes</a><a href="https://developers.cloudflare.com/changelog/rss/sandbox.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/stream/">Stream</a><a href="https://developers.cloudflare.com/changelog/rss/stream.xml">Subscribe to RSS</a>

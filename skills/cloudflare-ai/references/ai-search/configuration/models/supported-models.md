@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/configuration/models/supporte
 
 # Supported models
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/models/supported-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/models/supported-models/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists all models supported by AI Search and their lifecycle status.
 
@@ -26,22 +26,10 @@ Production models are the actively supported and recommended models that are sta
 
 ### Text generation
 
+AI Search supports the following Workers AI models for text generation:
+
 | Provider | Alias | Context window (tokens) |
 | --- | --- | --- |
-| **Anthropic** | `anthropic/claude-3-7-sonnet` | 200,000 |
-|  | `anthropic/claude-sonnet-4` | 200,000 |
-|  | `anthropic/claude-opus-4` | 200,000 |
-|  | `anthropic/claude-3-5-haiku` | 200,000 |
-| **Cerebras** | `cerebras/gpt-oss-120b` | 131,072 |
-|  | `cerebras/gemma-4-31b` | 131,072 |
-| **Google AI Studio** | `google-ai-studio/gemini-2.5-flash` | 1,048,576 |
-|  | `google-ai-studio/gemini-2.5-pro` | 1,048,576 |
-| **Grok (x.ai)** | `grok/grok-4` | 256,000 |
-| **Groq** | `groq/llama-3.3-70b-versatile` | 131,072 |
-|  | `groq/llama-3.1-8b-instant` | 131,072 |
-| **OpenAI** | `openai/gpt-5` | 400,000 |
-|  | `openai/gpt-5-mini` | 400,000 |
-|  | `openai/gpt-5-nano` | 400,000 |
 | **Workers AI** | `@cf/meta/llama-3.3-70b-instruct-fp8-fast` | 24,000 |
 |  | `@cf/meta/llama-3.1-8b-instruct-fast` | 60,000 |
 |  | `@cf/meta/llama-3.1-8b-instruct-fp8` | 32,000 |
@@ -54,25 +42,30 @@ Production models are the actively supported and recommended models that are sta
 |  | `@cf/moonshotai/kimi-k2.7-code` | 262,144 |
 |  | `@cf/zai-org/glm-4.7-flash` | 131,072 |
 |  | `@cf/zai-org/glm-5.3-flash` | 1,048,576 |
+|  | `@cf/zai-org/glm-5.3` | 1,310,720 |
 |  | `@cf/qwen/qwen3-30b-a3b-fp8` | 32,000 |
+
+For external generation models, AI Search supports any provider compatible with the [AI Gateway chat completions endpoint](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/).
 
 ### Embedding
 
-| Provider | Alias | Vector dims | Input tokens | Metric |
-| --- | --- | --- | --- | --- |
-| **Google AI Studio** | `google-ai-studio/gemini-embedding-001` | 1,536 | 2048 | cosine |
-| **OpenAI** | `openai/text-embedding-3-small` | 1,536 | 8192 | cosine |
-|  | `openai/text-embedding-3-large` | 1,536 | 8192 | cosine |
-| **Workers AI** | `@cf/baai/bge-m3` | 1,024 | 512 | cosine |
-|  | `@cf/baai/bge-large-en-v1.5` | 1,024 | 512 | cosine |
-|  | `@cf/qwen/qwen3-embedding-0.6b` | 1,024 | 8,192 | cosine |
-|  | `@cf/google/embeddinggemma-300m` | 768 | 512 | cosine |
+| Provider | Alias | Vector dims | Input tokens | Image support | Default | Metric |
+| --- | --- | --- | --- | --- | --- | --- |
+| **Google AI Studio** | `google-ai-studio/gemini-embedding-001` | 1,536 | 2,048 | No | No | cosine |
+|  | `google-ai-studio/gemini-embedding-2` | 1,536 | 8,192 | Yes | No | cosine |
+| **OpenAI** | `openai/text-embedding-3-small` | 1,536 | 8,192 | No | No | cosine |
+|  | `openai/text-embedding-3-large` | 1,536 | 8,192 | No | No | cosine |
+| **Workers AI** | `@cf/baai/bge-m3` | 1,024 | 512 | No | No | cosine |
+|  | `@cf/baai/bge-large-en-v1.5` | 1,024 | 512 | No | No | cosine |
+|  | `@cf/qwen/qwen3-embedding-0.6b` | 1,024 | 8,192 | No | Yes | cosine |
+|  | `@cf/qwen/qwen3-vl-embedding-2b` | 1,024 | 32,768 | Yes | No | cosine |
+|  | `@cf/google/embeddinggemma-300m` | 768 | 512 | No | No | cosine |
 
 ### Reranking
 
-| Provider | Alias | Input tokens |
-| --- | --- | --- |
-| **Workers AI** | `@cf/baai/bge-reranker-base` | 512 |
+| Provider | Alias | Input tokens | Default |
+| --- | --- | --- | --- |
+| **Workers AI** | `@cf/baai/bge-reranker-base` | 512 | Yes |
 
 ## Transition models
 
@@ -87,5 +80,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/models/supported-models/#page","headline":"Supported models","description":"View all AI models supported by AI Search, including text generation, embedding, and reranking models.","url":"https://developers.cloudflare.com/ai-search/configuration/models/supported-models/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/models/supported-models/og.png?v=41bd375e44ab5f9f","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/models/supported-models/#page","headline":"Supported models","description":"View all AI models supported by AI Search, including text generation, embedding, and reranking models.","url":"https://developers.cloudflare.com/ai-search/configuration/models/supported-models/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/models/supported-models/og.png?v=41bd375e44ab5f9f","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

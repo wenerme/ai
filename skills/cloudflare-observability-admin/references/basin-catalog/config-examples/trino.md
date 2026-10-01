@@ -1,0 +1,124 @@
+---
+description: Connect Trino to Basin Catalog using the Iceberg REST catalog connector.
+title: Trino
+image: https://developers.cloudflare.com/basin-catalog/config-examples/trino/og.png?v=1136cb1a60131739
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/basin-catalog/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Trino
+
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-catalog/config-examples/trino/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+Below is an example of using [Trino ↗︎](https://trino.io/) to connect to Basin Catalog. For more information on connecting to Basin Catalog with Trino, refer to [Trino documentation ↗︎](https://trino.io/docs/current/connector/iceberg.html).
+
+## Prerequisites
+
+- Sign up for a [Cloudflare account ↗︎](https://dash.cloudflare.com/sign-up/workers-and-pages).
+- [Create an R2 bucket](https://developers.cloudflare.com/r2/buckets/create-buckets/) and [enable the data catalog](https://developers.cloudflare.com/basin-catalog/manage-catalogs/#enable-basin-catalog-on-a-bucket).
+- [Create an R2 API token, key, and secret](https://developers.cloudflare.com/r2/api/tokens/) with both [R2 and data catalog permissions](https://developers.cloudflare.com/r2/api/tokens/#permissions).
+- Install [Docker ↗︎](https://docs.docker.com/get-docker/) to run the Trino container.
+
+## Setup
+
+Create a local directory for the catalog configuration and change directories to it
+
+```bash
+mkdir -p trino-catalog && cd trino-catalog/
+```
+
+Create a configuration file called `r2.properties` for your Basin Catalog connection:
+
+```properties
+# r2.properties
+connector.name=iceberg
+
+# R2 Configuration
+fs.native-s3.enabled=true
+s3.region=auto
+s3.aws-access-key=<Your R2 access key>
+s3.aws-secret-key=<Your R2 secret>
+s3.endpoint=<Your R2 endpoint>
+s3.path-style-access=true
+
+# Basin Catalog Configuration
+iceberg.catalog.type=rest
+iceberg.rest-catalog.uri=<Your Basin Catalog URI>
+iceberg.rest-catalog.warehouse=<Your Basin Catalog warehouse>
+iceberg.rest-catalog.security=OAUTH2
+iceberg.rest-catalog.oauth2.token=<Your R2 authentication token>
+```
+
+## Example usage
+
+1. Start Trino with the R2 catalog configuration:
+
+   ```bash
+   # Create a local directory for the catalog configuration
+   mkdir -p trino-catalog
+
+   # Place your r2.properties file in the catalog directory
+   cp r2.properties trino-catalog/
+
+   # Run Trino with the catalog configuration
+   docker run -d \
+     --name trino-r2 \
+     -p 8080:8080 \
+     -v $(pwd)/trino-catalog:/etc/trino/catalog \
+     trinodb/trino:latest
+   ```
+
+
+2. Connect to Trino and query your Basin Catalog:
+
+   ```bash
+   # Connect to the Trino CLI
+   docker exec -it trino-r2 trino
+   ```
+
+
+3. In the Trino CLI, run the following commands:
+
+   ```sql
+   -- Show all schemas in the R2 catalog
+   SHOW SCHEMAS IN r2;
+
+   -- Create a schema in the R2 catalog
+   CREATE SCHEMA r2.example_schema;
+
+   -- Create a table with some values in it
+   CREATE TABLE r2.example_schema.yearly_clicks (
+       year,
+       clicks
+   )
+   WITH (
+      partitioning = ARRAY['year']
+   )
+   AS VALUES
+       (2021, 10000),
+       (2022, 20000);
+
+   -- Show tables in a specific schema
+   SHOW TABLES IN r2.example_schema;
+
+   -- Query your Iceberg table
+   SELECT * FROM r2.example_schema.yearly_clicks;
+   ```
+
+
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-catalog/config-examples/trino/#page","headline":"Trino","description":"Connect Trino to Basin Catalog using the Iceberg REST catalog connector.","url":"https://developers.cloudflare.com/basin-catalog/config-examples/trino/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-catalog/config-examples/trino/og.png?v=1136cb1a60131739","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

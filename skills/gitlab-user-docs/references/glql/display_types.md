@@ -159,6 +159,7 @@ metrics: acceptanceRate, acceptedCount, shownCount
 ## Column chart
 
 - [Introduced](https://gitlab.com/groups/gitlab-org/-/work_items/21212) in GitLab 19.1.
+- The `maxSeries` display option [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/23470) in GitLab 19.5.
 
 A column chart visualizes aggregated data from [analytics mode](_index.md#analytics-mode).
 Use a column chart to compare metrics across the categories defined by your dimensions.
@@ -175,6 +176,13 @@ The number of dimensions and metrics determines how the chart renders:
   set `stacked: true` under `displayConfig`. With a single metric, `stacked` has no visible effect.
 - Two dimensions with one metric plots a stacked column chart grouped by the second dimension.
   With two dimensions, you can use only one metric, and GitLab ignores `displayConfig.stacked`.
+
+With two dimensions, the `maxSeries` option under `displayConfig` limits how many
+second dimension values get their own segment.
+The values with the largest totals keep theirs, and the rest combine into an `Other (N)` segment.
+A single value past the limit stays as-is.
+Without `maxSeries`, every value gets a segment.
+A `maxSeries` value that is not a whole number greater than zero is ignored.
 
 ### Example
 

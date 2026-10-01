@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/og.png?v=174c444ef16de8d7
 
 # Overview
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The search primitive for your applications and agents.
 
@@ -54,9 +54,21 @@ Add filters
 
 [Hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/)
 
-Combine semantic and keyword matching in the same query for more accurate results.
+Combine semantic and keyword matching in the same query. Hybrid search is on by default.
 
 Configure hybrid search
+
+[Image search](https://developers.cloudflare.com/ai-search/configuration/models/supported-models/)
+
+Use a multimodal embedding model to search with images and find relevant image content.
+
+View embedding models
+
+[Optical character recognition](https://developers.cloudflare.com/ai-search/configuration/data-source/#images-and-optical-character-recognition)
+
+Use optical character recognition (OCR) to extract searchable text from scanned PDFs and images.
+
+Configure indexing
 
 [MCP and UI snippets](https://developers.cloudflare.com/ai-search/api/search/mcp/)
 
@@ -113,5 +125,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/#page","headline":"Overview","description":"Cloudflare AI Search is a managed search service. Index your content and query it with natural language from a Workers binding, REST API, or MCP server.","url":"https://developers.cloudflare.com/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/og.png?v=174c444ef16de8d7","dateModified":"2026-09-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/ai-search/#page","headline":"Overview","description":"Cloudflare AI Search is a managed search service. Index your content and query it with natural language from a Workers binding, REST API, or MCP server.","url":"https://developers.cloudflare.com/ai-search/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/og.png?v=174c444ef16de8d7","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

@@ -15,3 +15,19 @@ keywords: Ultralytics, ONNXBackend, ONNXIMXBackend, Microsoft ONNX Runtime, Sony
 <hr>
 
 ## ::: ultralytics.nn.backends.onnx.ONNXIMXBackend
+
+<hr>
+
+## ::: ultralytics.nn.backends.onnx._register_migraphx_ep
+
+<hr>
+
+## ::: ultralytics.nn.backends.onnx._migraphx_cache_root
+
+<hr>
+
+## ::: ultralytics.nn.backends.onnx._migraphx_cache_dir
+
+<hr>
+
+## ::: ultralytics.nn.backends.onnx._load_migraphx_session

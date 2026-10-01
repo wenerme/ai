@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/api/items/workers-binding/og.
 
 # Workers binding
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/items/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/items/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones. Use a [Workers binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to upload, list, and manage documents in your AI Search instances from a Cloudflare Worker. Access the Items API through the `items` property on an instance handle.
 
@@ -110,10 +110,10 @@ await instance.items.upload(
 	"# FAQ\n\nQ: How do I reset my password?\nA: Go to Settings > Security...",
 );
 
-// Upload from an ArrayBuffer
+// Upload from a Blob
 const pdfResponse = await fetch("https://example.com/guide.pdf");
-const pdfBuffer = await pdfResponse.arrayBuffer();
-await instance.items.upload("guide.pdf", pdfBuffer);
+const pdfBlob = await pdfResponse.blob();
+await instance.items.upload("guide.pdf", pdfBlob);
 
 // Upload from a ReadableStream
 await instance.items.upload("doc.txt", request.body);
@@ -124,7 +124,7 @@ await instance.items.upload("doc.txt", request.body);
 Attach [custom metadata](https://developers.cloudflare.com/ai-search/configuration/indexing/metadata/) to a document for filtering in search queries. Custom metadata fields must be defined on the instance first using the [update()](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#update) method or at creation time.
 
 ```ts
-await instance.items.upload("guide.pdf", pdfBuffer, {
+await instance.items.upload("guide.pdf", pdfBlob, {
 	metadata: {
 		category: "onboarding",
 		language: "en",
@@ -137,8 +137,8 @@ await instance.items.upload("guide.pdf", pdfBuffer, {
 
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | string | Yes | The filename for the uploaded document. Used as the item key. |
-| `content` | ReadableStream, ArrayBuffer, or string | Yes | The document content. Maximum file size is 4 MB. Pass a string for plain text or markdown, an `ArrayBuffer` for binary files, or a `ReadableStream` for streaming uploads. |
+| `name` | string | Yes | The filename for the uploaded document. Used as the item key. Maximum 128 characters. |
+| `content` | ReadableStream, Blob, or string | Yes | The document content. PDF uploads and plain-text or code files can be up to 10 MiB, but PDFs larger than 4 MiB are indexed only when OCR is enabled. Other supported formats can be up to 4 MiB. Pass a `Blob` for binary files or a `ReadableStream` for streaming uploads. |
 | `options.metadata` | Record\<string, string> | No | Custom metadata key-value pairs to attach to the item. Use for filtering in search queries. Maximum 5 fields per instance. |
 
 #### Response
@@ -173,7 +173,7 @@ Same as [`items.upload()`](#parameters), with additional polling options:
 | Parameter | Type | Required | Description |
 | --- | --- | --- | --- |
 | `options.pollIntervalMs` | number | No | How often to check the item status, in milliseconds. Defaults to `1000`. |
-| `options.timeoutMs` | number | No | Maximum time to wait for processing to complete, in milliseconds. Defaults to `30000`. |
+| `options.timeoutMs` | number | No | Maximum time to wait for processing to complete, in milliseconds. Defaults to `120000`. Maximum `300000`. |
 
 #### Response
 
@@ -212,8 +212,9 @@ for (const item of result) {
 | `per_page` | number | No | The number of items per page. Defaults to `20`. Maximum `50`. |
 | `status` | string | No | Filter by processing status: `queued`, `running`, `completed`, `error`, `skipped`, or `outdated`. |
 | `sort_by` | string | No | Sort order for items: `status` (default) or `modified_at`. |
-| `search` | string | No | Search items by text content. |
+| `search` | string | No | Search item keys. |
 | `source` | string | No | Filter by source identifier (for example, `builtin` for uploaded files). |
+| `metadata_filter` | string | No | Filter by metadata using a JSON-encoded Vectorize metadata filter. |
 
 #### Response
 
@@ -309,6 +310,29 @@ const file = await instance.items.get("item-id-123").download();
 | `size` | number | The file size in bytes. |
 | `body` | ReadableStream | A readable stream of the file contents. |
 
+#### `items.get().logs()`
+
+Returns processing logs for an item.
+
+```ts
+const logs = await instance.items.get("item-id-123").logs({ limit: 50 });
+```
+
+The options are `limit` (1–100, default `50`) and an opaque pagination `cursor`. The response contains `result` log entries and `result_info` with `count`, `per_page`, `cursor`, and `truncated`.
+
+#### `items.get().chunks()`
+
+Returns indexed chunks for an item.
+
+```ts
+const chunks = await instance.items.get("item-id-123").chunks({
+	limit: 20,
+	offset: 0,
+});
+```
+
+The options are `limit` (1–100, default `20`) and `offset` (default `0`). Each result contains `id`, `text`, `start_byte`, `end_byte`, and optional item details. The response also includes `result_info` with `count`, `total`, `limit`, and `offset`.
+
 Was this helpful?
 
 YesNo
@@ -318,5 +342,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/items/workers-binding/#page","headline":"Workers binding","description":"Upload, list, and manage documents in AI Search instances using the Items Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/items/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/api/items/workers-binding/og.png?v=fa78d292a041eecc","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/items/workers-binding/#page","headline":"Workers binding","description":"Upload, list, and manage documents in AI Search instances using the Items Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/items/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/api/items/workers-binding/og.png?v=fa78d292a041eecc","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

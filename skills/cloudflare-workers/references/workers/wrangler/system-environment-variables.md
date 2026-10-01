@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/wrangler/system-environment-var
 
 # System environment variables
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/system-environment-variables/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 System environment variables are local environment variables that can change Wrangler's behavior. There are three ways to set system environment variables:
 
@@ -80,8 +80,8 @@ Wrangler supports the following environment variables:
   - Path to a custom HTTPS certificate when running `wrangler dev`, to be used with `WRANGLER_HTTPS_KEY_PATH`.
 - `DOCKER_HOST` `string` optional
   - Used for local development of [Containers](https://developers.cloudflare.com/containers/guides/local-dev). Wrangler will attempt to automatically find the correct socket to use to communicate with your container engine. If that does not work (usually surfacing as an `internal error` when attempting to connect to your Container), you can try setting the socket path using this environment variable.
-- `WRANGLER_R2_SQL_AUTH_TOKEN` `string` optional
-  - API token used for executing queries with [R2 SQL](https://developers.cloudflare.com/r2-sql).
+- `WRANGLER_BASIN_SQL_AUTH_TOKEN` `string` optional
+  - API token used for executing queries with [Basin SQL](https://developers.cloudflare.com/basin-sql/).
 - `WRANGLER_OUTPUT_FILE_PATH` `string` optional
   - Specifies a file path where Wrangler will write output data in [ND-JSON ↗︎](https://github.com/ndjson/ndjson-spec) (newline-delimited JSON) format. Each line in the file is a separate JSON object containing information about Wrangler operations such as deployments, version uploads, and errors. This is useful for CI/CD pipelines and automation tools that need to programmatically access deployment information. If both `WRANGLER_OUTPUT_FILE_PATH` and `WRANGLER_OUTPUT_FILE_DIRECTORY` are set, `WRANGLER_OUTPUT_FILE_PATH` takes precedence.
 - `WRANGLER_OUTPUT_FILE_DIRECTORY` `string` optional
@@ -125,7 +125,7 @@ WRANGLER_SEND_METRICS=true
 CLOUDFLARE_API_BASE_URL=https://api.cloudflare.com/client/v4
 WRANGLER_LOG=debug
 WRANGLER_LOG_PATH=../Desktop/my-logs/my-log-file.log
-WRANGLER_R2_SQL_AUTH_TOKEN=<YOUR_R2_API_TOKEN_VALUE>
+WRANGLER_BASIN_SQL_AUTH_TOKEN=<YOUR_R2_API_TOKEN_VALUE>
 CLOUDFLARE_CF_FETCH_ENABLED=false
 ```
 
@@ -148,5 +148,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#page","headline":"System environment variables","description":"Local environment variables that can change Wrangler's behavior.","url":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/og.png?v=d29cb656124747ed","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/#page","headline":"System environment variables","description":"Local environment variables that can change Wrangler's behavior.","url":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/system-environment-variables/og.png?v=d29cb656124747ed","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

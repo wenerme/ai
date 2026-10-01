@@ -50,6 +50,14 @@ Try a different search term, or clear your filters.
 
 [**Automatic Platform Optimization** Improve WordPress site performance by serving it from Cloudflare's global network](https://developers.cloudflare.com/automatic-platform-optimization/)
 
+[B**Basin** Ingest, manage, and query analytics data stored in R2](https://developers.cloudflare.com/basin/)
+
+[**Basin Catalog** Create, manage, and query Iceberg tables stored in R2](https://developers.cloudflare.com/basin-catalog/)
+
+[**Basin Pipelines** Ingest real time data streams and load into R2](https://developers.cloudflare.com/basin-pipelines/)
+
+[**Basin SQL** Cloudflare's serverless, distributed query engine for data stored in Basin Catalog](https://developers.cloudflare.com/basin-sql/)
+
 [**Billing** Manage billing, plans, and subscriptions for your account](https://developers.cloudflare.com/billing/)
 
 [**Bots** Protect your domain from bad bot traffic](https://developers.cloudflare.com/bots/)
@@ -146,6 +154,8 @@ Try a different search term, or clear your filters.
 
 [I**Internal DNS** Simplify private network management with Cloudflare DNS for internal resources](https://developers.cloudflare.com/dns/internal-dns/)
 
+[K**K2** A durable event stream](https://developers.cloudflare.com/k2/)
+
 [**Key Transparency Auditor** Secure the distribution of public keys in E2EE messaging systems](https://developers.cloudflare.com/key-transparency/)
 
 [K**Keyless SSL** Use Cloudflare SSL while keeping exclusive access to your private keys](https://developers.cloudflare.com/ssl/keyless-ssl/)
@@ -186,8 +196,6 @@ Try a different search term, or clear your filters.
 
 [**Pages** Build full-stack, serverless applications globally with minimal configuration](https://developers.cloudflare.com/pages/)
 
-[**Pipelines** Ingest real time data streams and load into R2](https://developers.cloudflare.com/pipelines/)
-
 [P**Posture checks** Require a managed or healthy device before granting access, using Cloudflare One Client and third-party signals](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/)
 
 [**Privacy Gateway** Implement the Oblivious HTTP IETF standard to improve client privacy](https://developers.cloudflare.com/privacy-gateway/)
@@ -203,10 +211,6 @@ Try a different search term, or clear your filters.
 [**Queues** Reliably send and receive messages without the egress fees](https://developers.cloudflare.com/queues/)
 
 [**R2** Store large amounts of unstructured data without egress fees](https://developers.cloudflare.com/r2/)
-
-[**R2 Data Catalog** Create, manage, and query Iceberg tables stored in R2](https://developers.cloudflare.com/r2-data-catalog/)
-
-[**R2 SQL** Cloudflare's serverless, distributed query engine for data stored in R2 Data Catalog](https://developers.cloudflare.com/r2-sql/)
 
 [**Radar** Investigate Internet usage around the world using Cloudflare's data](https://developers.cloudflare.com/radar/)
 

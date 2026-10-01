@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/logs/logpush/logpush-health/og.png?v=93
 
 # Logpush Health Dashboards
 
-Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-health/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/logpush-health/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Logpush Health Dashboards give you a clear view into the performance and reliability of your Logpush jobs. You can monitor the status of log delivery, diagnose issues, and understand the volume of data being sent to your configured destinations. This helps you ensure that critical log data for security, compliance, and observability is always flowing as expected.
 
@@ -159,9 +159,9 @@ Cloudflare applies several timeouts at different layers of the upload path. Unde
 | --- | --- | --- | --- |
 | TCP connection (dial) | 5 seconds | All destinations that use HTTP | `1102 ConnectionTimeout` |
 | TLS handshake | 5 seconds | All HTTPS destinations | `1106 Timeout` |
-| No-progress watchdog | 10 seconds | Destinations that use the shared Cloudflare HTTP transport (HTTP endpoints, Cloudflare R2, Splunk, Datadog, New Relic, CrowdStrike, Cloudflare Pipelines) | `1106 Timeout` |
+| No-progress watchdog | 10 seconds | Destinations that use the shared Cloudflare HTTP transport (HTTP endpoints, Cloudflare R2, Splunk, Datadog, New Relic, CrowdStrike, Basin Pipelines) | `1106 Timeout` |
 | Idle connection reuse | 10 seconds | Persistent HTTP connections | Not surfaced as an error. The connection is closed and reopened as needed. |
-| Overall HTTP client timeout | 2 minutes | HTTP endpoint family only: `https://`, Datadog, New Relic, CrowdStrike, Cloudflare Pipelines | `1106 Timeout` |
+| Overall HTTP client timeout | 2 minutes | HTTP endpoint family only: `https://`, Datadog, New Relic, CrowdStrike, Basin Pipelines | `1106 Timeout` |
 | HTTP/2 idle read plus ping | 10 seconds idle, 15 seconds ping timeout | HTTP/2 connections | `1107 RequestError` |
 | HTTP/2 write stall | 10 seconds | HTTP/2 connections | `1106 Timeout` or `1107 RequestError` |
 
@@ -198,5 +198,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-health/#page","headline":"Logpush Health Dashboards","description":"Monitor Logpush job performance and reliability.","url":"https://developers.cloudflare.com/logs/logpush/logpush-health/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/logpush-health/og.png?v=93aad84258a851f4","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/logpush-health/#page","headline":"Logpush Health Dashboards","description":"Monitor Logpush job performance and reliability.","url":"https://developers.cloudflare.com/logs/logpush/logpush-health/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/logpush-health/og.png?v=93aad84258a851f4","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

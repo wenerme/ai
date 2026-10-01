@@ -15,7 +15,7 @@ contains one or more [top-level groups](../namespace/_index.md),
 and all of their subgroups and projects.
 
 An organization acts as an administration layer above those groups,
-with a dedicated admin area where you can administer organization
+with a dedicated **Organization Admin** area where you can administer organization
 settings and manage users.
 
 For more information about the state of organization development,
@@ -23,7 +23,6 @@ see [epic 9265](https://gitlab.com/groups/gitlab-org/-/epics/9265).
 
 Organizations are in closed beta, and available by invitation only to a limited set of
 beta participants.
-To request access, contact your GitLab account team.
 
 ## Create an organization
 
@@ -57,7 +56,7 @@ After you confirm your organization structure:
 - You receive an email when the transfer is ready. Larger groups take longer to transfer.
 - Any user with the Owner role in all of the transferred top-level groups becomes an organization administrator.
 
-You can change the organization name, URL, description, visibility, and avatar later from the organization admin area.
+You can change the organization name, URL, description, visibility, and avatar later from the **Organization Admin** area.
 
 > [!note]
 > After you confirm your organization structure, you cannot add or remove top-level groups yourself. If you want to add additional top-level groups to your organization after confirmation, contact support for help.
@@ -106,20 +105,13 @@ The following table lists the actions available to each user type:
 | View the organization | Yes | Yes |
 | Create a group | Yes | Yes |
 | Update the organization | Yes | No |
-| Access the organization admin area | Yes | No |
-| Add a user to the organization | Yes | No |
+| Access the **Organization Admin** area | Yes | No |
 | View organization users | Yes | No |
-| Update an organization user | Yes | No |
-| Remove a user from the organization | Yes | No |
+| Manage organization membership | Yes | No |
 | Transfer a top-level group into the organization | Yes | No |
-| Delete the organization | Yes | No |
 | Leave the organization | Yes | Yes |
-
-Only instance administrators can restore a deleted organization.
-
-Organization administrators can also purchase organization-scoped products, such as the
-artifact registry.
-After you purchase a product, you can assign product-specific roles to organization users.
+| Purchase organization-scoped products | Yes | No |
+| Assign organization product roles | Yes | No |
 
 ### Group and project roles
 
@@ -130,13 +122,41 @@ When a top-level group transfers into an organization, its group and project mem
 become organization users.
 They keep their pre-existing roles and permissions.
 
-## Manage organization users
+## Instance and organization administrators
 
-Use the organization admin area to add organization users, change their user type, and remove them.
+Instance administrators can manage every organization on the instance.
+When an instance administrator and an organization administrator take conflicting actions,
+the instance administrator's action takes precedence.
+
+Organization administrators manage their own organization without an instance administrator.
+Each organization must have at least one organization administrator.
+You cannot remove the last organization administrator or change their user type.
+
+| Administrator              | Scope                      | On GitLab.com               | On GitLab Self-Managed                                  |
+|----------------------------|----------------------------|-----------------------------|---------------------------------------------------------|
+| Instance administrator     | The entire GitLab instance | An internal GitLab team member        | Often the same person as the organization administrator |
+| Organization administrator | One organization           | A user in your organization | Often the same person as the instance administrator     |
+
+### View organizations
+
+View organizations in your GitLab instance.
 
 Prerequisites:
 
-- You must be an organization administrator.
+- Instance administrator access.
+
+To view all organizations:
+
+1. In the upper-right corner, select **Admin**.
+1. Select **Organizations**.
+
+## Manage organization membership
+
+Use the **Organization Admin** area to add organization users, change their user type, and remove them.
+
+Prerequisites:
+
+- Organization administrator access.
 
 ### View organization users
 
@@ -144,7 +164,7 @@ To view the users in your organization:
 
 1. In the left sidebar, select **Organizations**.
 1. From the dropdown list, select the organization you want to go to.
-1. In the left sidebar, select **Manage organization**.
+1. In the left sidebar, select **Manage organization**. The **Organization Admin** area opens.
 1. Select **Organization overview** > **Users**.
 
 ### Add a user to an organization
@@ -153,7 +173,7 @@ To add a user to an organization:
 
 1. In the left sidebar, select **Organizations**.
 1. From the dropdown list, select the organization you want to go to.
-1. In the left sidebar, select **Manage organization**.
+1. In the left sidebar, select **Manage organization**. The **Organization Admin** area opens.
 1. Select **Organization overview** > **Users**.
 1. Select **Invite organization user**.
 1. In **GitLab usernames**, search for and select one or more users by username.
@@ -164,13 +184,13 @@ To add a user to an organization:
 
 You can also add a user to an organization by adding them to a group or project in the organization.
 
-### Change a user's type
+### Manage organization administrator access
 
 To change whether a user is an organization regular user or an organization administrator:
 
 1. In the left sidebar, select **Organizations**.
 1. From the dropdown list, select the organization you want to go to.
-1. In the left sidebar, select **Manage organization**.
+1. In the left sidebar, select **Manage organization**. The **Organization Admin** area opens.
 1. Select **Organization overview** > **Users**.
 1. Next to the user, select **Edit**.
 1. Under **Organization user type**, select one of the following:
@@ -187,7 +207,7 @@ To remove a user from an organization:
 
 1. In the left sidebar, select **Organizations**.
 1. From the dropdown list, select the organization you want to go to.
-1. In the left sidebar, select **Manage organization**.
+1. In the left sidebar, select **Manage organization**. The **Organization Admin** area opens.
 1. Select **Organization overview** > **Users**.
 1. Next to the user, select the vertical ellipsis () > **Remove from organization**.
 1. In the confirmation dialog, select **Remove**.
@@ -204,17 +224,6 @@ Internal visibility is not available for organizations.
 
 An organization cannot be more restrictive than the groups it contains.
 For example, you cannot make an organization private while it holds a public group.
-
-## Organization deletion
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/599345) in GitLab 19.2.
-
-You can delete an organization only when it contains no groups and no projects, and it is not
-the default organization.
-GitLab soft-deletes the organization rather than removing it immediately.
-Only instance administrators can restore a deleted organization.
-
-To delete an organization, you can also [use the API](../../api/organizations.md).
 
 ## Supported Markdown for organization description
 

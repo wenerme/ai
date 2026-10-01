@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/api/instances/workers-binding
 
 # Workers binding
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/instances/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones. Use a [Workers binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to create, list, update, and delete AI Search instances from a Cloudflare Worker. You can also check instance configuration and monitor indexing progress.
 
@@ -137,8 +137,8 @@ for (const instance of result) {
 | `result[].id` | string | The instance identifier. |
 | `result[].type` | string | The data source type (`r2`, `web-crawler`, or `null` for empty instances). |
 | `result[].source` | string | The data source location. |
-| `result[].status` | string | The instance status (`active`, `waiting`, `indexing`). |
-| `result[].enable` | boolean | Whether the instance is enabled. |
+| `result[].status` | string | The current indexing lifecycle status, such as `waiting`, `index_source`, `embed_files`, or a `paused_*` status. |
+| `result[].paused` | boolean | Whether indexing is paused. |
 | `result[].namespace` | string | The namespace the instance belongs to. |
 | `result[].created_at` | string | ISO 8601 timestamp of when the instance was created. |
 | `result[].modified_at` | string | ISO 8601 timestamp of the last modification. |
@@ -159,7 +159,7 @@ const instance = await env.AI_SEARCH.create({
 });
 
 // Upload documents using the Items API
-await instance.items.upload("guide.pdf", pdfArrayBuffer);
+await instance.items.upload("guide.pdf", pdfBlob);
 ```
 
 **Create a web-crawler instance:**
@@ -196,7 +196,7 @@ The unique identifier for the AI Search instance. Must be 1-64 characters and ma
 
 `type` `string` optional
 
-The type of data source. Valid values: `r2`, `web-crawler`. Required when creating an instance with a data source. Omit when creating an empty instance for use with the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/).
+The type of data source. Valid values: `r2` or `web-crawler`. If omitted, an HTTP(S) URL source selects `web-crawler`, an existing R2 bucket selects `r2`, and a missing or blank source creates an instance with built-in storage. Other sources return error `7111`. The REST API also accepts `null`, which behaves like an omitted value. The Workers binding does not accept `null`.
 
 ---
 
@@ -262,7 +262,7 @@ Configures which indexing methods are enabled for the instance. Determines wheth
 - `vector` `boolean` optional
   - Enable vector-based semantic search. Defaults to `true`.
 - `keyword` `boolean` optional
-  - Enable keyword-based search. Defaults to `false`.
+  - Enable keyword-based search. Defaults to `true`.
 
 Set both to `true` for hybrid search.
 
@@ -280,6 +280,8 @@ Configuration for how content is indexed.
 
 - `keyword_tokenizer` `string` optional
   - The tokenizer used for keyword search indexing. Valid values: `porter` (stemming-based), `trigram` (character n-gram). Defaults to `porter`.
+- `use_ocr` `boolean` optional
+  - Use optical character recognition (OCR) when ingesting PDFs and images. Defaults to `false`. OCR is available on every account and is billed as image-processing ingestion tokens.
 
 ---
 
@@ -310,7 +312,7 @@ The UUID of the [service API token](https://developers.cloudflare.com/ai-search/
 
 `ai_gateway_id` `string` optional
 
-The AI Gateway ID to route requests through for logging and analytics.
+The AI Gateway ID for generation, query rewriting, and external-provider requests. Workers AI embedding and reranking usage is included in AI Search usage. These requests do not appear in your AI Gateway logs or Workers AI bill.
 
 ---
 
@@ -460,7 +462,7 @@ Accepts a partial version of the [create parameters](#parameters). Only the fiel
 | `embedding_model` | string | The embedding model. |
 | `index_method` | object | Indexing methods: `\{ vector: boolean, keyword: boolean \}`. |
 | `fusion_method` | string | How vector and keyword scores are combined (`rrf` or `max`). |
-| `indexing_options` | object | Indexing configuration including `keyword_tokenizer`. |
+| `indexing_options` | object | Indexing configuration including `keyword_tokenizer` and `use_ocr`. |
 | `retrieval_options` | object | Retrieval configuration including `keyword_match_mode` and `boost_by`. |
 | `reranking` | boolean | Turn on or off reranking. |
 | `reranking_model` | string | The reranking model. |
@@ -468,6 +470,7 @@ Accepts a partial version of the [create parameters](#parameters). Only the fiel
 | `rewrite_model` | string | The query rewriting model. |
 | `source` | string | Update the data source location. |
 | `cache` | boolean | Turn on or off response caching. |
+| `cache_ttl` | number | Cache entry time to live in seconds. |
 | `chunk_size` | number | Token size of each chunk. |
 | `chunk_overlap` | number | Token overlap between chunks. |
 | `score_threshold` | number | Minimum score threshold for results. |
@@ -495,8 +498,8 @@ const info = await env.AI_SEARCH.get("my-instance").info();
 | `type` | string | The data source type (`r2`, `web-crawler`, or `null`). |
 | `source` | string | The data source location. |
 | `namespace` | string | The namespace the instance belongs to. |
-| `status` | string | The instance status (`active`, `waiting`, `indexing`). |
-| `enable` | boolean | Whether the instance is enabled. |
+| `status` | string | The current indexing lifecycle status, such as `waiting`, `index_source`, `embed_files`, or a `paused_*` status. |
+| `paused` | boolean | Whether indexing is paused. |
 | `created_at` | string | Timestamp of when the instance was created. |
 | `modified_at` | string | Timestamp of the last modification. |
 | `ai_search_model` | string | The text-generation model. |
@@ -507,9 +510,10 @@ const info = await env.AI_SEARCH.get("my-instance").info();
 | `rewrite_model` | string | The query rewriting model. |
 | `cache` | boolean | Whether response caching is enabled. |
 | `cache_threshold` | string | The similarity threshold for cache hits. |
+| `cache_ttl` | number | Cache entry time to live in seconds. |
 | `index_method` | object | Which indexing methods are enabled (`vector`, `keyword`). |
 | `fusion_method` | string | How vector and keyword scores are combined (`rrf` or `max`). |
-| `indexing_options` | object | Indexing configuration including `keyword_tokenizer`. |
+| `indexing_options` | object | Indexing configuration including `keyword_tokenizer` and `use_ocr`. |
 | `retrieval_options` | object | Retrieval configuration including `keyword_match_mode` and `boost_by`. |
 | `chunk_size` | number | Token size of each chunk. |
 | `chunk_overlap` | number | Token overlap between chunks. |
@@ -545,6 +549,69 @@ const stats = await env.AI_SEARCH.get("my-instance").stats();
 | `engine.r2.metadataSizeBytes` | number | Total size of stored metadata in bytes. |
 | `engine.r2.objectCount` | number | Total number of objects in storage. |
 
+## Jobs methods
+
+Use the `jobs` property on an instance handle to manage indexing jobs.
+
+### `jobs.list()`
+
+Returns a paginated list of jobs. Pass optional `page` and `per_page` values.
+
+```ts
+const jobs = await env.AI_SEARCH.get("my-instance").jobs.list({
+	page: 1,
+	per_page: 20,
+});
+```
+
+### `jobs.create()`
+
+Starts an indexing job. The optional `description` can contain up to 255 characters.
+
+```ts
+const job = await env.AI_SEARCH.get("my-instance").jobs.create({
+	description: "Index updated content",
+});
+```
+
+### `jobs.get().info()`
+
+Returns one job by ID.
+
+```ts
+const job = await env.AI_SEARCH.get("my-instance")
+	.jobs.get("job-id-123")
+	.info();
+```
+
+Job objects contain `id`, `source`, and optional `description`, `last_seen_at`, `started_at`, `ended_at`, and `end_reason` fields. The `source` is `user` or `schedule`.
+
+### `jobs.get().cancel()`
+
+Cancels a job and returns the updated job object.
+
+```ts
+const job = await env.AI_SEARCH.get("my-instance")
+	.jobs.get("job-id-123")
+	.cancel();
+```
+
+### `jobs.get().logs()`
+
+Returns paginated logs for a job. Pass optional `page` and `per_page` values.
+
+```ts
+const logs = await env.AI_SEARCH.get("my-instance")
+	.jobs.get("job-id-123")
+	.logs({ page: 1, per_page: 20 });
+```
+
+Each log contains `id`, `message`, `message_type`, and `created_at`. The response includes `result_info` pagination metadata.
+
+Note
+
+The configured AI Gateway receives generation, query rewriting, and external-provider requests. Workers AI embedding and reranking requests run under AI Search and do not appear in your AI Gateway logs or Workers AI bill.
+
 ## Local development
 
 Local development is supported by proxying requests to your deployed AI Search instance. Add `remote: true` to your binding configuration to enable local development with `wrangler dev`.
@@ -571,5 +638,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#page","headline":"Workers binding","description":"Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/og.png?v=fa78d292a041eecc","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/#page","headline":"Workers binding","description":"Manage AI Search instances from a Cloudflare Worker using the Instances Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/api/instances/workers-binding/og.png?v=fa78d292a041eecc","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

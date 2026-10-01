@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ruleset-engine/rules-language/functions
 
 # Functions
 
-Last updated May 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Rules language provides functions for manipulating and validating values in an expression:
 
@@ -130,6 +130,20 @@ Examples:
 Note
 
 You can only use the `cidr6()` function in [custom rules](https://developers.cloudflare.com/waf/custom-rules/) and [rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/).
+
+### `coalesce`
+
+``coalesce(value1 `T`, value2 `T` [, ...])``: `T`
+
+Returns the first argument that is not nil. It checks arguments from left to right. If all arguments are nil, the function returns nil. Provide at least two arguments of the same data type.
+
+For comparison behavior involving nil, refer to [Missing values](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#missing-values).
+
+The following expression compares the request path with a query parameter. If `expected_path` is missing, `coalesce()` uses `/` instead:
+
+```txt
+http.request.uri.path eq coalesce(http.request.uri.args["expected_path"][0], "/")
+```
 
 ### `concat`
 
@@ -768,5 +782,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/og.png?v=5260fd9806ba8159","dateModified":"2026-05-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#page","headline":"Functions","description":"Functions available for transforming values in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/functions/og.png?v=5260fd9806ba8159","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

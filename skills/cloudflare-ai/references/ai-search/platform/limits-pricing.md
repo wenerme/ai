@@ -1,5 +1,5 @@
 ---
-description: View AI Search usage limits and pricing details for Free and Paid Workers plans.
+description: Review AI Search limits, included monthly usage, and usage-based pricing.
 title: Limits &amp; pricing
 image: https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.png?v=d2d491034d5c9d5b
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.pn
 
 # Limits & pricing
 
-Last updated Aug 26, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/platform/limits-pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/platform/limits-pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Limits
 
@@ -24,8 +24,11 @@ The following limits apply based on your [Workers plan](https://developers.cloud
 | Namespaces per account | 100 | 100 |
 | Files per instance | 100,000 | 1M or 500K for hybrid search |
 | Pages per crawl, `discover` parse type | 100,000 | 100,000 |
-| Max file size | 4 MB | 4 MB |
-| Queries per month | 20,000 | Unlimited |
+| Maximum PDF file size with OCR enabled | 10 MiB | 10 MiB |
+| Maximum plain-text or code file size | 10 MiB | 10 MiB |
+| Maximum size for PDFs without OCR and other file formats | 4 MiB | 4 MiB |
+| Included semantic queries per month | 1,000 | 1,000 |
+| Included full-text queries per month | 1,000 | 1,000 |
 | Instances per cross-instance search request | 10 | 10 |
 | Maximum pages crawled per day | 500 | Unlimited |
 | Max custom metadata fields | 5 per AI Search instance | 5 per AI Search instance |
@@ -42,17 +45,42 @@ To request an adjustment to a limit, complete the [Limit Increase Request Form �
 
 ## Pricing
 
-During the open beta, AI Search is free within these limits. [Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/) and [AI Gateway](https://developers.cloudflare.com/ai-gateway/reference/pricing/) usage is billed separately. Pricing details will be communicated at least 30 days before any billing begins.
+AI Search billing begins on November 1, 2026. Cloudflare will send a reminder email the week before billing begins.
 
-Storage, vector indexing, and the [Browser Run](https://developers.cloudflare.com/browser-run/pricing/) usage that website crawling consumes are included with AI Search. You are not billed separately for them.
+Every account receives the following included usage each month:
+
+- 5 million ingestion tokens
+- 10 GB-month of storage
+- 1,000 semantic queries
+- 1,000 full-text queries
+
+Usage beyond the included amounts is billed at these rates:
+
+| Usage | Price |
+| --- | --- |
+| Base ingestion | $0.75 per million tokens |
+| Image processing | An additional $0.50 per million tokens |
+| Storage | $2.00 per GB-month |
+| Semantic, vector, and hybrid queries | $0.75 per 1,000 queries |
+| Full-text queries | $0.10 per 1,000 queries |
+
+Image processing tokens share the 5 million token ingestion allotment. Optical character recognition (OCR) is available on every account. OCR usage is billed as image processing ingestion tokens.
+
+### How ingestion tokens are counted
+
+AI Search counts ingestion tokens the same way for every instance, regardless of the embedding model you choose:
+
+- Tokens are counted on the final chunks that AI Search indexes, after parsing and chunking. Because [chunk overlap](https://developers.cloudflare.com/ai-search/configuration/indexing/chunking/) repeats text between neighboring chunks, overlapping text is counted in each chunk it appears in.
+- Each chunk is tokenized with the `cl100k_base` tokenizer. You can estimate usage for your own content with any `cl100k_base` implementation, such as [tiktoken ↗︎](https://github.com/openai/tiktoken).
+- For images and scanned documents processed with OCR, the extracted text is also counted as image processing tokens, in addition to base ingestion.
+
+Workers AI embedding and reranking usage is included in AI Search usage and does not appear on your Workers AI bill or in your AI Gateway logs. Generation, query rewriting, and external model providers continue to use your account and gateway. Their usage is billed and logged through the applicable service.
+
+Storage, vector indexing, and [Browser Run](https://developers.cloudflare.com/browser-run/pricing/) usage for website crawling are included with AI Search. They are not billed separately.
 
 ## Historical billing
 
-Instances created before AI Search moved to managed infrastructure ran on Cloudflare services in your own account, so older invoices may include separate charges for [R2](https://developers.cloudflare.com/r2/pricing/), [Vectorize](https://developers.cloudflare.com/vectorize/platform/pricing/), [Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/), [AI Gateway](https://developers.cloudflare.com/ai-gateway/reference/pricing/), and [Browser Run](https://developers.cloudflare.com/browser-run/pricing/).
-
-After the move, storage, vector indexing, and Browser Run usage for crawling are included. Workers AI and AI Gateway are still billed separately.
-
-If your instance crawled a website, those pages now live in built-in storage. The dedicated R2 bucket AI Search originally created in your account is no longer used. It remains in your account, and any objects left in it may still count toward [R2 storage usage](https://developers.cloudflare.com/r2/pricing/). AI Search no longer writes to this bucket, so you can delete it if you no longer need its contents.
+If your instance crawled a website, those pages now live in built-in storage. The dedicated R2 bucket AI Search originally created in your account is no longer used. Objects left in it may still count toward [R2 storage usage](https://developers.cloudflare.com/r2/pricing/). AI Search no longer writes to this bucket, so you can delete it if you no longer need its contents.
 
 Was this helpful?
 
@@ -63,5 +91,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/#page","headline":"Limits & pricing","description":"View AI Search usage limits and pricing details for Free and Paid Workers plans.","url":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.png?v=d2d491034d5c9d5b","dateModified":"2026-08-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/#page","headline":"Limits & pricing","description":"Review AI Search limits, included monthly usage, and usage-based pricing.","url":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/platform/limits-pricing/og.png?v=d2d491034d5c9d5b","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

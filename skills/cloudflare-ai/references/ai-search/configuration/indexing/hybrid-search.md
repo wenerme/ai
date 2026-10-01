@@ -12,9 +12,11 @@ image: https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid
 
 # Hybrid search
 
-Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Hybrid search runs vector and keyword search in parallel and merges the results. It requires [keyword search](https://developers.cloudflare.com/ai-search/configuration/indexing/keyword-search/) to be enabled. For an overview of search modes, refer to [Search modes](https://developers.cloudflare.com/ai-search/concepts/search-modes/).
+
+Hybrid search is enabled by default.
 
 ## Enable hybrid search
 
@@ -31,7 +33,7 @@ const instance = await env.AI_SEARCH.create({
 });
 ```
 
-To disable hybrid search, set `index_method.keyword` to `false`. The keyword index is deleted.
+To opt out of hybrid search, set `index_method.keyword` to `false`. The keyword index is deleted.
 
 For each search method, you can configure the following to adjust retrieval behavior:
 
@@ -106,5 +108,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/#page","headline":"Hybrid search","description":"Combine vector and keyword search in AI Search for broader, more accurate retrieval results.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/og.png?v=1a78e799dc4497aa","dateModified":"2026-04-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/#page","headline":"Hybrid search","description":"Combine vector and keyword search in AI Search for broader, more accurate retrieval results.","url":"https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/og.png?v=1a78e799dc4497aa","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

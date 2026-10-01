@@ -932,7 +932,7 @@ In-Reply-To =
   - none = no avatar will be displayed
   - random = random avatar will be generated
   - image = default image will be used (which is set in `REPOSITORY_AVATAR_FALLBACK_IMAGE`)
-- `REPOSITORY_AVATAR_FALLBACK_IMAGE`: **/img/repo_default.png**: Image used as default repository avatar (if `REPOSITORY_AVATAR_FALLBACK` is set to image and none was uploaded)
+- `REPOSITORY_AVATAR_FALLBACK_IMAGE`: **_empty_**: Image used as default repository avatar (if `REPOSITORY_AVATAR_FALLBACK` is set to image and none was uploaded). The value is used as-is, without prepending the sub-path of `ROOT_URL`. Empty uses Gitea's builtin repository avatar.
 
 ## Project (`project`)
 

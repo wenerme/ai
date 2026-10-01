@@ -21,7 +21,7 @@ Note
 Note that you will need to allowlist IP addresses to accept incoming Cloudflare Logpush traffic. Refer to [Cloudflare IPs ↗︎](https://www.cloudflare.com/ips/) for the complete list of IPs. If you prefer to have a dedicated IP, you can use dedicated [Dedicated Egress IPs for Cloudflare Logpush](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/egress-ip/).
 
 - [Enable Cloudflare R2](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/r2/)
-- [Enable Cloudflare Pipelines](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/)
+- [Enable Basin Pipelines](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/pipelines/)
 - [Enable HTTP destination](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/http/)
 - [Enable Amazon S3](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/aws-s3/)
 - [Enable S3-compatible endpoints](https://developers.cloudflare.com/logs/logpush/logpush-job/enable-destinations/s3-compatible-endpoints/)

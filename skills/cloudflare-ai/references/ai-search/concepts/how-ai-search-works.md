@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/
 
 # How AI Search works
 
-Last updated Sep 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Search is a managed search service. Connect a website, an R2 bucket, or upload your own documents, and AI Search indexes your content for natural language queries.
 
@@ -50,9 +50,9 @@ index & store
 Here is what happens during indexing:
 
 1. **Data ingestion:** AI Search reads from your connected data source or receives files uploaded through the [Items API](https://developers.cloudflare.com/ai-search/api/items/workers-binding/).
-2. **Markdown conversion:** AI Search uses [Workers AI's Markdown Conversion](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) to convert [supported data types](https://developers.cloudflare.com/ai-search/configuration/data-source/) into structured Markdown. This ensures consistency across diverse file types. For images, Workers AI is used to perform object detection followed by vision-to-language transformation to convert images into Markdown text. Refer to [how images are converted](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/how-it-works/#images) for details.
+2. **Markdown conversion:** AI Search uses [Workers AI's Markdown Conversion](https://developers.cloudflare.com/workers-ai/features/markdown-conversion/) to convert [supported data types](https://developers.cloudflare.com/ai-search/configuration/data-source/) into structured Markdown. Text-only embedding models convert images into text captions before embedding them.
 3. **Chunking:** The extracted text is [chunked](https://developers.cloudflare.com/ai-search/configuration/indexing/chunking/) into smaller pieces to improve retrieval granularity.
-4. **Embedding:** Each chunk is embedded using Workers AI's embedding model to transform the content into vectors.
+4. **Embedding:** Each chunk is transformed into a vector. [Multimodal embedding models](https://developers.cloudflare.com/ai-search/configuration/models/supported-models/) embed image pixels directly. Text-only models embed the generated image captions instead.
 5. **Keyword indexing:** When keyword search is enabled, each chunk is also indexed for BM25 keyword matching.
 6. **Storage:** The vectors, keyword index, and content are stored and ready for search.
 
@@ -92,13 +92,15 @@ Here is how the querying pipeline works:
 
 1. **Receive query from AI Search API:** The query workflow begins when you send a request to either the AI Search's [Chat Completions](https://developers.cloudflare.com/ai-search/api/search/rest-api/#chat-completions) or [Search](https://developers.cloudflare.com/ai-search/api/search/rest-api/#search) endpoints.
 2. **Query rewriting (optional):** AI Search provides the option to [rewrite the input query](https://developers.cloudflare.com/ai-search/configuration/retrieval/query-rewriting/) using one of Workers AI's LLMs to improve retrieval quality by transforming the original query into a more effective search query.
-3. **Embedding the query:** The rewritten (or original) query is transformed into a vector using the same embedding model used to embed your data.
+3. **Embedding the query:** The rewritten or original query becomes a vector. Multimodal embedding models embed image queries directly. Text-only models caption image queries before embedding the caption.
 4. **Vector search:** The query vector is matched against stored vectors to find semantically similar content.
 5. **Keyword search (optional):** When hybrid search is enabled, a BM25 keyword search runs in parallel with vector search.
 6. **Fusion (optional):** When using hybrid search, vector and keyword results are combined using the configured fusion method.
 7. **Reranking (optional):** A cross-encoder model re-scores results by evaluating the query and document together. Refer to [Reranking](https://developers.cloudflare.com/ai-search/configuration/retrieval/reranking/) for details.
 8. **Content retrieval:** The most relevant chunks and their source content are returned. If you are using the Search endpoint, the content is returned at this point.
 9. **Response generation:** If you are using the Chat Completions endpoint, a text-generation model generates a response using the retrieved content. Refer to [System prompt](https://developers.cloudflare.com/ai-search/configuration/retrieval/system-prompt/) for details.
+
+Workers AI embedding and reranking calls run under AI Search. These calls do not appear in your AI Gateway logs or count toward your Workers AI usage. External provider calls, query rewriting, and response generation still use your connected gateway. Refer to [AI Gateway](https://developers.cloudflare.com/ai-search/configuration/models/ai-gateway/).
 
 ## When to use AI Search vs. Vectorize
 
@@ -123,5 +125,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/#page","headline":"How AI Search works","description":"Understand how AI Search indexes your content and retrieves results using vector and keyword search.","url":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/og.png?v=c4c7953b5003e839","dateModified":"2026-09-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/#page","headline":"How AI Search works","description":"Understand how AI Search indexes your content and retrieves results using vector and keyword search.","url":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/concepts/how-ai-search-works/og.png?v=c4c7953b5003e839","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

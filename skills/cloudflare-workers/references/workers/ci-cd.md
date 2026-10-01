@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/ci-cd/og.png?v=66d3d2c68cdaeca5
 
 # CI/CD
 
-Last updated Jul 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can set up continuous integration and continuous deployment (CI/CD) for your Workers by using either the integrated build system, [Workers Builds](#workers-builds), or using [external providers](#external-cicd) to optimize your development workflow.
 
@@ -27,18 +27,18 @@ Using a CI/CD pipeline to deploy your Workers is a best practice because it:
 
 ## Which CI/CD should I use?
 
-Choose [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds) if you want a fully integrated solution within Cloudflare's ecosystem that requires minimal setup and configuration for GitHub or GitLab users.
+Choose [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds) if you want a fully integrated solution within Cloudflare's ecosystem for Artifacts, GitHub, or GitLab repositories.
 
 We recommend using [external CI/CD providers](https://developers.cloudflare.com/workers/ci-cd/external-cicd) if:
 
-- You have a self-hosted instance of GitHub or GitLabs, which is currently not supported in Workers Builds' [Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/)
-- You are using a Git provider that is not GitHub or GitLab
+- You have a self-hosted instance of GitHub or GitLab, which is currently not supported in Workers Builds' [Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/)
+- You are using a Git provider other than Artifacts, GitHub, or GitLab
 
 ## Workers Builds
 
-[Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds) is Cloudflare's native CI/CD system that allows you to integrate with GitHub or GitLab to automatically deploy changes with each new push to a selected branch (e.g. `main`).
+[Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds) is Cloudflare's native CI/CD system that allows you to integrate with Artifacts, GitHub, or GitLab to automatically deploy changes with each new push to a selected branch (e.g. `main`).
 
-![Workers Builds Workflow Diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=923,height=203,format=webp/_astro/workers-builds-workflow.Bmy3qIVc.png)
+![Workers Builds Workflow Diagram](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=923,height=203,format=webp/_astro/workers-builds-workflow.DzGN9FAh.png)
 
 Ready to streamline your Workers deployments? Get started with [Workers Builds](https://developers.cloudflare.com/workers/ci-cd/builds/#get-started).
 
@@ -58,5 +58,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/#page","headline":"CI/CD","description":"Set up continuous integration and continuous deployment for your Workers.","url":"https://developers.cloudflare.com/workers/ci-cd/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/og.png?v=66d3d2c68cdaeca5","dateModified":"2026-07-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/#page","headline":"CI/CD","description":"Set up continuous integration and continuous deployment for your Workers.","url":"https://developers.cloudflare.com/workers/ci-cd/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/og.png?v=66d3d2c68cdaeca5","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

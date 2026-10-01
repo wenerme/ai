@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/api/reference/permissions/
 
 # API token permissions
 
-Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/reference/permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/api/reference/permissions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Permissions are segmented into three categories based on resource:
 
@@ -197,8 +197,8 @@ The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only —
 | Notifications Edit | Grants write access to [Notifications](https://developers.cloudflare.com/notifications/). |
 | Client-side security Read | Grants read access to [client-side security](https://developers.cloudflare.com/client-side-security/) (previously known as Page Shield). |
 | Client-side security Edit | Grants write access to [client-side security](https://developers.cloudflare.com/client-side-security/) (previously known as Page Shield). |
-| Workers Pipelines Read | Grants read access to Cloudflare Pipelines. |
-| Workers Pipelines Edit | Grants write access to Cloudflare Pipelines. |
+| Workers Pipelines Read | Grants read access to Basin Pipelines. |
+| Workers Pipelines Edit | Grants write access to Basin Pipelines. |
 | Queues Read | Grants read access to [Queues](https://developers.cloudflare.com/queues/). |
 | Queues Edit | Grants write access to [Queues](https://developers.cloudflare.com/queues/). |
 | Rule Policies Read | Grants read access to Rule Policies. |
@@ -373,8 +373,8 @@ The `AI Gateway Read`, `Run`, and `Edit` permissions are account-scoped only —
 | Notifications Write | Grants write access to [Notifications](https://developers.cloudflare.com/notifications/). |
 | Page Shield Read | Grants read access to [client-side security](https://developers.cloudflare.com/client-side-security/) (previously known as Page Shield). |
 | Page Shield Write | Grants write access to [client-side security](https://developers.cloudflare.com/client-side-security/) (previously known as Page Shield). |
-| Pipelines Read | Grants read access to Cloudflare Pipelines. |
-| Pipelines Write | Grants write access to Cloudflare Pipelines. |
+| Pipelines Read | Grants read access to Basin Pipelines. |
+| Pipelines Write | Grants write access to Basin Pipelines. |
 | Queues Read | Grants read access to [Queues](https://developers.cloudflare.com/queues/). |
 | Queues Write | Grants write access to [Queues](https://developers.cloudflare.com/queues/). |
 | Rule Policies Read | Grants read access to Rule Policies. |
@@ -573,5 +573,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/#page","headline":"API token permissions","description":"Review available Cloudflare API token permissions for user, account, and zone resources.","url":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/og.png?v=d5142d1f6e167ad8","dateModified":"2026-09-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/#page","headline":"API token permissions","description":"Review available Cloudflare API token permissions for user, account, and zone resources.","url":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/api/reference/permissions/og.png?v=d5142d1f6e167ad8","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

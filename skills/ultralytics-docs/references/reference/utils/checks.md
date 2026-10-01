@@ -142,6 +142,10 @@ keywords: Ultralytics, YOLO, utility functions, version checks, requirements, im
 
 <hr>
 
+## ::: ultralytics.utils.checks.rocm_is_available
+
+<hr>
+
 ## ::: ultralytics.utils.checks.is_rockchip
 
 <hr>

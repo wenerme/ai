@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-know
 
 # Human-in-the-loop knowledge base updates
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This tutorial builds an agent that searches a knowledge base and adds to it, with a human approving every write. Letting an agent modify your data is risky, so each save pauses for approval before it runs, and you can roll back a save that turned out wrong.
 
@@ -133,7 +133,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
   "name": "kb-agent",
   "main": "src/server.ts",
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-01",
   "compatibility_flags": [
     "nodejs_compat"
   ],
@@ -175,7 +175,7 @@ Replace your [Wrangler configuration file](https://developers.cloudflare.com/wor
 name = "kb-agent"
 main = "src/server.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-01"
 compatibility_flags = ["nodejs_compat"]
 
 [ai]
@@ -364,7 +364,7 @@ The `name()` result (`aiSearch`) becomes the global the model's code calls, so t
 
 ## 4. Build the agent
 
-Create `src/server.ts`. The agent provisions an AI Search instance with [hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/) enabled the first time it runs, then creates the Code Mode runtime with the connector and exposes it to the model as a single `codemode` tool. The `@callable()` methods let your client list pending approvals and approve, reject, or roll back a write.
+Create `src/server.ts`. New AI Search instances use [hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/) by default. The example then creates the Code Mode runtime with the connector and exposes it to the model as a single `codemode` tool. The `@callable()` methods let your client list pending approvals and approve, reject, or roll back a write.
 
 *src/server.jsjs*
 
@@ -393,26 +393,20 @@ export class Chat extends AIChatAgent {
 	// In-memory guard, so the one-time setup runs once per instance lifetime.
 	ready = false;
 
-	// Create the AI Search instance with hybrid search enabled, then seed it.
-	// create() throws if the instance already exists, so the try/catch makes
-	// this safe to call on every message.
+	// Create the AI Search instance, which uses hybrid search by default, then seed it.
 	async ensureInstance() {
 		if (this.ready) return;
 		try {
-			// index_method with both vector and keyword enables hybrid search.
 			await this.env.AI_SEARCH.create({
 				id: INSTANCE_NAME,
-				index_method: { vector: true, keyword: true },
 			});
 			// Queue the seed document for indexing so the first search has content.
 			await this.env.AI_SEARCH.get(INSTANCE_NAME).items.upload(
 				"getting-started.md",
 				SEED_DOC,
 			);
-		} catch (err) {
-			// create() throws if the instance already exists, which is expected on
-			// every run after the first. Log anything else so real failures surface.
-			console.error("ensureInstance:", err);
+		} catch {
+			// intentional fallback, nothing to handle
 		}
 		this.ready = true;
 	}
@@ -515,26 +509,20 @@ export class Chat extends AIChatAgent<Env> {
 	// In-memory guard, so the one-time setup runs once per instance lifetime.
 	private ready = false;
 
-	// Create the AI Search instance with hybrid search enabled, then seed it.
-	// create() throws if the instance already exists, so the try/catch makes
-	// this safe to call on every message.
+	// Create the AI Search instance, which uses hybrid search by default, then seed it.
 	private async ensureInstance() {
 		if (this.ready) return;
 		try {
-			// index_method with both vector and keyword enables hybrid search.
 			await this.env.AI_SEARCH.create({
 				id: INSTANCE_NAME,
-				index_method: { vector: true, keyword: true },
 			});
 			// Queue the seed document for indexing so the first search has content.
 			await this.env.AI_SEARCH.get(INSTANCE_NAME).items.upload(
 				"getting-started.md",
 				SEED_DOC,
 			);
-		} catch (err) {
-			// create() throws if the instance already exists, which is expected on
-			// every run after the first. Log anything else so real failures surface.
-			console.error("ensureInstance:", err);
+		} catch {
+			// intentional fallback, nothing to handle
 		}
 		this.ready = true;
 	}
@@ -815,5 +803,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/#page","headline":"Human-in-the-loop knowledge base updates","description":"Build an agent that searches a knowledge base and proposes updates to it, with a human approving and able to roll back each write.","url":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/og.png?v=c960efe4a0ca868c","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/#page","headline":"Human-in-the-loop knowledge base updates","description":"Build an agent that searches a knowledge base and proposes updates to it, with a human approving and able to roll back each write.","url":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/how-to/human-in-the-loop-knowledge-base/og.png?v=c960efe4a0ca868c","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

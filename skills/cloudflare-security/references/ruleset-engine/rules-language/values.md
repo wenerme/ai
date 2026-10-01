@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ruleset-engine/rules-language/values/og
 
 # Values
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/values/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/values/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When an HTTP request reaches the Cloudflare global network, Cloudflare creates a table of field–value pairs against which to match expressions. This table exists for as long as the current request is being processed.
 
@@ -163,10 +163,7 @@ In the last example, the `lower()` function includes the `[*]` notation so that 
 
 It is not possible to define your own arrays. You can only use arrays returned by fields, either directly or modified by functions.
 
-Accessing an out-of-bounds array index produces a "missing value". A missing value has the following behavior:
-
-- Any comparison `<expr> <op> <literal>` where `<expr>` evaluates to a missing value will evaluate to false.
-- Function calls like `function(<expr>)`, where `<expr>` evaluates to a missing value, will return a missing value in most cases, but the exact behavior can vary per function.
+Accessing an out-of-bounds array index produces a [missing value](#missing-values).
 
 You can only use `[*]` multiple times in the same expression if applied to the same array. Also, you can only use `[*]` in the first argument of a function call.
 
@@ -179,7 +176,7 @@ The Rules language [operators](https://developers.cloudflare.com/ruleset-engine/
 
 A map, also called associative array, is a data structure that stores a collection of key-value pairs, where the key must be a `String` and the value can be of any type (for example, a `String` or an array of values). All values in a map must have the same type.
 
-The Cloudflare Rules language includes several [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/) of `Map` data type. The type notation for map fields, for example `Map<Array<String>>`, indicates the data type of the values associated with keys (an `Array` of `String` elements). This means that when you access the value of key `"foo"` you will get either an array of `String` elements or a [missing value](#notes-1).
+The Cloudflare Rules language includes several [fields](https://developers.cloudflare.com/ruleset-engine/rules-language/fields/) of `Map` data type. The type notation for map fields, for example `Map<Array<String>>`, indicates the data type of the values associated with keys (an `Array` of `String` elements). This means that when you access the value of key `"foo"` you will get either an array of `String` elements or a [missing value](#missing-values).
 
 To access a value in a map, enter the key between square brackets (`[]`):
 
@@ -234,10 +231,38 @@ For more information on `any()`, `all()`, `len()`, and other available functions
 
 It is not possible to define your own maps. You can only use maps returned by fields.
 
-Accessing a non-existing key in a map produces a "missing value". A missing value has the following behavior:
+Accessing a key that does not exist produces a [missing value](#missing-values).
 
-- Any comparison `<expr> <op> <literal>` where `<expr>` evaluates to a missing value will evaluate to false.
-- Function calls like `function(<expr>)`, where `<expr>` evaluates to a missing value, will return a missing value in most cases, but the exact behavior can vary per function.
+## Missing values
+
+An absent map key or out-of-bounds array index produces a missing value (nil). Nil is not a literal you can enter in an expression.
+
+### Comparisons
+
+These results apply to HTTP rules when both values have the same type. The following table shows the result of each comparison:
+
+| Operand values | `eq` | `ne` | `lt` | `le` | `gt` | `ge` |
+| --- | --- | --- | --- | --- | --- | --- |
+| Both nil | `true` | `false` | `false` | `true` | `false` | `true` |
+| Exactly one nil | `false` | `true` | `false` | `false` | `false` | `false` |
+
+The one-nil results also apply when the other operand is a literal.
+
+Caution
+
+An equality rule might match nearly every request if both values are usually nil. The following expressions return different results when both query parameters are missing:
+
+```txt
+# Returns true
+http.request.uri.args["first"][0] eq http.request.uri.args["second"][0]
+
+# Returns false because the empty string is different from nil
+coalesce(http.request.uri.args["first"][0], "") eq http.request.uri.args["second"][0]
+```
+
+### Functions
+
+Functions usually return nil when an argument is nil. The exact behavior varies by function. Use [`coalesce()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#coalesce) to provide a fallback value.
 
 ## Lists
 
@@ -287,5 +312,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/values/#page","headline":"Values","description":"Learn about values in Cloudflare's Rules language, including string, boolean, array, and map types, and how to use them in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/values/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/values/og.png?v=9b488c6812d4ee15","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/values/#page","headline":"Values","description":"Learn about values in Cloudflare's Rules language, including string, boolean, array, and map types, and how to use them in rule expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/values/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/values/og.png?v=9b488c6812d4ee15","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

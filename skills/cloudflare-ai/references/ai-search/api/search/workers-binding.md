@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/api/search/workers-binding/og
 
 # Workers binding
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/search/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/api/search/workers-binding/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Workers](https://developers.cloudflare.com/workers/) provides a serverless execution environment that allows you to create new applications or augment existing ones. Use a [Workers binding](https://developers.cloudflare.com/workers/runtime-apis/bindings/) to search and chat with your AI Search instances from a Cloudflare Worker.
 
@@ -105,14 +105,18 @@ const results = await instance.search({
 
 #### Parameters
 
+The Workers binding accepts string values for `messages[].content`. To send image or file content parts, use the [REST API](https://developers.cloudflare.com/ai-search/api/search/rest-api/) or a [public endpoint](https://developers.cloudflare.com/ai-search/api/search/public-endpoint/).
+
 `messages` `array` required
 
 An array of message objects representing the conversation. Each message has a `role` and `content` field.
 
 - `role` `string` required
   - The role of the message sender. Valid values: `system`, `developer`, `user`, `assistant`, `tool`.
-- `content` `string` required
-  - The content of the message.
+- `content` `string | array` required
+  - The message content. Use a string for text, or an array containing `text`, `image_url`, and `file` parts.
+  - A `text` part contains `text`. An `image_url` part contains an `https://` URL or a `data:image/<subtype>;base64,...` URI.
+  - A `file` part contains `file_data` as a `data:<mime>;base64,...` URI and a `filename`. The decoded file can be up to 10 MiB.
 
 ---
 
@@ -126,6 +130,8 @@ A simple text query string. Alternative to `messages`. Provide either `query` or
 
 Configuration options for the search operation.
 
+- `custom_metadata` `object` optional
+  - Adds up to two string, number, or boolean entries to AI Gateway logs. The keys `ai-search`, `task`, `origin`, and keys beginning with `cf.` are reserved.
 - `retrieval` `object` optional
   - `retrieval_type` `string` optional
     - The type of retrieval to perform. Valid values: `vector`, `keyword`, `hybrid`. Defaults to `hybrid`.
@@ -175,7 +181,8 @@ The response contains the following fields:
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `search_query` | string | The query used for the search, which may be rewritten if query rewriting is enabled. |
+| `query_kind` | string | The query input type: `text`, `image`, or `multimodal`. |
+| `search_query` | string | The query used for the search. Omitted for image-only queries. |
 | `chunks` | array | An array of matching content chunks. |
 | `chunks[].id` | string | The unique identifier for the chunk. |
 | `chunks[].type` | string | The type of content, typically `text`. |
@@ -247,8 +254,10 @@ An array of message objects representing the conversation. Each message has a `r
 
 - `role` `string` required
   - The role of the message sender. Valid values: `system`, `developer`, `user`, `assistant`, `tool`.
-- `content` `string` required
-  - The content of the message.
+- `content` `string | array` required
+  - The message content. Use a string for text, or an array containing `text`, `image_url`, and `file` parts.
+  - A `text` part contains `text`. An `image_url` part contains an `https://` URL or a `data:image/<subtype>;base64,...` URI.
+  - A `file` part contains `file_data` as a `data:<mime>;base64,...` URI and a `filename`. The decoded file can be up to 10 MiB.
 
 ---
 
@@ -268,6 +277,8 @@ Returns a stream of results as they are generated. When enabled, returns a `Resp
 
 Configuration options for the search and generation operation.
 
+- `custom_metadata` `object` optional
+  - Adds up to two string, number, or boolean entries to AI Gateway logs. The keys `ai-search`, `task`, `origin`, and keys beginning with `cf.` are reserved.
 - `retrieval` `object` optional
   - `retrieval_type` `string` optional
     - The type of retrieval to perform. Valid values: `vector`, `keyword`, `hybrid`. Defaults to `hybrid`.
@@ -441,5 +452,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/search/workers-binding/#page","headline":"Workers binding","description":"Search and chat with AI Search instances from a Cloudflare Worker using the Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/search/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/api/search/workers-binding/og.png?v=fa78d292a041eecc","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/api/search/workers-binding/#page","headline":"Workers binding","description":"Search and chat with AI Search instances from a Cloudflare Worker using the Workers binding.","url":"https://developers.cloudflare.com/ai-search/api/search/workers-binding/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/api/search/workers-binding/og.png?v=fa78d292a041eecc","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
