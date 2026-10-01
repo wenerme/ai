@@ -320,7 +320,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
 
     The service tier used for model requests.
 
@@ -343,10 +343,6 @@ Creates a managed agent session, optionally submits initial input, and returns t
     - `"fast"`
 
       Uses the fast service tier.
-
-    - `"ultrafast"`
-
-      Uses the ultrafast service tier.
 
   - `text: optional AgentTextParam or null`
 

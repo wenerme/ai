@@ -12,17 +12,13 @@ image: https://developers.cloudflare.com/logs/logpush/transformers/og.png?v=2cd4
 
 # Transformers
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/transformers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
-Beta
-
-Beta
-
-Transformers are in beta. Contact your Cloudflare Account Executive for access. Beta usage is not billed.
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/logpush/transformers/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Transformers let you run a SQL query against each batch of records before Logpush delivers them to your destination. Use them to filter records you do not want to store, reshape fields to match a downstream schema, redact sensitive values, compute new fields, or add static metadata.
 
 You write the logic as a single SQL query, attach it to a Logpush job, and Cloudflare runs it on every batch. The `FROM` clause names the Logpush dataset (for example, `http_requests` or `audit_logs_v2`) and field names come from that dataset's schema.
+
+Transformers are available on Free, Pro, Business, and Enterprise plans for supported Logpush datasets. Each Cloudflare account includes 1 GB of transformation input per month. Additional input costs $0.04 per GB. For more information, refer to [Logpush pricing](https://developers.cloudflare.com/logs/logpush/pricing/).
 
 ## Key features
 
@@ -35,7 +31,7 @@ You write the logic as a single SQL query, attach it to a Logpush job, and Cloud
 Before you begin, you need:
 
 - A Logpush job that uses the `ndjson` output format. Transformers are only available for NDJSON jobs, and are supported for both account-scoped and zone-scoped datasets.
-- An API token with the `Logs Write` permission for the account.
+- If you use the API, an API token with the `Logs Write` permission for the account.
 - Familiarity with the [dataset](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/) whose records you plan to transform. Your SQL references its field names directly.
 
 ## Access Transformers
@@ -52,8 +48,8 @@ The API does not convert Logpush filters to SQL. To migrate a filtered job throu
 
 ```json
 {
-  "filter": "",
-  "transformer_id": 42
+	"filter": "",
+	"transformer_id": 42
 }
 ```
 
@@ -195,16 +191,16 @@ Input record from the [`audit_logs_v2`](https://developers.cloudflare.com/logs/l
 
 ```json
 {
-  "ActionType": "update",
-  "ActorEmail": "user@example.com",
-  "ActorID": "a1b2c3d4",
-  "ActorIPAddress": "203.0.113.42",
-  "ActorType": "user",
-  "ActionTimestamp": "2026-05-21T15:00:00Z",
-  "AccountID": "90796717",
-  "ResourceID": "r1s2t3u4",
-  "ResourceType": "zone",
-  "ActorContext": "dashboard"
+	"ActionType": "update",
+	"ActorEmail": "user@example.com",
+	"ActorID": "a1b2c3d4",
+	"ActorIPAddress": "203.0.113.42",
+	"ActorType": "user",
+	"ActionTimestamp": "2026-05-21T15:00:00Z",
+	"AccountID": "90796717",
+	"ResourceID": "r1s2t3u4",
+	"ResourceType": "zone",
+	"ActorContext": "dashboard"
 }
 ```
 
@@ -230,16 +226,16 @@ Delivered record:
 
 ```json
 {
-  "action_type": "UPDATE",
-  "actor": {
-    "email": "user@example.com",
-    "ip": "203.0.113.42",
-    "type": "user"
-  },
-  "is_zone": true,
-  "provider": "Cloudflare",
-  "resource_meta": ["zone", "r1s2t3u4"],
-  "unix_ts": 1779375600
+	"action_type": "UPDATE",
+	"actor": {
+		"email": "user@example.com",
+		"ip": "203.0.113.42",
+		"type": "user"
+	},
+	"is_zone": true,
+	"provider": "Cloudflare",
+	"resource_meta": ["zone", "r1s2t3u4"],
+	"unix_ts": 1779375600
 }
 ```
 
@@ -261,16 +257,16 @@ Input record from the [`http_requests`](https://developers.cloudflare.com/logs/l
 
 ```json
 {
-  "ClientIP": "203.0.113.42",
-  "ClientRequestHost": "example.com",
-  "ClientRequestMethod": "POST",
-  "ClientRequestPath": "/api/checkout",
-  "ClientRequestUserAgent": "curl/7.85.0",
-  "EdgeResponseStatus": 502,
-  "EdgeStartTimestamp": "2026-05-21T15:00:00Z",
-  "RayID": "8e2a1c60ef9e1c9a",
-  "OriginResponseTime": 3200000000,
-  "WAFAction": "unknown"
+	"ClientIP": "203.0.113.42",
+	"ClientRequestHost": "example.com",
+	"ClientRequestMethod": "POST",
+	"ClientRequestPath": "/api/checkout",
+	"ClientRequestUserAgent": "curl/7.85.0",
+	"EdgeResponseStatus": 502,
+	"EdgeStartTimestamp": "2026-05-21T15:00:00Z",
+	"RayID": "8e2a1c60ef9e1c9a",
+	"OriginResponseTime": 3200000000,
+	"WAFAction": "unknown"
 }
 ```
 
@@ -300,16 +296,16 @@ Delivered record:
 
 ```json
 {
-  "is_server_error": true,
-  "method": "POST",
-  "provider": "Cloudflare",
-  "request": {
-    "host": "example.com",
-    "method": "POST",
-    "path": "/api/checkout"
-  },
-  "request_meta": ["example.com", "/api/checkout"],
-  "unix_ts": 1779375600
+	"is_server_error": true,
+	"method": "POST",
+	"provider": "Cloudflare",
+	"request": {
+		"host": "example.com",
+		"method": "POST",
+		"path": "/api/checkout"
+	},
+	"request_meta": ["example.com", "/api/checkout"],
+	"unix_ts": 1779375600
 }
 ```
 
@@ -357,5 +353,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/transformers/#page","headline":"Transformers","description":"Advanced filtering, reshaping, redacting, and computing on Logpush records with SQL before they leave Cloudflare.","url":"https://developers.cloudflare.com/logs/logpush/transformers/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/transformers/og.png?v=2cd45bfcbf25bd72","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/logpush/transformers/#page","headline":"Transformers","description":"Advanced filtering, reshaping, redacting, and computing on Logpush records with SQL before they leave Cloudflare.","url":"https://developers.cloudflare.com/logs/logpush/transformers/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/logpush/transformers/og.png?v=2cd45bfcbf25bd72","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

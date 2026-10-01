@@ -36,7 +36,7 @@ You can also access the query editor when building a dashboard:
 
 ## Write a query
 
-The Snowflake query editor uses standard SQL syntax. Enter your SQL query in the editor and click **Run query** (or press `Shift+Enter`) to execute it.
+The Snowflake query editor uses standard SQL syntax. Enter your SQL query in the editor. To run it while editing, press `Ctrl/Cmd+S` or select the run (play) icon above the editor.
 
 For basic queries, use standard SQL:
 
@@ -46,7 +46,19 @@ SQL [Copy code to clipboard] Copy
 SELECT column1, column2 FROM your_table LIMIT 100;
 ```
 
-For time-based visualizations, use Grafana macros like `$__timeFilter` and `$__timeGroup` to make your queries respond to the dashboard time range. Refer to [Macros](#macros) for the full reference.
+For time-based visualizations, use Grafana macros such as `$__timeFilter` and `$__timeGroup` to make your queries respond to the dashboard time range. Refer to [Macros](#macros) for the full reference.
+
+> Tip
+>
+> As you type in the editor, it suggests the `$__timeFilter` and `$__timeGroup` macros and any dashboard template variables.
+
+### Set the query format
+
+Use the **Format as** drop-down in the query editor to tell Grafana how to interpret the query results:
+
+- **Time Series** - Returns time-based data for graph and time series panels.
+- **Table** - Returns rows and columns for table panels.
+- **Logs** - Returns log lines for the Logs viewer in Explore.
 
 ## Query examples
 
@@ -54,19 +66,21 @@ The following examples show common query patterns for different visualization ty
 
 ### Table visualization
 
-Most queries in Snowflake are best represented by a table visualization. Any query will display data in a table.
+Most queries in Snowflake are best represented by a table visualization. Any query displays data in a table.
 
 This example returns results for a table visualization:
 
 SQL [Copy code to clipboard] Copy
 
 ```sql
-SELECT {column_1}, {column_2} FROM {table};
+SELECT query_type, warehouse_name, total_elapsed_time
+FROM snowflake.account_usage.query_history
+LIMIT 100;
 ```
 
-### Timeseries visualization
+### Time series visualization
 
-For timeseries or graph visualizations, there are a few requirements:
+For time series or graph visualizations, there are a few requirements:
 
 - A column with a `date` or `datetime` type must be selected.
 - The `date` column must be in ascending order (using `ORDER BY column ASC`).
@@ -74,7 +88,7 @@ For timeseries or graph visualizations, there are a few requirements:
 
 To create a useful graph, use the `$__timeFilter` and `$__timeGroup` macros.
 
-**Example timeseries query:**
+**Example time series query:**
 
 SQL [Copy code to clipboard] Copy
 
@@ -84,11 +98,54 @@ SELECT
   avg(execution_time) AS average_execution_time,
   query_type
 FROM
-  account_usage.query_history
+  snowflake.account_usage.query_history
 WHERE
   $__timeFilter(start_time)
 GROUP BY
   time, query_type
+ORDER BY
+  time ASC;
+```
+
+The `snowflake.account_usage` examples require the `ACCOUNTADMIN` role, or a role granted the `IMPORTED PRIVILEGES` privilege on the `SNOWFLAKE` database.
+
+### Time series with a timezone-aware column
+
+When your time column stores a timezone (`TIMESTAMP_TZ` or `TIMESTAMP_LTZ`), use `$__timeTzFilter` instead of `$__timeFilter`:
+
+SQL [Copy code to clipboard] Copy
+
+```sql
+SELECT
+  $__timeGroup(event_time, $__interval) AS time,
+  count(*) AS event_count
+FROM
+  your_database.your_schema.events
+WHERE
+  $__timeTzFilter(event_time)
+GROUP BY
+  time
+ORDER BY
+  time ASC;
+```
+
+### Filter with a template variable
+
+Use [template variables](/docs/plugins/grafana-snowflake-datasource/latest/template-variables/) to make queries respond to dashboard drop-downs. This example filters by a `warehouse` variable:
+
+SQL [Copy code to clipboard] Copy
+
+```sql
+SELECT
+  $__timeGroup(start_time, $__interval) AS time,
+  avg(execution_time) AS average_execution_time
+FROM
+  snowflake.account_usage.query_history
+WHERE
+  $__timeFilter(start_time)
+  AND warehouse_name = '$warehouse'
+GROUP BY
+  time
 ORDER BY
   time ASC;
 ```
@@ -99,14 +156,16 @@ Macros are special functions that Grafana expands into Snowflake-compatible SQL 
 
 Expand table
 
-| Macro                                         | Description                                                                                                                                                   | Output example                                                                                                                                             |
-|-----------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `$__timeFilter(column)`                       | Filters the `column` by the panel time range. Column must have fields without timezones.                                                                      | `CONVERT_TIMEZONE('UTC', 'UTC', time) < '2017-07-18T11:15:52Z' AND CONVERT_TIMEZONE('UTC', 'UTC', time) > '2017-07-18T11:15:52Z`                           |
-| `$__timeFilter(column, timezone)`             | Filters the `column` by the panel time range and converts from UTC to the specified `timezone`. Column must have fields without timezones.                    | `CONVERT_TIMEZONE('UTC', 'America/New_York', time) < '2017-07-18T11:15:52Z' AND CONVERT_TIMEZONE('UTC', 'America/New_York', time) > '2017-07-18T11:15:52Z` |
-| `$__timeTzFilter(column)`                     | Filters the `column` by the panel time range. Column should have fields that include timezones.                                                               | `CONVERT_TIMEZONE('UTC', time) < '2017-07-18T11:15:52Z' AND CONVERT_TIMEZONE('UTC', time) > '2017-07-18T11:15:52Z`                                         |
-| `$__timeTzFilter(column, timezone)`           | Filters the `column` by the panel time range and converts the current timezone to the specified `timezone`. Column should have fields that include timezones. | `CONVERT_TIMEZONE('America/New_York', time) < '2017-07-18T11:15:52Z' AND CONVERT_TIMEZONE('America/New_York', time) > '2017-07-18T11:15:52Z`               |
-| `$__timeGroup(column, $__interval)`           | Groups timestamps by the interval so that there is only 1 point for every `$__interval` on the graph.                                                         | `TIME_SLICE(TO_TIMESTAMP(created_ts), 1, 'HOUR', 'START')`                                                                                                 |
-| `$__timeGroup(column, $__interval, timezone)` | Groups timestamps by the interval so that there is only 1 point for every `$__interval` on the graph and converts to the given timezone.                      | `TIME_SLICE(TO_TIMESTAMP(CONVERT_TIMEZONE('UTC', 'America/Los_Angeles', created_ts)), 1, 'HOUR', 'START')`                                                 |
+| Macro                                         | Description                                                                                                                              | Output example                                                                                                                                              |
+|-----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `$__timeFilter(column)`                       | Filters `column` by the panel time range. Use for columns stored without a timezone, such as `TIMESTAMP_NTZ`.                            | `CONVERT_TIMEZONE('UTC', 'UTC', time) < '2017-07-18T11:15:52Z' AND CONVERT_TIMEZONE('UTC', 'UTC', time) > '2017-07-18T11:15:52Z'`                           |
+| `$__timeFilter(column, timezone)`             | Filters `column` by the panel time range and converts from UTC to the specified `timezone`. Use for columns stored without a timezone.   | `CONVERT_TIMEZONE('UTC', 'America/New_York', time) < '2017-07-18T11:15:52Z' AND CONVERT_TIMEZONE('UTC', 'America/New_York', time) > '2017-07-18T11:15:52Z'` |
+| `$__timeTzFilter(column)`                     | Filters `column` by the panel time range. Use for columns stored with a timezone, such as `TIMESTAMP_TZ` or `TIMESTAMP_LTZ`.             | `CONVERT_TIMEZONE('UTC', time) < '2017-07-18T11:15:52Z' AND CONVERT_TIMEZONE('UTC', time) > '2017-07-18T11:15:52Z'`                                         |
+| `$__timeTzFilter(column, timezone)`           | Filters `column` by the panel time range and converts to the specified `timezone`. Use for columns stored with a timezone.               | `CONVERT_TIMEZONE('America/New_York', time) < '2017-07-18T11:15:52Z' AND CONVERT_TIMEZONE('America/New_York', time) > '2017-07-18T11:15:52Z'`               |
+| `$__timeGroup(column, $__interval)`           | Groups timestamps by the interval so that there is only 1 point for every `$__interval` on the graph.                                    | `TIME_SLICE(TO_TIMESTAMP(created_ts), 1, 'HOUR', 'START')`                                                                                                  |
+| `$__timeGroup(column, $__interval, timezone)` | Groups timestamps by the interval so that there is only 1 point for every `$__interval` on the graph and converts to the given timezone. | `TIME_SLICE(TO_TIMESTAMP(CONVERT_TIMEZONE('UTC', 'America/Los_Angeles', created_ts)), 1, 'HOUR', 'START')`                                                  |
+
+The `$__timeGroup` macro accepts standard Grafana interval values, including day units such as `1d`.
 
 ## Inspect the query
 
@@ -134,7 +193,7 @@ When querying with **Logs** format, your query should have:
 
 Supported log levels and their keywords can be found in the [Grafana logs integration documentation](/docs/grafana/latest/explore/logs-integration/).
 
-If the query returns additional columns, they will be treated as additional fields/detected fields in the logs.
+If the query returns additional columns, they’re treated as additional detected fields in the logs.
 
 ### Log query example
 

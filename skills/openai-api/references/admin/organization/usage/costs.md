@@ -40,7 +40,7 @@ Get costs details for the organization.
 
 - `line_items: optional array of string`
 
-  Return only costs for these exact line item names. Each value must match the complete `line_item` value, for example `gpt-5.6-sol, input_tokens`.
+  Return only costs for these exact line item names. Each value must match the complete `line_item` value, for example `gpt-6-astra, input_tokens`.
 
 - `page: optional string`
 
@@ -60,9 +60,9 @@ Get costs details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 19 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 20 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 19 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 20 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -94,9 +94,13 @@ Get costs details for the organization.
 
         The aggregated number of uncached audio input tokens used.
 
+      - `input_cache_write_12h_tokens: optional number`
+
+        The aggregated number of input tokens written to the cache with a 12-hour retention period.
+
       - `input_cache_write_tokens: optional number`
 
-        The aggregated number of input tokens written to the cache.
+        The aggregated number of input tokens written to the cache with a 30-minute retention period.
 
       - `input_cached_audio_tokens: optional number`
 
@@ -514,6 +518,7 @@ curl https://api.openai.com/v1/organization/costs \
           "api_key_id": "api_key_id",
           "batch": true,
           "input_audio_tokens": 0,
+          "input_cache_write_12h_tokens": 0,
           "input_cache_write_tokens": 0,
           "input_cached_audio_tokens": 0,
           "input_cached_image_tokens": 0,

@@ -40,7 +40,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-01",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -53,7 +53,7 @@ The command above will output the ID of your Hyperdrive, which you will need to 
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-01"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -83,6 +83,10 @@ Other drivers and ORMs not listed may also be supported: this list is not exhaus
 Recommended driver
 
 [Node-postgres ↗︎](https://node-postgres.com/) (`pg`) is the recommended driver for connecting to your Postgres database from JavaScript or TypeScript Workers. It has the best compatibility with Hyperdrive's caching and is commonly available with popular ORM libraries. [Postgres.js ↗︎](https://github.com/porsager/postgres) is also supported.
+
+Do not use \`prepare: false\` with Postgres.js
+
+[`prepare: false` ↗︎](https://github.com/porsager/postgres?tab=readme-ov-file#prepared-statements) disables prepared statements. Postgres.js then sends additional protocol messages to discover parameter types before each query. Hyperdrive's [transaction pooling mode](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/#pooling-mode) does not reliably support this behavior. This can cause queries to hang or fail intermittently.
 
 ### Database drivers and Node.js compatibility
 
@@ -169,7 +173,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-01",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -182,7 +186,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-01"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"
@@ -262,7 +266,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 		"nodejs_compat"
 	],
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-01",
 	"hyperdrive": [
 		{
 			"binding": "HYPERDRIVE",
@@ -275,7 +279,7 @@ Add the required Node.js compatibility flags and Hyperdrive binding to your `wra
 ```toml
 compatibility_flags = [ "nodejs_compat" ]
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-01"
 
 [[hyperdrive]]
 binding = "HYPERDRIVE"

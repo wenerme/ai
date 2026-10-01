@@ -49,6 +49,7 @@ Already-shutdown models are indicated with gray backgrounds.
 |---|---|---|---|
 | `gemini-2.5-pro` | June 17, 2025 | No shutdown date announced |   |
 | Preview models ||||
+| `gemini-2.5-computer-use-preview-10-2025` | October 7, 2025 | July 28, 2026 | `gemini-3.8-flash` |
 | `gemini-2.5-pro-preview-03-25` | March 3, 2025 | December 2, 2025 | `gemini-3.1-pro-preview` |
 | `gemini-2.5-pro-preview-05-06` | May 6, 2025 | December 2, 2025 | `gemini-3.1-pro-preview` |
 | `gemini-2.5-pro-preview-06-05` | June 5, 2025 | December 2, 2025 | `gemini-3.1-pro-preview` |

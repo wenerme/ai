@@ -18,21 +18,24 @@ Use template variables to create dynamic, reusable dashboards with the Snowflake
 
 Expand table
 
-| Variable type | Supported |
-|---------------|-----------|
-| Query         | Yes       |
-| Custom        | Yes       |
-| Data source   | Yes       |
+| Variable type  | Supported |
+|----------------|-----------|
+| Query          | Yes       |
+| Custom         | Yes       |
+| Data source    | Yes       |
+| Ad hoc filters | No        |
+
+Ad hoc filters aren’t supported by the Snowflake data source. Grafana-native variable types that don’t depend on the data source, such as Constant, Text box, and Interval, work as usual.
 
 ## Create a query variable
 
 To add a new Snowflake query variable, refer to [Add a query variable](/docs/grafana/latest/dashboards/variables/add-template-variables/#add-a-query-variable). Use your Snowflake data source as the data source for your variable query.
 
-Any value queried from a Snowflake table can be used as a variable. Avoid selecting too many values, as this can cause performance issues.
+Any value queried from a Snowflake table can be used as a variable. Avoid selecting too many values, because doing so can cause performance issues.
 
 > Note
 >
-> If the variable query returns two columns, the values from the second column will be used as display values.
+> If the variable query returns two columns, the first column is used as the variable value and the second column is used as the display text. If the query returns a single column, that column is used as both the value and the display text.
 
 ## Use variables in queries
 
@@ -60,7 +63,7 @@ The example below assumes you have set `sqlstring` as default interpolation and 
 SQL [Copy code to clipboard] Copy
 
 ```sql
-SELECT query_type FROM account_usage.query_history WHERE query_type = ${queryTypeSingle} LIMIT ${limit:raw}
+SELECT query_type FROM snowflake.account_usage.query_history WHERE query_type = ${queryTypeSingle} LIMIT ${limit:raw}
 ```
 
 **Interpolated query:**
@@ -68,7 +71,7 @@ SELECT query_type FROM account_usage.query_history WHERE query_type = ${queryTyp
 SQL [Copy code to clipboard] Copy
 
 ```sql
-SELECT query_type FROM account_usage.query_history WHERE query_type = 'SELECT' LIMIT 10
+SELECT query_type FROM snowflake.account_usage.query_history WHERE query_type = 'SELECT' LIMIT 2
 ```
 
 > Note
@@ -80,10 +83,10 @@ Prior to version 1.2 of the plugin, or if you use `none` as the default interpol
 SQL [Copy code to clipboard] Copy
 
 ```sql
-SELECT query_type FROM account_usage.query_history WHERE query_type = '${queryTypeSingle}' LIMIT ${limit:raw}
+SELECT query_type FROM snowflake.account_usage.query_history WHERE query_type = '${queryTypeSingle}' LIMIT ${limit:raw}
 ```
 
-### Multi-value variables with sqlstring interpolation
+### Multi-value variables with `sqlstring` interpolation
 
 When consuming a variable that returns multiple options, use the following method.
 
@@ -97,7 +100,7 @@ The example below assumes you have set `sqlstring` as default interpolation and 
 SQL [Copy code to clipboard] Copy
 
 ```sql
-SELECT query_type FROM account_usage.query_history WHERE query_type IN (${queryTypeMulti}) LIMIT ${limit:raw}
+SELECT query_type FROM snowflake.account_usage.query_history WHERE query_type IN (${queryTypeMulti}) LIMIT ${limit:raw}
 ```
 
 **Interpolated query:**
@@ -105,12 +108,12 @@ SELECT query_type FROM account_usage.query_history WHERE query_type IN (${queryT
 SQL [Copy code to clipboard] Copy
 
 ```sql
-SELECT query_type FROM account_usage.query_history WHERE query_type IN ('CREATE','SELECT') LIMIT 10
+SELECT query_type FROM snowflake.account_usage.query_history WHERE query_type IN ('CREATE','SELECT') LIMIT 2
 ```
 
-### Multi-value variables with regex
+### Multi-value variables with regular expressions
 
-To use a variable that has multiple values with pattern matching, use the [regex modifier option](/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options) and the [`regexp` Snowflake function](https://docs.snowflake.com/en/sql-reference/functions/regexp.html).
+To use a variable that has multiple values with pattern matching, use the [regular expression format option](/docs/grafana/latest/dashboards/variables/variable-syntax/#advanced-variable-format-options) and the [`regexp` Snowflake function](https://docs.snowflake.com/en/sql-reference/functions/regexp.html).
 
 Use `${variable:regex}` syntax:
 
@@ -120,7 +123,7 @@ SQL [Copy code to clipboard] Copy
 
 ```sql
 SELECT *
-FROM account_usage.query_history
+FROM snowflake.account_usage.query_history
 WHERE query_type REGEXP '${queryType:regex}'
 ```
 
@@ -130,7 +133,7 @@ SQL [Copy code to clipboard] Copy
 
 ```sql
 SELECT *
-FROM account_usage.query_history
+FROM snowflake.account_usage.query_history
 WHERE query_type REGEXP '(DESCRIBE|CREATE_USER|DROP|TRUNCATE_TABLE|ALTER)'
 ```
 
@@ -140,7 +143,7 @@ You can set a default interpolation format in the data source configuration:
 
 1. Navigate to **Connections** &gt; **Data sources**.
 2. Select your Snowflake data source.
-3. In the **Default Interpolation** field, select your preferred format (for example, `sqlstring`).
+3. In the **Customization** section, in the **Variable Interpolation Format** field, select your preferred format (for example, **Sql String**, which is displayed as two words in the drop-down).
 4. Click **Save &amp; test**.
 
-When set, all variables without an explicit format modifier will use this default interpolation.
+When set, all variables without an explicit format modifier use this default interpolation.

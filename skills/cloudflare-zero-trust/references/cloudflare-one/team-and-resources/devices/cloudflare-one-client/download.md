@@ -60,7 +60,7 @@ Fixed a rare but critical issue where the client could fail to connect or switch
 
 <summary>
 
-Previous version history (13)
+Previous version history (12)
 
 </summary>
 
@@ -484,44 +484,6 @@ This release contains significant fixes and improvements.
 
 </details>
 
-<details>
-
-<summary>
-
-Windows 2025.7.176.0
-
-</summary>
-
-**Version:** Windows 2025.7.176.0**Date:** 2025-09-30**Size:** 134 MB
-
-<a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2025.7.176.0">Download</a>
-
-#### Release notes
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-- MASQUE is now the default <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol">tunnel protocol</a> for all new WARP device profiles.
-- Improvement to limit idle connections in <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode">Gateway with DoH mode</a> to avoid unnecessary resource usage that can lead to DoH requests not resolving.
-- Improvement to maintain TCP connections to reduce interruptions in long-lived connections such as RDP or SSH.
-- Improvements to maintain <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices">Global WARP override</a> settings when <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#switch-organizations-in-the-cloudflare-one-client">switching between organizations</a>.
-- Improvements to maintain client connectivity during network changes.
-
-**Known issues**
-
-- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum <a href="https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd">Windows 11 24H2 KB5062553</a> or higher for resolution.
-- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server">Route traffic to fallback server</a>.
-- Devices with KB5055523 installed may receive a warning about <code>Win32/ClickFix.ABA</code> being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to <a href="https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0">version 1.429.19.0</a> or later.
-- DNS resolution may be broken when the following conditions are all true:
-  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  - A custom DNS server address is configured on the primary network adapter.
-  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
-
-  To work around this issue, reconnect the WARP client by toggling off and back on.
-
-</details>
-
 </details>
 
 ## macOS
@@ -565,7 +527,7 @@ This hotfix resolves an issue where a small but noticeable percentage of DNS que
 
 <summary>
 
-Previous version history (11)
+Previous version history (10)
 
 </summary>
 
@@ -869,38 +831,6 @@ This release contains significant fixes and improvements.
 
 </details>
 
-<details>
-
-<summary>
-
-macOS 2025.7.176.0
-
-</summary>
-
-**Version:** macOS 2025.7.176.0**Date:** 2025-09-30**Size:** 109 MB
-
-<a href="https://downloads.cloudflareclient.com/v1/download/macos/version/2025.7.176.0">Download</a>
-
-#### Release notes
-
-This release contains minor fixes and improvements.
-
-**Changes and improvements**
-
-- Fixed a bug preventing the <code>warp-diag captive-portal</code> command from running successfully due to the client not parsing SSID on macOS.
-- Improvements to maintain <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices">Global WARP override</a> settings when <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#switch-organizations-in-the-cloudflare-one-client">switching between organizations</a>.
-- MASQUE is now the default <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol">tunnel protocol</a> for all new WARP device profiles.
-- Improvement to limit idle connections in <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode">Gateway with DoH mode</a> to avoid unnecessary resource usage that can lead to DoH requests not resolving.
-- Improvements to maintain client connectivity during network changes.
-- The WARP client now supports macOS Tahoe (version 26.0).
-
-**Known issues**
-
-- macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server">Route traffic to fallback server</a>.
-
-</details>
-
 </details>
 
 ## Linux
@@ -946,7 +876,7 @@ This hotfix resolves an issue where a small but noticeable percentage of DNS que
 
 <summary>
 
-Previous version history (12)
+Previous version history (11)
 
 </summary>
 
@@ -1298,37 +1228,6 @@ This release contains significant fixes and improvements including an updated pu
 
 - <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode">Proxy mode</a> has been enhanced for even faster resolution. Proxy mode now supports SOCKS4, SOCK5, and HTTP CONNECT over an L4 tunnel with custom congestion control optimizations instead of the previous L3 tunnel to Cloudflare's network. This has more than doubled Proxy mode throughput in lab speed testing, by an order of magnitude in some cases.
 - The MASQUE protocol is now the only protocol that can use <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode">Proxy mode</a>. If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new WARP mode or switch to the MASQUE protocol. Otherwise, all devices matching the profile will lose connectivity.
-
-**Known issues**
-
-- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server">Route traffic to fallback server</a>.
-
-</details>
-
-<details>
-
-<summary>
-
-Linux 2025.7.176.0
-
-</summary>
-
-**Version:** Linux 2025.7.176.0**Date:** 2025-09-30**Size:** 52.7 MB
-
-CentOS / RHEL 8 (arm64) CentOS / RHEL 8 (x86-64) Debian 11 (arm64) Debian 11 (x86-64) Debian 12 (arm64) Debian 12 (x86-64) Debian 13 (arm64) Debian 13 (x86-64) Fedora 34 (arm64) Fedora 34 (x86-64) Fedora 35 (arm64) Fedora 35 (x86-64) Ubuntu 20.04 (arm64) Ubuntu 20.04 (x86-64) Ubuntu 22.04 (arm64) Ubuntu 22.04 (x86-64) Ubuntu 24.04 (arm64) Ubuntu 24.04 (x86-64)
-
-<a href="https://downloads.cloudflareclient.com/v1/download/centos8-arm/version/2025.7.176.0">Download</a>
-
-#### Release notes
-
-This release contains minor fixes and improvements including an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025. Instructions to make this update are available at <a href="https://pkg.cloudflareclient.com/">pkg.cloudflareclient.com</a>.
-
-**Changes and improvements**
-
-- MASQUE is now the default <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#device-tunnel-protocol">tunnel protocol</a> for all new WARP device profiles.
-- Improvement to limit idle connections in <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#dns-only-mode">Gateway with DoH mode</a> to avoid unnecessary resource usage that can lead to DoH requests not resolving.
-- Improvements to maintain <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/settings/#disconnect-warp-on-all-devices">Global WARP override</a> settings when <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/deployment/mdm-deployment/switch-organizations/#switch-organizations-in-the-cloudflare-one-client">switching between organizations</a>.
-- Improvements to maintain client connectivity during network changes.
 
 **Known issues**
 

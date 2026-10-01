@@ -30342,6 +30342,29 @@ Fields:
 | <a id="suggestionedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="suggestionedge-node"></a>`node` | [`Suggestion`](#suggestion) | The item at the end of the edge. |
 
+#### `TagConnection`
+
+The connection type for [`Tag`](#tag).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="tagconnection-edges"></a>`edges` | [`[TagEdge]`](#tagedge) | A list of edges. |
+| <a id="tagconnection-nodes"></a>`nodes` | [`[Tag]`](#tag) | A list of nodes. |
+| <a id="tagconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `TagEdge`
+
+The edge type for [`Tag`](#tag).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="tagedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="tagedge-node"></a>`node` | [`Tag`](#tag) | The item at the end of the edge. |
+
 #### `TerraformStateConnection`
 
 The connection type for [`TerraformState`](#terraformstate).
@@ -35185,7 +35208,21 @@ Fields:
 | <a id="artifactregistryupstreamrepositorysummary-id"></a>`id`  | [`ID!`](#id) | Introduced in GitLab 19.5. Status: Experiment. ID of the upstream repository in Artifact Registry. |
 | <a id="artifactregistryupstreamrepositorysummary-kind"></a>`kind`  | [`ArtifactRegistryUpstreamRepositoryKind`](#artifactregistryupstreamrepositorykind) | Introduced in GitLab 19.5. Status: Experiment. How the upstream repository sources its artifacts. Artifact Registry returns `hosted` or `remote` by contract; a value outside those resolves `null` alongside a top-level error rather than a badge. |
 | <a id="artifactregistryupstreamrepositorysummary-name"></a>`name`  | [`String!`](#string) | Introduced in GitLab 19.5. Status: Experiment. Name of the upstream repository. |
+| <a id="artifactregistryupstreamrepositorysummary-settings"></a>`settings`  | [`ArtifactRegistryUpstreamRepositorySummarySettings`](#artifactregistryupstreamrepositorysummarysettings) | Introduced in GitLab 19.5. Status: Experiment. Upstream configuration of a remote upstream repository. Null on a hosted upstream, and when the current user cannot read the upstream repository. |
+| <a id="artifactregistryupstreamrepositorysummary-sizebytes"></a>`sizeBytes`  | [`BigInt`](#bigint) | Introduced in GitLab 19.5. Status: Experiment. Storage the upstream repository occupies, in bytes. Buffered, so it can lag. Null when the current user cannot read the upstream repository. |
 | <a id="artifactregistryupstreamrepositorysummary-userpermissions"></a>`userPermissions`  | [`ArtifactRegistryRepositoryPermissions!`](#artifactregistryrepositorypermissions) | Introduced in GitLab 19.5. Status: Experiment. Permissions Artifact Registry grants the current user on the upstream repository. Advisory, because Artifact Registry authorizes every request on its own. Every permission is `false` when Artifact Registry returned no verdicts. `upstreamRepositories` returns `null` when the `artifact_registry_ui` feature flag is disabled, so this block is not reached. |
+| <a id="artifactregistryupstreamrepositorysummary-visibility"></a>`visibility`  | [`ArtifactRegistryRepositoryVisibility`](#artifactregistryrepositoryvisibility) | Introduced in GitLab 19.5. Status: Experiment. Who can read the upstream repository. Null when the current user cannot read the upstream repository. A value outside this enum resolves `null` alongside a top-level error. |
+
+### `ArtifactRegistryUpstreamRepositorySummarySettings`
+
+Settings a remote upstream repository shows in the upstream list of a virtual Artifact Registry repository.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryupstreamrepositorysummarysettings-lasthealthstatus"></a>`lastHealthStatus`  | [`ArtifactRegistryHealthStatus`](#artifactregistryhealthstatus) | Introduced in GitLab 19.5. Status: Experiment. Health verdict the most recent probe of the upstream stored. `UNKNOWN` before the first probe, and for a status this schema does not recognize. |
+| <a id="artifactregistryupstreamrepositorysummarysettings-url"></a>`url`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Base URL of the upstream registry, in the canonical form Artifact Registry stores. |
 
 ### `ArtifactRegistryVersion`
 
@@ -45217,6 +45254,7 @@ Fields:
 | <a id="group-metadata"></a>`metadata`  | [`NamespaceMetadata`](#namespacemetadata) | Introduced in GitLab 18.6. Status: Experiment. Metadata information for the namespace. |
 | <a id="group-name"></a>`name` | [`String`](#string) | Name of the group. |
 | <a id="group-namespacesettings"></a>`namespaceSettings` | [`NamespaceSettings`](#namespacesettings) | Namespace settings for the namespace. |
+| <a id="group-orbittrial"></a>`orbitTrial`  | [`OrbitTrial`](#orbittrial) | Introduced in GitLab 19.5. Status: Experiment. Orbit trial state of the top-level group. Returns null when the CustomersDot request fails. This field can only be resolved for one group in any single request. |
 | <a id="group-organizationeditpath"></a>`organizationEditPath`  | [`String`](#string) | Introduced in GitLab 17.1. Status: Experiment. Path for editing group at the organization level. |
 | <a id="group-packagesettings"></a>`packageSettings` | [`PackageSettings`](#packagesettings) | Package settings for the namespace. |
 | <a id="group-parent"></a>`parent` | [`Group`](#group) | Parent group. |
@@ -47729,6 +47767,7 @@ Fields:
 | <a id="grouppermissions-readcrmcontact"></a>`readCrmContact` | [`Boolean!`](#boolean) | If `true`, the user can perform `read_crm_contact` on this resource. |
 | <a id="grouppermissions-readcrmorganization"></a>`readCrmOrganization` | [`Boolean!`](#boolean) | If `true`, the user can perform `read_crm_organization` on this resource. |
 | <a id="grouppermissions-readgroup"></a>`readGroup` | [`Boolean!`](#boolean) | If `true`, the user can perform `read_group` on this resource. |
+| <a id="grouppermissions-readorbittrial"></a>`readOrbitTrial`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. If `true`, the user can perform `read_orbit_trial` on this resource. |
 | <a id="grouppermissions-readproaianalytics"></a>`readProAiAnalytics`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. If `true`, the user can perform `read_pro_ai_analytics` on this resource. |
 | <a id="grouppermissions-readrunnercloudprovisioninginfo"></a>`readRunnerCloudProvisioningInfo`  | [`Boolean!`](#boolean) | Introduced in GitLab 18.8. Status: Experiment. If `true`, the user can perform `read_runner_cloud_provisioning_info` on this resource. |
 | <a id="grouppermissions-readsecurityscanprofiles"></a>`readSecurityScanProfiles`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. If `true`, the user can perform `read_security_scan_profiles` on the top-level namespace of this resource. Security scan profiles belong to the top-level namespace, so this ability is evaluated on the root ancestor rather than on this resource. |
@@ -53132,6 +53171,29 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="oncallrotationactiveperiodtype-endtime"></a>`endTime` | [`String`](#string) | End of the rotation active period. |
 | <a id="oncallrotationactiveperiodtype-starttime"></a>`startTime` | [`String`](#string) | Start of the rotation active period. |
+
+### `OrbitTrial`
+
+Orbit trial of a top-level group, as reported by CustomersDot.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="orbittrial-credits"></a>`credits`  | [`OrbitTrialCredits`](#orbittrialcredits) | Introduced in GitLab 19.5. Status: Experiment. Credits of the trial. |
+| <a id="orbittrial-expireson"></a>`expiresOn`  | [`Date`](#date) | Introduced in GitLab 19.5. Status: Experiment. Last day of the trial, in UTC. Null before a trial starts. |
+| <a id="orbittrial-state"></a>`state`  | [`OrbitTrialState!`](#orbittrialstate) | Introduced in GitLab 19.5. Status: Experiment. State of the trial. |
+
+### `OrbitTrialCredits`
+
+Credits of an Orbit trial.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="orbittrialcredits-remaining"></a>`remaining`  | [`Float`](#float) | Introduced in GitLab 19.5. Status: Experiment. Number of trial credits remaining. |
+| <a id="orbittrialcredits-total"></a>`total`  | [`Float`](#float) | Introduced in GitLab 19.5. Status: Experiment. Number of credits the trial started with. |
 
 ### `Organization`
 
@@ -59381,6 +59443,26 @@ Arguments:
 | <a id="repository-paginatedtree-recursive"></a>`recursive` | [`Boolean`](#boolean) | Used to get a recursive tree. Default is false. |
 | <a id="repository-paginatedtree-ref"></a>`ref` | [`String`](#string) | Commit ref to get the tree for. Default value is HEAD. |
 | <a id="repository-paginatedtree-reftype"></a>`refType` | [`RefType`](#reftype) | Type of ref. |
+
+##### `Repository.tags`
+
+- Introduced in GitLab 19.5.
+- Status: Experiment.
+
+Tags in the repository.
+
+Returns [`TagConnection`](#tagconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="repository-tags-search"></a>`search` | [`String`](#string) | Filter tags by name. Supports `^` for prefix, `$` for suffix, and `*` as a wildcard. |
+| <a id="repository-tags-sort"></a>`sort` | [`TagSort`](#tagsort) | Sort tags by the criteria. Defaults to `UPDATED_DESC`. |
 
 ##### `Repository.tree`
 
@@ -69719,6 +69801,17 @@ Enum defining the type of OpenTelemetry metric.
 | <a id="opentelemetrymetrictype-histogram_type"></a>`HISTOGRAM_TYPE` | Histogram Type type. |
 | <a id="opentelemetrymetrictype-sum_type"></a>`SUM_TYPE` | Sum Type type. |
 
+### `OrbitTrialState`
+
+State of the Orbit trial for a top-level group.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="orbittrialstate-active"></a>`ACTIVE`  | Introduced in GitLab 19.5. Status: Experiment. Trial is active. |
+| <a id="orbittrialstate-eligible"></a>`ELIGIBLE`  | Introduced in GitLab 19.5. Status: Experiment. Group can start a trial. |
+| <a id="orbittrialstate-ended"></a>`ENDED`  | Introduced in GitLab 19.5. Status: Experiment. Trial expired or used all its credits. |
+| <a id="orbittrialstate-not_eligible"></a>`NOT_ELIGIBLE`  | Introduced in GitLab 19.5. Status: Experiment. Group cannot start a trial. |
+
 ### `OrganizationClusterAgentFilter`
 
 Possible filter types for remote development cluster agents in an organization.
@@ -70945,6 +71038,19 @@ Status of the subscription to an issuable.
 | ----- | ----------- |
 | <a id="subscriptionstatus-explicitly_subscribed"></a>`EXPLICITLY_SUBSCRIBED` | User is explicitly subscribed to the issuable. |
 | <a id="subscriptionstatus-explicitly_unsubscribed"></a>`EXPLICITLY_UNSUBSCRIBED` | User is explicitly unsubscribed from the issuable. |
+
+### `TagSort`
+
+Values for sorting repository tags.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="tagsort-name_asc"></a>`NAME_ASC` | Name by ascending order. |
+| <a id="tagsort-name_desc"></a>`NAME_DESC` | Name by descending order. |
+| <a id="tagsort-updated_asc"></a>`UPDATED_ASC` | Tag creation date by ascending order. |
+| <a id="tagsort-updated_desc"></a>`UPDATED_DESC` | Tag creation date by descending order. |
+| <a id="tagsort-version_asc"></a>`VERSION_ASC` | Semantic version by ascending order. |
+| <a id="tagsort-version_desc"></a>`VERSION_DESC` | Semantic version by descending order. |
 
 ### `TerraformStateProtectionRuleAccessLevel`
 

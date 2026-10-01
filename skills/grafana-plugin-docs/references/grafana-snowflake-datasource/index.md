@@ -73,11 +73,11 @@ The Snowflake data source plugin includes the following pre-built dashboards:
 
 Expand table
 
-| Dashboard        | Description                                                               |
-|------------------|---------------------------------------------------------------------------|
-| Billing          | Monitor Snowflake billing and credit usage. Requires `ACCOUNTADMIN` role. |
-| Logs             | View and analyze Snowflake query logs.                                    |
-| Snowpark Metrics | Track Snowpark container services metrics.                                |
+| Dashboard                     | Description                                                               |
+|-------------------------------|---------------------------------------------------------------------------|
+| Snowflake Billing &amp; Usage | Monitor Snowflake billing and credit usage. Requires `ACCOUNTADMIN` role. |
+| Logs Example                  | View and analyze Snowflake query logs.                                    |
+| Snowpark Metrics              | Track Snowpark container services metrics.                                |
 
 To import a pre-built dashboard:
 
@@ -91,7 +91,7 @@ For more information, refer to [Import a dashboard](/docs/grafana/latest/dashboa
 
 ## Plugin updates
 
-To update the plugin on a self-hosted Grafana instance, refer to [Update a plugin](/docs/grafana/latest/administration/plugin-management/#update-a-plugin).
+To update the plugin on a self-managed Grafana instance, refer to [Update a plugin](/docs/grafana/latest/administration/plugin-management/#update-a-plugin).
 
 > Note
 >

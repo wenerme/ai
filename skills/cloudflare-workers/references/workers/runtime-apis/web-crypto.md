@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/runtime-apis/web-crypto/og.png?
 
 # Web Crypto
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/web-crypto/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/web-crypto/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Background
 
@@ -349,6 +349,20 @@ A checkmark (✓) indicates that this feature is believed to be fully supported 
    - The algorithm implementation may change over time. While Cloudflare cannot guarantee it at this time, Cloudflare will strive to maintain backward compatibility and compatibility with NodeJS's behavior. Any notable compatibility notes will be communicated in release notes and via this developer documentation.
 3. MD5 is not part of the WebCrypto standard but is supported in Cloudflare Workers for interacting with legacy systems that require MD5. MD5 is considered a weak algorithm. Do not rely upon MD5 for security.
 
+#### Modern algorithms
+
+The [`webcrypto_modern_algorithms` compatibility flag](https://developers.cloudflare.com/workers/configuration/compatibility-flags/#web-crypto-modern-algorithms) enables a subset of the evolving [Modern Algorithms in the Web Cryptography API ↗︎](https://wicg.github.io/webcrypto-modern-algos/) draft.
+
+| Algorithm | sign()<br>verify() | encapsulateKey()<br>encapsulateBits()<br>decapsulateKey()<br>decapsulateBits() | generateKey() | exportKey() | importKey() |
+| --- | --- | --- | --- | --- | --- |
+| ML-DSA-44, ML-DSA-65, and ML-DSA-87 | ✓ |  | ✓ | ✓ | ✓ |
+| ML-KEM-768 and ML-KEM-1024 |  | ✓ | ✓ | ✓ | ✓ |
+| ML-KEM-512 |  | ✘ | ✘ | ✘ | ✘ |
+
+The flag also adds `getPublicKey()` and `SubtleCrypto.supports()`. It supports JSON Web Keys (JWKs) with the `AKP` key type.
+
+Workers does not implement other algorithms from the draft. This API may change as the draft evolves.
+
 ---
 
 ## Related resources
@@ -366,5 +380,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/web-crypto/#page","headline":"Web Crypto","description":"A set of low-level functions for common cryptographic tasks.","url":"https://developers.cloudflare.com/workers/runtime-apis/web-crypto/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/web-crypto/og.png?v=6ad0cbc1a2ead550","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/web-crypto/#page","headline":"Web Crypto","description":"A set of low-level functions for common cryptographic tasks.","url":"https://developers.cloudflare.com/workers/runtime-apis/web-crypto/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/web-crypto/og.png?v=6ad0cbc1a2ead550","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

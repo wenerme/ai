@@ -42,6 +42,56 @@ Latest release
 
 </summary>
 
+**Version:** Windows 2026.8.2033.1**Date:** 2026-09-30**Size:** 60.1 MB
+
+<a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.8.2033.1">Download</a>
+
+#### Release notes
+
+This beta release includes the following changes and improvements:
+
+- Fixed an issue that could briefly block traffic to split tunnel excluded resources while the client was connecting or reconnecting.
+- Improved reauthentication reliability and fixed an issue where a reauthentication could force a new registration.
+- Improved client reaction to the current network lowering its MTU.
+- Added support for routing non-RFC 1918 local IPv4 networks through the WARP tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
+- Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
+- Improved API reliability by retrying requests dropped when reusing pooled connections.
+- The client no longer requires the Windows WLAN AutoConfig service to be running.
+- Implemented a service recovery mechanism backed by Windows scheduler task to start WARP service on system unlock if not already started.
+- Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
+- Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
+- Fixed the client continuing to report 'No network' after a successful manual disconnect.
+- Fixed Digital Experience Monitoring (DEX) HTTP tests failing TLS validation on Windows.
+- Fixed the client UI crashing at startup when it could not write to the Windows registry.
+- Fixed latency spikes and traffic interruptions during TPM-backed API authentication when hardware-backed registration is enabled.
+- Fixed trailing whitespace in BIOS serial numbers causing serial-number and client-certificate device posture checks to fail.
+- Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
+- Fixed a startup crash when date formatting data for the system locale had not yet loaded.
+
+**Known issues**
+
+- None
+
+For Zero Trust documentation, see: <a href="https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/">https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/</a> For Consumer documentation, see: <a href="https://developers.cloudflare.com/warp-client/">https://developers.cloudflare.com/warp-client/</a>
+
+</details>
+
+<details>
+
+<summary>
+
+Previous version history (9)
+
+</summary>
+
+<details>
+
+<summary>
+
+Windows 2026.8.2028.1
+
+</summary>
+
 **Version:** Windows 2026.8.2028.1**Date:** 2026-09-29**Size:** 60.1 MB
 
 <a href="https://downloads.cloudflareclient.com/v1/download/windows/version/2026.8.2028.1">Download</a>
@@ -73,14 +123,6 @@ This beta release includes the following changes and improvements:
 - None
 
 </details>
-
-<details>
-
-<summary>
-
-Previous version history (8)
-
-</summary>
 
 <details>
 

@@ -5,7 +5,7 @@ description: "Browse Vivgrid model IDs, capabilities, context windows, and prici
 
 # [Vivgrid logo]Vivgrid
 
-Access 34 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
+Access 36 Vivgrid models through Mastra's model router. Authentication is handled automatically using the `VIVGRID_API_KEY` environment variable.
 
 Learn more in the [Vivgrid documentation](https://docs.vivgrid.com/models).
 
@@ -89,6 +89,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "vivgrid/claude-sonnet-5",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "vivgrid/claude-sonnet-5-5",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,
@@ -413,6 +425,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "vivgrid/gpt-6-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "vivgrid/gpt-6.1-sol",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

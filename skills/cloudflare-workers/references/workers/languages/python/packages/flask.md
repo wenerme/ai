@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/languages/python/packages/flask
 
 # Flask
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/flask/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/languages/python/packages/flask/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Flask ↗︎](https://flask.palletsprojects.com/) is supported in Python Workers.
 
@@ -52,7 +52,7 @@ Use this quick start to run a minimal Flask application.
      "name": "my-flask-worker",
      "main": "src/worker.py",
      // Set this to today's date
-     "compatibility_date": "2026-09-28",
+     "compatibility_date": "2026-10-01",
      "compatibility_flags": ["python_workers"]
    }
    ```
@@ -62,7 +62,7 @@ Use this quick start to run a minimal Flask application.
    name = "my-flask-worker"
    main = "src/worker.py"
    # Set this to today's date
-   compatibility_date = "2026-09-28"
+   compatibility_date = "2026-10-01"
    compatibility_flags = [ "python_workers" ]
    ```
 
@@ -115,7 +115,7 @@ Use this quick start to run a minimal Flask application.
 
 You can serve any static frontend alongside your flask backend by using [Workers Static Assets](https://developers.cloudflare.com/workers/static-assets/). Using Static Assets means your frontend files are not bundled inside the Worker itself, keeping the bundle small.
 
-Place your static files in a directory such as `./public/`. Then configure your Wrangler file with an `assets` block that includes a `binding` and sets `run_worker_first` to `true`. This ensures every request reaches your FastAPI Worker first, so your API routes take priority over static files.
+Place your static files in a directory such as `./public/`. Then configure your Wrangler file with an `assets` block that includes a `binding` and sets `run_worker_first` to `true`. This ensures every request reaches your Flask Worker first, so your API routes take priority over static files.
 
 ```jsonc
 {
@@ -123,7 +123,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
   "name": "my-flask-worker",
   "main": "src/worker.py",
   // Set this to today's date
-  "compatibility_date": "2026-09-28",
+  "compatibility_date": "2026-10-01",
   "compatibility_flags": ["python_workers"],
   "assets": {
     "directory": "./public/",
@@ -138,7 +138,7 @@ Place your static files in a directory such as `./public/`. Then configure your 
 name = "my-flask-worker"
 main = "src/worker.py"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-01"
 compatibility_flags = [ "python_workers" ]
 
 [assets]
@@ -202,5 +202,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/packages/flask/#page","headline":"Flask","description":"Run Flask applications in Python Workers.","url":"https://developers.cloudflare.com/workers/languages/python/packages/flask/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/languages/python/packages/flask/og.png?v=99b9d57b4e7dd3b9","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/languages/python/packages/flask/#page","headline":"Flask","description":"Run Flask applications in Python Workers.","url":"https://developers.cloudflare.com/workers/languages/python/packages/flask/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/languages/python/packages/flask/og.png?v=99b9d57b4e7dd3b9","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

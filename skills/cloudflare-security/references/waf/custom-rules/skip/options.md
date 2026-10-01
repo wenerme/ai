@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/custom-rules/skip/options/og.png?v=
 
 # Available skip options
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/skip/options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/custom-rules/skip/options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The following sections cover the available skip options in custom rules.
 
@@ -71,9 +71,7 @@ The API values in the table are case-sensitive.
 - Dashboard option: N/A (currently only available via API)
 - API action parameter: `phase`
 
-Skips all the remaining rules in the current phase. If used in a custom ruleset (at the zone level), it will skip all remaining rules in the custom ruleset, as well as all later rules in the entry point ruleset where the rule executing the custom ruleset was defined.
-
-Currently, this option is only available at the zone level for the `http_request_firewall_custom` phase. You can use it in custom rulesets or entry point rulesets.
+The `phase: "current"` option is supported only in zone-level custom and entry point rulesets for the `http_request_firewall_custom` phase. When matched, it skips all remaining rules in the phase, including rules in custom rulesets executed later.
 
 ## Other options
 
@@ -95,5 +93,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/skip/options/#page","headline":"Available skip options","description":"Available skip options for WAF custom rules.","url":"https://developers.cloudflare.com/waf/custom-rules/skip/options/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/custom-rules/skip/options/og.png?v=8884b927a724d371","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/custom-rules/skip/options/#page","headline":"Available skip options","description":"Available skip options for WAF custom rules.","url":"https://developers.cloudflare.com/waf/custom-rules/skip/options/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/custom-rules/skip/options/og.png?v=8884b927a724d371","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/logs/faq/general-faq/og.png?v=c89229b91
 
 # General FAQ
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/faq/general-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/logs/faq/general-faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [❮ Back to FAQ](https://developers.cloudflare.com/logs/faq/)
 
@@ -26,7 +26,7 @@ These timings are only a guideline, not a guarantee, and may depend on network c
 
 ### Are logs available for customers who are not on an Enterprise plan?
 
-Not yet, but we are planning to make them available to other customer plans in the future.
+Yes. Logpush is available on Free, Pro, Business, and Enterprise plans. Available datasets depend on the products enabled on your account. For more information, refer to [Logpush pricing](https://developers.cloudflare.com/logs/logpush/pricing/). The legacy Logpull API remains available only on the Enterprise plan.
 
 ### When pulling or pushing logs, I occasionally come across a time period with no data, even though I am sure my domain received requests at that time. Is this an expected behavior?
 
@@ -53,5 +53,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/faq/general-faq/#page","headline":"General FAQ","description":"Review frequently asked questions about Cloudflare Logs.","url":"https://developers.cloudflare.com/logs/faq/general-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/faq/general-faq/og.png?v=c89229b91ad75af8","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/logs/faq/general-faq/#page","headline":"General FAQ","description":"Review frequently asked questions about Cloudflare Logs.","url":"https://developers.cloudflare.com/logs/faq/general-faq/","inLanguage":"en","image":"https://developers.cloudflare.com/logs/faq/general-faq/og.png?v=c89229b91ad75af8","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

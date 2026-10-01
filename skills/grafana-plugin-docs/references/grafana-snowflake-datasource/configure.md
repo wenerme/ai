@@ -21,7 +21,7 @@ Before configuring the data source, ensure you have:
   - This data source does not require a specific role.
   - The Snowflake user’s role is what allows that user to access tables. To query your data, ensure your user has the appropriate roles.
 - **Grafana license:** One of the following:
-- Any free or paid [Grafana Cloud](/pricing/) plan or an [activated on-prem Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). Contracted Cloud customers should refer to their agreement.
+- A [Grafana Cloud](/pricing/) plan that includes Enterprise plugins, or an [activated self-managed Grafana Enterprise license](/docs/grafana/latest/enterprise/license/activate-license/). The Snowflake data source is an Enterprise plugin, so a generic `Plugin health check failed` error usually indicates a license or entitlement problem rather than a configuration problem. For help, refer to [License errors](/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/#license-errors). Contracted Cloud customers should refer to their agreement.
 
 ## Add the data source
 
@@ -35,11 +35,11 @@ To add the Snowflake data source:
 4. Select the Snowflake data source.
 5. Click **Add new data source** in the upper right.
 
-Grafana takes you to the **Settings** tab, where you will set up your Snowflake configuration.
+Grafana takes you to the **Settings** tab, where you set up your Snowflake configuration.
 
 ## Configure Snowflake
 
-Configuring the Snowflake data source requires a Snowflake user with a username and a password.
+Configuring the Snowflake data source requires a Snowflake user that Grafana uses to run queries.
 
 Grafana recommends creating a new user with limited permissions for this data source.
 
@@ -69,29 +69,50 @@ The following table describes the available configuration options:
 
 Expand table
 
-| Field                      | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-|----------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Name**                   | A name for this particular Snowflake data source.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| **Account**                | The name of the Snowflake account assigned by Snowflake. In the URL received from Snowflake after the account was provisioned, the account name is the *entire* string to the left of `snowflakecomputing.com`. If the Snowflake instance is not on `us-west-2`, then the region must be included in the account name. Example: `xyz123.us-east-1`. If the Snowflake instance is not on Amazon Web Services, then the platform must also be included in the account name. Example: `xyz123.us-east-1.gcp`. |
-| **Region**                 | **Deprecated in favor of Account**. Region specifies the region where the Snowflake instance lives.                                                                                                                                                                                                                                                                                                                                                                                                        |
-| **Username**               | The username of the account that will query Snowflake.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| **Authentication Type**    | Authentication type. One of: password, key pair, OAuth, or programmatic access token (PAT).                                                                                                                                                                                                                                                                                                                                                                                                                |
-| **Password**               | The password of the account that will query Snowflake.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| **Private Key**            | The RSA private key for Key Pair authentication. Accepts both unencrypted and encrypted keys.                                                                                                                                                                                                                                                                                                                                                                                                              |
-| **Private Key Passphrase** | The passphrase used to decrypt an encrypted private key. Leave empty if your private key is unencrypted.                                                                                                                                                                                                                                                                                                                                                                                                   |
-| **Token**                  | The programmatic access token secret used when PAT authentication is selected.                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| **Role**                   | This option allows users to connect to the Snowflake instance using a role that is not the default for the user. The role must still be granted to the user using the [`GRANT ROLE`](https://docs.snowflake.com/en/sql-reference/sql/grant-role.html) command.                                                                                                                                                                                                                                             |
-| **Warehouse**              | The warehouse to use by default for queries.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| **Database**               | The database to use by default for queries.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| **Schema**                 | The schema to use by default for queries.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| **TimeInterval**           | Optional. The lower limit for the `$__interval` and `$__interval_ms` macros. Default: `10s`.                                                                                                                                                                                                                                                                                                                                                                                                               |
-| **Default Query**          | Optional. Default query to be used when adding a new Snowflake query to the panel.                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| **Default Variable Query** | Optional. Default query to be used when adding a new Snowflake query to the dashboard variable.                                                                                                                                                                                                                                                                                                                                                                                                            |
-| **Row Limit**              | Optional. Limits the maximum number of rows read from query results (applied by the plugin, not in the database). If unset, falls back to environment variable `GF_DATAPROXY_ROW_LIMIT`, or unlimited if not set.                                                                                                                                                                                                                                                                                          |
+| Field                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+|-----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Name**                          | A name for this particular Snowflake data source.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **Account**                       | The name of the Snowflake account assigned by Snowflake. In the URL received from Snowflake after the account was provisioned, the account name is the *entire* string to the left of `snowflakecomputing.com`. If the Snowflake instance is not on `us-west-2`, then the region must be included in the account name. Example: `xyz123.us-east-1`. If the Snowflake instance is not on Amazon Web Services, then the platform must also be included in the account name. Example: `xyz123.us-east-1.gcp`. |
+| **Region**                        | **Deprecated in favor of Account**. Region specifies the region where the Snowflake instance lives.                                                                                                                                                                                                                                                                                                                                                                                                        |
+| **Authentication Type**           | Authentication type. One of: password, key pair, OAuth, or programmatic access token (PAT).                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Username**                      | The username of the account that queries Snowflake.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| **Password**                      | The password of the account that queries Snowflake.                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| **Private key**                   | The RSA private key for Key Pair authentication. Accepts both unencrypted and encrypted keys.                                                                                                                                                                                                                                                                                                                                                                                                              |
+| **Private key passphrase**        | The passphrase used to decrypt an encrypted private key. Leave empty if your private key is unencrypted.                                                                                                                                                                                                                                                                                                                                                                                                   |
+| **Token**                         | The programmatic access token secret used when PAT authentication is selected.                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **Forward OAuth Identity**        | Optional. Appears when the authentication type is OAuth. When enabled, Grafana forwards the signed-in user’s OAuth access token to Snowflake.                                                                                                                                                                                                                                                                                                                                                              |
+| **Role**                          | This option allows users to connect to the Snowflake instance using a role that is not the default for the user. The role must still be granted to the user using the [`GRANT ROLE`](https://docs.snowflake.com/en/sql-reference/sql/grant-role.html) command.                                                                                                                                                                                                                                             |
+| **Warehouse**                     | The warehouse to use by default for queries.                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **Database**                      | The database to use by default for queries.                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| **Schema**                        | The schema to use by default for queries.                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| **Min Interval**                  | Optional. The lower limit for the `$__interval` and `$__interval_ms` macros. Default: `10s`.                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **Row Limit**                     | Optional. Limits the maximum number of rows read from query results (applied by the plugin, not in the database). If unset, falls back to environment variable `GF_DATAPROXY_ROW_LIMIT`, or unlimited if not set.                                                                                                                                                                                                                                                                                          |
+| **Connection Timeout (sec)**      | Optional. The maximum time, in seconds, to wait when establishing a connection to Snowflake. Default: `5`. The configuration form limits this field to `120`.                                                                                                                                                                                                                                                                                                                                              |
+| **Request Timeout (sec)**         | Optional. The maximum time, in seconds, to wait for a query to complete. Default: `120`. Increase this value using provisioning if long-running queries or alert rule evaluations time out. The configuration form limits this field to `120`.                                                                                                                                                                                                                                                             |
+| **Variable Interpolation Format** | Optional. The default variable interpolation format applied to template variables that don’t specify an explicit format. For example, `sqlstring`.                                                                                                                                                                                                                                                                                                                                                         |
+| **Default Query**                 | Optional. Default query to be used when adding a new Snowflake query to the panel.                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| **Default Variable Query**        | Optional. Default query to be used when adding a new Snowflake query to the dashboard variable.                                                                                                                                                                                                                                                                                                                                                                                                            |
+
+### Session parameters
+
+In the **Connection settings** section, you can add Snowflake session parameters as key/value pairs that apply to every query the data source runs. Select the lock icon next to a value to store it as a secure (encrypted) setting. For the list of available parameters, refer to the [Snowflake session parameters documentation](https://docs.snowflake.com/en/sql-reference/parameters.html#session-parameters).
+
+When provisioning, define session parameters in the `settings` array within `jsonData`. Each entry has a `name`, an optional `value`, and a `secure` flag. Store the values of secure parameters in `secureJsonData` under the same `name`.
 
 ## Authentication
 
 The Snowflake data source supports the following authentication methods.
+
+Expand table
+
+| Method                              | Best for                                                             | Grafana Cloud | Supports alerting | Server configuration required |
+|-------------------------------------|----------------------------------------------------------------------|---------------|-------------------|-------------------------------|
+| **Password**                        | General use and quick setup                                          | Yes           | Yes               | No                            |
+| **Key Pair**                        | Enhanced security and service accounts                               | Yes           | Yes               | No                            |
+| **Programmatic Access Token (PAT)** | Service accounts and automated workflows where OAuth isn’t available | Yes           | Yes               | No                            |
+| **OAuth**                           | Passing each Grafana user’s identity through to Snowflake            | No            | No                | Yes                           |
+
+OAuth pass-through relies on the identity of the user signed in to Grafana. Because backend-run queries such as alert rule evaluations have no signed-in user, OAuth can’t be used for alerting. OAuth also requires server-side configuration in `grafana.ini`, so it isn’t available on Grafana Cloud.
 
 ### Password authentication
 
@@ -111,8 +132,8 @@ To configure Key Pair authentication:
 2. Update the `rsa_public_key` in Snowflake for your user.
 3. In Grafana, set **Authentication Type** to **Key Pair**.
 4. Enter the **Username**.
-5. Paste the full contents of your private key file into the **Private Key** field.
-6. If your private key is encrypted, enter the passphrase you used when generating it in the **Private Key Passphrase** field. Leave this field empty for unencrypted keys.
+5. Paste the full contents of your private key file into the **Private key** field.
+6. If your private key is encrypted, enter the passphrase you used when generating it in the **Private key passphrase** field. Leave this field empty for unencrypted keys.
 7. Click **Save &amp; test** to verify the connection.
 
 ### OAuth authentication
@@ -122,7 +143,7 @@ You can use OAuth authentication to pass through tokens to Snowflake on behalf o
 The following instructions use Azure AD as the OAuth provider:
 
 1. Use Azure AD to [set up OAuth](/docs/grafana/latest/setup-grafana/configure-security/configure-authentication/azuread/).
-2. Follow [these instructions](https://community.snowflake.com/s/article/External-oAuth-Token-Generation-using-Azure-AD) to update the application you created in step 1, and add a client application for Snowflake.
+2. Follow the Snowflake guide to [Configure Microsoft Entra ID for External OAuth](https://docs.snowflake.com/en/user-guide/oauth-azure) to update the application you created in step 1 and add a client application for Snowflake.
 3. Update the *scopes* you created in step 1 in your `grafana.ini` file. Add the API you created in step 2. The scopes should look something like:
 
    ini [Copy code to clipboard] Copy
@@ -136,7 +157,7 @@ The following instructions use Azure AD as the OAuth provider:
 
 #### Troubleshoot OAuth token errors
 
-If you get an invalid token error, step 2 instructions provide ways to validate the token which will provide additional information on why it is invalid:
+If you get an invalid token error, validate the token to get more information about why it’s invalid. Run the following query in Snowflake:
 
 SQL [Copy code to clipboard] Copy
 
@@ -148,9 +169,8 @@ select system$verify_external_oauth_token('<ACCESS_TOKEN>');
 
 For more information about OAuth authentication with Snowflake, refer to the following resources:
 
-- [Azure OAuth - On behalf of user flow](https://docs.snowflake.com/en/user-guide/oauth-azure)
-- [Testing with Postman](https://community.snowflake.com/s/article/How-To-Configure-Postman-for-testing-SQL-API-with-OAuth)
-- [Set up a Snowflake security integration](https://community.snowflake.com/s/article/Create-Security-Integration-User-To-Use-With-OAuth-Client-Token-With-Azure-AD)
+- [Introduction to External OAuth](https://docs.snowflake.com/en/user-guide/oauth-ext-overview)
+- [Configure Microsoft Entra ID for External OAuth](https://docs.snowflake.com/en/user-guide/oauth-azure)
 
 ### Programmatic Access Token (PAT) authentication
 
@@ -172,11 +192,19 @@ Click **Save &amp; test** to verify the connection. If successful, you should se
 
 If you don’t see this message, refer to the [Troubleshooting](/docs/plugins/grafana-snowflake-datasource/latest/troubleshooting/) guide for help.
 
+## Private data source connect
+
+If your Snowflake instance is only reachable from within a private network, Grafana Cloud users can connect to it using Private data source connect (PDC). PDC establishes a secured connection between your Grafana Cloud stack and data sources secured within a private network. It works with all of the authentication methods this data source supports.
+
+For setup instructions, refer to [Private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/) and [Configure Grafana private data source connect (PDC)](/docs/grafana-cloud/connect-externally-hosted/private-data-source-connect/configure-pdc/).
+
+After you set up a PDC connection, select your PDC network from the **Private data source connect** drop-down when you configure the Snowflake data source, then click **Save &amp; test**.
+
 ## Provision the data source
 
-You can define the data source in YAML files as part of Grafana’s provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
+You can define the data source in YAML files as part of the Grafana provisioning system. For more information, refer to [Provisioning Grafana](/docs/grafana/latest/administration/provisioning/#data-sources).
 
-### Provisioning example
+### Provision with password authentication
 
 YAML [Copy code to clipboard] Copy
 
@@ -202,7 +230,7 @@ datasources:
       password: <YOUR_PASSWORD>
 ```
 
-### Provisioning example with ACCOUNTADMIN role
+### Provision with the ACCOUNTADMIN role
 
 For the Billing dashboard, you need a data source with the `ACCOUNTADMIN` role:
 
@@ -234,7 +262,7 @@ datasources:
 
 Replace `<YOUR_PASSWORD>` with your actual Snowflake password.
 
-### Provisioning example with encrypted Key Pair authentication
+### Provision with encrypted Key Pair authentication
 
 YAML [Copy code to clipboard] Copy
 
@@ -261,7 +289,7 @@ datasources:
       privateKeyPassphrase: <YOUR_PASSPHRASE>
 ```
 
-### Provisioning example with Programmatic Access Token (PAT) authentication
+### Provision with Programmatic Access Token (PAT) authentication
 
 YAML [Copy code to clipboard] Copy
 
@@ -322,7 +350,7 @@ variable "grafana_auth" {
 }
 
 variable "snowflake_account" {
-  description = "Snowflake account identifier (e.g., xyz123.us-east-1)"
+  description = "Snowflake account identifier (for example, xyz123.us-east-1)"
   type        = string
 }
 
