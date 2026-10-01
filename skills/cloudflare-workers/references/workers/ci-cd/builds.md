@@ -12,11 +12,13 @@ image: https://developers.cloudflare.com/workers/ci-cd/builds/og.png?v=e9f386e1e
 
 # Builds
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/ci-cd/builds/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The Cloudflare [Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/) lets you connect a new or existing Worker to a GitHub or GitLab repository, enabling automated builds and deployments for your Worker on push.
+The Cloudflare [Git integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/) lets you connect a new or existing Worker to a repository hosted by Artifacts, GitHub, or GitLab, enabling automated builds and deployments for your Worker on push.
 
 ## Get started
+
+To connect a repository hosted in Artifacts, refer to the [Artifacts integration](https://developers.cloudflare.com/workers/ci-cd/builds/git-integration/artifacts-integration/).
 
 ### Connect a new Worker
 
@@ -48,6 +50,8 @@ When connecting a repository to a Workers project, the Worker name in the Cloudf
 
 When you connect a repository that does not have a Wrangler configuration file, [autoconfig](https://developers.cloudflare.com/workers/framework-guides/automatic-configuration/) runs to detect your framework and create a [pull request](https://developers.cloudflare.com/workers/ci-cd/builds/automatic-prs/) to configure your project for Cloudflare Workers.
 
+Artifacts does not provide this automatic pull request workflow. Prepare the source code and project configuration before you connect an Artifacts repository.
+
 1. Autoconfig detects your framework and generates the necessary configuration
 2. A pull request is created in your repository with the necessary configuration changes
 3. A preview deployment is generated so you can test before merging
@@ -62,7 +66,7 @@ You can monitor a build's status and its build logs by navigating to **View buil
 A successful build produces different output depending on the branch:
 
 - Production branch builds create a new [version](https://developers.cloudflare.com/workers/versions-and-deployments/) under Version History. If the build is configured to deploy, that version is promoted to the Active Deployment.
-- Preview builds create or update a [Preview](https://developers.cloudflare.com/workers/previews/). Preview builds run for branches that are not your production branch. The Preview URL is posted as a pull request comment and can also be found in the Previews section of your Worker.
+- Preview builds create or update a [Preview](https://developers.cloudflare.com/workers/previews/). Preview builds run for branches that are not your production branch. Find the Preview URL in the **Previews** section of your Worker. Supported external providers can also post the URL as a pull request comment.
 
 To configure Preview settings such as variables, secrets, bindings, custom domains, or resource isolation, refer to [Previews](https://developers.cloudflare.com/workers/previews/).
 
@@ -76,7 +80,7 @@ For Workers that use [Containers](https://developers.cloudflare.com/containers/)
 
 ## Disconnecting builds
 
-To disconnect a Worker from a GitHub or GitLab repository:
+To disconnect a Worker from a repository:
 
 1. In the Cloudflare dashboard, go to the **Workers & Pages** page. [Go to **Workers & Pages** ↗](https://dash.cloudflare.com/?to=/:account/workers-and-pages)
 2. Select the Worker you want to disconnect from a repository.
@@ -100,5 +104,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/#page","headline":"Builds","description":"Use Workers Builds to integrate with Git and automatically build and deploy your Worker when pushing a change","url":"https://developers.cloudflare.com/workers/ci-cd/builds/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/og.png?v=e9f386e1edcba7e0","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/ci-cd/builds/#page","headline":"Builds","description":"Use Workers Builds to integrate with Git and automatically build and deploy your Worker when pushing a change","url":"https://developers.cloudflare.com/workers/ci-cd/builds/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/ci-cd/builds/og.png?v=e9f386e1edcba7e0","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

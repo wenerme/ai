@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/configuration/data-source/og.
 
 # Data source
 
-Last updated Aug 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/configuration/data-source/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 You can upload files directly to an instance or connect an external data source.
 
@@ -30,9 +30,9 @@ AI Search can ingest a variety of file types. The following plain text files and
 
 ### Plain text file types
 
-| Format | File extensions | Mime Type |
+| Format | File extensions | MIME type |
 | --- | --- | --- |
-| Text | `.txt`, `.rst` | `text/plain` |
+| Text | `.txt`, `.rst` | `text/plain`, `text/x-rst` |
 | Log | `.log`, `.log.gz` | `text/plain` |
 | Config | `.ini`, `.conf`, `.env`, `.properties`, `.gitignore`, `.editorconfig`, `.toml` | `text/plain`, `text/toml` |
 | Markdown | `.markdown`, `.md`, `.mdx`, `.mdoc` | `text/markdown` |
@@ -40,10 +40,12 @@ AI Search can ingest a variety of file types. The following plain text files and
 | Script | `.sh`, `.bat`, `.ps1` | `application/x-sh`, `application/x-msdos-batch`, `text/x-powershell` |
 | SGML | `.sgml` | `text/sgml` |
 | JSON | `.json` | `application/json` |
+| XML | `.xml` | `application/xml` |
 | SQL | `.sql` | `application/sql` |
 | YAML | `.yaml`, `.yml` | `application/x-yaml` |
 | CSS | `.css` | `text/css` |
 | JavaScript | `.js` | `application/javascript` |
+| TypeScript | `.ts`, `.tsx` | `application/typescript` |
 | PHP | `.php` | `application/x-httpd-php` |
 | Python | `.py` | `text/x-python` |
 | Ruby | `.rb` | `text/x-ruby` |
@@ -55,6 +57,7 @@ AI Search can ingest a variety of file types. The following plain text files and
 | Rust | `.rs` | `text/rust` |
 | Swift | `.swift` | `text/swift` |
 | Dart | `.dart` | `text/dart` |
+| Terraform | `.tf` | `text/plain` |
 | EMACS Lisp | `.el` | `application/x-elisp`, `text/x-elisp`, `text/x-emacs-lisp` |
 
 ### Rich format file types
@@ -77,9 +80,24 @@ Format | | | | | File extensions | | | | | Mime Types | | | |
 
 ## File limits
 
-AI Search has a file size limit of **up to 4 MB**.
+AI Search applies these file size limits:
 
-Files that exceed this limit will not be indexed and will show up in the error logs.
+| File type | Maximum size |
+| --- | --- |
+| PDF with OCR enabled | 10 MiB |
+| PDF without OCR | 4 MiB |
+| Plain text, code, configuration, markup, and other formats listed in [Plain text file types](#plain-text-file-types) | 10 MiB |
+| Other formats converted to Markdown | 4 MiB |
+
+Files that exceed these limits are not indexed. They appear in the error logs.
+
+## Images and optical character recognition
+
+AI Search supports `.jpg`, `.jpeg`, `.png`, `.webp`, `.gif`, `.bmp`, `.tif`, `.tiff`, `.heic`, and `.heif` images. Multimodal embedding models embed supported images directly. Text-only embedding models create captions before embedding images.
+
+Optical character recognition (OCR) extracts text from scanned PDFs and images. Set `indexing_options.use_ocr` to `true` when creating or updating an instance. OCR is disabled by default and changing this setting triggers a full reindex.
+
+OCR is available for every account. OCR usage is billed as image-processing ingestion tokens. For pricing details, refer to [Limits and pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/).
 
 Was this helpful?
 
@@ -90,5 +108,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/data-source/#page","headline":"Data source","description":"Connect a website, R2 bucket, or upload files directly to your AI Search instance for indexing.","url":"https://developers.cloudflare.com/ai-search/configuration/data-source/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/data-source/og.png?v=3fa0474a40543a58","dateModified":"2026-08-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/configuration/data-source/#page","headline":"Data source","description":"Connect a website, R2 bucket, or upload files directly to your AI Search instance for indexing.","url":"https://developers.cloudflare.com/ai-search/configuration/data-source/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/configuration/data-source/og.png?v=3fa0474a40543a58","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

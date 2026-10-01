@@ -20,7 +20,7 @@ Check out the [unified AI model catalog](https://developers.cloudflare.com/ai/mo
 
 Task TypesCapabilitiesAuthorsNewest first
 
-We found 65 modelsClear filters
+We found 69 modelsClear filters
 
 ## Compare models
 
@@ -33,6 +33,15 @@ Clear comparison
 No models found
 
 Try a different search term, or broaden your search by removing filters.
+
+[s<h3>apertus-v1.5-8b</h3>
+
+swiss-aiText Generation Apertus 1.5 is an 8B parameter language model designed to advance the state of multilingual, multimodal, fully open, and transparent AI. The models support a wide range of languages, handle contexts of up to 262,144 tokens, and it uses only fully open training data whilst delivering performance comparable to other models of similar size. For access, please fill out this form: https://forms.gle/kgvmkr6ucHN3xNuH6](https://developers.cloudflare.com/workers-ai/models/apertus-v1.5-8b/)
+
+- Cloudflare-hosted
+- +2
+
+Compare
 
 [![Deepgram logo](https://developers.cloudflare.com/_astro/deepgram.BYzW8KfF.svg)<h3>aura-1</h3>
 
@@ -104,6 +113,24 @@ BAAIText Embeddings BAAI general embedding (Small) model that transforms any giv
 
 Compare
 
+[Pinned![Cloudflare logo](https://developers.cloudflare.com/_astro/cloudflare.DP8rkHys.svg)<h3>clef</h3>
+
+CloudflareText Generation Clef is a 27B multimodal decision model that turns a state and a schema of typed questions into decisions. It reads the state as text, JSON, images, or video, and returns a probability for every allowed option of every question.](https://developers.cloudflare.com/workers-ai/models/clef/)
+
+- Cloudflare-hosted
+- +1
+
+Compare
+
+[Pinned![Cloudflare logo](https://developers.cloudflare.com/_astro/cloudflare.DP8rkHys.svg)<h3>clef-flash</h3>
+
+CloudflareText Generation Clef-flash is a fast 9B multimodal decision model that turns a state and a schema of typed questions into decisions. It reads the state as text, JSON, images, or video, and returns a probability for every allowed option of every question.](https://developers.cloudflare.com/workers-ai/models/clef-flash/)
+
+- Cloudflare-hosted
+- +1
+
+Compare
+
 [![DeepSeek logo](https://developers.cloudflare.com/_astro/deepseek.CkzAgvN6.svg)<h3>deepseek-r1-distill-qwen-32b</h3>
 
 DeepSeekText Generation DeepSeek-R1-Distill-Qwen-32B is a model distilled from DeepSeek-R1 based on Qwen2.5. It outperforms OpenAI-o1-mini across various benchmarks, achieving new state-of-the-art results for dense models.](https://developers.cloudflare.com/workers-ai/models/deepseek-r1-distill-qwen-32b/)
@@ -152,6 +179,15 @@ Compare
 BetaGoogleText Embeddings EmbeddingGemma is a 300M parameter, state-of-the-art for its size, open embedding model from Google, built from Gemma 3 (with T5Gemma initialization) and the same research and technology used to create Gemini models. EmbeddingGemma produces vector representations of text, making it well-suited for search and retrieval tasks, including classification, clustering, and semantic similarity search. This model was trained with data in 100+ spoken languages.](https://developers.cloudflare.com/workers-ai/models/embeddinggemma-300m/)
 
 - Cloudflare-hosted
+
+Compare
+
+[u<h3>eurollm-9b-it</h3>
+
+utter-projectText Generation EuroLLM-9B is a 9B parameter model trained on 4 trillion tokens divided across the considered languages and several data sources: Web data, parallel data (en-xx and xx-en), and high-quality datasets. For access, please fill out this form: https://forms.gle/kgvmkr6ucHN3xNuH6](https://developers.cloudflare.com/workers-ai/models/eurollm-9b-it/)
+
+- Cloudflare-hosted
+- +1
 
 Compare
 

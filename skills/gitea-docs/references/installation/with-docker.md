@@ -186,7 +186,7 @@ services:
 +    networks:
 +      - gitea
 +    volumes:
-+      - ./postgres:/var/lib/postgresql/data
++      - ./postgres:/var/lib/postgresql
 ```
 
 ## Named volumes

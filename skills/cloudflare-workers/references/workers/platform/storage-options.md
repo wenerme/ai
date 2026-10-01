@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/platform/storage-options/og.png
 
 # Choose a data or storage product
 
-Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/storage-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/storage-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide describes the storage & database products available as part of Cloudflare Workers, including recommended use-cases and best practices.
 
@@ -29,7 +29,7 @@ The following table maps our storage & database products to common industry term
 | Lightweight SQL database | [D1](https://developers.cloudflare.com/d1/) | Relational data, including user profiles, product listings and orders, and/or customer data. |
 | Task processing, batching and messaging | [Queues](https://developers.cloudflare.com/queues/) | Background job processing (emails, notifications, APIs), message queuing, and deferred tasks. |
 | Vector search & embeddings queries | [Vectorize](https://developers.cloudflare.com/vectorize/) | Storing [embeddings](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) from AI models for semantic search and classification tasks. |
-| Streaming ingestion | [Pipelines](https://developers.cloudflare.com/pipelines/) | Streaming data ingestion and processing, including clickstream analytics, telemetry/log data, and structured data for querying |
+| Streaming ingestion | [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) | Streaming data ingestion and processing, including clickstream analytics, telemetry/log data, and structured data for querying |
 | Time-series metrics | [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) | Write and query high-cardinality time-series data, usage metrics, and service-level telemetry using Workers and/or SQL. |
 
 Applications can build on multiple storage & database products: for example, using Workers KV for session data; R2 for large file storage, media assets and user-uploaded files; and Hyperdrive to connect to a hosted Postgres or MySQL database.
@@ -161,19 +161,19 @@ To get started with Hyperdrive:
 - [Connect Hyperdrive](https://developers.cloudflare.com/hyperdrive/get-started/) to your existing database.
 - Learn more [about how Hyperdrive speeds up your database queries](https://developers.cloudflare.com/hyperdrive/concepts/how-hyperdrive-works/).
 
-## Pipelines
+## Basin Pipelines
 
-Pipelines is a streaming ingestion service that allows you to ingest high volumes of real time data, without managing any infrastructure.
+Basin Pipelines is a streaming ingestion service that allows you to ingest high volumes of real time data, without managing any infrastructure.
 
-Pipelines allows you to:
+Basin Pipelines allows you to:
 
 - Ingest data at extremely high throughput (tens of thousands of records per second or more)
 - Batch and write data directly to object storage, ready for querying
 - (Future) Transform and aggregate data during ingestion
 
-To get started with Pipelines:
+To get started with Basin Pipelines:
 
-- [Create a Pipeline](https://developers.cloudflare.com/pipelines/getting-started/) that can batch and write records to R2.
+- [Create a pipeline](https://developers.cloudflare.com/basin-pipelines/getting-started/) that can batch and write records to R2.
 
 ### Analytics Engine
 
@@ -241,5 +241,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/storage-options/#page","headline":"Choose a data or storage product","description":"Storage and database options available on Cloudflare's developer platform.","url":"https://developers.cloudflare.com/workers/platform/storage-options/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/storage-options/og.png?v=abca508978294b6c","dateModified":"2026-04-23","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/storage-options/#page","headline":"Choose a data or storage product","description":"Storage and database options available on Cloudflare's developer platform.","url":"https://developers.cloudflare.com/workers/platform/storage-options/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/storage-options/og.png?v=abca508978294b6c","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

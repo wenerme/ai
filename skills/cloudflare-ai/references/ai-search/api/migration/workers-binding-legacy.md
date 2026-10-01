@@ -166,7 +166,7 @@ const answer = await env.AI.autorag("my-autorag").search({
 
 An array of message objects. Each message has:
 
-- `content` `string` - The search query content.
+- `content` `string | array` - Text, or an array containing `text`, `image_url`, and `file` parts. Image URLs must use `https://` or `data:image/<subtype>;base64,...`. File parts use a `data:<mime>;base64,...` URI, include a filename, and have a 10 MiB decoded limit.
 - `role` `string` - The role: `user`, `system`, or `assistant`.
 
 ---
@@ -175,6 +175,7 @@ An array of message objects. Each message has:
 
 Per-request overrides for retrieval and model behavior. Supports the following nested options:
 
+- `custom_metadata` `object` - Adds up to two string, number, or boolean entries to AI Gateway logs. The keys `ai-search`, `task`, `origin`, and keys beginning with `cf.` are reserved.
 - `retrieval.filters` `object` - Narrow down search results based on metadata. Refer to [Metadata filtering](https://developers.cloudflare.com/ai-search/configuration/retrieval/filtering/) for syntax and examples.
 - `retrieval.max_num_results` `number` - Maximum number of chunks to return. Defaults to `10`, maximum `50`.
 - `retrieval.retrieval_type` `string` - One of `vector`, `keyword`, or `hybrid`.

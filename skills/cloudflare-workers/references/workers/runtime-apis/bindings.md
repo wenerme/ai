@@ -21,6 +21,7 @@ During local development, bindings connect to locally simulated resources by def
 The following bindings are available today:
 
 - [AI](https://developers.cloudflare.com/workers-ai/get-started/workers-wrangler/#2-connect-your-worker-to-workers-ai)
+- [AI Search](https://developers.cloudflare.com/ai-search/api/search/workers-binding/)
 - [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/)
 - [Assets](https://developers.cloudflare.com/workers/static-assets/binding/)
 - [Browser Run](https://developers.cloudflare.com/browser-run/)

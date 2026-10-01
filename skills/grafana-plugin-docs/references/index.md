@@ -68,7 +68,7 @@ Documentation for data source and app plugins built and maintained by Grafana La
 - [JSON API data source for Grafana](/docs/plugins/marcusolsson-json-datasource/latest/ "JSON API data source for Grafana")
 - [LLM plugin](/docs/plugins/grafana-ml-app/latest/ "LLM plugin")
 - [LogicMonitor Devices data source](/docs/plugins/grafana-logicmonitor-datasource/latest/ "LogicMonitor Devices data source")
-- [Looker data source plugin for Grafana](/docs/plugins/grafana-looker-datasource/latest/ "Looker data source plugin for Grafana")
+- [Looker data source](/docs/plugins/grafana-looker-datasource/latest/ "Looker data source")
 - [Mock data source for Grafana](/docs/plugins/grafana-mock-datasource/latest/ "Mock data source for Grafana")
 - [MongoDB data source](/docs/plugins/grafana-mongodb-datasource/latest/ "MongoDB data source")
 - [MQTT data source](/docs/plugins/grafana-mqtt-datasource/latest/ "MQTT data source")

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ruleset-engine/rules-language/operators
 
 # Operators and grouping symbols
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare Rules language supports comparison and logical operators:
 
@@ -55,6 +55,27 @@ The Rules language supports these comparison operators:
 Caution
 
 Comparison operators entered using English notation (such as `eq`, `lt`, and `gt`) must be written in lowercase.
+
+### Compare dynamic values
+
+Equality and ordering operators can compare dynamic values. The right side can be a field, indexed value, or function result. This works with `eq` (`==`), `ne` (`!=`), `lt` (`<`), `le` (`<=`), `gt` (`>`), and `ge` (`>=`). Both values must have the same scalar data type. Supported types vary by operator. Refer to the [comparison operator table](#comparison-operators).
+
+*Examplestxt*
+
+```txt
+# Compare the current request path with its original value
+http.request.uri.path ne raw.http.request.uri.path
+
+# Compare the lengths of two request values
+len(http.request.uri.path) gt len(http.request.uri.query)
+
+# Use a query parameter, or fall back to "/" if it is missing
+http.request.uri.path eq coalesce(http.request.uri.args["expected_path"][0], "/")
+```
+
+The [`coalesce()` function](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#coalesce) returns the first value that is not nil.
+
+For comparison results involving nil, refer to [Missing values](https://developers.cloudflare.com/ruleset-engine/rules-language/values/#missing-values).
 
 ### Additional operators in the Cloudflare dashboard
 
@@ -269,5 +290,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#page","headline":"Operators and grouping symbols","description":"Learn about comparison, logical operators, and grouping symbols in Cloudflare's Rules language. Understand precedence and how to structure expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/operators/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/operators/og.png?v=6d9b481e4dc42e76","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#page","headline":"Operators and grouping symbols","description":"Learn about comparison, logical operators, and grouping symbols in Cloudflare's Rules language. Understand precedence and how to structure expressions.","url":"https://developers.cloudflare.com/ruleset-engine/rules-language/operators/","inLanguage":"en","image":"https://developers.cloudflare.com/ruleset-engine/rules-language/operators/og.png?v=6d9b481e4dc42e76","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -16,6 +16,34 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/rules.xml)
 
+## 2026-10-01
+
+
+**Handle missing values with coalesce()**
+
+The `coalesce()` function returns the first argument that is not nil. Use it to provide a fallback in rule expressions:
+
+```txt
+http.request.uri.path eq coalesce(http.request.uri.args["expected_path"][0], "/")
+```
+
+For details, refer to the [`coalesce()` function reference](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#coalesce).
+
+## 2026-10-01
+
+
+**Compare dynamic values in Rules expressions**
+
+Cloudflare Rules expressions now support dynamic values on both sides of equality and ordering comparisons. You can compare request fields or function results with one another.
+
+For example, compare the current request path with its original value:
+
+```txt
+http.request.uri.path ne raw.http.request.uri.path
+```
+
+For supported operators and examples, refer to [Compare dynamic values](https://developers.cloudflare.com/ruleset-engine/rules-language/operators/#compare-dynamic-values).
+
 ## 2026-09-22
 
 

@@ -1,0 +1,110 @@
+---
+description: Scalar functions for hashing values
+title: Hashing functions
+image: https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-functions/hashing/og.png?v=f250318a6f9fc64c
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/basin-pipelines/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Hashing functions
+
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-functions/hashing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+*Basin Pipelines scalar function implementations are based on [Apache DataFusion ↗︎](https://arrow.apache.org/datafusion/) (via [Arroyo ↗︎](https://www.arroyo.dev/)) and these docs are derived from the DataFusion function reference.*
+
+## `digest`
+
+Computes the binary hash of an expression using the specified algorithm.
+
+```plaintext
+digest(expression, algorithm)
+```
+
+**Arguments**
+
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+- **algorithm**: String expression specifying algorithm to use. Must be one of:
+  - md5
+  - sha224
+  - sha256
+  - sha384
+  - sha512
+  - blake2s
+  - blake2b
+  - blake3
+
+## `md5`
+
+Computes an MD5 128-bit checksum for a string expression.
+
+```plaintext
+md5(expression)
+```
+
+**Arguments**
+
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+
+## `sha224`
+
+Computes the SHA-224 hash of a binary string.
+
+```plaintext
+sha224(expression)
+```
+
+**Arguments**
+
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+
+## `sha256`
+
+Computes the SHA-256 hash of a binary string.
+
+```plaintext
+sha256(expression)
+```
+
+**Arguments**
+
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+
+## `sha384`
+
+Computes the SHA-384 hash of a binary string.
+
+```plaintext
+sha384(expression)
+```
+
+**Arguments**
+
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+
+## `sha512`
+
+Computes the SHA-512 hash of a binary string.
+
+```plaintext
+sha512(expression)
+```
+
+**Arguments**
+
+- **expression**: String expression to operate on. Can be a constant, column, or function, and any combination of string operators.
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-functions/hashing/#page","headline":"Hashing functions","description":"Scalar functions for hashing values","url":"https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-functions/hashing/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-pipelines/sql-reference/scalar-functions/hashing/og.png?v=f250318a6f9fc64c","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```

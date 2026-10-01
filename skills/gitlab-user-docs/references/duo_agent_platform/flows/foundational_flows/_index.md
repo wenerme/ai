@@ -20,7 +20,7 @@ The following foundational flows are available:
 | [Convert to GitLab CI/CD](../../../../ci/migration/convert_to_gitlab_ci.md) | Migrate Jenkins pipelines to CI/CD. |
 | [Developer](../../../project/merge_requests/developer.md) | Create actionable merge requests from issues, or complete different tasks in GitLab Duo Agentic Chat. |
 | [Fix CI/CD Pipeline](fix_pipeline.md) | Diagnose and repair failed jobs. |
-| [Recommend Reviewers](../../../project/merge_requests/reviews/automatic_reviewer_assignment.md#assign-reviewers-with-the-recommend-reviewers-flow) | Recommend and assign the reviewers best suited to review a merge request. |
+| [Recommend Reviewers](../../../project/merge_requests/reviews/automatic_reviewer_assignment.md#recommend-reviewers-with-the-recommend-reviewers-flow) | Recommend the reviewers best suited to review a merge request. |
 | [SAST False Positive Detection](../../../application_security/vulnerabilities/false_positive_detection.md) | Automatically identify and filter false positives in SAST findings. |
 | [SAST Vulnerability Resolution](../../../application_security/vulnerabilities/agentic_vulnerability_resolution.md) | Automatically generate merge requests to resolve SAST vulnerabilities. |
 | [Secret False Positive Detection](secret_false_positive_detection.md) | Automatically identify and filter false positives in secret detection findings. |
@@ -124,6 +124,7 @@ Prerequisites:
 ### On GitLab Self-Managed
 
 - Full image reference for image registry [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/594208) in GitLab 19.0.
+- Registry path prefix for image registry [introduced](https://gitlab.com/gitlab-org/gitlab/-/work_items/630865) in GitLab 19.5.
 
 ### For an instance
 
@@ -137,8 +138,10 @@ Prerequisites:
 1. Under **Flow execution**, select the **Allow flow execution** and **Allow foundational flows** checkboxes.
 1. Optional. In the **Image registry** text box, enter one of the following:
 
-   - A registry hostname to use the default image from that registry.
+   - A registry hostname to use the default image from that registry (for example, `registry.example.com`).
+   - A registry path prefix that ends in `/` to use the default image from that path, such as a proxy cache project (for example, `harbor.example.com/proxy/`).
    - A full image reference to override the image entirely (for example, `registry.example.com/group/project/image:tag`).
+     Any other value that includes a path is used as a full image reference.
 
    Leave blank to use the default `registry.gitlab.com`.
 1. Select **Save changes**.

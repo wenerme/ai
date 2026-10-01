@@ -16,6 +16,12 @@ Last updated Apr 20, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 This release notes section covers regular updates and minor fixes. For major feature releases or significant updates, see the [changelog](https://developers.cloudflare.com/changelog).
 
+## 2026-10-01
+
+**AI Search is generally available**
+
+AI Search is generally available. Usage-based billing begins on November 1, 2026, and managed Workers AI embedding and reranking calls are included in AI Search pricing, so they no longer appear on your Workers AI bill or in your AI Gateway logs. Refer to [Limits & pricing](https://developers.cloudflare.com/ai-search/platform/limits-pricing/) for rates and included monthly usage. New instances use [hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/) by default. AI Search also supports [multimodal embedding models](https://developers.cloudflare.com/ai-search/configuration/models/supported-models/) and image queries through the REST API and public endpoint. OCR is available on every account: plain-text or code files and PDFs with OCR enabled can be up to 10 MiB, while PDFs without OCR and other supported formats are limited to 4 MiB. When `type` is omitted, AI Search infers the instance type from an HTTP or HTTPS URL or an existing R2 bucket. Refer to [Data sources](https://developers.cloudflare.com/ai-search/configuration/data-source/).
+
 ## 2026-08-25
 
 **Larger custom metadata values**
@@ -68,7 +74,7 @@ Built-in storage, R2, and website data sources now support `.mdoc`, `.sql`, and 
 
 **Migration to managed infrastructure complete**
 
-All AI Search instances have finished migrating to managed infrastructure. Every instance now includes built-in storage, a built-in vector index, and built-in web crawling, so the [current limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#limits) apply across all instances. Storage, vector indexing, and Browser Run usage for crawling are now included; [Workers AI](https://developers.cloudflare.com/workers-ai/platform/pricing/) and [AI Gateway](https://developers.cloudflare.com/ai-gateway/reference/pricing/) are still billed separately. If your instance previously crawled a website, the dedicated R2 bucket AI Search created in your account is no longer used and can be deleted.
+All AI Search instances have finished migrating to managed infrastructure. Every instance now includes built-in storage, a built-in vector index, and built-in web crawling, so the [current limits](https://developers.cloudflare.com/ai-search/platform/limits-pricing/#limits) apply across all instances. Storage, vector indexing, and Browser Run usage for crawling are included. Managed Workers AI embedding and reranking calls are also included in AI Search pricing. Generation, query rewriting, and external providers continue to use your account and gateway. If your instance previously crawled a website, the dedicated R2 bucket AI Search created in your account is no longer used and can be deleted.
 
 ## 2026-06-10
 

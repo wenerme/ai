@@ -51,7 +51,7 @@ Cloudflare storage offerings differ per use case.
 | Lightweight SQL database | [D1](https://developers.cloudflare.com/d1/) | Relational data, including user profiles, product listings and orders, and/or customer data. |
 | Task processing, batching and messaging | [Queues](https://developers.cloudflare.com/queues/) | Background job processing (emails, notifications, APIs), message queuing, and deferred tasks. |
 | Vector search & embeddings queries | [Vectorize](https://developers.cloudflare.com/vectorize/) | Storing [embeddings](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) from AI models for semantic search and classification tasks. |
-| Streaming ingestion | [Pipelines](https://developers.cloudflare.com/pipelines/) | Streaming data ingestion and processing, including clickstream analytics, telemetry/log data, and structured data for querying |
+| Streaming ingestion | [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) | Streaming data ingestion and processing, including clickstream analytics, telemetry/log data, and structured data for querying |
 | Time-series metrics | [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) | Write and query high-cardinality time-series data, usage metrics, and service-level telemetry using Workers and/or SQL. |
 
 For a detailed guide to choosing the correct storage option, refer to [Choose a data or storage product](https://developers.cloudflare.com/workers/platform/storage-options/).

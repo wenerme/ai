@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/og.png?v=8f
 
 # AI SDK
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The [Vercel AI SDK ↗︎](https://sdk.vercel.ai/) is a TypeScript toolkit for building applications with large language models. The [`ai-search-provider` ↗︎](https://www.npmjs.com/package/ai-search-provider) package connects AI Search to the AI SDK, so you can generate responses grounded in your indexed content, retrieve chunks, and manage documents from the same API.
 
@@ -121,9 +121,9 @@ This binds the `default` [namespace](https://developers.cloudflare.com/ai-search
 
 ## 4. Create an instance and index content
 
-Add a `/setup` route that creates an instance and uploads a document. Enable [hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/) at creation by setting `index_method` to index both vectors and keywords.
+Add a `/setup` route that creates an instance and uploads a document. New instances use [hybrid search](https://developers.cloudflare.com/ai-search/configuration/indexing/hybrid-search/) by default.
 
-The `create()` method is on the namespace binding (`env.AI_SEARCH`), not on the provider client. Creating an instance that already exists throws, so the following code creates it and, on the next run, updates it instead.
+The `create()` method is on the namespace binding (`env.AI_SEARCH`), not on the provider client. Creating an instance that already exists throws, so the following code ignores that error on subsequent runs.
 
 *src/index.jsjs*
 
@@ -138,14 +138,11 @@ Cloudflare caches static assets at the edge. Use Cache Rules to control what is
 cached, set an Edge Cache TTL to control how long objects stay in cache, and
 purge the cache after a deploy.`;
 
-// Create the instance with hybrid search, or update it if it already exists.
 async function ensureInstance(env) {
-	// index_method with both vector and keyword enables hybrid search.
-	const hybrid = { index_method: { vector: true, keyword: true } };
 	try {
-		await env.AI_SEARCH.create({ id: INSTANCE_NAME, ...hybrid });
+		await env.AI_SEARCH.create({ id: INSTANCE_NAME });
 	} catch {
-		await env.AI_SEARCH.get(INSTANCE_NAME).update(hybrid);
+		// intentional fallback, nothing to handle
 	}
 }
 
@@ -197,14 +194,11 @@ Cloudflare caches static assets at the edge. Use Cache Rules to control what is
 cached, set an Edge Cache TTL to control how long objects stay in cache, and
 purge the cache after a deploy.`;
 
-// Create the instance with hybrid search, or update it if it already exists.
 async function ensureInstance(env: Env) {
-	// index_method with both vector and keyword enables hybrid search.
-	const hybrid = { index_method: { vector: true, keyword: true } };
 	try {
-		await env.AI_SEARCH.create({ id: INSTANCE_NAME, ...hybrid });
+		await env.AI_SEARCH.create({ id: INSTANCE_NAME });
 	} catch {
-		await env.AI_SEARCH.get(INSTANCE_NAME).update(hybrid);
+		// intentional fallback, nothing to handle
 	}
 }
 
@@ -531,5 +525,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/#page","headline":"AI SDK","description":"Use AI Search from the Vercel AI SDK to create an instance, index content, and generate grounded responses in a TypeScript project.","url":"https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/og.png?v=8f22888cce1b37ad","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/#page","headline":"AI SDK","description":"Use AI Search from the Vercel AI SDK to create an instance, index content, and generate grounded responses in a TypeScript project.","url":"https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-search/agent-sdks/ai-sdk/og.png?v=8f22888cce1b37ad","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

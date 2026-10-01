@@ -22,6 +22,27 @@ Subscribe to all API deprecation posts via [RSS](https://developers.cloudflare.c
 
 [Subscribe to RSS](https://developers.cloudflare.com/fundamentals/api/reference/deprecations/index.xml)
 
+## 2026-10-02
+
+**Cloudflare Radar: Top browsers and NetFlows summary endpoints**
+
+Deprecation date: October 2, 2026
+
+End of life date: April 2, 2027
+
+The Radar top browsers endpoints and the NetFlows summary endpoint without a dimension are deprecated and will be replaced by the corresponding summary endpoints with a `{dimension}` path parameter.
+
+Deprecated APIs:
+
+- `GET /radar/http/top/browser`
+- `GET /radar/http/top/browser_family`
+- `GET /radar/netflows/summary`
+
+Replacements:
+
+- [Get HTTP summary by dimension](https://developers.cloudflare.com/api/resources/radar/subresources/http/methods/summary_v2/) — `GET /radar/http/summary/{dimension}` with the `BROWSER` or `BROWSER_FAMILY` dimension
+- [Get NetFlows summary by dimension](https://developers.cloudflare.com/api/resources/radar/subresources/netflows/methods/summary_v2/) — `GET /radar/netflows/summary/{dimension}` with the `PRODUCT` dimension
+
 ## 2026-07-27
 
 **Zone Settings Batch API**

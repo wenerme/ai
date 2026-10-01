@@ -1,0 +1,188 @@
+---
+description: Query syntax for data transformation in Basin Pipelines SQL
+title: SELECT statements
+image: https://developers.cloudflare.com/basin-pipelines/sql-reference/select-statements/og.png?v=20ad9e71cc8d4d67
+---
+
+[Skip to content](#main-content)
+
+> Documentation Index
+> Fetch the complete documentation index at: https://developers.cloudflare.com/basin-pipelines/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# SELECT statements
+
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/basin-pipelines/sql-reference/select-statements/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+SELECT statements are used to transform data in Basin Pipelines. The general form is:
+
+```sql
+[WITH with_query [, ...]]
+SELECT select_expr [, ...]
+FROM from_item
+[WHERE condition]
+```
+
+A pipeline runs one or more `INSERT INTO sink SELECT ... FROM stream` statements. To write to multiple sinks from the same pipeline, separate the statements with semicolons. See [Multiple statements](#multiple-statements).
+
+## WITH clause
+
+The WITH clause allows you to define named subqueries that can be referenced in the main query. This can improve query readability by breaking down complex transformations.
+
+Syntax:
+
+```sql
+WITH query_name AS (subquery) [, ...]
+```
+
+Simple example:
+
+```sql
+WITH filtered_events AS
+    (SELECT user_id, event_type, amount
+        FROM user_events WHERE amount > 50)
+SELECT user_id, amount * 1.1 as amount_with_tax
+FROM filtered_events
+WHERE event_type = 'purchase';
+```
+
+## SELECT clause
+
+The SELECT clause is a comma-separated list of expressions, with optional aliases. Column names must be unique.
+
+```sql
+SELECT select_expr [, ...]
+```
+
+Examples:
+
+```sql
+-- Select specific columns
+SELECT user_id, event_type, amount FROM events
+
+-- Use expressions and aliases
+SELECT
+    user_id,
+    amount * 1.1 as amount_with_tax,
+    UPPER(event_type) as event_type_upper
+FROM events
+
+-- Select all columns
+SELECT * FROM events
+```
+
+## FROM clause
+
+The FROM clause specifies the data source for the query. It will be either a table name or subquery. The table name can be either a stream name or a table created in the WITH clause.
+
+```sql
+FROM from_item
+```
+
+Tables can be given aliases:
+
+```sql
+SELECT e.user_id, e.amount
+FROM user_events e
+WHERE e.event_type = 'purchase'
+```
+
+## WHERE clause
+
+The WHERE clause filters data using boolean conditions. Predicates are applied to input rows.
+
+```sql
+WHERE condition
+```
+
+Examples:
+
+```sql
+-- Filter by field value
+SELECT * FROM events WHERE event_type = 'purchase'
+
+-- Multiple conditions
+SELECT * FROM events
+WHERE event_type = 'purchase' AND amount > 50
+
+-- String operations
+SELECT * FROM events
+WHERE user_id LIKE 'user_%'
+
+-- Null checks
+SELECT * FROM events
+WHERE description IS NOT NULL
+```
+
+## UNNEST operator
+
+The UNNEST operator converts arrays into multiple rows. This is useful for processing list data types.
+
+UNNEST restrictions:
+
+- May only appear in the SELECT clause
+- Only one array may be unnested per SELECT statement
+
+Example:
+
+```sql
+SELECT
+    UNNEST([1, 2, 3]) as numbers
+FROM events;
+```
+
+This will produce:
+
+```plaintext
++---------+
+| numbers |
++---------+
+|       1 |
+|       2 |
+|       3 |
++---------+
+```
+
+## Multiple statements
+
+A pipeline can contain multiple `INSERT` statements, separated by semicolons. Each statement reads from a stream and writes to a sink. Use multiple statements to route events from a single stream into several sinks based on their content.
+
+```sql
+INSERT INTO purchases_sink
+SELECT user_id, product_id, amount FROM events
+WHERE event_type = 'purchase';
+
+INSERT INTO signups_sink
+SELECT user_id, created_at FROM events
+WHERE event_type = 'signup';
+```
+
+To provide multiple statements with the Wrangler CLI, pass a file with the `--sql-file` flag:
+
+npmyarnpnpm
+
+```
+npx wrangler basin pipelines create my-pipeline --sql-file pipeline.sql
+```
+
+```
+yarn wrangler basin pipelines create my-pipeline --sql-file pipeline.sql
+```
+
+```
+pnpm wrangler basin pipelines create my-pipeline --sql-file pipeline.sql
+```
+
+For a worked example, refer to [Fan out a stream to multiple Iceberg tables](https://developers.cloudflare.com/basin-pipelines/examples/bluesky-firehose-fanout/).
+
+Was this helpful?
+
+YesNo
+
+## On this page
+
+[![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
+
+```json
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/basin-pipelines/sql-reference/select-statements/#page","headline":"SELECT statements","description":"Query syntax for data transformation in Basin Pipelines SQL","url":"https://developers.cloudflare.com/basin-pipelines/sql-reference/select-statements/","inLanguage":"en","image":"https://developers.cloudflare.com/basin-pipelines/sql-reference/select-statements/og.png?v=20ad9e71cc8d4d67","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+```
