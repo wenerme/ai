@@ -5,7 +5,7 @@ description: "Browse NanoGPT model IDs, capabilities, context windows, and prici
 
 # [NanoGPT logo]NanoGPT
 
-Access 599 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
+Access 600 NanoGPT models through Mastra's model router. Authentication is handled automatically using the `NANO_GPT_API_KEY` environment variable.
 
 Learn more in the [NanoGPT documentation](https://docs.nano-gpt.com).
 
@@ -2693,6 +2693,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "nano-gpt/inclusionai/ling-3.0-flash:thinking",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": 0.075,
+    "outputCost": 0.22
+  },
+  {
+    "model": "nano-gpt/inclusionai/ling-3.1-flash",
     "imageInput": false,
     "audioInput": false,
     "videoInput": false,
@@ -7140,8 +7152,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.075,
-    "outputCost": 0.25
+    "inputCost": 0.1,
+    "outputCost": 0.3
   },
   {
     "model": "nano-gpt/z-ai/glm-5.3-flash-cybersecurity",

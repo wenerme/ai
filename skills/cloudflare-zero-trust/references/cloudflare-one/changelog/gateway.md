@@ -16,6 +16,19 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/gateway.xml)
 
+## 2026-09-30
+
+
+**Role-based access control for Browser Isolation policies**
+
+[Isolation policies](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/) support role-based access control (RBAC). Because isolation policies are Gateway HTTP policies with the *Isolate* action, Gateway's account-level and resource-scoped roles apply to them directly.
+
+Use the `Zero Trust HTTP Policies Admin` account-level role to grant access to all HTTP policies in the account. You can also assign a [resource-scoped role](https://developers.cloudflare.com/cloudflare-one/traffic-policies/granular-permissions/) to let a team member manage a specific isolation policy without exposing other Gateway resources.
+
+[Policy settings](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/isolation-policies/#policy-settings) such as copy/paste, file download/upload, keyboard, and printing are part of the policy object and follow the same permissions.
+
+For setup instructions, refer to [Granular permissions for Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/granular-permissions/).
+
 ## 2026-09-29
 
 
@@ -350,7 +363,7 @@ You can also now assign *Resource-scoped roles*. These roles are complementary t
 
 #### Get started
 
-- Review the [resource-scoped roles](https://developers.cloudflare.com/fundamentals/manage-members/roles/#resource-scoped-roles) on the Cloudflare role reference.
+- Refer to [Granular permissions for Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/granular-permissions/) for setup instructions and supported resources.
 - Learn how to [create permission policies](https://developers.cloudflare.com/fundamentals/manage-members/policies/) that use these roles.
 
 ## 2026-06-05

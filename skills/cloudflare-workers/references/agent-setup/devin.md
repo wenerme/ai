@@ -58,7 +58,7 @@ IDETerminalStandaloneCloudExtension
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Add mTLS authentication and schema validation to protect my API endpoints.
+   Configure Zero Trust access policies to protect my internal staging environment.
    ```
 
 
@@ -163,23 +163,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Tips

@@ -7,7 +7,7 @@ description: "Learn how to use annotations with the Snowflake data source in Gra
 
 # Snowflake annotations
 
-Annotations in Grafana allow you to overlay event data on your graphs, making it easier to correlate metrics with specific events like query failures, warehouse scaling, or data loading operations. For an overview of annotations, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
+Annotations in Grafana allow you to overlay event data on your graphs, making it easier to correlate metrics with specific events such as query failures, warehouse scaling, or data loading operations. For an overview of annotations, refer to [Annotate visualizations](/docs/grafana/latest/dashboards/build-dashboards/annotate-visualizations/).
 
 ## Before you begin
 
@@ -29,6 +29,8 @@ Expand table
 | `text`    | Optional. Detailed description shown in the tooltip.                     |
 | `tags`    | Optional. Comma-separated tags for filtering annotations.                |
 
+To limit results to the dashboard time range, use the `$__timeFilter` macro in your `WHERE` clause. For more information, refer to [Macros](/docs/plugins/grafana-snowflake-datasource/latest/query-editor/#macros).
+
 ## Create an annotation
 
 To create an annotation query:
@@ -42,7 +44,11 @@ To create an annotation query:
 
 ## Annotation examples
 
-The following examples show common annotation patterns for Snowflake.
+The following examples show common annotation patterns for Snowflake. They use the `$__timeFilter` macro to limit results to the dashboard time range.
+
+> Note
+>
+> These examples query the `SNOWFLAKE.ACCOUNT_USAGE` schema. Access to these views requires the `ACCOUNTADMIN` role, or a role that has been granted the `IMPORTED PRIVILEGES` privilege on the `SNOWFLAKE` database. For more information, refer to [Enabling the SNOWFLAKE database usage for other roles](https://docs.snowflake.com/en/sql-reference/account-usage#enabling-the-snowflake-database-usage-for-other-roles).
 
 ### Track failed queries
 
@@ -58,8 +64,7 @@ SELECT
     '\nUser: ', user_name) AS text,
   'query-failure,error' AS tags
 FROM snowflake.account_usage.query_history
-WHERE start_time >= $__from
-  AND start_time <= $__to
+WHERE $__timeFilter(start_time)
   AND execution_status = 'FAIL'
 ORDER BY start_time
 ```
@@ -74,13 +79,12 @@ SQL [Copy code to clipboard] Copy
 SELECT
   timestamp AS time,
   CONCAT('Warehouse: ', warehouse_name) AS title,
-  CONCAT('Cluster count changed to ', cluster_number,
-    '\nEvent type: ', event_name) AS text,
+  CONCAT('Event: ', event_name,
+    '\nCluster number: ', cluster_number) AS text,
   CONCAT('warehouse,', warehouse_name) AS tags
 FROM snowflake.account_usage.warehouse_events_history
-WHERE timestamp >= $__from
-  AND timestamp <= $__to
-  AND event_name IN ('SCALE_UP', 'SCALE_DOWN', 'RESUME_WAREHOUSE', 'SUSPEND_WAREHOUSE')
+WHERE $__timeFilter(timestamp)
+  AND event_name IN ('RESIZE_WAREHOUSE', 'RESUME_WAREHOUSE', 'SUSPEND_WAREHOUSE', 'SPINUP_CLUSTER', 'SPINDOWN_CLUSTER')
 ORDER BY timestamp
 ```
 
@@ -102,8 +106,7 @@ SELECT
     ELSE 'load-partial'
   END AS tags
 FROM snowflake.account_usage.load_history
-WHERE last_load_time >= $__from
-  AND last_load_time <= $__to
+WHERE $__timeFilter(last_load_time)
 ORDER BY last_load_time
 ```
 
@@ -124,8 +127,7 @@ SELECT
     ELSE 'login-failed,security'
   END AS tags
 FROM snowflake.account_usage.login_history
-WHERE event_timestamp >= $__from
-  AND event_timestamp <= $__to
+WHERE $__timeFilter(event_timestamp)
 ORDER BY event_timestamp
 ```
 
@@ -149,19 +151,18 @@ SELECT
     ELSE 'task-skipped'
   END AS tags
 FROM snowflake.account_usage.task_history
-WHERE scheduled_time >= $__from
-  AND scheduled_time <= $__to
+WHERE $__timeFilter(scheduled_time)
 ORDER BY scheduled_time
 ```
 
 ## Annotation display
 
-Once configured, annotations appear as:
+After you configure the annotation query, annotations appear as:
 
 - Vertical lines on your time series, candlestick, or state timeline panels
 - At the timestamp specified in your query
 - With hover tooltips showing the title and detailed text
-- Filterable by tags (like “query-failure” or “warehouse”)
+- Filterable by tags (such as `query-failure` or `warehouse`)
 
 ## Next steps
 

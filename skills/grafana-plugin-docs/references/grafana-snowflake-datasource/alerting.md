@@ -15,6 +15,10 @@ The Snowflake data source supports [Grafana Alerting](/docs/grafana/latest/alert
 - Verify your Snowflake data source is [configured](/docs/plugins/grafana-snowflake-datasource/latest/configure/) and working correctly.
 - Familiarize yourself with [Grafana Alerting concepts](/docs/grafana/latest/alerting/fundamentals/).
 
+> Note
+>
+> Alert rules run in the Grafana backend without a signed-in user, so OAuth authentication, which forwards each user’s identity, can’t be used for alerting. Configure the data source with password, key pair, or programmatic access token (PAT) authentication for alert queries. For more information, refer to [Configure the Snowflake data source](/docs/plugins/grafana-snowflake-datasource/latest/configure/#authentication).
+
 ## Query requirements for alerting
 
 Alert queries must return numeric data that Grafana can evaluate against a threshold. Ensure your SQL query:
@@ -49,6 +53,10 @@ To create an alert rule using Snowflake data:
 7. Click **Save rule**.
 
 For detailed instructions, refer to [Create a Grafana-managed alert rule](/docs/grafana/latest/alerting/alerting-rules/create-grafana-managed-rule/).
+
+> Note
+>
+> The following examples query the `SNOWFLAKE.ACCOUNT_USAGE` schema. Access to these views requires the `ACCOUNTADMIN` role, or a role that has been granted the `IMPORTED PRIVILEGES` privilege on the `SNOWFLAKE` database. For more information, refer to [Enabling the SNOWFLAKE database usage for other roles](https://docs.snowflake.com/en/sql-reference/account-usage#enabling-the-snowflake-database-usage-for-other-roles).
 
 ## Example: Warehouse credit usage alert
 
@@ -86,13 +94,13 @@ This example alerts when queries take longer than expected:
 
    ```sql
    SELECT
-     end_time AS time,
+     DATE_TRUNC('hour', end_time) AS time,
      AVG(total_elapsed_time) / 1000 AS avg_query_time_seconds
    FROM snowflake.account_usage.query_history
    WHERE $__timeFilter(end_time)
      AND execution_status = 'SUCCESS'
-   GROUP BY end_time
-   ORDER BY end_time
+   GROUP BY DATE_TRUNC('hour', end_time)
+   ORDER BY time
    ```
 3. Add expressions:
 
@@ -103,7 +111,7 @@ This example alerts when queries take longer than expected:
 
 ## Example: Data freshness alert
 
-This example alerts when data hasn’t been updated within the expected timeframe:
+This example alerts when data hasn’t been updated within the expected time frame:
 
 1. Create a new alert rule.
 2. Configure the query:
@@ -156,8 +164,8 @@ Follow these recommendations to create reliable and efficient alerts with Snowfl
 ### Use appropriate query intervals
 
 - Set the alert evaluation interval based on how frequently your data updates.
-- For queries against `account_usage` views, note that data may have a latency of up to 45 minutes.
-- Avoid very short intervals (less than 1 minute) as they may cause evaluation timeouts.
+- Data in `account_usage` views has latency that varies by view, from around 45 minutes for `query_history` up to 3 hours for `warehouse_metering_history`. Set evaluation intervals accordingly and refer to the [Snowflake Account Usage documentation](https://docs.snowflake.com/en/sql-reference/account-usage#differences-between-account-usage-and-information-schema) for per-view latency. For near real-time data, query the `INFORMATION_SCHEMA` table functions instead.
+- Avoid very short intervals (less than 1 minute) because they may cause evaluation timeouts.
 
 ### Reduce multiple series
 
@@ -195,7 +203,7 @@ Alerting queries run at regular intervals. To minimize Snowflake compute costs:
 - Use efficient queries that leverage clustering and partitioning.
 - Consider using smaller warehouses for alerting queries.
 - Use aggregate functions to reduce data scanned.
-- Take advantage of Snowflake’s result caching where possible.
+- Take advantage of Snowflake result caching where possible.
 
 ## Troubleshooting
 

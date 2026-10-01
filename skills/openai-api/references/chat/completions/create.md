@@ -161,7 +161,7 @@ chunk objects if the request is streamed.
 
               Either a URL of the image or the base64 encoded image data.
 
-            - `detail: optional "auto" or "low" or "high"`
+            - `detail: optional "auto" or "low" or "high" or "original"`
 
               Specifies the detail level of the image. Learn more in the [Vision guide](/api/docs/guides/images-vision#choose-an-image-detail-level).
 
@@ -170,6 +170,8 @@ chunk objects if the request is streamed.
               - `"low"`
 
               - `"high"`
+
+              - `"original"`
 
           - `type: "image_url"`
 
@@ -2310,7 +2312,7 @@ curl https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -d '{
-    "model": "gpt-6-astra",
+    "model": "gpt-6-sol",
     "messages": [
       {
         "role": "user",
@@ -2330,7 +2332,7 @@ curl https://api.openai.com/v1/chat/completions \
   "id": "chatcmpl-123",
   "object": "chat.completion",
   "created": 1702685778,
-  "model": "gpt-6-astra",
+  "model": "gpt-6-sol",
   "choices": [
     {
       "index": 0,

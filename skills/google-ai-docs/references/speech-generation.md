@@ -23,7 +23,9 @@ text using [Gemini 3.8 Flash TTS](https://ai.google.dev/gemini-api/docs/models/g
 ## Before you begin
 
 Ensure you use a Gemini TTS model listed in the
-[Supported models](https://ai.google.dev/gemini-api/docs/speech-generation#supported-models) section.
+[Supported models](https://ai.google.dev/gemini-api/docs/speech-generation#supported-models) section,
+and upgrade to the latest Google GenAI SDK (`google-genai >= 2.25.0` for Python
+or `@google/genai >= 2.24.0` for JavaScript/TypeScript) or use the REST API.
 For optimal results, review
 [When to use which model](https://ai.google.dev/gemini-api/docs/speech-generation#when-to-use-which-model)
 to select the best model for your workload.
@@ -175,7 +177,7 @@ This example saves the default WAV output audio (`audio/wav`) from the model dir
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-tts-preview"),
+                Model: interactions.Model("gemini-3.8-flash-tts"),
                 Input: interactions.NewInteractionsInput("Say cheerfully: Have a wonderful day!"),
                 ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
                     interactions.NewResponseFormat(interactions.AudioResponseFormat{}),
@@ -237,8 +239,12 @@ see the
 
 For multi-speaker dialogue, configure two speakers in `speech_config.speakers`
 and pass each turn as a separate text item with a `speech_metadata` annotation
-specifying the `speaker` and optional turn-level `style`. Use
-`"mode": "conversational"` for natural turn-taking cadence:
+specifying the `speaker` and optional turn-level `style`. Notice that
+`speech_config` accepts an array (`[{"voice": "..."}]`) for single-speaker
+generation and an object (`{"speakers": [...]}`) for multi-speaker generation:
+
+> [!NOTE]
+> **Note:** The REST API also supports `"mode": "conversational"` inside `speech_config` for natural turn-taking cadence, while `google-genai` version 2.25.0 and later (Python) and `@google/genai` version 2.24.0 and later (JavaScript/TypeScript) accept `{"speakers": [...]}` on `SpeakerConfig`.
 
 ### Python
 
@@ -275,7 +281,6 @@ specifying the `speaker` and optional turn-level `style`. Use
         response_format={"type": "audio"},
         generation_config={
             "speech_config": {
-                "mode": "conversational",
                 "speakers": [
                     {"speaker": "Joe", "voice": "Puck"},
                     {"speaker": "Jane", "voice": "Kore"},
@@ -323,7 +328,6 @@ specifying the `speaker` and optional turn-level `style`. Use
           response_format: { type: 'audio' },
           generation_config: {
              speech_config: {
-                mode: 'conversational',
                 speakers: [
                    { speaker: 'Joe', voice: 'Puck' },
                    { speaker: 'Jane', voice: 'Kore' },
@@ -404,7 +408,7 @@ specifying the `speaker` and optional turn-level `style`. Use
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-tts-preview"),
+                Model: interactions.Model("gemini-3.8-flash-tts"),
                 Input: interactions.NewInteractionsInput(prompt),
                 ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
                     interactions.NewResponseFormat(interactions.AudioResponseFormat{}),
@@ -531,7 +535,7 @@ for comprehensive best practices.
 
         ttsRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-tts-preview"),
+                Model: interactions.Model("gemini-3.8-flash-tts"),
                 Input: interactions.NewInteractionsInput(transcript),
                 ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
                     interactions.NewResponseFormat(interactions.AudioResponseFormat{}),
@@ -783,7 +787,7 @@ You can also specify `sample_rate` in Hertz (for example, `24000`, `16000`, or
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-tts-preview"),
+                Model: interactions.Model("gemini-3.8-flash-tts"),
                 Input: interactions.NewInteractionsInput("Say cheerfully: Have a wonderful day!"),
                 ResponseFormat: genai.Ptr(interactions.NewCreateModelInteractionResponseFormat(
                     interactions.NewResponseFormat(interactions.AudioResponseFormat{}),
@@ -1139,7 +1143,7 @@ models to Gemini 3.8 TTS:
 4. **Design personas upfront with Voice design:** Replace multi-paragraph `"Audio Profile"` or `"Director's Notes"` blocks with a custom voice created in [Voice design](https://ai.google.dev/gemini-api/docs/voice-design), then carry that `voice_...` ID through your TTS requests with minimal or empty `style` strings.
 5. **Account for default WAV (`audio/wav`) output on unary requests:** Unlike `gemini-3.1-flash-tts-preview` and earlier TTS models (which returned headerless raw PCM `audio/l16` by default), Gemini 3.8 TTS returns WAV audio (`audio/wav`) with a standard RIFF header by default for unary requests.
    - If your code previously wrapped raw PCM bytes in a WAV header (for example, using Python's `wave` module or `ffmpeg`), remove the manual header wrapper and write the returned bytes directly to a `.wav` file.
-   - If your pipeline requires headerless raw PCM, mu-law, or A-law audio, explicitly set `response_format` to `"audio/l16"`, `"audio/mulaw"`, or `"audio/alaw"`. See [Audio output formats](https://ai.google.dev/gemini-api/docs/speech-generation#audio-output-formats).
+   - If your pipeline requires headerless raw PCM, mu-law, or A-law audio, explicitly set `response_format.mime_type` to `"audio/l16"`, `"audio/mulaw"`, or `"audio/alaw"` (for example, `{"response_format": {"type": "audio", "mime_type": "audio/l16"}}` in the Interactions API, or `AUDIO_L16` in `generateContent`). See [Audio output formats](https://ai.google.dev/gemini-api/docs/speech-generation#audio-output-formats).
 
 ## Prompting guide
 

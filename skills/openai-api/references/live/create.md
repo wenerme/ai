@@ -2,7 +2,24 @@
 
 **post** `/live/sessions`
 
-Create a Live WebRTC session. Start with the [Live prompting guide](/api/docs/guides/live-prompting).
+Create a Live WebRTC session or place an outbound SIP call. Start with the
+[Live prompting guide](/api/docs/guides/live-prompting) for session configuration
+and [Telephony and SIP](/api/docs/guides/voice-sip?api=live#place-an-outbound-call)
+for trunk setup and call monitoring.
+
+Set transport.type to `webrtc` and supply an SDP offer, or set it to `sip`
+and supply an E.164 destination and trunk credentials. Outbound SIP calling
+must be enabled for your organization.
+Ringing is limited to 3 minutes and connected calls to 2 hours; these limits
+are not configurable in the request.
+
+Returns `201 Created` after session initialization. WebRTC responses include an
+SDP answer. SIP responses do not wait for the callee to answer. Attach a
+sideband connection using session.id to monitor SIP call progress.
+
+Each SIP request creates a new call. If a request times out or the connection
+fails, retry with caution: the original request may have succeeded, and a
+retry can place another call.
 
 ### Body Parameters
 
@@ -454,19 +471,67 @@ Create a Live WebRTC session. Start with the [Live prompting guide](/api/docs/gu
 
     Whether to store the session for later forking and recording download. Defaults to false for new sessions.
 
-- `transport: object { sdp, type }`
+- `transport: object { sdp, type }  or object { destination, trunk, type }`
 
-  WebRTC transport with the browser's SDP offer.
+  WebRTC transport with an SDP offer, or SIP transport with a destination and per-call trunk credentials.
 
-  - `sdp: string`
+  - `Webrtc object { sdp, type }`
 
-    Session Description Protocol message for the WebRTC connection.
+    WebRTC transport carrying the offer SDP in a creation request or answer SDP in its response.
 
-  - `type: "webrtc"`
+    - `sdp: string`
 
-    The transport used for the Live session. Always `webrtc`.
+      Session Description Protocol message for the WebRTC connection.
 
-    - `"webrtc"`
+    - `type: "webrtc"`
+
+      The transport used for the Live session. Always `webrtc`.
+
+      - `"webrtc"`
+
+  - `Sip object { destination, trunk, type }`
+
+    Place an outbound SIP call using your provider's trunk. Outbound SIP calling must be enabled for your organization. The trunk must support TLS signaling, Opus audio, and SDES-SRTP media. See [Telephony and SIP](/api/docs/guides/voice-sip?api=live#place-an-outbound-call).
+
+    - `destination: string`
+
+      Phone number to call in E.164 format. SIP URI destinations are not supported.
+
+    - `trunk: object { auth, caller_number, provider_url }`
+
+      SIP trunk configuration supplied for this call. Keep trunk credentials on your server. The creation response does not return this configuration.
+
+      - `auth: object { password, type, username }`
+
+        Credentials for SIP Digest authentication with your trunk provider.
+
+        - `password: string`
+
+          Provider password. Must be at most 4096 bytes and contain no CR, LF, or NUL.
+
+        - `type: "digest"`
+
+          Use `digest` for SIP Digest authentication. Handles 401 and 407 challenges.
+
+          - `"digest"`
+
+        - `username: string`
+
+          Provider username. Must contain a non-whitespace character, be at most 256 bytes, and contain no CR, LF, or NUL.
+
+      - `caller_number: string`
+
+        Caller phone number in E.164 format to use in the SIP From header.
+
+      - `provider_url: string`
+
+        Provider endpoint in the form `sips:host[:port][;transport=tcp]`. The default port is 5061. IPv6 addresses must be bracketed. TLS signaling is required; plaintext SIP is not supported. Do not include userinfo, a path, URI headers, or other URI parameters. Local hostnames and literal private, loopback, link-local, unspecified, multicast, and broadcast IP addresses are rejected.
+
+    - `type: "sip"`
+
+      The transport used for the Live session. Always `sip`.
+
+      - `"sip"`
 
 ### Returns
 
@@ -478,19 +543,33 @@ Create a Live WebRTC session. Start with the [Live prompting guide](/api/docs/gu
 
     Opaque session identifier. Preserve the returned value unchanged, including its prefix.
 
-- `transport: object { sdp, type }`
+- `transport: object { sdp, type }  or object { type }`
 
-  WebRTC transport with the SDP answer.
+  WebRTC transport with an SDP answer, or SIP transport without SDP or trunk credentials. For SIP, attach a sideband using session.id to receive transport.ringing, transport.answered, and transport.failed notifications.
 
-  - `sdp: string`
+  - `Webrtc object { sdp, type }`
 
-    Session Description Protocol message for the WebRTC connection.
+    WebRTC transport carrying the offer SDP in a creation request or answer SDP in its response.
 
-  - `type: "webrtc"`
+    - `sdp: string`
 
-    The transport used for the Live session. Always `webrtc`.
+      Session Description Protocol message for the WebRTC connection.
 
-    - `"webrtc"`
+    - `type: "webrtc"`
+
+      The transport used for the Live session. Always `webrtc`.
+
+      - `"webrtc"`
+
+  - `Sip object { type }`
+
+    The SIP transport. Trunk credentials and SDP are not returned.
+
+    - `type: "sip"`
+
+      The transport used for the Live session. Always `sip`.
+
+      - `"sip"`
 
 ### Example
 
@@ -523,11 +602,53 @@ curl https://api.openai.com/v1/live/sessions \
 }
 ```
 
-### Example
+### Create a WebRTC session
 
 ```http
 curl https://api.openai.com/v1/live/sessions \
   -H "Authorization: Bearer $OPENAI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"session":{"model":"gpt-live-1","instructions":"Be concise. Ask for clarification when needed."},"transport":{"type":"webrtc","sdp":"<SDP offer>"}}'
+```
+
+#### Response
+
+```json
+{"session":{"id":"live_123"},"transport":{"type":"webrtc","sdp":"<SDP answer>"}}
+```
+
+### Place an outbound SIP call
+
+```http
+# Export SIP_USERNAME and SIP_PASSWORD in your environment first.
+jq -n '{
+    "session": {
+      "model": "gpt-live-1",
+      "instructions": "Help the user schedule an appointment.",
+      "audio": { "output": { "voice": "marin" } },
+      "delegation": { "type": "client" }
+    },
+    "transport": {
+      "type": "sip",
+      "destination": "+14155550123",
+      "trunk": {
+        "provider_url": "sips:sip.example.com:5061",
+        "auth": {
+          "type": "digest",
+          "username": env.SIP_USERNAME,
+          "password": env.SIP_PASSWORD
+        },
+        "caller_number": "+14155550100"
+      }
+    }
+  }' | curl https://api.openai.com/v1/live/sessions \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -H "Content-Type: application/json" \
+    --data-binary @-
+```
+
+#### Response
+
+```json
+{"session":{"id":"live_123"},"transport":{"type":"sip"}}
 ```

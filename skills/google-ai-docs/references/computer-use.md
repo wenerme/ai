@@ -192,8 +192,6 @@ Then, initialize a Playwright browser instance to use for execution:
 
 Initialize the client library and configure the Computer Use tool. Note that there is no need to specify the display size when issuing a request; the model predicts pixel coordinates scaled to the height and width of the screen.
 
-### Gemini 3.x
-
 ### Python
 
 Use the `google-genai` Python SDK (version `2.7.0` or higher) to configure a request targeting the browser environment:
@@ -330,138 +328,10 @@ Use curl to send a request:
         ]
       }'
 
-### Gemini 2.5 (Legacy)
-
-### Python
-
-    from google import genai
-
-    client = genai.Client()
-
-    # Specify predefined functions to exclude (optional)
-    excluded_functions = ["drag_and_drop"]
-
-    interaction = client.interactions.create(
-        model='gemini-2.5-computer-use-preview-10-2025',
-        input="Search for highly rated smart fridges on Google Shopping.",
-        tools=[
-            {
-                "type": "computer_use",
-                "environment": "browser",
-                "excluded_predefined_functions": excluded_functions
-            }
-        ]
-    )
-
-    print(interaction)
-
-### JavaScript
-
-    import { GoogleGenAI } from '@google/genai';
-
-    const ai = new GoogleGenAI();
-
-    // Specify predefined functions to exclude (optional)
-    const excludedFunctions = ["drag_and_drop"];
-
-    const interaction = await ai.interactions.create({
-      model: 'gemini-2.5-computer-use-preview-10-2025',
-      input: "Search for highly rated smart fridges on Google Shopping.",
-      tools: [
-        {
-          type: "computer_use",
-          environment: "browser",
-          excluded_predefined_functions: excludedFunctions
-        }
-      ]
-    });
-
-    console.log(interaction);
-
-### Java
-
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.ComputerUse;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.EnvironmentEnum;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
-    import java.util.List;
-
-    Client client = new Client();
-
-    // Specify predefined functions to exclude (optional)
-    List<String> excludedFunctions = Arrays.asList("drag_and_drop");
-
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model("gemini-2.5-computer-use-preview-10-2025")
-            .input(InteractionsInput.of("Search for highly rated smart fridges on Google Shopping."))
-            .tools(
-                Arrays.asList(
-                    ComputerUse.builder()
-                        .environment(EnvironmentEnum.BROWSER)
-                        .excludedPredefinedFunctions(excludedFunctions)
-                        .build()))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction);
-
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "log"
-
-        "google.golang.org/genai"
-        "google.golang.org/genai/interactions/models/interactions"
-        "google.golang.org/genai/interactions/models/operations"
-    )
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        // Specify predefined functions to exclude (optional)
-        excludedFunctions := []string{"drag_and_drop"}
-
-        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
-            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-2.5-computer-use-preview-10-2025"),
-                Input: interactions.NewInteractionsInput("Search for highly rated smart fridges on Google Shopping."),
-                Tools: []interactions.Tool{
-                    interactions.NewTool(interactions.ComputerUse{
-                        Environment:                 interactions.EnvironmentEnumBrowser.ToPointer(),
-                        ExcludedPredefinedFunctions: excludedFunctions,
-                    }),
-                },
-            }),
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        fmt.Println(res.Interaction)
-    }
-
 ### 2. Receive the model response
 
-The response model suggests a function call. For **Gemini 3.x models**, the
-response contains a tailored reasoning intent alongside coordinates. The
-following shows examples of both responses:
-
-### Gemini 3.x
+The model response suggests a function call containing coordinates and a
+tailored reasoning intent explaining the action:
 
     {
       "steps": [
@@ -477,37 +347,9 @@ following shows examples of both responses:
       ]
     }
 
-### Gemini 2.5 (Legacy)
-
-    {
-      "steps": [
-        {
-          "type": "model_output",
-          "content": [
-            {
-              "type": "text",
-              "text": "I will type the search query into the search bar."
-            }
-          ]
-        },
-        {
-          "type": "function_call",
-          "name": "type_text_at",
-          "arguments": {
-            "x": 371,
-            "y": 470,
-            "text": "highly rated smart fridges",
-            "press_enter": true
-          }
-        }
-      ]
-    }
-
 ### 3. Execute the received actions
 
-Your application must parse the response coordinates, execute the action, and scale them from the normalized 1000x1000 coordinates.
-
-The code below handles both legacy tool commands (`click_at`, `type_text_at`) and modern streamlined commands (`click`, `type`).
+Your application must parse the response coordinates, scale them from the normalized 1000x1000 coordinates, and execute the action:
 
 ### Python
 
@@ -535,13 +377,13 @@ The code below handles both legacy tool commands (`click_at`, `type_text_at`) an
             print(f"  -> Executing: {fname} (Intent: {args.get('intent', 'N/A')})")
 
             try:
-                if fname in ("open_web_browser", "open_app"):
+                if fname == "open_app":
                     pass # Handled / already open
-                elif fname in ("click", "click_at", "double_click", "triple_click", "middle_click", "right_click", "move", "long_press"):
+                elif fname in ("click", "double_click", "triple_click", "middle_click", "right_click", "move", "long_press"):
                     actual_x = denormalize_x(args["x"], screen_width)
                     actual_y = denormalize_y(args["y"], screen_height)
 
-                    if fname in ("click", "click_at"):
+                    if fname == "click":
                         page.mouse.click(actual_x, actual_y)
                     elif fname == "double_click":
                         page.mouse.dblclick(actual_x, actual_y)
@@ -551,7 +393,7 @@ The code below handles both legacy tool commands (`click_at`, `type_text_at`) an
                         page.mouse.click(actual_x, actual_y, button="middle")
                     elif fname == "move":
                         page.mouse.move(actual_x, actual_y)
-                elif fname in ("type", "type_text_at"):
+                elif fname == "type":
                     actual_x = denormalize_x(args["x"], screen_width) if "x" in args else None
                     actual_y = denormalize_y(args["y"], screen_height) if "y" in args else None
                     text = args["text"]
@@ -610,13 +452,13 @@ The code below handles both legacy tool commands (`click_at`, `type_text_at`) an
             console.log(`  -> Executing: ${fname} (Intent: ${args.intent || 'N/A'})`);
 
             try {
-                if (fname === "open_web_browser" || fname === "open_app") {
+                if (fname === "open_app") {
                     // Handled / already open
-                } else if (["click", "click_at", "double_click", "triple_click", "middle_click", "right_click", "move", "long_press"].includes(fname)) {
+                } else if (["click", "double_click", "triple_click", "middle_click", "right_click", "move", "long_press"].includes(fname)) {
                     const actualX = denormalizeX(args.x, screenWidth);
                     const actualY = denormalizeY(args.y, screenHeight);
 
-                    if (fname === "click" || fname === "click_at") {
+                    if (fname === "click") {
                         await page.mouse.click(actualX, actualY);
                     } else if (fname === "double_click") {
                         await page.mouse.dblclick(actualX, actualY);
@@ -627,7 +469,7 @@ The code below handles both legacy tool commands (`click_at`, `type_text_at`) an
                     } else if (fname === "move") {
                         await page.mouse.move(actualX, actualY);
                     }
-                } else if (fname === "type" || fname === "type_text_at") {
+                } else if (fname === "type") {
                     const actualX = args.x !== undefined ? denormalizeX(args.x, screenWidth) : null;
                     const actualY = args.y !== undefined ? denormalizeY(args.y, screenHeight) : null;
                     const text = args.text;
@@ -703,11 +545,11 @@ The code below handles both legacy tool commands (`click_at`, `type_text_at`) an
                 "  -> Executing: " + fname + " (Intent: " + args.getOrDefault("intent", "N/A") + ")");
 
             try {
-              if (fname.equals("click") || fname.equals("click_at")) {
+              if (fname.equals("click")) {
                 int actualX = denormalizeX(((Number) args.get("x")).intValue(), screenWidth);
                 int actualY = denormalizeY(((Number) args.get("y")).intValue(), screenHeight);
                 // Perform mouse click at (actualX, actualY) using your browser automation library
-              } else if (fname.equals("type") || fname.equals("type_text_at")) {
+              } else if (fname.equals("type")) {
                 String text = (String) args.get("text");
                 // Type text into active element using your browser automation library
               } else if (fname.equals("navigate")) {
@@ -763,7 +605,7 @@ The code below handles both legacy tool commands (`click_at`, `type_text_at`) an
                 fmt.Printf("  -> Executing: %s (Intent: %v)\n", fname, intent)
 
                 switch fname {
-                case "click", "click_at":
+                case "click":
                     xVal, _ := args["x"].(float64)
                     yVal, _ := args["y"].(float64)
                     actualX := denormalizeX(int(xVal), screenWidth)
@@ -771,7 +613,7 @@ The code below handles both legacy tool commands (`click_at`, `type_text_at`) an
                     _ = actualX
                     _ = actualY
                     // Perform mouse click at (actualX, actualY) using your browser automation library
-                case "type", "type_text_at":
+                case "type":
                     text, _ := args["text"].(string)
                     _ = text
                     // Type text into active element using your browser automation library
@@ -1344,7 +1186,7 @@ model responses and your function responses to the history at each step.
         }
     }
 
-## Supported environments (Gemini 3.x)
+## Supported environments
 
 Gemini 3.x models support three environments specified in the `computer_use`
 configurations:
@@ -1417,31 +1259,9 @@ Desktop environments OS-level cursor commands:
 | **take_screenshot** | Returns a screenshot of the current screen. | `intent`: str |
 | **scroll** | Scrolls up, down, left, or right at a coordinate by a pixel distance. | `y`: int (0-999) `x`: int (0-999) `direction`: str (`"up"`, `"down"`, `"left"`, `"right"`) `magnitude_in_pixels`: int (0-999, Optional, default `300`) `intent`: str |
 
-## Legacy Supported UI actions (Gemini 2.5)
-
-For legacy models (`gemini-2.5-computer-use-preview-10-2025`), the following actions are supported:
-
-| Command name | Description | Arguments (in function call) | Example function call |
-|---|---|---|---|
-| **open_web_browser** | Opens the web browser. | None | `{"name": "open_web_browser", "arguments": {}}` |
-| **wait_5_seconds** | Pauses execution for 5 seconds. | None | `{"name": "wait_5_seconds", "arguments": {}}` |
-| **go_back** | Navigates to the previous page in history. | None | `{"name": "go_back", "arguments": {}}` |
-| **go_forward** | Navigates to the next page in history. | None | `{"name": "go_forward", "arguments": {}}` |
-| **search** | Navigates to default search engine. | None | `{"name": "search", "arguments": {}}` |
-| **navigate** | Navigates the browser directly to the specified URL. | `url`: str | `{"name": "navigate", "arguments": {"url": "https://www.wikipedia.org"}}` |
-| **click_at** | Clicks at a specific coordinate. | `y`: int (0-999), `x`: int (0-999) | `{"name": "click_at", "arguments": {"y": 300, "x": 500}}` |
-| **hover_at** | Hovers mouse at a specific coordinate. | `y`: int (0-999), `x`: int (0-999) | `{"name": "hover_at", "arguments": {"y": 150, "x": 250}}` |
-| **type_text_at** | Types text at a coordinate. | `y`: int (0-999), `x`: int (0-999), `text`: str, `press_enter`: bool (Optional, default True), `clear_before_typing`: bool (Optional, default True) | `{"name": "type_text_at", "arguments": {"y": 250, "x": 400, "text": "search", "press_enter": false}}` |
-| **key_combination** | Press keys or combinations. | `keys`: str | `{"name": "key_combination", "arguments": {"keys": "Control+A"}}` |
-| **scroll_document** | Scrolls the entire webpage. | `direction`: str | `{"name": "scroll_document", "arguments": {"direction": "down"}}` |
-| **scroll_at** | Scrolls at coordinate (x,y). | `y`: int, `x`: int, `direction`: str, `magnitude`: int (Optional, default 800) | `{"name": "scroll_at", "arguments": {"y": 500, "x": 500, "direction": "down"}}` |
-| **drag_and_drop** | Drags between two coordinates. | `y`: int, `x`: int, `destination_y`: int, `destination_x`: int | `{"name": "drag_and_drop", "arguments": {"y": 100, "destination_y": 500, "destination_x": 500, "x": 100}}` |
-
 ## Custom user-defined functions
 
 You can extend the functionality of the model by including custom user-defined functions. For example, in human-in-the-loop (HITL) scenarios you can exclude default predefined actions and register custom actions.
-
-#### Gemini 3.x Custom Tooling
 
 ### Python
 
@@ -1625,202 +1445,13 @@ Exclude standard predefined browser actions (such as `click`) and register a cus
         }
     }
 
-#### Gemini 2.5 (Legacy) Custom Tooling
-
-### Python
-
-    from google import genai
-
-    client = genai.Client()
-
-    # Define custom tools here
-    custom_functions = [...]  # Describe parameters as function declarations
-
-    excluded_functions = [
-        "open_web_browser",
-        "wait_5_seconds",
-        "go_back",
-        "go_forward",
-        "search",
-        "navigate",
-        "hover_at",
-        "scroll_document",
-        "key_combination",
-        "drag_and_drop",
-    ]
-
-    interaction = client.interactions.create(
-        model='gemini-2.5-computer-use-preview-10-2025',
-        input="Open Chrome, then long-press at 200,400.",
-        tools=[
-            {
-                "type": "computer_use",
-                "environment": "browser",
-                "excluded_predefined_functions": excluded_functions
-            },
-            *custom_functions
-        ]
-    )
-
-    print(interaction)
-
-### JavaScript
-
-    import { GoogleGenAI } from '@google/genai';
-
-    const ai = new GoogleGenAI();
-
-    // Define custom tools here
-    const customFunctions = [...]; // Describe parameters as function declarations
-
-    const excludedFunctions = [
-        "open_web_browser",
-        "wait_5_seconds",
-        "go_back",
-        "go_forward",
-        "search",
-        "navigate",
-        "hover_at",
-        "scroll_document",
-        "key_combination",
-        "drag_and_drop",
-    ];
-
-    const interaction = await ai.interactions.create({
-        model: 'gemini-2.5-computer-use-preview-10-2025',
-        input: "Open Chrome, then long-press at 200,400.",
-        tools: [
-            {
-                type: "computer_use",
-                environment: "browser",
-                excluded_predefined_functions: excludedFunctions
-            },
-            ...customFunctions
-        ]
-    });
-
-    console.log(interaction);
-
-### Java
-
-    import com.google.genai.Client;
-    import com.google.genai.gaos.models.interactions.ComputerUse;
-    import com.google.genai.gaos.models.interactions.CreateModelInteraction;
-    import com.google.genai.gaos.models.interactions.EnvironmentEnum;
-    import com.google.genai.gaos.models.interactions.Function;
-    import com.google.genai.gaos.models.interactions.Interaction;
-    import com.google.genai.gaos.models.interactions.InteractionsInput;
-    import com.google.genai.gaos.models.operations.CreateInteractionRequestBody;
-    import java.util.Arrays;
-    import java.util.List;
-
-    Client client = new Client();
-
-    // Define custom tools here
-    Function customFunction =
-        Function.builder()
-            .name("long_press_at")
-            .description("Long-press at specified coordinates.")
-            .build();
-
-    List<String> excludedFunctions =
-        Arrays.asList(
-            "open_web_browser",
-            "wait_5_seconds",
-            "go_back",
-            "go_forward",
-            "search",
-            "navigate",
-            "hover_at",
-            "scroll_document",
-            "key_combination",
-            "drag_and_drop");
-
-    CreateModelInteraction params =
-        CreateModelInteraction.builder()
-            .model("gemini-2.5-computer-use-preview-10-2025")
-            .input(InteractionsInput.of("Open Chrome, then long-press at 200,400."))
-            .tools(
-                Arrays.asList(
-                    ComputerUse.builder()
-                        .environment(EnvironmentEnum.BROWSER)
-                        .excludedPredefinedFunctions(excludedFunctions)
-                        .build(),
-                    customFunction))
-            .build();
-
-    Interaction interaction =
-        client.interactions.create(CreateInteractionRequestBody.of(params)).interaction().get();
-
-    System.out.println(interaction);
-
-### Go
-
-    package main
-
-    import (
-        "context"
-        "fmt"
-        "log"
-
-        "google.golang.org/genai"
-        "google.golang.org/genai/interactions/models/interactions"
-        "google.golang.org/genai/interactions/models/operations"
-    )
-
-    func main() {
-        ctx := context.Background()
-        client, err := genai.NewClient(ctx, nil)
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        // Define custom tools here
-        customFunction := interactions.NewTool(interactions.Function{
-            Name:        genai.Ptr("long_press_at"),
-            Description: genai.Ptr("Long-press at specified coordinates."),
-        })
-
-        excludedFunctions := []string{
-            "open_web_browser",
-            "wait_5_seconds",
-            "go_back",
-            "go_forward",
-            "search",
-            "navigate",
-            "hover_at",
-            "scroll_document",
-            "key_combination",
-            "drag_and_drop",
-        }
-
-        res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
-            Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-2.5-computer-use-preview-10-2025"),
-                Input: interactions.NewInteractionsInput("Open Chrome, then long-press at 200,400."),
-                Tools: []interactions.Tool{
-                    interactions.NewTool(interactions.ComputerUse{
-                        Environment:                 interactions.EnvironmentEnumBrowser.ToPointer(),
-                        ExcludedPredefinedFunctions: excludedFunctions,
-                    }),
-                    customFunction,
-                },
-            }),
-        })
-        if err != nil {
-            log.Fatal(err)
-        }
-
-        fmt.Println(res.Interaction)
-    }
-
-## Managing thinking levels (Gemini 3.x)
+## Managing thinking levels
 
 For computer use agents, you can configure different thinking levels to balance action quality and execution speed. Lower thinking levels generally achieve a good balance for standard automation tasks.
 
 ## Safety and security
 
-### Configuring safety policies (Gemini 3.x)
+### Configuring safety policies
 
 Gemini 3.x models include built-in safety service categories that automatically determine if user confirmation is required.
 
@@ -1950,7 +1581,7 @@ You can override select policies by passing overrides:
         }
     }
 
-### Prompt injection detection (Gemini 3.x)
+### Prompt injection detection
 
 Computer Use for Gemini 3.5 Flash or later supports an advanced safety
 mechanism to detect prompt injection attacks. When enabled, this feature
@@ -2088,7 +1719,7 @@ The response may include a `safety_decision` parameter in the function call argu
       "steps": [
         {
           "type": "function_call",
-          "name": "click_at",
+          "name": "click",
           "arguments": {
             "x": 60,
             "y": 100,
@@ -2126,7 +1757,7 @@ in executing actions. Implement the following best practices to protect user
 data and systems:
 
 1. **Human-in-the-Loop (HITL):**
-   - **Enforce user confirmation:** When the safety response indicates `require_confirmation` (or legacy safety decision requires it), prompt the user for approval.
+   - **Enforce user confirmation:** When the safety response indicates `require_confirmation`, prompt the user for approval.
    - **Provide custom safety instructions:** Implement a custom system instruction to define and enforce your own safety boundaries. For example:
 
      ### Python
@@ -2433,7 +2064,6 @@ You can use Computer Use with the following models:
 - [**Gemini 3.5 Flash-Lite**](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) (`gemini-3.5-flash-lite`): A low-latency, cost-effective model supporting computer use.
 - [**Gemini 3.5 Flash**](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) (`gemini-3.5-flash`): Previous stable model supporting computer use.
 - [**Gemini 3 Flash Preview**](https://ai.google.dev/gemini-api/docs/models/gemini-3-flash-preview) (`gemini-3-flash-preview`): Preview model supporting computer use.
-- [**Gemini 2.5 (Legacy Preview)**](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025) (`gemini-2.5-computer-use-preview-10-2025`): Legacy preview model optimized for browser-based computer use.
 
 ## What's next
 

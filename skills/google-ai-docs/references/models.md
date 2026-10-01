@@ -155,7 +155,6 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 | Model | Description | Endpoint |
 |---|---|---|
-| [Computer Use](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025) | A specialized model that can "see" a digital screen and perform UI actions like clicking, typing, and navigating to automate complex browser tasks. | ``` gemini-2.5-computer-use-preview-10-2025 ``` |
 | [Gemini Deep Research](https://ai.google.dev/gemini-api/docs/models/deep-research-preview-04-2026) | An agentic model that autonomously plans and executes multi-step research across hundreds of sources to produce cited, interactive reports. | ``` deep-research-preview-04-2026 ``` |
 | [Gemini Deep Research Max](https://ai.google.dev/gemini-api/docs/models/deep-research-max-preview-04-2026) | Maximum comprehensiveness for automated context gathering and synthesis across hundreds of sources. | ``` deep-research-max-preview-04-2026 ``` |
 | [Antigravity Agent](https://ai.google.dev/gemini-api/docs/models/antigravity-preview-09-2026) | A general-purpose managed agent that autonomously plans, reasons, runs code, manages files, and browses the web inside a secure, isolated Linux sandbox. | ``` antigravity-preview-09-2026 ``` |
@@ -176,6 +175,7 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 | Model | Description | Endpoint |
 |---|---|---|
+| [Computer Use](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025) (Shut down) | A specialized model that can "see" a digital screen and perform UI actions like clicking, typing, and navigating to automate complex browser tasks. | ``` gemini-2.5-computer-use-preview-10-2025 ``` |
 | [Gemini 2.0 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash) (Shut down) | Our second generation workhorse model, with next-gen features and improved capabilities, including superior speed, native tool use, and a 1M token context window. | ``` gemini-2.0-flash ``` |
 | [Gemini 2.0 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-2.0-flash-lite) (Shut down) | Our fastest second generation model, optimized for cost efficiency and low latency. | ``` gemini-2.0-flash-lite ``` |
 | [Gemini 3.1 Flash-Lite Preview](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-preview) (Shut down) | Our most cost-efficient multimodal model, offering the fastest performance for high-frequency, lightweight tasks. | ``` gemini-3.1-flash-lite-preview ``` |

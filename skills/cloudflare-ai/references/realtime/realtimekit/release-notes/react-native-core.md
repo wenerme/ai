@@ -32,7 +32,7 @@ This is a major breaking release. Review all breaking changes below before upgra
 - Requires Expo 56 or above (for Expo users).
 - Requires iOS 15.1 or above.
 - Requires @cloudflare/react-native-webrtc v137.0.1 or above.
-- Removed `RealtimeKitCore` import in iOS Screenshare setup and added a Podfile installer script to automatically add references to the Screenshare related files. Refer documentation for [iOS Screenshare setup](https://developers.cloudflare.com/realtime/realtimekit/core/local-participant/#screen-share-setup-ios).
+- Removed `RealtimeKitCore` import in iOS Screenshare setup and added a Podfile installer script to automatically add references to the Screenshare related files. Refer documentation for [iOS screen sharing](https://developers.cloudflare.com/realtime/realtimekit/core/ios-screen-sharing/).
 - `initClient` return type changed from `Promise<RealtimeKitClient>` to `Promise<RealtimeKitClient | undefined>`. Code that assumes `initClient` always returns a defined value must add a null check.
 
 **Features**

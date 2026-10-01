@@ -20,11 +20,12 @@ The query editor appears in [Explore](/docs/grafana/latest/visualizations/explor
 
 Expand table
 
-| Element         | Description                                                                                                                                                                                |
-|-----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Editor type** | Switch between **SQL** (write raw SQL) and **Query builder** (build queries with drop-downs and filters).                                                                                  |
-| **Run Query**   | Runs the current query and refreshes the panel. In the SQL editor you can also use **Ctrl+Enter** (Windows/Linux) or **Cmd+Enter** (macOS).                                                |
-| **Query type**  | Choose the result format: **Table**, **Logs**, **Time series**, or **Traces**. This sets how Grafana interprets and visualizes the results. Available in both SQL and Query builder modes. |
+| Element          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Editor type**  | Switch between **SQL** (write raw SQL) and **Query builder** (build queries with drop-downs and filters).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| **Run Query**    | Runs the current query and refreshes the panel. In the SQL editor you can also use **Ctrl+Enter** (Windows/Linux) or **Cmd+Enter** (macOS).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| **Query type**   | Choose the result format: **Table**, **Logs**, **Time series**, or **Traces**. This sets how Grafana interprets and visualizes the results. Available in both SQL and Query builder modes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| **Min interval** | A lower bound for this query’s interval, as one number plus a unit of `ms`, `s`, `m`, `h`, `d` or `w` (for example `10s`, `5m`, `1d`). It raises the interval Grafana derives from the time range and panel width, so `$__timeInterval`, `$__timeInterval_ms`, `$__interval_s`, `$__timeGroup`, `$__interval` and `$__interval_ms` never bucket finer than the value you set; it never lowers the interval. Leave it empty to use the interval Grafana picks. Explore has no panel-level **Min interval**, so this is the only way to control bucket size there. The floor applies in Explore, dashboard panels and alert rules alike, and to the Explore log volume histogram. Values outside that grammar, including `1M` and `1y`, are rejected in the editor and ignored by the backend. |
 
 **In SQL mode:**
 
@@ -115,6 +116,8 @@ Expand table
 
 You can also filter by log message text using the search field, and add column filters for resource, scope, or log attributes.
 
+Columns configured through the data source **Columns** setting are projected into new logs queries automatically, so they appear here as browsable, filterable fields without editing the query. See [Logs configuration](/docs/plugins/grafana-clickhouse-datasource/latest/configure/#logs-configuration).
+
 ### Traces query builder
 
 The traces query builder supports two modes:
@@ -158,11 +161,23 @@ The [OTel ClickHouse exporter JSON schema](https://github.com/open-telemetry/ope
 
 ### Log volume and logs sample
 
-When using the **query builder** in Explore with the **Logs** query type, Grafana automatically shows a **log volume** histogram above the log results and can display a **logs sample** panel. These supplementary queries are generated by the plugin and run alongside your main query.
+In Explore with the **Logs** query type, Grafana automatically shows a **log volume** histogram above the log results and can display a **logs sample** panel. These supplementary queries are generated by the plugin and run alongside your main query.
+
+Log volume works for queries written in either the **query builder** or the **SQL editor**. For a SQL editor query, the plugin aggregates over your query as a subquery, so your filters, joins, CTEs, macros, and template variables are preserved, and it removes your `ORDER BY` and `LIMIT` so the histogram covers the whole selected time range instead of just the rows your query returns. Log level series require a log level column configured under **Logs** in the data source settings and projected by your query.
+
+When the plugin cannot guarantee a correct count it declines, and Grafana draws its row-based histogram instead. It declines when:
+
+- No log timestamp column is configured, so there is nothing to bucket on. A data source configured with only a lower-precision *filter* timestamp declines too.
+- The query does not select the configured timestamp column first, or selects it as an expression.
+- A `SELECT *` query reads anything other than the configured logs table, including a CTE that shadows its name.
+- The query uses a construct that changes which rows exist: `SETTINGS`, `LIMIT n BY`, `WITH FILL`, `WITH TOTALS`, `UNION`, an interval macro, or more than one statement.
+- The query ends in a row limit the plugin cannot parse, such as `LIMIT (500)` or `LIMIT ${maxRows}`.
+
+Grafana renders one histogram per panel, so a single query that cannot be aggregated makes every query in that panel fall back, including query builder queries.
 
 > Note
 >
-> Log volume and logs sample are only available when all queries in the panel use the **query builder**. If any query uses the **SQL editor**, supplementary queries are disabled.
+> Falling back to the row-based histogram requires Grafana 12.4.0 or later. On earlier versions the aggregated histogram still works, but a query the plugin declines shows no volume chart at all.
 
 ## Time series
 

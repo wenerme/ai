@@ -74,7 +74,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
       Automatically selects the most detailed summary supported by the model.
 
-- `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+- `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
 
   The service tier used for model requests. Defaults to `auto`.
 
@@ -97,10 +97,6 @@ Creates a reusable agent without storing credentials. See [agent configuration](
   - `"fast"`
 
     Uses the fast service tier.
-
-  - `"ultrafast"`
-
-    Uses the ultrafast service tier.
 
 - `text: optional AgentTextParam or null`
 
@@ -1784,7 +1780,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
       Automatically selects the most detailed summary supported by the model.
 
-- `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+- `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
 
   The service tier used for model requests.
 
@@ -1807,10 +1803,6 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
   - `"fast"`
 
     Uses the fast service tier.
-
-  - `"ultrafast"`
-
-    Uses the ultrafast service tier.
 
 - `text: optional AgentTextParam or null`
 
@@ -2484,6 +2476,32 @@ curl https://api.openai.com/v1/agents/$AGENT_ID \
   ],
   "updated_at": 0
 }
+```
+
+### Example
+
+```http
+# 1. Omit reasoning: keep its current settings while renaming the agent.
+curl "https://api.openai.com/v1/agents/$AGENT_ID" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: agents=v1" \
+  -d '{"name": "Renamed"}'
+
+# 2. Send null: reset reasoning to the model's defaults.
+curl "https://api.openai.com/v1/agents/$AGENT_ID" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: agents=v1" \
+  -d '{"reasoning": null}'
+
+# 3. Send an object: replace the entire reasoning configuration, without merging.
+# The agent's model must support the "low" reasoning effort.
+curl "https://api.openai.com/v1/agents/$AGENT_ID" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "OpenAI-Beta: agents=v1" \
+  -d '{"reasoning": {"effort": "low"}}'
 ```
 
 ## Domain Types
@@ -22595,7 +22613,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
         Automatically selects the most detailed summary supported by the model.
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
 
     The service tier used for model requests.
 
@@ -22618,10 +22636,6 @@ Creates a managed agent session, optionally submits initial input, and returns t
     - `"fast"`
 
       Uses the fast service tier.
-
-    - `"ultrafast"`
-
-      Uses the ultrafast service tier.
 
   - `text: optional AgentTextParam or null`
 
@@ -25782,7 +25796,7 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
       - `"max"`
 
-  - `service_tier: optional "auto" or "default" or "flex" or 3 more or null`
+  - `service_tier: optional "auto" or "default" or "flex" or 2 more or null`
 
     Omit to keep the current tier. Null resets it to auto.
 
@@ -25805,10 +25819,6 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
     - `"fast"`
 
       Uses the fast service tier.
-
-    - `"ultrafast"`
-
-      Uses the ultrafast service tier.
 
 - `metadata: optional map[string] or null`
 

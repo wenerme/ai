@@ -146,6 +146,20 @@ This flag is automatically enabled when the `remove_nodejs_compat_eol` flag is e
 
 With the `durable_object_io_tasks_prevent_eviction` flag set, pending I/O keeps a Durable Object in memory after the client disconnects or drops its reference to the object. This includes service binding requests, Durable Object RPC calls, `container.monitor()`, and promises passed to `this.ctx.waitUntil()`. Each operation prevents eviction until it completes or for up to 15 minutes from when it starts, whichever comes first. Without this flag, a Durable Object with no connected client can be evicted while these operations are still pending. For more information, refer to [Lifecycle of a Durable Object](https://developers.cloudflare.com/durable-objects/concepts/durable-object-lifecycle/).
 
+### Web Crypto modern algorithms
+
+| **Flag to enable** | `webcrypto_modern_algorithms` |
+| --- | --- |
+
+Enables the Workers subset of the evolving [Modern Algorithms in the Web Cryptography API ↗︎](https://wicg.github.io/webcrypto-modern-algos/) draft. This subset includes:
+
+- ML-KEM and ML-DSA.
+- Key encapsulation and decapsulation methods.
+- `getPublicKey()` and `SubtleCrypto.supports()`.
+- JSON Web Keys (JWKs) with the `AKP` key type.
+
+Workers does not implement the full proposal. The API may change as the draft evolves. Refer to [Supported algorithms](https://developers.cloudflare.com/workers/runtime-apis/web-crypto/#supported-algorithms) for current support.
+
 ### Python 314 for Python Workers
 
 | **Default as of** | 2026-09-08 |

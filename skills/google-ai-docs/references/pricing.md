@@ -1275,19 +1275,6 @@ function calling.
 | Grounding with Google Search | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests. |
 | Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
 
-## Gemini 2.5 Computer Use Preview
-
-*[`gemini-2.5-computer-use-preview-10-2025`](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-computer-use-preview-10-2025)*
-
-Our Computer Use model optimized for building browser control agents that
-automate tasks.
-
-|   | Free Tier | Paid Tier, per 1M tokens in USD |
-|---|---|---|
-| Input price | Not available | $1.25, prompts \<= 200k tokens $2.50, prompts \> 200k token |
-| Output price | Not available | $10.00, prompts \<= 200k tokens $15.00, prompts \> 200k |
-| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
-
 ## [Gemma 4](https://ai.google.dev/gemma/docs/core/model_card_4)
 
 Our lightweight, state-of the art, open model built from the same technology
@@ -1315,7 +1302,7 @@ to each model.
 | [Google Maps](https://ai.google.dev/gemini-api/docs/maps-grounding#pricing_and_rate_limits) | 500 RPD Not available for Pro. | 1,500 RPD free (limit shared for Flash and Flash-Lite) 10,000 RPD free for Pro. Then $25 / 1,000 grounded prompts |
 | [Code execution](https://ai.google.dev/gemini-api/docs/code-execution#billing) | Free of charge | Code execution is billed at the standard token rates for the selected model. Costs are determined solely by the tool's usage, no charges are accrued for the session runtime. The generated code and execution results are billed as **Output tokens** when created, and as **Input tokens** when the model uses them as part of its iterative reasoning process. |
 | [URL context](https://ai.google.dev/gemini-api/docs/url-context#limitations) | Free of charge | Charged as input tokens per model pricing. |
-| [Computer use](https://ai.google.dev/gemini-api/docs/computer-use) | Not available | Charged as regular tokens per model pricing (e.g., standard [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.6-flash) pricing). See the [Gemini 2.5 Computer Use Preview](https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-computer-use-preview-10-2025) pricing table for legacy model rates. |
+| [Computer use](https://ai.google.dev/gemini-api/docs/computer-use) | Not available | Charged as regular tokens per model pricing (e.g., standard [Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.8-flash) pricing). |
 | [File search](https://ai.google.dev/gemini-api/docs/file-search#pricing) | Free of charge | Charged for [embeddings](https://ai.google.dev/gemini-api/docs/pricing#gemini-embedding-2) at $0.15 / 1M tokens. Retrieved document tokens charged as regular tokens per model pricing. |
 | [Custom Tools endpoint (Gemini 3.1 Pro Preview)](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-pro-preview) | Not available | Same as [Gemini 3.1 Pro Preview](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-pro-preview) pricing |
 
