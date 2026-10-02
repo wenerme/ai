@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/observability/logs/workers-logs
 
 # Workers Logs
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/logs/workers-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/logs/workers-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Logs lets you automatically collect, store, filter, and analyze logging data emitted from Cloudflare Workers. Data is written to your Cloudflare Account, and you can query it in the dashboard for each of your Workers. All newly created Workers will come with the observability setting enabled by default.
 
@@ -22,7 +22,7 @@ To group related exceptions, failed invocations, and error logs, use [Workers Is
 
 ![Example showing the Workers Logs Dashboard](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=2758,height=778,format=webp/_astro/wobs_workers_events_122.DvoADmO-.png)
 
-To send logs to a third party, use [OpenTelemetry export](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/) (recommended), [Workers Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/), or [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/).
+To send logs to a third party, use [OpenTelemetry export](https://developers.cloudflare.com/workers/observability/opentelemetry-export/) (recommended), [Workers Logpush](https://developers.cloudflare.com/workers/observability/logs/logpush/), or [Tail Workers](https://developers.cloudflare.com/workers/observability/logs/tail-workers/).
 
 ## Enable Workers Logs
 
@@ -223,6 +223,10 @@ Workers Logs is included in both the Free and Paid [Workers plans](https://devel
 | **Workers Free** | 200,000 per day | 3 Days |
 | **Workers Paid** | 20 million included per month <br> +$0.60 per additional million | 7 Days |
 
+Pricing change
+
+Beginning December 1, 2026, Workers Logs will use [Cloudflare Observability pricing](https://developers.cloudflare.com/observability/pricing/). Until then, the Workers Logs pricing in this table applies.
+
 ### Examples
 
 #### Example 1
@@ -252,5 +256,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/#page","headline":"Workers Logs","description":"Store, filter, and analyze log data emitted from Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/og.png?v=e1cc88de13f81f13","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/#page","headline":"Workers Logs","description":"Store, filter, and analyze log data emitted from Cloudflare Workers.","url":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/logs/workers-logs/og.png?v=e1cc88de13f81f13","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

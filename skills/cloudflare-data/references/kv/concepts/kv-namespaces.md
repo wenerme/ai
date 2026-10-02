@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/kv/concepts/kv-namespaces/og.png?v=0441
 
 # KV namespaces
 
-Last updated Jul 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/concepts/kv-namespaces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/concepts/kv-namespaces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A KV namespace is a key-value database replicated to Cloudflare’s global network.
 
@@ -24,7 +24,7 @@ KV namespace IDs are public and bound to your account.
 
 ## Jurisdictions
 
-Namespaces can optionally be restricted to a jurisdiction to durably store data only within a specific region. This feature is currently in private beta. Refer to [Data location](https://developers.cloudflare.com/kv/reference/data-location/) for more information.
+Namespaces can optionally be restricted to a jurisdiction to durably store data only within a specific region. Refer to [Data location](https://developers.cloudflare.com/kv/reference/data-location/) for more information.
 
 ## Bind your KV namespace through Wrangler
 
@@ -78,5 +78,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/concepts/kv-namespaces/#page","headline":"KV namespaces","description":"A KV namespace is a key-value database replicated across Cloudflare's global network.","url":"https://developers.cloudflare.com/kv/concepts/kv-namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/concepts/kv-namespaces/og.png?v=0441733e87a547ed","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/concepts/kv-namespaces/#page","headline":"KV namespaces","description":"A KV namespace is a key-value database replicated across Cloudflare's global network.","url":"https://developers.cloudflare.com/kv/concepts/kv-namespaces/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/concepts/kv-namespaces/og.png?v=0441733e87a547ed","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

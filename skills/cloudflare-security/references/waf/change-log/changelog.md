@@ -150,6 +150,19 @@ Customers with API Security already have access to Schema Profiles through Schem
 
 For more information, refer to [Application Profiles](https://developers.cloudflare.com/waf/detections/application-profiles/).
 
+## 2026-09-07
+
+
+**Attack Signature Detection is now available in Early Access**
+
+Attack Signature Detection is now available in Early Access. It evaluates requests against Cloudflare attack signatures and records matches without applying a mitigation action, allowing you to investigate detected traffic before deciding how to respond.
+
+In **Security Analytics** > **Attack Analysis**, you can review matching signature references, categories, confidence levels, and request outcomes. You can then use these fields in [Security Rules](https://developers.cloudflare.com/security/rules/) and combine them with request properties such as hostname, path, and HTTP method to apply scoped mitigation.
+
+Attack Signature Detection uses the same signature definitions as [Cloudflare Managed Rules](https://developers.cloudflare.com/waf/managed-rules/), but it does not inherit your Managed Rules actions, overrides, or deployment configuration. Managed Rules remain the recommended baseline protection during Early Access.
+
+Contact your Cloudflare account team to request access. For more information, refer to [Attack Signature Detection](https://developers.cloudflare.com/waf/detections/attack-signature-detection/).
+
 ## 2026-09-01
 
 
@@ -494,32 +507,6 @@ This week's release introduces new managed protection to address a critical SQL 
 | --- | --- | --- | --- | --- | --- | --- |
 | Cloudflare Managed Ruleset | ...b4c29bc6 | N/A | Ghost CMS - SQLi - CVE:CVE-2026-26980 | Log | Block | This is a new detection. |
 | Cloudflare Managed Ruleset | ...b56f403f | N/A | SQLi - Obfuscated Boolean - URI | Log | Disabled | This is a new detection. |
-
-## 2026-06-09
-
-
-**WAF Release - 2026-06-09**
-
-This release introduces new detections for a critical SQL injection vulnerability in Drupal installations utilizing PostgreSQL (CVE-2026-9082), alongside targeted protection for an unsafe deserialization flaw in the Mirasvit Cache Warmer extension (CVE-2026-45247). Additionally, this release includes coverage for a prototype pollution vector in Axios (CVE-2026-40175) and a new generic rule designed to identify and block sophisticated SQL Injection (SQLi) bypass attempts leveraging obfuscated boolean logic.
-
-**Key Findings**
-
-- CVE-2026-9082: A database abstraction vulnerability affects Drupal sites configured with a PostgreSQL backend. Remote, unauthenticated attackers can exploit this flaw via crafted inputs to inject malicious SQL commands and access or manipulate backend data.
-- CVE-2026-45247: A PHP Object Injection vulnerability exists in the Mirasvit Cache Warmer extension for Magento and Adobe Commerce. This flaw stems from unsafe deserialization of untrusted user input, enabling unauthenticated attackers to execute arbitrary code on the hosting server.
-- CVE-2026-40175: A prototype pollution vulnerability affects the Axios HTTP client library. Attackers can exploit this to inject malicious properties into the global JavaScript object prototype, potentially causing application crashes (Denial of Service) or executing unauthorized code depending on the application structure.
-
-**Impact**
-
-Successful exploitation of these vulnerabilities could allow unauthenticated attackers to execute arbitrary code, manipulate database contents, or induce application crashes, leading to severe operational disruption or complete server compromise. These newly deployed signatures intercept these advanced malicious payloads at the edge before they can interact with vulnerable software configurations.
-
-| Ruleset | Rule ID | Legacy Rule ID | Description | Previous Action | New Action | Comments |
-| --- | --- | --- | --- | --- | --- | --- |
-| Cloudflare Managed Ruleset | ...387cf935 | N/A | Axios - Prototype Pollution - CVE:CVE-2026-40175 | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...417eb9e0 | N/A | Drupal - PostgreSQL SQLi - CVE:CVE-2026-9082 - Body | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...fd3857fd | N/A | Drupal - PostgreSQL SQLi - CVE:CVE-2026-9082 - URI | Log | Block | This is a new detection. |
-| Cloudflare Managed Ruleset | ...aee241d2 | N/A | SQLi - Obfuscated Boolean - Body | N/A | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...d8620070 | N/A | SQLi - Obfuscated Boolean - Headers | N/A | Disabled | This is a new detection. |
-| Cloudflare Managed Ruleset | ...e0be4d47 | N/A | Mirasvit Cache Warmer - PHP Object Injection - CVE:CVE-2026-45247 | N/A | Block | This is a new detection. |
 
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 

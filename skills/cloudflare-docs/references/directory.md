@@ -94,6 +94,10 @@ Try a different search term, or clear your filters.
 
 [**Cloudflare Network Firewall** Protect your enterprise network with advanced firewall-as-a-service protection](https://developers.cloudflare.com/cloudflare-network-firewall/)
 
+[C**Cloudflare Observability** Find Cloudflare documentation for logs, traces, analytics, alerts, telemetry export, and dashboards](https://developers.cloudflare.com/observability/)
+
+[**Cloudflare OHTTP Relay** Implement the Oblivious HTTP IETF standard to improve client privacy](https://developers.cloudflare.com/ohttp-relay/)
+
 [**Cloudflare One** Replace legacy security perimeters with Cloudflare's network to protect your organization](https://developers.cloudflare.com/cloudflare-one/)
 
 [C**Cloudflare One Appliance** Connect branch sites to Cloudflare One with a managed hardware or virtual appliance](https://developers.cloudflare.com/cloudflare-wan/configuration/appliance/)
@@ -198,8 +202,6 @@ Try a different search term, or clear your filters.
 
 [P**Posture checks** Require a managed or healthy device before granting access, using Cloudflare One Client and third-party signals](https://developers.cloudflare.com/cloudflare-one/reusable-components/posture-checks/)
 
-[**Privacy Gateway** Implement the Oblivious HTTP IETF standard to improve client privacy](https://developers.cloudflare.com/privacy-gateway/)
-
 [**Privacy Pass** Privacy Pass tokens let users prove a claim without revealing their identity or being tracked across requests.](https://developers.cloudflare.com/privacy-pass/)
 
 [**Privacy Proxy** A MASQUE-based forward proxy that protects user privacy while preserving geolocation accuracy](https://developers.cloudflare.com/privacy-proxy/)
@@ -271,6 +273,8 @@ Try a different search term, or clear your filters.
 [**Waiting Room** Create a virtual waiting room to manage peak traffic](https://developers.cloudflare.com/waiting-room/)
 
 [**WARP Client** Allows individuals or organizations to have a faster, more secure connection to the Internet](https://developers.cloudflare.com/warp-client/)
+
+[**Web Search API** Ground AI agents and applications with real-time web search results](https://developers.cloudflare.com/web-search/)
 
 [**Web3** Gateways to networks to help you develop applications without worrying about running infrastructure](https://developers.cloudflare.com/web3/)
 

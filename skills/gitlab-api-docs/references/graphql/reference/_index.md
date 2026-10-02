@@ -4823,6 +4823,7 @@ Arguments:
 | <a id="mutation-ascpsecuritycontextcreate-guidelines"></a>`guidelines` | [`[AscpSecurityGuidelineInput!]!`](#ascpsecurityguidelineinput) | List of security guidelines. |
 | <a id="mutation-ascpsecuritycontextcreate-projectpath"></a>`projectPath` | [`ID!`](#id) | Full path of the project. |
 | <a id="mutation-ascpsecuritycontextcreate-scanid"></a>`scanId` | [`SecurityAscpScanID!`](#securityascpscanid) | ID of the scan when the security context was created. |
+| <a id="mutation-ascpsecuritycontextcreate-securityboundary"></a>`securityBoundary` | [`[AscpSecurityBoundary!]`](#ascpsecurityboundary) | Security boundaries the component sits on. |
 | <a id="mutation-ascpsecuritycontextcreate-summary"></a>`summary` | [`String`](#string) | High-level threat model summary. |
 
 Fields:
@@ -18874,7 +18875,7 @@ Arguments:
 | <a id="mutation-workitembulkupdate-assigneeswidget"></a>`assigneesWidget`  | [`WorkItemWidgetAssigneesInput`](#workitemwidgetassigneesinput) | Introduced in GitLab 18.2. Status: Experiment. Input for assignees widget. |
 | <a id="mutation-workitembulkupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-workitembulkupdate-confidential"></a>`confidential`  | [`Boolean`](#boolean) | Introduced in GitLab 18.2. Status: Experiment. Sets the work item confidentiality. |
-| <a id="mutation-workitembulkupdate-fullpath"></a>`fullPath` | [`ID!`](#id) | Full path of the project or group (Premium and Ultimate only) containing the work items that will be updated. User paths are not supported. |
+| <a id="mutation-workitembulkupdate-fullpath"></a>`fullPath` | [`ID!`](#id) | Full path of the project or group containing the work items that will be updated. User paths are not supported. |
 | <a id="mutation-workitembulkupdate-healthstatuswidget"></a>`healthStatusWidget`  | [`WorkItemWidgetHealthStatusInput`](#workitemwidgethealthstatusinput) | Introduced in GitLab 18.2. Status: Experiment. Input for health status widget. |
 | <a id="mutation-workitembulkupdate-hierarchywidget"></a>`hierarchyWidget`  | [`WorkItemWidgetHierarchyCreateInput`](#workitemwidgethierarchycreateinput) | Introduced in GitLab 18.2. Status: Experiment. Input for hierarchy widget. |
 | <a id="mutation-workitembulkupdate-ids"></a>`ids` | [`[WorkItemID!]!`](#workitemid) | Global ID array of the work items that will be updated. IDs that the user can't update will be ignored. A max of 100 can be provided. |
@@ -34549,6 +34550,8 @@ Arguments:
 | <a id="analytics-duoworkflows-flowtypesusedfrom"></a>`flowTypesUsedFrom` | [`Int`](#int) | Filter by the number of distinct flow types the user ran in the selected period. Start of the range. |
 | <a id="analytics-duoworkflows-flowtypesusedto"></a>`flowTypesUsedTo` | [`Int`](#int) | Filter by the number of distinct flow types the user ran in the selected period. End of the range. |
 | <a id="analytics-duoworkflows-groupid"></a>`groupId` | [`[String!]`](#string) | Filter by one or many group Global IDs, including flows from their descendants. |
+| <a id="analytics-duoworkflows-modelused"></a>`modelUsed` | [`[String!]`](#string) | Filter by one or many models. |
+| <a id="analytics-duoworkflows-modelusednot"></a>`modelUsedNot` | [`[String!]`](#string) | Exclude one or many models. Flows with no attributed model are stored as an empty string, so pass one to exclude them. Maximum is 100. |
 | <a id="analytics-duoworkflows-projectid"></a>`projectId` | [`[String!]`](#string) | Filter by one or many project Global IDs. |
 | <a id="analytics-duoworkflows-projectidnot"></a>`projectIdNot` | [`[String!]`](#string) | Exclude one or many project Global IDs. Flows created at namespace level are excluded as well. Maximum is 100. |
 | <a id="analytics-duoworkflows-status"></a>`status` | [`[String!]`](#string) | Filter by one or many flow statuses (created, running, finished, failed, ...). |
@@ -35440,6 +35443,7 @@ Fields:
 | <a id="ascpsecuritycontext-datasensitivity"></a>`dataSensitivity` | [`String`](#string) | Types of sensitive data handled by the component. |
 | <a id="ascpsecuritycontext-id"></a>`id` | [`SecurityAscpSecurityContextID!`](#securityascpsecuritycontextid) | ID of the security context. |
 | <a id="ascpsecuritycontext-scan"></a>`scan` | [`AscpScan!`](#ascpscan) | Scan when the security context was generated. |
+| <a id="ascpsecuritycontext-securityboundary"></a>`securityBoundary` | [`[AscpSecurityBoundary!]!`](#ascpsecurityboundary) | Security boundaries the component sits on. |
 | <a id="ascpsecuritycontext-securityguidelines"></a>`securityGuidelines` | [`AscpSecurityGuidelineConnection!`](#ascpsecurityguidelineconnection) | Security guidelines for the context. (see [Connections](#connections)) |
 | <a id="ascpsecuritycontext-summary"></a>`summary` | [`String`](#string) | High-level threat model summary. |
 
@@ -51836,7 +51840,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="mergerequestriskcontributingsignal-contribution"></a>`contribution` | [`Float!`](#float) | Points the signal added to the overall score. |
 | <a id="mergerequestriskcontributingsignal-detail"></a>`detail` | [`String`](#string) | Human-readable explanation of the contribution. |
-| <a id="mergerequestriskcontributingsignal-label"></a>`label` | [`String`](#string) | Human-readable name of the signal. Null for a claim, which has no registered signal class to look one up from. |
+| <a id="mergerequestriskcontributingsignal-label"></a>`label` | [`String`](#string) | Human-readable name of the signal or claim. Null when the key matches neither a registered signal nor a risk domain. |
 | <a id="mergerequestriskcontributingsignal-signal"></a>`signal` | [`String!`](#string) | Name of the signal or claim. |
 
 ### `MergeRequestRiskMissingSignal`
@@ -51847,7 +51851,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="mergerequestriskmissingsignal-label"></a>`label` | [`String`](#string) | Human-readable name of the signal. Null for a claim, which has no registered signal class to look one up from. |
+| <a id="mergerequestriskmissingsignal-label"></a>`label` | [`String`](#string) | Human-readable name of the signal or claim. Null when the key matches neither a registered signal nor a risk domain. |
 | <a id="mergerequestriskmissingsignal-signal"></a>`signal` | [`String!`](#string) | Name of the signal or claim. |
 
 ### `MergeRequestSavedView`
@@ -66849,6 +66853,19 @@ Type of ASCP scan (full or incremental).
 | <a id="ascpscantype-full"></a>`FULL` | Full scan of the entire codebase. |
 | <a id="ascpscantype-incremental"></a>`INCREMENTAL` | Incremental scan based on changes since last scan. |
 
+### `AscpSecurityBoundary`
+
+Security boundaries an ASCP component sits on.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="ascpsecurityboundary-internal_only"></a>`INTERNAL_ONLY` | Internal Only. |
+| <a id="ascpsecurityboundary-isolated"></a>`ISOLATED` | Isolated. |
+| <a id="ascpsecurityboundary-network_access"></a>`NETWORK_ACCESS` | Network Access. |
+| <a id="ascpsecurityboundary-partner_boundary"></a>`PARTNER_BOUNDARY` | Partner Boundary. |
+| <a id="ascpsecurityboundary-trusted_service"></a>`TRUSTED_SERVICE` | Trusted Service. |
+| <a id="ascpsecurityboundary-user_input"></a>`USER_INPUT` | User Input. |
+
 ### `AscpSeverity`
 
 Severity levels for ASCP security guidelines.
@@ -68369,6 +68386,7 @@ Where a Duo Workflow session was initiated from.
 | <a id="duoworkflowsourcetype-duo_cli_interactive"></a>`DUO_CLI_INTERACTIVE` | Session initiated from GitLab Duo CLI in interactive mode. |
 | <a id="duoworkflowsourcetype-duo_cli_run"></a>`DUO_CLI_RUN` | Session initiated from GitLab Duo CLI in run mode. |
 | <a id="duoworkflowsourcetype-fix_pipeline"></a>`FIX_PIPELINE` | Session initiated from fixing a failed pipeline. |
+| <a id="duoworkflowsourcetype-flow_trigger"></a>`FLOW_TRIGGER` | Session initiated by a flow trigger. |
 | <a id="duoworkflowsourcetype-ide_extension"></a>`IDE_EXTENSION` | Session initiated from an IDE extension. |
 | <a id="duoworkflowsourcetype-mcp"></a>`MCP` | Session initiated from MCP. |
 | <a id="duoworkflowsourcetype-merge_request_code_conflict"></a>`MERGE_REQUEST_CODE_CONFLICT` | Session initiated from resolving a merge request conflict. |
@@ -76529,7 +76547,8 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="budgetcapuseroverrideinput-cap"></a>`cap` | [`Float!`](#float) | Budget cap amount for the user. |
 | <a id="budgetcapuseroverrideinput-enabled"></a>`enabled` | [`Boolean!`](#boolean) | Whether the budget cap is enabled for the user. |
-| <a id="budgetcapuseroverrideinput-userid"></a>`userId` | [`UserID!`](#userid) | Global ID of the user. |
+| <a id="budgetcapuseroverrideinput-userid"></a>`userId` | [`UserID`](#userid) | Global ID of the user. Exactly one of `userId` or `username` must be provided. |
+| <a id="budgetcapuseroverrideinput-username"></a>`username`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Username of the user. Exactly one of `userId` or `username` must be provided. |
 
 ### `BulkToolRuleInput`
 

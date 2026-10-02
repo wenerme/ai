@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/analytics/graphql-api/limits/og.png?v=d
 
 # Limits
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/graphql-api/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare GraphQL API exposes more than 70 datasets representing products with different configurations and data availability for different zones and accounts plans.
 
@@ -54,6 +54,8 @@ Each data node has its limits, such as:
 
 Node limits are tied to requested `zoneTag` or `accountTag`. Higher plans have access to a greater selection of datasets or fields, and can query over broader historical intervals.
 
+Adaptive datasets, such as `httpRequestsAdaptiveGroups` and `firewallEventsAdaptive`, retain at least 31 days of data on every plan. Aggregated datasets, such as `httpRequests1hGroups`, keep their own per-plan limits.
+
 To get exact boundaries and availability for your zone(s) or account, please refer to [settings](https://developers.cloudflare.com/analytics/graphql-api/features/discovery/settings/).
 
 Was this helpful?
@@ -65,5 +67,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/limits/#page","headline":"Limits","description":"Review GraphQL Analytics API query limits.","url":"https://developers.cloudflare.com/analytics/graphql-api/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/graphql-api/limits/og.png?v=decb1da875bf878f","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/graphql-api/limits/#page","headline":"Limits","description":"Review GraphQL Analytics API query limits.","url":"https://developers.cloudflare.com/analytics/graphql-api/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/graphql-api/limits/og.png?v=decb1da875bf878f","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

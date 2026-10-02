@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/waf/analytics/security-analytics/og.png
 
 # Security Analytics
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/analytics/security-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/analytics/security-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Security Analytics displays information about all incoming HTTP requests for your domain, including requests not handled by Cloudflare security products. This gives you visibility into your full traffic profile, not only the requests that triggered a security rule.
 
@@ -37,8 +37,8 @@ Zone/domain-level analytics are included with all plans, though the retention pe
 |  | Free | Pro | Business | Enterprise |
 | --- | --- | --- | --- | --- |
 | Availability | Yes | Yes | Yes | Yes |
-| Historical time (data retention) | Up to the last 7 days | Up to the last 7 days | Up to the last 31 days | Up to the last 90 days |
-| Max query window | 24 hours | 7 days | 31 days | 31 days |
+| Historical time (data retention) | Up to the last 31 days | Up to the last 31 days | Up to the last 31 days | Up to the last 90 days |
+| Max query window | 30 days | 30 days | 31 days | 31 days |
 
 ## Access
 
@@ -216,13 +216,13 @@ The following tables show the different limits per Cloudflare plan:
 
 | Data retention (historical time) for... | Free | Pro | Business | Enterprise |
 | --- | --- | --- | --- | --- |
-| Security Events (`firewallEventsAdaptive`) | 24 hours | 24 hours | 3 days | 30 days |
-| Security Analytics (`httpRequestsAdaptive`) | 7 days | 7 days | 31 days | 90 days |
+| Security Events (`firewallEventsAdaptive`) | 31 days | 31 days | 31 days | 31 days |
+| Security Analytics (`httpRequestsAdaptive`) | 31 days | 31 days | 31 days | 90 days |
 
 | Maximum query window for... | Free | Pro | Business | Enterprise |
 | --- | --- | --- | --- | --- |
-| Security Events (`firewallEventsAdaptive`) | 24 hours | 24 hours | 3 days | 31 days |
-| Security Analytics (`httpRequestsAdaptive`) | 24 hours | 7 days | 31 days | 31 days |
+| Security Events (`firewallEventsAdaptive`) | 30 days | 30 days | 30 days | 31 days |
+| Security Analytics (`httpRequestsAdaptive`) | 30 days | 30 days | 31 days | 31 days |
 
 Was this helpful?
 
@@ -233,5 +233,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-analytics/#page","headline":"Security Analytics","description":"Analyze traffic patterns and identify security threats with Security Analytics.","url":"https://developers.cloudflare.com/waf/analytics/security-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/analytics/security-analytics/og.png?v=f985d175dc54fab2","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/analytics/security-analytics/#page","headline":"Security Analytics","description":"Analyze traffic patterns and identify security threats with Security Analytics.","url":"https://developers.cloudflare.com/waf/analytics/security-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/analytics/security-analytics/og.png?v=f985d175dc54fab2","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Logging"]}
 ```

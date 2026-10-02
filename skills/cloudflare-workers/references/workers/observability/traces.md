@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/observability/traces/og.png?v=5
 
 # Traces
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/observability/traces/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ### What is Workers tracing?
 
@@ -73,11 +73,11 @@ An updated [`compatibility_date`](https://developers.cloudflare.com/workers/conf
 
 ### Exporting OpenTelemetry traces to a 3rd party destination
 
-Workers tracing follows [OpenTelemetry (OTel) standards ↗︎](https://opentelemetry.io/). This makes it compatible with popular observability platforms, such as [Honeycomb](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/honeycomb/), [Grafana Cloud](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/grafana-cloud/), and [Axiom](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/axiom/), while requiring zero development effort from you. If your observability provider has an available OpenTelemetry endpoint, you can export traces (and logs)!
+Workers tracing follows [OpenTelemetry (OTel) standards ↗︎](https://opentelemetry.io/). This makes it compatible with popular observability platforms, such as [Honeycomb](https://developers.cloudflare.com/observability/export/opentelemetry/honeycomb/), [Grafana Cloud](https://developers.cloudflare.com/observability/export/opentelemetry/grafana-cloud/), and [Axiom](https://developers.cloudflare.com/observability/export/opentelemetry/axiom/), while requiring zero development effort from you. If your observability provider has an available OpenTelemetry endpoint, you can export traces (and logs)!
 
 You can also set `persist: false` to export traces to your destination without persisting them in the Cloudflare dashboard. This allows you to use a third-party observability provider as your sole traces destination.
 
-Learn more about exporting OpenTelemetry data from Workers [here](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/).
+To export OpenTelemetry data from Workers, refer to [OpenTelemetry export](https://developers.cloudflare.com/workers/observability/opentelemetry-export/).
 
 ### Sampling
 
@@ -122,16 +122,11 @@ If you have `head_sampling_rate` configured for logs, you can also create a sepa
 
 Sampling is [head-based ↗︎](https://opentelemetry.io/docs/concepts/sampling/#head-sampling), meaning that non-traced requests do not incur any tracing overhead.
 
-### Limits & Pricing
+### Limits and pricing
 
-Workers tracing is currently **free** during the initial beta period. This includes all tracing functionality such as collecting traces, storing them, and viewing them in the Cloudflare dashboard.
+Workers traces have seven-day retention. Beginning December 1, 2026, stored traces contribute to account-level ingestion and storage usage under [Cloudflare Observability pricing](https://developers.cloudflare.com/observability/pricing/).
 
-Starting on October 1, 2026, tracing will be billed as part of your usage on the Workers Free Paid and Enterprise plans. Each span in a trace represents one observability event, sharing the same monthly quota and pricing as [Workers logs](https://developers.cloudflare.com/workers/platform/pricing/#workers-logs):
-
-|  | Events (trace spans or log events) | Retention |
-| --- | --- | --- |
-| **Workers Free** | 200,000 per day | 3 Days |
-| **Workers Paid** | 20 million included per month +$0.60 per additional million events | 7 Days |
+Sampling reduces the number of spans ingested and stored, which reduces billable usage.
 
 Was this helpful?
 
@@ -142,5 +137,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/observability/traces/#page","headline":"Traces","description":"Gain end-to-end visibility into request flows across your Workers application with automatic tracing instrumentation.","url":"https://developers.cloudflare.com/workers/observability/traces/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/traces/og.png?v=5a79cedf9f235251","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/workers/observability/traces/#page","headline":"Traces","description":"Gain end-to-end visibility into request flows across your Workers application with automatic tracing instrumentation.","url":"https://developers.cloudflare.com/workers/observability/traces/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/observability/traces/og.png?v=5a79cedf9f235251","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

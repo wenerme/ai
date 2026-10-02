@@ -54,7 +54,7 @@ To set up those notifications:
 
    Note
 
-   Some plans also have access to alerts through [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/) and [Webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/).
+   All plans can send alerts through [webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/). Business and higher plans can also use [PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/).
 4. Select **Save**.
 
 ## Enable Tiered Cache

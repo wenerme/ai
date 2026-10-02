@@ -1,12 +1,11 @@
 ---
-title: "grafana-prometheusalerting-app/examples.md unavailable"
+title: "Examples | Grafana Plugins documentation"
+description: "Worked examples of common data source-managed alerting patterns, showing how one rule produces many alert instances and how to keep alert volume manageable at high cardinality."
 ---
 
-# grafana-prometheusalerting-app/examples.md unavailable
+> For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-Grafana listed this plugin documentation page, but it could not be fetched while building this skill.
+# Examples
 
-- Source: https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/examples.md
-- Fetch result: 429
-
-Re-run `just update-grafana-plugin-docs` later to refresh this page.
+- [Multi-dimensional alerts](/docs/plugins/grafana-prometheusalerting-app/latest/examples/multi-dimensional-alerts/): one rule, many alert instances.
+- [High-cardinality alerts](/docs/plugins/grafana-prometheusalerting-app/latest/examples/high-cardinality-alerts/): keeping the volume manageable.

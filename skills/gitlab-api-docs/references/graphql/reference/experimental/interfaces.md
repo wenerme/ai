@@ -1105,6 +1105,7 @@ Representation of a GitLab user.
 - [`WorkItemWidgetParticipants`](objects.md#workitemwidgetparticipants)
 - [`WorkItemWidgetProgress`](objects.md#workitemwidgetprogress)
 - [`WorkItemWidgetRequirementLegacy`](objects.md#workitemwidgetrequirementlegacy)
+- [`WorkItemWidgetSeverity`](objects.md#workitemwidgetseverity)
 - [`WorkItemWidgetStartAndDueDate`](objects.md#workitemwidgetstartandduedate)
 - [`WorkItemWidgetStatus`](objects.md#workitemwidgetstatus)
 - [`WorkItemWidgetTestReports`](objects.md#workitemwidgettestreports)

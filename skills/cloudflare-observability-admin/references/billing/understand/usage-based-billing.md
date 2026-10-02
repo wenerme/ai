@@ -31,6 +31,7 @@ For current overage rates, refer to the [Cloudflare plans page ↗︎](https://w
 | Product | Billable metric | Free tier or included usage | Pricing details |
 | --- | --- | --- | --- |
 | [Workers](https://developers.cloudflare.com/workers/platform/pricing/) | Requests and CPU time | 10M requests and 30M CPU-ms | [Workers pricing](https://developers.cloudflare.com/workers/platform/pricing/) |
+| [Cloudflare Observability](https://developers.cloudflare.com/observability/pricing/) | Telemetry ingestion and storage | Varies by plan | [Observability pricing](https://developers.cloudflare.com/observability/pricing/) |
 | [R2](https://developers.cloudflare.com/r2/pricing/) | Storage and operations | 10 GB storage, 1M Class A operations, and 10M Class B operations | [R2 pricing](https://developers.cloudflare.com/r2/pricing/) |
 | [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/) | Data transfer | First 1 GB | [Argo Smart Routing](https://developers.cloudflare.com/argo-smart-routing/) |
 | [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) | Reads, writes, and storage | None | [Cache Reserve](https://developers.cloudflare.com/cache/advanced-configuration/cache-reserve/) |
@@ -39,7 +40,7 @@ For current overage rates, refer to the [Cloudflare plans page ↗︎](https://w
 | [Images](https://developers.cloudflare.com/images/pricing/) | Transformations and storage | Varies by plan | [Images pricing](https://developers.cloudflare.com/images/pricing/) |
 | [Spectrum](https://developers.cloudflare.com/spectrum/) | Data transfer | None | [Spectrum](https://developers.cloudflare.com/spectrum/) |
 | [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/) | Rule requests | Varies by plan | [Rate Limiting](https://developers.cloudflare.com/waf/rate-limiting-rules/) |
-| [Log Explorer](https://developers.cloudflare.com/log-explorer/pricing/) | Log storage and queries | Varies by plan | [Log Explorer pricing](https://developers.cloudflare.com/log-explorer/pricing/) |
+| [Log Explorer](https://developers.cloudflare.com/log-explorer/pricing/) | Log ingestion | None | [Log Explorer pricing](https://developers.cloudflare.com/log-explorer/pricing/) |
 | [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) | Seats and usage-based services | Varies by plan | [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) |
 | [Vectorize](https://developers.cloudflare.com/vectorize/platform/pricing/) | Stored dimensions and queried vectors | Varies by plan | [Vectorize pricing](https://developers.cloudflare.com/vectorize/platform/pricing/) |
 | [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/pricing/) | Data points read and written | Varies by plan | [Analytics Engine pricing](https://developers.cloudflare.com/analytics/analytics-engine/pricing/) |

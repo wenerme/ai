@@ -1,5 +1,5 @@
 ---
-description: Create custom dashboards to monitor log data.
+description: Create custom dashboards from analytics, log, and Workers Observability data.
 title: Custom dashboards
 image: https://developers.cloudflare.com/analytics/custom-dashboards/og.png?v=537b3d095c257183
 ---
@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/analytics/custom-dashboards/og.png?v=53
 
 # Custom dashboards
 
-Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/custom-dashboards/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/custom-dashboards/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Custom dashboards allow you to build personalized views that highlight the metrics most critical to your infrastructure and security posture. Move beyond standard product dashboards and consolidate data from multiple Cloudflare products into a single, unified view.
 
@@ -26,16 +26,11 @@ Analyze application performance by visualizing origin response times, cache hit 
 
 Track business metrics by monitoring API usage, bandwidth consumption, and traffic patterns. Build executive dashboards that surface the KPIs that matter to your organization.
 
-Investigate incidents so that when something goes wrong, you can create focused dashboards that combine the specific signals relevant to your investigation. Log Explorer customers can select Log Explorer datasets to create charts from raw, unsampled log data.
+Investigate incidents so that when something goes wrong, you can create focused dashboards that combine the specific signals relevant to your investigation. Chart Workers logs and traces next to HTTP traffic and security events, and Log Explorer customers can select Log Explorer datasets to create charts from raw, unsampled log data.
 
 ## Availability
 
-Custom Dashboards are available to all Cloudflare customers.
-
-| Customer type | Dashboard limit |
-| --- | --- |
-| All Cloudflare customers | Up to 25 dashboards |
-| Log Explorer customers | Up to 100 dashboards |
+Custom Dashboards are available to all Cloudflare customers. Each account can have up to 100 dashboards.
 
 ## Get started
 
@@ -57,7 +52,11 @@ After selecting a template, you can customize it by adding, removing, or modifyi
 
 For specialized monitoring needs, create a blank dashboard and add charts that query exactly the data you need.
 
-Custom Dashboards support over 100 datasets available via the Cloudflare GraphQL API, including HTTP traffic, security events, Workers analytics, R2 Storage metrics, Load Balancing health, Zero Trust logs, DNS queries, and more.
+Custom Dashboards support three kinds of data source:
+
+- Over 100 datasets available via the Cloudflare GraphQL API, including HTTP traffic, security events, Workers analytics, R2 Storage metrics, Load Balancing health, Zero Trust logs, DNS queries, and more.
+- [Workers Observability logs and traces](#workers-observability-data) for Workers that have Workers Logs or Workers Traces turned on.
+- [Log Explorer datasets](#log-explorer-data), for Log Explorer customers.
 
 ## Create charts
 
@@ -76,7 +75,7 @@ This is the fastest way to explore your data when you have a question but are no
 
 For precise control, configure each element of your chart:
 
-- **Dataset** — The data source to query (HTTP requests, security events, Workers metrics, etc.)
+- **Dataset** — The data source to query (HTTP requests, security events, Workers Observability logs and traces, Log Explorer datasets)
 - **Metrics** — What to measure (requests, bytes, duration) and how to aggregate it (sum, average, percentiles)
 - **Dimensions** — How to break down the data (by country, status code, hostname, etc.)
 - **Filters** — Conditions to narrow the data (specific paths, IP ranges, user agents, etc.)
@@ -120,6 +119,25 @@ Common uses:
 
 When you add a filter, every chart on the dashboard updates to reflect the narrowed scope.
 
+## Workers Observability data
+
+You can chart Workers Observability telemetry alongside your analytics data. When creating a chart, select one of the following datasets:
+
+| Dataset | What it contains | Dimensions | Metrics |
+| --- | --- | --- | --- |
+| **Workers Observability — Logs** | Invocation and log events from Workers with [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) turned on | Service, level, status code, error, region, trigger, URL, script name, outcome, event type, entrypoint, execution model | Events, CPU time, wall time, duration |
+| **Workers Observability — Traces (OTel)** | Spans from Workers with [Workers Traces](https://developers.cloudflare.com/workers/observability/traces/) turned on | Service, span name, status code, error, region, transaction name | Spans, duration |
+
+Workers Observability datasets are available for every Worker in the account that has Workers Logs or Workers Traces turned on. They follow the retention of the underlying Workers Observability data, so a dashboard time range that extends past that retention returns no data for those charts.
+
+For example, to track Worker errors by service:
+
+1. Select the **Workers Observability — Logs** dataset.
+2. Choose **Events** as the metric.
+3. Add **Service** as a dimension.
+4. Filter to **Level equals error**.
+5. Select **Timeseries** to see how errors change over time.
+
 ## Log Explorer data
 
 Note
@@ -137,11 +155,11 @@ Standard analytics datasets use sampled data, which provides fast, accurate tren
 
 Log Explorer data gives you charts built from every logged event, not a statistical sample.
 
-When creating a chart, Log Explorer customers can select from Log Explorer datasets alongside the standard GraphQL analytics datasets.
+When creating a chart, Log Explorer customers can select from Log Explorer datasets alongside the standard GraphQL analytics datasets and Workers Observability datasets.
 
 ## Manage dashboards
 
-Dashboards are organized in a list view where you can see all dashboards in your account. From any dashboard, you can add, remove, or rearrange charts, and changes are saved automatically when you exit edit mode.
+Dashboards belong to the account, so everyone with access to the account can view them, and they are organized in a list view where you can see all dashboards in your account. From any dashboard, you can add, remove, or rearrange charts, and changes are saved automatically when you exit edit mode.
 
 Each chart has a menu with options to edit its configuration, duplicate it, or drill down into related data in Security Analytics or Log Search.
 
@@ -163,5 +181,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/custom-dashboards/#page","headline":"Custom dashboards","description":"Create custom dashboards to monitor log data.","url":"https://developers.cloudflare.com/analytics/custom-dashboards/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/custom-dashboards/og.png?v=537b3d095c257183","dateModified":"2026-09-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/analytics/custom-dashboards/#page","headline":"Custom dashboards","description":"Create custom dashboards from analytics, log, and Workers Observability data.","url":"https://developers.cloudflare.com/analytics/custom-dashboards/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/custom-dashboards/og.png?v=537b3d095c257183","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

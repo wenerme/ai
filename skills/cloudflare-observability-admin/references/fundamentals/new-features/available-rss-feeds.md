@@ -205,6 +205,7 @@ Included products
 - <a href="https://developers.cloudflare.com/sandbox/">Sandboxes</a><a href="https://developers.cloudflare.com/changelog/rss/sandbox.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/stream/">Stream</a><a href="https://developers.cloudflare.com/changelog/rss/stream.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/vectorize/">Vectorize</a><a href="https://developers.cloudflare.com/changelog/rss/vectorize.xml">Subscribe to RSS</a>
+- <a href="https://developers.cloudflare.com/web-search/">Web Search API</a><a href="https://developers.cloudflare.com/changelog/rss/web-search.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/workers/">Workers</a><a href="https://developers.cloudflare.com/changelog/rss/workers.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/workers-ai/">Workers AI</a><a href="https://developers.cloudflare.com/changelog/rss/workers-ai.xml">Subscribe to RSS</a>
 - <a href="https://developers.cloudflare.com/analytics/analytics-engine/">Workers Analytics Engine</a><a href="https://developers.cloudflare.com/changelog/rss/workers-analytics-engine.xml">Subscribe to RSS</a>

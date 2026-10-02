@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudfla
 
 # DNSSEC options
 
-Last updated Apr 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [DNS Security Extensions (DNSSEC) ↗︎](https://www.cloudflare.com/learning/dns/dns-security/) increase security by adding cryptographic signatures to DNS records. When you use multiple providers and Cloudflare is secondary, you have a few options to enable DNSSEC for records served by Cloudflare.
 
@@ -172,6 +172,32 @@ curl "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dnssec" \
 3. Make sure Cloudflare nameservers are added at your registrar. You can see your Cloudflare nameservers on the dashboard by going to the [**DNS Records** ↗︎](https://dash.cloudflare.com/?to=/:account/:zone/dns/records) page.
 4. Make sure there is a DS record added at your registrar. The DS record is obtained from your primary DNS provider (the signer of the zone) and is what indicates to DNS resolvers that your zone has DNSSEC enabled.
 
+---
+
+## Troubleshoot pre-signed DNSSEC
+
+### Verify that Cloudflare is serving pre-signed records
+
+After completing setup, confirm that Cloudflare is serving the pre-signed signatures from your primary rather than signing the zone itself.
+
+Query `DNSKEY` against one of your assigned Cloudflare secondary nameservers:
+
+```sh
+dig DNSKEY example.com @<cloudflare-secondary-ns>
+```
+
+Compare the key tag in the response with the key tag served by your primary nameserver. If the key tags match, Cloudflare is correctly serving the pre-signed records. If the key tags differ, Cloudflare is live-signing the zone with its own keys instead.
+
+### If Cloudflare is live-signing instead of serving pre-signed records
+
+Check each of the following:
+
+- **`dnssec_presigned` is set to `true`**: Use the [DNSSEC Details endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/get/) to confirm the value in the API response.
+- **Zone transfers include DNSSEC records**: The AXFR from your primary must include `DNSKEY`, `RRSIG`, and `NSEC` (or `NSEC3`) records alongside the regular DNS records. If your primary is configured to transfer only non-DNSSEC records, Cloudflare has no signatures to serve. Confirm by requesting a manual zone transfer from your primary and checking that `DNSKEY` and `RRSIG` records are present in the transferred data.
+- **Zone transfers are completing successfully**: Review your [zone transfer alerts](https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/alerts/) to confirm that recent transfers from your primary have completed without error.
+
+If all three checks pass but Cloudflare is still live-signing — or if a sibling zone with the same configuration works correctly while this zone does not — [contact Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) and include your zone ID and the output of the [DNSSEC Details endpoint](https://developers.cloudflare.com/api/resources/dns/subresources/dnssec/methods/get/).
+
 Was this helpful?
 
 YesNo
@@ -181,5 +207,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/#page","headline":"DNSSEC options","description":"DNSSEC options for secondary DNS zones.","url":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/og.png?v=cab08ed7abce85c3","dateModified":"2026-04-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/#page","headline":"DNSSEC options","description":"DNSSEC options for secondary DNS zones.","url":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/zone-setups/zone-transfers/cloudflare-as-secondary/dnssec-for-secondary/og.png?v=cab08ed7abce85c3","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

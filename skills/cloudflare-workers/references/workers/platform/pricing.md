@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/platform/pricing/og.png?v=6c826
 
 # Pricing
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 By default, users have access to the Workers Free plan. The Workers Free plan includes limited usage of Workers, Pages Functions, Workers KV and Hyperdrive. Read more about the [Free plan limits](https://developers.cloudflare.com/workers/platform/limits/#account-plan-limits).
 
@@ -145,9 +145,13 @@ Workers Logs is included in both the Free and Paid [Workers plans](https://devel
 | **Workers Free** | 200,000 per day | 3 Days |
 | **Workers Paid** | 20 million included per month <br> +$0.60 per additional million | 7 Days |
 
+Pricing change
+
+Beginning December 1, 2026, Workers Logs will use [Cloudflare Observability pricing](https://developers.cloudflare.com/observability/pricing/). Until then, the Workers Logs pricing in this table applies.
+
 Workers Logs documentation
 
-For more information and [examples of Workers Logs billing](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#example-pricing), refer to the [Workers Logs documentation](https://developers.cloudflare.com/workers/observability/logs/workers-logs).
+For more information and [examples of Workers Logs billing](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#example-pricing), refer to the [Workers Logs documentation](https://developers.cloudflare.com/workers/observability/logs/workers-logs/).
 
 ## Workers Trace Events Logpush
 
@@ -504,5 +508,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/pricing/#page","headline":"Pricing","description":"Workers plans and pricing information.","url":"https://developers.cloudflare.com/workers/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/pricing/og.png?v=6c82602c81fb72bf","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/pricing/#page","headline":"Pricing","description":"Workers plans and pricing information.","url":"https://developers.cloudflare.com/workers/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/pricing/og.png?v=6c82602c81fb72bf","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

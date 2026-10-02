@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/dns/dns-firewall/faq/og.png?v=1dcb626fc
 
 # DNS Firewall FAQ
 
-Last updated Jul 10, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/dns/dns-firewall/faq/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consider the answers for frequently asked questions about Cloudflare DNS Firewall.
 
@@ -58,6 +58,18 @@ To set up PTR records for the DNS Firewall cluster IPs that point to your namese
 - [Show DNS Firewall Cluster Reverse DNS](https://developers.cloudflare.com/api/resources/dns_firewall/subresources/reverse_dns/methods/get/)
 - [Update DNS Firewall Cluster Reverse DNS](https://developers.cloudflare.com/api/resources/dns_firewall/subresources/reverse_dns/methods/edit/)
 
+## Why do I see inconsistent responses for the same ECS subnet from different locations?
+
+DNS Firewall maintains a separate cache at each Cloudflare data center. When two resolvers send the same query for the same ECS subnet but reach different Cloudflare data centers, they may receive different responses if one data center has the answer cached from an earlier upstream query and the other does not. If your upstream nameserver returns non-deterministic answers for a given ECS subnet — for example, returning different address sets on repeated queries — each data center caches whichever answer it received, resulting in inconsistent responses across Cloudflare locations.
+
+To get consistent results, ensure your upstream nameserver returns the same answer for a given ECS subnet on every query. If geographic routing is not required, you can disable ECS on your DNS Firewall cluster to use a single cache that is not segmented by client subnet.
+
+## What happens when the per-data-center rate limit is exceeded?
+
+When the configured [rate limit](https://developers.cloudflare.com/dns/dns-firewall/setup/#additional-options) for a data center is exceeded, DNS Firewall stops forwarding queries to your upstream nameservers at that location for a short period. During this time, DNS Firewall continues to serve responses from its cache. Queries for records that are not in the cache, or whose cached TTL has expired, return `REFUSED`.
+
+The rate limit applies independently at each Cloudflare data center. Exceeding the limit at one location does not affect query forwarding at other locations.
+
 Was this helpful?
 
 YesNo
@@ -67,5 +79,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dns-firewall/faq/#page","headline":"DNS Firewall FAQ","description":"Find answers to common questions about Cloudflare's DNS Firewall, including cache behavior, EDNS support, and setting PTR records.","url":"https://developers.cloudflare.com/dns/dns-firewall/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/dns-firewall/faq/og.png?v=1dcb626fc0601df0","dateModified":"2026-07-10","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/dns/dns-firewall/faq/#page","headline":"DNS Firewall FAQ","description":"Find answers to common questions about Cloudflare's DNS Firewall, including cache behavior, EDNS support, and setting PTR records.","url":"https://developers.cloudflare.com/dns/dns-firewall/faq/","inLanguage":"en","image":"https://developers.cloudflare.com/dns/dns-firewall/faq/og.png?v=1dcb626fc0601df0","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Caching"]}
 ```

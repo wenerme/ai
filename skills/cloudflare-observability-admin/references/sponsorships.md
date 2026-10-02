@@ -137,7 +137,7 @@ An online coding bootcamp that teaches you to code for free.
 
 [Visit site](https://freecodecamp.org/) [GITHUB](https://github.com/freeCodeCamp/freeCodeCamp)
 
-[uppy-dog-full-2](https://uppy.io/) [<h3>Uppy</h3>
+[<h3>Uppy</h3>
 
 ](https://uppy.io/)
 

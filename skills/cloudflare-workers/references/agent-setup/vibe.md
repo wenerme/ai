@@ -134,7 +134,7 @@ IDETerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Build an image upload and transformation service using R2 and Cloudflare Images.
+   Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
    ```
 
 
@@ -241,23 +241,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
+```
+
+```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
+```
+
+```txt
 Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
 Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
-```
-
-```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips

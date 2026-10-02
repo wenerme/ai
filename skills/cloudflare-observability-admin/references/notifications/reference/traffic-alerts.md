@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/notifications/reference/traffic-alerts/
 
 # HTTP Traffic Alerts
 
-Last updated Apr 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/reference/traffic-alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/notifications/reference/traffic-alerts/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Error Rate
 
@@ -56,9 +56,11 @@ You can filter the alerts by domain, whether or not to include traffic already m
 
 ## Limitations
 
-Notifications are configured per zone. At the moment, it is not possible to configure alerts for a specific path or hostname.
+Traffic alerts are configured per zone. It is not currently possible to configure alerts for a specific path or hostname.
 
-The conditions in which the alerts are triggered cannot be configured. However, it is possible to choose whether to include traffic mitigated by DoS and WAF.
+Traffic alerts only evaluate [proxied](https://developers.cloudflare.com/dns/proxy-status/) hostnames, because Cloudflare only sees traffic that passes through it.
+
+The conditions that trigger alerts cannot be customized. However, you can choose whether to include traffic mitigated by DoS and WAF.
 
 Was this helpful?
 
@@ -69,5 +71,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/reference/traffic-alerts/#page","headline":"HTTP Traffic Alerts","description":"Monitor origin and edge HTTP error rates.","url":"https://developers.cloudflare.com/notifications/reference/traffic-alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/notifications/reference/traffic-alerts/og.png?v=5e97bf5a1edc7de8","dateModified":"2026-04-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/notifications/reference/traffic-alerts/#page","headline":"HTTP Traffic Alerts","description":"Monitor origin and edge HTTP error rates.","url":"https://developers.cloudflare.com/notifications/reference/traffic-alerts/","inLanguage":"en","image":"https://developers.cloudflare.com/notifications/reference/traffic-alerts/og.png?v=5e97bf5a1edc7de8","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
