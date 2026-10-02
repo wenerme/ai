@@ -261,7 +261,7 @@ Represents AddOn purchase for Namespace.
 
 A user with add-on data.
 
-**Implements:** `Todoable`, `User`
+**Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
 ### Fields {.no_toc}
 
@@ -382,7 +382,7 @@ Paginated collection of [`AdminDuoAvailabilityNamespace`](#adminduoavailabilityn
 
 Represents an admin member role.
 
-**Implements:** `CustomRoleInterface`, `RoleInterface`
+**Implements:** [`CustomRoleInterface`](interfaces.md#customroleinterface), [`RoleInterface`](interfaces.md#roleinterface)
 
 ### Fields {.no_toc}
 
@@ -595,7 +595,7 @@ Paginated collection of [`AiAuditEvent`](#aiauditevent). See [Standard connectio
 
 An AI catalog agent.
 
-**Implements:** `AiCatalogItem`
+**Implements:** [`AiCatalogItem`](interfaces.md#aicatalogitem)
 
 ### Fields {.no_toc}
 
@@ -606,7 +606,7 @@ An AI catalog agent.
 | `createdAt` | [`Time!`](scalars.md#time) | Timestamp of when the item was created. |
 | `description` | [`String!`](scalars.md#string) | Description of the item. |
 | `descriptionHtml` | [`String`](scalars.md#string) | GitLab Flavored Markdown rendering of `description`. |
-| `effectiveVersion` | `AiCatalogItemVersion` | Status: Experiment. Introduced in GitLab 19.3.Version of the item in effect for the given namespace, falling back to the latest version when none is in effect. In a project namespace, resolves to the project configuration pinned version when enabled, otherwise the latest version. In a group namespace, resolves to the group configuration pinned version when enabled, otherwise the latest version. In the global namespace, always resolves to the latest version.  <strong>Arguments for `effectiveVersion`:</strong> <dl><dt>`groupId` ([`GroupID`](scalars.md#groupid))</dt><dd>Global ID of the group to return the effective version for.</dd><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project to return the effective version for.</dd></dl> |
+| `effectiveVersion` | [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion) | Status: Experiment. Introduced in GitLab 19.3.Version of the item in effect for the given namespace, falling back to the latest version when none is in effect. In a project namespace, resolves to the project configuration pinned version when enabled, otherwise the latest version. In a group namespace, resolves to the group configuration pinned version when enabled, otherwise the latest version. In the global namespace, always resolves to the latest version.  <strong>Arguments for `effectiveVersion`:</strong> <dl><dt>`groupId` ([`GroupID`](scalars.md#groupid))</dt><dd>Global ID of the group to return the effective version for.</dd><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project to return the effective version for.</dd></dl> |
 | `foundational` | [`Boolean!`](scalars.md#boolean) | Whether the item is a foundational item. |
 | `foundationalAgentReference` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.2.Foundational agent reference. |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Foundational flow reference. |
@@ -614,7 +614,7 @@ An AI catalog agent.
 | `isEnabledInManagedByProject` | [`Boolean!`](scalars.md#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
 | `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the item. |
 | `last30DayUsageCount` | [`Int!`](scalars.md#int) | Number of projects using the item in the last 30 days. |
-| `latestVersion` | `AiCatalogItemVersion` | Latest version of the item.  <strong>Arguments for `latestVersion`:</strong> <dl><dt>`released` ([`Boolean`](scalars.md#boolean))</dt><dd>Return the latest released version.</dd></dl> |
+| `latestVersion` | [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion) | Latest version of the item.  <strong>Arguments for `latestVersion`:</strong> <dl><dt>`released` ([`Boolean`](scalars.md#boolean))</dt><dd>Return the latest released version.</dd></dl> |
 | `name` | [`String!`](scalars.md#string) | Name of the item. |
 | `project` | [`Project`](#project) | Project for the item. |
 | `public` | [`Boolean!`](scalars.md#boolean) | Deprecated in GitLab 19.3. Use `visibility`. |
@@ -633,7 +633,7 @@ An AI catalog agent.
 
 An AI catalog agent version.
 
-**Implements:** `AiCatalogItemVersion`
+**Implements:** [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion)
 
 ### Fields {.no_toc}
 
@@ -644,7 +644,7 @@ An AI catalog agent version.
 | `deprecated` | [`Boolean!`](scalars.md#boolean) | Indicates the item version has been deprecated by the author. |
 | `humanVersionName` | [`String`](scalars.md#string) | Human-friendly name of the item version. In the form v1.0.0-draft. |
 | `id` | [`ID!`](scalars.md#id) | ID of the item version. |
-| `item` | `AiCatalogItem!` | Item the version belongs to. |
+| `item` | [`AiCatalogItem!`](interfaces.md#aicatalogitem) | Item the version belongs to. |
 | `mcpServers` | [`AiCatalogMcpServerConnection`](#aicatalogmcpserverconnection) | Status: Experiment. Introduced in GitLab 18.10.MCP servers associated with the item. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `mcpTools` | [`[String!]`](scalars.md#string) | Status: Experiment. Introduced in GitLab 18.11.List of MCP tools enabled for the agent. |
 | `released` | [`Boolean!`](scalars.md#boolean) | Indicates the item version is released. |
@@ -680,7 +680,7 @@ Paginated collection of `AiCatalogCustomAndFoundationalItem`. See [Standard conn
 
 An AI catalog flow.
 
-**Implements:** `AiCatalogItem`
+**Implements:** [`AiCatalogItem`](interfaces.md#aicatalogitem)
 
 ### Fields {.no_toc}
 
@@ -691,14 +691,14 @@ An AI catalog flow.
 | `createdAt` | [`Time!`](scalars.md#time) | Timestamp of when the item was created. |
 | `description` | [`String!`](scalars.md#string) | Description of the item. |
 | `descriptionHtml` | [`String`](scalars.md#string) | GitLab Flavored Markdown rendering of `description`. |
-| `effectiveVersion` | `AiCatalogItemVersion` | Status: Experiment. Introduced in GitLab 19.3.Version of the item in effect for the given namespace, falling back to the latest version when none is in effect. In a project namespace, resolves to the project configuration pinned version when enabled, otherwise the latest version. In a group namespace, resolves to the group configuration pinned version when enabled, otherwise the latest version. In the global namespace, always resolves to the latest version.  <strong>Arguments for `effectiveVersion`:</strong> <dl><dt>`groupId` ([`GroupID`](scalars.md#groupid))</dt><dd>Global ID of the group to return the effective version for.</dd><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project to return the effective version for.</dd></dl> |
+| `effectiveVersion` | [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion) | Status: Experiment. Introduced in GitLab 19.3.Version of the item in effect for the given namespace, falling back to the latest version when none is in effect. In a project namespace, resolves to the project configuration pinned version when enabled, otherwise the latest version. In a group namespace, resolves to the group configuration pinned version when enabled, otherwise the latest version. In the global namespace, always resolves to the latest version.  <strong>Arguments for `effectiveVersion`:</strong> <dl><dt>`groupId` ([`GroupID`](scalars.md#groupid))</dt><dd>Global ID of the group to return the effective version for.</dd><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project to return the effective version for.</dd></dl> |
 | `foundational` | [`Boolean!`](scalars.md#boolean) | Whether the item is a foundational item. |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Foundational flow reference. |
 | `id` | [`ID!`](scalars.md#id) | ID of the item. |
 | `isEnabledInManagedByProject` | [`Boolean!`](scalars.md#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
 | `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the item. |
 | `last30DayUsageCount` | [`Int!`](scalars.md#int) | Number of projects using the item in the last 30 days. |
-| `latestVersion` | `AiCatalogItemVersion` | Latest version of the item.  <strong>Arguments for `latestVersion`:</strong> <dl><dt>`released` ([`Boolean`](scalars.md#boolean))</dt><dd>Return the latest released version.</dd></dl> |
+| `latestVersion` | [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion) | Latest version of the item.  <strong>Arguments for `latestVersion`:</strong> <dl><dt>`released` ([`Boolean`](scalars.md#boolean))</dt><dd>Return the latest released version.</dd></dl> |
 | `name` | [`String!`](scalars.md#string) | Name of the item. |
 | `project` | [`Project`](#project) | Project for the item. |
 | `public` | [`Boolean!`](scalars.md#boolean) | Deprecated in GitLab 19.3. Use `visibility`. |
@@ -717,7 +717,7 @@ An AI catalog flow.
 
 An AI catalog flow version.
 
-**Implements:** `AiCatalogItemVersion`
+**Implements:** [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion)
 
 ### Fields {.no_toc}
 
@@ -729,7 +729,7 @@ An AI catalog flow version.
 | `deprecated` | [`Boolean!`](scalars.md#boolean) | Indicates the item version has been deprecated by the author. |
 | `humanVersionName` | [`String`](scalars.md#string) | Human-friendly name of the item version. In the form v1.0.0-draft. |
 | `id` | [`ID!`](scalars.md#id) | ID of the item version. |
-| `item` | `AiCatalogItem!` | Item the version belongs to. |
+| `item` | [`AiCatalogItem!`](interfaces.md#aicatalogitem) | Item the version belongs to. |
 | `released` | [`Boolean!`](scalars.md#boolean) | Indicates the item version is released. |
 | `releasedAt` | [`Time`](scalars.md#time) | Timestamp of when the item version was released. |
 | `updatedAt` | [`Time!`](scalars.md#time) | Timestamp of when the item version was updated. |
@@ -737,7 +737,7 @@ An AI catalog flow version.
 
 ## `AiCatalogItemConnection`
 
-Paginated collection of `AiCatalogItem`. See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+Paginated collection of [`AiCatalogItem`](interfaces.md#aicatalogitem). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ### Extra fields {.no_toc}
 
@@ -761,10 +761,10 @@ An AI catalog item configuration.
 | `flowTriggers` | [`[AiFlowTriggerType!]`](#aiflowtriggertype) | Status: Experiment. Introduced in GitLab 19.4.Triggers associated with the configured catalog item. |
 | `group` | [`Group`](#group) | Group in which the catalog item is configured. |
 | `id` | [`ID!`](scalars.md#id) | ID of the configuration item. |
-| `item` | `AiCatalogItem` | Configuration catalog item. |
+| `item` | [`AiCatalogItem`](interfaces.md#aicatalogitem) | Configuration catalog item. |
 | `organization` | [`Organization`](#organization) | Organization in which the catalog item is configured. |
 | `parentItemConsumer` | [`AiCatalogItemConsumer`](#aicatalogitemconsumer) | Parent item consumer associated with the configured catalog item. |
-| `pinnedItemVersion` | `AiCatalogItemVersion` | Resolved item version according to the `pinnedVersionPrefix`.This field can only be resolved for 20 AiCatalogItemConsumers in any single request. |
+| `pinnedItemVersion` | [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion) | Resolved item version according to the `pinnedVersionPrefix`.This field can only be resolved for 20 AiCatalogItemConsumers in any single request. |
 | `pinnedVersionPrefix` | [`AiCatalogPinnedVersion`](scalars.md#aicatalogpinnedversion) | Version the item is pinned to, in the format `n.n.n`. |
 | `project` | [`Project`](#project) | Project in which the catalog item is configured. |
 | `serviceAccount` | [`UserCore`](#usercore) | Service account associated with the item consumer. |
@@ -792,6 +792,7 @@ Check permissions for the current user on an AI catalog item consumer.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `adminAiCatalogItemConsumer` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `admin_ai_catalog_item_consumer` on this resource. |
+| `executeAiCatalogItem` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `execute_ai_catalog_item` on this resource. |
 | `readAiCatalogItemConsumer` | [`Boolean!`](scalars.md#boolean) | If `true`, the user can perform `read_ai_catalog_item_consumer` on this resource. |
 
 ## `AiCatalogItemPermissions`
@@ -809,7 +810,7 @@ Check permissions for the current user on an AI catalog item.
 
 ## `AiCatalogItemVersionConnection`
 
-Paginated collection of `AiCatalogItemVersion`. See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+Paginated collection of [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ### Extra fields {.no_toc}
 
@@ -878,7 +879,7 @@ An icon advertised for an MCP tool, per the MCP spec icons field.
 
 An AI catalog third party flow.
 
-**Implements:** `AiCatalogItem`
+**Implements:** [`AiCatalogItem`](interfaces.md#aicatalogitem)
 
 ### Fields {.no_toc}
 
@@ -889,14 +890,14 @@ An AI catalog third party flow.
 | `createdAt` | [`Time!`](scalars.md#time) | Timestamp of when the item was created. |
 | `description` | [`String!`](scalars.md#string) | Description of the item. |
 | `descriptionHtml` | [`String`](scalars.md#string) | GitLab Flavored Markdown rendering of `description`. |
-| `effectiveVersion` | `AiCatalogItemVersion` | Status: Experiment. Introduced in GitLab 19.3.Version of the item in effect for the given namespace, falling back to the latest version when none is in effect. In a project namespace, resolves to the project configuration pinned version when enabled, otherwise the latest version. In a group namespace, resolves to the group configuration pinned version when enabled, otherwise the latest version. In the global namespace, always resolves to the latest version.  <strong>Arguments for `effectiveVersion`:</strong> <dl><dt>`groupId` ([`GroupID`](scalars.md#groupid))</dt><dd>Global ID of the group to return the effective version for.</dd><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project to return the effective version for.</dd></dl> |
+| `effectiveVersion` | [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion) | Status: Experiment. Introduced in GitLab 19.3.Version of the item in effect for the given namespace, falling back to the latest version when none is in effect. In a project namespace, resolves to the project configuration pinned version when enabled, otherwise the latest version. In a group namespace, resolves to the group configuration pinned version when enabled, otherwise the latest version. In the global namespace, always resolves to the latest version.  <strong>Arguments for `effectiveVersion`:</strong> <dl><dt>`groupId` ([`GroupID`](scalars.md#groupid))</dt><dd>Global ID of the group to return the effective version for.</dd><dt>`projectId` ([`ProjectID`](scalars.md#projectid))</dt><dd>Global ID of the project to return the effective version for.</dd></dl> |
 | `foundational` | [`Boolean!`](scalars.md#boolean) | Whether the item is a foundational item. |
 | `foundationalFlowReference` | [`String`](scalars.md#string) | Foundational flow reference. |
 | `id` | [`ID!`](scalars.md#id) | ID of the item. |
 | `isEnabledInManagedByProject` | [`Boolean!`](scalars.md#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
 | `itemType` | [`AiCatalogItemType!`](enums.md#aicatalogitemtype) | Type of the item. |
 | `last30DayUsageCount` | [`Int!`](scalars.md#int) | Number of projects using the item in the last 30 days. |
-| `latestVersion` | `AiCatalogItemVersion` | Latest version of the item.  <strong>Arguments for `latestVersion`:</strong> <dl><dt>`released` ([`Boolean`](scalars.md#boolean))</dt><dd>Return the latest released version.</dd></dl> |
+| `latestVersion` | [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion) | Latest version of the item.  <strong>Arguments for `latestVersion`:</strong> <dl><dt>`released` ([`Boolean`](scalars.md#boolean))</dt><dd>Return the latest released version.</dd></dl> |
 | `name` | [`String!`](scalars.md#string) | Name of the item. |
 | `project` | [`Project`](#project) | Project for the item. |
 | `public` | [`Boolean!`](scalars.md#boolean) | Deprecated in GitLab 19.3. Use `visibility`. |
@@ -915,7 +916,7 @@ An AI catalog third party flow.
 
 An AI catalog third party flow version.
 
-**Implements:** `AiCatalogItemVersion`
+**Implements:** [`AiCatalogItemVersion`](interfaces.md#aicatalogitemversion)
 
 ### Fields {.no_toc}
 
@@ -927,7 +928,7 @@ An AI catalog third party flow version.
 | `deprecated` | [`Boolean!`](scalars.md#boolean) | Indicates the item version has been deprecated by the author. |
 | `humanVersionName` | [`String`](scalars.md#string) | Human-friendly name of the item version. In the form v1.0.0-draft. |
 | `id` | [`ID!`](scalars.md#id) | ID of the item version. |
-| `item` | `AiCatalogItem!` | Item the version belongs to. |
+| `item` | [`AiCatalogItem!`](interfaces.md#aicatalogitem) | Item the version belongs to. |
 | `released` | [`Boolean!`](scalars.md#boolean) | Indicates the item version is released. |
 | `releasedAt` | [`Time`](scalars.md#time) | Timestamp of when the item version was released. |
 | `updatedAt` | [`Time!`](scalars.md#time) | Timestamp of when the item version was updated. |
@@ -1557,7 +1558,7 @@ Paginated collection of [`AiXrayReport`](#aixrayreport). See [Standard connectio
 
 Describes an alert from the project's Alert Management.
 
-**Implements:** `NoteableInterface`, `Todoable`
+**Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -1616,7 +1617,7 @@ Represents total number of alerts for the represented categories.
 
 An endpoint and credentials used to accept alerts for a project.
 
-**Implements:** `AlertManagementIntegration`
+**Implements:** [`AlertManagementIntegration`](interfaces.md#alertmanagementintegration)
 
 ### Fields {.no_toc}
 
@@ -1639,7 +1640,7 @@ Paginated collection of [`AlertManagementHttpIntegration`](#alertmanagementhttpi
 
 ## `AlertManagementIntegrationConnection`
 
-Paginated collection of `AlertManagementIntegration`. See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+Paginated collection of [`AlertManagementIntegration`](interfaces.md#alertmanagementintegration). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ## `AlertManagementMetricImageUploadRegistry`
 
@@ -1712,7 +1713,7 @@ Parsed field (with its name) from an alert used for custom mappings.
 
 **DEPRECATED - Use AlertManagementHttpIntegration directly** An endpoint and credentials used to accept Prometheus alerts for a project.
 
-**Implements:** `AlertManagementIntegration`
+**Implements:** [`AlertManagementIntegration`](interfaces.md#alertmanagementintegration)
 
 ### Fields {.no_toc}
 
@@ -1730,7 +1731,7 @@ Parsed field (with its name) from an alert used for custom mappings.
 
 Stores Amazon S3 configurations for audit event streaming.
 
-**Implements:** `AmazonS3ConfigurationInterface`
+**Implements:** [`AmazonS3ConfigurationInterface`](interfaces.md#amazons3configurationinterface)
 
 ### Fields {.no_toc}
 
@@ -1756,14 +1757,14 @@ ClickHouse-based analytics endpoints aggregating data across groups and projects
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `agentPlatformSessions` | [`AgentPlatformSessionsAggregationScope`](#agentplatformsessionsaggregationscope) | Aggregation engine for GitLab Duo Agent Platform sessions usage.  <strong>Arguments for `agentPlatformSessions`:</strong> <dl><dt>`createdEventAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by session creation timestamp. Start of the range.</dd><dt>`createdEventAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by session creation timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`flowType` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow types.</dd><dt>`projectId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many project Global IDs.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd></dl> |
-| `contributions` | [`ContributionsAggregationScope`](#contributionsaggregationscope) | Status: Experiment. Introduced in GitLab 19.0.Aggregation engine for contribution analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `contributions`:</strong> <dl><dt>`authorId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many author Global IDs.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by contribution timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by contribution timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd></dl> |
-| `deployments` | [`DeploymentsAggregationScope`](#deploymentsaggregationscope) | Status: Experiment. Introduced in GitLab 19.0.Aggregation engine for deployment analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `deployments`:</strong> <dl><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment creation timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`environmentId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many environment Global IDs.</dd><dt>`finishedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment finish timestamp. Start of the range.</dd><dt>`finishedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment finish timestamp. End of the range.</dd><dt>`ref` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many deployment refs.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many deployment statuses.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd></dl> |
-| `duoCodeSuggestions` | [`DuoCodeSuggestionsAggregationScope`](#duocodesuggestionsaggregationscope) | Aggregation engine for GitLab Duo Code Suggestions usage.  <strong>Arguments for `duoCodeSuggestions`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`ideName` ([`[String!]`](scalars.md#string))</dt><dd>Filter by IDE name.</dd><dt>`language` ([`[String!]`](scalars.md#string))</dt><dd>Filter by suggestion language.</dd><dt>`timestampFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by suggestion timestamp. Start of the range.</dd><dt>`timestampTo` ([`Time`](scalars.md#time))</dt><dd>Filter by suggestion timestamp. End of the range.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd></dl> |
-| `duoUsageEvents` | [`DuoUsageEventsAggregationScope`](#duousageeventsaggregationscope) | Aggregation engine for GitLab Duo AI usage events.  <strong>Arguments for `duoUsageEvents`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`event` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many events.</dd><dt>`feature` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many features.</dd><dt>`flowType` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many Duo Agent Platform flow types.</dd><dt>`groupId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many group Global IDs, including events from their descendants.</dd><dt>`timestampFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by event timestamp. Start of the range.</dd><dt>`timestampTo` ([`Time`](scalars.md#time))</dt><dd>Filter by event timestamp. End of the range.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd></dl> |
-| `duoWorkflows` | [`DuoWorkflowsAggregationScope`](#duoworkflowsaggregationscope) | Status: Experiment. Introduced in GitLab 19.4.Aggregation engine for GitLab Duo Agent Platform flows. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `duoWorkflows`:</strong> <dl><dt>`activeDaysFrom` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct days the user created flows in the selected period. Start of the range.</dd><dt>`activeDaysTo` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct days the user created flows in the selected period. End of the range.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by flow creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by flow creation timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`flowTypesUsedFrom` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct flow types the user ran in the selected period. Start of the range.</dd><dt>`flowTypesUsedTo` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct flow types the user ran in the selected period. End of the range.</dd><dt>`groupId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many group Global IDs, including flows from their descendants.</dd><dt>`projectId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many project Global IDs.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow statuses (created, running, finished, failed, ...).</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`workflowDefinition` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow types.</dd></dl> |
-| `mergeRequests` | [`MergeRequestsAggregationScope`](#mergerequestsaggregationscope) | Status: Experiment. Introduced in GitLab 19.2.Aggregation engine for merge request analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `mergeRequests`:</strong> <dl><dt>`authorId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many author Global IDs.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by merge request creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by merge request creation timestamp. End of the range.</dd><dt>`createdByDuo` ([`[Boolean!]`](scalars.md#boolean))</dt><dd>Filter by whether the merge request was created by a GitLab Duo Agent Platform session.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`metricMergedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by merge timestamp. Start of the range.</dd><dt>`metricMergedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by merge timestamp. End of the range.</dd><dt>`stateId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many states (opened, closed, merged, locked).</dd><dt>`targetBranch` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many target branches.</dd></dl> |
-| `pipelines` | [`PipelinesAggregationScope`](#pipelinesaggregationscope) | Status: Experiment. Introduced in GitLab 19.2.Aggregation engine for CI pipeline analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `pipelines`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`finishedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline finish timestamp. Start of the range.</dd><dt>`finishedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline finish timestamp. End of the range.</dd><dt>`ref` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many pipeline refs.</dd><dt>`source` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many pipeline sources.</dd><dt>`startedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline start timestamp. Start of the range.</dd><dt>`startedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline start timestamp. End of the range.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many pipeline statuses.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd></dl> |
+| `agentPlatformSessions` | [`AgentPlatformSessionsAggregationScope`](#agentplatformsessionsaggregationscope) | Aggregation engine for GitLab Duo Agent Platform sessions usage.  <strong>Arguments for `agentPlatformSessions`:</strong> <dl><dt>`createdEventAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by session creation timestamp. Start of the range.</dd><dt>`createdEventAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by session creation timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`flowType` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow types.</dd><dt>`flowTypeNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many flow types. Maximum is 100.</dd><dt>`projectId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many project Global IDs.</dd><dt>`projectIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many project Global IDs. Sessions not scoped to a project are returned, because they store `0` rather than NULL. Maximum is 100.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd></dl> |
+| `contributions` | [`ContributionsAggregationScope`](#contributionsaggregationscope) | Status: Experiment. Introduced in GitLab 19.0.Aggregation engine for contribution analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `contributions`:</strong> <dl><dt>`authorId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many author Global IDs.</dd><dt>`authorIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many author Global IDs. Maximum is 100.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by contribution timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by contribution timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd></dl> |
+| `deployments` | [`DeploymentsAggregationScope`](#deploymentsaggregationscope) | Status: Experiment. Introduced in GitLab 19.0.Aggregation engine for deployment analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `deployments`:</strong> <dl><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment creation timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`environmentId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many environment Global IDs.</dd><dt>`environmentIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many environment Global IDs. Maximum is 100.</dd><dt>`finishedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment finish timestamp. Start of the range.</dd><dt>`finishedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by deployment finish timestamp. End of the range.</dd><dt>`ref` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many deployment refs.</dd><dt>`refNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many deployment refs. Maximum is 100.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many deployment statuses.</dd><dt>`statusNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many deployment statuses. Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Deployments with no triggering user are excluded as well. Maximum is 100.</dd></dl> |
+| `duoCodeSuggestions` | [`DuoCodeSuggestionsAggregationScope`](#duocodesuggestionsaggregationscope) | Aggregation engine for GitLab Duo Code Suggestions usage.  <strong>Arguments for `duoCodeSuggestions`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`ideName` ([`[String!]`](scalars.md#string))</dt><dd>Filter by IDE name.</dd><dt>`ideNameNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many IDE names. Maximum is 100.</dd><dt>`language` ([`[String!]`](scalars.md#string))</dt><dd>Filter by suggestion language.</dd><dt>`languageNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many suggestion languages. Maximum is 100.</dd><dt>`timestampFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by suggestion timestamp. Start of the range.</dd><dt>`timestampTo` ([`Time`](scalars.md#time))</dt><dd>Filter by suggestion timestamp. End of the range.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd></dl> |
+| `duoUsageEvents` | [`DuoUsageEventsAggregationScope`](#duousageeventsaggregationscope) | Aggregation engine for GitLab Duo AI usage events.  <strong>Arguments for `duoUsageEvents`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`event` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many events.</dd><dt>`eventNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many events. Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`feature` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many features.</dd><dt>`featureNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many features. Events with no recognized feature are excluded as well. Maximum is 100.</dd><dt>`flowType` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many Duo Agent Platform flow types.</dd><dt>`flowTypeNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many Duo Agent Platform flow types. Returns only Duo Agent Platform events, because events from elsewhere have no flow type. Maximum is 100.</dd><dt>`groupId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many group Global IDs, including events from their descendants.</dd><dt>`timestampFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by event timestamp. Start of the range.</dd><dt>`timestampTo` ([`Time`](scalars.md#time))</dt><dd>Filter by event timestamp. End of the range.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd></dl> |
+| `duoWorkflows` | [`DuoWorkflowsAggregationScope`](#duoworkflowsaggregationscope) | Status: Experiment. Introduced in GitLab 19.4.Aggregation engine for GitLab Duo Agent Platform flows. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `duoWorkflows`:</strong> <dl><dt>`activeDaysFrom` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct days the user created flows in the selected period. Start of the range.</dd><dt>`activeDaysTo` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct days the user created flows in the selected period. End of the range.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by flow creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by flow creation timestamp. End of the range.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`flowTypesUsedFrom` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct flow types the user ran in the selected period. Start of the range.</dd><dt>`flowTypesUsedTo` ([`Int`](scalars.md#int))</dt><dd>Filter by the number of distinct flow types the user ran in the selected period. End of the range.</dd><dt>`groupId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many group Global IDs, including flows from their descendants.</dd><dt>`projectId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many project Global IDs.</dd><dt>`projectIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many project Global IDs. Flows created at namespace level are excluded as well. Maximum is 100.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow statuses (created, running, finished, failed, ...).</dd><dt>`statusNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many flow statuses (created, running, finished, failed, ...). Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Maximum is 100.</dd><dt>`workflowDefinition` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many flow types.</dd><dt>`workflowDefinitionNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many flow types. Maximum is 100.</dd></dl> |
+| `mergeRequests` | [`MergeRequestsAggregationScope`](#mergerequestsaggregationscope) | Status: Experiment. Introduced in GitLab 19.2.Aggregation engine for merge request analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `mergeRequests`:</strong> <dl><dt>`authorId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many author Global IDs.</dd><dt>`authorIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many author Global IDs. Merge requests with no author are excluded as well. Maximum is 100.</dd><dt>`createdAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by merge request creation timestamp. Start of the range.</dd><dt>`createdAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by merge request creation timestamp. End of the range.</dd><dt>`createdByDuo` ([`[Boolean!]`](scalars.md#boolean))</dt><dd>Filter by whether the merge request was created by a GitLab Duo Agent Platform session.</dd><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`metricMergedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by merge timestamp. Start of the range.</dd><dt>`metricMergedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by merge timestamp. End of the range.</dd><dt>`stateId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many states (opened, closed, merged, locked).</dd><dt>`stateIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many states (opened, closed, merged, locked). Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`targetBranch` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many target branches.</dd><dt>`targetBranchNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many target branches. Maximum is 100.</dd></dl> |
+| `pipelines` | [`PipelinesAggregationScope`](#pipelinesaggregationscope) | Status: Experiment. Introduced in GitLab 19.2.Aggregation engine for CI pipeline analytics. Requires Siphon replication to be enabled on the instance.  <strong>Arguments for `pipelines`:</strong> <dl><dt>`descendantsScope` ([`AggregationScopeInput`](input_objects.md#aggregationscopeinput))</dt><dd>Child groups and projects to aggregate data for. Not supported at project level.</dd><dt>`finishedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline finish timestamp. Start of the range.</dd><dt>`finishedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline finish timestamp. End of the range.</dd><dt>`ref` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many pipeline refs.</dd><dt>`refNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many pipeline refs. Pipelines with no ref are excluded as well. Maximum is 100.</dd><dt>`source` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many pipeline sources.</dd><dt>`sourceNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many pipeline sources. Pipelines with no source are excluded as well. Unrecognized values are ignored, so a list with none recognized excludes nothing. Maximum is 100.</dd><dt>`startedAtFrom` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline start timestamp. Start of the range.</dd><dt>`startedAtTo` ([`Time`](scalars.md#time))</dt><dd>Filter by pipeline start timestamp. End of the range.</dd><dt>`status` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many pipeline statuses.</dd><dt>`statusNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many pipeline statuses. Maximum is 100.</dd><dt>`userId` ([`[String!]`](scalars.md#string))</dt><dd>Filter by one or many user Global IDs.</dd><dt>`userIdNot` ([`[String!]`](scalars.md#string))</dt><dd>Exclude one or many user Global IDs. Pipelines with no triggering user are excluded as well. Maximum is 100.</dd></dl> |
 
 ## `AnalyzerGroupStatusType`
 
@@ -1876,7 +1877,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents the approval policy.
 
-**Implements:** `OrchestrationPolicy`
+**Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
 ### Fields {.no_toc}
 
@@ -1991,6 +1992,7 @@ Artifact Registry an organization is activated for.
 | `createdAt` | [`Time`](scalars.md#time) | Status: Experiment. Introduced in GitLab 19.4.Timestamp the registry was provisioned, presented as the active-since date. `null` when the status is `unknown`. |
 | `id` | [`ID!`](scalars.md#id) | Status: Experiment. Introduced in GitLab 19.5.Artifact Registry's UUID for the namespace mapped to the organization. Neither a GitLab namespace nor a GitLab global ID. Pass it as `resourceId` to the Artifact Registry role mutations. Present even when the status is `unknown`. |
 | `slug` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.4.Registry slug, Artifact Registry's immutable identifier for the namespace. `null` when the status is `unknown`. |
+| `statistics` | [`ArtifactRegistryNamespaceStatistics`](#artifactregistrynamespacestatistics) | Status: Experiment. Introduced in GitLab 19.5.Namespace-wide Artifact Registry statistics, read as the current user when this field is selected. `null` on any unresolved read, so an unavailable service or a drifted slug omits the figures rather than raising. The parent field returns `null` when the `artifact_registry_ui` feature flag is disabled, so this field is not reached. |
 | `status` | [`String!`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.4.Status Artifact Registry returned, one of `active`, `suspended`, `disabled`, `blocked`, `deleted`, or `purged`, or `unknown` when the mapped namespace did not resolve. Deliberately a string rather than an enum so a status Artifact Registry adds within its API version reaches the response instead of raising. |
 | `userPermissions` | [`ArtifactRegistryNamespacePermissions!`](#artifactregistrynamespacepermissions) | Status: Experiment. Introduced in GitLab 19.5.Permissions Artifact Registry grants the current user on the namespace, read from the namespace details as the user when this field is selected. Advisory, because Artifact Registry authorizes every request on its own. Every permission is `false` when Artifact Registry returned no verdicts. The parent field returns `null` when the `artifact_registry_ui` feature flag is disabled, so this block is not reached. |
 
@@ -2022,16 +2024,19 @@ Manifest of a container image in an Artifact Registry repository (Docker and OCI
 | `architecture` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.5.CPU architecture an image manifest targets. Null on an index, per value on an image whose config did not carry it, and always null on a remote repository. |
 | `artifactType` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.4.Artifact type of the manifest. Null when the manifest declares none. |
 | `childrenCount` | [`Int`](scalars.md#int) | Status: Experiment. Introduced in GitLab 19.5.Number of platform children of a manifest index. Zero on an image manifest, and always zero on a remote repository. Null on a deployment predating the field. |
+| `childrenPreview` | [`[ArtifactRegistryManifestPlatform!]`](#artifactregistrymanifestplatform) | Status: Experiment. Introduced in GitLab 19.5.First ten platform children of a manifest index, child digest ascending, each with its digest and platform triple. Empty on an image manifest and on a remote repository. childrenCount on this type already carries the true total; read the complete children list on the detail type. Null on a deployment predating the field. |
 | `createdAt` | [`Time`](scalars.md#time) | Status: Experiment. Introduced in GitLab 19.4.Time the manifest was pushed. Null if the timestamp is absent or unparseable. |
 | `digest` | [`String!`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.4.Content-addressable digest of the manifest. |
 | `id` | [`ID!`](scalars.md#id) | Status: Experiment. Introduced in GitLab 19.4.ID of the manifest in Artifact Registry. |
 | `mediaType` | [`String!`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.4.Media type of the manifest. |
 | `os` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.5.Operating system an image manifest targets. Null on an index, per value on an image whose config did not carry it, and always null on a remote repository. |
 | `osVariant` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.5.CPU variant an image manifest targets. Null on an index, on most images, and always null on a remote repository. |
+| `parentsPreview` | [`[String!]`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.5.First ten digests of the indexes that reference this manifest, in the order Artifact Registry returns them. Empty when no index references it. The list carries no parent count; read the complete list, and the total in parentsCount, on the detail type. Null on a deployment predating the field. |
 | `referrersCount` | [`Int`](scalars.md#int) | Status: Experiment. Introduced in GitLab 19.5.Number of manifests in the image that name this digest as their subject. Zero when none do, and always zero on a remote repository. Null on a deployment predating the field. |
 | `size` | [`BigInt!`](scalars.md#bigint) | Status: Experiment. Introduced in GitLab 19.4.Size of the manifest, in bytes. For a hosted repository, the push-time tree total, where an index total already contains its platform children and so does not sum across sibling rows. For a remote repository, the cached manifest's own payload bytes. |
 | `subjectDigest` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.4.Digest of the subject manifest a referrer refers to. Null for a manifest that is not a referrer. Populated on the referrers connection, where every row is a referrer of the manifest it hangs off. On the manifests connection it is null unless the caller passes includeReferrers, which the default omits. |
 | `tagsCount` | [`Int`](scalars.md#int) | Status: Experiment. Introduced in GitLab 19.5.Number of tags pointing at the manifest. Zero when untagged. Null on a deployment predating the field. |
+| `tagsPreview` | [`[String!]`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.5.First ten tags pointing at the manifest, name ascending. Empty when untagged. tagsCount on this type already carries the true total; read the complete tags list on the detail type. Null on a deployment predating the field. |
 
 ## `ArtifactRegistryManifestAnnotation`
 
@@ -2149,6 +2154,17 @@ Per-action permissions Artifact Registry reports for the current user on a names
 | `readRepository` | [`Boolean!`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 19.5.Indicates the user can read repositories of the namespace and their metadata. |
 | `updateRepository` | [`Boolean!`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 19.5.Indicates the user can change the settings of the namespace's repositories. |
 | `updateRepositoryUpstream` | [`Boolean!`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 19.5.Indicates the user can change an upstream of the namespace's repositories. |
+
+## `ArtifactRegistryNamespaceStatistics`
+
+Namespace-wide statistics for an Artifact Registry.
+
+### Fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `deduplicatedSizeBytes` | [`BigInt`](scalars.md#bigint) | Status: Experiment. Introduced in GitLab 19.5.Namespace's storage footprint in bytes, counting each distinct blob once. |
+| `repositoriesCount` | [`BigInt`](scalars.md#bigint) | Status: Experiment. Introduced in GitLab 19.5.Number of active repositories in the namespace, every format and kind. |
 
 ## `ArtifactRegistryNpmDistTag`
 
@@ -2584,7 +2600,7 @@ Represents a subgroup or project filter that belongs to an external audit event 
 
 Represents a HTTP header key/value that belongs to an audit streaming destination.
 
-**Implements:** `BaseHeaderInterface`
+**Implements:** [`BaseHeaderInterface`](interfaces.md#baseheaderinterface)
 
 ### Fields {.no_toc}
 
@@ -2603,7 +2619,7 @@ Paginated collection of [`AuditEventStreamingHeader`](#auditeventstreamingheader
 
 Represents a HTTP header key/value that belongs to an instance level audit streaming destination.
 
-**Implements:** `BaseHeaderInterface`
+**Implements:** [`BaseHeaderInterface`](interfaces.md#baseheaderinterface)
 
 ### Fields {.no_toc}
 
@@ -2637,7 +2653,7 @@ Auto-remediation configuration for a dependency scanning post-processing scan pr
 
 Core representation of a GitLab user.
 
-**Implements:** `Todoable`, `User`
+**Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
 ### Fields {.no_toc}
 
@@ -2738,7 +2754,7 @@ Paginated collection of [`AwardEmoji`](#awardemoji). See [Standard connection fi
 
 ## `BaseService`
 
-**Implements:** `Service`
+**Implements:** [`Service`](interfaces.md#service)
 
 ### Fields {.no_toc}
 
@@ -2759,7 +2775,7 @@ Paginated collection of [`AwardEmoji`](#awardemoji). See [Standard connection fi
 
 ## `Blob`
 
-**Implements:** `Entry`
+**Implements:** [`Entry`](interfaces.md#entry)
 
 ### Fields {.no_toc}
 
@@ -2857,7 +2873,7 @@ Paginated collection of [`Board`](#board). See [Standard connection fields](#sta
 
 Represents an epic on an issue board.
 
-**Implements:** `CurrentUserTodos`, `Eventable`, `NoteableInterface`, `Todoable`
+**Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`Eventable`](interfaces.md#eventable), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -2983,7 +2999,7 @@ Paginated collection of [`BoardList`](#boardlist). See [Standard connection fiel
 
 an expression with a boolean value.
 
-**Implements:** `ExpressionInterface`
+**Implements:** [`ExpressionInterface`](interfaces.md#expressioninterface)
 
 ### Fields {.no_toc}
 
@@ -4209,7 +4225,7 @@ Paginated collection of [`CiGroupEnvironmentScope`](#cigroupenvironmentscope). S
 
 CI/CD variables for a group.
 
-**Implements:** `CiVariable`
+**Implements:** [`CiVariable`](interfaces.md#civariable)
 
 ### Fields {.no_toc}
 
@@ -4300,7 +4316,7 @@ Input for pipeline creation.
 
 CI/CD variables for a GitLab instance.
 
-**Implements:** `CiVariable`
+**Implements:** [`CiVariable`](interfaces.md#civariable)
 
 ### Fields {.no_toc}
 
@@ -4323,7 +4339,7 @@ Paginated collection of [`CiInstanceVariable`](#ciinstancevariable). See [Standa
 
 ## `CiJob`
 
-**Implements:** `CiJobInterface`
+**Implements:** [`CiJobInterface`](interfaces.md#cijobinterface)
 
 ### Fields {.no_toc}
 
@@ -4355,7 +4371,7 @@ Paginated collection of [`CiInstanceVariable`](#ciinstancevariable). See [Standa
 | `manualVariables` | [`CiManualVariableConnection`](#cimanualvariableconnection) | Variables added to a manual job when the job is triggered. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `name` | [`String`](scalars.md#string) | Name of the job. |
 | `needs` | [`CiBuildNeedConnection`](#cibuildneedconnection) | References to builds that must complete before the jobs run. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
-| `pipeline` | `PipelineInterface` | Pipeline the job belongs to. |
+| `pipeline` | [`PipelineInterface`](interfaces.md#pipelineinterface) | Pipeline the job belongs to. |
 | `playPath` | [`String`](scalars.md#string) | Play path of the job. |
 | `playable` | [`Boolean!`](scalars.md#boolean) | Indicates the job can be played. |
 | `previousStageJobs` | [`CiJobConnection`](#cijobconnection) | Deprecated in GitLab 19.2. No longer required. Previous stage jobs are now computed on the client side. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
@@ -4445,7 +4461,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiJobInterfaceConnection`
 
-Paginated collection of `CiJobInterface`. See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+Paginated collection of [`CiJobInterface`](interfaces.md#cijobinterface). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ### Extra fields {.no_toc}
 
@@ -4457,7 +4473,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `CiJobMinimalAccess`
 
-**Implements:** `CiJobInterface`
+**Implements:** [`CiJobInterface`](interfaces.md#cijobinterface)
 
 ### Fields {.no_toc}
 
@@ -4483,10 +4499,10 @@ This connection has additional fields beyond the [standard connection fields](#s
 | `kind` | [`CiJobKind`](enums.md#cijobkind) | Indicates the type of job. |
 | `manualJob` | [`Boolean`](scalars.md#boolean) | Whether the job has a manual action. |
 | `name` | [`String`](scalars.md#string) | Name of the job. |
-| `pipeline` | `PipelineInterface` | Pipeline the job belongs to. |
+| `pipeline` | [`PipelineInterface`](interfaces.md#pipelineinterface) | Pipeline the job belongs to. |
 | `playPath` | [`String`](scalars.md#string) | Play path of the job. |
 | `playable` | [`Boolean`](scalars.md#boolean) | Indicates the job can be played. |
-| `project` | `ProjectInterface` | Project that the job belongs to. |
+| `project` | [`ProjectInterface`](interfaces.md#projectinterface) | Project that the job belongs to. |
 | `queuedAt` | [`Time`](scalars.md#time) | When the job was enqueued and marked as pending. |
 | `queuedDuration` | [`Duration`](scalars.md#duration) | How long the job was enqueued before starting. |
 | `refName` | [`String`](scalars.md#string) | Ref name of the job. |
@@ -4644,7 +4660,7 @@ Statistics for a group of CI jobs.
 
 CI/CD variables given to a manual job.
 
-**Implements:** `CiVariable`
+**Implements:** [`CiVariable`](interfaces.md#civariable)
 
 ### Fields {.no_toc}
 
@@ -4733,7 +4749,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 CI/CD variables for a project.
 
-**Implements:** `CiVariable`
+**Implements:** [`CiVariable`](interfaces.md#civariable)
 
 ### Fields {.no_toc}
 
@@ -4790,7 +4806,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 | `maintenanceNoteHtml` | [`String`](scalars.md#string) | GitLab Flavored Markdown rendering of `maintenance_note`. |
 | `managers` | [`CiRunnerManagerConnection`](#cirunnermanagerconnection) | Runner managers associated with the runner configuration. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `managers`:</strong> <dl><dt>`status` ([`CiRunnerStatus`](enums.md#cirunnerstatus))</dt><dd>Filter runner managers by status.</dd><dt>`systemId` ([`String`](scalars.md#string))</dt><dd>Filter runner managers by system ID.</dd></dl> |
 | `maximumTimeout` | [`Int`](scalars.md#int) | Maximum timeout (in seconds) for jobs processed by the runner. |
-| `ownerProject` | `ProjectInterface` | Project that owns the runner. For project runners only. |
+| `ownerProject` | [`ProjectInterface`](interfaces.md#projectinterface) | Project that owns the runner. For project runners only. |
 | `paused` | [`Boolean!`](scalars.md#boolean) | Indicates the runner is paused and not available to run jobs. |
 | `privateProjectsMinutesCostFactor` | [`Float`](scalars.md#float) | Private projects' "compute cost factor" associated with the runner (GitLab.com only). |
 | `projectCount` | [`Int`](scalars.md#int) | Number of projects that the runner is associated with. The count includes projects that might not be visible to the current user. |
@@ -5395,7 +5411,7 @@ Represents a summary of the compared codequality report.
 
 ## `Commit`
 
-**Implements:** `NoteableInterface`, `Todoable`
+**Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -5428,7 +5444,7 @@ Represents a summary of the compared codequality report.
 | `pipelines` | [`PipelineConnection`](#pipelineconnection) | Pipelines of the commit ordered latest first. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `pipelines`:</strong> <dl><dt>`ids` ([`[ID!]`](scalars.md#id))</dt><dd>Filter pipelines by their Global IDs. Maximum 20 IDs per request.</dd><dt>`ref` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the ref they are run for.</dd><dt>`refType` ([`RefType`](enums.md#reftype))</dt><dd>Type of ref.</dd><dt>`scope` ([`PipelineScopeEnum`](enums.md#pipelinescopeenum))</dt><dd>Filter pipelines by scope.</dd><dt>`sha` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the sha of the commit they are run for.</dd><dt>`source` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by their source.</dd><dt>`status` ([`PipelineStatusEnum`](enums.md#pipelinestatusenum))</dt><dd>Filter pipelines by their status.</dd><dt>`updatedAfter` ([`Time`](scalars.md#time))</dt><dd>Pipelines updated after the date.</dd><dt>`updatedBefore` ([`Time`](scalars.md#time))</dt><dd>Pipelines updated before the date.</dd><dt>`username` ([`String`](scalars.md#string))</dt><dd>Filter pipelines by the user that triggered the pipeline.</dd></dl> |
 | `sha` | [`String!`](scalars.md#string) | SHA1 ID of the commit. |
 | `shortId` | [`String!`](scalars.md#string) | Short SHA1 ID of the commit. |
-| `signature` | `CommitSignature` | Signature of the commit. |
+| `signature` | [`CommitSignature`](interfaces.md#commitsignature) | Signature of the commit. |
 | `signatureHtml` | [`String`](scalars.md#string) | Rendered HTML of the commit signature. |
 | `tags` | [`[String!]`](scalars.md#string) | Tag names pointing to the commit. |
 | `title` | [`String`](scalars.md#string) | Title of the commit message. |
@@ -5765,7 +5781,7 @@ Composer metadata.
 
 Conan file metadata.
 
-**Implements:** `PackageFileMetadata`
+**Implements:** [`PackageFileMetadata`](interfaces.md#packagefilemetadata)
 
 ### Fields {.no_toc}
 
@@ -5846,7 +5862,7 @@ A tag expiration policy designed to keep only the images that matter most.
 
 Represents the most restrictive permissions for a container image tag.
 
-**Implements:** `AccessLevelInterface`
+**Implements:** [`AccessLevelInterface`](interfaces.md#accesslevelinterface)
 
 ### Fields {.no_toc}
 
@@ -5877,7 +5893,7 @@ Paginated collection of [`ContainerProtectionRepositoryRule`](#containerprotecti
 
 A container repository tag protection rule designed to prevent users with a certain access level or lower from altering the container registry.
 
-**Implements:** `AccessLevelInterface`
+**Implements:** [`AccessLevelInterface`](interfaces.md#accesslevelinterface)
 
 ### Fields {.no_toc}
 
@@ -5898,7 +5914,7 @@ Paginated collection of [`ContainerProtectionTagRule`](#containerprotectiontagru
 
 Represents a container virtual registry.
 
-**Implements:** `RegistryInterface`
+**Implements:** [`RegistryInterface`](interfaces.md#registryinterface)
 
 ### Fields {.no_toc}
 
@@ -5925,7 +5941,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents container virtual registry details.
 
-**Implements:** `RegistryInterface`
+**Implements:** [`RegistryInterface`](interfaces.md#registryinterface)
 
 ### Fields {.no_toc}
 
@@ -5949,7 +5965,7 @@ Represents container virtual registry details.
 
 Represents a container registry upstream and its registry.
 
-**Implements:** `RegistryUpstreamInterface`
+**Implements:** [`RegistryUpstreamInterface`](interfaces.md#registryupstreaminterface)
 
 ### Fields {.no_toc}
 
@@ -5963,7 +5979,7 @@ Represents a container registry upstream and its registry.
 
 Represents a container virtual registry upstream and its relationship to the upstream.
 
-**Implements:** `RegistryUpstreamInterface`
+**Implements:** [`RegistryUpstreamInterface`](interfaces.md#registryupstreaminterface)
 
 ### Fields {.no_toc}
 
@@ -6193,7 +6209,7 @@ A tag expiration policy using regex patterns to control which images to keep or 
 
 Represents a container upstream registry.
 
-**Implements:** `UpstreamInterface`
+**Implements:** [`UpstreamInterface`](interfaces.md#upstreaminterface)
 
 ### Fields {.no_toc}
 
@@ -6211,7 +6227,7 @@ Represents a container upstream registry.
 
 Represents a cache entry for an upstream container registry.
 
-**Implements:** `EntryInterface`
+**Implements:** [`EntryInterface`](interfaces.md#entryinterface)
 
 ### Fields {.no_toc}
 
@@ -6258,7 +6274,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents container upstream details.
 
-**Implements:** `UpstreamInterface`
+**Implements:** [`UpstreamInterface`](interfaces.md#upstreaminterface)
 
 ### Fields {.no_toc}
 
@@ -6369,7 +6385,7 @@ Represents a control expression.
 
 Represents a vulnerability. The connection type is countable.
 
-**Implements:** `NoteableInterface`, `Todoable`
+**Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -6504,7 +6520,7 @@ Represents the current license.
 
 The currently authenticated GitLab user.
 
-**Implements:** `Todoable`, `User`
+**Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
 ### Fields {.no_toc}
 
@@ -6601,7 +6617,7 @@ A custom attribute key-value pair. Only available to admins.
 
 Customizable analytics dashboard.
 
-**Implements:** `CustomDashboardInterface`
+**Implements:** [`CustomDashboardInterface`](interfaces.md#customdashboardinterface)
 
 ### Fields {.no_toc}
 
@@ -6624,7 +6640,7 @@ Customizable analytics dashboard.
 
 ## `CustomDashboardInterfaceConnection`
 
-Paginated collection of `CustomDashboardInterface`. See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+Paginated collection of [`CustomDashboardInterface`](interfaces.md#customdashboardinterface). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ## `CustomEmoji`
 
@@ -6709,7 +6725,7 @@ Represents a custom field select option.
 
 GitLab built-in analytics dashboard (read-only).
 
-**Implements:** `CustomDashboardInterface`
+**Implements:** [`CustomDashboardInterface`](interfaces.md#customdashboardinterface)
 
 ### Fields {.no_toc}
 
@@ -7121,7 +7137,7 @@ The response from the AdminSidekiqQueuesDeleteJobs mutation.
 
 A software dependency used by a project.
 
-**Implements:** `DependencyInterface`
+**Implements:** [`DependencyInterface`](interfaces.md#dependencyinterface)
 
 ### Fields {.no_toc}
 
@@ -7146,7 +7162,7 @@ A software dependency used by a project.
 
 A software dependency aggregation used by a group.
 
-**Implements:** `DependencyInterface`
+**Implements:** [`DependencyInterface`](interfaces.md#dependencyinterface)
 
 ### Fields {.no_toc}
 
@@ -7739,7 +7755,7 @@ Aggregation scope for `Deployments`. Apply ordering and pagination on the aggreg
 
 A single design.
 
-**Implements:** `CurrentUserTodos`, `DesignFields`, `NoteableInterface`, `Todoable`
+**Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`DesignFields`](interfaces.md#designfields), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -7771,7 +7787,7 @@ A single design.
 
 A design pinned to a specific version. The image field reflects the design as of the associated version.
 
-**Implements:** `DesignFields`
+**Implements:** [`DesignFields`](interfaces.md#designfields)
 
 ### Fields {.no_toc}
 
@@ -8110,7 +8126,7 @@ Aggregated summary of changes.
 
 ## `Discussion`
 
-**Implements:** `BaseDiscussionInterface`, `ResolvableInterface`
+**Implements:** [`BaseDiscussionInterface`](interfaces.md#basediscussioninterface), [`ResolvableInterface`](interfaces.md#resolvableinterface)
 
 ### Fields {.no_toc}
 
@@ -8310,7 +8326,7 @@ Response for `DuoUsageEvents` aggregation engine.
 | `featuresCount` | [`Int`](scalars.md#int) | Number of unique features. |
 | `previousPeriodUsersCount` | [`Int`](scalars.md#int) | Number of unique users in the previous period. |
 | `returningUsersCount` | [`Int`](scalars.md#int) | Number of users who also used this feature in the previous period. |
-| `totalCount` | [`Int`](scalars.md#int) | Total number of events. |
+| `totalCount` | [`Int`](scalars.md#int) | Total number of events, optionally filtered by event name.  <strong>Arguments for `totalCount`:</strong> <dl><dt>`event` ([`[String!]`](scalars.md#string))</dt><dd>Only count the given events.</dd></dl> |
 | `usersCount` | [`Int`](scalars.md#int) | Number of unique users. |
 
 ## `DuoUsageEventsAggregationResponseConnection`
@@ -8354,7 +8370,7 @@ Aggregation scope for `DuoUsageEvents`. Apply ordering and pagination on the agg
 
 GitLab Duo Agent Platform session.
 
-**Implements:** `Todoable`
+**Implements:** [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -8362,7 +8378,7 @@ GitLab Duo Agent Platform session.
 | ---- | ---- | ----------- |
 | `agentName` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 18.8.Name of the agent used for the workflow. |
 | `agentPrivilegesNames` | [`[String!]`](scalars.md#string) | Privileges granted to the agent during execution. |
-| `aiCatalogItem` | `AiCatalogItem` | Status: Experiment. Introduced in GitLab 19.4.AI catalog item (flow or agent definition) that the session ran. |
+| `aiCatalogItem` | [`AiCatalogItem`](interfaces.md#aicatalogitem) | Status: Experiment. Introduced in GitLab 19.4.AI catalog item (flow or agent definition) that the session ran. |
 | `aiCatalogItemVersionId` | [`AiCatalogItemVersionID`](scalars.md#aicatalogitemversionid) | Status: Experiment. Introduced in GitLab 18.4.ID of the AI catalog item version that triggered the workflow. |
 | `allExecutorLogsUrls` | [`[String!]`](scalars.md#string) | List of all the executor logs for the workflow. |
 | `allowAgentToRequestUser` | [`Boolean`](scalars.md#boolean) | Allow the agent to request user input. |
@@ -8396,7 +8412,7 @@ GitLab Duo Agent Platform session.
 | `resourceIid` | [`Int`](scalars.md#int) | IID of the associated resource (issue or merge request). |
 | `resourceWebUrl` | [`String`](scalars.md#string) | Web URL of the associated resource (issue or merge request). |
 | `sourceLink` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.4.URL or deep link to the location where the session was triggered from. |
-| `sourceType` | [`DuoWorkflowSourceType`](enums.md#duoworkflowsourcetype) | Status: Experiment. Introduced in GitLab 19.4.External system that initiated the session (for example, Slack). |
+| `sourceType` | [`DuoWorkflowSourceType`](enums.md#duoworkflowsourcetype) | Status: Experiment. Introduced in GitLab 19.4.Type of source that initiated the session. |
 | `stalled` | [`Boolean`](scalars.md#boolean) | Workflow got created but has no checkpoints. |
 | `status` | [`DuoWorkflowStatus`](enums.md#duoworkflowstatus) | Status of the session. |
 | `statusGroup` | [`DuoWorkflowStatusGroup`](enums.md#duoworkflowstatusgroup) | Status group of the flow session. |
@@ -8638,11 +8654,13 @@ Response for `DuoWorkflows` aggregation engine.
 | `churnedUsersCount` | [`Int`](scalars.md#int) | Number of unique users who ran a flow in the previous period but not in this one. |
 | `closedMrCount` | [`DuoWorkflowsAggregationResponseClosedMrCountMetrics`](#duoworkflowsaggregationresponseclosedmrcountmetrics) | Aggregated `closed_mr_count` metrics. |
 | `createdMrCount` | [`DuoWorkflowsAggregationResponseCreatedMrCountMetrics`](#duoworkflowsaggregationresponsecreatedmrcountmetrics) | Aggregated `created_mr_count` metrics. |
+| `creditsPerMergedMrRatio` | [`Float`](scalars.md#float) | Credits used per Duo-created merge request that was later merged. |
 | `creditsUsed` | [`DuoWorkflowsAggregationResponseCreditsUsedMetrics`](#duoworkflowsaggregationresponsecreditsusedmetrics) | Aggregated `credits_used` metrics. |
 | `dimensions` | [`DuoWorkflowsAggregationResponseDimensions`](#duoworkflowsaggregationresponsedimensions) | Aggregation dimensions. Every selected dimension will be used for aggregation. |
 | `flowTypesCount` | [`Int`](scalars.md#int) | Number of unique flow types. |
 | `joinedUsersCount` | [`Int`](scalars.md#int) | Number of unique users who ran a flow in this period but not in the previous one. |
 | `mergedMrCount` | [`DuoWorkflowsAggregationResponseMergedMrCountMetrics`](#duoworkflowsaggregationresponsemergedmrcountmetrics) | Aggregated `merged_mr_count` metrics. |
+| `openMrCount` | [`DuoWorkflowsAggregationResponseOpenMrCountMetrics`](#duoworkflowsaggregationresponseopenmrcountmetrics) | Aggregated `open_mr_count` metrics. |
 | `previousPeriodUsersCount` | [`Int`](scalars.md#int) | Number of unique users in the previous period. |
 | `projectsCount` | [`Int`](scalars.md#int) | Number of unique projects. |
 | `returningUsersCount` | [`Int`](scalars.md#int) | Number of unique users who also ran a flow in the previous period. |
@@ -8713,6 +8731,7 @@ Response dimensions for `DuoWorkflows` aggregation engine.
 | ---- | ---- | ----------- |
 | `createdAt` | [`Date`](scalars.md#date) | Flow creation date.  <strong>Arguments for `createdAt`:</strong> <dl><dt>`granularity` ([`String`](scalars.md#string))</dt><dd>Date granularity: daily, weekly, monthly, or a fixed number of days between 1d and 399d (for example 30d).</dd><dt>`origin` ([`Time`](scalars.md#time))</dt><dd>Anchor for fixed-day granularities: buckets start at this timestamp and repeat every N days. Only valid with a fixed-day granularity.</dd></dl> |
 | `group` | [`Group`](#group) | Group at the requested depth of the hierarchy. NULL for flows tracked above that depth. Flows tracked in a project at that depth bucket by project namespace ID, which also resolves to NULL.  <strong>Arguments for `group`:</strong> <dl><dt>`depth` ([`Int`](scalars.md#int))</dt><dd>Depth in the group hierarchy, counted from the top-level group. Defaults to 1.</dd></dl> |
+| `model` | [`DuoWorkflowsModelMetadata`](#duoworkflowsmodelmetadata) | Model used by the flow, resolved to catalog metadata. |
 | `modelUsed` | [`String`](scalars.md#string) | Model used by the flow. |
 | `project` | [`Project`](#project) | Project the flow ran in. Returns `null` for flows not scoped to a project. |
 | `status` | [`String`](scalars.md#string) | Flow status. |
@@ -8734,6 +8753,20 @@ Aggregated `merged_mr_count` metrics for `DuoWorkflows` aggregation engine.
 | `quantile` | [`Float`](scalars.md#float) | Quantile of number of merge requests created by the flow that were later merged.  <strong>Arguments for `quantile`:</strong> <dl><dt>`quantile` ([`Float`](scalars.md#float))</dt><dd></dd></dl> |
 | `sum` | [`Float`](scalars.md#float) | Sum of number of merge requests created by the flow that were later merged. |
 
+## `DuoWorkflowsAggregationResponseOpenMrCountMetrics`
+
+Aggregated `open_mr_count` metrics for `DuoWorkflows` aggregation engine.
+
+### Fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `max` | [`Int`](scalars.md#int) | Maximum number of merge requests created by the flow that are still open. |
+| `mean` | [`Float`](scalars.md#float) | Mean number of merge requests created by the flow that are still open. |
+| `min` | [`Int`](scalars.md#int) | Minimum number of merge requests created by the flow that are still open. |
+| `quantile` | [`Float`](scalars.md#float) | Quantile of number of merge requests created by the flow that are still open.  <strong>Arguments for `quantile`:</strong> <dl><dt>`quantile` ([`Float`](scalars.md#float))</dt><dd></dd></dl> |
+| `sum` | [`Float`](scalars.md#float) | Sum of number of merge requests created by the flow that are still open. |
+
 ## `DuoWorkflowsAggregationScope`
 
 Aggregation scope for `DuoWorkflows`. Apply ordering and pagination on the aggregation.
@@ -8743,6 +8776,19 @@ Aggregation scope for `DuoWorkflows`. Apply ordering and pagination on the aggre
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `aggregated` | [`DuoWorkflowsAggregationResponseConnection`](#duoworkflowsaggregationresponseconnection) | Aggregated data. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aggregated`:</strong> <dl><dt>`orderBy` ([`[AggregationOrder!]`](input_objects.md#aggregationorder))</dt><dd>Sorting order list for the aggregated data.</dd></dl> |
+
+## `DuoWorkflowsModelMetadata`
+
+Catalog metadata for a model used by GitLab Duo Agent Platform flows.
+
+### Fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `hosting` | [`DuoWorkflowsModelHosting`](enums.md#duoworkflowsmodelhosting) | Where the model is hosted. `null` for flows with no model attribution. |
+| `isDefault` | [`Boolean!`](scalars.md#boolean) | Whether the model is a configured default for GitLab Duo Agent Platform features. |
+| `name` | [`String`](scalars.md#string) | Display name from the model catalog, or the raw value when not in the catalog. `null` for flows with no model attribution. |
+| `provider` | [`String`](scalars.md#string) | Model provider when the catalog identifies it unambiguously. |
 
 ## `EgressNode`
 
@@ -8860,7 +8906,7 @@ Paginated collection of [`Environment`](#environment). See [Standard connection 
 
 Represents an epic.
 
-**Implements:** `CurrentUserTodos`, `Eventable`, `NoteableInterface`, `Todoable`
+**Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`Eventable`](interfaces.md#eventable), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -9006,7 +9052,7 @@ Health status of child issues.
 
 Relationship between an epic and an issue.
 
-**Implements:** `CurrentUserTodos`, `NoteableInterface`, `Todoable`
+**Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -9239,7 +9285,7 @@ Paginated collection of [`Event`](#event). See [Standard connection fields](#sta
 
 Represents an external resource to send audit events to.
 
-**Implements:** `ExternalAuditEventDestinationInterface`
+**Implements:** [`ExternalAuditEventDestinationInterface`](interfaces.md#externalauditeventdestinationinterface)
 
 ### Fields {.no_toc}
 
@@ -9845,7 +9891,7 @@ Represents a repository of Google Artifact Registry.
 
 Stores Google Cloud Logging configurations associated with IAM service accounts,used for generating access tokens.
 
-**Implements:** `GoogleCloudLoggingConfigurationInterface`
+**Implements:** [`GoogleCloudLoggingConfigurationInterface`](interfaces.md#googlecloudloggingconfigurationinterface)
 
 ### Fields {.no_toc}
 
@@ -9888,6 +9934,10 @@ Policy stored in the policy store.
 | `triggerType` | [`String!`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.4.Trigger the policy responds to. |
 | `updatedAt` | [`Time`](scalars.md#time) | Status: Experiment. Introduced in GitLab 19.4.Timestamp of when the policy was last updated. |
 | `version` | [`Int`](scalars.md#int) | Status: Experiment. Introduced in GitLab 19.4.Version of the policy. |
+
+## `GovernPolicyConnection`
+
+Paginated collection of [`GovernPolicy`](#governpolicy). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ## `GovernPolicyEvaluation`
 
@@ -9937,7 +9987,7 @@ Violation a policy evaluation produced.
 
 GPG signature for a signed commit.
 
-**Implements:** `CommitSignature`
+**Implements:** [`CommitSignature`](interfaces.md#commitsignature)
 
 ### Fields {.no_toc}
 
@@ -9965,7 +10015,7 @@ GPG signature for a signed commit.
 
 ## `Group`
 
-**Implements:** `GroupInterface`, `Todoable`
+**Implements:** [`GroupInterface`](interfaces.md#groupinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -10094,14 +10144,14 @@ GPG signature for a signed commit.
 | `licensedFeatures` | [`NamespaceAvailableFeatures!`](#namespaceavailablefeatures) | Status: Experiment. Introduced in GitLab 18.1.Licensed features available on the namespace. |
 | `lifecycleTemplates` | [`[WorkItemLifecycle!]`](#workitemlifecycle) | Status: Experiment. Introduced in GitLab 18.4.Lifecycle templates available to the namespace. |
 | `lifecycles` | [`WorkItemLifecycleConnection`](#workitemlifecycleconnection) | Status: Experiment. Introduced in GitLab 18.1.Lifecycles of work items available to the namespace. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
-| `linkPaths` | `NamespacesLinkPaths` | Status: Experiment. Introduced in GitLab 18.1.Namespace relevant paths to create links on the UI. |
+| `linkPaths` | [`NamespacesLinkPaths`](interfaces.md#namespaceslinkpaths) | Status: Experiment. Introduced in GitLab 18.1.Namespace relevant paths to create links on the UI. |
 | `lockAiAuditEventsStorageEnabled` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 19.2.Indicates whether AI audit events storage is enforced for all subgroups and projects. |
 | `lockBuiltInProjectTemplatesEnabled` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 19.0.Indicates if the built-in project templates enabled setting is enforced for all subgroups. |
 | `lockDuoAutoModeEnabled` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 19.5.Indicates if the Duo Agent Platform auto mode setting is enforced for all subgroups. |
 | `lockDuoFeaturesEnabled` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 16.10.Indicates if the GitLab Duo features enabled setting is enforced for all subgroups. |
 | `lockMathRenderingLimitsEnabled` | [`Boolean`](scalars.md#boolean) | Indicates if math rendering limits are locked for all descendant groups. |
 | `lockToolApprovalForSessionEnabled` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 18.11.Indicates if the tool approval for session setting is enforced for all subgroups. |
-| `markdownPaths` | `MarkdownPaths` | Status: Experiment. Introduced in GitLab 18.1.Namespace relevant paths to create markdown links on the UI. |
+| `markdownPaths` | [`MarkdownPaths`](interfaces.md#markdownpaths) | Status: Experiment. Introduced in GitLab 18.1.Namespace relevant paths to create markdown links on the UI. |
 | `markedForDeletion` | [`Boolean!`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 18.2.Indicates if group or any ancestor is scheduled to be deleted. |
 | `markedForDeletionOn` | [`Time`](scalars.md#time) | Status: Experiment. Introduced in GitLab 16.11.Date when group was scheduled to be deleted. |
 | `mathRenderingLimitsEnabled` | [`Boolean`](scalars.md#boolean) | Indicates if math rendering limits are used for the group. |
@@ -10111,7 +10161,7 @@ GPG signature for a signed commit.
 | `mergeRequestViolations` | [`ComplianceViolationConnection`](#complianceviolationconnection) | Compliance violations reported on merge requests merged within the group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `mergeRequestViolations`:</strong> <dl><dt>`filters` ([`ComplianceViolationInput`](input_objects.md#complianceviolationinput))</dt><dd>Filters applied when retrieving compliance violations.</dd><dt>`sort` ([`ComplianceViolationSort`](enums.md#complianceviolationsort))</dt><dd>List compliance violations by sort order.</dd></dl> |
 | `mergeRequests` | [`MergeRequestConnection`](#mergerequestconnection) | Merge requests for projects in this group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `mergeRequests`:</strong> <dl><dt>`approvedBy` ([`[String!]`](scalars.md#string))</dt><dd>Usernames of the approvers.</dd><dt>`approver` ([`[String!]`](scalars.md#string))</dt><dd>Usernames of possible approvers.</dd><dt>`assigneeUsername` ([`String`](scalars.md#string))</dt><dd>Username of the assignee.</dd><dt>`assigneeUsernames` ([`[String!]`](scalars.md#string))</dt><dd>Usernames of users assigned to the merge request.</dd><dt>`assigneeWildcardId` ([`AssigneeWildcardId`](enums.md#assigneewildcardid))</dt><dd>Filter by assignee presence. Incompatible with assigneeUsernames and assigneeUsername.</dd><dt>`authorUsername` ([`String`](scalars.md#string))</dt><dd>Username of the author.</dd><dt>`blobPath` ([`String`](scalars.md#string))</dt><dd>Status: Experiment. Introduced in GitLab 17.7.Path of the blob changed in merge request. Requires state, targetBranches, and createdAfter arguments.</dd><dt>`closedAfter` ([`Time`](scalars.md#time))</dt><dd>Merge requests closed after the date.</dd><dt>`closedBefore` ([`Time`](scalars.md#time))</dt><dd>Merge requests closed before the date.</dd><dt>`createdAfter` ([`Time`](scalars.md#time))</dt><dd>Merge requests created after the timestamp.</dd><dt>`createdBefore` ([`Time`](scalars.md#time))</dt><dd>Merge requests created before the timestamp.</dd><dt>`deployedAfter` ([`Time`](scalars.md#time))</dt><dd>Merge requests deployed after the timestamp.</dd><dt>`deployedBefore` ([`Time`](scalars.md#time))</dt><dd>Merge requests deployed before the timestamp.</dd><dt>`deploymentId` ([`String`](scalars.md#string))</dt><dd>ID of the deployment.</dd><dt>`draft` ([`Boolean`](scalars.md#boolean))</dt><dd>Limit result to draft merge requests.</dd><dt>`environmentName` ([`String`](scalars.md#string))</dt><dd>Environment merge requests have been deployed to.</dd><dt>`ignoredReviewerUsername` ([`String`](scalars.md#string))</dt><dd>Status: Experiment. Introduced in GitLab 18.0.Username of the reviewer to ignore when searching by reviewer state.</dd><dt>`iids` ([`[String!]`](scalars.md#string))</dt><dd>Array of IIDs of merge requests, for example `[1, 2]`.</dd><dt>`in` ([`[IssuableSearchableField!]`](enums.md#issuablesearchablefield))</dt><dd>Specify the fields to perform the search in. Defaults to `[TITLE, DESCRIPTION]`. Requires the `search` argument.'.</dd><dt>`includeArchived` ([`Boolean`](scalars.md#boolean))</dt><dd>Return merge requests from archived projects.</dd><dt>`includeSubgroups` ([`Boolean`](scalars.md#boolean))</dt><dd>Include merge requests belonging to subgroups.</dd><dt>`labelName` ([`[String]`](scalars.md#string))</dt><dd>Labels applied to the merge request.</dd><dt>`labels` ([`[String!]`](scalars.md#string))</dt><dd>Deprecated in GitLab 17.1. Use `labelName`.</dd><dt>`mergedAfter` ([`Time`](scalars.md#time))</dt><dd>Merge requests merged after the date.</dd><dt>`mergedBefore` ([`Time`](scalars.md#time))</dt><dd>Merge requests merged before the date.</dd><dt>`mergedBy` ([`String`](scalars.md#string))</dt><dd>Username of the merger.</dd><dt>`milestoneTitle` ([`String`](scalars.md#string))</dt><dd>Title of the milestone. Incompatible with milestoneWildcardId.</dd><dt>`milestoneWildcardId` ([`MilestoneWildcardId`](enums.md#milestonewildcardid))</dt><dd>Filter issues by milestone ID wildcard. Incompatible with milestoneTitle.</dd><dt>`myReactionEmoji` ([`String`](scalars.md#string))</dt><dd>Filter by your reaction emoji.</dd><dt>`not` ([`MergeRequestsResolverNegatedParams`](input_objects.md#mergerequestsresolvernegatedparams))</dt><dd>List of negated arguments. Warning: this argument is experimental and a subject to change in future.</dd><dt>`or` ([`UnionedMergeRequestFilterInput`](input_objects.md#unionedmergerequestfilterinput))</dt><dd>List of arguments with inclusive OR.</dd><dt>`releaseTag` ([`String`](scalars.md#string))</dt><dd>Filter by release tag.</dd><dt>`reviewState` ([`MergeRequestReviewState`](enums.md#mergerequestreviewstate))</dt><dd>Reviewer state of the merge request.</dd><dt>`reviewStates` ([`[MergeRequestReviewState!]`](enums.md#mergerequestreviewstate))</dt><dd>Reviewer states of the merge request.</dd><dt>`reviewerUsername` ([`String`](scalars.md#string))</dt><dd>Username of the reviewer.</dd><dt>`reviewerWildcardId` ([`ReviewerWildcardId`](enums.md#reviewerwildcardid))</dt><dd>Filter by reviewer presence. Incompatible with reviewerUsername.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search query for title or description.</dd><dt>`sort` ([`MergeRequestSort`](enums.md#mergerequestsort))</dt><dd>Sort merge requests by the criteria.</dd><dt>`sourceBranches` ([`[String!]`](scalars.md#string))</dt><dd>Array of source branch names. All resolved merge requests will have one of these branches as their source.</dd><dt>`state` ([`MergeRequestState`](enums.md#mergerequeststate))</dt><dd>Merge request state. If provided, all resolved merge requests will have the state.</dd><dt>`subscribed` ([`SubscriptionStatus`](enums.md#subscriptionstatus))</dt><dd>Merge requests the current user is subscribed to.</dd><dt>`targetBranches` ([`[String!]`](scalars.md#string))</dt><dd>Array of target branch names. All resolved merge requests will have one of these branches as their target.</dd><dt>`updatedAfter` ([`Time`](scalars.md#time))</dt><dd>Merge requests updated after the timestamp.</dd><dt>`updatedBefore` ([`Time`](scalars.md#time))</dt><dd>Merge requests updated before the timestamp.</dd></dl> |
 | `mergeRequestsEnabled` | [`Boolean!`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 18.3.Indicates if merge requests are enabled for the namespace. |
-| `metadata` | `NamespaceMetadata` | Status: Experiment. Introduced in GitLab 18.6.Metadata information for the namespace. |
+| `metadata` | [`NamespaceMetadata`](interfaces.md#namespacemetadata) | Status: Experiment. Introduced in GitLab 18.6.Metadata information for the namespace. |
 | `milestones` | [`MilestoneConnection`](#milestoneconnection) | Milestones of the group. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `milestones`:</strong> <dl><dt>`containingDate` ([`Time`](scalars.md#time))</dt><dd>Date the milestone contains.</dd><dt>`ids` ([`[ID!]`](scalars.md#id))</dt><dd>Array of global milestone IDs, e.g., `"gid://gitlab/Milestone/1"`.</dd><dt>`includeAncestors` ([`Boolean`](scalars.md#boolean))</dt><dd>Include milestones from all parent groups.</dd><dt>`includeDescendants` ([`Boolean`](scalars.md#boolean))</dt><dd>Include milestones from all subgroups and subprojects.</dd><dt>`searchTitle` ([`String`](scalars.md#string))</dt><dd>Search string for the title.</dd><dt>`sort` ([`MilestoneSort`](enums.md#milestonesort))</dt><dd>Sort milestones by the criteria.</dd><dt>`state` ([`MilestoneStateEnum`](enums.md#milestonestateenum))</dt><dd>Filter milestones by state.</dd><dt>`timeframe` ([`Timeframe`](input_objects.md#timeframe))</dt><dd>List items overlapping the given timeframe.</dd><dt>`title` ([`String`](scalars.md#string))</dt><dd>Title of the milestone.</dd></dl> |
 | `name` | [`String`](scalars.md#string) | Name of the group. |
 | `namespaceSettings` | [`NamespaceSettings`](#namespacesettings) | Namespace settings for the namespace. |
@@ -10232,7 +10282,7 @@ Represents a subgroup or project filter that belongs to a group level external a
 
 Represents an external destination to stream group level audit events.
 
-**Implements:** `AuditEventStreamingDestinationInterface`
+**Implements:** [`AuditEventStreamingDestinationInterface`](interfaces.md#auditeventstreamingdestinationinterface)
 
 ### Fields {.no_toc}
 
@@ -10329,7 +10379,7 @@ All information related to group DORA metrics.
 
 ## `GroupInterfaceConnection`
 
-Paginated collection of `GroupInterface`. See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+Paginated collection of [`GroupInterface`](interfaces.md#groupinterface). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ### Extra fields {.no_toc}
 
@@ -10343,7 +10393,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a Group Membership.
 
-**Implements:** `MemberInterface`
+**Implements:** [`MemberInterface`](interfaces.md#memberinterface)
 
 ### Fields {.no_toc}
 
@@ -10381,7 +10431,7 @@ Paginated collection of [`GroupMember`](#groupmember). See [Standard connection 
 
 Limited group data accessible to users without full group read access (e.g. non-members with READ_ADMIN_CICD admin custom role).
 
-**Implements:** `GroupInterface`
+**Implements:** [`GroupInterface`](interfaces.md#groupinterface)
 
 ### Fields {.no_toc}
 
@@ -10397,7 +10447,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 
 ## `GroupNamespaceLinks`
 
-**Implements:** `NamespacesLinkPaths`
+**Implements:** [`NamespacesLinkPaths`](interfaces.md#namespaceslinkpaths)
 
 ### Fields {.no_toc}
 
@@ -10431,7 +10481,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 
 ## `GroupNamespaceMarkdownPaths`
 
-**Implements:** `MarkdownPaths`
+**Implements:** [`MarkdownPaths`](interfaces.md#markdownpaths)
 
 ### Fields {.no_toc}
 
@@ -10443,7 +10493,7 @@ Limited group data accessible to users without full group read access (e.g. non-
 
 ## `GroupNamespaceMetadata`
 
-**Implements:** `NamespaceMetadata`
+**Implements:** [`NamespaceMetadata`](interfaces.md#namespacemetadata)
 
 ### Fields {.no_toc}
 
@@ -10721,7 +10771,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Helm file metadata.
 
-**Implements:** `PackageFileMetadata`
+**Implements:** [`PackageFileMetadata`](interfaces.md#packagefilemetadata)
 
 ### Fields {.no_toc}
 
@@ -10902,7 +10952,7 @@ Paginated collection of [`InheritedCiVariable`](#inheritedcivariable). See [Stan
 
 Stores instance level Amazon S3 configurations for audit event streaming.
 
-**Implements:** `AmazonS3ConfigurationInterface`
+**Implements:** [`AmazonS3ConfigurationInterface`](interfaces.md#amazons3configurationinterface)
 
 ### Fields {.no_toc}
 
@@ -10935,7 +10985,7 @@ Represents a subgroup or project filter that belongs to an instance level extern
 
 Represents an external destination to stream instance level audit events.
 
-**Implements:** `AuditEventStreamingDestinationInterface`
+**Implements:** [`AuditEventStreamingDestinationInterface`](interfaces.md#auditeventstreamingdestinationinterface)
 
 ### Fields {.no_toc}
 
@@ -10958,7 +11008,7 @@ Paginated collection of [`InstanceAuditEventStreamingDestination`](#instanceaudi
 
 Represents an external resource to send instance audit events to.
 
-**Implements:** `ExternalAuditEventDestinationInterface`
+**Implements:** [`ExternalAuditEventDestinationInterface`](interfaces.md#externalauditeventdestinationinterface)
 
 ### Fields {.no_toc}
 
@@ -10980,7 +11030,7 @@ Paginated collection of [`InstanceExternalAuditEventDestination`](#instanceexter
 
 Stores instance level Google Cloud Logging configurations associated with IAM service accounts,used for generating access tokens.
 
-**Implements:** `GoogleCloudLoggingConfigurationInterface`
+**Implements:** [`GoogleCloudLoggingConfigurationInterface`](interfaces.md#googlecloudloggingconfigurationinterface)
 
 ### Fields {.no_toc}
 
@@ -11013,7 +11063,7 @@ Paginated collection of [`InstanceGoogleCloudLoggingConfigurationType`](#instanc
 
 An expression with an integer value.
 
-**Implements:** `ExpressionInterface`
+**Implements:** [`ExpressionInterface`](interfaces.md#expressioninterface)
 
 ### Fields {.no_toc}
 
@@ -11100,7 +11150,7 @@ Paginated collection of [`IssuableResourceLink`](#issuableresourcelink). See [St
 
 ## `Issue`
 
-**Implements:** `CurrentUserTodos`, `NoteableInterface`, `Todoable`
+**Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -11236,7 +11286,7 @@ Represents total number of issues for the represented statuses.
 
 Represents an iteration object.
 
-**Implements:** `TimeboxReportInterface`
+**Implements:** [`TimeboxReportInterface`](interfaces.md#timeboxreportinterface)
 
 ### Fields {.no_toc}
 
@@ -11321,7 +11371,7 @@ Paginated collection of [`JiraProject`](#jiraproject). See [Standard connection 
 
 ## `JiraService`
 
-**Implements:** `Service`
+**Implements:** [`Service`](interfaces.md#service)
 
 ### Fields {.no_toc}
 
@@ -11417,7 +11467,7 @@ Paginated collection of `JobNeedUnion`. See [Standard connection fields](#standa
 
 Represents an SSH key.
 
-**Implements:** `Todoable`
+**Implements:** [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -11455,7 +11505,7 @@ Label to apply to associated Kubernetes objects of a workspace.
 
 ## `Label`
 
-**Implements:** `LabelInterface`
+**Implements:** [`LabelInterface`](interfaces.md#labelinterface)
 
 ### Fields {.no_toc}
 
@@ -11689,7 +11739,7 @@ Maven metadata.
 
 Represents a Maven virtual registry.
 
-**Implements:** `RegistryInterface`
+**Implements:** [`RegistryInterface`](interfaces.md#registryinterface)
 
 ### Fields {.no_toc}
 
@@ -11716,7 +11766,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents Maven virtual registry details.
 
-**Implements:** `RegistryInterface`
+**Implements:** [`RegistryInterface`](interfaces.md#registryinterface)
 
 ### Fields {.no_toc}
 
@@ -11732,7 +11782,7 @@ Represents Maven virtual registry details.
 
 Represents a Maven virtual registry upstream and its relationship to the registry.
 
-**Implements:** `RegistryUpstreamInterface`
+**Implements:** [`RegistryUpstreamInterface`](interfaces.md#registryupstreaminterface)
 
 ### Fields {.no_toc}
 
@@ -11746,7 +11796,7 @@ Represents a Maven virtual registry upstream and its relationship to the registr
 
 Represents a Maven virtual registry upstream and its relationship to the upstream.
 
-**Implements:** `RegistryUpstreamInterface`
+**Implements:** [`RegistryUpstreamInterface`](interfaces.md#registryupstreaminterface)
 
 ### Fields {.no_toc}
 
@@ -11760,7 +11810,7 @@ Represents a Maven virtual registry upstream and its relationship to the upstrea
 
 Represents a Maven upstream registry.
 
-**Implements:** `UpstreamInterface`
+**Implements:** [`UpstreamInterface`](interfaces.md#upstreaminterface)
 
 ### Fields {.no_toc}
 
@@ -11780,7 +11830,7 @@ Represents a Maven upstream registry.
 
 Represents a cache entry for a Maven upstream.
 
-**Implements:** `EntryInterface`
+**Implements:** [`EntryInterface`](interfaces.md#entryinterface)
 
 ### Fields {.no_toc}
 
@@ -11827,7 +11877,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents Maven upstream registry details.
 
-**Implements:** `UpstreamInterface`
+**Implements:** [`UpstreamInterface`](interfaces.md#upstreaminterface)
 
 ### Fields {.no_toc}
 
@@ -11851,7 +11901,7 @@ Represents Maven upstream registry details.
 
 Represents a Maven upstream rule.
 
-**Implements:** `RuleInterface`
+**Implements:** [`RuleInterface`](interfaces.md#ruleinterface)
 
 ### Fields {.no_toc}
 
@@ -11872,7 +11922,7 @@ Represents a Member Approval queued for role promotion.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `createdAt` | [`Time`](scalars.md#time) | Timestamp when the member approval was created. |
-| `member` | `MemberInterface` | Member associated with the member approval object. |
+| `member` | [`MemberInterface`](interfaces.md#memberinterface) | Member associated with the member approval object. |
 | `memberRoleId` | [`ID`](scalars.md#id) | ID of the member role. |
 | `newAccessLevel` | [`AccessLevel`](#accesslevel) | New GitLab::Access level requested for the member. |
 | `oldAccessLevel` | [`AccessLevel`](#accesslevel) | Existing GitLab::Access level for the member. |
@@ -11896,13 +11946,13 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `MemberInterfaceConnection`
 
-Paginated collection of `MemberInterface`. See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+Paginated collection of [`MemberInterface`](interfaces.md#memberinterface). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ## `MemberRole`
 
 Represents a member role.
 
-**Implements:** `CustomRoleInterface`, `RoleInterface`
+**Implements:** [`CustomRoleInterface`](interfaces.md#customroleinterface), [`RoleInterface`](interfaces.md#roleinterface)
 
 ### Fields {.no_toc}
 
@@ -11944,7 +11994,7 @@ Paginated collection of [`MergeAccessLevel`](#mergeaccesslevel). See [Standard c
 
 ## `MergeRequest`
 
-**Implements:** `CurrentUserTodos`, `NoteableInterface`, `Todoable`
+**Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -12105,7 +12155,7 @@ Information relating to rules that must be satisfied to merge this merge request
 
 A user assigned to a merge request.
 
-**Implements:** `Todoable`, `User`
+**Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
 ### Fields {.no_toc}
 
@@ -12189,7 +12239,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 The author of the merge request.
 
-**Implements:** `Todoable`, `User`
+**Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
 ### Fields {.no_toc}
 
@@ -12378,7 +12428,7 @@ Mergeability check of the merge request.
 
 A user participating in a merge request.
 
-**Implements:** `Todoable`, `User`
+**Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
 ### Fields {.no_toc}
 
@@ -12499,7 +12549,7 @@ Paginated collection of [`MergeRequestResourceLabelEvent`](#mergerequestresource
 
 A user assigned to a merge request as a reviewer.
 
-**Implements:** `Todoable`, `User`
+**Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
 ### Fields {.no_toc}
 
@@ -12589,7 +12639,7 @@ Risk classification for a merge request.
 | ---- | ---- | ----------- |
 | `assessedAt` | [`Time`](scalars.md#time) | When the classification completed. |
 | `confidence` | [`Int`](scalars.md#int) | Confidence in the score, from 0 to 100. Derived from how much of the change could be measured and whether the signals agreed. |
-| `confidenceTier` | [`MergeRequestRiskTier`](enums.md#mergerequestrisktier) | Tier derived from the confidence score. |
+| `confidenceTier` | [`MergeRequestRiskConfidenceTier`](enums.md#mergerequestriskconfidencetier) | Tier derived from the confidence score. |
 | `contributingSignals` | [`[MergeRequestRiskContributingSignal!]!`](#mergerequestriskcontributingsignal) | What each signal contributed to the score. |
 | `domainTags` | [`[String!]!`](scalars.md#string) | Risk domains the change touches, used to route specialist review. |
 | `duoWorkflowId` | [`Int`](scalars.md#int) | ID of the Duo workflow session that produced the classification. |
@@ -12834,7 +12884,7 @@ Represents a metric image upload.
 
 Represents a milestone.
 
-**Implements:** `TimeboxReportInterface`
+**Implements:** [`TimeboxReportInterface`](interfaces.md#timeboxreportinterface)
 
 ### Fields {.no_toc}
 
@@ -13080,7 +13130,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `Namespace`
 
-**Implements:** `Todoable`
+**Implements:** [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -13115,10 +13165,10 @@ This connection has additional fields beyond the [standard connection fields](#s
 | `licensedFeatures` | [`NamespaceAvailableFeatures!`](#namespaceavailablefeatures) | Status: Experiment. Introduced in GitLab 18.1.Licensed features available on the namespace. |
 | `lifecycleTemplates` | [`[WorkItemLifecycle!]`](#workitemlifecycle) | Status: Experiment. Introduced in GitLab 18.4.Lifecycle templates available to the namespace. |
 | `lifecycles` | [`WorkItemLifecycleConnection`](#workitemlifecycleconnection) | Status: Experiment. Introduced in GitLab 18.1.Lifecycles of work items available to the namespace. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
-| `linkPaths` | `NamespacesLinkPaths` | Status: Experiment. Introduced in GitLab 18.1.Namespace relevant paths to create links on the UI. |
-| `markdownPaths` | `MarkdownPaths` | Status: Experiment. Introduced in GitLab 18.1.Namespace relevant paths to create markdown links on the UI. |
+| `linkPaths` | [`NamespacesLinkPaths`](interfaces.md#namespaceslinkpaths) | Status: Experiment. Introduced in GitLab 18.1.Namespace relevant paths to create links on the UI. |
+| `markdownPaths` | [`MarkdownPaths`](interfaces.md#markdownpaths) | Status: Experiment. Introduced in GitLab 18.1.Namespace relevant paths to create markdown links on the UI. |
 | `mergeRequestsEnabled` | [`Boolean!`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 18.3.Indicates if merge requests are enabled for the namespace. |
-| `metadata` | `NamespaceMetadata` | Status: Experiment. Introduced in GitLab 18.6.Metadata information for the namespace. |
+| `metadata` | [`NamespaceMetadata`](interfaces.md#namespacemetadata) | Status: Experiment. Introduced in GitLab 18.6.Metadata information for the namespace. |
 | `name` | [`String!`](scalars.md#string) | Name of the namespace. |
 | `namespaceSettings` | [`NamespaceSettings`](#namespacesettings) | Namespace settings for the namespace. |
 | `packageSettings` | [`PackageSettings`](#packagesettings) | Package settings for the namespace. |
@@ -13346,7 +13396,7 @@ Paginated collection of [`NestedEnvironment`](#nestedenvironment). See [Standard
 
 ## `Note`
 
-**Implements:** `BaseNoteInterface`, `ResolvableInterface`
+**Implements:** [`BaseNoteInterface`](interfaces.md#basenoteinterface), [`ResolvableInterface`](interfaces.md#resolvableinterface)
 
 ### Fields {.no_toc}
 
@@ -13856,7 +13906,7 @@ Represents a package file.
 | `createdAt` | [`Time!`](scalars.md#time) | Created date. |
 | `downloadPath` | [`String!`](scalars.md#string) | Download path of the package file. |
 | `fileMd5` | [`String`](scalars.md#string) | Md5 of the package file. |
-| `fileMetadata` | `PackageFileMetadata` | File metadata. |
+| `fileMetadata` | [`PackageFileMetadata`](interfaces.md#packagefilemetadata) | File metadata. |
 | `fileName` | [`String!`](scalars.md#string) | Name of the package file. |
 | `fileSha1` | [`String`](scalars.md#string) | Sha1 of the package file. |
 | `fileSha256` | [`String`](scalars.md#string) | Sha256 of the package file. |
@@ -14344,7 +14394,7 @@ Paginated collection of [`PathLock`](#pathlock). See [Standard connection fields
 
 Represents a Pending Group Membership.
 
-**Implements:** `MemberInterface`, `PendingMemberInterface`
+**Implements:** [`MemberInterface`](interfaces.md#memberinterface), [`PendingMemberInterface`](interfaces.md#pendingmemberinterface)
 
 ### Fields {.no_toc}
 
@@ -14368,13 +14418,13 @@ Represents a Pending Group Membership.
 
 ## `PendingMemberInterfaceConnection`
 
-Paginated collection of `PendingMemberInterface`. See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+Paginated collection of [`PendingMemberInterface`](interfaces.md#pendingmemberinterface). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ## `PendingProjectMember`
 
 Represents a Pending Project Membership.
 
-**Implements:** `MemberInterface`, `PendingMemberInterface`
+**Implements:** [`MemberInterface`](interfaces.md#memberinterface), [`PendingMemberInterface`](interfaces.md#pendingmemberinterface)
 
 ### Fields {.no_toc}
 
@@ -14473,7 +14523,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `Pipeline`
 
-**Implements:** `PipelineInterface`
+**Implements:** [`PipelineInterface`](interfaces.md#pipelineinterface)
 
 ### Fields {.no_toc}
 
@@ -14486,7 +14536,10 @@ This connection has additional fields beyond the [standard connection fields](#s
 | `codeQualityReportSummary` | [`CodeQualityReportSummary`](#codequalityreportsummary) | Code Quality report summary for a pipeline. |
 | `codeQualityReports` | [`CodeQualityDegradationConnection`](#codequalitydegradationconnection) | Code Quality degradations reported on the pipeline. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `commit` | [`Commit`](#commit) | Git commit of the pipeline. |
+| `commitAuthorGravatar` | [`String`](scalars.md#string) | Gravatar URL of the author of the pipeline's commit. |
+| `commitAuthorName` | [`String`](scalars.md#string) | Name of the author of the pipeline's commit. |
 | `commitPath` | [`String`](scalars.md#string) | Path to the commit that triggered the pipeline. |
+| `commitTitle` | [`String`](scalars.md#string) | Title of the pipeline's commit. |
 | `committedAt` | [`Time`](scalars.md#time) | Timestamp of the pipeline's commit. |
 | `complete` | [`Boolean!`](scalars.md#boolean) | Indicates if a pipeline is complete. |
 | `computeMinutes` | [`Float`](scalars.md#float) | Total minutes consumed by the pipeline. |
@@ -14653,7 +14706,7 @@ Represents pipeline counts for the project.
 
 Represents the pipeline execution policy.
 
-**Implements:** `OrchestrationPolicy`
+**Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
 ### Fields {.no_toc}
 
@@ -14713,7 +14766,7 @@ Paginated collection of [`PipelineExecutionProjectSchedule`](#pipelineexecutionp
 
 Represents the pipeline execution schedule policy.
 
-**Implements:** `OrchestrationPolicy`
+**Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
 ### Fields {.no_toc}
 
@@ -14784,7 +14837,7 @@ Paginated collection of [`PipelineMessage`](#pipelinemessage). See [Standard con
 
 ## `PipelineMinimalAccess`
 
-**Implements:** `PipelineInterface`
+**Implements:** [`PipelineInterface`](interfaces.md#pipelineinterface)
 
 ### Fields {.no_toc}
 
@@ -14794,7 +14847,7 @@ Paginated collection of [`PipelineMessage`](#pipelinemessage). See [Standard con
 | `id` | [`ID!`](scalars.md#id) | ID of the pipeline. |
 | `iid` | [`String`](scalars.md#string) | Internal ID of the pipeline. |
 | `path` | [`String`](scalars.md#string) | Relative path to the pipeline's page. |
-| `project` | `ProjectInterface` | Project the pipeline belongs to. |
+| `project` | [`ProjectInterface`](interfaces.md#projectinterface) | Project the pipeline belongs to. |
 | `user` | [`UserCore`](#usercore) | Pipeline user. |
 
 ## `PipelinePermissions`
@@ -14874,7 +14927,7 @@ Counts of pipeline schedules by status.
 
 ## `PipelineScheduleVariable`
 
-**Implements:** `CiVariable`
+**Implements:** [`CiVariable`](interfaces.md#civariable)
 
 ### Fields {.no_toc}
 
@@ -15247,7 +15300,7 @@ Catalogs available when creating a policy in the policy store.
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | `actions` | [`[PolicyStoreAction!]!`](#policystoreaction) | Status: Experiment. Introduced in GitLab 19.4.Actions available when creating a policy in the policy store. |
-| `policies` | [`[GovernPolicy!]`](#governpolicy) | Status: Experiment. Introduced in GitLab 19.4.Policies stored in the policy store for the organization or group. Returns `null` when the current user cannot read the policies of the container.  <strong>Arguments for `policies`:</strong> <dl><dt>`ids` ([`[Int!]`](scalars.md#int))</dt><dd>Status: Experiment. Introduced in GitLab 19.4.Return only the policies with these IDs. Unknown IDs are ignored; an empty list returns no policies. Maximum is 1000 IDs.</dd><dt>`triggerType` ([`String`](scalars.md#string))</dt><dd>Status: Experiment. Introduced in GitLab 19.4.Return only the policies that respond to this trigger. Valid values are the ids in the policy store triggers catalog.</dd></dl> |
+| `policies` | [`GovernPolicyConnection`](#governpolicyconnection) | Status: Experiment. Introduced in GitLab 19.4.Policies stored in the policy store for the organization or group, paginated forward only. Page with `pageInfo.endCursor` and keep `first` the same between requests; the `ids` argument cannot be combined with pagination arguments. Returns `null` when the current user cannot read the policies of the container. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `policies`:</strong> <dl><dt>`ids` ([`[Int!]`](scalars.md#int))</dt><dd>Status: Experiment. Introduced in GitLab 19.4.Return only the policies with these IDs. Unknown IDs are ignored; an empty list returns no policies. Maximum is 1000 IDs.</dd><dt>`triggerType` ([`String`](scalars.md#string))</dt><dd>Status: Experiment. Introduced in GitLab 19.4.Return only the policies that respond to this trigger. Valid values are the ids in the policy store triggers catalog.</dd></dl> |
 | `policyEvaluations` | [`GovernPolicyEvaluationConnection`](#governpolicyevaluationconnection) | Status: Experiment. Introduced in GitLab 19.4.Recorded evaluations of the policies stored in the policy store for the organization, newest first. Returns `null` for groups and when the current user cannot read the policies of the organization. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `policyEvaluations`:</strong> <dl><dt>`evaluatedAfter` ([`Time`](scalars.md#time))</dt><dd>Status: Experiment. Introduced in GitLab 19.4.Return only the evaluations that ran at or after the given timestamp.</dd><dt>`evaluatedBefore` ([`Time`](scalars.md#time))</dt><dd>Status: Experiment. Introduced in GitLab 19.4.Return only the evaluations that ran at or before the given timestamp.</dd><dt>`mode` ([`GovernPolicyEvaluationMode`](enums.md#governpolicyevaluationmode))</dt><dd>Status: Experiment. Introduced in GitLab 19.4.Return only the evaluations that ran in the given enforcement mode.</dd><dt>`policyId` ([`Int`](scalars.md#int))</dt><dd>Status: Experiment. Introduced in GitLab 19.4.Return only the evaluations of the policy with the given ID.</dd><dt>`verdict` ([`GovernPolicyEvaluationVerdict`](enums.md#governpolicyevaluationverdict))</dt><dd>Status: Experiment. Introduced in GitLab 19.4.Return only the evaluations that produced the given verdict.</dd></dl> |
 | `rules` | [`[PolicyStoreRule!]!`](#policystorerule) | Status: Experiment. Introduced in GitLab 19.4.Rule kinds available when creating a policy in the policy store. |
 | `triggers` | [`[PolicyStoreTrigger!]!`](#policystoretrigger) | Status: Experiment. Introduced in GitLab 19.4.Triggers available when creating a policy in the policy store. |
@@ -15354,7 +15407,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 
 ## `Project`
 
-**Implements:** `ProjectInterface`, `Todoable`
+**Implements:** [`ProjectInterface`](interfaces.md#projectinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -15364,7 +15417,7 @@ Representation of who is provided access to. For eg: User/Role/MemberRole.
 | `adminEditPath` | [`String`](scalars.md#string) | Admin path for editing project. Only available to admins. |
 | `adminShowPath` | [`String`](scalars.md#string) | Admin path of the project. Only available to admins. |
 | `agentConfigurations` | [`AgentConfigurationConnection`](#agentconfigurationconnection) | Agent configurations defined by the project. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
-| `aiCatalogItem` | `AiCatalogItem` | Status: Experiment. Introduced in GitLab 18.5.AI Catalog item of the project.  <strong>Arguments for `aiCatalogItem`:</strong> <dl><dt>`id` ([`AiCatalogItemID!`](scalars.md#aicatalogitemid))</dt><dd>Global ID of the catalog item to find.</dd><dt>`showSoftDeleted` ([`Boolean`](scalars.md#boolean))</dt><dd>Whether to show the item if it has been soft-deleted. Defaults to `false`.</dd></dl> |
+| `aiCatalogItem` | [`AiCatalogItem`](interfaces.md#aicatalogitem) | Status: Experiment. Introduced in GitLab 18.5.AI Catalog item of the project.  <strong>Arguments for `aiCatalogItem`:</strong> <dl><dt>`id` ([`AiCatalogItemID!`](scalars.md#aicatalogitemid))</dt><dd>Global ID of the catalog item to find.</dd><dt>`showSoftDeleted` ([`Boolean`](scalars.md#boolean))</dt><dd>Whether to show the item if it has been soft-deleted. Defaults to `false`.</dd></dl> |
 | `aiCatalogItemConsumerForItem` | [`AiCatalogItemConsumer`](#aicatalogitemconsumer) | Status: Experiment. Introduced in GitLab 19.0.AI Catalog item configuration for the given item in the project.  <strong>Arguments for `aiCatalogItemConsumerForItem`:</strong> <dl><dt>`id` ([`AiCatalogItemID!`](scalars.md#aicatalogitemid))</dt><dd>Global ID of the catalog item to return the configuration of.</dd></dl> |
 | `aiCatalogItems` | [`AiCatalogItemConnection!`](#aicatalogitemconnection) | Status: Experiment. Introduced in GitLab 18.6.AI Catalog items of the project. This field can be resolved for only one project in any single request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiCatalogItems`:</strong> <dl><dt>`allAvailable` ([`Boolean`](scalars.md#boolean))</dt><dd>Include public items from the AI Catalog.</dd><dt>`enabled` ([`Boolean`](scalars.md#boolean))</dt><dd>Include only items that are enabled or disabled in the project.</dd><dt>`itemTypes` ([`[AiCatalogItemType!]`](enums.md#aicatalogitemtype))</dt><dd>Types of items to retrieve.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search items by name and description.</dd><dt>`sort` ([`AiCatalogItemsSort`](enums.md#aicatalogitemssort))</dt><dd>Sort order of items.</dd></dl> |
 | `aiFlowTriggers` | [`AiFlowTriggerTypeConnection`](#aiflowtriggertypeconnection) | Status: Experiment. Introduced in GitLab 18.3.AI flow triggers of the project. This field can only be resolved for one project per request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `aiFlowTriggers`:</strong> <dl><dt>`ids` ([`[AiFlowTriggerID!]`](scalars.md#aiflowtriggerid))</dt><dd>Filter AI flow triggers by IDs.</dd></dl> |
@@ -15732,7 +15785,7 @@ Paginated collection of [`ProjectComplianceRequirementStatus`](#projectcomplianc
 
 Compliance violation for a project.
 
-**Implements:** `NoteableInterface`, `Todoable`
+**Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -15872,7 +15925,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `ProjectInterfaceConnection`
 
-Paginated collection of `ProjectInterface`. See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+Paginated collection of [`ProjectInterface`](interfaces.md#projectinterface). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ### Extra fields {.no_toc}
 
@@ -15886,7 +15939,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 Represents a Project Membership.
 
-**Implements:** `MemberInterface`
+**Implements:** [`MemberInterface`](interfaces.md#memberinterface)
 
 ### Fields {.no_toc}
 
@@ -15909,7 +15962,7 @@ Paginated collection of [`ProjectMember`](#projectmember). See [Standard connect
 
 ## `ProjectMinimalAccess`
 
-**Implements:** `ProjectInterface`
+**Implements:** [`ProjectInterface`](interfaces.md#projectinterface)
 
 ### Fields {.no_toc}
 
@@ -15926,7 +15979,7 @@ Paginated collection of [`ProjectMember`](#projectmember). See [Standard connect
 
 ## `ProjectNamespaceLinks`
 
-**Implements:** `NamespacesLinkPaths`
+**Implements:** [`NamespacesLinkPaths`](interfaces.md#namespaceslinkpaths)
 
 ### Fields {.no_toc}
 
@@ -15964,7 +16017,7 @@ Paginated collection of [`ProjectMember`](#projectmember). See [Standard connect
 
 ## `ProjectNamespaceMarkdownPaths`
 
-**Implements:** `MarkdownPaths`
+**Implements:** [`MarkdownPaths`](interfaces.md#markdownpaths)
 
 ### Fields {.no_toc}
 
@@ -15976,7 +16029,7 @@ Paginated collection of [`ProjectMember`](#projectmember). See [Standard connect
 
 ## `ProjectNamespaceMetadata`
 
-**Implements:** `NamespaceMetadata`
+**Implements:** [`NamespaceMetadata`](interfaces.md#namespacemetadata)
 
 ### Fields {.no_toc}
 
@@ -17301,7 +17354,7 @@ Paginated collection of [`Scan`](#scan). See [Standard connection fields](#stand
 
 Represents the scan execution policy.
 
-**Implements:** `OrchestrationPolicy`
+**Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
 ### Fields {.no_toc}
 
@@ -17385,7 +17438,7 @@ A scan profile.
 
 Represents the scan result policy.
 
-**Implements:** `OrchestrationPolicy`
+**Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
 ### Fields {.no_toc}
 
@@ -17729,7 +17782,7 @@ Represents a security policy.
 
 Represents the security policy.
 
-**Implements:** `OrchestrationPolicy`
+**Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
 ### Fields {.no_toc}
 
@@ -18028,7 +18081,7 @@ State of a Sentry error.
 
 ## `ServiceConnection`
 
-Paginated collection of `Service`. See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
+Paginated collection of [`Service`](interfaces.md#service). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ## `SeverityOverride`
 
@@ -18063,7 +18116,7 @@ Duo Chat slash command.
 
 Represents a snippet entry.
 
-**Implements:** `NoteableInterface`
+**Implements:** [`NoteableInterface`](interfaces.md#noteableinterface)
 
 ### Fields {.no_toc}
 
@@ -18229,7 +18282,7 @@ Squash option overrides for a protected branch.
 
 SSH signature for a signed commit.
 
-**Implements:** `CommitSignature`
+**Implements:** [`CommitSignature`](interfaces.md#commitsignature)
 
 ### Fields {.no_toc}
 
@@ -18246,7 +18299,7 @@ SSH signature for a signed commit.
 
 Represents a standard role.
 
-**Implements:** `RoleInterface`
+**Implements:** [`RoleInterface`](interfaces.md#roleinterface)
 
 ### Fields {.no_toc}
 
@@ -18296,7 +18349,7 @@ Paginated collection of [`String`](scalars.md#string). See [Standard connection 
 
 an expression with a string value.
 
-**Implements:** `ExpressionInterface`
+**Implements:** [`ExpressionInterface`](interfaces.md#expressioninterface)
 
 ### Fields {.no_toc}
 
@@ -18308,7 +18361,7 @@ an expression with a string value.
 
 ## `Submodule`
 
-**Implements:** `Entry`
+**Implements:** [`Entry`](interfaces.md#entry)
 
 ### Fields {.no_toc}
 
@@ -18461,7 +18514,7 @@ Terraform module metadata dependency.
 
 Terraform module metadata example.
 
-**Implements:** `TerraformModuleMetadataSharedFields`
+**Implements:** [`TerraformModuleMetadataSharedFields`](interfaces.md#terraformmodulemetadatasharedfields)
 
 ### Fields {.no_toc}
 
@@ -18513,7 +18566,7 @@ Terraform module metadata output.
 
 Metadata for Terraform root module.
 
-**Implements:** `TerraformModuleMetadataSharedFields`
+**Implements:** [`TerraformModuleMetadataSharedFields`](interfaces.md#terraformmodulemetadatasharedfields)
 
 ### Fields {.no_toc}
 
@@ -18530,7 +18583,7 @@ Metadata for Terraform root module.
 
 Terraform module metadata submodule.
 
-**Implements:** `TerraformModuleMetadataSharedFields`
+**Implements:** [`TerraformModuleMetadataSharedFields`](interfaces.md#terraformmodulemetadatasharedfields)
 
 ### Fields {.no_toc}
 
@@ -18937,8 +18990,8 @@ Representing a to-do entry.
 | `project` | [`Project`](#project) | Project the to-do item is associated with. |
 | `snoozedUntil` | [`Time`](scalars.md#time) | Time until when the todo is snoozed. |
 | `state` | [`TodoStateEnum!`](enums.md#todostateenum) | State of the to-do item. |
-| `target` | `Todoable!` | Deprecated in GitLab 17.4. Under certain circumstances, the `target` field on a to-do item can be `null`. The GraphQL schema currently declares `target` field as non-nullable. Use the new `target_entity` field instead. |
-| `targetEntity` | `Todoable` | Target of the to-do item. |
+| `target` | [`Todoable!`](interfaces.md#todoable) | Deprecated in GitLab 17.4. Under certain circumstances, the `target` field on a to-do item can be `null`. The GraphQL schema currently declares `target` field as non-nullable. Use the new `target_entity` field instead. |
+| `targetEntity` | [`Todoable`](interfaces.md#todoable) | Target of the to-do item. |
 | `targetType` | [`TodoTargetEnum!`](enums.md#todotargetenum) | Target type of the to-do item. |
 | `targetUrl` | [`String`](scalars.md#string) | URL of the to-do item target. |
 | `transferFailedRetryUrl` | [`String`](scalars.md#string) | URL that retries a transfer-failed to-do item. |
@@ -18992,7 +19045,7 @@ Paginated collection of [`Tree`](#tree). See [Standard connection fields](#stand
 
 Represents a directory.
 
-**Implements:** `Entry`
+**Implements:** [`Entry`](interfaces.md#entry)
 
 ### Fields {.no_toc}
 
@@ -19161,7 +19214,7 @@ Paginated collection of [`UserCallout`](#usercallout). See [Standard connection 
 
 Core representation of a GitLab user.
 
-**Implements:** `Todoable`, `User`
+**Implements:** [`Todoable`](interfaces.md#todoable), [`User`](interfaces.md#user)
 
 ### Fields {.no_toc}
 
@@ -19298,7 +19351,7 @@ fields relate to interactions between the two entities.
 
 ## `UserNamespaceLinks`
 
-**Implements:** `NamespacesLinkPaths`
+**Implements:** [`NamespacesLinkPaths`](interfaces.md#namespaceslinkpaths)
 
 ### Fields {.no_toc}
 
@@ -19332,7 +19385,7 @@ fields relate to interactions between the two entities.
 
 ## `UserNamespaceMarkdownPaths`
 
-**Implements:** `MarkdownPaths`
+**Implements:** [`MarkdownPaths`](interfaces.md#markdownpaths)
 
 ### Fields {.no_toc}
 
@@ -19344,7 +19397,7 @@ fields relate to interactions between the two entities.
 
 ## `UserNamespaceMetadata`
 
-**Implements:** `NamespaceMetadata`
+**Implements:** [`NamespaceMetadata`](interfaces.md#namespacemetadata)
 
 ### Fields {.no_toc}
 
@@ -19424,7 +19477,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 | `organizationGroupsProjectsSort` | [`OrganizationGroupProjectSort`](enums.md#organizationgroupprojectsort) | Status: Experiment. Introduced in GitLab 17.2.Sort order for organization groups and projects. |
 | `projectsSort` | [`ProjectSort`](enums.md#projectsort) | Sort order for projects. |
 | `timezone` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 17.7.Timezone of the user. |
-| `useWorkItemsView` | [`Boolean`](scalars.md#boolean) | Use work item view instead of legacy issue view. |
+| `useWorkItemsView` | [`Boolean`](scalars.md#boolean) | Deprecated in GitLab 19.5. Work item view is always used. |
 | `visibilityPipelineIdType` | [`VisibilityPipelineIdType`](enums.md#visibilitypipelineidtype) | Determines whether the pipeline list shows ID or IID. |
 | `wikiUseAutoCommitMessage` | [`Boolean!`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 18.10.Whether to skip the commit message modal and use the auto-generated commit message when saving changes to a wiki document. |
 | `workItemsDisplaySettings` | [`JSON!`](scalars.md#json) | Display settings for the work item lists. |
@@ -19753,7 +19806,7 @@ Represents vulnerability counts grouped by severity level.
 
 Represents a vulnerability.
 
-**Implements:** `NoteableInterface`, `Todoable`
+**Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -20511,7 +20564,7 @@ Represents the location of a vulnerability found by a secret detection scan.
 
 Represents the vulnerability management policy.
 
-**Implements:** `OrchestrationPolicy`
+**Implements:** [`OrchestrationPolicy`](interfaces.md#orchestrationpolicy)
 
 ### Fields {.no_toc}
 
@@ -20547,7 +20600,7 @@ Paginated collection of [`VulnerabilityManagementPolicy`](#vulnerabilitymanageme
 
 Counts for each vulnerability severity in the group and its subgroups.
 
-**Implements:** `VulnerabilityStatisticInterface`
+**Implements:** [`VulnerabilityStatisticInterface`](interfaces.md#vulnerabilitystatisticinterface)
 
 ### Fields {.no_toc}
 
@@ -20776,7 +20829,7 @@ Paginated collection of [`VulnerabilityStateTransitionType`](#vulnerabilitystate
 
 Counts for each vulnerability severity in the project.
 
-**Implements:** `VulnerabilityStatisticInterface`
+**Implements:** [`VulnerabilityStatisticInterface`](interfaces.md#vulnerabilitystatisticinterface)
 
 ### Fields {.no_toc}
 
@@ -20967,7 +21020,7 @@ Paginated collection of [`WebhookEvent`](#webhookevent). See [Standard connectio
 
 A wiki page.
 
-**Implements:** `NoteableInterface`, `Todoable`
+**Implements:** [`NoteableInterface`](interfaces.md#noteableinterface), [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -21003,7 +21056,7 @@ Paginated collection of [`WikiPage`](#wikipage). See [Standard connection fields
 
 ## `WorkItem`
 
-**Implements:** `Todoable`
+**Implements:** [`Todoable`](interfaces.md#todoable)
 
 ### Fields {.no_toc}
 
@@ -21043,8 +21096,24 @@ Paginated collection of [`WikiPage`](#wikipage). See [Standard connection fields
 | `userPermissions` | [`WorkItemPermissions!`](#workitempermissions) | Permissions for the current user on the resource. |
 | `webPath` | [`String`](scalars.md#string) | Web path of the object. |
 | `webUrl` | [`String`](scalars.md#string) | URL of the object. |
-| `widgets` | `[WorkItemWidget!]` | Collection of widgets that belong to the work item.  <strong>Arguments for `widgets`:</strong> <dl><dt>`exceptTypes` ([`[WorkItemWidgetType!]`](enums.md#workitemwidgettype))</dt><dd>Except widgets of the given types.</dd><dt>`onlyTypes` ([`[WorkItemWidgetType!]`](enums.md#workitemwidgettype))</dt><dd>Only widgets of the given types.</dd></dl> |
+| `widgets` | [`[WorkItemWidget!]`](interfaces.md#workitemwidget) | Collection of widgets that belong to the work item.  <strong>Arguments for `widgets`:</strong> <dl><dt>`exceptTypes` ([`[WorkItemWidgetType!]`](enums.md#workitemwidgettype))</dt><dd>Except widgets of the given types.</dd><dt>`onlyTypes` ([`[WorkItemWidgetType!]`](enums.md#workitemwidgettype))</dt><dd>Only widgets of the given types.</dd></dl> |
 | `workItemType` | [`WorkItemType!`](#workitemtype) | Type assigned to the work item. |
+
+## `WorkItemAgentPlanQuestion`
+
+Represents a question a workplan flow asked on a work item.
+
+### Fields {.no_toc}
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| `answered` | [`Boolean!`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 19.5.Whether someone whose role is above Guest has replied in the thread. |
+| `discussionId` | [`DiscussionID!`](scalars.md#discussionid) | Status: Experiment. Introduced in GitLab 19.5.Global ID of the thread the question was asked in. |
+| `noteId` | [`NoteID!`](scalars.md#noteid) | Status: Experiment. Introduced in GitLab 19.5.Global ID of the comment that asked the question. |
+
+## `WorkItemAgentPlanQuestionConnection`
+
+Paginated collection of [`WorkItemAgentPlanQuestion`](#workitemagentplanquestion). See [Standard connection fields](#standard-connection-fields) for the fields available on every connection.
 
 ## `WorkItemClosingMergeRequest`
 
@@ -21082,7 +21151,7 @@ This connection has additional fields beyond the [standard connection fields](#s
 
 ## `WorkItemDateFieldValue`
 
-**Implements:** `WorkItemCustomFieldValue`
+**Implements:** [`WorkItemCustomFieldValue`](interfaces.md#workitemcustomfieldvalue)
 
 ### Fields {.no_toc}
 
@@ -21238,7 +21307,7 @@ Valid target work item types and a suggested target for moving work items of a g
 
 ## `WorkItemNumberFieldValue`
 
-**Implements:** `WorkItemCustomFieldValue`
+**Implements:** [`WorkItemCustomFieldValue`](interfaces.md#workitemcustomfieldvalue)
 
 ### Fields {.no_toc}
 
@@ -21323,7 +21392,7 @@ Paginated collection of [`WorkItemSavedViewType`](#workitemsavedviewtype). See [
 
 ## `WorkItemSelectFieldValue`
 
-**Implements:** `WorkItemCustomFieldValue`
+**Implements:** [`WorkItemCustomFieldValue`](interfaces.md#workitemcustomfieldvalue)
 
 ### Fields {.no_toc}
 
@@ -21387,7 +21456,7 @@ Represents a status with its work item count.
 
 ## `WorkItemTextFieldValue`
 
-**Implements:** `WorkItemCustomFieldValue`
+**Implements:** [`WorkItemCustomFieldValue`](interfaces.md#workitemcustomfieldvalue)
 
 ### Fields {.no_toc}
 
@@ -21447,10 +21516,10 @@ This connection has additional fields beyond the [standard connection fields](#s
 | `supportedConversionTypes` | [`[WorkItemType!]`](#workitemtype) | Status: Experiment. Introduced in GitLab 17.8.Supported conversion types for the work item type. |
 | `supportsMoveAction` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 18.8.Indicates whether the work item type can be moved or not. |
 | `supportsRoadmapView` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 18.8.Indicates whether the work item type supports roadmap view. |
-| `unavailableWidgetsOnConversion` | `[WorkItemWidgetDefinition!]` | Widgets that will be lost when converting from source work item type to target work item type.  <strong>Arguments for `unavailableWidgetsOnConversion`:</strong> <dl><dt>`target` ([`WorkItemsTypeID!`](scalars.md#workitemstypeid))</dt><dd>Target work item type to convert to.</dd></dl> |
+| `unavailableWidgetsOnConversion` | [`[WorkItemWidgetDefinition!]`](interfaces.md#workitemwidgetdefinition) | Widgets that will be lost when converting from source work item type to target work item type.  <strong>Arguments for `unavailableWidgetsOnConversion`:</strong> <dl><dt>`target` ([`WorkItemsTypeID!`](scalars.md#workitemstypeid))</dt><dd>Target work item type to convert to.</dd></dl> |
 | `useIssueView` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 18.8.Indicates whether the work item type uses the issue view instead of work item view. |
 | `visibleInSettings` | [`Boolean`](scalars.md#boolean) | Status: Experiment. Introduced in GitLab 18.8.Indicates whether the work item type should be visible in the settings page. |
-| `widgetDefinitions` | `[WorkItemWidgetDefinition!]` | Status: Experiment. Introduced in GitLab 16.7.Available widgets for the work item type. |
+| `widgetDefinitions` | [`[WorkItemWidgetDefinition!]`](interfaces.md#workitemwidgetdefinition) | Status: Experiment. Introduced in GitLab 16.7.Available widgets for the work item type. |
 
 ## `WorkItemTypeConnection`
 
@@ -21504,7 +21573,7 @@ Represents an available icon for work item types.
 
 Represents an agent plan widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21514,6 +21583,8 @@ Represents an agent plan widget.
 | `content` | [`String`](scalars.md#string) | Content of the agent plan. This field can only be resolved for one work item in any single request. |
 | `contentHtml` | [`String`](scalars.md#string) | GitLab Flavored Markdown rendering of `content`. This field can only be resolved for one work item in any single request. |
 | `generationStatus` | [`WorkItemAgentPlanGenerationStatus`](enums.md#workitemagentplangenerationstatus) | Status: Experiment. Introduced in GitLab 19.4.Status of the asynchronous workplan generation flow for the work item. Reflects the most recent `workplan/v1` Duo Agent Platform workflow, if any; creation of that workflow is currently gated by the `duo_workplan_async_flow` feature flag. |
+| `openQuestionsCount` | [`Int`](scalars.md#int) | Status: Experiment. Introduced in GitLab 19.5.Number of questions asked by workplan flows that nobody above Guest has replied to, across every run on the work item. Null when no workplan flow has run on the work item. Only available when the `duo_workplan_async_flow` feature flag is enabled. This field can only be resolved for one work item in any single request. |
+| `questions` | [`WorkItemAgentPlanQuestionConnection`](#workitemagentplanquestionconnection) | Status: Experiment. Introduced in GitLab 19.5.Questions asked by workplan flows, across every run on the work item, oldest first. Null when no workplan flow has run on the work item. Only available when the `duo_workplan_async_flow` feature flag is enabled. This field can only be resolved for one work item in any single request. This field is a [connection](#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `readinessScore` | [`Int`](scalars.md#int) | Status: Experiment. Introduced in GitLab 19.3.Readiness score of the agent plan (0-100). Null when the score is not yet available. Only available when the `workplan_score` feature flag is enabled. |
 | `readinessScoreFeedback` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.4.Markdown feedback explaining the readiness score. Null when no feedback is available. Only available when the `workplan_score` feature flag is enabled. This field can only be resolved for one work item in any single request. |
 | `readinessScoreFeedbackHtml` | [`String`](scalars.md#string) | Status: Experiment. Introduced in GitLab 19.4.GitLab Flavored Markdown rendering of `readiness_score_feedback`. Only available when the `workplan_score` feature flag is enabled. This field can only be resolved for one work item in any single request. |
@@ -21523,7 +21594,7 @@ Represents an agent plan widget.
 
 Represents an AI session widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21536,7 +21607,7 @@ Represents an AI session widget.
 
 Represents an assignees widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21551,7 +21622,7 @@ Represents an assignees widget.
 
 Represents the emoji reactions widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21567,7 +21638,7 @@ Represents the emoji reactions widget.
 
 Represents a color widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21581,7 +21652,7 @@ Represents a color widget.
 
 Represents CRM contacts widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21595,7 +21666,7 @@ Represents CRM contacts widget.
 
 Represents a todos widget.
 
-**Implements:** `CurrentUserTodos`, `WorkItemWidget`
+**Implements:** [`CurrentUserTodos`](interfaces.md#currentusertodos), [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21608,20 +21679,20 @@ Represents a todos widget.
 
 Represents a custom fields widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `customFieldValues` | `[WorkItemCustomFieldValue!]` | Status: Experiment. Introduced in GitLab 17.9.Custom field values associated to the work item.  <strong>Arguments for `customFieldValues`:</strong> <dl><dt>`customFieldIds` ([`[IssuablesCustomFieldID!]`](scalars.md#issuablescustomfieldid))</dt><dd>Only return values for the given custom field IDs.</dd></dl> |
+| `customFieldValues` | [`[WorkItemCustomFieldValue!]`](interfaces.md#workitemcustomfieldvalue) | Status: Experiment. Introduced in GitLab 17.9.Custom field values associated to the work item.  <strong>Arguments for `customFieldValues`:</strong> <dl><dt>`customFieldIds` ([`[IssuablesCustomFieldID!]`](scalars.md#issuablescustomfieldid))</dt><dd>Only return values for the given custom field IDs.</dd></dl> |
 | `type` | [`WorkItemWidgetType`](enums.md#workitemwidgettype) | Widget type. |
 
 ## `WorkItemWidgetDecisionLog`
 
 Represents a decision log widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21634,7 +21705,7 @@ Represents a decision log widget.
 
 Represents an assignees widget definition.
 
-**Implements:** `WorkItemWidgetDefinition`
+**Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
 ### Fields {.no_toc}
 
@@ -21648,20 +21719,20 @@ Represents an assignees widget definition.
 
 Represents a custom fields widget definition.
 
-**Implements:** `WorkItemWidgetDefinition`
+**Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
 ### Fields {.no_toc}
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| `customFieldValues` | `[WorkItemCustomFieldValue!]` | Status: Experiment. Introduced in GitLab 17.10.Custom field values associated to the work item. |
+| `customFieldValues` | [`[WorkItemCustomFieldValue!]`](interfaces.md#workitemcustomfieldvalue) | Status: Experiment. Introduced in GitLab 17.10.Custom field values associated to the work item. |
 | `type` | [`WorkItemWidgetType!`](enums.md#workitemwidgettype) | Widget type. |
 
 ## `WorkItemWidgetDefinitionGeneric`
 
 Represents a generic widget definition.
 
-**Implements:** `WorkItemWidgetDefinition`
+**Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
 ### Fields {.no_toc}
 
@@ -21673,7 +21744,7 @@ Represents a generic widget definition.
 
 Represents a hierarchy widget definition.
 
-**Implements:** `WorkItemWidgetDefinition`
+**Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
 ### Fields {.no_toc}
 
@@ -21689,7 +21760,7 @@ Represents a hierarchy widget definition.
 
 Represents a labels widget definition.
 
-**Implements:** `WorkItemWidgetDefinition`
+**Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
 ### Fields {.no_toc}
 
@@ -21702,7 +21773,7 @@ Represents a labels widget definition.
 
 Represents a progress widget definition.
 
-**Implements:** `WorkItemWidgetDefinition`
+**Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
 ### Fields {.no_toc}
 
@@ -21715,7 +21786,7 @@ Represents a progress widget definition.
 
 Represents a start and due date widget definition.
 
-**Implements:** `WorkItemWidgetDefinition`
+**Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
 ### Fields {.no_toc}
 
@@ -21728,7 +21799,7 @@ Represents a start and due date widget definition.
 
 Represents a Status widget definition.
 
-**Implements:** `WorkItemWidgetDefinition`
+**Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
 ### Fields {.no_toc}
 
@@ -21743,7 +21814,7 @@ Represents a Status widget definition.
 
 Represents a weight widget definition.
 
-**Implements:** `WorkItemWidgetDefinition`
+**Implements:** [`WorkItemWidgetDefinition`](interfaces.md#workitemwidgetdefinition)
 
 ### Fields {.no_toc}
 
@@ -21757,7 +21828,7 @@ Represents a weight widget definition.
 
 Represents a description widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21775,7 +21846,7 @@ Represents a description widget.
 
 Represents designs widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21788,7 +21859,7 @@ Represents designs widget.
 
 Represents a development widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21806,7 +21877,7 @@ Represents a development widget.
 
 Represents email participants widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21819,7 +21890,7 @@ Represents email participants widget.
 
 Represents the error tracking widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21845,7 +21916,7 @@ Represents details about a line of code of the stack trace.
 
 Represents a health status widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21870,7 +21941,7 @@ Represents work item counts for the health status.
 
 Represents a hierarchy widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21889,7 +21960,7 @@ Represents a hierarchy widget.
 
 Represents an iteration widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21902,7 +21973,7 @@ Represents an iteration widget.
 
 Represents the labels widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21916,7 +21987,7 @@ Represents the labels widget.
 
 Represents the linked items widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21932,7 +22003,7 @@ Represents the linked items widget.
 
 Represents the linked resources widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21945,7 +22016,7 @@ Represents the linked resources widget.
 
 Represents a milestone widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21958,7 +22029,7 @@ Represents a milestone widget.
 
 Represents a notes widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21973,7 +22044,7 @@ Represents a notes widget.
 
 Represents the notifications widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21986,7 +22057,7 @@ Represents the notifications widget.
 
 Represents a participants widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -21999,7 +22070,7 @@ Represents a participants widget.
 
 Represents a progress widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -22016,7 +22087,7 @@ Represents a progress widget.
 
 Represents a legacy requirement widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -22029,7 +22100,7 @@ Represents a legacy requirement widget.
 
 Represents a start and due date widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -22049,7 +22120,7 @@ Represents a start and due date widget.
 
 Represents status widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -22062,7 +22133,7 @@ Represents status widget.
 
 Represents a test reports widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -22075,7 +22146,7 @@ Represents a test reports widget.
 
 Represents the time tracking widget on the work item.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -22102,7 +22173,7 @@ Represents a time tracking human readable attributes.
 
 Represents a verification status widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -22115,7 +22186,7 @@ Represents a verification status widget.
 
 Represents a vulnerabilities widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -22128,7 +22199,7 @@ Represents a vulnerabilities widget.
 
 Represents a weight widget.
 
-**Implements:** `WorkItemWidget`
+**Implements:** [`WorkItemWidget`](interfaces.md#workitemwidget)
 
 ### Fields {.no_toc}
 
@@ -22275,7 +22346,7 @@ Issuer of an X.509 certificate.
 
 X.509 signature for a signed commit.
 
-**Implements:** `CommitSignature`
+**Implements:** [`CommitSignature`](interfaces.md#commitsignature)
 
 ### Fields {.no_toc}
 

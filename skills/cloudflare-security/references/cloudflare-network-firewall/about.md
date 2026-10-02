@@ -30,6 +30,7 @@ When using Cloudflare Network Firewall alongside other Cloudflare services that 
 - [Protocol validation rules](https://developers.cloudflare.com/cloudflare-network-firewall/about/protocol-validation-rules/)
 - [Ruleset logic](https://developers.cloudflare.com/cloudflare-network-firewall/about/ruleset-logic/)
 - [Traffic types](https://developers.cloudflare.com/cloudflare-network-firewall/about/traffic-types/)
+- [Unified Routing behavior changes](https://developers.cloudflare.com/cloudflare-network-firewall/about/unified-routing-changes/)
 
 Was this helpful?
 

@@ -24,15 +24,17 @@ Get costs details for the organization.
 
   End time (Unix seconds) of the query time range, exclusive.
 
-- `group_by: optional array of "project_id" or "line_item" or "api_key_id"`
+- `group_by: optional array of "project_id" or "line_item" or "api_key_id" or "api_source"`
 
-  Group the costs by the specified fields. Support fields include `project_id`, `line_item`, `api_key_id` and any combination of them.
+  Group the costs by the specified fields. Support fields include `project_id`, `line_item`, `api_key_id`, `api_source` and any combination of them. When grouped by `api_source`, results use `agents_api` for attributed Agents API activity and `unlabeled` for all other activity. Without source grouping, `api_source` is null.
 
   - `"project_id"`
 
   - `"line_item"`
 
   - `"api_key_id"`
+
+  - `"api_source"`
 
 - `limit: optional number`
 
@@ -60,9 +62,9 @@ Get costs details for the organization.
 
     - `"bucket"`
 
-  - `results: array of object { input_tokens, num_model_requests, object, 20 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
+  - `results: array of object { input_tokens, num_model_requests, object, 21 more }  or object { input_tokens, num_model_requests, object, 4 more }  or object { input_tokens, num_model_requests, object, 4 more }  or 8 more`
 
-    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 20 more }`
+    - `OrganizationUsageCompletionsResult object { input_tokens, num_model_requests, object, 21 more }`
 
       The aggregated completions usage details of the specific time bucket.
 
@@ -85,6 +87,14 @@ Get costs details for the organization.
       - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
+
+      - `api_source: optional "agents_api" or "unlabeled" or null`
+
+        When grouped by `api_source`, `agents_api` identifies attributed Agents API activity and `unlabeled` includes all records without published source attribution, including historical and unknown origins. Unlabeled does not imply direct API usage. Without source grouping, this field is null.
+
+        - `"agents_api"`
+
+        - `"unlabeled"`
 
       - `batch: optional boolean or null`
 
@@ -386,7 +396,7 @@ Get costs details for the organization.
 
         When `group_by=vector_store_id`, this field provides the vector store ID of the grouped usage result.
 
-    - `OrganizationUsageWebSearchesResult object { num_model_requests, num_requests, object, 5 more }`
+    - `OrganizationUsageWebSearchesResult object { num_model_requests, num_requests, object, 6 more }`
 
       The aggregated web search calls usage details of the specific time bucket.
 
@@ -406,6 +416,14 @@ Get costs details for the organization.
 
         When `group_by=api_key_id`, this field provides the API key ID of the grouped usage result.
 
+      - `api_source: optional "agents_api" or "unlabeled" or null`
+
+        When grouped by `api_source`, `agents_api` identifies attributed Agents API activity and `unlabeled` includes all records without published source attribution, including historical and unknown origins. Unlabeled does not imply direct API usage. Without source grouping, this field is null.
+
+        - `"agents_api"`
+
+        - `"unlabeled"`
+
       - `context_level: optional string or null`
 
         When `group_by=context_level`, this field provides the search context size of the grouped usage result.
@@ -422,7 +440,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 4 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -445,6 +463,14 @@ Get costs details for the organization.
       - `api_key_id: optional string or null`
 
         When `group_by=api_key_id`, this field provides the API Key ID of the grouped costs result.
+
+      - `api_source: optional "agents_api" or "unlabeled" or null`
+
+        When grouped by `api_source`, `agents_api` identifies attributed Agents API activity and `unlabeled` includes all records without published source attribution, including historical and unknown origins. Unlabeled does not imply direct API usage. Without source grouping, this field is null.
+
+        - `"agents_api"`
+
+        - `"unlabeled"`
 
       - `line_item: optional string or null`
 
@@ -516,6 +542,7 @@ curl https://api.openai.com/v1/organization/costs \
           "object": "organization.usage.completions.result",
           "output_tokens": 0,
           "api_key_id": "api_key_id",
+          "api_source": "agents_api",
           "batch": true,
           "input_audio_tokens": 0,
           "input_cache_write_12h_tokens": 0,

@@ -1,10 +1,14 @@
-This guide walks you through creating and using Managed Agents on the Gemini API, using the [Antigravity agent](https://ai.google.dev/gemini-api/docs/agents/antigravity-agent). You'll make your first agent call, continue a multi-turn conversation, stream the response, download files from the sandbox, and work with the Antigravity managed agent.
+This guide walks you through creating and using Managed Agents on the Gemini
+API, using the [Antigravity agent](https://ai.google.dev/gemini-api/docs/antigravity-agent). You'll
+make your first agent call, continue a multi-turn conversation, stream the
+response, download files from the sandbox, and work with the Antigravity
+managed agent.
 
 ## Run your first agent interaction
 
 A single call to the [Interactions API](https://ai.google.dev/gemini-api/docs) provisions a Linux sandbox, runs the agent loop, and returns the result. You'll define three parameters:
 
-- Pass in the `agent` as `"antigravity-preview-09-2026",` which is the current version of our predefined and general purpose managed agent.
+- Pass in the `agent` as `"antigravity-preview-09-2026"`, which is the current version of our predefined and general purpose managed agent.
 - Define `environment="remote"`, to provision a new, fresh sandbox environment.
 - Create an input, defining what you want the agent to do.
 
@@ -90,7 +94,7 @@ A single call to the [Interactions API](https://ai.google.dev/gemini-api/docs) p
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:       interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:       interactions.NewInteractionsInput("Write a Python script that generates the first 20 Fibonacci numbers and saves them to fibonacci.txt. Then read the file and print its contents."),
                 Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
             }),
@@ -200,7 +204,7 @@ Pass both in their respective place to resume:
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:                 interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:                 interactions.AgentOption("antigravity-preview-09-2026"),
                 PreviousInteractionID: genai.Ptr(interactionID),
                 Environment:           genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(environmentID)),
                 Input:                 interactions.NewInteractionsInput("Now plot the Fibonacci sequence as a line chart and save it as chart.png."),
@@ -333,7 +337,7 @@ For long-running tasks, you can stream the response to see the agent work in rea
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:       interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:       interactions.NewInteractionsInput("Read Hacker News, summarize the top 5 stories, and save the results as a PDF."),
                 Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
                 Stream:      genai.Ptr(true),
@@ -657,7 +661,7 @@ When you save an agent, notice the architectural symmetry with inline interactio
         res, err := client.Agents.Create(ctx, operations.CreateAgentRequest{
             Body: agents.Agent{
                 ID:        genai.Ptr("fibonacci-analyst"),
-                BaseAgent: genai.Ptr("antigravity-preview-05-2026"),
+                BaseAgent: genai.Ptr("antigravity-preview-09-2026"),
                 AgentConfig: genai.Ptr(agents.NewAgentConfig(interactions.AntigravityAgentConfig{
                     Model: genai.Ptr("gemini-3.8-flash"),
                 })),

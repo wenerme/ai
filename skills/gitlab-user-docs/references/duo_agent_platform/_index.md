@@ -82,12 +82,13 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 
 [^mcp-clients-consume]: MCP clients do not consume credits directly. However, any Agent Platform usage, such as model requests made through an MCP client, might consume credits.
 
-## Beta features that consume credits
+## Beta and experimental features that consume credits
 
-These features are in beta and their usage consumes GitLab Credits.
+These features are either beta or experimental and consume GitLab Credits.
 
 | Feature | Free | Premium | Ultimate |
 |---------|---|---|---|
+| [GitLab for Slack app](../project/integrations/gitlab_slack_application.md#gitlab-duo)  Interact with GitLab Duo from Slack. | No | Yes | Yes |
 | [Security Review Flow](flows/foundational_flows/security_review.md)  Detects business logic vulnerabilities in merge requests. | No | No | Yes |
 
 ## Beta and experimental features that don't consume credits

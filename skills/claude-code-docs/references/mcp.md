@@ -37,7 +37,7 @@ You can also have Claude scaffold a server for you with the official [`mcp-serve
 
 <Steps>
   <Step title="Install the plugin">
-    In a Claude Code session, run:
+    In the VS Code extension or the desktop app, follow [Install a plugin](/docs/en/plugins/install#install-a-plugin) instead of this step. In a terminal, start Claude Code by running `claude`, then enter this at its prompt:
 
     ```
     /plugin install mcp-server-dev@claude-plugins-official

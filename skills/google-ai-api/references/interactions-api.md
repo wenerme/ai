@@ -35,14 +35,9 @@ The agent to interact with.
   Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
 agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
 background boolean (optional) Input only. Whether to run the model interaction in the background.
-created string (required) Required. Output only. The time at which the response was created in ISO 8601 format
-(YYYY-MM-DDThh:mm:ssZ).
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
 specifying remote environment sources or a string referencing an existing
 environment ID.
-environment_id string (optional) Output only. The environment ID for the interaction. Only populated if environment
-config is set in the request.
-id string (required) Required. Output only. A unique identifier for the interaction completion.
 input [Content](https://ai.google.dev/api/interactions-api#Resource:Content) or array ([Content](https://ai.google.dev/api/interactions-api#Resource:Content)) or array ([Step](https://ai.google.dev/api/interactions-api#Resource:Step)) or string (optional) The input for the interaction.
 labels object (optional) The labels with user-defined metadata for the request.
 
@@ -150,44 +145,10 @@ service_tier ServiceTier (optional) The service tier for the interaction.
 - `deferred`
 
   Deferred service tier.
-status enum (string) (required) Required. Output only. The status of the interaction.
-
-Possible
-values:
-
-- `in_progress`
-
-  The interaction is in progress.
-- `requires_action`
-
-  The interaction requires action/input from the user.
-- `completed`
-
-  The interaction is completed.
-- `failed`
-
-  The interaction failed.
-- `cancelled`
-
-  The interaction was cancelled.
-- `incomplete`
-
-  The interaction is completed, but contains incomplete results (e.g.
-  hitting max_tokens).
-- `budget_exceeded`
-
-  Deprecated: Token and execution budget exhaustion returns INCOMPLETE
-  (11).
-- `queued`
-
-  The interaction is queued, waiting for processing (e.g. waiting for
-  off-peak capacity).
 store boolean (optional) Input only. Whether to store the response and request for later retrieval.
 stream boolean (optional) Input only. Whether the interaction will be streamed.
 system_instruction string (optional) System instruction for the interaction.
 tools array ([Tool](https://ai.google.dev/api/interactions-api#Resource:Tool)) (optional) A list of tool declarations the model may call during interaction.
-updated string (required) Required. Output only. The time at which the response was last updated in ISO 8601 format
-(YYYY-MM-DDThh:mm:ssZ).
 webhook_config WebhookConfig (optional) Optional. Webhook configuration for receiving notifications when the
 interaction completes.
 Message for configuring webhook events for a request.
@@ -577,7 +538,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Simple Request
 
-<iframe src="https:///frame/api/interactions-api_699d783e5d1492e317d6986809577c6f95b5e0376ee0cb5bb4660ccfe281127e.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_97f88f15749f2d97febef6f6641c38651a6b7e85e8998b068ad8625bc7aa2aa0.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -619,7 +580,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Multi-turn
 
-<iframe src="https:///frame/api/interactions-api_db0502261209c60e43f4c3c63c6da8b05501215ac7e8874bceba44f78a087005.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_72c670fd4fdea4b3390d73bddf6961da52025b886e88f020cf4c43e0598d974c.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -661,7 +622,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Image Input
 
-<iframe src="https:///frame/api/interactions-api_e95fa7ab7bf9d00d46087fb9a573c5c2130d31aa485850262e72ba3d4143f52b.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_c777d6fe44e5dfd12e28c75b302358d3d8c3091bc08349a74a3a7e67c00c1b1d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -707,7 +668,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Function Calling
 
-<iframe src="https:///frame/api/interactions-api_cd85d2defab23e7425605f43da338ec821905657e56f2ef65346dec4496b5b12.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_1db31a4f58cbeb19f85ec476e1ca3135bbecf3616bbbdda046c97ee07aea43ab.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -748,7 +709,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Deep Research
 
-<iframe src="https:///frame/api/interactions-api_9430368664e27ab7dcc1e9e0f96f704283c5cce1056007fe8414905fa7823df5.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_96040eb313456a2eb497dd0d0a70a915bda140d0d6048614264d26ed851c1940.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -790,7 +751,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Antigravity Agent
 
-<iframe src="https:///frame/api/interactions-api_43b197f22acccd2cb80acaf05452865e08eb921742fd7b941da027737ba514a3.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_ce871a0a590fa28114b8c705a955bb3423dbd71420b884723a2f7a7c0aff3f4a.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -833,7 +794,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Reuse Environment
 
-<iframe src="https:///frame/api/interactions-api_3531ee28722df7530d1a662733f36052dfcd5dd27d41e2aa49a7809b039d89ef.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_969b0a96c69f5fdda6afeccf1b51492bdb8947c407f4294b6b9b5041d4d70acf.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -876,11 +837,11 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### With Sources
 
-<iframe src="https:///frame/api/interactions-api_a7c0d6ece6fcaef8ce5ed625b91d6050c1c1b980fd0351a00e87c7314c8c2f42.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_fc7a479afba8ce6ab0e0d01df0b9cd275b3c951db5518fb701758442defffe7e.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### Custom Agent
 
-<iframe src="https:///frame/api/interactions-api_136984c87c22450571beb550a06827c0c721c6703e135d53c41b18badab0d3dc.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_a19caebcec70e58c6bf8fe3d0e37413ecbb7bdbdcd4e436b87ecef278d5a989d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ## cancelInteractionById
 
@@ -899,7 +860,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Cancel
 
-<iframe src="https:///frame/api/interactions-api_1efe8a55919df523452dc80ee88d1a299e49c447a7db1b688befc677ccdd4214.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_48a83630b05ab6cdd2880b1e38968d7a75c4ea9c6a46fefe04c5572270585592.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ## getInteractionById
 
@@ -922,7 +883,7 @@ Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Int
 
 ### Get Interaction
 
-<iframe src="https:///frame/api/interactions-api_f00da288965e4991aced1c160bc449960f7a2235e8c67fe419d0ffad238ff500.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_f3543e07bd79000c392fd227b4e47c0153c3da15eb93258e704421a0cf9accda.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 #### Example Response
 
@@ -964,7 +925,7 @@ If successful, the response is empty.
 
 ### Delete
 
-<iframe src="https:///frame/api/interactions-api_c8aab21c12456968451c0098f8644f7945b6f194f93a470e6cf3f8cc8d5cb943.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_5743367a43207a9126105f0afee35b2427dd61081f8b09336437c37b743d22ff.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ## Resources
 
@@ -991,117 +952,7 @@ The agent to interact with.
 - `antigravity-preview-05-2026`
 
   Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
-agent_config object (optional) Configuration parameters for the agent interaction.
-
-#### Possible Types
-
-Polymorphic discriminator: `type`
-AntigravityAgentConfig Configuration for the Antigravity agent runtime.
-Provides server-side control over the agent's execution environment
-and tool configuration.
-max_total_tokens string (optional) Max total tokens for the agent run.
-model string (optional) The model to use for agent reasoning.
-type object (required) No description provided.
-
-Always set to `"antigravity"`.
-CodeMenderAgentConfig Configuration for the CodeMender agent.
-find_request FindRequest (optional) Parameters for finding vulnerabilities.
-Request parameters specific to FIND sessions, used for discovering
-vulnerabilities in a codebase.
-
-#### Fields
-
-description string (optional) Additional context or custom instructions provided by the user to guide
-the vulnerability analysis.
-finding_id string (optional) The identifier of a specific finding to verify. This is primarily used in
-VERIFY mode to focus the agent's execution-based validation on a single
-vulnerability.
-mode enum (string) (optional) The mode of the find session.
-
-Possible
-values:
-
-- `scan`
-
-  Fast scan using only the initial classifier.
-- `verify`
-
-  Performs classification followed by detailed investigation.
-source_files array (FileContent) (optional) A list of source files to provide as context for the scan.
-Content of a single file in the codebase.
-
-#### Fields
-
-content string (optional) The UTF-8 encoded text content of the file.
-path string (optional) The relative path of the file from the project root.
-fix_request FixRequest (optional) Parameters for fixing vulnerabilities.
-Request parameters specific to FIX sessions, used for generating and
-validating security patches.
-
-#### Fields
-
-description string (optional) Additional context or custom instructions provided by the user to guide
-the patch generation process.
-finding_id string (optional) The identifier of the specific security finding to be remediated. This ID
-maps to a previously discovered vulnerability.
-source_files array (FileContent) (optional) A list of source files providing context for the remediation. These files
-are typically the ones containing the identified vulnerability.
-Content of a single file in the codebase.
-
-#### Fields
-
-content string (optional) The UTF-8 encoded text content of the file.
-path string (optional) The relative path of the file from the project root.
-model string (optional) The name of the model to use for the CodeMender agent. One
-CodeMender session will only use one model.
-session_config SessionConfig (optional) Optional session-specific configurations to override default agent
-behavior.
-The configuration of CodeMender sessions.
-
-#### Fields
-
-max_rounds integer (optional) The maximum number of interaction rounds the agent is allowed to perform
-before reaching a timeout.
-session_id string (optional) Parameter for grouping multiple interactions that belong to
-the same CodeMender session.
-type object (required) No description provided.
-
-Always set to `"code-mender"`.
-DeepResearchAgentConfig Configuration for the Deep Research agent.
-collaborative_planning boolean (optional) Enables human-in-the-loop planning for the Deep Research agent. If set to
-true, the Deep Research agent will provide a research plan in its response.
-The agent will then proceed only if the user confirms the plan in the next
-turn.
-enable_bigquery_tool boolean (optional) Enables bigquery tool for the Deep Research agent.
-thinking_summaries ThinkingSummaries (optional) Whether to include thought summaries in the response.
-<br />
-
-#### Possible values
-
-- `auto`
-
-  Auto thinking summaries.
-- `none`
-
-  No thinking summaries.
-type object (required) No description provided.
-
-Always set to `"deep-research"`.
-visualization enum (string) (optional) Whether to include visualizations in the response.
-
-Possible
-values:
-
-- `off`
-
-  Do not include visualizations.
-- `auto`
-
-  Automatically include visualizations.
-DynamicAgentConfig Configuration for dynamic agents.
-type object (required) No description provided.
-
-Always set to `"dynamic"`.
+agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
 created string (optional) Required. Output only. The time at which the response was created in ISO 8601 format
 (YYYY-MM-DDThh:mm:ssZ).
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
@@ -2055,31 +1906,31 @@ Always set to `"url_context"`.
 
 ### CodeExecution
 
-<iframe src="https:///frame/api/interactions-api_60921f83eb8d07eccc88459e990e79649a1d00cb736509bc3ffb854c77e2a78f.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_676eb6c6b329fd2f0b8f65b52e49f01095f29941d6413e4f078a38e2c59dbcd0.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### ComputerUse
 
-<iframe src="https:///frame/api/interactions-api_ab7f67dd37c0d02874a3da46f675a2a26c8c78f2aa3e5852eb0f9a67e1ac57f3.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_52bb4224258c79eef93a158245ad38c69364247cc73f066d91bc4120d52305ff.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### FileSearch
 
-<iframe src="https:///frame/api/interactions-api_d44ae41bc2dadacae862adfcee52a3a56cd426603973f74e668e4c30021764b1.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_e0f6c1bc5b7eb02b58c4e25469a773430d3f39121099f9ecb4d54b64f9ba8e96.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### Function
 
-<iframe src="https:///frame/api/interactions-api_1c08155ba7e48ee4ec2eb31d6f1041e263bcbc040eff8e4c0ccf267fe2efffb3.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_d0872fd579538803a0d1dad471a8cd3d1ef6a60b58a6eafadeff6d8e002bab50.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### GoogleMaps
 
-<iframe src="https:///frame/api/interactions-api_81d4cb055d6b64e901907ed5e6794481099d301bb772f0f57fd89c5721cd3267.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_51e16f15e3fa9da34d0423a902acb0b735da8316be5042a4abeddeb83000d34d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### GoogleSearch
 
-<iframe src="https:///frame/api/interactions-api_ef9d228072661835e61196d3098a50ec2ffda5568d6373b50846aa2aaec579b6.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_dc86831944832f9c544a6cca3fed25d2273e75ea7de188a2844b72abc9f20c72.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### McpServer
 
-<iframe src="https:///frame/api/interactions-api_794bac621044450899ba634e8bf233806331381820672dc917e6ff5b54c8ce35.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_de30fbe9022f46486d2f91935faece19ad6e74570df825e328b75fd418a6eb18.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### Retrieval
 
@@ -2087,7 +1938,7 @@ No examples available for this type.
 
 ### UrlContext
 
-<iframe src="https:///frame/api/interactions-api_0383a858ce733f1b1c5c61bd9db38876fe0c1f595702b1ef67ccd2d8f401e93d.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+<iframe src="https:///frame/api/interactions-api_f2dd90d36c47807a5aeccf6afa3ebd8956156d337861ddfd967d0fab16c85b7f.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
 
 ### InteractionSseStreamEvent
 

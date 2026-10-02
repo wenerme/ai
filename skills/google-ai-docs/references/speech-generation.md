@@ -864,8 +864,10 @@ Gemini 3.8 TTS supports four ways to select or create voices:
 
 | Voice type | Storage mode | Quota / limit | Retention (TTL) |
 |---|---|---|---|
-| **Stateful voices** (`voice_...`, prompted or replicated) | `store=True` | **200 voices per project** (shared across prompted and replicated voices) | **1 year** |
+| **Stateful voices** (`voice_...`, prompted or replicated) | `store=True` | **200 voices per project** (shared across prompted and replicated voices) | **1 year from last use\*** |
 | **Stateless voice keys** (`voicekey_...`, replicated) | `store=False` | Client-managed | **7 days** |
+
+\* **TTL extension:** The 1-year retention window resets each time the voice is actively used (either by synthesizing speech with the voice or using it as a base voice for remixing). Voices with no activity for 1 year are automatically deleted.
 
 ### Prebuilt voices
 

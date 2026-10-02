@@ -310,7 +310,10 @@ curl -X POST https://api.openai.com/v1/realtime/transcription_sessions \
     "language": null,
     "prompt": ""
   },
-  "client_secret": null
+  "client_secret": {
+    "value": "ek_abc123",
+    "expires_at": 1742188264
+  }
 }
 ```
 
