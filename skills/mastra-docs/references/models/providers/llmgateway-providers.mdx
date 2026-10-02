@@ -5,7 +5,7 @@ description: "Browse LLM Gateway model IDs, capabilities, context windows, and p
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 429 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 430 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -214,7 +214,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 1000000,
+    "contextWindow": 997952,
     "maxOutput": 65536,
     "inputCost": 0.3,
     "outputCost": 1.5
@@ -322,7 +322,7 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 983616,
     "maxOutput": 65536,
     "inputCost": 0.25,
     "outputCost": 1.5
@@ -346,7 +346,7 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 983616,
     "maxOutput": 65536,
     "inputCost": 0.5,
     "outputCost": 3
@@ -358,7 +358,7 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 983616,
     "maxOutput": 65536,
     "inputCost": 0.03,
     "outputCost": 0.13
@@ -370,7 +370,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 983616,
     "maxOutput": 65536,
     "inputCost": 2.5,
     "outputCost": 7.5
@@ -382,7 +382,7 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 983616,
     "maxOutput": 65536,
     "inputCost": 0.4,
     "outputCost": 1.6
@@ -394,7 +394,7 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 983616,
     "maxOutput": 131072,
     "inputCost": 0.15,
     "outputCost": 0.47
@@ -406,7 +406,7 @@ for await (const chunk of stream) {
     "videoInput": true,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 1000000,
+    "contextWindow": 983616,
     "maxOutput": 131072,
     "inputCost": 2,
     "outputCost": 6
@@ -1684,6 +1684,18 @@ for await (const chunk of stream) {
     "outputCost": 1.2
   },
   {
+    "model": "llmgateway-providers/consensusprotocol/deepseek-v4-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 524288,
+    "maxOutput": 384000,
+    "inputCost": 0.1,
+    "outputCost": 0.2
+  },
+  {
     "model": "llmgateway-providers/consensusprotocol/deepseek-v4.1-flash",
     "imageInput": true,
     "audioInput": false,
@@ -1726,7 +1738,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 65536,
+    "contextWindow": 128000,
     "maxOutput": 32768,
     "inputCost": 0.04,
     "outputCost": 0.19
@@ -1738,7 +1750,7 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 32768,
+    "contextWindow": 262000,
     "maxOutput": 32768,
     "inputCost": 0.08,
     "outputCost": 0.35

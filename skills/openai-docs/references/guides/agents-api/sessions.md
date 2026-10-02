@@ -196,7 +196,7 @@ Saved-agent updates apply only to new sessions. To change the model, reasoning e
 
 Use the conversation's session ID to send input. Subscribe to its [event stream](https://developers.openai.com/api/reference/resources/beta/subresources/agents/subresources/sessions/subresources/events/methods/stream) before sending the message so your application receives the turn's early events.
 
-Pass your API client, session ID, and message to a function in your application:
+Create one idempotency key for each logical message submission. Save it with the message before sending input. In the Python example, pass your API client, session ID, message, and key to a function in your application:
 
 Send a follow-up message
 
@@ -225,10 +225,16 @@ async function sendMessage(client, sessionId, text) {
 ```
 
 ```python
-# Pass your saved session ID and message to this helper.
-def send_message(client: OpenAI, session_id: str, text: str) -> None:
+from uuid import uuid4
+
+
+# Reuse the same submission key when retrying this message.
+def send_message(
+    client: OpenAI, session_id: str, text: str, submission_key: str
+) -> None:
     client.beta.agents.sessions.events.create(
         session_id,
+        idempotency_key=submission_key,
         events=[
             {
                 "type": "agent.session.input.message",
@@ -246,6 +252,10 @@ def send_message(client: OpenAI, session_id: str, text: str) -> None:
             }
         ],
     )
+
+
+submission_key = str(uuid4())
+# Save this key with the message before submitting it.
 ```
 
 ```go
@@ -346,6 +356,8 @@ curl \
   }'
 ```
 
+
+The Python SDK sends `idempotency_key` as the `Idempotency-Key` header and reuses it for automatic retries. If your application retries after a timeout or lost response, reuse the same key, session ID, and message. Generate a different key for each distinct submission, even when the message text is identical.
 
 For a combined send-and-stream example, see [Events and Items](https://developers.openai.com/api/docs/guides/agents-api/sessions/events#send-and-stream-a-task).
 

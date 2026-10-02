@@ -8,7 +8,7 @@ Creates a webhook endpoint for the authenticated project.
 
 ### Body Parameters
 
-- `event_types: array of "batch.completed" or "batch.failed" or "batch.expired" or 15 more`
+- `event_types: array of "batch.completed" or "batch.failed" or "batch.expired" or 20 more`
 
   The event types that trigger deliveries to this endpoint.
 
@@ -45,6 +45,16 @@ Creates a webhook endpoint for the authenticated project.
   - `"video.completed"`
 
   - `"video.failed"`
+
+  - `"agent.session.created"`
+
+  - `"agent.session.action_required"`
+
+  - `"agent.session.in_progress"`
+
+  - `"agent.session.idle"`
+
+  - `"agent.session.failed"`
 
   - `"safety.alert.created"`
 
@@ -453,7 +463,7 @@ Sends a sample event to a webhook endpoint for the authenticated project.
 
 ### Body Parameters
 
-- `event_type: "batch.completed" or "batch.failed" or "batch.expired" or 15 more`
+- `event_type: "batch.completed" or "batch.failed" or "batch.expired" or 20 more`
 
   The event type to send as a sample delivery.
 
@@ -490,6 +500,16 @@ Sends a sample event to a webhook endpoint for the authenticated project.
   - `"video.completed"`
 
   - `"video.failed"`
+
+  - `"agent.session.created"`
+
+  - `"agent.session.action_required"`
+
+  - `"agent.session.in_progress"`
+
+  - `"agent.session.idle"`
+
+  - `"agent.session.failed"`
 
   - `"safety.alert.created"`
 
@@ -562,7 +582,7 @@ Updates a webhook endpoint for the authenticated project.
 
 ### Body Parameters
 
-- `event_types: optional array of "batch.completed" or "batch.failed" or "batch.expired" or 15 more`
+- `event_types: optional array of "batch.completed" or "batch.failed" or "batch.expired" or 20 more`
 
   The complete set of event types that should trigger deliveries.
 
@@ -599,6 +619,16 @@ Updates a webhook endpoint for the authenticated project.
   - `"video.completed"`
 
   - `"video.failed"`
+
+  - `"agent.session.created"`
+
+  - `"agent.session.action_required"`
+
+  - `"agent.session.in_progress"`
+
+  - `"agent.session.idle"`
+
+  - `"agent.session.failed"`
 
   - `"safety.alert.created"`
 
@@ -674,6 +704,216 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 ```
 
 ## Domain Types
+
+### Agent Session Action Required Webhook Event
+
+- `AgentSessionActionRequiredWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when an agent session requires an action. Retrieve the session for action details.
+
+  - `id: string`
+
+    The unique ID of the event.
+
+  - `created_at: number`
+
+    The Unix timestamp, in seconds, when the event was created.
+
+  - `data: object { id, required_action }`
+
+    - `id: string`
+
+      The ID of the session.
+
+    - `required_action: object { type }`
+
+      The action type. Retrieve the session for action details.
+
+      - `type: "computer_use_approval_request" or "function_call" or "environment_connection"`
+
+        - `"computer_use_approval_request"`
+
+        - `"function_call"`
+
+        - `"environment_connection"`
+
+  - `object: "event"`
+
+    The object type. Always `event`.
+
+    - `"event"`
+
+  - `type: "agent.session.action_required"`
+
+    The event type. Always `agent.session.action_required`.
+
+    - `"agent.session.action_required"`
+
+### Agent Session Created Webhook Event
+
+- `AgentSessionCreatedWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when an agent session is created.
+
+  - `id: string`
+
+    The unique ID of the event.
+
+  - `created_at: number`
+
+    The Unix timestamp, in seconds, when the event was created.
+
+  - `data: object { id, environment_type, connect, environment_id }`
+
+    - `id: string`
+
+      The ID of the session.
+
+    - `environment_type: string`
+
+      The environment type: `none`, `openai_hosted`, or `self_hosted`.
+
+    - `connect: optional object { remote_url }`
+
+      - `remote_url: string`
+
+        The URL used to connect the self-hosted environment.
+
+    - `environment_id: optional string`
+
+      The ID of the environment, when one exists.
+
+  - `object: "event"`
+
+    The object type. Always `event`.
+
+    - `"event"`
+
+  - `type: "agent.session.created"`
+
+    The event type. Always `agent.session.created`.
+
+    - `"agent.session.created"`
+
+### Agent Session Failed Webhook Event
+
+- `AgentSessionFailedWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when an agent session fails.
+
+  - `id: string`
+
+    The unique ID of the event.
+
+  - `created_at: number`
+
+    The Unix timestamp, in seconds, when the event was created.
+
+  - `data: object { id, environment_type, environment_id }`
+
+    - `id: string`
+
+      The ID of the session.
+
+    - `environment_type: string`
+
+      The environment type: `none`, `openai_hosted`, or `self_hosted`.
+
+    - `environment_id: optional string`
+
+      The ID of the environment, when one exists.
+
+  - `object: "event"`
+
+    The object type. Always `event`.
+
+    - `"event"`
+
+  - `type: "agent.session.failed"`
+
+    The event type. Always `agent.session.failed`.
+
+    - `"agent.session.failed"`
+
+### Agent Session Idle Webhook Event
+
+- `AgentSessionIdleWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when an agent session becomes idle.
+
+  - `id: string`
+
+    The unique ID of the event.
+
+  - `created_at: number`
+
+    The Unix timestamp, in seconds, when the event was created.
+
+  - `data: object { id, environment_type, environment_id }`
+
+    - `id: string`
+
+      The ID of the session.
+
+    - `environment_type: string`
+
+      The environment type: `none`, `openai_hosted`, or `self_hosted`.
+
+    - `environment_id: optional string`
+
+      The ID of the environment, when one exists.
+
+  - `object: "event"`
+
+    The object type. Always `event`.
+
+    - `"event"`
+
+  - `type: "agent.session.idle"`
+
+    The event type. Always `agent.session.idle`.
+
+    - `"agent.session.idle"`
+
+### Agent Session In Progress Webhook Event
+
+- `AgentSessionInProgressWebhookEvent object { id, created_at, data, 2 more }`
+
+  Sent when an agent session enters the in-progress state.
+
+  - `id: string`
+
+    The unique ID of the event.
+
+  - `created_at: number`
+
+    The Unix timestamp, in seconds, when the event was created.
+
+  - `data: object { id, environment_type, environment_id }`
+
+    - `id: string`
+
+      The ID of the session.
+
+    - `environment_type: string`
+
+      The environment type: `none`, `openai_hosted`, or `self_hosted`.
+
+    - `environment_id: optional string`
+
+      The ID of the environment, when one exists.
+
+  - `object: "event"`
+
+    The object type. Always `event`.
+
+    - `"event"`
+
+  - `type: "agent.session.in_progress"`
+
+    The event type. Always `agent.session.in_progress`.
+
+    - `"agent.session.in_progress"`
 
 ### Batch Cancelled Webhook Event
 
@@ -1522,9 +1762,209 @@ curl https://api.openai.com/v1/webhook_endpoints/$WEBHOOK_ENDPOINT_ID \
 
 ### Unwrap Webhook Event
 
-- `UnwrapWebhookEvent = BatchCancelledWebhookEvent or BatchCompletedWebhookEvent or BatchExpiredWebhookEvent or 18 more`
+- `UnwrapWebhookEvent = AgentSessionActionRequiredWebhookEvent or AgentSessionCreatedWebhookEvent or AgentSessionFailedWebhookEvent or 23 more`
 
-  Sent when a batch API request has been cancelled.
+  Sent when an agent session requires an action. Retrieve the session for action details.
+
+  - `AgentSessionActionRequiredWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when an agent session requires an action. Retrieve the session for action details.
+
+    - `id: string`
+
+      The unique ID of the event.
+
+    - `created_at: number`
+
+      The Unix timestamp, in seconds, when the event was created.
+
+    - `data: object { id, required_action }`
+
+      - `id: string`
+
+        The ID of the session.
+
+      - `required_action: object { type }`
+
+        The action type. Retrieve the session for action details.
+
+        - `type: "computer_use_approval_request" or "function_call" or "environment_connection"`
+
+          - `"computer_use_approval_request"`
+
+          - `"function_call"`
+
+          - `"environment_connection"`
+
+    - `object: "event"`
+
+      The object type. Always `event`.
+
+      - `"event"`
+
+    - `type: "agent.session.action_required"`
+
+      The event type. Always `agent.session.action_required`.
+
+      - `"agent.session.action_required"`
+
+  - `AgentSessionCreatedWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when an agent session is created.
+
+    - `id: string`
+
+      The unique ID of the event.
+
+    - `created_at: number`
+
+      The Unix timestamp, in seconds, when the event was created.
+
+    - `data: object { id, environment_type, connect, environment_id }`
+
+      - `id: string`
+
+        The ID of the session.
+
+      - `environment_type: string`
+
+        The environment type: `none`, `openai_hosted`, or `self_hosted`.
+
+      - `connect: optional object { remote_url }`
+
+        - `remote_url: string`
+
+          The URL used to connect the self-hosted environment.
+
+      - `environment_id: optional string`
+
+        The ID of the environment, when one exists.
+
+    - `object: "event"`
+
+      The object type. Always `event`.
+
+      - `"event"`
+
+    - `type: "agent.session.created"`
+
+      The event type. Always `agent.session.created`.
+
+      - `"agent.session.created"`
+
+  - `AgentSessionFailedWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when an agent session fails.
+
+    - `id: string`
+
+      The unique ID of the event.
+
+    - `created_at: number`
+
+      The Unix timestamp, in seconds, when the event was created.
+
+    - `data: object { id, environment_type, environment_id }`
+
+      - `id: string`
+
+        The ID of the session.
+
+      - `environment_type: string`
+
+        The environment type: `none`, `openai_hosted`, or `self_hosted`.
+
+      - `environment_id: optional string`
+
+        The ID of the environment, when one exists.
+
+    - `object: "event"`
+
+      The object type. Always `event`.
+
+      - `"event"`
+
+    - `type: "agent.session.failed"`
+
+      The event type. Always `agent.session.failed`.
+
+      - `"agent.session.failed"`
+
+  - `AgentSessionIdleWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when an agent session becomes idle.
+
+    - `id: string`
+
+      The unique ID of the event.
+
+    - `created_at: number`
+
+      The Unix timestamp, in seconds, when the event was created.
+
+    - `data: object { id, environment_type, environment_id }`
+
+      - `id: string`
+
+        The ID of the session.
+
+      - `environment_type: string`
+
+        The environment type: `none`, `openai_hosted`, or `self_hosted`.
+
+      - `environment_id: optional string`
+
+        The ID of the environment, when one exists.
+
+    - `object: "event"`
+
+      The object type. Always `event`.
+
+      - `"event"`
+
+    - `type: "agent.session.idle"`
+
+      The event type. Always `agent.session.idle`.
+
+      - `"agent.session.idle"`
+
+  - `AgentSessionInProgressWebhookEvent object { id, created_at, data, 2 more }`
+
+    Sent when an agent session enters the in-progress state.
+
+    - `id: string`
+
+      The unique ID of the event.
+
+    - `created_at: number`
+
+      The Unix timestamp, in seconds, when the event was created.
+
+    - `data: object { id, environment_type, environment_id }`
+
+      - `id: string`
+
+        The ID of the session.
+
+      - `environment_type: string`
+
+        The environment type: `none`, `openai_hosted`, or `self_hosted`.
+
+      - `environment_id: optional string`
+
+        The ID of the environment, when one exists.
+
+    - `object: "event"`
+
+      The object type. Always `event`.
+
+      - `"event"`
+
+    - `type: "agent.session.in_progress"`
+
+      The event type. Always `agent.session.in_progress`.
+
+      - `"agent.session.in_progress"`
 
   - `BatchCancelledWebhookEvent object { id, created_at, data, 2 more }`
 

@@ -17,7 +17,8 @@ inputs (text and images), and produce **44.1 kHz high-fidelity stereo**
 audio.
 
 > [!NOTE]
-> **Note:** Looking for real-time, streaming music generation? See [Real-time music generation with Lyria RealTime](https://ai.google.dev/gemini-api/docs/realtime-music-generation).
+> **Note:** Looking for real-time, streaming music generation? See [Real-time music
+> generation with Lyria RealTime](https://ai.google.dev/gemini-api/docs/realtime-music-generation).
 
 ## Generate a music clip
 
@@ -1297,8 +1298,9 @@ song structure, custom lyrics, and vocal delivery styles, see the
 ## What's next
 
 - Check [pricing](https://ai.google.dev/gemini-api/docs/pricing) for Lyria 3.5 models.
-- Try [real-time, streaming music generation](https://ai.google.dev/gemini-api/docs/realtime-music-generation) with Lyria RealTime.
+- Try [real-time, streaming music
+  generation](https://ai.google.dev/gemini-api/docs/realtime-music-generation) with Lyria RealTime.
 - Generate multi-speaker conversations with the [TTS models](https://ai.google.dev/gemini-api/docs/speech-generation).
 - Discover how to generate [images](https://ai.google.dev/gemini-api/docs/image-generation) or [videos](https://ai.google.dev/gemini-api/docs/video).
 - Find out how Gemini can [understand audio files](https://ai.google.dev/gemini-api/docs/audio).
-- Have a real-time conversation with Gemini using the [Live API](https://ai.google.dev/gemini-api/docs/live).
+- Have a real-time conversation with Gemini using the [Live API](https://ai.google.dev/gemini-api/docs/live-api).

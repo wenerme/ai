@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steeri
 
 # Traffic steering
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Cloudflare Virtual Network routing table
 
@@ -247,8 +247,9 @@ Before upgrading, establish a Legacy Routing baseline and run a controlled Unifi
 If your account uses Legacy Routing, follow these steps to upgrade:
 
 1. Evaluate Unified Routing features and performance against your current needs. Review the [routing mode comparison](#compare-routing-modes), [feature availability](#check-feature-availability-before-upgrading), and [performance guidance](#evaluate-performance).
-2. Identify suitable times for the upgrade. During the upgrade, Cloudflare One Client users can experience a remote access outage of up to three minutes.
-3. Contact your account team to request the change and provide a range of acceptable times.
+2. If you use Cloudflare Network Firewall, review [Unified Routing behavior changes](https://developers.cloudflare.com/cloudflare-network-firewall/about/unified-routing-changes/) and update any affected rules.
+3. Identify suitable times for the upgrade. During the upgrade, Cloudflare One Client users can experience a remote access outage of up to three minutes.
+4. Contact your account team to request the change and provide a range of acceptable times.
 
 ## Route evaluation with Zero Trust connections
 
@@ -611,5 +612,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/og.png?v=eceef563a603fdd0","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/og.png?v=eceef563a603fdd0","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

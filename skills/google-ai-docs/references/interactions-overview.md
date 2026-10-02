@@ -326,9 +326,10 @@ For Paid Tier projects, you can configure the retention window in
 deletion from project storage after 7, 14, 28, or 55 days. A shorter retention
 may affect retrieval of past conversations.
 
-You can delete stored interactions at any time using the [`delete`](https://ai.google.dev/api/interactions-api#deleteInteraction) method programmatically, which
-requires the interaction ID. You can also view and manage stored interactions
-logs, including deletion from project storage, in
+You can delete stored interactions at any time using the
+[`delete`](https://ai.google.dev/api/interactions-api#deleteInteraction) method programmatically,
+which requires the interaction ID. You can also view and manage stored
+interactions logs, including deletion from project storage, in
 [AI Studio](https://aistudio.google.com/logs).
 
 After the retention period expires, your data will be
@@ -340,7 +341,7 @@ Interactions objects are processed according to the [terms](https://ai.google.de
 
 The API stores Interactions API requests executed with `store=true` for
 projects on the Paid Tier. You can view them directly from the
-[Logs page in Google AI Studio](https://ai.google.dev/gemini-api/docs/www.aistudio.google.com/logs). See the
+[Logs page in Google AI Studio](https://aistudio.google.com/logs). See the
 [Logs guide](https://ai.google.dev/gemini-api/docs/logs-datasets) for more.
 
 ## Best practices

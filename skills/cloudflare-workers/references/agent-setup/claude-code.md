@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+   Build an image upload and transformation service using R2 and Cloudflare Images.
    ```
 
 
@@ -166,23 +166,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
-```
-
-```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
 Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+```
+
+```txt
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ## Tips

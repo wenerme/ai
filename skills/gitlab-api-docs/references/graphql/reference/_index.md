@@ -5995,7 +5995,7 @@ Arguments:
 | <a id="mutation-bulkupdateaitoolrules-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-bulkupdateaitoolrules-fullpath"></a>`fullPath` | [`ID!`](#id) | Full path of the root namespace to update tool rules for. |
 | <a id="mutation-bulkupdateaitoolrules-projectpath"></a>`projectPath` | [`ID`](#id) | Full path of the project to update tool rules for. When provided, rules can only be stricter than the namespace rule. |
-| <a id="mutation-bulkupdateaitoolrules-toolrules"></a>`toolRules` | [`[BulkToolRuleInput!]!`](#bulktoolruleinput) | Tool rules to update (maximum 100 entries). |
+| <a id="mutation-bulkupdateaitoolrules-toolrules"></a>`toolRules` | [`[BulkToolRuleInput!]!`](#bulktoolruleinput) | Tool rules to update (maximum 100 entries). Each entry replaces the whole rule, so a partial entry clears the access types it omits. |
 
 Fields:
 
@@ -17056,6 +17056,7 @@ Arguments:
 | <a id="mutation-updateaitoolrule-localaccess"></a>`localAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for local or IDE surface. |
 | <a id="mutation-updateaitoolrule-projectpath"></a>`projectPath` | [`ID`](#id) | Full path of the project to update the tool rule for. When provided, creates a project-level rule that can only be stricter than the namespace rule. |
 | <a id="mutation-updateaitoolrule-toolid"></a>`toolId` | [`String!`](#string) | Tool name string identifying the tool to update. For example, "create_issue". |
+| <a id="mutation-updateaitoolrule-unsetaccesstypes"></a>`unsetAccessTypes`  | [`[AiToolAccessType!]`](#aitoolaccesstype) | Introduced in GitLab 19.5. Status: Experiment. Access types to clear so they fall back to their defaults. The rule is deleted when every access type is unset. |
 | <a id="mutation-updateaitoolrule-webaccess"></a>`webAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for web surface. |
 
 Fields:
@@ -19087,6 +19088,7 @@ Arguments:
 | <a id="mutation-workitemdecisionresolve-id"></a>`id` | [`WorkItemsDecisionID!`](#workitemsdecisionid) | Global ID of the decision. |
 | <a id="mutation-workitemdecisionresolve-resolutionrationale"></a>`resolutionRationale` | [`String`](#string) | Reasoning for the resolution. |
 | <a id="mutation-workitemdecisionresolve-resolvingnoteid"></a>`resolvingNoteId` | [`NoteID`](#noteid) | Global ID of the comment that resolved the decision. |
+| <a id="mutation-workitemdecisionresolve-selectedoptioncontent"></a>`selectedOptionContent` | [`String`](#string) | Content of a custom option, added as the only selected option of the decision while every existing option is deselected. Incompatible with selectedOptionIds. |
 | <a id="mutation-workitemdecisionresolve-selectedoptionids"></a>`selectedOptionIds` | [`[WorkItemsDecisionOptionID!]`](#workitemsdecisionoptionid) | Global IDs of the selected options. Maximum of 5 options. |
 
 Fields:
@@ -34065,13 +34067,27 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="aitoolrule-actiontype"></a>`actionType` | [`AiToolActionType!`](#aitoolactiontype) | Action type categorisation for the tool. |
-| <a id="aitoolrule-backgroundaccess"></a>`backgroundAccess`  | [`AiBackgroundToolPermission`](#aibackgroundtoolpermission) | Introduced in GitLab 19.3. Status: Experiment. Permission mode for the background-flow surface. Null means no rule is set and the value falls back to the default privileged group. |
+| <a id="aitoolrule-backgroundaccess"></a>`backgroundAccess`  | [`AiBackgroundToolPermission`](#aibackgroundtoolpermission) | Introduced in GitLab 19.3. Status: Experiment. Effective permission mode for the background-flow surface, after applying group and project rules and the default. |
 | <a id="aitoolrule-category"></a>`category` | [`String!`](#string) | Display category for the tool. For example, GitLab Read, Files, and Commands. |
+| <a id="aitoolrule-configuredaccess"></a>`configuredAccess`  | [`AiToolRuleAccess!`](#aitoolruleaccess) | Introduced in GitLab 19.5. Status: Experiment. Permission modes set at the requested scope: the project when a project path is given, otherwise the namespace. A null mode is not set at that scope. |
+| <a id="aitoolrule-defaultaccess"></a>`defaultAccess`  | [`AiToolRuleAccess!`](#aitoolruleaccess) | Introduced in GitLab 19.5. Status: Experiment. Permission modes that apply when no rule is set. |
 | <a id="aitoolrule-id"></a>`id` | [`ID!`](#id) | Tool name. Used as stable identifier. Always the tool name string and never a database ID. |
-| <a id="aitoolrule-localaccess"></a>`localAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for local or IDE surface. Null means no rule is set and the value falls back to the default privileged group. |
+| <a id="aitoolrule-localaccess"></a>`localAccess` | [`AiToolPermission`](#aitoolpermission) | Effective permission mode for local or IDE surface, after applying group and project rules and the default. |
 | <a id="aitoolrule-name"></a>`name` | [`String!`](#string) | Name of the tool as registered in the tool registry. |
 | <a id="aitoolrule-source"></a>`source` | [`AiToolSource!`](#aitoolsource) | Source of the tool. Either "gitlab" or "mcp". |
-| <a id="aitoolrule-webaccess"></a>`webAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for web surface. Null means no rule is set and the value falls back to the default privileged group. |
+| <a id="aitoolrule-webaccess"></a>`webAccess` | [`AiToolPermission`](#aitoolpermission) | Effective permission mode for web surface, after applying group and project rules and the default. |
+
+### `AiToolRuleAccess`
+
+Permission modes of an AI tool rule for each surface.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aitoolruleaccess-backgroundaccess"></a>`backgroundAccess` | [`AiBackgroundToolPermission`](#aibackgroundtoolpermission) | Permission mode for the background-flow surface. |
+| <a id="aitoolruleaccess-localaccess"></a>`localAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for the local or IDE surface. |
+| <a id="aitoolruleaccess-webaccess"></a>`webAccess` | [`AiToolPermission`](#aitoolpermission) | Permission mode for the web surface. |
 
 ### `AiUsageData`
 
@@ -64229,7 +64245,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="workitemagentplanquestion-answered"></a>`answered`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Whether someone whose role is above Guest has replied in the thread. |
+| <a id="workitemagentplanquestion-answered"></a>`answered`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the thread the question was asked in is resolved. |
 | <a id="workitemagentplanquestion-discussionid"></a>`discussionId`  | [`DiscussionID!`](#discussionid) | Introduced in GitLab 19.5. Status: Experiment. Global ID of the thread the question was asked in. |
 | <a id="workitemagentplanquestion-noteid"></a>`noteId`  | [`NoteID!`](#noteid) | Introduced in GitLab 19.5. Status: Experiment. Global ID of the comment that asked the question. |
 
@@ -64632,7 +64648,7 @@ Fields:
 | <a id="workitemwidgetagentplan-content"></a>`content` | [`String`](#string) | Content of the agent plan. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-contenthtml"></a>`contentHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `content`. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-generationstatus"></a>`generationStatus`  | [`WorkItemAgentPlanGenerationStatus`](#workitemagentplangenerationstatus) | Introduced in GitLab 19.4. Status: Experiment. Status of the asynchronous workplan generation flow for the work item. Reflects the most recent `workplan/v1` Duo Agent Platform workflow, if any; creation of that workflow is currently gated by the `duo_workplan_async_flow` feature flag. |
-| <a id="workitemwidgetagentplan-openquestionscount"></a>`openQuestionsCount`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of questions asked by workplan flows that nobody above Guest has replied to, across every run on the work item. Null when no workplan flow has run on the work item. Only available when the `duo_workplan_async_flow` feature flag is enabled. This field can only be resolved for one work item in any single request. |
+| <a id="workitemwidgetagentplan-openquestionscount"></a>`openQuestionsCount`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of questions asked by workplan flows whose thread is not resolved, across every run on the work item. Null when no workplan flow has run on the work item. Only available when the `duo_workplan_async_flow` feature flag is enabled. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-questions"></a>`questions`  | [`WorkItemAgentPlanQuestionConnection`](#workitemagentplanquestionconnection) | Introduced in GitLab 19.5. Status: Experiment. Questions asked by workplan flows, across every run on the work item, oldest first. Null when no workplan flow has run on the work item. Only available when the `duo_workplan_async_flow` feature flag is enabled. This field can only be resolved for one work item in any single request. |
 | <a id="workitemwidgetagentplan-readinessscore"></a>`readinessScore`  | [`Int`](#int) | Introduced in GitLab 19.3. Status: Experiment. Readiness score of the agent plan (0-100). Null when the score is not yet available. Only available when the `workplan_score` feature flag is enabled. |
 | <a id="workitemwidgetagentplan-readinessscorefeedback"></a>`readinessScoreFeedback`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Markdown feedback explaining the readiness score. Null when no feedback is available. Only available when the `workplan_score` feature flag is enabled. This field can only be resolved for one work item in any single request. |
@@ -66293,6 +66309,16 @@ GitLab release state of the model.
 | <a id="aiselfhostedmodelreleasestate-beta"></a>`BETA` | Beta status. |
 | <a id="aiselfhostedmodelreleasestate-experimental"></a>`EXPERIMENTAL` | Experimental status. |
 | <a id="aiselfhostedmodelreleasestate-ga"></a>`GA` | GA status. |
+
+### `AiToolAccessType`
+
+Access type of an AI tool rule.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="aitoolaccesstype-background_access"></a>`BACKGROUND_ACCESS` | Background-flow surface access. |
+| <a id="aitoolaccesstype-local_access"></a>`LOCAL_ACCESS` | Local or IDE surface access. |
+| <a id="aitoolaccesstype-web_access"></a>`WEB_ACCESS` | Web surface access. |
 
 ### `AiToolActionType`
 

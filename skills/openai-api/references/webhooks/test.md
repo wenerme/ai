@@ -10,7 +10,7 @@ Sends a sample event to a webhook endpoint for the authenticated project.
 
 ### Body Parameters
 
-- `event_type: "batch.completed" or "batch.failed" or "batch.expired" or 15 more`
+- `event_type: "batch.completed" or "batch.failed" or "batch.expired" or 20 more`
 
   The event type to send as a sample delivery.
 
@@ -47,6 +47,16 @@ Sends a sample event to a webhook endpoint for the authenticated project.
   - `"video.completed"`
 
   - `"video.failed"`
+
+  - `"agent.session.created"`
+
+  - `"agent.session.action_required"`
+
+  - `"agent.session.in_progress"`
+
+  - `"agent.session.idle"`
+
+  - `"agent.session.failed"`
 
   - `"safety.alert.created"`
 

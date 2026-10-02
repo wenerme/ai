@@ -13,5 +13,6 @@ interactively using the [GraphiQL explorer](../../getting_started.md#graphiql).
 - [Objects](objects.md)
 - [Enums](enums.md)
 - [Scalars](scalars.md)
+- [Interfaces](interfaces.md)
 - [Input types](input_objects.md)
 - [Directives](directives.md)

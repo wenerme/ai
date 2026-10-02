@@ -1453,7 +1453,8 @@ For computer use agents, you can configure different thinking levels to balance 
 
 ### Configuring safety policies
 
-Gemini 3.x models include built-in safety service categories that automatically determine if user confirmation is required.
+Gemini 3.x models include built-in safety service categories that help to
+determine if user confirmation is required.
 
 | Safety policy category | Description |
 |---|---|

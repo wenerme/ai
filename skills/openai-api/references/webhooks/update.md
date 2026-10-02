@@ -10,7 +10,7 @@ Updates a webhook endpoint for the authenticated project.
 
 ### Body Parameters
 
-- `event_types: optional array of "batch.completed" or "batch.failed" or "batch.expired" or 15 more`
+- `event_types: optional array of "batch.completed" or "batch.failed" or "batch.expired" or 20 more`
 
   The complete set of event types that should trigger deliveries.
 
@@ -47,6 +47,16 @@ Updates a webhook endpoint for the authenticated project.
   - `"video.completed"`
 
   - `"video.failed"`
+
+  - `"agent.session.created"`
+
+  - `"agent.session.action_required"`
+
+  - `"agent.session.in_progress"`
+
+  - `"agent.session.idle"`
+
+  - `"agent.session.failed"`
 
   - `"safety.alert.created"`
 
