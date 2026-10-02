@@ -16,6 +16,31 @@ Last updated Sep 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/tunnel.xml)
 
+## 2026-10-02
+
+
+**Protect Quick Tunnels with email authentication**
+
+You can now restrict who can access a [Quick Tunnel](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/). Use the new `--allowed-mail` flag in `cloudflared` to require visitors to authenticate with a one-time PIN sent to their email before they reach your local service.
+
+```sh
+cloudflared tunnel --url http://localhost:8080 --allowed-mail alice@example.com
+```
+
+![Protected Quick Tunnel demo](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1512,height=854,format=webp/_astro/protected-quick-tunnels.DlA306r_.gif)
+
+Previously, anyone with a `trycloudflare.com` URL could access the service behind it. Protected Quick Tunnels let you share a local development server, webhook receiver, or demo with specific people without creating a Cloudflare account or configuring a domain.
+
+You can allow:
+
+- A single email address: `--allowed-mail alice@example.com`
+- Multiple email addresses, by repeating the flag or using a comma-separated list: `--allowed-mail 'alice@example.com,bob@example.com'`
+- Every address on a domain: `--allowed-mail '*@example.com'`
+
+Visitors do not need a Cloudflare account. Access ends for everyone when you stop the `cloudflared` process.
+
+To get started, [update `cloudflared`](https://developers.cloudflare.com/tunnel/downloads/) to the latest version and refer to [Restrict access by email](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/#restrict-access-by-email).
+
 ## 2026-09-29
 
 

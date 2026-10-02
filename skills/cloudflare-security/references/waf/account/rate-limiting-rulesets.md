@@ -12,15 +12,11 @@ image: https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/og.p
 
 # Rate limiting rulesets
 
-Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Rate limiting rules](https://developers.cloudflare.com/waf/rate-limiting-rules/) allow you to define a rate limit for requests matching an [expression](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/), and the action to perform when that rate limit is reached. You can configure rate limiting rules for a single zone or at the account level.
 
 Account-level rate limiting rulesets allow you to define rate limiting rules once and deploy them to multiple Enterprise zones. Instead of configuring the same rules in each zone, you create a ruleset at the account level and control which zones it applies to.
-
-Note
-
-This feature requires an Enterprise plan.
 
 To apply a rate limiting ruleset at the account level:
 
@@ -47,5 +43,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/#page","headline":"Rate limiting rulesets","description":"Create rate limiting rulesets at the account level for multiple Enterprise zones.","url":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/og.png?v=90f8f9f013a20834","dateModified":"2026-04-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/#page","headline":"Rate limiting rulesets","description":"Create rate limiting rulesets at the account level for multiple Enterprise zones.","url":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/","inLanguage":"en","image":"https://developers.cloudflare.com/waf/account/rate-limiting-rulesets/og.png?v=90f8f9f013a20834","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

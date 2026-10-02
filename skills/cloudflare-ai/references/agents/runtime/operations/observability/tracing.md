@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/runtime/operations/observability
 
 # Tracing
 
-Last updated Aug 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Agent tracing helps you understand what an agent did at every turn, including its model calls, tool runs, and approval requests. Use traces to investigate unexpected behavior, find slow operations, and review token usage.
 
@@ -302,7 +302,7 @@ For custom spans, add payload attributes manually. Use `gen_ai.input.messages`, 
 
 ## Exporting traces
 
-Span attributes follow the [OpenTelemetry Generative AI semantic conventions ↗︎](https://github.com/open-telemetry/semantic-conventions-genai), so any tool that reads OpenTelemetry data can consume them. To send traces to an external destination, [configure an OpenTelemetry Protocol (OTLP) endpoint](https://developers.cloudflare.com/workers/observability/exporting-opentelemetry-data/) in Workers Observability.
+Span attributes follow the [OpenTelemetry Generative AI semantic conventions ↗︎](https://github.com/open-telemetry/semantic-conventions-genai), so any tool that reads OpenTelemetry data can consume them. To send traces to an external destination, [configure OpenTelemetry export](https://developers.cloudflare.com/workers/observability/opentelemetry-export/) in Workers Observability.
 
 ## Pricing
 
@@ -310,12 +310,7 @@ Agent traces use [Workers tracing](https://developers.cloudflare.com/workers/obs
 
 The Agents view shows your agent's operations. The full Worker trace may include additional spans from SDK internals and other Worker-level operations. To inspect the full trace, select **View in Observability**.
 
-Every span counts as one observability event, including spans not shown in the Agents view. Tracing is free while in beta. Beginning October 1, 2026, tracing will be included in existing Workers Observability pricing:
-
-| Tier | Included events | Retention |
-| --- | --- | --- |
-| Workers Free | 200,000 per day | 3 days |
-| Workers Paid | 20 million per month ($0.60 per additional million) | 7 days |
+Beginning December 1, 2026, agent traces contribute to account-level ingestion and storage usage under [Cloudflare Observability pricing](https://developers.cloudflare.com/observability/pricing/). Traces have seven-day retention.
 
 ## Limitations
 
@@ -346,5 +341,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#page","headline":"Tracing","description":"Trace model calls, tool runs, and approvals with Workers traces.","url":"https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/og.png?v=227a76068403c203","dateModified":"2026-08-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/#page","headline":"Tracing","description":"Trace model calls, tool runs, and approvals with Workers traces.","url":"https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/runtime/operations/observability/tracing/og.png?v=227a76068403c203","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

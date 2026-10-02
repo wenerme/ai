@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-gateway/features/auto-router/og.png?
 
 # Auto Router
 
-Last updated Sep 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/auto-router/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/auto-router/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 AI Gateway Auto Router automatically selects an AI model for each request. It helps reduce costs while maintaining the quality of responses by matching requests with the model best suited to the task.
 
@@ -51,6 +51,56 @@ The response headers show which model Auto Router selected:
 cf-aig-routed-model: openai/gpt-5.6-luna
 cf-aig-routing-reason: cost_optimal_within_pool
 cf-aig-routing-decision-id: 91e0b970-33f0-4921-b8dc-127412e7b103
+```
+
+To call Auto Router from a Worker, use the [AI binding](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/) and specify the AI Gateway ID:
+
+```js
+const response = await env.AI.run(
+	"cloudflare/auto",
+	{
+		messages: [
+			{
+				role: "system",
+				content:
+					"You are a helpful oracle powered by lava lamps. Answer clearly, with a flicker of dry humor.",
+			},
+			{
+				role: "user",
+				content: "hello",
+			},
+		],
+	},
+	{
+		gateway: {
+			id: "my-gateway",
+		},
+	},
+);
+```
+
+```ts
+const response = await env.AI.run(
+	"cloudflare/auto",
+	{
+		messages: [
+			{
+				role: "system",
+				content:
+					"You are a helpful oracle powered by lava lamps. Answer clearly, with a flicker of dry humor.",
+			},
+			{
+				role: "user",
+				content: "hello",
+			},
+		],
+	},
+	{
+		gateway: {
+			id: "my-gateway",
+		},
+	},
+);
 ```
 
 ## Session affinity
@@ -229,5 +279,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/auto-router/#page","headline":"Auto Router","description":"Automatically select a model for each request that balances response quality and cost.","url":"https://developers.cloudflare.com/ai-gateway/features/auto-router/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/auto-router/og.png?v=2485574d63144221","dateModified":"2026-09-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/auto-router/#page","headline":"Auto Router","description":"Automatically select a model for each request that balances response quality and cost.","url":"https://developers.cloudflare.com/ai-gateway/features/auto-router/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/auto-router/og.png?v=2485574d63144221","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

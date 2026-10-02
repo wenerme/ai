@@ -21,7 +21,7 @@ For more information on the notification platform, refer to [Notifications docum
 - [Configure Cloudflare notifications](https://developers.cloudflare.com/notifications/get-started/)
 - [Configure PagerDuty](https://developers.cloudflare.com/notifications/get-started/configure-pagerduty/)
 - [Configure webhooks](https://developers.cloudflare.com/notifications/get-started/configure-webhooks/)
-- [Test a notification](https://developers.cloudflare.com/notifications/get-started/#test-a-notification)
+- [Test a notification](https://developers.cloudflare.com/notifications/get-started/#manage-alerts)
 - [Notification History](https://developers.cloudflare.com/notifications/notification-history/)
 
 ## Notification configuration fields

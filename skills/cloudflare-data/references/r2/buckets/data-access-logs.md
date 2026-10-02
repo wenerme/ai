@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/r2/buckets/data-access-logs/og.png?v=70
 
 # Data Access Logs
 
-Last updated Sep 9, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/data-access-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/r2/buckets/data-access-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 R2 Data Access Logs provide per-request records for object operations in a bucket. The logs are generally available for R2 buckets without a [jurisdiction](https://developers.cloudflare.com/r2/reference/data-location/#jurisdictional-restrictions).
 
@@ -53,6 +53,8 @@ Bucket and configuration operations are not included. Failed requests with an HT
 2. Under **Data Access Logs**, select *Enabled*.
 
 R2 records new supported operations after you turn on Data Access Logs. Earlier operations are not added retroactively.
+
+Data Access Logs have seven-day retention. Beginning December 1, 2026, they use [Cloudflare Observability pricing](https://developers.cloudflare.com/observability/pricing/).
 
 ## View Data Access Logs
 
@@ -131,5 +133,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/data-access-logs/#page","headline":"Data Access Logs","description":"Record object operations with response status codes below 400 and inspect per-request events in Workers Observability.","url":"https://developers.cloudflare.com/r2/buckets/data-access-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/buckets/data-access-logs/og.png?v=70a32107872a3c8f","dateModified":"2026-09-09","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/r2/buckets/data-access-logs/#page","headline":"Data Access Logs","description":"Record object operations with response status codes below 400 and inspect per-request events in Workers Observability.","url":"https://developers.cloudflare.com/r2/buckets/data-access-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/r2/buckets/data-access-logs/og.png?v=70a32107872a3c8f","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -12,17 +12,13 @@ image: https://developers.cloudflare.com/kv/reference/data-location/og.png?v=596
 
 # Data location
 
-Last updated Jul 31, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/reference/data-location/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
-
-Note
-
-Jurisdictions for Workers KV are currently in private beta. To enroll, contact your Cloudflare account team or [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/).
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/reference/data-location/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Learn how the location of data stored in Workers KV is determined, including how you can restrict a namespace to a specific jurisdiction.
 
-## Automatic (default)
+## Standard (default)
 
-By default, data written to a Workers KV namespace is replicated globally across Cloudflare's network with no jurisdictional restriction, allowing your data to be read with low latency from anywhere in the world.
+By default, data written to a Workers KV namespace is stored in KV's central data stores with no jurisdictional restriction, and then cached globally across Cloudflare's network, allowing your data to be read with low latency from anywhere in the world. Refer to [How KV works](https://developers.cloudflare.com/kv/concepts/how-kv-works/) for more information.
 
 ## Restrict a namespace to a jurisdiction
 
@@ -36,15 +32,49 @@ Jurisdictions can only be set when a namespace is created and cannot be added or
 
 ### Supported jurisdictions
 
-| Parameter | Location |
+| Parameter | Data Storage Location |
 | --- | --- |
-| eu | The European Union |
+| eu | European Union |
 | fedramp | FedRAMP-compliant data centers |
-| us | The United States of America |
+| us | United States of America |
 
-### Get access
+### Use Wrangler
 
-Workers KV jurisdictions are in private beta. If you are interested in restricting your namespaces to a supported jurisdiction, contact your Cloudflare account team or [Cloudflare Support](https://developers.cloudflare.com/support/contacting-cloudflare-support/) to request access.
+To create a namespace restricted to a jurisdiction, pass the `--jurisdiction` flag to [`wrangler kv namespace create`](https://developers.cloudflare.com/kv/reference/kv-commands/#kv-namespace-create):
+
+```sh
+npx wrangler@latest kv namespace create <NAMESPACE_NAME> --jurisdiction=eu
+```
+
+### Use REST API
+
+To create a namespace restricted to a jurisdiction, include the `jurisdiction` field in the request body when you [create a namespace](https://developers.cloudflare.com/api/resources/kv/subresources/namespaces/methods/create/):
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Workers KV Storage Write</code>
+
+</details>
+
+*Create a namespacebash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"title": "<NAMESPACE_NAME>",
+		"jurisdiction": "eu"
+	}'
+```
 
 Was this helpful?
 
@@ -55,5 +85,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/reference/data-location/#page","headline":"Data location","description":"Learn how the location of data stored in Workers KV is determined, including how you can restrict a namespace to a specific jurisdiction.","url":"https://developers.cloudflare.com/kv/reference/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/reference/data-location/og.png?v=596d77ff0adae1cc","dateModified":"2026-07-31","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/reference/data-location/#page","headline":"Data location","description":"Learn how the location of data stored in Workers KV is determined, including how you can restrict a namespace to a specific jurisdiction.","url":"https://developers.cloudflare.com/kv/reference/data-location/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/reference/data-location/og.png?v=596d77ff0adae1cc","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

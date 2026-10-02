@@ -5,7 +5,7 @@ description: "Browse CrossModel model IDs, capabilities, context windows, and pr
 
 # [CrossModel logo]CrossModel
 
-Access 67 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
+Access 68 CrossModel models through Mastra's model router. Authentication is handled automatically using the `CROSSMODEL_API_KEY` environment variable.
 
 Learn more in the [CrossModel documentation](https://www.crossmodel.ai/docs).
 
@@ -521,6 +521,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "crossmodel/openai/gpt-6-sol",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1050000,
+    "maxOutput": 128000,
+    "inputCost": 2,
+    "outputCost": 10
+  },
+  {
+    "model": "crossmodel/openai/gpt-6.1-sol",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

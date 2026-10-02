@@ -1,12 +1,118 @@
 ---
-title: "grafana-prometheusalerting-app/configure-notifications/template-notifications/language.md unavailable"
+title: "Template language | Grafana Plugins documentation"
+description: "Learn the Go text/template syntax used in Alertmanager notification templates, including define, the dot, loops, conditionals, variables, functions, and whitespace trimming."
 ---
 
-# grafana-prometheusalerting-app/configure-notifications/template-notifications/language.md unavailable
+> For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-Grafana listed this plugin documentation page, but it could not be fetched while building this skill.
+# Template language
 
-- Source: https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/language.md
-- Fetch result: 429
+Alertmanager templates use Go’s `text/template` syntax. This page covers the parts you actually need.
 
-Re-run `just update-grafana-plugin-docs` later to refresh this page.
+## Define and use
+
+Every template is a named definition:
+
+Go [Copy code to clipboard] Copy
+
+```go
+{{ define "slack.title" }}
+[{{ .Status | toUpper }}] {{ .GroupLabels.alertname }}
+{{ end }}
+```
+
+Reference it from another template with `template`:
+
+Go [Copy code to clipboard] Copy
+
+```go
+{{ template "slack.title" . }}
+```
+
+The trailing `.` passes the current context through. Leaving it off gives the template no data to work with, which is a common cause of mysteriously empty notifications.
+
+## The dot
+
+`.` is the current context. At the top of a notification template it’s the notification data: the group of alerts and their shared labels. Inside a `range` it becomes the current item.
+
+Go [Copy code to clipboard] Copy
+
+```go
+{{ .GroupLabels.alertname }}       one field of the notification
+{{ range .Alerts }}{{ .Labels.instance }}{{ end }}   .  is now one alert
+```
+
+Losing track of what `.` refers to is the single most common template bug. Inside a loop, use `$` to reach back to the original top-level context:
+
+Go [Copy code to clipboard] Copy
+
+```go
+{{ range .Alerts }}{{ $.GroupLabels.cluster }} — {{ .Labels.instance }}
+{{ end }}
+```
+
+## Loops and conditionals
+
+Go [Copy code to clipboard] Copy
+
+```go
+{{ range .Alerts }}
+- {{ .Annotations.summary }}
+{{ end }}
+```
+
+Go [Copy code to clipboard] Copy
+
+```go
+{{ if eq .Status "firing" }}Firing{{ else }}Resolved{{ end }}
+```
+
+Go [Copy code to clipboard] Copy
+
+```go
+{{ if .Alerts.Firing }}{{ len .Alerts.Firing }} firing{{ end }}
+```
+
+Comparison functions are written as functions, not operators: `eq`, `ne`, `lt`, `le`, `gt`, `ge`.
+
+## Variables
+
+Go [Copy code to clipboard] Copy
+
+```go
+{{ $count := len .Alerts }}
+{{ $count }} alert(s) firing
+```
+
+## Useful functions
+
+Expand table
+
+| Function                | Does                                  |
+|-------------------------|---------------------------------------|
+| `toUpper`, `toLower`    | Change case                           |
+| `title`                 | Title-case a string                   |
+| `join`                  | Join a list with a separator          |
+| `len`                   | Length of a list                      |
+| `printf`                | Format a value, as in `printf "%.2f"` |
+| `match`, `reReplaceAll` | Regex match and replace               |
+
+## Whitespace
+
+Go templates keep the whitespace around actions, which is why templates often render with unexpected blank lines. Add a hyphen inside the braces to trim it:
+
+Go [Copy code to clipboard] Copy
+
+```go
+{{- range .Alerts }}
+- {{ .Annotations.summary }}
+{{- end }}
+```
+
+`{{-` trims whitespace before the action, `-}}` trims after.
+
+## Writing templates without breaking things
+
+There’s no preview in the plugin, and a broken template shows up when a notification is sent. Build them up in small steps: start with plain static text, confirm it arrives, then add one field at a time.
+
+Refer to [Template examples](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/examples/) for working starting points, and [Template reference](/docs/plugins/grafana-prometheusalerting-app/latest/configure-notifications/template-notifications/reference/) for the available fields.

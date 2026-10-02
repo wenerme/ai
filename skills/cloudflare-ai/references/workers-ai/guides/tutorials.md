@@ -18,9 +18,9 @@ View tutorials to help you get started with Workers AI.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 8 days ago | Intermediate |
+| [Build an AI code interpreter](https://developers.cloudflare.com/sandbox/get-started/build-an-ai-code-interpreter/) | 10 days ago | Intermediate |
 | [Code interpreter with Workers AI](https://developers.cloudflare.com/sandbox/sdk/tutorials/workers-ai-code-interpreter/) | 8 months ago | Intermediate |
-| [Whisper-large-v3-turbo with Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/) | last year | Beginner |
+| [Whisper-large-v3-turbo with Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-workers-ai-whisper-with-chunking/) | 2 years ago | Beginner |
 | [Llama 3.2 11B Vision Instruct model on Cloudflare Workers AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/llama-vision-tutorial/) | 2 years ago | Beginner |
 | [Store and Catalog AI Generated Images with R2 (Part 3)](https://developers.cloudflare.com/workers-ai/guides/tutorials/image-generation-playground/image-generator-store-and-catalog/) | 2 years ago | Beginner |
 | [Build a Retrieval Augmented Generation (RAG) AI](https://developers.cloudflare.com/workers-ai/guides/tutorials/build-a-retrieval-augmented-generation-ai/) | 2 years ago | Beginner |

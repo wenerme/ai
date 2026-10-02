@@ -81,6 +81,8 @@ Global flags
 
 </details>
 
+To restrict where a namespace durably stores data, specify `--jurisdiction` when creating it. Refer to [Data location](https://developers.cloudflare.com/kv/reference/data-location/) for supported jurisdictions.
+
 ### `kv namespace list`
 
 Output a list of all KV namespaces associated with your account id

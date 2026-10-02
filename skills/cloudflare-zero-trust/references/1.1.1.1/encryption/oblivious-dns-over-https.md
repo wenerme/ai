@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-h
 
 # Oblivious DNS over HTTPS
 
-Last updated May 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 With standard [DNS over HTTPS (DoH)](https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/), your DNS queries are encrypted, but the resolver still sees both your IP address and the domain you are looking up. Oblivious DNS over HTTPS (ODoH) adds a privacy layer so that no single entity can see both pieces of information at the same time.
 
@@ -48,7 +48,7 @@ To make ODoH queries you can use open source clients such as [dnscrypt-proxy ↗
 ## Related resources
 
 - [HPKE: Standardizing public-key encryption ↗︎](https://blog.cloudflare.com/hybrid-public-key-encryption/) blog post
-- [Privacy Gateway](https://developers.cloudflare.com/privacy-gateway/)
+- [Cloudflare OHTTP Relay (formerly Privacy Gateway)](https://developers.cloudflare.com/ohttp-relay/)
 
 Was this helpful?
 
@@ -59,5 +59,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/#page","headline":"Oblivious DNS over HTTPS","description":"Learn how Cloudflare 1.1.1.1 supports Oblivious DNS over HTTPS (ODoH) to enhance privacy by separating HTTP request contents from requester IP addresses.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/","inLanguage":"en","image":"https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/og.png?v=98b3d7459adf5eb0","dateModified":"2026-05-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy","Proxying"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/#page","headline":"Oblivious DNS over HTTPS","description":"Learn how Cloudflare 1.1.1.1 supports Oblivious DNS over HTTPS (ODoH) to enhance privacy by separating HTTP request contents from requester IP addresses.","url":"https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/","inLanguage":"en","image":"https://developers.cloudflare.com/1.1.1.1/encryption/oblivious-dns-over-https/og.png?v=98b3d7459adf5eb0","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Privacy","Proxying"]}
 ```

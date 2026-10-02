@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/privacy-pass/og.png?v=f0d3547dd70434d4
 
 # Privacy Pass
 
-Last updated Jul 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-pass/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/privacy-pass/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Privacy Pass, an [IETF standard ↗︎](https://datatracker.ietf.org/doc/html/rfc9576) that Cloudflare helped pioneer in 2017, offers a way for users to prove something about themselves–that they have passed a CAPTCHA, are of age, are part of a subscription class–to the site they are accessing, without revealing an identifier. The main mechanic is Privacy Pass tokens, which are the cryptographic tool that lets a service provider verify information about a user without learning who that user is or being able to track them across requests.
 
@@ -32,7 +32,7 @@ Privacy Pass, an [IETF standard ↗︎](https://datatracker.ietf.org/doc/html/rf
 
 Verifying users on the Internet usually forces a trade-off between user experience and privacy, coming at the cost of either time spent solving CAPTCHAs or privacy lost to a trackable identifier. Privacy Pass eases that trade-off: a user proves a claim once, and receives tokens that can be redeemed later without revealing their identity or linking their activity.
 
-So far, the main use cases have been providing a privacy-preserving CAPTCHA alternative, such as through [Turnstile](https://developers.cloudflare.com/turnstile/) and verification for Cloudflare's [Privacy Proxy](https://developers.cloudflare.com/privacy-proxy/) and [Privacy Gateway](https://developers.cloudflare.com/privacy-gateway/) products. However, by adjusting the deployment, Privacy Pass tokens can attest to any other information a service provider wants to prove.
+So far, the main use cases have been providing a privacy-preserving CAPTCHA alternative, such as through [Turnstile](https://developers.cloudflare.com/turnstile/) and verification for Cloudflare's [Privacy Proxy](https://developers.cloudflare.com/privacy-proxy/) and [Cloudflare OHTTP Relay (formerly Privacy Gateway)](https://developers.cloudflare.com/ohttp-relay/) products. However, by adjusting the deployment, Privacy Pass tokens can attest to any other information a service provider wants to prove.
 
 ---
 
@@ -40,7 +40,7 @@ So far, the main use cases have been providing a privacy-preserving CAPTCHA alte
 
 Every Privacy Pass use case comes down to the same idea: let clients prove something to an origin server without revealing any other information. Some examples include:
 
-- **Authentication for other privacy products** – Privacy Pass can be used as a verification layer for other privacy products, such as Privacy Proxy and Privacy Gateway, to help them complete their functions while preserving the privacy of their users.
+- **Authentication for other privacy products** – Privacy Pass can be used as a verification layer for other privacy products, such as Privacy Proxy and Cloudflare OHTTP Relay, to help them complete their functions while preserving the privacy of their users.
 - **Privacy-preserving bot management** – Apple uses their token deployment, Private Access Tokens, to [automatically reduce CAPTCHAs ↗︎](https://blog.cloudflare.com/eliminating-captchas-on-iphones-and-macs-using-new-standard/) when using iOS 16+ devices on participating websites. Privacy Pass tokens are similarly [built into Turnstile ↗︎](https://blog.cloudflare.com/privacy-pass-standard/) as a signal in its application layer challenge decisions.
 - **Attribute verification** – Privacy Pass can help attest to whether a user has a valid subscription to the service or meets age requirement without that service learning their identity or linking it to their activity.
 - **Rate limiting**: While production use cases are still in development, Privacy Pass tokens can be used to meter usage without identifying users. Refer to the [Batched Token issuance protocol ↗︎](https://datatracker.ietf.org/doc/draft-ietf-privacypass-batched-tokens/), [ARC issuance protocol ↗︎](https://datatracker.ietf.org/doc/draft-ietf-privacypass-arc-protocol/), and [Privacy Pass Reverse Flow ↗︎](https://datatracker.ietf.org/doc/draft-meunier-privacypass-reverse-flow/) IETF drafts.
@@ -61,7 +61,7 @@ Every Privacy Pass use case comes down to the same idea: let clients prove somet
 
 A MASQUE-based forward proxy that uses Privacy Pass tokens to authenticate users without revealing their identity.
 
-**[Privacy Gateway](https://developers.cloudflare.com/privacy-gateway/)**
+**[Cloudflare OHTTP Relay](https://developers.cloudflare.com/ohttp-relay/)**
 
 Implements the Oblivious HTTP (OHTTP) standard for request-level privacy, hiding client IP addresses from application backends with Privacy Pass authentication.
 
@@ -78,5 +78,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/privacy-pass/#page","headline":"Privacy Pass","description":"Overview of entire document – what's in the docs, why Privacy Pass matters, high-level use case descriptions, and why customers can trust Cloudflare to run Privacy Pass infrastructure.","url":"https://developers.cloudflare.com/privacy-pass/","inLanguage":"en","image":"https://developers.cloudflare.com/privacy-pass/og.png?v=f0d3547dd70434d4","dateModified":"2026-07-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/privacy-pass/#page","headline":"Privacy Pass","description":"Overview of entire document – what's in the docs, why Privacy Pass matters, high-level use case descriptions, and why customers can trust Cloudflare to run Privacy Pass infrastructure.","url":"https://developers.cloudflare.com/privacy-pass/","inLanguage":"en","image":"https://developers.cloudflare.com/privacy-pass/og.png?v=f0d3547dd70434d4","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

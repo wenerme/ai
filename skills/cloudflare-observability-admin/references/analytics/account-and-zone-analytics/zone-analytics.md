@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/analytics/account-and-zone-analytics/zo
 
 # Zone Analytics
 
-Last updated Sep 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The Cloudflare zone analytics is a major component of the overall Cloudflare Analytics product line.  Specifically, this app gives you access to a wide range of metrics, collected at the website or domain level.
 
@@ -24,11 +24,11 @@ Read [Cloudflare Analytics](https://developers.cloudflare.com/analytics/faq/abou
 
 ## View your website analytics
 
-To view metrics for your website, in the Cloudflare dashboard, go to the **Analytics & Logs** page.
+To view metrics for your website, in the Cloudflare dashboard, select your domain and go to **Analytics**.
 
 [Go to **HTTP Traffic** ↗](https://dash.cloudflare.com/?to=/:account/:zone/analytics/traffic)
 
-Once it loads, you can find tabs for **Traffic**, **Security**, **Performance**, **Workers**, and **Logs** (Enterprise domains only). To understand the various metrics available, refer to *Review your website metrics* below.
+The Analytics page has tabs for **Traffic**, **Performance**, **Security**, **Cache**, **Origin**, **DNS**, and **Visitors**, with one time range and one set of filters shared across all tabs. The detailed HTTP Traffic, Security, Performance, and Workers views described in this page remain available from those tabs. To understand the various metrics available, refer to [Review your website metrics](#review-your-website-metrics).
 
 ---
 
@@ -37,7 +37,7 @@ Once it loads, you can find tabs for **Traffic**, **Security**, **Performance**,
 This section outlines the metrics available under each Analytics app tab. Before proceeding, note that each tab may contain:
 
 - One or more panels to further categorize the underlying metrics.
-- A dropdown (on the panel's top right) to filter metrics for a specific time period. The time period you can select may vary based on the Cloudflare plan that your domain is associated with.
+- A dropdown (on the panel's top right) to filter metrics for a specific time period. Every plan can view at least the last 30 days. Longer time periods depend on the Cloudflare plan that your domain is associated with.
 
 Note
 
@@ -132,5 +132,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/#page","headline":"Zone Analytics","description":"Analyze request and bandwidth data per zone.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/og.png?v=dcd0a5a0e02df53e","dateModified":"2026-09-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/#page","headline":"Zone Analytics","description":"Analyze request and bandwidth data per zone.","url":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/","inLanguage":"en","image":"https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/og.png?v=dcd0a5a0e02df53e","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
