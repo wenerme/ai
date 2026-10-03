@@ -43,7 +43,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+   Configure Zero Trust access policies to protect my internal staging environment.
    ```
 
 
@@ -150,23 +150,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
 Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Configure Zero Trust access policies to protect my internal staging environment.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
-```
-
-```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Tips

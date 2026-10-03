@@ -1025,83 +1025,8 @@ Assuming **“this week” = Jun 16–22, 2026**:
             }
           ],
           "logprobs": [],
-          "text": "Assuming **“this week” = Jun 16–22, 2026**:\n\n- **Cloudflare service incident:** Cloudflare reported increased error rates/latency from 13:35 UTC today, affecting Analytics, CDN/Cache and Durable Objects; it later pointed to a fiber cut in Eastern North America and said traffic engineering had mitigated most congestion/packet loss. ([cloudflarestatus.com](https://www.cloudflarestatus.com/incidents/v3yl7jqmqj51))\n- **New anti-bot/privacy protocol:** Cloudflare announced work with Mozilla Firefox, Google Chrome, Microsoft Edge and Shopify on **Private Access Control Tokens (PACT)**, meant to verify legitimate humans/agents without CAPTCHAs or invasive tracking. ([cloudflare.com](https://www.cloudflare.com/press/press-releases/2026/cloudflare-collaborates-with-leading-browsers-to-develop-a-privacy-first-protocol-for-the-global-internet/))\n- **AI + SASE partner push:** Cloudflare launched a **Cloudflare One Design Partner** program and **Cloudflare One Stack**, giving select partners AI-powered workflows to help customers deploy and manage Zero Trust/SASE migrations. ([cloudflare.com](https://www.cloudflare.com/press/press-releases/2026/cloudflare-launches-design-partner-designation-to-accelerate-secure-ai-and-seamless-sase-adoption/))"
-        }
-      ],
-      "phase": "final_answer",
-      "role": "assistant"
-    }
-  ],
-  "status": "completed",
-  "usage": {
-    "input_tokens": 83877,
-    "output_tokens": 2919,
-    "total_tokens": 86796,
-    "input_tokens_details": {
-      "cached_tokens": 0
-    },
-    "output_tokens_details": {
-      "reasoning_tokens": 2689
-    }
-  },
-  "background": false,
-  "billing": {
-    "payer": "developer"
-  },
-  "completed_at": 1782159941,
-  "error": null,
-  "frequency_penalty": 0,
-  "incomplete_details": null,
-  "instructions": null,
-  "max_output_tokens": 4096,
-  "max_tool_calls": null,
-  "moderation": null,
-  "parallel_tool_calls": true,
-  "presence_penalty": 0,
-  "previous_response_id": null,
-  "prompt_cache_key": null,
-  "prompt_cache_retention": "24h",
-  "reasoning": {
-    "context": "current_turn",
-    "effort": "high",
-    "summary": null
-  },
-  "safety_identifier": null,
-  "service_tier": "default",
-  "store": false,
-  "temperature": 1,
-  "text": {
-    "format": {
-      "type": "text"
-    },
-    "verbosity": "medium"
-  },
-  "tool_choice": "auto",
-  "tools": [
-    {
-      "type": "web_search_preview",
-      "search_content_types": [
-        "text"
-      ],
-      "search_context_size": "medium",
-      "user_location": {
-        "type": "approximate",
-        "city": null,
-        "country": "US",
-        "region": null,
-        "timezone": null
-      }
-    }
-  ],
-  "top_logprobs": 0,
-  "top_p": 0.98,
-  "truncation": "disabled",
-  "user": null,
-  "metadata": {},
-  "gatewayMetadata": {
-    "keySource": "Unified"
-  }
-}
+          "text": "Assuming **“this week” = Jun 16–22, 2026**:\n\n- **Cloudflare service incident:** Cloudflare reported increased error rates/latency from 13:35 UTC today, affecting Analytics, CDN/Cache and Durable Objects; it later pointed to a fiber cut in Eastern North Americ
+... response truncated ...
 ```
 
 </details>

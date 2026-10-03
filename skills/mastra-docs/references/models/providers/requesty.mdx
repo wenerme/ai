@@ -5,7 +5,7 @@ description: "Browse Requesty model IDs, capabilities, context windows, and pric
 
 # [Requesty logo]Requesty
 
-Access 165 Requesty models through Mastra's model router. Authentication is handled automatically using the `REQUESTY_API_KEY` environment variable.
+Access 166 Requesty models through Mastra's model router. Authentication is handled automatically using the `REQUESTY_API_KEY` environment variable.
 
 Learn more in the [Requesty documentation](https://requesty.ai/solution/llm-routing/models).
 
@@ -1253,6 +1253,18 @@ for await (const chunk of stream) {
   },
   {
     "model": "requesty/grok-4.6",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 500000,
+    "maxOutput": 500000,
+    "inputCost": 2,
+    "outputCost": 6
+  },
+  {
+    "model": "requesty/grok-4.7",
     "imageInput": true,
     "audioInput": false,
     "videoInput": false,

@@ -38,7 +38,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
       A stable, machine-readable failure category.
 
@@ -53,6 +53,18 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
       - `"usage_limit_exceeded"`
 
         The organization has reached a usage, plan, or billing limit.
+
+      - `"project_spend_limit_exceeded"`
+
+        The project has reached its enforced spend limit.
+
+      - `"organization_spend_limit_exceeded"`
+
+        The organization has reached its enforced spend limit.
+
+      - `"organization_usage_limit_exceeded"`
+
+        The organization has reached its OpenAI-assigned usage limit.
 
       - `"credit_balance_exhausted"`
 

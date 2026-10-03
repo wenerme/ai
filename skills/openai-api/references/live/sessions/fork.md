@@ -184,7 +184,7 @@ Fork a stored Live session onto a new WebRTC connection.
 
             - `"mcp"`
 
-      - `tools: optional array of FunctionTool or object { type }`
+      - `tools: optional array of FunctionTool or object { type }  or object { type }  or 3 more`
 
         Tools available to the Responses backend while it handles tasks delegated by the Live model.
 
@@ -223,6 +223,34 @@ Fork a stored Live session onto a new WebRTC connection.
             The tool type. Always `web_search`.
 
             - `"web_search"`
+
+        - `FileSearch object { type }`
+
+          - `type: "file_search"`
+
+            - `"file_search"`
+
+        - `CodeInterpreter object { type }`
+
+          - `type: "code_interpreter"`
+
+            - `"code_interpreter"`
+
+        - `Shell object { environment, type }`
+
+          A Responses shell tool with a container_auto or container_reference environment. Local execution and domain secrets are not supported.
+
+          - `environment: map[unknown]`
+
+          - `type: "shell"`
+
+            - `"shell"`
+
+        - `ImageGeneration object { type }`
+
+          - `type: "image_generation"`
+
+            - `"image_generation"`
 
   - `store: optional boolean`
 

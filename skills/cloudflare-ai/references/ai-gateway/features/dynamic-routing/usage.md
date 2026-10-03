@@ -1,5 +1,5 @@
 ---
-description: Send requests through an AI Gateway dynamic route using the OpenAI SDK, a direct HTTP request, or the Workers AI binding.
+description: Send requests through an AI Gateway dynamic route using the OpenAI SDK, a direct HTTP request, or the AI binding in a Worker.
 title: Using a dynamic route
 image: https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/og.png?v=de61370a8a90a71e
 ---
@@ -12,15 +12,41 @@ image: https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usa
 
 # Using a dynamic route
 
-Last updated Aug 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Caution
 
 Ensure your gateway has [authentication](https://developers.cloudflare.com/ai-gateway/configuration/authentication/) turned on and you have your upstream providers keys stored with [BYOK](https://developers.cloudflare.com/ai-gateway/configuration/bring-your-own-keys/).
 
+Use the route name in place of the model, in the form `dynamic/<your-dynamic-route-name>`. Dynamic routes accept the OpenAI chat completions request shape only — other formats, such as Anthropic Messages, return a `400` error.
+
+Routes are scoped to the gateway you created them on. On the REST API and the AI binding, name that gateway explicitly, otherwise the request resolves against your default gateway and returns a `404` error.
+
 ## Examples
 
+### REST API
+
+Send the route name as the `model` to [`/ai/v1/chat/completions`](https://developers.cloudflare.com/ai-gateway/usage/rest-api/#aiv1chatcompletions-openai-compatible), and set `cf-aig-gateway-id` to the gateway that owns the route.
+
+```bash
+curl -X POST "https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/v1/chat/completions" \
+  --header 'Authorization: Bearer {CLOUDFLARE_API_TOKEN}' \
+  --header 'cf-aig-gateway-id: {gateway_id}' \
+  --header 'Content-Type: application/json' \
+  --data '{
+    "model": "dynamic/<your-dynamic-route-name>",
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is Cloudflare?"
+      }
+    ]
+  }'
+```
+
 ### OpenAI SDK
+
+Point the SDK at the OpenAI-compatible endpoint on your gateway.
 
 ```js
 import OpenAI from "openai";
@@ -68,6 +94,8 @@ curl -X POST https://gateway.ai.cloudflare.com/v1/{account_id}/{gateway_id}/comp
 
 ### Workers
 
+Call a dynamic route from a Worker with the [AI binding](https://developers.cloudflare.com/ai-gateway/usage/worker-binding-methods/). Pass the route name as the model and the gateway that owns the route in the `gateway` options.
+
 *index.tsts*
 
 ```ts
@@ -77,21 +105,18 @@ export interface Env {
 
 export default {
 	async fetch(request: Request, env: Env) {
-		const response = await env.AI.gateway("default").run({
-			provider: "compat",
-			endpoint: "chat/completions",
-			headers: {},
-			query: {
-				model: "dynamic/<your-dynamic-route-name>",
-				messages: [
-					{
-						role: "user",
-						content: "What is Cloudflare?",
-					},
-				],
+		const response = await env.AI.run(
+			"dynamic/<your-dynamic-route-name>",
+			{
+				messages: [{ role: "user", content: "What is Cloudflare?" }],
 			},
-		});
-		return Response(response);
+			{
+				gateway: {
+					id: "{gateway_id}",
+				},
+			},
+		);
+		return Response.json(response);
 	},
 };
 ```
@@ -112,5 +137,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/#page","headline":"Using a dynamic route","description":"Send requests through an AI Gateway dynamic route using the OpenAI SDK, a direct HTTP request, or the Workers AI binding.","url":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/og.png?v=de61370a8a90a71e","dateModified":"2026-08-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/#page","headline":"Using a dynamic route","description":"Send requests through an AI Gateway dynamic route using the OpenAI SDK, a direct HTTP request, or the AI binding in a Worker.","url":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/features/dynamic-routing/usage/og.png?v=de61370a8a90a71e","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

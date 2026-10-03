@@ -7616,7 +7616,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
         A customer-safe error. Non-null only for a failed turn.
 
-        - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+        - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
           A stable, machine-readable failure category.
 
@@ -7631,6 +7631,18 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
           - `"usage_limit_exceeded"`
 
             The organization has reached a usage, plan, or billing limit.
+
+          - `"project_spend_limit_exceeded"`
+
+            The project has reached its enforced spend limit.
+
+          - `"organization_spend_limit_exceeded"`
+
+            The organization has reached its enforced spend limit.
+
+          - `"organization_usage_limit_exceeded"`
+
+            The organization has reached its OpenAI-assigned usage limit.
 
           - `"credit_balance_exhausted"`
 
@@ -14368,7 +14380,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       A customer-safe error. Non-null only for a failed turn.
 
-      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
         A stable, machine-readable failure category.
 
@@ -14383,6 +14395,18 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         - `"usage_limit_exceeded"`
 
           The organization has reached a usage, plan, or billing limit.
+
+        - `"project_spend_limit_exceeded"`
+
+          The project has reached its enforced spend limit.
+
+        - `"organization_spend_limit_exceeded"`
+
+          The organization has reached its enforced spend limit.
+
+        - `"organization_usage_limit_exceeded"`
+
+          The organization has reached its OpenAI-assigned usage limit.
 
         - `"credit_balance_exhausted"`
 
@@ -14582,7 +14606,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       A customer-safe error. Non-null only for a failed turn.
 
-      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
         A stable, machine-readable failure category.
 
@@ -14597,6 +14621,18 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         - `"usage_limit_exceeded"`
 
           The organization has reached a usage, plan, or billing limit.
+
+        - `"project_spend_limit_exceeded"`
+
+          The project has reached its enforced spend limit.
+
+        - `"organization_spend_limit_exceeded"`
+
+          The organization has reached its enforced spend limit.
+
+        - `"organization_usage_limit_exceeded"`
+
+          The organization has reached its OpenAI-assigned usage limit.
 
         - `"credit_balance_exhausted"`
 
@@ -14896,7 +14932,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       A customer-safe error. Non-null only for a failed turn.
 
-      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
         A stable, machine-readable failure category.
 
@@ -14911,6 +14947,18 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         - `"usage_limit_exceeded"`
 
           The organization has reached a usage, plan, or billing limit.
+
+        - `"project_spend_limit_exceeded"`
+
+          The project has reached its enforced spend limit.
+
+        - `"organization_spend_limit_exceeded"`
+
+          The organization has reached its enforced spend limit.
+
+        - `"organization_usage_limit_exceeded"`
+
+          The organization has reached its OpenAI-assigned usage limit.
 
         - `"credit_balance_exhausted"`
 
@@ -15106,7 +15154,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       A customer-safe error. Non-null only for a failed turn.
 
-      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
         A stable, machine-readable failure category.
 
@@ -15121,6 +15169,18 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         - `"usage_limit_exceeded"`
 
           The organization has reached a usage, plan, or billing limit.
+
+        - `"project_spend_limit_exceeded"`
+
+          The project has reached its enforced spend limit.
+
+        - `"organization_spend_limit_exceeded"`
+
+          The organization has reached its enforced spend limit.
+
+        - `"organization_usage_limit_exceeded"`
+
+          The organization has reached its OpenAI-assigned usage limit.
 
         - `"credit_balance_exhausted"`
 
@@ -15320,7 +15380,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
       A customer-safe error. Non-null only for a failed turn.
 
-      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+      - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
         A stable, machine-readable failure category.
 
@@ -15335,6 +15395,18 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
         - `"usage_limit_exceeded"`
 
           The organization has reached a usage, plan, or billing limit.
+
+        - `"project_spend_limit_exceeded"`
+
+          The project has reached its enforced spend limit.
+
+        - `"organization_spend_limit_exceeded"`
+
+          The organization has reached its enforced spend limit.
+
+        - `"organization_usage_limit_exceeded"`
+
+          The organization has reached its OpenAI-assigned usage limit.
 
         - `"credit_balance_exhausted"`
 
@@ -19638,7 +19710,7 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
 
   A customer-safe error describing why a session request failed.
 
-  - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+  - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
     A stable, machine-readable failure category.
 
@@ -19653,6 +19725,18 @@ curl "https://api.openai.com/v1/agents/$AGENT_ID" \
     - `"usage_limit_exceeded"`
 
       The organization has reached a usage, plan, or billing limit.
+
+    - `"project_spend_limit_exceeded"`
+
+      The project has reached its enforced spend limit.
+
+    - `"organization_spend_limit_exceeded"`
+
+      The organization has reached its enforced spend limit.
+
+    - `"organization_usage_limit_exceeded"`
+
+      The organization has reached its OpenAI-assigned usage limit.
 
     - `"credit_balance_exhausted"`
 
@@ -28303,7 +28387,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         A customer-safe error. Non-null only for a failed turn.
 
-        - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+        - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
           A stable, machine-readable failure category.
 
@@ -28318,6 +28402,18 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
           - `"usage_limit_exceeded"`
 
             The organization has reached a usage, plan, or billing limit.
+
+          - `"project_spend_limit_exceeded"`
+
+            The project has reached its enforced spend limit.
+
+          - `"organization_spend_limit_exceeded"`
+
+            The organization has reached its enforced spend limit.
+
+          - `"organization_usage_limit_exceeded"`
+
+            The organization has reached its OpenAI-assigned usage limit.
 
           - `"credit_balance_exhausted"`
 
@@ -32561,7 +32657,7 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
       A stable, machine-readable failure category.
 
@@ -32576,6 +32672,18 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
       - `"usage_limit_exceeded"`
 
         The organization has reached a usage, plan, or billing limit.
+
+      - `"project_spend_limit_exceeded"`
+
+        The project has reached its enforced spend limit.
+
+      - `"organization_spend_limit_exceeded"`
+
+        The organization has reached its enforced spend limit.
+
+      - `"organization_usage_limit_exceeded"`
+
+        The organization has reached its OpenAI-assigned usage limit.
 
       - `"credit_balance_exhausted"`
 
@@ -32828,7 +32936,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
       A stable, machine-readable failure category.
 
@@ -32843,6 +32951,18 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
       - `"usage_limit_exceeded"`
 
         The organization has reached a usage, plan, or billing limit.
+
+      - `"project_spend_limit_exceeded"`
+
+        The project has reached its enforced spend limit.
+
+      - `"organization_spend_limit_exceeded"`
+
+        The organization has reached its enforced spend limit.
+
+      - `"organization_usage_limit_exceeded"`
+
+        The organization has reached its OpenAI-assigned usage limit.
 
       - `"credit_balance_exhausted"`
 
@@ -34184,7 +34304,7 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
       A stable, machine-readable failure category.
 
@@ -34199,6 +34319,18 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
       - `"usage_limit_exceeded"`
 
         The organization has reached a usage, plan, or billing limit.
+
+      - `"project_spend_limit_exceeded"`
+
+        The project has reached its enforced spend limit.
+
+      - `"organization_spend_limit_exceeded"`
+
+        The organization has reached its enforced spend limit.
+
+      - `"organization_usage_limit_exceeded"`
+
+        The organization has reached its OpenAI-assigned usage limit.
 
       - `"credit_balance_exhausted"`
 
@@ -34449,7 +34581,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
       A stable, machine-readable failure category.
 
@@ -34464,6 +34596,18 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
       - `"usage_limit_exceeded"`
 
         The organization has reached a usage, plan, or billing limit.
+
+      - `"project_spend_limit_exceeded"`
+
+        The project has reached its enforced spend limit.
+
+      - `"organization_spend_limit_exceeded"`
+
+        The organization has reached its enforced spend limit.
+
+      - `"organization_usage_limit_exceeded"`
+
+        The organization has reached its OpenAI-assigned usage limit.
 
       - `"credit_balance_exhausted"`
 
@@ -34678,7 +34822,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 16 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
 
       A stable, machine-readable failure category.
 
@@ -34693,6 +34837,18 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
       - `"usage_limit_exceeded"`
 
         The organization has reached a usage, plan, or billing limit.
+
+      - `"project_spend_limit_exceeded"`
+
+        The project has reached its enforced spend limit.
+
+      - `"organization_spend_limit_exceeded"`
+
+        The organization has reached its enforced spend limit.
+
+      - `"organization_usage_limit_exceeded"`
+
+        The organization has reached its OpenAI-assigned usage limit.
 
       - `"credit_balance_exhausted"`
 
@@ -34839,6 +34995,961 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
     - `total_tokens: number`
 
       The total number of input and output tokens used by the agent.
+
+# Items
+
+## List agent session turn items
+
+**get** `/agents/sessions/{session_id}/turns/{turn_id}/items`
+
+Lists items belonging to one root-agent turn, including its interactions with subagents. See [inspecting agent output](/api/docs/guides/agents-api/observability).
+
+### Path Parameters
+
+- `session_id: string`
+
+- `turn_id: string`
+
+### Query Parameters
+
+- `after: optional string`
+
+  Return resources after this resource ID in the selected order.
+
+- `limit: optional number`
+
+  The maximum number of resources to return, between 1 and 100. Defaults to 20.
+
+- `order: optional "asc" or "desc"`
+
+  The order in which resources are returned. Defaults to `desc`.
+
+  - `"asc"`
+
+    Returns resources in ascending order.
+
+  - `"desc"`
+
+    Returns resources in descending order.
+
+### Returns
+
+- `data: array of AgentSessionItem`
+
+  The resources returned in this page, in the requested sort order.
+
+  - `AgentSessionMessage object { id, content, phase, 4 more }`
+
+    A user or assistant message recorded in a session.
+
+    - `id: string or null`
+
+      The ID of this item, or null for legacy user messages whose ID was not recorded.
+
+    - `content: array of AgentSessionMessageContent`
+
+      The content of the message. User messages contain input text or images; assistant messages contain output text.
+
+      - `InputText object { text, type }`
+
+        Text supplied by the user.
+
+        - `text: string`
+
+          The text supplied by the user.
+
+        - `type: "input_text"`
+
+          The type of the object. Always `input_text`.
+
+          - `"input_text"`
+
+      - `InputImage object { image_url, type }`
+
+        An image supplied by the user.
+
+        - `image_url: string`
+
+          The URL of the image supplied by the user, which may be a base64-encoded data URL.
+
+        - `type: "input_image"`
+
+          The type of the object. Always `input_image`.
+
+          - `"input_image"`
+
+      - `OutputText object { text, type }`
+
+        Text produced by the assistant.
+
+        - `text: string`
+
+          The text produced by the assistant.
+
+        - `type: "output_text"`
+
+          The type of the object. Always `output_text`.
+
+          - `"output_text"`
+
+    - `phase: "commentary" or "final_answer" or null`
+
+      The phase of an assistant message. Null for user messages.
+
+      - `"commentary"`
+
+        Commentary produced while the agent works.
+
+      - `"final_answer"`
+
+        The agent's final answer.
+
+    - `role: "user" or "assistant"`
+
+      The role of the message author.
+
+      - `"user"`
+
+      - `"assistant"`
+
+    - `status: AgentOutputItemStatus`
+
+      The status of the message. User messages are always `completed`.
+
+      - `"in_progress"`
+
+        The item is in progress.
+
+      - `"completed"`
+
+        The item is complete.
+
+      - `"incomplete"`
+
+        The item stopped before completing.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "message"`
+
+      The item type. Always `message`.
+
+      - `"message"`
+
+  - `AgentReasoningItem object { id, status, summary, 2 more }`
+
+    A reasoning item produced by the agent.
+
+    - `id: string`
+
+      The ID of the reasoning item.
+
+    - `status: AgentOutputItemStatus or null`
+
+      The status of the reasoning item.
+
+    - `summary: array of SummaryText`
+
+      The reasoning summaries produced by the agent.
+
+      - `text: string`
+
+        The reasoning summary text.
+
+      - `type: "summary_text"`
+
+        The content type. Always `summary_text`.
+
+        - `"summary_text"`
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "reasoning"`
+
+      The item type. Always `reasoning`.
+
+      - `"reasoning"`
+
+  - `AgentFunctionCallItem object { id, arguments, call_id, 4 more }`
+
+    A function call produced by the agent.
+
+    - `id: string`
+
+      The ID of the function call item.
+
+    - `arguments: unknown`
+
+      The arguments to pass to the function.
+
+    - `call_id: string`
+
+      The ID used to submit the function result.
+
+    - `name: string`
+
+      The name of the function to call.
+
+    - `status: AgentFunctionCallStatus`
+
+      The status of the function call.
+
+      - `"in_progress"`
+
+        The call is in progress.
+
+      - `"completed"`
+
+        The call completed successfully.
+
+      - `"failed"`
+
+        The call failed.
+
+      - `"incomplete"`
+
+        The call stopped before completing.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "function_call"`
+
+      The item type. Always `function_call`.
+
+      - `"function_call"`
+
+  - `FunctionCallOutput object { id, call_id, error, 4 more }`
+
+    The result supplied for a function call.
+
+    - `id: string`
+
+      The ID of the function call output item.
+
+    - `call_id: string`
+
+      The ID of the function call that produced this output.
+
+    - `error: string or null`
+
+      The error message, if the call failed.
+
+    - `output: AgentFunctionCallOutput or null`
+
+      The function result, if the call succeeded.
+
+      - `string`
+
+      - `array of InputContent`
+
+        - `InputText object { text, type }`
+
+          Text input recorded in a session item.
+
+          - `text: string`
+
+            The text supplied to the agent.
+
+          - `type: "input_text"`
+
+            The type of the object. Always `input_text`.
+
+            - `"input_text"`
+
+        - `InputImage object { image_url, type }`
+
+          Image input recorded in a session item.
+
+          - `image_url: string`
+
+            The URL of the image supplied to the agent, which may be a base64-encoded data URL.
+
+          - `type: "input_image"`
+
+            The type of the object. Always `input_image`.
+
+            - `"input_image"`
+
+    - `status: AgentFunctionCallStatus`
+
+      The status of the function call.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "function_call_output"`
+
+      The item type. Always `function_call_output`.
+
+      - `"function_call_output"`
+
+  - `AgentMessage object { id, content, recipient_agent_id, 3 more }`
+
+    A message exchanged between agent threads.
+
+    - `id: string`
+
+      The ID of the message.
+
+    - `content: array of AgentContent`
+
+      The content exchanged between the agents.
+
+      - `OutputText object { text, type }`
+
+        A text content part produced by the agent.
+
+        - `text: string`
+
+          The text produced by the agent.
+
+        - `type: "output_text"`
+
+          The content type. Always `output_text`.
+
+          - `"output_text"`
+
+      - `EncryptedContent object { encrypted_content, type }`
+
+        Encrypted content exchanged between agents.
+
+        - `encrypted_content: string`
+
+          The encrypted content payload.
+
+        - `type: "encrypted_content"`
+
+          The content type. Always `encrypted_content`.
+
+          - `"encrypted_content"`
+
+    - `recipient_agent_id: string`
+
+      The ID or name of the receiving agent.
+
+    - `sender_agent_id: string`
+
+      The ID or name of the sending agent.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "agent_message"`
+
+      The item type. Always `agent_message`.
+
+      - `"agent_message"`
+
+  - `AgentMcpCallItem object { id, arguments, error, 6 more }`
+
+    A call to a tool on an MCP server.
+
+    - `id: string`
+
+      The ID of the MCP call item.
+
+    - `arguments: unknown`
+
+      The arguments passed to the MCP tool.
+
+    - `error: unknown`
+
+      The error returned by the MCP tool, if any.
+
+    - `name: string`
+
+      The name of the MCP tool.
+
+    - `output: unknown`
+
+      The output returned by the MCP tool, if any.
+
+    - `server_label: string`
+
+      The label of the MCP server.
+
+    - `status: AgentFunctionCallStatus`
+
+      The status of the MCP tool call.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "mcp_call"`
+
+      The item type. Always `mcp_call`.
+
+      - `"mcp_call"`
+
+  - `ComputerUseCall object { id, output, status, 3 more }`
+
+    One execution of the platform-provided computer-use capability.
+
+    - `id: string`
+
+      The ID of the activity item.
+
+    - `output: object { image_url, type }  or null`
+
+      The last screenshot emitted by the model. Null when screenshot inclusion is disabled or the call emitted no screenshot.
+
+      - `image_url: string`
+
+        The complete JPEG image as a base64 data URL.
+
+      - `type: "computer_screenshot"`
+
+        The content type. Always `computer_screenshot`.
+
+        - `"computer_screenshot"`
+
+    - `status: AgentFunctionCallStatus`
+
+      The execution status of the activity.
+
+    - `title: string or null`
+
+      A model-generated description of the activity, when available.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_call"`
+
+      The item type. Always `computer_use_call`.
+
+      - `"computer_use_call"`
+
+  - `ComputerUseApprovalRequest object { id, request, request_id, 2 more }`
+
+    A credential-free history record of the emitted login request.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request: object { credential_origin, fields, options, 2 more }`
+
+      A registered form awaiting the application's response.
+
+      - `credential_origin: string or null`
+
+        The registered form or frame origin where values will be entered.
+
+      - `fields: array of object { id, label, required, type }`
+
+        Controls to render. All submitted values are sensitive.
+
+        - `id: string`
+
+          The field ID to submit as field_id in a fields entry.
+
+        - `label: string`
+
+          The label to display beside the control.
+
+        - `required: boolean`
+
+          Whether this control requires a nonempty value.
+
+        - `type: string`
+
+          The rendering type, such as email, password, or text.
+
+      - `options: array of object { id, field_ids, label }`
+
+        Sign-in methods. Empty for a plain form.
+
+        - `id: string`
+
+          The option ID to submit as selected_option.
+
+        - `field_ids: array of string`
+
+          IDs from the registered fields that this method accepts.
+
+        - `label: string`
+
+          The method label to display.
+
+      - `reason: string or null`
+
+        Why the agent needs the user to sign in.
+
+      - `type: "browser_authentication"`
+
+        The type of the object. Always `browser_authentication`.
+
+        - `"browser_authentication"`
+
+    - `request_id: string`
+
+    - `turn_id: string`
+
+    - `type: "computer_use_approval_request"`
+
+      The item type. Always computer_use_approval_request.
+
+      - `"computer_use_approval_request"`
+
+  - `ComputerUseApprovalRequestResult object { id, request_id, response, 2 more }`
+
+    A credential-free record of an admitted response, not proof of completion.
+
+    - `id: string`
+
+      The stable history item ID.
+
+    - `request_id: string`
+
+      The registered request answered by this item.
+
+    - `response: object { action, selected_option, type }  or object { action, type }`
+
+      The admitted response, without submitted credential values.
+
+      - `Submit object { action, selected_option, type }`
+
+        - `action: "submit"`
+
+          - `"submit"`
+
+        - `selected_option: string or null`
+
+          The chosen sign-in method, or null when no options were offered.
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+      - `Cancel object { action, type }`
+
+        - `action: "cancel"`
+
+          - `"cancel"`
+
+        - `type: "browser_authentication"`
+
+          - `"browser_authentication"`
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "computer_use_approval_request_result"`
+
+      - `"computer_use_approval_request_result"`
+
+  - `AgentWebSearchCallItem object { id, action, status, 2 more }`
+
+    A web search call produced by the agent.
+
+    - `id: string`
+
+      The ID of the web search call.
+
+    - `action: WebSearchAction or null`
+
+      The action performed by the web search tool.
+
+      - `Search object { queries, query, type }`
+
+        A search query or group of search queries.
+
+        - `queries: array of string or null`
+
+          The search queries, when multiple queries were used.
+
+        - `query: string or null`
+
+          The search query, when a single query was used.
+
+        - `type: "search"`
+
+          The type of the object. Always `search`.
+
+          - `"search"`
+
+      - `OpenPage object { type, url }`
+
+        Opens a web page.
+
+        - `type: "open_page"`
+
+          The type of the object. Always `open_page`.
+
+          - `"open_page"`
+
+        - `url: string or null`
+
+          The URL of the page that was opened.
+
+      - `FindInPage object { pattern, type, url }`
+
+        Finds text within a web page.
+
+        - `pattern: string or null`
+
+          The text pattern that was searched for.
+
+        - `type: "find_in_page"`
+
+          The type of the object. Always `find_in_page`.
+
+          - `"find_in_page"`
+
+        - `url: string or null`
+
+          The URL of the page that was searched.
+
+      - `Other object { type }`
+
+        Another web search action.
+
+        - `type: "other"`
+
+          The type of the object. Always `other`.
+
+          - `"other"`
+
+    - `status: AgentOutputItemStatus`
+
+      The status of the web search call.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "web_search_call"`
+
+      The item type. Always `web_search_call`.
+
+      - `"web_search_call"`
+
+  - `AgentCommandExecutionItem object { id, command, cwd, 6 more }`
+
+    A command execution produced by the agent.
+
+    - `id: string`
+
+      The ID of the command execution item.
+
+    - `command: string`
+
+      The command that was executed.
+
+    - `cwd: string or null`
+
+      The working directory used to execute the command.
+
+    - `duration_ms: number or null`
+
+      The command duration in milliseconds.
+
+    - `exit_code: number or null`
+
+      The process exit code, if the command completed.
+
+    - `output: string or null`
+
+      The command output, if available.
+
+    - `status: AgentFunctionCallStatus`
+
+      The status of the command execution.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "command_execution"`
+
+      The item type. Always `command_execution`.
+
+      - `"command_execution"`
+
+  - `AgentCreateSubagentCallItem object { id, agent_id, content, 5 more }`
+
+    A request to spawn a subagent.
+
+    - `id: string`
+
+      The ID of the tool call item.
+
+    - `agent_id: string`
+
+      The ID of the agent that requested the subagent.
+
+    - `content: array of AgentContent`
+
+      The task given to the spawned agent.
+
+      - `OutputText object { text, type }`
+
+        A text content part produced by the agent.
+
+      - `EncryptedContent object { encrypted_content, type }`
+
+        Encrypted content exchanged between agents.
+
+    - `model: string or null`
+
+      The model requested for the spawned agent.
+
+    - `reasoning_effort: string or null`
+
+      The reasoning effort requested for the spawned agent.
+
+    - `status: AgentFunctionCallStatus`
+
+      The status of the tool call.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "create_subagent_call"`
+
+      The item type. Always `create_subagent_call`.
+
+      - `"create_subagent_call"`
+
+        The current public item type.
+
+  - `AgentSendSubagentInputCallItem object { id, content, recipient_agent_id, 4 more }`
+
+    A request to send input to another agent.
+
+    - `id: string`
+
+      The ID of the tool call item.
+
+    - `content: array of AgentContent`
+
+      The input sent to the receiving agent.
+
+      - `OutputText object { text, type }`
+
+        A text content part produced by the agent.
+
+      - `EncryptedContent object { encrypted_content, type }`
+
+        Encrypted content exchanged between agents.
+
+    - `recipient_agent_id: string`
+
+      The ID of the agent receiving the input.
+
+    - `sender_agent_id: string`
+
+      The ID of the agent sending the input.
+
+    - `status: AgentFunctionCallStatus`
+
+      The status of the tool call.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "send_subagent_input_call"`
+
+      The item type. Always `send_subagent_input_call`.
+
+      - `"send_subagent_input_call"`
+
+        The current public item type.
+
+  - `AgentResumeSubagentCallItem object { id, recipient_agent_id, sender_agent_id, 3 more }`
+
+    A request to resume a subagent.
+
+    - `id: string`
+
+      The ID of the tool call item.
+
+    - `recipient_agent_id: string`
+
+      The ID of the agent to resume.
+
+    - `sender_agent_id: string`
+
+      The ID of the agent requesting the resume.
+
+    - `status: AgentFunctionCallStatus`
+
+      The status of the tool call.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "resume_subagent_call"`
+
+      The item type. Always `resume_subagent_call`.
+
+      - `"resume_subagent_call"`
+
+        The current public item type.
+
+  - `AgentWaitForSubagentsCallItem object { id, recipient_agent_ids, sender_agent_id, 3 more }`
+
+    A request to wait for one or more subagents.
+
+    - `id: string`
+
+      The ID of the tool call item.
+
+    - `recipient_agent_ids: array of string`
+
+      The IDs of the agents to wait for.
+
+    - `sender_agent_id: string`
+
+      The ID of the agent waiting for results.
+
+    - `status: AgentFunctionCallStatus`
+
+      The status of the tool call.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "wait_for_subagents_call"`
+
+      The item type. Always `wait_for_subagents_call`.
+
+      - `"wait_for_subagents_call"`
+
+        The current public item type.
+
+  - `AgentInterruptSubagentCallItem object { id, recipient_agent_id, sender_agent_id, 3 more }`
+
+    A request to interrupt a subagent's current turn. The subagent remains available.
+
+    - `id: string`
+
+      The ID of the tool call item.
+
+    - `recipient_agent_id: string`
+
+      The ID of the agent to interrupt.
+
+    - `sender_agent_id: string`
+
+      The ID of the agent requesting the interrupt.
+
+    - `status: AgentFunctionCallStatus`
+
+      The status of the tool call.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "interrupt_subagent_call"`
+
+      The item type. Always `interrupt_subagent_call`.
+
+      - `"interrupt_subagent_call"`
+
+        The current public item type.
+
+  - `AgentCloseSubagentCallItem object { id, recipient_agent_id, sender_agent_id, 3 more }`
+
+    A request to close a subagent.
+
+    - `id: string`
+
+      The ID of the tool call item.
+
+    - `recipient_agent_id: string`
+
+      The ID of the agent to close.
+
+    - `sender_agent_id: string`
+
+      The ID of the agent requesting the close.
+
+    - `status: AgentFunctionCallStatus`
+
+      The status of the tool call.
+
+    - `turn_id: string`
+
+      The ID of the turn that contains this item.
+
+    - `type: "close_subagent_call"`
+
+      The item type. Always `close_subagent_call`.
+
+      - `"close_subagent_call"`
+
+        The current public item type.
+
+- `first_id: string or null`
+
+  The ID of the first resource in `data`, or `null` if the page is empty.
+
+- `has_more: boolean`
+
+  Whether there are more resources to retrieve after this page.
+
+- `last_id: string or null`
+
+  The ID of the last resource in `data`, or `null` if the page is empty. Pass this as `after` with the same order and filters.
+
+- `object: "list"`
+
+  The object type, which is always `list`.
+
+  - `"list"`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID/items \
+    -H 'OpenAI-Beta: agents=v1' \
+    -H "Authorization: Bearer $OPENAI_API_KEY"
+```
+
+#### Response
+
+```json
+{
+  "data": [
+    {
+      "id": "id",
+      "content": [
+        {
+          "text": "text",
+          "type": "input_text"
+        }
+      ],
+      "phase": "commentary",
+      "role": "user",
+      "status": "in_progress",
+      "turn_id": "turn_id",
+      "type": "message"
+    }
+  ],
+  "first_id": "first_id",
+  "has_more": true,
+  "last_id": "last_id",
+  "object": "list"
+}
+```
 
 # Vaults
 
@@ -37847,7 +38958,7 @@ curl https://api.openai.com/v1/assistants \
     -H 'OpenAI-Beta: assistants=v2' \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
-          "model": "gpt-5",
+          "model": "gpt-4.1",
           "temperature": 1,
           "top_p": 1
         }'
@@ -37901,7 +39012,7 @@ curl "https://api.openai.com/v1/assistants" \
     "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
     "name": "Math Tutor",
     "tools": [{"type": "code_interpreter"}],
-    "model": "gpt-5"
+    "model": "gpt-4.1"
   }'
 ```
 
@@ -37914,7 +39025,7 @@ curl "https://api.openai.com/v1/assistants" \
   "created_at": 1698984975,
   "name": "Math Tutor",
   "description": null,
-  "model": "gpt-5",
+  "model": "gpt-4.1",
   "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question.",
   "tools": [
     {
@@ -37939,7 +39050,7 @@ curl https://api.openai.com/v1/assistants \
     "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
     "tools": [{"type": "file_search"}],
     "tool_resources": {"file_search": {"vector_store_ids": ["vs_123"]}},
-    "model": "gpt-5"
+    "model": "gpt-4.1"
   }'
 ```
 
@@ -37952,7 +39063,7 @@ curl https://api.openai.com/v1/assistants \
   "created_at": 1699009403,
   "name": "HR Helper",
   "description": null,
-  "model": "gpt-5",
+  "model": "gpt-4.1",
   "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
   "tools": [
     {
@@ -38364,7 +39475,7 @@ curl "https://api.openai.com/v1/assistants?order=desc&limit=20" \
       "created_at": 1698982736,
       "name": "Coding Tutor",
       "description": null,
-      "model": "gpt-5",
+      "model": "gpt-4.1",
       "instructions": "You are a helpful assistant designed to make me better at coding!",
       "tools": [],
       "tool_resources": {},
@@ -38379,7 +39490,7 @@ curl "https://api.openai.com/v1/assistants?order=desc&limit=20" \
       "created_at": 1698982718,
       "name": "My Assistant",
       "description": null,
-      "model": "gpt-5",
+      "model": "gpt-4.1",
       "instructions": "You are a helpful assistant designed to make me better at coding!",
       "tools": [],
       "tool_resources": {},
@@ -38394,7 +39505,7 @@ curl "https://api.openai.com/v1/assistants?order=desc&limit=20" \
       "created_at": 1698982643,
       "name": null,
       "description": null,
-      "model": "gpt-5",
+      "model": "gpt-4.1",
       "instructions": null,
       "tools": [],
       "tool_resources": {},
@@ -38707,7 +39818,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
   "created_at": 1699009709,
   "name": "HR Helper",
   "description": null,
-  "model": "gpt-5",
+  "model": "gpt-4.1",
   "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies.",
   "tools": [
     {
@@ -39335,7 +40446,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
   -d '{
       "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
       "tools": [{"type": "file_search"}],
-      "model": "gpt-5"
+      "model": "gpt-4.1"
     }'
 ```
 
@@ -39348,7 +40459,7 @@ curl https://api.openai.com/v1/assistants/asst_abc123 \
   "created_at": 1699009709,
   "name": "HR Helper",
   "description": null,
-  "model": "gpt-5",
+  "model": "gpt-4.1",
   "instructions": "You are an HR bot, and you have access to files to answer employee questions about company policies. Always response with info from either of the files.",
   "tools": [
     {
@@ -259026,7 +260137,7 @@ curl https://api.openai.com/v1/threads/runs \
   "completed_at": null,
   "required_action": null,
   "last_error": null,
-  "model": "gpt-5",
+  "model": "gpt-4.1",
   "instructions": "You are a helpful assistant.",
   "tools": [],
   "tool_resources": {},
@@ -259072,13 +260183,13 @@ event: thread.created
 data: {"id":"thread_123","object":"thread","created_at":1710348075,"metadata":{},"tool_resources":{}}
 
 event: thread.run.created
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.queued
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.in_progress
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"tool_resources":{},"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.step.created
 data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null,"expired_at":null,"metadata":{}}
@@ -259110,7 +260221,7 @@ event: thread.run.step.completed
 data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710348077,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"expired_at":null,"metadata":{}}
 
 event: thread.run.completed
-data: {"id":"run_123","object":"thread.run","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1713226836,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1713226837,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710348076,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1713226836,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1713226837,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: done
 data: [DONE]
@@ -259165,13 +260276,13 @@ event: thread.created
 data: {"id":"thread_123","object":"thread","created_at":1710351818,"metadata":{},"tool_resources":{}}
 
 event: thread.run.created
-data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.queued
-data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.in_progress
-data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.step.created
 data: {"id":"step_001","object":"thread.run.step","created_at":1710351819,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"tool_calls","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710352418,"failed_at":null,"last_error":null,"step_details":{"type":"tool_calls","tool_calls":[]},"usage":null,"expired_at":null,"metadata":{}}
@@ -259197,7 +260308,7 @@ event: thread.run.step.delta
 data: {"id":"step_001","object":"thread.run.step.delta","delta":{"step_details":{"type":"tool_calls","tool_calls":[{"index":0,"type":"function","function":{"arguments":"\"}"}}]}}}
 
 event: thread.run.requires_action
-data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"requires_action","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":{"type":"submit_tool_outputs","submit_tool_outputs":{"tool_calls":[{"id":"call_XXNp8YGaFrjrSjgqxtC8JJ1B","type":"function","function":{"name":"get_current_weather","arguments":"{\"location\":\"San Francisco, CA\",\"unit\":\"fahrenheit\"}"}}]}},"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710351818,"assistant_id":"asst_123","thread_id":"thread_123","status":"requires_action","started_at":1710351818,"expires_at":1710352418,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":{"type":"submit_tool_outputs","submit_tool_outputs":{"tool_calls":[{"id":"call_XXNp8YGaFrjrSjgqxtC8JJ1B","type":"function","function":{"name":"get_current_weather","arguments":"{\"location\":\"San Francisco, CA\",\"unit\":\"fahrenheit\"}"}}]}},"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":{"prompt_tokens":345,"completion_tokens":11,"total_tokens":356},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: done
 data: [DONE]
@@ -263189,7 +264300,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123/cancel \
   "failed_at": null,
   "completed_at": null,
   "last_error": null,
-  "model": "gpt-5",
+  "model": "gpt-4.1",
   "instructions": "You summarize books.",
   "tools": [
     {
@@ -264245,7 +265356,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs \
   "failed_at": null,
   "completed_at": null,
   "last_error": null,
-  "model": "gpt-5",
+  "model": "gpt-4.1",
   "instructions": "You are a helpful assistant.",
   "incomplete_details": null,
   "tools": [
@@ -264286,13 +265397,13 @@ curl https://api.openai.com/v1/threads/thread_123/runs \
 
 ```json
 event: thread.run.created
-data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.queued
-data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.in_progress
-data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710330641,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710330641,"expires_at":1710331240,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.step.created
 data: {"id":"step_001","object":"thread.run.step","created_at":1710330641,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710331240,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null,"expired_at":null,"metadata":{}}
@@ -264324,7 +265435,7 @@ event: thread.run.step.completed
 data: {"id":"step_001","object":"thread.run.step","created_at":1710330641,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710330642,"expires_at":1710331240,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"expired_at":null,"metadata":{}}
 
 event: thread.run.completed
-data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710330641,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710330642,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710330640,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710330641,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710330642,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: done
 data: [DONE]
@@ -264371,13 +265482,13 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs \
 
 ```json
 event: thread.run.created
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.queued
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":null,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.in_progress
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710348075,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710348075,"expires_at":1710348675,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.step.created
 data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":null,"expired_at":null,"metadata":{}}
@@ -264409,7 +265520,7 @@ event: thread.run.step.completed
 data: {"id":"step_001","object":"thread.run.step","created_at":1710348076,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710348077,"expires_at":1710348675,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_001"}},"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"expired_at":null,"metadata":{}}
 
 event: thread.run.completed
-data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710348075,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710348077,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710348075,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710348075,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710348077,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: done
 data: [DONE]
@@ -264964,7 +266075,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs \
       "failed_at": null,
       "completed_at": 1699075073,
       "last_error": null,
-      "model": "gpt-5",
+      "model": "gpt-4.1",
       "instructions": "You are a helpful assistant.",
       "incomplete_details": null,
       "tools": [
@@ -265011,7 +266122,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs \
       "failed_at": null,
       "completed_at": 1699063291,
       "last_error": null,
-      "model": "gpt-5",
+      "model": "gpt-4.1",
       "instructions": "You are a helpful assistant.",
       "incomplete_details": null,
       "tools": [
@@ -265562,7 +266673,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123 \
   "failed_at": null,
   "completed_at": 1699075073,
   "last_error": null,
-  "model": "gpt-5",
+  "model": "gpt-4.1",
   "instructions": "You are a helpful assistant.",
   "incomplete_details": null,
   "tools": [
@@ -266133,7 +267244,7 @@ curl https://api.openai.com/v1/threads/thread_123/runs/run_123/submit_tool_outpu
   "failed_at": null,
   "completed_at": null,
   "last_error": null,
-  "model": "gpt-5",
+  "model": "gpt-4.1",
   "instructions": "You are a helpful assistant.",
   "tools": [
     {
@@ -266200,10 +267311,10 @@ event: thread.run.step.completed
 data: {"id":"step_001","object":"thread.run.step","created_at":1710352449,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"tool_calls","status":"completed","cancelled_at":null,"completed_at":1710352475,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"tool_calls","tool_calls":[{"id":"call_iWr0kQ2EaYMaxNdl0v3KYkx7","type":"function","function":{"name":"get_current_weather","arguments":"{\"location\":\"San Francisco, CA\",\"unit\":\"fahrenheit\"}","output":"70 degrees and sunny."}}]},"usage":{"prompt_tokens":291,"completion_tokens":24,"total_tokens":315},"expired_at":null,"metadata":{}}
 
 event: thread.run.queued
-data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":1710352448,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"queued","started_at":1710352448,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.in_progress
-data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710352475,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"in_progress","started_at":1710352475,"expires_at":1710353047,"cancelled_at":null,"failed_at":null,"completed_at":null,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":null,"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: thread.run.step.created
 data: {"id":"step_002","object":"thread.run.step","created_at":1710352476,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"in_progress","cancelled_at":null,"completed_at":null,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_002"}},"usage":null,"expired_at":null,"metadata":{}}
@@ -266241,7 +267352,7 @@ event: thread.run.step.completed
 data: {"id":"step_002","object":"thread.run.step","created_at":1710352476,"run_id":"run_123","assistant_id":"asst_123","thread_id":"thread_123","type":"message_creation","status":"completed","cancelled_at":null,"completed_at":1710352477,"expires_at":1710353047,"failed_at":null,"last_error":null,"step_details":{"type":"message_creation","message_creation":{"message_id":"msg_002"}},"usage":{"prompt_tokens":329,"completion_tokens":18,"total_tokens":347},"expired_at":null,"metadata":{}}
 
 event: thread.run.completed
-data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710352475,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710352477,"required_action":null,"last_error":null,"model":"gpt-5","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
+data: {"id":"run_123","object":"thread.run","created_at":1710352447,"assistant_id":"asst_123","thread_id":"thread_123","status":"completed","started_at":1710352475,"expires_at":null,"cancelled_at":null,"failed_at":null,"completed_at":1710352477,"required_action":null,"last_error":null,"model":"gpt-4.1","instructions":"You are a helpful assistant.","tools":[{"type":"function","function":{"name":"get_current_weather","description":"Get the current weather in a given location","parameters":{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. San Francisco, CA"},"unit":{"type":"string","enum":["celsius","fahrenheit"]}},"required":["location"]}}}],"metadata":{},"temperature":1.0,"top_p":1.0,"max_completion_tokens":null,"max_prompt_tokens":null,"truncation_strategy":{"type":"auto"},"incomplete_details":null,"usage":{"prompt_tokens":20,"completion_tokens":11,"total_tokens":31},"response_format":"auto","tool_choice":"auto","parallel_tool_calls":true}
 
 event: done
 data: [DONE]
@@ -266777,7 +267888,7 @@ curl https://api.openai.com/v1/threads/thread_abc123/runs/run_abc123 \
   "failed_at": null,
   "completed_at": 1699075073,
   "last_error": null,
-  "model": "gpt-5",
+  "model": "gpt-4.1",
   "instructions": "You are a helpful assistant.",
   "incomplete_details": null,
   "tools": [

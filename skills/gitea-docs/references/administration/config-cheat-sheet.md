@@ -579,8 +579,7 @@ And the following unique queues:
 - `SECRET_KEY`: **\<random at every install\>**: Global secret key. This key is VERY IMPORTANT, if you lost it, the data encrypted by it (like 2FA secret) can't be decrypted anymore.
 - `SECRET_KEY_URI`: **_empty_**: Instead of defining SECRET_KEY, this option can be used to use the key stored in a file (example value: `file:/etc/gitea/secret_key`). It shouldn't be lost like SECRET_KEY.
 - `LOGIN_REMEMBER_DAYS`: **31**: How long to remember that a user is logged in before requiring relogin (in days).
-- `COOKIE_REMEMBER_NAME`: **gitea\_incredible**: Name of cookie used to store authentication
-   information.
+- `COOKIE_REMEMBER_NAME`: **gitea\_remember**: Name of cookie used to store authentication information.
 - `REVERSE_PROXY_LOGOUT_REDIRECT`: **_empty_**: URL or relative path to redirect users to after logout when authentication is handled by a reverse proxy or SSO. For example: `/my-sso/logout?return=/my-sso/home`.
 - `REVERSE_PROXY_AUTHENTICATION_USER`: **X-WEBAUTH-USER**: Header name for reverse proxy
    authentication.
@@ -885,27 +884,27 @@ In-Reply-To =
 
 ## Cache (`cache`)
 
-- `ADAPTER`: **memory**: Cache engine adapter, either `memory`, `redis`, `twoqueue` or `memcache`. (`twoqueue` represents a size limited LRU cache.)
-- `INTERVAL`: **60**: Garbage Collection interval (sec), for memory and twoqueue cache only.
-- `HOST`: **_empty_**: Connection string for `redis` and `memcache`. For `twoqueue` sets configuration for the queue. If left empty while `ADAPTER` is `redis`, it falls back to [redis/CONN_STR](#redis-redis) when that is set.
+- `ADAPTER`: **memory**: Either `memory`, `redis`, `memcache`, or `twoqueue`.
+- `INTERVAL`: **60**: For `memory` and `twoqueue`, GC interval in seconds.
+- `HOST`: **_empty_**: For `redis` and `memcache`, connection host address. For `twoqueue` sets configuration for the queue. If left empty while `ADAPTER` is `redis`, it falls back to [redis/CONN_STR](#redis-redis) when that is set.
   - Redis: `redis://:macaron@127.0.0.1:6379/0?pool_size=100&idle_timeout=180s` (See [queue/CONN_STR](#queue-queue-and-queue) for information on additional supported connection types)
     - For a Redis cluster: `redis+cluster://:macaron@127.0.0.1:6379/0?pool_size=100&idle_timeout=180s`
     - For a Redis sentinel: `redis+sentinel://:macaron@sentinel0:26379,sentinel1:26379,sentinel2:26379/0?pool_size=100&idle_timeout=180s&master_name=mymaster`
-  - Memcache: `127.0.0.1:9090;127.0.0.1:9091`
+  - Memcache: `127.0.0.1:11211`
   - TwoQueue LRU cache: `{"size":50000,"recent_ratio":0.25,"ghost_ratio":0.5}` or `50000` representing the maximum number of objects stored in the cache.
-- `ITEM_TTL`: **16h**: Time to keep items in cache if not used, Setting it to -1 disables caching.
+- `ITEM_TTL`: **16h**: Time to keep items in cache if not used. Setting it to -1 disables caching.
 
 ## Cache - LastCommitCache settings (`cache.last_commit`)
 
-- `ITEM_TTL`: **8760h**: Time to keep items in cache if not used, Setting it to -1 disables caching.
+- `ITEM_TTL`: **8760h**: Time to keep items in cache if not used. Setting it to -1 disables caching.
 - `COMMITS_COUNT`: **1000**: Only enable the cache when repository's commits count great than.
 
 ## Session (`session`)
 
-- `PROVIDER`: **file**: Session engine provider \[memory, file, redis, db, mysql, couchbase, memcache, postgres\]. Setting `db` will reuse the configuration in `[database]`
+- `PROVIDER`: **file**: Either "memory", "file", "redis" or "db", default is "file". "db" will reuse the configuration in `[database]`
 - `PROVIDER_CONFIG`: **data/sessions**: For file, the root path; for db, empty (database config will be used); for others, the connection string. Relative paths will be made absolute against _`AppWorkPath`_. For the `redis` provider, if left empty it falls back to [redis/CONN_STR](#redis-redis) when that is set.
 - `COOKIE_SECURE`:**_empty_**: `true` or `false`. Enable this to force using HTTPS for all session access. If not set, it defaults to `true` if the ROOT_URL is an HTTPS URL.
-- `COOKIE_NAME`: **i\_like\_gitea**: The name of the cookie used for the session ID.
+- `COOKIE_NAME`: **gitea\_session**: Session cookie name
 - `GC_INTERVAL_TIME`: **86400**: GC interval in seconds.
 - `SESSION_LIFE_TIME`: **86400**: Session life time in seconds, default is 86400 (1 day)
 - `DOMAIN`: **_empty_**: Sets the cookie Domain
