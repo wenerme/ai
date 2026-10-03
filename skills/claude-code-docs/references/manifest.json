@@ -391,15 +391,15 @@
   },
   "hooks.md": {
     "url": "https://code.claude.com/docs/en/hooks",
-    "lastModified": "Sat, 03 Oct 2026 05:01:59 GMT",
-    "size": 248599,
-    "updatedAt": "2026-10-03T05:01:59.848Z"
+    "lastModified": "Sat, 03 Oct 2026 14:41:38 GMT",
+    "size": 249090,
+    "updatedAt": "2026-10-03T14:41:38.431Z"
   },
   "hooks-guide.md": {
     "url": "https://code.claude.com/docs/en/hooks-guide",
-    "lastModified": "Sat, 03 Oct 2026 05:02:00 GMT",
-    "size": 61287,
-    "updatedAt": "2026-10-03T05:02:00.261Z"
+    "lastModified": "Sat, 03 Oct 2026 14:41:38 GMT",
+    "size": 61375,
+    "updatedAt": "2026-10-03T14:41:38.881Z"
   },
   "how-claude-code-works.md": {
     "url": "https://code.claude.com/docs/en/how-claude-code-works",
@@ -511,9 +511,9 @@
   },
   "monitoring-usage.md": {
     "url": "https://code.claude.com/docs/en/monitoring-usage",
-    "lastModified": "Fri, 02 Oct 2026 16:15:27 GMT",
-    "size": 141317,
-    "updatedAt": "2026-10-02T16:15:27.693Z"
+    "lastModified": "Sat, 03 Oct 2026 14:41:47 GMT",
+    "size": 141365,
+    "updatedAt": "2026-10-03T14:41:47.588Z"
   },
   "network-config.md": {
     "url": "https://code.claude.com/docs/en/network-config",
