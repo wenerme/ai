@@ -1,7 +1,7 @@
 ---
 description: Execute Workers code in reaction to Container status changes
-title: Status Hooks
-image: https://developers.cloudflare.com/containers/examples/status-hooks/og.png?v=3560c99df3dbc646
+title: Monitor container lifecycle
+image: https://developers.cloudflare.com/containers/examples/status-hooks/og.png?v=26c87d17da56027f
 ---
 
 [Skip to content](#main-content)
@@ -10,77 +10,173 @@ image: https://developers.cloudflare.com/containers/examples/status-hooks/og.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/containers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Status Hooks
+# Monitor container lifecycle
 
 Execute Workers code in reaction to Container status changes
 
-Last updated Sep 29, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/status-hooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/examples/status-hooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Use `monitor()` with the Durable Object Container API to run code after the Container exits or errors. The `Container` class adds named lifecycle hooks and an inactivity callback.
+Log when a Container becomes ready, exits successfully, or fails. The Durable Object starts a named image and uses `monitor()` to observe its exit.
 
-The direct API example requires the Container to expose `GET /health` on port `4000`. The endpoint must return a successful response when the application is ready. Because `container.start()` does not wait for readiness, the Worker polls this endpoint before forwarding requests.
+## Configure the Worker
+
+```jsonc
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "container-lifecycle",
+  "main": "src/index.ts",
+  // Set this to today's date
+  "compatibility_date": "2026-10-02",
+  "observability": {
+    "enabled": true
+  },
+  "containers": [
+    {
+      "class_name": "MyContainer",
+      "scheduling_policy": "durable_object",
+      "images": {
+        "base": {
+          "dockerfile": "./Dockerfile"
+        }
+      }
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MY_CONTAINER",
+        "class_name": "MyContainer"
+      }
+    ]
+  },
+  "exports": {
+    "MyContainer": {
+      "type": "durable-object",
+      "storage": "sqlite"
+    }
+  }
+}
+```
+
+```toml
+name = "container-lifecycle"
+main = "src/index.ts"
+# Set this to today's date
+compatibility_date = "2026-10-02"
+
+[observability]
+enabled = true
+
+[[containers]]
+class_name = "MyContainer"
+scheduling_policy = "durable_object"
+
+[containers.images.base]
+dockerfile = "./Dockerfile"
+
+[[durable_objects.bindings]]
+name = "MY_CONTAINER"
+class_name = "MyContainer"
+
+[exports.MyContainer]
+type = "durable-object"
+storage = "sqlite"
+```
+
+## Observe readiness and exit
+
+`start()` initiates startup. The Worker waits for a successful `/health` response before forwarding traffic. Concurrent requests share that readiness check, and a failed check can be retried by the next request.
 
 *src/index.jsjs*
 
 ```js
 import { DurableObject } from "cloudflare:workers";
 
+const INACTIVITY_TIMEOUT_MS = 5 * 60 * 1000;
+
 export class MyContainer extends DurableObject {
-	ready;
+	starting;
+	monitoring;
+
+	constructor(ctx, env) {
+		super(ctx, env);
+		const container = ctx.container;
+		if (container.running) {
+			void ctx.blockConcurrencyWhile(() =>
+				container.setInactivityTimeout(INACTIVITY_TIMEOUT_MS),
+			);
+			this.observeExit();
+		}
+	}
 
 	async fetch(request) {
-		const container = this.ctx.container;
-		if (!container.running) {
-			this.ready = undefined;
-		}
-		this.ready ??= this.startAndMonitor().catch((error) => {
-			this.ready = undefined;
-			throw error;
+		// Concurrent requests share startup and readiness checks.
+		this.starting ??= this.startAndWaitForPort().finally(() => {
+			this.starting = undefined;
 		});
-		await this.ready;
+		await this.starting;
 
 		const url = new URL(request.url);
 		url.protocol = "http:";
 		url.host = "container";
 		const forwarded = new Request(url, request);
 		forwarded.headers.delete("host");
-		return container.getTcpPort(4000).fetch(forwarded);
+		return this.ctx.container.getTcpPort(8080).fetch(forwarded);
 	}
 
-	async startAndMonitor() {
+	async startAndWaitForPort() {
 		const container = this.ctx.container;
-		await container.setInactivityTimeout(5 * 60 * 1000);
 		if (!container.running) {
-			container.start();
+			container.start({
+				image: container.images.base,
+				instance: "lite",
+				enableInternet: false,
+			});
 		}
+		this.observeExit();
+		await container.setInactivityTimeout(INACTIVITY_TIMEOUT_MS);
 
-		this.ctx.waitUntil(
-			container
-				.monitor()
-				.then(() => console.log("Container stopped"))
-				.catch((error) => console.error("Container error:", error)),
-		);
-
-		const port = container.getTcpPort(4000);
+		const port = container.getTcpPort(8080);
 		let lastError;
 		for (let attempt = 0; attempt < 100; attempt++) {
 			try {
-				const response = await port.fetch("http://container/health");
+				const response = await port.fetch("http://container/health", {
+					signal: AbortSignal.timeout(1000),
+				});
+				await response.body?.cancel();
 				if (!response.ok) {
 					throw new Error(`Health check returned ${response.status}`);
 				}
-				console.log("Container successfully started");
+				console.log("Container is ready");
 				return;
 			} catch (error) {
 				lastError = error;
 				await scheduler.wait(200);
 			}
 		}
-		throw new Error("Container did not become ready on port 4000", {
+		throw new Error("Container did not become ready on port 8080", {
 			cause: lastError,
 		});
 	}
+
+	observeExit() {
+		if (this.monitoring) return;
+		this.monitoring = this.ctx.container
+			.monitor()
+			.then(() => console.log("Container exited successfully"))
+			.catch((error) => console.error("Container failed:", error))
+			.finally(() => {
+				this.monitoring = undefined;
+			});
+		this.ctx.waitUntil(this.monitoring);
+	}
 }
+
+export default {
+	fetch(request, env) {
+		return env.MY_CONTAINER.getByName("demo").fetch(request);
+	},
+};
 ```
 
 *src/index.tsts*
@@ -88,135 +184,173 @@ export class MyContainer extends DurableObject {
 ```ts
 import { DurableObject } from "cloudflare:workers";
 
-interface Env {}
+interface Env {
+	MY_CONTAINER: DurableObjectNamespace<MyContainer>;
+}
+
+const INACTIVITY_TIMEOUT_MS = 5 * 60 * 1000;
 
 export class MyContainer extends DurableObject<Env> {
-	private ready: Promise<void> | undefined;
+	private starting: Promise<void> | undefined;
+	private monitoring: Promise<void> | undefined;
+
+	constructor(ctx: DurableObjectState, env: Env) {
+		super(ctx, env);
+		const container = ctx.container!;
+		if (container.running) {
+			void ctx.blockConcurrencyWhile(() =>
+				container.setInactivityTimeout(INACTIVITY_TIMEOUT_MS),
+			);
+			this.observeExit();
+		}
+	}
 
 	async fetch(request: Request): Promise<Response> {
-		const container = this.ctx.container!;
-		if (!container.running) {
-			this.ready = undefined;
-		}
-		this.ready ??= this.startAndMonitor().catch((error: unknown) => {
-			this.ready = undefined;
-			throw error;
+		// Concurrent requests share startup and readiness checks.
+		this.starting ??= this.startAndWaitForPort().finally(() => {
+			this.starting = undefined;
 		});
-		await this.ready;
+		await this.starting;
 
 		const url = new URL(request.url);
 		url.protocol = "http:";
 		url.host = "container";
 		const forwarded = new Request(url, request);
 		forwarded.headers.delete("host");
-		return container.getTcpPort(4000).fetch(forwarded);
+		return this.ctx.container!.getTcpPort(8080).fetch(forwarded);
 	}
 
-	private async startAndMonitor(): Promise<void> {
+	private async startAndWaitForPort(): Promise<void> {
 		const container = this.ctx.container!;
-		await container.setInactivityTimeout(5 * 60 * 1000);
 		if (!container.running) {
-			container.start();
+			container.start({
+				image: container.images.base,
+				instance: "lite",
+				enableInternet: false,
+			});
 		}
+		this.observeExit();
+		await container.setInactivityTimeout(INACTIVITY_TIMEOUT_MS);
 
-		this.ctx.waitUntil(
-			container
-				.monitor()
-				.then(() => console.log("Container stopped"))
-				.catch((error: unknown) => console.error("Container error:", error)),
-		);
-
-		const port = container.getTcpPort(4000);
+		const port = container.getTcpPort(8080);
 		let lastError: unknown;
 		for (let attempt = 0; attempt < 100; attempt++) {
 			try {
-				const response = await port.fetch("http://container/health");
+				const response = await port.fetch("http://container/health", {
+					signal: AbortSignal.timeout(1000),
+				});
+				await response.body?.cancel();
 				if (!response.ok) {
 					throw new Error(`Health check returned ${response.status}`);
 				}
-				console.log("Container successfully started");
+				console.log("Container is ready");
 				return;
 			} catch (error) {
 				lastError = error;
 				await scheduler.wait(200);
 			}
 		}
-		throw new Error("Container did not become ready on port 4000", {
+		throw new Error("Container did not become ready on port 8080", {
 			cause: lastError,
 		});
 	}
+
+	private observeExit(): void {
+		if (this.monitoring) return;
+		this.monitoring = this.ctx
+			.container!.monitor()
+			.then(() => console.log("Container exited successfully"))
+			.catch((error: unknown) => console.error("Container failed:", error))
+			.finally(() => {
+				this.monitoring = undefined;
+			});
+		this.ctx.waitUntil(this.monitoring);
+	}
 }
+
+export default {
+	fetch(request: Request, env: Env): Promise<Response> {
+		return env.MY_CONTAINER.getByName("demo").fetch(request);
+	},
+} satisfies ExportedHandler<Env>;
 ```
 
-*src/index.jsjs*
+`monitor()` resolves without a value after a successful exit. It rejects for failures, including nonzero process exits. The constructor restores monitoring and the inactivity timeout when the Durable Object restarts with a running Container.
+
+A pending monitor can keep the Durable Object active for up to 15 minutes. The five-minute inactivity timeout starts after the Durable Object becomes inactive, not five minutes after the last HTTP request. Monitoring is not a durable event subscription across restarts. Refer to [`monitor()`](https://developers.cloudflare.com/containers/api/durable-object-container/#monitor).
+
+## Define the container
+
+Save these files in the project root. The server listens on `0.0.0.0:8080` and exposes a readiness endpoint at `/health`.
+
+*server.mjsjs*
 
 ```js
-import { Container } from "@cloudflare/containers";
+import { createServer } from "node:http";
 
-export class MyContainer extends Container {
-	defaultPort = 4000;
-	sleepAfter = "5m";
-
-	onStart() {
-		console.log("Container successfully started");
+createServer((request, response) => {
+	if (request.url === "/health") {
+		response.writeHead(200).end();
+		return;
 	}
-
-	onStop(stopParams) {
-		if (stopParams.exitCode === 0) {
-			console.log("Container stopped gracefully");
-		} else {
-			console.log("Container stopped with exit code:", stopParams.exitCode);
-		}
-
-		console.log("Container stop reason:", stopParams.reason);
-	}
-
-	async onActivityExpired() {
-		console.log("Container became idle, stopping it now");
-		await this.stop();
-	}
-
-	onError(error) {
-		console.log("Container error:", error);
-	}
-}
+	response.setHeader("Content-Type", "application/json");
+	response.end(
+		JSON.stringify({
+			message: "Hello from a Container",
+			environment: process.env.ENV_VAR,
+			kvValue: process.env.KV_VALUE,
+		}),
+	);
+}).listen(8080, "0.0.0.0");
 ```
 
-*src/index.tsts*
+*Dockerfiledockerfile*
 
-```ts
-import { Container, type StopParams } from "@cloudflare/containers";
-
-export class MyContainer extends Container {
-	defaultPort = 4000;
-	sleepAfter = "5m";
-
-	override onStart() {
-		console.log("Container successfully started");
-	}
-
-	override onStop(stopParams: StopParams) {
-		if (stopParams.exitCode === 0) {
-			console.log("Container stopped gracefully");
-		} else {
-			console.log("Container stopped with exit code:", stopParams.exitCode);
-		}
-
-		console.log("Container stop reason:", stopParams.reason);
-	}
-
-	override async onActivityExpired() {
-		console.log("Container became idle, stopping it now");
-		await this.stop();
-	}
-
-	override onError(error: unknown) {
-		console.log("Container error:", error);
-	}
-}
+```dockerfile
+FROM node:24-bookworm-slim
+WORKDIR /app
+COPY server.mjs .
+EXPOSE 8080
+CMD ["node", "server.mjs"]
 ```
 
-The `monitor()` promise resolves without a value when the container exits successfully. For nonzero exits, it rejects with an error containing the exit code. The `setInactivityTimeout()` method does not invoke a callback when the timeout expires. Use the [`Container` class lifecycle hooks](https://developers.cloudflare.com/containers/api/container-class/#lifecycle-hooks) for structured stop parameters and an inactivity callback.
+## Run the example
+
+Start a Docker-compatible engine. Install Wrangler in your project, using version 4.136.0 or later for [local development](https://developers.cloudflare.com/containers/guides/local-dev/).
+
+npmyarnpnpmbun
+
+```
+npm i -D wrangler
+```
+
+```
+yarn add -D wrangler
+```
+
+```
+pnpm add -D wrangler
+```
+
+```
+bun add -d wrangler
+```
+
+npmyarnpnpm
+
+```
+npx wrangler dev
+```
+
+```
+yarn wrangler dev
+```
+
+```
+pnpm wrangler dev
+```
+
+Visit `http://localhost:8787/` and inspect the Worker logs for readiness. Container completion or failure is logged when observed by `monitor()`.
 
 Was this helpful?
 
@@ -227,5 +361,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/status-hooks/#page","headline":"Status Hooks","description":"Execute Workers code in reaction to Container status changes","url":"https://developers.cloudflare.com/containers/examples/status-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/examples/status-hooks/og.png?v=3560c99df3dbc646","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/examples/status-hooks/#page","headline":"Monitor container lifecycle","description":"Execute Workers code in reaction to Container status changes","url":"https://developers.cloudflare.com/containers/examples/status-hooks/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/examples/status-hooks/og.png?v=26c87d17da56027f","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

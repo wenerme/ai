@@ -16,6 +16,41 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/access.xml)
 
+## 2026-10-02
+
+
+**New strict service token authentication setting for Access**
+
+The strict service token authentication setting applies consistent behavior to requests made with service tokens. When the setting is on for a Zero Trust organization, Access handles requests with service token headers as follows:
+
+- If authentication or authorization fails, Access always returns `401` or `403` instead of redirecting the client to the login page with `302`.
+- Only Service Auth policies can authorize the request. Access ignores Allow policies and any `CF_Authorization` cookie sent with the request.
+- Access does not return a `CF_Authorization` cookie to the client after successful authentication. Subsequent requests should continue to use service token headers.
+- Failed requests for recognized service tokens appear in [Access authentication logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/dashboard-logs/access-authentication-logs/#non-identity-authentication).
+
+Zero Trust organizations created on or after October 5, 2026 have strict service token authentication turned on by default and cannot turn it off. Cloudflare recommends that existing organizations turn it on as well.
+
+Organizations created before October 5, 2026 can configure the setting in the dashboard or through the API.
+
+1. In the [Cloudflare dashboard ↗︎](https://dash.cloudflare.com/), go to **Zero Trust** > **Access controls** > **Access settings**. [Go to **Access settings** ↗](https://one.dash.cloudflare.com/?to=/:account/access-controls/settings)
+2. Under **Manage service tokens**, turn on **Strict service token authentication**.
+3. In the confirmation dialog, select **Enable**.
+
+To turn off strict service token authentication, turn off the setting and select **Disable**.
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/%7Baccount_id%7D/access/organizations" \
+	--request PATCH \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"strict_service_token_auth": true
+	}'
+```
+
+To turn off strict service token authentication, set `strict_service_token_auth` to `false`.
+
+For behavior and configuration details, refer to [Strict service token authentication](https://developers.cloudflare.com/cloudflare-one/access-controls/service-credentials/service-tokens/#strict-service-token-authentication).
+
 ## 2026-10-01
 
 

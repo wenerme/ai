@@ -480,7 +480,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -549,6 +549,10 @@ Get images usage details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 

@@ -1,7 +1,7 @@
 ---
 title: "Comfy Router クイックスタート"
 description: "最新のフロンティアメディアモデルを使って、数分で画像とビデオを生成します。"
-translationSourceHash: 9ac67939
+translationSourceHash: 36d0191e
 translationFrom: development/comfy-router/quickstart.mdx
 ---
 
@@ -10,6 +10,8 @@ translationFrom: development/comfy-router/quickstart.mdx
 Comfy Router は、`https://api.comfy.org` でホストされている画像・ビデオモデルを単一の API で利用できるようにします。[あなたの Comfy ワークスペース](https://platform.comfy.org/profile/api-keys?onboarding=router)で APIキーを作成し、公式の [Python と TypeScript SDK](/ja/development/api-development/sdks) またはプレーンな HTTP で任意のモデルを呼び出します。課金は従量制です。各リクエストはワークスペースの残高からクレジットを消費し、サブスクリプションはありません。
 
   **Higgsfield をお使いですか？** ご自身の Higgsfield キーを保存すると、それらの生成は Comfy のクレジットではなく、Higgsfield アカウントに課金されます。エンドポイントもリクエストボディも同じです。詳細は[ご自身のキーで Higgsfield を使う](/ja/development/comfy-router/higgsfield-byok)をご覧ください。
+
+  **LiteLLM で支出を追跡していますか？** Router は同期実行の USD コストを LiteLLM が読み取るヘッダーで報告するため、価格表を管理する必要はありません。詳細は[Comfy Router を LiteLLM で使う](/development/comfy-router/litellm)をご覧ください。
 
   
     [あなたの Comfy ワークスペース](https://platform.comfy.org/profile/api-keys?onboarding=router)でキーを作成します。Bash 互換のターミナルで、次を設定します：

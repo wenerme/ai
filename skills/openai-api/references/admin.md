@@ -18800,7 +18800,7 @@ Get audio speeches usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -18869,6 +18869,10 @@ Get audio speeches usage details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 
@@ -19422,7 +19426,7 @@ Get audio transcriptions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -19491,6 +19495,10 @@ Get audio transcriptions usage details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 
@@ -20026,7 +20034,7 @@ Get code interpreter sessions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -20095,6 +20103,10 @@ Get code interpreter sessions usage details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 
@@ -20654,7 +20666,7 @@ Get completions usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -20723,6 +20735,10 @@ Get completions usage details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 
@@ -20864,11 +20880,13 @@ Get costs details for the organization.
 
   End time (Unix seconds) of the query time range, exclusive.
 
-- `group_by: optional array of "project_id" or "line_item" or "api_key_id" or "api_source"`
+- `group_by: optional array of "project_id" or "user_id" or "line_item" or 2 more`
 
-  Group the costs by the specified fields. Support fields include `project_id`, `line_item`, `api_key_id`, `api_source` and any combination of them. When grouped by `api_source`, results use `agents_api` for attributed Agents API activity and `unlabeled` for all other activity. Without source grouping, `api_source` is null.
+  Group the costs by the specified fields. Supported fields include `project_id`, `user_id`, `line_item`, `api_key_id`, and `api_source`. Support for combining `user_id` with `project_id` grouping or the `project_ids` filter depends on the organization and requested time range. Unsupported combinations return HTTP 400. When grouped by `api_source`, results use `agents_api` for attributed Agents API activity and `unlabeled` for all other activity. Without source grouping, `api_source` is null.
 
   - `"project_id"`
+
+  - `"user_id"`
 
   - `"line_item"`
 
@@ -21280,7 +21298,7 @@ Get costs details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -21349,6 +21367,10 @@ Get costs details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 
@@ -21905,7 +21927,7 @@ Get embeddings usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -21974,6 +21996,10 @@ Get embeddings usage details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 
@@ -22527,7 +22553,7 @@ Get file search calls usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -22596,6 +22622,10 @@ Get file search calls usage details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 
@@ -23176,7 +23206,7 @@ Get images usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -23245,6 +23275,10 @@ Get images usage details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 
@@ -23800,7 +23834,7 @@ Get moderations usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -23869,6 +23903,10 @@ Get moderations usage details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 
@@ -24404,7 +24442,7 @@ Get vector stores usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -24473,6 +24511,10 @@ Get vector stores usage details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 
@@ -25036,7 +25078,7 @@ Get web search calls usage details for the organization.
 
         When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-    - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+    - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
       The aggregated costs details of the specific time bucket.
 
@@ -25105,6 +25147,10 @@ Get web search calls usage details for the organization.
           - `"images"`
 
           - `"characters"`
+
+      - `user_id: optional string or null`
+
+        When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
   - `start_time: number`
 
@@ -25625,7 +25671,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -25694,6 +25740,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
             - `"images"`
 
             - `"characters"`
+
+        - `user_id: optional string or null`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
     - `start_time: number`
 
@@ -26095,7 +26145,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -26164,6 +26214,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
             - `"images"`
 
             - `"characters"`
+
+        - `user_id: optional string or null`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
     - `start_time: number`
 
@@ -26565,7 +26619,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -26634,6 +26688,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
             - `"images"`
 
             - `"characters"`
+
+        - `user_id: optional string or null`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
     - `start_time: number`
 
@@ -27035,7 +27093,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -27104,6 +27162,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
             - `"images"`
 
             - `"characters"`
+
+        - `user_id: optional string or null`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
     - `start_time: number`
 
@@ -27505,7 +27567,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -27574,6 +27636,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
             - `"images"`
 
             - `"characters"`
+
+        - `user_id: optional string or null`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
     - `start_time: number`
 
@@ -27975,7 +28041,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -28044,6 +28110,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
             - `"images"`
 
             - `"characters"`
+
+        - `user_id: optional string or null`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
     - `start_time: number`
 
@@ -28445,7 +28515,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -28514,6 +28584,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
             - `"images"`
 
             - `"characters"`
+
+        - `user_id: optional string or null`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
     - `start_time: number`
 
@@ -28915,7 +28989,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -28984,6 +29058,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
             - `"images"`
 
             - `"characters"`
+
+        - `user_id: optional string or null`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
     - `start_time: number`
 
@@ -29385,7 +29463,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -29454,6 +29532,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
             - `"images"`
 
             - `"characters"`
+
+        - `user_id: optional string or null`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
     - `start_time: number`
 
@@ -29855,7 +29937,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -29924,6 +30006,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
             - `"images"`
 
             - `"characters"`
+
+        - `user_id: optional string or null`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
     - `start_time: number`
 
@@ -30325,7 +30411,7 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
 
           When `group_by=user_id`, this field provides the user ID of the grouped usage result.
 
-      - `OrganizationCostsResult object { object, amount, api_key_id, 5 more }`
+      - `OrganizationCostsResult object { object, amount, api_key_id, 6 more }`
 
         The aggregated costs details of the specific time bucket.
 
@@ -30394,6 +30480,10 @@ curl "https://api.openai.com/v1/organization/usage/web_search_calls?start_time=1
             - `"images"`
 
             - `"characters"`
+
+        - `user_id: optional string or null`
+
+          When `group_by=user_id`, this field provides the user ID of the grouped costs result.
 
     - `start_time: number`
 
