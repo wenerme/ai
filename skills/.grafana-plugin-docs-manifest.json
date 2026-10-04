@@ -1611,8 +1611,8 @@
   },
   "grafana-prometheusalerting-app/alerting-rules/manage-rule-groups.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/manage-rule-groups.md",
-    "size": 492,
-    "updatedAt": "2026-09-25T15:21:25.459Z"
+    "size": 3594,
+    "updatedAt": "2026-10-04T15:29:19.032Z"
   },
   "grafana-prometheusalerting-app/alerting-rules/template-annotations-and-labels.md": {
     "url": "https://grafana.com/docs/plugins/grafana-prometheusalerting-app/latest/alerting-rules/template-annotations-and-labels.md",
