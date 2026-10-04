@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/cache/debugging/og.png?v=323bb8
 
 # Debugging
 
-Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/debugging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/debugging/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If caching is not behaving the way you expect, the `Cf-Cache-Status` response header is the first place to look. Every response carries it, and its value tells you exactly what happened for that request.
 
@@ -100,7 +100,7 @@ By default a deployment takes effect immediately, because the Worker version is 
 If your origin data changed but requests still return stale content:
 
 - **Check the TTL.** The response stays cached for `max-age` seconds. You may be looking at a response that is still within its freshness window.
-- **Purge the affected responses.** Use `ctx.cache.purge()` with tags or a path prefix to invalidate specific entries. Refer to [Purging the cache](https://developers.cloudflare.com/workers/cache/purge/).
+- **Purge the affected responses.** Use `ctx.cache.purge()` with tags or a path prefix to delete specific entries. Refer to [Purging the cache](https://developers.cloudflare.com/workers/cache/purge/).
 - **Add tags at write time.** If you did not set `Cache-Tag` headers, you cannot purge by tag. Add tags to your cached responses, deploy, and once new entries are written they become purgeable.
 
 ## Two callers receive each other's cached responses
@@ -166,5 +166,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/debugging/#page","headline":"Debugging","description":"Diagnose why Workers Caching is not behaving the way you expect.","url":"https://developers.cloudflare.com/workers/cache/debugging/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/debugging/og.png?v=323bb85e9cced0d1","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/debugging/#page","headline":"Debugging","description":"Diagnose why Workers Caching is not behaving the way you expect.","url":"https://developers.cloudflare.com/workers/cache/debugging/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/debugging/og.png?v=323bb85e9cced0d1","dateModified":"2026-10-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

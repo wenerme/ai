@@ -297,7 +297,7 @@ Validate a grader.
 
     - `range: optional array of number`
 
-      The range of the score. Defaults to `[0, 1]`.
+      The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
     - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -773,7 +773,7 @@ Validate a grader.
 
     - `range: optional array of number`
 
-      The range of the score. Defaults to `[0, 1]`.
+      The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
     - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 

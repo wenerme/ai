@@ -1,7 +1,7 @@
 ---
-description: Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.
-title: Purging the cache
-image: https://developers.cloudflare.com/workers/cache/purge/og.png?v=3de6cde3b29b0753
+description: Delete cached responses with ctx.cache.purge() or mark them stale with ctx.cache.invalidate() — by tag, by path prefix, or everything.
+title: Purge and invalidate the cache
+image: https://developers.cloudflare.com/workers/cache/purge/og.png?v=232653489c14e903
 ---
 
 [Skip to content](#main-content)
@@ -10,13 +10,13 @@ image: https://developers.cloudflare.com/workers/cache/purge/og.png?v=3de6cde3b2
 > Fetch the complete documentation index at: https://developers.cloudflare.com/workers/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-# Purging the cache
+# Purge and invalidate the cache
 
-Last updated Aug 20, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/purge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/purge/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Your Worker can invalidate its own cached responses at any time using the purge API. Purging is useful when data changes and the new value is more important than the performance benefit of continuing to serve the cached response — for example, after a content update, a user action, or a webhook from an upstream system.
+Your Worker can delete its own cached responses at any time with `purge()`, or mark them stale with [`invalidate()`](#invalidate-cached-responses) so that the cache revalidates them with your Worker on the next request. Both are useful when data changes and the new value is more important than the performance benefit of continuing to serve the cached response — for example, after a content update, a user action, or a webhook from an upstream system.
 
-Because Workers Caching is **your Worker's cache**, purging is scoped to the Worker that owns the cache. Within a Worker, purges are further scoped to the [entrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) that called `purge()`. A Worker cannot reach into another Worker's cache, an entrypoint cannot reach into another entrypoint's cache, and no zone-level purge (via the dashboard, [API](https://developers.cloudflare.com/cache/how-to/purge-cache/), or Terraform) affects Workers Caching content.
+Because Workers Caching is **your Worker's cache**, purging and invalidating are scoped to the Worker that owns the cache. Within a Worker, both are further scoped to the [entrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) that called `purge()` or `invalidate()`. A Worker cannot reach into another Worker's cache, an entrypoint cannot reach into another entrypoint's cache, and no zone-level purge (via the dashboard, [API](https://developers.cloudflare.com/cache/how-to/purge-cache/), or Terraform) affects Workers Caching content.
 
 ## Two ways to call purge
 
@@ -77,7 +77,7 @@ The rest of this page uses `ctx.cache.purge(...)` in most examples because those
 
 `purgeEverything` is exclusive — combine `tags` and `pathPrefixes` in a single call if you want, but do not pass either alongside `purgeEverything`.
 
-All three modes are scoped to the [entrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) that called `purge()`. A purge from `PublicAPI` does not affect cached responses stored by `AdminAPI`, even if they share tag names or path prefixes. To invalidate across every entrypoint of a Worker, call `purge()` from each entrypoint.
+All three modes are scoped to the [entrypoint](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) that called `purge()`. A purge from `PublicAPI` does not affect cached responses stored by `AdminAPI`, even if they share tag names or path prefixes. To purge across every entrypoint of a Worker, call `purge()` from each entrypoint.
 
 The returned promise resolves to a result object you can inspect to confirm success or handle failures — see [Return value](#return-value).
 
@@ -91,7 +91,7 @@ export default {
 		if (request.method === "POST") {
 			const body = await request.json();
 
-			// Mutate your data source (D1, KV, an origin, and so on), then invalidate
+			// Mutate your data source (D1, KV, an origin, and so on), then purge
 			// every cached response tagged for this post.
 			await ctx.cache.purge({
 				tags: [`post-${body.postId}`, "post-list"],
@@ -116,7 +116,7 @@ export default {
 		if (request.method === "POST") {
 			const body = await request.json<{ postId: string }>();
 
-			// Mutate your data source (D1, KV, an origin, and so on), then invalidate
+			// Mutate your data source (D1, KV, an origin, and so on), then purge
 			// every cached response tagged for this post.
 			await ctx.cache.purge({
 				tags: [`post-${body.postId}`, "post-list"],
@@ -133,14 +133,14 @@ export default {
 } satisfies ExportedHandler;
 ```
 
-You can combine fields in a single call. For example, `purge({ tags: ["blog-posts"], pathPrefixes: ["/blog/"] })` purges everything that matches **either** tag or path-prefix — the fields are unioned, not intersected. Use this when one logical invalidation affects responses tagged by multiple schemes.
+You can combine fields in a single call. For example, `purge({ tags: ["blog-posts"], pathPrefixes: ["/blog/"] })` purges everything that matches **either** tag or path-prefix — the fields are unioned, not intersected. Use this when one logical change affects responses tagged by multiple schemes.
 
 *src/index.jsjs*
 
 ```js
 export default {
 	async fetch(request, env, ctx) {
-		// Combined call: invalidates everything tagged "blog-posts" AND
+		// Combined call: purges everything tagged "blog-posts" AND
 		// everything under /blog/ in a single round-trip.
 		await ctx.cache.purge({
 			tags: ["blog-posts"],
@@ -157,7 +157,7 @@ export default {
 ```ts
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		// Combined call: invalidates everything tagged "blog-posts" AND
+		// Combined call: purges everything tagged "blog-posts" AND
 		// everything under /blog/ in a single round-trip.
 		await ctx.cache.purge({
 			tags: ["blog-posts"],
@@ -253,11 +253,11 @@ export default {
 
 ### Tag scope across entrypoints
 
-Tags are scoped to the entrypoint that called `purge()`. A tag named `user-42` applied to responses in two different entrypoints is **not** invalidated by a single `purge({ tags: ["user-42"] })` call — it only affects the entrypoint the call originated from. If you need to invalidate the same tag across several entrypoints, call `purge()` from each entrypoint, or centralize purge calls in a shared entrypoint that caches every response you later need to invalidate.
+Tags are scoped to the entrypoint that called `purge()`. A tag named `user-42` applied to responses in two different entrypoints is **not** purged by a single `purge({ tags: ["user-42"] })` call — it only affects the entrypoint the call originated from. If you need to purge the same tag across several entrypoints, call `purge()` from each entrypoint, or centralize purge calls in a shared entrypoint that caches every response you later need to purge.
 
 ### Use hierarchical tags
 
-To invalidate groups of related responses in one call, tag each response with multiple tags representing every level of hierarchy it belongs to — sometimes called "soft tags":
+To purge groups of related responses in one call, tag each response with multiple tags representing every level of hierarchy it belongs to — sometimes called "soft tags":
 
 *src/index.jsjs*
 
@@ -315,7 +315,7 @@ export default {
 } satisfies ExportedHandler;
 ```
 
-Purging the tag `_path:/blog/2025/` then invalidates every cached response whose URL starts with `/blog/2025/`.
+Purging the tag `_path:/blog/2025/` then deletes every cached response whose URL starts with `/blog/2025/`.
 
 For limits on the number, length, and character set of tags, refer to [Cache tag limits](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-tags/#a-few-things-to-remember).
 
@@ -330,7 +330,7 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-03",
 	"cache": { "enabled": true, "cross_version_cache": true },
 	"version_metadata": { "binding": "CF_VERSION_METADATA" },
 }
@@ -340,7 +340,7 @@ Add the [version metadata binding](https://developers.cloudflare.com/workers/run
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-03"
 
 [cache]
 enabled = true
@@ -396,7 +396,7 @@ export default {
 } satisfies ExportedHandler<Env>;
 ```
 
-When you want to invalidate everything a specific version wrote — for example, after a rollback — purge the version tag:
+When you want to purge everything a specific version wrote — for example, after a rollback — purge the version tag:
 
 *src/admin.jsjs*
 
@@ -430,14 +430,14 @@ export default {
 
 ## Purge by path prefix
 
-`pathPrefixes` invalidates every cached response whose **request path** begins with one of the given prefixes:
+`pathPrefixes` purges every cached response whose **request path** begins with one of the given prefixes:
 
 *src/index.jsjs*
 
 ```js
 export default {
 	async fetch(request, env, ctx) {
-		// Invalidate everything under /blog/2025/ for the current entrypoint.
+		// Purge everything under /blog/2025/ for the current entrypoint.
 		await ctx.cache.purge({
 			pathPrefixes: ["/blog/2025/"],
 		});
@@ -452,7 +452,7 @@ export default {
 ```ts
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		// Invalidate everything under /blog/2025/ for the current entrypoint.
+		// Purge everything under /blog/2025/ for the current entrypoint.
 		await ctx.cache.purge({
 			pathPrefixes: ["/blog/2025/"],
 		});
@@ -468,14 +468,14 @@ Entries in `pathPrefixes` are **paths**, not full URLs. A prefix must not includ
 
 ### Purge a single URL
 
-There is no dedicated "purge by URL" mode. To invalidate a single cached URL, pass its path as a single-element `pathPrefixes` array:
+There is no dedicated "purge by URL" mode. To purge a single cached URL, pass its path as a single-element `pathPrefixes` array:
 
 *src/index.jsjs*
 
 ```js
 export default {
 	async fetch(request, env, ctx) {
-		// Invalidate the cached response for exactly /blog/2026/hello-world.
+		// Purge the cached response for exactly /blog/2026/hello-world.
 		await ctx.cache.purge({
 			pathPrefixes: ["/blog/2026/hello-world"],
 		});
@@ -490,7 +490,7 @@ export default {
 ```ts
 export default {
 	async fetch(request, env, ctx): Promise<Response> {
-		// Invalidate the cached response for exactly /blog/2026/hello-world.
+		// Purge the cached response for exactly /blog/2026/hello-world.
 		await ctx.cache.purge({
 			pathPrefixes: ["/blog/2026/hello-world"],
 		});
@@ -504,7 +504,7 @@ Because `pathPrefixes` matches on the start of the request path, passing the ful
 
 ## Purge everything
 
-Invalidate every cached response stored by the calling entrypoint:
+Delete every cached response stored by the calling entrypoint:
 
 *src/index.jsjs*
 
@@ -532,13 +532,145 @@ export default {
 
 Use this sparingly. Purging everything causes all subsequent requests to miss the cache until they can be re-filled, which temporarily increases load on your Worker and any upstream services it calls.
 
+## Invalidate cached responses
+
+`invalidate()` is the soft counterpart of `purge()`. It accepts the same options (`tags`, `pathPrefixes`, or `purgeEverything`), selects cached responses the same way, follows the same [per-entrypoint scoping](#purge-modes), and resolves to the same [result object](#return-value). You can call it as `ctx.cache.invalidate(...)` or as `cache.invalidate(...)` imported from `cloudflare:workers` — the [same two forms](#two-ways-to-call-purge) as `purge()`.
+
+The two methods differ in what happens to the matching cached responses:
+
+| Method | Matching cached responses | Next matching request |
+| --- | --- | --- |
+| `purge()` | Deleted | Cache miss. Your Worker runs and produces a fresh response. |
+| `invalidate()` | Kept, but marked stale | Revalidated. The cache sends your Worker a conditional request instead. |
+
+To revalidate an invalidated response, the cache calls your Worker with conditional request headers built from the validators stored with the response — for example, `If-None-Match` carrying the cached `ETag`, or `If-Modified-Since` carrying the cached `Last-Modified`. If your Worker answers `304 Not Modified`, the cache keeps the stored body and serves it with `Cf-Cache-Status: REVALIDATED`, and later requests are `HIT`s again. If your Worker answers with a full `200` response instead, that response replaces the cached one.
+
+`invalidate()` therefore saves work only when your Worker emits validators (`ETag` or `Last-Modified`) and answers matching conditional requests with `304`. This helps most when one call covers many responses but only some of them changed. Each unchanged response then costs a validator check instead of a full regeneration. If your Worker does not emit validators, or always answers with a full response, every revalidation regenerates the response and `invalidate()` saves no work compared to `purge()`.
+
+In this example, a catalog sync writes every product and then invalidates all product pages. Each product carries a revision that changes only when its data changes, and the Worker uses that revision as the `ETag`. Pages for unchanged products revalidate with `304`, so the Worker renders only the pages that changed:
+
+*src/index.jsjs*
+
+```js
+function renderProductPage(product) {
+	// Stands in for the expensive rendering work that a 304 response skips.
+	return `<!doctype html><title>${product.name}</title>`;
+}
+
+export default {
+	async fetch(request, env, ctx) {
+		const url = new URL(request.url);
+
+		if (request.method === "POST" && url.pathname === "/sync") {
+			// Write every product from the upstream catalog. Many are unchanged.
+			const products = await request.json();
+			await Promise.all(
+				products.map((product) =>
+					env.PRODUCTS.put(product.id, JSON.stringify(product)),
+				),
+			);
+
+			// Mark every cached product page stale instead of deleting it.
+			await ctx.cache.invalidate({ tags: ["products"] });
+
+			return new Response("Synced", { status: 200 });
+		}
+
+		const id = url.pathname.split("/").pop() ?? "";
+		const product = await env.PRODUCTS.get(id, "json");
+		if (!product) return new Response("Not found", { status: 404 });
+
+		const etag = `"${product.revision}"`;
+		const headers = {
+			"Cache-Control": "public, max-age=86400",
+			"Cache-Tag": `products,product-${id}`,
+			ETag: etag,
+		};
+
+		// To revalidate an invalidated response, the cache sends the stored ETag
+		// in If-None-Match. If the product has not changed, answer 304 and skip
+		// rendering. The cache keeps the body it already has.
+		if (request.headers.get("If-None-Match") === etag) {
+			return new Response(null, { status: 304, headers });
+		}
+
+		return new Response(renderProductPage(product), {
+			headers: { ...headers, "Content-Type": "text/html" },
+		});
+	},
+};
+```
+
+*src/index.tsts*
+
+```ts
+interface Env {
+	PRODUCTS: KVNamespace;
+}
+
+interface Product {
+	id: string;
+	name: string;
+	// Changes only when the product data changes.
+	revision: string;
+}
+
+function renderProductPage(product: Product): string {
+	// Stands in for the expensive rendering work that a 304 response skips.
+	return `<!doctype html><title>${product.name}</title>`;
+}
+
+export default {
+	async fetch(request, env, ctx): Promise<Response> {
+		const url = new URL(request.url);
+
+		if (request.method === "POST" && url.pathname === "/sync") {
+			// Write every product from the upstream catalog. Many are unchanged.
+			const products = await request.json<Product[]>();
+			await Promise.all(
+				products.map((product) =>
+					env.PRODUCTS.put(product.id, JSON.stringify(product)),
+				),
+			);
+
+			// Mark every cached product page stale instead of deleting it.
+			await ctx.cache.invalidate({ tags: ["products"] });
+
+			return new Response("Synced", { status: 200 });
+		}
+
+		const id = url.pathname.split("/").pop() ?? "";
+		const product = await env.PRODUCTS.get<Product>(id, "json");
+		if (!product) return new Response("Not found", { status: 404 });
+
+		const etag = `"${product.revision}"`;
+		const headers = {
+			"Cache-Control": "public, max-age=86400",
+			"Cache-Tag": `products,product-${id}`,
+			ETag: etag,
+		};
+
+		// To revalidate an invalidated response, the cache sends the stored ETag
+		// in If-None-Match. If the product has not changed, answer 304 and skip
+		// rendering. The cache keeps the body it already has.
+		if (request.headers.get("If-None-Match") === etag) {
+			return new Response(null, { status: 304, headers });
+		}
+
+		return new Response(renderProductPage(product), {
+			headers: { ...headers, "Content-Type": "text/html" },
+		});
+	},
+} satisfies ExportedHandler<Env>;
+```
+
 ## Purge propagation
 
 Purges triggered by `ctx.cache.purge()` use Cloudflare's [Instant Purge](https://developers.cloudflare.com/cache/how-to/purge-cache/) infrastructure and propagate globally with the same guarantees as zone-level purges.
 
 ## Return value
 
-`purge()` resolves to a result object. Check `success` to confirm the purge was accepted, and inspect `errors` if it was not:
+`purge()` and `invalidate()` resolve to the same result object. Check `success` to confirm the request was accepted, and inspect `errors` if it was not:
 
 *src/index.jsjs*
 
@@ -589,5 +721,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purging the cache","description":"Invalidate cached responses using ctx.cache.purge() — purge by tag, by path prefix, or purge everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/purge/og.png?v=3de6cde3b29b0753","dateModified":"2026-08-20","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/purge/#page","headline":"Purge and invalidate the cache","description":"Delete cached responses with ctx.cache.purge() or mark them stale with ctx.cache.invalidate() — by tag, by path prefix, or everything.","url":"https://developers.cloudflare.com/workers/cache/purge/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/purge/og.png?v=232653489c14e903","dateModified":"2026-10-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

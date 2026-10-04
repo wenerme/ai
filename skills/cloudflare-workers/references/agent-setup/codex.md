@@ -58,7 +58,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Build an image upload and transformation service using R2 and Cloudflare Images.
+   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
    ```
 
 
@@ -172,15 +172,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
-```
-
-```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
@@ -188,7 +180,15 @@ Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Add mTLS authentication and schema validation to protect my API endpoints.
+```
+
+```txt
+Set up rate limiting and WAF rules to block abuse on my public API.
+```
+
+```txt
+Add a cron trigger to my Worker that processes a job queue every hour.
 ```
 
 ## Tips

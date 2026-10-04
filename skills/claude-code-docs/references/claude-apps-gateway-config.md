@@ -784,6 +784,9 @@ managed:
     - match: {}
       cli:
         availableModels: [claude-opus-4-8, claude-sonnet-4-6, claude-haiku-4-5]
+        # Make the Default option in /model resolve inside each policy's
+        # list. The eng-contractors policy inherits enforceAvailableModels.
+        enforceAvailableModels: true
 ```
 
 A `match: {}` catch-all, conventionally listed last, is treated as a base layer. Every other policy inherits any key it doesn't set from the catch-all, so per-role entries only need to list what differs from the org default. The merge rules depend on the key type:
@@ -792,7 +795,7 @@ A `match: {}` catch-all, conventionally listed last, is treated as a base layer.
 * **Deny-lists and hook arrays**: `permissions.deny`, `permissions.ask`, `disabledMcpjsonServers`, `deniedMcpServers`, `blockedMarketplaces`, and every `hooks` event-type array. These take the union of base and policy, so an org-wide deny or audit hook can't be accidentally dropped by a per-role override.
 * **Record-typed keys**: `env`, `modelOverrides`, and `skillOverrides`. These shallow-merge, so a per-role `env` block overrides keys it sets and inherits the rest from the base.
 
-`availableModels` is also enforced server-side at `/v1/messages`, so a denied model returns `400` regardless of what the client sends.
+`availableModels` is also enforced server-side at `/v1/messages`, so a denied model returns `400` regardless of what the client sends. An empty list denies every model. The check also covers the model a session starts on before the developer picks one, so [start sessions on a model the policy allows](#start-sessions-on-a-model-the-policy-allows).
 
 The gateway validates the `model` value itself before it relays a request, so a malformed value never reaches an upstream. It rejects the request with a `400` in two cases:
 
@@ -818,6 +821,27 @@ An authenticated user who matches no policy gets the gateway's defaults, which m
   * **Policy contents**: editing a policy and redeploying reaches connected clients on their next managed-settings poll, within an hour, apart from the [changes that apply only at the next launch](/docs/en/server-managed-settings#fetch-and-caching-behavior)
   * **Group membership**: changing a user's group membership changes which policy matches them. This takes effect on the next session re-mint, meaning the next silent refresh, bounded by `session.ttl_hours`.
 </Note>
+
+#### Start sessions on a model the policy allows
+
+If `availableModels` leaves out Claude Code's default model, sessions get `400` responses until the developer picks a listed model, for example with `/model`. In gateway sessions the default is the Opus model the `opus` alias resolves to, and `availableModels` on its own doesn't change it.
+
+To fix this, set [`enforceAvailableModels: true`](/docs/en/model-config#enforce-the-allowlist-for-the-default-model) in the same `cli` block, then check which kind of entry the list has:
+
+* **An alias such as `sonnet`, or a built-in ID such as `claude-sonnet-4-6`**: sessions start on one of those models, and the Default option in `/model` resolves to it
+* **No alias or built-in ID in the list**: sessions can keep starting on the built-in default, so also set [`model`](/docs/en/model-config#control-the-model-users-run-on) to one of the listed IDs in that policy's `cli` block
+
+This policy lists one custom ID that [`models`](#models) defines, and starts sessions on that ID:
+
+```yaml theme={null}
+managed:
+  policies:
+    - match: { groups: [restricted-projects] }
+      cli:
+        availableModels: [claude-opus-restricted]
+        enforceAvailableModels: true
+        model: claude-opus-restricted
+```
 
 #### Matcher values that stop the gateway at boot
 
@@ -852,6 +876,7 @@ managed:
       cli:
         # Model access (also enforced server-side at /v1/messages)
         availableModels: [claude-opus-4-8, claude-sonnet-4-6, claude-haiku-4-5]
+        enforceAvailableModels: true              # Default resolves inside the list
 
         # Permission policy
         permissions:
@@ -967,6 +992,7 @@ managed:
     - match: { groups: [eng-contractors] }
       cli:
         availableModels: [claude-sonnet-4-6]
+        enforceAvailableModels: true
       desktop:
         isLocalDevMcpEnabled: false
         disableAutoUpdates: true
@@ -1379,15 +1405,16 @@ managed:
     - match: { groups: [contractors] }
       cli:
         availableModels: [claude-haiku-4-5]
-        # Constrain the Default picker option to availableModels instead of
-        # the tier default, so contractors don't get a 400 on the default.
-        enforceAvailableModels: true
         # allow auto-approves these tools; it does not block the rest.
         # Add deny rules to restrict tools.
         permissions: { allow: [Read, Grep] }
     - match: {}
       cli:
         availableModels: [claude-opus-4-8, claude-sonnet-4-6, claude-haiku-4-5]
+        # Constrain the Default picker option to each policy's availableModels
+        # instead of the built-in default, so no role gets a 400 on Default.
+        # The contractors policy inherits this key.
+        enforceAvailableModels: true
         permissions:
           allow: [Read, Grep, Bash, Edit]
           deny: ["WebFetch"]

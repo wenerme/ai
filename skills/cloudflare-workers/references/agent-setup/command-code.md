@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
    ```
 
 
@@ -176,11 +176,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Add bot protection and rate limiting to my login and checkout endpoints.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
@@ -188,11 +188,11 @@ Connect my Worker to an existing Postgres database using Hyperdrive for connecti
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
 ```
 
 ```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Tips

@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Set up WAF rules to block SQL injection and XSS attacks on my application.
+   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
    ```
 
 
@@ -155,7 +155,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
 Set up a KV namespace for edge-cached session storage in my Worker.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
@@ -163,15 +171,7 @@ Set up custom domains with automatic SSL for my SaaS customers using SSL for Saa
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ## Tips

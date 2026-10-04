@@ -2933,7 +2933,7 @@ This example turns off automatic compaction and routes API requests through a pr
 * [`CLAUDE_CODE_PROJECT_DIR_NAME`](/docs/en/sessions#name-the-project-directory-yourself), which Claude Code reads from the launch environment only, is ignored from every file; requires v2.1.234 or later.
 * [`CLAUDE_CODE_RESTRICTED`](/docs/en/env-vars#variables), which Claude Code reads from the launch environment only, is ignored from every file.
 * [`CLAUDE_CODE_DISABLE_POWERSHELL_CMD_RM_DENY`](/docs/en/env-vars#variables), which Claude Code reads from the launch environment only, is ignored from every file. The variable requires Claude Code v2.1.283 or later.
-* [`CLAUDE_CODE_DISABLE_DANGEROUS_RM_TIMEOUT` and `CLAUDE_CODE_DISABLE_SUBSTITUTION_RM_PROMPT`](/docs/en/env-vars#variables), which Claude Code reads from the launch environment only, are ignored from every file.
+* [`CLAUDE_CODE_DISABLE_DANGEROUS_RM_TIMEOUT`, `CLAUDE_CODE_DISABLE_SUBSTITUTION_RM_PROMPT`, and `CLAUDE_CODE_DISABLE_INLINE_SHELL_RM_PROMPT`](/docs/en/env-vars#variables), which Claude Code reads from the launch environment only, are ignored from every file.
 
 ### `fileCheckpointingEnabled`
 

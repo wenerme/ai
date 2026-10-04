@@ -73,7 +73,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
    ```
 
 
@@ -180,11 +180,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Add a D1 database to my Worker and create a users table with full CRUD endpoints.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
@@ -192,11 +192,11 @@ Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips
