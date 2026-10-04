@@ -972,6 +972,8 @@ The `/model` picker has a **Default** option, and [`default` model setting](/doc
 
 When your organization deploys any managed settings, Claude Code reads this key from the managed source alone and ignores it in your other files.
 
+For how this key applies to the startup model checks, see [Amazon Bedrock](/docs/en/amazon-bedrock#when-your-organization-enforces-a-model-allowlist) and [Google Cloud's Agent Platform](/docs/en/google-vertex-ai#when-your-organization-enforces-a-model-allowlist).
+
 * **Scope**: [`Any file`](#scopes)
 * **Type**: Boolean
   * `true`: when **Default** would resolve to a model outside `availableModels`, Claude Code resolves it to the first available model in the list

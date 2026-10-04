@@ -386,7 +386,7 @@ Numeric variables such as timeouts, token budgets, and retry counts accept scien
 | `CLAUDE_CODE_SUBAGENT_MODEL` | The default model for [subagents](/docs/en/sub-agents#choose-a-model), [agent team](/docs/en/agent-teams#specify-teammates-and-models) teammates, and [workflow](/docs/en/workflows) agents that aren't assigned a model another way. Accepts an alias such as `haiku` or a full model name. Two sources take precedence over it: a model Claude passes when it spawns the agent, and a `model` field in the agent's definition, including `inherit`. To change that, set [`CLAUDE_CODE_SUBAGENT_MODEL_FORCE`](/docs/en/sub-agents#run-every-subagent-on-one-model). See [Choose a model](/docs/en/sub-agents#choose-a-model) for the full order. Setting it to `inherit` is the same as leaving it unset. Before v2.1.251, this variable overrode both the per-invocation model and the definition's `model` field |
 | `CLAUDE_CODE_SUBAGENT_MODEL_FORCE` | Set to `1` to force one model onto subagents, teammates, and workflow agents. [Run every subagent on one model](/docs/en/sub-agents#run-every-subagent-on-one-model) says which model that is. Requires Claude Code v2.1.257 or later |
 | `CLAUDE_CODE_SUBAGENT_PROMPT_CACHE_TTL` | Set `5m` or `1h`, the only values Claude Code accepts, to choose the [prompt cache TTL](/docs/en/prompt-caching#cache-lifetime) for requests outside the main conversation, such as [subagents](/docs/en/sub-agents), workflows, and background work. Takes precedence over the `subagentPromptCacheTtl` setting and over `ENABLE_PROMPT_CACHING_1H`, and `FORCE_PROMPT_CACHING_5M` overrides it. The API bills 1-hour cache writes at a higher rate. Requires Claude Code v2.1.242 or later |
-| `CLAUDE_CODE_SUBPROCESS_ENV_SCRUB` | Set to `1` to strip credentials from subprocess environments (Bash tool, hooks, MCP stdio servers): Anthropic and cloud provider credentials, any other variable that Claude Code recognizes as a credential, and credentials embedded in package registry URLs. The parent Claude process keeps these credentials for API calls, but child processes cannot read them, reducing exposure to prompt injection attacks that attempt to exfiltrate secrets via shell expansion. On v2.1.251 or later, the scrub also removes Claude Code's own configuration-store pointer variables (such as `CLAUDE_CONFIG_DIR`), so a child process cannot locate a relocated configuration directory. Leave the scrub unset if a subprocess needs these variables. On Linux, this also runs Bash subprocesses in an isolated PID namespace so they cannot read host process environments via `/proc`; as a side effect, `ps`, `pgrep`, and `kill` cannot see or signal host processes. `claude-code-action` sets this automatically when `allowed_non_write_users` is configured |
+| `CLAUDE_CODE_SUBPROCESS_ENV_SCRUB` | Set to `1` to strip credentials from the environments of the subprocesses Claude Code starts, such as Bash commands, hooks, and stdio MCP servers. The scrub recognizes a credential by its variable name or its value, and it leaves GitHub tokens and proxy settings in place. See [What the subprocess environment scrub removes](#what-the-subprocess-environment-scrub-removes). `claude-code-action` sets this automatically when `allowed_non_write_users` is configured |
 | `CLAUDE_CODE_SYNC_PLUGIN_INSTALL` | Set to `1` in non-interactive mode (the `-p` flag) to wait for plugin installation to complete before the first query. Without this, plugins install in the background and may not be available on the first turn. Combine with `CLAUDE_CODE_SYNC_PLUGIN_INSTALL_TIMEOUT_MS` to bound the wait |
 | `CLAUDE_CODE_SYNC_PLUGIN_INSTALL_TIMEOUT_MS` | Timeout in milliseconds for synchronous plugin installation. When exceeded, Claude Code proceeds without plugins and logs an error. No default: without this variable, synchronous installation waits until complete |
 | `CLAUDE_CODE_SYNC_SKILLS` | Set to `1` in non-interactive mode with the `-p` flag to make Claude Code download the skills enabled for your claude.ai account in that run and wait for the list of them, up to `CLAUDE_CODE_SYNC_SKILLS_WAIT_TIMEOUT_MS`, before it runs the first query. The downloads themselves finish in the background, and Claude waits for a skill's download when it invokes that skill. Requires claude.ai authentication. Terminal sessions where you sign in with your claude.ai account [download these skills](/docs/en/skills#where-synced-skills-load) into `~/.claude/skills/synced/` and resync about every 10 minutes without this variable, so set it only when a `-p` run needs your current skills on its first query. Before v2.1.273, terminal sessions downloaded them only in a `-p` run with this variable set. The `synced` folder name is [reserved for this download](/docs/en/skills#where-skills-live). Before v2.1.227, the skills downloaded into `~/.claude/skills/` directly. Claude Code applies [extra rules to the downloaded skills](/docs/en/skills#how-synced-skills-behave), such as not running their `!` commands on your machine |
@@ -520,6 +520,32 @@ Standard OpenTelemetry exporter variables (`OTEL_METRICS_EXPORTER`, `OTEL_LOGS_E
 
 Set `CLAUDE_CODE_ENABLE_TELEMETRY` and the OpenTelemetry variables that turn on export, choose its destination, or capture content in your shell, user settings, or managed settings. Claude Code [ignores them in project and local settings](/docs/en/settings-reference#variables-claude-code-ignores-in-env), apart from the off values that section describes. `OTEL_RESOURCE_ATTRIBUTES` and the export interval, timeout, and compression variables, such as `OTEL_METRIC_EXPORT_INTERVAL`, still apply from project and local settings.
 
+## What the subprocess environment scrub removes
+
+When you set [`CLAUDE_CODE_SUBPROCESS_ENV_SCRUB`](#variables) to `1`, Claude Code removes credentials from the environments of the subprocesses it starts, such as Bash commands, hooks, and stdio MCP servers. This reduces what a prompt injection attack can read through shell expansion. The Claude Code process keeps the credentials for its own API calls.
+
+The scrub recognizes a credential by its variable name or by the shape of its value, so use it as one layer alongside narrow [permission rules](/docs/en/permissions) rather than as the only control.
+
+The table shows what the scrub does to example variables:
+
+| Example variable | What the scrub does |
+| :- | :- |
+| `ANTHROPIC_API_KEY`, `AWS_SECRET_ACCESS_KEY` | Removes it |
+| `NPM_TOKEN`, `DB_PASSWORD` | Removes it, because the name looks like a credential |
+| `DATABASE_URL` that contains a password | Removes it, because the value looks like a credential |
+| `PIP_INDEX_URL` or `NPM_CONFIG_REGISTRY` that contains a password | Keeps the URL and cuts the username and password from it |
+| `CLAUDE_CONFIG_DIR` | Removes it. Requires Claude Code v2.1.251 or later |
+| `GITHUB_TOKEN`, `GH_TOKEN`, `GH_ENTERPRISE_TOKEN`, `GITHUB_ENTERPRISE_TOKEN` | Leaves it in place, so that `gh` and scripts that call the GitHub API keep working |
+| `HTTP_PROXY`, `HTTPS_PROXY` | Leaves it in place, including a [username and password in the URL](/docs/en/network-config#basic-authentication). The [sandbox](/docs/en/sandboxing#network-isolation) can set these variables itself for sandboxed commands |
+| `GIT_CONFIG_COUNT`, `GIT_CONFIG_KEY_<n>`, `GIT_CONFIG_VALUE_<n>` | Leaves it in place, whatever it holds |
+| A secret whose variable name and value don't look like a credential | Leaves it in place |
+
+Because the scrub leaves `GITHUB_TOKEN` in place, give a GitHub Actions job the narrowest `permissions` it needs. To remove a GitHub token from sandboxed Bash commands, add a `deny` entry under [`sandbox.credentials`](/docs/en/sandboxing#protect-credentials).
+
+Leave the scrub unset if a subprocess needs one of the removed variables.
+
+On Linux, the scrub also runs Bash subprocesses in an isolated PID namespace so they can't read host process environments through `/proc`. As a side effect, `ps`, `pgrep`, and `kill` can't see or signal host processes.
+
 ## Features that need feature-flag fetching
 
 Claude Code turns some features on through feature flags it fetches from Anthropic. Claude Code skips that fetch in these sessions:
@@ -547,9 +573,16 @@ With fetching off, you can't:
 
 ### First session after an install or upgrade
 
-In your first session after you install Claude Code, or upgrade to a version that adds a feature, a [flag-gated feature](#features-that-need-feature-flag-fetching) can be missing. That session can also start in a different [permission mode](/docs/en/permission-modes#which-mode-a-session-starts-in) than your later sessions do. Claude Code fetches the flags during that session, so your next session has the feature and the usual starting permission mode.
+In your first session after you install Claude Code, or upgrade to a version that adds a feature, a [flag-gated feature](#features-that-need-feature-flag-fetching) can be missing. That session can also start in a different [permission mode](/docs/en/permission-modes#which-mode-a-session-starts-in) than your later sessions do. When Claude Code fetches the flags during that session, it saves them on the machine, so your next session on that machine has the feature and the usual starting permission mode.
 
-After a fresh install, in a non-interactive session such as `claude -p`, the Agent SDK, or the VS Code extension, Claude Code can still pick the flags up before it [chooses the starting permission mode](/docs/en/permission-modes#which-mode-a-session-starts-in).
+After a fresh install, in a non-interactive session such as `claude -p`, the Agent SDK, or the VS Code extension, Claude Code can pick the flags up before it [chooses the starting permission mode](/docs/en/permission-modes#which-mode-a-session-starts-in), but it doesn't always wait for them.
+
+In setups such as these, sessions after the first also start without freshly fetched flags:
+
+* **A clean environment on every run**: if each run starts in a CI container, or any other environment without the flags an earlier session saved, every run is a first session
+* **A gateway token with no API key**: if you authenticate with `ANTHROPIC_AUTH_TOKEN` and no API key, and `ANTHROPIC_BASE_URL` points at a host other than Anthropic's, such as an [LLM gateway](/docs/en/llm-gateway), Claude Code has no credential to fetch the flags with
+
+To choose the permission mode that sessions in these setups start in, see [Start in a different permission mode](/docs/en/permission-modes#start-in-a-different-mode).
 
 ## See also
 

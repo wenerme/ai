@@ -3094,7 +3094,8 @@ List your organization's fine-tuning jobs
 
 - `metadata: optional map[string] or null`
 
-  Optional metadata filter. To filter, use the syntax `metadata[k]=v`. Alternatively, set `metadata=null` to indicate no metadata.
+  Optional metadata filter. To filter, use the syntax `metadata[k]=v`. Omitting the parameter or passing an empty object applies no metadata filter. An empty value, such as `metadata[k]=`, filters for that key with an empty string value.
+  To select jobs with null metadata, send the literal query string `metadata=null`. Nullable caller types do not specify how a client serializes null for a deep-object parameter. Use a raw query parameter if the client omits null. Do not combine the two query forms.
 
 ### Returns
 

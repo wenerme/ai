@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 49997 files, 547 MiB total
+> 125 skills, 49998 files, 547 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1423,7 +1423,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [bun-ffi-interop-pattern](./skills/bun-ffi-interop-pattern/SKILL.md) | 1 | 4.8 KiB |
 | [caddy-docs](./skills/caddy-docs/SKILL.md) | 82 | 667 KiB |
 | [chrome-devtools](./skills/chrome-devtools/SKILL.md) | 1 | 4.2 KiB |
-| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 135 | 6.6 MiB |
+| [claude-code-docs](./skills/claude-code-docs/SKILL.md) | 135 | 6.7 MiB |
 | [clickhouse-docs](./skills/clickhouse-docs/SKILL.md) | 1105 | 10 MiB |
 | [cloudflare-ai](./skills/cloudflare-ai/SKILL.md) | 1590 | 12 MiB |
 | [cloudflare-data](./skills/cloudflare-data/SKILL.md) | 329 | 2.6 MiB |
@@ -1513,7 +1513,7 @@ Use when implementing React state management with Zustand, including context-sco
 | [tmux-session-manager](./skills/tmux-session-manager/SKILL.md) | 1 | 1.7 KiB |
 | [transformers-docs](./skills/transformers-docs/SKILL.md) | 171 | 1.3 MiB |
 | [ui-ux-pro-max](./skills/ui-ux-pro-max/SKILL.md) | 73 | 3.4 MiB |
-| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 531 | 4.9 MiB |
+| [ultralytics-docs](./skills/ultralytics-docs/SKILL.md) | 532 | 4.9 MiB |
 | [vite-docs](./skills/vite-docs/SKILL.md) | 58 | 551 KiB |
 | [vitest-docs](./skills/vitest-docs/SKILL.md) | 228 | 1.4 MiB |
 | [vllm-docs](./skills/vllm-docs/SKILL.md) | 180 | 1.6 MiB |

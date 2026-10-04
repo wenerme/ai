@@ -260032,6 +260032,7 @@ curl https://api.openai.com/v1/threads/runs \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
           "assistant_id": "assistant_id",
+          "model": "gpt-4.1",
           "temperature": 1,
           "top_p": 1
         }'
@@ -265256,6 +265257,7 @@ curl https://api.openai.com/v1/threads/$THREAD_ID/runs \
     -H "Authorization: Bearer $OPENAI_API_KEY" \
     -d '{
           "assistant_id": "assistant_id",
+          "model": "gpt-4.1",
           "temperature": 1,
           "top_p": 1
         }'
