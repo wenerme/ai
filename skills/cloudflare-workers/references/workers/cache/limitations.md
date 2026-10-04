@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/cache/limitations/og.png?v=d53a
 
 # Limitations
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/limitations/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This page lists the scenarios where Workers Caching does not apply, followed by notes on how it relates to other caches you may already be using.
 
@@ -94,11 +94,11 @@ Workers Caching is **your Worker's cache**, not your zone's cache. It uses your 
 | Custom tiered cache topologies | Workers Caching uses a generic tiered cache topology by default. Because a Worker can execute anywhere, a fixed custom topology does not apply — future integrations with [Smart Placement](https://developers.cloudflare.com/workers/configuration/placement/) may tailor tiering further. |
 | [Rulesets](https://developers.cloudflare.com/ruleset-engine/) that modify request or response before cache | Transform the request or response in your Worker's code before returning it. |
 
-To influence your Worker's cache, change your Worker. `Cache-Control` headers, `ctx.props`, service binding composition, and [`ctx.cache.purge()`](https://developers.cloudflare.com/workers/cache/purge/) cover the configuration surface.
+To influence your Worker's cache, change your Worker. `Cache-Control` headers, `ctx.props`, service binding composition, [`ctx.cache.purge()`](https://developers.cloudflare.com/workers/cache/purge/), and [`ctx.cache.invalidate()`](https://developers.cloudflare.com/workers/cache/purge/#invalidate-cached-responses) cover the configuration surface.
 
 ### Cache API (`caches.default`)
 
-The [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) is a separate programmatic cache store. It is independent of Workers Caching — operations on one do not affect the other, and `ctx.cache.purge()` is what invalidates Workers-Caching entries.
+The [Cache API](https://developers.cloudflare.com/workers/runtime-apis/cache/) is a separate programmatic cache store. It is independent of Workers Caching — operations on one do not affect the other, and `ctx.cache.purge()` and `ctx.cache.invalidate()` are what purge or invalidate Workers Caching entries.
 
 For new Workers, prefer Workers Caching. The Cache API, by design, is a lower-level primitive:
 
@@ -137,5 +137,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/limitations/#page","headline":"Limitations","description":"Current limitations, unsupported scenarios, and how Workers Caching relates to other Cloudflare caches.","url":"https://developers.cloudflare.com/workers/cache/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/limitations/og.png?v=d53a494830f53dd3","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/limitations/#page","headline":"Limitations","description":"Current limitations, unsupported scenarios, and how Workers Caching relates to other Cloudflare caches.","url":"https://developers.cloudflare.com/workers/cache/limitations/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/limitations/og.png?v=d53a494830f53dd3","dateModified":"2026-10-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

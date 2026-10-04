@@ -303,7 +303,7 @@ Run a grader.
 
     - `range: optional array of number`
 
-      The range of the score. Defaults to `[0, 1]`.
+      The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
     - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -1083,7 +1083,7 @@ Validate a grader.
 
     - `range: optional array of number`
 
-      The range of the score. Defaults to `[0, 1]`.
+      The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
     - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -1559,7 +1559,7 @@ Validate a grader.
 
     - `range: optional array of number`
 
-      The range of the score. Defaults to `[0, 1]`.
+      The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
     - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -2163,7 +2163,7 @@ curl https://api.openai.com/v1/fine_tuning/alpha/graders/validate \
 
       - `range: optional array of number`
 
-        The range of the score. Defaults to `[0, 1]`.
+        The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
       - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -3425,7 +3425,7 @@ Immediately cancel a fine-tune job.
 
           - `range: optional array of number`
 
-            The range of the score. Defaults to `[0, 1]`.
+            The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
           - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -4326,7 +4326,7 @@ Response includes details of the enqueued job including job status and the name 
 
         - `range: optional array of number`
 
-          The range of the score. Defaults to `[0, 1]`.
+          The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
         - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -5186,7 +5186,7 @@ Response includes details of the enqueued job including job status and the name 
 
           - `range: optional array of number`
 
-            The range of the score. Defaults to `[0, 1]`.
+            The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
           - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -6509,7 +6509,7 @@ List your organization's fine-tuning jobs
 
           - `range: optional array of number`
 
-            The range of the score. Defaults to `[0, 1]`.
+            The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
           - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -7644,7 +7644,7 @@ Pause a fine-tune job.
 
           - `range: optional array of number`
 
-            The range of the score. Defaults to `[0, 1]`.
+            The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
           - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -8626,7 +8626,7 @@ Resume a fine-tune job.
 
           - `range: optional array of number`
 
-            The range of the score. Defaults to `[0, 1]`.
+            The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
           - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -9610,7 +9610,7 @@ Get info about a fine-tuning job.
 
           - `range: optional array of number`
 
-            The range of the score. Defaults to `[0, 1]`.
+            The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
           - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -10587,7 +10587,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ft-AF1WoRqd3aJAHsqc9NY7iL8F \
 
           - `range: optional array of number`
 
-            The range of the score. Defaults to `[0, 1]`.
+            The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
           - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 
@@ -11678,7 +11678,7 @@ curl https://api.openai.com/v1/fine_tuning/jobs/ftjob-abc123/checkpoints \
 
       - `range: optional array of number`
 
-        The range of the score. Defaults to `[0, 1]`.
+        The service requires two numbers for the score range. Defaults to `[0, 1]`.
 
       - `sampling_params: optional object { max_completions_tokens, reasoning_effort, seed, 2 more }`
 

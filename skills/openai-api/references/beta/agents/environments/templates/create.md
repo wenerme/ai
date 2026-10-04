@@ -68,7 +68,7 @@ Creates reusable environment configuration without returning confidential setup 
 
 - `network: optional object { access, allowed_domains, blocked_domains }  or null`
 
-  Network access policy for the environment. Defaults to disabled for GA requests and enabled for beta requests.
+  Network access policy for the environment. If omitted, the API version determines whether network access is enabled or disabled.
 
   - `access: "enabled" or "disabled" or "restricted"`
 

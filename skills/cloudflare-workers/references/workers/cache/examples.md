@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/cache/examples/og.png?v=e7b4e19
 
 # Examples
 
-Last updated Jul 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/examples/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Caching is **a cache that is itself a Worker primitive**. It sits in front of every Worker entrypoint — the default export and every named [`WorkerEntrypoint`](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/#named-entrypoints) — and it also sits in front of `fetch()` calls between entrypoints in the same Worker via [`ctx.exports`](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/rpc/). That second fact is the one that makes the rest of this page possible.
 
@@ -37,7 +37,7 @@ Two facts shape every pattern below. They follow directly from "the cache is in 
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-03",
 	"cache": { "enabled": true },
 	"exports": {
 		// The gateway runs on every request — no caching in front of it.
@@ -52,7 +52,7 @@ Two facts shape every pattern below. They follow directly from "the cache is in 
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-03"
 
 [cache]
 enabled = true
@@ -95,7 +95,7 @@ Disable caching on the default entrypoint so it runs on every request to authent
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-03",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -108,7 +108,7 @@ Disable caching on the default entrypoint so it runs on every request to authent
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-03"
 
 [cache]
 enabled = true
@@ -378,7 +378,7 @@ The fix is a gateway entrypoint that restores `Accept-Encoding` from `request.cf
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-03",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -391,7 +391,7 @@ The fix is a gateway entrypoint that restores `Accept-Encoding` from `request.cf
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-03"
 
 [cache]
 enabled = true
@@ -550,7 +550,7 @@ You can cache those responses by wrapping the Durable Object behind a named entr
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-03",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -563,7 +563,7 @@ You can cache those responses by wrapping the Durable Object behind a named entr
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-03"
 
 [cache]
 enabled = true
@@ -809,7 +809,7 @@ Workers Caching lets you put your own cache layer in front of that origin withou
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-03",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -822,7 +822,7 @@ Workers Caching lets you put your own cache layer in front of that origin withou
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-03"
 
 [cache]
 enabled = true
@@ -968,7 +968,7 @@ All four examples are the same architecture seen through four lenses:
 | Route reads vs. writes | Caching reads, invalidating them on writes | Wraps a Durable Object behind a `Cache-Tag` |
 | Forward the request as-is | Caching a third-party origin under your terms | Fetches the upstream and overlays `Cache-Control` |
 
-The only thing that changes between rows is what the outer entrypoint does before the call and what the inner entrypoint does on a miss. The cache stage in the middle is the same primitive every time — keyed by the inner entrypoint, the request path and query string, and `ctx.props`; configured by the inner entrypoint's `Cache-Control` and `Cache-Tag`; invalidated by `ctx.cache.purge()` from whichever entrypoint owns the data.
+The only thing that changes between rows is what the outer entrypoint does before the call and what the inner entrypoint does on a miss. The cache stage in the middle is the same primitive every time — keyed by the inner entrypoint, the request path and query string, and `ctx.props`; configured by the inner entrypoint's `Cache-Control` and `Cache-Tag`; purged by `ctx.cache.purge()` or invalidated by `ctx.cache.invalidate()` from whichever entrypoint owns the data.
 
 That uniformity is what makes the patterns compose. Nothing stops you from stacking them in a single Worker:
 
@@ -990,5 +990,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/examples/#page","headline":"Examples","description":"Patterns for combining Workers Caching with authentication, request normalization, and Durable Objects.","url":"https://developers.cloudflare.com/workers/cache/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/examples/og.png?v=e7b4e199277c303d","dateModified":"2026-07-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/examples/#page","headline":"Examples","description":"Patterns for combining Workers Caching with authentication, request normalization, and Durable Objects.","url":"https://developers.cloudflare.com/workers/cache/examples/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/examples/og.png?v=e7b4e199277c303d","dateModified":"2026-10-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

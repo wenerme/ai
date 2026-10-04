@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/cache/og.png?v=3615f4ac12f103bd
 
 # Workers Cache
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 3, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/cache/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers Cache lets Cloudflare return cached HTTP responses from your Worker without executing your Worker code. When an incoming request matches a cached response, Cloudflare serves the response directly from its edge cache — reducing latency and Workers CPU usage.
 
@@ -135,7 +135,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
  "name": "my-worker",
  "main": "src/index.ts",
  // Set this to today's date
- "compatibility_date": "2026-09-28",
+ "compatibility_date": "2026-10-03",
  "cache": {
   "enabled": true,
  },
@@ -146,7 +146,7 @@ This quickstart walks you through enabling caching, deploying, and observing the
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-03"
 
 [cache]
 enabled = true
@@ -339,7 +339,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 	"name": "my-worker",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-09-28",
+	"compatibility_date": "2026-10-03",
 	"cache": { "enabled": true },
 	"exports": {
 		"default": { "type": "worker", "cache": { "enabled": false } },
@@ -352,7 +352,7 @@ The default entrypoint here is a gateway that should run on every request, so di
 name = "my-worker"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-09-28"
+compatibility_date = "2026-10-03"
 
 [cache]
 enabled = true
@@ -493,7 +493,7 @@ Because the upper tier and the Smart Placement target are chosen independently t
 
 ## Purging the cache
 
-Your Worker can invalidate its own cache at any time using `ctx.cache.purge()`. Tags are the most flexible mechanism — tag responses with `Cache-Tag` when returning them, and purge those tags later:
+Your Worker can purge its own cache at any time using `ctx.cache.purge()`. Tags are the most flexible mechanism — tag responses with `Cache-Tag` when returning them, and purge those tags later:
 
 *src/index.jsjs*
 
@@ -517,7 +517,7 @@ export default {
 } satisfies ExportedHandler;
 ```
 
-You can also [import `cache` from `cloudflare:workers`](https://developers.cloudflare.com/workers/cache/purge/#two-ways-to-call-purge) and call `cache.purge({...})` when you do not have `ctx` in scope — for example, from a utility module. For all purge modes and patterns, refer to [Purging the cache](https://developers.cloudflare.com/workers/cache/purge/).
+You can also [import `cache` from `cloudflare:workers`](https://developers.cloudflare.com/workers/cache/purge/#two-ways-to-call-purge) and call `cache.purge({...})` when you do not have `ctx` in scope — for example, from a utility module. To mark cached responses stale instead of deleting them, call [`ctx.cache.invalidate()`](https://developers.cloudflare.com/workers/cache/purge/#invalidate-cached-responses) with the same options. The cache then revalidates them with your Worker, which can answer `304 Not Modified` to keep the cached body. For all purge modes and patterns, refer to [Purge and invalidate the cache](https://developers.cloudflare.com/workers/cache/purge/).
 
 ## Pricing
 
@@ -541,7 +541,7 @@ For an example, refer to [Pricing example: Worker with caching](https://develope
 
 - [Configuration](https://developers.cloudflare.com/workers/cache/configuration/)
 - [Cache keys](https://developers.cloudflare.com/workers/cache/cache-keys/)
-- [Purging the cache](https://developers.cloudflare.com/workers/cache/purge/)
+- [Purge and invalidate the cache](https://developers.cloudflare.com/workers/cache/purge/)
 - [Examples](https://developers.cloudflare.com/workers/cache/examples/)
 - [Debugging](https://developers.cloudflare.com/workers/cache/debugging/)
 - [Limitations](https://developers.cloudflare.com/workers/cache/limitations/)
@@ -555,5 +555,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/#page","headline":"Workers Cache","description":"Workers Cache lets you cache Worker responses to reduce latency and Workers usage.","url":"https://developers.cloudflare.com/workers/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/og.png?v=3615f4ac12f103bd","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/cache/#page","headline":"Workers Cache","description":"Workers Cache lets you cache Worker responses to reduce latency and Workers usage.","url":"https://developers.cloudflare.com/workers/cache/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/cache/og.png?v=3615f4ac12f103bd","dateModified":"2026-10-03","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

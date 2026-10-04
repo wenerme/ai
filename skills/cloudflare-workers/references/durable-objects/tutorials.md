@@ -18,7 +18,7 @@ View tutorials to help you get started with Durable Objects.
 
 | Name | Last Updated | Difficulty |
 | --- | --- | --- |
-| [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 7 days ago | Intermediate |
+| [Build a coding agent runner](https://developers.cloudflare.com/sandbox/get-started/build-a-coding-agent-runner/) | 10 days ago | Intermediate |
 | [Build a seat booking app with SQLite in Durable Objects](https://developers.cloudflare.com/durable-objects/tutorials/build-a-seat-booking-app/) | 2 years ago | Intermediate |
 | [Deploy a Browser Run Worker with Durable Objects](https://developers.cloudflare.com/browser-run/how-to/browser-run-with-do/) | 3 years ago | Beginner |
 | [Deploy a real-time chat application](https://developers.cloudflare.com/workers/tutorials/deploy-a-realtime-chat-app/) | 3 years ago | Intermediate |
