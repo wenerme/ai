@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+   Add a cron trigger to my Worker that processes a job queue every hour.
    ```
 
 
@@ -176,15 +176,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
 ```
 
 ```txt
@@ -192,7 +192,7 @@ Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ## Tips

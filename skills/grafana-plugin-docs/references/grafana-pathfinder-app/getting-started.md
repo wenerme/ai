@@ -1,23 +1,44 @@
 ---
-title: "Getting started | Grafana Plugins documentation"
-description: "Learn how to enable and use the Interactive learning plugin."
+title: "Get started with Interactive learning | Grafana Plugins documentation"
+description: "Open Interactive learning in Grafana Cloud or self-managed Grafana, follow your first interactive guide, track learning progress, and find help when a step cannot run."
 ---
 
 > For a curated documentation index, see [llms.txt](/llms.txt). For the complete documentation index, see [llms-full.txt](/llms-full.txt).
 
-# Getting started
+# Get started with Interactive learning
 
-Interactive learning is currently available in public preview for open source Grafana and is rolling out to Grafana Cloud. This guide shows you how to enable Interactive learning in your Grafana instance and how to use it.
+Interactive learning, also called Pathfinder, helps you learn Grafana while you use it. Open a guide alongside your work, find the relevant controls with **Show me**, and use **Do it** to perform a step.
 
-## Enable Interactive learning
+Interactive learning is in public preview. Available features depend on your Grafana version, instance configuration, and permissions.
 
-You can enable Interactive learning by deploying or updating your Grafana instance with the `interactiveLearning` feature flag, or by installing the plugin from the Grafana plugin repository. Choose the method that best suits your deployment.
+## Grafana Cloud
 
-### Using a feature flag (recommended)
+On a Grafana Cloud stack where Interactive learning is available, select **Help** in the top navigation bar to open the sidebar. You do not need to edit a configuration file or install the plugin yourself.
 
-To enable the feature flag, add the following to your Grafana configuration:
+If **Help** opens the classic menu, your administrator might have disabled Pathfinder or the feature might not be available on the stack. Ask an administrator to check the [Interactive learning settings](../administrators-reference/#disable-interactive-learning-in-grafana-cloud).
 
-**Using configuration file (`grafana.ini` or `custom.ini`):**
+## Self-managed Grafana
+
+The current plugin requires Grafana 12.3 or later. You need permission to install plugins and restart Grafana.
+
+### Install from the plugin catalog
+
+1. Open **Administration** &gt; **Plugins and data** &gt; **Plugins**.
+2. Search for `Interactive learning` and open the plugin page.
+3. Select **Install**.
+4. Restart Grafana if your installation requires it.
+
+Alternatively, install it with the Grafana CLI and restart Grafana:
+
+Bash [Copy code to clipboard] Copy
+
+```bash
+grafana cli plugins install grafana-pathfinder-app
+```
+
+### Enable automatic installation with a feature toggle
+
+Grafana versions that support `interactiveLearning` can install the plugin when the toggle is enabled, provided plugin preinstallation is allowed. Add it to the enabled toggles in `grafana.ini` or `custom.ini`:
 
 ini [Copy code to clipboard] Copy
 
@@ -26,7 +47,7 @@ ini [Copy code to clipboard] Copy
 enable = interactiveLearning
 ```
 
-**Using environment variables:**
+For an environment-based configuration, set:
 
 Bash [Copy code to clipboard] Copy
 
@@ -34,89 +55,73 @@ Bash [Copy code to clipboard] Copy
 GF_FEATURE_TOGGLES_ENABLE=interactiveLearning
 ```
 
-**Using Docker:**
+Preserve any other feature toggles you already enable, then restart Grafana. If your deployment disables plugin preinstallation, use your usual plugin installation process instead.
 
-Bash [Copy code to clipboard] Copy
+Context-aware recommendations require a separate administrator opt-in on self-managed Grafana. Bundled guides are available without it. Refer to [Configure recommendations](../administrators-reference/#configure-recommendations).
 
-```bash
-docker run -d \
-  -p 3000:3000 \
-  -e "GF_FEATURE_TOGGLES_ENABLE=interactiveLearning" \
-  grafana/grafana:latest
-```
+## Open a guide
 
-After enabling the feature flag, restart your Grafana instance.
+1. Select **Help** in Grafana’s top navigation bar.
+2. Select **Recommendations** in the sidebar.
+3. Find a guide relevant to what you want to learn and select **Start**, or **Resume** if you have already started it.
+4. Read the introduction and any prerequisites before running the steps.
 
-### Using the plugin repository (UI or CLI)
+Recommendations change with your Grafana page and configuration, so the guides you see can differ from another user’s. A learning path can open a cover page with milestones and, where provided, a choice of tracks.
 
-Alternatively, you can install Interactive learning as a plugin from the Grafana plugin repository.
+You can also open the command palette with **Cmd+K** on macOS or **Ctrl+K** on Windows and Linux, then search for `Interactive learning`, `Need help?`, or `Learn Grafana`.
 
-**Using the Grafana UI:**
+## Follow interactive steps
 
-1. Navigate to **Administration** &gt; **Plugins and data** &gt; **Plugins**.
-2. Search for `Interactive learning`.
-3. Click the plugin card to open the plugin details page.
-4. Click **Install** to install the plugin.
+### Find a control with Show me
 
-**Using the Grafana CLI:**
+Select **Show me** to highlight the control a step refers to. Read the instruction, then perform the action yourself or select **Do it**.
 
-Bash [Copy code to clipboard] Copy
+### Run an action with Do it
 
-```bash
-grafana cli plugins install grafana-pathfinder-app
-```
+Select **Do it** to perform the described action. Depending on the step, it can click a control, fill a field, navigate to another page, or run several actions. **Do section** runs the supported actions in a section. A guided sequence instead waits for you to perform each action yourself.
 
-After installation, restart your Grafana instance.
+> Caution
+>
+> Guide actions run in your current Grafana instance with your permissions. Read the step before running it, particularly when it creates or changes a dashboard, alert, or other resource.
 
-## Open the Interactive learning sidebar
+### Track completion
 
-After enabling Interactive learning, click the **Help** button in the top navigation bar of Grafana to open the Interactive learning sidebar. You can then browse the recommendations and click any item to view the documentation or guide.
+Automatic detection is enabled by default for supported actions, so steps can complete when you perform them yourself. Your administrator can change this setting. Quizzes, inputs, and challenges have their own completion checks.
 
-You can also use the command palette to open the sidebar — search for `Interactive learning`, `Need help?`, or `Learn Grafana` by pressing **Cmd+K** on macOS or **Ctrl+K** on Windows and Linux.
+The guide’s progress indicator reflects completed steps. Use **Mark complete**, or **Mark complete and continue** in a learning path, when you want to mark the guide complete yourself. Merely opening the last milestone does not complete the whole path.
 
-## Try out an interactive guide
+## Use learning paths and My learning
 
-If you’re new to Grafana and want to learn where everything is located, try the **Welcome to Grafana** guide. To start it, click **View** on the **Welcome to Grafana** recommendation.
+A learning path groups related guides into milestones. Open **My learning** to browse learning paths and review your progress and badges. Private paths published for your organization appear separately from public learning content when available.
 
-The guide opens in a new tab. Follow the steps by clicking the **Show me** button to highlight each step.
+Use a path’s milestone controls to move between guides. Within a learning path, you can also use:
 
-### Interactive elements
+- **Alt + Left arrow** for the previous milestone.
+- **Alt + Right arrow** for the next milestone.
 
-The guide walks you through the main areas of Grafana and shows you how to use the interactive elements.
+A path can provide multiple tracks for different approaches or environments. Choose the track that matches your goal before starting its milestones.
 
-#### Show me
+Open guides remain in tabs so you can switch between them. Closing the sidebar does not reset your progress. Some working state is stored in your browser; do not assume every unfinished step follows you to another browser.
 
-The **Show me** button highlights the next step in the guide. Steps can have optional text shown alongside the highlighted element. You can dismiss the highlight box by clicking somewhere else on the page, scrolling, or clicking **Do it**. Clicking **Show me** again resets the highlight.
+## Give a guide more space
 
-#### Do it
+Guide controls offer different layouts:
 
-The **Do it** button performs the action for the current step. Several action types can run:
+- **Pop out** moves the guide into a draggable, resizable panel on the same page. Use **Dock** to return it to the sidebar.
+- **Full screen** gives the guide more room. Use the back control to return to your previous view.
+- **Open in interactive window**, if enabled by your administrator, opens a separate browser tab and requires pairing with the original Grafana tab.
 
-- **Highlight / button** — Clicks the highlighted element.
-- **Form fill** — Fills an input field with a specific value.
-- **Navigate** — Moves to a different page in Grafana.
-- **Hover** — Hovers over an element to reveal hover-only UI (such as menu options or row actions).
-- **Multistep** — Runs a sequence of actions automatically.
-- **Guided** — Highlights each step and waits for you to perform the action yourself.
-- **Popout** — Docks or undocks the guide between the sidebar and a floating window.
+Depending on the guide and current layout, these controls appear in the guide toolbar or its menu.
 
-The default way to mark a step complete is to click **Do it**. Administrators can also enable an experimental auto-completion feature that detects when you perform the action yourself. For more information, refer to the [Administrators reference](../administrators-reference/).
+## If a step cannot run
 
-## The floating panel
+1. Read the step’s prerequisite or error message.
+2. Check that you are on the expected Grafana page and have access to the required data source or resource.
+3. Complete any earlier steps that open the required controls, then retry.
+4. Use **Fix this** if the guide offers it. Some repairs require Grafana Assistant and administrator enablement.
 
-If you need the right sidebar for something else (for example, Grafana Assistant) while a guide is open, click the **Pop out** button at the top of the panel to detach the guide into a floating, resizable, draggable window. Drag it anywhere on screen, resize it from any edge, or minimize it to a small pill. Click **Pop out** again or drag the window to the right edge of the screen to dock it back into the sidebar.
+For broader problems, reload Grafana and reopen the guide. Use **More options** &gt; **Give feedback** to report an issue, including the guide name and step that failed.
 
-Guide authors can also build a `popout` action into their guide steps so the guide automatically moves out of the way when needed.
+## Create guides for your team
 
-## Author your own guide
-
-Editors and admins can create custom interactive guides directly inside Grafana with the **block editor**, then publish them to the docs panel for everyone on the instance. See the [Block editor guide](../block-editor/) for the full workflow.
-
-## Tabs, milestones, and progress
-
-Each guide opens as a tab in the docs panel — you can keep several guides open at once and switch between them like browser tabs. Guides that are part of a learning path show milestones in a footer; navigate between them with the arrow buttons or use the keyboard shortcuts:
-
-- **Alt + Left arrow** — previous milestone.
-- **Alt + Right arrow** — next milestone.
-
-Progress through guides and learning paths is tracked in the **My learning** tab — you can see what you’ve completed, what’s in progress, and what badges you’ve earned.
+Users with the Editor or Admin role can select **More options** &gt; **Create guide** in the sidebar to open the block editor. Saving and publishing depends on storage availability and permissions on your instance. Refer to the [Block editor guide](../block-editor/) for the full workflow.

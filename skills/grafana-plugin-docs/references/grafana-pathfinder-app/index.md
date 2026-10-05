@@ -11,37 +11,41 @@ Get help exactly when and where you need it. Interactive learning brings context
 
 * * *
 
-## Overview
+## Learn Grafana while you work
 
-Interactive learning brings contextual documentation and interactive guides directly into Grafana, so you can learn and build without leaving your workflow:
+Interactive learning, also called Pathfinder, brings documentation and guided practice into Grafana. Use it to understand an unfamiliar feature, follow an onboarding path, or work through a guide your team has published.
 
-- **Smart recommendations** — Get relevant docs and guides based on what you’re working on.
-- **Interactive guides** — Follow step-by-step guides with Show me and Do it actions that highlight or perform actions for you.
-- **Tab-based navigation** — Open multiple docs and guides in tabs, just like a browser.
-- **Milestone tracking** — See your progress through learning paths with clear milestones.
-- **Custom guides** — Editors and admins can author their own guides with the [block editor](block-editor/) and publish them to their Grafana instance.
-- **Floating panel mode** — Pop the guide out into a free-floating, resizable window when you need the right sidebar for something else.
-- **Always available** — Access help without switching windows or searching documentation sites.
+- **Context-aware recommendations:** Find documentation and guides relevant to the Grafana page you are using.
+- **Interactive guides:** Use **Show me** to find a control and **Do it** to perform the described action with your Grafana permissions.
+- **Learning paths:** Follow milestones, choose a track where available, and review progress in **My learning**.
+- **Custom guides:** Users with the Editor or Admin role can create content with the [block editor](block-editor/). Saving and publishing requires storage support on the instance.
+- **Flexible layouts:** Keep guides in sidebar tabs, move them to a floating panel, or use full screen.
 
-Interactive learning is currently available in public preview for Grafana OSS and is rolling out to Grafana Cloud.
+## Availability and administration
+
+Interactive learning is in public preview for Grafana Cloud and self-managed Grafana. Availability depends on the instance configuration and Cloud rollout. The current plugin requires Grafana 12.3 or later.
+
+On a Cloud stack where it is available, select **Help** to open Interactive learning. For self-managed installation and your first guide, refer to [Get started](getting-started/).
+
+Administrators can [disable Pathfinder in Grafana Cloud](administrators-reference/#disable-interactive-learning-in-grafana-cloud) to restore the classic **Help** menu after users reload, while keeping learning progress. You can also [turn off context-aware recommendations](administrators-reference/#disable-recommendations-only) while keeping guides available.
 
 ## Explore next steps
 
-[Architecture
-\
-Understand how Interactive learning operates and how it communicates with the Grafana Recommender.](architecture/)
-
 [Get started
 \
-Enable Interactive learning and understand how interactive guides work.](getting-started/)
+Open Interactive learning and follow your first guide.](getting-started/)
 
 [Block editor
 \
 Author and publish your own interactive guides directly inside Grafana.](block-editor/)
 
-[Administrators reference
+[Administrator reference
 \
-Learn about Interactive learning administrators features.](administrators-reference/)
+Disable Pathfinder in Grafana Cloud and configure recommendations and guide behavior.](administrators-reference/)
+
+[Architecture
+\
+Understand content sources, permissions, data usage, and storage.](architecture/)
 
 [Terms and conditions
 \

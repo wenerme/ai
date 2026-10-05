@@ -134,7 +134,7 @@ IDETerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Check my Workers deployment logs for errors and suggest fixes.
+   Create a Logpush job to stream Workers analytics to my data warehouse.
    ```
 
 
@@ -241,15 +241,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
-```
-
-```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
@@ -257,7 +253,11 @@ Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Set up WAF rules to block SQL injection and XSS attacks on my application.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ## Tips

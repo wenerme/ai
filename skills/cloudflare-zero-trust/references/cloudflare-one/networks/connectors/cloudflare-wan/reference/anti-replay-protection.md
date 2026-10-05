@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Anti-replay protection
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 If you use Cloudflare WAN and anycast IPsec tunnels, we recommend disabling anti-replay protection. Cloudflare disables this setting by default. However, you can enable it through the API or the Cloudflare dashboard for devices that do not support disabling it, including Cisco Meraki, Velocloud, and AWS VPN Gateway.
 
@@ -44,7 +44,7 @@ If you enable replay protection for Cloudflare WAN IPsec tunnels, Cloudflare rou
 
 ## Additional considerations
 
-IPsec anti-replay protection is extremely important for transport mode - host-to-host or even app-to-app IPsec. In transport mode, an attacker has a relatively easy time identifying the encrypted protocol and identifying which packets to replay if the protocol is even subject to replay attacks. Cloudflare WAN, however, uses tunnel mode, which is inherently much harder to successfully manage a replay attack.
+IPsec anti-replay protection is extremely important for transport mode - host-to-host or even app-to-app IPsec. In transport mode, an attacker has a relatively easy time identifying the encrypted protocol and identifying which packets to replay if the protocol is even subject to replay attacks. Cloudflare WAN, however, uses tunnel mode, not transport mode, which makes a successful replay attack much harder.
 
 There are several reasons that make replay attacks difficult with tunnel mode:
 
@@ -58,6 +58,8 @@ There are several reasons that make replay attacks difficult with tunnel mode:
 
 If you're experiencing tunnel instability or packet drops related to anti-replay protection, refer to [Troubleshoot tunnel health](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/tunnel-health/#ipsec-tunnel-instability-or-packet-drops).
 
+If your IPsec tunnel has replay protection turned off in Cloudflare and a small, steady percentage of health checks fail, your device may still be enforcing anti-replay protection. Refer to [Health checks fail at a low, steady rate](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/troubleshooting/ipsec-troubleshoot/#anti-replay-mismatch).
+
 Was this helpful?
 
 YesNo
@@ -67,5 +69,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/#page","headline":"Anti-replay protection","description":"If you use Cloudflare WAN and anycast IPsec tunnels, you will need to disable anti-replay protection. Review the information here to learn more.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/og.png?v=c19c9011e68109c0","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/#page","headline":"Anti-replay protection","description":"If you use Cloudflare WAN and anycast IPsec tunnels, you will need to disable anti-replay protection. Review the information here to learn more.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/anti-replay-protection/og.png?v=c19c9011e68109c0","dateModified":"2026-10-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

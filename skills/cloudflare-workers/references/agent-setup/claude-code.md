@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
    ```
 
 
@@ -166,7 +166,15 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
@@ -174,15 +182,7 @@ Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
-```
-
-```txt
 Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Tips
