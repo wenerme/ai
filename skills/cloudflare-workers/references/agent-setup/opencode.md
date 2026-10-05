@@ -180,15 +180,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
-```
-
-```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
@@ -197,6 +193,10 @@ Set up AI Gateway to route requests across OpenAI and Workers AI with automatic 
 
 ```txt
 Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ## Tips

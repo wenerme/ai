@@ -5,7 +5,7 @@ description: "Browse CoralBricks model IDs, capabilities, context windows, and p
 
 # [CoralBricks logo]CoralBricks
 
-Access 3 CoralBricks models through Mastra's model router. Authentication is handled automatically using the `CORAL_API_KEY` environment variable.
+Access 5 CoralBricks models through Mastra's model router. Authentication is handled automatically using the `CORAL_API_KEY` environment variable.
 
 Learn more in the [CoralBricks documentation](https://www.coralbricks.ai/docs).
 
@@ -20,7 +20,7 @@ const agent = new Agent({
   id: "my-agent",
   name: "My Agent",
   instructions: "You are a helpful assistant",
-  model: "coralbricks/deepseek-v4.1-flash-fast-fp4"
+  model: "coralbricks/deepseek-v4.1-flash-fast"
 });
 
 // Generate a response
@@ -40,6 +40,18 @@ for await (const chunk of stream) {
 <ProviderModelsTable
   models={[
   {
+    "model": "coralbricks/deepseek-v4.1-flash-fast",
+    "imageInput": true,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 0.3,
+    "outputCost": 1.2
+  },
+  {
     "model": "coralbricks/deepseek-v4.1-flash-fast-fp4",
     "imageInput": true,
     "audioInput": false,
@@ -50,6 +62,18 @@ for await (const chunk of stream) {
     "maxOutput": 131072,
     "inputCost": 0.3,
     "outputCost": 1.2
+  },
+  {
+    "model": "coralbricks/glm-5.3-fast",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 1048576,
+    "maxOutput": 131072,
+    "inputCost": 1.12,
+    "outputCost": 4.4
   },
   {
     "model": "coralbricks/glm-5.3-flash-fp4",
@@ -90,7 +114,7 @@ const agent = new Agent({
   name: "custom-agent",
   model: {
     url: "https://inference.coralbricks.ai/v1",
-    id: "coralbricks/deepseek-v4.1-flash-fast-fp4",
+    id: "coralbricks/deepseek-v4.1-flash-fast",
     apiKey: process.env.CORAL_API_KEY,
     headers: {
       "X-Custom-Header": "value"
@@ -109,7 +133,7 @@ const agent = new Agent({
     const useAdvanced = requestContext.task === "complex";
     return useAdvanced
       ? "coralbricks/glm-5.3-fp4"
-      : "coralbricks/deepseek-v4.1-flash-fast-fp4";
+      : "coralbricks/deepseek-v4.1-flash-fast";
   }
 });
 ```

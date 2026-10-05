@@ -4948,10 +4948,10 @@
   "openai-api/realtime.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/index.md",
     "skill": "openai-api",
-    "etag": "W/\"eada96ec3e91412260479d43d36c07f4\"",
-    "lastModified": "Fri, 02 Oct 2026 05:27:42 GMT",
-    "size": 974481,
-    "updatedAt": "2026-10-02T05:27:42.413Z"
+    "etag": "W/\"8c6a65b673e3d308abb179f034c14de3\"",
+    "lastModified": "Sun, 04 Oct 2026 20:14:25 GMT",
+    "size": 975215,
+    "updatedAt": "2026-10-05T05:25:43.590Z"
   },
   "openai-api/realtime/connect.md": {
     "url": "https://developers.openai.com/api/reference/resources/realtime/methods/connect/index.md",

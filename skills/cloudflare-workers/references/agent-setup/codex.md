@@ -58,7 +58,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+   Add mTLS authentication and schema validation to protect my API endpoints.
    ```
 
 
@@ -176,11 +176,11 @@ Set up custom domains with automatic SSL for my SaaS customers using SSL for Saa
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt

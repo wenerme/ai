@@ -58,7 +58,7 @@ IDETerminalStandaloneCloudExtension
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+   Add bot protection and rate limiting to my login and checkout endpoints.
    ```
 
 
@@ -165,23 +165,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips
