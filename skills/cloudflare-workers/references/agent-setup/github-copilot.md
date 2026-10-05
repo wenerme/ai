@@ -36,18 +36,14 @@ TerminalCloudExtension
    ```
 
 
-3. **Configure Cloudflare MCP servers**
+3. **Configure the Cloudflare MCP server**
 
    For VS Code, add to `.vscode/mcp.json`. For Copilot CLI, add to `~/.copilot/mcp-config.json` for user-level configuration or `.mcp.json` or `.github/mcp.json` for project-level configuration. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗︎](https://github.com/cloudflare/mcp).
 
    ```json
    {
      "mcpServers": {
-       "cloudflare": { "url": "https://mcp.cloudflare.com/mcp" },
-       "cloudflare-docs": { "url": "https://docs.mcp.cloudflare.com/mcp" },
-       "cloudflare-bindings": { "url": "https://bindings.mcp.cloudflare.com/mcp" },
-       "cloudflare-builds": { "url": "https://builds.mcp.cloudflare.com/mcp" },
-       "cloudflare-observability": { "url": "https://observability.mcp.cloudflare.com/mcp" }
+       "cloudflare": { "url": "https://mcp.cloudflare.com/mcp" }
      }
    }
    ```
@@ -60,7 +56,7 @@ TerminalCloudExtension
    Open Copilot Chat (**Ctrl+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Add mTLS authentication and schema validation to protect my API endpoints.
+   Build a serverless AI inference endpoint on Workers AI with streaming responses.
    ```
 
 
@@ -167,23 +163,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
-```
-
-```txt
-Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
-```
-
-```txt
 Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+```
+
+```txt
+Set up WAF rules to block SQL injection and XSS attacks on my application.
+```
+
+```txt
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ## Tips
@@ -272,7 +268,7 @@ Ensure you are using VS Code 1.99+ which supports MCP natively. Add the server c
 
 </summary>
 
-Enable the <a href="https://github.com/cloudflare/mcp-server-cloudflare">Cloudflare docs MCP server</a> so the agent can fetch current documentation at runtime. If you prefer not to use the MCP server, point the agent directly at <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of every product, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
+Point the agent directly at <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of every product, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
 
 </details>
 
@@ -303,5 +299,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/github-copilot/#page","headline":"GitHub Copilot + Cloudflare","description":"Editor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.","url":"https://developers.cloudflare.com/agent-setup/github-copilot/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/github-copilot/og.png?v=6162f1c14230bc21","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/github-copilot/#page","headline":"GitHub Copilot + Cloudflare","description":"Editor extension and CLI with agent mode, workspace context, and native PR integration. Made by GitHub.","url":"https://developers.cloudflare.com/agent-setup/github-copilot/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/github-copilot/og.png?v=6162f1c14230bc21","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

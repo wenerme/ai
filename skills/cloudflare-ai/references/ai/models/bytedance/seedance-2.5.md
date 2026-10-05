@@ -24,6 +24,11 @@ Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai/models
 
 ByteDance's next-generation video model with a unified multimodal reference-to-video architecture. Generates video from text, up to 30 reference images, 10 reference videos, and 10 reference audio clips — including audio-only input with no image or video required. Supports first/last-frame image-to-video, video editing, video extension, intelligent duration (including automatic selection), and adaptive aspect ratio.
 
+| Model Info | |
+| --- | --- |
+| More information | [link ↗](https://seed.bytedance.com/en/seedance2_5) |
+| Pricing | <ul><li>Default (per second)$0.2312</li><li>@480p video input (per second)$0.4304</li><li>@720p video input (per second)$0.9676</li><li>@480p non-video input (per second)$0.1028</li><li>@720p non-video input (per second)$0.2312</li></ul> |
+
 ## Usage
 
 ```ts

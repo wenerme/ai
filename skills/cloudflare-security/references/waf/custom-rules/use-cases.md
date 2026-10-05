@@ -23,6 +23,7 @@ The following common use cases illustrate how to secure web traffic to your site
 - [Block requests by attack score](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-attack-score/)
 - [Block traffic by geographical location](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-by-geographical-location/)
 - [Block traffic from specific countries](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-traffic-from-specific-countries/)
+- [Block Worker subrequests from other zones](https://developers.cloudflare.com/waf/custom-rules/use-cases/block-worker-subrequests/)
 - [Build a sequence rule within custom rules](https://developers.cloudflare.com/waf/custom-rules/use-cases/sequence-custom-rules/)
 - [Challenge bad bots](https://developers.cloudflare.com/waf/custom-rules/use-cases/challenge-bad-bots/)
 - [Configure token authentication](https://developers.cloudflare.com/waf/custom-rules/use-cases/configure-token-authentication/)

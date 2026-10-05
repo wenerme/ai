@@ -10,7 +10,7 @@ image: https://developers.cloudflare.com/og-docs.png
 > Fetch the complete documentation index at: https://developers.cloudflare.com/llms.txt
 > Use this file to discover all available pages before exploring further.
 
-![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)
+![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)
 
 # glm-5.3-flash
 

@@ -79,6 +79,12 @@ One hook governs conversations across claude.ai, Cowork, Claude Code, and Claude
 
 Governed requests are the inference requests behind the user's conversation. Ancillary requests, such as conversation title generation, aren't sent to your endpoint, and system prompts and tool definitions are never included in what is sent. Voice mode is not covered.
 
+Some features that Anthropic runs for your organization make model calls of their own. Your organization sees the results of those calls but not their transcripts. These calls aren't governed requests and aren't sent to your endpoint. They include the following:
+
+* **Claude Security scans (beta).** [Claude Security](https://claude.com/product/claude-security) runs hosted scans on your connected repositories. A session a user opens to fix a finding, and the Claude Security plugin in Claude Code, are governed.
+* **Code Review (research preview).** [Code Review](https://code.claude.com/docs/en/code-review) runs reviews on your GitHub pull requests. A review a user runs locally in Claude Code with `/code-review` is governed.
+* **Smart reports (beta).** Anthropic makes model calls to build your organization's [smart reports](https://support.claude.com/en/articles/16893491-get-started-with-smart-reports).
+
 ***
 
 ## Inference hooks versus the Compliance API

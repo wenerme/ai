@@ -18,6 +18,13 @@ Cloudflare occasionally updates the `beacon.min.js` file to improve Web Analytic
 
 [Subscribe to RSS](https://developers.cloudflare.com/web-analytics/changelog/index.xml)
 
+## 2026-10-05
+
+1. Allow `__cfBeacon` JavaScript object to override `data-cf-beacon` configuration
+2. Improved OS version collection on iOS/MacOS
+3. Improved backwards compatibility with ES2017 transpilation
+4. Google's web-vitals library upgraded to version 6.2.2
+
 ## 2026-09-02
 
 1. Bug fix to prevent rounding of Cumulative Layout Shift (CLS)

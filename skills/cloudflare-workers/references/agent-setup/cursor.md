@@ -43,7 +43,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Build a serverless AI inference endpoint on Workers AI with streaming responses.
+   Configure Zero Trust access policies to protect my internal staging environment.
    ```
 
 
@@ -150,23 +150,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+```
+
+```txt
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+```
+
+```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
 Add a cron trigger to my Worker that processes a job queue every hour.
-```
-
-```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
-```
-
-```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
 ```
 
 ## Tips
@@ -240,7 +240,7 @@ Verify your <code>.cursor/mcp.json</code> configuration is valid JSON. Restart C
 
 </summary>
 
-Enable the <a href="https://github.com/cloudflare/mcp-server-cloudflare">Cloudflare docs MCP server</a> so the agent can fetch current documentation at runtime. If you prefer not to use the MCP server, point the agent directly at <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of every product, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
+Point the agent directly at <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of every product, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
 
 </details>
 
@@ -250,7 +250,7 @@ Enable the <a href="https://github.com/cloudflare/mcp-server-cloudflare">Cloudfl
 
 </summary>
 
-Add the Cloudflare docs MCP server and Workers documentation to your project context. Use @-mentions to reference <code>wrangler.jsonc</code> or <code>cloudflare.config.ts</code>.
+Add Workers documentation to your project context. Use @-mentions to reference <code>wrangler.jsonc</code> or <code>cloudflare.config.ts</code>.
 
 </details>
 
@@ -279,5 +279,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/cursor/#page","headline":"Cursor + Cloudflare","description":"AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.","url":"https://developers.cloudflare.com/agent-setup/cursor/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/cursor/og.png?v=cd111722160e6c8a","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/cursor/#page","headline":"Cursor + Cloudflare","description":"AI-first IDE built on VS Code with multi-file Composer edits and background agents. Made by Cursor.","url":"https://developers.cloudflare.com/agent-setup/cursor/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/cursor/og.png?v=cd111722160e6c8a","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

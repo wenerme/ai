@@ -39,12 +39,15 @@ Requests at the burst limit reach the sustained limit in approximately 50 minute
 12 minutes in Premium, and 12.5 minutes in Ultimate.
 
 These limits apply to API requests, web requests, and authenticated Git over HTTPS requests.
+Each Git clone, fetch, or push counts as one request, and so does each Git LFS transfer.
 Some unauthenticated requests do not count against the unauthenticated limit of 60 requests
 each hour from an IP address:
 
 - Git over HTTPS requests
 - [Feature flag](../../operations/feature_flags.md) polling from Unleash clients
+- [SCIM](../group/saml_sso/scim_setup.md) provisioning requests from an identity provider
 - Requests from the [GitLab for Slack app](../project/integrations/gitlab_slack_application.md)
+- Requests that [trigger a pipeline with a pipeline trigger token](../../ci/triggers/_index.md)
 
 These requests stay subject to the [current limits](#current-rate-limits). The GitLab for Slack
 app also has its own limit for an IP address of 1,000 requests each hour and 100 requests each
