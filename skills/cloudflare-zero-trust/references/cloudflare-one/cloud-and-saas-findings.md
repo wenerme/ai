@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/
 
 # Cloud and SaaS findings
 
-Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -22,7 +22,23 @@ Free users can configure up to two CASB integrations. You must upgrade to an Ent
 
 Cloudflare's [Cloud Access Security Broker ↗︎](https://www.cloudflare.com/learning/access-management/what-is-a-casb/) (CASB) connects to SaaS application and cloud environment APIs to scan for security issues that can occur after a user has successfully logged in. These include misconfigurations (such as overly permissive sharing settings), unauthorized user activity, [shadow IT](https://www.cloudflare.com/learning/access-management/what-is-shadow-it/), and other data security issues.
 
-For a list of available findings, refer to [Cloud and SaaS integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/). You can also send posture finding instances to external systems with [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/).
+For a list of supported finding types, refer to [Cloud and SaaS integrations](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/). You can also send posture finding instances to external systems with [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/).
+
+## Finding terminology
+
+CASB uses the following terms for posture findings:
+
+| Term | Definition |
+| --- | --- |
+| Finding type | A definition of a specific security issue that CASB detects. It includes detection logic and metadata for one vendor and asset class, such as files or users. One finding type can apply to multiple integrations. |
+| Posture finding | A summary of detections of one finding type within one integration. Each row in **Posture Findings** represents a finding and groups its instances. |
+| Finding instance | An individual occurrence of a posture finding affecting a specific asset within that integration. One asset can have instances of different finding types. |
+
+For example, CASB detects publicly viewable files in two Google Workspace integrations. **Posture Findings** shows two findings for the **Google Workspace: File publicly accessible with view access** finding type, one per integration. Each affected file, such as `budget.xlsx`, is a separate finding instance within its integration.
+
+Content findings use a different grouping. Each row in **Content Findings** represents one asset within an integration and groups its matching [Data Loss Prevention (DLP)](https://developers.cloudflare.com/cloudflare-one/data-loss-prevention/) profiles.
+
+To review detected findings and their affected assets, refer to [Manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/).
 
 ## Manage CASB integrations
 
@@ -74,5 +90,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/#page","headline":"Cloud and SaaS findings","description":"Cloud and SaaS findings in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/og.png?v=26616082715d6e62","dateModified":"2026-04-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/#page","headline":"Cloud and SaaS findings","description":"Cloud and SaaS findings in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/og.png?v=26616082715d6e62","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

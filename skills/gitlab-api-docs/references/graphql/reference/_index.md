@@ -15193,7 +15193,7 @@ Arguments:
 | <a id="mutation-runnercreate-rununtagged"></a>`runUntagged` | [`Boolean`](#boolean) | Indicates the runner is able to run untagged jobs. |
 | <a id="mutation-runnercreate-runnertype"></a>`runnerType` | [`CiRunnerType!`](#cirunnertype) | Type of the runner to create. |
 | <a id="mutation-runnercreate-taglist"></a>`tagList` | [`[String!]`](#string) | Tags associated with the runner. |
-| <a id="mutation-runnercreate-tokenexpiresat"></a>`tokenExpiresAt` | [`Time`](#time) | Token expiration time (ISO 8601 format). Must be between 5 minutes and 15 days in the future, and cannot exceed instance/group/project limits. |
+| <a id="mutation-runnercreate-tokenexpiresat"></a>`tokenExpiresAt` | [`Time`](#time) | Token expiration time (ISO 8601 format). Must be between 5 minutes and 21 days in the future, and cannot exceed instance/group/project limits. |
 | <a id="mutation-runnercreate-tokenrotationdeadline"></a>`tokenRotationDeadline`  | [`Time`](#time) | Introduced in GitLab 18.10. Status: Experiment. Deadline for token rotation (ISO 8601 format). Requires tokenExpiresAt. Must be <= tokenExpiresAt. Setting both to the same value disables token rotation. |
 
 Fields:
@@ -33095,7 +33095,8 @@ Fields:
 | <a id="aiauditevent-humanauthor"></a>`humanAuthor` | [`UserCore`](#usercore) | Human user on whose behalf the audit event was triggered, present only for composite-identity sessions where a service account acts on behalf of a human. |
 | <a id="aiauditevent-id"></a>`id` | [`ID!`](#id) | ID of the audit event. |
 | <a id="aiauditevent-ipaddress"></a>`ipAddress` | [`String`](#string) | IP address recorded for the audit event. |
-| <a id="aiauditevent-workflowid"></a>`workflowId` | [`ID!`](#id) | ID of the Duo Agent Platform session the event belongs to. |
+| <a id="aiauditevent-sessionid"></a>`sessionId` | [`AiGovernanceSessionID`](#aigovernancesessionid) | Global ID of the AI governance session the event belongs to. |
+| <a id="aiauditevent-workflowid"></a>`workflowId` | [`ID`](#id) | ID of the Duo Agent Platform session the event belongs to. Null for events from external agents. |
 
 ### `AiCatalogAgent`
 
@@ -33826,6 +33827,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="aigovernancesession-agenttype"></a>`agentType` | [`String`](#string) | Type of the agent that ran the session, for example `claude-code`. Values differ between sources. |
+| <a id="aigovernancesession-auditevents"></a>`auditEvents` | [`AiAuditEventConnection`](#aiauditeventconnection) | Audit events recorded for the session. Returns no events for GitLab Duo sessions delivered through a private messaging integration. This field can only be resolved for one session in any single request. (see [Connections](#connections)) |
 | <a id="aigovernancesession-downloadpath"></a>`downloadPath` | [`String`](#string) | Path to download the session artifact as a JSON file. Null for sessions from sources other than GitLab Duo. |
 | <a id="aigovernancesession-flowtype"></a>`flowType` | [`String`](#string) | Flow type of the session, for example `chat`. Values differ between sources. |
 | <a id="aigovernancesession-id"></a>`id` | [`AiGovernanceSessionID!`](#aigovernancesessionid) | Global ID of the session. |
@@ -45567,6 +45569,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="group-aigovernancesessions-agentclass"></a>`agentClass` | [`AiGovernanceAgentClass`](#aigovernanceagentclass) | Filter sessions by agent class. Defaults to all agent classes. |
 | <a id="group-aigovernancesessions-flowtype"></a>`flowType` | [`String`](#string) | Filter by flow type. |
+| <a id="group-aigovernancesessions-id"></a>`id` | [`AiGovernanceSessionID`](#aigovernancesessionid) | Global ID of the session. |
 | <a id="group-aigovernancesessions-not"></a>`not` | [`AiGovernanceSessionNegatedFilterInput`](#aigovernancesessionnegatedfilterinput) | Negated filter conditions. |
 | <a id="group-aigovernancesessions-projectpath"></a>`projectPath` | [`String`](#string) | Filter by project full path. |
 | <a id="group-aigovernancesessions-sessionstartedafter"></a>`sessionStartedAfter` | [`Time`](#time) | Return sessions started at or after the timestamp. |
@@ -55830,6 +55833,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="project-aigovernancesessions-agentclass"></a>`agentClass` | [`AiGovernanceAgentClass`](#aigovernanceagentclass) | Filter sessions by agent class. Defaults to all agent classes. |
 | <a id="project-aigovernancesessions-flowtype"></a>`flowType` | [`String`](#string) | Filter by flow type. |
+| <a id="project-aigovernancesessions-id"></a>`id` | [`AiGovernanceSessionID`](#aigovernancesessionid) | Global ID of the session. |
 | <a id="project-aigovernancesessions-not"></a>`not` | [`AiGovernanceSessionNegatedFilterInput`](#aigovernancesessionnegatedfilterinput) | Negated filter conditions. |
 | <a id="project-aigovernancesessions-sessionstartedafter"></a>`sessionStartedAfter` | [`Time`](#time) | Return sessions started at or after the timestamp. |
 | <a id="project-aigovernancesessions-sessionstartedbefore"></a>`sessionStartedBefore` | [`Time`](#time) | Return sessions started at or before the timestamp. |
@@ -65581,6 +65585,8 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="chatusermetrics-lastduoactivityon"></a>`lastDuoActivityOn` | [`Date`](#date) | Date of the last Chat activity for the user. |
 | <a id="chatusermetrics-requestduochatresponseeventcount"></a>`requestDuoChatResponseEventCount` | [`Int`](#int) | Total count of `request_duo_chat_response` event. |
+| <a id="chatusermetrics-toolfailedduochateventcount"></a>`toolFailedDuoChatEventCount` | [`Int`](#int) | Total count of `tool_failed_duo_chat` event. |
+| <a id="chatusermetrics-toolsucceededduochateventcount"></a>`toolSucceededDuoChatEventCount` | [`Int`](#int) | Total count of `tool_succeeded_duo_chat` event. |
 | <a id="chatusermetrics-totaleventcount"></a>`totalEventCount` | [`Int`](#int) | Total count of all Chat events for the user. |
 
 ### `codeReviewMetrics`
@@ -65664,6 +65670,8 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="duochatmetrics-requestduochatresponseeventcount"></a>`requestDuoChatResponseEventCount` | [`Int`](#int) | Total count of `request_duo_chat_response` event. |
+| <a id="duochatmetrics-toolfailedduochateventcount"></a>`toolFailedDuoChatEventCount` | [`Int`](#int) | Total count of `tool_failed_duo_chat` event. |
+| <a id="duochatmetrics-toolsucceededduochateventcount"></a>`toolSucceededDuoChatEventCount` | [`Int`](#int) | Total count of `tool_succeeded_duo_chat` event. |
 
 ### `duoMessagingUserMetrics`
 
@@ -66436,6 +66444,8 @@ Type of AI usage event.
 | <a id="aiusageeventtype-start_mcp_tool_call"></a>`START_MCP_TOOL_CALL` | MCP tool call was started. |
 | <a id="aiusageeventtype-summarize_new_merge_request"></a>`SUMMARIZE_NEW_MERGE_REQUEST` | Merge request summary was generated. |
 | <a id="aiusageeventtype-summarize_review"></a>`SUMMARIZE_REVIEW` | A merge request review summary was requested with GitLab Duo. |
+| <a id="aiusageeventtype-tool_failed_duo_chat"></a>`TOOL_FAILED_DUO_CHAT` | Duo Chat tool call failed. |
+| <a id="aiusageeventtype-tool_succeeded_duo_chat"></a>`TOOL_SUCCEEDED_DUO_CHAT` | Duo Chat tool call succeeded. |
 | <a id="aiusageeventtype-trigger_slack_duo"></a>`TRIGGER_SLACK_DUO` | Duo agent was triggered from a Slack mention. |
 | <a id="aiusageeventtype-troubleshoot_job"></a>`TROUBLESHOOT_JOB` | Troubleshoot job feature was used. |
 | <a id="aiusageeventtype-view_duo_agentic_subscription_expired_empty_state"></a>`VIEW_DUO_AGENTIC_SUBSCRIPTION_EXPIRED_EMPTY_STATE` | Duo Agent Platform subscription expired empty state was viewed. |
@@ -66563,6 +66573,10 @@ Values for sorting AI user metrics.
 | <a id="aiusermetricssort-summarize_review_desc"></a>`SUMMARIZE_REVIEW_DESC` | Summarize Review event count in descending order. |
 | <a id="aiusermetricssort-summarize_review_total_count_asc"></a>`SUMMARIZE_REVIEW_TOTAL_COUNT_ASC` | Summarize Review total event count in ascending order. |
 | <a id="aiusermetricssort-summarize_review_total_count_desc"></a>`SUMMARIZE_REVIEW_TOTAL_COUNT_DESC` | Summarize Review total event count in descending order. |
+| <a id="aiusermetricssort-tool_failed_duo_chat_asc"></a>`TOOL_FAILED_DUO_CHAT_ASC` | Tool Failed Duo Chat event count in ascending order. |
+| <a id="aiusermetricssort-tool_failed_duo_chat_desc"></a>`TOOL_FAILED_DUO_CHAT_DESC` | Tool Failed Duo Chat event count in descending order. |
+| <a id="aiusermetricssort-tool_succeeded_duo_chat_asc"></a>`TOOL_SUCCEEDED_DUO_CHAT_ASC` | Tool Succeeded Duo Chat event count in ascending order. |
+| <a id="aiusermetricssort-tool_succeeded_duo_chat_desc"></a>`TOOL_SUCCEEDED_DUO_CHAT_DESC` | Tool Succeeded Duo Chat event count in descending order. |
 | <a id="aiusermetricssort-total_events_count_asc"></a>`TOTAL_EVENTS_COUNT_ASC` | Total count of all AI events in ascending order. |
 | <a id="aiusermetricssort-total_events_count_desc"></a>`TOTAL_EVENTS_COUNT_DESC` | Total count of all AI events in descending order. |
 | <a id="aiusermetricssort-trigger_slack_duo_asc"></a>`TRIGGER_SLACK_DUO_ASC` | Trigger Slack Duo event count in ascending order. |
@@ -68431,6 +68445,7 @@ Where a Duo Workflow session was initiated from.
 | <a id="duoworkflowsourcetype-merge_request_fix_pipeline"></a>`MERGE_REQUEST_FIX_PIPELINE` | Session initiated from fixing a failed pipeline on a merge request. |
 | <a id="duoworkflowsourcetype-merge_request_resolve_discussion"></a>`MERGE_REQUEST_RESOLVE_DISCUSSION` | Session initiated from resolving a discussion on a merge request. |
 | <a id="duoworkflowsourcetype-slack"></a>`SLACK` | Session initiated from Slack. |
+| <a id="duoworkflowsourcetype-work_item_plan_to_merge_request"></a>`WORK_ITEM_PLAN_TO_MERGE_REQUEST` | Session initiated from implementing a work item plan. |
 | <a id="duoworkflowsourcetype-work_item_to_merge_request"></a>`WORK_ITEM_TO_MERGE_REQUEST` | Session initiated from creating a merge request from a work item. |
 
 ### `DuoWorkflowStatus`
@@ -71654,11 +71669,13 @@ Name of the feature that the callout is for.
 | <a id="usergroupcalloutfeaturename-ci_minutes_limit_alert_exceeded_stage"></a>`CI_MINUTES_LIMIT_ALERT_EXCEEDED_STAGE` | Callout feature name for ci_minutes_limit_alert_exceeded_stage. |
 | <a id="usergroupcalloutfeaturename-ci_minutes_limit_alert_warning_stage"></a>`CI_MINUTES_LIMIT_ALERT_WARNING_STAGE` | Callout feature name for ci_minutes_limit_alert_warning_stage. |
 | <a id="usergroupcalloutfeaturename-duo_code_review_enabled_by_default"></a>`DUO_CODE_REVIEW_ENABLED_BY_DEFAULT` | Callout feature name for duo_code_review_enabled_by_default. |
+| <a id="usergroupcalloutfeaturename-duo_panel_request_painted_door"></a>`DUO_PANEL_REQUEST_PAINTED_DOOR` | Callout feature name for duo_panel_request_painted_door. |
 | <a id="usergroupcalloutfeaturename-end_of_trial_modal"></a>`END_OF_TRIAL_MODAL` | Callout feature name for end_of_trial_modal. |
 | <a id="usergroupcalloutfeaturename-enforcement_at_limit_alert"></a>`ENFORCEMENT_AT_LIMIT_ALERT` | Callout feature name for enforcement_at_limit_alert. |
 | <a id="usergroupcalloutfeaturename-expired_duo_enterprise_trial_widget"></a>`EXPIRED_DUO_ENTERPRISE_TRIAL_WIDGET` | Callout feature name for expired_duo_enterprise_trial_widget. |
 | <a id="usergroupcalloutfeaturename-expired_duo_pro_trial_widget"></a>`EXPIRED_DUO_PRO_TRIAL_WIDGET` | Callout feature name for expired_duo_pro_trial_widget. |
 | <a id="usergroupcalloutfeaturename-expired_trial_status_widget"></a>`EXPIRED_TRIAL_STATUS_WIDGET` | Callout feature name for expired_trial_status_widget. |
+| <a id="usergroupcalloutfeaturename-explore_premium_request_painted_door"></a>`EXPLORE_PREMIUM_REQUEST_PAINTED_DOOR` | Callout feature name for explore_premium_request_painted_door. |
 | <a id="usergroupcalloutfeaturename-free_group_limited_alert"></a>`FREE_GROUP_LIMITED_ALERT` | Callout feature name for free_group_limited_alert. |
 | <a id="usergroupcalloutfeaturename-namespace_over_storage_users_combined_alert"></a>`NAMESPACE_OVER_STORAGE_USERS_COMBINED_ALERT` | Callout feature name for namespace_over_storage_users_combined_alert. |
 | <a id="usergroupcalloutfeaturename-namespace_storage_limit_alert_alert_threshold"></a>`NAMESPACE_STORAGE_LIMIT_ALERT_ALERT_THRESHOLD` | Callout feature name for namespace_storage_limit_alert_alert_threshold. |

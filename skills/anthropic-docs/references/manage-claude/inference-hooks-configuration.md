@@ -101,7 +101,7 @@ To use shadow mode, set **Mode** to **Shadow mode** under **Failure handling**, 
 
 Under **Exclusions**, select roles whose members are not covered by Inference hooks: their prompts are never sent to your AI security server. Only custom roles your organization created can be excluded; the built-in roles aren't offered. Pick them in the role selector, whose placeholder reads **Select roles to exclude**, and manage who holds each role from the roles admin page (**Manage roles**); changing exclusions requires identity management permission. The list is empty by default, and with no roles excluded, every governed request is inspected.
 
-Exclusion applies to a user's interactive sessions; traffic authenticated by machine credentials is always inspected. Changes to the exclusion list are recorded in the audit trail.
+Exclusion applies to a user's interactive sessions. Changes to the exclusion list are recorded in your organization's [Activity Feed](https://platform.claude.com/docs/en/manage-claude/compliance-activity-feed) as role permission changes (`rbac_role_permission_added` and `rbac_role_permission_removed`).
 
 ## Custom blocked prompt message
 

@@ -42,18 +42,14 @@ TerminalStandaloneExtensionOpen Source
    ```
 
 
-3. **Add Cloudflare MCP servers**
+3. **Add the Cloudflare MCP server**
 
-   Add MCP servers to `.opencode.jsonc`. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗︎](https://github.com/cloudflare/mcp).
+   Add the Cloudflare MCP server to `.opencode.jsonc`. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗︎](https://github.com/cloudflare/mcp).
 
    ```json
    {
      "mcp": {
-       "cloudflare": { "type": "remote", "url": "https://mcp.cloudflare.com/mcp", "enabled": true },
-       "cloudflare-docs": { "type": "remote", "url": "https://docs.mcp.cloudflare.com/mcp", "enabled": true },
-       "cloudflare-bindings": { "type": "remote", "url": "https://bindings.mcp.cloudflare.com/mcp", "enabled": true },
-       "cloudflare-builds": { "type": "remote", "url": "https://builds.mcp.cloudflare.com/mcp", "enabled": true },
-       "cloudflare-observability": { "type": "remote", "url": "https://observability.mcp.cloudflare.com/mcp", "enabled": true }
+       "cloudflare": { "type": "remote", "url": "https://mcp.cloudflare.com/mcp", "enabled": true }
      }
    }
    ```
@@ -73,7 +69,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+   Add mTLS authentication and schema validation to protect my API endpoints.
    ```
 
 
@@ -180,23 +176,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
-```
-
-```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
-```
-
-```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
 Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
+```
+
+```txt
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
 Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+```
+
+```txt
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ## Tips
@@ -275,7 +271,7 @@ Verify the MCP configuration in <code>.opencode.jsonc</code> uses <code>"type": 
 
 </summary>
 
-Enable the <a href="https://github.com/cloudflare/mcp-server-cloudflare">Cloudflare docs MCP server</a> so the agent can fetch current documentation at runtime. If you prefer not to use the MCP server, point the agent directly at <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of every product, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
+Point the agent directly at <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of every product, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
 
 </details>
 
@@ -304,5 +300,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/opencode/#page","headline":"OpenCode + Cloudflare","description":"Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.","url":"https://developers.cloudflare.com/agent-setup/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/opencode/og.png?v=c6d479b47c893580","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/opencode/#page","headline":"OpenCode + Cloudflare","description":"Open-source terminal agent with a rich TUI that works with 75+ LLMs. Made by Anomaly.","url":"https://developers.cloudflare.com/agent-setup/opencode/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/opencode/og.png?v=c6d479b47c893580","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

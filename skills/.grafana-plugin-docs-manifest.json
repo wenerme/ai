@@ -446,8 +446,8 @@
   },
   "grafana-clickhouse-datasource/alerting.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/alerting.md",
-    "size": 12785,
-    "updatedAt": "2026-08-25T01:54:28.460Z"
+    "size": 12915,
+    "updatedAt": "2026-10-05T19:26:04.268Z"
   },
   "grafana-clickhouse-datasource/annotations.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/annotations.md",
@@ -456,8 +456,8 @@
   },
   "grafana-clickhouse-datasource/configure.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/configure.md",
-    "size": 38739,
-    "updatedAt": "2026-10-01T05:41:06.898Z"
+    "size": 39148,
+    "updatedAt": "2026-10-05T19:26:04.608Z"
   },
   "grafana-clickhouse-datasource/dashboards.md": {
     "url": "https://grafana.com/docs/plugins/grafana-clickhouse-datasource/latest/dashboards.md",
@@ -3601,8 +3601,8 @@
   },
   "yesoreyeram-infinity-datasource/examples/examples/aws.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/examples/aws.md",
-    "size": 5401,
-    "updatedAt": "2026-06-25T05:44:54.858Z"
+    "size": 12462,
+    "updatedAt": "2026-10-05T19:27:50.556Z"
   },
   "yesoreyeram-infinity-datasource/examples/examples/azure.md": {
     "url": "https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/examples/examples/azure.md",

@@ -61,49 +61,15 @@ IDETerminalStandaloneCloudExtensionOpen Source
    ```
 
 
-4. **Add Cloudflare MCP servers**
+4. **Add the Cloudflare MCP server**
 
-   Add the Cloudflare Model Context Protocol (MCP) servers to `~/.vibe/config.toml`. Back up an existing file and preserve unrelated settings. Update entries that already exist instead of adding duplicates.
-
-   The Cloudflare docs server is public. The other servers in this configuration require OAuth:
+   Add the Cloudflare Model Context Protocol (MCP) server to `~/.vibe/config.toml`. Back up an existing file and preserve unrelated settings. Update entries that already exist instead of adding duplicates.
 
    ```toml
    [[mcp_servers]]
    name = "cloudflare"
    transport = "streamable-http"
    url = "https://mcp.cloudflare.com/mcp"
-
-   [mcp_servers.auth]
-   type = "oauth"
-   scopes = []
-
-   [[mcp_servers]]
-   name = "cloudflare-docs"
-   transport = "streamable-http"
-   url = "https://docs.mcp.cloudflare.com/mcp"
-
-   [[mcp_servers]]
-   name = "cloudflare-bindings"
-   transport = "streamable-http"
-   url = "https://bindings.mcp.cloudflare.com/mcp"
-
-   [mcp_servers.auth]
-   type = "oauth"
-   scopes = []
-
-   [[mcp_servers]]
-   name = "cloudflare-builds"
-   transport = "streamable-http"
-   url = "https://builds.mcp.cloudflare.com/mcp"
-
-   [mcp_servers.auth]
-   type = "oauth"
-   scopes = []
-
-   [[mcp_servers]]
-   name = "cloudflare-observability"
-   transport = "streamable-http"
-   url = "https://observability.mcp.cloudflare.com/mcp"
 
    [mcp_servers.auth]
    type = "oauth"
@@ -119,22 +85,19 @@ IDETerminalStandaloneCloudExtensionOpen Source
    vibe
    ```
 
-   If Vibe is already running, enter `/reload` instead. Then enter `/mcp status` to check each server. Authorize the four servers that access your Cloudflare account:
+   If Vibe is already running, enter `/reload` instead. Then enter `/mcp status` to check the server. Authorize the Cloudflare MCP server:
 
    ```txt
    /mcp login cloudflare
-   /mcp login cloudflare-bindings
-   /mcp login cloudflare-builds
-   /mcp login cloudflare-observability
    ```
 
-   Complete each OAuth flow in your browser.
+   Complete the OAuth flow in your browser.
 6. **Try a prompt**
 
    For example:
 
    ```txt
-   Create a Logpush job to stream Workers analytics to my data warehouse.
+   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
    ```
 
 
@@ -241,23 +204,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ## Tips
@@ -284,7 +247,7 @@ Use all three. Skills provide Cloudflare implementation guidance. MCP servers pr
 
 </summary>
 
-Run <code>/mcp login &lt;name&gt;</code> for each server configured with OAuth, then complete the authorization flow in your browser. The <code>cloudflare-docs</code> server is public and does not require authentication.
+Run <code>/mcp login cloudflare</code>, then complete the authorization flow in your browser.
 
 </details>
 
@@ -326,7 +289,7 @@ Confirm that the entries in <code>~/.vibe/config.toml</code> match the quick sta
 
 </summary>
 
-Enter <code>/mcp logout &lt;name&gt;</code>, then enter <code>/mcp login &lt;name&gt;</code>. Complete the new authorization flow in your browser.
+Enter <code>/mcp logout cloudflare</code>, then enter <code>/mcp login cloudflare</code>. Complete the new authorization flow in your browser.
 
 </details>
 
@@ -346,7 +309,7 @@ Enter <code>/reload</code> to reload Vibe configuration and Skills. If the Skill
 
 </summary>
 
-Enter <code>/mcp status</code> and confirm that <code>cloudflare-docs</code> is connected. Alternatively, point Vibe to <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of all products. Use <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
+Point Vibe to <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of all products. Use <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
 
 </details>
 
@@ -375,5 +338,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/vibe/#page","headline":"Vibe + Cloudflare","description":"Coding agent for terminal, IDE, and cloud workflows that reads files, runs commands, writes code, and opens pull requests. Made by Mistral AI.","url":"https://developers.cloudflare.com/agent-setup/vibe/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/vibe/og.png?v=f90a1f05baaa216a","dateModified":"2026-09-26","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/vibe/#page","headline":"Vibe + Cloudflare","description":"Coding agent for terminal, IDE, and cloud workflows that reads files, runs commands, writes code, and opens pull requests. Made by Mistral AI.","url":"https://developers.cloudflare.com/agent-setup/vibe/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/vibe/og.png?v=f90a1f05baaa216a","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

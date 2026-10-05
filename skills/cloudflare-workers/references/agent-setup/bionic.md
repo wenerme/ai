@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Set up rate limiting and WAF rules to block abuse on my public API.
+   Create a Logpush job to stream Workers analytics to my data warehouse.
    ```
 
 
@@ -155,23 +155,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
-```
-
-```txt
-Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
-```
-
-```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
-```
-
-```txt
-Configure Zero Trust access policies to protect my internal staging environment.
-```
-
-```txt
 Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+```
+
+```txt
+Build an image upload and transformation service using R2 and Cloudflare Images.
+```
+
+```txt
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+```
+
+```txt
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+```
+
+```txt
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ## Tips
@@ -250,7 +250,7 @@ Confirm that the server URL is <code><a href="https://mcp.cloudflare.com/mcp">ht
 
 </summary>
 
-Add the Cloudflare documentation MCP server at <code><a href="https://docs.mcp.cloudflare.com/mcp">https://docs.mcp.cloudflare.com/mcp ↗︎</a></code> so Bionic can retrieve current documentation. Alternatively, point Bionic to <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of all products, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
+Point Bionic to <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of all products, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
 
 </details>
 
@@ -289,5 +289,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/bionic/#page","headline":"LM Studio Bionic + Cloudflare","description":"Use LM Studio Bionic with Cloudflare projects, local codebases, and local or cloud-hosted open-source models.","url":"https://developers.cloudflare.com/agent-setup/bionic/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/bionic/og.png?v=ce6de8942f385c9a","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/bionic/#page","headline":"LM Studio Bionic + Cloudflare","description":"Use LM Studio Bionic with Cloudflare projects, local codebases, and local or cloud-hosted open-source models.","url":"https://developers.cloudflare.com/agent-setup/bionic/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/bionic/og.png?v=ce6de8942f385c9a","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

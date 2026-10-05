@@ -1,5 +1,5 @@
 ---
-description: Automatically remediate findings or send webhooks with CASB policies in Cloudflare One.
+description: Automatically remediate finding instances or send webhooks with CASB policies in Cloudflare One.
 title: Remediation Policies
 image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/og.png?v=8c92cb64c5c7deaf
 ---
@@ -12,13 +12,13 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/
 
 # Remediation Policies
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
 Requires a paid Cloudflare CASB plan. Remediation Policies are not available for free CASB integrations.
 
-Use CASB policies to automatically remediate a finding or send a webhook as soon as CASB detects it. A policy defines the vendor, the finding type match, and the action Cloudflare should take.
+Use CASB policies to automatically remediate a finding instance or send a webhook as soon as CASB detects it. A policy defines the vendor, integrations, finding type match, and action Cloudflare should take. For definitions of finding types and instances, refer to [Finding terminology](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/#finding-terminology).
 
 Policies build on [manual remediation](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#remediate-findings) and [CASB webhooks](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/). Instead of each finding instance needing to be actioned manually, a configured policy automatically triggers action on all newly discovered matching finding instances.
 
@@ -30,7 +30,7 @@ Policies build on [manual remediation](https://developers.cloudflare.com/cloudfl
 
 ## How policies work
 
-When CASB detects a finding, it checks whether the finding matches a customer-configured policy. If a policy matches, Cloudflare runs the policy's configured action against that finding instance automatically.
+When CASB detects a finding instance, it checks whether the instance matches a customer-configured policy. If a policy matches, Cloudflare runs the action configured in the policy against that instance automatically.
 
 A policy can run a remediation action, send a webhook, or both.
 
@@ -62,7 +62,7 @@ CASB currently supports remediation actions for Microsoft 365 and Google Workspa
 
 <summary>
 
-Supported findings for remediation
+Supported finding types for remediation
 
 </summary>
 
@@ -94,13 +94,13 @@ Supported findings for remediation
 
 </details>
 
-Remediation requires [Read-Write permissions](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#configure-remediation-permissions) on the integration. If the integration only has Read permissions, upgrade the integration before the policy can remediate matching findings.
+Remediation requires [Read-Write permissions](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#configure-remediation-permissions) on the integration. If the integration only has Read permissions, upgrade the integration before the policy can remediate matching finding instances.
 
 For more information, refer to [Manage remediated findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/#manage-remediated-findings).
 
 ### Send webhooks
 
-Webhook actions send the finding instance to a previously configured webhook destination. Use this to route findings to systems such as Slack, Microsoft Teams, Jira, ServiceNow, Tines, or a custom HTTPS endpoint.
+Webhook actions send the finding instance to a previously configured webhook destination. Use this to route finding instances to systems such as Slack, Microsoft Teams, Jira, ServiceNow, Tines, or a custom HTTPS endpoint.
 
 When a policy sends a webhook, the payload uses the same format as a webhook sent manually from a finding instance. For the payload structure and field descriptions, refer to [Payload format](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/#payload-format).
 
@@ -111,7 +111,7 @@ When a policy sends a webhook, the payload uses the same format as a webhook sen
 3. Modify the policy's basic information, trigger, or actions.
 4. Select **Save changes**.
 
-To turn a policy on or off, use the **Enable policy** toggle under **Status**. A policy's status displays as **Enabled** or **Disabled** in the policy list. A disabled policy stops matching new findings until enabled again.
+To turn a policy on or off, use the **Enable policy** toggle under **Status**. Each policy displays its status as **Enabled** or **Disabled** in the policy list. A disabled policy stops matching new finding instances until you turn it on again.
 
 To delete a policy, open the policy and select **Delete**.
 
@@ -120,9 +120,9 @@ To delete a policy, open the policy and select **Delete**.
 Every policy produces two categories of logs, available under **Insights** in Cloudflare One:
 
 - **Admin Activity logs** record changes to a policy definition, including who created, edited, or disabled the policy, and when.
-- **Cloud & SaaS Security policies logs** record the runtime outcome of each policy invocation, including the finding that triggered the policy, the asset acted on, whether the action succeeded or failed, and the error returned by the vendor if it failed (for example, a `401 Unauthorized` response or a rate limit error).
+- **Cloud & SaaS Security policies logs** record the runtime outcome of each policy invocation, including the finding instance that triggered the policy, the asset acted on, whether the action succeeded or failed, and the error returned by the vendor if it failed (for example, a `401 Unauthorized` response or a rate limit error).
 
-For compliance reporting, the Cloud & SaaS Security policies log ties a specific finding to a specific automated action and timestamp.
+For compliance reporting, the Cloud & SaaS Security policies log ties a specific finding instance to a specific automated action and timestamp.
 
 For more information, refer to [Cloudflare One Logs](https://developers.cloudflare.com/cloudflare-one/insights/logs/).
 
@@ -145,5 +145,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/#page","headline":"Remediation Policies","description":"Automatically remediate findings or send webhooks with CASB policies in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/og.png?v=8c92cb64c5c7deaf","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/#page","headline":"Remediation Policies","description":"Automatically remediate finding instances or send webhooks with CASB policies in Cloudflare One.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/og.png?v=8c92cb64c5c7deaf","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

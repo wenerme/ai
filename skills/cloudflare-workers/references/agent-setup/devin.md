@@ -36,18 +36,14 @@ IDETerminalStandaloneCloudExtension
    ```
 
 
-3. **Configure Cloudflare MCP servers**
+3. **Configure the Cloudflare MCP server**
 
-   Add the Cloudflare API and docs servers to `~/.codeium/windsurf/mcp_config.json`. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗︎](https://github.com/cloudflare/mcp).
+   Add the Cloudflare API MCP server to `~/.codeium/windsurf/mcp_config.json`. For domain-specific MCP servers, refer to [mcp-server-cloudflare ↗︎](https://github.com/cloudflare/mcp-server-cloudflare). For the full Cloudflare API MCP server (Code Mode), refer to [cloudflare/mcp ↗︎](https://github.com/cloudflare/mcp).
 
    ```json
    {
      "mcpServers": {
-       "cloudflare": { "serverUrl": "https://mcp.cloudflare.com/mcp" },
-       "cloudflare-docs": { "serverUrl": "https://docs.mcp.cloudflare.com/mcp" },
-       "cloudflare-bindings": { "serverUrl": "https://bindings.mcp.cloudflare.com/mcp" },
-       "cloudflare-builds": { "serverUrl": "https://builds.mcp.cloudflare.com/mcp" },
-       "cloudflare-observability": { "serverUrl": "https://observability.mcp.cloudflare.com/mcp" }
+       "cloudflare": { "serverUrl": "https://mcp.cloudflare.com/mcp" }
      }
    }
    ```
@@ -58,7 +54,7 @@ IDETerminalStandaloneCloudExtension
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Add bot protection and rate limiting to my login and checkout endpoints.
+   Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
    ```
 
 
@@ -165,19 +161,19 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Use Workers for Platforms to let my customers deploy their own code in isolated environments.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
@@ -188,7 +184,6 @@ Configure Zero Trust access policies to protect my internal staging environment.
 
 - The Cloudflare API MCP server uses Code Mode — Cascade writes JavaScript to reach any of 2,500+ endpoints in \~1,000 tokens.
 - Use `@`-mention to include your `wrangler.jsonc` or `cloudflare.config.ts` in Cascade prompts — Cascade uses this to understand your current bindings when generating code.
-- Add the observability MCP server to let Cascade automatically check Workers logs and debug deployments without leaving the IDE.
 
 ## FAQ
 
@@ -250,7 +245,7 @@ Verify your <code>mcp_config.json</code> configuration. Restart Devin Desktop af
 
 </summary>
 
-Enable the <a href="https://github.com/cloudflare/mcp-server-cloudflare">Cloudflare docs MCP server</a> so the agent can fetch current documentation at runtime. If you prefer not to use the MCP server, point the agent directly at <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of every product, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
+Point the agent directly at <a href="https://developers.cloudflare.com/llms.txt">developers.cloudflare.com/llms.txt</a> for a directory of every product, or <code>developers.cloudflare.com/&lt;product&gt;/llms.txt</code> for a product-specific index.
 
 </details>
 
@@ -279,5 +274,5 @@ Was this helpful?
 YesNo
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/devin/#page","headline":"Devin + Cloudflare","description":"A full IDE with an agent manager built in — the command center for managing all your agents in one place. Made by Cognition.","url":"https://developers.cloudflare.com/agent-setup/devin/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/devin/og.png?v=561c22db409a0d78","dateModified":"2026-09-29","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/agent-setup/devin/#page","headline":"Devin + Cloudflare","description":"A full IDE with an agent manager built in — the command center for managing all your agents in one place. Made by Cognition.","url":"https://developers.cloudflare.com/agent-setup/devin/","inLanguage":"en","image":"https://developers.cloudflare.com/agent-setup/devin/og.png?v=561c22db409a0d78","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
