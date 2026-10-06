@@ -88,7 +88,7 @@ This is a major breaking release. Review all breaking changes below before upgra
 **Features**
 
 - Added edit, pin, and delete controls to Chat messages in RtkChat
-- Added optional background support for audio/video in Android. Refer to the [documentation](https://docs.realtime.cloudflare.com/react-native/quickstart#additional-steps-for-background-audiovideo-support) for implementation details.
+- Added optional background support for audio/video in Android.
 
 **Fixes**
 

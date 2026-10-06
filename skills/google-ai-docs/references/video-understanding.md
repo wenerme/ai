@@ -633,11 +633,25 @@ for response quality or token efficiency.
 - **Static:** Latency-sensitive queries on short clips (under 5 minutes), or cases where frame-level precision across the entire clip is needed.
 
 > **Note:** For long videos or complex prompts where agentic processing takes
-> more time, use streaming (`stream=True`) or background execution
-> (`background=True`). This keeps the connection active, surfaces intermediate
-> reasoning steps, and avoids connection or authentication timeouts.
+> more time, use streaming (`stream=True`) or
+> [background execution](https://ai.google.dev/gemini-api/docs/background-execution) (`background=True`).
+> This keeps the connection active, surfaces intermediate reasoning steps, and
+> avoids connection or authentication timeouts.
 
 ### Set the processing mode
+
+To use agentic video understanding, set `"processing": "agentic"` on the video
+part in the `input` array.
+
+Agentic video processing can take longer on long videos because the model
+performs multiple inspection passes to navigate the timeline. To avoid losing
+progress if a network connection drops, this example uses `background=True` to run
+the task asynchronously on the server.
+You can also run requests synchronously without background execution by
+omitting the `background` parameter, which works well for shorter videos.
+
+For details on polling, retrieving results, and managing background tasks, see
+the [background execution](https://ai.google.dev/gemini-api/docs/background-execution) guide.
 
 ### Python
 
@@ -653,7 +667,7 @@ for response quality or token efficiency.
         time.sleep(2)
         video_file = client.files.get(name=video_file.name)
 
-    # Use agentic processing
+    # Use agentic processing with background execution
     interaction = client.interactions.create(
         model="gemini-3.8-flash",
         input=[
@@ -664,8 +678,14 @@ for response quality or token efficiency.
                 "processing": "agentic"
             },
             {"type": "text", "text": "What are the three main arguments presented?"}
-        ]
+        ],
+        background=True,
     )
+
+    while interaction.status == "in_progress":
+        time.sleep(5)
+        interaction = client.interactions.get(interaction.id)
+
     print(interaction.output_text)
 
 ### JavaScript
@@ -685,8 +705,8 @@ for response quality or token efficiency.
       videoFile = await ai.files.get({ name: videoFile.name });
     }
 
-    // Use agentic processing
-    const interaction = await ai.interactions.create({
+    // Use agentic processing with background execution
+    let interaction = await ai.interactions.create({
       model: "gemini-3.8-flash",
       input: [
         {
@@ -696,13 +716,21 @@ for response quality or token efficiency.
           processing: "agentic"
         },
         { type: "text", text: "What are the three main arguments presented?" }
-      ]
+      ],
+      background: true,
     });
+
+    while (interaction.status === "in_progress") {
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+      interaction = await ai.interactions.get(interaction.id);
+    }
+
     console.log(interaction.output_text);
 
 ### REST
 
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    # 1. Start the interaction in the background
+    interaction=$(curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
@@ -715,8 +743,20 @@ for response quality or token efficiency.
             "processing": "agentic"
           },
           {"type": "text", "text": "What are the three main arguments presented?"}
-        ]
-      }' 2> /dev/null
+        ],
+        "background": true
+      }')
+
+    id=$(echo "$interaction" | jq -r '.id')
+
+    # 2. Poll until the interaction finishes
+    while [ "$(echo "$interaction" | jq -r '.status')" = "in_progress" ]; do
+      sleep 5
+      interaction=$(curl -s "https://generativelanguage.googleapis.com/v1beta/interactions/$id" \
+        -H "x-goog-api-key: $GEMINI_API_KEY")
+    done
+
+    echo "$interaction" | jq '.'
 
 > **Note:** To verify that agentic processing was used, inspect `interaction.steps`. The presence of `processing_call` and `processing_result` indicates that the model dynamically navigated the video.
 
@@ -797,10 +837,11 @@ The following example shows the response payload with interleaved processing ste
 
 ### Mix processing modes across videos
 
-You can set different processing modes for each video in the same request:
+Set different processing modes for each video in the same request:
 
 ### Python
 
+    import time
     from google import genai
 
     client = genai.Client()
@@ -808,6 +849,7 @@ You can set different processing modes for each video in the same request:
     lecture = client.files.upload(file="path/to/long-lecture.mp4")
     experiment = client.files.upload(file="path/to/short-experiment.mp4")
 
+    # Use agentic processing with background execution
     interaction = client.interactions.create(
         model="gemini-3.8-flash",
         input=[
@@ -824,8 +866,14 @@ You can set different processing modes for each video in the same request:
                 "processing": "static"  # Use static processing
             },
             {"type": "text", "text": "Compare the lecture content with the experiment results."}
-        ]
+        ],
+        background=True,
     )
+
+    while interaction.status == "in_progress":
+        time.sleep(5)
+        interaction = client.interactions.get(interaction.id)
+
     print(interaction.output_text)
 
 ### JavaScript
@@ -843,7 +891,8 @@ You can set different processing modes for each video in the same request:
       config: { mimeType: "video/mp4" }
     });
 
-    const interaction = await ai.interactions.create({
+    // Use agentic processing with background execution
+    let interaction = await ai.interactions.create({
       model: "gemini-3.8-flash",
       input: [
         {
@@ -859,13 +908,21 @@ You can set different processing modes for each video in the same request:
           processing: "static" // Use static processing
         },
         { type: "text", text: "Compare the lecture content with the experiment results." }
-      ]
+      ],
+      background: true,
     });
+
+    while (interaction.status === "in_progress") {
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+      interaction = await ai.interactions.get(interaction.id);
+    }
+
     console.log(interaction.output_text);
 
 ### REST
 
-    curl -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
+    # 1. Start the interaction in the background
+    interaction=$(curl -s -X POST "https://generativelanguage.googleapis.com/v1beta/interactions" \
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
@@ -884,8 +941,20 @@ You can set different processing modes for each video in the same request:
             "processing": "static"
           },
           {"type": "text", "text": "Compare the lecture content with the experiment results."}
-        ]
-      }' 2> /dev/null
+        ],
+        "background": true
+      }')
+
+    id=$(echo "$interaction" | jq -r '.id')
+
+    # 2. Poll until the interaction finishes
+    while [ "$(echo "$interaction" | jq -r '.status')" = "in_progress" ]; do
+      sleep 5
+      interaction=$(curl -s "https://generativelanguage.googleapis.com/v1beta/interactions/$id" \
+        -H "x-goog-api-key: $GEMINI_API_KEY")
+    done
+
+    echo "$interaction" | jq '.'
 
 ### Multi-turn video conversations
 
@@ -1124,12 +1193,13 @@ For more details on token calculations, see the
 
 - **Timestamp format** : When referring to specific moments in a video within your prompt, use the `MM:SS` format (e.g., `01:15` for 1 minute and 15 seconds).
 - **Prompt placement** : If combining text and a single video, place the text prompt *after* the video part in the `input` array.
-- **Timeouts for long requests** : For videos that require extended processing time or complex multi-step reasoning, use streaming (`stream=True`) or background execution (`background=True`). Synchronous, non-streaming requests that experience backend retries under high demand can exceed connection or authentication token validity windows, which may surface as unexpected `401 Unauthorized` or timeout errors. Streaming keeps the connection active and surfaces intermediate reasoning and tool call progress.
+- **Timeouts for long requests** : For videos that require extended processing time or complex multi-step reasoning, use streaming (`stream=True`) or [background execution](https://ai.google.dev/gemini-api/docs/background-execution) (`background=True`). Synchronous, non-streaming requests that experience backend retries under high demand can exceed connection or authentication token validity windows, which may surface as unexpected `401 Unauthorized` or timeout errors. Streaming keeps the connection active and surfaces intermediate reasoning and tool call progress.
 
 ## What's next
 
 - [Media resolution](https://ai.google.dev/gemini-api/docs/media-resolution): Control the resolution of video frames to balance quality and token usage.
 - [Tokens](https://ai.google.dev/gemini-api/docs/tokens): Understand how video content is tokenized in both static and agentic processing modes.
+- [Background execution](https://ai.google.dev/gemini-api/docs/background-execution): Run long-running video understanding tasks asynchronously to avoid connection timeouts.
 - [System instructions](https://ai.google.dev/gemini-api/docs/text-generation#system-instructions): System instructions let you steer the behavior of the model based on your specific needs and use cases.
 - [Files API](https://ai.google.dev/gemini-api/docs/files): Learn more about uploading and managing files for use with Gemini.
 - [File prompting strategies](https://ai.google.dev/gemini-api/docs/files#prompt-guide): The Gemini API supports prompting with text, image, audio, and video data, also known as multimodal prompting.

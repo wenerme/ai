@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/reference/wrangler-commands/og
 
 # Wrangler commands
 
-Last updated Jul 16, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/wrangler-commands/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use `wrangler flagship` to manage Flagship apps and feature flags from the command line. Every `wrangler flagship flags` command takes the app ID as the first argument. Most subcommands then take a flag key, for example `wrangler flagship flags get <APP_ID> <KEY>`. List-style commands, such as `wrangler flagship flags list <APP_ID>`, take only the app ID.
 
@@ -586,7 +586,7 @@ Evaluation output includes:
 | --- | --- |
 | `value` | The flag value returned for the context. |
 | `variant` | The variation selected for the context. |
-| `reason` | Why the value was returned: `TARGETING_MATCH`, `DEFAULT`, `DISABLED`, or `SPLIT`. |
+| `reason` | Why the value was returned: `STATIC`, `TARGETING_MATCH`, `DEFAULT`, `DISABLED`, or `SPLIT`. |
 
 ## Audit changes
 
@@ -1991,5 +1991,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/#page","headline":"Wrangler commands","description":"Use wrangler flagship to create apps, manage feature flags, configure targeting rules, run rollouts, evaluate flags, and inspect changelog history.","url":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/og.png?v=78a3388a73acec66","dateModified":"2026-07-16","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/#page","headline":"Wrangler commands","description":"Use wrangler flagship to create apps, manage feature flags, configure targeting rules, run rollouts, evaluate flags, and inspect changelog history.","url":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/wrangler-commands/og.png?v=78a3388a73acec66","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

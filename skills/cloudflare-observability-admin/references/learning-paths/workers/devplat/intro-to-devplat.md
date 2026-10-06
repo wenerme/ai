@@ -46,10 +46,11 @@ Cloudflare storage offerings differ per use case.
 | --- | --- | --- |
 | Key-value storage | [Workers KV](https://developers.cloudflare.com/kv/) | Configuration data, service routing metadata, personalization (A/B testing) |
 | Object storage / blob storage | [R2](https://developers.cloudflare.com/r2/) | User-facing web assets, images, machine learning and training datasets, analytics datasets, log and event data. |
-| Accelerate a Postgres or MySQL database | [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) | Connecting to an existing database in a cloud or on-premise using your existing database drivers & ORMs. |
+| Accelerate a Postgres or MySQL database | [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) | Connecting to an existing database in a cloud or on-premises using your existing database drivers & ORMs. |
 | Global coordination & stateful serverless | [Durable Objects](https://developers.cloudflare.com/durable-objects/) | Building collaborative applications; global coordination across clients; real-time WebSocket applications; strongly consistent, transactional storage. |
 | Lightweight SQL database | [D1](https://developers.cloudflare.com/d1/) | Relational data, including user profiles, product listings and orders, and/or customer data. |
 | Task processing, batching and messaging | [Queues](https://developers.cloudflare.com/queues/) | Background job processing (emails, notifications, APIs), message queuing, and deferred tasks. |
+| Event streaming | [K2](https://developers.cloudflare.com/k2/) | High-volume event data read by multiple independent consumers, such as alerting, archiving, and building machine learning features; replaying retained events. |
 | Vector search & embeddings queries | [Vectorize](https://developers.cloudflare.com/vectorize/) | Storing [embeddings](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) from AI models for semantic search and classification tasks. |
 | Streaming ingestion | [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) | Streaming data ingestion and processing, including clickstream analytics, telemetry/log data, and structured data for querying |
 | Time-series metrics | [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) | Write and query high-cardinality time-series data, usage metrics, and service-level telemetry using Workers and/or SQL. |

@@ -1,16 +1,16 @@
 # Fix CI/CD Pipeline Flow
 
-- Tier: [Free](../../../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
+- Tier: [Free](../../subscriptions/gitlab_credits.md#for-the-free-tier), Premium, Ultimate
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
-- Introduced as [an experiment](../../../../policy/development_stages_support.md) in GitLab 18.4 [with feature flags](../../../../administration/feature_flags/_index.md) named `duo_workflow_in_ci` and `ai_duo_agent_fix_pipeline_button`. `duo_workflow_in_ci` is enabled by default. `ai_duo_agent_fix_pipeline_button` is disabled by default. These flags can be enabled or disabled for the instance or project.
+- Introduced as [an experiment](../../policy/development_stages_support.md) in GitLab 18.4 [with feature flags](../../administration/feature_flags/_index.md) named `duo_workflow_in_ci` and `ai_duo_agent_fix_pipeline_button`. `duo_workflow_in_ci` is enabled by default. `ai_duo_agent_fix_pipeline_button` is disabled by default. These flags can be enabled or disabled for the instance or project.
 - Enabled on GitLab.com and GitLab Self-Managed in GitLab 18.5.
 - Feature flag `ai_duo_agent_fix_pipeline_button` [enabled by default](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/205086) in GitLab 18.5.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/585273) in GitLab 18.8. Feature flag `ai_duo_agent_fix_pipeline_button` [removed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/216681). Feature flag `duo_workflow_in_ci` was removed in GitLab 18.9.
 - Available on the Free tier on GitLab.com with GitLab Credits in GitLab 18.10.
 - Fixes to pipelines associated with a merge request [changed](https://gitlab.com/groups/gitlab-org/-/work_items/21837)
   to apply as code suggestions in GitLab 19.1
-  [with a feature flag](../../../../administration/feature_flags/_index.md) named `fix_pipeline_next`.
+  [with a feature flag](../../administration/feature_flags/_index.md) named `fix_pipeline_next`.
   Enabled on GitLab.com for a subset of users.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/241608) in GitLab 19.2. Feature flag `fix_pipeline_next` removed.
 
@@ -45,22 +45,22 @@ with a link to the session. This flow is available in the GitLab UI only.
 This flow is the recommended path if you use the GitLab Duo Agent Platform and want to
 fix a failed pipeline automatically.
 It's a separate experience from
-[Root Cause Analysis](../../../gitlab_duo_chat/examples.md#troubleshoot-failed-cicd-jobs-with-root-cause-analysis),
+[Root Cause Analysis](../../user/gitlab_duo_chat/examples.md#troubleshoot-failed-cicd-jobs-with-root-cause-analysis),
 a GitLab Duo Chat feature to troubleshoot single-job failures.
 
 ## Prerequisites
 
-- Meet the [prerequisites for the GitLab Duo Agent Platform](../../_index.md#prerequisites).
-- Turn on **Allow foundational flows** and **Fix CI/CD Pipeline** [for the top-level group](_index.md#turn-foundational-flows-on-or-off).
+- Meet the [prerequisites for the GitLab Duo Agent Platform](../../user/duo_agent_platform/_index.md#prerequisites).
+- Turn on **Allow foundational flows** and **Fix CI/CD Pipeline** [for the top-level group](../../user/duo_agent_platform/flows/foundational_flows/_index.md#turn-foundational-flows-on-or-off).
 - Have the Developer, Maintainer, or Owner role for the project.
 - Have an existing failed pipeline.
-- [Configure push rules to allow a service account](../../troubleshooting.md#configure-push-rules-to-allow-a-service-account).
-- [Configure your own runners](../execution/_index.md#configure-runners-to-execute-flows) or turn on [GitLab hosted runners](../../../../ci/runners/hosted_runners/_index.md) for your project.
-- Recommended. Create an [agent configuration file](../execution/_index.md#create-the-agent-configuration-file) so the flow has access to your project's toolchain and dependencies.
+- [Configure push rules to allow a service account](../../user/duo_agent_platform/troubleshooting.md#configure-push-rules-to-allow-a-service-account).
+- [Configure your own runners](../../user/duo_agent_platform/flows/execution/_index.md#configure-runners-to-execute-flows) or turn on [GitLab hosted runners](../runners/hosted_runners/_index.md) for your project.
+- Recommended. Create an [agent configuration file](../../user/duo_agent_platform/flows/execution/_index.md#create-the-agent-configuration-file) so the flow has access to your project's toolchain and dependencies.
 
 ## Fix the pipeline in a merge request
 
-- Using a flow in a GitLab Duo Agentic Chat conversation [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
+- Using a flow in a GitLab Duo Agentic Chat conversation [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/20484) in GitLab 19.2 [with a feature flag](../../administration/feature_flags/_index.md) named `agentic_foundational_flow_tool`. Enabled by default.
 - [Generally available](https://gitlab.com/gitlab-org/gitlab/-/work_items/605446) in GitLab 19.5. Feature flag `agentic_foundational_flow_tool` removed.
 
 To fix the CI/CD pipeline in a merge request:
@@ -95,7 +95,7 @@ To fix a CI/CD pipeline that is not associated with a merge request:
 ## Use `AGENTS.md` to customize the flow
 
 The flow reads repository-specific instructions from an
-[`AGENTS.md`](../../customize/agents_md.md) file in your repository.
+[`AGENTS.md`](../../user/duo_agent_platform/customize/agents_md.md) file in your repository.
 You can use `AGENTS.md` to customize behavior such as:
 
 - Commit message format for the changes the flow commits.
@@ -141,7 +141,7 @@ If a pipeline fails because of a database migration:
   See the following section for workarounds.
 - The flow cannot always verify package installation in the sandboxed runtime environment.
   If dependencies are missing, you can customize the default flow image. See
-  [change the default Docker image](../execution/images.md#change-the-default-docker-image).
+  [change the default Docker image](../../user/duo_agent_platform/flows/execution/images.md#change-the-default-docker-image).
 - Repository instructions in `AGENTS.md` influence the flow's behavior but are not guaranteed
   to be followed in every case.
 
@@ -170,11 +170,11 @@ The session for the Fix CI/CD Pipeline Flow fails, and on the session page (**AI
 the `Session failed to start` alert appears.
 
 Two pipelines are involved: the pipeline that failed, and the
-[workload pipeline](../../../../ci/pipelines/pipeline_types.md#workload-pipeline) the flow creates
+[workload pipeline](pipeline_types.md#workload-pipeline) the flow creates
 to fix it. Check the status of the job in the workload pipeline.
 
 For causes and how to resolve them, see
-[a flow's job or session fails to start](../../troubleshooting.md#a-flows-job-or-session-fails-to-start).
+[a flow's job or session fails to start](../../user/duo_agent_platform/troubleshooting.md#a-flows-job-or-session-fails-to-start).
 
 ### Fix pipeline with Duo button does not appear
 
@@ -187,9 +187,9 @@ A setting turned on at one level does not guarantee it is on at every level belo
 
 To resolve this issue, recheck each requirement:
 
-- [GitLab Duo](../../turn_on_off.md#turn-gitlab-duo-on-or-off) or
-  [GitLab Duo Core](../../turn_on_off.md#turn-gitlab-duo-core-on-or-off) is turned on.
-- The [Agent Platform is turned on](../../turn_on_off.md#turn-gitlab-duo-agent-platform-on-or-off).
+- [GitLab Duo](../../user/duo_agent_platform/turn_on_off.md#turn-gitlab-duo-on-or-off) or
+  [GitLab Duo Core](../../user/duo_agent_platform/turn_on_off.md#turn-gitlab-duo-core-on-or-off) is turned on.
+- The [Agent Platform is turned on](../../user/duo_agent_platform/turn_on_off.md#turn-gitlab-duo-agent-platform-on-or-off).
 - **Allow foundational flows** and **Fix CI/CD Pipeline** are turned on for the top-level group
   and, on GitLab Self-Managed, the instance.
 

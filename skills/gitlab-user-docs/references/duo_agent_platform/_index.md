@@ -66,7 +66,7 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 | [Developer Flow](../project/merge_requests/developer.md)  Convert issues into merge requests. | Yes | Yes  | Yes |
 | [Code Review Flow](flows/foundational_flows/code_review/_index.md)  Automate code review tasks and enforce coding standards across your team. | Yes | Yes  | Yes |
 | [Convert to GitLab CI/CD Flow](flows/foundational_flows/convert_to_gitlab_ci.md)  Convert legacy CI/CD pipelines to the GitLab CI/CD format. | Yes | Yes  | Yes |
-| [Fix CI/CD Pipeline Flow](flows/foundational_flows/fix_pipeline.md)  Diagnose and automatically fix failing CI/CD pipelines. | Yes | Yes  | Yes |
+| [Fix CI/CD Pipeline Flow](../../ci/pipelines/fix_pipeline.md)  Diagnose and automatically fix failing CI/CD pipelines. | Yes | Yes  | Yes |
 | [Software Development Flow](flows/foundational_flows/software_development.md)  Create a full, multi-step plan before executing it. | Yes | Yes  | Yes |
 | [MCP clients](../gitlab_duo/model_context_protocol/mcp_clients.md)  Access GitLab resources and tools from any MCP-compatible AI client or IDE extension.[^mcp-clients-consume] | Yes | Yes | Yes |
 | [Custom flows](flows/custom.md)  Combine multiple agents to solve your business problems. | Yes | Yes | Yes |

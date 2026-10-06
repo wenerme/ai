@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/platform/storage-options/og.png
 
 # Choose a data or storage product
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/storage-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/platform/storage-options/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 This guide describes the storage & database products available as part of Cloudflare Workers, including recommended use-cases and best practices.
 
@@ -24,10 +24,11 @@ The following table maps our storage & database products to common industry term
 | --- | --- | --- |
 | Key-value storage | [Workers KV](https://developers.cloudflare.com/kv/) | Configuration data, service routing metadata, personalization (A/B testing) |
 | Object storage / blob storage | [R2](https://developers.cloudflare.com/r2/) | User-facing web assets, images, machine learning and training datasets, analytics datasets, log and event data. |
-| Accelerate a Postgres or MySQL database | [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) | Connecting to an existing database in a cloud or on-premise using your existing database drivers & ORMs. |
+| Accelerate a Postgres or MySQL database | [Hyperdrive](https://developers.cloudflare.com/hyperdrive/) | Connecting to an existing database in a cloud or on-premises using your existing database drivers & ORMs. |
 | Global coordination & stateful serverless | [Durable Objects](https://developers.cloudflare.com/durable-objects/) | Building collaborative applications; global coordination across clients; real-time WebSocket applications; strongly consistent, transactional storage. |
 | Lightweight SQL database | [D1](https://developers.cloudflare.com/d1/) | Relational data, including user profiles, product listings and orders, and/or customer data. |
 | Task processing, batching and messaging | [Queues](https://developers.cloudflare.com/queues/) | Background job processing (emails, notifications, APIs), message queuing, and deferred tasks. |
+| Event streaming | [K2](https://developers.cloudflare.com/k2/) | High-volume event data read by multiple independent consumers, such as alerting, archiving, and building machine learning features; replaying retained events. |
 | Vector search & embeddings queries | [Vectorize](https://developers.cloudflare.com/vectorize/) | Storing [embeddings](https://developers.cloudflare.com/workers-ai/models/?tasks=Text+Embeddings) from AI models for semantic search and classification tasks. |
 | Streaming ingestion | [Basin Pipelines](https://developers.cloudflare.com/basin-pipelines/) | Streaming data ingestion and processing, including clickstream analytics, telemetry/log data, and structured data for querying |
 | Time-series metrics | [Analytics Engine](https://developers.cloudflare.com/analytics/analytics-engine/) | Write and query high-cardinality time-series data, usage metrics, and service-level telemetry using Workers and/or SQL. |
@@ -146,6 +147,24 @@ To get started with Queues:
 - [Set up your first queue](https://developers.cloudflare.com/queues/get-started/).
 - Learn more [about how Queues works](https://developers.cloudflare.com/queues/reference/how-queues-works/).
 
+### K2
+
+K2 is a durable event log. Producers write records to a stream, and K2 stores them for a configurable retention period. Consumers read records in batches through subscriptions, and each subscription reads every record independently.
+
+K2 is ideal for:
+
+- Moving large volumes of event data, with pricing based on data volume rather than the number of messages.
+- Delivering the same events to multiple independent consumers. For example, events from your applications can be read by an alerting system, a system that stores them durably, and a system that builds machine learning features.
+- Retaining events so that consumers can replay them, or so that a new consumer can read events produced before it was added.
+
+Use Queues when each message is a unit of work that needs to be completed, retried, and tracked individually. Use K2 when you produce and consume records in bulk, and what matters is that every record is processed rather than the state of any one record.
+
+To get started with K2:
+
+- [Create a stream](https://developers.cloudflare.com/k2/get-started/) and consume records from it.
+- Learn about [K2 concepts](https://developers.cloudflare.com/k2/concepts/), including streams, subscriptions, and leases.
+- Review K2 [Limits](https://developers.cloudflare.com/k2/platform/limits/).
+
 ### Hyperdrive
 
 Hyperdrive is a service that accelerates queries you make to MySQL and Postgres databases, making it faster to access your data from across the globe, irrespective of your users’ location.
@@ -241,5 +260,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/storage-options/#page","headline":"Choose a data or storage product","description":"Storage and database options available on Cloudflare's developer platform.","url":"https://developers.cloudflare.com/workers/platform/storage-options/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/storage-options/og.png?v=abca508978294b6c","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/platform/storage-options/#page","headline":"Choose a data or storage product","description":"Storage and database options available on Cloudflare's developer platform.","url":"https://developers.cloudflare.com/workers/platform/storage-options/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/platform/storage-options/og.png?v=abca508978294b6c","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

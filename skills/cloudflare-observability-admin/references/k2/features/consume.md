@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/k2/features/consume/og.png?v=347ebe1831
 
 # Consume records
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/k2/features/consume/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/k2/features/consume/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Consumers read records from a K2 stream through a [subscription](https://developers.cloudflare.com/k2/concepts/#subscriptions), which tracks which records have been processed. Each subscription on a stream reads independently, meaning multiple applications can read the same records.
 
@@ -23,7 +23,7 @@ To consume records:
 3. Process the records, then [acknowledge the batch](#acknowledge-a-batch). If processing takes longer than the lease, [extend the lease](#extend-a-lease).
 4. Repeat from step 2.
 
-K2 delivers records at least once. Your consumer can receive the same record more than once.
+K2 delivers records at least once. Your consumer can receive the same record more than once. For details, refer to [Delivery guarantees](https://developers.cloudflare.com/k2/reference/delivery-guarantees/).
 
 ## Before you begin
 
@@ -307,5 +307,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/k2/features/consume/#page","headline":"Consume records","description":"Read records from a K2 stream through a subscription, and acknowledge them after processing.","url":"https://developers.cloudflare.com/k2/features/consume/","inLanguage":"en","image":"https://developers.cloudflare.com/k2/features/consume/og.png?v=347ebe1831d9d50f","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/k2/features/consume/#page","headline":"Consume records","description":"Read records from a K2 stream through a subscription, and acknowledge them after processing.","url":"https://developers.cloudflare.com/k2/features/consume/","inLanguage":"en","image":"https://developers.cloudflare.com/k2/features/consume/og.png?v=347ebe1831d9d50f","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

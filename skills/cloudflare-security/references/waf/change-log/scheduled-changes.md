@@ -16,15 +16,14 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/waf.xml)
 
-## 2026-09-30
+## 2026-10-06
 
 
-**WAF Release - Scheduled changes for 2026-10-06**
+**WAF Release - Scheduled changes for 2026-10-12**
 
 | Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID | Description | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-09-22 | 2026-10-06 | Log | N/A | ...a056caff | Command Injection - Generic 8 - uri - Beta | This rule will be merged into the original rule "Command Injection - Generic 8 - uri" (ID: ...ee159e2e). |
-| 2026-09-30 | 2026-10-06 | Log | N/A | ...7206c737 | F5 BIG-IP - UnAuth Heap-Overflow - CVE:CVE-2026-94127 | This is a new detection. |
+| 2026-10-06 | 2026-10-12 | Log | N/A | ...02751ef3 | Generic Rules - Template Injection - 2 - Beta | This rule will be merged into the original rule "Generic Rules - Template Injection - 2" (ID: ...d3ed0123). |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

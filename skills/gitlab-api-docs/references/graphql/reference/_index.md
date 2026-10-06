@@ -1872,6 +1872,7 @@ Arguments:
 | <a id="query-namespacesecurityprojects-search"></a>`search` | [`String`](#string) | Search projects by name. |
 | <a id="query-namespacesecurityprojects-securityanalyzerfilters"></a>`securityAnalyzerFilters` | [`[AnalyzerFilterInput!]`](#analyzerfilterinput) | Filter projects by analyzer type and status. |
 | <a id="query-namespacesecurityprojects-sortby"></a>`sortBy`  | [`SortableAnalyzerType`](#sortableanalyzertype) | Introduced in GitLab 19.2. Status: Experiment. Sort projects by analyzer status. |
+| <a id="query-namespacesecurityprojects-triggertype"></a>`triggerType`  | [`ScanProfileTriggerType`](#scanprofiletriggertype) | Introduced in GitLab 19.5. Status: Experiment. Filter projects by attached triage and remediation trigger type. |
 | <a id="query-namespacesecurityprojects-vulnerabilitycountfilters"></a>`vulnerabilityCountFilters` | [`[VulnerabilityCountFilterInput!]`](#vulnerabilitycountfilterinput) | Filter projects by vulnerability counts using comparison operators. |
 
 ### `Query.note`
@@ -3103,6 +3104,8 @@ Arguments:
 | <a id="mutation-adminsidekiqqueuesdeletejobs-callerid"></a>`callerId` | [`String`](#string) | Delete jobs matching caller_id in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-clientid"></a>`clientId` | [`String`](#string) | Delete jobs matching client_id in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
+| <a id="mutation-adminsidekiqqueuesdeletejobs-clientname"></a>`clientName` | [`String`](#string) | Delete jobs matching client_name in the context metadata. |
+| <a id="mutation-adminsidekiqqueuesdeletejobs-clienttype"></a>`clientType` | [`String`](#string) | Delete jobs matching client_type in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-featurecategory"></a>`featureCategory` | [`String`](#string) | Delete jobs matching feature_category in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-glrootnamespaceid"></a>`glRootNamespaceId` | [`String`](#string) | Delete jobs matching gl_root_namespace_id in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-gluserid"></a>`glUserId` | [`String`](#string) | Delete jobs matching gl_user_id in the context metadata. |
@@ -3912,6 +3915,7 @@ Arguments:
 | <a id="mutation-aiflowtriggercreate-description"></a>`description` | [`String!`](#string) | Description of the AI flow trigger. |
 | <a id="mutation-aiflowtriggercreate-eventtypes"></a>`eventTypes` | [`[Int!]`](#int) | Event types that triggers the AI flow. |
 | <a id="mutation-aiflowtriggercreate-filter"></a>`filter`  | [`JSON`](#json) | Introduced in GitLab 19.0. Status: Experiment. Filter conditions for the AI flow trigger. |
+| <a id="mutation-aiflowtriggercreate-goals"></a>`goals`  | [`JSON`](#json) | Introduced in GitLab 19.5. Status: Experiment. Goals for the AI flow trigger, keyed by event type. |
 | <a id="mutation-aiflowtriggercreate-projectpath"></a>`projectPath` | [`ID!`](#id) | Full path of the project the AI flow trigger is associated with. |
 | <a id="mutation-aiflowtriggercreate-userid"></a>`userId` | [`UserID`](#userid) | Service account for the AI flow trigger. |
 
@@ -3962,6 +3966,7 @@ Arguments:
 | <a id="mutation-aiflowtriggerupdate-description"></a>`description` | [`String`](#string) | Description of the AI flow trigger. |
 | <a id="mutation-aiflowtriggerupdate-eventtypes"></a>`eventTypes` | [`[Int!]`](#int) | Event types that triggers the AI flow. |
 | <a id="mutation-aiflowtriggerupdate-filter"></a>`filter`  | [`JSON`](#json) | Introduced in GitLab 18.11. Status: Experiment. Filter conditions for the AI flow trigger. |
+| <a id="mutation-aiflowtriggerupdate-goals"></a>`goals`  | [`JSON`](#json) | Introduced in GitLab 19.5. Status: Experiment. Goals for the AI flow trigger, keyed by event type. |
 | <a id="mutation-aiflowtriggerupdate-id"></a>`id` | [`AiFlowTriggerID!`](#aiflowtriggerid) | ID of the flow trigger to update. |
 | <a id="mutation-aiflowtriggerupdate-userid"></a>`userId` | [`UserID`](#userid) | Service account for the AI flow trigger. |
 
@@ -12458,7 +12463,7 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mutation-mergerequestdestroyworkitemrelations-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutation-mergerequestdestroyworkitemrelations-ids"></a>`ids` | [`[MergeRequestsClosingIssuesID!]!`](#mergerequestsclosingissuesid) | Global IDs of the relations to remove. |
+| <a id="mutation-mergerequestdestroyworkitemrelations-ids"></a>`ids` | [`[MergeRequestIssueID!]!`](#mergerequestissueid) | Global IDs of the relations to remove. |
 | <a id="mutation-mergerequestdestroyworkitemrelations-iid"></a>`iid` | [`String!`](#string) | IID of the merge request to mutate. |
 | <a id="mutation-mergerequestdestroyworkitemrelations-projectpath"></a>`projectPath` | [`ID!`](#id) | Project the merge request to mutate is in. |
 
@@ -12469,7 +12474,7 @@ Fields:
 | <a id="mutation-mergerequestdestroyworkitemrelations-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-mergerequestdestroyworkitemrelations-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-mergerequestdestroyworkitemrelations-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Merge request after mutation. |
-| <a id="mutation-mergerequestdestroyworkitemrelations-removedrelationids"></a>`removedRelationIds` | [`[MergeRequestsClosingIssuesID!]`](#mergerequestsclosingissuesid) | Global IDs of the removed relations. |
+| <a id="mutation-mergerequestdestroyworkitemrelations-removedrelationids"></a>`removedRelationIds` | [`[MergeRequestIssueID!]`](#mergerequestissueid) | Global IDs of the removed relations. |
 
 ### `Mutation.mergeRequestRequestChanges`
 
@@ -33192,6 +33197,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="aicatalogflow-acceptstriggergoal"></a>`acceptsTriggerGoal`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Whether a flow trigger for the flow can carry a configured goal. |
 | <a id="aicatalogflow-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the item was created. |
 | <a id="aicatalogflow-description"></a>`description` | [`String!`](#string) | Description of the item. |
 | <a id="aicatalogflow-descriptionhtml"></a>`descriptionHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `description`. |
@@ -33413,6 +33419,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="aicatalogthirdpartyflow-acceptstriggergoal"></a>`acceptsTriggerGoal`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Whether a flow trigger for the flow can carry a configured goal. |
 | <a id="aicatalogthirdpartyflow-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the item was created. |
 | <a id="aicatalogthirdpartyflow-description"></a>`description` | [`String!`](#string) | Description of the item. |
 | <a id="aicatalogthirdpartyflow-descriptionhtml"></a>`descriptionHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `description`. |
@@ -33625,6 +33632,7 @@ Fields:
 | <a id="aiflowtriggertype-eventtypes"></a>`eventTypes` | [`[Int!]!`](#int) | List of events that triggers the flow. |
 | <a id="aiflowtriggertype-filter"></a>`filter`  | [`JSON`](#json) | Introduced in GitLab 18.11. Status: Experiment. Filter conditions for the AI flow trigger. |
 | <a id="aiflowtriggertype-flowschedules"></a>`flowSchedules`  | [`AiFlowScheduleTypeConnection`](#aiflowscheduletypeconnection) | Introduced in GitLab 19.4. Status: Experiment. Cron-based schedules associated with the flow trigger. |
+| <a id="aiflowtriggertype-goals"></a>`goals`  | [`JSON!`](#json) | Introduced in GitLab 19.5. Status: Experiment. Goals for the AI flow trigger, keyed by event type. |
 | <a id="aiflowtriggertype-id"></a>`id` | [`ID!`](#id) | ID of the flow trigger. |
 | <a id="aiflowtriggertype-precondition"></a>`precondition`  | [`JSON`](#json) | Introduced in GitLab 18.11. Status: Experiment. Enforced filter conditions from the foundational flow definition. |
 | <a id="aiflowtriggertype-project"></a>`project` | [`Project!`](#project) | Project of the flow trigger. |
@@ -33786,6 +33794,7 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="aigovernancesession-agenttype"></a>`agentType` | [`String`](#string) | Type of the agent that ran the session, for example `claude-code`. Values differ between sources. |
 | <a id="aigovernancesession-auditevents"></a>`auditEvents` | [`AiAuditEventConnection`](#aiauditeventconnection) | Audit events recorded for the session. Returns no events for GitLab Duo sessions delivered through a private messaging integration. This field can only be resolved for one session in any single request. (see [Connections](#connections)) |
+| <a id="aigovernancesession-auditeventscount"></a>`auditEventsCount` | [`Int`](#int) | Number of audit events recorded for the session. |
 | <a id="aigovernancesession-downloadpath"></a>`downloadPath` | [`String`](#string) | Path to download the session artifact as a JSON file. Null for sessions from sources other than GitLab Duo. |
 | <a id="aigovernancesession-flowtype"></a>`flowType` | [`String`](#string) | Flow type of the session, for example `chat`. Values differ between sources. |
 | <a id="aigovernancesession-id"></a>`id` | [`AiGovernanceSessionID!`](#aigovernancesessionid) | Global ID of the session. |
@@ -47185,6 +47194,21 @@ Arguments:
 | <a id="group-timelogs-starttime"></a>`startTime` | [`Time`](#time) | List timelogs within a time range where the logged time is equal to or after startTime. |
 | <a id="group-timelogs-username"></a>`username` | [`String`](#string) | List timelogs for a user. |
 
+##### `Group.triageAndRemediationCoverageCounters`
+
+- Introduced in GitLab 19.5.
+- Status: Experiment.
+
+Triage and remediation coverage counters for the group, for a given trigger type.
+
+Returns [`TriageAndRemediationCoverageCounters`](#triageandremediationcoveragecounters).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="group-triageandremediationcoveragecounters-triggertype"></a>`triggerType` | [`ScanProfileTriggerType!`](#scanprofiletriggertype) | Trigger type to count coverage for. |
+
 ##### `Group.valueStreamDashboardUsageOverview`
 
 - Introduced in GitLab 16.4.
@@ -51966,7 +51990,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mergerequestworkitemrelation-frommrdescription"></a>`fromMrDescription` | [`Boolean!`](#boolean) | Whether the relation was derived from a closing pattern in the merge request description. |
-| <a id="mergerequestworkitemrelation-id"></a>`id` | [`MergeRequestsClosingIssuesID!`](#mergerequestsclosingissuesid) | Global ID of the merge request to work item relation. |
+| <a id="mergerequestworkitemrelation-id"></a>`id` | [`MergeRequestIssueID!`](#mergerequestissueid) | Global ID of the merge request to work item relation. |
 | <a id="mergerequestworkitemrelation-linktype"></a>`linkType` | [`MergeRequestWorkItemLinkType!`](#mergerequestworkitemlinktype) | Type of relationship between the merge request and the work item. |
 | <a id="mergerequestworkitemrelation-workitem"></a>`workItem` | [`WorkItem`](#workitem) | Related work item. |
 
@@ -55760,6 +55784,7 @@ Fields:
 | <a id="project-topics"></a>`topics` | [`[String!]`](#string) | List of project topics. |
 | <a id="project-trackingkey"></a>`trackingKey`  | [`String`](#string) | Introduced in GitLab 16.0. Status: Experiment. Tracking key assigned to the project. |
 | <a id="project-transferinprogress"></a>`transferInProgress`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.3. Status: Experiment. Indicates if the project is currently being transferred. |
+| <a id="project-triageandremediationcoverage"></a>`triageAndRemediationCoverage`  | [`TriageAndRemediationCoverage`](#triageandremediationcoverage) | Introduced in GitLab 19.5. Status: Experiment. Triage and remediation capability coverage for the project. |
 | <a id="project-updatedat"></a>`updatedAt` | [`Time`](#time) | Timestamp of when the project was last updated. |
 | <a id="project-useraccessauthorizedagents"></a>`userAccessAuthorizedAgents` | [`ClusterAgentAuthorizationUserAccessConnection`](#clusteragentauthorizationuseraccessconnection) | Authorized cluster agents for the project through user_access keyword. (see [Connections](#connections)) |
 | <a id="project-userpermissions"></a>`userPermissions` | [`ProjectPermissions!`](#projectpermissions) | Permissions for the current user on the resource. |
@@ -60502,6 +60527,7 @@ Fields:
 | <a id="secretsmanagerentitlement-blockedreason"></a>`blockedReason`  | [`SecretsManagerEntitlementBlockedReason`](#secretsmanagerentitlementblockedreason) | Introduced in GitLab 19.2. Status: Experiment. Reason the entitlement is blocked; null when state is not BLOCKED. |
 | <a id="secretsmanagerentitlement-creditsremaining"></a>`creditsRemaining`  | [`Float`](#float) | Introduced in GitLab 19.2. Status: Experiment. Number of trial credits remaining. |
 | <a id="secretsmanagerentitlement-creditstotal"></a>`creditsTotal`  | [`Float`](#float) | Introduced in GitLab 19.2. Status: Experiment. Initial trial credit allocation for the current trial period. |
+| <a id="secretsmanagerentitlement-graceperiodenddate"></a>`gracePeriodEndDate` | [`Date`](#date) | Last day of the read-only grace period, inclusive. Set only when blockedReason is GRACE; null otherwise. |
 | <a id="secretsmanagerentitlement-offlinelicense"></a>`offlineLicense`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates whether the instance license is not an online cloud license, so no Secrets Manager trial can be started. Null on GitLab.com. |
 | <a id="secretsmanagerentitlement-ondemandenabled"></a>`onDemandEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether on-demand purchasing is enabled for the namespace. |
 | <a id="secretsmanagerentitlement-state"></a>`state`  | [`SecretsManagerEntitlementState!`](#secretsmanagerentitlementstate) | Introduced in GitLab 19.2. Status: Experiment. Resolved entitlement state. |
@@ -60778,6 +60804,7 @@ Fields:
 | <a id="securityposturecounters-withfailures"></a>`withFailures`  | [`Int!`](#int) | Introduced in GitLab 19.0. Status: Experiment. Number of unarchived projects with at least one failed scan. |
 | <a id="securityposturecounters-withscanners"></a>`withScanners`  | [`Int!`](#int) | Introduced in GitLab 19.0. Status: Experiment. Number of unarchived projects with at least one security scanner configured. |
 | <a id="securityposturecounters-withstale"></a>`withStale`  | [`Int!`](#int) | Introduced in GitLab 19.0. Status: Experiment. Number of unarchived projects with at least one stale scan. |
+| <a id="securityposturecounters-withtriagecoverage"></a>`withTriageCoverage`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Count of unarchived projects in the group with at least one triage and remediation trigger enabled. |
 
 ### `SecurityReportSummary`
 
@@ -61850,6 +61877,7 @@ Fields:
 | <a id="todo-targettype"></a>`targetType` | [`TodoTargetEnum!`](#todotargetenum) | Target type of the to-do item. |
 | <a id="todo-targeturl"></a>`targetUrl` | [`String`](#string) | URL of the to-do item target. |
 | <a id="todo-transferfailedretryurl"></a>`transferFailedRetryUrl` | [`String`](#string) | URL that retries a transfer-failed to-do item. |
+| <a id="todo-transferfailurereason"></a>`transferFailureReason` | [`String`](#string) | Reason the transfer failed, for a transfer-failed to-do item. |
 
 ### `Topic`
 
@@ -61907,6 +61935,39 @@ Fields:
 | <a id="treeentry-type"></a>`type` | [`EntryType!`](#entrytype) | Type of tree entry. |
 | <a id="treeentry-webpath"></a>`webPath` | [`String`](#string) | Web path for the tree entry (directory). |
 | <a id="treeentry-weburl"></a>`webUrl` | [`String`](#string) | Web URL for the tree entry (directory). |
+
+### `TriageAndRemediationCapability`
+
+A triage and remediation capability and its coverage state for a project.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="triageandremediationcapability-enabled"></a>`enabled`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the capability is attached to the project. |
+| <a id="triageandremediationcapability-runmode"></a>`runMode`  | [`SecurityScanProfileRunMode`](#securityscanprofilerunmode) | Introduced in GitLab 19.5. Status: Experiment. Run mode for the capability. |
+| <a id="triageandremediationcapability-triggertype"></a>`triggerType`  | [`ScanProfileTriggerType!`](#scanprofiletriggertype) | Introduced in GitLab 19.5. Status: Experiment. Trigger type the capability applies to. |
+
+### `TriageAndRemediationCoverage`
+
+Triage and remediation capability coverage for a project.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="triageandremediationcoverage-capabilities"></a>`capabilities`  | [`[TriageAndRemediationCapability!]!`](#triageandremediationcapability) | Introduced in GitLab 19.5. Status: Experiment. Triage and remediation capabilities and their coverage state, one entry per trigger type. |
+
+### `TriageAndRemediationCoverageCounters`
+
+Triage and remediation coverage counters for a namespace, for a given trigger type.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="triageandremediationcoveragecounters-autocount"></a>`autoCount`  | [`Int!`](#int) | Introduced in GitLab 19.5. Status: Experiment. Count of unarchived projects in the group where the trigger type is attached and set to automatic. |
+| <a id="triageandremediationcoveragecounters-enabledcount"></a>`enabledCount`  | [`Int!`](#int) | Introduced in GitLab 19.5. Status: Experiment. Count of unarchived projects in the group where the trigger type is attached. |
 
 ### `TrialUsage`
 
@@ -64358,7 +64419,7 @@ Fields:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="workitemclosingmergerequest-frommrdescription"></a>`fromMrDescription` | [`Boolean!`](#boolean) | Whether this merge request link was created by referencing the work item on the merge request description, using the closing pattern. |
-| <a id="workitemclosingmergerequest-id"></a>`id` | [`MergeRequestsClosingIssuesID!`](#mergerequestsclosingissuesid) | Global ID of the closing merge request association. |
+| <a id="workitemclosingmergerequest-id"></a>`id` | [`MergeRequestIssueID!`](#mergerequestissueid) | Global ID of the closing merge request association. |
 | <a id="workitemclosingmergerequest-mergerequest"></a>`mergeRequest` | [`MergeRequest`](#mergerequest) | Related merge request. |
 
 ### `WorkItemDateFieldValue`
@@ -66290,6 +66351,7 @@ AI features that can be configured through the Duo self-hosted feature settings.
 | <a id="aifeatures-feature_discovery_search"></a>`FEATURE_DISCOVERY_SEARCH` | Feature discovery search feature setting. |
 | <a id="aifeatures-generate_commit_message"></a>`GENERATE_COMMIT_MESSAGE` | Generate commit message feature setting. |
 | <a id="aifeatures-glab_ask_git_command"></a>`GLAB_ASK_GIT_COMMAND` | Glab ask git command feature setting. |
+| <a id="aifeatures-recommend_reviewers_assign"></a>`RECOMMEND_REVIEWERS_ASSIGN` | Recommend reviewers assign feature setting. |
 | <a id="aifeatures-resolve_dependency_bump"></a>`RESOLVE_DEPENDENCY_BUMP` | Resolve dependency bump feature setting. |
 | <a id="aifeatures-resolve_vulnerability"></a>`RESOLVE_VULNERABILITY` | Resolve vulnerability feature setting. |
 | <a id="aifeatures-review_merge_request"></a>`REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
@@ -66356,6 +66418,7 @@ Source that recorded an AI governance session.
 | <a id="aigovernancesessionsource-claude_code_compliance_api"></a>`CLAUDE_CODE_COMPLIANCE_API` | Claude Code session ingested from the Claude Compliance API. |
 | <a id="aigovernancesessionsource-claude_code_glab"></a>`CLAUDE_CODE_GLAB` | Claude Code session reported through the GitLab CLI. |
 | <a id="aigovernancesessionsource-gitlab_duo"></a>`GITLAB_DUO` | Session run on the GitLab Duo Agent Platform. |
+| <a id="aigovernancesessionsource-mcp"></a>`MCP` | Session inferred from tool calls made through the GitLab MCP server. |
 
 ### `AiMessageRole`
 
@@ -66397,6 +66460,7 @@ AI features that can be configured through the Model Selection feature settings.
 | <a id="aimodelselectionfeatures-duo_developer"></a>`DUO_DEVELOPER` | Duo developer feature setting. |
 | <a id="aimodelselectionfeatures-generate_commit_message"></a>`GENERATE_COMMIT_MESSAGE` | Generate commit message feature setting. |
 | <a id="aimodelselectionfeatures-glab_ask_git_command"></a>`GLAB_ASK_GIT_COMMAND` | Glab ask git command feature setting. |
+| <a id="aimodelselectionfeatures-recommend_reviewers_assign"></a>`RECOMMEND_REVIEWERS_ASSIGN` | Recommend reviewers assign feature setting. |
 | <a id="aimodelselectionfeatures-resolve_dependency_bump"></a>`RESOLVE_DEPENDENCY_BUMP` | Resolve dependency bump feature setting. |
 | <a id="aimodelselectionfeatures-resolve_vulnerability"></a>`RESOLVE_VULNERABILITY` | Resolve vulnerability feature setting. |
 | <a id="aimodelselectionfeatures-review_merge_request"></a>`REVIEW_MERGE_REQUEST` | Review merge request feature setting. |
@@ -73696,11 +73760,12 @@ A `MergeRequestID` is a global ID. It is encoded as a string.
 
 An example `MergeRequestID` is: `"gid://gitlab/MergeRequest/1"`.
 
-### `MergeRequestsClosingIssuesID`
+### `MergeRequestIssueID`
 
-A `MergeRequestsClosingIssuesID` is a global ID. It is encoded as a string.
+A `MergeRequestIssueID` is a global ID. It is encoded as a string.
 
-An example `MergeRequestsClosingIssuesID` is: `"gid://gitlab/MergeRequestsClosingIssues/1"`.
+An example `MergeRequestIssueID` is: `"gid://gitlab/MergeRequestIssue/1"`.
+The older format `"gid://gitlab/MergeRequestsClosingIssues/1"` was deprecated in 19.5.
 
 ### `MergeRequestsExternalStatusCheckID`
 

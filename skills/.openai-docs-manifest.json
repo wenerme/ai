@@ -1744,8 +1744,8 @@
   "openai-docs/models/all.md": {
     "url": "https://developers.openai.com/api/docs/models/all.md",
     "skill": "openai-docs",
-    "size": 12461,
-    "updatedAt": "2026-10-02T05:25:53.896Z"
+    "size": 12485,
+    "updatedAt": "2026-10-06T16:48:52.702Z"
   },
   "openai-docs/models/compare.md": {
     "url": "https://developers.openai.com/api/docs/models/compare.md",

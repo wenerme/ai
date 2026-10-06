@@ -1232,7 +1232,7 @@ When using the Semgrep-based analyzer, the following options are also available:
 > [!note]
 > The Semgrep analyzer does not respect `.gitignore` files. Files listed in `.gitignore` are analyzed unless explicitly excluded by using `.semgrepignore` or `SAST_EXCLUDED_PATHS`.
 
-For more details see [Semgrep documentation](https://semgrep.dev/docs/ignoring-files-folders-code).
+For more details see [Semgrep documentation](https://docs.semgrep.dev/ignoring-files-folders-code).
 
 ## Running SAST in an offline environment
 
@@ -1265,6 +1265,7 @@ images from `registry.gitlab.com` into your
 [local Docker container registry](../../packages/container_registry/_index.md):
 
 ```plaintext
+registry.gitlab.com/security-products/clangsa:1
 registry.gitlab.com/security-products/gitlab-advanced-sast:2
 registry.gitlab.com/security-products/gitlab-advanced-sast-ext:0
 registry.gitlab.com/security-products/kubesec:6

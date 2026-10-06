@@ -41,7 +41,7 @@ For a list of supported keys and their types, see the [`agent-config.yml` refere
 
 ### Create the agent configuration file
 
-- Generating the agent configuration file with GitLab Duo [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/22591) in GitLab 19.5 [with a feature flag](../../../../administration/feature_flags/_index.md) named `duo_agent_readiness_settings`. Disabled by default.
+- Generating the agent configuration file with GitLab Duo [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/22591) in GitLab 19.5 [with a feature flag](../../../../administration/feature_flags/_index.md) named `duo_agent_readiness_settings`. Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
@@ -282,7 +282,7 @@ To configure your own runner for flows:
 
 ### Verify the runner configuration
 
-- **CI/CD runner** check under project settings [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/22591) in GitLab 19.5 [with a feature flag](../../../../administration/feature_flags/_index.md) named `duo_agent_readiness_settings`. Disabled by default.
+- **CI/CD runner** check under project settings [introduced](https://gitlab.com/groups/gitlab-org/-/work_items/22591) in GitLab 19.5 [with a feature flag](../../../../administration/feature_flags/_index.md) named `duo_agent_readiness_settings`. Enabled by default.
 
 > [!flag]
 > The availability of this feature is controlled by a feature flag.
