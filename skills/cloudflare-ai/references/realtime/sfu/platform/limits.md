@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/sfu/platform/limits/og.png?v=d
 
 # Limits, timeouts, and quotas
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 These limits apply to Realtime SFU resources. Application limits such as room admission or a device's viewer cap are separate policies.
 
@@ -51,7 +51,7 @@ Operations that require an established transport wait up to five seconds for con
 
 ## Adapter recovery
 
-For WebRTC-to-WebSocket streaming, the SFU retries the same endpoint for up to five seconds after a temporary disconnect. An exhausted reconnect window closes the adapter. Ingest adapters do not automatically reconnect.
+For WebRTC-to-WebSocket streaming, the SFU retries the same endpoint for up to 15 seconds after a temporary disconnect. An exhausted reconnect window closes the adapter. Ingest adapters do not automatically reconnect.
 
 Refer to [WebSocket adapter reconnect](https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/#automatic-reconnection-for-streaming) for buffering, delivery behavior, and application recovery.
 
@@ -79,5 +79,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/platform/limits/#page","headline":"Limits, timeouts, and quotas","description":"Reference Realtime SFU API limits, resource timeouts, DataChannel constraints, and supported media codecs.","url":"https://developers.cloudflare.com/realtime/sfu/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/platform/limits/og.png?v=d6d0dcd132af7df7","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/platform/limits/#page","headline":"Limits, timeouts, and quotas","description":"Reference Realtime SFU API limits, resource timeouts, DataChannel constraints, and supported media codecs.","url":"https://developers.cloudflare.com/realtime/sfu/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/platform/limits/og.png?v=d6d0dcd132af7df7","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

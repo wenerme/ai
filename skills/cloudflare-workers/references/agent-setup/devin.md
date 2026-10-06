@@ -54,7 +54,7 @@ IDETerminalStandaloneCloudExtension
    Open Cascade and try a prompt — for example:
 
    ```txt
-   Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+   Configure Zero Trust access policies to protect my internal staging environment.
    ```
 
 
@@ -161,23 +161,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
-```
-
-```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
-```
-
-```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
-```
-
-```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
 Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
+```
+
+```txt
+Add mTLS authentication and schema validation to protect my API endpoints.
+```
+
+```txt
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ## Tips

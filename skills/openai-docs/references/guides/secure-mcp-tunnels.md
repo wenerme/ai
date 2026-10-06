@@ -62,9 +62,9 @@ You need:
 - Creating or editing a tunnel requires Tunnels **Read** + **Manage**.
 - Running `tunnel-client` or selecting the tunnel while creating an app requires Tunnels **Read** + **Use**.
 - Tunnel permissions apply to a Platform organization. A Platform organization owner or RBAC administrator grants the tunnel role.
-- Creating and using custom MCP servers in ChatGPT remains subject to workspace permissions and security restrictions. See [Create custom MCP server](https://developers.openai.com/api/docs/guides/custom-mcp-server).
+- Adding and using custom MCP servers in ChatGPT remains subject to workspace permissions and security restrictions. See [Add custom MCP server](https://developers.openai.com/api/docs/guides/custom-mcp-server).
 
-Ask the target ChatGPT workspace admin for custom MCP server creation and use permissions, and ask the target Platform organization owner/RBAC admin for tunnel permissions.
+Ask the target ChatGPT workspace admin for permission to add and use custom MCP servers, and ask the target Platform organization owner/RBAC admin for tunnel permissions.
 
 ## Associate tunnels with the right organizations and workspaces
 
@@ -135,7 +135,7 @@ Run `tunnel-client` in the same trust boundary that can already reach the privat
 
 ## Connect from ChatGPT
 
-Go to [ChatGPT Plugins](https://chatgpt.com/plugins), select the plus button, then **Create custom MCP server**, and choose **Tunnel** under **Connection**. Select an available tunnel when ChatGPT lists it, or paste a valid `tunnel_id` if you already have one. Configure authentication, review the risk warning, and select **I understand and want to continue**, then **Create as a plugin**.
+Go to [ChatGPT Plugins](https://chatgpt.com/plugins), select the plus button, then **Add custom MCP server**, and choose **Tunnel** under **Connection**. Select an available tunnel when ChatGPT lists it, or paste a valid `tunnel_id` if you already have one. Configure authentication, review the risk warning, and select **I understand and want to continue**, then **Create as a plugin**.
 
 If the tunnel does not appear in ChatGPT, verify that the tunnel is associated with the target ChatGPT workspace, not only with a Platform organization, and that the app creator has Tunnels **Read** + **Use**.
 
@@ -218,7 +218,7 @@ Use this when you need to reach a small set of private REST endpoints without ex
 ## Where to configure it
 
 - Manage OpenAI-hosted MCP tunnel endpoints in [Platform tunnel settings](https://platform.openai.com/settings/organization/tunnels).
-- Use a tunnel when [creating a custom MCP server](https://developers.openai.com/api/docs/guides/custom-mcp-server) at [ChatGPT Plugins](https://chatgpt.com/plugins).
+- Use a tunnel when [adding a custom MCP server](https://developers.openai.com/api/docs/guides/custom-mcp-server) at [ChatGPT Plugins](https://chatgpt.com/plugins).
 - For Codex or API flows, use the tunnel-backed MCP target exposed by the supported product surface.
 
 ## Next steps

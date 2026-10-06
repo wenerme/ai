@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/local-development/local-explore
 
 # Local Explorer
 
-Last updated Sep 4, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-explorer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/local-development/local-explorer/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Local Explorer is a browser-based interface for viewing and editing the data in your local [bindings](https://developers.cloudflare.com/workers/runtime-apis/bindings/) and debugging Worker invocations during development. It is available at `/cdn-cgi/local/explorer` on your local development server.
 
@@ -58,6 +58,15 @@ Local Explorer supports the following binding types:
 | [D1](https://developers.cloudflare.com/d1/) | Browse tables and rows, run SQL queries | Insert, update, and delete rows through SQL |
 | [Durable Objects](https://developers.cloudflare.com/durable-objects/) (SQLite storage) | Browse SQLite tables and rows, run SQL queries | Insert, update, and delete rows through SQL |
 | [Workflows](https://developers.cloudflare.com/workflows/) | List instances, view status and step history | Trigger new runs, retry failed instances |
+| [Email sending](https://developers.cloudflare.com/email-service/local-development/sending/) (`send_email`) | List sent emails, view content and headers | View only |
+| [Flagship](https://developers.cloudflare.com/flagship/) | List feature flags, test flag evaluations | Create, update, and delete flags, edit targeting rules and rollouts |
+
+Local Explorer also supports the following Worker triggers:
+
+| Trigger | View | Test |
+| --- | --- | --- |
+| [Email Routing](https://developers.cloudflare.com/email-service/local-development/routing/) | List received emails, view content, headers, and handler outcomes | Send test emails, resend or edit and resend captured emails |
+| [Cron Triggers](https://developers.cloudflare.com/workers/configuration/cron-triggers/) | View configured cron schedules and invocation results | Invoke the `scheduled()` handler with configured or ad hoc cron expressions and a chosen scheduled time |
 
 ### D1 and Durable Objects SQL Studio
 
@@ -126,5 +135,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/local-development/local-explorer/#page","headline":"Local Explorer","description":"Browse and edit local binding data from your browser during development.","url":"https://developers.cloudflare.com/workers/local-development/local-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/local-development/local-explorer/og.png?v=9f29bb63af164bd4","dateModified":"2026-09-04","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/local-development/local-explorer/#page","headline":"Local Explorer","description":"Browse and edit local binding data from your browser during development.","url":"https://developers.cloudflare.com/workers/local-development/local-explorer/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/local-development/local-explorer/og.png?v=9f29bb63af164bd4","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

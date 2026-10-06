@@ -76,11 +76,7 @@ information, see the [relevant documentation](monitoring.md#monitor-gitaly-concu
 ### Separate limits for unauthenticated requests
 
 - Introduced in GitLab 18.7 [with a feature flag](../../operations/feature_flags.md) named `gitaly_limit_unauthenticated`. Disabled by default.
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
+- [Generally available](https://gitlab.com/gitlab-org/gitaly/-/merge_requests/8978) in GitLab 19.2. Feature flag `gitaly_limit_unauthenticated` removed.
 
 By default, RPC concurrency limits apply to all requests regardless of
 authentication status. However, you can configure separate, more restrictive

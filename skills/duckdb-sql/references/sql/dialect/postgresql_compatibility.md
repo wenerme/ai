@@ -205,6 +205,10 @@ Instead, please use the [`strptime` function](https://duckdb.org/docs/current/sq
 
 Most parts extracted by the [`date_part` function](https://duckdb.org/docs/current/sql/functions/datepart.html) are returned as integers. Since there are no infinite integer values in DuckDB, `NULL`s are returned for infinite timestamps.
 
+### `pg_size_pretty` Function
+
+DuckDB's `pg_size_pretty` function (an alias of [`format_bytes`](https://duckdb.org/docs/current/sql/functions/text.html#format_bytesinteger)) formats sizes using binary (IEC) units such as `KiB` and `MiB`, whereas PostgreSQL uses `kB` and `MB`. For example, `pg_size_pretty(1024)` returns `1.0 KiB` in DuckDB and `1024 bytes` in PostgreSQL, and `pg_size_pretty(1048576)` returns `1.0 MiB` in DuckDB and `1024 kB` in PostgreSQL.
+
 ## Resolution of Type Names in the Schema
 
 For [`CREATE TABLE` statements](https://duckdb.org/docs/current/sql/statements/create_table.html), DuckDB attempts to resolve type names in the schema where a table is created. For example:

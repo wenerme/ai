@@ -485,6 +485,16 @@ GitLab release state of the model.
 | `EXPERIMENTAL` | Experimental status. |
 | `GA` | GA status. |
 
+## `AiToolAccessType`
+
+Access type of an AI tool rule.
+
+| Value | Description |
+| ----- | ----------- |
+| `BACKGROUND_ACCESS` | Background-flow surface access. |
+| `LOCAL_ACCESS` | Local or IDE surface access. |
+| `WEB_ACCESS` | Web surface access. |
+
 ## `AiToolActionType`
 
 Action type categorisation for an AI tool.
@@ -1019,6 +1029,19 @@ Type of ASCP scan (full or incremental).
 | ----- | ----------- |
 | `FULL` | Full scan of the entire codebase. |
 | `INCREMENTAL` | Incremental scan based on changes since last scan. |
+
+## `AscpSecurityBoundary`
+
+Security boundaries an ASCP component sits on.
+
+| Value | Description |
+| ----- | ----------- |
+| `INTERNAL_ONLY` | Internal Only. |
+| `ISOLATED` | Isolated. |
+| `NETWORK_ACCESS` | Network Access. |
+| `PARTNER_BOUNDARY` | Partner Boundary. |
+| `TRUSTED_SERVICE` | Trusted Service. |
+| `USER_INPUT` | User Input. |
 
 ## `AscpSeverity`
 
@@ -2540,6 +2563,7 @@ Where a Duo Workflow session was initiated from.
 | `DUO_CLI_INTERACTIVE` | Session initiated from GitLab Duo CLI in interactive mode. |
 | `DUO_CLI_RUN` | Session initiated from GitLab Duo CLI in run mode. |
 | `FIX_PIPELINE` | Session initiated from fixing a failed pipeline. |
+| `FLOW_TRIGGER` | Session initiated by a flow trigger. |
 | `IDE_EXTENSION` | Session initiated from an IDE extension. |
 | `MCP` | Session initiated from MCP. |
 | `MERGE_REQUEST_CODE_CONFLICT` | Session initiated from resolving a merge request conflict. |
@@ -5686,7 +5710,6 @@ Name of the feature that the callout is for.
 | `DUO_PANEL_EMPTY_STATE_AUTO_EXPANDED` | Callout feature name for duo_panel_empty_state_auto_expanded. |
 | `EMAIL_OTP_ENROLLMENT_CALLOUT` | Callout feature name for email_otp_enrollment_callout. |
 | `EXPIRED_TRIAL_STATUS_WIDGET` | Callout feature name for expired_trial_status_widget. |
-| `EXPLORE_ANALYTICS_DASHBOARDS_PROMO` | Callout feature name for explore_analytics_dashboards_promo. |
 | `FEATURE_FLAGS_NEW_VERSION` | Callout feature name for feature_flags_new_version. |
 | `FEATURE_LIBRARY_SHIMMER_SEEN` | Callout feature name for feature_library_shimmer_seen. |
 | `FILE_TREE_BROWSER_POPOVER` | Callout feature name for file_tree_browser_popover. |

@@ -59,7 +59,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Configure Zero Trust access policies to protect my internal staging environment.
+   Use Workers for Platforms to let my customers deploy their own code in isolated environments.
    ```
 
 
@@ -166,11 +166,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
@@ -178,11 +178,11 @@ Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ## Tips

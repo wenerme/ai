@@ -371,8 +371,18 @@ A [table function](https://duckdb.org/docs/current/sql/query_syntax/from.html#ta
 
 | Name | Description |
 |:--|:-------|
+| [`generate_series(start, stop, step)`](#generate_seriesstart-stop-step) | Returns a table of values between `start` and `stop` (inclusive), incrementing by `step`. |
 | [`glob(search_path)`](#globsearch_path) | Return filenames found at the location indicated by the *search_path* in a single column named `file`. The *search_path* may contain [glob pattern matching syntax](https://duckdb.org/docs/current/sql/functions/pattern_matching.html). |
+| [`range(start, stop, step)`](#rangestart-stop-step) | Returns a table of values between `start` and `stop` (exclusive), incrementing by `step`. |
+| [`repeat(value, count)`](#repeatvalue-count) | Returns a table with `count` rows, each containing `value`. |
 | [`repeat_row(varargs, num_rows)`](#repeat_rowvarargs-num_rows) | Returns a table with `num_rows` rows, each containing the fields defined in `varargs`. |
+| [`unnest(list)`](#unnestlist) | Returns a table with one row per element of `list`. |
+
+#### `generate_series(start, stop, step)`
+
+| **Description** | Returns a table of values between `start` and `stop`, incrementing by `step`. The `stop` parameter is inclusive, and the `stop` and `step` arguments are optional. See the [list variant](https://duckdb.org/docs/current/sql/functions/list.html#generate_series) for the available argument combinations. |
+| **Example** | `generate_series(2, 5)` |
+| **Result** | 4 rows: `2, 3, 4, 5` |
 
 #### `glob(search_path)`
 
@@ -380,8 +390,26 @@ A [table function](https://duckdb.org/docs/current/sql/query_syntax/from.html#ta
 | **Example** | `glob('*')` |
 | **Result** | (table of filenames) |
 
+#### `range(start, stop, step)`
+
+| **Description** | Returns a table of values between `start` and `stop`, incrementing by `step`. The `stop` parameter is exclusive, and the `start` and `step` arguments are optional. See the [list variant](https://duckdb.org/docs/current/sql/functions/list.html#range) for the available argument combinations. |
+| **Example** | `range(2, 5)` |
+| **Result** | 3 rows: `2, 3, 4` |
+
+#### `repeat(value, count)`
+
+| **Description** | Returns a table with `count` rows, each containing `value`. |
+| **Example** | `repeat('foo', 3)` |
+| **Result** | 3 rows of `'foo'` |
+
 #### `repeat_row(varargs, num_rows)`
 
 | **Description** | Returns a table with `num_rows` rows, each containing the fields defined in `varargs`. |
 | **Example** | `repeat_row(1, 2, 'foo', num_rows = 3)` |
 | **Result** | 3 rows of `1, 2, 'foo'` |
+
+#### `unnest(list)`
+
+| **Description** | Returns a table with one row per element of `list`. See [Unnesting](https://duckdb.org/docs/current/sql/query_syntax/unnest.html) for details, including recursive unnesting of nested lists and structs. |
+| **Example** | `unnest([1, 2, 3])` |
+| **Result** | 3 rows: `1, 2, 3` |

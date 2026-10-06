@@ -25,7 +25,7 @@ To use Magic Transit, you need to own a publicly routable IP address block with 
 To protect your network with a Cloudflare IP address, contact your account manager. After you receive your IP address:
 
 - [Create a tunnel](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-tunnels/).
-- [Set up static routes](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#configure-static-routes) or [BGP peering (beta)](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#configure-bgp-routes).
+- [Set up static routes](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#configure-static-routes) or [BGP peering](https://developers.cloudflare.com/learning-paths/data-center-protection/configure-tunnels-routes/configure-routes/#configure-bgp-routes).
 - [Configure health checks](https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/).
 - Confirm you properly configured [tunnel](https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/) and endpoint health checks.
 - Update your infrastructure at your own pace to use the allocated Cloudflare IPs.

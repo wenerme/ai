@@ -43,7 +43,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Configure Zero Trust access policies to protect my internal staging environment.
+   Add bot protection and rate limiting to my login and checkout endpoints.
    ```
 
 
@@ -150,23 +150,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Set up rate limiting and WAF rules to block abuse on my public API.
 ```
 
 ```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Add a cron trigger to my Worker that processes a job queue every hour.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ## Tips

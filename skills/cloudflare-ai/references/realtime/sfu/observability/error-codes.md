@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/sfu/observability/error-codes/
 
 # Error codes
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/observability/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/observability/error-codes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Use this reference when the [Connection API](https://developers.cloudflare.com/realtime/sfu/api/) returns an `errorCode`. Read its `errorDescription` for the specific failure. The operation, response placement, and connection state help determine the next action.
 
@@ -73,20 +73,20 @@ Match each media-close result to the requested `mid` on the session you modified
 
 ```json
 {
-  "requiresImmediateRenegotiation": false,
-  "tracks": [
-    { "mid": "0" },
-    {
-      "mid": "1",
-      "errorCode": "close_track_error",
-      "errorDescription": "Track doesn't exist or was already closed"
-    },
-    {
-      "mid": "2",
-      "errorCode": "internal_error",
-      "errorDescription": "Backend error"
-    }
-  ]
+	"requiresImmediateRenegotiation": false,
+	"tracks": [
+		{ "mid": "0" },
+		{
+			"mid": "1",
+			"errorCode": "close_track_error",
+			"errorDescription": "Track doesn't exist or was already closed"
+		},
+		{
+			"mid": "2",
+			"errorCode": "internal_error",
+			"errorDescription": "Backend error"
+		}
+	]
 }
 ```
 
@@ -103,7 +103,8 @@ These codes appear in the adapter operation's `tracks` results. The outer HTTP s
 | `websocket_localhost_not_allowed` | The endpoint names localhost. Supply a publicly reachable WebSocket endpoint. Retrying the same address cannot make it reachable from the SFU. |
 | `websocket_handshake_failed` | The endpoint did not complete the WebSocket upgrade. Check its WebSocket route, upgrade response, and authentication behavior before retrying the failed item. |
 | `websocket_connection_timeout` | The WebSocket handshake timed out. Check endpoint availability, routing, and handshake processing. Supply the final endpoint URL because the adapter does not follow redirects. |
-| `adapter_not_found` | The adapter is absent or already closed. This explicit item result can satisfy cleanup for an adapter your application owns. Keep other failures pending. An outer HTTP `503` alone does not establish absence. |
+
+Already-closed adapters count as successful closes. Keep failed close items pending for retry. Refer to [adapter close results](https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/#close-adapter) for examples.
 
 For endpoint configuration, packet formats, and recovery, follow the [WebSocket adapter reference](https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/).
 
@@ -128,5 +129,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/#page","headline":"Error codes","description":"Look up public Realtime SFU API errors and find the next action for request, session, media, DataChannel, or adapter failures.","url":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/og.png?v=fc4833b6a85814e6","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/#page","headline":"Error codes","description":"Look up public Realtime SFU API errors and find the next action for request, session, media, DataChannel, or adapter failures.","url":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/observability/error-codes/og.png?v=fc4833b6a85814e6","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

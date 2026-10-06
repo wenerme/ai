@@ -69,7 +69,7 @@ TerminalStandaloneCloudExtension
    For example:
 
    ```txt
-   Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+   Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
    ```
 
 
@@ -176,23 +176,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
 Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Set up WAF rules to block SQL injection and XSS attacks on my application.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
+```
+
+```txt
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Tips

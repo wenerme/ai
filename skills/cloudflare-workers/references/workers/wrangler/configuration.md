@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v
 
 # Configuration
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/wrangler/configuration/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Wrangler optionally uses a configuration file to customize the development and deployment setup for a Worker.
 
@@ -39,7 +39,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 	"name": "my-worker",
 	"main": "src/index.js",
 	// Set this to today's date
-	"compatibility_date": "2026-10-02",
+	"compatibility_date": "2026-10-06",
 	"workers_dev": false,
 	"route": {
 		"pattern": "example.org/*",
@@ -74,7 +74,7 @@ It is best practice to treat Wrangler's configuration file as the [source of tru
 name = "my-worker"
 main = "src/index.js"
 # Set this to today's date
-compatibility_date = "2026-10-02"
+compatibility_date = "2026-10-06"
 workers_dev = false
 
 [route]
@@ -417,8 +417,10 @@ crons = [ "* * * * *" ]
 
 The [Observability](https://developers.cloudflare.com/workers/observability/logs/workers-logs) setting allows you to automatically ingest, store, filter, and analyze logging data emitted from Cloudflare Workers directly from your Cloudflare Worker's dashboard.
 
-- `enabled` `boolean` required
-  - When set to `true` on a Worker, logs for the Worker are persisted. Defaults to `true` for all new Workers.
+- `enabled` `boolean` optional
+  - Shorthand for `logs.enabled`. When set to `true` on a Worker, logs for the Worker are persisted. Defaults to `true` for all new Workers.
+- `logs.enabled` `boolean` optional
+  - Whether logs for the Worker are persisted.
 - `head_sampling_rate` `number` optional
   - A number between 0 and 1, where 0 indicates zero out of one hundred requests are logged, and 1 indicates every request is logged. If `head_sampling_rate` is unspecified, it is configured to a default value of 1 (100%). Read more about [head-based sampling](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#head-based-sampling).
 
@@ -1583,6 +1585,24 @@ The following options are available:
   - Limit container placement to specific geographic regions. Valid values: `"ENAM"`, `"WNAM"`, `"EEUR"`, `"WEUR"`, `"APAC"`, `"SAM"`, `"ME"`, `"OC"`, `"AFR"`.
 - `constraints.jurisdiction` `string` optional
   - Restrict containers to compliance boundaries. Valid values: `"eu"`, `"fedramp"`.
+- `observability` `object` optional
+  - Configures observability for this container application when deploying with `wrangler deploy`.
+  - If omitted, Wrangler uses the top-level [`observability`](#observability) setting as a fallback for that container.
+  - If set, it overrides the top-level `observability` setting for that container.
+- `observability.enabled` `boolean` optional
+  - Shorthand for `observability.logs.enabled`.
+- `observability.logs.enabled` `boolean` optional
+  - Whether logs for this container are persisted to Cloudflare's observability platform.
+- `observability.target_instance_percentage` `number` optional
+  - Apply application-level observability changes to this percentage of running instances.
+  - Must be an integer from `1` to `99`.
+  - Cannot be used with `observability.target_instance_count`.
+  - Requires observability to be enabled for the container.
+- `observability.target_instance_count` `number` optional
+  - Apply application-level observability changes to this many running instances.
+  - Must be a positive integer.
+  - Cannot be used with `observability.target_instance_percentage`.
+  - Requires observability to be enabled for the container.
 
 ```jsonc
 {
@@ -1593,6 +1613,10 @@ The following options are available:
 			"image": "./Dockerfile",
 			"max_instances": 10,
 			"instance_type": "basic", // Optional, defaults to "lite"
+			"observability": {
+				"enabled": true,
+				"target_instance_percentage": 25,
+			},
 			"image_vars": {
 				"FOO": "BAR",
 			},
@@ -1626,6 +1650,10 @@ scheduling_policy = "default"
 image = "./Dockerfile"
 max_instances = 10
 instance_type = "basic"
+
+  [containers.observability]
+  enabled = true
+  target_instance_percentage = 25
 
   [containers.image_vars]
   FOO = "BAR"
@@ -2312,5 +2340,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/wrangler/configuration/#page","headline":"Configuration","description":"Use a configuration file to customize the development and deployment setup for your Worker project and other Developer Platform products.","url":"https://developers.cloudflare.com/workers/wrangler/configuration/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/wrangler/configuration/og.png?v=757cd9bbad5852dd","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

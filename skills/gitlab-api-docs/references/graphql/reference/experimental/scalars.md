@@ -1151,9 +1151,9 @@ Represents untyped JSON.
 
 ## `JobID`
 
-A `CommitStatusID` is a global ID. It is encoded as a string.
+A `JobID` is a global ID. It is encoded as a string.
 
-An example `CommitStatusID` is: `"gid://gitlab/CommitStatus/1"`.
+An example `JobID` is: `"gid://gitlab/CommitStatus/1"`.
 
 ## `JsonString`
 

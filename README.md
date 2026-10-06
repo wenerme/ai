@@ -1396,7 +1396,7 @@ Use when implementing React state management with Zustand, including context-sco
 
 ## Stats
 
-> 125 skills, 50032 files, 548 MiB total
+> 125 skills, 50034 files, 548 MiB total
 
 | Skill | Files | Size |
 |-------|-------|------|
@@ -1438,13 +1438,13 @@ Use when implementing React state management with Zustand, including context-sco
 | [daisyui-v5](./skills/daisyui-v5/SKILL.md) | 3 | 61 KiB |
 | [doris-docs](./skills/doris-docs/SKILL.md) | 1642 | 10 MiB |
 | [duckdb-clients](./skills/duckdb-clients/SKILL.md) | 83 | 1.4 MiB |
-| [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 148 KiB |
+| [duckdb-data](./skills/duckdb-data/SKILL.md) | 27 | 150 KiB |
 | [duckdb-dev](./skills/duckdb-dev/SKILL.md) | 29 | 134 KiB |
-| [duckdb-docs](./skills/duckdb-docs/SKILL.md) | 103 | 445 KiB |
+| [duckdb-docs](./skills/duckdb-docs/SKILL.md) | 103 | 447 KiB |
 | [duckdb-extensions](./skills/duckdb-extensions/SKILL.md) | 59 | 501 KiB |
-| [duckdb-ops](./skills/duckdb-ops/SKILL.md) | 14 | 40 KiB |
+| [duckdb-ops](./skills/duckdb-ops/SKILL.md) | 15 | 41 KiB |
 | [duckdb-quack](./skills/duckdb-quack/SKILL.md) | 9 | 44 KiB |
-| [duckdb-sql](./skills/duckdb-sql/SKILL.md) | 128 | 934 KiB |
+| [duckdb-sql](./skills/duckdb-sql/SKILL.md) | 128 | 939 KiB |
 | [evalscope-cli](./skills/evalscope-cli/SKILL.md) | 6 | 31 KiB |
 | [evalscope-docs](./skills/evalscope-docs/SKILL.md) | 349 | 2.2 MiB |
 | [find-skills](./skills/find-skills/SKILL.md) | 1 | 4.5 KiB |
@@ -1453,12 +1453,12 @@ Use when implementing React state management with Zustand, including context-sco
 | [ghostty-docs](./skills/ghostty-docs/SKILL.md) | 103 | 557 KiB |
 | [gitea-docs](./skills/gitea-docs/SKILL.md) | 100 | 698 KiB |
 | [gitlab-admin-docs](./skills/gitlab-admin-docs/SKILL.md) | 370 | 4.7 MiB |
-| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 258 | 18 MiB |
+| [gitlab-api-docs](./skills/gitlab-api-docs/SKILL.md) | 259 | 18 MiB |
 | [gitlab-ci-docs](./skills/gitlab-ci-docs/SKILL.md) | 174 | 2.0 MiB |
 | [gitlab-user-docs](./skills/gitlab-user-docs/SKILL.md) | 918 | 8.5 MiB |
 | [glab-cli](./skills/glab-cli/SKILL.md) | 5 | 22 KiB |
 | [glab-docs](./skills/glab-docs/SKILL.md) | 323 | 558 KiB |
-| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 724 KiB |
+| [google-ai-api](./skills/google-ai-api/SKILL.md) | 13 | 725 KiB |
 | [google-ai-docs](./skills/google-ai-docs/SKILL.md) | 102 | 3.1 MiB |
 | [grafana-docs](./skills/grafana-docs/SKILL.md) | 644 | 6.4 MiB |
 | [grafana-plugin-docs](./skills/grafana-plugin-docs/SKILL.md) | 742 | 5.2 MiB |
@@ -1483,10 +1483,10 @@ Use when implementing React state management with Zustand, including context-sco
 | [model-reference](./skills/model-reference/SKILL.md) | 17 | 67 KiB |
 | [nats-docs](./skills/nats-docs/SKILL.md) | 6 | 42 KiB |
 | [openai-api](./skills/openai-api/SKILL.md) | 626 | 39 MiB |
-| [openai-docs](./skills/openai-docs/SKILL.md) | 246 | 5.0 MiB |
+| [openai-docs](./skills/openai-docs/SKILL.md) | 246 | 5.1 MiB |
 | [openai-sdk-python](./skills/openai-sdk-python/SKILL.md) | 529 | 25 MiB |
 | [openai-sdk-typescript](./skills/openai-sdk-typescript/SKILL.md) | 529 | 24 MiB |
-| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 505 KiB |
+| [opencode-docs](./skills/opencode-docs/SKILL.md) | 53 | 506 KiB |
 | [openobserve-docs](./skills/openobserve-docs/SKILL.md) | 486 | 2.8 MiB |
 | [openrouter-docs](./skills/openrouter-docs/SKILL.md) | 2459 | 17 MiB |
 | [orpc-docs](./skills/orpc-docs/SKILL.md) | 1 | 4.7 KiB |

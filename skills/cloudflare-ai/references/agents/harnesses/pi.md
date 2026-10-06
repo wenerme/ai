@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/agents/harnesses/pi/og.png?v=6a341e286a
 
 # Pi
 
-Last updated Oct 2, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/pi/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/agents/harnesses/pi/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Pi ↗︎](https://pi.dev/) is a minimal, extensible agent harness. The Agents SDK provides first-class support for building agents using the Pi harness, and this page shows how to run [Pi Durable ↗︎](https://earendil.com/posts/pi-durable/) in a Cloudflare Durable Object with `PiHarness` from the Agents SDK.
 
@@ -37,7 +37,7 @@ Beta
 
 ## Install
 
-Install `agents` with pi-durable and pi-ai:
+Install `agents` with Pi Durable and Pi AI:
 
 npmyarnpnpmbun
 
@@ -59,14 +59,14 @@ bun add agents @earendil-works/pi-durable @earendil-works/pi-ai
 
 Both Pi packages are optional peer dependencies of `agents`. `PiHarness` needs version 1.0 or later of each.
 
-The `agents/models/pi-ai` entry point supports AI Gateway and Workers AI models, so you can get started with Cloudflare models right away or use your existing `pi-ai` provider. The examples on this page use Workers AI through the `AI` binding and the [pi-ai model provider](https://developers.cloudflare.com/agents/models/pi-ai/). Add the binding and a SQLite-backed Durable Object to your Wrangler configuration:
+The `agents/models/pi-ai` entry point supports AI Gateway and Workers AI models, so you can get started with Cloudflare models right away or use your existing Pi AI provider. The examples on this page use Workers AI through the `AI` binding and the [Pi AI model provider](https://developers.cloudflare.com/agents/models/pi-ai/). Add the binding and a SQLite-backed Durable Object to your Wrangler configuration:
 
 ```jsonc
 {
 	"name": "pi-agent",
 	"main": "src/index.ts",
 	// Set this to today's date
-	"compatibility_date": "2026-10-02",
+	"compatibility_date": "2026-10-06",
 	"compatibility_flags": ["nodejs_compat"],
 	"ai": {
 		"binding": "AI",
@@ -82,7 +82,7 @@ The `agents/models/pi-ai` entry point supports AI Gateway and Workers AI models,
 name = "pi-agent"
 main = "src/index.ts"
 # Set this to today's date
-compatibility_date = "2026-10-02"
+compatibility_date = "2026-10-06"
 compatibility_flags = [ "nodejs_compat" ]
 
 [ai]
@@ -284,7 +284,7 @@ Address the object by name, for example with `env.Assistant.getByName("demo")`.
 | Option | Description |
 | --- | --- |
 | `harness` | Required. Receives `{ storage, context }` and returns Pi's `Harness`, usually from `Harness.open()`. |
-| `defaults` | What a new session starts with: `model`, a pi-ai `Model` such as `ai("@cf/...")`, and `thinkingLevel`. Change one session's model later with `session.setModel()`. |
+| `defaults` | What a new session starts with: `model`, a Pi AI `Model` such as `ai("@cf/...")`, and `thinkingLevel`. Change one session's model later with `session.setModel()`. |
 
 Without a model, a session's prompts end unanswered until you set one.
 
@@ -365,7 +365,7 @@ const all = await this.harness.sessions.list();
 | `wait(operationId, signal)` | Wait for an operation. Aborting `signal` stops the wait, not the work. |
 | `abort(operationId)` | Withdraw a queued operation, or abort the run it joined. With no id, abort everything in the session. |
 | `reset(handoff)` | Start a new context, optionally from a handoff note. |
-| `setModel(model)` | Change this session's model to a pi-ai `Model`, such as `ai("@cf/zai-org/glm-4.7-flash")`. |
+| `setModel(model)` | Change this session's model to a Pi AI `Model`, such as `ai("@cf/zai-org/glm-4.7-flash")`. |
 | `messages()` | The active transcript, as Pi's `EntryRecord` entries since the newest reset. |
 | `events()` | Pi's event stream for this session. |
 | `busy()` | Whether the session is running. |
@@ -426,9 +426,9 @@ While Pi has work, the job's heartbeat alarm fires every 30 seconds. A crashed o
 
 Add tools and system prompt sections to PiHarness.
 
-### [pi-ai model provider](https://developers.cloudflare.com/agents/models/pi-ai/)
+### [Pi AI model provider](https://developers.cloudflare.com/agents/models/pi-ai/)
 
-Workers AI and AI Gateway models for pi-ai and Pi Durable.
+Workers AI and AI Gateway models for Pi AI and Pi Durable.
 
 ### [Pi Durable announcement](https://earendil.com/posts/pi-durable/)
 
@@ -443,5 +443,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/pi/#page","headline":"Pi","description":"Run the Pi Durable harness on Cloudflare with the Agents SDK. PiHarness keeps your agent's work durable inside an Agent or Durable Object, even if it is interrupted mid-turn.","url":"https://developers.cloudflare.com/agents/harnesses/pi/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/og.png?v=6a341e286a3bfbc9","dateModified":"2026-10-02","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/agents/harnesses/pi/#page","headline":"Pi","description":"Run the Pi Durable harness on Cloudflare with the Agents SDK. PiHarness keeps your agent's work durable inside an Agent or Durable Object, even if it is interrupted mid-turn.","url":"https://developers.cloudflare.com/agents/harnesses/pi/","inLanguage":"en","image":"https://developers.cloudflare.com/agents/harnesses/pi/og.png?v=6a341e286a3bfbc9","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["AI"]}
 ```

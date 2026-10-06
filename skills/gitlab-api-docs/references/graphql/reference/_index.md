@@ -15425,50 +15425,6 @@ Fields:
 | <a id="mutation-scanexecutionpolicycommit-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
 | <a id="mutation-scanexecutionpolicycommit-validationerrors"></a>`validationErrors` | [`[SecurityPolicyValidationError!]`](#securitypolicyvalidationerror) | Validation errors encountered during execution of the mutation. |
 
-### `Mutation.secretPermissionDelete`
-
-Input type: `SecretPermissionDeleteInput`
-
-Arguments:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="mutation-secretpermissiondelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutation-secretpermissiondelete-principal"></a>`principal` | [`PrincipalInput!`](#principalinput) | Whose permission to be deleted. |
-| <a id="mutation-secretpermissiondelete-projectpath"></a>`projectPath` | [`ID!`](#id) | Project permissions for the secret. |
-
-Fields:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="mutation-secretpermissiondelete-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutation-secretpermissiondelete-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
-| <a id="mutation-secretpermissiondelete-reason"></a>`reason`  | [`SecretsManagerWriteDenialReason`](#secretsmanagerwritedenialreason) | Introduced in GitLab 19.2. Status: Experiment. Reason the write was denied due to entitlement; null when not denied for that reason. |
-| <a id="mutation-secretpermissiondelete-secretpermission"></a>`secretPermission` | [`SecretPermission`](#secretpermission) | Deleted Secret Permission. |
-
-### `Mutation.secretPermissionUpdate`
-
-Input type: `SecretPermissionUpdateInput`
-
-Arguments:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="mutation-secretpermissionupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutation-secretpermissionupdate-expiredat"></a>`expiredAt` | [`ISO8601Date`](#iso8601date) | Expiration date for Secret Permission (optional). |
-| <a id="mutation-secretpermissionupdate-permissions"></a>`permissions` | [`[String!]!`](#string) | Permissions to be provided. ['create', 'update', 'read', 'delete']. |
-| <a id="mutation-secretpermissionupdate-principal"></a>`principal` | [`PrincipalInput!`](#principalinput) | User/MemberRole/Role that is provided access. |
-| <a id="mutation-secretpermissionupdate-projectpath"></a>`projectPath` | [`ID!`](#id) | Project to which the permissions are added. |
-
-Fields:
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| <a id="mutation-secretpermissionupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
-| <a id="mutation-secretpermissionupdate-errors"></a>`errors` | [`[String!]!`](#string) | Errors encountered during the mutation. |
-| <a id="mutation-secretpermissionupdate-reason"></a>`reason`  | [`SecretsManagerWriteDenialReason`](#secretsmanagerwritedenialreason) | Introduced in GitLab 19.2. Status: Experiment. Reason the write was denied due to entitlement; null when not denied for that reason. |
-| <a id="mutation-secretpermissionupdate-secretpermission"></a>`secretPermission` | [`SecretPermission`](#secretpermission) | Secret Permission that was created. |
-
 ### `Mutation.secretsManagerEnableAddOn`
 
 - Introduced in GitLab 19.4.
@@ -32589,6 +32545,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="addonuser-groups-permissionscope"></a>`permissionScope` | [`GroupPermission`](#grouppermission) | Filter by permissions the user has on groups. |
 | <a id="addonuser-groups-search"></a>`search` | [`String`](#string) | Search by group name or path. |
+| <a id="addonuser-groups-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only groups in the current organization where the user is the sole owner. |
 | <a id="addonuser-groups-sort"></a>`sort` | [`GroupSort`](#groupsort) | Sort groups by given criteria. |
 
 ##### `AddOnUser.organizations`
@@ -33768,6 +33725,7 @@ Fields:
 | <a id="aigovernancemetrics-agents"></a>`agents` | [`AiGovernanceKpi`](#aigovernancekpi) | Distinct AI agent instances with sessions in the timeframe. Chat conversations are not counted. |
 | <a id="aigovernancemetrics-sessiondistribution"></a>`sessionDistribution`  | [`[AiGovernanceSessionDistribution!]`](#aigovernancesessiondistribution) | Introduced in GitLab 19.5. Status: Experiment. Sessions in the timeframe grouped by flow type for GitLab Duo sessions and by agent type for external sessions, ordered by session count. Returns the top 10. Missing names are reported as `unknown`. Returns null when the `ai_governance_dashboard_charts` feature flag is disabled. |
 | <a id="aigovernancemetrics-sessions"></a>`sessions` | [`AiGovernanceKpi`](#aigovernancekpi) | AI sessions in the timeframe, including Duo Chat conversations. |
+| <a id="aigovernancemetrics-toolcalls"></a>`toolCalls`  | [`AiGovernanceKpi`](#aigovernancekpi) | Introduced in GitLab 19.5. Status: Experiment. Tools invoked by AI agents in the timeframe. Counts every invocation, not distinct tools. Returns null when the `ai_governance_tool_calls` feature flag is disabled or when ClickHouse is not enabled. |
 
 #### Fields with arguments
 
@@ -33848,6 +33806,28 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="aigovernancesessiondistribution-count"></a>`count` | [`Int!`](#int) | Number of sessions in the timeframe. |
 | <a id="aigovernancesessiondistribution-name"></a>`name` | [`String!`](#string) | Flow type for GitLab Duo sessions, agent type for external sessions. |
+
+### `AiGovernanceToolCall`
+
+AI agent tool usage aggregated for the AI governance dashboard.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aigovernancetoolcall-count"></a>`count` | [`Int!`](#int) | Number of tool invocations in the selected timeframe. |
+| <a id="aigovernancetoolcall-toolname"></a>`toolName` | [`String!`](#string) | Name of the tool. |
+
+### `AiGovernanceToolCallsReport`
+
+Top tools invoked by AI agents, with a flag marking approximate counts.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aigovernancetoolcallsreport-approximate"></a>`approximate` | [`Boolean!`](#boolean) | Indicates whether counts were capped and are approximate. |
+| <a id="aigovernancetoolcallsreport-nodes"></a>`nodes` | [`[AiGovernanceToolCall!]!`](#aigovernancetoolcall) | Tools invoked in the selected timeframe, ordered by invocation count. |
 
 ### `AiGovernanceUserActivity`
 
@@ -35844,6 +35824,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="autocompleteduser-groups-permissionscope"></a>`permissionScope` | [`GroupPermission`](#grouppermission) | Filter by permissions the user has on groups. |
 | <a id="autocompleteduser-groups-search"></a>`search` | [`String`](#string) | Search by group name or path. |
+| <a id="autocompleteduser-groups-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only groups in the current organization where the user is the sole owner. |
 | <a id="autocompleteduser-groups-sort"></a>`sort` | [`GroupSort`](#groupsort) | Sort groups by given criteria. |
 
 ##### `AutocompletedUser.mergeRequestInteraction`
@@ -39843,6 +39824,7 @@ Fields:
 | <a id="currentuser-human"></a>`human` | [`Boolean`](#boolean) | Indicates if the user is a regular user. |
 | <a id="currentuser-id"></a>`id` | [`UserID!`](#userid) | Global ID of the user. |
 | <a id="currentuser-ide"></a>`ide` | [`Ide`](#ide) | IDE settings. |
+| <a id="currentuser-importsourceusers"></a>`importSourceUsers`  | [`ImportSourceUserConnection`](#importsourceuserconnection) | Introduced in GitLab 19.5. Status: Experiment. Completed mappings of source users whose contributions were reassigned to the current user. Returns an empty result if the `revoke_import_source_user_reassignment` feature flag is disabled. |
 | <a id="currentuser-jobtitle"></a>`jobTitle` | [`String`](#string) | Job title of the user. |
 | <a id="currentuser-lastactivityon"></a>`lastActivityOn` | [`Date`](#date) | Date the user last performed any actions. |
 | <a id="currentuser-linkedin"></a>`linkedin` | [`String`](#string) | LinkedIn profile name of the user. |
@@ -40121,6 +40103,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="currentuser-groups-permissionscope"></a>`permissionScope` | [`GroupPermission`](#grouppermission) | Filter by permissions the user has on groups. |
 | <a id="currentuser-groups-search"></a>`search` | [`String`](#string) | Search by group name or path. |
+| <a id="currentuser-groups-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only groups in the current organization where the user is the sole owner. |
 | <a id="currentuser-groups-sort"></a>`sort` | [`GroupSort`](#groupsort) | Sort groups by given criteria. |
 
 ##### `CurrentUser.organizations`
@@ -41312,6 +41295,39 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="dependencyproxysetting-enabled"></a>`enabled` | [`Boolean!`](#boolean) | Indicates whether the dependency proxy is enabled for the group. |
 | <a id="dependencyproxysetting-identity"></a>`identity` | [`String`](#string) | Identity credential used to authenticate with Docker Hub when pulling images. Can be a username (for password or personal access token (PAT)) or organization name (for organization access token (OAT)). |
+
+### `DependencyScanningConfiguration`
+
+Configuration for a dependency scanning scan profile.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="dependencyscanningconfiguration-additionalcacertbundle"></a>`additionalCaCertBundle`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. CA certificate bundle to trust. The bundle is added to the system's certificates and used by other tools during the scan. |
+| <a id="dependencyscanningconfiguration-apiscandownloaddelay"></a>`apiScanDownloadDelay`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Vulnerability scanning API initial delay in seconds before downloading scan results. |
+| <a id="dependencyscanningconfiguration-apitimeout"></a>`apiTimeout`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Vulnerability scanning API request timeout in seconds. |
+| <a id="dependencyscanningconfiguration-disabledresolutionjobs"></a>`disabledResolutionJobs`  | [`[SecurityScanProfileDependencyResolutionJob!]`](#securityscanprofiledependencyresolutionjob) | Introduced in GitLab 19.5. Status: Experiment. Resolution jobs that are disabled. |
+| <a id="dependencyscanningconfiguration-enablemanifestfallback"></a>`enableManifestFallback`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Whether manifest fallback for dependency scanning is enabled. |
+| <a id="dependencyscanningconfiguration-enablevulnerabilityscan"></a>`enableVulnerabilityScan`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Whether the vulnerability analysis of generated SBOMs is enabled. |
+| <a id="dependencyscanningconfiguration-excludedpaths"></a>`excludedPaths`  | [`[String!]`](#string) | Introduced in GitLab 19.5. Status: Experiment. Glob paths excluded from the scan. |
+| <a id="dependencyscanningconfiguration-gradlecliopts"></a>`gradleCliOpts`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Additional command-line options passed to Gradle during dependency resolution. |
+| <a id="dependencyscanningconfiguration-gradleresolutionimage"></a>`gradleResolutionImage`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Image used by the Gradle dependency resolution job. |
+| <a id="dependencyscanningconfiguration-includedevdependencies"></a>`includeDevDependencies`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Whether development and test dependencies are included when scanning a supported file. |
+| <a id="dependencyscanningconfiguration-mavenargs"></a>`mavenArgs`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Additional arguments passed to Maven during dependency resolution. |
+| <a id="dependencyscanningconfiguration-mavendependencypluginversion"></a>`mavenDependencyPluginVersion`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Version of maven-dependency-plugin used during resolution. |
+| <a id="dependencyscanningconfiguration-mavenresolutionimage"></a>`mavenResolutionImage`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Image used by the Maven dependency resolution job. |
+| <a id="dependencyscanningconfiguration-maxdepth"></a>`maxDepth`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Specifies the directory depth the analyzer should scan. A value of -1 scans all directories. |
+| <a id="dependencyscanningconfiguration-pipdependencypath"></a>`pipDependencyPath`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Path to install Python packages for analysis. |
+| <a id="dependencyscanningconfiguration-pipextraindexurl"></a>`pipExtraIndexUrl`  | [`[String!]`](#string) | Introduced in GitLab 19.5. Status: Experiment. Additional URLs of Python package indexes used in addition to pipIndexUrl. |
+| <a id="dependencyscanningconfiguration-pipindexurl"></a>`pipIndexUrl`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Base URL of the Python Package Index. |
+| <a id="dependencyscanningconfiguration-pipmanifestfilenamepattern"></a>`pipManifestFileNamePattern`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Custom pip manifest file name pattern to use for dependency resolution and manifest scanning. The pattern matches file names only, not directory paths. |
+| <a id="dependencyscanningconfiguration-pipcompilelockfilefilenamepattern"></a>`pipcompileLockfileFileNamePattern`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Custom pipcompile lockfile file name pattern to use when analyzing. The pattern matches file names only, not directory paths. |
+| <a id="dependencyscanningconfiguration-pythonresolutionimage"></a>`pythonResolutionImage`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Image used by the Python dependency resolution job. |
+| <a id="dependencyscanningconfiguration-searchignorehiddendirs"></a>`searchIgnoreHiddenDirs`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Whether hidden directories are ignored when searching for supported files. |
+| <a id="dependencyscanningconfiguration-secureanalyzersprefix"></a>`secureAnalyzersPrefix`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Prefix for the container registry from which the analyzer image is pulled. |
+| <a id="dependencyscanningconfiguration-secureloglevel"></a>`secureLogLevel`  | [`SecurityScanProfileSecureLogLevel`](#securityscanprofilesecureloglevel) | Introduced in GitLab 19.5. Status: Experiment. Logging level used by the analyzer. |
+| <a id="dependencyscanningconfiguration-staticreachabilityenabled"></a>`staticReachabilityEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Whether static reachability is enabled. |
 
 ### `DependencyTrackedRef`
 
@@ -45576,6 +45592,22 @@ Arguments:
 | <a id="group-aigovernancesessions-sessionstartedbefore"></a>`sessionStartedBefore` | [`Time`](#time) | Return sessions started at or before the timestamp. |
 | <a id="group-aigovernancesessions-triggeredbyuserid"></a>`triggeredByUserId` | [`UserID`](#userid) | Filter to sessions triggered by the user with the given global ID. |
 
+##### `Group.aiGovernanceToolCalls`
+
+- Introduced in GitLab 19.5.
+- Status: Experiment.
+
+Top tools invoked by AI agents, with invocation counts. Returns null when the `ai_governance_dashboard` or `ai_governance_tool_calls` feature flag is disabled or when ClickHouse is not enabled.
+
+Returns [`AiGovernanceToolCallsReport`](#aigovernancetoolcallsreport).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="group-aigovernancetoolcalls-agentclass"></a>`agentClass` | [`AiGovernanceAgentClass`](#aigovernanceagentclass) | Agent class to segment the tool calls by. Defaults to ALL. |
+| <a id="group-aigovernancetoolcalls-timeframe"></a>`timeframe` | [`AiGovernanceMetricsTimeframe`](#aigovernancemetricstimeframe) | Time window for the tool calls. Defaults to LAST_7_DAYS. |
+
 ##### `Group.aiMetrics`
 
 - Introduced in GitLab 16.11.
@@ -48326,6 +48358,7 @@ Fields:
 | <a id="importsourceuser-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the source user was created. |
 | <a id="importsourceuser-id"></a>`id` | [`ImportSourceUserID!`](#importsourceuserid) | Global ID of the mapping of a user on source instance to a user on destination instance. |
 | <a id="importsourceuser-importtype"></a>`importType` | [`ImportSource!`](#importsource) | Name of the importer. |
+| <a id="importsourceuser-namespace"></a>`namespace` | [`Namespace`](#namespace) | Namespace the contributions were imported to. |
 | <a id="importsourceuser-placeholderuser"></a>`placeholderUser` | [`UserCore`](#usercore) | Placeholder user associated with the import source user. |
 | <a id="importsourceuser-reassigntouser"></a>`reassignToUser` | [`UserCore`](#usercore) | User that contributions are reassigned to. |
 | <a id="importsourceuser-reassignedbyuser"></a>`reassignedByUser` | [`UserCore`](#usercore) | User that did the reassignment. |
@@ -49585,7 +49618,6 @@ Fields:
 | <a id="mergerequest-rebaseinprogress"></a>`rebaseInProgress` | [`Boolean!`](#boolean) | Indicates if there is a rebase currently in progress for the merge request. |
 | <a id="mergerequest-resolvablediscussionscount"></a>`resolvableDiscussionsCount` | [`Int`](#int) | Number of user discussions that are resolvable in the merge request. |
 | <a id="mergerequest-resolveddiscussionscount"></a>`resolvedDiscussionsCount` | [`Int`](#int) | Number of user discussions that are resolved in the merge request. |
-| <a id="mergerequest-resourcelabelevents"></a>`resourceLabelEvents` | [`MergeRequestResourceLabelEventConnection`](#mergerequestresourcelabeleventconnection) | Label events of the merge request. (see [Connections](#connections)) |
 | <a id="mergerequest-retargeted"></a>`retargeted` | [`Boolean`](#boolean) | Indicates if merge request was retargeted. |
 | <a id="mergerequest-reviewers"></a>`reviewers` | [`MergeRequestReviewerConnection`](#mergerequestreviewerconnection) | Users from whom a review has been requested. (see [Connections](#connections)) |
 | <a id="mergerequest-riskassessment"></a>`riskAssessment`  | [`MergeRequestRiskAssessment`](#mergerequestriskassessment) | Introduced in GitLab 19.4. Status: Experiment. Risk assessment for the merge request. Ultimate only. |
@@ -49793,6 +49825,22 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="mergerequest-reference-full"></a>`full` | [`Boolean`](#boolean) | Boolean option specifying whether the reference should be returned in full. |
+
+##### `MergeRequest.resourceLabelEvents`
+
+Label events of the merge request.
+
+Returns [`MergeRequestResourceLabelEventConnection`](#mergerequestresourcelabeleventconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="mergerequest-resourcelabelevents-labelid"></a>`labelId` | [`LabelID`](#labelid) | Global ID of the label to filter the label events. |
 
 ##### `MergeRequest.workItemRelations`
 
@@ -50052,6 +50100,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mergerequestassignee-groups-permissionscope"></a>`permissionScope` | [`GroupPermission`](#grouppermission) | Filter by permissions the user has on groups. |
 | <a id="mergerequestassignee-groups-search"></a>`search` | [`String`](#string) | Search by group name or path. |
+| <a id="mergerequestassignee-groups-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only groups in the current organization where the user is the sole owner. |
 | <a id="mergerequestassignee-groups-sort"></a>`sort` | [`GroupSort`](#groupsort) | Sort groups by given criteria. |
 
 ##### `MergeRequestAssignee.organizations`
@@ -50525,6 +50574,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mergerequestauthor-groups-permissionscope"></a>`permissionScope` | [`GroupPermission`](#grouppermission) | Filter by permissions the user has on groups. |
 | <a id="mergerequestauthor-groups-search"></a>`search` | [`String`](#string) | Search by group name or path. |
+| <a id="mergerequestauthor-groups-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only groups in the current organization where the user is the sole owner. |
 | <a id="mergerequestauthor-groups-sort"></a>`sort` | [`GroupSort`](#groupsort) | Sort groups by given criteria. |
 
 ##### `MergeRequestAuthor.organizations`
@@ -51086,6 +51136,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mergerequestparticipant-groups-permissionscope"></a>`permissionScope` | [`GroupPermission`](#grouppermission) | Filter by permissions the user has on groups. |
 | <a id="mergerequestparticipant-groups-search"></a>`search` | [`String`](#string) | Search by group name or path. |
+| <a id="mergerequestparticipant-groups-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only groups in the current organization where the user is the sole owner. |
 | <a id="mergerequestparticipant-groups-sort"></a>`sort` | [`GroupSort`](#groupsort) | Sort groups by given criteria. |
 
 ##### `MergeRequestParticipant.organizations`
@@ -51592,6 +51643,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="mergerequestreviewer-groups-permissionscope"></a>`permissionScope` | [`GroupPermission`](#grouppermission) | Filter by permissions the user has on groups. |
 | <a id="mergerequestreviewer-groups-search"></a>`search` | [`String`](#string) | Search by group name or path. |
+| <a id="mergerequestreviewer-groups-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only groups in the current organization where the user is the sole owner. |
 | <a id="mergerequestreviewer-groups-sort"></a>`sort` | [`GroupSort`](#groupsort) | Sort groups by given criteria. |
 
 ##### `MergeRequestReviewer.organizations`
@@ -55838,6 +55890,22 @@ Arguments:
 | <a id="project-aigovernancesessions-sessionstartedafter"></a>`sessionStartedAfter` | [`Time`](#time) | Return sessions started at or after the timestamp. |
 | <a id="project-aigovernancesessions-sessionstartedbefore"></a>`sessionStartedBefore` | [`Time`](#time) | Return sessions started at or before the timestamp. |
 | <a id="project-aigovernancesessions-triggeredbyuserid"></a>`triggeredByUserId` | [`UserID`](#userid) | Filter to sessions triggered by the user with the given global ID. |
+
+##### `Project.aiGovernanceToolCalls`
+
+- Introduced in GitLab 19.5.
+- Status: Experiment.
+
+Top tools invoked by AI agents, with invocation counts. Returns null when the `ai_governance_dashboard` or `ai_governance_tool_calls` feature flag is disabled or when ClickHouse is not enabled.
+
+Returns [`AiGovernanceToolCallsReport`](#aigovernancetoolcallsreport).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="project-aigovernancetoolcalls-agentclass"></a>`agentClass` | [`AiGovernanceAgentClass`](#aigovernanceagentclass) | Agent class to segment the tool calls by. Defaults to ALL. |
+| <a id="project-aigovernancetoolcalls-timeframe"></a>`timeframe` | [`AiGovernanceMetricsTimeframe`](#aigovernancemetricstimeframe) | Time window for the tool calls. Defaults to LAST_7_DAYS. |
 
 ##### `Project.aiMetrics`
 
@@ -60257,7 +60325,7 @@ Fields:
 | <a id="scanprofiletype-gitlabrecommended"></a>`gitlabRecommended` | [`Boolean!`](#boolean) | Indicates whether the scan profile is a default profile. |
 | <a id="scanprofiletype-id"></a>`id` | [`SecurityScanProfileID`](#securityscanprofileid) | Global ID of the security scan profile. |
 | <a id="scanprofiletype-name"></a>`name` | [`String!`](#string) | Name of the security scan profile. |
-| <a id="scanprofiletype-projectcount"></a>`projectCount`  | [`Int!`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of projects the scan profile is attached to. |
+| <a id="scanprofiletype-projectcount"></a>`projectCount`  | [`Int!`](#int) | Introduced in GitLab 19.5. Status: Experiment. Number of projects the scan profile is attached to, excluding archived projects. |
 | <a id="scanprofiletype-scantype"></a>`scanType` | [`SecurityScanProfileType!`](#securityscanprofiletype) | Scan profile type. |
 | <a id="scanprofiletype-triggersettings"></a>`triggerSettings`  | [`[ScanProfileTriggerSetting!]!`](#scanprofiletriggersetting) | Introduced in GitLab 19.3. Status: Experiment. Trigger settings, including effective configuration, for the scan profile. |
 | <a id="scanprofiletype-triggers"></a>`triggers`  | [`[ScanProfileTriggerType!]!`](#scanprofiletriggertype) | Introduced in GitLab 18.10. Status: Experiment. Trigger types for the scan profile. |
@@ -62191,6 +62259,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="usercore-groups-permissionscope"></a>`permissionScope` | [`GroupPermission`](#grouppermission) | Filter by permissions the user has on groups. |
 | <a id="usercore-groups-search"></a>`search` | [`String`](#string) | Search by group name or path. |
+| <a id="usercore-groups-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only groups in the current organization where the user is the sole owner. |
 | <a id="usercore-groups-sort"></a>`sort` | [`GroupSort`](#groupsort) | Sort groups by given criteria. |
 
 ##### `UserCore.organizations`
@@ -71120,6 +71189,16 @@ Controls GitLab Advanced SAST diff-based scanning.
 | <a id="securityscanprofileadvancedsastpartialscan-differential"></a>`DIFFERENTIAL`  | Introduced in GitLab 19.4. Status: Experiment. Enable diff-based scanning. |
 | <a id="securityscanprofileadvancedsastpartialscan-disabled"></a>`DISABLED`  | Introduced in GitLab 19.4. Status: Experiment. Disable diff-based scanning. |
 
+### `SecurityScanProfileDependencyResolutionJob`
+
+Dependency resolution job that can be disabled.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="securityscanprofiledependencyresolutionjob-gradle"></a>`GRADLE`  | Introduced in GitLab 19.5. Status: Experiment. Gradle dependency resolution job. |
+| <a id="securityscanprofiledependencyresolutionjob-maven"></a>`MAVEN`  | Introduced in GitLab 19.5. Status: Experiment. Maven dependency resolution job. |
+| <a id="securityscanprofiledependencyresolutionjob-python"></a>`PYTHON`  | Introduced in GitLab 19.5. Status: Experiment. Python dependency resolution job. |
+
 ### `SecurityScanProfileFalsePositiveConfidence`
 
 False positive assessment a finding must carry to be acted on.
@@ -71146,6 +71225,18 @@ Whether a triage and remediation capability runs automatically or on demand.
 | ----- | ----------- |
 | <a id="securityscanprofilerunmode-auto"></a>`AUTO`  | Introduced in GitLab 19.4. Status: Experiment. Run automatically as findings appear. |
 | <a id="securityscanprofilerunmode-manual"></a>`MANUAL`  | Introduced in GitLab 19.4. Status: Experiment. Run only when triggered by a user. |
+
+### `SecurityScanProfileSecureLogLevel`
+
+Logging level used by the analyzer.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="securityscanprofilesecureloglevel-debug"></a>`DEBUG`  | Introduced in GitLab 19.5. Status: Experiment. Debug messages and above. |
+| <a id="securityscanprofilesecureloglevel-error"></a>`ERROR`  | Introduced in GitLab 19.5. Status: Experiment. Error messages and above. |
+| <a id="securityscanprofilesecureloglevel-fatal"></a>`FATAL`  | Introduced in GitLab 19.5. Status: Experiment. Fatal messages only. |
+| <a id="securityscanprofilesecureloglevel-info"></a>`INFO`  | Introduced in GitLab 19.5. Status: Experiment. Informational messages and above. |
+| <a id="securityscanprofilesecureloglevel-warn"></a>`WARN`  | Introduced in GitLab 19.5. Status: Experiment. Warning messages and above. |
 
 ### `SecurityScanProfileType`
 
@@ -71585,7 +71676,6 @@ Name of the feature that the callout is for.
 | <a id="usercalloutfeaturenameenum-duo_panel_empty_state_auto_expanded"></a>`DUO_PANEL_EMPTY_STATE_AUTO_EXPANDED` | Callout feature name for duo_panel_empty_state_auto_expanded. |
 | <a id="usercalloutfeaturenameenum-email_otp_enrollment_callout"></a>`EMAIL_OTP_ENROLLMENT_CALLOUT` | Callout feature name for email_otp_enrollment_callout. |
 | <a id="usercalloutfeaturenameenum-expired_trial_status_widget"></a>`EXPIRED_TRIAL_STATUS_WIDGET` | Callout feature name for expired_trial_status_widget. |
-| <a id="usercalloutfeaturenameenum-explore_analytics_dashboards_promo"></a>`EXPLORE_ANALYTICS_DASHBOARDS_PROMO` | Callout feature name for explore_analytics_dashboards_promo. |
 | <a id="usercalloutfeaturenameenum-feature_flags_new_version"></a>`FEATURE_FLAGS_NEW_VERSION` | Callout feature name for feature_flags_new_version. |
 | <a id="usercalloutfeaturenameenum-feature_library_shimmer_seen"></a>`FEATURE_LIBRARY_SHIMMER_SEEN` | Callout feature name for feature_library_shimmer_seen. |
 | <a id="usercalloutfeaturenameenum-file_tree_browser_popover"></a>`FILE_TREE_BROWSER_POPOVER` | Callout feature name for file_tree_browser_popover. |
@@ -73574,9 +73664,9 @@ Represents untyped JSON.
 
 ### `JobID`
 
-A `CommitStatusID` is a global ID. It is encoded as a string.
+A `JobID` is a global ID. It is encoded as a string.
 
-An example `CommitStatusID` is: `"gid://gitlab/CommitStatus/1"`.
+An example `JobID` is: `"gid://gitlab/CommitStatus/1"`.
 
 ### `JsonString`
 
@@ -74507,6 +74597,7 @@ Effective configuration for a scan profile trigger, resolved by scan type, and b
 One of:
 
 - [`AutoRemediationConfiguration`](#autoremediationconfiguration)
+- [`DependencyScanningConfiguration`](#dependencyscanningconfiguration)
 - [`SastConfiguration`](#sastconfiguration)
 - [`SastFalsePositiveConfiguration`](#sastfalsepositiveconfiguration)
 - [`SastVulnerabilityResolutionConfiguration`](#sastvulnerabilityresolutionconfiguration)
@@ -75913,6 +76004,7 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="user-groups-permissionscope"></a>`permissionScope` | [`GroupPermission`](#grouppermission) | Filter by permissions the user has on groups. |
 | <a id="user-groups-search"></a>`search` | [`String`](#string) | Search by group name or path. |
+| <a id="user-groups-soloowned"></a>`soloOwned` | [`Boolean`](#boolean) | When true, returns only groups in the current organization where the user is the sole owner. |
 | <a id="user-groups-sort"></a>`sort` | [`GroupSort`](#groupsort) | Sort groups by given criteria. |
 
 ###### `User.organizations`
@@ -77642,10 +77734,44 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="securityscanprofileconfigurationinput-dependencyscanning"></a>`dependencyScanning`  | [`SecurityScanProfileDependencyScanningConfigurationInput`](#securityscanprofiledependencyscanningconfigurationinput) | Introduced in GitLab 19.5. Status: Experiment. Configuration for a dependency scanning scan profile. |
 | <a id="securityscanprofileconfigurationinput-dependencyscanningpostprocessing"></a>`dependencyScanningPostProcessing`  | [`SecurityScanProfileDependencyScanningPostProcessingConfigurationInput`](#securityscanprofiledependencyscanningpostprocessingconfigurationinput) | Introduced in GitLab 19.3. Status: Experiment. Configuration for a dependency scanning post-processing scan profile. |
 | <a id="securityscanprofileconfigurationinput-sast"></a>`sast`  | [`SecurityScanProfileSastConfigurationInput`](#securityscanprofilesastconfigurationinput) | Introduced in GitLab 19.4. Status: Experiment. Configuration for a SAST scan profile. |
 | <a id="securityscanprofileconfigurationinput-secretdetection"></a>`secretDetection`  | [`SecurityScanProfileSecretDetectionConfigurationInput`](#securityscanprofilesecretdetectionconfigurationinput) | Introduced in GitLab 19.3. Status: Experiment. Configuration for a secret detection scan profile. |
 | <a id="securityscanprofileconfigurationinput-triageandremediation"></a>`triageAndRemediation`  | [`SecurityScanProfileTriageAndRemediationConfigurationInput`](#securityscanprofiletriageandremediationconfigurationinput) | Introduced in GitLab 19.4. Status: Experiment. Configuration for a triage and remediation scan profile. |
+
+### `SecurityScanProfileDependencyScanningConfigurationInput`
+
+Configuration for a dependency scanning scan profile.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-additionalcacertbundle"></a>`additionalCaCertBundle`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. CA certificate bundle to trust. The bundle is added to the system's certificates and used by other tools during the scan. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-apiscandownloaddelay"></a>`apiScanDownloadDelay`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Vulnerability scanning API initial delay in seconds before downloading scan results, from 1 to 120. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-apitimeout"></a>`apiTimeout`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Vulnerability scanning API request timeout in seconds, from 5 to 300. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-disabledresolutionjobs"></a>`disabledResolutionJobs`  | [`[SecurityScanProfileDependencyResolutionJob!]`](#securityscanprofiledependencyresolutionjob) | Introduced in GitLab 19.5. Status: Experiment. Resolution jobs to disable. By default, all available resolution jobs are enabled. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-enablemanifestfallback"></a>`enableManifestFallback`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Enable manifest fallback for dependency scanning. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-enablevulnerabilityscan"></a>`enableVulnerabilityScan`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Enable the vulnerability analysis of generated SBOMs. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-excludedpaths"></a>`excludedPaths`  | [`[String!]`](#string) | Introduced in GitLab 19.5. Status: Experiment. Glob paths excluded from the scan. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-gradlecliopts"></a>`gradleCliOpts`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Additional command-line options passed to Gradle during dependency resolution. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-gradleresolutionimage"></a>`gradleResolutionImage`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Image used by the Gradle dependency resolution job. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-includedevdependencies"></a>`includeDevDependencies`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Include development and test dependencies when scanning a supported file. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-mavenargs"></a>`mavenArgs`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Additional arguments passed to Maven during dependency resolution. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-mavendependencypluginversion"></a>`mavenDependencyPluginVersion`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Version of maven-dependency-plugin used during resolution. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-mavenresolutionimage"></a>`mavenResolutionImage`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Image used by the Maven dependency resolution job. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-maxdepth"></a>`maxDepth`  | [`Int`](#int) | Introduced in GitLab 19.5. Status: Experiment. Specifies the directory depth the analyzer should scan. A value of -1 scans all directories. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-pipdependencypath"></a>`pipDependencyPath`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Path to install Python packages for analysis. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-pipextraindexurl"></a>`pipExtraIndexUrl`  | [`[String!]`](#string) | Introduced in GitLab 19.5. Status: Experiment. Additional URLs of Python package indexes to use in addition to pipIndexUrl. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-pipindexurl"></a>`pipIndexUrl`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Base URL of the Python Package Index. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-pipmanifestfilenamepattern"></a>`pipManifestFileNamePattern`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Custom pip manifest file name pattern to use for dependency resolution and manifest scanning. The pattern matches file names only, not directory paths. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-pipcompilelockfilefilenamepattern"></a>`pipcompileLockfileFileNamePattern`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Custom pipcompile lockfile file name pattern to use when analyzing. The pattern matches file names only, not directory paths. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-pythonresolutionimage"></a>`pythonResolutionImage`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Image used by the Python dependency resolution job. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-searchignorehiddendirs"></a>`searchIgnoreHiddenDirs`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Ignore hidden directories when searching for supported files. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-secureanalyzersprefix"></a>`secureAnalyzersPrefix`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Prefix for the container registry from which the analyzer image is pulled. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-secureloglevel"></a>`secureLogLevel`  | [`SecurityScanProfileSecureLogLevel`](#securityscanprofilesecureloglevel) | Introduced in GitLab 19.5. Status: Experiment. Logging level used by the analyzer. |
+| <a id="securityscanprofiledependencyscanningconfigurationinput-staticreachabilityenabled"></a>`staticReachabilityEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Enable static reachability. |
 
 ### `SecurityScanProfileDependencyScanningPostProcessingConfigurationInput`
 

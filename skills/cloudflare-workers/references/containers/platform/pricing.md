@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/containers/platform/pricing/og.png?v=6c
 
 # Pricing
 
-Last updated Aug 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/containers/platform/pricing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## vCPU, Memory and Disk
 
@@ -62,7 +62,7 @@ When you use Containers, incoming requests to your containers are handled by you
 
 Containers are integrated with the [Workers Logs](https://developers.cloudflare.com/workers/observability/logs/workers-logs/) platform, and billed at the same rate. Refer to [Workers Logs pricing](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#pricing) for details.
 
-When you [enable observability for your Worker](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs) with a binding to a container, logs from your container will show in both the Containers and Observability sections of the Cloudflare dashboard.
+When you [turn on observability for your Worker](https://developers.cloudflare.com/workers/observability/logs/workers-logs/#enable-workers-logs), or configure `observability` on a specific container, logs from that container will show in both the Containers and Observability sections of the Cloudflare dashboard.
 
 Was this helpful?
 
@@ -73,5 +73,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform/pricing/#page","headline":"Pricing","description":"Billing rates for Containers vCPU, memory, disk, and network egress, including included usage on the Workers Paid plan.","url":"https://developers.cloudflare.com/containers/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/platform/pricing/og.png?v=6cefb4d67718aa46","dateModified":"2026-08-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/containers/platform/pricing/#page","headline":"Pricing","description":"Billing rates for Containers vCPU, memory, disk, and network egress, including included usage on the Workers Paid plan.","url":"https://developers.cloudflare.com/containers/platform/pricing/","inLanguage":"en","image":"https://developers.cloudflare.com/containers/platform/pricing/og.png?v=6cefb4d67718aa46","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

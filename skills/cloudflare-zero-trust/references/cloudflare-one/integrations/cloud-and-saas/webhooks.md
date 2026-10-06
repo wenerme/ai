@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-s
 
 # Webhooks
 
-Last updated Aug 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Availability
 
@@ -41,6 +41,65 @@ After you configure a webhook destination, you can test delivery from the **Webh
 7. (Optional) Select **Test delivery** to validate the destination before saving.
 8. Select **Save**.
 
+Make a `POST` request to the [Create a webhook](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/webhooks/methods/create/) endpoint:
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zero Trust Write</code>
+
+</details>
+
+*Create a new webhook configurationbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/data-security/posture/webhooks" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"label": "Send to SIEM",
+		"destination_url": "https://example.com/webhook",
+		"authentication_type": "Bearer Auth",
+		"headers": [
+				{
+						"key": "Authorization",
+						"value": "Bearer <TOKEN>"
+				}
+		]
+	}'
+```
+
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
+2. Create a webhook using the [`cloudflare_zero_trust_casb_webhook` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_casb_webhook) resource:
+
+   ```tf
+   variable "siem_token" {
+     type      = string
+     sensitive = true
+   }
+
+   resource "cloudflare_zero_trust_casb_webhook" "siem" {
+     account_id          = var.cloudflare_account_id
+     label               = "Send to SIEM"
+     destination_url     = "https://example.com/webhook"
+     authentication_type = "Bearer Auth"
+     headers = [{
+       key   = "Authorization"
+       value = "Bearer ${var.siem_token}"
+     }]
+   }
+   ```
+
+   For HMAC signing, set `authentication_type = "HMAC-Signing"` and provide `signing_secret` instead of `headers`.
+
 Cloudflare only accepts destination URLs that use `https://` and are publicly reachable. URLs that resolve to localhost, loopback, private, or other reserved addresses are rejected.
 
 ## Authentication methods
@@ -48,10 +107,10 @@ Cloudflare only accepts destination URLs that use `https://` and are publicly re
 CASB webhooks support the following authentication methods:
 
 - **None**: Use this option if your destination does not require authentication.
-- **Basic Auth**: Use this option when your destination expects HTTP Basic authentication.
-- **Bearer Auth**: Use this option when your destination expects a bearer token.
-- **Static Headers**: Use this option when your destination requires one or more fixed custom headers. Header names must be unique.
-- **HMAC-Signing**: Use this option when your destination validates signed requests. You must provide a signing secret.
+- **Basic Auth**: Use this option when your destination expects HTTP Basic authentication. Requires an `Authorization` header with a value that starts with `Basic` .
+- **Bearer Auth**: Use this option when your destination expects a bearer token. Requires an `Authorization` header with a value that starts with `Bearer` .
+- **Static Headers**: Use this option when your destination requires one or more fixed custom headers. Requires at least one header. Header names must be unique.
+- **HMAC-Signing**: Use this option when your destination validates signed requests. Requires a `signing_secret`.
 
 ## Test delivery
 
@@ -74,7 +133,103 @@ To turn a webhook off or on, use the status toggle on the **Webhooks** page.
 
 To delete a webhook, open the webhook menu and select **Delete**.
 
+To update a webhook, make a `PUT` request to the [Update a webhook](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/webhooks/methods/update/) endpoint with `label`, `destination_url`, `authentication_type`, and `status`. The request replaces the existing configuration, so include every header you want to keep. To keep a stored header value, send its `key` without a `value`.
+
+For example, the following request turns a webhook off by setting `status` to `disabled`:
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zero Trust Write</code>
+
+</details>
+
+*Update an existing webhook configurationbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/data-security/posture/webhooks/$WEBHOOK_ID" \
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"label": "Send to SIEM",
+		"destination_url": "https://example.com/webhook",
+		"authentication_type": "Bearer Auth",
+		"headers": [
+				{
+						"key": "Authorization"
+				}
+		],
+		"status": "disabled"
+	}'
+```
+
+To delete a webhook, make a `DELETE` request to the [Delete a webhook](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/webhooks/methods/delete/) endpoint:
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zero Trust Write</code>
+
+</details>
+
+*Delete a webhook configurationbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/data-security/posture/webhooks/$WEBHOOK_ID" \
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+To update a webhook, change its attributes and run `terraform apply`. To turn the webhook off, set `status = "disabled"`.
+
+To delete a webhook, remove the resource from your configuration and run `terraform apply`, or target the resource for destruction:
+
+```sh
+terraform destroy -target=cloudflare_zero_trust_casb_webhook.siem
+```
+
 When you edit an existing webhook, Cloudflare does not display saved header values or signing secrets. To replace a stored value, enter a new value and save the webhook again.
+
+## Manage existing webhooks with Terraform
+
+### Import a webhook
+
+To bring a webhook created in the dashboard or API under Terraform management, import it using your account ID and the webhook ID:
+
+```sh
+terraform import cloudflare_zero_trust_casb_webhook.siem '<ACCOUNT_ID>/<WEBHOOK_ID>'
+```
+
+Cloudflare does not return header values or signing secrets. After you import a webhook, set these values in your configuration so that Terraform can manage them.
+
+### Look up webhooks
+
+Use the [`cloudflare_zero_trust_casb_webhook` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zero_trust_casb_webhook) data source to read a single webhook, or [`cloudflare_zero_trust_casb_webhooks` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zero_trust_casb_webhooks) to list all webhooks in an account:
+
+```tf
+data "cloudflare_zero_trust_casb_webhook" "siem" {
+	account_id = var.cloudflare_account_id
+	webhook_id = "<WEBHOOK_ID>"
+}
+
+data "cloudflare_zero_trust_casb_webhooks" "all" {
+	account_id = var.cloudflare_account_id
+}
+```
 
 ## Send a posture finding instance to a webhook
 
@@ -134,5 +289,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/#page","headline":"Webhooks","description":"Configure CASB webhooks to send posture finding instances from Cloudflare One to external HTTPS endpoints.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/og.png?v=46cd1f1731e2df87","dateModified":"2026-08-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/#page","headline":"Webhooks","description":"Configure CASB webhooks to send posture finding instances from Cloudflare One to external HTTPS endpoints.","url":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/og.png?v=46cd1f1731e2df87","dateModified":"2026-10-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

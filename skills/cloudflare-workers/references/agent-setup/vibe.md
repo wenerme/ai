@@ -97,7 +97,7 @@ IDETerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+   Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
    ```
 
 
@@ -212,15 +212,15 @@ Set up AI Gateway to route requests across OpenAI and Workers AI with automatic 
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ## Tips

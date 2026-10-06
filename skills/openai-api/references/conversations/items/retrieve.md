@@ -1122,7 +1122,7 @@ Get a single item from a conversation with the given IDs.
 
     - `id: string`
 
-      The unique ID of the computer call tool output.
+      The ID of the computer tool call output.
 
     - `call_id: string`
 
