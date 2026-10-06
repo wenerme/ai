@@ -307,7 +307,7 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 **Features**
 
-- Reimplemented middlewares using WebRTC-native primitives to resolve intermittent crashes and other issues, check out the new [Video Processing](https://docs.realtime.cloudflare.com/android-core/video-processing/introduction) docs section to learn more
+- Reimplemented middlewares using WebRTC-native primitives to resolve intermittent crashes and other issues, check out the new [Video Processing](https://developers.cloudflare.com/realtime/realtimekit/core/video-effects/) docs section to learn more
 - `VideoDevice` now properly labels multiple cameras based on their camera characteristics such as wide-angle and telephoto
 
 **Fixes**

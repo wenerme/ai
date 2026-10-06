@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/browser-run/kitesurf/og.png?v=813c3d122
 
 # Kitesurf
 
-Last updated Sep 28, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/kitesurf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/browser-run/kitesurf/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 [Kitesurf ↗︎](https://blog.cloudflare.com/kitesurf) is Cloudflare's stateless, highly scalable browser that runs entirely on top of [Workers](https://developers.cloudflare.com/workers/) and is designed for AI agents. Instead of shipping a full desktop browser engine like Chromium, Kitesurf focuses on what matters to an agent — token count, context windows, scalability, performance, and cost — while trading away features that only humans need, such as tabs, themes, extensions, and pixel-perfect rendering.
 
@@ -61,6 +61,38 @@ curl -X POST 'https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/browser
   }' \
   --output "screenshot.png"
 ```
+
+### Use Kitesurf with the browser binding
+
+From a Worker, pass `browser: "kitesurf"` in the options of the [browser binding](https://developers.cloudflare.com/browser-run/quick-actions/#workers-binding)'s `quickAction()` method:
+
+```js
+export default {
+	async fetch(request, env) {
+		return await env.BROWSER.quickAction("screenshot", {
+			url: "https://example.com",
+			browser: "kitesurf",
+		});
+	},
+};
+```
+
+```ts
+interface Env {
+	BROWSER: BrowserRun;
+}
+
+export default {
+	async fetch(request, env): Promise<Response> {
+		return await env.BROWSER.quickAction("screenshot", {
+			url: "https://example.com",
+			browser: "kitesurf",
+		});
+	},
+} satisfies ExportedHandler<Env>;
+```
+
+The binding validates the value, so any engine name other than `kitesurf` fails with `Invalid input: expected "kitesurf"`. Leave out `browser` to use the default Chromium browser.
 
 ### Use Kitesurf with the CDP endpoint
 
@@ -147,5 +179,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/kitesurf/#page","headline":"Kitesurf","description":"Use Kitesurf, Cloudflare's stateless, agent-first browser that runs entirely on Workers, with Browser Run for screenshots, HTML extraction, and automation.","url":"https://developers.cloudflare.com/browser-run/kitesurf/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/kitesurf/og.png?v=813c3d122adcf200","dateModified":"2026-09-28","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/browser-run/kitesurf/#page","headline":"Kitesurf","description":"Use Kitesurf, Cloudflare's stateless, agent-first browser that runs entirely on Workers, with Browser Run for screenshots, HTML extraction, and automation.","url":"https://developers.cloudflare.com/browser-run/kitesurf/","inLanguage":"en","image":"https://developers.cloudflare.com/browser-run/kitesurf/og.png?v=813c3d122adcf200","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

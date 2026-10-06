@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/flagship/reference/evaluation-reasons/o
 
 # Evaluation reasons and error codes
 
-Last updated Jun 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/flagship/reference/evaluation-reasons/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When you evaluate a flag using the binding's `*Details` methods or the OpenFeature SDK, the response includes a `reason` field that explains why a particular value was returned. If an error occurs, the response includes an `errorCode` field.
 
@@ -22,7 +22,8 @@ When you evaluate a flag using the binding's `*Details` methods or the OpenFeatu
 | --- | --- |
 | `TARGETING_MATCH` | A targeting rule's conditions matched the evaluation context, and the rule's variant was returned. |
 | `SPLIT` | A targeting rule with a percentage rollout matched. The user fell within the rollout percentage and received the rule's variant. |
-| `DEFAULT` | No targeting rule matched the evaluation context. The flag's default variant was returned. |
+| `STATIC` | The flag is enabled and has no targeting rules, so its default variant was returned. |
+| `DEFAULT` | The flag has targeting rules, but none matched the evaluation context. The flag's default variant was returned. |
 | `DISABLED` | The flag is disabled. The default variant was returned regardless of targeting rules. |
 | `CACHED` | The SDK returned a cached evaluation result. |
 | `ERROR` | Evaluation failed and the default value was returned. |
@@ -55,11 +56,17 @@ switch (details.reason) {
 	case "SPLIT":
 		console.log(`Included in rollout, variant: ${details.variant}`);
 		break;
+	case "STATIC":
+		console.log("Flag has no targeting rules, using default variant");
+		break;
 	case "DEFAULT":
 		console.log("No rule matched, using default variant");
 		break;
 	case "DISABLED":
 		console.log("Flag is disabled");
+		break;
+	default:
+		// Handle other reasons, such as "CACHED" or "ERROR".
 		break;
 }
 
@@ -80,11 +87,17 @@ switch (details.reason) {
 	case "SPLIT":
 		console.log(`Included in rollout, variant: ${details.variant}`);
 		break;
+	case "STATIC":
+		console.log("Flag has no targeting rules, using default variant");
+		break;
 	case "DEFAULT":
 		console.log("No rule matched, using default variant");
 		break;
 	case "DISABLED":
 		console.log("Flag is disabled");
+		break;
+	default:
+		// Handle other reasons, such as "CACHED" or "ERROR".
 		break;
 }
 
@@ -102,5 +115,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/#page","headline":"Evaluation reasons and error codes","description":"Flagship evaluation reason values and error codes returned by binding details methods and the OpenFeature SDK.","url":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/og.png?v=86b5d4b48cd4e205","dateModified":"2026-06-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/#page","headline":"Evaluation reasons and error codes","description":"Flagship evaluation reason values and error codes returned by binding details methods and the OpenFeature SDK.","url":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/","inLanguage":"en","image":"https://developers.cloudflare.com/flagship/reference/evaluation-reasons/og.png?v=86b5d4b48cd4e205","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

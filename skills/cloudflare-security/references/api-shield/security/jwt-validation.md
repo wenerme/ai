@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/api-shield/security/jwt-validation/og.p
 
 # JSON Web Tokens validation
 
-Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/api-shield/security/jwt-validation/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 JSON web tokens (JWT) are often used as part of an authentication component on many web applications. Since JWTs are crucial to identifying users and their access, ensuring the token's integrity is important.
 
@@ -41,14 +41,65 @@ Token configurations do not automatically retrieve or refresh keys from a JWKS U
 
 ### Act on JWT validation results
 
-For new security policies, Cloudflare generally recommends using WAF custom rules.
+Note
 
-- **[WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/)** — use these for zone-wide policies based on verified JWT claims. Custom rules can combine claims with other signals, such as [attack score](https://developers.cloudflare.com/waf/detections/attack-score/). Endpoints do not need to be in Endpoint Management.
-- **JWT validation rules** — use these when enforcement must apply only to specific operations in [Endpoint Management](https://developers.cloudflare.com/api-shield/management-and-monitoring/). These rules support the `is_jwt_valid()` and `is_jwt_present()` functions, which are not available in custom rules.
+For new security policies, Cloudflare recommends using [WAF custom rules](https://developers.cloudflare.com/waf/custom-rules/) to act on JWT validation results. Existing API JWT validation rules remain supported.
+
+WAF custom rules support zone-wide policies and policies scoped to selected endpoints. They can also combine JWT validation results and verified claims with other security signals, such as [attack score](https://developers.cloudflare.com/waf/detections/attack-score/).
 
 Cloudflare validates JWTs the same way regardless of which rule type you choose.
 
-For example, to reference a simple string claim in a rule expression, use [`lookup_json_string()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup_json_string) with your token configuration ID and the claim name:
+#### WAF custom rule examples
+
+API JWT validation rules run their action when the rule expression evaluates to `false`. WAF custom rules run their action when the expression evaluates to `true`. The following examples match requests that violate the JWT policy and are intended for a WAF custom rule with a `Block` or `Log` action.
+
+In WAF custom rules, `cf.api_gateway.tokens.presented` contains the token configuration IDs for tokens found in the request. The `cf.api_gateway.tokens.valid` field contains the configuration IDs for tokens that passed validation. The `cf.api_gateway.operation_id` field contains the ID of the endpoint matched by the request.
+
+To require a valid token, use:
+
+```txt
+not any(cf.api_gateway.tokens.valid[*] == "<TOKEN_CONFIGURATION_ID>")
+```
+
+This expression also matches requests without a token. To require only that a token is present, use:
+
+```txt
+not any(cf.api_gateway.tokens.presented[*] == "<TOKEN_CONFIGURATION_ID>")
+```
+
+To match invalid tokens but ignore requests without a token, use:
+
+```txt
+any(cf.api_gateway.tokens.presented[*] == "<TOKEN_CONFIGURATION_ID>") and
+not any(cf.api_gateway.tokens.valid[*] == "<TOKEN_CONFIGURATION_ID>")
+```
+
+To accept a valid token from either of two token configurations, use:
+
+```txt
+not (
+  any(cf.api_gateway.tokens.valid[*] == "<TOKEN_CONFIGURATION_ID_1>") or
+  any(cf.api_gateway.tokens.valid[*] == "<TOKEN_CONFIGURATION_ID_2>")
+)
+```
+
+Each saved endpoint has an endpoint ID, also called an operation ID, in its Endpoint Management details. To apply a policy only to selected endpoints, use their full endpoint IDs:
+
+```txt
+cf.api_gateway.operation_id in {"<ENDPOINT_ID_1>" "<ENDPOINT_ID_2>"} and
+not any(cf.api_gateway.tokens.valid[*] == "<TOKEN_CONFIGURATION_ID>")
+```
+
+The `cf.api_gateway.fallthrough_detected` field is `false` when a request matches a saved endpoint. To apply a policy to saved endpoints on a hostname except for selected endpoints, use:
+
+```txt
+http.host eq "api.example.com" and
+not cf.api_gateway.fallthrough_detected and
+not (cf.api_gateway.operation_id in {"<EXCLUDED_ENDPOINT_ID_1>" "<EXCLUDED_ENDPOINT_ID_2>"}) and
+not any(cf.api_gateway.tokens.valid[*] == "<TOKEN_CONFIGURATION_ID>")
+```
+
+To reference a simple string claim, use [`lookup_json_string()`](https://developers.cloudflare.com/ruleset-engine/rules-language/functions/#lookup_json_string) with your token configuration ID and the claim name:
 
 ```txt
 lookup_json_string(http.request.jwt.claims["<TOKEN_CONFIGURATION_ID>"][0], "claim_name")
@@ -143,5 +194,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/#page","headline":"JSON Web Tokens validation","description":"Verify incoming JWTs to detect token tampering and invalid tokens at the edge.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/jwt-validation/og.png?v=10ef6f4cc8c50699","dateModified":"2026-10-01","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/api-shield/security/jwt-validation/#page","headline":"JSON Web Tokens validation","description":"Verify incoming JWTs to detect token tampering and invalid tokens at the edge.","url":"https://developers.cloudflare.com/api-shield/security/jwt-validation/","inLanguage":"en","image":"https://developers.cloudflare.com/api-shield/security/jwt-validation/og.png?v=10ef6f4cc8c50699","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["JSON web token (JWT)"]}
 ```

@@ -187,7 +187,7 @@ If successful, returns [`200`](rest/troubleshooting.md#status-codes) and the fol
 Example request:
 
 ```shell
-curl \
+curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/groups/1/saml_group_links"
 ```
@@ -241,7 +241,7 @@ If multiple SAML group links exist with the same name but different providers, a
 Example request:
 
 ```shell
-curl \
+curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/groups/1/saml_group_links/saml-group-1"
 ```
@@ -249,7 +249,7 @@ curl \
 Example request with provider parameter:
 
 ```shell
-curl \
+curl --request GET \
   --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/groups/1/saml_group_links/saml-group-1?provider=saml_provider_1"
 ```

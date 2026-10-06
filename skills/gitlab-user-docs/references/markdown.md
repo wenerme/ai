@@ -953,14 +953,8 @@ entry and paste the spreadsheet:
 
 ### Sort tables
 
-- Status: Beta
-
-- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239559) in GitLab 19.3 [with a feature flag](../administration/feature_flags/_index.md) named `markdown_sortable_table_columns`. Disabled by default. This feature is in [beta](../policy/development_stages_support.md).
-
-> [!flag]
-> The availability of this feature is controlled by a feature flag.
-> For more information, see the history.
-> This feature is available for testing, but not ready for production use.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/239559) as a [beta](../policy/development_stages_support.md#beta) in GitLab 19.3 [with a feature flag](../administration/feature_flags/_index.md) named `markdown_sortable_table_columns`. Disabled by default.
+- [Generally available](https://gitlab.com/groups/gitlab-org/-/work_items/23004) in GitLab 19.5. Feature flag `markdown_sortable_table_columns` removed.
 
 In a rendered table, you can sort the rows by the values in a column.
 
@@ -1523,7 +1517,7 @@ In wikis, you can also add and edit diagrams created with the [diagrams.net edit
 - Support for `treeView-beta` diagrams [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/612879) in GitLab 19.4.
 
 Visit the [official page](https://mermaidjs.github.io/) for more details. The
-[Mermaid Live Editor](https://mermaid-js.github.io/mermaid-live-editor/) helps you
+[Mermaid Live Editor](https://mermaid.live/edit) helps you
 learn Mermaid and debug issues in your Mermaid code. Use it to identify and resolve
 issues in your diagrams.
 

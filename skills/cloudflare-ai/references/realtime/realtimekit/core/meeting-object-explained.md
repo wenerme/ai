@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/realtime/realtimekit/core/meeting-objec
 
 # Meeting Object Explained
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The meeting object is the core interface for interacting with a RealtimeKit session. It provides access to participants, local user controls, chat, polls, plugins, and more. This object is returned when you initialize the SDK.
 
@@ -32,7 +32,7 @@ The meeting object contains several properties that organize different aspects o
 
 ### Self/Local Participant
 
-The [`meeting.self` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
+The [`meeting.self`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkself/) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
 
@@ -82,7 +82,7 @@ await meeting.self.getCurrentDevices(); // {audio: MediaDevice, video: MediaDevi
 await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
 ```
 
-The [`meeting.self` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
+The [`meeting.self`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkself/) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
 
@@ -132,7 +132,7 @@ await meeting.self.getCurrentDevices(); // {audio: MediaDevice, video: MediaDevi
 await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
 ```
 
-The [`meeting.self` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
+The [`meeting.self`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkself/) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
 
@@ -346,7 +346,7 @@ meeting.localUser.shouldShowSetupScreen() // Check if setup screen should be sho
 meeting.localUser.shouldJoinMediaRoom() // Check if local user should join media room
 ```
 
-The [`meeting.self` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKSelf) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
+The [`meeting.self`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkself/) represents the local user (you) in the meeting. It provides properties and methods to control your own audio, video, and screen sharing.
 
 **Key Properties:**
 
@@ -400,7 +400,7 @@ await meeting.self.setDevice((await meeting.self.getAllDevices())[0]);
 
 ### `meeting.participants` - All Remote Participants
 
-The [`meeting.participants` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKParticipants) contains maps of all remote participants in the meeting, organized by their state.
+The [`meeting.participants`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipants/) contains maps of all remote participants in the meeting, organized by their state.
 
 Note
 
@@ -839,7 +839,7 @@ participant.stageStatus // Stage status
 participant.flags // Participant flags (recorder, hiddenParticipant, webinarHiddenParticipant)
 ```
 
-The [`meeting.participants` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKParticipants) contains maps of all remote participants in the meeting, organized by their state.
+The [`meeting.participants`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkparticipants/) contains maps of all remote participants in the meeting, organized by their state.
 
 Note
 
@@ -916,7 +916,7 @@ participant.screenShareTrack; // Screen share MediaStreamTrack
 
 ### `meeting.meta` - Meeting Metadata
 
-The [`meeting.meta` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
+The [`meeting.meta`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkmeta/) contains information about the meeting room itself.
 
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
@@ -924,7 +924,7 @@ meeting.meta.meetingTitle; // Meeting Title
 meeting.meta.meetingStartedTimestamp; // Meeting start time
 ```
 
-The [`meeting.meta` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
+The [`meeting.meta`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkmeta/) contains information about the meeting room itself.
 
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
@@ -932,7 +932,7 @@ meeting.meta.meetingTitle; // Meeting Title
 meeting.meta.meetingStartedTimestamp; // Meeting start time
 ```
 
-The [`meeting.meta` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKMeta) contains information about the meeting room itself.
+The [`meeting.meta`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkmeta/) contains information about the meeting room itself.
 
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
@@ -994,7 +994,7 @@ meeting.meta.syncTab(
 )
 ```
 
-The [`meeting.meta` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKMeta) contains information about the meeting room itself.
+The [`meeting.meta`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkmeta/) contains information about the meeting room itself.
 
 ```javascript
 meeting.meta.meetingId; // Meeting identifier
@@ -1006,7 +1006,7 @@ meeting.meta.meetingStartedTimestamp; // Meeting start time
 
 ### `meeting.chat` - Chat Messages
 
-The [`meeting.chat` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
+The [`meeting.chat`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/) manages text messages, images, and files shared in the meeting.
 
 ```javascript
 // Get all chat messages
@@ -1027,7 +1027,7 @@ meeting.chat.on("chatUpdate", ({ message, messages }) => {
 });
 ```
 
-The [`meeting.chat` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
+The [`meeting.chat`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/) manages text messages, images, and files shared in the meeting.
 
 ```javascript
 // Get all chat messages
@@ -1048,7 +1048,7 @@ meeting.chat.on("chatUpdate", ({ message, messages }) => {
 });
 ```
 
-The [`meeting.chat` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
+The [`meeting.chat`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/) manages text messages, images, and files shared in the meeting.
 
 ```javascript
 // Get all chat messages
@@ -1170,7 +1170,7 @@ default:
 }
 ```
 
-The [`meeting.chat` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKChat) manages text messages, images, and files shared in the meeting.
+The [`meeting.chat`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkchat/) manages text messages, images, and files shared in the meeting.
 
 ```javascript
 // Get all chat messages
@@ -1195,7 +1195,7 @@ meeting.chat.on("chatUpdate", ({ message, messages }) => {
 
 ### `meeting.polls` - Polls
 
-The [`meeting.polls` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
+The [`meeting.polls`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkpolls/) manages polls in the meeting.
 
 ```javascript
 // Get all polls
@@ -1213,7 +1213,7 @@ await meeting.polls.create(
 await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.polls.items
 ```
 
-The [`meeting.polls` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
+The [`meeting.polls`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkpolls/) manages polls in the meeting.
 
 ```javascript
 // Get all polls
@@ -1231,7 +1231,7 @@ await meeting.polls.create(
 await meeting.polls.vote(pollId, optionIndex); // Retrieve pollId from meeting.polls.items
 ```
 
-The [`meeting.polls` ↗︎](https://docs.realtime.cloudflare.com/web-core/reference/RTKPolls) manages polls in the meeting.
+The [`meeting.polls`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkpolls/) manages polls in the meeting.
 
 ```javascript
 // Get all polls
@@ -1322,7 +1322,7 @@ extension MeetingViewModel: RtkPollsEventListener {
 meeting.addPollsEventListener(self)
 ```
 
-The [`meeting.polls` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPolls) manages polls in the meeting.
+The [`meeting.polls`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkpolls/) manages polls in the meeting.
 
 ```javascript
 // Get all polls
@@ -1497,7 +1497,7 @@ extension MeetingViewModel: RtkPluginsEventListener {
 meeting.addPluginsEventListener(self)
 ```
 
-The [`meeting.plugins` ↗︎](https://docs.realtime.cloudflare.com/mobile-core/reference/RTKPlugins) manages meeting plugins (collaborative apps).
+The [`meeting.plugins`](https://developers.cloudflare.com/realtime/realtimekit/core/api-reference/rtkplugins/) manages meeting plugins (collaborative apps).
 
 ```javascript
 // Get all available plugins
@@ -1658,5 +1658,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/#page","headline":"Meeting Object Explained","description":"Explore the RealtimeKit meeting object and its namespaces for participants, chat, polls, and media.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/og.png?v=3ffe26cbcdbb0f27","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"WebPage","@id":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/#page","headline":"Meeting Object Explained","description":"Explore the RealtimeKit meeting object and its namespaces for participants, chat, polls, and media.","url":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/realtimekit/core/meeting-object-explained/og.png?v=3ffe26cbcdbb0f27","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
