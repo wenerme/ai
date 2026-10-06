@@ -1,4 +1,4 @@
-# Create custom MCP server
+# Add custom MCP server
 
 > For the complete documentation index, see [llms.txt](/llms.txt). Markdown versions of documentation pages are available by appending `.md` to the page URL.
 
@@ -22,10 +22,10 @@ Only connect to MCP servers you trust. An untrusted server may access or steal i
 
 ## How to use
 
-- **Access:** Use ChatGPT on the web. Workspace permissions and security restrictions, including Lockdown, apply to creating and using custom MCP servers.
-- **Create a plugin from an MCP server:**
+- **Access:** Use ChatGPT on the web. Workspace permissions and security restrictions, including Lockdown, apply to adding and using custom MCP servers.
+- **Add an MCP server as a plugin:**
   1. Go to [ChatGPT Plugins](https://chatgpt.com/plugins).
-  2. Select the plus button, then **Create custom MCP server**.
+  2. Select the plus button, then **Add custom MCP server**.
   3. Enter a name and, optionally, a description. Under **Connection**, enter your **Server URL**, or select **Tunnel** for a [Secure MCP Tunnel](https://developers.openai.com/api/docs/guides/secure-mcp-tunnels).
   4. Configure authentication for your server.
   5. Review the risk warning and select **I understand and want to continue**.

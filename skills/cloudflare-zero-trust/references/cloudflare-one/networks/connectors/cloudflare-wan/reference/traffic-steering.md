@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/networks/connectors/clou
 
 # Traffic steering
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## Cloudflare Virtual Network routing table
 
@@ -23,7 +23,7 @@ The Cloudflare Virtual Network is a virtual network overlay, private to your acc
 - Magic Transit delivery for [Denial of Service (DoS)](https://developers.cloudflare.com/ddos-protection/) and [Cloudflare Network Firewall](https://developers.cloudflare.com/cloudflare-network-firewall/) filtered Internet traffic, from the entry data center where the traffic ingressed, to your publicly addressed edge/border network.
 - Cloudflare WAN packet transport between IPsec/GRE tunnels, interconnects, [Cloudflare Load Balancer](https://developers.cloudflare.com/load-balancing/), and [Zero Trust](https://developers.cloudflare.com/cloudflare-one/) connections such as [Cloudflare One Client](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/), [Remote Browser Isolation](https://developers.cloudflare.com/cloudflare-one/remote-browser-isolation/), [Access](https://developers.cloudflare.com/cloudflare-one/access-controls/policies/), and [Gateway](https://developers.cloudflare.com/cloudflare-one/traffic-policies/).
 
-The Cloudflare Virtual Network supports routing the Cloudflare WAN traffic through anycast tunnels using [GRE and Internet Protocol Security (IPsec)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/) or [CNI with Dataplane v2](https://developers.cloudflare.com/network-interconnect/). You can add entries to the Cloudflare Virtual Network routing table through static route configuration or through routes learned through BGP peering (beta). Traffic can also be routed automatically according to tracked flow state.
+The Cloudflare Virtual Network supports routing the Cloudflare WAN traffic through anycast tunnels using [GRE and Internet Protocol Security (IPsec)](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/gre-ipsec-tunnels/) or [CNI with Dataplane v2](https://developers.cloudflare.com/network-interconnect/). You can add entries to the Cloudflare Virtual Network routing table through static route configuration or through routes learned through BGP peering. Traffic can also be routed automatically according to tracked flow state.
 
 Note
 
@@ -203,7 +203,7 @@ The following features require Unified Routing.
 | Feature | Availability with Unified Routing |
 | --- | --- |
 | [Automatic Return Routing](#automatic-return-routing) | Generally available for Internet return traffic. Routing between WAN connections is not available. |
-| [BGP over IPsec and GRE](#release-status) | Beta and available to all Unified Routing accounts. |
+| [BGP over IPsec and GRE](#release-status) | Generally available. |
 | [Cloudflare source IPs](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/configuration/how-to/configure-cloudflare-source-ips/) | Generally available. |
 | [Custom Cloudflare One Client device subnets](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/device-ips/) with Cloudflare WAN | Generally available. |
 | [Cloudflare Mesh](https://developers.cloudflare.com/mesh/) and Cloudflare WAN interoperability | Generally available. |
@@ -489,10 +489,7 @@ For more on Cloudflare WAN tunnel weights, contact your Cloudflare customer serv
 
 ## BGP information
 
-Using BGP peering with your Cloudflare One or Magic Transit network routing table allows you to:
-
-- Automate the process of adding or removing networks and subnets.
-- Take advantage of failure detection and session recovery features.
+Using BGP peering with your Cloudflare One or Magic Transit network routing table allows you to automate the process of adding or removing networks and subnets. BGP does not replace tunnel health checks. Refer to [Tunnel health checks](#tunnel-health-checks).
 
 With this functionality, you can:
 
@@ -506,8 +503,8 @@ The following table outlines the current availability and recommended use cases 
 
 | Feature | Release stage | Recommended use | Prerequisites |
 | --- | --- | --- | --- |
-| **BGP over CNI** | Closed Beta | Not available to new customers — contact your account team | Cloudflare Network Interconnect (CNI) v2 |
-| **BGP over Anycast IPsec/GRE** | Open Beta | Non-production workloads | Available to all [Unified Routing](#unified-routing) accounts; no enablement required |
+| **BGP over Anycast IPsec/GRE** | Generally available | Production workloads | Available to all [Unified Routing](#unified-routing) accounts; no enablement required |
+| **BGP over CNI** | Closed beta | Not available to new customers — contact your account team | Cloudflare Network Interconnect (CNI) v2 |
 
 ### BGP architecture
 
@@ -573,7 +570,7 @@ Cloudflare uses the following timers, which are not configurable:
 | --- | --- |
 | **Hold timer** | 240 seconds<br> *(To establish a session, Cloudflare compares its hold timer and the peer's hold timer, and uses the smaller of the two values to establish the BGP session.)* |
 | **Keepalive timer** | One third of the hold timer. |
-| **Graceful restart** | 120 seconds (currently, only supported on CNI) |
+| **Graceful restart** | Helper mode only. Cloudflare advertises a restart time of 120 seconds and honors a peer restart time of up to 90 seconds. |
 
 - **Hold timer**: Specifies the maximum amount of time that a BGP peer waits to receive a KEEPALIVE, UPDATE, or NOTIFICATION message before declaring the BGP session down. Cloudflare uses the smaller of this default hold timer and that received from the peer in the OPEN message.
 - **Keepalive timer**: BGP systems exchange keepalive messages to determine whether the peer router is reachable. If keepalive messages are not received within the hold timer, the session is assumed to be down, indicating that the peer is no longer reachable at the BGP protocol level.
@@ -583,14 +580,15 @@ Cloudflare uses the following timers, which are not configurable:
 
 BGP multipath is supported. If BGP learns the same prefix on two different interconnects, Cloudflare distributes traffic destined for that prefix across each interconnect according to the usual ECMP behavior.
 
-BGP Graceful Restart is supported in a passive (helper/aware) mode. Cloudflare maintains forwarding state for a restarting neighbor.
+Cloudflare supports BGP Graceful Restart ([RFC 4724 ↗︎](https://datatracker.ietf.org/doc/html/rfc4724)) in helper mode only. Cloudflare never acts as the restarting speaker, because your device always initiates the BGP session.
 
-BGP support currently has the following limitations:
+If your device negotiates graceful restart and then restarts, Cloudflare keeps its routes as stale while it reconnects. Cloudflare removes stale routes after your device sends End-of-RIB, or after 90 seconds.
+
+BGP support has the following limitations:
 
 - The Cloudflare account ASN and your device ASN must be different. Only eBGP is supported.
 - Cloudflare always injects routes with a priority of `100`.
 - Bidirectional Forwarding Detection (BFD) is not supported.
-- If you are using BGP with IPsec/CNI (beta), you must set the ASN on the Cloudflare side to `13335`. Private ASNs are not yet supported.
 
 ### Tunnel health checks
 
@@ -611,5 +609,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/og.png?v=da526e1eaac8e02d","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/#page","headline":"Traffic steering","description":"Cloudflare WAN uses a static configuration to route traffic through anycast tunnels using the Generic Routing Encapsulation (GRE) and Internet Protocol Security (IPsec) protocols from Cloudflare's global network to your network.","url":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-wan/reference/traffic-steering/og.png?v=da526e1eaac8e02d","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

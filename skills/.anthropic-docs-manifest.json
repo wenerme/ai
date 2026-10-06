@@ -914,20 +914,20 @@
   "anthropic-docs/manage-claude/inference-hooks.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks",
     "skill": "anthropic-docs",
-    "size": 11571,
-    "updatedAt": "2026-10-05T19:17:44.142Z"
+    "size": 12353,
+    "updatedAt": "2026-10-06T06:06:33.137Z"
   },
   "anthropic-docs/manage-claude/inference-hooks-configuration.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks-configuration",
     "skill": "anthropic-docs",
-    "size": 17947,
-    "updatedAt": "2026-10-05T19:17:44.513Z"
+    "size": 18673,
+    "updatedAt": "2026-10-06T06:06:33.578Z"
   },
   "anthropic-docs/manage-claude/inference-hooks-endpoint.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/inference-hooks-endpoint",
     "skill": "anthropic-docs",
-    "size": 42262,
-    "updatedAt": "2026-09-15T04:37:42.484Z"
+    "size": 50357,
+    "updatedAt": "2026-10-06T06:06:39.550Z"
   },
   "anthropic-docs/manage-claude/compliance-api.md": {
     "url": "https://platform.claude.com/docs/en/manage-claude/compliance-api",
@@ -1130,20 +1130,20 @@
   "anthropic-docs/models/fable-5-1/overview.md": {
     "url": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
     "skill": "anthropic-docs",
-    "size": 14602,
-    "updatedAt": "2026-09-28T18:09:07.531Z"
+    "size": 14606,
+    "updatedAt": "2026-10-06T06:06:52.103Z"
   },
   "anthropic-docs/models/fable-5-1/whats-new-fable-5-1.md": {
     "url": "https://platform.claude.com/docs/en/models/fable-5-1/whats-new-fable-5-1",
     "skill": "anthropic-docs",
-    "size": 37935,
-    "updatedAt": "2026-09-25T04:39:08.518Z"
+    "size": 37939,
+    "updatedAt": "2026-10-06T06:06:52.443Z"
   },
   "anthropic-docs/models/fable-5-1/migration-guide.md": {
     "url": "https://platform.claude.com/docs/en/models/fable-5-1/migration-guide",
     "skill": "anthropic-docs",
-    "size": 93245,
-    "updatedAt": "2026-10-02T05:21:17.945Z"
+    "size": 92835,
+    "updatedAt": "2026-10-06T06:06:52.844Z"
   },
   "anthropic-docs/models/opus-5-5/overview.md": {
     "url": "https://platform.claude.com/docs/en/models/opus-5-5/overview",
@@ -1160,8 +1160,8 @@
   "anthropic-docs/models/opus-5-5/migration-guide.md": {
     "url": "https://platform.claude.com/docs/en/models/opus-5-5/migration-guide",
     "skill": "anthropic-docs",
-    "size": 91107,
-    "updatedAt": "2026-10-02T05:21:19.088Z"
+    "size": 91584,
+    "updatedAt": "2026-10-06T06:06:54.108Z"
   },
   "anthropic-docs/models/sonnet-5-5/overview.md": {
     "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview",
@@ -1178,8 +1178,8 @@
   "anthropic-docs/models/sonnet-5-5/migration-guide.md": {
     "url": "https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide",
     "skill": "anthropic-docs",
-    "size": 55632,
-    "updatedAt": "2026-10-01T05:33:01.425Z"
+    "size": 55821,
+    "updatedAt": "2026-10-06T06:06:55.447Z"
   },
   "anthropic-docs/models/haiku-4-5/overview.md": {
     "url": "https://platform.claude.com/docs/en/models/haiku-4-5/overview",
@@ -1208,8 +1208,8 @@
   "anthropic-docs/models/fable-5/overview.md": {
     "url": "https://platform.claude.com/docs/en/models/fable-5/overview",
     "skill": "anthropic-docs",
-    "size": 12544,
-    "updatedAt": "2026-09-28T18:09:12.771Z"
+    "size": 12444,
+    "updatedAt": "2026-10-06T06:06:57.390Z"
   },
   "anthropic-docs/models/opus-5/overview.md": {
     "url": "https://platform.claude.com/docs/en/models/opus-5/overview",
@@ -2246,8 +2246,8 @@
   "anthropic-api/api/beta.md": {
     "url": "https://platform.claude.com/docs/en/api/beta",
     "skill": "anthropic-api",
-    "size": 3095980,
-    "updatedAt": "2026-10-05T19:19:11.463Z"
+    "size": 3096848,
+    "updatedAt": "2026-10-06T06:08:59.026Z"
   },
   "anthropic-api/api/beta/models.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/models",
@@ -3128,8 +3128,8 @@
   "anthropic-api/api/beta/organization.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/organization",
     "skill": "anthropic-api",
-    "size": 704698,
-    "updatedAt": "2026-10-05T19:20:10.533Z"
+    "size": 705566,
+    "updatedAt": "2026-10-06T06:10:11.313Z"
   },
   "anthropic-api/api/beta/organization/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/organization/retrieve",
@@ -3956,20 +3956,20 @@
   "anthropic-api/api/beta/organization/rbac_roles.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/organization/rbac_roles",
     "skill": "anthropic-api",
-    "size": 8519,
-    "updatedAt": "2026-10-02T05:24:25.250Z"
+    "size": 9783,
+    "updatedAt": "2026-10-06T06:11:12.069Z"
   },
   "anthropic-api/api/beta/organization/rbac_roles/list.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/organization/rbac_roles/list",
     "skill": "anthropic-api",
-    "size": 1780,
-    "updatedAt": "2026-09-15T04:40:12.288Z"
+    "size": 2216,
+    "updatedAt": "2026-10-06T06:11:12.514Z"
   },
   "anthropic-api/api/beta/organization/rbac_roles/retrieve.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/organization/rbac_roles/retrieve",
     "skill": "anthropic-api",
-    "size": 1261,
-    "updatedAt": "2026-09-22T04:37:26.341Z"
+    "size": 1693,
+    "updatedAt": "2026-10-06T06:11:12.862Z"
   },
   "anthropic-api/api/beta/organization/rbac_roles/permissions.md": {
     "url": "https://platform.claude.com/docs/en/api/beta/organization/rbac_roles/permissions",
@@ -4508,13 +4508,13 @@
   "anthropic-docs/models/fable-5/introducing-claude-fable-5-and-claude-mythos-5.md": {
     "url": "https://platform.claude.com/docs/en/models/fable-5/introducing-claude-fable-5-and-claude-mythos-5",
     "skill": "anthropic-docs",
-    "size": 10324,
-    "updatedAt": "2026-09-25T04:41:49.274Z"
+    "size": 10048,
+    "updatedAt": "2026-10-06T06:11:56.456Z"
   },
   "anthropic-docs/models/fable-5/migration-guide.md": {
     "url": "https://platform.claude.com/docs/en/models/fable-5/migration-guide",
     "skill": "anthropic-docs",
-    "size": 39898,
-    "updatedAt": "2026-09-25T04:41:49.739Z"
+    "size": 39362,
+    "updatedAt": "2026-10-06T06:11:56.897Z"
   }
 }

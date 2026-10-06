@@ -206,7 +206,7 @@ over cost, latency, and intelligence. For more details, see the
                 Model: interactions.Model("gemini-3.8-flash"),
                 Input: interactions.NewInteractionsInput("How does AI work?"),
                 GenerationConfig: &interactions.GenerationConfig{
-                    ThinkingLevel: interactions.ThinkingLevelMinimal.ToPointer(),
+                    ThinkingLevel: interactions.ThinkingLevelLow.ToPointer(),
                 },
             }),
         })

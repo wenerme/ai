@@ -479,7 +479,7 @@ If you connect your custom remote MCP server through a plugin, users in your wor
 
 ### Connect in ChatGPT
 
-1. Go to [ChatGPT Plugins](https://chatgpt.com/plugins), select the plus button, then **Create custom MCP server**.
+1. Go to [ChatGPT Plugins](https://chatgpt.com/plugins), select the plus button, then **Add custom MCP server**.
 1. Enter your server URL and authentication details. Review the risk warning and select **I understand and want to continue**, then **Create as a plugin**.
 1. Install your plugin and test it by running prompts in chat and deep research.
 

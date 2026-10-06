@@ -12,11 +12,11 @@ image: https://developers.cloudflare.com/realtime/sfu/features/media-transport-a
 
 # WebSocket adapter
 
-Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-The WebSocket adapter connects Realtime SFU media tracks to your WebSocket service. It supports audio in both directions and video egress as JPEG frames. Each adapter is unidirectional.
+The WebSocket adapter connects an SFU media track to your service without requiring it to implement WebRTC. Use it to send or receive audio, or receive video as JPEG frames.
 
-The WebSocket adapter is in beta. Its API may change.
+The WebSocket adapter is generally available. Each adapter connects one SFU track to your service in one direction.
 
 ## Supported media and directions
 
@@ -33,7 +33,9 @@ JPEG egress defaults to 1 frame per second (FPS). Customers with an Enterprise c
 
 ## Prepare your endpoint
 
-The SFU opens a WebSocket connection to the `endpoint` URL you supply. Use a publicly reachable `wss://` endpoint that accepts WebSocket upgrades and the binary [packet format](#media-formats). A localhost endpoint is not reachable from the SFU, and the adapter does not follow HTTP redirects.
+Your service hosts the WebSocket endpoint. The SFU connects to it for both ingest and egress.
+
+Set `endpoint` to a publicly reachable `wss://` URL that accepts WebSocket upgrades and the binary [packet format](#media-formats). A localhost endpoint is not reachable from the SFU, and the adapter does not follow HTTP redirects.
 
 The SFU API App Secret belongs on your backend. Authentication for your WebSocket service is a separate boundary. Adapter requests do not support custom WebSocket headers. A scoped token in the endpoint URL's path or query string is one way for your service to authenticate the connection.
 
@@ -75,20 +77,22 @@ POST https://rtc.live.cloudflare.com/v1/apps/{appId}/adapters/websocket/new
 
 Include `Authorization: Bearer <APP_SECRET>` and `Content-Type: application/json`. Send one to four entries in `tracks`. The [OpenAPI schema](https://developers.cloudflare.com/realtime/static/realtime-api-2024-05-21.yaml) describes the complete contract.
 
+Save the `adapterId` from every successful item so your backend can close it later.
+
 ### Send audio into the SFU
 
 For audio ingest, use `location: "local"` to create a publication from your WebSocket service:
 
 ```json
 {
-  "tracks": [
-    {
-      "location": "local",
-      "trackName": "generated-speech",
-      "endpoint": "wss://example.com/audio-source",
-      "inputCodec": "pcm"
-    }
-  ]
+	"tracks": [
+		{
+			"location": "local",
+			"trackName": "generated-speech",
+			"endpoint": "wss://example.com/audio-source",
+			"inputCodec": "pcm"
+		}
+	]
 }
 ```
 
@@ -107,14 +111,14 @@ A successful item includes the new session ID:
 
 ```json
 {
-  "tracks": [
-    {
-      "trackName": "generated-speech",
-      "adapterId": "<ADAPTER_ID>",
-      "sessionId": "<PUBLISHER_SESSION_ID>",
-      "endpoint": "wss://example.com/audio-source"
-    }
-  ]
+	"tracks": [
+		{
+			"trackName": "generated-speech",
+			"adapterId": "<ADAPTER_ID>",
+			"sessionId": "<PUBLISHER_SESSION_ID>",
+			"endpoint": "wss://example.com/audio-source"
+		}
+	]
 }
 ```
 
@@ -128,15 +132,15 @@ For media egress, use `location: "remote"` to send that publication to your serv
 
 ```json
 {
-  "tracks": [
-    {
-      "location": "remote",
-      "sessionId": "<PUBLISHER_SESSION_ID>",
-      "trackName": "microphone",
-      "endpoint": "wss://example.com/audio-consumer",
-      "outputCodec": "pcm"
-    }
-  ]
+	"tracks": [
+		{
+			"location": "remote",
+			"sessionId": "<PUBLISHER_SESSION_ID>",
+			"trackName": "microphone",
+			"endpoint": "wss://example.com/audio-consumer",
+			"outputCodec": "pcm"
+		}
+	]
 }
 ```
 
@@ -156,17 +160,15 @@ A successful media-egress item contains the adapter ID, track name, and endpoint
 
 ```json
 {
-  "tracks": [
-    {
-      "trackName": "microphone",
-      "adapterId": "<ADAPTER_ID>",
-      "endpoint": "wss://example.com/audio-consumer"
-    }
-  ]
+	"tracks": [
+		{
+			"trackName": "microphone",
+			"adapterId": "<ADAPTER_ID>",
+			"endpoint": "wss://example.com/audio-consumer"
+		}
+	]
 }
 ```
-
-Retain the adapter ID in your application's resource state so you can close it later.
 
 ## Partial batch results
 
@@ -174,18 +176,18 @@ Creation and closure return results for individual request entries. An HTTP `200
 
 ```json
 {
-  "tracks": [
-    {
-      "trackName": "microphone",
-      "adapterId": "<ADAPTER_ID>",
-      "endpoint": "wss://example.com/audio-consumer"
-    },
-    {
-      "trackName": "camera",
-      "errorCode": "websocket_handshake_failed",
-      "errorDescription": "The handshake with the provided endpoint failed."
-    }
-  ]
+	"tracks": [
+		{
+			"trackName": "microphone",
+			"adapterId": "<ADAPTER_ID>",
+			"endpoint": "wss://example.com/audio-consumer"
+		},
+		{
+			"trackName": "camera",
+			"errorCode": "websocket_handshake_failed",
+			"errorDescription": "The handshake with the provided endpoint failed."
+		}
+	]
 }
 ```
 
@@ -195,7 +197,11 @@ If every attempted item fails, the outer response is HTTP `503`. Item errors con
 
 ## Close adapter
 
-To close one or more adapters, your backend sends:
+Close is idempotent. You can safely repeat a close request, including for an adapter that is already closed.
+
+Match each result to its requested `adapterId`. Retain failed or unreported items for retry with bounded backoff. The [partial batch response rules](#partial-batch-results) apply.
+
+Send one to four adapter IDs from your backend:
 
 ```txt
 POST https://rtc.live.cloudflare.com/v1/apps/{appId}/adapters/websocket/close
@@ -203,42 +209,44 @@ POST https://rtc.live.cloudflare.com/v1/apps/{appId}/adapters/websocket/close
 
 ```json
 {
-  "tracks": [{ "adapterId": "<ADAPTER_ID>" }]
+	"tracks": [
+		{ "adapterId": "<ADAPTER_ID_1>" },
+		{ "adapterId": "<ADAPTER_ID_2>" }
+	]
 }
 ```
 
-A successful item includes an operational byte count:
+Both closes in this HTTP `200` response succeeded. Neither item contains an `errorCode`:
 
 ```json
 {
-  "tracks": [
-    {
-      "adapterId": "<ADAPTER_ID>",
-      "bytesProcessed": 83492
-    }
-  ]
+	"tracks": [
+		{
+			"adapterId": "<ADAPTER_ID_1>",
+			"bytesProcessed": 83492
+		},
+		{
+			"adapterId": "<ADAPTER_ID_2>"
+		}
+	]
 }
 ```
 
-An adapter that is absent or already closed can return an item error with `errorCode: "adapter_not_found"`. If all close items fail, including already-absent items, the outer response can be HTTP `503`. Repeated close is not guaranteed to return HTTP `200`.
-
-For cleanup of an adapter your application owns, an explicit `adapter_not_found` item establishes that it is already absent. Handle that item separately from other failures. Keep unsuccessful items for retry; do not treat every `503` response as successful cleanup.
-
-`bytesProcessed` is an adapter statistic, not the authoritative billed-usage total. Refer to [usage and pricing](#usage-and-pricing).
+`bytesProcessed` is omitted when unavailable, rather than reported as zero. It is an operational statistic, not the authoritative billed-usage total. Refer to [usage and pricing](#usage-and-pricing).
 
 ## Automatic reconnection for streaming
 
-For WebRTC-to-WebSocket streaming, the SFU automatically retries the same endpoint for up to five seconds after a brief disconnect or endpoint restart. No additional API setting is required.
+For media egress (`location: "remote"`), the SFU retries the same endpoint for up to 15 seconds after a disconnect. No additional API setting is required.
 
-If the endpoint stays unavailable beyond that window, the adapter closes. Your application must create a new adapter to resume streaming.
+If the reconnect window expires, the adapter closes. Create a new adapter to resume streaming.
+
+Audio ingest (`location: "local"`) does not reconnect automatically. Recreate the adapter after a terminal disconnect. Share the returned `sessionId` and track name with authorized subscribers so they can [subscribe to the new publication](https://developers.cloudflare.com/realtime/sfu/get-started/connection-patterns/#receive-a-published-track).
 
 ### Media buffering during reconnect
 
 Audio uses a short, bounded backlog. Older frames can be dropped when that backlog fills. Video retains only the latest available JPEG frame, replacing older buffered frames.
 
 Recovery does not guarantee gapless or exactly-once delivery. It retries the same endpoint and does not provide failover to another URL.
-
-Automatic reconnect applies to stream mode only. Ingest adapters do not automatically reconnect; application logic must recreate them after a terminal disconnect.
 
 ## Troubleshooting
 
@@ -265,5 +273,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/#page","headline":"WebSocket adapter","description":"Create and close WebSocket adapters for PCM audio and JPEG video, with endpoint authentication, reconnect, and error handling.","url":"https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/og.png?v=dff11c94581d8806","dateModified":"2026-09-22","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/#page","headline":"WebSocket adapter","description":"Create and close WebSocket adapters for PCM audio and JPEG video, with endpoint authentication, reconnect, and error handling.","url":"https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/","inLanguage":"en","image":"https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/og.png?v=dff11c94581d8806","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

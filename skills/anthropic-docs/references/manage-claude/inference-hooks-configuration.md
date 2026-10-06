@@ -88,12 +88,14 @@ There are three enforcement states: **off** (**Enforce verdicts** is off: your A
     To evaluate verdicts against live traffic without blocking anyone at first, set **Mode** to **Shadow mode** (step 6) before turning on enforcement; see [Shadow mode](https://platform.claude.com/docs/en/manage-claude/inference-hooks-configuration#shadow-mode).
 
     Turn on **Enforce verdicts** to gate Claude on your AI security server's verdict for every governed prompt, then confirm in the dialog, which restates your failure handling choice. Allow about a minute for the change to reach every Anthropic server; requests already in flight finish under the old setting. Turning it off stops prompts from being sent to your AI security server, again within about a minute; your configuration is kept.
+
+    Turn on **Validate tool calls**, below **Enforce verdicts**, and confirm in the dialog, to also send the tool calls in each of Claude's responses to your AI security server and wait for its verdict before they run; see [The tool call frame](https://platform.claude.com/docs/en/manage-claude/inference-hooks-endpoint#the-tool-call-frame). It is off by default. It has no effect while **Enforce verdicts** is off, and a change to it takes about a minute to reach every Anthropic server, as with **Enforce verdicts**. Confirm that your AI security server handles tool call frames before you turn it on.
   </Step>
 </Steps>
 
 ## Shadow mode
 
-Shadow mode runs your hook against live traffic without blocking anything. Your AI security server receives governed prompts and returns verdicts exactly as it would when enforcing, but nothing is blocked: every request proceeds to the model, even when your server denies it or can't be reached, and the end user sees nothing. Use it to tune your policy against your organization's real traffic before you start enforcing.
+Shadow mode runs your hook against live traffic without blocking anything. Your AI security server receives governed prompts and returns verdicts exactly as it would when enforcing, but nothing is blocked: every request proceeds to the model, even when your server denies it or can't be reached, and the end user sees nothing. Use it to tune your policy against your organization's real traffic before you start enforcing. With **Validate tool calls** on, your server also receives tool call frames in shadow mode, and no tool call is blocked.
 
 To use shadow mode, set **Mode** to **Shadow mode** under **Failure handling**, then turn on **Enforce verdicts** so prompts flow to your AI security server. While it is active, the settings page shows a **Shadow mode — not blocking** badge. To leave shadow mode, set **Mode** back to **Allow the request** or **Block the request**; verdicts are enforced again once enforcement is on.
 

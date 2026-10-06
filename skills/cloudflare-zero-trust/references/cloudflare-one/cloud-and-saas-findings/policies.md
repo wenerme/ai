@@ -34,6 +34,15 @@ When CASB detects a finding instance, it checks whether the instance matches a c
 
 A policy can run a remediation action, send a webhook, or both.
 
+## Find the IDs for a policy
+
+When you create a policy with the API or Terraform, you reference other objects by ID:
+
+- **Finding type ID**: Use the [List finding types](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/finding_types/methods/list/) endpoint.
+- **Remediation type ID**: Use the [List remediation types](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/finding_types/subresources/remediation_types/methods/list/) endpoint for the finding type. Only [some finding types](#run-remediations) support remediation.
+- **Webhook ID**: Use the ID of a [configured webhook](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/#create-a-webhook). In Terraform, reference the `id` of a `cloudflare_zero_trust_casb_webhook` resource or data source.
+- **Integration IDs**: Required only when the policy does not apply to all integrations. Use the [List integrations](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/integrations/methods/list/) endpoint.
+
 ## Create a policy
 
 1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Policies**.
@@ -47,6 +56,84 @@ A policy can run a remediation action, send a webhook, or both.
    - **Send webhooks** to send a notification to one or more webhook destinations.
 8. Under **Status**, turn on **Enable policy**.
 9. Select **Create policy**.
+
+Make a `POST` request to the [Create a policy](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/policies/methods/create/) endpoint. A policy must include at least one action, and can include at most one remediation:
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zero Trust Write</code>
+
+</details>
+
+*Create a new policy configurationbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/data-security/posture/policies" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"display_name": "Auto-remediate public files",
+		"description": "Remove public access and notify the SIEM",
+		"enabled": true,
+		"applies_to_all_integrations": true,
+		"finding_type_id": "<FINDING_TYPE_ID>",
+		"actions": {
+				"remediation_types": [
+						{
+								"remediation_type_id": "<REMEDIATION_TYPE_ID>"
+						}
+				],
+				"webhook_configs": [
+						{
+								"webhook_config_id": "<WEBHOOK_ID>"
+						}
+				]
+		}
+	}'
+```
+
+To limit the policy to specific integrations, set `applies_to_all_integrations` to `false` and provide an `integration_ids` array of [integration IDs](#find-the-ids-for-a-policy).
+
+1. Add the following permission to your [`cloudflare_api_token` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/api_token):
+   - `Zero Trust Write`
+2. Create a policy using the [`cloudflare_zero_trust_casb_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/zero_trust_casb_policy) resource. The following example remediates matching findings and sends them to the `siem` webhook from [Create a webhook](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/webhooks/#create-a-webhook). If you manage the webhook outside Terraform, use its ID or the `cloudflare_zero_trust_casb_webhook` data source instead:
+
+   ```tf
+   resource "cloudflare_zero_trust_casb_policy" "public_files" {
+     account_id                  = var.cloudflare_account_id
+     display_name                = "Auto-remediate public files"
+     description                 = "Remove public access and notify the SIEM"
+     enabled                     = true
+     applies_to_all_integrations = true
+     finding_type_id             = "<FINDING_TYPE_ID>"
+
+     actions = {
+       remediation_types = [{
+         remediation_type_id = "<REMEDIATION_TYPE_ID>"
+       }]
+       webhook_configs = [{
+         webhook_config_id = cloudflare_zero_trust_casb_webhook.siem.id
+       }]
+     }
+   }
+   ```
+
+   To limit the policy to specific integrations, set `applies_to_all_integrations = false` and list the [integration IDs](#find-the-ids-for-a-policy):
+
+   ```tf
+     applies_to_all_integrations = false
+     integration_ids             = ["<INTEGRATION_ID_1>", "<INTEGRATION_ID_2>"]
+   ```
+
+   Terraform reports an error at `terraform plan` if `applies_to_all_integrations` is `false` and `integration_ids` is empty.
 
 Policies will be in effect for all newly discovered finding instances going forward. New or updated policies are not applied retroactively to existing finding instances.
 
@@ -114,6 +201,103 @@ When a policy sends a webhook, the payload uses the same format as a webhook sen
 To turn a policy on or off, use the **Enable policy** toggle under **Status**. Each policy displays its status as **Enabled** or **Disabled** in the policy list. A disabled policy stops matching new finding instances until you turn it on again.
 
 To delete a policy, open the policy and select **Delete**.
+
+To update a policy, make a `PUT` request to the [Update a policy](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/policies/methods/update/) endpoint. Include `display_name`, `enabled`, `applies_to_all_integrations`, and `actions`. The request replaces the existing policy, so include every action you want to keep. To turn the policy off, set `enabled` to `false`:
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zero Trust Write</code>
+
+</details>
+
+*Update a policy configurationbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/data-security/posture/policies/$POLICY_ID" \
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"display_name": "Auto-remediate public files",
+		"enabled": false,
+		"applies_to_all_integrations": true,
+		"actions": {
+				"webhook_configs": [
+						{
+								"webhook_config_id": "<WEBHOOK_ID>"
+						}
+				]
+		}
+	}'
+```
+
+You cannot change a policy's finding type. To use a different finding type, create a new policy.
+
+To delete a policy, make a `DELETE` request to the [Delete a policy](https://developers.cloudflare.com/api/resources/zero_trust/subresources/casb/subresources/posture/subresources/policies/methods/delete/) endpoint:
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Zero Trust Write</code>
+
+</details>
+
+*Delete a policy configurationbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/data-security/posture/policies/$POLICY_ID" \
+	--request DELETE \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+To update a policy, change its attributes and run `terraform apply`. To turn the policy off, set `enabled = false`.
+
+Changing `finding_type_id` replaces the policy: Terraform deletes the existing policy and creates a new one.
+
+To delete a policy, remove the resource from your configuration and run `terraform apply`, or target the resource for destruction:
+
+```sh
+terraform destroy -target=cloudflare_zero_trust_casb_policy.public_files
+```
+
+## Manage existing policies with Terraform
+
+### Import a policy
+
+To bring a policy created in the dashboard or API under Terraform management, import it using your account ID and the policy ID:
+
+```sh
+terraform import cloudflare_zero_trust_casb_policy.public_files '<ACCOUNT_ID>/<POLICY_ID>'
+```
+
+### Look up policies
+
+Use the [`cloudflare_zero_trust_casb_policy` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zero_trust_casb_policy) data source to read a single policy, or [`cloudflare_zero_trust_casb_policies` ↗︎](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zero_trust_casb_policies) to list all policies in an account:
+
+```tf
+data "cloudflare_zero_trust_casb_policy" "public_files" {
+  account_id = var.cloudflare_account_id
+  policy_id  = "<POLICY_ID>"
+}
+
+data "cloudflare_zero_trust_casb_policies" "all" {
+  account_id = var.cloudflare_account_id
+}
+```
 
 ## Logs
 

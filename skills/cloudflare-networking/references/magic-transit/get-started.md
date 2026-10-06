@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/magic-transit/get-started/og.png?v=3c59
 
 # Get started
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/magic-transit/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Before you can begin using Magic Transit, complete the following onboarding steps. Cloudflare can significantly accelerate this timeline during active-attack scenarios.
 
@@ -27,7 +27,7 @@ To use Magic Transit, you need to own a publicly routable IP address block with 
 To protect your network with a Cloudflare IP address, contact your account manager. After you receive your IP address:
 
 - [Create a tunnel](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/).
-- [Set up static routes](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-static-routes) or [BGP peering (beta)](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes).
+- [Set up static routes](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-static-routes) or [BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes).
 - [Configure health checks](https://developers.cloudflare.com/magic-transit/network-health/run-endpoint-health-checks/).
 - Confirm you properly configured [tunnel](https://developers.cloudflare.com/magic-transit/network-health/update-tunnel-health-checks-frequency/) and endpoint health checks.
 - Update your infrastructure at your own pace to use the allocated Cloudflare IPs.
@@ -167,7 +167,7 @@ The following table lists several commonly used router vendors with links to MSS
 
 [Configure the tunnels](https://developers.cloudflare.com/magic-transit/how-to/configure-tunnel-endpoints/) on both the Cloudflare side and your router side to connect to your origin infrastructure.
 
-## Configure static routes or BGP peering (beta)
+## Configure static routes or BGP peering
 
 Configure [static routes](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-static-routes) or [BGP peering](https://developers.cloudflare.com/magic-transit/how-to/configure-routes/#configure-bgp-routes) to route traffic from Cloudflare's global network to your locations.
 
@@ -216,5 +216,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/get-started/#page","headline":"Get started","description":"Set up Magic Transit to protect your network infrastructure.","url":"https://developers.cloudflare.com/magic-transit/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/magic-transit/get-started/og.png?v=3c5999d1a75ecd1d","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/magic-transit/get-started/#page","headline":"Get started","description":"Set up Magic Transit to protect your network infrastructure.","url":"https://developers.cloudflare.com/magic-transit/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/magic-transit/get-started/og.png?v=3c5999d1a75ecd1d","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["IPsec"]}
 ```

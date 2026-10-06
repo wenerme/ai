@@ -16,6 +16,18 @@ Last updated Sep 22, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/realtime/sfu/platform/changelog/index.xml)
 
+## 2026-09-30
+
+**Realtime SFU WebSocket adapter is generally available**
+
+The WebSocket adapter for Cloudflare's Realtime SFU is now generally available. Any server that accepts WebSockets, such as a Durable Object, can receive live call audio as PCM samples and video as JPEG frames without implementing a WebRTC client. You can also send PCM audio into the SFU for WebRTC clients to hear.
+
+Media formats and adapter creation requests stay the same. For WebRTC-to-WebSocket streaming, the SFU now retries the same endpoint for up to 15 seconds instead of 5, with no additional API setting.
+
+Closing an adapter is now idempotent and succeeds even if the adapter has already closed.
+
+Refer to the [GA announcement](https://developers.cloudflare.com/changelog/post/2026-09-30-websocket-adapter-ga/) and [WebSocket adapter guide](https://developers.cloudflare.com/realtime/sfu/features/media-transport-adapters/websocket-adapter/).
+
 ## 2026-08-13
 
 **DataChannels reliability and ordering (ordered, maxRetransmits, maxPacketLifeTime)**

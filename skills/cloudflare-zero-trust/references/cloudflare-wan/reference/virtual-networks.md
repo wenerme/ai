@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networ
 
 # Virtual networks
 
-Last updated Aug 24, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 A virtual network is a private routing domain within your Cloudflare account. It defines which private resources are reachable from the Cloudflare network and keeps traffic separated between different environments, partners, or applications.
 
@@ -89,7 +89,7 @@ The same CIDR (`10.0.0.0/8`) can exist in each virtual network because they are 
 
 Each virtual network maintains its own routing table. Routes added to one virtual network do not appear in another virtual network routing table. However, if traffic does not match a route in the selected virtual network, Cloudflare may fall back to the default virtual network routing table for WAN routes.
 
-You can add entries to a virtual network routing table through static route configuration or routes learned from BGP peering (beta). Static routes are available for all connection types. BGP peering is currently available over CNI and IPsec/GRE tunnels (beta). For more information on how routes are prioritized within a virtual network, refer to [Traffic steering](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/).
+You can add entries to a virtual network routing table through static route configuration or routes learned from BGP peering. Static routes are available for all connection types. BGP peering is available over IPsec/GRE tunnels and CNI (closed beta). For more information on how routes are prioritized within a virtual network, refer to [Traffic steering](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/).
 
 ## Virtual networks across Cloudflare
 
@@ -119,7 +119,7 @@ If you are familiar with enterprise networking concepts, a virtual network is an
 - Each virtual network maintains its own routing table.
 - Routes are isolated between virtual networks.
 - The same IP prefix can exist in multiple virtual networks without conflict.
-- BGP routes learned on a connection populate only that connection virtual network routing table. BGP peering is currently supported for IPsec/GRE tunnels (beta) and CNI (beta).
+- BGP routes learned on a connection populate only that connection virtual network routing table. BGP peering is supported for IPsec/GRE tunnels and CNI (closed beta).
 
 If you are familiar with cloud networking concepts, a virtual network is analogous to a VPC (Virtual Private Cloud).
 
@@ -146,5 +146,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/#page","headline":"Virtual networks","description":"Create virtual networks to segment WAN traffic.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/og.png?v=70f4d22487c1f08a","dateModified":"2026-08-24","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/#page","headline":"Virtual networks","description":"Create virtual networks to segment WAN traffic.","url":"https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/reference/virtual-networks/og.png?v=70f4d22487c1f08a","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -35,6 +35,9 @@ The agent to interact with.
   Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
 agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
 background boolean (optional) Input only. Whether to run the model interaction in the background.
+continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
+INCOMPLETE and decoding can be resumed. Input: pass the latest token
+back unchanged in CreateInteraction to continue decoding.
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
 specifying remote environment sources or a string referencing an existing
 environment ID.
@@ -161,6 +164,9 @@ user_metadata object (optional) Optional. The user metadata that will be returne
 webhooks.
 ModelInteraction Interaction for generating the completion using models.
 background boolean (optional) Input only. Whether to run the model interaction in the background.
+continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
+INCOMPLETE and decoding can be resumed. Input: pass the latest token
+back unchanged in CreateInteraction to continue decoding.
 created string (required) Required. Output only. The time at which the response was created in ISO 8601 format
 (YYYY-MM-DDThh:mm:ssZ).
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
@@ -383,6 +389,15 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-robotics-er-2-preview`
 
   Gemini Robotics Embodied Reasoning 2 Preview
+- `lyria-3.5`
+
+  Our flagship music generation model, optimized for full-length songs with complex structural coherence.
+- `gemini-omni-1.1-flash`
+
+  Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
+- `gemini-omni-flash-preview`
+
+  Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
 the JSON schema specified in this field.
@@ -953,6 +968,9 @@ The agent to interact with.
 
   Use the Antigravity managed agent to perform multi-step tasks that require reasoning, file operations, and tool use.
 agent_config AntigravityAgentConfig or CodeMenderAgentConfig or DeepResearchAgentConfig or DynamicAgentConfig (optional) Configuration parameters for the agent interaction.
+continuation_token string (optional) Opaque token to resume a long decode. Output: set when status is
+INCOMPLETE and decoding can be resumed. Input: pass the latest token
+back unchanged in CreateInteraction to continue decoding.
 created string (optional) Required. Output only. The time at which the response was created in ISO 8601 format
 (YYYY-MM-DDThh:mm:ssZ).
 environment [EnvironmentConfig](https://ai.google.dev/api/interactions-api#Resource:EnvironmentConfig) or string (optional) The environment configuration for the interaction. Can be an object
@@ -1063,6 +1081,15 @@ The model that will complete your prompt.\\n\\nSee \[models\](https://ai.google.
 - `gemini-robotics-er-2-preview`
 
   Gemini Robotics Embodied Reasoning 2 Preview
+- `lyria-3.5`
+
+  Our flagship music generation model, optimized for full-length songs with complex structural coherence.
+- `gemini-omni-1.1-flash`
+
+  Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
+- `gemini-omni-flash-preview`
+
+  Our high-performance multimodal model designed for fast, conversational video generation, editing, and cinematic control.
 previous_interaction_id string (optional) The ID of the previous interaction, if any.
 response_format [ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat) or array ([ResponseFormat](https://ai.google.dev/api/interactions-api#Resource:ResponseFormat)) (optional) Enforces that the generated response is a JSON object that complies with
 the JSON schema specified in this field.
@@ -1976,6 +2003,7 @@ full non-streaming Interaction responses.
 #### Fields
 
 agent string (optional) The agent to interact with.
+continuation_token string (optional) Output only. Opaque token to resume a long decode when status is incomplete.
 created string (optional) Output only. The time at which the response was created in ISO 8601 format.
 id string (optional) Required. Output only. A unique identifier for the interaction completion.
 model string (optional) The model that will complete your prompt.
@@ -2173,6 +2201,7 @@ full non-streaming Interaction responses.
 #### Fields
 
 agent string (optional) The agent to interact with.
+continuation_token string (optional) Output only. Opaque token to resume a long decode when status is incomplete.
 created string (optional) Output only. The time at which the response was created in ISO 8601 format.
 id string (optional) Required. Output only. A unique identifier for the interaction completion.
 model string (optional) The model that will complete your prompt.

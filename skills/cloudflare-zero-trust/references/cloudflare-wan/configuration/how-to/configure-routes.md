@@ -1,5 +1,5 @@
 ---
-description: Cloudflare WAN uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. If you are connected through CNI with Dataplane v2, you also have access to BGP peering (beta). Learn how to configure routing.
+description: Cloudflare WAN uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. You can also use BGP peering to exchange routes dynamically. Learn how to configure routing.
 title: Configure routes
 image: https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/og.png?v=03c6dce35e8aa24d
 ---
@@ -12,15 +12,15 @@ image: https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/con
 
 # Configure routes
 
-Last updated Sep 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Cloudflare Virtual Network uses a routing table to steer your traffic from Cloudflare's global network to your connected networks via next-hop. You can add entries to the Cloudflare Virtual Network routing table through static route configuration or routes learned from BGP peering (beta) (available over CNI with Dataplane v2, as well as IPsec and GRE tunnels).
+Cloudflare Virtual Network uses a routing table to steer your traffic from Cloudflare's global network to your connected networks via next-hop. You can add entries to the Cloudflare Virtual Network routing table through static route configuration or routes learned from BGP peering over IPsec and GRE tunnels or CNI with Dataplane v2 (closed beta).
 
 Refer to [Traffic Steering](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/) for more information about all the technical aspects related to:
 
 - Routes' priorities and weights
 - Regional scoping of traffic to reduce latency
-- BGP peering (beta)
+- BGP peering
 - [Automatic Return Routing (ARR)](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#automatic-return-routing)
 
 One page for all your routes
@@ -353,8 +353,8 @@ curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/ipsec_tunn
 
 BGP peering is available when using the following on-ramps:
 
+- [IPsec and GRE tunnels](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/). Requires [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing).
 - [CNI with Dataplane v2](https://developers.cloudflare.com/network-interconnect/) (closed beta and not available to new customers).
-- [IPsec and GRE tunnels (beta)](https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-tunnel-endpoints/). Requires [Unified Routing](https://developers.cloudflare.com/cloudflare-wan/reference/traffic-steering/#unified-routing).
 
 ### Choose an ASN for BGP peering
 
@@ -362,9 +362,7 @@ The Cloudflare Virtual Network routing table is managed by the customer. You can
 
 By default, each BGP peering session uses the same Cloudflare-side ASN to represent peering with the Cloudflare Virtual Network routing table. This ASN is called the **CF Account ASN** and is set to `13335`. You can configure this to a private 2-byte ASN (any value between `64512` and `65534`, such as `65000`).
 
-Note
-
-If you are setting up BGP over IPsec or GRE tunnels you cannot change this value.
+The CF Account ASN applies to all BGP sessions in your account, over both IPsec/GRE tunnels and CNI. It must be different from the customer device ASN on each tunnel.
 
 To set this ASN:
 
@@ -372,6 +370,19 @@ To set this ASN:
 2. Select **WAN configuration**.
 3. In **CF Account ASN**, enter Cloudflare's ASN.
 4. Select **Update**.
+
+Create a `PUT` request to update the BGP settings for your account. The following example sets the CF Account ASN to `65000`:
+
+*Update BGP Settingsbash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/bgp/settings" \
+	--request PUT \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"cloudflare_asn": 65000
+	}'
+```
 
 Cloudflare WAN customers should also be aware of the following:
 
@@ -465,5 +476,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#page","headline":"Configure routes","description":"Cloudflare WAN uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. If you are connected through CNI with Dataplane v2, you also have access to BGP peering (beta). Learn how to configure routing.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/og.png?v=03c6dce35e8aa24d","dateModified":"2026-09-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/#page","headline":"Configure routes","description":"Cloudflare WAN uses a static configuration to route your traffic through anycast tunnels from Cloudflare's global network to your locations. You can also use BGP peering to exchange routes dynamically. Learn how to configure routing.","url":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-wan/configuration/how-to/configure-routes/og.png?v=03c6dce35e8aa24d","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```
