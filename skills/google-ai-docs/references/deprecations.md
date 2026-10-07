@@ -28,14 +28,10 @@ Already-shutdown models are indicated with gray backgrounds.
 | `gemini-3.6-flash` | July 21, 2026 | No shutdown date announced |   |
 | `gemini-3.5-flash-lite` | July 21, 2026 | No shutdown date announced |   |
 | `gemini-3.5-flash` | May 19, 2026 | No shutdown date announced |   |
-| `gemini-3.1-flash-image` | May 28, 2026 | No shutdown date announced |   |
-| `gemini-3-pro-image` | May 28, 2026 | No shutdown date announced |   |
 | `gemini-3.1-flash-lite` | May 7, 2026 | May 7, 2027 | `gemini-3.5-flash-lite` |
 | Preview models ||||
-| `gemini-3.1-flash-tts-preview` | February 26, 2026 | No shutdown date announced | `gemini-3.8-flash-tts` or `gemini-3.8-flash-lite-tts` |
-| `gemini-3.1-flash-image-preview` | February 26, 2026 | June 25, 2026 | `gemini-3.1-flash-image` |
+| `gemini-3.1-flash-tts-preview` | February 26, 2026 | November 17, 2026 | `gemini-3.8-flash-tts` or `gemini-3.8-flash-lite-tts` |
 | `gemini-3.1-pro-preview` | February 19, 2026 | No shutdown date announced |   |
-| `gemini-3-pro-image-preview` | November 20, 2025 | June 25, 2026 | `gemini-3-pro-image` |
 | `gemini-3-flash-preview` | December 17, 2025 | No shutdown date announced | `gemini-3.6-flash` |
 | `gemini-3-pro-preview` | November 18, 2025 | March 9, 2026 | `gemini-3.1-pro-preview` |
 | `gemini-3.1-flash-lite-preview` | March 3, 2026 | May 25, 2026 | `gemini-3.1-flash-lite` |
@@ -62,12 +58,10 @@ Already-shutdown models are indicated with gray backgrounds.
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
 | `gemini-2.5-flash` | June 17, 2025 | No shutdown date announced |   |
-| `gemini-2.5-flash-image` | October 2, 2025 | October 2, 2026 | `gemini-3.1-flash-image-preview` |
 | `gemini-2.5-flash-lite` | July 22, 2025 | No shutdown date announced |   |
 | Preview models ||||
 | `gemini-2.5-flash-lite-preview-09-2025` | September 25, 2025 | March 31, 2026 | `gemini-3.1-flash-lite` |
 | `gemini-2.5-flash-preview-05-20` | May 20, 2025 | November 18, 2025 | `gemini-3.6-flash` |
-| `gemini-2.5-flash-image-preview` | May 7, 2025 | January 15, 2026 | `gemini-2.5-flash-image` |
 | `gemini-2.5-flash-preview-09-25` | September 25, 2025 | February 17, 2026 | `gemini-3.6-flash` |
 
 ## Gemini 2.0 models
@@ -79,7 +73,6 @@ Already-shutdown models are indicated with gray backgrounds.
 | `gemini-2.0-flash-lite` | February 25, 2025 | June 1, 2026 | `gemini-3.1-flash-lite` |
 | `gemini-2.0-flash-lite-001` | February 25, 2025 | June 1, 2026 | `gemini-3.1-flash-lite` |
 | Preview models ||||
-| `gemini-2.0-flash-preview-image-generation` | May 7, 2025 | November 14, 2025 | `gemini-2.5-flash-image` |
 | `gemini-2.0-flash-lite-preview` | February 5, 2025 | December 9, 2025 | `gemini-2.5-flash-lite` |
 | `gemini-2.0-flash-lite-preview-02-05` | February 5, 2025 | December 9, 2025 | `gemini-2.5-flash-lite` |
 
@@ -93,8 +86,8 @@ Already-shutdown models are indicated with gray backgrounds.
 | `gemini-2.0-flash-live-001` | April 9, 2025 | December 9, 2025 | `gemini-3.8-live` |
 | Preview models ||||
 | `gemini-3.5-live-translate-preview` | June 2026 | No shutdown date announced |   |
-| `gemini-3.1-flash-live-preview` | March 11, 2026 | No shutdown date announced | `gemini-3.8-live` |
-| `gemini-2.5-flash-native-audio-preview-12-2025` | December 12, 2025 | No shutdown date announced | `gemini-3.8-live` |
+| `gemini-3.1-flash-live-preview` | March 11, 2026 | November 17, 2026 | `gemini-3.8-live` |
+| `gemini-2.5-flash-native-audio-preview-12-2025` | December 12, 2025 | November 17, 2026 | `gemini-3.8-live` |
 | `gemini-live-2.5-flash-preview` | June 17, 2025 | December 9, 2025 | `gemini-3.8-live` |
 
 ## Audio models
@@ -103,8 +96,8 @@ Already-shutdown models are indicated with gray backgrounds.
 |---|---|---|---|
 | `gemini-3.5-transcribe` | August 2026 | No shutdown date announced |   |
 | Preview models ||||
-| `gemini-2.5-flash-preview-tts` | May 20, 2025 | No shutdown date announced | `gemini-3.8-flash-tts` or `gemini-3.8-flash-lite-tts` |
-| `gemini-2.5-pro-preview-tts` | May 20, 2025 | No shutdown date announced | `gemini-3.8-flash-tts` or `gemini-3.8-flash-lite-tts` |
+| `gemini-2.5-flash-preview-tts` | May 20, 2025 | November 17, 2026 | `gemini-3.8-flash-tts` or `gemini-3.8-flash-lite-tts` |
+| `gemini-2.5-pro-preview-tts` | May 20, 2025 | November 17, 2026 | `gemini-3.8-flash-tts` or `gemini-3.8-flash-lite-tts` |
 
 ## Embedding models
 
@@ -120,13 +113,28 @@ Already-shutdown models are indicated with gray backgrounds.
 | `gemini-embedding-exp` |   | October 30, 2025 | `gemini-embedding-2` |
 | `gemini-embedding-exp-03-07` |   | October 30, 2025 | `gemini-embedding-2` |
 
+## Nano Banana models
+
+| **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
+|---|---|---|---|
+| `gemini-nano-banana-2.1` | October 6, 2026 | No shutdown date announced |   |
+| `gemini-3.1-flash-lite-image` | June 30, 2026 | No shutdown date announced |   |
+| `gemini-3.1-flash-image` | May 28, 2026 | No shutdown date announced | `gemini-nano-banana-2.1` |
+| `gemini-3-pro-image` | May 28, 2026 | No shutdown date announced |   |
+| `gemini-2.5-flash-image` | October 2, 2025 | March 15, 2027 | `gemini-3.1-flash-lite-image` |
+| Preview models ||||
+| `gemini-3.1-flash-image-preview` | February 26, 2026 | June 25, 2026 | `gemini-nano-banana-2.1` |
+| `gemini-3-pro-image-preview` | November 20, 2025 | June 25, 2026 | `gemini-3-pro-image` |
+| `gemini-2.5-flash-image-preview` | May 7, 2025 | January 15, 2026 | `gemini-nano-banana-2.1` |
+| `gemini-2.0-flash-preview-image-generation` | May 7, 2025 | November 14, 2025 | `gemini-nano-banana-2.1` |
+
 ## Imagen models
 
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
-| `imagen-4.0-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-3.1-flash-image` |
-| `imagen-4.0-ultra-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-3.1-flash-image` |
-| `imagen-4.0-fast-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-3.1-flash-image` |
+| `imagen-4.0-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-nano-banana-2.1` |
+| `imagen-4.0-ultra-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-nano-banana-2.1` |
+| `imagen-4.0-fast-generate-001` | June 24, 2025 | August 17, 2026 | `gemini-nano-banana-2.1` |
 | `imagen-3.0-generate-002` | February 6, 2025 | November 10, 2025 | `imagen-4.0-generate-001` |
 | Preview models ||||
 | `imagen-4.0-generate-preview-06-06` | June 24, 2025 | February 17, 2026 | `imagen-4.0-generate-001` |
@@ -151,6 +159,8 @@ Already-shutdown models are indicated with gray backgrounds.
 | **Model** | **Release date** | **Shutdown date** | **Recommended replacement** |
 |---|---|---|---|
 | `gemini-omni-1.1-flash` | August 27, 2026 | No shutdown date announced |   |
+| Preview models ||||
+| `gemini-omni-flash-preview` | June 30, 2026 | October 22, 2026 | `gemini-omni-1.1-flash` |
 
 ## Lyria models
 

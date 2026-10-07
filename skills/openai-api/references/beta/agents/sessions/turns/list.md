@@ -56,7 +56,7 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 20 more`
 
       A stable, machine-readable failure category.
 
@@ -83,6 +83,10 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
       - `"organization_usage_limit_exceeded"`
 
         The organization has reached its OpenAI-assigned usage limit.
+
+      - `"billing_not_active"`
+
+        Billing is not active for the account.
 
       - `"credit_balance_exhausted"`
 

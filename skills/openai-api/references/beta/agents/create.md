@@ -146,7 +146,7 @@ Creates a reusable agent without storing credentials. See [agent configuration](
 
 - `tools: optional array of PersistedAgentToolParam or null`
 
-  Tools available to the agent. Defaults to an empty list.
+  Tools available to the agent. Defaults to an empty list. The tool list must fit within 3 MiB (3,145,728 bytes) of compact UTF-8 JSON.
 
   - `Function object { description, name, parameters, 2 more }`
 

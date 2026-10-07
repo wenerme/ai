@@ -5,11 +5,13 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Moves to any selected entry in the stack. (EXPERIMENTAL)
+Move to a specific diff in the stack. (EXPERIMENTAL)
 
 ## Synopsis
 
-Shows a menu with a fuzzy finder to select a stack.
+Shows a list of the diffs in the stack, and checks out the branch of the diff you select.
+
+To work on a different stack, run `glab stack switch` first.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.

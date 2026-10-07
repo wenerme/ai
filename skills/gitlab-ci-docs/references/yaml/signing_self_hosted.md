@@ -5,7 +5,7 @@ Sign CI/CD artifacts and container images with a self-hosted Sigstore stack, inc
 - Tier: Free, Premium, Ultimate
 - Offering: GitLab Self-Managed
 
-If you run GitLab Self-Managed, you can't use the public [Sigstore service](signing_examples.md)
+If you run GitLab Self-Managed, you cannot use the public [Sigstore service](signing_examples.md)
 to sign your CI/CD artifacts and container images.
 The service only trusts GitLab.com pipelines, not pipelines from your own instance.
 Instead, you can connect your own Sigstore infrastructure (Fulcio, Rekor, and a

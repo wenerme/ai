@@ -2269,7 +2269,7 @@ the `background` parameter set to `true` can be cancelled.
 
                   - `"grammar"`
 
-          - `Namespace object { description, name, tools, type }`
+          - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
             Groups function/custom tools under a shared namespace.
 
@@ -2283,11 +2283,13 @@ the `background` parameter set to `true` can be cancelled.
 
             - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-              The function/custom tools available inside this namespace.
+              The function/custom tools loaded inside this namespace.
 
               - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
+
+                  The name of the loaded function tool.
 
                 - `type: "function"`
 
@@ -9473,7 +9475,7 @@ the `background` parameter set to `true` can be cancelled.
   - `safety_identifier: optional string or null`
 
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-    The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+    The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
   - `service_tier: optional ServiceTier or null`
 
@@ -12221,7 +12223,7 @@ Learn when and how to compact long-running conversations in the [conversation st
 
                 - `"grammar"`
 
-        - `Namespace object { description, name, tools, type }`
+        - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -12235,11 +12237,13 @@ Learn when and how to compact long-running conversations in the [conversation st
 
           - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-            The function/custom tools available inside this namespace.
+            The function/custom tools loaded inside this namespace.
 
             - `Function object { name, type, allowed_callers, 6 more }`
 
               - `name: string`
+
+                The name of the loaded function tool.
 
               - `type: "function"`
 
@@ -21075,7 +21079,7 @@ as input for the model's response.
 
                 - `"grammar"`
 
-        - `Namespace object { description, name, tools, type }`
+        - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -21089,11 +21093,13 @@ as input for the model's response.
 
           - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-            The function/custom tools available inside this namespace.
+            The function/custom tools loaded inside this namespace.
 
             - `Function object { name, type, allowed_callers, 6 more }`
 
               - `name: string`
+
+                The name of the loaded function tool.
 
               - `type: "function"`
 
@@ -23731,7 +23737,7 @@ as input for the model's response.
 - `safety_identifier: optional string or null`
 
   A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-  The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+  The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
 - `service_tier: optional ServiceTier or null`
 
@@ -27236,7 +27242,7 @@ as input for the model's response.
 
                   - `"grammar"`
 
-          - `Namespace object { description, name, tools, type }`
+          - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
             Groups function/custom tools under a shared namespace.
 
@@ -27250,11 +27256,13 @@ as input for the model's response.
 
             - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-              The function/custom tools available inside this namespace.
+              The function/custom tools loaded inside this namespace.
 
               - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
+
+                  The name of the loaded function tool.
 
                 - `type: "function"`
 
@@ -34440,7 +34448,7 @@ as input for the model's response.
   - `safety_identifier: optional string or null`
 
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-    The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+    The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
   - `service_tier: optional ServiceTier or null`
 
@@ -37916,7 +37924,7 @@ Retrieves a model response with the given ID.
 
                   - `"grammar"`
 
-          - `Namespace object { description, name, tools, type }`
+          - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
             Groups function/custom tools under a shared namespace.
 
@@ -37930,11 +37938,13 @@ Retrieves a model response with the given ID.
 
             - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-              The function/custom tools available inside this namespace.
+              The function/custom tools loaded inside this namespace.
 
               - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
+
+                  The name of the loaded function tool.
 
                 - `type: "function"`
 
@@ -45120,7 +45130,7 @@ Retrieves a model response with the given ID.
   - `safety_identifier: optional string or null`
 
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-    The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+    The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
   - `service_tier: optional ServiceTier or null`
 
@@ -52925,7 +52935,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                   - `"grammar"`
 
-          - `Namespace object { description, name, tools, type }`
+          - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
             Groups function/custom tools under a shared namespace.
 
@@ -52939,11 +52949,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
             - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-              The function/custom tools available inside this namespace.
+              The function/custom tools loaded inside this namespace.
 
               - `Function object { name, type, allowed_callers, 6 more }`
 
                 - `name: string`
+
+                  The name of the loaded function tool.
 
                 - `type: "function"`
 
@@ -60129,7 +60141,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
   - `safety_identifier: optional string or null`
 
     A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-    The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+    The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
   - `service_tier: optional ServiceTier or null`
 
@@ -62821,7 +62833,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     - `"grammar"`
 
-            - `Namespace object { description, name, tools, type }`
+            - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
               Groups function/custom tools under a shared namespace.
 
@@ -62835,11 +62847,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-                The function/custom tools available inside this namespace.
+                The function/custom tools loaded inside this namespace.
 
                 - `Function object { name, type, allowed_callers, 6 more }`
 
                   - `name: string`
+
+                    The name of the loaded function tool.
 
                   - `type: "function"`
 
@@ -70025,7 +70039,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `safety_identifier: optional string or null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-      The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+      The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
     - `service_tier: optional ServiceTier or null`
 
@@ -73202,7 +73216,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     - `"grammar"`
 
-            - `Namespace object { description, name, tools, type }`
+            - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
               Groups function/custom tools under a shared namespace.
 
@@ -73216,11 +73230,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-                The function/custom tools available inside this namespace.
+                The function/custom tools loaded inside this namespace.
 
                 - `Function object { name, type, allowed_callers, 6 more }`
 
                   - `name: string`
+
+                    The name of the loaded function tool.
 
                   - `type: "function"`
 
@@ -80406,7 +80422,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `safety_identifier: optional string or null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-      The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+      The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
     - `service_tier: optional ServiceTier or null`
 
@@ -83072,7 +83088,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     - `"grammar"`
 
-            - `Namespace object { description, name, tools, type }`
+            - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
               Groups function/custom tools under a shared namespace.
 
@@ -83086,11 +83102,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-                The function/custom tools available inside this namespace.
+                The function/custom tools loaded inside this namespace.
 
                 - `Function object { name, type, allowed_callers, 6 more }`
 
                   - `name: string`
+
+                    The name of the loaded function tool.
 
                   - `type: "function"`
 
@@ -90276,7 +90294,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `safety_identifier: optional string or null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-      The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+      The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
     - `service_tier: optional ServiceTier or null`
 
@@ -93153,7 +93171,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     - `"grammar"`
 
-            - `Namespace object { description, name, tools, type }`
+            - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
               Groups function/custom tools under a shared namespace.
 
@@ -93167,11 +93185,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-                The function/custom tools available inside this namespace.
+                The function/custom tools loaded inside this namespace.
 
                 - `Function object { name, type, allowed_callers, 6 more }`
 
                   - `name: string`
+
+                    The name of the loaded function tool.
 
                   - `type: "function"`
 
@@ -100357,7 +100377,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `safety_identifier: optional string or null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-      The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+      The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
     - `service_tier: optional ServiceTier or null`
 
@@ -102870,7 +102890,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     - `"grammar"`
 
-            - `Namespace object { description, name, tools, type }`
+            - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
               Groups function/custom tools under a shared namespace.
 
@@ -102884,11 +102904,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-                The function/custom tools available inside this namespace.
+                The function/custom tools loaded inside this namespace.
 
                 - `Function object { name, type, allowed_callers, 6 more }`
 
                   - `name: string`
+
+                    The name of the loaded function tool.
 
                   - `type: "function"`
 
@@ -110074,7 +110096,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `safety_identifier: optional string or null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-      The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+      The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
     - `service_tier: optional ServiceTier or null`
 
@@ -126426,7 +126448,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     - `"grammar"`
 
-            - `Namespace object { description, name, tools, type }`
+            - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
               Groups function/custom tools under a shared namespace.
 
@@ -126440,11 +126462,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-                The function/custom tools available inside this namespace.
+                The function/custom tools loaded inside this namespace.
 
                 - `Function object { name, type, allowed_callers, 6 more }`
 
                   - `name: string`
+
+                    The name of the loaded function tool.
 
                   - `type: "function"`
 
@@ -133630,7 +133654,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `safety_identifier: optional string or null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-      The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+      The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
     - `service_tier: optional ServiceTier or null`
 
@@ -138055,7 +138079,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                       - `"grammar"`
 
-              - `Namespace object { description, name, tools, type }`
+              - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
                 Groups function/custom tools under a shared namespace.
 
@@ -138069,11 +138093,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                 - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-                  The function/custom tools available inside this namespace.
+                  The function/custom tools loaded inside this namespace.
 
                   - `Function object { name, type, allowed_callers, 6 more }`
 
                     - `name: string`
+
+                      The name of the loaded function tool.
 
                     - `type: "function"`
 
@@ -145259,7 +145285,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
       - `safety_identifier: optional string or null`
 
         A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-        The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+        The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
       - `service_tier: optional ServiceTier or null`
 
@@ -149621,7 +149647,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
                     - `"grammar"`
 
-            - `Namespace object { description, name, tools, type }`
+            - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
               Groups function/custom tools under a shared namespace.
 
@@ -149635,11 +149661,13 @@ curl https://api.openai.com/v1/responses/resp_123 \
 
               - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-                The function/custom tools available inside this namespace.
+                The function/custom tools loaded inside this namespace.
 
                 - `Function object { name, type, allowed_callers, 6 more }`
 
                   - `name: string`
+
+                    The name of the loaded function tool.
 
                   - `type: "function"`
 
@@ -152277,7 +152305,7 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `safety_identifier: optional string or null`
 
       A stable identifier used to help detect users of your application that may be violating OpenAI's usage policies.
-      The IDs should be a string that uniquely identifies each user, with a maximum length of 64 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
+      The IDs should be a string that uniquely identifies each user, with a maximum length of 128 characters. We recommend hashing their username or email address, in order to avoid sending us any identifying information. [Learn more](/api/docs/guides/safety-best-practices#implement-safety-identifiers).
 
     - `service_tier: optional ServiceTier or null`
 
@@ -155150,6 +155178,138 @@ curl https://api.openai.com/v1/responses/resp_123 \
     - `"image_generation"`
 
     - `"code_interpreter"`
+
+### Tool Search Output Namespace Tool
+
+- `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
+
+  Groups function/custom tools under a shared namespace.
+
+  - `description: string`
+
+    A description of the namespace shown to the model.
+
+  - `name: string`
+
+    The namespace name used in tool calls (for example, `crm`).
+
+  - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
+
+    The function/custom tools loaded inside this namespace.
+
+    - `Function object { name, type, allowed_callers, 6 more }`
+
+      - `name: string`
+
+        The name of the loaded function tool.
+
+      - `type: "function"`
+
+        - `"function"`
+
+      - `allowed_callers: optional array of "direct" or "programmatic" or null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
+
+      - `async: optional boolean`
+
+        Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
+
+      - `defer_loading: optional boolean`
+
+        Whether this function should be deferred and discovered via tool search.
+
+      - `description: optional string or null`
+
+      - `output_schema: optional map[unknown] or null`
+
+        A JSON Schema describing the JSON value encoded in string outputs for this function tool. This does not describe content-array outputs.
+
+      - `parameters: optional unknown or null`
+
+      - `strict: optional boolean or null`
+
+        Whether to enforce strict parameter validation. If omitted, Responses attempts to use strict validation when the schema is compatible, and falls back to non-strict validation otherwise.
+
+    - `Custom object { name, type, allowed_callers, 4 more }`
+
+      A custom tool that processes input using a specified format. Learn more about   [custom tools](/api/docs/guides/function-calling#custom-tools)
+
+      - `name: string`
+
+        The name of the custom tool, used to identify it in tool calls.
+
+      - `type: "custom"`
+
+        The type of the custom tool. Always `custom`.
+
+        - `"custom"`
+
+      - `allowed_callers: optional array of "direct" or "programmatic" or null`
+
+        The tool invocation context(s).
+
+        - `"direct"`
+
+        - `"programmatic"`
+
+      - `async: optional boolean`
+
+        Whether the tool response can be returned asynchronously versus immediately returned on next response creation.
+
+      - `defer_loading: optional boolean`
+
+        Whether this tool should be deferred and discovered via tool search.
+
+      - `description: optional string`
+
+        Optional description of the custom tool, used to provide more context.
+
+      - `format: optional CustomToolInputFormat`
+
+        The input format for the custom tool. Default is unconstrained text.
+
+        - `Text object { type }`
+
+          Unconstrained free-form text.
+
+          - `type: "text"`
+
+            Unconstrained text format. Always `text`.
+
+            - `"text"`
+
+        - `Grammar object { definition, syntax, type }`
+
+          A grammar defined by the user.
+
+          - `definition: string`
+
+            The grammar definition.
+
+          - `syntax: "lark" or "regex"`
+
+            The syntax of the grammar definition. One of `lark` or `regex`.
+
+            - `"lark"`
+
+            - `"regex"`
+
+          - `type: "grammar"`
+
+            Grammar format. Always `grammar`.
+
+            - `"grammar"`
+
+  - `type: "namespace"`
+
+    The type of the tool. Always `namespace`.
+
+    - `"namespace"`
 
 # Input Items
 
@@ -165908,7 +166068,7 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
                 - `"grammar"`
 
-        - `Namespace object { description, name, tools, type }`
+        - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
           Groups function/custom tools under a shared namespace.
 
@@ -165922,11 +166082,13 @@ Returns an object with `object` set to `response.input_tokens` and an `input_tok
 
           - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-            The function/custom tools available inside this namespace.
+            The function/custom tools loaded inside this namespace.
 
             - `Function object { name, type, allowed_callers, 6 more }`
 
               - `name: string`
+
+                The name of the loaded function tool.
 
               - `type: "function"`
 

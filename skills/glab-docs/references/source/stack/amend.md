@@ -5,11 +5,13 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Save more changes to a stacked diff. (EXPERIMENTAL)
+Save your changes to an existing diff. (EXPERIMENTAL)
 
 ## Synopsis
 
-Add more changes to an existing stacked diff.
+Adds your changes to the diff you have checked out. Its merge request updates the next time you run `glab stack sync`, which also rebases the diffs after it.
+
+To create a new diff from your changes instead, use `glab stack save`.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.

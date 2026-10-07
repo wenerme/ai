@@ -2143,7 +2143,7 @@ Create items in a conversation with the given ID.
 
               - `"grammar"`
 
-      - `Namespace object { description, name, tools, type }`
+      - `ToolSearchOutputNamespaceTool object { description, name, tools, type }`
 
         Groups function/custom tools under a shared namespace.
 
@@ -2157,11 +2157,13 @@ Create items in a conversation with the given ID.
 
         - `tools: array of object { name, type, allowed_callers, 6 more }  or object { name, type, allowed_callers, 4 more }`
 
-          The function/custom tools available inside this namespace.
+          The function/custom tools loaded inside this namespace.
 
           - `Function object { name, type, allowed_callers, 6 more }`
 
             - `name: string`
+
+              The name of the loaded function tool.
 
             - `type: "function"`
 

@@ -873,9 +873,33 @@ interactionsId string (required) Required. The name of the interaction to cancel
 
 Returns an [Interaction](https://ai.google.dev/api/interactions-api#Resource:Interaction) resource.
 
-### Cancel
+### Cancel Interaction
 
 <iframe src="https:///frame/api/interactions-api_48a83630b05ab6cdd2880b1e38968d7a75c4ea9c6a46fefe04c5572270585592.frame" class="framebox inherit-locale " allow="clipboard-write https://" allowfullscreen is-upgraded></iframe>
+
+#### Example Response
+
+```json
+{
+  "agent": "deep-research-pro-preview-12-2025",
+  "created": "2026-06-22T04:55:47Z",
+  "id": "v1_ChdVc0E0YXJTYk1zYlV6N0lQcXRXVG1BYxIXVXNBNGFyU2JNc2JVejdJUHF0V1RtQWM",
+  "object": "interaction",
+  "status": "cancelled",
+  "steps": [
+    {
+      "type": "user_input",
+      "content": [
+        {
+          "type": "text",
+          "text": "Research the history of the Google TPUs with a focus on 2025 specs."
+        }
+      ]
+    }
+  ],
+  "updated": "2026-06-22T04:55:47Z"
+}
+```
 
 ## getInteractionById
 
@@ -1699,25 +1723,53 @@ uri string (optional) The URI of the video.
 
 ### Examples
 
-### AudioContent
+### Audio
 
-No examples available for this type.
+```json
+{
+  "type": "audio",
+  "data": "BASE64_ENCODED_AUDIO",
+  "mime_type": "audio/wav"
+}
+```
 
-### DocumentContent
+### Document
 
-No examples available for this type.
+```json
+{
+  "type": "document",
+  "data": "BASE64_ENCODED_DOCUMENT",
+  "mime_type": "application/pdf"
+}
+```
 
-### ImageContent
+### Image
 
-No examples available for this type.
+```json
+{
+  "type": "image",
+  "data": "BASE64_ENCODED_IMAGE",
+  "mime_type": "image/png"
+}
+```
 
-### TextContent
+### Text
 
-No examples available for this type.
+```json
+{
+  "type": "text",
+  "text": "Hello, how are you?"
+}
+```
 
-### VideoContent
+### Video
 
-No examples available for this type.
+```json
+{
+  "type": "video",
+  "uri": "https://www.youtube.com/watch?v=9hE5-98ZeCg"
+}
+```
 
 ### Tool
 
@@ -3381,33 +3433,93 @@ total_tool_use_tokens integer (optional) Number of tokens present in tool-use pr
 
 ### Examples
 
-### ErrorEvent
+### Error Event
 
-No examples available for this type.
+```json
+{
+  "error": {
+    "code": "not_found",
+    "message": "Failed to get completed interaction: Result not found."
+  },
+  "event_type": "error"
+}
+```
 
-### InteractionCompletedEvent
+### Interaction Completed
 
-No examples available for this type.
+```json
+{
+  "event_id": "evt_123",
+  "event_type": "interaction.completed",
+  "interaction": {
+    "created": "2025-12-04T15:01:45Z",
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3.6-flash",
+    "status": "completed",
+    "updated": "2025-12-04T15:01:45Z"
+  }
+}
+```
 
-### InteractionCreatedEvent
+### Interaction Created
 
-No examples available for this type.
+```json
+{
+  "event_id": "evt_123",
+  "event_type": "interaction.created",
+  "interaction": {
+    "created": "2025-12-04T15:01:45Z",
+    "id": "v1_ChdXS0l4YWZXTk9xbk0xZThQczhEcmlROBIXV0tJeGFmV05PcW5NMWU4UHM4RHJpUTg",
+    "model": "gemini-3.6-flash",
+    "status": "in_progress",
+    "updated": "2025-12-04T15:01:45Z"
+  }
+}
+```
 
-### InteractionStatusUpdate
+### Interaction Status Update
 
-No examples available for this type.
+```json
+{
+  "event_type": "interaction.status_update",
+  "interaction_id": "v1_ChdTMjQ0YWJ5TUF1TzcxZThQdjRpcnFRcxIXUzI0NGFieU1BdU83MWU4UHY0aXJxUXM",
+  "status": "in_progress"
+}
+```
 
-### StepDelta
+### Step Delta
 
-No examples available for this type.
+```json
+{
+  "delta": {
+    "type": "text",
+    "text": "Hello"
+  },
+  "event_type": "step.delta",
+  "index": 0
+}
+```
 
-### StepStart
+### Step Start
 
-No examples available for this type.
+```json
+{
+  "event_type": "step.start",
+  "index": 0,
+  "step": {
+    "type": "model_output"
+  }
+}
+```
 
-### StepStop
+### Step Stop
 
-No examples available for this type.
+```json
+{
+  "event_type": "step.stop",
+  "index": 0
+}
+```
 
 ### ResponseFormat
 
@@ -3609,21 +3721,62 @@ Always set to `"video"`.
 
 ### Examples
 
-### AudioResponseFormat
+### Audio Output
 
-No examples available for this type.
+```json
+{
+  "type": "audio",
+  "sample_rate": 24000
+}
+```
 
-### ImageResponseFormat
+### Image Output
 
-No examples available for this type.
+```json
+{
+  "type": "image",
+  "aspect_ratio": "16:9",
+  "image_size": "1K",
+  "mime_type": "image/jpeg"
+}
+```
 
-### TextResponseFormat
+### Text Output (JSON Schema)
 
-No examples available for this type.
+```json
+{
+  "type": "text",
+  "mime_type": "application/json",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "ingredients": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "recipe_name": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "ingredients",
+      "recipe_name"
+    ]
+  }
+}
+```
 
-### VideoResponseFormat
+### Video Output
 
-No examples available for this type.
+```json
+{
+  "type": "video",
+  "aspect_ratio": "16:9",
+  "delivery": "inline"
+}
+```
 
 ### Step
 
@@ -4032,55 +4185,178 @@ Always set to `"user_input"`.
 
 ### CodeExecutionCallStep
 
-No examples available for this type.
+```json
+{
+  "type": "code_execution_call",
+  "arguments": {
+    "code": "print(sum(range(1, 11)))",
+    "language": "python"
+  },
+  "id": "code_call_71021"
+}
+```
 
 ### CodeExecutionResultStep
 
-No examples available for this type.
+```json
+{
+  "type": "code_execution_result",
+  "call_id": "code_call_71021",
+  "result": "55\n"
+}
+```
 
 ### FileSearchCallStep
 
-No examples available for this type.
+```json
+{
+  "type": "file_search_call",
+  "id": "file_call_88192"
+}
+```
 
 ### FileSearchResultStep
 
-No examples available for this type.
+```json
+{
+  "type": "file_search_result",
+  "call_id": "file_call_88192"
+}
+```
 
 ### FunctionCallStep
 
-No examples available for this type.
+```json
+{
+  "name": "get_weather",
+  "type": "function_call",
+  "arguments": {
+    "location": "Boston, MA"
+  },
+  "id": "call_98231"
+}
+```
 
 ### FunctionResultStep
 
-No examples available for this type.
+```json
+{
+  "name": "get_weather",
+  "type": "function_result",
+  "call_id": "call_98231",
+  "result": [
+    {
+      "type": "text",
+      "text": "{\"weather\":\"sunny\"}"
+    }
+  ]
+}
+```
 
 ### GoogleMapsCallStep
 
-No examples available for this type.
+```json
+{
+  "type": "google_maps_call",
+  "arguments": {
+    "queries": [
+      "parks near San Francisco"
+    ]
+  },
+  "id": "maps_call_39201"
+}
+```
 
 ### GoogleMapsResultStep
 
-No examples available for this type.
+```json
+{
+  "type": "google_maps_result",
+  "call_id": "maps_call_39201",
+  "result": [
+    {
+      "places": [
+        {
+          "url": "https://maps.google.com/?cid=12345",
+          "name": "Golden Gate Park",
+          "place_id": "ChIJIQBpAG2ahYAR9R7bNdTLg8M"
+        }
+      ]
+    }
+  ]
+}
+```
 
 ### GoogleSearchCallStep
 
-No examples available for this type.
+```json
+{
+  "type": "google_search_call",
+  "arguments": {
+    "queries": [
+      "Who won the men's 100m in Paris 2024?"
+    ]
+  },
+  "id": "search_call_19201"
+}
+```
 
 ### GoogleSearchResultStep
 
-No examples available for this type.
+```json
+{
+  "type": "google_search_result",
+  "call_id": "search_call_19201",
+  "result": [
+    {
+      "search_suggestions": "..."
+    }
+  ]
+}
+```
 
 ### McpServerToolCallStep
 
-No examples available for this type.
+```json
+{
+  "name": "calculate_tax",
+  "type": "mcp_server_tool_call",
+  "arguments": {
+    "income": 120000,
+    "state": "CA"
+  },
+  "id": "mcp_call_29012",
+  "server_name": "financial_mcp_server"
+}
+```
 
 ### McpServerToolResultStep
 
-No examples available for this type.
+```json
+{
+  "name": "calculate_tax",
+  "type": "mcp_server_tool_result",
+  "call_id": "mcp_call_29012",
+  "result": {
+    "tax_due": 32400
+  },
+  "server_name": "financial_mcp_server"
+}
+```
 
 ### ModelOutputStep
 
-No examples available for this type.
+```json
+{
+  "type": "model_output",
+  "content": [
+    {
+      "type": "text",
+      "text": "The capital of France is Paris."
+    }
+  ]
+}
+```
 
 ### ProcessingCallStep
 
@@ -4100,19 +4376,61 @@ No examples available for this type.
 
 ### ThoughtStep
 
-No examples available for this type.
+```json
+{
+  "type": "thought",
+  "signature": "thought_sig_abcd1234",
+  "summary": [
+    {
+      "type": "text",
+      "text": "The model is searching Google for the capital of France."
+    }
+  ]
+}
+```
 
 ### UrlContextCallStep
 
-No examples available for this type.
+```json
+{
+  "type": "url_context_call",
+  "arguments": {
+    "urls": [
+      "https://www.example.com"
+    ]
+  },
+  "id": "url_call_10219"
+}
+```
 
 ### UrlContextResultStep
 
-No examples available for this type.
+```json
+{
+  "type": "url_context_result",
+  "call_id": "url_call_10219",
+  "result": [
+    {
+      "url": "https://www.example.com",
+      "status": "success"
+    }
+  ]
+}
+```
 
 ### UserInputStep
 
-No examples available for this type.
+```json
+{
+  "type": "user_input",
+  "content": [
+    {
+      "type": "text",
+      "text": "What is the capital of France?"
+    }
+  ]
+}
+```
 
 ### EnvironmentConfig
 
@@ -4175,6 +4493,84 @@ type object (optional) No description provided.
 
 Always set to `"remote"`.
 
+### Examples
+
+### Inline Sources
+
+```bash
+{
+  "type": "remote",
+  "sources": [
+    {
+      "type": "inline",
+      "content": "You are a data analyst. Always include visualizations and export results as PDF.",
+      "target": ".agents/AGENTS.md"
+    },
+    {
+      "type": "inline",
+      "content": "---\nname: slide-maker\ndescription: Create HTML slide decks\n---\n# Slide Maker\n\nWhen asked to create a presentation:\n1. Analyze the input data\n2. Create an HTML slide deck with reveal.js\n3. Save to /workspace/output/slides.html",
+      "target": ".agents/skills/slide-maker/SKILL.md"
+    }
+  ]
+}
+```
+
+### External Sources
+
+```bash
+{
+  "type": "remote",
+  "sources": [
+    {
+      "type": "repository",
+      "source": "https://github.com/my-org/my-skills.git",
+      "target": ".agents/skills"
+    },
+    {
+      "type": "gcs",
+      "source": "gs://my-bucket/my-folder",
+      "target": "/workspace/data"
+    }
+  ]
+}
+```
+
+### Network Allowlist
+
+```bash
+{
+  "type": "remote",
+  "network": {
+    "allowlist": [
+      {
+        "domain": "pypi.org"
+      },
+      {
+        "domain": "*.github.com"
+      }
+    ]
+  }
+}
+```
+
+### Proxy Credentials
+
+```bash
+{
+  "type": "remote",
+  "network": {
+    "allowlist": [
+      {
+        "domain": "api.github.com",
+        "transform": {
+          "Authorization": "Bearer YOUR_GITHUB_TOKEN"
+        }
+      }
+    ]
+  }
+}
+```
+
 ### EnvironmentNetworkEgressAllowlist
 
 Outbound networking configuration for the sandbox. Accepts an object with an 'allowlist' array to restrict traffic, or the string 'disabled' to turn off all network access. Omit entirely to allow all outbound traffic with no header injection.
@@ -4198,6 +4594,28 @@ string Turns all network off.
 - `disabled`
 
   All network egress is blocked.
+
+### Examples
+
+### Network Allowlist
+
+```bash
+{
+  "allowlist": [
+    {
+      "domain": "github.com",
+      "transform": [
+        {
+          "Authorization": "Bearer your-token"
+        }
+      ]
+    },
+    {
+      "domain": "*.googleapis.com"
+    }
+  ]
+}
+```
 
 ### ToolChoiceConfig
 
@@ -4228,6 +4646,21 @@ values:
 
   Validated tool choice.
 tools array (string) (optional) The names of the allowed tools.
+
+### Examples
+
+### Allowed Tools
+
+```bash
+{
+  "allowed_tools": {
+    "mode": "any",
+    "tools": [
+      "my_tool"
+    ]
+  }
+}
+```
 
 ### ImageContent
 
@@ -4286,6 +4719,18 @@ type object (optional) No description provided.
 
 Always set to `"image"`.
 uri string (optional) The URI of the image.
+
+### Examples
+
+### Image
+
+```bash
+{
+  "type": "image",
+  "data": "BASE64_ENCODED_IMAGE",
+  "mime_type": "image/png"
+}
+```
 
 ### TextContent
 
@@ -4373,3 +4818,14 @@ text string (optional) Required. The text content.
 type object (optional) No description provided.
 
 Always set to `"text"`.
+
+### Examples
+
+### Text
+
+```bash
+{
+  "type": "text",
+  "text": "Hello, how are you?"
+}
+```

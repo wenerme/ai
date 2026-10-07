@@ -1,0 +1,321 @@
+## Create a decision
+
+**post** `/decisions`
+
+Evaluate ordered classification and scoring questions against shared input. Answers are returned in question order.
+
+Supply input as a string or user messages containing text and inline images. Only user messages with `input_text` and `input_image` parts are supported; non-user roles, function calls, files, audio, and item references are not supported. Images require a data URL, not an external URL or file ID. At most 128 images are allowed across the request.
+
+Each question can return a refusal instead of a scored answer. A refusal has type `refusal` and the corresponding question name, or null if unnamed.
+
+### Body Parameters
+
+- `input: string or array of DecisionInputMessage`
+
+  The text or images to evaluate for every question. Provide a text string or user messages containing text and inline images. Images must be inline data URLs; at most 128 images are allowed across all messages in one request. External URLs, files, audio, tools, and item references are not supported.
+
+  - `string`
+
+  - `array of DecisionInputMessage`
+
+    - `content: string or array of DecisionInputPart`
+
+      Text evidence or an ordered list of text and inline image parts.
+
+      - `string`
+
+      - `Parts = array of DecisionInputPart`
+
+        - `DecisionInputText object { text, type }`
+
+          - `text: string`
+
+          - `type: "input_text"`
+
+            - `"input_text"`
+
+        - `DecisionInputImage object { image_url, type, detail }`
+
+          An inline image. External URLs and file IDs are not supported.
+
+          - `image_url: string`
+
+            A base64-encoded image in a data URL.
+
+          - `type: "input_image"`
+
+            - `"input_image"`
+
+          - `detail: optional "low" or "high" or "auto" or "original" or null`
+
+            The image detail level, using the selected model's image profile. Defaults to auto.
+
+            - `"low"`
+
+            - `"high"`
+
+            - `"auto"`
+
+            - `"original"`
+
+    - `role: "user"`
+
+      - `"user"`
+
+    - `type: optional "message"`
+
+      - `"message"`
+
+- `model: string`
+
+- `questions: array of object { instructions, type, name }  or object { choices, instructions, type, name }  or object { instructions, levels, type, name }`
+
+  - `Predicate object { instructions, type, name }`
+
+    Estimate how likely it is that a statement about the input is true.
+
+    - `instructions: string`
+
+    - `type: "predicate"`
+
+      The type of the object. Always `predicate`.
+
+      - `"predicate"`
+
+    - `name: optional string`
+
+  - `Choice object { choices, instructions, type, name }`
+
+    Choose from the supplied options based on the input.
+
+    - `choices: array of object { value, description }`
+
+      - `value: string or boolean`
+
+        Choice values are typed: a string and a boolean with the same text are distinct.
+
+        - `string`
+
+        - `boolean`
+
+      - `description: optional string`
+
+    - `instructions: string`
+
+    - `type: "choice"`
+
+      The type of the object. Always `choice`.
+
+      - `"choice"`
+
+    - `name: optional string`
+
+  - `Score object { instructions, levels, type, name }`
+
+    Rate the input against the supplied ordered levels.
+
+    - `instructions: string`
+
+    - `levels: array of object { label, description }`
+
+      - `label: string`
+
+      - `description: optional string`
+
+    - `type: "score"`
+
+      The type of the object. Always `score`.
+
+      - `"score"`
+
+    - `name: optional string`
+
+- `safety_identifier: optional string or null`
+
+  Opaque caller-provided end-user identifier, scoped by the verified org. Match Responses' limit; this is never the authenticated user identity.
+
+### Returns
+
+- `Decision object { answers, model, usage }`
+
+  - `answers: array of object { name, probability, type }  or object { choice, confidence, name, 2 more }  or object { confidence, name, probabilities, 2 more }  or object { name, type }`
+
+    - `Predicate object { name, probability, type }`
+
+      - `name: string or null`
+
+      - `probability: number`
+
+      - `type: "predicate"`
+
+        The type of the object. Always `predicate`.
+
+        - `"predicate"`
+
+    - `Choice object { choice, confidence, name, 2 more }`
+
+      - `choice: string or boolean`
+
+        Choice values are typed: a string and a boolean with the same text are distinct.
+
+        - `string`
+
+        - `boolean`
+
+      - `confidence: number`
+
+      - `name: string or null`
+
+      - `probabilities: array of object { probability, value }`
+
+        - `probability: number`
+
+        - `value: string or boolean`
+
+          Choice values are typed: a string and a boolean with the same text are distinct.
+
+          - `string`
+
+          - `boolean`
+
+      - `type: "choice"`
+
+        The type of the object. Always `choice`.
+
+        - `"choice"`
+
+    - `Score object { confidence, name, probabilities, 2 more }`
+
+      - `confidence: number`
+
+      - `name: string or null`
+
+      - `probabilities: array of object { label, probability, value }`
+
+        - `label: string`
+
+        - `probability: number`
+
+        - `value: number`
+
+      - `score: number`
+
+      - `type: "score"`
+
+        The type of the object. Always `score`.
+
+        - `"score"`
+
+    - `Refusal object { name, type }`
+
+      The model declined to answer this question. Other questions in the same request can still receive answers.
+
+      - `name: string or null`
+
+      - `type: "refusal"`
+
+        The type of the object. Always `refusal`.
+
+        - `"refusal"`
+
+  - `model: string`
+
+  - `usage: object { input_tokens, input_tokens_details, output_tokens, 2 more }`
+
+    - `input_tokens: number`
+
+    - `input_tokens_details: object { cache_write_tokens, cached_tokens }`
+
+      - `cache_write_tokens: number`
+
+      - `cached_tokens: number`
+
+    - `output_tokens: number`
+
+    - `output_tokens_details: object { reasoning_tokens }`
+
+      - `reasoning_tokens: number`
+
+    - `total_tokens: number`
+
+### Example
+
+```http
+curl https://api.openai.com/v1/decisions \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -d '{
+          "input": "string",
+          "model": "model",
+          "questions": [
+            {
+              "instructions": "instructions",
+              "type": "predicate"
+            }
+          ]
+        }'
+```
+
+#### Response
+
+```json
+{
+  "answers": [
+    {
+      "name": "name",
+      "probability": 0,
+      "type": "predicate"
+    }
+  ],
+  "model": "model",
+  "usage": {
+    "input_tokens": -2147483648,
+    "input_tokens_details": {
+      "cache_write_tokens": -2147483648,
+      "cached_tokens": -2147483648
+    },
+    "output_tokens": -2147483648,
+    "output_tokens_details": {
+      "reasoning_tokens": -2147483648
+    },
+    "total_tokens": -2147483648
+  }
+}
+```
+
+### Example
+
+```http
+curl https://api.openai.com/v1/decisions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $OPENAI_API_KEY" \
+  -d '{
+    "model": "gpt-6-luna",
+    "input": "The package arrived with a broken screen.",
+    "questions": [
+      {
+        "type": "predicate",
+        "name": "damaged",
+        "instructions": "Does the customer report a damaged item?"
+      }
+    ]
+  }'
+```
+
+#### Response
+
+```json
+{
+  "model": "gpt-6-luna",
+  "answers": [
+    {"type": "predicate", "name": "damaged", "probability": 0.95}
+  ],
+  "usage": {
+    "input_tokens": 42,
+    "input_tokens_details": {"cached_tokens": 0, "cache_write_tokens": 0},
+    "output_tokens": 0,
+    "output_tokens_details": {"reasoning_tokens": 0},
+    "total_tokens": 42
+  }
+}
+```

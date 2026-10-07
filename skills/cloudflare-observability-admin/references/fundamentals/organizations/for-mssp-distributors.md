@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/organizations/for-mssp-dis
 
 # Organizations for MSSP and Distributors
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -63,7 +63,7 @@ Distributor Organization
 - Each MSSP Organization manages its own customer accounts
 - MSSP Organization members have [implicit access](#implicit-access) to their customer accounts
 - Accounts can be moved between MSSP Organizations
-- Maximum: **500 accounts** and **5,000 zones** per Organization
+- Maximum: **20,000 accounts** and **200,000 zones** per Organization
 
 ## Example: Distributor A
 
@@ -263,5 +263,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/#page","headline":"Organizations for MSSP and Distributors","description":"Set up and manage an MSSP or Distributor Organization to manage customer accounts and partner sub-organizations.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/og.png?v=ca38b4f0cf4bc47e","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/#page","headline":"Organizations for MSSP and Distributors","description":"Set up and manage an MSSP or Distributor Organization to manage customer accounts and partner sub-organizations.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/og.png?v=ca38b4f0cf4bc47e","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

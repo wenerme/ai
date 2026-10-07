@@ -5,11 +5,11 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Moves to the previous diff in the stack. (EXPERIMENTAL)
+Move to the previous diff in the stack. (EXPERIMENTAL)
 
 ## Synopsis
 
-Moves to the previous diff in the stack, and checks out that branch.
+Checks out the branch of the previous diff in the stack.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.

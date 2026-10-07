@@ -26,7 +26,9 @@ Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) [### Gemi
 Our fastest, most cost-effective 3.5 model for high-throughput execution.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) [### Gemini 3.1 Flash-Lite
 Frontier-class performance rivaling larger models at a fraction of the cost.
-Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) [### Nano Banana 2
+Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) [### Nano Banana 2.1
+High-efficiency image generation and editing model with improved visual quality, typography, and multi-turn consistency.
+New Stable](https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1) [### Nano Banana 2
 Powerful, high-efficiency image generation and editing, optimized for speed and high-volume use cases.
 Stable](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) [### Nano Banana 2 Lite
 Ultra-low latency and cost-effective image generation and editing, designed for high-volume interactive use cases.
@@ -66,6 +68,7 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 | [Gemini 3.5 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash) | ``` gemini-3.5-flash ``` |
 | [Gemini 3.5 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite) | ``` gemini-3.5-flash-lite ``` |
 | [Gemini 3.1 Flash-Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite) | ``` gemini-3.1-flash-lite ``` |
+| [Nano Banana 2.1](https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1) | ``` gemini-nano-banana-2.1 ``` |
 | [Nano Banana 2](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) | ``` gemini-3.1-flash-image ``` |
 | [Nano Banana 2 Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) | ``` gemini-3.1-flash-lite-image ``` |
 | [Nano Banana Pro](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) | ``` gemini-3-pro-image ``` |
@@ -131,6 +134,7 @@ New](https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash)
 
 | Model | Description | Endpoint |
 |---|---|---|
+| [Nano Banana 2.1](https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1) | High-efficiency image generation and editing model with improved visual quality, typography, and multi-turn consistency. | ``` gemini-nano-banana-2.1 ``` |
 | [Nano Banana 2](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) | High-efficiency production-scale visual creation, combining the intelligence of the Gemini 3 series with lightning-fast generation speeds. | ``` gemini-3.1-flash-image ``` |
 | [Nano Banana 2 Lite](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) | Designed as the efficiency specialist of the image generation family, offering ultra-low latency and cost-effective image generation and editing. | ``` gemini-3.1-flash-lite-image ``` |
 | [Veo 3.1](https://ai.google.dev/gemini-api/docs/models/veo-3.1-generate-preview) | State-of-the-art cinematic video generation with advanced creative controls and natively synchronized audio. | ``` veo-3.1-generate-preview ``` |

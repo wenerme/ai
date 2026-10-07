@@ -5,11 +5,13 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Save your progress within a stacked diff. (EXPERIMENTAL)
+Save your changes as a new diff. (EXPERIMENTAL)
 
 ## Synopsis
 
-Save your current progress with a diff on the stack.
+Adds a new diff to the end of the stack. It becomes a new merge request the next time you run `glab stack sync`.
+
+To add your changes to the diff you have checked out instead, use `glab stack amend`.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.

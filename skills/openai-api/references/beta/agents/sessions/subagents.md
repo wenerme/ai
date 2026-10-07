@@ -1305,7 +1305,7 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 20 more`
 
       A stable, machine-readable failure category.
 
@@ -1332,6 +1332,10 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
       - `"organization_usage_limit_exceeded"`
 
         The organization has reached its OpenAI-assigned usage limit.
+
+      - `"billing_not_active"`
+
+        Billing is not active for the account.
 
       - `"credit_balance_exhausted"`
 
@@ -1584,7 +1588,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 20 more`
 
       A stable, machine-readable failure category.
 
@@ -1611,6 +1615,10 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
       - `"organization_usage_limit_exceeded"`
 
         The organization has reached its OpenAI-assigned usage limit.
+
+      - `"billing_not_active"`
+
+        Billing is not active for the account.
 
       - `"credit_balance_exhausted"`
 

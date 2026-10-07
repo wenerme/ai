@@ -150,7 +150,7 @@ Updates a reusable agent. See [agent configuration](/api/docs/guides/agents-api/
 
 - `tools: optional array of PersistedAgentToolParam or null`
 
-  Tools available to the agent.
+  Replaces the tool list. Omit to leave it unchanged, or pass null to clear it. The replacement must fit within 3 MiB (3,145,728 bytes) of compact UTF-8 JSON.
 
   - `Function object { description, name, parameters, 2 more }`
 

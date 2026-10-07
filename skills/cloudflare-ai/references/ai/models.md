@@ -16,7 +16,7 @@ Last updated Aug 12, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 Task TypesCapabilitiesProvidersAuthorsNewest first
 
-We found 233 modelsClear filters
+We found 241 modelsClear filters
 
 ## Compare models
 
@@ -259,6 +259,14 @@ AnthropicText Generation Claude Sonnet 5 is Anthropic's most agentic Sonnet mode
 
 Compare
 
+[![Anthropic logo](https://developers.cloudflare.com/_astro/anthropic.DbRqBIjP.svg)<h3>claude-sonnet-5.5</h3>
+
+AnthropicText Generation Claude Sonnet 5.5 offers the best combination of speed and intelligence, with adaptive thinking for coding, tool use, reasoning, and long-horizon work.](https://developers.cloudflare.com/ai/models/anthropic/claude-sonnet-5.5/)
+
+- Third-party
+
+Compare
+
 [![AssemblyAI logo](https://developers.cloudflare.com/_astro/assemblyai.DKrad3Z3.svg)<h3>universal-3-pro</h3>
 
 AssemblyAIAutomatic Speech Recognition AssemblyAI's Universal 3 Pro speech recognition model for high-accuracy transcription.](https://developers.cloudflare.com/ai/models/assemblyai/universal-3-pro/)
@@ -327,6 +335,38 @@ Compare
 [![Black Forest Labs logo](https://developers.cloudflare.com/_astro/blackforestlabs.Ccs-Y4-D.svg)<h3>flux-video-upscale</h3>
 
 Black Forest Labsvideo-to-video FLUX Video Upscale increases video resolution with a precise mode for source-faithful results and a creative mode for stronger detail enhancement. It accepts clips up to 20 seconds and preserves audio.](https://developers.cloudflare.com/ai/models/black-forest-labs/flux-video-upscale/)
+
+- Third-party
+
+Compare
+
+[b<h3>fibo-edit-1.5</h3>
+
+briaImage-to-Image FIBO Edit changes one to four input images from a natural-language or structured JSON (VGL) instruction. Add a black-and-white mask to edit only part of a single image, or refer to several images as "image 1", "image 2", and so on to combine them or transfer a style.](https://developers.cloudflare.com/ai/models/bria/fibo-edit-1.5/)
+
+- Third-party
+
+Compare
+
+[b<h3>fibo-generate-1.5</h3>
+
+briaText-to-Image FIBO Generate creates images from a text prompt, a reference image, or both. Each result includes the seed and the structured JSON (VGL) prompt used to render it; send them back to recreate the image exactly or to refine it with a new prompt. Outputs are 1MP or 4MP in nine aspect ratios.](https://developers.cloudflare.com/ai/models/bria/fibo-generate-1.5/)
+
+- Third-party
+
+Compare
+
+[b<h3>remove-background</h3>
+
+briaImage-to-Image Bria's RMBG 2.0 model removes the background from an image and returns a PNG cutout with a transparent background. Partial transparency from the input's alpha channel is kept by default.](https://developers.cloudflare.com/ai/models/bria/remove-background/)
+
+- Third-party
+
+Compare
+
+[b<h3>v-rmbg-3.0</h3>
+
+briavideo-to-video Bria's video background removal replaces the background of a clip up to 60 seconds long with a solid color or with transparency. Transparent output needs the mov\_proresks (ProRes) preset. Frame rate and audio are preserved, and the output resolution matches the input unless auto\_zoom crops to the subject.](https://developers.cloudflare.com/ai/models/bria/v-rmbg-3.0/)
 
 - Third-party
 
@@ -542,6 +582,22 @@ Compare
 [![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-3.8-flash</h3>
 
 GoogleText Generation Our most intelligent Flash model, engineered for long-horizon software engineering, autonomous agents, and complex enterprise workflows.](https://developers.cloudflare.com/ai/models/google/gemini-3.8-flash/)
+
+- Third-party
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-3.8-flash-lite-tts</h3>
+
+GoogleText-to-Speech Gemini 3.8 Flash-Lite TTS is a fast, cost-efficient text-to-speech model optimized for high-throughput production workloads.](https://developers.cloudflare.com/ai/models/google/gemini-3.8-flash-lite-tts/)
+
+- Third-party
+
+Compare
+
+[![Google logo](https://developers.cloudflare.com/_astro/google.DyXKPTPP.svg)<h3>gemini-3.8-flash-tts</h3>
+
+GoogleText-to-Speech Gemini 3.8 Flash TTS is Google's flagship text-to-speech model for expressive, natural speech generation.](https://developers.cloudflare.com/ai/models/google/gemini-3.8-flash-tts/)
 
 - Third-party
 
@@ -950,6 +1006,14 @@ Compare
 [![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6-sol</h3>
 
 OpenAIText Generation GPT-6 Sol is OpenAI's mid-tier GPT-6 model, built to power complex coding and agentic workflows.](https://developers.cloudflare.com/ai/models/openai/gpt-6-sol/)
+
+- Third-party
+
+Compare
+
+[![OpenAI logo](https://developers.cloudflare.com/_astro/openai.BBwNKzBb.svg)<h3>gpt-6.1-sol</h3>
+
+OpenAIText Generation GPT-6.1 Sol is OpenAI's newest Sol model, delivering near-Astra performance at a lower cost for complex coding, computer use, and professional work.](https://developers.cloudflare.com/ai/models/openai/gpt-6.1-sol/)
 
 - Third-party
 
@@ -1671,7 +1735,7 @@ aisingaporeText Generation SEA-LION stands for Southeast Asian Languages In One 
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-4.7-flash</h3>
 
 Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text generation model with a 131,072 token context window. Optimized for dialogue, instruction-following, and multi-turn tool calling across 100+ languages.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-4.7-flash/)
 
@@ -1680,7 +1744,7 @@ Zhipu AIText Generation GLM-4.7-Flash is a fast and efficient multilingual text 
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.2</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.2</h3>
 
 Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.2/)
 
@@ -1689,7 +1753,7 @@ Zhipu AIText Generation Z.ai's flagship agentic coding model](https://developers
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3</h3>
 
 Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing a 1M-token context window with reasoning, function calling, and structured outputs to power multi-step, tool-driven development workflows.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3/)
 
@@ -1698,7 +1762,7 @@ Zhipu AIText Generation GLM-5.3 is Z.ai's flagship agentic coding model, pairing
 
 Compare
 
-[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai-org.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>
+[![Zhipu AI logo](https://developers.cloudflare.com/_astro/zai.Dj2vcayE.svg)<h3>glm-5.3-flash</h3>
 
 Zhipu AIText Generation The first natively multimodal model in the GLM-5 series. With 320B total parameters and just 18B active parameters, it outperforms GLM-5.2 across benchmarks and real-world workloads at one-tenth the price, while approaching Claude Opus 4.8 on coding and agentic benchmarks.](https://developers.cloudflare.com/ai/models/@cf/zai-org/glm-5.3-flash/)
 

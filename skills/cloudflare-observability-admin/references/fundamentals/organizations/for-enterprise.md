@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/organizations/for-enterpri
 
 # Organizations for Enterprise
 
-Last updated Sep 17, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Note
 
@@ -22,7 +22,7 @@ Organizations provides a single-tier structure for Enterprise customers to manag
 
 ## Who is this for?
 
-Organizations is designed for **Enterprise customers of any size** who manage multiple Cloudflare accounts. Whether you have 5 accounts or 500, Organizations helps you manage them from one dashboard.
+Organizations is designed for **Enterprise customers of any size** who manage multiple Cloudflare accounts. Whether you manage a few accounts or thousands, Organizations helps you manage them from one dashboard.
 
 Common use cases:
 
@@ -56,7 +56,7 @@ Organization
 - Each account can contain multiple zones
 - All accounts are at the same level (no sub-organizations)
 - Organization members have [implicit access](#implicit-access) to all accounts
-- Maximum: **500 accounts** and **5,000 zones** per Organization
+- Maximum: **20,000 accounts** and **200,000 zones** per Organization
 
 ## Example: Company A
 
@@ -91,7 +91,7 @@ Before you create an Organization:
 - Your user must have Super Admin role access to an account with an Enterprise plan.
 - You (the Organization creator) must have [two-factor authentication (2FA)](https://developers.cloudflare.com/fundamentals/user-profiles/2fa/) or [single sign-on (SSO)](https://developers.cloudflare.com/fundamentals/manage-members/dashboard-sso/) enabled on your Cloudflare user account. This is a per-user requirement — 2FA/SSO is not an account-level setting.
 - You must be a Super Administrator on the accounts you want to assign. You can add accounts of any plan type (eg Enterprise, or Free).
-- Each Organization supports a maximum of **500 accounts** and **5,000 zones**. Refer to [Limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/) for details.
+- Each Organization supports a maximum of **20,000 accounts** and **200,000 zones**. Refer to [Limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/) for details.
 - You may only create a single Organization. You, or another member of your company, must not have already created an Organization.
 - Your accounts must not already belong to another Organization.
 
@@ -267,5 +267,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/og.png?v=f762337ac635c141","dateModified":"2026-09-17","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/#page","headline":"Organizations for Enterprise","description":"Set up and manage an Enterprise Organization to manage multiple Cloudflare accounts from a single dashboard.","url":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/og.png?v=f762337ac635c141","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -127,6 +127,8 @@ Other possible responses:
 
 ### Self-inform
 
+- `granular_scopes` in the response [introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/629849) in GitLab 19.5.
+
 Instead of getting details on a specific personal access token, you can also return details on
 the personal access token you used to authenticate the request. To return these details, you must
 use the `self` keyword in the request URL.
