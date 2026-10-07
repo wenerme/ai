@@ -5,7 +5,7 @@ description: "Browse LLM Gateway model IDs, capabilities, context windows, and p
 
 # [LLM Gateway logo]LLM Gateway
 
-Access 442 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
+Access 444 LLM Gateway models through Mastra's model router. Authentication is handled automatically using the `LLMGATEWAY_API_KEY` environment variable.
 
 Learn more in the [LLM Gateway documentation](https://llmgateway.io/docs).
 
@@ -3316,6 +3316,18 @@ for await (const chunk of stream) {
     "outputCost": 0.18
   },
   {
+    "model": "llmgateway-providers/novita/ling-3.1-flash",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": true,
+    "reasoning": true,
+    "contextWindow": 262144,
+    "maxOutput": 32768,
+    "inputCost": null,
+    "outputCost": null
+  },
+  {
     "model": "llmgateway-providers/novita/llama-3-70b-instruct",
     "imageInput": false,
     "audioInput": false,
@@ -4346,6 +4358,18 @@ for await (const chunk of stream) {
     "maxOutput": 128000,
     "inputCost": 1.4,
     "outputCost": 4.4
+  },
+  {
+    "model": "llmgateway-providers/scx-ai-gp/glm-5.3-fast",
+    "imageInput": false,
+    "audioInput": false,
+    "videoInput": false,
+    "toolUsage": false,
+    "reasoning": false,
+    "contextWindow": 1000000,
+    "maxOutput": 128000,
+    "inputCost": 2.8,
+    "outputCost": 8.8
   },
   {
     "model": "llmgateway-providers/scx-ai-gp/glm-5.3-flash",

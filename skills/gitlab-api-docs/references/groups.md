@@ -33,7 +33,8 @@ Parameters:
 > To get the details of all projects within a group, use either the [list a group's projects](#list-projects) or the [list a group's shared projects](#list-shared-projects) endpoint.
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/groups/4"
 ```
 
@@ -294,7 +295,8 @@ when GitLab Duo Agent Platform is available for the group. The object contains t
 When adding the parameter `with_projects=false`, projects aren't returned.
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/groups/4?with_projects=false"
 ```
 
@@ -817,7 +819,8 @@ Supported attributes:
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <your_access_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <your_access_token>" \
   --url "https://gitlab.example.com/api/v4/groups/:id/saml_users"
 ```
 
@@ -2051,7 +2054,8 @@ GET /groups/:id/avatar
 Example:
 
 ```shell
-curl --header "PRIVATE-TOKEN: $GITLAB_LOCAL_TOKEN" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: $GITLAB_LOCAL_TOKEN" \
   --remote-header-name \
   --remote-name \
   --url "https://gitlab.example.com/api/v4/groups/4/avatar"
@@ -2142,7 +2146,8 @@ GET /groups/:id/manage/personal_access_tokens
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <group_owner_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <group_owner_token>" \
   --url "https://gitlab.example.com/api/v4/groups/1/manage/personal_access_tokens"
 ```
 
@@ -2191,7 +2196,8 @@ GET /groups/:id/manage/resource_access_tokens
 Example request:
 
 ```shell
-curl --header "PRIVATE-TOKEN: <group_owner_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <group_owner_token>" \
   --url "https://gitlab.example.com/api/v4/groups/1/manage/resource_access_tokens"
 ```
 
@@ -2236,7 +2242,8 @@ GET /groups/:id/manage/ssh_keys
 | `expires_after`  | datetime (ISO 8601) | No       | If defined, returns SSH keys that expire after the specified time. |
 
 ```shell
-curl --header "PRIVATE-TOKEN: <group_owner_token>" \
+curl --request GET \
+  --header "PRIVATE-TOKEN: <group_owner_token>" \
   --url "https://gitlab.example.com/api/v4/groups/1/manage/ssh_keys"
 ```
 

@@ -148,7 +148,7 @@ Here is an example of passing all three inline:
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:             interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:             interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:             interactions.NewInteractionsInput("Analyze the Q1 revenue data and create a slide deck."),
                 SystemInstruction: genai.Ptr("You are a data analyst. Always include visualizations and export results as PDF."),
                 Environment:       genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(env)),
@@ -340,7 +340,7 @@ Mount an `AGENTS.md` using an inline source:
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:             interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:             interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:             interactions.NewInteractionsInput("Analyze the Q1 revenue data and create a report."),
                 SystemInstruction: genai.Ptr("You are a data analyst. Always include visualizations and export results as PDF."),
                 Environment:       genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(env)),
@@ -504,7 +504,7 @@ Mount a skill using an inline source:
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:             interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:             interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:             interactions.NewInteractionsInput("Create a presentation about our Q1 results."),
                 SystemInstruction: genai.Ptr("You create presentations from data."),
                 Environment:       genai.Ptr(interactions.NewCreateAgentInteractionEnvironment(env)),
@@ -721,7 +721,7 @@ Specify `base_agent`, `id`, `agent_config`, `system_instruction` and `base_envir
         res, err := client.Agents.Create(ctx, operations.CreateAgentRequest{
             Body: agents.Agent{
                 ID:        genai.Ptr("data-analyst"),
-                BaseAgent: genai.Ptr("antigravity-preview-05-2026"),
+                BaseAgent: genai.Ptr("antigravity-preview-09-2026"),
                 AgentConfig: genai.Ptr(agents.NewAgentConfig(interactions.AntigravityAgentConfig{
                     Model: genai.Ptr("gemini-3.8-flash"),
                 })),
@@ -879,7 +879,7 @@ Iterate with the base Antigravity agent until the environment is right (packages
         // Step 1: set up the environment interactively
         intRes, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateAgentInteraction{
-                Agent:       interactions.AgentOption("antigravity-preview-05-2026"),
+                Agent:       interactions.AgentOption("antigravity-preview-09-2026"),
                 Input:       interactions.NewInteractionsInput("Install pandas, matplotlib, and seaborn. Create an analysis template at /workspace/template.py."),
                 Environment: genai.Ptr(interactions.NewCreateAgentInteractionEnvironment("remote")),
             }),
@@ -893,7 +893,7 @@ Iterate with the base Antigravity agent until the environment is right (packages
         agentRes, err := client.Agents.Create(ctx, operations.CreateAgentRequest{
             Body: agents.Agent{
                 ID:                genai.Ptr("my-data-analyst"),
-                BaseAgent:         genai.Ptr("antigravity-preview-05-2026"),
+                BaseAgent:         genai.Ptr("antigravity-preview-09-2026"),
                 SystemInstruction: genai.Ptr("You are a data analyst. Use the template at /workspace/template.py for all reports."),
                 BaseEnvironment:   genai.Ptr(agents.NewBaseEnvironment(*interaction.EnvironmentID)),
             },
@@ -1020,9 +1020,9 @@ The following example creates an `issue-resolver` agent that can only access Git
                 .target("/workspace/repo")
                 .build()
         ))
-        .network(Network.of(EnvironmentNetworkEgressAllowlist.of(
-            Allowlist.builder()
-                .allowlist(List.of(
+        .network(Network.of(
+            EnvironmentNetworkEgressAllowlist.builder()
+                .allowlist(Allowlist.of(List.of(
                     AllowlistEntry.builder()
                         .domain("api.github.com")
                         .transform(Transform.of(Map.of(
@@ -1030,9 +1030,9 @@ The following example creates an `issue-resolver` agent that can only access Git
                         )))
                         .build(),
                     AllowlistEntry.builder().domain("pypi.org").build()
-                ))
+                )))
                 .build()
-        )))
+        ))
         .build();
 
     Agent agentParams = Agent.builder()
@@ -1075,8 +1075,8 @@ The following example creates an `issue-resolver` agent that can only access Git
                     Target: genai.Ptr("/workspace/repo"),
                 },
             },
-            Network: genai.Ptr(interactions.NewNetwork(interactions.NewEnvironmentNetworkEgressAllowlist(interactions.Allowlist{
-                Allowlist: []interactions.AllowlistEntry{
+            Network: genai.Ptr(interactions.NewNetwork(interactions.EnvironmentNetworkEgressAllowlist{
+                Allowlist: genai.Ptr(interactions.NewAllowlist([]interactions.AllowlistEntry{
                     {
                         Domain: "api.github.com",
                         Transform: genai.Ptr(interactions.NewTransform(map[string]string{
@@ -1086,14 +1086,14 @@ The following example creates an `issue-resolver` agent that can only access Git
                     {
                         Domain: "pypi.org",
                     },
-                },
-            }))),
+                })),
+            })),
         }
 
         res, err := client.Agents.Create(ctx, operations.CreateAgentRequest{
             Body: agents.Agent{
                 ID:                genai.Ptr("issue-resolver"),
-                BaseAgent:         genai.Ptr("antigravity-preview-05-2026"),
+                BaseAgent:         genai.Ptr("antigravity-preview-09-2026"),
                 SystemInstruction: genai.Ptr("You resolve GitHub issues. Clone the repo, find the bug, write the fix, run the tests, and open a PR."),
                 BaseEnvironment:   genai.Ptr(agents.NewBaseEnvironment(env)),
             },
@@ -1424,9 +1424,9 @@ agent referencing it picks up the new secret on the next run.
 
     // Invoke the agent with a fresh token, overriding the base_environment credentials
     Environment env = Environment.builder()
-        .network(Network.of(EnvironmentNetworkEgressAllowlist.of(
-            Allowlist.builder()
-                .allowlist(List.of(
+        .network(Network.of(
+            EnvironmentNetworkEgressAllowlist.builder()
+                .allowlist(Allowlist.of(List.of(
                     AllowlistEntry.builder()
                         .domain("api.github.com")
                         .transform(Transform.of(Map.of(
@@ -1434,9 +1434,9 @@ agent referencing it picks up the new secret on the next run.
                         )))
                         .build(),
                     AllowlistEntry.builder().domain("pypi.org").build()
-                ))
+                )))
                 .build()
-        )))
+        ))
         .build();
 
     CreateAgentInteraction params = CreateAgentInteraction.builder()
@@ -1471,8 +1471,8 @@ agent referencing it picks up the new secret on the next run.
 
         // Invoke the agent with a fresh token, overriding the base_environment credentials
         env := interactions.Environment{
-            Network: genai.Ptr(interactions.NewNetwork(interactions.NewEnvironmentNetworkEgressAllowlist(interactions.Allowlist{
-                Allowlist: []interactions.AllowlistEntry{
+            Network: genai.Ptr(interactions.NewNetwork(interactions.EnvironmentNetworkEgressAllowlist{
+                Allowlist: genai.Ptr(interactions.NewAllowlist([]interactions.AllowlistEntry{
                     {
                         Domain: "api.github.com",
                         Transform: genai.Ptr(interactions.NewTransform(map[string]string{
@@ -1482,8 +1482,8 @@ agent referencing it picks up the new secret on the next run.
                     {
                         Domain: "pypi.org",
                     },
-                },
-            }))),
+                })),
+            })),
         }
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{

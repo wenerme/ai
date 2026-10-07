@@ -118,9 +118,6 @@ To set this limit for a GitLab Self-Managed instance, use the [Plan Limits API](
 or run the following in the [GitLab Rails console](operations/rails_console.md#starting-a-rails-console-session):
 
 ```ruby
-# If limits don't exist for the default plan, you can create one with:
-# Plan.default.create_limits!
-
 Plan.default.actual_limits.update!(web_hook_calls: 10)
 ```
 
@@ -155,9 +152,6 @@ To set these limits for a GitLab Self-Managed instance, use the
 [GitLab Rails console](operations/rails_console.md#starting-a-rails-console-session):
 
 ```ruby
-# If limits don't exist for the default plan, you can create one with:
-# Plan.default.create_limits!
-
 Plan.default.actual_limits.update!(
   service_desk_outbound_emails_per_hour: 100,
   service_desk_outbound_emails_per_day: 1000
@@ -480,9 +474,6 @@ To set the maximum number of group or project webhooks for a GitLab Self-Managed
 run the following in the [GitLab Rails console](operations/rails_console.md#starting-a-rails-console-session):
 
 ```ruby
-# If limits don't exist for the default plan, you can create one with:
-# Plan.default.create_limits!
-
 # For project webhooks
 Plan.default.actual_limits.update!(project_hooks: 200)
 
@@ -551,9 +542,6 @@ The default limit for [GitLab Self-Managed](../subscriptions/manage_subscription
 To change this limit for a GitLab Self-Managed instance, run the following in the [GitLab Rails console](operations/rails_console.md#starting-a-rails-console-session):
 
 ```ruby
-# If limits don't exist for the default plan, you can create one with:
-# Plan.default.create_limits!
-
 Plan.default.actual_limits.update!(import_placeholder_user_limit_tier_1: 200)
 ```
 
@@ -572,9 +560,6 @@ To change this limit for a GitLab Self-Managed instance, run the following in th
 [GitLab Rails console](operations/rails_console.md#starting-a-rails-console-session):
 
 ```ruby
-# If limits don't exist for the default plan, you can create one with:
-# Plan.default.create_limits!
-
 Plan.default.actual_limits.update!(pull_mirror_interval_seconds: 200)
 ```
 
@@ -599,9 +584,6 @@ To set this limit for a GitLab Self-Managed instance, run the following in the
 [GitLab Rails console](operations/rails_console.md#starting-a-rails-console-session):
 
 ```ruby
-# If limits don't exist for the default plan, you can create one with:
-# Plan.default.create_limits!
-
 Plan.default.actual_limits.update!(offset_pagination_limit: 10000)
 ```
 

@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/rules/configuration-rules/response-body
 
 # Response body inspection
 
-Last updated Sep 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 When no enabled feature needs response content, Cloudflare can send data to the client as it arrives. Some features inspect or change response content at the edge.
 
@@ -36,6 +36,8 @@ The following features can change HTML response bodies when turned on and applic
 | [Replace insecure JavaScript libraries](https://developers.cloudflare.com/waf/tools/replace-insecure-js-libraries/) | Rewrites supported insecure library URLs |
 | [Rocket Loader](https://developers.cloudflare.com/speed/optimization/content/rocket-loader/) | Changes script loading behavior |
 | [Web Analytics](https://developers.cloudflare.com/web-analytics/) | Injects the Real User Monitoring beacon |
+
+When [Response Body Buffering](https://developers.cloudflare.com/rules/configuration-rules/settings/#response-body-buffering) is set to **None**, these features do not change the response body.
 
 Security and AI features may also read HTML without changing it. [Prefetch URLs](https://developers.cloudflare.com/speed/optimization/content/prefetch-urls/) reads URL manifests served as `text/plain`.
 
@@ -72,5 +74,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/#page","headline":"Response body inspection","description":"Understand when Cloudflare inspects response bodies and how inspection can affect streaming responses.","url":"https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/og.png?v=a6436cf9cbf0bd7f","dateModified":"2026-09-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/#page","headline":"Response body inspection","description":"Understand when Cloudflare inspects response bodies and how inspection can affect streaming responses.","url":"https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/configuration-rules/response-body-inspection/og.png?v=a6436cf9cbf0bd7f","dateModified":"2026-10-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

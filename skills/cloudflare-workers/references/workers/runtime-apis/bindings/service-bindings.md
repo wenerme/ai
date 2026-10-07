@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/workers/runtime-apis/bindings/service-b
 
 # Service bindings
 
-Last updated Aug 18, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 ## About Service bindings
 
@@ -56,7 +56,7 @@ service = "<WORKER_NAME>"
 ```
 
 - `binding`: The name of the key you want to expose on the `env` object.
-- `service`: The name of the target Worker you would like to communicate with. This Worker must be on your Cloudflare account.
+- `service`: The name of the target Worker you would like to communicate with. This Worker must be on your Cloudflare account. If the target Worker uses an [environment](https://developers.cloudflare.com/workers/wrangler/environments/#service-bindings), use `<WORKER_NAME>-<ENVIRONMENT_NAME>`.
 
 ## Interfaces
 
@@ -205,5 +205,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#page","headline":"Service bindings","description":"Facilitate Worker-to-Worker communication.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/og.png?v=334bbe3e4e2db869","dateModified":"2026-08-18","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/#page","headline":"Service bindings","description":"Facilitate Worker-to-Worker communication.","url":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/","inLanguage":"en","image":"https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/og.png?v=334bbe3e4e2db869","dateModified":"2026-10-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Bindings"]}
 ```

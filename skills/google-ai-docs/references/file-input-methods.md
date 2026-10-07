@@ -186,7 +186,7 @@ model or tokenizer used to process the file.
 | **Inline data** | Quick testing, small files, real-time applications. | 100 MB per request or payload (**50 MB for PDFs**) | None (sent with every request) |
 | **File API upload** | Large files, files used multiple times. | 2 GB per file, up to 20GB per project | 48 Hours |
 | **File API GCS URI registration** | Large files already in Google Cloud Storage, files used multiple times. | 2 GB per file, no overall storage limits | None (fetched per request). One time registration can give access for up to 30 days. |
-| **External URLs** | Public data or data in cloud buckets (AWS, Azure, GCS) without re-uploading. | 100 MB per request/payload | None (fetched per request) |
+| **External URLs** | Public data or data in cloud buckets (AWS, Azure, GCS) without re-uploading. | 15 MB per file | None (fetched per request) |
 
 ## Inline data
 
@@ -957,7 +957,8 @@ for an example.
 
 You can pass publicly accessible HTTPS URLs or pre-signed URLs directly in your
 request. The Gemini API will fetch the content securely during processing.
-This is ideal for files up to 100MB that you don't want to re-upload.
+This is ideal for files that you don't want to re-upload. Each file can be up
+to 15 MB. For larger files, use the [File API](https://ai.google.dev/gemini-api/docs/file-input-methods#file-api).
 
 > [!NOTE]
 > **Note:** Gemini 2.0 family of models are not supported
@@ -1085,7 +1086,7 @@ only supports publicly accessible URLs.
 - File size limits vary by method (see [comparison table](https://ai.google.dev/gemini-api/docs/file-input-methods#method-comparison)) and file type.
 - Inline data increases request payload size.
 - File API uploads are temporary and expire after 48 hours.
-- External URL fetching is limited to 100MB per payload and supports specific content types.
+- External URL fetching is limited to 15 MB per file and supports specific content types.
 
 ## What's next
 

@@ -69,6 +69,32 @@ Always ensure that your plugin version is up-to-date so you have access to all c
 >
 > On Grafana Cloud, the Google BigQuery plugin is managed by Grafana and updates automatically. On self-managed Grafana, you must update the plugin manually. Refer to [Version and upgrade guidance](/docs/plugins/grafana-bigquery-datasource/latest/troubleshooting/#version-and-upgrade-guidance).
 
+## Query with the Grafana CLI
+
+You can query this data source from the command line and from AI coding agents using the Grafana CLI, `gcx`. `gcx` gives you and your agent structured, terminal-based access to your Grafana data sources, which is useful for automation and agent-driven investigations.
+
+`gcx` supports Grafana Cloud and Grafana OSS or Enterprise v12 and later. Before you query, install and authenticate `gcx`. Refer to the [`gcx` CLI documentation](/docs/grafana/latest/as-code/observability-as-code/grafana-cli/gcx/) for installation, configuration, and the full command reference.
+
+For example, to query your BigQuery data source, use `gcx datasources bigquery`:
+
+sh [Copy code to clipboard] Copy
+
+```sh
+# Run a SQL query
+gcx datasources bigquery query -d <DATASOURCE_UID> 'SELECT count(*) FROM `my_dataset.events`'
+
+# List datasets in the default project
+gcx datasources bigquery list-datasets -d <DATASOURCE_UID>
+
+# List tables in a dataset
+gcx datasources bigquery list-tables -d <DATASOURCE_UID> --dataset my_dataset
+
+# Show a table's column schema
+gcx datasources bigquery describe-table my_dataset.events -d <DATASOURCE_UID>
+```
+
+Replace *`<DATASOURCE_UID>`* with the UID of your BigQuery data source. The `query` command accepts GoogleSQL with server-side macros such as `$__timeFilter`; `list-datasets`, `list-tables`, and `describe-table` let you explore schema, and `--dataset` targets a specific dataset.
+
 ## Related resources
 
 - [Google BigQuery documentation](https://cloud.google.com/bigquery/docs)

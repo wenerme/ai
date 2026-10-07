@@ -80,8 +80,8 @@ Anthropic's [client SDKs](https://platform.claude.com/docs/en/cli-sdks-libraries
     <Tabs>
       <Tab title="Gradle">
         ```kotlin
-        implementation("com.anthropic:anthropic-java:2.66.0")
-        implementation("com.anthropic:anthropic-java-foundry:2.66.0")
+        implementation("com.anthropic:anthropic-java:2.68.0")
+        implementation("com.anthropic:anthropic-java-foundry:2.68.0")
 
         // For Entra ID authentication, also add the Azure Identity library
         implementation("com.azure:azure-identity:1.18.3")
@@ -93,12 +93,12 @@ Anthropic's [client SDKs](https://platform.claude.com/docs/en/cli-sdks-libraries
         <dependency>
             <groupId>com.anthropic</groupId>
             <artifactId>anthropic-java</artifactId>
-            <version>2.66.0</version>
+            <version>2.68.0</version>
         </dependency>
         <dependency>
             <groupId>com.anthropic</groupId>
             <artifactId>anthropic-java-foundry</artifactId>
-            <version>2.66.0</version>
+            <version>2.68.0</version>
         </dependency>
         <!-- For Entra ID authentication, also add the Azure Identity library -->
         <dependency>
@@ -642,7 +642,7 @@ Claude in Microsoft Foundry supports most Claude features. You can find all the 
 
 ### Context window
 
-Claude Fable 5.1, Claude Fable 5, Claude Opus 5.5, Claude Opus 5, Claude Opus 4.8, Claude Opus 4.7, Claude Opus 4.6, Claude Sonnet 5.5, Claude Sonnet 5, and Claude Sonnet 4.6 have a [1M-token context window](https://platform.claude.com/docs/en/build-with-claude/context-windows) on Microsoft Foundry. Other Claude models, including Claude Sonnet 4.5, have a 200k-token context window.
+Claude Fable 5.1, Claude Fable 5, Claude Opus 5.5, Claude Opus 5, Claude Opus 4.8, Claude Opus 4.7, Claude Opus 4.6, Claude Sonnet 5.5, Claude Sonnet 5, and Claude Sonnet 4.6 have a [1M-token context window](https://platform.claude.com/docs/en/build-with-claude/context-windows) on Microsoft Foundry. Other Claude models, including Claude Sonnet 4.5 (deprecated), have a 200k-token context window.
 
 ### Claude features not supported for Claude in Microsoft Foundry
 
@@ -682,9 +682,9 @@ The following Claude models are available through Foundry:
 | Model                                                                                                 | Default deployment name | Hosted on Azure | Hosted on Anthropic |
 | :---------------------------------------------------------------------------------------------------- | :---------------------- | :-------------: | :-----------------: |
 | Claude Fable 5.1                                                                                      | `claude-fable-5-1`      |                 |          ✓          |
-| Claude Mythos 5.1 ([limited availability](https://anthropic.com/glasswing))                           | `claude-mythos-5-1`     |                 |          ✓          |
+| Claude Mythos 5.1 ([limited availability](https://support.claude.com/en/articles/14604842))           | `claude-mythos-5-1`     |                 |          ✓          |
 | Claude Fable 5                                                                                        | `claude-fable-5`        |                 |          ✓          |
-| Claude Mythos 5 ([limited availability](https://anthropic.com/glasswing))                             | `claude-mythos-5`       |                 |          ✓          |
+| Claude Mythos 5 ([limited availability](https://support.claude.com/en/articles/14604842))             | `claude-mythos-5`       |                 |          ✓          |
 | Claude Opus 5.5                                                                                       | `claude-opus-5-5`       |        ✓        |          ✓          |
 | Claude Opus 5                                                                                         | `claude-opus-5`         |        ✓        |          ✓          |
 | Claude Opus 4.8                                                                                       | `claude-opus-4-8`       |        ✓        |          ✓          |

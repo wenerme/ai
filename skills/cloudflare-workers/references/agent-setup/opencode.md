@@ -69,7 +69,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Set up a Waiting Room to handle flash sale traffic spikes without dropping requests.
+   Build an image upload and transformation service using R2 and Cloudflare Images.
    ```
 
 
@@ -119,21 +119,13 @@ MCP servers provide typed tools to call into Cloudflare at runtime. There are tw
 
 - Code mode APIcode modeBroad access to the full Cloudflare API via code execution, with minimal token overheadhttps://mcp.cloudflare.com/mcp
 - Code Mode servercode modeBest when you want broad access across Cloudflare's APIs through code executionhttps://mcp.cloudflare.com/mcp
-- AI Gateway serverSearch your logs, get details about the prompts and responseshttps://ai-gateway.mcp.cloudflare.com/mcp
-- AutoRAG serverSearch and query account AutoRAG instanceshttps://autorag.mcp.cloudflare.com/mcp
 - Browser Run serverFetch web pages, convert them to markdown and take screenshotshttps://browser.mcp.cloudflare.com/mcp
 - Cloudflare Blog serverSearch and read posts from the Cloudflare Bloghttps://blog.mcp.cloudflare.com/mcp
 - Cloudflare One CASB serverQuickly identify any security misconfigurations for SaaS applications to safeguard users &amp; datahttps://casb.mcp.cloudflare.com/mcp
 - Container serverSpin up a sandbox development environmenthttps://containers.mcp.cloudflare.com/mcp
 - Demo Day serverDemonstrate a minimal Cloudflare MCP serverhttps://demo-day.mcp.cloudflare.com/mcp
 - Digital Experience Monitoring serverGet quick insight on critical applications for your organizationhttps://dex.mcp.cloudflare.com/mcp
-- DNS Analytics serverOptimize DNS performance and debug issues based on current setuphttps://dns-analytics.mcp.cloudflare.com/mcp
 - Documentation serverGet up-to-date reference information on Cloudflarehttps://docs.mcp.cloudflare.com/mcp
-- Logpush serverGet quick summaries for Logpush job healthhttps://logs.mcp.cloudflare.com/mcp
-- Observability serverDebug and get insight into your application's logs and analyticshttps://observability.mcp.cloudflare.com/mcp
-- Radar serverExplore Cloudflare Radar internet insightshttps://radar.mcp.cloudflare.com/mcp
-- Workers Bindings serverBuild Workers applications with storage, AI, and compute primitiveshttps://bindings.mcp.cloudflare.com/mcp
-- Workers Builds serverGet insights and manage your Cloudflare Workers Buildshttps://builds.mcp.cloudflare.com/mcp
 
 </details>
 
@@ -176,23 +168,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Add mTLS authentication and schema validation to protect my API endpoints.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ```txt
-Check my Workers deployment logs for errors and suggest fixes.
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
+Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ## Tips

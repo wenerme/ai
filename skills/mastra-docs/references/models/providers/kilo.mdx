@@ -5,7 +5,7 @@ description: "Browse Kilo Gateway model IDs, capabilities, context windows, and 
 
 # [Kilo Gateway logo]Kilo Gateway
 
-Access 396 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
+Access 395 Kilo Gateway models through Mastra's model router. Authentication is handled automatically using the `KILO_API_KEY` environment variable.
 
 Learn more in the [Kilo Gateway documentation](https://kilo.ai).
 
@@ -96,8 +96,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 0.002,
-    "outputCost": 2.4
+    "inputCost": 0.05,
+    "outputCost": 1.2
   },
   {
     "model": "kilo/~deepseek/deepseek-pro-latest",
@@ -107,9 +107,9 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 1048576,
-    "maxOutput": 393216,
-    "inputCost": 0.2514,
-    "outputCost": 4.2
+    "maxOutput": 384000,
+    "inputCost": 0.4,
+    "outputCost": 4.3
   },
   {
     "model": "kilo/~deepseek/deepseek-v4-flash-latest",
@@ -120,7 +120,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 0.015,
+    "inputCost": 0.018,
     "outputCost": 1.28
   },
   {
@@ -156,7 +156,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 943718,
-    "inputCost": 0.83,
+    "inputCost": 0.61,
     "outputCost": 13
   },
   {
@@ -240,7 +240,7 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.0244,
+    "inputCost": 0.0214,
     "outputCost": 0.5
   },
   {
@@ -252,8 +252,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 131072,
-    "inputCost": 0.03,
-    "outputCost": 12
+    "inputCost": 0.063,
+    "outputCost": 6.3
   },
   {
     "model": "kilo/aion-labs/aion-2.0",
@@ -1516,18 +1516,6 @@ for await (const chunk of stream) {
     "outputCost": 0.4
   },
   {
-    "model": "kilo/kwaipilot/kat-coder-pro-v2.5",
-    "imageInput": false,
-    "audioInput": false,
-    "videoInput": false,
-    "toolUsage": true,
-    "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 235929,
-    "inputCost": 0.74,
-    "outputCost": 2.96
-  },
-  {
     "model": "kilo/liquid/lfm-2.5-2.6b:free",
     "imageInput": false,
     "audioInput": false,
@@ -2148,8 +2136,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 235929,
-    "inputCost": 0.95,
-    "outputCost": 4
+    "inputCost": 0.465,
+    "outputCost": 2.45
   },
   {
     "model": "kilo/moonshotai/kimi-k2.7-code",
@@ -3490,8 +3478,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": false,
-    "contextWindow": 262144,
-    "maxOutput": 235929,
+    "contextWindow": 128000,
+    "maxOutput": 32000,
     "inputCost": 0.13,
     "outputCost": 0.52
   },
@@ -3755,7 +3743,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 32768,
+    "maxOutput": 235929,
     "inputCost": 0.1625,
     "outputCost": 1.3
   },
@@ -3827,7 +3815,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 262144,
-    "maxOutput": 262140,
+    "maxOutput": 65536,
     "inputCost": 0.45,
     "outputCost": 2.7
   },
@@ -4272,8 +4260,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 262144,
     "maxOutput": 128000,
-    "inputCost": 0.0825,
-    "outputCost": 0.33
+    "inputCost": 0.13,
+    "outputCost": 0.53
   },
   {
     "model": "kilo/tencent/hy3-preview",
@@ -4296,8 +4284,8 @@ for await (const chunk of stream) {
     "reasoning": true,
     "contextWindow": 1048576,
     "maxOutput": 64000,
-    "inputCost": 0.7506,
-    "outputCost": 2.2509
+    "inputCost": 0.834,
+    "outputCost": 2.501
   },
   {
     "model": "kilo/thedrummer/cydonia-24b-v4.1",
@@ -4343,7 +4331,7 @@ for await (const chunk of stream) {
     "toolUsage": true,
     "reasoning": true,
     "contextWindow": 524288,
-    "maxOutput": 262144,
+    "maxOutput": 471859,
     "inputCost": 0.95,
     "outputCost": 4.05
   },
@@ -4714,8 +4702,8 @@ for await (const chunk of stream) {
     "videoInput": false,
     "toolUsage": true,
     "reasoning": true,
-    "contextWindow": 202752,
-    "maxOutput": 131072,
+    "contextWindow": 200000,
+    "maxOutput": 128000,
     "inputCost": 1.4,
     "outputCost": 4.4
   },

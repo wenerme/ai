@@ -1671,9 +1671,9 @@ Because a trigger runs unattended on a schedule, reference a stored [credential]
         .build();
 
     Environment env = Environment.builder()
-        .network(Network.of(EnvironmentNetworkEgressAllowlist.of(
-            Allowlist.builder()
-                .allowlist(List.of(
+        .network(Network.of(
+            EnvironmentNetworkEgressAllowlist.builder()
+                .allowlist(Allowlist.of(List.of(
                     AllowlistEntry.builder()
                         .domain("api.github.com")
                         .transform(Transform.of(Map.of(
@@ -1683,9 +1683,9 @@ Because a trigger runs unattended on a schedule, reference a stored [credential]
                     AllowlistEntry.builder()
                         .domain("github.com")
                         .build()
-                ))
+                )))
                 .build()
-        )))
+        ))
         .build();
 
     CreateAgentInteraction interactionTemplate = CreateAgentInteraction.builder()
@@ -1730,8 +1730,8 @@ Because a trigger runs unattended on a schedule, reference a stored [credential]
         }))
 
         env := interactions.Environment{
-            Network: genai.Ptr(interactions.NewNetwork(interactions.NewEnvironmentNetworkEgressAllowlist(interactions.Allowlist{
-                Allowlist: []interactions.AllowlistEntry{
+            Network: genai.Ptr(interactions.NewNetwork(interactions.EnvironmentNetworkEgressAllowlist{
+                Allowlist: genai.Ptr(interactions.NewAllowlist([]interactions.AllowlistEntry{
                     {
                         Domain: "api.github.com",
                         Transform: genai.Ptr(interactions.NewTransform(map[string]string{
@@ -1741,8 +1741,8 @@ Because a trigger runs unattended on a schedule, reference a stored [credential]
                     {
                         Domain: "github.com",
                     },
-                },
-            }))),
+                })),
+            })),
         }
 
         interactionTemplate := interactions.CreateAgentInteraction{

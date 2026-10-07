@@ -39,7 +39,7 @@ On GitLab Self-Managed, an administrator must first [install and enable GitLab S
 
 Status: Limited Availability
 
-- You can start a 30-day trial to try GitLab Secrets Manager with temporary evaluation credits. After the trial expires, GitLab Secrets Manager starts consuming GitLab credits. To avoid a service interruption, purchase a monthly commitment pool of credits or enable on-demand billing before the trial ends. For more information, see [GitLab Secrets Manager credit usage](credit_usage.md).
+- You can start a 30-day trial to try GitLab Secrets Manager with temporary evaluation credits. After the trial expires, GitLab Secrets Manager starts consuming GitLab credits. To avoid a service interruption, purchase a monthly commitment pool of credits or accept the usage billing terms before the trial ends. For more information, see [GitLab Secrets Manager credit usage](credit_usage.md).
 - If you opted into the beta before August 21, 2026, your environment has a grace period with continued access until September 21, 2026. After the grace period, GitLab disables access. To continue access, start a trial before the grace period ends.
 
 Prerequisites:
@@ -55,7 +55,7 @@ Prerequisites:
 - Status: Beta
 
 > [!note]
-> GitLab Secrets Manager is free during public beta. GitLab notifies you before general availability, so that you have time to start a trial or opt into on-demand billing for GitLab Credits.
+> GitLab Secrets Manager is free during public beta. GitLab notifies you before general availability, so that you have time to start a trial or accept the usage billing terms for GitLab Credits.
 
 #### For a project
 

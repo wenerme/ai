@@ -734,7 +734,7 @@ Arguments:
 | <a id="query-blobsearch-excludeforks"></a>`excludeForks`  | [`Boolean`](#boolean) | Introduced in GitLab 17.11. Status: Experiment. Excludes forked projects in the search. Always false for project search. Default is true. |
 | <a id="query-blobsearch-groupid"></a>`groupId`  | [`GroupID`](#groupid) | Introduced in GitLab 17.2. Status: Experiment. Group to search in. |
 | <a id="query-blobsearch-includearchived"></a>`includeArchived`  | [`Boolean`](#boolean) | Introduced in GitLab 17.7. Status: Experiment. Includes archived projects in the search. Always true for project search. Default is false. |
-| <a id="query-blobsearch-language"></a>`language`  | [`[String!]`](#string) | Introduced in GitLab 19.3. Status: Experiment. Filter results to the given detected languages (for example, `["Ruby", "Go"]`). Requires the `zoekt_language_aggregations` feature flag. |
+| <a id="query-blobsearch-language"></a>`language`  | [`[String!]`](#string) | Introduced in GitLab 19.3. Status: Experiment. Filter results to the given detected languages (for example, `["Ruby", "Go"]`). |
 | <a id="query-blobsearch-page"></a>`page`  | [`Int`](#int) | Introduced in GitLab 17.2. Status: Experiment. Page number to fetch the results. |
 | <a id="query-blobsearch-perpage"></a>`perPage`  | [`Int`](#int) | Introduced in GitLab 17.2. Status: Experiment. Number of results per page. |
 | <a id="query-blobsearch-projectid"></a>`projectId`  | [`ProjectID`](#projectid) | Introduced in GitLab 17.2. Status: Experiment. Project to search in. |
@@ -1147,9 +1147,6 @@ Projects the current user has Duo Agent Platform sessions in, ordered by most re
 Returns [`[Project!]`](#project).
 
 ### `Query.duoWorkflowWorkflows`
-
-- Introduced in GitLab 17.2.
-- Status: Experiment.
 
 List the workflows owned by the current user.
 
@@ -4047,6 +4044,7 @@ Arguments:
 | <a id="mutation-aiselfhostedmodelconnectioncheck-apitoken"></a>`apiToken` | [`String`](#string) | API token to access the self-hosted model, if any. |
 | <a id="mutation-aiselfhostedmodelconnectioncheck-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-aiselfhostedmodelconnectioncheck-endpoint"></a>`endpoint` | [`String`](#string) | Endpoint of the self-hosted model. |
+| <a id="mutation-aiselfhostedmodelconnectioncheck-iamrole"></a>`iamRole` | [`String`](#string) | IAM role ARN that the AI Gateway assumes through STS AssumeRole when calling Amazon Bedrock. Only used by the Amazon Bedrock provider. |
 | <a id="mutation-aiselfhostedmodelconnectioncheck-identifier"></a>`identifier` | [`String`](#string) | Identifier for 3rd party model provider. |
 | <a id="mutation-aiselfhostedmodelconnectioncheck-model"></a>`model` | [`AiAcceptedSelfHostedModels!`](#aiacceptedselfhostedmodels) | AI model deployed. |
 | <a id="mutation-aiselfhostedmodelconnectioncheck-name"></a>`name` | [`String!`](#string) | Deployment name of the self-hosted model. |
@@ -4074,6 +4072,7 @@ Arguments:
 | <a id="mutation-aiselfhostedmodelcreate-apitoken"></a>`apiToken` | [`String`](#string) | API token to access the self-hosted model, if any. |
 | <a id="mutation-aiselfhostedmodelcreate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-aiselfhostedmodelcreate-endpoint"></a>`endpoint` | [`String`](#string) | Endpoint of the self-hosted model. |
+| <a id="mutation-aiselfhostedmodelcreate-iamrole"></a>`iamRole` | [`String`](#string) | IAM role ARN that the AI Gateway assumes through STS AssumeRole when calling Amazon Bedrock. Only used by the Amazon Bedrock provider. |
 | <a id="mutation-aiselfhostedmodelcreate-identifier"></a>`identifier` | [`String`](#string) | Identifier for 3rd party model provider. |
 | <a id="mutation-aiselfhostedmodelcreate-model"></a>`model` | [`AiAcceptedSelfHostedModels!`](#aiacceptedselfhostedmodels) | AI model deployed. |
 | <a id="mutation-aiselfhostedmodelcreate-name"></a>`name` | [`String!`](#string) | Deployment name of the self-hosted model. |
@@ -4126,6 +4125,7 @@ Arguments:
 | <a id="mutation-aiselfhostedmodelupdate-apitoken"></a>`apiToken` | [`String`](#string) | API token to access the self-hosted model, if any. |
 | <a id="mutation-aiselfhostedmodelupdate-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-aiselfhostedmodelupdate-endpoint"></a>`endpoint` | [`String`](#string) | Endpoint of the self-hosted model. |
+| <a id="mutation-aiselfhostedmodelupdate-iamrole"></a>`iamRole` | [`String`](#string) | IAM role ARN that the AI Gateway assumes through STS AssumeRole when calling Amazon Bedrock. Only used by the Amazon Bedrock provider. |
 | <a id="mutation-aiselfhostedmodelupdate-id"></a>`id` | [`AiSelfHostedModelID!`](#aiselfhostedmodelid) | Global ID of the self-hosted model to update. |
 | <a id="mutation-aiselfhostedmodelupdate-identifier"></a>`identifier` | [`String`](#string) | Identifier for 3rd party model provider. |
 | <a id="mutation-aiselfhostedmodelupdate-model"></a>`model` | [`AiAcceptedSelfHostedModels!`](#aiacceptedselfhostedmodels) | AI model deployed. |
@@ -25361,6 +25361,29 @@ Fields:
 | <a id="duoworkflowworkitemlinkedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
 | <a id="duoworkflowworkitemlinkedge-node"></a>`node` | [`DuoWorkflowWorkItemLink`](#duoworkflowworkitemlink) | The item at the end of the edge. |
 
+#### `DuoWorkflowWorkflowLinkConnection`
+
+The connection type for [`DuoWorkflowWorkflowLink`](#duoworkflowworkflowlink).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowworkflowlinkconnection-edges"></a>`edges` | [`[DuoWorkflowWorkflowLinkEdge]`](#duoworkflowworkflowlinkedge) | A list of edges. |
+| <a id="duoworkflowworkflowlinkconnection-nodes"></a>`nodes` | [`[DuoWorkflowWorkflowLink]`](#duoworkflowworkflowlink) | A list of nodes. |
+| <a id="duoworkflowworkflowlinkconnection-pageinfo"></a>`pageInfo` | [`PageInfo!`](#pageinfo) | Information to aid in pagination. |
+
+#### `DuoWorkflowWorkflowLinkEdge`
+
+The edge type for [`DuoWorkflowWorkflowLink`](#duoworkflowworkflowlink).
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowworkflowlinkedge-cursor"></a>`cursor` | [`String!`](#string) | A cursor for use in pagination. |
+| <a id="duoworkflowworkflowlinkedge-node"></a>`node` | [`DuoWorkflowWorkflowLink`](#duoworkflowworkflowlink) | The item at the end of the edge. |
+
 #### `DuoWorkflowsAggregationResponseConnection`
 
 The connection type for [`DuoWorkflowsAggregationResponse`](#duoworkflowsaggregationresponse).
@@ -34062,6 +34085,7 @@ Fields:
 | <a id="aiselfhostedmodel-endpoint"></a>`endpoint` | [`String`](#string) | Endpoint of the self-hosted model server. |
 | <a id="aiselfhostedmodel-featuresettings"></a>`featureSettings` | [`AiFeatureSettingConnection`](#aifeaturesettingconnection) | AI feature settings using the self-hosted model. (see [Connections](#connections)) |
 | <a id="aiselfhostedmodel-hasapitoken"></a>`hasApiToken` | [`Boolean!`](#boolean) | Indicates if an API key is set for the self-hosted model server. |
+| <a id="aiselfhostedmodel-iamrole"></a>`iamRole` | [`String`](#string) | IAM role ARN that the AI Gateway assumes when calling Amazon Bedrock. |
 | <a id="aiselfhostedmodel-id"></a>`id` | [`AiSelfHostedModelID!`](#aiselfhostedmodelid) | ID of the self-hosted model server. |
 | <a id="aiselfhostedmodel-identifier"></a>`identifier` | [`String`](#string) | Identifier for 3rd party model provider. |
 | <a id="aiselfhostedmodel-model"></a>`model` | [`String!`](#string) | AI model deployed. |
@@ -42446,6 +42470,22 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="duoworkflow-firstcheckpoint-checkpointns"></a>`checkpointNs`  | [`String`](#string) | Introduced in GitLab 19.3. Status: Experiment. LangGraph checkpoint namespace to scope the lookup to. Omit (or pass an empty string) for the session's own top-level checkpoint lineage; used internally to resolve one nested subgraph invocation, e.g. a delegated subagent. |
 
+##### `DuoWorkflow.inverseWorkflowLinks`
+
+Other sessions that link to the session, for example the sessions restarted from it. On each link, `workflow` is the other session and `linkedWorkflow` is the session.
+
+Returns [`DuoWorkflowWorkflowLinkConnection`](#duoworkflowworkflowlinkconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflow-inverseworkflowlinks-linktype"></a>`linkType` | [`DuoWorkflowWorkflowLinkType`](#duoworkflowworkflowlinktype) | Filter links by their link type. |
+
 ##### `DuoWorkflow.latestCheckpoint`
 
 Latest checkpoint of the session.
@@ -42550,6 +42590,22 @@ Arguments:
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | <a id="duoworkflow-workitemlinks-linktype"></a>`linkType` | [`DuoWorkflowWorkItemLinkType`](#duoworkflowworkitemlinktype) | Filter links by their link type. |
+
+##### `DuoWorkflow.workflowLinks`
+
+Other sessions linked to the session, for example the session it was restarted from.
+
+Returns [`DuoWorkflowWorkflowLinkConnection`](#duoworkflowworkflowlinkconnection).
+
+This field returns a [connection](#connections). It accepts the
+four standard [pagination arguments](#pagination-arguments):
+`before: String`, `after: String`, `first: Int`, and `last: Int`.
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflow-workflowlinks-linktype"></a>`linkType` | [`DuoWorkflowWorkflowLinkType`](#duoworkflowworkflowlinktype) | Filter links by their link type. |
 
 ### `DuoWorkflowBranch`
 
@@ -42726,6 +42782,19 @@ Fields:
 | <a id="duoworkflowworkitemlink-linktype"></a>`linkType` | [`DuoWorkflowWorkItemLinkType!`](#duoworkflowworkitemlinktype) | How the work item relates to the session. |
 | <a id="duoworkflowworkitemlink-workitem"></a>`workItem` | [`WorkItem`](#workitem) | Linked work item. |
 | <a id="duoworkflowworkitemlink-workflow"></a>`workflow` | [`DuoWorkflow`](#duoworkflow) | Linked GitLab Duo Agent Platform session. |
+
+### `DuoWorkflowWorkflowLink`
+
+Link between a GitLab Duo Agent Platform session and another session.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowworkflowlink-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the link was created. |
+| <a id="duoworkflowworkflowlink-linktype"></a>`linkType` | [`DuoWorkflowWorkflowLinkType!`](#duoworkflowworkflowlinktype) | How the linked session relates to the session. |
+| <a id="duoworkflowworkflowlink-linkedworkflow"></a>`linkedWorkflow` | [`DuoWorkflow`](#duoworkflow) | Session the link points to. For a `SOURCE` link, the session that was restarted. |
+| <a id="duoworkflowworkflowlink-workflow"></a>`workflow` | [`DuoWorkflow`](#duoworkflow) | Linked GitLab Duo Agent Platform session. |
 
 ### `DuoWorkflowsAggregationResponse`
 
@@ -44942,6 +45011,7 @@ Fields:
 | <a id="gitlabsubscriptionusage-lasteventtransactionat"></a>`lastEventTransactionAt` | [`ISO8601DateTime`](#iso8601datetime) | Date and time when the last usage event resulted in a wallet transaction. |
 | <a id="gitlabsubscriptionusage-monthlycommitment"></a>`monthlyCommitment` | [`GitlabSubscriptionMonthlyCommitment`](#gitlabsubscriptionmonthlycommitment) | Monthly commitment usage for the subscription. |
 | <a id="gitlabsubscriptionusage-monthlywaiver"></a>`monthlyWaiver` | [`GitlabSubscriptionMonthlyWaiver`](#gitlabsubscriptionmonthlywaiver) | Monthly waiver usage for the subscription. |
+| <a id="gitlabsubscriptionusage-nonbillableusage"></a>`nonBillableUsage` | [`[GitlabSubscriptionUsageNonBillableUsage!]`](#gitlabsubscriptionusagenonbillableusage) | GitLab Credits usage that was not billed, grouped by product and skip reason. Not included in `creditsUsed` or `dailyUsage`. Null when the usage cannot be read. |
 | <a id="gitlabsubscriptionusage-overage"></a>`overage` | [`GitlabSubscriptionOverage`](#gitlabsubscriptionoverage) | Overage statistics. |
 | <a id="gitlabsubscriptionusage-overagetermsaccepted"></a>`overageTermsAccepted` | [`Boolean!`](#boolean) | Indicates whether overage terms have been accepted for the subscription. |
 | <a id="gitlabsubscriptionusage-paidtiertrial"></a>`paidTierTrial` | [`GitlabSubscriptionPaidTierTrial!`](#gitlabsubscriptionpaidtiertrial) | Paid tier trial data for the subscription. |
@@ -44987,6 +45057,19 @@ Fields:
 | ---- | ---- | ----------- |
 | <a id="gitlabsubscriptionusageflowtypeinfo-id"></a>`id` | [`String!`](#string) | Identifier for the flow type, used for filtering. |
 | <a id="gitlabsubscriptionusageflowtypeinfo-title"></a>`title` | [`String!`](#string) | Display name for the flow type. |
+
+### `GitlabSubscriptionUsageNonBillableUsage`
+
+GitLab Credits usage that was not billed, for one product and skip reason.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="gitlabsubscriptionusagenonbillableusage-dailyusage"></a>`dailyUsage` | [`[GitlabSubscriptionDailyUsage!]!`](#gitlabsubscriptiondailyusage) | Daily non-billable GitLab Credits for the product and skip reason. |
+| <a id="gitlabsubscriptionusagenonbillableusage-productid"></a>`productId` | [`String!`](#string) | Identifier of the product the usage belongs to. Matches `GitlabSubscriptionUsageProduct.id`. |
+| <a id="gitlabsubscriptionusagenonbillableusage-skipreason"></a>`skipReason` | [`String`](#string) | Reason the usage was not billed, as recorded on the usage event. Null when the event has no recorded reason. |
+| <a id="gitlabsubscriptionusagenonbillableusage-totalcreditsused"></a>`totalCreditsUsed` | [`Float!`](#float) | Total non-billable GitLab Credits for the product and skip reason in the date range. |
 
 ### `GitlabSubscriptionUsageProduct`
 
@@ -55702,7 +55785,7 @@ Fields:
 | <a id="project-avatarurl"></a>`avatarUrl` | [`String`](#string) | Avatar URL of the project. |
 | <a id="project-ciaccessauthorizedagents"></a>`ciAccessAuthorizedAgents` | [`ClusterAgentAuthorizationCiAccessConnection`](#clusteragentauthorizationciaccessconnection) | Authorized cluster agents for the project through ci_access keyword. (see [Connections](#connections)) |
 | <a id="project-cicdsettings"></a>`ciCdSettings` | [`ProjectCiCdSetting`](#projectcicdsetting) | CI/CD settings for the project. |
-| <a id="project-ciconfigpathordefault"></a>`ciConfigPathOrDefault` | [`String!`](#string) | Path of the CI configuration file. |
+| <a id="project-ciconfigpathordefault"></a>`ciConfigPathOrDefault` | [`String!`](#string) | Path of the CI configuration file. Returns an empty string if the user does not have permission to read the repository. |
 | <a id="project-cidownstreamprojectsubscriptions"></a>`ciDownstreamProjectSubscriptions`  | [`CiProjectSubscriptionConnection`](#ciprojectsubscriptionconnection) | Introduced in GitLab 17.6. Status: Experiment. Pipeline subscriptions where this project is the upstream project.When this project's pipeline completes, a pipeline is triggered in the downstream project. |
 | <a id="project-cijobtokenauthlogs"></a>`ciJobTokenAuthLogs`  | [`CiJobTokenAuthLogConnection`](#cijobtokenauthlogconnection) | Introduced in GitLab 17.6. Status: Experiment. The CI Job Tokens authorization logs. |
 | <a id="project-cijobtokenscope"></a>`ciJobTokenScope` | [`CiJobTokenScopeType`](#cijobtokenscopetype) | The CI Job Tokens scope of access. |
@@ -55724,6 +55807,7 @@ Fields:
 | <a id="project-customattributes"></a>`customAttributes` | [`[CustomAttribute!]`](#customattribute) | Custom attributes of the project. Only available to admins. |
 | <a id="project-dastscannerprofiles"></a>`dastScannerProfiles` | [`DastScannerProfileConnection`](#dastscannerprofileconnection) | DAST scanner profiles associated with the project. (see [Connections](#connections)) |
 | <a id="project-dastsiteprofiles"></a>`dastSiteProfiles` | [`DastSiteProfileConnection`](#dastsiteprofileconnection) | DAST Site Profiles associated with the project. (see [Connections](#connections)) |
+| <a id="project-defaultmergerequesttarget"></a>`defaultMergeRequestTarget` | [`Project`](#project) | Default target project of merge requests created from the project. For a fork, this is the upstream project when the fork can target it, and the fork itself otherwise. Returns `null` when the target project is not visible to the current user. |
 | <a id="project-dependencyproxypackagessetting"></a>`dependencyProxyPackagesSetting` | [`DependencyProxyPackagesSetting`](#dependencyproxypackagessetting) | Packages Dependency Proxy settings for the project. Requires the packages and dependency proxy to be enabled in the config. Requires the packages feature to be enabled at the project level. |
 | <a id="project-description"></a>`description` | [`String`](#string) | Short description of the project. |
 | <a id="project-descriptionhtml"></a>`descriptionHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `description`. |
@@ -60590,6 +60674,7 @@ Fields:
 | <a id="secretsmanagerentitlement-creditsremaining"></a>`creditsRemaining`  | [`Float`](#float) | Introduced in GitLab 19.2. Status: Experiment. Number of trial credits remaining. |
 | <a id="secretsmanagerentitlement-creditstotal"></a>`creditsTotal`  | [`Float`](#float) | Introduced in GitLab 19.2. Status: Experiment. Initial trial credit allocation for the current trial period. |
 | <a id="secretsmanagerentitlement-graceperiodenddate"></a>`gracePeriodEndDate` | [`Date`](#date) | Last day of the read-only grace period, inclusive. Set only when blockedReason is GRACE; null otherwise. |
+| <a id="secretsmanagerentitlement-offlineflexlicense"></a>`offlineFlexLicense`  | [`Boolean`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates whether the offline license is a GitLab Flex license, whose usage consumes GitLab Credits. Null unless state is OFFLINE_PAID. |
 | <a id="secretsmanagerentitlement-offlinelicense"></a>`offlineLicense`  | [`Boolean`](#boolean) | Introduced in GitLab 19.4. Status: Experiment. Indicates whether the instance license is not an online cloud license, so no Secrets Manager trial can be started. Null on GitLab.com. |
 | <a id="secretsmanagerentitlement-ondemandenabled"></a>`onDemandEnabled`  | [`Boolean`](#boolean) | Introduced in GitLab 19.2. Status: Experiment. Indicates whether on-demand purchasing is enabled for the namespace. |
 | <a id="secretsmanagerentitlement-state"></a>`state`  | [`SecretsManagerEntitlementState!`](#secretsmanagerentitlementstate) | Introduced in GitLab 19.2. Status: Experiment. Resolved entitlement state. |
@@ -68719,6 +68804,14 @@ Type of link between a GitLab Duo Agent Platform session and a work item.
 | ----- | ----------- |
 | <a id="duoworkflowworkitemlinktype-created"></a>`CREATED` | Link of type `created` between a session and a work item. |
 | <a id="duoworkflowworkitemlinktype-source"></a>`SOURCE` | Link of type `source` between a session and a work item. |
+
+### `DuoWorkflowWorkflowLinkType`
+
+Type of link between two GitLab Duo Agent Platform sessions.
+
+| Value | Description |
+| ----- | ----------- |
+| <a id="duoworkflowworkflowlinktype-source"></a>`SOURCE` | Link of type `source` between a session and another session. |
 
 ### `DuoWorkflowsModelHosting`
 
