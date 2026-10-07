@@ -14,6 +14,7 @@ image: https://developers.cloudflare.com/k2/platform/og.png?v=b7b48f24f7c6e4b8
 
 Last updated Oct 1, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/k2/platform/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
+- [Pricing](https://developers.cloudflare.com/k2/platform/pricing/)
 - [Limits](https://developers.cloudflare.com/k2/platform/limits/)
 - [Choose a data or storage product](https://developers.cloudflare.com/workers/platform/storage-options/)
 

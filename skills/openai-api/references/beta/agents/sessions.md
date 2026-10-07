@@ -396,7 +396,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   - `tools: optional array of AgentToolParam or null`
 
-    Tools available to the agent. Omit to inherit, or pass null to clear them.
+    Tools available to the agent. Omit to inherit, or pass null to clear them. The resolved tool list must fit within 3 MiB (3,145,728 bytes) of compact UTF-8 JSON.
 
     - `Function object { description, name, parameters, 2 more }`
 
@@ -6010,7 +6010,7 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
 
         A customer-safe error. Non-null only for a failed turn.
 
-        - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
+        - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 20 more`
 
           A stable, machine-readable failure category.
 
@@ -6037,6 +6037,10 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
           - `"organization_usage_limit_exceeded"`
 
             The organization has reached its OpenAI-assigned usage limit.
+
+          - `"billing_not_active"`
+
+            Billing is not active for the account.
 
           - `"credit_balance_exhausted"`
 
@@ -10280,7 +10284,7 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 20 more`
 
       A stable, machine-readable failure category.
 
@@ -10307,6 +10311,10 @@ Lists all turns of this subagent, including turns after a resume. See [subagent 
       - `"organization_usage_limit_exceeded"`
 
         The organization has reached its OpenAI-assigned usage limit.
+
+      - `"billing_not_active"`
+
+        Billing is not active for the account.
 
       - `"credit_balance_exhausted"`
 
@@ -10559,7 +10567,7 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 20 more`
 
       A stable, machine-readable failure category.
 
@@ -10586,6 +10594,10 @@ Retrieves a turn belonging to this subagent. See [subagent workflows](/api/docs/
       - `"organization_usage_limit_exceeded"`
 
         The organization has reached its OpenAI-assigned usage limit.
+
+      - `"billing_not_active"`
+
+        Billing is not active for the account.
 
       - `"credit_balance_exhausted"`
 
@@ -11927,7 +11939,7 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 20 more`
 
       A stable, machine-readable failure category.
 
@@ -11954,6 +11966,10 @@ Lists turns by creation time and turn ID. The after cursor is exclusive in the s
       - `"organization_usage_limit_exceeded"`
 
         The organization has reached its OpenAI-assigned usage limit.
+
+      - `"billing_not_active"`
+
+        Billing is not active for the account.
 
       - `"credit_balance_exhausted"`
 
@@ -12204,7 +12220,7 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 20 more`
 
       A stable, machine-readable failure category.
 
@@ -12231,6 +12247,10 @@ Retrieves a turn's current status, timestamps, usage, and error. Returns 404 if 
       - `"organization_usage_limit_exceeded"`
 
         The organization has reached its OpenAI-assigned usage limit.
+
+      - `"billing_not_active"`
+
+        Billing is not active for the account.
 
       - `"credit_balance_exhausted"`
 
@@ -12445,7 +12465,7 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
 
     A customer-safe error. Non-null only for a failed turn.
 
-    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 19 more`
+    - `code: "context_length_exceeded" or "session_budget_exceeded" or "usage_limit_exceeded" or 20 more`
 
       A stable, machine-readable failure category.
 
@@ -12472,6 +12492,10 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID/turns/$TURN_ID \
       - `"organization_usage_limit_exceeded"`
 
         The organization has reached its OpenAI-assigned usage limit.
+
+      - `"billing_not_active"`
+
+        Billing is not active for the account.
 
       - `"credit_balance_exhausted"`
 

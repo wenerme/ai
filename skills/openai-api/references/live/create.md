@@ -103,9 +103,9 @@ retry can place another call.
 
           - `"sage"`
 
-          - `"shimmer"`
+          - `"shida"`
 
-          - `"shitan"`
+          - `"shimmer"`
 
           - `"sillage"`
 

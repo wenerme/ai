@@ -5,11 +5,13 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Create a new stacked diff. (EXPERIMENTAL)
+Create a new stack. (EXPERIMENTAL)
 
 ## Synopsis
 
-Create a new stacked diff. Adds metadata to your `./.git/stacked` directory.
+The stack starts empty, and the other `glab stack` commands act on it until you switch. The branch you have checked out becomes its base branch, which the first merge request targets, so push it to the remote before you run `glab stack sync`. To add diffs, use `glab stack save`.
+
+This command adds metadata to your `./.git/stacked` directory.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.

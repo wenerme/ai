@@ -19,16 +19,20 @@ Gemini can generate and process images conversationally
 with text, images, video, or a combination. This lets you create, edit, and
 iterate on visuals with unprecedented control.
 
-Nano Banana refers to four distinct models available in the Gemini API:
+## Model selection
 
+Nano Banana refers to the following models available in the Gemini API:
+
+- **Nano Banana 2.1 ([Gemini Nano Banana 2.1](https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1))
+  (`gemini-nano-banana-2.1`):** An update to Nano Banana 2, serving as the primary high-efficiency workhorse model for image generation and conversational editing. It maintains Flash-level speed and cost efficiency while delivering improved visual quality, text rendering, multi-turn consistency, and Google Search grounding across 1K, 2K, and 4K resolutions.
 - **Nano Banana 2 Lite ([Gemini 3.1 Flash Lite Image](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image))
-  (`gemini-3.1-flash-lite-image`):** Our fastest and cheapest Gemini image model, engineered for velocity and scale where speed and cost are the primary operational constraints. Not optimized for multiple reference inputs or multi-turn sequential editing.
+  (`gemini-3.1-flash-lite-image`):** The fastest and cheapest Gemini image model, engineered for velocity and scale where speed and cost are the primary operational constraints. Not optimized for multiple reference inputs or multi-turn sequential editing.
 - **Nano Banana 2 ([Gemini 3.1 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image))
-  (`gemini-3.1-flash-image`):** Serves as the most versatile model, generalist workhorse model for all tasks. It balances speed with state-of-the-art 4K generation, world knowledge, and reliable text rendering. Excelling at multiple reference image processing and consistency.
+  (`gemini-3.1-flash-image`):** The previous-generation high-efficiency workhorse model, balancing speed with 4K generation, world knowledge, and multi-reference image consistency. Recommended for all new projects to use Nano Banana 2.1.
 - **Nano Banana Pro ([Gemini 3 Pro Image](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image))
   (`gemini-3-pro-image`):** The premium choice for the most complex visual tasks, offering the highest level of world knowledge, advanced localization, accurate brand consistency, and precision creative control.
 - **Nano Banana ([Gemini 2.5 Flash Image](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image))
-  (`gemini-2.5-flash-image`):** The legacy pioneer of the Nano Banana series. While it has been a reliable workhorse, we strongly recommend that customers transition to Nano Banana 2 Lite to experience enhanced quality, faster generation speeds, and lower API pricing.
+  (`gemini-2.5-flash-image`):** The legacy pioneer of the Nano Banana series. While it has been a reliable workhorse, recommended migration path is to transition to Nano Banana 2 Lite to experience enhanced quality, faster generation speeds, and lower API pricing.
 
 All generated images include a [SynthID watermark](https://ai.google.dev/responsible/docs/safeguards/synthid).
 
@@ -43,7 +47,7 @@ All generated images include a [SynthID watermark](https://ai.google.dev/respons
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme",
     )
 
@@ -63,7 +67,7 @@ All generated images include a [SynthID watermark](https://ai.google.dev/respons
         "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme";
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: prompt,
       });
       const generatedImage = interaction.output_image;
@@ -92,7 +96,7 @@ All generated images include a [SynthID watermark](https://ai.google.dev/respons
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"))
@@ -132,7 +136,7 @@ All generated images include a [SynthID watermark](https://ai.google.dev/respons
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput("Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"),
             }),
         })
@@ -158,7 +162,7 @@ All generated images include a [SynthID watermark](https://ai.google.dev/respons
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": [
           {"type": "text", "text": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme"}
         ]
@@ -198,7 +202,7 @@ understanding](https://ai.google.dev/gemini-api/docs/image-understanding) page.
         image_bytes = f.read()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=[
             {
               "type": "text",
@@ -239,7 +243,7 @@ understanding](https://ai.google.dev/gemini-api/docs/image-understanding) page.
       ];
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: prompt,
       });
       const generatedImage = interaction.output_image;
@@ -289,7 +293,7 @@ understanding](https://ai.google.dev/gemini-api/docs/image-understanding) page.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -333,7 +337,7 @@ understanding](https://ai.google.dev/gemini-api/docs/image-understanding) page.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput([]interactions.Content{
                     interactions.NewContent(interactions.TextContent{
                         Text: "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme",
@@ -367,7 +371,7 @@ understanding](https://ai.google.dev/gemini-api/docs/image-understanding) page.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d "{
-          \"model\": \"gemini-3.1-flash-image\",
+          \"model\": \"gemini-nano-banana-2.1\",
           \"input\": [
             {\"type\": \"text\", \"text\": \"Create a picture of my cat eating a nano-banana in a fancy restaurant under the Gemini constellation\"},
             {
@@ -392,7 +396,7 @@ example shows a prompt to generate an infographic about photosynthesis.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plant's favorite food. Show the \"ingredients\" (sunlight, water, CO2) and the \"finished dish\" (sugar/energy). The style should be like a page from a colorful kids' cookbook, suitable for a 4th grader.",
         tools=[{"type": "google_search"}],
     )
@@ -409,7 +413,7 @@ example shows a prompt to generate an infographic about photosynthesis.
 
     async function main() {
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: "Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plant's favorite food. Show the \"ingredients\" (sunlight, water, CO2) and the \"finished dish\" (sugar/energy). The style should be like a page from a colorful kids' cookbook, suitable for a 4th grader.",
         tools: [{"type": "google_search"}],
       });
@@ -442,7 +446,7 @@ example shows a prompt to generate an infographic about photosynthesis.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plant's favorite food. Show the \"ingredients\" (sunlight, water, CO2) and the \"finished dish\" (sugar/energy). The style should be like a page from a colorful kids' cookbook, suitable for a 4th grader."))
@@ -483,7 +487,7 @@ example shows a prompt to generate an infographic about photosynthesis.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput(`Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plant's favorite food. Show the "ingredients" (sunlight, water, CO2) and the "finished dish" (sugar/energy). The style should be like a page from a colorful kids' cookbook, suitable for a 4th grader.`),
                 Tools: []interactions.Tool{
                     interactions.NewTool(interactions.GoogleSearch{}),
@@ -512,7 +516,7 @@ example shows a prompt to generate an infographic about photosynthesis.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": [
           {"type": "text", "text": "Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plants favorite food. Show the \"ingredients\" (sunlight, water, CO2) and the \"finished dish\" (sugar/energy). The style should be like a page from a colorful kids cookbook, suitable for a 4th grader."}
         ],
@@ -526,7 +530,7 @@ You can then use the `previous_interaction_id` to change the language on the gra
 ### Python
 
     interaction_2 = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="Update this infographic to be in Spanish. Do not change any other elements of the image.",
         previous_interaction_id=interaction.id,
         response_format={
@@ -545,7 +549,7 @@ You can then use the `previous_interaction_id` to change the language on the gra
 ### JavaScript
 
     const interaction2 = await ai.interactions.create({
-      model: "gemini-3.1-flash-image",
+      model: "gemini-nano-banana-2.1",
       input: "Update this infographic to be in Spanish. Do not change any other elements of the image.",
       previous_interaction_id: interaction.id,
       response_format: {
@@ -586,7 +590,7 @@ You can then use the `previous_interaction_id` to change the language on the gra
 
     CreateModelInteraction turn1Params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plant's favorite food."))
@@ -607,7 +611,7 @@ You can then use the `previous_interaction_id` to change the language on the gra
 
     CreateModelInteraction turn2Params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "Update this infographic to be in Spanish. Do not change any other elements of the image."))
@@ -649,7 +653,7 @@ You can then use the `previous_interaction_id` to change the language on the gra
 
         res1, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput("Create a vibrant infographic that explains photosynthesis as if it were a recipe for a plant's favorite food."),
                 Tools: []interactions.Tool{
                     interactions.NewTool(interactions.GoogleSearch{}),
@@ -670,7 +674,7 @@ You can then use the `previous_interaction_id` to change the language on the gra
 
         res2, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model:                 interactions.Model("gemini-3.1-flash-image"),
+                Model:                 interactions.Model("gemini-nano-banana-2.1"),
                 Input:                 interactions.NewInteractionsInput("Update this infographic to be in Spanish. Do not change any other elements of the image."),
                 PreviousInteractionID: res1.Interaction.ID,
                 ResponseFormat:        genai.Ptr(format),
@@ -698,7 +702,7 @@ You can then use the `previous_interaction_id` to change the language on the gra
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "Update this infographic to be in Spanish. Do not change any other elements of the image.",
         "previous_interaction_id": "<PREVIOUS_INTERACTION_ID>",
         "response_format": {
@@ -711,31 +715,32 @@ You can then use the `previous_interaction_id` to change the language on the gra
 
 ![AI-generated infographic of photosynthesis in Spanish](https://ai.google.dev/static/gemini-api/docs/images/infographic-spanish.png) AI-generated infographic of photosynthesis in Spanish
 
-## New with Gemini 3 image models
+## Features of Nano Banana
 
-Gemini 3 offers state-of-the-art image generation and editing models. Gemini 3.1
-Flash Image is optimized for speed and high-volume use-cases, and Gemini 3
-Pro Image is optimized for professional asset production.
+Nano Banana models offer state-of-the-art image generation and editing. Gemini
+Nano Banana 2.1 and Gemini 3.1 Flash Image are optimized for speed and
+high-volume use-cases, and Gemini 3 Pro Image is optimized for professional
+asset production.
 Designed to tackle the most challenging workflows through advanced reasoning,
 they excel at complex, multi-turn creation and modification tasks.
 
 - **High-resolution output** : Built-in generation capabilities for 1K, 2K, and 4K visuals.
-  - **Gemini 3.1 Flash Image** adds the smaller 512px (0.5K) resolution.
+  - **Gemini 3.1 Flash Image** adds the smaller 512px (0.5K) resolution (not supported on Gemini Nano Banana 2.1).
   - **Gemini 3.1 Flash Lite Image** only supports 1K resolution.
 - **Advanced text rendering**: Capable of generating legible, stylized text for infographics, menus, diagrams, and marketing assets.
 - **Grounding with Google Search** : The model can use Google Search as a tool to verify facts and generate imagery based on real-time data (e.g., current weather maps, stock charts, recent events).
   - **Not supported by Gemini 3.1 Flash Lite Image model.**
-  - **Gemini 3.1 Flash Image** adds the integration of Google Image Search Grounding alongside Web Search.
+  - **Gemini Nano Banana 2.1 and Gemini 3.1 Flash Image** add the integration of Google Image Search Grounding alongside Web Search.
 - **Thinking mode**: The model utilizes a "thinking" process to reason through complex prompts. It generates interim "thought images" (visible in the backend but not charged) to refine the composition before producing the final high-quality output.
-- **Up to 14 reference images**: You can now mix up to 14 reference images to produce the final image.
+- **Up to 14 reference images**: Mix up to 14 reference images to produce the final image.
 - **New aspect ratios** : Gemini 3.1 Flash Lite Image adds `1:1`, `3:2`, `2:3`, `3:4`, `4:3`, `4:5`, `5:4`, `9:16`, `16:9`, `21:9` [aspect ratios](https://ai.google.dev/gemini-api/docs/image-generation#aspect_ratios_and_image_size).
 
 ### Use up to 14 reference images
 
-Gemini 3 image models let you to mix up to 14 reference images. These 14 images
+Nano Banana models allow you to mix up to 14 reference images. These 14 images
 can include the following:
 
-| Gemini 3.1 Flash Lite Image | Gemini 3.1 Flash Image | Gemini 3 Pro Image |
+| Gemini 3.1 Flash Lite Image | Gemini Nano Banana 2.1 \& Gemini 3.1 Flash Image | Gemini 3 Pro Image |
 |---|---|---|
 | Up to 14 images of objects with high-fidelity to include in the final image | Up to 10 images of objects with high-fidelity to include in the final image | Up to 6 images of objects with high-fidelity to include in the final image |
 | N/A | Up to 4 images of characters to maintain character consistency | Up to 5 images of characters to maintain character consistency |
@@ -753,7 +758,7 @@ can include the following:
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=[
             {
                 "type": "text",
@@ -816,7 +821,7 @@ can include the following:
       ];
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: input,
         response_format: {
           type: "image",
@@ -888,7 +893,7 @@ can include the following:
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.ofContent(contents))
             .responseFormat(format)
             .build();
@@ -959,7 +964,7 @@ can include the following:
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Model:          interactions.Model("gemini-nano-banana-2.1"),
                 Input:          interactions.NewInteractionsInput(contents),
                 ResponseFormat: genai.Ptr(format),
             }),
@@ -986,7 +991,7 @@ can include the following:
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d "{
-          \"model\": \"gemini-3.1-flash-image\",
+          \"model\": \"gemini-nano-banana-2.1\",
           \"input\": [
             {\"type\": \"text\", \"text\": \"An office group photo of these people, they are making funny faces.\"},
             {\"type\": \"image\", \"mime_type\": \"image/png\", \"data\": \"<BASE64_DATA_IMG_1>\"},
@@ -1024,7 +1029,7 @@ excluded from the response (see [Grounding with Google Image Search](https://ai.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=prompt,
         tools=[{"type": "google_search"}],
         response_format={
@@ -1046,7 +1051,7 @@ excluded from the response (see [Grounding with Google Image Search](https://ai.
       const ai = new GoogleGenAI({});
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: "Visualize the current weather forecast for the next 5 days in San Francisco as a clean, modern weather chart. Add a visual on what I should wear each day",
         tools: [{"type": "google_search"}],
         response_format: {
@@ -1098,7 +1103,7 @@ excluded from the response (see [Grounding with Google Image Search](https://ai.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.of(prompt))
             .tools(Arrays.asList(new GoogleSearch()))
             .responseFormat(format)
@@ -1147,7 +1152,7 @@ excluded from the response (see [Grounding with Google Image Search](https://ai.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput(prompt),
                 Tools: []interactions.Tool{
                     interactions.NewTool(interactions.GoogleSearch{}),
@@ -1177,7 +1182,7 @@ excluded from the response (see [Grounding with Google Image Search](https://ai.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": [
           {"type": "text", "text": "Visualize the current weather forecast for the next 5 days in San Francisco as a clean, modern weather chart. Add a visual on what I should wear each day"}
         ],
@@ -1197,10 +1202,10 @@ along with inline `url_citation` annotations on the text step:
 - **`google_search_result`** : Contains `search_suggestions`, an HTML snippet for rendering search suggestions in your UI.
 - **`url_citation` annotations**: Inline citations on the text step linking parts of the response to their web sources.
 
-### Grounding with Google Search for images (3.1 Flash)
+### Grounding with Google Search for images (Nano Banana 2.1 and 3.1 Flash)
 
 > [!NOTE]
-> **Note:** This feature is only available for the Gemini 3.1 Flash Image model.
+> **Note:** This feature is only available for the Gemini Nano Banana 2.1 and Gemini 3.1 Flash Image models.
 
 Grounding with Google Image Search allows models to use web images retrieved via
 Google Image Search as visual context for image generation. Image Search is a
@@ -1218,7 +1223,7 @@ used independently or together with Web Search.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="A detailed painting of a Timareta butterfly resting on a flower",
         tools=[{
           "type": "google_search",
@@ -1234,7 +1239,7 @@ used independently or together with Web Search.
       const ai = new GoogleGenAI({});
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: "A detailed painting of a Timareta butterfly resting on a flower",
         tools: [{
           "type": "google_search",
@@ -1268,7 +1273,7 @@ used independently or together with Web Search.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "A detailed painting of a Timareta butterfly resting on a flower"))
@@ -1307,7 +1312,7 @@ used independently or together with Web Search.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput("A detailed painting of a Timareta butterfly resting on a flower"),
                 Tools: []interactions.Tool{
                     interactions.NewTool(searchTool),
@@ -1327,7 +1332,7 @@ used independently or together with Web Search.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "A detailed painting of a Timareta butterfly resting on a flower",
         "tools": [{"type": "google_search", "search_types": ["web_search", "image_search"]}]
       }'
@@ -1350,10 +1355,10 @@ and attribution metadata as part of the response steps:
 - **`google_search_result`** : Contains `search_suggestions`, an HTML
   snippet for rendering search suggestions in your UI.
 
-### Video-to-image generation (3.1 Flash and 3.1 Flash Lite)
+### Video-to-image generation (Nano Banana 2.1, 3.1 Flash, and 3.1 Flash Lite)
 
 > [!NOTE]
-> **Note:** This feature is only available for the Gemini 3.1 Flash Image and Gemini 3.1 Flash Lite Image models.
+> **Note:** This feature is only available for the Gemini Nano Banana 2.1, Gemini 3.1 Flash Image, and Gemini 3.1 Flash Lite Image models.
 
 Video-to-image generation allows you to generate new images using a video's context
 as a multimodal reference. This is useful for creating high-quality video thumbnails, cinematic
@@ -1375,7 +1380,7 @@ directly in your API request or upload local video files using the
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=[
             {
                 "type": "video",
@@ -1407,7 +1412,7 @@ directly in your API request or upload local video files using the
       const ai = new GoogleGenAI({});
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: [
           {
             type: "video",
@@ -1487,7 +1492,7 @@ directly in your API request or upload local video files using the
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.ofContent(contents))
             .responseFormat(format)
             .build();
@@ -1558,7 +1563,7 @@ directly in your API request or upload local video files using the
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Model:          interactions.Model("gemini-nano-banana-2.1"),
                 Input:          interactions.NewInteractionsInput(contents),
                 ResponseFormat: genai.Ptr(format),
             }),
@@ -1594,7 +1599,7 @@ directly in your API request or upload local video files using the
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": [
           {
             "type": "video",
@@ -1637,7 +1642,7 @@ parameters (e.g., 1k) will be rejected.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=prompt,
         response_format={
             "type": "image",
@@ -1661,7 +1666,7 @@ parameters (e.g., 1k) will be rejected.
       const ai = new GoogleGenAI({});
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: "Da Vinci style anatomical sketch of a dissected Monarch butterfly. Detailed drawings of the head, wings, and legs on textured parchment with notes in English.",
         response_format: {
           type: "image",
@@ -1714,7 +1719,7 @@ parameters (e.g., 1k) will be rejected.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.of(prompt))
             .responseFormat(format)
             .build();
@@ -1766,7 +1771,7 @@ parameters (e.g., 1k) will be rejected.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Model:          interactions.Model("gemini-nano-banana-2.1"),
                 Input:          interactions.NewInteractionsInput(prompt),
                 ResponseFormat: genai.Ptr(format),
             }),
@@ -1797,7 +1802,7 @@ parameters (e.g., 1k) will be rejected.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "Da Vinci style anatomical sketch of a dissected Monarch butterfly. Detailed drawings of the head, wings, and legs on textured parchment with notes in English.",
         "response_format": {
           "type": "image",
@@ -1869,7 +1874,7 @@ You can check the thoughts that lead to the final image being produced.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "A futuristic city built inside a giant glass bottle floating in space"))
@@ -1924,7 +1929,7 @@ You can check the thoughts that lead to the final image being produced.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput("A futuristic city built inside a giant glass bottle floating in space"),
             }),
         })
@@ -2119,9 +2124,15 @@ and save interleaved content, you must manually iterate over `steps`:
 
 #### Controlling thinking levels
 
-With Gemini 3.1 Flash Image and Gemini 3.1 Flash Lite Image, you can control the
-amount of thinking the model uses to balance quality and latency. The default
-`thinking_level` is `minimal`, and the supported levels are `minimal` and `high`.
+With Gemini Nano Banana 2.1, Gemini 3.1 Flash Image, and Gemini 3.1 Flash Lite
+Image, you can control the amount of thinking the model uses to balance quality
+and latency:
+
+| Model | Supported thinking levels | Default |
+|---|---|---|
+| **Gemini Nano Banana 2.1** | `minimal`, `medium`, `high` | `medium` |
+| **Gemini 3.1 Flash Image** | `minimal`, `high` | `minimal` |
+| **Gemini 3.1 Flash Lite Image** | `minimal`, `high` | `minimal` |
 
 ### Python
 
@@ -2133,7 +2144,7 @@ amount of thinking the model uses to balance quality and latency. The default
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="A futuristic city built inside a giant glass bottle floating in space",
         generation_config={"thinking_level": "high"},
     )
@@ -2153,7 +2164,7 @@ amount of thinking the model uses to balance quality and latency. The default
       const ai = new GoogleGenAI({});
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: "A futuristic city built inside a giant glass bottle floating in space",
         generation_config: { thinking_level: "high" },
       });
@@ -2184,7 +2195,7 @@ amount of thinking the model uses to balance quality and latency. The default
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "A futuristic city built inside a giant glass bottle floating in space"))
@@ -2228,7 +2239,7 @@ amount of thinking the model uses to balance quality and latency. The default
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput("A futuristic city built inside a giant glass bottle floating in space"),
                 GenerationConfig: &interactions.GenerationConfig{
                     ThinkingLevel: interactions.ThinkingLevelHigh.ToPointer(),
@@ -2261,7 +2272,7 @@ amount of thinking the model uses to balance quality and latency. The default
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "A futuristic city built inside a giant glass bottle floating in space",
         "generation_config": {
           "thinking_level": "high"
@@ -2323,7 +2334,7 @@ have over the results.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="A photorealistic wide-angle shot of a vibrant coral reef teeming with tropical fish. Crystal-clear turquoise water with sunbeams filtering down from the surface, illuminating a sea turtle gliding gracefully over the coral. Shot from a low perspective with a wide-angle lens. Aspect ratio 16:9.",
         response_format=[
             {
@@ -2349,7 +2360,7 @@ have over the results.
       const ai = new GoogleGenAI({});
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: "A photorealistic wide-angle shot of a vibrant coral reef teeming with tropical fish. Crystal-clear turquoise water with sunbeams filtering down from the surface, illuminating a sea turtle gliding gracefully over the coral. Shot from a low perspective with a wide-angle lens. Aspect ratio 16:9.",
         response_format: [
           {
@@ -2399,7 +2410,7 @@ have over the results.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "A photorealistic wide-angle shot of a vibrant coral reef teeming with tropical fish. Crystal-clear turquoise water with sunbeams filtering down from the surface, illuminating a sea turtle gliding gracefully over the coral. Shot from a low perspective with a wide-angle lens. Aspect ratio 16:9."))
@@ -2450,7 +2461,7 @@ have over the results.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Model:          interactions.Model("gemini-nano-banana-2.1"),
                 Input:          interactions.NewInteractionsInput("A photorealistic wide-angle shot of a vibrant coral reef teeming with tropical fish. Crystal-clear turquoise water with sunbeams filtering down from the surface, illuminating a sea turtle gliding gracefully over the coral. Shot from a low perspective with a wide-angle lens. Aspect ratio 16:9."),
                 ResponseFormat: genai.Ptr(format),
             }),
@@ -2481,7 +2492,7 @@ have over the results.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "A photorealistic wide-angle shot of a vibrant coral reef teeming with tropical fish. Crystal-clear turquoise water with sunbeams filtering down from the surface, illuminating a sea turtle gliding gracefully over the coral. Shot from a low perspective with a wide-angle lens. Aspect ratio 16:9.",
         "response_format": {
           "type": "image",
@@ -2513,7 +2524,7 @@ detail (bold lines, colors, etc.) for consistent results.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="A kawaii-style sticker of a happy red panda wearing a tiny bamboo hat. It's munching on a green bamboo leaf. The design features bold, clean outlines, simple cel-shading, and a vibrant color palette. The background must be white.",
     )
 
@@ -2535,7 +2546,7 @@ detail (bold lines, colors, etc.) for consistent results.
       const ai = new GoogleGenAI({});
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: "A kawaii-style sticker of a happy red panda wearing a tiny bamboo hat. It's munching on a green bamboo leaf. The design features bold, clean outlines, simple cel-shading, and a vibrant color palette. The background must be white.",
       });
       for (const step of interaction.steps) {
@@ -2575,7 +2586,7 @@ detail (bold lines, colors, etc.) for consistent results.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "A kawaii-style sticker of a happy red panda wearing a tiny bamboo hat. It's munching on a green bamboo leaf. The design features bold, clean outlines, simple cel-shading, and a vibrant color palette. The background must be white."))
@@ -2630,7 +2641,7 @@ detail (bold lines, colors, etc.) for consistent results.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput("A kawaii-style sticker of a happy red panda wearing a tiny bamboo hat. It's munching on a green bamboo leaf. The design features bold, clean outlines, simple cel-shading, and a vibrant color palette. The background must be white."),
             }),
         })
@@ -2664,7 +2675,7 @@ detail (bold lines, colors, etc.) for consistent results.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "A kawaii-style sticker of a happy red panda wearing a tiny bamboo hat. It is munching on a green bamboo leaf. The design features bold, clean outlines, simple cel-shading, and a vibrant color palette. The background must be white."
       }'
 
@@ -2694,7 +2705,7 @@ professional asset production.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="Create a modern, minimalist logo for a coffee shop called 'The Daily Grind'. The text should be in a clean, bold, sans-serif font. The color scheme is black and white. Put the logo in a circle. Use a coffee bean in a clever way.",
         response_format={"type": "image", "aspect_ratio": "1:1"},
     )
@@ -2717,7 +2728,7 @@ professional asset production.
       const ai = new GoogleGenAI({});
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: "Create a modern, minimalist logo for a coffee shop called 'The Daily Grind'. The text should be in a clean, bold, sans-serif font. The color scheme is black and white. Put the logo in a circle. Use a coffee bean in a clever way.",
         response_format: { type: "image", aspect_ratio: "1:1" },
       });
@@ -2769,7 +2780,7 @@ professional asset production.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "Create a modern, minimalist logo for a coffee shop called 'The Daily Grind'. The text should be in a clean, bold, sans-serif font. The color scheme is black and white. Put the logo in a circle. Use a coffee bean in a clever way."))
@@ -2831,7 +2842,7 @@ professional asset production.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Model:          interactions.Model("gemini-nano-banana-2.1"),
                 Input:          interactions.NewInteractionsInput("Create a modern, minimalist logo for a coffee shop called 'The Daily Grind'. The text should be in a clean, bold, sans-serif font. The color scheme is black and white. Put the logo in a circle. Use a coffee bean in a clever way."),
                 ResponseFormat: genai.Ptr(format),
             }),
@@ -2866,7 +2877,7 @@ professional asset production.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "Create a modern, minimalist logo for a coffee shop called The Daily Grind. The text should be in a clean, bold, sans-serif font. The color scheme is black and white. Put the logo in a circle. Use a coffee bean in a clever way.",
         "response_format": {
           "type": "image",
@@ -2906,7 +2917,7 @@ advertising, or branding.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="A high-resolution, studio-lit product photograph of a minimalist ceramic coffee mug in matte black, presented on a polished concrete surface. The lighting is a three-point softbox setup designed to create soft, diffused highlights and eliminate harsh shadows. The camera angle is a slightly elevated 45-degree shot to showcase its clean lines. Ultra-realistic, with sharp focus on the steam rising from the coffee. Square image.",
     )
 
@@ -2928,7 +2939,7 @@ advertising, or branding.
       const ai = new GoogleGenAI({});
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: "A high-resolution, studio-lit product photograph of a minimalist ceramic coffee mug in matte black, presented on a polished concrete surface. The lighting is a three-point softbox setup designed to create soft, diffused highlights and eliminate harsh shadows. The camera angle is a slightly elevated 45-degree shot to showcase its clean lines. Ultra-realistic, with sharp focus on the steam rising from the coffee. Square image.",
       });
       for (const step of interaction.steps) {
@@ -2968,7 +2979,7 @@ advertising, or branding.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "A high-resolution, studio-lit product photograph of a minimalist ceramic coffee mug in matte black, presented on a polished concrete surface. The lighting is a three-point softbox setup designed to create soft, diffused highlights and eliminate harsh shadows. The camera angle is a slightly elevated 45-degree shot to showcase its clean lines. Ultra-realistic, with sharp focus on the steam rising from the coffee. Square image."))
@@ -3023,7 +3034,7 @@ advertising, or branding.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput("A high-resolution, studio-lit product photograph of a minimalist ceramic coffee mug in matte black, presented on a polished concrete surface. The lighting is a three-point softbox setup designed to create soft, diffused highlights and eliminate harsh shadows. The camera angle is a slightly elevated 45-degree shot to showcase its clean lines. Ultra-realistic, with sharp focus on the steam rising from the coffee. Square image."),
             }),
         })
@@ -3057,7 +3068,7 @@ advertising, or branding.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "A high-resolution, studio-lit product photograph of a minimalist ceramic coffee mug in matte black, presented on a polished concrete surface. The lighting is a three-point softbox setup designed to create soft, diffused highlights and eliminate harsh shadows. The camera angle is a slightly elevated 45-degree shot to showcase its clean lines. Ultra-realistic, with sharp focus on the steam rising from the coffee. Square image."
       }'
 
@@ -3090,7 +3101,7 @@ materials where text will be overlaid.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="A minimalist composition featuring a single, delicate red maple leaf positioned in the bottom-right of the frame. The background is a vast, empty off-white canvas, creating significant negative space for text. Soft, diffused lighting from the top left. Square image.",
     )
 
@@ -3112,7 +3123,7 @@ materials where text will be overlaid.
       const ai = new GoogleGenAI({});
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: "A minimalist composition featuring a single, delicate red maple leaf positioned in the bottom-right of the frame. The background is a vast, empty off-white canvas, creating significant negative space for text. Soft, diffused lighting from the top left. Square image.",
       });
       for (const step of interaction.steps) {
@@ -3152,7 +3163,7 @@ materials where text will be overlaid.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "A minimalist composition featuring a single, delicate red maple leaf positioned in the bottom-right of the frame. The background is a vast, empty off-white canvas, creating significant negative space for text. Soft, diffused lighting from the top left. Square image."))
@@ -3207,7 +3218,7 @@ materials where text will be overlaid.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput("A minimalist composition featuring a single, delicate red maple leaf positioned in the bottom-right of the frame. The background is a vast, empty off-white canvas, creating significant negative space for text. Soft, diffused lighting from the top left. Square image."),
             }),
         })
@@ -3241,7 +3252,7 @@ materials where text will be overlaid.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "A minimalist composition featuring a single, delicate red maple leaf positioned in the bottom-right of the frame. The background is a vast, empty off-white canvas, creating significant negative space for text. Soft, diffused lighting from the top left. Square image."
       }'
 
@@ -3274,7 +3285,7 @@ prompts work best with Gemini 3 Pro and Gemini 3.1 Flash Image.
     text_input = "Make a 3 panel comic in a gritty, noir art style with high-contrast black and white inks. Put the character in a humurous scene."
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=[
             {"type": "text", "text": text_input},
             {
@@ -3316,7 +3327,7 @@ prompts work best with Gemini 3 Pro and Gemini 3.1 Flash Image.
       ];
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: input,
       });
       for (const step of interaction.steps) {
@@ -3373,7 +3384,7 @@ prompts work best with Gemini 3 Pro and Gemini 3.1 Flash Image.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -3443,7 +3454,7 @@ prompts work best with Gemini 3 Pro and Gemini 3.1 Flash Image.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput(contents),
             }),
         })
@@ -3477,7 +3488,7 @@ prompts work best with Gemini 3 Pro and Gemini 3.1 Flash Image.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": [
           {"type": "text", "text": "Make a 3 panel comic in a gritty, noir art style with high-contrast black and white inks. Put the character in a humurous scene."},
           {"type": "image", "data": "<BASE64_IMAGE_DATA>", "mime_type": "image/jpeg"}
@@ -3506,7 +3517,7 @@ This is useful for news, weather, and other time-sensitive topics.
     client = genai.Client()
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="Make a simple but stylish graphic of last night's Arsenal game in the Champion's League",
         tools=[{"type": "google_search"}],
         response_format={"type": "image", "aspect_ratio": "16:9"},
@@ -3530,7 +3541,7 @@ This is useful for news, weather, and other time-sensitive topics.
       const ai = new GoogleGenAI({});
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: "Make a simple but stylish graphic of last night's Arsenal game in the Champion's League",
         tools: [{ type: "google_search" }],
         response_format: { type: "image", aspect_ratio: "16:9", image_size: "2K" },
@@ -3586,7 +3597,7 @@ This is useful for news, weather, and other time-sensitive topics.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "Make a simple but stylish graphic of last night's Arsenal game in the Champion's League"))
@@ -3649,7 +3660,7 @@ This is useful for news, weather, and other time-sensitive topics.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput("Make a simple but stylish graphic of last night's Arsenal game in the Champion's League"),
                 Tools: []interactions.Tool{
                     interactions.NewTool(interactions.GoogleSearch{}),
@@ -3687,7 +3698,7 @@ This is useful for news, weather, and other time-sensitive topics.
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "Make a simple but stylish graphic of last nights Arsenal game in the Champions League",
         "tools": [{"type": "google_search"}],
         "response_format": {
@@ -3733,7 +3744,7 @@ image's style, lighting, and perspective.
     text_input = """Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off."""
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=[
             {"type": "text", "text": text_input},
             {
@@ -3775,7 +3786,7 @@ image's style, lighting, and perspective.
       ];
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: input,
       });
       for (const step of interaction.steps) {
@@ -3832,7 +3843,7 @@ image's style, lighting, and perspective.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -3902,7 +3913,7 @@ image's style, lighting, and perspective.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput(contents),
             }),
         })
@@ -3936,7 +3947,7 @@ image's style, lighting, and perspective.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d "{
-          \"model\": \"gemini-3.1-flash-image\",
+          \"model\": \"gemini-nano-banana-2.1\",
           \"input\": [
                 {\"type\": \"text\", \"text\": \"Using the provided image of my cat, please add a small, knitted wizard hat on its head. Make it look like it's sitting comfortably and not falling off.\"},
                 {\"type\": \"image\", \"mime_type\":\"image/png\", \"data\": \"<BASE64_IMAGE_DATA>\"}
@@ -3977,7 +3988,7 @@ leaving the rest untouched.
     text_input = """Using the provided image of a living room, change only the blue sofa to be a vintage, brown leather chesterfield sofa. Keep the rest of the room, including the pillows on the sofa and the lighting, unchanged."""
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=[
             {
                 "type": "image",
@@ -4019,7 +4030,7 @@ leaving the rest untouched.
       ];
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: input,
       });
       for (const step of interaction.steps) {
@@ -4076,7 +4087,7 @@ leaving the rest untouched.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -4146,7 +4157,7 @@ leaving the rest untouched.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput(contents),
             }),
         })
@@ -4180,7 +4191,7 @@ leaving the rest untouched.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d "{
-          \"model\": \"gemini-3.1-flash-image\",
+          \"model\": \"gemini-nano-banana-2.1\",
           \"input\": [
             {\"type\": \"image\", \"mime_type\":\"image/png\", \"data\": \"<BASE64_IMAGE_DATA>\"},
             {\"type\": \"text\", \"text\": \"Using the provided image of a living room, change only the blue sofa to be a vintage, brown leather chesterfield sofa. Keep the rest of the room, including the pillows on the sofa and the lighting, unchanged.\"}
@@ -4217,7 +4228,7 @@ artistic style.
     text_input = """Transform the provided photograph of a modern city street at night into the artistic style of Vincent van Gogh's 'Starry Night'. Preserve the original composition of buildings and cars, but render all elements with swirling, impasto brushstrokes and a dramatic palette of deep blues and bright yellows."""
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=[
             {
                 "type": "image",
@@ -4248,7 +4259,7 @@ artistic style.
       const base64Image = imageData.toString("base64");
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: [
           {
             type: "image",
@@ -4312,7 +4323,7 @@ artistic style.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -4382,7 +4393,7 @@ artistic style.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput(contents),
             }),
         })
@@ -4416,7 +4427,7 @@ artistic style.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d "{
-          \"model\": \"gemini-3.1-flash-image\",
+          \"model\": \"gemini-nano-banana-2.1\",
           \"input\": [
             {\"type\": \"image\", \"mime_type\":\"image/png\", \"data\": \"<BASE64_IMAGE_DATA>\"},
             {\"type\": \"text\", \"text\": \"Transform the provided photograph of a modern city street at night into the artistic style of Vincent van Gogh's 'Starry Night'. Preserve the original composition of buildings and cars, but render all elements with swirling, impasto brushstrokes and a dramatic palette of deep blues and bright yellows.\"}
@@ -4460,7 +4471,7 @@ perfect for product mockups or creative collages.
     text_input = """Create a professional e-commerce fashion photo. Take the blue floral dress from the first image and let the woman from the second image wear it. Generate a realistic, full-body shot of the woman wearing the dress, with the lighting and shadows adjusted to match the outdoor environment."""
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=[
             {
                 "type": "image",
@@ -4515,7 +4526,7 @@ perfect for product mockups or creative collages.
       ];
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: input,
       });
       for (const step of interaction.steps) {
@@ -4577,7 +4588,7 @@ perfect for product mockups or creative collages.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -4654,7 +4665,7 @@ perfect for product mockups or creative collages.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput(contents),
             }),
         })
@@ -4688,7 +4699,7 @@ perfect for product mockups or creative collages.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d "{
-          \"model\": \"gemini-3.1-flash-image\",
+          \"model\": \"gemini-nano-banana-2.1\",
           \"input\": [
                 {\"type\": \"image\", \"mime_type\":\"image/png\", \"data\": \"<BASE64_IMAGE_DATA_1>\"},
                 {\"type\": \"image\", \"mime_type\":\"image/png\", \"data\": \"<BASE64_IMAGE_DATA_2>\"},
@@ -4735,7 +4746,7 @@ describe them in great detail along with your edit request.
     text_input = """Take the first image of the woman with brown hair, blue eyes, and a neutral expression. Add the logo from the second image onto her black t-shirt. Ensure the woman's face and features remain completely unchanged. The logo should look like it's naturally printed on the fabric, following the folds of the shirt."""
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=[
           {"type": "image", "mime_type":"image/png", "data": base64.b64encode(woman_bytes).decode('utf-8')},
           {"type": "image", "mime_type":"image/png", "data": base64.b64encode(logo_bytes).decode('utf-8')},
@@ -4774,7 +4785,7 @@ describe them in great detail along with your edit request.
       ];
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: input,
       });
       for (const step of interaction.steps) {
@@ -4836,7 +4847,7 @@ describe them in great detail along with your edit request.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -4913,7 +4924,7 @@ describe them in great detail along with your edit request.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput(contents),
             }),
         })
@@ -4947,7 +4958,7 @@ describe them in great detail along with your edit request.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d "{
-          \"model\": \"gemini-3.1-flash-image\",
+          \"model\": \"gemini-nano-banana-2.1\",
           \"input\": [
             {\"type\": \"image\", \"mime_type\":\"image/png\", \"data\": \"<BASE64_IMAGE_DATA_1>\"},
             {\"type\": \"image\", \"mime_type\":\"image/png\", \"data\": \"<BASE64_IMAGE_DATA_2>\"},
@@ -4986,7 +4997,7 @@ finished image.
     text_input = """Turn this rough pencil sketch of a futuristic car into a polished photo of the finished concept car in a showroom. Keep the sleek lines and low profile from the sketch but add metallic blue paint and neon rim lighting."""
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=[
           {"type": "image", "mime_type":"image/png", "data": base64.b64encode(sketch_bytes).decode('utf-8')},
           {"type": "text", "text": text_input}
@@ -5020,7 +5031,7 @@ finished image.
       ];
 
       const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: input,
       });
       for (const step of interaction.steps) {
@@ -5076,7 +5087,7 @@ finished image.
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.ofContent(contents))
             .build();
 
@@ -5145,7 +5156,7 @@ finished image.
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model: interactions.Model("gemini-3.1-flash-image"),
+                Model: interactions.Model("gemini-nano-banana-2.1"),
                 Input: interactions.NewInteractionsInput(contents),
             }),
         })
@@ -5179,7 +5190,7 @@ finished image.
         -H "x-goog-api-key: $GEMINI_API_KEY" \
         -H 'Content-Type: application/json' \
         -d "{
-          \"model\": \"gemini-3.1-flash-image\",
+          \"model\": \"gemini-nano-banana-2.1\",
           \"input\": [
             {\"type\": \"image\", \"mime_type\":\"image/png\", \"data\": \"<BASE64_IMAGE_DATA>\"},
             {\"type\": \"text\", \"text\": \"Turn this rough pencil sketch of a futuristic car into a polished photo of the finished concept car in a showroom. Keep the sleek lines and low profile from the sketch but add metallic blue paint and neon rim lighting.\"}
@@ -5218,7 +5229,7 @@ reference image of the selected pose.
     text_input = """A studio portrait of this man against white, in profile looking right"""
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input={
           {"type": "text", "text": text_input},
           {"type": "image", "mime_type":"image/png", "data": base64.b64encode(image_bytes).decode('utf-8')}
@@ -5254,11 +5265,11 @@ strategies into your workflow.
 ## Limitations
 
 - For best performance, use the following languages: EN, ar-EG, de-DE, es-MX, fr-FR, hi-IN, id-ID, it-IT, ja-JP, ko-KR, pt-BR, ru-RU, ua-UA, vi-VN, zh-CN.
-- Image generation does not support audio inputs. Video inputs are only supported for Gemini 3.1 Flash Image and Gemini 3.1 Flash Lite Image.
+- Image generation does not support audio inputs. Video inputs are only supported for Gemini Nano Banana 2.1, Gemini 3.1 Flash Image, and Gemini 3.1 Flash Lite Image.
 - The model won't always follow the exact number of image outputs that the user explicitly asks for.
-- `gemini-2.5-flash-image` works best with up to 3 images as input, while `gemini-3-pro-image` supports 5 images with high fidelity, and up to 14 images in total. `gemini-3.1-flash-image` supports character resemblance of up to 4 characters and the fidelity of up to 10 objects in a single workflow.
+- `gemini-2.5-flash-image` works best with up to 3 images as input, while `gemini-3-pro-image` supports 5 images with high fidelity, and up to 14 images in total. `gemini-nano-banana-2.1` and `gemini-3.1-flash-image` support character resemblance of up to 4 characters and the fidelity of up to 10 objects in a single workflow.
 - When generating text for an image, Gemini works best if you first generate the text and then ask for an image with the text.
-- `gemini-3.1-flash-image` Grounding with Google Search does not support using real-world images of people from web search at this time.
+- `gemini-nano-banana-2.1` and `gemini-3.1-flash-image` Grounding with Google Search do not support using real-world images of people from web search at this time.
 - All generated images include a [SynthID watermark](https://ai.google.dev/responsible/docs/safeguards/synthid).
 
 ## Optional configurations
@@ -5274,7 +5285,7 @@ To request multiple modalities (for example, both text and the generated image),
 ### Python
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input="Write a short poem about a starry night and generate an image of it.",
         response_format=[
             {"type": "text"},
@@ -5285,7 +5296,7 @@ To request multiple modalities (for example, both text and the generated image),
 ### JavaScript
 
     const interaction = await ai.interactions.create({
-      model: "gemini-3.1-flash-image",
+      model: "gemini-nano-banana-2.1",
       input: "Write a short poem about a starry night and generate an image of it.",
       response_format: [
         { type: "text" },
@@ -5317,7 +5328,7 @@ To request multiple modalities (for example, both text and the generated image),
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(
                 InteractionsInput.of(
                     "Write a short poem about a starry night and generate an image of it."))
@@ -5354,7 +5365,7 @@ To request multiple modalities (for example, both text and the generated image),
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Model:          interactions.Model("gemini-nano-banana-2.1"),
                 Input:          interactions.NewInteractionsInput("Write a short poem about a starry night and generate an image of it."),
                 ResponseFormat: genai.Ptr(format),
             }),
@@ -5372,7 +5383,7 @@ To request multiple modalities (for example, both text and the generated image),
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "Write a short poem about a starry night and generate an image of it.",
         "response_format": [
           { "type": "text" },
@@ -5387,7 +5398,7 @@ By default, the model matches the output image size to that of your input image,
 ### Python
 
     interaction = client.interactions.create(
-        model="gemini-3.1-flash-image",
+        model="gemini-nano-banana-2.1",
         input=prompt,
         response_format={
             "type": "image",
@@ -5399,7 +5410,7 @@ By default, the model matches the output image size to that of your input image,
 ### JavaScript
 
     const interaction = await ai.interactions.create({
-        model: "gemini-3.1-flash-image",
+        model: "gemini-nano-banana-2.1",
         input: prompt,
         response_format: {
           type: "image",
@@ -5435,7 +5446,7 @@ By default, the model matches the output image size to that of your input image,
 
     CreateModelInteraction params =
         CreateModelInteraction.builder()
-            .model(Model.of("gemini-3.1-flash-image"))
+            .model(Model.of("gemini-nano-banana-2.1"))
             .input(InteractionsInput.of(prompt))
             .responseFormat(format)
             .build();
@@ -5474,7 +5485,7 @@ By default, the model matches the output image size to that of your input image,
 
         res, err := client.Interactions.Create(ctx, operations.CreateInteractionRequest{
             Body: operations.NewCreateInteractionRequestBody(interactions.CreateModelInteraction{
-                Model:          interactions.Model("gemini-3.1-flash-image"),
+                Model:          interactions.Model("gemini-nano-banana-2.1"),
                 Input:          interactions.NewInteractionsInput(prompt),
                 ResponseFormat: genai.Ptr(format),
             }),
@@ -5492,7 +5503,7 @@ By default, the model matches the output image size to that of your input image,
       -H "x-goog-api-key: $GEMINI_API_KEY" \
       -H 'Content-Type: application/json' \
       -d '{
-        "model": "gemini-3.1-flash-image",
+        "model": "gemini-nano-banana-2.1",
         "input": "Create a picture of a nano banana dish in a fancy restaurant with a Gemini theme",
         "response_format": {
           "type": "image",
@@ -5503,6 +5514,25 @@ By default, the model matches the output image size to that of your input image,
 
 The different ratios available and the size of the image generated are listed in
 the following tables:
+
+### Nano Banana 2.1
+
+| Aspect ratio | 1K resolution | 1K tokens | 2K resolution | 2K tokens | 4K resolution | 4K tokens |
+|---|---|---|---|---|---|---|
+| **1:1** | 1024x1024 | 1120 | 2048x2048 | 1680 | 4096x4096 | 2520 |
+| **1:4** | 512x2048 | 1120 | 1024x4096 | 1680 | 2048x8192 | 2520 |
+| **1:8** | 384x3072 | 1120 | 768x6144 | 1680 | 1536x12288 | 2520 |
+| **2:3** | 848x1264 | 1120 | 1696x2528 | 1680 | 3392x5056 | 2520 |
+| **3:2** | 1264x848 | 1120 | 2528x1696 | 1680 | 5056x3392 | 2520 |
+| **3:4** | 896x1200 | 1120 | 1792x2400 | 1680 | 3584x4800 | 2520 |
+| **4:1** | 2048x512 | 1120 | 4096x1024 | 1680 | 8192x2048 | 2520 |
+| **4:3** | 1200x896 | 1120 | 2400x1792 | 1680 | 4800x3584 | 2520 |
+| **4:5** | 928x1152 | 1120 | 1856x2304 | 1680 | 3712x4608 | 2520 |
+| **5:4** | 1152x928 | 1120 | 2304x1856 | 1680 | 4608x3712 | 2520 |
+| **8:1** | 3072x384 | 1120 | 6144x768 | 1680 | 12288x1536 | 2520 |
+| **9:16** | 768x1376 | 1120 | 1536x2752 | 1680 | 3072x5504 | 2520 |
+| **16:9** | 1376x768 | 1120 | 2752x1536 | 1680 | 5504x3072 | 2520 |
+| **21:9** | 1584x672 | 1120 | 3168x1344 | 1680 | 6336x2688 | 2520 |
 
 ### 3.1 Flash Image
 
@@ -5553,36 +5583,7 @@ the following tables:
 | 16:9 | 1344x768 | 1290 |
 | 21:9 | 1536x672 | 1290 |
 
-## Model selection
-
-Choose the model best suited for your specific use case.
-
-- **Gemini 3.1 Flash Image (Nano Banana 2)** should be your
-  go-to image generation model, as the best all around performance and
-  intelligence to cost and latency balance. Check the model [pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-image) and [capabilities](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image) page for more
-  details.
-
-- **Gemini 3.1 Flash Lite Image (Nano Banana 2 Lite)** is the most efficient
-  model in the image generation family, offering
-  ultra-low latency and cost-effective image generation and editing.
-  Check the model [pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.1-flash-lite-image)
-  and [capabilities](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite-image) page
-  for more details.
-
-- **Gemini 3 Pro Image (Nano Banana Pro)** is designed for
-  professional asset production and complex instructions. This model features
-  real-world grounding using Google Search, a default "Thinking" process that
-  refines composition prior to generation, and can generate images of up to 4K
-  resolutions. Check the model [pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3-pro-image) and [capabilities](https://ai.google.dev/gemini-api/docs/models/gemini-3-pro-image) page for more
-  details.
-
-- **Gemini 2.5 Flash Image (Nano Banana)** is designed for speed and
-  efficiency. This model is optimized for high-volume, low-latency tasks and
-  generates images at 1024px resolution. Check the model [pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-2.5-flash-image) and
-  [capabilities](https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image) page for more
-  details.
-
-### When to use Imagen
+## When to use Imagen
 
 > [!WARNING]
 > Imagen models are shut down. Use Nano Banana models for all image generation tasks.

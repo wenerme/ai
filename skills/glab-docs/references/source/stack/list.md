@@ -5,11 +5,11 @@ group: Code Review
 info: To determine the technical writer assigned to the Stage/Group associated with this page, see <https://handbook.gitlab.com/handbook/product/ux/technical-writing/#assignments>
 ---
 
-Lists all entries in the stack. (EXPERIMENTAL)
+List all diffs in the stack. (EXPERIMENTAL)
 
 ## Synopsis
 
-Lists all entries in the stack. To select a different revision, use a command like 'stack move'.
+Shows the branch and description of each diff. To check out a different diff, use `glab stack move`.
 
 This feature is an experiment and is not ready for production use.
 It might be unstable or removed at any time.

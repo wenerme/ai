@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+   Build an image upload and transformation service using R2 and Cloudflare Images.
    ```
 
 
@@ -155,23 +155,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
-```
-
-```txt
 Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Add a D1 database to my Worker and create a users table with full CRUD endpoints.
+Set up custom domains with automatic SSL for my SaaS customers using SSL for SaaS.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+Configure Zero Trust access policies to protect my internal staging environment.
+```
+
+```txt
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ## Tips

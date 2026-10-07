@@ -179,6 +179,23 @@ SQL [Copy code to clipboard] Copy
 GRANT SELECT ON zabbix.* TO 'grafana'@'<GRAFANA_HOST>' IDENTIFIED BY '<PASSWORD>';
 ```
 
+## Configure problem severity overrides
+
+Zabbix lets administrators rename severities and change their colors globally under **Administration** &gt; **General** &gt; **Trigger displaying options**. The Zabbix data source offers the same kind of global override for Grafana under **Additional settings** &gt; **Problem severity**. It applies to every Problems panel that queries this data source, so you don’t have to change the **Colors** options of each panel.
+
+Expand table
+
+| Setting                           | Description                                                                                                                                                                                                                                                                 |
+|-----------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Not classified** … **Disaster** | One row per Zabbix severity. Enter a name to override the displayed severity name, and pick a color to override the severity color. Leave the name empty and the color unchanged to keep the plugin defaults. Click the **×** next to the color to reset it to the default. |
+
+How the overrides interact with panel settings:
+
+- A Problems panel that still uses the default name or color for a severity displays the global value from the data source.
+- A Problems panel that has its own custom name or color for a severity keeps it. Dashboards saved with custom severity names or colors aren’t changed by the global overrides.
+- When global overrides are in effect for a panel, the **Colors** section of the panel options shows an information banner, and each affected severity row is marked with a globe icon that shows the global value.
+- A panel that mixes several Zabbix data sources takes the overrides from its queries in order. The first data source that defines a name or color for a severity wins for that field.
+
 ## Configure other settings
 
 These settings are under **Additional settings** &gt; **Other**.
@@ -235,6 +252,13 @@ datasources:
       dbConnectionRetentionPolicy: ''
       disableReadOnlyUsersAck: false
       disableDataAlignment: false
+      # Optional: global severity name and color overrides for Problems panels
+      severityOverrides:
+        - priority: 4
+          name: Critical
+          color: 'rgb(220, 40, 40)'
+        - priority: 5
+          name: Outage
     secureJsonData:
       password: <ZABBIX_PASSWORD>
     version: 1
@@ -256,28 +280,29 @@ The following table lists all available `jsonData` and `secureJsonData` fields f
 
 Expand table
 
-| Field                         | Type             | Description                                                                                                                       |
-|-------------------------------|------------------|-----------------------------------------------------------------------------------------------------------------------------------|
-| `authType`                    | `jsonData`       | Authentication method. Values: `userLogin` (default) or `token`.                                                                  |
-| `username`                    | `jsonData`       | Zabbix username (for `userLogin` authentication).                                                                                 |
-| `password`                    | `secureJsonData` | Zabbix password (for `userLogin` authentication).                                                                                 |
-| `apiToken`                    | `secureJsonData` | Zabbix API token (for `token` authentication).                                                                                    |
-| `trends`                      | `jsonData`       | Enable trends. Default: `true`.                                                                                                   |
-| `trendsFrom`                  | `jsonData`       | Time after which trends are used. Default: `7d`.                                                                                  |
-| `trendsRange`                 | `jsonData`       | Time range width for switching to trends. Default: `4d`.                                                                          |
-| `cacheTTL`                    | `jsonData`       | Cache lifetime for metric names. Default: `1h`.                                                                                   |
-| `timeout`                     | `jsonData`       | Zabbix API connection timeout in seconds. Default: `30`.                                                                          |
-| `queryTimeout`                | `jsonData`       | Maximum execution time for database queries in seconds. Default: `60`.                                                            |
-| `dbConnectionEnable`          | `jsonData`       | Enable Direct DB Connection. Default: `false`.                                                                                    |
-| `dbConnectionDatasourceUID`   | `jsonData`       | UID of the Grafana data source for the Zabbix database. Preferred over `dbConnectionDatasourceName`.                              |
-| `dbConnectionDatasourceName`  | `jsonData`       | Name of the Grafana data source for the Zabbix database. Resolved to a UID at runtime when `dbConnectionDatasourceUID` isn’t set. |
-| `dbConnectionRetentionPolicy` | `jsonData`       | InfluxDB retention policy name for long-term data.                                                                                |
-| `disableReadOnlyUsersAck`     | `jsonData`       | Disable acknowledges for read-only users. Default: `false`.                                                                       |
-| `disableDataAlignment`        | `jsonData`       | Disable time series data alignment. Default: `false`.                                                                             |
-| `perUserAuth`                 | `jsonData`       | Enable per-user authentication. Default: `false`.                                                                                 |
-| `perUserAuthField`            | `jsonData`       | Grafana user field used to match a Zabbix user. Values: `username` (default) or `email`.                                          |
-| `perUserAuthExcludeUsers`     | `jsonData`       | List of Grafana users that always use the global Zabbix credentials. Default: `["admin"]`.                                        |
-| `enableSecureSocksProxy`      | `jsonData`       | Route the connection through the Grafana secure SOCKS proxy for Private Data Source Connect (PDC). Default: `false`.              |
+| Field                         | Type             | Description                                                                                                                                                                                  |
+|-------------------------------|------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `authType`                    | `jsonData`       | Authentication method. Values: `userLogin` (default) or `token`.                                                                                                                             |
+| `username`                    | `jsonData`       | Zabbix username (for `userLogin` authentication).                                                                                                                                            |
+| `password`                    | `secureJsonData` | Zabbix password (for `userLogin` authentication).                                                                                                                                            |
+| `apiToken`                    | `secureJsonData` | Zabbix API token (for `token` authentication).                                                                                                                                               |
+| `trends`                      | `jsonData`       | Enable trends. Default: `true`.                                                                                                                                                              |
+| `trendsFrom`                  | `jsonData`       | Time after which trends are used. Default: `7d`.                                                                                                                                             |
+| `trendsRange`                 | `jsonData`       | Time range width for switching to trends. Default: `4d`.                                                                                                                                     |
+| `cacheTTL`                    | `jsonData`       | Cache lifetime for metric names. Default: `1h`.                                                                                                                                              |
+| `timeout`                     | `jsonData`       | Zabbix API connection timeout in seconds. Default: `30`.                                                                                                                                     |
+| `queryTimeout`                | `jsonData`       | Maximum execution time for database queries in seconds. Default: `60`.                                                                                                                       |
+| `dbConnectionEnable`          | `jsonData`       | Enable Direct DB Connection. Default: `false`.                                                                                                                                               |
+| `dbConnectionDatasourceUID`   | `jsonData`       | UID of the Grafana data source for the Zabbix database. Preferred over `dbConnectionDatasourceName`.                                                                                         |
+| `dbConnectionDatasourceName`  | `jsonData`       | Name of the Grafana data source for the Zabbix database. Resolved to a UID at runtime when `dbConnectionDatasourceUID` isn’t set.                                                            |
+| `dbConnectionRetentionPolicy` | `jsonData`       | InfluxDB retention policy name for long-term data.                                                                                                                                           |
+| `disableReadOnlyUsersAck`     | `jsonData`       | Disable acknowledges for read-only users. Default: `false`.                                                                                                                                  |
+| `disableDataAlignment`        | `jsonData`       | Disable time series data alignment. Default: `false`.                                                                                                                                        |
+| `perUserAuth`                 | `jsonData`       | Enable per-user authentication. Default: `false`.                                                                                                                                            |
+| `perUserAuthField`            | `jsonData`       | Grafana user field used to match a Zabbix user. Values: `username` (default) or `email`.                                                                                                     |
+| `severityOverrides`           | `jsonData`       | Global severity name and color overrides for Problems panels. A list of objects with `priority` (0-5), and an optional `name` and `color`. Fields that are omitted keep the plugin defaults. |
+| `perUserAuthExcludeUsers`     | `jsonData`       | List of Grafana users that always use the global Zabbix credentials. Default: `["admin"]`.                                                                                                   |
+| `enableSecureSocksProxy`      | `jsonData`       | Route the connection through the Grafana secure SOCKS proxy for Private Data Source Connect (PDC). Default: `false`.                                                                         |
 
 For detailed MySQL and PostgreSQL provisioning options, refer to the [MySQL provisioning](/docs/grafana/latest/datasources/mysql/#provision-the-data-source) and [PostgreSQL provisioning](/docs/grafana/latest/datasources/postgres/#provision-the-data-source) documentation.
 

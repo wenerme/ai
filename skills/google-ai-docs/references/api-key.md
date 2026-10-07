@@ -62,6 +62,14 @@ containing the following permissions (such as Project Editor):
 If you cannot get administrative access, you can create a new Google Cloud
 project that is not associated with an organization to generate your keys.
 
+## Creating keys in the Google Cloud console
+
+Google AI Studio only displays keys that are unrestricted or restricted to the
+Gemini API. If you can't use AI Studio, or you want to manage all of your API
+keys in one place, follow the Cloud documentation on
+[creating an API key](https://cloud.google.com/docs/authentication/api-keys#create). Creating a Gemini
+API key requires binding it to a [service account](https://cloud.google.com/iam/docs/service-account-overview).
+
 ## Setting up your environment
 
 Once you have a key, configure your environment to use it securely in your
@@ -237,16 +245,16 @@ resources.
 
 - **Environment variables**: Read keys from environment variables rather than configuration files.
 - **Secret Manager** : For production, store your keys in a secure secret store such as [Google Cloud Secret Manager](https://cloud.google.com/secret-manager).
-- **Billing alerts**: Set up billing alerts in the Google Cloud Console to notify you if usage or costs spike.
+- **Billing alerts**: Set up billing alerts in the Google Cloud console to notify you if usage or costs spike.
 
 ### Leak response checklist
 
 If you suspect your API key has been leaked:
 
-1. **Generate a new key**: Create a replacement key in Google AI Studio or the Cloud Console.
+1. **Generate a new key**: Create a replacement key in Google AI Studio or the Cloud console.
 2. **Update your application**: Deploy your code using the new key.
-3. **Disable or delete the compromised key**: Disable the leaked key in the Cloud Console once the new key is verified. Do not delete the old key until the new key is fully active to avoid application downtime.
-4. **Audit usage**: Check billing logs and API usage in the Google Cloud Console to identify unauthorized activity.
+3. **Disable or delete the compromised key**: Disable the leaked key in the Cloud console once the new key is verified. Do not delete the old key until the new key is fully active to avoid application downtime.
+4. **Audit usage**: Check billing logs and API usage in the Google Cloud console to identify unauthorized activity.
 
 ## Restricting and securing your keys
 
@@ -258,7 +266,7 @@ compromised.
 Origin restrictions limit which IP addresses, websites, or applications can use
 your key.
 
-1. Go to the [Google Cloud Console Credentials page](https://console.cloud.google.com/apis/credentials).
+1. Go to the [Google Cloud console credentials page](https://console.cloud.google.com/apis/credentials).
 2. Select your project, and click the name of the API key you want to restrict.
 3. Under **Application restrictions** , select **IP addresses** (or the appropriate restriction type for your environment).
 4. Specify the allowed IP addresses or ranges, then click **Save**.
@@ -279,13 +287,13 @@ If you only use the key for the Gemini API, secure it directly in AI Studio:
 > [!NOTE]
 > **Note:** To restrict an API key, you must have the `apikeys.keys.update` permission on the associated Google Cloud project. This permission is included in roles like **API Keys Admin** or **Editor**.
 
-#### Method B: Restrict the key for other services (Google Cloud Console)
+#### Method B: Restrict the key for other services (Google Cloud console)
 
 If the key is shared with other Google APIs (not recommended), restrict it in
-the Cloud Console. **Note: Gemini API requests using this key will fail after
+the Cloud console. **Note: Gemini API requests using this key will fail after
 these restrictions are applied.**
 
-1. Visit the [Google Cloud Console Credentials page](https://console.cloud.google.com/apis/credentials).
+1. Visit the [Google Cloud console credentials page](https://console.cloud.google.com/apis/credentials).
 2. Select the project and the API key.
 3. Under **API restrictions** , use the **Select API restrictions** drop-down to select the APIs you want this key to access. Do not select the **Generative
    Language API**.
@@ -322,4 +330,4 @@ Google AI Studio imposes the following project and key management limitations:
 - Only API keys that are unrestricted or restricted specifically to the Generative Language API (Gemini API) are displayed.
 
 For advanced project management or to modify keys with other restrictions, use
-the [Google Cloud Console credentials page](https://console.cloud.google.com/apis/credentials).
+the [Google Cloud console credentials page](https://console.cloud.google.com/apis/credentials).

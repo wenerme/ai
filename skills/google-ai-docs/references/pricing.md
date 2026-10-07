@@ -563,6 +563,47 @@ performed.
 
 ^\*\*^ Can be tested in Google AI Studio.
 
+## Gemini Nano Banana 2.1 🍌
+
+*[`gemini-nano-banana-2.1`](https://ai.google.dev/gemini-api/docs/models/gemini-nano-banana-2.1)*
+
+
+[Try it in Google AI Studio](https://aistudio.google.com/prompts/new_chat?model=gemini-nano-banana-2.1)
+
+An update to Nano Banana 2 (Gemini 3.1 Flash Image), built for high-efficiency
+image generation and conversational editing with improved visual quality,
+multi-turn character consistency, accurate text rendering, and search-grounded
+generation across 1K, 2K, and 4K resolutions.
+
+### Standard
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $1.50 (text/image/video) |
+| Output price | Not available | $7.50 (text and thinking) $30.00 (images) Equivalent to $0.0336 per 1K image^\*^, $0.0504 per 2K image^\*^, and $0.113 per 4K image^\*^. |
+| Grounding with Google Web and Image Search^\*\*^ | Not available | 5,000 free search requests per month (shared across all Gemini 3.x models), then $14 per 1,000 requests for text and image-based grounding. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+### Batch
+
+|   | Free Tier | Paid Tier, per 1M tokens in USD |
+|---|---|---|
+| Input price | Not available | $0.75 (text, image, video) |
+| Output price | Not available | $3.75 (text and thinking) $15.00 (images) Equivalent to $0.0168 per 1K image^\*^, $0.0252 per 2K image^\*^, and $0.0567 per 4K image^\*^. |
+| Used to improve our products | [Yes](https://ai.google.dev/gemini-api/terms) | [No](https://ai.google.dev/gemini-api/terms) |
+
+^\*^ Image output is priced at $30 per 1,000,000 tokens (Standard) and
+$15 per 1,000,000 tokens (Batch). Output images at 1K (1024x1024px) consume 1120
+tokens and are equivalent to $0.0336 per image. Output images at 2K
+(2048x2048px) consume 1680 tokens and are equivalent to $0.0504 per image.
+Output images at 4K (4096x4096px) consume 3780 tokens and are equivalent to
+$0.113 per image.
+
+^\*\*^ A customer-submitted request to Gemini may result in one or more
+queries to Google Search. You will be charged for each individual search query
+performed. Retrieved context (text or images) provided by Grounding with Google
+Search is not charged as input tokens.
+
 ## Gemini 3.1 Flash Image (Nano Banana 2) 🍌
 
 *[`gemini-3.1-flash-image`](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-image)*

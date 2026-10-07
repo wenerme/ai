@@ -6,7 +6,7 @@ Track coverage percentages and visualize line-by-line test coverage in merge req
 - Offering: GitLab.com, GitLab Self-Managed, GitLab Dedicated
 
 Use coverage reporting and coverage visualization to track code coverage. The two mechanisms
-read different inputs, produce different outputs, and don't share configuration.
+read different inputs, produce different outputs, and do not share configuration.
 Configuring one does not enable the other.
 
 Coverage reporting shows a percentage in the MR widget, the pipeline list, and analytics graphs.

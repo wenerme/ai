@@ -98,9 +98,9 @@ Accept an incoming SIP call. Supply session with type live, the model, and start
 
           - `"sage"`
 
-          - `"shimmer"`
+          - `"shida"`
 
-          - `"shitan"`
+          - `"shimmer"`
 
           - `"sillage"`
 

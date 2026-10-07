@@ -639,7 +639,7 @@ And the following unique queues:
 - `DISABLE_QUERY_AUTH_TOKEN`: **false**: Reject API tokens sent in URL query string (Accept Header-based API tokens only). This setting will default to `true` in Gitea 1.23 and be deprecated in Gitea 1.24.
 - `TWO_FACTOR_AUTH`: **_empty_**: set to enforced to enforce two factor authentication. Only available in Gitea 1.24 and later.
 - `EGRESS_MODE`: **lax**: Egress mode toggles between strictness of outgoing requests:
-  - `lax` requires addresses to be allowed only if they are in private ranges, it allows all public ones
+  - `lax` non-public targets (private, loopback, link-local, CGNAT and special-use ranges) to be allowed, it allows all public ones
   - `strict` requires an explicit allow of all addresses
 - `ALLOWED_HOST_LIST`: **_empty_**: Webhook and oauth2 clients can only call allowed hosts for security reasons. Comma separated list, eg: `192.168.1.0/24:3000`, `[2001:db8::/32]:9090`, `*.mydomain.com:[80|443]`
   - Built-in networks:
@@ -653,8 +653,9 @@ And the following unique queues:
     - a bracketed set of ports and ranges, `|` separated: `*.mydomain.com:[80|443|3000-3010]`
     - all ports: `*.mydomain.com:*`
   - A portless entry covers all ports in `lax` mode, only 80 and 443 in `strict` mode
-  - Port specs apply only where the list is consulted: in `lax` mode that is private, loopback and CGNAT targets alone, public targets are allowed on every port whatever the list says. In `strict` mode every target is checked, so ports restrict public hosts too.
-  - Reserved addresses like link-local and cloud metadata are denied
+  - Port specs apply only where the list is consulted: in `lax` mode that is non-public targets alone, public targets are allowed on every port whatever the list says. In `strict` mode every target is checked, so ports restrict public hosts too.
+  - Non-public targets need an IP or built-in entry, a host name entry alone never covers them.
+  - Reserved addresses (the IPv4-embedding NAT64, Teredo and 6to4 ranges, this-network, multicast and broadcast) are denied whatever the list says. To reach them configure an HTTP proxy
   - This list is enforced on direct connections only. When an HTTP proxy is configured, restricting the proxied target is the proxy server's responsibility.
 
 ## Audit (`audit`)
@@ -1428,7 +1429,7 @@ in this mapping or the filetype using heuristics.
 - `MAX_ATTEMPTS`: **3**: Max attempts per http/https request on migrations.
 - `RETRY_BACKOFF`: **3**: Backoff time per http/https request retry (seconds)
 - `EGRESS_MODE`: **lax**: Mode toggles between strictness of scanning outgoing requests, same format as `EGRESS_MODE` in [`security`](#security-security).
-- `ALLOWED_HOST_LIST`: **_empty_**: Hosts migrations and mirrors may call, same format as `ALLOWED_HOST_LIST` in [`security`](#security-security). Private and loopback addresses need a builtin or CIDR entry. When unset, the deprecated `ALLOWED_DOMAINS` entries apply on every port with `strict` as the default mode, and the deprecated `ALLOW_LOCALNETWORKS` adds `private, loopback`.
+- `ALLOWED_HOST_LIST`: **_empty_**: Hosts migrations and mirrors may call, same format as `ALLOWED_HOST_LIST` in [`security`](#security-security). Private, loopback and link-local addresses need a builtin or CIDR entry. When unset, the deprecated `ALLOWED_DOMAINS` entries apply on every port with `strict` as the default mode, and the deprecated `ALLOW_LOCALNETWORKS` adds `private, loopback`.
 - `BLOCKED_HOST_LIST`: **_empty_**: Hosts migrations and mirrors may never call, portless entries cover all ports.
 - `SKIP_TLS_VERIFY`: **false**: Allow skip tls verify
 
