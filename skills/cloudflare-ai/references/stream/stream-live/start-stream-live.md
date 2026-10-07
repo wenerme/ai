@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/stream/stream-live/start-stream-live/og
 
 # Start a live stream
 
-Last updated Jul 30, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/start-stream-live/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/stream/stream-live/start-stream-live/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 After you subscribe to Stream, you can create Live Inputs in Dash or via the API. Broadcast to your new Live Input using RTMPS or SRT. SRT supports newer video codecs and makes using accessibility features, such as captions and multiple audio tracks, easier.
 
@@ -173,28 +173,29 @@ https://api.cloudflare.com/client/v4/accounts/{account_id}/stream/live_inputs/{i
 --header "Authorization: Bearer <API_TOKEN>"
 ```
 
-## Recommendations, requirements and limitations
+## Requirements, recommendations, and limitations
 
 If you are experiencing buffering, freezing, experiencing latency, or having other similar issues, visit [live stream troubleshooting](https://developers.cloudflare.com/stream/stream-live/troubleshooting/).
 
+### Requirements
+
+- Stream Live only supports H.264 video and AAC audio codecs as inputs. For AAC audio, ADTS is supported but LATM is not.
+- Input combined bitrate should be between 2 Mbps and 14 Mbps.
+- Clients must be configured to reconnect when a disconnection occurs. Stream Live is designed to handle reconnection gracefully by continuing the live stream.
+- [GOP duration ↗︎](https://en.wikipedia.org/wiki/Group_of_pictures) (keyframe interval) must be between 2 and 10 seconds. Closed GOPs are required, which is default with most encoders.
+
 ### Recommendations
 
-- Your creators should use an appropriate bitrate for their live streams, typically well under 12Mbps (12000Kbps). High motion, high frame rate content typically should use a higher bitrate, while low motion content like slide presentations should use a lower bitrate.
-- Your creators should use a [GOP duration ↗︎](https://en.wikipedia.org/wiki/Group_of_pictures) (keyframe interval) of between 2 to 8 seconds. The default in most encoding software and hardware, including Open Broadcaster Software (OBS), is within this range. Setting a lower GOP duration will reduce latency for viewers, while also reducing encoding efficiency. Setting a higher GOP duration will improve encoding efficiency, while increasing latency for viewers. This is a tradeoff inherent to video encoding, and not a limitation of Cloudflare Stream.
-- When possible, select CBR (constant bitrate) instead of VBR (variable bitrate) as CBR helps to ensure a stable streaming experience while preventing buffering and interruptions.
+- Use an appropriate bitrate for their live streams, typically under 10 Mbps. High motion, high frame rate content should use a higher bitrate, while low motion content like slide presentations should use a lower bitrate.
+- Use a GOP size (keyframe interval) of between 4 to 8 seconds when using standard HLS/DASH playback. The default in most encoding software and hardware, including Open Broadcaster Software (OBS), is within this range. Setting a lower GOP will reduce latency for viewers, while also reducing encoding efficiency. Setting a higher GOP duration will improve encoding efficiency and bandwidth usage, but increases latency for viewers. This is a tradeoff inherent to HLS packaging, and not a limitation of Cloudflare Stream.
+- When possible, select CBR (constant bitrate) instead of VBR (variable bitrate).
 
 #### Low-Latency HLS broadcast recommendations Beta
 
-- Turn off B Frames or set them to 0. B Frames are incompatible with LL-HLS and will result in jitter and sporadic buffering delays.
-- For lowest latency, use a GOP size (or "keyframe interval") of 2 - 4 seconds.
+- B Frames *are not supported* in LL-HLS and will cause jitter in playback. Turn off B Frames or set them to 0.
+- Use a GOP size (keyframe interval) of 2 - 4 seconds for LL-HLS.
 - Broadcast to the RTMP endpoint if possible, SRT otherwise.
 - If using OBS, select the "ultra low" latency profile.
-
-### Requirements
-
-- Closed GOPs are required. This means that if there are any B frames in the video, they should always refer to frames within the same GOP. This setting is the default in most encoding software and hardware, including [OBS Studio ↗︎](https://obsproject.com/).
-- Stream Live only supports H.264 video and AAC audio codecs as inputs. This requirement does not apply to inputs that are relayed to Stream Connect outputs. Stream Live supports ADTS but does not presently support LATM.
-- Clients must be configured to reconnect when a disconnection occurs. Stream Live is designed to handle reconnection gracefully by continuing the live stream.
 
 ### Limitations
 
@@ -210,5 +211,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/#page","headline":"Start a live stream","description":"Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.","url":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/og.png?v=c239ac4960286e18","dateModified":"2026-07-30","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/#page","headline":"Start a live stream","description":"Create live inputs and broadcast live video to Cloudflare Stream using RTMPS or SRT.","url":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/","inLanguage":"en","image":"https://developers.cloudflare.com/stream/stream-live/start-stream-live/og.png?v=c239ac4960286e18","dateModified":"2026-10-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -409,7 +409,8 @@ To hide a flow:
 
 ## Delete a flow
 
-Delete a flow to permanently remove it from the instance.
+Delete a flow to remove it from the instance. If a project other than the managing project has turned off the
+flow, the flow is hidden instead of removed.
 
 Prerequisites:
 
@@ -424,7 +425,7 @@ Prerequisites:
 
 Custom flows have a GitLab OAuth token available as `GITLAB_TOKEN` (also exposed as `GITLAB_OAUTH_TOKEN`).
 These tokens are limited to the scope granted to them. They can only access
-[GitLab API endpoints with the `ai_workflows` scope](foundational_flows/software_development.md#apis-that-the-flow-has-access-to).
+[GitLab API endpoints with the `ai_workflows` scope](../../../editor_extensions/software_development.md#apis-that-the-flow-has-access-to).
 Endpoints outside that scope are refused even when the token is sent correctly.
 
 If you write scripts that call the GitLab API directly, send the token as an `Authorization: Bearer` token.

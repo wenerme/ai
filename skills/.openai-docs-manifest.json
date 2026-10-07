@@ -650,10 +650,10 @@
   "openai-docs/guides/csam-guidance.md": {
     "url": "https://developers.openai.com/api/docs/guides/csam-guidance.md",
     "skill": "openai-docs",
-    "etag": "W/\"6aad032028355149d1cac94697a1bb75\"",
-    "lastModified": "Fri, 18 Sep 2026 04:13:36 GMT",
-    "size": 12025,
-    "updatedAt": "2026-09-18T04:29:23.338Z"
+    "etag": "W/\"168966d34999d42247062aa7ab07bd2b\"",
+    "lastModified": "Wed, 07 Oct 2026 17:26:18 GMT",
+    "size": 11712,
+    "updatedAt": "2026-10-07T17:31:17.823Z"
   },
   "openai-docs/guides/custom-chatkit.md": {
     "url": "https://developers.openai.com/api/docs/guides/custom-chatkit.md",

@@ -23,7 +23,7 @@ Last updated Apr 16, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 | Announcement Date | Release Date | Release Behavior | Legacy Rule ID | Rule ID | Description | Comments |
 | --- | --- | --- | --- | --- | --- | --- |
-| 2026-10-06 | 2026-10-12 | Log | N/A | ...02751ef3 | Generic Rules - Template Injection - 2 - Beta | This rule will be merged into the original rule "Generic Rules - Template Injection - 2" (ID: ...d3ed0123). |
+| 2026-10-06 | 2026-10-12 | Disable | N/A | ...02751ef3 | Generic Rules - Template Injection - 2 - Beta | This rule will be merged into the original rule "Generic Rules - Template Injection - 2" (ID: ...d3ed0123). |
 
 For other WAF updates, refer to the [changelog](https://developers.cloudflare.com/waf/change-log/changelog/).
 

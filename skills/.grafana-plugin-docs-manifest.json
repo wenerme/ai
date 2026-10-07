@@ -386,8 +386,8 @@
   },
   "grafana-bigquery-datasource/index.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest.md",
-    "size": 4507,
-    "updatedAt": "2026-09-15T04:48:03.581Z"
+    "size": 5940,
+    "updatedAt": "2026-10-07T17:35:13.093Z"
   },
   "grafana-bigquery-datasource/query-editor.md": {
     "url": "https://grafana.com/docs/plugins/grafana-bigquery-datasource/latest/query-editor.md",

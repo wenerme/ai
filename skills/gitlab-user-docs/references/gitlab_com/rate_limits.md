@@ -46,12 +46,15 @@ each hour from an IP address:
 - Git over HTTPS requests
 - Sign-in requests, including [SAML SSO](../group/saml_sso/_index.md) and sign-in with a
   third-party provider such as Google or GitHub
-- [OAuth 2.0](../../api/oauth2.md) authorization, access token, and device authorization requests
+- [OAuth 2.0](../../api/oauth2.md) authorization, access token, device authorization, and dynamic client
+  registration requests
 - [OpenID Connect](../../integration/openid_connect_provider.md) discovery requests, such as the ones
   cloud providers make to verify [CI/CD ID tokens](../../ci/secrets/id_token_authentication.md)
+- OAuth discovery requests that [MCP clients](../model_context_protocol/mcp_server.md) make before they sign in
 - Terraform service discovery requests, made before installing modules from the
   [Terraform module registry](../packages/terraform_module_registry/_index.md)
 - [Feature flag](../../operations/feature_flags.md) polling from Unleash clients
+- Requests that register a runner with a registration token
 - [SCIM](../group/saml_sso/scim_setup.md) provisioning requests from an identity provider
 - Requests that Jira Cloud sends to the [GitLab for Jira Cloud app](../../integration/jira/connect-app.md),
   such as searching for and linking repositories
@@ -157,6 +160,8 @@ the burst limit is also 2,000 requests each minute, so the two limits are the sa
 | [Pull mirroring](../project/repository/mirror/pull.md) intervals                                              | 5 minutes                       |
 | API requests from a user to `/api/v4/users/:id`                                                               | 300 requests every 10 minutes   |
 | GitLab package hosting system requests for an IP address                                                      | 1,000 requests each minute      |
+| [Virtual registry](../packages/virtual_registry/_index.md) requests for an IP address and top-level group     | 4,000 requests every 15 seconds |
+| Rejected virtual registry package requests for an IP address                                                  | 4,000 requests every 15 seconds |
 | Repository files API requests (`GET /api/v4/projects/:id/repository/files/*`) for an IP address and file path | 500 requests each minute        |
 | User followers requests (`/api/v4/users/:id/followers`)                                                       | 100 requests each minute        |
 | User following requests (`/api/v4/users/:id/following`)                                                       | 100 requests each minute        |
@@ -186,6 +191,37 @@ More details are available on the rate limits for
 
 GitLab can rate-limit requests at several layers. These limits are the most
 restrictive for each IP address.
+
+## Virtual registry rate limits
+
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/issues/521692) in GitLab 17.11.
+- [Changed](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/227323) default limit from 1,000 to 4,000 requests every 15 seconds in GitLab 18.11.
+- [Introduced](https://gitlab.com/gitlab-org/gitlab/-/merge_requests/257055) a rate limit for requests that fail access checks in GitLab 19.5 [with a flag](../../administration/feature_flags/_index.md) named `virtual_registries_skip_authenticated_throttles`. Disabled by default.
+
+The virtual registry applies dedicated rate limits to package requests, such as Maven.
+The rate limit a request counts toward depends on whether the request
+passes access checks:
+
+| Request                      | Rate limit                      | Rate limit scope               |
+|------------------------------|---------------------------------|--------------------------------|
+| Request passes access checks | 4,000 requests every 15 seconds | IP address and top-level group |
+| Request fails access checks  | 4,000 requests every 15 seconds | IP address                     |
+
+A request fails access checks when:
+
+- The registry ID does not exist.
+- The credentials are missing or invalid.
+- The user does not have access to the registry.
+
+Authenticated virtual registry package requests do not count toward the
+authenticated API traffic limit for a user or the [rate limits by plan](#rate-limits-by-plan).
+The virtual registry rate limit applies instead.
+
+The per-user exemption and the limit for requests that fail access checks
+apply to package requests only, not to container virtual registry requests.
+
+When you go over either limit, GitLab returns a `429 Too Many Requests` error.
+The [protected paths throttle](#protected-paths-throttle) still applies.
 
 ## Service Desk email rate limit
 

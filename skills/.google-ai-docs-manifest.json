@@ -236,8 +236,8 @@
   "google-ai-docs/file-input-methods.md": {
     "url": "https://ai.google.dev/gemini-api/docs/file-input-methods",
     "skill": "google-ai-docs",
-    "size": 37554,
-    "updatedAt": "2026-09-24T04:35:22.558Z"
+    "size": 37662,
+    "updatedAt": "2026-10-07T17:34:06.063Z"
   },
   "google-ai-api/batch-api.md": {
     "url": "https://ai.google.dev/api/batch-api",
@@ -332,8 +332,8 @@
   "google-ai-docs/custom-agents.md": {
     "url": "https://ai.google.dev/gemini-api/docs/custom-agents",
     "skill": "google-ai-docs",
-    "size": 69038,
-    "updatedAt": "2026-09-24T04:35:31.946Z"
+    "size": 69060,
+    "updatedAt": "2026-10-07T17:34:14.605Z"
   },
   "google-ai-docs/managed-agents-quickstart.md": {
     "url": "https://ai.google.dev/gemini-api/docs/managed-agents-quickstart",
@@ -344,8 +344,8 @@
   "google-ai-docs/antigravity-agent.md": {
     "url": "https://ai.google.dev/gemini-api/docs/antigravity-agent",
     "skill": "google-ai-docs",
-    "size": 101427,
-    "updatedAt": "2026-09-30T05:25:22.112Z"
+    "size": 101438,
+    "updatedAt": "2026-10-07T17:34:15.470Z"
   },
   "google-ai-docs/aistudio-agents.md": {
     "url": "https://ai.google.dev/gemini-api/docs/aistudio-agents",

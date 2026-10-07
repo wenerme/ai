@@ -67,7 +67,7 @@ Features available on the Free tier require the purchase of [GitLab Credits](../
 | [Code Review Flow](flows/foundational_flows/code_review/_index.md)  Automate code review tasks and enforce coding standards across your team. | Yes | Yes  | Yes |
 | [Convert to GitLab CI/CD Flow](flows/foundational_flows/convert_to_gitlab_ci.md)  Convert legacy CI/CD pipelines to the GitLab CI/CD format. | Yes | Yes  | Yes |
 | [Fix CI/CD Pipeline Flow](../../ci/pipelines/fix_pipeline.md)  Diagnose and automatically fix failing CI/CD pipelines. | Yes | Yes  | Yes |
-| [Software Development Flow](flows/foundational_flows/software_development.md)  Create a full, multi-step plan before executing it. | Yes | Yes  | Yes |
+| [Software Development Flow](../../editor_extensions/software_development.md)  Create a full, multi-step plan before executing it. | Yes | Yes  | Yes |
 | [MCP clients](../gitlab_duo/model_context_protocol/mcp_clients.md)  Access GitLab resources and tools from any MCP-compatible AI client or IDE extension.[^mcp-clients-consume] | Yes | Yes | Yes |
 | [Custom flows](flows/custom.md)  Combine multiple agents to solve your business problems. | Yes | Yes | Yes |
 | [Interactions in merge requests](../project/merge_requests/duo_in_merge_requests.md#interact-with-gitlab-duo)  Ask questions and discuss feedback in merge request comment threads. | Yes | Yes | Yes |
@@ -89,7 +89,7 @@ These features are either beta or experimental and consume GitLab Credits.
 | Feature | Free | Premium | Ultimate |
 |---------|---|---|---|
 | [GitLab for Slack app](../project/integrations/gitlab_slack_application.md#gitlab-duo)  Interact with GitLab Duo from Slack. | No | Yes | Yes |
-| [Security Review Flow](flows/foundational_flows/security_review.md)  Detects business logic vulnerabilities in merge requests. | No | No | Yes |
+| [Security Review Flow](../application_security/security_review.md)  Detects business logic vulnerabilities in merge requests. | No | No | Yes |
 
 ## Beta and experimental features that don't consume credits
 

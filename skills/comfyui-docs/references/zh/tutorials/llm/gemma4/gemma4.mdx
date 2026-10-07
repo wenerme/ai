@@ -1,11 +1,11 @@
 ---
 title: "Gemma 4 ComfyUI 工作流示例"
 description: "在 ComfyUI 中运行 Google 轻量级开源 Gemma 4 LLM，支持文本生成、图像理解、视频分析和音频转录，上下文窗口最高 256K。"
-translationSourceHash: a0b55a32
+translationSourceHash: 88815c8c
 translationFrom: tutorials/llm/gemma4/gemma4.mdx
 translationBlockHashes:
   "_intro": 5d74d230
-  "Available workflow": 850e970e
+  "Available workflow": a5a260f2
   "Model Download": 8eb8dbb8
 ---
 
@@ -52,10 +52,10 @@ translationBlockHashes:
     `LoadImage` 节点 2 · `the_lily_veil.png`
   
   
-    `LoadAudio` 节点 5 · `voice_demo.mp3`
+    `LoadAudio` 节点 5 · `long_demo.mp3`
   
   
-    `LoadVideo` 节点 6 · `video_wan_vace_inpainting_input_video.mp4`
+    `LoadVideo` 节点 6 · 该工作流不会用视频参与生成 · `video_wan_vace_inpainting_input_video.mp4`
   
 
 该工作流演示了 Gemma 4 的核心**文本生成**能力。它在接受文本提示词的同时，还可选择图像、音频或视频作为额外上下文，并生成自然语言输出，支持推理、编程和多语言提示。
@@ -64,7 +64,7 @@ translationBlockHashes:
 - **文本提示词**：你的问题或指令
 - **图像**（可选）：用于视觉理解任务（OCR、目标检测、图表阅读等）
 - **音频**（可选）：用于语音识别或转录
-- **视频**（可选）：用于跨帧视频理解（内部按 1 FPS 采样）
+- **视频**（可选）：模板会加载并拆分视频，但其帧未连接到文本生成器，因此视频不会影响输出
 
 **关键控制参数**：
 - **Max length**：生成的最大 token 数（默认 256）
