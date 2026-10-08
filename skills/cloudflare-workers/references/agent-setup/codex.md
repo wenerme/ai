@@ -58,7 +58,7 @@ TerminalStandaloneCloudExtensionOpen Source
    For example:
 
    ```txt
-   Add a cron trigger to my Worker that processes a job queue every hour.
+   Add a D1 database to my Worker and create a users table with full CRUD endpoints.
    ```
 
 
@@ -164,11 +164,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
-```
-
-```txt
-Build a serverless AI inference endpoint on Workers AI with streaming responses.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
@@ -176,11 +172,15 @@ Optimize my Worker to serve WebP images with responsive resizing using Cloudflar
 ```
 
 ```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
 ```
 
 ```txt
-Set up a KV namespace for edge-cached session storage in my Worker.
+Add bot protection and rate limiting to my login and checkout endpoints.
+```
+
+```txt
+Build an image upload and transformation service using R2 and Cloudflare Images.
 ```
 
 ## Tips

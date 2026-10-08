@@ -6,11 +6,14 @@ A directive provides a way to describe alternate runtime execution and type vali
 in a GraphQL document. For more information, see the
 [GraphQL directive documentation](https://graphql.org/learn/queries/#directives).
 
-WARNING:
-Deprecated items are marked with .
-They will be removed in a future release according to the GitLab [deprecation process](../../_index.md#deprecation-and-removal-process).
-Items that are [experiments](../../../../policy/development_stages_support.md#experiment) are marked with .
-Experimental items can change at any time and are not recommended for use in production.
+> [!warning]
+> Deprecated items are marked with  and are planned to be removed in a
+> future release. For more information, see the GitLab
+> [deprecation process](../../_index.md#deprecation-and-removal-process).
+>
+> Items that are [experiments](../../../../policy/development_stages_support.md#experiment) are
+> marked with . Experimental items can change at any time and
+> are not recommended for use in production.
 
 ## `deprecated`
 

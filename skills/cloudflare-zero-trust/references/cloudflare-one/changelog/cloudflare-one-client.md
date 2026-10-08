@@ -18,6 +18,124 @@ Review recent changes to the Cloudflare One Client (formerly WARP).
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/cloudflare-one-client.xml)
 
+## 2026-10-07
+
+
+**Cloudflare One Client for macOS (version 2026.8.2100.0)**
+
+A new GA release for the macOS Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release includes the following highlights:
+
+- Traffic to split tunnel excluded resources is no longer briefly blocked while the client is connecting or reconnecting. The client now keeps its learned split tunnel configuration across reconnects.
+- Support for routing non-RFC 1918 local IPv4 networks through the tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
+- Faster connects and lower memory use. The hosts file is now read once and shared across the client’s DNS resolvers instead of being reloaded by each one.
+
+**Additional changes and improvements**
+
+- Improved reauthentication reliability and fixed an issue where a reauthentication could force a new registration.
+- Improved client reaction to the current network lowering its MTU.
+- Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
+- Individual DNS-over-HTTPS queries now time out instead of hanging when the upstream server stops responding.
+- Improved API reliability by retrying requests dropped when reusing pooled connections.
+- Added an MDM setting to prefer IPv4 when resolving hostnames in proxy mode. The setting is off by default.
+- Fixed the client reconnecting while Emergency Disconnect was active after switching organizations or re-registering.
+- Fixed the client being unable to connect after an upgrade when its stored registration credentials no longer matched its configuration.
+- Fixed the client service restarting unexpectedly when it was slow to respond, such as after waking from sleep.
+- Fixed Extra Logging failing to capture packets across all interfaces.
+- Fixed an issue that could prevent remote diagnostics from completing.
+- Fixed DNS connectivity checks failing on IPv6-only networks.
+- Fixed the client service exiting when its route-monitoring socket was closed after sleep or wake.
+- Fixed DNS enforcement checks making the client service unresponsive on systems with large routing tables.
+- Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
+- Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
+- Fixed the client continuing to report “No network” after a successful manual disconnect.
+- Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
+- Fixed a startup crash when date formatting data for the system locale had not yet loaded.
+
+**Known issues**
+
+- None
+
+## 2026-10-07
+
+
+**Cloudflare One Client for Windows (version 2026.8.2100.0)**
+
+A new GA release for the Windows Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release includes the following highlights:
+
+- Traffic to split tunnel excluded resources is no longer briefly blocked while the client is connecting or reconnecting. The client now keeps its learned split tunnel configuration across tunnel reconnections.
+- Support for routing non-RFC 1918 local IPv4 networks through the tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
+- Improved connection reliability on devices with very large hosts files. The client now detects a large hosts file, allows more time for its initial DNS check, and shows a banner letting the user know that connecting may take longer.
+- Faster tunnel reconnections and lower memory use. The hosts file is now read once and shared across the client’s DNS resolvers instead of being reloaded by each one.
+- A service recovery mechanism, backed by a Windows scheduled task, now starts the client service on system unlock if it is not already running. This is enabled by default.
+
+**Additional changes and improvements**
+
+- Improved reauthentication reliability and fixed an issue where a reauthentication could force a new registration.
+- Improved client reaction to the current network lowering its MTU.
+- Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
+- Individual DNS-over-HTTPS queries now time out instead of hanging when the upstream server stops responding.
+- Improved API reliability by retrying requests dropped when reusing pooled connections.
+- Added an MDM setting to prefer IPv4 when resolving hostnames in proxy mode. The setting is off by default.
+- The client no longer requires the Windows WLAN AutoConfig service to be running.
+- Fixed the client reconnecting while Emergency Disconnect was active after switching organizations or re-registering.
+- Fixed the client being unable to connect after an upgrade when its stored registration credentials no longer matched its configuration.
+- Fixed the client service restarting unexpectedly when it was slow to respond, such as after waking from sleep.
+- Fixed the client service failing to restart after an unexpected termination.
+- Fixed the client UI getting stuck in a connecting state after sleep and wake even though the tunnel was connected.
+- Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
+- Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
+- Fixed the client continuing to report “No network” after a successful manual disconnect.
+- Fixed Digital Experience Monitoring (DEX) HTTP tests failing TLS validation.
+- Fixed latency spikes and traffic interruptions during TPM-backed API authentication when hardware-backed registration is enabled.
+- Fixed trailing whitespace in BIOS serial numbers causing serial-number and client-certificate device posture checks to fail.
+- Fixed the client UI crashing at startup when it could not write to the Windows registry.
+- Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
+- Fixed a startup crash when date formatting data for the system locale had not yet loaded.
+
+**Known issues**
+
+- A Windows DNS client regression may cause connectivity check failures on systems containing large hosts files. While this release includes a fix to mitigate this issue, users may still experience reduced DNS performance and connectivity check failures.
+
+## 2026-10-07
+
+
+**Cloudflare One Client for Linux (version 2026.8.2100.0)**
+
+A new GA release for the Linux Cloudflare One Client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
+
+This release includes the following highlights:
+
+- Traffic to split tunnel excluded resources is no longer briefly blocked while the client is connecting or reconnecting. The client now keeps its learned split tunnel configuration across reconnects.
+- Support for routing non-RFC 1918 local IPv4 networks through the tunnel when unrestricted LAN inclusion is enabled by policy or MDM.
+- Faster tunnel reconnections and lower memory use. The hosts file is now read once and shared across the client’s DNS resolvers instead of being reloaded by each one.
+- Added an MDM setting to prefer IPv4 when resolving hostnames in proxy mode. The setting is off by default.
+
+**Additional changes and improvements**
+
+- Improved reauthentication reliability and fixed an issue where a reauthentication could force a new registration.
+- Improved client reaction to the current network lowering its MTU.
+- Improved DNS reliability on networks with lower MTUs by clamping the TCP maximum segment size (MSS) for DNS-over-HTTPS connections sent through the tunnel.
+- Individual DNS-over-HTTPS queries now time out instead of hanging when the upstream server stops responding.
+- Improved API reliability by retrying requests dropped when reusing pooled connections.
+- Fixed the client reconnecting while Emergency Disconnect was active after switching organizations or re-registering.
+- Fixed the client being unable to connect after an upgrade when its stored registration credentials no longer matched its configuration.
+- Fixed the client service restarting unexpectedly when it was slow to respond, such as after waking from sleep.
+- Fixed the client window not appearing on first launch after a fresh install on RHEL 10.
+- Fixed duplicate WARP routing policy rules accumulating on reconnect.
+- Fixed slow captive portal checks causing the client service to become unresponsive or restart while connecting.
+- Fixed a race when switching tunnel protocols during key rotation that could prevent WireGuard from connecting.
+- Fixed the client continuing to report “No network” after a successful manual disconnect.
+- Fixed a client UI crash that could occur when the daemon connection was reset during an IPC request.
+- Fixed a startup crash when date formatting data for the system locale had not yet loaded.
+
+**Known issues**
+
+- When in DNS Only mode, the client may send DNS queries for names that are configured for Local Domain Fallback to the encrypted DNS server instead of falling back to the system configuration. Local Domain Fallback works as expected in other client modes.
+
 ## 2026-09-30
 
 
@@ -1283,69 +1401,6 @@ This release contains minor fixes, improvements, and new features including Path
 - The GUI now displays the health of the tunnel and DNS connections by showing a connection status message when the network may be unstable. This will make it easier to debug connectivity issues.
 - Deleting registrations no longer returns an error when succeeding.
 - Path Maximum Transmission Unit Discovery (PMTUD) is now used to discover the effective MTU of the connection. This allows the client to improve connection performance optimized for the current network.
-
-**Known issues**
-
-- macOS Sequoia: Due to changes Apple introduced in macOS 15.0.x, the WARP client may not behave as expected. Cloudflare recommends the use of macOS 15.4 or later.
-- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
-## 2025-10-07
-
-
-**WARP client for Linux (version 2025.8.779.0)**
-
-A new GA release for the Linux WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains significant fixes and improvements including an updated public key for Linux packages. The public key must be updated if it was installed before September 12, 2025 to ensure the repository remains functional after December 4, 2025. Instructions to make this update are available at [pkg.cloudflareclient.com](https://pkg.cloudflareclient.com/).
-
-**Changes and improvements**
-
-- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) has been enhanced for even faster resolution. Proxy mode now supports SOCKS4, SOCK5, and HTTP CONNECT over an L4 tunnel with custom congestion control optimizations instead of the previous L3 tunnel to Cloudflare's network. This has more than doubled Proxy mode throughput in lab speed testing, by an order of magnitude in some cases.
-- The MASQUE protocol is now the only protocol that can use [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new WARP mode or switch to the MASQUE protocol. Otherwise, all devices matching the profile will lose connectivity.
-
-**Known issues**
-
-- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-
-## 2025-10-07
-
-
-**WARP client for Windows (version 2025.8.779.0)**
-
-A new GA release for the Windows WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains significant fixes and improvements.
-
-**Changes and improvements**
-
-- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) has been enhanced for even faster resolution. Proxy mode now supports SOCKS4, SOCK5, and HTTP CONNECT over an L4 tunnel with custom congestion control optimizations instead of the previous L3 tunnel to Cloudflare's network. This has more than doubled Proxy mode throughput in lab speed testing, by an order of magnitude in some cases.
-- The MASQUE protocol is now the only protocol that can use [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new WARP mode or switch to the MASQUE protocol. Otherwise, all devices matching the profile will lose connectivity.
-
-**Known issues**
-
-- For Windows 11 24H2 users, Microsoft has confirmed a regression that may lead to performance issues like mouse lag, audio cracking, or other slowdowns. Cloudflare recommends users experiencing these issues upgrade to a minimum [Windows 11 24H2 KB5062553](https://support.microsoft.com/en-us/topic/july-8-2025-kb5062553-os-build-26100-4652-523e69cb-051b-43c6-8376-6a76d6caeefd) or higher for resolution.
-- Devices using WARP client 2025.4.929.0 and up may experience Local Domain Fallback failures if a fallback server has not been configured. To configure a fallback server, refer to [Route traffic to fallback server](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/route-traffic/local-domains/#route-traffic-to-fallback-server).
-- Devices with KB5055523 installed may receive a warning about `Win32/ClickFix.ABA` being present in the installer. To resolve this false positive, update Microsoft Security Intelligence to [version 1.429.19.0](https://www.microsoft.com/en-us/wdsi/definitions/antimalware-definition-release-notes?requestVersion=1.429.19.0) or later.
-- DNS resolution may be broken when the following conditions are all true:
-  - WARP is in Secure Web Gateway without DNS filtering (tunnel-only) mode.
-  - A custom DNS server address is configured on the primary network adapter.
-  - The custom DNS server address on the primary network adapter is changed while WARP is connected.
-
-  To work around this issue, reconnect the WARP client by toggling off and back on.
-
-## 2025-10-07
-
-
-**WARP client for macOS (version 2025.8.779.0)**
-
-A new GA release for the macOS WARP client is now available on the [stable releases downloads page](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/download/).
-
-This release contains significant fixes and improvements.
-
-**Changes and improvements**
-
-- [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode) has been enhanced for even faster resolution. Proxy mode now supports SOCKS4, SOCK5, and HTTP CONNECT over an L4 tunnel with custom congestion control optimizations instead of the previous L3 tunnel to Cloudflare's network. This has more than doubled Proxy mode throughput in lab speed testing, by an order of magnitude in some cases.
-- The MASQUE protocol is now the only protocol that can use [Proxy mode](https://developers.cloudflare.com/cloudflare-one/team-and-resources/devices/cloudflare-one-client/configure/modes/#local-proxy-mode). If you previously configured a device profile to use Proxy mode with Wireguard, you will need to select a new WARP mode or switch to the MASQUE protocol. Otherwise, all devices matching the profile will lose connectivity.
 
 **Known issues**
 

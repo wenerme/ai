@@ -16,6 +16,44 @@ Last updated Apr 17, 2026|Copy as Markdown| [View as Markdown](https://developer
 
 [Subscribe to RSS](https://developers.cloudflare.com/changelog/rss/casb.xml)
 
+## 2026-10-05
+
+
+**Detect organization-specific risks with CASB custom finding types**
+
+[Cloudflare CASB](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) now supports [**custom finding types**](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/), giving security teams full control over the security conditions CASB detects across their SaaS and cloud integrations.
+
+In addition to CASB's library of standard finding types, you can now write your own detection logic using [Rego ↗︎](https://www.openpolicyagent.org/docs/policy-language), the open-source policy language from Open Policy Agent (OPA). Use custom finding types to match your organization's own thresholds and exceptions, such as flagging admin accounts without two-factor authentication, and get higher-confidence findings to act on.
+
+![Create a custom finding type with a name, severity, scope, and Rego detection logic](https://developers.cloudflare.com/cdn-cgi/image/onerror=redirect,width=1194,height=1194,format=webp/_astro/create-custom-finding-type.CF3GXoPZ.png)
+
+#### Key capabilities
+
+- **Write your own detection logic** — Define exactly what CASB flags using Rego expressions evaluated against asset data from your connected integrations.
+- **Target any supported provider and asset class** — Scope a custom finding type to a provider (such as Google Workspace or Microsoft 365) and asset class (such as users, files, or groups), and apply it to all integrations for that provider or a selected subset.
+- **Built-in validation** — Select **Validate** to check your expression for syntax errors and schema issues before you create the finding type.
+- **Inspect and duplicate standard finding types** — Open any standard finding type to view its detection logic, then duplicate it as the starting point for a custom finding type.
+- **Works with CASB policies** — Use custom finding types in [CASB remediation policies](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/) to send matching findings to Slack, ServiceNow, or any other webhook destination.
+
+#### Get started
+
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Findings library**.
+2. Select **Create finding**.
+3. Enter a name, description, and severity.
+4. Select a provider and asset class, then set the integration scope.
+5. Write your Rego expression and select **Validate**.
+6. Select **Create finding**.
+
+CASB evaluates the custom finding type against assets as they are created or updated within the selected scope. Matching assets appear as posture finding instances under **Posture Findings**.
+
+#### Learn more
+
+- Learn how to [create and manage custom finding types](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/) in Cloudflare One.
+- Learn how to [manage findings](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/manage-findings/) in Cloudflare One.
+- Learn how to [create and manage CASB remediation policies](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/) in Cloudflare One.
+
+CASB custom finding types are now available in Cloudflare One.
+
 ## 2026-09-09
 
 

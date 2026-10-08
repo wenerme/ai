@@ -53,7 +53,7 @@ IDETerminalStandaloneExtensionOpen Source
    Open Copilot Chat (**Ctrl+Shift+I** / **Cmd+Shift+I**), switch to agent mode, and try a prompt — for example:
 
    ```txt
-   Add mTLS authentication and schema validation to protect my API endpoints.
+   Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
    ```
 
 
@@ -154,11 +154,11 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ```txt
@@ -166,11 +166,11 @@ Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ## Tips

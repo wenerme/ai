@@ -24,6 +24,7 @@ You can use:
 ## Supported models
 
 - Claude Sonnet 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7129) as a supported model on September 28, 2026.
+- Claude Haiku 5.5 [added](https://gitlab.com/gitlab-org/modelops/applied-ml/code-suggestions/ai-assist/-/merge_requests/7364) as a supported model on October 7, 2026.
 
 GitLab-supported models offer different levels of functionality for GitLab Duo features,
 depending on the specific model and feature combination.
@@ -47,6 +48,7 @@ Any models supported on GitLab.com should also work on GitLab Duo Self-Hosted.
 | Claude 4 | [Claude Sonnet 4.6](https://www.anthropic.com/news/claude-sonnet-4-6) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
 | Claude 4 | [Claude Opus 4.8](https://www.anthropic.com/news/claude-opus-4-8) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
 | Claude 5 | [Claude Sonnet 5.5](https://www.anthropic.com/claude-sonnet-5-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
+| Claude 5 | [Claude Haiku 5.5](https://www.anthropic.com/claude-haiku-5-5) |  Full functionality |  Full functionality |  Full functionality |  Full functionality |
 | GLM | [GLM-5.1-FP8](https://huggingface.co/zai-org/GLM-5.1-FP8) |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
 | GLM | [GLM-5.3](https://huggingface.co/zai-org/GLM-5.3) |  Limited functionality |  Limited functionality |  Full functionality |  Full functionality |
 | GPT | [GPT-4 Turbo](https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models?tabs=python-secure#gpt-4) |  Full functionality |  Full functionality |  Partial functionality |  Limited functionality |

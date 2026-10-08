@@ -43,7 +43,7 @@ IDETerminalStandaloneCloud
    For example:
 
    ```txt
-   Check my Workers deployment logs for errors and suggest fixes.
+   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
    ```
 
 
@@ -142,23 +142,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
-```
-
-```txt
 Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
+Build an AI chat agent using the Cloudflare Agents SDK with persistent conversation history stored in D1.
 ```
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
 ```
 
 ```txt
-Set up rate limiting and WAF rules to block abuse on my public API.
+Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+```
+
+```txt
+Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ## Tips

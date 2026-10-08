@@ -58,7 +58,7 @@ Execute `evalscope perf --help` to get a full parameter description.
 |------|------|------|--------|
 | `--sla-auto-tune` | `bool` | Whether to enable SLA auto-tuning mode | `False` |
 | `--sla-variable` | `str` | Variable for auto-tuningOptions: `parallel` (concurrency), `rate` (request rate) | `parallel` |
-| `--sla-params` | `str` | SLA constraint conditionsJSON stringSupported metrics: `avg_latency`, `p99_latency`, `avg_ttft`, `p99_ttft`, `avg_tpot`, `p99_tpot`, `rps`, `tps`Supported operators: `<=`, `<`, `min` (for latency metrics); `>=`, `>`, `max` (for throughput metrics)Example: `'[{"p99_latency": "<=2"}]'` | `None` |
+| `--sla-params` | `str` | SLA constraint conditionsJSON stringSupported metrics: `avg_latency`, `p99_latency`, `avg_ttft`, `p99_ttft`, `avg_tpot`, `p99_tpot`, `rps`, `tps`Supported operators: `<=`, `<`, `min` (for latency metrics); `>=`, `>`, `max` (for throughput metrics)Latency units: `s` or `ms`; without a suffix, `latency` uses seconds and `ttft`/`tpot` use millisecondsExample: `'[{"p99_latency": "<=2s"}]'` | `None` |
 | `--sla-upper-bound` | `int` | Upper bound of the tuned SLA variable search range | `65536` |
 | `--sla-lower-bound` | `int` | Lower bound of the tuned SLA variable search range | `1` |
 | `--sla-fixed-parallel` | `int` | Fixed parallel workers used when `--sla-variable=rate`; defaults to `--sla-upper-bound` for backward compatibility | `None` |

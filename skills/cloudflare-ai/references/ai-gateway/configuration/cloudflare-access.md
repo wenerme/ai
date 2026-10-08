@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-acc
 
 # Cloudflare Access
 
-Last updated Aug 5, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Protect your gateway with [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/) so users authenticate with your identity provider before they can send requests. Putting AI Gateway behind Access gives you identity-aware control over your AI traffic: you decide who can reach the gateway, tie each request to a verified user, and govern usage per user without building your own authentication layer or passing user IDs from the client application.
 
@@ -45,9 +45,8 @@ After setup, users can make requests to the custom domain after authenticating t
 After the user authenticates to Access, send requests to the custom domain without the account ID or gateway ID in the path:
 
 ```bash
-curl -X POST "https://ai.example.com/openai/v1/chat/completions" \
-  --header "Content-Type: application/json" \
-  --data '{
+cloudflared access curl https://ai.example.com/openai/v1/chat/completions -s \
+  --json '{
     "model": "gpt-4.1-mini",
     "messages": [
       {
@@ -58,7 +57,19 @@ curl -X POST "https://ai.example.com/openai/v1/chat/completions" \
   }'
 ```
 
-If you call the custom domain from a non-browser client, include the Access token using the header or cookie format supported by Cloudflare Access. For example, [`cloudflared access curl`](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/#make-requests-with-cloudflared-access-curl) can send the Access token for command-line requests.
+Every request must carry an Access token. Browsers attach the token automatically as a cookie after login. Other clients must send it explicitly. [`cloudflared access curl`](https://developers.cloudflare.com/cloudflare-one/access-controls/authenticate-agents/#make-requests-with-cloudflared-access-curl) handles this for command-line requests using [`cloudflared` on the client device](https://developers.cloudflare.com/cloudflare-one/access-controls/applications/non-http/cloudflared-authentication/).
+
+The following request runs a Workers AI model through the OpenAI-compatible endpoint:
+
+```bash
+cloudflared access curl https://ai.example.com/compat/chat/completions -s \\
+  --json '{
+    "model": "workers-ai/@cf/meta/llama-3.1-8b-instruct-fast",
+    "messages": [
+      {"role": "user", "content": "What should I buy for a summer flash sale?"}
+    ]
+  }'
+```
 
 For coding agents, refer to the per-agent setup under [Coding agents](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/) — for example, [Claude Code](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/claude-code/#use-with-cloudflare-access) and [OpenAI Codex](https://developers.cloudflare.com/ai-gateway/integrations/coding-agents/openai-codex/#use-with-cloudflare-access).
 
@@ -77,5 +88,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/#page","headline":"Cloudflare Access","description":"Add identity-aware controls to AI Gateway so users authenticate with your identity provider before they can call your gateway.","url":"https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/og.png?v=40fa4a7165b04966","dateModified":"2026-08-05","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/#page","headline":"Cloudflare Access","description":"Add identity-aware controls to AI Gateway so users authenticate with your identity provider before they can call your gateway.","url":"https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/","inLanguage":"en","image":"https://developers.cloudflare.com/ai-gateway/configuration/cloudflare-access/og.png?v=40fa4a7165b04966","dateModified":"2026-10-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

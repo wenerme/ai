@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Build a multi-tenant SaaS backend where each customer gets an isolated D1 database.
+   Use Workers for Platforms to let my customers deploy their own code in isolated environments.
    ```
 
 
@@ -147,23 +147,23 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Build an image upload and transformation service using R2 and Cloudflare Images.
+Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
 ```
 
 ```txt
-Create a RAG pipeline using Vectorize and Workers AI to answer questions over my documentation.
+Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
 ```
 
 ```txt
-Deploy a globally distributed REST API on Workers with automatic scaling and zero cold starts.
+Create a Logpush job to stream Workers analytics to my data warehouse.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Check my Workers deployment logs for errors and suggest fixes.
 ```
 
 ## Tips

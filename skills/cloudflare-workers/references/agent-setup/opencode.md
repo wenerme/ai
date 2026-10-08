@@ -69,7 +69,7 @@ TerminalStandaloneExtensionOpen Source
    For example:
 
    ```txt
-   Build an image upload and transformation service using R2 and Cloudflare Images.
+   Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
    ```
 
 
@@ -168,7 +168,7 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
-Add mTLS authentication and schema validation to protect my API endpoints.
+Set up a KV namespace for edge-cached session storage in my Worker.
 ```
 
 ```txt
@@ -180,11 +180,11 @@ Configure Zero Trust access policies to protect my internal staging environment.
 ```
 
 ```txt
-Optimize my Worker to serve WebP images with responsive resizing using Cloudflare Images.
+Add bot protection and rate limiting to my login and checkout endpoints.
 ```
 
 ```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Configure caching rules and cache TTLs to reduce origin load for my e-commerce store.
 ```
 
 ## Tips

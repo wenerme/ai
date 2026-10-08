@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/fundamentals/account/account-security/a
 
 # Audit Logs - version 2
 
-Last updated Sep 14, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Cloudflare Audit Logs are account-based. All user-initiated actions are recorded automatically across both the Cloudflare API and dashboard. System-initiated logs are also captured to reflect actions taken automatically by Cloudflare systems, such as configuration updates, background processes, or internal policy enforcement.
 
@@ -273,10 +273,6 @@ The `GET /memberships` endpoint supports cross-account access. To query membersh
 
 Contain events scoped to specific [Cloudflare Organizations](https://developers.cloudflare.com/fundamentals/organizations/). These logs capture user-initiated actions performed by Org Admins through organization-level APIs.
 
-Note
-
-Cloudflare Organizations is Enterprise-only and currently in public beta.
-
 You can retrieve Organization audit logs using either the API or the Cloudflare dashboard.
 
 ##### API access
@@ -425,5 +421,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/og.png?v=86ea1f6eba2914ff","dateModified":"2026-09-14","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/#page","headline":"Audit Logs - version 2","description":"Use Cloudflare Audit Logs v2 to track user-initiated and system-initiated actions across your account via the dashboard, API, or Logpush.","url":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/","inLanguage":"en","image":"https://developers.cloudflare.com/fundamentals/account/account-security/audit-logs/og.png?v=86ea1f6eba2914ff","dateModified":"2026-10-07","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

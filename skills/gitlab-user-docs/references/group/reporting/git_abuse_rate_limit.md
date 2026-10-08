@@ -1,5 +1,7 @@
 # Git abuse rate limit
 
+Configure Git abuse rate limits to notify owners or automatically ban users who download too many repositories in a set time period.
+
 - Tier: Ultimate
 - Offering: GitLab.com, GitLab Self-Managed
 

@@ -5,11 +5,14 @@ Sets of fields that object types share, so they can be queried together.
 An interface defines a set of fields that multiple object types can implement. For more
 information, see the [GraphQL interface documentation](https://graphql.org/learn/schema/#interfaces).
 
-WARNING:
-Deprecated items are marked with .
-They will be removed in a future release according to the GitLab [deprecation process](../../_index.md#deprecation-and-removal-process).
-Items that are [experiments](../../../../policy/development_stages_support.md#experiment) are marked with .
-Experimental items can change at any time and are not recommended for use in production.
+> [!warning]
+> Deprecated items are marked with  and are planned to be removed in a
+> future release. For more information, see the GitLab
+> [deprecation process](../../_index.md#deprecation-and-removal-process).
+>
+> Items that are [experiments](../../../../policy/development_stages_support.md#experiment) are
+> marked with . Experimental items can change at any time and
+> are not recommended for use in production.
 
 ## `AccessLevelInterface`
 
@@ -1002,7 +1005,7 @@ Representation of a GitLab user.
 | `groupCallouts` | [`UserGroupCalloutConnection`](objects.md#usergroupcalloutconnection) | User callouts that belong to the user per group. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
 | `groupCount` | [`Int`](scalars.md#int) | Group count for the user. |
 | `groupMemberships` | [`GroupMemberConnection`](objects.md#groupmemberconnection) | Group memberships of the user. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`. |
-| `groups` | [`GroupConnection`](objects.md#groupconnection) | Groups where the user has access. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `groups`:</strong> <dl><dt>`permissionScope` ([`GroupPermission`](enums.md#grouppermission))</dt><dd>Filter by permissions the user has on groups.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search by group name or path.</dd><dt>`sort` ([`GroupSort`](enums.md#groupsort))</dt><dd>Sort groups by given criteria.</dd></dl> |
+| `groups` | [`GroupConnection`](objects.md#groupconnection) | Groups where the user has access. This field is a [connection](objects.md#connections-and-pagination) and accepts the four standard pagination arguments: `before`, `after`, `first`, `last`.  <strong>Arguments for `groups`:</strong> <dl><dt>`permissionScope` ([`GroupPermission`](enums.md#grouppermission))</dt><dd>Filter by permissions the user has on groups.</dd><dt>`search` ([`String`](scalars.md#string))</dt><dd>Search by group name or path.</dd><dt>`soloOwned` ([`Boolean`](scalars.md#boolean))</dt><dd>When true, returns only groups in the current organization where the user is the sole owner.</dd><dt>`sort` ([`GroupSort`](enums.md#groupsort))</dt><dd>Sort groups by given criteria.</dd></dl> |
 | `human` | [`Boolean`](scalars.md#boolean) | Indicates if the user is a regular user. |
 | `id` | [`UserID!`](scalars.md#userid) | Global ID of the user. |
 | `ide` | [`Ide`](objects.md#ide) | IDE settings. |
@@ -1093,6 +1096,7 @@ Representation of a GitLab user.
 - [`WorkItemWidgetDevelopment`](objects.md#workitemwidgetdevelopment)
 - [`WorkItemWidgetEmailParticipants`](objects.md#workitemwidgetemailparticipants)
 - [`WorkItemWidgetErrorTracking`](objects.md#workitemwidgeterrortracking)
+- [`WorkItemWidgetEscalationStatus`](objects.md#workitemwidgetescalationstatus)
 - [`WorkItemWidgetHealthStatus`](objects.md#workitemwidgethealthstatus)
 - [`WorkItemWidgetHierarchy`](objects.md#workitemwidgethierarchy)
 - [`WorkItemWidgetIteration`](objects.md#workitemwidgetiteration)

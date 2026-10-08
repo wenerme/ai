@@ -2,7 +2,7 @@
 
 Primitive leaf values used in the API, including custom types such as Global IDs and time values.
 
-A scalar is a simple GraphQL type with no fields.
+A scalar is a GraphQL type with no fields.
 
 GraphQL has a standard set of scalars: [`Boolean`](#boolean), [`Float`](#float), [`ID`](#id), [`Int`](#int), and [`String`](#string).
 
@@ -1188,6 +1188,7 @@ An example `MergeRequestID` is: `"gid://gitlab/MergeRequest/1"`.
 A `MergeRequestIssueID` is a global ID. It is encoded as a string.
 
 An example `MergeRequestIssueID` is: `"gid://gitlab/MergeRequestIssue/1"`.
+The older format `"gid://gitlab/MergeRequestsClosingIssues/1"` was deprecated in 19.5.
 
 ## `MergeRequestsExternalStatusCheckID`
 

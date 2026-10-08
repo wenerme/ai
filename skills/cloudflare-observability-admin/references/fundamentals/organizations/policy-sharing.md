@@ -14,10 +14,6 @@ image: https://developers.cloudflare.com/fundamentals/organizations/policy-shari
 
 Last updated Oct 7, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/fundamentals/organizations/policy-sharing/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
-Note
-
-Cloudflare Organizations is currently in public beta. Organizations is actively used in production by Enterprise and MSSP/Distributor customers. Review [current limitations](https://developers.cloudflare.com/fundamentals/organizations/limitations/) before getting started.
-
 Organizations allows you to create security policies in one account and share them across other accounts in your Organization. This ensures consistent security posture across all accounts without manually duplicating configurations.
 
 Policy sharing works the same way for both [Enterprise](https://developers.cloudflare.com/fundamentals/organizations/for-enterprise/) and [MSSP/Distributor](https://developers.cloudflare.com/fundamentals/organizations/for-mssp-distributors/) Organizations.
