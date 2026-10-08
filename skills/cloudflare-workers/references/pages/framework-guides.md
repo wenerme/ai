@@ -45,7 +45,6 @@ Are you sure you want to use Pages?
 - [Sphinx](https://developers.cloudflare.com/pages/framework-guides/deploy-a-sphinx-site/)
 - [Static HTML](https://developers.cloudflare.com/pages/framework-guides/deploy-anything/)
 - [SvelteKit](https://developers.cloudflare.com/pages/framework-guides/deploy-a-svelte-kit-site/)
-- [Vite 3](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vite3-project/)
 - [VitePress](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vitepress-site/)
 - [Vue](https://developers.cloudflare.com/pages/framework-guides/deploy-a-vue-site/)
 - [Zola](https://developers.cloudflare.com/pages/framework-guides/deploy-a-zola-site/)

@@ -678,6 +678,14 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters. Omission or null defaults to an empty map.
 
+- `spend_control: optional object { limit }  or null`
+
+  Optional spending limit in USD cents. Omission or null creates an unlimited session.
+
+  - `limit: number or null`
+
+    Positive USD cents, or null to remove the limit.
+
 - `stream: optional boolean`
 
   Whether to stream session events as server-sent events. Defaults to `false`.
@@ -688,7 +696,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 9 more }`
+- `AgentSession object { id, agent, created_at, 10 more }`
 
   A Managed Agents session.
 
@@ -1468,6 +1476,18 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     The IDs of vaults made available to the session.
 
+  - `spend_control: optional object { consumed, limit }`
+
+    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
+
+    - `consumed: number or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+    - `limit: number`
+
+      The configured positive limit in USD cents.
+
 ### Example
 
 ```http
@@ -1572,6 +1592,10 @@ curl https://api.openai.com/v1/agents/sessions \
   },
   "vault_ids": [
     "string"
-  ]
+  ],
+  "spend_control": {
+    "consumed": 0,
+    "limit": 1
+  }
 }
 ```

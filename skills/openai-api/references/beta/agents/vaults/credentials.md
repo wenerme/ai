@@ -458,9 +458,9 @@ Lists a vault's credentials using ID-based pagination without returning secret v
 
   Return resources after this resource ID in the selected order.
 
-- `limit: optional number or null`
+- `limit: optional number`
 
-  The maximum number of resources to return. Defaults to 20. Values are clamped between 1 and 100.
+  The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
 - `metadata: optional map[string]`
 
@@ -468,7 +468,7 @@ Lists a vault's credentials using ID-based pagination without returning secret v
 
 - `order: optional "asc" or "desc"`
 
-  Sort order by the `created_at` timestamp. Use `asc` for ascending order or `desc` for descending order. Defaults to `desc`.
+  The order in which resources are returned. Defaults to `desc`.
 
   - `"asc"`
 

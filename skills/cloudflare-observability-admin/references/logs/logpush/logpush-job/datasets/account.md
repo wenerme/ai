@@ -31,6 +31,7 @@ Last updated Apr 23, 2026|Copy as Markdown| [View as Markdown](https://developer
 - [Gateway DNS](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_dns/)
 - [Gateway HTTP](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_http/)
 - [Gateway Network](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/gateway_network/)
+- [HTTP requests](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/http_requests/)
 - [IPSec Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/ipsec_logs/)
 - [Magic BGP Logs](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/magic_bgp_logs/)
 - [Magic IDS Detections](https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/account/magic_ids_detections/)

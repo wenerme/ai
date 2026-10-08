@@ -123,8 +123,8 @@ In addition, there is _`StaticRootPath`_ which can be set as a built-in at build
    HTTP protocol.
 - `USE_COMPAT_SSH_URI`: **false**: Force ssh:// clone url instead of scp-style uri when
    default SSH port is used.
-- `GO_GET_CLONE_URL_PROTOCOL`: **https**: Value for the "go get" request returns the repository url as https or ssh
-   default is https.
+- `GO_GET_CLONE_URL_PROTOCOL`: **_empty_**: Scheme of the returned URL for the "go get" response.
+   Default is "https" if DISABLE_HTTP_GIT=false or SSH is disabled, otherwise "ssh".
 - `ACCESS_CONTROL_ALLOW_ORIGIN`: **_empty_**: Value for Access-Control-Allow-Origin header,
    default is not to present.
 

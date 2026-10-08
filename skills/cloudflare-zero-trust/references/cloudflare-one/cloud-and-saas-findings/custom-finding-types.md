@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/
 
 # Custom finding types
 
-Last updated Oct 6, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 In addition to providing predefined finding types to detect security issues within SaaS and cloud applications, Cloudflare CASB allows custom finding types to be defined from scratch, providing full control over the security conditions CASB detects.
 
@@ -23,7 +23,7 @@ In addition to providing predefined finding types to detect security issues with
 
 ## Standard and custom finding types
 
-Cloudflare CASB provides two ways that security risks are detected. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), they are differentiated in **Cloud & SaaS > Findings library** as entries with **Origin** value "Standard" or "Custom".
+Cloudflare CASB provides two ways that security risks are detected. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), they are differentiated in **Cloud & SaaS findings** > **Finding types library** as entries with **Origin** value "Standard" or "Custom".
 
 - **Standard finding type** - A predefined finding type created and managed by Cloudflare CASB. It can be inspected and duplicated, but not changed.
 - **Custom finding type** - A finding type that is created and managed in the account with Rego expressions.
@@ -50,7 +50,7 @@ The following table shows the capabilities of a CASB customer's account for both
 
 A security team at a company that uses Google Workspace wants to have visibility into when a group for executives, the board, or the legal team is open to people outside the company. The company names these groups with the prefixes `exec-`, `board-`, and `legal-`, and one of them, the outside counsel group, is allowed to have external members. Given that this depends on the company's own group naming convention and exception, CASB does not include a standard finding type for this exact scenario, so the team creates a custom finding type.
 
-1. **Define the finding type.** In the Findings library, the team creates a custom finding type. They name it "Sensitive group open to outsiders", set the severity to High, choose Google Workspace as the provider, and write a Rego expression that returns "fail" when a group whose address starts with `exec-`, `board-`, or `legal-` allows external members (unless it is the outside counsel group), lets anyone join, or lets anyone post.
+1. **Define the finding type.** In the Finding types library, the team creates a custom finding type. They name it "Sensitive group open to outsiders", set the severity to High, choose Google Workspace as the provider, and write a Rego expression that returns "fail" when a group whose address starts with `exec-`, `board-`, or `legal-` allows external members (unless it is the outside counsel group), lets anyone join, or lets anyone post.
 2. **See the results.** As CASB receives updates for the company's Google Workspace groups, it evaluates each one. Groups that match appear as finding instances under **Posture Findings**, so the team can see which sensitive groups are open. Groups with other names are never flagged.
 3. **Take action.** The team creates a [CASB policy](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/) for this finding type that sends a webhook to their messaging admin automation. Each new finding instance now triggers the automation to restrict the group.
 
@@ -62,7 +62,7 @@ A custom finding type consists of the following fields:
 
 | Field | Description |
 | --- | --- |
-| **Finding Name** | The display name of the finding type. |
+| **Finding Type Name** | The display name of the finding type. |
 | **Description** | A definition for what the finding type detects against. |
 | **Severity** | The impact of the finding type: Low, Medium, High, or Critical. |
 | **Provider** | The [integration vendor](https://developers.cloudflare.com/cloudflare-one/integrations/cloud-and-saas/) the finding type detects against. |
@@ -191,14 +191,14 @@ The OPA documentation and Playground include built-ins that custom finding types
 
 ## Create a custom finding type
 
-1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Findings library**.
-2. Select **Create finding**.
-3. Under **General Information**, enter a finding name and description. Then, select a severity.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Finding types library**.
+2. Select **Create finding type**.
+3. Under **General Information**, enter a finding type name and description. Then, select a severity.
 4. Under **Scope Definition**, select a provider and asset class.
 5. Choose whether the finding type applies to all integrations for the provider or to selected integrations.
 6. Under **Detection Logic**, enter the Rego expression. Use **Available asset fields** to identify supported fields.
 7. Select **Validate**. Resolve each validation error before continuing.
-8. Select **Create finding**.
+8. Select **Create finding type**.
 
 CASB applies the custom finding type when it receives future asset updates within the selected scope. Matching assets appear as posture finding instances.
 
@@ -208,12 +208,12 @@ To confirm that a custom finding type is detecting matches, check its finding in
 
 1. In **Cloud & SaaS findings**, go to **Posture Findings**.
 2. Find the custom finding type.
-3. Refer to the **Finding Instances** column to confirm that matches have been found. The **Finding Instances** column shows how many assets currently match.
+3. Refer to the **Instances** column to confirm that matches have been found. The **Instances** column shows how many assets currently match.
 4. Select **Manage** to view the matching assets.
 
 Note
 
-CASB evaluates assets only when it receives asset creations or updates. Assets that have not changed since the finding type was created are not evaluated, so they do not appear in **Finding Instances**.
+CASB evaluates assets only when it receives asset creations or updates. Assets that have not changed since the finding type was created are not evaluated, so they do not appear in **Instances**.
 
 If no instances appear after assets in the finding type's integrations have been created or updated, perform the following checks:
 
@@ -269,18 +269,18 @@ Continuing the [previous example](#example-scenario), leadership asks that the e
 
 1. **Duplicate.** The team selects **Duplicate** on "Sensitive group open to outsiders". CASB copies the name, description, severity, provider, asset class, integration scope, and Rego expression into the builder.
 2. **Adjust.** They rename the copy "Executive and board group open to outsiders" and set the severity to Critical. In the Rego expression, they change `sensitive_prefixes` to `["exec-", "board-"]`, and remove `external_exceptions` and the `not email in external_exceptions` line.
-3. **Create.** They select **Validate**, then **Create finding**. The copy is a new custom finding type.
+3. **Create.** They select **Validate**, then **Create finding type**. The copy is a new custom finding type.
 
 The original "Sensitive group open to outsiders" keeps running unchanged. For this company specifically, an `exec-` or `board-` group that breaks a rule now receives a finding from both finding types, one at High and one at Critical.
 
 #### Steps
 
-1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Findings library**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Finding types library**.
 2. In the finding type menu, select **Duplicate**.
 3. Review the copied name, description, severity, provider, asset class, integration scope, and Rego expression.
 4. Change the copied fields as needed.
 5. Select **Validate**. Resolve each validation error before continuing.
-6. Select **Create finding**.
+6. Select **Create finding type**.
 
 The duplicate finding type is a separate custom finding type. Changes to the duplicate do not affect the original finding type.
 
@@ -294,14 +294,14 @@ Only the following fields can be edited after a custom finding type is created:
 
 To change the provider, asset class, severity, or Rego expression, [duplicate the finding type](#duplicate-a-finding-type).
 
-1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Findings library**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Finding types library**.
 2. In the custom finding type menu, select **Edit**.
 3. Update the name, description, or integration scope.
 4. Select **Save**.
 
 ### Delete a custom finding type
 
-1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Findings library**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Finding types library**.
 2. In the custom finding type menu, select **Delete**.
 3. Confirm the deletion.
 
@@ -319,7 +319,7 @@ To stop a [CASB policy](https://developers.cloudflare.com/cloudflare-one/cloud-a
 
 Quarantine is a status CASB applies when a custom finding type's expression cannot be evaluated safely.
 
-A quarantined custom finding type displays a warning icon next to its entry in **Cloud & SaaS findings** > **Findings library**.
+A quarantined custom finding type displays a warning icon next to its entry in **Cloud & SaaS findings** > **Finding types library**.
 
 While a custom finding type is quarantined:
 
@@ -349,11 +349,11 @@ Editing a quarantined custom finding type's name, description, or integration sc
 
 Custom finding type expressions cannot be edited. To resolve a quarantined custom finding type, duplicate it and correct the expression in the copy:
 
-1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Findings library**.
+1. In [Cloudflare One ↗︎](https://one.dash.cloudflare.com), go to **Cloud & SaaS findings** > **Finding types library**.
 2. In the quarantined custom finding type menu, select **Duplicate**.
 3. Rewrite the expression to reduce its runtime and memory use. Refer to [Why a custom finding is quarantined](#why-a-custom-finding-is-quarantined).
 4. Select **Validate**. Resolve each validation error before continuing.
-5. Select **Create finding**. The duplicate is a new custom finding type and is not quarantined.
+5. Select **Create finding type**. The duplicate is a new custom finding type and is not quarantined.
 6. If a [CASB policy](https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/policies/) uses the quarantined custom finding type, update the policy to use the new custom finding type.
 7. [Delete the quarantined custom finding type](#delete-a-custom-finding-type).
 
@@ -416,5 +416,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/#page","headline":"Custom finding types","description":"Define your own posture finding types with Rego in Cloudflare CASB.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/og.png?v=25f252b39abecfe2","dateModified":"2026-10-06","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/#page","headline":"Custom finding types","description":"Define your own posture finding types with Rego in Cloudflare CASB.","url":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/","inLanguage":"en","image":"https://developers.cloudflare.com/cloudflare-one/cloud-and-saas-findings/custom-finding-types/og.png?v=25f252b39abecfe2","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"},"keywords":["Compliance"]}
 ```

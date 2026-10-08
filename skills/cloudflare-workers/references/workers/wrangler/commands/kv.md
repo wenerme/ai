@@ -83,6 +83,30 @@ Global flags
 
 To restrict where a namespace durably stores data, specify `--jurisdiction` when creating it. Refer to [Data location](https://developers.cloudflare.com/kv/reference/data-location/) for supported jurisdictions.
 
+#### KV Instant namespaces
+
+Note
+
+Workers KV Instant is currently in private beta. To enroll, contact your Cloudflare account team or [sign up ↗︎](https://www.cloudflare.com/resource/workers-kv-instant-beta/) and tell us about your use case.
+
+To create a [Workers KV Instant](https://developers.cloudflare.com/kv/reference/kv-instant/) namespace, pass `--experimental-mode instant`. This example creates a namespace named `APP_CONFIG` for small, infrequently updated configuration:
+
+npmyarnpnpm
+
+```
+npx wrangler@latest kv namespace create APP_CONFIG --experimental-mode instant
+```
+
+```
+yarn wrangler@latest kv namespace create APP_CONFIG --experimental-mode instant
+```
+
+```
+pnpm wrangler@latest kv namespace create APP_CONFIG --experimental-mode instant
+```
+
+You can also use the `--x-mode instant` alias.
+
 ### `kv namespace list`
 
 Output a list of all KV namespaces associated with your account id

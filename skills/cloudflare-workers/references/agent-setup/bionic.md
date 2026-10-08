@@ -48,7 +48,7 @@ StandaloneCloud
    For example:
 
    ```txt
-   Use Workers for Platforms to let my customers deploy their own code in isolated environments.
+   Set up rate limiting and WAF rules to block abuse on my public API.
    ```
 
 
@@ -147,19 +147,19 @@ For a full overview of how these docs are structured for agents, refer to the <a
 ## Example prompts
 
 ```txt
+Deploy a full-stack React app to Cloudflare Pages with a Workers API backend and D1 database.
+```
+
+```txt
+Set up GitHub Actions to deploy this Worker to staging and production on Cloudflare.
+```
+
+```txt
 Build a serverless AI inference endpoint on Workers AI with streaming responses.
 ```
 
 ```txt
-Set up AI Gateway to route requests across OpenAI and Workers AI with automatic fallback and cost tracking.
-```
-
-```txt
-Connect my Worker to an existing Postgres database using Hyperdrive for connection pooling.
-```
-
-```txt
-Create a Logpush job to stream Workers analytics to my data warehouse.
+Add real-time collaboration to my app using Durable Objects with WebSocket hibernation.
 ```
 
 ```txt

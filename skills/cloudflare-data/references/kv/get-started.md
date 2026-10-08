@@ -14,7 +14,7 @@ image: https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc2398
 
 Create a basic key-value store which stores the notification configuration of all users in an application, where each user may have `enabled` or `disabled` notifications.
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/get-started/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 Workers KV provides low-latency, high-throughput global storage to your [Cloudflare Workers](https://developers.cloudflare.com/workers/) applications. Workers KV is ideal for storing user configuration data, routing data, A/B testing configurations and authentication tokens, and is well suited for read-heavy workloads.
 
@@ -162,6 +162,66 @@ To create a KV namespace via Wrangler:
 2. Select **Create instance**.
 3. Enter a name for your namespace. For this tutorial, use `kv_tutorial_namespace`.
 4. Select **Create**.
+
+### KV Instant namespaces
+
+Note
+
+Workers KV Instant is currently in private beta. To enroll, contact your Cloudflare account team or [sign up ↗︎](https://www.cloudflare.com/resource/workers-kv-instant-beta/) and tell us about your use case.
+
+Use [Workers KV Instant](https://developers.cloudflare.com/kv/reference/kv-instant/) for small, read-heavy application configurations values that update infrequently and are proactively propagated across Cloudflare's network.
+
+To optionally create a KV Instant namespace named `APP_CONFIG` with [Wrangler](https://developers.cloudflare.com/workers/wrangler/), pass `--experimental-mode instant`:
+
+npmyarnpnpm
+
+```
+npx wrangler@latest kv namespace create APP_CONFIG --experimental-mode instant
+```
+
+```
+yarn wrangler@latest kv namespace create APP_CONFIG --experimental-mode instant
+```
+
+```
+pnpm wrangler@latest kv namespace create APP_CONFIG --experimental-mode instant
+```
+
+To create the namespace with [Cloudflare CLI](https://developers.cloudflare.com/cf/), pass `--namespaceMode instant`:
+
+```sh
+cf kv namespaces create --title APP_CONFIG --namespaceMode instant
+```
+
+Alternatively, create it through the API with `mode: "instant"`:
+
+<details>
+
+<summary>
+
+Required API token permissions
+
+</summary>
+
+At least one of the following <a href="https://developers.cloudflare.com/fundamentals/api/reference/permissions/">token permissions</a> is required:
+
+- <code>Workers KV Storage Write</code>
+
+</details>
+
+*Create a namespacebash*
+
+```bash
+curl "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/storage/kv/namespaces" \
+	--request POST \
+	--header "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+	--json '{
+		"title": "APP_CONFIG",
+		"mode": "instant"
+	}'
+```
+
+KV Instance namespaces have additional limitations compared to classic namespaces. Refer to [KV Instant limits](https://developers.cloudflare.com/kv/platform/limits/#kv-instant) and [API differences](https://developers.cloudflare.com/kv/reference/kv-instant/#compare-api-behavior) before choosing this mode.
 
 ## 3. Bind your Worker to your KV namespace
 
@@ -507,5 +567,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc23984","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/get-started/#page","headline":"Getting started","description":"Create a KV namespace, write key-value pairs, and read data from Workers KV using Wrangler or the dashboard.","url":"https://developers.cloudflare.com/kv/get-started/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/get-started/og.png?v=2c99b527abc23984","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -36,7 +36,7 @@ List the organization's customer-managed external storage configurations.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or object { bucket, region, tenancy_ocid, type }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -89,6 +89,18 @@ List the organization's customer-managed external storage configurations.
       - `workload_identity_project_number: string`
 
       - `workload_identity_provider_id: string`
+
+    - `Oci object { bucket, region, tenancy_ocid, type }`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `tenancy_ocid: string`
+
+      - `type: "oci"`
+
+        - `"oci"`
 
   - `status: "pending" or "validated" or "unhealthy"`
 

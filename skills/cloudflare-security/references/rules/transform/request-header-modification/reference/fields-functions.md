@@ -12,7 +12,7 @@ image: https://developers.cloudflare.com/rules/transform/request-header-modifica
 
 # Available fields and functions
 
-Last updated Aug 25, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
 
 The available fields when setting an HTTP request header value using an expression are the following:
 
@@ -25,6 +25,14 @@ The available fields when setting an HTTP request header value using an expressi
 - `cf.edge.client_tcp`
 - `cf.edge.l4.delivery_rate`
 - `cf.hostname.metadata`
+- `cf.llm.prompt.custom_topic_categories`
+- `cf.llm.prompt.detected`
+- `cf.llm.prompt.injection_score`
+- `cf.llm.prompt.pii_categories`
+- `cf.llm.prompt.pii_detected`
+- `cf.llm.prompt.token_count`
+- `cf.llm.prompt.unsafe_topic_categories`
+- `cf.llm.prompt.unsafe_topic_detected`
 - `cf.zone.name`
 - `cf.random_seed`
 - `cf.ray_id`
@@ -112,5 +120,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/#page","headline":"Available fields and functions","description":"Available fields and functions for request header modification rules.","url":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/og.png?v=7fefbbb932af71a1","dateModified":"2026-08-25","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/#page","headline":"Available fields and functions","description":"Available fields and functions for request header modification rules.","url":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/","inLanguage":"en","image":"https://developers.cloudflare.com/rules/transform/request-header-modification/reference/fields-functions/og.png?v=7fefbbb932af71a1","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

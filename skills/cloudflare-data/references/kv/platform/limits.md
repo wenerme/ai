@@ -12,7 +12,9 @@ image: https://developers.cloudflare.com/kv/platform/limits/og.png?v=f508c13418e
 
 # Limits
 
-Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+Last updated Oct 8, 2026|Copy as Markdown| [View as Markdown](https://developers.cloudflare.com/kv/platform/limits/index.md)| [Agent setup](https://developers.cloudflare.com/agent-setup/)
+
+## Workers KV
 
 | Feature | Free | Paid |
 | --- | --- | --- |
@@ -28,6 +30,24 @@ Last updated Apr 21, 2026|Copy as Markdown| [View as Markdown](https://developer
 | Key metadata | 1024 bytes | 1024 bytes |
 | Value size | 25 MiB | 25 MiB |
 | Minimum [`cacheTtl`](https://developers.cloudflare.com/kv/api/read-key-value-pairs/#cachettl-parameter) <sup>[2](#user-content-fn-2)</sup> | 30 seconds | 30 seconds |
+
+## Workers KV Instant
+
+Note
+
+Workers KV Instant is currently in private beta. To enroll, contact your Cloudflare account team or [sign up ↗︎](https://www.cloudflare.com/resource/workers-kv-instant-beta/) and tell us about your use case.
+
+| Feature | Limit |
+| --- | --- |
+| Writes/namespace | 1 per second |
+| Storage/namespace | 1 MB |
+| Keys/namespace | 10,000 |
+| Key size | 300 bytes |
+| Key metadata | Not supported |
+| Value size | Any size that keeps the total namespace within 1 MB |
+| List pagination | Not supported. All matching keys are returned in one response. |
+
+## Additional limits
 
 Need a higher limit?
 
@@ -55,5 +75,5 @@ YesNo
 [![](https://developers.cloudflare.com/_astro/logo.te5VL_aD.svg)Docs](https://developers.cloudflare.com/)
 
 ```json
-{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/platform/limits/#page","headline":"Limits","description":"Workers KV account and namespace limits for reads, writes, key size, value size, and storage.","url":"https://developers.cloudflare.com/kv/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/platform/limits/og.png?v=f508c13418e4ae1b","dateModified":"2026-04-21","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
+{"@context":"https://schema.org","@type":"TechArticle","@id":"https://developers.cloudflare.com/kv/platform/limits/#page","headline":"Limits","description":"Workers KV account and namespace limits for reads, writes, key size, value size, and storage.","url":"https://developers.cloudflare.com/kv/platform/limits/","inLanguage":"en","image":"https://developers.cloudflare.com/kv/platform/limits/og.png?v=f508c13418e4ae1b","dateModified":"2026-10-08","publisher":{"@type":"Organization","name":"Cloudflare","description":"One platform for your apps, agents, and workforce. Build, secure, and scale without managing infrastructure","url":"https://www.cloudflare.com/","sameAs":["https://github.com/cloudflare","https://www.linkedin.com/company/cloudflare","https://x.com/cloudflare"],"logo":{"@type":"ImageObject","url":"https://developers.cloudflare.com/logo.svg"},"address":{"@type":"PostalAddress","streetAddress":"101 Townsend St","addressLocality":"San Francisco","addressRegion":"CA","postalCode":"94107","addressCountry":"US"},"contactPoint":[{"@type":"ContactPoint","contactType":"Customer Support","url":"https://support.cloudflare.com/","availableLanguage":["English"]},{"@type":"ContactPoint","contactType":"Sales","url":"https://www.cloudflare.com/contact/","availableLanguage":["English"]}]},"isPartOf":{"@type":"WebSite","@id":"https://developers.cloudflare.com/#website","name":"Cloudflare Docs","url":"https://developers.cloudflare.com/"}}
 ```

@@ -10,7 +10,7 @@ Register one customer-managed external storage configuration.
 
 - `project_id: string`
 
-- `provider: object { bucket, role_arn, type }  or object { account_name, container, resource_group, 3 more }  or object { bucket, type, workload_identity_pool_id, 2 more }`
+- `provider: object { bucket, role_arn, type }  or object { account_name, container, resource_group, 3 more }  or object { bucket, type, workload_identity_pool_id, 2 more }  or object { bucket, region, tenancy_ocid, type }`
 
   - `Aws object { bucket, role_arn, type }`
 
@@ -52,6 +52,18 @@ Register one customer-managed external storage configuration.
 
     - `workload_identity_provider_id: string`
 
+  - `Oci object { bucket, region, tenancy_ocid, type }`
+
+    - `bucket: string`
+
+    - `region: string`
+
+    - `tenancy_ocid: string`
+
+    - `type: "oci"`
+
+      - `"oci"`
+
 ### Returns
 
 - `ExternalStorageConfiguration object { id, created_at, geography, 4 more }`
@@ -68,7 +80,7 @@ Register one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or object { bucket, region, tenancy_ocid, type }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -121,6 +133,18 @@ Register one customer-managed external storage configuration.
       - `workload_identity_project_number: string`
 
       - `workload_identity_provider_id: string`
+
+    - `Oci object { bucket, region, tenancy_ocid, type }`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `tenancy_ocid: string`
+
+      - `type: "oci"`
+
+        - `"oci"`
 
   - `status: "pending" or "validated" or "unhealthy"`
 
@@ -381,7 +405,7 @@ List the organization's customer-managed external storage configurations.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or object { bucket, region, tenancy_ocid, type }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -434,6 +458,18 @@ List the organization's customer-managed external storage configurations.
       - `workload_identity_project_number: string`
 
       - `workload_identity_provider_id: string`
+
+    - `Oci object { bucket, region, tenancy_ocid, type }`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `tenancy_ocid: string`
+
+      - `type: "oci"`
+
+        - `"oci"`
 
   - `status: "pending" or "validated" or "unhealthy"`
 
@@ -586,7 +622,7 @@ Get one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or object { bucket, region, tenancy_ocid, type }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -639,6 +675,18 @@ Get one customer-managed external storage configuration.
       - `workload_identity_project_number: string`
 
       - `workload_identity_provider_id: string`
+
+    - `Oci object { bucket, region, tenancy_ocid, type }`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `tenancy_ocid: string`
+
+      - `type: "oci"`
+
+        - `"oci"`
 
   - `status: "pending" or "validated" or "unhealthy"`
 
@@ -732,7 +780,7 @@ Validate one customer-managed external storage configuration.
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or object { bucket, region, tenancy_ocid, type }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -785,6 +833,18 @@ Validate one customer-managed external storage configuration.
       - `workload_identity_project_number: string`
 
       - `workload_identity_provider_id: string`
+
+    - `Oci object { bucket, region, tenancy_ocid, type }`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `tenancy_ocid: string`
+
+      - `type: "oci"`
+
+        - `"oci"`
 
   - `status: "pending" or "validated" or "unhealthy"`
 
@@ -909,7 +969,7 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
 
   - `project_id: string`
 
-  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider`
+  - `provider: AwsExternalStorageProvider or AzureExternalStorageProvider or GcpExternalStorageProvider or object { bucket, region, tenancy_ocid, type }`
 
     - `AwsExternalStorageProvider object { account_id, bucket, external_id, 3 more }`
 
@@ -962,6 +1022,18 @@ curl -X POST https://api.openai.com/v1/organization/external_storage/extstorage_
       - `workload_identity_project_number: string`
 
       - `workload_identity_provider_id: string`
+
+    - `Oci object { bucket, region, tenancy_ocid, type }`
+
+      - `bucket: string`
+
+      - `region: string`
+
+      - `tenancy_ocid: string`
+
+      - `type: "oci"`
+
+        - `"oci"`
 
   - `status: "pending" or "validated" or "unhealthy"`
 

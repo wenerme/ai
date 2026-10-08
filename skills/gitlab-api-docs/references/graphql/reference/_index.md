@@ -252,7 +252,7 @@ Arguments:
 | <a id="query-aicatalogconfigureditems-foundationalflowreference"></a>`foundationalFlowReference` | [`String`](#string) | Filter by foundational flow reference. |
 | <a id="query-aicatalogconfigureditems-groupid"></a>`groupId` | [`GroupID`](#groupid) | Group ID to retrieve configured AI Catalog items for. |
 | <a id="query-aicatalogconfigureditems-includefoundationalconsumers"></a>`includeFoundationalConsumers`  | [`Boolean`](#boolean) | Introduced in GitLab 18.10. Status: Experiment. Include configured foundational AI Catalog items. |
-| <a id="query-aicatalogconfigureditems-includeinherited"></a>`includeInherited` | [`Boolean`](#boolean) | Include configured AI Catalog items inherited from parent groups. |
+| <a id="query-aicatalogconfigureditems-includeinherited"></a>`includeInherited` | [`Boolean`](#boolean) | Include configured AI Catalog items inherited from the project's top-level group. Can only be used with `projectId`. |
 | <a id="query-aicatalogconfigureditems-itemid"></a>`itemId` | [`AiCatalogItemID`](#aicatalogitemid) | Item ID to retrieve configured AI Catalog items for. |
 | <a id="query-aicatalogconfigureditems-itemtype"></a>`itemType` | [`AiCatalogItemType`](#aicatalogitemtype) | Type of items to retrieve. |
 | <a id="query-aicatalogconfigureditems-itemtypes"></a>`itemTypes` | [`[AiCatalogItemType!]`](#aicatalogitemtype) | Types of items to retrieve. |
@@ -3103,6 +3103,7 @@ Arguments:
 | <a id="mutation-adminsidekiqqueuesdeletejobs-clientmutationid"></a>`clientMutationId` | [`String`](#string) | A unique identifier for the client performing the mutation. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-clientname"></a>`clientName` | [`String`](#string) | Delete jobs matching client_name in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-clienttype"></a>`clientType` | [`String`](#string) | Delete jobs matching client_type in the context metadata. |
+| <a id="mutation-adminsidekiqqueuesdeletejobs-clientversion"></a>`clientVersion` | [`String`](#string) | Delete jobs matching client_version in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-featurecategory"></a>`featureCategory` | [`String`](#string) | Delete jobs matching feature_category in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-glrootnamespaceid"></a>`glRootNamespaceId` | [`String`](#string) | Delete jobs matching gl_root_namespace_id in the context metadata. |
 | <a id="mutation-adminsidekiqqueuesdeletejobs-gluserid"></a>`glUserId` | [`String`](#string) | Delete jobs matching gl_user_id in the context metadata. |
@@ -3356,6 +3357,7 @@ Arguments:
 | <a id="mutation-aicatalogitemconsumerbulkcreate-projectids"></a>`projectIds` | [`[ProjectID!]!`](#projectid) | Global IDs of the projects to enable the catalog item in (maximum 100). |
 | <a id="mutation-aicatalogitemconsumerbulkcreate-triggerconditions"></a>`triggerConditions`  | [`AiCatalogTriggerConditionsInput`](#aicatalogtriggerconditionsinput) | Introduced in GitLab 19.3. Status: Experiment. Filter conditions for the auto-created AI Catalog triggers, keyed by event type. |
 | <a id="mutation-aicatalogitemconsumerbulkcreate-triggerfilter"></a>`triggerFilter`  | [`JSON`](#json) | Deprecated in GitLab 19.3. Use `triggerConditions`. |
+| <a id="mutation-aicatalogitemconsumerbulkcreate-triggergoals"></a>`triggerGoals`  | [`JSON`](#json) | Introduced in GitLab 19.5. Status: Experiment. Goals for the auto-created AI Catalog triggers, keyed by event type. |
 | <a id="mutation-aicatalogitemconsumerbulkcreate-triggertypes"></a>`triggerTypes` | [`[String!]`](#string) | List of event types to create AI Catalog triggers for. |
 
 Fields:
@@ -3385,6 +3387,7 @@ Arguments:
 | <a id="mutation-aicatalogitemconsumercreate-target"></a>`target` | [`ItemConsumerTargetInput!`](#itemconsumertargetinput) | Target project or top-level group in which the catalog item is configured. |
 | <a id="mutation-aicatalogitemconsumercreate-triggerconditions"></a>`triggerConditions`  | [`AiCatalogTriggerConditionsInput`](#aicatalogtriggerconditionsinput) | Introduced in GitLab 19.3. Status: Experiment. Filter conditions for the auto-created AI Catalog triggers, keyed by event type. |
 | <a id="mutation-aicatalogitemconsumercreate-triggerfilter"></a>`triggerFilter`  | [`JSON`](#json) | Deprecated in GitLab 19.3. Use `triggerConditions`. |
+| <a id="mutation-aicatalogitemconsumercreate-triggergoals"></a>`triggerGoals`  | [`JSON`](#json) | Introduced in GitLab 19.5. Status: Experiment. Goals for the auto-created AI Catalog triggers, keyed by event type. |
 | <a id="mutation-aicatalogitemconsumercreate-triggertypes"></a>`triggerTypes` | [`[String!]`](#string) | List of event types to create AI Catalog triggers for (values can be mention, assign or assign_reviewer). |
 
 Fields:
@@ -32339,6 +32342,7 @@ Fields:
 | <a id="addonuser-callouts"></a>`callouts` | [`UserCalloutConnection`](#usercalloutconnection) | User callouts that belong to the user. (see [Connections](#connections)) |
 | <a id="addonuser-commitemail"></a>`commitEmail` | [`String`](#string) | User's default commit email. |
 | <a id="addonuser-compositeidentityenforced"></a>`compositeIdentityEnforced` | [`Boolean`](#boolean) | Indicates if composite identity is enforced for the user. |
+| <a id="addonuser-contributioncalendar"></a>`contributionCalendar`  | [`UserContributionCalendar`](#usercontributioncalendar) | Introduced in GitLab 19.5. Status: Experiment. Contribution calendar of the user: the profile page activity heatmap for the past year. Null when the current user cannot read the profile. |
 | <a id="addonuser-createdat"></a>`createdAt` | [`Time`](#time) | Timestamp of when the user was created. |
 | <a id="addonuser-customattributes"></a>`customAttributes` | [`[CustomAttribute!]`](#customattribute) | Custom attributes of the user. Only available to admins. |
 | <a id="addonuser-discord"></a>`discord` | [`String`](#string) | Discord ID of the user. |
@@ -33433,6 +33437,127 @@ Fields:
 | <a id="aicatalogmcptoolicon-mimetype"></a>`mimeType` | [`String!`](#string) | MIME type of the icon image. |
 | <a id="aicatalogmcptoolicon-src"></a>`src` | [`String!`](#string) | URL to the icon image. |
 | <a id="aicatalogmcptoolicon-theme"></a>`theme` | [`String`](#string) | Theme the icon is intended for: "light" or "dark". |
+
+### `AiCatalogSkill`
+
+An AI catalog skill. The repository pointer fields resolve against the latest item version.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogskill-authorname"></a>`authorName`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Git author name of the commit that last changed the published SKILL.md. |
+| <a id="aicatalogskill-blobsha"></a>`blobSha`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Git object ID of the published SKILL.md blob. |
+| <a id="aicatalogskill-commitsha"></a>`commitSha`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Commit that last changed the published SKILL.md. |
+| <a id="aicatalogskill-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the item was created. |
+| <a id="aicatalogskill-description"></a>`description` | [`String!`](#string) | Description of the item. |
+| <a id="aicatalogskill-descriptionhtml"></a>`descriptionHtml` | [`String`](#string) | GitLab Flavored Markdown rendering of `description`. |
+| <a id="aicatalogskill-directory"></a>`directory`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Directory of the skill. Co-located resources live alongside SKILL.md. |
+| <a id="aicatalogskill-foundational"></a>`foundational` | [`Boolean!`](#boolean) | Whether the item is a foundational item. |
+| <a id="aicatalogskill-foundationalflowreference"></a>`foundationalFlowReference` | [`String`](#string) | Foundational flow reference. |
+| <a id="aicatalogskill-gitref"></a>`gitRef`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Git reference the skill was published from. |
+| <a id="aicatalogskill-id"></a>`id` | [`ID!`](#id) | ID of the item. |
+| <a id="aicatalogskill-isenabledinmanagedbyproject"></a>`isEnabledInManagedByProject` | [`Boolean!`](#boolean) | Whether the item is enabled in the project it is managed by. This field can only be resolved for one AiCatalogItem in any single request. |
+| <a id="aicatalogskill-itemtype"></a>`itemType` | [`AiCatalogItemType!`](#aicatalogitemtype) | Type of the item. |
+| <a id="aicatalogskill-last30dayusagecount"></a>`last30DayUsageCount` | [`Int!`](#int) | Number of projects using the item in the last 30 days. |
+| <a id="aicatalogskill-name"></a>`name` | [`String!`](#string) | Name of the item. |
+| <a id="aicatalogskill-path"></a>`path`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Path of the SKILL.md file in the project repository. |
+| <a id="aicatalogskill-project"></a>`project` | [`Project`](#project) | Project for the item. |
+| <a id="aicatalogskill-public"></a>`public`  | [`Boolean!`](#boolean) | Deprecated in GitLab 19.3. Use `visibility`. |
+| <a id="aicatalogskill-softdeleted"></a>`softDeleted` | [`Boolean`](#boolean) | Indicates if the item has been soft deleted. |
+| <a id="aicatalogskill-softdeletedat"></a>`softDeletedAt` | [`Time`](#time) | Timestamp of when the item was soft deleted. |
+| <a id="aicatalogskill-starcount"></a>`starCount` | [`Int!`](#int) | Number of stars for the item. |
+| <a id="aicatalogskill-starred"></a>`starred` | [`Boolean!`](#boolean) | Whether the current user has starred the item. |
+| <a id="aicatalogskill-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the item was updated. |
+| <a id="aicatalogskill-userpermissions"></a>`userPermissions` | [`AiCatalogItemPermissions!`](#aicatalogitempermissions) | Permissions for the current user on the resource. |
+| <a id="aicatalogskill-verificationlevel"></a>`verificationLevel` | [`AiCatalogItemVerificationLevel!`](#aicatalogitemverificationlevel) | Verification level of the item. |
+| <a id="aicatalogskill-versions"></a>`versions` | [`AiCatalogItemVersionConnection`](#aicatalogitemversionconnection) | Versions of the item. (see [Connections](#connections)) |
+| <a id="aicatalogskill-visibility"></a>`visibility`  | [`AiCatalogItemVisibility!`](#aicatalogitemvisibility) | Introduced in GitLab 19.2. Status: Experiment. Visibility of the item in the catalog. |
+| <a id="aicatalogskill-webpath"></a>`webPath`  | [`String`](#string) | Introduced in GitLab 19.4. Status: Experiment. Web path of the item in the AI catalog. |
+
+#### Fields with arguments
+
+##### `AiCatalogSkill.configurationForGroup`
+
+- Introduced in GitLab 18.7.
+- Status: Experiment.
+
+Item configuration for the given group.
+
+Returns [`AiCatalogItemConsumer`](#aicatalogitemconsumer).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogskill-configurationforgroup-groupid"></a>`groupId` | [`GroupID!`](#groupid) | Global ID of the group to return the item configuration of. |
+
+##### `AiCatalogSkill.configurationForProject`
+
+- Introduced in GitLab 18.6.
+- Status: Experiment.
+
+Item configuration for the given project.
+
+Returns [`AiCatalogItemConsumer`](#aicatalogitemconsumer).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogskill-configurationforproject-projectid"></a>`projectId` | [`ProjectID!`](#projectid) | Global ID of the project to return the item configuration of. |
+
+##### `AiCatalogSkill.effectiveVersion`
+
+- Introduced in GitLab 19.3.
+- Status: Experiment.
+
+Version of the item in effect for the given namespace, falling back to the latest version when none is in effect. In a project namespace, resolves to the project configuration pinned version when enabled, otherwise the latest version. In a group namespace, resolves to the group configuration pinned version when enabled, otherwise the latest version. In the global namespace, always resolves to the latest version.
+
+Returns [`AiCatalogItemVersion`](#aicatalogitemversion).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogskill-effectiveversion-groupid"></a>`groupId` | [`GroupID`](#groupid) | Global ID of the group to return the effective version for. |
+| <a id="aicatalogskill-effectiveversion-projectid"></a>`projectId` | [`ProjectID`](#projectid) | Global ID of the project to return the effective version for. |
+
+##### `AiCatalogSkill.latestVersion`
+
+Latest version of the item.
+
+Returns [`AiCatalogItemVersion`](#aicatalogitemversion).
+
+Arguments:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogskill-latestversion-released"></a>`released` | [`Boolean`](#boolean) | Return the latest released version. |
+
+### `AiCatalogSkillVersion`
+
+An AI catalog skill version.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="aicatalogskillversion-authorname"></a>`authorName`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Git author name of the commit that last changed SKILL.md for the item version. |
+| <a id="aicatalogskillversion-blobsha"></a>`blobSha`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Git object ID of the SKILL.md blob for the item version. |
+| <a id="aicatalogskillversion-commitsha"></a>`commitSha`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Commit that last changed SKILL.md for the item version. |
+| <a id="aicatalogskillversion-createdat"></a>`createdAt` | [`Time!`](#time) | Timestamp of when the item version was created. |
+| <a id="aicatalogskillversion-createdby"></a>`createdBy` | [`UserCore`](#usercore) | User that created the item version. |
+| <a id="aicatalogskillversion-deprecated"></a>`deprecated` | [`Boolean!`](#boolean) | Indicates the item version has been deprecated by the author. |
+| <a id="aicatalogskillversion-gitref"></a>`gitRef`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Git reference the skill version was published from. |
+| <a id="aicatalogskillversion-humanversionname"></a>`humanVersionName` | [`String`](#string) | Human-friendly name of the item version. In the form v1.0.0-draft. |
+| <a id="aicatalogskillversion-id"></a>`id` | [`ID!`](#id) | ID of the item version. |
+| <a id="aicatalogskillversion-item"></a>`item` | [`AiCatalogItem!`](#aicatalogitem) | Item the version belongs to. |
+| <a id="aicatalogskillversion-path"></a>`path`  | [`String`](#string) | Introduced in GitLab 19.5. Status: Experiment. Path of the SKILL.md file in the project repository. |
+| <a id="aicatalogskillversion-released"></a>`released` | [`Boolean!`](#boolean) | Indicates the item version is released. |
+| <a id="aicatalogskillversion-releasedat"></a>`releasedAt` | [`Time`](#time) | Timestamp of when the item version was released. |
+| <a id="aicatalogskillversion-updatedat"></a>`updatedAt` | [`Time!`](#time) | Timestamp of when the item version was updated. |
+| <a id="aicatalogskillversion-versionname"></a>`versionName` | [`String`](#string) | Version name of the item version. |
 
 ### `AiCatalogThirdPartyFlow`
 
@@ -35280,6 +35405,7 @@ Fields:
 | <a id="artifactregistryrepositorydetails-packages"></a>`packages`  | [`ArtifactRegistryPackageConnection`](#artifactregistrypackageconnection) | Introduced in GitLab 19.3. Status: Experiment. Packages the repository holds, ordered by name. Can be selected once per operation, so one operation reads packages for one repository. Returns `null` for a virtual repository, for a repository holding images, for a repository that is gone, and when Artifact Registry rejects the read. |
 | <a id="artifactregistryrepositorydetails-settings"></a>`settings`  | [`ArtifactRegistryRemoteSettings`](#artifactregistryremotesettings) | Introduced in GitLab 19.3. Status: Experiment. Upstream configuration Artifact Registry returned for the repository. Null when it returned none, so null on a hosted or virtual repository. |
 | <a id="artifactregistryrepositorydetails-sizebytes"></a>`sizeBytes`  | [`BigInt!`](#bigint) | Introduced in GitLab 19.3. Status: Experiment. Storage the repository occupies, in bytes. Buffered, so it can lag. |
+| <a id="artifactregistryrepositorydetails-statistics"></a>`statistics`  | [`ArtifactRegistryRepositoryStatistics`](#artifactregistryrepositorystatistics) | Introduced in GitLab 19.5. Status: Experiment. Read-time package or image count of a hosted repository. Can be selected once per operation. Returns `null` without a read for a remote or virtual repository, and `null` for a repository that is gone. Also `null` when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 | <a id="artifactregistryrepositorydetails-updatedby"></a>`updatedBy`  | [`UserCore`](#usercore) | Introduced in GitLab 19.4. Status: Experiment. User who last changed the repository. Null when the editor is unknown or no longer exists. |
 | <a id="artifactregistryrepositorydetails-upstreamrepositories"></a>`upstreamRepositories`  | [`[ArtifactRegistryUpstreamRepositoryAssociation!]`](#artifactregistryupstreamrepositoryassociation) | Introduced in GitLab 19.5. Status: Experiment. Upstream repositories a virtual repository resolves through, in resolution order. Can be selected once per operation. Returns `null` for a hosted or remote repository, for a repository that is gone, and when Artifact Registry rejects the read: silently for a 401, 403, or 404, and alongside a top-level error for a 429, a 5xx, or any other 4xx. |
 | <a id="artifactregistryrepositorydetails-userpermissions"></a>`userPermissions`  | [`ArtifactRegistryRepositoryPermissions!`](#artifactregistryrepositorypermissions) | Introduced in GitLab 19.5. Status: Experiment. Permissions Artifact Registry grants the current user on the repository. Advisory, because Artifact Registry authorizes every request on its own. Every permission is `false` when Artifact Registry returned no verdicts. The parent field returns `null` when the `artifact_registry_ui` feature flag is disabled, so this block is not reached. |
@@ -35366,6 +35492,17 @@ Fields:
 | <a id="artifactregistryrepositorypermissions-readrepository"></a>`readRepository`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can read the repository and its metadata. |
 | <a id="artifactregistryrepositorypermissions-updaterepository"></a>`updateRepository`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can change the repository's settings. |
 | <a id="artifactregistryrepositorypermissions-updaterepositoryupstream"></a>`updateRepositoryUpstream`  | [`Boolean!`](#boolean) | Introduced in GitLab 19.5. Status: Experiment. Indicates the user can change an upstream of the repository. |
+
+### `ArtifactRegistryRepositoryStatistics`
+
+Read-time statistics for a hosted repository in Artifact Registry.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="artifactregistryrepositorystatistics-imagescount"></a>`imagesCount`  | [`BigInt`](#bigint) | Introduced in GitLab 19.5. Status: Experiment. Number of images the repository holds, computed at read time. `null` for a repository holding packages. |
+| <a id="artifactregistryrepositorystatistics-packagescount"></a>`packagesCount`  | [`BigInt`](#bigint) | Introduced in GitLab 19.5. Status: Experiment. Number of packages the repository holds, computed at read time. `null` for a repository holding images. |
 
 ### `ArtifactRegistryRoleAssignment`
 
@@ -35681,6 +35818,7 @@ Fields:
 | <a id="autocompleteduser-callouts"></a>`callouts` | [`UserCalloutConnection`](#usercalloutconnection) | User callouts that belong to the user. (see [Connections](#connections)) |
 | <a id="autocompleteduser-commitemail"></a>`commitEmail` | [`String`](#string) | User's default commit email. |
 | <a id="autocompleteduser-compositeidentityenforced"></a>`compositeIdentityEnforced` | [`Boolean!`](#boolean) | Indicates if the user has composite identity enforcement enabled. |
+| <a id="autocompleteduser-contributioncalendar"></a>`contributionCalendar`  | [`UserContributionCalendar`](#usercontributioncalendar) | Introduced in GitLab 19.5. Status: Experiment. Contribution calendar of the user: the profile page activity heatmap for the past year. Null when the current user cannot read the profile. |
 | <a id="autocompleteduser-createdat"></a>`createdAt` | [`Time`](#time) | Timestamp of when the user was created. |
 | <a id="autocompleteduser-customattributes"></a>`customAttributes` | [`[CustomAttribute!]`](#customattribute) | Custom attributes of the user. Only available to admins. |
 | <a id="autocompleteduser-discord"></a>`discord` | [`String`](#string) | Discord ID of the user. |
@@ -39780,7 +39918,7 @@ Arguments:
 | <a id="countablevulnerability-dependencies-componentnames"></a>`componentNames` | [`[String!]`](#string) | Filter dependencies by component names. |
 | <a id="countablevulnerability-dependencies-componentversions"></a>`componentVersions` | [`[String!]`](#string) | Filter dependencies by component versions. |
 | <a id="countablevulnerability-dependencies-licenses"></a>`licenses`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by SPDX license identifiers. |
-| <a id="countablevulnerability-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="countablevulnerability-dependencies-malware"></a>`malware` | [`Boolean`](#boolean) | Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="countablevulnerability-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="countablevulnerability-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
 | <a id="countablevulnerability-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
@@ -39877,6 +40015,7 @@ Fields:
 | <a id="currentuser-codesuggestionscontexts"></a>`codeSuggestionsContexts`  | [`[String!]!`](#string) | Introduced in GitLab 17.9. Status: Experiment. List of additional contexts enabled for Code Suggestions. |
 | <a id="currentuser-commitemail"></a>`commitEmail` | [`String`](#string) | User's default commit email. |
 | <a id="currentuser-compositeidentityenforced"></a>`compositeIdentityEnforced` | [`Boolean`](#boolean) | Indicates if composite identity is enforced for the user. |
+| <a id="currentuser-contributioncalendar"></a>`contributionCalendar`  | [`UserContributionCalendar`](#usercontributioncalendar) | Introduced in GitLab 19.5. Status: Experiment. Contribution calendar of the user: the profile page activity heatmap for the past year. Null when the current user cannot read the profile. |
 | <a id="currentuser-createdat"></a>`createdAt` | [`Time`](#time) | Timestamp of when the user was created. |
 | <a id="currentuser-customattributes"></a>`customAttributes` | [`[CustomAttribute!]`](#customattribute) | Custom attributes of the user. Only available to admins. |
 | <a id="currentuser-discord"></a>`discord` | [`String`](#string) | Discord ID of the user. |
@@ -42631,6 +42770,32 @@ Arguments:
 | ---- | ---- | ----------- |
 | <a id="duoworkflow-workflowlinks-linktype"></a>`linkType` | [`DuoWorkflowWorkflowLinkType`](#duoworkflowworkflowlinktype) | Filter links by their link type. |
 
+### `DuoWorkflowAgentPresence`
+
+Agent attribution for an object, such as a note, created by a GitLab Duo Agent Platform session.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowagentpresence-agentcatalogwebpath"></a>`agentCatalogWebPath` | [`String`](#string) | Web path of the agent in the AI Catalog. Null when the agent has no catalog profile. |
+| <a id="duoworkflowagentpresence-agentname"></a>`agentName` | [`String`](#string) | Name of the agent that ran the session. |
+| <a id="duoworkflowagentpresence-sessionid"></a>`sessionId` | [`AiDuoWorkflowsWorkflowID!`](#aiduoworkflowsworkflowid) | Global ID of the session that created the object. |
+| <a id="duoworkflowagentpresence-sourcelink"></a>`sourceLink` | [`String`](#string) | URL or deep link to the location where the session was triggered from. Null unless the current user can read the session. |
+| <a id="duoworkflowagentpresence-sourcetype"></a>`sourceType` | [`DuoWorkflowSourceType`](#duoworkflowsourcetype) | Type of source that initiated the session. |
+| <a id="duoworkflowagentpresence-user"></a>`user` | [`UserCore`](#usercore) | User the session ran as. For triggered sessions, the account the trigger runs with. |
+| <a id="duoworkflowagentpresence-userpermissions"></a>`userPermissions` | [`DuoWorkflowAgentPresencePermissions!`](#duoworkflowagentpresencepermissions) | Permissions for the current user on the session. |
+
+### `DuoWorkflowAgentPresencePermissions`
+
+Check permissions for the current user on the session that created the object.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="duoworkflowagentpresencepermissions-readduoworkflow"></a>`readDuoWorkflow` | [`Boolean!`](#boolean) | If `true`, the user can perform `read_duo_workflow` on this resource. |
+
 ### `DuoWorkflowBranch`
 
 Alternative branch of a Duo Agent Platform session, created by retrying a message.
@@ -45058,7 +45223,7 @@ Arguments:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| <a id="gitlabsubscriptionusage-dailyusage-limit"></a>`limit` | [`Int`](#int) | Maximum number of daily usage entries to return. |
+| <a id="gitlabsubscriptionusage-dailyusage-limit"></a>`limit` | [`Int`](#int) | Maximum number of daily usage entries to return. Defaults to every day in the date range. |
 | <a id="gitlabsubscriptionusage-dailyusage-sort"></a>`sort` | [`DailyUsageSort`](#dailyusagesort) | Sort daily usage entries by the selected criteria. |
 
 ### `GitlabSubscriptionUsageBlockedStatus`
@@ -46162,7 +46327,7 @@ Arguments:
 | <a id="group-dependencies-componentnames"></a>`componentNames` | [`[String!]`](#string) | Filter dependencies by component names. |
 | <a id="group-dependencies-componentversions"></a>`componentVersions` | [`[String!]`](#string) | Filter dependencies by component versions. |
 | <a id="group-dependencies-licenses"></a>`licenses`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by SPDX license identifiers. |
-| <a id="group-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="group-dependencies-malware"></a>`malware` | [`Boolean`](#boolean) | Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="group-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="group-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
 | <a id="group-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
@@ -46192,7 +46357,7 @@ Arguments:
 | <a id="group-dependencyaggregations-componentnames"></a>`componentNames` | [`[String!]`](#string) | Filter dependencies by component names. |
 | <a id="group-dependencyaggregations-componentversions"></a>`componentVersions` | [`[String!]`](#string) | Filter dependencies by component versions. |
 | <a id="group-dependencyaggregations-licenses"></a>`licenses`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by SPDX license identifiers. |
-| <a id="group-dependencyaggregations-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="group-dependencyaggregations-malware"></a>`malware` | [`Boolean`](#boolean) | Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="group-dependencyaggregations-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="group-dependencyaggregations-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
 | <a id="group-dependencyaggregations-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
@@ -50036,6 +50201,7 @@ Fields:
 | <a id="mergerequestassignee-callouts"></a>`callouts` | [`UserCalloutConnection`](#usercalloutconnection) | User callouts that belong to the user. (see [Connections](#connections)) |
 | <a id="mergerequestassignee-commitemail"></a>`commitEmail` | [`String`](#string) | User's default commit email. |
 | <a id="mergerequestassignee-compositeidentityenforced"></a>`compositeIdentityEnforced` | [`Boolean`](#boolean) | Indicates if composite identity is enforced for the user. |
+| <a id="mergerequestassignee-contributioncalendar"></a>`contributionCalendar`  | [`UserContributionCalendar`](#usercontributioncalendar) | Introduced in GitLab 19.5. Status: Experiment. Contribution calendar of the user: the profile page activity heatmap for the past year. Null when the current user cannot read the profile. |
 | <a id="mergerequestassignee-createdat"></a>`createdAt` | [`Time`](#time) | Timestamp of when the user was created. |
 | <a id="mergerequestassignee-customattributes"></a>`customAttributes` | [`[CustomAttribute!]`](#customattribute) | Custom attributes of the user. Only available to admins. |
 | <a id="mergerequestassignee-discord"></a>`discord` | [`String`](#string) | Discord ID of the user. |
@@ -50510,6 +50676,7 @@ Fields:
 | <a id="mergerequestauthor-callouts"></a>`callouts` | [`UserCalloutConnection`](#usercalloutconnection) | User callouts that belong to the user. (see [Connections](#connections)) |
 | <a id="mergerequestauthor-commitemail"></a>`commitEmail` | [`String`](#string) | User's default commit email. |
 | <a id="mergerequestauthor-compositeidentityenforced"></a>`compositeIdentityEnforced` | [`Boolean`](#boolean) | Indicates if composite identity is enforced for the user. |
+| <a id="mergerequestauthor-contributioncalendar"></a>`contributionCalendar`  | [`UserContributionCalendar`](#usercontributioncalendar) | Introduced in GitLab 19.5. Status: Experiment. Contribution calendar of the user: the profile page activity heatmap for the past year. Null when the current user cannot read the profile. |
 | <a id="mergerequestauthor-createdat"></a>`createdAt` | [`Time`](#time) | Timestamp of when the user was created. |
 | <a id="mergerequestauthor-customattributes"></a>`customAttributes` | [`[CustomAttribute!]`](#customattribute) | Custom attributes of the user. Only available to admins. |
 | <a id="mergerequestauthor-discord"></a>`discord` | [`String`](#string) | Discord ID of the user. |
@@ -51072,6 +51239,7 @@ Fields:
 | <a id="mergerequestparticipant-callouts"></a>`callouts` | [`UserCalloutConnection`](#usercalloutconnection) | User callouts that belong to the user. (see [Connections](#connections)) |
 | <a id="mergerequestparticipant-commitemail"></a>`commitEmail` | [`String`](#string) | User's default commit email. |
 | <a id="mergerequestparticipant-compositeidentityenforced"></a>`compositeIdentityEnforced` | [`Boolean`](#boolean) | Indicates if composite identity is enforced for the user. |
+| <a id="mergerequestparticipant-contributioncalendar"></a>`contributionCalendar`  | [`UserContributionCalendar`](#usercontributioncalendar) | Introduced in GitLab 19.5. Status: Experiment. Contribution calendar of the user: the profile page activity heatmap for the past year. Null when the current user cannot read the profile. |
 | <a id="mergerequestparticipant-createdat"></a>`createdAt` | [`Time`](#time) | Timestamp of when the user was created. |
 | <a id="mergerequestparticipant-customattributes"></a>`customAttributes` | [`[CustomAttribute!]`](#customattribute) | Custom attributes of the user. Only available to admins. |
 | <a id="mergerequestparticipant-discord"></a>`discord` | [`String`](#string) | Discord ID of the user. |
@@ -51579,6 +51747,7 @@ Fields:
 | <a id="mergerequestreviewer-callouts"></a>`callouts` | [`UserCalloutConnection`](#usercalloutconnection) | User callouts that belong to the user. (see [Connections](#connections)) |
 | <a id="mergerequestreviewer-commitemail"></a>`commitEmail` | [`String`](#string) | User's default commit email. |
 | <a id="mergerequestreviewer-compositeidentityenforced"></a>`compositeIdentityEnforced` | [`Boolean`](#boolean) | Indicates if composite identity is enforced for the user. |
+| <a id="mergerequestreviewer-contributioncalendar"></a>`contributionCalendar`  | [`UserContributionCalendar`](#usercontributioncalendar) | Introduced in GitLab 19.5. Status: Experiment. Contribution calendar of the user: the profile page activity heatmap for the past year. Null when the current user cannot read the profile. |
 | <a id="mergerequestreviewer-createdat"></a>`createdAt` | [`Time`](#time) | Timestamp of when the user was created. |
 | <a id="mergerequestreviewer-customattributes"></a>`customAttributes` | [`[CustomAttribute!]`](#customattribute) | Custom attributes of the user. Only available to admins. |
 | <a id="mergerequestreviewer-discord"></a>`discord` | [`String`](#string) | Discord ID of the user. |
@@ -53443,6 +53612,7 @@ Fields:
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
+| <a id="note-agentpresence"></a>`agentPresence`  | [`DuoWorkflowAgentPresence`](#duoworkflowagentpresence) | Introduced in GitLab 19.5. Status: Experiment. Agent attribution for a note posted by a GitLab Duo Agent Platform session. Available to anyone who can read the note; `userPermissions.readDuoWorkflow` tells whether the session itself can be opened. Returns null when no session posted the note or when the `agent_presence_consolidation` feature flag is disabled. |
 | <a id="note-author"></a>`author` | [`UserCore`](#usercore) | User who wrote the note. |
 | <a id="note-authoriscontributor"></a>`authorIsContributor` | [`Boolean`](#boolean) | Indicates whether the note author is a contributor. |
 | <a id="note-awardemoji"></a>`awardEmoji` | [`AwardEmojiConnection`](#awardemojiconnection) | List of emoji reactions associated with the note. (see [Connections](#connections)) |
@@ -56742,7 +56912,7 @@ Arguments:
 | <a id="project-dependencies-componentnames"></a>`componentNames` | [`[String!]`](#string) | Filter dependencies by component names. |
 | <a id="project-dependencies-componentversions"></a>`componentVersions` | [`[String!]`](#string) | Filter dependencies by component versions. |
 | <a id="project-dependencies-licenses"></a>`licenses`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by SPDX license identifiers. |
-| <a id="project-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="project-dependencies-malware"></a>`malware` | [`Boolean`](#boolean) | Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="project-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="project-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
 | <a id="project-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
@@ -62283,6 +62453,30 @@ Fields:
 | <a id="usercallout-dismissedat"></a>`dismissedAt` | [`Time`](#time) | Date when the callout was dismissed. |
 | <a id="usercallout-featurename"></a>`featureName` | [`UserCalloutFeatureNameEnum`](#usercalloutfeaturenameenum) | Name of the feature that the callout is for. |
 
+### `UserContributionCalendar`
+
+A user's contribution calendar: the profile page's activity heatmap for the past year.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="usercontributioncalendar-days"></a>`days` | [`[UserContributionDay!]!`](#usercontributionday) | Days with at least one contribution, oldest first. |
+| <a id="usercontributioncalendar-timezone"></a>`timezone` | [`String!`](#string) | Identifier of the timezone the days are counted in: the user's timezone, or the instance default if the user has not set one. |
+| <a id="usercontributioncalendar-totalcount"></a>`totalCount` | [`Int!`](#int) | Total number of contributions in the past year. |
+| <a id="usercontributioncalendar-utcoffset"></a>`utcOffset` | [`Int!`](#int) | Offset of `timezone` from UTC, in seconds, as of the request. |
+
+### `UserContributionDay`
+
+One day with at least one contribution on a user's contribution calendar.
+
+Fields:
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| <a id="usercontributionday-count"></a>`count` | [`Int!`](#int) | Number of contributions on the day. |
+| <a id="usercontributionday-date"></a>`date` | [`Date!`](#date) | Date of the contributions, in the user's timezone. |
+
 ### `UserCore`
 
 Core representation of a GitLab user.
@@ -62298,6 +62492,7 @@ Fields:
 | <a id="usercore-callouts"></a>`callouts` | [`UserCalloutConnection`](#usercalloutconnection) | User callouts that belong to the user. (see [Connections](#connections)) |
 | <a id="usercore-commitemail"></a>`commitEmail` | [`String`](#string) | User's default commit email. |
 | <a id="usercore-compositeidentityenforced"></a>`compositeIdentityEnforced` | [`Boolean`](#boolean) | Indicates if composite identity is enforced for the user. |
+| <a id="usercore-contributioncalendar"></a>`contributionCalendar`  | [`UserContributionCalendar`](#usercontributioncalendar) | Introduced in GitLab 19.5. Status: Experiment. Contribution calendar of the user: the profile page activity heatmap for the past year. Null when the current user cannot read the profile. |
 | <a id="usercore-createdat"></a>`createdAt` | [`Time`](#time) | Timestamp of when the user was created. |
 | <a id="usercore-customattributes"></a>`customAttributes` | [`[CustomAttribute!]`](#customattribute) | Custom attributes of the user. Only available to admins. |
 | <a id="usercore-discord"></a>`discord` | [`String`](#string) | Discord ID of the user. |
@@ -63379,7 +63574,7 @@ Arguments:
 | <a id="vulnerability-dependencies-componentnames"></a>`componentNames` | [`[String!]`](#string) | Filter dependencies by component names. |
 | <a id="vulnerability-dependencies-componentversions"></a>`componentVersions` | [`[String!]`](#string) | Filter dependencies by component versions. |
 | <a id="vulnerability-dependencies-licenses"></a>`licenses`  | [`[String!]`](#string) | Introduced in GitLab 19.2. Status: Experiment. Filter dependencies by SPDX license identifiers. |
-| <a id="vulnerability-dependencies-malware"></a>`malware`  | [`Boolean`](#boolean) | Introduced in GitLab 19.0. Status: Experiment. Filter dependencies by malware status. Gated with feature flag `malicious_packages_dependency_list_filtering`. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
+| <a id="vulnerability-dependencies-malware"></a>`malware` | [`Boolean`](#boolean) | Filter dependencies by malware status. Cannot be combined with `trackedRefsScope: ALL_REFS` or with `trackedRefIds` referring to a non-default-branch ref. |
 | <a id="vulnerability-dependencies-notcomponentversions"></a>`notComponentVersions`  | [`[String!]`](#string) | Introduced in GitLab 18.1. Status: Experiment. Filter dependencies to exclude the specified component versions. |
 | <a id="vulnerability-dependencies-packagemanagers"></a>`packageManagers` | [`[PackageManager!]`](#packagemanager) | Filter dependencies by package managers. |
 | <a id="vulnerability-dependencies-policyviolations"></a>`policyViolations`  | [`[PolicyViolations!]`](#policyviolations) | Introduced in GitLab 18.7. Status: Experiment. Filter by security policy violations. Cannot be combined with the `malware` argument. |
@@ -66393,6 +66588,7 @@ Possible item types for AI items.
 | <a id="aicatalogitemtype-agent"></a>`AGENT` | Agent. |
 | <a id="aicatalogitemtype-flow"></a>`FLOW` | Flow. |
 | <a id="aicatalogitemtype-foundational_agent"></a>`FOUNDATIONAL_AGENT` | Foundational agent. |
+| <a id="aicatalogitemtype-skill"></a>`SKILL` | Skill. |
 | <a id="aicatalogitemtype-third_party_flow"></a>`THIRD_PARTY_FLOW` | Third party flow. |
 
 ### `AiCatalogItemVerificationLevel`
@@ -72076,6 +72272,7 @@ Name of the feature that the callout is for.
 | <a id="usergroupcalloutfeaturename-preview_user_over_limit_free_plan_alert"></a>`PREVIEW_USER_OVER_LIMIT_FREE_PLAN_ALERT` | Callout feature name for preview_user_over_limit_free_plan_alert. |
 | <a id="usergroupcalloutfeaturename-project_repository_limit_alert_warning_threshold"></a>`PROJECT_REPOSITORY_LIMIT_ALERT_WARNING_THRESHOLD` | Callout feature name for project_repository_limit_alert_warning_threshold. |
 | <a id="usergroupcalloutfeaturename-reached_seat_count_threshold"></a>`REACHED_SEAT_COUNT_THRESHOLD` | Callout feature name for reached_seat_count_threshold. |
+| <a id="usergroupcalloutfeaturename-scan_coverage_recommendation_banner"></a>`SCAN_COVERAGE_RECOMMENDATION_BANNER` | Callout feature name for scan_coverage_recommendation_banner. |
 | <a id="usergroupcalloutfeaturename-usage_quota_trial_alert"></a>`USAGE_QUOTA_TRIAL_ALERT` | Callout feature name for usage_quota_trial_alert. |
 | <a id="usergroupcalloutfeaturename-user_reached_limit_free_plan_alert"></a>`USER_REACHED_LIMIT_FREE_PLAN_ALERT` | Callout feature name for user_reached_limit_free_plan_alert. |
 | <a id="usergroupcalloutfeaturename-web_hook_disabled"></a>`WEB_HOOK_DISABLED` | Callout feature name for web_hook_disabled. |
@@ -74658,6 +74855,7 @@ One of:
 
 - [`AiCatalogAgent`](#aicatalogagent)
 - [`AiCatalogFlow`](#aicatalogflow)
+- [`AiCatalogSkill`](#aicatalogskill)
 - [`AiCatalogThirdPartyFlow`](#aicatalogthirdpartyflow)
 - [`AiFoundationalChatAgent`](#aifoundationalchatagent)
 
@@ -74988,6 +75186,7 @@ Implementations:
 
 - [`AiCatalogAgent`](#aicatalogagent)
 - [`AiCatalogFlow`](#aicatalogflow)
+- [`AiCatalogSkill`](#aicatalogskill)
 - [`AiCatalogThirdPartyFlow`](#aicatalogthirdpartyflow)
 
 Fields:
@@ -75085,6 +75284,7 @@ Implementations:
 
 - [`AiCatalogAgentVersion`](#aicatalogagentversion)
 - [`AiCatalogFlowVersion`](#aicatalogflowversion)
+- [`AiCatalogSkillVersion`](#aicatalogskillversion)
 - [`AiCatalogThirdPartyFlowVersion`](#aicatalogthirdpartyflowversion)
 
 Fields:
@@ -76104,6 +76304,7 @@ Fields:
 | <a id="user-callouts"></a>`callouts` | [`UserCalloutConnection`](#usercalloutconnection) | User callouts that belong to the user. (see [Connections](#connections)) |
 | <a id="user-commitemail"></a>`commitEmail` | [`String`](#string) | User's default commit email. |
 | <a id="user-compositeidentityenforced"></a>`compositeIdentityEnforced` | [`Boolean`](#boolean) | Indicates if composite identity is enforced for the user. |
+| <a id="user-contributioncalendar"></a>`contributionCalendar`  | [`UserContributionCalendar`](#usercontributioncalendar) | Introduced in GitLab 19.5. Status: Experiment. Contribution calendar of the user: the profile page activity heatmap for the past year. Null when the current user cannot read the profile. |
 | <a id="user-createdat"></a>`createdAt` | [`Time`](#time) | Timestamp of when the user was created. |
 | <a id="user-discord"></a>`discord` | [`String`](#string) | Discord ID of the user. |
 | <a id="user-duostatus"></a>`duoStatus` | [`UserDuoStatus`](#userduostatus) | Duo status for the user. |

@@ -680,6 +680,14 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
   Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters. Omission or null defaults to an empty map.
 
+- `spend_control: optional object { limit }  or null`
+
+  Optional spending limit in USD cents. Omission or null creates an unlimited session.
+
+  - `limit: number or null`
+
+    Positive USD cents, or null to remove the limit.
+
 - `stream: optional boolean`
 
   Whether to stream session events as server-sent events. Defaults to `false`.
@@ -690,7 +698,7 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 9 more }`
+- `AgentSession object { id, agent, created_at, 10 more }`
 
   A Managed Agents session.
 
@@ -1470,6 +1478,18 @@ Creates a managed agent session, optionally submits initial input, and returns t
 
     The IDs of vaults made available to the session.
 
+  - `spend_control: optional object { consumed, limit }`
+
+    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
+
+    - `consumed: number or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+    - `limit: number`
+
+      The configured positive limit in USD cents.
+
 ### Example
 
 ```http
@@ -1574,7 +1594,11 @@ curl https://api.openai.com/v1/agents/sessions \
   },
   "vault_ids": [
     "string"
-  ]
+  ],
+  "spend_control": {
+    "consumed": 0,
+    "limit": 1
+  }
 }
 ```
 
@@ -1643,13 +1667,13 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
   Only return sessions whose root agent has this ID. Omit to return sessions for all agents.
 
-- `limit: optional number or null`
+- `limit: optional number`
 
-  The maximum number of resources to return.
+  The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
 - `order: optional "asc" or "desc"`
 
-  Sort order by the `created_at` timestamp. Use `asc` for ascending order or `desc` for descending order. Defaults to `desc`.
+  The order in which resources are returned. Defaults to `desc`.
 
   - `"asc"`
 
@@ -2441,6 +2465,18 @@ Lists managed agent sessions using ID-based pagination and the requested sort or
 
     The IDs of vaults made available to the session.
 
+  - `spend_control: optional object { consumed, limit }`
+
+    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
+
+    - `consumed: number or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+    - `limit: number`
+
+      The configured positive limit in USD cents.
+
 - `first_id: string or null`
 
   The ID of the first resource in `data`, or `null` if the page is empty.
@@ -2559,7 +2595,11 @@ curl https://api.openai.com/v1/agents/sessions \
       },
       "vault_ids": [
         "string"
-      ]
+      ],
+      "spend_control": {
+        "consumed": 0,
+        "limit": 1
+      }
     }
   ],
   "first_id": "first_id",
@@ -2581,7 +2621,7 @@ Retrieves the current state of a managed agent session. See [managing sessions](
 
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 9 more }`
+- `AgentSession object { id, agent, created_at, 10 more }`
 
   A Managed Agents session.
 
@@ -3360,6 +3400,18 @@ Retrieves the current state of a managed agent session. See [managing sessions](
   - `vault_ids: array of string`
 
     The IDs of vaults made available to the session.
+
+  - `spend_control: optional object { consumed, limit }`
+
+    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
+
+    - `consumed: number or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+    - `limit: number`
+
+      The configured positive limit in USD cents.
 
 ### Example
 
@@ -3459,7 +3511,11 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   },
   "vault_ids": [
     "string"
-  ]
+  ],
+  "spend_control": {
+    "consumed": 0,
+    "limit": 1
+  }
 }
 ```
 
@@ -3533,9 +3589,17 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
 
   Replaces all metadata. Omit to leave unchanged, or pass null or {} to clear it. Up to 16 string key-value pairs, with keys up to 64 and values up to 512 characters.
 
+- `spend_control: optional object { limit }  or null`
+
+  Omit to retain the limit; null or a null limit removes it without resetting spend.
+
+  - `limit: number or null`
+
+    Positive USD cents, or null to remove the limit.
+
 ### Returns
 
-- `AgentSession object { id, agent, created_at, 9 more }`
+- `AgentSession object { id, agent, created_at, 10 more }`
 
   A Managed Agents session.
 
@@ -4314,6 +4378,18 @@ Updates session metadata, model, reasoning effort, or service tier. Model settin
   - `vault_ids: array of string`
 
     The IDs of vaults made available to the session.
+
+  - `spend_control: optional object { consumed, limit }`
+
+    Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
+
+    - `consumed: number or null`
+
+      Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+    - `limit: number`
+
+      The configured positive limit in USD cents.
 
 ### Example
 
@@ -4414,7 +4490,11 @@ curl https://api.openai.com/v1/agents/sessions/$SESSION_ID \
   },
   "vault_ids": [
     "string"
-  ]
+  ],
+  "spend_control": {
+    "consumed": 0,
+    "limit": 1
+  }
 }
 ```
 
@@ -4503,21 +4583,21 @@ Lists immutable artifacts published by completed hosted session turns. See [sess
 
 ### Query Parameters
 
-- `after: optional string or null`
+- `after: optional string`
 
-  Return artifacts after this immutable artifact ID.
+  Return resources after this resource ID in the selected order.
 
 - `environment_id: optional string or null`
 
   Restrict the listing to artifacts produced by this environment.
 
-- `limit: optional number or null`
+- `limit: optional number`
 
-  The maximum number of artifacts to return, between 1 and 100.
+  The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
 - `order: optional "asc" or "desc"`
 
-  Sort by creation time and ID. Defaults to descending.
+  The order in which resources are returned. Defaults to `desc`.
 
   - `"asc"`
 
@@ -5967,6 +6047,18 @@ Streams live events for an agent session. See [session events](/api/docs/guides/
       - `vault_ids: array of string`
 
         The IDs of vaults made available to the session.
+
+      - `spend_control: optional object { consumed, limit }`
+
+        Configured spending limit and best-effort consumption, in USD cents. Unlimited sessions omit this object.
+
+        - `consumed: number or null`
+
+          Best-effort recorded spend floored to whole USD cents, or null when unavailable.
+
+        - `limit: number`
+
+          The configured positive limit in USD cents.
 
     - `type: "agent.session.created"`
 

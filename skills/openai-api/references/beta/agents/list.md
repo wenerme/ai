@@ -10,9 +10,9 @@ Lists reusable agents in the current project. See [agent configuration](/api/doc
 
   Return resources after this resource ID in the selected order.
 
-- `limit: optional number or null`
+- `limit: optional number`
 
-  The maximum number of resources to return.
+  The maximum number of resources to return, between 1 and 100. Defaults to 20.
 
 - `order: optional "asc" or "desc"`
 
